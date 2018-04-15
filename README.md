@@ -3,9 +3,9 @@
     Alan Standard Library: 2.1
     Alan Development Kit:  3.0beta5
 
-This repository is a WIP translation to Italian of the _Alan Standard Library_ v2.1 for the Alan Interactive Fiction Language version 3.
+This repository is a WIP translation to Italian of the _Alan Standard Library_ v2.1 (created by Anssi Räisänen) for the Alan Interactive Fiction Language version 3. Italian translation by [Tristano Ajmone].
 
-License: Artistic License 2.0
+[License]: Artistic License 2.0
 
 Started on: 2018-04-13
 
@@ -45,9 +45,11 @@ Nothing done yet, just created the project and preparing the ground.
 
 # Project Contents
 
+- [`/alanlib_ita/`](./alanlib_ita) — standard library 2.1 translation to Italian (WIP)
 - [`/alanlib/`](./alanlib) — copies of the upstream standard library:
     + [`/2.1/`](./alanlib/2.1/) (released: 2018-04-13)
-- [`LICENSE`](./LICENSE) — Artistic License 2.0
+- [`LICENSE`][License] — Artistic License 2.0
+
 
 A full copy of every upstream _Alan Standard Library_ employed in this project is kept in the `/alanlib/` folder; when the library is updated, the upstream files of the currently used version can be diff-compared with the new version in order to track which changes should be integrated into the Italian files in order to bring them on par with the latest version of the Standard Library.
 
@@ -57,6 +59,7 @@ A full copy of every upstream _Alan Standard Library_ employed in this project i
 ## Alan IF
 
 - https://www.alanif.se/
+- https://bitbucket.org/alanif/alan
 
 From [IFWiki]'s [Alan page]:
 
@@ -76,7 +79,14 @@ From the [Alan website]:
 ## Alan Standard Library
 
 - https://www.alanif.se/information/library
+- https://bitbucket.org/alanif/alanlib
 
 Written by Anssi Räisänen. Current version: v2.1.
 
 The _Alan Standard Library_  is a set of preprogrammed basic verbs and classes to start building your own adventures. The standard library is not included with the ALAN programming system and must be downloaded separately.
+
+
+
+[License]: ./LICENSE "View the full text of Artistic License 2.0"
+
+[Tristano Ajmone]: https://github.com/tajmone "View Tristano Ajmone's GitHub profile"
