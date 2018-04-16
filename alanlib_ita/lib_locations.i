@@ -27,38 +27,53 @@
 
 
 THE nowhere ISA LOCATION
+--@TRADOTTO: Direzioni cardinali
+  EXIT  
+    nord,         -- north
+    sud,          -- south
+    est,          -- east
+    ovest,        -- west
+    nordest,      -- northeast
+    sudest,       -- southeast
+    nordovest,    -- northwest
+    sudovest,     -- southwest
+    su,           -- up, 
+    giù,          -- down, 
+    dentro,       -- 'in', 
+    fuori         -- out 
+    
+    TO nowhere.
 
-	EXIT  
-		north, 
-		south, 
-		east, 
-		west, 
-		northeast, 
-		southeast, 
-		northwest, 
-		southwest, 
-		up, 
-		down, 
-		'in', 
-		out 
-		
-		TO nowhere.
-
-		
+    
 END THE nowhere.
 
 
+--@TRADOTTO: Direzioni cardinali (sinonimi)
+--@NOTA: Problemi a creare abbrev "NO" per nordovest:
+--       "NO" è una keyword di Alan, è 'no' non lo accetta:
+--        ----------------------------------------------------------------------
+--        333 E : The word 'no' is defined to be both a synonym and another word
+--                class.
+--
+--        1 error(s).
+--        ----------------------------------------------------------------------
 SYNONYMS
-		n = north.
-		s = south.
-		e = east.
-		w = west.
-		ne = northeast.
-		se = southeast.
-		nw = northwest.
-		sw = southwest.
-		u = up.
-		d = down.
+    n     = nord.        -- n  = north
+    s     = sud.         -- s  = south
+    e     = est.         -- e  = east
+    o     = ovest.       -- w  = west
+    ne    = nordest.     -- ne = northeast
+    se    = sudest.      -- se = southeast
+    nov   = nordovest.   -- nw = northwest
+    so    = sudovest.    -- sw = southwest
+    sopra = su.          -- u  = up
+    alto  = su.
+--  a     = su. <- usato in i6; ma potrebbe confliggere con "a/to"?
+    giu   = giù.         -- d  = down
+    sotto = giù.
+    basso = giù.
+    b     = giù. -- Si usa davvero?
+--@NOTA: i6 implementa anche "esterno" e "esternamente" per "fuori"
 
 
 -- Note:
@@ -78,9 +93,9 @@ SYNONYMS
 -- THE piece_of_paper ISA OBJECT
 -- ...
 --    VERB tear
--- 		DOES ONLY "You tear the piece of paper to shreds."
--- 		LOCATE piece_of_paper AT nowhere.
--- 	END VERB.
+--    DOES ONLY "You tear the piece of paper to shreds."
+--    LOCATE piece_of_paper AT nowhere.
+--  END VERB.
 --
 -- END THE piece_of_paper.
 
@@ -131,15 +146,15 @@ END THE indoor.
 
 
 EVERY room ISA LOCATION AT indoor
-	HAS floor_desc "".		-- if these values are left unchanged,
-	HAS walls_desc "".		-- the descriptions of the walls, floor and 
-	HAS ceiling_desc "".	 	-- ceiling will be the default "You notice nothing unusual
-END EVERY.					-- about the [object]."
+  HAS floor_desc "".    -- if these values are left unchanged,
+  HAS walls_desc "".    -- the descriptions of the walls, floor and 
+  HAS ceiling_desc "".    -- ceiling will be the default "You notice nothing unusual
+END EVERY.          -- about the [object]."
 
 
-EVERY site ISA LOCATION AT outdoor	
-	HAS ground_desc "".
-	HAS sky_desc "".
+EVERY site ISA LOCATION AT outdoor  
+  HAS ground_desc "".
+  HAS sky_desc "".
 END EVERY.
 
 
@@ -152,107 +167,107 @@ END EVERY.
 
 
 THE floor ISA room_object
-	IS NOT takeable.
-	IS NOT movable.
-	CONTAINER 			
-		-- to allow 'empty/pour/put something on floor'
-	DESCRIPTION ""
+  IS NOT takeable.
+  IS NOT movable.
+  CONTAINER       
+    -- to allow 'empty/pour/put something on floor'
+  DESCRIPTION ""
 
 
-	-- As we have declared the floor a container, we will disable some verbs
-	-- defined to work with containers:
+  -- As we have declared the floor a container, we will disable some verbs
+  -- defined to work with containers:
 
 
-	VERB empty_in, pour_in
-	   WHEN cont
-		DOES ONLY "That's not something you can $v things into."
-	END VERB.
+  VERB empty_in, pour_in
+     WHEN cont
+    DOES ONLY "That's not something you can $v things into."
+  END VERB.
 
 
-	VERB look_in
-		DOES ONLY "That's not possible."
-	END VERB.
+  VERB look_in
+    DOES ONLY "That's not possible."
+  END VERB.
 
 
-	VERB put_in
-	   WHEN cont
-		DOES ONLY "That's not something you can $v things into."
-	END VERB.
+  VERB put_in
+     WHEN cont
+    DOES ONLY "That's not something you can $v things into."
+  END VERB.
 
 
-	VERB take_from
-	   WHEN holder
-		DOES ONLY "If you want to pick up something, just TAKE it."
-	END VERB.
+  VERB take_from
+     WHEN holder
+    DOES ONLY "If you want to pick up something, just TAKE it."
+  END VERB.
 
 
-	VERB throw_in
-	   WHEN cont
-		DOES ONLY "That's not something you can $v things into."
-	END VERB.
-	
+  VERB throw_in
+     WHEN cont
+    DOES ONLY "That's not something you can $v things into."
+  END VERB.
+  
 
 
 END THE.
 
 
 THE wall ISA room_object
-	NAME wall NAME walls
-	IS NOT takeable.
-	IS NOT movable.
-	DESCRIPTION ""
+  NAME wall NAME walls
+  IS NOT takeable.
+  IS NOT movable.
+  DESCRIPTION ""
 END THE.
 
 
 
 THE ceiling ISA room_object
-	IS NOT takeable.
-	IS NOT reachable.	
-	DESCRIPTION ""	
+  IS NOT takeable.
+  IS NOT reachable. 
+  DESCRIPTION ""  
 END THE.
 
 
 
 THE ground ISA site_object
-	IS NOT takeable.
-	IS NOT movable.
-	CONTAINER				
-		-- to allow 'empty/pour something on ground'
-	DESCRIPTION ""
+  IS NOT takeable.
+  IS NOT movable.
+  CONTAINER       
+    -- to allow 'empty/pour something on ground'
+  DESCRIPTION ""
 
 
 
-	-- As we have declared the ground to be a container, we will disable some verbs
-	-- defined to work with containers:
+  -- As we have declared the ground to be a container, we will disable some verbs
+  -- defined to work with containers:
 
 
-	VERB empty_in, pour_in
-	   WHEN cont
-		DOES ONLY "That's not something you can $v things into."
-	END VERB.
+  VERB empty_in, pour_in
+     WHEN cont
+    DOES ONLY "That's not something you can $v things into."
+  END VERB.
 
 
-	VERB look_in
-		DOES ONLY "That's not possible."
-	END VERB.
+  VERB look_in
+    DOES ONLY "That's not possible."
+  END VERB.
 
 
-	VERB put_in
-	   WHEN cont
-		DOES ONLY "That's not something you can $v things into."
-	END VERB.
+  VERB put_in
+     WHEN cont
+    DOES ONLY "That's not something you can $v things into."
+  END VERB.
 
 
-	VERB take_from
-	   WHEN holder
-		DOES ONLY "If you want to pick up something, just TAKE it."
-	END VERB.
+  VERB take_from
+     WHEN holder
+    DOES ONLY "If you want to pick up something, just TAKE it."
+  END VERB.
 
 
-	VERB throw_in
-	   WHEN cont
-		DOES ONLY "That's not something you can $v things into."
-	END VERB.
+  VERB throw_in
+     WHEN cont
+    DOES ONLY "That's not something you can $v things into."
+  END VERB.
 
 
 END THE.
@@ -260,9 +275,9 @@ END THE.
 
 
 THE sky ISA site_object
-	IS NOT takeable.
-	IS distant.
-	DESCRIPTION ""
+  IS NOT takeable.
+  IS distant.
+  DESCRIPTION ""
 END THE.
 
 
@@ -271,36 +286,36 @@ END THE.
 
 ADD TO EVERY room_object
 
-	VERB put_against
-		WHEN bulk
-			CHECK THIS = wall
-				ELSE "That's not possible."	
-	END VERB.
+  VERB put_against
+    WHEN bulk
+      CHECK THIS = wall
+        ELSE "That's not possible." 
+  END VERB.
     
-	VERB put_behind, put_near, put_under
-		WHEN bulk
-			DOES ONLY "That's not possible."
-	END VERB.
+  VERB put_behind, put_near, put_under
+    WHEN bulk
+      DOES ONLY "That's not possible."
+  END VERB.
 
-	VERB look_behind, look_through, look_under
-		DOES ONLY "That's not possible."
-	END VERB.
+  VERB look_behind, look_through, look_under
+    DOES ONLY "That's not possible."
+  END VERB.
 
-END ADD TO.	
+END ADD TO. 
 
 
 ADD TO EVERY site_object
     
-	VERB put_against, put_behind, put_near, put_under
-		WHEN bulk
-			DOES ONLY "That's not possible."
-	END VERB.
+  VERB put_against, put_behind, put_near, put_under
+    WHEN bulk
+      DOES ONLY "That's not possible."
+  END VERB.
 
-	VERB look_behind, look_through, look_under
-		DOES ONLY "That's not possible."
-	END VERB.
+  VERB look_behind, look_through, look_under
+    DOES ONLY "That's not possible."
+  END VERB.
 
-END ADD TO.	
+END ADD TO. 
 
 
 -- NOTE: it is often a good idea to modify the 'examine' verb for the above objects.
@@ -314,7 +329,7 @@ END ADD TO.
 --          IF hero AT kitchen
 --              THEN "The walls are lined with shelves."
 --          ELSIF hero AT livingroom  
---			THEN "The wallpaper has a nice flower pattern."
+--      THEN "The wallpaper has a nice flower pattern."
 --          ELSIF...
 --          END IF. 
 --    ...
@@ -335,59 +350,59 @@ END ADD TO.
 
 
 ADD TO EVERY LOCATION
-	IS lit. 
+  IS lit. 
 END ADD TO. 
 
 
 EVERY dark_location ISA LOCATION
-	IS NOT lit. 
+  IS NOT lit. 
 
-	ENTERED
+  ENTERED
 
-		IF COUNT ISA LIGHTSOURCE, IS lit, HERE > 0	
-			THEN MAKE THIS lit.	
-				IF CURRENT ACTOR <> hero
-					THEN LOOK.
-				END IF.			
-		END IF.
+    IF COUNT ISA LIGHTSOURCE, IS lit, HERE > 0  
+      THEN MAKE THIS lit. 
+        IF CURRENT ACTOR <> hero
+          THEN LOOK.
+        END IF.     
+    END IF.
 
-		IF COUNT ISA LIGHTSOURCE, IS lit, HERE = 0
-			THEN MAKE THIS NOT lit.
-		END IF.
-									
-		-- These ENTERED statements take care
-		-- of the dark location being correctly lit or not lit at entrance, 
-		-- the WHEN rules below take care of the change when the hero is 
-		-- already in the location.
-		
+    IF COUNT ISA LIGHTSOURCE, IS lit, HERE = 0
+      THEN MAKE THIS NOT lit.
+    END IF.
+                  
+    -- These ENTERED statements take care
+    -- of the dark location being correctly lit or not lit at entrance, 
+    -- the WHEN rules below take care of the change when the hero is 
+    -- already in the location.
+    
 
-	DESCRIPTION 
-		CHECK THIS IS lit
-			ELSE SAY dark_loc_desc OF my_game.
+  DESCRIPTION 
+    CHECK THIS IS lit
+      ELSE SAY dark_loc_desc OF my_game.
 
 END EVERY dark_location. 
 
 
 WHEN location OF hero IS NOT lit 
-	AND COUNT ISA lightsource, IS lit, AT hero > 0  
+  AND COUNT ISA lightsource, IS lit, AT hero > 0  
 THEN MAKE location OF hero lit. 
-	SCHEDULE light_on AT hero AFTER 0.
+  SCHEDULE light_on AT hero AFTER 0.
 
 
 EVENT light_on
-	LOOK.
+  LOOK.
 END EVENT.
 
 
 WHEN location OF hero ISA dark_location 
-	AND location OF hero IS lit
-	AND COUNT ISA lightsource, IS lit, AT hero = 0  
+  AND location OF hero IS lit
+  AND COUNT ISA lightsource, IS lit, AT hero = 0  
 THEN MAKE location OF hero NOT lit. 
-	SCHEDULE light_off AT hero AFTER 0.
+  SCHEDULE light_off AT hero AFTER 0.
 
 
 EVENT light_off
-	SAY light_goes_off OF my_game.
+  SAY light_goes_off OF my_game.
 END EVENT.
 
 
@@ -396,10 +411,10 @@ END EVENT.
 
 EVENT check_darkness
     FOR EACH dl ISA dark_location, IS lit
-		DO
-			IF COUNT ISA LIGHTSOURCE, AT dl = 0
-				THEN MAKE dl NOT lit.
-			END IF.
+    DO
+      IF COUNT ISA LIGHTSOURCE, AT dl = 0
+        THEN MAKE dl NOT lit.
+      END IF.
     END FOR.
     SCHEDULE check_darkness AFTER 1.
 END EVENT.
@@ -412,7 +427,7 @@ END EVENT.
 
 
 -- THE basement ISA dark_location
--- 	EXIT up TO kitchen.
+--  EXIT up TO kitchen.
 -- ...
 -- END THE.
 
@@ -426,7 +441,7 @@ END EVENT.
 
 -- THE basement ISA dark_location
 --    DESCRIPTION "Cobwebs and old junk are the only things you see here."
--- 	EXIT up TO kitchen.
+--  EXIT up TO kitchen.
 -- END THE.
 
 
@@ -455,18 +470,18 @@ END EVENT.
 
 
 ADD TO EVERY LOCATION
-	HAS visited 0.	
-	HAS described 0.
+  HAS visited 0.  
+  HAS described 0.
 
-	ENTERED
-		 IF CURRENT ACTOR = hero
-			THEN 
-				INCREASE visited OF THIS.	
-				INCREASE described OF THIS.		
-				-- The "described" attribute increases also after LOOK (see 'verbs.i').
-		 END IF.
+  ENTERED
+     IF CURRENT ACTOR = hero
+      THEN 
+        INCREASE visited OF THIS. 
+        INCREASE described OF THIS.   
+        -- The "described" attribute increases also after LOOK (see 'verbs.i').
+     END IF.
 
-END ADD TO.						
+END ADD TO.           
 
 
 

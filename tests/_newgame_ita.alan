@@ -1,0 +1,30 @@
+-- "newgame_ita.alan" v0.0.1 (2018-04-15) | Alan 3 beta5 | Std Lib v2.1
+
+-- Boilerplate source code file testing the Italian ALAN library v2.1.
+-- Used as a starting point for new test games.
+-- (based on the original 'newgame.alan' from the Standard Library 2.1)
+
+
+IMPORT 'library.i'.
+
+
+
+THE my_game ISA DEFINITION_BLOCK         
+    -- (needed obligatorily in every new game!) 
+    
+    -- the following can be edited:
+    HAS title "Avventura Senza Titolo".   
+    HAS subtitle "".            
+    HAS author "Tristano Ajmone".     
+    HAS year 2018.        
+    HAS version "1".          
+
+END THE.
+
+
+THE start_loc ISA LOCATION      -- edit the name of this location and add features to it
+END THE.
+
+
+Start at start_loc.       -- change 'start_loc' to what you changed the name of the first location to be above
+DESCRIBE banner.
