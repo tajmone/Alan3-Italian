@@ -715,7 +715,7 @@ EVERY definition_block ISA LOCATION
   CAN find.        -- (+ locate)                                                              
   CAN fire.                                                        
   CAN fire_at.                      
-  CAN fix.      -- (+ mend, repair)                        
+  CAN fix.         -- (+ mend, repair)                        
   CAN follow.                                                         
   CAN free.        -- (+ release)                                     
   CAN get_up.                                                               
@@ -723,7 +723,7 @@ EVERY definition_block ISA LOCATION
   CAN give.                                                        
   CAN go_to.                                                            
   CAN hint.        -- (+ hints)                                       
-  CAN i.       -- (+ inv, inventory)                                      
+  CAN i.           -- (+ inv, inventory)                                      
   CAN jump.                                                        
   CAN jump_in.                                                          
   CAN jump_on.                                                          
@@ -741,7 +741,7 @@ EVERY definition_block ISA LOCATION
   CAN listen.                                                      
   CAN lock.                                                        
   CAN lock_with.                                                   
-  CAN 'look'.        -- (+ gaze, peek)                                              
+  CAN 'look'.      -- (+ gaze, peek)                                              
   CAN look_at.                                                     
   CAN look_behind.                                                      
   CAN look_in.                                                          
@@ -791,19 +791,19 @@ EVERY definition_block ISA LOCATION
   CAN search.                                                                              
   CAN sell.                                                        
   CAN shake.                                                                              
-  CAN shoot. -- (at)                                                  
+  CAN shoot.       -- (at)                                                  
   CAN shoot_with.                                                       
   CAN shout.       -- (+ scream, yell)                                                               
   CAN 'show'.      -- (+ reveal)                                                
   CAN sing.                                                                   
   CAN sip.                                                        
-  CAN sit. -- (down)                                                  
+  CAN sit.         -- (down)                                                  
   CAN sit_on.                                                      
   CAN sleep.       -- (+ rest)                                        
   CAN smell0.                                                      
   CAN smell.                                                       
   CAN squeeze.                                                                          
-  CAN stand. -- (up)                                                  
+  CAN stand.       -- (up)                                                  
   CAN stand_on.                                                    
   CAN swim.                                                        
   CAN swim_in.   
@@ -836,7 +836,7 @@ EVERY definition_block ISA LOCATION
   CAN 'use'.                                                         
   CAN use_with.                                                    
   CAN 'verbose'.                                                     
-  CAN 'wait'.        -- (+ z)                                           
+  CAN 'wait'.      -- (+ z)                                           
   CAN wear.                       
   CAN what_am_i.                                                    
   CAN what_is.                                                      
