@@ -1,3 +1,8 @@
+-- "lib_definitions.i" v0.0.1 (2018/05/01)
+--------------------------------------------------------------------------------
+-- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
+--------------------------------------------------------------------------------
+
 -- ALAN Standard Library v2.1
 -- Definitions (file name: 'lib_definitions.i')
 
