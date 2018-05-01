@@ -69,7 +69,7 @@
 ----- give                                                 give (obj) to (recipient)           1       x
 ----- go_to                                                go to (dest)                        1
 ----- hint        (+ hints)                                hint                                0
------ i           (+ inv, inventory                        inventory                           0
+----- i           (+ inv, inventory)                       inventory                           0
 ----- jump                                                 jump                                0
 ----- jump_in                                              jump in (cont)                      1
 ----- jump_on                                              jump on (surface)                   1
@@ -77,7 +77,7 @@
 ----- kill        (+ murder)                               kill (victim)                       1
 ----- kill_with                                            kill (victim) with (weapon)         2
 ----- kiss        (+ hug, embrace)                         kiss (obj)                          1       x
------ knock
+----- knock (on)                                           knock on (obj)                      1       x
 ----- lie_down                                             lie down                            0
 ----- lie_in                                               lie in (cont)                       1
 ----- lie_on                                               lie on (surface)                    1
@@ -101,7 +101,7 @@
 ----- open_with                                            open (obj) with (instr)             2       x
 ----- play                                                 play (obj)                          1       x
 ----- play_with                                            play with (obj)                     1       x
------ pour        (= defined at the verb 'empty)           pour (obj)                          1       x
+----- pour        (= defined at the verb 'empty')          pour (obj)                          1       x
 ----- pour_in     (= defined at the verb 'emtpy_in')       pour (obj) in (cont)                2       x
 ----- pour_on     (= defined at the verb 'empty_on')       pour (obj) on (surface)             2       x
 ----- pray                                                 pray                                0
