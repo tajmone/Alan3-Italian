@@ -1375,7 +1375,7 @@ EVERY liquid ISA OBJECT
       END IF.
   END VERB.
     
-
+-- @TAKE (VERB) => LIQUID
   VERB take
     CHECK vessel OF THIS NOT IN hero
       ELSE SAY check_obj_not_in_hero2 OF my_game.
@@ -1387,7 +1387,7 @@ EVERY liquid ISA OBJECT
       END IF.
   END VERB.
 
-
+-- @TAKE FROM (VERB) => LIQUID
   VERB take_from
      WHEN obj
     CHECK holder <> vessel OF THIS

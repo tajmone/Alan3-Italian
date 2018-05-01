@@ -5685,7 +5685,7 @@ END ADD TO.
 
 -- ==============================================================
 
-
+-- @TAKE FROM (HEADER COMMENTS: REMOVE FROM => TAKE FROM)
 ----- REMOVE FROM      ( => TAKE FROM)
 
 
@@ -6958,13 +6958,13 @@ END ADD TO.
 
 -- ==============================================================
 
-
+-- @TAKE (SYNTAX HEADER)
 ----- TAKE  (+ carry, get, grab, hold, obtain, pick up)
 
 
 -- ==============================================================
 
-
+-- @TAKE (SYNTAX)
 SYNTAX take = take (obj)
       WHERE obj ISA THING   
         ELSE  
@@ -6973,14 +6973,18 @@ SYNTAX take = take (obj)
         ELSE SAY illegal_parameter_pl OF my_game. 
       END IF.
 
-  take = get (obj).
+-- @TAKE (SYNTAX SYNONIM) => get (obj)
+    take = get (obj).
 
+-- @TAKE (SYNTAX SYNONIM) => pick up (obj)
     take = pick up (obj).
 
+-- @TAKE (SYNTAX SYNONIM) => pick (obj) up
     take = pick (obj) up.
 
 
 ADD TO EVERY THING
+-- @TAKE (VERB) => ADD TO EVERY THING
   VERB take
     CHECK my_game CAN take
       ELSE SAY restricted_response OF my_game.
@@ -7059,6 +7063,7 @@ ADD TO EVERY THING
 END ADD TO.
 
 
+-- @TAKE (SYNONYMS)
 SYNONYMS
   carry, grab, hold, obtain = take.
 
@@ -7066,12 +7071,14 @@ SYNONYMS
 
 -- ==============================================================
 
+-- @TAKE FROM (SYNTAX HEADER)
 
 -----  TAKE FROM
 
 
 -- ==============================================================
 
+-- @TAKE FROM (SYNTAX)
 
 SYNTAX take_from = 'take' (obj) 'from' (holder)
       WHERE obj ISA THING

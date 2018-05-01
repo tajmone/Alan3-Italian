@@ -269,7 +269,9 @@ EVERY definition_block ISA LOCATION
   HAS illegal_parameter_at "You can't $v anything at $+2.".         -- fire_at, throw_at
   HAS illegal_parameter_for_sg "That's not something you can $v for.".      -- ask_for
   HAS illegal_parameter_for_pl "Those are not something you can $v for.".
+-- @TAKE FROM (MESSAGE)
   HAS illegal_parameter2_from_sg "That's not something you can take things from.".  -- take_from
+-- @TAKE FROM (MESSAGE)
   HAS illegal_parameter2_from_pl "Those are not something you can take things from.".
   HAS illegal_parameter_in_sg "That's not something you can $v in.".      -- dive_in, jump_in, lie_in, swim_in
   HAS illegal_parameter_in_pl "Those are not something you can $v in.".
@@ -478,6 +480,7 @@ EVERY definition_block ISA LOCATION
   HAS check_obj_in_hero "You don't have the $+1.".              -- drop, fire, fire_at, put, show
   HAS check_obj2_in_hero "You don't have the $+2.".             -- (numerous)
   HAS check_obj_not_in_hero1 "It doesn't make sense to $v something you're holding.".   -- attack, attack_with, kick, lift, shoot, shoot_with
+-- @TAKE (MESSAGE)
   HAS check_obj_not_in_hero2 "You already have $+1.".             -- take, take_from
   HAS check_obj2_not_in_hero1 "You are carrying $+2.".              -- throw_at, throw_in, throw_to
   HAS check_obj2_not_in_hero2 "That would be futile.".              -- put_against, put_behind, put_near, put_under
