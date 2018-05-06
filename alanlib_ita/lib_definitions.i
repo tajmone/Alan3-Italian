@@ -1,4 +1,4 @@
--- "lib_definitions.i" v0.0.1 (2018/05/01)
+-- "lib_definitions.i" v0.0.2 (2018/05/06)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -119,6 +119,7 @@ END ADD TO.
 
 ADD TO EVERY ENTITY
   IS NOT plural.
+  IS NOT femminile. -- @FEMMINILE -> attr. (ADD TO EVERY ENTITY)
 END ADD TO.
 
 
@@ -233,7 +234,10 @@ EVERY definition_block ISA LOCATION
   -- description messages for dark locations:
   -- ========================================
 
-  HAS dark_loc_desc "It is pitch black. You can't see anything at all.".
+  HAS dark_loc_desc "È buio e non riesci a vedere nulla".
+    --#i7: "È buio e non riesci a vedere nulla". 
+    --#i6: "È completamente buio, e non riesci a vedere niente.". 
+    -- "It is pitch black. You can't see anything at all.".
     -- This message is shown when the player tries to LOOK or do actions requiring light
     -- in a dark location.
 
@@ -244,7 +248,7 @@ EVERY definition_block ISA LOCATION
   -- response for restricted actions:
   -- ================================
 
-  HAS restricted_response "You can't do that.".
+  HAS restricted_response "Non puoi farlo.". -- "You can't do that."
     -- This message is shown whenever the player used a verb that has been restricted
      -- by the "CAN NOT [verb]" attributes further down this file.
 
@@ -261,7 +265,9 @@ EVERY definition_block ISA LOCATION
 
   -- the general message for when a parameter is not suitable with the verb:
   --------------------------------------------------------------------------
-
+  --# siccome in italiano serve l'infinito qui, questi messaggi non serviranno
+  --  ma andranno suddivisi in diverse varianti, a seconda del verbo cui si
+  --  riferisco; salvo eccezzioni che possano essere generalizzate.
   HAS illegal_parameter_sg "That's not something you can $v.".        -- (numerous)
   HAS illegal_parameter_pl "Those are not something you can $v.".
 
@@ -349,9 +355,16 @@ EVERY definition_block ISA LOCATION
     
   -- the general check message for when an instance cannot be used with the verb :
   --------------------------------------------------------------------------------  
-    
+  --# siccome in italiano serve l'infinito qui, questi messaggi non serviranno
+  --  ma andranno suddivisi in diverse varianti, a seconda del verbo cui si
+  --  riferisco; salvo eccezzioni che possano essere generalizzate.
+   
   HAS check_obj_suitable_sg "That's not something you can $v.".       -- (numerous)       
   HAS check_obj_suitable_pl "Those are not something you can $v.".
+
+  -- Varianti italiane, per specifici verbi:
+  HAS check_obj_idoneo_prendere_sg "$+1 non è qualcosa che puoi prendere.".       -- (numerous)       
+  HAS check_obj_idoneo_prendere_pl "$+1 non sono qualcosa che puoi prendere.".
 
 
   -- variations of the above message, needed for example when a preposition is required after the verb:
@@ -438,10 +451,13 @@ EVERY definition_block ISA LOCATION
   HAS check_obj_inanimate1 "$+1 wouldn't probably appreciate that.".        -- push, push_with, scratch, search
   HAS check_obj_inanimate2 "You are not sure whether $+1 would appreciate that.".   -- rub, touch, touch_with
   
-  HAS check_obj_movable "It's not possible to $v $+1.".             -- lift, pull, push, push_with, shake, take, take_from
-      
-  HAS check_obj_not_scenery_sg "$+1 is not important.".             -- examine, take, take_from
-  HAS check_obj_not_scenery_pl "$+1 are not important.".
+  HAS check_obj_movable "It's not possible to $v $+1.". -- lift, pull, push, push_with, shake, take, take_from
+
+  --@ SCENERY CHECKS -> CAN'T MESSAGES... 
+  --#i7: "[The noun] non si [puoi] trasportare."
+  --#i6: "Non @`e importante ai fini del gioco."
+  HAS check_obj_not_scenery_sg "$+1 non è importante ai fini del gioco.". -- examine, take, take_from
+  HAS check_obj_not_scenery_pl "$+1 non sono importanti ai fini del gioco.".
 
   HAS check_obj2_not_scenery_sg "$+2 is not important.".              -- ask_for, take_from
   HAS check_obj2_not_scenery_pl "$+2 are not important.".

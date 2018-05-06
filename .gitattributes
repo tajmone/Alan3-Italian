@@ -21,6 +21,12 @@
 *.i        text
 *.ifid     text
 
+## ===================
+## Game Scripts & Logs
+## ===================
+*.log      text
+*.script   text
+
 ## =============
 ## AlanIDE Files
 ## =============

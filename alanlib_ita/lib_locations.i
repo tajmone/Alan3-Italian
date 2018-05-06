@@ -1,4 +1,4 @@
--- "lib_locations.i" v0.0.1 (2018/05/01)
+-- "lib_locations.i" v0.0.2 (2018/05/06)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -199,8 +199,8 @@ THE floor ISA room_object
     DOES ONLY "That's not something you can $v things into."
   END VERB.
 
--- @TAKE FROM (VERB) => FLOOR
-  VERB take_from
+-- @PRENDI_DA -> @TAKE FROM (VERB) => FLOOR
+  VERB prendi_da
      WHEN holder
     DOES ONLY "If you want to pick up something, just TAKE it."
   END VERB.
@@ -263,8 +263,8 @@ THE ground ISA site_object
   END VERB.
 
 
--- @TAKE FROM (VERB) => GROUND
-  VERB take_from
+-- @PRENDI_DA -> @TAKE FROM (VERB) => GROUND
+  VERB prendi_da
      WHEN holder
     DOES ONLY "If you want to pick up something, just TAKE it."
   END VERB.

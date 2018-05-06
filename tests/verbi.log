@@ -1,0 +1,63 @@
+
+
+TEST VERBI IMPLEMENTATI 
+Verbi: prendi 
+(C) 2018 by Tristano Ajmone 
+Programmed with the ALAN Interactive Fiction Language v3.0 beta5
+Standard Library v2.1 
+Version 1 
+All rights reserved.
+
+
+Sala Collaudo Verbi
+Questa ampia sala è lo stato dell'arte per il collaudo di verbi. Puoi
+udire un ronzio indistinto in sottofondo. There is una teca here. La teca
+contains un orologio. There is una piantana, delle piante, una statua and 
+una palla here.
+
+> x la teca
+La teca contains un orologio.
+
+> prendi la teca
+Presa.
+
+> x l'orologio
+Esamini l'orologio, ma non noti niente di speciale.
+
+> prendi l'orologio
+Preso.
+
+> x la palla
+Esamini la palla, ma non noti niente di speciale.
+
+> prendi la palla
+Presa.
+
+> ; scenery tests:
+> x la piantana
+La piantana non è importante ai fini del gioco.
+
+> prendi la piantana
+La piantana non è importante ai fini del gioco.
+
+> x le piante
+Le piante non sono importanti ai fini del gioco.
+
+> prendi le piante
+Le piante non sono importanti ai fini del gioco.
+
+> x il ronzio
+That's not something you can examine.
+
+> prendi il ronzio
+Il ronzio non è qualcosa che puoi prendere.
+
+> x la statua
+Esamini la statua, ma non noti niente di speciale.
+
+> prendi la statua
+È fissata al suo posto.
+
+> 
+
+Do you want to RESTART, RESTORE, QUIT or UNDO? 

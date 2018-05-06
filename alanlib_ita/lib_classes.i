@@ -1,4 +1,4 @@
--- "lib_classes.i" v0.0.1 (2018/05/01)
+-- "lib_classes.i" v0.0.2 (2018/05/06)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1380,8 +1380,8 @@ EVERY liquid ISA OBJECT
       END IF.
   END VERB.
     
--- @TAKE (VERB) => LIQUID
-  VERB take
+-- @PRENDI -> @TAKE (VERB) => LIQUID
+  VERB prendi
     CHECK vessel OF THIS NOT IN hero
       ELSE SAY check_obj_not_in_hero2 OF my_game.
     DOES ONLY
@@ -1392,8 +1392,8 @@ EVERY liquid ISA OBJECT
       END IF.
   END VERB.
 
--- @TAKE FROM (VERB) => LIQUID
-  VERB take_from
+-- @PRENDI_DA -> @TAKE FROM (VERB) => LIQUID
+  VERB prendi_da
      WHEN obj
     CHECK holder <> vessel OF THIS
       ELSE SAY check_liquid_vessel_not_cont OF my_game.

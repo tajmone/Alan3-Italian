@@ -1,4 +1,4 @@
--- "lib_verbs.i" v0.0.1 (2018/05/01)
+-- "lib_verbs.i" v0.0.2 (2018/05/06)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -2477,13 +2477,13 @@ ADD TO EVERY THING
     AND obj IS NOT scenery
       ELSE 
         IF obj IS NOT PLURAL
-          THEN SAY check_obj_not_scenery_sg OF my_game.
-          ELSE SAY check_obj_not_scenery_pl OF my_game.
+          THEN SAY check_obj_not_scenery_sg OF my_game. --> "$+1 non è importante ai fini del gioco."
+          ELSE SAY check_obj_not_scenery_pl OF my_game. --> "$+1 non sono importanti ai fini del gioco."
         END IF.
         DOES
       IF obj IS readable      
       -- for readable objects, 'examine' behaves just as 'read'
-        THEN 
+        THEN
           IF text OF obj = ""
             THEN "There is nothing written on" SAY THE obj. "."
             ELSE "You read" SAY THE obj. "."
@@ -2498,7 +2498,10 @@ ADD TO EVERY THING
             THEN SAY ex OF obj.
           ELSIF obj = hero
             THEN "You notice nothing unusual about yourself."
-            ELSE "You notice nothing unusual about" SAY THE obj. "."
+            --#i7: "Non [trovi] nulla di particolare [inp the noun]."
+            --#i6: "Esamini ", (the) x1, ", ma non noti niente di speciale."
+            ELSE "Esamini" SAY THE obj. ", ma non noti niente di speciale."
+            -- ELSE "You notice nothing unusual about" SAY THE obj. "."
           END IF. 
       END IF.
   END VERB.
@@ -5690,7 +5693,7 @@ END ADD TO.
 
 -- ==============================================================
 
--- @TAKE FROM (HEADER COMMENTS: REMOVE FROM => TAKE FROM)
+-- @TAKE_FROM (HEADER COMMENTS: REMOVE FROM => TAKE FROM)
 ----- REMOVE FROM      ( => TAKE FROM)
 
 
@@ -6963,14 +6966,14 @@ END ADD TO.
 
 -- ==============================================================
 
--- @TAKE (SYNTAX HEADER)
+-- @PRENDI -> @TAKE (SYNTAX HEADER)
 ----- TAKE  (+ carry, get, grab, hold, obtain, pick up)
 
 
 -- ==============================================================
 
--- @TAKE (SYNTAX)
-SYNTAX take = take (obj)
+-- @PRENDI -> @TAKE (SYNTAX)         => take (obj)
+SYNTAX prendi = prendi (obj)
       WHERE obj ISA THING   
         ELSE  
       IF obj IS NOT plural
@@ -6978,26 +6981,30 @@ SYNTAX take = take (obj)
         ELSE SAY illegal_parameter_pl OF my_game. 
       END IF.
 
--- @TAKE (SYNTAX SYNONIM) => get (obj)
-    take = get (obj).
+-- @PRENDI -> @TAKE (SYNTAX SYNONIM) => get (obj)
+    prendi = afferra (obj).
 
--- @TAKE (SYNTAX SYNONIM) => pick up (obj)
-    take = pick up (obj).
+-- @PRENDI -> @TAKE (SYNTAX SYNONIM) => pick up (obj)
+    prendi = raccogli (obj).
 
--- @TAKE (SYNTAX SYNONIM) => pick (obj) up
-    take = pick (obj) up.
+-- @PRENDI -> @TAKE (SYNTAX SYNONIM) => pick (obj) up
+    prendi = trasporta (obj).
 
 
 ADD TO EVERY THING
--- @TAKE (VERB) => ADD TO EVERY THING
-  VERB take
-    CHECK my_game CAN take
-      ELSE SAY restricted_response OF my_game.
+-- @PRENDI -> @TAKE (VERB) => ADD TO EVERY THING
+  VERB prendi
+    CHECK my_game CAN take -- @TODO: 'CAN prendere'
+      ELSE SAY restricted_response OF my_game. --#-> "Non puoi farlo."
     AND obj IS examinable
       ELSE 
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game. 
-          ELSE SAY check_obj_suitable_pl OF my_game. 
+          THEN SAY check_obj_idoneo_prendere_sg OF my_game.
+          --#->    "$+1 non è qualcosa che puoi prendere.".
+          ELSE SAY check_obj_idoneo_prendere_sg OF my_game.
+          --#->    "$+1 non sono qualcosa che puoi prendere.".
+       -- THEN SAY check_obj_suitable_sg OF my_game. --#-> "That's not something you can $v."
+       -- ELSE SAY check_obj_suitable_pl OF my_game. --#-> "Those are not something you can $v."
         END IF.
     AND obj <> hero
       ELSE SAY check_obj_not_hero1 OF my_game.
@@ -7006,16 +7013,34 @@ ADD TO EVERY THING
     AND obj IS NOT scenery
       ELSE 
         IF THIS IS NOT plural
-          THEN SAY check_obj_not_scenery_sg OF my_game.
-          ELSE SAY check_obj_not_scenery_pl OF my_game.
+          THEN SAY check_obj_not_scenery_sg OF my_game. --#-> "$+1 is not important."
+          ELSE SAY check_obj_not_scenery_pl OF my_game. --#-> "$+1 are not important."
         END IF.
     AND obj IS movable
-      ELSE SAY check_obj_movable OF my_game.
+   -- ELSE SAY check_obj_movable OF my_game. --#-> "It's not possible to $v $+1."
+      ELSE
+      --#i6/7: "È/Sono fissat* al proprio posto"
+        IF obj IS NOT femminile
+          THEN
+            IF obj IS NOT plural
+              THEN SAY "È fissato al suo posto.". 
+              ELSE SAY "Sono fissati al loro posto.".
+            END IF.
+          ELSE
+            IF obj IS NOT plural
+              THEN SAY "È fissata al suo posto.". 
+              ELSE SAY "Sono fissate al loro posto.".
+            END IF.
+        END IF.
         AND obj IS takeable
           ELSE 
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game. 
-          ELSE SAY check_obj_suitable_pl OF my_game. 
+          THEN SAY check_obj_idoneo_prendere_sg OF my_game.
+          --#->    "$+1 non è qualcosa che puoi prendere.".
+          ELSE SAY check_obj_idoneo_prendere_sg OF my_game.
+          --#->    "$+1 non sono qualcosa che puoi prendere.".
+       -- THEN SAY check_obj_suitable_sg OF my_game. --#-> "That's not something you can $v."
+       -- ELSE SAY check_obj_suitable_pl OF my_game. --#-> "Those are not something you can $v."
         END IF.
     AND obj NOT DIRECTLY IN hero      
       -- i.e. the object to be taken is not carried by the hero already           
@@ -7057,7 +7082,20 @@ ADD TO EVERY THING
                 THEN EXCLUDE obj FROM wearing OF hero.
               END IF.
             ELSE LOCATE obj IN hero.
-              "Taken."
+              --@ "Taken." => "Pres[o|a|i|e]."
+              "Pres$$"
+              IF obj IS NOT femminile
+                THEN
+                  IF obj IS NOT plural
+                    THEN SAY "o.". -- GNA = msi
+                    ELSE SAY "i.". -- GNA = mpi
+                  END IF.
+                ELSE
+                  IF obj IS NOT plural
+                    THEN SAY "a.". -- GNA = fsi
+                    ELSE SAY "e.". -- GNA = fpi
+                  END IF.
+              END IF.
           END IF.
       END IF.
 
@@ -7068,24 +7106,24 @@ ADD TO EVERY THING
 END ADD TO.
 
 
--- @TAKE (SYNONYMS)
+-- @PRENDI -> @TAKE (SYNONYMS)
 SYNONYMS
-  carry, grab, hold, obtain = take.
+  carry, grab, hold, obtain = prendi. --@TODO: Translate IT synonims
 
 
 
 -- ==============================================================
 
--- @TAKE FROM (SYNTAX HEADER)
+-- @PRENDI_DA -> @TAKE_FROM (SYNTAX HEADER)
 
 -----  TAKE FROM
 
 
 -- ==============================================================
 
--- @TAKE FROM (SYNTAX)
+-- @PRENDI_DA -> @TAKE_FROM (SYNTAX)
 
-SYNTAX take_from = 'take' (obj) 'from' (holder)
+SYNTAX prendi_da = 'prendi' (obj) 'da' (holder)
       WHERE obj ISA THING
         ELSE 
       IF obj IS NOT plural
@@ -7105,13 +7143,17 @@ SYNTAX take_from = 'take' (obj) 'from' (holder)
         ELSE SAY illegal_parameter2_from_pl OF my_game.
       END IF.
 
-  take_from = remove (obj)* 'from' (holder).
+-- @PRENDI_DA -> @TAKE_FROM (SYNTAX SYNONIM) => remove (obj)* 'from' (holder).
+  prendi_da = remove (obj)* 'da' (holder).
+-- take_from = remove (obj)* 'from' (holder).
  
-  take_from = get (obj) 'from' (holder).
+-- @PRENDI_DA -> @TAKE_FROM (SYNTAX SYNONIM) => get (obj) 'from' (holder).
+  prendi_da = get (obj) 'da' (holder).
+-- take_from = get (obj) 'from' (holder).
 
 
 ADD TO EVERY THING
-    VERB take_from
+    VERB prendi_da
         WHEN obj
       CHECK my_game CAN take_from
         ELSE SAY restricted_response OF my_game.
@@ -7142,8 +7184,12 @@ ADD TO EVERY THING
       AND obj IS takeable
             ELSE 
           IF obj IS NOT plural
-            THEN SAY check_obj_suitable_sg OF my_game. 
-            ELSE SAY check_obj_suitable_pl OF my_game. 
+            THEN SAY check_obj_idoneo_prendere_sg OF my_game.
+            --#->    "$+1 non è qualcosa che puoi prendere.".
+            ELSE SAY check_obj_idoneo_prendere_sg OF my_game.
+            --#->    "$+1 non sono qualcosa che puoi prendere.".
+         -- THEN SAY check_obj_suitable_sg OF my_game. --#-> "That's not something you can $v."
+         -- ELSE SAY check_obj_suitable_pl OF my_game. --#-> "Those are not something you can $v."
           END IF.
       AND holder IS reachable AND holder IS NOT distant
         ELSE
