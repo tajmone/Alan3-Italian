@@ -41,7 +41,7 @@ You can follow the discussion on this project on the [Alan-IF discussion group a
 
 # Status
 
-Nothing done yet, just created the project and preparing the ground.
+Gradually translating verbs and standard messages. Some adventure files have been created to test the features being translated, along with automation scripts to quickly simulate a game session. Transcript logs of the test sessions are also kept in the repository, from which is possible to preview the current status of the translation in real use scenarios.
 
 # Project Contents
 
