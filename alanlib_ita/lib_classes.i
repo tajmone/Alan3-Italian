@@ -1392,7 +1392,7 @@ EVERY liquid ISA OBJECT
       END IF.
   END VERB.
 
--- @PRENDI_DA -> @TAKE FROM (VERB) => LIQUID
+-- @PRENDI_DA -> @TAKE_FROM (VERB) => LIQUID
   VERB prendi_da
      WHEN obj
     CHECK holder <> vessel OF THIS

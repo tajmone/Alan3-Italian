@@ -280,9 +280,9 @@ EVERY definition_block ISA LOCATION
   HAS illegal_parameter_at "You can't $v anything at $+2.".         -- fire_at, throw_at
   HAS illegal_parameter_for_sg "That's not something you can $v for.".      -- ask_for
   HAS illegal_parameter_for_pl "Those are not something you can $v for.".
--- @TAKE FROM (MESSAGE)
+-- @TAKE_FROM (MESSAGE)
   HAS illegal_parameter2_from_sg "That's not something you can take things from.".  -- take_from
--- @TAKE FROM (MESSAGE)
+-- @TAKE_FROM (MESSAGE)
   HAS illegal_parameter2_from_pl "Those are not something you can take things from.".
   HAS illegal_parameter_in_sg "That's not something you can $v in.".      -- dive_in, jump_in, lie_in, swim_in
   HAS illegal_parameter_in_pl "Those are not something you can $v in.".
@@ -834,8 +834,10 @@ EVERY definition_block ISA LOCATION
   CAN switch.                                                  
   CAN switch_on.            
   CAN switch_off.         
-  CAN take.        -- (+ carry, get, grab, hold, obtain)              
-  CAN take_from.   -- (+ remove from)                                 
+
+  CAN prendere.    --> take.        (+ carry, get, grab, hold, obtain)              
+  CAN prendere_da. --> take_from.   (+ remove from)                                 
+
   CAN talk.                                                                   
   CAN talk_to.     -- (+ speak)                                       
   CAN taste.       -- (+ lick)                                        
@@ -1022,8 +1024,10 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game switch.                                                  
   MAKE my_game switch_on.           
   MAKE my_game switch_off.          
-  MAKE my_game take.            -- (+ carry, get, grab, hold, obtain)              
-  MAKE my_game take_from.       -- (+ remove from)                                 
+  
+  MAKE my_game prendere.     --> take.            -- (+ carry, get, grab, hold, obtain)              
+  MAKE my_game prendere_da.  --> take_from.       -- (+ remove from)                                 
+  
   MAKE my_game talk.                                                                    
   MAKE my_game talk_to.         -- (+ speak)                                       
   MAKE my_game taste.           -- (+ lick)                                        
@@ -1221,8 +1225,10 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT switch.                                                  
   MAKE my_game NOT switch_on.           
   MAKE my_game NOT switch_off.          
-  MAKE my_game NOT take.        -- (+ carry, get, grab, hold, obtain)              
-  MAKE my_game NOT take_from.   -- (+ remove from)                                 
+
+  MAKE my_game NOT prendere.    --> take.        -- (+ carry, get, grab, hold, obtain)              
+  MAKE my_game NOT prendere_da. --> take_from.   -- (+ remove from)                                 
+
   MAKE my_game NOT talk.                                                                    
   MAKE my_game NOT talk_to.     -- (+ speak)                                       
   MAKE my_game NOT taste.       -- (+ lick)                                        
@@ -1406,8 +1412,10 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT switch.                                                  
   MAKE my_game NOT switch_on.           
   MAKE my_game NOT switch_off.          
-  MAKE my_game NOT take.        -- (+ carry, get, grab, hold, obtain)              
-  MAKE my_game NOT take_from.   -- (+ remove from)                                 
+
+  MAKE my_game NOT prendere.    --> take.        -- (+ carry, get, grab, hold, obtain)              
+  MAKE my_game NOT prendere_da. --> take_from.   -- (+ remove from)                                 
+
   MAKE my_game NOT talk.                                                                    
   MAKE my_game NOT talk_to.     -- (+ speak)                                       
   MAKE my_game NOT taste.       -- (+ lick)                                        
@@ -1588,8 +1596,10 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT switch.                                                  
   MAKE my_game NOT switch_on.           
   MAKE my_game NOT switch_off.          
-  MAKE my_game NOT take.        -- (+ carry, get, grab, hold, obtain)              
-  MAKE my_game NOT take_from.   -- (+ remove from)                                 
+
+  MAKE my_game NOT prendere.    --> take.        -- (+ carry, get, grab, hold, obtain)              
+  MAKE my_game NOT prendere_da. --> take_from.   -- (+ remove from)                                 
+
   MAKE my_game NOT talk.                                                                    
   MAKE my_game NOT talk_to.     -- (+ speak)                                       
   MAKE my_game NOT taste.       -- (+ lick)                                        

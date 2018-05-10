@@ -133,12 +133,12 @@ Instances created by StdLib, either for author consumption (eg, `banner` and
 
 |    Instance   | IT Translation | (_candidates_) |
 |---------------|----------------|----------------|
-| `null_door`   |                |                |
-| `null_vessel` |                |                |
 | `banner`      |                |                |
-| `null_object` |                |                |
-| `null_key`    |                |                |
 | `my_game`     |                |                |
+| `null_door`   |                |                |
+| `null_key`    |                |                |
+| `null_object` |                |                |
+| `null_vessel` |                |                |
 
 # Definition Block
 
@@ -334,8 +334,8 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `switch`        |                |                |
 | `switch_on`     |                |                |
 | `switch_off`    |                |                |
-| `take`          |                |                |
-| `take_from`     |                |                |
+| `take`          | `prendere`     |                |
+| `take_from`     | `prendere_da`  |                |
 | `talk`          |                |                |
 | `talk_to`       |                |                |
 | `taste`         |                |                |

@@ -199,7 +199,7 @@ THE floor ISA room_object
     DOES ONLY "That's not something you can $v things into."
   END VERB.
 
--- @PRENDI_DA -> @TAKE FROM (VERB) => FLOOR
+-- @PRENDI_DA -> @TAKE_FROM (VERB) => FLOOR
   VERB prendi_da
      WHEN holder
     DOES ONLY "If you want to pick up something, just TAKE it."
@@ -263,7 +263,7 @@ THE ground ISA site_object
   END VERB.
 
 
--- @PRENDI_DA -> @TAKE FROM (VERB) => GROUND
+-- @PRENDI_DA -> @TAKE_FROM (VERB) => GROUND
   VERB prendi_da
      WHEN holder
     DOES ONLY "If you want to pick up something, just TAKE it."

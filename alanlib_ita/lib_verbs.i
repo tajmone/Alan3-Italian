@@ -6969,6 +6969,8 @@ END ADD TO.
 -- @PRENDI -> @TAKE (SYNTAX HEADER)
 ----- TAKE  (+ carry, get, grab, hold, obtain, pick up)
 
+----- PRENDI  (+ afferra, raccogli, trasporta)
+
 
 -- ==============================================================
 
@@ -6994,7 +6996,7 @@ SYNTAX prendi = prendi (obj)
 ADD TO EVERY THING
 -- @PRENDI -> @TAKE (VERB) => ADD TO EVERY THING
   VERB prendi
-    CHECK my_game CAN take -- @TODO: 'CAN prendere'
+    CHECK my_game CAN prendere --> CAN take
       ELSE SAY restricted_response OF my_game. --#-> "Non puoi farlo."
     AND obj IS examinable
       ELSE 
@@ -7133,8 +7135,8 @@ SYNTAX prendi_da = 'prendi' (obj) 'da' (holder)
       AND holder ISA THING
         ELSE 
       IF holder IS NOT plural
-        THEN SAY illegal_parameter2_from_sg OF my_game.
-        ELSE SAY illegal_parameter2_from_pl OF my_game.
+        THEN SAY illegal_parameter2_from_sg OF my_game. --> "That's not something you can take things from."
+        ELSE SAY illegal_parameter2_from_pl OF my_game. --> "Those are not something you can take things from."
       END IF.
       AND holder ISA CONTAINER
         ELSE 
@@ -7155,16 +7157,16 @@ SYNTAX prendi_da = 'prendi' (obj) 'da' (holder)
 ADD TO EVERY THING
     VERB prendi_da
         WHEN obj
-      CHECK my_game CAN take_from
+      CHECK my_game CAN prendere_da --> CAN take_from
         ELSE SAY restricted_response OF my_game.
       AND obj <> hero
         ELSE SAY check_obj_not_hero1 OF my_game.
       AND holder <> hero
         ELSE SAY check_obj2_not_hero1 OF my_game. 
           AND obj NOT DIRECTLY IN hero    
-          ELSE  SAY check_obj_not_in_hero2 OF my_game.
+          ELSE  SAY check_obj_not_in_hero2 OF my_game. --#-> "You already have $+1."
       AND obj <> holder
-        ELSE SAY check_obj_not_obj2_from OF my_game. 
+        ELSE SAY check_obj_not_obj2_from OF my_game.  --#-> "It doesn't make sense to $v something from itself."
       AND CURRENT LOCATION IS lit
         ELSE SAY check_current_loc_lit OF my_game.
       AND obj IS NOT scenery
