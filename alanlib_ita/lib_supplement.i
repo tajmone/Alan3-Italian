@@ -31,7 +31,7 @@
 ---- language, the library needs to supply some soft-coded synonims for these
 ---- Player Words.
 ----
----- NOTE: Although indicated in the Manual as being one, 'the' is not a NOISE WORD. 
+---- NOTE: Although indicated in the Manual as being one, 'the' is not a NOISE WORD.
 ----
 ---- NOTE: Player Words for all supported languages are defined in Alan's source
 ----       file "compiler/wrd.c" (line 182).
@@ -54,7 +54,7 @@ SYNONYMS e, poi = 'and'.
 -- "prendi la mela POI prendi la pera"       (take the apple THEN take the pear)
 
 -- NOTE: The player can't type "E POI" ("<command> E POI <command>") because the
---       parser will see it as "<command> AND AND <command>". Unfortunately, 
+--       parser will see it as "<command> AND AND <command>". Unfortunately,
 --       trying to define 'e poi' = 'then' won't solve the problem because the
 --       parser seems to work on isolate tokens when substituting synonyms.
 

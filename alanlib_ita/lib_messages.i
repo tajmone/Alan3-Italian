@@ -7,66 +7,66 @@
 -- Messages (file name: 'lib_messages.i')
 
 
--- All runtime messages are listed below.  
+-- All runtime messages are listed below.
 
 -- Many of these messages are not in their default ("built-in") form as described
 -- in the ALAN language manual, but have been slightly edited for this library.
 
 
-MESSAGE 
+MESSAGE
   AFTER_BUT: "You must give at least one object after '$1'."
   AGAIN: ""
   BUT_ALL: "You can only use '$1' AFTER '$2'."
   CAN_NOT_CONTAIN: "$+1 can not contain $+2."
-  CANT0: "You can't do that."    
+  CANT0: "You can't do that."
      -- note that the fifth token in CANT0 is a zero, not an 'o'.
-  CARRIES: 
+  CARRIES:
     IF parameter1 IS NOT plural
       THEN "$+1 is carrying"
       ELSE "$+1 are carrying"
     END IF.
   CONTAINMENT_LOOP:
-    "Putting $+1 in" 
+    "Putting $+1 in"
       IF parameter1 IS NOT plural
         THEN "itself"
         ELSE "themselves"
       END IF.
-    "is impossible."     
-  CONTAINMENT_LOOP2: "Putting $+1 in $+2 is impossible since $+2 already" 
+    "is impossible."
+  CONTAINMENT_LOOP2: "Putting $+1 in $+2 is impossible since $+2 already"
           IF parameter2 IS NOT plural
             THEN "is"
             ELSE "are"
-          END IF. 
+          END IF.
             "inside $+1."
-  'CONTAINS': 
+  'CONTAINS':
     IF parameter1 IS NOT plural
       THEN "$+1 contains"
       ELSE "$+1 contain"
     END IF.
-  CONTAINS_COMMA: "$01" 
+  CONTAINS_COMMA: "$01"
     IF parameter1 ISA CLOTHING
-      THEN 
+      THEN
         -- the following snippet adds "(being worn)" after all
         -- pieces of clothing worn by an NPC, at 'x [actor]'
 
-        IF parameter1 IS donned 
+        IF parameter1 IS donned
           THEN
             IF parameter1 NOT IN worn
-              THEN "(being worn)" 
+              THEN "(being worn)"
             END IF.
         END IF.
     END IF.
     "$$,"
       CONTAINS_AND: "$01"
     IF parameter1 ISA CLOTHING
-      THEN 
+      THEN
         -- the following snippet adds "(being worn)" after all
         -- pieces of clothing worn by an NPC, after 'x [actor]'
 
-        IF parameter1 IS donned 
+        IF parameter1 IS donned
           THEN
             IF parameter1 NOT IN worn
-              THEN "(being worn)" 
+              THEN "(being worn)"
             END IF.
         END IF.
     END IF.
@@ -75,27 +75,27 @@ MESSAGE
 
   CONTAINS_END: "$01"
     IF parameter1 ISA CLOTHING
-      THEN 
+      THEN
         -- the following snippet adds "(being worn)" after all
         -- pieces of clothing worn by an NPC, after 'x [actor]'
 
-        IF parameter1 IS donned 
+        IF parameter1 IS donned
           THEN
             IF parameter1 NOT IN worn
-              THEN "(being worn)" 
+              THEN "(being worn)"
             END IF.
         END IF.
     END IF.
-    "." 
-  EMPTY_HANDED: 
+    "."
+  EMPTY_HANDED:
     IF parameter1 IS NOT plural
       THEN "$+1 is empty-handed."
       ELSE "$+1 are empty-handed."
     END IF.
-      
+
   HAVE_SCORED: "You have scored $1 points out of $2."
       IMPOSSIBLE_WITH: "That's impossible with $+1."
-  IS_EMPTY: 
+  IS_EMPTY:
     IF parameter1 IS NOT plural
       THEN "$+1 is empty."
       ELSE "$+1 are empty."
@@ -114,12 +114,12 @@ MESSAGE
   REALLY: "Are you sure (press ENTER to confirm)?"
   RESTORE_FROM: "Enter file name to restore from"
   SAVE_FAILED: "Sorry, save failed."
-  SAVE_MISSING: "Sorry, could not open the save file."  
+  SAVE_MISSING: "Sorry, could not open the save file."
   SAVE_NAME: "Sorry, the save file did not contain a save for this adventure."
     SAVE_OVERWRITE: "That file already exists, overwrite (y)?"
   SAVE_VERSION: "Sorry, the save file was created by a different version."
   SAVE_WHERE: "Enter file name to save in"
-  SEE_START: 
+  SEE_START:
     IF parameter1 IS NOT plural
       THEN "There is $01"
       ELSE "There are $01"

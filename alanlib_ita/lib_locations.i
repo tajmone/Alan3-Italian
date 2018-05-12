@@ -7,13 +7,13 @@
 -- Locations (file name: 'lib_locations.i')
 
 
--- This library file defines the default directions (exits) and the location 'nowhere', 
+-- This library file defines the default directions (exits) and the location 'nowhere',
 -- a useful place to locate things when you want to remove them from play.
 -- This file also defines four specific location classes: rooms (= indoor locations),
--- sites (= outdoor locations) dark_locations and areas. 
+-- sites (= outdoor locations) dark_locations and areas.
 -- Finally, the attributes 'visited' and 'described' are defined.
 -- You may modify this file in any way that suits your purposes.
--- To use this file, you should have it in the same folder as your source code file, 
+-- To use this file, you should have it in the same folder as your source code file,
 -- and the line
 --
 -- IMPORT 'locations.i'.
@@ -33,7 +33,7 @@
 
 THE nowhere ISA LOCATION
 --@TRADOTTO: Direzioni cardinali
-  EXIT  
+  EXIT
     nord,         -- north
     sud,          -- south
     est,          -- east
@@ -42,14 +42,14 @@ THE nowhere ISA LOCATION
     sudest,       -- southeast
     nordovest,    -- northwest
     sudovest,     -- southwest
-    su,           -- up, 
-    giù,          -- down, 
-    dentro,       -- 'in', 
-    fuori         -- out 
-    
+    su,           -- up,
+    giù,          -- down,
+    dentro,       -- 'in',
+    fuori         -- out
+
     TO nowhere.
 
-    
+
 END THE nowhere.
 
 
@@ -82,10 +82,10 @@ SYNONYMS
 
 
 -- Note:
- 
 
--- 1) the directions defined above (and their synonyms) are not predefined in or 
--- hardwired to the interpreter in any way, so you can replace them altogether or add new 
+
+-- 1) the directions defined above (and their synonyms) are not predefined in or
+-- hardwired to the interpreter in any way, so you can replace them altogether or add new
 -- ones to be used alongside with them.
 
 
@@ -94,7 +94,7 @@ SYNONYMS
 -- LOCATE [object] AT nowhere.
 --
 -- for example
--- 
+--
 -- THE piece_of_paper ISA OBJECT
 -- ...
 --    VERB tear
@@ -120,9 +120,9 @@ SYNONYMS
 -- Thus, you will be able to define for example
 --
 -- THE kitchen ISA ROOM
--- 
+--
 -- and it will automatically have a floor, walls and a ceiling,
--- 
+--
 -- or:
 --
 -- THE greenmeadow ISA SITE
@@ -136,28 +136,28 @@ SYNONYMS
 --
 -- etc, but the floor, walls and ceiling won't be automatically included there.
 -- The walls, floor, ceiling, ground and sky are not takeable or movable.
--- This library file also defines the sky to be distant and the ceiling to be out of reach, 
+-- This library file also defines the sky to be distant and the ceiling to be out of reach,
 -- so that they can't be touched, for example.
 
 -- (We make use of ALAN's nested locations feature in the following definitions: )
 
 
-THE outdoor ISA LOCATION 
+THE outdoor ISA LOCATION
 END THE outdoor.
 
 
-THE indoor ISA LOCATION 
+THE indoor ISA LOCATION
 END THE indoor.
 
 
 EVERY room ISA LOCATION AT indoor
   HAS floor_desc "".    -- if these values are left unchanged,
-  HAS walls_desc "".    -- the descriptions of the walls, floor and 
+  HAS walls_desc "".    -- the descriptions of the walls, floor and
   HAS ceiling_desc "".  -- ceiling will be the default "You notice nothing unusual
 END EVERY.              -- about the [object]."
 
 
-EVERY site ISA LOCATION AT outdoor  
+EVERY site ISA LOCATION AT outdoor
   HAS ground_desc "".
   HAS sky_desc "".
 END EVERY.
@@ -174,7 +174,7 @@ END EVERY.
 THE floor ISA room_object
   IS NOT takeable.
   IS NOT movable.
-  CONTAINER       
+  CONTAINER
     -- to allow 'empty/pour/put something on floor'
   DESCRIPTION ""
 
@@ -210,7 +210,7 @@ THE floor ISA room_object
      WHEN cont
     DOES ONLY "That's not something you can $v things into."
   END VERB.
-  
+
 
 
 END THE.
@@ -227,8 +227,8 @@ END THE.
 
 THE ceiling ISA room_object
   IS NOT takeable.
-  IS NOT reachable. 
-  DESCRIPTION ""  
+  IS NOT reachable.
+  DESCRIPTION ""
 END THE.
 
 
@@ -236,7 +236,7 @@ END THE.
 THE ground ISA site_object
   IS NOT takeable.
   IS NOT movable.
-  CONTAINER       
+  CONTAINER
     -- to allow 'empty/pour something on ground'
   DESCRIPTION ""
 
@@ -295,9 +295,9 @@ ADD TO EVERY room_object
   VERB put_against
     WHEN bulk
       CHECK THIS = wall
-        ELSE "That's not possible." 
+        ELSE "That's not possible."
   END VERB.
-    
+
   VERB put_behind, put_near, put_under
     WHEN bulk
       DOES ONLY "That's not possible."
@@ -307,11 +307,11 @@ ADD TO EVERY room_object
     DOES ONLY "That's not possible."
   END VERB.
 
-END ADD TO. 
+END ADD TO.
 
 
 ADD TO EVERY site_object
-    
+
   VERB put_against, put_behind, put_near, put_under
     WHEN bulk
       DOES ONLY "That's not possible."
@@ -321,7 +321,7 @@ ADD TO EVERY site_object
     DOES ONLY "That's not possible."
   END VERB.
 
-END ADD TO. 
+END ADD TO.
 
 
 -- NOTE: it is often a good idea to modify the 'examine' verb for the above objects.
@@ -330,18 +330,18 @@ END ADD TO.
 -- THE my_game ISA DEFINITION_BLOCK
 -- ...
 -- VERB examine
---    CHECK obj <> wall 
---       ELSE 
+--    CHECK obj <> wall
+--       ELSE
 --          IF hero AT kitchen
 --              THEN "The walls are lined with shelves."
---          ELSIF hero AT livingroom  
+--          ELSIF hero AT livingroom
 --      THEN "The wallpaper has a nice flower pattern."
 --          ELSIF...
---          END IF. 
+--          END IF.
 --    ...
 -- END VERB.
 --
--- END THE my_game.         
+-- END THE my_game.
 
 
 
@@ -356,42 +356,42 @@ END ADD TO.
 
 
 ADD TO EVERY LOCATION
-  IS lit. 
-END ADD TO. 
+  IS lit.
+END ADD TO.
 
 
 EVERY dark_location ISA LOCATION
-  IS NOT lit. 
+  IS NOT lit.
 
   ENTERED
 
-    IF COUNT ISA LIGHTSOURCE, IS lit, HERE > 0  
-      THEN MAKE THIS lit. 
+    IF COUNT ISA LIGHTSOURCE, IS lit, HERE > 0
+      THEN MAKE THIS lit.
         IF CURRENT ACTOR <> hero
           THEN LOOK.
-        END IF.     
+        END IF.
     END IF.
 
     IF COUNT ISA LIGHTSOURCE, IS lit, HERE = 0
       THEN MAKE THIS NOT lit.
     END IF.
-                  
-    -- These ENTERED statements take care
-    -- of the dark location being correctly lit or not lit at entrance, 
-    -- the WHEN rules below take care of the change when the hero is 
-    -- already in the location.
-    
 
-  DESCRIPTION 
+    -- These ENTERED statements take care
+    -- of the dark location being correctly lit or not lit at entrance,
+    -- the WHEN rules below take care of the change when the hero is
+    -- already in the location.
+
+
+  DESCRIPTION
     CHECK THIS IS lit
       ELSE SAY dark_loc_desc OF my_game.
 
-END EVERY dark_location. 
+END EVERY dark_location.
 
 
-WHEN location OF hero IS NOT lit 
-  AND COUNT ISA lightsource, IS lit, AT hero > 0  
-THEN MAKE location OF hero lit. 
+WHEN location OF hero IS NOT lit
+  AND COUNT ISA lightsource, IS lit, AT hero > 0
+THEN MAKE location OF hero lit.
   SCHEDULE light_on AT hero AFTER 0.
 
 
@@ -400,10 +400,10 @@ EVENT light_on
 END EVENT.
 
 
-WHEN location OF hero ISA dark_location 
+WHEN location OF hero ISA dark_location
   AND location OF hero IS lit
-  AND COUNT ISA lightsource, IS lit, AT hero = 0  
-THEN MAKE location OF hero NOT lit. 
+  AND COUNT ISA lightsource, IS lit, AT hero = 0
+THEN MAKE location OF hero NOT lit.
   SCHEDULE light_off AT hero AFTER 0.
 
 
@@ -426,10 +426,10 @@ EVENT check_darkness
 END EVENT.
 
 
--- This event is initialized in the start_section instance ('definitions.i'). 
+-- This event is initialized in the start_section instance ('definitions.i').
 
 
--- To define a dark location, use a formulation like the following: 
+-- To define a dark location, use a formulation like the following:
 
 
 -- THE basement ISA dark_location
@@ -458,7 +458,7 @@ END EVENT.
 -- =====================================================================
 
 
------ 4. The attributes 'visited' and 'described' 
+----- 4. The attributes 'visited' and 'described'
 
 
 -- =====================================================================
@@ -468,26 +468,26 @@ END EVENT.
 -- value increases on every subsequent visit.
 -- This helps when you need to control if or how many times a location has been visited,
 -- and also if you want the location description to be different after the first visit.
- 
+
 -- A location has the value 'described 0' before the first location description,
 -- and the value increases every time the description is shown.
--- This distinction is handy when you want the first-time description of a location to be different 
+-- This distinction is handy when you want the first-time description of a location to be different
 -- from the subsequent ones (even if the hero is in the location still for the first time).
 
 
 ADD TO EVERY LOCATION
-  HAS visited 0.  
+  HAS visited 0.
   HAS described 0.
 
   ENTERED
      IF CURRENT ACTOR = hero
-      THEN 
-        INCREASE visited OF THIS. 
-        INCREASE described OF THIS.   
+      THEN
+        INCREASE visited OF THIS.
+        INCREASE described OF THIS.
         -- The "described" attribute increases also after LOOK (see 'verbs.i').
      END IF.
 
-END ADD TO.           
+END ADD TO.
 
 
 
