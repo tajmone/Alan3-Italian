@@ -1,4 +1,4 @@
--- "lib_verbs.i" v0.0.2 (2018/05/06)
+-- "lib_verbs.i" v0.0.3 (2018/05/12)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -3333,19 +3333,23 @@ SYNONYMS
 
 -- ==============================================================
 
-
+-- @INVENTARIO - > @INVENTORY (SYNTAX HEADER)
 ----- INVENTORY (+ i, inv)
 
 
 -- ==============================================================
 
+--# NOTE: The original verb/syntax was "i", with "inv" and "inventory" as synonyms;
+--        But his in Italian will conflict with 'i' being implemented as a
+--        NOISE WORD synonym (ie: all articles in player input being ignored).
+--        So, we'll define the verb as "inventario" with shorthand "inv".
+--        For the CAN attribute, we'll use "inventariare" instead of "CAN i".
+
+SYNTAX inventario = inventario.
 
 
-SYNTAX i = i.
-
-
-VERB i
-  CHECK my_game CAN i
+VERB inventario
+  CHECK my_game CAN inventariare
     ELSE SAY restricted_response OF my_game.
   DOES 
     LIST hero.
@@ -3357,7 +3361,7 @@ VERB i
 END VERB.
 
 
-SYNONYMS inv, inventory  = i.
+SYNONYMS inv = inventario.
 
 
 
@@ -8687,13 +8691,16 @@ END ADD TO.
 -- ==============================================================
 
 
------ WHAT AM I
+----- @WHAT AM I
 
 
 -- ==============================================================
+-- Ha to change it because the 'i' here was conflicting with the 'i' synonym
+-- for NOISE WORDS. (befor 'i' was the default syntax for "inventory", so it
+-- didn't conflict because it was not a synonym but a verb and syntax).
 
-
-SYNTAX what_am_i = 'what' am i.
+-- SYNTAX what_am_i = 'what' am i.
+SYNTAX what_am_i = cosa sono.
 
 
 VERB what_am_i
@@ -8739,13 +8746,17 @@ END ADD TO.
 -- ==============================================================
 
 
------ WHERE AM I
+----- @WHERE AM I
 
 
 -- ==============================================================
+-- Ha to change it because the 'i' here was conflicting with the 'i' synonym
+-- for NOISE WORDS. (befor 'i' was the default syntax for "inventory", so it
+-- didn't conflict because it was not a synonym but a verb and syntax).
 
-
-SYNTAX where_am_i = 'where' am i.
+-- SYNTAX where_am_i = 'where' am i.
+SYNTAX where_am_i = dove mi trovo.
+SYNTAX where_am_i = dove sono.
 
 
 VERB where_am_i
@@ -8797,13 +8808,17 @@ END ADD TO.
 -- ==============================================================
 
 
------ WHO AM I
+----- @WHO AM I
 
 
 -- ==============================================================
 
+-- Ha to change it because the 'i' here was conflicting with the 'i' synonym
+-- for NOISE WORDS. (befor 'i' was the default syntax for "inventory", so it
+-- didn't conflict because it was not a synonym but a verb and syntax).
 
-SYNTAX who_am_i = who am i.
+-- SYNTAX who_am_i = who am i.
+SYNTAX who_am_i = chi sono.
 
 
 VERB who_am_i 

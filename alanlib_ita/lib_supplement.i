@@ -1,4 +1,4 @@
--- "lib_supplement.i" v0.0.1 (2018/05/12)
+-- "lib_supplement.i" v0.0.2 (2018/05/12)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -68,6 +68,16 @@ SYNONYMS e, poi = 'and'.
 -- Even though the Alan Manual mentions 'THE' as being one of the NOISE WORDS, it
 -- actually isn't (as can be seen from the "compiler/wrd.c" source), so you can't
 -- refer to 'THE' in the RHS of a synonym.
+
+-- DEFINITE ARTICLES
+-- =================
+-- As for article "l'" (eg: "l'altare", "the altar"), it can't be handled because
+-- it's seen as a single token by the parser. The only viable solution is to add
+-- to the instance a second NAME so that the parse will see it as a synonym of
+-- the instance.
+SYNONYMS il, lo, la, i, gli, le = 'go'.
+
+
 
 -- This is not going to be useful:
 -- SYNONYMS vai = 'go'.

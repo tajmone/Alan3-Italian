@@ -1,4 +1,4 @@
--- "lib_definitions.i" v0.0.2 (2018/05/06)
+-- "lib_definitions.i" v0.0.3 (2018/05/12)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -747,7 +747,7 @@ EVERY definition_block ISA LOCATION
   CAN give.                                                        
   CAN go_to.                                                            
   CAN hint.        -- (+ hints)                                       
-  CAN i.           -- (+ inv, inventory)                                      
+  CAN inventariare.           -- (+ inv, inventory)                                      
   CAN jump.                                                        
   CAN jump_in.                                                          
   CAN jump_on.                                                          
@@ -937,7 +937,9 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game give.                                                        
   MAKE my_game go_to.                                                             
   MAKE my_game hint.            -- (+ hints)                                       
-  MAKE my_game i.               -- (+ inv, inventory)                                      
+
+  MAKE my_game inventariare.               -- (+ inv, inventory)                                      
+
   MAKE my_game jump.                                                        
   MAKE my_game jump_in.                                                           
   MAKE my_game jump_on.                                                           
@@ -1138,7 +1140,9 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT give.                                                        
   MAKE my_game NOT go_to.                                                             
   MAKE my_game hint.            -- (+ hints)                                       
-  MAKE my_game i.               -- (+ inv, inventory)                                      
+
+  MAKE my_game inventariare.               -- (+ inv, inventory)                                      
+
   MAKE my_game NOT jump.                                                        
   MAKE my_game NOT jump_in.                                                           
   MAKE my_game NOT jump_on.                                                           
@@ -1325,7 +1329,9 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT give.                                                        
   MAKE my_game NOT go_to.                                                             
   MAKE my_game hint.            -- (+ hints)                                       
-  MAKE my_game NOT i.           -- (+ inv, inventory)                                      
+
+  MAKE my_game NOT inventariare.           -- (+ inv, inventory)                                      
+
   MAKE my_game NOT jump.                                                        
   MAKE my_game NOT jump_in.                                                           
   MAKE my_game NOT jump_on.                                                           
@@ -1509,7 +1515,9 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT give.                                                        
   MAKE my_game NOT go_to.                                                             
   MAKE my_game NOT hint.        -- (+ hints)                                       
-  MAKE my_game NOT i.           -- (+ inv, inventory)                                      
+
+  MAKE my_game NOT inventariare.           -- (+ inv, inventory)                                      
+
   MAKE my_game NOT jump.                                                        
   MAKE my_game NOT jump_in.                                                           
   MAKE my_game NOT jump_on.                                                           

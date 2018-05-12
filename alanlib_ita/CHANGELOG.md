@@ -11,7 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/05/12](#20180512)
+- [2018/05/12 \(2\)](#20180512-2)
+- [2018/05/12 \(1\)](#20180512-1)
 - [2018/05/01](#20180501)
     - [Directions](#directions)
     - [Movement Messages](#movement-messages)
@@ -20,7 +21,55 @@ Status: Alpha stage.
 
 -----
 
-# 2018/05/12
+# 2018/05/12 (2)
+
+- [`lib_supplement.i`][lib_supplement] — __DEFINITE ARTICLES__ are now defined as __NOISE WORDS__ and ignored by the parser in player's input. This means that it's no longer required to add multiple `NAME`s to instances to include the noun preceded by its article as a synonym of the instance.
+
+Before:
+
+```alan
+THE palla IsA object AT 'Sala Collaudo Verbi'
+  NAME palla
+  NAME la palla
+  IS femminile.
+  INDEFINITE ARTICLE "una"
+  DEFINITE ARTICLE "la"
+END THE palla.
+```
+
+... now, just:
+
+```alan
+THE palla IsA object AT 'Sala Collaudo Verbi'
+  IS femminile.
+  INDEFINITE ARTICLE "una"
+  DEFINITE ARTICLE "la"
+END THE palla.
+```
+
+As for articles with apostrophe (eg: "l'altare" — _the altar_), these can't be handled as noise words synonyms because the parser sees them as a single token. So, for objects that take the article `l'`, the old NAME trick has to be used even now:
+
+```alan
+THE orzo IsA object AT piazza.
+  NAME orzo.
+  NAME 'l''orzo'.
+  INDEFINITE ARTICLE "dell'$$"
+  DEFINITE ARTICLE "l'$$"
+END THE orzo.
+```
+
+The above changes had some side effects which required me to also change the English library in various places:
+
+- verb `i` (+ `inventory`, `inv`) » `inventario` (+ `inv`)
+- attribute `i` of `my_game` (`CAN i`, etc.) » `CAN inventariare.` (etc.)
+- Syntaxes `what_am_i`, `where_am_i` and `who_am_i`, where their `i` conflicted with the newly defined NOISE WORD `i` synonym:
+    + `SYNTAX what_am_i = 'what' am i.` » `what_am_i = cosa sono.`
+    + `SYNTAX where_am_i = 'where' am i.` » `where_am_i = dove mi trovo.` (+ `dove sono`)
+    + `SYNTAX who_am_i = who am i.` » `chi sono.`
+
+... since these changes were prematurely forced on me, I've implemented them without giving them much through, but just to end the conflicts which prevented compiling the library. So, they might need to be looked into more carefully at some point.
+
+# 2018/05/12 (1)
 
 - New [`lib_supplement.i`][lib_supplement] — this supplement to the Standard Library deals with implementing Italian synonyms for the Predefined Player Words. It's kept separate because it will be removed from the Library once Italian language gets natively supported in Alan:
     + Predefined Player Words synonyms:
