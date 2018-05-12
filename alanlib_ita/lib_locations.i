@@ -1,4 +1,4 @@
--- "lib_locations.i" v0.0.2 (2018/05/06)
+-- "lib_locations.i" v0.0.3 (2018/05/12)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -65,7 +65,7 @@ END THE nowhere.
 SYNONYMS
     n     = nord.        -- n  = north
     s     = sud.         -- s  = south
-    e     = est.         -- e  = east
+ -- e     = est.         -- e  = east         --~> conflicts with synon of 'AND'
     o     = ovest.       -- w  = west
     ne    = nordest.     -- ne = northeast
     se    = sudest.      -- se = southeast

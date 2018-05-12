@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/05/12](#20180512)
 - [2018/05/01](#20180501)
     - [Directions](#directions)
     - [Movement Messages](#movement-messages)
@@ -18,6 +19,19 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/05/12
+
+- New [`lib_supplement.i`][lib_supplement] — this supplement to the Standard Library deals with implementing Italian synonyms for the Predefined Player Words. It's kept separate because it will be removed from the Library once Italian language gets natively supported in Alan:
+    + Predefined Player Words synonyms:
+        * `e`, `poi` = `'and'`
+        * `tutto`, `tutti`, `tutte` = `all`
+        * `tranne`, `eccetto`, `escluso`, `esclusa`, `esclusi`, `escluse` = `except`
+- [`lib_locations.i`][lib_locations]:
+    + remove `e` as synonym of `est` (now conflicts with `e` = `'and'`)
+- [`library.i`][library]: added `IMPORT 'lib_supplement.i'.`
+- New [`VERBI_IT.md`][VERBI_IT] doc to resume current state of verbs translated to Italian.
+- Added to [`../tests/`][tests] folder Alan source and script files to test Player Words implementation.
 
 # 2018/05/01
 
@@ -34,7 +48,7 @@ Status: Alpha stage.
 |-----------|-------------------|-------|-----------|-------|
 | nord      |                   | n     | north     | n     |
 | sud       |                   | s     | south     | s     |
-| est       |                   | e     | east      | e     |
+| est       |                   |       | east      | e     |
 | ovest     |                   | o     | west      | w     |
 | nordest   |                   | ne    | northeast | ne    |
 | sudest    |                   | se    | southeast | se    |
@@ -45,7 +59,7 @@ Status: Alpha stage.
 | dentro    |                   |       | 'in'      |       |
 | fuori     |                   |       | out       |       |
 
-> __NOTE 1__ — Couldn't create synonym "no" for "nordovest" because of conflict with `NO` keyword. Trying to use `'no'` produced error:
+> __NOTE 1__ — Couldn't create synonym "`no`" for "`nordovest`" because of conflict with `NO` keyword. Trying to use `'no'` produced error:
 > 
 > ```
 > 333 E : The word 'no' is defined to be both a synonym and another word
@@ -55,7 +69,12 @@ Status: Alpha stage.
 
 <!-- separator -->
 
-> __NOTE 2__ — Inform 6 Italian also implements "a" synonym for "alto", but I've left it out right now in case it might conflict with "a" as in "dai a/_give to_".
+> __NOTE 2__ — Add to remove synonym "`e`" for "`est`" due to conflict with `e` now being a synonym for `'and'` (Player Word).
+
+<!-- separator -->
+
+> __NOTE 3__ — Inform 6 Italian also implements "a" synonym for "alto", but I've left it out right now in case it might conflict with "a" as in "dai a/_give to_".
+
 
 ## Movement Messages
 
@@ -65,7 +84,22 @@ Status: Alpha stage.
 
 > __NOTE 1__ — "Non puoi andare in quella direzione." was taken from i6 translation; i7 uses "Non puoi andare da quella parte." instead.
 
-[lib_locations]: ./lib_locations.i
-[lib_messages]:  ./lib_messages.i
+
+<!-----------------------------------------------------------------------------
+                               REFERENCE LINKS                                
+------------------------------------------------------------------------------>
+
+
+[library]:        ./library.i
+[lib_locations]:  ./lib_locations.i
+[lib_messages]:   ./lib_messages.i
+[lib_supplement]: ./lib_supplement.i
+
+
+[VERBI_IT]: ./VERBI_IT.md
+
+[tests]: ../tests/
+
+
 
 
