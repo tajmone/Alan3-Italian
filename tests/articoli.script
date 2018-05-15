@@ -1,0 +1,21 @@
+; TEST => ESAMINA
+x il dado
+x i confetti
+x la palla
+x le caramelle
+x lo zaino
+x gli spiccioli
+x l'arco
+x l'arancia
+; TEST => PRENDI
+prendi il dado
+prendi i confetti
+prendi la palla
+prendi le caramelle
+prendi lo zaino
+prendi gli spiccioli
+prendi l'arco
+prendi l'arancia
+; TEST => LASCIA
+drop tutto
+

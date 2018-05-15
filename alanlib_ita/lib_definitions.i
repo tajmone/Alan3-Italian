@@ -1,4 +1,4 @@
--- "lib_definitions.i" v0.0.3 (2018/05/12)
+-- "lib_definitions.i" v0.0.4 (2018/05/15)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -90,15 +90,56 @@ ADD TO EVERY THING
   CAN NOT talk.
 
 
+-- =============================
+-- @ARTICOLI PREDEFINITI (THING)
+-- =============================
 
+-- -------------------------
+-- @ARTICOLI INDETERMINATIVI
+-- -------------------------
 
 -- We still define that plural nouns are preceded by "some" (and not by "a" or "an"):
 
 INDEFINITE ARTICLE
 
-  IF THIS IS NOT plural
-    THEN "a"
-    ELSE "some"
+  IF THIS IS NOT femminile
+  THEN
+    IF THIS IS NOT plural
+      THEN "un"             --> ms indet.
+      ELSE "dei"            --> mp indet.
+    END IF.
+  ELSE
+    IF THIS IS NOT plural
+      THEN "una"            --> fs indet.
+      ELSE "delle"          --> fp indet.
+    END IF.
+  END IF.
+--# codice originale inglese:
+  --
+  -- IF THIS IS NOT plural
+  --   THEN "a"
+  --   ELSE "some"
+  -- END IF.
+
+
+-- -----------------------
+-- @ARTICOLI DETERMINATIVI
+-- -----------------------
+-- Questa parte è stata aggiunta appositamente per l'italiano...
+
+DEFINITE ARTICLE
+
+  IF THIS IS NOT femminile
+  THEN
+    IF THIS IS NOT plural
+      THEN "il"             --> ms det.
+      ELSE "i"              --> mp det.
+    END IF.
+  ELSE
+    IF THIS IS NOT plural
+      THEN "la"             --> fs det.
+      ELSE "le"             --> fp det.
+    END IF.
   END IF.
 
 END ADD TO.

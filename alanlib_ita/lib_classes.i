@@ -1,4 +1,4 @@
--- "lib_classes.i" v0.0.2 (2018/05/06)
+-- "lib_classes.i" v0.0.3 (2018/05/15)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1998,15 +1998,70 @@ ADD TO EVERY ACTOR
 
   IS NOT present_actor.
 
+-- =============================
+-- @ARTICOLI PREDEFINITI (ACTOR)
+-- =============================
+-- @NOTA: Prima di implementare definitivamente il codice per l'italiano
+--        abbozzato qui sotto, devo controllare bene tutte le sottoclassi di
+--        ACTOR.
+--        (1) Avendo io già implementato l'attributo FEMMINILE in THING, devo
+--            controllare come interagisce con MALE e FEMALE (es, se vi sono
+--            ridondanze).
+--        (2) La questione degli articoli predefiniti va considerata meglio,
+--            esempi pratici alla mano, specie per quanto riguarda i plurali:
+--             * quali sono i casi plurali contemplati dall'inglese?
+--             * perché non vogliono l'articolo?)
+--        (3) Devo controllare se devo intervenire diversamente su ACTOR, PERSON,
+--            MALE e FEMALE.
+--        (4) Devo rivedere prima i PRONOUN di MALE e FEMALE.
+
+-- -----------------------
+-- @ARTICOLI DETERMINATIVI
+-- -----------------------
 
     DEFINITE ARTICLE
+
+--  =========================
+--# bozza per codice italiano:
+--  =========================
+      -- IF THIS IS NOT named
+      -- THEN
+      --   IF THIS IS NOT femminile
+      --     THEN "il"           --> ms det.
+      --     ELSE "la"           --> fs det.
+      --   END IF.
+      -- ELSE ""
+      -- END IF.
+
+--  =========================
+--# codice originale inglese:
+--  =========================
     IF THIS IS NOT named
       THEN "the"
       ELSE ""
     END IF.
 
+-- -------------------------
+-- @ARTICOLI INDETERMINATIVI
+-- -------------------------
 
     INDEFINITE ARTICLE
+
+--  =========================
+--# bozza per codice italiano: 
+--  =========================
+      -- IF THIS IS NOT named
+      -- THEN
+      --   IF THIS IS NOT femminile
+      --     THEN "un"           --> ms indet.
+      --     ELSE "una"          --> fs indet.
+      --   END IF.
+      -- ELSE ""
+      -- END IF.
+
+--  =========================
+--# codice originale inglese:
+--  =========================
     IF THIS IS NOT named
       THEN
         IF THIS IS NOT plural

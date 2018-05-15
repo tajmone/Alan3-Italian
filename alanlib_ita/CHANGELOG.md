@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/05/15](#20180515)
 - [2018/05/12 \(2\)](#20180512-2)
 - [2018/05/12 \(1\)](#20180512-1)
 - [2018/05/01](#20180501)
@@ -20,6 +21,64 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/05/15
+
+- [`lib_definitions.i`][lib_definitions] (v0.0.4) — __PREDEFINED ARTICLES__ of THINGS implemented in Italian.
+- [`lib_classes.i`][lib_classes] (v0.0.3) — added comments about predefined articles in ACTORS and some comment draft code on how these might be implemented in Italian (the topic needs to be further investigated before apllying changes).
+- [`../tests/`][tests] folder — added Alan source and script files to test articles implementation:
+    + [`../tests/articoli.alan`](../tests/articoli.alan)
+    + [`../tests/articoli.bat`](../tests/articoli.bat)
+    + [`../tests/articoli.log`](../tests/articoli.log)
+    + [`../tests/articoli.script`](../tests/articoli.script)
+
+
+
+This commit translates to Italian the predefined articles (determinate and indeterminate) that are assigned to all children of `THING`, according to number and _genre_ — genre (which wasn't handled in the original Library, due to things being of neuter genre in English) is determined via the `femminile` attribute that was added to the Italian library.
+
+These are the default articles added at initialization time:
+
+| G | N | DET | INDET |
+|---|---|-----|-------|
+| M | S | il  | un    |
+| M | P | i   | dei   |
+| F | S | la  | una   |
+| F | P | le  | delle |
+
+These defaults will work with many nouns, but not all. For nouns requiring different articles, end users will have to specify them manually:
+
+```alan
+--------------------------------------------------------------------------------
+-- Example: "zaino" (backpack) -> Masc. Sing.              (uno zaino, lo zaino)
+--------------------------------------------------------------------------------
+THE zaino IsA object AT salotto.
+  DEFINITE ARTICLE   "lo"
+  INDEFINITE ARTICLE "uno"
+END THE zaino.
+
+```
+
+... and so on. The possible combinations of nouns and articles are too numerous to implement them via subclasses or special attributes. Also, the grammar rules that govern which article forms should be uesed for a noun can be rather obscure for some edge cases, and forcing the end user to remember them would add a useless burden on his side. It's simpler and more practical to let him/her just override the defaults as needed, handing full control to the author as to which articles should be used.
+
+As for nouns requiring articles with apostrophe, they will need an extra `NAME` aliasing because the parser sees the article and the noun as a single word:
+
+```alan
+--------------------------------------------------------------------------------
+-- Example: "arco" (bow) -> Masc. Sing.                        (un arco, l'arco)
+--------------------------------------------------------------------------------
+THE arco IsA object AT salotto.
+  NAME arco        --> Base name must be redefined.
+  NAME 'l''arco'   --> Don't forget escaping the quote ('').
+
+  DEFINITE ARTICLE   "l'$$" --> Special char `$$` keeps article and noun together.
+  -- no need to redefine the indefinite article (the default "un" is fine in this case).
+END THE arco.
+```
+
+See test file [`../tests/articoli.alan`](../tests/articoli.alan) for more examples on how to use articles.
+
+> __NOTE__ — this commit didn't change the way the library predefines articles for ACTORS; that part of the code was left untouched as it needs to be further looked into before changing it.
+
 
 # 2018/05/12 (2)
 
@@ -138,11 +197,13 @@ The above changes had some side effects which required me to also change the Eng
                                REFERENCE LINKS                                
 ------------------------------------------------------------------------------>
 
-
-[library]:        ./library.i
-[lib_locations]:  ./lib_locations.i
-[lib_messages]:   ./lib_messages.i
-[lib_supplement]: ./lib_supplement.i
+[library]:         ./library.i
+[lib_classes]:     ./lib_classes.i
+[lib_definitions]: ./lib_definitions.i
+[lib_locations]:   ./lib_locations.i
+[lib_messages]:    ./lib_messages.i
+[lib_supplement]:  ./lib_supplement.i
+[lib_verbs]:       ./lib_verbs.i
 
 
 [VERBI_IT]: ./VERBI_IT.md
