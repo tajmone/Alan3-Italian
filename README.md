@@ -99,8 +99,8 @@ Currently, there is no solution to handle correctly prepositions with an apostro
 
 ... will not be interpreted correctly by the parser. The player will have to either omit the apostrophe or insert a space after it:
 
-    prendi la mela dall' albero
     prendi la mela dall albero
+    prendi la mela dall' albero
 
 ... or resort to a shorthand syntax:
 
@@ -114,13 +114,11 @@ Some Italian IF authors and developers have suggested that the problem is sever 
 
 The original intention which motivated me to localize to Italian the Alan StdLib was the desire to have an IF authoring tool that could be used by non-programmers. The whole idea was to expand the domain of IF beyond the circle of expert programmers, hoping that IF authoring would spread beyond it. I therefore believe that the above mentioned limitation is not going to prevent people from learning how to create an IF work with Alan, although I do realize that it's definitely going to affect the status of the project, making it second choice whenever an authoring tool without this limit is affordable.
 
-I've filed a request to Alan's developer exposing the problem and hoping that a new feature might be introduced into the language to handle preprocessing the raw input player before it gets to the parser. Such a feature would allow overcoming this and other similar issues not only in Italian but also in other languages, like French.
+I've filed a [feature request] to Alan's developer exposing the problem and hoping that a new feature might be introduced into the language to handle preprocessing the raw input player before it gets to the parser. Such a feature would allow overcoming this and other similar issues not only in Italian but also in other languages, like French.
 
 I've therefore decided to carry on with the project despite this problem (and suggestions against it), hoping that my plead for a solution via a new Alan feature will be fulfilled sometime in the future. I've also given some thought to the idea of creating a modified distribution of the Alan interpreter, as a last resort; but have finally dediced against it. First, it would introduce the burden of maintaining the code up to date with its upstream; second, it would require to maintain up to date precompiled binaries for all the supported platforms, inlcuding macOS (which I don't have access to). 
 
 Therefore, I'm prepared to accept the fact that what I hoped would become a  full-fledged Italian IF authoring tool might have now recessed in status to being just an experimental tool to learn authoring IF, but not destined to be used in the production of adventures intended for publication.
-
-[i18n Problems]: https://github.com/tajmone/Alan3-Italian/wiki/i18n-Problems
 
 
 # Acknowledgements
@@ -140,3 +138,8 @@ Special thanks to __S3RioUs JokER__, who is constantly helping me out translatin
 [Tristano Ajmone]: https://github.com/tajmone "View Tristano Ajmone's GitHub profile"
 
 [Alan-IF discussion group at Yahoo]: https://groups.yahoo.com/neo/groups/alan-if/info "Visit Alan-IF discussion group main page at Yahoo Groups"
+
+[feature request]: https://groups.yahoo.com/neo/groups/alan-if/conversations/messages/3421 "See the post of the feature/fix request"
+
+[i18n Problems]: https://github.com/tajmone/Alan3-Italian/wiki/i18n-Problems
+
