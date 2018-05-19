@@ -1,0 +1,130 @@
+--==============================================================================
+-- "Il Mondo di Alan" by Tristano Ajmone, 2018.
+--==============================================================================
+IMPORT 'library.i'. -- ALAN Standard Library v2.1
+
+THE my_game IsA DEFINITION_BLOCK
+  ------------------------------------------------------------------------------
+  HAS title    "Il Mondo di Alan".
+  HAS subtitle "Una demo per testare ALAN Standar Library Italian".
+  HAS author   "Tristano Ajmone".
+  HAS year     2018.
+  HAS version  "Alpha 1".
+  ------------------------------------------------------------------------------
+END THE.
+
+-- =============================================================================
+
+----- Piazza della Repubblica d'IF
+
+-- =============================================================================
+THE pzzaIF IsA site
+  NAME 'Piazza della Repubblica d''IF'.
+  EXIT est   TO Eden.
+  EXIT ovest TO mercato.
+  EXIT nord  TO 'Atrio del Museo'.
+END THE pzzaIF.
+
+THE statua_Alan IsA object AT pzzaIF.
+  NAME statua.
+  NAME piedistallo.
+  IS femminile.
+  IS NOT movable.
+  MENTIONED  --| Facciamo sì che una volta letta la targhetta la statua venga
+    "statua" --| menzionata in maniera più specifica...
+    IF targhetta IS già_letta
+      THEN "di Alan III"
+    END IF.
+  HAS ex "La statua in bronzo raffigura un uomo elegante che sta entrando in un
+          vecchio monitor CRT. La gamba destra è già dentro lo schermo, fino al
+          ginocchio. Nella mano sinistra impugna una valigia da viaggio, mentre
+          la destra poggia sul cappello, come se volesse impedirgli di volare
+          via. L'impressione è che l'uomo stia partendo per un'avventura che 
+          inizia al di là del monitor.$pSul piedistallo in pietra noti una
+          targhetta su cui è inciso del testo.".
+END THE statua_Alan.
+
+THE targhetta IsA object AT pzzaIF.
+  DESCRIPTION "" --> non elencare tra le cose visibili.
+  IS femminile.
+  IS readable.
+  HAS text "Alan III".
+  IS NOT già_letta.
+  VERB prendi --| Creiamo una risposta personalizzata per quando il giocatore
+    DOES ONLY --| tenta di prendera la targhetta...
+      "La targhetta è saldamente ancorata al piedistallo."
+  END VERB prendi.
+  VERB examine, read --| Tracciamo se la targhetta è già stata letta, tramite un
+    DOES AFTER       --| attributo booleano. Ora il giocatore ne conosce il nome.
+      MAKE THIS già_letta.
+  END VERB examine.
+END THE targhetta.
+-- =============================================================================
+
+----- Giardino dell'Eden
+
+-- =============================================================================
+THE Eden IsA site.
+  NAME 'Giardino dell''Eden'.
+  EXIT ovest TO pzzaIF.
+END THE Eden.
+
+THE albero IsA object AT Eden.
+  NAME albero.
+  NAME 'l''albero'.
+  DEFINITE ARTICLE "l'$$"
+  IS NOT movable.
+END THE albero.
+-- =============================================================================
+
+----- Mercato
+
+-- =============================================================================
+THE mercato IsA site.
+  EXIT est TO pzzaIF.
+END THE mercato.
+
+THE Gustavo IsA male AT mercato.
+  IS named.
+END THE Gustavo.
+
+--==============================================================================
+-- Bancarella della frutta
+--==============================================================================
+THE bancarella IsA supporter AT mercato.
+  IS femminile.
+END THE bancarella.
+
+EVERY frutto IsA object.
+  IS edible.
+  NAME frutto.
+END EVERY frutto.
+
+THE pera IsA frutto IN bancarella.
+  NAME pera.
+  IS femminile.
+END THE pera.
+
+THE mango IsA frutto IN bancarella.
+  NAME mango.
+END THE mango.
+
+THE cigliege IsA frutto IN bancarella.
+  NAME cigliege.
+  IS femminile.
+  IS plural.
+  DEFINITE ARTICLE "le"
+  INDEFINITE ARTICLE "alcune"
+END THE cigliege.
+-- =============================================================================
+
+----- Museo
+
+-- =============================================================================
+THE 'Atrio del Museo' IsA room.
+  EXIT sud TO pzzaIF.
+END THE 'Atrio del Museo'.
+
+--------------------------------------------------------------------------------
+Start at pzzaIF.
+DESCRIBE banner.

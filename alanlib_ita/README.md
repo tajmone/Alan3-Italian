@@ -10,6 +10,8 @@ This folder contains a copy of the Alan Standard Library v2.1 files which are be
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [File Contents](#file-contents)
+    - [Standard Library Files](#standard-library-files)
+    - [Extra Standard Library Files](#extra-standard-library-files)
 - [Translation](#translation)
     - [Directions and Movement](#directions-and-movement)
         - [Movement Messages](#movement-messages)
@@ -21,14 +23,24 @@ This folder contains a copy of the Alan Standard Library v2.1 files which are be
 
 # File Contents
 
-The library files and their current work in progress status.
+## Standard Library Files
 
-- [`lib_classes.i`](./lib_classes.i) (small tweaks)
-- [`lib_definitions.i`](./lib_definitions.i) (modified)
-- [`lib_locations.i`](./lib_locations.i) (modified)
-- [`lib_messages.i`](./lib_messages.i) (modified)
-- [`lib_verbs.i`](./lib_verbs.i) (modified)
-- [`library.i`](./library.i) (modified)
+The library files being translated:
+
+- [`lib_classes.i`](./lib_classes.i)
+- [`lib_definitions.i`](./lib_definitions.i)
+- [`lib_locations.i`](./lib_locations.i)
+- [`lib_messages.i`](./lib_messages.i)
+- [`lib_verbs.i`](./lib_verbs.i)
+- [`library.i`](./library.i)
+
+## Extra Standard Library Files
+
+Boilerplates and templates from the StdLibrary have been renamed with a leading underscore, to distinguish them from the set of strictly needed files:
+
+- [`_newgame_ita.alan`](./_newgame_ita.alan) — adaptation of `newgame.alan`
+- [`_mygame_import.i`](./_mygame_import.i) (unchanged)
+
 
 # Translation
 

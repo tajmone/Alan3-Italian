@@ -1,25 +1,19 @@
-prendi la pera  POI  prendi la mela  E  prendi il mango
-drop la mela E la pera
-prendi la mela E la pera    ; <= multi obj not allowed with 'prendi'
-prendi la mela POI prendi la pera
-;---------------------------------------------------
-drop TUTTO ; ok
-prendi la pera POI prendi la mela POI prendi il mango
-;---------------------------------------------------
-drop TUTTO TRANNE la mela
-prendi la pera E POI prendi il mango    ; <= 'E POI' syntax not allowed
-; NOTE: the 1st of the 2 commands was carried out, the 2nd failed
-; ('E POI' was not understood).
-prendi il mango
-;---------------------------------------------------
-drop TUTTO ECCETTO il mango
-prendi la mela POI prendi la pera
-;---------------------------------------------------
-drop TUTTO ESCLUSI il mango E la pera
-prendi la mela
-;---------------------------------------------------
-drop TUTTO ESCLUSE la mela E la pera
-prendi il mango
-;---------------------------------------------------
-drop TUTTO ESCLUSA la mela
-prendi la mela
+ovest
+
+; testiamo "E" e "POI"
+prendi la pera POI prendi il mango
+drop la pera
+prendi la pera E prendi le cigliege
+
+; testiamo "TUTTO" ecc.
+drop TUTTO
+
+; NOTA: la forma "E POI" non è valida:
+prendi la pera E POI prendi il mango
+prendi il mango e prendi le cigliege
+
+drop TUTTO TRANNE le cigliege
+prendi la pera POI prendi il mango
+drop TUTTO ECCETTO le cigliege
+prendi la pera POI prendi il mango
+drop TUTTO ESCLUSE le cigliege
