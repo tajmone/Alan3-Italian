@@ -21,6 +21,7 @@ Started on: 2018-04-13
 - [About](#about)
     - [Alan IF](#alan-if)
     - [Alan Standard Library](#alan-standard-library)
+- [Acknowledgements](#acknowledgements)
 
 <!-- /MarkdownTOC -->
 
@@ -41,13 +42,16 @@ You can follow the discussion on this project on the [Alan-IF discussion group a
 
 # Status
 
-Gradually translating verbs and standard messages. Some adventure files have been created to test the features being translated, along with automation scripts to quickly simulate a game session. Transcript logs of the test sessions are also kept in the repository, from which is possible to preview the current status of the translation in real use scenarios.
+Gradually translating verbs and standard messages. A [demo adventure] file has been created to test the features being translated, along with automation scripts to quickly simulate a game session. Transcript logs of the test sessions are preserved in the [`/tests/`](./tests) folder, for the benefit of anyone whishing to preview the current status of the translation (in real use scenarios) without having to compile the demo and run the tests.
+
+[demo adventure]: ./tests/il_mondo_di_alan.alan "View the sourcefile of the demo adventure 'il_mondo_di_alan.alan'"
 
 # Project Contents
 
 - [`/alanlib_ita/`](./alanlib_ita) — standard library 2.1 translation to Italian (WIP)
 - [`/alanlib/`](./alanlib) — copies of the upstream standard library:
     + [`/2.1/`](./alanlib/2.1/) (released: 2018-04-13)
+- [`/tests/`](./tests) — tests folder with demo adventure and commands scripts
 - [`LICENSE`][License] — Artistic License 2.0
 
 
@@ -85,8 +89,20 @@ Written by Anssi Räisänen. Current version: v2.1.
 
 The _Alan Standard Library_  is a set of preprogrammed basic verbs and classes to start building your own adventures. The standard library is not included with the ALAN programming system and must be downloaded separately.
 
+# Acknowledgements
 
+Obviously, my gratitude goes in the first place to __Thomas Nilefalk__ and __Göran Forslund__, for creating Alan, and to __Anssi Räisänen__ for the Alan Standard Library. But I also want to thank Thomas and Anssi for their personal support for this project by answering my (many) questions and helping me out on the [Alan-IF discussion group at Yahoo].
+
+Special thanks to __S3RioUs JokER__, who is constantly helping me out translating terminology and library responses, and to __Leonardo Boselli__, whose expertise in implementing/translating IF tools to Italian has made him my target of choice when I need technical advise, help, and an informed expert opinion. _Grazie di cuore, senza di voi questo progetto sarebbe stata un'impresa alquanto solitaria!_
+
+
+
+<!-----------------------------------------------------------------------------
+                               REFERENCE LINKS                                
+------------------------------------------------------------------------------>
 
 [License]: ./LICENSE "View the full text of Artistic License 2.0"
 
 [Tristano Ajmone]: https://github.com/tajmone "View Tristano Ajmone's GitHub profile"
+
+[Alan-IF discussion group at Yahoo]: https://groups.yahoo.com/neo/groups/alan-if/info "Visit Alan-IF discussion group main page at Yahoo Groups"
