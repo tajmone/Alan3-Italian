@@ -1,4 +1,4 @@
--- "lib_supplement.i" v0.0.2 (2018/05/12)
+-- "lib_supplement.i" v0.0.3 (2018/05/19)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -43,7 +43,7 @@
 -- AND: and then
 -- -----------------------------------------------------------------------------
 -- Conjunction words are used by the parse to correctly interpret player commands
--- which refers to multiple onjects, or sequences of independent commands chained
+-- which refers to multiple objects, or sequences of independent commands chained
 -- together on a single command line.
 
 SYNONYMS e, poi = 'and'.
@@ -76,8 +76,10 @@ SYNONYMS e, poi = 'and'.
 -- to the instance a second NAME so that the parse will see it as a synonym of
 -- the instance.
 SYNONYMS il, lo, la, i, gli, le = 'go'.
-
-
+-- We also add "l'", to cover cases where the player omits the apostrophe or
+-- types a space after it, for conistency with the prepositions workaround (we
+-- can't implement "l" because of conflict with "look" shortcut):
+SYNONYMS 'l''' = 'go'. --| eg:  "l' albero"
 
 -- This is not going to be useful:
 -- SYNONYMS vai = 'go'.
@@ -120,4 +122,84 @@ SYNONYMS tranne, eccetto, escluso, esclusa, esclusi, escluse = except.
 -- =============================================================================
 -- THEM: them
 -- -----------------------------------------------------------------------------
+-- I haven't yet worked out how these are used. My guess is that they are treated
+-- like ALL words, but referring to ACTORs, but I must do some tests to check it.
+
+
+
+-- =============================================================================
+
+
+----- Preposizioni Articolate: (di|a|da|in|con|su) + art.det.
+
+
+-- =============================================================================
+
+--        +-----+-------+-------+--------+-----+-------+-------+
+--        |  il |    lo |    la |     l' |   i |   gli |    le |
+--  +-----+-----+-------+-------+--------+-----+-------+-------+
+--  | di  | del | dello | della |  dell' | dei | degli | delle |
+--  | a   | al  | allo  |  alla |   all' |  ai |  agli |  alle |
+--  | da  | dal | dallo | dalla |  dall' | dai | dagli | dalle |
+--  | in  | nel | nello | nella |  nell' | nei | negli | nelle |
+--  | con | col | collo | colla | con l' | coi | cogli | colle |
+--  | su  | sul | sullo | sulla |  sull' | sui | sugli | sulle |
+--  +-----+-----+-------+-------+--------+-----+-------+-------+
+--
+-- Some forms in the above table are in potential conflict* with other words:
+--   "dei"   = "gods"      (but more correctly spelled "dèi")
+--   "dai"   = "give"      (imperative)
+--   "dallo" = "give it"   (masc. direct obj)
+--   "dalla" = "give it"   (fem. direct obj)
+--   "dalle" = "give them" (fem. direct obj) and "give to her"
+--   "Nello" =  given name (masc.)
+--   "Nella" =  given name (fem.)
+--   "nei"   = "moles"     (but more correctly spelled "nèi" or "nevi")
+--   "collo" = "neck"
+--   "colla" = "glue"
+--   "cogli" = "pick" 
+--   "colle" = "glues" or "hill"
+-- -----------------------------------------------------------------------------
+-- * see.: http://www.tads.org/xlat3/En_vs_It.htm
+-- -----------------------------------------------------------------------------
+-- We now define sysonyms of prepositions variants to be seen as their base
+-- form registered with the verbs syntax.
+-- 
+-- **APOSTROPHE LIMITATION** -- prepositions with apostrophe must either be
+-- typed without the apostrophe or with a space after it, because the parser will
+-- otherwise see them as forming a single token with the following noun:
+--   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--   > prendi la mela dall albero
+--   > prendi la mela dall' albero
+--   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- There is no solution to this problem currently. For this reason, we'll also
+-- define as synonms "dall'" and "dall" (and similars).
+
+--==============================================================================
+-- "A" + Articolo
+--==============================================================================
+SYNONYMS
+  al, allo, alla, 'all''', ai, agli, alle  = a.
+-- all    = a.   --| CAN'T BE USED AS ALTERNATIVE because of conflict with
+--|                  English ALL word:
+--| 333 E : The word 'all' is defined to be both a synonym and another word class.
+--|
+--| Beside, " all " isn't correct Italian, but could have been a workaround to the
+--| limitation mentioned above.
+--==============================================================================
+-- "DA" + Articolo
+--==============================================================================
+-- We can't define as synonym the preposition "dai" because it would conflict
+-- with the imperative form of the verb "dare" ("dai" = give). The workaround
+-- is to define an alternative syntax for every verb that uses "da", so that it
+-- will also cover "dai". All other prepositions will be defined as synonyms of
+-- "da".
+SYNONYMS
+  dal, dallo, dalla, 'dall''', dall, dagli, dalle  = da.
+--| * " dall " is not correct Italian, but a workaround to the limitation mentioned above.
+
+--  dai = da.            -- dai (masc.plur.) | CAN'T BE USED AS ALTERNATIVE because
+--|                                            of conflict with 'dai' verb:
+--| 333 E : The word 'dai' is defined to be both a synonym and another word class.
+
 

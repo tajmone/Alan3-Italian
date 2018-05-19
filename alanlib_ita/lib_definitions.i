@@ -1,4 +1,4 @@
--- "lib_definitions.i" v0.0.4 (2018/05/15)
+-- "lib_definitions.i" v0.0.5 (2018/05/19)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -785,7 +785,9 @@ EVERY definition_block ISA LOCATION
   CAN free.        -- (+ release)
   CAN get_up.
   CAN get_off.
-  CAN give.
+
+  CAN dare.        --> give. 
+
   CAN go_to.
   CAN hint.        -- (+ hints)
   CAN inventariare.           -- (+ inv, inventory)
@@ -975,7 +977,9 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game free.            -- (+ release)
   MAKE my_game get_up.
   MAKE my_game get_off.
-  MAKE my_game give.
+
+  MAKE my_game dare. --> give
+  
   MAKE my_game go_to.
   MAKE my_game hint.            -- (+ hints)
 
@@ -1178,7 +1182,7 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT free.        -- (+ release)
   MAKE my_game NOT get_up.
   MAKE my_game NOT get_off.
-  MAKE my_game NOT give.
+  MAKE my_game NOT dare.
   MAKE my_game NOT go_to.
   MAKE my_game hint.            -- (+ hints)
 
@@ -1367,7 +1371,7 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT free.        -- (+ release)
   MAKE my_game NOT get_up.
   MAKE my_game NOT get_off.
-  MAKE my_game NOT give.
+  MAKE my_game NOT dare.
   MAKE my_game NOT go_to.
   MAKE my_game hint.            -- (+ hints)
 
@@ -1553,7 +1557,7 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT free.        -- (+ release)
   MAKE my_game NOT get_up.
   MAKE my_game NOT get_off.
-  MAKE my_game NOT give.
+  MAKE my_game NOT dare.
   MAKE my_game NOT go_to.
   MAKE my_game NOT hint.        -- (+ hints)
 

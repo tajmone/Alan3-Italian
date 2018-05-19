@@ -1,4 +1,4 @@
--- "lib_verbs.i" v0.0.3 (2018/05/12)
+-- "lib_verbs.i" v0.0.4 (2018/05/19)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -3142,7 +3142,7 @@ END VERB.
 
 -- ==============================================================
 
--- @GIVE (SYNTAX HEADER)
+-- @DAI_A -> @GIVE (SYNTAX HEADER)
 
 ----- GIVE (+ hand, offer)
 
@@ -3150,7 +3150,8 @@ END VERB.
 -- ==============================================================
 
 
-SYNTAX give = 'give' (obj) 'to' (recipient)
+-- SYNTAX dai_a = 'give' (obj) 'to' (recipient)
+SYNTAX dai_a = 'dai' (obj) 'a' (recipient)
       WHERE obj ISA OBJECT
         ELSE SAY illegal_parameter_obj OF my_game.
       AND recipient ISA ACTOR
@@ -3163,9 +3164,9 @@ SYNTAX give = 'give' (obj) 'to' (recipient)
 
 
 ADD TO EVERY OBJECT
-  VERB give
+  VERB dai_a
         WHEN obj
-      CHECK my_game CAN give
+      CHECK my_game CAN dare -- (was CAN give)
         ELSE SAY restricted_response OF my_game.
       AND obj IS takeable
         ELSE SAY check_obj_takeable OF my_game.
@@ -3227,7 +3228,8 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
-SYNONYMS hand, offer = give.
+SYNONYMS porgi, offri = dai.
+-- SYNONYMS hand, offer = give.
 
 
 
@@ -6988,6 +6990,8 @@ SYNTAX prendi = prendi (obj)
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
 
+-- @TODO: Cleanup, these might not need an alternative syntax but just synonym!
+
 -- @PRENDI -> @TAKE (SYNTAX SYNONIM) => get (obj)
     prendi = afferra (obj).
 
@@ -7130,6 +7134,11 @@ SYNONYMS
 
 -- @PRENDI_DA -> @TAKE_FROM (SYNTAX)
 
+--------------------------------------------------------------------------------
+-- NOTE: Alternative 'dai' prepositions must be implement separately because
+--       these can't be covered by synonyms due to conflicts with verb "dai"!!!
+--------------------------------------------------------------------------------
+
 SYNTAX prendi_da = 'prendi' (obj) 'da' (holder)
       WHERE obj ISA THING
         ELSE
@@ -7150,14 +7159,15 @@ SYNTAX prendi_da = 'prendi' (obj) 'da' (holder)
         ELSE SAY illegal_parameter2_from_pl OF my_game.
       END IF.
 
--- @PRENDI_DA -> @TAKE_FROM (SYNTAX SYNONIM) => remove (obj)* 'from' (holder).
-  prendi_da = remove (obj)* 'da' (holder).
--- take_from = remove (obj)* 'from' (holder).
+  prendi_da = prendi  (obj)  'dai' (holder).
+  prendi_da = rimuovi (obj)* 'da'  (holder).
+  prendi_da = rimuovi (obj)* 'dai' (holder).
+  prendi_da = togli   (obj)  'da'  (holder).
+  prendi_da = togli   (obj)  'dai' (holder).
 
--- @PRENDI_DA -> @TAKE_FROM (SYNTAX SYNONIM) => get (obj) 'from' (holder).
-  prendi_da = get (obj) 'da' (holder).
--- take_from = get (obj) 'from' (holder).
-
+--| Original EN syntax synonyms:
+--|     take_from = remove (obj)* 'from' (holder).
+--|     take_from = get    (obj)  'from' (holder).
 
 ADD TO EVERY THING
     VERB prendi_da

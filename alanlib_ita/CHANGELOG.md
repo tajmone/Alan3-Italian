@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/05/19](#20180519)
 - [2018/05/15](#20180515)
 - [2018/05/12 \(2\)](#20180512-2)
 - [2018/05/12 \(1\)](#20180512-1)
@@ -21,6 +22,42 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/05/19
+
+- [`lib_classes.i`][lib_classes] (v0.0.4)
+- [`lib_definitions.i`][lib_definitions] (v0.0.5)
+- [`lib_supplement.i`][lib_supplement] (v0.0.3)
+- [`lib_verbs.i`][lib_verbs] (v0.0.4)
+
+Translate verb "__dai__" (_give_), and "__prendi da__" (_take from_).
+
+Now the status of the translated verbs is more polished:
+
+Verb `prendi` (_take_):
+
+    [prendi|afferra|raccogli|trasporta] (obj)
+
+Verb `prendi_da` (_take from_):
+
+    [prendi|rimuovi|togli] (obj) da (holder)
+
+Verb `dai_a` (_give_):
+
+    [dai|porgi|offri] (obj) a (recipient)
+
+Now [`lib_supplement.i`][lib_supplement] implements all the required synonyms for prepositions "da" and "a".
+
+> __NOTE__ — To prevent conflicts betwen "__dai__" (da + i) and "__dai__" (verb), the preposition "`dai`" is not declared as synonym of "`da`", and an extra syntax is declared on the verb in order to cover it:
+> 
+> ```alan
+>   prendi_da = prendi  (obj)  'dai' (holder).
+>   prendi_da = rimuovi (obj)* 'da'  (holder).
+>   prendi_da = rimuovi (obj)* 'dai' (holder).
+>   prendi_da = togli   (obj)  'da'  (holder).
+>   prendi_da = togli   (obj)  'dai' (holder).
+> ``` 
+
 
 # 2018/05/15
 

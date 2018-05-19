@@ -1,4 +1,4 @@
--- "lib_classes.i" v0.0.3 (2018/05/15)
+-- "lib_classes.i" v0.0.4 (2018/05/19)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1422,8 +1422,8 @@ EVERY liquid ISA OBJECT
       SAY THE act. "gives" SAY THE vessel OF THIS. "of" SAY THIS. "to you."
   END VERB.
 
-
-  VERB give
+-- @DAI_A -> @GIVE (VERB) => LIQUID
+  VERB dai_a
     WHEN obj
     DOES ONLY
       -- implicit taking:
