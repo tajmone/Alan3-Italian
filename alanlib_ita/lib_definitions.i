@@ -1,4 +1,4 @@
--- "lib_definitions.i" v0.0.5 (2018/05/19)
+-- "lib_definitions.i" v0.0.6 (2018/05/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -290,8 +290,11 @@ EVERY definition_block ISA LOCATION
   -- ================================
 
   HAS restricted_response "Non puoi farlo.". -- "You can't do that."
+    --| Questo è il messaggio mostrato quando il giocatore tenta di usare un
+    --| verbo che è stato disabilitato tramite "CAN NOT [verb]" (vedi sotto).
+
     -- This message is shown whenever the player used a verb that has been restricted
-     -- by the "CAN NOT [verb]" attributes further down this file.
+    -- by the "CAN NOT [verb]" attributes further down this file.
 
   HAS restricted_level 0.   -- 0 = no verbs are restricted
 
@@ -580,8 +583,9 @@ EVERY definition_block ISA LOCATION
 
   -- c) checking location states
   ------------------------------
-
-      HAS check_current_loc_lit "It is too dark to see.".           -- (numerous)
+  --@TODO: migliora messaggio
+  HAS check_current_loc_lit "È troppo buio.".           -- (svariati verbi)
+      -- HAS check_current_loc_lit "It is too dark to see.".           -- (numerous)
 
 
   -- d) checks guarding against actions directed at the hero him-/herself
@@ -899,7 +903,9 @@ EVERY definition_block ISA LOCATION
   CAN turn.        -- (+ rotate)
   CAN turn_on.
   CAN turn_off.
-  CAN undress.
+
+  CAN spogliarsi.
+
   CAN unlock.
   CAN unlock_with.
   CAN 'use'.
@@ -1093,7 +1099,9 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game turn.            -- (+ rotate)
   MAKE my_game turn_on.
   MAKE my_game turn_off.
-  MAKE my_game undress.
+  
+  MAKE my_game spogliarsi.
+  
   MAKE my_game unlock.
   MAKE my_game unlock_with.
   MAKE my_game 'use'.
@@ -1296,7 +1304,9 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT turn.        -- (+ rotate)
   MAKE my_game NOT turn_on.
   MAKE my_game NOT turn_off.
-  MAKE my_game NOT undress.
+
+  MAKE my_game NOT spogliarsi.
+
   MAKE my_game NOT unlock.
   MAKE my_game NOT unlock_with.
   MAKE my_game NOT 'use'.
@@ -1485,7 +1495,9 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT turn.        -- (+ rotate)
   MAKE my_game NOT turn_on.
   MAKE my_game NOT turn_off.
-  MAKE my_game NOT undress.
+
+  MAKE my_game NOT spogliarsi.
+
   MAKE my_game NOT unlock.
   MAKE my_game NOT unlock_with.
   MAKE my_game NOT 'use'.
@@ -1671,7 +1683,9 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT turn.        -- (+ rotate)
   MAKE my_game NOT turn_on.
   MAKE my_game NOT turn_off.
-  MAKE my_game NOT undress.
+
+  MAKE my_game NOT spogliarsi.
+
   MAKE my_game NOT unlock.
   MAKE my_game NOT unlock_with.
   MAKE my_game NOT 'use'.

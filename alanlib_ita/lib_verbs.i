@@ -1,4 +1,4 @@
--- "lib_verbs.i" v0.0.4 (2018/05/19)
+-- "lib_verbs.i" v0.0.5 (2018/05/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -13,6 +13,7 @@
 ----- actually verbs, such as "inventory", "verbose" and "again".
 ----- Verbs originally defined in this file are the following:
 
+--# NOTA: i verbi preceduti da "--->" sono stati già tradotti.
 
 ----- VERB        SYNONYMS                                 SYNTAX                              ARITY   OBJ
 
@@ -66,10 +67,10 @@
 ----- free        (+ release)                              free (obj)                          1       x
 ----- get_up                                               get up                              0
 ----- get_off                                              get off (obj)                       1       x
------ give                                                 give (obj) to (recipient)           1       x
+----> give                                                 give (obj) to (recipient)           1       x
 ----- go_to                                                go to (dest)                        1
 ----- hint        (+ hints)                                hint                                0
------ i           (+ inv, inventory)                       inventory                           0
+----> i           (+ inv, inventory)                       inventory                           0
 ----- jump                                                 jump                                0
 ----- jump_in                                              jump in (cont)                      1
 ----- jump_on                                              jump on (surface)                   1
@@ -151,8 +152,8 @@
 ----- switch                                               switch (obj)                        1       x
 ----- switch_on   (defined at the verb 'turn_on')          switch on (app)                     1
 ----- switch_off  (defined at the verb 'turn_off')         switch off (app)                    1
------ take        (+ carry, get, grab, hold, obtain)       take (obj)                          1       x
------ take_from   (+ remove from)                          take (obj) from (holder)            2       x
+----> take        (+ carry, get, grab, hold, obtain)       take (obj)                          1       x
+----> take_from   (+ remove from)                          take (obj) from (holder)            2       x
 ----- talk                                                 talk                                0
 ----- talk_to     (+ speak)                                talk to (act)                       1
 ----- taste       (+ lick)                                 taste (obj)                         1       x
@@ -170,7 +171,7 @@
 ----- turn        (+ rotate)                               turn (obj)                          1       x
 ----- turn_on                                              turn on (app)                       1
 ----- turn_off                                             turn off (app)                      1
------ undress                                              undress                             0
+----> undress                                              undress                             0
 ----- unlock                                               unlock (obj)                        1       x
 ----- unlock_with                                          unlock (obj) with (key)             2       x
 ----- use                                                  use (obj)                           1       x
@@ -6992,15 +6993,19 @@ SYNTAX prendi = prendi (obj)
 
 -- @TODO: Cleanup, these might not need an alternative syntax but just synonym!
 
--- @PRENDI -> @TAKE (SYNTAX SYNONIM) => get (obj)
     prendi = afferra (obj).
-
--- @PRENDI -> @TAKE (SYNTAX SYNONIM) => pick up (obj)
     prendi = raccogli (obj).
-
--- @PRENDI -> @TAKE (SYNTAX SYNONIM) => pick (obj) up
     prendi = trasporta (obj).
 
+--| ORIGINAL EN:
+--| ============
+--| SYNTAXES:
+--|   take = take    (obj)
+--|   take = get     (obj)
+--|   take = pick up (obj)
+--|   take = pick    (obj) up
+--| SYNONYMS:
+--|   carry, grab, hold, obtain = take
 
 ADD TO EVERY THING
 -- @PRENDI -> @TAKE (VERB) => ADD TO EVERY THING
@@ -7165,9 +7170,13 @@ SYNTAX prendi_da = 'prendi' (obj) 'da' (holder)
   prendi_da = togli   (obj)  'da'  (holder).
   prendi_da = togli   (obj)  'dai' (holder).
 
---| Original EN syntax synonyms:
---|     take_from = remove (obj)* 'from' (holder).
---|     take_from = get    (obj)  'from' (holder).
+--| ORIGINAL EN:
+--| ============
+--| SYNTAXES:
+--|   take_from = 'take' (obj)  'from' (holder)
+--|   take_from = remove (obj)* 'from' (holder)
+--|   take_from = get    (obj)  'from' (holder)
+
 
 ADD TO EVERY THING
     VERB prendi_da
@@ -8362,28 +8371,37 @@ END ADD TO.
 -- ==============================================================
 
 
------ UNDRESS
+----- @SPOGLIATI -> @UNDRESS (SYNTAX + VERB)
 
 
 -- ==============================================================
 
 
-SYNTAX undress = undress.
+SYNTAX spogliati = spogliati.
 
+SYNONYMS svestiti = spogliati.
 
-VERB undress
-  CHECK my_game CAN undress
-    ELSE SAY restricted_response OF my_game.
+VERB spogliati
+  CHECK my_game CAN spogliarsi
+    ELSE SAY restricted_response OF my_game.   --# "Non puoi farlo."
   AND CURRENT LOCATION IS lit
-    ELSE SAY check_current_loc_lit OF my_game.
-  DOES "You don't feel like undressing is a good idea right now."
+    ELSE SAY check_current_loc_lit OF my_game. --# "È troppo buio."
+  --@TODO: modifica frase (non mi piace):
+  DOES "Ripensandoci, spogliarsi qui e ora non è una buona idea."
+--DOES "You don't feel like undressing is a good idea right now."
 
-      -- To make it work, use the following lines instead:
-        --IF COUNT DIRECTLY IN worn, ISA CLOTHING > 0
-      --THEN EMPTY worn IN hero.
-        --"You remove all the items you were wearing."
-          --ELSE "You're not wearing anything you can remove."
-        -- END IF.
+ -- To make it work, use the following lines instead:
+--@TODO: sintassi 'desempio commentata (da verificare e testare)!
+--| Per implementare l'azione di spogliarsi, usa:
+--|--------------------------------------------------------
+--| IF COUNT DIRECTLY IN worn, ISA CLOTHING > 0
+--|   THEN EMPTY worn IN hero.
+--|     "Fatto. Ora non indossi più nulla."
+--|     -- "You remove all the items you were wearing."
+--|   ELSE "Non indossi nulla di cui potresti spogliarti."
+--|   -- ELSE "You're not wearing anything you can remove."
+--| END IF.
+--|--------------------------------------------------------
 END VERB.
 
 

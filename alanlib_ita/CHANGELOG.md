@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/05/22](#20180522)
 - [2018/05/19](#20180519)
 - [2018/05/15](#20180515)
 - [2018/05/12 \(2\)](#20180512-2)
@@ -22,6 +23,17 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/05/22
+
+- [`lib_definitions.i`][lib_definitions] (v0.0.6)
+- [`lib_supplement.i`][lib_supplement] (v0.0.4)
+
+Transalted verb "__spogliati__" (_undress_):
+
+    [spogliati|svestiti]
+
+Its default reponses translation might need some polishing. The commented code example on how to implement the undressing action also needs to be polished.
 
 # 2018/05/19
 
