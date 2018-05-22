@@ -1,4 +1,4 @@
--- "lib_verbs.i" v0.0.5 (2018/05/22)
+-- "lib_verbs.i" v0.0.6 (2018/05/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -844,7 +844,7 @@ SYNTAX burn = burn (obj)
 
 ADD TO EVERY OBJECT
   VERB burn
-    CHECK my_game CAN burn
+    CHECK my_game CAN bruciare
       ELSE SAY restricted_response OF my_game.
     AND obj IS examinable
       ELSE
@@ -888,7 +888,7 @@ SYNTAX burn_with = burn (obj) 'with' (instr)
 ADD TO EVERY OBJECT
   VERB burn_with
     WHEN obj
-      CHECK my_game CAN burn_with
+      CHECK my_game CAN bruciare_con
         ELSE SAY restricted_response OF my_game.
       AND obj IS examinable
         ELSE
@@ -1275,7 +1275,7 @@ SYNTAX close = close (obj)
 
 ADD TO EVERY OBJECT
   VERB close
-    CHECK my_game CAN close
+    CHECK my_game CAN chiudere
       ELSE SAY restricted_response OF my_game.
     AND obj IS openable
           ELSE
@@ -1345,7 +1345,7 @@ SYNTAX close_with = close (obj) 'with' (instr)
 ADD TO EVERY OBJECT
   VERB close_with
     WHEN obj
-      CHECK my_game CAN close_with
+      CHECK my_game CAN chiudere_con
         ELSE SAY restricted_response OF my_game.
       AND obj IS openable
         ELSE
@@ -1622,7 +1622,7 @@ SYNTAX dance = dance.
 
 
 VERB dance
-  CHECK my_game CAN dance
+  CHECK my_game CAN danzare
     ELSE SAY restricted_response OF my_game.
   AND CURRENT LOCATION IS lit
     ELSE SAY check_current_loc_lit OF my_game.
@@ -1656,7 +1656,7 @@ SYNTAX dig = dig (obj)
 
 ADD TO EVERY OBJECT
   VERB dig
-    CHECK my_game CAN dig
+    CHECK my_game CAN scavare
       ELSE SAY restricted_response OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -1782,7 +1782,7 @@ SYNTAX drink = drink (liq)
 
 ADD TO EVERY LIQUID
   VERB drink
-    CHECK my_game CAN drink
+    CHECK my_game CAN bere
       ELSE SAY restricted_response OF my_game.
     AND liq IS drinkable
       ELSE
@@ -1982,7 +1982,7 @@ SYNTAX eat = eat (food)
 
 ADD TO EVERY OBJECT
   VERB eat
-    CHECK my_game CAN eat
+    CHECK my_game CAN mangiare
       ELSE SAY restricted_response OF my_game.
     AND food IS edible
       ELSE
@@ -3570,7 +3570,7 @@ SYNTAX kill = kill (victim)
 
 ADD TO EVERY ACTOR
   VERB kill
-    CHECK my_game CAN kill
+    CHECK my_game CAN uccidere
       ELSE SAY restricted_response OF my_game.
     AND victim IS examinable
       ELSE
@@ -3615,7 +3615,7 @@ SYNTAX kill_with = kill (victim) 'with' (weapon)
 ADD TO EVERY ACTOR
   VERB kill_with
     WHEN victim
-      CHECK my_game CAN kill_with
+      CHECK my_game CAN uccidere_con
         ELSE SAY restricted_response OF my_game.
       AND victim <> hero
         ELSE SAY check_obj_not_hero2 OF my_game.
@@ -4663,7 +4663,7 @@ SYNTAX open = open (obj)
 
 ADD TO EVERY OBJECT
   VERB open
-    CHECK my_game CAN open
+    CHECK my_game CAN aprire
       ELSE SAY restricted_response OF my_game.
         AND obj IS openable
           ELSE
@@ -4741,7 +4741,7 @@ SYNTAX open_with = open (obj) 'with' (instr)
 ADD TO EVERY OBJECT
   VERB open_with
         WHEN obj
-      CHECK my_game CAN open_with
+      CHECK my_game CAN aprire_con
         ELSE SAY restricted_response OF my_game.
           AND obj IS openable
           ELSE

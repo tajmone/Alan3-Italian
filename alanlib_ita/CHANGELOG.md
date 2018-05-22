@@ -11,7 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/05/22](#20180522)
+- [2018/05/22 \(2\)](#20180522-2)
+- [2018/05/22 \(1\)](#20180522-1)
 - [2018/05/19](#20180519)
 - [2018/05/15](#20180515)
 - [2018/05/12 \(2\)](#20180512-2)
@@ -24,10 +25,32 @@ Status: Alpha stage.
 
 -----
 
-# 2018/05/22
+# 2018/05/22 (2)
+
+- [`lib_definitions.i`][lib_definitions] (v0.0.7)
+- [`lib_verbs.i`][lib_verbs] (v0.0.6)
+
+Translated `my_game` attributes for verb restrictions:
+
+|   English    |    Italian     |
+|--------------|----------------|
+| `brun`       | `bruciare`     |
+| `brun_with`  | `bruciare_con` |
+| `close`      | `chiudere`     |
+| `close_with` | `chiudere_con` |
+| `dance`      | `danzare`      |
+| `dig`        | `scavare`      |
+| `drink`      | `bere`         |
+| `eat`        | `mangiare`     |
+| `kill`       | `uccidere`     |
+| `kill_with`  | `uccidere_con` |
+| `open`       | `aprire`       |
+| `open_with`  | `aprire_con`   |
+
+# 2018/05/22 (1)
 
 - [`lib_definitions.i`][lib_definitions] (v0.0.6)
-- [`lib_supplement.i`][lib_supplement] (v0.0.4)
+- [`lib_verbs.i`][lib_verbs] (v0.0.5)
 
 Transalted verb "__spogliati__" (_undress_):
 
