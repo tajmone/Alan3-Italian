@@ -1,4 +1,4 @@
--- "lib_verbs.i" v0.0.6 (2018/05/22)
+-- "lib_verbs.i" v0.0.7 (2018/05/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -674,13 +674,13 @@ SYNONYMS chew = bite.
 -- ===============================================================
 
 
------ BREAK
+----- @ROMPI --> @BREAK (VERB + SYNTAX)
 
 
 -- ===============================================================
 
 
-SYNTAX break = break (obj)
+SYNTAX rompi = rompi (obj)
     WHERE obj ISA OBJECT
       ELSE
         IF obj IS NOT plural
@@ -690,8 +690,8 @@ SYNTAX break = break (obj)
 
 
 ADD TO EVERY OBJECT
-  VERB break
-    CHECK my_game CAN break
+  VERB rompi
+    CHECK my_game CAN rompere
       ELSE SAY restricted_response OF my_game.
     AND obj IS examinable
       ELSE
@@ -717,25 +717,28 @@ ADD TO EVERY OBJECT
             END IF.
         END IF.
     DOES
-      "Resorting to brute force is not the solution here."
+    --@TODO: Rivedi frase (magari "forza bruta")
+      "La violenza non è la giusta risposta a questo." -- presa da i6!
+      -- "Resorting to brute force is not the solution here."
   END VERB.
 END ADD TO.
 
 
-SYNONYMS destroy = break.
+SYNONYMS distruggi, spacca, sfonda = rompi.
 
 
 
 -- ===============================================================
 
 
------ BREAK WITH
+----- @ROMPI_CON --> @BREAK WITH (VERB + SYNTAX)
 
 
 -- ===============================================================
 
 
-SYNTAX break_with = break (obj) 'with' (instr)
+-- SYNTAX break_with = break (obj) 'with' (instr)
+SYNTAX rompi_con = rompi (obj) 'con' (instr)
   WHERE obj ISA OBJECT
     ELSE
       IF obj IS NOT plural
@@ -751,9 +754,9 @@ SYNTAX break_with = break (obj) 'with' (instr)
 
 
 ADD TO EVERY OBJECT
-  VERB break_with
+  VERB rompi_con
     WHEN obj
-      CHECK my_game CAN break_with
+      CHECK my_game CAN rompere_con
         ELSE SAY restricted_response OF my_game.
       AND obj IS examinable
         ELSE
@@ -789,8 +792,10 @@ ADD TO EVERY OBJECT
               END IF.
           END IF.
       DOES
-        "Trying to break" SAY THE obj. "with" SAY THE instr.
-        "wouldn't accomplish anything."
+        "Tentare di rompere" SAY THE obj. "con" SAY THE instr.
+        "non risolverebbe nulla."
+      -- "Trying to break" SAY THE obj. "with" SAY THE instr.
+      -- "wouldn't accomplish anything."
   END VERB.
 END ADD TO.
 
@@ -4935,19 +4940,20 @@ END ADD TO.
 -- ==============================================================
 
 
------ PRAY
+----- @PREGA --> @PRAY (VERB + SYNTAX)
 
 
 -- ==============================================================
 
 
-SYNTAX pray = pray.
+SYNTAX prega = prega.
 
 
-VERB pray
-  CHECK my_game CAN pray
+VERB prega
+  CHECK my_game CAN pregare
     ELSE SAY restricted_response OF my_game.
-  DOES "Your prayers don't seem to help right now."
+  DOES "Sembra che le tue preghiere non siano state esaudite." --> da i6
+  -- DOES "Your prayers don't seem to help right now."
 END VERB.
 
 

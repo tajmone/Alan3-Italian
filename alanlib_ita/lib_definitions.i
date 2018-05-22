@@ -1,4 +1,4 @@
--- "lib_definitions.i" v0.0.7 (2018/05/22)
+-- "lib_definitions.i" v0.0.8 (2018/05/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -748,8 +748,11 @@ EVERY definition_block ISA LOCATION
   CAN dare.         --> give. 
   CAN inventariare. --> i           (+ inv, inventory)
   CAN mangiare.     --> eat
+  CAN pregare.      --> pray
   CAN prendere.     --> take.        (+ carry, get, grab, hold, obtain)
   CAN prendere_da.  --> take_from.   (+ remove from)
+  CAN rompere.      --> break (+ destroy)
+  CAN rompere_con.  --> break_with
   CAN scavare.      --> dig
   CAN spogliarsi.   --> undress
   CAN uccidere.     --> kill        (+ murder)
@@ -764,8 +767,6 @@ EVERY definition_block ISA LOCATION
   CAN attack.      -- (+ beat, fight, hit, punch)
   CAN attack_with.
   CAN bite.        -- (+ chew)
-  CAN break.       -- (+ destroy)
-  CAN break_with.
   CAN 'brief'.
   CAN buy.         -- (+ purchase)
   CAN catch.
@@ -832,7 +833,6 @@ EVERY definition_block ISA LOCATION
   CAN pour.
   CAN pour_in.
   CAN pour_on.
-  CAN pray.
   CAN pry.
   CAN pry_with.
   CAN pull.
@@ -936,8 +936,11 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game dare.            --> give
   MAKE my_game inventariare.    --> i            (+ inv, inventory)
   MAKE my_game mangiare.        --> eat
+  MAKE my_game pregare.         --> pray
   MAKE my_game prendere.        --> take.        (+ carry, get, grab, hold, obtain)
   MAKE my_game prendere_da.     --> take_from.   (+ remove from)
+  MAKE my_game rompere.         --> break (+ destroy)
+  MAKE my_game rompere_con.     --> break_with
   MAKE my_game scavare.         --> dig
   MAKE my_game spogliarsi.      --> undress
   MAKE my_game uccidere.        --> kill         (+ murder)
@@ -952,8 +955,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game attack.          -- (+ beat, fight, hit, punch)
   MAKE my_game attack_with.
   MAKE my_game bite.            -- (+ chew)
-  MAKE my_game break.           -- (+ destroy)
-  MAKE my_game break_with.
   MAKE my_game 'brief'.
   MAKE my_game bruciare.        --> burn
   MAKE my_game bruciare_con.    --> burn_with
@@ -1022,7 +1023,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game pour.
   MAKE my_game pour_in.
   MAKE my_game pour_on.
-  MAKE my_game pray.
   MAKE my_game pry.
   MAKE my_game pry_with.
   MAKE my_game pull.
@@ -1128,20 +1128,23 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
                 -- 'wait' and sensory verbs as well as all out-of-game verbs work
   THEN
 
-  MAKE my_game inventariare. --> i (+ inv, inventory)
-  MAKE my_game NOT aprire.      --> open
-  MAKE my_game NOT aprire_con.  --> open_with
-  MAKE my_game NOT bere.        --> drink
-  MAKE my_game NOT chiudere.       --> close (+ shut)
-  MAKE my_game NOT chiudere_con.   --> close_with
-  MAKE my_game NOT danzare.     --> dance
-  MAKE my_game NOT mangiare.    --> eat
-  MAKE my_game NOT prendere.    --> take.        -- (+ carry, get, grab, hold, obtain)
-  MAKE my_game NOT prendere_da. --> take_from.   -- (+ remove from)
-  MAKE my_game NOT scavare.     --> dig
-  MAKE my_game NOT spogliarsi. --> undress
-  MAKE my_game NOT uccidere.     --> kill (+ murder)
-  MAKE my_game NOT uccidere_con. --> kill_with
+  MAKE my_game NOT aprire.        --> open
+  MAKE my_game NOT aprire_con.    --> open_with
+  MAKE my_game NOT bere.          --> drink
+  MAKE my_game NOT chiudere.      --> close         (+ shut)
+  MAKE my_game NOT chiudere_con.  --> close_with
+  MAKE my_game NOT danzare.       --> dance
+  MAKE my_game     inventariare.  --> i             (+ inv, inventory)
+  MAKE my_game NOT mangiare.      --> eat
+  MAKE my_game     pregare.       --> pray
+  MAKE my_game NOT prendere.      --> take.         (+ carry, get, grab, hold, obtain)
+  MAKE my_game NOT prendere_da.   --> take_from.    (+ remove from)
+  MAKE my_game NOT rompere.       --> break (+ destroy)
+  MAKE my_game NOT rompere_con.   --> break_with
+  MAKE my_game NOT scavare.       --> dig
+  MAKE my_game NOT spogliarsi.    --> undress
+  MAKE my_game NOT uccidere.      --> kill          (+ murder)
+  MAKE my_game NOT uccidere_con.  --> kill_with
 
 --# NOT YET TRANSLATED:
 
@@ -1153,8 +1156,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT attack.      -- (+ beat, fight, hit, punch)
   MAKE my_game NOT attack_with.
   MAKE my_game NOT bite.        -- (+ chew)
-  MAKE my_game NOT break.       -- (+ destroy)
-  MAKE my_game NOT break_with.
   MAKE my_game 'brief'.
   MAKE my_game NOT bruciare.     --> burn
   MAKE my_game NOT bruciare_con. --> burn_with
@@ -1224,7 +1225,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT pour.
   MAKE my_game NOT pour_in.
   MAKE my_game NOT pour_on.
-  MAKE my_game pray.
   MAKE my_game NOT pry.
   MAKE my_game NOT pry_with.
   MAKE my_game NOT pull.
@@ -1324,8 +1324,11 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT danzare.       --> dance
   MAKE my_game NOT inventariare.  --> i             (+ inv, inventory)
   MAKE my_game NOT mangiare.      --> eat
+  MAKE my_game NOT pregare.       --> pray
   MAKE my_game NOT prendere.      --> take.         (+ carry, get, grab, hold, obtain)
   MAKE my_game NOT prendere_da.   --> take_from.    (+ remove from)
+  MAKE my_game NOT rompere.       --> break (+ destroy)
+  MAKE my_game NOT rompere_con.   --> break_with
   MAKE my_game NOT scavare.       --> dig
   MAKE my_game NOT spogliarsi.    --> undress
   MAKE my_game NOT uccidere.      --> kill          (+ murder)
@@ -1341,8 +1344,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT attack.      -- (+ beat, fight, hit, punch)
   MAKE my_game NOT attack_with.
   MAKE my_game NOT bite.        -- (+ chew)
-  MAKE my_game NOT break.       -- (+ destroy)
-  MAKE my_game NOT break_with.
   MAKE my_game 'brief'.
   MAKE my_game NOT bruciare.     --> burn
   MAKE my_game NOT bruciare_con. --> burn_with
@@ -1412,7 +1413,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT pour.
   MAKE my_game NOT pour_in.
   MAKE my_game NOT pour_on.
-  MAKE my_game NOT pray.
   MAKE my_game NOT pry.
   MAKE my_game NOT pry_with.
   MAKE my_game NOT pull.
@@ -1510,8 +1510,11 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT danzare.       --> dance
   MAKE my_game NOT inventariare.  --> i               (+ inv, inventory)
   MAKE my_game NOT mangiare.      --> eat
+  MAKE my_game NOT pregare.       --> pray
   MAKE my_game NOT prendere.      --> take.           (+ carry, get, grab, hold, obtain)
   MAKE my_game NOT prendere_da.   --> take_from.      (+ remove from)
+  MAKE my_game NOT rompere.       --> break (+ destroy)
+  MAKE my_game NOT rompere_con.   --> break_with
   MAKE my_game NOT scavare.       --> dig
   MAKE my_game NOT spogliarsi.    --> undress
   MAKE my_game NOT uccidere.      --> kill            (+ murder)
@@ -1527,8 +1530,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT attack.      -- (+ beat, fight, hit, punch)
   MAKE my_game NOT attack_with.
   MAKE my_game NOT bite.        -- (+ chew)
-  MAKE my_game NOT break.       -- (+ destroy)
-  MAKE my_game NOT break_with.
   MAKE my_game NOT 'brief'.
   MAKE my_game NOT bruciare.     --> burn
   MAKE my_game NOT bruciare_con. --> burn_with
@@ -1598,7 +1599,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT pour.
   MAKE my_game NOT pour_in.
   MAKE my_game NOT pour_on.
-  MAKE my_game NOT pray.
   MAKE my_game NOT pry.
   MAKE my_game NOT pry_with.
   MAKE my_game NOT pull.

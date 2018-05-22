@@ -11,9 +11,19 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/05/22 \(3\)](#20180522-3)
+    - [Verb: `pray`](#verb-pray)
+    - [Verb: `break`](#verb-break)
+    - [Verb: `break_with`](#verb-break_with)
+    - [Verb Restriction Attributes](#verb-restriction-attributes)
 - [2018/05/22 \(2\)](#20180522-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
 - [2018/05/22 \(1\)](#20180522-1)
+    - [Verb: `undress`](#verb-undress)
 - [2018/05/19](#20180519)
+    - [Verb: `take`](#verb-take)
+    - [Verb: `take_from`](#verb-take_from)
+    - [Verb: `give`](#verb-give)
 - [2018/05/15](#20180515)
 - [2018/05/12 \(2\)](#20180512-2)
 - [2018/05/12 \(1\)](#20180512-1)
@@ -25,10 +35,58 @@ Status: Alpha stage.
 
 -----
 
+# 2018/05/22 (3)
+
+- [`lib_definitions.i`][lib_definitions] (v0.0.8)
+- [`lib_verbs.i`][lib_verbs] (v0.0.7)
+
+## Verb: `pray`
+
+Translated verb "__pregare__" (_pray_):
+
+    prega
+
+Only produces the response "`Sembra che le tue preghiere non siano state esaudite.`" (taken from Inofrm 6 _Infit_).
+
+## Verb: `break`
+
+Translated verb "__rompi__" (_break_):
+
+    rompi (obj)
+
+with synonyms: `distruggi`, `spacca`, `sfonda`.
+
+Only produces the response "`La violenza non è la giusta risposta a questo.`" (taken from Inofrm 6 _Infit_).
+
+## Verb: `break_with`
+
+Translated verb "__rompi con__" (_break_with):
+
+    rompi (obj) con (instr)
+
+Same synonyms of __rompi__ apply here.
+
+Only produces the response "`Tentare di rompere <THE obj> con <THE instr> non risolverebbe nulla.`".
+
+
+## Verb Restriction Attributes
+
+Translated `my_game` attributes for verb restrictions:
+
+|   English    |   Italian   |
+|--------------|-------------|
+| `break`      | `rompi`     |
+| `break_with` | `rompi_con` |
+| `pray`       | `pregare`   |
+
+
 # 2018/05/22 (2)
 
 - [`lib_definitions.i`][lib_definitions] (v0.0.7)
 - [`lib_verbs.i`][lib_verbs] (v0.0.6)
+
+
+## Verb Restriction Attributes
 
 Translated `my_game` attributes for verb restrictions:
 
@@ -52,7 +110,9 @@ Translated `my_game` attributes for verb restrictions:
 - [`lib_definitions.i`][lib_definitions] (v0.0.6)
 - [`lib_verbs.i`][lib_verbs] (v0.0.5)
 
-Transalted verb "__spogliati__" (_undress_):
+## Verb: `undress`
+
+Translated verb "__spogliati__" (_undress_):
 
     [spogliati|svestiti]
 
@@ -67,15 +127,21 @@ Its default reponses translation might need some polishing. The commented code e
 
 Translate verb "__dai__" (_give_), and "__prendi da__" (_take from_).
 
+## Verb: `take`
+
 Now the status of the translated verbs is more polished:
 
 Verb `prendi` (_take_):
 
     [prendi|afferra|raccogli|trasporta] (obj)
 
+## Verb: `take_from`
+
 Verb `prendi_da` (_take from_):
 
     [prendi|rimuovi|togli] (obj) da (holder)
+
+## Verb: `give`
 
 Verb `dai_a` (_give_):
 
