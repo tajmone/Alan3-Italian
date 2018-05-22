@@ -25,8 +25,8 @@
 ----- attack      (+ beat, fight, hit, punch)              attack (target)                     1
 ----- attack_with                                          attack (target) with (weapon)       2
 ----- bite        (+ chew)                                 bite (obj)                          1       x
------ break       (+ destroy)                              break (obj)                         1       x
------ break_with                                           break (obj) with (instr)            2       x
+----> break       (+ destroy)                              break (obj)                         1       x
+----> break_with                                           break (obj) with (instr)            2       x
 ----- brief                                                brief                               0
 ----- burn                                                 burn (obj)                          1       x
 ----- burn_with                                            burn (obj) with (instr)             2       x
@@ -105,7 +105,7 @@
 ----- pour        (= defined at the verb 'empty')          pour (obj)                          1       x
 ----- pour_in     (= defined at the verb 'emtpy_in')       pour (obj) in (cont)                2       x
 ----- pour_on     (= defined at the verb 'empty_on')       pour (obj) on (surface)             2       x
------ pray                                                 pray                                0
+----> pray                                                 pray                                0
 ----- pry                                                  pry (obj)                           1       x
 ----- pry_with                                             pry (obj) with (instr)              2       x
 ----- pull                                                 pull (obj)                          1       x

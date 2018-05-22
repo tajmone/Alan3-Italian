@@ -744,7 +744,7 @@ END EVENT.
 
 
 --+--------------------------+----------+----------+-----------+-----------+
---| Clothing |     Headcover | Topcover | Botcover | Footcover | Handcover |
+--| Clothing     | Headcover | Topcover | Botcover | Footcover | Handcover |
 --+--------------------------+----------+----------+-----------+-----------+
 --| hat                    2 |        0 |        0 |         0 |         0 |
 --| vest/bra               0 |        2 |        0 |         0 |         0 |
