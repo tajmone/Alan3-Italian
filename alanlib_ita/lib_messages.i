@@ -1,4 +1,4 @@
--- "lib_messages.i" v0.0.1 (2018/05/01)
+-- "lib_messages.i" v0.0.2 (2018/05/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -14,6 +14,19 @@
 
 
 MESSAGE
+
+  --@@ NO_WAY: i6: "Non puoi andare in quella direzione."
+  --@@ NO_WAY: i7: "Non puoi andare da quella parte."
+  NO_WAY:         "Non puoi andare in quella direzione." -- "You can't go that way."
+  SAVE_FAILED:    "Salvataggio della partita fallito."
+  SAVE_OVERWRITE: "Esiste già un file con questo nome. Vuoi sovrascriverlo? (y)"
+  SAVE_WHERE:     "Inserisci il nome del file" -- niente "." perché Alan aggiunge
+                                               -- il nome di default subito dopo!
+
+--  =========================
+--# WAITING TO BE TRANSLATED:
+--  =========================
+
   AFTER_BUT: "You must give at least one object after '$1'."
   AGAIN: ""
   BUT_ALL: "You can only use '$1' AFTER '$2'."
@@ -94,7 +107,7 @@ MESSAGE
     END IF.
 
   HAVE_SCORED: "You have scored $1 points out of $2."
-      IMPOSSIBLE_WITH: "That's impossible with $+1."
+  IMPOSSIBLE_WITH: "That's impossible with $+1."
   IS_EMPTY:
     IF parameter1 IS NOT plural
       THEN "$+1 is empty."
@@ -103,22 +116,19 @@ MESSAGE
   MORE: "<More>"
   MULTIPLE: "You can't refer to multiple objects with '$v'."
   NO_SUCH: "You can't see any $1 here."
-  --@@ NO_WAY: i6: "Non puoi andare in quella direzione."
-  --@@ NO_WAY: i7: "Non puoi andare da quella parte."
-  NO_WAY: "Non puoi andare in quella direzione." -- "You can't go that way."
-  NOT_MUCH: "That doesn't leave much to $v!"
   NOUN: "You must supply a noun."
-      NOT_A_SAVEFILE: "That file does not seem to be an Alan game save file."
-      QUIT_ACTION: "Do you want to RESTART, RESTORE, QUIT or UNDO? "
-    -- these four alternatives are hardwired to the interpreter and cannot be changed.
+  NOT_A_SAVEFILE: "That file does not seem to be an Alan game save file."
+  NOT_MUCH: "That doesn't leave much to $v!"
+  
+  QUIT_ACTION: "Do you want to RESTART, RESTORE, QUIT or UNDO? "
+--| NOTE: The possible answers are currently hard-wired into the interpreter, so
+--|       changing RESTART, RESTORE, QUIT or UNDO will probably confuse the player!
+
   REALLY: "Are you sure (press ENTER to confirm)?"
   RESTORE_FROM: "Enter file name to restore from"
-  SAVE_FAILED: "Sorry, save failed."
   SAVE_MISSING: "Sorry, could not open the save file."
   SAVE_NAME: "Sorry, the save file did not contain a save for this adventure."
-    SAVE_OVERWRITE: "That file already exists, overwrite (y)?"
   SAVE_VERSION: "Sorry, the save file was created by a different version."
-  SAVE_WHERE: "Enter file name to save in"
   SEE_START:
     IF parameter1 IS NOT plural
       THEN "There is $01"
@@ -131,7 +141,7 @@ MESSAGE
   UNDONE: "'$1' undone."
   UNKNOWN_WORD: "I don't know the word '$1'."
   WHAT: "That was not understood."
-      WHAT_WORD: "It is not clear what you mean by '$1'."
+  WHAT_WORD: "It is not clear what you mean by '$1'."
   WHICH_PRONOUN_START: "It is not clear if you by '$1'"
   WHICH_PRONOUN_FIRST: "mean $+1"
   WHICH_START: "It is not clear if you mean $+1"

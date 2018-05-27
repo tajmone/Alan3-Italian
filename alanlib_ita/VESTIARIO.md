@@ -24,9 +24,11 @@ Appunti su come viene gestito il vestiario nella Libreria Standard di Alan, e no
 
 # Introduzione
 
-La libreria standard predispone un sistema articolato per la gestione del vestiario, sia del giocatore (`hero`) che degli altri personaggi (PNG `ACTOR`).
+La libreria standard predispone un sistema articolato per la gestione del vestiario, sia del giocatore (`hero`) che degli altri personaggi (PNG `ACTOR`), che tiene conto delle aree interessate del corpo per ciascun capo, nonché dell'ordine startificato in cui il vestiario deve essere indossato e rimosso.
 
+La mappatura del vestiario alle zone del corpo che ricopre, così come la stratificazione d'indossamento, è gestita tramite attributi di tipo numerico presenti in ogni istanza di vestiario.
 
+La libreria predispone inoltre un sistema (opzionale) per distinguere il vestiario in genere di appartenenza (maschio/femmina), tramite l'attributo numerico `sex`, al fine di prevenire al giocatore di indossare abbigliamento non consono al suo genere d'appartenenza.
 
 ## `worn` e `wearing`
 
@@ -147,23 +149,23 @@ EVERY clothing ISA OBJECT
 
 > _**DA TRADURRE**_ — Questa tabella va tradotta in italiano, sia i termini di esempio della prima colonna che i termini degli attributi nelle rimanenti colonne (ma per questi ultimi, sto ancora lavorando sulla possibile terminologia da adottare).
 
-| Clothing               | Headcover | Topcover | Botcover | Footcover | Handcover |
-| ---------------------- | -------:  | ------:  | ------:  | -------:  | -------:  |
-| hat                    | 2         | 0        | 0        | 0         | 0         |
-| vest/bra               | 0         | 2        | 0        | 0         | 0         |
-| undies/panties         | 0         | 0        | 2        | 0         | 0         |
-| teddy                  | 0         | 4        | 4        | 0         | 0         |
-| blouse/shirt/T-shirt   | 0         | 8        | 0        | 0         | 0         |
-| dress/coveralls        | 0         | 8        | 32       | 0         | 0         |
-| skirt                  | 0         | 0        | 32       | 0         | 0         |
-| trousers/shorts        | 0         | 0        | 16       | 0         | 0         |
-| sweater/pullover       | 0         | 16       | 0        | 0         | 0         |
-| jacket                 | 0         | 32       | 0        | 0         | 0         |
-| coat                   | 0         | 64       | 64       | 0         | 0         |
-| socks/stockings        | 0         | 0        | 0        | 2         | 0         |
-| tights/pantiehose      | 0         | 0        | 8        | 2         | 0         |
-| shoes/boots            | 0         | 0        | 0        | 4         | 0         |
-| gloves                 | 0         | 0        | 0        | 0         | 2         |
+| Clothing                    | Headcover | Topcover | Botcover | Footcover | Handcover |
+| ----------------------      | -------:  | ------:  | ------:  | -------:  | -------:  |
+| cappello                    | **2**     | 0        | 0        | 0         | 0         |
+| canottiera/reggiseno        | 0         | **2**    | 0        | 0         | 0         |
+| mutande/slip                | 0         | 0        | **2**    | 0         | 0         |
+| pagliaccetto                | 0         | **4**    | **4**    | 0         | 0         |
+| camicetta/camicia/maglietta | 0         | **8**    | 0        | 0         | 0         |
+| salopette/abito da donna    | 0         | **8**    | **32**   | 0         | 0         |
+| gonna                       | 0         | 0        | **32**   | 0         | 0         |
+| pantaloni/pantaloncini      | 0         | 0        | **16**   | 0         | 0         |
+| maglione/pullover           | 0         | **16**   | 0        | 0         | 0         |
+| giacca_                     | 0         | **32**   | 0        | 0         | 0         |
+| cappotto                    | 0         | **64**   | **64**   | 0         | 0         |
+| calze/gambaletti            | 0         | 0        | 0        | **2**     | 0         |
+| collant/calzamaglia         | 0         | 0        | **8**    | **2**     | 0         |
+| scarpe/stivali              | 0         | 0        | 0        | **4**     | 0         |
+| guanti                      | 0         | 0        | 0        | 0         | **2**     |
 
 La tabella originale inglese (_The clothing table_):
 

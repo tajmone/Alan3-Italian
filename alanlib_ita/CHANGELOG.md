@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/05/27](#20180527)
+    - [Verb: `save`](#verb-save)
 - [2018/05/22 \(3\)](#20180522-3)
     - [Verb: `pray`](#verb-pray)
     - [Verb: `break`](#verb-break)
@@ -34,6 +36,37 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/05/27
+
+- [`lib_definitions.i`][lib_definitions] (v0.0.9)
+- [`lib_verbs.i`][lib_verbs] (v0.0.8)
+- [`lib_messages.i`][lib_messages] (v0.0.2)
+
+Translated `my_game` attributes for verb restrictions:
+
+| English  |      Italian      |
+|----------|-------------------|
+| `'save'` | `salvare_partita` |
+
+
+## Verb: `save`
+
+Translated verb "__salva__" (_save_):
+
+    salva [partita]
+
+with no synonyms.
+
+Translated RUN-TIME MESSAGES:
+
+|     Message      |                     Italian Translation                      |
+|------------------|--------------------------------------------------------------|
+| `SAVE_FAILED`    | Salvataggio della partita fallito.                           |
+| `SAVE_OVERWRITE` | Esiste già un file con questo nome. Vuoi sovrascriverlo? (y) |
+| `SAVE_WHERE`     | Inserisci il nome del file                                   |
+
+> __NOTE__ — some of the above run-time messages can only be seen when using ARun.
 
 # 2018/05/22 (3)
 

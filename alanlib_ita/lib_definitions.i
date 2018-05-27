@@ -1,4 +1,4 @@
--- "lib_definitions.i" v0.0.8 (2018/05/22)
+-- "lib_definitions.i" v0.0.9 (2018/05/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -737,26 +737,27 @@ EVERY definition_block ISA LOCATION
   -- synonyms, is disabled in-game. The restricted_response of the my_game instance (by default "You can't
   --- do that.") will be shown instead. The restriced_response is defined further up this file.
 
-  CAN aprire.       --> open
-  CAN aprire_con.   --> open_with
-  CAN bere.         --> drink
-  CAN bruciare.     --> burn
-  CAN bruciare_con. --> burn_with
-  CAN chiudere.     --> close (+ shut)
-  CAN chiudere_con. --> close_with
-  CAN danzare.      --> dance
-  CAN dare.         --> give. 
-  CAN inventariare. --> i           (+ inv, inventory)
-  CAN mangiare.     --> eat
-  CAN pregare.      --> pray
-  CAN prendere.     --> take.        (+ carry, get, grab, hold, obtain)
-  CAN prendere_da.  --> take_from.   (+ remove from)
-  CAN rompere.      --> break (+ destroy)
-  CAN rompere_con.  --> break_with
-  CAN scavare.      --> dig
-  CAN spogliarsi.   --> undress
-  CAN uccidere.     --> kill        (+ murder)
-  CAN uccidere_con. --> kill_with
+  CAN aprire.          --> open
+  CAN aprire_con.      --> open_with
+  CAN bere.            --> drink
+  CAN bruciare.        --> burn
+  CAN bruciare_con.    --> burn_with
+  CAN chiudere.        --> close (+ shut)
+  CAN chiudere_con.    --> close_with
+  CAN danzare.         --> dance
+  CAN dare.            --> give. 
+  CAN inventariare.    --> i           (+ inv, inventory)
+  CAN mangiare.        --> eat
+  CAN pregare.         --> pray
+  CAN prendere.        --> take.        (+ carry, get, grab, hold, obtain)
+  CAN prendere_da.     --> take_from.   (+ remove from)
+  CAN rompere.         --> break (+ destroy)
+  CAN rompere_con.     --> break_with
+  CAN salvare_partita. --> save
+  CAN scavare.         --> dig
+  CAN spogliarsi.      --> undress
+  CAN uccidere.        --> kill        (+ murder)
+  CAN uccidere_con.    --> kill_with
 
 --# NOT YET TRANSLATED:
   CAN about.
@@ -852,7 +853,6 @@ EVERY definition_block ISA LOCATION
   CAN 'restart'.
   CAN 'restore'.
   CAN rub.
-  CAN 'save'.
   CAN 'say'.
   CAN say_to.
   CAN 'score'.
@@ -941,6 +941,7 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game prendere_da.     --> take_from.   (+ remove from)
   MAKE my_game rompere.         --> break (+ destroy)
   MAKE my_game rompere_con.     --> break_with
+  MAKE my_game salvare_partita. --> save
   MAKE my_game scavare.         --> dig
   MAKE my_game spogliarsi.      --> undress
   MAKE my_game uccidere.        --> kill         (+ murder)
@@ -1042,7 +1043,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game 'restart'.
   MAKE my_game 'restore'.
   MAKE my_game rub.
-  MAKE my_game 'save'.
   MAKE my_game 'say'.
   MAKE my_game say_to.
   MAKE my_game 'score'.
@@ -1128,23 +1128,24 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
                 -- 'wait' and sensory verbs as well as all out-of-game verbs work
   THEN
 
-  MAKE my_game NOT aprire.        --> open
-  MAKE my_game NOT aprire_con.    --> open_with
-  MAKE my_game NOT bere.          --> drink
-  MAKE my_game NOT chiudere.      --> close         (+ shut)
-  MAKE my_game NOT chiudere_con.  --> close_with
-  MAKE my_game NOT danzare.       --> dance
-  MAKE my_game     inventariare.  --> i             (+ inv, inventory)
-  MAKE my_game NOT mangiare.      --> eat
-  MAKE my_game     pregare.       --> pray
-  MAKE my_game NOT prendere.      --> take.         (+ carry, get, grab, hold, obtain)
-  MAKE my_game NOT prendere_da.   --> take_from.    (+ remove from)
-  MAKE my_game NOT rompere.       --> break (+ destroy)
-  MAKE my_game NOT rompere_con.   --> break_with
-  MAKE my_game NOT scavare.       --> dig
-  MAKE my_game NOT spogliarsi.    --> undress
-  MAKE my_game NOT uccidere.      --> kill          (+ murder)
-  MAKE my_game NOT uccidere_con.  --> kill_with
+  MAKE my_game NOT aprire.          --> open
+  MAKE my_game NOT aprire_con.      --> open_with
+  MAKE my_game NOT bere.            --> drink
+  MAKE my_game NOT chiudere.        --> close         (+ shut)
+  MAKE my_game NOT chiudere_con.    --> close_with
+  MAKE my_game NOT danzare.         --> dance
+  MAKE my_game     inventariare.    --> i             (+ inv, inventory)
+  MAKE my_game NOT mangiare.        --> eat
+  MAKE my_game     pregare.         --> pray
+  MAKE my_game NOT prendere.        --> take.         (+ carry, get, grab, hold, obtain)
+  MAKE my_game NOT prendere_da.     --> take_from.    (+ remove from)
+  MAKE my_game NOT rompere.         --> break (+ destroy)
+  MAKE my_game NOT rompere_con.     --> break_with
+  MAKE my_game     salvare_partita. --> save
+  MAKE my_game NOT scavare.         --> dig
+  MAKE my_game NOT spogliarsi.      --> undress
+  MAKE my_game NOT uccidere.        --> kill          (+ murder)
+  MAKE my_game NOT uccidere_con.    --> kill_with
 
 --# NOT YET TRANSLATED:
 
@@ -1244,7 +1245,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game 'restart'.
   MAKE my_game 'restore'.
   MAKE my_game NOT rub.
-  MAKE my_game 'save'.
   MAKE my_game NOT 'say'.
   MAKE my_game NOT say_to.
   MAKE my_game 'score'.
@@ -1316,23 +1316,24 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
                                         -- 'save', 'quit' etc work.
 
 
-  MAKE my_game NOT aprire.        --> open
-  MAKE my_game NOT aprire_con.    --> open_with
-  MAKE my_game NOT bere.          --> drink
-  MAKE my_game NOT chiudere.      --> close         (+ shut)
-  MAKE my_game NOT chiudere_con.  --> close_with
-  MAKE my_game NOT danzare.       --> dance
-  MAKE my_game NOT inventariare.  --> i             (+ inv, inventory)
-  MAKE my_game NOT mangiare.      --> eat
-  MAKE my_game NOT pregare.       --> pray
-  MAKE my_game NOT prendere.      --> take.         (+ carry, get, grab, hold, obtain)
-  MAKE my_game NOT prendere_da.   --> take_from.    (+ remove from)
-  MAKE my_game NOT rompere.       --> break (+ destroy)
-  MAKE my_game NOT rompere_con.   --> break_with
-  MAKE my_game NOT scavare.       --> dig
-  MAKE my_game NOT spogliarsi.    --> undress
-  MAKE my_game NOT uccidere.      --> kill          (+ murder)
-  MAKE my_game NOT uccidere_con.  --> kill_with
+  MAKE my_game NOT aprire.          --> open
+  MAKE my_game NOT aprire_con.      --> open_with
+  MAKE my_game NOT bere.            --> drink
+  MAKE my_game NOT chiudere.        --> close         (+ shut)
+  MAKE my_game NOT chiudere_con.    --> close_with
+  MAKE my_game NOT danzare.         --> dance
+  MAKE my_game NOT inventariare.    --> i             (+ inv, inventory)
+  MAKE my_game NOT mangiare.        --> eat
+  MAKE my_game NOT pregare.         --> pray
+  MAKE my_game NOT prendere.        --> take.         (+ carry, get, grab, hold, obtain)
+  MAKE my_game NOT prendere_da.     --> take_from.    (+ remove from)
+  MAKE my_game NOT rompere.         --> break (+ destroy)
+  MAKE my_game NOT rompere_con.     --> break_with
+  MAKE my_game     salvare_partita. --> save
+  MAKE my_game NOT scavare.         --> dig
+  MAKE my_game NOT spogliarsi.      --> undress
+  MAKE my_game NOT uccidere.        --> kill          (+ murder)
+  MAKE my_game NOT uccidere_con.    --> kill_with
 
 --# NOT YET TRANSLATED:
 
@@ -1432,7 +1433,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game 'restart'.
   MAKE my_game 'restore'.
   MAKE my_game NOT rub.
-  MAKE my_game 'save'.
   MAKE my_game NOT 'say'.
   MAKE my_game NOT say_to.
   MAKE my_game 'score'.
@@ -1502,23 +1502,24 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   THEN                                  -- like 'save' and 'quit'.
 
 
-  MAKE my_game NOT aprire.        --> open
-  MAKE my_game NOT aprire_con.    --> open_with
-  MAKE my_game NOT bere.          --> drink
-  MAKE my_game NOT chiudere.      --> close           (+ shut)
-  MAKE my_game NOT chiudere_con.  --> close_with
-  MAKE my_game NOT danzare.       --> dance
-  MAKE my_game NOT inventariare.  --> i               (+ inv, inventory)
-  MAKE my_game NOT mangiare.      --> eat
-  MAKE my_game NOT pregare.       --> pray
-  MAKE my_game NOT prendere.      --> take.           (+ carry, get, grab, hold, obtain)
-  MAKE my_game NOT prendere_da.   --> take_from.      (+ remove from)
-  MAKE my_game NOT rompere.       --> break (+ destroy)
-  MAKE my_game NOT rompere_con.   --> break_with
-  MAKE my_game NOT scavare.       --> dig
-  MAKE my_game NOT spogliarsi.    --> undress
-  MAKE my_game NOT uccidere.      --> kill            (+ murder)
-  MAKE my_game NOT uccidere_con.  --> kill_with
+  MAKE my_game NOT aprire.          --> open
+  MAKE my_game NOT aprire_con.      --> open_with
+  MAKE my_game NOT bere.            --> drink
+  MAKE my_game NOT chiudere.        --> close           (+ shut)
+  MAKE my_game NOT chiudere_con.    --> close_with
+  MAKE my_game NOT danzare.         --> dance
+  MAKE my_game NOT inventariare.    --> i               (+ inv, inventory)
+  MAKE my_game NOT mangiare.        --> eat
+  MAKE my_game NOT pregare.         --> pray
+  MAKE my_game NOT prendere.        --> take.           (+ carry, get, grab, hold, obtain)
+  MAKE my_game NOT prendere_da.     --> take_from.      (+ remove from)
+  MAKE my_game NOT rompere.         --> break (+ destroy)
+  MAKE my_game NOT rompere_con.     --> break_with
+  MAKE my_game NOT salvare_partita. --> save
+  MAKE my_game NOT scavare.         --> dig
+  MAKE my_game NOT spogliarsi.      --> undress
+  MAKE my_game NOT uccidere.        --> kill            (+ murder)
+  MAKE my_game NOT uccidere_con.    --> kill_with
 
 --# NOT YET TRANSLATED:
 
@@ -1618,7 +1619,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT 'restart'.
   MAKE my_game NOT 'restore'.
   MAKE my_game NOT rub.
-  MAKE my_game NOT 'save'.
   MAKE my_game NOT 'say'.
   MAKE my_game NOT say_to.
   MAKE my_game NOT 'score'.

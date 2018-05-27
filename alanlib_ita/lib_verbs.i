@@ -1,4 +1,4 @@
--- "lib_verbs.i" v0.0.7 (2018/05/22)
+-- "lib_verbs.i" v0.0.8 (2018/05/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -5822,17 +5822,23 @@ SYNONYMS massage = rub.
 -- ==============================================================
 
 
------ SAVE
+----- @SALVA_PARTITA @SAVE (VERB + SYNTAX)
 
 
 -- ==============================================================
+--#NOTA: A questo verbo diamo l'ID "salva_partita" per lasciare
+--       libero l'ID "salva" nel caso l'utente volesse creare un
+--       verbo "salva" nel gioco.
+-- MESSAGGI DI SISTEMA CORRELATI (alcuni visibili solo in ARun):
+--    SAVE_FAILED    -- Se il salvataggio fallisce.
+--    SAVE_OVERWRITE -- Conferma sovrascrittura file.
+--    SAVE_WHERE     -- Nome del file di salvataggio
+SYNTAX salva_partita = salva.
+       salva_partita = salva partita.
 
 
-SYNTAX 'save' = 'save'.
-
-
-VERB 'save'
-  CHECK my_game CAN 'save'
+VERB salva_partita
+  CHECK my_game CAN salvare_partita
     ELSE SAY restricted_response OF my_game.
   DOES
     SAVE.
