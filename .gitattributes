@@ -20,6 +20,7 @@
 *.alan     text
 *.i        text
 *.ifid     text
+*.sav      binary
 
 ## ===================
 ## Game Scripts & Logs
