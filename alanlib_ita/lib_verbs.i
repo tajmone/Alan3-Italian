@@ -1,4 +1,4 @@
--- "lib_verbs.i" v0.0.8 (2018/05/27)
+-- "lib_verbs.i" v0.0.9 (2018/05/28)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -6,7 +6,23 @@
 -- ALAN Standard Library v2.1
 -- Verbs (file name: 'lib_verbs.i')
 
+---- Verbi tradotti, in ordine alfabetico:
 
+--+---------------+----------------------------------------+---------------------------------+--------+-----+
+--| VERBO         | SINONIMI                               | SINTASSI                        | ARIETÀ | OGG |
+--|---------------|----------------------------------------|---------------------------------|--------|-----|
+--| dai_a         | porgi, offri                           | dai (ogg) a (recipient)         |   2    |  x  |
+--| inventario    | inv                                    | inventario                      |   0    |     |
+--| prega         |                                        | prega                           |   0    |     |
+--| prendi        | afferra, raccogli, trasporta           | prendi (ogg)                    |   1    |  x  |
+--| prendi_da     | rimuovi, togli                         | prendi (ogg) da (holder)        |   2    |  x  |
+--| rompi         | distruggi, spacca, sfonda              | rompi (ogg)                     |   1    |  x  |
+--| rompi_con     | distruggi, spacca, sfonda              | rompi (ogg) con (instr)         |   2    |  x  |
+--| salva_partita |                                        | salva [partita]                 |   0    |     |
+--| spogliati     | svestiti                               | spogliati                       |   0    |     |
+--+---------------+----------------------------------------+---------------------------------+--------+-----+
+
+--|               |                                        |                                 |   0    |  x  |
 
 ----- This library file defines common verbs needed in gameplay. The verbs
 ----- are listed alphabetically. This file also includes common commands which are not
@@ -124,7 +140,7 @@
 ----- restart                                              restart                             0
 ----- restore                                              restore                             0
 ----- rub                                                  rub (obj)                           1       x
------ save                                                 save                                0
+----> save                                                 save                                0
 ----- say                                                  say (topic)                         1
 ----- say_to                                               say (topic) to (act)                2
 ----- score                                                score                               0

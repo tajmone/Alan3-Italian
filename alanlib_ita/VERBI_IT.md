@@ -10,10 +10,13 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Indice dei Verbi](#indice-dei-verbi)
+- [Comandi Amministrativi](#comandi-amministrativi)
+    - [salva_partita](#salva_partita)
 - [DARE, PRENDERE, RIMUOVERE](#dare-prendere-rimuovere)
     - [prendi](#prendi)
     - [prendi_da](#prendi_da)
     - [dai_a](#dai_a)
+    - [inventario](#inventario)
 - [INDOSSARE, SPOGLIARSI](#indossare-spogliarsi)
     - [spogliati](#spogliati)
 - [ATTACCARE, ROMPERE](#attaccare-rompere)
@@ -32,25 +35,53 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 
 - [afferra]
 - [dai]
-- [distruggi con]
 - [distruggi]
+- [distruggi con]
+- [inventario]
 - [offri]
 - [porgi]
 - [prega]
-- [prendi da]
 - [prendi]
+- [prendi da]
 - [raccogli]
 - [rimuovi]
 - [rompi con]
 - [rompi]
-- [sfonda con]
+- [salva]
+- [salva partita]
 - [sfonda]
-- [spacca con]
+- [sfonda con]
 - [spacca]
+- [spacca con]
 - [spogliati]
 - [svestiti]
 - [togli]
 - [trasporta]
+
+------------------------------------------------------------------
+
+# Comandi Amministrativi
+
+Ovvero, quei comandi che non riguardano il mondo dell'avventura ma funzionalità legate alla partita (salvare, opzioni di verbosità, ecc.).
+
+## salva_partita
+
+[salva]: #salva_partita
+[salva partita]: #salva_partita
+
+
+attributo `my_game`:
+
+    CAN [NOT] salvare_partita
+
+
+sintassi:
+
+    salva [partita]
+
+condizioni:
+
+- `my_game CAN salvare_partita`
 
 
 -----------------------------------------
@@ -72,7 +103,7 @@ attributo `my_game`:
 
 sintassi:
 
-    [prendi|afferra|raccogli|trasporta] (ogg)
+    (prendi|afferra|raccogli|trasporta) (ogg)
 
 
 ## prendi_da
@@ -87,7 +118,7 @@ attributo `my_game`:
 
 sintassi:
 
-    [prendi|rimuovi|togli] (ogg) da (holder)
+    (prendi|rimuovi|togli) (ogg) da (holder)
 
 
 ## dai_a
@@ -102,9 +133,23 @@ attributo `my_game`:
 
 sintassi:
 
-    [dai|porgi|offri] (ogg) a (recipient)
+    (dai|porgi|offri) (ogg) a (recipient)
 
 ... dove `recipient` è un ATTORE.
+
+## inventario
+
+[inventario]: #inventario
+
+attributo `my_game`:
+
+    CAN [NOT] inventariare
+
+sintassi:
+
+    (inventario|inv)
+
+
 
 ------------------------------------------------------------------
 
@@ -124,7 +169,7 @@ attributo `my_game`:
 
 sintassi:
 
-    [spogliati|svestiti]
+    (spogliati|svestiti)
 
 condizioni:
 
@@ -136,6 +181,7 @@ esito:
 - Nulla, ti dice che ripensandoci non è una buona idea.
 
 > __NOTA__ — La definizione del verbo contiene del codice (commentato) di esempio su come implementare l'azione di spogliarsi. Quella parte andrebbe controllata meglio (messaggi, ecc.).
+
 
 ------------------------------------------------------------------
 
@@ -151,7 +197,7 @@ esito:
 
 sintassi:
 
-    [rompi|distruggi|spacca|sfonda] (ogg)
+    (rompi|distruggi|spacca|sfonda) (ogg)
 
 condizioni:
 
@@ -175,7 +221,7 @@ esito:
 
 sintassi:
 
-    [rompi|distruggi|spacca|sfonda] (ogg) 'con' (instr)
+    (rompi|distruggi|spacca|sfonda) (ogg) 'con' (instr)
 
 condizioni:
 

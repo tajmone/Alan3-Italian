@@ -85,6 +85,7 @@ From the [Alan website]:
 ## Alan Standard Library
 
 - https://www.alanif.se/information/library
+- https://github.com/AnssiR66/AlanStdLib (new official repo)
 - https://bitbucket.org/alanif/alanlib
 
 Written by Anssi Räisänen. Current version: v2.1.
