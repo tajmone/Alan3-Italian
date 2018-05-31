@@ -1,4 +1,4 @@
--- "lib_messages.i" v0.0.2 (2018/05/27)
+-- "lib_messages.i" v0.0.3 (2018/05/31)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -18,10 +18,34 @@ MESSAGE
   --@@ NO_WAY: i6: "Non puoi andare in quella direzione."
   --@@ NO_WAY: i7: "Non puoi andare da quella parte."
   NO_WAY:         "Non puoi andare in quella direzione." -- "You can't go that way."
+
+  --============================================================================
+  -- RICOMINCIA PARTITA
+  --============================================================================
+  REALLY:         "Sei sicuro (premi INVIO per confermare)?"
+  QUIT_ACTION:    "Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? "
+  --| NOTA: Le possibili risposte a questo messaggio (RESTART, RESTORE, QUIT e
+  --|       UNDO) sono codificate in Alan e non possono essere tradotte, quindi
+  --|       per non confondere il giocatore è meglio lasciarle in inglese.
+  --============================================================================
+  -- SALVA PARTITA
+  --============================================================================
   SAVE_FAILED:    "Salvataggio della partita fallito."
   SAVE_OVERWRITE: "Esiste già un file con questo nome. Vuoi sovrascriverlo? (y)"
   SAVE_WHERE:     "Inserisci il nome del file" -- niente "." perché Alan aggiunge
                                                -- il nome di default subito dopo!
+  --============================================================================
+  -- CARICA PARTITA
+  --============================================================================
+  NOT_A_SAVEFILE: "Caricamento fallito, il file indicato non è una partita
+                   salvata."
+  RESTORE_FROM:   "Inserisci il nome del file" -- niente "." perché Alan aggiunge
+                                               -- il nome di default subito dopo!
+  SAVE_MISSING:   "Caricamento fallito, impossibile aprire il file richiesto."
+  SAVE_NAME:      "Caricamento fallito, il file indicato non è una partita salvata
+                   di questa avventura."
+  SAVE_VERSION:   "Caricamento fallito, il file indicato è stato creato con una
+                   versione diversa dell'avventura o dell'interprete."
 
 --  =========================
 --# WAITING TO BE TRANSLATED:
@@ -117,18 +141,9 @@ MESSAGE
   MULTIPLE: "You can't refer to multiple objects with '$v'."
   NO_SUCH: "You can't see any $1 here."
   NOUN: "You must supply a noun."
-  NOT_A_SAVEFILE: "That file does not seem to be an Alan game save file."
   NOT_MUCH: "That doesn't leave much to $v!"
   
-  QUIT_ACTION: "Do you want to RESTART, RESTORE, QUIT or UNDO? "
---| NOTE: The possible answers are currently hard-wired into the interpreter, so
---|       changing RESTART, RESTORE, QUIT or UNDO will probably confuse the player!
 
-  REALLY: "Are you sure (press ENTER to confirm)?"
-  RESTORE_FROM: "Enter file name to restore from"
-  SAVE_MISSING: "Sorry, could not open the save file."
-  SAVE_NAME: "Sorry, the save file did not contain a save for this adventure."
-  SAVE_VERSION: "Sorry, the save file was created by a different version."
   SEE_START:
     IF parameter1 IS NOT plural
       THEN "There is $01"

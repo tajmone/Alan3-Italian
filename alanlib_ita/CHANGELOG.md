@@ -11,6 +11,10 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/05/31](#20180531)
+    - [Verb: `restore`](#verb-restore)
+    - [Verb: `restart`](#verb-restart)
+    - [Verb: `quit`](#verb-quit)
 - [2018/05/28](#20180528)
 - [2018/05/27](#20180527)
     - [Verb: `save`](#verb-save)
@@ -37,6 +41,68 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/05/31
+
+- [`lib_definitions.i`][lib_definitions] (v0.0.10)
+- [`lib_messages.i`][lib_messages] (v0.0.3)
+- [`lib_verbs.i`][lib_verbs] (v0.0.10)
+
+
+Translated `my_game` attributes for verb restrictions:
+
+|   English   |        Italian         |
+|-------------|------------------------|
+| `'restore'` | `caricare_partita`     |
+| `'restart'` | `ricominciare_partita` |
+| `'quit'`    | `abbandonare_partita`  |
+
+Translated RUN-TIME MESSAGES:
+
+|     Message      |                                    Italian Translation                                    |
+|------------------|-------------------------------------------------------------------------------------------|
+| `REALLY`         | Sei sicuro (premi INVIO per confermare)?                                                  |
+| `QUIT_ACTION`    | Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO?                                            |
+| `NOT_A_SAVEFILE` | Caricamento fallito, il file indicato non è una partita salvata.                          |
+| `RESTORE_FROM`   | Inserisci il nome del file                                                                |
+| `SAVE_MISSING`   | Caricamento fallito, impossibile aprire il file richiesto.                                |
+| `SAVE_NAME`      | Caricamento fallito, il file indicato non è una partita salvata di questa avventura.      |
+| `SAVE_VERSION`   | Caricamento fallito, il file indicato è stato creato con una versione di Alan differente. |
+
+
+## Verb: `restore`
+
+Translated verb `carica_partita`, "__carica__" (_restore_):
+
+    carica [partita]
+    restore
+
+with no synonyms.
+
+## Verb: `restart`
+
+Translated verb `ricomincia_partita`, "__carica__" (_save_):
+
+    ricomincia [partita]
+    restart
+
+with no synonyms.
+
+## Verb: `quit`
+
+Translated verb `abbandona_partita`, "__abbandona__" (_quit_):
+
+    abbandona [partita]
+    quit
+
+with synonyms:
+
+    q = 'quit'
+
+
+> __NOTE__ — I had to leave the English syntaxes `restore`, `restart` and `quit` because after the `QUIT_ACTION` Run-Time message ("Do you want to RESTART, RESTORE, QUIT or UNDO? ") the allowed responses are hardcoded into Alan and can't be translated (even through the `QUIT_ACTION` message can).
+
+
 
 # 2018/05/28
 

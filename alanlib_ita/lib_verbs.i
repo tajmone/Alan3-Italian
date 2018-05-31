@@ -1,4 +1,4 @@
--- "lib_verbs.i" v0.0.9 (2018/05/28)
+-- "lib_verbs.i" v0.0.10 (2018/05/31)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -8,19 +8,22 @@
 
 ---- Verbi tradotti, in ordine alfabetico:
 
---+---------------+----------------------------------------+---------------------------------+--------+-----+
---| VERBO         | SINONIMI                               | SINTASSI                        | ARIETÀ | OGG |
---|---------------|----------------------------------------|---------------------------------|--------|-----|
---| dai_a         | porgi, offri                           | dai (ogg) a (recipient)         |   2    |  x  |
---| inventario    | inv                                    | inventario                      |   0    |     |
---| prega         |                                        | prega                           |   0    |     |
---| prendi        | afferra, raccogli, trasporta           | prendi (ogg)                    |   1    |  x  |
---| prendi_da     | rimuovi, togli                         | prendi (ogg) da (holder)        |   2    |  x  |
---| rompi         | distruggi, spacca, sfonda              | rompi (ogg)                     |   1    |  x  |
---| rompi_con     | distruggi, spacca, sfonda              | rompi (ogg) con (instr)         |   2    |  x  |
---| salva_partita |                                        | salva [partita]                 |   0    |     |
---| spogliati     | svestiti                               | spogliati                       |   0    |     |
---+---------------+----------------------------------------+---------------------------------+--------+-----+
+--+--------------------+----------------------------------------+---------------------------------+--------+-----+
+--| VERBO              | SINONIMI                               | SINTASSI                        | ARIETÀ | OGG |
+--|--------------------|----------------------------------------|---------------------------------|--------|-----|
+--| abbandona_partita  | quit, q                                | abbandona [partita]             |   0    |     |
+--| carica_partita     | restore                                | carica [partita]                |   0    |     |
+--| dai_a              | porgi, offri                           | dai (ogg) a (recipient)         |   2    |  x  |
+--| inventario         | inv                                    | inventario                      |   0    |     |
+--| prega              |                                        | prega                           |   0    |     |
+--| prendi             | afferra, raccogli, trasporta           | prendi (ogg)                    |   1    |  x  |
+--| prendi_da          | rimuovi, togli                         | prendi (ogg) da (holder)        |   2    |  x  |
+--| rompi              | distruggi, spacca, sfonda              | rompi (ogg)                     |   1    |  x  |
+--| rompi_con          | distruggi, spacca, sfonda              | rompi (ogg) con (instr)         |   2    |  x  |
+--| ricomincia_partita | restore                                | ricomincia [partita]            |   0    |     |
+--| salva_partita      | save                                   | salva [partita]                 |   0    |     |
+--| spogliati          | svestiti                               | spogliati                       |   0    |     |
+--+--------------------+----------------------------------------+---------------------------------+--------+-----+
 
 --|               |                                        |                                 |   0    |  x  |
 
@@ -137,8 +140,8 @@
 ----- put_under                                            put (obj) under (bulk)              2       x
 ----- read                                                 read (obj)                          1       x
 ----- remove                                               remove (obj)                        1       x
------ restart                                              restart                             0
------ restore                                              restore                             0
+----> restart                                              restart                             0
+----> restore                                              restore                             0
 ----- rub                                                  rub (obj)                           1       x
 ----> save                                                 save                                0
 ----- say                                                  say (topic)                         1
@@ -5603,25 +5606,30 @@ END ADD TO.
 -- ==============================================================
 
 
------ QUIT
+----- @ABBANDONA_PARTITA -> @QUIT (VERB + SYNTAX)
 
 
 -- ==============================================================
+--#NOTA: A questo verbo diamo l'ID "abbandona_partita" per lasciare
+--       libero l'ID "abbandona" nel caso l'utente volesse creare un
+--       verbo "abbandona" nel gioco.
+-- MESSAGGI DI SISTEMA CORRELATI (alcuni visibili solo in ARun):
+--    QUIT_ACTION      -- "Do you want to RESTART, RESTORE, QUIT or UNDO? ".
 
 
 SYNTAX
-  'quit' = 'quit'.
+  abbandona_partita = abbandona.
+  abbandona_partita = abbandona partita.
+  abbandona_partita = 'quit'. --> Bisogna conservare anche l'inglese!
 
+SYNONYMS q = 'quit'.
 
-VERB 'quit'
-  CHECK my_game CAN 'quit'
+VERB abbandona_partita
+  CHECK my_game CAN abbandonare_partita
     ELSE SAY restricted_response OF my_game.
   DOES
     QUIT.
 END VERB.
-
-
-SYNONYMS q = 'quit'.
 
 
 
@@ -5737,17 +5745,22 @@ END ADD TO.
 -- ==============================================================
 
 
------ RESTART
+----- @RICOMINCIA_PARTITA -> @RESTART (VERB + SYNTAX)
 
 
 -- ==============================================================
+--#NOTA: A questo verbo diamo l'ID "ricomincia_partita" per lasciare
+--       libero l'ID "ricomincia" nel caso l'utente volesse creare un
+--       verbo "ricomincia" nel gioco.
+-- MESSAGGI DI SISTEMA CORRELATI (alcuni visibili solo in ARun):
+--    REALLY         -- Richiesta di conferma.
 
+SYNTAX ricomincia_partita = ricomincia.
+SYNTAX ricomincia_partita = ricomincia partita.
+       ricomincia_partita = 'restart'. --> Bisogna conservare anche l'inglese!
 
-SYNTAX 'restart' = 'restart'.
-
-
-VERB 'restart'
-  CHECK my_game CAN 'restart'
+VERB ricomincia_partita
+  CHECK my_game CAN ricominciare_partita
     ELSE SAY restricted_response OF my_game.
   DOES
     RESTART.
@@ -5758,17 +5771,27 @@ END VERB.
 -- ==============================================================
 
 
------ RESTORE
+----- @CARICA_PARTITA -> @RESTORE (VERB + SYNTAX)
 
 
 -- ==============================================================
+--#NOTA: A questo verbo diamo l'ID "carica_partita" per lasciare
+--       libero l'ID "carica" nel caso l'utente volesse creare un
+--       verbo "carica_partita" nel gioco.
+-- MESSAGGI DI SISTEMA CORRELATI (alcuni visibili solo in ARun):
+--    NOT_A_SAVEFILE  -- Il file non è una partiata salvata.
+--    RESTORE_FROM    -- Chiede il nome del file da caricare.
+--    SAVE_MISSING    -- Non riesce a trovare/aprire il file.
+--    SAVE_NAME       -- Il file non è di una partita di questa avventura.
+--    SAVE_VERSION    -- File creato con altra versione di Alan.
 
 
-SYNTAX 'restore' = 'restore'.
+SYNTAX carica_partita = carica.
+       carica_partita = carica partita.
+       carica_partita = 'restore'. --> Bisogna conservare anche l'inglese!
 
-
-VERB 'restore'
-  CHECK my_game CAN 'restore'
+VERB carica_partita
+  CHECK my_game CAN caricare_partita
     ELSE SAY restricted_response OF my_game.
   DOES
     RESTORE.
@@ -5838,7 +5861,7 @@ SYNONYMS massage = rub.
 -- ==============================================================
 
 
------ @SALVA_PARTITA @SAVE (VERB + SYNTAX)
+----- @SALVA_PARTITA -> @SAVE (VERB + SYNTAX)
 
 
 -- ==============================================================
@@ -5851,6 +5874,8 @@ SYNONYMS massage = rub.
 --    SAVE_WHERE     -- Nome del file di salvataggio
 SYNTAX salva_partita = salva.
        salva_partita = salva partita.
+       salva_partita = 'save'. --> Meglio conservare anche l'inglese, dato che
+                               --  dobbiamo conservare RESTART, RESTORE e QUIT!
 
 
 VERB salva_partita
