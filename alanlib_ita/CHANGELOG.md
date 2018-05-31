@@ -11,7 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/05/31](#20180531)
+- [2018/05/31:2](#201805312)
+- [2018/05/31:1](#201805311)
     - [Verb: `restore`](#verb-restore)
     - [Verb: `restart`](#verb-restart)
     - [Verb: `quit`](#verb-quit)
@@ -42,7 +43,38 @@ Status: Alpha stage.
 
 -----
 
-# 2018/05/31
+# 2018/05/31:2
+
+- [`lib_messages.i`][lib_messages] (v0.0.4)
+
+Translated RUN-TIME MESSAGES:
+
+|        Message        |               Italian Translation               |
+|-----------------------|-------------------------------------------------|
+| `AFTER_BUT`           | Devi specificare almeno un oggetto dopo '`$1`'. |
+| `BUT_ALL`             | Puoi usare '`$1`' solo DOPO '`$2`'.             |
+| `MULTIPLE`            | Non puoi usare più di un oggetto con '`$v`'.    |
+| `NO_SUCH`             | Qui non puoi vedere nulla del genere.           |
+| `NOT_MUCH`            | Così non resta nulla per il verbo '`$v`'!       |
+| `NOUN`                | Devi specificare un sostantivo.                 |
+| `UNKNOWN_WORD`        | Non conosco la parola '`$1`'.                   |
+| `WHAT`                | Non ho capito la frase.                         |
+| `WHAT_WORD`           | Non mi è chiaro cosa intendi con '`$1`'.        |
+| `WHICH_START`         | Non mi è chiaro se intendi dire `$+1`           |
+| `WHICH_COMMA`         | , `$+1`                                         |
+| `WHICH_OR`            | o `$+1`.                                        |
+| `WHICH_PRONOUN_START` | Non mi è chiaro se con '`$1`'                   |
+| `WHICH_PRONOUN_FIRST` | intendi dire `$+1`                              |
+| `CANT0`               | Non lo puoi fare.                               |
+| `SEE_START`           | Puoi vedere `$01`                               |
+| `SEE_COMMA`           | ", `$01`                                        |
+| `SEE_AND`             | "e `$01`                                        |
+| `SEE_END`             | "qui.                                           |
+
+| ``      |                     |
+
+
+# 2018/05/31:1
 
 - [`lib_definitions.i`][lib_definitions] (v0.0.10)
 - [`lib_messages.i`][lib_messages] (v0.0.3)

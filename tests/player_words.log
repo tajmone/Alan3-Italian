@@ -1,0 +1,88 @@
+
+
+Il Mondo di Alan 
+Una demo per testare ALAN Standar Library Italian 
+(C) 2018 by Tristano Ajmone 
+Programmed with the ALAN Interactive Fiction Language v3.0 beta5
+Standard Library v2.1 
+Version Alpha 1 
+All rights reserved.
+
+
+Piazza della Repubblica d'IF
+Puoi vedere una statua qui.
+
+> ovest
+Mercato
+Puoi vedere una bancarella qui. On la bancarella you see alcune cigliege, 
+un mango and una pera. Gustavo is here.
+
+> 
+
+> ; testiamo "E" e "POI"
+> prendi la pera POI prendi il mango
+Presa.
+
+Preso.
+
+> drop la pera
+Dropped.
+
+> prendi la pera E prendi le cigliege
+Presa.
+
+Prese.
+
+> 
+
+> ; testiamo "TUTTO" ecc.
+> drop TUTTO
+(pera) Dropped.
+
+(mango) Dropped.
+
+(cigliege) Dropped.
+
+> 
+
+> ; NOTA: la forma "E POI" non è valida:
+> prendi la pera E POI prendi il mango
+Presa.
+
+Non ho capito la frase.
+
+> prendi il mango e prendi le cigliege
+Preso.
+
+Prese.
+
+> 
+
+> drop TUTTO TRANNE le cigliege
+(pera) Dropped.
+
+(mango) Dropped.
+
+> prendi la pera POI prendi il mango
+Presa.
+
+Preso.
+
+> drop TUTTO ECCETTO le cigliege
+(pera) Dropped.
+
+(mango) Dropped.
+
+> prendi la pera POI prendi il mango
+Presa.
+
+Preso.
+
+> drop TUTTO ESCLUSE le cigliege
+(pera) Dropped.
+
+(mango) Dropped.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

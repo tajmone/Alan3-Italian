@@ -11,7 +11,10 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 
 - [Indice dei Verbi](#indice-dei-verbi)
 - [Comandi Amministrativi](#comandi-amministrativi)
+    - [carica_partita](#carica_partita)
     - [salva_partita](#salva_partita)
+    - [ricomincia_partita](#ricomincia_partita)
+    - [abbandona_partita](#abbandona_partita)
 - [DARE, PRENDERE, RIMUOVERE](#dare-prendere-rimuovere)
     - [prendi](#prendi)
     - [prendi_da](#prendi_da)
@@ -33,7 +36,11 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 
 Siccome in questo documento i vari verbi sono raggrupati per categorie di affinità, il seguente indice elenca tutti i verbi disponibili (e loro sinonimi) linkandoli alla loro sezione nel documento.
 
+- [abbandona]
+- [abbandona partita]
 - [afferra]
+- [carica]
+- [carica partita]
 - [dai]
 - [distruggi]
 - [distruggi con]
@@ -44,6 +51,8 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [prendi]
 - [prendi da]
 - [raccogli]
+- [ricomincia]
+- [ricomincia partita]
 - [rimuovi]
 - [rompi con]
 - [rompi]
@@ -64,6 +73,28 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 
 Ovvero, quei comandi che non riguardano il mondo dell'avventura ma funzionalità legate alla partita (salvare, opzioni di verbosità, ecc.).
 
+> __NOTA__ — Benché il messaggio di run-time `QUIT_ACTION` (_Do you want to RESTART, RESTORE, QUIT or UNDO?_) possa essere tradotto, le possibili risposte del giocatore ad esso non possono esserlo. Pertanto, al fine di non confondere il giocatore, i termini inglesi per `RESTART`, `RESTORE`, `QUIT` e `UNDO` andrebbero preservati come sinonimi/sintassi alternative anche nelle definizioni dei corrispettivi verbi tradotti in italiano (e quindi, anche `save` per `salva`, per coerenza); almeno fin quando non sarà possibile tradurre in italiano le risposte.
+
+## carica_partita
+
+[carica]: #carica_partita
+[carica partita]: #carica_partita
+
+
+attributo `my_game`:
+
+    CAN [NOT] caricare_partita
+
+
+sintassi:
+
+    carica [partita]
+    restore
+
+condizioni:
+
+- `my_game CAN caricare_partita`
+
 ## salva_partita
 
 [salva]: #salva_partita
@@ -78,10 +109,55 @@ attributo `my_game`:
 sintassi:
 
     salva [partita]
+    save
 
 condizioni:
 
 - `my_game CAN salvare_partita`
+
+## ricomincia_partita
+
+[ricomincia]: #ricomincia_partita
+[ricomincia partita]: #ricomincia_partita
+
+
+attributo `my_game`:
+
+    CAN [NOT] ricominciare_partita
+
+
+sintassi:
+
+    ricomincia [partita]
+    restart
+
+condizioni:
+
+- `my_game CAN ricominciare_partita`
+
+## abbandona_partita
+
+[abbandona]: #abbandona_partita
+[abbandona partita]: #abbandona_partita
+
+
+attributo `my_game`:
+
+    CAN [NOT] abbandonare_partita
+
+
+sintassi:
+
+    abbandona [partita]
+    quit
+
+sinonimi:
+
+    quit = q
+
+condizioni:
+
+- `my_game CAN abbandonare_partita`
 
 
 -----------------------------------------

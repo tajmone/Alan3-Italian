@@ -1,4 +1,4 @@
--- "lib_messages.i" v0.0.3 (2018/05/31)
+-- "lib_messages.i" v0.0.4 (2018/05/31)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -15,10 +15,43 @@
 
 MESSAGE
 
+  --==============================================================================
+  -- DESCRIZIONE LUOGO
+  --==============================================================================
+  SEE_START: "Puoi vedere $01"
+  SEE_COMMA: ", $01"
+  SEE_AND: "e $01"
+  SEE_END: "qui."
+  --==============================================================================
+  -- COMANDI NEGATI...
+  --==============================================================================
+  CANT0:          "Non lo puoi fare."
+  NO_WAY:         "Non puoi andare in quella direzione." -- "You can't go that way."
   --@@ NO_WAY: i6: "Non puoi andare in quella direzione."
   --@@ NO_WAY: i7: "Non puoi andare da quella parte."
-  NO_WAY:         "Non puoi andare in quella direzione." -- "You can't go that way."
+  --==============================================================================
+  -- PROBLEMI NEL PARSING DEI COMANDI
+  --============================================================================== 
+  AFTER_BUT:      "Devi specificare almeno un oggetto dopo '$1'."
+  BUT_ALL:        "Puoi usare '$1' solo DOPO '$2'."
+  MULTIPLE:       "Non puoi usare più di un oggetto con '$v'."
+  NO_SUCH:        "Qui non puoi vedere nulla del genere." -- "You can't see any $1 here."
+  NOT_MUCH:       "Così non resta nulla per il verbo '$v'!" -- "That doesn't leave much to $v!"
+  NOUN:           "Devi specificare un sostantivo."-- "You must supply a noun."
+  UNKNOWN_WORD:   "Non conosco la parola '$1'."
+  WHAT:           "Non ho capito la frase."
+  WHAT_WORD:      "Non mi è chiaro cosa intendi con '$1'."
 
+  -- Disambiguazione ogetti/attori:
+  -- ==============================
+  WHICH_START:    "Non mi è chiaro se intendi dire $+1"
+  WHICH_COMMA:    ", $+1"
+  WHICH_OR:       "o $+1."
+  
+  -- Disambiguazione pronomi:
+  -- ========================
+  WHICH_PRONOUN_START: "Non mi è chiaro se con '$1'"
+  WHICH_PRONOUN_FIRST: "intendi dire $+1"
   --============================================================================
   -- RICOMINCIA PARTITA
   --============================================================================
@@ -47,21 +80,23 @@ MESSAGE
   SAVE_VERSION:   "Caricamento fallito, il file indicato è stato creato con una
                    versione diversa dell'avventura o dell'interprete."
 
+
+
 --  =========================
 --# WAITING TO BE TRANSLATED:
 --  =========================
 
-  AFTER_BUT: "You must give at least one object after '$1'."
   AGAIN: ""
-  BUT_ALL: "You can only use '$1' AFTER '$2'."
   CAN_NOT_CONTAIN: "$+1 can not contain $+2."
-  CANT0: "You can't do that."
-     -- note that the fifth token in CANT0 is a zero, not an 'o'.
   CARRIES:
     IF parameter1 IS NOT plural
       THEN "$+1 is carrying"
       ELSE "$+1 are carrying"
     END IF.
+
+--==============================================================================
+-- DESCRIZIONE CONTENITORI
+--==============================================================================
   CONTAINMENT_LOOP:
     "Putting $+1 in"
       IF parameter1 IS NOT plural
@@ -75,6 +110,9 @@ MESSAGE
             ELSE "are"
           END IF.
             "inside $+1."
+--==============================================================================
+-- DESCRIZIONE CONTENITORI
+--==============================================================================
   'CONTAINS':
     IF parameter1 IS NOT plural
       THEN "$+1 contains"
@@ -124,6 +162,7 @@ MESSAGE
         END IF.
     END IF.
     "."
+--------------------------------------------------------------------------------
   EMPTY_HANDED:
     IF parameter1 IS NOT plural
       THEN "$+1 is empty-handed."
@@ -138,30 +177,10 @@ MESSAGE
       ELSE "$+1 are empty."
     END IF.
   MORE: "<More>"
-  MULTIPLE: "You can't refer to multiple objects with '$v'."
-  NO_SUCH: "You can't see any $1 here."
-  NOUN: "You must supply a noun."
-  NOT_MUCH: "That doesn't leave much to $v!"
-  
 
-  SEE_START:
-    IF parameter1 IS NOT plural
-      THEN "There is $01"
-      ELSE "There are $01"
-    END IF.
-  SEE_COMMA: ", $01"
-  SEE_AND: "and $01"
-  SEE_END: "here."
   NO_UNDO: "No further undo available."
   UNDONE: "'$1' undone."
-  UNKNOWN_WORD: "I don't know the word '$1'."
-  WHAT: "That was not understood."
-  WHAT_WORD: "It is not clear what you mean by '$1'."
-  WHICH_PRONOUN_START: "It is not clear if you by '$1'"
-  WHICH_PRONOUN_FIRST: "mean $+1"
-  WHICH_START: "It is not clear if you mean $+1"
-  WHICH_COMMA: ", $+1"
-  WHICH_OR: "or $+1."
-
+  
+  
 
 -- end of file.
