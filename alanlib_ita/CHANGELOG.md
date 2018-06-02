@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/06/02](#20180602)
 - [2018/05/31:2](#201805312)
 - [2018/05/31:1](#201805311)
     - [Verb: `restore`](#verb-restore)
@@ -42,6 +43,12 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/06/02
+
+- [`lib_classes.i`][lib_classes] (v0.0.2)
+
+Translated some response messages for containers and supporters.
 
 # 2018/05/31:2
 

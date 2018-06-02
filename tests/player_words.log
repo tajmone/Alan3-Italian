@@ -14,7 +14,7 @@ Puoi vedere una statua qui.
 
 > ovest
 Mercato
-Puoi vedere una bancarella qui. On la bancarella you see alcune cigliege, 
+Puoi vedere una bancarella qui. Sopra la bancarella vedi alcune cigliege, 
 un mango and una pera. Gustavo is here.
 
 > 
@@ -58,30 +58,57 @@ Prese.
 
 > 
 
+> ; testiamo "TRANNE/ECCETTO" ecc.
 > drop TUTTO TRANNE le cigliege
 (pera) Dropped.
 
 (mango) Dropped.
 
-> prendi la pera POI prendi il mango
-Presa.
-
-Preso.
+> ; D'ora in poi usiamo la formula magica XYZZY per raccogliere tutta la frutta
+> xyzzy
+Pronunci la formula magica "xyzzy" e tutta la frutta finisce nel tuo
+inventario!
 
 > drop TUTTO ECCETTO le cigliege
 (pera) Dropped.
 
 (mango) Dropped.
 
-> prendi la pera POI prendi il mango
-Presa.
-
-Preso.
+> xyzzy
+Pronunci la formula magica "xyzzy" e tutta la frutta finisce nel tuo
+inventario!
 
 > drop TUTTO ESCLUSE le cigliege
 (pera) Dropped.
 
 (mango) Dropped.
+
+> xyzzy
+Pronunci la formula magica "xyzzy" e tutta la frutta finisce nel tuo
+inventario!
+
+> drop TUTTO ESCLUSO il mango
+(pera) Dropped.
+
+(cigliege) Dropped.
+
+> xyzzy
+Pronunci la formula magica "xyzzy" e tutta la frutta finisce nel tuo
+inventario!
+
+> drop TUTTO ESCLUSI il mango e le cigliege
+(pera) Dropped.
+
+> xyzzy
+Pronunci la formula magica "xyzzy" e tutta la frutta finisce nel tuo
+inventario!
+
+> drop TUTTO ESCLUSA la pera
+(mango) Dropped.
+
+(cigliege) Dropped.
+
+> 
 
 > 
 

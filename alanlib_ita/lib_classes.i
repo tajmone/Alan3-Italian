@@ -1,4 +1,4 @@
--- "lib_classes.i" v0.0.4 (2018/05/19)
+-- "lib_classes.i" v0.0.5 (2018/06/02)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1723,7 +1723,7 @@ EVERY LISTED_CONTAINER ISA OBJECT
     DOES ONLY
       IF THIS IS NOT OPAQUE
         THEN LIST THIS.
-        ELSE "You can't see inside" SAY THE THIS. "."
+        ELSE "Non puoi vedere dentro" SAY THE THIS. "."
       END IF.
   END VERB.
 
@@ -1732,7 +1732,7 @@ EVERY LISTED_CONTAINER ISA OBJECT
     DOES ONLY
       IF THIS IS NOT OPAQUE
         THEN LIST THIS.
-        ELSE "You can't see inside" SAY THE THIS. "."
+        ELSE "Non puoi vedere dentro" SAY THE THIS. "."
       END IF.
   END VERB.
 
@@ -1741,7 +1741,7 @@ EVERY LISTED_CONTAINER ISA OBJECT
     DOES ONLY
       IF THIS IS NOT OPAQUE
         THEN LIST THIS.
-        ELSE "You can't see inside" SAY THE THIS. "."
+        ELSE "Non puoi vedere dentro" SAY THE THIS. "."
       END IF.
   END VERB.
 
@@ -1821,8 +1821,10 @@ EVERY supporter ISA OBJECT
 
 
   CONTAINER
-    HEADER "On" SAY THE THIS. "you see"
-    ELSE "There's nothing on" SAY THE THIS. "."
+    HEADER "Sopra" SAY THE THIS. "vedi"
+    ELSE "Non c'è nulla sopra" SAY THE THIS. "."
+    -- HEADER "On" SAY THE THIS. "you see"
+    -- ELSE "There's nothing on" SAY THE THIS. "."
 
 
   VERB examine
@@ -1857,13 +1859,13 @@ EVERY supporter ISA OBJECT
 
   VERB put_in
       WHEN cont
-    DOES ONLY "You can't put anything inside" SAY THE THIS. "."
+    DOES ONLY "Non puoi mettere nulla dentro" SAY THE THIS. "."
   END VERB.
 
 
   VERB throw_in
       WHEN cont
-    DOES ONLY "You can't put anything inside" SAY THE THIS. "."
+    DOES ONLY "Non puoi mettere nulla dentro" SAY THE THIS. "."
   END VERB.
 
 

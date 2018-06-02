@@ -12,8 +12,17 @@ drop TUTTO
 prendi la pera E POI prendi il mango
 prendi il mango e prendi le cigliege
 
+; testiamo "TRANNE/ECCETTO" ecc.
 drop TUTTO TRANNE le cigliege
-prendi la pera POI prendi il mango
+; D'ora in poi usiamo la formula magica XYZZY per raccogliere tutta la frutta
+xyzzy
 drop TUTTO ECCETTO le cigliege
-prendi la pera POI prendi il mango
+xyzzy
 drop TUTTO ESCLUSE le cigliege
+xyzzy
+drop TUTTO ESCLUSO il mango
+xyzzy
+drop TUTTO ESCLUSI il mango e le cigliege
+xyzzy
+drop TUTTO ESCLUSA la pera
+
