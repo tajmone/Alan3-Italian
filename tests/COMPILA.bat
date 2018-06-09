@@ -3,5 +3,5 @@
 :: ==============================================================================
 ::                        COMPILA L'AVVENTURA DIMOSTRATIVA                       
 :: ==============================================================================
-CALL alan -import ..\alanlib_ita\ il_mondo_di_alan.alan
+CALL alan -import ..\alanlib_ita\ -debug il_mondo_di_alan.alan
 EXIT /B
