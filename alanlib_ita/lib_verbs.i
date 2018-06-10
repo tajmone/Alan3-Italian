@@ -1,4 +1,4 @@
--- "lib_verbs.i" v0.0.10 (2018/05/31)
+-- "lib_verbs.i" v0.1.0 (2018/06/10)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -5583,7 +5583,8 @@ ADD TO EVERY OBJECT
           ELSE LOCATE obj IN surface.
         END IF.
 
-        "You put" SAY THE obj. "on" SAY THE surface. "."
+        "Posi" SAY THE obj. SAY prep_SU of surface. SAY surface. "."
+        -- "You put" SAY THE obj. "on" SAY THE surface. "."
 
     END VERB.
 END ADD TO.

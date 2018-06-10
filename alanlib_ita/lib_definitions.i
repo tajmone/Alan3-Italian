@@ -1,4 +1,4 @@
--- "lib_definitions.i" v0.0.10 (2018/05/31)
+-- "lib_definitions.i" v0.1.0 (2018/06/10)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -22,13 +22,30 @@
   -- the banner instance (for the start section)
 
 
-
-
+--==============================================================================
 -- General attributes
--- ==================
+--==============================================================================
 
+
+-- =================
+-- Entity Attributes
+-- =================
+-- (We add the 'plural' attribute to the 'entity' class, because the plural
+-- applies not only to things but also to for example parameters in syntax statements; ignore.)
+
+ADD TO EVERY ENTITY
+  IS NOT plural.
+  IS NOT femminile. -- @FEMMINILE -> attr. (ADD TO EVERY ENTITY)
+
+  -- HAS articolo "il".
+
+END ADD TO.
+
+
+-- ================
+-- Thing Attributes
+-- ================
 -- We define general attributes for every thing ( = object or actor):
-
 
 ADD TO EVERY THING
 
@@ -83,68 +100,192 @@ ADD TO EVERY THING
   NOT openable.
   NOT readable.
   NOT scenery.
-    -- scenery has special responses for 'examine' and 'take', behaves like a normal object otherwise.
+   -- scenery has special responses for 'examine' and 'take', behaves like a normal object otherwise.
   NOT wearable.
   NOT writeable.
 
   CAN NOT talk.
 
 
--- =============================
--- @ARTICOLI PREDEFINITI (THING)
--- =============================
-
--- -------------------------
--- @ARTICOLI INDETERMINATIVI
--- -------------------------
-
--- We still define that plural nouns are preceded by "some" (and not by "a" or "an"):
-
-INDEFINITE ARTICLE
-
-  IF THIS IS NOT femminile
-  THEN
-    IF THIS IS NOT plural
-      THEN "un"             --> ms indet.
-      ELSE "dei"            --> mp indet.
-    END IF.
-  ELSE
-    IF THIS IS NOT plural
-      THEN "una"            --> fs indet.
-      ELSE "delle"          --> fp indet.
-    END IF.
-  END IF.
---# codice originale inglese:
+  -- ==================================
+  -- @ARTICOLI E PREPOSIZIONI ARTICOLATE
+  -- ==================================
+  -- Ogni THING ha un attributo che ne specifica l'articolo determinativo.
   --
-  -- IF THIS IS NOT plural
-  --   THEN "a"
-  --   ELSE "some"
-  -- END IF.
+  -- Questo attributo viene utilizzato dalla libreria per inizializzare le
+  -- istanze di oggetti ed attori: a seconda dell'articolo indicato, verranno
+  -- impostati i valori appropriati di genere e numero, DEFINITE/INDEFINITE
+  -- ARTICLE e preposizioni articolate per ciascuna istanza.
+  --
+  -- L'autore deve semplicemente specficare l'articolo determinativo del
+  -- sostantivo, e la libreria farà tutto il resto. L'unica eccezione è
+  -- l'articolo "l'", che può rifererirsi sia a un sostantivo maschile che
+  -- femminile; per questo articolo l'autore dovrà specificare `IS femminile`
+  -- nel caso di sostantivi femminili, altrimenti la libreria presumerà che si
+  -- tratti di un sostantivo maschile.
 
+  HAS articolo "il".
+    
+  -- -----------------------
+  -- Preposizioni Articolate
+  -- -----------------------
+  -- Questi attributi consentono di usare le preposizioni articolate corrette per
+  -- ciascun oggetto nei vari messaggi della libreria e dell'avventura.
+  -- I valori di default sono quelli del maschile singolare con articolo "il".
+  -- Non è necessario rappresentare tutte le preposizioni articolate, solo quelle
+  -- che si uniscono all'articolo.
 
--- -----------------------
--- @ARTICOLI DETERMINATIVI
--- -----------------------
--- Questa parte è stata aggiunta appositamente per l'italiano...
+  HAS prep_DI "del".
+  HAS prep_A  "al".
+  HAS prep_DA "dal".
+  HAS prep_IN "nel".
+  HAS prep_SU "sul".
 
-DEFINITE ARTICLE
+  -- -----------------------------------
+  -- Inizializzazione di Genere e Numero
+  -- -----------------------------------
+  -- In base all'articolo specificato possiamo dedurre (e settare) genere e
+  -- numero dell'istanza.
 
-  IF THIS IS NOT femminile
-  THEN
-    IF THIS IS NOT plural
-      THEN "il"             --> ms det.
-      ELSE "i"              --> mp det.
-    END IF.
-  ELSE
-    IF THIS IS NOT plural
-      THEN "la"             --> fs det.
-      ELSE "le"             --> fp det.
-    END IF.
-  END IF.
+  INITIALIZE
+  DEPENDING ON articolo of THIS
+    = "lo" THEN
+      MAKE THIS NOT femminile.
+      MAKE THIS NOT plural.
+      SET prep_DI OF THIS TO "dello".
+      SET prep_A  OF THIS TO  "allo".
+      SET prep_DA OF THIS TO "dallo".
+      SET prep_IN OF THIS TO "nello".
+      SET prep_SU OF THIS TO "sullo".
+    
+    = "la" THEN
+      MAKE THIS femminile.
+      MAKE THIS NOT plural.
+      SET prep_DI OF THIS TO "della".
+      SET prep_A  OF THIS TO  "alla".
+      SET prep_DA OF THIS TO "dalla".
+      SET prep_IN OF THIS TO "nella".
+      SET prep_SU OF THIS TO "sulla".
+
+    = "l'" THEN             --| In questo caso non alteriamo il genere poiché
+      MAKE THIS NOT plural. --| questa forma può essere sia masch. che femm.
+                            --| Sta all'autore specificare il genere nell'istanza.
+      SET prep_DI OF THIS TO "dell'$$".
+      SET prep_A  OF THIS TO  "all'$$".
+      SET prep_DA OF THIS TO "dall'$$".
+      SET prep_IN OF THIS TO "nell'$$".
+      SET prep_SU OF THIS TO "sull'$$".
+
+    = "i" THEN
+      MAKE THIS NOT femminile.
+      MAKE THIS plural.
+      SET prep_DI OF THIS TO "dei".
+      SET prep_A  OF THIS TO  "ai".
+      SET prep_DA OF THIS TO "dai".
+      SET prep_IN OF THIS TO "nei".
+      SET prep_SU OF THIS TO "sui".
+
+    = "gli" THEN
+      MAKE THIS NOT femminile.
+      MAKE THIS plural.
+      SET prep_DI OF THIS TO "degli".
+      SET prep_A  OF THIS TO  "agli".
+      SET prep_DA OF THIS TO "dagli".
+      SET prep_IN OF THIS TO "negli".
+      SET prep_SU OF THIS TO "sugli".
+
+    = "le" THEN
+      MAKE THIS femminile.
+      MAKE THIS plural.
+      SET prep_DI OF THIS TO "della".
+      SET prep_A  OF THIS TO  "alla".
+      SET prep_DA OF THIS TO "dalla".
+      SET prep_IN OF THIS TO "nella".
+      SET prep_SU OF THIS TO "sulla".
+
+    ELSE -- = "il" (o dovrebbe esserlo)
+      MAKE THIS NOT femminile.
+      MAKE THIS NOT plural.
+      SET prep_DI OF THIS TO "del".
+      SET prep_A  OF THIS TO  "al".
+      SET prep_DA OF THIS TO "dal".
+      SET prep_IN OF THIS TO "nel".
+      SET prep_SU OF THIS TO "sul".
+
+  END DEPEND.
+
+  -- -------------------------
+  -- @ARTICOLI INDETERMINATIVI
+  -- -------------------------
+
+  -- We still define that plural nouns are preceded by "some" (and not by "a" or "an"):
+
+  INDEFINITE ARTICLE
+
+    DEPENDING ON articolo of THIS
+      = "il"  THEN   "un"               --> ms indet.
+      = "lo"  THEN   "uno"              --> ms indet.
+      = "la"  THEN   "una"              --> fs indet.
+         
+      = "l'"  THEN
+        IF THIS IS NOT femminile
+              THEN   "un"               --> ms indet.
+              ELSE   "un'$$"            --> fs indet.
+        END IF.
+      
+      = "i"   THEN   "dei"              --> mp indet.
+      = "gli" THEN   "degli"            --> mp indet.
+      = "le"  THEN   "delle"            --> fp indet.
+
+      ELSE -- se non è definito
+        IF THIS IS NOT femminile
+        THEN
+          IF THIS IS NOT plural
+              THEN   "un"               --> ms indet.
+              ELSE   "dei"              --> mp indet.
+          END IF.
+        ELSE
+          IF THIS IS NOT plural
+              THEN   "una"              --> fs indet.
+              ELSE   "delle"            --> fp indet.
+          END IF.
+        END IF.
+    END DEPEND.
+
+  -- -----------------------
+  -- @ARTICOLI DETERMINATIVI
+  -- -----------------------
+  -- Questa parte è stata aggiunta appositamente per l'italiano...
+
+  DEFINITE ARTICLE
+
+    DEPENDING ON articolo of THIS
+      = "il"  THEN   "il"               --> ms indet.
+      = "lo"  THEN   "lo"               --> ms indet.
+      = "la"  THEN   "la"               --> fs indet.
+
+      = "l'"  THEN   "l'$$"             --> *s det.  (masc & femm)
+
+      = "i"   THEN   "i"                --> mp det.
+      = "gli" THEN   "gli"              --> mp det.
+      = "le"  THEN   "le"               --> fp det.
+      
+      ELSE -- se non è definito
+        IF THIS IS NOT femminile
+        THEN
+          IF THIS IS NOT plural
+              THEN   "il"               --> ms det.
+              ELSE   "i"                --> mp det.
+          END IF.
+        ELSE
+          IF THIS IS NOT plural
+              THEN   "la"               --> fs det.
+              ELSE   "le"               --> fp det.
+          END IF.
+        END IF.
+    END DEPEND.
 
 END ADD TO.
-
-
 
 -- If you need "an", you should declare it separately at the instance, for example:
 
@@ -153,15 +294,6 @@ END ADD TO.
 --    INDEFINITE ARTICLE "an"
 -- END THE.
 
-
--- (We add the 'plural' attribute to the 'entity' class, because the plural
--- applies not only to things but also to for example parameters in syntax statements; ignore.)
-
-
-ADD TO EVERY ENTITY
-  IS NOT plural.
-  IS NOT femminile. -- @FEMMINILE -> attr. (ADD TO EVERY ENTITY)
-END ADD TO.
 
 
 

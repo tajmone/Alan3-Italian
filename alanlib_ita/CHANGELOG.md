@@ -11,6 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/06/10](#20180610)
+    - [The New `articolo` Attribute](#the-new-articolo-attribute)
+    - [Preposizioni Articolate](#preposizioni-articolate)
 - [2018/06/02](#20180602)
 - [2018/05/31:2](#201805312)
 - [2018/05/31:1](#201805311)
@@ -43,6 +46,82 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/06/10
+
+> This is a major feature change: all library files are bumped up to `v0.1.0` to mark the adoption of the new system.
+
+This commit introduces a new article-based system for handling gender, number, articles and "preposizioni articolate" (prepositions that merge with the definite article).
+
+## The New `articolo` Attribute
+
+Now every THING has a new `articolo` string attribute, which the author must set to the definite article of the instance's noun (default to "`il`", masculine singular). At initialization time, the library will take care of setting the correct values of gender, number, DEFINITE/INDEFINITE ARTICLE and prepositions, based on the string of `articolo`.
+
+So, now the author only needs to write:
+
+```alan
+THE mela IsA object AT kitchen.
+  HAS articolo "la".
+END THE mela.
+```
+
+... and the library will deduce and set that the instance is feminine and singular. The same goes for all other Italian articles, with the exeception of "`l'`", because it could refer to either a masculine or feminine noun; with this article the author needs to manually specify the gender if the noun is feminine:
+
+```alan
+THE arancia IsA object AT kitchen.
+  HAS articolo "l'".
+  IS femminile. --> Without it, the StdLib will assume it's masculine!
+  NAME arancia.
+  NAME 'l''arancia'.
+END THE.
+```
+
+## Preposizioni Articolate
+
+> __NOTE__ — In Italian, prepositions merge with the definite article directly following them, according to fixed and predictable rules. (for more info, see this [article on Italian prepositions])
+
+[article on Italian prepositions]: https://ciaoitaliablog.wordpress.com/classes/italian-preposition-with-definite-article/
+
+Now the library adds to EVERY THING the following new string attributes:
+
+```alan
+                        --      <prep> + <art> = preposizione articolata
+                        ---------------|-------|------------------------
+  HAS prep_DI "del".    -- (of)   "di" + "il"  = "del"
+  HAS prep_A  "al".     -- (to)    "a" + "il"  = "al"
+  HAS prep_DA "dal".    -- (from) "da" + "il"  = "dal"
+  HAS prep_IN "nel".    -- (in)   "in" + "il"  = "nel"
+  HAS prep_SU "sul".    -- (on)   "su" + "il"  = "sul"
+```
+
+These are used in SAY statements to retrive the correct _preposition_ + _definite article_ form to use in reference to an instance. Example from `put_on` verb (`put (obj) on (surface)`) response:
+
+```alan
+"Posi" SAY THE obj. SAY prep_SU of surface. SAY surface. "."
+```
+
+... which will produce messages like:
+
+```
+Posi la mela sul tavolo.
+Posi la mela sulla dispensa.
+Posi la mela sulle lenzuola.
+Posi la mela sui carboni.
+```
+
+At initialization time, the library sets the preposition attributes' strings of every instance according to the string of its `articolo`.
+
+This new system simplifies the authors' task of writing adventures, for now they only need to worry about specifying the article of an instance and let the library handle the rest. It also makes referencing a noun's preposition in messages a simple task, as there is no need to use conditional statements.
+
+The only possible downside is the memory overhead, because now every THING (objects and actors) has six extra string attributes; but [as Greg has pointed out]:
+
+> I really don't think you need to worry about memory usage here. This might add perhaps 20 bytes to every object. If your game has 1000 objects, that's only 20K bytes, which is likely insignificant compared to the text of a game that size.
+
+It's more likely that conditional statements to determine which preposition to use inside library message will have added more overhead than the current solution. 
+
+Ultimately, this solution was adopted after careful consideration of various approaches to the problem, and weighing the pros and cons of each one of them. The adopted solution is a good compromise in terms of library maintainance and authors' usability of the library.
+
+[as Greg has pointed out]: https://groups.yahoo.com/neo/groups/alan-if/conversations/messages/3456
 
 # 2018/06/02
 
@@ -77,8 +156,6 @@ Translated RUN-TIME MESSAGES:
 | `SEE_COMMA`           | ", `$01`                                        |
 | `SEE_AND`             | "e `$01`                                        |
 | `SEE_END`             | "qui.                                           |
-
-| ``      |                     |
 
 
 # 2018/05/31:1

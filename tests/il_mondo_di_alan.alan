@@ -1,5 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
+--  versione 0.1.0 (2018/06/10)
 --==============================================================================
 IMPORT 'library.i'. -- ALAN Standard Library v2.1
 
@@ -48,9 +49,9 @@ THE pzzaIF IsA site
 END THE pzzaIF.
 
 THE statua_Alan IsA object AT pzzaIF.
+  HAS articolo "la".
   NAME statua.
   NAME piedistallo.
-  IS femminile.
   IS NOT movable.
   MENTIONED  --| Facciamo sì che una volta letta la targhetta la statua venga
     "statua" --| menzionata in maniera più specifica...
@@ -67,8 +68,8 @@ THE statua_Alan IsA object AT pzzaIF.
 END THE statua_Alan.
 
 THE targhetta IsA object AT pzzaIF.
+  HAS articolo "la".
   DESCRIPTION "" --> non elencare tra le cose visibili.
-  IS femminile.
   IS readable.
   HAS text "Alan III".
   IS NOT già_letta.
@@ -92,9 +93,9 @@ THE Eden IsA site.
 END THE Eden.
 
 THE albero IsA object AT Eden.
+  HAS articolo "l'".
   NAME albero.
   NAME 'l''albero'.
-  DEFINITE ARTICLE "l'$$"
   IS NOT movable.
 END THE albero.
 -- =============================================================================
@@ -124,11 +125,14 @@ THE Gustavo IsA male AT mercato.
   IS named.
 END THE Gustavo.
 
+THE fruttivendolo IsA male AT mercato.
+END THE fruttivendolo.
+
 --==============================================================================
 -- Bancarella della frutta
 --==============================================================================
 THE bancarella IsA supporter AT mercato.
-  IS femminile.
+  HAS articolo "la".
 END THE bancarella.
 
 EVERY frutto IsA object.
@@ -137,8 +141,8 @@ EVERY frutto IsA object.
 END EVERY frutto.
 
 THE pera IsA frutto IN bancarella.
+  HAS articolo "la".
   NAME pera.
-  IS femminile.
 END THE pera.
 
 THE mango IsA frutto IN bancarella.
@@ -146,11 +150,9 @@ THE mango IsA frutto IN bancarella.
 END THE mango.
 
 THE cigliege IsA frutto IN bancarella.
+  HAS articolo "le".
   NAME cigliege.
-  IS femminile.
-  IS plural.
-  DEFINITE ARTICLE "le"
-  INDEFINITE ARTICLE "alcune"
+  -- INDEFINITE ARTICLE "alcune" -- anziché "delle"
 END THE cigliege.
 -- =============================================================================
 
@@ -184,6 +186,15 @@ THE ccEmporio IsA room.
   NAME 'Emporio Alani'.
   EXIT est to ccAtrio.
 END THE ccEmporio.
+
+
+THE commessa IsA female AT ccEmporio.
+  -- HAS articolo "la".
+
+END THE commessa.
+
+
+
 --------------------------------------------------------------------------------
 Start at pzzaIF.
 DESCRIBE banner.

@@ -1,4 +1,4 @@
--- "lib_classes.i" v0.0.5 (2018/06/02)
+-- "lib_classes.i" v0.1.0 (2018/06/10)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -2003,19 +2003,25 @@ ADD TO EVERY ACTOR
 -- =============================
 -- @ARTICOLI PREDEFINITI (ACTOR)
 -- =============================
--- @NOTA: Prima di implementare definitivamente il codice per l'italiano
---        abbozzato qui sotto, devo controllare bene tutte le sottoclassi di
---        ACTOR.
---        (1) Avendo io già implementato l'attributo FEMMINILE in THING, devo
---            controllare come interagisce con MALE e FEMALE (es, se vi sono
---            ridondanze).
+-- Valgono qui le stesse regole per gli oggetti tranne quando l'attore ha un
+-- nome proprio, nel qual caso DEINITE/INDEFINITE ARTICLE dovranno avere una
+-- stringa vuota. La presenza dello IF statement ci costringe a ripetere qui il
+-- codice usato in "lib_definitions.i" per definire ARTICLE, altrimenti i valori
+-- di default verrebbero sovrascritti da una stringa nulla. Invece, per quanto
+-- riguarda le preposizioni, il genere ed il numero, gli attori erediteranno da
+-- THING i valori correttamente impostati dalla libreria.
+
+-- @NOTA: Devo ancora controllare alcune cose su come la libreria originale
+--        gestisce gli ACTOR:
+--
 --        (2) La questione degli articoli predefiniti va considerata meglio,
 --            esempi pratici alla mano, specie per quanto riguarda i plurali:
 --             * quali sono i casi plurali contemplati dall'inglese?
---             * perché non vogliono l'articolo?)
+--             * perché gli attori plurali non vogliono mai l'articolo?
 --        (3) Devo controllare se devo intervenire diversamente su ACTOR, PERSON,
 --            MALE e FEMALE.
---        (4) Devo rivedere prima i PRONOUN di MALE e FEMALE.
+--        (4) Devo rivedere prima i PRONOUN di MALE e FEMALE, e capire se e come
+--            questi possano essere tradotti in italiano.
 
 -- -----------------------
 -- @ARTICOLI DETERMINATIVI
@@ -2023,25 +2029,42 @@ ADD TO EVERY ACTOR
 
     DEFINITE ARTICLE
 
---  =========================
---# bozza per codice italiano:
---  =========================
-      -- IF THIS IS NOT named
-      -- THEN
-      --   IF THIS IS NOT femminile
-      --     THEN "il"           --> ms det.
-      --     ELSE "la"           --> fs det.
-      --   END IF.
-      -- ELSE ""
-      -- END IF.
+    IF THIS IS named
+      THEN ""
+      ELSE
+        DEPENDING ON articolo of THIS
+          = "il"  THEN   "il"               --> ms indet.
+          = "lo"  THEN   "lo"               --> ms indet.
+          = "la"  THEN   "la"               --> fs indet.
 
+          = "l'"  THEN   "l'$$"             --> *s det.  (masc & femm)
+
+          = "i"   THEN   "i"                --> mp det.
+          = "gli" THEN   "gli"              --> mp det.
+          = "le"  THEN   "le"               --> fp det.
+          
+          ELSE -- se non è definito
+            IF THIS IS NOT femminile
+            THEN
+              IF THIS IS NOT plural
+                  THEN   "il"               --> ms det.
+                  ELSE   "i"                --> mp det.
+              END IF.
+            ELSE
+              IF THIS IS NOT plural
+                  THEN   "la"               --> fs det.
+                  ELSE   "le"               --> fp det.
+              END IF.
+            END IF.
+        END DEPEND.
+    END IF.
 --  =========================
 --# codice originale inglese:
 --  =========================
-    IF THIS IS NOT named
-      THEN "the"
-      ELSE ""
-    END IF.
+    -- IF THIS IS NOT named
+    --   THEN "the"
+    --   ELSE ""
+    -- END IF.
 
 -- -------------------------
 -- @ARTICOLI INDETERMINATIVI
@@ -2049,29 +2072,50 @@ ADD TO EVERY ACTOR
 
     INDEFINITE ARTICLE
 
---  =========================
---# bozza per codice italiano: 
---  =========================
-      -- IF THIS IS NOT named
-      -- THEN
-      --   IF THIS IS NOT femminile
-      --     THEN "un"           --> ms indet.
-      --     ELSE "una"          --> fs indet.
-      --   END IF.
-      -- ELSE ""
-      -- END IF.
+    IF THIS IS named
+      THEN ""
+      ELSE
+        DEPENDING ON articolo of THIS
+          = "il"  THEN   "un"               --> ms indet.
+          = "lo"  THEN   "uno"              --> ms indet.
+          = "la"  THEN   "una"              --> fs indet.
+             
+          = "l'"  THEN
+            IF THIS IS NOT femminile
+                  THEN   "un"               --> ms indet.
+                  ELSE   "un'$$"            --> fs indet.
+            END IF.
+          
+          = "i"   THEN   "dei"              --> mp indet.
+          = "gli" THEN   "degli"            --> mp indet.
+          = "le"  THEN   "delle"            --> fp indet.
 
+          ELSE -- se non è definito
+            IF THIS IS NOT femminile
+            THEN
+              IF THIS IS NOT plural
+                  THEN   "un"               --> ms indet.
+                  ELSE   "dei"              --> mp indet.
+              END IF.
+            ELSE
+              IF THIS IS NOT plural
+                  THEN   "una"              --> fs indet.
+                  ELSE   "delle"            --> fp indet.
+              END IF.
+            END IF.
+        END DEPEND.
+    END IF.
 --  =========================
 --# codice originale inglese:
 --  =========================
-    IF THIS IS NOT named
-      THEN
-        IF THIS IS NOT plural
-          THEN "a"
-          ELSE ""
-        END IF.
-      ELSE ""
-    END IF.
+    -- IF THIS IS NOT named
+    --   THEN
+    --     IF THIS IS NOT plural
+    --       THEN "a"
+    --       ELSE ""
+    --     END IF.
+    --   ELSE ""
+    -- END IF.
 
   -- if you need "an", you must declare it separately at the actor instance
 
@@ -2208,7 +2252,7 @@ END THE.
 
 
 EVERY person ISA ACTOR
-      CAN talk.
+  CAN talk.
 
   CONTAINER
     HEADER
@@ -2259,11 +2303,14 @@ END EVERY.
 
 EVERY female ISA PERSON
   PRONOUN her
+  HAS articolo "la".
+  
 END EVERY.
 
 
 EVERY male ISA PERSON
   PRONOUN him
+  HAS articolo "il".
 END EVERY.
 
 
