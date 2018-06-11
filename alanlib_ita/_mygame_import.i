@@ -54,7 +54,7 @@
 	-- EVERY cat ISA ACTOR
 
            -- VERB examine 
-			-- DOES ONLY “It’s just an ordinary cat.”
+			-- DOES ONLY "It's just an ordinary cat"
 		-- END VERB.
 
 	-- END EVERY. 	
