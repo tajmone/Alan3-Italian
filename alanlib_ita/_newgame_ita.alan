@@ -5,7 +5,7 @@
 -- (based on the original 'newgame.alan' from the Standard Library 2.1)
 
 
-IMPORT 'library.i'.
+IMPORT 'libreria.i'.
 
 
 

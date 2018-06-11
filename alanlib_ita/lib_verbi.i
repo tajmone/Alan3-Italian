@@ -1,10 +1,11 @@
--- "lib_verbs.i" v0.1.0 (2018/06/10)
+-- "lib_verbi.i" v0.2.0 (2018/06/11)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
-
+-- Adapted to Italian from:
 -- ALAN Standard Library v2.1
--- Verbs (file name: 'lib_verbs.i')
+-- "Verbs" (original file name: 'lib_verbs.i')
+--------------------------------------------------------------------------------
 
 ---- Verbi tradotti, in ordine alfabetico:
 

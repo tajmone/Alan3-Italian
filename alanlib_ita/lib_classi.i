@@ -1,14 +1,15 @@
--- "lib_classes.i" v0.1.0 (2018/06/10)
+-- "lib_classi.i" v0.2.0 (2018/06/11)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
-
+-- Adapted to Italian from:
 -- ALAN Standard Library v2.1
--- Classes (file name: 'lib_classes.i')
+-- "Classes" (original file name: 'lib_classes.i')
+--------------------------------------------------------------------------------
 
 
 -- This library file defines various object and actor classes.
--- Many of these classes are frequently  used in verb definitions in 'lib_verbs.i'
+-- Many of these classes are frequently  used in verb definitions in 'lib_verbi.i'
 -- so they should be edited or removed with caution. However, to ease things up,
 -- it is mentioned at the beginning of every class below if and where the class
 -- is cross-referenced in the other library files.
@@ -168,7 +169,7 @@ END ADD.
 -- ==============================================================
 
 
--- (See the file 'lib_verbs.i', verbs 'inventory' and 'take' where the
+-- (See the file 'lib_verbi.i', verbs 'inventory' and 'take' where the
 -- container 'worn', defined below, is used in the verb definitions.)
 
 
@@ -1105,8 +1106,8 @@ END THE.
 -- =============================================================
 
 
--- (In the file 'lib_verbs.i', ISA LIGHTSOURCE is used in the syntax definition of the verb 'light'.
--- Also, in 'lib_locations.i', LIGHTSOURCE is used in defining the behavior of the class DARK_LOCATION.)
+-- (In the file 'lib_verbi.i', ISA LIGHTSOURCE is used in the syntax definition of the verb 'light'.
+-- Also, in 'lib_luoghi.i', LIGHTSOURCE is used in defining the behavior of the class DARK_LOCATION.)
 
 
 
@@ -1270,7 +1271,7 @@ END EVERY.
 -- ==============================================================
 
 
--- (In the file 'lib_verbs.i', ISA LIQUID is used in the syntax definitions of the verbs 'drink' and 'sip'.)
+-- (In the file 'lib_verbi.i', ISA LIQUID is used in the syntax definitions of the verbs 'drink' and 'sip'.)
 
 
 EVERY liquid ISA OBJECT
@@ -1886,7 +1887,7 @@ END EVERY.
 -- ==============================================================
 
 
--- (See the file 'lib_verbs.i', verbs 'attack_with', 'fire',
+-- (See the file 'lib_verbi.i', verbs 'attack_with', 'fire',
 -- 'fire_with', 'kill_with', 'shoot' and 'shoot_with' where WEAPON is used
 -- either in the syntax definitions or verb checks.)
 
@@ -2006,7 +2007,7 @@ ADD TO EVERY ACTOR
 -- Valgono qui le stesse regole per gli oggetti tranne quando l'attore ha un
 -- nome proprio, nel qual caso DEINITE/INDEFINITE ARTICLE dovranno avere una
 -- stringa vuota. La presenza dello IF statement ci costringe a ripetere qui il
--- codice usato in "lib_definitions.i" per definire ARTICLE, altrimenti i valori
+-- codice usato in "lib_definizioni.i" per definire ARTICLE, altrimenti i valori
 -- di default verrebbero sovrascritti da una stringa nulla. Invece, per quanto
 -- riguarda le preposizioni, il genere ed il numero, gli attori erediteranno da
 -- THING i valori correttamente impostati dalla libreria.

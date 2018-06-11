@@ -1,10 +1,11 @@
--- "lib_definitions.i" v0.1.0 (2018/06/10)
+-- "lib_definizioni.i" v0.2.0 (2018/06/11)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
-
+-- Adapted to Italian from:
 -- ALAN Standard Library v2.1
--- Definitions (file name: 'lib_definitions.i')
+-- "Definitions" (original file name: 'lib_definitions.i')
+--------------------------------------------------------------------------------
 
 -- Included in this file:
   -- general attributes
@@ -521,7 +522,7 @@ EVERY definition_block ISA LOCATION
   HAS illegal_parameter_who_pl "Those are not somebody I know about.".        -- who_is
 
 
-  -- verb check messages, found before DOES sections of verbs and used mainly in 'lib_verbs.i':
+  -- verb check messages, found before DOES sections of verbs and used mainly in 'lib_verbi.i':
   -- ==========================================================================================
 
 
@@ -790,7 +791,7 @@ EVERY definition_block ISA LOCATION
    -- ==========================================================================================
 
   -- These three attributes, as well as the 'schedule' statement following them,
-  -- are needed for the 'notify' command ('lib_verbs.i'); ignore.
+  -- are needed for the 'notify' command ('lib_verbi.i'); ignore.
 
   HAS oldscore 0.
       -- Records previous score so 'checkscore' event

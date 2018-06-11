@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/06/11](#20180611)
+    - [Library Files Renamed to Italian](#library-files-renamed-to-italian)
 - [2018/06/10](#20180610)
     - [The New `articolo` Attribute](#the-new-articolo-attribute)
     - [Preposizioni Articolate](#preposizioni-articolate)
@@ -46,6 +48,27 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -----
+
+
+# 2018/06/11
+
+> This is another major feature change: all library files are bumped up to `v0.2.0` to mark the adoption of new library file names.
+
+## Library Files Renamed to Italian
+
+All library files are renamed to Italian filenames:
+
+|    ORIGINAL NAME    |                NEW NAME                |
+|---------------------|----------------------------------------|
+| `library.i`         | [`libreria.i`][libreria]               |
+| `lib_classes.i`     | [`lib_classi.i`][lib_classi]           |
+| `lib_definitions.i` | [`lib_definizioni.i`][lib_definizioni] |
+| `lib_locations.i`   | [`lib_luoghi.i`][lib_luoghi]           |
+| `lib_messages.i`    | [`lib_messaggi.i`][lib_messaggi]       |
+| `lib_verbs.i`       | [`lib_verbi.i`][lib_verbi]             |
+| `lib_supplement.i`  | [`lib_supplemento.i`][lib_supplemento] |
+
+From now on I'll start to italianize the library by translating also comments and internal library IDs.
 
 # 2018/06/10
 
@@ -559,13 +582,25 @@ The above changes had some side effects which required me to also change the Eng
                                REFERENCE LINKS                                
 ------------------------------------------------------------------------------>
 
-[library]:         ./library.i
-[lib_classes]:     ./lib_classes.i
-[lib_definitions]: ./lib_definitions.i
-[lib_locations]:   ./lib_locations.i
-[lib_messages]:    ./lib_messages.i
-[lib_supplement]:  ./lib_supplement.i
-[lib_verbs]:       ./lib_verbs.i
+<!-- OLD LIBRARY FILENAMES -->
+
+[library]:         ./libreria.i
+[lib_classes]:     ./lib_classi.i
+[lib_definitions]: ./lib_definizioni.i
+[lib_locations]:   ./lib_luoghi.i
+[lib_messages]:    ./lib_messaggi.i
+[lib_verbs]:       ./lib_verbi.i
+[lib_supplement]:  ./lib_supplemento.i
+
+<!-- NEW LIBRARY FILENAMES -->
+
+[libreria]:         ./libreria.i
+[lib_classi]:       ./lib_classi.i
+[lib_definizioni]:  ./lib_definizioni.i
+[lib_luoghi]:       ./lib_luoghi.i
+[lib_messaggi]:     ./lib_messaggi.i
+[lib_verbi]:        ./lib_verbi.i
+[lib_supplemento]:  ./lib_supplemento.i
 
 
 [VERBI_IT]: ./VERBI_IT.md

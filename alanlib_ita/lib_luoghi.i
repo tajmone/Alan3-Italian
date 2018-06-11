@@ -1,10 +1,11 @@
--- "lib_locations.i" v0.1.0 (2018/06/10)
+-- "lib_luoghi.i" v0.2.0 (2018/06/11)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
-
+-- Adapted to Italian from:
 -- ALAN Standard Library v2.1
--- Locations (file name: 'lib_locations.i')
+-- "Locations" (original file name: 'lib_locations.i')
+--------------------------------------------------------------------------------
 
 
 -- This library file defines the default directions (exits) and the location 'nowhere',

@@ -27,12 +27,14 @@ This folder contains a copy of the Alan Standard Library v2.1 files which are be
 
 The library files being translated:
 
-- [`lib_classes.i`](./lib_classes.i)
-- [`lib_definitions.i`](./lib_definitions.i)
-- [`lib_locations.i`](./lib_locations.i)
-- [`lib_messages.i`](./lib_messages.i)
-- [`lib_verbs.i`](./lib_verbs.i)
-- [`library.i`](./library.i)
+- [`lib_classi.i`][lib_classi] (adpatation of `lib_classes.i`)
+- [`lib_definizioni.i`][lib_definizioni] (adpatation of `lib_definitions.i`)
+- [`lib_luoghi.i`][lib_luoghi] (adpatation of `lib_locations.i`)
+- [`lib_messaggi.i`][lib_messaggi] (adpatation of `lib_messages.i`)
+- [`lib_verbi.i`][lib_verbi] (adpatation of `lib_verbs.i`)
+- [`libreria.i`][libreria] (adpatation of `library.i`)
+- [`lib_supplemento.i`][lib_supplemento] (not in original StdLib)
+
 
 ## Extra Standard Library Files
 
@@ -46,9 +48,11 @@ Boilerplates and templates from the StdLibrary have been renamed with a leading 
 
 Current status of translation work.
 
+> __NOTE__ — This sections hasn't been updated for a long time; to check the actual status see the [CHANGELOG] file instead.
+
 ## Directions and Movement
 
-- [`lib_locations.i`](./lib_locations.i)
+- [`lib_luoghi.i`][lib_luoghi]
 
 Translated all stdLib directions:
 
@@ -81,7 +85,7 @@ Translated all stdLib directions:
 
 ### Movement Messages
 
-- [`lib_messages.i`](./lib_messages.i)
+- [`lib_messaggi.i`][lib_messaggi]
 
 This is the status of the messages relating to directions and movements:
 
@@ -90,3 +94,32 @@ This is the status of the messages relating to directions and movements:
 | `NO_WAY:` | "Non puoi andare in quella direzione." |
 
 > __NOTE 1__ — "Non puoi andare in quella direzione." was taken from i6 translation; i7 uses "Non puoi andare da quella parte." instead.
+
+
+<!-----------------------------------------------------------------------------
+                               REFERENCE LINKS                                
+------------------------------------------------------------------------------>
+
+[CHANGELOG]: ./CHANGELOG.md
+
+<!-- OLD LIBRARY FILENAMES -->
+
+[library]:         ./libreria.i
+[lib_classes]:     ./lib_classi.i
+[lib_definitions]: ./lib_definizioni.i
+[lib_locations]:   ./lib_luoghi.i
+[lib_messages]:    ./lib_messaggi.i
+[lib_verbs]:       ./lib_verbi.i
+[lib_supplement]:  ./lib_supplemento.i
+
+<!-- NEW LIBRARY FILENAMES -->
+
+[libreria]:         ./libreria.i
+[lib_classi]:       ./lib_classi.i
+[lib_definizioni]:  ./lib_definizioni.i
+[lib_luoghi]:       ./lib_luoghi.i
+[lib_messaggi]:     ./lib_messaggi.i
+[lib_verbi]:        ./lib_verbi.i
+[lib_supplemento]:  ./lib_supplemento.i
+
+

@@ -1,10 +1,7 @@
--- "lib_supplement.i" v0.1.0 (2018/06/10)
+-- "lib_supplemento.i" v0.2.0 (2018/06/11)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
-
--- ALAN Standard Library v2.1
--- Verbs (file name: 'lib_supplement.i')
 
 ---- This supplementary library file defines some Italian specific synonyms.
 ---- It was not part of the original Standard Library.
