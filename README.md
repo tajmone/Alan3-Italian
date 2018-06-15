@@ -52,7 +52,7 @@ Gradually translating verbs and standard messages. A [demo adventure] file has b
 
 - [`/alanlib_ita/`](./alanlib_ita) — standard library 2.1 translation to Italian (WIP)
 - [`/alanlib/`](./alanlib) — copies of the upstream standard library:
-    + [`/2.1/`](./alanlib/2.1/) (updated: 2018/06/03)
+    + [`/2.1/`](./alanlib/2.1/) (updated: 2018/06/11)
 - [`/tests/`](./tests) — tests folder with demo adventure and commands scripts
 - [`LICENSE`][License] — Artistic License 2.0
 

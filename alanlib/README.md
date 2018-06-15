@@ -10,9 +10,9 @@ This folder contains copies of every release of the upstream _Alan Standard Libr
 
 Changelog for ALAN Standard Library v2.x
 
-## v2.1 (2018/05/27)
+## v2.1 (updated 2018/06/11)
 
-Prereleased on [Alan-IF Yahoo group] (2018/04/13), then [released on GitHub] (2018/05/27), followed by further commits (cosmetic changes only).
+Prereleased on [Alan-IF Yahoo group] (2018/04/13), then [released on GitHub] (2018/05/27), followed by further commits (small changes). Version 2.1 is not yet declared definitive.
 
 - added verb restrictions
 - polished and expanded the manual
