@@ -1,30 +1,30 @@
--- "newgame_ita.alan" v0.0.1 (2018-04-15) | Alan 3 beta5 | Std Lib v2.1
-
--- Boilerplate source code file testing the Italian ALAN library v2.1.
--- Used as a starting point for new test games.
--- (based on the original 'newgame.alan' from the Standard Library 2.1)
-
-
+-- "_newgame_ita.alan" v0.2.1 (2018/06/15) | Alan 3 beta5 | Std Lib v2.1
+--------------------------------------------------------------------------------
+--| Sorgente base standard per create avventure con ALAN Italian library v2.1.
+--| Basato sul file "newgame.alan" della Standard Library 2.1)
+--------------------------------------------------------------------------------
 IMPORT 'libreria.i'.
 
-
-
 THE my_game ISA DEFINITION_BLOCK         
-    -- (needed obligatorily in every new game!) 
+    -- (questo blocco è obbligatorio in ogni avventura che usi la libreria!) 
     
-    -- the following can be edited:
-    HAS title "Avventura Senza Titolo".   
-    HAS subtitle "".            
-    HAS author "Tristano Ajmone".     
-    HAS year 2018.        
-    HAS version "1".          
+    --> Modifica secondo necessità:
+    HAS title     "Avventura Senza Titolo".   
+    HAS subtitle  "Sottotiolo".            
+    HAS author    "Autore Ignoto".     
+    HAS year      2018.        
+    HAS version   "1".          
 
 END THE.
 
-
-THE start_loc ISA LOCATION      -- edit the name of this location and add features to it
+--==============================================================================
+-- LUOGO INIZIALE
+--==============================================================================
+THE start_loc ISA LOCATION  --> Cambia il nome ed il tipo di questa LOCATION
+                            --> iniziale e arricchiscila di dettagli.
 END THE.
 
-
-Start at start_loc.       -- change 'start_loc' to what you changed the name of the first location to be above
+--------------------------------------------------------------------------------
+Start at start_loc.   --> Sostituisci "start_loc" con il nome che hai scelto per
+                      --> la LOCATION iniziale qui sopra.
 DESCRIBE banner.
