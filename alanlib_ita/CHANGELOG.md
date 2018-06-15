@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/06/15](#20180615)
+    - [Translate `check_obj_suitable_XX` Messages](#translate-check_obj_suitable_xx-messages)
 - [2018/06/11](#20180611)
     - [Library Files Renamed to Italian](#library-files-renamed-to-italian)
 - [2018/06/10](#20180610)
@@ -48,6 +50,109 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/06/15
+
+- [`lib_definitions.i`][lib_definitions] (v0.2.1)
+- [`library.i`][library] (v0.2.1)
+
+
+Changed default response message for verbs that don't pass a check for objects (English:  `check_obj_suitable_sg`/`_pl`.
+
+Whereas before the approach was to have a dedicated message per verb (because of the need to use the infinitive form in Italian, which is not covered by `$v`), now the message will be without the verb, which will be supplied by the `CHECK` code itself instead.
+
+Before we had `check_obj_idoneo_prendere_sg` for the verb _prendi_ (take), yelding "`$+1 non è qualcosa che puoi prendere.`" (and it's plural counterpart, ending in `_pl`). Now all verbs share the same common (truncated) message:
+
+```alan
+HAS check_obj_idoneo_sg "$+1 non è qualcosa che puoi".
+HAS check_obj_idoneo_pl "$+1 non sono qualcosa che puoi".
+```
+
+... where the `CHECK` code completes the message by adding the infinitive of the verb being checked:
+
+```alan
+  VERB prendi
+    CHECK [...]
+    AND obj IS examinable
+      ELSE
+        IF obj IS NOT plural
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "prendere."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "prendere."
+        END IF.
+```
+
+... which will produce as a result "`<the obj> non [è/sono] qualcosa che puoi prendere.`" And so on with all the other verbs.
+
+## Translate `check_obj_suitable_XX` Messages
+
+The `check_obj_idoneo_sg`/`_pl` Italian message has beem implemented for the following verbs (some of which have not been translated yet, apart from this message):
+
+- `attack` — translated as: "attaccare"
+- `attack_with` — translated as: "attaccare"
+- `bite` — translated as: "mordere"
+- `burn` — translated as: "bruciare"
+- `burn_with` — translated as: "bruciare"
+- `buy` — translated as: "comprare"
+- `catch` — translated as: "catturare" (maybe should be "afferrare"?)
+- `clean` — translated as: "pulire"
+- `close` — translated as: "chiudere"
+- `close_with` — translated as: "chiudere"
+- `consult` — translated as: "consultare"
+- `cut` — translated as: "tagliare"
+- `cut_with` — translated as: "tagliare"
+- `drink` — translated as: "bere"
+- `drive` — translated as: "guidare"
+- `eat` — translated as: "mangiare"
+- `extinguish` — translated as: "estinguere" (fuoco)
+- `fill` — translated as: "riempire"
+- `free` — translated as: "liberare"
+- `kill` — translated as: "uccidere"
+- `kiss` — translated as: "baciare"
+- `lift` — translated as: "sollevare" (maybe should be "alzare"?)
+- `lock` — translated as: "bloccare"
+- `lock_with` — translated as: "bloccare"
+- `open` — translated as: "aprire"
+- `open_with` — translated as: "aprire"
+- `prendi` — EN verb: _take_
+- `prendi_da` — EN verb: _take from_
+- `read` — translated as: "leggere"
+- `rompi` — EN verb: _break_
+- `rompi_con` — EN verb: _break with_
+- `rub` — translated as: "strofinare" (need to check this!)
+- `sell` — translated as: "vendere"
+- `sip` — translated as: "sorseggia"
+- `taste` — translated as: "assaggiare"
+- `tear` — translated as: "strappare"
+- `throw` — translated as: "lanciare"
+- `throw_at` — translated as: "lanciare"
+- `throw_in` — translated as: "lanciare"
+- `throw_to` — translated as: "lanciare"
+- `tie` — translated as: "legare"
+- `tie_to` — translated as: "legare"
+- `touch` — translated as: "toccare"
+- `touch_with` — translated as: "toccare"
+- `unlock_with` — translated as: "sbloccare"
+
+
+... which covers most of the occurence of the original `check_obj_suitable_XX` English message — so handling of this message is now mostly done with. Some of the above translated message might require tweaking later on, but they are a good start.
+
+But some occurences were left out because they apply to verbs which in Italian would require a special construct in the response message, relying on prepositions (possibly, they will need a custom message not relying on `my_game` attributes), or just because I couldn't yet decide how to translate them (even vaguely). Namely, the occurences of `check_obj_suitable_XX` in the following verbs were not substituted:
+
+- `climb`
+- `climb_through`
+- `fire` (weapon)
+- `fire_at` (weapon)
+- `kick` (probaly should be "prendere a calci", but the Italian syntax for this verb is going to be complex)
+- `light`
+- `pry`
+- `pry_with`
+- `scratch`
+- `shake`
+- `shoot`
+- `shoot_with`
+- `squeeze`
+- `turn`
 
 
 # 2018/06/11

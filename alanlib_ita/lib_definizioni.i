@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.0 (2018/06/11)
+-- "lib_definizioni.i" v0.2.1 (2018/06/16)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -532,16 +532,22 @@ EVERY definition_block ISA LOCATION
 
   -- the general check message for when an instance cannot be used with the verb :
   --------------------------------------------------------------------------------
-  --# siccome in italiano serve l'infinito qui, questi messaggi non serviranno
-  --  ma andranno suddivisi in diverse varianti, a seconda del verbo cui si
-  --  riferisco; salvo eccezzioni che possano essere generalizzate.
+  --# siccome in italiano serve l'infinito qui, questo messaggio è troncato e
+  --  spetterà al codice che si occupa dei controlli sul verbo di farlo seguire
+  --  dall'infinito del verbo in questione.
 
   HAS check_obj_suitable_sg "That's not something you can $v.".       -- (numerous)
   HAS check_obj_suitable_pl "Those are not something you can $v.".
 
-  -- Varianti italiane, per specifici verbi:
-  HAS check_obj_idoneo_prendere_sg "$+1 non è qualcosa che puoi prendere.".       -- (numerous)
-  HAS check_obj_idoneo_prendere_pl "$+1 non sono qualcosa che puoi prendere.".
+  --@NOTA: | S3RioUs JokER consiglia di semplificare con la frase:
+  --       |    "Non è qualcosa che si possa <verbo inf>."
+  --       | ...sia per il singolare che per il plurale, omettendo di menzionare
+  --       | l'oggetto.  Tuttavia, menzionare l'oggetto può essere al  giocatore
+  --       | ai fini della disambugazione nel caso di verbi che consentono l'uso
+  --       | di oggetti multipli o "TUTTO".
+
+  HAS check_obj_idoneo_sg "$+1 non è qualcosa che puoi".        --> (verbi vari)
+  HAS check_obj_idoneo_pl "$+1 non sono qualcosa che puoi".
 
 
   -- variations of the above message, needed for example when a preposition is required after the verb:

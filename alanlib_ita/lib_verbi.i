@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.0 (2018/06/11)
+-- "lib_verbi.i" v0.2.1 (2018/06/16)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -500,8 +500,9 @@ ADD TO EVERY THING
     AND target IS examinable
       ELSE
         IF target IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "attaccare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "attaccare."
         END IF.
     AND target <> hero
       ELSE SAY check_obj_not_hero1 OF my_game.
@@ -576,8 +577,9 @@ ADD TO EVERY THING
       AND target IS examinable
           ELSE
           IF target IS NOT plural
-            THEN SAY check_obj_suitable_sg OF my_game.
-            ELSE SAY check_obj_suitable_pl OF my_game.
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY check_obj_idoneo_sg OF my_game. "attaccare."
+            ELSE SAY check_obj_idoneo_pl OF my_game. "attaccare."
           END IF.
       AND target <> weapon
         ELSE SAY check_obj_not_obj2_with OF my_game.
@@ -641,8 +643,9 @@ ADD TO EVERY OBJECT
     AND obj IS edible
       ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "mordere."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "mordere."
         END IF.
     AND obj IS takeable
       ELSE SAY check_obj_takeable OF my_game.
@@ -716,8 +719,9 @@ ADD TO EVERY OBJECT
     AND obj IS examinable
       ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "rompere."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "rompere."
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -781,8 +785,9 @@ ADD TO EVERY OBJECT
       AND obj IS examinable
         ELSE
           IF obj IS NOT plural
-            THEN SAY check_obj_suitable_sg OF my_game.
-            ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "rompere."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "rompere."
           END IF.
       AND instr IS examinable
         ELSE
@@ -874,8 +879,9 @@ ADD TO EVERY OBJECT
     AND obj IS examinable
       ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "bruciare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "bruciare."
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -918,8 +924,9 @@ ADD TO EVERY OBJECT
       AND obj IS examinable
         ELSE
           IF obj IS NOT plural
-            THEN SAY check_obj_suitable_sg OF my_game.
-            ELSE SAY check_obj_suitable_pl OF my_game.
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY check_obj_idoneo_sg OF my_game. "bruciare."
+            ELSE SAY check_obj_idoneo_pl OF my_game. "bruciare."
           END IF.
       AND instr IS examinable
         ELSE
@@ -981,8 +988,9 @@ ADD TO EVERY OBJECT
     AND item IS examinable
       ELSE
         IF item IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "comprare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "comprare."
         END IF.
     DOES
       IF item IS NOT plural
@@ -1023,8 +1031,9 @@ ADD TO EVERY THING
     AND obj IS examinable
       ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "catturare." -- afferrare?
+          ELSE SAY check_obj_idoneo_pl OF my_game. "catturare." -- afferrare?
         END IF.
     AND obj <> hero
       ELSE SAY check_obj_not_hero1 OF my_game.
@@ -1072,8 +1081,9 @@ ADD TO EVERY OBJECT
     AND obj IS examinable
       ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "pulire."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "pulire."
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -1131,6 +1141,10 @@ ADD TO EVERY OBJECT
   AND obj IS examinable
     ELSE
       IF obj IS NOT plural
+      --------------------------------------------------------------------------
+      --@NOTA: Qui dovrò usare un messaggio personalizzato, del tipo:
+      --       "$+1 non [è/sono] qualcosa su cui potersi arrampicare"
+      --------------------------------------------------------------------------
         THEN SAY check_obj_suitable_sg OF my_game.
         ELSE SAY check_obj_suitable_pl OF my_game.
       END IF.
@@ -1305,8 +1319,9 @@ ADD TO EVERY OBJECT
     AND obj IS openable
           ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "chiudere."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "chiudere."
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -1375,8 +1390,9 @@ ADD TO EVERY OBJECT
       AND obj IS openable
         ELSE
           IF obj IS NOT plural
-            THEN SAY check_obj_suitable_sg OF my_game.
-            ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "chiudere."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "chiudere."
           END IF.
       AND instr IS examinable
         ELSE
@@ -1454,8 +1470,9 @@ ADD TO EVERY THING
       AND source IS examinable
         ELSE
           IF source IS NOT plural
-            THEN SAY check_obj_suitable_sg OF my_game.
-            ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "consultare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "consultare."
           END IF.
       AND CURRENT LOCATION IS lit
         ELSE SAY check_current_loc_lit OF my_game.
@@ -1554,8 +1571,9 @@ ADD TO EVERY OBJECT
     AND obj IS examinable
       ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "tagliare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "tagliare."
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -1599,8 +1617,9 @@ ADD TO EVERY OBJECT
       AND obj IS examinable
         ELSE
           IF obj IS NOT plural
-            THEN SAY check_obj_suitable_sg OF my_game.
-            ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "tagliare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "tagliare."
           END IF.
       AND instr IS examinable
         ELSE
@@ -1812,8 +1831,9 @@ ADD TO EVERY LIQUID
     AND liq IS drinkable
       ELSE
         IF liq IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "bere."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "bere."
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -1898,8 +1918,9 @@ ADD TO EVERY OBJECT
     AND vehicle IS examinable
       ELSE
         IF vehicle IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "guidare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "guidare."
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -2012,8 +2033,9 @@ ADD TO EVERY OBJECT
     AND food IS edible
       ELSE
         IF food IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "mangiare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "mangiare."
         END IF.
     AND food IS takeable
       ELSE SAY check_obj_takeable OF my_game.
@@ -2620,8 +2642,9 @@ ADD TO EVERY OBJECT
     AND obj IS examinable
       ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "estinguere."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "estinguere."
         END IF.
     AND obj IS reachable AND obj IS NOT distant
       ELSE
@@ -2683,8 +2706,9 @@ ADD TO EVERY OBJECT
     AND cont IS examinable
       ELSE
         IF cont IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "riempire."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "riempire."
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -3069,8 +3093,9 @@ ADD TO EVERY THING
     AND obj IS examinable
       ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "liberare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "liberare."
         END IF.
     AND obj <> hero
       ELSE SAY check_obj_not_hero5 OF my_game.
@@ -3600,8 +3625,9 @@ ADD TO EVERY ACTOR
     AND victim IS examinable
       ELSE
         IF victim IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "uccidere."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "uccidere."
         END IF.
     AND victim <> hero
       ELSE SAY check_obj_not_hero2 OF my_game.
@@ -3686,8 +3712,9 @@ ADD TO EVERY THING
     AND obj IS examinable
       ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "baciare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "baciare."
         END IF.
     AND obj <> hero
       ELSE SAY check_obj_not_hero6 OF my_game.
@@ -3987,8 +4014,9 @@ ADD TO EVERY OBJECT
     AND obj IS examinable
       ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "sollevare." --# alzare?
+          ELSE SAY check_obj_idoneo_pl OF my_game. "sollevare."
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -4173,8 +4201,9 @@ ADD TO EVERY OBJECT
     AND obj IS lockable
           ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "bloccare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "bloccare."
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -4251,8 +4280,9 @@ ADD TO EVERY OBJECT
           AND obj IS lockable
         ELSE
           IF obj IS NOT plural
-            THEN SAY check_obj_suitable_sg OF my_game.
-            ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "bloccare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "bloccare."
           END IF.
       AND key IS examinable
         ELSE
@@ -4693,8 +4723,9 @@ ADD TO EVERY OBJECT
         AND obj IS openable
           ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "aprire."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "aprire."
         END IF.
         AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -4771,8 +4802,9 @@ ADD TO EVERY OBJECT
           AND obj IS openable
           ELSE
           IF obj IS NOT plural
-            THEN SAY check_obj_suitable_sg OF my_game.
-            ELSE SAY check_obj_suitable_pl OF my_game.
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY check_obj_idoneo_sg OF my_game. "aprire."
+            ELSE SAY check_obj_idoneo_pl OF my_game. "aprire."
           END IF.
       AND instr IS examinable
         ELSE
@@ -5660,8 +5692,9 @@ ADD TO EVERY OBJECT
     AND obj IS readable
           ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "leggere."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "leggere."
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -5826,8 +5859,9 @@ ADD TO EVERY THING
     AND obj IS examinable
       ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "strofinare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "strofinare."
         END IF.
     AND obj <> hero
       ELSE SAY check_obj_not_hero6 OF my_game.
@@ -6166,8 +6200,9 @@ ADD TO EVERY OBJECT
     AND item IS examinable
       ELSE
         IF item IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "vendere."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "vendere."
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -6504,8 +6539,9 @@ ADD TO EVERY LIQUID
     AND liq IS drinkable
       ELSE
         IF liq IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "sorseggiare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "sorseggiare."
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -7070,12 +7106,9 @@ ADD TO EVERY THING
     AND obj IS examinable
       ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_idoneo_prendere_sg OF my_game.
-          --#->    "$+1 non è qualcosa che puoi prendere.".
-          ELSE SAY check_obj_idoneo_prendere_sg OF my_game.
-          --#->    "$+1 non sono qualcosa che puoi prendere.".
-       -- THEN SAY check_obj_suitable_sg OF my_game. --#-> "That's not something you can $v."
-       -- ELSE SAY check_obj_suitable_pl OF my_game. --#-> "Those are not something you can $v."
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "prendere."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "prendere."
         END IF.
     AND obj <> hero
       ELSE SAY check_obj_not_hero1 OF my_game.
@@ -7106,12 +7139,9 @@ ADD TO EVERY THING
         AND obj IS takeable
           ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_idoneo_prendere_sg OF my_game.
-          --#->    "$+1 non è qualcosa che puoi prendere.".
-          ELSE SAY check_obj_idoneo_prendere_sg OF my_game.
-          --#->    "$+1 non sono qualcosa che puoi prendere.".
-       -- THEN SAY check_obj_suitable_sg OF my_game. --#-> "That's not something you can $v."
-       -- ELSE SAY check_obj_suitable_pl OF my_game. --#-> "Those are not something you can $v."
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "prendere."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "prendere."
         END IF.
     AND obj NOT DIRECTLY IN hero
       -- i.e. the object to be taken is not carried by the hero already
@@ -7265,12 +7295,9 @@ ADD TO EVERY THING
       AND obj IS takeable
             ELSE
           IF obj IS NOT plural
-            THEN SAY check_obj_idoneo_prendere_sg OF my_game.
-            --#->    "$+1 non è qualcosa che puoi prendere.".
-            ELSE SAY check_obj_idoneo_prendere_sg OF my_game.
-            --#->    "$+1 non sono qualcosa che puoi prendere.".
-         -- THEN SAY check_obj_suitable_sg OF my_game. --#-> "That's not something you can $v."
-         -- ELSE SAY check_obj_suitable_pl OF my_game. --#-> "Those are not something you can $v."
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY check_obj_idoneo_sg OF my_game. "prendere."
+            ELSE SAY check_obj_idoneo_pl OF my_game. "prendere."
           END IF.
       AND holder IS reachable AND holder IS NOT distant
         ELSE
@@ -7422,14 +7449,16 @@ ADD TO EVERY OBJECT
     AND obj IS examinable
       ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "assaggiare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "assaggiare."
         END IF.
     AND obj IS edible OR obj IS drinkable
       ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "assaggiare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "assaggiare."
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -7483,8 +7512,9 @@ ADD TO EVERY OBJECT
     AND obj IS examinable
       ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "strappare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "strappare."
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -7649,8 +7679,9 @@ ADD TO EVERY OBJECT
     AND projectile IS examinable
       ELSE
         IF projectile IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "lanciare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "lanciare."
         END IF.
     AND projectile IS takeable
       ELSE SAY check_obj_takeable OF my_game.
@@ -7726,8 +7757,9 @@ ADD TO EVERY OBJECT
           AND projectile IS examinable
         ELSE
           IF projectile IS NOT plural
-            THEN SAY check_obj_suitable_sg OF my_game.
-            ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "lanciare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "lanciare."
           END IF.
           AND projectile IS takeable
           ELSE SAY check_obj_takeable OF my_game.
@@ -7839,8 +7871,9 @@ ADD TO EVERY OBJECT
           AND projectile IS examinable
         ELSE
           IF projectile IS NOT plural
-            THEN SAY check_obj_suitable_sg OF my_game.
-            ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "lanciare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "lanciare."
           END IF.
           AND projectile IS takeable
           ELSE SAY check_obj_takeable OF my_game.
@@ -7921,8 +7954,9 @@ ADD TO EVERY OBJECT
               AND projectile IS examinable
           ELSE
           IF projectile IS NOT plural
-            THEN SAY check_obj_suitable_sg OF my_game.
-            ELSE SAY check_obj_suitable_pl OF my_game.
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY check_obj_idoneo_sg OF my_game. "lanciare."
+            ELSE SAY check_obj_idoneo_pl OF my_game. "lanciare."
           END IF.
           AND projectile IS takeable
           ELSE SAY check_obj_takeable OF my_game.
@@ -8021,8 +8055,9 @@ ADD TO EVERY OBJECT
     AND obj IS examinable
       ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "legare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "legare."
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -8058,8 +8093,9 @@ ADD TO EVERY THING
       AND obj IS examinable
           ELSE
           IF obj IS NOT plural
-            THEN SAY check_obj_suitable_sg OF my_game.
-            ELSE SAY check_obj_suitable_pl OF my_game.
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY check_obj_idoneo_sg OF my_game. "legare."
+            ELSE SAY check_obj_idoneo_pl OF my_game. "legare."
           END IF.
       AND target IS examinable
           ELSE SAY check_obj2_suitable_there OF my_game.
@@ -8139,8 +8175,9 @@ ADD TO EVERY THING
         AND obj IS examinable
               ELSE
         IF obj IS NOT plural
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "toccare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "toccare."
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -8205,8 +8242,9 @@ ADD TO EVERY THING
           AND obj IS examinable
               ELSE
           IF obj IS NOT plural
-            THEN SAY check_obj_suitable_sg OF my_game.
-            ELSE SAY check_obj_suitable_pl OF my_game.
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY check_obj_idoneo_sg OF my_game. "toccare."
+            ELSE SAY check_obj_idoneo_pl OF my_game. "toccare."
           END IF.
           AND instr IS examinable
           ELSE
@@ -8552,8 +8590,9 @@ ADD TO EVERY OBJECT
           AND obj IS lockable
               ELSE
           IF obj IS NOT plural
-            THEN SAY check_obj_suitable_sg OF my_game.
-            ELSE SAY check_obj_suitable_pl OF my_game.
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY check_obj_idoneo_sg OF my_game. "sbloccare."
+            ELSE SAY check_obj_idoneo_pl OF my_game. "sbloccare."
           END IF.
       AND key IS examinable
         ELSE
