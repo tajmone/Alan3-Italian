@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.1 (2018/06/16)
+-- "lib_definizioni.i" v0.2.2 (2018/06/16)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -6,19 +6,35 @@
 -- ALAN Standard Library v2.1
 -- "Definitions" (original file name: 'lib_definitions.i')
 --------------------------------------------------------------------------------
+--| Questo file definisce:
+--|  - Attributi generali.
+--|  - Articoli e preposizioni articolate.
+--|  - Sinonimi comuni.
+--|  - La classe "definition_block".
+--|  - Attributi per la sezione START.
+--|  - I messaggi riguardanti l'eroe (hero).
+--|  - I messaggi per il luoghi bui.
+--|  - Le risposte per le azioni bloccate.
+--|  - I messaggi per i parametri illegali nelle sintassi dei verbi.
+--|  - I messaggi per i vari CHECK dei verbi. 
+--|  - I messaggi per le azioni implicite nei verbi.
+--|  - Attributi ed eventi delle azioni bloccate.
+--|  - L'istanza del banner (per la sezione START).
+--------------------------------------------------------------------------------
+--@testo originale inglese: 
 
 -- Included in this file:
   -- general attributes
   -- some article declarations
   -- common synonyms
   -- the definition_block class
-    -- attributes for the start section
-    -- messages for the hero
-    -- messages for dark locations
-    -- response for restricted actions
-    -- illegal parameter messages, used in SYNTAX definitions of verbs
-    -- verb check messages
-    -- implicit taking message
+  -- attributes for the start section
+  -- messages for the hero
+  -- messages for dark locations
+  -- response for restricted actions
+  -- illegal parameter messages, used in SYNTAX definitions of verbs
+  -- verb check messages
+  -- implicit taking message
   -- attributes and events for restricted actions
   -- the banner instance (for the start section)
 
@@ -295,8 +311,7 @@ END ADD TO.
 --    INDEFINITE ARTICLE "an"
 -- END THE.
 
-
-
+--------------------------------------------------------------------------------
 
 -- Some null defaults defined that have been mentioned above:
 
@@ -308,7 +323,7 @@ END THE.
 THE null_key ISA OBJECT
 END THE.
 
-
+--------------------------------------------------------------------------------
 
 -- Some weight attributes for things:
 
@@ -330,7 +345,7 @@ END ADD TO OBJECT.
 
 -- These attributes are mostly used to check if something is movable.
 
-
+--------------------------------------------------------------------------------
 
 -- An attribute for keeping track of nested locations; used internally in the library (ignore).
 
@@ -338,7 +353,7 @@ ADD TO EVERY LOCATION
   HAS nested {nowhere}.
 END ADD TO.
 
-
+--------------------------------------------------------------------------------
 
 
 -- Common synonyms
@@ -363,7 +378,7 @@ using = 'with'.
 me, myself, yourself, self = hero.
 
 
-
+--------------------------------------------------------------------------------
 
 -- Attributes for the my_game definition block
 -- ===========================================
@@ -869,7 +884,7 @@ EVERY definition_block ISA LOCATION
     SET described OF location OF hero TO 1.
 
 
-
+--------------------------------------------------------------------------------
 
 -- Finally, for restricted actions, we implement the following attributes, corresponding to the library verbs.
   -- If you change any of these to CAN NOT..., for examle "CAN NOT attack.", that verb, together with its
@@ -1848,16 +1863,16 @@ THE banner ISA DEFINITION_BLOCK
       THEN "$n" SAY subtitle OF my_game.
       END IF.
 
-    "$n(C)" SAY year OF my_game. "by" SAY author OF my_game.
+    "$n(C)" SAY author OF my_game. "," SAY year OF my_game. "."
 
     "$nProgrammed with the ALAN Interactive Fiction Language v3.0 beta5
     $nStandard Library v2.1"
 
     IF version OF my_game <> "0"
-      THEN "$nVersion" SAY version OF my_game.
+      THEN "$nVersione" SAY version OF my_game.
       END IF.
 
-    "$nAll rights reserved."
+    "$nTutti i diritti riservati."
 
 END THE banner.
 
