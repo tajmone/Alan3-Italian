@@ -11,7 +11,11 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/06/15](#20180615)
+- [2018/06/16 \(3\)](#20180616-3)
+    - [Verb: `wait`](#verb-wait)
+    - [Verb: `sleep`](#verb-sleep)
+- [2018/06/16 \(2\)](#20180616-2)
+- [2018/06/16 \(1\)](#20180616-1)
     - [Translate `check_obj_suitable_XX` Messages](#translate-check_obj_suitable_xx-messages)
 - [2018/06/11](#20180611)
     - [Library Files Renamed to Italian](#library-files-renamed-to-italian)
@@ -51,11 +55,60 @@ Status: Alpha stage.
 
 -----
 
-# 2018/06/15
+# 2018/06/16 (3)
 
-- [`lib_definitions.i`][lib_definitions] (v0.2.1)
-- [`library.i`][library] (v0.2.1)
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.3)
+- [`lib_verbi.i`][lib_verbi] (v0.2.2)
 
+Translated `my_game` attributes for verb restrictions:
+
+| English |   Italian   |
+|---------|-------------|
+| `wait`  | `aspettare` |
+| `sleep` | `dormire`   |
+
+
+## Verb: `wait`
+
+Translated verb `aspetta`, "__aspetta__" (_wait_):
+
+    aspetta
+
+with synonyms:
+
+    z, attendi = aspetta
+
+Outputs message: "`Il tempo passa.`"
+
+
+## Verb: `sleep`
+
+Translated verb `dormi`, "__dormi__" (_sleep_):
+
+    dormi
+
+with synonyms:
+
+    riposa = dormi
+
+Outputs message: "`Non è il momento di riposare.`"
+
+<!---------------------------------------------------------------------------->
+
+# 2018/06/16 (2)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.2)
+
+Some code clean up and translation of library comments.
+
+Part of the `banner` translated to Italian.
+
+<!---------------------------------------------------------------------------->
+
+# 2018/06/16 (1)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.1)
+- [`lib_verbi.i`][lib_verbi] (v0.2.1)
 
 Changed default response message for verbs that don't pass a check for objects (English:  `check_obj_suitable_sg`/`_pl`.
 
@@ -154,6 +207,7 @@ But some occurences were left out because they apply to verbs which in Italian w
 - `squeeze`
 - `turn`
 
+<!---------------------------------------------------------------------------->
 
 # 2018/06/11
 
@@ -174,6 +228,8 @@ All library files are renamed to Italian filenames:
 | `lib_supplement.i`  | [`lib_supplemento.i`][lib_supplemento] |
 
 From now on I'll start to italianize the library by translating also comments and internal library IDs.
+
+<!---------------------------------------------------------------------------->
 
 # 2018/06/10
 
@@ -251,11 +307,15 @@ Ultimately, this solution was adopted after careful consideration of various app
 
 [as Greg has pointed out]: https://groups.yahoo.com/neo/groups/alan-if/conversations/messages/3456
 
+<!---------------------------------------------------------------------------->
+
 # 2018/06/02
 
 - [`lib_classes.i`][lib_classes] (v0.0.2)
 
 Translated some response messages for containers and supporters.
+
+<!---------------------------------------------------------------------------->
 
 # 2018/05/31:2
 
@@ -285,6 +345,7 @@ Translated RUN-TIME MESSAGES:
 | `SEE_AND`             | "e `$01`                                        |
 | `SEE_END`             | "qui.                                           |
 
+<!---------------------------------------------------------------------------->
 
 # 2018/05/31:1
 
@@ -346,7 +407,7 @@ with synonyms:
 
 > __NOTE__ — I had to leave the English syntaxes `restore`, `restart` and `quit` because after the `QUIT_ACTION` Run-Time message ("Do you want to RESTART, RESTORE, QUIT or UNDO? ") the allowed responses are hardcoded into Alan and can't be translated (even through the `QUIT_ACTION` message can).
 
-
+<!---------------------------------------------------------------------------->
 
 # 2018/05/28
 
@@ -355,6 +416,8 @@ Code cleanup:
 - [`lib_verbs.i`][lib_verbs] (v0.0.9)
 
 Add __Italian Verbs Table__: translated verbs are now added to a new verbs table, which will eventually replace the original English table.
+
+<!---------------------------------------------------------------------------->
 
 # 2018/05/27
 
@@ -386,6 +449,8 @@ Translated RUN-TIME MESSAGES:
 | `SAVE_WHERE`     | Inserisci il nome del file                                   |
 
 > __NOTE__ — some of the above run-time messages can only be seen when using ARun.
+
+<!---------------------------------------------------------------------------->
 
 # 2018/05/22 (3)
 
@@ -431,6 +496,7 @@ Translated `my_game` attributes for verb restrictions:
 | `break_with` | `rompi_con` |
 | `pray`       | `pregare`   |
 
+<!---------------------------------------------------------------------------->
 
 # 2018/05/22 (2)
 
@@ -457,6 +523,8 @@ Translated `my_game` attributes for verb restrictions:
 | `open`       | `aprire`       |
 | `open_with`  | `aprire_con`   |
 
+<!---------------------------------------------------------------------------->
+
 # 2018/05/22 (1)
 
 - [`lib_definitions.i`][lib_definitions] (v0.0.6)
@@ -469,6 +537,8 @@ Translated verb "__spogliati__" (_undress_):
     [spogliati|svestiti]
 
 Its default reponses translation might need some polishing. The commented code example on how to implement the undressing action also needs to be polished.
+
+<!---------------------------------------------------------------------------->
 
 # 2018/05/19
 
@@ -511,6 +581,7 @@ Now [`lib_supplement.i`][lib_supplement] implements all the required synonyms fo
 >   prendi_da = togli   (obj)  'dai' (holder).
 > ``` 
 
+<!---------------------------------------------------------------------------->
 
 # 2018/05/15
 
@@ -569,6 +640,7 @@ See test file [`../tests/articoli.alan`](../tests/articoli.alan) for more exampl
 
 > __NOTE__ — this commit didn't change the way the library predefines articles for ACTORS; that part of the code was left untouched as it needs to be further looked into before changing it.
 
+<!---------------------------------------------------------------------------->
 
 # 2018/05/12 (2)
 
@@ -618,6 +690,8 @@ The above changes had some side effects which required me to also change the Eng
 
 ... since these changes were prematurely forced on me, I've implemented them without giving them much through, but just to end the conflicts which prevented compiling the library. So, they might need to be looked into more carefully at some point.
 
+<!---------------------------------------------------------------------------->
+
 # 2018/05/12 (1)
 
 - New [`lib_supplement.i`][lib_supplement] — this supplement to the Standard Library deals with implementing Italian synonyms for the Predefined Player Words. It's kept separate because it will be removed from the Library once Italian language gets natively supported in Alan:
@@ -630,6 +704,8 @@ The above changes had some side effects which required me to also change the Eng
 - [`library.i`][library]: added `IMPORT 'lib_supplement.i'.`
 - New [`VERBI_IT.md`][VERBI_IT] doc to resume current state of verbs translated to Italian.
 - Added to [`../tests/`][tests] folder Alan source and script files to test Player Words implementation.
+
+<!---------------------------------------------------------------------------->
 
 # 2018/05/01
 

@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.2 (2018/06/16)
+-- "lib_definizioni.i" v0.2.3 (2018/06/16)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -894,6 +894,7 @@ EVERY definition_block ISA LOCATION
   CAN abbandonare_partita.  --> 'quit'
   CAN aprire.               --> open
   CAN aprire_con.           --> open_with
+  CAN aspettare.            --> wait         (+ z)
   CAN bere.                 --> drink
   CAN bruciare.             --> burn
   CAN bruciare_con.         --> burn_with
@@ -901,8 +902,9 @@ EVERY definition_block ISA LOCATION
   CAN chiudere.             --> close (+ shut)
   CAN chiudere_con.         --> close_with
   CAN danzare.              --> dance
-  CAN dare.                 --> give. 
-  CAN inventariare.         --> i           (+ inv, inventory)
+  CAN dare.                 --> give 
+  CAN dormire.              --> sleep        (+ rest)
+  CAN inventariare.         --> i            (+ inv, inventory)
   CAN mangiare.             --> eat
   CAN pregare.              --> pray
   CAN prendere.             --> take.        (+ carry, get, grab, hold, obtain)
@@ -1025,7 +1027,6 @@ EVERY definition_block ISA LOCATION
   CAN sip.
   CAN sit.         -- (down)
   CAN sit_on.
-  CAN sleep.       -- (+ rest)
   CAN smell0.
   CAN smell.
   CAN squeeze.
@@ -1059,7 +1060,6 @@ EVERY definition_block ISA LOCATION
   CAN 'use'.
   CAN use_with.
   CAN 'verbose'.
-  CAN 'wait'.      -- (+ z)
   CAN wear.
   CAN what_am_i.
   CAN what_is.
@@ -1084,24 +1084,26 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game abbandonare_partita.  --> 'quit'
   MAKE my_game aprire.               --> open
   MAKE my_game aprire_con.           --> open_with
+  MAKE my_game aspettare.            --> wait        (+ z)
   MAKE my_game bere.                 --> drink
   MAKE my_game caricare_partita.     --> 'restore'
-  MAKE my_game chiudere.             --> close        (+ shut)
+  MAKE my_game chiudere.             --> close       (+ shut)
   MAKE my_game chiudere_con.         --> close_with
   MAKE my_game danzare.              --> dance
   MAKE my_game dare.                 --> give
-  MAKE my_game inventariare.         --> i            (+ inv, inventory)
+  MAKE my_game dormire.              --> sleep       (+ rest)
+  MAKE my_game inventariare.         --> i           (+ inv, inventory)
   MAKE my_game mangiare.             --> eat
   MAKE my_game pregare.              --> pray
-  MAKE my_game prendere.             --> take.        (+ carry, get, grab, hold, obtain)
-  MAKE my_game prendere_da.          --> take_from.   (+ remove from)
+  MAKE my_game prendere.             --> take.       (+ carry, get, grab, hold, obtain)
+  MAKE my_game prendere_da.          --> take_from.  (+ remove from)
   MAKE my_game ricominciare_partita. --> 'restart'
-  MAKE my_game rompere.              --> break (+ destroy)
+  MAKE my_game rompere.              --> break       (+ destroy)
   MAKE my_game rompere_con.          --> break_with
   MAKE my_game salvare_partita.      --> save
   MAKE my_game scavare.              --> dig
   MAKE my_game spogliarsi.           --> undress
-  MAKE my_game uccidere.             --> kill         (+ murder)
+  MAKE my_game uccidere.             --> kill        (+ murder)
   MAKE my_game uccidere_con.         --> kill_with
 
 --# NOT YET TRANSLATED:
@@ -1215,7 +1217,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game sip.
   MAKE my_game sit.             -- (down)
   MAKE my_game sit_on.
-  MAKE my_game sleep.           -- (+ rest)
   MAKE my_game smell0.
   MAKE my_game smell.
   MAKE my_game squeeze.
@@ -1249,7 +1250,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game 'use'.
   MAKE my_game use_with.
   MAKE my_game 'verbose'.
-  MAKE my_game 'wait'.          -- (+ z)
   MAKE my_game wear.
   MAKE my_game what_am_i.
   MAKE my_game what_is.
@@ -1285,11 +1285,13 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game     abbandonare_partita.  --> 'quit'
   MAKE my_game NOT aprire.               --> open
   MAKE my_game NOT aprire_con.           --> open_with
+  MAKE my_game     aspettare.            --> wait          (+ z)
   MAKE my_game NOT bere.                 --> drink
   MAKE my_game     caricare_partita.     --> 'restore'
   MAKE my_game NOT chiudere.             --> close         (+ shut)
   MAKE my_game NOT chiudere_con.         --> close_with
   MAKE my_game NOT danzare.              --> dance
+  MAKE my_game NOT dormire.              --> sleep         (+ rest)
   MAKE my_game     inventariare.         --> i             (+ inv, inventory)
   MAKE my_game NOT mangiare.             --> eat
   MAKE my_game     pregare.              --> pray
@@ -1417,7 +1419,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT sip.
   MAKE my_game NOT sit.         -- (down)
   MAKE my_game NOT sit_on.
-  MAKE my_game NOT sleep.       -- (+ rest)
   MAKE my_game smell0.
   MAKE my_game smell.
   MAKE my_game NOT squeeze.
@@ -1451,7 +1452,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT 'use'.
   MAKE my_game NOT use_with.
   MAKE my_game 'verbose'.
-  MAKE my_game 'wait'.          -- (+ z)
   MAKE my_game NOT wear.
   MAKE my_game what_am_i.
   MAKE my_game what_is.
@@ -1473,11 +1473,13 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game     abbandonare_partita.  --> 'quit'
   MAKE my_game NOT aprire.               --> open
   MAKE my_game NOT aprire_con.           --> open_with
+  MAKE my_game NOT aspettare.            --> wait          (+ z)
   MAKE my_game NOT bere.                 --> drink
   MAKE my_game     caricare_partita.     --> 'restore'
   MAKE my_game NOT chiudere.             --> close         (+ shut)
   MAKE my_game NOT chiudere_con.         --> close_with
   MAKE my_game NOT danzare.              --> dance
+  MAKE my_game NOT dormire.              --> sleep         (+ rest)
   MAKE my_game NOT inventariare.         --> i             (+ inv, inventory)
   MAKE my_game NOT mangiare.             --> eat
   MAKE my_game NOT pregare.              --> pray
@@ -1605,7 +1607,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT sip.
   MAKE my_game NOT sit.         -- (down)
   MAKE my_game NOT sit_on.
-  MAKE my_game NOT sleep.       -- (+ rest)
   MAKE my_game NOT smell0.
   MAKE my_game NOT smell.
   MAKE my_game NOT squeeze.
@@ -1639,7 +1640,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT 'use'.
   MAKE my_game NOT use_with.
   MAKE my_game 'verbose'.
-  MAKE my_game NOT 'wait'.      -- (+ z)
   MAKE my_game NOT wear.
   MAKE my_game NOT what_am_i.
   MAKE my_game NOT what_is.
@@ -1659,11 +1659,13 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT abbandonare_partita.  --> 'quit'
   MAKE my_game NOT aprire.               --> open
   MAKE my_game NOT aprire_con.           --> open_with
+  MAKE my_game NOT aspettare.            --> wait            (+ z)
   MAKE my_game NOT bere.                 --> drink
   MAKE my_game NOT caricare_partita.     --> 'restore'
   MAKE my_game NOT chiudere.             --> close           (+ shut)
   MAKE my_game NOT chiudere_con.         --> close_with
   MAKE my_game NOT danzare.              --> dance
+  MAKE my_game NOT dormire.              --> sleep           (+ rest)
   MAKE my_game NOT inventariare.         --> i               (+ inv, inventory)
   MAKE my_game NOT mangiare.             --> eat
   MAKE my_game NOT pregare.              --> pray
@@ -1791,7 +1793,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT sip.
   MAKE my_game NOT sit.         -- (down)
   MAKE my_game NOT sit_on.
-  MAKE my_game NOT sleep.       -- (+ rest)
   MAKE my_game NOT smell0.
   MAKE my_game NOT smell.
   MAKE my_game NOT squeeze.
@@ -1825,7 +1826,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT 'use'.
   MAKE my_game NOT use_with.
   MAKE my_game NOT 'verbose'.
-  MAKE my_game NOT 'wait'.       -- (+ z)
   MAKE my_game NOT wear.
   MAKE my_game NOT what_am_i.
   MAKE my_game NOT what_is.

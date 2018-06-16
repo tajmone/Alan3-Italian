@@ -26,6 +26,8 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [rompi](#rompi)
     - [rompi_con](#rompi_con)
 - [Verbi che non fanno nulla](#verbi-che-non-fanno-nulla)
+    - [aspetta](#aspetta)
+    - [dormi](#dormi)
     - [prega](#prega)
 
 <!-- /MarkdownTOC -->
@@ -39,11 +41,14 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [abbandona]
 - [abbandona partita]
 - [afferra]
+- [aspetta]
+- [attendi]
 - [carica]
 - [carica partita]
 - [dai]
 - [distruggi]
 - [distruggi con]
+- [dormi]
 - [inventario]
 - [offri]
 - [porgi]
@@ -54,6 +59,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [ricomincia]
 - [ricomincia partita]
 - [rimuovi]
+- [riposa]
 - [rompi con]
 - [rompi]
 - [salva]
@@ -313,6 +319,42 @@ esito:
 # Verbi che non fanno nulla
 
 Raggruppo qui vari verbi che nell'implementazione di base della libreria sono riconosciuti ma non sortiscono alcun effetto.
+
+
+## aspetta
+
+[aspetta]: #aspetta
+[attendi]: #aspetta
+
+sintassi:
+
+    (aspetta|attendi|Z)
+
+condizioni:
+
+- `my_game CAN aspettare`
+
+esito:
+
+- Nulla, dice solo "`Il tempo passa.`" (testo preso da Inform 6 _Infit_).
+
+
+## dormi
+
+[dormi]: #dormi
+[riposa]: #dormi
+
+sintassi:
+
+    (dormi|riposa)
+
+condizioni:
+
+- `my_game CAN dormire`
+
+esito:
+
+- Nulla, dice solo "`Non è il momento di riposare.`"
 
 
 ## prega

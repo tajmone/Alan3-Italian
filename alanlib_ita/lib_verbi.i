@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.1 (2018/06/16)
+-- "lib_verbi.i" v0.2.2 (2018/06/16)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1764,6 +1764,14 @@ END VERB.
 
 
 -- ==============================================================
+-- @NOTA | dive 'in' (liq) coprirebbe "tuffati in acqua" ma non
+--       | "tuffati nella piscina". In teoria, servirebbe un'altra
+--       | sintassi del tipo dive 'in' (vessel) che controlli un attributo che
+--       | specifica se il contenitore contiene liquidi e se è grande abbastanza
+--       | per potervici tuffare. Se no, usando "piscina" come sinonimo di "acqua"
+--       | per far sì che ci si possa tuffare in essa, crerebbe il problema che
+--       | i verbi riguardanti i liquidi si applicherebbero anche alla piscina.
+--       | Magari in realtà il problema non sussiste, ma devo tenerne conto.
 
 
 SYNTAX dive_in = dive 'in' (liq)
@@ -6711,18 +6719,16 @@ END ADD TO.
 -- ==============================================================
 
 
-SYNTAX sleep = sleep.
+SYNTAX dormi = dormi.
 
+SYNONYMS riposa = dormi.
 
-VERB sleep
-  CHECK my_game CAN sleep
+VERB dormi
+  CHECK my_game CAN dormire
     ELSE SAY restricted_response OF my_game.
   DOES
-    "There's no need to $v right now."
+    "Non è il momento di riposare."
 END VERB.
-
-
-SYNONYMS rest = sleep.
 
 
 
@@ -7615,6 +7621,7 @@ SYNONYMS enlighten, inform = tell.
 
 SYNTAX think = think.
 
+SYNONYMS ponder, meditate, reflect = think.
 
 VERB think
   CHECK my_game CAN think
@@ -7624,7 +7631,6 @@ VERB think
 END VERB.
 
 
-SYNONYMS ponder, meditate, reflect = think.
 
 
 
@@ -8430,11 +8436,11 @@ SYNTAX turn_off = turn off (app)
         ELSE SAY illegal_parameter_off_pl OF my_game.
       END IF.
 
-  turn_off = switch off (app).
+      turn_off = switch off (app).
 
       turn_off = turn (app) off.
 
-  turn_off = switch (app) off.
+      turn_off = switch (app) off.
 
 
 
@@ -8725,25 +8731,25 @@ END VERB.
 -- ==============================================================
 
 
------ WAIT (= z)
+----- @ASPETTA --> WAIT (= z)
 
 
 -- ==============================================================
 
 
-SYNTAX 'wait' = 'wait'.
+SYNTAX aspetta = aspetta.
 
+SYNONYMS
+  z, attendi = aspetta.
 
-VERB 'wait'
-  CHECK my_game CAN 'wait'
+VERB aspetta
+  CHECK my_game CAN aspettare
     ELSE SAY restricted_response OF my_game.
   DOES
-    "Time passes..."
+    "Il tempo passa."
 END VERB.
 
 
-SYNONYMS
-  z = 'wait'.
 
 
 
