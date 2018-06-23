@@ -1,12 +1,15 @@
 ; ******************************************************************************
 ; *                                                                            *
-; *                     TEST DELLE PREPOSIZIONI ARTICOLATE                     *
+; *              TEST DEI VARI COMANDI E LE RISPOSTE PREDEFINITE               *
 ; *                                                                            *
 ; ******************************************************************************
 
-ovest
-prendi la pera
+x la statua
+
 ; ==============================================================================
-;            Testiamo l'implementazione delle preposizioni articolate           
+;                        COMANDO "ANCORA" ("RIFAI", "G")                        
 ; ==============================================================================
-put la pera on la bancarella
+rifai
+ancora
+g
+

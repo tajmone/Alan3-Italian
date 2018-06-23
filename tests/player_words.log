@@ -1,16 +1,21 @@
 
 Il Mondo di Alan 
 Una demo per testare ALAN Standar Library Italian 
-(C) 2018 by Tristano Ajmone 
+(C) Tristano Ajmone, 2018. 
 Programmed with the ALAN Interactive Fiction Language v3.0 beta5
 Standard Library v2.1 
-Version Alpha 1 
-All rights reserved.
+Versione Alpha 1 
+Tutti i diritti riservati.
 
 
 Piazza della Repubblica d'IF
 Puoi vedere una statua qui.
 
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                   TEST DELLE "PLAYER WORDS" IN ITALIANO                    *
+> ; *                                                                            *
+> ; ******************************************************************************
 > ovest
 Mercato
 Puoi vedere una bancarella qui. Sopra la bancarella vedi delle cigliege, 
@@ -18,7 +23,9 @@ un mango and una pera. Gustavo is here. There is un fruttivendolo here.
 
 > 
 
-> ; testiamo "E" e "POI"
+> ; ==============================================================================
+> ;                              Testiamo "E" e "POI"                             
+> ; ==============================================================================
 > prendi la pera POI prendi il mango
 Presa.
 
@@ -34,7 +41,9 @@ Prese.
 
 > 
 
-> ; testiamo "TUTTO" ecc.
+> ; ==============================================================================
+> ;                             Testiamo "TUTTO" ecc.                             
+> ; ==============================================================================
 > drop TUTTO
 (pera) Dropped.
 
@@ -57,13 +66,17 @@ Prese.
 
 > 
 
-> ; testiamo "TRANNE/ECCETTO" ecc.
+> ; ==============================================================================
+> ;                         testiamo "TRANNE/ECCETTO" ecc.                        
+> ; ==============================================================================
 > drop TUTTO TRANNE le cigliege
 (pera) Dropped.
 
 (mango) Dropped.
 
-> ; D'ora in poi usiamo la formula magica XYZZY per raccogliere tutta la frutta
+> ; ------------------------------------------------------------------------------
+> ; D'ora in poi useremo la formula magica XYZZY per raccogliere tutta la frutta!
+> ; ------------------------------------------------------------------------------
 > xyzzy
 Pronunci la formula magica "xyzzy" e tutta la frutta finisce nel tuo
 inventario!

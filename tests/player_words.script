@@ -1,20 +1,33 @@
+; ******************************************************************************
+; *                                                                            *
+; *                   TEST DELLE "PLAYER WORDS" IN ITALIANO                    *
+; *                                                                            *
+; ******************************************************************************
 ovest
 
-; testiamo "E" e "POI"
+; ==============================================================================
+;                              Testiamo "E" e "POI"                             
+; ==============================================================================
 prendi la pera POI prendi il mango
 drop la pera
 prendi la pera E prendi le cigliege
 
-; testiamo "TUTTO" ecc.
+; ==============================================================================
+;                             Testiamo "TUTTO" ecc.                             
+; ==============================================================================
 drop TUTTO
 
 ; NOTA: la forma "E POI" non è valida:
 prendi la pera E POI prendi il mango
 prendi il mango e prendi le cigliege
 
-; testiamo "TRANNE/ECCETTO" ecc.
+; ==============================================================================
+;                         testiamo "TRANNE/ECCETTO" ecc.                        
+; ==============================================================================
 drop TUTTO TRANNE le cigliege
-; D'ora in poi usiamo la formula magica XYZZY per raccogliere tutta la frutta
+; ------------------------------------------------------------------------------
+; D'ora in poi useremo la formula magica XYZZY per raccogliere tutta la frutta!
+; ------------------------------------------------------------------------------
 xyzzy
 drop TUTTO ECCETTO le cigliege
 xyzzy

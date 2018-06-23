@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.2 (2018/06/16)
+-- "lib_verbi.i" v0.2.3 (2018/06/23)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -19,6 +19,7 @@
 --| prega              |                                        | prega                           |   0    |     |
 --| prendi             | afferra, raccogli, trasporta           | prendi (ogg)                    |   1    |  x  |
 --| prendi_da          | rimuovi, togli                         | prendi (ogg) da (holder)        |   2    |  x  |
+--| rifai              | ancora, g                              | rifai                           |   0    |     |
 --| rompi              | distruggi, spacca, sfonda              | rompi (ogg)                     |   1    |  x  |
 --| rompi_con          | distruggi, spacca, sfonda              | rompi (ogg) con (instr)         |   2    |  x  |
 --| ricomincia_partita | restore                                | ricomincia [partita]            |   0    |     |
@@ -38,7 +39,7 @@
 ----- VERB        SYNONYMS                                 SYNTAX                              ARITY   OBJ
 
 ----- about       (+ help, info)                           about                               0
------ again       (+ g)                                    again                               0
+----> again       (+ g)                                    again                               0
 ----- answer      (+ reply)                                answer (topic)                      1
 ----- ask         (+ enquire, inquire, interrogate)        ask (act) about (topic)             2
 ----- ask_for                                              ask (act) for (obj)                 2       x
@@ -259,25 +260,31 @@ SYNONYMS help, info = 'about'.
 -- =============================================================
 
 
+----- @RIFAI --> @AGAIN (VERB + SYNTAX)
+
 ----- AGAIN (= g)
 
 
 -- =============================================================
 
 
-SYNTAX again = again.
+SYNTAX
+  rifai = rifai.
+  rifai = ancora.
 
 
-VERB again
-  CHECK my_game CAN 'again'
+VERB rifai
+  CHECK my_game CAN rifare
     ELSE SAY restricted_response OF my_game.
   DOES
-    "[The AGAIN command is not supported in this game. As a workaround, try using
-     the 'up' and 'down' arrow keys to scroll through your previous commands.]"
+    "[Il comando ANCORA non è supportato in questo gioco. In alternativa, prova
+    ad usare i tasti 'su' e 'giù' per navigare tra i comandi precedenti.]"
+    -- "[The AGAIN command is not supported in this game. As a workaround, try using
+    --  the 'up' and 'down' arrow keys to scroll through your previous commands.]"
 END VERB.
 
 
-SYNONYMS g = again.
+SYNONYMS g = rifai.
 
 
 

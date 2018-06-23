@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/06/23](#20180623)
+    - [Verb `again`](#verb-again)
 - [2018/06/16 \(3\)](#20180616-3)
     - [Verb: `wait`](#verb-wait)
     - [Verb: `sleep`](#verb-sleep)
@@ -54,6 +56,44 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/06/23
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.4)
+- [`lib_verbi.i`][lib_verbi] (v0.2.3)
+
+
+Translated `my_game` attributes for verb restrictions:
+
+|  English  | Italian  |
+|-----------|----------|
+| `'again'` | `rifare` |
+
+
+## Verb `again`
+
+Translated verb `again`, "__rifai__" (_again_):
+
+    rifai
+    ancora
+
+with no synonyms.
+
+with synonyms:
+
+    g = rifai
+
+Produces the message:  "[Il comando ANCORA non è supportato in questo gioco. In alternativa, prova ad usare i tasti 'su' e 'giù' per navigare tra i comandi precedenti.]"
+
+> __NOTA (IT)__ — Il verbo base è `rifai` e il suo corrispondente attributo `my_game` è `rifare`, ma il messaggio predefinito menziona "Il comando ANCORA...". La ragione per questo è che in genere gli attributi di restrizione verbi sono in forma infinita, è quindi ho optato per usare `rifai` anziché `ancora` (che ho invece implementato come sintassi alternativa) di modo da poter usare l'attributo `rifare`:
+> 
+> ```alan
+> CHECK my_game CAN rifare
+> ```
+> 
+> Però il giocatore medio si aspetterà che il comando classico sia `ancora`, perciò nel messaggio ho preferito riferirmi ad esso.
+> 
+> Inoltre, ho preferito non definire `ancora` come sinonimo poiché poteva compromettere la creazione di un'àncora nel gioco (che sicuramente andrebbe compresa anche senza accento) dato che l'uso di un sinonimo avrebbe sempre convertito l'input del giocatore `ancora` in `rifai` e quindi impedito l'uso di un oggetto con nome `ancora` nel gioco.
 
 # 2018/06/16 (3)
 

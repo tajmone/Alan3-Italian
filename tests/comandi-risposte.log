@@ -1,0 +1,55 @@
+
+Il Mondo di Alan 
+Una demo per testare ALAN Standar Library Italian 
+(C) Tristano Ajmone, 2018. 
+Programmed with the ALAN Interactive Fiction Language v3.0 beta5
+Standard Library v2.1 
+Versione Alpha 1 
+Tutti i diritti riservati.
+
+
+Piazza della Repubblica d'IF
+Puoi vedere una statua qui.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *              TEST DEI VARI COMANDI E LE RISPOSTE PREDEFINITE               *
+> ; *                                                                            *
+> ; ******************************************************************************
+> 
+
+> x la statua
+La statua in bronzo raffigura un uomo elegante che sta entrando in un
+vecchio monitor CRT. La gamba destra è già dentro lo schermo, fino al
+ginocchio. Nella mano sinistra impugna una valigia da viaggio, mentre la
+destra poggia sul cappello, come se volesse impedirgli di volare via.
+L'impressione è che l'uomo stia partendo per un'avventura che inizia al
+di là del monitor.
+
+Sul piedistallo in pietra noti una targhetta su cui è inciso del testo.
+
+> 
+
+> ; ==============================================================================
+> ;                        COMANDO "ANCORA" ("RIFAI", "G")                        
+> ; ==============================================================================
+> rifai
+[Il comando ANCORA non è supportato in questo gioco. In alternativa,
+prova ad usare i tasti 'su' e 'giù' per navigare tra i comandi
+precedenti.]
+
+> ancora
+[Il comando ANCORA non è supportato in questo gioco. In alternativa,
+prova ad usare i tasti 'su' e 'giù' per navigare tra i comandi
+precedenti.]
+
+> g
+[Il comando ANCORA non è supportato in questo gioco. In alternativa,
+prova ad usare i tasti 'su' e 'giù' per navigare tra i comandi
+precedenti.]
+
+> 
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

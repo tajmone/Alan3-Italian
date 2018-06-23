@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.3 (2018/06/16)
+-- "lib_definizioni.i" v0.2.4 (2018/06/23)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -910,6 +910,7 @@ EVERY definition_block ISA LOCATION
   CAN prendere.             --> take.        (+ carry, get, grab, hold, obtain)
   CAN prendere_da.          --> take_from.   (+ remove from)
   CAN ricominciare_partita. --> 'restart'
+  CAN rifare.               --> 'again'
   CAN rompere.              --> break (+ destroy)
   CAN rompere_con.          --> break_with
   CAN salvare_partita.      --> save
@@ -920,7 +921,6 @@ EVERY definition_block ISA LOCATION
 
 --# NOT YET TRANSLATED:
   CAN about.
-  CAN 'again'.
   CAN answer.      -- (+ reply)
   CAN ask.         -- (+ enquire, inquire, interrogate)
   CAN ask_for.
@@ -1098,6 +1098,7 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game prendere.             --> take.       (+ carry, get, grab, hold, obtain)
   MAKE my_game prendere_da.          --> take_from.  (+ remove from)
   MAKE my_game ricominciare_partita. --> 'restart'
+  MAKE my_game rifare.               --> 'again'
   MAKE my_game rompere.              --> break       (+ destroy)
   MAKE my_game rompere_con.          --> break_with
   MAKE my_game salvare_partita.      --> save
@@ -1108,7 +1109,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
 
 --# NOT YET TRANSLATED:
   MAKE my_game about.
-  MAKE my_game 'again'.
   MAKE my_game answer.          -- (+ reply)
   MAKE my_game ask.             -- (+ enquire, inquire, interrogate)
   MAKE my_game ask_for.
@@ -1298,6 +1298,7 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT prendere.             --> take.         (+ carry, get, grab, hold, obtain)
   MAKE my_game NOT prendere_da.          --> take_from.    (+ remove from)
   MAKE my_game     ricominciare_partita. --> 'restart'
+  MAKE my_game     rifare.               --> 'again'
   MAKE my_game NOT rompere.              --> break (+ destroy)
   MAKE my_game NOT rompere_con.          --> break_with
   MAKE my_game     salvare_partita.      --> save
@@ -1309,7 +1310,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
 --# NOT YET TRANSLATED:
 
   MAKE my_game about.
-  MAKE my_game 'again'.
   MAKE my_game NOT answer.      -- (+ reply)
   MAKE my_game NOT ask.         -- (+ enquire, inquire, interrogate)
   MAKE my_game NOT ask_for.
@@ -1486,6 +1486,7 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT prendere.             --> take.         (+ carry, get, grab, hold, obtain)
   MAKE my_game NOT prendere_da.          --> take_from.    (+ remove from)
   MAKE my_game     ricominciare_partita. --> 'restart'
+  MAKE my_game     rifare.               --> 'again'
   MAKE my_game NOT rompere.              --> break (+ destroy)
   MAKE my_game NOT rompere_con.          --> break_with
   MAKE my_game     salvare_partita.      --> save
@@ -1497,7 +1498,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
 --# NOT YET TRANSLATED:
 
   MAKE my_game about.
-  MAKE my_game 'again'.
   MAKE my_game NOT answer.      -- (+ reply)
   MAKE my_game NOT ask.         -- (+ enquire, inquire, interrogate)
   MAKE my_game NOT ask_for.
@@ -1672,6 +1672,7 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT prendere.             --> take.           (+ carry, get, grab, hold, obtain)
   MAKE my_game NOT prendere_da.          --> take_from.      (+ remove from)
   MAKE my_game NOT ricominciare_partita. --> 'restart'
+  MAKE my_game NOT rifare.               --> 'again'
   MAKE my_game NOT rompere.              --> break (+ destroy)
   MAKE my_game NOT rompere_con.          --> break_with
   MAKE my_game NOT salvare_partita.      --> save
@@ -1683,7 +1684,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
 --# NOT YET TRANSLATED:
 
   MAKE my_game NOT about.
-  MAKE my_game NOT 'again'.
   MAKE my_game NOT answer.      -- (+ reply)
   MAKE my_game NOT ask.         -- (+ enquire, inquire, interrogate)
   MAKE my_game NOT ask_for.

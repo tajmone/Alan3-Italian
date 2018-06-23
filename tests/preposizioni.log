@@ -1,17 +1,23 @@
 
 Il Mondo di Alan 
 Una demo per testare ALAN Standar Library Italian 
-(C) 2018 by Tristano Ajmone 
+(C) Tristano Ajmone, 2018. 
 Programmed with the ALAN Interactive Fiction Language v3.0 beta5
 Standard Library v2.1 
-Version Alpha 1 
-All rights reserved.
+Versione Alpha 1 
+Tutti i diritti riservati.
 
 
 Piazza della Repubblica d'IF
 Puoi vedere una statua qui.
 
-> ; Testiamo l'implementazione delle preposizioni articolate
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                     TEST DELLE PREPOSIZIONI ARTICOLATE                     *
+> ; *                                                                            *
+> ; ******************************************************************************
+> 
+
 > ovest
 Mercato
 Puoi vedere una bancarella qui. Sopra la bancarella vedi delle cigliege, 
@@ -20,6 +26,9 @@ un mango and una pera. Gustavo is here. There is un fruttivendolo here.
 > prendi la pera
 Presa.
 
+> ; ==============================================================================
+> ;            Testiamo l'implementazione delle preposizioni articolate           
+> ; ==============================================================================
 > put la pera on la bancarella
 Posi la pera sulla bancarella.
 
