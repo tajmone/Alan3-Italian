@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.3 (2018/06/23)
+-- "lib_verbi.i" v0.2.4 (2018/06/23)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -13,6 +13,7 @@
 --| VERBO              | SINONIMI                               | SINTASSI                        | ARIETÀ | OGG |
 --|--------------------|----------------------------------------|---------------------------------|--------|-----|
 --| abbandona_partita  | quit, q                                | abbandona [partita]             |   0    |     |
+--| aspetta            | attendi, z                             | aspetta                         |   0    |     |
 --| carica_partita     | restore                                | carica [partita]                |   0    |     |
 --| dai_a              | porgi, offri                           | dai (ogg) a (recipient)         |   2    |  x  |
 --| inventario         | inv                                    | inventario                      |   0    |     |
@@ -27,7 +28,7 @@
 --| spogliati          | svestiti                               | spogliati                       |   0    |     |
 --+--------------------+----------------------------------------+---------------------------------+--------+-----+
 
---|               |                                        |                                 |   0    |  x  |
+--|                    |                                        |                                 |   0    |  x  |
 
 ----- This library file defines common verbs needed in gameplay. The verbs
 ----- are listed alphabetically. This file also includes common commands which are not
@@ -198,7 +199,7 @@
 ----- use                                                  use (obj)                           1       x
 ----- use_with                                             use (obj) with (instr)              2       x
 ----- verbose                                              verbose                             0
------ wait        (+ z)                                    wait                                0
+----> wait        (+ z)                                    wait                                0
 ----- wear                                                 wear (obj)                          1       x
 ----- what_am_i                                            what am i                           0
 ----- what_is                                              what is (obj)                       1       x
@@ -266,7 +267,7 @@ SYNONYMS help, info = 'about'.
 
 
 -- =============================================================
-
+-- #NOTA: Aggiungere anche "ripeti"?
 
 SYNTAX
   rifai = rifai.
@@ -301,6 +302,7 @@ SYNTAX answer = answer (topic)
   WHERE topic ISA STRING
     ELSE SAY illegal_parameter_string OF my_game.
 
+SYNONYMS reply = answer.
 
 ADD TO EVERY STRING
   VERB answer
@@ -311,8 +313,6 @@ ADD TO EVERY STRING
     END VERB.
 END ADD TO.
 
-
-SYNONYMS reply = answer.
 
 
 -- =============================================================
@@ -368,7 +368,8 @@ ADD TO EVERY ACTOR
             ELSE SAY check_obj_not_distant_pl OF my_game.
           END IF.
           DOES
-        "There is no reply."
+        "Nessuna risposta." --> taken from i6
+        -- "There is no reply."
     END VERB.
 END ADD TO.
 
@@ -499,6 +500,11 @@ SYNTAX attack = attack (target)
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
 
+SYNONYMS beat, fight, hit, punch = attack.
+
+-- Note that 'kick' is defined separately, to avoid absurd commands such as
+-- 'kick man with sword' (see 'attack_with' below)
+
 
 ADD TO EVERY THING
   VERB attack
@@ -539,15 +545,11 @@ ADD TO EVERY THING
     AND hero IS NOT lying_down
       ELSE SAY check_hero_not_lying_down2 OF my_game.
         DOES
-      "Resorting to brute force is not the solution here."
+          "La violenza non è la giusta risposta a questo." --> taken from i6
+          -- "Resorting to brute force is not the solution here."
     END VERB.
 END ADD TO.
 
-
-SYNONYMS beat, fight, hit, punch = attack.
-
--- Note that 'kick' is defined separately, to avoid absurd commands such as
--- 'kick man with sword' (see 'attack_with' below)
 
 
 
@@ -618,7 +620,8 @@ ADD TO EVERY THING
       AND hero IS NOT lying_down
         ELSE SAY check_hero_not_lying_down2 OF my_game.
           DOES
-        "Resorting to brute force is not the solution here."
+            "La violenza non è la giusta risposta a questo." --> taken from i6
+            -- "Resorting to brute force is not the solution here."
   END VERB.
 END ADD TO.
 
@@ -1110,7 +1113,8 @@ ADD TO EVERY OBJECT
             END IF.
         END IF.
     DOES
-      "Nothing would be achieved by that."
+      "Farlo non servirebbe a nulla."
+      -- "Nothing would be achieved by that."
   END VERB.
 END ADD TO.
 
@@ -3214,7 +3218,7 @@ END VERB.
 
 
 -- ==============================================================
-
+-- #NOTA: Aggiungere anche "'dai' 'a' (recipient) (obj)"?
 
 -- SYNTAX dai_a = 'give' (obj) 'to' (recipient)
 SYNTAX dai_a = 'dai' (obj) 'a' (recipient)
@@ -3609,7 +3613,9 @@ ADD TO EVERY THING
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-        DOES "Resorting to brute force is not the solution here."
+        DOES
+          "La violenza non è la giusta risposta a questo." --> taken from i6
+          -- "Resorting to brute force is not the solution here."
   END VERB.
 END ADD TO.
 
@@ -3753,7 +3759,9 @@ ADD TO EVERY THING
     DOES
       IF obj ISA ACTOR
         THEN SAY THE obj. "avoids your advances."
-        ELSE "Nothing would be achieved by that."
+        ELSE
+          "Farlo non servirebbe a nulla."
+          -- "Nothing would be achieved by that."
       END IF.
     END VERB.
 END ADD TO.
@@ -5900,7 +5908,8 @@ ADD TO EVERY THING
             END IF.
         END IF.
     DOES
-      "Nothing would be achieved by that."
+      "Farlo non servirebbe a nulla."
+      -- "Nothing would be achieved by that."
   END VERB.
 END ADD TO.
 
@@ -6089,7 +6098,8 @@ ADD TO EVERY THING
             END IF.
         END IF.
     DOES
-      "Nothing would be achieved by that."
+     "Farlo non servirebbe a nulla."
+     -- "Nothing would be achieved by that."
     END VERB.
 END ADD TO.
 

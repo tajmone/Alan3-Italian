@@ -11,7 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/06/23](#20180623)
+- [2018/06/23 \(2\)](#20180623-2)
+- [2018/06/23 \(1\)](#20180623-1)
     - [Verb `again`](#verb-again)
 - [2018/06/16 \(3\)](#20180616-3)
     - [Verb: `wait`](#verb-wait)
@@ -57,7 +58,29 @@ Status: Alpha stage.
 
 -----
 
-# 2018/06/23
+# 2018/06/23 (2)
+
+- [`lib_verbi.i`][lib_verbi] (v0.2.4)
+
+Cleanup code comments and add some notes.
+
+A few verb responses translated on the fly:
+
+|      Verb     |                       English                        |                     Italian                      |
+|---------------|------------------------------------------------------|--------------------------------------------------|
+| `attack`      | "Resorting to brute force is not the solution here." | "La violenza non è la giusta risposta a questo." |
+| `attack_with` | "Resorting to brute force is not the solution here." | "La violenza non è la giusta risposta a questo." |
+| `kick`        | "Resorting to brute force is not the solution here." | "La violenza non è la giusta risposta a questo." |
+| `ask`         | "There is no reply."                                 | "Nessuna risposta."                              |
+| `clean`       | "Nothing would be achieved by that."                 | "Farlo non servirebbe a nulla."                  |
+| `kiss`        | "Nothing would be achieved by that."                 | "Farlo non servirebbe a nulla."                  |
+| `rub`         | "Nothing would be achieved by that."                 | "Farlo non servirebbe a nulla."                  |
+| `scratch`     | "Nothing would be achieved by that."                 | "Farlo non servirebbe a nulla."                  |
+
+
+
+
+# 2018/06/23 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.4)
 - [`lib_verbi.i`][lib_verbi] (v0.2.3)
