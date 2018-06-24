@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.4 (2018/06/23)
+-- "lib_definizioni.i" v0.2.5 (2018/06/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -51,7 +51,7 @@
 -- applies not only to things but also to for example parameters in syntax statements; ignore.)
 
 ADD TO EVERY ENTITY
-  IS NOT plural.
+  IS NOT plurale.
   IS NOT femminile. -- @FEMMINILE -> attr. (ADD TO EVERY ENTITY)
 
   -- HAS articolo "il".
@@ -168,7 +168,7 @@ ADD TO EVERY THING
   DEPENDING ON articolo of THIS
     = "lo" THEN
       MAKE THIS NOT femminile.
-      MAKE THIS NOT plural.
+      MAKE THIS NOT plurale.
       SET prep_DI OF THIS TO "dello".
       SET prep_A  OF THIS TO  "allo".
       SET prep_DA OF THIS TO "dallo".
@@ -177,7 +177,7 @@ ADD TO EVERY THING
     
     = "la" THEN
       MAKE THIS femminile.
-      MAKE THIS NOT plural.
+      MAKE THIS NOT plurale.
       SET prep_DI OF THIS TO "della".
       SET prep_A  OF THIS TO  "alla".
       SET prep_DA OF THIS TO "dalla".
@@ -185,7 +185,7 @@ ADD TO EVERY THING
       SET prep_SU OF THIS TO "sulla".
 
     = "l'" THEN             --| In questo caso non alteriamo il genere poiché
-      MAKE THIS NOT plural. --| questa forma può essere sia masch. che femm.
+      MAKE THIS NOT plurale. --| questa forma può essere sia masch. che femm.
                             --| Sta all'autore specificare il genere nell'istanza.
       SET prep_DI OF THIS TO "dell'$$".
       SET prep_A  OF THIS TO  "all'$$".
@@ -195,7 +195,7 @@ ADD TO EVERY THING
 
     = "i" THEN
       MAKE THIS NOT femminile.
-      MAKE THIS plural.
+      MAKE THIS plurale.
       SET prep_DI OF THIS TO "dei".
       SET prep_A  OF THIS TO  "ai".
       SET prep_DA OF THIS TO "dai".
@@ -204,7 +204,7 @@ ADD TO EVERY THING
 
     = "gli" THEN
       MAKE THIS NOT femminile.
-      MAKE THIS plural.
+      MAKE THIS plurale.
       SET prep_DI OF THIS TO "degli".
       SET prep_A  OF THIS TO  "agli".
       SET prep_DA OF THIS TO "dagli".
@@ -213,7 +213,7 @@ ADD TO EVERY THING
 
     = "le" THEN
       MAKE THIS femminile.
-      MAKE THIS plural.
+      MAKE THIS plurale.
       SET prep_DI OF THIS TO "della".
       SET prep_A  OF THIS TO  "alla".
       SET prep_DA OF THIS TO "dalla".
@@ -222,7 +222,7 @@ ADD TO EVERY THING
 
     ELSE -- = "il" (o dovrebbe esserlo)
       MAKE THIS NOT femminile.
-      MAKE THIS NOT plural.
+      MAKE THIS NOT plurale.
       SET prep_DI OF THIS TO "del".
       SET prep_A  OF THIS TO  "al".
       SET prep_DA OF THIS TO "dal".
@@ -257,12 +257,12 @@ ADD TO EVERY THING
       ELSE -- se non è definito
         IF THIS IS NOT femminile
         THEN
-          IF THIS IS NOT plural
+          IF THIS IS NOT plurale
               THEN   "un"               --> ms indet.
               ELSE   "dei"              --> mp indet.
           END IF.
         ELSE
-          IF THIS IS NOT plural
+          IF THIS IS NOT plurale
               THEN   "una"              --> fs indet.
               ELSE   "delle"            --> fp indet.
           END IF.
@@ -290,12 +290,12 @@ ADD TO EVERY THING
       ELSE -- se non è definito
         IF THIS IS NOT femminile
         THEN
-          IF THIS IS NOT plural
+          IF THIS IS NOT plurale
               THEN   "il"               --> ms det.
               ELSE   "i"                --> mp det.
           END IF.
         ELSE
-          IF THIS IS NOT plural
+          IF THIS IS NOT plurale
               THEN   "la"               --> fs det.
               ELSE   "le"               --> fp det.
           END IF.
@@ -389,7 +389,7 @@ me, myself, yourself, self = hero.
 
 
 
-EVERY definition_block ISA LOCATION
+EVERY DEFINITION_BLOCK ISA LOCATION
 
 
   -- attributes for the start section (banner):

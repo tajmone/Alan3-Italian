@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.2.0 (2018/06/11)
+-- "lib_classi.i" v0.2.1 (2018/06/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -458,7 +458,7 @@ EVERY clothing ISA OBJECT
 
         "You pick up the" SAY THE THIS.
 
-        IF THIS IS NOT plural
+        IF THIS IS NOT plurale
           THEN "and put it on."
           ELSE "and put them on."
         END IF.
@@ -784,7 +784,7 @@ EVERY device ISA OBJECT
 
   VERB examine
     DOES AFTER
-      IF THIS IS NOT plural
+      IF THIS IS NOT plurale
         THEN "It is"
         ELSE "They are"
       END IF.
@@ -799,7 +799,7 @@ EVERY device ISA OBJECT
   VERB turn_on
     CHECK THIS IS NOT 'on'
       ELSE
-        IF THIS IS NOT plural
+        IF THIS IS NOT plurale
           THEN SAY check_device_not_on_sg OF my_game.
           ELSE SAY check_device_not_on_pl OF my_game.
         END IF.
@@ -809,13 +809,13 @@ EVERY device ISA OBJECT
       ELSE
         IF THIS IS NOT reachable
           THEN
-            IF THIS IS NOT plural
+            IF THIS IS NOT plurale
               THEN SAY check_obj_reachable_sg OF my_game.
               ELSE SAY check_obj_reachable_pl OF my_game.
             END IF.
         ELSIF THIS IS distant
           THEN
-            IF THIS IS NOT plural
+            IF THIS IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
@@ -831,7 +831,7 @@ EVERY device ISA OBJECT
   VERB turn_off
     CHECK THIS IS 'on'
       ELSE
-         IF THIS IS NOT plural
+         IF THIS IS NOT plurale
           THEN SAY check_device_on_sg OF my_game.
           ELSE SAY check_device_on_pl OF my_game.
          END IF.
@@ -841,13 +841,13 @@ EVERY device ISA OBJECT
       ELSE
         IF THIS IS NOT reachable
           THEN
-            IF THIS IS NOT plural
+            IF THIS IS NOT plurale
               THEN SAY check_obj_reachable_sg OF my_game.
               ELSE SAY check_obj_reachable_pl OF my_game.
             END IF.
         ELSIF THIS IS distant
           THEN
-            IF THIS IS NOT plural
+            IF THIS IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
@@ -868,13 +868,13 @@ EVERY device ISA OBJECT
       ELSE
         IF THIS IS NOT reachable
           THEN
-            IF THIS IS NOT plural
+            IF THIS IS NOT plurale
               THEN SAY check_obj_reachable_sg OF my_game.
               ELSE SAY check_obj_reachable_pl OF my_game.
             END IF.
         ELSIF THIS IS distant
           THEN
-            IF THIS IS NOT plural
+            IF THIS IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
@@ -988,7 +988,7 @@ EVERY door ISA OBJECT
 
   VERB examine
     DOES AFTER
-      IF THIS IS NOT plural
+      IF THIS IS NOT plurale
         THEN "It is"
         ELSE "They are"
       END IF.
@@ -1006,7 +1006,7 @@ EVERY door ISA OBJECT
       IF THIS IS NOT open
         THEN "You knock on" SAY THE THIS. "$$. There is no reply."
         ELSE "You don't find it purposeful to knock on the open door"
-          IF THIS IS NOT plural
+          IF THIS IS NOT plurale
             THEN "."
             ELSE "$$s."
           END IF.
@@ -1020,12 +1020,12 @@ EVERY door ISA OBJECT
     DOES ONLY
       IF THIS IS NOT open
         THEN "You cannot look behind"
-          IF THIS IS NOT plural
+          IF THIS IS NOT plurale
             THEN "the door - it is closed."
             ELSE "the doors - they are closed."
           END IF.
         ELSE "You notice nothing special behind the door"
-          IF THIS IS NOT plural
+          IF THIS IS NOT plurale
             THEN "."
             ELSE "$$s."
           END IF.
@@ -1038,13 +1038,13 @@ EVERY door ISA OBJECT
     DOES ONLY
       IF THIS IS NOT open
         THEN "The gap under the closed door"
-          IF THIS IS plural
+          IF THIS IS plurale
             THEN "$$s"
           END IF.
           "is so narrow that you can't
           see anything of what lies on the other side."
         ELSE "You notice nothing special under the door"
-          IF THIS IS plural
+          IF THIS IS plurale
             THEN "$$s."
             ELSE "."
           END IF.
@@ -1124,13 +1124,13 @@ EVERY lightsource ISA OBJECT
         THEN
           IF THIS IS natural
             THEN
-              IF THIS IS NOT plural
+              IF THIS IS NOT plurale
                 THEN "It is"
                 ELSE "They are"
               END IF.
               "currently lit."
             ELSE
-              IF THIS IS NOT plural
+              IF THIS IS NOT plurale
                 THEN "It is"
                 ELSE "They are"
               END IF.
@@ -1139,13 +1139,13 @@ EVERY lightsource ISA OBJECT
         ELSE
           IF THIS IS natural
             THEN
-              IF THIS IS NOT plural
+              IF THIS IS NOT plurale
                 THEN "It is"
                 ELSE "They are"
               END IF.
               "currently not lit."
             ELSE
-              IF THIS IS NOT plural
+              IF THIS IS NOT plurale
                 THEN "It is"
                 ELSE "They are"
               END IF.
@@ -1158,7 +1158,7 @@ EVERY lightsource ISA OBJECT
   VERB light
     CHECK THIS IS NOT lit
       ELSE
-        IF THIS IS NOT plural
+        IF THIS IS NOT plurale
           THEN SAY check_lightsource_not_lit_sg OF my_game.
           ELSE SAY check_lightsource_not_lit_pl OF my_game.
         END IF.
@@ -1177,7 +1177,7 @@ EVERY lightsource ISA OBJECT
   VERB extinguish
     CHECK THIS IS lit
       ELSE
-        IF THIS IS NOT plural
+        IF THIS IS NOT plurale
           THEN SAY check_lightsource_lit_sg OF my_game.
           ELSE SAY check_lightsource_lit_pl OF my_game.
         END IF.
@@ -1189,13 +1189,13 @@ EVERY lightsource ISA OBJECT
   VERB turn_on
     CHECK THIS IS NOT natural
       ELSE
-        IF THIS IS NOT plural
+        IF THIS IS NOT plurale
           THEN SAY check_obj_suitable_on_sg OF my_game.
           ELSE SAY check_obj_suitable_on_pl OF my_game.
         END IF.
     AND THIS IS NOT lit
       ELSE
-        IF THIS IS NOT plural
+        IF THIS IS NOT plurale
           THEN SAY check_lightsource_not_lit_sg OF my_game.
           ELSE SAY check_lightsource_not_lit_pl OF my_game.
         END IF.
@@ -1211,13 +1211,13 @@ EVERY lightsource ISA OBJECT
   VERB turn_off
     CHECK THIS IS NOT natural
       ELSE
-        IF THIS IS NOT plural
+        IF THIS IS NOT plurale
           THEN SAY check_obj_suitable_off_sg OF my_game.
           ELSE SAY check_obj_suitable_off_pl OF my_game.
         END IF.
     AND THIS IS lit
       ELSE
-        IF THIS IS NOT plural
+        IF THIS IS NOT plurale
           THEN SAY check_lightsource_lit_sg OF my_game.
           ELSE SAY check_lightsource_lit_sg OF my_game.
         END IF.
@@ -1236,13 +1236,13 @@ EVERY lightsource ISA OBJECT
   VERB switch
     CHECK THIS IS NOT natural
       ELSE
-        IF THIS IS NOT plural
+        IF THIS IS NOT plurale
           THEN SAY check_lightsource_switchable_sg OF my_game.
           ELSE SAY check_lightsource_switchable_pl OF my_game.
         END IF.
     AND THIS IS reachable
       ELSE
-        IF THIS IS NOT plural
+        IF THIS IS NOT plurale
           THEN SAY check_obj_reachable_sg OF my_game.
           ELSE SAY check_obj_reachable_pl OF my_game.
         END IF.
@@ -1349,7 +1349,7 @@ EVERY liquid ISA OBJECT
           IF vessel OF THIS IS open
             THEN "You notice nothing unusual about" SAY THE THIS.
             ELSE "You can't, since" SAY THE vessel OF THIS.
-                IF THIS IS NOT plural
+                IF THIS IS NOT plurale
                   THEN "is"
                   ELSE "are"
                 END IF.
@@ -1369,7 +1369,7 @@ EVERY liquid ISA OBJECT
           IF vessel OF THIS IS open
             THEN "You see nothing special in" SAY THE THIS. "."
             ELSE "You can't, since" SAY THE vessel OF THIS.
-                IF THIS IS NOT plural
+                IF THIS IS NOT plurale
                   THEN "is"
                   ELSE "are"
                 END IF.
@@ -1459,7 +1459,7 @@ EVERY liquid ISA OBJECT
           IF vessel OF THIS = null_vessel OR vessel OF THIS IS NOT takeable
             THEN "You can't pour" SAY THE THIS. "anywhere since you are not
               carrying"
-                IF THIS IS NOT plural
+                IF THIS IS NOT plurale
                   THEN "it."
                   ELSE "them."
                 END IF.
@@ -1513,7 +1513,7 @@ EVERY liquid ISA OBJECT
               THEN "It wouldn't accomplish anything trying to pour" SAY THE obj.
                 "into" SAY THE THIS. "."
               ELSE "You can't, since" SAY THE vessel OF THIS.
-                IF THIS IS NOT plural
+                IF THIS IS NOT plurale
                   THEN "is"
                   ELSE "are"
                 END IF.
@@ -1603,7 +1603,7 @@ EVERY liquid ISA OBJECT
                   "into" SAY THE vessel OF THIS. "of" SAY THIS. "."
               END IF.
             ELSE "You can't, since" SAY THE vessel OF THIS. "of" SAY THIS.
-                IF THIS IS NOT plural
+                IF THIS IS NOT plurale
                   THEN "is"
                   ELSE "are"
                 END IF.
@@ -1791,7 +1791,7 @@ EVERY sound ISA OBJECT
 
   VERB smell
     DOES ONLY
-       IF THIS IS NOT plural
+       IF THIS IS NOT plurale
         THEN "That's not"
         ELSE "Those are not"
        END IF.
@@ -1839,7 +1839,7 @@ EVERY supporter ISA OBJECT
 
   VERB look_in
     DOES ONLY
-      IF THIS IS NOT plural
+      IF THIS IS NOT plurale
         THEN "That's not"
         ELSE "Those are not"
       END IF.
@@ -1850,7 +1850,7 @@ EVERY supporter ISA OBJECT
   VERB empty_in, pour_in
      WHEN cont
     DOES ONLY
-       IF THIS IS NOT plural
+       IF THIS IS NOT plurale
         THEN "That's not"
         ELSE "Those are not"
       END IF.
@@ -1925,13 +1925,13 @@ EVERY window ISA OBJECT
     DOES
       IF THIS IS NOT open
         THEN
-          IF THIS IS NOT plural
+          IF THIS IS NOT plurale
             THEN "It is"
             ELSE "They are"
           END IF.
           "currently closed."
         ELSE
-          IF THIS IS NOT plural
+          IF THIS IS NOT plurale
             THEN "It is"
             ELSE "They are"
           END IF.
@@ -1948,7 +1948,7 @@ EVERY window ISA OBJECT
 
   VERB look_out_of
     DOES ONLY "You see nothing special looking out of the"
-        IF THIS IS NOT plural
+        IF THIS IS NOT plurale
           THEN "window."
           ELSE "windows."
         END IF.
@@ -1957,7 +1957,7 @@ EVERY window ISA OBJECT
 
   VERB look_through
     DOES ONLY "You see nothing special looking through the"
-        IF THIS IS NOT plural
+        IF THIS IS NOT plurale
           THEN "window."
           ELSE "windows."
         END IF.
@@ -2047,12 +2047,12 @@ ADD TO EVERY ACTOR
           ELSE -- se non è definito
             IF THIS IS NOT femminile
             THEN
-              IF THIS IS NOT plural
+              IF THIS IS NOT plurale
                   THEN   "il"               --> ms det.
                   ELSE   "i"                --> mp det.
               END IF.
             ELSE
-              IF THIS IS NOT plural
+              IF THIS IS NOT plurale
                   THEN   "la"               --> fs det.
                   ELSE   "le"               --> fp det.
               END IF.
@@ -2094,12 +2094,12 @@ ADD TO EVERY ACTOR
           ELSE -- se non è definito
             IF THIS IS NOT femminile
             THEN
-              IF THIS IS NOT plural
+              IF THIS IS NOT plurale
                   THEN   "un"               --> ms indet.
                   ELSE   "dei"              --> mp indet.
               END IF.
             ELSE
-              IF THIS IS NOT plural
+              IF THIS IS NOT plurale
                   THEN   "una"              --> fs indet.
                   ELSE   "delle"            --> fp indet.
               END IF.
@@ -2133,7 +2133,7 @@ ADD TO EVERY ACTOR
             ELSE SAY THIS.
           END IF.
 
-          IF THIS IS NOT plural
+          IF THIS IS NOT plurale
             THEN "is carrying"
             ELSE "are carrying"
           END IF.
@@ -2147,7 +2147,7 @@ ADD TO EVERY ACTOR
             ELSE SAY THIS.
           END IF.
 
-          IF THIS IS NOT plural
+          IF THIS IS NOT plurale
             THEN "is not carrying anything."
             ELSE "are not carrying anything."
           END IF.
@@ -2195,7 +2195,7 @@ ADD TO EVERY ACTOR
         THEN
           LOCATE THIS AT hero.
           "$p" SAY THE THIS.
-            IF THIS IS NOT plural
+            IF THIS IS NOT plurale
               THEN "follows you."
               ELSE "follow you."
             END IF.
@@ -2210,12 +2210,12 @@ ADD TO EVERY ACTOR
       THEN "$$"
     ELSIF THIS IS NOT named
       THEN
-        IF THIS IS NOT plural
+        IF THIS IS NOT plurale
           THEN "There is" SAY AN THIS. "here."
           ELSE "There are" SAY THIS. "here."
         END IF.
       ELSE SAY THIS.
-        IF THIS IS NOT plural
+        IF THIS IS NOT plurale
           THEN "is here."
           ELSE "are here."
         END IF.
@@ -2258,7 +2258,7 @@ EVERY person ISA ACTOR
   CONTAINER
     HEADER
       SAY THE THIS.
-      IF THIS IS NOT plural
+      IF THIS IS NOT plurale
         THEN "is carrying"
         ELSE "are carrying"
       END IF.
@@ -2269,7 +2269,7 @@ EVERY person ISA ACTOR
         ELSE SAY THIS.
       END IF.
 
-      IF THIS IS NOT plural
+      IF THIS IS NOT plurale
         THEN "is empty-handed."
         ELSE "are empty-handed."
       END IF.

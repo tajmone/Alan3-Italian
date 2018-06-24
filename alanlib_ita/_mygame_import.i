@@ -1,4 +1,15 @@
--- mygame_import.i
+-- "_mygame_import.i" v0.2.0 (2018/06/24)
+--------------------------------------------------------------------------------
+-- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
+--------------------------------------------------------------------------------
+-- Adapted to Italian from:
+-- ALAN Standard Library v2.1
+-- (original file name: 'mygame_import.i')
+--------------------------------------------------------------------------------
+-- ADAPTIONS TO ITALIAN CARRIED OUT SO FAR:
+-- 
+--  * plural -> plurale
+--------------------------------------------------------------------------------
 
 -- An auxiliary game source file for ALAN Standard Library v2.1.
 
@@ -540,7 +551,7 @@ VERB bite
 	DOES ONLY
 		IF obj IN hero
 			THEN "You take a bite of" SAY THE obj. "$$." 
-				IF obj IS NOT plural
+				IF obj IS NOT plurale
 					THEN "It tastes nothing out of the ordinary."
 					ELSE "They taste nothing out of the ordinary."
 				END IF.
@@ -589,7 +600,7 @@ END VERB.
 
 VERB buy
 	DOES ONLY
-		IF item IS NOT plural
+		IF item IS NOT plurale
 			THEN "That's not" 
 			ELSE "Those are not"
 		END IF. 
@@ -601,7 +612,7 @@ END VERB.
 
 VERB catch
 	DOES ONLY
-		IF obj IS NOT plural
+		IF obj IS NOT plurale
 			THEN "That doesn't" 
 			ELSE "Those don't"
 		END IF.
@@ -619,7 +630,7 @@ END VERB.
 
 VERB climb
 	DOES ONLY
-		IF obj IS NOT plural
+		IF obj IS NOT plurale
 			THEN "That's not" 
 			ELSE "Those are not"
 		END IF.	
@@ -630,7 +641,7 @@ END VERB.
 
 VERB climb_on
 	DOES ONLY
-		IF surface IS NOT plural
+		IF surface IS NOT plurale
 			THEN "That's not" 
 			ELSE "Those are not"
 		END IF.
@@ -641,7 +652,7 @@ END VERB.
 
 VERB climb_through
 	DOES ONLY
-		IF obj IS NOT plural
+		IF obj IS NOT plurale
 			THEN "That's not" 
 			ELSE "Those are not"
 		END IF.
@@ -722,7 +733,7 @@ END VERB.
 
 VERB dive_in
 	DOES ONLY
-		IF liq IS NOT plural
+		IF liq IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -770,7 +781,7 @@ END VERB.
 
 VERB drive 
 	DOES ONLY
-		IF vehicle IS NOT plural
+		IF vehicle IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -870,7 +881,7 @@ END VERB.
 
 VERB enter
 	 DOES ONLY
-		IF obj IS NOT plural
+		IF obj IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -887,7 +898,7 @@ VERB examine
 				IF text OF obj = ""
 					THEN "There is nothing written on" SAY THE obj. "."
 					ELSE "You read" SAY THE obj. "."
-						IF obj IS NOT plural
+						IF obj IS NOT plurale
 							THEN "It says"
 							ELSE "They say"
 						END IF.  
@@ -905,7 +916,7 @@ END VERB.
 
 VERB 'exit'
 	DOES ONLY
-		IF obj IS NOT plural
+		IF obj IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.		
@@ -916,7 +927,7 @@ END VERB.
 
 VERB extinguish
 	DOES ONLY
-		IF obj IS NOT plural
+		IF obj IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -978,7 +989,7 @@ END VERB.
 
 VERB free
 	DOES ONLY 
-		IF obj IS NOT plural
+		IF obj IS NOT plurale
 			THEN "That doesn't need to be $vd."
 			ELSE "Those don't need to be $vd."
 		END IF.
@@ -1077,7 +1088,7 @@ END VERB.
 
 VERB jump_in
 	DOES
-		IF cont IS NOT plural
+		IF cont IS NOT plurale
 			THEN "That's not something you can jump into."
 			ELSE "Those are not something you can jump into."
 		END IF.
@@ -1087,7 +1098,7 @@ END VERB.
 
 VERB jump_on
 	DOES ONLY
-		IF surface IS NOT plural
+		IF surface IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -1178,7 +1189,7 @@ END VERB.
 
 VERB light
 	DOES ONLY
-		IF obj IS NOT plural
+		IF obj IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -1267,7 +1278,7 @@ END VERB.
 
 VERB look_out_of
 	DOES ONLY
-		IF obj IS NOT plural
+		IF obj IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -1349,7 +1360,7 @@ END VERB.
 VERB put
 	DOES ONLY
 		"You must state where you want to put" 
-			IF obj IS NOT plural
+			IF obj IS NOT plurale
 				THEN "it."
 				ELSE "them."
 			END IF.
@@ -1399,7 +1410,7 @@ VERB read
 		IF text OF obj = ""
 			THEN "There's nothing written on" SAY THE obj. "."
 			ELSE "You read" SAY THE obj. "." 
-				IF obj IS NOT plural
+				IF obj IS NOT plurale
 					THEN "It says"
 					ELSE "They say"
 				END IF.
@@ -1411,14 +1422,14 @@ END VERB.
 
 VERB remove
 	DOES ONLY
-		IF obj IS NOT plural
+		IF obj IS NOT plurale
 			THEN "That's"
 			ELSE "Those are"
 		END IF. 
 			
 		"not something you can remove since you're not wearing"
 					
-		IF obj IS NOT plural
+		IF obj IS NOT plurale
 			THEN "it."
 			ELSE "them."
 		END IF. 
@@ -1464,7 +1475,7 @@ END VERB.
 VERB say_to
 	DOES ONLY
 		SAY THE act. 
-			IF act IS NOT plural
+			IF act IS NOT plurale
 		 		THEN "doesn't look"
 				ELSE "don't look"
 			END IF.
@@ -1566,7 +1577,7 @@ VERB 'show'
 	DOES ONLY
 		SAY THE act. 
 			
-			IF act IS NOT plural
+			IF act IS NOT plurale
 				THEN "is"
 				ELSE "are"
 			END IF.
@@ -1707,7 +1718,7 @@ END VERB.
 
 VERB swim_in
 	DOES ONLY
-		IF liq IS NOT plural
+		IF liq IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -1718,7 +1729,7 @@ END VERB.
 
 VERB switch
 	DOES ONLY
-		IF app IS NOT plural
+		IF app IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -1817,7 +1828,7 @@ VERB tell
 		DOES ONLY
 			SAY THE act. 
 
-			IF act IS NOT plural
+			IF act IS NOT plurale
 				THEN "doesn't"
 				ELSE "don't"
 			END IF.
@@ -1852,7 +1863,7 @@ VERB throw
 				
 		"You can't throw very far;" SAY THE projectile. 
 			
-		IF projectile IS NOT plural
+		IF projectile IS NOT plurale
 			THEN "ends up"
 			ELSE "end up"
 		END IF.
@@ -1888,7 +1899,7 @@ VERB throw_at
 							ELSE 
 								SAY THE projectile.
  
-								IF projectile IS NOT plural
+								IF projectile IS NOT plurale
 									THEN "bounces"
 									ELSE "bounce"
 								END IF.
@@ -1897,7 +1908,7 @@ VERB throw_at
 
 								SAY THE target. "and"
 
-								IF projectile IS NOT plural
+								IF projectile IS NOT plurale
 									THEN "ends up"
 									ELSE "end up"
 								END IF.
@@ -2012,7 +2023,7 @@ END VERB.
 
 VERB turn_on	
 	DOES ONLY
-		IF app IS NOT plural
+		IF app IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -2024,7 +2035,7 @@ END VERB.
 
 VERB turn_off
 	DOES ONLY
-		IF app IS NOT plural
+		IF app IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -2072,7 +2083,7 @@ END VERB.
 VERB 'use'
 	DOES ONLY
 		"Please be more specific. How do you intend to use"		
-		IF obj IS NOT plural
+		IF obj IS NOT plurale
 			THEN "it?" 
 			ELSE "them?"
 		END IF.
@@ -2106,7 +2117,7 @@ END VERB.
 
 VERB wear
 	DOES ONLY
-		IF obj IS NOT plural 
+		IF obj IS NOT plurale 
 			THEN "That's"
 			ELSE "Those are"
 		END IF.

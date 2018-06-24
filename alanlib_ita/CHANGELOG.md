@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/06/24](#20180624)
+    - [Translate StdLib's `plural`](#translate-stdlibs-plural)
 - [2018/06/23 \(2\)](#20180623-2)
 - [2018/06/23 \(1\)](#20180623-1)
     - [Verb `again`](#verb-again)
@@ -57,6 +59,18 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/06/24
+
+- [`lib_classi.i`][lib_classi] (v0.2.1)
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.5)
+- [`lib_luoghi.i`][lib_luoghi] (v0.2.1)
+- [`lib_messaggi.i`][lib_messaggi] (v0.2.1)
+- [`lib_verbi.i`][lib_verbi] (v0.2.5)
+
+## Translate StdLib's `plural`
+
+Now the library's `plural` attribute has been translated into Italian: `plurale`.
 
 # 2018/06/23 (2)
 

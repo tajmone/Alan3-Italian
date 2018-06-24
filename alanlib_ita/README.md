@@ -41,7 +41,7 @@ The library files being translated:
 Boilerplates and templates from the StdLibrary have been renamed with a leading underscore, to distinguish them from the set of strictly needed files:
 
 - [`_newgame_ita.alan`](./_newgame_ita.alan) — adaptation of `newgame.alan`
-- [`_mygame_import.i`](./_mygame_import.i) (unchanged)
+- [`_mygame_import.i`](./_mygame_import.i) (small changes)
 
 
 # Translation

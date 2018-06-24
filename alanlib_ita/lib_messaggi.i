@@ -1,4 +1,4 @@
--- "lib_messaggi.i" v0.2.0 (2018/06/11)
+-- "lib_messaggi.i" v0.2.1 (2018/06/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -90,7 +90,7 @@ MESSAGE
   AGAIN: ""
   CAN_NOT_CONTAIN: "$+1 can not contain $+2."
   CARRIES:
-    IF parameter1 IS NOT plural
+    IF parameter1 IS NOT plurale
       THEN "$+1 is carrying"
       ELSE "$+1 are carrying"
     END IF.
@@ -100,13 +100,13 @@ MESSAGE
 --==============================================================================
   CONTAINMENT_LOOP:
     "Putting $+1 in"
-      IF parameter1 IS NOT plural
+      IF parameter1 IS NOT plurale
         THEN "itself"
         ELSE "themselves"
       END IF.
     "is impossible."
   CONTAINMENT_LOOP2: "Putting $+1 in $+2 is impossible since $+2 already"
-          IF parameter2 IS NOT plural
+          IF parameter2 IS NOT plurale
             THEN "is"
             ELSE "are"
           END IF.
@@ -115,7 +115,7 @@ MESSAGE
 -- DESCRIZIONE CONTENITORI
 --==============================================================================
   'CONTAINS':
-    IF parameter1 IS NOT plural
+    IF parameter1 IS NOT plurale
       THEN "$+1 contains"
       ELSE "$+1 contain"
     END IF.
@@ -165,7 +165,7 @@ MESSAGE
     "."
 --------------------------------------------------------------------------------
   EMPTY_HANDED:
-    IF parameter1 IS NOT plural
+    IF parameter1 IS NOT plurale
       THEN "$+1 is empty-handed."
       ELSE "$+1 are empty-handed."
     END IF.
@@ -173,7 +173,7 @@ MESSAGE
   HAVE_SCORED: "You have scored $1 points out of $2."
   IMPOSSIBLE_WITH: "That's impossible with $+1."
   IS_EMPTY:
-    IF parameter1 IS NOT plural
+    IF parameter1 IS NOT plurale
       THEN "$+1 is empty."
       ELSE "$+1 are empty."
     END IF.
