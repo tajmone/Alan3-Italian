@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.5 (2018/06/24)
+-- "lib_verbi.i" v0.2.6 (2018/06/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -993,7 +993,7 @@ SYNTAX buy = buy (item)
 
 ADD TO EVERY OBJECT
   VERB buy
-    CHECK my_game CAN buy
+    CHECK my_game CAN comprare
       ELSE SAY restricted_response OF my_game.
     AND item IS examinable
       ELSE
@@ -1476,7 +1476,7 @@ SYNTAX consult = consult (source) about (topic)!
 ADD TO EVERY THING
   VERB consult
     WHEN source
-      CHECK my_game CAN consult
+      CHECK my_game CAN consultare
         ELSE SAY restricted_response OF my_game.
       AND source IS examinable
         ELSE
@@ -1577,7 +1577,7 @@ SYNTAX cut = cut (obj)
 
 ADD TO EVERY OBJECT
   VERB cut
-    CHECK my_game CAN cut
+    CHECK my_game CAN tagliare
       ELSE SAY restricted_response OF my_game.
     AND obj IS examinable
       ELSE
@@ -1621,7 +1621,7 @@ SYNTAX cut_with = cut (obj) 'with' (instr)
 ADD TO EVERY OBJECT
   VERB cut_with
     WHEN obj
-      CHECK my_game CAN cut_with
+      CHECK my_game CAN tagliare_con
         ELSE SAY restricted_response OF my_game.
       AND obj <> instr
         ELSE SAY check_obj_not_obj2_with OF my_game.
@@ -2007,7 +2007,7 @@ SYNTAX drop = drop (obj)*
 
 ADD TO EVERY OBJECT
   VERB drop
-    CHECK my_game CAN drop
+    CHECK my_game CAN lasciare
       ELSE SAY restricted_response OF my_game.
       AND obj IN hero
           ELSE
@@ -2140,7 +2140,7 @@ SYNTAX 'empty' = 'empty' (obj)
 
 ADD TO EVERY OBJECT
   VERB 'empty', pour
-    CHECK my_game CAN 'empty' AND my_game CAN pour
+    CHECK my_game CAN 'empty' AND my_game CAN versare
       ELSE SAY restricted_response OF my_game.
     AND obj IS takeable
       ELSE SAY check_obj_takeable OF my_game.
@@ -2254,7 +2254,7 @@ pour_in = pour (obj) 'in' (cont)
 ADD TO EVERY OBJECT
   VERB empty_in, pour_in
     WHEN obj
-      CHECK my_game CAN empty_in AND my_game CAN pour_in
+      CHECK my_game CAN empty_in AND my_game CAN versare_in
         ELSE SAY restricted_response OF my_game.
       AND obj <> cont
         ELSE SAY check_obj_not_obj2_in OF my_game.
@@ -2383,7 +2383,7 @@ SYNTAX empty_on = 'empty' (obj) 'on' (surface)
 ADD TO EVERY THING
   VERB empty_on, pour_on
       WHEN obj
-      CHECK my_game CAN empty_on AND my_game CAN pour_on
+      CHECK my_game CAN empty_on AND my_game CAN versare_su
         ELSE SAY restricted_response OF my_game.
       AND obj <> surface
         ELSE SAY check_obj_not_obj2_on OF my_game.
@@ -2477,7 +2477,7 @@ SYNTAX enter = enter (obj)
 
 ADD TO EVERY OBJECT
   VERB enter
-    CHECK my_game CAN enter
+    CHECK my_game CAN entrare
       ELSE SAY restricted_response OF my_game.
     AND hero IS NOT sitting
       ELSE SAY check_hero_not_sitting2 OF my_game.
@@ -2531,7 +2531,7 @@ SYNTAX examine = examine (obj)
 
 ADD TO EVERY THING
   VERB examine
-    CHECK my_game CAN examine
+    CHECK my_game CAN esaminare
       ELSE SAY restricted_response OF my_game.
         AND obj IS examinable
           ELSE
@@ -3061,7 +3061,7 @@ SYNTAX follow = follow (act)!
 
 ADD TO EVERY THING
   VERB follow
-    CHECK my_game CAN follow
+    CHECK my_game CAN seguire
       ELSE SAY restricted_response OF my_game.
     AND act <> hero
       ELSE SAY check_obj_not_hero1 OF my_game.
@@ -3107,7 +3107,7 @@ SYNTAX free = free (obj)
 
 ADD TO EVERY THING
   VERB free
-    CHECK my_game CAN free
+    CHECK my_game CAN liberare
       ELSE SAY restricted_response OF my_game.
     AND obj IS examinable
       ELSE
@@ -3451,7 +3451,7 @@ SYNTAX jump = jump.
 
 
 VERB jump
-  CHECK my_game CAN jump
+  CHECK my_game CAN saltare
     ELSE SAY restricted_response OF my_game.
   AND hero IS NOT sitting
     ELSE SAY check_hero_not_sitting1 OF my_game.
@@ -3490,7 +3490,7 @@ SYNTAX jump_in = jump 'in' (cont)
 
 ADD TO EVERY OBJECT
   VERB jump_in
-    CHECK my_game CAN jump_in
+    CHECK my_game CAN saltare_in
       ELSE SAY restricted_response OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -3543,7 +3543,7 @@ SYNTAX jump_on = jump 'on' (surface)
 
 ADD TO EVERY OBJECT
   VERB jump_on
-    CHECK my_game CAN jump_on
+    CHECK my_game CAN saltare_su
       ELSE SAY restricted_response OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -5157,7 +5157,7 @@ SYNTAX pull = pull (obj)
 
 ADD TO EVERY OBJECT
   VERB pull
-    CHECK my_game CAN pull
+    CHECK my_game CAN tirare
       ELSE SAY restricted_response OF my_game.
     AND obj IS movable
       ELSE SAY check_obj_movable OF my_game.
@@ -5209,7 +5209,7 @@ SYNTAX push = push (obj)
 
 ADD TO EVERY THING
   VERB push
-    CHECK my_game CAN push
+    CHECK my_game CAN spingere
       ELSE SAY restricted_response OF my_game.
     AND obj IS movable
           ELSE SAY check_obj_movable OF my_game.
@@ -5267,7 +5267,7 @@ SYNTAX push_with = push (obj) 'with' (instr)
 ADD TO EVERY THING
   VERB push_with
     WHEN obj
-      CHECK my_game CAN push_with
+      CHECK my_game CAN spingere_con
         ELSE SAY restricted_response OF my_game.
       AND obj IS movable
           ELSE SAY check_obj_movable OF my_game.
@@ -5710,7 +5710,7 @@ SYNTAX read = read (obj)
 
 ADD TO EVERY OBJECT
     VERB read
-    CHECK my_game CAN read
+    CHECK my_game CAN leggere
       ELSE SAY restricted_response OF my_game.
     AND obj IS readable
           ELSE
@@ -6220,7 +6220,7 @@ SYNTAX sell = sell (item)
 
 ADD TO EVERY OBJECT
     VERB sell
-    CHECK my_game CAN sell
+    CHECK my_game CAN vendere
       ELSE SAY restricted_response OF my_game.
     AND item IS examinable
       ELSE

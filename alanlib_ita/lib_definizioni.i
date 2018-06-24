@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.5 (2018/06/24)
+-- "lib_definizioni.i" v0.2.6 (2018/06/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -901,10 +901,17 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN caricare_partita.     --> 'restore'
   CAN chiudere.             --> close (+ shut)
   CAN chiudere_con.         --> close_with
+  CAN comprare.             --> buy (+ purchase)
+  CAN consultare.           --> consult
   CAN danzare.              --> dance
   CAN dare.                 --> give 
   CAN dormire.              --> sleep        (+ rest)
+  CAN entrare.              --> enter
+  CAN esaminare.            --> examine (+ check, inspect, observe, x)
   CAN inventariare.         --> i            (+ inv, inventory)
+  CAN lasciare.             --> drop (+ discard, dump, reject)
+  CAN leggere.              --> read
+  CAN liberare.             --> free (+ release)
   CAN mangiare.             --> eat
   CAN pregare.              --> pray
   CAN prendere.             --> take.        (+ carry, get, grab, hold, obtain)
@@ -914,10 +921,23 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN rompere.              --> break (+ destroy)
   CAN rompere_con.          --> break_with
   CAN salvare_partita.      --> save
+  CAN saltare.              --> jump
+  CAN saltare_in.           --> jump_in
+  CAN saltare_su.           --> jump_on
   CAN scavare.              --> dig
+  CAN seguire.              --> follow
+  CAN spingere.             --> push
+  CAN spingere_con.         --> push_with
   CAN spogliarsi.           --> undress
+  CAN tagliare.             --> cut
+  CAN tagliare_con.         --> cut_with
+  CAN tirare.               --> pull
   CAN uccidere.             --> kill        (+ murder)
   CAN uccidere_con.         --> kill_with
+  CAN vendere.              --> sell
+  CAN versare.              --> pour
+  CAN versare_in.           --> pour_in
+  CAN versare_su.           --> pour_on
 
 --# NOT YET TRANSLATED:
   CAN about.
@@ -928,25 +948,18 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN attack_with.
   CAN bite.        -- (+ chew)
   CAN 'brief'.
-  CAN buy.         -- (+ purchase)
   CAN catch.
   CAN clean.       -- (+ polish, wipe)
   CAN climb.
   CAN climb_on.
   CAN climb_through.
-  CAN consult.
   CAN credits.     -- (+ acknowledgments, author, copyright)
-  CAN cut.
-  CAN cut_with.
   CAN dive.
   CAN dive_in.
   CAN drive.
-  CAN drop.        -- (+ discard, dump, reject)
   CAN 'empty'.
   CAN empty_in.
   CAN empty_on.
-  CAN enter.
-  CAN examine.     -- (+ check, inspect, observe, x)
   CAN 'exit'.
   CAN extinguish.  -- (+ put out, quench)
   CAN fill.
@@ -955,15 +968,10 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN fire.
   CAN fire_at.
   CAN fix.         -- (+ mend, repair)
-  CAN follow.
-  CAN free.        -- (+ release)
   CAN get_up.
   CAN get_off.
   CAN go_to.
   CAN hint.        -- (+ hints)
-  CAN jump.
-  CAN jump_in.
-  CAN jump_on.
   CAN kick.
   CAN kiss.        -- (+ hug, embrace)
   CAN knock.
@@ -990,14 +998,8 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN notify_off.
   CAN 'play'.
   CAN play_with.
-  CAN pour.
-  CAN pour_in.
-  CAN pour_on.
   CAN pry.
   CAN pry_with.
-  CAN pull.
-  CAN push.
-  CAN push_with.
   CAN put.         -- (+ lay, place)
   CAN put_against.
   CAN put_behind.
@@ -1006,7 +1008,6 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN put_near.
   CAN put_on.
   CAN put_under.
-  CAN read.
   CAN remove.
   CAN rub.
   CAN 'say'.
@@ -1017,7 +1018,6 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN script_on.
   CAN script_off.
   CAN search.
-  CAN sell.
   CAN shake.
   CAN shoot.       -- (at)
   CAN shoot_with.
@@ -1089,10 +1089,17 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game caricare_partita.     --> 'restore'
   MAKE my_game chiudere.             --> close       (+ shut)
   MAKE my_game chiudere_con.         --> close_with
+  MAKE my_game comprare.             --> buy (+ purchase)
+  MAKE my_game consultare.           --> consult
   MAKE my_game danzare.              --> dance
   MAKE my_game dare.                 --> give
   MAKE my_game dormire.              --> sleep       (+ rest)
+  MAKE my_game entrare.              --> enter
+  MAKE my_game esaminare.            --> examine (+ check, inspect, observe, x)
   MAKE my_game inventariare.         --> i           (+ inv, inventory)
+  MAKE my_game lasciare.             --> drop (+ discard, dump, reject)
+  MAKE my_game leggere.              --> read
+  MAKE my_game liberare.             --> free (+ release)
   MAKE my_game mangiare.             --> eat
   MAKE my_game pregare.              --> pray
   MAKE my_game prendere.             --> take.       (+ carry, get, grab, hold, obtain)
@@ -1101,11 +1108,24 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game rifare.               --> 'again'
   MAKE my_game rompere.              --> break       (+ destroy)
   MAKE my_game rompere_con.          --> break_with
+  MAKE my_game saltare.              --> jump
+  MAKE my_game saltare_in.           --> jump_in
+  MAKE my_game saltare_su.           --> jump_on
   MAKE my_game salvare_partita.      --> save
   MAKE my_game scavare.              --> dig
+  MAKE my_game seguire.              --> follow
+  MAKE my_game spingere.             --> push
+  MAKE my_game spingere_con.         --> push_with
   MAKE my_game spogliarsi.           --> undress
+  MAKE my_game tagliare.             --> cut
+  MAKE my_game tagliare_con.         --> cut_with
+  MAKE my_game tirare.               --> pull
   MAKE my_game uccidere.             --> kill        (+ murder)
   MAKE my_game uccidere_con.         --> kill_with
+  MAKE my_game vendere.              --> sell
+  MAKE my_game versare.              --> pour
+  MAKE my_game versare_in.           --> pour_in
+  MAKE my_game versare_su.           --> pour_on
 
 --# NOT YET TRANSLATED:
   MAKE my_game about.
@@ -1118,25 +1138,18 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game 'brief'.
   MAKE my_game bruciare.        --> burn
   MAKE my_game bruciare_con.    --> burn_with
-  MAKE my_game buy.             -- (+ purchase)
   MAKE my_game catch.
   MAKE my_game clean.           -- (+ polish, wipe)
   MAKE my_game climb.
   MAKE my_game climb_on.
   MAKE my_game climb_through.
-  MAKE my_game consult.
   MAKE my_game credits.         -- (+ acknowledgments, author, copyright)
-  MAKE my_game cut.
-  MAKE my_game cut_with.
   MAKE my_game dive.
   MAKE my_game dive_in.
   MAKE my_game drive.
-  MAKE my_game drop.            -- (+ discard, dump, reject)
   MAKE my_game 'empty'.
   MAKE my_game empty_in.
   MAKE my_game empty_on.
-  MAKE my_game enter.
-  MAKE my_game examine.         -- (+ check, inspect, observe, x)
   MAKE my_game 'exit'.
   MAKE my_game extinguish.      -- (+ put out, quench)
   MAKE my_game fill.
@@ -1145,15 +1158,10 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game fire.
   MAKE my_game fire_at.
   MAKE my_game fix.             -- (+ mend, repair)
-  MAKE my_game follow.
-  MAKE my_game free.            -- (+ release)
   MAKE my_game get_up.
   MAKE my_game get_off.
   MAKE my_game go_to.
   MAKE my_game hint.            -- (+ hints)
-  MAKE my_game jump.
-  MAKE my_game jump_in.
-  MAKE my_game jump_on.
   MAKE my_game kick.
   MAKE my_game kiss.            -- (+ hug, embrace)
   MAKE my_game knock.
@@ -1180,14 +1188,8 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game notify_off.
   MAKE my_game 'play'.
   MAKE my_game play_with.
-  MAKE my_game pour.
-  MAKE my_game pour_in.
-  MAKE my_game pour_on.
   MAKE my_game pry.
   MAKE my_game pry_with.
-  MAKE my_game pull.
-  MAKE my_game push.
-  MAKE my_game push_with.
   MAKE my_game put.             -- (+ lay, place)
   MAKE my_game put_against.
   MAKE my_game put_behind.
@@ -1196,7 +1198,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game put_near.
   MAKE my_game put_on.
   MAKE my_game put_under.
-  MAKE my_game read.
   MAKE my_game remove.
   MAKE my_game rub.
   MAKE my_game 'say'.
@@ -1207,7 +1208,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game script_on.
   MAKE my_game script_off.
   MAKE my_game search.
-  MAKE my_game sell.
   MAKE my_game shake.
   MAKE my_game shoot.           -- (at)
   MAKE my_game shoot_with.
@@ -1290,9 +1290,16 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game     caricare_partita.     --> 'restore'
   MAKE my_game NOT chiudere.             --> close         (+ shut)
   MAKE my_game NOT chiudere_con.         --> close_with
+  MAKE my_game NOT comprare.             --> buy (+ purchase)
+  MAKE my_game NOT consultare.           --> consult
   MAKE my_game NOT danzare.              --> dance
   MAKE my_game NOT dormire.              --> sleep         (+ rest)
+  MAKE my_game NOT entrare.              --> enter
+  MAKE my_game     esaminare.            --> examine (+ check, inspect, observe, x)
   MAKE my_game     inventariare.         --> i             (+ inv, inventory)
+  MAKE my_game NOT lasciare.             --> drop (+ discard, dump, reject)
+  MAKE my_game NOT leggere.              --> read
+  MAKE my_game NOT liberare.             --> free (+ release)
   MAKE my_game NOT mangiare.             --> eat
   MAKE my_game     pregare.              --> pray
   MAKE my_game NOT prendere.             --> take.         (+ carry, get, grab, hold, obtain)
@@ -1301,11 +1308,24 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game     rifare.               --> 'again'
   MAKE my_game NOT rompere.              --> break (+ destroy)
   MAKE my_game NOT rompere_con.          --> break_with
+  MAKE my_game NOT saltare.              --> jump
+  MAKE my_game NOT saltare_in.           --> jump_in
+  MAKE my_game NOT saltare_su.           --> jump_on
   MAKE my_game     salvare_partita.      --> save
   MAKE my_game NOT scavare.              --> dig
+  MAKE my_game NOT seguire.              --> follow
+  MAKE my_game NOT spingere.             --> push
+  MAKE my_game NOT spingere_con.         --> push_with
   MAKE my_game NOT spogliarsi.           --> undress
+  MAKE my_game NOT tagliare.             --> cut
+  MAKE my_game NOT tagliare_con.         --> cut_with
+  MAKE my_game NOT tirare.               --> pull
   MAKE my_game NOT uccidere.             --> kill          (+ murder)
   MAKE my_game NOT uccidere_con.         --> kill_with
+  MAKE my_game NOT vendere.              --> sell
+  MAKE my_game NOT versare.              --> pour
+  MAKE my_game NOT versare_in.           --> pour_in
+  MAKE my_game NOT versare_su.           --> pour_on
 
 --# NOT YET TRANSLATED:
 
@@ -1319,25 +1339,18 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game 'brief'.
   MAKE my_game NOT bruciare.     --> burn
   MAKE my_game NOT bruciare_con. --> burn_with
-  MAKE my_game NOT buy.         -- (+ purchase)
   MAKE my_game NOT catch.
   MAKE my_game NOT clean.       -- (+ polish, wipe)
   MAKE my_game NOT climb.
   MAKE my_game NOT climb_on.
   MAKE my_game NOT climb_through.
-  MAKE my_game NOT consult.
   MAKE my_game credits.         -- (+ acknowledgments, author, copyright)
-  MAKE my_game NOT cut.
-  MAKE my_game NOT cut_with.
   MAKE my_game NOT dive.
   MAKE my_game NOT dive_in.
   MAKE my_game NOT drive.
-  MAKE my_game NOT drop.        -- (+ discard, dump, reject)
   MAKE my_game NOT 'empty'.
   MAKE my_game NOT empty_in.
   MAKE my_game NOT empty_on.
-  MAKE my_game NOT enter.
-  MAKE my_game examine.         -- (+ check, inspect, observe, x)
   MAKE my_game NOT 'exit'.
   MAKE my_game NOT extinguish.  -- (+ put out, quench)
   MAKE my_game NOT fill.
@@ -1346,16 +1359,11 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT fire.
   MAKE my_game NOT fire_at.
   MAKE my_game NOT fix.         -- (+ mend, repair)
-  MAKE my_game NOT follow.
-  MAKE my_game NOT free.        -- (+ release)
   MAKE my_game NOT get_up.
   MAKE my_game NOT get_off.
   MAKE my_game NOT dare.
   MAKE my_game NOT go_to.
   MAKE my_game hint.            -- (+ hints)
-  MAKE my_game NOT jump.
-  MAKE my_game NOT jump_in.
-  MAKE my_game NOT jump_on.
   MAKE my_game NOT kick.
   MAKE my_game NOT kiss.        -- (+ hug, embrace)
   MAKE my_game NOT knock.
@@ -1382,14 +1390,8 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game notify_off.
   MAKE my_game NOT 'play'.
   MAKE my_game NOT play_with.
-  MAKE my_game NOT pour.
-  MAKE my_game NOT pour_in.
-  MAKE my_game NOT pour_on.
   MAKE my_game NOT pry.
   MAKE my_game NOT pry_with.
-  MAKE my_game NOT pull.
-  MAKE my_game NOT push.
-  MAKE my_game NOT push_with.
   MAKE my_game NOT put.         -- (+ lay, place)
   MAKE my_game NOT put_against.
   MAKE my_game NOT put_behind.
@@ -1398,7 +1400,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT put_near.
   MAKE my_game NOT put_on.
   MAKE my_game NOT put_under.
-  MAKE my_game NOT read.
   MAKE my_game NOT remove.
   MAKE my_game NOT rub.
   MAKE my_game NOT 'say'.
@@ -1409,7 +1410,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game script_on.
   MAKE my_game script_off.
   MAKE my_game NOT search.
-  MAKE my_game NOT sell.
   MAKE my_game NOT shake.
   MAKE my_game NOT shoot.       -- (at)
   MAKE my_game NOT shoot_with.
@@ -1478,9 +1478,16 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game     caricare_partita.     --> 'restore'
   MAKE my_game NOT chiudere.             --> close         (+ shut)
   MAKE my_game NOT chiudere_con.         --> close_with
+  MAKE my_game NOT comprare.             --> buy (+ purchase)
+  MAKE my_game NOT consultare.           --> consult
   MAKE my_game NOT danzare.              --> dance
   MAKE my_game NOT dormire.              --> sleep         (+ rest)
+  MAKE my_game NOT entrare.              --> enter
+  MAKE my_game NOT esaminare.            --> examine (+ check, inspect, observe, x)
   MAKE my_game NOT inventariare.         --> i             (+ inv, inventory)
+  MAKE my_game NOT lasciare.             --> drop (+ discard, dump, reject)
+  MAKE my_game NOT leggere.              --> read
+  MAKE my_game NOT liberare.             --> free (+ release)
   MAKE my_game NOT mangiare.             --> eat
   MAKE my_game NOT pregare.              --> pray
   MAKE my_game NOT prendere.             --> take.         (+ carry, get, grab, hold, obtain)
@@ -1489,11 +1496,24 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game     rifare.               --> 'again'
   MAKE my_game NOT rompere.              --> break (+ destroy)
   MAKE my_game NOT rompere_con.          --> break_with
+  MAKE my_game NOT saltare.              --> jump
+  MAKE my_game NOT saltare_in.           --> jump_in
+  MAKE my_game NOT saltare_su.           --> jump_on
   MAKE my_game     salvare_partita.      --> save
   MAKE my_game NOT scavare.              --> dig
+  MAKE my_game NOT seguire.              --> follow
+  MAKE my_game NOT spingere.             --> push
+  MAKE my_game NOT spingere_con.         --> push_with
   MAKE my_game NOT spogliarsi.           --> undress
+  MAKE my_game NOT tagliare.             --> cut
+  MAKE my_game NOT tagliare_con.         --> cut_with
+  MAKE my_game NOT tirare.               --> pull
   MAKE my_game NOT uccidere.             --> kill          (+ murder)
   MAKE my_game NOT uccidere_con.         --> kill_with
+  MAKE my_game NOT vendere.              --> sell
+  MAKE my_game NOT versare.              --> pour
+  MAKE my_game NOT versare_in.           --> pour_in
+  MAKE my_game NOT versare_su.           --> pour_on
 
 --# NOT YET TRANSLATED:
 
@@ -1507,25 +1527,18 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game 'brief'.
   MAKE my_game NOT bruciare.     --> burn
   MAKE my_game NOT bruciare_con. --> burn_with
-  MAKE my_game NOT buy.         -- (+ purchase)
   MAKE my_game NOT catch.
   MAKE my_game NOT clean.       -- (+ polish, wipe)
   MAKE my_game NOT climb.
   MAKE my_game NOT climb_on.
   MAKE my_game NOT climb_through.
-  MAKE my_game NOT consult.
   MAKE my_game credits.         -- (+ acknowledgments, author, copyright)
-  MAKE my_game NOT cut.
-  MAKE my_game NOT cut_with.
   MAKE my_game NOT dive.
   MAKE my_game NOT dive_in.
   MAKE my_game NOT drive.
-  MAKE my_game NOT drop.        -- (+ discard, dump, reject)
   MAKE my_game NOT 'empty'.
   MAKE my_game NOT empty_in.
   MAKE my_game NOT empty_on.
-  MAKE my_game NOT enter.
-  MAKE my_game NOT examine.     -- (+ check, inspect, observe, x)
   MAKE my_game NOT 'exit'.
   MAKE my_game NOT extinguish.  -- (+ put out, quench)
   MAKE my_game NOT fill.
@@ -1534,16 +1547,11 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT fire.
   MAKE my_game NOT fire_at.
   MAKE my_game NOT fix.         -- (+ mend, repair)
-  MAKE my_game NOT follow.
-  MAKE my_game NOT free.        -- (+ release)
   MAKE my_game NOT get_up.
   MAKE my_game NOT get_off.
   MAKE my_game NOT dare.
   MAKE my_game NOT go_to.
   MAKE my_game hint.            -- (+ hints)
-  MAKE my_game NOT jump.
-  MAKE my_game NOT jump_in.
-  MAKE my_game NOT jump_on.
   MAKE my_game NOT kick.
   MAKE my_game NOT kiss.        -- (+ hug, embrace)
   MAKE my_game NOT knock.
@@ -1570,14 +1578,8 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game notify_off.
   MAKE my_game NOT 'play'.
   MAKE my_game NOT play_with.
-  MAKE my_game NOT pour.
-  MAKE my_game NOT pour_in.
-  MAKE my_game NOT pour_on.
   MAKE my_game NOT pry.
   MAKE my_game NOT pry_with.
-  MAKE my_game NOT pull.
-  MAKE my_game NOT push.
-  MAKE my_game NOT push_with.
   MAKE my_game NOT put.         -- (+ lay, place)
   MAKE my_game NOT put_against.
   MAKE my_game NOT put_behind.
@@ -1586,7 +1588,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT put_near.
   MAKE my_game NOT put_on.
   MAKE my_game NOT put_under.
-  MAKE my_game NOT read.
   MAKE my_game NOT remove.
   MAKE my_game NOT rub.
   MAKE my_game NOT 'say'.
@@ -1597,7 +1598,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game script_on.
   MAKE my_game script_off.
   MAKE my_game NOT search.
-  MAKE my_game NOT sell.
   MAKE my_game NOT shake.
   MAKE my_game NOT shoot.       -- (at)
   MAKE my_game NOT shoot_with.
@@ -1664,9 +1664,16 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT caricare_partita.     --> 'restore'
   MAKE my_game NOT chiudere.             --> close           (+ shut)
   MAKE my_game NOT chiudere_con.         --> close_with
+  MAKE my_game NOT comprare.             --> buy (+ purchase)
+  MAKE my_game NOT consultare.           --> consult
   MAKE my_game NOT danzare.              --> dance
   MAKE my_game NOT dormire.              --> sleep           (+ rest)
+  MAKE my_game NOT entrare.              --> enter
+  MAKE my_game NOT esaminare.            --> examine (+ check, inspect, observe, x)
   MAKE my_game NOT inventariare.         --> i               (+ inv, inventory)
+  MAKE my_game NOT lasciare.             --> drop (+ discard, dump, reject)
+  MAKE my_game NOT leggere.              --> read
+  MAKE my_game NOT liberare.             --> free (+ release)
   MAKE my_game NOT mangiare.             --> eat
   MAKE my_game NOT pregare.              --> pray
   MAKE my_game NOT prendere.             --> take.           (+ carry, get, grab, hold, obtain)
@@ -1675,11 +1682,24 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT rifare.               --> 'again'
   MAKE my_game NOT rompere.              --> break (+ destroy)
   MAKE my_game NOT rompere_con.          --> break_with
+  MAKE my_game NOT saltare.              --> jump
+  MAKE my_game NOT saltare_in.           --> jump_in
+  MAKE my_game NOT saltare_su.           --> jump_on
   MAKE my_game NOT salvare_partita.      --> save
   MAKE my_game NOT scavare.              --> dig
+  MAKE my_game NOT seguire.              --> follow
+  MAKE my_game NOT spingere.             --> push
+  MAKE my_game NOT spingere_con.         --> push_with
   MAKE my_game NOT spogliarsi.           --> undress
+  MAKE my_game NOT tagliare.             --> cut
+  MAKE my_game NOT tagliare_con.         --> cut_with
+  MAKE my_game NOT tirare.               --> pull
   MAKE my_game NOT uccidere.             --> kill            (+ murder)
   MAKE my_game NOT uccidere_con.         --> kill_with
+  MAKE my_game NOT vendere.              --> sell
+  MAKE my_game NOT versare.              --> pour
+  MAKE my_game NOT versare_in.           --> pour_in
+  MAKE my_game NOT versare_su.           --> pour_on
 
 --# NOT YET TRANSLATED:
 
@@ -1693,25 +1713,18 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT 'brief'.
   MAKE my_game NOT bruciare.     --> burn
   MAKE my_game NOT bruciare_con. --> burn_with
-  MAKE my_game NOT buy.         -- (+ purchase)
   MAKE my_game NOT catch.
   MAKE my_game NOT clean.       -- (+ polish, wipe)
   MAKE my_game NOT climb.
   MAKE my_game NOT climb_on.
   MAKE my_game NOT climb_through.
-  MAKE my_game NOT consult.
   MAKE my_game NOT credits.     -- (+ acknowledgments, author, copyright)
-  MAKE my_game NOT cut.
-  MAKE my_game NOT cut_with.
   MAKE my_game NOT dive.
   MAKE my_game NOT dive_in.
   MAKE my_game NOT drive.
-  MAKE my_game NOT drop.        -- (+ discard, dump, reject)
   MAKE my_game NOT 'empty'.
   MAKE my_game NOT empty_in.
   MAKE my_game NOT empty_on.
-  MAKE my_game NOT enter.
-  MAKE my_game NOT examine.     -- (+ check, inspect, observe, x)
   MAKE my_game NOT 'exit'.
   MAKE my_game NOT extinguish.  -- (+ put out, quench)
   MAKE my_game NOT fill.
@@ -1720,16 +1733,11 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT fire.
   MAKE my_game NOT fire_at.
   MAKE my_game NOT fix.         -- (+ mend, repair)
-  MAKE my_game NOT follow.
-  MAKE my_game NOT free.        -- (+ release)
   MAKE my_game NOT get_up.
   MAKE my_game NOT get_off.
   MAKE my_game NOT dare.
   MAKE my_game NOT go_to.
   MAKE my_game NOT hint.        -- (+ hints)
-  MAKE my_game NOT jump.
-  MAKE my_game NOT jump_in.
-  MAKE my_game NOT jump_on.
   MAKE my_game NOT kick.
   MAKE my_game NOT kiss.        -- (+ hug, embrace)
   MAKE my_game NOT knock.
@@ -1756,14 +1764,8 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT notify_off.
   MAKE my_game NOT 'play'.
   MAKE my_game NOT play_with.
-  MAKE my_game NOT pour.
-  MAKE my_game NOT pour_in.
-  MAKE my_game NOT pour_on.
   MAKE my_game NOT pry.
   MAKE my_game NOT pry_with.
-  MAKE my_game NOT pull.
-  MAKE my_game NOT push.
-  MAKE my_game NOT push_with.
   MAKE my_game NOT put.         -- (+ lay, place)
   MAKE my_game NOT put_against.
   MAKE my_game NOT put_behind.
@@ -1772,7 +1774,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT put_near.
   MAKE my_game NOT put_on.
   MAKE my_game NOT put_under.
-  MAKE my_game NOT read.
   MAKE my_game NOT remove.
   MAKE my_game NOT rub.
   MAKE my_game NOT 'say'.
@@ -1783,7 +1784,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT script_on.
   MAKE my_game NOT script_off.
   MAKE my_game NOT search.
-  MAKE my_game NOT sell.
   MAKE my_game NOT shake.
   MAKE my_game NOT shoot.       -- (at)
   MAKE my_game NOT shoot_with.

@@ -11,7 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/06/24](#20180624)
+- [2018/06/24 \(2\)](#20180624-2)
+- [2018/06/24 \(1\)](#20180624-1)
     - [Translate StdLib's `plural`](#translate-stdlibs-plural)
 - [2018/06/23 \(2\)](#20180623-2)
 - [2018/06/23 \(1\)](#20180623-1)
@@ -60,7 +61,39 @@ Status: Alpha stage.
 
 -----
 
-# 2018/06/24
+# 2018/06/24 (2)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.6)
+- [`lib_verbi.i`][lib_verbi] (v0.2.6)
+
+Translated `my_game` attributes for verb restrictions:
+
+|   English   |    Italian     |
+|-------------|----------------|
+| `buy`       | `comprare`     |
+| `consult`   | `consultare`   |
+| `cut`       | `tagliare`     |
+| `cut_with`  | `tagliare_con` |
+| `drop`      | `lasciare`     |
+| `enter`     | `entrare`      |
+| `examine`   | `esaminare`    |
+| `follow`    | `seguire`      |
+| `free`      | `liberare`     |
+| `jump`      | `saltare`      |
+| `jump_in`   | `saltare_in`   |
+| `jump_on`   | `saltare_su`   |
+| `pour`      | `versare`      |
+| `pour_in`   | `versare_in`   |
+| `pour_on`   | `versare_su`   |
+| `pull`      | `tirare`       |
+| `push`      | `spingere`     |
+| `push_with` | `spingere_con` |
+| `read`      | `leggere`      |
+| `sell`      | `vendere`      |
+
+
+
+# 2018/06/24 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.2.1)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.5)
