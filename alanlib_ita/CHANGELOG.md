@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/06/24 \(3\)](#20180624-3)
 - [2018/06/24 \(2\)](#20180624-2)
 - [2018/06/24 \(1\)](#20180624-1)
     - [Translate StdLib's `plural`](#translate-stdlibs-plural)
@@ -60,6 +61,29 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/06/24 (3)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.7)
+- [`lib_verbi.i`][lib_verbi] (v0.2.7)
+
+Translated `my_game` attributes for verb restrictions:
+
+|  English  |   Italian    |
+|-----------|--------------|
+| `clean`   | `pulire`     |
+| `find`    | `trovare`    |
+| `kiss`    | `baciare`    |
+| `shout`   | `gridare`    |
+| `'show'`  | `mostrare`   |
+| `swim`    | `nuotare`    |
+| `swim_in` | `nuotare_in` |
+| `taste`   | `assaggiare` |
+| `wear`    | `indossare`  |
+
+
+
+
 
 # 2018/06/24 (2)
 

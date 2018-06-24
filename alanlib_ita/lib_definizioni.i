@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.6 (2018/06/24)
+-- "lib_definizioni.i" v0.2.7 (2018/06/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -895,30 +895,38 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN aprire.               --> open
   CAN aprire_con.           --> open_with
   CAN aspettare.            --> wait         (+ z)
+  CAN assaggiare.           --> taste        (+ lick)
+  CAN baciare.              --> kiss         (+ hug, embrace)
   CAN bere.                 --> drink
   CAN bruciare.             --> burn
   CAN bruciare_con.         --> burn_with
   CAN caricare_partita.     --> 'restore'
-  CAN chiudere.             --> close (+ shut)
+  CAN chiudere.             --> close        (+ shut)
   CAN chiudere_con.         --> close_with
-  CAN comprare.             --> buy (+ purchase)
+  CAN comprare.             --> buy          (+ purchase)
   CAN consultare.           --> consult
   CAN danzare.              --> dance
   CAN dare.                 --> give 
   CAN dormire.              --> sleep        (+ rest)
   CAN entrare.              --> enter
-  CAN esaminare.            --> examine (+ check, inspect, observe, x)
+  CAN esaminare.            --> examine      (+ check, inspect, observe, x)
+  CAN gridare.              --> shout        (+ scream, yell)
+  CAN indossare.            --> wear
   CAN inventariare.         --> i            (+ inv, inventory)
-  CAN lasciare.             --> drop (+ discard, dump, reject)
+  CAN lasciare.             --> drop         (+ discard, dump, reject)
   CAN leggere.              --> read
-  CAN liberare.             --> free (+ release)
+  CAN liberare.             --> free         (+ release)
   CAN mangiare.             --> eat
+  CAN mostrare.             --> 'show'       (+ reveal)
+  CAN nuotare.              --> swim
+  CAN nuotare_in.           --> swim_in
   CAN pregare.              --> pray
   CAN prendere.             --> take.        (+ carry, get, grab, hold, obtain)
   CAN prendere_da.          --> take_from.   (+ remove from)
+  CAN pulire.               --> clean        (+ polish, wipe)
   CAN ricominciare_partita. --> 'restart'
   CAN rifare.               --> 'again'
-  CAN rompere.              --> break (+ destroy)
+  CAN rompere.              --> break        (+ destroy)
   CAN rompere_con.          --> break_with
   CAN salvare_partita.      --> save
   CAN saltare.              --> jump
@@ -932,7 +940,8 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN tagliare.             --> cut
   CAN tagliare_con.         --> cut_with
   CAN tirare.               --> pull
-  CAN uccidere.             --> kill        (+ murder)
+  CAN trovare.              --> find         (+ locate)
+  CAN uccidere.             --> kill         (+ murder)
   CAN uccidere_con.         --> kill_with
   CAN vendere.              --> sell
   CAN versare.              --> pour
@@ -949,7 +958,6 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN bite.        -- (+ chew)
   CAN 'brief'.
   CAN catch.
-  CAN clean.       -- (+ polish, wipe)
   CAN climb.
   CAN climb_on.
   CAN climb_through.
@@ -964,7 +972,6 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN extinguish.  -- (+ put out, quench)
   CAN fill.
   CAN fill_with.
-  CAN find.        -- (+ locate)
   CAN fire.
   CAN fire_at.
   CAN fix.         -- (+ mend, repair)
@@ -973,7 +980,6 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN go_to.
   CAN hint.        -- (+ hints)
   CAN kick.
-  CAN kiss.        -- (+ hug, embrace)
   CAN knock.
   CAN lie_down.
   CAN lie_in.
@@ -1021,8 +1027,6 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN shake.
   CAN shoot.       -- (at)
   CAN shoot_with.
-  CAN shout.       -- (+ scream, yell)
-  CAN 'show'.      -- (+ reveal)
   CAN sing.
   CAN sip.
   CAN sit.         -- (down)
@@ -1032,14 +1036,11 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN squeeze.
   CAN stand.       -- (up)
   CAN stand_on.
-  CAN swim.
-  CAN swim_in.
   CAN switch.
   CAN switch_on.
   CAN switch_off.
   CAN talk.
   CAN talk_to.     -- (+ speak)
-  CAN taste.       -- (+ lick)
   CAN tear.        -- (+ rip)
   CAN tell.        -- (+ enlighten, inform)
   CAN think.
@@ -1060,7 +1061,6 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN 'use'.
   CAN use_with.
   CAN 'verbose'.
-  CAN wear.
   CAN what_am_i.
   CAN what_is.
   CAN where_am_i.
@@ -1084,29 +1084,37 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game abbandonare_partita.  --> 'quit'
   MAKE my_game aprire.               --> open
   MAKE my_game aprire_con.           --> open_with
-  MAKE my_game aspettare.            --> wait        (+ z)
+  MAKE my_game aspettare.            --> wait         (+ z)
+  MAKE my_game assaggiare.           --> taste        (+ lick)
+  MAKE my_game baciare.              --> kiss         (+ hug, embrace)
   MAKE my_game bere.                 --> drink
   MAKE my_game caricare_partita.     --> 'restore'
-  MAKE my_game chiudere.             --> close       (+ shut)
+  MAKE my_game chiudere.             --> close        (+ shut)
   MAKE my_game chiudere_con.         --> close_with
-  MAKE my_game comprare.             --> buy (+ purchase)
+  MAKE my_game comprare.             --> buy          (+ purchase)
   MAKE my_game consultare.           --> consult
   MAKE my_game danzare.              --> dance
   MAKE my_game dare.                 --> give
-  MAKE my_game dormire.              --> sleep       (+ rest)
+  MAKE my_game dormire.              --> sleep        (+ rest)
   MAKE my_game entrare.              --> enter
-  MAKE my_game esaminare.            --> examine (+ check, inspect, observe, x)
-  MAKE my_game inventariare.         --> i           (+ inv, inventory)
-  MAKE my_game lasciare.             --> drop (+ discard, dump, reject)
+  MAKE my_game esaminare.            --> examine      (+ check, inspect, observe, x)
+  MAKE my_game gridare.              --> shout        (+ scream, yell)
+  MAKE my_game indossare.            --> wear
+  MAKE my_game inventariare.         --> i            (+ inv, inventory)
+  MAKE my_game lasciare.             --> drop         (+ discard, dump, reject)
   MAKE my_game leggere.              --> read
-  MAKE my_game liberare.             --> free (+ release)
+  MAKE my_game liberare.             --> free         (+ release)
   MAKE my_game mangiare.             --> eat
+  MAKE my_game mostrare.             --> 'show'       (+ reveal)
+  MAKE my_game nuotare.              --> swim
+  MAKE my_game nuotare_in.           --> swim_in
   MAKE my_game pregare.              --> pray
-  MAKE my_game prendere.             --> take.       (+ carry, get, grab, hold, obtain)
-  MAKE my_game prendere_da.          --> take_from.  (+ remove from)
+  MAKE my_game prendere.             --> take.        (+ carry, get, grab, hold, obtain)
+  MAKE my_game prendere_da.          --> take_from.   (+ remove from)
+  MAKE my_game pulire.               --> clean        (+ polish, wipe)
   MAKE my_game ricominciare_partita. --> 'restart'
   MAKE my_game rifare.               --> 'again'
-  MAKE my_game rompere.              --> break       (+ destroy)
+  MAKE my_game rompere.              --> break        (+ destroy)
   MAKE my_game rompere_con.          --> break_with
   MAKE my_game saltare.              --> jump
   MAKE my_game saltare_in.           --> jump_in
@@ -1120,7 +1128,8 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game tagliare.             --> cut
   MAKE my_game tagliare_con.         --> cut_with
   MAKE my_game tirare.               --> pull
-  MAKE my_game uccidere.             --> kill        (+ murder)
+  MAKE my_game trovare.              --> find         (+ locate)
+  MAKE my_game uccidere.             --> kill         (+ murder)
   MAKE my_game uccidere_con.         --> kill_with
   MAKE my_game vendere.              --> sell
   MAKE my_game versare.              --> pour
@@ -1139,7 +1148,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game bruciare.        --> burn
   MAKE my_game bruciare_con.    --> burn_with
   MAKE my_game catch.
-  MAKE my_game clean.           -- (+ polish, wipe)
   MAKE my_game climb.
   MAKE my_game climb_on.
   MAKE my_game climb_through.
@@ -1154,7 +1162,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game extinguish.      -- (+ put out, quench)
   MAKE my_game fill.
   MAKE my_game fill_with.
-  MAKE my_game find.            -- (+ locate)
   MAKE my_game fire.
   MAKE my_game fire_at.
   MAKE my_game fix.             -- (+ mend, repair)
@@ -1163,7 +1170,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game go_to.
   MAKE my_game hint.            -- (+ hints)
   MAKE my_game kick.
-  MAKE my_game kiss.            -- (+ hug, embrace)
   MAKE my_game knock.
   MAKE my_game lie_down.
   MAKE my_game lie_in.
@@ -1211,8 +1217,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game shake.
   MAKE my_game shoot.           -- (at)
   MAKE my_game shoot_with.
-  MAKE my_game shout.           -- (+ scream, yell)
-  MAKE my_game 'show'.          -- (+ reveal)
   MAKE my_game sing.
   MAKE my_game sip.
   MAKE my_game sit.             -- (down)
@@ -1222,14 +1226,11 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game squeeze.
   MAKE my_game stand.           -- (up)
   MAKE my_game stand_on.
-  MAKE my_game swim.
-  MAKE my_game swim_in.
   MAKE my_game switch.
   MAKE my_game switch_on.
   MAKE my_game switch_off.
   MAKE my_game talk.
   MAKE my_game talk_to.         -- (+ speak)
-  MAKE my_game taste.           -- (+ lick)
   MAKE my_game tear.            -- (+ rip)
   MAKE my_game tell.            -- (+ enlighten, inform)
   MAKE my_game think.
@@ -1250,7 +1251,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game 'use'.
   MAKE my_game use_with.
   MAKE my_game 'verbose'.
-  MAKE my_game wear.
   MAKE my_game what_am_i.
   MAKE my_game what_is.
   MAKE my_game where_am_i.
@@ -1264,12 +1264,14 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
 ELSIF restricted_level OF my_game = 1  -- communication verbs are restricted
   THEN
 
+  MAKE my_game NOT gridare.              --> shout       (+ scream, yell)
+
+--# NOT YET TRANSLATED:
   MAKE my_game NOT answer.
   MAKE my_game NOT ask.
   MAKE my_game NOT ask_for.
   MAKE my_game NOT 'say'.
   MAKE my_game NOT say_to.
-  MAKE my_game NOT shout.
   MAKE my_game NOT sing.
   MAKE my_game NOT tell.
 
@@ -1285,28 +1287,36 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game     abbandonare_partita.  --> 'quit'
   MAKE my_game NOT aprire.               --> open
   MAKE my_game NOT aprire_con.           --> open_with
-  MAKE my_game     aspettare.            --> wait          (+ z)
+  MAKE my_game     aspettare.            --> wait         (+ z)
+  MAKE my_game NOT assaggiare.           --> taste        (+ lick)
+  MAKE my_game NOT baciare.              --> kiss         (+ hug, embrace)
   MAKE my_game NOT bere.                 --> drink
   MAKE my_game     caricare_partita.     --> 'restore'
-  MAKE my_game NOT chiudere.             --> close         (+ shut)
+  MAKE my_game NOT chiudere.             --> close        (+ shut)
   MAKE my_game NOT chiudere_con.         --> close_with
-  MAKE my_game NOT comprare.             --> buy (+ purchase)
+  MAKE my_game NOT comprare.             --> buy          (+ purchase)
   MAKE my_game NOT consultare.           --> consult
   MAKE my_game NOT danzare.              --> dance
-  MAKE my_game NOT dormire.              --> sleep         (+ rest)
+  MAKE my_game NOT dormire.              --> sleep        (+ rest)
   MAKE my_game NOT entrare.              --> enter
-  MAKE my_game     esaminare.            --> examine (+ check, inspect, observe, x)
-  MAKE my_game     inventariare.         --> i             (+ inv, inventory)
-  MAKE my_game NOT lasciare.             --> drop (+ discard, dump, reject)
+  MAKE my_game     esaminare.            --> examine      (+ check, inspect, observe, x)
+  MAKE my_game NOT gridare.              --> shout        (+ scream, yell)
+  MAKE my_game NOT indossare.            --> wear
+  MAKE my_game     inventariare.         --> i            (+ inv, inventory)
+  MAKE my_game NOT lasciare.             --> drop         (+ discard, dump, reject)
   MAKE my_game NOT leggere.              --> read
-  MAKE my_game NOT liberare.             --> free (+ release)
+  MAKE my_game NOT liberare.             --> free         (+ release)
   MAKE my_game NOT mangiare.             --> eat
+  MAKE my_game NOT mostrare.             --> 'show'       (+ reveal)
+  MAKE my_game NOT nuotare.              --> swim
+  MAKE my_game NOT nuotare_in.           --> swim_in
   MAKE my_game     pregare.              --> pray
-  MAKE my_game NOT prendere.             --> take.         (+ carry, get, grab, hold, obtain)
-  MAKE my_game NOT prendere_da.          --> take_from.    (+ remove from)
+  MAKE my_game NOT prendere.             --> take.        (+ carry, get, grab, hold, obtain)
+  MAKE my_game NOT prendere_da.          --> take_from.   (+ remove from)
+  MAKE my_game NOT pulire.               --> clean        (+ polish, wipe)
   MAKE my_game     ricominciare_partita. --> 'restart'
   MAKE my_game     rifare.               --> 'again'
-  MAKE my_game NOT rompere.              --> break (+ destroy)
+  MAKE my_game NOT rompere.              --> break        (+ destroy)
   MAKE my_game NOT rompere_con.          --> break_with
   MAKE my_game NOT saltare.              --> jump
   MAKE my_game NOT saltare_in.           --> jump_in
@@ -1320,7 +1330,8 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT tagliare.             --> cut
   MAKE my_game NOT tagliare_con.         --> cut_with
   MAKE my_game NOT tirare.               --> pull
-  MAKE my_game NOT uccidere.             --> kill          (+ murder)
+  MAKE my_game NOT trovare.              --> find         (+ locate)
+  MAKE my_game NOT uccidere.             --> kill         (+ murder)
   MAKE my_game NOT uccidere_con.         --> kill_with
   MAKE my_game NOT vendere.              --> sell
   MAKE my_game NOT versare.              --> pour
@@ -1340,7 +1351,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT bruciare.     --> burn
   MAKE my_game NOT bruciare_con. --> burn_with
   MAKE my_game NOT catch.
-  MAKE my_game NOT clean.       -- (+ polish, wipe)
   MAKE my_game NOT climb.
   MAKE my_game NOT climb_on.
   MAKE my_game NOT climb_through.
@@ -1355,7 +1365,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT extinguish.  -- (+ put out, quench)
   MAKE my_game NOT fill.
   MAKE my_game NOT fill_with.
-  MAKE my_game NOT find.        -- (+ locate)
   MAKE my_game NOT fire.
   MAKE my_game NOT fire_at.
   MAKE my_game NOT fix.         -- (+ mend, repair)
@@ -1365,7 +1374,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT go_to.
   MAKE my_game hint.            -- (+ hints)
   MAKE my_game NOT kick.
-  MAKE my_game NOT kiss.        -- (+ hug, embrace)
   MAKE my_game NOT knock.
   MAKE my_game NOT lie_down.
   MAKE my_game NOT lie_in.
@@ -1413,8 +1421,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT shake.
   MAKE my_game NOT shoot.       -- (at)
   MAKE my_game NOT shoot_with.
-  MAKE my_game NOT shout.       -- (+ scream, yell)
-  MAKE my_game NOT 'show'.      -- (+ reveal)
   MAKE my_game NOT sing.
   MAKE my_game NOT sip.
   MAKE my_game NOT sit.         -- (down)
@@ -1424,14 +1430,11 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT squeeze.
   MAKE my_game NOT stand.       -- (up)
   MAKE my_game NOT stand_on.
-  MAKE my_game NOT swim.
-  MAKE my_game NOT swim_in.
   MAKE my_game NOT switch.
   MAKE my_game NOT switch_on.
   MAKE my_game NOT switch_off.
   MAKE my_game NOT talk.
   MAKE my_game NOT talk_to.     -- (+ speak)
-  MAKE my_game NOT taste.       -- (+ lick)
   MAKE my_game NOT tear.        -- (+ rip)
   MAKE my_game NOT tell.        -- (+ enlighten, inform)
   MAKE my_game think.
@@ -1452,7 +1455,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT 'use'.
   MAKE my_game NOT use_with.
   MAKE my_game 'verbose'.
-  MAKE my_game NOT wear.
   MAKE my_game what_am_i.
   MAKE my_game what_is.
   MAKE my_game where_am_i.
@@ -1473,28 +1475,36 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game     abbandonare_partita.  --> 'quit'
   MAKE my_game NOT aprire.               --> open
   MAKE my_game NOT aprire_con.           --> open_with
-  MAKE my_game NOT aspettare.            --> wait          (+ z)
+  MAKE my_game NOT aspettare.            --> wait         (+ z)
+  MAKE my_game NOT assaggiare.           --> taste        (+ lick)
+  MAKE my_game NOT baciare.              --> kiss         (+ hug, embrace)
   MAKE my_game NOT bere.                 --> drink
   MAKE my_game     caricare_partita.     --> 'restore'
-  MAKE my_game NOT chiudere.             --> close         (+ shut)
+  MAKE my_game NOT chiudere.             --> close        (+ shut)
   MAKE my_game NOT chiudere_con.         --> close_with
-  MAKE my_game NOT comprare.             --> buy (+ purchase)
+  MAKE my_game NOT comprare.             --> buy          (+ purchase)
   MAKE my_game NOT consultare.           --> consult
   MAKE my_game NOT danzare.              --> dance
-  MAKE my_game NOT dormire.              --> sleep         (+ rest)
+  MAKE my_game NOT dormire.              --> sleep        (+ rest)
   MAKE my_game NOT entrare.              --> enter
-  MAKE my_game NOT esaminare.            --> examine (+ check, inspect, observe, x)
-  MAKE my_game NOT inventariare.         --> i             (+ inv, inventory)
-  MAKE my_game NOT lasciare.             --> drop (+ discard, dump, reject)
+  MAKE my_game NOT esaminare.            --> examine      (+ check, inspect, observe, x)
+  MAKE my_game NOT gridare.              --> shout        (+ scream, yell)
+  MAKE my_game NOT indossare.            --> wear
+  MAKE my_game NOT inventariare.         --> i            (+ inv, inventory)
+  MAKE my_game NOT lasciare.             --> drop         (+ discard, dump, reject)
   MAKE my_game NOT leggere.              --> read
-  MAKE my_game NOT liberare.             --> free (+ release)
+  MAKE my_game NOT liberare.             --> free         (+ release)
   MAKE my_game NOT mangiare.             --> eat
+  MAKE my_game NOT mostrare.             --> 'show'       (+ reveal)
+  MAKE my_game NOT nuotare.              --> swim
+  MAKE my_game NOT nuotare_in.           --> swim_in
   MAKE my_game NOT pregare.              --> pray
-  MAKE my_game NOT prendere.             --> take.         (+ carry, get, grab, hold, obtain)
-  MAKE my_game NOT prendere_da.          --> take_from.    (+ remove from)
+  MAKE my_game NOT prendere.             --> take.        (+ carry, get, grab, hold, obtain)
+  MAKE my_game NOT prendere_da.          --> take_from.   (+ remove from)
+  MAKE my_game NOT pulire.               --> clean        (+ polish, wipe)
   MAKE my_game     ricominciare_partita. --> 'restart'
   MAKE my_game     rifare.               --> 'again'
-  MAKE my_game NOT rompere.              --> break (+ destroy)
+  MAKE my_game NOT rompere.              --> break        (+ destroy)
   MAKE my_game NOT rompere_con.          --> break_with
   MAKE my_game NOT saltare.              --> jump
   MAKE my_game NOT saltare_in.           --> jump_in
@@ -1508,7 +1518,8 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT tagliare.             --> cut
   MAKE my_game NOT tagliare_con.         --> cut_with
   MAKE my_game NOT tirare.               --> pull
-  MAKE my_game NOT uccidere.             --> kill          (+ murder)
+  MAKE my_game NOT trovare.              --> find         (+ locate)
+  MAKE my_game NOT uccidere.             --> kill         (+ murder)
   MAKE my_game NOT uccidere_con.         --> kill_with
   MAKE my_game NOT vendere.              --> sell
   MAKE my_game NOT versare.              --> pour
@@ -1528,7 +1539,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT bruciare.     --> burn
   MAKE my_game NOT bruciare_con. --> burn_with
   MAKE my_game NOT catch.
-  MAKE my_game NOT clean.       -- (+ polish, wipe)
   MAKE my_game NOT climb.
   MAKE my_game NOT climb_on.
   MAKE my_game NOT climb_through.
@@ -1543,7 +1553,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT extinguish.  -- (+ put out, quench)
   MAKE my_game NOT fill.
   MAKE my_game NOT fill_with.
-  MAKE my_game NOT find.        -- (+ locate)
   MAKE my_game NOT fire.
   MAKE my_game NOT fire_at.
   MAKE my_game NOT fix.         -- (+ mend, repair)
@@ -1553,7 +1562,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT go_to.
   MAKE my_game hint.            -- (+ hints)
   MAKE my_game NOT kick.
-  MAKE my_game NOT kiss.        -- (+ hug, embrace)
   MAKE my_game NOT knock.
   MAKE my_game NOT lie_down.
   MAKE my_game NOT lie_in.
@@ -1601,8 +1609,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT shake.
   MAKE my_game NOT shoot.       -- (at)
   MAKE my_game NOT shoot_with.
-  MAKE my_game NOT shout.       -- (+ scream, yell)
-  MAKE my_game NOT 'show'.      -- (+ reveal)
   MAKE my_game NOT sing.
   MAKE my_game NOT sip.
   MAKE my_game NOT sit.         -- (down)
@@ -1612,14 +1618,11 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT squeeze.
   MAKE my_game NOT stand.       -- (up)
   MAKE my_game NOT stand_on.
-  MAKE my_game NOT swim.
-  MAKE my_game NOT swim_in.
   MAKE my_game NOT switch.
   MAKE my_game NOT switch_on.
   MAKE my_game NOT switch_off.
   MAKE my_game NOT talk.
   MAKE my_game NOT talk_to.     -- (+ speak)
-  MAKE my_game NOT taste.       -- (+ lick)
   MAKE my_game NOT tear.        -- (+ rip)
   MAKE my_game NOT tell.        -- (+ enlighten, inform)
   MAKE my_game NOT think.
@@ -1640,7 +1643,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT 'use'.
   MAKE my_game NOT use_with.
   MAKE my_game 'verbose'.
-  MAKE my_game NOT wear.
   MAKE my_game NOT what_am_i.
   MAKE my_game NOT what_is.
   MAKE my_game NOT where_am_i.
@@ -1659,28 +1661,36 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT abbandonare_partita.  --> 'quit'
   MAKE my_game NOT aprire.               --> open
   MAKE my_game NOT aprire_con.           --> open_with
-  MAKE my_game NOT aspettare.            --> wait            (+ z)
+  MAKE my_game NOT aspettare.            --> wait         (+ z)
+  MAKE my_game NOT assaggiare.           --> taste        (+ lick)
+  MAKE my_game NOT baciare.              --> kiss         (+ hug, embrace)
   MAKE my_game NOT bere.                 --> drink
   MAKE my_game NOT caricare_partita.     --> 'restore'
-  MAKE my_game NOT chiudere.             --> close           (+ shut)
+  MAKE my_game NOT chiudere.             --> close        (+ shut)
   MAKE my_game NOT chiudere_con.         --> close_with
-  MAKE my_game NOT comprare.             --> buy (+ purchase)
+  MAKE my_game NOT comprare.             --> buy          (+ purchase)
   MAKE my_game NOT consultare.           --> consult
   MAKE my_game NOT danzare.              --> dance
-  MAKE my_game NOT dormire.              --> sleep           (+ rest)
+  MAKE my_game NOT dormire.              --> sleep        (+ rest)
   MAKE my_game NOT entrare.              --> enter
-  MAKE my_game NOT esaminare.            --> examine (+ check, inspect, observe, x)
+  MAKE my_game NOT esaminare.            --> examine      (+ check, inspect, observe, x)
+  MAKE my_game NOT gridare.              --> shout        (+ scream, yell)
+  MAKE my_game NOT indossare.            --> wear
   MAKE my_game NOT inventariare.         --> i               (+ inv, inventory)
-  MAKE my_game NOT lasciare.             --> drop (+ discard, dump, reject)
+  MAKE my_game NOT lasciare.             --> drop         (+ discard, dump, reject)
   MAKE my_game NOT leggere.              --> read
-  MAKE my_game NOT liberare.             --> free (+ release)
+  MAKE my_game NOT liberare.             --> free         (+ release)
   MAKE my_game NOT mangiare.             --> eat
+  MAKE my_game NOT mostrare.             --> 'show'       (+ reveal)
+  MAKE my_game NOT nuotare.              --> swim
+  MAKE my_game NOT nuotare_in.           --> swim_in
   MAKE my_game NOT pregare.              --> pray
-  MAKE my_game NOT prendere.             --> take.           (+ carry, get, grab, hold, obtain)
-  MAKE my_game NOT prendere_da.          --> take_from.      (+ remove from)
+  MAKE my_game NOT prendere.             --> take.        (+ carry, get, grab, hold, obtain)
+  MAKE my_game NOT prendere_da.          --> take_from.   (+ remove from)
+  MAKE my_game NOT pulire.               --> clean        (+ polish, wipe)
   MAKE my_game NOT ricominciare_partita. --> 'restart'
   MAKE my_game NOT rifare.               --> 'again'
-  MAKE my_game NOT rompere.              --> break (+ destroy)
+  MAKE my_game NOT rompere.              --> break        (+ destroy)
   MAKE my_game NOT rompere_con.          --> break_with
   MAKE my_game NOT saltare.              --> jump
   MAKE my_game NOT saltare_in.           --> jump_in
@@ -1694,7 +1704,8 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT tagliare.             --> cut
   MAKE my_game NOT tagliare_con.         --> cut_with
   MAKE my_game NOT tirare.               --> pull
-  MAKE my_game NOT uccidere.             --> kill            (+ murder)
+  MAKE my_game NOT trovare.              --> find         (+ locate)
+  MAKE my_game NOT uccidere.             --> kill         (+ murder)
   MAKE my_game NOT uccidere_con.         --> kill_with
   MAKE my_game NOT vendere.              --> sell
   MAKE my_game NOT versare.              --> pour
@@ -1714,7 +1725,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT bruciare.     --> burn
   MAKE my_game NOT bruciare_con. --> burn_with
   MAKE my_game NOT catch.
-  MAKE my_game NOT clean.       -- (+ polish, wipe)
   MAKE my_game NOT climb.
   MAKE my_game NOT climb_on.
   MAKE my_game NOT climb_through.
@@ -1729,7 +1739,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT extinguish.  -- (+ put out, quench)
   MAKE my_game NOT fill.
   MAKE my_game NOT fill_with.
-  MAKE my_game NOT find.        -- (+ locate)
   MAKE my_game NOT fire.
   MAKE my_game NOT fire_at.
   MAKE my_game NOT fix.         -- (+ mend, repair)
@@ -1739,7 +1748,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT go_to.
   MAKE my_game NOT hint.        -- (+ hints)
   MAKE my_game NOT kick.
-  MAKE my_game NOT kiss.        -- (+ hug, embrace)
   MAKE my_game NOT knock.
   MAKE my_game NOT lie_down.
   MAKE my_game NOT lie_in.
@@ -1787,8 +1795,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT shake.
   MAKE my_game NOT shoot.       -- (at)
   MAKE my_game NOT shoot_with.
-  MAKE my_game NOT shout.       -- (+ scream, yell)
-  MAKE my_game NOT 'show'.      -- (+ reveal)
   MAKE my_game NOT sing.
   MAKE my_game NOT sip.
   MAKE my_game NOT sit.         -- (down)
@@ -1798,14 +1804,11 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT squeeze.
   MAKE my_game NOT stand.       -- (up)
   MAKE my_game NOT stand_on.
-  MAKE my_game NOT swim.
-  MAKE my_game NOT swim_in.
   MAKE my_game NOT switch.
   MAKE my_game NOT switch_on.
   MAKE my_game NOT switch_off.
   MAKE my_game NOT talk.
   MAKE my_game NOT talk_to.     -- (+ speak)
-  MAKE my_game NOT taste.       -- (+ lick)
   MAKE my_game NOT tear.        -- (+ rip)
   MAKE my_game NOT tell.        -- (+ enlighten, inform)
   MAKE my_game NOT think.
@@ -1826,7 +1829,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT 'use'.
   MAKE my_game NOT use_with.
   MAKE my_game NOT 'verbose'.
-  MAKE my_game NOT wear.
   MAKE my_game NOT what_am_i.
   MAKE my_game NOT what_is.
   MAKE my_game NOT where_am_i.

@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.6 (2018/06/24)
+-- "lib_verbi.i" v0.2.7 (2018/06/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1086,7 +1086,7 @@ SYNTAX clean = clean (obj)
 
 ADD TO EVERY OBJECT
   VERB clean
-    CHECK my_game CAN clean
+    CHECK my_game CAN pulire
       ELSE SAY restricted_response OF my_game.
     AND obj IS examinable
       ELSE
@@ -2846,7 +2846,7 @@ SYNTAX
 
 ADD TO EVERY THING
   VERB find
-    CHECK my_game CAN find
+    CHECK my_game CAN trovare
       ELSE SAY restricted_response OF my_game.
     AND obj <> hero
       ELSE SAY check_obj_not_hero4 OF my_game.
@@ -3728,7 +3728,7 @@ SYNTAX kiss = kiss (obj)
 
 ADD TO EVERY THING
   VERB kiss
-    CHECK my_game CAN kiss
+    CHECK my_game CAN baciare
       ELSE SAY restricted_response OF my_game.
     AND obj IS examinable
       ELSE
@@ -6446,7 +6446,7 @@ SYNTAX shout = shout.
 
 
 VERB shout
-  CHECK my_game CAN shout
+  CHECK my_game CAN gridare
     ELSE SAY restricted_response OF my_game.
     DOES
         "Nothing results from your $ving."
@@ -6484,7 +6484,7 @@ SYNTAX 'show' = 'show' (obj) 'to' (act)
 ADD TO EVERY OBJECT
   VERB 'show'
     WHEN obj
-      CHECK my_game CAN 'show'
+      CHECK my_game CAN mostrare
         ELSE SAY restricted_response OF my_game.
       AND act <> hero
         ELSE SAY check_obj2_not_hero1 OF my_game.
@@ -6945,7 +6945,7 @@ SYNTAX swim = swim.
 
 
 VERB swim
-  CHECK my_game CAN swim
+  CHECK my_game CAN nuotare
     ELSE SAY restricted_response OF my_game.
   AND hero IS NOT sitting
     ELSE SAY check_hero_not_sitting1 OF my_game.
@@ -6980,7 +6980,7 @@ SYNTAX swim_in = swim 'in' (liq)
 
 ADD TO EVERY OBJECT
   VERB swim_in
-    CHECK my_game CAN swim_in
+    CHECK my_game CAN nuotare_in
       ELSE SAY restricted_response OF my_game.
     AND hero IS NOT sitting
       ELSE SAY check_hero_not_sitting3 OF my_game.
@@ -7467,7 +7467,7 @@ SYNTAX taste = taste (obj)
 
 ADD TO EVERY OBJECT
   VERB taste
-    CHECK my_game CAN taste
+    CHECK my_game CAN assaggiare
       ELSE SAY restricted_response OF my_game.
     AND obj IS examinable
       ELSE
@@ -8794,7 +8794,7 @@ SYNTAX wear = wear (obj)
 
 ADD TO EVERY OBJECT
   VERB wear
-    CHECK my_game CAN wear
+    CHECK my_game CAN indossare
         ELSE SAY restricted_response OF my_game.
     AND obj NOT IN worn
       ELSE SAY check_obj_not_in_worn1 OF my_game.
