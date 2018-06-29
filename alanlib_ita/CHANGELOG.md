@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/06/29](#20180629)
 - [2018/06/24 \(3\)](#20180624-3)
 - [2018/06/24 \(2\)](#20180624-2)
 - [2018/06/24 \(1\)](#20180624-1)
@@ -61,6 +62,26 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/06/29
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.8)
+- [`lib_verbi.i`][lib_verbi] (v0.2.8)
+
+Translated `my_game` attributes for verb restrictions:
+
+|  English  |     Italian      |
+|-----------|------------------|
+| `brief`   | `modalità_breve` |
+| `verbose` | `modalità_lunga` |
+
+Translated verb responses:
+
+|    Verb   |                                                     Italian                                                      |
+|-----------|------------------------------------------------------------------------------------------------------------------|
+| `verbose` | "Il gioco è ora in modalità _lunga_, le descrizioni dei luoghi saranno mostrate sempre (anche se già visitati)." |
+| `brief`   | "Il gioco è ora in modalità _breve_, le descrizioni dei luoghi già visitati non saranno più mostrate."           |
+
 
 # 2018/06/24 (3)
 
@@ -670,7 +691,7 @@ Translated verb "__spogliati__" (_undress_):
 
     [spogliati|svestiti]
 
-Its default reponses translation might need some polishing. The commented code example on how to implement the undressing action also needs to be polished.
+Its default responses translation might need some polishing. The commented code example on how to implement the undressing action also needs to be polished.
 
 <!---------------------------------------------------------------------------->
 

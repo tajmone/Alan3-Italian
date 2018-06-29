@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.7 (2018/06/24)
+-- "lib_verbi.i" v0.2.8 (2018/06/29)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -854,12 +854,15 @@ SYNTAX brief = brief.
 
 
 VERB brief
-  CHECK my_game CAN brief
+  CHECK my_game CAN modalità_breve
     ELSE SAY restricted_response OF my_game.
   DOES
     Visits 1000.
-    "Brief mode is now on. Location descriptions will only be shown
-    the first time you visit."
+    -- "Brief mode is now on. Location descriptions will only be shown
+    -- the first time you visit."
+
+    "Il gioco è ora in modalità" STYLE EMPHASIZED. "breve" STYLE NORMAL. ", le
+    descrizioni dei luoghi già visitati non saranno più mostrate."
 END VERB.
 
 
@@ -8735,12 +8738,15 @@ SYNTAX verbose = verbose.
 
 
 VERB verbose
-  CHECK my_game CAN verbose
+  CHECK my_game CAN modalità_lunga
     ELSE SAY restricted_response OF my_game.
   DOES
     VISITS 0.
-    "Verbose mode is now on. Location descriptions will be
-    always shown in full."
+    -- "Verbose mode is now on. Location descriptions will be
+    -- always shown in full."
+
+    "Il gioco è ora in modalità" STYLE EMPHASIZED. "lunga" STYLE NORMAL. ", le
+    descrizioni dei luoghi saranno mostrate sempre (anche se già visitati)."
 END VERB.
 
 

@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.7 (2018/06/24)
+-- "lib_definizioni.i" v0.2.8 (2018/06/29)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -917,6 +917,8 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN leggere.              --> read
   CAN liberare.             --> free         (+ release)
   CAN mangiare.             --> eat
+  CAN modalità_breve.       --> brief
+  CAN modalità_lunga.       --> verbose
   CAN mostrare.             --> 'show'       (+ reveal)
   CAN nuotare.              --> swim
   CAN nuotare_in.           --> swim_in
@@ -956,7 +958,6 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN attack.      -- (+ beat, fight, hit, punch)
   CAN attack_with.
   CAN bite.        -- (+ chew)
-  CAN 'brief'.
   CAN catch.
   CAN climb.
   CAN climb_on.
@@ -1060,7 +1061,6 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN unlock_with.
   CAN 'use'.
   CAN use_with.
-  CAN 'verbose'.
   CAN what_am_i.
   CAN what_is.
   CAN where_am_i.
@@ -1105,6 +1105,8 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game leggere.              --> read
   MAKE my_game liberare.             --> free         (+ release)
   MAKE my_game mangiare.             --> eat
+  MAKE my_game modalità_breve.       --> brief
+  MAKE my_game modalità_lunga.       --> verbose
   MAKE my_game mostrare.             --> 'show'       (+ reveal)
   MAKE my_game nuotare.              --> swim
   MAKE my_game nuotare_in.           --> swim_in
@@ -1144,7 +1146,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game attack.          -- (+ beat, fight, hit, punch)
   MAKE my_game attack_with.
   MAKE my_game bite.            -- (+ chew)
-  MAKE my_game 'brief'.
   MAKE my_game bruciare.        --> burn
   MAKE my_game bruciare_con.    --> burn_with
   MAKE my_game catch.
@@ -1250,7 +1251,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game unlock_with.
   MAKE my_game 'use'.
   MAKE my_game use_with.
-  MAKE my_game 'verbose'.
   MAKE my_game what_am_i.
   MAKE my_game what_is.
   MAKE my_game where_am_i.
@@ -1307,6 +1307,8 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT leggere.              --> read
   MAKE my_game NOT liberare.             --> free         (+ release)
   MAKE my_game NOT mangiare.             --> eat
+  MAKE my_game     modalità_breve.       --> brief
+  MAKE my_game     modalità_lunga.       --> verbose
   MAKE my_game NOT mostrare.             --> 'show'       (+ reveal)
   MAKE my_game NOT nuotare.              --> swim
   MAKE my_game NOT nuotare_in.           --> swim_in
@@ -1347,7 +1349,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT attack.      -- (+ beat, fight, hit, punch)
   MAKE my_game NOT attack_with.
   MAKE my_game NOT bite.        -- (+ chew)
-  MAKE my_game 'brief'.
   MAKE my_game NOT bruciare.     --> burn
   MAKE my_game NOT bruciare_con. --> burn_with
   MAKE my_game NOT catch.
@@ -1454,7 +1455,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT unlock_with.
   MAKE my_game NOT 'use'.
   MAKE my_game NOT use_with.
-  MAKE my_game 'verbose'.
   MAKE my_game what_am_i.
   MAKE my_game what_is.
   MAKE my_game where_am_i.
@@ -1495,6 +1495,8 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT leggere.              --> read
   MAKE my_game NOT liberare.             --> free         (+ release)
   MAKE my_game NOT mangiare.             --> eat
+  MAKE my_game     modalità_breve.       --> brief
+  MAKE my_game     modalità_lunga.       --> verbose
   MAKE my_game NOT mostrare.             --> 'show'       (+ reveal)
   MAKE my_game NOT nuotare.              --> swim
   MAKE my_game NOT nuotare_in.           --> swim_in
@@ -1535,7 +1537,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT attack.      -- (+ beat, fight, hit, punch)
   MAKE my_game NOT attack_with.
   MAKE my_game NOT bite.        -- (+ chew)
-  MAKE my_game 'brief'.
   MAKE my_game NOT bruciare.     --> burn
   MAKE my_game NOT bruciare_con. --> burn_with
   MAKE my_game NOT catch.
@@ -1642,7 +1643,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT unlock_with.
   MAKE my_game NOT 'use'.
   MAKE my_game NOT use_with.
-  MAKE my_game 'verbose'.
   MAKE my_game NOT what_am_i.
   MAKE my_game NOT what_is.
   MAKE my_game NOT where_am_i.
@@ -1681,6 +1681,8 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT leggere.              --> read
   MAKE my_game NOT liberare.             --> free         (+ release)
   MAKE my_game NOT mangiare.             --> eat
+  MAKE my_game NOT modalità_breve.       --> brief
+  MAKE my_game NOT modalità_lunga.       --> verbose
   MAKE my_game NOT mostrare.             --> 'show'       (+ reveal)
   MAKE my_game NOT nuotare.              --> swim
   MAKE my_game NOT nuotare_in.           --> swim_in
@@ -1721,7 +1723,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT attack.      -- (+ beat, fight, hit, punch)
   MAKE my_game NOT attack_with.
   MAKE my_game NOT bite.        -- (+ chew)
-  MAKE my_game NOT 'brief'.
   MAKE my_game NOT bruciare.     --> burn
   MAKE my_game NOT bruciare_con. --> burn_with
   MAKE my_game NOT catch.
@@ -1828,7 +1829,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT unlock_with.
   MAKE my_game NOT 'use'.
   MAKE my_game NOT use_with.
-  MAKE my_game NOT 'verbose'.
   MAKE my_game NOT what_am_i.
   MAKE my_game NOT what_is.
   MAKE my_game NOT where_am_i.
