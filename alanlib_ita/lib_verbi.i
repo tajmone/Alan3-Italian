@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.8 (2018/06/29)
+-- "lib_verbi.i" v0.2.9 (2018/07/02)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -14,6 +14,8 @@
 --|--------------------|----------------------------------------|---------------------------------|--------|-----|
 --| abbandona_partita  | quit, q                                | abbandona [partita]             |   0    |     |
 --| aspetta            | attendi, z                             | aspetta                         |   0    |     |
+--| brucia             |                                        | brucia (ogg)                    |   1    |  x  |
+--| brucia_con         |                                        | brucia (ogg) con (instr)        |   2    |  x  |
 --| carica_partita     | restore                                | carica [partita]                |   0    |     |
 --| dai_a              | porgi, offri                           | dai (ogg) a (recipient)         |   2    |  x  |
 --| inventario         | inv                                    | inventario                      |   0    |     |
@@ -50,8 +52,8 @@
 ----> break       (+ destroy)                              break (obj)                         1       x
 ----> break_with                                           break (obj) with (instr)            2       x
 ----- brief                                                brief                               0
------ burn                                                 burn (obj)                          1       x
------ burn_with                                            burn (obj) with (instr)             2       x
+----> burn                                                 burn (obj)                          1       x
+----> burn_with                                            burn (obj) with (instr)             2       x
 ----- buy         (+ purchase)                             buy (item)                          1
 ----- catch                                                catch (obj)                         1       x
 ----- clean       (+ polish, wipe)                         clean (obj)                         1       x
@@ -869,24 +871,28 @@ END VERB.
 
 -- =================================================================
 
+----- @RBRUCIA --> @BURN (VERB + SYNTAX)
 
 ----- BURN
 
 
 -- =================================================================
+-- @NOTA: In i6 "incendia" è sinonimo di "brucia" e "brucia con".
+--        Inoltre, "col" è sinonimo di "con".
 
-
-SYNTAX burn = burn (obj)
+SYNTAX brucia = brucia (obj)
   WHERE obj ISA OBJECT
     ELSE
       IF obj IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
+        THEN SAY parametro_illegale_sg OF my_game. "bruciare."
+        ELSE SAY parametro_illegale_pl OF my_game. "bruciare."
+     -- THEN SAY illegal_parameter_sg OF my_game.
+     -- ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
 
 
 ADD TO EVERY OBJECT
-  VERB burn
+  VERB brucia
     CHECK my_game CAN bruciare
       ELSE SAY restricted_response OF my_game.
     AND obj IS examinable
@@ -899,7 +905,8 @@ ADD TO EVERY OBJECT
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
     DOES
-      "You must state what you want to burn" SAY THE obj. "with."
+      SAY specificare_CON_cosa OF my_game. "bruciare" SAY THE obj. "."
+   -- "You must state what you want to burn" SAY THE obj. "with."
   END VERB.
 END ADD TO.
 
@@ -907,6 +914,7 @@ END ADD TO.
 
 -- =================================================================
 
+----- @RBRUCIA_CON --> @BURN_WITH (VERB + SYNTAX)
 
 ----- BURN WITH
 
@@ -914,23 +922,27 @@ END ADD TO.
 -- =================================================================
 
 
-SYNTAX burn_with = burn (obj) 'with' (instr)
+SYNTAX brucia_con = brucia (obj) 'con' (instr)
   WHERE obj ISA OBJECT
     ELSE
       IF obj IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
+        THEN SAY parametro_illegale_sg OF my_game. "bruciare."
+        ELSE SAY parametro_illegale_pl OF my_game. "bruciare."
+     -- THEN SAY illegal_parameter_sg OF my_game.
+     -- ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
   AND instr ISA OBJECT
     ELSE
       IF obj IS NOT plurale
-        THEN SAY illegal_parameter2_with_sg OF my_game.
-        ELSE SAY illegal_parameter2_with_pl OF my_game.
+        THEN SAY parametro2_illegale_CON_sg OF my_game. "bruciare."
+        ELSE SAY parametro2_illegale_CON_pl OF my_game. "bruciare."
+     -- THEN SAY illegal_parameter2_with_sg OF my_game.
+     -- ELSE SAY illegal_parameter2_with_pl OF my_game.
       END IF.
 
 
 ADD TO EVERY OBJECT
-  VERB burn_with
+  VERB brucia_con
     WHEN obj
       CHECK my_game CAN bruciare_con
         ELSE SAY restricted_response OF my_game.
@@ -970,7 +982,8 @@ ADD TO EVERY OBJECT
           END IF.
 
       DOES
-        "You can't burn" SAY THE obj. "with" SAY THE instr. "."
+        "Non puoi bruciare" SAY THE obj. "con" SAY THE instr. "."
+     -- "You can't burn" SAY THE obj. "with" SAY THE instr. "."
   END VERB.
 END ADD TO.
 

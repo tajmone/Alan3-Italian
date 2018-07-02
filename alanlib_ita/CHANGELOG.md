@@ -11,6 +11,11 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/02](#20180702)
+    - [Verb: `burn`/`burn_with`](#verb-burnburn_with)
+    - [`my_game` Verb Messages](#my_game-verb-messages)
+        - [Translated Messages](#translated-messages)
+        - [New Messages for Missing Parameters](#new-messages-for-missing-parameters)
 - [2018/06/29](#20180629)
 - [2018/06/24 \(3\)](#20180624-3)
 - [2018/06/24 \(2\)](#20180624-2)
@@ -62,6 +67,75 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/07/02
+
+- [`lib_verbi.i`][lib_verbi] (v0.2.9)
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.9)
+
+
+## Verb: `burn`/`burn_with`
+
+Translated verbs `brucia` e `brucia_con` (_burn_/_burn with_):
+
+    brucia (obj)
+    brucia (obj) con (instr)
+
+with no synonyms.
+
+## `my_game` Verb Messages
+
+This commit also separates the translate messages from the originals in English in the source code, making it easy to work on the Italian messages.
+
+### Translated Messages
+
+A few messages have been translated into Italian (both attribute name and string):
+
+|           English            |           Italian            |
+|------------------------------|------------------------------|
+| `illegal_parameter_sg`       | `parametro_illegale_sg`      |
+| `illegal_parameter_pl`       | `parametro_illegale_pl`      |
+| `illegal_parameter2_with_sg` | `parametro2_illegale_CON_sg` |
+| `illegal_parameter2_with_pl` | `parametro2_illegale_CON_pl` |
+
+
+### New Messages for Missing Parameters
+
+Since many verbs which require additional parameters are also defined in their parameterless version (eg, `burn` and `burn_with`) to allow catching it's use and inform the player about the need to specify another parameter, I've added a new section in `lib_definizioni.i` for holding the common shared strings of these messages.
+
+Currently, the `specificare_CON_cosa` attribute of `my_game` was added to handle messages where the verb requires an object to carry out the action _with_ (Italian: "con"). 
+
+```alan
+  -- messaggi per verbi che richiedono ulteriori parametri:
+  ---------------------------------------------------------
+
+  HAS specificare_CON_cosa "Devi specificare con cosa vorresti".
+```
+
+... the string meaning is "_You must specify with what you'd like to_", which will be followed by the verb and the target object (eg "_burn the XXX with_"). Here is how it's being implemented for the `burn` verb:
+
+```alan
+ADD TO EVERY OBJECT
+  VERB brucia
+    CHECK my_game CAN bruciare
+      ELSE SAY restricted_response OF my_game.
+    AND obj IS examinable
+      ELSE
+        IF obj IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "bruciare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "bruciare."
+        END IF.
+    AND CURRENT LOCATION IS lit
+      ELSE SAY check_current_loc_lit OF my_game.
+    DOES
+      SAY specificare_CON_cosa OF my_game. "bruciare" SAY THE obj. "."
+   -- "You must state what you want to burn" SAY THE obj. "with."
+  END VERB.
+END ADD TO.
+```
+
+... since, unlike `burn_with`, the verb `burn` will never accomplish anything besides informing of the need of a "with object" parameter.
 
 # 2018/06/29
 

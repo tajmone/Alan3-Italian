@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.8 (2018/06/29)
+-- "lib_definizioni.i" v0.2.9 (2018/07/02)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -433,6 +433,88 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   HAS light_goes_off "It is now pitch black.".
     -- This message is shown when a light goes off and the location becomes dark.
 
+  -- ============================================================================
+  
+  -- MESSAGGI DEI VERBI (IN ITALIANO)
+  
+  -- ============================================================================
+  -- @NOTA: Alcune stringhe di messaggi sono identiche (anche nell'originale)
+  --        tranne per il nome dell'attributo. Questo perché l'autore originale
+  --        ha voluto preservare la coerenza nei nomi degli attributi rispetto
+  --        alla funzione che svolgono. Quando tutti i messaggi saranno tradotti
+  --        in italiano varebbe la pena valutare se eliminare i messaggi duplicati,
+  --        a costo di rivedere la metodologia dei nomi di attributi.
+  ------------------------------------------------------------------------------
+
+  -- =============================
+  -- PARAMETRI ILLEGALI (SEMPLICI)
+  -- ============================= 
+  -- Messaggi per quando uno dei parametri è invalido (illegale); di solito li
+  -- si trova nei blocchi condizionali ELSE della definizione SYNTAX del verbo.
+  
+  HAS parametro_illegale_sg "$+1 non è qualcosa che puoi".        --> (verbi vari)
+  HAS parametro_illegale_pl "$+1 non sono qualcosa che puoi".
+
+  -- =====================================
+  -- PARAMETRI ILLEGALI (CON PREPOSIZIONI)
+  -- =====================================
+  -- Varianti dei messaggi precedenti, quando si tratta di parametri che richiedono
+  -- preposizioni.
+  
+  -- ------------------
+  -- PREPOSIZIONE "CON"
+  -- ------------------
+  HAS parametro2_illegale_CON_sg "$+2 non è qualcosa con cui poter".        --> brucia_con
+  HAS parametro2_illegale_CON_pl "$+2 non sono qualcosa con cui poter".
+
+  -- ==================
+  -- PARAMETRI MANCANTI
+  -- ==================
+  -- messaggi per verbi che richiedono ulteriori parametri. Di solito li si
+  -- trova nella variante base dei verbi che richiedono un ulteriore parametro
+  -- per portare a termine l'azione, dove la variante base del verbo serve solo
+  -- a intercettare il comando incompleto per informare il giocatore sulla
+  -- sintassi corretta del verbo.
+
+  HAS specificare_CON_cosa "Devi specificare con cosa vorresti".
+  
+
+
+  -- =========================
+  -- MESSAGGI DI CHECK VERBALI
+  -- =========================
+  -- Messaggi per quando un comando del giocatore non passa i CHECK del verbo.
+  
+  -- a) Check degli Attributi
+  --    ---------------------
+  --    Messaggi per i check generici che controllano se un'istanza è idonea ad
+  --    essere utilizzato con il verbo:
+  --------------------------------------------------------------------------------
+  --# siccome in italiano serve l'infinito qui, questo messaggio è troncato e
+  --  spetterà al codice che si occupa dei controlli sul verbo di farlo seguire
+  --  dall'infinito del verbo in questione.
+  HAS check_obj_idoneo_sg "$+1 non è qualcosa che puoi".        --> (verbi vari)
+  HAS check_obj_idoneo_pl "$+1 non sono qualcosa che puoi".
+
+  --@NOTA: | S3RioUs JokER consiglia di semplificare con la frase:
+  --       |    "Non è qualcosa che si possa <verbo inf>."
+  --       | ...sia per il singolare che per il plurale, omettendo di menzionare
+  --       | l'oggetto.  Tuttavia, menzionare l'oggetto può essere al  giocatore
+  --       | ai fini della disambugazione nel caso di verbi che consentono l'uso
+  --       | di oggetti multipli o "TUTTO".
+
+
+
+  -- ============================================================================
+  
+  -- MESSAGGI DEI VERBI (ORIGINALI INGLESE)
+  
+  -- ============================================================================
+  -- @NOTA: Quando tutti i messaggi saranno stati tradotti/implmentati in italiano
+  --        gli originali inglesi qui di seguito verranno cancellati. Fino ad
+  --        allora bisogna tenerli poiché sono richiesti dai verbi non ancora
+  --        tradotti.
+  ------------------------------------------------------------------------------
 
   -- response for restricted actions:
   -- ================================
@@ -445,9 +527,6 @@ EVERY DEFINITION_BLOCK ISA LOCATION
     -- by the "CAN NOT [verb]" attributes further down this file.
 
   HAS restricted_level 0.   -- 0 = no verbs are restricted
-
-
-
 
 
   -- all illegal parameter messages, typically found in the ELSE parts of SYNTAX structures and
@@ -487,6 +566,7 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   HAS illegal_parameter_to_pl "Those are not something you can $v to.".
   HAS illegal_parameter2_to_sg "That's not something you can $v things to.".    -- give, show, tell, tie_to, throw_to
   HAS illegal_parameter2_to_pl "Those are not something you can $v things to.".
+  
   HAS illegal_parameter_with_sg "That's not something you can $v with.".    -- kill_with, shoot_with, play_with
   HAS illegal_parameter_with_pl "Those are not something you can $v with.".
   HAS illegal_parameter2_with_sg "That's not something you can $v things with.".  -- attack_with, break_with, burn_with, close_with,
@@ -554,15 +634,7 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   HAS check_obj_suitable_sg "That's not something you can $v.".       -- (numerous)
   HAS check_obj_suitable_pl "Those are not something you can $v.".
 
-  --@NOTA: | S3RioUs JokER consiglia di semplificare con la frase:
-  --       |    "Non è qualcosa che si possa <verbo inf>."
-  --       | ...sia per il singolare che per il plurale, omettendo di menzionare
-  --       | l'oggetto.  Tuttavia, menzionare l'oggetto può essere al  giocatore
-  --       | ai fini della disambugazione nel caso di verbi che consentono l'uso
-  --       | di oggetti multipli o "TUTTO".
-
-  HAS check_obj_idoneo_sg "$+1 non è qualcosa che puoi".        --> (verbi vari)
-  HAS check_obj_idoneo_pl "$+1 non sono qualcosa che puoi".
+  
 
 
   -- variations of the above message, needed for example when a preposition is required after the verb:
