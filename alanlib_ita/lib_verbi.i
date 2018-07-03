@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.9 (2018/07/02)
+-- "lib_verbi.i" v0.2.10 (2018/07/03)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -7,16 +7,20 @@
 -- "Verbs" (original file name: 'lib_verbs.i')
 --------------------------------------------------------------------------------
 
----- Verbi tradotti, in ordine alfabetico:
-
+---- Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima)
+---- e comandi di gioco (dopo il divisorio orizzontale di tabella):
+ 
 --+--------------------+----------------------------------------+---------------------------------+--------+-----+
 --| VERBO              | SINONIMI                               | SINTASSI                        | ARIETÀ | OGG |
 --|--------------------|----------------------------------------|---------------------------------|--------|-----|
 --| abbandona_partita  | quit, q                                | abbandona [partita]             |   0    |     |
+--| carica_partita     | restore                                | carica [partita]                |   0    |     |
+--| ricomincia_partita | restore                                | ricomincia [partita]            |   0    |     |
+--| salva_partita      | save                                   | salva [partita]                 |   0    |     |
+--+--------------------+----------------------------------------+---------------------------------+--------+-----+
 --| aspetta            | attendi, z                             | aspetta                         |   0    |     |
 --| brucia             |                                        | brucia (ogg)                    |   1    |  x  |
 --| brucia_con         |                                        | brucia (ogg) con (instr)        |   2    |  x  |
---| carica_partita     | restore                                | carica [partita]                |   0    |     |
 --| dai_a              | porgi, offri                           | dai (ogg) a (recipient)         |   2    |  x  |
 --| inventario         | inv                                    | inventario                      |   0    |     |
 --| prega              |                                        | prega                           |   0    |     |
@@ -25,13 +29,19 @@
 --| rifai              | ancora, g                              | rifai                           |   0    |     |
 --| rompi              | distruggi, spacca, sfonda              | rompi (ogg)                     |   1    |  x  |
 --| rompi_con          | distruggi, spacca, sfonda              | rompi (ogg) con (instr)         |   2    |  x  |
---| ricomincia_partita | restore                                | ricomincia [partita]            |   0    |     |
---| salva_partita      | save                                   | salva [partita]                 |   0    |     |
 --| spogliati          | svestiti                               | spogliati                       |   0    |     |
 --+--------------------+----------------------------------------+---------------------------------+--------+-----+
 
 --|                    |                                        |                                 |   0    |  x  |
 
+-- L'ordine di apparizione dei verbi nella tabella rispecchia l'ordine in cui
+-- appaiono nel codice sorgente qui di seguito.
+
+-- Le direzioni (nord, sud, su, giù, ecc.) sono definite in "lib_luoghi.i".
+
+--------------------------------------------------------------------------------
+----- Tabella dei Verbi Originali Inglesi
+--------------------------------------------------------------------------------
 ----- This library file defines common verbs needed in gameplay. The verbs
 ----- are listed alphabetically. This file also includes common commands which are not
 ----- actually verbs, such as "inventory", "verbose" and "again".
@@ -218,8 +228,944 @@
 ----- Directions (north, south, up, etc.) are declared in the file 'locations.i'.
 
 
+-- *****************************************************************************
+-- *                                                                           *
+-- *                         META COMANDI DI PARTITA                           *
+-- *                                                                           *
+-- *****************************************************************************
+-- Comandi che riguardano aspetti della partita (salvare, uscire, ecc.) e non il
+-- mondo dell'avventura. Perlopiù META VERBS, il cui uso non fa scorrere il
+-- conteggio del tempo nell'avventura (turni).
+
+-- ==============================================================
 
 
+----- @ABBANDONA_PARTITA -> @QUIT (VERB + SYNTAX)
+
+
+-- ==============================================================
+--#NOTA: A questo verbo diamo l'ID "abbandona_partita" per lasciare
+--       libero l'ID "abbandona" nel caso l'utente volesse creare un
+--       verbo "abbandona" nel gioco.
+-- MESSAGGI DI SISTEMA CORRELATI (alcuni visibili solo in ARun):
+--    QUIT_ACTION      -- "Do you want to RESTART, RESTORE, QUIT or UNDO? ".
+
+
+SYNTAX
+  abbandona_partita = abbandona.
+  abbandona_partita = abbandona partita.
+  abbandona_partita = 'quit'. --> Bisogna conservare anche l'inglese!
+
+SYNONYMS q = 'quit'.
+
+VERB abbandona_partita
+  CHECK my_game CAN abbandonare_partita
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    QUIT.
+END VERB.
+
+
+-- ==============================================================
+
+
+----- @CARICA_PARTITA -> @RESTORE (VERB + SYNTAX)
+
+
+-- ==============================================================
+--#NOTA: A questo verbo diamo l'ID "carica_partita" per lasciare
+--       libero l'ID "carica" nel caso l'utente volesse creare un
+--       verbo "carica_partita" nel gioco.
+-- MESSAGGI DI SISTEMA CORRELATI (alcuni visibili solo in ARun):
+--    NOT_A_SAVEFILE  -- Il file non è una partiata salvata.
+--    RESTORE_FROM    -- Chiede il nome del file da caricare.
+--    SAVE_MISSING    -- Non riesce a trovare/aprire il file.
+--    SAVE_NAME       -- Il file non è di una partita di questa avventura.
+--    SAVE_VERSION    -- File creato con altra versione di Alan.
+
+
+SYNTAX carica_partita = carica.
+       carica_partita = carica partita.
+       carica_partita = 'restore'. --> Bisogna conservare anche l'inglese!
+
+VERB carica_partita
+  CHECK my_game CAN caricare_partita
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    RESTORE.
+END VERB.
+
+
+-- ==============================================================
+
+
+----- @RICOMINCIA_PARTITA -> @RESTART (VERB + SYNTAX)
+
+
+-- ==============================================================
+--#NOTA: A questo verbo diamo l'ID "ricomincia_partita" per lasciare
+--       libero l'ID "ricomincia" nel caso l'utente volesse creare un
+--       verbo "ricomincia" nel gioco.
+-- MESSAGGI DI SISTEMA CORRELATI (alcuni visibili solo in ARun):
+--    REALLY         -- Richiesta di conferma.
+
+SYNTAX ricomincia_partita = ricomincia.
+SYNTAX ricomincia_partita = ricomincia partita.
+       ricomincia_partita = 'restart'. --> Bisogna conservare anche l'inglese!
+
+VERB ricomincia_partita
+  CHECK my_game CAN ricominciare_partita
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    RESTART.
+END VERB.
+
+
+-- ==============================================================
+
+
+----- @SALVA_PARTITA -> @SAVE (VERB + SYNTAX)
+
+
+-- ==============================================================
+--#NOTA: A questo verbo diamo l'ID "salva_partita" per lasciare
+--       libero l'ID "salva" nel caso l'utente volesse creare un
+--       verbo "salva" nel gioco.
+-- MESSAGGI DI SISTEMA CORRELATI (alcuni visibili solo in ARun):
+--    SAVE_FAILED    -- Se il salvataggio fallisce.
+--    SAVE_OVERWRITE -- Conferma sovrascrittura file.
+--    SAVE_WHERE     -- Nome del file di salvataggio
+SYNTAX salva_partita = salva.
+       salva_partita = salva partita.
+       salva_partita = 'save'. --> Meglio conservare anche l'inglese, dato che
+                               --  dobbiamo conservare RESTART, RESTORE e QUIT!
+
+
+VERB salva_partita
+  CHECK my_game CAN salvare_partita
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    SAVE.
+END VERB.
+
+
+
+-- *****************************************************************************
+-- *                                                                           *
+-- *                             COMANDI DI GIOCO                              *
+-- *                                                                           *
+-- *****************************************************************************
+-- Comandi diretti al personaggio protagonista per interagire con l'avventura.
+
+-- ==============================================================
+
+
+----- @ASPETTA --> WAIT (= z)
+
+
+-- ==============================================================
+
+
+SYNTAX aspetta = aspetta.
+
+SYNONYMS
+  z, attendi = aspetta.
+
+VERB aspetta
+  CHECK my_game CAN aspettare
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    "Il tempo passa."
+END VERB.
+
+-- =================================================================
+
+----- @RBRUCIA --> @BURN (VERB + SYNTAX)
+
+----- BURN
+
+
+-- =================================================================
+-- @NOTA: In i6 "incendia" è sinonimo di "brucia" e "brucia con".
+--        Inoltre, "col" è sinonimo di "con".
+
+SYNTAX brucia = brucia (obj)
+  WHERE obj ISA OBJECT
+    ELSE
+      IF obj IS NOT plurale
+        THEN SAY parametro_illegale_sg OF my_game. "bruciare."
+        ELSE SAY parametro_illegale_pl OF my_game. "bruciare."
+     -- THEN SAY illegal_parameter_sg OF my_game.
+     -- ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+
+
+ADD TO EVERY OBJECT
+  VERB brucia
+    CHECK my_game CAN bruciare
+      ELSE SAY restricted_response OF my_game.
+    AND obj IS examinable
+      ELSE
+        IF obj IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "bruciare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "bruciare."
+        END IF.
+    AND CURRENT LOCATION IS lit
+      ELSE SAY check_current_loc_lit OF my_game.
+    DOES
+      SAY specificare_CON_cosa OF my_game. "bruciare" SAY THE obj. "."
+   -- "You must state what you want to burn" SAY THE obj. "with."
+  END VERB.
+END ADD TO.
+
+
+
+-- =================================================================
+
+----- @RBRUCIA_CON --> @BURN_WITH (VERB + SYNTAX)
+
+----- BURN WITH
+
+
+-- =================================================================
+
+
+SYNTAX brucia_con = brucia (obj) 'con' (instr)
+  WHERE obj ISA OBJECT
+    ELSE
+      IF obj IS NOT plurale
+        THEN SAY parametro_illegale_sg OF my_game. "bruciare."
+        ELSE SAY parametro_illegale_pl OF my_game. "bruciare."
+     -- THEN SAY illegal_parameter_sg OF my_game.
+     -- ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+  AND instr ISA OBJECT
+    ELSE
+      IF obj IS NOT plurale
+        THEN SAY parametro2_illegale_CON_sg OF my_game. "bruciare."
+        ELSE SAY parametro2_illegale_CON_pl OF my_game. "bruciare."
+     -- THEN SAY illegal_parameter2_with_sg OF my_game.
+     -- ELSE SAY illegal_parameter2_with_pl OF my_game.
+      END IF.
+
+
+ADD TO EVERY OBJECT
+  VERB brucia_con
+    WHEN obj
+      CHECK my_game CAN bruciare_con
+        ELSE SAY restricted_response OF my_game.
+      AND obj IS examinable
+        ELSE
+          IF obj IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY check_obj_idoneo_sg OF my_game. "bruciare."
+            ELSE SAY check_obj_idoneo_pl OF my_game. "bruciare."
+          END IF.
+      AND instr IS examinable
+        ELSE
+          IF obj IS NOT plurale
+            THEN SAY check_obj2_suitable_with_sg OF my_game.
+            ELSE SAY check_obj2_suitable_with_pl OF my_game.
+          END IF.
+      AND obj <> instr
+        ELSE SAY check_obj_not_obj2_with OF my_game.
+      AND instr IN hero
+        ELSE SAY check_obj2_in_hero OF my_game.
+      AND CURRENT LOCATION IS lit
+        ELSE SAY check_current_loc_lit OF my_game.
+      AND obj IS reachable AND obj IS NOT distant
+        ELSE
+          IF obj IS NOT reachable
+            THEN
+              IF obj IS NOT plurale
+                THEN SAY check_obj_reachable_sg OF my_game.
+                ELSE SAY check_obj_reachable_pl OF my_game.
+              END IF.
+          ELSIF obj IS distant
+            THEN
+              IF obj IS NOT plurale
+                THEN SAY check_obj_not_distant_sg OF my_game.
+                ELSE SAY check_obj_not_distant_pl OF my_game.
+              END IF.
+          END IF.
+
+      DOES
+        "Non puoi bruciare" SAY THE obj. "con" SAY THE instr. "."
+     -- "You can't burn" SAY THE obj. "with" SAY THE instr. "."
+  END VERB.
+END ADD TO.
+
+
+
+-- ==============================================================
+
+-- @DAI_A -> @GIVE (SYNTAX HEADER)
+
+----- GIVE (+ hand, offer)
+
+
+-- ==============================================================
+-- #NOTA: Aggiungere anche "'dai' 'a' (recipient) (obj)"?
+
+-- SYNTAX dai_a = 'give' (obj) 'to' (recipient)
+SYNTAX dai_a = 'dai' (obj) 'a' (recipient)
+      WHERE obj ISA OBJECT
+        ELSE SAY illegal_parameter_obj OF my_game.
+      AND recipient ISA ACTOR
+        ELSE
+      IF obj IS NOT plurale
+        THEN SAY illegal_parameter2_to_sg OF my_game.
+        ELSE SAY illegal_parameter2_to_pl OF my_game.
+      END IF.
+
+
+
+ADD TO EVERY OBJECT
+  VERB dai_a
+        WHEN obj
+      CHECK my_game CAN dare -- (was CAN give)
+        ELSE SAY restricted_response OF my_game.
+      AND obj IS takeable
+        ELSE SAY check_obj_takeable OF my_game.
+      AND obj <> recipient
+        ELSE SAY check_obj_not_obj2_to OF my_game.
+      AND recipient <> hero
+        ELSE SAY check_obj2_not_hero3 OF my_game.
+      AND CURRENT LOCATION IS lit
+        ELSE SAY check_current_loc_lit OF my_game.
+      AND obj NOT IN recipient
+        ELSE
+          IF recipient IS NOT plurale
+            THEN SAY check_obj_not_in_act_sg OF my_game.
+            ELSE SAY check_obj_not_in_act_pl OF my_game.
+          END IF.
+      AND obj IS reachable AND obj IS NOT distant
+        ELSE
+          IF obj IS NOT reachable
+            THEN
+              IF obj IS NOT plurale
+                THEN SAY check_obj_reachable_sg OF my_game.
+                ELSE SAY check_obj_reachable_pl OF my_game.
+              END IF.
+          ELSIF obj IS distant
+            THEN
+              IF obj IS NOT plurale
+                THEN SAY check_obj_not_distant_sg OF my_game.
+                ELSE SAY check_obj_not_distant_pl OF my_game.
+              END IF.
+          END IF.
+      AND recipient IS reachable AND recipient IS NOT distant
+        ELSE
+          IF recipient IS NOT reachable
+            THEN
+              IF recipient IS NOT plurale
+                THEN SAY check_obj_reachable_sg OF my_game.
+                ELSE SAY check_obj_reachable_pl OF my_game.
+              END IF.
+          ELSIF recipient IS distant
+            THEN
+              IF recipient IS NOT plurale
+                THEN SAY check_obj_not_distant_sg OF my_game.
+                ELSE SAY check_obj_not_distant_pl OF my_game.
+              END IF.
+          END IF.
+          DOES
+        -- implicit taking:
+        IF obj NOT DIRECTLY IN hero
+          THEN SAY implicit_taking_message OF my_game.
+          LOCATE obj IN hero.
+        END IF.
+        -- end of implicit taking.
+
+        LOCATE obj IN recipient.
+        "You give" SAY THE obj. "to" SAY THE recipient. "."
+
+
+  END VERB.
+END ADD TO.
+
+
+SYNONYMS porgi, offri = dai.
+-- SYNONYMS hand, offer = give.
+
+
+
+
+-- ==============================================================
+
+-- @INVENTARIO - > @INVENTORY (SYNTAX HEADER)
+----- INVENTORY (+ i, inv)
+
+
+-- ==============================================================
+
+--# NOTE: The original verb/syntax was "i", with "inv" and "inventory" as synonyms;
+--        But his in Italian will conflict with 'i' being implemented as a
+--        NOISE WORD synonym (ie: all articles in player input being ignored).
+--        So, we'll define the verb as "inventario" with shorthand "inv".
+--        For the CAN attribute, we'll use "inventariare" instead of "CAN i".
+
+SYNTAX inventario = inventario.
+
+
+VERB inventario
+  CHECK my_game CAN inventariare
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    LIST hero.
+
+    IF COUNT DIRECTLY IN worn > 0   -- See the file 'classes.i', subclass 'clothing'.
+      THEN LIST worn.     -- This code will list what the hero is wearing.
+    END IF.
+
+END VERB.
+
+
+SYNONYMS inv = inventario.
+
+
+
+
+-- ==============================================================
+
+
+----- @PREGA --> @PRAY (VERB + SYNTAX)
+
+
+-- ==============================================================
+
+
+SYNTAX prega = prega.
+
+
+VERB prega
+  CHECK my_game CAN pregare
+    ELSE SAY restricted_response OF my_game.
+  DOES "Sembra che le tue preghiere non siano state esaudite." --> da i6
+  -- DOES "Your prayers don't seem to help right now."
+END VERB.
+
+
+-- ==============================================================
+
+
+-- @PRENDI -> @TAKE (SYNTAX HEADER)
+----- TAKE  (+ carry, get, grab, hold, obtain, pick up)
+
+----- PRENDI  (+ afferra, raccogli, trasporta)
+
+
+-- ==============================================================
+
+-- @PRENDI -> @TAKE (SYNTAX)         => take (obj)
+SYNTAX prendi = prendi (obj)
+      WHERE obj ISA THING
+        ELSE
+      IF obj IS NOT plurale
+        THEN SAY illegal_parameter_sg OF my_game.
+        ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+
+-- @TODO: Cleanup, these might not need an alternative syntax but just synonym!
+
+    prendi = afferra (obj).
+    prendi = raccogli (obj).
+    prendi = trasporta (obj).
+
+--| ORIGINAL EN:
+--| ============
+--| SYNTAXES:
+--|   take = take    (obj)
+--|   take = get     (obj)
+--|   take = pick up (obj)
+--|   take = pick    (obj) up
+--| SYNONYMS:
+--|   carry, grab, hold, obtain = take
+
+ADD TO EVERY THING
+-- @PRENDI -> @TAKE (VERB) => ADD TO EVERY THING
+  VERB prendi
+    CHECK my_game CAN prendere --> CAN take
+      ELSE SAY restricted_response OF my_game. --#-> "Non puoi farlo."
+    AND obj IS examinable
+      ELSE
+        IF obj IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "prendere."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "prendere."
+        END IF.
+    AND obj <> hero
+      ELSE SAY check_obj_not_hero1 OF my_game.
+    AND CURRENT LOCATION IS lit
+      ELSE SAY check_current_loc_lit OF my_game.
+    AND obj IS NOT scenery
+      ELSE
+        IF THIS IS NOT plurale
+          THEN SAY check_obj_not_scenery_sg OF my_game. --#-> "$+1 is not important."
+          ELSE SAY check_obj_not_scenery_pl OF my_game. --#-> "$+1 are not important."
+        END IF.
+    AND obj IS movable
+   -- ELSE SAY check_obj_movable OF my_game. --#-> "It's not possible to $v $+1."
+      ELSE
+      --#i6/7: "È/Sono fissat* al proprio posto"
+        IF obj IS NOT femminile
+          THEN
+            IF obj IS NOT plurale
+              THEN SAY "È fissato al suo posto.".
+              ELSE SAY "Sono fissati al loro posto.".
+            END IF.
+          ELSE
+            IF obj IS NOT plurale
+              THEN SAY "È fissata al suo posto.".
+              ELSE SAY "Sono fissate al loro posto.".
+            END IF.
+        END IF.
+        AND obj IS takeable
+          ELSE
+        IF obj IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "prendere."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "prendere."
+        END IF.
+    AND obj NOT DIRECTLY IN hero
+      -- i.e. the object to be taken is not carried by the hero already
+      ELSE SAY check_obj_not_in_hero2 OF my_game.
+        AND obj IS reachable AND obj IS NOT distant
+      ELSE
+        IF obj IS NOT reachable
+          THEN
+            IF obj IS NOT plurale
+              THEN SAY check_obj_reachable_sg OF my_game.
+              ELSE SAY check_obj_reachable_pl OF my_game.
+            END IF.
+        ELSIF obj IS distant
+          THEN
+            IF obj IS NOT plurale
+              THEN SAY check_obj_not_distant_sg OF my_game.
+              ELSE SAY check_obj_not_distant_pl OF my_game.
+            END IF.
+        END IF.
+        AND weight Of obj < 50
+          ELSE
+        IF obj IS NOT plurale
+          THEN SAY check_obj_weight_sg OF my_game.
+          ELSE SAY check_obj_weight_pl OF my_game.
+        END IF.
+        DOES
+      IF obj ISA ACTOR
+        THEN SAY THE obj. "would probably object to that."
+      -- actors are not prohibited from being taken in the checks; this is to
+      -- allow for example a dog to be picked up, or a bird to be taken out of
+      -- a cage, etc.
+
+
+      ELSIF obj ISA OBJECT
+        THEN IF obj DIRECTLY IN worn
+            THEN LOCATE obj IN hero.
+              "You take off" SAY THE obj. "and carry it in your hands."
+              IF obj ISA CLOTHING
+                THEN EXCLUDE obj FROM wearing OF hero.
+              END IF.
+            ELSE LOCATE obj IN hero.
+              --@ "Taken." => "Pres[o|a|i|e]."
+              "Pres$$"
+              IF obj IS NOT femminile
+                THEN
+                  IF obj IS NOT plurale
+                    THEN SAY "o.". -- GNA = msi
+                    ELSE SAY "i.". -- GNA = mpi
+                  END IF.
+                ELSE
+                  IF obj IS NOT plurale
+                    THEN SAY "a.". -- GNA = fsi
+                    ELSE SAY "e.". -- GNA = fpi
+                  END IF.
+              END IF.
+          END IF.
+      END IF.
+
+        -- Objects held by NPCs cannot be taken by the hero by default.
+        -- The hero must *ask for* the object to obtain it.
+
+  END VERB.
+END ADD TO.
+
+
+-- @PRENDI -> @TAKE (SYNONYMS)
+SYNONYMS
+  carry, grab, hold, obtain = prendi. --@TODO: Translate IT synonims
+
+
+
+-- ==============================================================
+
+-- @PRENDI_DA -> @TAKE_FROM (SYNTAX HEADER)
+
+-----  TAKE FROM
+
+
+-- ==============================================================
+
+-- @PRENDI_DA -> @TAKE_FROM (SYNTAX)
+
+--------------------------------------------------------------------------------
+-- NOTE: Alternative 'dai' prepositions must be implement separately because
+--       these can't be covered by synonyms due to conflicts with verb "dai"!!!
+--------------------------------------------------------------------------------
+
+SYNTAX prendi_da = 'prendi' (obj) 'da' (holder)
+      WHERE obj ISA THING
+        ELSE
+      IF obj IS NOT plurale
+        THEN SAY illegal_parameter_sg OF my_game.
+        ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+      AND holder ISA THING
+        ELSE
+      IF holder IS NOT plurale
+        THEN SAY illegal_parameter2_from_sg OF my_game. --> "That's not something you can take things from."
+        ELSE SAY illegal_parameter2_from_pl OF my_game. --> "Those are not something you can take things from."
+      END IF.
+      AND holder ISA CONTAINER
+        ELSE
+      IF holder IS NOT plurale
+        THEN SAY illegal_parameter2_from_sg OF my_game.
+        ELSE SAY illegal_parameter2_from_pl OF my_game.
+      END IF.
+
+  prendi_da = prendi  (obj)  'dai' (holder).
+  prendi_da = rimuovi (obj)* 'da'  (holder).
+  prendi_da = rimuovi (obj)* 'dai' (holder).
+  prendi_da = togli   (obj)  'da'  (holder).
+  prendi_da = togli   (obj)  'dai' (holder).
+
+--| ORIGINAL EN:
+--| ============
+--| SYNTAXES:
+--|   take_from = 'take' (obj)  'from' (holder)
+--|   take_from = remove (obj)* 'from' (holder)
+--|   take_from = get    (obj)  'from' (holder)
+
+
+ADD TO EVERY THING
+    VERB prendi_da
+        WHEN obj
+      CHECK my_game CAN prendere_da --> CAN take_from
+        ELSE SAY restricted_response OF my_game.
+      AND obj <> hero
+        ELSE SAY check_obj_not_hero1 OF my_game.
+      AND holder <> hero
+        ELSE SAY check_obj2_not_hero1 OF my_game.
+          AND obj NOT DIRECTLY IN hero
+          ELSE  SAY check_obj_not_in_hero2 OF my_game. --#-> "You already have $+1."
+      AND obj <> holder
+        ELSE SAY check_obj_not_obj2_from OF my_game.  --#-> "It doesn't make sense to $v something from itself."
+      AND CURRENT LOCATION IS lit
+        ELSE SAY check_current_loc_lit OF my_game.
+      AND obj IS NOT scenery
+        ELSE
+          IF obj IS NOT plurale
+            THEN SAY check_obj_not_scenery_sg OF my_game.
+            ELSE SAY check_obj_not_scenery_pl OF my_game.
+          END IF.
+      AND holder IS NOT scenery
+        ELSE
+          IF obj IS NOT plurale
+            THEN SAY check_obj2_not_scenery_sg OF my_game.
+            ELSE SAY check_obj2_not_scenery_pl OF my_game.
+          END IF.
+      AND obj IS movable
+        ELSE SAY check_obj_movable OF my_game.
+      AND obj IS takeable
+            ELSE
+          IF obj IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY check_obj_idoneo_sg OF my_game. "prendere."
+            ELSE SAY check_obj_idoneo_pl OF my_game. "prendere."
+          END IF.
+      AND holder IS reachable AND holder IS NOT distant
+        ELSE
+          IF holder IS NOT reachable
+            THEN
+              IF holder IS NOT plurale
+                THEN SAY check_obj2_reachable_sg OF my_game.
+                ELSE SAY check_obj2_reachable_pl OF my_game.
+              END IF.
+          ELSIF holder IS distant
+            THEN
+              IF holder IS NOT plurale
+                THEN SAY check_obj2_not_distant_sg OF my_game.
+                ELSE SAY check_obj2_not_distant_pl OF my_game.
+              END IF.
+          END IF.
+      AND weight Of obj < 50
+            ELSE
+          IF obj IS NOT plurale
+            THEN SAY check_obj_weight_sg OF my_game.
+            ELSE SAY check_obj_weight_pl OF my_game.
+          END IF.
+          AND obj IN holder
+        ELSE
+          IF holder IS inanimate
+            THEN
+              IF holder ISA SUPPORTER
+                THEN
+                  IF obj IS NOT plurale
+                    THEN SAY check_obj_on_surface_sg OF my_game.
+                    ELSE SAY check_obj_on_surface_pl OF my_game.
+                  END IF.
+                ELSE
+                  IF obj IS NOT plurale
+                    THEN SAY check_obj_in_cont_sg OF my_game.
+                    ELSE SAY check_obj_in_cont_pl OF my_game.
+                  END IF.
+              END IF.
+            ELSE
+              IF holder IS NOT plurale
+                THEN SAY check_obj_in_act_sg OF my_game.
+                ELSE SAY check_obj_in_act_pl OF my_game.
+              END IF.
+          END IF.
+      DOES
+        IF obj ISA ACTOR
+          THEN SAY THE obj. "would probably object to that."
+            -- actors are not prohibited from being taken in the checks; this is to
+            -- allow for example a dog to be picked up, or a bird to be taken out of
+            -- a cage, etc.
+        ELSIF obj ISA OBJECT
+          THEN
+            IF holder ISA LISTED_CONTAINER AND holder IS NOT open
+              THEN "You can't;" SAY THE holder.
+                  IF holder IS NOT plurale
+                    THEN "is"
+                    ELSE "are"
+                  END IF.
+                "closed."
+              ELSE
+                LOCATE obj IN hero.
+                    "You take" SAY THE obj. "from" SAY THE holder. "."
+            END IF.
+        END IF.
+
+          -- Objects held by NPCs cannot be taken by the hero by default.
+          -- The hero must *ask for* the object to obtain it.
+
+
+    END VERB.
+END ADD TO.
+
+
+
+-- =============================================================
+
+
+----- @RIFAI --> @AGAIN (VERB + SYNTAX)
+
+----- AGAIN (= g)
+
+
+-- =============================================================
+-- #NOTA: Aggiungere anche "ripeti"?
+
+SYNTAX
+  rifai = rifai.
+  rifai = ancora.
+
+
+VERB rifai
+  CHECK my_game CAN rifare
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    "[Il comando ANCORA non è supportato in questo gioco. In alternativa, prova
+    ad usare i tasti 'su' e 'giù' per navigare tra i comandi precedenti.]"
+    -- "[The AGAIN command is not supported in this game. As a workaround, try using
+    --  the 'up' and 'down' arrow keys to scroll through your previous commands.]"
+END VERB.
+
+
+SYNONYMS g = rifai.
+
+
+
+
+-- ===============================================================
+
+
+----- @ROMPI --> @BREAK (VERB + SYNTAX)
+
+
+-- ===============================================================
+
+
+SYNTAX rompi = rompi (obj)
+    WHERE obj ISA OBJECT
+      ELSE
+        IF obj IS NOT plurale
+          THEN SAY illegal_parameter_sg OF my_game.
+          ELSE SAY illegal_parameter_pl OF my_game.
+        END IF.
+
+
+ADD TO EVERY OBJECT
+  VERB rompi
+    CHECK my_game CAN rompere
+      ELSE SAY restricted_response OF my_game.
+    AND obj IS examinable
+      ELSE
+        IF obj IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "rompere."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "rompere."
+        END IF.
+    AND CURRENT LOCATION IS lit
+      ELSE SAY check_current_loc_lit OF my_game.
+    AND obj IS reachable AND obj IS NOT distant
+      ELSE
+        IF obj IS NOT reachable
+          THEN
+            IF obj IS NOT plurale
+              THEN SAY check_obj_reachable_sg OF my_game.
+              ELSE SAY check_obj_reachable_pl OF my_game.
+            END IF.
+        ELSIF obj IS distant
+          THEN
+            IF obj IS NOT plurale
+              THEN SAY check_obj_not_distant_sg OF my_game.
+              ELSE SAY check_obj_not_distant_pl OF my_game.
+            END IF.
+        END IF.
+    DOES
+    --@TODO: Rivedi frase (magari "forza bruta")
+      "La violenza non è la giusta risposta a questo." -- presa da i6!
+      -- "Resorting to brute force is not the solution here."
+  END VERB.
+END ADD TO.
+
+
+SYNONYMS distruggi, spacca, sfonda = rompi.
+
+
+
+-- ===============================================================
+
+
+----- @ROMPI_CON --> @BREAK WITH (VERB + SYNTAX)
+
+
+-- ===============================================================
+
+
+-- SYNTAX break_with = break (obj) 'with' (instr)
+SYNTAX rompi_con = rompi (obj) 'con' (instr)
+  WHERE obj ISA OBJECT
+    ELSE
+      IF obj IS NOT plurale
+        THEN SAY illegal_parameter_sg OF my_game.
+        ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+  AND instr ISA OBJECT
+    ELSE
+      IF instr IS NOT plurale
+        THEN SAY illegal_parameter2_with_sg OF my_game.
+        ELSE SAY illegal_parameter2_with_pl OF my_game.
+      END IF.
+
+
+ADD TO EVERY OBJECT
+  VERB rompi_con
+    WHEN obj
+      CHECK my_game CAN rompere_con
+        ELSE SAY restricted_response OF my_game.
+      AND obj IS examinable
+        ELSE
+          IF obj IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "rompere."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "rompere."
+          END IF.
+      AND instr IS examinable
+        ELSE
+          IF obj IS NOT plurale
+            THEN SAY check_obj2_suitable_with_sg OF my_game.
+            ELSE SAY check_obj2_suitable_with_pl OF my_game.
+          END IF.
+      AND obj <> instr
+        ELSE SAY check_obj_not_obj2_with OF my_game.
+      AND CURRENT LOCATION IS lit
+        ELSE SAY check_current_loc_lit OF my_game.
+      AND instr IN hero
+        ELSE SAY check_obj2_in_hero OF my_game.
+      AND obj IS reachable AND obj IS NOT distant
+        ELSE
+          IF obj IS NOT reachable
+            THEN
+              IF obj IS NOT plurale
+                THEN SAY check_obj_reachable_sg OF my_game.
+                ELSE SAY check_obj_reachable_pl OF my_game.
+              END IF.
+          ELSIF obj IS distant
+            THEN
+              IF obj IS NOT plurale
+                THEN SAY check_obj_not_distant_sg OF my_game.
+                ELSE SAY check_obj_not_distant_pl OF my_game.
+              END IF.
+          END IF.
+      DOES
+        "Tentare di rompere" SAY THE obj. "con" SAY THE instr.
+        "non risolverebbe nulla."
+      -- "Trying to break" SAY THE obj. "with" SAY THE instr.
+      -- "wouldn't accomplish anything."
+  END VERB.
+END ADD TO.
+
+
+
+
+-- ==============================================================
+
+
+----- @SPOGLIATI -> @UNDRESS (SYNTAX + VERB)
+
+
+-- ==============================================================
+
+
+SYNTAX spogliati = spogliati.
+
+SYNONYMS svestiti = spogliati.
+
+VERB spogliati
+  CHECK my_game CAN spogliarsi
+    ELSE SAY restricted_response OF my_game.   --# "Non puoi farlo."
+  AND CURRENT LOCATION IS lit
+    ELSE SAY check_current_loc_lit OF my_game. --# "È troppo buio."
+  --@TODO: modifica frase (non mi piace):
+  DOES "Ripensandoci, spogliarsi qui e ora non è una buona idea."
+--DOES "You don't feel like undressing is a good idea right now."
+
+ -- To make it work, use the following lines instead:
+--@TODO: sintassi 'desempio commentata (da verificare e testare)!
+--| Per implementare l'azione di spogliarsi, usa:
+--|--------------------------------------------------------
+--| IF COUNT DIRECTLY IN worn, ISA CLOTHING > 0
+--|   THEN EMPTY worn IN hero.
+--|     "Fatto. Ora non indossi più nulla."
+--|     -- "You remove all the items you were wearing."
+--|   ELSE "Non indossi nulla di cui potresti spogliarti."
+--|   -- ELSE "You're not wearing anything you can remove."
+--| END IF.
+--|--------------------------------------------------------
+END VERB.
+
+
+
+
+-- *****************************************************************************
+-- *                                                                           *
+-- *                            UNTRANSLATED VERBS                             *
+-- *                                                                           *
+-- *****************************************************************************
 
 
 
@@ -257,38 +1203,6 @@ END VERB.
 
 
 SYNONYMS help, info = 'about'.
-
-
-
--- =============================================================
-
-
------ @RIFAI --> @AGAIN (VERB + SYNTAX)
-
------ AGAIN (= g)
-
-
--- =============================================================
--- #NOTA: Aggiungere anche "ripeti"?
-
-SYNTAX
-  rifai = rifai.
-  rifai = ancora.
-
-
-VERB rifai
-  CHECK my_game CAN rifare
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    "[Il comando ANCORA non è supportato in questo gioco. In alternativa, prova
-    ad usare i tasti 'su' e 'giù' per navigare tra i comandi precedenti.]"
-    -- "[The AGAIN command is not supported in this game. As a workaround, try using
-    --  the 'up' and 'down' arrow keys to scroll through your previous commands.]"
-END VERB.
-
-
-SYNONYMS g = rifai.
-
 
 
 -- =============================================================
@@ -706,138 +1620,6 @@ SYNONYMS chew = bite.
 
 
 
--- ===============================================================
-
-
------ @ROMPI --> @BREAK (VERB + SYNTAX)
-
-
--- ===============================================================
-
-
-SYNTAX rompi = rompi (obj)
-    WHERE obj ISA OBJECT
-      ELSE
-        IF obj IS NOT plurale
-          THEN SAY illegal_parameter_sg OF my_game.
-          ELSE SAY illegal_parameter_pl OF my_game.
-        END IF.
-
-
-ADD TO EVERY OBJECT
-  VERB rompi
-    CHECK my_game CAN rompere
-      ELSE SAY restricted_response OF my_game.
-    AND obj IS examinable
-      ELSE
-        IF obj IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY check_obj_idoneo_sg OF my_game. "rompere."
-          ELSE SAY check_obj_idoneo_pl OF my_game. "rompere."
-        END IF.
-    AND CURRENT LOCATION IS lit
-      ELSE SAY check_current_loc_lit OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
-      ELSE
-        IF obj IS NOT reachable
-          THEN
-            IF obj IS NOT plurale
-              THEN SAY check_obj_reachable_sg OF my_game.
-              ELSE SAY check_obj_reachable_pl OF my_game.
-            END IF.
-        ELSIF obj IS distant
-          THEN
-            IF obj IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF my_game.
-              ELSE SAY check_obj_not_distant_pl OF my_game.
-            END IF.
-        END IF.
-    DOES
-    --@TODO: Rivedi frase (magari "forza bruta")
-      "La violenza non è la giusta risposta a questo." -- presa da i6!
-      -- "Resorting to brute force is not the solution here."
-  END VERB.
-END ADD TO.
-
-
-SYNONYMS distruggi, spacca, sfonda = rompi.
-
-
-
--- ===============================================================
-
-
------ @ROMPI_CON --> @BREAK WITH (VERB + SYNTAX)
-
-
--- ===============================================================
-
-
--- SYNTAX break_with = break (obj) 'with' (instr)
-SYNTAX rompi_con = rompi (obj) 'con' (instr)
-  WHERE obj ISA OBJECT
-    ELSE
-      IF obj IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
-  AND instr ISA OBJECT
-    ELSE
-      IF instr IS NOT plurale
-        THEN SAY illegal_parameter2_with_sg OF my_game.
-        ELSE SAY illegal_parameter2_with_pl OF my_game.
-      END IF.
-
-
-ADD TO EVERY OBJECT
-  VERB rompi_con
-    WHEN obj
-      CHECK my_game CAN rompere_con
-        ELSE SAY restricted_response OF my_game.
-      AND obj IS examinable
-        ELSE
-          IF obj IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY check_obj_idoneo_sg OF my_game. "rompere."
-          ELSE SAY check_obj_idoneo_pl OF my_game. "rompere."
-          END IF.
-      AND instr IS examinable
-        ELSE
-          IF obj IS NOT plurale
-            THEN SAY check_obj2_suitable_with_sg OF my_game.
-            ELSE SAY check_obj2_suitable_with_pl OF my_game.
-          END IF.
-      AND obj <> instr
-        ELSE SAY check_obj_not_obj2_with OF my_game.
-      AND CURRENT LOCATION IS lit
-        ELSE SAY check_current_loc_lit OF my_game.
-      AND instr IN hero
-        ELSE SAY check_obj2_in_hero OF my_game.
-      AND obj IS reachable AND obj IS NOT distant
-        ELSE
-          IF obj IS NOT reachable
-            THEN
-              IF obj IS NOT plurale
-                THEN SAY check_obj_reachable_sg OF my_game.
-                ELSE SAY check_obj_reachable_pl OF my_game.
-              END IF.
-          ELSIF obj IS distant
-            THEN
-              IF obj IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF my_game.
-                ELSE SAY check_obj_not_distant_pl OF my_game.
-              END IF.
-          END IF.
-      DOES
-        "Tentare di rompere" SAY THE obj. "con" SAY THE instr.
-        "non risolverebbe nulla."
-      -- "Trying to break" SAY THE obj. "with" SAY THE instr.
-      -- "wouldn't accomplish anything."
-  END VERB.
-END ADD TO.
-
-
-
 -- ================================================================
 
 
@@ -867,125 +1649,6 @@ VERB brief
     descrizioni dei luoghi già visitati non saranno più mostrate."
 END VERB.
 
-
-
--- =================================================================
-
------ @RBRUCIA --> @BURN (VERB + SYNTAX)
-
------ BURN
-
-
--- =================================================================
--- @NOTA: In i6 "incendia" è sinonimo di "brucia" e "brucia con".
---        Inoltre, "col" è sinonimo di "con".
-
-SYNTAX brucia = brucia (obj)
-  WHERE obj ISA OBJECT
-    ELSE
-      IF obj IS NOT plurale
-        THEN SAY parametro_illegale_sg OF my_game. "bruciare."
-        ELSE SAY parametro_illegale_pl OF my_game. "bruciare."
-     -- THEN SAY illegal_parameter_sg OF my_game.
-     -- ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
-
-
-ADD TO EVERY OBJECT
-  VERB brucia
-    CHECK my_game CAN bruciare
-      ELSE SAY restricted_response OF my_game.
-    AND obj IS examinable
-      ELSE
-        IF obj IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY check_obj_idoneo_sg OF my_game. "bruciare."
-          ELSE SAY check_obj_idoneo_pl OF my_game. "bruciare."
-        END IF.
-    AND CURRENT LOCATION IS lit
-      ELSE SAY check_current_loc_lit OF my_game.
-    DOES
-      SAY specificare_CON_cosa OF my_game. "bruciare" SAY THE obj. "."
-   -- "You must state what you want to burn" SAY THE obj. "with."
-  END VERB.
-END ADD TO.
-
-
-
--- =================================================================
-
------ @RBRUCIA_CON --> @BURN_WITH (VERB + SYNTAX)
-
------ BURN WITH
-
-
--- =================================================================
-
-
-SYNTAX brucia_con = brucia (obj) 'con' (instr)
-  WHERE obj ISA OBJECT
-    ELSE
-      IF obj IS NOT plurale
-        THEN SAY parametro_illegale_sg OF my_game. "bruciare."
-        ELSE SAY parametro_illegale_pl OF my_game. "bruciare."
-     -- THEN SAY illegal_parameter_sg OF my_game.
-     -- ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
-  AND instr ISA OBJECT
-    ELSE
-      IF obj IS NOT plurale
-        THEN SAY parametro2_illegale_CON_sg OF my_game. "bruciare."
-        ELSE SAY parametro2_illegale_CON_pl OF my_game. "bruciare."
-     -- THEN SAY illegal_parameter2_with_sg OF my_game.
-     -- ELSE SAY illegal_parameter2_with_pl OF my_game.
-      END IF.
-
-
-ADD TO EVERY OBJECT
-  VERB brucia_con
-    WHEN obj
-      CHECK my_game CAN bruciare_con
-        ELSE SAY restricted_response OF my_game.
-      AND obj IS examinable
-        ELSE
-          IF obj IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY check_obj_idoneo_sg OF my_game. "bruciare."
-            ELSE SAY check_obj_idoneo_pl OF my_game. "bruciare."
-          END IF.
-      AND instr IS examinable
-        ELSE
-          IF obj IS NOT plurale
-            THEN SAY check_obj2_suitable_with_sg OF my_game.
-            ELSE SAY check_obj2_suitable_with_pl OF my_game.
-          END IF.
-      AND obj <> instr
-        ELSE SAY check_obj_not_obj2_with OF my_game.
-      AND instr IN hero
-        ELSE SAY check_obj2_in_hero OF my_game.
-      AND CURRENT LOCATION IS lit
-        ELSE SAY check_current_loc_lit OF my_game.
-      AND obj IS reachable AND obj IS NOT distant
-        ELSE
-          IF obj IS NOT reachable
-            THEN
-              IF obj IS NOT plurale
-                THEN SAY check_obj_reachable_sg OF my_game.
-                ELSE SAY check_obj_reachable_pl OF my_game.
-              END IF.
-          ELSIF obj IS distant
-            THEN
-              IF obj IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF my_game.
-                ELSE SAY check_obj_not_distant_pl OF my_game.
-              END IF.
-          END IF.
-
-      DOES
-        "Non puoi bruciare" SAY THE obj. "con" SAY THE instr. "."
-     -- "You can't burn" SAY THE obj. "with" SAY THE instr. "."
-  END VERB.
-END ADD TO.
 
 
 
@@ -3226,98 +3889,6 @@ END VERB.
 
 
 
--- ==============================================================
-
--- @DAI_A -> @GIVE (SYNTAX HEADER)
-
------ GIVE (+ hand, offer)
-
-
--- ==============================================================
--- #NOTA: Aggiungere anche "'dai' 'a' (recipient) (obj)"?
-
--- SYNTAX dai_a = 'give' (obj) 'to' (recipient)
-SYNTAX dai_a = 'dai' (obj) 'a' (recipient)
-      WHERE obj ISA OBJECT
-        ELSE SAY illegal_parameter_obj OF my_game.
-      AND recipient ISA ACTOR
-        ELSE
-      IF obj IS NOT plurale
-        THEN SAY illegal_parameter2_to_sg OF my_game.
-        ELSE SAY illegal_parameter2_to_pl OF my_game.
-      END IF.
-
-
-
-ADD TO EVERY OBJECT
-  VERB dai_a
-        WHEN obj
-      CHECK my_game CAN dare -- (was CAN give)
-        ELSE SAY restricted_response OF my_game.
-      AND obj IS takeable
-        ELSE SAY check_obj_takeable OF my_game.
-      AND obj <> recipient
-        ELSE SAY check_obj_not_obj2_to OF my_game.
-      AND recipient <> hero
-        ELSE SAY check_obj2_not_hero3 OF my_game.
-      AND CURRENT LOCATION IS lit
-        ELSE SAY check_current_loc_lit OF my_game.
-      AND obj NOT IN recipient
-        ELSE
-          IF recipient IS NOT plurale
-            THEN SAY check_obj_not_in_act_sg OF my_game.
-            ELSE SAY check_obj_not_in_act_pl OF my_game.
-          END IF.
-      AND obj IS reachable AND obj IS NOT distant
-        ELSE
-          IF obj IS NOT reachable
-            THEN
-              IF obj IS NOT plurale
-                THEN SAY check_obj_reachable_sg OF my_game.
-                ELSE SAY check_obj_reachable_pl OF my_game.
-              END IF.
-          ELSIF obj IS distant
-            THEN
-              IF obj IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF my_game.
-                ELSE SAY check_obj_not_distant_pl OF my_game.
-              END IF.
-          END IF.
-      AND recipient IS reachable AND recipient IS NOT distant
-        ELSE
-          IF recipient IS NOT reachable
-            THEN
-              IF recipient IS NOT plurale
-                THEN SAY check_obj_reachable_sg OF my_game.
-                ELSE SAY check_obj_reachable_pl OF my_game.
-              END IF.
-          ELSIF recipient IS distant
-            THEN
-              IF recipient IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF my_game.
-                ELSE SAY check_obj_not_distant_pl OF my_game.
-              END IF.
-          END IF.
-          DOES
-        -- implicit taking:
-        IF obj NOT DIRECTLY IN hero
-          THEN SAY implicit_taking_message OF my_game.
-          LOCATE obj IN hero.
-        END IF.
-        -- end of implicit taking.
-
-        LOCATE obj IN recipient.
-        "You give" SAY THE obj. "to" SAY THE recipient. "."
-
-
-  END VERB.
-END ADD TO.
-
-
-SYNONYMS porgi, offri = dai.
--- SYNONYMS hand, offer = give.
-
-
 
 -- ==============================================================
 
@@ -3417,41 +3988,6 @@ END VERB.
 
 SYNONYMS
   hints = hint.
-
-
-
--- ==============================================================
-
--- @INVENTARIO - > @INVENTORY (SYNTAX HEADER)
------ INVENTORY (+ i, inv)
-
-
--- ==============================================================
-
---# NOTE: The original verb/syntax was "i", with "inv" and "inventory" as synonyms;
---        But his in Italian will conflict with 'i' being implemented as a
---        NOISE WORD synonym (ie: all articles in player input being ignored).
---        So, we'll define the verb as "inventario" with shorthand "inv".
---        For the CAN attribute, we'll use "inventariare" instead of "CAN i".
-
-SYNTAX inventario = inventario.
-
-
-VERB inventario
-  CHECK my_game CAN inventariare
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    LIST hero.
-
-    IF COUNT DIRECTLY IN worn > 0   -- See the file 'classes.i', subclass 'clothing'.
-      THEN LIST worn.     -- This code will list what the hero is wearing.
-    END IF.
-
-END VERB.
-
-
-SYNONYMS inv = inventario.
-
 
 
 -- ==============================================================
@@ -5031,27 +5567,6 @@ END ADD TO.
 -- ==============================================================
 
 
------ @PREGA --> @PRAY (VERB + SYNTAX)
-
-
--- ==============================================================
-
-
-SYNTAX prega = prega.
-
-
-VERB prega
-  CHECK my_game CAN pregare
-    ELSE SAY restricted_response OF my_game.
-  DOES "Sembra che le tue preghiere non siano state esaudite." --> da i6
-  -- DOES "Your prayers don't seem to help right now."
-END VERB.
-
-
-
--- ==============================================================
-
-
 ----- PRY
 
 
@@ -5676,34 +6191,6 @@ END ADD TO.
 
 
 
--- ==============================================================
-
-
------ @ABBANDONA_PARTITA -> @QUIT (VERB + SYNTAX)
-
-
--- ==============================================================
---#NOTA: A questo verbo diamo l'ID "abbandona_partita" per lasciare
---       libero l'ID "abbandona" nel caso l'utente volesse creare un
---       verbo "abbandona" nel gioco.
--- MESSAGGI DI SISTEMA CORRELATI (alcuni visibili solo in ARun):
---    QUIT_ACTION      -- "Do you want to RESTART, RESTORE, QUIT or UNDO? ".
-
-
-SYNTAX
-  abbandona_partita = abbandona.
-  abbandona_partita = abbandona partita.
-  abbandona_partita = 'quit'. --> Bisogna conservare anche l'inglese!
-
-SYNONYMS q = 'quit'.
-
-VERB abbandona_partita
-  CHECK my_game CAN abbandonare_partita
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    QUIT.
-END VERB.
-
 
 
 -- ==============================================================
@@ -5816,61 +6303,6 @@ END ADD TO.
 
 
 
--- ==============================================================
-
-
------ @RICOMINCIA_PARTITA -> @RESTART (VERB + SYNTAX)
-
-
--- ==============================================================
---#NOTA: A questo verbo diamo l'ID "ricomincia_partita" per lasciare
---       libero l'ID "ricomincia" nel caso l'utente volesse creare un
---       verbo "ricomincia" nel gioco.
--- MESSAGGI DI SISTEMA CORRELATI (alcuni visibili solo in ARun):
---    REALLY         -- Richiesta di conferma.
-
-SYNTAX ricomincia_partita = ricomincia.
-SYNTAX ricomincia_partita = ricomincia partita.
-       ricomincia_partita = 'restart'. --> Bisogna conservare anche l'inglese!
-
-VERB ricomincia_partita
-  CHECK my_game CAN ricominciare_partita
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    RESTART.
-END VERB.
-
-
-
--- ==============================================================
-
-
------ @CARICA_PARTITA -> @RESTORE (VERB + SYNTAX)
-
-
--- ==============================================================
---#NOTA: A questo verbo diamo l'ID "carica_partita" per lasciare
---       libero l'ID "carica" nel caso l'utente volesse creare un
---       verbo "carica_partita" nel gioco.
--- MESSAGGI DI SISTEMA CORRELATI (alcuni visibili solo in ARun):
---    NOT_A_SAVEFILE  -- Il file non è una partiata salvata.
---    RESTORE_FROM    -- Chiede il nome del file da caricare.
---    SAVE_MISSING    -- Non riesce a trovare/aprire il file.
---    SAVE_NAME       -- Il file non è di una partita di questa avventura.
---    SAVE_VERSION    -- File creato con altra versione di Alan.
-
-
-SYNTAX carica_partita = carica.
-       carica_partita = carica partita.
-       carica_partita = 'restore'. --> Bisogna conservare anche l'inglese!
-
-VERB carica_partita
-  CHECK my_game CAN caricare_partita
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    RESTORE.
-END VERB.
-
 
 
 -- ==============================================================
@@ -5933,33 +6365,6 @@ END ADD TO.
 SYNONYMS massage = rub.
 
 
-
--- ==============================================================
-
-
------ @SALVA_PARTITA -> @SAVE (VERB + SYNTAX)
-
-
--- ==============================================================
---#NOTA: A questo verbo diamo l'ID "salva_partita" per lasciare
---       libero l'ID "salva" nel caso l'utente volesse creare un
---       verbo "salva" nel gioco.
--- MESSAGGI DI SISTEMA CORRELATI (alcuni visibili solo in ARun):
---    SAVE_FAILED    -- Se il salvataggio fallisce.
---    SAVE_OVERWRITE -- Conferma sovrascrittura file.
---    SAVE_WHERE     -- Nome del file di salvataggio
-SYNTAX salva_partita = salva.
-       salva_partita = salva partita.
-       salva_partita = 'save'. --> Meglio conservare anche l'inglese, dato che
-                               --  dobbiamo conservare RESTART, RESTORE e QUIT!
-
-
-VERB salva_partita
-  CHECK my_game CAN salvare_partita
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    SAVE.
-END VERB.
 
 
 
@@ -7104,315 +7509,6 @@ END ADD TO.
 
 -- ==============================================================
 
--- @PRENDI -> @TAKE (SYNTAX HEADER)
------ TAKE  (+ carry, get, grab, hold, obtain, pick up)
-
------ PRENDI  (+ afferra, raccogli, trasporta)
-
-
--- ==============================================================
-
--- @PRENDI -> @TAKE (SYNTAX)         => take (obj)
-SYNTAX prendi = prendi (obj)
-      WHERE obj ISA THING
-        ELSE
-      IF obj IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
-
--- @TODO: Cleanup, these might not need an alternative syntax but just synonym!
-
-    prendi = afferra (obj).
-    prendi = raccogli (obj).
-    prendi = trasporta (obj).
-
---| ORIGINAL EN:
---| ============
---| SYNTAXES:
---|   take = take    (obj)
---|   take = get     (obj)
---|   take = pick up (obj)
---|   take = pick    (obj) up
---| SYNONYMS:
---|   carry, grab, hold, obtain = take
-
-ADD TO EVERY THING
--- @PRENDI -> @TAKE (VERB) => ADD TO EVERY THING
-  VERB prendi
-    CHECK my_game CAN prendere --> CAN take
-      ELSE SAY restricted_response OF my_game. --#-> "Non puoi farlo."
-    AND obj IS examinable
-      ELSE
-        IF obj IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY check_obj_idoneo_sg OF my_game. "prendere."
-          ELSE SAY check_obj_idoneo_pl OF my_game. "prendere."
-        END IF.
-    AND obj <> hero
-      ELSE SAY check_obj_not_hero1 OF my_game.
-    AND CURRENT LOCATION IS lit
-      ELSE SAY check_current_loc_lit OF my_game.
-    AND obj IS NOT scenery
-      ELSE
-        IF THIS IS NOT plurale
-          THEN SAY check_obj_not_scenery_sg OF my_game. --#-> "$+1 is not important."
-          ELSE SAY check_obj_not_scenery_pl OF my_game. --#-> "$+1 are not important."
-        END IF.
-    AND obj IS movable
-   -- ELSE SAY check_obj_movable OF my_game. --#-> "It's not possible to $v $+1."
-      ELSE
-      --#i6/7: "È/Sono fissat* al proprio posto"
-        IF obj IS NOT femminile
-          THEN
-            IF obj IS NOT plurale
-              THEN SAY "È fissato al suo posto.".
-              ELSE SAY "Sono fissati al loro posto.".
-            END IF.
-          ELSE
-            IF obj IS NOT plurale
-              THEN SAY "È fissata al suo posto.".
-              ELSE SAY "Sono fissate al loro posto.".
-            END IF.
-        END IF.
-        AND obj IS takeable
-          ELSE
-        IF obj IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY check_obj_idoneo_sg OF my_game. "prendere."
-          ELSE SAY check_obj_idoneo_pl OF my_game. "prendere."
-        END IF.
-    AND obj NOT DIRECTLY IN hero
-      -- i.e. the object to be taken is not carried by the hero already
-      ELSE SAY check_obj_not_in_hero2 OF my_game.
-        AND obj IS reachable AND obj IS NOT distant
-      ELSE
-        IF obj IS NOT reachable
-          THEN
-            IF obj IS NOT plurale
-              THEN SAY check_obj_reachable_sg OF my_game.
-              ELSE SAY check_obj_reachable_pl OF my_game.
-            END IF.
-        ELSIF obj IS distant
-          THEN
-            IF obj IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF my_game.
-              ELSE SAY check_obj_not_distant_pl OF my_game.
-            END IF.
-        END IF.
-        AND weight Of obj < 50
-          ELSE
-        IF obj IS NOT plurale
-          THEN SAY check_obj_weight_sg OF my_game.
-          ELSE SAY check_obj_weight_pl OF my_game.
-        END IF.
-        DOES
-      IF obj ISA ACTOR
-        THEN SAY THE obj. "would probably object to that."
-      -- actors are not prohibited from being taken in the checks; this is to
-      -- allow for example a dog to be picked up, or a bird to be taken out of
-      -- a cage, etc.
-
-
-      ELSIF obj ISA OBJECT
-        THEN IF obj DIRECTLY IN worn
-            THEN LOCATE obj IN hero.
-              "You take off" SAY THE obj. "and carry it in your hands."
-              IF obj ISA CLOTHING
-                THEN EXCLUDE obj FROM wearing OF hero.
-              END IF.
-            ELSE LOCATE obj IN hero.
-              --@ "Taken." => "Pres[o|a|i|e]."
-              "Pres$$"
-              IF obj IS NOT femminile
-                THEN
-                  IF obj IS NOT plurale
-                    THEN SAY "o.". -- GNA = msi
-                    ELSE SAY "i.". -- GNA = mpi
-                  END IF.
-                ELSE
-                  IF obj IS NOT plurale
-                    THEN SAY "a.". -- GNA = fsi
-                    ELSE SAY "e.". -- GNA = fpi
-                  END IF.
-              END IF.
-          END IF.
-      END IF.
-
-        -- Objects held by NPCs cannot be taken by the hero by default.
-        -- The hero must *ask for* the object to obtain it.
-
-  END VERB.
-END ADD TO.
-
-
--- @PRENDI -> @TAKE (SYNONYMS)
-SYNONYMS
-  carry, grab, hold, obtain = prendi. --@TODO: Translate IT synonims
-
-
-
--- ==============================================================
-
--- @PRENDI_DA -> @TAKE_FROM (SYNTAX HEADER)
-
------  TAKE FROM
-
-
--- ==============================================================
-
--- @PRENDI_DA -> @TAKE_FROM (SYNTAX)
-
---------------------------------------------------------------------------------
--- NOTE: Alternative 'dai' prepositions must be implement separately because
---       these can't be covered by synonyms due to conflicts with verb "dai"!!!
---------------------------------------------------------------------------------
-
-SYNTAX prendi_da = 'prendi' (obj) 'da' (holder)
-      WHERE obj ISA THING
-        ELSE
-      IF obj IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
-      AND holder ISA THING
-        ELSE
-      IF holder IS NOT plurale
-        THEN SAY illegal_parameter2_from_sg OF my_game. --> "That's not something you can take things from."
-        ELSE SAY illegal_parameter2_from_pl OF my_game. --> "Those are not something you can take things from."
-      END IF.
-      AND holder ISA CONTAINER
-        ELSE
-      IF holder IS NOT plurale
-        THEN SAY illegal_parameter2_from_sg OF my_game.
-        ELSE SAY illegal_parameter2_from_pl OF my_game.
-      END IF.
-
-  prendi_da = prendi  (obj)  'dai' (holder).
-  prendi_da = rimuovi (obj)* 'da'  (holder).
-  prendi_da = rimuovi (obj)* 'dai' (holder).
-  prendi_da = togli   (obj)  'da'  (holder).
-  prendi_da = togli   (obj)  'dai' (holder).
-
---| ORIGINAL EN:
---| ============
---| SYNTAXES:
---|   take_from = 'take' (obj)  'from' (holder)
---|   take_from = remove (obj)* 'from' (holder)
---|   take_from = get    (obj)  'from' (holder)
-
-
-ADD TO EVERY THING
-    VERB prendi_da
-        WHEN obj
-      CHECK my_game CAN prendere_da --> CAN take_from
-        ELSE SAY restricted_response OF my_game.
-      AND obj <> hero
-        ELSE SAY check_obj_not_hero1 OF my_game.
-      AND holder <> hero
-        ELSE SAY check_obj2_not_hero1 OF my_game.
-          AND obj NOT DIRECTLY IN hero
-          ELSE  SAY check_obj_not_in_hero2 OF my_game. --#-> "You already have $+1."
-      AND obj <> holder
-        ELSE SAY check_obj_not_obj2_from OF my_game.  --#-> "It doesn't make sense to $v something from itself."
-      AND CURRENT LOCATION IS lit
-        ELSE SAY check_current_loc_lit OF my_game.
-      AND obj IS NOT scenery
-        ELSE
-          IF obj IS NOT plurale
-            THEN SAY check_obj_not_scenery_sg OF my_game.
-            ELSE SAY check_obj_not_scenery_pl OF my_game.
-          END IF.
-      AND holder IS NOT scenery
-        ELSE
-          IF obj IS NOT plurale
-            THEN SAY check_obj2_not_scenery_sg OF my_game.
-            ELSE SAY check_obj2_not_scenery_pl OF my_game.
-          END IF.
-      AND obj IS movable
-        ELSE SAY check_obj_movable OF my_game.
-      AND obj IS takeable
-            ELSE
-          IF obj IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY check_obj_idoneo_sg OF my_game. "prendere."
-            ELSE SAY check_obj_idoneo_pl OF my_game. "prendere."
-          END IF.
-      AND holder IS reachable AND holder IS NOT distant
-        ELSE
-          IF holder IS NOT reachable
-            THEN
-              IF holder IS NOT plurale
-                THEN SAY check_obj2_reachable_sg OF my_game.
-                ELSE SAY check_obj2_reachable_pl OF my_game.
-              END IF.
-          ELSIF holder IS distant
-            THEN
-              IF holder IS NOT plurale
-                THEN SAY check_obj2_not_distant_sg OF my_game.
-                ELSE SAY check_obj2_not_distant_pl OF my_game.
-              END IF.
-          END IF.
-      AND weight Of obj < 50
-            ELSE
-          IF obj IS NOT plurale
-            THEN SAY check_obj_weight_sg OF my_game.
-            ELSE SAY check_obj_weight_pl OF my_game.
-          END IF.
-          AND obj IN holder
-        ELSE
-          IF holder IS inanimate
-            THEN
-              IF holder ISA SUPPORTER
-                THEN
-                  IF obj IS NOT plurale
-                    THEN SAY check_obj_on_surface_sg OF my_game.
-                    ELSE SAY check_obj_on_surface_pl OF my_game.
-                  END IF.
-                ELSE
-                  IF obj IS NOT plurale
-                    THEN SAY check_obj_in_cont_sg OF my_game.
-                    ELSE SAY check_obj_in_cont_pl OF my_game.
-                  END IF.
-              END IF.
-            ELSE
-              IF holder IS NOT plurale
-                THEN SAY check_obj_in_act_sg OF my_game.
-                ELSE SAY check_obj_in_act_pl OF my_game.
-              END IF.
-          END IF.
-      DOES
-        IF obj ISA ACTOR
-          THEN SAY THE obj. "would probably object to that."
-            -- actors are not prohibited from being taken in the checks; this is to
-            -- allow for example a dog to be picked up, or a bird to be taken out of
-            -- a cage, etc.
-        ELSIF obj ISA OBJECT
-          THEN
-            IF holder ISA LISTED_CONTAINER AND holder IS NOT open
-              THEN "You can't;" SAY THE holder.
-                  IF holder IS NOT plurale
-                    THEN "is"
-                    ELSE "are"
-                  END IF.
-                "closed."
-              ELSE
-                LOCATE obj IN hero.
-                    "You take" SAY THE obj. "from" SAY THE holder. "."
-            END IF.
-        END IF.
-
-          -- Objects held by NPCs cannot be taken by the hero by default.
-          -- The hero must *ask for* the object to obtain it.
-
-
-    END VERB.
-END ADD TO.
-
-
-
--- ==============================================================
-
 
 ----- TALK
 
@@ -8499,45 +8595,6 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
-
--- ==============================================================
-
-
------ @SPOGLIATI -> @UNDRESS (SYNTAX + VERB)
-
-
--- ==============================================================
-
-
-SYNTAX spogliati = spogliati.
-
-SYNONYMS svestiti = spogliati.
-
-VERB spogliati
-  CHECK my_game CAN spogliarsi
-    ELSE SAY restricted_response OF my_game.   --# "Non puoi farlo."
-  AND CURRENT LOCATION IS lit
-    ELSE SAY check_current_loc_lit OF my_game. --# "È troppo buio."
-  --@TODO: modifica frase (non mi piace):
-  DOES "Ripensandoci, spogliarsi qui e ora non è una buona idea."
---DOES "You don't feel like undressing is a good idea right now."
-
- -- To make it work, use the following lines instead:
---@TODO: sintassi 'desempio commentata (da verificare e testare)!
---| Per implementare l'azione di spogliarsi, usa:
---|--------------------------------------------------------
---| IF COUNT DIRECTLY IN worn, ISA CLOTHING > 0
---|   THEN EMPTY worn IN hero.
---|     "Fatto. Ora non indossi più nulla."
---|     -- "You remove all the items you were wearing."
---|   ELSE "Non indossi nulla di cui potresti spogliarti."
---|   -- ELSE "You're not wearing anything you can remove."
---| END IF.
---|--------------------------------------------------------
-END VERB.
-
-
-
 -- ==============================================================
 
 
@@ -8762,28 +8819,6 @@ VERB verbose
     descrizioni dei luoghi saranno mostrate sempre (anche se già visitati)."
 END VERB.
 
-
-
--- ==============================================================
-
-
------ @ASPETTA --> WAIT (= z)
-
-
--- ==============================================================
-
-
-SYNTAX aspetta = aspetta.
-
-SYNONYMS
-  z, attendi = aspetta.
-
-VERB aspetta
-  CHECK my_game CAN aspettare
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    "Il tempo passa."
-END VERB.
 
 
 
