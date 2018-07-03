@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.10 (2018/07/03)
+-- "lib_verbi.i" v0.2.11 (2018/07/03)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -15,12 +15,13 @@
 --|--------------------|----------------------------------------|---------------------------------|--------|-----|
 --| abbandona_partita  | quit, q                                | abbandona [partita]             |   0    |     |
 --| carica_partita     | restore                                | carica [partita]                |   0    |     |
---| ricomincia_partita | restore                                | ricomincia [partita]            |   0    |     |
+--| ricomincia_partita | restart                                | ricomincia [partita]            |   0    |     |
 --| salva_partita      | save                                   | salva [partita]                 |   0    |     |
 --+--------------------+----------------------------------------+---------------------------------+--------+-----+
 --| aspetta            | attendi, z                             | aspetta                         |   0    |     |
 --| brucia             |                                        | brucia (ogg)                    |   1    |  x  |
 --| brucia_con         |                                        | brucia (ogg) con (instr)        |   2    |  x  |
+--| compra             | acquista                               | compra (item)                   |   1    |     |
 --| dai_a              | porgi, offri                           | dai (ogg) a (recipient)         |   2    |  x  |
 --| inventario         | inv                                    | inventario                      |   0    |     |
 --| prega              |                                        | prega                           |   0    |     |
@@ -64,7 +65,7 @@
 ----- brief                                                brief                               0
 ----> burn                                                 burn (obj)                          1       x
 ----> burn_with                                            burn (obj) with (instr)             2       x
------ buy         (+ purchase)                             buy (item)                          1
+----> buy         (+ purchase)                             buy (item)                          1
 ----- catch                                                catch (obj)                         1       x
 ----- clean       (+ polish, wipe)                         clean (obj)                         1       x
 ----- climb                                                climb (obj)                         1       x
@@ -493,6 +494,52 @@ ADD TO EVERY OBJECT
       DOES
         "Non puoi bruciare" SAY THE obj. "con" SAY THE instr. "."
      -- "You can't burn" SAY THE obj. "with" SAY THE instr. "."
+  END VERB.
+END ADD TO.
+
+
+-- ==================================================================
+
+
+----- @COMPRA --> @BUY (+ purchase)
+
+
+-- ==================================================================
+
+
+SYNTAX compra = compra (item)
+  WHERE item ISA OBJECT
+    ELSE
+      IF item IS NOT plurale
+        THEN SAY illegal_parameter_sg OF my_game.
+        ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+
+SYNONYMS acquista = compra.
+
+-- SYNONYMS purchase = buy.
+
+ADD TO EVERY OBJECT
+  VERB compra
+    CHECK my_game CAN comprare
+      ELSE SAY restricted_response OF my_game.
+    AND item IS examinable
+      ELSE
+        IF item IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "comprare."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "comprare."
+        END IF.
+    DOES
+      SAY the item.
+      IF item IS NOT plurale
+        THEN "non è"
+        ELSE "non sono"
+        -- THEN "That's not"
+        -- ELSE "Those are not"
+      END IF.
+      "in vendita."
+      -- "for sale."
   END VERB.
 END ADD TO.
 
@@ -1652,46 +1699,6 @@ END VERB.
 
 
 
--- ==================================================================
-
-
------ BUY (+ purchase)
-
-
--- ==================================================================
-
-
-SYNTAX buy = buy (item)
-  WHERE item ISA OBJECT
-    ELSE
-      IF item IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
-
-
-ADD TO EVERY OBJECT
-  VERB buy
-    CHECK my_game CAN comprare
-      ELSE SAY restricted_response OF my_game.
-    AND item IS examinable
-      ELSE
-        IF item IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY check_obj_idoneo_sg OF my_game. "comprare."
-          ELSE SAY check_obj_idoneo_pl OF my_game. "comprare."
-        END IF.
-    DOES
-      IF item IS NOT plurale
-        THEN "That's not"
-        ELSE "Those are not"
-      END IF.
-      "for sale."
-  END VERB.
-END ADD TO.
-
-
-SYNONYMS purchase = buy.
 
 
 

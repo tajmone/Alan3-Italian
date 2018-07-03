@@ -11,7 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/07/03](#20180703)
+- [2018/07/03 \(2\)](#20180703-2)
+    - [Verb: `buy`](#verb-buy)
+- [2018/07/03 \(1\)](#20180703-1)
 - [2018/07/02](#20180702)
     - [Verb: `burn`/`burn_with`](#verb-burnburn_with)
     - [`my_game` Verb Messages](#my_game-verb-messages)
@@ -69,7 +71,23 @@ Status: Alpha stage.
 
 -----
 
-# 2018/07/03
+# 2018/07/03 (2)
+
+- [`lib_verbi.i`][lib_verbi] (v0.2.11)
+
+## Verb: `buy`
+
+Translated verb `compra`, (_buy_):
+
+    compra (item)
+
+with synonyms:
+
+    acquista
+
+
+
+# 2018/07/03 (1)
 
 - [`lib_verbi.i`][lib_verbi] (v0.2.10)
 
@@ -77,6 +95,7 @@ Now translated verbs are placed before untranslated verbs in the source code, an
 
 - gameplay meta commands (like "save", "score", etc.)
 - adventure commands (ie, directed to the hero and story world)
+
 
 
 # 2018/07/02

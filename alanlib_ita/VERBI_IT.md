@@ -22,13 +22,17 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [inventario](#inventario)
 - [INDOSSARE, SPOGLIARSI](#indossare-spogliarsi)
     - [spogliati](#spogliati)
-- [ATTACCARE, ROMPERE](#attaccare-rompere)
+- [ATTACCARE, ROMPERE, BRUCIARE](#attaccare-rompere-bruciare)
+    - [brucia](#brucia)
+    - [brucia_con](#brucia_con)
     - [rompi](#rompi)
     - [rompi_con](#rompi_con)
-- [Verbi che non fanno nulla](#verbi-che-non-fanno-nulla)
+- [Verbi che non conseguono nulla](#verbi-che-non-conseguono-nulla)
     - [aspetta](#aspetta)
     - [dormi](#dormi)
     - [prega](#prega)
+- [Verbi Vari](#verbi-vari)
+    - [Compra](#compra)
 
 <!-- /MarkdownTOC -->
 
@@ -43,8 +47,11 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [afferra]
 - [aspetta]
 - [attendi]
+- [brucia]
+- [brucia con]
 - [carica]
 - [carica partita]
+- [compra]
 - [dai]
 - [distruggi]
 - [distruggi con]
@@ -267,7 +274,31 @@ esito:
 
 ------------------------------------------------------------------
 
-# ATTACCARE, ROMPERE
+# ATTACCARE, ROMPERE, BRUCIARE
+
+## brucia
+
+[brucia]: #brucia
+
+sintassi:
+
+    brucia (ogg)
+
+esito:
+
+- Informa il giocatore che deve specificare con che cosa vuole bruciare (ogg).
+
+## brucia_con
+
+[brucia con]: #brucia_con
+
+sintassi:
+
+    brucia (ogg) con (strumento)
+
+esito:
+
+- Nulla
 
 ## rompi
 
@@ -316,7 +347,7 @@ esito:
 
 ------------------------------------------------------------------
 
-# Verbi che non fanno nulla
+# Verbi che non conseguono nulla
 
 Raggruppo qui vari verbi che nell'implementazione di base della libreria sono riconosciuti ma non sortiscono alcun effetto.
 
@@ -372,4 +403,14 @@ condizioni:
 esito:
 
 - Nulla, dice solo "`Sembra che le tue preghiere non siano state esaudite.`" (testo preso da Inform 6 _Infit_).
+
+# Verbi Vari
+
+## Compra
+
+[compra]: #compra
+
+sintassi:
+
+    (compra|acquista) (item)
 
