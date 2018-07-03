@@ -30,7 +30,7 @@ The following table was built from the verbs list found in the commented section
 | `close`             | (+ **shut**)                                             | close (obj)                         | 1       | &#x2705; |
 | `close_with`        |                                                          | close (obj) with (instr)            | 2       | &#x2705; |
 | `consult`           |                                                          | consult (source) about (topic)      | 2       | &#x2718; |
-| `credits`           | (+ **acknowledgments**, **author**, **copyright**)       | credits                             | 2       | &#x2718; |
+| `credits`           | (+ **acknowledgments**, **author**, **copyright**)       | credits                             | 0       | &#x2718; |
 | `cut`               |                                                          | cut (obj)                           | 1       | &#x2705; |
 | `cut_with`          |                                                          | cut (obj) with (instr)              | 2       | &#x2705; |
 | `dance`             |                                                          | dance                               | 0       | &#x2718; |
@@ -44,21 +44,21 @@ The following table was built from the verbs list found in the commented section
 | `empty`             |                                                          | empty (obj)                         | 1       | &#x2705; |
 | `empty_in`          |                                                          | empty (obj) in (cont)               | 2       | &#x2705; |
 | `empty_on`          |                                                          | empty (obj) on (surface)            | 2       | &#x2705; |
-| `enter`             |                                                          | enter (obj)                         | 1       | &#x2718; |
+| `enter`             |                                                          | enter (obj)                         | 1       | &#x2705; |
 | `examine`           | (+ **check**, **inspect**, **observe**, **x**)           | examine (obj)                       | 1       | &#x2705; |
-| `exit`              |                                                          | exit (obj)                          | 1       | &#x2718; |
+| `exit`              |                                                          | exit (obj)                          | 1       | &#x2705; |
 | `extinguish`        | (+ **put out**, **quench**)                              | extinguish (obj)                    | 1       | &#x2705; |
 | `fill`              |                                                          | fill (cont)                         | 1       | &#x2718; |
-| `fill_with`         |                                                          | fill (cont) with (substance)        | 1       | &#x2718; |
+| `fill_with`         |                                                          | fill (cont) with (substance)        | 2       | &#x2718; |
 | `find`              | (+ **locate**)                                           | find (obj)                          | 1       | &#x2705; |
 | `fire`              |                                                          | fire (weapon)                       | 1       | &#x2718; |
-| `fire_at`           |                                                          | fire (weapon) at (target)           | 1       | &#x2718; |
+| `fire_at`           |                                                          | fire (weapon) at (target)           | 2       | &#x2718; |
 | `fix`               | (+ **mend**, **repair**)                                 | fix (obj)                           | 1       | &#x2705; |
 | `follow`            |                                                          | follow (act)                        | 1       | &#x2718; |
 | `free`              | (+ **release**)                                          | free (obj)                          | 1       | &#x2705; |
 | `get_up`            |                                                          | get up                              | 0       | &#x2718; |
 | `get_off`           |                                                          | get off (obj)                       | 1       | &#x2705; |
-| `give`              |                                                          | give (obj) to (recipient)           | 1       | &#x2705; |
+| `give`              |                                                          | give (obj) to (recipient)           | 2       | &#x2705; |
 | `go_to`             |                                                          | go to (dest)                        | 1       | &#x2718; |
 | `hint`              | (+ **hints**)                                            | hint                                | 0       | &#x2718; |
 | `i`                 | (+ **inv**, **inventory**)                               | inventory                           | 0       | &#x2718; |
@@ -69,7 +69,7 @@ The following table was built from the verbs list found in the commented section
 | `kill`              | (+ **murder**)                                           | kill (victim)                       | 1       | &#x2718; |
 | `kill_with`         |                                                          | kill (victim) with (weapon)         | 2       | &#x2718; |
 | `kiss`              | (+ **hug**, **embrace**)                                 | kiss (obj)                          | 1       | &#x2705; |
-| `knock`       (on)  |                                                          | knock on (obj)                      | 1       | &#x2718; |
+| `knock`       (on)  |                                                          | knock on (obj)                      | 1       | &#x2705; |
 | `lie_down`          |                                                          | lie down                            | 0       | &#x2718; |
 | `lie_in`            |                                                          | lie in (cont)                       | 1       | &#x2718; |
 | `lie_on`            |                                                          | lie on (surface)                    | 1       | &#x2718; |
@@ -110,6 +110,7 @@ The following table was built from the verbs list found in the commented section
 | `put_near`          |                                                          | put (obj) near (bulk)               | 2       | &#x2705; |
 | `put_on`            |                                                          | put (obj) on (surface)              | 2       | &#x2705; |
 | `put_under`         |                                                          | put (obj) under (bulk)              | 2       | &#x2705; |
+| `quit`              | (+ **q**)                                                | quit                                | 0       | &#x2718; |
 | `read`              |                                                          | read (obj)                          | 1       | &#x2705; |
 | `remove`            |                                                          | remove (obj)                        | 1       | &#x2705; |
 | `restart`           |                                                          | restart                             | 0       | &#x2718; |
@@ -170,11 +171,11 @@ The following table was built from the verbs list found in the commented section
 | `verbose`           |                                                          | verbose                             | 0       | &#x2718; |
 | `wait`              | (+ **z**)                                                | wait                                | 0       | &#x2718; |
 | `wear`              |                                                          | wear (obj)                          | 1       | &#x2705; |
-| `what_am_i`         |                                                          | what am i                           | 0       | &#x2718; |
+| `what_am_i`         |                                                          | what am I                           | 0       | &#x2718; |
 | `what_is`           |                                                          | what is (obj)                       | 1       | &#x2705; |
-| `where_am_i`        |                                                          | where am i                          | 0       | &#x2718; |
+| `where_am_i`        |                                                          | where am I                          | 0       | &#x2718; |
 | `where_is`          |                                                          | where is (obj)                      | 1       | &#x2705; |
-| `who_am_i`          |                                                          | who am i                            | 0       | &#x2718; |
+| `who_am_i`          |                                                          | who am I                            | 0       | &#x2718; |
 | `who_is`            |                                                          | who is (obj)                        | 1       | &#x2705; |
 | `write`             |                                                          | write (txt) on (obj)                | 2       | &#x2705; |
 | `yes`               |                                                          | yes                                 | 0       | &#x2718; |

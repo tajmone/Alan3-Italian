@@ -10,11 +10,13 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Indice dei Verbi](#indice-dei-verbi)
-- [Comandi Amministrativi](#comandi-amministrativi)
+- [META-COMANDI DI PARTITA](#meta-comandi-di-partita)
     - [carica_partita](#carica_partita)
     - [salva_partita](#salva_partita)
     - [ricomincia_partita](#ricomincia_partita)
     - [abbandona_partita](#abbandona_partita)
+- [VERBI DI SPOSTAMENTO](#verbi-di-spostamento)
+    - [vai_a](#vai_a)
 - [DARE, PRENDERE, RIMUOVERE](#dare-prendere-rimuovere)
     - [prendi](#prendi)
     - [prendi_da](#prendi_da)
@@ -27,11 +29,11 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [brucia_con](#brucia_con)
     - [rompi](#rompi)
     - [rompi_con](#rompi_con)
-- [Verbi che non conseguono nulla](#verbi-che-non-conseguono-nulla)
+- [VERBI CHE NON CONSEGUONO NULLA](#verbi-che-non-conseguono-nulla)
     - [aspetta](#aspetta)
     - [dormi](#dormi)
     - [prega](#prega)
-- [Verbi Vari](#verbi-vari)
+- [VERBI VARI](#verbi-vari)
     - [Compra](#compra)
 
 <!-- /MarkdownTOC -->
@@ -79,10 +81,12 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [svestiti]
 - [togli]
 - [trasporta]
+- [vai a]
 
-------------------------------------------------------------------
 
-# Comandi Amministrativi
+-------------------------------------------------------------------------------
+
+# META-COMANDI DI PARTITA
 
 Ovvero, quei comandi che non riguardano il mondo dell'avventura ma funzionalità legate alla partita (salvare, opzioni di verbosità, ecc.).
 
@@ -173,7 +177,35 @@ condizioni:
 - `my_game CAN abbandonare_partita`
 
 
------------------------------------------
+-------------------------------------------------------------------------------
+
+# VERBI DI SPOSTAMENTO
+
+Verbi che riguardano lo spostamento del personaggio protagonista nell'avventura:
+
+- [vai a]
+
+
+## vai_a
+
+[vai a]: #vai_a
+
+attributo `my_game`:
+
+    CAN [NOT] andare_a
+
+sintassi:
+
+    [vai] a (dest)
+
+> __NOTA__ — In realtà in questo verbo l'uso di "vai" è del tutto opzionale dato che "vai" è definito come sinonimo di "go", che è una delle NOISE WORDS che vengono ignorate dal parser. Quindi, i seguenti comandi risultano identici al parser:
+> 
+> ```
+> > vai alla cabina telefonica
+> > alla cabina telefonica
+> ```
+
+-------------------------------------------------------------------------------
 
 # DARE, PRENDERE, RIMUOVERE
 
@@ -240,7 +272,7 @@ sintassi:
 
 
 
-------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 # INDOSSARE, SPOGLIARSI
 
@@ -272,7 +304,7 @@ esito:
 > __NOTA__ — La definizione del verbo contiene del codice (commentato) di esempio su come implementare l'azione di spogliarsi. Quella parte andrebbe controllata meglio (messaggi, ecc.).
 
 
-------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 # ATTACCARE, ROMPERE, BRUCIARE
 
@@ -345,11 +377,11 @@ esito:
 - Nulla, dice solo "`Tentare di rompere <THE obj> con <THE instr> non risolverebbe nulla.`"  
 
 
-------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
-# Verbi che non conseguono nulla
+# VERBI CHE NON CONSEGUONO NULLA
 
-Raggruppo qui vari verbi che nell'implementazione di base della libreria sono riconosciuti ma non sortiscono alcun effetto.
+Raggruppo qui vari verbi che nell'implementazione di base della libreria sono riconosciuti ma non sortiscono alcun effetto (e che solitamente non dovrebbero fare nulla di speciale).
 
 
 ## aspetta
@@ -404,7 +436,11 @@ esito:
 
 - Nulla, dice solo "`Sembra che le tue preghiere non siano state esaudite.`" (testo preso da Inform 6 _Infit_).
 
-# Verbi Vari
+-------------------------------------------------------------------------------
+
+# VERBI VARI
+
+Verbi che non rientrano in categorie specifiche.
 
 ## Compra
 
