@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/03 \(3\)](#20180703-3)
+    - [Verb: `go_to`](#verb-go_to)
 - [2018/07/03 \(2\)](#20180703-2)
     - [Verb: `buy`](#verb-buy)
 - [2018/07/03 \(1\)](#20180703-1)
@@ -69,7 +71,60 @@ Status: Alpha stage.
 
 <!-- /MarkdownTOC -->
 
------
+-------------------------------------------------------------------------------
+
+# 2018/07/03 (3)
+
+- [`lib_verbi.i`][lib_verbi] (v0.2.12)
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.10)
+
+
+Translated `my_game` attributes for verb restrictions:
+
+| English |  Italian   |
+|---------|------------|
+| `go_to` | `andare_a` |
+
+
+
+## Verb: `go_to`
+
+Translated verb `vai_a`, "__vai a__" (_go to_):
+
+    vai (a|al|alla|allo|ai|alle|agli) (dest)
+    (a|al|alla|allo|ai|alle|agli) (dest)
+
+with no synonyms.
+
+> __NOTE 1__ — Because `go` command is hard-coded into Alan's (English) as a NOISE WORD, this verb defines `vai` as a synonym of `go` 
+> 
+>     vai = go
+> 
+> In fact, the syntax doesn't refer to `go` at all:
+> 
+> ```alan
+> SYNTAX vai_a = 'a' (dest)!
+>   WHERE dest ISA THING
+>     ELSE SAY illegal_parameter_go OF my_game.
+> 
+> SYNONYMS vai = go.
+> ```
+> 
+> And the use of `go` in the command is optional, and the following commands are equal:
+> 
+>     vai alla bancarella
+>     alla bancarella
+> 
+> ... because the parser will translate `vai` to `go` and then ignore it as NOISE. So the actual verb syntax is really just `(a|al|alla|allo|ai|alle|agli) (dest)`.
+
+<!-- sep -->
+
+> __NOTE 2__ — For this verb, `(dest)` must be a `THING`, not a direction! The Alan parser already understands natively the `go (direction)` SYNTAX, where `(direction)` (once stripped of the `go` noise) simply refers to an `EXIT` at the location. Therefore, this verb doesn't apply to exits/directions, but to actual game THINGS (OBJECTs and ACTORs).
+> 
+> This verb can refer to THINGS which are not present at the location, or present but distant or unreachable, and produce a meaningful response accordingly.
+
+
+
 
 # 2018/07/03 (2)
 

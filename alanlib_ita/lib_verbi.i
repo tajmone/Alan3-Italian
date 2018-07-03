@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.11 (2018/07/03)
+-- "lib_verbi.i" v0.2.12 (2018/07/03)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -31,6 +31,7 @@
 --| rompi              | distruggi, spacca, sfonda              | rompi (ogg)                     |   1    |  x  |
 --| rompi_con          | distruggi, spacca, sfonda              | rompi (ogg) con (instr)         |   2    |  x  |
 --| spogliati          | svestiti                               | spogliati                       |   0    |     |
+--| vai_a              |                                        | vai a (dest)                    |   1    |     |
 --+--------------------+----------------------------------------+---------------------------------+--------+-----+
 
 --|                    |                                        |                                 |   0    |  x  |
@@ -103,7 +104,7 @@
 ----- get_up                                               get up                              0
 ----- get_off                                              get off (obj)                       1       x
 ----> give                                                 give (obj) to (recipient)           1       x
------ go_to                                                go to (dest)                        1
+----> go_to                                                go to (dest)                        1
 ----- hint        (+ hints)                                hint                                0
 ----> i           (+ inv, inventory)                       inventory                           0
 ----- jump                                                 jump                                0
@@ -1204,6 +1205,74 @@ VERB spogliati
 --| END IF.
 --|--------------------------------------------------------
 END VERB.
+
+
+
+-- ==============================================================
+
+
+----- @VAI A -> @GO TO
+
+
+-- ==============================================================
+
+
+-- SYNTAX go_to = 'to' (dest)!
+
+SYNTAX vai_a = 'a' (dest)!
+  -- Because 'go' is predefined in the parser, it can't be used in verb definitions.
+  -- The player will still be able to type 'go to [dest]' successfully.
+  WHERE dest ISA THING
+    ELSE SAY illegal_parameter_go OF my_game.
+
+SYNONYMS vai = go.
+
+-- SYNONYMS walk = go.
+  -- here we define a synonym for the predefined parser word 'go'
+  -- which is not visible in the syntax itself.
+  -- Thus, you will be able to say for example both 'go to shop' and 'walk to shop'
+  -- (as well as for example both 'go east' and 'walk east').
+
+
+ADD TO EVERY THING
+  VERB vai_a
+    CHECK my_game CAN andare_a
+      ELSE SAY restricted_response OF my_game.
+    AND dest <> hero
+      ELSE SAY check_obj_not_hero4 OF my_game.
+    AND CURRENT LOCATION IS lit
+      ELSE SAY check_current_loc_lit OF my_game.
+    AND hero IS NOT sitting
+      ELSE SAY check_hero_not_sitting3 OF my_game.
+    AND hero IS NOT lying_down
+      ELSE SAY check_hero_not_lying_down3 OF my_game.
+    AND dest NOT AT hero
+      ELSE
+        IF dest IS NOT plurale
+          THEN SAY check_obj_not_at_hero_sg OF my_game.
+          ELSE SAY check_obj_not_at_hero_pl OF my_game.
+        END IF.
+    AND dest IS reachable AND dest IS NOT distant
+      ELSE
+        IF dest IS NOT reachable
+          THEN
+            IF dest IS NOT plurale
+              THEN SAY check_obj_reachable_sg OF my_game.
+              ELSE SAY check_obj_reachable_pl OF my_game.
+            END IF.
+        ELSIF dest IS distant
+          THEN
+            IF dest IS NOT plurale
+              THEN SAY check_obj_not_distant_sg OF my_game.
+              ELSE SAY check_obj_not_distant_pl OF my_game.
+            END IF.
+        END IF.
+    DOES
+      "You can't see" SAY THE dest. "anywhere nearby. You must state a
+      direction where you want to go."
+    END VERB.
+END ADD TO.
+
 
 
 
@@ -3895,69 +3964,6 @@ VERB get_up
 END VERB.
 
 
-
-
--- ==============================================================
-
-
------ GO TO
-
-
--- ==============================================================
-
-
-SYNTAX go_to = 'to' (dest)!
-  -- Because 'go' is predefined in the parser, it can't be used in verb definitions.
-  -- The player will still be able to type 'go to [dest]' successfully.
-  WHERE dest ISA THING
-    ELSE SAY illegal_parameter_go OF my_game.
-
-
-ADD TO EVERY THING
-  VERB go_to
-    CHECK my_game CAN go_to
-      ELSE SAY restricted_response OF my_game.
-    AND dest <> hero
-      ELSE SAY check_obj_not_hero4 OF my_game.
-    AND CURRENT LOCATION IS lit
-      ELSE SAY check_current_loc_lit OF my_game.
-    AND hero IS NOT sitting
-      ELSE SAY check_hero_not_sitting3 OF my_game.
-    AND hero IS NOT lying_down
-      ELSE SAY check_hero_not_lying_down3 OF my_game.
-    AND dest NOT AT hero
-      ELSE
-        IF dest IS NOT plurale
-          THEN SAY check_obj_not_at_hero_sg OF my_game.
-          ELSE SAY check_obj_not_at_hero_pl OF my_game.
-        END IF.
-    AND dest IS reachable AND dest IS NOT distant
-      ELSE
-        IF dest IS NOT reachable
-          THEN
-            IF dest IS NOT plurale
-              THEN SAY check_obj_reachable_sg OF my_game.
-              ELSE SAY check_obj_reachable_pl OF my_game.
-            END IF.
-        ELSIF dest IS distant
-          THEN
-            IF dest IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF my_game.
-              ELSE SAY check_obj_not_distant_pl OF my_game.
-            END IF.
-        END IF.
-    DOES
-      "You can't see" SAY THE dest. "anywhere nearby. You must state a
-      direction where you want to go."
-    END VERB.
-END ADD TO.
-
-
-SYNONYMS walk = go.
-  -- here we define a synonym for the predefined parser word 'go'
-  -- which is not visible in the syntax itself.
-  -- Thus, you will be able to say for example both 'go to shop' and 'walk to shop'
-  -- (as well as for example both 'go east' and 'walk east').
 
 
 

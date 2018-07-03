@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.9 (2018/07/02)
+-- "lib_definizioni.i" v0.2.10 (2018/07/03)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -964,6 +964,7 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   --- do that.") will be shown instead. The restriced_response is defined further up this file.
 
   CAN abbandonare_partita.  --> 'quit'
+  CAN andare_a.             --> go_to
   CAN aprire.               --> open
   CAN aprire_con.           --> open_with
   CAN aspettare.            --> wait         (+ z)
@@ -1050,7 +1051,6 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN fix.         -- (+ mend, repair)
   CAN get_up.
   CAN get_off.
-  CAN go_to.
   CAN hint.        -- (+ hints)
   CAN kick.
   CAN knock.
@@ -1154,6 +1154,7 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   THEN
 
   MAKE my_game abbandonare_partita.  --> 'quit'
+  MAKE my_game andare_a.             --> go_to
   MAKE my_game aprire.               --> open
   MAKE my_game aprire_con.           --> open_with
   MAKE my_game aspettare.            --> wait         (+ z)
@@ -1240,7 +1241,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game fix.             -- (+ mend, repair)
   MAKE my_game get_up.
   MAKE my_game get_off.
-  MAKE my_game go_to.
   MAKE my_game hint.            -- (+ hints)
   MAKE my_game kick.
   MAKE my_game knock.
@@ -1357,6 +1357,7 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   THEN
 
   MAKE my_game     abbandonare_partita.  --> 'quit'
+  MAKE my_game NOT andare_a.             --> go_to
   MAKE my_game NOT aprire.               --> open
   MAKE my_game NOT aprire_con.           --> open_with
   MAKE my_game     aspettare.            --> wait         (+ z)
@@ -1444,7 +1445,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT get_up.
   MAKE my_game NOT get_off.
   MAKE my_game NOT dare.
-  MAKE my_game NOT go_to.
   MAKE my_game hint.            -- (+ hints)
   MAKE my_game NOT kick.
   MAKE my_game NOT knock.
@@ -1545,6 +1545,7 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
 
 
   MAKE my_game     abbandonare_partita.  --> 'quit'
+  MAKE my_game NOT andare_a.             --> go_to
   MAKE my_game NOT aprire.               --> open
   MAKE my_game NOT aprire_con.           --> open_with
   MAKE my_game NOT aspettare.            --> wait         (+ z)
@@ -1632,7 +1633,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT get_up.
   MAKE my_game NOT get_off.
   MAKE my_game NOT dare.
-  MAKE my_game NOT go_to.
   MAKE my_game hint.            -- (+ hints)
   MAKE my_game NOT kick.
   MAKE my_game NOT knock.
@@ -1731,6 +1731,7 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
 
 
   MAKE my_game NOT abbandonare_partita.  --> 'quit'
+  MAKE my_game NOT andare_a.             --> go_to
   MAKE my_game NOT aprire.               --> open
   MAKE my_game NOT aprire_con.           --> open_with
   MAKE my_game NOT aspettare.            --> wait         (+ z)
@@ -1818,7 +1819,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT get_up.
   MAKE my_game NOT get_off.
   MAKE my_game NOT dare.
-  MAKE my_game NOT go_to.
   MAKE my_game NOT hint.        -- (+ hints)
   MAKE my_game NOT kick.
   MAKE my_game NOT knock.
