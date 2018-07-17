@@ -10,6 +10,7 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Indice dei Verbi](#indice-dei-verbi)
+- [Tabella dei Verbi](#tabella-dei-verbi)
 - [META-COMANDI DI PARTITA](#meta-comandi-di-partita)
     - [carica_partita](#carica_partita)
     - [salva_partita](#salva_partita)
@@ -17,6 +18,7 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [abbandona_partita](#abbandona_partita)
 - [VERBI DI SPOSTAMENTO](#verbi-di-spostamento)
     - [vai_a](#vai_a)
+    - [attraversa](#attraversa)
 - [DARE, PRENDERE, RIMUOVERE](#dare-prendere-rimuovere)
     - [prendi](#prendi)
     - [prendi_da](#prendi_da)
@@ -49,6 +51,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [afferra]
 - [aspetta]
 - [attendi]
+- [attraversa]
 - [brucia]
 - [brucia con]
 - [carica]
@@ -82,6 +85,41 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [togli]
 - [trasporta]
 - [vai a]
+
+-------------------------------------------------------------------------------
+
+# Tabella dei Verbi
+
+Copiata da "`lib_verbi.i`" v0.2.14 (2018/07/17).
+
+Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e comandi di gioco (dopo il divisorio orizzontale di tabella):
+
+```
+--+--------------------+----------------------------------------+---------------------------------+--------+-----+
+--| VERBO              | SINONIMI                               | SINTASSI                        | ARIETÀ | OGG |
+--|--------------------|----------------------------------------|---------------------------------|--------|-----|
+--| abbandona_partita  | quit, q                                | abbandona [partita]             |   0    |     |
+--| carica_partita     | restore                                | carica [partita]                |   0    |     |
+--| ricomincia_partita | restart                                | ricomincia [partita]            |   0    |     |
+--| salva_partita      | save                                   | salva [partita]                 |   0    |     |
+--+--------------------+----------------------------------------+---------------------------------+--------+-----+
+--| aspetta            | attendi, z                             | aspetta                         |   0    |     |
+--| attraversa         |                                        | attraversa (ogg)                |   1    |  x  |
+--| brucia             |                                        | brucia (ogg)                    |   1    |  x  |
+--| brucia_con         |                                        | brucia (ogg) con (instr)        |   2    |  x  |
+--| compra             | acquista                               | compra (item)                   |   1    |     |
+--| dai_a              | porgi, offri                           | dai (ogg) a (recipient)         |   2    |  x  |
+--| inventario         | inv                                    | inventario                      |   0    |     |
+--| prega              |                                        | prega                           |   0    |     |
+--| prendi             | afferra, raccogli, trasporta           | prendi (ogg)                    |   1    |  x  |
+--| prendi_da          | rimuovi, togli                         | prendi (ogg) da (holder)        |   2    |  x  |
+--| rifai              | ancora, g                              | rifai                           |   0    |     |
+--| rompi              | distruggi, spacca, sfonda              | rompi (ogg)                     |   1    |  x  |
+--| rompi_con          | distruggi, spacca, sfonda              | rompi (ogg) con (instr)         |   2    |  x  |
+--| spogliati          | svestiti                               | spogliati                       |   0    |     |
+--| vai_a              |                                        | vai a (dest)                    |   1    |     |
+--+--------------------+----------------------------------------+---------------------------------+--------+-----+
+```
 
 
 -------------------------------------------------------------------------------
@@ -204,6 +242,21 @@ sintassi:
 > > vai alla cabina telefonica
 > > alla cabina telefonica
 > ```
+
+
+## attraversa
+
+[attraversa]: #attraversa
+
+
+attributo `my_game`:
+
+    CAN [NOT] attraversare
+
+sintassi:
+
+    attraversa (ogg)
+
 
 -------------------------------------------------------------------------------
 

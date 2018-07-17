@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/17 \(3\)](#20180717-3)
+    - [Meta Verbs](#meta-verbs)
 - [2018/07/17 \(2\)](#20180717-2)
 - [2018/07/17 \(1\)](#20180717-1)
     - [Verb: `climb_through`](#verb-climb_through)
@@ -76,6 +78,33 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
+# 2018/07/17 (3)
+
+- [`lib_verbi.i`][lib_verbi] (v0.2.15)
+
+## Meta Verbs
+
+The following verbs have been declared as `META VERB`s:
+
+- `abbandona_partita`
+- `carica_partita`
+- `ricomincia_partita`
+- `salva_partita`
+- `inventario`
+
+
+
+> __NOTE 1__ — Currently Alan 3.0beta5 has a bug that prevents `META VERB`s from not ticking a turn. The bug was fixed and `META VERB`s will work as expected on the upcoming Beta relase.
+
+<!-- sep -->
+
+> __NOTE 2__ — Although `inventory` is an in-game command, it has been declared as a `META VERB` because it's more aking to a "mental action", rather than a physical and time-consuming action (we can see taking inventory as internal process of the hero recalling his carried and worn belongings, happening in the blink of an eye).
+> 
+> Some adventures might present time-critical situations (eg, the player dies in three turns if he/she doesn't solve a problem); under such circumstances it would be unfair (and frustrating) if taking the inventory were to consume a precious turn.
+> 
+> Furthermore, taking the inventory is not even an `UNDO`able action (it doesn't change any game state, so undoing it would achieve nothing), which (IMO) strengthen the argument that it should be considered as a META ACTION.
+
+
 # 2018/07/17 (2)
 
 - [`lib_classi.i`][lib_classi] (v0.2.2)
@@ -87,6 +116,7 @@ Translated ACTOR attributes:
 |--------------|------------|
 | `sitting`    | `seduto`   |
 | `lying_down` | `sdraiato` |
+
 
 
 # 2018/07/17 (1)

@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.14 (2018/07/17)
+-- "lib_verbi.i" v0.2.15 (2018/07/17)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -7,35 +7,42 @@
 -- "Verbs" (original file name: 'lib_verbs.i')
 --------------------------------------------------------------------------------
 
----- Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima)
----- e comandi di gioco (dopo il divisorio orizzontale di tabella):
+--------------------------------------------------------------------------------
+----- Tabella dei Verbi --------------------------------------------------------
+--------------------------------------------------------------------------------
+-- Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima)
+-- e comandi di gioco (dopo il divisorio orizzontale di tabella).
  
---+--------------------+----------------------------------------+---------------------------------+--------+-----+
---| VERBO              | SINONIMI                               | SINTASSI                        | ARIETÀ | OGG |
---|--------------------|----------------------------------------|---------------------------------|--------|-----|
---| abbandona_partita  | quit, q                                | abbandona [partita]             |   0    |     |
---| carica_partita     | restore                                | carica [partita]                |   0    |     |
---| ricomincia_partita | restart                                | ricomincia [partita]            |   0    |     |
---| salva_partita      | save                                   | salva [partita]                 |   0    |     |
---+--------------------+----------------------------------------+---------------------------------+--------+-----+
---| aspetta            | attendi, z                             | aspetta                         |   0    |     |
---| attraversa         |                                        | attraversa (ogg)                |   1    |  x  |
---| brucia             |                                        | brucia (ogg)                    |   1    |  x  |
---| brucia_con         |                                        | brucia (ogg) con (instr)        |   2    |  x  |
---| compra             | acquista                               | compra (item)                   |   1    |     |
---| dai_a              | porgi, offri                           | dai (ogg) a (recipient)         |   2    |  x  |
---| inventario         | inv                                    | inventario                      |   0    |     |
---| prega              |                                        | prega                           |   0    |     |
---| prendi             | afferra, raccogli, trasporta           | prendi (ogg)                    |   1    |  x  |
---| prendi_da          | rimuovi, togli                         | prendi (ogg) da (holder)        |   2    |  x  |
---| rifai              | ancora, g                              | rifai                           |   0    |     |
---| rompi              | distruggi, spacca, sfonda              | rompi (ogg)                     |   1    |  x  |
---| rompi_con          | distruggi, spacca, sfonda              | rompi (ogg) con (instr)         |   2    |  x  |
---| spogliati          | svestiti                               | spogliati                       |   0    |     |
---| vai_a              |                                        | vai a (dest)                    |   1    |     |
---+--------------------+----------------------------------------+---------------------------------+--------+-----+
+--+--------------------+------------------------------+--------------------------+---+---+---+
+--| VERBO              | SINONIMI                     | SINTASSI                 | M | A | O |
+--|--------------------|------------------------------|--------------------------|---|---|---|
+--| abbandona_partita  | quit, Q                      | abbandona [partita]      | x | 0 |   |
+--| carica_partita     | restore                      | carica [partita]         | x | 0 |   |
+--| ricomincia_partita | restart                      | ricomincia [partita]     | x | 0 |   |
+--| salva_partita      | save                         | salva [partita]          | x | 0 |   |
+--+--------------------+------------------------------+--------------------------+---+---+---+
+--| aspetta            | attendi, Z                   | aspetta                  |   | 0 |   |
+--| attraversa         |                              | attraversa (ogg)         |   | 1 | x |
+--| brucia             |                              | brucia (ogg)             |   | 1 | x |
+--| brucia_con         |                              | brucia (ogg) con (instr) |   | 2 | x |
+--| compra             | acquista                     | compra (item)            |   | 1 |   |
+--| dai_a              | porgi, offri                 | dai (ogg) a (recipient)  |   | 2 | x |
+--| inventario         | inv                          | inventario               | x | 0 |   |
+--| prega              |                              | prega                    |   | 0 |   |
+--| prendi             | afferra, raccogli, trasporta | prendi (ogg)             |   | 1 | x |
+--| prendi_da          | rimuovi, togli               | prendi (ogg) da (holder) |   | 2 | x |
+--| rifai              | ancora, G                    | rifai                    |   | 0 |   |
+--| rompi              | distruggi, spacca, sfonda    | rompi (ogg)              |   | 1 | x |
+--| rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (instr)  |   | 2 | x |
+--| spogliati          | svestiti                     | spogliati                |   | 0 |   |
+--| vai_a              |                              | vai a (dest)             |   | 1 |   |
+--+--------------------+------------------------------+--------------------------+---+---+---+
+--|                    |                              |                          |   | 0 | x |
 
---|                    |                                        |                                 |   0    |  x  |
+-- Legenda Colonne:
+--   [M] Meta Verbo : 'x' = Sì
+--   [A] Arietà     : <n> = numero di parametri
+--   [O] Oggetto    : 'x' = Sì
 
 -- L'ordine di apparizione dei verbi nella tabella rispecchia l'ordine in cui
 -- appaiono nel codice sorgente qui di seguito.
@@ -261,7 +268,7 @@ SYNTAX
 
 SYNONYMS q = 'quit'.
 
-VERB abbandona_partita
+META VERB abbandona_partita
   CHECK my_game CAN abbandonare_partita
     --> @TODO!!                                                                 TRANSLATE!
     ELSE SAY restricted_response OF my_game.
@@ -292,7 +299,7 @@ SYNTAX carica_partita = carica.
        carica_partita = carica partita.
        carica_partita = 'restore'. --> Bisogna conservare anche l'inglese!
 
-VERB carica_partita
+META VERB carica_partita
   CHECK my_game CAN caricare_partita
     --> @TODO!!                                                                 TRANSLATE!
     ELSE SAY restricted_response OF my_game.
@@ -318,7 +325,7 @@ SYNTAX ricomincia_partita = ricomincia.
 SYNTAX ricomincia_partita = ricomincia partita.
        ricomincia_partita = 'restart'. --> Bisogna conservare anche l'inglese!
 
-VERB ricomincia_partita
+META VERB ricomincia_partita
   CHECK my_game CAN ricominciare_partita
     --> @TODO!!                                                                 TRANSLATE!
     ELSE SAY restricted_response OF my_game.
@@ -347,7 +354,7 @@ SYNTAX salva_partita = salva.
                                --  dobbiamo conservare RESTART, RESTORE e QUIT!
 
 
-VERB salva_partita
+META VERB salva_partita
   CHECK my_game CAN salvare_partita
     --> @TODO!!                                                                 TRANSLATE!
     ELSE SAY restricted_response OF my_game.
@@ -761,6 +768,14 @@ SYNONYMS porgi, offri = dai.
 
 
 -- ==============================================================
+-- META VERBO: Inventariare è un'azione mentale più che fisica, perciò pur
+-- essendo un comando di gioco è stato dichiarato come META poiché non dovrebbe
+-- far avanzare il tempo nel mondo dell'avventura --- p.es, il giocatore potrebbe
+-- trovarsi in situazioni di pericolo in cui ha pochi turni prima di morire; in
+-- simili frangenti consultare l'inventario non dovrebbe far procedere il turno.
+-- Inoltre, l'inventario non è un'azione che possa essere disfatta con UNDO.
+--------------------------------------------------------------------------------
+
 
 --# NOTE: The original verb/syntax was "i", with "inv" and "inventory" as synonyms;
 --        But his in Italian will conflict with 'i' being implemented as a
@@ -771,7 +786,7 @@ SYNONYMS porgi, offri = dai.
 SYNTAX inventario = inventario.
 
 
-VERB inventario
+META VERB inventario
   CHECK my_game CAN inventariare
     --> @TODO!!                                                                 TRANSLATE!
     ELSE SAY restricted_response OF my_game.
