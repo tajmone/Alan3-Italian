@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/17 \(5\)](#20180717-5)
 - [2018/07/17 \(4\)](#20180717-4)
     - [Verb: `eat`](#verb-eat)
 - [2018/07/17 \(3\)](#20180717-3)
@@ -79,6 +80,20 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/17 (5)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.13)
+- [`lib_verbi.i`][lib_verbi] (v0.2.17)
+
+
+Translated verb response attributes:
+
+|      Attribute EN     |    Attribute IT   |
+|-----------------------|-------------------|
+| `restricted_response` | `azione_bloccata` |
+
+
 
 # 2018/07/17 (4)
 

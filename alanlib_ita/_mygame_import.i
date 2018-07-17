@@ -1,4 +1,4 @@
--- "_mygame_import.i" v0.2.1 (2018/07/17)
+-- "_mygame_import.i" v0.2.2 (2018/07/17)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -134,7 +134,7 @@ THE my_game ISA DEFINITION_BLOCK
 	-- response for restricted actions:
 	-- ================================
 
-	HAS restricted_response "You can't do that.".
+	HAS azione_bloccata "You can't do that.".
 		-- This message is shown whenever the player used a verb that has been disabled
 		 -- by the "CAN NOT [verb]." or verbs_disabled attributes (see the library manual).
 

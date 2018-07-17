@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.12 (2018/07/17)
+-- "lib_definizioni.i" v0.2.17 (2018/07/17)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -446,6 +446,27 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   --        a costo di rivedere la metodologia dei nomi di attributi.
   ------------------------------------------------------------------------------
 
+
+  -- ===============
+  -- AZIONI BLOCCATE
+  -- ===============
+  
+  
+
+  HAS azione_bloccata "Non puoi farlo.". -- "You can't do that."
+    --| Questo è il messaggio mostrato quando il giocatore tenta di usare un
+    --| verbo che è stato disabilitato tramite "CAN NOT [verb]" (vedi sotto).
+
+  -- response for restricted actions:
+  -- ================================
+  -- HAS restricted_response "You can't do that.".
+      -- This message is shown whenever the player used a verb that has been restricted
+      -- by the "CAN NOT [verb]" attributes further down this file.
+
+  HAS restricted_level 0.   -- 0 = no verbs are restricted
+
+
+
   -- =============================
   -- PARAMETRI ILLEGALI (SEMPLICI)
   -- ============================= 
@@ -515,18 +536,6 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   --        allora bisogna tenerli poiché sono richiesti dai verbi non ancora
   --        tradotti.
   ------------------------------------------------------------------------------
-
-  -- response for restricted actions:
-  -- ================================
-
-  HAS restricted_response "Non puoi farlo.". -- "You can't do that."
-    --| Questo è il messaggio mostrato quando il giocatore tenta di usare un
-    --| verbo che è stato disabilitato tramite "CAN NOT [verb]" (vedi sotto).
-
-    -- This message is shown whenever the player used a verb that has been restricted
-    -- by the "CAN NOT [verb]" attributes further down this file.
-
-  HAS restricted_level 0.   -- 0 = no verbs are restricted
 
 
   -- all illegal parameter messages, typically found in the ELSE parts of SYNTAX structures and

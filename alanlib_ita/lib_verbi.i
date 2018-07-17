@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.16 (2018/07/17)
+-- "lib_verbi.i" v0.2.17 (2018/07/17)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -271,8 +271,7 @@ SYNONYMS q = 'quit'.
 
 META VERB abbandona_partita
   CHECK my_game CAN abbandonare_partita
-    --> @TODO!!                                                                 TRANSLATE!
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     QUIT.
 END VERB.
@@ -302,8 +301,7 @@ SYNTAX carica_partita = carica.
 
 META VERB carica_partita
   CHECK my_game CAN caricare_partita
-    --> @TODO!!                                                                 TRANSLATE!
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     RESTORE.
 END VERB.
@@ -328,8 +326,7 @@ SYNTAX ricomincia_partita = ricomincia partita.
 
 META VERB ricomincia_partita
   CHECK my_game CAN ricominciare_partita
-    --> @TODO!!                                                                 TRANSLATE!
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     RESTART.
 END VERB.
@@ -357,8 +354,7 @@ SYNTAX salva_partita = salva.
 
 META VERB salva_partita
   CHECK my_game CAN salvare_partita
-    --> @TODO!!                                                                 TRANSLATE!
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     SAVE.
 END VERB.
@@ -388,8 +384,7 @@ SYNONYMS
 
 VERB aspetta
   CHECK my_game CAN aspettare
-    --> @TODO!!                                                                 TRANSLATE!
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     "Il tempo passa."
 END VERB.
@@ -419,8 +414,7 @@ SYNTAX attraversa = attraversa (obj)
 ADD TO EVERY OBJECT
   VERB attraversa
     CHECK my_game CAN attraversare
-      --> @TODO!!                                                               TRANSLATE!
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -494,8 +488,7 @@ SYNTAX brucia = brucia (obj)
 ADD TO EVERY OBJECT
   VERB brucia
     CHECK my_game CAN bruciare
-      --> @TODO!!                                                               TRANSLATE!
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -550,8 +543,7 @@ ADD TO EVERY OBJECT
   VERB brucia_con
     WHEN obj
       CHECK my_game CAN bruciare_con
-        --> @TODO!!                                                             TRANSLATE!
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND obj IS examinable
         ELSE
           IF obj IS NOT plurale
@@ -629,8 +621,7 @@ SYNONYMS acquista = compra.
 ADD TO EVERY OBJECT
   VERB compra
     CHECK my_game CAN comprare
-      --> @TODO!!                                                               TRANSLATE!
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND item IS examinable
       ELSE
         IF item IS NOT plurale
@@ -683,8 +674,7 @@ ADD TO EVERY OBJECT
   VERB dai_a
         WHEN obj
       CHECK my_game CAN dare -- (was CAN give)
-        --> @TODO!!                                                             TRANSLATE!
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND obj IS takeable
         --> @TODO!!                                                             TRANSLATE!
         ELSE SAY check_obj_takeable OF my_game.
@@ -789,8 +779,7 @@ SYNTAX inventario = inventario.
 
 META VERB inventario
   CHECK my_game CAN inventariare
-    --> @TODO!!                                                                 TRANSLATE!
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     LIST hero.
 
@@ -827,7 +816,7 @@ SYNTAX mangia = mangia (cibo)
 ADD TO EVERY OBJECT
   VERB mangia
     CHECK my_game CAN mangiare
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND cibo IS commestibile
       ELSE
         IF cibo IS NOT plurale
@@ -892,8 +881,7 @@ SYNTAX prega = prega.
 
 VERB prega
   CHECK my_game CAN pregare
-    --> @TODO!!                                                                 TRANSLATE!
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES "Sembra che le tue preghiere non siano state esaudite." --> da i6
   -- DOES "Your prayers don't seem to help right now."
 END VERB.
@@ -940,8 +928,7 @@ ADD TO EVERY THING
 -- @PRENDI -> @TAKE (VERB) => ADD TO EVERY THING
   VERB prendi
     CHECK my_game CAN prendere --> CAN take
-      --> @TODO!!                                                               TRANSLATE!
-      ELSE SAY restricted_response OF my_game. --#-> "Non puoi farlo."
+      ELSE SAY azione_bloccata OF my_game. --#-> "Non puoi farlo."
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -1120,8 +1107,7 @@ ADD TO EVERY THING
     VERB prendi_da
         WHEN obj
       CHECK my_game CAN prendere_da --> CAN take_from
-        --> @TODO!!                                                             TRANSLATE!
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND obj <> hero
         --> @TODO!!                                                             TRANSLATE!
         ELSE SAY check_obj_not_hero1 OF my_game.
@@ -1261,8 +1247,7 @@ SYNTAX
 
 VERB rifai
   CHECK my_game CAN rifare
-    --> @TODO!!                                                                 TRANSLATE!
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     "[Il comando ANCORA non è supportato in questo gioco. In alternativa, prova
     ad usare i tasti 'su' e 'giù' per navigare tra i comandi precedenti.]"
@@ -1298,8 +1283,7 @@ SYNTAX rompi = rompi (obj)
 ADD TO EVERY OBJECT
   VERB rompi
     CHECK my_game CAN rompere
-      --> @TODO!!                                                               TRANSLATE!
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -1374,7 +1358,7 @@ ADD TO EVERY OBJECT
   VERB rompi_con
     WHEN obj
       CHECK my_game CAN rompere_con
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND obj IS examinable
         ELSE
           IF obj IS NOT plurale
@@ -1443,7 +1427,7 @@ SYNONYMS svestiti = spogliati.
 
 VERB spogliati
   CHECK my_game CAN spogliarsi
-    ELSE SAY restricted_response OF my_game.   --# "Non puoi farlo."
+    ELSE SAY azione_bloccata OF my_game.   --# "Non puoi farlo."
   AND CURRENT LOCATION IS lit
     ELSE SAY check_current_loc_lit OF my_game. --# "È troppo buio."
   --@TODO: modifica frase (non mi piace):
@@ -1495,7 +1479,7 @@ SYNONYMS vai = go.
 ADD TO EVERY THING
   VERB vai_a
     CHECK my_game CAN andare_a
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND dest <> hero
       ELSE SAY check_obj_not_hero4 OF my_game.
     AND CURRENT LOCATION IS lit
@@ -1561,7 +1545,7 @@ SYNTAX 'about' = 'about'.
 
 VERB 'about'
   CHECK my_game CAN about
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     "[This is a text adventure, also called interactive fiction, which means that what
     goes on in the story depends on what you type at the prompt. Commands you can type
@@ -1597,7 +1581,7 @@ SYNONYMS reply = answer.
 ADD TO EVERY STRING
   VERB answer
     CHECK my_game CAN answer
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     DOES
       "What was the question?"
     END VERB.
@@ -1642,7 +1626,7 @@ ADD TO EVERY ACTOR
   VERB ask
         WHEN act
       CHECK my_game CAN ask
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND act <> hero
         ELSE SAY check_obj_not_hero1 OF my_game.
           AND act CAN talk
@@ -1697,7 +1681,7 @@ ADD TO EVERY ACTOR
   VERB ask_for
       WHEN act
       CHECK my_game CAN ask_for
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND act <> hero
         ELSE SAY check_obj_not_hero1 OF my_game.
           AND act CAN talk
@@ -1799,7 +1783,7 @@ SYNONYMS beat, fight, hit, punch = attack.
 ADD TO EVERY THING
   VERB attack
     CHECK my_game CAN attack
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND target IS examinable
       ELSE
         IF target IS NOT plurale
@@ -1872,7 +1856,7 @@ ADD TO EVERY THING
   VERB attack_with
         WHEN target
       CHECK my_game CAN attack_with
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND target IS examinable
           ELSE
           IF target IS NOT plurale
@@ -1939,7 +1923,7 @@ SYNTAX bite = bite (obj)
 ADD TO EVERY OBJECT
   VERB bite
     CHECK my_game CAN bite
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS commestibile
       ELSE
         IF obj IS NOT plurale
@@ -2013,7 +1997,7 @@ SYNTAX brief = brief.
 
 VERB brief
   CHECK my_game CAN modalità_breve
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     Visits 1000.
     -- "Brief mode is now on. Location descriptions will only be shown
@@ -2050,7 +2034,7 @@ SYNTAX catch = catch (obj)
 ADD TO EVERY THING
   VERB catch
     CHECK my_game CAN catch
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -2103,7 +2087,7 @@ SYNONYMS wipe, polish = clean.
 ADD TO EVERY OBJECT
   VERB clean
     CHECK my_game CAN pulire
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -2160,7 +2144,7 @@ SYNTAX climb = climb (obj)
 ADD TO EVERY OBJECT
   VERB climb
   CHECK my_game CAN climb
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   AND obj IS examinable
     ELSE
       IF obj IS NOT plurale
@@ -2224,7 +2208,7 @@ SYNTAX climb_on = climb 'on' (surface)
 ADD TO EVERY SUPPORTER
   VERB climb_on
     CHECK my_game CAN climb_on
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
     AND surface IS reachable AND surface IS NOT distant
@@ -2280,7 +2264,7 @@ SYNTAX close = close (obj)
 ADD TO EVERY OBJECT
   VERB close
     CHECK my_game CAN chiudere
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS openable
           ELSE
         IF obj IS NOT plurale
@@ -2351,7 +2335,7 @@ ADD TO EVERY OBJECT
   VERB close_with
     WHEN obj
       CHECK my_game CAN chiudere_con
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND obj IS openable
         ELSE
           IF obj IS NOT plurale
@@ -2431,7 +2415,7 @@ ADD TO EVERY THING
   VERB consult
     WHEN source
       CHECK my_game CAN consultare
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND source IS examinable
         ELSE
           IF source IS NOT plurale
@@ -2495,7 +2479,7 @@ SYNTAX credits = credits.
 
 VERB credits
   CHECK my_game CAN credits
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     "The author retains the copyright to this game.
     $pThis game was written using the ALAN Adventure Language. ALAN is
@@ -2532,7 +2516,7 @@ SYNTAX cut = cut (obj)
 ADD TO EVERY OBJECT
   VERB cut
     CHECK my_game CAN tagliare
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -2576,7 +2560,7 @@ ADD TO EVERY OBJECT
   VERB cut_with
     WHEN obj
       CHECK my_game CAN tagliare_con
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND obj <> instr
         ELSE SAY check_obj_not_obj2_with OF my_game.
       AND obj IS examinable
@@ -2632,7 +2616,7 @@ SYNTAX dance = dance.
 
 VERB dance
   CHECK my_game CAN danzare
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   AND CURRENT LOCATION IS lit
     ELSE SAY check_current_loc_lit OF my_game.
   AND hero IS NOT seduto
@@ -2666,7 +2650,7 @@ SYNTAX dig = dig (obj)
 ADD TO EVERY OBJECT
   VERB dig
     CHECK my_game CAN scavare
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
     AND obj IS reachable AND obj IS NOT distant
@@ -2709,7 +2693,7 @@ SYNTAX dive = dive.
 
 VERB dive
   CHECK my_game CAN dive
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   AND CURRENT LOCATION IS lit
     ELSE SAY check_current_loc_lit OF my_game.
   AND hero IS NOT seduto
@@ -2751,7 +2735,7 @@ SYNTAX dive_in = dive 'in' (liq)
 ADD TO EVERY OBJECT
   VERB dive_in
     CHECK my_game CAN dive_in
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
     AND hero IS NOT seduto
@@ -2800,7 +2784,7 @@ SYNTAX drink = drink (liq)
 ADD TO EVERY LIQUID
   VERB drink
     CHECK my_game CAN bere
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND liq IS potabile
       ELSE
         IF liq IS NOT plurale
@@ -2887,7 +2871,7 @@ SYNTAX drive = drive (vehicle)
 ADD TO EVERY OBJECT
   VERB drive
     CHECK my_game CAN drive
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND vehicle IS examinable
       ELSE
         IF vehicle IS NOT plurale
@@ -2962,7 +2946,7 @@ SYNTAX drop = drop (obj)*
 ADD TO EVERY OBJECT
   VERB drop
     CHECK my_game CAN lasciare
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
       AND obj IN hero
           ELSE
         IF obj IN worn
@@ -3033,7 +3017,7 @@ SYNTAX 'empty' = 'empty' (obj)
 ADD TO EVERY OBJECT
   VERB 'empty', pour
     CHECK my_game CAN 'empty' AND my_game CAN versare
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS takeable
       ELSE SAY check_obj_takeable OF my_game.
     AND CURRENT LOCATION IS lit
@@ -3147,7 +3131,7 @@ ADD TO EVERY OBJECT
   VERB empty_in, pour_in
     WHEN obj
       CHECK my_game CAN empty_in AND my_game CAN versare_in
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND obj <> cont
         ELSE SAY check_obj_not_obj2_in OF my_game.
       AND obj IS takeable
@@ -3276,7 +3260,7 @@ ADD TO EVERY THING
   VERB empty_on, pour_on
       WHEN obj
       CHECK my_game CAN empty_on AND my_game CAN versare_su
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND obj <> surface
         ELSE SAY check_obj_not_obj2_on OF my_game.
       AND obj IS takeable
@@ -3370,7 +3354,7 @@ SYNTAX enter = enter (obj)
 ADD TO EVERY OBJECT
   VERB enter
     CHECK my_game CAN entrare
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting2 OF my_game.
     AND hero IS NOT sdraiato
@@ -3424,7 +3408,7 @@ SYNTAX examine = examine (obj)
 ADD TO EVERY THING
   VERB examine
     CHECK my_game CAN esaminare
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
         AND obj IS examinable
           ELSE
         IF obj IS NOT plurale
@@ -3499,7 +3483,7 @@ SYNTAX 'exit' = 'exit' (obj)
 ADD TO EVERY OBJECT
   VERB 'exit'
     CHECK my_game CAN 'exit'
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     DOES
       IF obj IS NOT plurale
         THEN "That's not"
@@ -3549,7 +3533,7 @@ SYNTAX extinguish = extinguish (obj)
 ADD TO EVERY OBJECT
   VERB extinguish
     CHECK my_game CAN extinguish
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -3613,7 +3597,7 @@ SYNTAX fill = fill (cont)
 ADD TO EVERY OBJECT
   VERB fill
     CHECK my_game CAN fill
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND cont IS examinable
       ELSE
         IF cont IS NOT plurale
@@ -3664,7 +3648,7 @@ ADD TO EVERY OBJECT
   VERB fill_with
         WHEN cont
       CHECK my_game CAN fill_with
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND cont <> substance
         ELSE SAY check_obj_not_obj2_with OF my_game.
       AND substance IS examinable
@@ -3739,7 +3723,7 @@ SYNTAX
 ADD TO EVERY THING
   VERB find
     CHECK my_game CAN trovare
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj <> hero
       ELSE SAY check_obj_not_hero4 OF my_game.
     AND CURRENT LOCATION IS lit
@@ -3781,7 +3765,7 @@ SYNTAX fire = fire (weapon)
 ADD TO EVERY WEAPON
   VERB fire
     CHECK my_game CAN fire
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND weapon IS fireable
       ELSE
         IF weapon IS NOT plurale
@@ -3823,7 +3807,7 @@ ADD TO EVERY WEAPON
   VERB fire_at
     WHEN weapon
       CHECK my_game CAN fire_at
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND weapon IS fireable
         ELSE
           IF weapon IS NOT plurale
@@ -3899,7 +3883,7 @@ SYNTAX fix = fix (obj)
 ADD TO EVERY OBJECT
   VERB fix
     CHECK my_game CAN fix
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
     AND obj IS broken
@@ -3954,7 +3938,7 @@ SYNTAX follow = follow (act)!
 ADD TO EVERY THING
   VERB follow
     CHECK my_game CAN seguire
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND act <> hero
       ELSE SAY check_obj_not_hero1 OF my_game.
     AND CURRENT LOCATION IS lit
@@ -4000,7 +3984,7 @@ SYNTAX free = free (obj)
 ADD TO EVERY THING
   VERB free
     CHECK my_game CAN liberare
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -4060,7 +4044,7 @@ SYNTAX get_off = get off (surface)
 ADD TO EVERY SUPPORTER
   VERB get_off
     CHECK my_game CAN get_off
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     DOES
       IF hero IS seduto OR hero IS sdraiato
         THEN "You get off" SAY THE surface. "."
@@ -4086,7 +4070,7 @@ SYNTAX get_up = get up.
 
 VERB get_up
   CHECK my_game CAN get_up
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     IF hero IS seduto
       THEN "You stand up."
@@ -4130,7 +4114,7 @@ SYNTAX hint = hint.
 
 VERB hint
   CHECK my_game CAN hint
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     "Unfortunately hints are not available in this game."
 END VERB.
@@ -4154,7 +4138,7 @@ SYNTAX jump = jump.
 
 VERB jump
   CHECK my_game CAN saltare
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   AND hero IS NOT seduto
     ELSE SAY check_hero_not_sitting1 OF my_game.
   AND hero IS NOT sdraiato
@@ -4193,7 +4177,7 @@ SYNTAX jump_in = jump 'in' (cont)
 ADD TO EVERY OBJECT
   VERB jump_in
     CHECK my_game CAN saltare_in
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
     AND cont IS reachable AND cont IS NOT distant
@@ -4246,7 +4230,7 @@ SYNTAX jump_on = jump 'on' (surface)
 ADD TO EVERY OBJECT
   VERB jump_on
     CHECK my_game CAN saltare_su
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
     AND hero IS NOT seduto
@@ -4285,7 +4269,7 @@ SYNTAX kick = kick (target)
 ADD TO EVERY THING
   VERB kick
     CHECK my_game CAN kick
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND target IS examinable
       ELSE
         IF target IS NOT plurale
@@ -4344,7 +4328,7 @@ SYNTAX kill = kill (victim)
 ADD TO EVERY ACTOR
   VERB kill
     CHECK my_game CAN uccidere
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND victim IS examinable
       ELSE
         IF victim IS NOT plurale
@@ -4390,7 +4374,7 @@ ADD TO EVERY ACTOR
   VERB kill_with
     WHEN victim
       CHECK my_game CAN uccidere_con
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND victim <> hero
         ELSE SAY check_obj_not_hero2 OF my_game.
       AND weapon IN hero
@@ -4431,7 +4415,7 @@ SYNTAX kiss = kiss (obj)
 ADD TO EVERY THING
   VERB kiss
     CHECK my_game CAN baciare
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -4496,7 +4480,7 @@ SYNTAX knock = knock 'on' (obj)
 ADD TO EVERY OBJECT
   VERB knock
     CHECK my_game CAN knock
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -4555,7 +4539,7 @@ SYNTAX lie_down = lie 'down'.
 
 VERB lie_down
   CHECK my_game CAN lie_down
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   AND hero IS NOT sdraiato
     ELSE SAY check_hero_not_lying_down4 OF my_game.
   DOES
@@ -4607,7 +4591,7 @@ SYNTAX lie_in = lie 'in' (cont)
 ADD TO EVERY OBJECT
   VERB lie_in
     CHECK my_game CAN lie_in
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down4 OF my_game.
     AND CURRENT LOCATION IS lit
@@ -4671,7 +4655,7 @@ SYNTAX lie_on = lie 'on' (surface)
 ADD TO EVERY OBJECT
   VERB lie_on
     CHECK my_game CAN lie_on
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down4 OF my_game.
     AND CURRENT LOCATION IS lit
@@ -4735,7 +4719,7 @@ SYNTAX lift = lift (obj)
 ADD TO EVERY OBJECT
   VERB lift
     CHECK my_game CAN lift
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -4800,7 +4784,7 @@ SYNTAX light = light (obj)
 ADD TO EVERY OBJECT
   VERB light
   CHECK my_game CAN light
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
   AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -4850,7 +4834,7 @@ SYNTAX listen0 = listen.
 
 VERB listen0
   CHECK my_game CAN listen0
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     "You hear nothing unusual."
 END VERB.
@@ -4878,7 +4862,7 @@ SYNTAX listen = listen 'to' (obj)!
 ADD TO EVERY THING
   VERB listen
     CHECK my_game CAN listen
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj <> hero
       ELSE SAY check_obj_not_hero1 OF my_game.
     DOES
@@ -4922,7 +4906,7 @@ SYNTAX lock = lock (obj)
 ADD TO EVERY OBJECT
   VERB lock
     CHECK my_game CAN lock
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS lockable
           ELSE
         IF obj IS NOT plurale
@@ -5001,7 +4985,7 @@ ADD TO EVERY OBJECT
     VERB lock_with
         WHEN obj
       CHECK my_game CAN lock_with
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
           AND obj IS lockable
         ELSE
           IF obj IS NOT plurale
@@ -5072,7 +5056,7 @@ SYNTAX 'look' = 'look'.
 
 VERB 'look'
   CHECK my_game CAN 'look'
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     INCREASE described OF CURRENT LOCATION.
     -- see 'locations.i', attribute 'described'.
@@ -5113,7 +5097,7 @@ SYNTAX look_behind = 'look' behind (bulk)
 ADD TO EVERY THING
   VERB look_behind
     CHECK my_game CAN look_behind
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND bulk IS examinable
       ELSE SAY check_obj_suitable_there OF my_game.
     AND CURRENT LOCATION IS lit
@@ -5150,7 +5134,7 @@ SYNTAX
 ADD TO EVERY OBJECT
   VERB look_in
     CHECK my_game CAN look_in
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND cont IS examinable
       ELSE SAY check_obj_suitable_there OF my_game.
     AND CURRENT LOCATION IS lit
@@ -5190,7 +5174,7 @@ SYNTAX look_out_of = 'look' 'out' 'of' (obj)
 ADD TO EVERY OBJECT
   VERB look_out_of
     CHECK my_game CAN look_out_of
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -5228,7 +5212,7 @@ SYNTAX look_through = 'look' through (bulk)
 ADD TO EVERY OBJECT
   VERB look_through
     CHECK my_game CAN look_through
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND bulk IS examinable
       ELSE SAY check_obj_suitable_look_through OF my_game.
     AND CURRENT LOCATION IS lit
@@ -5258,7 +5242,7 @@ SYNTAX look_under = 'look' under (bulk)
 ADD TO EVERY THING
   VERB look_under
     CHECK my_game CAN look_under
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND bulk IS examinable
       ELSE SAY check_obj_suitable_there OF my_game.
     AND bulk <> hero
@@ -5286,7 +5270,7 @@ SYNTAX look_up = 'look' up.
 
 VERB look_up
   CHECK my_game CAN look_up
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES "Looking up, you see nothing unusual."
 END VERB.
 
@@ -5306,7 +5290,7 @@ SYNTAX 'no' = 'no'.
 
 VERB 'no'
   CHECK my_game CAN 'no'
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES "Really?"
 END VERB.
 
@@ -5337,7 +5321,7 @@ SYNTAX notify = notify.
 
 VERB notify
   CHECK my_game CAN notify
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     IF my_game HAS notify_turned_on
       THEN MAKE my_game NOT notify_turned_on.
@@ -5351,7 +5335,7 @@ END VERB.
 
 VERB notify_on
   CHECK my_game CAN notify_on
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     IF my_game HAS notify_turned_on
       THEN "Score notification is already enabled."
@@ -5364,7 +5348,7 @@ END VERB.
 
 VERB notify_off
   CHECK my_game CAN notify_off
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     IF my_game HAS notify_turned_on
       THEN MAKE my_game NOT notify_turned_on.
@@ -5444,7 +5428,7 @@ SYNTAX open = open (obj)
 ADD TO EVERY OBJECT
   VERB open
     CHECK my_game CAN aprire
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
         AND obj IS openable
           ELSE
         IF obj IS NOT plurale
@@ -5523,7 +5507,7 @@ ADD TO EVERY OBJECT
   VERB open_with
         WHEN obj
       CHECK my_game CAN aprire_con
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
           AND obj IS openable
           ELSE
           IF obj IS NOT plurale
@@ -5608,7 +5592,7 @@ SYNTAX 'play' = 'play' (obj)
 ADD TO EVERY OBJECT
   VERB 'play'
     CHECK my_game CAN 'play'
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -5665,7 +5649,7 @@ SYNTAX play_with = 'play' 'with' (obj)
 ADD TO EVERY THING
   VERB play_with
     CHECK my_game CAN play_with
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -5735,7 +5719,7 @@ SYNTAX pry = pry (obj)
 ADD TO EVERY OBJECT
   VERB pry
     CHECK my_game CAN pry
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -5778,7 +5762,7 @@ ADD TO EVERY OBJECT
 VERB pry_with
    WHEN obj
   CHECK my_game CAN pry_with
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   AND obj IS examinable
     ELSE
       IF obj IS NOT plurale
@@ -5839,7 +5823,7 @@ SYNTAX pull = pull (obj)
 ADD TO EVERY OBJECT
   VERB pull
     CHECK my_game CAN tirare
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS movable
       ELSE SAY check_obj_movable OF my_game.
     AND obj <> hero
@@ -5891,7 +5875,7 @@ SYNTAX push = push (obj)
 ADD TO EVERY THING
   VERB push
     CHECK my_game CAN spingere
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS movable
           ELSE SAY check_obj_movable OF my_game.
     AND obj <> hero
@@ -5949,7 +5933,7 @@ ADD TO EVERY THING
   VERB push_with
     WHEN obj
       CHECK my_game CAN spingere_con
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND obj IS movable
           ELSE SAY check_obj_movable OF my_game.
       AND obj <> instr
@@ -6008,7 +5992,7 @@ SYNTAX put = put (obj)
 ADD TO EVERY OBJECT
   VERB put
     CHECK my_game CAN put
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IN HERO
       ELSE SAY check_obj_in_hero OF my_game.
     AND CURRENT LOCATION IS lit
@@ -6071,7 +6055,7 @@ ADD TO EVERY OBJECT
   VERB put_in
     WHEN obj
       CHECK my_game CAN put_in
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND obj <> cont
         ELSE SAY check_obj_not_obj2_in OF my_game.
           AND obj IS takeable
@@ -6185,7 +6169,7 @@ ADD TO EVERY OBJECT
     WHEN obj
       CHECK my_game CAN put_against AND my_game CAN put_behind
         AND my_game CAN put_near AND my_game CAN put_under
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
           AND bulk NOT IN hero
           ELSE SAY check_obj2_not_in_hero2 OF my_game.
       AND obj <> bulk
@@ -6264,7 +6248,7 @@ ADD TO EVERY OBJECT
   VERB put_on
     WHEN obj
       CHECK my_game CAN put_on
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND obj <> surface
           ELSE SAY check_obj_not_obj2_on OF my_game.
           AND obj IS takeable
@@ -6364,7 +6348,7 @@ SYNTAX read = read (obj)
 ADD TO EVERY OBJECT
     VERB read
     CHECK my_game CAN leggere
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS readable
           ELSE
         IF obj IS NOT plurale
@@ -6422,7 +6406,7 @@ SYNTAX remove = remove (obj)
 ADD TO EVERY OBJECT
   VERB remove
     CHECK my_game CAN remove
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     DOES
       IF obj IS NOT plurale
         THEN "That's"
@@ -6477,7 +6461,7 @@ SYNONYMS massage = rub.
 ADD TO EVERY THING
   VERB rub
     CHECK my_game CAN rub
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -6530,7 +6514,7 @@ SYNTAX 'say' = 'say' (topic)
 ADD TO EVERY STRING
   VERB 'say'
     CHECK my_game CAN 'say'
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
         DOES
           "Nothing happens."
     END VERB.
@@ -6563,7 +6547,7 @@ ADD TO EVERY ACTOR
   VERB say_to
         WHEN act
       CHECK my_game CAN say_to
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND act <> hero
         ELSE SAY check_obj2_not_hero1 OF my_game.
           AND act CAN talk
@@ -6604,7 +6588,7 @@ SYNTAX 'score' = 'score'.
 
 VERB 'score'
   CHECK my_game CAN 'score'
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     SCORE.
     -- (or, if you wish to disable the score, use the following kind of
@@ -6635,7 +6619,7 @@ SYNTAX scratch = scratch (obj)
 ADD TO EVERY THING
   VERB scratch
     CHECK my_game CAN scratch
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -6689,7 +6673,7 @@ SYNONYMS 'transcript' = 'script'.
 
 VERB 'script'
   CHECK my_game CAN 'script'
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     "You can turn transcripting on and off using the 'script on/off' command within the game.
     The transcript will be available in a file with a name starting with the game name.
@@ -6700,7 +6684,7 @@ END VERB.
 
 VERB script_on
   CHECK my_game CAN script_on
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
     DOES
         TRANSCRIPT ON.
         "Transcripting turned on."
@@ -6708,7 +6692,7 @@ END VERB.
 
 VERB script_off
   CHECK my_game CAN script_off
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
     DOES
         TRANSCRIPT OFF.
         "Transcripting turned off."
@@ -6737,7 +6721,7 @@ SYNTAX search = search (obj)
 ADD TO EVERY THING
   VERB search
     CHECK my_game CAN search
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj <> hero
       ELSE LIST hero.
     AND obj IS inanimate
@@ -6787,7 +6771,7 @@ SYNTAX sell = sell (item)
 ADD TO EVERY OBJECT
     VERB sell
     CHECK my_game CAN vendere
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND item IS examinable
       ELSE
         IF item IS NOT plurale
@@ -6829,7 +6813,7 @@ SYNTAX shake = shake (obj)
 ADD TO EVERY OBJECT
   VERB shake
     CHECK my_game CAN shake
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -6889,7 +6873,7 @@ SYNTAX shoot = shoot (target)
 ADD TO EVERY THING
     VERB shoot
     CHECK my_game CAN shoot
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND target IS examinable
       ELSE
         IF target IS NOT plurale
@@ -6966,7 +6950,7 @@ ADD TO EVERY THING
     VERB shoot_with
         WHEN target
       CHECK my_game CAN shoot_with
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND target IS examinable
         ELSE
           IF target IS NOT plurale
@@ -7013,7 +6997,7 @@ SYNTAX shout = shout.
 
 VERB shout
   CHECK my_game CAN gridare
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
     DOES
         "Nothing results from your $ving."
 END VERB.
@@ -7051,7 +7035,7 @@ ADD TO EVERY OBJECT
   VERB 'show'
     WHEN obj
       CHECK my_game CAN mostrare
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND act <> hero
         ELSE SAY check_obj2_not_hero1 OF my_game.
       AND obj IN hero
@@ -7095,7 +7079,7 @@ SYNTAX sing = sing.
 
 VERB sing
   CHECK my_game CAN sing
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
     DOES
         "You $v a little tune."
 END VERB.
@@ -7126,7 +7110,7 @@ SYNTAX sip = sip (liq)
 ADD TO EVERY LIQUID
     VERB sip
     CHECK my_game CAN sip
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND liq IS potabile
       ELSE
         IF liq IS NOT plurale
@@ -7202,7 +7186,7 @@ SYNTAX sit = sit.
 
 VERB sit
   CHECK my_game CAN sit
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   AND hero IS NOT seduto
     ELSE SAY check_hero_not_sitting4 OF my_game.
   DOES
@@ -7248,7 +7232,7 @@ SYNTAX sit_on = sit 'on' (surface)
 ADD TO EVERY SUPPORTER
     VERB sit_on
     CHECK my_game CAN sit_on
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting4 OF my_game.
     AND CURRENT LOCATION IS lit
@@ -7308,7 +7292,7 @@ SYNONYMS riposa = dormi.
 
 VERB dormi
   CHECK my_game CAN dormire
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     "Non è il momento di riposare."
 END VERB.
@@ -7329,7 +7313,7 @@ SYNTAX smell0 = smell.
 
 VERB smell0
   CHECK my_game CAN smell0
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
      DOES
     "You smell nothing unusual."
 END VERB.
@@ -7357,7 +7341,7 @@ SYNTAX smell = smell (odour)
 ADD TO EVERY THING
     VERB smell
     CHECK my_game CAN smell
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     DOES
           "You smell nothing unusual."
     END VERB.
@@ -7386,7 +7370,7 @@ SYNTAX squeeze = squeeze (obj)
 ADD TO EVERY THING
     VERB squeeze
     CHECK my_game CAN squeeze
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -7433,7 +7417,7 @@ SYNTAX stand = stand.
 
 VERB stand
   CHECK my_game CAN stand
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     IF hero IS seduto OR hero IS sdraiato
       THEN "You get up."
@@ -7467,7 +7451,7 @@ SYNTAX stand_on = stand 'on' (surface)
 ADD TO EVERY SUPPORTER
   VERB stand_on
     CHECK my_game CAN stand_on
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
     AND surface IS reachable AND surface IS NOT distant
@@ -7512,7 +7496,7 @@ SYNTAX swim = swim.
 
 VERB swim
   CHECK my_game CAN nuotare
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   AND hero IS NOT seduto
     ELSE SAY check_hero_not_sitting1 OF my_game.
   AND hero IS NOT sdraiato
@@ -7547,7 +7531,7 @@ SYNTAX swim_in = swim 'in' (liq)
 ADD TO EVERY OBJECT
   VERB swim_in
     CHECK my_game CAN nuotare_in
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting3 OF my_game.
     AND hero IS NOT sdraiato
@@ -7612,7 +7596,7 @@ SYNTAX switch = switch (app)      -- app = apparatus, appliance
 ADD TO EVERY OBJECT
   VERB switch
     CHECK my_game CAN switch
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     DOES
       IF app IS NOT plurale
         THEN "That's not"
@@ -7666,7 +7650,7 @@ SYNTAX talk = talk.
 
 VERB talk
   CHECK my_game CAN talk
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     "To talk to somebody, you can ASK PERSON ABOUT THING
     or TELL PERSON ABOUT THING."
@@ -7695,7 +7679,7 @@ SYNTAX talk_to = talk 'to' (act)
 ADD TO EVERY ACTOR
     VERB talk_to
     CHECK my_game CAN talk_to
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     DOES
       "To talk to somebody, you can ASK PERSON ABOUT THING or
       TELL PERSON ABOUT THING."
@@ -7725,7 +7709,7 @@ SYNTAX taste = taste (obj)
 ADD TO EVERY OBJECT
   VERB taste
     CHECK my_game CAN assaggiare
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -7788,7 +7772,7 @@ SYNTAX tear = tear (obj)
 ADD TO EVERY OBJECT
   VERB tear
     CHECK my_game CAN tear
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -7851,7 +7835,7 @@ ADD TO EVERY ACTOR
   VERB tell
         WHEN act
       CHECK my_game CAN tell
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND act <> hero
         ELSE SAY check_obj_not_hero1 OF my_game.
           AND act CAN talk
@@ -7899,7 +7883,7 @@ SYNONYMS ponder, meditate, reflect = think.
 
 VERB think
   CHECK my_game CAN think
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     "Nothing helpful comes to your mind."
 END VERB.
@@ -7929,7 +7913,7 @@ SYNTAX think_about = think 'about' (topic)!
 ADD TO EVERY THING
   VERB think_about
     CHECK my_game CAN think_about
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     DOES
       "Nothing helpful comes to your mind."
     END VERB.
@@ -7955,7 +7939,7 @@ SYNTAX throw = throw (projectile)
 ADD TO EVERY OBJECT
     VERB throw
     CHECK my_game CAN throw
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND projectile IS examinable
       ELSE
         IF projectile IS NOT plurale
@@ -8033,7 +8017,7 @@ ADD TO EVERY OBJECT
   VERB throw_at
         WHEN projectile
       CHECK my_game CAN throw_at
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
           AND projectile IS examinable
         ELSE
           IF projectile IS NOT plurale
@@ -8147,7 +8131,7 @@ ADD TO EVERY OBJECT
   VERB throw_to
         WHEN projectile
       CHECK my_game CAN throw_to
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
           AND projectile IS examinable
         ELSE
           IF projectile IS NOT plurale
@@ -8230,7 +8214,7 @@ ADD TO EVERY OBJECT
   VERB throw_in
         WHEN projectile
       CHECK my_game CAN throw_in
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
               AND projectile IS examinable
           ELSE
           IF projectile IS NOT plurale
@@ -8331,7 +8315,7 @@ SYNTAX tie = tie (obj)
 ADD TO EVERY OBJECT
   VERB tie
     CHECK my_game CAN tie
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -8369,7 +8353,7 @@ ADD TO EVERY THING
   VERB tie_to
     WHEN obj
       CHECK my_game CAN tie_to
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND obj IS examinable
           ELSE
           IF obj IS NOT plurale
@@ -8451,7 +8435,7 @@ SYNTAX touch = touch (obj)
 ADD TO EVERY THING
   VERB touch
     CHECK my_game CAN touch
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
         AND obj IS examinable
               ELSE
         IF obj IS NOT plurale
@@ -8518,7 +8502,7 @@ ADD TO EVERY THING
   VERB touch_with
     WHEN obj
       CHECK my_game CAN touch_with
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
           AND obj IS examinable
               ELSE
           IF obj IS NOT plurale
@@ -8592,7 +8576,7 @@ SYNTAX turn = turn (obj)
 ADD TO EVERY OBJECT
     VERB turn
     CHECK my_game CAN turn
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
@@ -8675,7 +8659,7 @@ SYNTAX turn_on = turn 'on' (app)
 ADD TO EVERY OBJECT
   VERB turn_on
       CHECK my_game CAN turn_on
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     DOES
       IF app IS NOT plurale
         THEN "That's not"
@@ -8728,7 +8712,7 @@ SYNTAX turn_off = turn off (app)
 ADD TO EVERY OBJECT
   VERB turn_off
     CHECK my_game CAN turn_off
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     DOES
       IF app IS NOT plurale
         THEN "That's not"
@@ -8761,7 +8745,7 @@ SYNTAX unlock = unlock (obj)
 ADD TO EVERY OBJECT
   VERB unlock
     CHECK my_game CAN unlock
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj IS lockable
           ELSE
         IF obj IS NOT plurale
@@ -8827,7 +8811,7 @@ ADD TO EVERY OBJECT
   VERB unlock_with
         WHEN obj
       CHECK my_game CAN unlock_with
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
           AND obj IS lockable
               ELSE
           IF obj IS NOT plurale
@@ -8896,7 +8880,7 @@ SYNTAX 'use' = 'use' (obj)
 ADD TO EVERY OBJECT
   VERB 'use'
     CHECK my_game CAN 'use'
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     DOES
       "Please be more specific. How do you intend to use"
 
@@ -8929,7 +8913,7 @@ ADD TO EVERY OBJECT
   VERB use_with
         WHEN obj
       CHECK my_game CAN use_with
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
       AND obj <> instr
         ELSE SAY check_obj_not_obj2_with OF my_game.
       DOES
@@ -8954,7 +8938,7 @@ SYNTAX verbose = verbose.
 
 VERB verbose
   CHECK my_game CAN modalità_lunga
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     VISITS 0.
     -- "Verbose mode is now on. Location descriptions will be
@@ -8994,7 +8978,7 @@ SYNTAX wear = wear (obj)
 ADD TO EVERY OBJECT
   VERB wear
     CHECK my_game CAN indossare
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
     AND obj NOT IN worn
       ELSE SAY check_obj_not_in_worn1 OF my_game.
     AND obj IS takeable
@@ -9050,7 +9034,7 @@ SYNTAX what_am_i = cosa sono.
 
 VERB what_am_i
   CHECK my_game CAN what_am_i
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     "Maybe examining yourself might help."
 END VERB.
@@ -9080,7 +9064,7 @@ SYNTAX what_is = 'what' 'is' (obj)!
 ADD TO EVERY THING
   VERB what_is
     CHECK my_game CAN what_is
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     DOES
       "You'll have to find it out yourself."
     END VERB.
@@ -9106,7 +9090,7 @@ SYNTAX where_am_i = dove sono.
 
 VERB where_am_i
   CHECK my_game CAN where_am_i
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     LOOK.
 END VERB.
@@ -9136,7 +9120,7 @@ SYNTAX where_is = 'where' 'is' (obj)!
 ADD TO EVERY THING
   VERB where_is
     CHECK my_game CAN where_is
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     AND obj NOT AT hero
       ELSE
         IF obj IS NOT plurale
@@ -9168,7 +9152,7 @@ SYNTAX who_am_i = chi sono.
 
 VERB who_am_i
   CHECK my_game CAN who_am_i
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES
     "Maybe examining yourself might help."
 END VERB.
@@ -9198,7 +9182,7 @@ SYNTAX who_is = 'who' 'is' (act)!
 ADD TO EVERY ACTOR
   VERB who_is
     CHECK my_game CAN who_is
-      ELSE SAY restricted_response OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
     DOES
       "You'll have to find it out yourself."
     END VERB.
@@ -9228,7 +9212,7 @@ ADD TO EVERY OBJECT
   VERB write
         WHEN obj
       CHECK my_game CAN write
-        ELSE SAY restricted_response OF my_game.
+        ELSE SAY azione_bloccata OF my_game.
             AND obj IS writeable
         ELSE SAY check_obj_writeable OF my_game.
         AND CURRENT LOCATION IS lit
@@ -9319,7 +9303,7 @@ SYNTAX yes = yes.
 
 VERB yes
   CHECK my_game CAN yes
-    ELSE SAY restricted_response OF my_game.
+    ELSE SAY azione_bloccata OF my_game.
   DOES "Really?"
 END VERB.
 
