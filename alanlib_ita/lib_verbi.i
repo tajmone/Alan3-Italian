@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.13 (2018/07/17)
+-- "lib_verbi.i" v0.2.14 (2018/07/17)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -440,10 +440,10 @@ ADD TO EVERY OBJECT
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-    AND hero IS NOT sitting
+    AND hero IS NOT seduto
       --> @TODO!!                                                               TRANSLATE!
       ELSE SAY check_hero_not_sitting3 OF my_game.
-    AND hero IS NOT lying_down
+    AND hero IS NOT sdraiato
       --> @TODO!!                                                               TRANSLATE!
       ELSE SAY check_hero_not_lying_down3 OF my_game.
     DOES
@@ -1412,9 +1412,9 @@ ADD TO EVERY THING
       ELSE SAY check_obj_not_hero4 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
-    AND hero IS NOT sitting
+    AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting3 OF my_game.
-    AND hero IS NOT lying_down
+    AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down3 OF my_game.
     AND dest NOT AT hero
       ELSE
@@ -1742,9 +1742,9 @@ ADD TO EVERY THING
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-    AND hero IS NOT sitting
+    AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting2 OF my_game.
-    AND hero IS NOT lying_down
+    AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down2 OF my_game.
         DOES
           "La violenza non è la giusta risposta a questo." --> taken from i6
@@ -1817,9 +1817,9 @@ ADD TO EVERY THING
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
           END IF.
-      AND hero IS NOT sitting
+      AND hero IS NOT seduto
         ELSE SAY check_hero_not_sitting2 OF my_game.
-      AND hero IS NOT lying_down
+      AND hero IS NOT sdraiato
         ELSE SAY check_hero_not_lying_down2 OF my_game.
           DOES
             "La violenza non è la giusta risposta a questo." --> taken from i6
@@ -1974,9 +1974,9 @@ ADD TO EVERY THING
       ELSE SAY check_obj_not_hero1 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
-    AND hero IS NOT sitting
+    AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting2 OF my_game.
-    AND hero IS NOT lying_down
+    AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down2 OF my_game.
     DOES
       IF obj IS NOT plurale
@@ -2101,9 +2101,9 @@ ADD TO EVERY OBJECT
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-  AND hero IS NOT sitting
+  AND hero IS NOT seduto
     ELSE SAY check_hero_not_sitting3 OF my_game.
-  AND hero IS NOT lying_down
+  AND hero IS NOT sdraiato
     ELSE SAY check_hero_not_lying_down3 OF my_game.
   DOES
     IF obj IS NOT plurale
@@ -2155,9 +2155,9 @@ ADD TO EVERY SUPPORTER
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-    AND hero IS NOT sitting
+    AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting3 OF my_game.
-    AND hero IS NOT lying_down
+    AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down3 OF my_game.
     DOES
       IF surface IS NOT plurale
@@ -2548,9 +2548,9 @@ VERB dance
     ELSE SAY restricted_response OF my_game.
   AND CURRENT LOCATION IS lit
     ELSE SAY check_current_loc_lit OF my_game.
-  AND hero IS NOT sitting
+  AND hero IS NOT seduto
     ELSE SAY check_hero_not_sitting1 OF my_game.
-  AND hero IS NOT lying_down
+  AND hero IS NOT sdraiato
     ELSE SAY check_hero_not_lying_down1 OF my_game.
     DOES
         "How about a waltz?"
@@ -2597,9 +2597,9 @@ ADD TO EVERY OBJECT
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-    AND hero IS NOT sitting
+    AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting2 OF my_game.
-    AND hero IS NOT lying_down
+    AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down2 OF my_game.
     DOES
       "There is nothing suitable to dig here."
@@ -2625,9 +2625,9 @@ VERB dive
     ELSE SAY restricted_response OF my_game.
   AND CURRENT LOCATION IS lit
     ELSE SAY check_current_loc_lit OF my_game.
-  AND hero IS NOT sitting
+  AND hero IS NOT seduto
     ELSE SAY check_hero_not_sitting3 OF my_game.
-  AND hero IS NOT lying_down
+  AND hero IS NOT sdraiato
     ELSE SAY check_hero_not_lying_down3 OF my_game.
   DOES
     "There is no water suitable for swimming here."
@@ -2667,9 +2667,9 @@ ADD TO EVERY OBJECT
       ELSE SAY restricted_response OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
-    AND hero IS NOT sitting
+    AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting3 OF my_game.
-    AND hero IS NOT lying_down
+    AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down3 OF my_game.
     -- notice that, unlike 'swim_in', it is possible to dive in a
     -- not reachable object (for example from a clifftop into a river)
@@ -2825,7 +2825,7 @@ ADD TO EVERY OBJECT
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-    AND hero IS NOT lying_down
+    AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down3 OF my_game.
     DOES
       IF vehicle IS NOT plurale
@@ -3346,9 +3346,9 @@ ADD TO EVERY OBJECT
   VERB enter
     CHECK my_game CAN entrare
       ELSE SAY restricted_response OF my_game.
-    AND hero IS NOT sitting
+    AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting2 OF my_game.
-    AND hero IS NOT lying_down
+    AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down2 OF my_game.
       DOES
       IF obj IS NOT plurale
@@ -3940,9 +3940,9 @@ ADD TO EVERY THING
           THEN SAY check_obj_not_at_hero_sg OF my_game.
           ELSE SAY check_obj_not_at_hero_pl OF my_game.
         END IF.
-    AND hero IS NOT sitting
+    AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting2 OF my_game.
-    AND hero IS NOT lying_down
+    AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down2 OF my_game.
     AND act NEAR hero
       ELSE SAY check_act_near_hero OF my_game.
@@ -4037,10 +4037,10 @@ ADD TO EVERY SUPPORTER
     CHECK my_game CAN get_off
       ELSE SAY restricted_response OF my_game.
     DOES
-      IF hero IS sitting OR hero IS lying_down
+      IF hero IS seduto OR hero IS sdraiato
         THEN "You get off" SAY THE surface. "."
-          MAKE hero NOT lying_down.
-          MAKE hero NOT sitting.
+          MAKE hero NOT sdraiato.
+          MAKE hero NOT seduto.
         ELSE "You're standing up already."
       END IF.
     END VERB.
@@ -4063,14 +4063,14 @@ VERB get_up
   CHECK my_game CAN get_up
     ELSE SAY restricted_response OF my_game.
   DOES
-    IF hero IS sitting
+    IF hero IS seduto
       THEN "You stand up."
-        MAKE hero NOT sitting.
-        MAKE hero NOT lying_down.
-    ELSIF hero IS lying_down
+        MAKE hero NOT seduto.
+        MAKE hero NOT sdraiato.
+    ELSIF hero IS sdraiato
       THEN "You get up."
-        MAKE hero NOT lying_down.
-        MAKE hero NOT sitting.
+        MAKE hero NOT sdraiato.
+        MAKE hero NOT seduto.
     ELSE "You're standing up already."
     END IF.
 END VERB.
@@ -4130,9 +4130,9 @@ SYNTAX jump = jump.
 VERB jump
   CHECK my_game CAN saltare
     ELSE SAY restricted_response OF my_game.
-  AND hero IS NOT sitting
+  AND hero IS NOT seduto
     ELSE SAY check_hero_not_sitting1 OF my_game.
-  AND hero IS NOT lying_down
+  AND hero IS NOT sdraiato
     ELSE SAY check_hero_not_lying_down1 OF my_game.
   DOES
     "You jump on the spot, to no avail."
@@ -4186,9 +4186,9 @@ ADD TO EVERY OBJECT
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-    AND hero IS NOT sitting
+    AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting1 OF my_game.
-    AND hero IS NOT lying_down
+    AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down1 OF my_game.
     DOES
       IF cont IS NOT plurale
@@ -4224,9 +4224,9 @@ ADD TO EVERY OBJECT
       ELSE SAY restricted_response OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
-    AND hero IS NOT sitting
+    AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting1 OF my_game.
-    AND hero IS NOT lying_down
+    AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down1 OF my_game.
     DOES
       IF surface IS NOT plurale
@@ -4531,7 +4531,7 @@ SYNTAX lie_down = lie 'down'.
 VERB lie_down
   CHECK my_game CAN lie_down
     ELSE SAY restricted_response OF my_game.
-  AND hero IS NOT lying_down
+  AND hero IS NOT sdraiato
     ELSE SAY check_hero_not_lying_down4 OF my_game.
   DOES
     "There's no need to lie down right now."
@@ -4583,7 +4583,7 @@ ADD TO EVERY OBJECT
   VERB lie_in
     CHECK my_game CAN lie_in
       ELSE SAY restricted_response OF my_game.
-    AND hero IS NOT lying_down
+    AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down4 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -4647,7 +4647,7 @@ ADD TO EVERY OBJECT
   VERB lie_on
     CHECK my_game CAN lie_on
       ELSE SAY restricted_response OF my_game.
-    AND hero IS NOT lying_down
+    AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down4 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -7183,7 +7183,7 @@ SYNTAX sit = sit.
 VERB sit
   CHECK my_game CAN sit
     ELSE SAY restricted_response OF my_game.
-  AND hero IS NOT sitting
+  AND hero IS NOT seduto
     ELSE SAY check_hero_not_sitting4 OF my_game.
   DOES
     "You feel no urge to sit down at present."
@@ -7229,7 +7229,7 @@ ADD TO EVERY SUPPORTER
     VERB sit_on
     CHECK my_game CAN sit_on
       ELSE SAY restricted_response OF my_game.
-    AND hero IS NOT sitting
+    AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting4 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.
@@ -7415,10 +7415,10 @@ VERB stand
   CHECK my_game CAN stand
     ELSE SAY restricted_response OF my_game.
   DOES
-    IF hero IS sitting OR hero IS lying_down
+    IF hero IS seduto OR hero IS sdraiato
       THEN "You get up."
-        MAKE hero NOT sitting.
-        MAKE hero NOT lying_down.
+        MAKE hero NOT seduto.
+        MAKE hero NOT sdraiato.
       ELSE "You're standing up already."
     END IF.
 END VERB.
@@ -7493,9 +7493,9 @@ SYNTAX swim = swim.
 VERB swim
   CHECK my_game CAN nuotare
     ELSE SAY restricted_response OF my_game.
-  AND hero IS NOT sitting
+  AND hero IS NOT seduto
     ELSE SAY check_hero_not_sitting1 OF my_game.
-  AND hero IS NOT lying_down
+  AND hero IS NOT sdraiato
     ELSE SAY check_hero_not_lying_down1 OF my_game.
   AND CURRENT LOCATION IS lit
     ELSE SAY check_current_loc_lit OF my_game.
@@ -7528,9 +7528,9 @@ ADD TO EVERY OBJECT
   VERB swim_in
     CHECK my_game CAN nuotare_in
       ELSE SAY restricted_response OF my_game.
-    AND hero IS NOT sitting
+    AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting3 OF my_game.
-    AND hero IS NOT lying_down
+    AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down3 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_current_loc_lit OF my_game.

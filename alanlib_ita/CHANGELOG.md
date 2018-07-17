@@ -11,7 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/07/17](#20180717)
+- [2018/07/17 \(2\)](#20180717-2)
+- [2018/07/17 \(1\)](#20180717-1)
     - [Verb: `climb_through`](#verb-climb_through)
 - [2018/07/03 \(3\)](#20180703-3)
     - [Verb: `go_to`](#verb-go_to)
@@ -75,7 +76,20 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/07/17
+# 2018/07/17 (2)
+
+- [`lib_classi.i`][lib_classi] (v0.2.2)
+- [`lib_verbi.i`][lib_verbi] (v0.2.14)
+
+Translated ACTOR attributes:
+
+|   English    |  Italian   |
+|--------------|------------|
+| `sitting`    | `seduto`   |
+| `lying_down` | `sdraiato` |
+
+
+# 2018/07/17 (1)
 
 - [`lib_verbi.i`][lib_verbi] (v0.2.13)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.11)
@@ -85,6 +99,7 @@ Translated `my_game` attributes for verb restrictions:
 |     English     |    Italian     |
 |-----------------|----------------|
 | `climb_through` | `attraversare` |
+
 
 ## Verb: `climb_through`
 

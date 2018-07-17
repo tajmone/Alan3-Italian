@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.2.1 (2018/06/24)
+-- "lib_classi.i" v0.2.2 (2018/07/17)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1985,8 +1985,8 @@ END EVERY.
 ADD TO EVERY ACTOR
     IS NOT inanimate.
     IS NOT following.
-    IS NOT sitting.
-    IS NOT lying_down.
+    IS NOT seduto.   --> sitting
+    IS NOT sdraiato. --> lying_down
     IS NOT named.
   -- = the actor's name is not known to the player
   IS wearing {null_clothing}.

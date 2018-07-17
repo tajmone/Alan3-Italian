@@ -1,4 +1,4 @@
--- "_mygame_import.i" v0.2.0 (2018/06/24)
+-- "_mygame_import.i" v0.2.1 (2018/07/17)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -8,7 +8,12 @@
 --------------------------------------------------------------------------------
 -- ADAPTIONS TO ITALIAN CARRIED OUT SO FAR:
 -- 
---  * plural -> plurale
+--  * plural     -> plurale
+--  * sitting    -> seduto
+--  * lying_down -> sdraiato
+--------------------------------------------------------------------------------
+-- NOTA: Questo file andrà interamente rivisto a traduzione ultimata poiché non
+--       rispecchia i cambiamenti della traduzione!!!
 --------------------------------------------------------------------------------
 
 -- An auxiliary game source file for ALAN Standard Library v2.1.
@@ -999,10 +1004,10 @@ END VERB.
 
 VERB get_off
 	DOES ONLY
-		IF hero IS sitting OR hero IS lying_down
+		IF hero IS seduto OR hero IS sdraiato
 			THEN "You get off" SAY THE surface. "."
-				MAKE hero NOT lying_down.
-				MAKE hero NOT sitting.
+				MAKE hero NOT sdraiato.
+				MAKE hero NOT seduto.
 			ELSE "You're standing up already."
 		END IF.
 END VERB.
@@ -1011,14 +1016,14 @@ END VERB.
 
 VERB get_up
 	DOES ONLY
-		IF hero IS sitting 
+		IF hero IS seduto 
 			THEN "You stand up."
-				MAKE hero NOT sitting.
-				MAKE hero NOT lying_down.
-		ELSIF hero IS lying_down
+				MAKE hero NOT seduto.
+				MAKE hero NOT sdraiato.
+		ELSIF hero IS sdraiato
 			THEN "You get up."
-				MAKE hero NOT lying_down.
-				MAKE hero NOT sitting.
+				MAKE hero NOT sdraiato.
+				MAKE hero NOT seduto.
 		ELSE "You're standing up already."
 		END IF.
 END VERB.
@@ -1631,7 +1636,7 @@ VERB sit
 	DOES ONLY
 		"You feel no urge to sit down at present."
 		-- (or, if you wish to make it work, use the following instead of the above:
-		-- IF hero IS lying_down
+		-- IF hero IS sdraiato
 		--	THEN "You sit up."
 		--		MAKE hero NOT lying_down.
 		-- 	ELSE "You sit down."
@@ -1686,10 +1691,10 @@ END VERB.
 
 VERB stand 
 	DOES ONLY
-		IF hero IS sitting OR hero IS lying_down
+		IF hero IS seduto OR hero IS sdraiato
 			THEN "You get up."
-				MAKE hero NOT sitting.
-				MAKE hero NOT lying_down.
+				MAKE hero NOT seduto.
+				MAKE hero NOT sdraiato.
 			ELSE "You're standing up already."
 		END IF.
 END VERB.
