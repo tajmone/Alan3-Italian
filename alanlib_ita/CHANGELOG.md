@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/17](#20180717)
+    - [Verb: `climb_through`](#verb-climb_through)
 - [2018/07/03 \(3\)](#20180703-3)
     - [Verb: `go_to`](#verb-go_to)
 - [2018/07/03 \(2\)](#20180703-2)
@@ -72,6 +74,26 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/17
+
+- [`lib_verbi.i`][lib_verbi] (v0.2.13)
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.11)
+
+Translated `my_game` attributes for verb restrictions:
+
+|     English     |    Italian     |
+|-----------------|----------------|
+| `climb_through` | `attraversare` |
+
+## Verb: `climb_through`
+
+Translated verb `attraversa`, "__attraversa (obj)__" (_climb through_, but also _cross_):
+
+    attraversa (obj)
+
+with no synonyms.
+
 
 # 2018/07/03 (3)
 

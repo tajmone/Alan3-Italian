@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.10 (2018/07/03)
+-- "lib_definizioni.i" v0.2.11 (2018/07/17)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -969,6 +969,7 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN aprire_con.           --> open_with
   CAN aspettare.            --> wait         (+ z)
   CAN assaggiare.           --> taste        (+ lick)
+  CAN attraversare.         --> climb_through
   CAN baciare.              --> kiss         (+ hug, embrace)
   CAN bere.                 --> drink
   CAN bruciare.             --> burn
@@ -1034,7 +1035,6 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN catch.
   CAN climb.
   CAN climb_on.
-  CAN climb_through.
   CAN credits.     -- (+ acknowledgments, author, copyright)
   CAN dive.
   CAN dive_in.
@@ -1159,6 +1159,7 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game aprire_con.           --> open_with
   MAKE my_game aspettare.            --> wait         (+ z)
   MAKE my_game assaggiare.           --> taste        (+ lick)
+  MAKE my_game attraversare.         --> climb_through
   MAKE my_game baciare.              --> kiss         (+ hug, embrace)
   MAKE my_game bere.                 --> drink
   MAKE my_game caricare_partita.     --> 'restore'
@@ -1224,7 +1225,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game catch.
   MAKE my_game climb.
   MAKE my_game climb_on.
-  MAKE my_game climb_through.
   MAKE my_game credits.         -- (+ acknowledgments, author, copyright)
   MAKE my_game dive.
   MAKE my_game dive_in.
@@ -1362,6 +1362,7 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT aprire_con.           --> open_with
   MAKE my_game     aspettare.            --> wait         (+ z)
   MAKE my_game NOT assaggiare.           --> taste        (+ lick)
+  MAKE my_game NOT attraversare.         --> climb_through
   MAKE my_game NOT baciare.              --> kiss         (+ hug, embrace)
   MAKE my_game NOT bere.                 --> drink
   MAKE my_game     caricare_partita.     --> 'restore'
@@ -1427,7 +1428,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT catch.
   MAKE my_game NOT climb.
   MAKE my_game NOT climb_on.
-  MAKE my_game NOT climb_through.
   MAKE my_game credits.         -- (+ acknowledgments, author, copyright)
   MAKE my_game NOT dive.
   MAKE my_game NOT dive_in.
@@ -1550,6 +1550,7 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT aprire_con.           --> open_with
   MAKE my_game NOT aspettare.            --> wait         (+ z)
   MAKE my_game NOT assaggiare.           --> taste        (+ lick)
+  MAKE my_game NOT attraversare.         --> climb_through
   MAKE my_game NOT baciare.              --> kiss         (+ hug, embrace)
   MAKE my_game NOT bere.                 --> drink
   MAKE my_game     caricare_partita.     --> 'restore'
@@ -1615,7 +1616,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT catch.
   MAKE my_game NOT climb.
   MAKE my_game NOT climb_on.
-  MAKE my_game NOT climb_through.
   MAKE my_game credits.         -- (+ acknowledgments, author, copyright)
   MAKE my_game NOT dive.
   MAKE my_game NOT dive_in.
@@ -1736,6 +1736,7 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT aprire_con.           --> open_with
   MAKE my_game NOT aspettare.            --> wait         (+ z)
   MAKE my_game NOT assaggiare.           --> taste        (+ lick)
+  MAKE my_game NOT attraversare.         --> climb_through
   MAKE my_game NOT baciare.              --> kiss         (+ hug, embrace)
   MAKE my_game NOT bere.                 --> drink
   MAKE my_game NOT caricare_partita.     --> 'restore'
@@ -1801,7 +1802,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT catch.
   MAKE my_game NOT climb.
   MAKE my_game NOT climb_on.
-  MAKE my_game NOT climb_through.
   MAKE my_game NOT credits.     -- (+ acknowledgments, author, copyright)
   MAKE my_game NOT dive.
   MAKE my_game NOT dive_in.
