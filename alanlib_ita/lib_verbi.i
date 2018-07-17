@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.15 (2018/07/17)
+-- "lib_verbi.i" v0.2.16 (2018/07/17)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -28,6 +28,7 @@
 --| compra             | acquista                     | compra (item)            |   | 1 |   |
 --| dai_a              | porgi, offri                 | dai (ogg) a (recipient)  |   | 2 | x |
 --| inventario         | inv                          | inventario               | x | 0 |   |
+--| mangia             |                              | mangia (cibo)            |   | 1 |   |
 --| prega              |                              | prega                    |   | 0 |   |
 --| prendi             | afferra, raccogli, trasporta | prendi (ogg)             |   | 1 | x |
 --| prendi_da          | rimuovi, togli               | prendi (ogg) da (holder) |   | 2 | x |
@@ -93,7 +94,7 @@
 ----- drink                                                drink (liq)                         1
 ----- drive                                                drive (vehicle)                     1
 ----- drop        (+ discard, dump, reject)                drop (obj)                          1       x
------ eat                                                  eat (food)                          1
+----> eat                                                  eat (food)                          1
 ----- empty                                                empty (obj)                         1       x
 ----- empty_in                                             empty (obj) in (cont)               2       x
 ----- empty_on                                             empty (obj) on (surface)            2       x
@@ -763,7 +764,7 @@ SYNONYMS porgi, offri = dai.
 
 -- ==============================================================
 
--- @INVENTARIO - > @INVENTORY (SYNTAX HEADER)
+-- @INVENTARIO -> @INVENTORY (SYNTAX HEADER)
 ----- INVENTORY (+ i, inv)
 
 
@@ -801,6 +802,78 @@ END VERB.
 
 
 SYNONYMS inv = inventario.
+
+-- ==============================================================
+
+
+----- @MANGIA -> @EAT
+
+
+-- ==============================================================
+
+
+-- SYNTAX eat = eat (food)
+
+SYNTAX mangia = mangia (cibo)
+  WHERE cibo ISA OBJECT
+    ELSE
+      IF cibo IS NOT plurale
+        --> @TODO!!                                                             TRANSLATE!
+        THEN SAY illegal_parameter_sg OF my_game.
+        ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+
+
+ADD TO EVERY OBJECT
+  VERB mangia
+    CHECK my_game CAN mangiare
+      ELSE SAY restricted_response OF my_game.
+    AND cibo IS commestibile
+      ELSE
+        IF cibo IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game.
+          ELSE SAY check_obj_idoneo_pl OF my_game.
+        END IF.
+        "mangiare."
+    AND cibo IS takeable
+      --> @TODO!!                                                               TRANSLATE!
+      ELSE SAY check_obj_takeable OF my_game.
+    AND CURRENT LOCATION IS lit
+      --> @TODO!!                                                               TRANSLATE!
+      ELSE SAY check_current_loc_lit OF my_game.
+    AND cibo IS reachable AND cibo IS NOT distant
+      ELSE
+        IF cibo IS NOT reachable
+          THEN
+            IF cibo IS NOT plurale
+              --> @TODO!!                                                       TRANSLATE!
+              THEN SAY check_obj_reachable_sg OF my_game.
+              ELSE SAY check_obj_reachable_pl OF my_game.
+            END IF.
+        ELSIF cibo IS distant
+          THEN
+            IF cibo IS NOT plurale
+              --> @TODO!!                                                       TRANSLATE!
+              THEN SAY check_obj_not_distant_sg OF my_game.
+              ELSE SAY check_obj_not_distant_pl OF my_game.
+            END IF.
+        END IF.
+    DOES
+      -- implicit taking:
+      IF cibo NOT DIRECTLY IN hero
+        THEN LOCATE cibo IN hero.
+          --> @TODO!!                                                           TRANSLATE!
+          SAY implicit_taking_message OF my_game.
+      END IF.
+      -- end of implicit taking.
+
+      "Mangi" SAY THE cibo. "."
+   -- "You eat all of" SAY THE cibo. "."
+      LOCATE cibo AT nowhere.
+
+  END VERB.
+END ADD.
 
 
 
@@ -1867,7 +1940,7 @@ ADD TO EVERY OBJECT
   VERB bite
     CHECK my_game CAN bite
       ELSE SAY restricted_response OF my_game.
-    AND obj IS edible
+    AND obj IS commestibile
       ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -2023,6 +2096,9 @@ SYNTAX clean = clean (obj)
       END IF.
 
 
+SYNONYMS wipe, polish = clean.
+
+----- notice that 'rub' is defined separately
 
 ADD TO EVERY OBJECT
   VERB clean
@@ -2059,10 +2135,6 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
-SYNONYMS wipe, polish = clean.
-
-
------ notice that 'rub' is defined separately
 
 
 
@@ -2729,7 +2801,7 @@ ADD TO EVERY LIQUID
   VERB drink
     CHECK my_game CAN bere
       ELSE SAY restricted_response OF my_game.
-    AND liq IS drinkable
+    AND liq IS potabile
       ELSE
         IF liq IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -2908,68 +2980,6 @@ SYNONYMS
   discard, dump, reject = drop.
 
 
-
--- ==============================================================
-
-
------ EAT
-
-
--- ==============================================================
-
-
-SYNTAX eat = eat (food)
-  WHERE food ISA OBJECT
-    ELSE
-      IF food IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
-
-
-ADD TO EVERY OBJECT
-  VERB eat
-    CHECK my_game CAN mangiare
-      ELSE SAY restricted_response OF my_game.
-    AND food IS edible
-      ELSE
-        IF food IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY check_obj_idoneo_sg OF my_game. "mangiare."
-          ELSE SAY check_obj_idoneo_pl OF my_game. "mangiare."
-        END IF.
-    AND food IS takeable
-      ELSE SAY check_obj_takeable OF my_game.
-    AND CURRENT LOCATION IS lit
-      ELSE SAY check_current_loc_lit OF my_game.
-    AND food IS reachable AND food IS NOT distant
-      ELSE
-        IF food IS NOT reachable
-          THEN
-            IF food IS NOT plurale
-              THEN SAY check_obj_reachable_sg OF my_game.
-              ELSE SAY check_obj_reachable_pl OF my_game.
-            END IF.
-        ELSIF food IS distant
-          THEN
-            IF food IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF my_game.
-              ELSE SAY check_obj_not_distant_pl OF my_game.
-            END IF.
-        END IF.
-    DOES
-      -- implicit taking:
-      IF food NOT DIRECTLY IN hero
-        THEN LOCATE food IN hero.
-          SAY implicit_taking_message OF my_game.
-      END IF.
-      -- end of implicit taking.
-
-      "You eat all of" SAY THE food. "."
-      LOCATE food AT nowhere.
-
-  END VERB.
-END ADD.
 
 
 
@@ -6462,6 +6472,7 @@ SYNTAX rub = rub (obj)
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
 
+SYNONYMS massage = rub.
 
 ADD TO EVERY THING
   VERB rub
@@ -6500,12 +6511,6 @@ ADD TO EVERY THING
       -- "Nothing would be achieved by that."
   END VERB.
 END ADD TO.
-
-
-SYNONYMS massage = rub.
-
-
-
 
 
 -- ==============================================================
@@ -7122,7 +7127,7 @@ ADD TO EVERY LIQUID
     VERB sip
     CHECK my_game CAN sip
       ELSE SAY restricted_response OF my_game.
-    AND liq IS drinkable
+    AND liq IS potabile
       ELSE
         IF liq IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -7728,7 +7733,7 @@ ADD TO EVERY OBJECT
           THEN SAY check_obj_idoneo_sg OF my_game. "assaggiare."
           ELSE SAY check_obj_idoneo_pl OF my_game. "assaggiare."
         END IF.
-    AND obj IS edible OR obj IS drinkable
+    AND obj IS commestibile OR obj IS potabile
       ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"

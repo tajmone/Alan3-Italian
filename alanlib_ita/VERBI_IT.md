@@ -24,6 +24,8 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [prendi_da](#prendi_da)
     - [dai_a](#dai_a)
     - [inventario](#inventario)
+- [MANGIARE, BERE](#mangiare-bere)
+    - [mangia](#mangia)
 - [INDOSSARE, SPOGLIARSI](#indossare-spogliarsi)
     - [spogliati](#spogliati)
 - [ATTACCARE, ROMPERE, BRUCIARE](#attaccare-rompere-bruciare)
@@ -62,6 +64,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [distruggi con]
 - [dormi]
 - [inventario]
+- [mangia]
 - [offri]
 - [porgi]
 - [prega]
@@ -90,35 +93,36 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 
 # Tabella dei Verbi
 
-Copiata da "`lib_verbi.i`" v0.2.14 (2018/07/17).
+Copiata da "`lib_verbi.i`" v0.2.16 (2018/07/17).
 
 Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e comandi di gioco (dopo il divisorio orizzontale di tabella):
 
 ```
---+--------------------+----------------------------------------+---------------------------------+--------+-----+
---| VERBO              | SINONIMI                               | SINTASSI                        | ARIETÀ | OGG |
---|--------------------|----------------------------------------|---------------------------------|--------|-----|
---| abbandona_partita  | quit, q                                | abbandona [partita]             |   0    |     |
---| carica_partita     | restore                                | carica [partita]                |   0    |     |
---| ricomincia_partita | restart                                | ricomincia [partita]            |   0    |     |
---| salva_partita      | save                                   | salva [partita]                 |   0    |     |
---+--------------------+----------------------------------------+---------------------------------+--------+-----+
---| aspetta            | attendi, z                             | aspetta                         |   0    |     |
---| attraversa         |                                        | attraversa (ogg)                |   1    |  x  |
---| brucia             |                                        | brucia (ogg)                    |   1    |  x  |
---| brucia_con         |                                        | brucia (ogg) con (instr)        |   2    |  x  |
---| compra             | acquista                               | compra (item)                   |   1    |     |
---| dai_a              | porgi, offri                           | dai (ogg) a (recipient)         |   2    |  x  |
---| inventario         | inv                                    | inventario                      |   0    |     |
---| prega              |                                        | prega                           |   0    |     |
---| prendi             | afferra, raccogli, trasporta           | prendi (ogg)                    |   1    |  x  |
---| prendi_da          | rimuovi, togli                         | prendi (ogg) da (holder)        |   2    |  x  |
---| rifai              | ancora, g                              | rifai                           |   0    |     |
---| rompi              | distruggi, spacca, sfonda              | rompi (ogg)                     |   1    |  x  |
---| rompi_con          | distruggi, spacca, sfonda              | rompi (ogg) con (instr)         |   2    |  x  |
---| spogliati          | svestiti                               | spogliati                       |   0    |     |
---| vai_a              |                                        | vai a (dest)                    |   1    |     |
---+--------------------+----------------------------------------+---------------------------------+--------+-----+
+--+--------------------+------------------------------+--------------------------+---+---+---+
+--| VERBO              | SINONIMI                     | SINTASSI                 | M | A | O |
+--|--------------------|------------------------------|--------------------------|---|---|---|
+--| abbandona_partita  | quit, Q                      | abbandona [partita]      | x | 0 |   |
+--| carica_partita     | restore                      | carica [partita]         | x | 0 |   |
+--| ricomincia_partita | restart                      | ricomincia [partita]     | x | 0 |   |
+--| salva_partita      | save                         | salva [partita]          | x | 0 |   |
+--+--------------------+------------------------------+--------------------------+---+---+---+
+--| aspetta            | attendi, Z                   | aspetta                  |   | 0 |   |
+--| attraversa         |                              | attraversa (ogg)         |   | 1 | x |
+--| brucia             |                              | brucia (ogg)             |   | 1 | x |
+--| brucia_con         |                              | brucia (ogg) con (instr) |   | 2 | x |
+--| compra             | acquista                     | compra (item)            |   | 1 |   |
+--| dai_a              | porgi, offri                 | dai (ogg) a (recipient)  |   | 2 | x |
+--| inventario         | inv                          | inventario               | x | 0 |   |
+--| mangia             |                              | mangia (cibo)            |   | 1 |   |
+--| prega              |                              | prega                    |   | 0 |   |
+--| prendi             | afferra, raccogli, trasporta | prendi (ogg)             |   | 1 | x |
+--| prendi_da          | rimuovi, togli               | prendi (ogg) da (holder) |   | 2 | x |
+--| rifai              | ancora, G                    | rifai                    |   | 0 |   |
+--| rompi              | distruggi, spacca, sfonda    | rompi (ogg)              |   | 1 | x |
+--| rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (instr)  |   | 2 | x |
+--| spogliati          | svestiti                     | spogliati                |   | 0 |   |
+--| vai_a              |                              | vai a (dest)             |   | 1 |   |
+--+--------------------+------------------------------+--------------------------+---+---+---+
 ```
 
 
@@ -327,6 +331,20 @@ sintassi:
 
 -------------------------------------------------------------------------------
 
+# MANGIARE, BERE
+
+## mangia
+
+[mangia]: #mangia
+
+sintassi:
+
+    mangia (cibo)
+
+
+
+-------------------------------------------------------------------------------
+
 # INDOSSARE, SPOGLIARSI
 
 Questi verbi sono legati tra loro.
@@ -502,4 +520,6 @@ Verbi che non rientrano in categorie specifiche.
 sintassi:
 
     (compra|acquista) (item)
+
+
 

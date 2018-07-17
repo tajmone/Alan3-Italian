@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.11 (2018/07/17)
+-- "lib_definizioni.i" v0.2.12 (2018/07/17)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -107,8 +107,8 @@ ADD TO EVERY THING
     -- You can also throw things in, to or at a not reachable target but not to a distant one.
     -- Default response for not reachable things: "The [thing] is out of your reach."
     -- Default response for distant things: "The [thing] is too far away."
-  NOT drinkable.
-  NOT edible.
+  NOT potabile.
+  NOT commestibile.
   NOT fireable.
     -- can (not) be used as a firearm
   NOT lockable.

@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.2.2 (2018/07/17)
+-- "lib_classi.i" v0.2.3 (2018/07/17)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -69,7 +69,7 @@ END ADD.
 -- LIQUID
   -- Can only be taken if it is in a container. You can fill something with it,
   -- and you can pour it somewhere.
-  -- A liquid is by default NOT drinkable.
+  -- A liquid is by default NOT potabile.
 
 
 -- LIGHTSOURCE

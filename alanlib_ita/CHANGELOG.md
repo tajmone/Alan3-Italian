@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/17 \(4\)](#20180717-4)
+    - [Verb: `eat`](#verb-eat)
 - [2018/07/17 \(3\)](#20180717-3)
     - [Meta Verbs](#meta-verbs)
 - [2018/07/17 \(2\)](#20180717-2)
@@ -77,6 +79,34 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/17 (4)
+
+- [`lib_classi.i`][lib_classi] (v0.2.3)
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.12)
+- [`lib_verbi.i`][lib_verbi] (v0.2.16)
+
+
+Translated `THING` attributes:
+
+|   English   | Italian |
+|-------------|---------|
+| `edible`    | `commestibile`   |
+| `drinkable` | `potabile`   |
+
+
+
+
+## Verb: `eat`
+
+Translated verb `mangia`, (_eat_):
+
+    mangia (cibo)
+
+with no synonyms.
+
+
+
 
 # 2018/07/17 (3)
 
