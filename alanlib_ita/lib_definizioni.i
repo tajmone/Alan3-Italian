@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.18 (2018/07/18)
+-- "lib_definizioni.i" v0.2.19 (2018/07/18)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -516,6 +516,15 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   --  dall'infinito del verbo in questione.
   HAS check_obj_idoneo_sg "$+1 non è qualcosa che puoi".        --> (verbi vari)
   HAS check_obj_idoneo_pl "$+1 non sono qualcosa che puoi".
+
+  --@TODO 1: | Questo messaggio è identico a 'parametro_illegale_sg' e potrei
+  --         | sostuirlo con quello e cancellarlo. Credo che l'unico motivo per
+  --         | l'esistenza di simili duplicati sia quello di offrire un sistema
+  --         | di nomi degli attributi che sia consistente con il contesto del
+  --         | verbo (CHECK vs param, ecc). Però credo valga la pena elimiare i
+  --         | duplicati, e magare adottare un sistema di nomi più orientato al
+  --         | contenuto del messaggio che non al suo contesto nel codice.
+
 
   --@NOTA: | S3RioUs JokER consiglia di semplificare con la frase:
   --       |    "Non è qualcosa che si possa <verbo inf>."

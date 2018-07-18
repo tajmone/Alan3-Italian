@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione 0.2.1 (2018/07/18)
+--  versione 0.2.2 (2018/07/18)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -83,6 +83,23 @@ THE targhetta IsA object AT pzzaIF.
       MAKE THIS già_letta.
   END VERB examine.
 END THE targhetta.
+
+--==============================================================================
+-- La Pozzanghera
+--==============================================================================
+-- TODO: Va sostituita con un esempio migliore, che abbia un senso.
+--       Per ora la lascio qui, al fine di poter testare i vari verbi, ma dovrò
+--       integrarla meglio nell'avventura.
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- Questa ci serve per testare il verbo bere con liquidi non contenuti (se il
+-- liquido non è in un contenitore, allora viene bevuto solo in parte e non
+-- consumato).
+
+THE pozzanghera IsA liquid AT pzzaIF.
+  HAS articolo "la".
+  IS  potabile.
+END THE pozzanghera.
+
 
 -- =============================================================================
 

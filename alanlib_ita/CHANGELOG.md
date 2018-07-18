@@ -11,7 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/07/18](#20180718)
+- [2018/07/18 \(2\)](#20180718-2)
+    - [Verb: `drink`](#verb-drink)
+- [2018/07/18 \(1\)](#20180718-1)
 - [2018/07/17 \(5\)](#20180717-5)
 - [2018/07/17 \(4\)](#20180717-4)
     - [Verb: `eat`](#verb-eat)
@@ -82,7 +84,21 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/07/18
+# 2018/07/18 (2)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.19)
+- [`lib_verbi.i`][lib_verbi] (v0.2.19)
+
+## Verb: `drink`
+
+Translated verb `bevi`, (_drink_):
+
+    bevi (liq)
+
+with no synonyms.
+
+
+# 2018/07/18 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.18)
 - [`lib_verbi.i`][lib_verbi] (v0.2.18)

@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.18 (2018/07/18)
+-- "lib_verbi.i" v0.2.19 (2018/07/18)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -23,6 +23,7 @@
 --+--------------------+------------------------------+--------------------------+---+---+---+
 --| aspetta            | attendi, Z                   | aspetta                  |   | 0 |   |
 --| attraversa         |                              | attraversa (ogg)         |   | 1 | x |
+--| bevi               |                              | bevi (liq)               |   | 1 |   |
 --| brucia             |                              | brucia (ogg)             |   | 1 | x |
 --| brucia_con         |                              | brucia (ogg) con (instr) |   | 2 | x |
 --| compra             | acquista                     | compra (item)            |   | 1 |   |
@@ -91,7 +92,7 @@
 ----- dig                                                  dig (obj)                           1       x
 ----- dive                                                 dive                                0
 ----- dive_in                                              dive in (liq)                       1
------ drink                                                drink (liq)                         1
+----> drink                                                drink (liq)                         1
 ----- drive                                                drive (vehicle)                     1
 ----- drop        (+ discard, dump, reject)                drop (obj)                          1       x
 ----> eat                                                  eat (food)                          1
@@ -465,9 +466,129 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
+-- ==============================================================
+
+
+----- @BEVI -- @DRINK
+
+
+-- ==============================================================
+
+-- SYNTAX drink = drink (liq)
+
+SYNTAX bevi = bevi (liq)
+  WHERE liq ISA LIQUID    -- see 'classes.i'
+    ELSE
+      IF liq IS NOT plurale
+        THEN SAY parametro_illegale_sg OF my_game.
+        ELSE SAY parametro_illegale_pl OF my_game.
+   -- THEN SAY illegal_parameter_sg OF my_game.
+   -- ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+      "bere."
+
+
+ADD TO EVERY LIQUID
+  VERB bevi
+    CHECK my_game CAN bere
+      ELSE SAY azione_bloccata OF my_game.
+    AND liq IS potabile
+      ELSE
+        IF liq IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY check_obj_idoneo_sg OF my_game. "bere."
+          ELSE SAY check_obj_idoneo_pl OF my_game. "bere."
+        END IF.
+    AND CURRENT LOCATION IS lit
+      --> @TODO!!                                                               TRANSLATE!
+      ELSE SAY check_current_loc_lit OF my_game.
+    AND liq IS reachable AND liq IS NOT distant
+      ELSE
+        IF liq IS NOT reachable
+          THEN
+            IF liq IS NOT plurale
+              --> @TODO!!                                                       TRANSLATE!
+              THEN SAY check_obj_reachable_sg OF my_game.
+              ELSE SAY check_obj_reachable_pl OF my_game.
+            END IF.
+        ELSIF liq IS distant
+          THEN
+            IF liq IS NOT plurale
+              --> @TODO!!                                                       TRANSLATE!
+              THEN SAY check_obj_not_distant_sg OF my_game.
+              ELSE SAY check_obj_not_distant_pl OF my_game.
+            END IF.
+        END IF.
+    DOES
+      IF vessel OF liq = null_vessel
+        -- Se liquido non è in un contenitore, l'eroe ne berrà solo un po' (e il
+        -- liquido non verrà consumato). Questo serve a consentire di bere da
+        -- un fiume, o da altri liquidi allo stato libero.
+
+        --| NOTA: Questa risposta è un po' generica e potrebbe non essere sempre
+        --|       adatta. Dipende dall'oggetto in questione, e se il suo nome
+        --|       visualizzato si riferisce al contenitore o al contenuto.
+        --|       Es., "un po' di fiume", laddove "un po' dal fiume" sarebbe
+        --|       stato meglio (o anche "po' di acqua dal fiume").
+        --|       Sta all'autore scegliere bene il nome da visualizzare con
+        --|       MENTIONED, ma la questione merita di essere approfondita e
+        --|       capire se ci sono soluzioni migliori. In ogni caso, il blocco
+        --|       DOES del verbo può sempre essere implementato sull'istanza
+        --|       specifica per ottenere un testo ad hoc.
+        THEN "Bevi un po' di" SAY liq. "."
+     -- THEN "You drink a bit of" SAY THE liq. "."
+      ELSE
+          -- Se invece il liquido è in un contenitore:
+
+          -- >>> prendi implicito: >>>
+          IF vessel OF liq NOT DIRECTLY IN hero
+            THEN
+              IF vessel OF liq IS NOT takeable
+                --> @TODO!!                                                     TRANSLATE!
+                THEN "You can't carry" SAY THE liq. "around in your bare hands."
+                  -- the action stops here if the container is not takeable.
+                ELSE
+                  LOCATE vessel OF liq IN hero.
+                  --> @TODO!!                                                   TRANSLATE!
+                  "(taking" SAY THE vessel OF THIS. "of" SAY THIS. "first)$n"
+              END IF.
+
+          END IF.
+          -- <<< prendi implicito <<<
+
+          IF liq IN hero
+            -- i.e. if the implicit taking was successful
+            -- Se il prendi implicito è andato in porto:
+            THEN "Bevi tutt$$"
+          -- "You drink all of" SAY THE liq. "."
+              IF liq IS NOT femminile
+                THEN
+                  IF liq IS NOT plurale
+                    THEN SAY "o.". -- GNA = msi
+                    ELSE SAY "i.". -- GNA = mpi
+                  END IF.
+                ELSE
+                  IF liq IS NOT plurale
+                    THEN SAY "a.". -- GNA = fsi
+                    ELSE SAY "e.". -- GNA = fpi
+                  END IF.
+              END IF.
+              SAY THE liq. "."
+              LOCATE liq AT nowhere.
+          END IF.
+      END IF.
+
+  END VERB.
+END ADD TO.
+
+
+-- Note that the verb 'sip' is defined separately, with a slightly different behaviour.
+
+
+
 -- =================================================================
 
------ @RBRUCIA --> @BURN (VERB + SYNTAX)
+----- @BRUCIA --> @BURN (VERB + SYNTAX)
 
 ----- BURN
 
@@ -2763,92 +2884,6 @@ ADD TO EVERY OBJECT
   END VERB.
 END ADD TO.
 
-
-
--- ==============================================================
-
-
------ DRINK
-
-
--- ==============================================================
-
-
-SYNTAX drink = drink (liq)
-  WHERE liq ISA LIQUID    -- see 'classes.i'
-    ELSE
-      IF liq IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
-
-
-ADD TO EVERY LIQUID
-  VERB drink
-    CHECK my_game CAN bere
-      ELSE SAY azione_bloccata OF my_game.
-    AND liq IS potabile
-      ELSE
-        IF liq IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY check_obj_idoneo_sg OF my_game. "bere."
-          ELSE SAY check_obj_idoneo_pl OF my_game. "bere."
-        END IF.
-    AND CURRENT LOCATION IS lit
-      ELSE SAY check_current_loc_lit OF my_game.
-    AND liq IS reachable AND liq IS NOT distant
-      ELSE
-        IF liq IS NOT reachable
-          THEN
-            IF liq IS NOT plurale
-              THEN SAY check_obj_reachable_sg OF my_game.
-              ELSE SAY check_obj_reachable_pl OF my_game.
-            END IF.
-        ELSIF liq IS distant
-          THEN
-            IF liq IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF my_game.
-              ELSE SAY check_obj_not_distant_pl OF my_game.
-            END IF.
-        END IF.
-    DOES
-      IF vessel OF liq = null_vessel
-        -- here, if the liquid is in no container, for
-        -- example the hero takes a sip of water from a river,
-        -- the action is allowed to succeed so that the hero
-        -- drinks some of the liquid:
-
-        THEN "You drink a bit of" SAY THE liq. "."
-        ELSE
-          -- = if the liquid is in a container:
-
-          -- implicit taking:
-          IF vessel OF liq NOT DIRECTLY IN hero
-            THEN
-              IF vessel OF liq IS NOT takeable
-                THEN "You can't carry" SAY THE liq. "around in your bare hands."
-                  -- the action stops here if the container is not takeable.
-                ELSE
-                  LOCATE vessel OF liq IN hero.
-                  "(taking" SAY THE vessel OF THIS. "of" SAY THIS. "first)$n"
-              END IF.
-
-          END IF.
-          -- end of implicit taking.
-
-          IF liq IN hero
-            -- i.e. if the implicit taking was successful
-            THEN
-              "You drink all of" SAY THE liq. "."
-              LOCATE liq AT nowhere.
-          END IF.
-      END IF.
-
-  END VERB.
-END ADD TO.
-
-
--- Note that the verb 'sip' is defined separately, with a slightly different behaviour.
 
 
 
@@ -7708,6 +7743,9 @@ SYNTAX taste = taste (obj)
       END IF.
 
 
+SYNONYMS lick = taste.
+
+
 ADD TO EVERY OBJECT
   VERB taste
     CHECK my_game CAN assaggiare
@@ -7744,12 +7782,10 @@ ADD TO EVERY OBJECT
             END IF.
         END IF.
     DOES
-      "You taste nothing unexpected."
+      "Non hai sentito nessun sapore particolare." --> preso da i6
+      -- "You taste nothing unexpected."
   END VERB.
 END ADD TO.
-
-
-SYNONYMS lick = taste.
 
 
 
