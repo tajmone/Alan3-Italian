@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.20 (2018/07/18)
+-- "lib_definizioni.i" v0.2.21 (2018/07/18)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -66,15 +66,15 @@ END ADD TO.
 
 ADD TO EVERY THING
 
-  IS examinable.
+  IS esaminabile.
     -- the library declares SOUNDs as not examinable.
-     inanimate.
+     inanimato.
     -- actors are NOT inanimate.
      movable.
     -- to allow pushing, pulling, lifting, etc.
      open.
     -- = not closed.
-     reachable.
+     raggiungibile.
     -- See also 'distant' below
      takeable.
     -- you'll have to separately define which objects are NOT takeable.
@@ -101,8 +101,8 @@ ADD TO EVERY THING
 
   HAS text "".
 
-  NOT broken.
-  NOT distant.
+  NOT rotto.
+  NOT distante.
     -- Usage: you can for example talk to a "not reachable" actor but not to a "distant" one.
     -- You can also throw things in, to or at a not reachable target but not to a distant one.
     -- Default response for not reachable things: "The [thing] is out of your reach."
@@ -114,11 +114,11 @@ ADD TO EVERY THING
   NOT lockable.
   NOT locked.
   NOT 'on'.
-  NOT openable.
-  NOT readable.
+  NOT apribile.
+  NOT leggibile.
   NOT scenery.
    -- scenery has special responses for 'examine' and 'take', behaves like a normal object otherwise.
-  NOT wearable.
+  NOT indossabile.
   NOT writeable.
 
   CAN NOT talk.
@@ -517,7 +517,8 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   -- PARAMETRI FUORI PORTATA
   -- =======================
   -- Messaggi che riferiscono l'impossibilità di portare a termine l'azione a
-  -- causa di un parametro fuori portata (attributi "NOT reachable" e "distant").
+  -- causa di uno (o più) parametri fuori dalla portata dell'eroe.
+  -- (attributi: "NOT raggiungibile" e "distante").
   
   HAS ogg1_non_raggiungibile_sg  "$+1 è fuori dalla tua portata.".       -- (numerous)
   HAS ogg1_non_raggiungibile_pl  "$+1 sono fuori dalla tua portata.".

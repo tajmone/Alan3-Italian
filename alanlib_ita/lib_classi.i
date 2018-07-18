@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.2.4 (2018/07/18)
+-- "lib_classi.i" v0.2.5 (2018/07/18)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -209,7 +209,7 @@ END THE.
 
 EVERY clothing ISA OBJECT
 
-  IS wearable.
+  IS indossabile.
 
   IS sex 0.
 
@@ -219,8 +219,8 @@ EVERY clothing ISA OBJECT
   IS topcover 0.
   IS botcover 0.
 
-  IS NOT donned. -- not in the 'wearing' set of any actor; this attribute
-        -- is used internally in the library; ignore
+  IS NOT indossato. -- not in the 'wearing' set of any actor; this attribute
+                    -- is used internally in the library; ignore
 
 
   INITIALIZE
@@ -242,7 +242,7 @@ EVERY clothing ISA OBJECT
                 IF THIS NOT IN worn
                   THEN LOCATE THIS IN worn.
                 END IF.
-                MAKE THIS donned.
+                MAKE THIS indossato.
             END IF.
         ELSIF THIS IN wearing OF ac AND THIS <> null_clothing
             THEN
@@ -250,7 +250,7 @@ EVERY clothing ISA OBJECT
                 THEN
                   LOCATE THIS IN ac.
               END IF.
-              MAKE THIS donned.
+              MAKE THIS indossato.
         END IF.
     END FOR.
 
@@ -465,7 +465,7 @@ EVERY clothing ISA OBJECT
 
     ELSE
       LOCATE THIS IN worn.
-      MAKE THIS donned.
+      MAKE THIS indossato.
       INCLUDE THIS IN wearing OF hero.
       "You put on" SAY THE THIS. "."
     END IF.
@@ -583,7 +583,7 @@ VERB remove
       LOCATE THIS IN hero.
       "You take off" SAY THE THIS. "."
       EXCLUDE THIS FROM wearing OF hero.
-      MAKE THIS NOT donned.
+      MAKE THIS NOT indossato.
   END IF.
 END VERB.
 
@@ -628,12 +628,12 @@ EVENT worn_clothing_check
           THEN
             IF cl NOT IN worn
               THEN LOCATE cl IN worn.
-                MAKE cl donned.
+                MAKE cl indossato.
             END IF.
           ELSE
             IF cl NOT IN ac
               THEN LOCATE cl IN ac.
-                MAKE cl donned.
+                MAKE cl indossato.
             END IF.
         END IF.
     END FOR.
@@ -805,22 +805,22 @@ EVERY device ISA OBJECT
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND THIS IS reachable AND THIS IS NOT distant
+    AND THIS IS raggiungibile AND THIS IS NOT distante
       ELSE
-        IF THIS IS NOT reachable
+        IF THIS IS NOT raggiungibile
           THEN
             IF THIS IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF THIS IS distant
+        ELSIF THIS IS distante
           THEN
             IF THIS IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-    AND THIS IS NOT broken
+    AND THIS IS NOT rotto
       ELSE SAY check_obj_not_broken OF my_game.
     DOES ONLY
       "You turn on" SAY THE THIS. "."
@@ -837,15 +837,15 @@ EVERY device ISA OBJECT
          END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND THIS IS reachable AND THIS IS NOT distant
+    AND THIS IS raggiungibile AND THIS IS NOT distante
       ELSE
-        IF THIS IS NOT reachable
+        IF THIS IS NOT raggiungibile
           THEN
             IF THIS IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF THIS IS distant
+        ELSIF THIS IS distante
           THEN
             IF THIS IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -864,22 +864,22 @@ EVERY device ISA OBJECT
   VERB switch
     CHECK CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND THIS IS reachable AND THIS IS NOT distant
+    AND THIS IS raggiungibile AND THIS IS NOT distante
       ELSE
-        IF THIS IS NOT reachable
+        IF THIS IS NOT raggiungibile
           THEN
             IF THIS IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF THIS IS distant
+        ELSIF THIS IS distante
           THEN
             IF THIS IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-    AND THIS IS NOT broken
+    AND THIS IS NOT rotto
       ELSE SAY check_obj_not_broken OF my_game.
     DOES ONLY
       IF THIS IS 'on'
@@ -907,7 +907,7 @@ END EVERY.
 
 
 EVERY door ISA OBJECT
-  IS openable.
+  IS apribile.
   IS NOT open.
   IS NOT lockable.
   IS NOT locked.
@@ -944,8 +944,8 @@ EVERY door ISA OBJECT
       -- next, ensuring that some attributes are correctly assigned to the otherside of the door, as well.
       -- Only some non-default cases need to be addressed here:
 
-        IF THIS IS NOT openable
-          THEN MAKE otherside OF THIS NOT openable.
+        IF THIS IS NOT apribile
+          THEN MAKE otherside OF THIS NOT apribile.
         END IF.
 
         IF THIS IS open
@@ -1162,7 +1162,7 @@ EVERY lightsource ISA OBJECT
           THEN SAY check_lightsource_not_lit_sg OF my_game.
           ELSE SAY check_lightsource_not_lit_pl OF my_game.
         END IF.
-    AND THIS IS NOT broken
+    AND THIS IS NOT rotto
       ELSE SAY check_obj_not_broken OF my_game.
     DOES ONLY
       IF THIS IS natural
@@ -1199,7 +1199,7 @@ EVERY lightsource ISA OBJECT
           THEN SAY check_lightsource_not_lit_sg OF my_game.
           ELSE SAY check_lightsource_not_lit_pl OF my_game.
         END IF.
-    AND THIS IS NOT broken
+    AND THIS IS NOT rotto
       ELSE SAY check_obj_not_broken OF my_game.
     DOES ONLY
       "You turn on" SAY THE THIS. "."
@@ -1240,13 +1240,13 @@ EVERY lightsource ISA OBJECT
           THEN SAY check_lightsource_switchable_sg OF my_game.
           ELSE SAY check_lightsource_switchable_pl OF my_game.
         END IF.
-    AND THIS IS reachable
+    AND THIS IS raggiungibile
       ELSE
         IF THIS IS NOT plurale
           THEN SAY ogg1_non_raggiungibile_sg OF my_game.
           ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
         END IF.
-    AND THIS IS NOT broken
+    AND THIS IS NOT rotto
       ELSE SAY check_obj_not_broken OF my_game.
     DOES ONLY
       IF THIS IS lit
@@ -1286,7 +1286,7 @@ EVERY liquid ISA OBJECT
     -- class behaves like a container.
 
 
-  HAS vessel null_vessel.
+  HAS recipiente null_vessel.
 
     -- The 'vessel' attribute takes care that if a liquid is
     -- in a container, the verb 'take' will automatically take the
@@ -1320,7 +1320,7 @@ EVERY liquid ISA OBJECT
       DO
         FOR EACH lq ISA LIQUID, DIRECTLY IN lc
           DO
-            SET vessel OF lq TO lc.
+            SET recipiente OF lq TO lc.
         END FOR.
     END FOR.
 
@@ -1344,11 +1344,11 @@ EVERY liquid ISA OBJECT
 
   VERB examine
     DOES ONLY
-      IF vessel OF THIS <> null_vessel
+      IF recipiente OF THIS <> null_vessel
         THEN
-          IF vessel OF THIS IS open
+          IF recipiente OF THIS IS open
             THEN "You notice nothing unusual about" SAY THE THIS.
-            ELSE "You can't, since" SAY THE vessel OF THIS.
+            ELSE "You can't, since" SAY THE recipiente OF THIS.
                 IF THIS IS NOT plurale
                   THEN "is"
                   ELSE "are"
@@ -1364,11 +1364,11 @@ EVERY liquid ISA OBJECT
 
   VERB look_in
     DOES ONLY
-      IF vessel OF THIS <> null_vessel
+      IF recipiente OF THIS <> null_vessel
         THEN
-          IF vessel OF THIS IS open
+          IF recipiente OF THIS IS open
             THEN "You see nothing special in" SAY THE THIS. "."
-            ELSE "You can't, since" SAY THE vessel OF THIS.
+            ELSE "You can't, since" SAY THE recipiente OF THIS.
                 IF THIS IS NOT plurale
                   THEN "is"
                   ELSE "are"
@@ -1383,44 +1383,44 @@ EVERY liquid ISA OBJECT
 
 -- @PRENDI -> @TAKE (VERB) => LIQUID
   VERB prendi
-    CHECK vessel OF THIS NOT IN hero
+    CHECK recipiente OF THIS NOT IN hero
       ELSE SAY check_obj_not_in_hero2 OF my_game.
     DOES ONLY
-      IF vessel OF THIS = null_vessel OR vessel OF THIS IS NOT takeable
+      IF recipiente OF THIS = null_vessel OR recipiente OF THIS IS NOT takeable
         THEN "You can't carry" SAY THE THIS. "around in your bare hands."
-      ELSE LOCATE vessel OF THIS IN hero.
-        "($$" SAY THE vessel OF THIS. "of" SAY THIS. "$$)$nTaken."
+      ELSE LOCATE recipiente OF THIS IN hero.
+        "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nTaken."
       END IF.
   END VERB.
 
 -- @PRENDI_DA -> @TAKE_FROM (VERB) => LIQUID
   VERB prendi_da
      WHEN obj
-    CHECK holder <> vessel OF THIS
+    CHECK holder <> recipiente OF THIS
       ELSE SAY check_liquid_vessel_not_cont OF my_game.
       -- the above is triggered when the player types for example
       -- >take juice from bottle   -- (when the juice is in the bottle)
     DOES ONLY
-      IF vessel OF THIS = null_vessel OR vessel OF THIS IS NOT takeable
+      IF recipiente OF THIS = null_vessel OR recipiente OF THIS IS NOT takeable
         THEN "You can't carry" SAY THE THIS. "around in your bare hands."
-      ELSE LOCATE vessel OF THIS IN hero.
-        "($$" SAY THE vessel OF THIS. "of" SAY THIS. "$$)$nTaken."
+      ELSE LOCATE recipiente OF THIS IN hero.
+        "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nTaken."
       END IF.
   END VERB.
 
 
   VERB drop
     DOES ONLY
-      LOCATE vessel OF THIS AT hero.
-      "($$" SAY THE vessel OF THIS. "of" SAY THIS. "$$)$nDropped."
+      LOCATE recipiente OF THIS AT hero.
+      "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nDropped."
 
   END VERB.
 
 
   VERB ask_for
     DOES ONLY
-      LOCATE vessel OF THIS IN hero.
-      SAY THE act. "gives" SAY THE vessel OF THIS. "of" SAY THIS. "to you."
+      LOCATE recipiente OF THIS IN hero.
+      SAY THE act. "gives" SAY THE recipiente OF THIS. "of" SAY THIS. "to you."
   END VERB.
 
 -- @DAI_A -> @GIVE (VERB) => LIQUID
@@ -1430,10 +1430,10 @@ EVERY liquid ISA OBJECT
       -- implicit taking:
       IF THIS NOT IN hero
         THEN
-          IF vessel OF THIS = null_vessel OR vessel OF THIS IS NOT takeable
+          IF recipiente OF THIS = null_vessel OR recipiente OF THIS IS NOT takeable
             THEN "You can't carry" SAY THE THIS. "around in your bare hands."
-          ELSE LOCATE vessel OF THIS IN hero.
-            "(taking" SAY THE vessel OF THIS. "of" SAY THIS. "first)$n"
+          ELSE LOCATE recipiente OF THIS IN hero.
+            "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
           END IF.
       END IF.
       -- end of implicit taking.
@@ -1441,8 +1441,8 @@ EVERY liquid ISA OBJECT
       IF THIS IN hero
         -- i.e. if the implicit taking was successful
         THEN
-          "You give" SAY THE vessel OF THIS. "of" SAY THIS. "to" SAY THE recipient. "."
-          LOCATE vessel OF THIS IN recipient.
+          "You give" SAY THE recipiente OF THIS. "of" SAY THIS. "to" SAY THE recipient. "."
+          LOCATE recipiente OF THIS IN recipient.
       END IF.
 
       -- there is no 'ELSE' statement in this last IF -clause, as the 'IF THIS NOT
@@ -1456,22 +1456,22 @@ EVERY liquid ISA OBJECT
       -- implicit taking:
       IF THIS NOT IN hero
         THEN
-          IF vessel OF THIS = null_vessel OR vessel OF THIS IS NOT takeable
+          IF recipiente OF THIS = null_vessel OR recipiente OF THIS IS NOT takeable
             THEN "You can't pour" SAY THE THIS. "anywhere since you are not
               carrying"
                 IF THIS IS NOT plurale
                   THEN "it."
                   ELSE "them."
                 END IF.
-          ELSE LOCATE vessel OF THIS IN hero.
-            "(taking" SAY THE vessel OF THIS. "of" SAY THIS. "first)$n"
+          ELSE LOCATE recipiente OF THIS IN hero.
+            "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
           END IF.
       END IF.
       -- end of implicit taking.
 
       IF THIS IN hero
         THEN LOCATE THIS AT hero.
-          SET vessel OF THIS TO null_vessel.
+          SET recipiente OF THIS TO null_vessel.
           "You pour" SAY THE THIS.
             IF floor HERE
               THEN "on the floor."
@@ -1488,31 +1488,31 @@ EVERY liquid ISA OBJECT
         -- implicit taking:
         IF THIS NOT IN hero
           THEN
-            IF vessel OF THIS = null_vessel
+            IF recipiente OF THIS = null_vessel
               THEN "You can't carry" SAY THE THIS. "around in your bare hands."
-            ELSIF vessel OF THIS IS NOT takeable
-              THEN "You don't have" SAY THE vessel OF THIS. "of" SAY THIS. "."
-            ELSE LOCATE vessel OF THIS IN hero.
-              "(taking" SAY THE vessel OF THIS. "of" SAY THIS. "first)$n"
+            ELSIF recipiente OF THIS IS NOT takeable
+              THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
+            ELSE LOCATE recipiente OF THIS IN hero.
+              "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
             END IF.
         END IF.
         -- end of implicit taking.
 
         IF THIS IN hero   --i.e. if the implicit taking was successful
           THEN LOCATE THIS IN cont.
-            SET vessel OF THIS TO cont.
+            SET recipiente OF THIS TO cont.
             "You pour" SAY THE THIS. "into" SAY THE cont. "."
         END IF.
     WHEN cont
       DOES ONLY
-        IF vessel OF THIS = null_vessel
+        IF recipiente OF THIS = null_vessel
           THEN
             "There's not much sense pouring" SAY THE obj. "into" SAY THE THIS. "."
           ELSE
-            IF vessel OF THIS IS open
+            IF recipiente OF THIS IS open
               THEN "It wouldn't accomplish anything trying to pour" SAY THE obj.
                 "into" SAY THE THIS. "."
-              ELSE "You can't, since" SAY THE vessel OF THIS.
+              ELSE "You can't, since" SAY THE recipiente OF THIS.
                 IF THIS IS NOT plurale
                   THEN "is"
                   ELSE "are"
@@ -1529,12 +1529,12 @@ EVERY liquid ISA OBJECT
         -- implicit taking:
         IF THIS NOT IN hero
           THEN
-            IF vessel OF THIS = null_vessel
+            IF recipiente OF THIS = null_vessel
               THEN "You can't carry" SAY THE THIS. "around in your bare hands."
-            ELSIF vessel OF THIS IS NOT takeable
-              THEN "You don't have" SAY THE vessel OF THIS. "of" SAY THIS. "."
-            ELSE LOCATE vessel OF THIS IN hero.
-              "(taking" SAY THE vessel OF THIS. "of" SAY THIS. "first)$n"
+            ELSIF recipiente OF THIS IS NOT takeable
+              THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
+            ELSE LOCATE recipiente OF THIS IN hero.
+              "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
             END IF.
         END IF.
         -- end of implicit taking.
@@ -1545,11 +1545,11 @@ EVERY liquid ISA OBJECT
             IF surface = floor OR surface = ground
               THEN LOCATE THIS AT hero.
                 "You pour" SAY THE THIS. "on" SAY THE surface. "."
-                SET vessel OF THIS TO null_vessel.
+                SET recipiente OF THIS TO null_vessel.
             ELSIF surface ISA SUPPORTER
               THEN LOCATE THIS IN surface.
                 "You pour" SAY THE THIS. "on" SAY THE surface. "."
-                  SET vessel OF THIS TO null_vessel.
+                  SET recipiente OF THIS TO null_vessel.
             ELSE "It wouldn't be sensible to pour anything on" SAY THE surface.
             END IF.
         END IF.
@@ -1560,49 +1560,49 @@ EVERY liquid ISA OBJECT
     -- when something is filled with a liquid, this something becomes the
     -- vessel of the liquid:
     WHEN substance
-       DOES SET vessel OF THIS TO cont.
+       DOES SET recipiente OF THIS TO cont.
   END VERB.
 
 
   VERB put_in
     WHEN obj
       DOES ONLY
-        IF vessel OF THIS = null_vessel
+        IF recipiente OF THIS = null_vessel
           THEN "You can't carry" SAY THE THIS. "around in your bare hands."
           ELSE
-            IF vessel OF THIS IS takeable
+            IF recipiente OF THIS IS takeable
               THEN
                 -- implicit taking:
                 IF THIS NOT IN hero
                   THEN
-                    IF vessel OF THIS = null_vessel
+                    IF recipiente OF THIS = null_vessel
                       THEN "You can't carry" SAY THE THIS. "around in your bare hands."
-                    ELSE LOCATE vessel OF THIS IN hero.
-                      "(taking" SAY THE vessel OF THIS. "of" SAY THIS. "first)$n"
+                    ELSE LOCATE recipiente OF THIS IN hero.
+                      "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
                     END IF.
                 END IF.
                 -- end of implicit taking.
 
-                LOCATE vessel OF THIS IN cont.
-                    "You put" SAY THE vessel OF THIS. "of" SAY THIS. "into" SAY THE cont. "."
+                LOCATE recipiente OF THIS IN cont.
+                    "You put" SAY THE recipiente OF THIS. "of" SAY THIS. "into" SAY THE cont. "."
 
-              ELSE "You don't have" SAY THE vessel OF THIS. "of" SAY THIS. "."
+              ELSE "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
             END IF.
         END IF.
         WHEN cont
       DOES ONLY
-      IF vessel OF THIS = null_vessel
+      IF recipiente OF THIS = null_vessel
         THEN
           "There's not much sense putting" SAY THE obj. "into" SAY THE THIS. "."
         ELSE
-          IF vessel OF THIS IS open
+          IF recipiente OF THIS IS open
             THEN
-              IF obj = vessel OF THIS
+              IF obj = recipiente OF THIS
                 THEN "That doesn't make sense."
                 ELSE "It wouldn't accomplish anything trying to put" SAY THE obj.
-                  "into" SAY THE vessel OF THIS. "of" SAY THIS. "."
+                  "into" SAY THE recipiente OF THIS. "of" SAY THIS. "."
               END IF.
-            ELSE "You can't, since" SAY THE vessel OF THIS. "of" SAY THIS.
+            ELSE "You can't, since" SAY THE recipiente OF THIS. "of" SAY THIS.
                 IF THIS IS NOT plurale
                   THEN "is"
                   ELSE "are"
@@ -1619,19 +1619,19 @@ EVERY liquid ISA OBJECT
         -- implicit taking:
         IF THIS NOT IN hero
           THEN
-            IF vessel OF THIS = null_vessel
+            IF recipiente OF THIS = null_vessel
               THEN "You can't carry" SAY THE THIS. "around in your bare hands."
-            ELSIF vessel OF THIS IS NOT takeable
-              THEN "You don't have" SAY THE vessel OF THIS. "of" SAY THIS. "."
-            ELSE LOCATE vessel OF THIS IN hero.
-              "(taking" SAY THE vessel OF THIS. "of" SAY THIS. "first)$n"
+            ELSIF recipiente OF THIS IS NOT takeable
+              THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
+            ELSE LOCATE recipiente OF THIS IN hero.
+              "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
             END IF.
         END IF.
         -- end of implicit taking.
 
         IF THIS IN hero
           -- i.e. if the implicit taking was successful
-          THEN "You put" SAY THE vessel OF THIS. "of" SAY THIS. "onto" SAY THE surface. "."
+          THEN "You put" SAY THE recipiente OF THIS. "of" SAY THIS. "onto" SAY THE surface. "."
         END IF.
     WHEN surface
       DOES ONLY "It is not possible to $v" SAY obj. "onto" SAY THE THIS. "."
@@ -1679,7 +1679,7 @@ END THE.
 
 EVENT check_vessel
   FOR EACH liq ISA LIQUID, DIRECTLY AT CURRENT LOCATION DO
-      SET vessel OF liq TO null_vessel.
+      SET recipiente OF liq TO null_vessel.
   END FOR.
   SCHEDULE check_vessel AFTER 1.
 END EVENT.
@@ -1784,9 +1784,9 @@ END EVERY.
 
 
 EVERY sound ISA OBJECT
-  IS NOT examinable.
+  IS NOT esaminabile.
   IS NOT takeable.
-  IS NOT reachable.
+  IS NOT raggiungibile.
   IS NOT movable.
 
   VERB smell
@@ -1916,7 +1916,7 @@ END EVERY.
 
 
 EVERY window ISA OBJECT
-  IS openable.
+  IS apribile.
   IS NOT open.
   IS NOT takeable.
 
@@ -1983,7 +1983,7 @@ END EVERY.
 
 
 ADD TO EVERY ACTOR
-    IS NOT inanimate.
+    IS NOT inanimato.
     IS NOT following.
     IS NOT seduto.   --> sitting
     IS NOT sdraiato. --> lying_down

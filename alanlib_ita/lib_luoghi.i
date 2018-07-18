@@ -1,4 +1,4 @@
--- "lib_luoghi.i" v0.2.1 (2018/06/24)
+-- "lib_luoghi.i" v0.2.2 (2018/07/18)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -228,7 +228,7 @@ END THE.
 
 THE ceiling ISA room_object
   IS NOT takeable.
-  IS NOT reachable.
+  IS NOT raggiungibile.
   DESCRIPTION ""
 END THE.
 
@@ -283,7 +283,7 @@ END THE.
 
 THE sky ISA site_object
   IS NOT takeable.
-  IS distant.
+  IS distante.
   DESCRIPTION ""
 END THE.
 

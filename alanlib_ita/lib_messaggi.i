@@ -1,4 +1,4 @@
--- "lib_messaggi.i" v0.2.1 (2018/06/24)
+-- "lib_messaggi.i" v0.2.2 (2018/07/18)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -125,7 +125,7 @@ MESSAGE
         -- the following snippet adds "(being worn)" after all
         -- pieces of clothing worn by an NPC, at 'x [actor]'
 
-        IF parameter1 IS donned
+        IF parameter1 IS indossato
           THEN
             IF parameter1 NOT IN worn
               THEN "(being worn)"
@@ -139,7 +139,7 @@ MESSAGE
         -- the following snippet adds "(being worn)" after all
         -- pieces of clothing worn by an NPC, after 'x [actor]'
 
-        IF parameter1 IS donned
+        IF parameter1 IS indossato
           THEN
             IF parameter1 NOT IN worn
               THEN "(being worn)"
@@ -155,7 +155,7 @@ MESSAGE
         -- the following snippet adds "(being worn)" after all
         -- pieces of clothing worn by an NPC, after 'x [actor]'
 
-        IF parameter1 IS donned
+        IF parameter1 IS indossato
           THEN
             IF parameter1 NOT IN worn
               THEN "(being worn)"

@@ -1,4 +1,4 @@
--- "_mygame_import.i" v0.2.3 (2018/07/18)
+-- "_mygame_import.i" v0.2.4 (2018/07/18)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -749,7 +749,7 @@ END VERB.
 
 VERB drink
 	DOES ONLY
-		IF vessel OF liq = null_vessel		
+		IF recipiente OF liq = null_vessel		
 			-- here, if the liquid is in no container, e.g.
 			-- the hero takes a sip of water from a river,
 			-- the action is allowed to succeed so that the hero 
@@ -760,13 +760,13 @@ VERB drink
 				-- = if the liquid is in a container:
 
 				-- implicit taking:
-				IF vessel OF liq NOT DIRECTLY IN hero
+				IF recipiente OF liq NOT DIRECTLY IN hero
 					THEN 
-						IF vessel OF liq IS NOT takeable
+						IF recipiente OF liq IS NOT takeable
 							THEN "You can't carry" SAY THE liq. "around in your bare hands."
 								-- the action stops here if the container is not takeable.
 							ELSE
-								LOCATE vessel OF liq IN hero.
+								LOCATE recipiente OF liq IN hero.
 								SAY implicit_taking_message OF my_game. 
 						END IF.		
 				END IF.
@@ -897,7 +897,7 @@ END VERB.
 
 VERB examine
 	DOES ONLY
-		IF obj IS readable			
+		IF obj IS leggibile			
 			-- for readable objects, 'examine' behaves just as 'read'
 			THEN 
 				IF text OF obj = ""
@@ -1601,20 +1601,20 @@ END VERB.
 
 VERB sip
 	DOES ONLY	
-		IF vessel OF liq = null_vessel		
+		IF recipiente OF liq = null_vessel		
 			-- here, if the liquid is in no container, e.g.
 			-- the hero takes a sip of water from a river,
 			-- the action is allowed to succeed.
 			THEN "You take a sip of" SAY THE liq. "."
 			ELSE 
 				-- implicit taking:
-				IF vessel OF liq NOT DIRECTLY IN hero
+				IF recipiente OF liq NOT DIRECTLY IN hero
 					THEN 
-						IF vessel OF liq IS NOT takeable
+						IF recipiente OF liq IS NOT takeable
 							THEN "You can't carry" SAY THE liq. "around in your bare hands."
 								-- the action stops here if the container is not takeable.
-							ELSE LOCATE vessel OF liq IN hero.
-								"(taking" SAY THE vessel OF liq. "first)$n"
+							ELSE LOCATE recipiente OF liq IN hero.
+								"(taking" SAY THE recipiente OF liq. "first)$n"
 						END IF.
 				END IF.
 				-- end of implicit taking.
@@ -1622,8 +1622,8 @@ VERB sip
 
 		IF liq IN hero		-- i.e. if the implicit taking was successful
 		 	THEN 
-				IF vessel OF liq IS NOT open
-					THEN "You can't, since" SAY THE vessel OF liq. "is closed."
+				IF recipiente OF liq IS NOT open
+					THEN "You can't, since" SAY THE recipiente OF liq. "is closed."
 					ELSE "You take a sip of" SAY THE liq. "."
 				END IF.
 		END IF.
@@ -1895,7 +1895,7 @@ VERB throw_at
 				END IF.
 				-- end of implicit taking.
       	  				
-				IF target IS inanimate
+				IF target IS inanimato
 					THEN 
 						IF target NOT DIRECTLY AT hero		
 							-- e.g. the target is inside a box

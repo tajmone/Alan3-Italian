@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.20 (2018/07/18)
+-- "lib_verbi.i" v0.2.21 (2018/07/18)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -414,7 +414,7 @@ ADD TO EVERY OBJECT
   VERB attraversa
     CHECK my_game CAN attraversare
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           THEN SAY ogg1_inadatto_sg OF my_game.
@@ -423,15 +423,15 @@ ADD TO EVERY OBJECT
         "attraversare."
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               --> @TODO!!                                                       TRANSLATE!
@@ -495,15 +495,15 @@ ADD TO EVERY LIQUID
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND liq IS reachable AND liq IS NOT distant
+    AND liq IS raggiungibile AND liq IS NOT distante
       ELSE
-        IF liq IS NOT reachable
+        IF liq IS NOT raggiungibile
           THEN
             IF liq IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF liq IS distant
+        ELSIF liq IS distante
           THEN
             IF liq IS NOT plurale
               --> @TODO!!                                                       TRANSLATE!
@@ -512,9 +512,9 @@ ADD TO EVERY LIQUID
             END IF.
         END IF.
     DOES
-      IF vessel OF liq = null_vessel
-        -- Se liquido non è in un contenitore, l'eroe ne berrà solo un po' (e il
-        -- liquido non verrà consumato). Questo serve a consentire di bere da
+      IF recipiente OF liq = null_vessel
+        -- Se il liquido non è in un contenitore, l'eroe ne berrà solo un po' (e
+        -- il liquido non verrà consumato). Questo serve a consentire di bere da
         -- un fiume, o da altri liquidi allo stato libero.
 
         --| NOTA: Questa risposta è un po' generica e potrebbe non essere sempre
@@ -533,16 +533,16 @@ ADD TO EVERY LIQUID
           -- Se invece il liquido è in un contenitore:
 
           -- >>> prendi implicito: >>>
-          IF vessel OF liq NOT DIRECTLY IN hero
+          IF recipiente OF liq NOT DIRECTLY IN hero
             THEN
-              IF vessel OF liq IS NOT takeable
+              IF recipiente OF liq IS NOT takeable
                 --> @TODO!!                                                     TRANSLATE!
                 THEN "You can't carry" SAY THE liq. "around in your bare hands."
                   -- the action stops here if the container is not takeable.
                 ELSE
-                  LOCATE vessel OF liq IN hero.
+                  LOCATE recipiente OF liq IN hero.
                   --> @TODO!!                                                   TRANSLATE!
-                  "(taking" SAY THE vessel OF THIS. "of" SAY THIS. "first)$n"
+                  "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
               END IF.
 
           END IF.
@@ -604,7 +604,7 @@ ADD TO EVERY OBJECT
   VERB brucia
     CHECK my_game CAN bruciare
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -658,7 +658,7 @@ ADD TO EVERY OBJECT
     WHEN obj
       CHECK my_game CAN bruciare_con
         ELSE SAY azione_bloccata OF my_game.
-      AND obj IS examinable
+      AND obj IS esaminabile
         ELSE
           IF obj IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
@@ -666,7 +666,7 @@ ADD TO EVERY OBJECT
             ELSE SAY ogg1_inadatto_pl OF my_game.
           END IF.
           "bruciare."
-      AND instr IS examinable
+      AND instr IS esaminabile
         ELSE
           IF obj IS NOT plurale
             --> @TODO!!                                                         TRANSLATE!
@@ -681,15 +681,15 @@ ADD TO EVERY OBJECT
         ELSE SAY check_obj2_in_hero OF my_game.
       AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-      AND obj IS reachable AND obj IS NOT distant
+      AND obj IS raggiungibile AND obj IS NOT distante
         ELSE
-          IF obj IS NOT reachable
+          IF obj IS NOT raggiungibile
             THEN
               IF obj IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF obj IS distant
+          ELSIF obj IS distante
             THEN
               IF obj IS NOT plurale
                 --> @TODO!!                                                     TRANSLATE!
@@ -734,7 +734,7 @@ ADD TO EVERY OBJECT
   VERB compra
     CHECK my_game CAN comprare
       ELSE SAY azione_bloccata OF my_game.
-    AND item IS examinable
+    AND item IS esaminabile
       ELSE
         IF item IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -805,15 +805,15 @@ ADD TO EVERY OBJECT
             THEN SAY check_obj_not_in_act_sg OF my_game.
             ELSE SAY check_obj_not_in_act_pl OF my_game.
           END IF.
-      AND obj IS reachable AND obj IS NOT distant
+      AND obj IS raggiungibile AND obj IS NOT distante
         ELSE
-          IF obj IS NOT reachable
+          IF obj IS NOT raggiungibile
             THEN
               IF obj IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF obj IS distant
+          ELSIF obj IS distante
             THEN
               IF obj IS NOT plurale
                 --> @TODO!!                                                     TRANSLATE!
@@ -821,15 +821,15 @@ ADD TO EVERY OBJECT
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
           END IF.
-      AND recipient IS reachable AND recipient IS NOT distant
+      AND recipient IS raggiungibile AND recipient IS NOT distante
         ELSE
-          IF recipient IS NOT reachable
+          IF recipient IS NOT raggiungibile
             THEN
               IF recipient IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF recipient IS distant
+          ELSIF recipient IS distante
             THEN
               IF recipient IS NOT plurale
                 --> @TODO!!                                                     TRANSLATE!
@@ -939,15 +939,15 @@ ADD TO EVERY OBJECT
       ELSE SAY check_obj_takeable OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND cibo IS reachable AND cibo IS NOT distant
+    AND cibo IS raggiungibile AND cibo IS NOT distante
       ELSE
-        IF cibo IS NOT reachable
+        IF cibo IS NOT raggiungibile
           THEN
             IF cibo IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF cibo IS distant
+        ELSIF cibo IS distante
           THEN
             IF cibo IS NOT plurale
               --> @TODO!!                                                       TRANSLATE!
@@ -1036,7 +1036,7 @@ ADD TO EVERY THING
   VERB prendi
     CHECK my_game CAN prendere --> CAN take
       ELSE SAY azione_bloccata OF my_game. --#-> "Non puoi farlo."
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -1084,15 +1084,15 @@ ADD TO EVERY THING
       -- i.e. the object to be taken is not carried by the hero already
       --> @TODO!!                                                               TRANSLATE!
       ELSE SAY check_obj_not_in_hero2 OF my_game.
-        AND obj IS reachable AND obj IS NOT distant
+        AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               --> @TODO!!                                                       TRANSLATE!
@@ -1251,15 +1251,15 @@ ADD TO EVERY THING
             ELSE SAY ogg1_inadatto_pl OF my_game.
           END IF.
           "prendere."
-      AND holder IS reachable AND holder IS NOT distant
+      AND holder IS raggiungibile AND holder IS NOT distante
         ELSE
-          IF holder IS NOT reachable
+          IF holder IS NOT raggiungibile
             THEN
               IF holder IS NOT plurale
                 THEN SAY ogg2_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg2_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF holder IS distant
+          ELSIF holder IS distante
             THEN
               IF holder IS NOT plurale
                 --> @TODO!!                                                     TRANSLATE!
@@ -1276,7 +1276,7 @@ ADD TO EVERY THING
           END IF.
           AND obj IN holder
         ELSE
-          IF holder IS inanimate
+          IF holder IS inanimato
             THEN
               IF holder ISA SUPPORTER
                 THEN
@@ -1387,7 +1387,7 @@ ADD TO EVERY OBJECT
   VERB rompi
     CHECK my_game CAN rompere
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -1397,15 +1397,15 @@ ADD TO EVERY OBJECT
         "rompere."
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               --> @TODO!!                                                       TRANSLATE!
@@ -1460,7 +1460,7 @@ ADD TO EVERY OBJECT
     WHEN obj
       CHECK my_game CAN rompere_con
         ELSE SAY azione_bloccata OF my_game.
-      AND obj IS examinable
+      AND obj IS esaminabile
         ELSE
           IF obj IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
@@ -1468,7 +1468,7 @@ ADD TO EVERY OBJECT
             ELSE SAY ogg1_inadatto_pl OF my_game.
           END IF.
           "rompere."
-      AND instr IS examinable
+      AND instr IS esaminabile
         ELSE
           IF obj IS NOT plurale
             --> @TODO!!                                                         TRANSLATE!
@@ -1484,15 +1484,15 @@ ADD TO EVERY OBJECT
         --> @TODO!!                                                             TRANSLATE!
         ELSE SAY check_obj2_in_hero OF my_game.
         --> @TODO!!                                                             TRANSLATE!
-      AND obj IS reachable AND obj IS NOT distant
+      AND obj IS raggiungibile AND obj IS NOT distante
         ELSE
-          IF obj IS NOT reachable
+          IF obj IS NOT raggiungibile
             THEN
               IF obj IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF obj IS distant
+          ELSIF obj IS distante
             THEN
               IF obj IS NOT plurale
                 --> @TODO!!                                                     TRANSLATE!
@@ -1593,15 +1593,15 @@ ADD TO EVERY THING
           THEN SAY check_obj_not_at_hero_sg OF my_game.
           ELSE SAY check_obj_not_at_hero_pl OF my_game.
         END IF.
-    AND dest IS reachable AND dest IS NOT distant
+    AND dest IS raggiungibile AND dest IS NOT distante
       ELSE
-        IF dest IS NOT reachable
+        IF dest IS NOT raggiungibile
           THEN
             IF dest IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF dest IS distant
+        ELSIF dest IS distante
           THEN
             IF dest IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -1734,7 +1734,7 @@ ADD TO EVERY ACTOR
             THEN SAY check_act_can_talk_sg OF my_game.
             ELSE SAY check_act_can_talk_pl OF my_game.
           END IF.
-      AND act IS NOT distant
+      AND act IS NOT distante
         ELSE
           IF act IS NOT plurale
             THEN SAY check_obj_not_distant_sg OF my_game.
@@ -1789,7 +1789,7 @@ ADD TO EVERY ACTOR
             THEN SAY check_act_can_talk_sg OF my_game.
             ELSE SAY check_act_can_talk_pl OF my_game.
           END IF.
-      AND obj IS examinable
+      AND obj IS esaminabile
         ELSE
           IF obj IS NOT plurale
             THEN SAY check_obj2_suitable_for_sg OF my_game.
@@ -1799,7 +1799,7 @@ ADD TO EVERY ACTOR
         ELSE SAY check_obj2_not_in_hero3 OF my_game.
       AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-      AND act IS NOT distant
+      AND act IS NOT distante
         ELSE
           IF act IS NOT plurale
             THEN SAY check_obj_not_distant_sg OF my_game.
@@ -1808,11 +1808,11 @@ ADD TO EVERY ACTOR
       AND obj IS takeable
         ELSE SAY check_obj2_takeable2 OF my_game.
 
-      AND obj IS reachable AND obj IS NOT distant
+      AND obj IS raggiungibile AND obj IS NOT distante
         ELSE
-          IF obj IS NOT reachable
+          IF obj IS NOT raggiungibile
             THEN SAY check_obj_reachable_ask OF my_game.
-          ELSIF obj IS distant
+          ELSIF obj IS distante
             THEN
               IF obj IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
@@ -1883,7 +1883,7 @@ ADD TO EVERY THING
   VERB attack
     CHECK my_game CAN attack
       ELSE SAY azione_bloccata OF my_game.
-    AND target IS examinable
+    AND target IS esaminabile
       ELSE
         IF target IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -1898,15 +1898,15 @@ ADD TO EVERY THING
       ELSE SAY check_obj_not_in_worn2 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND target IS reachable AND target IS NOT distant
+    AND target IS raggiungibile AND target IS NOT distante
       ELSE
-        IF target IS NOT reachable
+        IF target IS NOT raggiungibile
           THEN
             IF target IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF target IS distant
+        ELSIF target IS distante
           THEN
             IF target IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -1956,7 +1956,7 @@ ADD TO EVERY THING
         WHEN target
       CHECK my_game CAN attack_with
         ELSE SAY azione_bloccata OF my_game.
-      AND target IS examinable
+      AND target IS esaminabile
           ELSE
           IF target IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
@@ -1973,15 +1973,15 @@ ADD TO EVERY THING
         ELSE SAY check_obj_not_in_worn2 OF my_game.
       AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-      AND target IS reachable AND target IS NOT distant
+      AND target IS raggiungibile AND target IS NOT distante
         ELSE
-          IF target IS NOT reachable
+          IF target IS NOT raggiungibile
             THEN
               IF target IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF target IS distant
+          ELSIF target IS distante
             THEN
               IF target IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
@@ -2034,15 +2034,15 @@ ADD TO EVERY OBJECT
       ELSE SAY check_obj_takeable OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS NOT distant
+        ELSIF obj IS NOT distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -2134,7 +2134,7 @@ ADD TO EVERY THING
   VERB catch
     CHECK my_game CAN catch
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -2187,7 +2187,7 @@ ADD TO EVERY OBJECT
   VERB clean
     CHECK my_game CAN pulire
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -2196,15 +2196,15 @@ ADD TO EVERY OBJECT
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -2244,7 +2244,7 @@ ADD TO EVERY OBJECT
   VERB climb
   CHECK my_game CAN climb
     ELSE SAY azione_bloccata OF my_game.
-  AND obj IS examinable
+  AND obj IS esaminabile
     ELSE
       IF obj IS NOT plurale
       --------------------------------------------------------------------------
@@ -2256,15 +2256,15 @@ ADD TO EVERY OBJECT
       END IF.
   AND CURRENT LOCATION IS lit
     ELSE SAY check_locazione_illuminata OF my_game.
-  AND obj IS NOT distant
+  AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -2310,15 +2310,15 @@ ADD TO EVERY SUPPORTER
       ELSE SAY azione_bloccata OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND surface IS reachable AND surface IS NOT distant
+    AND surface IS raggiungibile AND surface IS NOT distante
       ELSE
-        IF surface IS NOT reachable
+        IF surface IS NOT raggiungibile
           THEN
             IF surface IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF surface IS NOT distant
+        ELSIF surface IS NOT distante
           THEN
             IF surface IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -2364,7 +2364,7 @@ ADD TO EVERY OBJECT
   VERB close
     CHECK my_game CAN chiudere
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS openable
+    AND obj IS apribile
           ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -2373,15 +2373,15 @@ ADD TO EVERY OBJECT
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -2435,14 +2435,14 @@ ADD TO EVERY OBJECT
     WHEN obj
       CHECK my_game CAN chiudere_con
         ELSE SAY azione_bloccata OF my_game.
-      AND obj IS openable
+      AND obj IS apribile
         ELSE
           IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
           THEN SAY ogg1_inadatto_sg OF my_game. "chiudere."
           ELSE SAY ogg1_inadatto_pl OF my_game. "chiudere."
           END IF.
-      AND instr IS examinable
+      AND instr IS esaminabile
         ELSE
           IF obj IS NOT plurale
             THEN SAY check_obj2_suitable_with_sg OF my_game.
@@ -2454,15 +2454,15 @@ ADD TO EVERY OBJECT
         ELSE SAY check_obj2_in_hero OF my_game.
       AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-      AND obj IS reachable AND obj IS NOT distant
+      AND obj IS raggiungibile AND obj IS NOT distante
         ELSE
-          IF obj IS NOT reachable
+          IF obj IS NOT raggiungibile
             THEN
               IF obj IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF obj IS distant
+          ELSIF obj IS distante
             THEN
               IF obj IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
@@ -2515,7 +2515,7 @@ ADD TO EVERY THING
     WHEN source
       CHECK my_game CAN consultare
         ELSE SAY azione_bloccata OF my_game.
-      AND source IS examinable
+      AND source IS esaminabile
         ELSE
           IF source IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -2524,15 +2524,15 @@ ADD TO EVERY THING
           END IF.
       AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-      AND source IS reachable AND source IS NOT distant
+      AND source IS raggiungibile AND source IS NOT distante
         ELSE
-          IF source IS NOT reachable
+          IF source IS NOT raggiungibile
             THEN
               IF source IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF source IS distant
+          ELSIF source IS distante
             THEN
               IF source IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
@@ -2616,7 +2616,7 @@ ADD TO EVERY OBJECT
   VERB cut
     CHECK my_game CAN tagliare
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -2662,14 +2662,14 @@ ADD TO EVERY OBJECT
         ELSE SAY azione_bloccata OF my_game.
       AND obj <> instr
         ELSE SAY check_obj_not_obj2_with OF my_game.
-      AND obj IS examinable
+      AND obj IS esaminabile
         ELSE
           IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
           THEN SAY ogg1_inadatto_sg OF my_game. "tagliare."
           ELSE SAY ogg1_inadatto_pl OF my_game. "tagliare."
           END IF.
-      AND instr IS examinable
+      AND instr IS esaminabile
         ELSE
           IF obj IS NOT plurale
             THEN SAY check_obj2_suitable_with_sg OF my_game.
@@ -2679,15 +2679,15 @@ ADD TO EVERY OBJECT
         ELSE SAY check_obj2_in_hero OF my_game.
       AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-      AND obj IS reachable AND obj IS NOT distant
+      AND obj IS raggiungibile AND obj IS NOT distante
         ELSE
-          IF obj IS NOT reachable
+          IF obj IS NOT raggiungibile
             THEN
               IF obj IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF obj IS distant
+          ELSIF obj IS distante
             THEN
               IF obj IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
@@ -2752,15 +2752,15 @@ ADD TO EVERY OBJECT
       ELSE SAY azione_bloccata OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -2814,7 +2814,7 @@ END VERB.
 -- ==============================================================
 -- @NOTA | dive 'in' (liq) coprirebbe "tuffati in acqua" ma non
 --       | "tuffati nella piscina". In teoria, servirebbe un'altra
---       | sintassi del tipo dive 'in' (vessel) che controlli un attributo che
+--       | sintassi del tipo dive 'in' (recipiente) che controlli un attributo che
 --       | specifica se il contenitore contiene liquidi e se è grande abbastanza
 --       | per potervici tuffare. Se no, usando "piscina" come sinonimo di "acqua"
 --       | per far sì che ci si possa tuffare in essa, crerebbe il problema che
@@ -2844,7 +2844,7 @@ ADD TO EVERY OBJECT
     -- notice that, unlike 'swim_in', it is possible to dive in a
     -- not reachable object (for example from a clifftop into a river)
     -- but not to a distant object:
-    AND liq IS NOT distant
+    AND liq IS NOT distante
       ELSE
         IF liq IS NOT plurale
           THEN SAY check_obj_not_distant_sg OF my_game.
@@ -2885,7 +2885,7 @@ ADD TO EVERY OBJECT
   VERB drive
     CHECK my_game CAN drive
       ELSE SAY azione_bloccata OF my_game.
-    AND vehicle IS examinable
+    AND vehicle IS esaminabile
       ELSE
         IF vehicle IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -2894,15 +2894,15 @@ ADD TO EVERY OBJECT
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND vehicle IS reachable AND vehicle IS NOT distant
+    AND vehicle IS raggiungibile AND vehicle IS NOT distante
       ELSE
-        IF vehicle IS NOT reachable
+        IF vehicle IS NOT raggiungibile
           THEN
             IF vehicle IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF vehicle IS distant
+        ELSIF vehicle IS distante
           THEN
             IF vehicle IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -3035,15 +3035,15 @@ ADD TO EVERY OBJECT
       ELSE SAY check_obj_takeable OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -3153,30 +3153,30 @@ ADD TO EVERY OBJECT
         ELSE SAY check_cont_not_in_obj OF my_game.
       AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-      AND obj IS reachable AND obj IS NOT distant
+      AND obj IS raggiungibile AND obj IS NOT distante
         ELSE
-          IF obj IS NOT reachable
+          IF obj IS NOT raggiungibile
             THEN
               IF obj IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF obj IS distant
+          ELSIF obj IS distante
             THEN
               IF obj IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
           END IF.
-      AND cont IS reachable AND cont IS NOT distant
+      AND cont IS raggiungibile AND cont IS NOT distante
         ELSE
-          IF cont IS NOT reachable
+          IF cont IS NOT raggiungibile
             THEN
               IF cont IS NOT plurale
                 THEN SAY ogg2_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg2_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF cont IS distant
+          ELSIF cont IS distante
             THEN
               IF obj IS NOT plurale
                 THEN SAY check_obj2_not_distant_sg OF my_game.
@@ -3280,30 +3280,30 @@ ADD TO EVERY THING
         ELSE SAY check_obj_takeable OF my_game.
       AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-      AND obj IS reachable AND obj IS NOT distant
+      AND obj IS raggiungibile AND obj IS NOT distante
         ELSE
-          IF obj IS NOT reachable
+          IF obj IS NOT raggiungibile
             THEN
               IF obj IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF obj IS distant
+          ELSIF obj IS distante
             THEN
               IF obj IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
           END IF.
-      AND surface IS reachable AND surface IS NOT distant
+      AND surface IS raggiungibile AND surface IS NOT distante
         ELSE
-          IF surface IS NOT reachable
+          IF surface IS NOT raggiungibile
             THEN
               IF surface IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF surface IS distant
+          ELSIF surface IS distante
             THEN
               IF surface IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
@@ -3422,7 +3422,7 @@ ADD TO EVERY THING
   VERB examine
     CHECK my_game CAN esaminare
       ELSE SAY azione_bloccata OF my_game.
-        AND obj IS examinable
+        AND obj IS esaminabile
           ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_suitable_examine_sg OF my_game.
@@ -3437,7 +3437,7 @@ ADD TO EVERY THING
           ELSE SAY check_obj_not_scenery_pl OF my_game. --> "$+1 non sono importanti ai fini del gioco."
         END IF.
         DOES
-      IF obj IS readable
+      IF obj IS leggibile
       -- for readable objects, 'examine' behaves just as 'read'
         THEN
           IF text OF obj = ""
@@ -3547,22 +3547,22 @@ ADD TO EVERY OBJECT
   VERB extinguish
     CHECK my_game CAN extinguish
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
           THEN SAY ogg1_inadatto_sg OF my_game. "estinguere."
           ELSE SAY ogg1_inadatto_pl OF my_game. "estinguere."
         END IF.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -3611,7 +3611,7 @@ ADD TO EVERY OBJECT
   VERB fill
     CHECK my_game CAN fill
       ELSE SAY azione_bloccata OF my_game.
-    AND cont IS examinable
+    AND cont IS esaminabile
       ELSE
         IF cont IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -3664,7 +3664,7 @@ ADD TO EVERY OBJECT
         ELSE SAY azione_bloccata OF my_game.
       AND cont <> substance
         ELSE SAY check_obj_not_obj2_with OF my_game.
-      AND substance IS examinable
+      AND substance IS esaminabile
         ELSE
           IF substance IS NOT plurale
             THEN SAY check_obj2_suitable_with_sg OF my_game.
@@ -3676,30 +3676,30 @@ ADD TO EVERY OBJECT
         ELSE SAY check_obj_not_in_cont2 OF my_game.
       AND substance IS takeable
         ELSE SAY check_obj2_takeable1 OF my_game.
-      AND cont IS reachable AND cont IS NOT distant
+      AND cont IS raggiungibile AND cont IS NOT distante
         ELSE
-          IF cont IS NOT reachable
+          IF cont IS NOT raggiungibile
             THEN
               IF cont IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF cont IS distant
+          ELSIF cont IS distante
             THEN
               IF cont IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game. "."
                 ELSE SAY check_obj_not_distant_pl OF my_game. "."
               END IF.
           END IF.
-      AND substance IS reachable AND substance IS NOT distant
+      AND substance IS raggiungibile AND substance IS NOT distante
         ELSE
-          IF substance IS NOT reachable
+          IF substance IS NOT raggiungibile
             THEN
               IF substance IS NOT plurale
                 THEN SAY ogg2_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg2_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF substance IS distant
+          ELSIF substance IS distante
             THEN
               IF substance IS NOT plurale
                 THEN SAY check_obj2_not_distant_sg OF my_game. "."
@@ -3827,13 +3827,13 @@ ADD TO EVERY WEAPON
             THEN SAY check_obj_suitable_sg OF my_game.
             ELSE SAY check_obj_suitable_pl OF my_game.
           END IF.
-      AND target IS examinable
+      AND target IS esaminabile
         ELSE SAY check_obj_suitable_at OF my_game.
       AND weapon <> target
         ELSE SAY check_obj_not_obj2_at OF my_game.
       AND target <> hero
         ELSE SAY check_obj_not_hero2 OF my_game.
-      AND target IS NOT distant
+      AND target IS NOT distante
         -- note that it is possible to fire at a "not reachable" target
         ELSE
           IF target IS NOT plurale
@@ -3899,21 +3899,21 @@ ADD TO EVERY OBJECT
       ELSE SAY azione_bloccata OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS broken
+    AND obj IS rotto
       ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_broken_sg OF my_game.
           ELSE SAY check_obj_broken_pl OF my_game.
         END IF.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -3998,7 +3998,7 @@ ADD TO EVERY THING
   VERB free
     CHECK my_game CAN liberare
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -4009,15 +4009,15 @@ ADD TO EVERY THING
       ELSE SAY check_obj_not_hero5 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -4193,15 +4193,15 @@ ADD TO EVERY OBJECT
       ELSE SAY azione_bloccata OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND cont IS reachable AND cont IS NOT distant
+    AND cont IS raggiungibile AND cont IS NOT distante
       ELSE
-        IF cont IS NOT reachable
+        IF cont IS NOT raggiungibile
           THEN
             IF cont IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF cont IS distant
+        ELSIF cont IS distante
           THEN
             IF cont IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -4283,7 +4283,7 @@ ADD TO EVERY THING
   VERB kick
     CHECK my_game CAN kick
       ELSE SAY azione_bloccata OF my_game.
-    AND target IS examinable
+    AND target IS esaminabile
       ELSE
         IF target IS NOT plurale
           THEN SAY check_obj_suitable_sg OF my_game.
@@ -4297,15 +4297,15 @@ ADD TO EVERY THING
       ELSE SAY check_obj_not_in_worn2 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND target IS reachable AND target IS NOT distant
+    AND target IS raggiungibile AND target IS NOT distante
       ELSE
-        IF target IS NOT reachable
+        IF target IS NOT raggiungibile
           THEN
             IF target IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF target IS distant
+        ELSIF target IS distante
           THEN
             IF target IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -4342,7 +4342,7 @@ ADD TO EVERY ACTOR
   VERB kill
     CHECK my_game CAN uccidere
       ELSE SAY azione_bloccata OF my_game.
-    AND victim IS examinable
+    AND victim IS esaminabile
       ELSE
         IF victim IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -4394,7 +4394,7 @@ ADD TO EVERY ACTOR
         ELSE SAY check_obj2_in_hero OF my_game.
       AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-      AND victim IS NOT distant
+      AND victim IS NOT distante
         ELSE
           IF victim IS NOT plurale
             THEN SAY check_obj_not_distant_sg OF my_game.
@@ -4429,7 +4429,7 @@ ADD TO EVERY THING
   VERB kiss
     CHECK my_game CAN baciare
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -4440,15 +4440,15 @@ ADD TO EVERY THING
       ELSE SAY check_obj_not_hero6 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -4494,7 +4494,7 @@ ADD TO EVERY OBJECT
   VERB knock
     CHECK my_game CAN knock
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_suitable_on_sg OF my_game.
@@ -4502,15 +4502,15 @@ ADD TO EVERY OBJECT
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -4609,15 +4609,15 @@ ADD TO EVERY OBJECT
       ELSE SAY check_hero_not_lying_down4 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND cont IS reachable AND cont IS NOT distant
+    AND cont IS raggiungibile AND cont IS NOT distante
       ELSE
-        IF cont IS NOT reachable
+        IF cont IS NOT raggiungibile
           THEN
             IF cont IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF cont IS distant
+        ELSIF cont IS distante
           THEN
             IF cont IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -4673,15 +4673,15 @@ ADD TO EVERY OBJECT
       ELSE SAY check_hero_not_lying_down4 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND surface IS reachable AND surface IS NOT distant
+    AND surface IS raggiungibile AND surface IS NOT distante
       ELSE
-        IF surface IS NOT reachable
+        IF surface IS NOT raggiungibile
           THEN
             IF surface IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF surface IS distant
+        ELSIF surface IS distante
           THEN
             IF surface IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -4733,7 +4733,7 @@ ADD TO EVERY OBJECT
   VERB lift
     CHECK my_game CAN lift
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -4746,15 +4746,15 @@ ADD TO EVERY OBJECT
       ELSE SAY check_obj_not_in_hero1 OF my_game.
     AND obj IS movable
       ELSE SAY check_obj_movable OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -4798,21 +4798,21 @@ ADD TO EVERY OBJECT
   VERB light
   CHECK my_game CAN light
       ELSE SAY azione_bloccata OF my_game.
-  AND obj IS examinable
+  AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_suitable_sg OF my_game.
           ELSE SAY check_obj_suitable_pl OF my_game.
         END IF.
-  AND obj IS reachable AND obj IS NOT distant
+  AND obj IS raggiungibile AND obj IS NOT distante
     ELSE
-      IF obj IS NOT reachable
+      IF obj IS NOT raggiungibile
         THEN
           IF obj IS NOT plurale
             THEN SAY ogg1_non_raggiungibile_sg OF my_game.
             ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
           END IF.
-      ELSIF obj IS distant
+      ELSIF obj IS distante
         THEN
           IF obj IS NOT plurale
             THEN SAY check_obj_not_distant_sg OF my_game.
@@ -4929,15 +4929,15 @@ ADD TO EVERY OBJECT
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -5006,7 +5006,7 @@ ADD TO EVERY OBJECT
           THEN SAY ogg1_inadatto_sg OF my_game. "bloccare."
           ELSE SAY ogg1_inadatto_pl OF my_game. "bloccare."
           END IF.
-      AND key IS examinable
+      AND key IS esaminabile
         ELSE
           IF obj IS NOT plurale
             THEN SAY check_obj2_suitable_with_sg OF my_game.
@@ -5022,15 +5022,15 @@ ADD TO EVERY OBJECT
             THEN SAY check_obj_not_locked_sg OF my_game.
             ELSE SAY check_obj_not_locked_pl OF my_game.
           END IF.
-          AND obj IS reachable AND obj IS NOT distant
+          AND obj IS raggiungibile AND obj IS NOT distante
         ELSE
-          IF obj IS NOT reachable
+          IF obj IS NOT raggiungibile
             THEN
               IF obj IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF obj IS distant
+          ELSIF obj IS distante
             THEN
               IF obj IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
@@ -5111,7 +5111,7 @@ ADD TO EVERY THING
   VERB look_behind
     CHECK my_game CAN look_behind
       ELSE SAY azione_bloccata OF my_game.
-    AND bulk IS examinable
+    AND bulk IS esaminabile
       ELSE SAY check_obj_suitable_there OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
@@ -5148,7 +5148,7 @@ ADD TO EVERY OBJECT
   VERB look_in
     CHECK my_game CAN look_in
       ELSE SAY azione_bloccata OF my_game.
-    AND cont IS examinable
+    AND cont IS esaminabile
       ELSE SAY check_obj_suitable_there OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
@@ -5188,7 +5188,7 @@ ADD TO EVERY OBJECT
   VERB look_out_of
     CHECK my_game CAN look_out_of
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_suitable_look_out_sg OF my_game.
@@ -5226,7 +5226,7 @@ ADD TO EVERY OBJECT
   VERB look_through
     CHECK my_game CAN look_through
       ELSE SAY azione_bloccata OF my_game.
-    AND bulk IS examinable
+    AND bulk IS esaminabile
       ELSE SAY check_obj_suitable_look_through OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
@@ -5256,7 +5256,7 @@ ADD TO EVERY THING
   VERB look_under
     CHECK my_game CAN look_under
       ELSE SAY azione_bloccata OF my_game.
-    AND bulk IS examinable
+    AND bulk IS esaminabile
       ELSE SAY check_obj_suitable_there OF my_game.
     AND bulk <> hero
       ELSE SAY check_obj_not_hero8 OF my_game.
@@ -5442,7 +5442,7 @@ ADD TO EVERY OBJECT
   VERB open
     CHECK my_game CAN aprire
       ELSE SAY azione_bloccata OF my_game.
-        AND obj IS openable
+        AND obj IS apribile
           ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -5451,15 +5451,15 @@ ADD TO EVERY OBJECT
         END IF.
         AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-        AND obj IS reachable AND obj IS NOT distant
+        AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -5521,14 +5521,14 @@ ADD TO EVERY OBJECT
         WHEN obj
       CHECK my_game CAN aprire_con
         ELSE SAY azione_bloccata OF my_game.
-          AND obj IS openable
+          AND obj IS apribile
           ELSE
           IF obj IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
             THEN SAY ogg1_inadatto_sg OF my_game. "aprire."
             ELSE SAY ogg1_inadatto_pl OF my_game. "aprire."
           END IF.
-      AND instr IS examinable
+      AND instr IS esaminabile
         ELSE
           IF obj IS NOT plurale
             THEN SAY check_obj2_suitable_with_sg OF my_game.
@@ -5538,15 +5538,15 @@ ADD TO EVERY OBJECT
         ELSE SAY check_obj_not_obj2_with OF my_game.
           AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-          AND obj IS reachable AND obj IS NOT distant
+          AND obj IS raggiungibile AND obj IS NOT distante
         ELSE
-          IF obj IS NOT reachable
+          IF obj IS NOT raggiungibile
             THEN
               IF obj IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF obj IS distant
+          ELSIF obj IS distante
             THEN
               IF obj IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
@@ -5606,7 +5606,7 @@ ADD TO EVERY OBJECT
   VERB 'play'
     CHECK my_game CAN 'play'
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_suitable_with_sg OF my_game.
@@ -5614,15 +5614,15 @@ ADD TO EVERY OBJECT
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -5663,7 +5663,7 @@ ADD TO EVERY THING
   VERB play_with
     CHECK my_game CAN play_with
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_suitable_with_sg OF my_game.
@@ -5673,15 +5673,15 @@ ADD TO EVERY THING
       ELSE SAY check_obj_not_hero6 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -5733,7 +5733,7 @@ ADD TO EVERY OBJECT
   VERB pry
     CHECK my_game CAN pry
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_suitable_sg OF my_game.
@@ -5776,13 +5776,13 @@ VERB pry_with
    WHEN obj
   CHECK my_game CAN pry_with
     ELSE SAY azione_bloccata OF my_game.
-  AND obj IS examinable
+  AND obj IS esaminabile
     ELSE
       IF obj IS NOT plurale
         THEN SAY check_obj_suitable_sg OF my_game.
         ELSE SAY check_obj_suitable_pl OF my_game.
       END IF.
-  AND instr IS examinable
+  AND instr IS esaminabile
     ELSE
       IF obj IS NOT plurale
         THEN SAY check_obj2_suitable_with_sg OF my_game.
@@ -5794,15 +5794,15 @@ VERB pry_with
     ELSE SAY check_obj2_in_hero OF my_game.
   AND CURRENT LOCATION IS lit
     ELSE SAY check_locazione_illuminata OF my_game.
-  AND obj IS reachable AND obj IS NOT distant
+  AND obj IS raggiungibile AND obj IS NOT distante
     ELSE
-      IF obj IS NOT reachable
+      IF obj IS NOT raggiungibile
         THEN
           IF obj IS NOT plurale
             THEN SAY ogg1_non_raggiungibile_sg OF my_game.
             ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
           END IF.
-      ELSIF obj IS distant
+      ELSIF obj IS distante
         THEN
           IF obj IS NOT plurale
             THEN SAY check_obj_not_distant_sg OF my_game.
@@ -5841,19 +5841,19 @@ ADD TO EVERY OBJECT
       ELSE SAY check_obj_movable OF my_game.
     AND obj <> hero
       ELSE SAY check_obj_not_hero1 OF my_game.
-    AND obj IS inanimate
+    AND obj IS inanimato
       ELSE SAY check_obj_inanimate1 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -5893,19 +5893,19 @@ ADD TO EVERY THING
           ELSE SAY check_obj_movable OF my_game.
     AND obj <> hero
       ELSE SAY check_obj_not_hero1 OF my_game.
-    AND obj IS inanimate
+    AND obj IS inanimato
       ELSE SAY check_obj_inanimate1 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -5951,7 +5951,7 @@ ADD TO EVERY THING
           ELSE SAY check_obj_movable OF my_game.
       AND obj <> instr
         ELSE SAY check_obj_not_obj2_with OF my_game.
-      AND instr IS examinable
+      AND instr IS esaminabile
         ELSE
           IF obj IS NOT plurale
             THEN SAY check_obj2_suitable_with_sg OF my_game.
@@ -5961,19 +5961,19 @@ ADD TO EVERY THING
         ELSE SAY check_obj2_in_hero OF my_game.
       AND obj <> hero
         ELSE SAY check_obj_not_hero1 OF my_game.
-      AND obj IS inanimate
+      AND obj IS inanimato
         ELSE SAY check_obj_inanimate1 OF my_game.
       AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-      AND obj IS reachable AND obj IS NOT distant
+      AND obj IS raggiungibile AND obj IS NOT distante
         ELSE
-          IF obj IS NOT reachable
+          IF obj IS NOT raggiungibile
             THEN
               IF obj IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF obj IS distant
+          ELSIF obj IS distante
             THEN
               IF obj IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
@@ -6075,15 +6075,15 @@ ADD TO EVERY OBJECT
           ELSE SAY check_obj_takeable OF my_game.
           AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-      AND obj IS reachable AND obj IS NOT distant
+      AND obj IS raggiungibile AND obj IS NOT distante
         ELSE
-          IF obj IS NOT reachable
+          IF obj IS NOT raggiungibile
             THEN
               IF obj IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF obj IS distant
+          ELSIF obj IS distante
             THEN
               IF obj IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
@@ -6100,15 +6100,15 @@ ADD TO EVERY OBJECT
                 ELSE SAY check_obj_not_in_cont_pl OF my_game.
               END IF.
           END IF.
-          AND cont IS reachable AND cont IS NOT distant
+          AND cont IS raggiungibile AND cont IS NOT distante
         ELSE
-          IF cont IS NOT reachable
+          IF cont IS NOT raggiungibile
             THEN
               IF cont IS NOT plurale
                 THEN SAY ogg2_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg2_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF cont IS distant
+          ELSIF cont IS distante
             THEN
               IF cont IS NOT plurale
                 THEN SAY check_obj2_not_distant_sg OF my_game.
@@ -6193,30 +6193,30 @@ ADD TO EVERY OBJECT
           ELSE SAY check_obj2_not_hero2 OF my_game.
           AND CURRENT LOCATION IS lit
             ELSE SAY check_locazione_illuminata OF my_game.
-          AND obj IS reachable AND obj IS NOT distant
+          AND obj IS raggiungibile AND obj IS NOT distante
         ELSE
-          IF obj IS NOT reachable
+          IF obj IS NOT raggiungibile
             THEN
               IF obj IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF obj IS distant
+          ELSIF obj IS distante
             THEN
               IF obj IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
           END IF.
-      AND bulk IS reachable AND bulk IS NOT distant
+      AND bulk IS raggiungibile AND bulk IS NOT distante
         ELSE
-          IF bulk IS NOT reachable
+          IF bulk IS NOT raggiungibile
             THEN
               IF bulk IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF bulk IS distant
+          ELSIF bulk IS distante
             THEN
               IF bulk IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
@@ -6274,30 +6274,30 @@ ADD TO EVERY OBJECT
             THEN SAY check_obj_not_on_surface_sg OF my_game.
             ELSE SAY check_obj_not_on_surface_pl OF my_game.
           END IF.
-          AND obj IS reachable AND obj IS NOT distant
+          AND obj IS raggiungibile AND obj IS NOT distante
         ELSE
-          IF obj IS NOT reachable
+          IF obj IS NOT raggiungibile
             THEN
               IF obj IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF obj IS distant
+          ELSIF obj IS distante
             THEN
               IF obj IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
           END IF.
-          AND surface IS reachable AND surface IS NOT distant
+          AND surface IS raggiungibile AND surface IS NOT distante
         ELSE
-          IF surface IS NOT reachable
+          IF surface IS NOT raggiungibile
             THEN
               IF surface IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF surface IS distant
+          ELSIF surface IS distante
             THEN
               IF surface IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
@@ -6362,7 +6362,7 @@ ADD TO EVERY OBJECT
     VERB read
     CHECK my_game CAN leggere
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS readable
+    AND obj IS leggibile
           ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -6371,7 +6371,7 @@ ADD TO EVERY OBJECT
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS NOT distant
+    AND obj IS NOT distante
       ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_not_distant_sg OF my_game.
@@ -6475,7 +6475,7 @@ ADD TO EVERY THING
   VERB rub
     CHECK my_game CAN rub
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -6484,19 +6484,19 @@ ADD TO EVERY THING
         END IF.
     AND obj <> hero
       ELSE SAY check_obj_not_hero6 OF my_game.
-    AND obj IS inanimate
+    AND obj IS inanimato
       ELSE SAY check_obj_inanimate2 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -6569,7 +6569,7 @@ ADD TO EVERY ACTOR
             THEN SAY check_act_can_talk_sg OF my_game.
             ELSE SAY check_act_can_talk_pl OF my_game.
           END IF.
-      AND act IS NOT distant
+      AND act IS NOT distante
         ELSE
           IF act IS NOT plurale
             THEN SAY check_obj_not_distant_sg OF my_game.
@@ -6633,7 +6633,7 @@ ADD TO EVERY THING
   VERB scratch
     CHECK my_game CAN scratch
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_suitable_sg OF my_game.
@@ -6641,19 +6641,19 @@ ADD TO EVERY THING
         END IF.
     AND obj <> hero
       ELSE SAY check_obj_not_hero3 OF my_game.
-    AND obj IS inanimate
+    AND obj IS inanimato
       ELSE SAY check_obj_inanimate1 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -6737,19 +6737,19 @@ ADD TO EVERY THING
       ELSE SAY azione_bloccata OF my_game.
     AND obj <> hero
       ELSE LIST hero.
-    AND obj IS inanimate
+    AND obj IS inanimato
       ELSE SAY check_obj_inanimate1 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -6785,7 +6785,7 @@ ADD TO EVERY OBJECT
     VERB sell
     CHECK my_game CAN vendere
       ELSE SAY azione_bloccata OF my_game.
-    AND item IS examinable
+    AND item IS esaminabile
       ELSE
         IF item IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -6827,7 +6827,7 @@ ADD TO EVERY OBJECT
   VERB shake
     CHECK my_game CAN shake
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_suitable_sg OF my_game.
@@ -6837,15 +6837,15 @@ ADD TO EVERY OBJECT
       ELSE SAY check_obj_movable OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -6887,7 +6887,7 @@ ADD TO EVERY THING
     VERB shoot
     CHECK my_game CAN shoot
       ELSE SAY azione_bloccata OF my_game.
-    AND target IS examinable
+    AND target IS esaminabile
       ELSE
         IF target IS NOT plurale
           THEN SAY check_obj_suitable_sg OF my_game.
@@ -6901,7 +6901,7 @@ ADD TO EVERY THING
       ELSE SAY check_obj_not_in_hero1 OF my_game.
     AND target NOT IN worn
       ELSE SAY check_obj_not_in_worn2 OF my_game.
-    AND target IS NOT distant
+    AND target IS NOT distante
       ELSE
         IF target IS NOT plurale
           THEN SAY check_obj_not_distant_sg OF my_game.
@@ -6964,7 +6964,7 @@ ADD TO EVERY THING
         WHEN target
       CHECK my_game CAN shoot_with
         ELSE SAY azione_bloccata OF my_game.
-      AND target IS examinable
+      AND target IS esaminabile
         ELSE
           IF target IS NOT plurale
             THEN SAY check_obj_suitable_sg OF my_game.
@@ -6980,7 +6980,7 @@ ADD TO EVERY THING
         ELSE SAY check_obj_not_in_hero1 OF my_game.
       AND target NOT IN worn
         ELSE SAY check_obj_not_in_worn2 OF my_game.
-      AND target IS NOT distant
+      AND target IS NOT distante
         ELSE
           IF target IS NOT plurale
             THEN SAY check_obj_not_distant_sg OF my_game.
@@ -7055,7 +7055,7 @@ ADD TO EVERY OBJECT
         ELSE SAY check_obj_in_hero OF my_game.
       AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-      AND act IS NOT distant
+      AND act IS NOT distante
         ELSE
           IF act IS NOT plurale
             THEN SAY check_obj2_not_distant_sg OF my_game.
@@ -7133,15 +7133,15 @@ ADD TO EVERY LIQUID
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND liq IS reachable AND liq IS NOT distant
+    AND liq IS raggiungibile AND liq IS NOT distante
       ELSE
-        IF liq IS NOT reachable
+        IF liq IS NOT raggiungibile
           THEN
             IF liq IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF liq IS distant
+        ELSIF liq IS distante
           THEN
             IF liq IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -7149,20 +7149,20 @@ ADD TO EVERY LIQUID
             END IF.
         END IF.
     DOES
-      IF vessel OF liq = null_vessel
+      IF recipiente OF liq = null_vessel
         -- here, if the liquid is in no container, for example
         -- the hero takes a sip of water from a river,
         -- the action is allowed to succeed.
         THEN "You take a sip of" SAY THE liq. "."
         ELSE
           -- implicit taking:
-          IF vessel OF liq NOT DIRECTLY IN hero
+          IF recipiente OF liq NOT DIRECTLY IN hero
             THEN
-              IF vessel OF liq IS NOT takeable
+              IF recipiente OF liq IS NOT takeable
                 THEN "You can't carry" SAY THE liq. "around in your bare hands."
                   -- the action stops here if the container is not takeable.
-                ELSE LOCATE vessel OF liq IN hero.
-                "(taking" SAY THE vessel OF liq. "first)$n"
+                ELSE LOCATE recipiente OF liq IN hero.
+                "(taking" SAY THE recipiente OF liq. "first)$n"
               END IF.
           END IF.
           -- end of implicit taking.
@@ -7170,8 +7170,8 @@ ADD TO EVERY LIQUID
 
       IF liq IN hero    -- i.e. if the implicit taking was successful
         THEN
-          IF vessel OF liq IS NOT open
-            THEN "You can't, since" SAY THE vessel OF liq. "is closed."
+          IF recipiente OF liq IS NOT open
+            THEN "You can't, since" SAY THE recipiente OF liq. "is closed."
             ELSE "You take a sip of" SAY THE liq. "."
           END IF.
       END IF.
@@ -7250,15 +7250,15 @@ ADD TO EVERY SUPPORTER
       ELSE SAY check_hero_not_sitting4 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND surface IS reachable AND surface IS NOT distant
+    AND surface IS raggiungibile AND surface IS NOT distante
       ELSE
-        IF surface IS NOT reachable
+        IF surface IS NOT raggiungibile
           THEN
             IF surface IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF surface IS distant
+        ELSIF surface IS distante
           THEN
             IF surface IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -7384,7 +7384,7 @@ ADD TO EVERY THING
     VERB squeeze
     CHECK my_game CAN squeeze
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_suitable_sg OF my_game.
@@ -7392,15 +7392,15 @@ ADD TO EVERY THING
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -7467,15 +7467,15 @@ ADD TO EVERY SUPPORTER
       ELSE SAY azione_bloccata OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND surface IS reachable AND surface IS NOT distant
+    AND surface IS raggiungibile AND surface IS NOT distante
       ELSE
-        IF surface IS NOT reachable
+        IF surface IS NOT raggiungibile
           THEN
             IF surface IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF surface IS distant
+        ELSIF surface IS distante
           THEN
             IF surface IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -7551,15 +7551,15 @@ ADD TO EVERY OBJECT
       ELSE SAY check_hero_not_lying_down3 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND liq IS reachable AND liq IS NOT distant
+    AND liq IS raggiungibile AND liq IS NOT distante
       ELSE
-        IF liq IS NOT reachable
+        IF liq IS NOT raggiungibile
           THEN
             IF liq IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF liq IS distant
+        ELSIF liq IS distante
           THEN
             IF liq IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -7726,7 +7726,7 @@ ADD TO EVERY OBJECT
   VERB taste
     CHECK my_game CAN assaggiare
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -7742,15 +7742,15 @@ ADD TO EVERY OBJECT
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -7787,7 +7787,7 @@ ADD TO EVERY OBJECT
   VERB tear
     CHECK my_game CAN tear
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -7796,15 +7796,15 @@ ADD TO EVERY OBJECT
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -7858,7 +7858,7 @@ ADD TO EVERY ACTOR
             THEN SAY check_act_can_talk_sg OF my_game.
             ELSE SAY check_act_can_talk_pl OF my_game.
           END IF.
-      AND act IS NOT distant
+      AND act IS NOT distante
         ELSE
           IF act IS NOT plurale
             THEN SAY check_obj_not_distant_sg OF my_game.
@@ -7954,7 +7954,7 @@ ADD TO EVERY OBJECT
     VERB throw
     CHECK my_game CAN throw
       ELSE SAY azione_bloccata OF my_game.
-    AND projectile IS examinable
+    AND projectile IS esaminabile
       ELSE
         IF projectile IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -7965,15 +7965,15 @@ ADD TO EVERY OBJECT
       ELSE SAY check_obj_takeable OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND projectile IS reachable AND projectile IS NOT distant
+    AND projectile IS raggiungibile AND projectile IS NOT distante
       ELSE
-        IF projectile IS NOT reachable
+        IF projectile IS NOT raggiungibile
           THEN
             IF projectile IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF projectile IS distant
+        ELSIF projectile IS distante
           THEN
             IF projectile IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -8032,7 +8032,7 @@ ADD TO EVERY OBJECT
         WHEN projectile
       CHECK my_game CAN throw_at
         ELSE SAY azione_bloccata OF my_game.
-          AND projectile IS examinable
+          AND projectile IS esaminabile
         ELSE
           IF projectile IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -8041,7 +8041,7 @@ ADD TO EVERY OBJECT
           END IF.
           AND projectile IS takeable
           ELSE SAY check_obj_takeable OF my_game.
-          AND target IS examinable
+          AND target IS esaminabile
           ELSE SAY check_obj_suitable_at OF my_game.
           AND projectile <> target
         ELSE SAY check_obj_not_obj2_at OF my_game.
@@ -8051,22 +8051,22 @@ ADD TO EVERY OBJECT
           ELSE SAY check_obj2_not_hero1 OF my_game.
           AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-          AND projectile IS reachable AND projectile IS NOT distant
+          AND projectile IS raggiungibile AND projectile IS NOT distante
         ELSE
-          IF projectile IS NOT reachable
+          IF projectile IS NOT raggiungibile
             THEN
               IF projectile IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF projectile IS distant
+          ELSIF projectile IS distante
             THEN
               IF projectile IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
           END IF.
-      AND target IS NOT distant
+      AND target IS NOT distante
         -- it is possible to throw something at an (otherwise) not reachable target
         ELSE
           IF target IS NOT plurale
@@ -8081,7 +8081,7 @@ ADD TO EVERY OBJECT
         END IF.
         -- end of implicit taking.
 
-        IF target IS inanimate
+        IF target IS inanimato
           THEN
             IF target NOT DIRECTLY AT hero
               -- for example the target is inside a box
@@ -8146,7 +8146,7 @@ ADD TO EVERY OBJECT
         WHEN projectile
       CHECK my_game CAN throw_to
         ELSE SAY azione_bloccata OF my_game.
-          AND projectile IS examinable
+          AND projectile IS esaminabile
         ELSE
           IF projectile IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -8155,7 +8155,7 @@ ADD TO EVERY OBJECT
           END IF.
           AND projectile IS takeable
           ELSE SAY check_obj_takeable OF my_game.
-          AND recipient IS examinable
+          AND recipient IS esaminabile
           ELSE SAY check_obj_suitable_at OF my_game.
           AND projectile <> recipient
         ELSE SAY check_obj_not_obj2_to OF my_game.
@@ -8165,22 +8165,22 @@ ADD TO EVERY OBJECT
           ELSE SAY check_obj2_not_hero1 OF my_game.
           AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-          AND projectile IS reachable AND projectile IS NOT distant
+          AND projectile IS raggiungibile AND projectile IS NOT distante
         ELSE
-          IF projectile IS NOT reachable
+          IF projectile IS NOT raggiungibile
             THEN
               IF projectile IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF projectile IS distant
+          ELSIF projectile IS distante
             THEN
               IF projectile IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
           END IF.
-          AND recipient IS NOT distant
+          AND recipient IS NOT distante
           ELSE
           IF recipient IS NOT plurale
             THEN SAY check_obj2_not_distant_sg OF my_game.
@@ -8229,7 +8229,7 @@ ADD TO EVERY OBJECT
         WHEN projectile
       CHECK my_game CAN throw_in
         ELSE SAY azione_bloccata OF my_game.
-              AND projectile IS examinable
+              AND projectile IS esaminabile
           ELSE
           IF projectile IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
@@ -8238,7 +8238,7 @@ ADD TO EVERY OBJECT
           END IF.
           AND projectile IS takeable
           ELSE SAY check_obj_takeable OF my_game.
-          AND cont IS examinable
+          AND cont IS esaminabile
           ELSE SAY check_obj2_suitable_there OF my_game.
           AND projectile <> cont
         ELSE SAY check_obj_not_obj2_in OF my_game.
@@ -8254,22 +8254,22 @@ ADD TO EVERY OBJECT
             THEN SAY check_obj_not_in_cont_sg OF my_game.
             ELSE SAY check_obj_not_in_cont_pl OF my_game.
           END IF.
-          AND projectile IS reachable AND projectile IS NOT distant
+          AND projectile IS raggiungibile AND projectile IS NOT distante
         ELSE
-          IF projectile IS NOT reachable
+          IF projectile IS NOT raggiungibile
             THEN
               IF projectile IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF projectile IS distant
+          ELSIF projectile IS distante
             THEN
               IF projectile IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
           END IF.
-          AND cont IS NOT distant
+          AND cont IS NOT distante
           ELSE
           IF cont IS NOT plurale
             THEN SAY check_obj2_not_distant_sg OF my_game.
@@ -8330,7 +8330,7 @@ ADD TO EVERY OBJECT
   VERB tie
     CHECK my_game CAN tie
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -8368,14 +8368,14 @@ ADD TO EVERY THING
     WHEN obj
       CHECK my_game CAN tie_to
         ELSE SAY azione_bloccata OF my_game.
-      AND obj IS examinable
+      AND obj IS esaminabile
           ELSE
           IF obj IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
             THEN SAY ogg1_inadatto_sg OF my_game. "legare."
             ELSE SAY ogg1_inadatto_pl OF my_game. "legare."
           END IF.
-      AND target IS examinable
+      AND target IS esaminabile
           ELSE SAY check_obj2_suitable_there OF my_game.
       AND obj <> target
         ELSE SAY check_obj_not_obj2_to OF my_game.
@@ -8383,30 +8383,30 @@ ADD TO EVERY THING
           ELSE SAY check_obj_takeable OF my_game.
       AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-      AND obj IS reachable AND obj IS NOT distant
+      AND obj IS raggiungibile AND obj IS NOT distante
         ELSE
-          IF obj IS NOT reachable
+          IF obj IS NOT raggiungibile
             THEN
               IF obj IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF obj IS distant
+          ELSIF obj IS distante
             THEN
               IF obj IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
           END IF.
-      AND target IS reachable AND target IS NOT distant
+      AND target IS raggiungibile AND target IS NOT distante
         ELSE
-          IF target IS NOT reachable
+          IF target IS NOT raggiungibile
             THEN
               IF target IS NOT plurale
                 THEN SAY ogg2_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg2_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF target IS distant
+          ELSIF target IS distante
             THEN
               IF target IS NOT plurale
                 THEN SAY check_obj2_not_distant_sg OF my_game.
@@ -8450,7 +8450,7 @@ ADD TO EVERY THING
   VERB touch
     CHECK my_game CAN touch
         ELSE SAY azione_bloccata OF my_game.
-        AND obj IS examinable
+        AND obj IS esaminabile
               ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -8459,15 +8459,15 @@ ADD TO EVERY THING
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-      AND obj IS reachable AND obj IS NOT distant
+      AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -8476,7 +8476,7 @@ ADD TO EVERY THING
         END IF.
       AND obj <> hero
       ELSE SAY check_obj_not_hero3 OF my_game.
-      AND obj IS inanimate
+      AND obj IS inanimato
       ELSE SAY check_obj_inanimate2 OF my_game. "."
           DOES
           "You feel nothing unexpected."
@@ -8517,14 +8517,14 @@ ADD TO EVERY THING
     WHEN obj
       CHECK my_game CAN touch_with
         ELSE SAY azione_bloccata OF my_game.
-          AND obj IS examinable
+          AND obj IS esaminabile
               ELSE
           IF obj IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
             THEN SAY ogg1_inadatto_sg OF my_game. "toccare."
             ELSE SAY ogg1_inadatto_pl OF my_game. "toccare."
           END IF.
-          AND instr IS examinable
+          AND instr IS esaminabile
           ELSE
           IF instr IS NOT plurale
             THEN SAY check_obj2_suitable_with_sg OF my_game.
@@ -8536,19 +8536,19 @@ ADD TO EVERY THING
         ELSE SAY check_obj2_not_hero1 OF my_game.
           AND instr IN hero
           ELSE SAY check_obj2_in_hero OF my_game.
-          AND obj IS inanimate
+          AND obj IS inanimato
           ELSE SAY check_obj_inanimate2 OF my_game.
           AND CURRENT LOCATION IS lit
           ELSE SAY check_locazione_illuminata OF my_game.
-          AND obj IS reachable AND obj IS NOT distant
+          AND obj IS raggiungibile AND obj IS NOT distante
         ELSE
-          IF obj IS NOT reachable
+          IF obj IS NOT raggiungibile
             THEN
               IF obj IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF obj IS distant
+          ELSIF obj IS distante
             THEN
               IF obj IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
@@ -8591,7 +8591,7 @@ ADD TO EVERY OBJECT
     VERB turn
     CHECK my_game CAN turn
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS examinable
+    AND obj IS esaminabile
       ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_suitable_sg OF my_game.
@@ -8605,15 +8605,15 @@ ADD TO EVERY OBJECT
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -8768,15 +8768,15 @@ ADD TO EVERY OBJECT
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -8833,7 +8833,7 @@ ADD TO EVERY OBJECT
             THEN SAY ogg1_inadatto_sg OF my_game. "sbloccare."
             ELSE SAY ogg1_inadatto_pl OF my_game. "sbloccare."
           END IF.
-      AND key IS examinable
+      AND key IS esaminabile
         ELSE
           IF obj IS NOT plurale
             THEN SAY check_obj2_suitable_with_sg OF my_game.
@@ -8845,15 +8845,15 @@ ADD TO EVERY OBJECT
         ELSE SAY check_obj_not_obj2_with OF my_game.
           AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-          AND obj IS reachable AND obj IS NOT distant
+          AND obj IS raggiungibile AND obj IS NOT distante
         ELSE
-          IF obj IS NOT reachable
+          IF obj IS NOT raggiungibile
             THEN
               IF obj IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF obj IS distant
+          ELSIF obj IS distante
             THEN
               IF obj IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.
@@ -9003,15 +9003,15 @@ ADD TO EVERY OBJECT
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS reachable AND obj IS NOT distant
+    AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
-        IF obj IS NOT reachable
+        IF obj IS NOT raggiungibile
           THEN
             IF obj IS NOT plurale
               THEN SAY ogg1_non_raggiungibile_sg OF my_game.
               ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
-        ELSIF obj IS distant
+        ELSIF obj IS distante
           THEN
             IF obj IS NOT plurale
               THEN SAY check_obj_not_distant_sg OF my_game.
@@ -9231,15 +9231,15 @@ ADD TO EVERY OBJECT
         ELSE SAY check_obj_writeable OF my_game.
         AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-        AND obj IS reachable AND obj IS NOT distant
+        AND obj IS raggiungibile AND obj IS NOT distante
         ELSE
-          IF obj IS NOT reachable
+          IF obj IS NOT raggiungibile
             THEN
               IF obj IS NOT plurale
                 THEN SAY ogg1_non_raggiungibile_sg OF my_game.
                 ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
               END IF.
-          ELSIF obj IS distant
+          ELSIF obj IS distante
             THEN
               IF obj IS NOT plurale
                 THEN SAY check_obj_not_distant_sg OF my_game.

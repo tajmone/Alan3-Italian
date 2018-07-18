@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/18 \(4\)](#20180718-4)
 - [2018/07/18 \(3\)](#20180718-3)
     - [Verb Responses Attributes](#verb-responses-attributes)
         - [Translated verb responses attributes:](#translated-verb-responses-attributes)
@@ -88,6 +89,31 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
+# 2018/07/18 (4)
+
+- [`lib_classi.i`][lib_classi] (v0.2.5)
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.21)
+- [`lib_luoghi.i`][lib_luoghi] (v0.2.2)
+- [`lib_messaggi.i`][lib_messaggi] (v0.2.2)
+- [`lib_verbi.i`][lib_verbi] (v0.2.21)
+
+Translated library attributes:
+
+|   English    |     Italian     |   Class    |
+|--------------|-----------------|------------|
+| `broken`     | `rotto`         | `THING`    |
+| `distant`    | `distante`      | `THING`    |
+| `donned`     | `indossato`     | `clothing` |
+| `examinable` | `esaminabile`   | `THING`    |
+| `inanimate`  | `inanimato`     | `THING`    |
+| `openable`   | `apribile`      | `THING`    |
+| `reachable`  | `raggiungibile` | `THING`    |
+| `readable`   | `leggibile`     | `THING`    |
+| `vessel`     | `recipiente`    | `liquid`   |
+| `wearable`   | `indossabile`   | `THING`    |
+
+
+
 # 2018/07/18 (3)
 
 - [`lib_classi.i`][lib_classi] (v0.2.4)
@@ -130,7 +156,7 @@ With this commit I begin to put some order in verb response messages by translat
 | `parametro_illegale_pl` | `ogg1_inadatto_pl` |
 | `check_obj_idoneo_sg`   | `ogg1_inadatto_sg` |
 | `check_obj_idoneo_pl`   | `ogg1_inadatto_pl` |
-| `xxx`                   | `xx`               |
+
 
 > __NOTE 4__ — `check_obj_idoneo_sg`/`pl` has been removed and replaced by `ogg1_inadatto_sg`/`pl` because they were producing the same message and were redundant. Also, `illegale` has been replaced with `inadatto`, which seems more accurate in the context.
 
