@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.17 (2018/07/17)
+-- "lib_definizioni.i" v0.2.18 (2018/07/18)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -184,9 +184,9 @@ ADD TO EVERY THING
       SET prep_IN OF THIS TO "nella".
       SET prep_SU OF THIS TO "sulla".
 
-    = "l'" THEN             --| In questo caso non alteriamo il genere poiché
+    = "l'" THEN              --| In questo caso non alteriamo il genere poiché
       MAKE THIS NOT plurale. --| questa forma può essere sia masch. che femm.
-                            --| Sta all'autore specificare il genere nell'istanza.
+                             --| Sta all'autore specificare il genere nell'istanza.
       SET prep_DI OF THIS TO "dell'$$".
       SET prep_A  OF THIS TO  "all'$$".
       SET prep_DA OF THIS TO "dall'$$".

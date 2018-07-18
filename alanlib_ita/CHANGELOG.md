@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/18](#20180718)
 - [2018/07/17 \(5\)](#20180717-5)
 - [2018/07/17 \(4\)](#20180717-4)
     - [Verb: `eat`](#verb-eat)
@@ -81,9 +82,17 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
+# 2018/07/18
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.18)
+- [`lib_verbi.i`][lib_verbi] (v0.2.18)
+
+Minor tweaks and code cleanup.
+
+
 # 2018/07/17 (5)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.13)
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.17 --- _sic_!)
 - [`lib_verbi.i`][lib_verbi] (v0.2.17)
 
 

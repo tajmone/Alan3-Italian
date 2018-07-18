@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.17 (2018/07/17)
+-- "lib_verbi.i" v0.2.18 (2018/07/18)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -418,10 +418,12 @@ ADD TO EVERY OBJECT
     AND obj IS examinable
       ELSE
         IF obj IS NOT plurale
-          --> @TODO!!                                                           TRANSLATE!
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
+          THEN SAY parametro_illegale_sg OF my_game.
+          ELSE SAY parametro_illegale_pl OF my_game.
+       -- THEN SAY check_obj_suitable_sg OF my_game.
+       -- ELSE SAY check_obj_suitable_pl OF my_game.
         END IF.
+        "attraversare."
     AND CURRENT LOCATION IS lit
       --> @TODO!!                                                               TRANSLATE!
       ELSE SAY check_current_loc_lit OF my_game.

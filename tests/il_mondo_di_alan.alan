@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione 0.2.0 (2018/06/11)
+--  versione 0.2.1 (2018/07/18)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -45,6 +45,8 @@ THE pzzaIF IsA site
   EXIT est   TO Eden.
   EXIT ovest TO mercato.
   EXIT nord  TO ccAtrio.
+  DESCRIPTION "Ti trovi in una piazza spaziosa.
+               Odi delle voci in lontananza." --> le 'voci' al mercato!
 END THE pzzaIF.
 
 THE statua_Alan IsA object AT pzzaIF.
@@ -81,6 +83,7 @@ THE targhetta IsA object AT pzzaIF.
       MAKE THIS già_letta.
   END VERB examine.
 END THE targhetta.
+
 -- =============================================================================
 
 ----- Giardino dell'Eden
@@ -119,6 +122,41 @@ THE mercato IsA site.
       END FOR.
   END VERB xyzzy.
 END THE mercato.
+
+
+--==============================================================================
+-- Voci di Sottofondo
+--==============================================================================
+-- TODO: Anche se è solo un test, andrebbe ripulito e reso più interessante!
+--       Potrei cambiarle in urla di una lite, e fare in modo che quando il
+--       giocatore arriva al mercato assiste alla lite e poi le urla cessano
+--       (le sposto nel NOWHERE). Così le trasformo in un pretesto per attirare
+--       il giocatore al mercato, e la lite può servire ai fini della storia.
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- Creiamo un rumore di sottofondo, che può essere ascoltato anche da luoghi
+-- adiacenti (il verbo 'ascolta' può riferirsi a oggetti in altre locazioni).
+-- Ovviamente, dovremmo menzionare il suono manualmente nelle altre stanze (con
+-- DESCRIPTION) al fine di attirare l'attenzione su di esso, dato che si trova
+-- solo nel mercato in realtà.
+-- Utile soprattutto per testare i messaggi di errore dei verbi che esigono che
+-- l'oggetto sia esaminabile (i suoni non lo sono).
+--------------------------------------------------------------------------------
+THE voci IsA sound AT mercato.
+  HAS articolo "le".
+  DESCRIPTION "" --> non elencare
+
+  VERB listen
+    DOES ONLY
+      IF THIS AT hero
+        THEN "Stanno discutendo sui prezzi della frutta."
+      ELSIF THIS NEAR hero
+        THEN "Le voci sembrano venire dal mercato."
+      ELSE   "Non senti alcune voci qui."
+      END IF.
+
+  END VERB.
+END THE voci.
+
 
 THE Gustavo IsA male AT mercato.
   IS named.
