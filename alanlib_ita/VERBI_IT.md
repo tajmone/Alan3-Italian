@@ -26,6 +26,7 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [inventario](#inventario)
 - [MANGIARE, BERE](#mangiare-bere)
     - [mangia](#mangia)
+    - [bevi](#bevi)
 - [INDOSSARE, SPOGLIARSI](#indossare-spogliarsi)
     - [spogliati](#spogliati)
 - [ATTACCARE, ROMPERE, BRUCIARE](#attaccare-rompere-bruciare)
@@ -54,6 +55,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [aspetta]
 - [attendi]
 - [attraversa]
+- [bevi]
 - [brucia]
 - [brucia con]
 - [carica]
@@ -340,6 +342,14 @@ sintassi:
 sintassi:
 
     mangia (cibo)
+
+## bevi
+
+[bevi]: #bevi
+
+sintassi:
+
+    bevi (liq)
 
 
 

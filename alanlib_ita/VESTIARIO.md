@@ -1,5 +1,7 @@
 # Il Vestiario in Alan StdLib
 
+    ultima modifica: 2018/07/18
+
 Appunti su come viene gestito il vestiario nella Libreria Standard di Alan, e note di traduzione all'italiano.
 
 > _**WIP**_ — Questo documento è ancora una bozza incompleta.
@@ -41,28 +43,28 @@ A ogni attore viene assegnato l'attributo `wearing` — un attibuto di tipo `SET
 
 Un indumento deve essere dichiarato come istanza della classe `clothing` (sottoclasse di `OBJECT`).
 
-Questa classe sovrascrive alcuni valori predefiniti di attributi comuni a tutti le cose (`THING`):
+Questa classe sovrascrive alcuni valori predefiniti di attributi comuni a tutte le cose (`THING`):
 
 ```alan
-  IS wearable.
+  IS indossabile.
 ```
 
-... laddove tutti gli altri oggetti sono dichiarati come `NOT wearable`.
+... laddove tutti gli altri oggetti sono dichiarati come `NOT indossabile`.
 
 Inoltre, questa classe introduce nuovi attributi speciali per il vestiario, non condivisi con altri tipi di oggetti:
 
-|  attributo   |   tipo   | default |                               descrizione                                |
-|--------------|----------|---------|--------------------------------------------------------------------------|
-| `headcover`  | numerico | 0       |                                                                          |
-| `handscover` | numerico | 0       |                                                                          |
-| `feetcover`  | numerico | 0       |                                                                          |
-| `topcover`   | numerico | 0       |                                                                          |
-| `botcover`   | numerico | 0       |                                                                          |
-| `donned`     | booleano | `NOT`   | (_uso interno_) Indica se l'indumento è indossato da qualcuno (hero o PNG) |
+|  attributo   |   tipo   | default |                                descrizione                                 |
+|--------------|----------|---------|----------------------------------------------------------------------------|
+| `headcover`  | numerico | 0       | (vedi _[Tabella del Vestiario]_, più sotto)                                |
+| `handscover` | numerico | 0       | _idem_                                                                           |
+| `feetcover`  | numerico | 0       | _idem_                                                                           |
+| `topcover`   | numerico | 0       | _idem_                                                                           |
+| `botcover`   | numerico | 0       | _idem_                                                                           |
+| `indossato`  | booleano | `NOT`   | (_uso interno_) Indica se l'indumento è indossato da qualcuno (hero o PNG) |
 
 ### Note di Traduzione
 
-Gli attributi di cui sopra, andranno tradotti in italiano. Io e Alex J0K3R stiamo attualmente valutando se tradurre i termini independentemente tra loro, o se invece accumunarli da un prefisso che li renda intuitivamente riconducibili alla loro funzionalità.
+Gli attributi di cui sopra, andranno tradotti in italiano. Io e __Alex J0K3R__ stiamo attualmente valutando se tradurre i termini independentemente tra loro, o se invece accumunarli da un prefisso che li renda intuitivamente riconducibili alla loro funzionalità.
 
 Esempi del primo approccio di traduzione:
 
@@ -72,17 +74,18 @@ Esempi del primo approccio di traduzione:
 - `topcover` = `superiore`
 - `botcover` = `inferiore`
 
-... purtroppo questo approccio non garantisce termini che ricoprano la funzione generale del vestiario per tutti le voci — laddove `copricapo` è un termine abbastanza generico per qualsiasi tipo di indumento indossabile in testa, `guanti` non è altrettanto elastico nel suo significato — e i termini `topcover` e `botcover` rischiano di essere tradotti con vocaboli poco rappresentativi della loro reale funzione.
+
+... purtroppo questo approccio non garantisce termini che ricoprano la funzione generale del vestiario per tutti le voci — laddove `copricapo` è un termine abbastanza generico per qualsiasi tipo di indumento indossabile in testa (p.es., anche un casco da moto), `guanti` non è altrettanto elastico nel suo significato (p.es., delle manette, un orologio) — e i termini `topcover` e `botcover` rischiano di essere tradotti con vocaboli poco rappresentativi della loro reale funzione.
 
 Esempi del secondo approccio:
 
-- `headcover` = `vestiario_testa`
-- `handscover` = `vestiario_mani`
-- `feetcover` = `vestiario_piedi`
-- `topcover` = `vestiario_busto`
-- `botcover` = `vestiario_gambe`
+- `headcover` = `vestiario_testa` / `indumento_testa`
+- `handscover` = `vestiario_mani` / `indumento_mani`
+- `feetcover` = `vestiario_piedi` / `indumento_piedi`
+- `topcover` = `vestiario_busto` / `indumento_busto`
+- `botcover` = `vestiario_gambe` / `indumento_gambe`
 
-In questo caso, ogni attributo rappresenta chiaramente la funzione che ricopre: il suffisso conferisce un'omogeneità intuitiva a questo gruppo di attributi, semplificandone la memorizzazione. L'unico svantaggio è la lunghezza delle parole.
+In questo caso, ogni attributo rappresenta chiaramente la funzione che ricopre: il suffisso conferisce un'omogeneità intuitiva a questo gruppo di attributi, semplificandone la memorizzazione. L'unico svantaggio è la lunghezza finale degli attributi — anche se, dopotutto, non è che verrebbero usati poi così spesso nel codice; specie nelle avventure in cui il vestiario è importante, poiché in tal caso verranno quasi sempre usati per creare sottoclassi _ad hoc_ di indumenti (cappello, camicia, pantaloni, ecc) e quindi non verrebbero mai usati nella creazione di singole istanze di vestiario.
 
 ### `null_clothing`
 
@@ -101,8 +104,8 @@ In questo caso, ogni attributo rappresenta chiaramente la funzione che ricopre: 
 Durante l'inizializzazione, la libreria si occuperà della gestione automatizzata del vestiario.
 
 1. Ogni indumento collocato in `worn` viene incluso nel `wearing` del giocatore.
-2. Ogni indumento nel `wearing` del giocatore viene collocato in `worn` e settato come `donned`.
-3. Ogni indumento nel `wearing` di un PNG viene collocato nel PNG e settato come `donned`.
+2. Ogni indumento nel `wearing` del giocatore viene collocato in `worn` e settato come `indossato`.
+3. Ogni indumento nel `wearing` di un PNG viene collocato nel PNG e settato come `indossato`.
 4. Qualsiasi oggetto contenuto in un indumento (p.es. un portafoglio in una giacca) verrà autmomaticamente aggiunto alla set degli oggetti consentiti (attr. `allowed`) per quell'indumento, così da consentire di rimettervelo una volta toltolo.
 
 Dei controlli anologhi vengono eseguiti ad ogni turno (tramite l'evento `worn_clothing_check`) per assicurarsi che i capi di vestiario acquisiti dagli attori nel corso del gioco vengano gestiti correttamente.
@@ -130,7 +133,7 @@ EVERY clothing ISA OBJECT
                 IF THIS NOT IN worn
                   THEN LOCATE THIS IN worn.
                 END IF.
-                MAKE THIS donned.
+                MAKE THIS indossato.
             END IF.
         ELSIF THIS IN wearing OF ac AND THIS <> null_clothing
             THEN
@@ -138,7 +141,7 @@ EVERY clothing ISA OBJECT
                 THEN
                   LOCATE THIS IN ac.
               END IF.
-              MAKE THIS donned.
+              MAKE THIS indossato.
         END IF.
     END FOR.
 
@@ -192,3 +195,13 @@ La tabella originale inglese (_The clothing table_):
 ```
 
 
+
+<!-----------------------------------------------------------------------------
+                               REFERENCE LINKS                                
+------------------------------------------------------------------------------>
+
+<!-- link interni -->
+
+[Tabella del Vestiario]: #la-tabella-del-vestiario "Vai alla Tabella del Vestiario"
+
+<!-- eof -->
