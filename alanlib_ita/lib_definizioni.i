@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.19 (2018/07/18)
+-- "lib_definizioni.i" v0.2.20 (2018/07/18)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -438,6 +438,11 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   -- MESSAGGI DEI VERBI (IN ITALIANO)
   
   -- ============================================================================
+  -- Siccome i messaggi in italiano richiedono l'uso della forma infinita del
+  -- verbo, molti di questi messaggi sono troncati e spetterà al codice che si
+  -- occupa dei controlli sul verbo di far seguire al messaggio l'infinito del
+  -- verbo in questione.
+   ------------------------------------------------------------------------------
   -- @NOTA: Alcune stringhe di messaggi sono identiche (anche nell'originale)
   --        tranne per il nome dell'attributo. Questo perché l'autore originale
   --        ha voluto preservare la coerenza nei nomi degli attributi rispetto
@@ -446,14 +451,11 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   --        a costo di rivedere la metodologia dei nomi di attributi.
   ------------------------------------------------------------------------------
 
-
   -- ===============
   -- AZIONI BLOCCATE
   -- ===============
   
-  
-
-  HAS azione_bloccata "Non puoi farlo.". -- "You can't do that."
+  HAS azione_bloccata  "Non puoi farlo.". -- "You can't do that."
     --| Questo è il messaggio mostrato quando il giocatore tenta di usare un
     --| verbo che è stato disabilitato tramite "CAN NOT [verb]" (vedi sotto).
 
@@ -468,16 +470,27 @@ EVERY DEFINITION_BLOCK ISA LOCATION
 
 
   -- =============================
-  -- PARAMETRI ILLEGALI (SEMPLICI)
+  -- PARAMETRI INADATTI (SEMPLICI)
   -- ============================= 
-  -- Messaggi per quando uno dei parametri è invalido (illegale); di solito li
-  -- si trova nei blocchi condizionali ELSE della definizione SYNTAX del verbo.
-  
-  HAS parametro_illegale_sg "$+1 non è qualcosa che puoi".        --> (verbi vari)
-  HAS parametro_illegale_pl "$+1 non sono qualcosa che puoi".
+  -- Messaggi per quando uno dei parametri è inadatto al verbo.
+  -- Questi messaggi vengono utilizzati sia nei blocchi condizionali ELSE della
+  -- definizione SYNTAX del verbo che nel blocco di CHECK del verbo stesso.
+  -- A differenza della libreria originale inglese, qui non distinguiamo tra
+  -- messaggi per SYNTAX e CHECK, ma ci concentriamo sul parametro che impedisce
+  -- lo svolgimento dell'azione (qui riferiti come obj1 e obj2).
+ 
+  --@NOTA: | S3RioUs JokER consiglia di semplificare con la frase:
+  --       |    "Non è qualcosa che si possa <verbo inf>."
+  --       | ...sia per il singolare che per il plurale, omettendo di menzionare
+  --       | l'oggetto.  Tuttavia, menzionare l'oggetto può servire al  giocatore
+  --       | ai fini della disambugazione nel caso di verbi che consentono l'uso
+  --       | di oggetti multipli o di "TUTTO".
+ 
+  HAS ogg1_inadatto_sg  "$+1 non è qualcosa che puoi".                          --> (verbi vari)
+  HAS ogg1_inadatto_pl  "$+1 non sono qualcosa che puoi".
 
   -- =====================================
-  -- PARAMETRI ILLEGALI (CON PREPOSIZIONI)
+  -- PARAMETRI INADATTI (CON PREPOSIZIONI)
   -- =====================================
   -- Varianti dei messaggi precedenti, quando si tratta di parametri che richiedono
   -- preposizioni.
@@ -485,54 +498,45 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   -- ------------------
   -- PREPOSIZIONE "CON"
   -- ------------------
-  HAS parametro2_illegale_CON_sg "$+2 non è qualcosa con cui poter".        --> brucia_con
-  HAS parametro2_illegale_CON_pl "$+2 non sono qualcosa con cui poter".
+  HAS parametro2_illegale_CON_sg  "$+2 non è qualcosa con cui poter".           --> brucia_con
+  HAS parametro2_illegale_CON_pl  "$+2 non sono qualcosa con cui poter".
 
   -- ==================
   -- PARAMETRI MANCANTI
   -- ==================
-  -- messaggi per verbi che richiedono ulteriori parametri. Di solito li si
+  -- Messaggi per verbi che richiedono ulteriori parametri. Di solito li si
   -- trova nella variante base dei verbi che richiedono un ulteriore parametro
   -- per portare a termine l'azione, dove la variante base del verbo serve solo
   -- a intercettare il comando incompleto per informare il giocatore sulla
   -- sintassi corretta del verbo.
 
-  HAS specificare_CON_cosa "Devi specificare con cosa vorresti".
+  HAS specificare_CON_cosa  "Devi specificare con cosa vorresti".
   
 
-
-  -- =========================
-  -- MESSAGGI DI CHECK VERBALI
-  -- =========================
-  -- Messaggi per quando un comando del giocatore non passa i CHECK del verbo.
+  -- =======================
+  -- PARAMETRI FUORI PORTATA
+  -- =======================
+  -- Messaggi che riferiscono l'impossibilità di portare a termine l'azione a
+  -- causa di un parametro fuori portata (attributi "NOT reachable" e "distant").
   
-  -- a) Check degli Attributi
+  HAS ogg1_non_raggiungibile_sg  "$+1 è fuori dalla tua portata.".       -- (numerous)
+  HAS ogg1_non_raggiungibile_pl  "$+1 sono fuori dalla tua portata.".
+  HAS ogg2_non_raggiungibile_sg  "$+2 è fuori dalla tua portata.".        -- empty_in, fill_with, pour_in, put_in, take_from, tie_to
+  HAS ogg2_non_raggiungibile_pl  "$+2 sono fuori dalla tua portata.".
+
+  -- @TODO: MESSAGGI ANCORA DA TRADURRE                                         TRANSLATE!
+  HAS check_obj_reachable_ask "$+1 can't reach $+2.".         -- ask_for
+  HAS check_obj_not_distant_sg "$+1 is too far away.".          -- (numerous)
+  HAS check_obj_not_distant_pl "$+1 are too far away.".
+  HAS check_obj2_not_distant_sg "$+2 is too far away.".         -- empty_in, fill_with, pour_in, put_in, show, take_from,                                  -- + throw_at, throw_in, throw_to
+  HAS check_obj2_not_distant_pl "$+2 are too far away.".
+
+
+  -- c) Check della Locazione
   --    ---------------------
-  --    Messaggi per i check generici che controllano se un'istanza è idonea ad
-  --    essere utilizzato con il verbo:
-  --------------------------------------------------------------------------------
-  --# siccome in italiano serve l'infinito qui, questo messaggio è troncato e
-  --  spetterà al codice che si occupa dei controlli sul verbo di farlo seguire
-  --  dall'infinito del verbo in questione.
-  HAS check_obj_idoneo_sg "$+1 non è qualcosa che puoi".        --> (verbi vari)
-  HAS check_obj_idoneo_pl "$+1 non sono qualcosa che puoi".
-
-  --@TODO 1: | Questo messaggio è identico a 'parametro_illegale_sg' e potrei
-  --         | sostuirlo con quello e cancellarlo. Credo che l'unico motivo per
-  --         | l'esistenza di simili duplicati sia quello di offrire un sistema
-  --         | di nomi degli attributi che sia consistente con il contesto del
-  --         | verbo (CHECK vs param, ecc). Però credo valga la pena elimiare i
-  --         | duplicati, e magare adottare un sistema di nomi più orientato al
-  --         | contenuto del messaggio che non al suo contesto nel codice.
-
-
-  --@NOTA: | S3RioUs JokER consiglia di semplificare con la frase:
-  --       |    "Non è qualcosa che si possa <verbo inf>."
-  --       | ...sia per il singolare che per il plurale, omettendo di menzionare
-  --       | l'oggetto.  Tuttavia, menzionare l'oggetto può essere al  giocatore
-  --       | ai fini della disambugazione nel caso di verbi che consentono l'uso
-  --       | di oggetti multipli o "TUTTO".
-
+  --@TODO: migliora nome attributo e messaggio
+  HAS check_locazione_illuminata  "È troppo buio.".                             --> (svariati verbi)
+  -- HAS check_current_loc_lit "It is too dark to see.".           -- (numerous)
 
 
   -- ============================================================================
@@ -543,7 +547,9 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   -- @NOTA: Quando tutti i messaggi saranno stati tradotti/implmentati in italiano
   --        gli originali inglesi qui di seguito verranno cancellati. Fino ad
   --        allora bisogna tenerli poiché sono richiesti dai verbi non ancora
-  --        tradotti.
+  --        tradotti. Però mano mano che mi concentro su un blocco di messaggi
+  --        simili li sposto nella sezione italiana, così posso seguire meglio
+  --        il lavoro di traduzione.
   ------------------------------------------------------------------------------
 
 
@@ -697,20 +703,6 @@ EVERY DEFINITION_BLOCK ISA LOCATION
 
 
 
-  -- checks for "not reachable" and "distant" objects:
-  ----------------------------------------------------
-
-  HAS check_obj_reachable_sg "$+1 is out of your reach.".       -- (numerous)
-  HAS check_obj_reachable_pl "$+1 are out of your reach.".
-  HAS check_obj2_reachable_sg "$+2 is out of your reach.".        -- empty_in, fill_with, pour_in, put_in, take_from, tie_to
-  HAS check_obj2_reachable_pl "$+2 are out of your reach.".
-  HAS check_obj_reachable_ask "$+1 can't reach $+2.".         -- ask_for
-  HAS check_obj_not_distant_sg "$+1 is too far away.".          -- (numerous)
-  HAS check_obj_not_distant_pl "$+1 are too far away.".
-  HAS check_obj2_not_distant_sg "$+2 is too far away.".         -- empty_in, fill_with, pour_in, put_in, show, take_from,                                  -- + throw_at, throw_in, throw_to
-  HAS check_obj2_not_distant_pl "$+2 are too far away.".
-
-
   -- checks for the hero sitting or lying_down:
   ---------------------------------------------
 
@@ -827,9 +819,8 @@ EVERY DEFINITION_BLOCK ISA LOCATION
 
   -- c) checking location states
   ------------------------------
-  --@TODO: migliora messaggio
-  HAS check_current_loc_lit "È troppo buio.".           -- (svariati verbi)
-      -- HAS check_current_loc_lit "It is too dark to see.".           -- (numerous)
+  -- HAS check_current_loc_lit "It is too dark to see.".           -- (numerous)
+  -- TRADOTTO --> check_locazione_illuminata
 
 
   -- d) checks guarding against actions directed at the hero him-/herself

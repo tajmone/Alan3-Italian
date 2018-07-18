@@ -1,4 +1,4 @@
--- "_mygame_import.i" v0.2.2 (2018/07/17)
+-- "_mygame_import.i" v0.2.3 (2018/07/18)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -406,10 +406,10 @@ THE my_game ISA DEFINITION_BLOCK
 	HAS check_obj_not_in_worn3 "You'll have to take off $+1 first.".				-- drop
     	
 
-	-- c) checking location states
-	------------------------------	
+  -- c) Check della Locazione
+  --    ---------------------
 
-    	HAS check_current_loc_lit "It is too dark to see.".						-- (numerous)
+  HAS check_locazione_illuminata "È troppo buio.".           -- (svariati verbi)
 
 
 	-- d) checks guarding against actions directed at the hero him-/herself

@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.2.3 (2018/07/17)
+-- "lib_classi.i" v0.2.4 (2018/07/18)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -478,7 +478,7 @@ VERB remove
   CHECK THIS IN worn
     ELSE SAY check_obj_in_worn OF my_game.
   AND CURRENT LOCATION IS lit
-    ELSE SAY check_current_loc_lit OF my_game.
+    ELSE SAY check_locazione_illuminata OF my_game.
 
   DOES ONLY
 
@@ -804,14 +804,14 @@ EVERY device ISA OBJECT
           ELSE SAY check_device_not_on_pl OF my_game.
         END IF.
     AND CURRENT LOCATION IS lit
-      ELSE SAY check_current_loc_lit OF my_game.
+      ELSE SAY check_locazione_illuminata OF my_game.
     AND THIS IS reachable AND THIS IS NOT distant
       ELSE
         IF THIS IS NOT reachable
           THEN
             IF THIS IS NOT plurale
-              THEN SAY check_obj_reachable_sg OF my_game.
-              ELSE SAY check_obj_reachable_pl OF my_game.
+              THEN SAY ogg1_non_raggiungibile_sg OF my_game.
+              ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
         ELSIF THIS IS distant
           THEN
@@ -836,14 +836,14 @@ EVERY device ISA OBJECT
           ELSE SAY check_device_on_pl OF my_game.
          END IF.
     AND CURRENT LOCATION IS lit
-      ELSE SAY check_current_loc_lit OF my_game.
+      ELSE SAY check_locazione_illuminata OF my_game.
     AND THIS IS reachable AND THIS IS NOT distant
       ELSE
         IF THIS IS NOT reachable
           THEN
             IF THIS IS NOT plurale
-              THEN SAY check_obj_reachable_sg OF my_game.
-              ELSE SAY check_obj_reachable_pl OF my_game.
+              THEN SAY ogg1_non_raggiungibile_sg OF my_game.
+              ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
         ELSIF THIS IS distant
           THEN
@@ -863,14 +863,14 @@ EVERY device ISA OBJECT
 
   VERB switch
     CHECK CURRENT LOCATION IS lit
-      ELSE SAY check_current_loc_lit OF my_game.
+      ELSE SAY check_locazione_illuminata OF my_game.
     AND THIS IS reachable AND THIS IS NOT distant
       ELSE
         IF THIS IS NOT reachable
           THEN
             IF THIS IS NOT plurale
-              THEN SAY check_obj_reachable_sg OF my_game.
-              ELSE SAY check_obj_reachable_pl OF my_game.
+              THEN SAY ogg1_non_raggiungibile_sg OF my_game.
+              ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
             END IF.
         ELSIF THIS IS distant
           THEN
@@ -1243,8 +1243,8 @@ EVERY lightsource ISA OBJECT
     AND THIS IS reachable
       ELSE
         IF THIS IS NOT plurale
-          THEN SAY check_obj_reachable_sg OF my_game.
-          ELSE SAY check_obj_reachable_pl OF my_game.
+          THEN SAY ogg1_non_raggiungibile_sg OF my_game.
+          ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
         END IF.
     AND THIS IS NOT broken
       ELSE SAY check_obj_not_broken OF my_game.

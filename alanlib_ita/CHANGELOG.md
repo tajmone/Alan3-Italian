@@ -11,6 +11,10 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/18 \(3\)](#20180718-3)
+    - [Verb Responses Attributes](#verb-responses-attributes)
+        - [Translated verb responses attributes:](#translated-verb-responses-attributes)
+        - [Renamed verb responses attributes:](#renamed-verb-responses-attributes)
 - [2018/07/18 \(2\)](#20180718-2)
     - [Verb: `drink`](#verb-drink)
 - [2018/07/18 \(1\)](#20180718-1)
@@ -83,6 +87,53 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/18 (3)
+
+- [`lib_classi.i`][lib_classi] (v0.2.4)
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.20)
+- [`lib_verbi.i`][lib_verbi] (v0.2.20)
+
+## Verb Responses Attributes
+
+With this commit I begin to put some order in verb response messages by translating attributes names and/or messages into Italian.
+
+> __NOTE 1__ — Many of the current message attributes names are temporary, and in the future I'll try to work out a custom naming convention that better suits the needs of the Italian library. 
+> 
+> As for now, I'm just trying to ensure that all translated verbs will use Italian attributes names and text output, and that I can start to comment out the original English attributes once they have been globally replaced by their Italian equivalent.
+
+
+### Translated verb responses attributes:
+
+|        Attribute EN       |         Attribute IT         |
+|---------------------------|------------------------------|
+| `check_current_loc_lit`   | `check_locazione_illuminata` |
+| `check_obj_reachable_sg`  | `ogg1_non_raggiungibile_sg`  |
+| `check_obj_reachable_pl`  | `ogg1_non_raggiungibile_pl`  |
+| `check_obj2_reachable_sg` | `ogg2_non_raggiungibile_sg`  |
+| `check_obj2_reachable_pl` | `ogg2_non_raggiungibile_pl`  |
+
+
+> __NOTE 2__ — The new Italian naming convention for message attributes will always use `ogg1` in place of `obj` (or in any reference to first parameter of verb, like the old `parametro`) and `ogg2` for `obj2`, because these are shorter and easier to remember.
+
+<!-- sep -->
+
+> __NOTE 3__ — I'm not quite happy with `check_locazione_illuminata` because I'd like attributes names to indicate the nature of the message rather than the context of the failed conditional check (whether in a `SYNTAX` or `CHECK` block). The latter approach is better because some messages are shared by both syntax constructs (see below, how reduntant message was replaced).
+> 
+> But for now this name will do, until I work out a better naming convention for messages. Also, it seems that this is the only message regarding location checks, so it's not a big deal actually. But I'd like its name to be more intuitive in the future.
+
+### Renamed verb responses attributes:
+
+|       Attribute EN      |    Attribute IT    |
+|-------------------------|--------------------|
+| `parametro_illegale_sg` | `ogg1_inadatto_sg` |
+| `parametro_illegale_pl` | `ogg1_inadatto_pl` |
+| `check_obj_idoneo_sg`   | `ogg1_inadatto_sg` |
+| `check_obj_idoneo_pl`   | `ogg1_inadatto_pl` |
+| `xxx`                   | `xx`               |
+
+> __NOTE 4__ — `check_obj_idoneo_sg`/`pl` has been removed and replaced by `ogg1_inadatto_sg`/`pl` because they were producing the same message and were redundant. Also, `illegale` has been replaced with `inadatto`, which seems more accurate in the context.
+
 
 # 2018/07/18 (2)
 
