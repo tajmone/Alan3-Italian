@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/19 \(5\)](#20180719-5)
 - [2018/07/19 \(4\)](#20180719-4)
     - [Banner Attributes](#banner-attributes)
 - [2018/07/19 \(3\)](#20180719-3)
@@ -94,6 +95,16 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/19 (5)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.25)
+- [`lib_verbi.i`][lib_verbi] (v0.2.23)
+
+Just some code cleanup, comments translation and house keeping.
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/19 (4)
 

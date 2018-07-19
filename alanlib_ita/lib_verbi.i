@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.22 (2018/07/19)
+-- "lib_verbi.i" v0.2.23 (2018/07/19)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -27,6 +27,7 @@
 --| brucia             |                              | brucia (ogg)             |   | 1 | x |
 --| brucia_con         |                              | brucia (ogg) con (instr) |   | 2 | x |
 --| compra             | acquista                     | compra (item)            |   | 1 |   |
+--| dormi              | riposa                       | dormi                    |   | 0 |   |
 --| dai_a              | porgi, offri                 | dai (ogg) a (recipient)  |   | 2 | x |
 --| inventario         | inv                          | inventario               | x | 0 |   |
 --| mangia             |                              | mangia (cibo)            |   | 1 |   |
@@ -187,7 +188,7 @@
 ----- sip                                                  sip (liq)                           1
 ----- sit (down)                                           sit.  sit down.                     0
 ----- sit_on                                               sit on (surface)                    1
------ sleep       (+ rest)                                 sleep                               0
+----> sleep       (+ rest)                                 sleep                               0
 ----- smell0                                               smell                               0
 ----- smell                                                smell (odour)                       1
 ----- squeeze                                              squeeze (obj)                       1       x
@@ -781,6 +782,9 @@ SYNTAX dai_a = 'dai' (obj) 'a' (recipient)
       END IF.
 
 
+SYNONYMS porgi, offri = dai.
+-- SYNONYMS hand, offer = give.
+
 
 ADD TO EVERY OBJECT
   VERB dai_a
@@ -854,9 +858,26 @@ ADD TO EVERY OBJECT
   END VERB.
 END ADD TO.
 
+-- ==============================================================
 
-SYNONYMS porgi, offri = dai.
--- SYNONYMS hand, offer = give.
+
+----- @DORMI --> @SLEEP (+ rest)
+
+
+-- ==============================================================
+
+
+SYNTAX dormi = dormi.
+
+SYNONYMS riposa = dormi.
+
+VERB dormi
+  CHECK my_game CAN dormire
+    ELSE SAY azione_bloccata OF my_game.
+  DOES
+    "Non è il momento di riposare."
+END VERB.
+
 
 
 
@@ -886,6 +907,9 @@ SYNONYMS porgi, offri = dai.
 SYNTAX inventario = inventario.
 
 
+SYNONYMS inv = inventario.
+
+
 META VERB inventario
   CHECK my_game CAN inventariare
     ELSE SAY azione_bloccata OF my_game.
@@ -898,8 +922,6 @@ META VERB inventario
 
 END VERB.
 
-
-SYNONYMS inv = inventario.
 
 -- ==============================================================
 
@@ -1031,6 +1053,11 @@ SYNTAX prendi = prendi (obj)
 --| SYNONYMS:
 --|   carry, grab, hold, obtain = take
 
+
+SYNONYMS
+  carry, grab, hold, obtain = prendi. --@TODO: Translate IT synonims
+
+
 ADD TO EVERY THING
 -- @PRENDI -> @TAKE (VERB) => ADD TO EVERY THING
   VERB prendi
@@ -1148,10 +1175,6 @@ ADD TO EVERY THING
   END VERB.
 END ADD TO.
 
-
--- @PRENDI -> @TAKE (SYNONYMS)
-SYNONYMS
-  carry, grab, hold, obtain = prendi. --@TODO: Translate IT synonims
 
 
 
@@ -1348,6 +1371,9 @@ SYNTAX
   rifai = ancora.
 
 
+SYNONYMS g = rifai.
+
+
 VERB rifai
   CHECK my_game CAN rifare
     ELSE SAY azione_bloccata OF my_game.
@@ -1357,10 +1383,6 @@ VERB rifai
     -- "[The AGAIN command is not supported in this game. As a workaround, try using
     --  the 'up' and 'down' arrow keys to scroll through your previous commands.]"
 END VERB.
-
-
-SYNONYMS g = rifai.
-
 
 
 
@@ -1381,6 +1403,9 @@ SYNTAX rompi = rompi (obj)
           THEN SAY illegal_parameter_sg OF my_game.
           ELSE SAY illegal_parameter_pl OF my_game.
         END IF.
+
+
+SYNONYMS distruggi, spacca, sfonda = rompi.
 
 
 ADD TO EVERY OBJECT
@@ -1419,9 +1444,6 @@ ADD TO EVERY OBJECT
       -- "Resorting to brute force is not the solution here."
   END VERB.
 END ADD TO.
-
-
-SYNONYMS distruggi, spacca, sfonda = rompi.
 
 
 
@@ -1522,7 +1544,9 @@ END ADD TO.
 
 SYNTAX spogliati = spogliati.
 
+
 SYNONYMS svestiti = spogliati.
+
 
 VERB spogliati
   CHECK my_game CAN spogliarsi
@@ -1566,7 +1590,9 @@ SYNTAX vai_a = 'a' (dest)!
   WHERE dest ISA THING
     ELSE SAY illegal_parameter_go OF my_game.
 
+
 SYNONYMS vai = go.
+
 
 -- SYNONYMS walk = go.
   -- here we define a synonym for the predefined parser word 'go'
@@ -1642,6 +1668,9 @@ END ADD TO.
 SYNTAX 'about' = 'about'.
 
 
+SYNONYMS help, info = 'about'.
+
+
 VERB 'about'
   CHECK my_game CAN about
     ELSE SAY azione_bloccata OF my_game.
@@ -1659,9 +1688,6 @@ VERB 'about'
 END VERB.
 
 
-SYNONYMS help, info = 'about'.
-
-
 -- =============================================================
 
 
@@ -1675,7 +1701,9 @@ SYNTAX answer = answer (topic)
   WHERE topic ISA STRING
     ELSE SAY illegal_parameter_string OF my_game.
 
+
 SYNONYMS reply = answer.
+
 
 ADD TO EVERY STRING
   VERB answer
@@ -1873,6 +1901,7 @@ SYNTAX attack = attack (target)
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
 
+
 SYNONYMS beat, fight, hit, punch = attack.
 
 -- Note that 'kick' is defined separately, to avoid absurd commands such as
@@ -2018,6 +2047,8 @@ SYNTAX bite = bite (obj)
       END IF.
 
 
+SYNONYMS chew = bite.
+
 
 ADD TO EVERY OBJECT
   VERB bite
@@ -2071,9 +2102,6 @@ ADD TO EVERY OBJECT
 
   END VERB.
 END ADD TO.
-
-
-SYNONYMS chew = bite.
 
 
 
@@ -2360,6 +2388,9 @@ SYNTAX close = close (obj)
       END IF.
 
 
+SYNONYMS shut = close.
+
+
 ADD TO EVERY OBJECT
   VERB close
     CHECK my_game CAN chiudere
@@ -2400,9 +2431,6 @@ ADD TO EVERY OBJECT
           "You close the" SAY THE obj. "."
   END VERB.
 END ADD TO.
-
-
-SYNONYMS shut = close.
 
 
 
@@ -2576,6 +2604,9 @@ END ADD TO.
 SYNTAX credits = credits.
 
 
+SYNONYMS acknowledgments, author, copyright = credits.
+
+
 VERB credits
   CHECK my_game CAN credits
     ELSE SAY azione_bloccata OF my_game.
@@ -2588,9 +2619,6 @@ VERB credits
     the World Wide Web Internet site
     $ihttp://www.alanif.se$p"
 END VERB.
-
-
-SYNONYMS acknowledgments, author, copyright = credits.
 
 
 
@@ -2956,6 +2984,10 @@ SYNTAX drop = drop (obj)*
   drop = put down (obj)*.
 
 
+SYNONYMS
+  discard, dump, reject = drop.
+
+
 ADD TO EVERY OBJECT
   VERB drop
     CHECK my_game CAN lasciare
@@ -2971,11 +3003,6 @@ ADD TO EVERY OBJECT
           "Dropped."
     END VERB.
 END ADD TO.
-
-
-SYNONYMS
-  discard, dump, reject = drop.
-
 
 
 
@@ -3418,6 +3445,11 @@ SYNTAX examine = examine (obj)
     -- note that this formulation is allowed, too
 
 
+
+SYNONYMS
+  'check', inspect, observe, x = examine.
+
+
 ADD TO EVERY THING
   VERB examine
     CHECK my_game CAN esaminare
@@ -3462,10 +3494,6 @@ ADD TO EVERY THING
       END IF.
   END VERB.
 END ADD TO.
-
-
-SYNONYMS
-  'check', inspect, observe, x = examine.
 
 
 
@@ -3543,6 +3571,11 @@ SYNTAX extinguish = extinguish (obj)
   extinguish = put (obj) 'out'.
 
 
+
+SYNONYMS quench = extinguish.
+
+
+
 ADD TO EVERY OBJECT
   VERB extinguish
     CHECK my_game CAN extinguish
@@ -3577,11 +3610,6 @@ ADD TO EVERY OBJECT
       "on fire."
     END VERB.
 END ADD TO.
-
-
-SYNONYMS quench = extinguish.
-
-
 
 -- ==============================================================
 
@@ -3733,6 +3761,9 @@ SYNTAX
         END IF.
 
 
+SYNONYMS 'locate' = find.
+
+
 ADD TO EVERY THING
   VERB find
     CHECK my_game CAN trovare
@@ -3751,9 +3782,6 @@ ADD TO EVERY THING
       "You'll have to $v it yourself."
   END VERB.
 END ADD TO.
-
-
-SYNONYMS 'locate' = find.
 
 
 
@@ -3893,6 +3921,9 @@ SYNTAX fix = fix (obj)
       END IF.
 
 
+SYNONYMS mend, repair = fix.
+
+
 ADD TO EVERY OBJECT
   VERB fix
     CHECK my_game CAN fix
@@ -3924,9 +3955,6 @@ ADD TO EVERY OBJECT
       "Please be more specific. How do you intend to fix it?"
   END VERB.
 END ADD TO.
-
-
-SYNONYMS mend, repair = fix.
 
 
 
@@ -3994,6 +4022,9 @@ SYNTAX free = free (obj)
       END IF.
 
 
+SYNONYMS release = free.
+
+
 ADD TO EVERY THING
   VERB free
     CHECK my_game CAN liberare
@@ -4031,11 +4062,6 @@ ADD TO EVERY THING
       END IF.
   END VERB.
 END ADD TO.
-
-
-SYNONYMS release = free.
-
-
 
 -- ==============================================================
 
@@ -4125,16 +4151,16 @@ END VERB.
 SYNTAX hint = hint.
 
 
+SYNONYMS
+  hints = hint.
+
+
 VERB hint
   CHECK my_game CAN hint
     ELSE SAY azione_bloccata OF my_game.
   DOES
     "Unfortunately hints are not available in this game."
 END VERB.
-
-
-SYNONYMS
-  hints = hint.
 
 
 -- ==============================================================
@@ -4425,6 +4451,9 @@ SYNTAX kiss = kiss (obj)
       END IF.
 
 
+SYNONYMS hug, embrace = kiss.
+
+
 ADD TO EVERY THING
   VERB kiss
     CHECK my_game CAN baciare
@@ -4464,10 +4493,6 @@ ADD TO EVERY THING
       END IF.
     END VERB.
 END ADD TO.
-
-
-SYNONYMS hug, embrace = kiss.
-
 
 
 -- ==============================================================
@@ -4729,6 +4754,9 @@ SYNTAX lift = lift (obj)
       END IF.
 
 
+SYNONYMS raise = lift.
+
+
 ADD TO EVERY OBJECT
   VERB lift
     CHECK my_game CAN lift
@@ -4772,10 +4800,6 @@ ADD TO EVERY OBJECT
   END VERB.
 END ADD TO.
 
-
-SYNONYMS raise = lift.
-
-
 -- ==============================================================
 
 
@@ -4792,6 +4816,9 @@ SYNTAX light = light (obj)
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
+
+
+SYNONYMS lit = light.
 
 
 ADD TO EVERY OBJECT
@@ -4827,10 +4854,6 @@ ADD TO EVERY OBJECT
     "something you can $v."
   END VERB.
 END ADD TO.
-
-
-SYNONYMS lit = light.
-
 
 
 -- ==============================================================
@@ -5067,6 +5090,9 @@ END ADD TO.
 SYNTAX 'look' = 'look'.
 
 
+SYNONYMS l = 'look'.
+
+
 VERB 'look'
   CHECK my_game CAN 'look'
     ELSE SAY azione_bloccata OF my_game.
@@ -5075,9 +5101,6 @@ VERB 'look'
     -- see 'locations.i', attribute 'described'.
     LOOK.
 END VERB.
-
-
-SYNONYMS l = 'look'.
 
 
 
@@ -5885,6 +5908,9 @@ SYNTAX push = push (obj)
       END IF.
 
 
+SYNONYMS press = push.
+
+
 ADD TO EVERY THING
   VERB push
     CHECK my_game CAN spingere
@@ -5916,9 +5942,6 @@ ADD TO EVERY THING
           "You give" SAY THE obj. "a little push. Nothing happens."
     END VERB.
 END ADD TO.
-
-
-SYNONYMS press = push.
 
 
 
@@ -6001,6 +6024,8 @@ SYNTAX put = put (obj)
     ELSE SAY illegal_parameter_obj OF my_game.
 
 
+SYNONYMS lay, place = put.
+
 
 ADD TO EVERY OBJECT
   VERB put
@@ -6019,10 +6044,6 @@ ADD TO EVERY OBJECT
       END IF.
     END VERB.
 END ADD TO.
-
-
-SYNONYMS lay, place = put.
-
 
 
 -- ==============================================================
@@ -7008,15 +7029,15 @@ END ADD TO.
 SYNTAX shout = shout.
 
 
+SYNONYMS scream, yell = shout.
+
+
 VERB shout
   CHECK my_game CAN gridare
     ELSE SAY azione_bloccata OF my_game.
     DOES
         "Nothing results from your $ving."
 END VERB.
-
-
-SYNONYMS scream, yell = shout.
 
 
 
@@ -7042,6 +7063,9 @@ SYNTAX 'show' = 'show' (obj) 'to' (act)
         THEN SAY illegal_parameter2_to_sg OF my_game.
         ELSE SAY illegal_parameter2_to_pl OF my_game.
       END IF.
+
+
+SYNONYMS reveal = 'show'.
 
 
 ADD TO EVERY OBJECT
@@ -7074,9 +7098,6 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
-SYNONYMS reveal = 'show'.
-
-
 
 -- ==============================================================
 
@@ -7090,15 +7111,15 @@ SYNONYMS reveal = 'show'.
 SYNTAX sing = sing.
 
 
+SYNONYMS hum, whistle = sing.
+
+
 VERB sing
   CHECK my_game CAN sing
     ELSE SAY azione_bloccata OF my_game.
     DOES
         "You $v a little tune."
 END VERB.
-
-
-SYNONYMS hum, whistle = sing.
 
 
 
@@ -7288,27 +7309,6 @@ END ADD TO.
 -- Also, it is often essential to make certain objects NOT reachable when
 -- sitting or lying down.
 
-
-
--- ==============================================================
-
-
------ SLEEP (+ rest)
-
-
--- ==============================================================
-
-
-SYNTAX dormi = dormi.
-
-SYNONYMS riposa = dormi.
-
-VERB dormi
-  CHECK my_game CAN dormire
-    ELSE SAY azione_bloccata OF my_game.
-  DOES
-    "Non è il momento di riposare."
-END VERB.
 
 
 
@@ -7783,6 +7783,9 @@ SYNTAX tear = tear (obj)
       END IF.
 
 
+SYNONYMS rip = tear.
+
+
 ADD TO EVERY OBJECT
   VERB tear
     CHECK my_game CAN tear
@@ -7817,10 +7820,6 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
-SYNONYMS rip = tear.
-
-
-
 -- ==============================================================
 
 
@@ -7843,6 +7842,9 @@ SYNTAX tell = tell (act) about (topic)!
         THEN SAY illegal_parameter_about_sg OF my_game.
         ELSE SAY illegal_parameter_about_pl OF my_game.
       END IF.
+
+
+SYNONYMS enlighten, inform = tell.
 
 
 ADD TO EVERY ACTOR
@@ -7876,9 +7878,6 @@ ADD TO EVERY ACTOR
 
   END VERB.
 END ADD TO.
-
-
-SYNONYMS enlighten, inform = tell.
 
 
 
@@ -8446,6 +8445,9 @@ SYNTAX touch = touch (obj)
       END IF.
 
 
+SYNONYMS feel = touch.
+
+
 ADD TO EVERY THING
   VERB touch
     CHECK my_game CAN touch
@@ -8482,10 +8484,6 @@ ADD TO EVERY THING
           "You feel nothing unexpected."
   END VERB.
 END ADD TO.
-
-
-SYNONYMS feel = touch.
-
 
 
 -- ==============================================================

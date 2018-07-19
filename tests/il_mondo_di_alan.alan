@@ -1,16 +1,16 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione 0.2.5 (2018/07/19)
+--  versione 0.2.6 (2018/07/19)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
 THE my_game IsA DEFINITION_BLOCK
   ------------------------------------------------------------------------------
-  HAS titolo      "Il Mondo di Alan".
-  HAS sottotitolo "Una demo per testare ALAN Standar Library Italian".
-  HAS autore      "Tristano Ajmone".
-  HAS anno        2018.
-  HAS versione    "Alpha 1".
+  HAS       titolo  "Il Mondo di Alan".
+  HAS  sottotitolo  "Una demo per testare ALAN Standar Library Italian".
+  HAS       autore  "Tristano Ajmone".
+  HAS         anno   2018.
+  HAS     versione  "Alpha 1".
   ------------------------------------------------------------------------------
 END THE.
 

@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.24 (2018/07/19)
+-- "lib_definizioni.i" v0.2.25 (2018/07/19)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -6,22 +6,36 @@
 -- ALAN Standard Library v2.1
 -- "Definitions" (original file name: 'lib_definitions.i')
 --------------------------------------------------------------------------------
---| Questo modulo della libreria definisce:
---|  - Attributi:
---|    - Attributi generali.
---|    - Articoli e preposizioni articolate.
---|  - Sinonimi comuni.
---|  - La classe DEFINITION_BLOCK ed i suoi attributi.
---|  - Attributi per la sezione START.
---|  - I messaggi riguardanti l'eroe (hero).
---|  - I messaggi per il luoghi bui.
---|  - Le risposte per le azioni bloccate.
---|  - I messaggi per i parametri illegali nelle sintassi dei verbi.
---|  - I messaggi per i vari CHECK dei verbi. 
---|  - I messaggi per le azioni implicite nei verbi.
---|  - Attributi ed eventi delle azioni bloccate.
---|  - L'istanza del banner (per la sezione START).
---------------------------------------------------------------------------------
+
+--+============================================================================+
+--|\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//////////////////////////////////////|
+--++--------------------------------------------------------------------------++
+--||                                                                          ||
+--||                           Indice dei Contenuti                           ||
+--||                                                                          ||
+--++--------------------------------------------------------------------------++
+--|//////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|
+--+============================================================================+
+--||
+--|| Questo modulo della libreria definisce:
+--||
+--||  - Attributi:
+--||    - Attributi generali.
+--||    - Articoli e preposizioni articolate.
+--||  - Sinonimi comuni.
+--||  - La classe DEFINITION_BLOCK ed i suoi attributi.
+--||  - Attributi per la sezione START.
+--||  - I messaggi riguardanti l'eroe (hero).
+--||  - I messaggi per il luoghi bui.
+--||  - Le risposte per le azioni bloccate.
+--||  - I messaggi per i parametri illegali nelle sintassi dei verbi.
+--||  - I messaggi per i vari CHECK dei verbi. 
+--||  - I messaggi per le azioni implicite nei verbi.
+--||  - Attributi ed eventi delle azioni bloccate.
+--||  - L'istanza del banner (per la sezione START).
+--||
+--++===========================================================================+
+
 --@testo originale inglese: 
 
 -- Included in this file:
@@ -79,20 +93,20 @@ END ADD TO.
 ADD TO EVERY THING
 
   IS esaminabile.
-    -- the library declares SOUNDs as not examinable.
+     -- La libreria definisce che un SUONO non è esaminabile.
      inanimato.
-    -- actors are NOT inanimate.
+     -- Gli attori sono NOT inanimato.
      movable. --> @TODO!!                                                       TRANSLATE!
-    -- to allow pushing, pulling, lifting, etc.
+     -- to allow pushing, pulling, lifting, etc.
      open.
-    -- = not closed.
+     -- = not closed.
      raggiungibile.
-    -- See also 'distant' below
+     -- See also 'distant' below
      takeable. --> @TODO!!                                                      TRANSLATE!
-    -- you'll have to separately define which objects are NOT takeable.
-    -- By default, the floor, walls, ceiling, ground and sky objects
-    -- are not takeable. The same goes for all doors, windows, sounds, liquids
-    -- that are not in containers, and actors.
+     -- you'll have to separately define which objects are NOT takeable.
+     -- By default, the floor, walls, ceiling, ground and sky objects
+     -- are not takeable. The same goes for all doors, windows, sounds, liquids
+     -- that are not in containers, and actors.
 
   HAS allowed {null_object}. --> @TODO!!                                        TRANSLATE!
     -- container objects only take what is allowed for them to take;
@@ -105,20 +119,24 @@ ADD TO EVERY THING
     -- See the library manual for more info.
 
   HAS matching_key null_key. --> @TODO!!                                        TRANSLATE!
-    -- All lockable doors need a matching key to lock/unlock them.
-    -- "null_key" is a default dummy that can be ignored. This attribute
-    -- is here added to every thing instead of just doors, to enable
-    -- matching keys to be programmed for other locked objects, too, like for
-    -- example treasure chests etc.
+      -- All lockable doors need a matching key to lock/unlock them.
+      -- "null_key" is a default dummy that can be ignored. This attribute
+      -- is here added to every thing instead of just doors, to enable
+      -- matching keys to be programmed for other locked objects, too, like for
+      -- example treasure chests etc.
 
   HAS text "". --> @TODO!!                                                      TRANSLATE!
 
   NOT rotto.
   NOT distante.
-    -- Usage: you can for example talk to a "not reachable" actor but not to a "distant" one.
-    -- You can also throw things in, to or at a not reachable target but not to a distant one.
-    -- Default response for not reachable things: "The [thing] is out of your reach."
-    -- Default response for distant things: "The [thing] is too far away."
+      -- Utilizzo: è possibile parlare ad un attore 'NOT raggiungibile' ma non
+      -- ad uno 'distante'. Puoi anche lanciare cose IN, A o CONTRO un bersaglio
+      -- non raggiungibile, ma non ad uno distante.
+      -- La risposta predefinita per oggetti/attori non raggiungibili è:
+      --    "La [cosa] è fuori dalla tua portata."
+      -- La risposta predefinita per oggetti/attori distanti è:
+      --    "La [cosa] è troppo lontana."
+
   NOT potabile.
   NOT commestibile.
   NOT fireable. --> @TODO!!                                                     TRANSLATE!
@@ -424,7 +442,7 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   HAS        titolo  "My New Game".
   HAS   sottotitolo  "".
   HAS        autore  "An ALAN Author".
-  HAS          anno  2018.
+  HAS          anno   2018.
   HAS      versione  "1".
 
   -- These will be shown at the start of the game if you add
