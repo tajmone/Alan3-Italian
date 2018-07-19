@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.25 (2018/07/19)
+-- "lib_definizioni.i" v0.2.26 (2018/07/20)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1208,7 +1208,7 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN yes.
 
 
-END EVERY.
+END EVERY DEFINITION_BLOCK.
 
 --==============================================================================
 -- The check_restriction Event
@@ -1992,9 +1992,22 @@ END EVENT.
 --------------------------------------------------------------------------------
 --//////////////////////////////////////////////////////////////////////////////
 --=============================================================================
+-- Not sure why in the original the 'banner' is an instance of 'DEFINITION_BLOCK'
+-- but it doesn't seem to need being one at all (after all, it relies on the
+-- attributes of 'my_game' for displaying the banner info). I've brought up the
+-- issue to Anssi's attention (Issue #8):
+-- 
+--    https://github.com/AnssiR66/AlanStdLib/issues/8
+-- 
+-- In the meantime, I'll change 'banner' to an instance of LOCATION here, since
+-- local tests revealed that it works just as fine and consumes less memory
+-- (the compiled test adventure was 20Kb smaller with this tweak, and the ARun
+-- debugger shows a smaller footprint for the 'banner' instance).
+--------------------------------------------------------------------------------
 
+-- THE banner ISA DEFINITION_BLOCK --> Why?!
 
-THE banner ISA DEFINITION_BLOCK
+THE banner ISA LOCATION
 
     DESCRIPTION
 

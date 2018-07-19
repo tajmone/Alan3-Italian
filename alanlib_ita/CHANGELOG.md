@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/20](#20180720)
+    - [Make `banner` an Instance of `LOCATION`](#make-banner-an-instance-of-location)
 - [2018/07/19 \(5\)](#20180719-5)
 - [2018/07/19 \(4\)](#20180719-4)
     - [Banner Attributes](#banner-attributes)
@@ -96,12 +98,29 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
+# 2018/07/20
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.26)
+
+## Make `banner` an Instance of `LOCATION`
+
+I've changed the library to make `banner` an instance of `LOCATION` instead of `DEFINITION_BLOCK` — since `DEFINITION_BLOCK` is a _huge_ class, I'd rather avoid having two of them (there's already `my_game`)!
+
+For the full story behing this change, see __[Issue #8]__ on Alan StdLib upstream repository.
+
+Tests seem to confirm that it works just as fine, and the compiled adventure is 20Kb smaller. Debuggin confirms that the tweaked `banner` instance has a much smaller footprint.
+
+<!---------------------------------------------------------------------------->
+
+
+
 # 2018/07/19 (5)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.25)
 - [`lib_verbi.i`][lib_verbi] (v0.2.23)
 
 Just some code cleanup, comments translation and house keeping.
+
 
 <!---------------------------------------------------------------------------->
 
@@ -1518,4 +1537,12 @@ The above changes had some side effects which required me to also change the Eng
 
 [tests]: ../tests/
 
+
+<!-- External Link -->
+
+[Issue #8]: https://github.com/AnssiR66/AlanStdLib/issues/8
+
+[Alan StdLib upstream repository]: https://github.com/AnssiR66/AlanStdLib
+
+<!-- eof -->
 
