@@ -1,4 +1,4 @@
--- "_mygame_import.i" v0.2.4 (2018/07/18)
+-- "_mygame_import.i" v0.2.5 (2018/07/19)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -100,11 +100,11 @@ THE my_game ISA DEFINITION_BLOCK
 	-- attributes for the game banner; edit these to suit your own game:
 	-- =================================================================
 
-	HAS title "My New Game".		
-    	HAS subtitle "".	 -- leaving this empty won't show the subtitle line in your game's banner  	
-    	HAS author "An ALAN Author".   	-- put your name/pseudonym here
-    	HAS year 0000.			-- change this to the current year		
-    	HAS version "1".	 -- setting this to 0 won't show the version line in your game's banner 				
+	HAS titolo 			 "My New Game".		
+	HAS sottotitolo  "".	 -- leaving this empty won't show the subtitle line in your game's banner  	
+	HAS autore 			 "An ALAN Author".   	-- put your name/pseudonym here
+	HAS anno 				 0000.			-- change this to the current year		
+	HAS versione 		 "1".	 -- setting this to 0 won't show the version line in your game's banner 				
     	
 
 	-- messages for the hero:

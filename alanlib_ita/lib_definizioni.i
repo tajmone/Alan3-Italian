@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.23 (2018/07/19)
+-- "lib_definizioni.i" v0.2.24 (2018/07/19)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -11,7 +11,7 @@
 --|    - Attributi generali.
 --|    - Articoli e preposizioni articolate.
 --|  - Sinonimi comuni.
---|  - La classe "definition_block".
+--|  - La classe DEFINITION_BLOCK ed i suoi attributi.
 --|  - Attributi per la sezione START.
 --|  - I messaggi riguardanti l'eroe (hero).
 --|  - I messaggi per il luoghi bui.
@@ -395,6 +395,17 @@ me, myself, yourself, self = hero.
 
 --------------------------------------------------------------------------------
 
+
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- § x - The my_game DEFINITION_BLOCK
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+
 -- Attributes for the my_game definition block
 -- ===========================================
 
@@ -410,14 +421,14 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   -- attributes for the start section (banner):
   -- ==========================================
 
-  HAS title "My New Game".
-      HAS subtitle "".
-      HAS author "An ALAN Author".
-      HAS year 2017.
-      HAS version "1".
+  HAS        titolo  "My New Game".
+  HAS   sottotitolo  "".
+  HAS        autore  "An ALAN Author".
+  HAS          anno  2018.
+  HAS      versione  "1".
 
   -- These will be shown at the start of the game if you add
-    -- DESCRIBE banner.
+  --   DESCRIBE banner.
   -- after START AT [location].
 
 
@@ -432,20 +443,20 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   -- for example in verb checks.
 
   HAS hero_worn_header "You are wearing".
-  HAS hero_worn_else "You are not wearing anything.".
+  HAS hero_worn_else   "You are not wearing anything.".
 
 
   -- description messages for dark locations:
   -- ========================================
 
-  HAS dark_loc_desc "È buio e non riesci a vedere nulla".
+  HAS dark_loc_desc  "È buio e non riesci a vedere nulla".
     --#i7: "È buio e non riesci a vedere nulla".
     --#i6: "È completamente buio, e non riesci a vedere niente.".
     -- "It is pitch black. You can't see anything at all.".
     -- This message is shown when the player tries to LOOK or do actions requiring light
     -- in a dark location.
 
-  HAS light_goes_off "It is now pitch black.".
+  HAS light_goes_off  "It is now pitch black.".
     -- This message is shown when a light goes off and the location becomes dark.
 
   -- ===========================================================================
@@ -895,13 +906,13 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   -- messages for implicit taking:
   -- =============================
 
-      HAS implicit_taking_message "(taking $+1 first)$n".
+  HAS implicit_taking_message "(taking $+1 first)$n".
 
   -- The following verbs are preceded by implicit taking:
-      -- bite, drink, eat, empty, empty_in, empty_on, give, pour, pour_in, pour_on,
-      -- put_in, put_on, throw, throw_at, throw_in, throw_to, tie_to.
+  --    bite, drink, eat, empty, empty_in, empty_on, give, pour, pour_in, pour_on,
+  --    put_in, put_on, throw, throw_at, throw_in, throw_to, tie_to.
   -- In ditransitive verbs, only the first parameter (the direct object) is taken implicitly.
-      -- For example, >push door with pole  won't work if the hero is not carrying the pole.
+  -- For example, >push door with pole  won't work if the hero is not carrying the pole.
 
 
 
@@ -981,12 +992,23 @@ EVERY DEFINITION_BLOCK ISA LOCATION
     SET described OF location OF hero TO 1.
 
 
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- § x - Restricted Actions
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+
+
 --------------------------------------------------------------------------------
 
 -- Finally, for restricted actions, we implement the following attributes, corresponding to the library verbs.
-  -- If you change any of these to CAN NOT..., for examle "CAN NOT attack.", that verb, together with its
-  -- synonyms, is disabled in-game. The restricted_response of the my_game instance (by default "You can't
-  --- do that.") will be shown instead. The restriced_response is defined further up this file.
+-- If you change any of these to CAN NOT..., for examle "CAN NOT attack.", that verb, together with its
+-- synonyms, is disabled in-game. The restricted_response of the my_game instance (by default "You can't
+-- do that.") will be shown instead. The restriced_response is defined further up this file.
 
   CAN abbandonare_partita.  --> 'quit'
   CAN andare_a.             --> go_to
@@ -1170,6 +1192,9 @@ EVERY DEFINITION_BLOCK ISA LOCATION
 
 END EVERY.
 
+--==============================================================================
+-- The check_restriction Event
+--==============================================================================
 
 -- This event runs every turn from the start of the game:
 
@@ -1942,11 +1967,6 @@ SCHEDULE check_restriction AFTER 1.
 END EVENT.
 
 
-
-
-
-
-
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------
@@ -1960,19 +1980,19 @@ THE banner ISA DEFINITION_BLOCK
 
     DESCRIPTION
 
-    "$p" STYLE alert. SAY title OF my_game. STYLE normal.
+    "$p" STYLE alert. SAY titolo OF my_game. STYLE normal.
 
-    IF subtitle OF my_game <> ""
-      THEN "$n" SAY subtitle OF my_game.
+    IF sottotitolo OF my_game <> ""
+      THEN "$n" SAY sottotitolo OF my_game.
       END IF.
 
-    "$n(C)" SAY author OF my_game. "," SAY year OF my_game. "."
+    "$n(C)" SAY autore OF my_game. "," SAY anno OF my_game. "."
 
     "$nProgrammed with the ALAN Interactive Fiction Language v3.0 beta5
     $nStandard Library v2.1"
 
-    IF version OF my_game <> "0"
-      THEN "$nVersione" SAY version OF my_game.
+    IF versione OF my_game <> "0"
+      THEN "$nVersione" SAY versione OF my_game.
       END IF.
 
     "$nTutti i diritti riservati."
@@ -1980,9 +2000,4 @@ THE banner ISA DEFINITION_BLOCK
 END THE banner.
 
 
-
-
-
-
-
--- end of file.
+--< EOF >---

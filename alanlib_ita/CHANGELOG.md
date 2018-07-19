@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/19 \(4\)](#20180719-4)
+    - [Banner Attributes](#banner-attributes)
 - [2018/07/19 \(3\)](#20180719-3)
     - [Add Remaining Preposizioni Articolate Synonyms](#add-remaining-preposizioni-articolate-synonyms)
 - [2018/07/19 \(2\)](#20180719-2)
@@ -93,6 +95,29 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
+# 2018/07/19 (4)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.24)
+
+## Banner Attributes
+
+This commit translates into Italian the Banner attributes for the `Start` section:
+
+|  English   |    Italian    |       Class        |
+|------------|---------------|--------------------|
+| `title`    | `titolo`      | `DEFINITION_BLOCK` |
+| `subtitle` | `sottotitolo` | `DEFINITION_BLOCK` |
+| `author`   | `autore`      | `DEFINITION_BLOCK` |
+| `year`     | `anno`        | `DEFINITION_BLOCK` |
+| `version`  | `versione`    | `DEFINITION_BLOCK` |
+
+
+
+
+<!---------------------------------------------------------------------------->
+
+
+
 # 2018/07/19 (3)
 
 - [`lib_supplemento.i`][lib_supplemento] (v0.2.2)
@@ -149,6 +174,8 @@ There is no need to implements synonyms for the _preposizioni articolate_ based 
 > ```
 > 
 > (it shouldn't, since they have the same meaning both languages).
+
+
 
 <!---------------------------------------------------------------------------->
 
