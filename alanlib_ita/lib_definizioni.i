@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.22 (2018/07/19)
+-- "lib_definizioni.i" v0.2.23 (2018/07/19)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -6,9 +6,10 @@
 -- ALAN Standard Library v2.1
 -- "Definitions" (original file name: 'lib_definitions.i')
 --------------------------------------------------------------------------------
---| Questo file definisce:
---|  - Attributi generali.
---|  - Articoli e preposizioni articolate.
+--| Questo modulo della libreria definisce:
+--|  - Attributi:
+--|    - Attributi generali.
+--|    - Articoli e preposizioni articolate.
 --|  - Sinonimi comuni.
 --|  - La classe "definition_block".
 --|  - Attributi per la sezione START.
@@ -39,8 +40,20 @@
   -- the banner instance (for the start section)
 
 
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- § 1 - Attributi
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+
 --==============================================================================
--- General attributes
+--------------------------------------------------------------------------------
+-- § 1.1 - Attributi Generali
+--------------------------------------------------------------------------------
 --==============================================================================
 
 
@@ -355,9 +368,12 @@ END ADD TO.
 --------------------------------------------------------------------------------
 
 
--- Common synonyms
--- ===============
 
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 1.x - Sinonimi Comuni
+--------------------------------------------------------------------------------
+--==============================================================================
 
 -- Next, we declare synonyms for some common words so that it will be possible
 -- for the player to type commands such as both "put ball in box" and
@@ -432,16 +448,16 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   HAS light_goes_off "It is now pitch black.".
     -- This message is shown when a light goes off and the location becomes dark.
 
-  -- ============================================================================
+  -- ===========================================================================
   
   -- MESSAGGI DEI VERBI (IN ITALIANO)
   
-  -- ============================================================================
+  -- ===========================================================================
   -- Siccome i messaggi in italiano richiedono l'uso della forma infinita del
   -- verbo, molti di questi messaggi sono troncati e spetterà al codice che si
   -- occupa dei controlli sul verbo di far seguire al messaggio l'infinito del
   -- verbo in questione.
-   ------------------------------------------------------------------------------
+   -----------------------------------------------------------------------------
   -- @NOTA: Alcune stringhe di messaggi sono identiche (anche nell'originale)
   --        tranne per il nome dell'attributo. Questo perché l'autore originale
   --        ha voluto preservare la coerenza nei nomi degli attributi rispetto
@@ -961,7 +977,7 @@ EVERY DEFINITION_BLOCK ISA LOCATION
 -- We ensure that the 'visited' and 'described' attributes of the starting location
 -- are correct at the start of the game:
 
-    SET visited OF location OF hero TO 1.
+    SET visited   OF location OF hero TO 1.
     SET described OF location OF hero TO 1.
 
 
@@ -1931,9 +1947,13 @@ END EVENT.
 
 
 
-
--- The banner:
--- ===========
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- § X - Il Banner
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
 
 
 THE banner ISA DEFINITION_BLOCK

@@ -11,7 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/07/19](#20180719)
+- [2018/07/19 \(2\)](#20180719-2)
+- [2018/07/19 \(1\)](#20180719-1)
 - [2018/07/18 \(4\)](#20180718-4)
 - [2018/07/18 \(3\)](#20180718-3)
     - [Verb Responses Attributes](#verb-responses-attributes)
@@ -90,7 +91,14 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/07/19
+# 2018/07/19 (2)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.23)
+- [`lib_supplemento.i`][lib_supplemento] (v0.2.1)
+
+Just some code house-keeping and cleaning up.
+
+# 2018/07/19 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.2.6)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.22)
@@ -114,6 +122,8 @@ Translated `CLASS`es:
 | `sound`  | `suono`       |
 | `window` | `finestra`    |
 
+
+<!---------------------------------------------------------------------------->
 
 
 # 2018/07/18 (4)
@@ -140,12 +150,15 @@ Translated library attributes:
 | `wearable`   | `indossabile`   | `THING`    |
 
 
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/18 (3)
 
 - [`lib_classi.i`][lib_classi] (v0.2.4)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.20)
 - [`lib_verbi.i`][lib_verbi] (v0.2.20)
+
 
 ## Verb Responses Attributes
 
@@ -175,6 +188,7 @@ With this commit I begin to put some order in verb response messages by translat
 > 
 > But for now this name will do, until I work out a better naming convention for messages. Also, it seems that this is the only message regarding location checks, so it's not a big deal actually. But I'd like its name to be more intuitive in the future.
 
+
 ### Renamed verb responses attributes:
 
 |       Attribute EN      |    Attribute IT    |
@@ -188,10 +202,14 @@ With this commit I begin to put some order in verb response messages by translat
 > __NOTE 4__ — `check_obj_idoneo_sg`/`pl` has been removed and replaced by `ogg1_inadatto_sg`/`pl` because they were producing the same message and were redundant. Also, `illegale` has been replaced with `inadatto`, which seems more accurate in the context.
 
 
+<!---------------------------------------------------------------------------->
+
+
 # 2018/07/18 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.19)
 - [`lib_verbi.i`][lib_verbi] (v0.2.19)
+
 
 ## Verb: `drink`
 
@@ -202,12 +220,18 @@ Translated verb `bevi`, (_drink_):
 with no synonyms.
 
 
+<!---------------------------------------------------------------------------->
+
+
 # 2018/07/18 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.18)
 - [`lib_verbi.i`][lib_verbi] (v0.2.18)
 
 Minor tweaks and code cleanup.
+
+
+<!---------------------------------------------------------------------------->
 
 
 # 2018/07/17 (5)
@@ -222,6 +246,8 @@ Translated verb response attributes:
 |-----------------------|-------------------|
 | `restricted_response` | `azione_bloccata` |
 
+
+<!---------------------------------------------------------------------------->
 
 
 # 2018/07/17 (4)
@@ -239,8 +265,6 @@ Translated `THING` attributes:
 | `drinkable` | `potabile`   |
 
 
-
-
 ## Verb: `eat`
 
 Translated verb `mangia`, (_eat_):
@@ -250,11 +274,13 @@ Translated verb `mangia`, (_eat_):
 with no synonyms.
 
 
+<!---------------------------------------------------------------------------->
 
 
 # 2018/07/17 (3)
 
 - [`lib_verbi.i`][lib_verbi] (v0.2.15)
+
 
 ## Meta Verbs
 
@@ -267,7 +293,6 @@ The following verbs have been declared as `META VERB`s:
 - `inventario`
 
 
-
 > __NOTE 1__ — Currently Alan 3.0beta5 has a bug that prevents `META VERB`s from not ticking a turn. The bug was fixed and `META VERB`s will work as expected on the upcoming Beta relase.
 
 <!-- sep -->
@@ -277,6 +302,9 @@ The following verbs have been declared as `META VERB`s:
 > Some adventures might present time-critical situations (eg, the player dies in three turns if he/she doesn't solve a problem); under such circumstances it would be unfair (and frustrating) if taking the inventory were to consume a precious turn.
 > 
 > Furthermore, taking the inventory is not even an `UNDO`able action (it doesn't change any game state, so undoing it would achieve nothing), which (IMO) strengthen the argument that it should be considered as a META ACTION.
+
+
+<!---------------------------------------------------------------------------->
 
 
 # 2018/07/17 (2)
@@ -292,11 +320,13 @@ Translated ACTOR attributes:
 | `lying_down` | `sdraiato` |
 
 
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/17 (1)
 
-- [`lib_verbi.i`][lib_verbi] (v0.2.13)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.11)
+- [`lib_verbi.i`][lib_verbi] (v0.2.13)
 
 Translated `my_game` attributes for verb restrictions:
 
@@ -314,10 +344,13 @@ Translated verb `attraversa`, "__attraversa (obj)__" (_climb through_, but also 
 with no synonyms.
 
 
+<!---------------------------------------------------------------------------->
+
+
 # 2018/07/03 (3)
 
-- [`lib_verbi.i`][lib_verbi] (v0.2.12)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.10)
+- [`lib_verbi.i`][lib_verbi] (v0.2.12)
 
 
 Translated `my_game` attributes for verb restrictions:
@@ -325,7 +358,6 @@ Translated `my_game` attributes for verb restrictions:
 | English |  Italian   |
 |---------|------------|
 | `go_to` | `andare_a` |
-
 
 
 ## Verb: `go_to`
@@ -365,11 +397,13 @@ with no synonyms.
 > This verb can refer to THINGS which are not present at the location, or present but distant or unreachable, and produce a meaningful response accordingly.
 
 
+<!---------------------------------------------------------------------------->
 
 
 # 2018/07/03 (2)
 
 - [`lib_verbi.i`][lib_verbi] (v0.2.11)
+
 
 ## Verb: `buy`
 
@@ -382,6 +416,8 @@ with synonyms:
     acquista
 
 
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/03 (1)
 
@@ -393,11 +429,13 @@ Now translated verbs are placed before untranslated verbs in the source code, an
 - adventure commands (ie, directed to the hero and story world)
 
 
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/02
 
-- [`lib_verbi.i`][lib_verbi] (v0.2.9)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.9)
+- [`lib_verbi.i`][lib_verbi] (v0.2.9)
 
 
 ## Verb: `burn`/`burn_with`
@@ -409,9 +447,11 @@ Translated verbs `brucia` e `brucia_con` (_burn_/_burn with_):
 
 with no synonyms.
 
+
 ## `my_game` Verb Messages
 
 This commit also separates the translate messages from the originals in English in the source code, making it easy to work on the Italian messages.
+
 
 ### Translated Messages
 
@@ -463,6 +503,10 @@ END ADD TO.
 
 ... since, unlike `burn_with`, the verb `burn` will never accomplish anything besides informing of the need of a "with object" parameter.
 
+
+<!---------------------------------------------------------------------------->
+
+
 # 2018/06/29
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.8)
@@ -481,6 +525,9 @@ Translated verb responses:
 |-----------|------------------------------------------------------------------------------------------------------------------|
 | `verbose` | "Il gioco è ora in modalità _lunga_, le descrizioni dei luoghi saranno mostrate sempre (anche se già visitati)." |
 | `brief`   | "Il gioco è ora in modalità _breve_, le descrizioni dei luoghi già visitati non saranno più mostrate."           |
+
+
+<!---------------------------------------------------------------------------->
 
 
 # 2018/06/24 (3)
@@ -503,7 +550,7 @@ Translated `my_game` attributes for verb restrictions:
 | `wear`    | `indossare`  |
 
 
-
+<!---------------------------------------------------------------------------->
 
 
 # 2018/06/24 (2)
@@ -537,6 +584,8 @@ Translated `my_game` attributes for verb restrictions:
 | `sell`      | `vendere`      |
 
 
+<!---------------------------------------------------------------------------->
+
 
 # 2018/06/24 (1)
 
@@ -546,9 +595,14 @@ Translated `my_game` attributes for verb restrictions:
 - [`lib_messaggi.i`][lib_messaggi] (v0.2.1)
 - [`lib_verbi.i`][lib_verbi] (v0.2.5)
 
+
 ## Translate StdLib's `plural`
 
 Now the library's `plural` attribute has been translated into Italian: `plurale`.
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/06/23 (2)
 
@@ -570,6 +624,7 @@ A few verb responses translated on the fly:
 | `scratch`     | "Nothing would be achieved by that."                 | "Farlo non servirebbe a nulla."                  |
 
 
+<!---------------------------------------------------------------------------->
 
 
 # 2018/06/23 (1)
@@ -609,6 +664,10 @@ Produces the message:  "[Il comando ANCORA non è supportato in questo gioco. In
 > Però il giocatore medio si aspetterà che il comando classico sia `ancora`, perciò nel messaggio ho preferito riferirmi ad esso.
 > 
 > Inoltre, ho preferito non definire `ancora` come sinonimo poiché poteva compromettere la creazione di un'àncora nel gioco (che sicuramente andrebbe compresa anche senza accento) dato che l'uso di un sinonimo avrebbe sempre convertito l'input del giocatore `ancora` in `rifai` e quindi impedito l'uso di un oggetto con nome `ancora` nel gioco.
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/06/16 (3)
 
@@ -692,6 +751,7 @@ HAS check_obj_idoneo_pl "$+1 non sono qualcosa che puoi".
 
 ... which will produce as a result "`<the obj> non [è/sono] qualcosa che puoi prendere.`" And so on with all the other verbs.
 
+
 ## Translate `check_obj_suitable_XX` Messages
 
 The `check_obj_idoneo_sg`/`_pl` Italian message has beem implemented for the following verbs (some of which have not been translated yet, apart from this message):
@@ -768,6 +828,7 @@ But some occurences were left out because they apply to verbs which in Italian w
 
 > This is another major feature change: all library files are bumped up to `v0.2.0` to mark the adoption of new library file names.
 
+
 ## Library Files Renamed to Italian
 
 All library files are renamed to Italian filenames:
@@ -792,6 +853,7 @@ From now on I'll start to italianize the library by translating also comments an
 
 This commit introduces a new article-based system for handling gender, number, articles and "preposizioni articolate" (prepositions that merge with the definite article).
 
+
 ## The New `articolo` Attribute
 
 Now every THING has a new `articolo` string attribute, which the author must set to the definite article of the instance's noun (default to "`il`", masculine singular). At initialization time, the library will take care of setting the correct values of gender, number, DEFINITE/INDEFINITE ARTICLE and prepositions, based on the string of `articolo`.
@@ -814,6 +876,7 @@ THE arancia IsA object AT kitchen.
   NAME 'l''arancia'.
 END THE.
 ```
+
 
 ## Preposizioni Articolate
 
@@ -939,6 +1002,7 @@ Translated verb `carica_partita`, "__carica__" (_restore_):
 
 with no synonyms.
 
+
 ## Verb: `restart`
 
 Translated verb `ricomincia_partita`, "__carica__" (_save_):
@@ -947,6 +1011,7 @@ Translated verb `ricomincia_partita`, "__carica__" (_save_):
     restart
 
 with no synonyms.
+
 
 ## Verb: `quit`
 
@@ -1012,6 +1077,7 @@ Translated RUN-TIME MESSAGES:
 - [`lib_definitions.i`][lib_definitions] (v0.0.8)
 - [`lib_verbs.i`][lib_verbs] (v0.0.7)
 
+
 ## Verb: `pray`
 
 Translated verb "__pregare__" (_pray_):
@@ -1019,6 +1085,7 @@ Translated verb "__pregare__" (_pray_):
     prega
 
 Only produces the response "`Sembra che le tue preghiere non siano state esaudite.`" (taken from Inofrm 6 _Infit_).
+
 
 ## Verb: `break`
 
@@ -1029,6 +1096,7 @@ Translated verb "__rompi__" (_break_):
 with synonyms: `distruggi`, `spacca`, `sfonda`.
 
 Only produces the response "`La violenza non è la giusta risposta a questo.`" (taken from Inofrm 6 _Infit_).
+
 
 ## Verb: `break_with`
 
@@ -1085,6 +1153,7 @@ Translated `my_game` attributes for verb restrictions:
 - [`lib_definitions.i`][lib_definitions] (v0.0.6)
 - [`lib_verbs.i`][lib_verbs] (v0.0.5)
 
+
 ## Verb: `undress`
 
 Translated verb "__spogliati__" (_undress_):
@@ -1104,6 +1173,7 @@ Its default responses translation might need some polishing. The commented code 
 
 Translate verb "__dai__" (_give_), and "__prendi da__" (_take from_).
 
+
 ## Verb: `take`
 
 Now the status of the translated verbs is more polished:
@@ -1112,11 +1182,13 @@ Verb `prendi` (_take_):
 
     [prendi|afferra|raccogli|trasporta] (obj)
 
+
 ## Verb: `take_from`
 
 Verb `prendi_da` (_take from_):
 
     [prendi|rimuovi|togli] (obj) da (holder)
+
 
 ## Verb: `give`
 
@@ -1140,14 +1212,13 @@ Now [`lib_supplement.i`][lib_supplement] implements all the required synonyms fo
 
 # 2018/05/15
 
-- [`lib_definitions.i`][lib_definitions] (v0.0.4) — __PREDEFINED ARTICLES__ of THINGS implemented in Italian.
 - [`lib_classes.i`][lib_classes] (v0.0.3) — added comments about predefined articles in ACTORS and some comment draft code on how these might be implemented in Italian (the topic needs to be further investigated before apllying changes).
+- [`lib_definitions.i`][lib_definitions] (v0.0.4) — __PREDEFINED ARTICLES__ of THINGS implemented in Italian.
 - [`../tests/`][tests] folder — added Alan source and script files to test articles implementation:
     + [`../tests/articoli.alan`](../tests/articoli.alan)
     + [`../tests/articoli.bat`](../tests/articoli.bat)
     + [`../tests/articoli.log`](../tests/articoli.log)
     + [`../tests/articoli.script`](../tests/articoli.script)
-
 
 
 This commit translates to Italian the predefined articles (determinate and indeterminate) that are assigned to all children of `THING`, according to number and _genre_ — genre (which wasn't handled in the original Library, due to things being of neuter genre in English) is determined via the `femminile` attribute that was added to the Italian library.
@@ -1342,7 +1413,5 @@ The above changes had some side effects which required me to also change the Eng
 [VERBI_IT]: ./VERBI_IT.md
 
 [tests]: ../tests/
-
-
 
 
