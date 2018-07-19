@@ -1,4 +1,4 @@
--- "lib_supplemento.i" v0.2.1 (2018/07/19)
+-- "lib_supplemento.i" v0.2.2 (2018/07/19)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -12,6 +12,16 @@
 ---- It was not part of the original Standard Library.
 
 
+--|============
+--| TODOs LIST:
+--|============
+--| Preposizioni Articolate (SYNONYMS):
+--|   - [x] DI + Art ( untested !!! )
+--|   - [x]  A + Art
+--|   - [x] DA + Art
+--|   - [x] IN + Art ( untested !!! )
+--|   - [x] SU + Art ( untested !!! )
+
 
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -22,22 +32,22 @@
 --=============================================================================
 
 
----- These are the predefined English Player Words hardcoded in Alan:
-----
-----    ALL:   all everything
-----    AND:   and then
-----    BUT:   but except
-----    THEM:  them
-----    NOISE: go the*
-----
----- Until the Italian language gets integrated into Alan as a natively supported
----- language, the library needs to supply some soft-coded synonims for these
----- Player Words.
-----
----- NOTE: Although indicated in the Manual as being one, 'the' is not a NOISE WORD.
-----
----- NOTE: Player Words for all supported languages are defined in Alan's source
-----       file "compiler/wrd.c" (line 182).
+-- These are the predefined English Player Words hardcoded in Alan:
+--
+--    ALL:   all everything
+--    AND:   and then
+--    BUT:   but except
+--    THEM:  them
+--    NOISE: go the*
+--
+-- Until the Italian language gets integrated into Alan as a natively supported
+-- language, the library needs to supply some soft-coded synonims for these
+-- Player Words.
+--
+-- NOTE: Although indicated in the Manual as being one, 'the' is not a NOISE WORD.
+--
+-- NOTE: Player Words for all supported languages are defined in Alan's source
+--       file "compiler/wrd.c" (line 182).
 
 
 -- =============================================================================
@@ -181,16 +191,22 @@ SYNONYMS tranne, eccetto, escluso, esclusa, esclusi, escluse = except.
 -- define as synonms "dall'" and "dall" (and similars).
 
 --==============================================================================
+-- "DI" + Articolo
+--==============================================================================
+SYNONYMS
+  del, dello, della, 'dell''', dei, degli, delle = di.
+--==============================================================================
 -- "A" + Articolo
 --==============================================================================
 SYNONYMS
   al, allo, alla, 'all''', ai, agli, alle  = a.
 -- all    = a.   --| CAN'T BE USED AS ALTERNATIVE because of conflict with
---|                  English ALL word:
+--               --| English ALL word:
 --| 333 E : The word 'all' is defined to be both a synonym and another word class.
 --|
 --| Beside, " all " isn't correct Italian, but could have been a workaround to the
 --| limitation mentioned above.
+
 --==============================================================================
 -- "DA" + Articolo
 --==============================================================================
@@ -201,10 +217,23 @@ SYNONYMS
 -- "da".
 SYNONYMS
   dal, dallo, dalla, 'dall''', dall, dagli, dalle  = da.
---| * " dall " is not correct Italian, but a workaround to the limitation mentioned above.
 
---  dai = da.            -- dai (masc.plur.) | CAN'T BE USED AS ALTERNATIVE because
---|                                            of conflict with 'dai' verb:
+--| * " dall " is not correct Italian, but a workaround to the limitation
+--|            mentioned above.
+
+--  dai = da.       -- dai (masc.plur.) --| CAN'T BE USED AS ALTERNATIVE because
+--                                      --| of conflict with 'dai' verb:
 --| 333 E : The word 'dai' is defined to be both a synonym and another word class.
 
+--==============================================================================
+-- "IN" + Articolo
+--==============================================================================
+SYNONYMS
+  nel, nello, nella, 'nell''', nei, negli, nelle = 'in'.
+--==============================================================================
+-- "SU" + Articolo
+--==============================================================================
+SYNONYMS
+  sul, sullo, sulla, 'sull''', sui, sugli, sulle = su.
 
+--< EOF >---

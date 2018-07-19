@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/19 \(3\)](#20180719-3)
+    - [Add Remaining Preposizioni Articolate Synonyms](#add-remaining-preposizioni-articolate-synonyms)
 - [2018/07/19 \(2\)](#20180719-2)
 - [2018/07/19 \(1\)](#20180719-1)
 - [2018/07/18 \(4\)](#20180718-4)
@@ -91,12 +93,76 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
+# 2018/07/19 (3)
+
+- [`lib_supplemento.i`][lib_supplemento] (v0.2.2)
+
+## Add Remaining Preposizioni Articolate Synonyms
+
+Previously, only synonyms for preposition based on `a` and `da` were covered.
+
+This commit completes all prepositions by adding `SYNONYMS` deifinitions for `di`, `in` and `su` based prepositions:
+
+```alan
+--==============================================================================
+-- "DI" + Articolo
+--==============================================================================
+SYNONYMS
+  del, dello, della, 'dell''', dei, degli, delle = di.
+--==============================================================================
+-- "IN" + Articolo
+--==============================================================================
+SYNONYMS
+  nel, nello, nella, 'nell''', nei, negli, nelle = 'in'.
+--==============================================================================
+-- "SU" + Articolo
+--==============================================================================
+SYNONYMS
+  sul, sullo, sulla, 'sull''', sui, sugli, sulle = su.
+```
+
+There is no need to implements synonyms for the _preposizioni articolate_ based on `con` and `per` as these have a non-merged form too (and the merged form is rarely used nowadays).
+
+
+> __NOTE 1__ — Currently no verbs requiring these prepositions have been translated, so these changes won't have an immediate impact on the library.
+
+<!-- sep -->
+
+> __NOTE 2__ — Currently, compiling a game that uses the library will cuase the compiler to issue a warning:
+> 
+> ```
+> 321 W : Synonym target word 'di' not defined.
+> ```
+> 
+> ... this will go away when a `VERB SYNTAX` involving the `di` preposition will be translated/implemented!
+
+<!-- sep -->
+
+> __NOTE 3__ — The articulated prepositions that are synonyms of `SU` should be checked thoroughly to see if they could cause conflicts with the `su` direction. 
+
+<!-- sep -->
+
+> __NOTE 4__ — The articulated prepositions that are synonyms of `IN` should be checked thoroughly to see if they could cause conflicts with the current use of `IN` by the English library, which defines:
+> 
+> ``` alan
+> SYNONYMS  into, inside = 'in'.
+> ```
+> 
+> (it shouldn't, since they have the same meaning both languages).
+
+<!---------------------------------------------------------------------------->
+
+
 # 2018/07/19 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.23)
 - [`lib_supplemento.i`][lib_supplemento] (v0.2.1)
 
 Just some code house-keeping and cleaning up.
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/19 (1)
 
