@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/19](#20180719)
 - [2018/07/18 \(4\)](#20180718-4)
 - [2018/07/18 \(3\)](#20180718-3)
     - [Verb Responses Attributes](#verb-responses-attributes)
@@ -88,6 +89,32 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/19
+
+- [`lib_classi.i`][lib_classi] (v0.2.6)
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.22)
+- [`lib_verbi.i`][lib_verbi] (v0.2.22)
+
+
+Translated library attributes:
+
+| English  | Italian  |  Class  |
+|----------|----------|---------|
+| `'on'`   | `acceso` | `THING` |
+| `weight` | `peso`   | `THING` |
+
+Translated `CLASS`es:
+
+| Class EN |    Class IT   |
+|----------|---------------|
+| `device` | `dispositivo` |
+| `door`   | `porta`       |
+| `person` | `persona`     |
+| `sound`  | `suono`       |
+| `window` | `finestra`    |
+
+
 
 # 2018/07/18 (4)
 

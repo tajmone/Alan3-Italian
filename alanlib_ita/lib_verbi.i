@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.21 (2018/07/18)
+-- "lib_verbi.i" v0.2.22 (2018/07/19)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1100,7 +1100,7 @@ ADD TO EVERY THING
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-        AND weight Of obj < 50
+        AND peso Of obj < 50
           ELSE
         IF obj IS NOT plurale
           --> @TODO!!                                                           TRANSLATE!
@@ -1267,7 +1267,7 @@ ADD TO EVERY THING
                 ELSE SAY check_obj2_not_distant_pl OF my_game.
               END IF.
           END IF.
-      AND weight Of obj < 50
+      AND peso Of obj < 50
             ELSE
           IF obj IS NOT plurale
             --> @TODO!!                                                         TRANSLATE!
@@ -4761,7 +4761,7 @@ ADD TO EVERY OBJECT
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-    AND weight OF obj < 50
+    AND peso OF obj < 50
       ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_weight_sg OF my_game.

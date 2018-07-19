@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione 0.2.3 (2018/07/18)
+--  versione 0.2.4 (2018/07/19)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -172,7 +172,7 @@ END THE mercato.
 -- Utile soprattutto per testare i messaggi di errore dei verbi che esigono che
 -- l'oggetto sia esaminabile (i suoni non lo sono).
 --------------------------------------------------------------------------------
-THE voci IsA sound AT mercato.
+THE voci IsA suono AT mercato.
   HAS articolo "le".
   DESCRIPTION "" --> non elencare
 

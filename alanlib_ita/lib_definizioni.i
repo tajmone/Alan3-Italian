@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.21 (2018/07/18)
+-- "lib_definizioni.i" v0.2.22 (2018/07/19)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -51,10 +51,9 @@
 -- applies not only to things but also to for example parameters in syntax statements; ignore.)
 
 ADD TO EVERY ENTITY
+
   IS NOT plurale.
   IS NOT femminile. -- @FEMMINILE -> attr. (ADD TO EVERY ENTITY)
-
-  -- HAS articolo "il".
 
 END ADD TO.
 
@@ -70,36 +69,36 @@ ADD TO EVERY THING
     -- the library declares SOUNDs as not examinable.
      inanimato.
     -- actors are NOT inanimate.
-     movable.
+     movable. --> @TODO!!                                                       TRANSLATE!
     -- to allow pushing, pulling, lifting, etc.
      open.
     -- = not closed.
      raggiungibile.
     -- See also 'distant' below
-     takeable.
+     takeable. --> @TODO!!                                                      TRANSLATE!
     -- you'll have to separately define which objects are NOT takeable.
     -- By default, the floor, walls, ceiling, ground and sky objects
     -- are not takeable. The same goes for all doors, windows, sounds, liquids
     -- that are not in containers, and actors.
 
-  HAS allowed {null_object}.
+  HAS allowed {null_object}. --> @TODO!!                                        TRANSLATE!
     -- container objects only take what is allowed for them to take;
     -- this applies to verbs empty_in, pour_in, put_in and throw_in.
     -- "null_object" is a default dummy that can be ignored.
 
-  HAS ex "".
+  HAS ex "". --> @TODO!!                                                        TRANSLATE??
     -- an alternative way of giving responses to >x [thing],
     -- instead of 'VERB examine DOES ONLY..."
     -- See the library manual for more info.
 
-  HAS matching_key null_key.
+  HAS matching_key null_key. --> @TODO!!                                        TRANSLATE!
     -- All lockable doors need a matching key to lock/unlock them.
     -- "null_key" is a default dummy that can be ignored. This attribute
     -- is here added to every thing instead of just doors, to enable
     -- matching keys to be programmed for other locked objects, too, like for
     -- example treasure chests etc.
 
-  HAS text "".
+  HAS text "". --> @TODO!!                                                      TRANSLATE!
 
   NOT rotto.
   NOT distante.
@@ -109,19 +108,19 @@ ADD TO EVERY THING
     -- Default response for distant things: "The [thing] is too far away."
   NOT potabile.
   NOT commestibile.
-  NOT fireable.
+  NOT fireable. --> @TODO!!                                                     TRANSLATE!
     -- can (not) be used as a firearm
-  NOT lockable.
-  NOT locked.
-  NOT 'on'.
+  NOT lockable. --> @TODO!!                                                     TRANSLATE!
+  NOT locked. --> @TODO!!                                                       TRANSLATE!
+  NOT acceso.
   NOT apribile.
   NOT leggibile.
-  NOT scenery.
+  NOT scenery. --> @TODO!!                                                      TRANSLATE!
    -- scenery has special responses for 'examine' and 'take', behaves like a normal object otherwise.
   NOT indossabile.
-  NOT writeable.
+  NOT writeable. --> @TODO!!                                                    TRANSLATE!
 
-  CAN NOT talk.
+  CAN NOT talk. --> @TODO!!                                                     TRANSLATE!
 
 
   -- ==================================
@@ -329,17 +328,17 @@ END THE.
 
 
 ADD TO EVERY THING
-  HAS weight 0.
+  HAS peso 0.
 END ADD TO THING.
 
 
 ADD TO EVERY ACTOR
-  HAS weight 50.
+  HAS peso 50.
 END ADD TO ACTOR.
 
 
 ADD TO EVERY OBJECT
-  HAS weight 5.
+  HAS peso 5.
 END ADD TO OBJECT.
 
 

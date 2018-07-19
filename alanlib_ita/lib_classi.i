@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.2.5 (2018/07/18)
+-- "lib_classi.i" v0.2.6 (2018/07/19)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -45,8 +45,8 @@ END ADD.
 
 -- CLOTHING
   -- Is a piece of clothing that behaves according to Alan Bampton's 'xwear.i' extension.
-     -- The said extension has been fully assimilated to this library.
-     -- This extension prevents clothes from being worn in an illogical order, for example you
+  -- The said extension has been fully assimilated to this library.
+  -- This extension prevents clothes from being worn in an illogical order, for example you
   -- cannot put on a shirt if you are already wearing a jacket, and so forth.
   -- This only applies to the hero; NPCs cannot be made to wear clothing in layers.
   -- Also the verbs 'wear', 'remove' and 'undress' are defined here.
@@ -56,7 +56,7 @@ END ADD.
   -- Is a  machine or an electronic device, for example a TV. Can be turned
   -- (=switched) on and off if it is not broken.
   -- Attributes: 'on' and NOT 'on', NOT broken.
-      -- Is described by default as being either on or off when examined.
+  -- Is described by default as being either on or off when examined.
 
 
 -- DOOR
@@ -76,7 +76,7 @@ END ADD.
   -- IS natural or NOT natural
   -- (a natural lightsource is for example a match or a torch).
   -- Can be turned on and off, lighted and extinguished (= put out) if it
-      -- is not broken. A natural lightsource
+  -- is not broken. A natural lightsource
   -- cannot be turned on or off, it can only be lighted and extinguished (= put out).
   -- When examined, a lightsource is automatically supplied with a description of
   -- whether it is providing light or not.
@@ -97,7 +97,7 @@ END ADD.
 -- SUPPORTER
   -- You can put things on this and you can stand on this. It is declared a container,
   -- so you can take things from it, as well. When there's something on a supporter,
-      -- a default listing of it will appear in the room description and after 'examine'.
+  -- a default listing of it will appear in the room description and after 'examine'.
 
 
 -- WEAPON
@@ -779,7 +779,7 @@ END EVENT.
 -- (This class is not cross-referenced elsewhere in this or any other library file.)
 
 
-EVERY device ISA OBJECT
+EVERY dispositivo ISA OBJECT
 
 
   VERB examine
@@ -789,7 +789,7 @@ EVERY device ISA OBJECT
         ELSE "They are"
       END IF.
 
-      IF THIS IS 'on'
+      IF THIS IS acceso
         THEN "currently on."
         ELSE "currently off."
       END IF.
@@ -797,7 +797,7 @@ EVERY device ISA OBJECT
 
 
   VERB turn_on
-    CHECK THIS IS NOT 'on'
+    CHECK THIS IS NOT acceso
       ELSE
         IF THIS IS NOT plurale
           THEN SAY check_device_not_on_sg OF my_game.
@@ -824,12 +824,12 @@ EVERY device ISA OBJECT
       ELSE SAY check_obj_not_broken OF my_game.
     DOES ONLY
       "You turn on" SAY THE THIS. "."
-      MAKE THIS 'on'.
+      MAKE THIS acceso.
   END VERB.
 
 
   VERB turn_off
-    CHECK THIS IS 'on'
+    CHECK THIS IS acceso
       ELSE
          IF THIS IS NOT plurale
           THEN SAY check_device_on_sg OF my_game.
@@ -854,7 +854,7 @@ EVERY device ISA OBJECT
         END IF.
     DOES ONLY
       "You turn off" SAY THE THIS. "."
-      MAKE THIS NOT 'on'.
+      MAKE THIS NOT acceso.
   END VERB.
 
 
@@ -882,11 +882,11 @@ EVERY device ISA OBJECT
     AND THIS IS NOT rotto
       ELSE SAY check_obj_not_broken OF my_game.
     DOES ONLY
-      IF THIS IS 'on'
+      IF THIS IS acceso
         THEN "You switch off" SAY THE THIS. "."
-          MAKE THIS NOT 'on'.
+          MAKE THIS NOT acceso.
         ELSE "You switch on" SAY THE THIS. "."
-          MAKE THIS 'on'.
+          MAKE THIS acceso.
       END IF.
   END VERB.
 
@@ -897,7 +897,7 @@ END EVERY.
 -- =============================================================
 
 
------ DOOR
+----- @PORTA --> @DOOR
 
 
 -- =============================================================
@@ -906,7 +906,7 @@ END EVERY.
 -- (This class is not cross-referenced elsewhere in this or any other library file.)
 
 
-EVERY door ISA OBJECT
+EVERY porta ISA OBJECT
   IS apribile.
   IS NOT open.
   IS NOT lockable.
@@ -1092,7 +1092,7 @@ END EVERY.
 
 -- a default dummy, ignore:
 
-THE null_door ISA DOOR
+THE null_door ISA porta
 END THE.
 
 
@@ -1783,7 +1783,7 @@ END EVERY.
 -- (This class is not cross-referenced in this or any other library file.)
 
 
-EVERY sound ISA OBJECT
+EVERY suono ISA OBJECT
   IS NOT esaminabile.
   IS NOT takeable.
   IS NOT raggiungibile.
@@ -1915,7 +1915,7 @@ END EVERY.
 -- When examined, a window is by default described as being either open or closed.
 
 
-EVERY window ISA OBJECT
+EVERY finestra ISA OBJECT
   IS apribile.
   IS NOT open.
   IS NOT takeable.
@@ -2252,7 +2252,7 @@ END THE.
 -- ================================================================
 
 
-EVERY person ISA ACTOR
+EVERY persona ISA ACTOR
   CAN talk.
 
   CONTAINER
@@ -2302,14 +2302,14 @@ END EVERY.
 -- have the ability to talk.
 
 
-EVERY female ISA PERSON
+EVERY female ISA persona
   PRONOUN her
   HAS articolo "la".
   
 END EVERY.
 
 
-EVERY male ISA PERSON
+EVERY male ISA persona
   PRONOUN him
   HAS articolo "il".
 END EVERY.
