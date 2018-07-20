@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.25 (2018/07/20)
+-- "lib_verbi.i" v0.2.26 (2018/07/21)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -472,7 +472,7 @@ END ADD TO.
 -- SYNTAX drink = drink (liq)
 
 SYNTAX bevi = bevi (liq)
-  WHERE liq ISA LIQUID    -- see 'classes.i'
+  WHERE liq ISA liquido    -- see 'classes.i'
     ELSE
       IF liq IS NOT plurale
         THEN SAY ogg1_inadatto_sg OF my_game.
@@ -483,7 +483,7 @@ SYNTAX bevi = bevi (liq)
       "bere."
 
 
-ADD TO EVERY LIQUID
+ADD TO EVERY liquido
   VERB bevi
     CHECK my_game CAN bere
       ELSE SAY azione_bloccata OF my_game.
@@ -536,7 +536,7 @@ ADD TO EVERY LIQUID
           -- >>> prendi implicito: >>>
           IF recipiente OF liq NOT DIRECTLY IN hero
             THEN
-              IF recipiente OF liq IS NOT takeable
+              IF recipiente OF liq IS NOT prendibile
                 --> @TODO!!                                                     TRANSLATE!
                 THEN "You can't carry" SAY THE liq. "around in your bare hands."
                   -- the action stops here if the container is not takeable.
@@ -791,7 +791,7 @@ ADD TO EVERY OBJECT
         WHEN obj
       CHECK my_game CAN dare -- (was CAN give)
         ELSE SAY azione_bloccata OF my_game.
-      AND obj IS takeable
+      AND obj IS prendibile
         --> @TODO!!                                                             TRANSLATE!
         ELSE SAY check_obj_takeable OF my_game.
       AND obj <> recipient
@@ -956,7 +956,7 @@ ADD TO EVERY OBJECT
           ELSE SAY ogg1_inadatto_pl OF my_game.
         END IF.
         "mangiare."
-    AND cibo IS takeable
+    AND cibo IS prendibile
       --> @TODO!!                                                               TRANSLATE!
       ELSE SAY check_obj_takeable OF my_game.
     AND CURRENT LOCATION IS lit
@@ -1076,14 +1076,14 @@ ADD TO EVERY THING
       ELSE SAY check_obj_not_hero1 OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS NOT scenery
+    AND obj IS NOT scenario
       ELSE
         IF THIS IS NOT plurale
           --> @TODO!!                                                           TRANSLATE!
           THEN SAY check_obj_not_scenery_sg OF my_game. --#-> "$+1 is not important."
           ELSE SAY check_obj_not_scenery_pl OF my_game. --#-> "$+1 are not important."
         END IF.
-    AND obj IS movable
+    AND obj IS spostabile
    -- ELSE SAY check_obj_movable OF my_game. --#-> "It's not possible to $v $+1."
       ELSE
       --#i6/7: "È/Sono fissat* al proprio posto"
@@ -1099,7 +1099,7 @@ ADD TO EVERY THING
               ELSE SAY "Sono fissate al loro posto.".
             END IF.
         END IF.
-        AND obj IS takeable
+        AND obj IS prendibile
           ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -1249,24 +1249,24 @@ ADD TO EVERY THING
         ELSE SAY check_obj_not_obj2_from OF my_game.  --#-> "It doesn't make sense to $v something from itself."
       AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-      AND obj IS NOT scenery
+      AND obj IS NOT scenario
         ELSE
           IF obj IS NOT plurale
             --> @TODO!!                                                         TRANSLATE!
             THEN SAY check_obj_not_scenery_sg OF my_game.
             ELSE SAY check_obj_not_scenery_pl OF my_game.
           END IF.
-      AND holder IS NOT scenery
+      AND holder IS NOT scenario
         ELSE
           IF obj IS NOT plurale
             --> @TODO!!                                                         TRANSLATE!
             THEN SAY check_obj2_not_scenery_sg OF my_game.
             ELSE SAY check_obj2_not_scenery_pl OF my_game.
           END IF.
-      AND obj IS movable
+      AND obj IS spostabile
         --> @TODO!!                                                             TRANSLATE!
         ELSE SAY check_obj_movable OF my_game.
-      AND obj IS takeable
+      AND obj IS prendibile
             ELSE
           IF obj IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
@@ -1756,7 +1756,7 @@ ADD TO EVERY ACTOR
         ELSE SAY azione_bloccata OF my_game.
       AND act <> hero
         ELSE SAY check_obj_not_hero1 OF my_game.
-          AND act CAN talk
+          AND act CAN parlare
               ELSE
           IF act IS NOT plurale
             THEN SAY check_act_can_talk_sg OF my_game.
@@ -1811,7 +1811,7 @@ ADD TO EVERY ACTOR
         ELSE SAY azione_bloccata OF my_game.
       AND act <> hero
         ELSE SAY check_obj_not_hero1 OF my_game.
-          AND act CAN talk
+          AND act CAN parlare
               ELSE
           IF act IS NOT plurale
             THEN SAY check_act_can_talk_sg OF my_game.
@@ -1833,7 +1833,7 @@ ADD TO EVERY ACTOR
             THEN SAY check_obj_not_distant_sg OF my_game.
             ELSE SAY check_obj_not_distant_pl OF my_game.
           END IF.
-      AND obj IS takeable
+      AND obj IS prendibile
         ELSE SAY check_obj2_takeable2 OF my_game.
 
       AND obj IS raggiungibile AND obj IS NOT distante
@@ -1847,7 +1847,7 @@ ADD TO EVERY ACTOR
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
           END IF.
-      AND obj IS NOT scenery
+      AND obj IS NOT scenario
         ELSE
           IF obj IS NOT plurale
             THEN SAY check_obj2_not_scenery_sg OF my_game.
@@ -2061,7 +2061,7 @@ ADD TO EVERY OBJECT
           THEN SAY ogg1_inadatto_sg OF my_game. "mordere."
           ELSE SAY ogg1_inadatto_pl OF my_game. "mordere."
         END IF.
-    AND obj IS takeable
+    AND obj IS prendibile
       ELSE SAY check_obj_takeable OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
@@ -2851,7 +2851,7 @@ END VERB.
 
 
 SYNTAX dive_in = dive 'in' (liq)
-  WHERE liq ISA LIQUID    -- see 'classes.i'
+  WHERE liq ISA liquido    -- see 'classes.i'
     ELSE
       IF liq IS NOT plurale
         THEN SAY illegal_parameter_in_sg OF my_game.
@@ -3058,7 +3058,7 @@ ADD TO EVERY OBJECT
   VERB 'empty', pour
     CHECK my_game CAN 'empty' AND my_game CAN versare
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS takeable
+    AND obj IS prendibile
       ELSE SAY check_obj_takeable OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
@@ -3174,7 +3174,7 @@ ADD TO EVERY OBJECT
         ELSE SAY azione_bloccata OF my_game.
       AND obj <> cont
         ELSE SAY check_obj_not_obj2_in OF my_game.
-      AND obj IS takeable
+      AND obj IS prendibile
         ELSE SAY check_obj_takeable OF my_game.
       AND cont NOT IN obj
         ELSE SAY check_cont_not_in_obj OF my_game.
@@ -3210,7 +3210,7 @@ ADD TO EVERY OBJECT
                 ELSE SAY check_obj2_not_distant_pl OF my_game.
               END IF.
           END IF.
-      AND obj IN allowed OF cont
+      AND obj IN consentiti OF cont
         ELSE
           IF obj IS NOT plurale
             THEN SAY check_obj_allowed_in_sg OF my_game.
@@ -3303,7 +3303,7 @@ ADD TO EVERY THING
         ELSE SAY azione_bloccata OF my_game.
       AND obj <> surface
         ELSE SAY check_obj_not_obj2_on OF my_game.
-      AND obj IS takeable
+      AND obj IS prendibile
         ELSE SAY check_obj_takeable OF my_game.
       AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
@@ -3462,7 +3462,7 @@ ADD TO EVERY THING
         END IF.
         AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS NOT scenery
+    AND obj IS NOT scenario
       ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_not_scenery_sg OF my_game. --> "$+1 non è importante ai fini del gioco."
@@ -3472,14 +3472,14 @@ ADD TO EVERY THING
       IF obj IS leggibile
       -- for readable objects, 'examine' behaves just as 'read'
         THEN
-          IF text OF obj = ""
+          IF testo OF obj = ""
             THEN "There is nothing written on" SAY THE obj. "."
             ELSE "You read" SAY THE obj. "."
               IF obj IS NOT plurale
                 THEN "It says"
                 ELSE "They say"
               END IF.
-              """$$" SAY text OF obj. "$$""."
+              """$$" SAY testo OF obj. "$$""."
           END IF.
             ELSE
           IF ex OF obj <> ""
@@ -3702,7 +3702,7 @@ ADD TO EVERY OBJECT
         ELSE SAY check_locazione_illuminata OF my_game.
       AND substance NOT IN cont
         ELSE SAY check_obj_not_in_cont2 OF my_game.
-      AND substance IS takeable
+      AND substance IS prendibile
         ELSE SAY check_obj2_takeable1 OF my_game.
       AND cont IS raggiungibile AND cont IS NOT distante
         ELSE
@@ -4772,7 +4772,7 @@ ADD TO EVERY OBJECT
       ELSE SAY check_locazione_illuminata OF my_game.
     AND obj NOT IN hero
       ELSE SAY check_obj_not_in_hero1 OF my_game.
-    AND obj IS movable
+    AND obj IS spostabile
       ELSE SAY check_obj_movable OF my_game.
     AND obj IS raggiungibile AND obj IS NOT distante
       ELSE
@@ -5860,7 +5860,7 @@ ADD TO EVERY OBJECT
   VERB pull
     CHECK my_game CAN tirare
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS movable
+    AND obj IS spostabile
       ELSE SAY check_obj_movable OF my_game.
     AND obj <> hero
       ELSE SAY check_obj_not_hero1 OF my_game.
@@ -5915,7 +5915,7 @@ ADD TO EVERY THING
   VERB push
     CHECK my_game CAN spingere
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS movable
+    AND obj IS spostabile
           ELSE SAY check_obj_movable OF my_game.
     AND obj <> hero
       ELSE SAY check_obj_not_hero1 OF my_game.
@@ -5970,7 +5970,7 @@ ADD TO EVERY THING
     WHEN obj
       CHECK my_game CAN spingere_con
         ELSE SAY azione_bloccata OF my_game.
-      AND obj IS movable
+      AND obj IS spostabile
           ELSE SAY check_obj_movable OF my_game.
       AND obj <> instr
         ELSE SAY check_obj_not_obj2_with OF my_game.
@@ -6092,7 +6092,7 @@ ADD TO EVERY OBJECT
         ELSE SAY azione_bloccata OF my_game.
       AND obj <> cont
         ELSE SAY check_obj_not_obj2_in OF my_game.
-          AND obj IS takeable
+          AND obj IS prendibile
           ELSE SAY check_obj_takeable OF my_game.
           AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
@@ -6136,7 +6136,7 @@ ADD TO EVERY OBJECT
                 ELSE SAY check_obj2_not_distant_pl OF my_game.
               END IF.
           END IF.
-      AND obj IN allowed OF cont
+      AND obj IN consentiti OF cont
         ELSE
           IF obj IS NOT plurale
             THEN SAY check_obj_allowed_in_sg OF my_game.
@@ -6208,7 +6208,7 @@ ADD TO EVERY OBJECT
           ELSE SAY check_obj2_not_in_hero2 OF my_game.
       AND obj <> bulk
           ELSE SAY check_obj_not_obj2_put OF my_game.
-          AND obj IS takeable
+          AND obj IS prendibile
           ELSE SAY check_obj_takeable OF my_game.
           AND bulk <> hero
           ELSE SAY check_obj2_not_hero2 OF my_game.
@@ -6285,7 +6285,7 @@ ADD TO EVERY OBJECT
         ELSE SAY azione_bloccata OF my_game.
       AND obj <> surface
           ELSE SAY check_obj_not_obj2_on OF my_game.
-          AND obj IS takeable
+          AND obj IS prendibile
           ELSE SAY check_obj_takeable OF my_game.
           AND CURRENT LOCATION IS lit
             ELSE SAY check_locazione_illuminata OF my_game.
@@ -6399,7 +6399,7 @@ ADD TO EVERY OBJECT
           ELSE SAY check_obj_not_distant_pl OF my_game.
         END IF.
     DOES
-      IF text OF obj = ""
+      IF testo OF obj = ""
         THEN "There's nothing written on" SAY THE obj. "."
         ELSE "You read" SAY THE obj. "."
 
@@ -6408,7 +6408,7 @@ ADD TO EVERY OBJECT
             ELSE "They say"
           END IF.
 
-          """$$" SAY text OF obj. "$$""."
+          """$$" SAY testo OF obj. "$$""."
       END IF.
     END VERB.
 END ADD TO.
@@ -6584,7 +6584,7 @@ ADD TO EVERY ACTOR
         ELSE SAY azione_bloccata OF my_game.
       AND act <> hero
         ELSE SAY check_obj2_not_hero1 OF my_game.
-          AND act CAN talk
+          AND act CAN parlare
         ELSE
           IF act IS NOT plurale
             THEN SAY check_act_can_talk_sg OF my_game.
@@ -6854,7 +6854,7 @@ ADD TO EVERY OBJECT
           THEN SAY check_obj_suitable_sg OF my_game.
           ELSE SAY check_obj_suitable_pl OF my_game.
         END IF.
-    AND obj IS movable
+    AND obj IS spostabile
       ELSE SAY check_obj_movable OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
@@ -7133,7 +7133,7 @@ END VERB.
 
 
 SYNTAX sip = sip (liq)
-  WHERE liq ISA LIQUID
+  WHERE liq ISA liquido
     ELSE
       IF liq IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -7141,7 +7141,7 @@ SYNTAX sip = sip (liq)
       END IF.
 
 
-ADD TO EVERY LIQUID
+ADD TO EVERY liquido
     VERB sip
     CHECK my_game CAN sip
       ELSE SAY azione_bloccata OF my_game.
@@ -7179,7 +7179,7 @@ ADD TO EVERY LIQUID
           -- implicit taking:
           IF recipiente OF liq NOT DIRECTLY IN hero
             THEN
-              IF recipiente OF liq IS NOT takeable
+              IF recipiente OF liq IS NOT prendibile
                 THEN "You can't carry" SAY THE liq. "around in your bare hands."
                   -- the action stops here if the container is not takeable.
                 ELSE LOCATE recipiente OF liq IN hero.
@@ -7532,7 +7532,7 @@ END VERB.
 
 
 SYNTAX swim_in = swim 'in' (liq)
-  WHERE liq ISA LIQUID
+  WHERE liq ISA liquido
     ELSE
       IF liq IS NOT plurale
         THEN SAY illegal_parameter_in_sg OF my_game.
@@ -7854,7 +7854,7 @@ ADD TO EVERY ACTOR
         ELSE SAY azione_bloccata OF my_game.
       AND act <> hero
         ELSE SAY check_obj_not_hero1 OF my_game.
-          AND act CAN talk
+          AND act CAN parlare
               ELSE
           IF act IS NOT plurale
             THEN SAY check_act_can_talk_sg OF my_game.
@@ -7960,7 +7960,7 @@ ADD TO EVERY OBJECT
           THEN SAY ogg1_inadatto_sg OF my_game. "lanciare."
           ELSE SAY ogg1_inadatto_pl OF my_game. "lanciare."
         END IF.
-    AND projectile IS takeable
+    AND projectile IS prendibile
       ELSE SAY check_obj_takeable OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
@@ -8038,7 +8038,7 @@ ADD TO EVERY OBJECT
           THEN SAY ogg1_inadatto_sg OF my_game. "lanciare."
           ELSE SAY ogg1_inadatto_pl OF my_game. "lanciare."
           END IF.
-          AND projectile IS takeable
+          AND projectile IS prendibile
           ELSE SAY check_obj_takeable OF my_game.
           AND target IS esaminabile
           ELSE SAY check_obj_suitable_at OF my_game.
@@ -8152,7 +8152,7 @@ ADD TO EVERY OBJECT
           THEN SAY ogg1_inadatto_sg OF my_game. "lanciare."
           ELSE SAY ogg1_inadatto_pl OF my_game. "lanciare."
           END IF.
-          AND projectile IS takeable
+          AND projectile IS prendibile
           ELSE SAY check_obj_takeable OF my_game.
           AND recipient IS esaminabile
           ELSE SAY check_obj_suitable_at OF my_game.
@@ -8235,7 +8235,7 @@ ADD TO EVERY OBJECT
             THEN SAY ogg1_inadatto_sg OF my_game. "lanciare."
             ELSE SAY ogg1_inadatto_pl OF my_game. "lanciare."
           END IF.
-          AND projectile IS takeable
+          AND projectile IS prendibile
           ELSE SAY check_obj_takeable OF my_game.
           AND cont IS esaminabile
           ELSE SAY check_obj2_suitable_there OF my_game.
@@ -8274,7 +8274,7 @@ ADD TO EVERY OBJECT
             THEN SAY check_obj2_not_distant_sg OF my_game.
             ELSE SAY check_obj2_not_distant_pl OF my_game.
           END IF.
-      AND projectile IN allowed OF cont
+      AND projectile IN consentiti OF cont
         ELSE
           IF projectile IS NOT plurale
             THEN SAY check_obj_allowed_in_sg OF my_game.
@@ -8378,7 +8378,7 @@ ADD TO EVERY THING
           ELSE SAY check_obj2_suitable_there OF my_game.
       AND obj <> target
         ELSE SAY check_obj_not_obj2_to OF my_game.
-      AND obj IS takeable
+      AND obj IS prendibile
           ELSE SAY check_obj_takeable OF my_game.
       AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
@@ -8595,7 +8595,7 @@ ADD TO EVERY OBJECT
           THEN SAY check_obj_suitable_sg OF my_game.
           ELSE SAY check_obj_suitable_pl OF my_game.
         END IF.
-    AND obj IS movable
+    AND obj IS spostabile
       ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_suitable_sg OF my_game.
@@ -8993,7 +8993,7 @@ ADD TO EVERY OBJECT
         ELSE SAY azione_bloccata OF my_game.
     AND obj NOT IN worn
       ELSE SAY check_obj_not_in_worn1 OF my_game.
-    AND obj IS takeable
+    AND obj IS prendibile
       ELSE
         IF THIS IS NOT plurale
           THEN SAY check_obj_takeable OF my_game.
@@ -9225,7 +9225,7 @@ ADD TO EVERY OBJECT
         WHEN obj
       CHECK my_game CAN write
         ELSE SAY azione_bloccata OF my_game.
-            AND obj IS writeable
+            AND obj IS scrivibile
         ELSE SAY check_obj_writeable OF my_game.
         AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
@@ -9249,7 +9249,7 @@ ADD TO EVERY OBJECT
         "You don't have anything to write with."
 
         -- To make it work:
-          -- IF text OF obj = ""
+          -- IF testo OF obj = ""
           -- THEN SET text OF obj TO txt.
           -- ELSE SET text OF obj TO text OF obj + " " + txt.
           -- END IF.

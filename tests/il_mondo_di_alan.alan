@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione 0.2.7 (2018/07/20)
+--  versione 0.2.8 (2018/07/21)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -53,7 +53,7 @@ THE statua_Alan IsA object AT pzzaIF.
   HAS articolo "la".
   NAME statua.
   NAME piedistallo.
-  IS NOT movable.
+  IS NOT spostabile.
   MENTIONED  --| Facciamo sì che una volta letta la targhetta la statua venga
     "statua" --| menzionata in maniera più specifica...
     IF targhetta IS già_letta
@@ -71,8 +71,8 @@ END THE statua_Alan.
 THE targhetta IsA object AT pzzaIF.
   HAS articolo "la".
   DESCRIPTION "" --> non elencare tra le cose visibili.
-  IS readable.
-  HAS text "Alan III".
+  IS leggibile.
+  HAS testo "Alan III".
   IS NOT già_letta.
   VERB prendi --| Creiamo una risposta personalizzata per quando il giocatore
     DOES ONLY --| tenta di prendera la targhetta...
@@ -95,7 +95,7 @@ END THE targhetta.
 -- liquido non è in un contenitore, allora viene bevuto solo in parte e non
 -- consumato).
 
-THE pozzanghera IsA liquid AT pzzaIF.
+THE pozzanghera IsA liquido AT pzzaIF.
   HAS articolo "la".
   IS  potabile.
 END THE pozzanghera.
@@ -115,7 +115,7 @@ THE albero IsA object AT Eden.
   HAS articolo "l'".
   NAME albero.
   NAME 'l''albero'.
-  IS NOT movable.
+  IS NOT spostabile.
 END THE albero.
 
 --==============================================================================
@@ -129,7 +129,7 @@ END THE albero.
 THE mela IsA frutto AT Eden.
   HAS articolo "la".
   NAME mela.
-  IS NOT reachable.
+  IS NOT raggiungibile.
 END THE mela.
 -- =============================================================================
 
@@ -204,7 +204,7 @@ THE bancarella IsA supporter AT mercato.
 END THE bancarella.
 
 EVERY frutto IsA object.
-  IS edible.
+  IS commestibile.
   NAME frutto.
 END EVERY frutto.
 

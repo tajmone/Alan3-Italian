@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.28 (2018/07/20)
+-- "lib_definizioni.i" v0.2.29 (2018/07/21)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -80,7 +80,7 @@
 ADD TO EVERY ENTITY
 
   IS NOT plurale.
-  IS NOT femminile. -- @FEMMINILE -> attr. (ADD TO EVERY ENTITY)
+  IS NOT femminile.
 
 END ADD TO.
 
@@ -96,19 +96,19 @@ ADD TO EVERY THING
      -- La libreria definisce che un SUONO non è esaminabile.
      inanimato.
      -- Gli attori sono NOT inanimato.
-     movable. --> @TODO!!                                                       TRANSLATE!
+     spostabile.
      -- to allow pushing, pulling, lifting, etc.
-     open.
+     open. --> @TODO!!                                                          TRANSLATE!
      -- = not closed.
      raggiungibile.
      -- See also 'distant' below
-     takeable. --> @TODO!!                                                      TRANSLATE!
+     prendibile.
      -- you'll have to separately define which objects are NOT takeable.
      -- By default, the floor, walls, ceiling, ground and sky objects
      -- are not takeable. The same goes for all doors, windows, sounds, liquids
      -- that are not in containers, and actors.
 
-  HAS allowed { oggetto_fittizio }. --> @TODO!!                                        TRANSLATE!
+  HAS consentiti { oggetto_fittizio }.
     -- container objects only take what is allowed for them to take;
     -- this applies to verbs empty_in, pour_in, put_in and throw_in.
     -- "null_object" is a default dummy that can be ignored.
@@ -118,14 +118,14 @@ ADD TO EVERY THING
     -- instead of 'VERB examine DOES ONLY..."
     -- See the library manual for more info.
 
-  HAS matching_key chiave_fittizia. --> @TODO!!                                        TRANSLATE!
+  HAS matching_key  chiave_fittizia. --> @TODO!!                                TRANSLATE!
       -- All lockable doors need a matching key to lock/unlock them.
       -- "null_key" is a default dummy that can be ignored. This attribute
       -- is here added to every thing instead of just doors, to enable
       -- matching keys to be programmed for other locked objects, too, like for
       -- example treasure chests etc.
 
-  HAS text "". --> @TODO!!                                                      TRANSLATE!
+  HAS testo "".
 
   NOT rotto.
   NOT distante.
@@ -146,12 +146,12 @@ ADD TO EVERY THING
   NOT acceso.
   NOT apribile.
   NOT leggibile.
-  NOT scenery. --> @TODO!!                                                      TRANSLATE!
+  NOT scenario.
    -- scenery has special responses for 'examine' and 'take', behaves like a normal object otherwise.
   NOT indossabile.
-  NOT writeable. --> @TODO!!                                                    TRANSLATE!
+  NOT scrivibile.
 
-  CAN NOT talk. --> @TODO!!                                                     TRANSLATE!
+  CAN NOT parlare.
 
 
   -- ==================================
@@ -380,7 +380,7 @@ END ADD TO OBJECT.
 -- An attribute for keeping track of nested locations; used internally in the library (ignore).
 
 ADD TO EVERY LOCATION
-  HAS nested { nowhere }.
+  HAS annidati { nowhere }.
 END ADD TO.
 
 --------------------------------------------------------------------------------
@@ -961,12 +961,12 @@ EVERY DEFINITION_BLOCK ISA LOCATION
 
         FOR EACH l ISA LOCATION
           DO
-            EXCLUDE nowhere FROM nested OF l.
+            EXCLUDE nowhere FROM annidati OF l.
             IF COUNT ISA LOCATION, AT l > 0
               THEN
                 FOR EACH x ISA LOCATION, AT l
                   DO
-                    INCLUDE x IN nested OF l.
+                    INCLUDE x IN annidati OF l.
                 END FOR.
             END IF.
         END FOR.
@@ -990,9 +990,9 @@ EVERY DEFINITION_BLOCK ISA LOCATION
 
         FOR EACH l ISA LOCATION
           DO
-            IF nested OF l <> {} AND l <> my_game AND l <> nowhere
+            IF annidati OF l <> {} AND l <> my_game AND l <> nowhere
             THEN
-                    FOR EACH x ISA LOCATION, IN nested OF l
+                    FOR EACH x ISA LOCATION, IN annidati OF l
                 DO
                   IF l <> my_game AND x <> my_game
                         THEN LOCATE x AT l.

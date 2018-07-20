@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/21](#20180721)
 - [2018/07/20 \(3\)](#20180720-3)
     - [Library Locations](#library-locations)
         - [Rooms](#rooms)
@@ -105,6 +106,41 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
+# 2018/07/21
+
+- [`lib_classi.i`][lib_classi] (v0.2.9)
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.29)
+- [`lib_luoghi.i`][lib_luoghi] (v0.2.4)
+- [`lib_verbi.i`][lib_verbi] (v0.2.26)
+
+
+Translated library attributes:
+
+|   English   |   Italian    |   Class    |
+|-------------|--------------|------------|
+| `allowed`   | `consentiti` | `THING`    |
+| `movable`   | `spostabile` | `THING`    |
+| `nested`    | `annidati`   | `LOCATION` |
+| `scenery`   | `scenario`   | `THING`    |
+| `takeable`  | `prendibile` | `THING`    |
+| `talk`      | `parlare`    | `THING`    |
+| `text`      | `testo`      | `THING`    |
+| `writeable` | `scrivibile` | `THING`    |
+
+Translated CLASSes:
+
+| Class EN |  Class IT |
+|----------|-----------|
+| `liquid` | `liquido` |
+
+
+
+
+
+<!---------------------------------------------------------------------------->
+
+
+
 # 2018/07/20 (3)
 
 - [`lib_classi.i`][lib_classi] (v0.2.8)
@@ -163,6 +199,8 @@ This commit deals with the translation of some classes, instances and attributes
 <!-- TODO:
 | `nowhere`       | `xxx`     | `LOCATION`    |
 -->
+
+
 
 <!---------------------------------------------------------------------------->
 

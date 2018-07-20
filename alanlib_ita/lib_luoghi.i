@@ -1,4 +1,4 @@
--- "lib_luoghi.i" v0.2.3 (2018/07/20)
+-- "lib_luoghi.i" v0.2.4 (2018/07/21)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -173,8 +173,8 @@ END EVERY.
 
 
 THE pavimento ISA oggetto_stanza
-  IS NOT takeable.
-  IS NOT movable.
+  IS NOT prendibile.
+  IS NOT spostabile.
   CONTAINER
     -- to allow 'empty/pour/put something on floor'
   DESCRIPTION ""
@@ -221,15 +221,15 @@ THE pareti ISA oggetto_stanza
   NAME pareti.
   NAME parete.
   NAME muro.
-  IS NOT takeable.
-  IS NOT movable.
+  IS NOT prendibile.
+  IS NOT spostabile.
   DESCRIPTION ""
 END THE.
 
 
 
 THE soffitto ISA oggetto_stanza
-  IS NOT takeable.
+  IS NOT prendibile.
   IS NOT raggiungibile.
   DESCRIPTION ""
 END THE.
@@ -237,8 +237,8 @@ END THE.
 
 
 THE ground ISA site_object
-  IS NOT takeable.
-  IS NOT movable.
+  IS NOT prendibile.
+  IS NOT spostabile.
   CONTAINER
     -- to allow 'empty/pour something on ground'
   DESCRIPTION ""
@@ -284,7 +284,7 @@ END THE.
 
 
 THE cielo ISA site_object
-  IS NOT takeable.
+  IS NOT prendibile.
   IS distante.
   DESCRIPTION ""
 END THE.

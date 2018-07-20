@@ -1,4 +1,4 @@
--- "_mygame_import.i" v0.2.7 (2018/07/20)
+-- "_mygame_import.i" v0.2.8 (2018/07/21)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -762,7 +762,7 @@ VERB drink
 				-- implicit taking:
 				IF recipiente OF liq NOT DIRECTLY IN hero
 					THEN 
-						IF recipiente OF liq IS NOT takeable
+						IF recipiente OF liq IS NOT prendibile
 							THEN "You can't carry" SAY THE liq. "around in your bare hands."
 								-- the action stops here if the container is not takeable.
 							ELSE
@@ -900,14 +900,14 @@ VERB examine
 		IF obj IS leggibile			
 			-- for readable objects, 'examine' behaves just as 'read'
 			THEN 
-				IF text OF obj = ""
+				IF testo OF obj = ""
 					THEN "There is nothing written on" SAY THE obj. "."
 					ELSE "You read" SAY THE obj. "."
 						IF obj IS NOT plurale
 							THEN "It says"
 							ELSE "They say"
 						END IF.  
-						"""$$" SAY text OF obj. "$$""."
+						"""$$" SAY testo OF obj. "$$""."
 				END IF.
       		ELSE 
 				IF obj = hero
@@ -1412,14 +1412,14 @@ END VERB.
 
 VERB read
 	DOES ONLY
-		IF text OF obj = ""
+		IF testo OF obj = ""
 			THEN "There's nothing written on" SAY THE obj. "."
 			ELSE "You read" SAY THE obj. "." 
 				IF obj IS NOT plurale
 					THEN "It says"
 					ELSE "They say"
 				END IF.
-				"""$$" SAY text OF obj. "$$""." 
+				"""$$" SAY testo OF obj. "$$""." 
 		END IF.
 END VERB.
 
@@ -1610,7 +1610,7 @@ VERB sip
 				-- implicit taking:
 				IF recipiente OF liq NOT DIRECTLY IN hero
 					THEN 
-						IF recipiente OF liq IS NOT takeable
+						IF recipiente OF liq IS NOT prendibile
 							THEN "You can't carry" SAY THE liq. "around in your bare hands."
 								-- the action stops here if the container is not takeable.
 							ELSE LOCATE recipiente OF liq IN hero.

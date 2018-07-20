@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.2.8 (2018/07/20)
+-- "lib_classi.i" v0.2.9 (2018/07/21)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -22,7 +22,7 @@
 ADD TO EVERY OBJECT
 
   DESCRIPTION
-      CHECK THIS IS NOT scenery
+      CHECK THIS IS NOT scenario
       ELSE SAY "".
 
 END ADD.
@@ -262,7 +262,7 @@ EVERY clothing ISA OBJECT
 
     FOR EACH o ISA OBJECT, DIRECTLY IN THIS
       DO
-        INCLUDE o IN allowed OF THIS.
+        INCLUDE o IN consentiti OF THIS.
     END FOR.
 
 
@@ -911,7 +911,7 @@ EVERY porta ISA OBJECT
   IS NOT open.
   IS NOT lockable.
   IS NOT locked.
-  IS NOT takeable.
+  IS NOT prendibile.
 
 
   HAS otherside porta_fittizia.
@@ -1271,10 +1271,10 @@ END EVERY.
 -- ==============================================================
 
 
--- (In the file 'lib_verbi.i', ISA LIQUID is used in the syntax definitions of the verbs 'drink' and 'sip'.)
+-- (In the file 'lib_verbi.i', ISA liquid is used in the syntax definitions of the verbs 'drink' and 'sip'.)
 
 
-EVERY liquid ISA OBJECT
+EVERY liquido ISA OBJECT
 
   CONTAINER
     HEADER "In" SAY THE THIS. "you see"
@@ -1304,11 +1304,11 @@ EVERY liquid ISA OBJECT
   -- Every object found in a liquid, for example a fish in a pond of water,
   -- will be allowed back in that liquid once taken out of there:
 
-    FOR EACH liq ISA LIQUID
+    FOR EACH liq ISA liquido
       DO
         FOR EACH o ISA OBJECT, DIRECTLY IN liq
           DO
-            INCLUDE o IN allowed OF liq.
+            INCLUDE o IN consentiti OF liq.
         END FOR.
     END FOR.
 
@@ -1318,7 +1318,7 @@ EVERY liquid ISA OBJECT
 
     FOR EACH lc ISA LISTED_CONTAINER
       DO
-        FOR EACH lq ISA LIQUID, DIRECTLY IN lc
+        FOR EACH lq ISA liquido, DIRECTLY IN lc
           DO
             SET recipiente OF lq TO lc.
         END FOR.
@@ -1328,7 +1328,7 @@ EVERY liquid ISA OBJECT
   -- If you have some liquid in a container in your game, you should declare the
   -- liquid instance thus:
 
-  -- THE juice ISA LIQUID
+  -- THE juice ISA liquid
   --      IN bottle
   -- END THE juice.
 
@@ -1386,7 +1386,7 @@ EVERY liquid ISA OBJECT
     CHECK recipiente OF THIS NOT IN hero
       ELSE SAY check_obj_not_in_hero2 OF my_game.
     DOES ONLY
-      IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT takeable
+      IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT prendibile
         THEN "You can't carry" SAY THE THIS. "around in your bare hands."
       ELSE LOCATE recipiente OF THIS IN hero.
         "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nTaken."
@@ -1401,7 +1401,7 @@ EVERY liquid ISA OBJECT
       -- the above is triggered when the player types for example
       -- >take juice from bottle   -- (when the juice is in the bottle)
     DOES ONLY
-      IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT takeable
+      IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT prendibile
         THEN "You can't carry" SAY THE THIS. "around in your bare hands."
       ELSE LOCATE recipiente OF THIS IN hero.
         "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nTaken."
@@ -1430,7 +1430,7 @@ EVERY liquid ISA OBJECT
       -- implicit taking:
       IF THIS NOT IN hero
         THEN
-          IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT takeable
+          IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT prendibile
             THEN "You can't carry" SAY THE THIS. "around in your bare hands."
           ELSE LOCATE recipiente OF THIS IN hero.
             "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
@@ -1456,7 +1456,7 @@ EVERY liquid ISA OBJECT
       -- implicit taking:
       IF THIS NOT IN hero
         THEN
-          IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT takeable
+          IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT prendibile
             THEN "You can't pour" SAY THE THIS. "anywhere since you are not
               carrying"
                 IF THIS IS NOT plurale
@@ -1490,7 +1490,7 @@ EVERY liquid ISA OBJECT
           THEN
             IF recipiente OF THIS = recipiente_fittizio
               THEN "You can't carry" SAY THE THIS. "around in your bare hands."
-            ELSIF recipiente OF THIS IS NOT takeable
+            ELSIF recipiente OF THIS IS NOT prendibile
               THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
             ELSE LOCATE recipiente OF THIS IN hero.
               "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
@@ -1531,7 +1531,7 @@ EVERY liquid ISA OBJECT
           THEN
             IF recipiente OF THIS = recipiente_fittizio
               THEN "You can't carry" SAY THE THIS. "around in your bare hands."
-            ELSIF recipiente OF THIS IS NOT takeable
+            ELSIF recipiente OF THIS IS NOT prendibile
               THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
             ELSE LOCATE recipiente OF THIS IN hero.
               "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
@@ -1570,7 +1570,7 @@ EVERY liquid ISA OBJECT
         IF recipiente OF THIS = recipiente_fittizio
           THEN "You can't carry" SAY THE THIS. "around in your bare hands."
           ELSE
-            IF recipiente OF THIS IS takeable
+            IF recipiente OF THIS IS prendibile
               THEN
                 -- implicit taking:
                 IF THIS NOT IN hero
@@ -1621,7 +1621,7 @@ EVERY liquid ISA OBJECT
           THEN
             IF recipiente OF THIS = recipiente_fittizio
               THEN "You can't carry" SAY THE THIS. "around in your bare hands."
-            ELSIF recipiente OF THIS IS NOT takeable
+            ELSIF recipiente OF THIS IS NOT prendibile
               THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
             ELSE LOCATE recipiente OF THIS IN hero.
               "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
@@ -1678,7 +1678,7 @@ END THE.
 
 
 EVENT check_vessel
-  FOR EACH liq ISA LIQUID, DIRECTLY AT CURRENT LOCATION DO
+  FOR EACH liq ISA liquido, DIRECTLY AT CURRENT LOCATION DO
       SET recipiente OF liq TO recipiente_fittizio.
   END FOR.
   SCHEDULE check_vessel AFTER 1.
@@ -1712,7 +1712,7 @@ EVERY LISTED_CONTAINER ISA OBJECT
       DO
         FOR EACH o ISA OBJECT, DIRECTLY IN lc
           DO
-            INCLUDE o IN allowed OF lc.
+            INCLUDE o IN consentiti OF lc.
         END FOR.
     END FOR.
 
@@ -1785,9 +1785,9 @@ END EVERY.
 
 EVERY suono ISA OBJECT
   IS NOT esaminabile.
-  IS NOT takeable.
+  IS NOT prendibile.
   IS NOT raggiungibile.
-  IS NOT movable.
+  IS NOT spostabile.
 
   VERB smell
     DOES ONLY
@@ -1918,7 +1918,7 @@ END EVERY.
 EVERY finestra ISA OBJECT
   IS apribile.
   IS NOT open.
-  IS NOT takeable.
+  IS NOT prendibile.
 
 
   VERB examine
@@ -1997,7 +1997,7 @@ ADD TO EVERY ACTOR
   -- In practice, this happens by default when the hero asks the actor for anything.
   -- For example, implicit taking of objects is not successful if the object happens
   -- to be held by an NPC who is not compliant.
-  IS NOT takeable.
+  IS NOT prendibile.
 
   IS NOT present_actor.
 
@@ -2206,7 +2206,7 @@ ADD TO EVERY ACTOR
 
 
   DESCRIPTION
-    IF THIS IS scenery
+    IF THIS IS scenario
       THEN "$$"
     ELSIF THIS IS NOT named
       THEN
@@ -2253,7 +2253,7 @@ END THE.
 
 
 EVERY persona ISA ACTOR
-  CAN talk.
+  CAN parlare.
 
   CONTAINER
     HEADER
