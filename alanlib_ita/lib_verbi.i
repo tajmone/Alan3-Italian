@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.23 (2018/07/19)
+-- "lib_verbi.i" v0.2.24 (2018/07/20)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -513,7 +513,7 @@ ADD TO EVERY LIQUID
             END IF.
         END IF.
     DOES
-      IF recipiente OF liq = null_vessel
+      IF recipiente OF liq = recipiente_fittizio
         -- Se il liquido non è in un contenitore, l'eroe ne berrà solo un po' (e
         -- il liquido non verrà consumato). Questo serve a consentire di bere da
         -- un fiume, o da altri liquidi allo stato libero.
@@ -7170,7 +7170,7 @@ ADD TO EVERY LIQUID
             END IF.
         END IF.
     DOES
-      IF recipiente OF liq = null_vessel
+      IF recipiente OF liq = recipiente_fittizio
         -- here, if the liquid is in no container, for example
         -- the hero takes a sip of water from a river,
         -- the action is allowed to succeed.

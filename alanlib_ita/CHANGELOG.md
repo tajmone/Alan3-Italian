@@ -11,7 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/07/20](#20180720)
+- [2018/07/20 \(2\)](#20180720-2)
+    - [Null Objects](#null-objects)
+- [2018/07/20 \(1\)](#20180720-1)
     - [Make `banner` an Instance of `LOCATION`](#make-banner-an-instance-of-location)
 - [2018/07/19 \(5\)](#20180719-5)
 - [2018/07/19 \(4\)](#20180719-4)
@@ -98,7 +100,30 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/07/20
+# 2018/07/20 (2)
+
+- [`lib_classi.i`][lib_classi] (v0.2.7)
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.27)
+- [`lib_verbi.i`][lib_verbi] (v0.2.24)
+
+## Null Objects
+
+Translate all `null_*` objects:
+
+|      Obj EN     |         Obj IT        |
+|-----------------|-----------------------|
+| `null_clothing` | `indumento_fittizio`  |
+| `null_door`     | `porta_fittizia`      |
+| `null_key`      | `chiave_fittizia`     |
+| `null_object`   | `oggetto_fittizio`    |
+| `null_vessel`   | `recipiente_fittizio` |
+
+
+
+<!---------------------------------------------------------------------------->
+
+
+# 2018/07/20 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.26)
 
@@ -109,6 +134,9 @@ I've changed the library to make `banner` an instance of `LOCATION` instead of `
 For the full story behing this change, see __[Issue #8]__ on Alan StdLib upstream repository.
 
 Tests seem to confirm that it works just as fine, and the compiled adventure is 20Kb smaller. Debuggin confirms that the tweaked `banner` instance has a much smaller footprint.
+
+
+
 
 <!---------------------------------------------------------------------------->
 

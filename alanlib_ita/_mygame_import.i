@@ -1,4 +1,4 @@
--- "_mygame_import.i" v0.2.5 (2018/07/19)
+-- "_mygame_import.i" v0.2.6 (2018/07/20)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -12,7 +12,7 @@
 --  * sitting    -> seduto
 --  * lying_down -> sdraiato
 --------------------------------------------------------------------------------
--- NOTA: Questo file andrà interamente rivisto a traduzione ultimata poiché non
+-- NOTA: Questo file andr?interamente rivisto a traduzione ultimata poich?non
 --       rispecchia i cambiamenti della traduzione!!!
 --------------------------------------------------------------------------------
 
@@ -409,7 +409,7 @@ THE my_game ISA DEFINITION_BLOCK
   -- c) Check della Locazione
   --    ---------------------
 
-  HAS check_locazione_illuminata "È troppo buio.".           -- (svariati verbi)
+  HAS check_locazione_illuminata "?troppo buio.".           -- (svariati verbi)
 
 
 	-- d) checks guarding against actions directed at the hero him-/herself
@@ -749,7 +749,7 @@ END VERB.
 
 VERB drink
 	DOES ONLY
-		IF recipiente OF liq = null_vessel		
+		IF recipiente OF liq = recipiente_fittizio		
 			-- here, if the liquid is in no container, e.g.
 			-- the hero takes a sip of water from a river,
 			-- the action is allowed to succeed so that the hero 
@@ -1601,7 +1601,7 @@ END VERB.
 
 VERB sip
 	DOES ONLY	
-		IF recipiente OF liq = null_vessel		
+		IF recipiente OF liq = recipiente_fittizio		
 			-- here, if the liquid is in no container, e.g.
 			-- the hero takes a sip of water from a river,
 			-- the action is allowed to succeed.

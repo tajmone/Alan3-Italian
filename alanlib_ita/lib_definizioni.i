@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.26 (2018/07/20)
+-- "lib_definizioni.i" v0.2.27 (2018/07/20)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -108,7 +108,7 @@ ADD TO EVERY THING
      -- are not takeable. The same goes for all doors, windows, sounds, liquids
      -- that are not in containers, and actors.
 
-  HAS allowed {null_object}. --> @TODO!!                                        TRANSLATE!
+  HAS allowed { oggetto_fittizio }. --> @TODO!!                                        TRANSLATE!
     -- container objects only take what is allowed for them to take;
     -- this applies to verbs empty_in, pour_in, put_in and throw_in.
     -- "null_object" is a default dummy that can be ignored.
@@ -118,7 +118,7 @@ ADD TO EVERY THING
     -- instead of 'VERB examine DOES ONLY..."
     -- See the library manual for more info.
 
-  HAS matching_key null_key. --> @TODO!!                                        TRANSLATE!
+  HAS matching_key chiave_fittizia. --> @TODO!!                                        TRANSLATE!
       -- All lockable doors need a matching key to lock/unlock them.
       -- "null_key" is a default dummy that can be ignored. This attribute
       -- is here added to every thing instead of just doors, to enable
@@ -346,11 +346,11 @@ END ADD TO.
 -- Some null defaults defined that have been mentioned above:
 
 
-THE null_object ISA OBJECT
+THE oggetto_fittizio ISA OBJECT
 END THE.
 
 
-THE null_key ISA OBJECT
+THE chiave_fittizia ISA OBJECT
 END THE.
 
 --------------------------------------------------------------------------------
@@ -380,7 +380,7 @@ END ADD TO OBJECT.
 -- An attribute for keeping track of nested locations; used internally in the library (ignore).
 
 ADD TO EVERY LOCATION
-  HAS nested {nowhere}.
+  HAS nested { nowhere }.
 END ADD TO.
 
 --------------------------------------------------------------------------------

@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.2.6 (2018/07/19)
+-- "lib_classi.i" v0.2.7 (2018/07/20)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -237,14 +237,14 @@ EVERY clothing ISA OBJECT
       DO
         IF ac = hero
           THEN
-            IF THIS IN wearing OF hero AND THIS <> null_clothing
+            IF THIS IN wearing OF hero AND THIS <> indumento_fittizio
               THEN
                 IF THIS NOT IN worn
                   THEN LOCATE THIS IN worn.
                 END IF.
                 MAKE THIS indossato.
             END IF.
-        ELSIF THIS IN wearing OF ac AND THIS <> null_clothing
+        ELSIF THIS IN wearing OF ac AND THIS <> indumento_fittizio
             THEN
               IF THIS NOT IN ac
                 THEN
@@ -658,25 +658,25 @@ END EVENT.
 
 
 -- THE jacket ISA CLOTHING AT lobby
---  IS topcover 32.
+--   IS topcover 32.
 -- END THE.
 
 
 -- use IN to refer to containers:
 
 -- THE jeans ISA CLOTHING IN wardrobe
---  IS botcover 16.
+--   IS botcover 16.
 -- END THE.
 
 
 -- IN worn = worn by the player character (hero):
 
 -- THE hat ISA CLOTHING IN hero   -- declaring the initial location is optional
---  IS headcover 2.
+--   IS headcover 2.
 -- END THE.
 
 -- THE hero ISA ACTOR
---    IS wearing {hat}.
+--   IS wearing {hat}.
 -- END THE hero.
 
 
@@ -689,7 +689,7 @@ END EVENT.
 -- END THE.
 
 -- THE joe ISA ACTOR AT room1
-  -- IS wearing {sweater}.
+--   IS wearing {sweater}.
 -- END THE joe.
 
 -- Note that if the piece of clothing worn
@@ -716,11 +716,11 @@ END EVENT.
 -- is needed at the respective actor instance:
 
 -- THE hero ISA ACTOR
-     -- IS wearing {jeans, shirt, flipflops}.
+--   IS wearing {jeans, shirt, flipflops}.
 -- END THE hero.
 
 -- THE jill ISA ACTOR
-  -- IS wearing {dress}.
+--   IS wearing {dress}.
 -- END THE jill.
 
 
@@ -914,7 +914,7 @@ EVERY porta ISA OBJECT
   IS NOT takeable.
 
 
-  HAS otherside null_door.
+  HAS otherside porta_fittizia.
   -- The other side of the door in the next room will be automatically taken care of
   -- so that it shows correctly in any room or object descriptions.
   -- 'null_door' is a dummy default that can be ignored.
@@ -936,7 +936,7 @@ EVERY porta ISA OBJECT
     -- ensuring that if a door has an otherside attribute declared, this otherside will have the original
     -- door as its otherside in turn:
 
-    IF otherside OF THIS <> null_door
+    IF otherside OF THIS <> porta_fittizia
       THEN
         SET otherside OF otherside OF THIS TO THIS.
 
@@ -965,7 +965,7 @@ EVERY porta ISA OBJECT
 
     -- making the same matching_key open both sides of a door:
 
-    IF otherside OF THIS <> null_door AND matching_key OF THIS <> null_key
+    IF otherside OF THIS <> porta_fittizia AND matching_key OF THIS <> chiave_fittizia
       THEN SET matching_key OF otherside OF THIS TO matching_key OF THIS.
     END IF.
 
@@ -1055,7 +1055,7 @@ EVERY porta ISA OBJECT
 
   VERB close
     DOES
-      IF otherside OF THIS <> null_door
+      IF otherside OF THIS <> porta_fittizia
         THEN MAKE otherside OF THIS NOT open.
       END IF.
   END VERB.
@@ -1063,7 +1063,7 @@ EVERY porta ISA OBJECT
 
   VERB lock
     DOES
-      IF otherside OF THIS <> null_door
+      IF otherside OF THIS <> porta_fittizia
         THEN MAKE otherside OF THIS NOT open.
           MAKE otherside OF THIS locked.
       END IF.
@@ -1072,7 +1072,7 @@ EVERY porta ISA OBJECT
 
   VERB open
     DOES
-      IF otherside OF THIS <> null_door
+      IF otherside OF THIS <> porta_fittizia
         THEN MAKE otherside OF THIS open.
           MAKE otherside OF THIS NOT locked.
       END IF.
@@ -1081,7 +1081,7 @@ EVERY porta ISA OBJECT
 
   VERB unlock
     DOES
-      IF otherside OF THIS <> null_door
+      IF otherside OF THIS <> porta_fittizia
         THEN MAKE otherside OF THIS NOT locked.
       END IF.
   END VERB.
@@ -1092,7 +1092,7 @@ END EVERY.
 
 -- a default dummy, ignore:
 
-THE null_door ISA porta
+THE porta_fittizia ISA porta
 END THE.
 
 
@@ -1286,7 +1286,7 @@ EVERY liquid ISA OBJECT
     -- class behaves like a container.
 
 
-  HAS recipiente null_vessel.
+  HAS recipiente recipiente_fittizio.
 
     -- The 'vessel' attribute takes care that if a liquid is
     -- in a container, the verb 'take' will automatically take the
@@ -1344,7 +1344,7 @@ EVERY liquid ISA OBJECT
 
   VERB examine
     DOES ONLY
-      IF recipiente OF THIS <> null_vessel
+      IF recipiente OF THIS <> recipiente_fittizio
         THEN
           IF recipiente OF THIS IS open
             THEN "You notice nothing unusual about" SAY THE THIS.
@@ -1364,7 +1364,7 @@ EVERY liquid ISA OBJECT
 
   VERB look_in
     DOES ONLY
-      IF recipiente OF THIS <> null_vessel
+      IF recipiente OF THIS <> recipiente_fittizio
         THEN
           IF recipiente OF THIS IS open
             THEN "You see nothing special in" SAY THE THIS. "."
@@ -1386,7 +1386,7 @@ EVERY liquid ISA OBJECT
     CHECK recipiente OF THIS NOT IN hero
       ELSE SAY check_obj_not_in_hero2 OF my_game.
     DOES ONLY
-      IF recipiente OF THIS = null_vessel OR recipiente OF THIS IS NOT takeable
+      IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT takeable
         THEN "You can't carry" SAY THE THIS. "around in your bare hands."
       ELSE LOCATE recipiente OF THIS IN hero.
         "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nTaken."
@@ -1401,7 +1401,7 @@ EVERY liquid ISA OBJECT
       -- the above is triggered when the player types for example
       -- >take juice from bottle   -- (when the juice is in the bottle)
     DOES ONLY
-      IF recipiente OF THIS = null_vessel OR recipiente OF THIS IS NOT takeable
+      IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT takeable
         THEN "You can't carry" SAY THE THIS. "around in your bare hands."
       ELSE LOCATE recipiente OF THIS IN hero.
         "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nTaken."
@@ -1430,7 +1430,7 @@ EVERY liquid ISA OBJECT
       -- implicit taking:
       IF THIS NOT IN hero
         THEN
-          IF recipiente OF THIS = null_vessel OR recipiente OF THIS IS NOT takeable
+          IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT takeable
             THEN "You can't carry" SAY THE THIS. "around in your bare hands."
           ELSE LOCATE recipiente OF THIS IN hero.
             "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
@@ -1456,7 +1456,7 @@ EVERY liquid ISA OBJECT
       -- implicit taking:
       IF THIS NOT IN hero
         THEN
-          IF recipiente OF THIS = null_vessel OR recipiente OF THIS IS NOT takeable
+          IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT takeable
             THEN "You can't pour" SAY THE THIS. "anywhere since you are not
               carrying"
                 IF THIS IS NOT plurale
@@ -1471,7 +1471,7 @@ EVERY liquid ISA OBJECT
 
       IF THIS IN hero
         THEN LOCATE THIS AT hero.
-          SET recipiente OF THIS TO null_vessel.
+          SET recipiente OF THIS TO recipiente_fittizio.
           "You pour" SAY THE THIS.
             IF floor HERE
               THEN "on the floor."
@@ -1488,7 +1488,7 @@ EVERY liquid ISA OBJECT
         -- implicit taking:
         IF THIS NOT IN hero
           THEN
-            IF recipiente OF THIS = null_vessel
+            IF recipiente OF THIS = recipiente_fittizio
               THEN "You can't carry" SAY THE THIS. "around in your bare hands."
             ELSIF recipiente OF THIS IS NOT takeable
               THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
@@ -1505,7 +1505,7 @@ EVERY liquid ISA OBJECT
         END IF.
     WHEN cont
       DOES ONLY
-        IF recipiente OF THIS = null_vessel
+        IF recipiente OF THIS = recipiente_fittizio
           THEN
             "There's not much sense pouring" SAY THE obj. "into" SAY THE THIS. "."
           ELSE
@@ -1529,7 +1529,7 @@ EVERY liquid ISA OBJECT
         -- implicit taking:
         IF THIS NOT IN hero
           THEN
-            IF recipiente OF THIS = null_vessel
+            IF recipiente OF THIS = recipiente_fittizio
               THEN "You can't carry" SAY THE THIS. "around in your bare hands."
             ELSIF recipiente OF THIS IS NOT takeable
               THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
@@ -1545,11 +1545,11 @@ EVERY liquid ISA OBJECT
             IF surface = floor OR surface = ground
               THEN LOCATE THIS AT hero.
                 "You pour" SAY THE THIS. "on" SAY THE surface. "."
-                SET recipiente OF THIS TO null_vessel.
+                SET recipiente OF THIS TO recipiente_fittizio.
             ELSIF surface ISA SUPPORTER
               THEN LOCATE THIS IN surface.
                 "You pour" SAY THE THIS. "on" SAY THE surface. "."
-                  SET recipiente OF THIS TO null_vessel.
+                  SET recipiente OF THIS TO recipiente_fittizio.
             ELSE "It wouldn't be sensible to pour anything on" SAY THE surface.
             END IF.
         END IF.
@@ -1567,7 +1567,7 @@ EVERY liquid ISA OBJECT
   VERB put_in
     WHEN obj
       DOES ONLY
-        IF recipiente OF THIS = null_vessel
+        IF recipiente OF THIS = recipiente_fittizio
           THEN "You can't carry" SAY THE THIS. "around in your bare hands."
           ELSE
             IF recipiente OF THIS IS takeable
@@ -1575,7 +1575,7 @@ EVERY liquid ISA OBJECT
                 -- implicit taking:
                 IF THIS NOT IN hero
                   THEN
-                    IF recipiente OF THIS = null_vessel
+                    IF recipiente OF THIS = recipiente_fittizio
                       THEN "You can't carry" SAY THE THIS. "around in your bare hands."
                     ELSE LOCATE recipiente OF THIS IN hero.
                       "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
@@ -1591,7 +1591,7 @@ EVERY liquid ISA OBJECT
         END IF.
         WHEN cont
       DOES ONLY
-      IF recipiente OF THIS = null_vessel
+      IF recipiente OF THIS = recipiente_fittizio
         THEN
           "There's not much sense putting" SAY THE obj. "into" SAY THE THIS. "."
         ELSE
@@ -1619,7 +1619,7 @@ EVERY liquid ISA OBJECT
         -- implicit taking:
         IF THIS NOT IN hero
           THEN
-            IF recipiente OF THIS = null_vessel
+            IF recipiente OF THIS = recipiente_fittizio
               THEN "You can't carry" SAY THE THIS. "around in your bare hands."
             ELSIF recipiente OF THIS IS NOT takeable
               THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
@@ -1667,7 +1667,7 @@ END EVERY.
 -- 'null_vessel', it means that the liquid is not in any container; ignore.
 
 
-THE null_vessel ISA OBJECT
+THE recipiente_fittizio ISA OBJECT
   CONTAINER
 END THE.
 
@@ -1679,7 +1679,7 @@ END THE.
 
 EVENT check_vessel
   FOR EACH liq ISA LIQUID, DIRECTLY AT CURRENT LOCATION DO
-      SET recipiente OF liq TO null_vessel.
+      SET recipiente OF liq TO recipiente_fittizio.
   END FOR.
   SCHEDULE check_vessel AFTER 1.
 END EVENT.
@@ -1989,7 +1989,7 @@ ADD TO EVERY ACTOR
     IS NOT sdraiato. --> lying_down
     IS NOT named.
   -- = the actor's name is not known to the player
-  IS wearing {null_clothing}.
+  IS wearing { indumento_fittizio }.
   -- = the actor's clothing is not specified.
   -- "null_clothing" is a dummy default that can be ignored.
   IS NOT compliant.
@@ -2174,7 +2174,7 @@ ADD TO EVERY ACTOR
 
     -- excluding the default dummy clothing object from all actors; ignore.
 
-    EXCLUDE null_clothing FROM wearing OF THIS.
+    EXCLUDE indumento_fittizio FROM wearing OF THIS.
 
 
     -- all actors will obey this script from the start of the game:
@@ -2236,7 +2236,7 @@ END ADD TO.
 
 -- the default dummy clothing object; ignore
 
-THE null_clothing ISA CLOTHING
+THE indumento_fittizio ISA CLOTHING
 END THE.
 
 
