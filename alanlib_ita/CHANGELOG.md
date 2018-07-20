@@ -11,6 +11,11 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/20 \(3\)](#20180720-3)
+    - [Library Locations](#library-locations)
+        - [Rooms](#rooms)
+        - [Sites](#sites)
+        - [Other Locations ...](#other-locations-)
 - [2018/07/20 \(2\)](#20180720-2)
     - [Null Objects](#null-objects)
 - [2018/07/20 \(1\)](#20180720-1)
@@ -99,6 +104,69 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/20 (3)
+
+- [`lib_classi.i`][lib_classi] (v0.2.8)
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.28)
+- [`lib_luoghi.i`][lib_luoghi] (v0.2.3)
+- [`lib_verbi.i`][lib_verbi] (v0.2.25)
+
+
+## Library Locations
+
+This commit deals with the translation of some classes, instances and attributes of Library LOCATIONS.
+
+
+### Rooms
+
+|       EN       |        IT        |   Synonyms   |             Type            |
+|----------------|------------------|--------------|-----------------------------|
+| `ceiling`      | `soffitto`       |              | `room_object`               |
+| `ceiling_desc` | `desc_soffitto`  |              | `ROOM` attribute (_string_) |
+| `floor`        | `pavimento`      |              | `room_object`               |
+| `floor_desc`   | `desc_pavimento` |              | `ROOM` attribute (_string_) |
+| `room`         | `stanza`         |              | `LOCATION`                  |
+| `room_object`  | `oggetto_stanza` |              | `OBJECT`                    |
+| `wall`         | `pareti`         | parete, muro | `room_object`               |
+| `walls_desc`   | `desc_pareti`    |              | `ROOM` attribute (_string_) |
+
+
+### Sites
+
+|     EN     |      IT      | Synonyms |             Type            |
+|------------|--------------|----------|-----------------------------|
+| `sky`      | `cielo`      |          | `site_object`               |
+| `sky_desc` | `desc_cielo` |          | `SITE` attribute (_string_) |
+
+
+> __NOTE 1__ — I haven't yet decided how to translate `site`, therefore quite a few site-related identifiers are still left untranslated.
+
+<!-- TODO:
+| `site`        | `xxx`      |   | `LOCATION`                  |
+| `site_object` | `xxx`      |   | `OBJECT`                    |
+| `ground`      | `xxx`      |   | `site_object`               |
+| `ground_desc` | `desc_`    |   | `SITE` attribute (_string_) |
+-->
+
+
+### Other Locations ...
+
+|        EN       |      IT      |    Type    |
+|-----------------|--------------|------------|
+| `dark_location` | `luogo_buio` | `LOCATION` |
+| `indoor`        | `interno`    | `LOCATION` |
+| `outdoor`       | `esterno`    | `LOCATION` |
+
+> __NOTE 2__ — I haven't yet decided how to translate the `nowhere` location.
+
+<!-- TODO:
+| `nowhere`       | `xxx`     | `LOCATION`    |
+-->
+
+<!---------------------------------------------------------------------------->
+
+
 
 # 2018/07/20 (2)
 

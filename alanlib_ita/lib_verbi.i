@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.24 (2018/07/20)
+-- "lib_verbi.i" v0.2.25 (2018/07/20)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -3096,7 +3096,7 @@ ADD TO EVERY OBJECT
         THEN "There is nothing in" SAY THE obj. "."
         ELSE
           "You $v the contents of" SAY THE obj.
-            IF floor HERE
+            IF pavimento HERE
               THEN "on the floor."
               ELSE "on the ground."
             END IF.
@@ -3354,7 +3354,7 @@ ADD TO EVERY THING
         IF COUNT ISA OBJECT, DIRECTLY IN obj = 0
           THEN "There is nothing in" SAY THE obj. "."
           ELSE
-            IF surface = floor OR surface = ground
+            IF surface = pavimento OR surface = ground
               THEN EMPTY obj AT hero.
               ELSE EMPTY obj IN surface.
             END IF.
@@ -6333,7 +6333,7 @@ ADD TO EVERY OBJECT
         END IF.
         -- end of implicit taking.
 
-        IF surface = floor OR surface = ground
+        IF surface = pavimento OR surface = ground
           THEN LOCATE obj AT hero.
           ELSE LOCATE obj IN surface.
         END IF.
@@ -7994,7 +7994,7 @@ ADD TO EVERY OBJECT
         ELSE "end up"
       END IF.
 
-      IF floor HERE
+      IF pavimento HERE
         THEN "on the floor"
       ELSIF ground HERE
         THEN "on the ground"
@@ -8103,7 +8103,7 @@ ADD TO EVERY OBJECT
                   ELSE "end up"
                 END IF.
 
-                  IF floor HERE
+                  IF pavimento HERE
                   THEN "on the floor"
                 ELSIF ground HERE
                   THEN "on the ground"

@@ -1,4 +1,4 @@
--- "lib_luoghi.i" v0.2.2 (2018/07/18)
+-- "lib_luoghi.i" v0.2.3 (2018/07/20)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -120,7 +120,7 @@ SYNONYMS
 -- All ROOMS have a floor, walls and a ceiling. All SITES have a ground and a sky.
 -- Thus, you will be able to define for example
 --
--- THE kitchen ISA ROOM
+-- THE kitchen ISA stanza
 --
 -- and it will automatically have a floor, walls and a ceiling,
 --
@@ -143,36 +143,36 @@ SYNONYMS
 -- (We make use of ALAN's nested locations feature in the following definitions: )
 
 
-THE outdoor ISA LOCATION
-END THE outdoor.
+THE esterno ISA LOCATION
+END THE esterno.
 
 
-THE indoor ISA LOCATION
-END THE indoor.
+THE interno ISA LOCATION
+END THE interno.
 
 
-EVERY room ISA LOCATION AT indoor
-  HAS floor_desc "".    -- if these values are left unchanged,
-  HAS walls_desc "".    -- the descriptions of the walls, floor and
-  HAS ceiling_desc "".  -- ceiling will be the default "You notice nothing unusual
-END EVERY.              -- about the [object]."
+EVERY stanza ISA LOCATION AT interno
+  HAS desc_pavimento "".  -- if these values are left unchanged,
+  HAS desc_pareti    "".  -- the descriptions of the walls, floor and
+  HAS desc_soffitto  "".  -- ceiling will be the default "You notice nothing unusual
+END EVERY.                -- about the [object]."
 
 
-EVERY site ISA LOCATION AT outdoor
+EVERY site ISA LOCATION AT esterno
   HAS ground_desc "".
-  HAS sky_desc "".
+  HAS desc_cielo  "".
 END EVERY.
 
 
-EVERY room_object ISA OBJECT AT indoor
+EVERY oggetto_stanza ISA OBJECT AT interno
 END EVERY.
 
 
-EVERY site_object ISA OBJECT AT outdoor
+EVERY site_object ISA OBJECT AT esterno
 END EVERY.
 
 
-THE floor ISA room_object
+THE pavimento ISA oggetto_stanza
   IS NOT takeable.
   IS NOT movable.
   CONTAINER
@@ -212,13 +212,15 @@ THE floor ISA room_object
     DOES ONLY "That's not something you can $v things into."
   END VERB.
 
-
-
 END THE.
 
 
-THE wall ISA room_object
-  NAME wall NAME walls
+
+THE pareti ISA oggetto_stanza
+  HAS articolo "le".
+  NAME pareti.
+  NAME parete.
+  NAME muro.
   IS NOT takeable.
   IS NOT movable.
   DESCRIPTION ""
@@ -226,7 +228,7 @@ END THE.
 
 
 
-THE ceiling ISA room_object
+THE soffitto ISA oggetto_stanza
   IS NOT takeable.
   IS NOT raggiungibile.
   DESCRIPTION ""
@@ -281,7 +283,7 @@ END THE.
 
 
 
-THE sky ISA site_object
+THE cielo ISA site_object
   IS NOT takeable.
   IS distante.
   DESCRIPTION ""
@@ -291,11 +293,11 @@ END THE.
 -- We still declare some shared behaviour for all indoor and outdoor objects:
 
 
-ADD TO EVERY room_object
+ADD TO EVERY oggetto_stanza
 
   VERB put_against
     WHEN bulk
-      CHECK THIS = wall
+      CHECK THIS = pareti
         ELSE "That's not possible."
   END VERB.
 
@@ -331,7 +333,7 @@ END ADD TO.
 -- THE my_game ISA DEFINITION_BLOCK
 -- ...
 -- VERB examine
---    CHECK obj <> wall
+--    CHECK obj <> pareti
 --       ELSE
 --          IF hero AT kitchen
 --              THEN "The walls are lined with shelves."
@@ -361,7 +363,7 @@ ADD TO EVERY LOCATION
 END ADD TO.
 
 
-EVERY dark_location ISA LOCATION
+EVERY luogo_buio ISA LOCATION
   IS NOT lit.
 
   ENTERED
@@ -387,7 +389,7 @@ EVERY dark_location ISA LOCATION
     CHECK THIS IS lit
       ELSE SAY dark_loc_desc OF my_game.
 
-END EVERY dark_location.
+END EVERY luogo_buio.
 
 
 WHEN location OF hero IS NOT lit
@@ -401,7 +403,7 @@ EVENT light_on
 END EVENT.
 
 
-WHEN location OF hero ISA dark_location
+WHEN location OF hero ISA luogo_buio
   AND location OF hero IS lit
   AND COUNT ISA lightsource, IS lit, AT hero = 0
 THEN MAKE location OF hero NOT lit.
@@ -417,7 +419,7 @@ END EVENT.
 -- lightsource with him:
 
 EVENT check_darkness
-    FOR EACH dl ISA dark_location, IS lit
+    FOR EACH dl ISA luogo_buio, IS lit
     DO
       IF COUNT ISA LIGHTSOURCE, AT dl = 0
         THEN MAKE dl NOT lit.
@@ -433,7 +435,7 @@ END EVENT.
 -- To define a dark location, use a formulation like the following:
 
 
--- THE basement ISA dark_location
+-- THE basement ISA luogo_buio
 --  EXIT up TO kitchen.
 -- ...
 -- END THE.
@@ -446,7 +448,7 @@ END EVENT.
 -- If you add a description to a dark_location, this description will be shown only
 -- if/when the location is lit by any means:
 
--- THE basement ISA dark_location
+-- THE basement ISA luogo_buio
 --    DESCRIPTION "Cobwebs and old junk are the only things you see here."
 --  EXIT up TO kitchen.
 -- END THE.

@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione 0.2.6 (2018/07/19)
+--  versione 0.2.7 (2018/07/20)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -235,7 +235,7 @@ END THE cigliege.
 ----- Atrio
 
 -- =============================================================================
-THE ccAtrio IsA room.
+THE ccAtrio IsA stanza.
   NAME 'Atrio del Centro Commerciale'
   DESCRIPTION "Sei circondato da negozi."
   EXIT sud   TO pzzaIF.
@@ -250,7 +250,7 @@ END THE ccAtrio.
 -- =============================================================================
 -- L'Emporio Alani è il posto giusto per testare tutto quello che concerne il
 -- vestiario.
-THE ccEmporio IsA room.
+THE ccEmporio IsA stanza.
   NAME 'Emporio Alani'.
   EXIT est to ccAtrio.
 END THE ccEmporio.

@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.2.7 (2018/07/20)
+-- "lib_classi.i" v0.2.8 (2018/07/20)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1473,7 +1473,7 @@ EVERY liquid ISA OBJECT
         THEN LOCATE THIS AT hero.
           SET recipiente OF THIS TO recipiente_fittizio.
           "You pour" SAY THE THIS.
-            IF floor HERE
+            IF pavimento HERE
               THEN "on the floor."
               ELSE "on the ground."
             END IF.
@@ -1542,7 +1542,7 @@ EVERY liquid ISA OBJECT
         IF THIS IN hero
           -- i.e. if the implicit taking was successful
           THEN
-            IF surface = floor OR surface = ground
+            IF surface = pavimento OR surface = ground
               THEN LOCATE THIS AT hero.
                 "You pour" SAY THE THIS. "on" SAY THE surface. "."
                 SET recipiente OF THIS TO recipiente_fittizio.

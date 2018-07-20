@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.27 (2018/07/20)
+-- "lib_definizioni.i" v0.2.28 (2018/07/20)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -978,14 +978,14 @@ EVERY DEFINITION_BLOCK ISA LOCATION
             END IF.
         END FOR.
 
-        FOR EACH r1 ISA ROOM
+        FOR EACH r1 ISA stanza
           DO
-            LOCATE r1 AT indoor.
+            LOCATE r1 AT interno.
         END FOR.
 
         FOR EACH s1 ISA SITE
           DO
-            LOCATE s1 AT outdoor.
+            LOCATE s1 AT esterno.
         END FOR.
 
         FOR EACH l ISA LOCATION

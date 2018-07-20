@@ -1,4 +1,4 @@
--- "_mygame_import.i" v0.2.6 (2018/07/20)
+-- "_mygame_import.i" v0.2.7 (2018/07/20)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -831,7 +831,7 @@ VERB 'empty'
 			THEN "There is nothing in" SAY THE obj. "."
 			ELSE
 				"You $v the contents of" SAY THE obj.
-					IF floor HERE
+					IF pavimento HERE
 						THEN "on the floor."
 						ELSE "on the ground."
 					END IF.
@@ -873,7 +873,7 @@ VERB empty_on, pour_on
 		IF COUNT ISA OBJECT, DIRECTLY IN obj = 0
 			THEN "There is nothing in" SAY THE obj. "."
 			ELSE 
-				IF surface = floor OR surface = ground
+				IF surface = pavimento OR surface = ground
 					THEN EMPTY obj AT hero.
 					ELSE EMPTY obj IN surface.
 				END IF.
@@ -1392,7 +1392,7 @@ VERB put_on
 	DOES ONLY
 		IF obj IN hero
 			THEN
-				IF surface = floor OR surface = ground
+				IF surface = pavimento OR surface = ground
 					THEN LOCATE obj AT hero.
 						"You put" SAY THE obj. "on" SAY THE surface. "."
 					ELSE LOCATE obj IN surface.
@@ -1873,7 +1873,7 @@ VERB throw
 			ELSE "end up"
 		END IF.
 						
-		IF floor HERE
+		IF pavimento HERE
 			THEN "on the floor"
 		ELSIF ground HERE 
 			THEN "on the ground"
@@ -1918,7 +1918,7 @@ VERB throw_at
 									ELSE "end up"
 								END IF.
 
-		  						IF floor HERE
+		  						IF pavimento HERE
 									THEN "on the floor"
 								ELSIF ground HERE
 									THEN "on the ground"
