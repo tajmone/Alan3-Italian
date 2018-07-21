@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.28 (2018/07/21)
+-- "lib_verbi.i" v0.2.29 (2018/07/21)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -29,7 +29,9 @@
 --| compra             | acquista                     | compra (item)            |   | 1 |   |
 --| dormi              | riposa                       | dormi                    |   | 0 |   |
 --| dai_a              | porgi, offri                 | dai (ogg) a (recipient)  |   | 2 | x |
+--| esamina            | guarda, descrivi, osserva, X | esamina (ogg)            |   | 1 | x |
 --| inventario         | inv                          | inventario               | x | 0 |   |
+--| leggi              |                              | leggi (ogg)              |   | 1 | x |
 --| mangia             |                              | mangia (cibo)            |   | 1 |   |
 --| prega              |                              | prega                    |   | 0 |   |
 --| prendi             | afferra, raccogli, trasporta | prendi (ogg)             |   | 1 | x |
@@ -101,7 +103,7 @@
 ----- empty_in                                             empty (obj) in (cont)               2       x
 ----- empty_on                                             empty (obj) on (surface)            2       x
 ----- enter                                                enter (obj)                         1
------ examine     (+ check, inspect, observe, x)           examine (obj)                       1       x
+----> examine     (+ check, inspect, observe, x)           examine (obj)                       1       x
 ----- exit                                                 exit (obj)                          1
 ----- extinguish  (+ put out, quench)                      extinguish (obj)                    1       x
 ----- fill                                                 fill (cont)                         1
@@ -166,7 +168,7 @@
 ----- put_near                                             put (obj) near (bulk)               2       x
 ----- put_on                                               put (obj) on (surface)              2       x
 ----- put_under                                            put (obj) under (bulk)              2       x
------ read                                                 read (obj)                          1       x
+----> read                                                 read (obj)                          1       x
 ----- remove                                               remove (obj)                        1       x
 ----> restart                                              restart                             0
 ----> restore                                              restore                             0
@@ -881,6 +883,95 @@ END VERB.
 
 
 
+-- ==============================================================
+
+
+----- @ESAMINA --> @EXAMINE (+ look at)
+
+
+-- ==============================================================
+
+-- @TODO: EXAMINE con oggetti leggibili si comporta come READ, ma vorrei cambiare
+--        questo. Mi piacrebbe che, p.es., un libro fosse sia esaminabile che
+--        leggibile, dove il primo fornisce una descrizione del libro (es: un
+--        antico libro di pelle), mentre il secondo legge il testo ivi
+--        contenuto. Inoltre, con alcuni oggetti (grossi libri), sarebbe così
+--        possibile fare in modo che leggendo più volte di seguito si ottenga
+--        il testo di pagine diverse, per creare l'illusione di una lettura
+--        vera e proprio (ovviamente, vi è un limite dopo il quale la risposta
+--        sarebbe "Sei stufo di leggere", o simile).
+
+
+-- SYNTAX examine = examine (obj)
+--        examine = 'look' 'at' (obj).
+--        examine = 'look' (obj).  -- note that this formulation is allowed, too
+-- SYNONYMS
+--   'check', inspect, observe, x = examine.
+
+SYNTAX esamina = esamina (obj)
+  WHERE obj ISA THING
+    ELSE
+      IF obj IS NOT plurale
+        THEN SAY illegal_parameter_examine_sg OF my_game.
+        ELSE SAY illegal_parameter_examine_pl OF my_game.
+      END IF.
+
+       esamina = 'guarda' (obj).
+
+SYNONYMS
+  descrivi, osserva, X = esamina.
+
+
+ADD TO EVERY THING
+  VERB esamina
+    CHECK my_game CAN esaminare
+      ELSE SAY azione_bloccata OF my_game.
+        AND obj IS esaminabile
+          ELSE
+        IF obj IS NOT plurale
+          THEN SAY check_obj_suitable_examine_sg OF my_game.
+          ELSE SAY check_obj_suitable_examine_pl OF my_game.
+        END IF.
+        AND CURRENT LOCATION IS lit
+      ELSE SAY check_locazione_illuminata OF my_game.
+    AND obj IS NOT scenario
+      ELSE
+        IF obj IS NOT plurale
+          THEN SAY check_obj_not_scenery_sg OF my_game. --> "$+1 non è importante ai fini del gioco."
+          ELSE SAY check_obj_not_scenery_pl OF my_game. --> "$+1 non sono importanti ai fini del gioco."
+        END IF.
+    DOES
+      IF obj IS leggibile
+        -- for readable objects, 'examine' behaves just as 'read'
+        THEN
+          IF testo OF obj = ""
+         -- THEN "There is nothing written on" SAY THE obj. "."
+            THEN "Esamini" SAY THE obj. ", ma non vi trovi nulla da leggere."
+            -- THEN "Non c'è nulla da leggere" SAY prep_SU of obj. SAY obj. "."
+            ELSE "Leggi" SAY THE obj. "."
+              IF obj IS NOT plurale
+                THEN "Dice"
+                ELSE "Dicono"
+              END IF.
+              """$$" SAY testo OF obj. "$$""."
+          END IF.
+        ELSE
+          IF ex OF obj <> ""
+            THEN SAY ex OF obj.
+          ELSIF obj = hero
+         -- THEN "You notice nothing unusual about yourself."
+            THEN "Non noti niente di insolito in te stesso."
+            ELSE "Esamini" SAY THE obj. ", ma non noti niente di speciale."
+         -- ELSE "You notice nothing unusual about" SAY THE obj. "."
+            --#i7: "Non [trovi] nulla di particolare [inp the noun]."
+            --#i6: "Esamini ", (the) x1, ", ma non noti niente di speciale."
+          END IF.
+      END IF.
+  END VERB.
+END ADD TO.
+
+
+
 
 -- ==============================================================
 
@@ -921,6 +1012,60 @@ META VERB inventario
     END IF.
 
 END VERB.
+
+
+
+-- ==============================================================
+
+
+----- @LEGGI --> @READ
+
+
+-- ==============================================================
+-- SYNTAX read = read (obj)
+
+
+SYNTAX leggi = leggi (obj)
+  WHERE obj ISA OBJECT
+      ELSE
+      IF obj IS NOT plurale
+        THEN SAY illegal_parameter_sg OF my_game.
+        ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+
+
+ADD TO EVERY OBJECT
+    VERB leggi
+    CHECK my_game CAN leggere
+      ELSE SAY azione_bloccata OF my_game.
+    AND obj IS leggibile
+          ELSE
+        IF obj IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY ogg1_inadatto_sg OF my_game. "leggere."
+          ELSE SAY ogg1_inadatto_pl OF my_game. "leggere."
+        END IF.
+    AND CURRENT LOCATION IS lit
+      ELSE SAY check_locazione_illuminata OF my_game.
+    AND obj IS NOT distante
+      ELSE
+        IF obj IS NOT plurale
+          THEN SAY check_obj_not_distant_sg OF my_game.
+          ELSE SAY check_obj_not_distant_pl OF my_game.
+        END IF.
+    DOES
+      IF testo OF obj = ""
+     -- THEN "There is nothing written on" SAY THE obj. "."
+        THEN "Non c'è nulla da leggere" SAY prep_SU of obj. SAY obj. "."
+          ELSE "Leggi" SAY THE obj. "."
+            IF obj IS NOT plurale
+              THEN "Dice"
+              ELSE "Dicono"
+          END IF.
+          """$$" SAY testo OF obj. "$$""."
+      END IF.
+    END VERB.
+END ADD TO.
 
 
 -- ==============================================================
@@ -3418,82 +3563,6 @@ SYNTAX enter_error = enter.
 VERB enter_error
   DOES "You must state what you want to enter."
 END VERB.
-
-
-
--- ==============================================================
-
-
------ EXAMINE (+ look at)
-
-
--- ==============================================================
-
-
-SYNTAX examine = examine (obj)
-  WHERE obj ISA THING
-    ELSE
-      IF obj IS NOT plurale
-        THEN SAY illegal_parameter_examine_sg OF my_game.
-        ELSE SAY illegal_parameter_examine_pl OF my_game.
-      END IF.
-
-
-  examine = 'look' 'at' (obj).
-
-  examine = 'look' (obj).
-    -- note that this formulation is allowed, too
-
-
-
-SYNONYMS
-  'check', inspect, observe, x = examine.
-
-
-ADD TO EVERY THING
-  VERB examine
-    CHECK my_game CAN esaminare
-      ELSE SAY azione_bloccata OF my_game.
-        AND obj IS esaminabile
-          ELSE
-        IF obj IS NOT plurale
-          THEN SAY check_obj_suitable_examine_sg OF my_game.
-          ELSE SAY check_obj_suitable_examine_pl OF my_game.
-        END IF.
-        AND CURRENT LOCATION IS lit
-      ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS NOT scenario
-      ELSE
-        IF obj IS NOT plurale
-          THEN SAY check_obj_not_scenery_sg OF my_game. --> "$+1 non è importante ai fini del gioco."
-          ELSE SAY check_obj_not_scenery_pl OF my_game. --> "$+1 non sono importanti ai fini del gioco."
-        END IF.
-        DOES
-      IF obj IS leggibile
-      -- for readable objects, 'examine' behaves just as 'read'
-        THEN
-          IF testo OF obj = ""
-            THEN "There is nothing written on" SAY THE obj. "."
-            ELSE "You read" SAY THE obj. "."
-              IF obj IS NOT plurale
-                THEN "It says"
-                ELSE "They say"
-              END IF.
-              """$$" SAY testo OF obj. "$$""."
-          END IF.
-            ELSE
-          IF ex OF obj <> ""
-            THEN SAY ex OF obj.
-          ELSIF obj = hero
-            THEN "You notice nothing unusual about yourself."
-            --#i7: "Non [trovi] nulla di particolare [inp the noun]."
-            --#i6: "Esamini ", (the) x1, ", ma non noti niente di speciale."
-            ELSE "Esamini" SAY THE obj. ", ma non noti niente di speciale."
-            -- ELSE "You notice nothing unusual about" SAY THE obj. "."
-          END IF.
-      END IF.
-  END VERB.
-END ADD TO.
 
 
 
@@ -6358,60 +6427,6 @@ END ADD TO.
 ----- The syntax for 'put out' has been declared in the 'extinguish' verb.
 
 
-
-
-
--- ==============================================================
-
-
------ READ
-
-
--- ==============================================================
-
-
-SYNTAX read = read (obj)
-  WHERE obj ISA OBJECT
-      ELSE
-      IF obj IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
-
-
-ADD TO EVERY OBJECT
-    VERB read
-    CHECK my_game CAN leggere
-      ELSE SAY azione_bloccata OF my_game.
-    AND obj IS leggibile
-          ELSE
-        IF obj IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF my_game. "leggere."
-          ELSE SAY ogg1_inadatto_pl OF my_game. "leggere."
-        END IF.
-    AND CURRENT LOCATION IS lit
-      ELSE SAY check_locazione_illuminata OF my_game.
-    AND obj IS NOT distante
-      ELSE
-        IF obj IS NOT plurale
-          THEN SAY check_obj_not_distant_sg OF my_game.
-          ELSE SAY check_obj_not_distant_pl OF my_game.
-        END IF.
-    DOES
-      IF testo OF obj = ""
-        THEN "There's nothing written on" SAY THE obj. "."
-        ELSE "You read" SAY THE obj. "."
-
-          IF obj IS NOT plurale
-            THEN "It says"
-            ELSE "They say"
-          END IF.
-
-          """$$" SAY testo OF obj. "$$""."
-      END IF.
-    END VERB.
-END ADD TO.
 
 
 

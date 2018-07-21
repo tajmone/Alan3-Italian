@@ -11,6 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/21 \(5\)](#20180721-5)
+    - [Verb: `examine`](#verb-examine)
+    - [Verb: `read`](#verb-read)
 - [2018/07/21 \(4\)](#20180721-4)
 - [2018/07/21 \(3\)](#20180721-3)
 - [2018/07/21 \(2\)](#20180721-2)
@@ -108,6 +111,36 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/21 (5)
+
+- [`lib_verbi.i`][lib_verbi] (v0.2.29)
+
+
+## Verb: `examine`
+
+Translated verb `esamina` (_examine_):
+
+    esamina (obj)
+    guarda (obj)
+
+with synonyms:
+
+    esamina = descrivi, osserva, X
+
+
+## Verb: `read`
+
+Translated verb `leggi` (_read_):
+
+    leggi (obj)
+
+with no synonyms.
+
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/21 (4)
 

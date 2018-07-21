@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione 0.2.8 (2018/07/21)
+--  versione 0.2.9 (2018/07/21)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -78,10 +78,10 @@ THE targhetta IsA object AT pzzaIF.
     DOES ONLY --| tenta di prendera la targhetta...
       "La targhetta è saldamente ancorata al piedistallo."
   END VERB prendi.
-  VERB examine, read --| Tracciamo se la targhetta è già stata letta, tramite un
-    DOES AFTER       --| attributo booleano. Ora il giocatore ne conosce il nome.
+  VERB esamina, leggi --| Tracciamo se la targhetta è già stata letta, tramite un
+    DOES AFTER        --| attributo booleano. Ora il giocatore ne conosce il nome.
       MAKE THIS già_letta.
-  END VERB examine.
+  END VERB esamina.
 END THE targhetta.
 
 --==============================================================================
@@ -99,6 +99,25 @@ THE pozzanghera IsA liquido AT pzzaIF.
   HAS articolo "la".
   IS  potabile.
 END THE pozzanghera.
+
+--==============================================================================
+-- Foglio Bianco
+--==============================================================================
+-- Per testare verbo leggi.
+THE foglio_bianco IsA OBJECT AT pzzaIF.
+  NAME foglio.
+  NAME foglio bianco.
+  MENTIONED "foglio bianco"
+  IS leggibile.
+END THE foglio_bianco.
+
+--==============================================================================
+-- Oggetto Senza Descrizione
+--==============================================================================
+-- Per testare la risposta di esamina quando 'ex' non è definito.
+THE sasso IsA OBJECT AT pzzaIF.
+  
+END THE sasso.
 
 
 -- =============================================================================
