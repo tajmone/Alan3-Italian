@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.27 (2018/07/21)
+-- "lib_verbi.i" v0.2.28 (2018/07/21)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -4974,9 +4974,9 @@ ADD TO EVERY OBJECT
           ELSE SAY check_obj_not_locked_pl OF my_game.
       END IF.
   DOES
-    IF matching_key OF obj IN hero
+    IF chiave_abbinata OF obj IN hero
       THEN MAKE obj bloccato.
-        "(with" SAY THE matching_key OF obj. "$$)$n"
+        "(with" SAY THE chiave_abbinata OF obj. "$$)$n"
         "You"
 
         IF obj IS aperto
@@ -5062,7 +5062,7 @@ ADD TO EVERY OBJECT
           END IF.
           AND key IN hero
         ELSE SAY check_obj2_in_hero OF my_game.
-          AND key = matching_key OF obj
+          AND key = chiave_abbinata OF obj
         ELSE SAY check_door_matching_key OF my_game.
          DOES
         MAKE obj bloccato. "You"
@@ -5498,10 +5498,10 @@ ADD TO EVERY OBJECT
         DOES
       IF obj IS bloccato
         THEN
-          IF matching_key OF obj IN hero
+          IF chiave_abbinata OF obj IN hero
             THEN MAKE obj NOT bloccato.
               MAKE obj aperto.
-              "(with" SAY THE matching_key OF obj. "$$)
+              "(with" SAY THE chiave_abbinata OF obj. "$$)
               $nYou unlock and open" SAY THE obj. "."
             ELSE SAY THE obj. "appears to be locked."
           END IF.
@@ -5587,7 +5587,7 @@ ADD TO EVERY OBJECT
           DOES
         IF obj IS bloccato
           THEN
-            IF instr = matching_key OF obj
+            IF instr = chiave_abbinata OF obj
               THEN MAKE obj NOT bloccato.
                 MAKE obj aperto.
                 "You unlock  and open" SAY THE obj.
@@ -8788,9 +8788,9 @@ ADD TO EVERY OBJECT
           ELSE SAY check_obj_locked_pl OF my_game.
         END IF.
     DOES
-      IF matching_key OF obj IN hero
+      IF chiave_abbinata OF obj IN hero
         THEN MAKE obj NOT bloccato.
-          "(with" SAY THE matching_key OF obj. "$$)$n"
+          "(with" SAY THE chiave_abbinata OF obj. "$$)$n"
           "You unlock" SAY THE obj. "."
             ELSE "You don't have the key that unlocks" SAY THE obj. "."
       END IF.
@@ -8864,7 +8864,7 @@ ADD TO EVERY OBJECT
             THEN SAY check_obj_locked_sg OF my_game.
             ELSE SAY check_obj_locked_pl OF my_game.
           END IF.
-      AND key = matching_key OF obj
+      AND key = chiave_abbinata OF obj
         ELSE SAY check_door_matching_key OF my_game.
         DOES
         MAKE obj NOT bloccato.

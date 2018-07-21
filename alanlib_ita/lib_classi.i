@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.2.10 (2018/07/21)
+-- "lib_classi.i" v0.2.11 (2018/07/21)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -914,7 +914,7 @@ EVERY porta ISA OBJECT
   IS NOT prendibile.
 
 
-  HAS otherside porta_fittizia.
+  HAS altro_lato  porta_fittizia.
   -- The other side of the door in the next room will be automatically taken care of
   -- so that it shows correctly in any room or object descriptions.
   -- 'null_door' is a dummy default that can be ignored.
@@ -936,28 +936,28 @@ EVERY porta ISA OBJECT
     -- ensuring that if a door has an otherside attribute declared, this otherside will have the original
     -- door as its otherside in turn:
 
-    IF otherside OF THIS <> porta_fittizia
+    IF altro_lato OF THIS <> porta_fittizia
       THEN
-        SET otherside OF otherside OF THIS TO THIS.
+        SET altro_lato OF altro_lato OF THIS TO THIS.
 
 
       -- next, ensuring that some attributes are correctly assigned to the otherside of the door, as well.
       -- Only some non-default cases need to be addressed here:
 
         IF THIS IS NOT apribile
-          THEN MAKE otherside OF THIS NOT apribile.
+          THEN MAKE altro_lato OF THIS NOT apribile.
         END IF.
 
         IF THIS IS aperto
-          THEN MAKE otherside OF THIS aperto.
+          THEN MAKE altro_lato OF THIS aperto.
         END IF.
 
         IF THIS IS bloccabile
-          THEN MAKE otherside OF THIS bloccabile.
+          THEN MAKE altro_lato OF THIS bloccabile.
         END IF.
 
         IF THIS IS bloccato
-          THEN MAKE otherside OF THIS bloccato.
+          THEN MAKE altro_lato OF THIS bloccato.
         END IF.
 
     END IF.
@@ -965,8 +965,8 @@ EVERY porta ISA OBJECT
 
     -- making the same matching_key open both sides of a door:
 
-    IF otherside OF THIS <> porta_fittizia AND matching_key OF THIS <> chiave_fittizia
-      THEN SET matching_key OF otherside OF THIS TO matching_key OF THIS.
+    IF altro_lato OF THIS <> porta_fittizia AND chiave_abbinata OF THIS <> chiave_fittizia
+      THEN SET chiave_abbinata OF altro_lato OF THIS TO chiave_abbinata OF THIS.
     END IF.
 
 
@@ -975,9 +975,9 @@ EVERY porta ISA OBJECT
     -- for example
 
     -- THE attic_door ISA DOOR
-      -- HAS matching_key brass_key.
-      -- ...
-    --   END THE.
+    --   HAS matching_key brass_key.
+    --   ...
+    -- END THE.
 
     -- THE brass_key ISA OBJECT AT basement
     -- END THE.
@@ -1055,34 +1055,34 @@ EVERY porta ISA OBJECT
 
   VERB close
     DOES
-      IF otherside OF THIS <> porta_fittizia
-        THEN MAKE otherside OF THIS NOT aperto.
+      IF altro_lato OF THIS <> porta_fittizia
+        THEN MAKE altro_lato OF THIS NOT aperto.
       END IF.
   END VERB.
 
 
   VERB lock
     DOES
-      IF otherside OF THIS <> porta_fittizia
-        THEN MAKE otherside OF THIS NOT aperto.
-          MAKE otherside OF THIS bloccato.
+      IF altro_lato OF THIS <> porta_fittizia
+        THEN MAKE altro_lato OF THIS NOT aperto.
+          MAKE altro_lato OF THIS bloccato.
       END IF.
   END VERB.
 
 
   VERB open
     DOES
-      IF otherside OF THIS <> porta_fittizia
-        THEN MAKE otherside OF THIS aperto.
-          MAKE otherside OF THIS NOT bloccato.
+      IF altro_lato OF THIS <> porta_fittizia
+        THEN MAKE altro_lato OF THIS aperto.
+          MAKE altro_lato OF THIS NOT bloccato.
       END IF.
   END VERB.
 
 
   VERB unlock
     DOES
-      IF otherside OF THIS <> porta_fittizia
-        THEN MAKE otherside OF THIS NOT bloccato.
+      IF altro_lato OF THIS <> porta_fittizia
+        THEN MAKE altro_lato OF THIS NOT bloccato.
       END IF.
   END VERB.
 

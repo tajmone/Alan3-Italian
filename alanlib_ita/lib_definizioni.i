@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.30 (2018/07/21)
+-- "lib_definizioni.i" v0.2.31 (2018/07/21)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -118,7 +118,7 @@ ADD TO EVERY THING
     -- instead of 'VERB examine DOES ONLY..."
     -- See the library manual for more info.
 
-  HAS matching_key  chiave_fittizia. --> @TODO!!                                TRANSLATE!
+  HAS chiave_abbinata  chiave_fittizia.
       -- All lockable doors need a matching key to lock/unlock them.
       -- "null_key" is a default dummy that can be ignored. This attribute
       -- is here added to every thing instead of just doors, to enable

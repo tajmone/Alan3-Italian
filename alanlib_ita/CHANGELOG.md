@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/21 \(3\)](#20180721-3)
 - [2018/07/21 \(2\)](#20180721-2)
 - [2018/07/21 \(1\)](#20180721-1)
 - [2018/07/20 \(3\)](#20180720-3)
@@ -107,6 +108,25 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
+# 2018/07/21 (3)
+
+- [`lib_classi.i`][lib_classi] (v0.2.11)
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.31)
+- [`lib_verbi.i`][lib_verbi] (v0.2.28)
+
+
+Translated library attributes:
+
+|    English     |      Italian      |      Class       |
+|----------------|-------------------|------------------|
+| `otherside`    | `altro_lato`      | `DOOR` » `PORTA` |
+| `matching_key` | `chiave_abbinata` | `THING`          |
+
+
+
+<!---------------------------------------------------------------------------->
+
+
 # 2018/07/21 (2)
 
 - [`lib_classi.i`][lib_classi] (v0.2.10)
@@ -118,11 +138,11 @@ Translated library attributes:
 
 |     English     |     Italian     |     Class     |
 |-----------------|-----------------|---------------|
-| `open`          | `aperto`        | `THING`       |
+| `fireable` (IS) | `sparare` (CAN) | `THING`       |
 | `lockable`      | `bloccabile`    | `THING`       |
 | `locked`        | `bloccato`      | `THING`       |
-| `fireable` (IS) | `sparare` (CAN) | `THING`       |
 | `natural`       | `naturale`      | `lightsource` |
+| `open`          | `aperto`        | `THING`       |
 
 
 

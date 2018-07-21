@@ -1,4 +1,4 @@
--- "_mygame_import.i" v0.2.9 (2018/07/21)
+-- "_mygame_import.i" v0.2.10 (2018/07/21)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1224,9 +1224,9 @@ END VERB.
 
 VERB lock
 	DOES ONLY
-		IF matching_key OF obj IN hero
+		IF chiave_abbinata OF obj IN hero
 			THEN MAKE obj bloccato.
-				"(with" SAY THE matching_key OF obj. "$$)$n"
+				"(with" SAY THE chiave_abbinata OF obj. "$$)$n"
 				"You" 
 
 				IF obj IS aperto
@@ -2066,9 +2066,9 @@ END VERB.
 
 VERB unlock
 	DOES ONLY
-		IF matching_key OF obj IN hero
+		IF chiave_abbinata OF obj IN hero
 			THEN MAKE obj NOT bloccato.
-				"(with" SAY THE matching_key OF obj. "$$)$n"
+				"(with" SAY THE chiave_abbinata OF obj. "$$)$n"
 				"You unlock" SAY THE obj. "."
 	    		ELSE "You don't have the key that unlocks" SAY THE obj. "."
 		END IF.
