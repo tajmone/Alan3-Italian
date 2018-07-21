@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.2.11 (2018/07/21)
+-- "lib_classi.i" v0.2.12 (2018/07/21)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -6,18 +6,10 @@
 -- ALAN Standard Library v2.1
 -- "Classes" (original file name: 'lib_classes.i')
 --------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
-
--- This library file defines various object and actor classes.
--- Many of these classes are frequently  used in verb definitions in 'lib_verbi.i'
--- so they should be edited or removed with caution. However, to ease things up,
--- it is mentioned at the beginning of every class below if and where the class
--- is cross-referenced in the other library files.
-
-
----- First, we define the default description for scenery objects
-    -- = no description at all
-
+-- Anzitutto, definiamo la descrizione predefinita per gli oggetti di tipo
+-- scenario (ossia, nessuna descrizione).
 
 ADD TO EVERY OBJECT
 
@@ -27,19 +19,48 @@ ADD TO EVERY OBJECT
 
 END ADD.
 
+--+============================================================================+
+--|\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//////////////////////////////////////|
+--++--------------------------------------------------------------------------++
+--||                                                                          ||
+--||                           Indice dei Contenuti                           ||
+--||                                                                          ||
+--++--------------------------------------------------------------------------++
+--|//////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|
+--+============================================================================+
+--|| § 0 - Panoramica del Modulo
+--|| § 0.1 - Elenco e descrizione delle classi
+--++===========================================================================+
+
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- § 0 - Panoramica del Modulo
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+--| Questo modulo della libreria definisce varie classi di oggetti e attori.
+--| Siccome molte di queste classi ricorrono spesso nelle definizioni dei verbi
+--| nel modulo 'lib_verbi.i', si consiglia di procedere con cautela prima di
+--| modificarle o cancellarle. Per semplificare tale compito, all'inizio di
+--| ciascuna classe viene riportato se e dove venga fatto riferimento ad essa
+--| negli altri moduli della libreria.
 
 
 
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 0.1 - Elenco e descrizione delle classi
+--------------------------------------------------------------------------------
+--==============================================================================
 
 
--- Contents:
 
-
-
-
-
--- 1. OBJECT CLASSES
--- =================
+--==============================================================================
+-- § 0.1.1 - Oggetti
+--==============================================================================
 
 
 
@@ -51,6 +72,23 @@ END ADD.
   -- This only applies to the hero; NPCs cannot be made to wear clothing in layers.
   -- Also the verbs 'wear', 'remove' and 'undress' are defined here.
 
+--------------------------------------------------------------------------------
+
+--.-----------------------.
+--| D I S P O S I T I V O |
+--+-----------------------+----------------------------------------------------.
+--| Un macchinario o congengo ellettrico che è possibile accendere e spegnere, |
+--| a meno che non sia rotto. Se esaminato, la descrizione includerà il suo    |
+--| stato attuale (acceso o spento).                                           |
+--+----------------------------------------------------------------------------+
+--| ESEMPI: Interruttore, Tv, computer, radio, generatore elettrico.           |
+--+----------------------------------------------------------------------------+
+--| ATTRIBUTI PREDEFINITI: |                                                   |
+--|                        |                                                   |
+--|   - IS NOT acceso.     | = spento                                          |
+--|   - IS NOT rotto.      | = funzionante                                     |
+--`----------------------------------------------------------------------------'
+
 
 -- DEVICE
   -- Is a  machine or an electronic device, for example a TV. Can be turned
@@ -58,6 +96,27 @@ END ADD.
   -- Attributes: 'on' and NOT 'on', NOT broken.
   -- Is described by default as being either on or off when examined.
 
+--------------------------------------------------------------------------------
+
+-- @TODO: Aggiungi menzione di 'altro_lato'!
+
+--.-----------.
+--| P O R T A |
+--+-----------+----------------------------------------------------------------.
+--| Può essere aperta o chiusa, e (opzionale) bloccata e sbloccata. Di default |
+--| le porte sono chiuse e non bloccate. Per poter aprire una porta bloccata è |
+--| richiesta la sua chiave ('chiave_abbinata'). Se esaminata, la descrizione  |
+--| includerà il suo stato attuale (aperta o chiusa).                          |
+--+----------------------------------------------------------------------------+
+--| ATTRIBUTI PREDEFINITI:                  |                                  |
+--|                                         |                                  |
+--|  - IS apribile.                         |                                  |
+--|  - IS NOT aperto.                       | = chiusa                         |
+--|  - IS NOT bloccabile.                   | = nessuna serratura              |
+--|  - IS NOT bloccato.                     |                                  |
+--|  - IS NOT prendibile.                   | = fissa                          |
+--|  - HAS chiave_abbinata chiave_fittizia. | = nessuna chiave                 |
+--`----------------------------------------------------------------------------'
 
 -- DOOR
   -- Can be opened, closed, and optionally locked and unlocked.
@@ -65,12 +124,22 @@ END ADD.
   -- all default attributes: openable, NOT open, NOT lockable, NOT locked; not takeable.
   -- Is described by default as being either open or closed when examined.
 
+--------------------------------------------------------------------------------
+
+--.---------------.
+--| L I Q U I D O |
+--+---------------+------------------------------------------------------------.
+--| Si può prendere un liquido solo se è in un contenitore. Si possono usare i |
+--| liquidi per riempire qualcosa, e li si può versare.                        |
+--| Di default un liquido non è potabile.                                      |
+--`----------------------------------------------------------------------------'
 
 -- LIQUID
   -- Can only be taken if it is in a container. You can fill something with it,
   -- and you can pour it somewhere.
   -- A liquid is by default NOT potabile.
 
+--------------------------------------------------------------------------------
 
 -- LIGHTSOURCE
   -- IS natural or NOT natural
@@ -81,6 +150,7 @@ END ADD.
   -- When examined, a lightsource is automatically supplied with a description of
   -- whether it is providing light or not.
 
+--------------------------------------------------------------------------------
 
 -- LISTED_CONTAINER
   -- Is a container object. The contents of a listed_container will be listed both after
@@ -88,26 +158,70 @@ END ADD.
   -- (The contents of a normal container object are not listed after 'examine' by default, but only
   -- after 'look' (=room description) and 'look in').
 
+--------------------------------------------------------------------------------
+
+--.---------------.
+--| L I Q U I D O |
+--+---------------+------------------------------------------------------------.
+--| È possibile ascoltare i suoni ma non esaminarli, annusarli né manipolarli. |
+--| (volendo, li si può accendere e spegnere.)                                 |
+--+----------------------------------------------------------------------------+
+--| ATTRIBUTI PREDEFINITI:                                                     |
+--|                                                                            |
+--|  - IS NOT esaminabile.                                                     |
+--|  - IS NOT prendibile.                                                      |
+--|  - IS NOT raggiungibile.                                                   |
+--|  - IS NOT spostabile.                                                      |
+--`----------------------------------------------------------------------------'
 
 -- SOUND
   -- Can be listened to but not examined, searched, smelled or manipulated.
-     -- (Can be turned on and off if desirable.)
+  -- (Can be turned on and off if desirable.)
 
+--------------------------------------------------------------------------------
 
 -- SUPPORTER
   -- You can put things on this and you can stand on this. It is declared a container,
   -- so you can take things from it, as well. When there's something on a supporter,
   -- a default listing of it will appear in the room description and after 'examine'.
 
+--------------------------------------------------------------------------------
+
+--.---------.
+--| A R M A |
+--+---------+------------------------------------------------------------------.
+--| Di default un'arma non può essere sparata (p.es., un coltello, una mazza), |
+--| ma settando l'attributo 'CAN sparare' si avrà un'arma da fuoco che sarà    |
+--| utilizzabile con il verbo "spara". 
+--+----------------------------------------------------------------------------+
+--| ATTRIBUTI PREDEFINITI: |                                                   |
+--|                        |                                                   |
+--|  - CAN NOT sparare.    | = arma bianca                                     |
+--`----------------------------------------------------------------------------'
 
 -- WEAPON
-  -- IS fireable (for example a cannon) or NOT sparare (for example a baseball bat).
+  -- IS fireable (for example a cannon) or NOT fireable (for example a baseball bat).
 
+--------------------------------------------------------------------------------
+
+--.-----------------.
+--| F I N E S T R A |
+--+-----------------+----------------------------------------------------------.
+--| Può essere aperta o chiusa; si può guardare attraverso e fuori da essa. Se |
+--| esaminata, la descrizione includerà il suo stato attuale (aperta o chiusa).|
+--+----------------------------------------------------------------------------+
+--| ATTRIBUTI PREDEFINITI:                                                     |
+--|                                                                            |
+--|  - IS apribile.                                                            |
+--|  - IS NOT aperto.                                                          |
+--|  - IS NOT prendibile.                                                      |
+--`----------------------------------------------------------------------------'
 
 -- WINDOW
   -- Can be opened, closed, looked through and out of.
   -- Will be by default described as being either open or closed when examined.
 
+--------------------------------------------------------------------------------
 
 
 -- 2. ACTOR CLASSES
@@ -145,20 +259,22 @@ END ADD.
 
 
 
--- =============================================================
 
--- =============================================================
---
--- 1. Object classes
---
--- =============================================================
-
--- =============================================================
-
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- § 1 - Classi di Oggetti
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
 
 
 
-
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 1.1 - Vestiario 
+--------------------------------------------------------------------------------
+--==============================================================================
 
 -- ==============================================================
 
@@ -1967,16 +2083,13 @@ EVERY finestra ISA OBJECT
 END EVERY.
 
 
-
--- ===============================================================
-
--- ===============================================================
---
--- 2. Actors
---
--- ===============================================================
-
--- ===============================================================
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- § 2 - Attori
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
 
 
 -- First, we declare some common characteristics for all actors:

@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/21 \(4\)](#20180721-4)
 - [2018/07/21 \(3\)](#20180721-3)
 - [2018/07/21 \(2\)](#20180721-2)
 - [2018/07/21 \(1\)](#20180721-1)
@@ -107,6 +108,16 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/21 (4)
+
+- [`lib_classi.i`][lib_classi] (v0.2.12)
+
+Added Italian translation of classes descriptions at beginning of file. I'm now working toward a full Italian documentation of the library modules via comments, by translating the original English comments as well as adding my own.
+
+<!---------------------------------------------------------------------------->
+
+
 
 # 2018/07/21 (3)
 
