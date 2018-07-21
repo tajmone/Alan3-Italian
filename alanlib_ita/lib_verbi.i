@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.30 (2018/07/22)
+-- "lib_verbi.i" v0.2.31 (2018/07/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -941,32 +941,28 @@ ADD TO EVERY THING
           THEN SAY check_obj_not_scenery_sg OF my_game. --> "$+1 non è importante ai fini del gioco."
           ELSE SAY check_obj_not_scenery_pl OF my_game. --> "$+1 non sono importanti ai fini del gioco."
         END IF.
+
     DOES
-      IF obj IS leggibile
-        -- for readable objects, 'examine' behaves just as 'read'
-        THEN
-          IF testo OF obj = ""
-         -- THEN "There is nothing written on" SAY THE obj. "."
-            THEN "Esamini" SAY THE obj. ", ma non vi trovi nulla da leggere."
-            -- THEN "Non c'è nulla da leggere" SAY prep_SU of obj. SAY obj. "."
-            ELSE "Leggi" SAY THE obj. "."
-              IF obj IS NOT plurale
-                THEN "Dice"
-                ELSE "Dicono"
-              END IF.
-              """$$" SAY testo OF obj. "$$""."
+      IF ex OF obj <> ""
+        THEN SAY ex OF obj.
+      ELSIF obj IS leggibile AND testo OF obj <> ""
+      --+-----------------------------------------------------------------------
+      --| Se la stringa 'ex' dell'oggetto è vuota, e si tratta di un leggibile 
+      --| contenente del 'testo', allora ESAMINA si comporterà come LEGGI:
+      --+-----------------------------------------------------------------------
+        THEN "Leggi" SAY THE obj. "."
+          IF obj IS NOT plurale
+            THEN "Dice"
+            ELSE "Dicono"
           END IF.
-        ELSE
-          IF ex OF obj <> ""
-            THEN SAY ex OF obj.
-          ELSIF obj = hero
-         -- THEN "You notice nothing unusual about yourself."
-            THEN "Non noti niente di insolito in te stesso."
-            ELSE "Esamini" SAY THE obj. ", ma non noti niente di speciale."
-         -- ELSE "You notice nothing unusual about" SAY THE obj. "."
-            --#i7: "Non [trovi] nulla di particolare [inp the noun]."
-            --#i6: "Esamini ", (the) x1, ", ma non noti niente di speciale."
-          END IF.
+          """$$" SAY testo OF obj. "$$""."
+      ELSIF obj = hero
+     -- THEN "You notice nothing unusual about yourself."
+        THEN "Non noti niente di insolito in te stesso."
+        ELSE "Esamini" SAY THE obj. ", ma non noti niente di speciale."
+     -- ELSE "You notice nothing unusual about" SAY THE obj. "."
+        --#i7: "Non [trovi] nulla di particolare [inp the noun]."
+        --#i6: "Esamini ", (the) x1, ", ma non noti niente di speciale."
       END IF.
   END VERB.
 END ADD TO.
@@ -1686,6 +1682,8 @@ END ADD TO.
 
 
 -- ==============================================================
+-- @TODO: Handle when (txt) is and empty string: should not add anything,
+--        and/or report error!
 
 -- SYNTAX write = write (txt) 'on' (obj)
 --        write = write (txt) 'in' (obj).

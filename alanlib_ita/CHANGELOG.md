@@ -11,7 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/07/22](#20180722)
+- [2018/07/22 \(2\)](#20180722-2)
+    - [Changed Behaviour of `examine`](#changed-behaviour-of-examine)
+- [2018/07/22 \(1\)](#20180722-1)
     - [Verb: `write`](#verb-write)
 - [2018/07/21 \(5\)](#20180721-5)
     - [Verb: `examine`](#verb-examine)
@@ -114,7 +116,32 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/07/22
+# 2018/07/22 (2)
+
+- [`lib_verbi.i`][lib_verbi] (v0.2.31)
+
+## Changed Behaviour of `examine`
+
+In the original library, when the verb `examine` was used with readable objects it behaved just like `read`.
+
+I wanted to change this because in some circumstances you'd like an object to both examinable and readable. For example, an ancient book: you'd like provide to the player a detailed description of the book when he examines it ("_It's an old leather bound book covered in esoteric symbols and secured by a golden seal._"), which increases the curiosity towards its contents, which can then be accessed by reading it.
+
+At other times, you might just want both `examine` and `read` to act the same. For example, a small note, a sticky-post, for which the description is not relevant to the game atmosphere.
+
+So, I've opted for a solution that allows to preserve the old behavior and also introduce the possibility of examining a readable object.
+
+Now the `examine` verb was changed so that when obj is a readable object:
+
+- If the object's `ex` string is not empty, _examine it_ and print the contents `ex`
+- If its `ex` is empty, and it's a readable object with a non empty `text`, then _read it_ instead.
+- If both `ex` and `text` of a readable obj are null strings, just print the usual "_You notice nothing unusual about (the obj)._"
+
+With the new system, to old library behavior is preserved for readable objects which have text only in their `text` attribute. If the author also adds text to `ex`, then it means that he wants the object to be separately examined and read, and the new behavior prevails.
+
+<!---------------------------------------------------------------------------->
+
+
+# 2018/07/22 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.32)
 - [`lib_verbi.i`][lib_verbi] (v0.2.30)

@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione 0.2.10 (2018/07/22)
+--  versione 0.2.11 (2018/07/22)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -104,6 +104,7 @@ END THE pozzanghera.
 -- Penna
 --==============================================================================
 -- Per poter scrivere sul foglio.
+
 THE penna IsA OBJECT AT pzzaIF.
   HAS articolo "la".
 END THE penna.
@@ -112,6 +113,7 @@ END THE penna.
 -- Foglio di carta
 --==============================================================================
 -- Per testare verbi LEGGI e SCRIVI.
+
 THE foglio_bianco IsA OBJECT AT pzzaIF.
   NAME foglio.
   NAME foglio bianco.
@@ -128,18 +130,40 @@ THE foglio_bianco IsA OBJECT AT pzzaIF.
     DOES ONLY
       IF penna IN hero
         THEN
-          IF testo OF obj = ""
-            THEN SET testo OF obj TO txt.
-            ELSE SET testo OF obj TO testo OF obj + " " + txt.
+          IF txt <> "" --> Non si accettano stringhe vuote!
+            THEN
+              IF testo OF obj = ""
+                THEN SET testo OF obj TO txt.
+                ELSE SET testo OF obj TO testo OF obj + " " + txt.
+              END IF.
+              "Scrivi ""$$" SAY txt. "$$""" SAY prep_SU of obj. SAY obj. "."
+              MAKE obj leggibile.
+            ELSE "Devi fornire dei contenuti da scrivere!"
           END IF.
-          "Scrivi ""$$" SAY txt. "$$""" SAY prep_SU of obj. SAY THE obj. "."
-          MAKE obj leggibile.
-        ELSE
+      ELSE
           "Non hai nulla con cui scrivere."
       END IF.
   END VERB.
 
 END THE foglio_bianco.
+
+--==============================================================================
+-- Libro Magico
+--==============================================================================
+THE libro_magico IsA OBJECT AT pzzaIF.
+  NAME libro.
+  NAME libro magico.
+  NAME libro antico.
+  MENTIONED "libro antico"
+  HAS ex "Sembra un libro molto antico. La pelle in cui è rilegato è imbrunita
+          dai secoli e fatichi a decodificarne i simboli arcaici che vi sono
+          incisi.".
+  IS leggibile.
+  HAS testo "La dottrina magica degli antichi fu edficata su un'unica formula
+             sacra che ci è stata tramandata di generazione in generazione.
+             Quella formula è ""XYZZY"".".
+END THE libro_magico.
+
 
 --==============================================================================
 -- Oggetto Senza Descrizione
