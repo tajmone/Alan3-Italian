@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.31 (2018/07/21)
+-- "lib_definizioni.i" v0.2.32 (2018/07/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1075,6 +1075,7 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN saltare_in.           --> jump_in
   CAN saltare_su.           --> jump_on
   CAN scavare.              --> dig
+  CAN scrivere.             --> write
   CAN seguire.              --> follow
   CAN spingere.             --> push
   CAN spingere_con.         --> push_with
@@ -1205,7 +1206,6 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN where_is.
   CAN who_am_i.
   CAN who_is.
-  CAN write.
   CAN yes.
 
 
@@ -1266,6 +1266,7 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game saltare_su.           --> jump_on
   MAKE my_game salvare_partita.      --> save
   MAKE my_game scavare.              --> dig
+  MAKE my_game scrivere.             --> write
   MAKE my_game seguire.              --> follow
   MAKE my_game spingere.             --> push
   MAKE my_game spingere_con.         --> push_with
@@ -1398,7 +1399,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game where_is.
   MAKE my_game who_am_i.
   MAKE my_game who_is.
-  MAKE my_game write.
   MAKE my_game yes.
 
 
@@ -1468,6 +1468,7 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT saltare_su.           --> jump_on
   MAKE my_game     salvare_partita.      --> save
   MAKE my_game NOT scavare.              --> dig
+  MAKE my_game NOT scrivere.             --> write
   MAKE my_game NOT seguire.              --> follow
   MAKE my_game NOT spingere.             --> push
   MAKE my_game NOT spingere_con.         --> push_with
@@ -1602,7 +1603,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game where_is.
   MAKE my_game who_am_i.
   MAKE my_game who_is.
-  MAKE my_game NOT write.
   MAKE my_game yes.
 
 
@@ -1656,6 +1656,7 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT saltare_su.           --> jump_on
   MAKE my_game     salvare_partita.      --> save
   MAKE my_game NOT scavare.              --> dig
+  MAKE my_game NOT scrivere.             --> write
   MAKE my_game NOT seguire.              --> follow
   MAKE my_game NOT spingere.             --> push
   MAKE my_game NOT spingere_con.         --> push_with
@@ -1790,7 +1791,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT where_is.
   MAKE my_game NOT who_am_i.
   MAKE my_game NOT who_is.
-  MAKE my_game NOT write.
   MAKE my_game yes.
 
 
@@ -1842,6 +1842,7 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT saltare_su.           --> jump_on
   MAKE my_game NOT salvare_partita.      --> save
   MAKE my_game NOT scavare.              --> dig
+  MAKE my_game NOT scrivere.             --> write
   MAKE my_game NOT seguire.              --> follow
   MAKE my_game NOT spingere.             --> push
   MAKE my_game NOT spingere_con.         --> push_with
@@ -1976,7 +1977,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT where_is.
   MAKE my_game NOT who_am_i.
   MAKE my_game NOT who_is.
-  MAKE my_game NOT write.
   MAKE my_game NOT yes.
 
 END IF.

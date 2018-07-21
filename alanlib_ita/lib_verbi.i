@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.29 (2018/07/21)
+-- "lib_verbi.i" v0.2.30 (2018/07/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -39,6 +39,7 @@
 --| rifai              | ancora, G                    | rifai                    |   | 0 |   |
 --| rompi              | distruggi, spacca, sfonda    | rompi (ogg)              |   | 1 | x |
 --| rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (instr)  |   | 2 | x |
+--| scrivi             |                              | scrivi "testo" su (ogg)  |   | 1 | x |
 --| spogliati          | svestiti                     | spogliati                |   | 0 |   |
 --| vai_a              |                              | vai a (dest)             |   | 1 |   |
 --+--------------------+------------------------------+--------------------------+---+---+---+
@@ -234,7 +235,7 @@
 ----- where_is                                             where is (obj)                      1       x
 ----- who_am_i                                             who am i                            0
 ----- who_is                                               who is (obj)                        1       x
------ write                                                write (txt) on (obj)                2       x
+----> write                                                write (txt) on (obj)                2       x
 ----- yes                                                  yes                                 0
 
 
@@ -1675,6 +1676,113 @@ ADD TO EVERY OBJECT
   END VERB.
 END ADD TO.
 
+
+
+
+-- ==============================================================
+
+
+----- @SCRIVI --> @WRITE
+
+
+-- ==============================================================
+
+-- SYNTAX write = write (txt) 'on' (obj)
+--        write = write (txt) 'in' (obj).
+
+SYNTAX  scrivi = scrivi (txt) su (obj)
+    WHERE txt ISA STRING
+      ELSE SAY illegal_parameter_string OF my_game.
+    AND obj ISA OBJECT
+      ELSE SAY illegal_parameter2_there OF my_game.
+
+        scrivi = scrivi (txt) 'in' (obj).
+
+
+ADD TO EVERY OBJECT
+  VERB scrivi
+        WHEN obj
+      CHECK my_game CAN scrivere
+        ELSE SAY azione_bloccata OF my_game.
+      AND obj IS scrivibile
+        ELSE SAY check_obj_writeable OF my_game.
+      AND CURRENT LOCATION IS lit
+        ELSE SAY check_locazione_illuminata OF my_game.
+      AND obj IS raggiungibile AND obj IS NOT distante
+        ELSE
+          IF obj IS NOT raggiungibile
+            THEN
+              IF obj IS NOT plurale
+                THEN SAY ogg1_non_raggiungibile_sg OF my_game.
+                ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
+              END IF.
+          ELSIF obj IS distante
+            THEN
+              IF obj IS NOT plurale
+                THEN SAY check_obj_not_distant_sg OF my_game.
+                ELSE SAY check_obj_not_distant_pl OF my_game.
+              END IF.
+          END IF.
+
+      DOES
+        "Non hai nulla con cui scrivere."
+      -- "You don't have anything to write with."
+
+        -- To make it work:
+        -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        -- IF text OF obj = ""
+        --   THEN SET text OF obj TO txt.
+        --   ELSE SET text OF obj TO text OF obj + " " + txt.
+        -- END IF.
+        -- "You write ""$$" SAY txt. "$$"" on" SAY THE obj. "."
+        -- MAKE obj readable.
+        -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    END VERB.
+END ADD TO.
+
+
+-- A couple of other formulations are understood but they guide the player to
+-- use the correct syntax:
+
+
+SYNTAX  scrivi_errore1 = scrivi su (obj)
+  WHERE obj ISA OBJECT
+    ELSE
+      "Per poter scrivere, usa la sintassi SCRIVI ""TESTO"" SU (IN) OGGETTO."
+    -- "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
+     -- to write something."
+
+        scrivi_errore1 = scrivi 'in' (obj).
+
+ADD TO EVERY OBJECT
+  VERB scrivi_errore1
+    DOES
+      "Per poter scrivere, usa la sintassi SCRIVI ""TESTO"" SU (IN) OGGETTO."
+
+  END VERB.
+END ADD TO.
+
+
+SYNTAX scrivi_errore2 = scrivi.
+
+VERB scrivi_errore2
+    DOES
+      "Per poter scrivere, usa la sintassi SCRIVI ""TESTO"" SU (IN) OGGETTO."
+END VERB.
+
+
+SYNTAX scrivi_errore3 = scrivi (txt)
+  WHERE txt ISA STRING
+    ELSE
+      "Per poter scrivere, usa la sintassi SCRIVI ""TESTO"" SU (IN) OGGETTO."
+
+
+ADD TO EVERY STRING
+  VERB scrivi_errore3
+    DOES
+      "Per poter scrivere, usa la sintassi SCRIVI ""TESTO"" SU (IN) OGGETTO."
+  END VERB.
+END ADD TO.
 
 
 
@@ -9213,105 +9321,6 @@ ADD TO EVERY ACTOR
     DOES
       "You'll have to find it out yourself."
     END VERB.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ WRITE
-
-
--- ==============================================================
-
-
-SYNTAX write = write (txt) 'on' (obj)
-    WHERE txt ISA STRING
-      ELSE SAY illegal_parameter_string OF my_game.
-    AND obj ISA OBJECT
-      ELSE SAY illegal_parameter2_there OF my_game.
-
-   write = write (txt) 'in' (obj).
-
-
-ADD TO EVERY OBJECT
-  VERB write
-        WHEN obj
-      CHECK my_game CAN write
-        ELSE SAY azione_bloccata OF my_game.
-            AND obj IS scrivibile
-        ELSE SAY check_obj_writeable OF my_game.
-        AND CURRENT LOCATION IS lit
-        ELSE SAY check_locazione_illuminata OF my_game.
-        AND obj IS raggiungibile AND obj IS NOT distante
-        ELSE
-          IF obj IS NOT raggiungibile
-            THEN
-              IF obj IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF my_game.
-                ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
-              END IF.
-          ELSIF obj IS distante
-            THEN
-              IF obj IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF my_game.
-                ELSE SAY check_obj_not_distant_pl OF my_game.
-              END IF.
-          END IF.
-
-        DOES
-        "You don't have anything to write with."
-
-        -- To make it work:
-          -- IF testo OF obj = ""
-          -- THEN SET text OF obj TO txt.
-          -- ELSE SET text OF obj TO text OF obj + " " + txt.
-          -- END IF.
-
-        -- "You write ""$$" SAY txt. "$$"" on" SAY THE obj. "."
-          -- MAKE obj readable.
-    END VERB.
-END ADD TO.
-
-
--- A couple of other formulations are understood but they guide the player to
--- use the correct syntax:
-
-
-SYNTAX write_error1 = write 'on' (obj)
-  WHERE obj ISA OBJECT
-    ELSE "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
-      to write something."
-
-
-ADD TO EVERY OBJECT
-  VERB write_error1
-    DOES "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
-      to write something."
-  END VERB.
-END ADD TO.
-
-
-SYNTAX write_error2 = write.
-
-VERB write_error2
-  DOES "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
-      to write something."
-END VERB.
-
-
-SYNTAX write_error3 = write (txt)
-  WHERE txt ISA STRING
-    ELSE "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
-      to write something."
-
-
-ADD TO EVERY STRING
-  VERB write_error3
-    DOES "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
-      to write something."
-  END VERB.
 END ADD TO.
 
 

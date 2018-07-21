@@ -19,6 +19,10 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 - [VERBI DI SPOSTAMENTO](#verbi-di-spostamento)
     - [vai_a](#vai_a)
     - [attraversa](#attraversa)
+- [ESAMINARE, LEGGERE, ISPEZIONARE, SCRIVERE](#esaminare-leggere-ispezionare-scrivere)
+    - [esamina](#esamina)
+    - [leggi](#leggi)
+    - [scrivi](#scrivi)
 - [DARE, PRENDERE, RIMUOVERE](#dare-prendere-rimuovere)
     - [prendi](#prendi)
     - [prendi_da](#prendi_da)
@@ -62,12 +66,16 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [carica partita]
 - [compra]
 - [dai]
+- [esamina]
+- [descrivi]
 - [distruggi]
 - [distruggi con]
 - [dormi]
 - [inventario]
+- [leggi]
 - [mangia]
 - [offri]
+- [osserva]
 - [porgi]
 - [prega]
 - [prendi]
@@ -81,6 +89,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [rompi]
 - [salva]
 - [salva partita]
+- [scrivi]
 - [sfonda]
 - [sfonda con]
 - [spacca]
@@ -262,6 +271,53 @@ attributo `my_game`:
 sintassi:
 
     attraversa (ogg)
+
+
+-------------------------------------------------------------------------------
+
+# ESAMINARE, LEGGERE, ISPEZIONARE, SCRIVERE
+
+## esamina
+
+[esamina]: #esamina
+[descrivi]: #esamina
+[osserva]: #esamina
+
+attributo `my_game`:
+
+    CAN [NOT] esaminare
+
+sintassi:
+
+    (esamina|descrivi|osserva|X) (obj)
+    guarda (obj)
+
+
+## leggi
+
+[leggi]: #leggi
+
+attributo `my_game`:
+
+    CAN [NOT] leggere
+
+sintassi:
+
+    leggi (obj)
+
+
+## scrivi
+
+[scrivi]: #scrivi
+
+
+attributo `my_game`:
+
+    CAN [NOT] scrivere
+
+sintassi:
+
+    scrivi "testo" su/in (ogg)
 
 
 -------------------------------------------------------------------------------

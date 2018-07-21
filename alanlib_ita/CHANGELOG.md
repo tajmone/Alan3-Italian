@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/22](#20180722)
+    - [Verb: `write`](#verb-write)
 - [2018/07/21 \(5\)](#20180721-5)
     - [Verb: `examine`](#verb-examine)
     - [Verb: `read`](#verb-read)
@@ -111,6 +113,33 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/22
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.32)
+- [`lib_verbi.i`][lib_verbi] (v0.2.30)
+
+
+Translated `my_game` attributes for verb restrictions:
+
+| English |  Italian   |
+|---------|------------|
+| `write` | `scrivere` |
+
+
+## Verb: `write`
+
+Translated verb `scrivi`, (_write_):
+
+    scrivi "testo" (su|in) (obj)
+
+with no synonyms.
+
+
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/21 (5)
 

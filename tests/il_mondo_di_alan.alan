@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione 0.2.9 (2018/07/21)
+--  versione 0.2.10 (2018/07/22)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -101,14 +101,44 @@ THE pozzanghera IsA liquido AT pzzaIF.
 END THE pozzanghera.
 
 --==============================================================================
--- Foglio Bianco
+-- Penna
 --==============================================================================
--- Per testare verbo leggi.
+-- Per poter scrivere sul foglio.
+THE penna IsA OBJECT AT pzzaIF.
+  HAS articolo "la".
+END THE penna.
+
+--==============================================================================
+-- Foglio di carta
+--==============================================================================
+-- Per testare verbi LEGGI e SCRIVI.
 THE foglio_bianco IsA OBJECT AT pzzaIF.
   NAME foglio.
   NAME foglio bianco.
-  MENTIONED "foglio bianco"
+  MENTIONED
+    "foglio di carta"
+    IF testo OF THIS = ""
+      THEN "bianco"
+    END IF.
   IS leggibile.
+  IS scrivibile.
+
+  VERB scrivi
+
+    DOES ONLY
+      IF penna IN hero
+        THEN
+          IF testo OF obj = ""
+            THEN SET testo OF obj TO txt.
+            ELSE SET testo OF obj TO testo OF obj + " " + txt.
+          END IF.
+          "Scrivi ""$$" SAY txt. "$$""" SAY prep_SU of obj. SAY THE obj. "."
+          MAKE obj leggibile.
+        ELSE
+          "Non hai nulla con cui scrivere."
+      END IF.
+  END VERB.
+
 END THE foglio_bianco.
 
 --==============================================================================
