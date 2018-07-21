@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.29 (2018/07/21)
+-- "lib_definizioni.i" v0.2.30 (2018/07/21)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -98,7 +98,7 @@ ADD TO EVERY THING
      -- Gli attori sono NOT inanimato.
      spostabile.
      -- to allow pushing, pulling, lifting, etc.
-     open. --> @TODO!!                                                          TRANSLATE!
+     aperto.
      -- = not closed.
      raggiungibile.
      -- See also 'distant' below
@@ -139,10 +139,9 @@ ADD TO EVERY THING
 
   NOT potabile.
   NOT commestibile.
-  NOT fireable. --> @TODO!!                                                     TRANSLATE!
     -- can (not) be used as a firearm
-  NOT lockable. --> @TODO!!                                                     TRANSLATE!
-  NOT locked. --> @TODO!!                                                       TRANSLATE!
+  NOT bloccabile.
+  NOT bloccato.
   NOT acceso.
   NOT apribile.
   NOT leggibile.
@@ -151,7 +150,9 @@ ADD TO EVERY THING
   NOT indossabile.
   NOT scrivibile.
 
-  CAN NOT parlare.
+  CAN
+    NOT parlare.
+    NOT sparare.
 
 
   -- ==================================

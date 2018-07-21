@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.2.9 (2018/07/21)
+-- "lib_classi.i" v0.2.10 (2018/07/21)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -101,7 +101,7 @@ END ADD.
 
 
 -- WEAPON
-  -- IS fireable (for example a cannon) or NOT fireable (for example a baseball bat).
+  -- IS fireable (for example a cannon) or NOT sparare (for example a baseball bat).
 
 
 -- WINDOW
@@ -908,9 +908,9 @@ END EVERY.
 
 EVERY porta ISA OBJECT
   IS apribile.
-  IS NOT open.
-  IS NOT lockable.
-  IS NOT locked.
+  IS NOT aperto.
+  IS NOT bloccabile.
+  IS NOT bloccato.
   IS NOT prendibile.
 
 
@@ -926,10 +926,10 @@ EVERY porta ISA OBJECT
     -- ensuring that the author didn't forget to declare a locked door closed (= NOT open), as well. This is
     -- just double-checking, as any door is by default closed (= "NOT open") at the start of the game:
 
-    IF THIS IS locked
+    IF THIS IS bloccato
       THEN
-        IF THIS IS open
-          THEN MAKE THIS NOT open.
+        IF THIS IS aperto
+          THEN MAKE THIS NOT aperto.
         END IF.
     END IF.
 
@@ -948,16 +948,16 @@ EVERY porta ISA OBJECT
           THEN MAKE otherside OF THIS NOT apribile.
         END IF.
 
-        IF THIS IS open
-          THEN MAKE otherside OF THIS open.
+        IF THIS IS aperto
+          THEN MAKE otherside OF THIS aperto.
         END IF.
 
-        IF THIS IS lockable
-          THEN MAKE otherside OF THIS lockable.
+        IF THIS IS bloccabile
+          THEN MAKE otherside OF THIS bloccabile.
         END IF.
 
-        IF THIS IS locked
-          THEN MAKE otherside OF THIS locked.
+        IF THIS IS bloccato
+          THEN MAKE otherside OF THIS bloccato.
         END IF.
 
     END IF.
@@ -993,7 +993,7 @@ EVERY porta ISA OBJECT
         ELSE "They are"
       END IF.
 
-      IF THIS IS NOT open
+      IF THIS IS NOT aperto
         THEN "currently closed."
         ELSE "currently open."
       END IF.
@@ -1003,7 +1003,7 @@ EVERY porta ISA OBJECT
 
   VERB knock
     DOES ONLY
-      IF THIS IS NOT open
+      IF THIS IS NOT aperto
         THEN "You knock on" SAY THE THIS. "$$. There is no reply."
         ELSE "You don't find it purposeful to knock on the open door"
           IF THIS IS NOT plurale
@@ -1018,7 +1018,7 @@ EVERY porta ISA OBJECT
 
   VERB look_behind
     DOES ONLY
-      IF THIS IS NOT open
+      IF THIS IS NOT aperto
         THEN "You cannot look behind"
           IF THIS IS NOT plurale
             THEN "the door - it is closed."
@@ -1036,7 +1036,7 @@ EVERY porta ISA OBJECT
 
   VERB look_under
     DOES ONLY
-      IF THIS IS NOT open
+      IF THIS IS NOT aperto
         THEN "The gap under the closed door"
           IF THIS IS plurale
             THEN "$$s"
@@ -1056,7 +1056,7 @@ EVERY porta ISA OBJECT
   VERB close
     DOES
       IF otherside OF THIS <> porta_fittizia
-        THEN MAKE otherside OF THIS NOT open.
+        THEN MAKE otherside OF THIS NOT aperto.
       END IF.
   END VERB.
 
@@ -1064,8 +1064,8 @@ EVERY porta ISA OBJECT
   VERB lock
     DOES
       IF otherside OF THIS <> porta_fittizia
-        THEN MAKE otherside OF THIS NOT open.
-          MAKE otherside OF THIS locked.
+        THEN MAKE otherside OF THIS NOT aperto.
+          MAKE otherside OF THIS bloccato.
       END IF.
   END VERB.
 
@@ -1073,8 +1073,8 @@ EVERY porta ISA OBJECT
   VERB open
     DOES
       IF otherside OF THIS <> porta_fittizia
-        THEN MAKE otherside OF THIS open.
-          MAKE otherside OF THIS NOT locked.
+        THEN MAKE otherside OF THIS aperto.
+          MAKE otherside OF THIS NOT bloccato.
       END IF.
   END VERB.
 
@@ -1082,7 +1082,7 @@ EVERY porta ISA OBJECT
   VERB unlock
     DOES
       IF otherside OF THIS <> porta_fittizia
-        THEN MAKE otherside OF THIS NOT locked.
+        THEN MAKE otherside OF THIS NOT bloccato.
       END IF.
   END VERB.
 
@@ -1113,16 +1113,16 @@ END THE.
 
 EVERY lightsource ISA OBJECT
   IS NOT lit.
-  IS natural.   -- A natural lightsource is for example a candle, a match or a torch.
-        -- A NOT natural lightsource is for example a flashlight or a lamp.
-        -- You cannot switch on or off a natural lightsource.
+  IS naturale. -- A natural lightsource is for example a candle, a match or a torch.
+               -- A NOT natural lightsource is for example a flashlight or a lamp.
+               -- You cannot switch on or off a natural lightsource.
 
 
   VERB examine
     DOES AFTER
       IF THIS IS lit
         THEN
-          IF THIS IS natural
+          IF THIS IS naturale
             THEN
               IF THIS IS NOT plurale
                 THEN "It is"
@@ -1137,7 +1137,7 @@ EVERY lightsource ISA OBJECT
               "currently on."
           END IF.
         ELSE
-          IF THIS IS natural
+          IF THIS IS naturale
             THEN
               IF THIS IS NOT plurale
                 THEN "It is"
@@ -1165,7 +1165,7 @@ EVERY lightsource ISA OBJECT
     AND THIS IS NOT rotto
       ELSE SAY check_obj_not_broken OF my_game.
     DOES ONLY
-      IF THIS IS natural
+      IF THIS IS naturale
         THEN "You light" SAY THE THIS. "."
           MAKE THIS lit.
         ELSE "You turn on" SAY THE THIS. "."
@@ -1187,7 +1187,7 @@ EVERY lightsource ISA OBJECT
 
 
   VERB turn_on
-    CHECK THIS IS NOT natural
+    CHECK THIS IS NOT naturale
       ELSE
         IF THIS IS NOT plurale
           THEN SAY check_obj_suitable_on_sg OF my_game.
@@ -1209,7 +1209,7 @@ EVERY lightsource ISA OBJECT
 
 
   VERB turn_off
-    CHECK THIS IS NOT natural
+    CHECK THIS IS NOT naturale
       ELSE
         IF THIS IS NOT plurale
           THEN SAY check_obj_suitable_off_sg OF my_game.
@@ -1234,7 +1234,7 @@ EVERY lightsource ISA OBJECT
 
 
   VERB switch
-    CHECK THIS IS NOT natural
+    CHECK THIS IS NOT naturale
       ELSE
         IF THIS IS NOT plurale
           THEN SAY check_lightsource_switchable_sg OF my_game.
@@ -1346,7 +1346,7 @@ EVERY liquido ISA OBJECT
     DOES ONLY
       IF recipiente OF THIS <> recipiente_fittizio
         THEN
-          IF recipiente OF THIS IS open
+          IF recipiente OF THIS IS aperto
             THEN "You notice nothing unusual about" SAY THE THIS.
             ELSE "You can't, since" SAY THE recipiente OF THIS.
                 IF THIS IS NOT plurale
@@ -1366,7 +1366,7 @@ EVERY liquido ISA OBJECT
     DOES ONLY
       IF recipiente OF THIS <> recipiente_fittizio
         THEN
-          IF recipiente OF THIS IS open
+          IF recipiente OF THIS IS aperto
             THEN "You see nothing special in" SAY THE THIS. "."
             ELSE "You can't, since" SAY THE recipiente OF THIS.
                 IF THIS IS NOT plurale
@@ -1509,7 +1509,7 @@ EVERY liquido ISA OBJECT
           THEN
             "There's not much sense pouring" SAY THE obj. "into" SAY THE THIS. "."
           ELSE
-            IF recipiente OF THIS IS open
+            IF recipiente OF THIS IS aperto
               THEN "It wouldn't accomplish anything trying to pour" SAY THE obj.
                 "into" SAY THE THIS. "."
               ELSE "You can't, since" SAY THE recipiente OF THIS.
@@ -1595,7 +1595,7 @@ EVERY liquido ISA OBJECT
         THEN
           "There's not much sense putting" SAY THE obj. "into" SAY THE THIS. "."
         ELSE
-          IF recipiente OF THIS IS open
+          IF recipiente OF THIS IS aperto
             THEN
               IF obj = recipiente OF THIS
                 THEN "That doesn't make sense."
@@ -1881,7 +1881,7 @@ END EVERY.
 -- ==============================================================
 
 
------ WEAPON
+----- @ARMA --> @WEAPON
 
 
 -- ==============================================================
@@ -1892,8 +1892,8 @@ END EVERY.
 -- either in the syntax definitions or verb checks.)
 
 
-EVERY weapon ISA OBJECT
-  IS NOT fireable.
+EVERY arma ISA OBJECT
+  CAN NOT sparare.
 END EVERY.
 
 
@@ -1917,13 +1917,13 @@ END EVERY.
 
 EVERY finestra ISA OBJECT
   IS apribile.
-  IS NOT open.
+  IS NOT aperto.
   IS NOT prendibile.
 
 
   VERB examine
     DOES
-      IF THIS IS NOT open
+      IF THIS IS NOT aperto
         THEN
           IF THIS IS NOT plurale
             THEN "It is"

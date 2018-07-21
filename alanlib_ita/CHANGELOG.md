@@ -11,7 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/07/21](#20180721)
+- [2018/07/21 \(2\)](#20180721-2)
+- [2018/07/21 \(1\)](#20180721-1)
 - [2018/07/20 \(3\)](#20180720-3)
     - [Library Locations](#library-locations)
         - [Rooms](#rooms)
@@ -106,7 +107,38 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/07/21
+# 2018/07/21 (2)
+
+- [`lib_classi.i`][lib_classi] (v0.2.10)
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.30)
+- [`lib_verbi.i`][lib_verbi] (v0.2.27)
+
+
+Translated library attributes:
+
+|     English     |     Italian     |     Class     |
+|-----------------|-----------------|---------------|
+| `open`          | `aperto`        | `THING`       |
+| `lockable`      | `bloccabile`    | `THING`       |
+| `locked`        | `bloccato`      | `THING`       |
+| `fireable` (IS) | `sparare` (CAN) | `THING`       |
+| `natural`       | `naturale`      | `lightsource` |
+
+
+
+Translated CLASSes:
+
+| Class EN | Class IT | Child OF |
+|----------|----------|----------|
+| `weapon` | `arma`   | `OBJECT` |
+
+
+
+
+<!---------------------------------------------------------------------------->
+
+
+# 2018/07/21 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.2.9)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.29)
@@ -129,10 +161,9 @@ Translated library attributes:
 
 Translated CLASSes:
 
-| Class EN |  Class IT |
-|----------|-----------|
-| `liquid` | `liquido` |
-
+| Class EN |  Class IT | Child OF |
+|----------|-----------|----------|
+| `liquid` | `liquido` | `OBJECT` |
 
 
 
@@ -177,13 +208,6 @@ This commit deals with the translation of some classes, instances and attributes
 
 
 > __NOTE 1__ — I haven't yet decided how to translate `site`, therefore quite a few site-related identifiers are still left untranslated.
-
-<!-- TODO:
-| `site`        | `xxx`      |   | `LOCATION`                  |
-| `site_object` | `xxx`      |   | `OBJECT`                    |
-| `ground`      | `xxx`      |   | `site_object`               |
-| `ground_desc` | `desc_`    |   | `SITE` attribute (_string_) |
--->
 
 
 ### Other Locations ...

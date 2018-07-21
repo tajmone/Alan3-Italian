@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.26 (2018/07/21)
+-- "lib_verbi.i" v0.2.27 (2018/07/21)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1331,7 +1331,7 @@ ADD TO EVERY THING
             -- a cage, etc.
         ELSIF obj ISA OBJECT
           THEN
-            IF holder ISA LISTED_CONTAINER AND holder IS NOT open
+            IF holder ISA LISTED_CONTAINER AND holder IS NOT aperto
               --> @TODO!!                                                       TRANSLATE!
               THEN "You can't;" SAY THE holder.
                   IF holder IS NOT plurale
@@ -1964,16 +1964,16 @@ END ADD TO.
 -- ==============================================================
 
 
-SYNTAX attack_with = attack (target) 'with' (weapon)
+SYNTAX attack_with = attack (target) 'with' (arma)
       WHERE target ISA THING
     ELSE
       IF target IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-      AND weapon ISA WEAPON
+      AND arma ISA arma
         ELSE
-      IF weapon IS NOT plurale
+      IF arma IS NOT plurale
         THEN SAY illegal_parameter2_with_sg OF my_game.
         ELSE SAY illegal_parameter2_with_pl OF my_game.
       END IF.
@@ -1992,7 +1992,7 @@ ADD TO EVERY THING
             THEN SAY ogg1_inadatto_sg OF my_game. "attaccare."
             ELSE SAY ogg1_inadatto_pl OF my_game. "attaccare."
           END IF.
-      AND target <> weapon
+      AND target <> arma
         ELSE SAY check_obj_not_obj2_with OF my_game.
       AND target <> hero
         ELSE SAY check_obj_not_hero1 OF my_game.
@@ -2419,7 +2419,7 @@ ADD TO EVERY OBJECT
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-    AND obj IS open
+    AND obj IS aperto
           ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_open1_sg OF my_game.
@@ -2427,7 +2427,7 @@ ADD TO EVERY OBJECT
         END IF.
 
     DOES
-          MAKE obj NOT open.
+          MAKE obj NOT aperto.
           "You close the" SAY THE obj. "."
   END VERB.
 END ADD TO.
@@ -2497,7 +2497,7 @@ ADD TO EVERY OBJECT
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
         END IF.
-      AND obj IS open
+      AND obj IS aperto
             ELSE
           IF obj IS NOT plurale
             THEN SAY check_obj_open1_sg OF my_game.
@@ -3077,7 +3077,7 @@ ADD TO EVERY OBJECT
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-    AND obj IS open
+    AND obj IS aperto
       ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_open2_sg OF my_game.
@@ -3216,13 +3216,13 @@ ADD TO EVERY OBJECT
             THEN SAY check_obj_allowed_in_sg OF my_game.
             ELSE SAY check_obj_allowed_in_pl OF my_game.
           END IF.
-      AND obj IS open
+      AND obj IS aperto
         ELSE
           IF obj IS NOT plurale
             THEN SAY check_obj_open2_sg OF my_game.
             ELSE SAY check_obj_open2_pl OF my_game.
           END IF.
-      AND cont IS open
+      AND cont IS aperto
         ELSE
           IF obj IS NOT plurale
             THEN SAY check_obj2_open_sg OF my_game.
@@ -3337,7 +3337,7 @@ ADD TO EVERY THING
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
           END IF.
-      AND obj IS open
+      AND obj IS aperto
         ELSE
           IF obj IS NOT plurale
             THEN SAY check_obj_open2_sg OF my_game.
@@ -3794,22 +3794,22 @@ END ADD TO.
 -- ==============================================================
 
 
-SYNTAX fire = fire (weapon)
-  WHERE weapon ISA WEAPON
+SYNTAX fire = fire (arma)
+  WHERE arma ISA arma
     ELSE
-      IF weapon IS NOT plurale
+      IF arma IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
 
 
-ADD TO EVERY WEAPON
+ADD TO EVERY arma
   VERB fire
     CHECK my_game CAN fire
       ELSE SAY azione_bloccata OF my_game.
-    AND weapon IS fireable
+    AND arma can sparare
       ELSE
-        IF weapon IS NOT plurale
+        IF arma IS NOT plurale
           THEN SAY check_obj_suitable_sg OF my_game.
           ELSE SAY check_obj_suitable_pl OF my_game.
         END IF.
@@ -3817,7 +3817,7 @@ ADD TO EVERY WEAPON
   AND CURRENT LOCATION IS lit
     ELSE SAY check_locazione_illuminata OF my_game.
   DOES
-    "You fire" SAY THE weapon. "into the air."
+    "You fire" SAY THE arma. "into the air."
   END VERB.
 END ADD TO.
 
@@ -3832,10 +3832,10 @@ END ADD TO.
 -- ==============================================================
 
 
-SYNTAX fire_at = fire (weapon) 'at' (target)
-  WHERE weapon ISA WEAPON
+SYNTAX fire_at = fire (arma) 'at' (target)
+  WHERE arma ISA arma
     ELSE
-      IF weapon IS NOT plurale
+      IF arma IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
@@ -3844,20 +3844,20 @@ SYNTAX fire_at = fire (weapon) 'at' (target)
 
 
 
-ADD TO EVERY WEAPON
+ADD TO EVERY arma
   VERB fire_at
-    WHEN weapon
+    WHEN arma
       CHECK my_game CAN fire_at
         ELSE SAY azione_bloccata OF my_game.
-      AND weapon IS fireable
+      AND arma can sparare
         ELSE
-          IF weapon IS NOT plurale
+          IF arma IS NOT plurale
             THEN SAY check_obj_suitable_sg OF my_game.
             ELSE SAY check_obj_suitable_pl OF my_game.
           END IF.
       AND target IS esaminabile
         ELSE SAY check_obj_suitable_at OF my_game.
-      AND weapon <> target
+      AND arma <> target
         ELSE SAY check_obj_not_obj2_at OF my_game.
       AND target <> hero
         ELSE SAY check_obj_not_hero2 OF my_game.
@@ -3890,7 +3890,7 @@ SYNTAX fire_at_error = fire 'at' (target)
 
 ADD TO EVERY THING
   VERB fire_at_error
-    CHECK COUNT ISA WEAPON, IS fireable, DIRECTLY IN hero > 0
+    CHECK COUNT ISA ARMA, can sparare, DIRECTLY IN hero > 0
       ELSE SAY check_count_weapon_in_hero OF my_game.
     AND target <> hero
       ELSE SAY check_obj_not_hero2 OF my_game.
@@ -4394,16 +4394,16 @@ END ADD TO.
 -- ==============================================================
 
 
-SYNTAX kill_with = kill (victim) 'with' (weapon)
+SYNTAX kill_with = kill (victim) 'with' (arma)
   WHERE victim ISA ACTOR
     ELSE
       IF victim IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-  AND weapon ISA WEAPON
+  AND arma ISA arma
     ELSE
-      IF weapon IS NOT plurale
+      IF arma IS NOT plurale
         THEN SAY illegal_parameter_with_sg OF my_game.
         ELSE SAY illegal_parameter_with_pl OF my_game.
       END IF.
@@ -4416,7 +4416,7 @@ ADD TO EVERY ACTOR
         ELSE SAY azione_bloccata OF my_game.
       AND victim <> hero
         ELSE SAY check_obj_not_hero2 OF my_game.
-      AND weapon IN hero
+      AND arma IN hero
         ELSE SAY check_obj2_in_hero OF my_game.
       AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
@@ -4943,7 +4943,7 @@ ADD TO EVERY OBJECT
   VERB lock
     CHECK my_game CAN lock
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS lockable
+    AND obj IS bloccabile
           ELSE
         IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -4967,7 +4967,7 @@ ADD TO EVERY OBJECT
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-    AND obj IS NOT locked
+    AND obj IS NOT bloccato
           ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_not_locked_sg OF my_game.
@@ -4975,13 +4975,13 @@ ADD TO EVERY OBJECT
       END IF.
   DOES
     IF matching_key OF obj IN hero
-      THEN MAKE obj locked.
+      THEN MAKE obj bloccato.
         "(with" SAY THE matching_key OF obj. "$$)$n"
         "You"
 
-        IF obj IS open
+        IF obj IS aperto
           THEN "close and"
-            MAKE obj NOT open.
+            MAKE obj NOT aperto.
         END IF.
 
         "lock" SAY THE obj. "."
@@ -5022,7 +5022,7 @@ ADD TO EVERY OBJECT
         WHEN obj
       CHECK my_game CAN lock_with
         ELSE SAY azione_bloccata OF my_game.
-          AND obj IS lockable
+          AND obj IS bloccabile
         ELSE
           IF obj IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
@@ -5039,7 +5039,7 @@ ADD TO EVERY OBJECT
         ELSE SAY check_obj_not_obj2_with OF my_game.
           AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-          AND obj IS NOT locked
+          AND obj IS NOT bloccato
         ELSE
           IF obj IS NOT plurale
             THEN SAY check_obj_not_locked_sg OF my_game.
@@ -5065,11 +5065,11 @@ ADD TO EVERY OBJECT
           AND key = matching_key OF obj
         ELSE SAY check_door_matching_key OF my_game.
          DOES
-        MAKE obj locked. "You"
+        MAKE obj bloccato. "You"
 
-        IF obj IS open
+        IF obj IS aperto
           THEN "close and"
-            MAKE obj NOT open.
+            MAKE obj NOT aperto.
         END IF.
 
         "lock" SAY THE obj. "with" SAY THE key. "."
@@ -5175,7 +5175,7 @@ ADD TO EVERY OBJECT
       ELSE SAY check_obj_suitable_there OF my_game.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-    AND cont IS open
+    AND cont IS aperto
       ELSE
         IF cont IS NOT plurale
           THEN SAY check_obj_open2_sg OF my_game.
@@ -5489,24 +5489,24 @@ ADD TO EVERY OBJECT
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-        AND obj IS NOT open
+        AND obj IS NOT aperto
           ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_not_open_sg OF my_game.
           ELSE SAY check_obj_not_open_pl OF my_game.
         END IF.
         DOES
-      IF obj IS locked
+      IF obj IS bloccato
         THEN
           IF matching_key OF obj IN hero
-            THEN MAKE obj NOT locked.
-              MAKE obj open.
+            THEN MAKE obj NOT bloccato.
+              MAKE obj aperto.
               "(with" SAY THE matching_key OF obj. "$$)
               $nYou unlock and open" SAY THE obj. "."
             ELSE SAY THE obj. "appears to be locked."
           END IF.
-      ELSIF obj IS NOT locked
-        THEN MAKE obj open.
+      ELSIF obj IS NOT bloccato
+        THEN MAKE obj aperto.
         "You open" SAY THE obj. "."
       END IF.
   END VERB.
@@ -5578,18 +5578,18 @@ ADD TO EVERY OBJECT
           END IF.
           AND instr IN hero
         ELSE SAY check_obj2_in_hero OF my_game.
-          AND obj IS NOT open
+          AND obj IS NOT aperto
           ELSE
           IF obj IS NOT plurale
             THEN SAY check_obj_not_open_sg OF my_game.
             ELSE SAY check_obj_not_open_pl OF my_game.
           END IF.
           DOES
-        IF obj IS locked
+        IF obj IS bloccato
           THEN
             IF instr = matching_key OF obj
-              THEN MAKE obj NOT locked.
-                MAKE obj open.
+              THEN MAKE obj NOT bloccato.
+                MAKE obj aperto.
                 "You unlock  and open" SAY THE obj.
                 "with" SAY THE instr. "."
               ELSE SAY THE obj.
@@ -6142,7 +6142,7 @@ ADD TO EVERY OBJECT
             THEN SAY check_obj_allowed_in_sg OF my_game.
             ELSE SAY check_obj_allowed_in_pl OF my_game.
           END IF.
-      AND cont IS open
+      AND cont IS aperto
           ELSE
           IF cont IS NOT plurale
             THEN SAY check_obj2_open_sg OF my_game.
@@ -6962,21 +6962,21 @@ END VERB.
 -- ==============================================================
 
 
-SYNTAX shoot_with = shoot (target) 'with' (weapon)
+SYNTAX shoot_with = shoot (target) 'with' (arma)
         WHERE target ISA THING
           ELSE
         IF target IS NOT plurale
           THEN SAY illegal_parameter_sg OF my_game.
           ELSE SAY illegal_parameter_pl OF my_game.
         END IF.
-        AND weapon ISA WEAPON
+        AND arma ISA arma
           ELSE
-        IF weapon IS NOT plurale
+        IF arma IS NOT plurale
           THEN SAY illegal_parameter2_with_sg OF my_game.
           ELSE SAY illegal_parameter2_with_pl OF my_game.
         END IF.
 
-   shoot_with = shoot (weapon) 'at' (target).
+   shoot_with = shoot (arma) 'at' (target).
     -- to allow player input such as 'shoot rifle at bear'
 
 
@@ -6993,7 +6993,7 @@ ADD TO EVERY THING
           END IF.
       AND target <> hero
         ELSE SAY check_obj_not_hero2 OF my_game.
-      AND target <> weapon
+      AND target <> arma
         ELSE SAY check_obj_not_obj2_with OF my_game.
       AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
@@ -7191,7 +7191,7 @@ ADD TO EVERY liquido
 
       IF liq IN hero    -- i.e. if the implicit taking was successful
         THEN
-          IF recipiente OF liq IS NOT open
+          IF recipiente OF liq IS NOT aperto
             THEN "You can't, since" SAY THE recipiente OF liq. "is closed."
             ELSE "You take a sip of" SAY THE liq. "."
           END IF.
@@ -8280,7 +8280,7 @@ ADD TO EVERY OBJECT
             THEN SAY check_obj_allowed_in_sg OF my_game.
             ELSE SAY check_obj_allowed_in_pl OF my_game.
           END IF.
-          AND cont IS open
+          AND cont IS aperto
           ELSE
           IF cont IS NOT plurale
             THEN SAY check_obj2_open_sg OF my_game.
@@ -8758,7 +8758,7 @@ ADD TO EVERY OBJECT
   VERB unlock
     CHECK my_game CAN unlock
       ELSE SAY azione_bloccata OF my_game.
-    AND obj IS lockable
+    AND obj IS bloccabile
           ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_suitable_sg OF my_game.
@@ -8781,7 +8781,7 @@ ADD TO EVERY OBJECT
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-    AND obj IS locked
+    AND obj IS bloccato
           ELSE
         IF obj IS NOT plurale
           THEN SAY check_obj_locked_sg OF my_game.
@@ -8789,7 +8789,7 @@ ADD TO EVERY OBJECT
         END IF.
     DOES
       IF matching_key OF obj IN hero
-        THEN MAKE obj NOT locked.
+        THEN MAKE obj NOT bloccato.
           "(with" SAY THE matching_key OF obj. "$$)$n"
           "You unlock" SAY THE obj. "."
             ELSE "You don't have the key that unlocks" SAY THE obj. "."
@@ -8824,7 +8824,7 @@ ADD TO EVERY OBJECT
         WHEN obj
       CHECK my_game CAN unlock_with
         ELSE SAY azione_bloccata OF my_game.
-          AND obj IS lockable
+          AND obj IS bloccabile
               ELSE
           IF obj IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
@@ -8858,7 +8858,7 @@ ADD TO EVERY OBJECT
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
           END IF.
-      AND obj IS locked
+      AND obj IS bloccato
         ELSE
           IF obj IS NOT plurale
             THEN SAY check_obj_locked_sg OF my_game.
@@ -8867,7 +8867,7 @@ ADD TO EVERY OBJECT
       AND key = matching_key OF obj
         ELSE SAY check_door_matching_key OF my_game.
         DOES
-        MAKE obj NOT locked.
+        MAKE obj NOT bloccato.
         "You unlock" SAY THE obj. "with" SAY THE key. "."
     END VERB.
 END ADD TO.

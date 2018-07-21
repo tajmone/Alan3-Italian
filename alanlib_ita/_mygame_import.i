@@ -1,4 +1,4 @@
--- "_mygame_import.i" v0.2.8 (2018/07/21)
+-- "_mygame_import.i" v0.2.9 (2018/07/21)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -668,7 +668,7 @@ END VERB.
 
 VERB close
 	DOES ONLY
-	    	MAKE obj NOT open.
+	    	MAKE obj NOT aperto.
 	    	"You close the" SAY THE obj. "."
 END VERB.
 
@@ -965,7 +965,7 @@ END VERB.
 
 VERB fire
 	DOES ONLY
-		"You fire" SAY THE weapon. "into the air."
+		"You fire" SAY THE arma. "into the air."
 END VERB.
 
 
@@ -1225,13 +1225,13 @@ END VERB.
 VERB lock
 	DOES ONLY
 		IF matching_key OF obj IN hero
-			THEN MAKE obj locked.
+			THEN MAKE obj bloccato.
 				"(with" SAY THE matching_key OF obj. "$$)$n"
 				"You" 
 
-				IF obj IS open
+				IF obj IS aperto
 					THEN "close and"
-						MAKE obj NOT open.
+						MAKE obj NOT aperto.
 		 		END IF.
 
 				"lock" SAY THE obj. "."
@@ -1243,11 +1243,11 @@ END VERB.
 
 VERB lock_with
 	 DOES ONLY
-		MAKE obj locked. "You"
+		MAKE obj bloccato. "You"
 		 		
-			IF obj IS open
+			IF obj IS aperto
 				THEN "close and"
-					MAKE obj NOT open.
+					MAKE obj NOT aperto.
 			END IF.
 
 		 "lock" SAY THE obj. "with" SAY THE key. "."
@@ -1622,7 +1622,7 @@ VERB sip
 
 		IF liq IN hero		-- i.e. if the implicit taking was successful
 		 	THEN 
-				IF recipiente OF liq IS NOT open
+				IF recipiente OF liq IS NOT aperto
 					THEN "You can't, since" SAY THE recipiente OF liq. "is closed."
 					ELSE "You take a sip of" SAY THE liq. "."
 				END IF.
@@ -2067,7 +2067,7 @@ END VERB.
 VERB unlock
 	DOES ONLY
 		IF matching_key OF obj IN hero
-			THEN MAKE obj NOT locked.
+			THEN MAKE obj NOT bloccato.
 				"(with" SAY THE matching_key OF obj. "$$)$n"
 				"You unlock" SAY THE obj. "."
 	    		ELSE "You don't have the key that unlocks" SAY THE obj. "."
@@ -2079,7 +2079,7 @@ END VERB.
 VERB unlock_with
    WHEN obj
 	DOES ONLY
-		MAKE obj NOT locked.
+		MAKE obj NOT bloccato.
 		"You unlock" SAY THE obj. "with" SAY THE key. "."
 END VERB.
 
