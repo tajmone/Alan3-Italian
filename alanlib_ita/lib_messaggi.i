@@ -1,4 +1,4 @@
--- "lib_messaggi.i" v0.2.2 (2018/07/18)
+-- "lib_messaggi.i" v0.2.3 (2018/07/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -35,23 +35,23 @@ MESSAGE
   --============================================================================== 
   AFTER_BUT:      "Devi specificare almeno un oggetto dopo '$1'."
   BUT_ALL:        "Puoi usare '$1' solo DOPO '$2'."
-  MULTIPLE:       "Non puoi usare pi? di un oggetto con '$v'."
+  MULTIPLE:       "Non puoi usare più di un oggetto con '$v'."
   NO_SUCH:        "Qui non puoi vedere nulla del genere." -- "You can't see any $1 here."
-  NOT_MUCH:       "Cos?non resta nulla per il verbo '$v'!" -- "That doesn't leave much to $v!"
+  NOT_MUCH:       "Così non resta nulla per il verbo '$v'!" -- "That doesn't leave much to $v!"
   NOUN:           "Devi specificare un sostantivo."-- "You must supply a noun."
   UNKNOWN_WORD:   "Non conosco la parola '$1'."
   WHAT:           "Non ho capito la frase."
-  WHAT_WORD:      "Non mi ?chiaro cosa intendi con '$1'."
+  WHAT_WORD:      "Non mi è chiaro cosa intendi con '$1'."
 
   -- Disambiguazione ogetti/attori:
   -- ==============================
-  WHICH_START:    "Non mi ?chiaro se intendi dire $+1"
+  WHICH_START:    "Non mi è chiaro se intendi dire $+1"
   WHICH_COMMA:    ", $+1"
   WHICH_OR:       "o $+1."
   
   -- Disambiguazione pronomi:
   -- ========================
-  WHICH_PRONOUN_START: "Non mi ?chiaro se con '$1'"
+  WHICH_PRONOUN_START: "Non mi è chiaro se con '$1'"
   WHICH_PRONOUN_FIRST: "intendi dire $+1"
   --============================================================================
   -- RICOMINCIA PARTITA
@@ -60,25 +60,25 @@ MESSAGE
   QUIT_ACTION:    "Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? "
   --| NOTA: Le possibili risposte a questo messaggio (RESTART, RESTORE, QUIT e
   --|       UNDO) sono codificate in Alan e non possono essere tradotte, quindi
-  --|       per non confondere il giocatore ?meglio lasciarle in inglese.
+  --|       per non confondere il giocatore è meglio lasciarle in inglese.
   --============================================================================
   -- SALVA PARTITA
   --============================================================================
   SAVE_FAILED:    "Salvataggio della partita fallito."
-  SAVE_OVERWRITE: "Esiste gi?un file con questo nome. Vuoi sovrascriverlo? (y)"
-  SAVE_WHERE:     "Inserisci il nome del file" -- niente "." perch?Alan aggiunge
+  SAVE_OVERWRITE: "Esiste già un file con questo nome. Vuoi sovrascriverlo? (y)"
+  SAVE_WHERE:     "Inserisci il nome del file" -- niente "." perché Alan aggiunge
                                                -- il nome di default subito dopo!
   --============================================================================
   -- CARICA PARTITA
   --============================================================================
-  NOT_A_SAVEFILE: "Caricamento fallito, il file indicato non ?una partita
+  NOT_A_SAVEFILE: "Caricamento fallito, il file indicato non è una partita
                    salvata."
-  RESTORE_FROM:   "Inserisci il nome del file" -- niente "." perch?Alan aggiunge
+  RESTORE_FROM:   "Inserisci il nome del file" -- niente "." perché Alan aggiunge
                                                -- il nome di default subito dopo!
   SAVE_MISSING:   "Caricamento fallito, impossibile aprire il file richiesto."
-  SAVE_NAME:      "Caricamento fallito, il file indicato non ?una partita salvata
+  SAVE_NAME:      "Caricamento fallito, il file indicato non è una partita salvata
                    di questa avventura."
-  SAVE_VERSION:   "Caricamento fallito, il file indicato ?stato creato con una
+  SAVE_VERSION:   "Caricamento fallito, il file indicato è stato creato con una
                    versione diversa dell'avventura o dell'interprete."
 
 
