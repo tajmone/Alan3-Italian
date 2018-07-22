@@ -11,6 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/22 \(7\)](#20180722-7)
+    - [Tweaked `LISTED_CONTAINER`](#tweaked-listed_container)
+    - [Small Fixes](#small-fixes)
 - [2018/07/22 \(6\)](#20180722-6)
 - [2018/07/22 \(5\)](#20180722-5)
 - [2018/07/22 \(4\)](#20180722-4)
@@ -121,6 +124,28 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/22 (7)
+
+- [`lib_classi.i`][lib_classi] (v0.2.14)
+- [`lib_verbi.i`][lib_verbi] (v0.2.35)
+
+## Tweaked `LISTED_CONTAINER`
+
+In the original library code, the `LISTED_CONTAINER` class defined verb bodies for `open` and `close` in order to ensure that when a `LISTED_CONTAINER` was opened it would become `NOT OPAQUE`, and when closed `OPAQUE`.
+
+The problem with the default behavior was that it didn't check if the `open` verb body on the instance actualy succeeded — for example, if the `LISTED_CONTAINER` was implemented as being `locked` and `lockable`, attempts to open it without being in possesion of its `matching_key` would fail on the instance VERB, yet the library would always make it `NOT OPAQUE` and `LIST` it's contents.
+
+Also, the library didn't define some other verbs which might open or close a container: `open_with`, `lock`, `close_with` and `lock_with`.
+
+Therefore, this commit tweaks the code and implements also the other open/close/lock verbs, and before changing its opaqueness all verbs now always test the `open` attribute to check if the opening/closing action actually succeeded.
+
+## Small Fixes
+
+In `lib_classi.i` some `examine` verb definitions hadn't been translated to `esamina`, and they weren't acting as expected (with `LISTED_CONTAINER`s). Now fixed.
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/22 (6)
 

@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.2.13 (2018/07/22)
+-- "lib_classi.i" v0.2.14 (2018/07/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -399,7 +399,7 @@ EVERY clothing ISA OBJECT
       -- the wallet will be mentioned by default when the jacket is examined:
 
 
-  VERB examine
+  VERB esamina
     DOES AFTER
       IF THIS IS NOT OPAQUE
         THEN
@@ -898,7 +898,7 @@ END EVENT.
 EVERY dispositivo ISA OBJECT
 
 
-  VERB examine
+  VERB esamina
     DOES AFTER
       IF THIS IS NOT plurale
         THEN "It is"
@@ -1102,7 +1102,7 @@ EVERY porta ISA OBJECT
 
 
 
-  VERB examine
+  VERB esamina
     DOES AFTER
       IF THIS IS NOT plurale
         THEN "It is"
@@ -1234,7 +1234,7 @@ EVERY lightsource ISA OBJECT
                -- You cannot switch on or off a natural lightsource.
 
 
-  VERB examine
+  VERB esamina
     DOES AFTER
       IF THIS IS lit
         THEN
@@ -1458,7 +1458,7 @@ EVERY liquido ISA OBJECT
     SCHEDULE check_vessel AT THIS AFTER 0.    -- this event is defined further below
 
 
-  VERB examine
+  VERB esamina
     DOES ONLY
       IF recipiente OF THIS <> recipiente_fittizio
         THEN
@@ -1836,7 +1836,7 @@ EVERY LISTED_CONTAINER ISA OBJECT
 
 
 
-  VERB examine
+  VERB esamina
     DOES ONLY
       IF THIS IS NOT OPAQUE
         THEN LIST THIS.
@@ -1863,22 +1863,80 @@ EVERY LISTED_CONTAINER ISA OBJECT
   END VERB.
 
 
+-- ==============================
+-- Opening/Closing and Opaqueness
+-- ==============================
+-- Il comportamento predefinito della libreria per un LISTED_CONTAINER è che sia
+-- opaco (OPAQUE) quando è chiuso, e NOT OPAQUE quando è aperto; questo affinché
+-- i suoi contenuti diventino visibili (nella descrizione). 
+-- I verbi che comportano l'apertura e la chiusura di un LISTED_CONTAINER devono
+-- assicurarsi di manipolarne lo stato di opacità di conseguenza. A tal fine qui
+-- di seguito vengono definiti sulla classe LISTED_CONTAINER tali verbi, che
+-- verranno eseguiti dopo i medesimi verbi sulle specifiche istanze.
 
--- Note that closed listed_containers are by default opaque and they become "not opaque" when
--- they are opened:
+--+----------------------.
+--| C O D E  T W E A K S |
+--+-----------------------------------------------------------------------------
+--| The following code was changed from the original library, which only defined
+--| the 'open' and 'close' verbs, and didn't check if the 'open' verb actually
+--| succeeded before setting the LISTED_CONTAINER to NOT OPAQUE -- this caused
+--| erroneous behavior with locked LISTED_CONTAINER for which the player didn't
+--| posses the matching key: the body of 'open' was always executed, revealing
+--| the contents of the container even when the 'open' verb body on the instance
+--| failed! So I've added some checks, and also implemented the 'open_with',
+--| 'lock', 'close_with' and 'lock_with' verbs.
+--+-----------------------------------------------------------------------------
+
+-- @TODO: | Should add a 'transparent' attribute to allow creation of listed
+--        | containers that don't become opaque when closed!
 
 
   VERB open
     DOES
-      MAKE THIS NOT OPAQUE.
-      LIST THIS.
+      IF THIS IS aperto --> verifica che sia davvero aperta!
+        THEN
+          MAKE THIS NOT OPAQUE.
+          LIST THIS.
+      END IF.
   END VERB.
 
 
-  VERB close
+  VERB open_with
+    WHEN ogg DOES
+      IF THIS IS aperto --> verifica che sia davvero aperta!
+        THEN
+          MAKE THIS NOT OPAQUE.
+          LIST THIS.
+      END IF.
+  END VERB.
+
+  
+  VERB close, lock
     DOES
-      MAKE THIS OPAQUE.
+      IF THIS IS NOT aperto --> verifica che sia davvero chiuso!
+        THEN
+          MAKE THIS OPAQUE.
+      END IF.
   END VERB.
+
+
+  VERB close_with
+    WHEN ogg DOES
+      IF THIS IS NOT aperto --> verifica che sia davvero chiuso!
+        THEN
+           MAKE THIS OPAQUE.
+      END IF.
+  END VERB.
+
+  VERB lock_with
+    WHEN ogg DOES
+      IF THIS IS NOT aperto --> verifica che sia davvero chiuso!
+        THEN
+          MAKE THIS OPAQUE.
+      END IF.
+  END VERB.
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 END EVERY.
@@ -1944,7 +2002,7 @@ EVERY supporter ISA OBJECT
     -- ELSE "There's nothing on" SAY THE THIS. "."
 
 
-  VERB examine
+  VERB esamina
     DOES
       LIST THIS.
   END VERB.
@@ -2037,7 +2095,7 @@ EVERY finestra ISA OBJECT
   IS NOT prendibile.
 
 
-  VERB examine
+  VERB esamina
     DOES
       IF THIS IS NOT aperto
         THEN
@@ -2335,7 +2393,7 @@ ADD TO EVERY ACTOR
     END IF.
 
 
-  VERB examine
+  VERB esamina
     DOES AFTER
       IF THIS <> hero
         THEN

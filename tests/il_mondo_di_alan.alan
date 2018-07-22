@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione 0.2.13 (2018/07/22)
+--  versione 0.2.14 (2018/07/22)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -206,6 +206,42 @@ THE mela IsA frutto AT Eden.
   NAME mela.
   IS NOT raggiungibile.
 END THE mela.
+
+--==============================================================================
+-- Lo Scrigno
+--==============================================================================
+-- Per testare contenitori con chiavi...
+
+THE scrigno IsA LISTED_CONTAINER AT Eden.
+  OPAQUE CONTAINER
+  -- IS OPAQUE.
+  HAS articolo "lo".
+  IS apribile.
+  IS NOT aperto.
+  IS bloccabile.
+  IS bloccato.
+  HAS chiave_abbinata chiave_scrigno.
+END THE scrigno.
+
+
+-- ==============
+-- Chiave Scrigno
+-- ==============
+THE chiave_scrigno IsA object AT Eden.
+  HAS articolo "la".
+  NAME chiave.
+
+END THE chiave_scrigno.
+
+
+-- ==============
+-- lingotto d'Oro
+-- ==============
+THE lingotto IsA object IN scrigno.
+  MENTIONED "lingotto d'oro"
+END THE lingotto.
+
+
 -- =============================================================================
 
 ----- Mercato

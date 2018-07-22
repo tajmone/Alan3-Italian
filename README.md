@@ -3,6 +3,8 @@
     Alan Standard Library: 2.1
     Alan Development Kit:  3.0beta5
 
+- https://github.com/tajmone/Alan3-Italian
+
 This repository is a WIP translation to Italian of the _Alan Standard Library_ v2.1 (created by Anssi Räisänen) for the Alan Interactive Fiction Language version 3. Italian translation by [Tristano Ajmone].
 
 [License]: Artistic License 2.0

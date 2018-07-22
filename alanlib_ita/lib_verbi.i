@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.34 (2018/07/22)
+-- "lib_verbi.i" v0.2.35 (2018/07/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -5686,16 +5686,16 @@ ADD TO EVERY OBJECT
   VERB open
     CHECK my_game CAN aprire
       ELSE SAY azione_bloccata OF my_game.
-        AND ogg IS apribile
-          ELSE
+    AND ogg IS apribile
+      ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
           THEN SAY ogg1_inadatto_sg OF my_game. "aprire."
           ELSE SAY ogg1_inadatto_pl OF my_game. "aprire."
         END IF.
-        AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-        AND ogg IS raggiungibile AND ogg IS NOT distante
+    AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
@@ -5710,13 +5710,13 @@ ADD TO EVERY OBJECT
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-        AND ogg IS NOT aperto
-          ELSE
+    AND ogg IS NOT aperto
+      ELSE
         IF ogg IS NOT plurale
           THEN SAY check_obj_not_open_sg OF my_game.
           ELSE SAY check_obj_not_open_pl OF my_game.
         END IF.
-        DOES
+    DOES
       IF ogg IS bloccato
         THEN
           IF chiave_abbinata OF ogg IN hero
@@ -5724,8 +5724,8 @@ ADD TO EVERY OBJECT
               MAKE ogg aperto.
               "(with" SAY THE chiave_abbinata OF ogg. "$$)
               $nYou unlock and open" SAY THE ogg. "."
-            ELSE SAY THE ogg. "appears to be locked."
-          END IF.
+          ELSE SAY THE ogg. "appears to be locked."
+        END IF.
       ELSIF ogg IS NOT bloccato
         THEN MAKE ogg aperto.
         "You open" SAY THE ogg. "."
@@ -5811,13 +5811,30 @@ ADD TO EVERY OBJECT
             IF strum = chiave_abbinata OF ogg
               THEN MAKE ogg NOT bloccato.
                 MAKE ogg aperto.
-                "You unlock  and open" SAY THE ogg.
-                "with" SAY THE strum. "."
+             -- "You unlock  and open" SAY THE ogg.
+                "Sblocchi e apri" SAY THE ogg.
+                "con" SAY THE strum. "."
               ELSE SAY THE ogg.
                 IF ogg IS NOT plurale
-                  THEN "is locked."
-                  ELSE "are locked."
+                  THEN "è"
+                  ELSE "sono"
                 END IF.
+                "bloccat$$"
+                IF ogg IS NOT femminile
+                  THEN
+                    IF ogg IS NOT plurale
+                      THEN SAY "o.". -- GNA = msi
+                      ELSE SAY "i.". -- GNA = mpi
+                    END IF.
+                  ELSE
+                    IF ogg IS NOT plurale
+                      THEN SAY "a.". -- GNA = fsi
+                      ELSE SAY "e.". -- GNA = fpi
+                    END IF.
+                END IF.
+             -- IF ogg IS NOT plurale
+             --   THEN "is locked."
+             --   ELSE "are locked."
             END IF.
           ELSE "You can't open" SAY THE ogg. "with" SAY THE strum. "."
         END IF.
@@ -8919,7 +8936,7 @@ ADD TO EVERY OBJECT
         THEN MAKE ogg NOT bloccato.
           "(with" SAY THE chiave_abbinata OF ogg. "$$)$n"
           "You unlock" SAY THE ogg. "."
-            ELSE "You don't have the chiave that unlocks" SAY THE ogg. "."
+            ELSE "You don't have the key that unlocks" SAY THE ogg. "."
       END IF.
   END VERB.
 END ADD TO.
