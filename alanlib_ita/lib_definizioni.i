@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.33 (2018/07/22)
+-- "lib_definizioni.i" v0.2.34 (2018/07/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -97,33 +97,37 @@ ADD TO EVERY THING
      inanimato.
      -- Gli attori sono NOT inanimato.
      spostabile.
-     -- to allow pushing, pulling, lifting, etc.
+     -- Lo si può spingere, tirare, sollevare, ecc.
      aperto.
-     -- = not closed.
-     raggiungibile.
-     -- See also 'distant' below
+     -- = non chiuso.
+     raggiungibile.                                                             --> TRANSLATE!
+     -- (vedi attributo 'distante', più giù)
      prendibile.
-     -- you'll have to separately define which objects are NOT takeable.
-     -- By default, the floor, walls, ceiling, ground and sky objects
-     -- are not takeable. The same goes for all doors, windows, sounds, liquids
-     -- that are not in containers, and actors.
+     -- Si dovranno definire manualmente gli oggetti che non si possono prendere.
+     -- Di default, non sono prendibili: pavimento, pareti, soffitto, suolo e
+     -- cielo; e anche tutte le porte, finestre, suoni e i liquidi che non sono
+     -- dentro un contenitore o un attore.
 
   HAS consentiti { oggetto_fittizio }.
-    -- container objects only take what is allowed for them to take;
-    -- this applies to verbs empty_in, pour_in, put_in and throw_in.
-    -- "null_object" is a default dummy that can be ignored.
+      -- Nei contenitori è possibile introdurre solo gli oggetti elencati tra i
+      -- suoi 'consentiti' (attributo di insieme). Viene usato da quei verbi che
+      -- trasferiscono un oggetto in un altro (svuota_in, versa_in, metti_in).
+      -- Il valore predefinito 'oggetto_fittizio' serve solo a inizializzare la
+      -- tipologia dell'insieme (ossia, riferimenti a istanze).
 
   HAS xDesc "".
-     -- Il testo da mostrare quando l'oggetto viene esaminato. Un'alternativa
-     -- semplice al dover implementare 'VERB esamina DOES ONLY..." sull'oggetto
-     -- affinché produca una descrizione personalizzata.
+      -- Il testo da mostrare quando l'oggetto viene esaminato. Un'alternativa
+      -- semplice al dover implementare 'VERB esamina DOES ONLY...' sull'oggetto
+      -- affinché produca una descrizione personalizzata.
 
   HAS chiave_abbinata  chiave_fittizia.
-      -- All lockable doors need a matching chiave to lock/unlock them.
-      -- "null_key" is a default dummy that can be ignored. This attribute
-      -- is here added to every thing instead of just doors, to enable
-      -- matching keys to be programmed for other locked objects, too, like for
-      -- example treasure chests etc.
+      -- Ogni porta 'bloccabile' richiede la sua 'chiave_abbinata' per poter
+      -- essere bloccata/sbloccata. Questo attributo viene aggiunto ad ogni
+      -- cosa, anziché soltanto alle porte, di modo che si possano implementare
+      -- altri tipi di oggetti bloccabili con chiave (p.es., scrigni del tesoro,
+      -- congegni con chiave a tessera magnetica, ecc.).
+      -- La 'chiave_fittizia' è solo un segnaposto per poter creare l'attributo
+      -- e inizializzarne la tipologia (ossia, riferimento ad un'istanza). 
 
   HAS testo "".
 
@@ -139,20 +143,23 @@ ADD TO EVERY THING
 
   NOT potabile.
   NOT commestibile.
-    -- can (not) be used as a firearm
   NOT bloccabile.
   NOT bloccato.
   NOT acceso.
   NOT apribile.
   NOT leggibile.
   NOT scenario.
-   -- scenery has special responses for 'examine' and 'take', behaves like a normal object otherwise.
+      -- Un oggetto 'scenario' risponderà diversamente ai verbi 'esamina' e 
+      -- 'prendi' (ossia, informando il giocatore che l'oggetto non è importante
+      -- ai fini del gioco). A parte questo, si comporta come un normale oggeto.
+
   NOT indossabile.
   NOT scrivibile.
 
   CAN
     NOT parlare.
     NOT sparare.
+        -- Non può essere usato come arma da fuoco (verbo 'spara').
 
 
   -- ==================================

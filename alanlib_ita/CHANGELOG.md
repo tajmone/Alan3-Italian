@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/22 \(6\)](#20180722-6)
 - [2018/07/22 \(5\)](#20180722-5)
 - [2018/07/22 \(4\)](#20180722-4)
     - [Verb: `sell`](#verb-sell)
@@ -120,6 +121,16 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/22 (6)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.34)
+
+Translate documentation comments in library sources.
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/22 (5)
 
