@@ -1,4 +1,4 @@
--- "lib_luoghi.i" v0.2.4 (2018/07/21)
+-- "lib_luoghi.i" v0.2.5 (2018/07/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -19,7 +19,7 @@
 --
 -- IMPORT 'locations.i'.
 --
--- in your source code.
+-- in your fonte code.
 
 
 
@@ -202,7 +202,7 @@ THE pavimento ISA oggetto_stanza
 
 -- @PRENDI_DA -> @TAKE_FROM (VERB) => FLOOR
   VERB prendi_da
-     WHEN holder
+     WHEN detentore
     DOES ONLY "If you want to pick up something, just TAKE it."
   END VERB.
 
@@ -268,7 +268,7 @@ THE ground ISA site_object
 
 -- @PRENDI_DA -> @TAKE_FROM (VERB) => GROUND
   VERB prendi_da
-     WHEN holder
+     WHEN detentore
     DOES ONLY "If you want to pick up something, just TAKE it."
   END VERB.
 
@@ -333,7 +333,7 @@ END ADD TO.
 -- THE my_game ISA DEFINITION_BLOCK
 -- ...
 -- VERB examine
---    CHECK obj <> pareti
+--    CHECK ogg <> pareti
 --       ELSE
 --          IF hero AT kitchen
 --              THEN "The walls are lined with shelves."

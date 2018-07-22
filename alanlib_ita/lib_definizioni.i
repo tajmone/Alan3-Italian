@@ -119,7 +119,7 @@ ADD TO EVERY THING
     -- See the library manual for more info.
 
   HAS chiave_abbinata  chiave_fittizia.
-      -- All lockable doors need a matching key to lock/unlock them.
+      -- All lockable doors need a matching chiave to lock/unlock them.
       -- "null_key" is a default dummy that can be ignored. This attribute
       -- is here added to every thing instead of just doors, to enable
       -- matching keys to be programmed for other locked objects, too, like for

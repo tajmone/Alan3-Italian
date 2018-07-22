@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/22 \(3\)](#20180722-3)
+    - [Translate Verb Parameters](#translate-verb-parameters)
 - [2018/07/22 \(2\)](#20180722-2)
     - [Changed Behaviour of `examine`](#changed-behaviour-of-examine)
 - [2018/07/22 \(1\)](#20180722-1)
@@ -115,6 +117,52 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/22 (3)
+
+
+- [`lib_classi.i`][lib_classi] (v0.2.13)
+- [`lib_luoghi.i`][lib_luoghi] (v0.2.5)
+- [`lib_verbi.i`][lib_verbi] (v0.2.32)
+
+
+## Translate Verb Parameters
+
+This commit italianizes verbs parameters:
+
+
+|   English    |   Italian    |       Annotazioni        |
+|--------------|--------------|--------------------------|
+| `obj`        | `ogg`        | oggetto                  |
+| `act`        | `png`        | personaggio non giocante |
+| `food`       | `cibo`       |                          |
+| `instr`      | `strum`      | strumento                |
+| `recipient`  | `ricevente`  |                          |
+| `key`        | `chiave`     |                          |
+| `app`        | `disp`       | dispositivo              |
+| `odour`      | `odore`      |                          |
+| `vehicle`    | `veicolo`    |                          |
+| `holder`     | `detentore`  |                          |
+| `topic`      | `argomento`  |                          |
+| `target`     | `bersaglio`  |                          |
+| `surface`    | `superficie` |                          |
+| `item`       | `merce`      | (compravendita)          |
+| `source`     | `fonte`      | (consultazione)          |
+| `substance`  | `sostanza`   | (riempi con)             |
+| `weapon`     | `arma`       |                          |
+| `projectile` | `proiettile` | (lancia)                 |
+| `victim`     | `vittima`    |                          |
+
+
+> __NOTA__ — l'unico parametro non ancora tradotto è `bulk` (nei verbi come: guarda/metti dietro/sopra/sotto (bulk)). Non riesco a tradurlo. Il termine qui indica una "massa", un corpo che occupa uno spazio significativo e che (implicitamente) è un ostacolo per operazioni come vedere sopra, sotto, dietro di esso.
+> 
+> La soluzione più ovvia sarebbere usare "oggetto", ma non va bene perché la convenzione nella libreria è che `ogg` sia riservato a certi parametri con un contesto specifico (e `bulk` non rientra tra loro).
+> 
+> Tra i termini presi in considerazione: _massa_, _mole_, _ostacolo_, _corpo_ — ma seppure rendevano l'idea, nessuno di questi è adatto.
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/22 (2)
 

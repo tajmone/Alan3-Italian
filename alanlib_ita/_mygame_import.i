@@ -1,4 +1,4 @@
--- "_mygame_import.i" v0.2.10 (2018/07/21)
+-- "_mygame_import.i" v0.2.11 (2018/07/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -518,7 +518,7 @@ END VERB.
 
 
 VERB ask
-	WHEN act
+	WHEN png
 		DOES ONLY "There is no reply."
 END VERB.
 
@@ -526,13 +526,13 @@ END VERB.
 
 VERB ask_for
 	DOES ONLY
-		MAKE act compliant.		
+		MAKE png compliant.		
 		-- see 'classes.i' -> ACTOR.
 		-- It is only possible to get something from an NPC
 		-- if the NPC is 'compliant'.
-		LOCATE obj IN hero.
-		SAY THE act. "gives" SAY THE obj. "to you."
-		MAKE act NOT compliant.
+		LOCATE ogg IN hero.
+		SAY THE png. "gives" SAY THE ogg. "to you."
+		MAKE png NOT compliant.
 END VERB.
 
 
@@ -545,7 +545,7 @@ END VERB.
 
 
 VERB attack_with
-	WHEN target
+	WHEN bersaglio
 		DOES ONLY
 			"Resorting to brute force is not the solution here."
 END VERB.
@@ -554,9 +554,9 @@ END VERB.
 
 VERB bite
 	DOES ONLY
-		IF obj IN hero
-			THEN "You take a bite of" SAY THE obj. "$$." 
-				IF obj IS NOT plurale
+		IF ogg IN hero
+			THEN "You take a bite of" SAY THE ogg. "$$." 
+				IF ogg IS NOT plurale
 					THEN "It tastes nothing out of the ordinary."
 					ELSE "They taste nothing out of the ordinary."
 				END IF.
@@ -574,7 +574,7 @@ END VERB.
 
 VERB break_with
 	DOES ONLY		
-		"Trying to break" SAY THE obj. "with" SAY THE instr. 
+		"Trying to break" SAY THE ogg. "with" SAY THE strum. 
 		"wouldn't accomplish anything."
 END VERB.
 
@@ -591,21 +591,21 @@ END VERB.
 
 VERB burn
 	DOES ONLY
-		"You must state what you want to burn" SAY THE obj. "with."
+		"You must state what you want to burn" SAY THE ogg. "with."
 END VERB.
 
 
 
 VERB burn_with
 	DOES ONLY
-		"You can't burn" SAY THE obj. "with" SAY THE instr. "."
+		"You can't burn" SAY THE ogg. "with" SAY THE strum. "."
 END VERB.
 
 
 
 VERB buy
 	DOES ONLY
-		IF item IS NOT plurale
+		IF merce IS NOT plurale
 			THEN "That's not" 
 			ELSE "Those are not"
 		END IF. 
@@ -617,7 +617,7 @@ END VERB.
 
 VERB catch
 	DOES ONLY
-		IF obj IS NOT plurale
+		IF ogg IS NOT plurale
 			THEN "That doesn't" 
 			ELSE "Those don't"
 		END IF.
@@ -635,7 +635,7 @@ END VERB.
 
 VERB climb
 	DOES ONLY
-		IF obj IS NOT plurale
+		IF ogg IS NOT plurale
 			THEN "That's not" 
 			ELSE "Those are not"
 		END IF.	
@@ -646,7 +646,7 @@ END VERB.
 
 VERB climb_on
 	DOES ONLY
-		IF surface IS NOT plurale
+		IF superficie IS NOT plurale
 			THEN "That's not" 
 			ELSE "Those are not"
 		END IF.
@@ -657,7 +657,7 @@ END VERB.
 
 VERB climb_through
 	DOES ONLY
-		IF obj IS NOT plurale
+		IF ogg IS NOT plurale
 			THEN "That's not" 
 			ELSE "Those are not"
 		END IF.
@@ -668,22 +668,22 @@ END VERB.
 
 VERB close
 	DOES ONLY
-	    	MAKE obj NOT aperto.
-	    	"You close the" SAY THE obj. "."
+	    	MAKE ogg NOT aperto.
+	    	"You close the" SAY THE ogg. "."
 END VERB.
 
 
 
 VERB close_with
 	DOES ONLY
-	    	"You can't $v" SAY THE obj. "with" SAY THE instr. "."
+	    	"You can't $v" SAY THE ogg. "with" SAY THE strum. "."
 END VERB.
 
 
 
 VERB consult
 	DOES ONLY
-		"You find nothing useful about" SAY THE topic. "in" SAY THE source. "."
+		"You find nothing useful about" SAY THE argomento. "in" SAY THE fonte. "."
 END VERB.
 
 
@@ -703,14 +703,14 @@ END VERB.
 
 VERB cut
 	DOES ONLY
-		"You need to specify what you want to cut" SAY THE obj. "with."
+		"You need to specify what you want to cut" SAY THE ogg. "with."
 END VERB.
 
 
 
 VERB cut_with
 	DOES ONLY
-		"You can't cut" SAY THE obj. "with" SAY THE instr. "."
+		"You can't cut" SAY THE ogg. "with" SAY THE strum. "."
 END VERB.
 
 
@@ -786,7 +786,7 @@ END VERB.
 
 VERB drive 
 	DOES ONLY
-		IF vehicle IS NOT plurale
+		IF veicolo IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -797,7 +797,7 @@ END VERB.
 
 VERB drop
 	DOES ONLY
-      	LOCATE obj HERE.
+      	LOCATE ogg HERE.
       	"Dropped."
 END VERB.
 
@@ -821,21 +821,21 @@ END VERB.
 VERB 'empty'
 	DOES ONLY 
 		-- implicit taking:
-		IF obj NOT DIRECTLY IN hero 
-			THEN LOCATE obj IN hero.
+		IF ogg NOT DIRECTLY IN hero 
+			THEN LOCATE ogg IN hero.
 				SAY implicit_taking_message OF my_game.
 		END IF.									
 		-- end of implicit taking.
 
-		IF COUNT ISA OBJECT, DIRECTLY IN obj = 0
-			THEN "There is nothing in" SAY THE obj. "."
+		IF COUNT ISA OBJECT, DIRECTLY IN ogg = 0
+			THEN "There is nothing in" SAY THE ogg. "."
 			ELSE
-				"You $v the contents of" SAY THE obj.
+				"You $v the contents of" SAY THE ogg.
 					IF pavimento HERE
 						THEN "on the floor."
 						ELSE "on the ground."
 					END IF.
-				EMPTY obj AT hero.
+				EMPTY ogg AT hero.
 		END IF.
 END VERB.
 
@@ -844,17 +844,17 @@ END VERB.
 VERB empty_in, pour_in
 	DOES ONLY
 		-- implicit taking:
-		IF obj NOT DIRECTLY IN hero 
-			THEN LOCATE obj IN hero.
+		IF ogg NOT DIRECTLY IN hero 
+			THEN LOCATE ogg IN hero.
 				SAY implicit_taking_message OF my_game.
 		END IF.									
 		-- end of implicit taking.
 
-		IF COUNT ISA OBJECT, DIRECTLY IN obj = 0
-			THEN "There is nothing in" SAY THE obj. "."
+		IF COUNT ISA OBJECT, DIRECTLY IN ogg = 0
+			THEN "There is nothing in" SAY THE ogg. "."
 			ELSE 
-				EMPTY obj IN cont.
-				"You $v the contents of" SAY THE obj.
+				EMPTY ogg IN cont.
+				"You $v the contents of" SAY THE ogg.
 				"in" SAY THE cont. "."
 		END IF.
 END VERB.	
@@ -864,21 +864,21 @@ END VERB.
 VERB empty_on, pour_on
 	DOES ONLY 
 		-- implicit taking:
-		IF obj NOT DIRECTLY IN hero 
-			THEN LOCATE obj IN hero.
+		IF ogg NOT DIRECTLY IN hero 
+			THEN LOCATE ogg IN hero.
 				SAY implicit_taking_message OF my_game.
 		END IF.									
 		-- end of implicit taking.
 
-		IF COUNT ISA OBJECT, DIRECTLY IN obj = 0
-			THEN "There is nothing in" SAY THE obj. "."
+		IF COUNT ISA OBJECT, DIRECTLY IN ogg = 0
+			THEN "There is nothing in" SAY THE ogg. "."
 			ELSE 
-				IF surface = pavimento OR surface = ground
-					THEN EMPTY obj AT hero.
-					ELSE EMPTY obj IN surface.
+				IF superficie = pavimento OR superficie = ground
+					THEN EMPTY ogg AT hero.
+					ELSE EMPTY ogg IN superficie.
 				END IF.
-				"You $v the contents of" SAY THE obj.
-				"on" SAY THE surface. "."
+				"You $v the contents of" SAY THE ogg.
+				"on" SAY THE superficie. "."
 		END IF.
 END VERB.
 
@@ -886,7 +886,7 @@ END VERB.
 
 VERB enter
 	 DOES ONLY
-		IF obj IS NOT plurale
+		IF ogg IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -897,22 +897,22 @@ END VERB.
 
 VERB examine
 	DOES ONLY
-		IF obj IS leggibile			
+		IF ogg IS leggibile			
 			-- for readable objects, 'examine' behaves just as 'read'
 			THEN 
-				IF testo OF obj = ""
-					THEN "There is nothing written on" SAY THE obj. "."
-					ELSE "You read" SAY THE obj. "."
-						IF obj IS NOT plurale
+				IF testo OF ogg = ""
+					THEN "There is nothing written on" SAY THE ogg. "."
+					ELSE "You read" SAY THE ogg. "."
+						IF ogg IS NOT plurale
 							THEN "It says"
 							ELSE "They say"
 						END IF.  
-						"""$$" SAY testo OF obj. "$$""."
+						"""$$" SAY testo OF ogg. "$$""."
 				END IF.
       		ELSE 
-				IF obj = hero
+				IF ogg = hero
 					THEN "You notice nothing unusual about yourself."
-					ELSE "You notice nothing unusual about" SAY THE obj. "."
+					ELSE "You notice nothing unusual about" SAY THE ogg. "."
 				END IF. 
 		END IF.
 END VERB.
@@ -921,7 +921,7 @@ END VERB.
 
 VERB 'exit'
 	DOES ONLY
-		IF obj IS NOT plurale
+		IF ogg IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.		
@@ -932,7 +932,7 @@ END VERB.
 
 VERB extinguish
 	DOES ONLY
-		IF obj IS NOT plurale
+		IF ogg IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -950,7 +950,7 @@ END VERB.
 
 VERB fill_with
 	DOES ONLY	
-		"You can't fill" SAY THE cont. "with" SAY THE substance. "."
+		"You can't fill" SAY THE cont. "with" SAY THE sostanza. "."
 		-- allow the action at individual substances only
 END VERB.
 
@@ -986,15 +986,15 @@ END VERB.
 
 VERB follow
 	DOES ONLY 
-		LOCATE hero AT act.
-		"You follow" SAY THE act. "."		
+		LOCATE hero AT png.
+		"You follow" SAY THE png. "."		
 END VERB.
 
 
 
 VERB free
 	DOES ONLY 
-		IF obj IS NOT plurale
+		IF ogg IS NOT plurale
 			THEN "That doesn't need to be $vd."
 			ELSE "Those don't need to be $vd."
 		END IF.
@@ -1005,7 +1005,7 @@ END VERB.
 VERB get_off
 	DOES ONLY
 		IF hero IS seduto OR hero IS sdraiato
-			THEN "You get off" SAY THE surface. "."
+			THEN "You get off" SAY THE superficie. "."
 				MAKE hero NOT sdraiato.
 				MAKE hero NOT seduto.
 			ELSE "You're standing up already."
@@ -1033,14 +1033,14 @@ END VERB.
 VERB give
 	DOES ONLY
 		-- implicit taking:
-		IF obj NOT DIRECTLY IN hero
+		IF ogg NOT DIRECTLY IN hero
 			THEN  SAY implicit_taking_message OF my_game.
-				LOCATE obj IN hero.
+				LOCATE ogg IN hero.
 		END IF.
 		-- end of implicit taking.
 
-		LOCATE obj IN recipient.	
-		"You give" SAY THE obj. "to" SAY THE recipient. "."
+		LOCATE ogg IN ricevente.	
+		"You give" SAY THE ogg. "to" SAY THE ricevente. "."
 END VERB.
 
 
@@ -1103,7 +1103,7 @@ END VERB.
 
 VERB jump_on
 	DOES ONLY
-		IF surface IS NOT plurale
+		IF superficie IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -1121,13 +1121,13 @@ END VERB.
 
 VERB kill
 	DOES ONLY
-		"You have to state what you want to kill" SAY THE victim. "with."
+		"You have to state what you want to kill" SAY THE vittima. "with."
 END VERB.
 
 
 
 VERB kill_with
-   WHEN victim
+   WHEN vittima
 	DOES ONLY
 		"That would be needlessly brutal."
 END VERB.
@@ -1136,8 +1136,8 @@ END VERB.
 
 VERB kiss
 	DOES ONLY
-		IF obj ISA ACTOR
-			THEN SAY THE obj. "avoids your advances."
+		IF ogg ISA ACTOR
+			THEN SAY THE ogg. "avoids your advances."
 			ELSE "Nothing would be achieved by that."
 		END IF.
 END VERB.
@@ -1146,7 +1146,7 @@ END VERB.
 
 VERB knock
 	DOES ONLY
-		"You knock on" SAY THE obj. "$$. Nothing happens."
+		"You knock on" SAY THE ogg. "$$. Nothing happens."
 END VERB.
 
 
@@ -1175,7 +1175,7 @@ END VERB.
 
 VERB lie_on
 	DOES ONLY
-		"There's no need to lie down on" SAY THE surface. "."
+		"There's no need to lie down on" SAY THE superficie. "."
 		-- If you need this to work, make a nested location
 		-- (e.g. THE on_bed ISA LOCATION AT bedroom; etc.)
 		-- Remember to: MAKE hero lying_down.
@@ -1194,7 +1194,7 @@ END VERB.
 
 VERB light
 	DOES ONLY
-		IF obj IS NOT plurale
+		IF ogg IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -1212,10 +1212,10 @@ END VERB.
 
 VERB listen
 	DOES ONLY
-		IF obj AT hero
+		IF ogg AT hero
 			THEN "You hear nothing unusual."
-		ELSIF obj NEAR hero
-			THEN "You can't hear" SAY THE obj. "very well from here."
+		ELSIF ogg NEAR hero
+			THEN "You can't hear" SAY THE ogg. "very well from here."
 			ELSE "You can't hear anything."
 		END IF.
 END VERB.
@@ -1224,18 +1224,18 @@ END VERB.
 
 VERB lock
 	DOES ONLY
-		IF chiave_abbinata OF obj IN hero
-			THEN MAKE obj bloccato.
-				"(with" SAY THE chiave_abbinata OF obj. "$$)$n"
+		IF chiave_abbinata OF ogg IN hero
+			THEN MAKE ogg bloccato.
+				"(with" SAY THE chiave_abbinata OF ogg. "$$)$n"
 				"You" 
 
-				IF obj IS aperto
+				IF ogg IS aperto
 					THEN "close and"
-						MAKE obj NOT aperto.
+						MAKE ogg NOT aperto.
 		 		END IF.
 
-				"lock" SAY THE obj. "."
-	    		ELSE	"You have to state what you want to lock" SAY THE obj. "with."
+				"lock" SAY THE ogg. "."
+	    		ELSE	"You have to state what you want to lock" SAY THE ogg. "with."
 		END IF.
 END VERB.
 
@@ -1243,14 +1243,14 @@ END VERB.
 
 VERB lock_with
 	 DOES ONLY
-		MAKE obj bloccato. "You"
+		MAKE ogg bloccato. "You"
 		 		
-			IF obj IS aperto
+			IF ogg IS aperto
 				THEN "close and"
-					MAKE obj NOT aperto.
+					MAKE ogg NOT aperto.
 			END IF.
 
-		 "lock" SAY THE obj. "with" SAY THE key. "."
+		 "lock" SAY THE ogg. "with" SAY THE chiave. "."
 END VERB.
 
 
@@ -1283,7 +1283,7 @@ END VERB.
 
 VERB look_out_of
 	DOES ONLY
-		IF obj IS NOT plurale
+		IF ogg IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -1329,7 +1329,7 @@ END VERB.
 
 VERB pry
 	DOES ONLY 
-		"You must state what you want to pry" SAY THE obj. "with."
+		"You must state what you want to pry" SAY THE ogg. "with."
 END VERB.
 
 
@@ -1350,7 +1350,7 @@ END VERB.
 
 VERB push
 	DOES ONLY 
-		"You give" SAY THE obj. "a little push. Nothing happens."
+		"You give" SAY THE ogg. "a little push. Nothing happens."
 END VERB.
 
 
@@ -1365,7 +1365,7 @@ END VERB.
 VERB put
 	DOES ONLY
 		"You must state where you want to put" 
-			IF obj IS NOT plurale
+			IF ogg IS NOT plurale
 				THEN "it."
 				ELSE "them."
 			END IF.
@@ -1375,8 +1375,8 @@ END VERB.
 
 VERB put_in
 	DOES ONLY 
-		LOCATE obj IN cont.
-		"You put" SAY THE obj. "into" SAY THE cont. "."	
+		LOCATE ogg IN cont.
+		"You put" SAY THE ogg. "into" SAY THE cont. "."	
 END VERB.
 
 
@@ -1390,13 +1390,13 @@ END VERB.
 
 VERB put_on
 	DOES ONLY
-		IF obj IN hero
+		IF ogg IN hero
 			THEN
-				IF surface = pavimento OR surface = ground
-					THEN LOCATE obj AT hero.
-						"You put" SAY THE obj. "on" SAY THE surface. "."
-					ELSE LOCATE obj IN surface.
-						"You put" SAY THE obj. "on" SAY THE surface. "."
+				IF superficie = pavimento OR superficie = ground
+					THEN LOCATE ogg AT hero.
+						"You put" SAY THE ogg. "on" SAY THE superficie. "."
+					ELSE LOCATE ogg IN superficie.
+						"You put" SAY THE ogg. "on" SAY THE superficie. "."
 					END IF.	
 			END IF.
 END VERB.
@@ -1412,14 +1412,14 @@ END VERB.
 
 VERB read
 	DOES ONLY
-		IF testo OF obj = ""
-			THEN "There's nothing written on" SAY THE obj. "."
-			ELSE "You read" SAY THE obj. "." 
-				IF obj IS NOT plurale
+		IF testo OF ogg = ""
+			THEN "There's nothing written on" SAY THE ogg. "."
+			ELSE "You read" SAY THE ogg. "." 
+				IF ogg IS NOT plurale
 					THEN "It says"
 					ELSE "They say"
 				END IF.
-				"""$$" SAY testo OF obj. "$$""." 
+				"""$$" SAY testo OF ogg. "$$""." 
 		END IF.
 END VERB.
 
@@ -1427,14 +1427,14 @@ END VERB.
 
 VERB remove
 	DOES ONLY
-		IF obj IS NOT plurale
+		IF ogg IS NOT plurale
 			THEN "That's"
 			ELSE "Those are"
 		END IF. 
 			
 		"not something you can remove since you're not wearing"
 					
-		IF obj IS NOT plurale
+		IF ogg IS NOT plurale
 			THEN "it."
 			ELSE "them."
 		END IF. 
@@ -1479,8 +1479,8 @@ END VERB.
 
 VERB say_to
 	DOES ONLY
-		SAY THE act. 
-			IF act IS NOT plurale
+		SAY THE png. 
+			IF png IS NOT plurale
 		 		THEN "doesn't look"
 				ELSE "don't look"
 			END IF.
@@ -1542,16 +1542,16 @@ END VERB.
 
 VERB sell
 	DOES ONLY 
-		"There's nobody here who would be interested in buying" SAY THE item. "."
+		"There's nobody here who would be interested in buying" SAY THE merce. "."
 END VERB.
 
 
 
 VERB shake
 	DOES ONLY 
-		IF obj IN hero
-			THEN "You shake" SAY THE obj. "cautiously in your hands. Nothing happens."
-			ELSE "There is no reason to start shaking" SAY THE obj. "."
+		IF ogg IN hero
+			THEN "You shake" SAY THE ogg. "cautiously in your hands. Nothing happens."
+			ELSE "There is no reason to start shaking" SAY THE ogg. "."
 		END IF.
 END VERB.
 
@@ -1580,9 +1580,9 @@ END VERB.
 
 VERB 'show'		
 	DOES ONLY
-		SAY THE act. 
+		SAY THE png. 
 			
-			IF act IS NOT plurale
+			IF png IS NOT plurale
 				THEN "is"
 				ELSE "are"
 			END IF.
@@ -1684,7 +1684,7 @@ END VERB.
 
 VERB squeeze
 	DOES ONLY
-	    	"Trying to squeeze" SAY THE obj. "wouldn't accomplish anything."		
+	    	"Trying to squeeze" SAY THE ogg. "wouldn't accomplish anything."		
 END VERB.
 
 
@@ -1703,7 +1703,7 @@ END VERB.
 
 VERB stand_on
 	DOES ONLY
-		"You feel no urge to stand on" SAY THE surface. "."
+		"You feel no urge to stand on" SAY THE superficie. "."
 		-- or, to make it work, use the following instead of the above:
 		-- "You get on" SAY THE surface. "."
 		-- (Make an attribute for the hero to check that he's on the surface.
@@ -1734,7 +1734,7 @@ END VERB.
 
 VERB switch
 	DOES ONLY
-		IF app IS NOT plurale
+		IF disp IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -1753,18 +1753,18 @@ END VERB.
 
 VERB take
 		DOES ONLY
-			IF obj ISA ACTOR
-				THEN SAY THE obj. "would probably object to that."
+			IF ogg ISA ACTOR
+				THEN SAY THE ogg. "would probably object to that."
 			-- actors are not prohibited from being taken in the checks; this is to
 			-- allow for example a dog to be picked up, or a bird to be taken out of
 			-- a cage, etc.
 			
 
-			ELSIF obj ISA OBJECT
-				THEN IF obj DIRECTLY IN worn
-						THEN LOCATE obj IN hero.
-							"You take off" SAY THE obj. "and carry it in your hands."
-						ELSE LOCATE obj IN hero.
+			ELSIF ogg ISA OBJECT
+				THEN IF ogg DIRECTLY IN worn
+						THEN LOCATE ogg IN hero.
+							"You take off" SAY THE ogg. "and carry it in your hands."
+						ELSE LOCATE ogg IN hero.
 							"Taken."
 					END IF.
 			END IF.
@@ -1777,17 +1777,17 @@ END VERB.
 
 
 VERB take_from
-	WHEN obj
+	WHEN ogg
 			DOES ONLY 
-				IF obj ISA ACTOR
-					THEN SAY THE obj. "would probably object to that."
+				IF ogg ISA ACTOR
+					THEN SAY THE ogg. "would probably object to that."
 						-- actors are not prohibited from being taken in the checks; this is to
 						-- allow for example a dog to be picked up, or a bird to be taken out of
 						-- a cage, etc.
-				ELSIF obj ISA OBJECT
+				ELSIF ogg ISA OBJECT
 					THEN 
-						LOCATE obj IN hero.
-	    					"You take" SAY THE obj. "from" SAY THE holder. "."
+						LOCATE ogg IN hero.
+	    					"You take" SAY THE ogg. "from" SAY THE detentore. "."
 				END IF.
 	
 					-- Objects held by NPCs cannot be taken by the hero by default.
@@ -1823,17 +1823,17 @@ END VERB.
 
 VERB tear
 	DOES ONLY
-		"Trying to $v" SAY THE obj. "would be futile."
+		"Trying to $v" SAY THE ogg. "would be futile."
 END VERB.
 
 
 
 VERB tell
-	WHEN act
+	WHEN png
 		DOES ONLY
-			SAY THE act. 
+			SAY THE png. 
 
-			IF act IS NOT plurale
+			IF png IS NOT plurale
 				THEN "doesn't"
 				ELSE "don't"
 			END IF.
@@ -1860,15 +1860,15 @@ END VERB.
 VERB throw
 	DOES ONLY
 		-- implicit taking:
-		IF projectile NOT DIRECTLY IN hero 
-			THEN LOCATE projectile IN hero.
+		IF proiettile NOT DIRECTLY IN hero 
+			THEN LOCATE proiettile IN hero.
 				SAY implicit_taking_message OF my_game.
 		END IF.
 		-- end of implicit taking.			
 				
-		"You can't throw very far;" SAY THE projectile. 
+		"You can't throw very far;" SAY THE proiettile. 
 			
-		IF projectile IS NOT plurale
+		IF proiettile IS NOT plurale
 			THEN "ends up"
 			ELSE "end up"
 		END IF.
@@ -1880,40 +1880,40 @@ VERB throw
 		END IF.
 		
 		"nearby."
-	    	LOCATE projectile AT hero.
+	    	LOCATE proiettile AT hero.
 			
 END VERB.
 
 
 VERB throw_at
-	WHEN projectile
+	WHEN proiettile
 		DOES ONLY
 				-- implicit taking: 
-				IF projectile NOT DIRECTLY IN hero 
-					THEN LOCATE projectile IN hero.
+				IF proiettile NOT DIRECTLY IN hero 
+					THEN LOCATE proiettile IN hero.
 					SAY implicit_taking_message OF my_game.
 				END IF.
 				-- end of implicit taking.
       	  				
-				IF target IS inanimato
+				IF bersaglio IS inanimato
 					THEN 
-						IF target NOT DIRECTLY AT hero		
-							-- e.g. the target is inside a box
+						IF bersaglio NOT DIRECTLY AT hero		
+							-- e.g. the bersaglio is inside a box
 							THEN "It wouldn't accomplish anything trying to throw
-								 something at" SAY THE target. "."
+								 something at" SAY THE bersaglio. "."
 							ELSE 
-								SAY THE projectile.
+								SAY THE proiettile.
  
-								IF projectile IS NOT plurale
+								IF proiettile IS NOT plurale
 									THEN "bounces"
 									ELSE "bounce"
 								END IF.
 
 								"harmlessly off" 
 
-								SAY THE target. "and"
+								SAY THE bersaglio. "and"
 
-								IF projectile IS NOT plurale
+								IF proiettile IS NOT plurale
 									THEN "ends up"
 									ELSE "end up"
 								END IF.
@@ -1925,10 +1925,10 @@ VERB throw_at
 		  						END IF.
 	
 		     						"nearby."
-		  						LOCATE projectile AT hero.
+		  						LOCATE proiettile AT hero.
 						END IF.
 
-					ELSE SAY THE target. "wouldn't probably appreciate that."
+					ELSE SAY THE bersaglio. "wouldn't probably appreciate that."
 						-- Throwing objects at actors is not disabled in the checks
 						-- as in some situations this might be desired, e.g.
 						-- when attacking enemies.
@@ -1939,34 +1939,34 @@ END VERB.
 
 
 VERB throw_to
-   WHEN projectile
+   WHEN proiettile
 	DOES ONLY 
 		-- implicit taking:
-		IF projectile NOT DIRECTLY IN hero 
-			THEN LOCATE projectile IN hero.
+		IF proiettile NOT DIRECTLY IN hero 
+			THEN LOCATE proiettile IN hero.
 				SAY implicit_taking_message OF my_game.	
 		END IF.
 		-- end of implicit taking.
 				
 		"It wouldn't accomplish anything trying to throw"
-		SAY the projectile. "to" SAY THE recipient. "."
+		SAY the proiettile. "to" SAY THE ricevente. "."
 
 END VERB.
 
 
 
 VERB throw_in
-   WHEN projectile
+   WHEN proiettile
 	DOES ONLY
 		-- implicit taking:
-		IF projectile NOT DIRECTLY IN hero 
-			THEN LOCATE projectile IN hero.
+		IF proiettile NOT DIRECTLY IN hero 
+			THEN LOCATE proiettile IN hero.
 				SAY implicit_taking_message OF my_game.	
 		END IF.
 		-- end of implicit taking.
 
 		"It wouldn't accomplish anything trying to throw"
-		SAY THE projectile. "into" SAY THE cont. "."	
+		SAY THE proiettile. "into" SAY THE cont. "."	
 
 
 		-- Throwing objects into containers, even when these objects are
@@ -1980,22 +1980,22 @@ END VERB.
 
 VERB tie
 	DOES ONLY 
-		"You must state where you want to tie" SAY THE obj. "."
+		"You must state where you want to tie" SAY THE ogg. "."
 END VERB.
 
 
 
 VERB tie_to
-	WHEN obj
+	WHEN ogg
 		DOES ONLY
 				-- implicit taking:
-				IF obj NOT DIRECTLY IN hero 
-					THEN LOCATE obj IN hero.
+				IF ogg NOT DIRECTLY IN hero 
+					THEN LOCATE ogg IN hero.
 						SAY implicit_taking_message OF my_game.
 				END IF.	
 				-- end of implicit taking.
 								
-				"It's not possible to tie" SAY THE obj. "to" SAY THE target. "."	
+				"It's not possible to tie" SAY THE ogg. "to" SAY THE bersaglio. "."	
 
 END VERB.
 
@@ -2009,17 +2009,17 @@ END VERB.
 
 
 VERB touch_with
-  	WHEN obj
+  	WHEN ogg
 		DOES ONLY
-	        	"You touch" SAY THE obj. "with" SAY THE instr. ". Nothing special happens."
+	        	"You touch" SAY THE ogg. "with" SAY THE strum. ". Nothing special happens."
 END VERB.
 
 
 
 VERB turn
 	DOES ONLY 
-		IF obj DIRECTLY IN hero
-			THEN "You turn" SAY THE obj. "in your hands, noticing nothing special."
+		IF ogg DIRECTLY IN hero
+			THEN "You turn" SAY THE ogg. "in your hands, noticing nothing special."
 			ELSE "That wouldn't accomplish anything."
 		END IF.
 END VERB.
@@ -2028,7 +2028,7 @@ END VERB.
 
 VERB turn_on	
 	DOES ONLY
-		IF app IS NOT plurale
+		IF disp IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -2040,7 +2040,7 @@ END VERB.
 
 VERB turn_off
 	DOES ONLY
-		IF app IS NOT plurale
+		IF disp IS NOT plurale
 			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
@@ -2066,21 +2066,21 @@ END VERB.
 
 VERB unlock
 	DOES ONLY
-		IF chiave_abbinata OF obj IN hero
-			THEN MAKE obj NOT bloccato.
-				"(with" SAY THE chiave_abbinata OF obj. "$$)$n"
-				"You unlock" SAY THE obj. "."
-	    		ELSE "You don't have the key that unlocks" SAY THE obj. "."
+		IF chiave_abbinata OF ogg IN hero
+			THEN MAKE ogg NOT bloccato.
+				"(with" SAY THE chiave_abbinata OF ogg. "$$)$n"
+				"You unlock" SAY THE ogg. "."
+	    		ELSE "You don't have the chiave that unlocks" SAY THE ogg. "."
 		END IF.
 END VERB.
 
 
 
 VERB unlock_with
-   WHEN obj
+   WHEN ogg
 	DOES ONLY
-		MAKE obj NOT bloccato.
-		"You unlock" SAY THE obj. "with" SAY THE key. "."
+		MAKE ogg NOT bloccato.
+		"You unlock" SAY THE ogg. "with" SAY THE chiave. "."
 END VERB.
 
 
@@ -2088,7 +2088,7 @@ END VERB.
 VERB 'use'
 	DOES ONLY
 		"Please be more specific. How do you intend to use"		
-		IF obj IS NOT plurale
+		IF ogg IS NOT plurale
 			THEN "it?" 
 			ELSE "them?"
 		END IF.
@@ -2097,7 +2097,7 @@ END VERB.
 
 
 VERB use_with
-   WHEN obj
+   WHEN ogg
 	DOES ONLY
 		"Please be more specific. How do you intend to use them together?"
 END VERB.
@@ -2122,7 +2122,7 @@ END VERB.
 
 VERB wear
 	DOES ONLY
-		IF obj IS NOT plurale 
+		IF ogg IS NOT plurale 
 			THEN "That's"
 			ELSE "Those are"
 		END IF.

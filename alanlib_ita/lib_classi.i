@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.2.12 (2018/07/21)
+-- "lib_classi.i" v0.2.13 (2018/07/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1511,8 +1511,8 @@ EVERY liquido ISA OBJECT
 
 -- @PRENDI_DA -> @TAKE_FROM (VERB) => LIQUID
   VERB prendi_da
-     WHEN obj
-    CHECK holder <> recipiente OF THIS
+     WHEN ogg
+    CHECK detentore <> recipiente OF THIS
       ELSE SAY check_liquid_vessel_not_cont OF my_game.
       -- the above is triggered when the player types for example
       -- >take juice from bottle   -- (when the juice is in the bottle)
@@ -1536,12 +1536,12 @@ EVERY liquido ISA OBJECT
   VERB ask_for
     DOES ONLY
       LOCATE recipiente OF THIS IN hero.
-      SAY THE act. "gives" SAY THE recipiente OF THIS. "of" SAY THIS. "to you."
+      SAY THE png. "gives" SAY THE recipiente OF THIS. "of" SAY THIS. "to you."
   END VERB.
 
 -- @DAI_A -> @GIVE (VERB) => LIQUID
   VERB dai_a
-    WHEN obj
+    WHEN ogg
     DOES ONLY
       -- implicit taking:
       IF THIS NOT IN hero
@@ -1557,8 +1557,8 @@ EVERY liquido ISA OBJECT
       IF THIS IN hero
         -- i.e. if the implicit taking was successful
         THEN
-          "You give" SAY THE recipiente OF THIS. "of" SAY THIS. "to" SAY THE recipient. "."
-          LOCATE recipiente OF THIS IN recipient.
+          "You give" SAY THE recipiente OF THIS. "of" SAY THIS. "to" SAY THE ricevente. "."
+          LOCATE recipiente OF THIS IN ricevente.
       END IF.
 
       -- there is no 'ELSE' statement in this last IF -clause, as the 'IF THIS NOT
@@ -1599,7 +1599,7 @@ EVERY liquido ISA OBJECT
 
 
   VERB pour_in
-    WHEN obj
+    WHEN ogg
       DOES ONLY
         -- implicit taking:
         IF THIS NOT IN hero
@@ -1623,10 +1623,10 @@ EVERY liquido ISA OBJECT
       DOES ONLY
         IF recipiente OF THIS = recipiente_fittizio
           THEN
-            "There's not much sense pouring" SAY THE obj. "into" SAY THE THIS. "."
+            "There's not much sense pouring" SAY THE ogg. "into" SAY THE THIS. "."
           ELSE
             IF recipiente OF THIS IS aperto
-              THEN "It wouldn't accomplish anything trying to pour" SAY THE obj.
+              THEN "It wouldn't accomplish anything trying to pour" SAY THE ogg.
                 "into" SAY THE THIS. "."
               ELSE "You can't, since" SAY THE recipiente OF THIS.
                 IF THIS IS NOT plurale
@@ -1640,7 +1640,7 @@ EVERY liquido ISA OBJECT
 
 
   VERB pour_on
-    WHEN obj
+    WHEN ogg
       DOES ONLY
         -- implicit taking:
         IF THIS NOT IN hero
@@ -1658,15 +1658,15 @@ EVERY liquido ISA OBJECT
         IF THIS IN hero
           -- i.e. if the implicit taking was successful
           THEN
-            IF surface = pavimento OR surface = ground
+            IF superficie = pavimento OR superficie = ground
               THEN LOCATE THIS AT hero.
-                "You pour" SAY THE THIS. "on" SAY THE surface. "."
+                "You pour" SAY THE THIS. "on" SAY THE superficie. "."
                 SET recipiente OF THIS TO recipiente_fittizio.
-            ELSIF surface ISA SUPPORTER
-              THEN LOCATE THIS IN surface.
-                "You pour" SAY THE THIS. "on" SAY THE surface. "."
+            ELSIF superficie ISA SUPPORTER
+              THEN LOCATE THIS IN superficie.
+                "You pour" SAY THE THIS. "on" SAY THE superficie. "."
                   SET recipiente OF THIS TO recipiente_fittizio.
-            ELSE "It wouldn't be sensible to pour anything on" SAY THE surface.
+            ELSE "It wouldn't be sensible to pour anything on" SAY THE superficie.
             END IF.
         END IF.
   END VERB.
@@ -1675,13 +1675,13 @@ EVERY liquido ISA OBJECT
   VERB fill_with
     -- when something is filled with a liquid, this something becomes the
     -- vessel of the liquid:
-    WHEN substance
+    WHEN sostanza
        DOES SET recipiente OF THIS TO cont.
   END VERB.
 
 
   VERB put_in
-    WHEN obj
+    WHEN ogg
       DOES ONLY
         IF recipiente OF THIS = recipiente_fittizio
           THEN "You can't carry" SAY THE THIS. "around in your bare hands."
@@ -1709,13 +1709,13 @@ EVERY liquido ISA OBJECT
       DOES ONLY
       IF recipiente OF THIS = recipiente_fittizio
         THEN
-          "There's not much sense putting" SAY THE obj. "into" SAY THE THIS. "."
+          "There's not much sense putting" SAY THE ogg. "into" SAY THE THIS. "."
         ELSE
           IF recipiente OF THIS IS aperto
             THEN
-              IF obj = recipiente OF THIS
+              IF ogg = recipiente OF THIS
                 THEN "That doesn't make sense."
-                ELSE "It wouldn't accomplish anything trying to put" SAY THE obj.
+                ELSE "It wouldn't accomplish anything trying to put" SAY THE ogg.
                   "into" SAY THE recipiente OF THIS. "of" SAY THIS. "."
               END IF.
             ELSE "You can't, since" SAY THE recipiente OF THIS. "of" SAY THIS.
@@ -1730,7 +1730,7 @@ EVERY liquido ISA OBJECT
 
 
   VERB put_on
-    WHEN obj
+    WHEN ogg
       DOES ONLY
         -- implicit taking:
         IF THIS NOT IN hero
@@ -1747,10 +1747,10 @@ EVERY liquido ISA OBJECT
 
         IF THIS IN hero
           -- i.e. if the implicit taking was successful
-          THEN "You put" SAY THE recipiente OF THIS. "of" SAY THIS. "onto" SAY THE surface. "."
+          THEN "You put" SAY THE recipiente OF THIS. "of" SAY THIS. "onto" SAY THE superficie. "."
         END IF.
-    WHEN surface
-      DOES ONLY "It is not possible to $v" SAY obj. "onto" SAY THE THIS. "."
+    WHEN superficie
+      DOES ONLY "It is not possible to $v" SAY ogg. "onto" SAY THE THIS. "."
   END VERB.
 
 
@@ -1760,17 +1760,17 @@ EVERY liquido ISA OBJECT
   -- The verbs 'empty', 'empty_in' and 'empty_on' will be disabled as ungrammatical with liquids:
 
   VERB 'empty'
-    WHEN obj
+    WHEN ogg
     DOES ONLY "You can only empty containers."
   END VERB.
 
   VERB empty_in
-    WHEN obj
+    WHEN ogg
     DOES ONLY "You can only empty containers."
   END VERB.
 
   VERB empty_on
-    WHEN obj
+    WHEN ogg
     DOES ONLY "You can only empty containers."
   END VERB.
 

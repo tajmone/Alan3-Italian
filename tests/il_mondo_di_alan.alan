@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione 0.2.11 (2018/07/22)
+--  versione 0.2.12 (2018/07/22)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -132,12 +132,12 @@ THE foglio_bianco IsA OBJECT AT pzzaIF.
         THEN
           IF txt <> "" --> Non si accettano stringhe vuote!
             THEN
-              IF testo OF obj = ""
-                THEN SET testo OF obj TO txt.
-                ELSE SET testo OF obj TO testo OF obj + " " + txt.
+              IF testo OF ogg = ""
+                THEN SET testo OF ogg TO txt.
+                ELSE SET testo OF ogg TO testo OF ogg + " " + txt.
               END IF.
-              "Scrivi ""$$" SAY txt. "$$""" SAY prep_SU of obj. SAY obj. "."
-              MAKE obj leggibile.
+              "Scrivi ""$$" SAY txt. "$$""" SAY prep_SU of ogg. SAY ogg. "."
+              MAKE ogg leggibile.
             ELSE "Devi fornire dei contenuti da scrivere!"
           END IF.
       ELSE
