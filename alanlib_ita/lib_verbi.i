@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.32 (2018/07/22)
+-- "lib_verbi.i" v0.2.33 (2018/07/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -42,6 +42,7 @@
 --| scrivi             |                              | scrivi "testo" su (ogg)     |   | 1 | x |
 --| spogliati          | svestiti                     | spogliati                   |   | 0 |   |
 --| vai_a              |                              | vai a (dest)                |   | 1 |   |
+--| vendi              |                              | vendi (merce)               |   | 1 |   |
 --+--------------------+------------------------------+-----------------------------+---+---+---+
 --|                    |                              |                             |   | 0 | x |
 
@@ -181,7 +182,7 @@
 ----- scratch                                              scratch (obj)                       1       x
 ----- script                                               script. script on. script off.      0
 ----- search                                               search (obj)                        1       x
------ sell                                                 sell (item)                         1
+----> sell                                                 sell (item)                         1
 ----- shake                                                shake (obj)                         1       x
 ----- shoot (at)                                           shoot at (target)                   1
 ----- shoot_with                                           shoot (target) with (weapon)        2
@@ -1895,6 +1896,48 @@ ADD TO EVERY THING
 END ADD TO.
 
 
+
+
+-- ==============================================================
+
+
+----- @VENDI --> @SELL
+
+
+-- ==============================================================
+
+-- SYNTAX sell = sell (merce)
+
+SYNTAX vendi = vendi (merce)
+  WHERE merce ISA OBJECT
+    ELSE
+      IF merce IS NOT plurale
+        THEN SAY illegal_parameter_sg OF my_game.
+        ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+
+
+ADD TO EVERY OBJECT
+    VERB vendi
+    CHECK my_game CAN vendere
+      ELSE SAY azione_bloccata OF my_game.
+    AND merce IS esaminabile
+      ELSE
+        IF merce IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY ogg1_inadatto_sg OF my_game. "vendere."
+          ELSE SAY ogg1_inadatto_pl OF my_game. "vendere."
+        END IF.
+    AND CURRENT LOCATION IS lit
+      ELSE SAY check_locazione_illuminata OF my_game.
+    DOES
+      "Qui nessuno è interessanto ad acquistare" SAY THE merce. "."
+   -- "There's nobody here who would be interested in buying" SAY THE merce. "."
+    END VERB.
+END ADD TO.
+
+-- Depending on the situation, it might be good to add a check whether the item is carried
+-- by the hero or not, etc.
 
 
 
@@ -6906,46 +6949,6 @@ ADD TO EVERY THING
     END VERB.
 END ADD TO.
 
-
-
--- ==============================================================
-
-
------ SELL
-
-
--- ==============================================================
-
-
-SYNTAX sell = sell (merce)
-  WHERE merce ISA OBJECT
-    ELSE
-      IF merce IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
-
-
-ADD TO EVERY OBJECT
-    VERB sell
-    CHECK my_game CAN vendere
-      ELSE SAY azione_bloccata OF my_game.
-    AND merce IS esaminabile
-      ELSE
-        IF merce IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF my_game. "vendere."
-          ELSE SAY ogg1_inadatto_pl OF my_game. "vendere."
-        END IF.
-    AND CURRENT LOCATION IS lit
-      ELSE SAY check_locazione_illuminata OF my_game.
-    DOES
-      "There's nobody here who would be interested in buying" SAY THE merce. "."
-    END VERB.
-END ADD TO.
-
--- Depending on the situation, it might be good to add a check whether the item is carried
--- by the hero or not, etc.
 
 
 

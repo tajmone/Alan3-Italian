@@ -23,11 +23,13 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [esamina](#esamina)
     - [leggi](#leggi)
     - [scrivi](#scrivi)
-- [DARE, PRENDERE, RIMUOVERE](#dare-prendere-rimuovere)
+- [TRASFERIMENTO OGGETTI](#trasferimento-oggetti)
     - [prendi](#prendi)
     - [prendi_da](#prendi_da)
     - [dai_a](#dai_a)
     - [inventario](#inventario)
+    - [compra](#compra)
+    - [vendi](#vendi)
 - [MANGIARE, BERE](#mangiare-bere)
     - [mangia](#mangia)
     - [bevi](#bevi)
@@ -43,7 +45,6 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [dormi](#dormi)
     - [prega](#prega)
 - [VERBI VARI](#verbi-vari)
-    - [Compra](#compra)
 
 <!-- /MarkdownTOC -->
 
@@ -99,41 +100,48 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [togli]
 - [trasporta]
 - [vai a]
+- [vendi]
 
 -------------------------------------------------------------------------------
 
 # Tabella dei Verbi
 
-Copiata da "`lib_verbi.i`" v0.2.16 (2018/07/17).
+Copiata da "`lib_verbi.i`" v0.2.32 (2018/07/22).
 
 Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e comandi di gioco (dopo il divisorio orizzontale di tabella):
 
 ```
---+--------------------+------------------------------+--------------------------+---+---+---+
---| VERBO              | SINONIMI                     | SINTASSI                 | M | A | O |
---|--------------------|------------------------------|--------------------------|---|---|---|
---| abbandona_partita  | quit, Q                      | abbandona [partita]      | x | 0 |   |
---| carica_partita     | restore                      | carica [partita]         | x | 0 |   |
---| ricomincia_partita | restart                      | ricomincia [partita]     | x | 0 |   |
---| salva_partita      | save                         | salva [partita]          | x | 0 |   |
---+--------------------+------------------------------+--------------------------+---+---+---+
---| aspetta            | attendi, Z                   | aspetta                  |   | 0 |   |
---| attraversa         |                              | attraversa (ogg)         |   | 1 | x |
---| brucia             |                              | brucia (ogg)             |   | 1 | x |
---| brucia_con         |                              | brucia (ogg) con (instr) |   | 2 | x |
---| compra             | acquista                     | compra (item)            |   | 1 |   |
---| dai_a              | porgi, offri                 | dai (ogg) a (recipient)  |   | 2 | x |
---| inventario         | inv                          | inventario               | x | 0 |   |
---| mangia             |                              | mangia (cibo)            |   | 1 |   |
---| prega              |                              | prega                    |   | 0 |   |
---| prendi             | afferra, raccogli, trasporta | prendi (ogg)             |   | 1 | x |
---| prendi_da          | rimuovi, togli               | prendi (ogg) da (holder) |   | 2 | x |
---| rifai              | ancora, G                    | rifai                    |   | 0 |   |
---| rompi              | distruggi, spacca, sfonda    | rompi (ogg)              |   | 1 | x |
---| rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (instr)  |   | 2 | x |
---| spogliati          | svestiti                     | spogliati                |   | 0 |   |
---| vai_a              |                              | vai a (dest)             |   | 1 |   |
---+--------------------+------------------------------+--------------------------+---+---+---+
+--+--------------------+------------------------------+-----------------------------+---+---+---+
+--| VERBO              | SINONIMI                     | SINTASSI                    | M | A | O |
+--|--------------------|------------------------------|-----------------------------|---|---|---|
+--| abbandona_partita  | quit, Q                      | abbandona [partita]         | x | 0 |   |
+--| carica_partita     | restore                      | carica [partita]            | x | 0 |   |
+--| ricomincia_partita | restart                      | ricomincia [partita]        | x | 0 |   |
+--| salva_partita      | save                         | salva [partita]             | x | 0 |   |
+--+--------------------+------------------------------+-----------------------------+---+---+---+
+--| aspetta            | attendi, Z                   | aspetta                     |   | 0 |   |
+--| attraversa         |                              | attraversa (ogg)            |   | 1 | x |
+--| bevi               |                              | bevi (liq)                  |   | 1 |   |
+--| brucia             |                              | brucia (ogg)                |   | 1 | x |
+--| brucia_con         |                              | brucia (ogg) con (strum)    |   | 2 | x |
+--| compra             | acquista                     | compra (merce)              |   | 1 |   |
+--| dormi              | riposa                       | dormi                       |   | 0 |   |
+--| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)     |   | 2 | x |
+--| esamina            | guarda, descrivi, osserva, X | esamina (ogg)               |   | 1 | x |
+--| inventario         | inv                          | inventario                  | x | 0 |   |
+--| leggi              |                              | leggi (ogg)                 |   | 1 | x |
+--| mangia             |                              | mangia (cibo)               |   | 1 |   |
+--| prega              |                              | prega                       |   | 0 |   |
+--| prendi             | afferra, raccogli, trasporta | prendi (ogg)                |   | 1 | x |
+--| prendi_da          | rimuovi, togli               | prendi (ogg) da (detentore) |   | 2 | x |
+--| rifai              | ancora, G                    | rifai                       |   | 0 |   |
+--| rompi              | distruggi, spacca, sfonda    | rompi (ogg)                 |   | 1 | x |
+--| rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)     |   | 2 | x |
+--| scrivi             |                              | scrivi "testo" su (ogg)     |   | 1 | x |
+--| spogliati          | svestiti                     | spogliati                   |   | 0 |   |
+--| vai_a              |                              | vai a (dest)                |   | 1 |   |
+--| vendi              |                              | vendi (merce)               |   | 1 |   |
+--+--------------------+------------------------------+-----------------------------+---+---+---+
 ```
 
 
@@ -249,7 +257,7 @@ attributo `my_game`:
 
 sintassi:
 
-    [vai] a (dest)
+    [vai] a <dest>
 
 > __NOTA__ — In realtà in questo verbo l'uso di "vai" è del tutto opzionale dato che "vai" è definito come sinonimo di "go", che è una delle NOISE WORDS che vengono ignorate dal parser. Quindi, i seguenti comandi risultano identici al parser:
 > 
@@ -270,7 +278,7 @@ attributo `my_game`:
 
 sintassi:
 
-    attraversa (ogg)
+    attraversa <ogg>
 
 
 -------------------------------------------------------------------------------
@@ -289,8 +297,8 @@ attributo `my_game`:
 
 sintassi:
 
-    (esamina|descrivi|osserva|X) (obj)
-    guarda (obj)
+    (esamina|descrivi|osserva|X) <ogg>
+    guarda <ogg>
 
 
 ## leggi
@@ -303,7 +311,7 @@ attributo `my_game`:
 
 sintassi:
 
-    leggi (obj)
+    leggi <ogg>
 
 
 ## scrivi
@@ -317,14 +325,17 @@ attributo `my_game`:
 
 sintassi:
 
-    scrivi "testo" su/in (ogg)
+    scrivi "testo" (su|in) <ogg>
 
 
 -------------------------------------------------------------------------------
 
-# DARE, PRENDERE, RIMUOVERE
+# TRASFERIMENTO OGGETTI
 
-Questi verbi sono legati tra loro.
+Questi verbi sono accomunati dal fatto che riguardano il trasferimento di oggetti da un luogo/proprietario ad un altro.
+
+
+
 
 ## prendi
 
@@ -339,7 +350,7 @@ attributo `my_game`:
 
 sintassi:
 
-    (prendi|afferra|raccogli|trasporta) (ogg)
+    (prendi|afferra|raccogli|trasporta) <ogg>
 
 
 ## prendi_da
@@ -354,7 +365,7 @@ attributo `my_game`:
 
 sintassi:
 
-    (prendi|rimuovi|togli) (ogg) da (holder)
+    (prendi|rimuovi|togli) <ogg> da <detentore>
 
 
 ## dai_a
@@ -369,9 +380,9 @@ attributo `my_game`:
 
 sintassi:
 
-    (dai|porgi|offri) (ogg) a (recipient)
+    (dai|porgi|offri) <ogg> a <ricevente>
 
-... dove `recipient` è un ATTORE.
+... dove `ricevente` è un ATTORE.
 
 ## inventario
 
@@ -386,6 +397,24 @@ sintassi:
     (inventario|inv)
 
 
+## compra
+
+[compra]: #compra
+
+sintassi:
+
+    (compra|acquista) <merce>
+
+
+## vendi
+
+[vendi]: #vendi
+
+sintassi:
+
+    vendi <merce>
+
+
 
 -------------------------------------------------------------------------------
 
@@ -397,7 +426,7 @@ sintassi:
 
 sintassi:
 
-    mangia (cibo)
+    mangia <cibo>
 
 ## bevi
 
@@ -405,7 +434,7 @@ sintassi:
 
 sintassi:
 
-    bevi (liq)
+    bevi <liq>
 
 
 
@@ -451,11 +480,11 @@ esito:
 
 sintassi:
 
-    brucia (ogg)
+    brucia <ogg>
 
 esito:
 
-- Informa il giocatore che deve specificare con che cosa vuole bruciare (ogg).
+- Informa il giocatore che deve specificare con che cosa vuole bruciare <ogg>.
 
 ## brucia_con
 
@@ -463,7 +492,7 @@ esito:
 
 sintassi:
 
-    brucia (ogg) con (strumento)
+    brucia <ogg> con <strumento>
 
 esito:
 
@@ -479,14 +508,14 @@ esito:
 
 sintassi:
 
-    (rompi|distruggi|spacca|sfonda) (ogg)
+    (rompi|distruggi|spacca|sfonda) <ogg>
 
 condizioni:
 
 - `my_game CAN rompere`
-- `obj IS examinable`
+- `ogg IS esaminabile`
 - `CURRENT LOCATION IS lit`
-- `obj IS reachable AND obj IS NOT distant`
+- `ogg IS raggiungibile AND ogg IS NOT distante`
 
 esito:
 
@@ -503,7 +532,7 @@ esito:
 
 sintassi:
 
-    (rompi|distruggi|spacca|sfonda) (ogg) 'con' (instr)
+    (rompi|distruggi|spacca|sfonda) <ogg> 'con' <strum>
 
 condizioni:
 
@@ -511,7 +540,7 @@ _ULTERIORI DETTAGLI DA APPROFONDIRE_
 
 esito:
 
-- Nulla, dice solo "`Tentare di rompere <THE obj> con <THE instr> non risolverebbe nulla.`"  
+- Nulla, dice solo "`Tentare di rompere <THE ogg> con <THE strum> non risolverebbe nulla.`"  
 
 
 -------------------------------------------------------------------------------
@@ -578,14 +607,6 @@ esito:
 # VERBI VARI
 
 Verbi che non rientrano in categorie specifiche.
-
-## Compra
-
-[compra]: #compra
-
-sintassi:
-
-    (compra|acquista) (item)
 
 
 

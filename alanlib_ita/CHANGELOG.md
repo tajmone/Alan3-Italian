@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/22 \(4\)](#20180722-4)
+    - [Verb: `sell`](#verb-sell)
 - [2018/07/22 \(3\)](#20180722-3)
     - [Translate Verb Parameters](#translate-verb-parameters)
 - [2018/07/22 \(2\)](#20180722-2)
@@ -117,6 +119,25 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/22 (4)
+
+- [`lib_verbi.i`][lib_verbi] (v0.2.33)
+
+
+
+## Verb: `sell`
+
+Translated verb `vendi`, (_sell_):
+
+    vendi (merce)
+
+with no synonyms.
+
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/22 (3)
 
