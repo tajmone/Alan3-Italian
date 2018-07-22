@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione 0.2.12 (2018/07/22)
+--  versione 0.2.13 (2018/07/22)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -59,13 +59,14 @@ THE statua_Alan IsA object AT pzzaIF.
     IF targhetta IS già_letta
       THEN "di Alan III"
     END IF.
-  HAS ex "La statua in bronzo raffigura un uomo elegante che sta entrando in un
-          vecchio monitor CRT. La gamba destra è già dentro lo schermo, fino al
-          ginocchio. Nella mano sinistra impugna una valigia da viaggio, mentre
-          la destra poggia sul cappello, come se volesse impedirgli di volare
-          via. L'impressione è che l'uomo stia partendo per un'avventura che 
-          inizia al di là del monitor.$pSul piedistallo in pietra noti una
-          targhetta su cui è inciso del testo.".
+  HAS xDesc
+    "La statua in bronzo raffigura un uomo elegante che sta entrando in un vecchio
+     monitor CRT. La gamba destra è già dentro lo schermo, fino al ginocchio.
+     Nella mano sinistra impugna una valigia da viaggio, mentre la destra poggia
+     sul cappello, come se volesse impedirgli di volare via. L'impressione è che
+     l'uomo stia partendo per un'avventura che inizia al di là del monitor.
+     $pSul piedistallo in pietra noti una targhetta su cui è inciso del testo.".
+
 END THE statua_Alan.
 
 THE targhetta IsA object AT pzzaIF.
@@ -155,13 +156,14 @@ THE libro_magico IsA OBJECT AT pzzaIF.
   NAME libro magico.
   NAME libro antico.
   MENTIONED "libro antico"
-  HAS ex "Sembra un libro molto antico. La pelle in cui è rilegato è imbrunita
-          dai secoli e fatichi a decodificarne i simboli arcaici che vi sono
-          incisi.".
+  HAS xDesc
+    "Sembra un libro molto antico. La pelle in cui è rilegato è imbrunita dai 
+     secoli e fatichi a decodificarne i simboli arcaici che vi sono incisi.".
   IS leggibile.
-  HAS testo "La dottrina magica degli antichi fu edficata su un'unica formula
-             sacra che ci è stata tramandata di generazione in generazione.
-             Quella formula è ""XYZZY"".".
+  HAS testo
+    "La dottrina magica degli antichi fu edficata su un'unica formula sacra che
+     ci è stata tramandata di generazione in generazione. Quella formula è 
+     ""XYZZY"".".
 END THE libro_magico.
 
 

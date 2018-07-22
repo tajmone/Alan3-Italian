@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.33 (2018/07/22)
+-- "lib_verbi.i" v0.2.34 (2018/07/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -945,11 +945,11 @@ ADD TO EVERY THING
         END IF.
 
     DOES
-      IF ex OF ogg <> ""
-        THEN SAY ex OF ogg.
+      IF xDesc OF ogg <> ""
+        THEN SAY xDesc OF ogg.
       ELSIF ogg IS leggibile AND testo OF ogg <> ""
       --+-----------------------------------------------------------------------
-      --| Se la stringa 'ex' dell'oggetto è vuota, e si tratta di un leggibile 
+      --| Se la stringa 'xDesc' è vuota, e si tratta di un oggetto leggibile 
       --| contenente del 'testo', allora ESAMINA si comporterà come LEGGI:
       --+-----------------------------------------------------------------------
         THEN "Leggi" SAY THE ogg. "."

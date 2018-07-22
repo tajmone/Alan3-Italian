@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/22 \(5\)](#20180722-5)
 - [2018/07/22 \(4\)](#20180722-4)
     - [Verb: `sell`](#verb-sell)
 - [2018/07/22 \(3\)](#20180722-3)
@@ -120,10 +121,25 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
+# 2018/07/22 (5)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.33)
+- [`lib_verbi.i`][lib_verbi] (v0.2.34)
+
+Translated library attributes:
+
+| English | Italian |  Class  |
+|---------|---------|---------|
+| `ex`    | `xDesc` | `THING` |
+
+
+
+<!---------------------------------------------------------------------------->
+
+
 # 2018/07/22 (4)
 
 - [`lib_verbi.i`][lib_verbi] (v0.2.33)
-
 
 
 ## Verb: `sell`

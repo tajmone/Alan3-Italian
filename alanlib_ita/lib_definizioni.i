@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.32 (2018/07/22)
+-- "lib_definizioni.i" v0.2.33 (2018/07/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -113,10 +113,10 @@ ADD TO EVERY THING
     -- this applies to verbs empty_in, pour_in, put_in and throw_in.
     -- "null_object" is a default dummy that can be ignored.
 
-  HAS ex "". --> @TODO!!                                                        TRANSLATE??
-    -- an alternative way of giving responses to >x [thing],
-    -- instead of 'VERB examine DOES ONLY..."
-    -- See the library manual for more info.
+  HAS xDesc "".
+     -- Il testo da mostrare quando l'oggetto viene esaminato. Un'alternativa
+     -- semplice al dover implementare 'VERB esamina DOES ONLY..." sull'oggetto
+     -- affinché produca una descrizione personalizzata.
 
   HAS chiave_abbinata  chiave_fittizia.
       -- All lockable doors need a matching chiave to lock/unlock them.
