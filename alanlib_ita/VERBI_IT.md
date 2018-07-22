@@ -33,6 +33,15 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 - [MANGIARE, BERE](#mangiare-bere)
     - [mangia](#mangia)
     - [bevi](#bevi)
+- [APRIRE, CHIUDERE, BLOCCARE](#aprire-chiudere-bloccare)
+    - [apri](#apri)
+    - [apri_con](#apri_con)
+    - [chiudi](#chiudi)
+    - [chiudi_con](#chiudi_con)
+    - [blocca](#blocca)
+    - [blocca_con](#blocca_con)
+    - [sblocca](#sblocca)
+    - [sblocca_con](#sblocca_con)
 - [INDOSSARE, SPOGLIARSI](#indossare-spogliarsi)
     - [spogliati](#spogliati)
 - [ATTACCARE, ROMPERE, BRUCIARE](#attaccare-rompere-bruciare)
@@ -57,14 +66,20 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [abbandona]
 - [abbandona partita]
 - [afferra]
+- [apri]
+- [apri con]
 - [aspetta]
 - [attendi]
 - [attraversa]
 - [bevi]
+- [blocca]
+- [blocca con]
 - [brucia]
 - [brucia con]
 - [carica]
 - [carica partita]
+- [chiudi]
+- [chiudi con]
 - [compra]
 - [dai]
 - [esamina]
@@ -90,7 +105,11 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [rompi]
 - [salva]
 - [salva partita]
+- [sblocca]
+- [sblocca con]
 - [scrivi]
+- [serra]
+- [serra con]
 - [sfonda]
 - [sfonda con]
 - [spacca]
@@ -435,6 +454,124 @@ sintassi:
 sintassi:
 
     bevi <liq>
+
+
+
+-------------------------------------------------------------------------------
+
+# APRIRE, CHIUDERE, BLOCCARE
+
+## apri
+
+[apri]: #apri
+
+
+attributo `my_game`:
+
+    CAN [NOT] aprire
+
+sintassi:
+
+    apri <ogg>
+
+
+## apri_con
+
+[apri con]: #apri_con
+
+
+attributo `my_game`:
+
+    CAN [NOT] aprire_con
+
+sintassi:
+
+    apri <ogg> con <strum>
+
+
+## chiudi
+
+[chiudi]: #chiudi
+
+
+attributo `my_game`:
+
+    CAN [NOT] chiudere
+
+sintassi:
+
+    chiudi <ogg>
+
+## chiudi_con
+
+[chiudi con]: #chiudi_con
+
+
+attributo `my_game`:
+
+    CAN [NOT] chiudere_con
+
+sintassi:
+
+    chiudi <ogg> con <strum>
+
+
+## blocca
+
+[blocca]: #blocca
+[serra]: #blocca
+
+
+attributo `my_game`:
+
+    CAN [NOT] bloccare
+
+sintassi:
+
+    (blocca|serra) <ogg>
+
+
+## blocca_con
+
+[blocca con]: #blocca_con
+[serra con]: #blocca_con
+
+
+attributo `my_game`:
+
+    CAN [NOT] bloccare_con
+
+sintassi:
+
+    (blocca|serra) <ogg> con <chiave>
+
+
+## sblocca
+
+[sblocca]: #sblocca
+
+
+attributo `my_game`:
+
+    CAN [NOT] sbloccare
+
+sintassi:
+
+    sblocca <ogg>
+
+
+## sblocca_con
+
+[sblocca con]: #sblocca_con
+
+
+attributo `my_game`:
+
+    CAN [NOT] sbloccare_con
+
+sintassi:
+
+    sblocca <ogg> con <chiave>
 
 
 

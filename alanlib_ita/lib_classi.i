@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.2.14 (2018/07/22)
+-- "lib_classi.i" v0.2.15 (2018/07/23)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1169,7 +1169,7 @@ EVERY porta ISA OBJECT
 
 
 
-  VERB close
+  VERB chiudi
     DOES
       IF altro_lato OF THIS <> porta_fittizia
         THEN MAKE altro_lato OF THIS NOT aperto.
@@ -1177,7 +1177,7 @@ EVERY porta ISA OBJECT
   END VERB.
 
 
-  VERB lock
+  VERB blocca
     DOES
       IF altro_lato OF THIS <> porta_fittizia
         THEN MAKE altro_lato OF THIS NOT aperto.
@@ -1186,7 +1186,7 @@ EVERY porta ISA OBJECT
   END VERB.
 
 
-  VERB open
+  VERB apri
     DOES
       IF altro_lato OF THIS <> porta_fittizia
         THEN MAKE altro_lato OF THIS aperto.
@@ -1195,7 +1195,7 @@ EVERY porta ISA OBJECT
   END VERB.
 
 
-  VERB unlock
+  VERB sblocca
     DOES
       IF altro_lato OF THIS <> porta_fittizia
         THEN MAKE altro_lato OF THIS NOT bloccato.
@@ -1891,7 +1891,7 @@ EVERY LISTED_CONTAINER ISA OBJECT
 --        | containers that don't become opaque when closed!
 
 
-  VERB open
+  VERB apri
     DOES
       IF THIS IS aperto --> verifica che sia davvero aperta!
         THEN
@@ -1901,7 +1901,7 @@ EVERY LISTED_CONTAINER ISA OBJECT
   END VERB.
 
 
-  VERB open_with
+  VERB apri_con
     WHEN ogg DOES
       IF THIS IS aperto --> verifica che sia davvero aperta!
         THEN
@@ -1911,7 +1911,7 @@ EVERY LISTED_CONTAINER ISA OBJECT
   END VERB.
 
   
-  VERB close, lock
+  VERB chiudi, blocca
     DOES
       IF THIS IS NOT aperto --> verifica che sia davvero chiuso!
         THEN
@@ -1920,7 +1920,7 @@ EVERY LISTED_CONTAINER ISA OBJECT
   END VERB.
 
 
-  VERB close_with
+  VERB chiudi_con
     WHEN ogg DOES
       IF THIS IS NOT aperto --> verifica che sia davvero chiuso!
         THEN
@@ -1928,7 +1928,7 @@ EVERY LISTED_CONTAINER ISA OBJECT
       END IF.
   END VERB.
 
-  VERB lock_with
+  VERB blocca_con
     WHEN ogg DOES
       IF THIS IS NOT aperto --> verifica che sia davvero chiuso!
         THEN

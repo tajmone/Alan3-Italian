@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.34 (2018/07/22)
+-- "lib_definizioni.i" v0.2.35 (2018/07/23)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1045,6 +1045,8 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN attraversare.         --> climb_through
   CAN baciare.              --> kiss         (+ hug, embrace)
   CAN bere.                 --> drink
+  CAN bloccare.             --> lock
+  CAN bloccare_con.         --> lock_with
   CAN bruciare.             --> burn
   CAN bruciare_con.         --> burn_with
   CAN caricare_partita.     --> 'restore'
@@ -1081,6 +1083,8 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN saltare.              --> jump
   CAN saltare_in.           --> jump_in
   CAN saltare_su.           --> jump_on
+  CAN sbloccare.            --> unlock
+  CAN sbloccare_con.        --> unlock_with
   CAN scavare.              --> dig
   CAN scrivere.             --> write
   CAN seguire.              --> follow
@@ -1135,8 +1139,6 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN light.       -- (+ lit)
   CAN listen0.
   CAN listen.
-  CAN lock.
-  CAN lock_with.
   CAN 'look'.      -- (+ gaze, peek)
   CAN look_at.
   CAN look_behind.
@@ -1203,8 +1205,6 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN turn.        -- (+ rotate)
   CAN turn_on.
   CAN turn_off.
-  CAN unlock.
-  CAN unlock_with.
   CAN 'use'.
   CAN use_with.
   CAN what_am_i.
@@ -1238,6 +1238,8 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game attraversare.         --> climb_through
   MAKE my_game baciare.              --> kiss         (+ hug, embrace)
   MAKE my_game bere.                 --> drink
+  MAKE my_game bloccare.             --> lock
+  MAKE my_game bloccare_con.         --> lock_with
   MAKE my_game caricare_partita.     --> 'restore'
   MAKE my_game chiudere.             --> close        (+ shut)
   MAKE my_game chiudere_con.         --> close_with
@@ -1272,6 +1274,8 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game saltare_in.           --> jump_in
   MAKE my_game saltare_su.           --> jump_on
   MAKE my_game salvare_partita.      --> save
+  MAKE my_game sbloccare.            --> unlock
+  MAKE my_game sbloccare_con.        --> unlock_with
   MAKE my_game scavare.              --> dig
   MAKE my_game scrivere.             --> write
   MAKE my_game seguire.              --> follow
@@ -1328,8 +1332,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game light.           -- (+ lit)
   MAKE my_game listen0.
   MAKE my_game listen.
-  MAKE my_game lock.
-  MAKE my_game lock_with.
   MAKE my_game 'look'.          -- (+ gaze, peek)
   MAKE my_game look_at.
   MAKE my_game look_behind.
@@ -1396,8 +1398,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game turn.            -- (+ rotate)
   MAKE my_game turn_on.
   MAKE my_game turn_off.
-  MAKE my_game unlock.
-  MAKE my_game unlock_with.
   MAKE my_game 'use'.
   MAKE my_game use_with.
   MAKE my_game what_am_i.
@@ -1441,6 +1441,8 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT attraversare.         --> climb_through
   MAKE my_game NOT baciare.              --> kiss         (+ hug, embrace)
   MAKE my_game NOT bere.                 --> drink
+  MAKE my_game NOT bloccare.             --> lock
+  MAKE my_game NOT bloccare_con.         --> lock_with
   MAKE my_game     caricare_partita.     --> 'restore'
   MAKE my_game NOT chiudere.             --> close        (+ shut)
   MAKE my_game NOT chiudere_con.         --> close_with
@@ -1474,6 +1476,8 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT saltare_in.           --> jump_in
   MAKE my_game NOT saltare_su.           --> jump_on
   MAKE my_game     salvare_partita.      --> save
+  MAKE my_game NOT sbloccare.            --> unlock
+  MAKE my_game NOT sbloccare_con.        --> unlock_with
   MAKE my_game NOT scavare.              --> dig
   MAKE my_game NOT scrivere.             --> write
   MAKE my_game NOT seguire.              --> follow
@@ -1532,8 +1536,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT light.       -- (+ lit)
   MAKE my_game listen0.
   MAKE my_game listen.
-  MAKE my_game NOT lock.
-  MAKE my_game NOT lock_with.
   MAKE my_game 'look'.          -- (+ gaze, peek)
   MAKE my_game look_at.
   MAKE my_game look_behind.
@@ -1600,8 +1602,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT turn.        -- (+ rotate)
   MAKE my_game NOT turn_on.
   MAKE my_game NOT turn_off.
-  MAKE my_game NOT unlock.
-  MAKE my_game NOT unlock_with.
   MAKE my_game NOT 'use'.
   MAKE my_game NOT use_with.
   MAKE my_game what_am_i.
@@ -1629,6 +1629,8 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT attraversare.         --> climb_through
   MAKE my_game NOT baciare.              --> kiss         (+ hug, embrace)
   MAKE my_game NOT bere.                 --> drink
+  MAKE my_game NOT bloccare.             --> lock
+  MAKE my_game NOT bloccare_con.         --> lock_with
   MAKE my_game     caricare_partita.     --> 'restore'
   MAKE my_game NOT chiudere.             --> close        (+ shut)
   MAKE my_game NOT chiudere_con.         --> close_with
@@ -1662,6 +1664,8 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT saltare_in.           --> jump_in
   MAKE my_game NOT saltare_su.           --> jump_on
   MAKE my_game     salvare_partita.      --> save
+  MAKE my_game NOT sbloccare.            --> unlock
+  MAKE my_game NOT sbloccare_con.        --> unlock_with
   MAKE my_game NOT scavare.              --> dig
   MAKE my_game NOT scrivere.             --> write
   MAKE my_game NOT seguire.              --> follow
@@ -1720,8 +1724,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT light.       -- (+ lit)
   MAKE my_game NOT listen0.
   MAKE my_game NOT listen.
-  MAKE my_game NOT lock.
-  MAKE my_game NOT lock_with.
   MAKE my_game NOT 'look'.      -- (+ gaze, peek)
   MAKE my_game NOT look_at.
   MAKE my_game NOT look_behind.
@@ -1788,8 +1790,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT turn.        -- (+ rotate)
   MAKE my_game NOT turn_on.
   MAKE my_game NOT turn_off.
-  MAKE my_game NOT unlock.
-  MAKE my_game NOT unlock_with.
   MAKE my_game NOT 'use'.
   MAKE my_game NOT use_with.
   MAKE my_game NOT what_am_i.
@@ -1815,6 +1815,8 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT attraversare.         --> climb_through
   MAKE my_game NOT baciare.              --> kiss         (+ hug, embrace)
   MAKE my_game NOT bere.                 --> drink
+  MAKE my_game NOT bloccare.             --> lock
+  MAKE my_game NOT bloccare_con.         --> lock_with
   MAKE my_game NOT caricare_partita.     --> 'restore'
   MAKE my_game NOT chiudere.             --> close        (+ shut)
   MAKE my_game NOT chiudere_con.         --> close_with
@@ -1848,6 +1850,8 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT saltare_in.           --> jump_in
   MAKE my_game NOT saltare_su.           --> jump_on
   MAKE my_game NOT salvare_partita.      --> save
+  MAKE my_game NOT sbloccare.            --> unlock
+  MAKE my_game NOT sbloccare_con.        --> unlock_with
   MAKE my_game NOT scavare.              --> dig
   MAKE my_game NOT scrivere.             --> write
   MAKE my_game NOT seguire.              --> follow
@@ -1906,8 +1910,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT light.       -- (+ lit)
   MAKE my_game NOT listen0.
   MAKE my_game NOT listen.
-  MAKE my_game NOT lock.
-  MAKE my_game NOT lock_with.
   MAKE my_game NOT 'look'.      -- (+ gaze, peek)
   MAKE my_game NOT look_at.
   MAKE my_game NOT look_behind.
@@ -1974,8 +1976,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT turn.        -- (+ rotate)
   MAKE my_game NOT turn_on.
   MAKE my_game NOT turn_off.
-  MAKE my_game NOT unlock.
-  MAKE my_game NOT unlock_with.
   MAKE my_game NOT 'use'.
   MAKE my_game NOT use_with.
   MAKE my_game NOT what_am_i.

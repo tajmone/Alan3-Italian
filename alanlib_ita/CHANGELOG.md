@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/23](#20180723)
 - [2018/07/22 \(7\)](#20180722-7)
     - [Tweaked `LISTED_CONTAINER`](#tweaked-listed_container)
     - [Small Fixes](#small-fixes)
@@ -124,6 +125,40 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/23
+
+- [`lib_classi.i`][lib_classi] (v0.2.15)
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.35)
+- [`lib_verbi.i`][lib_verbi] (v0.2.36)
+
+Translated `my_game` attributes for verb restrictions:
+
+|    English    |     Italian     |
+|---------------|-----------------|
+| `lock`        | `bloccare`      |
+| `lock_with`   | `bloccare_con`  |
+| `unlock`      | `sbloccare`     |
+| `unlock_with` | `sbloccare_con` |
+
+
+Translate verbs:
+
+|    Verb EN    |    Verb IT    | Synonyms |
+|---------------|---------------|----------|
+| `open`        | `apri`        |          |
+| `open_with`   | `apri_con`    |          |
+| `close`       | `chiudi`      |          |
+| `close_with`  | `chiudi_con`  |          |
+| `lock`        | `blocca`      | serra    |
+| `lock_with`   | `blocca_con`  | serra    |
+| `unlock`      | `sblocca`     |          |
+| `unlock_with` | `sblocca_con` |          |
+
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/22 (7)
 

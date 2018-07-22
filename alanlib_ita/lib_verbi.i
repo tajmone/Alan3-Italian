@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.35 (2018/07/22)
+-- "lib_verbi.i" v0.2.36 (2018/07/23)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -21,11 +21,17 @@
 --| ricomincia_partita | restart                      | ricomincia [partita]        | x | 0 |   |
 --| salva_partita      | save                         | salva [partita]             | x | 0 |   |
 --+--------------------+------------------------------+-----------------------------+---+---+---+
+--| apri               |                              | apri (ogg)                  |   | 1 | x |
+--| apri_con           |                              | apri (ogg) con (strum)      |   | 2 | x |
 --| aspetta            | attendi, Z                   | aspetta                     |   | 0 |   |
 --| attraversa         |                              | attraversa (ogg)            |   | 1 | x |
 --| bevi               |                              | bevi (liq)                  |   | 1 |   |
+--| blocca             | serra                        | blocca (ogg)                |   | 1 | x |
+--| blocca_con         | serra                        | blocca (ogg) con (chiave)   |   | 2 | x |
 --| brucia             |                              | brucia (ogg)                |   | 1 | x |
 --| brucia_con         |                              | brucia (ogg) con (strum)    |   | 2 | x |
+--| chiudi             |                              | chiudi (ogg)                |   | 1 | x |
+--| chiudi_con         |                              | chiudi (ogg) con (strum)    |   | 2 | x |
 --| compra             | acquista                     | compra (merce)              |   | 1 |   |
 --| dormi              | riposa                       | dormi                       |   | 0 |   |
 --| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)     |   | 2 | x |
@@ -39,6 +45,8 @@
 --| rifai              | ancora, G                    | rifai                       |   | 0 |   |
 --| rompi              | distruggi, spacca, sfonda    | rompi (ogg)                 |   | 1 | x |
 --| rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)     |   | 2 | x |
+--| sblocca            |                              | sblocca (ogg)               |   | 1 | x |
+--| sblocca_con        |                              | sblocca (ogg) con (chiave)  |   | 2 | x |
 --| scrivi             |                              | scrivi "testo" su (ogg)     |   | 1 | x |
 --| spogliati          | svestiti                     | spogliati                   |   | 0 |   |
 --| vai_a              |                              | vai a (dest)                |   | 1 |   |
@@ -87,8 +95,8 @@
 ----- climb                                                climb (obj)                         1       x
 ----- climb_on                                             climb on (surface)                  1
 ----> climb_through                                        climb through (obj)                 1       x
------ close       (+ shut)                                 close (obj)                         1       x
------ close_with                                           close (obj) with (instr)            2       x
+----> close       (+ shut)                                 close (obj)                         1       x
+----> close_with                                           close (obj) with (instr)            2       x
 ----- consult                                              consult (source) about (topic)      2
 ----- credits     (+ acknowledgments, author, copyright)   credits                             2
 ----- cut                                                  cut (obj)                           1       x
@@ -137,8 +145,8 @@
 ----- light       (+ lit)                                  light (obj)                         1       x
 ----- listen0                                              listen                              0
 ----- listen                                               listen to (obj)                     1       x
------ lock                                                 lock (obj)                          1       x
------ lock_with                                            lock (obj) with (key)               2       x
+----> lock                                                 lock (obj)                          1       x
+----> lock_with                                            lock (obj) with (key)               2       x
 ----- look        (+ gaze, peek)                           look                                0
 ----- look_at                                              look at (obj)                       1       x
 ----- look_behind                                          look behind (bulk)                  1
@@ -149,8 +157,8 @@
 ----- look_up                                              look up                             0
 ----- no                                                   no                                  0
 ----- notify (on, off)                                     notify. notify on. notify off       0
------ open                                                 open (obj)                          1       x
------ open_with                                            open (obj) with (instr)             2       x
+----> open                                                 open (obj)                          1       x
+----> open_with                                            open (obj) with (instr)             2       x
 ----- play                                                 play (obj)                          1       x
 ----- play_with                                            play with (obj)                     1       x
 ----- pour        (= defined at the verb 'empty')          pour (obj)                          1       x
@@ -223,8 +231,8 @@
 ----- turn_on                                              turn on (app)                       1
 ----- turn_off                                             turn off (app)                      1
 ----> undress                                              undress                             0
------ unlock                                               unlock (obj)                        1       x
------ unlock_with                                          unlock (obj) with (key)             2       x
+----> unlock                                               unlock (obj)                        1       x
+----> unlock_with                                          unlock (obj) with (key)             2       x
 ----- use                                                  use (obj)                           1       x
 ----- use_with                                             use (obj) with (instr)              2       x
 ----- verbose                                              verbose                             0
@@ -373,6 +381,208 @@ END VERB.
 -- *                                                                           *
 -- *****************************************************************************
 -- Comandi diretti al personaggio protagonista per interagire con l'avventura.
+
+
+
+
+-- ==============================================================
+
+
+----- @APRI --> @OPEN
+
+
+-- ==============================================================
+
+
+SYNTAX apri = apri (ogg)
+      WHERE ogg ISA OBJECT
+        ELSE
+      IF ogg IS NOT plurale
+        THEN SAY illegal_parameter_sg OF my_game.
+        ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+
+
+ADD TO EVERY OBJECT
+  VERB apri
+    CHECK my_game CAN aprire
+      ELSE SAY azione_bloccata OF my_game.
+    AND ogg IS apribile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY ogg1_inadatto_sg OF my_game. "aprire."
+          ELSE SAY ogg1_inadatto_pl OF my_game. "aprire."
+        END IF.
+    AND CURRENT LOCATION IS lit
+      ELSE SAY check_locazione_illuminata OF my_game.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY ogg1_non_raggiungibile_sg OF my_game.
+              ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY check_obj_not_distant_sg OF my_game.
+              ELSE SAY check_obj_not_distant_pl OF my_game.
+            END IF.
+        END IF.
+    AND ogg IS NOT aperto
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY check_obj_not_open_sg OF my_game.
+          ELSE SAY check_obj_not_open_pl OF my_game.
+        END IF.
+    DOES
+      IF ogg IS bloccato
+        THEN
+          IF chiave_abbinata OF ogg IN hero
+            THEN MAKE ogg NOT bloccato.
+              MAKE ogg aperto.
+              "(con" SAY THE chiave_abbinata OF ogg. "$$)
+              $nSblocchi ed apri" SAY THE ogg. "."
+          ELSE SAY THE ogg.
+            IF ogg IS NOT plurale
+              THEN "è"
+              ELSE "sono"
+            END IF.
+            "bloccat$$"
+            IF ogg IS NOT femminile
+              THEN
+                IF ogg IS NOT plurale
+                  THEN SAY "o.". -- GNA = msi
+                  ELSE SAY "i.". -- GNA = mpi
+                END IF.
+              ELSE
+                IF ogg IS NOT plurale
+                  THEN SAY "a.". -- GNA = fsi
+                  ELSE SAY "e.". -- GNA = fpi
+                END IF.
+            END IF.
+        END IF.
+      ELSIF ogg IS NOT bloccato
+        THEN MAKE ogg aperto.
+        "Apri" SAY THE ogg. "."
+      END IF.
+  END VERB.
+END ADD TO.
+
+
+
+-- ==============================================================
+
+
+----- @APRI CON --> @OPEN WITH
+
+
+-- ==============================================================
+
+-- SYNTAX open_with = open (ogg) 'with' (strum)
+
+SYNTAX apri_con = apri (ogg) con (strum)
+      WHERE ogg ISA OBJECT
+        ELSE
+      IF ogg IS NOT plurale
+        THEN SAY illegal_parameter_sg OF my_game.
+        ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+      AND strum ISA OBJECT
+        ELSE
+      IF strum IS NOT plurale
+        THEN SAY illegal_parameter2_with_sg OF my_game.
+        ELSE SAY illegal_parameter2_with_pl OF my_game.
+      END IF.
+
+
+
+ADD TO EVERY OBJECT
+  VERB apri_con
+        WHEN ogg
+      CHECK my_game CAN aprire_con
+        ELSE SAY azione_bloccata OF my_game.
+          AND ogg IS apribile
+          ELSE
+          IF ogg IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY ogg1_inadatto_sg OF my_game. "aprire."
+            ELSE SAY ogg1_inadatto_pl OF my_game. "aprire."
+          END IF.
+      AND strum IS esaminabile
+        ELSE
+          IF ogg IS NOT plurale
+            THEN SAY check_obj2_suitable_with_sg OF my_game.
+            ELSE SAY check_obj2_suitable_with_pl OF my_game.
+          END IF.
+      AND ogg <> strum
+        ELSE SAY check_obj_not_obj2_with OF my_game.
+          AND CURRENT LOCATION IS lit
+        ELSE SAY check_locazione_illuminata OF my_game.
+          AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY ogg1_non_raggiungibile_sg OF my_game.
+                ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY check_obj_not_distant_sg OF my_game.
+                ELSE SAY check_obj_not_distant_pl OF my_game.
+              END IF.
+          END IF.
+          AND strum IN hero
+        ELSE SAY check_obj2_in_hero OF my_game.
+          AND ogg IS NOT aperto
+          ELSE
+          IF ogg IS NOT plurale
+            THEN SAY check_obj_not_open_sg OF my_game.
+            ELSE SAY check_obj_not_open_pl OF my_game.
+          END IF.
+          DOES
+        IF ogg IS bloccato
+          THEN
+            IF strum = chiave_abbinata OF ogg
+              THEN MAKE ogg NOT bloccato.
+                MAKE ogg aperto.
+             -- "You unlock  and open" SAY THE ogg.
+                "Sblocchi e apri" SAY THE ogg.
+                "con" SAY THE strum. "."
+              ELSE SAY THE ogg.
+                IF ogg IS NOT plurale
+                  THEN "è"
+                  ELSE "sono"
+                END IF.
+                "bloccat$$"
+                IF ogg IS NOT femminile
+                  THEN
+                    IF ogg IS NOT plurale
+                      THEN SAY "o.". -- GNA = msi
+                      ELSE SAY "i.". -- GNA = mpi
+                    END IF.
+                  ELSE
+                    IF ogg IS NOT plurale
+                      THEN SAY "a.". -- GNA = fsi
+                      ELSE SAY "e.". -- GNA = fpi
+                    END IF.
+                END IF.
+             -- IF ogg IS NOT plurale
+             --   THEN "is locked."
+             --   ELSE "are locked."
+            END IF.
+          ELSE "Non puoi aprire" SAY THE ogg. "con" SAY THE strum. "."
+        END IF.
+
+
+    END VERB.
+END ADD TO.
+
+
 
 -- ==============================================================
 
@@ -583,6 +793,168 @@ END ADD TO.
 
 
 
+
+-- ==============================================================
+
+
+----- @BLOCCA --> @LOCK
+
+
+-- ==============================================================
+
+
+SYNTAX blocca = blocca (ogg)
+      WHERE ogg ISA OBJECT
+        ELSE
+      IF ogg IS NOT plurale
+        THEN SAY illegal_parameter_sg OF my_game.
+        ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+
+SYNONYMS
+  serra = blocca.
+
+
+ADD TO EVERY OBJECT
+  VERB blocca
+    CHECK my_game CAN bloccare
+      ELSE SAY azione_bloccata OF my_game.
+    AND ogg IS bloccabile
+          ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY ogg1_inadatto_sg OF my_game. "bloccare."
+          ELSE SAY ogg1_inadatto_pl OF my_game. "bloccare."
+        END IF.
+    AND CURRENT LOCATION IS lit
+      ELSE SAY check_locazione_illuminata OF my_game.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY ogg1_non_raggiungibile_sg OF my_game.
+              ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY check_obj_not_distant_sg OF my_game.
+              ELSE SAY check_obj_not_distant_pl OF my_game.
+            END IF.
+        END IF.
+    AND ogg IS NOT bloccato
+          ELSE
+        IF ogg IS NOT plurale
+          THEN SAY check_obj_not_locked_sg OF my_game.
+          ELSE SAY check_obj_not_locked_pl OF my_game.
+      END IF.
+  DOES
+    IF chiave_abbinata OF ogg IN hero
+      THEN MAKE ogg bloccato.
+        "(con" SAY THE chiave_abbinata OF ogg. "$$)$n"
+        "Tu"
+        IF ogg IS aperto
+          THEN "chiudi e"
+            MAKE ogg NOT aperto.
+        END IF.
+
+        "blocchi" SAY THE ogg. "."
+    ELSE
+      SAY specificare_CON_cosa OF my_game. "bloccare" SAY THE ogg.
+   -- ELSE "Devi specificare con cosa vuoi bloccare" SAY THE ogg.
+   -- ELSE "You have to state what you want to lock" SAY THE ogg. "with."
+    END IF.
+
+  END VERB.
+END ADD TO.
+
+
+
+-- ==============================================================
+
+
+----- @BLOCCA CON --> @LOCK WITH
+
+
+-- ==============================================================
+
+
+SYNTAX blocca_con = blocca (ogg) con (chiave)
+  WHERE ogg ISA OBJECT
+      ELSE
+      IF ogg IS NOT plurale
+        THEN SAY illegal_parameter_sg OF my_game.
+        ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+  AND chiave ISA OBJECT
+      ELSE
+      IF chiave IS NOT plurale
+        THEN SAY illegal_parameter2_with_sg OF my_game.
+        ELSE SAY illegal_parameter2_with_pl OF my_game.
+      END IF.
+
+
+ADD TO EVERY OBJECT
+    VERB blocca_con
+        WHEN ogg
+      CHECK my_game CAN bloccare_con
+        ELSE SAY azione_bloccata OF my_game.
+      AND ogg IS bloccabile
+        ELSE
+          IF ogg IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY ogg1_inadatto_sg OF my_game. "bloccare."
+            ELSE SAY ogg1_inadatto_pl OF my_game. "bloccare."
+          END IF.
+      AND chiave IS esaminabile
+        ELSE
+          IF ogg IS NOT plurale
+            THEN SAY check_obj2_suitable_with_sg OF my_game.
+            ELSE SAY check_obj2_suitable_with_pl OF my_game.
+          END IF.
+      AND ogg <> chiave
+        ELSE SAY check_obj_not_obj2_with OF my_game.
+      AND CURRENT LOCATION IS lit
+        ELSE SAY check_locazione_illuminata OF my_game.
+      AND ogg IS NOT bloccato
+        ELSE
+          IF ogg IS NOT plurale
+            THEN SAY check_obj_not_locked_sg OF my_game.
+            ELSE SAY check_obj_not_locked_pl OF my_game.
+          END IF.
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY ogg1_non_raggiungibile_sg OF my_game.
+                ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY check_obj_not_distant_sg OF my_game.
+                ELSE SAY check_obj_not_distant_pl OF my_game.
+              END IF.
+          END IF.
+      AND chiave IN hero
+        ELSE SAY check_obj2_in_hero OF my_game.
+      AND chiave = chiave_abbinata OF ogg
+        ELSE SAY check_door_matching_key OF my_game.
+
+      DOES
+        MAKE ogg bloccato. "Tu"
+        IF ogg IS aperto
+          THEN "chiudi e"
+            MAKE ogg NOT aperto.
+        END IF.
+        "blocchi" SAY THE ogg. "con" SAY THE chiave. "."
+    END VERB.
+END ADD TO.
+
+
+
 -- =================================================================
 
 ----- @BRUCIA --> @BURN (VERB + SYNTAX)
@@ -706,6 +1078,147 @@ ADD TO EVERY OBJECT
       DOES
         "Non puoi bruciare" SAY THE ogg. "con" SAY THE strum. "."
      -- "You can't burn" SAY THE ogg. "with" SAY THE strum. "."
+  END VERB.
+END ADD TO.
+
+
+
+-- ==============================================================
+
+
+----- @CHIUDI --> @CLOSE (+ shut)
+
+
+-- ==============================================================
+
+
+SYNTAX chiudi = chiudi (ogg)
+  WHERE ogg ISA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY illegal_parameter_sg OF my_game.
+        ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+
+
+-- SYNONYMS shut = close.
+
+
+ADD TO EVERY OBJECT
+  VERB chiudi
+    CHECK my_game CAN chiudere
+      ELSE SAY azione_bloccata OF my_game.
+    AND ogg IS apribile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY ogg1_inadatto_sg OF my_game. "chiudere."
+          ELSE SAY ogg1_inadatto_pl OF my_game. "chiudere."
+        END IF.
+    AND CURRENT LOCATION IS lit
+      ELSE SAY check_locazione_illuminata OF my_game.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY ogg1_non_raggiungibile_sg OF my_game.
+              ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY check_obj_not_distant_sg OF my_game.
+              ELSE SAY check_obj_not_distant_pl OF my_game.
+            END IF.
+        END IF.
+    AND ogg IS aperto
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY check_obj_open1_sg OF my_game.
+          ELSE SAY check_obj_open1_pl OF my_game.
+        END IF.
+
+    DOES
+          MAKE ogg NOT aperto.
+          "Chiudi" SAY THE ogg. "."
+  END VERB.
+END ADD TO.
+
+
+
+-- ==============================================================
+
+
+----- @CHIUDI CON --> @CLOSE WITH
+
+
+-- ==============================================================
+
+
+SYNTAX chiudi_con = chiudi (ogg) con (strum)
+  WHERE ogg ISA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY illegal_parameter_sg OF my_game.
+        ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+  AND strum ISA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY illegal_parameter2_with_sg OF my_game.
+        ELSE SAY illegal_parameter2_with_pl OF my_game.
+      END IF.
+
+
+ADD TO EVERY OBJECT
+  VERB chiudi_con
+    WHEN ogg
+      CHECK my_game CAN chiudere_con
+        ELSE SAY azione_bloccata OF my_game.
+      AND ogg IS apribile
+        ELSE
+          IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY ogg1_inadatto_sg OF my_game. "chiudere."
+          ELSE SAY ogg1_inadatto_pl OF my_game. "chiudere."
+          END IF.
+      AND strum IS esaminabile
+        ELSE
+          IF ogg IS NOT plurale
+            THEN SAY check_obj2_suitable_with_sg OF my_game.
+            ELSE SAY check_obj2_suitable_with_pl OF my_game.
+          END IF.
+      AND ogg <> strum
+        ELSE SAY check_obj_not_obj2_with OF my_game.
+      AND strum IN hero
+        ELSE SAY check_obj2_in_hero OF my_game.
+      AND CURRENT LOCATION IS lit
+        ELSE SAY check_locazione_illuminata OF my_game.
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY ogg1_non_raggiungibile_sg OF my_game.
+                ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY check_obj_not_distant_sg OF my_game.
+                ELSE SAY check_obj_not_distant_pl OF my_game.
+              END IF.
+        END IF.
+      AND ogg IS aperto
+            ELSE
+          IF ogg IS NOT plurale
+            THEN SAY check_obj_open1_sg OF my_game.
+            ELSE SAY check_obj_open1_pl OF my_game.
+          END IF.
+
+      DOES
+        "Non puoi chiudere" SAY THE ogg. "con" SAY THE strum. "."
   END VERB.
 END ADD TO.
 
@@ -1674,6 +2187,144 @@ ADD TO EVERY OBJECT
       -- "Trying to break" SAY THE obj. "with" SAY THE strum.
       -- "wouldn't accomplish anything."
   END VERB.
+END ADD TO.
+
+
+-- ==============================================================
+
+
+----- @SBLOCCA --> @UNLOCK
+
+
+-- ==============================================================
+
+
+SYNTAX sblocca = sblocca (ogg)
+  WHERE ogg ISA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY illegal_parameter_sg OF my_game.
+        ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+
+
+ADD TO EVERY OBJECT
+  VERB sblocca
+    CHECK my_game CAN sbloccare
+      ELSE SAY azione_bloccata OF my_game.
+    AND ogg IS bloccabile
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY check_obj_suitable_sg OF my_game.
+          ELSE SAY check_obj_suitable_pl OF my_game.
+        END IF.
+    AND CURRENT LOCATION IS lit
+      ELSE SAY check_locazione_illuminata OF my_game.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY ogg1_non_raggiungibile_sg OF my_game.
+              ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY check_obj_not_distant_sg OF my_game.
+              ELSE SAY check_obj_not_distant_pl OF my_game.
+            END IF.
+        END IF.
+    AND ogg IS bloccato
+          ELSE
+        IF ogg IS NOT plurale
+          THEN SAY check_obj_locked_sg OF my_game.
+          ELSE SAY check_obj_locked_pl OF my_game.
+        END IF.
+    DOES
+      IF chiave_abbinata OF ogg IN hero
+        THEN MAKE ogg NOT bloccato.
+          "(con" SAY THE chiave_abbinata OF ogg. "$$)$n"
+          "Sblocchi" SAY THE ogg. "."
+        ELSE "Non possiedi la chiave che sblocca" SAY THE ogg. "."
+     -- ELSE "You don't have the key that unlocks" SAY THE ogg. "."
+      END IF.
+  END VERB.
+END ADD TO.
+
+
+
+-- =============================================================
+
+
+----- @SBLOCCA --> @UNLOCK WITH
+
+
+-- =============================================================
+
+
+SYNTAX sblocca_con = sblocca (ogg) con (chiave)
+  WHERE ogg ISA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY illegal_parameter_sg OF my_game.
+        ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+  AND chiave ISA OBJECT
+      ELSE SAY illegal_parameter_with_sg OF my_game. "."
+
+
+ADD TO EVERY OBJECT
+  VERB sblocca_con
+    WHEN ogg
+      CHECK my_game CAN sbloccare_con
+        ELSE SAY azione_bloccata OF my_game.
+          AND ogg IS bloccabile
+              ELSE
+          IF ogg IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY ogg1_inadatto_sg OF my_game. "sbloccare."
+            ELSE SAY ogg1_inadatto_pl OF my_game. "sbloccare."
+          END IF.
+      AND chiave IS esaminabile
+        ELSE
+          IF ogg IS NOT plurale
+            THEN SAY check_obj2_suitable_with_sg OF my_game.
+            ELSE SAY check_obj2_suitable_with_pl OF my_game.
+          END IF.
+      AND chiave IN hero
+          ELSE SAY check_obj2_in_hero OF my_game.
+      AND ogg <> chiave
+        ELSE SAY check_obj_not_obj2_with OF my_game.
+      AND CURRENT LOCATION IS lit
+        ELSE SAY check_locazione_illuminata OF my_game.
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY ogg1_non_raggiungibile_sg OF my_game.
+                ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY check_obj_not_distant_sg OF my_game.
+                ELSE SAY check_obj_not_distant_pl OF my_game.
+              END IF.
+          END IF.
+      AND ogg IS bloccato
+        ELSE
+          IF ogg IS NOT plurale
+            THEN SAY check_obj_locked_sg OF my_game.
+            ELSE SAY check_obj_locked_pl OF my_game.
+          END IF.
+      AND chiave = chiave_abbinata OF ogg
+        ELSE SAY check_door_matching_key OF my_game.
+      DOES
+        MAKE ogg NOT bloccato.
+        "Sblocchi" SAY THE ogg. "con" SAY THE chiave. "."
+    END VERB.
 END ADD TO.
 
 
@@ -2664,147 +3315,6 @@ ADD TO EVERY SUPPORTER
 END ADD TO.
 
 
-
-
-
--- ==============================================================
-
-
------ CLOSE (+ shut)
-
-
--- ==============================================================
-
-
-SYNTAX close = close (ogg)
-        WHERE ogg ISA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
-
-
-SYNONYMS shut = close.
-
-
-ADD TO EVERY OBJECT
-  VERB close
-    CHECK my_game CAN chiudere
-      ELSE SAY azione_bloccata OF my_game.
-    AND ogg IS apribile
-          ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF my_game. "chiudere."
-          ELSE SAY ogg1_inadatto_pl OF my_game. "chiudere."
-        END IF.
-    AND CURRENT LOCATION IS lit
-      ELSE SAY check_locazione_illuminata OF my_game.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF my_game.
-              ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF my_game.
-              ELSE SAY check_obj_not_distant_pl OF my_game.
-            END IF.
-        END IF.
-    AND ogg IS aperto
-          ELSE
-        IF ogg IS NOT plurale
-          THEN SAY check_obj_open1_sg OF my_game.
-          ELSE SAY check_obj_open1_pl OF my_game.
-        END IF.
-
-    DOES
-          MAKE ogg NOT aperto.
-          "You close the" SAY THE ogg. "."
-  END VERB.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ CLOSE WITH
-
-
--- ==============================================================
-
-
-SYNTAX close_with = close (ogg) 'with' (strum)
-  WHERE ogg ISA OBJECT
-      ELSE
-      IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
-  AND strum ISA OBJECT
-        ELSE
-      IF ogg IS NOT plurale
-        THEN SAY illegal_parameter2_with_sg OF my_game.
-        ELSE SAY illegal_parameter2_with_pl OF my_game.
-      END IF.
-
-
-ADD TO EVERY OBJECT
-  VERB close_with
-    WHEN ogg
-      CHECK my_game CAN chiudere_con
-        ELSE SAY azione_bloccata OF my_game.
-      AND ogg IS apribile
-        ELSE
-          IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF my_game. "chiudere."
-          ELSE SAY ogg1_inadatto_pl OF my_game. "chiudere."
-          END IF.
-      AND strum IS esaminabile
-        ELSE
-          IF ogg IS NOT plurale
-            THEN SAY check_obj2_suitable_with_sg OF my_game.
-            ELSE SAY check_obj2_suitable_with_pl OF my_game.
-          END IF.
-      AND ogg <> strum
-        ELSE SAY check_obj_not_obj2_with OF my_game.
-      AND strum IN hero
-        ELSE SAY check_obj2_in_hero OF my_game.
-      AND CURRENT LOCATION IS lit
-        ELSE SAY check_locazione_illuminata OF my_game.
-      AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF my_game.
-                ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
-              END IF.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF my_game.
-                ELSE SAY check_obj_not_distant_pl OF my_game.
-              END IF.
-        END IF.
-      AND ogg IS aperto
-            ELSE
-          IF ogg IS NOT plurale
-            THEN SAY check_obj_open1_sg OF my_game.
-            ELSE SAY check_obj_open1_pl OF my_game.
-          END IF.
-
-      DOES
-            "You can't $v" SAY THE ogg. "with" SAY THE strum. "."
-  END VERB.
-END ADD TO.
 
 
 
@@ -5145,163 +5655,6 @@ END ADD TO.
 -- ==============================================================
 
 
------ LOCK
-
-
--- ==============================================================
-
-
-SYNTAX lock = lock (ogg)
-      WHERE ogg ISA OBJECT
-        ELSE
-      IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
-
-
-ADD TO EVERY OBJECT
-  VERB lock
-    CHECK my_game CAN lock
-      ELSE SAY azione_bloccata OF my_game.
-    AND ogg IS bloccabile
-          ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF my_game. "bloccare."
-          ELSE SAY ogg1_inadatto_pl OF my_game. "bloccare."
-        END IF.
-    AND CURRENT LOCATION IS lit
-      ELSE SAY check_locazione_illuminata OF my_game.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF my_game.
-              ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF my_game.
-              ELSE SAY check_obj_not_distant_pl OF my_game.
-            END IF.
-        END IF.
-    AND ogg IS NOT bloccato
-          ELSE
-        IF ogg IS NOT plurale
-          THEN SAY check_obj_not_locked_sg OF my_game.
-          ELSE SAY check_obj_not_locked_pl OF my_game.
-      END IF.
-  DOES
-    IF chiave_abbinata OF ogg IN hero
-      THEN MAKE ogg bloccato.
-        "(with" SAY THE chiave_abbinata OF ogg. "$$)$n"
-        "You"
-
-        IF ogg IS aperto
-          THEN "close and"
-            MAKE ogg NOT aperto.
-        END IF.
-
-        "lock" SAY THE ogg. "."
-          ELSE  "You have to state what you want to lock" SAY THE ogg. "with."
-    END IF.
-
-  END VERB.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ LOCK WITH
-
-
--- ==============================================================
-
-
-SYNTAX lock_with = lock (ogg) 'with' (chiave)
-  WHERE ogg ISA OBJECT
-      ELSE
-      IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
-  AND chiave ISA OBJECT
-      ELSE
-      IF chiave IS NOT plurale
-        THEN SAY illegal_parameter2_with_sg OF my_game.
-        ELSE SAY illegal_parameter2_with_pl OF my_game.
-      END IF.
-
-
-ADD TO EVERY OBJECT
-    VERB lock_with
-        WHEN ogg
-      CHECK my_game CAN lock_with
-        ELSE SAY azione_bloccata OF my_game.
-          AND ogg IS bloccabile
-        ELSE
-          IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF my_game. "bloccare."
-          ELSE SAY ogg1_inadatto_pl OF my_game. "bloccare."
-          END IF.
-      AND chiave IS esaminabile
-        ELSE
-          IF ogg IS NOT plurale
-            THEN SAY check_obj2_suitable_with_sg OF my_game.
-            ELSE SAY check_obj2_suitable_with_pl OF my_game.
-          END IF.
-      AND ogg <> chiave
-        ELSE SAY check_obj_not_obj2_with OF my_game.
-          AND CURRENT LOCATION IS lit
-        ELSE SAY check_locazione_illuminata OF my_game.
-          AND ogg IS NOT bloccato
-        ELSE
-          IF ogg IS NOT plurale
-            THEN SAY check_obj_not_locked_sg OF my_game.
-            ELSE SAY check_obj_not_locked_pl OF my_game.
-          END IF.
-          AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF my_game.
-                ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
-              END IF.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF my_game.
-                ELSE SAY check_obj_not_distant_pl OF my_game.
-              END IF.
-          END IF.
-          AND chiave IN hero
-        ELSE SAY check_obj2_in_hero OF my_game.
-          AND chiave = chiave_abbinata OF ogg
-        ELSE SAY check_door_matching_key OF my_game.
-         DOES
-        MAKE ogg bloccato. "You"
-
-        IF ogg IS aperto
-          THEN "close and"
-            MAKE ogg NOT aperto.
-        END IF.
-
-        "lock" SAY THE ogg. "with" SAY THE chiave. "."
-    END VERB.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
 ----- LOOK
 
 
@@ -5661,187 +6014,6 @@ EVENT check_score
   SCHEDULE check_score AT hero AFTER 1.
 END EVENT.
 
-
-
-
--- ==============================================================
-
-
------ OPEN
-
-
--- ==============================================================
-
-
-SYNTAX open = open (ogg)
-      WHERE ogg ISA OBJECT
-        ELSE
-      IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
-
-
-ADD TO EVERY OBJECT
-  VERB open
-    CHECK my_game CAN aprire
-      ELSE SAY azione_bloccata OF my_game.
-    AND ogg IS apribile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF my_game. "aprire."
-          ELSE SAY ogg1_inadatto_pl OF my_game. "aprire."
-        END IF.
-    AND CURRENT LOCATION IS lit
-      ELSE SAY check_locazione_illuminata OF my_game.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF my_game.
-              ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF my_game.
-              ELSE SAY check_obj_not_distant_pl OF my_game.
-            END IF.
-        END IF.
-    AND ogg IS NOT aperto
-      ELSE
-        IF ogg IS NOT plurale
-          THEN SAY check_obj_not_open_sg OF my_game.
-          ELSE SAY check_obj_not_open_pl OF my_game.
-        END IF.
-    DOES
-      IF ogg IS bloccato
-        THEN
-          IF chiave_abbinata OF ogg IN hero
-            THEN MAKE ogg NOT bloccato.
-              MAKE ogg aperto.
-              "(with" SAY THE chiave_abbinata OF ogg. "$$)
-              $nYou unlock and open" SAY THE ogg. "."
-          ELSE SAY THE ogg. "appears to be locked."
-        END IF.
-      ELSIF ogg IS NOT bloccato
-        THEN MAKE ogg aperto.
-        "You open" SAY THE ogg. "."
-      END IF.
-  END VERB.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ OPEN WITH
-
-
--- ==============================================================
-
-
-SYNTAX open_with = open (ogg) 'with' (strum)
-      WHERE ogg ISA OBJECT
-        ELSE
-      IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
-      AND strum ISA OBJECT
-        ELSE
-      IF strum IS NOT plurale
-        THEN SAY illegal_parameter2_with_sg OF my_game.
-        ELSE SAY illegal_parameter2_with_pl OF my_game.
-      END IF.
-
-
-
-ADD TO EVERY OBJECT
-  VERB open_with
-        WHEN ogg
-      CHECK my_game CAN aprire_con
-        ELSE SAY azione_bloccata OF my_game.
-          AND ogg IS apribile
-          ELSE
-          IF ogg IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF my_game. "aprire."
-            ELSE SAY ogg1_inadatto_pl OF my_game. "aprire."
-          END IF.
-      AND strum IS esaminabile
-        ELSE
-          IF ogg IS NOT plurale
-            THEN SAY check_obj2_suitable_with_sg OF my_game.
-            ELSE SAY check_obj2_suitable_with_pl OF my_game.
-          END IF.
-      AND ogg <> strum
-        ELSE SAY check_obj_not_obj2_with OF my_game.
-          AND CURRENT LOCATION IS lit
-        ELSE SAY check_locazione_illuminata OF my_game.
-          AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF my_game.
-                ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
-              END IF.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF my_game.
-                ELSE SAY check_obj_not_distant_pl OF my_game.
-              END IF.
-          END IF.
-          AND strum IN hero
-        ELSE SAY check_obj2_in_hero OF my_game.
-          AND ogg IS NOT aperto
-          ELSE
-          IF ogg IS NOT plurale
-            THEN SAY check_obj_not_open_sg OF my_game.
-            ELSE SAY check_obj_not_open_pl OF my_game.
-          END IF.
-          DOES
-        IF ogg IS bloccato
-          THEN
-            IF strum = chiave_abbinata OF ogg
-              THEN MAKE ogg NOT bloccato.
-                MAKE ogg aperto.
-             -- "You unlock  and open" SAY THE ogg.
-                "Sblocchi e apri" SAY THE ogg.
-                "con" SAY THE strum. "."
-              ELSE SAY THE ogg.
-                IF ogg IS NOT plurale
-                  THEN "è"
-                  ELSE "sono"
-                END IF.
-                "bloccat$$"
-                IF ogg IS NOT femminile
-                  THEN
-                    IF ogg IS NOT plurale
-                      THEN SAY "o.". -- GNA = msi
-                      ELSE SAY "i.". -- GNA = mpi
-                    END IF.
-                  ELSE
-                    IF ogg IS NOT plurale
-                      THEN SAY "a.". -- GNA = fsi
-                      ELSE SAY "e.". -- GNA = fpi
-                    END IF.
-                END IF.
-             -- IF ogg IS NOT plurale
-             --   THEN "is locked."
-             --   ELSE "are locked."
-            END IF.
-          ELSE "You can't open" SAY THE ogg. "with" SAY THE strum. "."
-        END IF.
-
-
-    END VERB.
-END ADD TO.
 
 
 
@@ -8876,143 +9048,6 @@ ADD TO EVERY OBJECT
       END IF.
 
       "something you can $v off."
-    END VERB.
-END ADD TO.
-
-
--- ==============================================================
-
-
------ UNLOCK
-
-
--- ==============================================================
-
-
-SYNTAX unlock = unlock (ogg)
-  WHERE ogg ISA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
-
-
-ADD TO EVERY OBJECT
-  VERB unlock
-    CHECK my_game CAN unlock
-      ELSE SAY azione_bloccata OF my_game.
-    AND ogg IS bloccabile
-          ELSE
-        IF ogg IS NOT plurale
-          THEN SAY check_obj_suitable_sg OF my_game.
-          ELSE SAY check_obj_suitable_pl OF my_game.
-        END IF.
-    AND CURRENT LOCATION IS lit
-      ELSE SAY check_locazione_illuminata OF my_game.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF my_game.
-              ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF my_game.
-              ELSE SAY check_obj_not_distant_pl OF my_game.
-            END IF.
-        END IF.
-    AND ogg IS bloccato
-          ELSE
-        IF ogg IS NOT plurale
-          THEN SAY check_obj_locked_sg OF my_game.
-          ELSE SAY check_obj_locked_pl OF my_game.
-        END IF.
-    DOES
-      IF chiave_abbinata OF ogg IN hero
-        THEN MAKE ogg NOT bloccato.
-          "(with" SAY THE chiave_abbinata OF ogg. "$$)$n"
-          "You unlock" SAY THE ogg. "."
-            ELSE "You don't have the key that unlocks" SAY THE ogg. "."
-      END IF.
-  END VERB.
-END ADD TO.
-
-
-
--- =============================================================
-
-
------ UNLOCK WITH
-
-
--- =============================================================
-
-
-SYNTAX unlock_with = unlock (ogg) 'with' (chiave)
-  WHERE ogg ISA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
-  AND chiave ISA OBJECT
-      ELSE SAY illegal_parameter_with_sg OF my_game. "."
-
-
-ADD TO EVERY OBJECT
-  VERB unlock_with
-        WHEN ogg
-      CHECK my_game CAN unlock_with
-        ELSE SAY azione_bloccata OF my_game.
-          AND ogg IS bloccabile
-              ELSE
-          IF ogg IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF my_game. "sbloccare."
-            ELSE SAY ogg1_inadatto_pl OF my_game. "sbloccare."
-          END IF.
-      AND chiave IS esaminabile
-        ELSE
-          IF ogg IS NOT plurale
-            THEN SAY check_obj2_suitable_with_sg OF my_game.
-            ELSE SAY check_obj2_suitable_with_pl OF my_game.
-          END IF.
-          AND chiave IN hero
-          ELSE SAY check_obj2_in_hero OF my_game.
-          AND ogg <> chiave
-        ELSE SAY check_obj_not_obj2_with OF my_game.
-          AND CURRENT LOCATION IS lit
-        ELSE SAY check_locazione_illuminata OF my_game.
-          AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF my_game.
-                ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
-              END IF.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF my_game.
-                ELSE SAY check_obj_not_distant_pl OF my_game.
-              END IF.
-          END IF.
-      AND ogg IS bloccato
-        ELSE
-          IF ogg IS NOT plurale
-            THEN SAY check_obj_locked_sg OF my_game.
-            ELSE SAY check_obj_locked_pl OF my_game.
-          END IF.
-      AND chiave = chiave_abbinata OF ogg
-        ELSE SAY check_door_matching_key OF my_game.
-        DOES
-        MAKE ogg NOT bloccato.
-        "You unlock" SAY THE ogg. "with" SAY THE chiave. "."
     END VERB.
 END ADD TO.
 
