@@ -54,6 +54,8 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [aspetta](#aspetta)
     - [dormi](#dormi)
     - [prega](#prega)
+    - [usa](#usa)
+    - [usa_con](#usa_con)
 - [VERBI VARI](#verbi-vari)
 
 <!-- /MarkdownTOC -->
@@ -124,6 +126,8 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [svestiti]
 - [togli]
 - [trasporta]
+- [usa]
+- [usa con]
 - [vai a]
 - [vendi]
 
@@ -772,6 +776,47 @@ condizioni:
 esito:
 
 - Nulla, dice solo "`Sembra che le tue preghiere non siano state esaudite.`" (testo preso da Inform 6 _Infit_).
+
+
+## usa
+
+[usa]: #usa "usa"
+
+
+attributo `my_game`:
+
+    CAN [NOT] usare
+
+sintassi:
+
+    usa <ogg>
+
+
+Esito:
+
+- invita il giocatore ad essere più specifico.
+
+
+
+## usa_con
+
+[usa con]: #usa_con "usa_con"
+
+
+attributo `my_game`:
+
+    CAN [NOT] usare_con
+
+sintassi:
+
+    usa <ogg> con (strum)
+
+Esito:
+
+- invita il giocatore ad essere più specifico.
+
+
+
 
 -------------------------------------------------------------------------------
 

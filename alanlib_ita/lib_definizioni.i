@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.35 (2018/07/23)
+-- "lib_definizioni.i" v0.2.36 (2018/07/23)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -100,7 +100,7 @@ ADD TO EVERY THING
      -- Lo si può spingere, tirare, sollevare, ecc.
      aperto.
      -- = non chiuso.
-     raggiungibile.                                                             --> TRANSLATE!
+     raggiungibile.
      -- (vedi attributo 'distante', più giù)
      prendibile.
      -- Si dovranno definire manualmente gli oggetti che non si possono prendere.
@@ -1097,6 +1097,8 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN trovare.              --> find         (+ locate)
   CAN uccidere.             --> kill         (+ murder)
   CAN uccidere_con.         --> kill_with
+  CAN usare.                --> 'use'
+  CAN usare_con.            --> use_with
   CAN vendere.              --> sell
   CAN versare.              --> pour
   CAN versare_in.           --> pour_in
@@ -1205,8 +1207,6 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN turn.        -- (+ rotate)
   CAN turn_on.
   CAN turn_off.
-  CAN 'use'.
-  CAN use_with.
   CAN what_am_i.
   CAN what_is.
   CAN where_am_i.
@@ -1288,6 +1288,8 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game trovare.              --> find         (+ locate)
   MAKE my_game uccidere.             --> kill         (+ murder)
   MAKE my_game uccidere_con.         --> kill_with
+  MAKE my_game usare.                --> 'use'
+  MAKE my_game usare_con.            --> use_with
   MAKE my_game vendere.              --> sell
   MAKE my_game versare.              --> pour
   MAKE my_game versare_in.           --> pour_in
@@ -1398,8 +1400,6 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game turn.            -- (+ rotate)
   MAKE my_game turn_on.
   MAKE my_game turn_off.
-  MAKE my_game 'use'.
-  MAKE my_game use_with.
   MAKE my_game what_am_i.
   MAKE my_game what_is.
   MAKE my_game where_am_i.
@@ -1490,6 +1490,8 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT trovare.              --> find         (+ locate)
   MAKE my_game NOT uccidere.             --> kill         (+ murder)
   MAKE my_game NOT uccidere_con.         --> kill_with
+  MAKE my_game NOT usare.                --> 'use'
+  MAKE my_game NOT usare_con.            --> use_with
   MAKE my_game NOT vendere.              --> sell
   MAKE my_game NOT versare.              --> pour
   MAKE my_game NOT versare_in.           --> pour_in
@@ -1602,8 +1604,6 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game NOT turn.        -- (+ rotate)
   MAKE my_game NOT turn_on.
   MAKE my_game NOT turn_off.
-  MAKE my_game NOT 'use'.
-  MAKE my_game NOT use_with.
   MAKE my_game what_am_i.
   MAKE my_game what_is.
   MAKE my_game where_am_i.
@@ -1678,6 +1678,8 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT trovare.              --> find         (+ locate)
   MAKE my_game NOT uccidere.             --> kill         (+ murder)
   MAKE my_game NOT uccidere_con.         --> kill_with
+  MAKE my_game NOT usare.                --> 'use'
+  MAKE my_game NOT usare_con.            --> use_with
   MAKE my_game NOT vendere.              --> sell
   MAKE my_game NOT versare.              --> pour
   MAKE my_game NOT versare_in.           --> pour_in
@@ -1790,8 +1792,6 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT turn.        -- (+ rotate)
   MAKE my_game NOT turn_on.
   MAKE my_game NOT turn_off.
-  MAKE my_game NOT 'use'.
-  MAKE my_game NOT use_with.
   MAKE my_game NOT what_am_i.
   MAKE my_game NOT what_is.
   MAKE my_game NOT where_am_i.
@@ -1864,6 +1864,8 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT trovare.              --> find         (+ locate)
   MAKE my_game NOT uccidere.             --> kill         (+ murder)
   MAKE my_game NOT uccidere_con.         --> kill_with
+  MAKE my_game NOT usare.                --> 'use'
+  MAKE my_game NOT usare_con.            --> use_with
   MAKE my_game NOT vendere.              --> sell
   MAKE my_game NOT versare.              --> pour
   MAKE my_game NOT versare_in.           --> pour_in
@@ -1976,8 +1978,6 @@ ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
   MAKE my_game NOT turn.        -- (+ rotate)
   MAKE my_game NOT turn_on.
   MAKE my_game NOT turn_off.
-  MAKE my_game NOT 'use'.
-  MAKE my_game NOT use_with.
   MAKE my_game NOT what_am_i.
   MAKE my_game NOT what_is.
   MAKE my_game NOT where_am_i.

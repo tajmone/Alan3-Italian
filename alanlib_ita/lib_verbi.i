@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.37 (2018/07/23)
+-- "lib_verbi.i" v0.2.38 (2018/07/23)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -50,6 +50,8 @@
 --| sblocca_con        |                              | sblocca (ogg) con (chiave)  |   | 2 | x |
 --| scrivi             |                              | scrivi "testo" su (ogg)     |   | 1 | x |
 --| spogliati          | svestiti                     | spogliati                   |   | 0 |   |
+--| usa                |                              | usa (ogg)                   |   | 1 | x |
+--| usa_con            |                              | usa (ogg) con (strum)       |   | 2 | x |
 --| vai_a              |                              | vai a (dest)                |   | 1 |   |
 --| vendi              |                              | vendi (merce)               |   | 1 |   |
 --+--------------------+------------------------------+-----------------------------+---+---+---+
@@ -234,8 +236,8 @@
 ----> undress                                              undress                             0
 ----> unlock                                               unlock (obj)                        1       x
 ----> unlock_with                                          unlock (obj) with (key)             2       x
------ use                                                  use (obj)                           1       x
------ use_with                                             use (obj) with (instr)              2       x
+----> use                                                  use (obj)                           1       x
+----> use_with                                             use (obj) with (instr)              2       x
 ----- verbose                                              verbose                             0
 ----> wait        (+ z)                                    wait                                0
 ----- wear                                                 wear (obj)                          1       x
@@ -2542,6 +2544,88 @@ VERB spogliati
 --| END IF.
 --|--------------------------------------------------------
 END VERB.
+
+
+
+
+-- ==============================================================
+
+
+----- @USA --> @USE
+
+
+-- ==============================================================
+
+
+SYNTAX usa = usa (ogg)
+  WHERE ogg ISA OBJECT
+    ELSE "Solo gli oggetti sono utilizzabili!"
+ -- ELSE SAY illegal_parameter_obj OF my_game.
+
+-- @TODO: Valutare se usare un messagio my_game per qui sopra!
+
+ADD TO EVERY OBJECT
+  VERB usa
+    CHECK my_game CAN usare
+      ELSE SAY azione_bloccata OF my_game.
+    DOES
+   -- "Please be more specific. How do you intend to use"
+      "Sii più specifico. Come vorresti usarl$$"
+      IF ogg IS NOT femminile
+        THEN
+          IF ogg IS NOT plurale
+            THEN SAY "o?". -- GNA = msi
+            ELSE SAY "i?". -- GNA = mpi
+          END IF.
+        ELSE
+          IF ogg IS NOT plurale
+            THEN SAY "a?". -- GNA = fsi
+            ELSE SAY "e?". -- GNA = fpi
+          END IF.
+      END IF.
+    END VERB.
+END ADD TO.
+
+
+
+-- ==============================================================
+
+
+----- @USA CON --> @USE WITH
+
+
+-- ==============================================================
+
+
+SYNTAX usa_con = usa (ogg) con (strum)
+  WHERE ogg ISA OBJECT
+    ELSE "Solo gli oggetti sono utilizzabili!"
+ -- ELSE SAY illegal_parameter_obj OF my_game.
+  AND strum ISA OBJECT
+    ELSE "Solo gli oggetti sono utilizzabili!"
+ -- ELSE SAY illegal_parameter_obj OF my_game.
+
+-- @TODO: Valutare se usare un messagio my_game per qui sopra!
+
+
+ADD TO EVERY OBJECT
+  VERB usa_con
+    WHEN ogg
+      CHECK my_game CAN usare_con
+        ELSE SAY azione_bloccata OF my_game.
+      AND ogg <> strum
+        ELSE SAY check_obj_not_obj2_with OF my_game. --@TODO                    TRANSLATE!
+      DOES
+     -- "Please be more specific. How do you intend to use them together?"
+        "Sii più specifico. Come vorresti usarl$$"
+        IF ogg IS NOT femminile OR strum IS NOT femminile
+          THEN "i?" --| Se anche solo uno dei due è maschile useremo il maschile,
+          ELSE "e?" --| altrimenti il femminile.
+        END IF.
+    END VERB.
+END ADD TO.
+
+
 
 
 
@@ -9071,69 +9155,6 @@ ADD TO EVERY OBJECT
       "something you can $v off."
     END VERB.
 END ADD TO.
-
-
-
--- ==============================================================
-
-
------ USE
-
-
--- ==============================================================
-
-
-SYNTAX 'use' = 'use' (ogg)
-  WHERE ogg ISA OBJECT
-    ELSE SAY illegal_parameter_obj OF my_game.
-
-
-
-ADD TO EVERY OBJECT
-  VERB 'use'
-    CHECK my_game CAN 'use'
-      ELSE SAY azione_bloccata OF my_game.
-    DOES
-      "Please be more specific. How do you intend to use"
-
-      IF ogg IS NOT plurale
-        THEN "it?"
-        ELSE "them?"
-      END IF.
-    END VERB.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ USE WITH
-
-
--- ==============================================================
-
-
-SYNTAX use_with = 'use' (ogg) 'with' (strum)
-  WHERE ogg ISA OBJECT
-      ELSE SAY illegal_parameter_obj OF my_game.
-  AND strum ISA OBJECT
-      ELSE SAY illegal_parameter_obj OF my_game.
-
-
-ADD TO EVERY OBJECT
-  VERB use_with
-        WHEN ogg
-      CHECK my_game CAN use_with
-        ELSE SAY azione_bloccata OF my_game.
-      AND ogg <> strum
-        ELSE SAY check_obj_not_obj2_with OF my_game.
-      DOES
-        "Please be more specific. How do you intend to use them together?"
-    END VERB.
-END ADD TO.
-
-
 
 
 -- ==============================================================

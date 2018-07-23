@@ -11,6 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/23 \(4\)](#20180723-4)
+    - [Verb: `use`](#verb-use)
+    - [Verb: `use_with`](#verb-use_with)
 - [2018/07/23 \(2\)](#20180723-2)
     - [Verb: `drop`](#verb-drop)
 - [2018/07/23 \(1\)](#20180723-1)
@@ -127,6 +130,45 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/23 (4)
+
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.36)
+- [`lib_verbi.i`][lib_verbi] (v0.2.38)
+
+
+Translated `my_game` attributes for verb restrictions:
+
+|  English   |   Italian   |
+|------------|-------------|
+| `'use'`    | `usare`     |
+| `use_with` | `usare_con` |
+
+
+## Verb: `use`
+
+Translated verb `usa`, (_use_):
+
+    usa (ogg)
+
+with no synonyms.
+
+
+
+## Verb: `use_with`
+
+Translated verb `usa_con`, "__usa con__" (_use_with_):
+
+    usa (ogg) con (strum)
+
+with no synonyms.
+
+
+
+<!---------------------------------------------------------------------------->
+
+
 
 # 2018/07/23 (2)
 
