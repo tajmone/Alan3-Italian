@@ -57,6 +57,7 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [usa](#usa)
     - [usa_con](#usa_con)
 - [VERBI VARI](#verbi-vari)
+    - [Domande Dirette](#domande-dirette)
 
 <!-- /MarkdownTOC -->
 
@@ -135,7 +136,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 
 # Tabella dei Verbi
 
-Copiata da "`lib_verbi.i`" v0.2.37 (2018/07/23).
+Copiata da "`lib_verbi.i`" v0.2.40 (2018/07/24).
 
 Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e comandi di gioco (dopo il divisorio orizzontale di tabella):
 
@@ -157,11 +158,17 @@ Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e 
 --| blocca_con         | serra                        | blocca (ogg) con (chiave)   |   | 2 | x |
 --| brucia             |                              | brucia (ogg)                |   | 1 | x |
 --| brucia_con         |                              | brucia (ogg) con (strum)    |   | 2 | x |
+--| chi_sono_io        |                              | chi sono                    |   | 0 |   |
+--| chi_è              |                              | chi è (png)                 |   | 1 |   | * BUGGED!
 --| chiudi             |                              | chiudi (ogg)                |   | 1 | x |
 --| chiudi_con         |                              | chiudi (ogg) con (strum)    |   | 2 | x |
 --| compra             | acquista                     | compra (merce)              |   | 1 |   |
---| dormi              | riposa                       | dormi                       |   | 0 |   |
+--| cosa_sono_io       |                              | cosa sono                   |   | 0 |   |
+--| cosa_è             |                              | cosa è (ogg)                |   | 1 | x | * BUGGED!
 --| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)     |   | 2 | x |
+--| dormi              | riposa                       | dormi                       |   | 0 |   |
+--| dove_mi_trovo      |                              | dove sono                   |   | 0 |   |
+--| dove_è             |                              | dove è (ogg)                |   | 1 | x | * BUGGED!
 --| esamina            | guarda, descrivi, osserva, X | esamina (ogg)               |   | 1 | x |
 --| inventario         | inv                          | inventario                  | x | 0 |   |
 --| lascia             | abbandona, metti giù, posa   | lascia (ogg)*               |   | 1 | x |
@@ -177,6 +184,8 @@ Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e 
 --| sblocca_con        |                              | sblocca (ogg) con (chiave)  |   | 2 | x |
 --| scrivi             |                              | scrivi "testo" su (ogg)     |   | 1 | x |
 --| spogliati          | svestiti                     | spogliati                   |   | 0 |   |
+--| usa                |                              | usa (ogg)                   |   | 1 | x |
+--| usa_con            |                              | usa (ogg) con (strum)       |   | 2 | x |
 --| vai_a              |                              | vai a (dest)                |   | 1 |   |
 --| vendi              |                              | vendi (merce)               |   | 1 |   |
 --+--------------------+------------------------------+-----------------------------+---+---+---+
@@ -824,5 +833,15 @@ Esito:
 
 Verbi che non rientrano in categorie specifiche.
 
+## Domande Dirette
 
+Questi verbi non fanno un granché, e alcuni di essi sono affetti dal baco che impedisce di usare la "è" nelle sintassi e nei sinonimi (per cui usano la "é"):
 
+- `chi_è`
+- `chi_sono_io`
+- `cosa_è`
+- `cosa_sono_io`
+- `dove_è`
+- `dove_mi_trovo`
+
+Per maggior informazioni su questi verbi, consultare il sorgente di "`lib_verbi.i`".

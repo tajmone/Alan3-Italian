@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/24](#20180724)
+    - [Who/Where Verbs](#whowhere-verbs)
 - [2018/07/23 \(5\)](#20180723-5)
 - [2018/07/23 \(4\)](#20180723-4)
     - [Verb: `use`](#verb-use)
@@ -131,6 +133,49 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/24
+
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.2.37)
+- [`lib_verbi.i`][lib_verbi] (v0.2.40)
+
+Translated `my_game` attributes for verb restrictions:
+
+|    English     |          Italian          |
+|----------------|---------------------------|
+| `'what_am_i'`  | `domandare_cosa_sono_io`  |
+| `'what_is'`    | `domandare_cosa_è`        |
+| `'where_am_i'` | `domandare_dove_mi_trovo` |
+| `'where_is'`   | `domandare_dove_è`        |
+| `'who_am_i'`   | `domandare_chi_sono_io`   |
+| `'who_is'`     | `domandare_chi_è`         |
+
+## Who/Where Verbs
+
+This commit translates the group of `who/where_*` verbs:
+
+|   EN Verb    |     IT Verb     | Affected by `è` Bug? |
+|--------------|-----------------|----------------------|
+| `who_is`     | `chi_è`         | YES                  |
+| `who_am_i`   | `chi_sono_io`   |                      |
+| `what_is`    | `cosa_è`        | YES                  |
+| `what_am_i`  | `cosa_sono_io`  |                      |
+| `where_is`   | `dove_è`        | YES                  |
+| `where_am_i` | `dove_mi_trovo` |                      |
+
+
+> __THE `è` ALAN BUG__ — Translation of these verbs unveiled a subtle bug in Alan: The `è` character doesn't work in `SYNTAX` and `SYNONYM` statements! All other Italian accented letters work fine (`é`, `à`, `ì`, `ò`, `ù`); also, the `è` works fine in instances names and is parsed correctly.
+> 
+> Therefore, as a workaround in three of these verbs I had to use `é` instead of `è`, which is grammatically incorrect but will have to do until the bug is fixed in Alan!
+> 
+> For more info, see my bug report:
+> 
+> - https://groups.yahoo.com/neo/groups/alan-if/conversations/messages/3472
+
+<!---------------------------------------------------------------------------->
+
+
 
 # 2018/07/23 (5)
 
