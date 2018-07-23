@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.2.15 (2018/07/23)
+-- "lib_classi.i" v0.2.16 (2018/07/23)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1525,7 +1525,7 @@ EVERY liquido ISA OBJECT
   END VERB.
 
 
-  VERB drop
+  VERB lascia
     DOES ONLY
       LOCATE recipiente OF THIS AT hero.
       "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nDropped."

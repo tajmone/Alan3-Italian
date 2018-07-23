@@ -11,7 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/07/23](#20180723)
+- [2018/07/23 \(2\)](#20180723-2)
+    - [Verb: `drop`](#verb-drop)
+- [2018/07/23 \(1\)](#20180723-1)
 - [2018/07/22 \(7\)](#20180722-7)
     - [Tweaked `LISTED_CONTAINER`](#tweaked-listed_container)
     - [Small Fixes](#small-fixes)
@@ -126,7 +128,28 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/07/23
+# 2018/07/23 (2)
+
+- [`lib_classi.i`][lib_classi] (v0.2.16)
+- [`lib_verbi.i`][lib_verbi] (v0.2.37)
+
+## Verb: `drop`
+
+Translated verb `lascia`, (_drop_):
+
+    lascia (ogg)*
+    abbandona (ogg)*
+    metti giù (ogg)*
+    posa (ogg)*
+
+with no synonyms.
+
+
+
+<!---------------------------------------------------------------------------->
+
+
+# 2018/07/23 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.2.15)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.35)

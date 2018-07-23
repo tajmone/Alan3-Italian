@@ -10,7 +10,8 @@ Tutti i diritti riservati.
 
 Piazza della Repubblica d'IF
 Ti trovi in una piazza spaziosa. Odi delle voci in lontananza. Puoi vedere 
-una statua e una pozzanghera qui.
+una statua, una pozzanghera, una penna, un foglio di carta bianco, un 
+libro antico e un sasso qui.
 
 > ; ******************************************************************************
 > ; *                                                                            *
@@ -32,8 +33,8 @@ Presa.
 
 Preso.
 
-> drop la pera
-Dropped.
+> lascia la pera
+Lasci la pera.
 
 > prendi la pera E prendi le cigliege
 Presa.
@@ -45,12 +46,12 @@ Prese.
 > ; ==============================================================================
 > ;                             Testiamo "TUTTO" ecc.                             
 > ; ==============================================================================
-> drop TUTTO
-(pera) Dropped.
+> lascia TUTTO
+(pera) Lasci la pera.
 
-(mango) Dropped.
+(mango) Lasci il mango.
 
-(cigliege) Dropped.
+(cigliege) Lasci le cigliege.
 
 > 
 
@@ -70,10 +71,10 @@ Prese.
 > ; ==============================================================================
 > ;                         testiamo "TRANNE/ECCETTO" ecc.                        
 > ; ==============================================================================
-> drop TUTTO TRANNE le cigliege
-(pera) Dropped.
+> lascia TUTTO TRANNE le cigliege
+(pera) Lasci la pera.
 
-(mango) Dropped.
+(mango) Lasci il mango.
 
 > ; ------------------------------------------------------------------------------
 > ; D'ora in poi useremo la formula magica XYZZY per raccogliere tutta la frutta!
@@ -82,44 +83,44 @@ Prese.
 Pronunci la formula magica "xyzzy" e tutta la frutta finisce nel tuo
 inventario!
 
-> drop TUTTO ECCETTO le cigliege
-(pera) Dropped.
+> lascia TUTTO ECCETTO le cigliege
+(pera) Lasci la pera.
 
-(mango) Dropped.
-
-> xyzzy
-Pronunci la formula magica "xyzzy" e tutta la frutta finisce nel tuo
-inventario!
-
-> drop TUTTO ESCLUSE le cigliege
-(pera) Dropped.
-
-(mango) Dropped.
+(mango) Lasci il mango.
 
 > xyzzy
 Pronunci la formula magica "xyzzy" e tutta la frutta finisce nel tuo
 inventario!
 
-> drop TUTTO ESCLUSO il mango
-(pera) Dropped.
+> lascia TUTTO ESCLUSE le cigliege
+(pera) Lasci la pera.
 
-(cigliege) Dropped.
-
-> xyzzy
-Pronunci la formula magica "xyzzy" e tutta la frutta finisce nel tuo
-inventario!
-
-> drop TUTTO ESCLUSI il mango e le cigliege
-(pera) Dropped.
+(mango) Lasci il mango.
 
 > xyzzy
 Pronunci la formula magica "xyzzy" e tutta la frutta finisce nel tuo
 inventario!
 
-> drop TUTTO ESCLUSA la pera
-(mango) Dropped.
+> lascia TUTTO ESCLUSO il mango
+(pera) Lasci la pera.
 
-(cigliege) Dropped.
+(cigliege) Lasci le cigliege.
+
+> xyzzy
+Pronunci la formula magica "xyzzy" e tutta la frutta finisce nel tuo
+inventario!
+
+> lascia TUTTO ESCLUSI il mango e le cigliege
+(pera) Lasci la pera.
+
+> xyzzy
+Pronunci la formula magica "xyzzy" e tutta la frutta finisce nel tuo
+inventario!
+
+> lascia TUTTO ESCLUSA la pera
+(mango) Lasci il mango.
+
+(cigliege) Lasci le cigliege.
 
 > 
 

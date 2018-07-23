@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.36 (2018/07/23)
+-- "lib_verbi.i" v0.2.37 (2018/07/23)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -37,6 +37,7 @@
 --| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)     |   | 2 | x |
 --| esamina            | guarda, descrivi, osserva, X | esamina (ogg)               |   | 1 | x |
 --| inventario         | inv                          | inventario                  | x | 0 |   |
+--| lascia             | abbandona, metti giù, posa   | lascia (ogg)*               |   | 1 | x |
 --| leggi              |                              | leggi (ogg)                 |   | 1 | x |
 --| mangia             |                              | mangia (cibo)               |   | 1 |   |
 --| prega              |                              | prega                       |   | 0 |   |
@@ -107,7 +108,7 @@
 ----- dive_in                                              dive in (liq)                       1
 ----> drink                                                drink (liq)                         1
 ----- drive                                                drive (vehicle)                     1
------ drop        (+ discard, dump, reject)                drop (obj)                          1       x
+----> drop        (+ discard, dump, reject)                drop (obj)                          1       x
 ----> eat                                                  eat (food)                          1
 ----- empty                                                empty (obj)                         1       x
 ----- empty_in                                             empty (obj) in (cont)               2       x
@@ -281,7 +282,7 @@ SYNTAX
   abbandona_partita = abbandona partita.
   abbandona_partita = 'quit'. --> Bisogna conservare anche l'inglese!
 
-SYNONYMS q = 'quit'.
+SYNONYMS Q = 'quit'.
 
 META VERB abbandona_partita
   CHECK my_game CAN abbandonare_partita
@@ -1525,6 +1526,71 @@ META VERB inventario
 
 END VERB.
 
+
+
+
+-- ==============================================================
+
+
+----- @LASCIA --> @DROP
+
+
+-- ==============================================================
+
+-- i6: lascia, lancia, abbandona, posa, metti giù
+
+SYNTAX  lascia = lascia (ogg)*
+  WHERE ogg ISA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY illegal_parameter_sg OF my_game.
+        ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+
+        lascia = abbandona (ogg)*.
+        lascia = metti giù (ogg)*.
+        lascia = posa (ogg)*.
+
+
+
+ADD TO EVERY OBJECT
+  VERB lascia
+    CHECK my_game CAN lasciare
+      ELSE SAY azione_bloccata OF my_game.
+    AND ogg IN hero
+      ELSE
+        IF ogg IN worn
+          THEN SAY check_obj_not_in_worn3 OF my_game.
+          ELSE SAY check_obj_in_hero OF my_game.
+        END IF.
+
+    DOES
+      LOCATE ogg HERE.
+       "Lasci" SAY THE ogg. "."
+    -- "Dropped."
+  END VERB.
+END ADD TO.
+
+
+-- SYNONYMS
+--   abbandona = lascia.
+-- 
+-- @NOTA | non si può implementare 'abbandona' come sinonimo di 'lascia' perché
+--       | abbandona_partita lo usa già nella sua sintassi:
+--       | 333 E : The word 'abbandona' is defined to be both a synonym and another word class.
+
+-- @TODO | Verificare se potrò usare sinonimi (che non interferiscano con sintassi
+--       | di altri verbi)!!!
+--       | Quanto a 'posa': meglio lasciarlo libero dato che potrebbe servire il
+--       | verbo 'posa' in alcuni giochi?
+
+--| ORIGINALE INGLESE:
+--| =================
+--| SYNTAX  drop = drop (ogg)*
+--|         drop = put (ogg) * down.
+--|         drop = put down (ogg)*.
+--| SYNONYMS
+--|   discard, dump, reject = drop.
 
 
 -- ==============================================================
@@ -3766,51 +3832,6 @@ SYNTAX drive_error = drive.
 VERB drive_error
   DOES "To drive something, use the phrasing DRIVE SOMETHING."
 END VERB.
-
-
-
--- ==============================================================
-
-
------ DROP
-
-
--- ==============================================================
-
-
-SYNTAX drop = drop (ogg)*
-  WHERE ogg ISA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
-
-  drop = put (ogg) * down.
-
-  drop = put down (ogg)*.
-
-
-SYNONYMS
-  discard, dump, reject = drop.
-
-
-ADD TO EVERY OBJECT
-  VERB drop
-    CHECK my_game CAN lasciare
-      ELSE SAY azione_bloccata OF my_game.
-      AND ogg IN hero
-          ELSE
-        IF ogg IN worn
-          THEN SAY check_obj_not_in_worn3 OF my_game.
-          ELSE SAY check_obj_in_hero OF my_game.
-            END IF.
-    DOES
-          LOCATE ogg HERE.
-          "Dropped."
-    END VERB.
-END ADD TO.
-
 
 
 

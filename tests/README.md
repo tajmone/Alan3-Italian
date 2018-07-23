@@ -10,6 +10,7 @@ Here is where all the testing takes places; for practical reasons all contents w
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Introduzione](#introduzione)
+- [Avvertenza](#avvertenza)
 - [Contenuti](#contenuti)
 - [Prerequisiti](#prerequisiti)
 - [Compilare l'avventura dimostrativa](#compilare-lavventura-dimostrativa)
@@ -21,6 +22,7 @@ Here is where all the testing takes places; for practical reasons all contents w
 
 -----
 
+
 # Introduzione
 
 Per semplificare la manutenzione dei test, impiegherò una singola avventura dimostrativa di Alan ([`il_mondo_di_alan.alan`][mondo alan]) su cui eseguire tutti i test tramite script di comandi. Gli script producono file di log independenti tra loro, consentendo a ciascuno script di testare specifiche funzionalità in modo mirato.
@@ -29,6 +31,15 @@ La demo è concepita appositamente per facilitare i vari tipi di test necessari.
 
 Siccome il progetto è impostato affinché Git ignori i file delle avventure compilate, l'onere della compilazione dell'avventura dimostrativa ricade sull'utente finale (il quale dovrà inoltre assicurarsi di ricompilarla ogni volta che il sorgente viene aggiornato).
 
+# Avvertenza
+
+Poiché al momento mi sto concentrando sulla traduzione in italiano dei (molti) verbi e attributi della libreria, non mi è sempre possibile mantenere la demo al passo con tutti nuovi cambiamenti. Man mano che traduco un nuovo verbo (o altre funzionalità della libreria) aggiungo qualche oggetto al _Mondo di Alan_ al solo scopo di poter testare le nuove funzionalità. Questo implica che spesso vengono aggiunti all'avventura oggetti fuori contesto, con l'unica finalità di poter testare i verbi; il risultato è una demo un po' raffazzonata e di dubbia giocabilità.
+
+Per ovviare a questo, di tanto in tanto rimetterò mano all'intera demo, cercando di darle un forma compiuta che risulti sia utile ai test che gradevole da giocare. Detto questo, _Il Mondo di Alan_ non ambisce a diventare un'avventura gioco compiuta, sarà piuttosto una sorta di «parco giochi» in cui potersi muovere liberamente e saggiare le potenzialità di Alan Italian. 
+
+Altro punto degno di nota è che per poter testare le funzionalità di base della libreria è spesso necessario implementare oggetti «semplici» (ossia, evitando volutamente di personalizzare alcune risposte ai comandi predefiniti). Se da un lato questo semplifica i test della libreria, dall'altro costringe ad una demo dai tratti grezzi, laddove sarebbe invece possibile personalizzare il mondo dell'avventura rendendolo più realistico e colorato.
+
+Per ovviare a questo secondo iconveniente, in futuro creerò un'apposita cartella dedicata a testare le varie funzionalità della libreria tramite singoli sorgenti Alan, ciascuno focalizzato su un singolo aspetto da testare. Al momento questo approccio non è praticabile vista la rapidità con cui vengono tradotti i vari attributi e verbi — sarei costretto ad aggiornare troppi sorgenti ogni volta che vengono tradotti nuovi termini. Una volta tradotti tutti gli attributi ed i verbi principali, sicuramente ripiegherò su questo approccio, consentendo così al _Mondo di Alan_ di divenire una vera e propria demo in cui ogni oggetto è personalizzabile a tutto tondo.
 
 # Contenuti
 
@@ -39,12 +50,16 @@ Siccome il progetto è impostato affinché Git ignori i file delle avventure com
 
 Script di comandi:
 
-- [`player_words.script`](./player_words.script) — testa l'implementazione italiana delle Player Words
+- [`comandi-risposte.script`](./comandi-risposte.script) — testa le risposte standard di vari verbi.
+- [`player_words.script`](./player_words.script) — testa l'implementazione italiana delle Player Words.
+- [`preposizioni.script`](./preposizioni.script) — testa l'implementazione delle preposizioni articolate.
+
 
 Trascrizioni delle sessione di gioco degli script di comandi:
 
+- [`comandi-risposte.log`](./comandi-risposte.log)
 - [`player_words.log`](./player_words.log)
-
+- [`preposizioni.log`](./preposizioni.log)
 
 # Prerequisiti
 

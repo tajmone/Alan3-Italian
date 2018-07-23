@@ -26,6 +26,7 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 - [TRASFERIMENTO OGGETTI](#trasferimento-oggetti)
     - [prendi](#prendi)
     - [prendi_da](#prendi_da)
+    - [lascia](#lascia)
     - [dai_a](#dai_a)
     - [inventario](#inventario)
     - [compra](#compra)
@@ -63,7 +64,9 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 
 Siccome in questo documento i vari verbi sono raggrupati per categorie di affinità, il seguente indice elenca tutti i verbi disponibili (e loro sinonimi) linkandoli alla loro sezione nel documento.
 
-- [abbandona]
+
+- [abbandona]  (partita)
+- [abbandona][abbandona ogg]  (oggetto)
 - [abbandona partita]
 - [afferra]
 - [apri]
@@ -82,17 +85,20 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [chiudi con]
 - [compra]
 - [dai]
-- [esamina]
 - [descrivi]
 - [distruggi]
 - [distruggi con]
 - [dormi]
+- [esamina]
 - [inventario]
+- [lascia]
 - [leggi]
 - [mangia]
+- [metti giù]
 - [offri]
 - [osserva]
 - [porgi]
+- [posa]
 - [prega]
 - [prendi]
 - [prendi da]
@@ -101,10 +107,10 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [ricomincia partita]
 - [rimuovi]
 - [riposa]
-- [rompi con]
 - [rompi]
-- [salva]
+- [rompi con]
 - [salva partita]
+- [salva]
 - [sblocca]
 - [sblocca con]
 - [scrivi]
@@ -125,7 +131,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 
 # Tabella dei Verbi
 
-Copiata da "`lib_verbi.i`" v0.2.32 (2018/07/22).
+Copiata da "`lib_verbi.i`" v0.2.37 (2018/07/23).
 
 Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e comandi di gioco (dopo il divisorio orizzontale di tabella):
 
@@ -138,16 +144,23 @@ Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e 
 --| ricomincia_partita | restart                      | ricomincia [partita]        | x | 0 |   |
 --| salva_partita      | save                         | salva [partita]             | x | 0 |   |
 --+--------------------+------------------------------+-----------------------------+---+---+---+
+--| apri               |                              | apri (ogg)                  |   | 1 | x |
+--| apri_con           |                              | apri (ogg) con (strum)      |   | 2 | x |
 --| aspetta            | attendi, Z                   | aspetta                     |   | 0 |   |
 --| attraversa         |                              | attraversa (ogg)            |   | 1 | x |
 --| bevi               |                              | bevi (liq)                  |   | 1 |   |
+--| blocca             | serra                        | blocca (ogg)                |   | 1 | x |
+--| blocca_con         | serra                        | blocca (ogg) con (chiave)   |   | 2 | x |
 --| brucia             |                              | brucia (ogg)                |   | 1 | x |
 --| brucia_con         |                              | brucia (ogg) con (strum)    |   | 2 | x |
+--| chiudi             |                              | chiudi (ogg)                |   | 1 | x |
+--| chiudi_con         |                              | chiudi (ogg) con (strum)    |   | 2 | x |
 --| compra             | acquista                     | compra (merce)              |   | 1 |   |
 --| dormi              | riposa                       | dormi                       |   | 0 |   |
 --| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)     |   | 2 | x |
 --| esamina            | guarda, descrivi, osserva, X | esamina (ogg)               |   | 1 | x |
 --| inventario         | inv                          | inventario                  | x | 0 |   |
+--| lascia             | abbandona, metti giù, posa   | lascia (ogg)*               |   | 1 | x |
 --| leggi              |                              | leggi (ogg)                 |   | 1 | x |
 --| mangia             |                              | mangia (cibo)               |   | 1 |   |
 --| prega              |                              | prega                       |   | 0 |   |
@@ -156,6 +169,8 @@ Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e 
 --| rifai              | ancora, G                    | rifai                       |   | 0 |   |
 --| rompi              | distruggi, spacca, sfonda    | rompi (ogg)                 |   | 1 | x |
 --| rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)     |   | 2 | x |
+--| sblocca            |                              | sblocca (ogg)               |   | 1 | x |
+--| sblocca_con        |                              | sblocca (ogg) con (chiave)  |   | 2 | x |
 --| scrivi             |                              | scrivi "testo" su (ogg)     |   | 1 | x |
 --| spogliati          | svestiti                     | spogliati                   |   | 0 |   |
 --| vai_a              |                              | vai a (dest)                |   | 1 |   |
@@ -174,8 +189,8 @@ Ovvero, quei comandi che non riguardano il mondo dell'avventura ma funzionalità
 
 ## carica_partita
 
-[carica]: #carica_partita
-[carica partita]: #carica_partita
+[carica]: #carica_partita "carica_partita"
+[carica partita]: #carica_partita "carica_partita"
 
 
 attributo `my_game`:
@@ -194,8 +209,8 @@ condizioni:
 
 ## salva_partita
 
-[salva]: #salva_partita
-[salva partita]: #salva_partita
+[salva]: #salva_partita "salva_partita"
+[salva partita]: #salva_partita "salva_partita"
 
 
 attributo `my_game`:
@@ -234,8 +249,8 @@ condizioni:
 
 ## abbandona_partita
 
-[abbandona]: #abbandona_partita
-[abbandona partita]: #abbandona_partita
+[abbandona]: #abbandona_partita "abbandona_partita"
+[abbandona partita]: #abbandona_partita "abbandona_partita"
 
 
 attributo `my_game`:
@@ -268,7 +283,7 @@ Verbi che riguardano lo spostamento del personaggio protagonista nell'avventura:
 
 ## vai_a
 
-[vai a]: #vai_a
+[vai a]: #vai_a "vai_a"
 
 attributo `my_game`:
 
@@ -288,7 +303,7 @@ sintassi:
 
 ## attraversa
 
-[attraversa]: #attraversa
+[attraversa]: #attraversa "attraversa"
 
 
 attributo `my_game`:
@@ -306,9 +321,9 @@ sintassi:
 
 ## esamina
 
-[esamina]: #esamina
-[descrivi]: #esamina
-[osserva]: #esamina
+[esamina]: #esamina "esamina"
+[descrivi]: #esamina "esamina"
+[osserva]: #esamina "esamina"
 
 attributo `my_game`:
 
@@ -322,7 +337,7 @@ sintassi:
 
 ## leggi
 
-[leggi]: #leggi
+[leggi]: #leggi "leggi"
 
 attributo `my_game`:
 
@@ -335,7 +350,7 @@ sintassi:
 
 ## scrivi
 
-[scrivi]: #scrivi
+[scrivi]: #scrivi "scrivi"
 
 
 attributo `my_game`:
@@ -354,14 +369,12 @@ sintassi:
 Questi verbi sono accomunati dal fatto che riguardano il trasferimento di oggetti da un luogo/proprietario ad un altro.
 
 
-
-
 ## prendi
 
-[prendi]: #prendi
-[afferra]: #prendi
-[raccogli]: #prendi
-[trasporta]: #prendi
+[prendi]: #prendi "prendi"
+[afferra]: #prendi "prendi"
+[raccogli]: #prendi "prendi"
+[trasporta]: #prendi "prendi"
 
 attributo `my_game`:
 
@@ -374,9 +387,9 @@ sintassi:
 
 ## prendi_da
 
-[prendi da]: #prendi_da
-[rimuovi]: #prendi_da
-[togli]: #prendi_da
+[prendi da]: #prendi_da "prendi_da"
+[rimuovi]: #prendi_da "prendi_da"
+[togli]: #prendi_da "prendi_da"
 
 attributo `my_game`:
 
@@ -387,11 +400,29 @@ sintassi:
     (prendi|rimuovi|togli) <ogg> da <detentore>
 
 
+## lascia
+
+[lascia]: #lascia "lascia"
+[abbandona ogg]: #lascia "lascia"
+[metti giù]: #lascia "lascia"
+[posa]: #lascia "lascia"
+
+
+attributo `my_game`:
+
+    CAN [NOT] lasciare
+
+sintassi:
+
+    (lascia|abbandona|metti giù|posa) <ogg>
+
+
+
 ## dai_a
 
-[dai]: #dai_a
-[porgi]: #dai_a
-[offri]: #dai_a
+[dai]: #dai_a "dai_a"
+[porgi]: #dai_a "dai_a"
+[offri]: #dai_a "dai_a"
 
 attributo `my_game`:
 
@@ -405,7 +436,7 @@ sintassi:
 
 ## inventario
 
-[inventario]: #inventario
+[inventario]: #inventario "inventario"
 
 attributo `my_game`:
 
@@ -418,7 +449,7 @@ sintassi:
 
 ## compra
 
-[compra]: #compra
+[compra]: #compra "compra"
 
 sintassi:
 
@@ -427,7 +458,7 @@ sintassi:
 
 ## vendi
 
-[vendi]: #vendi
+[vendi]: #vendi "vendi"
 
 sintassi:
 
@@ -441,7 +472,7 @@ sintassi:
 
 ## mangia
 
-[mangia]: #mangia
+[mangia]: #mangia "mangia"
 
 sintassi:
 
@@ -449,7 +480,7 @@ sintassi:
 
 ## bevi
 
-[bevi]: #bevi
+[bevi]: #bevi "bevi"
 
 sintassi:
 
@@ -463,7 +494,7 @@ sintassi:
 
 ## apri
 
-[apri]: #apri
+[apri]: #apri "apri"
 
 
 attributo `my_game`:
@@ -477,7 +508,7 @@ sintassi:
 
 ## apri_con
 
-[apri con]: #apri_con
+[apri con]: #apri_con "apri_con"
 
 
 attributo `my_game`:
@@ -491,7 +522,7 @@ sintassi:
 
 ## chiudi
 
-[chiudi]: #chiudi
+[chiudi]: #chiudi "chiudi"
 
 
 attributo `my_game`:
@@ -502,9 +533,11 @@ sintassi:
 
     chiudi <ogg>
 
+
+
 ## chiudi_con
 
-[chiudi con]: #chiudi_con
+[chiudi con]: #chiudi_con "chiudi_con"
 
 
 attributo `my_game`:
@@ -516,10 +549,11 @@ sintassi:
     chiudi <ogg> con <strum>
 
 
+
 ## blocca
 
-[blocca]: #blocca
-[serra]: #blocca
+[blocca]: #blocca "blocca"
+[serra]: #blocca "blocca"
 
 
 attributo `my_game`:
@@ -533,8 +567,8 @@ sintassi:
 
 ## blocca_con
 
-[blocca con]: #blocca_con
-[serra con]: #blocca_con
+[blocca con]: #blocca_con "blocca_con"
+[serra con]: #blocca_con "blocca_con"
 
 
 attributo `my_game`:
@@ -548,7 +582,7 @@ sintassi:
 
 ## sblocca
 
-[sblocca]: #sblocca
+[sblocca]: #sblocca "sblocca"
 
 
 attributo `my_game`:
@@ -562,7 +596,7 @@ sintassi:
 
 ## sblocca_con
 
-[sblocca con]: #sblocca_con
+[sblocca con]: #sblocca_con "sblocca_con"
 
 
 attributo `my_game`:
@@ -584,8 +618,8 @@ Questi verbi sono legati tra loro.
 
 ## spogliati
 
-[spogliati]: #spogliati
-[svestiti]: #spogliati
+[spogliati]: #spogliati "spogliati"
+[svestiti]: #spogliati "spogliati"
 
 attributo `my_game`:
 
@@ -613,7 +647,7 @@ esito:
 
 ## brucia
 
-[brucia]: #brucia
+[brucia]: #brucia "brucia"
 
 sintassi:
 
@@ -625,7 +659,7 @@ esito:
 
 ## brucia_con
 
-[brucia con]: #brucia_con
+[brucia con]: #brucia_con "brucia_con"
 
 sintassi:
 
@@ -637,10 +671,10 @@ esito:
 
 ## rompi
 
-[distruggi]: #rompi
-[spacca]: #rompi
-[sfonda]: #rompi
-[rompi]: #rompi
+[distruggi]: #rompi "rompi"
+[spacca]: #rompi "rompi"
+[sfonda]: #rompi "rompi"
+[rompi]: #rompi "rompi"
 
 
 sintassi:
@@ -661,10 +695,10 @@ esito:
 
 ## rompi_con
 
-[distruggi con]: #rompi_con
-[spacca con]: #rompi_con
-[sfonda con]: #rompi_con
-[rompi con]: #rompi_con
+[distruggi con]: #rompi_con "rompi_con"
+[spacca con]: #rompi_con "rompi_con"
+[sfonda con]: #rompi_con "rompi_con"
+[rompi con]: #rompi_con "rompi_con"
 
 
 sintassi:
@@ -689,8 +723,8 @@ Raggruppo qui vari verbi che nell'implementazione di base della libreria sono ri
 
 ## aspetta
 
-[aspetta]: #aspetta
-[attendi]: #aspetta
+[aspetta]: #aspetta "aspetta"
+[attendi]: #aspetta "aspetta"
 
 sintassi:
 
@@ -707,8 +741,8 @@ esito:
 
 ## dormi
 
-[dormi]: #dormi
-[riposa]: #dormi
+[dormi]: #dormi "dormi"
+[riposa]: #dormi "dormi"
 
 sintassi:
 
@@ -725,7 +759,7 @@ esito:
 
 ## prega
 
-[prega]: #prega
+[prega]: #prega "prega"
 
 sintassi:
 

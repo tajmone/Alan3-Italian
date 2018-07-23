@@ -9,13 +9,13 @@ ovest
 ;                              Testiamo "E" e "POI"                             
 ; ==============================================================================
 prendi la pera POI prendi il mango
-drop la pera
+lascia la pera
 prendi la pera E prendi le cigliege
 
 ; ==============================================================================
 ;                             Testiamo "TUTTO" ecc.                             
 ; ==============================================================================
-drop TUTTO
+lascia TUTTO
 
 ; NOTA: la forma "E POI" non è valida:
 prendi la pera E POI prendi il mango
@@ -24,18 +24,18 @@ prendi il mango e prendi le cigliege
 ; ==============================================================================
 ;                         testiamo "TRANNE/ECCETTO" ecc.                        
 ; ==============================================================================
-drop TUTTO TRANNE le cigliege
+lascia TUTTO TRANNE le cigliege
 ; ------------------------------------------------------------------------------
 ; D'ora in poi useremo la formula magica XYZZY per raccogliere tutta la frutta!
 ; ------------------------------------------------------------------------------
 xyzzy
-drop TUTTO ECCETTO le cigliege
+lascia TUTTO ECCETTO le cigliege
 xyzzy
-drop TUTTO ESCLUSE le cigliege
+lascia TUTTO ESCLUSE le cigliege
 xyzzy
-drop TUTTO ESCLUSO il mango
+lascia TUTTO ESCLUSO il mango
 xyzzy
-drop TUTTO ESCLUSI il mango e le cigliege
+lascia TUTTO ESCLUSI il mango e le cigliege
 xyzzy
-drop TUTTO ESCLUSA la pera
+lascia TUTTO ESCLUSA la pera
 
