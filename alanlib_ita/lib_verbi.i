@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.38 (2018/07/23)
+-- "lib_verbi.i" v0.2.39 (2018/07/23)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -457,13 +457,13 @@ ADD TO EVERY OBJECT
             IF ogg IS NOT femminile
               THEN
                 IF ogg IS NOT plurale
-                  THEN SAY "o.". -- GNA = msi
-                  ELSE SAY "i.". -- GNA = mpi
+                  THEN "o." -- GNA = msi
+                  ELSE "i." -- GNA = mpi
                 END IF.
               ELSE
                 IF ogg IS NOT plurale
-                  THEN SAY "a.". -- GNA = fsi
-                  ELSE SAY "e.". -- GNA = fpi
+                  THEN "a." -- GNA = fsi
+                  ELSE "e." -- GNA = fpi
                 END IF.
             END IF.
         END IF.
@@ -565,13 +565,13 @@ ADD TO EVERY OBJECT
                 IF ogg IS NOT femminile
                   THEN
                     IF ogg IS NOT plurale
-                      THEN SAY "o.". -- GNA = msi
-                      ELSE SAY "i.". -- GNA = mpi
+                      THEN "o." -- GNA = msi
+                      ELSE "i." -- GNA = mpi
                     END IF.
                   ELSE
                     IF ogg IS NOT plurale
-                      THEN SAY "a.". -- GNA = fsi
-                      ELSE SAY "e.". -- GNA = fpi
+                      THEN "a." -- GNA = fsi
+                      ELSE "e." -- GNA = fpi
                     END IF.
                 END IF.
              -- IF ogg IS NOT plurale
@@ -774,13 +774,13 @@ ADD TO EVERY liquido
               IF liq IS NOT femminile
                 THEN
                   IF liq IS NOT plurale
-                    THEN SAY "o.". -- GNA = msi
-                    ELSE SAY "i.". -- GNA = mpi
+                    THEN "o." -- GNA = msi
+                    ELSE "i." -- GNA = mpi
                   END IF.
                 ELSE
                   IF liq IS NOT plurale
-                    THEN SAY "a.". -- GNA = fsi
-                    ELSE SAY "e.". -- GNA = fpi
+                    THEN "a." -- GNA = fsi
+                    ELSE "e." -- GNA = fpi
                   END IF.
               END IF.
               SAY THE liq. "."
@@ -1816,13 +1816,13 @@ ADD TO EVERY THING
         IF ogg IS NOT femminile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY "È fissato al suo posto.".
-              ELSE SAY "Sono fissati al loro posto.".
+              THEN "È fissato al suo posto."
+              ELSE "Sono fissati al loro posto."
             END IF.
           ELSE
             IF ogg IS NOT plurale
-              THEN SAY "È fissata al suo posto.".
-              ELSE SAY "Sono fissate al loro posto.".
+              THEN "È fissata al suo posto."
+              ELSE "Sono fissate al loro posto."
             END IF.
         END IF.
         AND ogg IS prendibile
@@ -1883,13 +1883,13 @@ ADD TO EVERY THING
               IF ogg IS NOT femminile
                 THEN
                   IF ogg IS NOT plurale
-                    THEN SAY "o.". -- GNA = msi
-                    ELSE SAY "i.". -- GNA = mpi
+                    THEN "o." -- GNA = msi
+                    ELSE "i." -- GNA = mpi
                   END IF.
                 ELSE
                   IF ogg IS NOT plurale
-                    THEN SAY "a.". -- GNA = fsi
-                    ELSE SAY "e.". -- GNA = fpi
+                    THEN "a." -- GNA = fsi
+                    ELSE "e." -- GNA = fpi
                   END IF.
               END IF.
           END IF.
@@ -2574,13 +2574,13 @@ ADD TO EVERY OBJECT
       IF ogg IS NOT femminile
         THEN
           IF ogg IS NOT plurale
-            THEN SAY "o?". -- GNA = msi
-            ELSE SAY "i?". -- GNA = mpi
+            THEN "o?" -- GNA = msi
+            ELSE "i?" -- GNA = mpi
           END IF.
         ELSE
           IF ogg IS NOT plurale
-            THEN SAY "a?". -- GNA = fsi
-            ELSE SAY "e?". -- GNA = fpi
+            THEN "a?" -- GNA = fsi
+            ELSE "e?" -- GNA = fpi
           END IF.
       END IF.
     END VERB.

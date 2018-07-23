@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/23 \(5\)](#20180723-5)
 - [2018/07/23 \(4\)](#20180723-4)
     - [Verb: `use`](#verb-use)
     - [Verb: `use_with`](#verb-use_with)
@@ -130,6 +131,16 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/23 (5)
+
+
+- [`lib_classi.i`][lib_classi] (v0.2.17)
+- [`lib_verbi.i`][lib_verbi] (v0.2.39)
+
+A few code optimizations:
+
+- remove unneeded `SAY` statements when just a string was sufficient.
 
 # 2018/07/23 (4)
 

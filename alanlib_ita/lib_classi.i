@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.2.16 (2018/07/23)
+-- "lib_classi.i" v0.2.17 (2018/07/23)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -15,7 +15,7 @@ ADD TO EVERY OBJECT
 
   DESCRIPTION
       CHECK THIS IS NOT scenario
-      ELSE SAY "".
+      ELSE ""
 
 END ADD.
 
