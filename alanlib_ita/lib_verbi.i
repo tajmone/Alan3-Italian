@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.40 (2018/07/24)
+-- "lib_verbi.i" v0.2.41 (2018/07/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -81,31 +81,31 @@
 ----- actually verbs, such as "inventory", "verbose" and "again".
 ----- Verbs originally defined in this file are the following:
 
---# NOTA: i verbi preceduti da "--->" sono stati già tradotti.
+--# NOTA: i verbi preceduti da "-->>>" sono stati già tradotti.
 
 ----- VERB        SYNONYMS                                 SYNTAX                              ARITY   OBJ
 
 ----- about       (+ help, info)                           about                               0
-----> again       (+ g)                                    again                               0
+-->>> again       (+ g)                                    again                               0
 ----- answer      (+ reply)                                answer (topic)                      1
 ----- ask         (+ enquire, inquire, interrogate)        ask (act) about (topic)             2
 ----- ask_for                                              ask (act) for (obj)                 2       x
 ----- attack      (+ beat, fight, hit, punch)              attack (target)                     1
 ----- attack_with                                          attack (target) with (weapon)       2
 ----- bite        (+ chew)                                 bite (obj)                          1       x
-----> break       (+ destroy)                              break (obj)                         1       x
-----> break_with                                           break (obj) with (instr)            2       x
+-->>> break       (+ destroy)                              break (obj)                         1       x
+-->>> break_with                                           break (obj) with (instr)            2       x
 ----- brief                                                brief                               0
-----> burn                                                 burn (obj)                          1       x
-----> burn_with                                            burn (obj) with (instr)             2       x
-----> buy         (+ purchase)                             buy (item)                          1
+-->>> burn                                                 burn (obj)                          1       x
+-->>> burn_with                                            burn (obj) with (instr)             2       x
+-->>> buy         (+ purchase)                             buy (item)                          1
 ----- catch                                                catch (obj)                         1       x
 ----- clean       (+ polish, wipe)                         clean (obj)                         1       x
 ----- climb                                                climb (obj)                         1       x
 ----- climb_on                                             climb on (surface)                  1
-----> climb_through                                        climb through (obj)                 1       x
-----> close       (+ shut)                                 close (obj)                         1       x
-----> close_with                                           close (obj) with (instr)            2       x
+-->>> climb_through                                        climb through (obj)                 1       x
+-->>> close       (+ shut)                                 close (obj)                         1       x
+-->>> close_with                                           close (obj) with (instr)            2       x
 ----- consult                                              consult (source) about (topic)      2
 ----- credits     (+ acknowledgments, author, copyright)   credits                             2
 ----- cut                                                  cut (obj)                           1       x
@@ -114,15 +114,15 @@
 ----- dig                                                  dig (obj)                           1       x
 ----- dive                                                 dive                                0
 ----- dive_in                                              dive in (liq)                       1
-----> drink                                                drink (liq)                         1
+-->>> drink                                                drink (liq)                         1
 ----- drive                                                drive (vehicle)                     1
-----> drop        (+ discard, dump, reject)                drop (obj)                          1       x
-----> eat                                                  eat (food)                          1
+-->>> drop        (+ discard, dump, reject)                drop (obj)                          1       x
+-->>> eat                                                  eat (food)                          1
 ----- empty                                                empty (obj)                         1       x
 ----- empty_in                                             empty (obj) in (cont)               2       x
 ----- empty_on                                             empty (obj) on (surface)            2       x
 ----- enter                                                enter (obj)                         1
-----> examine     (+ check, inspect, observe, x)           examine (obj)                       1       x
+-->>> examine     (+ check, inspect, observe, x)           examine (obj)                       1       x
 ----- exit                                                 exit (obj)                          1
 ----- extinguish  (+ put out, quench)                      extinguish (obj)                    1       x
 ----- fill                                                 fill (cont)                         1
@@ -135,10 +135,10 @@
 ----- free        (+ release)                              free (obj)                          1       x
 ----- get_up                                               get up                              0
 ----- get_off                                              get off (obj)                       1       x
-----> give                                                 give (obj) to (recipient)           1       x
-----> go_to                                                go to (dest)                        1
+-->>> give                                                 give (obj) to (recipient)           1       x
+-->>> go_to                                                go to (dest)                        1
 ----- hint        (+ hints)                                hint                                0
-----> i           (+ inv, inventory)                       inventory                           0
+-->>> i           (+ inv, inventory)                       inventory                           0
 ----- jump                                                 jump                                0
 ----- jump_in                                              jump in (cont)                      1
 ----- jump_on                                              jump on (surface)                   1
@@ -154,8 +154,8 @@
 ----- light       (+ lit)                                  light (obj)                         1       x
 ----- listen0                                              listen                              0
 ----- listen                                               listen to (obj)                     1       x
-----> lock                                                 lock (obj)                          1       x
-----> lock_with                                            lock (obj) with (key)               2       x
+-->>> lock                                                 lock (obj)                          1       x
+-->>> lock_with                                            lock (obj) with (key)               2       x
 ----- look        (+ gaze, peek)                           look                                0
 ----- look_at                                              look at (obj)                       1       x
 ----- look_behind                                          look behind (bulk)                  1
@@ -166,14 +166,14 @@
 ----- look_up                                              look up                             0
 ----- no                                                   no                                  0
 ----- notify (on, off)                                     notify. notify on. notify off       0
-----> open                                                 open (obj)                          1       x
-----> open_with                                            open (obj) with (instr)             2       x
+-->>> open                                                 open (obj)                          1       x
+-->>> open_with                                            open (obj) with (instr)             2       x
 ----- play                                                 play (obj)                          1       x
 ----- play_with                                            play with (obj)                     1       x
 ----- pour        (= defined at the verb 'empty')          pour (obj)                          1       x
 ----- pour_in     (= defined at the verb 'emtpy_in')       pour (obj) in (cont)                2       x
 ----- pour_on     (= defined at the verb 'empty_on')       pour (obj) on (surface)             2       x
-----> pray                                                 pray                                0
+-->>> pray                                                 pray                                0
 ----- pry                                                  pry (obj)                           1       x
 ----- pry_with                                             pry (obj) with (instr)              2       x
 ----- pull                                                 pull (obj)                          1       x
@@ -182,24 +182,24 @@
 ----- put         (+ lay, place)                           put (obj)                           1       x
 ----- put_against                                          put (obj) against (bulk))           2       x
 ----- put_behind                                           put (obj) behind (bulk)             2       x
-----> put_down    (= defined at the verb 'drop')           put down (obj)                      1       x
+-->>> put_down    (= defined at the verb 'drop')           put down (obj)                      1       x
 ----- put_in      (+ insert)                               put (obj) in (cont)                 2       x
 ----- put_near                                             put (obj) near (bulk)               2       x
 ----- put_on                                               put (obj) on (surface)              2       x
 ----- put_under                                            put (obj) under (bulk)              2       x
-----> read                                                 read (obj)                          1       x
+-->>> read                                                 read (obj)                          1       x
 ----- remove                                               remove (obj)                        1       x
-----> restart                                              restart                             0
-----> restore                                              restore                             0
+-->>> restart                                              restart                             0
+-->>> restore                                              restore                             0
 ----- rub                                                  rub (obj)                           1       x
-----> save                                                 save                                0
+-->>> save                                                 save                                0
 ----- say                                                  say (topic)                         1
 ----- say_to                                               say (topic) to (act)                2
 ----- score                                                score                               0
 ----- scratch                                              scratch (obj)                       1       x
 ----- script                                               script. script on. script off.      0
 ----- search                                               search (obj)                        1       x
-----> sell                                                 sell (item)                         1
+-->>> sell                                                 sell (item)                         1
 ----- shake                                                shake (obj)                         1       x
 ----- shoot (at)                                           shoot at (target)                   1
 ----- shoot_with                                           shoot (target) with (weapon)        2
@@ -209,7 +209,7 @@
 ----- sip                                                  sip (liq)                           1
 ----- sit (down)                                           sit.  sit down.                     0
 ----- sit_on                                               sit on (surface)                    1
-----> sleep       (+ rest)                                 sleep                               0
+-->>> sleep       (+ rest)                                 sleep                               0
 ----- smell0                                               smell                               0
 ----- smell                                                smell (odour)                       1
 ----- squeeze                                              squeeze (obj)                       1       x
@@ -220,8 +220,8 @@
 ----- switch                                               switch (obj)                        1       x
 ----- switch_on   (defined at the verb 'turn_on')          switch on (app)                     1
 ----- switch_off  (defined at the verb 'turn_off')         switch off (app)                    1
-----> take        (+ carry, get, grab, hold, obtain)       take (obj)                          1       x
-----> take_from   (+ remove from)                          take (obj) from (holder)            2       x
+-->>> take        (+ carry, get, grab, hold, obtain)       take (obj)                          1       x
+-->>> take_from   (+ remove from)                          take (obj) from (holder)            2       x
 ----- talk                                                 talk                                0
 ----- talk_to     (+ speak)                                talk to (act)                       1
 ----- taste       (+ lick)                                 taste (obj)                         1       x
@@ -239,21 +239,21 @@
 ----- turn        (+ rotate)                               turn (obj)                          1       x
 ----- turn_on                                              turn on (app)                       1
 ----- turn_off                                             turn off (app)                      1
-----> undress                                              undress                             0
-----> unlock                                               unlock (obj)                        1       x
-----> unlock_with                                          unlock (obj) with (key)             2       x
-----> use                                                  use (obj)                           1       x
-----> use_with                                             use (obj) with (instr)              2       x
+-->>> undress                                              undress                             0
+-->>> unlock                                               unlock (obj)                        1       x
+-->>> unlock_with                                          unlock (obj) with (key)             2       x
+-->>> use                                                  use (obj)                           1       x
+-->>> use_with                                             use (obj) with (instr)              2       x
 ----- verbose                                              verbose                             0
-----> wait        (+ z)                                    wait                                0
+-->>> wait        (+ z)                                    wait                                0
 ----- wear                                                 wear (obj)                          1       x
-----> what_am_i                                            what am i                           0
-----> what_is                                              what is (obj)                       1       x
-----> where_am_i                                           where am i                          0
-----> where_is                                             where is (obj)                      1       x
-----> who_am_i                                             who am i                            0
-----> who_is                                               who is (obj)                        1       x
-----> write                                                write (txt) on (obj)                2       x
+-->>> what_am_i                                            what am i                           0
+-->>> what_is                                              what is (obj)                       1       x
+-->>> where_am_i                                           where am i                          0
+-->>> where_is                                             where is (obj)                      1       x
+-->>> who_am_i                                             who am i                            0
+-->>> who_is                                               who is (obj)                        1       x
+-->>> write                                                write (txt) on (obj)                2       x
 ----- yes                                                  yes                                 0
 
 
@@ -3776,14 +3776,14 @@ END ADD TO.
 
 SYNTAX consult_error = consult (fonte)
   WHERE fonte ISA THING
-    ELSE "To consult something, please use the
-      formulation CONSULT THING ABOUT PERSON/THING."
+    ELSE "To consult something, please use the formulation
+          CONSULT THING ABOUT PERSON/THING."
 
 
 ADD TO EVERY THING
   VERB consult_error
-    DOES "To consult something, please use the formulation CONSULT THING
-      ABOUT PERSON/THING."
+    DOES "To consult something, please use the formulation
+          CONSULT THING ABOUT PERSON/THING."
     END VERB.
 END ADD TO.
 
@@ -3890,9 +3890,9 @@ ADD TO EVERY OBJECT
       AND ogg IS esaminabile
         ELSE
           IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF my_game. "tagliare."
-          ELSE SAY ogg1_inadatto_pl OF my_game. "tagliare."
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY ogg1_inadatto_sg OF my_game. "tagliare."
+            ELSE SAY ogg1_inadatto_pl OF my_game. "tagliare."
           END IF.
       AND strum IS esaminabile
         ELSE
@@ -3947,7 +3947,7 @@ VERB dance
     ELSE SAY check_hero_not_sitting1 OF my_game.
   AND hero IS NOT sdraiato
     ELSE SAY check_hero_not_lying_down1 OF my_game.
-    DOES
+  DOES
         "How about a waltz?"
 END VERB.
 
@@ -4080,7 +4080,6 @@ ADD TO EVERY OBJECT
         THEN "That's not"
         ELSE "Those are not"
       END IF.
-
       "something you can dive in."
   END VERB.
 END ADD TO.
@@ -4141,7 +4140,6 @@ ADD TO EVERY OBJECT
         THEN "That's not"
         ELSE "Those are not"
       END IF.
-
       "something you can drive."
   END VERB.
 END ADD TO.
@@ -4763,7 +4761,7 @@ SYNTAX fill_with = fill (cont) 'with' (sostanza)
 
 ADD TO EVERY OBJECT
   VERB fill_with
-        WHEN cont
+    WHEN cont
       CHECK my_game CAN fill_with
         ELSE SAY azione_bloccata OF my_game.
       AND cont <> sostanza
@@ -4827,8 +4825,7 @@ END ADD TO.
 -- ==============================================================
 
 
-SYNTAX
-  find = find (ogg)!
+SYNTAX find = find (ogg)!
     WHERE ogg ISA THING
       ELSE
         IF ogg IS NOT plurale
@@ -4974,7 +4971,7 @@ ADD TO EVERY THING
       ELSE SAY check_locazione_illuminata OF my_game.
     DOES
       "Resorting to violence is not the solution here."
-END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -5373,8 +5370,8 @@ END ADD TO.
 
 
 SYNTAX kick = kick (bersaglio)
-      WHERE bersaglio ISA THING
-        ELSE
+  WHERE bersaglio ISA THING
+    ELSE
       IF bersaglio IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
@@ -5414,9 +5411,9 @@ ADD TO EVERY THING
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-        DOES
-          "La violenza non è la giusta risposta a questo." --> taken from i6
-          -- "Resorting to brute force is not the solution here."
+    DOES
+      "La violenza non è la giusta risposta a questo." --> taken from i6
+   -- "Resorting to brute force is not the solution here."
   END VERB.
 END ADD TO.
 
@@ -5456,7 +5453,7 @@ ADD TO EVERY ACTOR
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
     DOES "You have to state what you want to kill" SAY THE vittima. "with."
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -5504,7 +5501,7 @@ ADD TO EVERY ACTOR
           END IF.
       DOES
         "That would be needlessly brutal."
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -5567,7 +5564,7 @@ ADD TO EVERY THING
           "Farlo non servirebbe a nulla."
           -- "Nothing would be achieved by that."
       END IF.
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -5620,7 +5617,7 @@ ADD TO EVERY OBJECT
         END IF.
     DOES
       "You knock on" SAY THE ogg. "$$. Nothing happens."
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -5685,7 +5682,7 @@ END VERB.
 -- ==============================================================
 
 
-SYNTAX lie_in = lie 'in' (cont)
+SYNTAX  lie_in = lie 'in' (cont)
   WHERE cont ISA OBJECT
     ELSE
       IF cont IS NOT plurale
@@ -5699,7 +5696,7 @@ SYNTAX lie_in = lie 'in' (cont)
         ELSE SAY illegal_parameter_in_pl OF my_game.
       END IF.
 
-       lie_in = lie 'down' 'in' (cont).
+        lie_in = lie 'down' 'in' (cont).
 
 
 ADD TO EVERY OBJECT
@@ -5796,7 +5793,7 @@ ADD TO EVERY OBJECT
       -- Remember to: MAKE hero lying_down.
                 -- Presently, an actor cannot be located inside a container object
       -- or on a supporter.
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -5992,7 +5989,7 @@ ADD TO EVERY THING
       ELSIF ogg NEAR hero
         THEN "You can't hear" SAY THE ogg. "very well from here."
       END IF.
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -6064,7 +6061,7 @@ ADD TO EVERY THING
         THEN "You turn" SAY THE bulk. "in your hands but notice nothing unusual about it."
         ELSE "You notice nothing unusual behind" SAY THE bulk. "."
       END IF.
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -6102,7 +6099,7 @@ ADD TO EVERY OBJECT
         END IF.
     DOES
       LIST cont.
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -6144,7 +6141,7 @@ ADD TO EVERY OBJECT
         ELSE "Those are not"
       END IF.
       "something you can look out of."
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -6206,7 +6203,7 @@ ADD TO EVERY THING
       ELSE SAY check_locazione_illuminata OF my_game.
     DOES
       "You notice nothing unusual under" SAY THE bulk. "."
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -6413,7 +6410,7 @@ ADD TO EVERY OBJECT
         ELSE "Those are not"
       END IF.
       "something you can play."
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -6469,7 +6466,7 @@ ADD TO EVERY THING
     DOES
       "After second thought you don't find it purposeful to start
        playing with" SAY THE ogg. "."
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -6551,44 +6548,44 @@ SYNTAX pry_with = pry (ogg) 'with' (strum)
 
 ADD TO EVERY OBJECT
 VERB pry_with
-   WHEN ogg
-  CHECK my_game CAN pry_with
-    ELSE SAY azione_bloccata OF my_game.
-  AND ogg IS esaminabile
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY check_obj_suitable_sg OF my_game.
-        ELSE SAY check_obj_suitable_pl OF my_game.
-      END IF.
-  AND strum IS esaminabile
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY check_obj2_suitable_with_sg OF my_game.
-        ELSE SAY check_obj2_suitable_with_pl OF my_game.
-      END IF.
-  AND ogg <> strum
-    ELSE SAY check_obj_not_obj2_with OF my_game.
-  AND strum IN hero
-    ELSE SAY check_obj2_in_hero OF my_game.
-  AND CURRENT LOCATION IS lit
-    ELSE SAY check_locazione_illuminata OF my_game.
-  AND ogg IS raggiungibile AND ogg IS NOT distante
-    ELSE
-      IF ogg IS NOT raggiungibile
-        THEN
-          IF ogg IS NOT plurale
-            THEN SAY ogg1_non_raggiungibile_sg OF my_game.
-            ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
-          END IF.
-      ELSIF ogg IS distante
-        THEN
-          IF ogg IS NOT plurale
-            THEN SAY check_obj_not_distant_sg OF my_game.
-            ELSE SAY check_obj_not_distant_pl OF my_game.
-          END IF.
-      END IF.
-  DOES "That doesn't work."
-END VERB.
+  WHEN ogg
+    CHECK my_game CAN pry_with
+      ELSE SAY azione_bloccata OF my_game.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY check_obj_suitable_sg OF my_game.
+          ELSE SAY check_obj_suitable_pl OF my_game.
+        END IF.
+    AND strum IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY check_obj2_suitable_with_sg OF my_game.
+          ELSE SAY check_obj2_suitable_with_pl OF my_game.
+        END IF.
+    AND ogg <> strum
+      ELSE SAY check_obj_not_obj2_with OF my_game.
+    AND strum IN hero
+      ELSE SAY check_obj2_in_hero OF my_game.
+    AND CURRENT LOCATION IS lit
+      ELSE SAY check_locazione_illuminata OF my_game.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY ogg1_non_raggiungibile_sg OF my_game.
+              ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY check_obj_not_distant_sg OF my_game.
+              ELSE SAY check_obj_not_distant_pl OF my_game.
+            END IF.
+        END IF.
+    DOES "That doesn't work."
+  END VERB.
 END ADD TO.
 
 
@@ -6695,7 +6692,7 @@ ADD TO EVERY THING
         END IF.
     DOES
           "You give" SAY THE ogg. "a little push. Nothing happens."
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -6760,7 +6757,7 @@ ADD TO EVERY THING
           END IF.
       DOES
         "That wouldn't accomplish anything."
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -6797,7 +6794,7 @@ ADD TO EVERY OBJECT
         THEN "it."
         ELSE "them."
       END IF.
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -6903,7 +6900,7 @@ ADD TO EVERY OBJECT
             THEN SAY check_obj2_open_sg OF my_game.
             ELSE SAY check_obj2_open_pl OF my_game.
           END IF.
-          DOES
+      DOES
         LOCATE ogg IN cont.
         "You put" SAY THE ogg. "into" SAY THE cont. "."
   END VERB.
@@ -6957,19 +6954,19 @@ ADD TO EVERY OBJECT
   VERB put_against, put_behind, put_near, put_under
     WHEN ogg
       CHECK my_game CAN put_against AND my_game CAN put_behind
-        AND my_game CAN put_near AND my_game CAN put_under
+      AND my_game CAN put_near AND my_game CAN put_under
         ELSE SAY azione_bloccata OF my_game.
-          AND bulk NOT IN hero
+      AND bulk NOT IN hero
           ELSE SAY check_obj2_not_in_hero2 OF my_game.
       AND ogg <> bulk
           ELSE SAY check_obj_not_obj2_put OF my_game.
-          AND ogg IS prendibile
+      AND ogg IS prendibile
           ELSE SAY check_obj_takeable OF my_game.
-          AND bulk <> hero
+      AND bulk <> hero
           ELSE SAY check_obj2_not_hero2 OF my_game.
-          AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS lit
             ELSE SAY check_locazione_illuminata OF my_game.
-          AND ogg IS raggiungibile AND ogg IS NOT distante
+      AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
             THEN
@@ -6999,10 +6996,10 @@ ADD TO EVERY OBJECT
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
           END IF.
-          DOES
+      DOES
           "That wouldn't accomplish anything."
 
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -7039,13 +7036,13 @@ ADD TO EVERY OBJECT
       CHECK my_game CAN put_on
         ELSE SAY azione_bloccata OF my_game.
       AND ogg <> superficie
-          ELSE SAY check_obj_not_obj2_on OF my_game.
-          AND ogg IS prendibile
-          ELSE SAY check_obj_takeable OF my_game.
-          AND CURRENT LOCATION IS lit
-            ELSE SAY check_locazione_illuminata OF my_game.
-          AND ogg NOT IN superficie
-          ELSE
+        ELSE SAY check_obj_not_obj2_on OF my_game.
+      AND ogg IS prendibile
+        ELSE SAY check_obj_takeable OF my_game.
+      AND CURRENT LOCATION IS lit
+        ELSE SAY check_locazione_illuminata OF my_game.
+      AND ogg NOT IN superficie
+        ELSE
           IF ogg IS NOT plurale
             THEN SAY check_obj_not_on_surface_sg OF my_game.
             ELSE SAY check_obj_not_on_surface_pl OF my_game.
@@ -7065,7 +7062,7 @@ ADD TO EVERY OBJECT
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
           END IF.
-          AND superficie IS raggiungibile AND superficie IS NOT distante
+      AND superficie IS raggiungibile AND superficie IS NOT distante
         ELSE
           IF superficie IS NOT raggiungibile
             THEN
@@ -7080,7 +7077,7 @@ ADD TO EVERY OBJECT
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
           END IF.
-          DOES
+      DOES
         -- implicit taking:
         IF ogg NOT DIRECTLY IN hero
           THEN LOCATE ogg IN hero.
@@ -7126,16 +7123,17 @@ END ADD TO.
 
 -- this verb only works with clothing (see 'classes.i').
 
-SYNTAX remove = remove (ogg)
+SYNTAX  remove = remove (ogg)
     WHERE ogg ISA OBJECT
       ELSE
         IF ogg IS NOT plurale
           THEN SAY illegal_parameter_sg OF my_game. "since you're not wearing it."
           ELSE SAY illegal_parameter_pl OF my_game. "since you're not wearing them."
         END IF.
-   remove = take 'off' (ogg).
-   remove = take (ogg) 'off'.
-   remove = doff (ogg).
+
+        remove = take 'off' (ogg).
+        remove = take (ogg) 'off'.
+        remove = doff (ogg).
 
 
 ADD TO EVERY OBJECT
@@ -7252,7 +7250,7 @@ ADD TO EVERY STRING
       ELSE SAY azione_bloccata OF my_game.
         DOES
           "Nothing happens."
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -7268,10 +7266,10 @@ END ADD TO.
 
 
 SYNTAX say_to = 'say' (argomento) 'to' (png)
-      WHERE argomento ISA STRING
-        ELSE SAY illegal_parameter_string OF my_game.
-      AND png ISA ACTOR
-        ELSE
+  WHERE argomento ISA STRING
+    ELSE SAY illegal_parameter_string OF my_game.
+  AND png ISA ACTOR
+    ELSE
       IF png IS NOT plurale
         THEN SAY illegal_parameter_talk_sg OF my_game.
         ELSE SAY illegal_parameter_talk_pl OF my_game.
@@ -7280,12 +7278,12 @@ SYNTAX say_to = 'say' (argomento) 'to' (png)
 
 ADD TO EVERY ACTOR
   VERB say_to
-        WHEN png
+    WHEN png
       CHECK my_game CAN say_to
         ELSE SAY azione_bloccata OF my_game.
       AND png <> hero
         ELSE SAY check_obj2_not_hero1 OF my_game.
-          AND png CAN parlare
+      AND png CAN parlare
         ELSE
           IF png IS NOT plurale
             THEN SAY check_act_can_talk_sg OF my_game.
@@ -7297,7 +7295,7 @@ ADD TO EVERY ACTOR
             THEN SAY check_obj_not_distant_sg OF my_game.
             ELSE SAY check_obj_not_distant_pl OF my_game.
           END IF.
-          DOES
+      DOES
         SAY THE png.
         IF png IS NOT plurale
           THEN "doesn't look"
@@ -7385,7 +7383,7 @@ ADD TO EVERY THING
     DOES
      "Farlo non servirebbe a nulla."
      -- "Nothing would be achieved by that."
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -7420,17 +7418,17 @@ END VERB.
 VERB script_on
   CHECK my_game CAN script_on
     ELSE SAY azione_bloccata OF my_game.
-    DOES
-        TRANSCRIPT ON.
-        "Transcripting turned on."
+  DOES
+    TRANSCRIPT ON.
+    "Transcripting turned on."
 END VERB.
 
 VERB script_off
   CHECK my_game CAN script_off
     ELSE SAY azione_bloccata OF my_game.
-    DOES
-        TRANSCRIPT OFF.
-        "Transcripting turned off."
+  DOES
+    TRANSCRIPT OFF.
+    "Transcripting turned off."
 END VERB.
 
 
@@ -7480,7 +7478,7 @@ ADD TO EVERY THING
         END IF.
     DOES
       "You find nothing of interest."
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -7554,19 +7552,19 @@ END ADD TO.
 
 
 
-SYNTAX shoot = shoot (bersaglio)
-      WHERE bersaglio ISA THING
-        ELSE
+SYNTAX  shoot = shoot (bersaglio)
+  WHERE bersaglio ISA THING
+    ELSE
       IF bersaglio IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
 
-       shoot = shoot 'at' (bersaglio).
+        shoot = shoot 'at' (bersaglio).
 
 
 ADD TO EVERY THING
-    VERB shoot
+  VERB shoot
     CHECK my_game CAN shoot
       ELSE SAY azione_bloccata OF my_game.
     AND bersaglio IS esaminabile
@@ -7592,9 +7590,9 @@ ADD TO EVERY THING
     DOES
       IF bersaglio ISA ACTOR
         THEN "That's quite uncalled-for."
-              ELSE "That wouldn't accomplish anything."
+          ELSE "That wouldn't accomplish anything."
       END IF.
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -7623,27 +7621,27 @@ END VERB.
 -- ==============================================================
 
 
-SYNTAX shoot_with = shoot (bersaglio) 'with' (arma)
-        WHERE bersaglio ISA THING
-          ELSE
-        IF bersaglio IS NOT plurale
-          THEN SAY illegal_parameter_sg OF my_game.
-          ELSE SAY illegal_parameter_pl OF my_game.
-        END IF.
-        AND arma ISA arma
-          ELSE
-        IF arma IS NOT plurale
-          THEN SAY illegal_parameter2_with_sg OF my_game.
-          ELSE SAY illegal_parameter2_with_pl OF my_game.
-        END IF.
+SYNTAX  shoot_with = shoot (bersaglio) 'with' (arma)
+  WHERE bersaglio ISA THING
+    ELSE
+      IF bersaglio IS NOT plurale
+        THEN SAY illegal_parameter_sg OF my_game.
+        ELSE SAY illegal_parameter_pl OF my_game.
+      END IF.
+      AND arma ISA arma
+        ELSE
+      IF arma IS NOT plurale
+        THEN SAY illegal_parameter2_with_sg OF my_game.
+        ELSE SAY illegal_parameter2_with_pl OF my_game.
+      END IF.
 
-   shoot_with = shoot (arma) 'at' (bersaglio).
-    -- to allow player input such as 'shoot rifle at bear'
+        shoot_with = shoot (arma) 'at' (bersaglio).
+        -- to allow player input such as 'shoot rifle at bear'
 
 
 ADD TO EVERY THING
-    VERB shoot_with
-        WHEN bersaglio
+  VERB shoot_with
+    WHEN bersaglio
       CHECK my_game CAN shoot_with
         ELSE SAY azione_bloccata OF my_game.
       AND bersaglio IS esaminabile
@@ -7668,12 +7666,12 @@ ADD TO EVERY THING
             THEN SAY check_obj_not_distant_sg OF my_game.
             ELSE SAY check_obj_not_distant_pl OF my_game.
           END IF.
-          DOES
+      DOES
         IF bersaglio ISA ACTOR
           THEN "That's quite uncalled-for."
                 ELSE "That wouldn't accomplish anything."
         END IF.
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -7696,8 +7694,8 @@ SYNONYMS scream, yell = shout.
 VERB shout
   CHECK my_game CAN gridare
     ELSE SAY azione_bloccata OF my_game.
-    DOES
-        "Nothing results from your $ving."
+  DOES
+    "Nothing results from your $ving."
 END VERB.
 
 
@@ -7755,7 +7753,7 @@ ADD TO EVERY OBJECT
         END IF.
 
         "not especially interested."
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -7778,7 +7776,7 @@ SYNONYMS hum, whistle = sing.
 VERB sing
   CHECK my_game CAN sing
     ELSE SAY azione_bloccata OF my_game.
-    DOES
+  DOES
         "You $v a little tune."
 END VERB.
 
@@ -7803,7 +7801,7 @@ SYNTAX sip = sip (liq)
 
 
 ADD TO EVERY liquido
-    VERB sip
+  VERB sip
     CHECK my_game CAN sip
       ELSE SAY azione_bloccata OF my_game.
     AND liq IS potabile
@@ -7858,7 +7856,7 @@ ADD TO EVERY liquido
           END IF.
       END IF.
 
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -7925,7 +7923,7 @@ SYNTAX sit_on = sit 'on' (superficie)
 
 
 ADD TO EVERY SUPPORTER
-    VERB sit_on
+  VERB sit_on
     CHECK my_game CAN sit_on
       ELSE SAY azione_bloccata OF my_game.
     AND hero IS NOT seduto
@@ -7957,7 +7955,7 @@ ADD TO EVERY SUPPORTER
       --  ELSE "You sit down on" SAY THE surface. "."
       -- END IF.
       -- MAKE hero sitting.
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -7988,7 +7986,7 @@ SYNTAX smell0 = smell.
 VERB smell0
   CHECK my_game CAN smell0
     ELSE SAY azione_bloccata OF my_game.
-     DOES
+  DOES
     "You smell nothing unusual."
 END VERB.
 
@@ -8005,7 +8003,7 @@ END VERB.
 
 SYNTAX smell = smell (odore)
   WHERE odore ISA THING
-      ELSE
+    ELSE
       IF odore IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
@@ -8013,12 +8011,12 @@ SYNTAX smell = smell (odore)
 
 
 ADD TO EVERY THING
-    VERB smell
+  VERB smell
     CHECK my_game CAN smell
       ELSE SAY azione_bloccata OF my_game.
     DOES
-          "You smell nothing unusual."
-    END VERB.
+      "You smell nothing unusual."
+  END VERB.
 END ADD TO.
 
 
@@ -8034,7 +8032,7 @@ END ADD TO.
 
 SYNTAX squeeze = squeeze (ogg)
   WHERE ogg ISA OBJECT
-      ELSE
+    ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
@@ -8042,7 +8040,7 @@ SYNTAX squeeze = squeeze (ogg)
 
 
 ADD TO EVERY THING
-    VERB squeeze
+  VERB squeeze
     CHECK my_game CAN squeeze
       ELSE SAY azione_bloccata OF my_game.
     AND ogg IS esaminabile
@@ -8234,7 +8232,7 @@ ADD TO EVERY OBJECT
       END IF.
 
       "something you can swim in."
-END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -8342,8 +8340,8 @@ END VERB.
 
 
 SYNTAX talk_to = talk 'to' (png)
-      WHERE png ISA ACTOR
-        ELSE
+  WHERE png ISA ACTOR
+    ELSE
       IF png IS NOT plurale
         THEN SAY illegal_parameter_to_sg OF my_game.
         ELSE SAY illegal_parameter_to_pl OF my_game.
@@ -8351,13 +8349,13 @@ SYNTAX talk_to = talk 'to' (png)
 
 
 ADD TO EVERY ACTOR
-    VERB talk_to
+  VERB talk_to
     CHECK my_game CAN talk_to
       ELSE SAY azione_bloccata OF my_game.
     DOES
       "To talk to somebody, you can ASK PERSON ABOUT THING or
       TELL PERSON ABOUT THING."
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -8477,7 +8475,7 @@ ADD TO EVERY OBJECT
         END IF.
     DOES
       "Trying to $v" SAY THE ogg. "would be futile."
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -8491,14 +8489,14 @@ END ADD TO.
 
 
 SYNTAX tell = tell (png) about (argomento)!
-      WHERE png ISA ACTOR
+  WHERE png ISA ACTOR
     ELSE
       IF png IS NOT plurale
             THEN SAY illegal_parameter_talk_sg OF my_game.
         ELSE SAY illegal_parameter_talk_pl OF my_game.
       END IF.
-      AND argomento ISA THING
-        ELSE
+  AND argomento ISA THING
+    ELSE
       IF argomento IS NOT plurale
         THEN SAY illegal_parameter_about_sg OF my_game.
         ELSE SAY illegal_parameter_about_pl OF my_game.
@@ -8510,7 +8508,7 @@ SYNONYMS enlighten, inform = tell.
 
 ADD TO EVERY ACTOR
   VERB tell
-        WHEN png
+    WHEN png
       CHECK my_game CAN tell
         ELSE SAY azione_bloccata OF my_game.
       AND png <> hero
@@ -8527,7 +8525,7 @@ ADD TO EVERY ACTOR
             THEN SAY check_obj_not_distant_sg OF my_game.
             ELSE SAY check_obj_not_distant_pl OF my_game.
           END IF.
-          DOES
+      DOES
         SAY THE png.
 
         IF png IS NOT plurale
@@ -8590,7 +8588,7 @@ ADD TO EVERY THING
       ELSE SAY azione_bloccata OF my_game.
     DOES
       "Nothing helpful comes to your mind."
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -8611,7 +8609,7 @@ SYNTAX throw = throw (proiettile)
 
 
 ADD TO EVERY OBJECT
-    VERB throw
+  VERB throw
     CHECK my_game CAN throw
       ELSE SAY azione_bloccata OF my_game.
     AND proiettile IS esaminabile
@@ -8683,35 +8681,35 @@ SYNTAX throw_at = throw (proiettile) 'at' (bersaglio)
   WHERE proiettile ISA OBJECT
     ELSE SAY illegal_parameter_obj OF my_game.
   AND bersaglio ISA THING
-        ELSE SAY illegal_parameter_at OF my_game.
+    ELSE SAY illegal_parameter_at OF my_game.
 
 
 
 ADD TO EVERY OBJECT
   VERB throw_at
-        WHEN proiettile
+    WHEN proiettile
       CHECK my_game CAN throw_at
         ELSE SAY azione_bloccata OF my_game.
-          AND proiettile IS esaminabile
+      AND proiettile IS esaminabile
         ELSE
           IF proiettile IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF my_game. "lanciare."
-          ELSE SAY ogg1_inadatto_pl OF my_game. "lanciare."
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY ogg1_inadatto_sg OF my_game. "lanciare."
+            ELSE SAY ogg1_inadatto_pl OF my_game. "lanciare."
           END IF.
-          AND proiettile IS prendibile
-          ELSE SAY check_obj_takeable OF my_game.
-          AND bersaglio IS esaminabile
-          ELSE SAY check_obj_suitable_at OF my_game.
-          AND proiettile <> bersaglio
+      AND proiettile IS prendibile
+        ELSE SAY check_obj_takeable OF my_game.
+      AND bersaglio IS esaminabile
+        ELSE SAY check_obj_suitable_at OF my_game.
+      AND proiettile <> bersaglio
         ELSE SAY check_obj_not_obj2_at OF my_game.
-          AND bersaglio NOT IN hero
-              ELSE SAY check_obj2_not_in_hero1 OF my_game.
-          AND bersaglio <> hero
-          ELSE SAY check_obj2_not_hero1 OF my_game.
-          AND CURRENT LOCATION IS lit
+      AND bersaglio NOT IN hero
+        ELSE SAY check_obj2_not_in_hero1 OF my_game.
+      AND bersaglio <> hero
+        ELSE SAY check_obj2_not_hero1 OF my_game.
+      AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-          AND proiettile IS raggiungibile AND proiettile IS NOT distante
+      AND proiettile IS raggiungibile AND proiettile IS NOT distante
         ELSE
           IF proiettile IS NOT raggiungibile
             THEN
@@ -8733,7 +8731,7 @@ ADD TO EVERY OBJECT
             THEN SAY check_obj2_not_distant_sg OF my_game.
             ELSE SAY check_obj2_not_distant_pl OF my_game.
           END IF.
-          DOES
+      DOES
         -- implicit taking:
         IF proiettile NOT DIRECTLY IN hero
           THEN LOCATE proiettile IN hero.
@@ -8795,7 +8793,7 @@ END ADD TO.
 
 
 SYNTAX throw_to = throw (proiettile) 'to' (ricevente)
-      WHERE proiettile ISA OBJECT
+    WHERE proiettile ISA OBJECT
       ELSE SAY illegal_parameter_obj OF my_game.
     AND ricevente ISA ACTOR
       ELSE SAY illegal_parameter2_there OF my_game.
@@ -8803,29 +8801,29 @@ SYNTAX throw_to = throw (proiettile) 'to' (ricevente)
 
 ADD TO EVERY OBJECT
   VERB throw_to
-        WHEN proiettile
+    WHEN proiettile
       CHECK my_game CAN throw_to
         ELSE SAY azione_bloccata OF my_game.
-          AND proiettile IS esaminabile
+      AND proiettile IS esaminabile
         ELSE
           IF proiettile IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF my_game. "lanciare."
-          ELSE SAY ogg1_inadatto_pl OF my_game. "lanciare."
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY ogg1_inadatto_sg OF my_game. "lanciare."
+            ELSE SAY ogg1_inadatto_pl OF my_game. "lanciare."
           END IF.
-          AND proiettile IS prendibile
-          ELSE SAY check_obj_takeable OF my_game.
-          AND ricevente IS esaminabile
-          ELSE SAY check_obj_suitable_at OF my_game.
-          AND proiettile <> ricevente
+      AND proiettile IS prendibile
+        ELSE SAY check_obj_takeable OF my_game.
+      AND ricevente IS esaminabile
+        ELSE SAY check_obj_suitable_at OF my_game.
+      AND proiettile <> ricevente
         ELSE SAY check_obj_not_obj2_to OF my_game.
-          AND ricevente NOT IN hero
-              ELSE SAY check_obj2_not_in_hero1 OF my_game.
-          AND ricevente <> hero
-          ELSE SAY check_obj2_not_hero1 OF my_game.
-          AND CURRENT LOCATION IS lit
+      AND ricevente NOT IN hero
+        ELSE SAY check_obj2_not_in_hero1 OF my_game.
+      AND ricevente <> hero
+        ELSE SAY check_obj2_not_hero1 OF my_game.
+      AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
-          AND proiettile IS raggiungibile AND proiettile IS NOT distante
+      AND proiettile IS raggiungibile AND proiettile IS NOT distante
         ELSE
           IF proiettile IS NOT raggiungibile
             THEN
@@ -8840,13 +8838,13 @@ ADD TO EVERY OBJECT
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
           END IF.
-          AND ricevente IS NOT distante
-          ELSE
+      AND ricevente IS NOT distante
+        ELSE
           IF ricevente IS NOT plurale
             THEN SAY check_obj2_not_distant_sg OF my_game.
             ELSE SAY check_obj2_not_distant_pl OF my_game.
           END IF.
-          DOES
+      DOES
         -- implicit taking:
         IF proiettile NOT DIRECTLY IN hero
           THEN LOCATE proiettile IN hero.
@@ -8873,48 +8871,48 @@ END ADD TO.
 
 SYNTAX throw_in = throw (proiettile) 'in' (cont)
   WHERE proiettile ISA OBJECT
-      ELSE SAY illegal_parameter_obj OF my_game.
+    ELSE SAY illegal_parameter_obj OF my_game.
   AND cont ISA OBJECT
-      ELSE
+    ELSE
       IF cont ISA ACTOR
         THEN SAY illegal_parameter_act OF my_game.
         ELSE SAY illegal_parameter2_there OF my_game.
       END IF.
   AND cont ISA CONTAINER
-        ELSE SAY illegal_parameter2_there OF my_game.
+    ELSE SAY illegal_parameter2_there OF my_game.
 
 
 ADD TO EVERY OBJECT
   VERB throw_in
-        WHEN proiettile
+    WHEN proiettile
       CHECK my_game CAN throw_in
         ELSE SAY azione_bloccata OF my_game.
-              AND proiettile IS esaminabile
-          ELSE
+      AND proiettile IS esaminabile
+        ELSE
           IF proiettile IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
             THEN SAY ogg1_inadatto_sg OF my_game. "lanciare."
             ELSE SAY ogg1_inadatto_pl OF my_game. "lanciare."
           END IF.
-          AND proiettile IS prendibile
+      AND proiettile IS prendibile
           ELSE SAY check_obj_takeable OF my_game.
-          AND cont IS esaminabile
+      AND cont IS esaminabile
           ELSE SAY check_obj2_suitable_there OF my_game.
-          AND proiettile <> cont
+      AND proiettile <> cont
         ELSE SAY check_obj_not_obj2_in OF my_game.
-          AND cont <> hero
-              ELSE SAY check_obj2_not_hero1 OF my_game.
+      AND cont <> hero
+        ELSE SAY check_obj2_not_hero1 OF my_game.
       AND cont NOT IN hero
         ELSE SAY check_obj2_not_in_hero1 OF my_game.
-          AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS lit
           ELSE SAY check_locazione_illuminata OF my_game.
-          AND proiettile NOT IN cont
-          ELSE
+      AND proiettile NOT IN cont
+        ELSE
           IF proiettile IS NOT plurale
             THEN SAY check_obj_not_in_cont_sg OF my_game.
             ELSE SAY check_obj_not_in_cont_pl OF my_game.
           END IF.
-          AND proiettile IS raggiungibile AND proiettile IS NOT distante
+      AND proiettile IS raggiungibile AND proiettile IS NOT distante
         ELSE
           IF proiettile IS NOT raggiungibile
             THEN
@@ -8929,8 +8927,8 @@ ADD TO EVERY OBJECT
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
           END IF.
-          AND cont IS NOT distante
-          ELSE
+      AND cont IS NOT distante
+        ELSE
           IF cont IS NOT plurale
             THEN SAY check_obj2_not_distant_sg OF my_game.
             ELSE SAY check_obj2_not_distant_pl OF my_game.
@@ -8941,13 +8939,13 @@ ADD TO EVERY OBJECT
             THEN SAY check_obj_allowed_in_sg OF my_game.
             ELSE SAY check_obj_allowed_in_pl OF my_game.
           END IF.
-          AND cont IS aperto
-          ELSE
+      AND cont IS aperto
+        ELSE
           IF cont IS NOT plurale
             THEN SAY check_obj2_open_sg OF my_game.
             ELSE SAY check_obj2_open_pl OF my_game.
           END IF.
-          DOES
+      DOES
         -- implicit taking:
         IF proiettile NOT DIRECTLY IN hero
           THEN LOCATE proiettile IN hero.
@@ -9029,18 +9027,18 @@ ADD TO EVERY THING
       CHECK my_game CAN tie_to
         ELSE SAY azione_bloccata OF my_game.
       AND ogg IS esaminabile
-          ELSE
+        ELSE
           IF ogg IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
             THEN SAY ogg1_inadatto_sg OF my_game. "legare."
             ELSE SAY ogg1_inadatto_pl OF my_game. "legare."
           END IF.
       AND bersaglio IS esaminabile
-          ELSE SAY check_obj2_suitable_there OF my_game.
+        ELSE SAY check_obj2_suitable_there OF my_game.
       AND ogg <> bersaglio
         ELSE SAY check_obj_not_obj2_to OF my_game.
       AND ogg IS prendibile
-          ELSE SAY check_obj_takeable OF my_game.
+        ELSE SAY check_obj_takeable OF my_game.
       AND CURRENT LOCATION IS lit
         ELSE SAY check_locazione_illuminata OF my_game.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -9099,7 +9097,7 @@ END ADD TO.
 
 SYNTAX touch = touch (ogg)
   WHERE ogg ISA THING
-      ELSE
+    ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
@@ -9112,7 +9110,7 @@ SYNONYMS feel = touch.
 ADD TO EVERY THING
   VERB touch
     CHECK my_game CAN touch
-        ELSE SAY azione_bloccata OF my_game.
+      ELSE SAY azione_bloccata OF my_game.
         AND ogg IS esaminabile
               ELSE
         IF ogg IS NOT plurale
@@ -9122,7 +9120,7 @@ ADD TO EVERY THING
         END IF.
     AND CURRENT LOCATION IS lit
       ELSE SAY check_locazione_illuminata OF my_game.
-      AND ogg IS raggiungibile AND ogg IS NOT distante
+    AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
@@ -9138,10 +9136,10 @@ ADD TO EVERY THING
             END IF.
         END IF.
       AND ogg <> hero
-      ELSE SAY check_obj_not_hero3 OF my_game.
+        ELSE SAY check_obj_not_hero3 OF my_game.
       AND ogg IS inanimato
-      ELSE SAY check_obj_inanimate2 OF my_game. "."
-          DOES
+        ELSE SAY check_obj_inanimate2 OF my_game. "."
+      DOES
           "You feel nothing unexpected."
   END VERB.
 END ADD TO.
@@ -9158,13 +9156,13 @@ END ADD TO.
 
 SYNTAX touch_with = touch (ogg) 'with' (strum)
   WHERE ogg ISA THING
-      ELSE
+    ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
   AND strum ISA OBJECT
-        ELSE
+    ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter2_with_sg OF my_game.
         ELSE SAY illegal_parameter2_with_pl OF my_game.
@@ -9176,30 +9174,30 @@ ADD TO EVERY THING
     WHEN ogg
       CHECK my_game CAN touch_with
         ELSE SAY azione_bloccata OF my_game.
-          AND ogg IS esaminabile
+      AND ogg IS esaminabile
               ELSE
           IF ogg IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
             THEN SAY ogg1_inadatto_sg OF my_game. "toccare."
             ELSE SAY ogg1_inadatto_pl OF my_game. "toccare."
           END IF.
-          AND strum IS esaminabile
-          ELSE
+      AND strum IS esaminabile
+        ELSE
           IF strum IS NOT plurale
             THEN SAY check_obj2_suitable_with_sg OF my_game.
             ELSE SAY check_obj2_suitable_with_pl OF my_game.
         END IF.
-          AND ogg <> strum
+      AND ogg <> strum
         ELSE SAY check_obj_not_obj2_with OF my_game.
           AND strum <> hero
         ELSE SAY check_obj2_not_hero1 OF my_game.
-          AND strum IN hero
-          ELSE SAY check_obj2_in_hero OF my_game.
-          AND ogg IS inanimato
-          ELSE SAY check_obj_inanimate2 OF my_game.
-          AND CURRENT LOCATION IS lit
-          ELSE SAY check_locazione_illuminata OF my_game.
-          AND ogg IS raggiungibile AND ogg IS NOT distante
+      AND strum IN hero
+        ELSE SAY check_obj2_in_hero OF my_game.
+      AND ogg IS inanimato
+        ELSE SAY check_obj_inanimate2 OF my_game.
+      AND CURRENT LOCATION IS lit
+        ELSE SAY check_locazione_illuminata OF my_game.
+      AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
             THEN
@@ -9214,9 +9212,9 @@ ADD TO EVERY THING
                 ELSE SAY check_obj_not_distant_pl OF my_game.
               END IF.
           END IF.
-          DOES
-              "You touch" SAY THE ogg. "with" SAY THE strum. ". Nothing special happens."
-    END VERB.
+      DOES
+        "You touch" SAY THE ogg. "with" SAY THE strum. ". Nothing special happens."
+  END VERB.
 END ADD TO.
 
 
@@ -9237,17 +9235,17 @@ SYNTAX turn = turn (ogg)
         THEN
           "The verb '$v' is not in your vocabulary."
         ELSE
-      IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF my_game.
-        ELSE SAY illegal_parameter_pl OF my_game.
-      END IF.
+          IF ogg IS NOT plurale
+            THEN SAY illegal_parameter_sg OF my_game.
+            ELSE SAY illegal_parameter_pl OF my_game.
+          END IF.
       END IF.
 
 
 
 
 ADD TO EVERY OBJECT
-    VERB turn
+  VERB turn
     CHECK my_game CAN turn
       ELSE SAY azione_bloccata OF my_game.
     AND ogg IS esaminabile
@@ -9331,7 +9329,7 @@ SYNTAX  turn_on = turn 'on' (disp)
 
 ADD TO EVERY OBJECT
   VERB turn_on
-      CHECK my_game CAN turn_on
+    CHECK my_game CAN turn_on
       ELSE SAY azione_bloccata OF my_game.
     DOES
       IF disp IS NOT plurale
@@ -9340,7 +9338,7 @@ ADD TO EVERY OBJECT
       END IF.
 
       "something you can $v on."
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -9393,7 +9391,7 @@ ADD TO EVERY OBJECT
       END IF.
 
       "something you can $v off."
-    END VERB.
+  END VERB.
 END ADD TO.
 
 
@@ -9443,6 +9441,7 @@ SYNTAX wear = wear (ogg)
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
+
    wear = put 'on' (ogg).
    wear = put (ogg) 'on'.
    wear = don (ogg).

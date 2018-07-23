@@ -11,7 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/07/24](#20180724)
+- [2018/07/24 \(2\)](#20180724-2)
+- [2018/07/24 \(1\)](#20180724-1)
     - [Who/Where Verbs](#whowhere-verbs)
 - [2018/07/23 \(5\)](#20180723-5)
 - [2018/07/23 \(4\)](#20180723-4)
@@ -134,8 +135,16 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/07/24
+# 2018/07/24 (2)
 
+- [`lib_verbi.i`][lib_verbi] (v0.2.41)
+
+Just some code cleanup.
+
+<!---------------------------------------------------------------------------->
+
+
+# 2018/07/24 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.37)
 - [`lib_verbi.i`][lib_verbi] (v0.2.40)
