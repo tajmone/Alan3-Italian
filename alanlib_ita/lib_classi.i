@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.2.17 (2018/07/23)
+-- "lib_classi.i" v0.3.0 (2018/07/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -192,7 +192,7 @@ END ADD.
 --+---------+------------------------------------------------------------------.
 --| Di default un'arma non può essere sparata (p.es., un coltello, una mazza), |
 --| ma settando l'attributo 'CAN sparare' si avrà un'arma da fuoco che sarà    |
---| utilizzabile con il verbo "spara". 
+--| utilizzabile con il verbo "spara".
 --+----------------------------------------------------------------------------+
 --| ATTRIBUTI PREDEFINITI: |                                                   |
 --|                        |                                                   |
@@ -272,7 +272,7 @@ END ADD.
 
 --==============================================================================
 --------------------------------------------------------------------------------
--- § 1.1 - Vestiario 
+-- § 1.1 - Vestiario
 --------------------------------------------------------------------------------
 --==============================================================================
 
@@ -307,7 +307,7 @@ END ADD.
 -- This container is only used internally in the library; ignore.
 
 
-THE worn ISA ENTITY
+THE worn IsA ENTITY
   CONTAINER TAKING CLOTHING.
     HEADER SAY hero_worn_header OF my_game.
     ELSE SAY hero_worn_else OF my_game.
@@ -323,7 +323,7 @@ END THE.
 -------------------------------------------------------------------
 
 
-EVERY clothing ISA OBJECT
+EVERY clothing IsA OBJECT
 
   IS indossabile.
 
@@ -349,7 +349,7 @@ EVERY clothing ISA OBJECT
       THEN INCLUDE THIS IN wearing OF hero.
     END IF.
 
-    FOR EACH ac ISA ACTOR
+    FOR EACH ac IsA ACTOR
       DO
         IF ac = hero
           THEN
@@ -376,7 +376,7 @@ EVERY clothing ISA OBJECT
     -- will be allowed back in the piece of clothing once taken from there:
 
 
-    FOR EACH o ISA OBJECT, DIRECTLY IN THIS
+    FOR EACH o IsA OBJECT, DIRECTLY IN THIS
       DO
         INCLUDE o IN consentiti OF THIS.
     END FOR.
@@ -403,7 +403,7 @@ EVERY clothing ISA OBJECT
     DOES AFTER
       IF THIS IS NOT OPAQUE
         THEN
-          IF COUNT ISA OBJECT, DIRECTLY IN THIS > 0
+          IF COUNT IsA OBJECT, DIRECTLY IN THIS > 0
             THEN LIST THIS.
           END IF.
       END IF.
@@ -723,7 +723,7 @@ END ADD TO.
 -- A container used to provide a temporary storage space - ignore!
 --------------------------------------------------------------------
 
-THE tempworn ISA OBJECT
+THE tempworn IsA OBJECT
   CONTAINER TAKING CLOTHING.
   HEADER "You're already wearing"
 END THE tempworn.
@@ -736,9 +736,9 @@ END THE tempworn.
 
 
 EVENT worn_clothing_check
-   FOR EACH ac ISA ACTOR
+   FOR EACH ac IsA ACTOR
   DO
-    FOR EACH cl ISA CLOTHING, IN wearing OF ac
+    FOR EACH cl IsA CLOTHING, IN wearing OF ac
       DO
         IF ac = hero
           THEN
@@ -773,38 +773,38 @@ END EVENT.
 -- something similar to the following four examples:
 
 
--- THE jacket ISA CLOTHING AT lobby
+-- THE jacket IsA CLOTHING AT lobby
 --   IS topcover 32.
 -- END THE.
 
 
 -- use IN to refer to containers:
 
--- THE jeans ISA CLOTHING IN wardrobe
+-- THE jeans IsA CLOTHING IN wardrobe
 --   IS botcover 16.
 -- END THE.
 
 
 -- IN worn = worn by the player character (hero):
 
--- THE hat ISA CLOTHING IN hero   -- declaring the initial location is optional
+-- THE hat IsA CLOTHING IN hero   -- declaring the initial location is optional
 --   IS headcover 2.
 -- END THE.
 
--- THE hero ISA ACTOR
+-- THE hero IsA ACTOR
 --   IS wearing {hat}.
 -- END THE hero.
 
 
 -- worn by an NPC called Joe:
 
--- THE sweater ISA CLOTHING IN joe    -- declaring the initial location is optional
+-- THE sweater IsA CLOTHING IN joe    -- declaring the initial location is optional
   -- Don't declare clothing attributes for NPCs (unless the hero is meant to take
   -- and wear the NPC's clothing).
   -- NPCs cannot wear clothing in layers!
 -- END THE.
 
--- THE joe ISA ACTOR AT room1
+-- THE joe IsA ACTOR AT room1
 --   IS wearing {sweater}.
 -- END THE joe.
 
@@ -816,7 +816,7 @@ END EVENT.
 
 -- In defining a piece of clothing, you should
 --
---  1) define it ISA CLOTHING (and not: ISA OBJECT)
+--  1) define it IsA CLOTHING (and not: IsA OBJECT)
 --
 --  2) give it one of five attributes 'headcover', 'topcover', botcover', 'footcover'
 --  or 'handcover'; sometimes two of these are needed.
@@ -831,11 +831,11 @@ END EVENT.
 -- the attribute 'IS wearing', followed by the piece(s) of clothing in curly brackets,
 -- is needed at the respective actor instance:
 
--- THE hero ISA ACTOR
+-- THE hero IsA ACTOR
 --   IS wearing {jeans, shirt, flipflops}.
 -- END THE hero.
 
--- THE jill ISA ACTOR
+-- THE jill IsA ACTOR
 --   IS wearing {dress}.
 -- END THE jill.
 
@@ -895,7 +895,7 @@ END EVENT.
 -- (This class is not cross-referenced elsewhere in this or any other library file.)
 
 
-EVERY dispositivo ISA OBJECT
+EVERY dispositivo IsA OBJECT
 
 
   VERB esamina
@@ -1022,7 +1022,7 @@ END EVERY.
 -- (This class is not cross-referenced elsewhere in this or any other library file.)
 
 
-EVERY porta ISA OBJECT
+EVERY porta IsA OBJECT
   IS apribile.
   IS NOT aperto.
   IS NOT bloccabile.
@@ -1090,12 +1090,12 @@ EVERY porta ISA OBJECT
   -- which object will unlock it, with the matching_key attribute.
     -- for example
 
-    -- THE attic_door ISA DOOR
+    -- THE attic_door IsA DOOR
     --   HAS matching_key brass_key.
     --   ...
     -- END THE.
 
-    -- THE brass_key ISA OBJECT AT basement
+    -- THE brass_key IsA OBJECT AT basement
     -- END THE.
 
   -- (null_key is a default dummy object that can be ignored.)
@@ -1208,7 +1208,7 @@ END EVERY.
 
 -- a default dummy, ignore:
 
-THE porta_fittizia ISA porta
+THE porta_fittizia IsA porta
 END THE.
 
 
@@ -1222,12 +1222,12 @@ END THE.
 -- =============================================================
 
 
--- (In the file 'lib_verbi.i', ISA LIGHTSOURCE is used in the syntax definition of the verb 'light'.
+-- (In the file 'lib_verbi.i', IsA LIGHTSOURCE is used in the syntax definition of the verb 'light'.
 -- Also, in 'lib_luoghi.i', LIGHTSOURCE is used in defining the behavior of the class DARK_LOCATION.)
 
 
 
-EVERY lightsource ISA OBJECT
+EVERY lightsource IsA OBJECT
   IS NOT lit.
   IS naturale. -- A natural lightsource is for example a candle, a match or a torch.
                -- A NOT natural lightsource is for example a flashlight or a lamp.
@@ -1387,10 +1387,10 @@ END EVERY.
 -- ==============================================================
 
 
--- (In the file 'lib_verbi.i', ISA liquid is used in the syntax definitions of the verbs 'drink' and 'sip'.)
+-- (In the file 'lib_verbi.i', IsA liquid is used in the syntax definitions of the verbs 'drink' and 'sip'.)
 
 
-EVERY liquido ISA OBJECT
+EVERY liquido IsA OBJECT
 
   CONTAINER
     HEADER "In" SAY THE THIS. "you see"
@@ -1420,9 +1420,9 @@ EVERY liquido ISA OBJECT
   -- Every object found in a liquid, for example a fish in a pond of water,
   -- will be allowed back in that liquid once taken out of there:
 
-    FOR EACH liq ISA liquido
+    FOR EACH liq IsA liquido
       DO
-        FOR EACH o ISA OBJECT, DIRECTLY IN liq
+        FOR EACH o IsA OBJECT, DIRECTLY IN liq
           DO
             INCLUDE o IN consentiti OF liq.
         END FOR.
@@ -1432,9 +1432,9 @@ EVERY liquido ISA OBJECT
   -- Every liquid in a container at the start of the game
   -- will have that container as its vessel:
 
-    FOR EACH lc ISA LISTED_CONTAINER
+    FOR EACH lc IsA LISTED_CONTAINER
       DO
-        FOR EACH lq ISA liquido, DIRECTLY IN lc
+        FOR EACH lq IsA liquido, DIRECTLY IN lc
           DO
             SET recipiente OF lq TO lc.
         END FOR.
@@ -1444,7 +1444,7 @@ EVERY liquido ISA OBJECT
   -- If you have some liquid in a container in your game, you should declare the
   -- liquid instance thus:
 
-  -- THE juice ISA liquid
+  -- THE juice IsA liquid
   --      IN bottle
   -- END THE juice.
 
@@ -1662,7 +1662,7 @@ EVERY liquido ISA OBJECT
               THEN LOCATE THIS AT hero.
                 "You pour" SAY THE THIS. "on" SAY THE superficie. "."
                 SET recipiente OF THIS TO recipiente_fittizio.
-            ELSIF superficie ISA SUPPORTER
+            ELSIF superficie IsA SUPPORTER
               THEN LOCATE THIS IN superficie.
                 "You pour" SAY THE THIS. "on" SAY THE superficie. "."
                   SET recipiente OF THIS TO recipiente_fittizio.
@@ -1783,7 +1783,7 @@ END EVERY.
 -- 'null_vessel', it means that the liquid is not in any container; ignore.
 
 
-THE recipiente_fittizio ISA OBJECT
+THE recipiente_fittizio IsA OBJECT
   CONTAINER
 END THE.
 
@@ -1794,7 +1794,7 @@ END THE.
 
 
 EVENT check_vessel
-  FOR EACH liq ISA liquido, DIRECTLY AT CURRENT LOCATION DO
+  FOR EACH liq IsA liquido, DIRECTLY AT CURRENT LOCATION DO
       SET recipiente OF liq TO recipiente_fittizio.
   END FOR.
   SCHEDULE check_vessel AFTER 1.
@@ -1815,7 +1815,7 @@ END EVENT.
 -- (This class is not cross-referenced elsewhere in this or any other library file.)
 
 
-EVERY LISTED_CONTAINER ISA OBJECT
+EVERY LISTED_CONTAINER IsA OBJECT
   CONTAINER
 
     --  (ACTORS are separately defined to be containers further below.)
@@ -1824,9 +1824,9 @@ EVERY LISTED_CONTAINER ISA OBJECT
 
   -- Every object in a container will be allowed back in that container by default if it's taken out:
 
-    FOR EACH lc ISA LISTED_CONTAINER
+    FOR EACH lc IsA LISTED_CONTAINER
       DO
-        FOR EACH o ISA OBJECT, DIRECTLY IN lc
+        FOR EACH o IsA OBJECT, DIRECTLY IN lc
           DO
             INCLUDE o IN consentiti OF lc.
         END FOR.
@@ -1868,7 +1868,7 @@ EVERY LISTED_CONTAINER ISA OBJECT
 -- ==============================
 -- Il comportamento predefinito della libreria per un LISTED_CONTAINER è che sia
 -- opaco (OPAQUE) quando è chiuso, e NOT OPAQUE quando è aperto; questo affinché
--- i suoi contenuti diventino visibili (nella descrizione). 
+-- i suoi contenuti diventino visibili (nella descrizione).
 -- I verbi che comportano l'apertura e la chiusura di un LISTED_CONTAINER devono
 -- assicurarsi di manipolarne lo stato di opacità di conseguenza. A tal fine qui
 -- di seguito vengono definiti sulla classe LISTED_CONTAINER tali verbi, che
@@ -1910,7 +1910,7 @@ EVERY LISTED_CONTAINER ISA OBJECT
       END IF.
   END VERB.
 
-  
+
   VERB chiudi, blocca
     DOES
       IF THIS IS NOT aperto --> verifica che sia davvero chiuso!
@@ -1957,7 +1957,7 @@ END EVERY.
 -- (This class is not cross-referenced in this or any other library file.)
 
 
-EVERY suono ISA OBJECT
+EVERY suono IsA OBJECT
   IS NOT esaminabile.
   IS NOT prendibile.
   IS NOT raggiungibile.
@@ -1992,7 +1992,7 @@ END EVERY.
 -- or verb definitions.)
 
 
-EVERY supporter ISA OBJECT
+EVERY supporter IsA OBJECT
 
 
   CONTAINER
@@ -2066,7 +2066,7 @@ END EVERY.
 -- either in the syntax definitions or verb checks.)
 
 
-EVERY arma ISA OBJECT
+EVERY arma IsA OBJECT
   CAN NOT sparare.
 END EVERY.
 
@@ -2089,7 +2089,7 @@ END EVERY.
 -- When examined, a window is by default described as being either open or closed.
 
 
-EVERY finestra ISA OBJECT
+EVERY finestra IsA OBJECT
   IS apribile.
   IS NOT aperto.
   IS NOT prendibile.
@@ -2214,7 +2214,7 @@ ADD TO EVERY ACTOR
           = "i"   THEN   "i"                --> mp det.
           = "gli" THEN   "gli"              --> mp det.
           = "le"  THEN   "le"               --> fp det.
-          
+
           ELSE -- se non è definito
             IF THIS IS NOT femminile
             THEN
@@ -2251,13 +2251,13 @@ ADD TO EVERY ACTOR
           = "il"  THEN   "un"               --> ms indet.
           = "lo"  THEN   "uno"              --> ms indet.
           = "la"  THEN   "una"              --> fs indet.
-             
+
           = "l'"  THEN
             IF THIS IS NOT femminile
                   THEN   "un"               --> ms indet.
                   ELSE   "un'$$"            --> fs indet.
             END IF.
-          
+
           = "i"   THEN   "dei"              --> mp indet.
           = "gli" THEN   "degli"            --> mp indet.
           = "le"  THEN   "delle"            --> fp indet.
@@ -2407,7 +2407,7 @@ END ADD TO.
 
 -- the default dummy clothing object; ignore
 
-THE indumento_fittizio ISA CLOTHING
+THE indumento_fittizio IsA CLOTHING
 END THE.
 
 
@@ -2423,7 +2423,7 @@ END THE.
 -- ================================================================
 
 
-EVERY persona ISA ACTOR
+EVERY persona IsA ACTOR
   CAN parlare.
 
   CONTAINER
@@ -2473,14 +2473,14 @@ END EVERY.
 -- have the ability to talk.
 
 
-EVERY female ISA persona
+EVERY female IsA persona
   PRONOUN her
   HAS articolo "la".
-  
+
 END EVERY.
 
 
-EVERY male ISA persona
+EVERY male IsA persona
   PRONOUN him
   HAS articolo "il".
 END EVERY.

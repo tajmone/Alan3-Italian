@@ -1,4 +1,4 @@
--- "lib_messaggi.i" v0.2.4 (2018/07/24)
+-- "lib_messaggi.i" v0.3.0 (2018/07/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -32,7 +32,7 @@ MESSAGE
   --@@ NO_WAY: i7: "Non puoi andare da quella parte."
   --==============================================================================
   -- PROBLEMI NEL PARSING DEI COMANDI
-  --============================================================================== 
+  --==============================================================================
   AFTER_BUT:      "Devi specificare almeno un oggetto dopo '$1'."
   BUT_ALL:        "Puoi usare '$1' solo DOPO '$2'."
   MULTIPLE:       "Non puoi usare più di un oggetto con '$v'."
@@ -48,7 +48,7 @@ MESSAGE
   WHICH_START:    "Non mi è chiaro se intendi dire $+1"
   WHICH_COMMA:    ", $+1"
   WHICH_OR:       "o $+1."
-  
+
   -- Disambiguazione pronomi:
   -- ========================
   WHICH_PRONOUN_START: "Non mi è chiaro se con '$1'"
@@ -89,9 +89,9 @@ MESSAGE
 
   AGAIN: "" --> Messaggio da mostrare accanto al nome di luoghi già visistati.
             --  Es. "(già visitato)"
-  
+
   CAN_NOT_CONTAIN: "$+1 non può contenere $+2." -- "$+1 can not contain $+2."
-  
+
 
 --==============================================================================
 -- ERRORI DI INSERIMENTO IN CONTENITORI
@@ -140,7 +140,7 @@ MESSAGE
       ELSE "$+1 contengono" -- "contain"
     END IF.
   CONTAINS_COMMA: "$01"
-    IF parameter1 ISA CLOTHING
+    IF parameter1 IsA CLOTHING
       THEN
         -- the following snippet adds "(being worn)" after all
         -- pieces of clothing worn by an NPC, at 'x [actor]'
@@ -155,7 +155,7 @@ MESSAGE
     "$$,"
 
   CONTAINS_AND: "$01"
-    IF parameter1 ISA CLOTHING
+    IF parameter1 IsA CLOTHING
       THEN
         -- the following snippet adds "(being worn)" after all
         -- pieces of clothing worn by an NPC, after 'x [actor]'
@@ -171,7 +171,7 @@ MESSAGE
     "e" -- "and"
 
   CONTAINS_END: "$01"
-    IF parameter1 ISA CLOTHING
+    IF parameter1 IsA CLOTHING
       THEN
         -- the following snippet adds "(being worn)" after all
         -- pieces of clothing worn by an NPC, after 'x [actor]'
@@ -185,8 +185,8 @@ MESSAGE
     END IF.
     "."
 --------------------------------------------------------------------------------
-  
-  -- 
+
+  --
   CARRIES:
     IF parameter1 IS NOT plurale
       THEN "$+1 trasporta"   -- "is carrying"
@@ -203,23 +203,51 @@ MESSAGE
       -- THEN "$+1 is empty-handed."
       -- ELSE "$+1 are empty-handed."
 
---  =========================
---# WAITING TO BE TRANSLATED:
---  =========================
+-- =========================
+-- Punteggio
+-- =========================
 
 
-  HAVE_SCORED: "You have scored $1 points out of $2."
-  IMPOSSIBLE_WITH: "That's impossible with $+1."
+  HAVE_SCORED: "Hai totalizzato $1 punti su $2 possibili."
+            -- "You have scored $1 points out of $2."
+
+  ------------------------------------------------------------------------------
+  -- If a player action is impossible with a particular parameter combination,
+  -- but might be possible otherwise, this message is shown to indicate that it
+  -- is the action with the parameter that is impossible.
+
+  IMPOSSIBLE_WITH: "È impossibile farlo con $+1."
+                -- "That's impossible with $+1."
+  ------------------------------------------------------------------------------
+  -- The default messages for empty containers.
+
   IS_EMPTY:
     IF parameter1 IS NOT plurale
-      THEN "$+1 is empty."
-      ELSE "$+1 are empty."
+      THEN "$+1 è vuot$$"
+        IF parameter1 IS NOT femminile
+          THEN "o." -- GNA = msi
+          ELSE "a." -- GNA = fsi
+        END IF.
+      ELSE "$+1 sono vuot$$"
+        IF parameter1 IS NOT femminile
+          THEN "i." -- GNA = mpi
+          ELSE "e." -- GNA = fpi
+        END IF.
     END IF.
-  MORE: "<More>"
 
-  NO_UNDO: "No further undo available."
-  UNDONE: "'$1' undone."
-  
-  
+ -- IF parameter1 IS NOT plurale
+ --   THEN "$+1 is empty."
+ --   ELSE "$+1 are empty."
+ -- END IF.
+  ------------------------------------------------------------------------------
 
--- end of file.
+  MORE: "<Continua>" -- "<More>"
+
+  NO_UNDO: "Non è possible annullare ulteriormente."
+        -- "No further undo available."
+
+  UNDONE: "'$1' annullato."
+
+
+
+---< Fine del File >---

@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/24 \(4\)](#20180724-4)
 - [2018/07/24 \(3\)](#20180724-3)
     - [Input Response Messages](#input-response-messages)
 - [2018/07/24 \(2\)](#20180724-2)
@@ -136,6 +137,30 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/24 (4)
+
+- [`libreria.i`][libreria] (v0.3.0)
+- [`lib_classi.i`][lib_classi] (v0.3.0)
+- [`lib_definizioni.i`][lib_definizioni] (v0.3.0)
+- [`lib_luoghi.i`][lib_luoghi] (v0.3.0)
+- [`lib_messaggi.i`][lib_messaggi] (v0.3.0)
+- [`lib_verbi.i`][lib_verbi] (v0.3.0)
+- [`lib_supplemento.i`][lib_supplemento] (v0.3.0)
+
+
+All run-time built-in messages are now translated.
+
+Housekeeping:
+
+- General code clean-up.
+- Add commented section headings.
+- Change all occurences of `ISA` to `IsA`.
+- Bump up all library files version to `v0.3.0`.
+
+<!---------------------------------------------------------------------------->
+
+
 
 # 2018/07/24 (3)
 

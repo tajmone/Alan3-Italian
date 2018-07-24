@@ -1,4 +1,4 @@
--- "lib_luoghi.i" v0.2.5 (2018/07/22)
+-- "lib_luoghi.i" v0.3.0 (2018/07/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -32,7 +32,7 @@
 -- ========================================================
 
 
-THE nowhere ISA LOCATION
+THE nowhere IsA LOCATION
 --@TRADOTTO: Direzioni cardinali
   EXIT
     nord,         -- north
@@ -96,7 +96,7 @@ SYNONYMS
 --
 -- for example
 --
--- THE piece_of_paper ISA OBJECT
+-- THE piece_of_paper IsA OBJECT
 -- ...
 --    VERB tear
 --    DOES ONLY "You tear the piece of paper to shreds."
@@ -120,20 +120,20 @@ SYNONYMS
 -- All ROOMS have a floor, walls and a ceiling. All SITES have a ground and a sky.
 -- Thus, you will be able to define for example
 --
--- THE kitchen ISA stanza
+-- THE kitchen IsA stanza
 --
 -- and it will automatically have a floor, walls and a ceiling,
 --
 -- or:
 --
--- THE greenmeadow ISA SITE
+-- THE greenmeadow IsA SITE
 --
 -- and the ground and the sky are automatically found in that location.
 --
 --
 -- Of course, you will still be able to define locations in the usual way, for example
 --
--- THE kitchen ISA LOCATION
+-- THE kitchen IsA LOCATION
 --
 -- etc, but the floor, walls and ceiling won't be automatically included there.
 -- The walls, floor, ceiling, ground and sky are not takeable or movable.
@@ -143,36 +143,36 @@ SYNONYMS
 -- (We make use of ALAN's nested locations feature in the following definitions: )
 
 
-THE esterno ISA LOCATION
+THE esterno IsA LOCATION
 END THE esterno.
 
 
-THE interno ISA LOCATION
+THE interno IsA LOCATION
 END THE interno.
 
 
-EVERY stanza ISA LOCATION AT interno
+EVERY stanza IsA LOCATION AT interno
   HAS desc_pavimento "".  -- if these values are left unchanged,
   HAS desc_pareti    "".  -- the descriptions of the walls, floor and
   HAS desc_soffitto  "".  -- ceiling will be the default "You notice nothing unusual
 END EVERY.                -- about the [object]."
 
 
-EVERY site ISA LOCATION AT esterno
+EVERY site IsA LOCATION AT esterno
   HAS ground_desc "".
   HAS desc_cielo  "".
 END EVERY.
 
 
-EVERY oggetto_stanza ISA OBJECT AT interno
+EVERY oggetto_stanza IsA OBJECT AT interno
 END EVERY.
 
 
-EVERY site_object ISA OBJECT AT esterno
+EVERY site_object IsA OBJECT AT esterno
 END EVERY.
 
 
-THE pavimento ISA oggetto_stanza
+THE pavimento IsA oggetto_stanza
   IS NOT prendibile.
   IS NOT spostabile.
   CONTAINER
@@ -216,7 +216,7 @@ END THE.
 
 
 
-THE pareti ISA oggetto_stanza
+THE pareti IsA oggetto_stanza
   HAS articolo "le".
   NAME pareti.
   NAME parete.
@@ -228,7 +228,7 @@ END THE.
 
 
 
-THE soffitto ISA oggetto_stanza
+THE soffitto IsA oggetto_stanza
   IS NOT prendibile.
   IS NOT raggiungibile.
   DESCRIPTION ""
@@ -236,7 +236,7 @@ END THE.
 
 
 
-THE ground ISA site_object
+THE ground IsA site_object
   IS NOT prendibile.
   IS NOT spostabile.
   CONTAINER
@@ -283,7 +283,7 @@ END THE.
 
 
 
-THE cielo ISA site_object
+THE cielo IsA site_object
   IS NOT prendibile.
   IS distante.
   DESCRIPTION ""
@@ -330,7 +330,7 @@ END ADD TO.
 -- NOTE: it is often a good idea to modify the 'examine' verb for the above objects.
 -- Here is an example for 'wall':
 
--- THE my_game ISA DEFINITION_BLOCK
+-- THE my_game IsA DEFINITION_BLOCK
 -- ...
 -- VERB examine
 --    CHECK ogg <> pareti
@@ -363,19 +363,19 @@ ADD TO EVERY LOCATION
 END ADD TO.
 
 
-EVERY luogo_buio ISA LOCATION
+EVERY luogo_buio IsA LOCATION
   IS NOT lit.
 
   ENTERED
 
-    IF COUNT ISA LIGHTSOURCE, IS lit, HERE > 0
+    IF COUNT IsA LIGHTSOURCE, IS lit, HERE > 0
       THEN MAKE THIS lit.
         IF CURRENT ACTOR <> hero
           THEN LOOK.
         END IF.
     END IF.
 
-    IF COUNT ISA LIGHTSOURCE, IS lit, HERE = 0
+    IF COUNT IsA LIGHTSOURCE, IS lit, HERE = 0
       THEN MAKE THIS NOT lit.
     END IF.
 
@@ -393,7 +393,7 @@ END EVERY luogo_buio.
 
 
 WHEN location OF hero IS NOT lit
-  AND COUNT ISA lightsource, IS lit, AT hero > 0
+  AND COUNT IsA lightsource, IS lit, AT hero > 0
 THEN MAKE location OF hero lit.
   SCHEDULE light_on AT hero AFTER 0.
 
@@ -403,9 +403,9 @@ EVENT light_on
 END EVENT.
 
 
-WHEN location OF hero ISA luogo_buio
+WHEN location OF hero IsA luogo_buio
   AND location OF hero IS lit
-  AND COUNT ISA lightsource, IS lit, AT hero = 0
+  AND COUNT IsA lightsource, IS lit, AT hero = 0
 THEN MAKE location OF hero NOT lit.
   SCHEDULE light_off AT hero AFTER 0.
 
@@ -419,9 +419,9 @@ END EVENT.
 -- lightsource with him:
 
 EVENT check_darkness
-    FOR EACH dl ISA luogo_buio, IS lit
+    FOR EACH dl IsA luogo_buio, IS lit
     DO
-      IF COUNT ISA LIGHTSOURCE, AT dl = 0
+      IF COUNT IsA LIGHTSOURCE, AT dl = 0
         THEN MAKE dl NOT lit.
       END IF.
     END FOR.
@@ -435,7 +435,7 @@ END EVENT.
 -- To define a dark location, use a formulation like the following:
 
 
--- THE basement ISA luogo_buio
+-- THE basement IsA luogo_buio
 --  EXIT up TO kitchen.
 -- ...
 -- END THE.
@@ -448,7 +448,7 @@ END EVENT.
 -- If you add a description to a dark_location, this description will be shown only
 -- if/when the location is lit by any means:
 
--- THE basement ISA luogo_buio
+-- THE basement IsA luogo_buio
 --    DESCRIPTION "Cobwebs and old junk are the only things you see here."
 --  EXIT up TO kitchen.
 -- END THE.

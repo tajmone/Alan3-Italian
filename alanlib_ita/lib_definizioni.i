@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.2.37 (2018/07/24)
+-- "lib_definizioni.i" v0.3.0 (2018/07/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -29,14 +29,14 @@
 --||  - I messaggi per il luoghi bui.
 --||  - Le risposte per le azioni bloccate.
 --||  - I messaggi per i parametri illegali nelle sintassi dei verbi.
---||  - I messaggi per i vari CHECK dei verbi. 
+--||  - I messaggi per i vari CHECK dei verbi.
 --||  - I messaggi per le azioni implicite nei verbi.
 --||  - Attributi ed eventi delle azioni bloccate.
 --||  - L'istanza del banner (per la sezione START).
 --||
 --++===========================================================================+
 
---@testo originale inglese: 
+--@testo originale inglese:
 
 -- Included in this file:
   -- general attributes
@@ -127,7 +127,7 @@ ADD TO EVERY THING
       -- altri tipi di oggetti bloccabili con chiave (p.es., scrigni del tesoro,
       -- congegni con chiave a tessera magnetica, ecc.).
       -- La 'chiave_fittizia' è solo un segnaposto per poter creare l'attributo
-      -- e inizializzarne la tipologia (ossia, riferimento ad un'istanza). 
+      -- e inizializzarne la tipologia (ossia, riferimento ad un'istanza).
 
   HAS testo "".
 
@@ -141,15 +141,15 @@ ADD TO EVERY THING
       -- La risposta predefinita per oggetti/attori distanti è:
       --    "La [cosa] è troppo lontana."
 
-  NOT potabile.
-  NOT commestibile.
-  NOT bloccabile.
-  NOT bloccato.
   NOT acceso.
   NOT apribile.
+  NOT bloccabile.
+  NOT bloccato.
+  NOT commestibile.
   NOT leggibile.
+  NOT potabile.
   NOT scenario.
-      -- Un oggetto 'scenario' risponderà diversamente ai verbi 'esamina' e 
+      -- Un oggetto 'scenario' risponderà diversamente ai verbi 'esamina' e
       -- 'prendi' (ossia, informando il giocatore che l'oggetto non è importante
       -- ai fini del gioco). A parte questo, si comporta come un normale oggeto.
 
@@ -162,9 +162,15 @@ ADD TO EVERY THING
         -- Non può essere usato come arma da fuoco (verbo 'spara').
 
 
-  -- ==================================
-  -- @ARTICOLI E PREPOSIZIONI ARTICOLATE
-  -- ==================================
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- § x - Articoli e Preposizioni Articolate
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
   -- Ogni THING ha un attributo che ne specifica l'articolo determinativo.
   --
   -- Questo attributo viene utilizzato dalla libreria per inizializzare le
@@ -180,7 +186,7 @@ ADD TO EVERY THING
   -- tratti di un sostantivo maschile.
 
   HAS articolo "il".
-    
+
   -- -----------------------
   -- Preposizioni Articolate
   -- -----------------------
@@ -196,9 +202,14 @@ ADD TO EVERY THING
   HAS prep_IN "nel".
   HAS prep_SU "sul".
 
-  -- -----------------------------------
-  -- Inizializzazione di Genere e Numero
-  -- -----------------------------------
+
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § x.x - Inizializzazione di Genere, Numero e Preposizioni Articolate
+--------------------------------------------------------------------------------
+--==============================================================================
+
   -- In base all'articolo specificato possiamo dedurre (e settare) genere e
   -- numero dell'istanza.
 
@@ -212,7 +223,7 @@ ADD TO EVERY THING
       SET prep_DA OF THIS TO "dallo".
       SET prep_IN OF THIS TO "nello".
       SET prep_SU OF THIS TO "sullo".
-    
+
     = "la" THEN
       MAKE THIS femminile.
       MAKE THIS NOT plurale.
@@ -269,9 +280,13 @@ ADD TO EVERY THING
 
   END DEPEND.
 
-  -- -------------------------
-  -- @ARTICOLI INDETERMINATIVI
-  -- -------------------------
+
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § x.x - Inizializzazione Articoli Indeterminativi
+--------------------------------------------------------------------------------
+--==============================================================================
 
   -- We still define that plural nouns are preceded by "some" (and not by "a" or "an"):
 
@@ -281,13 +296,13 @@ ADD TO EVERY THING
       = "il"  THEN   "un"               --> ms indet.
       = "lo"  THEN   "uno"              --> ms indet.
       = "la"  THEN   "una"              --> fs indet.
-         
+
       = "l'"  THEN
         IF THIS IS NOT femminile
               THEN   "un"               --> ms indet.
               ELSE   "un'$$"            --> fs indet.
         END IF.
-      
+
       = "i"   THEN   "dei"              --> mp indet.
       = "gli" THEN   "degli"            --> mp indet.
       = "le"  THEN   "delle"            --> fp indet.
@@ -307,9 +322,12 @@ ADD TO EVERY THING
         END IF.
     END DEPEND.
 
-  -- -----------------------
-  -- @ARTICOLI DETERMINATIVI
-  -- -----------------------
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § x.x - Inizializzazione Articoli Determinativi
+--------------------------------------------------------------------------------
+--==============================================================================
+
   -- Questa parte è stata aggiunta appositamente per l'italiano...
 
   DEFINITE ARTICLE
@@ -324,7 +342,7 @@ ADD TO EVERY THING
       = "i"   THEN   "i"                --> mp det.
       = "gli" THEN   "gli"              --> mp det.
       = "le"  THEN   "le"               --> fp det.
-      
+
       ELSE -- se non è definito
         IF THIS IS NOT femminile
         THEN
@@ -344,24 +362,51 @@ END ADD TO.
 
 -- If you need "an", you should declare it separately at the instance, for example:
 
--- THE owl ISA ACTOR
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- THE owl IsA ACTOR
 --    AT woods
 --    INDEFINITE ARTICLE "an"
 -- END THE.
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------
+-- § x - Oggetti Fittizzi
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
 
 -- Some null defaults defined that have been mentioned above:
 
 
-THE oggetto_fittizio ISA OBJECT
+THE oggetto_fittizio IsA OBJECT
 END THE.
 
 
-THE chiave_fittizia ISA OBJECT
+THE chiave_fittizia IsA OBJECT
 END THE.
 
+
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------
+-- § x - Valori Predefiniti
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § x.1 - Pesi predefiniti
+--------------------------------------------------------------------------------
+--==============================================================================
 
 -- Some weight attributes for things:
 
@@ -383,7 +428,13 @@ END ADD TO OBJECT.
 
 -- These attributes are mostly used to check if something is movable.
 
+
+
+--==============================================================================
 --------------------------------------------------------------------------------
+-- § x.2 - Luoghi Annidati Fittizi
+--------------------------------------------------------------------------------
+--==============================================================================
 
 -- An attribute for keeping track of nested locations; used internally in the library (ignore).
 
@@ -408,15 +459,15 @@ END ADD TO.
 
 SYNONYMS
 
-into, inside = 'in'.
-onto = on.
-thru = through.
-using = 'with'.
+into, inside = 'in'.      --> @TODO                                             TRANSLATE!
+      onto   = on.
+      thru   = through.
+      using  = 'with'.
 
 
 -- Here are some synonyms for the player character:
 
-me, myself, yourself, self = hero.
+me, myself, yourself, self = hero. --> @TODO                                    TRANSLATE!
 
 
 --------------------------------------------------------------------------------
@@ -440,9 +491,15 @@ me, myself, yourself, self = hero.
 -- to this class.
 
 
+EVERY DEFINITION_BLOCK IsA LOCATION
 
-EVERY DEFINITION_BLOCK ISA LOCATION
 
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § x.1 - Attributi del Banner
+--------------------------------------------------------------------------------
+--==============================================================================
 
   -- attributes for the start section (banner):
   -- ==========================================
@@ -459,6 +516,12 @@ EVERY DEFINITION_BLOCK ISA LOCATION
 
 
 
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § x.2 - Messaggi sull'Eroe
+--------------------------------------------------------------------------------
+--==============================================================================
+
   -- messages for the hero:
   -- ======================
 
@@ -471,6 +534,13 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   HAS hero_worn_header "You are wearing".
   HAS hero_worn_else   "You are not wearing anything.".
 
+
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § x.3 - Messaggi sui Luoghi Bui
+--------------------------------------------------------------------------------
+--==============================================================================
 
   -- description messages for dark locations:
   -- ========================================
@@ -485,11 +555,15 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   HAS light_goes_off  "It is now pitch black.".
     -- This message is shown when a light goes off and the location becomes dark.
 
-  -- ===========================================================================
-  
-  -- MESSAGGI DEI VERBI (IN ITALIANO)
-  
-  -- ===========================================================================
+
+
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § x.4 - Messaggi dei Verbi
+--------------------------------------------------------------------------------
+--==============================================================================
+
   -- Siccome i messaggi in italiano richiedono l'uso della forma infinita del
   -- verbo, molti di questi messaggi sono troncati e spetterà al codice che si
   -- occupa dei controlli sul verbo di far seguire al messaggio l'infinito del
@@ -506,7 +580,7 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   -- ===============
   -- AZIONI BLOCCATE
   -- ===============
-  
+
   HAS azione_bloccata  "Non puoi farlo.". -- "You can't do that."
     --| Questo è il messaggio mostrato quando il giocatore tenta di usare un
     --| verbo che è stato disabilitato tramite "CAN NOT [verb]" (vedi sotto).
@@ -523,21 +597,21 @@ EVERY DEFINITION_BLOCK ISA LOCATION
 
   -- =============================
   -- PARAMETRI INADATTI (SEMPLICI)
-  -- ============================= 
+  -- =============================
   -- Messaggi per quando uno dei parametri è inadatto al verbo.
   -- Questi messaggi vengono utilizzati sia nei blocchi condizionali ELSE della
   -- definizione SYNTAX del verbo che nel blocco di CHECK del verbo stesso.
   -- A differenza della libreria originale inglese, qui non distinguiamo tra
   -- messaggi per SYNTAX e CHECK, ma ci concentriamo sul parametro che impedisce
   -- lo svolgimento dell'azione (qui riferiti come obj1 e obj2).
- 
+
   --@NOTA: | S3RioUs JokER consiglia di semplificare con la frase:
   --       |    "Non è qualcosa che si possa <verbo inf>."
   --       | ...sia per il singolare che per il plurale, omettendo di menzionare
   --       | l'oggetto.  Tuttavia, menzionare l'oggetto può servire al  giocatore
   --       | ai fini della disambugazione nel caso di verbi che consentono l'uso
   --       | di oggetti multipli o di "TUTTO".
- 
+
   HAS ogg1_inadatto_sg  "$+1 non è qualcosa che puoi".                          --> (verbi vari)
   HAS ogg1_inadatto_pl  "$+1 non sono qualcosa che puoi".
 
@@ -546,7 +620,7 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   -- =====================================
   -- Varianti dei messaggi precedenti, quando si tratta di parametri che richiedono
   -- preposizioni.
-  
+
   -- ------------------
   -- PREPOSIZIONE "CON"
   -- ------------------
@@ -563,7 +637,7 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   -- sintassi corretta del verbo.
 
   HAS specificare_CON_cosa  "Devi specificare con cosa vorresti".
-  
+
 
   -- =======================
   -- PARAMETRI FUORI PORTATA
@@ -571,7 +645,7 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   -- Messaggi che riferiscono l'impossibilità di portare a termine l'azione a
   -- causa di uno (o più) parametri fuori dalla portata dell'eroe.
   -- (attributi: "NOT raggiungibile" e "distante").
-  
+
   HAS ogg1_non_raggiungibile_sg  "$+1 è fuori dalla tua portata.".       -- (numerous)
   HAS ogg1_non_raggiungibile_pl  "$+1 sono fuori dalla tua portata.".
   HAS ogg2_non_raggiungibile_sg  "$+2 è fuori dalla tua portata.".        -- empty_in, fill_with, pour_in, put_in, take_from, tie_to
@@ -593,9 +667,9 @@ EVERY DEFINITION_BLOCK ISA LOCATION
 
 
   -- ============================================================================
-  
+
   -- MESSAGGI DEI VERBI (ORIGINALI INGLESE)
-  
+
   -- ============================================================================
   -- @NOTA: Quando tutti i messaggi saranno stati tradotti/implmentati in italiano
   --        gli originali inglesi qui di seguito verranno cancellati. Fino ad
@@ -643,7 +717,7 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   HAS illegal_parameter_to_pl "Those are not something you can $v to.".
   HAS illegal_parameter2_to_sg "That's not something you can $v things to.".    -- give, show, tell, tie_to, throw_to
   HAS illegal_parameter2_to_pl "Those are not something you can $v things to.".
-  
+
   HAS illegal_parameter_with_sg "That's not something you can $v with.".    -- kill_with, shoot_with, play_with
   HAS illegal_parameter_with_pl "Those are not something you can $v with.".
   HAS illegal_parameter2_with_sg "That's not something you can $v things with.".  -- attack_with, break_with, burn_with, close_with,
@@ -711,7 +785,7 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   HAS check_obj_suitable_sg "That's not something you can $v.".       -- (numerous)
   HAS check_obj_suitable_pl "Those are not something you can $v.".
 
-  
+
 
 
   -- variations of the above message, needed for example when a preposition is required after the verb:
@@ -943,7 +1017,17 @@ EVERY DEFINITION_BLOCK ISA LOCATION
 
 
 
-   -- ==========================================================================================
+
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- § x - Punteggio
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+
 
   -- These three attributes, as well as the 'schedule' statement following them,
   -- are needed for the 'notify' command ('lib_verbi.i'); ignore.
@@ -967,40 +1051,40 @@ EVERY DEFINITION_BLOCK ISA LOCATION
 
 -- The my_game instance defined as a meta-location (ignore):
 
-        FOR EACH l ISA LOCATION
+        FOR EACH l IsA LOCATION
           DO
             EXCLUDE nowhere FROM annidati OF l.
-            IF COUNT ISA LOCATION, AT l > 0
+            IF COUNT IsA LOCATION, AT l > 0
               THEN
-                FOR EACH x ISA LOCATION, AT l
+                FOR EACH x IsA LOCATION, AT l
                   DO
                     INCLUDE x IN annidati OF l.
                 END FOR.
             END IF.
         END FOR.
 
-        FOR EACH l ISA LOCATION
+        FOR EACH l IsA LOCATION
           DO
               IF l <> my_game AND l <> nowhere
               THEN LOCATE l AT my_game.
             END IF.
         END FOR.
 
-        FOR EACH r1 ISA stanza
+        FOR EACH r1 IsA stanza
           DO
             LOCATE r1 AT interno.
         END FOR.
 
-        FOR EACH s1 ISA SITE
+        FOR EACH s1 IsA SITE
           DO
             LOCATE s1 AT esterno.
         END FOR.
 
-        FOR EACH l ISA LOCATION
+        FOR EACH l IsA LOCATION
           DO
             IF annidati OF l <> {} AND l <> my_game AND l <> nowhere
             THEN
-                    FOR EACH x ISA LOCATION, IN annidati OF l
+                    FOR EACH x IsA LOCATION, IN annidati OF l
                 DO
                   IF l <> my_game AND x <> my_game
                         THEN LOCATE x AT l.
@@ -1055,7 +1139,7 @@ EVERY DEFINITION_BLOCK ISA LOCATION
   CAN comprare.                 --> buy          (+ purchase)
   CAN consultare.               --> consult
   CAN danzare.                  --> dance
-  CAN dare.                     --> give 
+  CAN dare.                     --> give
   CAN domandare_chi_sono_io.    --> who_am_i
   CAN domandare_chi_è.          --> who_is
   CAN domandare_cosa_sono_io.   --> what_am_i
@@ -1218,13 +1302,24 @@ EVERY DEFINITION_BLOCK ISA LOCATION
 
 END EVERY DEFINITION_BLOCK.
 
+
 --==============================================================================
--- The check_restriction Event
+--------------------------------------------------------------------------------
+-- § x.x - The check_restriction Event
+--------------------------------------------------------------------------------
 --==============================================================================
 
 -- This event runs every turn from the start of the game:
 
 EVENT check_restriction
+
+
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § x.1 - Restriction Level 0
+--------------------------------------------------------------------------------
+--==============================================================================
 
 IF restricted_level OF my_game = 0    -- all verbs work normally
   THEN
@@ -1409,6 +1504,13 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
   MAKE my_game yes.
 
 
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § x.2 - Restriction Level 1
+--------------------------------------------------------------------------------
+--==============================================================================
+
 ELSIF restricted_level OF my_game = 1  -- communication verbs are restricted
   THEN
 
@@ -1426,6 +1528,11 @@ ELSIF restricted_level OF my_game = 1  -- communication verbs are restricted
 
 
 
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § x.3 - Restriction Level 2
+--------------------------------------------------------------------------------
+--==============================================================================
 
 ELSIF restricted_level OF my_game = 2   -- all action verbs, including communication verbs,
                 -- are restricted. Verbs like 'examine', 'look', , 'inventory, 'think'
@@ -1613,6 +1720,12 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
   MAKE my_game yes.
 
 
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § x.4 - Restriction Level 3
+--------------------------------------------------------------------------------
+--==============================================================================
 
 
 ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, even
@@ -1806,6 +1919,11 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
   MAKE my_game NOT turn_off.
   MAKE my_game yes.
 
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § x.5 - Restriction Level 4
+--------------------------------------------------------------------------------
+--==============================================================================
 
 ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
                                         -- no verbs work, not even out-of-game verbs
@@ -2004,18 +2122,18 @@ END EVENT.
 -- but it doesn't seem to need being one at all (after all, it relies on the
 -- attributes of 'my_game' for displaying the banner info). I've brought up the
 -- issue to Anssi's attention (Issue #8):
--- 
+--
 --    https://github.com/AnssiR66/AlanStdLib/issues/8
--- 
+--
 -- In the meantime, I'll change 'banner' to an instance of LOCATION here, since
 -- local tests revealed that it works just as fine and consumes less memory
 -- (the compiled test adventure was 20Kb smaller with this tweak, and the ARun
 -- debugger shows a smaller footprint for the 'banner' instance).
 --------------------------------------------------------------------------------
 
--- THE banner ISA DEFINITION_BLOCK --> Why?!
+-- THE banner IsA DEFINITION_BLOCK --> Why?!
 
-THE banner ISA LOCATION
+THE banner IsA LOCATION
 
     DESCRIPTION
 
@@ -2039,4 +2157,4 @@ THE banner ISA LOCATION
 END THE banner.
 
 
---< EOF >---
+---< Fine del File >---

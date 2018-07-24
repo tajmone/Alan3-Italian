@@ -1,4 +1,4 @@
--- "lib_supplemento.i" v0.2.2 (2018/07/19)
+-- "lib_supplemento.i" v0.3.0 (2018/07/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -172,14 +172,14 @@ SYNONYMS tranne, eccetto, escluso, esclusa, esclusi, escluse = except.
 --   "nei"   = "moles"     (but more correctly spelled "nèi" or "nevi")
 --   "collo" = "neck"
 --   "colla" = "glue"
---   "cogli" = "pick" 
+--   "cogli" = "pick"
 --   "colle" = "glues" or "hill"
 -- -----------------------------------------------------------------------------
 -- * see.: http://www.tads.org/xlat3/En_vs_It.htm
 -- -----------------------------------------------------------------------------
 -- We now define sysonyms of prepositions variants to be seen as their base
 -- form registered with the verbs syntax.
--- 
+--
 -- **APOSTROPHE LIMITATION** -- prepositions with apostrophe must either be
 -- typed without the apostrophe or with a space after it, because the parser will
 -- otherwise see them as forming a single token with the following noun:

@@ -1,4 +1,4 @@
--- "_mygame_import.i" v0.2.11 (2018/07/22)
+-- "_mygame_import.i" v0.3.0 (2018/07/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -7,7 +7,7 @@
 -- (original file name: 'mygame_import.i')
 --------------------------------------------------------------------------------
 -- ADAPTIONS TO ITALIAN CARRIED OUT SO FAR:
--- 
+--
 --  * plural     -> plurale
 --  * sitting    -> seduto
 --  * lying_down -> sdraiato
@@ -19,17 +19,17 @@
 -- An auxiliary game source file for ALAN Standard Library v2.1.
 
 
--- This file is not one of the library files and not necessary for running a game 
--- which uses the library. 
+-- This file is not one of the library files and not necessary for running a game
+-- which uses the library.
 
 -- This file lists all attributes of the my_game instance (declared
--- in the library file 'definitions.i') and all verb outcomes (declared in 'verbs.i'), 
+-- in the library file 'definitions.i') and all verb outcomes (declared in 'verbs.i'),
 -- for easy editing and modification.
 
 -- USAGE: if you need to edit/change a great number of pre-declared library messages
--- (verb outcomes, verb check messages, illegal parameter messages etc.) for your game, e.g. 
+-- (verb outcomes, verb check messages, illegal parameter messages etc.) for your game, e.g.
 -- when you are writing in another language or if you intend to use an unusual
--- person/tense in your game's narrative, please edit the default messages in this file. 
+-- person/tense in your game's narrative, please edit the default messages in this file.
 -- Then, import this file into your main source file, together with the five library files.
 -- The library files don't need to be edited (except if you wish to reword standard runtime
 -- messages found in  'messages.i').
@@ -38,38 +38,38 @@
 -- you import that instance to your game in this file.
 
 
--- NOTE 2: This file doesn't contain the responses for verb outcomes in 'lib_classes.i' nor 
--- some marginal messages for the behaviour of indoor and outdoor objects in 'lib_locations.i'.  
+-- NOTE 2: This file doesn't contain the responses for verb outcomes in 'lib_classes.i' nor
+-- some marginal messages for the behaviour of indoor and outdoor objects in 'lib_locations.i'.
 
 -- To change verb outcomes for classes predefined in 'lib_classes,i', add the change in this
 -- file at the applicable verb in the list of verbs further below, in the following way:
 
--- In this example, the author has changed the response for the verb 'look_through' for 
+-- In this example, the author has changed the response for the verb 'look_through' for
 -- the class WINDOW:
 
 	
 		-- VERB look_through
 			-- DOES ONLY
-				-- IF THIS ISA WINDOW
-					-- THEN "You see the garden outside the house."  
+				-- IF THIS IsA WINDOW
+					-- THEN "You see the garden outside the house."
 						-- -- the above would be the default outcome for all windows in the game.
 					-- ELSE "You can't see through" SAY THE bulk. "."
-						-- -- this is the original default response defined by the library, 
+						-- -- this is the original default response defined by the library,
 						-- -- and in the list of verbs further below.
 				-- END IF.
 		-- END VERB.
 
 
--- Above, the author has added an IF clause to cater for both window objects and other objects. 
+-- Above, the author has added an IF clause to cater for both window objects and other objects.
 -- The 'lib_classes.i' file won't have to be edited.
 
 	
 -- (To change the verb outcome for any verb applying to a class you have created yourself:
 -- For example:
 
-	-- EVERY cat ISA ACTOR
+	-- EVERY cat IsA ACTOR
 
-           -- VERB examine 
+           -- VERB examine
 			-- DOES ONLY "It's just an ordinary cat"
 		-- END VERB.
 
@@ -82,7 +82,7 @@
 -- the list of verbs below, for example:
 
 -- VERB jump
---	CHECK strength OF hero > 5          -- your own check, added in this file and not in  
+--	CHECK strength OF hero > 5          -- your own check, added in this file and not in
 --		ELSE "You feel too weak."             -- the library files!
 --	DOES "You jump on the spot, to no avail."
 -- END VERB.
@@ -94,7 +94,7 @@
 
 
 
-THE my_game ISA DEFINITION_BLOCK
+THE my_game IsA DEFINITION_BLOCK
 
 
 	-- attributes for the game banner; edit these to suit your own game:
@@ -178,14 +178,14 @@ THE my_game ISA DEFINITION_BLOCK
 	HAS illegal_parameter2_to_pl "Those are not something you can $v things to.".	
 	HAS illegal_parameter_with_sg "That's not something you can $v with.".		-- kill_with, shoot_with, play_with
 	HAS illegal_parameter_with_pl "Those are not something you can $v with.".	
-	HAS illegal_parameter2_with_sg "That's not something you can $v things with.".	-- attack_with, break_with, burn_with, close_with, 
+	HAS illegal_parameter2_with_sg "That's not something you can $v things with.".	-- attack_with, break_with, burn_with, close_with,
 																 -- + cut_with, fill_with, lock_with, open_with, pry_with,
 																 -- + push_with, unlock_with
 	HAS illegal_parameter2_with_pl "Those are not something you can $v things with.".
 		
 
 	-- other illegal parameter messages:
-	------------------------------------ 
+	------------------------------------
 
 
 	HAS illegal_parameter_act "That doesn't make sense.".							-- empty_in, pour_in, put_in, throw_in
@@ -200,9 +200,9 @@ THE my_game ISA DEFINITION_BLOCK
 
 	HAS illegal_parameter_go "You can't go there.".								-- go_to
 
-	HAS illegal_parameter_look_out_sg "That's not something you can look out of.".		-- look_out_of  
+	HAS illegal_parameter_look_out_sg "That's not something you can look out of.".		-- look_out_of
 	HAS illegal_parameter_look_out_pl "Those are not something you can look out of.".
-	HAS illegal_parameter_look_through "You can't look through $+1.".				-- look_through  
+	HAS illegal_parameter_look_through "You can't look through $+1.".				-- look_through
 
 	HAS illegal_parameter_obj "You can only $v objects.".							-- give, put, put_in, put_on, put_against,
 																	   -- + put_behind, put_near, put_under,
@@ -214,9 +214,9 @@ THE my_game ISA DEFINITION_BLOCK
 	HAS illegal_parameter_talk_sg "That's not something you can talk to.".			-- ask, ask_for, say_to, tell
 	HAS illegal_parameter_talk_pl "Those are not something you can talk to.".
 
-	HAS illegal_parameter_there "It's not possible to $v there.".					-- look_behind, look_in, look_under 
-	HAS illegal_parameter2_there "It's not possible to $v anything there.".    		-- empty_in, empty_on, pour_in, pour_on, put_in,  
-															    		 -- + put_on, put_against, put_behind, put_near, 
+	HAS illegal_parameter_there "It's not possible to $v there.".					-- look_behind, look_in, look_under
+	HAS illegal_parameter2_there "It's not possible to $v anything there.".    		-- empty_in, empty_on, pour_in, pour_on, put_in,
+															    		 -- + put_on, put_against, put_behind, put_near,
 																	 -- + put_under, throw_in, throw_to, tie_to, write
 
 	HAS illegal_parameter_what_sg "That's not something I know about.".				-- what_is, where_is
@@ -252,7 +252,7 @@ THE my_game ISA DEFINITION_BLOCK
 	HAS check_obj_suitable_on_pl "Those are not something you can $v on."	.	
 	HAS check_obj_suitable_with_sg "That's not something you can $v with.".		-- play_with
 	HAS check_obj_suitable_with_pl "Those are not something you can $v with.".		
-	HAS check_obj2_suitable_with_sg "That's not something you can $v things with.".	  -- break_with, burn_with, close_with, cut_with, fill_with, 
+	HAS check_obj2_suitable_with_sg "That's not something you can $v things with.".	  -- break_with, burn_with, close_with, cut_with, fill_with,
 	HAS check_obj2_suitable_with_pl "Those are not something you can $v things with.".	 -- + lock_with, open_with, pry_with, push_with,
 																	 -- + touch_with, unlock_with
 
@@ -313,7 +313,7 @@ THE my_game ISA DEFINITION_BLOCK
 	--------------------------
 
 	HAS check_act_can_talk_sg "That's not something you can talk to.".				-- ask, ask_for, say_to, tell
-	HAS check_act_can_talk_pl "Those are not something you can talk to.". 
+	HAS check_act_can_talk_pl "Those are not something you can talk to.".
 
 	HAS check_obj_allowed_in_sg "$+1 doesn't belong in $+2.".						-- empty_in, pour_in, put_in, throw_in
     	HAS check_obj_allowed_in_pl "$+1 don't belong in $+2.". 							
@@ -358,7 +358,7 @@ THE my_game ISA DEFINITION_BLOCK
 	HAS check_obj_in_act_sg "$+2 doesn't have $+1.".							-- take_from
 	HAS check_obj_in_act_pl "$+2 don't have $+1.".
 	HAS check_obj_not_in_act_sg "$+2 already has $+1.".							-- give
-	HAS check_obj_not_in_act_pl "$+2 already have $+1.". 
+	HAS check_obj_not_in_act_pl "$+2 already have $+1.".
 
 
 	-- location and containment checks for the hero:
@@ -417,13 +417,13 @@ THE my_game ISA DEFINITION_BLOCK
 
 	HAS check_obj_not_hero1 "It doesn't make sense to $v yourself.".			-- ask, ask_for, attack, attack_with, catch, follow
 																   -- kick, listen, pull, push, push_with, take,
-																   -- take_from, tell 
+																   -- take_from, tell
 	HAS check_obj_not_hero2 "There is no need to be that desperate.".  			-- fire_at, kill, kill_with, shoot, shoot_with
 	HAS check_obj_not_hero3 "That wouldn't accomplish anything.".				-- scratch, touch
 	HAS check_obj_not_hero4 "You're right here.".							-- find, go_to
 	HAS check_obj_not_hero5 "You don't need to be freed.".					-- free
 	HAS check_obj_not_hero6 "There is no time for that now.".								-- kiss, play_with, rub
-	HAS check_obj_not_hero7 "Turning your head, you notice nothing unusual behind yourself.".		-- look_behind 
+	HAS check_obj_not_hero7 "Turning your head, you notice nothing unusual behind yourself.".		-- look_behind
 	HAS check_obj_not_hero8 "You notice nothing unusual under yourself.".						-- look_under
 	HAS check_obj2_not_hero1 "That doesn't make sense.".						-- say_to, show, take_from, touch_with, throw_at/in/to
 	HAS check_obj2_not_hero2 "That would be futile.".						-- put_against, put_behind, put_near, put_under
@@ -438,8 +438,8 @@ THE my_game ISA DEFINITION_BLOCK
 	HAS check_obj_not_obj2_in "It doesn't make sense to $v something into itself.".		-- empty_in, pour_in, put_in, throw_in
 	HAS check_obj_not_obj2_on "It doesn't make sense to $v something onto itself.".		-- empty_on, pour_on, put_on
 	HAS check_obj_not_obj2_to "It doesn't make sense to $v something to itself.".		-- give, show, throw_to, tie_to
-	HAS check_obj_not_obj2_with "It doesn't make sense to $v something with itself.".  	-- attack_with, break_with, burn_with, close_with, 																		   -- + cut_with, fill_with, lock_with, 
-																	   -- + open_with, push_with, pry_with, shoot_with,  
+	HAS check_obj_not_obj2_with "It doesn't make sense to $v something with itself.".  	-- attack_with, break_with, burn_with, close_with, 																		   -- + cut_with, fill_with, lock_with,
+																	   -- + open_with, push_with, pry_with, shoot_with,
 																	   -- + touch_withm unlock_with, use_with
 	
 	HAS check_obj_not_obj2_put "That doesn't make sense."	.					-- put_against, put_behind, put_near, put_under
@@ -459,7 +459,7 @@ THE my_game ISA DEFINITION_BLOCK
 	HAS check_lightsource_lit_pl "But $+1 are not lit.".
 	HAS check_lightsource_not_lit_sg "$+1 is already lit.".								-- lightsource: light, turn_on
 	HAS check_lightsource_not_lit_pl "$+1 are already lit.".
-	HAS check_lightsource_switchable_sg "That's not something you can switch on and off."	.		-- lightsource: switch 
+	HAS check_lightsource_switchable_sg "That's not something you can switch on and off."	.		-- lightsource: switch
 	HAS check_lightsource_switchable_pl "Those are not something you can switch on and off.".
 	HAS check_liquid_vessel_not_cont "You can't carry $+1 around in your bare hands.".			-- liquid: take_from
 	HAS check_obj_not_broken "Nothing happens.".										-- device, lightsource: light, switch, turn_on
@@ -471,7 +471,7 @@ THE my_game ISA DEFINITION_BLOCK
     	HAS implicit_taking_message "(taking $+1 first)$n".	
 
 	-- The following verbs are preceded by implicit taking:
-			-- bite, drink, eat, empty, empty_in, empty_on, give, pour, pour_in, pour_on,  
+			-- bite, drink, eat, empty, empty_in, empty_on, give, pour, pour_in, pour_on,
 			-- put_in, put_on, throw, throw_at, throw_in, throw_to, tie_to.
 	-- In ditransitive verbs, only the first parameter (the direct object) is taken implicitly.
 
@@ -486,16 +486,16 @@ THE my_game ISA DEFINITION_BLOCK
 -- You can also add checks of your own to the verbs here, before the "DOES ONLY" section.
 
 
- 
+
 VERB 'about'
 	DOES ONLY
 		"[This is a text adventure, also called interactive fiction, which means that what
-		goes on in the story depends on what you type at the prompt. Commands you can type 
-		are for example GO NORTH (or NORTH or just N), WEST, SOUTHEAST, UP, IN etc for 
-		moving around, but you can try many other things too, like TAKE LAMP, DROP EVERYTHING, 
-		EAT APPLE, EXAMINE BIRD or FOLLOW OLD MAN, to name just a few. LOOK (L) describes your 
-		surroundings, and INVENTORY (I) lists what you are carrying. You can SAVE your game and 
-		RESTORE it later on. 
+		goes on in the story depends on what you type at the prompt. Commands you can type
+		are for example GO NORTH (or NORTH or just N), WEST, SOUTHEAST, UP, IN etc for
+		moving around, but you can try many other things too, like TAKE LAMP, DROP EVERYTHING,
+		EAT APPLE, EXAMINE BIRD or FOLLOW OLD MAN, to name just a few. LOOK (L) describes your
+		surroundings, and INVENTORY (I) lists what you are carrying. You can SAVE your game and
+		RESTORE it later on.
 		$pType CREDITS to see information about the author and the copyright issues.
 		$pTo stop playing and end the program, type QUIT.]$p"
 END VERB.
@@ -505,7 +505,7 @@ END VERB.
 VERB 'again'
 	DOES ONLY
 		"[The AGAIN command is not supported in this game. As a workaround, try using
-		 the 'up' and 'down' arrow keys to scroll through your previous commands.]" 
+		 the 'up' and 'down' arrow keys to scroll through your previous commands.]"
 END VERB.
 
 
@@ -555,7 +555,7 @@ END VERB.
 VERB bite
 	DOES ONLY
 		IF ogg IN hero
-			THEN "You take a bite of" SAY THE ogg. "$$." 
+			THEN "You take a bite of" SAY THE ogg. "$$."
 				IF ogg IS NOT plurale
 					THEN "It tastes nothing out of the ordinary."
 					ELSE "They taste nothing out of the ordinary."
@@ -574,7 +574,7 @@ END VERB.
 
 VERB break_with
 	DOES ONLY		
-		"Trying to break" SAY THE ogg. "with" SAY THE strum. 
+		"Trying to break" SAY THE ogg. "with" SAY THE strum.
 		"wouldn't accomplish anything."
 END VERB.
 
@@ -606,9 +606,9 @@ END VERB.
 VERB buy
 	DOES ONLY
 		IF merce IS NOT plurale
-			THEN "That's not" 
+			THEN "That's not"
 			ELSE "Those are not"
-		END IF. 
+		END IF.
 			
 		"for sale."
 END VERB.
@@ -618,7 +618,7 @@ END VERB.
 VERB catch
 	DOES ONLY
 		IF ogg IS NOT plurale
-			THEN "That doesn't" 
+			THEN "That doesn't"
 			ELSE "Those don't"
 		END IF.
 		"need to be caught."
@@ -636,7 +636,7 @@ END VERB.
 VERB climb
 	DOES ONLY
 		IF ogg IS NOT plurale
-			THEN "That's not" 
+			THEN "That's not"
 			ELSE "Those are not"
 		END IF.	
 		"something you can climb."
@@ -647,7 +647,7 @@ END VERB.
 VERB climb_on
 	DOES ONLY
 		IF superficie IS NOT plurale
-			THEN "That's not" 
+			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
 		"something you can climb on."
@@ -658,7 +658,7 @@ END VERB.
 VERB climb_through
 	DOES ONLY
 		IF ogg IS NOT plurale
-			THEN "That's not" 
+			THEN "That's not"
 			ELSE "Those are not"
 		END IF.
 		"something you can climb through."
@@ -691,9 +691,9 @@ END VERB.
 VERB credits
 	DOES ONLY
 		"The author retains the copyright to this game.
-		$pThis game was written using the ALAN Adventure Language. ALAN is 
+		$pThis game was written using the ALAN Adventure Language. ALAN is
 		an interactive fiction authoring system by Thomas Nilsson.
-		$nE-mail address: thomas@alanif.se $pFurther information 
+		$nE-mail address: thomas@alanif.se $pFurther information
 		about the ALAN system can be obtained from
 		the World Wide Web Internet site
 		$ihttp://www.alanif.se$p"
@@ -730,7 +730,7 @@ END VERB.
 
 
 VERB dive
-	DOES ONLY 
+	DOES ONLY
 		"There is no water suitable for swimming here."
 END VERB.
 
@@ -752,22 +752,22 @@ VERB drink
 		IF recipiente OF liq = recipiente_fittizio		
 			-- here, if the liquid is in no container, e.g.
 			-- the hero takes a sip of water from a river,
-			-- the action is allowed to succeed so that the hero 
+			-- the action is allowed to succeed so that the hero
 			-- drinks some of the liquid:
 
 			THEN "You drink a bit of" SAY THE liq. "."
-			ELSE 
+			ELSE
 				-- = if the liquid is in a container:
 
 				-- implicit taking:
 				IF recipiente OF liq NOT DIRECTLY IN hero
-					THEN 
+					THEN
 						IF recipiente OF liq IS NOT prendibile
 							THEN "You can't carry" SAY THE liq. "around in your bare hands."
 								-- the action stops here if the container is not takeable.
 							ELSE
 								LOCATE recipiente OF liq IN hero.
-								SAY implicit_taking_message OF my_game. 
+								SAY implicit_taking_message OF my_game.
 						END IF.		
 				END IF.
 				-- end of implicit taking.
@@ -784,7 +784,7 @@ END VERB.
 
 
 
-VERB drive 
+VERB drive
 	DOES ONLY
 		IF veicolo IS NOT plurale
 			THEN "That's not"
@@ -806,7 +806,7 @@ END VERB.
 VERB eat
 	DOES ONLY
 		-- implicit taking:
-		IF food NOT DIRECTLY IN hero 
+		IF food NOT DIRECTLY IN hero
 			THEN LOCATE food IN hero.
 				SAY implicit_taking_message OF my_game.	
 		END IF.
@@ -819,15 +819,15 @@ END VERB.
 
 
 VERB 'empty'
-	DOES ONLY 
+	DOES ONLY
 		-- implicit taking:
-		IF ogg NOT DIRECTLY IN hero 
+		IF ogg NOT DIRECTLY IN hero
 			THEN LOCATE ogg IN hero.
 				SAY implicit_taking_message OF my_game.
 		END IF.									
 		-- end of implicit taking.
 
-		IF COUNT ISA OBJECT, DIRECTLY IN ogg = 0
+		IF COUNT IsA OBJECT, DIRECTLY IN ogg = 0
 			THEN "There is nothing in" SAY THE ogg. "."
 			ELSE
 				"You $v the contents of" SAY THE ogg.
@@ -844,15 +844,15 @@ END VERB.
 VERB empty_in, pour_in
 	DOES ONLY
 		-- implicit taking:
-		IF ogg NOT DIRECTLY IN hero 
+		IF ogg NOT DIRECTLY IN hero
 			THEN LOCATE ogg IN hero.
 				SAY implicit_taking_message OF my_game.
 		END IF.									
 		-- end of implicit taking.
 
-		IF COUNT ISA OBJECT, DIRECTLY IN ogg = 0
+		IF COUNT IsA OBJECT, DIRECTLY IN ogg = 0
 			THEN "There is nothing in" SAY THE ogg. "."
-			ELSE 
+			ELSE
 				EMPTY ogg IN cont.
 				"You $v the contents of" SAY THE ogg.
 				"in" SAY THE cont. "."
@@ -862,17 +862,17 @@ END VERB.
 
 
 VERB empty_on, pour_on
-	DOES ONLY 
+	DOES ONLY
 		-- implicit taking:
-		IF ogg NOT DIRECTLY IN hero 
+		IF ogg NOT DIRECTLY IN hero
 			THEN LOCATE ogg IN hero.
 				SAY implicit_taking_message OF my_game.
 		END IF.									
 		-- end of implicit taking.
 
-		IF COUNT ISA OBJECT, DIRECTLY IN ogg = 0
+		IF COUNT IsA OBJECT, DIRECTLY IN ogg = 0
 			THEN "There is nothing in" SAY THE ogg. "."
-			ELSE 
+			ELSE
 				IF superficie = pavimento OR superficie = ground
 					THEN EMPTY ogg AT hero.
 					ELSE EMPTY ogg IN superficie.
@@ -899,21 +899,21 @@ VERB examine
 	DOES ONLY
 		IF ogg IS leggibile			
 			-- for readable objects, 'examine' behaves just as 'read'
-			THEN 
+			THEN
 				IF testo OF ogg = ""
 					THEN "There is nothing written on" SAY THE ogg. "."
 					ELSE "You read" SAY THE ogg. "."
 						IF ogg IS NOT plurale
 							THEN "It says"
 							ELSE "They say"
-						END IF.  
+						END IF.
 						"""$$" SAY testo OF ogg. "$$""."
 				END IF.
-      		ELSE 
+      		ELSE
 				IF ogg = hero
 					THEN "You notice nothing unusual about yourself."
 					ELSE "You notice nothing unusual about" SAY THE ogg. "."
-				END IF. 
+				END IF.
 		END IF.
 END VERB.
 
@@ -985,7 +985,7 @@ END VERB.
 
 
 VERB follow
-	DOES ONLY 
+	DOES ONLY
 		LOCATE hero AT png.
 		"You follow" SAY THE png. "."		
 END VERB.
@@ -993,7 +993,7 @@ END VERB.
 
 
 VERB free
-	DOES ONLY 
+	DOES ONLY
 		IF ogg IS NOT plurale
 			THEN "That doesn't need to be $vd."
 			ELSE "Those don't need to be $vd."
@@ -1016,7 +1016,7 @@ END VERB.
 
 VERB get_up
 	DOES ONLY
-		IF hero IS seduto 
+		IF hero IS seduto
 			THEN "You stand up."
 				MAKE hero NOT seduto.
 				MAKE hero NOT sdraiato.
@@ -1064,10 +1064,10 @@ VERB i
 	DOES ONLY
 		LIST hero.
 
-		-- if the hero in your game carries any containers you want the contents of 
+		-- if the hero in your game carries any containers you want the contents of
 		-- to be listed after 'inventory', you should manually add the listing right here
             -- according to the following example:
-		-- 
+		--
 		-- IF bag IN hero
 		--     THEN LIST bag.
 		-- END IF.
@@ -1136,7 +1136,7 @@ END VERB.
 
 VERB kiss
 	DOES ONLY
-		IF ogg ISA ACTOR
+		IF ogg IsA ACTOR
 			THEN SAY THE ogg. "avoids your advances."
 			ELSE "Nothing would be achieved by that."
 		END IF.
@@ -1166,9 +1166,9 @@ VERB lie_in
 	DOES ONLY
 		"There's no need to lie down in" SAY THE cont. "."
 		-- If you need this to work, make a nested location
-		-- (e.g. THE in_bed ISA LOCATION AT bedroom; etc.)
+		-- (e.g. THE in_bed IsA LOCATION AT bedroom; etc.)
 		-- Remember to: MAKE hero lying_down.
-		-- Presently, an actor cannot be located inside a container object. 
+		-- Presently, an actor cannot be located inside a container object.
 END VERB.
 
 
@@ -1177,7 +1177,7 @@ VERB lie_on
 	DOES ONLY
 		"There's no need to lie down on" SAY THE superficie. "."
 		-- If you need this to work, make a nested location
-		-- (e.g. THE on_bed ISA LOCATION AT bedroom; etc.)
+		-- (e.g. THE on_bed IsA LOCATION AT bedroom; etc.)
 		-- Remember to: MAKE hero lying_down.
 		-- Presently, an actor cannot be located inside a container object
 		-- or on a supporter.
@@ -1227,7 +1227,7 @@ VERB lock
 		IF chiave_abbinata OF ogg IN hero
 			THEN MAKE ogg bloccato.
 				"(with" SAY THE chiave_abbinata OF ogg. "$$)$n"
-				"You" 
+				"You"
 
 				IF ogg IS aperto
 					THEN "close and"
@@ -1275,7 +1275,7 @@ END VERB.
 
 
 VERB look_in
-	DOES ONLY 
+	DOES ONLY
 		LIST cont.
 END VERB.
 
@@ -1314,57 +1314,57 @@ END VERB.
 
 
 VERB 'no'
-	DOES ONLY 
+	DOES ONLY
 		"Really?"
 END VERB.
 
 
 
 VERB pray
-	DOES ONLY 
+	DOES ONLY
 		"Your prayers don't seem to help right now."
 END VERB.
 
 
 
 VERB pry
-	DOES ONLY 
+	DOES ONLY
 		"You must state what you want to pry" SAY THE ogg. "with."
 END VERB.
 
 
 
 VERB pry_with
-	DOES ONLY 
+	DOES ONLY
 		"That doesn't work."
 END VERB.
 
 
 
-VERB pull 
-	DOES ONLY 
+VERB pull
+	DOES ONLY
 		"That wouldn't accomplish anything."
 END VERB.
 
 
 
 VERB push
-	DOES ONLY 
+	DOES ONLY
 		"You give" SAY THE ogg. "a little push. Nothing happens."
 END VERB.
 
 
 
 VERB push_with
-	DOES ONLY 
+	DOES ONLY
 		"That wouldn't accomplish anything."
-END VERB. 
+END VERB.
 
 
 
 VERB put
 	DOES ONLY
-		"You must state where you want to put" 
+		"You must state where you want to put"
 			IF ogg IS NOT plurale
 				THEN "it."
 				ELSE "them."
@@ -1374,7 +1374,7 @@ END VERB.
 
 
 VERB put_in
-	DOES ONLY 
+	DOES ONLY
 		LOCATE ogg IN cont.
 		"You put" SAY THE ogg. "into" SAY THE cont. "."	
 END VERB.
@@ -1382,7 +1382,7 @@ END VERB.
 
 
 VERB put_against, put_behind, put_near, put_under
-	DOES ONLY 
+	DOES ONLY
 		"That wouldn't accomplish anything."
 END VERB.
 
@@ -1414,12 +1414,12 @@ VERB read
 	DOES ONLY
 		IF testo OF ogg = ""
 			THEN "There's nothing written on" SAY THE ogg. "."
-			ELSE "You read" SAY THE ogg. "." 
+			ELSE "You read" SAY THE ogg. "."
 				IF ogg IS NOT plurale
 					THEN "It says"
 					ELSE "They say"
 				END IF.
-				"""$$" SAY testo OF ogg. "$$""." 
+				"""$$" SAY testo OF ogg. "$$""."
 		END IF.
 END VERB.
 
@@ -1430,14 +1430,14 @@ VERB remove
 		IF ogg IS NOT plurale
 			THEN "That's"
 			ELSE "Those are"
-		END IF. 
+		END IF.
 			
 		"not something you can remove since you're not wearing"
 					
 		IF ogg IS NOT plurale
 			THEN "it."
 			ELSE "them."
-		END IF. 
+		END IF.
 END VERB.
 
 
@@ -1456,8 +1456,8 @@ END VERB.
 
 
 
-VERB rub 
-	DOES ONLY 
+VERB rub
+	DOES ONLY
 		"Nothing would be achieved by that."
 END VERB.
 
@@ -1471,7 +1471,7 @@ END VERB.
 
 
 VERB 'say'
-    	DOES ONLY 
+    	DOES ONLY
 		"Nothing happens."
 END VERB.
 
@@ -1479,7 +1479,7 @@ END VERB.
 
 VERB say_to
 	DOES ONLY
-		SAY THE png. 
+		SAY THE png.
 			IF png IS NOT plurale
 		 		THEN "doesn't look"
 				ELSE "don't look"
@@ -1492,7 +1492,7 @@ END VERB.
 VERB 'score'
 	DOES ONLY
 		SCORE.
-		-- (or, if you wish to disable the score, use the following kind of 
+		-- (or, if you wish to disable the score, use the following kind of
 			-- line instead of the above:
 		-- "There is no score in this game.")
 END VERB.
@@ -1500,18 +1500,18 @@ END VERB.
 
 
 VERB scratch
-	DOES ONLY 
+	DOES ONLY
 		"Nothing would be achieved by that."
 END VERB.
 
 
 
-VERB 'script' 
+VERB 'script'
 	DOES ONLY
-		"You can turn transcripting on and off using the 'script on/off' command within the game. 
+		"You can turn transcripting on and off using the 'script on/off' command within the game.
 		The transcript will be available in a file with a name starting with the game name.
-		$pIn a GUI version you can also find this in the drop-down menu in the interpreter. 
-		$pIn a command line version you can start your game with the '-s' switch to get a transcript 
+		$pIn a GUI version you can also find this in the drop-down menu in the interpreter.
+		$pIn a command line version you can start your game with the '-s' switch to get a transcript
 		of the whole game."
 END VERB.
 
@@ -1534,21 +1534,21 @@ END VERB.
 
 
 VERB search
-	DOES ONLY 
+	DOES ONLY
 		"You find nothing of interest."
 END VERB.
 
 
 
 VERB sell
-	DOES ONLY 
+	DOES ONLY
 		"There's nobody here who would be interested in buying" SAY THE merce. "."
 END VERB.
 
 
 
 VERB shake
-	DOES ONLY 
+	DOES ONLY
 		IF ogg IN hero
 			THEN "You shake" SAY THE ogg. "cautiously in your hands. Nothing happens."
 			ELSE "There is no reason to start shaking" SAY THE ogg. "."
@@ -1558,14 +1558,14 @@ END VERB.
 
 
 VERB shoot
-	DOES ONLY 
+	DOES ONLY
 		"Resorting to violence is not the solution here."
 END VERB.
 
 
 
 VERB shoot_with
-	DOES ONLY 
+	DOES ONLY
 		"Resorting to violence is not the solution here."
 END VERB.
 
@@ -1580,7 +1580,7 @@ END VERB.
 
 VERB 'show'		
 	DOES ONLY
-		SAY THE png. 
+		SAY THE png.
 			
 			IF png IS NOT plurale
 				THEN "is"
@@ -1606,10 +1606,10 @@ VERB sip
 			-- the hero takes a sip of water from a river,
 			-- the action is allowed to succeed.
 			THEN "You take a sip of" SAY THE liq. "."
-			ELSE 
+			ELSE
 				-- implicit taking:
 				IF recipiente OF liq NOT DIRECTLY IN hero
-					THEN 
+					THEN
 						IF recipiente OF liq IS NOT prendibile
 							THEN "You can't carry" SAY THE liq. "around in your bare hands."
 								-- the action stops here if the container is not takeable.
@@ -1621,7 +1621,7 @@ VERB sip
 		END IF.		
 
 		IF liq IN hero		-- i.e. if the implicit taking was successful
-		 	THEN 
+		 	THEN
 				IF recipiente OF liq IS NOT aperto
 					THEN "You can't, since" SAY THE recipiente OF liq. "is closed."
 					ELSE "You take a sip of" SAY THE liq. "."
@@ -1632,7 +1632,7 @@ END VERB.
 
 
 
-VERB sit 
+VERB sit
 	DOES ONLY
 		"You feel no urge to sit down at present."
 		-- (or, if you wish to make it work, use the following instead of the above:
@@ -1651,7 +1651,7 @@ VERB sit_on
 		"You feel no urge to sit down at present."
 
 		-- (or, to make it work, use the following instead of the above:)
-		-- IF hero lying_down 
+		-- IF hero lying_down
 		-- 	THEN "You get up and sit down on" SAY THE surface. "."
 		--		MAKE hero NOT lying_down.
 		--	ELSE "You sit down on" SAY THE surface. "."
@@ -1689,7 +1689,7 @@ END VERB.
 
 
 
-VERB stand 
+VERB stand
 	DOES ONLY
 		IF hero IS seduto OR hero IS sdraiato
 			THEN "You get up."
@@ -1714,7 +1714,7 @@ END VERB.
 
 
 
-VERB swim 
+VERB swim
 	DOES ONLY
 		"There is no water suitable for swimming here."
 END VERB.
@@ -1753,14 +1753,14 @@ END VERB.
 
 VERB take
 		DOES ONLY
-			IF ogg ISA ACTOR
+			IF ogg IsA ACTOR
 				THEN SAY THE ogg. "would probably object to that."
 			-- actors are not prohibited from being taken in the checks; this is to
 			-- allow for example a dog to be picked up, or a bird to be taken out of
 			-- a cage, etc.
 			
 
-			ELSIF ogg ISA OBJECT
+			ELSIF ogg IsA OBJECT
 				THEN IF ogg DIRECTLY IN worn
 						THEN LOCATE ogg IN hero.
 							"You take off" SAY THE ogg. "and carry it in your hands."
@@ -1778,14 +1778,14 @@ END VERB.
 
 VERB take_from
 	WHEN ogg
-			DOES ONLY 
-				IF ogg ISA ACTOR
+			DOES ONLY
+				IF ogg IsA ACTOR
 					THEN SAY THE ogg. "would probably object to that."
 						-- actors are not prohibited from being taken in the checks; this is to
 						-- allow for example a dog to be picked up, or a bird to be taken out of
 						-- a cage, etc.
-				ELSIF ogg ISA OBJECT
-					THEN 
+				ELSIF ogg IsA OBJECT
+					THEN
 						LOCATE ogg IN hero.
 	    					"You take" SAY THE ogg. "from" SAY THE detentore. "."
 				END IF.
@@ -1831,7 +1831,7 @@ END VERB.
 VERB tell
 	WHEN png
 		DOES ONLY
-			SAY THE png. 
+			SAY THE png.
 
 			IF png IS NOT plurale
 				THEN "doesn't"
@@ -1843,7 +1843,7 @@ END VERB.
 
 
 
-VERB think 
+VERB think
 	DOES ONLY
 		"Nothing helpful comes to your mind."
 END VERB.
@@ -1860,13 +1860,13 @@ END VERB.
 VERB throw
 	DOES ONLY
 		-- implicit taking:
-		IF proiettile NOT DIRECTLY IN hero 
+		IF proiettile NOT DIRECTLY IN hero
 			THEN LOCATE proiettile IN hero.
 				SAY implicit_taking_message OF my_game.
 		END IF.
 		-- end of implicit taking.			
 				
-		"You can't throw very far;" SAY THE proiettile. 
+		"You can't throw very far;" SAY THE proiettile.
 			
 		IF proiettile IS NOT plurale
 			THEN "ends up"
@@ -1875,7 +1875,7 @@ VERB throw
 						
 		IF pavimento HERE
 			THEN "on the floor"
-		ELSIF ground HERE 
+		ELSIF ground HERE
 			THEN "on the ground"
 		END IF.
 		
@@ -1888,28 +1888,28 @@ END VERB.
 VERB throw_at
 	WHEN proiettile
 		DOES ONLY
-				-- implicit taking: 
-				IF proiettile NOT DIRECTLY IN hero 
+				-- implicit taking:
+				IF proiettile NOT DIRECTLY IN hero
 					THEN LOCATE proiettile IN hero.
 					SAY implicit_taking_message OF my_game.
 				END IF.
 				-- end of implicit taking.
       	  				
 				IF bersaglio IS inanimato
-					THEN 
+					THEN
 						IF bersaglio NOT DIRECTLY AT hero		
 							-- e.g. the bersaglio is inside a box
 							THEN "It wouldn't accomplish anything trying to throw
 								 something at" SAY THE bersaglio. "."
-							ELSE 
+							ELSE
 								SAY THE proiettile.
- 
+
 								IF proiettile IS NOT plurale
 									THEN "bounces"
 									ELSE "bounce"
 								END IF.
 
-								"harmlessly off" 
+								"harmlessly off"
 
 								SAY THE bersaglio. "and"
 
@@ -1940,9 +1940,9 @@ END VERB.
 
 VERB throw_to
    WHEN proiettile
-	DOES ONLY 
+	DOES ONLY
 		-- implicit taking:
-		IF proiettile NOT DIRECTLY IN hero 
+		IF proiettile NOT DIRECTLY IN hero
 			THEN LOCATE proiettile IN hero.
 				SAY implicit_taking_message OF my_game.	
 		END IF.
@@ -1959,7 +1959,7 @@ VERB throw_in
    WHEN proiettile
 	DOES ONLY
 		-- implicit taking:
-		IF proiettile NOT DIRECTLY IN hero 
+		IF proiettile NOT DIRECTLY IN hero
 			THEN LOCATE proiettile IN hero.
 				SAY implicit_taking_message OF my_game.	
 		END IF.
@@ -1972,14 +1972,14 @@ VERB throw_in
 		-- Throwing objects into containers, even when these objects are
 		-- in the 'allowed' set of the container, is not successful by
 		-- default; this is to avoid successful outcomes for commands like
-		-- 'throw plate into cupboard' etc. 
+		-- 'throw plate into cupboard' etc.
 	
 END VERB.
 
 
 
 VERB tie
-	DOES ONLY 
+	DOES ONLY
 		"You must state where you want to tie" SAY THE ogg. "."
 END VERB.
 
@@ -1989,7 +1989,7 @@ VERB tie_to
 	WHEN ogg
 		DOES ONLY
 				-- implicit taking:
-				IF ogg NOT DIRECTLY IN hero 
+				IF ogg NOT DIRECTLY IN hero
 					THEN LOCATE ogg IN hero.
 						SAY implicit_taking_message OF my_game.
 				END IF.	
@@ -2017,7 +2017,7 @@ END VERB.
 
 
 VERB turn
-	DOES ONLY 
+	DOES ONLY
 		IF ogg DIRECTLY IN hero
 			THEN "You turn" SAY THE ogg. "in your hands, noticing nothing special."
 			ELSE "That wouldn't accomplish anything."
@@ -2051,11 +2051,11 @@ END VERB.
 
 
 VERB undress
-	DOES ONLY 
+	DOES ONLY
 		"You don't feel like undressing is a good idea right now."
 																						
 	   	-- To make it work, use the following lines instead:					
-	    	--IF COUNT DIRECTLY IN worn, ISA CLOTHING > 0 
+	    	--IF COUNT DIRECTLY IN worn, IsA CLOTHING > 0
 			--THEN EMPTY worn IN hero.
 				--"You remove all the items you were wearing."
 		    	--ELSE "You're not wearing anything you can remove."
@@ -2089,7 +2089,7 @@ VERB 'use'
 	DOES ONLY
 		"Please be more specific. How do you intend to use"		
 		IF ogg IS NOT plurale
-			THEN "it?" 
+			THEN "it?"
 			ELSE "them?"
 		END IF.
 END VERB.
@@ -2107,7 +2107,7 @@ END VERB.
 VERB 'verbose'
 	DOES ONLY
 		VISITS 0.
-		"Verbose mode is now on. Location descriptions will be 
+		"Verbose mode is now on. Location descriptions will be
 		always shown in full."
 END VERB.
 
@@ -2122,7 +2122,7 @@ END VERB.
 
 VERB wear
 	DOES ONLY
-		IF ogg IS NOT plurale 
+		IF ogg IS NOT plurale
 			THEN "That's"
 			ELSE "Those are"
 		END IF.
@@ -2159,7 +2159,7 @@ END VERB.
 
 
 
-VERB who_am_i 
+VERB who_am_i
 	DOES ONLY
 		"Maybe examining yourself might help."
 END VERB.
@@ -2180,8 +2180,8 @@ END VERB.
 
 
 
-VERB yes 
-	DOES ONLY 
+VERB yes
+	DOES ONLY
 		"Really?"
 END VERB.
 

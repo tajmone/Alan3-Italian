@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.2.41 (2018/07/24)
+-- "lib_verbi.i" v0.3.0 (2018/07/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -12,7 +12,7 @@
 --------------------------------------------------------------------------------
 -- Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima)
 -- e comandi di gioco (dopo il divisorio orizzontale di tabella).
- 
+
 --+--------------------+------------------------------+-----------------------------+---+---+---+
 --| VERBO              | SINONIMI                     | SINTASSI                    | M | A | O |
 --|--------------------|------------------------------|-----------------------------|---|---|---|
@@ -404,7 +404,7 @@ END VERB.
 
 
 SYNTAX apri = apri (ogg)
-      WHERE ogg ISA OBJECT
+      WHERE ogg IsA OBJECT
         ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -493,13 +493,13 @@ END ADD TO.
 -- SYNTAX open_with = open (ogg) 'with' (strum)
 
 SYNTAX apri_con = apri (ogg) con (strum)
-      WHERE ogg ISA OBJECT
+      WHERE ogg IsA OBJECT
         ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-      AND strum ISA OBJECT
+      AND strum IsA OBJECT
         ELSE
       IF strum IS NOT plurale
         THEN SAY illegal_parameter2_with_sg OF my_game.
@@ -626,7 +626,7 @@ END VERB.
 -- SYNTAX climb_through = climb through (obj)
 
 SYNTAX attraversa = attraversa (ogg)
-    WHERE ogg ISA OBJECT
+    WHERE ogg IsA OBJECT
       ELSE
         IF ogg IS NOT plurale
           THEN SAY ogg1_inadatto_sg OF my_game.
@@ -695,7 +695,7 @@ END ADD TO.
 -- SYNTAX drink = drink (liq)
 
 SYNTAX bevi = bevi (liq)
-  WHERE liq ISA liquido    -- see 'classes.i'
+  WHERE liq IsA liquido    -- see 'classes.i'
     ELSE
       IF liq IS NOT plurale
         THEN SAY ogg1_inadatto_sg OF my_game.
@@ -813,7 +813,7 @@ END ADD TO.
 
 
 SYNTAX blocca = blocca (ogg)
-      WHERE ogg ISA OBJECT
+      WHERE ogg IsA OBJECT
         ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -890,13 +890,13 @@ END ADD TO.
 
 
 SYNTAX blocca_con = blocca (ogg) con (chiave)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
       ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-  AND chiave ISA OBJECT
+  AND chiave IsA OBJECT
       ELSE
       IF chiave IS NOT plurale
         THEN SAY illegal_parameter2_with_sg OF my_game.
@@ -976,11 +976,11 @@ END ADD TO.
 --        Inoltre, "col" è sinonimo di "con".
 
 SYNTAX brucia = brucia (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY ogg1_inadatto_sg OF my_game.
-        ELSE SAY ogg1_inadatto_pl OF my_game. 
+        ELSE SAY ogg1_inadatto_pl OF my_game.
      -- THEN SAY illegal_parameter_sg OF my_game.
      -- ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
@@ -1019,7 +1019,7 @@ END ADD TO.
 
 
 SYNTAX brucia_con = brucia (ogg) 'con' (strum)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY ogg1_inadatto_sg OF my_game.
@@ -1028,7 +1028,7 @@ SYNTAX brucia_con = brucia (ogg) 'con' (strum)
      -- ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
       "bruciare."
-  AND strum ISA OBJECT
+  AND strum IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY parametro2_illegale_CON_sg OF my_game.
@@ -1102,7 +1102,7 @@ END ADD TO.
 
 
 SYNTAX chiudi = chiudi (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -1166,13 +1166,13 @@ END ADD TO.
 
 
 SYNTAX chiudi_con = chiudi (ogg) con (strum)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-  AND strum ISA OBJECT
+  AND strum IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter2_with_sg OF my_game.
@@ -1242,7 +1242,7 @@ END ADD TO.
 
 
 SYNTAX compra = compra (merce)
-  WHERE merce ISA OBJECT
+  WHERE merce IsA OBJECT
     ELSE
       IF merce IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
@@ -1297,10 +1297,10 @@ END ADD TO.
 -- SYNTAX give_to = 'give' (obj) 'to' (recipient)
 
 SYNTAX dai_a = 'dai' (ogg) 'a' (ricevente)
-      WHERE ogg ISA OBJECT
+      WHERE ogg IsA OBJECT
         --> @TODO!!                                                             TRANSLATE!
         ELSE SAY illegal_parameter_obj OF my_game.
-      AND ricevente ISA ACTOR
+      AND ricevente IsA ACTOR
         ELSE
       IF ogg IS NOT plurale
         --> @TODO!!                                                             TRANSLATE!
@@ -1395,22 +1395,22 @@ END ADD TO.
 
 -- ==============================================================
 
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~      
+--||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 --|| BUG: Per qualche ragione, Alan non riesce a preservare la 'è' nelle sintassi
 --||      e nei sinonimi! (mentre non ci sonop problemi con le istanze ed i parametri)
 --||      Tutte le altre lettere accentate funzionano (à é ì ò ù), solo 'è' causa
 --||      problemi!
---||      
+--||
 --||      Per ora dovrò ripiegare sulla 'é', finché il problema non è risolto a
 --||      monte tramite un bugfix. So che è orribile (oltre che inutile), ma è
 --||      giusto per andare avanti con il lavoro.
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~      
+--||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -- SYNTAX who_is = 'who' 'is' (png)!
 --        who_is = 'who' 'are' (png)!.
 
 SYNTAX  chi_è = chi é (png)!   --> BUG: 'è' instead of 'é'                      FIXME!
-  WHERE png ISA ACTOR
+  WHERE png IsA ACTOR
     ELSE
       IF png IS NOT plurale
         THEN SAY illegal_parameter_who_sg OF my_game.
@@ -1464,21 +1464,21 @@ END VERB.
 
 -- ==============================================================
 
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~      
+--||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 --|| BUG: Per qualche ragione, Alan non riesce a preservare la 'è' nelle sintassi
 --||      e nei sinonimi! (mentre non ci sonop problemi con le istanze ed i parametri)
 --||      Tutte le altre lettere accentate funzionano (à é ì ò ù), solo 'è' causa
 --||      problemi!
---||      
+--||
 --||      Per ora dovrò ripiegare sulla 'é', finché il problema non è risolto a
 --||      monte tramite un bugfix. So che è orribile (oltre che inutile), ma è
 --||      giusto per andare avanti con il lavoro.
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~      
+--||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -- SYNTAX what_is = 'what' 'is' (ogg)!
 
 SYNTAX  cosa_è = cosa é (ogg)!            --> BUG: 'è' instead of 'é'           FIXME!
-  WHERE ogg ISA THING
+  WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_what_sg OF my_game.
@@ -1567,23 +1567,23 @@ END VERB.
 
 -- ==============================================================
 
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~      
+--||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 --|| BUG: Per qualche ragione, Alan non riesce a preservare la 'è' nelle sintassi
 --||      e nei sinonimi! (mentre non ci sonop problemi con le istanze ed i parametri)
 --||      Tutte le altre lettere accentate funzionano (à é ì ò ù), solo 'è' causa
 --||      problemi!
---||      
+--||
 --||      Per ora dovrò ripiegare sulla 'é', finché il problema non è risolto a
 --||      monte tramite un bugfix. So che è orribile (oltre che inutile), ma è
 --||      giusto per andare avanti con il lavoro.
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~      
+--||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 -- SYNTAX where_is = 'where' 'is' (ogg)!
 --        where_is = 'where' 'are' (ogg)!.
 
 SYNTAX  dove_è = dove é (ogg)!            --> BUG: 'è' instead of 'é'           FIXME!
-  WHERE ogg ISA THING
+  WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_what_sg OF my_game.
@@ -1668,7 +1668,7 @@ END VERB.
 --   'check', inspect, observe, x = examine.
 
 SYNTAX esamina = esamina (ogg)
-  WHERE ogg ISA THING
+  WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_examine_sg OF my_game.
@@ -1705,7 +1705,7 @@ ADD TO EVERY THING
         THEN SAY xDesc OF ogg.
       ELSIF ogg IS leggibile AND testo OF ogg <> ""
       --+-----------------------------------------------------------------------
-      --| Se la stringa 'xDesc' è vuota, e si tratta di un oggetto leggibile 
+      --| Se la stringa 'xDesc' è vuota, e si tratta di un oggetto leggibile
       --| contenente del 'testo', allora ESAMINA si comporterà come LEGGI:
       --+-----------------------------------------------------------------------
         THEN "Leggi" SAY THE ogg. "."
@@ -1782,7 +1782,7 @@ END VERB.
 -- i6: lascia, lancia, abbandona, posa, metti giù
 
 SYNTAX  lascia = lascia (ogg)*
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -1816,7 +1816,7 @@ END ADD TO.
 
 -- SYNONYMS
 --   abbandona = lascia.
--- 
+--
 -- @NOTA | non si può implementare 'abbandona' come sinonimo di 'lascia' perché
 --       | abbandona_partita lo usa già nella sua sintassi:
 --       | 333 E : The word 'abbandona' is defined to be both a synonym and another word class.
@@ -1846,7 +1846,7 @@ END ADD TO.
 
 
 SYNTAX leggi = leggi (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
       ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -1900,7 +1900,7 @@ END ADD TO.
 -- SYNTAX eat = eat (food)
 
 SYNTAX mangia = mangia (cibo)
-  WHERE cibo ISA OBJECT
+  WHERE cibo IsA OBJECT
     ELSE
       IF cibo IS NOT plurale
         --> @TODO!!                                                             TRANSLATE!
@@ -1995,7 +1995,7 @@ END VERB.
 -- @PRENDI -> @TAKE (SYNTAX)         => take (obj)
 
 SYNTAX prendi = prendi (ogg)
-      WHERE ogg ISA THING
+      WHERE ogg IsA THING
         ELSE
       IF ogg IS NOT plurale
         --> @TODO!!                                                             TRANSLATE!
@@ -2101,7 +2101,7 @@ ADD TO EVERY THING
           ELSE SAY check_obj_weight_pl OF my_game.
         END IF.
         DOES
-      IF ogg ISA ACTOR
+      IF ogg IsA ACTOR
         --> @TODO!!                                                             TRANSLATE!
         THEN SAY THE ogg. "would probably object to that."
       -- actors are not prohibited from being taken in the checks; this is to
@@ -2109,12 +2109,12 @@ ADD TO EVERY THING
       -- a cage, etc.
 
 
-      ELSIF ogg ISA OBJECT
+      ELSIF ogg IsA OBJECT
         THEN IF ogg DIRECTLY IN worn
             THEN LOCATE ogg IN hero.
               --> @TODO!!                                                       TRANSLATE!
               "You take off" SAY THE ogg. "and carry it in your hands."
-              IF ogg ISA CLOTHING
+              IF ogg IsA CLOTHING
                 THEN EXCLUDE ogg FROM wearing OF hero.
               END IF.
             ELSE LOCATE ogg IN hero.
@@ -2161,21 +2161,21 @@ END ADD TO.
 --------------------------------------------------------------------------------
 
 SYNTAX prendi_da = 'prendi' (ogg) 'da' (detentore)
-      WHERE ogg ISA THING
+      WHERE ogg IsA THING
         ELSE
       IF ogg IS NOT plurale
         --> @TODO!!                                                             TRANSLATE!
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-      AND detentore ISA THING
+      AND detentore IsA THING
         ELSE
       IF detentore IS NOT plurale
         --> @TODO!!                                                             TRANSLATE!
         THEN SAY illegal_parameter2_from_sg OF my_game. --> "That's not something you can take things from."
         ELSE SAY illegal_parameter2_from_pl OF my_game. --> "Those are not something you can take things from."
       END IF.
-      AND detentore ISA CONTAINER
+      AND detentore IsA CONTAINER
         ELSE
       IF detentore IS NOT plurale
         --> @TODO!!                                                             TRANSLATE!
@@ -2267,7 +2267,7 @@ ADD TO EVERY THING
         ELSE
           IF detentore IS inanimato
             THEN
-              IF detentore ISA SUPPORTER
+              IF detentore IsA SUPPORTER
                 THEN
                   IF ogg IS NOT plurale
                     --> @TODO!!                                                 TRANSLATE!
@@ -2289,15 +2289,15 @@ ADD TO EVERY THING
               END IF.
           END IF.
       DOES
-        IF ogg ISA ACTOR
+        IF ogg IsA ACTOR
           --> @TODO!!                                                           TRANSLATE!
           THEN SAY THE ogg. "would probably object to that."
             -- actors are not prohibited from being taken in the checks; this is to
             -- allow for example a dog to be picked up, or a bird to be taken out of
             -- a cage, etc.
-        ELSIF ogg ISA OBJECT
+        ELSIF ogg IsA OBJECT
           THEN
-            IF detentore ISA LISTED_CONTAINER AND detentore IS NOT aperto
+            IF detentore IsA LISTED_CONTAINER AND detentore IS NOT aperto
               --> @TODO!!                                                       TRANSLATE!
               THEN "You can't;" SAY THE detentore.
                   IF detentore IS NOT plurale
@@ -2362,7 +2362,7 @@ END VERB.
 
 
 SYNTAX rompi = rompi (ogg)
-    WHERE ogg ISA OBJECT
+    WHERE ogg IsA OBJECT
       ELSE
         IF ogg IS NOT plurale
           --> @TODO!!                                                           TRANSLATE!
@@ -2425,7 +2425,7 @@ END ADD TO.
 -- SYNTAX break_with = break (obj) 'with' (instr)
 
 SYNTAX rompi_con = rompi (ogg) 'con' (strum)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
@@ -2435,7 +2435,7 @@ SYNTAX rompi_con = rompi (ogg) 'con' (strum)
         -- ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
       "rompere."
-  AND strum ISA OBJECT
+  AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
         --> @TODO!!                                                             TRANSLATE!
@@ -2508,7 +2508,7 @@ END ADD TO.
 
 
 SYNTAX sblocca = sblocca (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -2572,13 +2572,13 @@ END ADD TO.
 
 
 SYNTAX sblocca_con = sblocca (ogg) con (chiave)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-  AND chiave ISA OBJECT
+  AND chiave IsA OBJECT
       ELSE SAY illegal_parameter_with_sg OF my_game. "."
 
 
@@ -2652,9 +2652,9 @@ END ADD TO.
 --        write = write (txt) 'in' (obj).
 
 SYNTAX  scrivi = scrivi (txt) su (ogg)
-    WHERE txt ISA STRING
+    WHERE txt IsA STRING
       ELSE SAY illegal_parameter_string OF my_game.
-    AND ogg ISA OBJECT
+    AND ogg IsA OBJECT
       ELSE SAY illegal_parameter2_there OF my_game.
 
         scrivi = scrivi (txt) 'in' (ogg).
@@ -2707,7 +2707,7 @@ END ADD TO.
 
 
 SYNTAX  scrivi_errore1 = scrivi su (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       "Per poter scrivere, usa la sintassi SCRIVI ""TESTO"" SU (IN) OGGETTO."
     -- "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
@@ -2733,7 +2733,7 @@ END VERB.
 
 
 SYNTAX scrivi_errore3 = scrivi (txt)
-  WHERE txt ISA STRING
+  WHERE txt IsA STRING
     ELSE
       "Per poter scrivere, usa la sintassi SCRIVI ""TESTO"" SU (IN) OGGETTO."
 
@@ -2775,7 +2775,7 @@ VERB spogliati
 --@TODO: sintassi 'desempio commentata (da verificare e testare)!
 --| Per implementare l'azione di spogliarsi, usa:
 --|--------------------------------------------------------
---| IF COUNT DIRECTLY IN worn, ISA CLOTHING > 0
+--| IF COUNT DIRECTLY IN worn, IsA CLOTHING > 0
 --|   THEN EMPTY worn IN hero.
 --|     "Fatto. Ora non indossi più nulla."
 --|     -- "You remove all the items you were wearing."
@@ -2798,7 +2798,7 @@ END VERB.
 
 
 SYNTAX usa = usa (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE "Solo gli oggetti sono utilizzabili!"
  -- ELSE SAY illegal_parameter_obj OF my_game.
 
@@ -2838,10 +2838,10 @@ END ADD TO.
 
 
 SYNTAX usa_con = usa (ogg) con (strum)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE "Solo gli oggetti sono utilizzabili!"
  -- ELSE SAY illegal_parameter_obj OF my_game.
-  AND strum ISA OBJECT
+  AND strum IsA OBJECT
     ELSE "Solo gli oggetti sono utilizzabili!"
  -- ELSE SAY illegal_parameter_obj OF my_game.
 
@@ -2883,7 +2883,7 @@ END ADD TO.
 SYNTAX vai_a = 'a' (dest)!
   -- Because 'go' is predefined in the parser, it can't be used in verb definitions.
   -- The player will still be able to type 'go to [dest]' successfully.
-  WHERE dest ISA THING
+  WHERE dest IsA THING
     ELSE SAY illegal_parameter_go OF my_game.
 
 
@@ -2950,7 +2950,7 @@ END ADD TO.
 -- SYNTAX sell = sell (merce)
 
 SYNTAX vendi = vendi (merce)
-  WHERE merce ISA OBJECT
+  WHERE merce IsA OBJECT
     ELSE
       IF merce IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -3036,7 +3036,7 @@ END VERB.
 
 
 SYNTAX answer = answer (argomento)
-  WHERE argomento ISA STRING
+  WHERE argomento IsA STRING
     ELSE SAY illegal_parameter_string OF my_game.
 
 
@@ -3064,13 +3064,13 @@ END ADD TO.
 
 
 SYNTAX ask = ask (png) about (argomento)!
-      WHERE png ISA ACTOR
+      WHERE png IsA ACTOR
         ELSE
       IF png IS NOT plurale
         THEN SAY illegal_parameter_talk_sg OF my_game.
         ELSE SAY illegal_parameter_talk_pl OF my_game.
       END IF.
-      AND argomento ISA THING
+      AND argomento IsA THING
         ELSE
       IF argomento IS NOT plurale
         THEN SAY illegal_parameter_about_sg OF my_game.
@@ -3128,13 +3128,13 @@ END ADD TO.
 
 
 SYNTAX ask_for = ask (png) 'for' (ogg)
-  WHERE png ISA ACTOR
+  WHERE png IsA ACTOR
     ELSE
       IF png IS NOT plurale
         THEN SAY illegal_parameter_talk_sg OF my_game.
         ELSE SAY illegal_parameter_talk_pl OF my_game.
       END IF.
-  AND ogg ISA OBJECT
+  AND ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_for_sg OF my_game.
@@ -3207,7 +3207,7 @@ END ADD TO.
 
 
 SYNTAX ask_for_error = ask 'for' (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE "Please use the formulation ASK PERSON FOR THING to ask somebody for
        something."
 
@@ -3232,7 +3232,7 @@ END ADD TO.
 
 
 SYNTAX attack = attack (bersaglio)
-      WHERE bersaglio ISA THING
+      WHERE bersaglio IsA THING
         ELSE
       IF bersaglio IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -3303,13 +3303,13 @@ END ADD TO.
 
 
 SYNTAX attack_with = attack (bersaglio) 'with' (arma)
-      WHERE bersaglio ISA THING
+      WHERE bersaglio IsA THING
     ELSE
       IF bersaglio IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-      AND arma ISA arma
+      AND arma IsA arma
         ELSE
       IF arma IS NOT plurale
         THEN SAY illegal_parameter2_with_sg OF my_game.
@@ -3377,7 +3377,7 @@ END ADD TO.
 
 
 SYNTAX bite = bite (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -3488,7 +3488,7 @@ END VERB.
 
 
 SYNTAX catch = catch (ogg)
-  WHERE ogg ISA THING
+  WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -3537,7 +3537,7 @@ END ADD TO.
 
 
 SYNTAX clean = clean (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -3597,7 +3597,7 @@ END ADD TO.
 
 
 SYNTAX climb = climb (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -3662,7 +3662,7 @@ END ADD TO.
 
 
 SYNTAX climb_on = climb 'on' (superficie)
-  WHERE superficie ISA SUPPORTER
+  WHERE superficie IsA SUPPORTER
     ELSE
       IF superficie IS NOT plurale
         THEN SAY illegal_parameter_on_sg OF my_game.
@@ -3718,14 +3718,14 @@ END ADD TO.
 
 
 SYNTAX consult = consult (fonte) about (argomento)!
-  WHERE fonte ISA OBJECT
+  WHERE fonte IsA OBJECT
     -- you can only consult an inanimate source, not a person.
     ELSE
       IF fonte IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-  AND argomento ISA THING
+  AND argomento IsA THING
     ELSE
       IF argomento IS NOT plurale
         THEN SAY illegal_parameter_consult_sg OF my_game.
@@ -3775,7 +3775,7 @@ END ADD TO.
 
 
 SYNTAX consult_error = consult (fonte)
-  WHERE fonte ISA THING
+  WHERE fonte IsA THING
     ELSE "To consult something, please use the formulation
           CONSULT THING ABOUT PERSON/THING."
 
@@ -3829,7 +3829,7 @@ END VERB.
 
 
 SYNTAX cut = cut (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -3866,13 +3866,13 @@ END ADD TO.
 
 
 SYNTAX cut_with = cut (ogg) 'with' (strum)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-  AND strum ISA OBJECT
+  AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
         THEN SAY illegal_parameter2_with_sg OF my_game.
@@ -3963,7 +3963,7 @@ END VERB.
 
 
 SYNTAX dig = dig (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -4048,7 +4048,7 @@ END VERB.
 
 
 SYNTAX dive_in = dive 'in' (liq)
-  WHERE liq ISA liquido    -- see 'classes.i'
+  WHERE liq IsA liquido    -- see 'classes.i'
     ELSE
       IF liq IS NOT plurale
         THEN SAY illegal_parameter_in_sg OF my_game.
@@ -4097,7 +4097,7 @@ END ADD TO.
 
 
 SYNTAX drive = drive (veicolo)
-  WHERE veicolo ISA OBJECT
+  WHERE veicolo IsA OBJECT
     ELSE
       IF veicolo IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -4176,13 +4176,13 @@ END VERB.
 
 
 SYNTAX 'empty' = 'empty' (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-  AND ogg ISA CONTAINER
+  AND ogg IsA CONTAINER
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -4190,13 +4190,13 @@ SYNTAX 'empty' = 'empty' (ogg)
       END IF.
 
   pour = pour (ogg)
-    WHERE ogg ISA OBJECT
+    WHERE ogg IsA OBJECT
       ELSE
         IF ogg IS NOT plurale
           THEN SAY illegal_parameter_sg OF my_game.
           ELSE SAY illegal_parameter_pl OF my_game.
         END IF.
-    AND ogg ISA CONTAINER
+    AND ogg IsA CONTAINER
       ELSE
         IF ogg IS NOT plurale
           THEN SAY illegal_parameter_sg OF my_game.
@@ -4242,7 +4242,7 @@ ADD TO EVERY OBJECT
       END IF.
       -- end of implicit taking.
 
-      IF COUNT ISA OBJECT, DIRECTLY IN ogg = 0
+      IF COUNT IsA OBJECT, DIRECTLY IN ogg = 0
         THEN "There is nothing in" SAY THE ogg. "."
         ELSE
           "You $v the contents of" SAY THE ogg.
@@ -4269,49 +4269,49 @@ END ADD TO.
 
 
 SYNTAX empty_in = 'empty' (ogg) 'in' (cont)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-  AND ogg ISA CONTAINER
+  AND ogg IsA CONTAINER
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-  AND cont ISA OBJECT
+  AND cont IsA OBJECT
     ELSE
-      IF cont ISA ACTOR
+      IF cont IsA ACTOR
         THEN SAY illegal_parameter_act OF my_game.
         ELSE SAY illegal_parameter2_there OF my_game.
       END IF.
-  AND cont ISA CONTAINER
+  AND cont IsA CONTAINER
     ELSE SAY illegal_parameter2_there OF my_game.
 
 
 
 pour_in = pour (ogg) 'in' (cont)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-  AND ogg ISA CONTAINER
+  AND ogg IsA CONTAINER
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-  AND cont ISA OBJECT
+  AND cont IsA OBJECT
     ELSE
-      IF cont ISA ACTOR
+      IF cont IsA ACTOR
         THEN SAY illegal_parameter_act OF my_game.
         ELSE SAY illegal_parameter2_there OF my_game.
       END IF.
-  AND cont ISA CONTAINER
+  AND cont IsA CONTAINER
     ELSE SAY illegal_parameter2_there OF my_game.
 
 
@@ -4387,7 +4387,7 @@ ADD TO EVERY OBJECT
       END IF.
       -- end of implicit taking.
 
-      IF COUNT ISA OBJECT, DIRECTLY IN ogg = 0
+      IF COUNT IsA OBJECT, DIRECTLY IN ogg = 0
         THEN "There is nothing in" SAY THE ogg. "."
         ELSE
           EMPTY ogg IN cont.
@@ -4410,39 +4410,39 @@ END ADD TO.
 
 
 SYNTAX empty_on = 'empty' (ogg) 'on' (superficie)
-    WHERE ogg ISA OBJECT
+    WHERE ogg IsA OBJECT
       ELSE
         IF ogg IS NOT plurale
           THEN SAY illegal_parameter_sg OF my_game.
           ELSE SAY illegal_parameter_pl OF my_game.
         END IF.
-    AND ogg ISA CONTAINER
+    AND ogg IsA CONTAINER
       ELSE
         IF ogg IS NOT plurale
           THEN SAY illegal_parameter_sg OF my_game.
           ELSE SAY illegal_parameter_pl OF my_game.
         END IF.
-    AND superficie ISA THING
+    AND superficie IsA THING
       ELSE SAY illegal_parameter2_there OF my_game.
-    AND superficie ISA CONTAINER
+    AND superficie IsA CONTAINER
       ELSE SAY illegal_parameter2_there OF my_game.
 
   pour_on = pour (ogg) 'on' (superficie)
-    WHERE ogg ISA OBJECT
+    WHERE ogg IsA OBJECT
       ELSE
         IF ogg IS NOT plurale
           THEN SAY illegal_parameter_sg OF my_game.
           ELSE SAY illegal_parameter_pl OF my_game.
         END IF.
-    AND ogg ISA CONTAINER
+    AND ogg IsA CONTAINER
       ELSE
         IF ogg IS NOT plurale
           THEN SAY illegal_parameter_sg OF my_game.
           ELSE SAY illegal_parameter_pl OF my_game.
         END IF.
-    AND superficie ISA OBJECT
+    AND superficie IsA OBJECT
       ELSE SAY illegal_parameter2_there OF my_game.
-    AND superficie ISA CONTAINER
+    AND superficie IsA CONTAINER
       ELSE SAY illegal_parameter2_there OF my_game.
 
 
@@ -4501,7 +4501,7 @@ ADD TO EVERY THING
         END IF.
         -- end of implicit taking.
 
-        IF COUNT ISA OBJECT, DIRECTLY IN ogg = 0
+        IF COUNT IsA OBJECT, DIRECTLY IN ogg = 0
           THEN "There is nothing in" SAY THE ogg. "."
           ELSE
             IF superficie = pavimento OR superficie = ground
@@ -4532,7 +4532,7 @@ END ADD TO.
 
 
 SYNTAX enter = enter (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -4586,7 +4586,7 @@ END VERB.
 
 
 SYNTAX 'exit' = 'exit' (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -4633,7 +4633,7 @@ END VERB.
 
 
 SYNTAX extinguish = extinguish (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -4695,13 +4695,13 @@ END ADD TO.
 
 
 SYNTAX fill = fill (cont)
-  WHERE cont ISA OBJECT
+  WHERE cont IsA OBJECT
     ELSE
       IF cont IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-  AND cont ISA CONTAINER
+  AND cont IsA CONTAINER
     ELSE
       IF cont IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -4739,19 +4739,19 @@ END ADD TO.
 
 
 SYNTAX fill_with = fill (cont) 'with' (sostanza)
-  WHERE cont ISA OBJECT
+  WHERE cont IsA OBJECT
     ELSE
       IF cont IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-  AND cont ISA CONTAINER
+  AND cont IsA CONTAINER
     ELSE
       IF cont IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-  AND sostanza ISA OBJECT
+  AND sostanza IsA OBJECT
     ELSE
       IF sostanza IS NOT plurale
         THEN SAY illegal_parameter2_with_sg OF my_game.
@@ -4826,7 +4826,7 @@ END ADD TO.
 
 
 SYNTAX find = find (ogg)!
-    WHERE ogg ISA THING
+    WHERE ogg IsA THING
       ELSE
         IF ogg IS NOT plurale
           THEN SAY illegal_parameter_sg OF my_game.
@@ -4868,7 +4868,7 @@ END ADD TO.
 
 
 SYNTAX fire = fire (arma)
-  WHERE arma ISA arma
+  WHERE arma IsA arma
     ELSE
       IF arma IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -4906,13 +4906,13 @@ END ADD TO.
 
 
 SYNTAX fire_at = fire (arma) 'at' (bersaglio)
-  WHERE arma ISA arma
+  WHERE arma IsA arma
     ELSE
       IF arma IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-  AND bersaglio ISA THING
+  AND bersaglio IsA THING
     ELSE SAY illegal_parameter_at OF my_game.
 
 
@@ -4953,7 +4953,7 @@ END ADD TO.
 
 
 SYNTAX fire_at_error = fire 'at' (bersaglio)
-  WHERE bersaglio ISA THING
+  WHERE bersaglio IsA THING
     ELSE
       IF bersaglio IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -4963,7 +4963,7 @@ SYNTAX fire_at_error = fire 'at' (bersaglio)
 
 ADD TO EVERY THING
   VERB fire_at_error
-    CHECK COUNT ISA ARMA, can sparare, DIRECTLY IN hero > 0
+    CHECK COUNT IsA ARMA, can sparare, DIRECTLY IN hero > 0
       ELSE SAY check_count_weapon_in_hero OF my_game.
     AND bersaglio <> hero
       ELSE SAY check_obj_not_hero2 OF my_game.
@@ -4986,7 +4986,7 @@ END ADD TO.
 
 
 SYNTAX fix = fix (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -5041,7 +5041,7 @@ END ADD TO.
 
 
 SYNTAX follow = follow (png)!
-  WHERE png ISA ACTOR
+  WHERE png IsA ACTOR
     ELSE
       IF png IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -5087,7 +5087,7 @@ END ADD TO.
 
 
 SYNTAX free = free (ogg)
-  WHERE ogg ISA THING
+  WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -5146,7 +5146,7 @@ END ADD TO.
 
 
 SYNTAX get_off = get off (superficie)
-  WHERE superficie ISA SUPPORTER
+  WHERE superficie IsA SUPPORTER
     ELSE
       IF superficie IS NOT plurale
         THEN SAY illegal_parameter_off_sg OF my_game.
@@ -5271,13 +5271,13 @@ END VERB.
 
 
 SYNTAX jump_in = jump 'in' (cont)
-  WHERE cont ISA OBJECT
+  WHERE cont IsA OBJECT
     ELSE
       IF cont IS NOT plurale
         THEN SAY illegal_parameter_in_sg OF my_game.
         ELSE SAY illegal_parameter_in_pl OF my_game.
       END IF.
-  AND cont ISA CONTAINER
+  AND cont IsA CONTAINER
     ELSE
       IF cont IS NOT plurale
         THEN SAY illegal_parameter_in_sg OF my_game.
@@ -5331,7 +5331,7 @@ END ADD TO.
 
 
 SYNTAX jump_on = jump 'on' (superficie)
-  WHERE superficie ISA SUPPORTER
+  WHERE superficie IsA SUPPORTER
     ELSE
       IF superficie IS NOT plurale
         THEN SAY illegal_parameter_on_sg OF my_game.
@@ -5370,7 +5370,7 @@ END ADD TO.
 
 
 SYNTAX kick = kick (bersaglio)
-  WHERE bersaglio ISA THING
+  WHERE bersaglio IsA THING
     ELSE
       IF bersaglio IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -5429,7 +5429,7 @@ END ADD TO.
 
 
 SYNTAX kill = kill (vittima)
-  WHERE vittima ISA ACTOR
+  WHERE vittima IsA ACTOR
     ELSE
       IF vittima IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -5468,13 +5468,13 @@ END ADD TO.
 
 
 SYNTAX kill_with = kill (vittima) 'with' (arma)
-  WHERE vittima ISA ACTOR
+  WHERE vittima IsA ACTOR
     ELSE
       IF vittima IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-  AND arma ISA arma
+  AND arma IsA arma
     ELSE
       IF arma IS NOT plurale
         THEN SAY illegal_parameter_with_sg OF my_game.
@@ -5516,7 +5516,7 @@ END ADD TO.
 
 
 SYNTAX kiss = kiss (ogg)
-  WHERE ogg ISA THING
+  WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -5558,7 +5558,7 @@ ADD TO EVERY THING
             END IF.
         END IF.
     DOES
-      IF ogg ISA ACTOR
+      IF ogg IsA ACTOR
         THEN SAY THE ogg. "avoids your advances."
         ELSE
           "Farlo non servirebbe a nulla."
@@ -5578,7 +5578,7 @@ END ADD TO.
 
 
 SYNTAX knock = knock 'on' (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_on_sg OF my_game.
@@ -5683,13 +5683,13 @@ END VERB.
 
 
 SYNTAX  lie_in = lie 'in' (cont)
-  WHERE cont ISA OBJECT
+  WHERE cont IsA OBJECT
     ELSE
       IF cont IS NOT plurale
         THEN SAY illegal_parameter_in_sg OF my_game.
         ELSE SAY illegal_parameter_in_pl OF my_game.
       END IF.
-  AND cont ISA CONTAINER
+  AND cont IsA CONTAINER
     ELSE
       IF cont IS NOT plurale
         THEN SAY illegal_parameter_in_sg OF my_game.
@@ -5725,7 +5725,7 @@ ADD TO EVERY OBJECT
     DOES
       "There's no need to lie down in" SAY THE cont. "."
       -- If you need this to work, make a nested location
-      -- (for example THE in_bed ISA LOCATION AT bedroom; etc.)
+      -- (for example THE in_bed IsA LOCATION AT bedroom; etc.)
       -- Remember to: MAKE hero lying_down.
       -- Presently, an actor cannot be located inside a container object.
   END VERB.
@@ -5753,7 +5753,7 @@ END ADD TO.
 
 
 SYNTAX lie_on = lie 'on' (superficie)
-  WHERE superficie ISA SUPPORTER
+  WHERE superficie IsA SUPPORTER
     ELSE
       IF superficie IS NOT plurale
         THEN SAY illegal_parameter_on_sg OF my_game.
@@ -5789,7 +5789,7 @@ ADD TO EVERY OBJECT
     DOES
       "There's no need to lie down on" SAY THE superficie. "."
       -- If you need this to work, make a nested location
-      -- (for example THE on_bed ISA LOCATION AT bedroom; etc.)
+      -- (for example THE on_bed IsA LOCATION AT bedroom; etc.)
       -- Remember to: MAKE hero lying_down.
                 -- Presently, an actor cannot be located inside a container object
       -- or on a supporter.
@@ -5819,7 +5819,7 @@ END ADD TO.
 
 
 SYNTAX lift = lift (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -5883,7 +5883,7 @@ END ADD TO.
 
 
 SYNTAX light = light (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -5960,7 +5960,7 @@ END VERB.
 
 
 SYNTAX listen = listen 'to' (ogg)!
-  WHERE ogg ISA THING
+  WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_to_sg OF my_game.
@@ -5977,7 +5977,7 @@ ADD TO EVERY THING
     DOES
       IF ogg AT hero
         THEN
-          IF ogg ISA ACTOR
+          IF ogg IsA ACTOR
             THEN SAY THE ogg.
               IF ogg IS NOT plurale
                 THEN "is"
@@ -6042,7 +6042,7 @@ END VERB.
 
 
 SYNTAX look_behind = 'look' behind (bulk)
-  WHERE bulk ISA THING
+  WHERE bulk IsA THING
     ELSE SAY illegal_parameter_there OF my_game.
 
 
@@ -6077,9 +6077,9 @@ END ADD TO.
 
 SYNTAX
   look_in = 'look' 'in' (cont)
-    WHERE cont ISA OBJECT
+    WHERE cont IsA OBJECT
       ELSE SAY illegal_parameter_there OF my_game.
-    AND cont ISA CONTAINER
+    AND cont IsA CONTAINER
       ELSE SAY illegal_parameter_there OF my_game.
 
 
@@ -6114,7 +6114,7 @@ END ADD TO.
 
 
 SYNTAX look_out_of = 'look' 'out' 'of' (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_look_out_sg OF my_game.
@@ -6156,7 +6156,7 @@ END ADD TO.
 
 
 SYNTAX look_through = 'look' through (bulk)
-  WHERE bulk ISA OBJECT
+  WHERE bulk IsA OBJECT
     ELSE SAY illegal_parameter_look_through OF my_game.
 
 
@@ -6186,7 +6186,7 @@ END ADD TO.
 
 
 SYNTAX look_under = 'look' under (bulk)
-  WHERE bulk ISA THING
+  WHERE bulk IsA THING
     ELSE SAY illegal_parameter_there OF my_game.
 
 
@@ -6369,7 +6369,7 @@ END EVENT.
 
 
 SYNTAX 'play' = 'play' (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -6425,7 +6425,7 @@ END ADD TO.
 
 
 SYNTAX play_with = 'play' 'with' (ogg)
-  WHERE ogg ISA THING
+  WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_with_sg OF my_game.
@@ -6496,7 +6496,7 @@ END ADD TO.
 
 
 SYNTAX pry = pry (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -6532,13 +6532,13 @@ END ADD TO.
 
 
 SYNTAX pry_with = pry (ogg) 'with' (strum)
-    WHERE ogg ISA OBJECT
+    WHERE ogg IsA OBJECT
       ELSE
         IF ogg IS NOT plurale
           THEN SAY illegal_parameter_sg OF my_game.
           ELSE SAY illegal_parameter_pl OF my_game.
         END IF.
-    AND strum ISA OBJECT
+    AND strum IsA OBJECT
       ELSE
         IF ogg IS NOT plurale
           THEN SAY illegal_parameter2_with_sg OF my_game.
@@ -6600,7 +6600,7 @@ END ADD TO.
 
 
 SYNTAX pull = pull (ogg)
-  WHERE ogg ISA THING
+  WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -6652,7 +6652,7 @@ END ADD TO.
 
 
 SYNTAX push = push (ogg)
-  WHERE ogg ISA THING
+  WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -6707,13 +6707,13 @@ END ADD TO.
 
 
 SYNTAX push_with = push (ogg) 'with' (strum)
-  WHERE ogg ISA THING
+  WHERE ogg IsA THING
       ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-  AND strum ISA OBJECT
+  AND strum IsA OBJECT
       ELSE SAY illegal_parameter2_with_sg OF my_game.
 
 
@@ -6772,7 +6772,7 @@ END ADD TO.
 
 
 SYNTAX put = put (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE SAY illegal_parameter_obj OF my_game.
 
 
@@ -6822,15 +6822,15 @@ END ADD TO.
 
 
 SYNTAX put_in = put (ogg) 'in' (cont)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE SAY illegal_parameter_obj OF my_game.
-  AND cont ISA OBJECT
+  AND cont IsA OBJECT
     ELSE
-      IF cont ISA ACTOR
+      IF cont IsA ACTOR
         THEN SAY illegal_parameter_act OF my_game.
         ELSE SAY illegal_parameter2_there OF my_game.
       END IF.
-  AND cont ISA CONTAINER
+  AND cont IsA CONTAINER
     ELSE SAY illegal_parameter2_there OF my_game.
 
 
@@ -6865,7 +6865,7 @@ ADD TO EVERY OBJECT
           END IF.
           AND ogg NOT IN cont
           ELSE
-          IF cont ISA SUPPORTER
+          IF cont IsA SUPPORTER
             THEN SAY check_cont_not_supporter OF my_game.
             ELSE
               IF ogg IS NOT plurale
@@ -6919,33 +6919,33 @@ END ADD TO.
 
 
 SYNTAX put_against = put (ogg) against (bulk)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE SAY illegal_parameter_obj OF my_game.
-  AND bulk ISA THING
+  AND bulk IsA THING
         ELSE SAY illegal_parameter2_there OF my_game.
 
 
 
 SYNTAX put_behind = put (ogg) behind (bulk)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE SAY illegal_parameter_obj OF my_game.
-  AND bulk ISA THING
+  AND bulk IsA THING
         ELSE SAY illegal_parameter2_there OF my_game.
 
 
 
 SYNTAX put_near = put (ogg) 'near' (bulk)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
         ELSE SAY illegal_parameter_obj OF my_game.
-  AND bulk ISA THING
+  AND bulk IsA THING
       ELSE SAY illegal_parameter2_there OF my_game.
 
 
 
 SYNTAX put_under = put (ogg) under (bulk)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
       ELSE SAY illegal_parameter_obj OF my_game.
-  AND bulk ISA THING
+  AND bulk IsA THING
       ELSE SAY illegal_parameter2_there OF my_game.
 
 
@@ -7023,9 +7023,9 @@ END ADD TO.
 
 
 SYNTAX put_on = put (ogg) 'on' (superficie)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
       ELSE SAY illegal_parameter_obj OF my_game.
-  AND superficie ISA SUPPORTER
+  AND superficie IsA SUPPORTER
     ELSE SAY illegal_parameter2_there OF my_game.
 
 
@@ -7124,7 +7124,7 @@ END ADD TO.
 -- this verb only works with clothing (see 'classes.i').
 
 SYNTAX  remove = remove (ogg)
-    WHERE ogg ISA OBJECT
+    WHERE ogg IsA OBJECT
       ELSE
         IF ogg IS NOT plurale
           THEN SAY illegal_parameter_sg OF my_game. "since you're not wearing it."
@@ -7182,7 +7182,7 @@ END ADD TO.
 
 
 SYNTAX rub = rub (ogg)
-  WHERE ogg ISA THING
+  WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -7240,7 +7240,7 @@ END ADD TO.
 
 
 SYNTAX 'say' = 'say' (argomento)
-      WHERE argomento ISA STRING
+      WHERE argomento IsA STRING
     ELSE SAY illegal_parameter_string OF my_game.
 
 
@@ -7266,9 +7266,9 @@ END ADD TO.
 
 
 SYNTAX say_to = 'say' (argomento) 'to' (png)
-  WHERE argomento ISA STRING
+  WHERE argomento IsA STRING
     ELSE SAY illegal_parameter_string OF my_game.
-  AND png ISA ACTOR
+  AND png IsA ACTOR
     ELSE
       IF png IS NOT plurale
         THEN SAY illegal_parameter_talk_sg OF my_game.
@@ -7341,7 +7341,7 @@ END VERB 'score'.
 
 
 SYNTAX scratch = scratch (ogg)
-  WHERE ogg ISA THING
+  WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -7443,7 +7443,7 @@ END VERB.
 
 
 SYNTAX search = search (ogg)
-  WHERE ogg ISA THING
+  WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -7494,7 +7494,7 @@ END ADD TO.
 
 
 SYNTAX shake = shake (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -7553,7 +7553,7 @@ END ADD TO.
 
 
 SYNTAX  shoot = shoot (bersaglio)
-  WHERE bersaglio ISA THING
+  WHERE bersaglio IsA THING
     ELSE
       IF bersaglio IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -7588,7 +7588,7 @@ ADD TO EVERY THING
           ELSE SAY check_obj_not_distant_pl OF my_game.
         END IF.
     DOES
-      IF bersaglio ISA ACTOR
+      IF bersaglio IsA ACTOR
         THEN "That's quite uncalled-for."
           ELSE "That wouldn't accomplish anything."
       END IF.
@@ -7622,13 +7622,13 @@ END VERB.
 
 
 SYNTAX  shoot_with = shoot (bersaglio) 'with' (arma)
-  WHERE bersaglio ISA THING
+  WHERE bersaglio IsA THING
     ELSE
       IF bersaglio IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-      AND arma ISA arma
+      AND arma IsA arma
         ELSE
       IF arma IS NOT plurale
         THEN SAY illegal_parameter2_with_sg OF my_game.
@@ -7667,7 +7667,7 @@ ADD TO EVERY THING
             ELSE SAY check_obj_not_distant_pl OF my_game.
           END IF.
       DOES
-        IF bersaglio ISA ACTOR
+        IF bersaglio IsA ACTOR
           THEN "That's quite uncalled-for."
                 ELSE "That wouldn't accomplish anything."
         END IF.
@@ -7710,13 +7710,13 @@ END VERB.
 
 
 SYNTAX 'show' = 'show' (ogg) 'to' (png)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-  AND png ISA ACTOR
+  AND png IsA ACTOR
     ELSE
       IF png IS NOT plurale
         THEN SAY illegal_parameter2_to_sg OF my_game.
@@ -7792,7 +7792,7 @@ END VERB.
 
 
 SYNTAX sip = sip (liq)
-  WHERE liq ISA liquido
+  WHERE liq IsA liquido
     ELSE
       IF liq IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -7914,7 +7914,7 @@ END VERB.
 
 
 SYNTAX sit_on = sit 'on' (superficie)
-  WHERE superficie ISA SUPPORTER
+  WHERE superficie IsA SUPPORTER
     ELSE
       IF superficie IS NOT plurale
         THEN SAY illegal_parameter_on_sg OF my_game.
@@ -8002,7 +8002,7 @@ END VERB.
 
 
 SYNTAX smell = smell (odore)
-  WHERE odore ISA THING
+  WHERE odore IsA THING
     ELSE
       IF odore IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -8031,7 +8031,7 @@ END ADD TO.
 
 
 SYNTAX squeeze = squeeze (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -8111,7 +8111,7 @@ END VERB.
 
 
 SYNTAX stand_on = stand 'on' (superficie)
-  WHERE superficie ISA SUPPORTER
+  WHERE superficie IsA SUPPORTER
     ELSE
       IF superficie IS NOT plurale
         THEN SAY illegal_parameter_on_sg OF my_game.
@@ -8191,7 +8191,7 @@ END VERB.
 
 
 SYNTAX swim_in = swim 'in' (liq)
-  WHERE liq ISA liquido
+  WHERE liq IsA liquido
     ELSE
       IF liq IS NOT plurale
         THEN SAY illegal_parameter_in_sg OF my_game.
@@ -8257,7 +8257,7 @@ END ADD TO.
 
 
 SYNTAX switch = switch (disp)      --> disp <--  app = apparatus, appliance
-  WHERE disp ISA OBJECT
+  WHERE disp IsA OBJECT
     ELSE
       IF disp IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -8340,7 +8340,7 @@ END VERB.
 
 
 SYNTAX talk_to = talk 'to' (png)
-  WHERE png ISA ACTOR
+  WHERE png IsA ACTOR
     ELSE
       IF png IS NOT plurale
         THEN SAY illegal_parameter_to_sg OF my_game.
@@ -8370,7 +8370,7 @@ END ADD TO.
 
 
 SYNTAX taste = taste (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -8434,7 +8434,7 @@ END ADD TO.
 
 
 SYNTAX tear = tear (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -8489,13 +8489,13 @@ END ADD TO.
 
 
 SYNTAX tell = tell (png) about (argomento)!
-  WHERE png ISA ACTOR
+  WHERE png IsA ACTOR
     ELSE
       IF png IS NOT plurale
             THEN SAY illegal_parameter_talk_sg OF my_game.
         ELSE SAY illegal_parameter_talk_pl OF my_game.
       END IF.
-  AND argomento ISA THING
+  AND argomento IsA THING
     ELSE
       IF argomento IS NOT plurale
         THEN SAY illegal_parameter_about_sg OF my_game.
@@ -8574,7 +8574,7 @@ END VERB.
 
 
 SYNTAX think_about = think 'about' (argomento)!
-  WHERE argomento ISA THING
+  WHERE argomento IsA THING
     ELSE
       IF argomento IS NOT plurale
         THEN SAY illegal_parameter_about_sg OF my_game.
@@ -8603,7 +8603,7 @@ END ADD TO.
 
 
 SYNTAX throw = throw (proiettile)
-  WHERE proiettile ISA OBJECT
+  WHERE proiettile IsA OBJECT
     ELSE SAY illegal_parameter_obj OF my_game.
 
 
@@ -8678,9 +8678,9 @@ END ADD TO.
 
 
 SYNTAX throw_at = throw (proiettile) 'at' (bersaglio)
-  WHERE proiettile ISA OBJECT
+  WHERE proiettile IsA OBJECT
     ELSE SAY illegal_parameter_obj OF my_game.
-  AND bersaglio ISA THING
+  AND bersaglio IsA THING
     ELSE SAY illegal_parameter_at OF my_game.
 
 
@@ -8793,9 +8793,9 @@ END ADD TO.
 
 
 SYNTAX throw_to = throw (proiettile) 'to' (ricevente)
-    WHERE proiettile ISA OBJECT
+    WHERE proiettile IsA OBJECT
       ELSE SAY illegal_parameter_obj OF my_game.
-    AND ricevente ISA ACTOR
+    AND ricevente IsA ACTOR
       ELSE SAY illegal_parameter2_there OF my_game.
 
 
@@ -8870,15 +8870,15 @@ END ADD TO.
 
 
 SYNTAX throw_in = throw (proiettile) 'in' (cont)
-  WHERE proiettile ISA OBJECT
+  WHERE proiettile IsA OBJECT
     ELSE SAY illegal_parameter_obj OF my_game.
-  AND cont ISA OBJECT
+  AND cont IsA OBJECT
     ELSE
-      IF cont ISA ACTOR
+      IF cont IsA ACTOR
         THEN SAY illegal_parameter_act OF my_game.
         ELSE SAY illegal_parameter2_there OF my_game.
       END IF.
-  AND cont ISA CONTAINER
+  AND cont IsA CONTAINER
     ELSE SAY illegal_parameter2_there OF my_game.
 
 
@@ -8976,7 +8976,7 @@ END ADD TO.
 
 
 SYNTAX tie = tie (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -9014,9 +9014,9 @@ END ADD TO.
 
 
 SYNTAX tie_to = tie (ogg) 'to' (bersaglio)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE SAY illegal_parameter_obj OF my_game.
-  AND bersaglio ISA THING
+  AND bersaglio IsA THING
     ELSE SAY illegal_parameter_obj OF my_game.
 
 
@@ -9096,7 +9096,7 @@ END ADD TO.
 
 
 SYNTAX touch = touch (ogg)
-  WHERE ogg ISA THING
+  WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
@@ -9155,13 +9155,13 @@ END ADD TO.
 
 
 SYNTAX touch_with = touch (ogg) 'with' (strum)
-  WHERE ogg ISA THING
+  WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
-  AND strum ISA OBJECT
+  AND strum IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter2_with_sg OF my_game.
@@ -9229,7 +9229,7 @@ END ADD TO.
 
 
 SYNTAX turn = turn (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF my_game CAN NOT turn
         THEN
@@ -9304,7 +9304,7 @@ END ADD TO.
 
 
 SYNTAX  turn_on = turn 'on' (disp)
-  WHERE disp ISA OBJECT
+  WHERE disp IsA OBJECT
     ELSE
       IF disp IS NOT plurale
         THEN SAY illegal_parameter_on_sg OF my_game.
@@ -9358,7 +9358,7 @@ END ADD TO.
 
 
 SYNTAX turn_off = turn off (disp)
-  WHERE disp ISA OBJECT
+  WHERE disp IsA OBJECT
     ELSE
       IF disp IS NOT plurale
         THEN SAY illegal_parameter_off_sg OF my_game.
@@ -9435,7 +9435,7 @@ END VERB.
 
 
 SYNTAX wear = wear (ogg)
-  WHERE ogg ISA OBJECT
+  WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         THEN SAY illegal_parameter_sg OF my_game.
