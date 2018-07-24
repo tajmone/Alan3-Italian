@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/24 \(3\)](#20180724-3)
+    - [Input Response Messages](#input-response-messages)
 - [2018/07/24 \(2\)](#20180724-2)
 - [2018/07/24 \(1\)](#20180724-1)
     - [Who/Where Verbs](#whowhere-verbs)
@@ -134,6 +136,18 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/24 (3)
+
+- [`lib_messaggi.i`][lib_messaggi] (v0.2.4)
+
+## Input Response Messages
+
+Translate more Input Response Messages (still a few left).
+
+<!---------------------------------------------------------------------------->
+
+
 
 # 2018/07/24 (2)
 

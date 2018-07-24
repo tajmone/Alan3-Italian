@@ -1,4 +1,4 @@
--- "lib_messaggi.i" v0.2.3 (2018/07/22)
+-- "lib_messaggi.i" v0.2.4 (2018/07/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -84,40 +84,60 @@ MESSAGE
 
 
 --  =========================
---# WAITING TO BE TRANSLATED:
+--# xxxxxxxxxxxxxxxxxxxxxxxxx
 --  =========================
 
-  AGAIN: ""
-  CAN_NOT_CONTAIN: "$+1 can not contain $+2."
-  CARRIES:
-    IF parameter1 IS NOT plurale
-      THEN "$+1 is carrying"
-      ELSE "$+1 are carrying"
-    END IF.
+  AGAIN: "" --> Messaggio da mostrare accanto al nome di luoghi già visistati.
+            --  Es. "(già visitato)"
+  
+  CAN_NOT_CONTAIN: "$+1 non può contenere $+2." -- "$+1 can not contain $+2."
+  
 
 --==============================================================================
--- DESCRIZIONE CONTENITORI
+-- ERRORI DI INSERIMENTO IN CONTENITORI
 --==============================================================================
+-- Questi messaggi riferiscono tentativi di inserire oggetti in sé stessi
+
+
   CONTAINMENT_LOOP:
-    "Putting $+1 in"
-      IF parameter1 IS NOT plurale
-        THEN "itself"
-        ELSE "themselves"
-      END IF.
-    "is impossible."
-  CONTAINMENT_LOOP2: "Putting $+1 in $+2 is impossible since $+2 already"
-          IF parameter2 IS NOT plurale
-            THEN "is"
-            ELSE "are"
+    --   IF parameter1 IS NOT plurale
+    --     THEN "itself"
+    --     ELSE "themselves"
+    --   END IF.
+    --   "is impossible."
+    "Non è possibile mettere $+1 dentro sé stess$$" -- "Putting $+1 in"
+      IF parameter1 IS NOT femminile
+        THEN
+          IF parameter1 IS NOT plurale
+            THEN "o." -- GNA = msi
+            ELSE "i." -- GNA = mpi
           END IF.
-            "inside $+1."
+        ELSE
+          IF parameter1 IS NOT plurale
+            THEN "a." -- GNA = fsi
+            ELSE "e." -- GNA = fpi
+          END IF.
+      END IF.
+
+  CONTAINMENT_LOOP2: "Non è possibile mettere $+1 in $+2 dato che $+2"
+    IF parameter2 IS NOT plurale
+      THEN "è"
+      ELSE "sono"
+    END IF.
+    "all'interno di $+1."
+  -- CONTAINMENT_LOOP2: "Putting $+1 in $+2 is impossible since $+2 already"
+  --   IF parameter2 IS NOT plurale
+  --     THEN "is"
+  --     ELSE "are"
+  --   END IF.
+  --   "inside $+1."
 --==============================================================================
--- DESCRIZIONE CONTENITORI
+-- DESCRIZIONE CONTENITORI E LORO CONTENUTI
 --==============================================================================
   'CONTAINS':
     IF parameter1 IS NOT plurale
-      THEN "$+1 contains"
-      ELSE "$+1 contain"
+      THEN "$+1 contiene"   -- "contains"
+      ELSE "$+1 contengono" -- "contain"
     END IF.
   CONTAINS_COMMA: "$01"
     IF parameter1 ISA CLOTHING
@@ -128,12 +148,13 @@ MESSAGE
         IF parameter1 IS indossato
           THEN
             IF parameter1 NOT IN worn
-              THEN "(being worn)"
+              THEN "(indossato)" -- "(being worn)"
             END IF.
         END IF.
     END IF.
     "$$,"
-      CONTAINS_AND: "$01"
+
+  CONTAINS_AND: "$01"
     IF parameter1 ISA CLOTHING
       THEN
         -- the following snippet adds "(being worn)" after all
@@ -142,12 +163,12 @@ MESSAGE
         IF parameter1 IS indossato
           THEN
             IF parameter1 NOT IN worn
-              THEN "(being worn)"
+              THEN "(indossato)" -- "(being worn)"
             END IF.
         END IF.
     END IF.
 
-    "and"
+    "e" -- "and"
 
   CONTAINS_END: "$01"
     IF parameter1 ISA CLOTHING
@@ -158,17 +179,34 @@ MESSAGE
         IF parameter1 IS indossato
           THEN
             IF parameter1 NOT IN worn
-              THEN "(being worn)"
+              THEN "(indossato)" -- "(being worn)"
             END IF.
         END IF.
     END IF.
     "."
 --------------------------------------------------------------------------------
-  EMPTY_HANDED:
+  
+  -- 
+  CARRIES:
     IF parameter1 IS NOT plurale
-      THEN "$+1 is empty-handed."
-      ELSE "$+1 are empty-handed."
+      THEN "$+1 trasporta"   -- "is carrying"
+      ELSE "$+1 trasportano" -- "are carrying"
     END IF.
+
+  EMPTY_HANDED:
+    "$+1 non"
+    IF parameter1 IS NOT plurale
+      THEN "sta"
+      ELSE "stanno"
+    END IF.
+    "trasportando nulla."
+      -- THEN "$+1 is empty-handed."
+      -- ELSE "$+1 are empty-handed."
+
+--  =========================
+--# WAITING TO BE TRANSLATED:
+--  =========================
+
 
   HAVE_SCORED: "You have scored $1 points out of $2."
   IMPOSSIBLE_WITH: "That's impossible with $+1."
