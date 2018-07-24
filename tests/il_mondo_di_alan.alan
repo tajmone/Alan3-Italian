@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione v0.3.0 (2018/07/24)
+--  versione v0.3.1 (2018/07/24)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -40,7 +40,7 @@ END VERB xyzzy.
 ----- Piazza della Repubblica d'IF
 
 -- =============================================================================
-THE pzzaIF IsA site
+THE pzzaIF IsA luogo_esterno
   NAME 'Piazza della Repubblica d''IF'.
   EXIT est   TO Eden.
   EXIT ovest TO mercato.
@@ -181,7 +181,7 @@ END THE sasso.
 ----- Giardino dell'Eden
 
 -- =============================================================================
-THE Eden IsA site.
+THE Eden IsA luogo_esterno.
   NAME 'Giardino dell''Eden'.
   EXIT ovest TO pzzaIF.
 END THE Eden.
@@ -250,7 +250,7 @@ END THE lingotto.
 -- Il mercato è il posto ideale per testare i supporti (la bancarella), i verbi
 -- e messaggi per PRENDI, LASCIA e MANGIA, e l'uso di TUTTO e TRANNE.
 --------------------------------------------------------------------------------
-THE mercato IsA site.
+THE mercato IsA luogo_esterno.
   EXIT est TO pzzaIF.
 
   VERB xyzzy  --| INCANTESIMO "XYZZY" -- trasferisce magicamente tutta la frutta

@@ -1,4 +1,4 @@
--- "lib_messaggi.i" v0.3.0 (2018/07/24)
+-- "lib_messaggi.i" v0.3.1 (2018/07/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -140,14 +140,14 @@ MESSAGE
       ELSE "$+1 contengono" -- "contain"
     END IF.
   CONTAINS_COMMA: "$01"
-    IF parameter1 IsA CLOTHING
+    IF parameter1 IsA indumento
       THEN
         -- the following snippet adds "(being worn)" after all
         -- pieces of clothing worn by an NPC, at 'x [actor]'
 
         IF parameter1 IS indossato
           THEN
-            IF parameter1 NOT IN worn
+            IF parameter1 NOT IN abbigliamento
               THEN "(indossato)" -- "(being worn)"
             END IF.
         END IF.
@@ -155,14 +155,14 @@ MESSAGE
     "$$,"
 
   CONTAINS_AND: "$01"
-    IF parameter1 IsA CLOTHING
+    IF parameter1 IsA indumento
       THEN
         -- the following snippet adds "(being worn)" after all
         -- pieces of clothing worn by an NPC, after 'x [actor]'
 
         IF parameter1 IS indossato
           THEN
-            IF parameter1 NOT IN worn
+            IF parameter1 NOT IN abbigliamento
               THEN "(indossato)" -- "(being worn)"
             END IF.
         END IF.
@@ -171,14 +171,14 @@ MESSAGE
     "e" -- "and"
 
   CONTAINS_END: "$01"
-    IF parameter1 IsA CLOTHING
+    IF parameter1 IsA indumento
       THEN
         -- the following snippet adds "(being worn)" after all
         -- pieces of clothing worn by an NPC, after 'x [actor]'
 
         IF parameter1 IS indossato
           THEN
-            IF parameter1 NOT IN worn
+            IF parameter1 NOT IN abbigliamento
               THEN "(indossato)" -- "(being worn)"
             END IF.
         END IF.

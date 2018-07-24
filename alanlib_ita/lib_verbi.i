@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.3.0 (2018/07/24)
+-- "lib_verbi.i" v0.3.1 (2018/07/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -423,7 +423,7 @@ ADD TO EVERY OBJECT
           THEN SAY ogg1_inadatto_sg OF my_game. "aprire."
           ELSE SAY ogg1_inadatto_pl OF my_game. "aprire."
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -528,7 +528,7 @@ ADD TO EVERY OBJECT
           END IF.
       AND ogg <> strum
         ELSE SAY check_obj_not_obj2_with OF my_game.
-          AND CURRENT LOCATION IS lit
+          AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
           AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
@@ -645,7 +645,7 @@ ADD TO EVERY OBJECT
           ELSE SAY ogg1_inadatto_pl OF my_game.
         END IF.
         "attraversare."
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -717,7 +717,7 @@ ADD TO EVERY liquido
           THEN SAY ogg1_inadatto_sg OF my_game. "bere."
           ELSE SAY ogg1_inadatto_pl OF my_game. "bere."
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND liq IS raggiungibile AND liq IS NOT distante
       ELSE
@@ -790,7 +790,7 @@ ADD TO EVERY liquido
                   END IF.
               END IF.
               SAY THE liq. "."
-              LOCATE liq AT nowhere.
+              LOCATE liq AT limbo.
           END IF.
       END IF.
 
@@ -835,7 +835,7 @@ ADD TO EVERY OBJECT
           THEN SAY ogg1_inadatto_sg OF my_game. "bloccare."
           ELSE SAY ogg1_inadatto_pl OF my_game. "bloccare."
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -924,7 +924,7 @@ ADD TO EVERY OBJECT
           END IF.
       AND ogg <> chiave
         ELSE SAY check_obj_not_obj2_with OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND ogg IS NOT bloccato
         ELSE
@@ -998,7 +998,7 @@ ADD TO EVERY OBJECT
           ELSE SAY ogg1_inadatto_pl OF my_game.
         END IF.
         "bruciare."
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     DOES
       SAY specificare_CON_cosa OF my_game. "bruciare" SAY THE ogg. "."
@@ -1065,7 +1065,7 @@ ADD TO EVERY OBJECT
       AND strum IN hero
         --> @TODO!!                                                             TRANSLATE!
         ELSE SAY check_obj2_in_hero OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
@@ -1124,7 +1124,7 @@ ADD TO EVERY OBJECT
           THEN SAY ogg1_inadatto_sg OF my_game. "chiudere."
           ELSE SAY ogg1_inadatto_pl OF my_game. "chiudere."
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -1202,7 +1202,7 @@ ADD TO EVERY OBJECT
         ELSE SAY check_obj_not_obj2_with OF my_game.
       AND strum IN hero
         ELSE SAY check_obj2_in_hero OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
@@ -1327,7 +1327,7 @@ ADD TO EVERY OBJECT
       AND ricevente <> hero
         --> @TODO!!                                                             TRANSLATE!
         ELSE SAY check_obj2_not_hero3 OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND ogg NOT IN ricevente
         ELSE
@@ -1691,7 +1691,7 @@ ADD TO EVERY THING
           THEN SAY check_obj_suitable_examine_sg OF my_game.
           ELSE SAY check_obj_suitable_examine_pl OF my_game.
         END IF.
-        AND CURRENT LOCATION IS lit
+        AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS NOT scenario
       ELSE
@@ -1762,8 +1762,8 @@ META VERB inventario
   DOES
     LIST hero.
 
-    IF COUNT DIRECTLY IN worn > 0   -- See the file 'classes.i', subclass 'clothing'.
-      THEN LIST worn.     -- This code will list what the hero is wearing.
+    IF COUNT DIRECTLY IN abbigliamento > 0   -- See the file 'classes.i', subclass 'clothing'.
+      THEN LIST abbigliamento.     -- This code will list what the hero is wearing.
     END IF.
 
 END VERB.
@@ -1801,7 +1801,7 @@ ADD TO EVERY OBJECT
       ELSE SAY azione_bloccata OF my_game.
     AND ogg IN hero
       ELSE
-        IF ogg IN worn
+        IF ogg IN abbigliamento
           THEN SAY check_obj_not_in_worn3 OF my_game.
           ELSE SAY check_obj_in_hero OF my_game.
         END IF.
@@ -1865,7 +1865,7 @@ ADD TO EVERY OBJECT
           THEN SAY ogg1_inadatto_sg OF my_game. "leggere."
           ELSE SAY ogg1_inadatto_pl OF my_game. "leggere."
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS NOT distante
       ELSE
@@ -1924,7 +1924,7 @@ ADD TO EVERY OBJECT
     AND cibo IS prendibile
       --> @TODO!!                                                               TRANSLATE!
       ELSE SAY check_obj_takeable OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND cibo IS raggiungibile AND cibo IS NOT distante
       ELSE
@@ -1953,7 +1953,7 @@ ADD TO EVERY OBJECT
 
       "Mangi" SAY THE cibo. "."
    -- "You eat all of" SAY THE cibo. "."
-      LOCATE cibo AT nowhere.
+      LOCATE cibo AT limbo.
 
   END VERB.
 END ADD.
@@ -2040,7 +2040,7 @@ ADD TO EVERY THING
     AND ogg <> hero
       --> @TODO!!                                                               TRANSLATE!
       ELSE SAY check_obj_not_hero1 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS NOT scenario
       ELSE
@@ -2110,11 +2110,11 @@ ADD TO EVERY THING
 
 
       ELSIF ogg IsA OBJECT
-        THEN IF ogg DIRECTLY IN worn
+        THEN IF ogg DIRECTLY IN abbigliamento
             THEN LOCATE ogg IN hero.
               --> @TODO!!                                                       TRANSLATE!
               "You take off" SAY THE ogg. "and carry it in your hands."
-              IF ogg IsA CLOTHING
+              IF ogg IsA indumento
                 THEN EXCLUDE ogg FROM wearing OF hero.
               END IF.
             ELSE LOCATE ogg IN hero.
@@ -2213,7 +2213,7 @@ ADD TO EVERY THING
       AND ogg <> detentore
         --> @TODO!!                                                             TRANSLATE!
         ELSE SAY check_obj_not_obj2_from OF my_game.  --#-> "It doesn't make sense to $v something from itself."
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND ogg IS NOT scenario
         ELSE
@@ -2386,7 +2386,7 @@ ADD TO EVERY OBJECT
           ELSE SAY ogg1_inadatto_pl OF my_game.
         END IF.
         "rompere."
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -2467,7 +2467,7 @@ ADD TO EVERY OBJECT
       AND ogg <> strum
         --> @TODO!!                                                             TRANSLATE!
         ELSE SAY check_obj_not_obj2_with OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND strum IN hero
         --> @TODO!!                                                             TRANSLATE!
@@ -2526,7 +2526,7 @@ ADD TO EVERY OBJECT
           THEN SAY check_obj_suitable_sg OF my_game.
           ELSE SAY check_obj_suitable_pl OF my_game.
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -2604,7 +2604,7 @@ ADD TO EVERY OBJECT
           ELSE SAY check_obj2_in_hero OF my_game.
       AND ogg <> chiave
         ELSE SAY check_obj_not_obj2_with OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
@@ -2667,7 +2667,7 @@ ADD TO EVERY OBJECT
         ELSE SAY azione_bloccata OF my_game.
       AND ogg IS scrivibile
         ELSE SAY check_obj_writeable OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
@@ -2765,7 +2765,7 @@ SYNONYMS svestiti = spogliati.
 VERB spogliati
   CHECK my_game CAN spogliarsi
     ELSE SAY azione_bloccata OF my_game.   --# "Non puoi farlo."
-  AND CURRENT LOCATION IS lit
+  AND CURRENT LOCATION IS illuminato
     ELSE SAY check_locazione_illuminata OF my_game. --# "È troppo buio."
   --@TODO: modifica frase (non mi piace):
   DOES "Ripensandoci, spogliarsi qui e ora non è una buona idea."
@@ -2775,8 +2775,8 @@ VERB spogliati
 --@TODO: sintassi 'desempio commentata (da verificare e testare)!
 --| Per implementare l'azione di spogliarsi, usa:
 --|--------------------------------------------------------
---| IF COUNT DIRECTLY IN worn, IsA CLOTHING > 0
---|   THEN EMPTY worn IN hero.
+--| IF COUNT DIRECTLY IN abbigliamento, IsA indumento > 0
+--|   THEN EMPTY abbigliamento IN hero.
 --|     "Fatto. Ora non indossi più nulla."
 --|     -- "You remove all the items you were wearing."
 --|   ELSE "Non indossi nulla di cui potresti spogliarti."
@@ -2903,7 +2903,7 @@ ADD TO EVERY THING
       ELSE SAY azione_bloccata OF my_game.
     AND dest <> hero
       ELSE SAY check_obj_not_hero4 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting3 OF my_game.
@@ -2969,7 +2969,7 @@ ADD TO EVERY OBJECT
           THEN SAY ogg1_inadatto_sg OF my_game. "vendere."
           ELSE SAY ogg1_inadatto_pl OF my_game. "vendere."
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     DOES
       "Qui nessuno è interessanto ad acquistare" SAY THE merce. "."
@@ -3163,7 +3163,7 @@ ADD TO EVERY ACTOR
           END IF.
       AND ogg NOT IN hero
         ELSE SAY check_obj2_not_in_hero3 OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND png IS NOT distante
         ELSE
@@ -3261,9 +3261,9 @@ ADD TO EVERY THING
       ELSE SAY check_obj_not_hero1 OF my_game.
     AND bersaglio NOT IN hero
       ELSE SAY check_obj_not_in_hero1 OF my_game.
-    AND bersaglio NOT IN worn
+    AND bersaglio NOT IN abbigliamento
       ELSE SAY check_obj_not_in_worn2 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
       ELSE
@@ -3336,9 +3336,9 @@ ADD TO EVERY THING
         ELSE SAY check_obj_not_hero1 OF my_game.
       AND bersaglio NOT IN hero
         ELSE SAY check_obj_not_in_hero1 OF my_game.
-      AND bersaglio NOT IN worn
+      AND bersaglio NOT IN abbigliamento
         ELSE SAY check_obj_not_in_worn2 OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
         ELSE
@@ -3401,7 +3401,7 @@ ADD TO EVERY OBJECT
         END IF.
     AND ogg IS prendibile
       ELSE SAY check_obj_takeable OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -3509,7 +3509,7 @@ ADD TO EVERY THING
         END IF.
     AND ogg <> hero
       ELSE SAY check_obj_not_hero1 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting2 OF my_game.
@@ -3560,7 +3560,7 @@ ADD TO EVERY OBJECT
           THEN SAY ogg1_inadatto_sg OF my_game. "pulire."
           ELSE SAY ogg1_inadatto_pl OF my_game. "pulire."
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -3620,7 +3620,7 @@ ADD TO EVERY OBJECT
         THEN SAY check_obj_suitable_sg OF my_game.
         ELSE SAY check_obj_suitable_pl OF my_game.
       END IF.
-  AND CURRENT LOCATION IS lit
+  AND CURRENT LOCATION IS illuminato
     ELSE SAY check_locazione_illuminata OF my_game.
   AND ogg IS NOT distante
       ELSE
@@ -3674,7 +3674,7 @@ ADD TO EVERY SUPPORTER
   VERB climb_on
     CHECK my_game CAN climb_on
       ELSE SAY azione_bloccata OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND superficie IS raggiungibile AND superficie IS NOT distante
       ELSE
@@ -3747,7 +3747,7 @@ ADD TO EVERY THING
           THEN SAY ogg1_inadatto_sg OF my_game. "consultare."
           ELSE SAY ogg1_inadatto_pl OF my_game. "consultare."
           END IF.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND fonte IS raggiungibile AND fonte IS NOT distante
         ELSE
@@ -3848,7 +3848,7 @@ ADD TO EVERY OBJECT
           THEN SAY ogg1_inadatto_sg OF my_game. "tagliare."
           ELSE SAY ogg1_inadatto_pl OF my_game. "tagliare."
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     DOES "You need to specify what you want to cut" SAY THE ogg. "with."
     END VERB.
@@ -3902,7 +3902,7 @@ ADD TO EVERY OBJECT
           END IF.
       AND strum IN hero
         ELSE SAY check_obj2_in_hero OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
@@ -3941,7 +3941,7 @@ SYNTAX dance = dance.
 VERB dance
   CHECK my_game CAN danzare
     ELSE SAY azione_bloccata OF my_game.
-  AND CURRENT LOCATION IS lit
+  AND CURRENT LOCATION IS illuminato
     ELSE SAY check_locazione_illuminata OF my_game.
   AND hero IS NOT seduto
     ELSE SAY check_hero_not_sitting1 OF my_game.
@@ -3975,7 +3975,7 @@ ADD TO EVERY OBJECT
   VERB dig
     CHECK my_game CAN scavare
       ELSE SAY azione_bloccata OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -4018,7 +4018,7 @@ SYNTAX dive = dive.
 VERB dive
   CHECK my_game CAN dive
     ELSE SAY azione_bloccata OF my_game.
-  AND CURRENT LOCATION IS lit
+  AND CURRENT LOCATION IS illuminato
     ELSE SAY check_locazione_illuminata OF my_game.
   AND hero IS NOT seduto
     ELSE SAY check_hero_not_sitting3 OF my_game.
@@ -4060,7 +4060,7 @@ ADD TO EVERY OBJECT
   VERB dive_in
     CHECK my_game CAN dive_in
       ELSE SAY azione_bloccata OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting3 OF my_game.
@@ -4116,7 +4116,7 @@ ADD TO EVERY OBJECT
           THEN SAY ogg1_inadatto_sg OF my_game. "guidare."
           ELSE SAY ogg1_inadatto_pl OF my_game. "guidare."
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND veicolo IS raggiungibile AND veicolo IS NOT distante
       ELSE
@@ -4210,7 +4210,7 @@ ADD TO EVERY OBJECT
       ELSE SAY azione_bloccata OF my_game.
     AND ogg IS prendibile
       ELSE SAY check_obj_takeable OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -4328,7 +4328,7 @@ ADD TO EVERY OBJECT
         ELSE SAY check_obj_takeable OF my_game.
       AND cont NOT IN ogg
         ELSE SAY check_cont_not_in_obj OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
@@ -4455,7 +4455,7 @@ ADD TO EVERY THING
         ELSE SAY check_obj_not_obj2_on OF my_game.
       AND ogg IS prendibile
         ELSE SAY check_obj_takeable OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
@@ -4504,7 +4504,7 @@ ADD TO EVERY THING
         IF COUNT IsA OBJECT, DIRECTLY IN ogg = 0
           THEN "There is nothing in" SAY THE ogg. "."
           ELSE
-            IF superficie = pavimento OR superficie = ground
+            IF superficie = pavimento OR superficie = suolo
               THEN EMPTY ogg AT hero.
               ELSE EMPTY ogg IN superficie.
             END IF.
@@ -4720,7 +4720,7 @@ ADD TO EVERY OBJECT
           THEN SAY ogg1_inadatto_sg OF my_game. "riempire."
           ELSE SAY ogg1_inadatto_pl OF my_game. "riempire."
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     DOES
       "You have to say what you want to fill" SAY THE cont. "with."
@@ -4772,7 +4772,7 @@ ADD TO EVERY OBJECT
             THEN SAY check_obj2_suitable_with_sg OF my_game.
             ELSE SAY check_obj2_suitable_with_pl OF my_game.
           END IF.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND sostanza NOT IN cont
         ELSE SAY check_obj_not_in_cont2 OF my_game.
@@ -4843,7 +4843,7 @@ ADD TO EVERY THING
       ELSE SAY azione_bloccata OF my_game.
     AND ogg <> hero
       ELSE SAY check_obj_not_hero4 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg NOT AT hero
       ELSE
@@ -4887,7 +4887,7 @@ ADD TO EVERY arma
           ELSE SAY check_obj_suitable_pl OF my_game.
         END IF.
 
-  AND CURRENT LOCATION IS lit
+  AND CURRENT LOCATION IS illuminato
     ELSE SAY check_locazione_illuminata OF my_game.
   DOES
     "You fire" SAY THE arma. "into the air."
@@ -4941,7 +4941,7 @@ ADD TO EVERY arma
             THEN SAY check_obj_not_distant_sg OF my_game.
             ELSE SAY check_obj_not_distant_pl OF my_game.
           END IF.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       DOES
         "Resorting to violence is not the solution here."
@@ -4967,7 +4967,7 @@ ADD TO EVERY THING
       ELSE SAY check_count_weapon_in_hero OF my_game.
     AND bersaglio <> hero
       ELSE SAY check_obj_not_hero2 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     DOES
       "Resorting to violence is not the solution here."
@@ -5001,7 +5001,7 @@ ADD TO EVERY OBJECT
   VERB fix
     CHECK my_game CAN fix
       ELSE SAY azione_bloccata OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS rotto
       ELSE
@@ -5055,7 +5055,7 @@ ADD TO EVERY THING
       ELSE SAY azione_bloccata OF my_game.
     AND png <> hero
       ELSE SAY check_obj_not_hero1 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND png NOT AT hero
       ELSE
@@ -5111,7 +5111,7 @@ ADD TO EVERY THING
         END IF.
     AND ogg <> hero
       ELSE SAY check_obj_not_hero5 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -5290,7 +5290,7 @@ ADD TO EVERY OBJECT
   VERB jump_in
     CHECK my_game CAN saltare_in
       ELSE SAY azione_bloccata OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND cont IS raggiungibile AND cont IS NOT distante
       ELSE
@@ -5343,7 +5343,7 @@ ADD TO EVERY OBJECT
   VERB jump_on
     CHECK my_game CAN saltare_su
       ELSE SAY azione_bloccata OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting1 OF my_game.
@@ -5392,9 +5392,9 @@ ADD TO EVERY THING
       ELSE SAY check_obj_not_hero1 OF my_game.
     AND bersaglio NOT IN hero
       ELSE SAY check_obj_not_in_hero1 OF my_game.
-    AND bersaglio NOT IN worn
+    AND bersaglio NOT IN abbigliamento
       ELSE SAY check_obj_not_in_worn2 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
       ELSE
@@ -5450,7 +5450,7 @@ ADD TO EVERY ACTOR
         END IF.
     AND vittima <> hero
       ELSE SAY check_obj_not_hero2 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     DOES "You have to state what you want to kill" SAY THE vittima. "with."
   END VERB.
@@ -5491,7 +5491,7 @@ ADD TO EVERY ACTOR
         ELSE SAY check_obj_not_hero2 OF my_game.
       AND arma IN hero
         ELSE SAY check_obj2_in_hero OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND vittima IS NOT distante
         ELSE
@@ -5540,7 +5540,7 @@ ADD TO EVERY THING
         END IF.
     AND ogg <> hero
       ELSE SAY check_obj_not_hero6 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -5598,7 +5598,7 @@ ADD TO EVERY OBJECT
           THEN SAY check_obj_suitable_on_sg OF my_game.
           ELSE SAY check_obj_suitable_on_pl OF my_game.
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -5705,7 +5705,7 @@ ADD TO EVERY OBJECT
       ELSE SAY azione_bloccata OF my_game.
     AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down4 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND cont IS raggiungibile AND cont IS NOT distante
       ELSE
@@ -5769,7 +5769,7 @@ ADD TO EVERY OBJECT
       ELSE SAY azione_bloccata OF my_game.
     AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down4 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND superficie IS raggiungibile AND superficie IS NOT distante
       ELSE
@@ -5841,7 +5841,7 @@ ADD TO EVERY OBJECT
           THEN SAY ogg1_inadatto_sg OF my_game. "sollevare." --# alzare?
           ELSE SAY ogg1_inadatto_pl OF my_game. "sollevare."
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg NOT IN hero
       ELSE SAY check_obj_not_in_hero1 OF my_game.
@@ -6013,7 +6013,7 @@ VERB 'look'
   CHECK my_game CAN 'look'
     ELSE SAY azione_bloccata OF my_game.
   DOES
-    INCREASE described OF CURRENT LOCATION.
+    INCREASE descritto OF CURRENT LOCATION.
     -- see 'locations.i', attribute 'described'.
     LOOK.
 END VERB.
@@ -6052,7 +6052,7 @@ ADD TO EVERY THING
       ELSE SAY azione_bloccata OF my_game.
     AND bulk IS esaminabile
       ELSE SAY check_obj_suitable_there OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND bulk <> hero
       ELSE SAY check_obj_not_hero7 OF my_game.
@@ -6089,7 +6089,7 @@ ADD TO EVERY OBJECT
       ELSE SAY azione_bloccata OF my_game.
     AND cont IS esaminabile
       ELSE SAY check_obj_suitable_there OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND cont IS aperto
       ELSE
@@ -6133,7 +6133,7 @@ ADD TO EVERY OBJECT
           THEN SAY check_obj_suitable_look_out_sg OF my_game.
           ELSE SAY check_obj_suitable_look_out_pl OF my_game.
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     DOES
       IF ogg IS NOT plurale
@@ -6167,7 +6167,7 @@ ADD TO EVERY OBJECT
       ELSE SAY azione_bloccata OF my_game.
     AND bulk IS esaminabile
       ELSE SAY check_obj_suitable_look_through OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     DOES
       "You can't see through" SAY THE bulk. "."
@@ -6199,7 +6199,7 @@ ADD TO EVERY THING
       ELSE SAY check_obj_suitable_there OF my_game.
     AND bulk <> hero
       ELSE SAY check_obj_not_hero8 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     DOES
       "You notice nothing unusual under" SAY THE bulk. "."
@@ -6387,7 +6387,7 @@ ADD TO EVERY OBJECT
           THEN SAY check_obj_suitable_with_sg OF my_game.
           ELSE SAY check_obj_suitable_with_pl OF my_game.
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -6446,7 +6446,7 @@ ADD TO EVERY THING
         END IF.
     AND ogg <> hero
       ELSE SAY check_obj_not_hero6 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -6514,7 +6514,7 @@ ADD TO EVERY OBJECT
           THEN SAY check_obj_suitable_sg OF my_game.
           ELSE SAY check_obj_suitable_pl OF my_game.
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     DOES "You must state what you want to pry" SAY THE ogg. "with."
   END VERB.
@@ -6567,7 +6567,7 @@ VERB pry_with
       ELSE SAY check_obj_not_obj2_with OF my_game.
     AND strum IN hero
       ELSE SAY check_obj2_in_hero OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -6618,7 +6618,7 @@ ADD TO EVERY OBJECT
       ELSE SAY check_obj_not_hero1 OF my_game.
     AND ogg IS inanimato
       ELSE SAY check_obj_inanimate1 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -6673,7 +6673,7 @@ ADD TO EVERY THING
       ELSE SAY check_obj_not_hero1 OF my_game.
     AND ogg IS inanimato
       ELSE SAY check_obj_inanimate1 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -6738,7 +6738,7 @@ ADD TO EVERY THING
         ELSE SAY check_obj_not_hero1 OF my_game.
       AND ogg IS inanimato
         ELSE SAY check_obj_inanimate1 OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
@@ -6785,7 +6785,7 @@ ADD TO EVERY OBJECT
       ELSE SAY azione_bloccata OF my_game.
     AND ogg IN HERO
       ELSE SAY check_obj_in_hero OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     DOES
       "You must state where you want to put"
@@ -6846,7 +6846,7 @@ ADD TO EVERY OBJECT
         ELSE SAY check_obj_not_obj2_in OF my_game.
           AND ogg IS prendibile
           ELSE SAY check_obj_takeable OF my_game.
-          AND CURRENT LOCATION IS lit
+          AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
@@ -6964,7 +6964,7 @@ ADD TO EVERY OBJECT
           ELSE SAY check_obj_takeable OF my_game.
       AND bulk <> hero
           ELSE SAY check_obj2_not_hero2 OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
             ELSE SAY check_locazione_illuminata OF my_game.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
@@ -7039,7 +7039,7 @@ ADD TO EVERY OBJECT
         ELSE SAY check_obj_not_obj2_on OF my_game.
       AND ogg IS prendibile
         ELSE SAY check_obj_takeable OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND ogg NOT IN superficie
         ELSE
@@ -7085,7 +7085,7 @@ ADD TO EVERY OBJECT
         END IF.
         -- end of implicit taking.
 
-        IF superficie = pavimento OR superficie = ground
+        IF superficie = pavimento OR superficie = suolo
           THEN LOCATE ogg AT hero.
           ELSE LOCATE ogg IN superficie.
         END IF.
@@ -7206,7 +7206,7 @@ ADD TO EVERY THING
       ELSE SAY check_obj_not_hero6 OF my_game.
     AND ogg IS inanimato
       ELSE SAY check_obj_inanimate2 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -7363,7 +7363,7 @@ ADD TO EVERY THING
       ELSE SAY check_obj_not_hero3 OF my_game.
     AND ogg IS inanimato
       ELSE SAY check_obj_inanimate1 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -7459,7 +7459,7 @@ ADD TO EVERY THING
       ELSE LIST hero.
     AND ogg IS inanimato
       ELSE SAY check_obj_inanimate1 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -7515,7 +7515,7 @@ ADD TO EVERY OBJECT
         END IF.
     AND ogg IS spostabile
       ELSE SAY check_obj_movable OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -7575,11 +7575,11 @@ ADD TO EVERY THING
         END IF.
     AND bersaglio <> hero
       ELSE SAY check_obj_not_hero2 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND bersaglio NOT IN hero
       ELSE SAY check_obj_not_in_hero1 OF my_game.
-    AND bersaglio NOT IN worn
+    AND bersaglio NOT IN abbigliamento
       ELSE SAY check_obj_not_in_worn2 OF my_game.
     AND bersaglio IS NOT distante
       ELSE
@@ -7654,11 +7654,11 @@ ADD TO EVERY THING
         ELSE SAY check_obj_not_hero2 OF my_game.
       AND bersaglio <> arma
         ELSE SAY check_obj_not_obj2_with OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND bersaglio NOT IN hero
         ELSE SAY check_obj_not_in_hero1 OF my_game.
-      AND bersaglio NOT IN worn
+      AND bersaglio NOT IN abbigliamento
         ELSE SAY check_obj_not_in_worn2 OF my_game.
       AND bersaglio IS NOT distante
         ELSE
@@ -7736,7 +7736,7 @@ ADD TO EVERY OBJECT
         ELSE SAY check_obj2_not_hero1 OF my_game.
       AND ogg IN hero
         ELSE SAY check_obj_in_hero OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND png IS NOT distante
         ELSE
@@ -7811,7 +7811,7 @@ ADD TO EVERY liquido
           THEN SAY ogg1_inadatto_sg OF my_game. "sorseggiare."
           ELSE SAY ogg1_inadatto_pl OF my_game. "sorseggiare."
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND liq IS raggiungibile AND liq IS NOT distante
       ELSE
@@ -7928,7 +7928,7 @@ ADD TO EVERY SUPPORTER
       ELSE SAY azione_bloccata OF my_game.
     AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting4 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND superficie IS raggiungibile AND superficie IS NOT distante
       ELSE
@@ -8049,7 +8049,7 @@ ADD TO EVERY THING
           THEN SAY check_obj_suitable_sg OF my_game.
           ELSE SAY check_obj_suitable_pl OF my_game.
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -8124,7 +8124,7 @@ ADD TO EVERY SUPPORTER
   VERB stand_on
     CHECK my_game CAN stand_on
       ELSE SAY azione_bloccata OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND superficie IS raggiungibile AND superficie IS NOT distante
       ELSE
@@ -8173,7 +8173,7 @@ VERB swim
     ELSE SAY check_hero_not_sitting1 OF my_game.
   AND hero IS NOT sdraiato
     ELSE SAY check_hero_not_lying_down1 OF my_game.
-  AND CURRENT LOCATION IS lit
+  AND CURRENT LOCATION IS illuminato
     ELSE SAY check_locazione_illuminata OF my_game.
   DOES
     "There is no water suitable for swimming here."
@@ -8208,7 +8208,7 @@ ADD TO EVERY OBJECT
       ELSE SAY check_hero_not_sitting3 OF my_game.
     AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down3 OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND liq IS raggiungibile AND liq IS NOT distante
       ELSE
@@ -8399,7 +8399,7 @@ ADD TO EVERY OBJECT
           THEN SAY ogg1_inadatto_sg OF my_game. "assaggiare."
           ELSE SAY ogg1_inadatto_pl OF my_game. "assaggiare."
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -8456,7 +8456,7 @@ ADD TO EVERY OBJECT
           THEN SAY ogg1_inadatto_sg OF my_game. "strappare."
           ELSE SAY ogg1_inadatto_pl OF my_game. "strappare."
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -8621,7 +8621,7 @@ ADD TO EVERY OBJECT
         END IF.
     AND proiettile IS prendibile
       ELSE SAY check_obj_takeable OF my_game.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND proiettile IS raggiungibile AND proiettile IS NOT distante
       ELSE
@@ -8655,7 +8655,7 @@ ADD TO EVERY OBJECT
 
       IF pavimento HERE
         THEN "on the floor"
-      ELSIF ground HERE
+      ELSIF suolo HERE
         THEN "on the ground"
       END IF.
 
@@ -8707,7 +8707,7 @@ ADD TO EVERY OBJECT
         ELSE SAY check_obj2_not_in_hero1 OF my_game.
       AND bersaglio <> hero
         ELSE SAY check_obj2_not_hero1 OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND proiettile IS raggiungibile AND proiettile IS NOT distante
         ELSE
@@ -8764,7 +8764,7 @@ ADD TO EVERY OBJECT
 
                   IF pavimento HERE
                   THEN "on the floor"
-                ELSIF ground HERE
+                ELSIF suolo HERE
                   THEN "on the ground"
                   END IF.
 
@@ -8821,7 +8821,7 @@ ADD TO EVERY OBJECT
         ELSE SAY check_obj2_not_in_hero1 OF my_game.
       AND ricevente <> hero
         ELSE SAY check_obj2_not_hero1 OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND proiettile IS raggiungibile AND proiettile IS NOT distante
         ELSE
@@ -8904,7 +8904,7 @@ ADD TO EVERY OBJECT
         ELSE SAY check_obj2_not_hero1 OF my_game.
       AND cont NOT IN hero
         ELSE SAY check_obj2_not_in_hero1 OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
           ELSE SAY check_locazione_illuminata OF my_game.
       AND proiettile NOT IN cont
         ELSE
@@ -8995,7 +8995,7 @@ ADD TO EVERY OBJECT
           THEN SAY ogg1_inadatto_sg OF my_game. "legare."
           ELSE SAY ogg1_inadatto_pl OF my_game. "legare."
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     DOES
       "You must state where you want to tie" SAY THE ogg. "."
@@ -9039,7 +9039,7 @@ ADD TO EVERY THING
         ELSE SAY check_obj_not_obj2_to OF my_game.
       AND ogg IS prendibile
         ELSE SAY check_obj_takeable OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
@@ -9118,7 +9118,7 @@ ADD TO EVERY THING
           THEN SAY ogg1_inadatto_sg OF my_game. "toccare."
           ELSE SAY ogg1_inadatto_pl OF my_game. "toccare."
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -9195,7 +9195,7 @@ ADD TO EVERY THING
         ELSE SAY check_obj2_in_hero OF my_game.
       AND ogg IS inanimato
         ELSE SAY check_obj_inanimate2 OF my_game.
-      AND CURRENT LOCATION IS lit
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF my_game.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
@@ -9260,7 +9260,7 @@ ADD TO EVERY OBJECT
           THEN SAY check_obj_suitable_sg OF my_game.
           ELSE SAY check_obj_suitable_pl OF my_game.
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -9298,7 +9298,7 @@ END ADD TO.
 
 
 ----- Only devices and lightsources can be turned on and off. These classes are
------ defined in 'classes.i' with proper checks for 'on' and 'NOT on', 'lit' and 'NOT lit'.
+----- defined in 'classes.i' with proper checks for 'on' and 'NOT on', 'lit' and 'NOT illuminato'.
 ----- Trying to turn on or off an ordinary object will default here to "That's not
 ----- something you can turn on".
 
@@ -9354,7 +9354,7 @@ END ADD TO.
 
 ----- Only devices and lightsources can be turned on and off. These classes
 ----- are defined in 'classes.i' with proper checks for 'on' and 'NOT on',
------ 'lit' and 'NOT lit'.
+----- 'lit' and 'NOT illuminato'.
 
 
 SYNTAX turn_off = turn off (disp)
@@ -9451,7 +9451,7 @@ ADD TO EVERY OBJECT
   VERB wear
     CHECK my_game CAN indossare
         ELSE SAY azione_bloccata OF my_game.
-    AND ogg NOT IN worn
+    AND ogg NOT IN abbigliamento
       ELSE SAY check_obj_not_in_worn1 OF my_game.
     AND ogg IS prendibile
       ELSE
@@ -9459,7 +9459,7 @@ ADD TO EVERY OBJECT
           THEN SAY check_obj_takeable OF my_game.
           ELSE SAY check_obj_takeable OF my_game.
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE

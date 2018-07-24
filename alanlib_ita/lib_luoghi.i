@@ -1,4 +1,4 @@
--- "lib_luoghi.i" v0.3.0 (2018/07/24)
+-- "lib_luoghi.i" v0.3.1 (2018/07/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -32,7 +32,7 @@
 -- ========================================================
 
 
-THE nowhere IsA LOCATION
+THE limbo IsA LOCATION
 --@TRADOTTO: Direzioni cardinali
   EXIT
     nord,         -- north
@@ -48,10 +48,10 @@ THE nowhere IsA LOCATION
     dentro,       -- 'in',
     fuori         -- out
 
-    TO nowhere.
+    TO limbo.
 
 
-END THE nowhere.
+END THE limbo.
 
 
 --@TRADOTTO: Direzioni cardinali (sinonimi)
@@ -92,7 +92,7 @@ SYNONYMS
 
 -- 2) when you want to remove things from play, you can
 --
--- LOCATE [object] AT nowhere.
+-- LOCATE [object] AT limbo.
 --
 -- for example
 --
@@ -100,7 +100,7 @@ SYNONYMS
 -- ...
 --    VERB tear
 --    DOES ONLY "You tear the piece of paper to shreds."
---    LOCATE piece_of_paper AT nowhere.
+--    LOCATE piece_of_paper AT limbo.
 --  END VERB.
 --
 -- END THE piece_of_paper.
@@ -126,7 +126,7 @@ SYNONYMS
 --
 -- or:
 --
--- THE greenmeadow IsA SITE
+-- THE greenmeadow IsA luogo_esterno
 --
 -- and the ground and the sky are automatically found in that location.
 --
@@ -158,9 +158,9 @@ EVERY stanza IsA LOCATION AT interno
 END EVERY.                -- about the [object]."
 
 
-EVERY site IsA LOCATION AT esterno
-  HAS ground_desc "".
-  HAS desc_cielo  "".
+EVERY luogo_esterno IsA LOCATION AT esterno
+  HAS desc_suolo "".
+  HAS desc_cielo "".
 END EVERY.
 
 
@@ -168,7 +168,7 @@ EVERY oggetto_stanza IsA OBJECT AT interno
 END EVERY.
 
 
-EVERY site_object IsA OBJECT AT esterno
+EVERY oggetto_luogo_esterno IsA OBJECT AT esterno
 END EVERY.
 
 
@@ -236,7 +236,7 @@ END THE.
 
 
 
-THE ground IsA site_object
+THE suolo IsA oggetto_luogo_esterno
   IS NOT prendibile.
   IS NOT spostabile.
   CONTAINER
@@ -283,7 +283,7 @@ END THE.
 
 
 
-THE cielo IsA site_object
+THE cielo IsA oggetto_luogo_esterno
   IS NOT prendibile.
   IS distante.
   DESCRIPTION ""
@@ -313,7 +313,7 @@ ADD TO EVERY oggetto_stanza
 END ADD TO.
 
 
-ADD TO EVERY site_object
+ADD TO EVERY oggetto_luogo_esterno
 
   VERB put_against, put_behind, put_near, put_under
     WHEN bulk
@@ -359,24 +359,24 @@ END ADD TO.
 
 
 ADD TO EVERY LOCATION
-  IS lit.
+  IS illuminato.
 END ADD TO.
 
 
 EVERY luogo_buio IsA LOCATION
-  IS NOT lit.
+  IS NOT illuminato.
 
   ENTERED
 
-    IF COUNT IsA LIGHTSOURCE, IS lit, HERE > 0
-      THEN MAKE THIS lit.
+    IF COUNT IsA fonte_di_luce, IS illuminato, HERE > 0
+      THEN MAKE THIS illuminato.
         IF CURRENT ACTOR <> hero
           THEN LOOK.
         END IF.
     END IF.
 
-    IF COUNT IsA LIGHTSOURCE, IS lit, HERE = 0
-      THEN MAKE THIS NOT lit.
+    IF COUNT IsA fonte_di_luce, IS illuminato, HERE = 0
+      THEN MAKE THIS NOT illuminato.
     END IF.
 
     -- These ENTERED statements take care
@@ -386,15 +386,15 @@ EVERY luogo_buio IsA LOCATION
 
 
   DESCRIPTION
-    CHECK THIS IS lit
+    CHECK THIS IS illuminato
       ELSE SAY dark_loc_desc OF my_game.
 
 END EVERY luogo_buio.
 
 
-WHEN location OF hero IS NOT lit
-  AND COUNT IsA lightsource, IS lit, AT hero > 0
-THEN MAKE location OF hero lit.
+WHEN location OF hero IS NOT illuminato
+  AND COUNT IsA fonte_di_luce, IS illuminato, AT hero > 0
+THEN MAKE location OF hero illuminato.
   SCHEDULE light_on AT hero AFTER 0.
 
 
@@ -404,9 +404,9 @@ END EVENT.
 
 
 WHEN location OF hero IsA luogo_buio
-  AND location OF hero IS lit
-  AND COUNT IsA lightsource, IS lit, AT hero = 0
-THEN MAKE location OF hero NOT lit.
+  AND location OF hero IS illuminato
+  AND COUNT IsA fonte_di_luce, IS illuminato, AT hero = 0
+THEN MAKE location OF hero NOT illuminato.
   SCHEDULE light_off AT hero AFTER 0.
 
 
@@ -419,10 +419,10 @@ END EVENT.
 -- lightsource with him:
 
 EVENT check_darkness
-    FOR EACH dl IsA luogo_buio, IS lit
+    FOR EACH dl IsA luogo_buio, IS illuminato
     DO
-      IF COUNT IsA LIGHTSOURCE, AT dl = 0
-        THEN MAKE dl NOT lit.
+      IF COUNT IsA fonte_di_luce, AT dl = 0
+        THEN MAKE dl NOT illuminato.
       END IF.
     END FOR.
     SCHEDULE check_darkness AFTER 1.
@@ -479,14 +479,14 @@ END EVENT.
 
 
 ADD TO EVERY LOCATION
-  HAS visited 0.
-  HAS described 0.
+  HAS visitato  0.
+  HAS descritto 0.
 
   ENTERED
      IF CURRENT ACTOR = hero
       THEN
-        INCREASE visited OF THIS.
-        INCREASE described OF THIS.
+        INCREASE visitato  OF THIS.
+        INCREASE descritto OF THIS.
         -- The "described" attribute increases also after LOOK (see 'verbs.i').
      END IF.
 

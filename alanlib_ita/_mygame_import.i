@@ -1,4 +1,4 @@
--- "_mygame_import.i" v0.3.0 (2018/07/24)
+-- "_mygame_import.i" v0.3.1 (2018/07/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -119,7 +119,7 @@ THE my_game IsA DEFINITION_BLOCK
 	HAS hero_worn_header "You are wearing".
 	HAS hero_worn_else "You are not wearing anything.".	
 
-	-- These messages are shown when you add "LIST worn." for example to the 'examine' verb.
+	-- These messages are shown when you add "LIST abbigliamento." for example to the 'examine' verb.
 
 
 	-- description messages for dark locations:
@@ -776,7 +776,7 @@ VERB drink
 				-- i.e. if the implicit taking was successful
 					THEN
 						"You drink all of" SAY THE liq. "."
-						LOCATE liq AT nowhere.
+						LOCATE liq AT limbo.
 				END IF.
 		END IF.
 
@@ -813,7 +813,7 @@ VERB eat
 		-- end of implicit taking.
 			
 		"You eat all of" SAY THE food. "."
-		LOCATE food AT nowhere.
+		LOCATE food AT limbo.
 END VERB.
 
 
@@ -873,7 +873,7 @@ VERB empty_on, pour_on
 		IF COUNT IsA OBJECT, DIRECTLY IN ogg = 0
 			THEN "There is nothing in" SAY THE ogg. "."
 			ELSE
-				IF superficie = pavimento OR superficie = ground
+				IF superficie = pavimento OR superficie = suolo
 					THEN EMPTY ogg AT hero.
 					ELSE EMPTY ogg IN superficie.
 				END IF.
@@ -1076,8 +1076,8 @@ VERB i
 		-- If you leave the above addition out, the outcome will be just "You are carrying a bag.", with
 		-- no comment on what is inside the bag.
 		
-		IF COUNT DIRECTLY IN worn > 0		-- See the file 'classes.i', subclass 'clothing'.
-			THEN LIST worn. 		-- This code will list what the hero is wearing.
+		IF COUNT DIRECTLY IN abbigliamento > 0		-- See the file 'classes.i', subclass 'clothing'.
+			THEN LIST abbigliamento. 		-- This code will list what the hero is wearing.
 		END IF.
 	
 END VERB.
@@ -1257,7 +1257,7 @@ END VERB.
 
 VERB 'look'
 	DOES ONLY
-		INCREASE described OF CURRENT LOCATION. 		
+		INCREASE descritto OF CURRENT LOCATION. 		
 		-- see 'locations.i', attribute 'described'.
 		LOOK.
 END VERB.
@@ -1392,7 +1392,7 @@ VERB put_on
 	DOES ONLY
 		IF ogg IN hero
 			THEN
-				IF superficie = pavimento OR superficie = ground
+				IF superficie = pavimento OR superficie = suolo
 					THEN LOCATE ogg AT hero.
 						"You put" SAY THE ogg. "on" SAY THE superficie. "."
 					ELSE LOCATE ogg IN superficie.
@@ -1761,7 +1761,7 @@ VERB take
 			
 
 			ELSIF ogg IsA OBJECT
-				THEN IF ogg DIRECTLY IN worn
+				THEN IF ogg DIRECTLY IN abbigliamento
 						THEN LOCATE ogg IN hero.
 							"You take off" SAY THE ogg. "and carry it in your hands."
 						ELSE LOCATE ogg IN hero.
@@ -1875,7 +1875,7 @@ VERB throw
 						
 		IF pavimento HERE
 			THEN "on the floor"
-		ELSIF ground HERE
+		ELSIF suolo HERE
 			THEN "on the ground"
 		END IF.
 		
@@ -1920,7 +1920,7 @@ VERB throw_at
 
 		  						IF pavimento HERE
 									THEN "on the floor"
-								ELSIF ground HERE
+								ELSIF suolo HERE
 									THEN "on the ground"
 		  						END IF.
 	
@@ -2055,8 +2055,8 @@ VERB undress
 		"You don't feel like undressing is a good idea right now."
 																						
 	   	-- To make it work, use the following lines instead:					
-	    	--IF COUNT DIRECTLY IN worn, IsA CLOTHING > 0
-			--THEN EMPTY worn IN hero.
+	    	--IF COUNT DIRECTLY IN abbigliamento, IsA CLOTHING > 0
+			--THEN EMPTY abbigliamento IN hero.
 				--"You remove all the items you were wearing."
 		    	--ELSE "You're not wearing anything you can remove."
 	    	-- END IF.

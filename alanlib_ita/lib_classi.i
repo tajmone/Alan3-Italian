@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.3.0 (2018/07/24)
+-- "lib_classi.i" v0.3.1 (2018/07/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -307,8 +307,8 @@ END ADD.
 -- This container is only used internally in the library; ignore.
 
 
-THE worn IsA ENTITY
-  CONTAINER TAKING CLOTHING.
+THE abbigliamento IsA ENTITY
+  CONTAINER TAKING indumento.
     HEADER SAY hero_worn_header OF my_game.
     ELSE SAY hero_worn_else OF my_game.
 END THE.
@@ -323,7 +323,7 @@ END THE.
 -------------------------------------------------------------------
 
 
-EVERY clothing IsA OBJECT
+EVERY indumento IsA OBJECT
 
   IS indossabile.
 
@@ -345,7 +345,7 @@ EVERY clothing IsA OBJECT
     -- the set attribute 'IS wearing' is defined to work for both the hero
     -- and NPCs:
 
-    IF THIS IN worn
+    IF THIS IN abbigliamento
       THEN INCLUDE THIS IN wearing OF hero.
     END IF.
 
@@ -355,8 +355,8 @@ EVERY clothing IsA OBJECT
           THEN
             IF THIS IN wearing OF hero AND THIS <> indumento_fittizio
               THEN
-                IF THIS NOT IN worn
-                  THEN LOCATE THIS IN worn.
+                IF THIS NOT IN abbigliamento
+                  THEN LOCATE THIS IN abbigliamento.
                 END IF.
                 MAKE THIS indossato.
             END IF.
@@ -458,7 +458,7 @@ EVERY clothing IsA OBJECT
 --------------------------------------------------------------------
 
 
-    IF topcover OF THIS <> 0 AND topcover OF THIS <= SUM OF topcover DIRECTLY IN worn
+    IF topcover OF THIS <> 0 AND topcover OF THIS <= SUM OF topcover DIRECTLY IN abbigliamento
       THEN
         INCREASE wear_flag OF hero BY 5.
     END IF.
@@ -472,19 +472,19 @@ EVERY clothing IsA OBJECT
     --IF THIS IN tempworn
       --THEN
 
-    IF handscover OF THIS <> 0 AND handscover OF THIS <= SUM OF handscover DIRECTLY IN worn
+    IF handscover OF THIS <> 0 AND handscover OF THIS <= SUM OF handscover DIRECTLY IN abbigliamento
       THEN
         INCREASE wear_flag OF hero BY 5.
     END IF.
 
 
-    IF feetcover OF THIS <> 0 AND feetcover OF THIS <= SUM OF feetcover DIRECTLY IN worn
+    IF feetcover OF THIS <> 0 AND feetcover OF THIS <= SUM OF feetcover DIRECTLY IN abbigliamento
       THEN
         INCREASE wear_flag OF hero BY 5.
     END IF.
 
 
-    IF headcover OF THIS <> 0 AND headcover OF THIS <= SUM OF headcover DIRECTLY IN worn
+    IF headcover OF THIS <> 0 AND headcover OF THIS <= SUM OF headcover DIRECTLY IN abbigliamento
       THEN
         INCREASE wear_flag OF hero BY 5.
     END IF.
@@ -498,7 +498,7 @@ EVERY clothing IsA OBJECT
 --------------------------------------------------------------------
 
 
-    SET tempcovered OF hero TO SUM OF botcover DIRECTLY IN worn.
+    SET tempcovered OF hero TO SUM OF botcover DIRECTLY IN abbigliamento.
 
     IF tempcovered OF hero >63 and botcover OF THIS < 33
       THEN
@@ -561,16 +561,16 @@ EVERY clothing IsA OBJECT
         END IF.
 
         LOCATE THIS IN hero.
-        EMPTY worn IN tempworn.
+        EMPTY abbigliamento IN tempworn.
         LIST tempworn.
 
         "Trying to put" SAY THE THIS. "on isn't very sensible."
 
-        EMPTY tempworn IN worn.
+        EMPTY tempworn IN abbigliamento.
 
     ELSIF wear_flag OF hero = 1
       THEN
-        LOCATE THIS IN worn.
+        LOCATE THIS IN abbigliamento.
 
         "You pick up the" SAY THE THIS.
 
@@ -580,7 +580,7 @@ EVERY clothing IsA OBJECT
         END IF.
 
     ELSE
-      LOCATE THIS IN worn.
+      LOCATE THIS IN abbigliamento.
       MAKE THIS indossato.
       INCLUDE THIS IN wearing OF hero.
       "You put on" SAY THE THIS. "."
@@ -591,9 +591,9 @@ END VERB.
 
 
 VERB remove
-  CHECK THIS IN worn
+  CHECK THIS IN abbigliamento
     ELSE SAY check_obj_in_worn OF my_game.
-  AND CURRENT LOCATION IS lit
+  AND CURRENT LOCATION IS illuminato
     ELSE SAY check_locazione_illuminata OF my_game.
 
   DOES ONLY
@@ -613,7 +613,7 @@ VERB remove
 --------------------------------------------------------------------
 
 
-  SET tempcovered OF hero TO SUM OF topcover DIRECTLY IN worn /2.
+  SET tempcovered OF hero TO SUM OF topcover DIRECTLY IN abbigliamento /2.
   IF topcover OF THIS <> 0 AND topcover OF THIS < tempcovered OF hero
      THEN
       INCREASE wear_flag OF hero BY 1.
@@ -625,21 +625,21 @@ VERB remove
 --------------------------------------------------------------------
 
 
-  SET tempcovered OF hero TO SUM OF handscover DIRECTLY IN worn /2.
+  SET tempcovered OF hero TO SUM OF handscover DIRECTLY IN abbigliamento /2.
   IF handscover OF THIS <> 0 AND handscover OF THIS < tempcovered OF hero
     THEN
       INCREASE wear_flag OF hero BY 1.
   END IF.
 
 
-  SET tempcovered OF hero TO SUM OF feetcover DIRECTLY IN worn /2.
+  SET tempcovered OF hero TO SUM OF feetcover DIRECTLY IN abbigliamento /2.
   IF feetcover OF THIS <> 0 AND feetcover OF THIS < tempcovered OF hero
     THEN
       INCREASE wear_flag OF hero BY 1.
   END IF.
 
 
-  SET tempcovered OF hero TO SUM OF headcover DIRECTLY IN worn /2.
+  SET tempcovered OF hero TO SUM OF headcover DIRECTLY IN abbigliamento /2.
   IF headcover OF THIS <> 0 AND headcover OF THIS < tempcovered OF hero
     THEN
       INCREASE wear_flag OF hero BY 1.
@@ -652,7 +652,7 @@ VERB remove
 --------------------------------------------------------------------
 
 
-  SET tempcovered OF hero TO SUM OF botcover DIRECTLY IN worn.
+  SET tempcovered OF hero TO SUM OF botcover DIRECTLY IN abbigliamento.
   IF tempcovered OF hero >63
     THEN
       SET tempcovered OF hero TO tempcovered OF hero -64.
@@ -693,7 +693,7 @@ VERB remove
 
   IF wear_flag OF hero > 0
     THEN
-      LIST worn.
+      LIST abbigliamento.
       "Trying to take" SAY THE THIS. "off isn't very sensible."
     ELSE
       LOCATE THIS IN hero.
@@ -724,7 +724,7 @@ END ADD TO.
 --------------------------------------------------------------------
 
 THE tempworn IsA OBJECT
-  CONTAINER TAKING CLOTHING.
+  CONTAINER TAKING indumento.
   HEADER "You're already wearing"
 END THE tempworn.
 
@@ -738,12 +738,12 @@ END THE tempworn.
 EVENT worn_clothing_check
    FOR EACH ac IsA ACTOR
   DO
-    FOR EACH cl IsA CLOTHING, IN wearing OF ac
+    FOR EACH cl IsA indumento, IN wearing OF ac
       DO
         IF ac = hero
           THEN
-            IF cl NOT IN worn
-              THEN LOCATE cl IN worn.
+            IF cl NOT IN abbigliamento
+              THEN LOCATE cl IN abbigliamento.
                 MAKE cl indossato.
             END IF.
           ELSE
@@ -919,7 +919,7 @@ EVERY dispositivo IsA OBJECT
           THEN SAY check_device_not_on_sg OF my_game.
           ELSE SAY check_device_not_on_pl OF my_game.
         END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND THIS IS raggiungibile AND THIS IS NOT distante
       ELSE
@@ -951,7 +951,7 @@ EVERY dispositivo IsA OBJECT
           THEN SAY check_device_on_sg OF my_game.
           ELSE SAY check_device_on_pl OF my_game.
          END IF.
-    AND CURRENT LOCATION IS lit
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND THIS IS raggiungibile AND THIS IS NOT distante
       ELSE
@@ -978,7 +978,7 @@ EVERY dispositivo IsA OBJECT
 
 
   VERB switch
-    CHECK CURRENT LOCATION IS lit
+    CHECK CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF my_game.
     AND THIS IS raggiungibile AND THIS IS NOT distante
       ELSE
@@ -1222,13 +1222,13 @@ END THE.
 -- =============================================================
 
 
--- (In the file 'lib_verbi.i', IsA LIGHTSOURCE is used in the syntax definition of the verb 'light'.
+-- (In the file 'lib_verbi.i', IsA fonte_di_luce is used in the syntax definition of the verb 'light'.
 -- Also, in 'lib_luoghi.i', LIGHTSOURCE is used in defining the behavior of the class DARK_LOCATION.)
 
 
 
-EVERY lightsource IsA OBJECT
-  IS NOT lit.
+EVERY fonte_di_luce IsA OBJECT
+  IS NOT illuminato.
   IS naturale. -- A natural lightsource is for example a candle, a match or a torch.
                -- A NOT natural lightsource is for example a flashlight or a lamp.
                -- You cannot switch on or off a natural lightsource.
@@ -1236,7 +1236,7 @@ EVERY lightsource IsA OBJECT
 
   VERB esamina
     DOES AFTER
-      IF THIS IS lit
+      IF THIS IS illuminato
         THEN
           IF THIS IS naturale
             THEN
@@ -1272,7 +1272,7 @@ EVERY lightsource IsA OBJECT
 
 
   VERB light
-    CHECK THIS IS NOT lit
+    CHECK THIS IS NOT illuminato
       ELSE
         IF THIS IS NOT plurale
           THEN SAY check_lightsource_not_lit_sg OF my_game.
@@ -1283,22 +1283,22 @@ EVERY lightsource IsA OBJECT
     DOES ONLY
       IF THIS IS naturale
         THEN "You light" SAY THE THIS. "."
-          MAKE THIS lit.
+          MAKE THIS illuminato.
         ELSE "You turn on" SAY THE THIS. "."
-          MAKE THIS lit.
+          MAKE THIS illuminato.
       END IF.
   END VERB.
 
 
   VERB extinguish
-    CHECK THIS IS lit
+    CHECK THIS IS illuminato
       ELSE
         IF THIS IS NOT plurale
           THEN SAY check_lightsource_lit_sg OF my_game.
           ELSE SAY check_lightsource_lit_pl OF my_game.
         END IF.
     DOES ONLY "You extinguish" SAY THE THIS. "."
-      MAKE THIS NOT lit.
+      MAKE THIS NOT illuminato.
   END VERB.
 
 
@@ -1309,7 +1309,7 @@ EVERY lightsource IsA OBJECT
           THEN SAY check_obj_suitable_on_sg OF my_game.
           ELSE SAY check_obj_suitable_on_pl OF my_game.
         END IF.
-    AND THIS IS NOT lit
+    AND THIS IS NOT illuminato
       ELSE
         IF THIS IS NOT plurale
           THEN SAY check_lightsource_not_lit_sg OF my_game.
@@ -1319,7 +1319,7 @@ EVERY lightsource IsA OBJECT
       ELSE SAY check_obj_not_broken OF my_game.
     DOES ONLY
       "You turn on" SAY THE THIS. "."
-      MAKE THIS lit.
+      MAKE THIS illuminato.
 
   END VERB.
 
@@ -1331,7 +1331,7 @@ EVERY lightsource IsA OBJECT
           THEN SAY check_obj_suitable_off_sg OF my_game.
           ELSE SAY check_obj_suitable_off_pl OF my_game.
         END IF.
-    AND THIS IS lit
+    AND THIS IS illuminato
       ELSE
         IF THIS IS NOT plurale
           THEN SAY check_lightsource_lit_sg OF my_game.
@@ -1340,7 +1340,7 @@ EVERY lightsource IsA OBJECT
 
     DOES ONLY
       "You turn off" SAY THE THIS. "."
-      MAKE THIS NOT lit.
+      MAKE THIS NOT illuminato.
 
   END VERB.
 
@@ -1365,11 +1365,11 @@ EVERY lightsource IsA OBJECT
     AND THIS IS NOT rotto
       ELSE SAY check_obj_not_broken OF my_game.
     DOES ONLY
-      IF THIS IS lit
+      IF THIS IS illuminato
         THEN "You switch off" SAY THE THIS. "."
-          MAKE THIS NOT lit.
+          MAKE THIS NOT illuminato.
         ELSE "You switch on" SAY THE THIS. "."
-          MAKE THIS lit.
+          MAKE THIS illuminato.
       END IF.
   END VERB.
 
@@ -1658,7 +1658,7 @@ EVERY liquido IsA OBJECT
         IF THIS IN hero
           -- i.e. if the implicit taking was successful
           THEN
-            IF superficie = pavimento OR superficie = ground
+            IF superficie = pavimento OR superficie = suolo
               THEN LOCATE THIS AT hero.
                 "You pour" SAY THE THIS. "on" SAY THE superficie. "."
                 SET recipiente OF THIS TO recipiente_fittizio.
@@ -2407,7 +2407,7 @@ END ADD TO.
 
 -- the default dummy clothing object; ignore
 
-THE indumento_fittizio IsA CLOTHING
+THE indumento_fittizio IsA indumento
 END THE.
 
 

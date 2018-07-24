@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.3.0 (2018/07/24)
+-- "lib_definizioni.i" v0.3.1 (2018/07/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -439,7 +439,7 @@ END ADD TO OBJECT.
 -- An attribute for keeping track of nested locations; used internally in the library (ignore).
 
 ADD TO EVERY LOCATION
-  HAS annidati { nowhere }.
+  HAS annidati { limbo }.
 END ADD TO.
 
 --------------------------------------------------------------------------------
@@ -1053,7 +1053,7 @@ EVERY DEFINITION_BLOCK IsA LOCATION
 
         FOR EACH l IsA LOCATION
           DO
-            EXCLUDE nowhere FROM annidati OF l.
+            EXCLUDE limbo FROM annidati OF l.
             IF COUNT IsA LOCATION, AT l > 0
               THEN
                 FOR EACH x IsA LOCATION, AT l
@@ -1065,7 +1065,7 @@ EVERY DEFINITION_BLOCK IsA LOCATION
 
         FOR EACH l IsA LOCATION
           DO
-              IF l <> my_game AND l <> nowhere
+              IF l <> my_game AND l <> limbo
               THEN LOCATE l AT my_game.
             END IF.
         END FOR.
@@ -1075,14 +1075,14 @@ EVERY DEFINITION_BLOCK IsA LOCATION
             LOCATE r1 AT interno.
         END FOR.
 
-        FOR EACH s1 IsA SITE
+        FOR EACH s1 IsA luogo_esterno
           DO
             LOCATE s1 AT esterno.
         END FOR.
 
         FOR EACH l IsA LOCATION
           DO
-            IF annidati OF l <> {} AND l <> my_game AND l <> nowhere
+            IF annidati OF l <> {} AND l <> my_game AND l <> limbo
             THEN
                     FOR EACH x IsA LOCATION, IN annidati OF l
                 DO
@@ -1098,8 +1098,8 @@ EVERY DEFINITION_BLOCK IsA LOCATION
 -- We ensure that the 'visited' and 'described' attributes of the starting location
 -- are correct at the start of the game:
 
-    SET visited   OF location OF hero TO 1.
-    SET described OF location OF hero TO 1.
+    SET visitato  OF location OF hero TO 1.
+    SET descritto OF location OF hero TO 1.
 
 
 

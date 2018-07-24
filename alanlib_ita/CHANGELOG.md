@@ -11,6 +11,10 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/24 \(5\)](#20180724-5)
+    - [Library Attributes](#library-attributes)
+    - [Library Classes](#library-classes)
+    - [Library Instances](#library-instances)
 - [2018/07/24 \(4\)](#20180724-4)
 - [2018/07/24 \(3\)](#20180724-3)
     - [Input Response Messages](#input-response-messages)
@@ -137,6 +141,52 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/24 (5)
+
+- [`lib_classi.i`][lib_classi] (v0.3.1)
+- [`lib_definizioni.i`][lib_definizioni] (v0.3.1)
+- [`lib_luoghi.i`][lib_luoghi] (v0.3.1)
+- [`lib_messaggi.i`][lib_messaggi] (v0.3.1)
+- [`lib_verbi.i`][lib_verbi] (v0.3.1)
+
+This commit covers the translation of many library identifiers.
+
+## Library Attributes
+
+Translated library attributes:
+
+|    English    |   Italian    |           Class            |
+|---------------|--------------|----------------------------|
+| `described`   | `descritto`  | `LOCATION`                 |
+| `visited`     | `visitato`   | `LOCATION`                 |
+| `lit`         | `illuminato` | `LOCATION` + `lightsource` |
+| `ground_desc` | `desc_suolo` | `site` » `luogo_esterno`   |
+
+
+## Library Classes
+
+Translated CLASSes:
+
+|    Class EN   |         Class IT        |                   Type                  |
+|---------------|-------------------------|-----------------------------------------|
+| `site`        | `luogo_esterno`         | `LOCATION`                              |
+| `site_object` | `oggetto_luogo_esterno` | `OBJECT`                                |
+| `ground`      | `suolo`                 | `site_object` » `oggetto_luogo_esterno` |
+| `nowhere`     | `limbo`                 | `LOCATION`                              |
+| `lightsource` | `fonte_di_luce`         | `OBJECT`                                |
+| `clothing`    | `indumento`             | `OBJECT`                                |
+
+## Library Instances
+
+| Instance EN |   Instance IT   |  Class   |
+|-------------|-----------------|----------|
+| `worn`      | `abbigliamento` | `ENTITY` |
+
+
+<!---------------------------------------------------------------------------->
+
+
 
 # 2018/07/24 (4)
 
