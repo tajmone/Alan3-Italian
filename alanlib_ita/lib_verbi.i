@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.3.6 (2018/07/25)
+-- "lib_verbi.i" v0.3.7 (2018/07/25)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -38,6 +38,8 @@
 --| cosa_è             |                              | cosa è (ogg)                |   | 1 | x | * BUGGED!
 --| cosa_sono_io       |                              | cosa sono                   |   | 0 |   |
 --| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)     |   | 2 | x |
+--| dici_No            |                              | no                          |   | 0 |   |
+--| dici_Sì            |                              | sì                          |   | 0 |   |
 --| dormi              | riposa                       | dormi                       |   | 0 |   |
 --| dove_è             |                              | dove è (ogg)                |   | 1 | x | * BUGGED!
 --| dove_mi_trovo      |                              | dove sono                   |   | 0 |   |
@@ -166,7 +168,7 @@
 ----- look_through                                         look through (bulk)                 1
 ----- look_under                                           look under (bulk)                   1
 ----- look_up                                              look up                             0
------ no                                                   no                                  0
+-->>> no                                                   no                                  0
 ----- notify (on, off)                                     notify. notify on. notify off       0
 -->>> open                                                 open (obj)                          1       x
 -->>> open_with                                            open (obj) with (instr)             2       x
@@ -256,7 +258,7 @@
 -->>> who_am_i                                             who am i                            0
 -->>> who_is                                               who is (obj)                        1       x
 -->>> write                                                write (txt) on (obj)                2       x
------ yes                                                  yes                                 0
+-->>> yes                                                  yes                                 0
 
 
 
@@ -1542,6 +1544,50 @@ ADD TO EVERY OBJECT
 
   END VERB.
 END ADD TO.
+
+
+
+
+-- ==============================================================
+
+
+----- @DICI "No" --> @NO
+
+
+-- ==============================================================
+
+-- SYNTAX 'no' = 'no'.
+
+SYNTAX dici_No = 'no'.
+
+
+VERB dici_No
+  CHECK mia_AT CAN dire_no
+    ELSE SAY azione_bloccata OF mia_AT.
+  DOES "Davvero?"
+    -- "Really?"
+END VERB.
+
+
+-- ================================================================
+
+
+----- @DICI "Sì" --> @YES
+
+
+-- ================================================================
+
+-- SYNTAX yes = yes.
+
+SYNTAX dici_Sì = sì.
+
+
+VERB dici_Sì
+  CHECK mia_AT CAN dire_sì
+    ELSE SAY azione_bloccata OF mia_AT.
+  DOES "Davvero?"
+    -- "Really?"
+END VERB.
 
 
 
@@ -6363,26 +6409,6 @@ END VERB.
 -- ==============================================================
 
 
------ NO
-
-
--- ==============================================================
-
-
-SYNTAX 'no' = 'no'.
-
-
-VERB 'no'
-  CHECK mia_AT CAN 'no'
-    ELSE SAY azione_bloccata OF mia_AT.
-  DOES "Really?"
-END VERB.
-
-
-
--- ==============================================================
-
-
 ----- NOTIFY
 
 
@@ -9507,26 +9533,6 @@ ADD TO EVERY OBJECT
 
   END VERB.
 END ADD TO.
-
-
--- ================================================================
-
-
------ YES
-
-
--- ================================================================
-
-
-SYNTAX yes = yes.
-
-
-VERB yes
-  CHECK mia_AT CAN yes
-    ELSE SAY azione_bloccata OF mia_AT.
-  DOES "Really?"
-END VERB.
-
 
 
 -- end of file.

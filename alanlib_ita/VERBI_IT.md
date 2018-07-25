@@ -53,6 +53,8 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 - [VERBI CHE NON CONSEGUONO NULLA](#verbi-che-non-conseguono-nulla)
     - [aspetta](#aspetta)
     - [dormi](#dormi)
+    - [dici_No](#dici_no)
+    - [dici_Sì](#dici_s%C3%AC)
     - [gioca_con](#gioca_con)
     - [prega](#prega)
     - [suona](#suona)
@@ -101,6 +103,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [leggi]
 - [mangia]
 - [metti giù]
+- [no]
 - [offri]
 - [osserva]
 - [porgi]
@@ -124,6 +127,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [serra con]
 - [sfonda]
 - [sfonda con]
+- [sì]
 - [spacca]
 - [spacca con]
 - [spogliati]
@@ -772,6 +776,36 @@ condizioni:
 esito:
 
 - Nulla, dice solo "`Non è il momento di riposare.`"
+
+
+
+## dici_No
+
+[no]: #dici_no
+
+
+attributo `my_game`:
+
+    CAN [NOT] dire_no
+
+sintassi:
+
+    no
+
+
+
+## dici_Sì
+
+[sì]: #dici_si
+
+
+attributo `my_game`:
+
+    CAN [NOT] dire_sì
+
+sintassi:
+
+    sì
 
 
 ## gioca_con

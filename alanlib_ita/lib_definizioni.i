@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.3.4 (2018/07/25)
+-- "lib_definizioni.i" v0.3.5 (2018/07/25)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1142,6 +1142,8 @@ EVERY blocco_definizioni IsA LOCATION
   CAN consultare.               --> consult
   CAN danzare.                  --> dance
   CAN dare.                     --> give
+  CAN dire_no.                  --> 'no'
+  CAN dire_sì.                  --> yes
   CAN domandare_chi_sono_io.    --> who_am_i
   CAN domandare_chi_è.          --> who_is
   CAN domandare_cosa_sono_io.   --> what_am_i
@@ -1244,7 +1246,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN look_through.
   CAN look_under.
   CAN look_up.
-  CAN 'no'.
   CAN 'notify'.
   CAN notify_on.
   CAN notify_off.
@@ -1297,7 +1298,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN turn.        -- (+ rotate)
   CAN turn_on.
   CAN turn_off.
-  CAN yes.
 
 
 END EVERY blocco_definizioni.
@@ -1346,6 +1346,8 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT consultare.               --> consult
   MAKE mia_AT danzare.                  --> dance
   MAKE mia_AT dare.                     --> give
+  MAKE mia_AT dire_no.                  --> 'no'
+  MAKE mia_AT dire_sì.                  --> yes
   MAKE mia_AT domandare_chi_sono_io.    --> who_am_i
   MAKE mia_AT domandare_chi_è.          --> who_is
   MAKE mia_AT domandare_cosa_sono_io.   --> what_am_i
@@ -1448,7 +1450,6 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT look_through.
   MAKE mia_AT look_under.
   MAKE mia_AT look_up.
-  MAKE mia_AT 'no'.
   MAKE mia_AT 'notify'.
   MAKE mia_AT notify_on.
   MAKE mia_AT notify_off.
@@ -1501,7 +1502,6 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT turn.            -- (+ rotate)
   MAKE mia_AT turn_on.
   MAKE mia_AT turn_off.
-  MAKE mia_AT yes.
 
 
 
@@ -1560,6 +1560,9 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT comprare.                 --> buy          (+ purchase)
   MAKE mia_AT NOT consultare.               --> consult
   MAKE mia_AT NOT danzare.                  --> dance
+  MAKE mia_AT NOT dare.                     --> give
+  MAKE mia_AT     dire_no.                  --> 'no'
+  MAKE mia_AT     dire_sì.                  --> yes
   MAKE mia_AT     domandare_chi_sono_io.    --> who_am_i
   MAKE mia_AT     domandare_chi_è.          --> who_is
   MAKE mia_AT     domandare_cosa_sono_io.   --> what_am_i
@@ -1646,7 +1649,6 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT fix.         -- (+ mend, repair)
   MAKE mia_AT NOT get_up.
   MAKE mia_AT NOT get_off.
-  MAKE mia_AT NOT dare.
   MAKE mia_AT hint.            -- (+ hints)
   MAKE mia_AT NOT kick.
   MAKE mia_AT NOT lie_down.
@@ -1664,7 +1666,6 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT look_through.
   MAKE mia_AT look_under.
   MAKE mia_AT look_up.
-  MAKE mia_AT 'no'.
   MAKE mia_AT 'notify'.
   MAKE mia_AT notify_on.
   MAKE mia_AT notify_off.
@@ -1717,7 +1718,6 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT turn.        -- (+ rotate)
   MAKE mia_AT NOT turn_on.
   MAKE mia_AT NOT turn_off.
-  MAKE mia_AT yes.
 
 
 
@@ -1754,6 +1754,9 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT comprare.                 --> buy          (+ purchase)
   MAKE mia_AT NOT consultare.               --> consult
   MAKE mia_AT NOT danzare.                  --> dance
+  MAKE mia_AT NOT dare.                     --> give
+  MAKE mia_AT     dire_no.                  --> 'no'
+  MAKE mia_AT     dire_sì.                  --> yes
   MAKE mia_AT NOT domandare_chi_sono_io.    --> who_am_i
   MAKE mia_AT NOT domandare_chi_sono_io.    --> who_am_i
   MAKE mia_AT NOT domandare_chi_è.          --> who_is
@@ -1846,7 +1849,6 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT fix.         -- (+ mend, repair)
   MAKE mia_AT NOT get_up.
   MAKE mia_AT NOT get_off.
-  MAKE mia_AT NOT dare.
   MAKE mia_AT hint.            -- (+ hints)
   MAKE mia_AT NOT kick.
   MAKE mia_AT NOT lie_down.
@@ -1864,7 +1866,6 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT look_through.
   MAKE mia_AT NOT look_under.
   MAKE mia_AT NOT look_up.
-  MAKE mia_AT 'no'.
   MAKE mia_AT 'notify'.
   MAKE mia_AT notify_on.
   MAKE mia_AT notify_off.
@@ -1917,7 +1918,6 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT turn.        -- (+ rotate)
   MAKE mia_AT NOT turn_on.
   MAKE mia_AT NOT turn_off.
-  MAKE mia_AT yes.
 
 --==============================================================================
 --------------------------------------------------------------------------------
@@ -1951,6 +1951,9 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT comprare.                 --> buy          (+ purchase)
   MAKE mia_AT NOT consultare.               --> consult
   MAKE mia_AT NOT danzare.                  --> dance
+  MAKE mia_AT NOT dare.                     --> give
+  MAKE mia_AT NOT dire_no.                  --> 'no'
+  MAKE mia_AT NOT dire_sì.                  --> yes
   MAKE mia_AT NOT dormire.                  --> sleep        (+ rest)
   MAKE mia_AT NOT entrare.                  --> enter
   MAKE mia_AT NOT esaminare.                --> examine      (+ check, inspect, observe, x)
@@ -2031,7 +2034,6 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT fix.         -- (+ mend, repair)
   MAKE mia_AT NOT get_up.
   MAKE mia_AT NOT get_off.
-  MAKE mia_AT NOT dare.
   MAKE mia_AT NOT hint.        -- (+ hints)
   MAKE mia_AT NOT kick.
   MAKE mia_AT NOT lie_down.
@@ -2049,7 +2051,6 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT look_through.
   MAKE mia_AT NOT look_under.
   MAKE mia_AT NOT look_up.
-  MAKE mia_AT NOT 'no'.
   MAKE mia_AT NOT 'notify'.
   MAKE mia_AT NOT notify_on.
   MAKE mia_AT NOT notify_off.
@@ -2102,7 +2103,6 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT turn.        -- (+ rotate)
   MAKE mia_AT NOT turn_on.
   MAKE mia_AT NOT turn_off.
-  MAKE mia_AT NOT yes.
 
 END IF.
 

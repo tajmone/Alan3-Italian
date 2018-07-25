@@ -11,13 +11,16 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/25 \(8\)](#20180725-8)
+    - [Verb Restriction Attributes](#verb-restriction-attributes)
+    - [Verbs: `yes` and `no`](#verbs-yes-and-no)
 - [2018/07/25 \(7\)](#20180725-7)
 - [2018/07/25 \(6\)](#20180725-6)
-    - [Verb Restriction Attributes](#verb-restriction-attributes)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
     - [Verb: `play`](#verb-play)
     - [Verb: `play_with`](#verb-play_with)
 - [2018/07/25 \(5\)](#20180725-5)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
 - [2018/07/25 \(4\)](#20180725-4)
 - [2018/07/25 \(3\)](#20180725-3)
     - [Library Instances](#library-instances)
@@ -137,9 +140,9 @@ Status: Alpha stage.
     - [Verb: `pray`](#verb-pray)
     - [Verb: `break`](#verb-break)
     - [Verb: `break_with`](#verb-break_with)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
-- [2018/05/22 \(2\)](#20180522-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-3)
+- [2018/05/22 \(2\)](#20180522-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
 - [2018/05/22 \(1\)](#20180522-1)
     - [Verb: `undress`](#verb-undress)
 - [2018/05/19](#20180519)
@@ -156,6 +159,40 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/25 (8)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.3.6)
+- [`lib_verbi.i`][lib_verbi] (v0.3.7)
+
+
+## Verb Restriction Attributes
+
+Translated `my_game` attributes for verb restrictions:
+
+| English |  Italian  |
+|---------|-----------|
+| `yes`   | `dire_sì` |
+| `'no'`  | `dire_no` |
+
+
+## Verbs: `yes` and `no`
+
+Translated verbs `dici_Sì` and `dici_No`, "__sì__" and "__no__":
+
+    sì
+    no
+
+with no synonyms.
+
+> __NOTA__ — Ho scelto di dare il suffisso `dire_*` all'attributo `mia_AT` (ex `my_game`) e `dici_*` (seguito da lettera maiuscola) per consentire di tenere vicini (in orderine Asciibetico) questi due attributi/verbi correlati.
+> 
+> Inoltre, ritengo siano forme più chiare rispetto agli originali `yes` e `no`, poiché i suffissi forniscono un contesto più chiaro a questi due "verbi" anomali (che verbi proprio non sono).
+> 
+> L'utilità di questi due "verbi" è per poter implementare risposte del giocatore a domande postegli dal gioco, qualora ve ne fosse bisogno.
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/25 (7)
 
