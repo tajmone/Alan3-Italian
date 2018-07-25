@@ -1,4 +1,4 @@
--- "lib_luoghi.i" v0.3.2 (2018/07/25)
+-- "lib_luoghi.i" v0.3.3 (2018/07/25)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -6,30 +6,82 @@
 -- ALAN Standard Library v2.1
 -- "Locations" (original file name: 'lib_locations.i')
 --------------------------------------------------------------------------------
+--| Questo modulo della libreria, dedicato ai luoghi, definisce:
+--|  - Le direzioni cardinali predefinite (implementate come EXIT),
+--|  - Il'limbo', un luogo in cui poter collocare oggetti e attori che si vuole
+--|    rimuovere dal gioco,
+--|  - Quattro classi di luoghi specializzate:
+--|
+--|    1. 'stanza' (per locali d'interno),
+--|    2. 'luogo_esterno' (per aree all'esterno),
+--|    3. 'luogo_buio' (per luoghi privi di illuminazine propria).
+--|
+--| Infine, aggiunge ad ogni luogo (eredi di LOCATION) i seguenti attributi di
+--| tipo numerico:
+--|
+--|  - 'visitato'
+--|  - 'descritto'
+--|
+--| che fungono da variabili contatore per il numero di volte che ciascun luogo
+--| è stato visitato dal giocatore e a lui descritto, rispettivamente.
+--------------------------------------------------------------------------------
 
 
--- This library file defines the default directions (exits) and the location 'nowhere',
--- a useful place to locate things when you want to remove them from play.
--- This file also defines four specific location classes: rooms (= indoor locations),
--- sites (= outdoor locations) dark_locations and areas.
--- Finally, the attributes 'visited' and 'described' are defined.
+--------------------------------------------------------------------------------
+-- @TODO | Il testo inglese qui sotto è un po' ambiguo:
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -- You may modify this file in any way that suits your purposes.
 -- To use this file, you should have it in the same folder as your source code file,
 -- and the line
 --
 -- IMPORT 'locations.i'.
 --
--- in your fonte code.
+-- in your source code.
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--       | poiché sembra sottendere:
+--       |  1) Che le definizioni di questo modulo non influiscono sugli altri
+--       |     moduli della libreria.
+--       |  2) Che si tratti di un modulo indipendente ed opzionale.
+--       |
+--       | Entrambi i punti non corrispondono allo stato attuale della StdLib, 
+--       | e mi chiedo se non si tratti di testo vecchio, che fa riferimento a
+--       | versioni precedenti della libreria. P.es., il 'limbo' (ex 'nowhere')
+--       | è utilizzato spesso nei modulo dei verbi, e quindi non può essere 
+--       | modificato a piacimento. Molto pobabilmente lo stesso vale per altri 
+--       | elementi definiti in questo modulo, quindi l'affermazione secondo cui
+--       | si è completamente liberi di editare questo file è un po' azzardata.
+--       | Quanto al punto (2), allo stato attuale la StdLib viene caricata
+--       | tramite un unico file ("liberia.i") che si occupa di importare tutti
+--       | i moduli richiesti; intoltre, questo modulo non è affatto opzionale
+--       | dato che alcune classi qui definite (es, il 'limbo') sono indispensabili
+--       | per i verbi, e senza questo modulo si avrebbe un errore di compilazione.
+--       | Credo che l'ideale sia ignorare questi paragrafi nella traduzione.
+--------------------------------------------------------------------------------
 
 
 
--- ========================================================
+
+--+============================================================================+
+--|\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//////////////////////////////////////|
+--++--------------------------------------------------------------------------++
+--||                                                                          ||
+--||                           Indice dei Contenuti                           ||
+--||                                                                          ||
+--++--------------------------------------------------------------------------++
+--|//////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|
+--+============================================================================+
+--|| § 1 - Il 'LIMBO' e Le Direzioni Cardinali Predefinite
 
 
------  1. The location 'nowhere' and the default directions
 
 
--- ========================================================
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- § 1 - Il 'LIMBO' e Le Direzioni Cardinali Predefinite
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
 
 
 THE limbo IsA LOCATION
@@ -457,26 +509,27 @@ END EVENT.
 
 
 
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- § x - Gli Attribuiti VISITATO e DESCRITTO
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
 
--- =====================================================================
+-- Un luogo ha il valore 'visitato 0' finché il giocatore non lo visita la prima
+-- volta, dopodiché il suo valore verrà incrementato ad ogni visita. L'attributo
+-- 'visitato' è un contatore che registra il numero di volte in cui il giocatore
+-- è entrato in un determinato luogo, e può tornare utile in molti frangenti;
+-- ad es., per mostrare una descrizione diversa (più breve) nelle visite succes-
+-- sive alla prima.
 
-
------ 4. The attributes 'visited' and 'described'
-
-
--- =====================================================================
-
-
--- A location has the value 'visited 0' until the hero visits it for the first time, and the
--- value increases on every subsequent visit.
--- This helps when you need to control if or how many times a location has been visited,
--- and also if you want the location description to be different after the first visit.
-
--- A location has the value 'described 0' before the first location description,
--- and the value increases every time the description is shown.
--- This distinction is handy when you want the first-time description of a location to be different
--- from the subsequent ones (even if the hero is in the location still for the first time).
-
+-- L'attributo 'descritto' funziona in maniera analoga, ma registra il numero di
+-- volte che un luogo è stato descritto, ed il suo valore incrementa ogni volta
+-- che viene mostrata al giocatore la descrizione del luogo. La distinzione tra
+-- questi due attributi è utile quando si vuole assicurarsi che le descrizioni
+-- successive alla prima saranno diverse (anche se il giocatore seguita a
+-- trovarsi per la prima volta in quel luogo).
 
 ADD TO EVERY LOCATION
   HAS visitato  0.
@@ -487,18 +540,11 @@ ADD TO EVERY LOCATION
       THEN
         INCREASE visitato  OF THIS.
         INCREASE descritto OF THIS.
-        -- The "described" attribute increases also after LOOK (see 'verbs.i').
+        -- +-----------------------------------------------------------------+
+        -- | NB: L'attributo 'descritto' viene incrementato anche da GUARDA. |
+        -- +-----------------------------------------------------------------+
      END IF.
 
 END ADD TO.
 
-
-
-
-
-
-
--- end of file.
-
-
-
+---< Fine del File >---

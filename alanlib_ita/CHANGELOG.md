@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/25 \(4\)](#20180725-4)
 - [2018/07/25 \(3\)](#20180725-3)
     - [Library Instances](#library-instances)
     - [Library Classes](#library-classes)
@@ -148,6 +149,16 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/25 (4)
+
+- [`lib_luoghi.i`][lib_luoghi] (v0.3.3)
+
+Translate commented documentation in the library sources.
+
+<!---------------------------------------------------------------------------->
+
+
 
 # 2018/07/25 (3)
 
