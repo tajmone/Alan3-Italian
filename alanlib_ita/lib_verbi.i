@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.3.5 (2018/07/25)
+-- "lib_verbi.i" v0.3.6 (2018/07/25)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -30,17 +30,17 @@
 --| blocca_con         | serra                        | blocca (ogg) con (chiave)   |   | 2 | x |
 --| brucia             |                              | brucia (ogg)                |   | 1 | x |
 --| brucia_con         |                              | brucia (ogg) con (strum)    |   | 2 | x |
---| chi_sono_io        |                              | chi sono                    |   | 0 |   |
 --| chi_è              |                              | chi è (png)                 |   | 1 |   | * BUGGED!
+--| chi_sono_io        |                              | chi sono                    |   | 0 |   |
 --| chiudi             |                              | chiudi (ogg)                |   | 1 | x |
 --| chiudi_con         |                              | chiudi (ogg) con (strum)    |   | 2 | x |
 --| compra             | acquista                     | compra (merce)              |   | 1 |   |
---| cosa_sono_io       |                              | cosa sono                   |   | 0 |   |
 --| cosa_è             |                              | cosa è (ogg)                |   | 1 | x | * BUGGED!
+--| cosa_sono_io       |                              | cosa sono                   |   | 0 |   |
 --| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)     |   | 2 | x |
 --| dormi              | riposa                       | dormi                       |   | 0 |   |
---| dove_mi_trovo      |                              | dove sono                   |   | 0 |   |
 --| dove_è             |                              | dove è (ogg)                |   | 1 | x | * BUGGED!
+--| dove_mi_trovo      |                              | dove sono                   |   | 0 |   |
 --| esamina            | guarda, descrivi, osserva, X | esamina (ogg)               |   | 1 | x |
 --| gioca_con          |                              | gioca con (ogg)             |   | 1 | x |
 --| inventario         | inv                          | inventario                  | x | 0 |   |
@@ -1099,6 +1099,75 @@ END ADD TO.
 
 
 
+
+-- ==============================================================
+
+
+----- @CHI E' --> @WHO IS
+
+
+-- ==============================================================
+
+--||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--|| BUG: Per qualche ragione, Alan non riesce a preservare la 'è' nelle sintassi
+--||      e nei sinonimi! (mentre non ci sonop problemi con le istanze ed i parametri)
+--||      Tutte le altre lettere accentate funzionano (à é ì ò ù), solo 'è' causa
+--||      problemi!
+--||
+--||      Per ora dovrò ripiegare sulla 'é', finché il problema non è risolto a
+--||      monte tramite un bugfix. So che è orribile (oltre che inutile), ma è
+--||      giusto per andare avanti con il lavoro.
+--||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-- SYNTAX who_is = 'who' 'is' (png)!
+--        who_is = 'who' 'are' (png)!.
+
+SYNTAX  chi_è = chi é (png)!   --> BUG: 'è' instead of 'é'                      FIXME!
+  WHERE png IsA ACTOR
+    ELSE
+      IF png IS NOT plurale
+        THEN SAY illegal_parameter_who_sg OF mia_AT.
+        ELSE SAY illegal_parameter_who_pl OF mia_AT.
+      END IF.
+
+        chi_è = chi sono (png)!.
+
+
+ADD TO EVERY ACTOR
+  VERB chi_è
+    CHECK mia_AT CAN domandare_chi_è
+      ELSE SAY azione_bloccata OF mia_AT.
+    DOES
+      "Dovrai scoprirlo da te!"
+   -- "You'll have to find it out yourself."
+    END VERB.
+END ADD TO.
+
+
+-- ==============================================================
+
+
+----- @CHI SONO --> @WHO AM I
+
+
+-- ==============================================================
+
+-- SYNTAX who_am_i = who am i.
+
+SYNTAX chi_sono_io = chi sono io.
+       chi_sono_io = chi sono.
+
+
+VERB chi_sono_io
+  CHECK mia_AT CAN domandare_chi_sono_io
+    ELSE SAY azione_bloccata OF mia_AT.
+  DOES
+    "Hai provato a esaminare te stesso? Forse ti aiuterebbe."
+ -- "Maybe examining yourself might help."
+END VERB.
+
+
+
 -- ==============================================================
 
 
@@ -1295,6 +1364,86 @@ END ADD TO.
 
 -- ==============================================================
 
+
+----- @COSA E'? ---> @WHAT IS
+
+
+-- ==============================================================
+
+--||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--|| BUG: Per qualche ragione, Alan non riesce a preservare la 'è' nelle sintassi
+--||      e nei sinonimi! (mentre non ci sonop problemi con le istanze ed i parametri)
+--||      Tutte le altre lettere accentate funzionano (à é ì ò ù), solo 'è' causa
+--||      problemi!
+--||
+--||      Per ora dovrò ripiegare sulla 'é', finché il problema non è risolto a
+--||      monte tramite un bugfix. So che è orribile (oltre che inutile), ma è
+--||      giusto per andare avanti con il lavoro.
+--||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-- SYNTAX what_is = 'what' 'is' (ogg)!
+
+SYNTAX  cosa_è = cosa é (ogg)!            --> BUG: 'è' instead of 'é'           FIXME!
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY illegal_parameter_what_sg OF mia_AT.
+        ELSE SAY illegal_parameter_what_pl OF mia_AT.
+      END IF.
+
+        cosa_è = che cosa é (ogg)!.       --> BUG: 'è' instead of 'é'           FIXME!
+        cosa_è = 'cos''é' (ogg)!.         --> BUG: 'è' instead of 'é'           FIXME!
+        cosa_è = che 'cos''é' (ogg)!.     --> BUG: 'è' instead of 'é'           FIXME!
+
+        cosa_è = cosa sono (ogg)!.
+        cosa_è = che cosa sono (ogg)!.
+
+
+
+ADD TO EVERY THING
+  VERB cosa_è
+    CHECK mia_AT CAN domandare_cosa_è
+      ELSE SAY azione_bloccata OF mia_AT.
+    DOES
+      "Dovrai scoprirlo da te!"
+   -- "You'll have to find it out yourself."
+    END VERB.
+END ADD TO.
+
+
+
+
+-- ==============================================================
+
+
+----- @COSA SONO IO? ---> @WHAT AM I
+
+
+-- ==============================================================
+
+-- SYNTAX what_am_i = 'what' am i.
+
+SYNTAX  cosa_sono_io = cosa sono.
+        cosa_sono_io = cosa sono io.
+        cosa_sono_io = che sono.
+        cosa_sono_io = che sono io.
+        cosa_sono_io = che cosa sono.
+        cosa_sono_io = che cosa sono io.
+
+
+VERB cosa_sono_io
+  CHECK mia_AT CAN domandare_cosa_sono_io
+    ELSE SAY azione_bloccata OF mia_AT.
+  DOES
+    "Hai provato a esaminare te stesso? Forse ti aiuterebbe."
+ -- "Maybe examining yourself might help."
+END VERB.
+
+
+
+
+-- ==============================================================
+
 -- @DAI_A -> @GIVE (SYNTAX HEADER)
 
 ----- GIVE (+ hand, offer)
@@ -1393,155 +1542,6 @@ ADD TO EVERY OBJECT
 
   END VERB.
 END ADD TO.
-
-
-
--- ==============================================================
-
-
------ @CHI E' --> @WHO IS
-
-
--- ==============================================================
-
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
---|| BUG: Per qualche ragione, Alan non riesce a preservare la 'è' nelle sintassi
---||      e nei sinonimi! (mentre non ci sonop problemi con le istanze ed i parametri)
---||      Tutte le altre lettere accentate funzionano (à é ì ò ù), solo 'è' causa
---||      problemi!
---||
---||      Per ora dovrò ripiegare sulla 'é', finché il problema non è risolto a
---||      monte tramite un bugfix. So che è orribile (oltre che inutile), ma è
---||      giusto per andare avanti con il lavoro.
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
--- SYNTAX who_is = 'who' 'is' (png)!
---        who_is = 'who' 'are' (png)!.
-
-SYNTAX  chi_è = chi é (png)!   --> BUG: 'è' instead of 'é'                      FIXME!
-  WHERE png IsA ACTOR
-    ELSE
-      IF png IS NOT plurale
-        THEN SAY illegal_parameter_who_sg OF mia_AT.
-        ELSE SAY illegal_parameter_who_pl OF mia_AT.
-      END IF.
-
-        chi_è = chi sono (png)!.
-
-
-ADD TO EVERY ACTOR
-  VERB chi_è
-    CHECK mia_AT CAN domandare_chi_è
-      ELSE SAY azione_bloccata OF mia_AT.
-    DOES
-      "Dovrai scoprirlo da te!"
-   -- "You'll have to find it out yourself."
-    END VERB.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ @CHI SONO --> @WHO AM I
-
-
--- ==============================================================
-
--- SYNTAX who_am_i = who am i.
-
-SYNTAX chi_sono_io = chi sono io.
-       chi_sono_io = chi sono.
-
-
-VERB chi_sono_io
-  CHECK mia_AT CAN domandare_chi_sono_io
-    ELSE SAY azione_bloccata OF mia_AT.
-  DOES
-    "Hai provato a esaminare te stesso? Forse ti aiuterebbe."
- -- "Maybe examining yourself might help."
-END VERB.
-
-
-
--- ==============================================================
-
-
------ @COSA E'? ---> @WHAT IS
-
-
--- ==============================================================
-
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
---|| BUG: Per qualche ragione, Alan non riesce a preservare la 'è' nelle sintassi
---||      e nei sinonimi! (mentre non ci sonop problemi con le istanze ed i parametri)
---||      Tutte le altre lettere accentate funzionano (à é ì ò ù), solo 'è' causa
---||      problemi!
---||
---||      Per ora dovrò ripiegare sulla 'é', finché il problema non è risolto a
---||      monte tramite un bugfix. So che è orribile (oltre che inutile), ma è
---||      giusto per andare avanti con il lavoro.
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
--- SYNTAX what_is = 'what' 'is' (ogg)!
-
-SYNTAX  cosa_è = cosa é (ogg)!            --> BUG: 'è' instead of 'é'           FIXME!
-  WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_what_sg OF mia_AT.
-        ELSE SAY illegal_parameter_what_pl OF mia_AT.
-      END IF.
-
-        cosa_è = che cosa é (ogg)!.       --> BUG: 'è' instead of 'é'           FIXME!
-        cosa_è = 'cos''é' (ogg)!.         --> BUG: 'è' instead of 'é'           FIXME!
-        cosa_è = che 'cos''é' (ogg)!.     --> BUG: 'è' instead of 'é'           FIXME!
-
-        cosa_è = cosa sono (ogg)!.
-        cosa_è = che cosa sono (ogg)!.
-
-
-
-ADD TO EVERY THING
-  VERB cosa_è
-    CHECK mia_AT CAN domandare_cosa_è
-      ELSE SAY azione_bloccata OF mia_AT.
-    DOES
-      "Dovrai scoprirlo da te!"
-   -- "You'll have to find it out yourself."
-    END VERB.
-END ADD TO.
-
-
-
-
--- ==============================================================
-
-
------ @COSA SONO IO? ---> @WHAT AM I
-
-
--- ==============================================================
-
--- SYNTAX what_am_i = 'what' am i.
-
-SYNTAX  cosa_sono_io = cosa sono.
-        cosa_sono_io = cosa sono io.
-        cosa_sono_io = che sono.
-        cosa_sono_io = che sono io.
-        cosa_sono_io = che cosa sono.
-        cosa_sono_io = che cosa sono io.
-
-
-VERB cosa_sono_io
-  CHECK mia_AT CAN domandare_cosa_sono_io
-    ELSE SAY azione_bloccata OF mia_AT.
-  DOES
-    "Hai provato a esaminare te stesso? Forse ti aiuterebbe."
- -- "Maybe examining yourself might help."
-END VERB.
-
 
 
 

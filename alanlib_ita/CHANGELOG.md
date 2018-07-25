@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/25 \(7\)](#20180725-7)
 - [2018/07/25 \(6\)](#20180725-6)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
     - [Verb: `play`](#verb-play)
@@ -155,6 +156,16 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/25 (7)
+
+- [`lib_verbi.i`][lib_verbi] (v0.3.6)
+
+Reorder translated verbs alphabetically.
+
+<!---------------------------------------------------------------------------->
+
+
 
 # 2018/07/25 (6)
 
