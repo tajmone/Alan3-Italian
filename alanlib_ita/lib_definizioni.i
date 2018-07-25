@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.3.1 (2018/07/24)
+-- "lib_definizioni.i" v0.3.2 (2018/07/25)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -491,7 +491,7 @@ me, myself, yourself, self = hero. --> @TODO                                    
 -- to this class.
 
 
-EVERY DEFINITION_BLOCK IsA LOCATION
+EVERY blocco_definizioni IsA LOCATION
 
 
 
@@ -1065,8 +1065,8 @@ EVERY DEFINITION_BLOCK IsA LOCATION
 
         FOR EACH l IsA LOCATION
           DO
-              IF l <> my_game AND l <> limbo
-              THEN LOCATE l AT my_game.
+              IF l <> mia_AT AND l <> limbo
+              THEN LOCATE l AT mia_AT.
             END IF.
         END FOR.
 
@@ -1082,11 +1082,11 @@ EVERY DEFINITION_BLOCK IsA LOCATION
 
         FOR EACH l IsA LOCATION
           DO
-            IF annidati OF l <> {} AND l <> my_game AND l <> limbo
+            IF annidati OF l <> {} AND l <> mia_AT AND l <> limbo
             THEN
                     FOR EACH x IsA LOCATION, IN annidati OF l
                 DO
-                  IF l <> my_game AND x <> my_game
+                  IF l <> mia_AT AND x <> mia_AT
                         THEN LOCATE x AT l.
                   END IF.
                   END FOR.
@@ -1300,7 +1300,7 @@ EVERY DEFINITION_BLOCK IsA LOCATION
   CAN yes.
 
 
-END EVERY DEFINITION_BLOCK.
+END EVERY blocco_definizioni.
 
 
 --==============================================================================
@@ -1321,187 +1321,187 @@ EVENT check_restriction
 --------------------------------------------------------------------------------
 --==============================================================================
 
-IF restricted_level OF my_game = 0    -- all verbs work normally
+IF restricted_level OF mia_AT = 0    -- all verbs work normally
   THEN
 
-  MAKE my_game abbandonare_partita.      --> 'quit'
-  MAKE my_game andare_a.                 --> go_to
-  MAKE my_game aprire.                   --> open
-  MAKE my_game aprire_con.               --> open_with
-  MAKE my_game aspettare.                --> wait         (+ z)
-  MAKE my_game assaggiare.               --> taste        (+ lick)
-  MAKE my_game attraversare.             --> climb_through
-  MAKE my_game baciare.                  --> kiss         (+ hug, embrace)
-  MAKE my_game bere.                     --> drink
-  MAKE my_game bloccare.                 --> lock
-  MAKE my_game bloccare_con.             --> lock_with
-  MAKE my_game caricare_partita.         --> 'restore'
-  MAKE my_game chiudere.                 --> close        (+ shut)
-  MAKE my_game chiudere_con.             --> close_with
-  MAKE my_game comprare.                 --> buy          (+ purchase)
-  MAKE my_game consultare.               --> consult
-  MAKE my_game danzare.                  --> dance
-  MAKE my_game dare.                     --> give
-  MAKE my_game domandare_chi_sono_io.    --> who_am_i
-  MAKE my_game domandare_chi_è.          --> who_is
-  MAKE my_game domandare_cosa_sono_io.   --> what_am_i
-  MAKE my_game domandare_cosa_è.         --> what_is
-  MAKE my_game domandare_dove_mi_trovo.  --> where_am_i
-  MAKE my_game domandare_dove_è.         --> where_is
-  MAKE my_game dormire.                  --> sleep        (+ rest)
-  MAKE my_game entrare.                  --> enter
-  MAKE my_game esaminare.                --> examine      (+ check, inspect, observe, x)
-  MAKE my_game gridare.                  --> shout        (+ scream, yell)
-  MAKE my_game indossare.                --> wear
-  MAKE my_game inventariare.             --> i            (+ inv, inventory)
-  MAKE my_game lasciare.                 --> drop         (+ discard, dump, reject)
-  MAKE my_game leggere.                  --> read
-  MAKE my_game liberare.                 --> free         (+ release)
-  MAKE my_game mangiare.                 --> eat
-  MAKE my_game modalità_breve.           --> brief
-  MAKE my_game modalità_lunga.           --> verbose
-  MAKE my_game mostrare.                 --> 'show'       (+ reveal)
-  MAKE my_game nuotare.                  --> swim
-  MAKE my_game nuotare_in.               --> swim_in
-  MAKE my_game pregare.                  --> pray
-  MAKE my_game prendere.                 --> take.        (+ carry, get, grab, hold, obtain)
-  MAKE my_game prendere_da.              --> take_from.   (+ remove from)
-  MAKE my_game pulire.                   --> clean        (+ polish, wipe)
-  MAKE my_game ricominciare_partita.     --> 'restart'
-  MAKE my_game rifare.                   --> 'again'
-  MAKE my_game rompere.                  --> break        (+ destroy)
-  MAKE my_game rompere_con.              --> break_with
-  MAKE my_game saltare.                  --> jump
-  MAKE my_game saltare_in.               --> jump_in
-  MAKE my_game saltare_su.               --> jump_on
-  MAKE my_game salvare_partita.          --> save
-  MAKE my_game sbloccare.                --> unlock
-  MAKE my_game sbloccare_con.            --> unlock_with
-  MAKE my_game scavare.                  --> dig
-  MAKE my_game scrivere.                 --> write
-  MAKE my_game seguire.                  --> follow
-  MAKE my_game spingere.                 --> push
-  MAKE my_game spingere_con.             --> push_with
-  MAKE my_game spogliarsi.               --> undress
-  MAKE my_game tagliare.                 --> cut
-  MAKE my_game tagliare_con.             --> cut_with
-  MAKE my_game tirare.                   --> pull
-  MAKE my_game trovare.                  --> find         (+ locate)
-  MAKE my_game uccidere.                 --> kill         (+ murder)
-  MAKE my_game uccidere_con.             --> kill_with
-  MAKE my_game usare.                    --> 'use'
-  MAKE my_game usare_con.                --> use_with
-  MAKE my_game vendere.                  --> sell
-  MAKE my_game versare.                  --> pour
-  MAKE my_game versare_in.               --> pour_in
-  MAKE my_game versare_su.               --> pour_on
+  MAKE mia_AT abbandonare_partita.      --> 'quit'
+  MAKE mia_AT andare_a.                 --> go_to
+  MAKE mia_AT aprire.                   --> open
+  MAKE mia_AT aprire_con.               --> open_with
+  MAKE mia_AT aspettare.                --> wait         (+ z)
+  MAKE mia_AT assaggiare.               --> taste        (+ lick)
+  MAKE mia_AT attraversare.             --> climb_through
+  MAKE mia_AT baciare.                  --> kiss         (+ hug, embrace)
+  MAKE mia_AT bere.                     --> drink
+  MAKE mia_AT bloccare.                 --> lock
+  MAKE mia_AT bloccare_con.             --> lock_with
+  MAKE mia_AT caricare_partita.         --> 'restore'
+  MAKE mia_AT chiudere.                 --> close        (+ shut)
+  MAKE mia_AT chiudere_con.             --> close_with
+  MAKE mia_AT comprare.                 --> buy          (+ purchase)
+  MAKE mia_AT consultare.               --> consult
+  MAKE mia_AT danzare.                  --> dance
+  MAKE mia_AT dare.                     --> give
+  MAKE mia_AT domandare_chi_sono_io.    --> who_am_i
+  MAKE mia_AT domandare_chi_è.          --> who_is
+  MAKE mia_AT domandare_cosa_sono_io.   --> what_am_i
+  MAKE mia_AT domandare_cosa_è.         --> what_is
+  MAKE mia_AT domandare_dove_mi_trovo.  --> where_am_i
+  MAKE mia_AT domandare_dove_è.         --> where_is
+  MAKE mia_AT dormire.                  --> sleep        (+ rest)
+  MAKE mia_AT entrare.                  --> enter
+  MAKE mia_AT esaminare.                --> examine      (+ check, inspect, observe, x)
+  MAKE mia_AT gridare.                  --> shout        (+ scream, yell)
+  MAKE mia_AT indossare.                --> wear
+  MAKE mia_AT inventariare.             --> i            (+ inv, inventory)
+  MAKE mia_AT lasciare.                 --> drop         (+ discard, dump, reject)
+  MAKE mia_AT leggere.                  --> read
+  MAKE mia_AT liberare.                 --> free         (+ release)
+  MAKE mia_AT mangiare.                 --> eat
+  MAKE mia_AT modalità_breve.           --> brief
+  MAKE mia_AT modalità_lunga.           --> verbose
+  MAKE mia_AT mostrare.                 --> 'show'       (+ reveal)
+  MAKE mia_AT nuotare.                  --> swim
+  MAKE mia_AT nuotare_in.               --> swim_in
+  MAKE mia_AT pregare.                  --> pray
+  MAKE mia_AT prendere.                 --> take.        (+ carry, get, grab, hold, obtain)
+  MAKE mia_AT prendere_da.              --> take_from.   (+ remove from)
+  MAKE mia_AT pulire.                   --> clean        (+ polish, wipe)
+  MAKE mia_AT ricominciare_partita.     --> 'restart'
+  MAKE mia_AT rifare.                   --> 'again'
+  MAKE mia_AT rompere.                  --> break        (+ destroy)
+  MAKE mia_AT rompere_con.              --> break_with
+  MAKE mia_AT saltare.                  --> jump
+  MAKE mia_AT saltare_in.               --> jump_in
+  MAKE mia_AT saltare_su.               --> jump_on
+  MAKE mia_AT salvare_partita.          --> save
+  MAKE mia_AT sbloccare.                --> unlock
+  MAKE mia_AT sbloccare_con.            --> unlock_with
+  MAKE mia_AT scavare.                  --> dig
+  MAKE mia_AT scrivere.                 --> write
+  MAKE mia_AT seguire.                  --> follow
+  MAKE mia_AT spingere.                 --> push
+  MAKE mia_AT spingere_con.             --> push_with
+  MAKE mia_AT spogliarsi.               --> undress
+  MAKE mia_AT tagliare.                 --> cut
+  MAKE mia_AT tagliare_con.             --> cut_with
+  MAKE mia_AT tirare.                   --> pull
+  MAKE mia_AT trovare.                  --> find         (+ locate)
+  MAKE mia_AT uccidere.                 --> kill         (+ murder)
+  MAKE mia_AT uccidere_con.             --> kill_with
+  MAKE mia_AT usare.                    --> 'use'
+  MAKE mia_AT usare_con.                --> use_with
+  MAKE mia_AT vendere.                  --> sell
+  MAKE mia_AT versare.                  --> pour
+  MAKE mia_AT versare_in.               --> pour_in
+  MAKE mia_AT versare_su.               --> pour_on
 
 --# NOT YET TRANSLATED:
-  MAKE my_game about.
-  MAKE my_game answer.          -- (+ reply)
-  MAKE my_game ask.             -- (+ enquire, inquire, interrogate)
-  MAKE my_game ask_for.
-  MAKE my_game attack.          -- (+ beat, fight, hit, punch)
-  MAKE my_game attack_with.
-  MAKE my_game bite.            -- (+ chew)
-  MAKE my_game bruciare.        --> burn
-  MAKE my_game bruciare_con.    --> burn_with
-  MAKE my_game catch.
-  MAKE my_game climb.
-  MAKE my_game climb_on.
-  MAKE my_game credits.         -- (+ acknowledgments, author, copyright)
-  MAKE my_game dive.
-  MAKE my_game dive_in.
-  MAKE my_game drive.
-  MAKE my_game 'empty'.
-  MAKE my_game empty_in.
-  MAKE my_game empty_on.
-  MAKE my_game 'exit'.
-  MAKE my_game extinguish.      -- (+ put out, quench)
-  MAKE my_game fill.
-  MAKE my_game fill_with.
-  MAKE my_game fire.
-  MAKE my_game fire_at.
-  MAKE my_game fix.             -- (+ mend, repair)
-  MAKE my_game get_up.
-  MAKE my_game get_off.
-  MAKE my_game hint.            -- (+ hints)
-  MAKE my_game kick.
-  MAKE my_game knock.
-  MAKE my_game lie_down.
-  MAKE my_game lie_in.
-  MAKE my_game lie_on.
-  MAKE my_game lift.
-  MAKE my_game light.           -- (+ lit)
-  MAKE my_game listen0.
-  MAKE my_game listen.
-  MAKE my_game 'look'.          -- (+ gaze, peek)
-  MAKE my_game look_at.
-  MAKE my_game look_behind.
-  MAKE my_game look_in.
-  MAKE my_game look_out_of.
-  MAKE my_game look_through.
-  MAKE my_game look_under.
-  MAKE my_game look_up.
-  MAKE my_game 'no'.
-  MAKE my_game 'notify'.
-  MAKE my_game notify_on.
-  MAKE my_game notify_off.
-  MAKE my_game 'play'.
-  MAKE my_game play_with.
-  MAKE my_game pry.
-  MAKE my_game pry_with.
-  MAKE my_game put.             -- (+ lay, place)
-  MAKE my_game put_against.
-  MAKE my_game put_behind.
-  MAKE my_game put_down.
-  MAKE my_game put_in.          -- (+ insert)
-  MAKE my_game put_near.
-  MAKE my_game put_on.
-  MAKE my_game put_under.
-  MAKE my_game remove.
-  MAKE my_game rub.
-  MAKE my_game 'say'.
-  MAKE my_game say_to.
-  MAKE my_game 'score'.
-  MAKE my_game scratch.
-  MAKE my_game 'script'.
-  MAKE my_game script_on.
-  MAKE my_game script_off.
-  MAKE my_game search.
-  MAKE my_game shake.
-  MAKE my_game shoot.           -- (at)
-  MAKE my_game shoot_with.
-  MAKE my_game sing.
-  MAKE my_game sip.
-  MAKE my_game sit.             -- (down)
-  MAKE my_game sit_on.
-  MAKE my_game smell0.
-  MAKE my_game smell.
-  MAKE my_game squeeze.
-  MAKE my_game stand.           -- (up)
-  MAKE my_game stand_on.
-  MAKE my_game switch.
-  MAKE my_game switch_on.
-  MAKE my_game switch_off.
-  MAKE my_game talk.
-  MAKE my_game talk_to.         -- (+ speak)
-  MAKE my_game tear.            -- (+ rip)
-  MAKE my_game tell.            -- (+ enlighten, inform)
-  MAKE my_game think.
-  MAKE my_game think_about.
-  MAKE my_game throw.
-  MAKE my_game throw_at.
-  MAKE my_game throw_in.
-  MAKE my_game throw_to.
-  MAKE my_game tie.
-  MAKE my_game tie_to.
-  MAKE my_game touch.           -- (+ feel)
-  MAKE my_game touch_with.
-  MAKE my_game turn.            -- (+ rotate)
-  MAKE my_game turn_on.
-  MAKE my_game turn_off.
-  MAKE my_game yes.
+  MAKE mia_AT about.
+  MAKE mia_AT answer.          -- (+ reply)
+  MAKE mia_AT ask.             -- (+ enquire, inquire, interrogate)
+  MAKE mia_AT ask_for.
+  MAKE mia_AT attack.          -- (+ beat, fight, hit, punch)
+  MAKE mia_AT attack_with.
+  MAKE mia_AT bite.            -- (+ chew)
+  MAKE mia_AT bruciare.        --> burn
+  MAKE mia_AT bruciare_con.    --> burn_with
+  MAKE mia_AT catch.
+  MAKE mia_AT climb.
+  MAKE mia_AT climb_on.
+  MAKE mia_AT credits.         -- (+ acknowledgments, author, copyright)
+  MAKE mia_AT dive.
+  MAKE mia_AT dive_in.
+  MAKE mia_AT drive.
+  MAKE mia_AT 'empty'.
+  MAKE mia_AT empty_in.
+  MAKE mia_AT empty_on.
+  MAKE mia_AT 'exit'.
+  MAKE mia_AT extinguish.      -- (+ put out, quench)
+  MAKE mia_AT fill.
+  MAKE mia_AT fill_with.
+  MAKE mia_AT fire.
+  MAKE mia_AT fire_at.
+  MAKE mia_AT fix.             -- (+ mend, repair)
+  MAKE mia_AT get_up.
+  MAKE mia_AT get_off.
+  MAKE mia_AT hint.            -- (+ hints)
+  MAKE mia_AT kick.
+  MAKE mia_AT knock.
+  MAKE mia_AT lie_down.
+  MAKE mia_AT lie_in.
+  MAKE mia_AT lie_on.
+  MAKE mia_AT lift.
+  MAKE mia_AT light.           -- (+ lit)
+  MAKE mia_AT listen0.
+  MAKE mia_AT listen.
+  MAKE mia_AT 'look'.          -- (+ gaze, peek)
+  MAKE mia_AT look_at.
+  MAKE mia_AT look_behind.
+  MAKE mia_AT look_in.
+  MAKE mia_AT look_out_of.
+  MAKE mia_AT look_through.
+  MAKE mia_AT look_under.
+  MAKE mia_AT look_up.
+  MAKE mia_AT 'no'.
+  MAKE mia_AT 'notify'.
+  MAKE mia_AT notify_on.
+  MAKE mia_AT notify_off.
+  MAKE mia_AT 'play'.
+  MAKE mia_AT play_with.
+  MAKE mia_AT pry.
+  MAKE mia_AT pry_with.
+  MAKE mia_AT put.             -- (+ lay, place)
+  MAKE mia_AT put_against.
+  MAKE mia_AT put_behind.
+  MAKE mia_AT put_down.
+  MAKE mia_AT put_in.          -- (+ insert)
+  MAKE mia_AT put_near.
+  MAKE mia_AT put_on.
+  MAKE mia_AT put_under.
+  MAKE mia_AT remove.
+  MAKE mia_AT rub.
+  MAKE mia_AT 'say'.
+  MAKE mia_AT say_to.
+  MAKE mia_AT 'score'.
+  MAKE mia_AT scratch.
+  MAKE mia_AT 'script'.
+  MAKE mia_AT script_on.
+  MAKE mia_AT script_off.
+  MAKE mia_AT search.
+  MAKE mia_AT shake.
+  MAKE mia_AT shoot.           -- (at)
+  MAKE mia_AT shoot_with.
+  MAKE mia_AT sing.
+  MAKE mia_AT sip.
+  MAKE mia_AT sit.             -- (down)
+  MAKE mia_AT sit_on.
+  MAKE mia_AT smell0.
+  MAKE mia_AT smell.
+  MAKE mia_AT squeeze.
+  MAKE mia_AT stand.           -- (up)
+  MAKE mia_AT stand_on.
+  MAKE mia_AT switch.
+  MAKE mia_AT switch_on.
+  MAKE mia_AT switch_off.
+  MAKE mia_AT talk.
+  MAKE mia_AT talk_to.         -- (+ speak)
+  MAKE mia_AT tear.            -- (+ rip)
+  MAKE mia_AT tell.            -- (+ enlighten, inform)
+  MAKE mia_AT think.
+  MAKE mia_AT think_about.
+  MAKE mia_AT throw.
+  MAKE mia_AT throw_at.
+  MAKE mia_AT throw_in.
+  MAKE mia_AT throw_to.
+  MAKE mia_AT tie.
+  MAKE mia_AT tie_to.
+  MAKE mia_AT touch.           -- (+ feel)
+  MAKE mia_AT touch_with.
+  MAKE mia_AT turn.            -- (+ rotate)
+  MAKE mia_AT turn_on.
+  MAKE mia_AT turn_off.
+  MAKE mia_AT yes.
 
 
 
@@ -1511,19 +1511,19 @@ IF restricted_level OF my_game = 0    -- all verbs work normally
 --------------------------------------------------------------------------------
 --==============================================================================
 
-ELSIF restricted_level OF my_game = 1  -- communication verbs are restricted
+ELSIF restricted_level OF mia_AT = 1  -- communication verbs are restricted
   THEN
 
-  MAKE my_game NOT gridare.              --> shout       (+ scream, yell)
+  MAKE mia_AT NOT gridare.              --> shout       (+ scream, yell)
 
 --# NOT YET TRANSLATED:
-  MAKE my_game NOT answer.
-  MAKE my_game NOT ask.
-  MAKE my_game NOT ask_for.
-  MAKE my_game NOT 'say'.
-  MAKE my_game NOT say_to.
-  MAKE my_game NOT sing.
-  MAKE my_game NOT tell.
+  MAKE mia_AT NOT answer.
+  MAKE mia_AT NOT ask.
+  MAKE mia_AT NOT ask_for.
+  MAKE mia_AT NOT 'say'.
+  MAKE mia_AT NOT say_to.
+  MAKE mia_AT NOT sing.
+  MAKE mia_AT NOT tell.
 
 
 
@@ -1534,190 +1534,190 @@ ELSIF restricted_level OF my_game = 1  -- communication verbs are restricted
 --------------------------------------------------------------------------------
 --==============================================================================
 
-ELSIF restricted_level OF my_game = 2   -- all action verbs, including communication verbs,
+ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communication verbs,
                 -- are restricted. Verbs like 'examine', 'look', , 'inventory, 'think'
                 -- 'wait' and sensory verbs as well as all out-of-game verbs work
   THEN
 
-  MAKE my_game     abbandonare_partita.      --> 'quit'
-  MAKE my_game NOT andare_a.                 --> go_to
-  MAKE my_game NOT aprire.                   --> open
-  MAKE my_game NOT aprire_con.               --> open_with
-  MAKE my_game     aspettare.                --> wait         (+ z)
-  MAKE my_game NOT assaggiare.               --> taste        (+ lick)
-  MAKE my_game NOT attraversare.             --> climb_through
-  MAKE my_game NOT baciare.                  --> kiss         (+ hug, embrace)
-  MAKE my_game NOT bere.                     --> drink
-  MAKE my_game NOT bloccare.                 --> lock
-  MAKE my_game NOT bloccare_con.             --> lock_with
-  MAKE my_game     caricare_partita.         --> 'restore'
-  MAKE my_game NOT chiudere.                 --> close        (+ shut)
-  MAKE my_game NOT chiudere_con.             --> close_with
-  MAKE my_game NOT comprare.                 --> buy          (+ purchase)
-  MAKE my_game NOT consultare.               --> consult
-  MAKE my_game NOT danzare.                  --> dance
-  MAKE my_game     domandare_chi_sono_io.    --> who_am_i
-  MAKE my_game     domandare_chi_è.          --> who_is
-  MAKE my_game     domandare_cosa_sono_io.   --> what_am_i
-  MAKE my_game     domandare_cosa_è.         --> what_is
-  MAKE my_game     domandare_dove_mi_trovo.  --> where_am_i
-  MAKE my_game     domandare_dove_è.         --> where_is
-  MAKE my_game NOT dormire.                  --> sleep        (+ rest)
-  MAKE my_game NOT entrare.                  --> enter
-  MAKE my_game     esaminare.                --> examine      (+ check, inspect, observe, x)
-  MAKE my_game NOT gridare.                  --> shout        (+ scream, yell)
-  MAKE my_game NOT indossare.                --> wear
-  MAKE my_game     inventariare.             --> i            (+ inv, inventory)
-  MAKE my_game NOT lasciare.                 --> drop         (+ discard, dump, reject)
-  MAKE my_game NOT leggere.                  --> read
-  MAKE my_game NOT liberare.                 --> free         (+ release)
-  MAKE my_game NOT mangiare.                 --> eat
-  MAKE my_game     modalità_breve.           --> brief
-  MAKE my_game     modalità_lunga.           --> verbose
-  MAKE my_game NOT mostrare.                 --> 'show'       (+ reveal)
-  MAKE my_game NOT nuotare.                  --> swim
-  MAKE my_game NOT nuotare_in.               --> swim_in
-  MAKE my_game     pregare.                  --> pray
-  MAKE my_game NOT prendere.                 --> take.        (+ carry, get, grab, hold, obtain)
-  MAKE my_game NOT prendere_da.              --> take_from.   (+ remove from)
-  MAKE my_game NOT pulire.                   --> clean        (+ polish, wipe)
-  MAKE my_game     ricominciare_partita.     --> 'restart'
-  MAKE my_game     rifare.                   --> 'again'
-  MAKE my_game NOT rompere.                  --> break        (+ destroy)
-  MAKE my_game NOT rompere_con.              --> break_with
-  MAKE my_game NOT saltare.                  --> jump
-  MAKE my_game NOT saltare_in.               --> jump_in
-  MAKE my_game NOT saltare_su.               --> jump_on
-  MAKE my_game     salvare_partita.          --> save
-  MAKE my_game NOT sbloccare.                --> unlock
-  MAKE my_game NOT sbloccare_con.            --> unlock_with
-  MAKE my_game NOT scavare.                  --> dig
-  MAKE my_game NOT scrivere.                 --> write
-  MAKE my_game NOT seguire.                  --> follow
-  MAKE my_game NOT spingere.                 --> push
-  MAKE my_game NOT spingere_con.             --> push_with
-  MAKE my_game NOT spogliarsi.               --> undress
-  MAKE my_game NOT tagliare.                 --> cut
-  MAKE my_game NOT tagliare_con.             --> cut_with
-  MAKE my_game NOT tirare.                   --> pull
-  MAKE my_game NOT trovare.                  --> find         (+ locate)
-  MAKE my_game NOT uccidere.                 --> kill         (+ murder)
-  MAKE my_game NOT uccidere_con.             --> kill_with
-  MAKE my_game NOT usare.                    --> 'use'
-  MAKE my_game NOT usare_con.                --> use_with
-  MAKE my_game NOT vendere.                  --> sell
-  MAKE my_game NOT versare.                  --> pour
-  MAKE my_game NOT versare_in.               --> pour_in
-  MAKE my_game NOT versare_su.               --> pour_on
+  MAKE mia_AT     abbandonare_partita.      --> 'quit'
+  MAKE mia_AT NOT andare_a.                 --> go_to
+  MAKE mia_AT NOT aprire.                   --> open
+  MAKE mia_AT NOT aprire_con.               --> open_with
+  MAKE mia_AT     aspettare.                --> wait         (+ z)
+  MAKE mia_AT NOT assaggiare.               --> taste        (+ lick)
+  MAKE mia_AT NOT attraversare.             --> climb_through
+  MAKE mia_AT NOT baciare.                  --> kiss         (+ hug, embrace)
+  MAKE mia_AT NOT bere.                     --> drink
+  MAKE mia_AT NOT bloccare.                 --> lock
+  MAKE mia_AT NOT bloccare_con.             --> lock_with
+  MAKE mia_AT     caricare_partita.         --> 'restore'
+  MAKE mia_AT NOT chiudere.                 --> close        (+ shut)
+  MAKE mia_AT NOT chiudere_con.             --> close_with
+  MAKE mia_AT NOT comprare.                 --> buy          (+ purchase)
+  MAKE mia_AT NOT consultare.               --> consult
+  MAKE mia_AT NOT danzare.                  --> dance
+  MAKE mia_AT     domandare_chi_sono_io.    --> who_am_i
+  MAKE mia_AT     domandare_chi_è.          --> who_is
+  MAKE mia_AT     domandare_cosa_sono_io.   --> what_am_i
+  MAKE mia_AT     domandare_cosa_è.         --> what_is
+  MAKE mia_AT     domandare_dove_mi_trovo.  --> where_am_i
+  MAKE mia_AT     domandare_dove_è.         --> where_is
+  MAKE mia_AT NOT dormire.                  --> sleep        (+ rest)
+  MAKE mia_AT NOT entrare.                  --> enter
+  MAKE mia_AT     esaminare.                --> examine      (+ check, inspect, observe, x)
+  MAKE mia_AT NOT gridare.                  --> shout        (+ scream, yell)
+  MAKE mia_AT NOT indossare.                --> wear
+  MAKE mia_AT     inventariare.             --> i            (+ inv, inventory)
+  MAKE mia_AT NOT lasciare.                 --> drop         (+ discard, dump, reject)
+  MAKE mia_AT NOT leggere.                  --> read
+  MAKE mia_AT NOT liberare.                 --> free         (+ release)
+  MAKE mia_AT NOT mangiare.                 --> eat
+  MAKE mia_AT     modalità_breve.           --> brief
+  MAKE mia_AT     modalità_lunga.           --> verbose
+  MAKE mia_AT NOT mostrare.                 --> 'show'       (+ reveal)
+  MAKE mia_AT NOT nuotare.                  --> swim
+  MAKE mia_AT NOT nuotare_in.               --> swim_in
+  MAKE mia_AT     pregare.                  --> pray
+  MAKE mia_AT NOT prendere.                 --> take.        (+ carry, get, grab, hold, obtain)
+  MAKE mia_AT NOT prendere_da.              --> take_from.   (+ remove from)
+  MAKE mia_AT NOT pulire.                   --> clean        (+ polish, wipe)
+  MAKE mia_AT     ricominciare_partita.     --> 'restart'
+  MAKE mia_AT     rifare.                   --> 'again'
+  MAKE mia_AT NOT rompere.                  --> break        (+ destroy)
+  MAKE mia_AT NOT rompere_con.              --> break_with
+  MAKE mia_AT NOT saltare.                  --> jump
+  MAKE mia_AT NOT saltare_in.               --> jump_in
+  MAKE mia_AT NOT saltare_su.               --> jump_on
+  MAKE mia_AT     salvare_partita.          --> save
+  MAKE mia_AT NOT sbloccare.                --> unlock
+  MAKE mia_AT NOT sbloccare_con.            --> unlock_with
+  MAKE mia_AT NOT scavare.                  --> dig
+  MAKE mia_AT NOT scrivere.                 --> write
+  MAKE mia_AT NOT seguire.                  --> follow
+  MAKE mia_AT NOT spingere.                 --> push
+  MAKE mia_AT NOT spingere_con.             --> push_with
+  MAKE mia_AT NOT spogliarsi.               --> undress
+  MAKE mia_AT NOT tagliare.                 --> cut
+  MAKE mia_AT NOT tagliare_con.             --> cut_with
+  MAKE mia_AT NOT tirare.                   --> pull
+  MAKE mia_AT NOT trovare.                  --> find         (+ locate)
+  MAKE mia_AT NOT uccidere.                 --> kill         (+ murder)
+  MAKE mia_AT NOT uccidere_con.             --> kill_with
+  MAKE mia_AT NOT usare.                    --> 'use'
+  MAKE mia_AT NOT usare_con.                --> use_with
+  MAKE mia_AT NOT vendere.                  --> sell
+  MAKE mia_AT NOT versare.                  --> pour
+  MAKE mia_AT NOT versare_in.               --> pour_in
+  MAKE mia_AT NOT versare_su.               --> pour_on
 
 --# NOT YET TRANSLATED:
 
-  MAKE my_game about.
-  MAKE my_game NOT answer.      -- (+ reply)
-  MAKE my_game NOT ask.         -- (+ enquire, inquire, interrogate)
-  MAKE my_game NOT ask_for.
-  MAKE my_game NOT attack.      -- (+ beat, fight, hit, punch)
-  MAKE my_game NOT attack_with.
-  MAKE my_game NOT bite.        -- (+ chew)
-  MAKE my_game NOT bruciare.     --> burn
-  MAKE my_game NOT bruciare_con. --> burn_with
-  MAKE my_game NOT catch.
-  MAKE my_game NOT climb.
-  MAKE my_game NOT climb_on.
-  MAKE my_game credits.         -- (+ acknowledgments, author, copyright)
-  MAKE my_game NOT dive.
-  MAKE my_game NOT dive_in.
-  MAKE my_game NOT drive.
-  MAKE my_game NOT 'empty'.
-  MAKE my_game NOT empty_in.
-  MAKE my_game NOT empty_on.
-  MAKE my_game NOT 'exit'.
-  MAKE my_game NOT extinguish.  -- (+ put out, quench)
-  MAKE my_game NOT fill.
-  MAKE my_game NOT fill_with.
-  MAKE my_game NOT fire.
-  MAKE my_game NOT fire_at.
-  MAKE my_game NOT fix.         -- (+ mend, repair)
-  MAKE my_game NOT get_up.
-  MAKE my_game NOT get_off.
-  MAKE my_game NOT dare.
-  MAKE my_game hint.            -- (+ hints)
-  MAKE my_game NOT kick.
-  MAKE my_game NOT knock.
-  MAKE my_game NOT lie_down.
-  MAKE my_game NOT lie_in.
-  MAKE my_game NOT lie_on.
-  MAKE my_game NOT lift.
-  MAKE my_game NOT light.       -- (+ lit)
-  MAKE my_game listen0.
-  MAKE my_game listen.
-  MAKE my_game 'look'.          -- (+ gaze, peek)
-  MAKE my_game look_at.
-  MAKE my_game look_behind.
-  MAKE my_game look_in.
-  MAKE my_game look_out_of.
-  MAKE my_game look_through.
-  MAKE my_game look_under.
-  MAKE my_game look_up.
-  MAKE my_game 'no'.
-  MAKE my_game 'notify'.
-  MAKE my_game notify_on.
-  MAKE my_game notify_off.
-  MAKE my_game NOT 'play'.
-  MAKE my_game NOT play_with.
-  MAKE my_game NOT pry.
-  MAKE my_game NOT pry_with.
-  MAKE my_game NOT put.         -- (+ lay, place)
-  MAKE my_game NOT put_against.
-  MAKE my_game NOT put_behind.
-  MAKE my_game NOT put_down.
-  MAKE my_game NOT put_in.      -- (+ insert)
-  MAKE my_game NOT put_near.
-  MAKE my_game NOT put_on.
-  MAKE my_game NOT put_under.
-  MAKE my_game NOT remove.
-  MAKE my_game NOT rub.
-  MAKE my_game NOT 'say'.
-  MAKE my_game NOT say_to.
-  MAKE my_game 'score'.
-  MAKE my_game NOT scratch.
-  MAKE my_game 'script'.
-  MAKE my_game script_on.
-  MAKE my_game script_off.
-  MAKE my_game NOT search.
-  MAKE my_game NOT shake.
-  MAKE my_game NOT shoot.       -- (at)
-  MAKE my_game NOT shoot_with.
-  MAKE my_game NOT sing.
-  MAKE my_game NOT sip.
-  MAKE my_game NOT sit.         -- (down)
-  MAKE my_game NOT sit_on.
-  MAKE my_game smell0.
-  MAKE my_game smell.
-  MAKE my_game NOT squeeze.
-  MAKE my_game NOT stand.       -- (up)
-  MAKE my_game NOT stand_on.
-  MAKE my_game NOT switch.
-  MAKE my_game NOT switch_on.
-  MAKE my_game NOT switch_off.
-  MAKE my_game NOT talk.
-  MAKE my_game NOT talk_to.     -- (+ speak)
-  MAKE my_game NOT tear.        -- (+ rip)
-  MAKE my_game NOT tell.        -- (+ enlighten, inform)
-  MAKE my_game think.
-  MAKE my_game think_about.
-  MAKE my_game NOT throw.
-  MAKE my_game NOT throw_at.
-  MAKE my_game NOT throw_in.
-  MAKE my_game NOT throw_to.
-  MAKE my_game NOT tie.
-  MAKE my_game NOT tie_to.
-  MAKE my_game NOT touch.       -- (+ feel)
-  MAKE my_game NOT touch_with.
-  MAKE my_game NOT turn.        -- (+ rotate)
-  MAKE my_game NOT turn_on.
-  MAKE my_game NOT turn_off.
-  MAKE my_game yes.
+  MAKE mia_AT about.
+  MAKE mia_AT NOT answer.      -- (+ reply)
+  MAKE mia_AT NOT ask.         -- (+ enquire, inquire, interrogate)
+  MAKE mia_AT NOT ask_for.
+  MAKE mia_AT NOT attack.      -- (+ beat, fight, hit, punch)
+  MAKE mia_AT NOT attack_with.
+  MAKE mia_AT NOT bite.        -- (+ chew)
+  MAKE mia_AT NOT bruciare.     --> burn
+  MAKE mia_AT NOT bruciare_con. --> burn_with
+  MAKE mia_AT NOT catch.
+  MAKE mia_AT NOT climb.
+  MAKE mia_AT NOT climb_on.
+  MAKE mia_AT credits.         -- (+ acknowledgments, author, copyright)
+  MAKE mia_AT NOT dive.
+  MAKE mia_AT NOT dive_in.
+  MAKE mia_AT NOT drive.
+  MAKE mia_AT NOT 'empty'.
+  MAKE mia_AT NOT empty_in.
+  MAKE mia_AT NOT empty_on.
+  MAKE mia_AT NOT 'exit'.
+  MAKE mia_AT NOT extinguish.  -- (+ put out, quench)
+  MAKE mia_AT NOT fill.
+  MAKE mia_AT NOT fill_with.
+  MAKE mia_AT NOT fire.
+  MAKE mia_AT NOT fire_at.
+  MAKE mia_AT NOT fix.         -- (+ mend, repair)
+  MAKE mia_AT NOT get_up.
+  MAKE mia_AT NOT get_off.
+  MAKE mia_AT NOT dare.
+  MAKE mia_AT hint.            -- (+ hints)
+  MAKE mia_AT NOT kick.
+  MAKE mia_AT NOT knock.
+  MAKE mia_AT NOT lie_down.
+  MAKE mia_AT NOT lie_in.
+  MAKE mia_AT NOT lie_on.
+  MAKE mia_AT NOT lift.
+  MAKE mia_AT NOT light.       -- (+ lit)
+  MAKE mia_AT listen0.
+  MAKE mia_AT listen.
+  MAKE mia_AT 'look'.          -- (+ gaze, peek)
+  MAKE mia_AT look_at.
+  MAKE mia_AT look_behind.
+  MAKE mia_AT look_in.
+  MAKE mia_AT look_out_of.
+  MAKE mia_AT look_through.
+  MAKE mia_AT look_under.
+  MAKE mia_AT look_up.
+  MAKE mia_AT 'no'.
+  MAKE mia_AT 'notify'.
+  MAKE mia_AT notify_on.
+  MAKE mia_AT notify_off.
+  MAKE mia_AT NOT 'play'.
+  MAKE mia_AT NOT play_with.
+  MAKE mia_AT NOT pry.
+  MAKE mia_AT NOT pry_with.
+  MAKE mia_AT NOT put.         -- (+ lay, place)
+  MAKE mia_AT NOT put_against.
+  MAKE mia_AT NOT put_behind.
+  MAKE mia_AT NOT put_down.
+  MAKE mia_AT NOT put_in.      -- (+ insert)
+  MAKE mia_AT NOT put_near.
+  MAKE mia_AT NOT put_on.
+  MAKE mia_AT NOT put_under.
+  MAKE mia_AT NOT remove.
+  MAKE mia_AT NOT rub.
+  MAKE mia_AT NOT 'say'.
+  MAKE mia_AT NOT say_to.
+  MAKE mia_AT 'score'.
+  MAKE mia_AT NOT scratch.
+  MAKE mia_AT 'script'.
+  MAKE mia_AT script_on.
+  MAKE mia_AT script_off.
+  MAKE mia_AT NOT search.
+  MAKE mia_AT NOT shake.
+  MAKE mia_AT NOT shoot.       -- (at)
+  MAKE mia_AT NOT shoot_with.
+  MAKE mia_AT NOT sing.
+  MAKE mia_AT NOT sip.
+  MAKE mia_AT NOT sit.         -- (down)
+  MAKE mia_AT NOT sit_on.
+  MAKE mia_AT smell0.
+  MAKE mia_AT smell.
+  MAKE mia_AT NOT squeeze.
+  MAKE mia_AT NOT stand.       -- (up)
+  MAKE mia_AT NOT stand_on.
+  MAKE mia_AT NOT switch.
+  MAKE mia_AT NOT switch_on.
+  MAKE mia_AT NOT switch_off.
+  MAKE mia_AT NOT talk.
+  MAKE mia_AT NOT talk_to.     -- (+ speak)
+  MAKE mia_AT NOT tear.        -- (+ rip)
+  MAKE mia_AT NOT tell.        -- (+ enlighten, inform)
+  MAKE mia_AT think.
+  MAKE mia_AT think_about.
+  MAKE mia_AT NOT throw.
+  MAKE mia_AT NOT throw_at.
+  MAKE mia_AT NOT throw_in.
+  MAKE mia_AT NOT throw_to.
+  MAKE mia_AT NOT tie.
+  MAKE mia_AT NOT tie_to.
+  MAKE mia_AT NOT touch.       -- (+ feel)
+  MAKE mia_AT NOT touch_with.
+  MAKE mia_AT NOT turn.        -- (+ rotate)
+  MAKE mia_AT NOT turn_on.
+  MAKE mia_AT NOT turn_off.
+  MAKE mia_AT yes.
 
 
 
@@ -1728,196 +1728,196 @@ ELSIF restricted_level OF my_game = 2   -- all action verbs, including communica
 --==============================================================================
 
 
-ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, even
+ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   THEN                                  -- 'examine', 'look' etc. Only out-of-game verbs like
                                         -- 'save', 'quit' etc work.
 
 
-  MAKE my_game     abbandonare_partita.      --> 'quit'
-  MAKE my_game NOT andare_a.                 --> go_to
-  MAKE my_game NOT aprire.                   --> open
-  MAKE my_game NOT aprire_con.               --> open_with
-  MAKE my_game NOT aspettare.                --> wait         (+ z)
-  MAKE my_game NOT assaggiare.               --> taste        (+ lick)
-  MAKE my_game NOT attraversare.             --> climb_through
-  MAKE my_game NOT baciare.                  --> kiss         (+ hug, embrace)
-  MAKE my_game NOT bere.                     --> drink
-  MAKE my_game NOT bloccare.                 --> lock
-  MAKE my_game NOT bloccare_con.             --> lock_with
-  MAKE my_game     caricare_partita.         --> 'restore'
-  MAKE my_game NOT chiudere.                 --> close        (+ shut)
-  MAKE my_game NOT chiudere_con.             --> close_with
-  MAKE my_game NOT comprare.                 --> buy          (+ purchase)
-  MAKE my_game NOT consultare.               --> consult
-  MAKE my_game NOT danzare.                  --> dance
-  MAKE my_game NOT domandare_chi_sono_io.    --> who_am_i
-  MAKE my_game NOT domandare_chi_sono_io.    --> who_am_i
-  MAKE my_game NOT domandare_chi_è.          --> who_is
-  MAKE my_game NOT domandare_chi_è.          --> who_is
-  MAKE my_game NOT domandare_cosa_sono_io.   --> what_am_i
-  MAKE my_game NOT domandare_cosa_sono_io.   --> what_am_i
-  MAKE my_game NOT domandare_cosa_è.         --> what_is
-  MAKE my_game NOT domandare_cosa_è.         --> what_is
-  MAKE my_game NOT domandare_dove_mi_trovo.  --> where_am_i
-  MAKE my_game NOT domandare_dove_mi_trovo.  --> where_am_i
-  MAKE my_game NOT domandare_dove_è.         --> where_is
-  MAKE my_game NOT domandare_dove_è.         --> where_is
-  MAKE my_game NOT dormire.                  --> sleep        (+ rest)
-  MAKE my_game NOT entrare.                  --> enter
-  MAKE my_game NOT esaminare.                --> examine      (+ check, inspect, observe, x)
-  MAKE my_game NOT gridare.                  --> shout        (+ scream, yell)
-  MAKE my_game NOT indossare.                --> wear
-  MAKE my_game NOT inventariare.             --> i            (+ inv, inventory)
-  MAKE my_game NOT lasciare.                 --> drop         (+ discard, dump, reject)
-  MAKE my_game NOT leggere.                  --> read
-  MAKE my_game NOT liberare.                 --> free         (+ release)
-  MAKE my_game NOT mangiare.                 --> eat
-  MAKE my_game     modalità_breve.           --> brief
-  MAKE my_game     modalità_lunga.           --> verbose
-  MAKE my_game NOT mostrare.                 --> 'show'       (+ reveal)
-  MAKE my_game NOT nuotare.                  --> swim
-  MAKE my_game NOT nuotare_in.               --> swim_in
-  MAKE my_game NOT pregare.                  --> pray
-  MAKE my_game NOT prendere.                 --> take.        (+ carry, get, grab, hold, obtain)
-  MAKE my_game NOT prendere_da.              --> take_from.   (+ remove from)
-  MAKE my_game NOT pulire.                   --> clean        (+ polish, wipe)
-  MAKE my_game     ricominciare_partita.     --> 'restart'
-  MAKE my_game     rifare.                   --> 'again'
-  MAKE my_game NOT rompere.                  --> break        (+ destroy)
-  MAKE my_game NOT rompere_con.              --> break_with
-  MAKE my_game NOT saltare.                  --> jump
-  MAKE my_game NOT saltare_in.               --> jump_in
-  MAKE my_game NOT saltare_su.               --> jump_on
-  MAKE my_game     salvare_partita.          --> save
-  MAKE my_game NOT sbloccare.                --> unlock
-  MAKE my_game NOT sbloccare_con.            --> unlock_with
-  MAKE my_game NOT scavare.                  --> dig
-  MAKE my_game NOT scrivere.                 --> write
-  MAKE my_game NOT seguire.                  --> follow
-  MAKE my_game NOT spingere.                 --> push
-  MAKE my_game NOT spingere_con.             --> push_with
-  MAKE my_game NOT spogliarsi.               --> undress
-  MAKE my_game NOT tagliare.                 --> cut
-  MAKE my_game NOT tagliare_con.             --> cut_with
-  MAKE my_game NOT tirare.                   --> pull
-  MAKE my_game NOT trovare.                  --> find         (+ locate)
-  MAKE my_game NOT uccidere.                 --> kill         (+ murder)
-  MAKE my_game NOT uccidere_con.             --> kill_with
-  MAKE my_game NOT usare.                    --> 'use'
-  MAKE my_game NOT usare_con.                --> use_with
-  MAKE my_game NOT vendere.                  --> sell
-  MAKE my_game NOT versare.                  --> pour
-  MAKE my_game NOT versare_in.               --> pour_in
-  MAKE my_game NOT versare_su.               --> pour_on
+  MAKE mia_AT     abbandonare_partita.      --> 'quit'
+  MAKE mia_AT NOT andare_a.                 --> go_to
+  MAKE mia_AT NOT aprire.                   --> open
+  MAKE mia_AT NOT aprire_con.               --> open_with
+  MAKE mia_AT NOT aspettare.                --> wait         (+ z)
+  MAKE mia_AT NOT assaggiare.               --> taste        (+ lick)
+  MAKE mia_AT NOT attraversare.             --> climb_through
+  MAKE mia_AT NOT baciare.                  --> kiss         (+ hug, embrace)
+  MAKE mia_AT NOT bere.                     --> drink
+  MAKE mia_AT NOT bloccare.                 --> lock
+  MAKE mia_AT NOT bloccare_con.             --> lock_with
+  MAKE mia_AT     caricare_partita.         --> 'restore'
+  MAKE mia_AT NOT chiudere.                 --> close        (+ shut)
+  MAKE mia_AT NOT chiudere_con.             --> close_with
+  MAKE mia_AT NOT comprare.                 --> buy          (+ purchase)
+  MAKE mia_AT NOT consultare.               --> consult
+  MAKE mia_AT NOT danzare.                  --> dance
+  MAKE mia_AT NOT domandare_chi_sono_io.    --> who_am_i
+  MAKE mia_AT NOT domandare_chi_sono_io.    --> who_am_i
+  MAKE mia_AT NOT domandare_chi_è.          --> who_is
+  MAKE mia_AT NOT domandare_chi_è.          --> who_is
+  MAKE mia_AT NOT domandare_cosa_sono_io.   --> what_am_i
+  MAKE mia_AT NOT domandare_cosa_sono_io.   --> what_am_i
+  MAKE mia_AT NOT domandare_cosa_è.         --> what_is
+  MAKE mia_AT NOT domandare_cosa_è.         --> what_is
+  MAKE mia_AT NOT domandare_dove_mi_trovo.  --> where_am_i
+  MAKE mia_AT NOT domandare_dove_mi_trovo.  --> where_am_i
+  MAKE mia_AT NOT domandare_dove_è.         --> where_is
+  MAKE mia_AT NOT domandare_dove_è.         --> where_is
+  MAKE mia_AT NOT dormire.                  --> sleep        (+ rest)
+  MAKE mia_AT NOT entrare.                  --> enter
+  MAKE mia_AT NOT esaminare.                --> examine      (+ check, inspect, observe, x)
+  MAKE mia_AT NOT gridare.                  --> shout        (+ scream, yell)
+  MAKE mia_AT NOT indossare.                --> wear
+  MAKE mia_AT NOT inventariare.             --> i            (+ inv, inventory)
+  MAKE mia_AT NOT lasciare.                 --> drop         (+ discard, dump, reject)
+  MAKE mia_AT NOT leggere.                  --> read
+  MAKE mia_AT NOT liberare.                 --> free         (+ release)
+  MAKE mia_AT NOT mangiare.                 --> eat
+  MAKE mia_AT     modalità_breve.           --> brief
+  MAKE mia_AT     modalità_lunga.           --> verbose
+  MAKE mia_AT NOT mostrare.                 --> 'show'       (+ reveal)
+  MAKE mia_AT NOT nuotare.                  --> swim
+  MAKE mia_AT NOT nuotare_in.               --> swim_in
+  MAKE mia_AT NOT pregare.                  --> pray
+  MAKE mia_AT NOT prendere.                 --> take.        (+ carry, get, grab, hold, obtain)
+  MAKE mia_AT NOT prendere_da.              --> take_from.   (+ remove from)
+  MAKE mia_AT NOT pulire.                   --> clean        (+ polish, wipe)
+  MAKE mia_AT     ricominciare_partita.     --> 'restart'
+  MAKE mia_AT     rifare.                   --> 'again'
+  MAKE mia_AT NOT rompere.                  --> break        (+ destroy)
+  MAKE mia_AT NOT rompere_con.              --> break_with
+  MAKE mia_AT NOT saltare.                  --> jump
+  MAKE mia_AT NOT saltare_in.               --> jump_in
+  MAKE mia_AT NOT saltare_su.               --> jump_on
+  MAKE mia_AT     salvare_partita.          --> save
+  MAKE mia_AT NOT sbloccare.                --> unlock
+  MAKE mia_AT NOT sbloccare_con.            --> unlock_with
+  MAKE mia_AT NOT scavare.                  --> dig
+  MAKE mia_AT NOT scrivere.                 --> write
+  MAKE mia_AT NOT seguire.                  --> follow
+  MAKE mia_AT NOT spingere.                 --> push
+  MAKE mia_AT NOT spingere_con.             --> push_with
+  MAKE mia_AT NOT spogliarsi.               --> undress
+  MAKE mia_AT NOT tagliare.                 --> cut
+  MAKE mia_AT NOT tagliare_con.             --> cut_with
+  MAKE mia_AT NOT tirare.                   --> pull
+  MAKE mia_AT NOT trovare.                  --> find         (+ locate)
+  MAKE mia_AT NOT uccidere.                 --> kill         (+ murder)
+  MAKE mia_AT NOT uccidere_con.             --> kill_with
+  MAKE mia_AT NOT usare.                    --> 'use'
+  MAKE mia_AT NOT usare_con.                --> use_with
+  MAKE mia_AT NOT vendere.                  --> sell
+  MAKE mia_AT NOT versare.                  --> pour
+  MAKE mia_AT NOT versare_in.               --> pour_in
+  MAKE mia_AT NOT versare_su.               --> pour_on
 
 --# NOT YET TRANSLATED:
 
-  MAKE my_game about.
-  MAKE my_game NOT answer.      -- (+ reply)
-  MAKE my_game NOT ask.         -- (+ enquire, inquire, interrogate)
-  MAKE my_game NOT ask_for.
-  MAKE my_game NOT attack.      -- (+ beat, fight, hit, punch)
-  MAKE my_game NOT attack_with.
-  MAKE my_game NOT bite.        -- (+ chew)
-  MAKE my_game NOT bruciare.     --> burn
-  MAKE my_game NOT bruciare_con. --> burn_with
-  MAKE my_game NOT catch.
-  MAKE my_game NOT climb.
-  MAKE my_game NOT climb_on.
-  MAKE my_game credits.         -- (+ acknowledgments, author, copyright)
-  MAKE my_game NOT dive.
-  MAKE my_game NOT dive_in.
-  MAKE my_game NOT drive.
-  MAKE my_game NOT 'empty'.
-  MAKE my_game NOT empty_in.
-  MAKE my_game NOT empty_on.
-  MAKE my_game NOT 'exit'.
-  MAKE my_game NOT extinguish.  -- (+ put out, quench)
-  MAKE my_game NOT fill.
-  MAKE my_game NOT fill_with.
-  MAKE my_game NOT fire.
-  MAKE my_game NOT fire_at.
-  MAKE my_game NOT fix.         -- (+ mend, repair)
-  MAKE my_game NOT get_up.
-  MAKE my_game NOT get_off.
-  MAKE my_game NOT dare.
-  MAKE my_game hint.            -- (+ hints)
-  MAKE my_game NOT kick.
-  MAKE my_game NOT knock.
-  MAKE my_game NOT lie_down.
-  MAKE my_game NOT lie_in.
-  MAKE my_game NOT lie_on.
-  MAKE my_game NOT lift.
-  MAKE my_game NOT light.       -- (+ lit)
-  MAKE my_game NOT listen0.
-  MAKE my_game NOT listen.
-  MAKE my_game NOT 'look'.      -- (+ gaze, peek)
-  MAKE my_game NOT look_at.
-  MAKE my_game NOT look_behind.
-  MAKE my_game NOT look_in.
-  MAKE my_game NOT look_out_of.
-  MAKE my_game NOT look_through.
-  MAKE my_game NOT look_under.
-  MAKE my_game NOT look_up.
-  MAKE my_game 'no'.
-  MAKE my_game 'notify'.
-  MAKE my_game notify_on.
-  MAKE my_game notify_off.
-  MAKE my_game NOT 'play'.
-  MAKE my_game NOT play_with.
-  MAKE my_game NOT pry.
-  MAKE my_game NOT pry_with.
-  MAKE my_game NOT put.         -- (+ lay, place)
-  MAKE my_game NOT put_against.
-  MAKE my_game NOT put_behind.
-  MAKE my_game NOT put_down.
-  MAKE my_game NOT put_in.      -- (+ insert)
-  MAKE my_game NOT put_near.
-  MAKE my_game NOT put_on.
-  MAKE my_game NOT put_under.
-  MAKE my_game NOT remove.
-  MAKE my_game NOT rub.
-  MAKE my_game NOT 'say'.
-  MAKE my_game NOT say_to.
-  MAKE my_game 'score'.
-  MAKE my_game NOT scratch.
-  MAKE my_game 'script'.
-  MAKE my_game script_on.
-  MAKE my_game script_off.
-  MAKE my_game NOT search.
-  MAKE my_game NOT shake.
-  MAKE my_game NOT shoot.       -- (at)
-  MAKE my_game NOT shoot_with.
-  MAKE my_game NOT sing.
-  MAKE my_game NOT sip.
-  MAKE my_game NOT sit.         -- (down)
-  MAKE my_game NOT sit_on.
-  MAKE my_game NOT smell0.
-  MAKE my_game NOT smell.
-  MAKE my_game NOT squeeze.
-  MAKE my_game NOT stand.       -- (up)
-  MAKE my_game NOT stand_on.
-  MAKE my_game NOT switch.
-  MAKE my_game NOT switch_on.
-  MAKE my_game NOT switch_off.
-  MAKE my_game NOT talk.
-  MAKE my_game NOT talk_to.     -- (+ speak)
-  MAKE my_game NOT tear.        -- (+ rip)
-  MAKE my_game NOT tell.        -- (+ enlighten, inform)
-  MAKE my_game NOT think.
-  MAKE my_game NOT think_about.
-  MAKE my_game NOT throw.
-  MAKE my_game NOT throw_at.
-  MAKE my_game NOT throw_in.
-  MAKE my_game NOT throw_to.
-  MAKE my_game NOT tie.
-  MAKE my_game NOT tie_to.
-  MAKE my_game NOT touch.       -- (+ feel)
-  MAKE my_game NOT touch_with.
-  MAKE my_game NOT turn.        -- (+ rotate)
-  MAKE my_game NOT turn_on.
-  MAKE my_game NOT turn_off.
-  MAKE my_game yes.
+  MAKE mia_AT about.
+  MAKE mia_AT NOT answer.      -- (+ reply)
+  MAKE mia_AT NOT ask.         -- (+ enquire, inquire, interrogate)
+  MAKE mia_AT NOT ask_for.
+  MAKE mia_AT NOT attack.      -- (+ beat, fight, hit, punch)
+  MAKE mia_AT NOT attack_with.
+  MAKE mia_AT NOT bite.        -- (+ chew)
+  MAKE mia_AT NOT bruciare.     --> burn
+  MAKE mia_AT NOT bruciare_con. --> burn_with
+  MAKE mia_AT NOT catch.
+  MAKE mia_AT NOT climb.
+  MAKE mia_AT NOT climb_on.
+  MAKE mia_AT credits.         -- (+ acknowledgments, author, copyright)
+  MAKE mia_AT NOT dive.
+  MAKE mia_AT NOT dive_in.
+  MAKE mia_AT NOT drive.
+  MAKE mia_AT NOT 'empty'.
+  MAKE mia_AT NOT empty_in.
+  MAKE mia_AT NOT empty_on.
+  MAKE mia_AT NOT 'exit'.
+  MAKE mia_AT NOT extinguish.  -- (+ put out, quench)
+  MAKE mia_AT NOT fill.
+  MAKE mia_AT NOT fill_with.
+  MAKE mia_AT NOT fire.
+  MAKE mia_AT NOT fire_at.
+  MAKE mia_AT NOT fix.         -- (+ mend, repair)
+  MAKE mia_AT NOT get_up.
+  MAKE mia_AT NOT get_off.
+  MAKE mia_AT NOT dare.
+  MAKE mia_AT hint.            -- (+ hints)
+  MAKE mia_AT NOT kick.
+  MAKE mia_AT NOT knock.
+  MAKE mia_AT NOT lie_down.
+  MAKE mia_AT NOT lie_in.
+  MAKE mia_AT NOT lie_on.
+  MAKE mia_AT NOT lift.
+  MAKE mia_AT NOT light.       -- (+ lit)
+  MAKE mia_AT NOT listen0.
+  MAKE mia_AT NOT listen.
+  MAKE mia_AT NOT 'look'.      -- (+ gaze, peek)
+  MAKE mia_AT NOT look_at.
+  MAKE mia_AT NOT look_behind.
+  MAKE mia_AT NOT look_in.
+  MAKE mia_AT NOT look_out_of.
+  MAKE mia_AT NOT look_through.
+  MAKE mia_AT NOT look_under.
+  MAKE mia_AT NOT look_up.
+  MAKE mia_AT 'no'.
+  MAKE mia_AT 'notify'.
+  MAKE mia_AT notify_on.
+  MAKE mia_AT notify_off.
+  MAKE mia_AT NOT 'play'.
+  MAKE mia_AT NOT play_with.
+  MAKE mia_AT NOT pry.
+  MAKE mia_AT NOT pry_with.
+  MAKE mia_AT NOT put.         -- (+ lay, place)
+  MAKE mia_AT NOT put_against.
+  MAKE mia_AT NOT put_behind.
+  MAKE mia_AT NOT put_down.
+  MAKE mia_AT NOT put_in.      -- (+ insert)
+  MAKE mia_AT NOT put_near.
+  MAKE mia_AT NOT put_on.
+  MAKE mia_AT NOT put_under.
+  MAKE mia_AT NOT remove.
+  MAKE mia_AT NOT rub.
+  MAKE mia_AT NOT 'say'.
+  MAKE mia_AT NOT say_to.
+  MAKE mia_AT 'score'.
+  MAKE mia_AT NOT scratch.
+  MAKE mia_AT 'script'.
+  MAKE mia_AT script_on.
+  MAKE mia_AT script_off.
+  MAKE mia_AT NOT search.
+  MAKE mia_AT NOT shake.
+  MAKE mia_AT NOT shoot.       -- (at)
+  MAKE mia_AT NOT shoot_with.
+  MAKE mia_AT NOT sing.
+  MAKE mia_AT NOT sip.
+  MAKE mia_AT NOT sit.         -- (down)
+  MAKE mia_AT NOT sit_on.
+  MAKE mia_AT NOT smell0.
+  MAKE mia_AT NOT smell.
+  MAKE mia_AT NOT squeeze.
+  MAKE mia_AT NOT stand.       -- (up)
+  MAKE mia_AT NOT stand_on.
+  MAKE mia_AT NOT switch.
+  MAKE mia_AT NOT switch_on.
+  MAKE mia_AT NOT switch_off.
+  MAKE mia_AT NOT talk.
+  MAKE mia_AT NOT talk_to.     -- (+ speak)
+  MAKE mia_AT NOT tear.        -- (+ rip)
+  MAKE mia_AT NOT tell.        -- (+ enlighten, inform)
+  MAKE mia_AT NOT think.
+  MAKE mia_AT NOT think_about.
+  MAKE mia_AT NOT throw.
+  MAKE mia_AT NOT throw_at.
+  MAKE mia_AT NOT throw_in.
+  MAKE mia_AT NOT throw_to.
+  MAKE mia_AT NOT tie.
+  MAKE mia_AT NOT tie_to.
+  MAKE mia_AT NOT touch.       -- (+ feel)
+  MAKE mia_AT NOT touch_with.
+  MAKE mia_AT NOT turn.        -- (+ rotate)
+  MAKE mia_AT NOT turn_on.
+  MAKE mia_AT NOT turn_off.
+  MAKE mia_AT yes.
 
 --==============================================================================
 --------------------------------------------------------------------------------
@@ -1925,184 +1925,184 @@ ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, eve
 --------------------------------------------------------------------------------
 --==============================================================================
 
-ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
+ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
                                         -- no verbs work, not even out-of-game verbs
   THEN                                  -- like 'save' and 'quit'.
 
 
-  MAKE my_game NOT abbandonare_partita.  --> 'quit'
-  MAKE my_game NOT andare_a.             --> go_to
-  MAKE my_game NOT aprire.               --> open
-  MAKE my_game NOT aprire_con.           --> open_with
-  MAKE my_game NOT aspettare.            --> wait         (+ z)
-  MAKE my_game NOT assaggiare.           --> taste        (+ lick)
-  MAKE my_game NOT attraversare.         --> climb_through
-  MAKE my_game NOT baciare.              --> kiss         (+ hug, embrace)
-  MAKE my_game NOT bere.                 --> drink
-  MAKE my_game NOT bloccare.             --> lock
-  MAKE my_game NOT bloccare_con.         --> lock_with
-  MAKE my_game NOT caricare_partita.     --> 'restore'
-  MAKE my_game NOT chiudere.             --> close        (+ shut)
-  MAKE my_game NOT chiudere_con.         --> close_with
-  MAKE my_game NOT comprare.             --> buy          (+ purchase)
-  MAKE my_game NOT consultare.           --> consult
-  MAKE my_game NOT danzare.              --> dance
-  MAKE my_game NOT dormire.              --> sleep        (+ rest)
-  MAKE my_game NOT entrare.              --> enter
-  MAKE my_game NOT esaminare.            --> examine      (+ check, inspect, observe, x)
-  MAKE my_game NOT gridare.              --> shout        (+ scream, yell)
-  MAKE my_game NOT indossare.            --> wear
-  MAKE my_game NOT inventariare.         --> i               (+ inv, inventory)
-  MAKE my_game NOT lasciare.             --> drop         (+ discard, dump, reject)
-  MAKE my_game NOT leggere.              --> read
-  MAKE my_game NOT liberare.             --> free         (+ release)
-  MAKE my_game NOT mangiare.             --> eat
-  MAKE my_game NOT modalità_breve.       --> brief
-  MAKE my_game NOT modalità_lunga.       --> verbose
-  MAKE my_game NOT mostrare.             --> 'show'       (+ reveal)
-  MAKE my_game NOT nuotare.              --> swim
-  MAKE my_game NOT nuotare_in.           --> swim_in
-  MAKE my_game NOT pregare.              --> pray
-  MAKE my_game NOT prendere.             --> take.        (+ carry, get, grab, hold, obtain)
-  MAKE my_game NOT prendere_da.          --> take_from.   (+ remove from)
-  MAKE my_game NOT pulire.               --> clean        (+ polish, wipe)
-  MAKE my_game NOT ricominciare_partita. --> 'restart'
-  MAKE my_game NOT rifare.               --> 'again'
-  MAKE my_game NOT rompere.              --> break        (+ destroy)
-  MAKE my_game NOT rompere_con.          --> break_with
-  MAKE my_game NOT saltare.              --> jump
-  MAKE my_game NOT saltare_in.           --> jump_in
-  MAKE my_game NOT saltare_su.           --> jump_on
-  MAKE my_game NOT salvare_partita.      --> save
-  MAKE my_game NOT sbloccare.            --> unlock
-  MAKE my_game NOT sbloccare_con.        --> unlock_with
-  MAKE my_game NOT scavare.              --> dig
-  MAKE my_game NOT scrivere.             --> write
-  MAKE my_game NOT seguire.              --> follow
-  MAKE my_game NOT spingere.             --> push
-  MAKE my_game NOT spingere_con.         --> push_with
-  MAKE my_game NOT spogliarsi.           --> undress
-  MAKE my_game NOT tagliare.             --> cut
-  MAKE my_game NOT tagliare_con.         --> cut_with
-  MAKE my_game NOT tirare.               --> pull
-  MAKE my_game NOT trovare.              --> find         (+ locate)
-  MAKE my_game NOT uccidere.             --> kill         (+ murder)
-  MAKE my_game NOT uccidere_con.         --> kill_with
-  MAKE my_game NOT usare.                --> 'use'
-  MAKE my_game NOT usare_con.            --> use_with
-  MAKE my_game NOT vendere.              --> sell
-  MAKE my_game NOT versare.              --> pour
-  MAKE my_game NOT versare_in.           --> pour_in
-  MAKE my_game NOT versare_su.           --> pour_on
+  MAKE mia_AT NOT abbandonare_partita.  --> 'quit'
+  MAKE mia_AT NOT andare_a.             --> go_to
+  MAKE mia_AT NOT aprire.               --> open
+  MAKE mia_AT NOT aprire_con.           --> open_with
+  MAKE mia_AT NOT aspettare.            --> wait         (+ z)
+  MAKE mia_AT NOT assaggiare.           --> taste        (+ lick)
+  MAKE mia_AT NOT attraversare.         --> climb_through
+  MAKE mia_AT NOT baciare.              --> kiss         (+ hug, embrace)
+  MAKE mia_AT NOT bere.                 --> drink
+  MAKE mia_AT NOT bloccare.             --> lock
+  MAKE mia_AT NOT bloccare_con.         --> lock_with
+  MAKE mia_AT NOT caricare_partita.     --> 'restore'
+  MAKE mia_AT NOT chiudere.             --> close        (+ shut)
+  MAKE mia_AT NOT chiudere_con.         --> close_with
+  MAKE mia_AT NOT comprare.             --> buy          (+ purchase)
+  MAKE mia_AT NOT consultare.           --> consult
+  MAKE mia_AT NOT danzare.              --> dance
+  MAKE mia_AT NOT dormire.              --> sleep        (+ rest)
+  MAKE mia_AT NOT entrare.              --> enter
+  MAKE mia_AT NOT esaminare.            --> examine      (+ check, inspect, observe, x)
+  MAKE mia_AT NOT gridare.              --> shout        (+ scream, yell)
+  MAKE mia_AT NOT indossare.            --> wear
+  MAKE mia_AT NOT inventariare.         --> i               (+ inv, inventory)
+  MAKE mia_AT NOT lasciare.             --> drop         (+ discard, dump, reject)
+  MAKE mia_AT NOT leggere.              --> read
+  MAKE mia_AT NOT liberare.             --> free         (+ release)
+  MAKE mia_AT NOT mangiare.             --> eat
+  MAKE mia_AT NOT modalità_breve.       --> brief
+  MAKE mia_AT NOT modalità_lunga.       --> verbose
+  MAKE mia_AT NOT mostrare.             --> 'show'       (+ reveal)
+  MAKE mia_AT NOT nuotare.              --> swim
+  MAKE mia_AT NOT nuotare_in.           --> swim_in
+  MAKE mia_AT NOT pregare.              --> pray
+  MAKE mia_AT NOT prendere.             --> take.        (+ carry, get, grab, hold, obtain)
+  MAKE mia_AT NOT prendere_da.          --> take_from.   (+ remove from)
+  MAKE mia_AT NOT pulire.               --> clean        (+ polish, wipe)
+  MAKE mia_AT NOT ricominciare_partita. --> 'restart'
+  MAKE mia_AT NOT rifare.               --> 'again'
+  MAKE mia_AT NOT rompere.              --> break        (+ destroy)
+  MAKE mia_AT NOT rompere_con.          --> break_with
+  MAKE mia_AT NOT saltare.              --> jump
+  MAKE mia_AT NOT saltare_in.           --> jump_in
+  MAKE mia_AT NOT saltare_su.           --> jump_on
+  MAKE mia_AT NOT salvare_partita.      --> save
+  MAKE mia_AT NOT sbloccare.            --> unlock
+  MAKE mia_AT NOT sbloccare_con.        --> unlock_with
+  MAKE mia_AT NOT scavare.              --> dig
+  MAKE mia_AT NOT scrivere.             --> write
+  MAKE mia_AT NOT seguire.              --> follow
+  MAKE mia_AT NOT spingere.             --> push
+  MAKE mia_AT NOT spingere_con.         --> push_with
+  MAKE mia_AT NOT spogliarsi.           --> undress
+  MAKE mia_AT NOT tagliare.             --> cut
+  MAKE mia_AT NOT tagliare_con.         --> cut_with
+  MAKE mia_AT NOT tirare.               --> pull
+  MAKE mia_AT NOT trovare.              --> find         (+ locate)
+  MAKE mia_AT NOT uccidere.             --> kill         (+ murder)
+  MAKE mia_AT NOT uccidere_con.         --> kill_with
+  MAKE mia_AT NOT usare.                --> 'use'
+  MAKE mia_AT NOT usare_con.            --> use_with
+  MAKE mia_AT NOT vendere.              --> sell
+  MAKE mia_AT NOT versare.              --> pour
+  MAKE mia_AT NOT versare_in.           --> pour_in
+  MAKE mia_AT NOT versare_su.           --> pour_on
 
 --# NOT YET TRANSLATED:
 
-  MAKE my_game NOT about.
-  MAKE my_game NOT answer.      -- (+ reply)
-  MAKE my_game NOT ask.         -- (+ enquire, inquire, interrogate)
-  MAKE my_game NOT ask_for.
-  MAKE my_game NOT attack.      -- (+ beat, fight, hit, punch)
-  MAKE my_game NOT attack_with.
-  MAKE my_game NOT bite.        -- (+ chew)
-  MAKE my_game NOT bruciare.     --> burn
-  MAKE my_game NOT bruciare_con. --> burn_with
-  MAKE my_game NOT catch.
-  MAKE my_game NOT climb.
-  MAKE my_game NOT climb_on.
-  MAKE my_game NOT credits.     -- (+ acknowledgments, author, copyright)
-  MAKE my_game NOT dive.
-  MAKE my_game NOT dive_in.
-  MAKE my_game NOT drive.
-  MAKE my_game NOT 'empty'.
-  MAKE my_game NOT empty_in.
-  MAKE my_game NOT empty_on.
-  MAKE my_game NOT 'exit'.
-  MAKE my_game NOT extinguish.  -- (+ put out, quench)
-  MAKE my_game NOT fill.
-  MAKE my_game NOT fill_with.
-  MAKE my_game NOT fire.
-  MAKE my_game NOT fire_at.
-  MAKE my_game NOT fix.         -- (+ mend, repair)
-  MAKE my_game NOT get_up.
-  MAKE my_game NOT get_off.
-  MAKE my_game NOT dare.
-  MAKE my_game NOT hint.        -- (+ hints)
-  MAKE my_game NOT kick.
-  MAKE my_game NOT knock.
-  MAKE my_game NOT lie_down.
-  MAKE my_game NOT lie_in.
-  MAKE my_game NOT lie_on.
-  MAKE my_game NOT lift.
-  MAKE my_game NOT light.       -- (+ lit)
-  MAKE my_game NOT listen0.
-  MAKE my_game NOT listen.
-  MAKE my_game NOT 'look'.      -- (+ gaze, peek)
-  MAKE my_game NOT look_at.
-  MAKE my_game NOT look_behind.
-  MAKE my_game NOT look_in.
-  MAKE my_game NOT look_out_of.
-  MAKE my_game NOT look_through.
-  MAKE my_game NOT look_under.
-  MAKE my_game NOT look_up.
-  MAKE my_game NOT 'no'.
-  MAKE my_game NOT 'notify'.
-  MAKE my_game NOT notify_on.
-  MAKE my_game NOT notify_off.
-  MAKE my_game NOT 'play'.
-  MAKE my_game NOT play_with.
-  MAKE my_game NOT pry.
-  MAKE my_game NOT pry_with.
-  MAKE my_game NOT put.         -- (+ lay, place)
-  MAKE my_game NOT put_against.
-  MAKE my_game NOT put_behind.
-  MAKE my_game NOT put_down.
-  MAKE my_game NOT put_in.      -- (+ insert)
-  MAKE my_game NOT put_near.
-  MAKE my_game NOT put_on.
-  MAKE my_game NOT put_under.
-  MAKE my_game NOT remove.
-  MAKE my_game NOT rub.
-  MAKE my_game NOT 'say'.
-  MAKE my_game NOT say_to.
-  MAKE my_game NOT 'score'.
-  MAKE my_game NOT scratch.
-  MAKE my_game NOT 'script'.
-  MAKE my_game NOT script_on.
-  MAKE my_game NOT script_off.
-  MAKE my_game NOT search.
-  MAKE my_game NOT shake.
-  MAKE my_game NOT shoot.       -- (at)
-  MAKE my_game NOT shoot_with.
-  MAKE my_game NOT sing.
-  MAKE my_game NOT sip.
-  MAKE my_game NOT sit.         -- (down)
-  MAKE my_game NOT sit_on.
-  MAKE my_game NOT smell0.
-  MAKE my_game NOT smell.
-  MAKE my_game NOT squeeze.
-  MAKE my_game NOT stand.       -- (up)
-  MAKE my_game NOT stand_on.
-  MAKE my_game NOT switch.
-  MAKE my_game NOT switch_on.
-  MAKE my_game NOT switch_off.
-  MAKE my_game NOT talk.
-  MAKE my_game NOT talk_to.     -- (+ speak)
-  MAKE my_game NOT tear.        -- (+ rip)
-  MAKE my_game NOT tell.        -- (+ enlighten, inform)
-  MAKE my_game NOT think.
-  MAKE my_game NOT think_about.
-  MAKE my_game NOT throw.
-  MAKE my_game NOT throw_at.
-  MAKE my_game NOT throw_in.
-  MAKE my_game NOT throw_to.
-  MAKE my_game NOT tie.
-  MAKE my_game NOT tie_to.
-  MAKE my_game NOT touch.       -- (+ feel)
-  MAKE my_game NOT touch_with.
-  MAKE my_game NOT turn.        -- (+ rotate)
-  MAKE my_game NOT turn_on.
-  MAKE my_game NOT turn_off.
-  MAKE my_game NOT yes.
+  MAKE mia_AT NOT about.
+  MAKE mia_AT NOT answer.      -- (+ reply)
+  MAKE mia_AT NOT ask.         -- (+ enquire, inquire, interrogate)
+  MAKE mia_AT NOT ask_for.
+  MAKE mia_AT NOT attack.      -- (+ beat, fight, hit, punch)
+  MAKE mia_AT NOT attack_with.
+  MAKE mia_AT NOT bite.        -- (+ chew)
+  MAKE mia_AT NOT bruciare.     --> burn
+  MAKE mia_AT NOT bruciare_con. --> burn_with
+  MAKE mia_AT NOT catch.
+  MAKE mia_AT NOT climb.
+  MAKE mia_AT NOT climb_on.
+  MAKE mia_AT NOT credits.     -- (+ acknowledgments, author, copyright)
+  MAKE mia_AT NOT dive.
+  MAKE mia_AT NOT dive_in.
+  MAKE mia_AT NOT drive.
+  MAKE mia_AT NOT 'empty'.
+  MAKE mia_AT NOT empty_in.
+  MAKE mia_AT NOT empty_on.
+  MAKE mia_AT NOT 'exit'.
+  MAKE mia_AT NOT extinguish.  -- (+ put out, quench)
+  MAKE mia_AT NOT fill.
+  MAKE mia_AT NOT fill_with.
+  MAKE mia_AT NOT fire.
+  MAKE mia_AT NOT fire_at.
+  MAKE mia_AT NOT fix.         -- (+ mend, repair)
+  MAKE mia_AT NOT get_up.
+  MAKE mia_AT NOT get_off.
+  MAKE mia_AT NOT dare.
+  MAKE mia_AT NOT hint.        -- (+ hints)
+  MAKE mia_AT NOT kick.
+  MAKE mia_AT NOT knock.
+  MAKE mia_AT NOT lie_down.
+  MAKE mia_AT NOT lie_in.
+  MAKE mia_AT NOT lie_on.
+  MAKE mia_AT NOT lift.
+  MAKE mia_AT NOT light.       -- (+ lit)
+  MAKE mia_AT NOT listen0.
+  MAKE mia_AT NOT listen.
+  MAKE mia_AT NOT 'look'.      -- (+ gaze, peek)
+  MAKE mia_AT NOT look_at.
+  MAKE mia_AT NOT look_behind.
+  MAKE mia_AT NOT look_in.
+  MAKE mia_AT NOT look_out_of.
+  MAKE mia_AT NOT look_through.
+  MAKE mia_AT NOT look_under.
+  MAKE mia_AT NOT look_up.
+  MAKE mia_AT NOT 'no'.
+  MAKE mia_AT NOT 'notify'.
+  MAKE mia_AT NOT notify_on.
+  MAKE mia_AT NOT notify_off.
+  MAKE mia_AT NOT 'play'.
+  MAKE mia_AT NOT play_with.
+  MAKE mia_AT NOT pry.
+  MAKE mia_AT NOT pry_with.
+  MAKE mia_AT NOT put.         -- (+ lay, place)
+  MAKE mia_AT NOT put_against.
+  MAKE mia_AT NOT put_behind.
+  MAKE mia_AT NOT put_down.
+  MAKE mia_AT NOT put_in.      -- (+ insert)
+  MAKE mia_AT NOT put_near.
+  MAKE mia_AT NOT put_on.
+  MAKE mia_AT NOT put_under.
+  MAKE mia_AT NOT remove.
+  MAKE mia_AT NOT rub.
+  MAKE mia_AT NOT 'say'.
+  MAKE mia_AT NOT say_to.
+  MAKE mia_AT NOT 'score'.
+  MAKE mia_AT NOT scratch.
+  MAKE mia_AT NOT 'script'.
+  MAKE mia_AT NOT script_on.
+  MAKE mia_AT NOT script_off.
+  MAKE mia_AT NOT search.
+  MAKE mia_AT NOT shake.
+  MAKE mia_AT NOT shoot.       -- (at)
+  MAKE mia_AT NOT shoot_with.
+  MAKE mia_AT NOT sing.
+  MAKE mia_AT NOT sip.
+  MAKE mia_AT NOT sit.         -- (down)
+  MAKE mia_AT NOT sit_on.
+  MAKE mia_AT NOT smell0.
+  MAKE mia_AT NOT smell.
+  MAKE mia_AT NOT squeeze.
+  MAKE mia_AT NOT stand.       -- (up)
+  MAKE mia_AT NOT stand_on.
+  MAKE mia_AT NOT switch.
+  MAKE mia_AT NOT switch_on.
+  MAKE mia_AT NOT switch_off.
+  MAKE mia_AT NOT talk.
+  MAKE mia_AT NOT talk_to.     -- (+ speak)
+  MAKE mia_AT NOT tear.        -- (+ rip)
+  MAKE mia_AT NOT tell.        -- (+ enlighten, inform)
+  MAKE mia_AT NOT think.
+  MAKE mia_AT NOT think_about.
+  MAKE mia_AT NOT throw.
+  MAKE mia_AT NOT throw_at.
+  MAKE mia_AT NOT throw_in.
+  MAKE mia_AT NOT throw_to.
+  MAKE mia_AT NOT tie.
+  MAKE mia_AT NOT tie_to.
+  MAKE mia_AT NOT touch.       -- (+ feel)
+  MAKE mia_AT NOT touch_with.
+  MAKE mia_AT NOT turn.        -- (+ rotate)
+  MAKE mia_AT NOT turn_on.
+  MAKE mia_AT NOT turn_off.
+  MAKE mia_AT NOT yes.
 
 END IF.
 
@@ -2114,7 +2114,7 @@ END EVENT.
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------
--- § X - Il Banner
+-- § X - L'Intestazione dell'Avventura (Banner)
 --------------------------------------------------------------------------------
 --//////////////////////////////////////////////////////////////////////////////
 --=============================================================================
@@ -2131,30 +2131,30 @@ END EVENT.
 -- debugger shows a smaller footprint for the 'banner' instance).
 --------------------------------------------------------------------------------
 
--- THE banner IsA DEFINITION_BLOCK --> Why?!
+-- THE banner IsA blocco_definizioni --> Why?!
 
-THE banner IsA LOCATION
+THE intestazione IsA LOCATION
 
     DESCRIPTION
 
-    "$p" STYLE alert. SAY titolo OF my_game. STYLE normal.
+    "$p" STYLE alert. SAY titolo OF mia_AT. STYLE normal.
 
-    IF sottotitolo OF my_game <> ""
-      THEN "$n" SAY sottotitolo OF my_game.
+    IF sottotitolo OF mia_AT <> ""
+      THEN "$n" SAY sottotitolo OF mia_AT.
       END IF.
 
-    "$n(C)" SAY autore OF my_game. "," SAY anno OF my_game. "."
+    "$n(C)" SAY autore OF mia_AT. "," SAY anno OF mia_AT. "."
 
     "$nProgrammed with the ALAN Interactive Fiction Language v3.0 beta5
     $nStandard Library v2.1"
 
-    IF versione OF my_game <> "0"
-      THEN "$nVersione" SAY versione OF my_game.
+    IF versione OF mia_AT <> "0"
+      THEN "$nVersione" SAY versione OF mia_AT.
       END IF.
 
     "$nTutti i diritti riservati."
 
-END THE banner.
+END THE intestazione.
 
 
 ---< Fine del File >---

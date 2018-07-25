@@ -1,14 +1,14 @@
--- "_newgame_ita.alan" v0.3.0 (2018/07/24) | Alan 3 beta5 | Std Lib v2.1
+-- "_newgame_ita.alan" v0.3.1 (2018/07/25) | Alan 3 beta5 | Std Lib v2.1
 --------------------------------------------------------------------------------
 --| Sorgente base standard per creare avventure con ALAN Italian library v2.1.
 --| Basato sul file "newgame.alan" della Standard Library 2.1)
 --------------------------------------------------------------------------------
 IMPORT 'libreria.i'.
 
-THE my_game IsA DEFINITION_BLOCK
-    -- (questo blocco ?obbligatorio in ogni avventura che usi la libreria!)
+THE mia_AT IsA blocco_definizioni
+    -- (questo blocco è obbligatorio in ogni avventura che usi la libreria!)
 
-    --> Modificare secondo necessit?
+    --> Modificare secondo necessità
     HAS titolo       "Avventura Senza Titolo".
     HAS sottotitolo  "Sottotiolo".
     HAS autore       "Autore Ignoto".
@@ -27,4 +27,4 @@ END THE.
 --------------------------------------------------------------------------------
 Start at start_loc.   --> Sostituisci "start_loc" con il nome che hai scelto per
                       --> la LOCATION iniziale qui sopra.
-DESCRIBE banner.
+DESCRIBE intestazione.

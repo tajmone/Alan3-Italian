@@ -11,14 +11,17 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/07/25 \(2\)](#20180725-2)
+- [2018/07/25 \(3\)](#20180725-3)
+    - [Library Instances](#library-instances)
     - [Library Classes](#library-classes)
+- [2018/07/25 \(2\)](#20180725-2)
+    - [Library Classes](#library-classes-1)
 - [2018/07/25 \(1\)](#20180725-1)
     - [Clothing Attributes](#clothing-attributes)
 - [2018/07/24 \(5\)](#20180724-5)
     - [Library Attributes](#library-attributes)
-    - [Library Classes](#library-classes-1)
-    - [Library Instances](#library-instances)
+    - [Library Classes](#library-classes-2)
+    - [Library Instances](#library-instances-1)
 - [2018/07/24 \(4\)](#20180724-4)
 - [2018/07/24 \(3\)](#20180724-3)
     - [Input Response Messages](#input-response-messages)
@@ -145,6 +148,37 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/25 (3)
+
+- [`lib_classi.i`][lib_classi] (v0.3.4)
+- [`lib_definizioni.i`][lib_definizioni] (v0.3.2)
+- [`lib_luoghi.i`][lib_luoghi] (v0.3.2)
+- [`lib_verbi.i`][lib_verbi] (v0.3.3)
+
+
+## Library Instances
+
+Translated library instances:
+
+|  English  |    Italian     |       Class        |
+|-----------|----------------|--------------------|
+| `my_game` | `mia_AT`       | `DEFINITION_BLOCK` |
+| `banner`  | `intestazione` | `LOCATION`         |
+
+
+## Library Classes
+
+Translated CLASSes:
+
+|      Class EN      |       Class IT       |    Type    |
+|--------------------|----------------------|------------|
+| `DEFINITION_BLOCK` | `blocco_definizioni` | `LOCATION` |
+
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/25 (2)
 

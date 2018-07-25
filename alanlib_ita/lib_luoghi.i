@@ -1,4 +1,4 @@
--- "lib_luoghi.i" v0.3.1 (2018/07/24)
+-- "lib_luoghi.i" v0.3.2 (2018/07/25)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -330,7 +330,7 @@ END ADD TO.
 -- NOTE: it is often a good idea to modify the 'examine' verb for the above objects.
 -- Here is an example for 'wall':
 
--- THE my_game IsA DEFINITION_BLOCK
+-- THE mia_AT IsA blocco_definizioni
 -- ...
 -- VERB examine
 --    CHECK ogg <> pareti
@@ -344,7 +344,7 @@ END ADD TO.
 --    ...
 -- END VERB.
 --
--- END THE my_game.
+-- END THE mia_AT.
 
 
 
@@ -387,7 +387,7 @@ EVERY luogo_buio IsA LOCATION
 
   DESCRIPTION
     CHECK THIS IS illuminato
-      ELSE SAY dark_loc_desc OF my_game.
+      ELSE SAY dark_loc_desc OF mia_AT.
 
 END EVERY luogo_buio.
 
@@ -411,7 +411,7 @@ THEN MAKE location OF hero NOT illuminato.
 
 
 EVENT light_off
-  SAY light_goes_off OF my_game.
+  SAY light_goes_off OF mia_AT.
 END EVENT.
 
 

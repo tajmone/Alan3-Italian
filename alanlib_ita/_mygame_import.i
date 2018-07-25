@@ -1,4 +1,4 @@
--- "_mygame_import.i" v0.3.1 (2018/07/24)
+-- "_mygame_import.i" v0.3.2 (2018/07/25)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -12,7 +12,7 @@
 --  * sitting    -> seduto
 --  * lying_down -> sdraiato
 --------------------------------------------------------------------------------
--- NOTA: Questo file andr?interamente rivisto a traduzione ultimata poich?non
+-- NOTA: Questo file andrà interamente rivisto a traduzione ultimata poiché non
 --       rispecchia i cambiamenti della traduzione!!!
 --------------------------------------------------------------------------------
 
@@ -94,7 +94,7 @@
 
 
 
-THE my_game IsA DEFINITION_BLOCK
+THE mia_AT IsA blocco_definizioni
 
 
 	-- attributes for the game banner; edit these to suit your own game:
@@ -409,7 +409,7 @@ THE my_game IsA DEFINITION_BLOCK
   -- c) Check della Locazione
   --    ---------------------
 
-  HAS check_locazione_illuminata "?troppo buio.".           -- (svariati verbi)
+  HAS check_locazione_illuminata "è troppo buio.".           -- (svariati verbi)
 
 
 	-- d) checks guarding against actions directed at the hero him-/herself
@@ -767,7 +767,7 @@ VERB drink
 								-- the action stops here if the container is not takeable.
 							ELSE
 								LOCATE recipiente OF liq IN hero.
-								SAY implicit_taking_message OF my_game.
+								SAY implicit_taking_message OF mia_AT.
 						END IF.		
 				END IF.
 				-- end of implicit taking.
@@ -808,7 +808,7 @@ VERB eat
 		-- implicit taking:
 		IF food NOT DIRECTLY IN hero
 			THEN LOCATE food IN hero.
-				SAY implicit_taking_message OF my_game.	
+				SAY implicit_taking_message OF mia_AT.	
 		END IF.
 		-- end of implicit taking.
 			
@@ -823,7 +823,7 @@ VERB 'empty'
 		-- implicit taking:
 		IF ogg NOT DIRECTLY IN hero
 			THEN LOCATE ogg IN hero.
-				SAY implicit_taking_message OF my_game.
+				SAY implicit_taking_message OF mia_AT.
 		END IF.									
 		-- end of implicit taking.
 
@@ -846,7 +846,7 @@ VERB empty_in, pour_in
 		-- implicit taking:
 		IF ogg NOT DIRECTLY IN hero
 			THEN LOCATE ogg IN hero.
-				SAY implicit_taking_message OF my_game.
+				SAY implicit_taking_message OF mia_AT.
 		END IF.									
 		-- end of implicit taking.
 
@@ -866,7 +866,7 @@ VERB empty_on, pour_on
 		-- implicit taking:
 		IF ogg NOT DIRECTLY IN hero
 			THEN LOCATE ogg IN hero.
-				SAY implicit_taking_message OF my_game.
+				SAY implicit_taking_message OF mia_AT.
 		END IF.									
 		-- end of implicit taking.
 
@@ -1034,7 +1034,7 @@ VERB give
 	DOES ONLY
 		-- implicit taking:
 		IF ogg NOT DIRECTLY IN hero
-			THEN  SAY implicit_taking_message OF my_game.
+			THEN  SAY implicit_taking_message OF mia_AT.
 				LOCATE ogg IN hero.
 		END IF.
 		-- end of implicit taking.
@@ -1862,7 +1862,7 @@ VERB throw
 		-- implicit taking:
 		IF proiettile NOT DIRECTLY IN hero
 			THEN LOCATE proiettile IN hero.
-				SAY implicit_taking_message OF my_game.
+				SAY implicit_taking_message OF mia_AT.
 		END IF.
 		-- end of implicit taking.			
 				
@@ -1891,7 +1891,7 @@ VERB throw_at
 				-- implicit taking:
 				IF proiettile NOT DIRECTLY IN hero
 					THEN LOCATE proiettile IN hero.
-					SAY implicit_taking_message OF my_game.
+					SAY implicit_taking_message OF mia_AT.
 				END IF.
 				-- end of implicit taking.
       	  				
@@ -1944,7 +1944,7 @@ VERB throw_to
 		-- implicit taking:
 		IF proiettile NOT DIRECTLY IN hero
 			THEN LOCATE proiettile IN hero.
-				SAY implicit_taking_message OF my_game.	
+				SAY implicit_taking_message OF mia_AT.	
 		END IF.
 		-- end of implicit taking.
 				
@@ -1961,7 +1961,7 @@ VERB throw_in
 		-- implicit taking:
 		IF proiettile NOT DIRECTLY IN hero
 			THEN LOCATE proiettile IN hero.
-				SAY implicit_taking_message OF my_game.	
+				SAY implicit_taking_message OF mia_AT.	
 		END IF.
 		-- end of implicit taking.
 
@@ -1991,7 +1991,7 @@ VERB tie_to
 				-- implicit taking:
 				IF ogg NOT DIRECTLY IN hero
 					THEN LOCATE ogg IN hero.
-						SAY implicit_taking_message OF my_game.
+						SAY implicit_taking_message OF mia_AT.
 				END IF.	
 				-- end of implicit taking.
 								
@@ -2187,7 +2187,7 @@ END VERB.
 
 
 
-END THE my_game.
+END THE mia_AT.
 
 
 -- end of file.

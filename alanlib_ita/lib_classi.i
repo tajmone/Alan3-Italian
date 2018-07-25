@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.3.3 (2018/07/25)
+-- "lib_classi.i" v0.3.4 (2018/07/25)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -309,8 +309,8 @@ END ADD.
 
 THE abbigliamento IsA ENTITY
   CONTAINER TAKING indumento.
-    HEADER SAY hero_worn_header OF my_game.
-    ELSE SAY hero_worn_else OF my_game.
+    HEADER SAY hero_worn_header OF mia_AT.
+    ELSE SAY hero_worn_else OF mia_AT.
 END THE.
 
 
@@ -414,7 +414,7 @@ EVERY indumento IsA OBJECT
     VERB wear
 
     CHECK  genere OF THIS =  genere OF hero OR  genere OF THIS = 0
-      ELSE SAY check_clothing_sex OF my_game.
+      ELSE SAY check_clothing_sex OF mia_AT.
 
     DOES ONLY
 
@@ -598,9 +598,9 @@ END VERB.
 
 VERB remove
   CHECK THIS IN abbigliamento
-    ELSE SAY check_obj_in_worn OF my_game.
+    ELSE SAY check_obj_in_worn OF mia_AT.
   AND CURRENT LOCATION IS illuminato
-    ELSE SAY check_locazione_illuminata OF my_game.
+    ELSE SAY check_locazione_illuminata OF mia_AT.
 
   DOES ONLY
 
@@ -927,28 +927,28 @@ EVERY dispositivo IsA OBJECT
     CHECK THIS IS NOT acceso
       ELSE
         IF THIS IS NOT plurale
-          THEN SAY check_device_not_on_sg OF my_game.
-          ELSE SAY check_device_not_on_pl OF my_game.
+          THEN SAY check_device_not_on_sg OF mia_AT.
+          ELSE SAY check_device_not_on_pl OF mia_AT.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF my_game.
+      ELSE SAY check_locazione_illuminata OF mia_AT.
     AND THIS IS raggiungibile AND THIS IS NOT distante
       ELSE
         IF THIS IS NOT raggiungibile
           THEN
             IF THIS IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF my_game.
-              ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
+              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
+              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
             END IF.
         ELSIF THIS IS distante
           THEN
             IF THIS IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF my_game.
-              ELSE SAY check_obj_not_distant_pl OF my_game.
+              THEN SAY check_obj_not_distant_sg OF mia_AT.
+              ELSE SAY check_obj_not_distant_pl OF mia_AT.
             END IF.
         END IF.
     AND THIS IS NOT rotto
-      ELSE SAY check_obj_not_broken OF my_game.
+      ELSE SAY check_obj_not_broken OF mia_AT.
     DOES ONLY
       "You turn on" SAY THE THIS. "."
       MAKE THIS acceso.
@@ -959,24 +959,24 @@ EVERY dispositivo IsA OBJECT
     CHECK THIS IS acceso
       ELSE
          IF THIS IS NOT plurale
-          THEN SAY check_device_on_sg OF my_game.
-          ELSE SAY check_device_on_pl OF my_game.
+          THEN SAY check_device_on_sg OF mia_AT.
+          ELSE SAY check_device_on_pl OF mia_AT.
          END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF my_game.
+      ELSE SAY check_locazione_illuminata OF mia_AT.
     AND THIS IS raggiungibile AND THIS IS NOT distante
       ELSE
         IF THIS IS NOT raggiungibile
           THEN
             IF THIS IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF my_game.
-              ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
+              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
+              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
             END IF.
         ELSIF THIS IS distante
           THEN
             IF THIS IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF my_game.
-              ELSE SAY check_obj_not_distant_pl OF my_game.
+              THEN SAY check_obj_not_distant_sg OF mia_AT.
+              ELSE SAY check_obj_not_distant_pl OF mia_AT.
             END IF.
         END IF.
     DOES ONLY
@@ -990,24 +990,24 @@ EVERY dispositivo IsA OBJECT
 
   VERB switch
     CHECK CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF my_game.
+      ELSE SAY check_locazione_illuminata OF mia_AT.
     AND THIS IS raggiungibile AND THIS IS NOT distante
       ELSE
         IF THIS IS NOT raggiungibile
           THEN
             IF THIS IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF my_game.
-              ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
+              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
+              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
             END IF.
         ELSIF THIS IS distante
           THEN
             IF THIS IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF my_game.
-              ELSE SAY check_obj_not_distant_pl OF my_game.
+              THEN SAY check_obj_not_distant_sg OF mia_AT.
+              ELSE SAY check_obj_not_distant_pl OF mia_AT.
             END IF.
         END IF.
     AND THIS IS NOT rotto
-      ELSE SAY check_obj_not_broken OF my_game.
+      ELSE SAY check_obj_not_broken OF mia_AT.
     DOES ONLY
       IF THIS IS acceso
         THEN "You switch off" SAY THE THIS. "."
@@ -1286,11 +1286,11 @@ EVERY fonte_di_luce IsA OBJECT
     CHECK THIS IS NOT illuminato
       ELSE
         IF THIS IS NOT plurale
-          THEN SAY check_lightsource_not_lit_sg OF my_game.
-          ELSE SAY check_lightsource_not_lit_pl OF my_game.
+          THEN SAY check_lightsource_not_lit_sg OF mia_AT.
+          ELSE SAY check_lightsource_not_lit_pl OF mia_AT.
         END IF.
     AND THIS IS NOT rotto
-      ELSE SAY check_obj_not_broken OF my_game.
+      ELSE SAY check_obj_not_broken OF mia_AT.
     DOES ONLY
       IF THIS IS naturale
         THEN "You light" SAY THE THIS. "."
@@ -1305,8 +1305,8 @@ EVERY fonte_di_luce IsA OBJECT
     CHECK THIS IS illuminato
       ELSE
         IF THIS IS NOT plurale
-          THEN SAY check_lightsource_lit_sg OF my_game.
-          ELSE SAY check_lightsource_lit_pl OF my_game.
+          THEN SAY check_lightsource_lit_sg OF mia_AT.
+          ELSE SAY check_lightsource_lit_pl OF mia_AT.
         END IF.
     DOES ONLY "You extinguish" SAY THE THIS. "."
       MAKE THIS NOT illuminato.
@@ -1317,17 +1317,17 @@ EVERY fonte_di_luce IsA OBJECT
     CHECK THIS IS NOT naturale
       ELSE
         IF THIS IS NOT plurale
-          THEN SAY check_obj_suitable_on_sg OF my_game.
-          ELSE SAY check_obj_suitable_on_pl OF my_game.
+          THEN SAY check_obj_suitable_on_sg OF mia_AT.
+          ELSE SAY check_obj_suitable_on_pl OF mia_AT.
         END IF.
     AND THIS IS NOT illuminato
       ELSE
         IF THIS IS NOT plurale
-          THEN SAY check_lightsource_not_lit_sg OF my_game.
-          ELSE SAY check_lightsource_not_lit_pl OF my_game.
+          THEN SAY check_lightsource_not_lit_sg OF mia_AT.
+          ELSE SAY check_lightsource_not_lit_pl OF mia_AT.
         END IF.
     AND THIS IS NOT rotto
-      ELSE SAY check_obj_not_broken OF my_game.
+      ELSE SAY check_obj_not_broken OF mia_AT.
     DOES ONLY
       "You turn on" SAY THE THIS. "."
       MAKE THIS illuminato.
@@ -1339,14 +1339,14 @@ EVERY fonte_di_luce IsA OBJECT
     CHECK THIS IS NOT naturale
       ELSE
         IF THIS IS NOT plurale
-          THEN SAY check_obj_suitable_off_sg OF my_game.
-          ELSE SAY check_obj_suitable_off_pl OF my_game.
+          THEN SAY check_obj_suitable_off_sg OF mia_AT.
+          ELSE SAY check_obj_suitable_off_pl OF mia_AT.
         END IF.
     AND THIS IS illuminato
       ELSE
         IF THIS IS NOT plurale
-          THEN SAY check_lightsource_lit_sg OF my_game.
-          ELSE SAY check_lightsource_lit_sg OF my_game.
+          THEN SAY check_lightsource_lit_sg OF mia_AT.
+          ELSE SAY check_lightsource_lit_sg OF mia_AT.
         END IF.
 
     DOES ONLY
@@ -1364,17 +1364,17 @@ EVERY fonte_di_luce IsA OBJECT
     CHECK THIS IS NOT naturale
       ELSE
         IF THIS IS NOT plurale
-          THEN SAY check_lightsource_switchable_sg OF my_game.
-          ELSE SAY check_lightsource_switchable_pl OF my_game.
+          THEN SAY check_lightsource_switchable_sg OF mia_AT.
+          ELSE SAY check_lightsource_switchable_pl OF mia_AT.
         END IF.
     AND THIS IS raggiungibile
       ELSE
         IF THIS IS NOT plurale
-          THEN SAY ogg1_non_raggiungibile_sg OF my_game.
-          ELSE SAY ogg1_non_raggiungibile_pl OF my_game.
+          THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
+          ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
         END IF.
     AND THIS IS NOT rotto
-      ELSE SAY check_obj_not_broken OF my_game.
+      ELSE SAY check_obj_not_broken OF mia_AT.
     DOES ONLY
       IF THIS IS illuminato
         THEN "You switch off" SAY THE THIS. "."
@@ -1511,7 +1511,7 @@ EVERY liquido IsA OBJECT
 -- @PRENDI -> @TAKE (VERB) => LIQUID
   VERB prendi
     CHECK recipiente OF THIS NOT IN hero
-      ELSE SAY check_obj_not_in_hero2 OF my_game.
+      ELSE SAY check_obj_not_in_hero2 OF mia_AT.
     DOES ONLY
       IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT prendibile
         THEN "You can't carry" SAY THE THIS. "around in your bare hands."
@@ -1524,7 +1524,7 @@ EVERY liquido IsA OBJECT
   VERB prendi_da
      WHEN ogg
     CHECK detentore <> recipiente OF THIS
-      ELSE SAY check_liquid_vessel_not_cont OF my_game.
+      ELSE SAY check_liquid_vessel_not_cont OF mia_AT.
       -- the above is triggered when the player types for example
       -- >take juice from bottle   -- (when the juice is in the bottle)
     DOES ONLY

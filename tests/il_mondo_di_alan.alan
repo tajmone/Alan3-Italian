@@ -1,10 +1,10 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione v0.3.2 (2018/07/25)
+--  versione v0.3.3 (2018/07/25)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
-THE my_game IsA DEFINITION_BLOCK
+THE mia_AT IsA blocco_definizioni
   ------------------------------------------------------------------------------
   HAS       titolo  "Il Mondo di Alan".
   HAS  sottotitolo  "Una demo per testare ALAN Standar Library Italian".
@@ -376,4 +376,4 @@ END THE commessa.
 
 --------------------------------------------------------------------------------
 Start at pzzaIF.
-DESCRIBE banner.
+DESCRIBE intestazione.
