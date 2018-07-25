@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/25](#20180725)
+    - [Clothing Attributes](#clothing-attributes)
 - [2018/07/24 \(5\)](#20180724-5)
     - [Library Attributes](#library-attributes)
     - [Library Classes](#library-classes)
@@ -141,6 +143,31 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/25
+
+- [`lib_classi.i`][lib_classi] (v0.3.2)
+
+
+## Clothing Attributes
+
+Translated library attributes:
+
+|   English    |   Italian    |   Type  |
+|--------------|--------------|---------|
+| `sex`        | `genere`     | numeric |
+| `botcover`   | `val_gambe`  | numeric |
+| `feetcover`  | `val_piedi`  | numeric |
+| `handscover` | `val_mani`   | numeric |
+| `headcover`  | `val_testa`  | numeric |
+| `topcover`   | `val_tronco` | numeric |
+
+
+<!-- 
+ -->
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/24 (5)
 

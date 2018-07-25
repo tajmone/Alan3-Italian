@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.3.1 (2018/07/24)
+-- "lib_classi.i" v0.3.2 (2018/07/25)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -327,13 +327,13 @@ EVERY indumento IsA OBJECT
 
   IS indossabile.
 
-  IS sex 0.
+  IS  genere 0.
 
-  IS headcover 0.
-  IS handscover 0.
-  IS feetcover 0.
-  IS topcover 0.
-  IS botcover 0.
+  HAS val_testa  0.
+  HAS val_mani   0.
+  HAS val_piedi  0.
+  HAS val_tronco 0.
+  HAS val_gambe  0.
 
   IS NOT indossato. -- not in the 'wearing' set of any actor; this attribute
                     -- is used internally in the library; ignore
@@ -413,7 +413,7 @@ EVERY indumento IsA OBJECT
 
     VERB wear
 
-    CHECK sex OF THIS = sex OF hero OR sex OF THIS = 0
+    CHECK  genere OF THIS =  genere OF hero OR  genere OF THIS = 0
       ELSE SAY check_clothing_sex OF my_game.
 
     DOES ONLY
@@ -458,7 +458,8 @@ EVERY indumento IsA OBJECT
 --------------------------------------------------------------------
 
 
-    IF topcover OF THIS <> 0 AND topcover OF THIS <= SUM OF topcover DIRECTLY IN abbigliamento
+    IF val_tronco OF THIS <> 0 AND
+       val_tronco OF THIS <= SUM OF val_tronco DIRECTLY IN abbigliamento
       THEN
         INCREASE wear_flag OF hero BY 5.
     END IF.
@@ -472,19 +473,22 @@ EVERY indumento IsA OBJECT
     --IF THIS IN tempworn
       --THEN
 
-    IF handscover OF THIS <> 0 AND handscover OF THIS <= SUM OF handscover DIRECTLY IN abbigliamento
+    IF val_mani OF THIS <> 0 AND
+       val_mani OF THIS <= SUM OF val_mani DIRECTLY IN abbigliamento
       THEN
         INCREASE wear_flag OF hero BY 5.
     END IF.
 
 
-    IF feetcover OF THIS <> 0 AND feetcover OF THIS <= SUM OF feetcover DIRECTLY IN abbigliamento
+    IF val_piedi OF THIS <> 0 AND
+       val_piedi OF THIS <= SUM OF val_piedi DIRECTLY IN abbigliamento
       THEN
         INCREASE wear_flag OF hero BY 5.
     END IF.
 
 
-    IF headcover OF THIS <> 0 AND headcover OF THIS <= SUM OF headcover DIRECTLY IN abbigliamento
+    IF val_testa OF THIS <> 0 AND
+       val_testa OF THIS <= SUM OF val_testa DIRECTLY IN abbigliamento
       THEN
         INCREASE wear_flag OF hero BY 5.
     END IF.
@@ -498,9 +502,9 @@ EVERY indumento IsA OBJECT
 --------------------------------------------------------------------
 
 
-    SET tempcovered OF hero TO SUM OF botcover DIRECTLY IN abbigliamento.
+    SET tempcovered OF hero TO SUM OF val_gambe DIRECTLY IN abbigliamento.
 
-    IF tempcovered OF hero >63 and botcover OF THIS < 33
+    IF tempcovered OF hero >63 AND val_gambe OF THIS < 33
       THEN
         SET tempcovered OF hero TO tempcovered OF hero -64.
     END IF.
@@ -516,7 +520,8 @@ EVERY indumento IsA OBJECT
 --------------------------------------------------------------------
 
 
-    IF tempcovered OF hero >31 AND botcover OF THIS < 16 and botcover OF THIS <> 4
+    IF tempcovered OF hero >31 AND
+       val_gambe OF THIS < 16 AND val_gambe OF THIS <> 4
       THEN
         SET tempcovered OF hero TO tempcovered OF hero -32.
     END IF.
@@ -529,7 +534,7 @@ EVERY indumento IsA OBJECT
 --------------------------------------------------------------------
 
 
-    IF tempcovered OF hero >15 AND botcover OF THIS > 16
+    IF tempcovered OF hero >15 AND val_gambe OF THIS > 16
       THEN
         SET tempcovered OF hero TO tempcovered OF hero +16.
     END IF.
@@ -540,7 +545,8 @@ EVERY indumento IsA OBJECT
 --------------------------------------------------------------------
 
 
-    IF botcover OF THIS <> 0  AND botcover OF THIS <= tempcovered OF hero
+    IF val_gambe OF THIS <> 0 AND
+       val_gambe OF THIS <= tempcovered OF hero
       THEN
         INCREASE wear_flag OF hero BY 5.
     END IF.
@@ -613,9 +619,10 @@ VERB remove
 --------------------------------------------------------------------
 
 
-  SET tempcovered OF hero TO SUM OF topcover DIRECTLY IN abbigliamento /2.
-  IF topcover OF THIS <> 0 AND topcover OF THIS < tempcovered OF hero
-     THEN
+  SET tempcovered OF hero TO SUM OF val_tronco DIRECTLY IN abbigliamento /2.
+    IF val_tronco OF THIS <> 0 AND
+     val_tronco OF THIS < tempcovered OF hero
+    THEN
       INCREASE wear_flag OF hero BY 1.
   END IF.
 
@@ -625,22 +632,25 @@ VERB remove
 --------------------------------------------------------------------
 
 
-  SET tempcovered OF hero TO SUM OF handscover DIRECTLY IN abbigliamento /2.
-  IF handscover OF THIS <> 0 AND handscover OF THIS < tempcovered OF hero
+  SET tempcovered OF hero TO SUM OF val_mani DIRECTLY IN abbigliamento /2.
+    IF val_mani OF THIS <> 0 AND
+     val_mani OF THIS < tempcovered OF hero
     THEN
       INCREASE wear_flag OF hero BY 1.
   END IF.
 
 
-  SET tempcovered OF hero TO SUM OF feetcover DIRECTLY IN abbigliamento /2.
-  IF feetcover OF THIS <> 0 AND feetcover OF THIS < tempcovered OF hero
+  SET tempcovered OF hero TO SUM OF val_piedi DIRECTLY IN abbigliamento /2.
+  IF val_piedi OF THIS <> 0 AND
+     val_piedi OF THIS < tempcovered OF hero
     THEN
       INCREASE wear_flag OF hero BY 1.
   END IF.
 
 
-  SET tempcovered OF hero TO SUM OF headcover DIRECTLY IN abbigliamento /2.
-  IF headcover OF THIS <> 0 AND headcover OF THIS < tempcovered OF hero
+  SET tempcovered OF hero TO SUM OF val_testa DIRECTLY IN abbigliamento /2.
+  IF val_testa OF THIS <> 0 AND
+     val_testa OF THIS < tempcovered OF hero
     THEN
       INCREASE wear_flag OF hero BY 1.
   END IF.
@@ -652,7 +662,7 @@ VERB remove
 --------------------------------------------------------------------
 
 
-  SET tempcovered OF hero TO SUM OF botcover DIRECTLY IN abbigliamento.
+  SET tempcovered OF hero TO SUM OF val_gambe DIRECTLY IN abbigliamento.
   IF tempcovered OF hero >63
     THEN
       SET tempcovered OF hero TO tempcovered OF hero -64.
@@ -666,7 +676,7 @@ VERB remove
 --------------------------------------------------------------------
 
 
-  IF tempcovered OF hero >31 and botcover OF THIS <>4
+  IF tempcovered OF hero >31 AND val_gambe OF THIS <>4
     THEN
       SET tempcovered OF hero TO tempcovered OF hero -32.
   END IF.
@@ -678,7 +688,8 @@ VERB remove
 
 
   SET tempcovered OF hero TO tempcovered OF hero /2.
-  IF botcover OF THIS <> 0 AND botcover OF THIS < tempcovered OF hero
+  IF val_gambe OF THIS <> 0 AND
+     val_gambe OF THIS < tempcovered OF hero
     THEN
       INCREASE wear_flag OF hero BY 1.
   END IF.
@@ -715,7 +726,7 @@ END EVERY.
 ADD TO EVERY ACTOR
   IS tempcovered 0.
   IS wear_flag 0.
-  IS sex 0.
+  IS genere 0.
 END ADD TO.
 
 
@@ -774,21 +785,21 @@ END EVENT.
 
 
 -- THE jacket IsA CLOTHING AT lobby
---   IS topcover 32.
+--   IS val_tronco 32.
 -- END THE.
 
 
 -- use IN to refer to containers:
 
 -- THE jeans IsA CLOTHING IN wardrobe
---   IS botcover 16.
+--   IS val_gambe 16.
 -- END THE.
 
 
 -- IN worn = worn by the player character (hero):
 
 -- THE hat IsA CLOTHING IN hero   -- declaring the initial location is optional
---   IS headcover 2.
+--   IS val_testa 2.
 -- END THE.
 
 -- THE hero IsA ACTOR
@@ -2488,6 +2499,4 @@ END EVERY.
 
 
 
--- end of file.
-
-
+---< Fine del File >---
