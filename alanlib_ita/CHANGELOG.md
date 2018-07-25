@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/25 \(5\)](#20180725-5)
+    - [Verb Restriction Attributes](#verb-restriction-attributes)
 - [2018/07/25 \(4\)](#20180725-4)
 - [2018/07/25 \(3\)](#20180725-3)
     - [Library Instances](#library-instances)
@@ -130,9 +132,9 @@ Status: Alpha stage.
     - [Verb: `pray`](#verb-pray)
     - [Verb: `break`](#verb-break)
     - [Verb: `break_with`](#verb-break_with)
-    - [Verb Restriction Attributes](#verb-restriction-attributes)
-- [2018/05/22 \(2\)](#20180522-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-1)
+- [2018/05/22 \(2\)](#20180522-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
 - [2018/05/22 \(1\)](#20180522-1)
     - [Verb: `undress`](#verb-undress)
 - [2018/05/19](#20180519)
@@ -149,6 +151,34 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/25 (5)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.3.3)
+- [`lib_verbi.i`][lib_verbi] (v0.3.4)
+
+
+## Verb Restriction Attributes
+
+Translated `my_game` attributes for verb restrictions:
+
+|    English    |    Italian    |
+|---------------|---------------|
+| `'empty'`     | `svuotare`    |
+| `dive_in`     | `tuffarsi_in` |
+| `dive`        | `tuffarsi`    |
+| `drive`       | `guidare`     |
+| `empty_in`    | `svuotare_in` |
+| `empty_on`    | `svuotare_su` |
+| `knock`       | `bussare`     |
+| `sing`        | `cantare`     |
+| `think_about` | `pensare_a`   |
+| `think`       | `pensare`     |
+
+
+<!---------------------------------------------------------------------------->
+
+
 
 # 2018/07/25 (4)
 

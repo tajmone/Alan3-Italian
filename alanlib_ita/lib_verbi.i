@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.3.3 (2018/07/25)
+-- "lib_verbi.i" v0.3.4 (2018/07/25)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -4016,7 +4016,7 @@ SYNTAX dive = dive.
 
 
 VERB dive
-  CHECK mia_AT CAN dive
+  CHECK mia_AT CAN tuffarsi
     ELSE SAY azione_bloccata OF mia_AT.
   AND CURRENT LOCATION IS illuminato
     ELSE SAY check_locazione_illuminata OF mia_AT.
@@ -4058,7 +4058,7 @@ SYNTAX dive_in = dive 'in' (liq)
 
 ADD TO EVERY OBJECT
   VERB dive_in
-    CHECK mia_AT CAN dive_in
+    CHECK mia_AT CAN tuffarsi_in
       ELSE SAY azione_bloccata OF mia_AT.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF mia_AT.
@@ -4107,7 +4107,7 @@ SYNTAX drive = drive (veicolo)
 
 ADD TO EVERY OBJECT
   VERB drive
-    CHECK mia_AT CAN drive
+    CHECK mia_AT CAN guidare
       ELSE SAY azione_bloccata OF mia_AT.
     AND veicolo IS esaminabile
       ELSE
@@ -4206,7 +4206,7 @@ SYNTAX 'empty' = 'empty' (ogg)
 
 ADD TO EVERY OBJECT
   VERB 'empty', pour
-    CHECK mia_AT CAN 'empty' AND mia_AT CAN versare
+    CHECK mia_AT CAN svuotare AND mia_AT CAN versare
       ELSE SAY azione_bloccata OF mia_AT.
     AND ogg IS prendibile
       ELSE SAY check_obj_takeable OF mia_AT.
@@ -4320,7 +4320,7 @@ pour_in = pour (ogg) 'in' (cont)
 ADD TO EVERY OBJECT
   VERB empty_in, pour_in
     WHEN ogg
-      CHECK mia_AT CAN empty_in AND mia_AT CAN versare_in
+      CHECK mia_AT CAN svuotare_in AND mia_AT CAN versare_in
         ELSE SAY azione_bloccata OF mia_AT.
       AND ogg <> cont
         ELSE SAY check_obj_not_obj2_in OF mia_AT.
@@ -4449,7 +4449,7 @@ SYNTAX empty_on = 'empty' (ogg) 'on' (superficie)
 ADD TO EVERY THING
   VERB empty_on, pour_on
       WHEN ogg
-      CHECK mia_AT CAN empty_on AND mia_AT CAN versare_su
+      CHECK mia_AT CAN svuotare_su AND mia_AT CAN versare_su
         ELSE SAY azione_bloccata OF mia_AT.
       AND ogg <> superficie
         ELSE SAY check_obj_not_obj2_on OF mia_AT.
@@ -5590,7 +5590,7 @@ SYNTAX knock = knock 'on' (ogg)
 
 ADD TO EVERY OBJECT
   VERB knock
-    CHECK mia_AT CAN knock
+    CHECK mia_AT CAN bussare
       ELSE SAY azione_bloccata OF mia_AT.
     AND ogg IS esaminabile
       ELSE
@@ -7774,7 +7774,7 @@ SYNONYMS hum, whistle = sing.
 
 
 VERB sing
-  CHECK mia_AT CAN sing
+  CHECK mia_AT CAN cantare
     ELSE SAY azione_bloccata OF mia_AT.
   DOES
         "You $v a little tune."
@@ -8554,7 +8554,7 @@ SYNTAX think = think.
 SYNONYMS ponder, meditate, reflect = think.
 
 VERB think
-  CHECK mia_AT CAN think
+  CHECK mia_AT CAN pensare
     ELSE SAY azione_bloccata OF mia_AT.
   DOES
     "Nothing helpful comes to your mind."
@@ -8584,7 +8584,7 @@ SYNTAX think_about = think 'about' (argomento)!
 
 ADD TO EVERY THING
   VERB think_about
-    CHECK mia_AT CAN think_about
+    CHECK mia_AT CAN pensare_a
       ELSE SAY azione_bloccata OF mia_AT.
     DOES
       "Nothing helpful comes to your mind."
