@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.3.3 (2018/07/25)
+-- "lib_definizioni.i" v0.3.4 (2018/07/25)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1151,6 +1151,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN dormire.                  --> sleep        (+ rest)
   CAN entrare.                  --> enter
   CAN esaminare.                --> examine      (+ check, inspect, observe, x)
+  CAN giocare_con.              --> play_with
   CAN gridare.                  --> shout        (+ scream, yell)
   CAN guidare.                  --> drive
   CAN indossare.                --> wear
@@ -1186,6 +1187,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN spingere.                 --> push
   CAN spingere_con.             --> push_with
   CAN spogliarsi.               --> undress
+  CAN suonare.                  --> play
   CAN svuotare.                 --> 'empty'
   CAN svuotare_in.              --> empty_in
   CAN svuotare_su.              --> empty_on
@@ -1246,8 +1248,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN 'notify'.
   CAN notify_on.
   CAN notify_off.
-  CAN 'play'.
-  CAN play_with.
   CAN pry.
   CAN pry_with.
   CAN put.         -- (+ lay, place)
@@ -1355,6 +1355,7 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT dormire.                  --> sleep        (+ rest)
   MAKE mia_AT entrare.                  --> enter
   MAKE mia_AT esaminare.                --> examine      (+ check, inspect, observe, x)
+  MAKE mia_AT giocare_con.              --> play_with
   MAKE mia_AT gridare.                  --> shout        (+ scream, yell)
   MAKE mia_AT guidare.                  --> drive
   MAKE mia_AT indossare.                --> wear
@@ -1390,6 +1391,7 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT spingere.                 --> push
   MAKE mia_AT spingere_con.             --> push_with
   MAKE mia_AT spogliarsi.               --> undress
+  MAKE mia_AT suonare.                  --> play
   MAKE mia_AT svuotare.                 --> 'empty'
   MAKE mia_AT svuotare_in.              --> empty_in
   MAKE mia_AT svuotare_su.              --> empty_on
@@ -1450,8 +1452,6 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT 'notify'.
   MAKE mia_AT notify_on.
   MAKE mia_AT notify_off.
-  MAKE mia_AT 'play'.
-  MAKE mia_AT play_with.
   MAKE mia_AT pry.
   MAKE mia_AT pry_with.
   MAKE mia_AT put.             -- (+ lay, place)
@@ -1569,6 +1569,7 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT dormire.                  --> sleep        (+ rest)
   MAKE mia_AT NOT entrare.                  --> enter
   MAKE mia_AT     esaminare.                --> examine      (+ check, inspect, observe, x)
+  MAKE mia_AT NOT giocare_con.              --> play_with
   MAKE mia_AT NOT gridare.                  --> shout        (+ scream, yell)
   MAKE mia_AT NOT guidare.                  --> drive
   MAKE mia_AT NOT indossare.                --> wear
@@ -1604,6 +1605,7 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT spingere.                 --> push
   MAKE mia_AT NOT spingere_con.             --> push_with
   MAKE mia_AT NOT spogliarsi.               --> undress
+  MAKE mia_AT NOT suonare.                  --> play
   MAKE mia_AT NOT svuotare.                 --> 'empty'
   MAKE mia_AT NOT svuotare_in.              --> empty_in
   MAKE mia_AT NOT svuotare_su.              --> empty_on
@@ -1666,8 +1668,6 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT 'notify'.
   MAKE mia_AT notify_on.
   MAKE mia_AT notify_off.
-  MAKE mia_AT NOT 'play'.
-  MAKE mia_AT NOT play_with.
   MAKE mia_AT NOT pry.
   MAKE mia_AT NOT pry_with.
   MAKE mia_AT NOT put.         -- (+ lay, place)
@@ -1769,6 +1769,7 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT dormire.                  --> sleep        (+ rest)
   MAKE mia_AT NOT entrare.                  --> enter
   MAKE mia_AT NOT esaminare.                --> examine      (+ check, inspect, observe, x)
+  MAKE mia_AT NOT giocare_con.              --> play_with
   MAKE mia_AT NOT gridare.                  --> shout        (+ scream, yell)
   MAKE mia_AT NOT guidare.                  --> drive
   MAKE mia_AT NOT indossare.                --> wear
@@ -1804,6 +1805,7 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT spingere.                 --> push
   MAKE mia_AT NOT spingere_con.             --> push_with
   MAKE mia_AT NOT spogliarsi.               --> undress
+  MAKE mia_AT NOT suonare.                  --> play
   MAKE mia_AT NOT svuotare.                 --> 'empty'
   MAKE mia_AT NOT svuotare_in.              --> empty_in
   MAKE mia_AT NOT svuotare_su.              --> empty_on
@@ -1866,8 +1868,6 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT 'notify'.
   MAKE mia_AT notify_on.
   MAKE mia_AT notify_off.
-  MAKE mia_AT NOT 'play'.
-  MAKE mia_AT NOT play_with.
   MAKE mia_AT NOT pry.
   MAKE mia_AT NOT pry_with.
   MAKE mia_AT NOT put.         -- (+ lay, place)
@@ -1930,82 +1930,84 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   THEN                                  -- like 'save' and 'quit'.
 
 
-  MAKE mia_AT NOT abbandonare_partita.  --> 'quit'
-  MAKE mia_AT NOT andare_a.             --> go_to
-  MAKE mia_AT NOT aprire.               --> open
-  MAKE mia_AT NOT aprire_con.           --> open_with
-  MAKE mia_AT NOT aspettare.            --> wait         (+ z)
-  MAKE mia_AT NOT assaggiare.           --> taste        (+ lick)
-  MAKE mia_AT NOT attraversare.         --> climb_through
-  MAKE mia_AT NOT baciare.              --> kiss         (+ hug, embrace)
-  MAKE mia_AT NOT bere.                 --> drink
-  MAKE mia_AT NOT bloccare.             --> lock
-  MAKE mia_AT NOT bloccare_con.         --> lock_with
-  MAKE mia_AT NOT bruciare.             --> burn
-  MAKE mia_AT NOT bruciare_con.         --> burn_with
+  MAKE mia_AT NOT abbandonare_partita.      --> 'quit'
+  MAKE mia_AT NOT andare_a.                 --> go_to
+  MAKE mia_AT NOT aprire.                   --> open
+  MAKE mia_AT NOT aprire_con.               --> open_with
+  MAKE mia_AT NOT aspettare.                --> wait         (+ z)
+  MAKE mia_AT NOT assaggiare.               --> taste        (+ lick)
+  MAKE mia_AT NOT attraversare.             --> climb_through
+  MAKE mia_AT NOT baciare.                  --> kiss         (+ hug, embrace)
+  MAKE mia_AT NOT bere.                     --> drink
+  MAKE mia_AT NOT bloccare.                 --> lock
+  MAKE mia_AT NOT bloccare_con.             --> lock_with
+  MAKE mia_AT NOT bruciare.                 --> burn
+  MAKE mia_AT NOT bruciare_con.             --> burn_with
   MAKE mia_AT NOT bussare.                  --> knock
-  MAKE mia_AT NOT cantare.              --> sing
-  MAKE mia_AT NOT caricare_partita.     --> 'restore'
-  MAKE mia_AT NOT chiudere.             --> close        (+ shut)
-  MAKE mia_AT NOT chiudere_con.         --> close_with
-  MAKE mia_AT NOT comprare.             --> buy          (+ purchase)
-  MAKE mia_AT NOT consultare.           --> consult
-  MAKE mia_AT NOT danzare.              --> dance
-  MAKE mia_AT NOT dormire.              --> sleep        (+ rest)
-  MAKE mia_AT NOT entrare.              --> enter
-  MAKE mia_AT NOT esaminare.            --> examine      (+ check, inspect, observe, x)
-  MAKE mia_AT NOT gridare.              --> shout        (+ scream, yell)
+  MAKE mia_AT NOT cantare.                  --> sing
+  MAKE mia_AT NOT caricare_partita.         --> 'restore'
+  MAKE mia_AT NOT chiudere.                 --> close        (+ shut)
+  MAKE mia_AT NOT chiudere_con.             --> close_with
+  MAKE mia_AT NOT comprare.                 --> buy          (+ purchase)
+  MAKE mia_AT NOT consultare.               --> consult
+  MAKE mia_AT NOT danzare.                  --> dance
+  MAKE mia_AT NOT dormire.                  --> sleep        (+ rest)
+  MAKE mia_AT NOT entrare.                  --> enter
+  MAKE mia_AT NOT esaminare.                --> examine      (+ check, inspect, observe, x)
+  MAKE mia_AT NOT giocare_con.              --> play_with
+  MAKE mia_AT NOT gridare.                  --> shout        (+ scream, yell)
   MAKE mia_AT NOT guidare.                  --> drive
-  MAKE mia_AT NOT indossare.            --> wear
-  MAKE mia_AT NOT inventariare.         --> i               (+ inv, inventory)
-  MAKE mia_AT NOT lasciare.             --> drop         (+ discard, dump, reject)
-  MAKE mia_AT NOT leggere.              --> read
-  MAKE mia_AT NOT liberare.             --> free         (+ release)
-  MAKE mia_AT NOT mangiare.             --> eat
-  MAKE mia_AT NOT modalità_breve.       --> brief
-  MAKE mia_AT NOT modalità_lunga.       --> verbose
-  MAKE mia_AT NOT mostrare.             --> 'show'       (+ reveal)
-  MAKE mia_AT NOT nuotare.              --> swim
-  MAKE mia_AT NOT nuotare_in.           --> swim_in
-  MAKE mia_AT NOT pensare.              --> think
-  MAKE mia_AT NOT pensare_a.            --> think_about
-  MAKE mia_AT NOT pregare.              --> pray
-  MAKE mia_AT NOT prendere.             --> take.        (+ carry, get, grab, hold, obtain)
-  MAKE mia_AT NOT prendere_da.          --> take_from.   (+ remove from)
-  MAKE mia_AT NOT pulire.               --> clean        (+ polish, wipe)
-  MAKE mia_AT NOT ricominciare_partita. --> 'restart'
-  MAKE mia_AT NOT rifare.               --> 'again'
-  MAKE mia_AT NOT rompere.              --> break        (+ destroy)
-  MAKE mia_AT NOT rompere_con.          --> break_with
-  MAKE mia_AT NOT saltare.              --> jump
-  MAKE mia_AT NOT saltare_in.           --> jump_in
-  MAKE mia_AT NOT saltare_su.           --> jump_on
-  MAKE mia_AT NOT salvare_partita.      --> save
-  MAKE mia_AT NOT sbloccare.            --> unlock
-  MAKE mia_AT NOT sbloccare_con.        --> unlock_with
-  MAKE mia_AT NOT scavare.              --> dig
-  MAKE mia_AT NOT scrivere.             --> write
-  MAKE mia_AT NOT seguire.              --> follow
-  MAKE mia_AT NOT spingere.             --> push
-  MAKE mia_AT NOT spingere_con.         --> push_with
-  MAKE mia_AT NOT spogliarsi.           --> undress
+  MAKE mia_AT NOT indossare.                --> wear
+  MAKE mia_AT NOT inventariare.             --> i               (+ inv, inventory)
+  MAKE mia_AT NOT lasciare.                 --> drop         (+ discard, dump, reject)
+  MAKE mia_AT NOT leggere.                  --> read
+  MAKE mia_AT NOT liberare.                 --> free         (+ release)
+  MAKE mia_AT NOT mangiare.                 --> eat
+  MAKE mia_AT NOT modalità_breve.           --> brief
+  MAKE mia_AT NOT modalità_lunga.           --> verbose
+  MAKE mia_AT NOT mostrare.                 --> 'show'       (+ reveal)
+  MAKE mia_AT NOT nuotare.                  --> swim
+  MAKE mia_AT NOT nuotare_in.               --> swim_in
+  MAKE mia_AT NOT pensare.                  --> think
+  MAKE mia_AT NOT pensare_a.                --> think_about
+  MAKE mia_AT NOT pregare.                  --> pray
+  MAKE mia_AT NOT prendere.                 --> take.        (+ carry, get, grab, hold, obtain)
+  MAKE mia_AT NOT prendere_da.              --> take_from.   (+ remove from)
+  MAKE mia_AT NOT pulire.                   --> clean        (+ polish, wipe)
+  MAKE mia_AT NOT ricominciare_partita.     --> 'restart'
+  MAKE mia_AT NOT rifare.                   --> 'again'
+  MAKE mia_AT NOT rompere.                  --> break        (+ destroy)
+  MAKE mia_AT NOT rompere_con.              --> break_with
+  MAKE mia_AT NOT saltare.                  --> jump
+  MAKE mia_AT NOT saltare_in.               --> jump_in
+  MAKE mia_AT NOT saltare_su.               --> jump_on
+  MAKE mia_AT NOT salvare_partita.          --> save
+  MAKE mia_AT NOT sbloccare.                --> unlock
+  MAKE mia_AT NOT sbloccare_con.            --> unlock_with
+  MAKE mia_AT NOT scavare.                  --> dig
+  MAKE mia_AT NOT scrivere.                 --> write
+  MAKE mia_AT NOT seguire.                  --> follow
+  MAKE mia_AT NOT spingere.                 --> push
+  MAKE mia_AT NOT spingere_con.             --> push_with
+  MAKE mia_AT NOT spogliarsi.               --> undress
+  MAKE mia_AT NOT suonare.                  --> play
   MAKE mia_AT NOT svuotare.                 --> 'empty'
   MAKE mia_AT NOT svuotare_in.              --> empty_in
   MAKE mia_AT NOT svuotare_su.              --> empty_on
-  MAKE mia_AT NOT tagliare.             --> cut
-  MAKE mia_AT NOT tagliare_con.         --> cut_with
-  MAKE mia_AT NOT tirare.               --> pull
-  MAKE mia_AT NOT trovare.              --> find         (+ locate)
+  MAKE mia_AT NOT tagliare.                 --> cut
+  MAKE mia_AT NOT tagliare_con.             --> cut_with
+  MAKE mia_AT NOT tirare.                   --> pull
+  MAKE mia_AT NOT trovare.                  --> find         (+ locate)
   MAKE mia_AT NOT tuffarsi.                 --> dive
   MAKE mia_AT NOT tuffarsi_in.              --> dive_in
-  MAKE mia_AT NOT uccidere.             --> kill         (+ murder)
-  MAKE mia_AT NOT uccidere_con.         --> kill_with
-  MAKE mia_AT NOT usare.                --> 'use'
-  MAKE mia_AT NOT usare_con.            --> use_with
-  MAKE mia_AT NOT vendere.              --> sell
-  MAKE mia_AT NOT versare.              --> pour
-  MAKE mia_AT NOT versare_in.           --> pour_in
-  MAKE mia_AT NOT versare_su.           --> pour_on
+  MAKE mia_AT NOT uccidere.                 --> kill         (+ murder)
+  MAKE mia_AT NOT uccidere_con.             --> kill_with
+  MAKE mia_AT NOT usare.                    --> 'use'
+  MAKE mia_AT NOT usare_con.                --> use_with
+  MAKE mia_AT NOT vendere.                  --> sell
+  MAKE mia_AT NOT versare.                  --> pour
+  MAKE mia_AT NOT versare_in.               --> pour_in
+  MAKE mia_AT NOT versare_su.               --> pour_on
 
 --# NOT YET TRANSLATED:
 
@@ -2051,8 +2053,6 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT 'notify'.
   MAKE mia_AT NOT notify_on.
   MAKE mia_AT NOT notify_off.
-  MAKE mia_AT NOT 'play'.
-  MAKE mia_AT NOT play_with.
   MAKE mia_AT NOT pry.
   MAKE mia_AT NOT pry_with.
   MAKE mia_AT NOT put.         -- (+ lay, place)

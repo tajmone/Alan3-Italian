@@ -11,8 +11,12 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/07/25 \(5\)](#20180725-5)
+- [2018/07/25 \(6\)](#20180725-6)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
+    - [Verb: `play`](#verb-play)
+    - [Verb: `play_with`](#verb-play_with)
+- [2018/07/25 \(5\)](#20180725-5)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
 - [2018/07/25 \(4\)](#20180725-4)
 - [2018/07/25 \(3\)](#20180725-3)
     - [Library Instances](#library-instances)
@@ -132,9 +136,9 @@ Status: Alpha stage.
     - [Verb: `pray`](#verb-pray)
     - [Verb: `break`](#verb-break)
     - [Verb: `break_with`](#verb-break_with)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
-- [2018/05/22 \(2\)](#20180522-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-2)
+- [2018/05/22 \(2\)](#20180522-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
 - [2018/05/22 \(1\)](#20180522-1)
     - [Verb: `undress`](#verb-undress)
 - [2018/05/19](#20180519)
@@ -151,6 +155,43 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/25 (6)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.3.4)
+- [`lib_verbi.i`][lib_verbi] (v0.3.5)
+
+
+## Verb Restriction Attributes
+
+Translated `my_game` attributes for verb restrictions:
+
+|   English   |    Italian    |
+|-------------|---------------|
+| `'play'`    | `suonare`     |
+| `play_with` | `giocare_con` |
+
+## Verb: `play`
+
+Translated verb `suona`, (_play_):
+
+    suona (ogg)
+
+with no synonyms.
+
+## Verb: `play_with`
+
+Translated verb `gioca_con`, (_play with_):
+
+    gioca con (ogg)
+
+with no synonyms.
+
+
+
+<!---------------------------------------------------------------------------->
+
+
 
 # 2018/07/25 (5)
 

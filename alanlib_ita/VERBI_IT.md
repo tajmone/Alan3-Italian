@@ -53,7 +53,9 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 - [VERBI CHE NON CONSEGUONO NULLA](#verbi-che-non-conseguono-nulla)
     - [aspetta](#aspetta)
     - [dormi](#dormi)
+    - [gioca_con](#gioca_con)
     - [prega](#prega)
+    - [suona](#suona)
     - [usa](#usa)
     - [usa_con](#usa_con)
 - [VERBI VARI](#verbi-vari)
@@ -93,6 +95,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [distruggi con]
 - [dormi]
 - [esamina]
+- [gioca con]
 - [inventario]
 - [lascia]
 - [leggi]
@@ -124,6 +127,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [spacca]
 - [spacca con]
 - [spogliati]
+- [suona]
 - [svestiti]
 - [togli]
 - [trasporta]
@@ -770,6 +774,20 @@ esito:
 - Nulla, dice solo "`Non è il momento di riposare.`"
 
 
+## gioca_con
+
+[gioca con]: #gioca_con "gioca con"
+
+sintassi:
+
+    suona <ogg>
+
+condizioni:
+
+- `my_game CAN suonare`
+
+
+
 ## prega
 
 [prega]: #prega "prega"
@@ -785,6 +803,20 @@ condizioni:
 esito:
 
 - Nulla, dice solo "`Sembra che le tue preghiere non siano state esaudite.`" (testo preso da Inform 6 _Infit_).
+
+
+## suona
+
+[suona]: #suona "suona"
+
+sintassi:
+
+    suona <ogg>
+
+condizioni:
+
+- `my_game CAN suonare`
+
 
 
 ## usa
