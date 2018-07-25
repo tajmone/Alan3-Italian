@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.3.1 (2018/07/24)
+-- "lib_verbi.i" v0.3.2 (2018/07/25)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -2267,7 +2267,7 @@ ADD TO EVERY THING
         ELSE
           IF detentore IS inanimato
             THEN
-              IF detentore IsA SUPPORTER
+              IF detentore IsA supporto
                 THEN
                   IF ogg IS NOT plurale
                     --> @TODO!!                                                 TRANSLATE!
@@ -2297,7 +2297,7 @@ ADD TO EVERY THING
             -- a cage, etc.
         ELSIF ogg IsA OBJECT
           THEN
-            IF detentore IsA LISTED_CONTAINER AND detentore IS NOT aperto
+            IF detentore IsA contenitore_elencato AND detentore IS NOT aperto
               --> @TODO!!                                                       TRANSLATE!
               THEN "You can't;" SAY THE detentore.
                   IF detentore IS NOT plurale
@@ -3662,7 +3662,7 @@ END ADD TO.
 
 
 SYNTAX climb_on = climb 'on' (superficie)
-  WHERE superficie IsA SUPPORTER
+  WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
         THEN SAY illegal_parameter_on_sg OF my_game.
@@ -3670,7 +3670,7 @@ SYNTAX climb_on = climb 'on' (superficie)
       END IF.
 
 
-ADD TO EVERY SUPPORTER
+ADD TO EVERY supporto
   VERB climb_on
     CHECK my_game CAN climb_on
       ELSE SAY azione_bloccata OF my_game.
@@ -5146,14 +5146,14 @@ END ADD TO.
 
 
 SYNTAX get_off = get off (superficie)
-  WHERE superficie IsA SUPPORTER
+  WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
         THEN SAY illegal_parameter_off_sg OF my_game.
         ELSE SAY illegal_parameter_off_pl OF my_game.
       END IF.
 
-ADD TO EVERY SUPPORTER
+ADD TO EVERY supporto
   VERB get_off
     CHECK my_game CAN get_off
       ELSE SAY azione_bloccata OF my_game.
@@ -5331,7 +5331,7 @@ END ADD TO.
 
 
 SYNTAX jump_on = jump 'on' (superficie)
-  WHERE superficie IsA SUPPORTER
+  WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
         THEN SAY illegal_parameter_on_sg OF my_game.
@@ -5753,7 +5753,7 @@ END ADD TO.
 
 
 SYNTAX lie_on = lie 'on' (superficie)
-  WHERE superficie IsA SUPPORTER
+  WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
         THEN SAY illegal_parameter_on_sg OF my_game.
@@ -6865,7 +6865,7 @@ ADD TO EVERY OBJECT
           END IF.
           AND ogg NOT IN cont
           ELSE
-          IF cont IsA SUPPORTER
+          IF cont IsA supporto
             THEN SAY check_cont_not_supporter OF my_game.
             ELSE
               IF ogg IS NOT plurale
@@ -7025,7 +7025,7 @@ END ADD TO.
 SYNTAX put_on = put (ogg) 'on' (superficie)
   WHERE ogg IsA OBJECT
       ELSE SAY illegal_parameter_obj OF my_game.
-  AND superficie IsA SUPPORTER
+  AND superficie IsA supporto
     ELSE SAY illegal_parameter2_there OF my_game.
 
 
@@ -7914,7 +7914,7 @@ END VERB.
 
 
 SYNTAX sit_on = sit 'on' (superficie)
-  WHERE superficie IsA SUPPORTER
+  WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
         THEN SAY illegal_parameter_on_sg OF my_game.
@@ -7922,7 +7922,7 @@ SYNTAX sit_on = sit 'on' (superficie)
       END IF.
 
 
-ADD TO EVERY SUPPORTER
+ADD TO EVERY supporto
   VERB sit_on
     CHECK my_game CAN sit_on
       ELSE SAY azione_bloccata OF my_game.
@@ -8111,7 +8111,7 @@ END VERB.
 
 
 SYNTAX stand_on = stand 'on' (superficie)
-  WHERE superficie IsA SUPPORTER
+  WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
         THEN SAY illegal_parameter_on_sg OF my_game.
@@ -8120,7 +8120,7 @@ SYNTAX stand_on = stand 'on' (superficie)
   stand_on = get 'on' (superficie).
 
 
-ADD TO EVERY SUPPORTER
+ADD TO EVERY supporto
   VERB stand_on
     CHECK my_game CAN stand_on
       ELSE SAY azione_bloccata OF my_game.

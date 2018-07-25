@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.3.2 (2018/07/25)
+-- "lib_classi.i" v0.3.3 (2018/07/25)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1443,7 +1443,7 @@ EVERY liquido IsA OBJECT
   -- Every liquid in a container at the start of the game
   -- will have that container as its vessel:
 
-    FOR EACH lc IsA LISTED_CONTAINER
+    FOR EACH lc IsA contenitore_elencato
       DO
         FOR EACH lq IsA liquido, DIRECTLY IN lc
           DO
@@ -1673,7 +1673,7 @@ EVERY liquido IsA OBJECT
               THEN LOCATE THIS AT hero.
                 "You pour" SAY THE THIS. "on" SAY THE superficie. "."
                 SET recipiente OF THIS TO recipiente_fittizio.
-            ELSIF superficie IsA SUPPORTER
+            ELSIF superficie IsA supporto
               THEN LOCATE THIS IN superficie.
                 "You pour" SAY THE THIS. "on" SAY THE superficie. "."
                   SET recipiente OF THIS TO recipiente_fittizio.
@@ -1826,7 +1826,7 @@ END EVENT.
 -- (This class is not cross-referenced elsewhere in this or any other library file.)
 
 
-EVERY LISTED_CONTAINER IsA OBJECT
+EVERY contenitore_elencato IsA OBJECT
   CONTAINER
 
     --  (ACTORS are separately defined to be containers further below.)
@@ -1835,7 +1835,7 @@ EVERY LISTED_CONTAINER IsA OBJECT
 
   -- Every object in a container will be allowed back in that container by default if it's taken out:
 
-    FOR EACH lc IsA LISTED_CONTAINER
+    FOR EACH lc IsA contenitore_elencato
       DO
         FOR EACH o IsA OBJECT, DIRECTLY IN lc
           DO
@@ -2003,7 +2003,7 @@ END EVERY.
 -- or verb definitions.)
 
 
-EVERY supporter IsA OBJECT
+EVERY supporto IsA OBJECT
 
 
   CONTAINER
@@ -2484,14 +2484,14 @@ END EVERY.
 -- have the ability to talk.
 
 
-EVERY female IsA persona
+EVERY femmina IsA persona
   PRONOUN her
   HAS articolo "la".
 
 END EVERY.
 
 
-EVERY male IsA persona
+EVERY maschio IsA persona
   PRONOUN him
   HAS articolo "il".
 END EVERY.

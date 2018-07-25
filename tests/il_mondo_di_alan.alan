@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione v0.3.1 (2018/07/24)
+--  versione v0.3.2 (2018/07/25)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -212,7 +212,7 @@ END THE mela.
 --==============================================================================
 -- Per testare contenitori con chiavi...
 
-THE scrigno IsA LISTED_CONTAINER AT Eden.
+THE scrigno IsA contenitore_elencato AT Eden.
   OPAQUE CONTAINER
   -- IS OPAQUE.
   HAS articolo "lo".
@@ -300,17 +300,17 @@ THE voci IsA suono AT mercato.
 END THE voci.
 
 
-THE Gustavo IsA male AT mercato.
+THE Gustavo IsA maschio AT mercato.
   IS named.
 END THE Gustavo.
 
-THE fruttivendolo IsA male AT mercato.
+THE fruttivendolo IsA maschio AT mercato.
 END THE fruttivendolo.
 
 --==============================================================================
 -- Bancarella della frutta
 --==============================================================================
-THE bancarella IsA supporter AT mercato.
+THE bancarella IsA supporto AT mercato.
   HAS articolo "la".
 END THE bancarella.
 
@@ -367,7 +367,7 @@ THE ccEmporio IsA stanza.
 END THE ccEmporio.
 
 
-THE commessa IsA female AT ccEmporio.
+THE commessa IsA femmina AT ccEmporio.
   -- HAS articolo "la".
 
 END THE commessa.

@@ -11,11 +11,13 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/07/25](#20180725)
+- [2018/07/25 \(2\)](#20180725-2)
+    - [Library Classes](#library-classes)
+- [2018/07/25 \(1\)](#20180725-1)
     - [Clothing Attributes](#clothing-attributes)
 - [2018/07/24 \(5\)](#20180724-5)
     - [Library Attributes](#library-attributes)
-    - [Library Classes](#library-classes)
+    - [Library Classes](#library-classes-1)
     - [Library Instances](#library-instances)
 - [2018/07/24 \(4\)](#20180724-4)
 - [2018/07/24 \(3\)](#20180724-3)
@@ -144,7 +146,27 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/07/25
+# 2018/07/25 (2)
+
+- [`lib_classi.i`][lib_classi] (v0.3.3)
+- [`lib_verbi.i`][lib_verbi] (v0.3.2)
+
+## Library Classes
+
+Translated CLASSes:
+
+|      Class EN      |        Class IT        |    Type   |
+|--------------------|------------------------|-----------|
+| `LISTED_CONTAINER` | `contenitore_elencato` | `OBJECT`  |
+| `SUPPORTER`        | `supporto`             | `OBJECT`  |
+| `female`           | `femmina`              | `persona` |
+| `male`             | `maschio`              | `persona` |
+
+
+<!---------------------------------------------------------------------------->
+
+
+# 2018/07/25 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.3.2)
 
@@ -163,8 +185,6 @@ Translated library attributes:
 | `topcover`   | `val_tronco` | numeric |
 
 
-<!-- 
- -->
 
 <!---------------------------------------------------------------------------->
 
