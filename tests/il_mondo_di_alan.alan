@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione v0.3.4 (2018/07/26)
+--  versione v0.3.5 (2018/07/26)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -84,6 +84,40 @@ THE targhetta IsA object AT pzzaIF.
       MAKE THIS già_letta.
   END VERB esamina.
 END THE targhetta.
+
+--==============================================================================
+-- Scatole e Scatoloni...
+--==============================================================================
+-- Per testare risposte contenitori già aperti/chiusi
+
+THE scatola IsA contenitore_elencato AT pzzaIF.
+  OPAQUE CONTAINER
+  HAS articolo "la".
+  IS apribile.
+  IS NOT aperto.  
+END THE scatola.
+
+THE scatoline IsA contenitore_elencato AT pzzaIF.
+  OPAQUE CONTAINER
+  HAS articolo "le".
+  IS apribile.
+  IS NOT aperto.  
+END THE scatoline.
+
+THE scatolone IsA contenitore_elencato AT pzzaIF.
+  OPAQUE CONTAINER
+  HAS articolo "lo".
+  IS apribile.
+  IS NOT aperto.  
+END THE scatolone.
+
+THE contenitori IsA contenitore_elencato AT pzzaIF.
+  OPAQUE CONTAINER
+  HAS articolo "i".
+  IS apribile.
+  IS NOT aperto.  
+END THE contenitori.
+
 
 --==============================================================================
 -- Corvo Distante

@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.3.6 (2018/07/26)
+-- "lib_definizioni.i" v0.3.7 (2018/07/26)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -593,6 +593,9 @@ EVERY blocco_definizioni IsA LOCATION
 
   HAS restricted_level 0.   -- 0 = no verbs are restricted
 
+  -- ===========================================================================
+  -- PROBLEMI RELATIVI AI PARAMETRI
+  -- ===========================================================================
 
 
   -- =============================
@@ -646,13 +649,13 @@ EVERY blocco_definizioni IsA LOCATION
   -- causa di uno (o più) parametri fuori dalla portata dell'eroe.
   -- (attributi: "NOT raggiungibile" e "distante").
 
-  -- @ORIGINAL: check_obj_reachable_sg/pl + check_obj2_reachable_sg/pl
+  -- ORIGINAL EN:  check_obj_reachable_sg/pl  +  check_obj2_reachable_sg/pl
   HAS ogg1_non_raggiungibile_sg  "$+1 è fuori dalla tua portata.".       -- (numerous)
   HAS ogg1_non_raggiungibile_pl  "$+1 sono fuori dalla tua portata.".
   HAS ogg2_non_raggiungibile_sg  "$+2 è fuori dalla tua portata.".        -- empty_in, fill_with, pour_in, put_in, take_from, tie_to
   HAS ogg2_non_raggiungibile_pl  "$+2 sono fuori dalla tua portata.".
 
-  -- @ORIGINAL: check_obj_not_distant_sg/pl + check_obj2_not_distant_sg/pl
+  -- ORIGINAL EN:  check_obj_not_distant_sg/pl  +  check_obj2_not_distant_sg/pl
   HAS ogg1_distante_sg "$+1 è troppo distante.".          -- (numerous)
   HAS ogg1_distante_pl "$+1 sono troppo distanti.".
   HAS ogg2_distante_sg "$+2 è troppo distante.".         -- empty_in, fill_with, pour_in, put_in, show, take_from,                                  -- + throw_at, throw_in, throw_to
@@ -661,12 +664,47 @@ EVERY blocco_definizioni IsA LOCATION
   -- @TODO: MESSAGGI ANCORA DA TRADURRE                                         TRANSLATE!
   HAS check_obj_reachable_ask "$+1 can't reach $+2.".         -- ask_for
 
+  -- ===========================================================================
+  -- PROBLEMI RELATIVI AGLI ATTRIBUTI
+  -- ===========================================================================
 
-  -- c) Check della Locazione
-  --    ---------------------
+
+  -- ===================
+  -- ATTRIBUTI DEL LUOGO
+  -- ===================
+
   --@TODO: migliora nome attributo e messaggio
+
+  -- ORIGINAL EN:  check_current_loc_lit
   HAS check_locazione_illuminata  "È troppo buio.".                             --> (svariati verbi)
-  -- HAS check_current_loc_lit "It is too dark to see.".           -- (numerous)
+
+
+  -- ==============================
+  -- OGGETTI APERTI/CHIUSI/BLOCCATI
+  -- ==============================
+
+  -- ORIGINAL EN:  check_obj_not_open_sg/pl
+  HAS ogg_già_aperto_sgm "$+1 è già aperto".                                    --> apri, apri_con
+  HAS ogg_già_aperto_plm "$+1 sono già aperti.".
+  HAS ogg_già_aperto_sgf "$+1 è già aperta".
+  HAS ogg_già_aperto_plf "$+1 sono già aperte.".
+
+
+  -- @TODO: MESSAGGI ANCORA DA TRADURRE                                         TRANSLATE!
+
+  -- checks for open, closed and locked objects:
+  ----------------------------------------------
+
+  HAS check_obj_open1_sg "$+1 is already closed.".          -- close, close_with
+  HAS check_obj_open1_pl "$+1 are already closed.".
+  HAS check_obj_open2_sg "You can't, since $+1 is closed.".       -- empty (in/on), look_in, pour (in/on)
+  HAS check_obj_open2_pl "You can't, since $+1 are closed.".
+  HAS check_obj2_open_sg "You can't, since $+2 is closed.".       -- empty_in, pour_in, put_in, throw_in
+  HAS check_obj2_open_pl "You can't, since $+2 are closed.".
+  HAS check_obj_locked_sg "$+1 is already unlocked.".         -- unlock, unlock_with
+  HAS check_obj_locked_pl "$+1 are already unlocked.".
+  HAS check_obj_not_locked_sg "$+1 is already locked.".         -- lock, lock_with
+  HAS check_obj_not_locked_pl "$+1 are already locked.".
 
 
   -- ============================================================================
@@ -815,21 +853,6 @@ EVERY blocco_definizioni IsA LOCATION
   HAS check_obj_suitable_look_through "You can't look through $+1.".        -- look_through
 
 
-  -- checks for open, closed and locked objects:
-  ----------------------------------------------
-
-  HAS check_obj_not_open_sg "$+1 is already open.".         -- open, open_with
-  HAS check_obj_not_open_pl "$+1 are already open.".
-  HAS check_obj_open1_sg "$+1 is already closed.".          -- close, close_with
-  HAS check_obj_open1_pl "$+1 are already closed.".
-  HAS check_obj_open2_sg "You can't, since $+1 is closed.".       -- empty (in/on), look_in, pour (in/on)
-  HAS check_obj_open2_pl "You can't, since $+1 are closed.".
-  HAS check_obj2_open_sg "You can't, since $+2 is closed.".       -- empty_in, pour_in, put_in, throw_in
-  HAS check_obj2_open_pl "You can't, since $+2 are closed.".
-  HAS check_obj_locked_sg "$+1 is already unlocked.".         -- unlock, unlock_with
-  HAS check_obj_locked_pl "$+1 are already unlocked.".
-  HAS check_obj_not_locked_sg "$+1 is already locked.".         -- lock, lock_with
-  HAS check_obj_not_locked_pl "$+1 are already locked.".
 
 
 

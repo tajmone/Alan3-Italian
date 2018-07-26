@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.3.10 (2018/07/26)
+-- "lib_verbi.i" v0.3.11 (2018/07/26)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -457,9 +457,17 @@ ADD TO EVERY OBJECT
         END IF.
     AND ogg IS NOT aperto
       ELSE
-        IF ogg IS NOT plurale
-          THEN SAY check_obj_not_open_sg OF mia_AT.
-          ELSE SAY check_obj_not_open_pl OF mia_AT.
+        IF ogg IS NOT femminile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY ogg_già_aperto_sgm OF mia_AT.
+              ELSE SAY ogg_già_aperto_plm OF mia_AT.
+            END IF.
+          ELSE
+            IF ogg IS NOT plurale
+              THEN SAY ogg_già_aperto_sgf OF mia_AT.
+              ELSE SAY ogg_già_aperto_plf OF mia_AT.
+            END IF.
         END IF.
     DOES
       IF ogg IS bloccato
@@ -569,11 +577,19 @@ ADD TO EVERY OBJECT
           END IF.
       AND strum IN hero -- @TODO:                                               TRANSLATE!
         ELSE SAY check_obj2_in_hero OF mia_AT.
-      AND ogg IS NOT aperto -- @TODO:                                           TRANSLATE!
+      AND ogg IS NOT aperto
         ELSE
-          IF ogg IS NOT plurale
-            THEN SAY check_obj_not_open_sg OF mia_AT.
-            ELSE SAY check_obj_not_open_pl OF mia_AT.
+          IF ogg IS NOT femminile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY ogg_già_aperto_sgm OF mia_AT.
+                ELSE SAY ogg_già_aperto_plm OF mia_AT.
+              END IF.
+            ELSE
+              IF ogg IS NOT plurale
+                THEN SAY ogg_già_aperto_sgf OF mia_AT.
+                ELSE SAY ogg_già_aperto_plf OF mia_AT.
+              END IF.
           END IF.
       DOES
         IF ogg IS bloccato
