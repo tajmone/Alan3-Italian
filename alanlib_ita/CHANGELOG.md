@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/26 \(9\)](#20180726-9)
+    - [Translate Verb Responses for Closed Obj2 Blocking the Action](#translate-verb-responses-for-closed-obj2-blocking-the-action)
 - [2018/07/26 \(8\)](#20180726-8)
     - [Translate Verb Responses for Closed Obj1 Blocking the Action](#translate-verb-responses-for-closed-obj1-blocking-the-action)
 - [2018/07/26 \(7\)](#20180726-7)
@@ -177,6 +179,56 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/26 (9)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.3.12)
+- [`lib_verbi.i`][lib_verbi] (v0.3.16)
+
+## Translate Verb Responses for Closed Obj2 Blocking the Action
+
+Translated and substituted the following verb responses attributes:
+
+|     Attribute EN     |         Attribute IT         |                      Text                     |
+|----------------------|------------------------------|-----------------------------------------------|
+| `check_obj2_open_sg` | `imp_ogg2_chiuso_sgm`/`_sgf` | `Non puoi farlo perché $+2 è chiuso"`/`a.`    |
+| `check_obj2_open_pl` | `imp_ogg2_chiuso_plm`/`_plf` | `Non puoi farlo perché $+2 sono chiusi.`/`e.` |
+
+Similar to changes in previous commit. Code changed:
+
+```alan
+      AND cont IS aperto
+        ELSE
+          IF cont IS NOT plurale --> "You can't, since $+1 [is/are] closed."
+            THEN SAY check_obj2_open_sg OF mia_AT.
+            ELSE SAY check_obj2_open_pl OF mia_AT.
+          END IF.
+
+```
+
+... to:
+
+```alan
+AND cont IS aperto
+  ELSE
+    IF cont IS NOT femminile
+      THEN
+        IF cont IS NOT plurale
+          THEN SAY imp_ogg2_chiuso_sgm OF mia_AT.
+          ELSE SAY imp_ogg2_chiuso_plm OF mia_AT.
+        END IF.
+      ELSE
+        IF cont IS NOT plurale
+          THEN SAY imp_ogg2_chiuso_sgf OF mia_AT.
+          ELSE SAY imp_ogg2_chiuso_plf OF mia_AT.
+        END IF.
+    END IF.
+```
+
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/26 (8)
 

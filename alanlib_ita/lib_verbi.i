@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.3.15 (2018/07/26)
+-- "lib_verbi.i" v0.3.16 (2018/07/26)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -4698,9 +4698,17 @@ ADD TO EVERY OBJECT
           END IF.
       AND cont IS aperto
         ELSE
-          IF cont IS NOT plurale --> "You can't, since $+1 [is/are] closed."
-            THEN SAY check_obj2_open_sg OF mia_AT.
-            ELSE SAY check_obj2_open_pl OF mia_AT.
+          IF cont IS NOT femminile
+            THEN
+              IF cont IS NOT plurale
+                THEN SAY imp_ogg2_chiuso_sgm OF mia_AT.
+                ELSE SAY imp_ogg2_chiuso_plm OF mia_AT.
+              END IF.
+            ELSE
+              IF cont IS NOT plurale
+                THEN SAY imp_ogg2_chiuso_sgf OF mia_AT.
+                ELSE SAY imp_ogg2_chiuso_plf OF mia_AT.
+              END IF.
           END IF.
       DOES
 
@@ -7153,10 +7161,18 @@ ADD TO EVERY OBJECT
             ELSE SAY check_obj_allowed_in_pl OF mia_AT.
           END IF.
       AND cont IS aperto
-          ELSE
-          IF cont IS NOT plurale
-            THEN SAY check_obj2_open_sg OF mia_AT.
-            ELSE SAY check_obj2_open_pl OF mia_AT.
+        ELSE
+          IF cont IS NOT femminile
+            THEN
+              IF cont IS NOT plurale
+                THEN SAY imp_ogg2_chiuso_sgm OF mia_AT.
+                ELSE SAY imp_ogg2_chiuso_plm OF mia_AT.
+              END IF.
+            ELSE
+              IF cont IS NOT plurale
+                THEN SAY imp_ogg2_chiuso_sgf OF mia_AT.
+                ELSE SAY imp_ogg2_chiuso_plf OF mia_AT.
+              END IF.
           END IF.
       DOES
         LOCATE ogg IN cont.
@@ -9219,9 +9235,17 @@ ADD TO EVERY OBJECT
           END IF.
       AND cont IS aperto
         ELSE
-          IF cont IS NOT plurale
-            THEN SAY check_obj2_open_sg OF mia_AT.
-            ELSE SAY check_obj2_open_pl OF mia_AT.
+          IF cont IS NOT femminile
+            THEN
+              IF cont IS NOT plurale
+                THEN SAY imp_ogg2_chiuso_sgm OF mia_AT.
+                ELSE SAY imp_ogg2_chiuso_plm OF mia_AT.
+              END IF.
+            ELSE
+              IF cont IS NOT plurale
+                THEN SAY imp_ogg2_chiuso_sgf OF mia_AT.
+                ELSE SAY imp_ogg2_chiuso_plf OF mia_AT.
+              END IF.
           END IF.
       DOES
         -- implicit taking:

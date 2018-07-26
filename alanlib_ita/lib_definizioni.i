@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.3.11 (2018/07/26)
+-- "lib_definizioni.i" v0.3.12 (2018/07/26)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -732,7 +732,7 @@ EVERY blocco_definizioni IsA LOCATION
   -- ---------------------------------------------
   -- Un oggetto chiuso impedisce l'azione richista
   -- ---------------------------------------------
-  -- VERBI: empty (in/on), look_in, pour (in/on)
+  -- VERBI: empty (in/on), pour (in/on), look_in
 
   -- ORIGINAL EN:  check_obj_open2_sg/pl
   HAS imp_ogg_chiuso_sgm "Non puoi farlo perché $+1 è chiuso".
@@ -740,15 +740,15 @@ EVERY blocco_definizioni IsA LOCATION
   HAS imp_ogg_chiuso_sgf "Non puoi farlo perché $+1 è chiusa".
   HAS imp_ogg_chiuso_plf "Non puoi farlo perché $+1 sono chiuse.".
 
-  
+  -- VERBI: empty_in, pour_in, put_in, throw_in
 
-  -- @TODO: MESSAGGI ANCORA DA TRADURRE                                         TRANSLATE!
+  -- ORIGINAL EN:  check_obj2_open_sg/pl
+  HAS imp_ogg2_chiuso_sgm "Non puoi farlo perché $+2 è chiuso".
+  HAS imp_ogg2_chiuso_plm "Non puoi farlo perché $+2 sono chiusi.".
+  HAS imp_ogg2_chiuso_sgf "Non puoi farlo perché $+2 è chiusa".
+  HAS imp_ogg2_chiuso_plf "Non puoi farlo perché $+2 sono chiuse.".
 
-  -- checks for open, closed and locked objects:
-  ----------------------------------------------
 
-  HAS check_obj2_open_sg "You can't, since $+2 is closed.".       -- empty_in, pour_in, put_in, throw_in
-  HAS check_obj2_open_pl "You can't, since $+2 are closed.".
 
 
   -- ============================================================================
