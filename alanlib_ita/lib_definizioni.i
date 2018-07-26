@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.3.7 (2018/07/26)
+-- "lib_definizioni.i" v0.3.8 (2018/07/26)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -683,11 +683,27 @@ EVERY blocco_definizioni IsA LOCATION
   -- OGGETTI APERTI/CHIUSI/BLOCCATI
   -- ==============================
 
+
+  -- ---------------------------------------
+  -- Tentare di aprire un oggetto già aperto
+  -- ---------------------------------------
+  
   -- ORIGINAL EN:  check_obj_not_open_sg/pl
   HAS ogg_già_aperto_sgm "$+1 è già aperto".                                    --> apri, apri_con
   HAS ogg_già_aperto_plm "$+1 sono già aperti.".
   HAS ogg_già_aperto_sgf "$+1 è già aperta".
   HAS ogg_già_aperto_plf "$+1 sono già aperte.".
+
+  -- -----------------------------------------
+  -- Tentare di chiudere un oggetto già chiuso
+  -- -----------------------------------------
+  
+  -- ORIGINAL EN:  check_obj_open1_sg/pl
+
+  HAS ogg_già_chiuso_sgm "$+1 è già chiuso".                                    --> chiudi, chiudi_con
+  HAS ogg_già_chiuso_plm "$+1 sono già chiusi.".
+  HAS ogg_già_chiuso_sgf "$+1 è già chiusa".
+  HAS ogg_già_chiuso_plf "$+1 sono già chiuse.".
 
 
   -- @TODO: MESSAGGI ANCORA DA TRADURRE                                         TRANSLATE!
@@ -695,8 +711,6 @@ EVERY blocco_definizioni IsA LOCATION
   -- checks for open, closed and locked objects:
   ----------------------------------------------
 
-  HAS check_obj_open1_sg "$+1 is already closed.".          -- close, close_with
-  HAS check_obj_open1_pl "$+1 are already closed.".
   HAS check_obj_open2_sg "You can't, since $+1 is closed.".       -- empty (in/on), look_in, pour (in/on)
   HAS check_obj_open2_pl "You can't, since $+1 are closed.".
   HAS check_obj2_open_sg "You can't, since $+2 is closed.".       -- empty_in, pour_in, put_in, throw_in

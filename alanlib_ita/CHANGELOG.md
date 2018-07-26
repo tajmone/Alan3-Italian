@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/26 \(5\)](#20180726-5)
+    - [Translate Verb Responses for Already Close Objects](#translate-verb-responses-for-already-close-objects)
 - [2018/07/26 \(4\)](#20180726-4)
     - [Translate Verb Responses for Already Open Objects](#translate-verb-responses-for-already-open-objects)
 - [2018/07/26 \(3\)](#20180726-3)
@@ -170,20 +172,68 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
+# 2018/07/26 (5)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.3.8)
+- [`lib_verbi.i`][lib_verbi] (v0.3.12)
+
+## Translate Verb Responses for Already Close Objects
+
+Translated and substituted the following verb responses attributes:
+
+|     Attribute EN     |         Attribute IT        |             Text            |
+|----------------------|-----------------------------|-----------------------------|
+| `check_obj_open1_sg` | `ogg_già_chiuso_sgm`/`_sgf` | `$+1 è già chiuso.`/`a.`    |
+| `check_obj_open1_pl` | `ogg_già_chiuso_plm`/`_plf` | `$+1 sono già chiusi.`/`e.` |
+
+Similar to changes in previous commit. Code changed:
+
+```alan
+    AND ogg IS aperto
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY check_obj_open1_sg OF mia_AT.
+          ELSE SAY check_obj_open1_pl OF mia_AT.
+        END IF.
+```
+
+... to:
+
+```alan
+AND ogg IS aperto
+  ELSE
+    IF ogg IS NOT femminile
+      THEN
+        IF ogg IS NOT plurale
+          THEN SAY ogg_già_chiuso_sgm OF mia_AT.
+          ELSE SAY ogg_già_chiuso_plm OF mia_AT.
+        END IF.
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY ogg_già_chiuso_sgf OF mia_AT.
+          ELSE SAY ogg_già_chiuso_plf OF mia_AT.
+        END IF.
+    END IF.
+```
+
+
+
+<!---------------------------------------------------------------------------->
+
+
 # 2018/07/26 (4)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.7)
 - [`lib_verbi.i`][lib_verbi] (v0.3.11)
 
-
 ## Translate Verb Responses for Already Open Objects
 
 Translated and substituted the following verb responses attributes:
 
-|       Attribute EN      |         Attribute IT        |  Text  |
-|-------------------------|-----------------------------|--------|
-| `check_obj_not_open_sg` | `ogg_già_aperto_sgm`/`_sgf` | `xxxx` |
-| `check_obj_not_open_pl` | `ogg_già_aperto_plm`/`_plf` | `xxxx` |
+|       Attribute EN      |         Attribute IT        |             Text            |
+|-------------------------|-----------------------------|-----------------------------|
+| `check_obj_not_open_sg` | `ogg_già_aperto_sgm`/`_sgf` | `$+1 è già aperto.`/`a.`    |
+| `check_obj_not_open_pl` | `ogg_già_aperto_plm`/`_plf` | `$+1 sono già aperti.`/`e.` |
 
 Italian requires distinguishing also between feminine and mascunline here, so there are actually four variants of the message insted of just two (sing. and plur.). This also means that the code was changed from:
 
