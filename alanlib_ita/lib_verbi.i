@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.3.17 (2018/07/26)
+-- "lib_verbi.i" v0.3.18 (2018/07/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -696,7 +696,6 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              --> @TODO!!                                                       TRANSLATE!
               THEN SAY ogg1_distante_sg OF mia_AT.
               ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
@@ -767,7 +766,6 @@ ADD TO EVERY liquido
         ELSIF liq IS distante
           THEN
             IF liq IS NOT plurale
-              --> @TODO!!                                                       TRANSLATE!
               THEN SAY ogg1_distante_sg OF mia_AT.
               ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
@@ -875,7 +873,7 @@ ADD TO EVERY OBJECT
           ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
         "bloccare."
-    AND CURRENT LOCATION IS illuminato -- @TODO:                                TRANSLATE!
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -887,7 +885,7 @@ ADD TO EVERY OBJECT
             END IF.
         ELSIF ogg IS distante
           THEN
-            IF ogg IS NOT plurale -- @TODO:                                    TRANSLATE!
+            IF ogg IS NOT plurale
               THEN SAY ogg1_distante_sg OF mia_AT.
               ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
@@ -1005,7 +1003,7 @@ ADD TO EVERY OBJECT
               END IF.
           ELSIF ogg IS distante
             THEN
-              IF ogg IS NOT plurale -- @TODO:                                   TRANSLATE!
+              IF ogg IS NOT plurale
                 THEN SAY ogg1_distante_sg OF mia_AT.
                 ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
@@ -1059,7 +1057,7 @@ ADD TO EVERY OBJECT
           ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
         "bruciare."
-    AND CURRENT LOCATION IS illuminato -- @TODO:                                TRANSLATE!
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY imp_luogo_buio OF mia_AT.
     DOES
       SAY specificare_CON_cosa OF mia_AT. "bruciare" SAY THE ogg. "."
@@ -1135,7 +1133,6 @@ ADD TO EVERY OBJECT
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                --> @TODO!!                                                     TRANSLATE!
                 THEN SAY ogg1_distante_sg OF mia_AT.
                 ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
@@ -1312,9 +1309,10 @@ SYNTAX chiudi_con = chiudi (ogg) con (strum)
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
-        THEN SAY illegal_parameter2_with_sg OF mia_AT.
-        ELSE SAY illegal_parameter2_with_pl OF mia_AT.
+        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
       END IF.
+      "chiudere" SAY THE ogg. "." -- TODO:                                      IMPROVE!
 
 
 ADD TO EVERY OBJECT
@@ -1522,7 +1520,7 @@ END VERB.
 
 SYNTAX dai_a = 'dai' (ogg) 'a' (ricevente)
   WHERE ogg IsA OBJECT
-    --> @TODO!!                                                             TRANSLATE!
+    --> @TODO!!                                                                 TRANSLATE!
     ELSE SAY illegal_parameter_obj OF mia_AT.
   AND ricevente IsA ACTOR
     ELSE
@@ -1571,7 +1569,6 @@ ADD TO EVERY OBJECT
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                --> @TODO!!                                                     TRANSLATE!
                 THEN SAY ogg1_distante_sg OF mia_AT.
                 ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
@@ -1587,7 +1584,6 @@ ADD TO EVERY OBJECT
           ELSIF ricevente IS distante
             THEN
               IF ricevente IS NOT plurale
-                --> @TODO!!                                                     TRANSLATE!
                 THEN SAY ogg1_distante_sg OF mia_AT.
                 ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
@@ -2116,7 +2112,6 @@ ADD TO EVERY OBJECT
         ELSIF cibo IS distante
           THEN
             IF cibo IS NOT plurale
-              --> @TODO!!                                                       TRANSLATE!
               THEN SAY ogg1_distante_sg OF mia_AT.
               ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
@@ -2267,7 +2262,6 @@ ADD TO EVERY THING
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              --> @TODO!!                                                       TRANSLATE!
               THEN SAY ogg1_distante_sg OF mia_AT.
               ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
@@ -2431,7 +2425,6 @@ ADD TO EVERY THING
           ELSIF detentore IS distante
             THEN
               IF detentore IS NOT plurale
-                --> @TODO!!                                                     TRANSLATE!
                 THEN SAY ogg2_distante_sg OF mia_AT.
                 ELSE SAY ogg2_distante_pl OF mia_AT.
               END IF.
@@ -2580,7 +2573,6 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              --> @TODO!!                                                       TRANSLATE!
               THEN SAY ogg1_distante_sg OF mia_AT.
               ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
@@ -2617,10 +2609,10 @@ SYNTAX rompi_con = rompi (ogg) 'con' (strum)
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
-        --> @TODO!!                                                             TRANSLATE!
-        THEN SAY illegal_parameter2_with_sg OF mia_AT.
-        ELSE SAY illegal_parameter2_with_pl OF mia_AT.
+        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
       END IF.
+      "rompere" SAY THE ogg. "."
 
 
 ADD TO EVERY OBJECT
@@ -2663,7 +2655,6 @@ ADD TO EVERY OBJECT
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                --> @TODO!!                                                     TRANSLATE!
                 THEN SAY ogg1_distante_sg OF mia_AT.
                 ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
@@ -3580,12 +3571,12 @@ SYNTAX attack_with = attack (bersaglio) 'with' (arma)
       END IF.
       "attaccare."
   AND arma IsA arma
-        ELSE
+    ELSE
       IF arma IS NOT plurale
-        THEN SAY illegal_parameter2_with_sg OF mia_AT.
-        ELSE SAY illegal_parameter2_with_pl OF mia_AT.
+        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
       END IF.
-
+      "attaccare" SAY THE bersaglio. "."
 
 
 ADD TO EVERY THING
@@ -4162,9 +4153,10 @@ SYNTAX cut_with = cut (ogg) 'with' (strum)
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
-        THEN SAY illegal_parameter2_with_sg OF mia_AT.
-        ELSE SAY illegal_parameter2_with_pl OF mia_AT.
+        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
       END IF.
+      "tagliare" SAY THE ogg. "."
 
 
 ADD TO EVERY OBJECT
@@ -5114,9 +5106,10 @@ SYNTAX fill_with = fill (cont) 'with' (sostanza)
   AND sostanza IsA OBJECT
     ELSE
       IF sostanza IS NOT plurale
-        THEN SAY illegal_parameter2_with_sg OF mia_AT.
-        ELSE SAY illegal_parameter2_with_pl OF mia_AT.
+        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
       END IF.
+      "riempire" SAY THE cont. "."
 
 
 ADD TO EVERY OBJECT
@@ -6801,9 +6794,10 @@ SYNTAX pry_with = pry (ogg) 'with' (strum)
     AND strum IsA OBJECT
       ELSE
         IF strum IS NOT plurale
-          THEN SAY illegal_parameter2_with_sg OF mia_AT.
-          ELSE SAY illegal_parameter2_with_pl OF mia_AT.
+          THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+          ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
         END IF.
+        "(prying)" SAY THE ogg. "." -- @TODO:                                   TRANSLATE!
 
 
 ADD TO EVERY OBJECT
@@ -6972,7 +6966,7 @@ END ADD TO.
 
 SYNTAX push_with = push (ogg) 'with' (strum)
   WHERE ogg IsA THING
-      ELSE
+    ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
         THEN SAY ogg1_inadatto_sg OF mia_AT.
@@ -6980,7 +6974,12 @@ SYNTAX push_with = push (ogg) 'with' (strum)
       END IF.
       "spingere."
   AND strum IsA OBJECT
-      ELSE SAY illegal_parameter2_with_sg OF mia_AT.
+    ELSE
+      IF strum IS NOT plurale
+        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+      END IF.
+      "spingere" SAY THE ogg. "."
 
 
 ADD TO EVERY THING
@@ -7911,9 +7910,10 @@ SYNTAX  shoot_with = shoot (bersaglio) 'with' (arma)
       AND arma IsA arma
         ELSE
       IF arma IS NOT plurale
-        THEN SAY illegal_parameter2_with_sg OF mia_AT.
-        ELSE SAY illegal_parameter2_with_pl OF mia_AT.
+        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
       END IF.
+      "sparare." -- # "a THE bersaglio"???                                      IMPROVE?
 
         shoot_with = shoot (arma) 'at' (bersaglio).
         -- to allow player input such as 'shoot rifle at bear'
@@ -9474,9 +9474,10 @@ SYNTAX touch_with = touch (ogg) 'with' (strum)
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
-        THEN SAY illegal_parameter2_with_sg OF mia_AT.
-        ELSE SAY illegal_parameter2_with_pl OF mia_AT.
+        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
       END IF.
+      "toccare" SAY THE ogg. "."
 
 
 ADD TO EVERY THING

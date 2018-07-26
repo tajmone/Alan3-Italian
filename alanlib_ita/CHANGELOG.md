@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/27](#20180727)
+    - [Italian Responses For Illegal Obj2 With](#italian-responses-for-illegal-obj2-with)
 - [2018/07/26 \(10\)](#20180726-10)
     - [Verb Response Attributes Renaming](#verb-response-attributes-renaming)
     - [Renamed Verb Responses](#renamed-verb-responses)
@@ -184,6 +186,26 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/27
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.3.14)
+- [`lib_verbi.i`][lib_verbi] (v0.3.18)
+
+## Italian Responses For Illegal Obj2 With
+
+Implemented Italian translation of `illegal_parameter2_with_sg`/`pl` to all verbs (even not translated ones).
+
+
+|         EN Attribute         |      IT Attrobute      |
+|------------------------------|------------------------|
+| `illegal_parameter2_with_sg` | `ogg2_illegale_CON_sg` |
+| `illegal_parameter2_with_pl` | `ogg2_illegale_CON_pl` |
+
+Now the original `illegal_parameter2_with_sg`/`pl` is no longer needed and was commented out!
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/26 (10)
 

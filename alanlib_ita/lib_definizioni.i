@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.3.13 (2018/07/26)
+-- "lib_definizioni.i" v0.3.14 (2018/07/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -627,6 +627,7 @@ EVERY blocco_definizioni IsA LOCATION
   -- ------------------
   -- PREPOSIZIONE "CON"
   -- ------------------
+  -- ORIGINAL EN: illegal_parameter2_with_sg/pl
   HAS ogg2_illegale_CON_sg  "$+2 non è qualcosa con cui poter".           --> brucia_con
   HAS ogg2_illegale_CON_pl  "$+2 non sono qualcosa con cui poter".
 
@@ -805,10 +806,14 @@ EVERY blocco_definizioni IsA LOCATION
 
   HAS illegal_parameter_with_sg "That's not something you can $v with.".    -- kill_with, shoot_with, play_with
   HAS illegal_parameter_with_pl "Those are not something you can $v with.".
-  HAS illegal_parameter2_with_sg "That's not something you can $v things with.".  -- attack_with, break_with, burn_with, close_with,
+  
+ -- THESE ARE NOW SUBSTITUTED WITH THEIR ITALIAN VERSION:
+ -------------------------------------------------------
+  -- HAS illegal_parameter2_with_sg "That's not something you can $v things with.".
+  -- HAS illegal_parameter2_with_pl "Those are not something you can $v things with.".
+                                 -- attack_with, break_with, burn_with, close_with,
                                  -- + cut_with, fill_with, lock_with, open_with, pry_with,
                                  -- + push_with, unlock_with
-  HAS illegal_parameter2_with_pl "Those are not something you can $v things with.".
 
 
   -- other illegal parameter messages:
