@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.3.10 (2018/07/26)
+-- "lib_definizioni.i" v0.3.11 (2018/07/26)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -687,9 +687,10 @@ EVERY blocco_definizioni IsA LOCATION
   -- ---------------------------------------
   -- Tentare di aprire un oggetto già aperto
   -- ---------------------------------------
-  
+  -- VERBI: apri, apri_con
+
   -- ORIGINAL EN:  check_obj_not_open_sg/pl
-  HAS ogg_già_aperto_sgm "$+1 è già aperto".                                    --> apri, apri_con
+  HAS ogg_già_aperto_sgm "$+1 è già aperto".
   HAS ogg_già_aperto_plm "$+1 sono già aperti.".
   HAS ogg_già_aperto_sgf "$+1 è già aperta".
   HAS ogg_già_aperto_plf "$+1 sono già aperte.".
@@ -697,9 +698,10 @@ EVERY blocco_definizioni IsA LOCATION
   -- -----------------------------------------
   -- Tentare di chiudere un oggetto già chiuso
   -- -----------------------------------------
-  
+  -- VERBI: chiudi, chiudi_con
+
   -- ORIGINAL EN:  check_obj_open1_sg/pl
-  HAS ogg_già_chiuso_sgm "$+1 è già chiuso".                                    --> chiudi, chiudi_con
+  HAS ogg_già_chiuso_sgm "$+1 è già chiuso".
   HAS ogg_già_chiuso_plm "$+1 sono già chiusi.".
   HAS ogg_già_chiuso_sgf "$+1 è già chiusa".
   HAS ogg_già_chiuso_plf "$+1 sono già chiuse.".
@@ -707,9 +709,10 @@ EVERY blocco_definizioni IsA LOCATION
   -- -------------------------------------------
   -- Tentare di bloccare un oggetto già bloccato
   -- -------------------------------------------
-  
+  -- VERBI: blocca, blocca_con
+
   -- ORIGINAL EN:  check_obj_not_locked_sg/pl
-  HAS ogg_già_bloccato_sgm "$+1 è già bloccato".                                    --> chiudi, chiudi_con
+  HAS ogg_già_bloccato_sgm "$+1 è già bloccato".
   HAS ogg_già_bloccato_plm "$+1 sono già bloccati.".
   HAS ogg_già_bloccato_sgf "$+1 è già bloccata".
   HAS ogg_già_bloccato_plf "$+1 sono già bloccate.".
@@ -717,21 +720,33 @@ EVERY blocco_definizioni IsA LOCATION
   -- ---------------------------------------------
   -- Tentare di sbloccare un oggetto già sbloccato
   -- ---------------------------------------------
-  
+  -- VERBI: sblocca, sblocca_con
+
   -- ORIGINAL EN:  check_obj_locked_sg/pl
-  HAS ogg_già_sbloccato_sgm "$+1 è già sbloccato".                                    --> chiudi, chiudi_con
+  HAS ogg_già_sbloccato_sgm "$+1 è già sbloccato".
   HAS ogg_già_sbloccato_plm "$+1 sono già sbloccati.".
   HAS ogg_già_sbloccato_sgf "$+1 è già sbloccata".
   HAS ogg_già_sbloccato_plf "$+1 sono già sbloccate.".
 
+
+  -- ---------------------------------------------
+  -- Un oggetto chiuso impedisce l'azione richista
+  -- ---------------------------------------------
+  -- VERBI: empty (in/on), look_in, pour (in/on)
+
+  -- ORIGINAL EN:  check_obj_open2_sg/pl
+  HAS imp_ogg_chiuso_sgm "Non puoi farlo perché $+1 è chiuso".
+  HAS imp_ogg_chiuso_plm "Non puoi farlo perché $+1 sono chiusi.".
+  HAS imp_ogg_chiuso_sgf "Non puoi farlo perché $+1 è chiusa".
+  HAS imp_ogg_chiuso_plf "Non puoi farlo perché $+1 sono chiuse.".
+
+  
 
   -- @TODO: MESSAGGI ANCORA DA TRADURRE                                         TRANSLATE!
 
   -- checks for open, closed and locked objects:
   ----------------------------------------------
 
-  HAS check_obj_open2_sg "You can't, since $+1 is closed.".       -- empty (in/on), look_in, pour (in/on)
-  HAS check_obj_open2_pl "You can't, since $+1 are closed.".
   HAS check_obj2_open_sg "You can't, since $+2 is closed.".       -- empty_in, pour_in, put_in, throw_in
   HAS check_obj2_open_pl "You can't, since $+2 are closed.".
 

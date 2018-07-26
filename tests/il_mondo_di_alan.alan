@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione v0.3.5 (2018/07/26)
+--  versione v0.3.6 (2018/07/26)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -284,6 +284,15 @@ END THE chiave_scrigno.
 THE lingotto IsA object IN scrigno.
   MENTIONED "lingotto d'oro"
 END THE lingotto.
+
+-- Per testare 'empty' and 'pour'
+THE baule IsA contenitore_elencato AT Eden.
+  OPAQUE CONTAINER
+  HAS articolo "il".
+  IS apribile.
+  IS NOT aperto.
+  HAS consentiti { scrigno }.
+END THE baule.
 
 
 -- =============================================================================
