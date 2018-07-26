@@ -14,7 +14,14 @@ This folder contains a copy of the Alan Standard Library v2.1 files which are be
     - [Extra Standard Library Files](#extra-standard-library-files)
 - [Translation](#translation)
     - [Directions and Movement](#directions-and-movement)
-        - [Movement Messages](#movement-messages)
+    - [Classes, Instances and Attributes](#classes-instances-and-attributes)
+        - [Objects](#objects)
+        - [Locations](#locations)
+    - [Special Classes and Instances](#special-classes-and-instances)
+    - [Null Objects](#null-objects)
+    - [Definition Block](#definition-block)
+    - [Global Attributes](#global-attributes)
+    - [Restricted Actions](#restricted-actions)
 
 <!-- /MarkdownTOC -->
 
@@ -48,7 +55,7 @@ Boilerplates and templates from the StdLibrary have been renamed with a leading 
 
 Current status of translation work.
 
-> __NOTE__ — This sections hasn't been updated for a long time; to check the actual status see the [CHANGELOG] file instead.
+> __NOTE__ — This section is updated from time to time and might not reflect the actual translation progress of the library; to check the actual status see the [CHANGELOG] file instead.
 
 ## Directions and Movement
 
@@ -56,20 +63,20 @@ Current status of translation work.
 
 Translated all stdLib directions:
 
-| direction |      aliases      | short |  English  | short |
-|-----------|-------------------|-------|-----------|-------|
-| nord      |                   | n     | north     | n     |
-| sud       |                   | s     | south     | s     |
-| est       |                   | e     | east      | e     |
-| ovest     |                   | o     | west      | w     |
-| nordest   |                   | ne    | northeast | ne    |
-| sudest    |                   | se    | southeast | se    |
-| nordovest |                   | nov   | northwest | nw    |
-| sudovest  |                   | so    | southwest | sw    |
-| su        | sopra, alto       |       | up        | u     |
-| giù       | giu, sotto, basso | b     | down      | d     |
-| dentro    |                   |       | 'in'      |       |
-| fuori     |                   |       | out       |       |
+| IT Direction |     IT Aliases    | IT Short |  English  | EN Short |
+|--------------|-------------------|----------|-----------|----------|
+| nord         |                   | n        | north     | n        |
+| sud          |                   | s        | south     | s        |
+| est          |                   | e        | east      | e        |
+| ovest        |                   | o        | west      | w        |
+| nordest      |                   | ne       | northeast | ne       |
+| sudest       |                   | se       | southeast | se       |
+| nordovest    |                   | nov      | northwest | nw       |
+| sudovest     |                   | so       | southwest | sw       |
+| su           | sopra, alto       |          | up        | u        |
+| giù          | giu, sotto, basso | b        | down      | d        |
+| dentro       |                   |          | 'in'      |          |
+| fuori        |                   |          | out       |          |
 
 > __NOTE 1__ — Couldn't create synonym "no" for "nordovest" because of conflict with `NO` keyword. Trying to use `'no'` produced error:
 > 
@@ -83,18 +90,378 @@ Translated all stdLib directions:
 
 > __NOTE 2__ — Inform 6 Italian also implements "a" synonym for "alto", but I've left it out right now in case it might conflict with "a" as in "dai a/_give to_".
 
-### Movement Messages
+## Classes, Instances and Attributes
 
-- [`lib_messaggi.i`][lib_messaggi]
+The various object and actor classes, and any attributes which are exclusive to a given class (ie, are either declared only ont that class, or intended to be used only in conjuction with instances of that class).
+The goal here is to show the classes names along with any related attributes, so that the translation of all terms that revolve around a class can be seen at a glance.
+Attributes which are declared on (or inteded to be used with) multiple classes are listed further down (Global Attributes).
 
-This is the status of the messages relating to directions and movements:
 
-|   messg   |              translation               |
-|-----------|----------------------------------------|
-| `NO_WAY:` | "Non puoi andare in quella direzione." |
+### Objects
 
-> __NOTE 1__ — "Non puoi andare in quella direzione." was taken from i6 translation; i7 uses "Non puoi andare da quella parte." instead.
+|      EN Class      |  EN Attribute  |      Translation       |           type           |
+|--------------------|----------------|------------------------|--------------------------|
+| `worn`             |                | `abbbigliamento`       | `ENTITY`                 |
+| `clothing`         |                | `indumento`            | `OBJECT`                 |
+|                    | `wearable`     | `indossabile`          | boolean                  |
+|                    | `sex`          | `genere`               | numeric                  |
+|                    | `headcover`    | `val_testa`            | numeric                  |
+|                    | `handscover`   | `val_mani`             | numeric                  |
+|                    | `feetcover`    | `val_piedi`            | numeric                  |
+|                    | `topcover`     | `val_tronco`           | numeric                  |
+|                    | `botcover`     | `val_gambe`            | numeric                  |
+|                    | `donned`       | `indossato`            | boolean                  |
+| `device`           |                | `dispositivo`          | `OBJECT`                 |
+| `door`             |                | `porta`                | `OBJECT`                 |
+|                    | `otherside`    | `altro_lato`           | ref to `door` instance   |
+|                    | `matching_key` | `chiave_abbinata`      | ref to `OBJECT` instance |
+|                    | `lockable`     | `bloccabile`           | boolean                  |
+|                    | `locked`       | `bloccato`             | boolean                  |
+| `lightsource`      |                | `fonte_di_luce`        | `OBJECT`                 |
+|                    | `lit`          | `illuminato`           | boolean                  |
+|                    | `natural`      | `naturale`             | boolean                  |
+| `liquid`           |                | `liquido`              | `OBJECT` + `CONTAINER`   |
+|                    | `vessel`       | `recipiente`           | ref to an instance       |
+| `LISTED_CONTAINER` |                | `contenitore_elencato` | `CONTAINER`              |
+| `sound`            |                | `suono`                | `OBJECT`                 |
+| `supporter`        |                | `supporto`             | `OBJECT`                 |
+| `weapon`           |                | `arma`                 | `OBJECT`                 |
+|                    | `fireable`     | CAN `sparare`          | boolean                  |
+| `window`           |                | `finestra`             | `OBJECT`                 |
+| `person`           |                | `persona`              | `ACTOR`                  |
+|                    | `talk`         | CAN `parlare`          | boolean                  |
+| `female`           |                | `maschio`              | `PERSON`                 |
+| `male`             |                | `femmina`              | `PERSON`                 |
 
+
+#### Opening and Locking
+
+Attributes relating to opening/closing and locking/unlocking are shared by multiple classes of objects.
+
+| EN Attribute | Translation |         used for         |   type  |
+|--------------|-------------|--------------------------|---------|
+| `openable`   | `apribile`  | `window`, `door`, custom | boolean |
+| `open`       | `aperto`    | `window`, `door`, custom | boolean |
+
+### Locations
+
+The Library divides locations in 2 major categories: outdoor and indoor.
+These are outer containers of actual `site` and `room` instances.
+Sites and rooms come with a series of predefined props (ceiling, sky, etc.). 
+
+| EN Container Class |     Class     |       Translation       |    type    |
+|--------------------|---------------|-------------------------|------------|
+| `outdoor`          |               | `esterno`               | `LOCATION` |
+|                    | `site`        | `luogo_esterno`         | `LOCATION` |
+|                    | `site_object` | `oggetto_luogo_esterno` | `OBJECT`   |
+| `indoor`           |               | `interno`               | `LOCATION` |
+|                    | `room`        | `stanza`                | `LOCATION` |
+|                    | `room_object` | `oggetto_stanza`        | `OBJECT`   |
+| `dark_location`    |               | `luogo_buio`            | `LOCATION` |
+| `nowhere`          |               | `limbo`                 | `LOCATION` |
+
+#### Room and Room Props
+
+For the sake of realism, rooms have a series of predefined props, which are instances of the `room_object` class (an `OBJECT AT indoor`).
+
+|  EN Class |  EN Attribute  |          Translation          |      type     |
+|-----------|----------------|-------------------------------|---------------|
+| `floor`   |                | `pavimento`                   | `room_object` |
+|           | `floor_desc`   | `desc_pavimento`              | string        |
+| `wall`    |                | `pareti` (+ `parete`, `muro`) | `room_object` |
+|           | `walls_desc`   | `desc_pareti`                 | string        |
+| `ceiling` |                | `soffitto`                    | `room_object` |
+|           | `ceiling_desc` | `desc_soffitto`               | string        |
+
+
+#### Site and Site Props
+
+Like rooms, sites have some predefined props too.
+
+| EN Class |  EN Attribute | Translation  |      type     |
+|----------|---------------|--------------|---------------|
+| `ground` |               | `suolo`      | `site_object` |
+|          | `ground_desc` | `desc_suolo` | string        |
+| `sky`    |               | `cielo`      | `site_object` |
+|          | `sky_desc`    | `desc_cielo` | string        |
+
+
+#### Locations Attributes
+
+These attributes are present in every `LOCATION`.
+
+| EN Attribute | Translation  |   type  |
+|--------------|--------------|---------|
+| `visited`    | `visitato`   | numeric |
+| `described`  | `descritto`  | numeric |
+| `lit`        | `illuminato` | boolean |
+
+
+## Special Classes and Instances
+
+Special classes or instances created by StdLib, either for author consumption (eg, `banner` and
+`my_game`) or for internal library usage.
+
+|    EN Instance     |     Translation      |        type        |
+|--------------------|----------------------|--------------------|
+| `banner`           | `intestazione`       | `LOCATION` †       |
+| `my_game`          | `mia_AT`             | `definition_block` |
+| `definition_block` | `blocco_definizioni` | `LOCATION`         |
+
+> __NOTE †__ — In the original StdLib code, `banner` is declared as a `definition_block`, but I've created it as a `LOCATION` instead — for it saves memory and achieves the same goals. (For more info, see [Issue #8])
+
+
+[Issue #8]: https://github.com/AnssiR66/AlanStdLib/issues/8
+
+## Null Objects
+
+Special instances created by StdLib as dummy values for initializing attributes.
+
+
+|   EN Instance   |      Translation      |    type    |
+|-----------------|-----------------------|------------|
+| `null_door`     | `porta_fittizia`      | `OBJECT`   |
+| `null_key`      | `chiave_fittizia`     | `OBJECT`   |
+| `null_object`   | `oggetto_fittizio`    | `OBJECT`   |
+| `null_vessel`   | `recipiente_fittizio` | `OBJECT`   |
+| `null_clothing` | `indumento_fittizio`  | `CLOTHING` |
+
+
+## Definition Block
+
+
+The special `definition_block` class is used by StdLib to group various definitions and expose them to the game via the `my_game` instance.
+
+(defined in [`lib_definitions.i`][lib_definitions])
+
+| EN Attribute |  Translation  |   type  |
+|--------------|---------------|---------|
+| `title`      | `titolo`      | string  |
+| `subtitle`   | `sottotitolo` | string  |
+| `author`     | `autore`      | string  |
+| `year`       | `anno`        | numeric |
+| `version`    | `versione`    | string  |
+
+
+## Global Attributes
+
+General attributes which are either added to every `thing` (object or actor) or to every `entity` (the distinction is irrelevant in this context).
+
+(defined in [`lib_definitions.i`][lib_definitions])
+
+| EN Attribute |   Translation    |       type       |
+|--------------|------------------|------------------|
+| `allowed`    | HAS `consentiti` | set of instances |
+| `broken`     | `rotto`          | boolean          |
+| `distant`    | `distante`       | boolean          |
+| `drinkable`  | `potabile`       | boolean          |
+| `edible`     | `commestibile`   | boolean          |
+| `ex`         | `xDesc`          | string           |
+| `examinable` | `esaminabile`    | boolean          |
+| `inanimate`  | `inanimato`      | boolean          |
+| `movable`    | `spostabile`     | boolean          |
+| `nested`     | HAS `annidati`   | set of instances |
+| `'on'`       | `acceso`         | boolean          |
+| `plural`     | `plurale`        | boolean          |
+| `reachable`  | `raggiungibile`  | boolean          |
+| `readable`   | `leggibile`      | boolean          |
+| `scenery`    | `scenario`       | boolean          |
+| `takeable`   | `prendibile`     | boolean          |
+| `talk`       | `parlare`        | boolean          |
+| `text`       | `testo`          | string           |
+| `weight`     | `peso`           | numeric          |
+| `writeable`  | `scrivibile`     | boolean          |
+
+
+## Restricted Actions
+
+
+A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certain verbs and actions in the adventure (eg, `CAN take`). 
+
+(defined in [`lib_definitions.i`][lib_definitions])
+
+> __NOT UPDATED!!!__ — the list below still needs to be filled in!
+
+|   EN Attribute  |  Translation  | (_candidates_) |
+|-----------------|---------------|----------------|
+| `about`         |               |                |
+| `'again'`       |               |                |
+| `answer`        |               |                |
+| `ask`           |               |                |
+| `ask_for`       |               |                |
+| `attack`        |               |                |
+| `attack_with`   |               |                |
+| `bite`          |               |                |
+| `break`         |               |                |
+| `break_with`    |               |                |
+| `'brief'`       |               |                |
+| `burn`          |               |                |
+| `burn_with`     |               |                |
+| `buy`           |               |                |
+| `catch`         |               |                |
+| `clean`         |               |                |
+| `climb`         |               |                |
+| `climb_on`      |               |                |
+| `climb_through` |               |                |
+| `close`         |               |                |
+| `close_with`    |               |                |
+| `consult`       |               |                |
+| `credits`       |               |                |
+| `cut`           |               |                |
+| `cut_with`      |               |                |
+| `dance`         |               |                |
+| `dig`           |               |                |
+| `dive`          |               |                |
+| `dive_in`       |               |                |
+| `drink`         |               |                |
+| `drive`         |               |                |
+| `drop`          |               |                |
+| `eat`           |               |                |
+| `'empty'`       |               |                |
+| `empty_in`      |               |                |
+| `empty_on`      |               |                |
+| `enter`         |               |                |
+| `examine`       |               |                |
+| `'exit'`        |               |                |
+| `extinguish`    |               |                |
+| `fill`          |               |                |
+| `fill_with`     |               |                |
+| `find`          |               |                |
+| `fire`          |               |                |
+| `fire_at`       |               |                |
+| `fix`           |               |                |
+| `follow`        |               |                |
+| `free`          |               |                |
+| `get_up`        |               |                |
+| `get_off`       |               |                |
+| `give`          |               |                |
+| `go_to`         |               |                |
+| `hint`          |               |                |
+| `i`             |               |                |
+| `jump`          |               |                |
+| `jump_in`       |               |                |
+| `jump_on`       |               |                |
+| `kick`          |               |                |
+| `kill`          |               |                |
+| `kill_with`     |               |                |
+| `kiss`          |               |                |
+| `knock`         |               |                |
+| `lie_down`      |               |                |
+| `lie_in`        |               |                |
+| `lie_on`        |               |                |
+| `lift`          |               |                |
+| `light`         |               |                |
+| `listen0`       |               |                |
+| `listen`        |               |                |
+| `lock`          |               |                |
+| `lock_with`     |               |                |
+| `'look'`        |               |                |
+| `look_at`       |               |                |
+| `look_behind`   |               |                |
+| `look_in`       |               |                |
+| `look_out_of`   |               |                |
+| `look_through`  |               |                |
+| `look_under`    |               |                |
+| `look_up`       |               |                |
+| `'no'`          |               |                |
+| `'notify'`      |               |                |
+| `notify_on`     |               |                |
+| `notify_off`    |               |                |
+| `open`          |               |                |
+| `open_with`     |               |                |
+| `'play'`        |               |                |
+| `play_with`     |               |                |
+| `pour`          |               |                |
+| `pour_in`       |               |                |
+| `pour_on`       |               |                |
+| `pray`          |               |                |
+| `pry`           |               |                |
+| `pry_with`      |               |                |
+| `pull`          |               |                |
+| `push`          |               |                |
+| `push_with`     |               |                |
+| `put`           |               |                |
+| `put_against`   |               |                |
+| `put_behind`    |               |                |
+| `put_down`      |               |                |
+| `put_in`        |               |                |
+| `put_near`      |               |                |
+| `put_on`        |               |                |
+| `put_under`     |               |                |
+| `'quit'`        |               |                |
+| `read`          |               |                |
+| `remove`        |               |                |
+| `'restart'`     |               |                |
+| `'restore'`     |               |                |
+| `rub`           |               |                |
+| `'save'`        |               |                |
+| `'say'`         |               |                |
+| `say_to`        |               |                |
+| `'score'`       |               |                |
+| `scratch`       |               |                |
+| `'script'`      |               |                |
+| `script_on`     |               |                |
+| `script_off`    |               |                |
+| `search`        |               |                |
+| `sell`          |               |                |
+| `shake`         |               |                |
+| `shoot`         |               |                |
+| `shoot_with`    |               |                |
+| `shout`         |               |                |
+| `'show'`        |               |                |
+| `sing`          |               |                |
+| `sip`           |               |                |
+| `sit`           |               |                |
+| `sit_on`        |               |                |
+| `sleep`         |               |                |
+| `smell0`        |               |                |
+| `smell`         |               |                |
+| `squeeze`       |               |                |
+| `stand`         |               |                |
+| `stand_on`      |               |                |
+| `swim`          |               |                |
+| `swim_in`       |               |                |
+| `switch`        |               |                |
+| `switch_on`     |               |                |
+| `switch_off`    |               |                |
+| `take`          | `prendere`    |                |
+| `take_from`     | `prendere_da` |                |
+| `talk`          |               |                |
+| `talk_to`       |               |                |
+| `taste`         |               |                |
+| `tear`          |               |                |
+| `tell`          |               |                |
+| `think`         |               |                |
+| `think_about`   |               |                |
+| `throw`         |               |                |
+| `throw_at`      |               |                |
+| `throw_in`      |               |                |
+| `throw_to`      |               |                |
+| `tie`           |               |                |
+| `tie_to`        |               |                |
+| `touch`         |               |                |
+| `touch_with`    |               |                |
+| `turn`          |               |                |
+| `turn_on`       |               |                |
+| `turn_off`      |               |                |
+| `undress`       |               |                |
+| `unlock`        |               |                |
+| `unlock_with`   |               |                |
+| `'use'`         |               |                |
+| `use_with`      |               |                |
+| `'verbose'`     |               |                |
+| `'wait'`        |               |                |
+| `wear`          |               |                |
+| `what_am_i`     |               |                |
+| `what_is`       |               |                |
+| `where_am_i`    |               |                |
+| `where_is`      |               |                |
+| `who_am_i`      |               |                |
+| `who_is`        |               |                |
+| `write`         |               |                |
+| `yes`           |               |                |
+
+ 
 
 <!-----------------------------------------------------------------------------
                                REFERENCE LINKS                                
