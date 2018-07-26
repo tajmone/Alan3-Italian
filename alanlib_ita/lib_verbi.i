@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.3.8 (2018/07/26)
+-- "lib_verbi.i" v0.3.9 (2018/07/26)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1053,8 +1053,6 @@ SYNTAX brucia_con = brucia (ogg) 'con' (strum)
       IF ogg IS NOT plurale
         THEN SAY ogg1_inadatto_sg OF mia_AT.
         ELSE SAY ogg1_inadatto_pl OF mia_AT.
-     -- THEN SAY illegal_parameter_sg OF mia_AT.
-     -- ELSE SAY illegal_parameter_pl OF mia_AT.
       END IF.
       "bruciare."
   AND strum IsA OBJECT
@@ -1201,9 +1199,10 @@ SYNTAX chiudi = chiudi (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "chiudere."
 
 
 -- SYNONYMS shut = close.
@@ -1266,9 +1265,10 @@ SYNTAX chiudi_con = chiudi (ogg) con (strum)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "chiudere."
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
@@ -1346,8 +1346,6 @@ SYNTAX compra = compra (merce)
         --  "$+1 non [è/sono] qualcosa che puoi"
         THEN SAY ogg1_inadatto_sg OF mia_AT.
         ELSE SAY ogg1_inadatto_pl OF mia_AT.
-     -- THEN SAY illegal_parameter_sg OF mia_AT.
-     -- ELSE SAY illegal_parameter_pl OF mia_AT.
       END IF.
       "comprare."
 
@@ -1915,9 +1913,10 @@ SYNTAX  lascia = lascia (ogg)*
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "lasciare." -- @TODO: "maneggiare"??                                      IMPROVE!
 
         lascia = abbandona (ogg)*.
         lascia = metti giù (ogg)*.
@@ -1977,11 +1976,12 @@ END ADD TO.
 
 SYNTAX leggi = leggi (ogg)
   WHERE ogg IsA OBJECT
-      ELSE
+    ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "leggere."
 
 
 ADD TO EVERY OBJECT
@@ -2034,10 +2034,10 @@ SYNTAX mangia = mangia (cibo)
   WHERE cibo IsA OBJECT
     ELSE
       IF cibo IS NOT plurale
-        --> @TODO!!                                                             TRANSLATE!
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "mangiare."
 
 
 ADD TO EVERY OBJECT
@@ -2129,10 +2129,10 @@ SYNTAX prendi = prendi (ogg)
       WHERE ogg IsA THING
         ELSE
       IF ogg IS NOT plurale
-        --> @TODO!!                                                             TRANSLATE!
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "prendere." -- @TODO: "maneggiare"??                                      IMPROVE!
 
 -- @TODO: Cleanup, these might not need an alternative syntax but just synonym!
 
@@ -2295,10 +2295,11 @@ SYNTAX prendi_da = 'prendi' (ogg) 'da' (detentore)
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
-        --> @TODO!!                                                             TRANSLATE!
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "prendere." -- @TODO: "maneggiare"??                                      IMPROVE
   AND detentore IsA THING
     ELSE
       IF detentore IS NOT plurale
@@ -2496,10 +2497,11 @@ SYNTAX rompi = rompi (ogg)
     WHERE ogg IsA OBJECT
       ELSE
         IF ogg IS NOT plurale
-          --> @TODO!!                                                           TRANSLATE!
-          THEN SAY illegal_parameter_sg OF mia_AT.
-          ELSE SAY illegal_parameter_pl OF mia_AT.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "rompere."
 
 
 SYNONYMS distruggi, spacca, sfonda = rompi.
@@ -2562,8 +2564,6 @@ SYNTAX rompi_con = rompi (ogg) 'con' (strum)
         --  "$+1 non [è/sono] qualcosa che puoi"
         THEN SAY ogg1_inadatto_sg OF mia_AT.
         ELSE SAY ogg1_inadatto_pl OF mia_AT.
-        -- THEN SAY illegal_parameter_sg OF mia_AT.
-        -- ELSE SAY illegal_parameter_pl OF mia_AT.
       END IF.
       "rompere."
   AND strum IsA OBJECT
@@ -2642,9 +2642,11 @@ SYNTAX sblocca = sblocca (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "sbloccare."
 
 
 ADD TO EVERY OBJECT
@@ -2706,9 +2708,11 @@ SYNTAX sblocca_con = sblocca (ogg) con (chiave)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "sbloccare."
   AND chiave IsA OBJECT
       ELSE SAY illegal_parameter_with_sg OF mia_AT. "."
 
@@ -2935,8 +2939,6 @@ SYNTAX suona = suona (ogg)
       IF ogg IS NOT plurale
         THEN SAY ogg1_inadatto_sg OF mia_AT.
         ELSE SAY ogg1_inadatto_pl OF mia_AT.
-        -- THEN SAY illegal_parameter_sg OF mia_AT.
-        -- ELSE SAY illegal_parameter_pl OF mia_AT.
       END IF.
       "suonare."
 
@@ -3149,9 +3151,11 @@ SYNTAX vendi = vendi (merce)
   WHERE merce IsA OBJECT
     ELSE
       IF merce IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "vendere."
 
 
 ADD TO EVERY OBJECT
@@ -3162,9 +3166,10 @@ ADD TO EVERY OBJECT
       ELSE
         IF merce IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "vendere."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "vendere."
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "vendere."
     AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF mia_AT.
     DOES
@@ -3431,9 +3436,11 @@ SYNTAX attack = attack (bersaglio)
   WHERE bersaglio IsA THING
     ELSE
       IF bersaglio IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "attaccare."
 
 
 SYNONYMS beat, fight, hit, punch = attack.
@@ -3450,9 +3457,10 @@ ADD TO EVERY THING
       ELSE
         IF bersaglio IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "attaccare."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "attaccare."
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "attaccare."
     AND bersaglio <> hero
       ELSE SAY check_obj_not_hero1 OF mia_AT.
     AND bersaglio NOT IN hero
@@ -3502,9 +3510,11 @@ SYNTAX attack_with = attack (bersaglio) 'with' (arma)
   WHERE bersaglio IsA THING
     ELSE
       IF bersaglio IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "attaccare."
   AND arma IsA arma
         ELSE
       IF arma IS NOT plurale
@@ -3523,9 +3533,10 @@ ADD TO EVERY THING
         ELSE
           IF bersaglio IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT. "attaccare."
-            ELSE SAY ogg1_inadatto_pl OF mia_AT. "attaccare."
+            THEN SAY ogg1_inadatto_sg OF mia_AT.
+            ELSE SAY ogg1_inadatto_pl OF mia_AT.
           END IF.
+          "attaccare."
       AND bersaglio <> arma
         ELSE SAY check_obj_not_obj2_with OF mia_AT.
       AND bersaglio <> hero
@@ -3576,10 +3587,11 @@ SYNTAX bite = bite (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
-
+      "mordere."
 
 SYNONYMS chew = bite.
 
@@ -3592,9 +3604,10 @@ ADD TO EVERY OBJECT
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "mordere."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "mordere."
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "mordere."
     AND ogg IS prendibile
       ELSE SAY check_obj_takeable OF mia_AT.
     AND CURRENT LOCATION IS illuminato
@@ -3687,10 +3700,11 @@ SYNTAX catch = catch (ogg)
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
-
+      "catturare."
 
 ADD TO EVERY THING
   VERB catch
@@ -3700,9 +3714,10 @@ ADD TO EVERY THING
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "catturare." -- afferrare?
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "catturare." -- afferrare?
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "catturare."
     AND ogg <> hero
       ELSE SAY check_obj_not_hero1 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
@@ -3736,9 +3751,11 @@ SYNTAX clean = clean (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "pulire."
 
 
 SYNONYMS wipe, polish = clean.
@@ -3753,9 +3770,10 @@ ADD TO EVERY OBJECT
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "pulire."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "pulire."
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "pulire."
     AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -3796,6 +3814,7 @@ SYNTAX climb = climb (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
+      --@NOTA: Qui dovrò usare un messaggio personalizzato
         THEN SAY illegal_parameter_sg OF mia_AT.
         ELSE SAY illegal_parameter_pl OF mia_AT.
       END IF.
@@ -3918,9 +3937,11 @@ SYNTAX consult = consult (fonte) about (argomento)!
     -- you can only consult an inanimate source, not a person.
     ELSE
       IF fonte IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "consultare."
   AND argomento IsA THING
     ELSE
       IF argomento IS NOT plurale
@@ -3939,10 +3960,11 @@ ADD TO EVERY THING
       AND fonte IS esaminabile
         ELSE
           IF fonte IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "consultare."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "consultare."
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY ogg1_inadatto_sg OF mia_AT.
+            ELSE SAY ogg1_inadatto_pl OF mia_AT.
           END IF.
+          "consultare."
       AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF mia_AT.
       AND fonte IS raggiungibile AND fonte IS NOT distante
@@ -4028,9 +4050,11 @@ SYNTAX cut = cut (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "tagliare."
 
 
 ADD TO EVERY OBJECT
@@ -4041,9 +4065,10 @@ ADD TO EVERY OBJECT
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "tagliare."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "tagliare."
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "tagliare."
     AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF mia_AT.
     DOES "You need to specify what you want to cut" SAY THE ogg. "with."
@@ -4065,9 +4090,11 @@ SYNTAX cut_with = cut (ogg) 'with' (strum)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "tagliare."
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
@@ -4087,9 +4114,10 @@ ADD TO EVERY OBJECT
         ELSE
           IF ogg IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT. "tagliare."
-            ELSE SAY ogg1_inadatto_pl OF mia_AT. "tagliare."
+            THEN SAY ogg1_inadatto_sg OF mia_AT.
+            ELSE SAY ogg1_inadatto_pl OF mia_AT.
           END IF.
+          "tagliare."
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
@@ -4162,9 +4190,11 @@ SYNTAX dig = dig (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "scavare."
 
 
 ADD TO EVERY OBJECT
@@ -4296,10 +4326,11 @@ SYNTAX drive = drive (veicolo)
   WHERE veicolo IsA OBJECT
     ELSE
       IF veicolo IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
-
+      "guidare."
 
 ADD TO EVERY OBJECT
   VERB drive
@@ -4309,9 +4340,10 @@ ADD TO EVERY OBJECT
       ELSE
         IF veicolo IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "guidare."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "guidare."
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "guidare."
     AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF mia_AT.
     AND veicolo IS raggiungibile AND veicolo IS NOT distante
@@ -4375,29 +4407,37 @@ SYNTAX 'empty' = 'empty' (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "svuotare."
   AND ogg IsA CONTAINER
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "svuotare."
 
   pour = pour (ogg)
     WHERE ogg IsA OBJECT
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY illegal_parameter_sg OF mia_AT.
-          ELSE SAY illegal_parameter_pl OF mia_AT.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "versare."
     AND ogg IsA CONTAINER
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY illegal_parameter_sg OF mia_AT.
-          ELSE SAY illegal_parameter_pl OF mia_AT.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "versare."
 
 
 ADD TO EVERY OBJECT
@@ -4468,15 +4508,19 @@ SYNTAX empty_in = 'empty' (ogg) 'in' (cont)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "svuotare."
   AND ogg IsA CONTAINER
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "svuotare."
   AND cont IsA OBJECT
     ELSE
       IF cont IsA ACTOR
@@ -4492,15 +4536,19 @@ pour_in = pour (ogg) 'in' (cont)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "versare."
   AND ogg IsA CONTAINER
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "versare."
   AND cont IsA OBJECT
     ELSE
       IF cont IsA ACTOR
@@ -4609,15 +4657,19 @@ SYNTAX empty_on = 'empty' (ogg) 'on' (superficie)
     WHERE ogg IsA OBJECT
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY illegal_parameter_sg OF mia_AT.
-          ELSE SAY illegal_parameter_pl OF mia_AT.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "svuotare."
     AND ogg IsA CONTAINER
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY illegal_parameter_sg OF mia_AT.
-          ELSE SAY illegal_parameter_pl OF mia_AT.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "svuotare."
     AND superficie IsA THING
       ELSE SAY illegal_parameter2_there OF mia_AT.
     AND superficie IsA CONTAINER
@@ -4627,15 +4679,19 @@ SYNTAX empty_on = 'empty' (ogg) 'on' (superficie)
     WHERE ogg IsA OBJECT
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY illegal_parameter_sg OF mia_AT.
-          ELSE SAY illegal_parameter_pl OF mia_AT.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "versare."
     AND ogg IsA CONTAINER
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY illegal_parameter_sg OF mia_AT.
-          ELSE SAY illegal_parameter_pl OF mia_AT.
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "versare."
     AND superficie IsA OBJECT
       ELSE SAY illegal_parameter2_there OF mia_AT.
     AND superficie IsA CONTAINER
@@ -4731,6 +4787,7 @@ SYNTAX enter = enter (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
+      -- @NOTA: Qui servirà un messaggio personalizzato a questo verbo!!
         THEN SAY illegal_parameter_sg OF mia_AT.
         ELSE SAY illegal_parameter_pl OF mia_AT.
       END IF.
@@ -4785,6 +4842,7 @@ SYNTAX 'exit' = 'exit' (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
+      -- @NOTA: Qui servirà un messaggio personalizzato per questo verbo!
         THEN SAY illegal_parameter_sg OF mia_AT.
         ELSE SAY illegal_parameter_pl OF mia_AT.
       END IF.
@@ -4832,9 +4890,11 @@ SYNTAX extinguish = extinguish (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "estinguere."
 
   extinguish = put 'out' (ogg).
 
@@ -4854,9 +4914,10 @@ ADD TO EVERY OBJECT
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "estinguere."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "estinguere."
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "estinguere."
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -4894,9 +4955,11 @@ SYNTAX fill = fill (cont)
   WHERE cont IsA OBJECT
     ELSE
       IF cont IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "riempire."
   AND cont IsA CONTAINER
     ELSE
       IF cont IS NOT plurale
@@ -4913,9 +4976,10 @@ ADD TO EVERY OBJECT
       ELSE
         IF cont IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "riempire."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "riempire."
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "riempire."
     AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF mia_AT.
     DOES
@@ -4938,15 +5002,19 @@ SYNTAX fill_with = fill (cont) 'with' (sostanza)
   WHERE cont IsA OBJECT
     ELSE
       IF cont IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "riempire."
   AND cont IsA CONTAINER
     ELSE
       IF cont IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "riempire."
   AND sostanza IsA OBJECT
     ELSE
       IF sostanza IS NOT plurale
@@ -5025,6 +5093,7 @@ SYNTAX find = find (ogg)!
     WHERE ogg IsA THING
       ELSE
         IF ogg IS NOT plurale
+        -- @NOTA: Qui potrebbe volerci un messaggio ad hoc per questo verbo!
           THEN SAY illegal_parameter_sg OF mia_AT.
           ELSE SAY illegal_parameter_pl OF mia_AT.
         END IF.
@@ -5067,6 +5136,7 @@ SYNTAX fire = fire (arma)
   WHERE arma IsA arma
     ELSE
       IF arma IS NOT plurale
+      -- @NOTA: Meglio usare un messaggio ad hoc qui!
         THEN SAY illegal_parameter_sg OF mia_AT.
         ELSE SAY illegal_parameter_pl OF mia_AT.
       END IF.
@@ -5105,6 +5175,7 @@ SYNTAX fire_at = fire (arma) 'at' (bersaglio)
   WHERE arma IsA arma
     ELSE
       IF arma IS NOT plurale
+      -- @NOTA: Come per 'fire', usa messaggio ad hoc per verbo!
         THEN SAY illegal_parameter_sg OF mia_AT.
         ELSE SAY illegal_parameter_pl OF mia_AT.
       END IF.
@@ -5152,6 +5223,7 @@ SYNTAX fire_at_error = fire 'at' (bersaglio)
   WHERE bersaglio IsA THING
     ELSE
       IF bersaglio IS NOT plurale
+      -- @NOTA: Qui serve messaggio ad hoc!
         THEN SAY illegal_parameter_sg OF mia_AT.
         ELSE SAY illegal_parameter_pl OF mia_AT.
       END IF.
@@ -5185,9 +5257,11 @@ SYNTAX fix = fix (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "riparare."
 
 
 SYNONYMS mend, repair = fix.
@@ -5240,9 +5314,11 @@ SYNTAX follow = follow (png)!
   WHERE png IsA ACTOR
     ELSE
       IF png IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "seguire."
 
 
 ADD TO EVERY THING
@@ -5286,9 +5362,11 @@ SYNTAX free = free (ogg)
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "liberare."
 
 
 SYNONYMS release = free.
@@ -5302,9 +5380,10 @@ ADD TO EVERY THING
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "liberare."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "liberare."
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "liberare."
     AND ogg <> hero
       ELSE SAY check_obj_not_hero5 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
@@ -5569,6 +5648,7 @@ SYNTAX kick = kick (bersaglio)
   WHERE bersaglio IsA THING
     ELSE
       IF bersaglio IS NOT plurale
+      -- @NOTA: Servirà messaggio ad hoc qui!
         THEN SAY illegal_parameter_sg OF mia_AT.
         ELSE SAY illegal_parameter_pl OF mia_AT.
       END IF.
@@ -5628,9 +5708,11 @@ SYNTAX kill = kill (vittima)
   WHERE vittima IsA ACTOR
     ELSE
       IF vittima IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "uccidere."
 
 
 ADD TO EVERY ACTOR
@@ -5641,9 +5723,10 @@ ADD TO EVERY ACTOR
       ELSE
         IF vittima IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "uccidere."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "uccidere."
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "uccidere."
     AND vittima <> hero
       ELSE SAY check_obj_not_hero2 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
@@ -5667,9 +5750,11 @@ SYNTAX kill_with = kill (vittima) 'with' (arma)
   WHERE vittima IsA ACTOR
     ELSE
       IF vittima IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "uccidere."
   AND arma IsA arma
     ELSE
       IF arma IS NOT plurale
@@ -5715,9 +5800,11 @@ SYNTAX kiss = kiss (ogg)
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "baciare."
 
 
 SYNONYMS hug, embrace = kiss.
@@ -5731,9 +5818,10 @@ ADD TO EVERY THING
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "baciare."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "baciare."
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "baciare."
     AND ogg <> hero
       ELSE SAY check_obj_not_hero6 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
@@ -6018,9 +6106,11 @@ SYNTAX lift = lift (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "sollevare." --# alzare?
 
 
 SYNONYMS raise = lift.
@@ -6034,9 +6124,10 @@ ADD TO EVERY OBJECT
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "sollevare." --# alzare?
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "sollevare."
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "sollevare." --# alzare?
     AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF mia_AT.
     AND ogg NOT IN hero
@@ -6668,9 +6759,11 @@ SYNTAX pull = pull (ogg)
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "tirare." --@NOTA: ambiguità con "lanciare"
 
 
 ADD TO EVERY OBJECT
@@ -6720,9 +6813,11 @@ SYNTAX push = push (ogg)
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "spingere."
 
 
 SYNONYMS press = push.
@@ -6775,9 +6870,11 @@ SYNTAX push_with = push (ogg) 'with' (strum)
   WHERE ogg IsA THING
       ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "spingere."
   AND strum IsA OBJECT
       ELSE SAY illegal_parameter2_with_sg OF mia_AT.
 
@@ -7250,9 +7347,11 @@ SYNTAX rub = rub (ogg)
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "strofinare."
 
 SYNONYMS massage = rub.
 
@@ -7264,9 +7363,10 @@ ADD TO EVERY THING
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "strofinare."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "strofinare."
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "strofinare."
     AND ogg <> hero
       ELSE SAY check_obj_not_hero6 OF mia_AT.
     AND ogg IS inanimato
@@ -7409,9 +7509,11 @@ SYNTAX scratch = scratch (ogg)
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "grattare." -- #graffiare?
 
 
 ADD TO EVERY THING
@@ -7511,6 +7613,7 @@ SYNTAX search = search (ogg)
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
+      -- @NOTA: Questo messaggio potrebbe dover essere ad hoc!
         THEN SAY illegal_parameter_sg OF mia_AT.
         ELSE SAY illegal_parameter_pl OF mia_AT.
       END IF.
@@ -7778,9 +7881,11 @@ SYNTAX 'show' = 'show' (ogg) 'to' (png)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "mostrare."
   AND png IsA ACTOR
     ELSE
       IF png IS NOT plurale
@@ -7860,9 +7965,11 @@ SYNTAX sip = sip (liq)
   WHERE liq IsA liquido
     ELSE
       IF liq IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "sorseggiare."
 
 
 ADD TO EVERY liquido
@@ -7873,9 +7980,10 @@ ADD TO EVERY liquido
       ELSE
         IF liq IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "sorseggiare."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "sorseggiare."
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "sorseggiare."
     AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF mia_AT.
     AND liq IS raggiungibile AND liq IS NOT distante
@@ -8070,9 +8178,11 @@ SYNTAX smell = smell (odore)
   WHERE odore IsA THING
     ELSE
       IF odore IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "annusare." -- #odorare?
 
 
 ADD TO EVERY THING
@@ -8438,9 +8548,11 @@ SYNTAX taste = taste (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "assaggiare."
 
 
 SYNONYMS lick = taste.
@@ -8454,16 +8566,18 @@ ADD TO EVERY OBJECT
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "assaggiare."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "assaggiare."
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "assaggiare."
     AND ogg IS commestibile OR ogg IS potabile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "assaggiare."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "assaggiare."
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "assaggiare."
     AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -8502,9 +8616,11 @@ SYNTAX tear = tear (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "strappare."
 
 
 SYNONYMS rip = tear.
@@ -8518,9 +8634,10 @@ ADD TO EVERY OBJECT
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "strappare."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "strappare."
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "strappare."
     AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -9044,9 +9161,11 @@ SYNTAX tie = tie (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "legare."
 
 
 ADD TO EVERY OBJECT
@@ -9057,9 +9176,10 @@ ADD TO EVERY OBJECT
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "legare."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "legare."
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "legare."
     AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF mia_AT.
     DOES
@@ -9164,9 +9284,11 @@ SYNTAX touch = touch (ogg)
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "toccare."
 
 
 SYNONYMS feel = touch.
@@ -9180,9 +9302,10 @@ ADD TO EVERY THING
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "toccare."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "toccare."
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
         END IF.
+        "toccare."
     AND CURRENT LOCATION IS illuminato
       ELSE SAY check_locazione_illuminata OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -9223,9 +9346,11 @@ SYNTAX touch_with = touch (ogg) 'with' (strum)
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "toccare."
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
@@ -9243,9 +9368,10 @@ ADD TO EVERY THING
         ELSE
           IF ogg IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT. "toccare."
-            ELSE SAY ogg1_inadatto_pl OF mia_AT. "toccare."
+            THEN SAY ogg1_inadatto_sg OF mia_AT.
+            ELSE SAY ogg1_inadatto_pl OF mia_AT.
           END IF.
+          "toccare."
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
@@ -9301,9 +9427,11 @@ SYNTAX turn = turn (ogg)
           "The verb '$v' is not in your vocabulary."
         ELSE
           IF ogg IS NOT plurale
-            THEN SAY illegal_parameter_sg OF mia_AT.
-            ELSE SAY illegal_parameter_pl OF mia_AT.
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY ogg1_inadatto_sg OF mia_AT.
+            ELSE SAY ogg1_inadatto_pl OF mia_AT.
           END IF.
+          "girare." --# ruotare?
       END IF.
 
 
@@ -9503,9 +9631,11 @@ SYNTAX wear = wear (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "indossare."
 
    wear = put 'on' (ogg).
    wear = put (ogg) 'on'.

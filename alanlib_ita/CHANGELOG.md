@@ -11,7 +11,10 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/07/26](#20180726)
+- [2018/07/26 \(2\)](#20180726-2)
+    - [Implement Italian Verb Responses](#implement-italian-verb-responses)
+        - [Param 1 Illegal or Unsuitable](#param-1-illegal-or-unsuitable)
+- [2018/07/26 \(1\)](#20180726-1)
     - [Polish and Fix Translated Verbs](#polish-and-fix-translated-verbs)
     - [Verb Parameters Fixes](#verb-parameters-fixes)
 - [2018/07/25 \(8\)](#20180725-8)
@@ -163,7 +166,29 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/07/26
+# 2018/07/26 (2)
+
+- [`lib_verbi.i`][lib_verbi] (v0.3.9)
+
+## Implement Italian Verb Responses
+
+### Param 1 Illegal or Unsuitable
+
+Change almost all occurences of `illegal_parameter_sg`/`pl` and `check_obj_suitable_sg`/`pl` with `ogg1_inadatto_sg`/`pl` (the two English responses map to a single Italian response).
+
+These changes affect also verbs which haven't been translated yet, as long as the Italian response will apply to it once translated (which is usually the case).
+
+Now there are only very few verbs left which still use the English responses: these are verbs for which the `ogg1_inadatto_sg`/`pl` response doesn't quite fit in Italian due to semantic differences, or verbs for which I still haven't worked out the Italian equivalent verb.
+
+Therefore, I can't yet delete the `illegal_parameter_sg`/`pl` and `check_obj_suitable_sg`/`pl` English attributes from the "`lib_definizioni.i`" module because a small number of verbs still rely on them.
+
+
+
+<!---------------------------------------------------------------------------->
+
+
+
+# 2018/07/26 (1)
 
 - [`lib_verbi.i`][lib_verbi] (v0.3.8)
 
