@@ -11,6 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/26](#20180726)
+    - [Polish and Fix Translated Verbs](#polish-and-fix-translated-verbs)
+    - [Verb Parameters Fixes](#verb-parameters-fixes)
 - [2018/07/25 \(8\)](#20180725-8)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
     - [Verbs: `yes` and `no`](#verbs-yes-and-no)
@@ -160,6 +163,46 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
+# 2018/07/26
+
+- [`lib_verbi.i`][lib_verbi] (v0.3.8)
+
+## Polish and Fix Translated Verbs 
+
+This commit cleans up the verbs so far translated:
+
+- Annotate untranslated responses
+- Fix some incorrect parameters references (error in original Lib code)
+- Apply available Italian responses (attributes) to some translated verbs whose code still references the English response.
+
+## Verb Parameters Fixes
+
+This commit also fixes some erroneus parameters references in the original library code (See my [PR #12 on StdLib])
+
+This is the lis of verbs that had wrong parameters referencing in their checks, and which are now fixed:
+
+|      verb     | wrong param | fixed param |
+|---------------|-------------|-------------|
+| `apri_con`    | `ogg`       | `strum`     |
+| `blocca_con`  | `ogg`       | `chiave`    |
+| `brucia_con`  | `ogg`       | `strum`     |
+| `chiudi_con`  | `ogg`       | `strum`     |
+| `cut_with`    | `ogg`       | `strum`     |
+| `dai_a`       | `ogg`       | `ricevente` |
+| `empty_in`    | `ogg`       | `cont`      |
+| `prendi_da`   | `ogg`       | `detentore` |
+| `pry_with`    | `ogg`       | `strum`     |
+| `push_with`   | `ogg`       | `strum`     |
+| `rompi_con`   | `ogg`       | `strum`     |
+| `sblocca_con` | `ogg`       | `chiave`    |
+| `touch_with`  | `ogg`       | `strum`     |
+
+
+
+
+<!---------------------------------------------------------------------------->
+
+
 # 2018/07/25 (8)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.6)
@@ -185,11 +228,11 @@ Translated verbs `dici_Sì` and `dici_No`, "__sì__" and "__no__":
 
 with no synonyms.
 
-> __NOTA__ — Ho scelto di dare il suffisso `dire_*` all'attributo `mia_AT` (ex `my_game`) e `dici_*` (seguito da lettera maiuscola) per consentire di tenere vicini (in orderine Asciibetico) questi due attributi/verbi correlati.
+> __NOTA__ — Ho scelto di dare il suffisso `dire_*` all'attributo `mia_AT` (ex `my_game`) e `dici_*` all'ID del verbo (seguito da lettera maiuscola) per consentire di tenere vicini (in orderine Alfa/Asciibetico) questi due attributi/verbi correlati.
 > 
 > Inoltre, ritengo siano forme più chiare rispetto agli originali `yes` e `no`, poiché i suffissi forniscono un contesto più chiaro a questi due "verbi" anomali (che verbi proprio non sono).
 > 
-> L'utilità di questi due "verbi" è per poter implementare risposte del giocatore a domande postegli dal gioco, qualora ve ne fosse bisogno.
+> L'utilità di questi due "verbi" è per poter implementare alla bisogna l'intercettazione di risposte "Sì/No" dal giocatore a domande postegli dal gioco (es. "_Vuoi ...?_").
 
 <!---------------------------------------------------------------------------->
 
@@ -2402,11 +2445,15 @@ The above changes had some side effects which required me to also change the Eng
 [tests]: ../tests/
 
 
-<!-- External Link -->
+<!-- External Links ---------------------------------------------------------->
+
+[Alan StdLib upstream repository]: https://github.com/AnssiR66/AlanStdLib
+
+<!-- StdLib Issues & PRs ----------------------------------------------------->
 
 [Issue #8]: https://github.com/AnssiR66/AlanStdLib/issues/8
 
-[Alan StdLib upstream repository]: https://github.com/AnssiR66/AlanStdLib
+[PR #12 on StdLib]: https://github.com/AnssiR66/AlanStdLib/pull/12
 
 <!-- eof -->
 
