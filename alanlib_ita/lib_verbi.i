@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.3.13 (2018/07/26)
+-- "lib_verbi.i" v0.3.14 (2018/07/26)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -2725,10 +2725,18 @@ ADD TO EVERY OBJECT
             END IF.
         END IF.
     AND ogg IS bloccato
+      ELSE
+        IF ogg IS NOT femminile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY ogg_già_sbloccato_sgm OF mia_AT.
+              ELSE SAY ogg_già_sbloccato_plm OF mia_AT.
+            END IF.
           ELSE
-        IF ogg IS NOT plurale
-          THEN SAY check_obj_locked_sg OF mia_AT.
-          ELSE SAY check_obj_locked_pl OF mia_AT.
+            IF ogg IS NOT plurale
+              THEN SAY ogg_già_sbloccato_sgf OF mia_AT.
+              ELSE SAY ogg_già_sbloccato_plf OF mia_AT.
+            END IF.
         END IF.
     DOES
       IF chiave_abbinata OF ogg IN hero
@@ -2807,9 +2815,17 @@ ADD TO EVERY OBJECT
           END IF.
       AND ogg IS bloccato
         ELSE
-          IF ogg IS NOT plurale
-            THEN SAY check_obj_locked_sg OF mia_AT.
-            ELSE SAY check_obj_locked_pl OF mia_AT.
+          IF ogg IS NOT femminile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY ogg_già_sbloccato_sgm OF mia_AT.
+                ELSE SAY ogg_già_sbloccato_plm OF mia_AT.
+              END IF.
+            ELSE
+              IF ogg IS NOT plurale
+                THEN SAY ogg_già_sbloccato_sgf OF mia_AT.
+                ELSE SAY ogg_già_sbloccato_plf OF mia_AT.
+              END IF.
           END IF.
       AND chiave = chiave_abbinata OF ogg
         ELSE SAY check_door_matching_key OF mia_AT.

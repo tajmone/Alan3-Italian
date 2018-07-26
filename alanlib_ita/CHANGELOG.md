@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/26 \(7\)](#20180726-7)
+    - [Translate Verb Responses for Already Unlocked Objects](#translate-verb-responses-for-already-unlocked-objects)
 - [2018/07/26 \(6\)](#20180726-6)
     - [Translate Verb Responses for Already Locked Objects](#translate-verb-responses-for-already-locked-objects)
 - [2018/07/26 \(5\)](#20180726-5)
@@ -173,6 +175,54 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/26 (7)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.3.10)
+- [`lib_verbi.i`][lib_verbi] (v0.3.14)
+
+## Translate Verb Responses for Already Unlocked Objects
+
+Translated and substituted the following verb responses attributes:
+
+|      Attribute EN     |          Attribute IT          |              Text              |
+|-----------------------|--------------------------------|--------------------------------|
+| `check_obj_locked_sg` | `ogg_già_sbloccato_sgm`/`_sgf` | `$+1 è già sbloccato.`/`a.`    |
+| `check_obj_locked_pl` | `ogg_già_sbloccato_plm`/`_plf` | `$+1 sono già sbloccati.`/`e.` |
+
+Similar to changes in previous commit. Code changed:
+
+```alan
+    AND ogg IS bloccato
+          ELSE
+        IF ogg IS NOT plurale
+          THEN SAY check_obj_locked_sg OF mia_AT.
+          ELSE SAY check_obj_locked_pl OF mia_AT.
+        END IF.
+```
+
+... to:
+
+```alan
+AND ogg IS bloccato
+  ELSE
+    IF ogg IS NOT femminile
+      THEN
+        IF ogg IS NOT plurale
+          THEN SAY ogg_già_sbloccato_sgm OF mia_AT.
+          ELSE SAY ogg_già_sbloccato_plm OF mia_AT.
+        END IF.
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY ogg_già_sbloccato_sgf OF mia_AT.
+          ELSE SAY ogg_già_sbloccato_plf OF mia_AT.
+        END IF.
+    END IF.
+```
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/26 (6)
 
