@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.3.12 (2018/07/26)
+-- "lib_verbi.i" v0.3.13 (2018/07/26)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -893,11 +893,19 @@ ADD TO EVERY OBJECT
             END IF.
         END IF.
     AND ogg IS NOT bloccato
+      ELSE
+        IF ogg IS NOT femminile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY ogg_già_bloccato_sgm OF mia_AT.
+              ELSE SAY ogg_già_bloccato_plm OF mia_AT.
+            END IF.
           ELSE
-        IF ogg IS NOT plurale -- @TODO:                                         TRANSLATE!
-          THEN SAY check_obj_not_locked_sg OF mia_AT.
-          ELSE SAY check_obj_not_locked_pl OF mia_AT.
-      END IF.
+            IF ogg IS NOT plurale
+              THEN SAY ogg_già_bloccato_sgf OF mia_AT.
+              ELSE SAY ogg_già_bloccato_plf OF mia_AT.
+            END IF.
+        END IF.
   DOES
     IF chiave_abbinata OF ogg IN hero
       THEN MAKE ogg bloccato.
@@ -975,9 +983,17 @@ ADD TO EVERY OBJECT
         ELSE SAY check_locazione_illuminata OF mia_AT.
       AND ogg IS NOT bloccato
         ELSE
-          IF ogg IS NOT plurale -- @TODO:                                       TRANSLATE!
-            THEN SAY check_obj_not_locked_sg OF mia_AT.
-            ELSE SAY check_obj_not_locked_pl OF mia_AT.
+          IF ogg IS NOT femminile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY ogg_già_bloccato_sgm OF mia_AT.
+                ELSE SAY ogg_già_bloccato_plm OF mia_AT.
+              END IF.
+            ELSE
+              IF ogg IS NOT plurale
+                THEN SAY ogg_già_bloccato_sgf OF mia_AT.
+                ELSE SAY ogg_già_bloccato_plf OF mia_AT.
+              END IF.
           END IF.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE

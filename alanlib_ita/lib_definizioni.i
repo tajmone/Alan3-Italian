@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.3.8 (2018/07/26)
+-- "lib_definizioni.i" v0.3.9 (2018/07/26)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -699,11 +699,20 @@ EVERY blocco_definizioni IsA LOCATION
   -- -----------------------------------------
   
   -- ORIGINAL EN:  check_obj_open1_sg/pl
-
   HAS ogg_già_chiuso_sgm "$+1 è già chiuso".                                    --> chiudi, chiudi_con
   HAS ogg_già_chiuso_plm "$+1 sono già chiusi.".
   HAS ogg_già_chiuso_sgf "$+1 è già chiusa".
   HAS ogg_già_chiuso_plf "$+1 sono già chiuse.".
+
+  -- -------------------------------------------
+  -- Tentare di bloccare un oggetto già bloccato
+  -- -------------------------------------------
+  
+  -- ORIGINAL EN:  check_obj_not_locked_sg/pl
+  HAS ogg_già_bloccato_sgm "$+1 è già bloccato".                                    --> chiudi, chiudi_con
+  HAS ogg_già_bloccato_plm "$+1 sono già bloccati.".
+  HAS ogg_già_bloccato_sgf "$+1 è già bloccata".
+  HAS ogg_già_bloccato_plf "$+1 sono già bloccate.".
 
 
   -- @TODO: MESSAGGI ANCORA DA TRADURRE                                         TRANSLATE!
@@ -717,8 +726,6 @@ EVERY blocco_definizioni IsA LOCATION
   HAS check_obj2_open_pl "You can't, since $+2 are closed.".
   HAS check_obj_locked_sg "$+1 is already unlocked.".         -- unlock, unlock_with
   HAS check_obj_locked_pl "$+1 are already unlocked.".
-  HAS check_obj_not_locked_sg "$+1 is already locked.".         -- lock, lock_with
-  HAS check_obj_not_locked_pl "$+1 are already locked.".
 
 
   -- ============================================================================
