@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.3.9 (2018/07/26)
+-- "lib_verbi.i" v0.3.10 (2018/07/26)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -451,8 +451,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     AND ogg IS NOT aperto
@@ -550,7 +550,7 @@ ADD TO EVERY OBJECT
           "aprire." -- @TODO: ".. altre cose"??                                 IMPROVE!
       AND ogg <> strum
         ELSE SAY check_obj_not_obj2_with OF mia_AT.
-      AND CURRENT LOCATION IS illuminato -- @TODO:                              TRANSLATE!
+      AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
@@ -563,8 +563,8 @@ ADD TO EVERY OBJECT
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       AND strum IN hero -- @TODO:                                               TRANSLATE!
@@ -668,7 +668,7 @@ ADD TO EVERY OBJECT
         END IF.
         "attraversare."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT. -- @TODO:                  TRANSLATE!
+      ELSE SAY check_locazione_illuminata OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -681,8 +681,8 @@ ADD TO EVERY OBJECT
           THEN
             IF ogg IS NOT plurale
               --> @TODO!!                                                       TRANSLATE!
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     AND hero IS NOT seduto
@@ -752,8 +752,8 @@ ADD TO EVERY liquido
           THEN
             IF liq IS NOT plurale
               --> @TODO!!                                                       TRANSLATE!
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -872,8 +872,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale -- @TODO:                                    TRANSLATE!
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     AND ogg IS NOT bloccato
@@ -974,8 +974,8 @@ ADD TO EVERY OBJECT
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale -- @TODO:                                   TRANSLATE!
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       AND chiave IN hero -- @TODO:                                              TRANSLATE!
@@ -1104,8 +1104,8 @@ ADD TO EVERY OBJECT
             THEN
               IF ogg IS NOT plurale
                 --> @TODO!!                                                     TRANSLATE!
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
 
@@ -1233,8 +1233,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     AND ogg IS aperto
@@ -1313,8 +1313,8 @@ ADD TO EVERY OBJECT
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
         END IF.
       AND ogg IS aperto
@@ -1524,8 +1524,8 @@ ADD TO EVERY OBJECT
             THEN
               IF ogg IS NOT plurale
                 --> @TODO!!                                                     TRANSLATE!
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       AND ricevente IS raggiungibile AND ricevente IS NOT distante
@@ -1540,8 +1540,8 @@ ADD TO EVERY OBJECT
             THEN
               IF ricevente IS NOT plurale
                 --> @TODO!!                                                     TRANSLATE!
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
           DOES
@@ -1842,8 +1842,8 @@ ADD TO EVERY THING
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -2001,8 +2001,8 @@ ADD TO EVERY OBJECT
     AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY check_obj_not_distant_sg OF mia_AT.
-          ELSE SAY check_obj_not_distant_pl OF mia_AT.
+          THEN SAY ogg1_distante_sg OF mia_AT.
+          ELSE SAY ogg1_distante_pl OF mia_AT.
         END IF.
     DOES
       IF testo OF ogg = ""
@@ -2069,8 +2069,8 @@ ADD TO EVERY OBJECT
           THEN
             IF cibo IS NOT plurale
               --> @TODO!!                                                       TRANSLATE!
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -2220,8 +2220,8 @@ ADD TO EVERY THING
           THEN
             IF ogg IS NOT plurale
               --> @TODO!!                                                       TRANSLATE!
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
         AND peso Of ogg < 50
@@ -2384,8 +2384,8 @@ ADD TO EVERY THING
             THEN
               IF detentore IS NOT plurale
                 --> @TODO!!                                                     TRANSLATE!
-                THEN SAY check_obj2_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj2_not_distant_pl OF mia_AT.
+                THEN SAY ogg2_distante_sg OF mia_AT.
+                ELSE SAY ogg2_distante_pl OF mia_AT.
               END IF.
           END IF.
       AND peso Of ogg < 50
@@ -2533,8 +2533,8 @@ ADD TO EVERY OBJECT
           THEN
             IF ogg IS NOT plurale
               --> @TODO!!                                                       TRANSLATE!
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -2616,8 +2616,8 @@ ADD TO EVERY OBJECT
             THEN
               IF ogg IS NOT plurale
                 --> @TODO!!                                                     TRANSLATE!
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       DOES
@@ -2672,8 +2672,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     AND ogg IS bloccato
@@ -2753,8 +2753,8 @@ ADD TO EVERY OBJECT
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       AND ogg IS bloccato
@@ -2816,8 +2816,8 @@ ADD TO EVERY OBJECT
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
 
@@ -2966,8 +2966,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -3124,8 +3124,8 @@ ADD TO EVERY THING
         ELSIF dest IS distante
           THEN
             IF dest IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -3304,8 +3304,8 @@ ADD TO EVERY ACTOR
       AND png IS NOT distante
         ELSE
           IF png IS NOT plurale
-            THEN SAY check_obj_not_distant_sg OF mia_AT.
-            ELSE SAY check_obj_not_distant_pl OF mia_AT.
+            THEN SAY ogg1_distante_sg OF mia_AT.
+            ELSE SAY ogg1_distante_pl OF mia_AT.
           END IF.
       DOES
         "Nessuna risposta." --> taken from i6
@@ -3369,8 +3369,8 @@ ADD TO EVERY ACTOR
       AND png IS NOT distante
         ELSE
           IF png IS NOT plurale
-            THEN SAY check_obj_not_distant_sg OF mia_AT.
-            ELSE SAY check_obj_not_distant_pl OF mia_AT.
+            THEN SAY ogg1_distante_sg OF mia_AT.
+            ELSE SAY ogg1_distante_pl OF mia_AT.
           END IF.
       AND ogg IS prendibile
         ELSE SAY check_obj2_takeable2 OF mia_AT.
@@ -3382,8 +3382,8 @@ ADD TO EVERY ACTOR
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       AND ogg IS NOT scenario
@@ -3480,8 +3480,8 @@ ADD TO EVERY THING
         ELSIF bersaglio IS distante
           THEN
             IF bersaglio IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     AND hero IS NOT seduto
@@ -3558,8 +3558,8 @@ ADD TO EVERY THING
           ELSIF bersaglio IS distante
             THEN
               IF bersaglio IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       AND hero IS NOT seduto
@@ -3623,8 +3623,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS NOT distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -3787,8 +3787,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -3848,8 +3848,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
   AND hero IS NOT seduto
@@ -3902,8 +3902,8 @@ ADD TO EVERY supporto
         ELSIF superficie IS NOT distante
           THEN
             IF superficie IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     AND hero IS NOT seduto
@@ -3978,8 +3978,8 @@ ADD TO EVERY THING
           ELSIF fonte IS distante
             THEN
               IF fonte IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       DOES
@@ -4139,8 +4139,8 @@ ADD TO EVERY OBJECT
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       DOES
@@ -4214,8 +4214,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     AND hero IS NOT seduto
@@ -4298,8 +4298,8 @@ ADD TO EVERY OBJECT
     AND liq IS NOT distante
       ELSE
         IF liq IS NOT plurale
-          THEN SAY check_obj_not_distant_sg OF mia_AT.
-          ELSE SAY check_obj_not_distant_pl OF mia_AT.
+          THEN SAY ogg1_distante_sg OF mia_AT.
+          ELSE SAY ogg1_distante_pl OF mia_AT.
         END IF.
     DOES
       IF liq IS NOT plurale
@@ -4357,8 +4357,8 @@ ADD TO EVERY OBJECT
         ELSIF veicolo IS distante
           THEN
             IF veicolo IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     AND hero IS NOT sdraiato
@@ -4459,8 +4459,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     AND ogg IS aperto
@@ -4585,8 +4585,8 @@ ADD TO EVERY OBJECT
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       AND cont IS raggiungibile AND cont IS NOT distante
@@ -4600,8 +4600,8 @@ ADD TO EVERY OBJECT
           ELSIF cont IS distante
             THEN
               IF cont IS NOT plurale
-                THEN SAY check_obj2_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj2_not_distant_pl OF mia_AT.
+                THEN SAY ogg2_distante_sg OF mia_AT.
+                ELSE SAY ogg2_distante_pl OF mia_AT.
               END IF.
           END IF.
       AND ogg IN consentiti OF cont
@@ -4720,8 +4720,8 @@ ADD TO EVERY THING
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       AND superficie IS raggiungibile AND superficie IS NOT distante
@@ -4735,8 +4735,8 @@ ADD TO EVERY THING
           ELSIF superficie IS distante
             THEN
               IF superficie IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       AND ogg IS aperto
@@ -4929,8 +4929,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -5053,8 +5053,8 @@ ADD TO EVERY OBJECT
           ELSIF cont IS distante
             THEN
               IF cont IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT. "."
-                ELSE SAY check_obj_not_distant_pl OF mia_AT. "."
+                THEN SAY ogg1_distante_sg OF mia_AT. "."
+                ELSE SAY ogg1_distante_pl OF mia_AT. "."
               END IF.
           END IF.
       AND sostanza IS raggiungibile AND sostanza IS NOT distante
@@ -5068,8 +5068,8 @@ ADD TO EVERY OBJECT
           ELSIF sostanza IS distante
             THEN
               IF sostanza IS NOT plurale
-                THEN SAY check_obj2_not_distant_sg OF mia_AT. "."
-                ELSE SAY check_obj2_not_distant_pl OF mia_AT. "."
+                THEN SAY ogg2_distante_sg OF mia_AT. "."
+                ELSE SAY ogg2_distante_pl OF mia_AT. "."
               END IF.
           END IF.
       DOES
@@ -5205,8 +5205,8 @@ ADD TO EVERY arma
         -- note that it is possible to fire at a "not reachable" bersaglio
         ELSE
           IF bersaglio IS NOT plurale
-            THEN SAY check_obj_not_distant_sg OF mia_AT.
-            ELSE SAY check_obj_not_distant_pl OF mia_AT.
+            THEN SAY ogg1_distante_sg OF mia_AT.
+            ELSE SAY ogg1_distante_pl OF mia_AT.
           END IF.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY check_locazione_illuminata OF mia_AT.
@@ -5290,8 +5290,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -5399,8 +5399,8 @@ ADD TO EVERY THING
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -5578,8 +5578,8 @@ ADD TO EVERY OBJECT
         ELSIF cont IS distante
           THEN
             IF cont IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     AND hero IS NOT seduto
@@ -5683,8 +5683,8 @@ ADD TO EVERY THING
         ELSIF bersaglio IS distante
           THEN
             IF bersaglio IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -5777,8 +5777,8 @@ ADD TO EVERY ACTOR
       AND vittima IS NOT distante
         ELSE
           IF vittima IS NOT plurale
-            THEN SAY check_obj_not_distant_sg OF mia_AT.
-            ELSE SAY check_obj_not_distant_pl OF mia_AT.
+            THEN SAY ogg1_distante_sg OF mia_AT.
+            ELSE SAY ogg1_distante_pl OF mia_AT.
           END IF.
       DOES
         "That would be needlessly brutal."
@@ -5837,8 +5837,8 @@ ADD TO EVERY THING
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -5895,8 +5895,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -6002,8 +6002,8 @@ ADD TO EVERY OBJECT
         ELSIF cont IS distante
           THEN
             IF cont IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -6066,8 +6066,8 @@ ADD TO EVERY OBJECT
         ELSIF superficie IS distante
           THEN
             IF superficie IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -6145,8 +6145,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     AND peso OF ogg < 50
@@ -6202,8 +6202,8 @@ ADD TO EVERY OBJECT
       ELSIF ogg IS distante
         THEN
           IF ogg IS NOT plurale
-            THEN SAY check_obj_not_distant_sg OF mia_AT.
-            ELSE SAY check_obj_not_distant_pl OF mia_AT.
+            THEN SAY ogg1_distante_sg OF mia_AT.
+            ELSE SAY ogg1_distante_pl OF mia_AT.
           END IF.
       END IF.
   DOES
@@ -6736,8 +6736,8 @@ VERB pry_with
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES "That doesn't work."
@@ -6789,8 +6789,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -6846,8 +6846,8 @@ ADD TO EVERY THING
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -6913,8 +6913,8 @@ ADD TO EVERY THING
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       DOES
@@ -7021,8 +7021,8 @@ ADD TO EVERY OBJECT
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       AND ogg NOT IN cont
@@ -7046,8 +7046,8 @@ ADD TO EVERY OBJECT
           ELSIF cont IS distante
             THEN
               IF cont IS NOT plurale
-                THEN SAY check_obj2_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj2_not_distant_pl OF mia_AT.
+                THEN SAY ogg2_distante_sg OF mia_AT.
+                ELSE SAY ogg2_distante_pl OF mia_AT.
               END IF.
           END IF.
       AND ogg IN consentiti OF cont
@@ -7139,8 +7139,8 @@ ADD TO EVERY OBJECT
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       AND bulk IS raggiungibile AND bulk IS NOT distante
@@ -7154,8 +7154,8 @@ ADD TO EVERY OBJECT
           ELSIF bulk IS distante
             THEN
               IF bulk IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       DOES
@@ -7220,8 +7220,8 @@ ADD TO EVERY OBJECT
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       AND superficie IS raggiungibile AND superficie IS NOT distante
@@ -7235,8 +7235,8 @@ ADD TO EVERY OBJECT
           ELSIF superficie IS distante
             THEN
               IF superficie IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       DOES
@@ -7384,8 +7384,8 @@ ADD TO EVERY THING
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -7457,8 +7457,8 @@ ADD TO EVERY ACTOR
       AND png IS NOT distante
         ELSE
           IF png IS NOT plurale
-            THEN SAY check_obj_not_distant_sg OF mia_AT.
-            ELSE SAY check_obj_not_distant_pl OF mia_AT.
+            THEN SAY ogg1_distante_sg OF mia_AT.
+            ELSE SAY ogg1_distante_pl OF mia_AT.
           END IF.
       DOES
         SAY THE png.
@@ -7543,8 +7543,8 @@ ADD TO EVERY THING
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -7640,8 +7640,8 @@ ADD TO EVERY THING
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -7696,8 +7696,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -7752,8 +7752,8 @@ ADD TO EVERY THING
     AND bersaglio IS NOT distante
       ELSE
         IF bersaglio IS NOT plurale
-          THEN SAY check_obj_not_distant_sg OF mia_AT.
-          ELSE SAY check_obj_not_distant_pl OF mia_AT.
+          THEN SAY ogg1_distante_sg OF mia_AT.
+          ELSE SAY ogg1_distante_pl OF mia_AT.
         END IF.
     DOES
       IF bersaglio IsA ACTOR
@@ -7831,8 +7831,8 @@ ADD TO EVERY THING
       AND bersaglio IS NOT distante
         ELSE
           IF bersaglio IS NOT plurale
-            THEN SAY check_obj_not_distant_sg OF mia_AT.
-            ELSE SAY check_obj_not_distant_pl OF mia_AT.
+            THEN SAY ogg1_distante_sg OF mia_AT.
+            ELSE SAY ogg1_distante_pl OF mia_AT.
           END IF.
       DOES
         IF bersaglio IsA ACTOR
@@ -7911,8 +7911,8 @@ ADD TO EVERY OBJECT
       AND png IS NOT distante
         ELSE
           IF png IS NOT plurale
-            THEN SAY check_obj2_not_distant_sg OF mia_AT.
-            ELSE SAY check_obj2_not_distant_pl OF mia_AT.
+            THEN SAY ogg2_distante_sg OF mia_AT.
+            ELSE SAY ogg2_distante_pl OF mia_AT.
           END IF.
       DOES
         SAY THE png.
@@ -7997,8 +7997,8 @@ ADD TO EVERY liquido
         ELSIF liq IS distante
           THEN
             IF liq IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -8114,8 +8114,8 @@ ADD TO EVERY supporto
         ELSIF superficie IS distante
           THEN
             IF superficie IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -8237,8 +8237,8 @@ ADD TO EVERY THING
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -8312,8 +8312,8 @@ ADD TO EVERY supporto
         ELSIF superficie IS distante
           THEN
             IF superficie IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -8396,8 +8396,8 @@ ADD TO EVERY OBJECT
         ELSIF liq IS distante
           THEN
             IF liq IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -8591,8 +8591,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -8651,8 +8651,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -8704,8 +8704,8 @@ ADD TO EVERY ACTOR
       AND png IS NOT distante
         ELSE
           IF png IS NOT plurale
-            THEN SAY check_obj_not_distant_sg OF mia_AT.
-            ELSE SAY check_obj_not_distant_pl OF mia_AT.
+            THEN SAY ogg1_distante_sg OF mia_AT.
+            ELSE SAY ogg1_distante_pl OF mia_AT.
           END IF.
       DOES
         SAY THE png.
@@ -8816,8 +8816,8 @@ ADD TO EVERY OBJECT
         ELSIF proiettile IS distante
           THEN
             IF proiettile IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -8902,16 +8902,16 @@ ADD TO EVERY OBJECT
           ELSIF proiettile IS distante
             THEN
               IF proiettile IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       AND bersaglio IS NOT distante
         -- it is possible to throw something at an (otherwise) not reachable bersaglio
         ELSE
           IF bersaglio IS NOT plurale
-            THEN SAY check_obj2_not_distant_sg OF mia_AT.
-            ELSE SAY check_obj2_not_distant_pl OF mia_AT.
+            THEN SAY ogg2_distante_sg OF mia_AT.
+            ELSE SAY ogg2_distante_pl OF mia_AT.
           END IF.
       DOES
         -- implicit taking:
@@ -9016,15 +9016,15 @@ ADD TO EVERY OBJECT
           ELSIF proiettile IS distante
             THEN
               IF proiettile IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       AND ricevente IS NOT distante
         ELSE
           IF ricevente IS NOT plurale
-            THEN SAY check_obj2_not_distant_sg OF mia_AT.
-            ELSE SAY check_obj2_not_distant_pl OF mia_AT.
+            THEN SAY ogg2_distante_sg OF mia_AT.
+            ELSE SAY ogg2_distante_pl OF mia_AT.
           END IF.
       DOES
         -- implicit taking:
@@ -9105,15 +9105,15 @@ ADD TO EVERY OBJECT
           ELSIF proiettile IS distante
             THEN
               IF proiettile IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       AND cont IS NOT distante
         ELSE
           IF cont IS NOT plurale
-            THEN SAY check_obj2_not_distant_sg OF mia_AT.
-            ELSE SAY check_obj2_not_distant_pl OF mia_AT.
+            THEN SAY ogg2_distante_sg OF mia_AT.
+            ELSE SAY ogg2_distante_pl OF mia_AT.
           END IF.
       AND proiettile IN consentiti OF cont
         ELSE
@@ -9237,8 +9237,8 @@ ADD TO EVERY THING
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
@@ -9252,8 +9252,8 @@ ADD TO EVERY THING
           ELSIF bersaglio IS distante
             THEN
               IF bersaglio IS NOT plurale
-                THEN SAY check_obj2_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj2_not_distant_pl OF mia_AT.
+                THEN SAY ogg2_distante_sg OF mia_AT.
+                ELSE SAY ogg2_distante_pl OF mia_AT.
               END IF.
           END IF.
       DOES
@@ -9319,8 +9319,8 @@ ADD TO EVERY THING
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
       AND ogg <> hero
@@ -9399,8 +9399,8 @@ ADD TO EVERY THING
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY check_obj_not_distant_sg OF mia_AT.
-                ELSE SAY check_obj_not_distant_pl OF mia_AT.
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
       DOES
@@ -9466,8 +9466,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
 
@@ -9667,8 +9667,8 @@ ADD TO EVERY OBJECT
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
 

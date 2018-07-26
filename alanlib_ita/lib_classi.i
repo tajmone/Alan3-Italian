@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.3.4 (2018/07/25)
+-- "lib_classi.i" v0.3.5 (2018/07/26)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -943,8 +943,8 @@ EVERY dispositivo IsA OBJECT
         ELSIF THIS IS distante
           THEN
             IF THIS IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     AND THIS IS NOT rotto
@@ -975,8 +975,8 @@ EVERY dispositivo IsA OBJECT
         ELSIF THIS IS distante
           THEN
             IF THIS IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     DOES ONLY
@@ -1002,8 +1002,8 @@ EVERY dispositivo IsA OBJECT
         ELSIF THIS IS distante
           THEN
             IF THIS IS NOT plurale
-              THEN SAY check_obj_not_distant_sg OF mia_AT.
-              ELSE SAY check_obj_not_distant_pl OF mia_AT.
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
     AND THIS IS NOT rotto

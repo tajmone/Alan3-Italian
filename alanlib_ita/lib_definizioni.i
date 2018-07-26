@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.3.5 (2018/07/25)
+-- "lib_definizioni.i" v0.3.6 (2018/07/26)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -646,17 +646,20 @@ EVERY blocco_definizioni IsA LOCATION
   -- causa di uno (o più) parametri fuori dalla portata dell'eroe.
   -- (attributi: "NOT raggiungibile" e "distante").
 
+  -- @ORIGINAL: check_obj_reachable_sg/pl + check_obj2_reachable_sg/pl
   HAS ogg1_non_raggiungibile_sg  "$+1 è fuori dalla tua portata.".       -- (numerous)
   HAS ogg1_non_raggiungibile_pl  "$+1 sono fuori dalla tua portata.".
   HAS ogg2_non_raggiungibile_sg  "$+2 è fuori dalla tua portata.".        -- empty_in, fill_with, pour_in, put_in, take_from, tie_to
   HAS ogg2_non_raggiungibile_pl  "$+2 sono fuori dalla tua portata.".
 
+  -- @ORIGINAL: check_obj_not_distant_sg/pl + check_obj2_not_distant_sg/pl
+  HAS ogg1_distante_sg "$+1 è troppo distante.".          -- (numerous)
+  HAS ogg1_distante_pl "$+1 sono troppo distanti.".
+  HAS ogg2_distante_sg "$+2 è troppo distante.".         -- empty_in, fill_with, pour_in, put_in, show, take_from,                                  -- + throw_at, throw_in, throw_to
+  HAS ogg2_distante_pl "$+2 sono troppo distanti.".
+
   -- @TODO: MESSAGGI ANCORA DA TRADURRE                                         TRANSLATE!
   HAS check_obj_reachable_ask "$+1 can't reach $+2.".         -- ask_for
-  HAS check_obj_not_distant_sg "$+1 is too far away.".          -- (numerous)
-  HAS check_obj_not_distant_pl "$+1 are too far away.".
-  HAS check_obj2_not_distant_sg "$+2 is too far away.".         -- empty_in, fill_with, pour_in, put_in, show, take_from,                                  -- + throw_at, throw_in, throw_to
-  HAS check_obj2_not_distant_pl "$+2 are too far away.".
 
 
   -- c) Check della Locazione

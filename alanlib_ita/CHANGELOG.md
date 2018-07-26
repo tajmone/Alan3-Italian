@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/26 \(3\)](#20180726-3)
+    - [Translate Verb Responses for Distant Params](#translate-verb-responses-for-distant-params)
 - [2018/07/26 \(2\)](#20180726-2)
     - [Implement Italian Verb Responses](#implement-italian-verb-responses)
         - [Param 1 Illegal or Unsuitable](#param-1-illegal-or-unsuitable)
@@ -165,6 +167,28 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/26 (3)
+
+- [`lib_classi.i`][lib_classi] (v0.3.5)
+- [`lib_definizioni.i`][lib_definizioni] (v0.3.6)
+- [`lib_verbi.i`][lib_verbi] (v0.3.10)
+
+## Translate Verb Responses for Distant Params
+
+Translated and substituted the following verb responses attributes:
+
+|         Attribute EN        |    Attribute IT    |             Text            |
+|-----------------------------|--------------------|-----------------------------|
+| `check_obj_not_distant_sg`  | `ogg1_distante_sg` | `$+1 è troppo distante.`    |
+| `check_obj_not_distant_pl`  | `ogg1_distante_pl` | `$+1 sono troppo distanti.` |
+| `check_obj2_not_distant_sg` | `ogg2_distante_sg` | `$+2 è troppo distante.`    |
+| `check_obj2_not_distant_pl` | `ogg2_distante_pl` | `$+2 sono troppo distanti.` |
+
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/26 (2)
 

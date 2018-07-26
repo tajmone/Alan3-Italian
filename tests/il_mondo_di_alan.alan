@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione v0.3.3 (2018/07/25)
+--  versione v0.3.4 (2018/07/26)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -84,6 +84,16 @@ THE targhetta IsA object AT pzzaIF.
       MAKE THIS già_letta.
   END VERB esamina.
 END THE targhetta.
+
+--==============================================================================
+-- Corvo Distante
+--==============================================================================
+-- Mi serve per testare le risposte dei verbi con oggetti 'distanti'...
+THE corvo IsA OBJECT AT pzzaIF.
+  IS distante.
+
+END THE corvo.
+
 
 --==============================================================================
 -- La Pozzanghera

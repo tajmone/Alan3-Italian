@@ -1,4 +1,4 @@
--- "_mygame_import.i" v0.3.2 (2018/07/25)
+-- "_mygame_import.i" v0.3.3 (2018/07/26)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -12,7 +12,7 @@
 --  * sitting    -> seduto
 --  * lying_down -> sdraiato
 --------------------------------------------------------------------------------
--- NOTA: Questo file andrà interamente rivisto a traduzione ultimata poiché non
+-- NOTA: Questo file andr?interamente rivisto a traduzione ultimata poich?non
 --       rispecchia i cambiamenti della traduzione!!!
 --------------------------------------------------------------------------------
 
@@ -290,10 +290,10 @@ THE mia_AT IsA blocco_definizioni
 	HAS check_obj2_reachable_sg "$+2 is out of your reach.".				-- empty_in, fill_with, put_in, take_from, tie_to			
 	HAS check_obj2_reachable_pl "$+2 are out of your reach.".
 	HAS check_obj_reachable_ask "$+1 can't reach $+2.".					-- ask_for
-	HAS check_obj_not_distant_sg "$+1 is too far away.".					-- (numerous)
-	HAS check_obj_not_distant_pl "$+1 are too far away.".
-	HAS check_obj2_not_distant_sg "$+2 is too far away.".					-- empty_in, fill_with, pour_in, put_in, show, take_from,  																 -- + throw_at, throw_in, throw_to
-	HAS check_obj2_not_distant_pl "$+2 are too far away.".
+	HAS ogg1_distante_sg "$+1 is too far away.".					-- (numerous)
+	HAS ogg1_distante_pl "$+1 are too far away.".
+	HAS ogg2_distante_sg "$+2 is too far away.".					-- empty_in, fill_with, pour_in, put_in, show, take_from,  																 -- + throw_at, throw_in, throw_to
+	HAS ogg2_distante_pl "$+2 are too far away.".
 	
 
 	-- checks for the hero sitting or lying_down:
@@ -409,7 +409,7 @@ THE mia_AT IsA blocco_definizioni
   -- c) Check della Locazione
   --    ---------------------
 
-  HAS check_locazione_illuminata "è troppo buio.".           -- (svariati verbi)
+  HAS check_locazione_illuminata "?troppo buio.".           -- (svariati verbi)
 
 
 	-- d) checks guarding against actions directed at the hero him-/herself
