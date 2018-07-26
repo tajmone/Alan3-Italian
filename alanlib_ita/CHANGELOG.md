@@ -11,6 +11,11 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/26 \(10\)](#20180726-10)
+    - [Verb Response Attributes Renaming](#verb-response-attributes-renaming)
+    - [Renamed Verb Responses](#renamed-verb-responses)
+        - [Changed Suffixes](#changed-suffixes)
+        - [Other Responses Renames](#other-responses-renames)
 - [2018/07/26 \(9\)](#20180726-9)
     - [Translate Verb Responses for Closed Obj2 Blocking the Action](#translate-verb-responses-for-closed-obj2-blocking-the-action)
 - [2018/07/26 \(8\)](#20180726-8)
@@ -179,6 +184,73 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/26 (10)
+
+- [`lib_classi.i`][lib_classi] (v0.3.6)
+- [`lib_definizioni.i`][lib_definizioni] (v0.3.13)
+- [`lib_verbi.i`][lib_verbi] (v0.3.17)
+
+## Verb Response Attributes Renaming
+
+Some small tweaks in naming convention (reasons why explained in Italian).
+
+## Renamed Verb Responses
+
+Rename ``imp_ogg_chiuso_*` to `imp_ogg1_chiuso_*`:
+
+|        Before        |       Renamed        |
+|----------------------|----------------------|
+| `imp_ogg_chiuso_sgm` | `imp_ogg1_chiuso_ms` |
+| `imp_ogg_chiuso_plm` | `imp_ogg1_chiuso_mp` |
+| `imp_ogg_chiuso_sgf` | `imp_ogg1_chiuso_fs` |
+| `imp_ogg_chiuso_plf` | `imp_ogg1_chiuso_fp` |
+
+> __MOTIVAZIONE__ — Negli attributi per le risposte dei verbi, `ogg1` e `ogg2` vengono adottati laddove la stringa del messaggio è diversa per il primo ed il secondo parametro (per via dell'uso di `$1` e `$2`, rispettamente).
+> 
+> In quegli attributi in cui il messaggio è adatto a qualsiasi parametro, si userà semplicemente `ogg`.
+> 
+> Si noti inoltre come nella rinomina degli attributi qui sopra si siano accorciati i suffissi. D'ora in poi si adotterà la seguente convenzione:
+> 
+> - `sg`/`pl`: per i messaggi disponibili in un'unica versione singolare e plurale per entrambi i generi,
+> - `ms`/`mp`/`fs`/`fp`: per quei messaggi disponibili in versione maschile-singolare, maschile-plurale, femminile-singolare e femminile-plurale, poiché richiedono un preciso accordo di genere e numero.
+> 
+> La versione precedente (a tre lettere) era poco intuitiva, mentre i suffissi di due lettere sono più immediati — inoltre, il contesto in cui appaiono non lascia dubbio circa il loro significato ed utilizzo.
+
+### Changed Suffixes
+
+Quindi, in base a quanto appena detto, tutti i suffissi degli attributi messaggi tradotti vengono rinominati secondo tale schema:
+
+|           | neutro | maschile | femminile |
+|-----------|--------|----------|-----------|
+| singolare | `_sg`  | `_ms`    | `_fs`     |
+| plurale   | `_pl`  | `_mp`    | `_fp`     |
+
+### Other Responses Renames
+
+Some other translated response-attributes:
+
+|            Before            |        Renamed         |
+|------------------------------|------------------------|
+| `parametro2_illegale_CON_sg` | `ogg2_illegale_CON_sg` |
+| `parametro2_illegale_CON_pl` | `ogg2_illegale_CON_pl` |
+
+> Come già detto, ci limiteremo a usare `ogg` o `ogg1`/`ogg2`, perché sono più brevi e rendono l'idea.
+
+|            Before            |     Renamed      |
+|------------------------------|------------------|
+| `check_locazione_illuminata` | `imp_luogo_buio` |
+
+> __MOTIVAZIONE__ — Il sistema adottato dalla libreria originale, che usa `check_` per distinguere tra i messaggi invocati duranti un verb check da quelli del corpo del verbo, poco si addice al sistema adottato dalla libreria italiana (poiché la limitazione linguistica a poter usare `$v`, come si fa con l'inglese, ne vanifica lo scopo). Cercheremo quindi di adottare un sistema di nomi degli attributi che sia indicativo della natura del messagio, anziché del controllo effettuato.
+> 
+> Ho usato qui (come anche in altri attributi) un prefisso `imp_` per indicare un problema che impedisce il compimento dell'azione. Probabilmente verrà successivamente cambiato poiché non mi soddisfa del tutto, ma per ora lo utilizzerò per accomunare certi tipi di messaggi.
+
+<!-- 
+| `xxx`                        | `xxx`   |
+ -->
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/26 (9)
 

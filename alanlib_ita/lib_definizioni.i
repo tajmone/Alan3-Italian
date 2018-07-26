@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.3.12 (2018/07/26)
+-- "lib_definizioni.i" v0.3.13 (2018/07/26)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -627,8 +627,8 @@ EVERY blocco_definizioni IsA LOCATION
   -- ------------------
   -- PREPOSIZIONE "CON"
   -- ------------------
-  HAS parametro2_illegale_CON_sg  "$+2 non è qualcosa con cui poter".           --> brucia_con
-  HAS parametro2_illegale_CON_pl  "$+2 non sono qualcosa con cui poter".
+  HAS ogg2_illegale_CON_sg  "$+2 non è qualcosa con cui poter".           --> brucia_con
+  HAS ogg2_illegale_CON_pl  "$+2 non sono qualcosa con cui poter".
 
   -- ==================
   -- PARAMETRI MANCANTI
@@ -676,7 +676,7 @@ EVERY blocco_definizioni IsA LOCATION
   --@TODO: migliora nome attributo e messaggio
 
   -- ORIGINAL EN:  check_current_loc_lit
-  HAS check_locazione_illuminata  "È troppo buio.".                             --> (svariati verbi)
+  HAS imp_luogo_buio  "È troppo buio.".                             --> (svariati verbi)
 
 
   -- ==============================
@@ -690,10 +690,10 @@ EVERY blocco_definizioni IsA LOCATION
   -- VERBI: apri, apri_con
 
   -- ORIGINAL EN:  check_obj_not_open_sg/pl
-  HAS ogg_già_aperto_sgm "$+1 è già aperto".
-  HAS ogg_già_aperto_plm "$+1 sono già aperti.".
-  HAS ogg_già_aperto_sgf "$+1 è già aperta".
-  HAS ogg_già_aperto_plf "$+1 sono già aperte.".
+  HAS ogg_già_aperto_ms "$+1 è già aperto".
+  HAS ogg_già_aperto_mp "$+1 sono già aperti.".
+  HAS ogg_già_aperto_fs "$+1 è già aperta".
+  HAS ogg_già_aperto_fp "$+1 sono già aperte.".
 
   -- -----------------------------------------
   -- Tentare di chiudere un oggetto già chiuso
@@ -701,10 +701,10 @@ EVERY blocco_definizioni IsA LOCATION
   -- VERBI: chiudi, chiudi_con
 
   -- ORIGINAL EN:  check_obj_open1_sg/pl
-  HAS ogg_già_chiuso_sgm "$+1 è già chiuso".
-  HAS ogg_già_chiuso_plm "$+1 sono già chiusi.".
-  HAS ogg_già_chiuso_sgf "$+1 è già chiusa".
-  HAS ogg_già_chiuso_plf "$+1 sono già chiuse.".
+  HAS ogg_già_chiuso_ms "$+1 è già chiuso".
+  HAS ogg_già_chiuso_mp "$+1 sono già chiusi.".
+  HAS ogg_già_chiuso_fs "$+1 è già chiusa".
+  HAS ogg_già_chiuso_fp "$+1 sono già chiuse.".
 
   -- -------------------------------------------
   -- Tentare di bloccare un oggetto già bloccato
@@ -712,10 +712,10 @@ EVERY blocco_definizioni IsA LOCATION
   -- VERBI: blocca, blocca_con
 
   -- ORIGINAL EN:  check_obj_not_locked_sg/pl
-  HAS ogg_già_bloccato_sgm "$+1 è già bloccato".
-  HAS ogg_già_bloccato_plm "$+1 sono già bloccati.".
-  HAS ogg_già_bloccato_sgf "$+1 è già bloccata".
-  HAS ogg_già_bloccato_plf "$+1 sono già bloccate.".
+  HAS ogg_già_bloccato_ms "$+1 è già bloccato".
+  HAS ogg_già_bloccato_mp "$+1 sono già bloccati.".
+  HAS ogg_già_bloccato_fs "$+1 è già bloccata".
+  HAS ogg_già_bloccato_fp "$+1 sono già bloccate.".
 
   -- ---------------------------------------------
   -- Tentare di sbloccare un oggetto già sbloccato
@@ -723,10 +723,10 @@ EVERY blocco_definizioni IsA LOCATION
   -- VERBI: sblocca, sblocca_con
 
   -- ORIGINAL EN:  check_obj_locked_sg/pl
-  HAS ogg_già_sbloccato_sgm "$+1 è già sbloccato".
-  HAS ogg_già_sbloccato_plm "$+1 sono già sbloccati.".
-  HAS ogg_già_sbloccato_sgf "$+1 è già sbloccata".
-  HAS ogg_già_sbloccato_plf "$+1 sono già sbloccate.".
+  HAS ogg_già_sbloccato_ms "$+1 è già sbloccato".
+  HAS ogg_già_sbloccato_mp "$+1 sono già sbloccati.".
+  HAS ogg_già_sbloccato_fs "$+1 è già sbloccata".
+  HAS ogg_già_sbloccato_fp "$+1 sono già sbloccate.".
 
 
   -- ---------------------------------------------
@@ -735,18 +735,18 @@ EVERY blocco_definizioni IsA LOCATION
   -- VERBI: empty (in/on), pour (in/on), look_in
 
   -- ORIGINAL EN:  check_obj_open2_sg/pl
-  HAS imp_ogg_chiuso_sgm "Non puoi farlo perché $+1 è chiuso".
-  HAS imp_ogg_chiuso_plm "Non puoi farlo perché $+1 sono chiusi.".
-  HAS imp_ogg_chiuso_sgf "Non puoi farlo perché $+1 è chiusa".
-  HAS imp_ogg_chiuso_plf "Non puoi farlo perché $+1 sono chiuse.".
+  HAS imp_ogg1_chiuso_ms "Non puoi farlo perché $+1 è chiuso".
+  HAS imp_ogg1_chiuso_mp "Non puoi farlo perché $+1 sono chiusi.".
+  HAS imp_ogg1_chiuso_fs "Non puoi farlo perché $+1 è chiusa".
+  HAS imp_ogg1_chiuso_fp "Non puoi farlo perché $+1 sono chiuse.".
 
   -- VERBI: empty_in, pour_in, put_in, throw_in
 
   -- ORIGINAL EN:  check_obj2_open_sg/pl
-  HAS imp_ogg2_chiuso_sgm "Non puoi farlo perché $+2 è chiuso".
-  HAS imp_ogg2_chiuso_plm "Non puoi farlo perché $+2 sono chiusi.".
-  HAS imp_ogg2_chiuso_sgf "Non puoi farlo perché $+2 è chiusa".
-  HAS imp_ogg2_chiuso_plf "Non puoi farlo perché $+2 sono chiuse.".
+  HAS imp_ogg2_chiuso_ms "Non puoi farlo perché $+2 è chiuso".
+  HAS imp_ogg2_chiuso_mp "Non puoi farlo perché $+2 sono chiusi.".
+  HAS imp_ogg2_chiuso_fs "Non puoi farlo perché $+2 è chiusa".
+  HAS imp_ogg2_chiuso_fp "Non puoi farlo perché $+2 sono chiuse.".
 
 
 
@@ -1017,7 +1017,7 @@ EVERY blocco_definizioni IsA LOCATION
   -- c) checking location states
   ------------------------------
   -- HAS check_current_loc_lit "It is too dark to see.".           -- (numerous)
-  -- TRADOTTO --> check_locazione_illuminata
+  -- TRADOTTO --> imp_luogo_buio
 
 
   -- d) checks guarding against actions directed at the hero him-/herself

@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.3.5 (2018/07/26)
+-- "lib_classi.i" v0.3.6 (2018/07/26)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -600,7 +600,7 @@ VERB remove
   CHECK THIS IN abbigliamento
     ELSE SAY check_obj_in_worn OF mia_AT.
   AND CURRENT LOCATION IS illuminato
-    ELSE SAY check_locazione_illuminata OF mia_AT.
+    ELSE SAY imp_luogo_buio OF mia_AT.
 
   DOES ONLY
 
@@ -931,7 +931,7 @@ EVERY dispositivo IsA OBJECT
           ELSE SAY check_device_not_on_pl OF mia_AT.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND THIS IS raggiungibile AND THIS IS NOT distante
       ELSE
         IF THIS IS NOT raggiungibile
@@ -963,7 +963,7 @@ EVERY dispositivo IsA OBJECT
           ELSE SAY check_device_on_pl OF mia_AT.
          END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND THIS IS raggiungibile AND THIS IS NOT distante
       ELSE
         IF THIS IS NOT raggiungibile
@@ -990,7 +990,7 @@ EVERY dispositivo IsA OBJECT
 
   VERB switch
     CHECK CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND THIS IS raggiungibile AND THIS IS NOT distante
       ELSE
         IF THIS IS NOT raggiungibile

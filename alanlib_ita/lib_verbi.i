@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.3.16 (2018/07/26)
+-- "lib_verbi.i" v0.3.17 (2018/07/26)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -439,7 +439,7 @@ ADD TO EVERY OBJECT
         END IF.
         "aprire."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -460,13 +460,13 @@ ADD TO EVERY OBJECT
         IF ogg IS NOT femminile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg_già_aperto_sgm OF mia_AT.
-              ELSE SAY ogg_già_aperto_plm OF mia_AT.
+              THEN SAY ogg_già_aperto_ms OF mia_AT.
+              ELSE SAY ogg_già_aperto_mp OF mia_AT.
             END IF.
           ELSE
             IF ogg IS NOT plurale
-              THEN SAY ogg_già_aperto_sgf OF mia_AT.
-              ELSE SAY ogg_già_aperto_plf OF mia_AT.
+              THEN SAY ogg_già_aperto_fs OF mia_AT.
+              ELSE SAY ogg_già_aperto_fp OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -528,8 +528,8 @@ SYNTAX apri_con = apri (ogg) con (strum)
     ELSE
       IF strum IS NOT plurale
         --  "$+1 non [è/sono] qualcosa con cui poter"
-        THEN SAY parametro2_illegale_CON_sg OF mia_AT.
-        ELSE SAY parametro2_illegale_CON_pl OF mia_AT.
+        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
       END IF.
       "aprire." -- @TODO: "aprire altre cose"??                                 IMPROVE!
 
@@ -552,14 +552,14 @@ ADD TO EVERY OBJECT
         ELSE
           IF strum IS NOT plurale
             --  "$+1 non [è/sono] qualcosa con cui poter"
-            THEN SAY parametro2_illegale_CON_sg OF mia_AT.
-            ELSE SAY parametro2_illegale_CON_pl OF mia_AT.
+            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
           END IF.
           "aprire." -- @TODO: ".. altre cose"??                                 IMPROVE!
       AND ogg <> strum
         ELSE SAY check_obj_not_obj2_with OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
@@ -582,13 +582,13 @@ ADD TO EVERY OBJECT
           IF ogg IS NOT femminile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg_già_aperto_sgm OF mia_AT.
-                ELSE SAY ogg_già_aperto_plm OF mia_AT.
+                THEN SAY ogg_già_aperto_ms OF mia_AT.
+                ELSE SAY ogg_già_aperto_mp OF mia_AT.
               END IF.
             ELSE
               IF ogg IS NOT plurale
-                THEN SAY ogg_già_aperto_sgf OF mia_AT.
-                ELSE SAY ogg_già_aperto_plf OF mia_AT.
+                THEN SAY ogg_già_aperto_fs OF mia_AT.
+                ELSE SAY ogg_già_aperto_fp OF mia_AT.
               END IF.
           END IF.
       DOES
@@ -684,7 +684,7 @@ ADD TO EVERY OBJECT
         END IF.
         "attraversare."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -755,7 +755,7 @@ ADD TO EVERY liquido
         END IF.
         "bere."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND liq IS raggiungibile AND liq IS NOT distante
       ELSE
         IF liq IS NOT raggiungibile
@@ -876,7 +876,7 @@ ADD TO EVERY OBJECT
         END IF.
         "bloccare."
     AND CURRENT LOCATION IS illuminato -- @TODO:                                TRANSLATE!
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -897,13 +897,13 @@ ADD TO EVERY OBJECT
         IF ogg IS NOT femminile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg_già_bloccato_sgm OF mia_AT.
-              ELSE SAY ogg_già_bloccato_plm OF mia_AT.
+              THEN SAY ogg_già_bloccato_ms OF mia_AT.
+              ELSE SAY ogg_già_bloccato_mp OF mia_AT.
             END IF.
           ELSE
             IF ogg IS NOT plurale
-              THEN SAY ogg_già_bloccato_sgf OF mia_AT.
-              ELSE SAY ogg_già_bloccato_plf OF mia_AT.
+              THEN SAY ogg_già_bloccato_fs OF mia_AT.
+              ELSE SAY ogg_già_bloccato_fp OF mia_AT.
             END IF.
         END IF.
   DOES
@@ -950,8 +950,8 @@ SYNTAX blocca_con = blocca (ogg) con (chiave)
     ELSE
       IF chiave IS NOT plurale
         --  "$+1 non [è/sono] qualcosa con cui poter"
-        THEN SAY parametro2_illegale_CON_sg OF mia_AT.
-        ELSE SAY parametro2_illegale_CON_pl OF mia_AT.
+        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
       END IF.
       "bloccare." -- @TODO: ".. altre cose"??                                   IMPROVE!
 
@@ -973,26 +973,26 @@ ADD TO EVERY OBJECT
         ELSE
           IF chiave IS NOT plurale
             --  "$+1 non [è/sono] qualcosa con cui poter"
-            THEN SAY parametro2_illegale_CON_sg OF mia_AT.
-            ELSE SAY parametro2_illegale_CON_pl OF mia_AT.
+            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
           END IF.
           "bloccare." -- @TODO: ".. altre cose"??                               IMPROVE!
       AND ogg <> chiave
         ELSE SAY check_obj_not_obj2_with OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg IS NOT bloccato
         ELSE
           IF ogg IS NOT femminile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg_già_bloccato_sgm OF mia_AT.
-                ELSE SAY ogg_già_bloccato_plm OF mia_AT.
+                THEN SAY ogg_già_bloccato_ms OF mia_AT.
+                ELSE SAY ogg_già_bloccato_mp OF mia_AT.
               END IF.
             ELSE
               IF ogg IS NOT plurale
-                THEN SAY ogg_già_bloccato_sgf OF mia_AT.
-                ELSE SAY ogg_già_bloccato_plf OF mia_AT.
+                THEN SAY ogg_già_bloccato_fs OF mia_AT.
+                ELSE SAY ogg_già_bloccato_fp OF mia_AT.
               END IF.
           END IF.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -1060,7 +1060,7 @@ ADD TO EVERY OBJECT
         END IF.
         "bruciare."
     AND CURRENT LOCATION IS illuminato -- @TODO:                                TRANSLATE!
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     DOES
       SAY specificare_CON_cosa OF mia_AT. "bruciare" SAY THE ogg. "."
    -- "You must state what you want to burn" SAY THE ogg. "with."
@@ -1090,8 +1090,8 @@ SYNTAX brucia_con = brucia (ogg) 'con' (strum)
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
-        THEN SAY parametro2_illegale_CON_sg OF mia_AT.
-        ELSE SAY parametro2_illegale_CON_pl OF mia_AT.
+        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
       END IF.
       "bruciare." -- @TODO: ".. altre cose"??                                   IMPROVE!
 
@@ -1123,7 +1123,7 @@ ADD TO EVERY OBJECT
         --> @TODO!!                                                             TRANSLATE!
         ELSE SAY check_obj2_in_hero OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
@@ -1253,7 +1253,7 @@ ADD TO EVERY OBJECT
         END IF.
         "chiudere."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -1274,13 +1274,13 @@ ADD TO EVERY OBJECT
         IF ogg IS NOT femminile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg_già_chiuso_sgm OF mia_AT.
-              ELSE SAY ogg_già_chiuso_plm OF mia_AT.
+              THEN SAY ogg_già_chiuso_ms OF mia_AT.
+              ELSE SAY ogg_già_chiuso_mp OF mia_AT.
             END IF.
           ELSE
             IF ogg IS NOT plurale
-              THEN SAY ogg_già_chiuso_sgf OF mia_AT.
-              ELSE SAY ogg_già_chiuso_plf OF mia_AT.
+              THEN SAY ogg_già_chiuso_fs OF mia_AT.
+              ELSE SAY ogg_già_chiuso_fp OF mia_AT.
             END IF.
         END IF.
 
@@ -1341,7 +1341,7 @@ ADD TO EVERY OBJECT
       AND strum IN hero
         ELSE SAY check_obj2_in_hero OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
@@ -1362,13 +1362,13 @@ ADD TO EVERY OBJECT
           IF ogg IS NOT femminile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg_già_chiuso_sgm OF mia_AT.
-                ELSE SAY ogg_già_chiuso_plm OF mia_AT.
+                THEN SAY ogg_già_chiuso_ms OF mia_AT.
+                ELSE SAY ogg_già_chiuso_mp OF mia_AT.
               END IF.
             ELSE
               IF ogg IS NOT plurale
-                THEN SAY ogg_già_chiuso_sgf OF mia_AT.
-                ELSE SAY ogg_già_chiuso_plf OF mia_AT.
+                THEN SAY ogg_già_chiuso_fs OF mia_AT.
+                ELSE SAY ogg_già_chiuso_fp OF mia_AT.
               END IF.
           END IF.
 
@@ -1552,7 +1552,7 @@ ADD TO EVERY OBJECT
         --> @TODO!!                                                             TRANSLATE!
         ELSE SAY check_obj2_not_hero3 OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg NOT IN ricevente
         ELSE
           IF ricevente IS NOT plurale
@@ -1811,7 +1811,7 @@ ADD TO EVERY THING
           ELSE SAY check_obj_suitable_examine_pl OF mia_AT.
         END IF.
         AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS NOT scenario
       ELSE
         IF ogg IS NOT plurale
@@ -1878,7 +1878,7 @@ ADD TO EVERY THING
     AND ogg <> hero
       ELSE SAY check_obj_not_hero6 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -2045,7 +2045,7 @@ ADD TO EVERY OBJECT
         END IF.
         "leggere."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT plurale
@@ -2104,7 +2104,7 @@ ADD TO EVERY OBJECT
       --> @TODO!!                                                               TRANSLATE!
       ELSE SAY check_obj_takeable OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND cibo IS raggiungibile AND cibo IS NOT distante
       ELSE
         IF cibo IS NOT raggiungibile
@@ -2220,7 +2220,7 @@ ADD TO EVERY THING
       --> @TODO!!                                                               TRANSLATE!
       ELSE SAY check_obj_not_hero1 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS NOT scenario
       ELSE
         IF THIS IS NOT plurale
@@ -2394,7 +2394,7 @@ ADD TO EVERY THING
         --> @TODO!!                                                             TRANSLATE!
         ELSE SAY check_obj_not_obj2_from OF mia_AT.  --#-> "It doesn't make sense to $v something from itself."
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg IS NOT scenario
         ELSE
           IF ogg IS NOT plurale
@@ -2568,7 +2568,7 @@ ADD TO EVERY OBJECT
         END IF.
         "rompere."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -2647,7 +2647,7 @@ ADD TO EVERY OBJECT
         --> @TODO!!                                                             TRANSLATE!
         ELSE SAY check_obj_not_obj2_with OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND strum IN hero
         --> @TODO!!                                                             TRANSLATE!
         ELSE SAY check_obj2_in_hero OF mia_AT.
@@ -2708,7 +2708,7 @@ ADD TO EVERY OBJECT
           ELSE SAY check_obj_suitable_pl OF mia_AT.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -2729,13 +2729,13 @@ ADD TO EVERY OBJECT
         IF ogg IS NOT femminile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg_già_sbloccato_sgm OF mia_AT.
-              ELSE SAY ogg_già_sbloccato_plm OF mia_AT.
+              THEN SAY ogg_già_sbloccato_ms OF mia_AT.
+              ELSE SAY ogg_già_sbloccato_mp OF mia_AT.
             END IF.
           ELSE
             IF ogg IS NOT plurale
-              THEN SAY ogg_già_sbloccato_sgf OF mia_AT.
-              ELSE SAY ogg_già_sbloccato_plf OF mia_AT.
+              THEN SAY ogg_già_sbloccato_fs OF mia_AT.
+              ELSE SAY ogg_già_sbloccato_fp OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -2797,7 +2797,7 @@ ADD TO EVERY OBJECT
       AND ogg <> chiave
         ELSE SAY check_obj_not_obj2_with OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
@@ -2818,13 +2818,13 @@ ADD TO EVERY OBJECT
           IF ogg IS NOT femminile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg_già_sbloccato_sgm OF mia_AT.
-                ELSE SAY ogg_già_sbloccato_plm OF mia_AT.
+                THEN SAY ogg_già_sbloccato_ms OF mia_AT.
+                ELSE SAY ogg_già_sbloccato_mp OF mia_AT.
               END IF.
             ELSE
               IF ogg IS NOT plurale
-                THEN SAY ogg_già_sbloccato_sgf OF mia_AT.
-                ELSE SAY ogg_già_sbloccato_plf OF mia_AT.
+                THEN SAY ogg_già_sbloccato_fs OF mia_AT.
+                ELSE SAY ogg_già_sbloccato_fp OF mia_AT.
               END IF.
           END IF.
       AND chiave = chiave_abbinata OF ogg
@@ -2868,7 +2868,7 @@ ADD TO EVERY OBJECT
       AND ogg IS scrivibile
         ELSE SAY check_obj_writeable OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
@@ -2966,7 +2966,7 @@ VERB spogliati
   CHECK mia_AT CAN spogliarsi
     ELSE SAY azione_bloccata OF mia_AT.   --# "Non puoi farlo."
   AND CURRENT LOCATION IS illuminato
-    ELSE SAY check_locazione_illuminata OF mia_AT. --# "È troppo buio."
+    ELSE SAY imp_luogo_buio OF mia_AT. --# "È troppo buio."
   --@TODO: modifica frase (non mi piace):
   DOES "Ripensandoci, spogliarsi qui e ora non è una buona idea."
 --DOES "You don't feel like undressing is a good idea right now."
@@ -3018,7 +3018,7 @@ ADD TO EVERY OBJECT
           ELSE SAY check_obj_suitable_with_pl OF mia_AT.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -3166,7 +3166,7 @@ ADD TO EVERY THING
     AND dest <> hero
       ELSE SAY check_obj_not_hero4 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting3 OF mia_AT.
     AND hero IS NOT sdraiato
@@ -3235,7 +3235,7 @@ ADD TO EVERY OBJECT
         END IF.
         "vendere."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     DOES
       "Qui nessuno è interessanto ad acquistare" SAY THE merce. "."
    -- "There's nobody here who would be interested in buying" SAY THE merce. "."
@@ -3429,7 +3429,7 @@ ADD TO EVERY ACTOR
       AND ogg NOT IN hero
         ELSE SAY check_obj2_not_in_hero3 OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND png IS NOT distante
         ELSE
           IF png IS NOT plurale
@@ -3532,7 +3532,7 @@ ADD TO EVERY THING
     AND bersaglio NOT IN abbigliamento
       ELSE SAY check_obj_not_in_worn2 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
       ELSE
         IF bersaglio IS NOT raggiungibile
@@ -3610,7 +3610,7 @@ ADD TO EVERY THING
       AND bersaglio NOT IN abbigliamento
         ELSE SAY check_obj_not_in_worn2 OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
         ELSE
           IF bersaglio IS NOT raggiungibile
@@ -3675,7 +3675,7 @@ ADD TO EVERY OBJECT
     AND ogg IS prendibile
       ELSE SAY check_obj_takeable OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -3785,7 +3785,7 @@ ADD TO EVERY THING
     AND ogg <> hero
       ELSE SAY check_obj_not_hero1 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting2 OF mia_AT.
     AND hero IS NOT sdraiato
@@ -3839,7 +3839,7 @@ ADD TO EVERY OBJECT
         END IF.
         "pulire."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -3900,7 +3900,7 @@ ADD TO EVERY OBJECT
         ELSE SAY check_obj_suitable_pl OF mia_AT.
       END IF.
   AND CURRENT LOCATION IS illuminato
-    ELSE SAY check_locazione_illuminata OF mia_AT.
+    ELSE SAY imp_luogo_buio OF mia_AT.
   AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -3954,7 +3954,7 @@ ADD TO EVERY supporto
     CHECK mia_AT CAN climb_on
       ELSE SAY azione_bloccata OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND superficie IS raggiungibile AND superficie IS NOT distante
       ELSE
         IF superficie IS NOT raggiungibile
@@ -4030,7 +4030,7 @@ ADD TO EVERY THING
           END IF.
           "consultare."
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND fonte IS raggiungibile AND fonte IS NOT distante
         ELSE
           IF fonte IS NOT raggiungibile
@@ -4134,7 +4134,7 @@ ADD TO EVERY OBJECT
         END IF.
         "tagliare."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     DOES "You need to specify what you want to cut" SAY THE ogg. "with."
     END VERB.
 END ADD TO.
@@ -4191,7 +4191,7 @@ ADD TO EVERY OBJECT
       AND strum IN hero
         ELSE SAY check_obj2_in_hero OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
@@ -4230,7 +4230,7 @@ VERB dance
   CHECK mia_AT CAN danzare
     ELSE SAY azione_bloccata OF mia_AT.
   AND CURRENT LOCATION IS illuminato
-    ELSE SAY check_locazione_illuminata OF mia_AT.
+    ELSE SAY imp_luogo_buio OF mia_AT.
   AND hero IS NOT seduto
     ELSE SAY check_hero_not_sitting1 OF mia_AT.
   AND hero IS NOT sdraiato
@@ -4266,7 +4266,7 @@ ADD TO EVERY OBJECT
     CHECK mia_AT CAN scavare
       ELSE SAY azione_bloccata OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -4309,7 +4309,7 @@ VERB dive
   CHECK mia_AT CAN tuffarsi
     ELSE SAY azione_bloccata OF mia_AT.
   AND CURRENT LOCATION IS illuminato
-    ELSE SAY check_locazione_illuminata OF mia_AT.
+    ELSE SAY imp_luogo_buio OF mia_AT.
   AND hero IS NOT seduto
     ELSE SAY check_hero_not_sitting3 OF mia_AT.
   AND hero IS NOT sdraiato
@@ -4351,7 +4351,7 @@ ADD TO EVERY OBJECT
     CHECK mia_AT CAN tuffarsi_in
       ELSE SAY azione_bloccata OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting3 OF mia_AT.
     AND hero IS NOT sdraiato
@@ -4409,7 +4409,7 @@ ADD TO EVERY OBJECT
         END IF.
         "guidare."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND veicolo IS raggiungibile AND veicolo IS NOT distante
       ELSE
         IF veicolo IS NOT raggiungibile
@@ -4511,7 +4511,7 @@ ADD TO EVERY OBJECT
     AND ogg IS prendibile
       ELSE SAY check_obj_takeable OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -4532,13 +4532,13 @@ ADD TO EVERY OBJECT
         IF ogg IS NOT femminile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY imp_ogg_chiuso_sgm OF mia_AT.
-              ELSE SAY imp_ogg_chiuso_plm OF mia_AT.
+              THEN SAY imp_ogg1_chiuso_ms OF mia_AT.
+              ELSE SAY imp_ogg1_chiuso_mp OF mia_AT.
             END IF.
           ELSE
             IF ogg IS NOT plurale
-              THEN SAY imp_ogg_chiuso_sgf OF mia_AT.
-              ELSE SAY imp_ogg_chiuso_plf OF mia_AT.
+              THEN SAY imp_ogg1_chiuso_fs OF mia_AT.
+              ELSE SAY imp_ogg1_chiuso_fp OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -4645,7 +4645,7 @@ ADD TO EVERY OBJECT
       AND cont NOT IN ogg
         ELSE SAY check_cont_not_in_obj OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
@@ -4687,13 +4687,13 @@ ADD TO EVERY OBJECT
           IF ogg IS NOT femminile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY imp_ogg_chiuso_sgm OF mia_AT.
-                ELSE SAY imp_ogg_chiuso_plm OF mia_AT.
+                THEN SAY imp_ogg1_chiuso_ms OF mia_AT.
+                ELSE SAY imp_ogg1_chiuso_mp OF mia_AT.
               END IF.
             ELSE
               IF ogg IS NOT plurale
-                THEN SAY imp_ogg_chiuso_sgf OF mia_AT.
-                ELSE SAY imp_ogg_chiuso_plf OF mia_AT.
+                THEN SAY imp_ogg1_chiuso_fs OF mia_AT.
+                ELSE SAY imp_ogg1_chiuso_fp OF mia_AT.
               END IF.
           END IF.
       AND cont IS aperto
@@ -4701,13 +4701,13 @@ ADD TO EVERY OBJECT
           IF cont IS NOT femminile
             THEN
               IF cont IS NOT plurale
-                THEN SAY imp_ogg2_chiuso_sgm OF mia_AT.
-                ELSE SAY imp_ogg2_chiuso_plm OF mia_AT.
+                THEN SAY imp_ogg2_chiuso_ms OF mia_AT.
+                ELSE SAY imp_ogg2_chiuso_mp OF mia_AT.
               END IF.
             ELSE
               IF cont IS NOT plurale
-                THEN SAY imp_ogg2_chiuso_sgf OF mia_AT.
-                ELSE SAY imp_ogg2_chiuso_plf OF mia_AT.
+                THEN SAY imp_ogg2_chiuso_fs OF mia_AT.
+                ELSE SAY imp_ogg2_chiuso_fp OF mia_AT.
               END IF.
           END IF.
       DOES
@@ -4796,7 +4796,7 @@ ADD TO EVERY THING
       AND ogg IS prendibile
         ELSE SAY check_obj_takeable OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
@@ -4832,13 +4832,13 @@ ADD TO EVERY THING
           IF ogg IS NOT femminile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY imp_ogg_chiuso_sgm OF mia_AT.
-                ELSE SAY imp_ogg_chiuso_plm OF mia_AT.
+                THEN SAY imp_ogg1_chiuso_ms OF mia_AT.
+                ELSE SAY imp_ogg1_chiuso_mp OF mia_AT.
               END IF.
             ELSE
               IF ogg IS NOT plurale
-                THEN SAY imp_ogg_chiuso_sgf OF mia_AT.
-                ELSE SAY imp_ogg_chiuso_plf OF mia_AT.
+                THEN SAY imp_ogg1_chiuso_fs OF mia_AT.
+                ELSE SAY imp_ogg1_chiuso_fp OF mia_AT.
               END IF.
           END IF.
       DOES
@@ -5077,7 +5077,7 @@ ADD TO EVERY OBJECT
         END IF.
         "riempire."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     DOES
       "You have to say what you want to fill" SAY THE cont. "with."
     END VERB.
@@ -5133,7 +5133,7 @@ ADD TO EVERY OBJECT
             ELSE SAY check_obj2_suitable_with_pl OF mia_AT.
           END IF.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND sostanza NOT IN cont
         ELSE SAY check_obj_not_in_cont2 OF mia_AT.
       AND sostanza IS prendibile
@@ -5205,7 +5205,7 @@ ADD TO EVERY THING
     AND ogg <> hero
       ELSE SAY check_obj_not_hero4 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg NOT AT hero
       ELSE
         IF ogg IS NOT plurale
@@ -5250,7 +5250,7 @@ ADD TO EVERY arma
         END IF.
 
   AND CURRENT LOCATION IS illuminato
-    ELSE SAY check_locazione_illuminata OF mia_AT.
+    ELSE SAY imp_luogo_buio OF mia_AT.
   DOES
     "You fire" SAY THE arma. "into the air."
   END VERB.
@@ -5305,7 +5305,7 @@ ADD TO EVERY arma
             ELSE SAY ogg1_distante_pl OF mia_AT.
           END IF.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       DOES
         "Resorting to violence is not the solution here."
   END VERB.
@@ -5332,7 +5332,7 @@ ADD TO EVERY THING
     AND bersaglio <> hero
       ELSE SAY check_obj_not_hero2 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     DOES
       "Resorting to violence is not the solution here."
   END VERB.
@@ -5368,7 +5368,7 @@ ADD TO EVERY OBJECT
     CHECK mia_AT CAN fix
       ELSE SAY azione_bloccata OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS rotto
       ELSE
         IF ogg IS NOT plurale
@@ -5424,7 +5424,7 @@ ADD TO EVERY THING
     AND png <> hero
       ELSE SAY check_obj_not_hero1 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND png NOT AT hero
       ELSE
         IF png IS NOT plurale
@@ -5483,7 +5483,7 @@ ADD TO EVERY THING
     AND ogg <> hero
       ELSE SAY check_obj_not_hero5 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -5662,7 +5662,7 @@ ADD TO EVERY OBJECT
     CHECK mia_AT CAN saltare_in
       ELSE SAY azione_bloccata OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND cont IS raggiungibile AND cont IS NOT distante
       ELSE
         IF cont IS NOT raggiungibile
@@ -5715,7 +5715,7 @@ ADD TO EVERY OBJECT
     CHECK mia_AT CAN saltare_su
       ELSE SAY azione_bloccata OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting1 OF mia_AT.
     AND hero IS NOT sdraiato
@@ -5767,7 +5767,7 @@ ADD TO EVERY THING
     AND bersaglio NOT IN abbigliamento
       ELSE SAY check_obj_not_in_worn2 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
       ELSE
         IF bersaglio IS NOT raggiungibile
@@ -5826,7 +5826,7 @@ ADD TO EVERY ACTOR
     AND vittima <> hero
       ELSE SAY check_obj_not_hero2 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     DOES "You have to state what you want to kill" SAY THE vittima. "with."
   END VERB.
 END ADD TO.
@@ -5869,7 +5869,7 @@ ADD TO EVERY ACTOR
       AND arma IN hero
         ELSE SAY check_obj2_in_hero OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND vittima IS NOT distante
         ELSE
           IF vittima IS NOT plurale
@@ -5921,7 +5921,7 @@ ADD TO EVERY THING
     AND ogg <> hero
       ELSE SAY check_obj_not_hero6 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -5979,7 +5979,7 @@ ADD TO EVERY OBJECT
           ELSE SAY check_obj_suitable_on_pl OF mia_AT.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -6086,7 +6086,7 @@ ADD TO EVERY OBJECT
     AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down4 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND cont IS raggiungibile AND cont IS NOT distante
       ELSE
         IF cont IS NOT raggiungibile
@@ -6150,7 +6150,7 @@ ADD TO EVERY OBJECT
     AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down4 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND superficie IS raggiungibile AND superficie IS NOT distante
       ELSE
         IF superficie IS NOT raggiungibile
@@ -6225,7 +6225,7 @@ ADD TO EVERY OBJECT
         END IF.
         "sollevare." --# alzare?
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg NOT IN hero
       ELSE SAY check_obj_not_in_hero1 OF mia_AT.
     AND ogg IS spostabile
@@ -6436,7 +6436,7 @@ ADD TO EVERY THING
     AND bulk IS esaminabile
       ELSE SAY check_obj_suitable_there OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND bulk <> hero
       ELSE SAY check_obj_not_hero7 OF mia_AT.
     DOES
@@ -6473,19 +6473,19 @@ ADD TO EVERY OBJECT
     AND cont IS esaminabile
       ELSE SAY check_obj_suitable_there OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND cont IS aperto
       ELSE
         IF cont IS NOT femminile
           THEN
             IF cont IS NOT plurale
-              THEN SAY imp_ogg_chiuso_sgm OF mia_AT.
-              ELSE SAY imp_ogg_chiuso_plm OF mia_AT.
+              THEN SAY imp_ogg1_chiuso_ms OF mia_AT.
+              ELSE SAY imp_ogg1_chiuso_mp OF mia_AT.
             END IF.
           ELSE
             IF cont IS NOT plurale
-              THEN SAY imp_ogg_chiuso_sgf OF mia_AT.
-              ELSE SAY imp_ogg_chiuso_plf OF mia_AT.
+              THEN SAY imp_ogg1_chiuso_fs OF mia_AT.
+              ELSE SAY imp_ogg1_chiuso_fp OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -6525,7 +6525,7 @@ ADD TO EVERY OBJECT
           ELSE SAY check_obj_suitable_look_out_pl OF mia_AT.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     DOES
       IF ogg IS NOT plurale
         THEN "That's not"
@@ -6559,7 +6559,7 @@ ADD TO EVERY OBJECT
     AND bulk IS esaminabile
       ELSE SAY check_obj_suitable_look_through OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     DOES
       "You can't see through" SAY THE bulk. "."
   END VERB.
@@ -6591,7 +6591,7 @@ ADD TO EVERY THING
     AND bulk <> hero
       ELSE SAY check_obj_not_hero8 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     DOES
       "You notice nothing unusual under" SAY THE bulk. "."
   END VERB.
@@ -6775,7 +6775,7 @@ ADD TO EVERY OBJECT
           ELSE SAY check_obj_suitable_pl OF mia_AT.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     DOES "You must state what you want to pry" SAY THE ogg. "with."
   END VERB.
 END ADD TO.
@@ -6828,7 +6828,7 @@ VERB pry_with
     AND strum IN hero
       ELSE SAY check_obj2_in_hero OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -6881,7 +6881,7 @@ ADD TO EVERY OBJECT
     AND ogg IS inanimato
       ELSE SAY check_obj_inanimate1 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -6938,7 +6938,7 @@ ADD TO EVERY THING
     AND ogg IS inanimato
       ELSE SAY check_obj_inanimate1 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -7005,7 +7005,7 @@ ADD TO EVERY THING
       AND ogg IS inanimato
         ELSE SAY check_obj_inanimate1 OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
@@ -7052,7 +7052,7 @@ ADD TO EVERY OBJECT
     AND ogg IN HERO
       ELSE SAY check_obj_in_hero OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     DOES
       "You must state where you want to put"
 
@@ -7113,7 +7113,7 @@ ADD TO EVERY OBJECT
       AND ogg IS prendibile
         ELSE SAY check_obj_takeable OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
@@ -7165,13 +7165,13 @@ ADD TO EVERY OBJECT
           IF cont IS NOT femminile
             THEN
               IF cont IS NOT plurale
-                THEN SAY imp_ogg2_chiuso_sgm OF mia_AT.
-                ELSE SAY imp_ogg2_chiuso_plm OF mia_AT.
+                THEN SAY imp_ogg2_chiuso_ms OF mia_AT.
+                ELSE SAY imp_ogg2_chiuso_mp OF mia_AT.
               END IF.
             ELSE
               IF cont IS NOT plurale
-                THEN SAY imp_ogg2_chiuso_sgf OF mia_AT.
-                ELSE SAY imp_ogg2_chiuso_plf OF mia_AT.
+                THEN SAY imp_ogg2_chiuso_fs OF mia_AT.
+                ELSE SAY imp_ogg2_chiuso_fp OF mia_AT.
               END IF.
           END IF.
       DOES
@@ -7239,7 +7239,7 @@ ADD TO EVERY OBJECT
       AND bulk <> hero
           ELSE SAY check_obj2_not_hero2 OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-            ELSE SAY check_locazione_illuminata OF mia_AT.
+            ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
@@ -7314,7 +7314,7 @@ ADD TO EVERY OBJECT
       AND ogg IS prendibile
         ELSE SAY check_obj_takeable OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg NOT IN superficie
         ELSE
           IF ogg IS NOT plurale
@@ -7484,7 +7484,7 @@ ADD TO EVERY THING
     AND ogg IS inanimato
       ELSE SAY check_obj_inanimate2 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -7643,7 +7643,7 @@ ADD TO EVERY THING
     AND ogg IS inanimato
       ELSE SAY check_obj_inanimate1 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -7740,7 +7740,7 @@ ADD TO EVERY THING
     AND ogg IS inanimato
       ELSE SAY check_obj_inanimate1 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -7796,7 +7796,7 @@ ADD TO EVERY OBJECT
     AND ogg IS spostabile
       ELSE SAY check_obj_movable OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -7856,7 +7856,7 @@ ADD TO EVERY THING
     AND bersaglio <> hero
       ELSE SAY check_obj_not_hero2 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND bersaglio NOT IN hero
       ELSE SAY check_obj_not_in_hero1 OF mia_AT.
     AND bersaglio NOT IN abbigliamento
@@ -7935,7 +7935,7 @@ ADD TO EVERY THING
       AND bersaglio <> arma
         ELSE SAY check_obj_not_obj2_with OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND bersaglio NOT IN hero
         ELSE SAY check_obj_not_in_hero1 OF mia_AT.
       AND bersaglio NOT IN abbigliamento
@@ -8019,7 +8019,7 @@ ADD TO EVERY OBJECT
       AND ogg IN hero
         ELSE SAY check_obj_in_hero OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND png IS NOT distante
         ELSE
           IF png IS NOT plurale
@@ -8097,7 +8097,7 @@ ADD TO EVERY liquido
         END IF.
         "sorseggiare."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND liq IS raggiungibile AND liq IS NOT distante
       ELSE
         IF liq IS NOT raggiungibile
@@ -8214,7 +8214,7 @@ ADD TO EVERY supporto
     AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting4 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND superficie IS raggiungibile AND superficie IS NOT distante
       ELSE
         IF superficie IS NOT raggiungibile
@@ -8337,7 +8337,7 @@ ADD TO EVERY THING
           ELSE SAY check_obj_suitable_pl OF mia_AT.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -8412,7 +8412,7 @@ ADD TO EVERY supporto
     CHECK mia_AT CAN stand_on
       ELSE SAY azione_bloccata OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND superficie IS raggiungibile AND superficie IS NOT distante
       ELSE
         IF superficie IS NOT raggiungibile
@@ -8461,7 +8461,7 @@ VERB swim
   AND hero IS NOT sdraiato
     ELSE SAY check_hero_not_lying_down1 OF mia_AT.
   AND CURRENT LOCATION IS illuminato
-    ELSE SAY check_locazione_illuminata OF mia_AT.
+    ELSE SAY imp_luogo_buio OF mia_AT.
   DOES
     "There is no water suitable for swimming here."
 END VERB.
@@ -8496,7 +8496,7 @@ ADD TO EVERY OBJECT
     AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down3 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND liq IS raggiungibile AND liq IS NOT distante
       ELSE
         IF liq IS NOT raggiungibile
@@ -8691,7 +8691,7 @@ ADD TO EVERY OBJECT
         END IF.
         "assaggiare."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -8751,7 +8751,7 @@ ADD TO EVERY OBJECT
         END IF.
         "strappare."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -8916,7 +8916,7 @@ ADD TO EVERY OBJECT
     AND proiettile IS prendibile
       ELSE SAY check_obj_takeable OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND proiettile IS raggiungibile AND proiettile IS NOT distante
       ELSE
         IF proiettile IS NOT raggiungibile
@@ -9002,7 +9002,7 @@ ADD TO EVERY OBJECT
       AND bersaglio <> hero
         ELSE SAY check_obj2_not_hero1 OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND proiettile IS raggiungibile AND proiettile IS NOT distante
         ELSE
           IF proiettile IS NOT raggiungibile
@@ -9116,7 +9116,7 @@ ADD TO EVERY OBJECT
       AND ricevente <> hero
         ELSE SAY check_obj2_not_hero1 OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND proiettile IS raggiungibile AND proiettile IS NOT distante
         ELSE
           IF proiettile IS NOT raggiungibile
@@ -9199,7 +9199,7 @@ ADD TO EVERY OBJECT
       AND cont NOT IN hero
         ELSE SAY check_obj2_not_in_hero1 OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-          ELSE SAY check_locazione_illuminata OF mia_AT.
+          ELSE SAY imp_luogo_buio OF mia_AT.
       AND proiettile NOT IN cont
         ELSE
           IF proiettile IS NOT plurale
@@ -9238,13 +9238,13 @@ ADD TO EVERY OBJECT
           IF cont IS NOT femminile
             THEN
               IF cont IS NOT plurale
-                THEN SAY imp_ogg2_chiuso_sgm OF mia_AT.
-                ELSE SAY imp_ogg2_chiuso_plm OF mia_AT.
+                THEN SAY imp_ogg2_chiuso_ms OF mia_AT.
+                ELSE SAY imp_ogg2_chiuso_mp OF mia_AT.
               END IF.
             ELSE
               IF cont IS NOT plurale
-                THEN SAY imp_ogg2_chiuso_sgf OF mia_AT.
-                ELSE SAY imp_ogg2_chiuso_plf OF mia_AT.
+                THEN SAY imp_ogg2_chiuso_fs OF mia_AT.
+                ELSE SAY imp_ogg2_chiuso_fp OF mia_AT.
               END IF.
           END IF.
       DOES
@@ -9301,7 +9301,7 @@ ADD TO EVERY OBJECT
         END IF.
         "legare."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     DOES
       "You must state where you want to tie" SAY THE ogg. "."
     END VERB.
@@ -9345,7 +9345,7 @@ ADD TO EVERY THING
       AND ogg IS prendibile
         ELSE SAY check_obj_takeable OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
@@ -9427,7 +9427,7 @@ ADD TO EVERY THING
         END IF.
         "toccare."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -9507,7 +9507,7 @@ ADD TO EVERY THING
       AND ogg IS inanimato
         ELSE SAY check_obj_inanimate2 OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY check_locazione_illuminata OF mia_AT.
+        ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
@@ -9574,7 +9574,7 @@ ADD TO EVERY OBJECT
           ELSE SAY check_obj_suitable_pl OF mia_AT.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -9775,7 +9775,7 @@ ADD TO EVERY OBJECT
           ELSE SAY check_obj_takeable OF mia_AT.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY check_locazione_illuminata OF mia_AT.
+      ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile

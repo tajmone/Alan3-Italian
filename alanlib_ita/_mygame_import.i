@@ -1,4 +1,4 @@
--- "_mygame_import.i" v0.3.3 (2018/07/26)
+-- "_mygame_import.i" v0.3.4 (2018/07/26)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -409,7 +409,7 @@ THE mia_AT IsA blocco_definizioni
   -- c) Check della Locazione
   --    ---------------------
 
-  HAS check_locazione_illuminata "?troppo buio.".           -- (svariati verbi)
+  HAS imp_luogo_buio "?troppo buio.".           -- (svariati verbi)
 
 
 	-- d) checks guarding against actions directed at the hero him-/herself
