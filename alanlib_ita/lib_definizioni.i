@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.3.14 (2018/07/27)
+-- "lib_definizioni.i" v0.3.15 (2018/07/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -627,7 +627,7 @@ EVERY blocco_definizioni IsA LOCATION
   -- ------------------
   -- PREPOSIZIONE "CON"
   -- ------------------
-  -- ORIGINAL EN: illegal_parameter2_with_sg/pl
+  -- ORIGINAL EN: illegal_parameter2_with_sg/pl  +  check_obj2_suitable_with_sg/pl
   HAS ogg2_illegale_CON_sg  "$+2 non è qualcosa con cui poter".           --> brucia_con
   HAS ogg2_illegale_CON_pl  "$+2 non sono qualcosa con cui poter".
 
@@ -749,6 +749,23 @@ EVERY blocco_definizioni IsA LOCATION
   HAS imp_ogg2_chiuso_fs "Non puoi farlo perché $+2 è chiusa".
   HAS imp_ogg2_chiuso_fp "Non puoi farlo perché $+2 sono chiuse.".
 
+
+  -- ====================================
+  -- PARAMETRI E INVENTARIO DEL GIOCATORE
+  -- ====================================
+  
+  
+  -- -----------------------------------------------------------
+  -- Il giocatore non possiede un oggetto richiesto per l'azione
+  -- -----------------------------------------------------------
+  -- VERBI: empty_in, pour_in, put_in, throw_in
+
+  -- ORIGINAL EN:  check_obj_in_hero  +  check_obj2_in_hero
+  HAS non_possiedi_ogg1 "Non possiedi $+1.".              -- drop, fire, fire_at, put, show
+  HAS non_possiedi_ogg2 "Non possiedi $+2.".             -- (numerous)
+
+-- NOTA: | Potrei usare un solo attributo e mettere '$+1.' e '$+2.' nel codice
+--       | del verbo!
 
 
 
@@ -890,8 +907,9 @@ EVERY blocco_definizioni IsA LOCATION
   HAS check_obj_suitable_on_pl "Those are not something you can $v on." .
   HAS check_obj_suitable_with_sg "That's not something you can $v with.".   -- play_with
   HAS check_obj_suitable_with_pl "Those are not something you can $v with.".
-  HAS check_obj2_suitable_with_sg "That's not something you can $v things with.".   -- break_with, burn_with, close_with, cut_with, fill_with,
-  HAS check_obj2_suitable_with_pl "Those are not something you can $v things with.".   -- + lock_with, open_with, pry_with, push_with,
+  
+  -- HAS check_obj2_suitable_with_sg "That's not something you can $v things with.".   -- break_with, burn_with, close_with, cut_with, fill_with,
+  -- HAS check_obj2_suitable_with_pl "Those are not something you can $v things with.".   -- + lock_with, open_with, pry_with, push_with,
                                    -- + touch_with, unlock_with
 
   HAS check_obj_suitable_examine_sg "That's not something you can examine.".      -- examine
@@ -980,8 +998,6 @@ EVERY blocco_definizioni IsA LOCATION
 
   HAS check_obj_not_at_hero_sg "$+1 is right here.".                -- find, follow, go_to, where_is
   HAS check_obj_not_at_hero_pl "$+1 are right here.".
-  HAS check_obj_in_hero "You don't have the $+1.".              -- drop, fire, fire_at, put, show
-  HAS check_obj2_in_hero "You don't have the $+2.".             -- (numerous)
   HAS check_obj_not_in_hero1 "It doesn't make sense to $v something you're holding.".   -- attack, attack_with, kick, lift, shoot, shoot_with
 -- @TAKE (MESSAGE)
   HAS check_obj_not_in_hero2 "You already have $+1.".             -- take, take_from

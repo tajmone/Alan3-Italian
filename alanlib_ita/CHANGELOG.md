@@ -11,8 +11,11 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/07/27](#20180727)
+- [2018/07/27 \(2\)](#20180727-2)
+    - [Translated Verb Responses + Attributes](#translated-verb-responses--attributes)
     - [Italian Responses For Illegal Obj2 With](#italian-responses-for-illegal-obj2-with)
+- [2018/07/27 \(1\)](#20180727-1)
+    - [Italian Responses For Illegal Obj2 With](#italian-responses-for-illegal-obj2-with-1)
 - [2018/07/26 \(10\)](#20180726-10)
     - [Verb Response Attributes Renaming](#verb-response-attributes-renaming)
     - [Renamed Verb Responses](#renamed-verb-responses)
@@ -187,7 +190,41 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/07/27
+# 2018/07/27 (2)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.3.15)
+- [`lib_verbi.i`][lib_verbi] (v0.3.19)
+
+## Translated Verb Responses + Attributes
+
+|     EN Attribute     |     IT Attribute    |
+|----------------------|---------------------|
+| `check_obj_in_hero`  | `non_possiedi_ogg1` |
+| `check_obj2_in_hero` | `non_possiedi_ogg2` |
+
+Now the original English attributes are no longer needed and have been removed from source!
+
+## Italian Responses For Illegal Obj2 With
+
+Implemented Italian translation of `check_obj2_suitable_with_sg`/`pl` to all verbs (even not translated ones).
+
+
+|          EN Attribute         |      IT Attribute      |
+|-------------------------------|------------------------|
+| `check_obj2_suitable_with_sg` | `ogg2_illegale_CON_sg` |
+| `check_obj2_suitable_with_pl` | `ogg2_illegale_CON_pl` |
+
+Now the English attributes are no longer required in the library for all occurence have been replaced by their italian translation!
+
+
+> __NOTA__ — Con `ogg2_illegale_CON_sg`/`pl` abbiamo tradotto sia`illegal_parameter2_with_sg`/`pl` che `check_obj2_suitable_with_sg`/`pl`. Nel nostro sistema italiano, non distinguiamo tra messaggi causati dai controlli della SYNTAX o del corpo del verbo. Inoltre, i due gruppi di messaggi originali producevano lo stesso output.
+> 
+> Credo che l'idea base della libreria originale di voler separare tra messaggi uguali elicitati da parti diverse del verbo consistesse nell'agevolare l'utente finale a poter personalizzare uno o l'altro indipendentemente tra loro. A mio avviso, questo problema non sussiste nella libreria italiana, per varie ragioni. Ad ogni modo, se dovesse mai risultare utile introdurre tale separazione sarà possibile farlo più avanti. Al momento è più facile lavorare senza troppi duplicati.
+
+<!---------------------------------------------------------------------------->
+
+
+# 2018/07/27 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.14)
 - [`lib_verbi.i`][lib_verbi] (v0.3.18)
@@ -197,7 +234,7 @@ Status: Alpha stage.
 Implemented Italian translation of `illegal_parameter2_with_sg`/`pl` to all verbs (even not translated ones).
 
 
-|         EN Attribute         |      IT Attrobute      |
+|         EN Attribute         |      IT Attribute      |
 |------------------------------|------------------------|
 | `illegal_parameter2_with_sg` | `ogg2_illegale_CON_sg` |
 | `illegal_parameter2_with_pl` | `ogg2_illegale_CON_pl` |

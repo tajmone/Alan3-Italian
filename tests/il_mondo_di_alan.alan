@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione v0.3.6 (2018/07/26)
+--  versione v0.3.7 (2018/07/27)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -21,6 +21,16 @@ END THE.
 
 -- =============================================================================
 -- Vari oggetti, comandi e altre cose non legate a nessun luogo specifico...
+
+--==============================================================================
+-- La Magia (non esaminabile)
+--==============================================================================
+-- Serve per testare vari verbi...
+
+THE magia IsA OBJECT IN hero.
+  HAS articolo "la".
+  IS NOT esaminabile.
+END THE magia.
 
 --==============================================================================
 -- INCANTESIMO XYZZY

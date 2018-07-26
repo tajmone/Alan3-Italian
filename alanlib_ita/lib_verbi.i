@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.3.18 (2018/07/27)
+-- "lib_verbi.i" v0.3.19 (2018/07/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -575,8 +575,8 @@ ADD TO EVERY OBJECT
                 ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
-      AND strum IN hero -- @TODO:                                               TRANSLATE!
-        ELSE SAY check_obj2_in_hero OF mia_AT.
+      AND strum IN hero
+        ELSE SAY non_possiedi_ogg2 OF mia_AT.
       AND ogg IS NOT aperto
         ELSE
           IF ogg IS NOT femminile
@@ -1008,8 +1008,8 @@ ADD TO EVERY OBJECT
                 ELSE SAY ogg1_distante_pl OF mia_AT.
               END IF.
           END IF.
-      AND chiave IN hero -- @TODO:                                              TRANSLATE!
-        ELSE SAY check_obj2_in_hero OF mia_AT.
+      AND chiave IN hero
+        ELSE SAY non_possiedi_ogg2 OF mia_AT.
       AND chiave = chiave_abbinata OF ogg -- @TODO:                             TRANSLATE!
         ELSE SAY check_door_matching_key OF mia_AT.
 
@@ -1111,15 +1111,15 @@ ADD TO EVERY OBJECT
         ELSE
           IF strum IS NOT plurale
             --> @TODO!!                                                         TRANSLATE!
-            THEN SAY check_obj2_suitable_with_sg OF mia_AT.
-            ELSE SAY check_obj2_suitable_with_pl OF mia_AT.
+            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
           END IF.
+          "bruciare" SAY THE ogg. "."
       AND ogg <> strum
         --> @TODO!!                                                             TRANSLATE!
         ELSE SAY check_obj_not_obj2_with OF mia_AT.
       AND strum IN hero
-        --> @TODO!!                                                             TRANSLATE!
-        ELSE SAY check_obj2_in_hero OF mia_AT.
+        ELSE SAY non_possiedi_ogg2 OF mia_AT.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -1331,13 +1331,14 @@ ADD TO EVERY OBJECT
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
-            THEN SAY check_obj2_suitable_with_sg OF mia_AT.
-            ELSE SAY check_obj2_suitable_with_pl OF mia_AT.
+            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
           END IF.
+          "chiudere" SAY THE ogg. "."
       AND ogg <> strum
         ELSE SAY check_obj_not_obj2_with OF mia_AT.
       AND strum IN hero
-        ELSE SAY check_obj2_in_hero OF mia_AT.
+        ELSE SAY non_possiedi_ogg2 OF mia_AT.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -1976,7 +1977,7 @@ ADD TO EVERY OBJECT
       ELSE
         IF ogg IN abbigliamento
           THEN SAY check_obj_not_in_worn3 OF mia_AT.
-          ELSE SAY check_obj_in_hero OF mia_AT.
+          ELSE SAY non_possiedi_ogg1 OF mia_AT.
         END IF.
 
     DOES
@@ -2631,10 +2632,10 @@ ADD TO EVERY OBJECT
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
-            --> @TODO!!                                                         TRANSLATE!
-            THEN SAY check_obj2_suitable_with_sg OF mia_AT.
-            ELSE SAY check_obj2_suitable_with_pl OF mia_AT.
+            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
           END IF.
+          "rompere" SAY THE ogg. "."
       AND ogg <> strum
         --> @TODO!!                                                             TRANSLATE!
         ELSE SAY check_obj_not_obj2_with OF mia_AT.
@@ -2642,7 +2643,7 @@ ADD TO EVERY OBJECT
         ELSE SAY imp_luogo_buio OF mia_AT.
       AND strum IN hero
         --> @TODO!!                                                             TRANSLATE!
-        ELSE SAY check_obj2_in_hero OF mia_AT.
+        ELSE SAY non_possiedi_ogg2 OF mia_AT.
         --> @TODO!!                                                             TRANSLATE!
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
@@ -2780,11 +2781,12 @@ ADD TO EVERY OBJECT
       AND chiave IS esaminabile
         ELSE
           IF chiave IS NOT plurale
-            THEN SAY check_obj2_suitable_with_sg OF mia_AT.
-            ELSE SAY check_obj2_suitable_with_pl OF mia_AT.
-          END IF.
+            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+         END IF.
+         "sbloccare" SAY THE ogg. "."
       AND chiave IN hero
-          ELSE SAY check_obj2_in_hero OF mia_AT.
+          ELSE SAY non_possiedi_ogg2 OF mia_AT.
       AND ogg <> chiave
         ELSE SAY check_obj_not_obj2_with OF mia_AT.
       AND CURRENT LOCATION IS illuminato
@@ -4177,11 +4179,12 @@ ADD TO EVERY OBJECT
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
-            THEN SAY check_obj2_suitable_with_sg OF mia_AT.
-            ELSE SAY check_obj2_suitable_with_pl OF mia_AT.
+            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
           END IF.
+          "tagliare" SAY THE ogg. "."
       AND strum IN hero
-        ELSE SAY check_obj2_in_hero OF mia_AT.
+        ELSE SAY non_possiedi_ogg2 OF mia_AT.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY imp_luogo_buio OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -5122,9 +5125,10 @@ ADD TO EVERY OBJECT
       AND sostanza IS esaminabile
         ELSE
           IF sostanza IS NOT plurale
-            THEN SAY check_obj2_suitable_with_sg OF mia_AT.
-            ELSE SAY check_obj2_suitable_with_pl OF mia_AT.
+            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
           END IF.
+          "riempire" SAY THE cont. "."
       AND CURRENT LOCATION IS illuminato
         ELSE SAY imp_luogo_buio OF mia_AT.
       AND sostanza NOT IN cont
@@ -5860,7 +5864,7 @@ ADD TO EVERY ACTOR
       AND vittima <> hero
         ELSE SAY check_obj_not_hero2 OF mia_AT.
       AND arma IN hero
-        ELSE SAY check_obj2_in_hero OF mia_AT.
+        ELSE SAY non_possiedi_ogg2 OF mia_AT.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY imp_luogo_buio OF mia_AT.
       AND vittima IS NOT distante
@@ -6814,13 +6818,14 @@ VERB pry_with
     AND strum IS esaminabile
       ELSE
         IF strum IS NOT plurale
-          THEN SAY check_obj2_suitable_with_sg OF mia_AT.
-          ELSE SAY check_obj2_suitable_with_pl OF mia_AT.
+          THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+          ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
         END IF.
+        "(prying)" SAY THE ogg. "." -- @TODO:                                   TRANSLATE!
     AND ogg <> strum
       ELSE SAY check_obj_not_obj2_with OF mia_AT.
     AND strum IN hero
-      ELSE SAY check_obj2_in_hero OF mia_AT.
+      ELSE SAY non_possiedi_ogg2 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY imp_luogo_buio OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -6994,11 +6999,12 @@ ADD TO EVERY THING
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
-            THEN SAY check_obj2_suitable_with_sg OF mia_AT.
-            ELSE SAY check_obj2_suitable_with_pl OF mia_AT.
+            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
           END IF.
+          "spingere" SAY THE ogg. "."
       AND strum IN hero
-        ELSE SAY check_obj2_in_hero OF mia_AT.
+        ELSE SAY non_possiedi_ogg2 OF mia_AT.
       AND ogg <> hero
         ELSE SAY check_obj_not_hero1 OF mia_AT.
       AND ogg IS inanimato
@@ -7049,7 +7055,7 @@ ADD TO EVERY OBJECT
     CHECK mia_AT CAN put
       ELSE SAY azione_bloccata OF mia_AT.
     AND ogg IN HERO
-      ELSE SAY check_obj_in_hero OF mia_AT.
+      ELSE SAY non_possiedi_ogg1 OF mia_AT.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY imp_luogo_buio OF mia_AT.
     DOES
@@ -8017,7 +8023,7 @@ ADD TO EVERY OBJECT
       AND png <> hero
         ELSE SAY check_obj2_not_hero1 OF mia_AT.
       AND ogg IN hero
-        ELSE SAY check_obj_in_hero OF mia_AT.
+        ELSE SAY non_possiedi_ogg1 OF mia_AT.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY imp_luogo_buio OF mia_AT.
       AND png IS NOT distante
@@ -9496,15 +9502,16 @@ ADD TO EVERY THING
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
-            THEN SAY check_obj2_suitable_with_sg OF mia_AT.
-            ELSE SAY check_obj2_suitable_with_pl OF mia_AT.
+            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
         END IF.
+        "toccare" SAY THE ogg. "."
       AND ogg <> strum
         ELSE SAY check_obj_not_obj2_with OF mia_AT.
           AND strum <> hero
         ELSE SAY check_obj2_not_hero1 OF mia_AT.
       AND strum IN hero
-        ELSE SAY check_obj2_in_hero OF mia_AT.
+        ELSE SAY non_possiedi_ogg2 OF mia_AT.
       AND ogg IS inanimato
         ELSE SAY check_obj_inanimate2 OF mia_AT.
       AND CURRENT LOCATION IS illuminato
