@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.3.20 (2018/07/27)
+-- "lib_verbi.i" v0.3.21 (2018/07/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -60,6 +60,7 @@
 --| scrivi             |                              | scrivi "testo" su (ogg)     |   | 1 | x |
 --| spogliati          | svestiti                     | spogliati                   |   | 0 |   |
 --| suona              |                              | suona (ogg)                 |   | 1 | x |
+--| trova              |                              | trova (ogg)                 |   | 1 | x |
 --| usa                |                              | usa (ogg)                   |   | 1 | x |
 --| usa_con            |                              | usa (ogg) con (strum)       |   | 2 | x |
 --| vai_a              |                              | vai a (dest)                |   | 1 |   |
@@ -131,7 +132,7 @@
 ----- extinguish  (+ put out, quench)                      extinguish (obj)                    1       x
 ----- fill                                                 fill (cont)                         1
 ----- fill_with                                            fill (cont) with (substance)        1
------ find        (+ locate)                               find (obj)                          1       x
+-->>> find        (+ locate)                               find (obj)                          1       x
 ----- fire                                                 fire (weapon)                       1
 ----- fire_at                                              fire (weapon) at (target)           1
 ----- fix         (+ mend, repair)                         fix (obj)                           1       x

@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.3.17 (2018/07/27)
+-- "lib_definizioni.i" v0.3.18 (2018/07/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -850,24 +850,20 @@ EVERY blocco_definizioni IsA LOCATION
   HAS ogg1_già_qui_sg "$+1 è proprio qui.".                -- find, follow, go_to, where_is
   HAS ogg1_già_qui_pl "$+1 sono proprio qui.".
 
-  -- HAS check_obj_not_at_hero_sg "$+1 is right here.".                -- find, follow, go_to, where_is
-  -- HAS check_obj_not_at_hero_pl "$+1 are right here.".
-
-
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
 
   -- d) checks guarding against actions directed at the hero him-/herself
   -----------------------------------------------------------------------
 
-  HAS check_obj_not_hero1 "It doesn't make sense to $v yourself.".      -- ask, ask_for, attack, attack_with, catch, follow
+  HAS check_obj_not_hero1  "It doesn't make sense to $v yourself.".      -- ask, ask_for, attack, attack_with, catch, follow
                                    -- kick, listen, pull, push, push_with, take,
                                    -- take_from,tell
-  HAS check_obj_not_hero2 "There is no need to be that desperate.".       -- fire_at, kill, kill_with, shoot, shoot_with
-  HAS check_obj_not_hero3 "That wouldn't accomplish anything.".       -- scratch, touch
-  HAS check_obj_not_hero5 "You don't need to be freed.".          -- free
-  HAS check_obj_not_hero6 "There is no time for that now.".               -- kiss, play_with, rub
-  HAS check_obj_not_hero7 "Turning your head, you notice nothing unusual behind yourself.".   -- look_behind
-  HAS check_obj_not_hero8 "You notice nothing unusual under yourself.".           -- look_under
+  HAS check_obj_not_hero2  "There is no need to be that desperate.".       -- fire_at, kill, kill_with, shoot, shoot_with
+  HAS check_obj_not_hero3  "That wouldn't accomplish anything.".       -- scratch, touch
+  HAS check_obj_not_hero5  "You don't need to be freed.".          -- free
+  HAS check_obj_not_hero6  "There is no time for that now.".               -- kiss, play_with, rub
+  HAS check_obj_not_hero7  "Turning your head, you notice nothing unusual behind yourself.".   -- look_behind
+  HAS check_obj_not_hero8  "You notice nothing unusual under yourself.".           -- look_under
   HAS check_obj2_not_hero1 "That doesn't make sense.".            -- say_to, show, take_from, touch_with, throw_at/in/to
   HAS check_obj2_not_hero2 "That would be futile.".           -- put_against, put_behind, put_near, put_under
   HAS check_obj2_not_hero3 "You can't $v things to yourself.".        -- give, tie_to
@@ -928,16 +924,6 @@ EVERY blocco_definizioni IsA LOCATION
   HAS illegal_parameter_with_sg "That's not something you can $v with.".    -- kill_with, shoot_with, play_with
   HAS illegal_parameter_with_pl "Those are not something you can $v with.".
   
- -- THESE ARE NOW SUBSTITUTED WITH THEIR ITALIAN VERSION:
- -------------------------------------------------------
-  -- HAS illegal_parameter2_with_sg "That's not something you can $v things with.".
-  -- HAS illegal_parameter2_with_pl "Those are not something you can $v things with.".
-                                 -- attack_with, break_with, burn_with, close_with,
-                                 -- + cut_with, fill_with, lock_with, open_with, pry_with,
-                                 -- + push_with, unlock_with
-
-
-
 
   -- verb check messages, found before DOES sections of verbs and used mainly in 'lib_verbi.i':
   -- ==========================================================================================

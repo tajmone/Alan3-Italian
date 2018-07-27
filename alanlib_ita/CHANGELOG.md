@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/27 \(5\)](#20180727-5)
 - [2018/07/27 \(4\)](#20180727-4)
     - [Translated Verb Responses + Attributes](#translated-verb-responses--attributes)
     - [Verb: `find`](#verb-find)
@@ -194,13 +195,24 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
+# 2018/07/27 (5)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.3.18)
+- [`lib_verbi.i`][lib_verbi] (v0.3.21)
+
+Just small comments adjustments and source cleanup.
+
+<!---------------------------------------------------------------------------->
+
+
+
 # 2018/07/27 (4)
 
-## Translated Verb Responses + Attributes
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.17)
 - [`lib_verbi.i`][lib_verbi] (v0.3.20)
 
+## Translated Verb Responses + Attributes
 
 |        EN Attribute        |       IT Attribute      |           Text          |
 |----------------------------|-------------------------|-------------------------|
