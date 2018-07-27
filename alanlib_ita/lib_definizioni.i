@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.3.16 (2018/07/27)
+-- "lib_definizioni.i" v0.3.17 (2018/07/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -598,6 +598,16 @@ EVERY blocco_definizioni IsA LOCATION
   -- ===========================================================================
 
 
+  -- =======================
+  -- DESTINAZIONE NON VALIDA
+  -- =======================
+  -- VERBI: vai_a.
+
+  -- ORIGINAL EN:  illegal_parameter_go
+   HAS destinazione_invalida "Non puoi andare lì.".
+
+   -- HAS destinazione_invalida "You can't go there.".               -- go_to
+
   -- =============================
   -- PARAMETRI INADATTI (SEMPLICI)
   -- =============================
@@ -615,8 +625,49 @@ EVERY blocco_definizioni IsA LOCATION
   --       | ai fini della disambugazione nel caso di verbi che consentono l'uso
   --       | di oggetti multipli o di "TUTTO".
 
+  -- ORIGINAL EN:  illegal_parameter_sg/pl  +  check_obj_suitable_sg/pl
   HAS ogg1_inadatto_sg  "$+1 non è qualcosa che puoi".                          --> (verbi vari)
   HAS ogg1_inadatto_pl  "$+1 non sono qualcosa che puoi".
+
+  
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+
+  -- other illegal parameter messages:
+  ------------------------------------
+  HAS illegal_parameter_act "That doesn't make sense.".             -- empty_in, pour_in, put_in, throw_in
+
+  HAS illegal_parameter_consult_sg "That's not something you can find information about.".  -- consult_about
+  HAS illegal_parameter_consult_pl "Those are not something you can find
+                information about.".
+
+  HAS illegal_parameter_examine_sg "That's not something you can examine.".     -- examine
+  HAS illegal_parameter_examine_pl "Those are not something you can examine.".
+
+
+  HAS illegal_parameter_look_out_sg "That's not something you can look out of.".    -- look_out_of
+  HAS illegal_parameter_look_out_pl "Those are not something you can look out of.".
+  HAS illegal_parameter_look_through "You can't look through $+1.".       -- look_through
+
+  HAS illegal_parameter_obj "You can only $v objects.".             -- give, put, put_in, put_on, put_against,
+                                     -- + put_behind, put_near, put_under,
+                                     -- + throw_at, throw_in, throw_to, tie_to,
+                                     -- + use, use_with
+
+  HAS illegal_parameter_string "Please state inside double quotes ("""") what you want to $v.". -- answer, say, say_to, write
+
+  HAS illegal_parameter_talk_sg "That's not something you can talk to.".      -- ask, ask_for, say_to, tell
+  HAS illegal_parameter_talk_pl "Those are not something you can talk to.".
+
+  HAS illegal_parameter_there "It's not possible to look there.".         -- look_behind, look_in, look_under
+
+  HAS illegal_parameter2_there "It's not possible to $v anything there.".       -- empty_in, empty_on, pour_in, pour_on, put_in,
+                                       -- + put_on, put_against, put_behind, put_near,
+                                   -- + put_under, throw_in, throw_to, tie_to, write
+
+  HAS illegal_parameter_what_sg "That's not something I know about.".       -- what_is, where_is
+  HAS illegal_parameter_what_pl "Those are not something I know about.".      -- what_is, where_is
+  HAS illegal_parameter_who_sg "That's not somebody I know about.".       -- who_is
+  HAS illegal_parameter_who_pl "Those are not somebody I know about.".        -- who_is
 
   -- =====================================
   -- PARAMETRI INADATTI (CON PREPOSIZIONI)
@@ -662,7 +713,7 @@ EVERY blocco_definizioni IsA LOCATION
   HAS ogg2_distante_sg "$+2 è troppo distante.".         -- empty_in, fill_with, pour_in, put_in, show, take_from,                                  -- + throw_at, throw_in, throw_to
   HAS ogg2_distante_pl "$+2 sono troppo distanti.".
 
-  -- @TODO: MESSAGGI ANCORA DA TRADURRE                                         TRANSLATE!
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
   HAS check_obj_reachable_ask "$+1 can't reach $+2.".         -- ask_for
 
   -- ===========================================================================
@@ -750,10 +801,12 @@ EVERY blocco_definizioni IsA LOCATION
   HAS imp_ogg2_chiuso_fp "Non puoi farlo perché $+2 sono chiuse.".
 
 
+  
+  
+  
   -- ====================================
   -- PARAMETRI E INVENTARIO DEL GIOCATORE
   -- ====================================
-  
   
   -- -----------------------------------------------------------
   -- Il giocatore non possiede un oggetto richiesto per l'azione
@@ -767,6 +820,57 @@ EVERY blocco_definizioni IsA LOCATION
 -- NOTA: | Potrei usare un solo attributo e mettere '$+1.' e '$+2.' nel codice
 --       | del verbo!
 
+  -- ===========================
+  -- AZIONI DIRETTE AL GIOCATORE
+  -- ===========================
+
+
+  -- ================
+  -- AZIONI SUPERFLUE
+  -- ================
+  -- Risposte per azioni che sono superflue poiché tentano di conseguire un
+  -- risultato che è già disponibile...
+
+  -- -----------------------------------
+  -- Il giocatore si trova già sul posto
+  -- -----------------------------------
+  -- VERBI: find, vai_a.
+
+  -- ORIGINAL EN:  check_obj_not_hero4
+  HAS sei_già_qui "Ti trovi già qui!".                                          --> find, vai_a
+  -- HAS check_obj_not_hero4 "You're right here.".             -- find, go_to
+  
+
+  -- --------------------------------
+  -- L'oggetto si trova già sul posto
+  -- --------------------------------
+  -- VERBI: trova, follow, vai_a, dove_è.
+
+  -- ORIGINAL EN:  check_obj_not_at_hero_sg/pl
+  HAS ogg1_già_qui_sg "$+1 è proprio qui.".                -- find, follow, go_to, where_is
+  HAS ogg1_già_qui_pl "$+1 sono proprio qui.".
+
+  -- HAS check_obj_not_at_hero_sg "$+1 is right here.".                -- find, follow, go_to, where_is
+  -- HAS check_obj_not_at_hero_pl "$+1 are right here.".
+
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+
+  -- d) checks guarding against actions directed at the hero him-/herself
+  -----------------------------------------------------------------------
+
+  HAS check_obj_not_hero1 "It doesn't make sense to $v yourself.".      -- ask, ask_for, attack, attack_with, catch, follow
+                                   -- kick, listen, pull, push, push_with, take,
+                                   -- take_from,tell
+  HAS check_obj_not_hero2 "There is no need to be that desperate.".       -- fire_at, kill, kill_with, shoot, shoot_with
+  HAS check_obj_not_hero3 "That wouldn't accomplish anything.".       -- scratch, touch
+  HAS check_obj_not_hero5 "You don't need to be freed.".          -- free
+  HAS check_obj_not_hero6 "There is no time for that now.".               -- kiss, play_with, rub
+  HAS check_obj_not_hero7 "Turning your head, you notice nothing unusual behind yourself.".   -- look_behind
+  HAS check_obj_not_hero8 "You notice nothing unusual under yourself.".           -- look_under
+  HAS check_obj2_not_hero1 "That doesn't make sense.".            -- say_to, show, take_from, touch_with, throw_at/in/to
+  HAS check_obj2_not_hero2 "That would be futile.".           -- put_against, put_behind, put_near, put_under
+  HAS check_obj2_not_hero3 "You can't $v things to yourself.".        -- give, tie_to
 
 
   -- ============================================================================
@@ -833,46 +937,6 @@ EVERY blocco_definizioni IsA LOCATION
                                  -- + push_with, unlock_with
 
 
-  -- other illegal parameter messages:
-  ------------------------------------
-
-
-  HAS illegal_parameter_act "That doesn't make sense.".             -- empty_in, pour_in, put_in, throw_in
-
-  HAS illegal_parameter_consult_sg "That's not something you can find information   -- consult_about
-                about.".
-  HAS illegal_parameter_consult_pl "Those are not something you can find
-                information about.".
-
-  HAS illegal_parameter_examine_sg "That's not something you can examine.".     -- examine
-  HAS illegal_parameter_examine_pl "Those are not something you can examine.".
-
-  HAS illegal_parameter_go "You can't go there.".               -- go_to
-
-  HAS illegal_parameter_look_out_sg "That's not something you can look out of.".    -- look_out_of
-  HAS illegal_parameter_look_out_pl "Those are not something you can look out of.".
-  HAS illegal_parameter_look_through "You can't look through $+1.".       -- look_through
-
-  HAS illegal_parameter_obj "You can only $v objects.".             -- give, put, put_in, put_on, put_against,
-                                     -- + put_behind, put_near, put_under,
-                                     -- + throw_at, throw_in, throw_to, tie_to,
-                                     -- + use, use_with
-
-  HAS illegal_parameter_string "Please state inside double quotes ("""") what you want to $v.". -- answer, say, say_to, write
-
-  HAS illegal_parameter_talk_sg "That's not something you can talk to.".      -- ask, ask_for, say_to, tell
-  HAS illegal_parameter_talk_pl "Those are not something you can talk to.".
-
-  HAS illegal_parameter_there "It's not possible to look there.".         -- look_behind, look_in, look_under
-
-  HAS illegal_parameter2_there "It's not possible to $v anything there.".       -- empty_in, empty_on, pour_in, pour_on, put_in,
-                                       -- + put_on, put_against, put_behind, put_near,
-                                   -- + put_under, throw_in, throw_to, tie_to, write
-
-  HAS illegal_parameter_what_sg "That's not something I know about.".       -- what_is, where_is
-  HAS illegal_parameter_what_pl "Those are not something I know about.".      -- what_is, where_is
-  HAS illegal_parameter_who_sg "That's not somebody I know about.".       -- who_is
-  HAS illegal_parameter_who_pl "Those are not somebody I know about.".        -- who_is
 
 
   -- verb check messages, found before DOES sections of verbs and used mainly in 'lib_verbi.i':
@@ -982,8 +1046,8 @@ EVERY blocco_definizioni IsA LOCATION
   -- containment checks for actors other than the hero (checks for the hero are listed separately below):
   -------------------------------------------------------------------------------------------------------
 
-  HAS check_act_near_hero "You don't quite know where $+1 went."           -- follow
-                          "You should state a direction where you want to go.".
+  HAS check_act_near_hero "You don't quite know where $+1 went.           
+                          You should state a direction where you want to go.". -- follow
 
   HAS check_obj_in_act_sg "$+2 doesn't have $+1.".              -- take_from
   HAS check_obj_in_act_pl "$+2 don't have $+1.".
@@ -996,8 +1060,6 @@ EVERY blocco_definizioni IsA LOCATION
 
   HAS check_count_weapon_in_hero "You are not carrying any firearms.".        -- shoot
 
-  HAS check_obj_not_at_hero_sg "$+1 is right here.".                -- find, follow, go_to, where_is
-  HAS check_obj_not_at_hero_pl "$+1 are right here.".
   HAS check_obj_not_in_hero1 "It doesn't make sense to $v something you're holding.".   -- attack, attack_with, kick, lift, shoot, shoot_with
 -- @TAKE (MESSAGE)
   HAS check_obj_not_in_hero2 "You already have $+1.".             -- take, take_from
@@ -1041,22 +1103,6 @@ EVERY blocco_definizioni IsA LOCATION
   -- TRADOTTO --> imp_luogo_buio
 
 
-  -- d) checks guarding against actions directed at the hero him-/herself
-  -----------------------------------------------------------------------
-
-  HAS check_obj_not_hero1 "It doesn't make sense to $v yourself.".      -- ask, ask_for, attack, attack_with, catch, follow
-                                   -- kick, listen, pull, push, push_with, take,
-                                   -- take_from,tell
-  HAS check_obj_not_hero2 "There is no need to be that desperate.".       -- fire_at, kill, kill_with, shoot, shoot_with
-  HAS check_obj_not_hero3 "That wouldn't accomplish anything.".       -- scratch, touch
-  HAS check_obj_not_hero4 "You're right here.".             -- find, go_to
-  HAS check_obj_not_hero5 "You don't need to be freed.".          -- free
-  HAS check_obj_not_hero6 "There is no time for that now.".               -- kiss, play_with, rub
-  HAS check_obj_not_hero7 "Turning your head, you notice nothing unusual behind yourself.".   -- look_behind
-  HAS check_obj_not_hero8 "You notice nothing unusual under yourself.".           -- look_under
-  HAS check_obj2_not_hero1 "That doesn't make sense.".            -- say_to, show, take_from, touch_with, throw_at/in/to
-  HAS check_obj2_not_hero2 "That would be futile.".           -- put_against, put_behind, put_near, put_under
-  HAS check_obj2_not_hero3 "You can't $v things to yourself.".        -- give, tie_to
 
 
   -- e) checks guarding against actions where an object is used with itself

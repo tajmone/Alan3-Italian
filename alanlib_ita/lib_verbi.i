@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.3.19 (2018/07/27)
+-- "lib_verbi.i" v0.3.20 (2018/07/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1110,7 +1110,6 @@ ADD TO EVERY OBJECT
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
-            --> @TODO!!                                                         TRANSLATE!
             THEN SAY ogg2_illegale_CON_sg OF mia_AT.
             ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
           END IF.
@@ -1719,8 +1718,8 @@ ADD TO EVERY THING
     AND ogg NOT AT hero
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY check_obj_not_at_hero_sg OF mia_AT.
-          ELSE SAY check_obj_not_at_hero_pl OF mia_AT.
+          THEN SAY ogg1_già_qui_sg OF mia_AT.
+          ELSE SAY ogg1_già_qui_pl OF mia_AT.
         END IF.
     DOES
       "Dovrai scoprirlo da te!"
@@ -3043,6 +3042,53 @@ END ADD TO.
 
 
 
+
+-- ==============================================================
+
+
+----- @TROVA --> @FIND
+
+
+-- ==============================================================
+
+-- SYNTAX find = find (ogg)!
+-- SYNONYMS 'locate' = find.
+
+SYNTAX trova = trova (ogg)!
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+      -- @NOTA: Qui potrebbe volerci un messaggio ad hoc per questo verbo!
+        THEN SAY illegal_parameter_sg OF mia_AT.
+        ELSE SAY illegal_parameter_pl OF mia_AT.
+      END IF.
+
+
+-- SYNONYMS 'locate' = trova.
+-- # 'scova', 'rintraccia'???
+
+
+ADD TO EVERY THING
+  VERB trova
+    CHECK mia_AT CAN trovare
+      ELSE SAY azione_bloccata OF mia_AT.
+    AND ogg <> hero
+      ELSE SAY sei_già_qui OF mia_AT.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY imp_luogo_buio OF mia_AT.
+    AND ogg NOT AT hero
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY ogg1_già_qui_sg OF mia_AT.
+          ELSE SAY ogg1_già_qui_pl OF mia_AT.
+        END IF.
+    DOES
+      "Dovrai trovarlo da te!"
+   -- "You'll have to $v it yourself."
+  END VERB.
+END ADD TO.
+
+
 -- ==============================================================
 
 
@@ -3139,7 +3185,7 @@ SYNTAX vai_a = 'a' (dest)!
   -- Because 'go' is predefined in the parser, it can't be used in verb definitions.
   -- The player will still be able to type 'go to [dest]' successfully.
   WHERE dest IsA THING
-    ELSE SAY illegal_parameter_go OF mia_AT.
+    ELSE SAY destinazione_invalida OF mia_AT.
 
 
 SYNONYMS vai = go.
@@ -3157,18 +3203,19 @@ ADD TO EVERY THING
     CHECK mia_AT CAN andare_a
       ELSE SAY azione_bloccata OF mia_AT.
     AND dest <> hero
-      ELSE SAY check_obj_not_hero4 OF mia_AT.
+      -- @NOTA: Potrei fare a meno dell'attr. messaggio, e personalizzarlo qui!
+      ELSE SAY sei_già_qui OF mia_AT.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY imp_luogo_buio OF mia_AT.
-    AND hero IS NOT seduto
+    AND hero IS NOT seduto --                                                   TRANSLATE
       ELSE SAY check_hero_not_sitting3 OF mia_AT.
     AND hero IS NOT sdraiato
       ELSE SAY check_hero_not_lying_down3 OF mia_AT.
-    AND dest NOT AT hero
+    AND dest NOT AT hero --                                                     TRANSLATE
       ELSE
         IF dest IS NOT plurale
-          THEN SAY check_obj_not_at_hero_sg OF mia_AT.
-          ELSE SAY check_obj_not_at_hero_pl OF mia_AT.
+          THEN SAY ogg1_già_qui_sg OF mia_AT.
+          ELSE SAY ogg1_già_qui_pl OF mia_AT.
         END IF.
     AND dest IS raggiungibile AND dest IS NOT distante
       ELSE
@@ -3185,7 +3232,7 @@ ADD TO EVERY THING
               ELSE SAY ogg1_distante_pl OF mia_AT.
             END IF.
         END IF.
-    DOES
+    DOES --                                                                     TRANSLATE
       "You can't see" SAY THE dest. "anywhere nearby. You must state a
       direction where you want to go."
     END VERB.
@@ -5176,49 +5223,6 @@ END ADD TO.
 -- ==============================================================
 
 
------ FIND
-
-
--- ==============================================================
-
-
-SYNTAX find = find (ogg)!
-    WHERE ogg IsA THING
-      ELSE
-        IF ogg IS NOT plurale
-        -- @NOTA: Qui potrebbe volerci un messaggio ad hoc per questo verbo!
-          THEN SAY illegal_parameter_sg OF mia_AT.
-          ELSE SAY illegal_parameter_pl OF mia_AT.
-        END IF.
-
-
-SYNONYMS 'locate' = find.
-
-
-ADD TO EVERY THING
-  VERB find
-    CHECK mia_AT CAN trovare
-      ELSE SAY azione_bloccata OF mia_AT.
-    AND ogg <> hero
-      ELSE SAY check_obj_not_hero4 OF mia_AT.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
-    AND ogg NOT AT hero
-      ELSE
-        IF ogg IS NOT plurale
-          THEN SAY check_obj_not_at_hero_sg OF mia_AT.
-          ELSE SAY check_obj_not_at_hero_pl OF mia_AT.
-        END IF.
-    DOES
-      "You'll have to $v it yourself."
-  END VERB.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
 ----- FIRE
 
 
@@ -5425,8 +5429,8 @@ ADD TO EVERY THING
     AND png NOT AT hero
       ELSE
         IF png IS NOT plurale
-          THEN SAY check_obj_not_at_hero_sg OF mia_AT.
-          ELSE SAY check_obj_not_at_hero_pl OF mia_AT.
+          THEN SAY ogg1_già_qui_sg OF mia_AT.
+          ELSE SAY ogg1_già_qui_pl OF mia_AT.
         END IF.
     AND hero IS NOT seduto
       ELSE SAY check_hero_not_sitting2 OF mia_AT.

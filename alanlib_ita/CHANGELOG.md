@@ -11,9 +11,12 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/27 \(4\)](#20180727-4)
+    - [Translated Verb Responses + Attributes](#translated-verb-responses--attributes)
+    - [Verb: `find`](#verb-find)
 - [2018/07/27 \(3\)](#20180727-3)
 - [2018/07/27 \(2\)](#20180727-2)
-    - [Translated Verb Responses + Attributes](#translated-verb-responses--attributes)
+    - [Translated Verb Responses + Attributes](#translated-verb-responses--attributes-1)
     - [Italian Responses For Illegal Obj2 With](#italian-responses-for-illegal-obj2-with)
 - [2018/07/27 \(1\)](#20180727-1)
     - [Italian Responses For Illegal Obj2 With](#italian-responses-for-illegal-obj2-with-1)
@@ -190,6 +193,34 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/27 (4)
+
+## Translated Verb Responses + Attributes
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.3.17)
+- [`lib_verbi.i`][lib_verbi] (v0.3.20)
+
+
+|        EN Attribute        |       IT Attribute      |           Text          |
+|----------------------------|-------------------------|-------------------------|
+| `illegal_parameter_go`     | `destinazione_invalida` | `Non puoi andare lì.`   |
+| `check_obj_not_hero4`      | `sei_già_qui`           | `Ti trovi già qui!`     |
+| `check_obj_not_at_hero_sg` | `ogg1_già_qui_sg`       | `$+1 è proprio qui.`    |
+| `check_obj_not_at_hero_pl` | `ogg1_già_qui_pl`       | `$+1 sono proprio qui.` |
+
+
+## Verb: `find`
+
+Translated verb `trova`, (_find_):
+
+    trova (ogg)
+
+with no synonyms.
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/27 (3)
 

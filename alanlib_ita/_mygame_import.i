@@ -1,4 +1,4 @@
--- "_mygame_import.i" v0.3.4 (2018/07/26)
+-- "_mygame_import.i" v0.3.5 (2018/07/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -12,7 +12,7 @@
 --  * sitting    -> seduto
 --  * lying_down -> sdraiato
 --------------------------------------------------------------------------------
--- NOTA: Questo file andr?interamente rivisto a traduzione ultimata poich?non
+-- NOTA: Questo file andrà interamente rivisto a traduzione ultimata poiché non
 --       rispecchia i cambiamenti della traduzione!!!
 --------------------------------------------------------------------------------
 
@@ -198,7 +198,7 @@ THE mia_AT IsA blocco_definizioni
 	HAS illegal_parameter_examine_sg "That's not something you can examine.".			-- examine
 	HAS illegal_parameter_examine_pl "Those are not something you can examine.".
 
-	HAS illegal_parameter_go "You can't go there.".								-- go_to
+	HAS destinazione_invalida "You can't go there.".								-- go_to
 
 	HAS illegal_parameter_look_out_sg "That's not something you can look out of.".		-- look_out_of
 	HAS illegal_parameter_look_out_pl "Those are not something you can look out of.".
@@ -366,8 +366,8 @@ THE mia_AT IsA blocco_definizioni
 
 	HAS check_count_weapon_in_hero "You are not carrying any firearms.".				-- shoot
 
-	HAS check_obj_not_at_hero_sg "$+1 is right here.".  							-- find, follow, go_to, where_is
-	HAS check_obj_not_at_hero_pl "$+1 are right here.".
+	HAS ogg1_già_qui_sg "$+1 is right here.".  							-- find, follow, go_to, where_is
+	HAS ogg1_già_qui_pl "$+1 are right here.".
 	HAS check_obj_in_hero "You don't have the $+1.".							-- drop, fire, fire_at, put, show
 	HAS check_obj2_in_hero "You don't have the $+2.".							-- (numerous)
 	HAS check_obj_not_in_hero1 "It doesn't make sense to $v something you're holding.".  	-- attack, attack_with, kick, lift, shoot, shoot_with
@@ -409,7 +409,7 @@ THE mia_AT IsA blocco_definizioni
   -- c) Check della Locazione
   --    ---------------------
 
-  HAS imp_luogo_buio "?troppo buio.".           -- (svariati verbi)
+  HAS imp_luogo_buio "È troppo buio.".           -- (svariati verbi)
 
 
 	-- d) checks guarding against actions directed at the hero him-/herself
@@ -420,7 +420,7 @@ THE mia_AT IsA blocco_definizioni
 																   -- take_from, tell
 	HAS check_obj_not_hero2 "There is no need to be that desperate.".  			-- fire_at, kill, kill_with, shoot, shoot_with
 	HAS check_obj_not_hero3 "That wouldn't accomplish anything.".				-- scratch, touch
-	HAS check_obj_not_hero4 "You're right here.".							-- find, go_to
+	HAS sei_già_qui "You're right here.".							-- find, go_to
 	HAS check_obj_not_hero5 "You don't need to be freed.".					-- free
 	HAS check_obj_not_hero6 "There is no time for that now.".								-- kiss, play_with, rub
 	HAS check_obj_not_hero7 "Turning your head, you notice nothing unusual behind yourself.".		-- look_behind
