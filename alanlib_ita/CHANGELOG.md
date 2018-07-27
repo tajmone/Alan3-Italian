@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/27 \(7\)](#20180727-7)
 - [2018/07/27 \(6\)](#20180727-6)
     - [New THING Attribute `vocale` for Adjectives Conjucation](#new-thing-attribute-vocale-for-adjectives-conjucation)
         - [Italian Adjectives Refresher](#italian-adjectives-refresher)
@@ -199,6 +200,17 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/27 (7)
+
+- [`lib_classi.i`][lib_classi] (v0.4.1)
+
+Translated some more commented documentation of the Library classes.
+
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/27 (6)
 

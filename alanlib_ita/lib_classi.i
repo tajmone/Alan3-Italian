@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.4.0 (2018/07/27)
+-- "lib_classi.i" v0.4.1 (2018/07/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -63,6 +63,11 @@ END ADD.
 --==============================================================================
 
 
+--.-------------------.
+--| I N D U M E N T O |
+--+-------------------+--------------------------------------------------------.
+--|                                                                            |
+--`----------------------------------------------------------------------------'
 
 -- CLOTHING
   -- Is a piece of clothing that behaves according to Alan Bampton's 'xwear.i' extension.
@@ -72,7 +77,6 @@ END ADD.
   -- This only applies to the hero; NPCs cannot be made to wear clothing in layers.
   -- Also the verbs 'wear', 'remove' and 'undress' are defined here.
 
---------------------------------------------------------------------------------
 
 --.-----------------------.
 --| D I S P O S I T I V O |
@@ -90,16 +94,6 @@ END ADD.
 --`----------------------------------------------------------------------------'
 
 
--- DEVICE
-  -- Is a  machine or an electronic device, for example a TV. Can be turned
-  -- (=switched) on and off if it is not broken.
-  -- Attributes: 'on' and NOT 'on', NOT broken.
-  -- Is described by default as being either on or off when examined.
-
---------------------------------------------------------------------------------
-
--- @TODO: Aggiungi menzione di 'altro_lato'!
-
 --.-----------.
 --| P O R T A |
 --+-----------+----------------------------------------------------------------.
@@ -107,6 +101,15 @@ END ADD.
 --| le porte sono chiuse e non bloccate. Per poter aprire una porta bloccata è |
 --| richiesta la sua chiave ('chiave_abbinata'). Se esaminata, la descrizione  |
 --| includerà il suo stato attuale (aperta o chiusa).                          |
+--|                                                                            |
+--| Le porte hanno anche l'attributo 'altro_lato' tramite il quale è possibile |
+--| abbinare tra loro due porte situate in stanze diverse, creando l'illusione |
+--| di una sola porta che si affaccia su entrambe le stanze. Quando due porte  |
+--| sono associate tra loro in questo modo, ossia dichiarando ciascuna porta   |
+--| come 'altro_lato' dell'altra, la libreria sincronizzerà i cambiamenti di   |
+--| stato (aperta/chiusa, bloccata/sbloccata) tra esse, di modo che aprendo,   |
+--| chiudendo, sbloccando o bloccando una di esse tali azioni abbiano effetto  |
+--| automatico anche sulla porta associata.                                    |
 --+----------------------------------------------------------------------------+
 --| ATTRIBUTI PREDEFINITI:                  |                                  |
 --|                                         |                                  |
@@ -118,13 +121,6 @@ END ADD.
 --|  - HAS chiave_abbinata chiave_fittizia. | = nessuna chiave                 |
 --`----------------------------------------------------------------------------'
 
--- DOOR
-  -- Can be opened, closed, and optionally locked and unlocked.
-  -- Is by default not open, not lockable.
-  -- all default attributes: openable, NOT open, NOT lockable, NOT locked; not takeable.
-  -- Is described by default as being either open or closed when examined.
-
---------------------------------------------------------------------------------
 
 --.---------------.
 --| L I Q U I D O |
@@ -134,12 +130,34 @@ END ADD.
 --| Di default un liquido non è potabile.                                      |
 --`----------------------------------------------------------------------------'
 
--- LIQUID
-  -- Can only be taken if it is in a container. You can fill something with it,
-  -- and you can pour it somewhere.
-  -- A liquid is by default NOT potabile.
-
 --------------------------------------------------------------------------------
+
+-- @TODO: Mancano ancora troppi elementi per documentare le fonti di luce:
+--        - La differenza tra i verbi inglesi "turned on and off, lighted and 
+--          extinguished" non ha ancora corrispondenti italiani, e al momento
+--          vi sono difficoltà in vista per la traduzione di questi verbi.
+--        - Il completamento della traduzione di questa scheda dovrà essere
+--          rimandato a quando tutti i verbi saranno tradotti!
+
+--.---------------------------.
+--| F O N T E   D I   L U C E |
+--+---------------------------+------------------------------------------------.
+--|                                                                            |
+
+--| Una fonte di luce può essere 'naturale' (p.es. una candela, una fiaccola, 
+--| un falò) o 'NOT naturale' (ossia artificiale, come una torcia elettrica, 
+--| una bajour).
+
+--| Una fonte di luce artificiale la si può accendere, spegnere ed estinguere,
+--| purché non sia rotta.
+
+--| Una fonte di luce naturale può essere appiccata ed estinta, ma non accessa
+--| o spenta.
+
+--| Quando si esamina una fonte di luce, nella descrizione ne verrà menzionato 
+--| automaticamente lo stato (accesa/spenta).
+
+--`----------------------------------------------------------------------------'
 
 -- LIGHTSOURCE
   -- IS natural or NOT natural
@@ -152,17 +170,25 @@ END ADD.
 
 --------------------------------------------------------------------------------
 
--- LISTED_CONTAINER
-  -- Is a container object. The contents of a listed_container will be listed both after
-  -- 'look' (= in the room description), 'look in' and 'examine' (if the container is open).
-  -- (The contents of a normal container object are not listed after 'examine' by default, but only
-  -- after 'look' (=room description) and 'look in').
+--.-----------------------------------------.
+--| C O N T E N I T O R E   E L E N C A T O |
+--+-----------------------------------------+----------------------------------.
+--| Si tratta di un contenitore i cui contenuti (se è aperto) saranno elencati |
+--| sia nella descrizione del luogo (entrandovi, o usando 'guarda') sia quando |
+--| viene esaminato o aperto. La libreria autogestisce lo stato di opacità di  |
+--| questo tipo di contenitore, rendendolo non opaco (NOT OPAQUE) quando viene |
+--| aperto, e opaco quando viene chiuso, affinché i suoi contenuti non vengano |
+--| svelati (elencati) quando esso è chiuso.                                   |
+--+----------------------------------------------------------------------------+
+--| NOTA: I contenuti di un contenitore normale non vengono elencati con il    |
+--|       verbo 'esamnina', ma solo con 'guarda', 'guarda dentro' o durante la |
+--|       descrizione del luogo.                                               |
+--`----------------------------------------------------------------------------'
 
---------------------------------------------------------------------------------
 
---.---------------.
---| L I Q U I D O |
---+---------------+------------------------------------------------------------.
+--.-----------.
+--| S U O N O |
+--+-----------+----------------------------------------------------------------.
 --| È possibile ascoltare i suoni ma non esaminarli, annusarli né manipolarli. |
 --| (volendo, li si può accendere e spegnere.)                                 |
 --+----------------------------------------------------------------------------+
@@ -174,35 +200,31 @@ END ADD.
 --|  - IS NOT spostabile.                                                      |
 --`----------------------------------------------------------------------------'
 
--- SOUND
-  -- Can be listened to but not examined, searched, smelled or manipulated.
-  -- (Can be turned on and off if desirable.)
 
---------------------------------------------------------------------------------
+--.-----------------.
+--| S U P P O R T O |
+--+-----------------+----------------------------------------------------------.
+--| Una superficie su cui poter mettere cose e su cui si può salire e scendere. | 
+--| Si tratta di un oggetto di tipo contenitore, perciò è possibile prendere le |
+--| cose vi si trovano sopra (in realtà, dentro di esso, ma viene presentato in |
+--| modo da crare l'illusione che sia una superficie).                          |
+--| Di default, gli oggetti su un supporto saranno elencati nella descrizione   |
+--| del luogo o quando il supporto viene esamintao.                             |
+--`----------------------------------------------------------------------------'
 
--- SUPPORTER
-  -- You can put things on this and you can stand on this. It is declared a container,
-  -- so you can take things from it, as well. When there's something on a supporter,
-  -- a default listing of it will appear in the room description and after 'examine'.
-
---------------------------------------------------------------------------------
 
 --.---------.
 --| A R M A |
 --+---------+------------------------------------------------------------------.
 --| Di default un'arma non può essere sparata (p.es., un coltello, una mazza), |
 --| ma settando l'attributo 'CAN sparare' si avrà un'arma da fuoco che sarà    |
---| utilizzabile con il verbo "spara".
+--| utilizzabile con il verbo "spara" (p.es., una pistola, un cannone).        |
 --+----------------------------------------------------------------------------+
 --| ATTRIBUTI PREDEFINITI: |                                                   |
 --|                        |                                                   |
 --|  - CAN NOT sparare.    | = arma bianca                                     |
 --`----------------------------------------------------------------------------'
 
--- WEAPON
-  -- IS fireable (for example a cannon) or NOT fireable (for example a baseball bat).
-
---------------------------------------------------------------------------------
 
 --.-----------------.
 --| F I N E S T R A |
@@ -217,11 +239,30 @@ END ADD.
 --|  - IS NOT prendibile.                                                      |
 --`----------------------------------------------------------------------------'
 
--- WINDOW
-  -- Can be opened, closed, looked through and out of.
-  -- Will be by default described as being either open or closed when examined.
 
 --------------------------------------------------------------------------------
+
+
+
+--==============================================================================
+-- § 0.1.2 - Attori
+--==============================================================================
+
+-- Tutti gli attori (ossia, la classe ACTOR) vengono definiti dalla libreria
+-- come non inanimati e contenitori (affinché possano ricevere e trasportare
+-- cose).
+
+-- Di norma, gli attori vengono preceduti da un articolo nel testo del gioco,
+-- come accade con gli oggetti:
+-- 
+--    "Puoi vedere un uomo qui."
+--    "Puoi vedere la professoressa qui."
+--    "Esamini il cane, ma non noti niente di speciale."
+-- 
+-- A meno che l'attore non venga dichiarato 'named', ossia avente nome proprio,
+-- nel qual caso l'articolo (sia determinativo che indeterminativo) verrà omesso:
+-- 
+--    "Puoi vedere Alessandro Joker qui."
 
 
 -- 2. ACTOR CLASSES
@@ -237,14 +278,36 @@ END ADD.
 --
 -- The following classes for actors are defined in this library:
 
+--------------------------------------------------------------------------------
+
+--.---------------.
+--| P E R S O N A |
+--+---------------+------------------------------------------------------------.
+
+--`----------------------------------------------------------------------------'
+
 
 -- PERSON
   -- is able to talk (= 'CAN talk').
 
+--------------------------------------------------------------------------------
+
+--.---------------.
+--| F E M M I N A |
+--+---------------+------------------------------------------------------------.
+
+--`----------------------------------------------------------------------------'
 
 -- FEMALE
   -- a subclass of person (= is able to talk)
       -- can be referred to with the pronoun 'her'
+--------------------------------------------------------------------------------
+
+--.---------------.
+--| M A S C H I O |
+--+---------------+------------------------------------------------------------.
+
+--`----------------------------------------------------------------------------'
 
 
 -- MALE
