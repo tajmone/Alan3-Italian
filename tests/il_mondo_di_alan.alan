@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione v0.3.7 (2018/07/27)
+--  versione v0.4.0 (2018/07/27)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -228,6 +228,30 @@ END THE libro_magico.
 THE sasso IsA OBJECT AT pzzaIF.
   
 END THE sasso.
+
+--==============================================================================
+-- Latte in Bottiglia
+--==============================================================================
+-- Per testare bevi
+
+THE bottiglia IsA contenitore_elencato AT pzzaIF.
+  HAS articolo "la".
+END THE bottiglia.
+
+THE latte IsA liquido IN bottiglia.
+  HAS articolo "il".
+  INDEFINITE ARTICLE "del"
+  HAS recipiente bottiglia.
+  IS  potabile.
+END THE latte.
+
+THE aranciata IsA liquido IN bottiglia.
+  HAS articolo "l'".
+  INDEFINITE ARTICLE "dell'$$"
+  IS femminile.
+  HAS recipiente bottiglia.
+  IS  potabile.
+END THE aranciata.
 
 
 -- =============================================================================

@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.3.21 (2018/07/27)
+-- "lib_verbi.i" v0.4.0 (2018/07/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -483,19 +483,7 @@ ADD TO EVERY OBJECT
               THEN "è"
               ELSE "sono"
             END IF.
-            "bloccat$$"
-            IF ogg IS NOT femminile
-              THEN
-                IF ogg IS NOT plurale
-                  THEN "o." -- GNA = msi
-                  ELSE "i." -- GNA = mpi
-                END IF.
-              ELSE
-                IF ogg IS NOT plurale
-                  THEN "a." -- GNA = fsi
-                  ELSE "e." -- GNA = fpi
-                END IF.
-            END IF.
+            "bloccat$$" SAY ogg:vocale. "."
         END IF.
       ELSIF ogg IS NOT bloccato
         THEN MAKE ogg aperto.
@@ -606,22 +594,8 @@ ADD TO EVERY OBJECT
                   THEN "è"
                   ELSE "sono"
                 END IF.
-                "bloccat$$"
-                IF ogg IS NOT femminile
-                  THEN
-                    IF ogg IS NOT plurale
-                      THEN "o." -- GNA = msi
-                      ELSE "i." -- GNA = mpi
-                    END IF.
-                  ELSE
-                    IF ogg IS NOT plurale
-                      THEN "a." -- GNA = fsi
-                      ELSE "e." -- GNA = fpi
-                    END IF.
-                END IF.
-             -- IF ogg IS NOT plurale
-             --   THEN "is locked."
-             --   ELSE "are locked."
+                "bloccat$$" SAY ogg:vocale. "."
+
             END IF.
           ELSE "Non puoi aprire" SAY THE ogg. "con" SAY THE strum. "."
         END IF.
@@ -811,20 +785,8 @@ ADD TO EVERY liquido
           IF liq IN hero
             -- i.e. if the implicit taking was successful
             -- Se il prendi implicito è andato in porto:
-            THEN "Bevi tutt$$"
-          -- "You drink all of" SAY THE liq. "."
-              IF liq IS NOT femminile
-                THEN
-                  IF liq IS NOT plurale
-                    THEN "o." -- GNA = msi
-                    ELSE "i." -- GNA = mpi
-                  END IF.
-                ELSE
-                  IF liq IS NOT plurale
-                    THEN "a." -- GNA = fsi
-                    ELSE "e." -- GNA = fpi
-                  END IF.
-              END IF.
+            THEN
+              "Bevi tutt$$" SAY liq:vocale.
               SAY THE liq. "."
               LOCATE liq AT limbo.
           END IF.
@@ -2281,8 +2243,6 @@ ADD TO EVERY THING
       -- actors are not prohibited from being taken in the checks; this is to
       -- allow for example a dog to be picked up, or a bird to be taken out of
       -- a cage, etc.
-
-
       ELSIF ogg IsA OBJECT
         THEN IF ogg DIRECTLY IN abbigliamento
             THEN LOCATE ogg IN hero.
@@ -2293,19 +2253,7 @@ ADD TO EVERY THING
               END IF.
             ELSE LOCATE ogg IN hero.
               --@ "Taken." => "Pres[o|a|i|e]."
-              "Pres$$"
-              IF ogg IS NOT femminile
-                THEN
-                  IF ogg IS NOT plurale
-                    THEN "o." -- GNA = msi
-                    ELSE "i." -- GNA = mpi
-                  END IF.
-                ELSE
-                  IF ogg IS NOT plurale
-                    THEN "a." -- GNA = fsi
-                    ELSE "e." -- GNA = fpi
-                  END IF.
-              END IF.
+              "Pres$$" SAY ogg:vocale. "."
           END IF.
       END IF.
 
@@ -3112,19 +3060,7 @@ ADD TO EVERY OBJECT
       ELSE SAY azione_bloccata OF mia_AT.
     DOES
    -- "Please be more specific. How do you intend to use"
-      "Sii più specifico. Come vorresti usarl$$"
-      IF ogg IS NOT femminile
-        THEN
-          IF ogg IS NOT plurale
-            THEN "o?" -- GNA = msi
-            ELSE "i?" -- GNA = mpi
-          END IF.
-        ELSE
-          IF ogg IS NOT plurale
-            THEN "a?" -- GNA = fsi
-            ELSE "e?" -- GNA = fpi
-          END IF.
-      END IF.
+      "Sii più specifico. Come vorresti usarl$$" SAY ogg:vocale. "?"
     END VERB.
 END ADD TO.
 

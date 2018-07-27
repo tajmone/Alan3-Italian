@@ -11,6 +11,11 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/27 \(6\)](#20180727-6)
+    - [New THING Attribute `vocale` for Adjectives Conjucation](#new-thing-attribute-vocale-for-adjectives-conjucation)
+        - [Italian Adjectives Refresher](#italian-adjectives-refresher)
+        - [Adjectives and The Library](#adjectives-and-the-library)
+        - [The `vocale` Attribute](#the-vocale-attribute)
 - [2018/07/27 \(5\)](#20180727-5)
 - [2018/07/27 \(4\)](#20180727-4)
     - [Translated Verb Responses + Attributes](#translated-verb-responses--attributes)
@@ -194,6 +199,115 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/27 (6)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.4.0)
+- [`lib_verbi.i`][lib_verbi] (v0.4.0)
+
+This is a major update introducing new global features to the Italian library. Therefore, all library files are bumped up to version `0.4.0`, even those whose code wasn't changed to introduce the new feature:
+
+- [`libreria.i`][libreria] (v0.4.0)
+- [`lib_classi.i`][lib_classi] (v0.4.0)
+- [`lib_luoghi.i`][lib_luoghi] (v0.4.0)
+- [`lib_messaggi.i`][lib_messaggi] (v0.4.0)
+- [`lib_supplemento.i`][lib_supplemento] (v0.4.0)
+
+## New THING Attribute `vocale` for Adjectives Conjucation
+
+### Italian Adjectives Refresher
+
+In Italian an adjective must agree in gender and number with the noun it refers to. In practical terms, this affects the last vowel of the adjective, the common conjucation rule being:
+
+|               | singular | plural |
+|---------------|----------|--------|
+| __masculine__ | `o`      | `i`    |
+| __feminine__  | `a`      | `e`    |
+
+Some examples:
+
+| masculine sing. | masculine plur. | feminine sing. | feminine plur. | (English meaning) |
+|-----------------|-----------------|----------------|----------------|-------------------|
+| bello           | belli           | bella          | belle          | _beautiful_       |
+| caro            | cari            | cara           | care           | _dear_            |
+| alto            | alti            | alta           | alte           | _tall_            |
+| corto           | corti           | corta          | corte          | _short_           |
+
+Some adjectives follow a different conjucation form, depending on their ending form ("-co", -cio", "-e", and others). Some examples:
+
+
+
+| masculine sing. | masculine plur. | feminine sing. | feminine plur. | (English meaning) |
+|-----------------|-----------------|----------------|----------------|-------------------|
+| ricco           | ricchi          | ricca          | ricche         | _rich_            |
+| cieco           | ciechi          | cieca          | cieche         | _blind_           |
+| triste          | tristi          | triste         | tristi         | _sad_             |
+| felice          | felici          | felice         | felici         | _happy_           |
+| marcio          | marci           | marcia         | marce          | _rotten_          |
+| conscio         | consci          | conscia        | consce         | _conscious_       |
+
+These type of adjectives are not covered by the new feature presented in this commit.
+
+### Adjectives and The Library
+
+Currently, when a VERB has to print out an adjective refering to a parameter, it requires to check its gender and number to decide which vowel to end the adjective with.
+
+Here is a real example of such checks, taken from the "`lib_verbi.i`" module:
+
+```alan
+"bloccat$$"
+IF ogg IS NOT femminile
+  THEN
+    IF ogg IS NOT plurale
+      THEN "o." -- GNA = msi
+      ELSE "i." -- GNA = mpi
+    END IF.
+  ELSE
+    IF ogg IS NOT plurale
+      THEN "a." -- GNA = fsi
+      ELSE "e." -- GNA = fpi
+    END IF.
+END IF.
+```
+
+Of course, similar conditional block can handle any form of adjectives (including the exceptions mentioned above) because when coding the verb we already know the adjective at hand that needs to be printed, and can handle conditional checks accordingly.
+
+But the "o/i/a/e" conjucation is the most common one, so this features focus on that in particular and aims at reducing in size verb definitions and getting rid of nested conditional blocks like the one presented above.
+
+### The `vocale` Attribute
+
+As a solution, I've introduced on every `THING` the new attribute `vocale`, which is a string containing the vowel that should be used to conjucate adjectives refering to it. This way, any adjective that follows the common "o/i/a/e" conjucation can simply append blindly to itself the string of the instance's `vocale` attribute.
+
+Thanks to the new system, the code show above was now replaced by this single line of code:
+
+```alan
+"bloccat$$" SAY ogg:vocale. "$$."
+```
+
+... or, if one doesn't want to use the `:` shorthand:
+
+```alan
+"bloccat$$" SAY vocale OF ogg. "$$."
+```
+
+
+This is a considerable gain in terms of code verbosity, not only for the library internal verb definitions but also for end users who can benefit from the `vocale` attribute in their own adventure code!
+
+While having another attribute added to every `THING` in the game might add some memory bloat, it's still worth it because it reduces the code size of VERBs. I don't think that having an extra single-char string on every `THING` instance in the game is going to affect drastically any adventure, even very large ones. Weighing the pros and cons of this features vs the old system, there is no doubt that it makes the library code not only slimmer but also more readable and easier to maintain; plus, it's going to make life much easier for authors who need to implement custom verbs and messages in their adventures.
+
+Theorically, having dropped nested branching code blocks in favour of retriving a string attribute should be faster in terms of execution (branching can affect negatively the CPU cache and consume more registers), but I seriously doubt that this could lead to any noticeable perfomance gains — modern PCs are so powerful that running Text Adventures (even truly huge ones) is a trivial task for the CPU, and memory has become so cheap today that the whole adventure will surely fit entirely into the RAM of any computer, even a NetBook.
+
+#### Auto-Initialization Behind the Scenes
+
+The contents of `vocale` are auto-magically handled by the library behind the scenes at initialization time — the `articolo` attribute provided by the adventure author is referenced to establish the required vowel. This is handled within the library code that already deals with initialization of gender, number and definite/indefinite articles on every instance. 
+
+So this new feature doesn't add any burden on the authors' side since it doesn't require additional attributes to be declared on instances.
+
+Adjectives which follow different conjucation rules will simply ignore `vocale` and use a conditional gender/number block as usual.
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/27 (5)
 

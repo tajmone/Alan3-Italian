@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.3.18 (2018/07/27)
+-- "lib_definizioni.i" v0.4.0 (2018/07/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -203,6 +203,25 @@ ADD TO EVERY THING
   HAS prep_SU "sul".
 
 
+  -- ----------------------------
+  -- Vocale per Accordo Aggettivi
+  -- ----------------------------
+  
+  -- L'attributo 'vocale' contiene la vocale finale di riferimento per gli
+  -- aggettivi che seguono la forma "o/a i/e" nell'accordo di genere e numero.
+  -- 
+  -- Anche 'vocale' sarà inizializzato automaticamente dalla libreria, basandosi
+  -- sul valore di 'articolo' dell'istanza.
+  -- 
+  -- Questo attributo semplifica molto la corretta rappresentazione di aggettivi
+  -- nei vari messaggi della libreria poiché consente di stampare direttamente
+  -- questo attributo come ultima vocale dell'aggetivo, aniziché dover eseguire
+  -- controlli sul genere e sul numero dell'istanza in oggetto, riducendo quindi
+  -- drasticamente la lunghezza del codice all'interno dei verbi.
+  -- Inoltre, questo attributo potrà essere impiegato anche dagli autori stessi,
+  -- poiché la sua utilità non è limitata all'uso interno che ne fa la libreria.
+
+  HAS vocale "o".
 
 --==============================================================================
 --------------------------------------------------------------------------------
@@ -214,10 +233,16 @@ ADD TO EVERY THING
   -- numero dell'istanza.
 
   INITIALIZE
+
+  IF THIS IS femminile               --| Questo è necessario per coprire il caso
+    THEN SET vocale  OF THIS TO "a". --| in cui 'articolo' = "l'", prima che il
+  END IF.                            --| codice seguente venga eseguito!
+
   DEPENDING ON articolo of THIS
     = "lo" THEN
       MAKE THIS NOT femminile.
       MAKE THIS NOT plurale.
+      SET vocale  OF THIS TO "o".
       SET prep_DI OF THIS TO "dello".
       SET prep_A  OF THIS TO  "allo".
       SET prep_DA OF THIS TO "dallo".
@@ -227,6 +252,7 @@ ADD TO EVERY THING
     = "la" THEN
       MAKE THIS femminile.
       MAKE THIS NOT plurale.
+      SET vocale  OF THIS TO "a".
       SET prep_DI OF THIS TO "della".
       SET prep_A  OF THIS TO  "alla".
       SET prep_DA OF THIS TO "dalla".
@@ -245,6 +271,7 @@ ADD TO EVERY THING
     = "i" THEN
       MAKE THIS NOT femminile.
       MAKE THIS plurale.
+      SET vocale  OF THIS TO "i".
       SET prep_DI OF THIS TO "dei".
       SET prep_A  OF THIS TO  "ai".
       SET prep_DA OF THIS TO "dai".
@@ -254,6 +281,7 @@ ADD TO EVERY THING
     = "gli" THEN
       MAKE THIS NOT femminile.
       MAKE THIS plurale.
+      SET vocale  OF THIS TO "i".
       SET prep_DI OF THIS TO "degli".
       SET prep_A  OF THIS TO  "agli".
       SET prep_DA OF THIS TO "dagli".
@@ -263,11 +291,12 @@ ADD TO EVERY THING
     = "le" THEN
       MAKE THIS femminile.
       MAKE THIS plurale.
-      SET prep_DI OF THIS TO "della".
-      SET prep_A  OF THIS TO  "alla".
-      SET prep_DA OF THIS TO "dalla".
-      SET prep_IN OF THIS TO "nella".
-      SET prep_SU OF THIS TO "sulla".
+      SET vocale  OF THIS TO "e".
+      SET prep_DI OF THIS TO "delle".
+      SET prep_A  OF THIS TO  "alle".
+      SET prep_DA OF THIS TO "dalle".
+      SET prep_IN OF THIS TO "nelle".
+      SET prep_SU OF THIS TO "sulle".
 
     ELSE -- = "il" (o dovrebbe esserlo)
       MAKE THIS NOT femminile.
