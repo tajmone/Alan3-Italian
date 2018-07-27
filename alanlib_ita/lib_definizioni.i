@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.3.15 (2018/07/27)
+-- "lib_definizioni.i" v0.3.16 (2018/07/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -982,8 +982,8 @@ EVERY blocco_definizioni IsA LOCATION
   -- containment checks for actors other than the hero (checks for the hero are listed separately below):
   -------------------------------------------------------------------------------------------------------
 
-  HAS check_act_near_hero "You don't quite know where $+1 went.           -- follow
-    You should state a direction where you want to go.".
+  HAS check_act_near_hero "You don't quite know where $+1 went."           -- follow
+                          "You should state a direction where you want to go.".
 
   HAS check_obj_in_act_sg "$+2 doesn't have $+1.".              -- take_from
   HAS check_obj_in_act_pl "$+2 don't have $+1.".
@@ -1031,7 +1031,7 @@ EVERY blocco_definizioni IsA LOCATION
 
   HAS check_obj_in_worn "You are not wearing $+1.".                 -- remove, take_off ('classes.i')
   HAS check_obj_not_in_worn1 "You are already wearing $+1.".            -- put_on, wear ('classes.i')
-      HAS check_obj_not_in_worn2 "It doesn't make sense to $v something you're wearing.". -- attack, attack_with, kick, shoot, shoot_with
+  HAS check_obj_not_in_worn2 "It doesn't make sense to $v something you're wearing.". -- attack, attack_with, kick, shoot, shoot_with
   HAS check_obj_not_in_worn3 "You'll have to take off $+1 first.".        -- drop
 
 

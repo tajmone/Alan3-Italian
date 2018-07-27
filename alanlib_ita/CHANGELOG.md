@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/27 \(3\)](#20180727-3)
 - [2018/07/27 \(2\)](#20180727-2)
     - [Translated Verb Responses + Attributes](#translated-verb-responses--attributes)
     - [Italian Responses For Illegal Obj2 With](#italian-responses-for-illegal-obj2-with)
@@ -189,6 +190,15 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/27 (3)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.3.16)
+
+Small fixes and cleanup; also fixes an English verb response (`check_act_near_hero`) that accidentally contained a side comment in its string (due to multiline string lacking closing quotes).
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/27 (2)
 
