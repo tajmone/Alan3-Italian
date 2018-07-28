@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.4.2 (2018/07/28)
+-- "lib_definizioni.i" v0.4.3 (2018/07/28)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -727,15 +727,6 @@ EVERY blocco_definizioni IsA LOCATION
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
   HAS check_obj_suitable_on_sg "That's not something you can $v on.".     -- knock, switch_on, turn_on
   HAS check_obj_suitable_on_pl "Those are not something you can $v on." .
-
-  -- @TODO: *** DELETE WHEN DONE: ***
-  -- Some verbs still use it because they'll need a different message
-  -- wholetogether when translated into Italian: turn_on.
-
-  HAS illegal_parameter_on_sg "That's not something you can $v on.".     -- climb_on, jump_on, knock, lie_on, sit_on,
-  HAS illegal_parameter_on_pl "Those are not something you can $v on.".  -- stand_on, switch_on, turn_on
-
-
 
   -- ------------------
   -- PREPOSIZIONE "CON"

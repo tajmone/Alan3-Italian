@@ -1,4 +1,4 @@
--- "_mygame_import.i" v0.4.0 (2018/07/27)
+-- "_mygame_import.i" v0.4.1 (2018/07/28)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -167,9 +167,9 @@ THE mia_AT IsA blocco_definizioni
 	HAS illegal_parameter2_from_pl "Those are not something you can take things from.".
 	HAS illegal_parameter_in_sg "That's not something you can $v in.".			-- dive_in, jump_in, lie_in, swim_in
 	HAS illegal_parameter_in_pl "Those are not something you can $v in.".
-	HAS illegal_parameter_on_sg "That's not something you can $v on.".			-- climb_on, jump_on, knock, lie_on, sit_on,
+	HAS ogg1_illegale_SU_sg "That's not something you can $v on.".			-- climb_on, jump_on, knock, lie_on, sit_on,
 																  -- stand_on, switch_on, turn_on
-	HAS illegal_parameter_on_pl "Those are not something you can $v on.".
+	HAS ogg1_illegale_SU_pl "Those are not something you can $v on.".
 	HAS illegal_parameter_off_sg "That's not something you can $v off.".			-- get_off, switch_off, turn_off
 	HAS illegal_parameter_off_pl "Those are not something you can $v off.".
 	HAS illegal_parameter_to_sg "That's not something you can $v to.".			-- listen_to, talk_to

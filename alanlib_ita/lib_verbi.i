@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.4.2 (2018/07/28)
+-- "lib_verbi.i" v0.4.3 (2018/07/28)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -6349,7 +6349,11 @@ END ADD TO.
 
 
 -- ==============================================================
-
+-- NOTA: In italiano questo verbo potrebbe essere:
+--         -- "da' fuoco a (ogg)"
+--         -- "dai fuoco a (ogg)"
+--       Non ci saranno problemi con SYNONYM 'dai'='da' perché non è stato
+--       creato proprio a causa dei conflitti con il verbo 'dare'!!!
 
 SYNTAX light = light (ogg)
   WHERE ogg IsA OBJECT
@@ -9612,10 +9616,10 @@ SYNTAX  turn_on = turn 'on' (disp)
   WHERE disp IsA OBJECT
     ELSE
       IF disp IS NOT plurale
-     -- @NOTA: Questi messaggi non andranno bene con il verbo italiano:         ATTENZIONE!
-        THEN SAY illegal_parameter_on_sg OF mia_AT.
-        ELSE SAY illegal_parameter_on_pl OF mia_AT.
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "accendere."
 
         turn_on = switch 'on' (disp).
 
@@ -9639,11 +9643,10 @@ ADD TO EVERY OBJECT
       ELSE SAY azione_bloccata OF mia_AT.
     DOES
       IF disp IS NOT plurale
-        THEN "That's not"
-        ELSE "Those are not"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
-
-      "something you can $v on."
+      "accendere."
   END VERB.
 END ADD TO.
 
@@ -9667,9 +9670,10 @@ SYNTAX turn_off = turn off (disp)
   WHERE disp IsA OBJECT
     ELSE
       IF disp IS NOT plurale
-        THEN SAY illegal_parameter_off_sg OF mia_AT.
-        ELSE SAY illegal_parameter_off_pl OF mia_AT.
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
+      "spegnere."
 
       turn_off = switch off (disp).
 
@@ -9692,11 +9696,10 @@ ADD TO EVERY OBJECT
       ELSE SAY azione_bloccata OF mia_AT.
     DOES
       IF disp IS NOT plurale
-        THEN "That's not"
-        ELSE "Those are not"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
       END IF.
-
-      "something you can $v off."
+      "spegnere."
   END VERB.
 END ADD TO.
 

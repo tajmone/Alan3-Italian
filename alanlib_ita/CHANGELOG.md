@@ -11,8 +11,10 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/07/28 \(2\)](#20180728-2)
+- [2018/07/28 \(3\)](#20180728-3)
     - [Verb Responses](#verb-responses)
+- [2018/07/28 \(2\)](#20180728-2)
+    - [Verb Responses](#verb-responses-1)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
     - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
 - [2018/07/28 \(1\)](#20180728-1)
@@ -208,6 +210,21 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/28 (3)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.4.3)
+- [`lib_verbi.i`][lib_verbi] (v0.4.3)
+
+## Verb Responses
+
+- Removed all occurences of `illegal_parameter_on_sg`/`pl` and replaced them with Italian message instead.
+
+
+
+<!---------------------------------------------------------------------------->
+
+
 
 # 2018/07/28 (2)
 
