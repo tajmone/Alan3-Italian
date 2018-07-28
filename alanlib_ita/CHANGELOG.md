@@ -11,8 +11,12 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/07/28](#20180728)
+- [2018/07/28 \(2\)](#20180728-2)
+    - [Verb Responses](#verb-responses)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
+    - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
+- [2018/07/28 \(1\)](#20180728-1)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
     - [Verb: `answer`](#verb-answer)
     - [Verbs: `fill` and `fill_with`](#verbs-fill-and-fill_with)
 - [2018/07/27 \(7\)](#20180727-7)
@@ -57,15 +61,15 @@ Status: Alpha stage.
     - [Polish and Fix Translated Verbs](#polish-and-fix-translated-verbs)
     - [Verb Parameters Fixes](#verb-parameters-fixes)
 - [2018/07/25 \(8\)](#20180725-8)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
     - [Verbs: `yes` and `no`](#verbs-yes-and-no)
 - [2018/07/25 \(7\)](#20180725-7)
 - [2018/07/25 \(6\)](#20180725-6)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
     - [Verb: `play`](#verb-play)
     - [Verb: `play_with`](#verb-play_with)
 - [2018/07/25 \(5\)](#20180725-5)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
 - [2018/07/25 \(4\)](#20180725-4)
 - [2018/07/25 \(3\)](#20180725-3)
     - [Library Instances](#library-instances)
@@ -185,9 +189,9 @@ Status: Alpha stage.
     - [Verb: `pray`](#verb-pray)
     - [Verb: `break`](#verb-break)
     - [Verb: `break_with`](#verb-break_with)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
-- [2018/05/22 \(2\)](#20180522-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-5)
+- [2018/05/22 \(2\)](#20180522-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-6)
 - [2018/05/22 \(1\)](#20180522-1)
     - [Verb: `undress`](#verb-undress)
 - [2018/05/19](#20180519)
@@ -205,7 +209,58 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/07/28
+# 2018/07/28 (2)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.4.2)
+- [`lib_verbi.i`][lib_verbi] (v0.4.2)
+
+## Verb Responses
+
+Translated verb responses attributes:
+
+|        Attribute EN        |          Attribute IT          |                Text               |
+|----------------------------|--------------------------------|-----------------------------------|
+| `ogg1_illegale_SU_sg`/`pl` | `illegal_parameter_on_sg`/`pl` | `$+1 non è qualcosa su cui poter` |
+
+
+> __NOTE__ — The original EN `illegal_parameter_on_sg`/`pl` can't be delete because the `turn_on` verb still uses it because the Italian message above doesn't match with its expected response, and I'll have to use another _ad hoc_ message.
+
+
+<!-- 
+| `xxx`/`pl`   | `xxx`/`pl`   | `xxx` |
+ -->
+
+## Verb Restriction Attributes
+
+Translated `my_game` attributes for verb restrictions:
+
+| English  |   Italian    |
+|----------|--------------|
+| `sit`    | `sedersi`    |
+| `sit_on` | `sedersi_su` |
+
+
+## Verbs: `sit` and `sit_on`
+
+Translated verbs `siediti` and `siediti_su`, "__siediti__":
+
+    siediti
+    siediti su (superficie)
+
+
+with synonyms:
+
+    siedi = 'siediti'
+
+
+
+
+
+<!---------------------------------------------------------------------------->
+
+
+
+# 2018/07/28 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.1)
 - [`lib_classi.i`][lib_classi] (v0.4.2)

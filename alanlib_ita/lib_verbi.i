@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.4.1 (2018/07/28)
+-- "lib_verbi.i" v0.4.2 (2018/07/28)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -61,6 +61,8 @@
 --| sblocca            |                              | sblocca (ogg)                |   | 1 | x |
 --| sblocca_con        |                              | sblocca (ogg) con (chiave)   |   | 2 | x |
 --| scrivi             |                              | scrivi "testo" su (ogg)      |   | 1 | x |
+--| siediti            | siedi                        | siediti                      |   | 0 |   |
+--| siediti_su         | siedi                        | siediti su (superficie)      |   | 1 |   |
 --| spogliati          | svestiti                     | spogliati                    |   | 0 |   |
 --| suona              |                              | suona (ogg)                  |   | 1 | x |
 --| trova              |                              | trova (ogg)                  |   | 1 | x |
@@ -215,8 +217,8 @@
 ----- show        (+ reveal)                               show (obj) to (act)                 2       x
 ----- sing                                                 sing                                0
 ----- sip                                                  sip (liq)                           1
------ sit (down)                                           sit.  sit down.                     0
------ sit_on                                               sit on (surface)                    1
+-->>> sit (down)                                           sit.  sit down.                     0
+-->>> sit_on                                               sit on (surface)                    1
 -->>> sleep       (+ rest)                                 sleep                               0
 ----- smell0                                               smell                               0
 ----- smell                                                smell (odour)                       1
@@ -3067,6 +3069,130 @@ ADD TO EVERY STRING
 END ADD TO.
 
 
+-- ==============================================================
+
+
+----- @SIEDITI --> @SIT
+
+
+-- ==============================================================
+
+-- SYNTAX sit = sit.
+
+--        sit = sit 'down'.
+
+SYNTAX siediti = siediti.
+
+       -- siediti = siedi.
+
+SYNONYMS siedi = siediti.
+
+
+VERB siediti
+  CHECK mia_AT CAN sedersi
+    ELSE SAY azione_bloccata OF mia_AT.
+  AND hero IS NOT seduto
+    --                                                                          TRANSLATE
+    ELSE SAY check_hero_not_sitting4 OF mia_AT.
+  DOES
+    -- @TODO: Creare messaggio parziale "Al momento, non senti il bisogno di" ??
+    "Non senti il bisogno di sederti in questo momento." --                     IMPROVE
+ -- "You feel no urge to sit down at present."
+
+    --| Se invece si desidera che l'azione venga portata a termine, rimpiazzare
+    --| la riga precedente con il seguente codice:
+    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    -- IF hero IS sdraiato
+    --   THEN "Ti tiri su a sedere."
+    --     MAKE hero NOT sdraiato.
+    --   ELSE "Ti siedi."
+    -- END IF.
+    -- MAKE hero seduto.
+    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+END VERB.
+
+-- Mentre l'eroe è 'seduto' o 'sdraiato', non gli sarà possibile eseguire certe
+-- azioni poiché molti verbi della libreria prima controllano che non si trovi
+-- in una di quelle posizioni. Per esempio, se l'eroe è seduto ed il giocatore
+-- digita 'attacca [qualcosa]', la risposta sarà:
+-- 
+--    It will be difficult to attack anything while sitting down."              TRANSLATE
+-- 
+-- Inoltre, sarà spesso necessario rendere alcuni oggetti non raggiungibili da
+-- seduto o sdraiato.
+
+
+-- ==============================================================
+
+
+----- @SIEDITI SU --> @SIT_ON
+
+
+-- ==============================================================
+
+-- SYNTAX sit_on = sit 'on' (superficie)
+
+SYNTAX siediti_su = siediti su (superficie)
+  WHERE superficie IsA supporto
+    ELSE
+      IF superficie IS NOT plurale
+        THEN SAY ogg1_illegale_SU_sg OF mia_AT.
+        ELSE SAY ogg1_illegale_SU_pl OF mia_AT.
+      END IF.
+      "$$si sedere."
+
+
+ADD TO EVERY supporto
+  VERB siediti_su
+    CHECK mia_AT CAN sedersi_su
+      ELSE SAY azione_bloccata OF mia_AT.
+    AND hero IS NOT seduto
+      --                                                                        TRANSLATE
+      ELSE SAY check_hero_not_sitting4 OF mia_AT.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY imp_luogo_buio OF mia_AT.
+    AND superficie IS raggiungibile AND superficie IS NOT distante
+      ELSE
+        IF superficie IS NOT raggiungibile
+          THEN
+            IF superficie IS NOT plurale
+              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
+              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+            END IF.
+        ELSIF superficie IS distante
+          THEN
+            IF superficie IS NOT plurale
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
+            END IF.
+        END IF.
+    DOES
+      "Non senti il bisogno di sederti in questo momento." --                   IMPROVE
+      -- "You feel no urge to sit down at present."
+
+      --| Se invece si desidera che l'azione venga portata a termine, rimpiazzare
+      --| la riga precedente con il seguente codice:
+      -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      -- IF hero sdraiato
+      --   THEN "Ti alzi e ti siedi" SAY superficie:prep_SU. SAY superficie. "."
+      --     MAKE hero NOT sdraiato.
+      --   ELSE "Ti siedi" SAY superficie:prep_SU. SAY superficie. "."
+      -- END IF.
+      -- MAKE hero seduto.
+  END VERB.
+END ADD TO.
+
+
+-- Mentre l'eroe è 'seduto' o 'sdraiato', non gli sarà possibile eseguire certe
+-- azioni poiché molti verbi della libreria prima controllano che non si trovi
+-- in una di quelle posizioni. Per esempio, se l'eroe è seduto ed il giocatore
+-- digita 'attacca [qualcosa]', la risposta sarà:
+-- 
+--    It will be difficult to attack anything while sitting down."              TRANSLATE
+-- 
+-- Inoltre, sarà spesso necessario rendere alcuni oggetti non raggiungibili da
+-- seduto o sdraiato.
+
 
 -- ==============================================================
 
@@ -4074,9 +4200,10 @@ SYNTAX climb_on = climb 'on' (superficie)
   WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
-        THEN SAY illegal_parameter_on_sg OF mia_AT.
-        ELSE SAY illegal_parameter_on_pl OF mia_AT.
+        THEN SAY ogg1_illegale_SU_sg OF mia_AT.
+        ELSE SAY ogg1_illegale_SU_pl OF mia_AT.
       END IF.
+      "$$si arrampicare." --                                                    CHECK VERB!
 
 
 ADD TO EVERY supporto
@@ -5657,9 +5784,10 @@ SYNTAX jump_on = jump 'on' (superficie)
   WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
-        THEN SAY illegal_parameter_on_sg OF mia_AT.
-        ELSE SAY illegal_parameter_on_pl OF mia_AT.
+        THEN SAY ogg1_illegale_SU_sg OF mia_AT.
+        ELSE SAY ogg1_illegale_SU_pl OF mia_AT.
       END IF.
+      "saltare." --                                                             CHECK VERB
 
 
 ADD TO EVERY OBJECT
@@ -5913,9 +6041,14 @@ SYNTAX knock = knock 'on' (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_on_sg OF mia_AT.
-        ELSE SAY illegal_parameter_on_pl OF mia_AT.
+--| NOTA: Qui Ho usato il messaggio per prep_SU, come da originale, ma siccome
+--|       il verbo italiano verrà usato anche per "bussa alla porta", dovrò 
+--|       considerare se usare invece prep_A, o se mettere dei controlli nel
+--|       codice per decidire quale risposta usare. Per ora va bene così.
+        THEN SAY ogg1_illegale_SU_sg OF mia_AT.
+        ELSE SAY ogg1_illegale_SU_pl OF mia_AT.
       END IF.
+      "bussare." --                                                             CHECK VERB
 
        knock = knock (ogg).
 
@@ -6088,9 +6221,10 @@ SYNTAX lie_on = lie 'on' (superficie)
   WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
-        THEN SAY illegal_parameter_on_sg OF mia_AT.
-        ELSE SAY illegal_parameter_on_pl OF mia_AT.
+        THEN SAY ogg1_illegale_SU_sg OF mia_AT.
+        ELSE SAY ogg1_illegale_SU_pl OF mia_AT.
       END IF.
+      "$$si sdraiare."
 
    lie_on = lie 'down' 'on' (superficie).
 
@@ -8109,113 +8243,6 @@ END ADD TO.
 -- See also the verb 'drink'.
 
 
--- ==============================================================
-
-
------ SIT
-
-
--- ==============================================================
-
-
-SYNTAX sit = sit.
-
-       sit = sit 'down'.
-
-
-VERB sit
-  CHECK mia_AT CAN sit
-    ELSE SAY azione_bloccata OF mia_AT.
-  AND hero IS NOT seduto
-    ELSE SAY check_hero_not_sitting4 OF mia_AT.
-  DOES
-    "You feel no urge to sit down at present."
-    -- (or, if you wish to make it work, use the following instead of the above:
-    -- IF hero IS lying_down
-    --  THEN "You sit up."
-    --    MAKE hero NOT lying_down.
-    --  ELSE "You sit down."
-    -- END IF.
-    -- MAKE hero sitting.
-END VERB.
-
--- When the hero is sitting or lying down, it will be impossible for her/him to
--- perform certain actions, as numerous verbs in the library have checks for this.
--- For example, if the hero is sitting and the player types 'attack [something]',
--- the response will be "It will be difficult to attack anything while
--- sitting down."
-
--- Also, it is often essential to make certain objects NOT reachable when
--- sitting or lying down.
-
-
-
--- ==============================================================
-
-
------ SIT_ON
-
-
--- ==============================================================
-
-
-SYNTAX sit_on = sit 'on' (superficie)
-  WHERE superficie IsA supporto
-    ELSE
-      IF superficie IS NOT plurale
-        THEN SAY illegal_parameter_on_sg OF mia_AT.
-        ELSE SAY illegal_parameter_on_pl OF mia_AT.
-      END IF.
-
-
-ADD TO EVERY supporto
-  VERB sit_on
-    CHECK mia_AT CAN sit_on
-      ELSE SAY azione_bloccata OF mia_AT.
-    AND hero IS NOT seduto
-      ELSE SAY check_hero_not_sitting4 OF mia_AT.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
-    AND superficie IS raggiungibile AND superficie IS NOT distante
-      ELSE
-        IF superficie IS NOT raggiungibile
-          THEN
-            IF superficie IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
-            END IF.
-        ELSIF superficie IS distante
-          THEN
-            IF superficie IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
-            END IF.
-        END IF.
-    DOES
-      "You feel no urge to sit down at present."
-
-      -- (or, to make it work, use the following instead of the above:)
-      -- IF hero lying_down
-      --  THEN "You get up and sit down on" SAY THE surface. "."
-      --    MAKE hero NOT lying_down.
-      --  ELSE "You sit down on" SAY THE surface. "."
-      -- END IF.
-      -- MAKE hero sitting.
-  END VERB.
-END ADD TO.
-
-
--- When the hero is sitting or lying down, it will be impossible for her/him to
--- perform certain actions, as numerous verbs in the library have checks for this.
--- For example, if the hero is sitting and the player types 'attack [something]',
--- the response will be "It will be difficult to attack anything while
--- sitting down."
-
--- Also, it is often essential to make certain objects NOT reachable when
--- sitting or lying down.
-
-
-
 
 -- ==============================================================
 
@@ -8358,14 +8385,16 @@ END VERB.
 -- ==============================================================
 
 
-SYNTAX stand_on = stand 'on' (superficie)
+SYNTAX  stand_on = stand 'on' (superficie)
   WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
-        THEN SAY illegal_parameter_on_sg OF mia_AT.
-        ELSE SAY illegal_parameter_on_pl OF mia_AT.
+        THEN SAY ogg1_illegale_SU_sg OF mia_AT.
+        ELSE SAY ogg1_illegale_SU_pl OF mia_AT.
       END IF.
-  stand_on = get 'on' (superficie).
+      "(stand on)." --                                                          FIX VERB!
+  
+        stand_on = get 'on' (superficie).
 
 
 ADD TO EVERY supporto
@@ -9583,6 +9612,7 @@ SYNTAX  turn_on = turn 'on' (disp)
   WHERE disp IsA OBJECT
     ELSE
       IF disp IS NOT plurale
+     -- @NOTA: Questi messaggi non andranno bene con il verbo italiano:         ATTENZIONE!
         THEN SAY illegal_parameter_on_sg OF mia_AT.
         ELSE SAY illegal_parameter_on_pl OF mia_AT.
       END IF.

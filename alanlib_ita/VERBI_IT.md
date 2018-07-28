@@ -17,8 +17,10 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [ricomincia_partita](#ricomincia_partita)
     - [abbandona_partita](#abbandona_partita)
 - [VERBI DI SPOSTAMENTO](#verbi-di-spostamento)
-    - [vai_a](#vai_a)
     - [attraversa](#attraversa)
+    - [siediti](#siediti)
+    - [siediti_su](#siediti_su)
+    - [vai_a](#vai_a)
 - [ESAMINARE, LEGGERE, ISPEZIONARE, SCRIVERE](#esaminare-leggere-ispezionare-scrivere)
     - [esamina](#esamina)
     - [leggi](#leggi)
@@ -132,6 +134,10 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [sfonda]
 - [sfonda con]
 - [sì]
+- [siedi]
+- [siedi su]
+- [siediti]
+- [siediti su]
 - [spacca]
 - [spacca con]
 - [spogliati]
@@ -309,7 +315,56 @@ condizioni:
 
 Verbi che riguardano lo spostamento del personaggio protagonista nell'avventura:
 
+- [attraversa]
+- [siediti]
+- [siediti su]
 - [vai a]
+
+
+## attraversa
+
+[attraversa]: #attraversa "attraversa"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] attraversare
+
+sintassi:
+
+    attraversa <ogg>
+
+## siediti
+
+[siediti]: #siediti "siediti"
+[siedi]: #siediti "siediti"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] sedersi
+
+sintassi:
+
+    (siediti|siedi)
+
+
+## siediti_su
+
+[siediti su]: #siediti_su "siediti_su"
+[siedi su]: #siediti_su "siediti_su"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] sedersi_su
+
+sintassi:
+
+    (siediti|siedi) su <superficie>
+
+
+
 
 
 ## vai_a
@@ -330,20 +385,6 @@ sintassi:
 > > vai alla cabina telefonica
 > > alla cabina telefonica
 > ```
-
-
-## attraversa
-
-[attraversa]: #attraversa "attraversa"
-
-
-attributo `mia_AT`:
-
-    CAN [NOT] attraversare
-
-sintassi:
-
-    attraversa <ogg>
 
 
 -------------------------------------------------------------------------------

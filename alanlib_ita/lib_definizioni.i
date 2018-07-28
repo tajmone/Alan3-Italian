@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.4.1 (2018/07/28)
+-- "lib_definizioni.i" v0.4.2 (2018/07/28)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -704,12 +704,52 @@ EVERY blocco_definizioni IsA LOCATION
   -- Varianti dei messaggi precedenti, quando si tratta di parametri che richiedono
   -- preposizioni.
 
+  -- ----------------
+  -- PREPOSIZIONE "A"
+  -- ----------------
+  -- ORIGINAL EN: ????
+  -- NON ANCORA UTILIZZATO, E FORSE QUESTA FORMA NON VA BENE:
+  -- HAS ogg1_illegale_A_sg  "$+1 non è qualcosa a cui poter".
+  -- HAS ogg1_illegale_A_pl  "$+1 non sono qualcosa a cui poter".
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  HAS check_obj_suitable_at "You can't $v anything at $+2.".          -- fire_at, throw_at, throw_to
+
+  HAS illegal_parameter_at "You can't $v anything at $+2.".         -- fire_at, throw_at
+
+  -- -----------------
+  -- PREPOSIZIONE "SU"
+  -- -----------------
+  -- ORIGINAL EN: illegal_parameter_on_sg/pl
+  HAS ogg1_illegale_SU_sg  "$+1 non è qualcosa su cui poter".                   --> climb_on, jump_on, knock, lie_on, sit_on,
+  HAS ogg1_illegale_SU_pl  "$+1 non sono qualcosa su cui poter".
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  HAS check_obj_suitable_on_sg "That's not something you can $v on.".     -- knock, switch_on, turn_on
+  HAS check_obj_suitable_on_pl "Those are not something you can $v on." .
+
+  -- @TODO: *** DELETE WHEN DONE: ***
+  -- Some verbs still use it because they'll need a different message
+  -- wholetogether when translated into Italian: turn_on.
+
+  HAS illegal_parameter_on_sg "That's not something you can $v on.".     -- climb_on, jump_on, knock, lie_on, sit_on,
+  HAS illegal_parameter_on_pl "Those are not something you can $v on.".  -- stand_on, switch_on, turn_on
+
+
+
   -- ------------------
   -- PREPOSIZIONE "CON"
   -- ------------------
   -- ORIGINAL EN: illegal_parameter2_with_sg/pl  +  check_obj2_suitable_with_sg/pl
-  HAS ogg2_illegale_CON_sg  "$+2 non è qualcosa con cui poter".           --> brucia_con
+  HAS ogg2_illegale_CON_sg  "$+2 non è qualcosa con cui poter".                 --> brucia_con
   HAS ogg2_illegale_CON_pl  "$+2 non sono qualcosa con cui poter".
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  HAS check_obj_suitable_with_sg "That's not something you can $v with.".   -- play_with
+  HAS check_obj_suitable_with_pl "Those are not something you can $v with.".
+
+  HAS illegal_parameter_with_sg "That's not something you can $v with.".    -- kill_with, shoot_with, play_with
+  HAS illegal_parameter_with_pl "Those are not something you can $v with.".
 
   -- ==================
   -- PARAMETRI MANCANTI
@@ -931,7 +971,6 @@ EVERY blocco_definizioni IsA LOCATION
 
   HAS illegal_parameter_about_sg "That's not something you can $v about.".    -- ask_about, tell_about, think_about
   HAS illegal_parameter_about_pl "Those are not something you can $v about.".
-  HAS illegal_parameter_at "You can't $v anything at $+2.".         -- fire_at, throw_at
   HAS illegal_parameter_for_sg "That's not something you can $v for.".      -- ask_for
   HAS illegal_parameter_for_pl "Those are not something you can $v for.".
 -- @TAKE_FROM (MESSAGE)
@@ -940,9 +979,6 @@ EVERY blocco_definizioni IsA LOCATION
   HAS illegal_parameter2_from_pl "Those are not something you can take things from.".
   HAS illegal_parameter_in_sg "That's not something you can $v in.".      -- dive_in, jump_in, lie_in, swim_in
   HAS illegal_parameter_in_pl "Those are not something you can $v in.".
-  HAS illegal_parameter_on_sg "That's not something you can $v on.".      -- climb_on, jump_on, knock, lie_on, sit_on,
-                                  -- stand_on, switch_on, turn_on
-  HAS illegal_parameter_on_pl "Those are not something you can $v on.".
   HAS illegal_parameter_off_sg "That's not something you can $v off.".      -- get_off, switch_off, turn_off
   HAS illegal_parameter_off_pl "Those are not something you can $v off.".
   HAS illegal_parameter_to_sg "That's not something you can $v to.".      -- listen_to, talk_to
@@ -950,8 +986,6 @@ EVERY blocco_definizioni IsA LOCATION
   HAS illegal_parameter2_to_sg "That's not something you can $v things to.".    -- give, show, tell, tie_to, throw_to
   HAS illegal_parameter2_to_pl "Those are not something you can $v things to.".
 
-  HAS illegal_parameter_with_sg "That's not something you can $v with.".    -- kill_with, shoot_with, play_with
-  HAS illegal_parameter_with_pl "Those are not something you can $v with.".
   
 
   -- verb check messages, found before DOES sections of verbs and used mainly in 'lib_verbi.i':
@@ -977,15 +1011,10 @@ EVERY blocco_definizioni IsA LOCATION
   -- variations of the above message, needed for example when a preposition is required after the verb:
   -----------------------------------------------------------------------------------------------------
 
-  HAS check_obj_suitable_at "You can't $v anything at $+2.".          -- fire_at, throw_at, throw_to
   HAS check_obj2_suitable_for_sg "That's not something you can $v for.".    -- ask_for
   HAS check_obj2_suitable_for_pl "Those are not something you can $v for.".
   HAS check_obj_suitable_off_sg "That's not something you can $v off.".     -- turn_off, switch_off
   HAS check_obj_suitable_off_pl "Those are not something you can $v off.".
-  HAS check_obj_suitable_on_sg "That's not something you can $v on.".     -- knock, switch_on, turn_on
-  HAS check_obj_suitable_on_pl "Those are not something you can $v on." .
-  HAS check_obj_suitable_with_sg "That's not something you can $v with.".   -- play_with
-  HAS check_obj_suitable_with_pl "Those are not something you can $v with.".
   
   -- HAS check_obj2_suitable_with_sg "That's not something you can $v things with.".   -- break_with, burn_with, close_with, cut_with, fill_with,
   -- HAS check_obj2_suitable_with_pl "Those are not something you can $v things with.".   -- + lock_with, open_with, pry_with, push_with,
@@ -1345,6 +1374,8 @@ EVERY blocco_definizioni IsA LOCATION
   CAN sbloccare_con.            --> unlock_with
   CAN scavare.                  --> dig
   CAN scrivere.                 --> write
+  CAN sedersi.                  --> sit (down)
+  CAN sedersi_su.               --> sit_on
   CAN seguire.                  --> follow
   CAN spingere.                 --> push
   CAN spingere_con.             --> push_with
@@ -1429,8 +1460,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN shoot.       -- (at)
   CAN shoot_with.
   CAN sip.
-  CAN sit.         -- (down)
-  CAN sit_on.
   CAN smell0.
   CAN smell.
   CAN squeeze.
@@ -1549,6 +1578,8 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT sbloccare_con.            --> unlock_with
   MAKE mia_AT scavare.                  --> dig
   MAKE mia_AT scrivere.                 --> write
+  MAKE mia_AT sedersi.                  --> sit (down)
+  MAKE mia_AT sedersi_su.               --> sit_on
   MAKE mia_AT seguire.                  --> follow
   MAKE mia_AT spingere.                 --> push
   MAKE mia_AT spingere_con.             --> push_with
@@ -1633,8 +1664,6 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT shoot.           -- (at)
   MAKE mia_AT shoot_with.
   MAKE mia_AT sip.
-  MAKE mia_AT sit.             -- (down)
-  MAKE mia_AT sit_on.
   MAKE mia_AT smell0.
   MAKE mia_AT smell.
   MAKE mia_AT squeeze.
@@ -1764,6 +1793,8 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT sbloccare_con.            --> unlock_with
   MAKE mia_AT NOT scavare.                  --> dig
   MAKE mia_AT NOT scrivere.                 --> write
+  MAKE mia_AT NOT sedersi.                  --> sit (down)
+  MAKE mia_AT NOT sedersi_su.               --> sit_on
   MAKE mia_AT NOT seguire.                  --> follow
   MAKE mia_AT NOT spingere.                 --> push
   MAKE mia_AT NOT spingere_con.             --> push_with
@@ -1849,8 +1880,6 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT shoot.       -- (at)
   MAKE mia_AT NOT shoot_with.
   MAKE mia_AT NOT sip.
-  MAKE mia_AT NOT sit.         -- (down)
-  MAKE mia_AT NOT sit_on.
   MAKE mia_AT smell0.
   MAKE mia_AT smell.
   MAKE mia_AT NOT squeeze.
@@ -1964,6 +1993,8 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT sbloccare_con.            --> unlock_with
   MAKE mia_AT NOT scavare.                  --> dig
   MAKE mia_AT NOT scrivere.                 --> write
+  MAKE mia_AT NOT sedersi.                  --> sit (down)
+  MAKE mia_AT NOT sedersi_su.               --> sit_on
   MAKE mia_AT NOT seguire.                  --> follow
   MAKE mia_AT NOT spingere.                 --> push
   MAKE mia_AT NOT spingere_con.             --> push_with
@@ -2049,8 +2080,6 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT shoot.       -- (at)
   MAKE mia_AT NOT shoot_with.
   MAKE mia_AT NOT sip.
-  MAKE mia_AT NOT sit.         -- (down)
-  MAKE mia_AT NOT sit_on.
   MAKE mia_AT NOT smell0.
   MAKE mia_AT NOT smell.
   MAKE mia_AT NOT squeeze.
@@ -2149,6 +2178,8 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT sbloccare_con.            --> unlock_with
   MAKE mia_AT NOT scavare.                  --> dig
   MAKE mia_AT NOT scrivere.                 --> write
+  MAKE mia_AT NOT sedersi.                  --> sit (down)
+  MAKE mia_AT NOT sedersi_su.               --> sit_on
   MAKE mia_AT NOT seguire.                  --> follow
   MAKE mia_AT NOT spingere.                 --> push
   MAKE mia_AT NOT spingere_con.             --> push_with
@@ -2234,8 +2265,6 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT shoot.       -- (at)
   MAKE mia_AT NOT shoot_with.
   MAKE mia_AT NOT sip.
-  MAKE mia_AT NOT sit.         -- (down)
-  MAKE mia_AT NOT sit_on.
   MAKE mia_AT NOT smell0.
   MAKE mia_AT NOT smell.
   MAKE mia_AT NOT squeeze.
