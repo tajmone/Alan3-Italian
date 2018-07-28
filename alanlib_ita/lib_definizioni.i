@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.4.0 (2018/07/27)
+-- "lib_definizioni.i" v0.4.1 (2018/07/28)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1268,16 +1268,19 @@ EVERY blocco_definizioni IsA LOCATION
 --------------------------------------------------------------------------------
 
 -- Finally, for restricted actions, we implement the following attributes, corresponding to the library verbs.
--- If you change any of these to CAN NOT..., for examle "CAN NOT attack.", that verb, together with its
+-- If you change any of these to CAN NOT..., for examle "CAN NOT attaccare.", that verb, together with its
 -- synonyms, is disabled in-game. The restricted_response of the my_game instance (by default "You can't
 -- do that.") will be shown instead. The restriced_response is defined further up this file.
 
   CAN abbandonare_partita.      --> 'quit'
+  CAN aggiustare.               --> fix (+ mend, repair)
   CAN andare_a.                 --> go_to
   CAN aprire.                   --> open
   CAN aprire_con.               --> open_with
   CAN aspettare.                --> wait         (+ z)
   CAN assaggiare.               --> taste        (+ lick)
+  CAN attaccare.                --> attack (+ beat, fight, hit, punch)
+  CAN attaccare_con.            --> attack_with
   CAN attraversare.             --> climb_through
   CAN baciare.                  --> kiss         (+ hug, embrace)
   CAN bere.                     --> drink
@@ -1311,6 +1314,8 @@ EVERY blocco_definizioni IsA LOCATION
   CAN indossare.                --> wear
   CAN inventariare.             --> i            (+ inv, inventory)
   CAN lasciare.                 --> drop         (+ discard, dump, reject)
+  CAN legare.                   --> tie
+  CAN legare_a.                 --> tie_to
   CAN leggere.                  --> read
   CAN liberare.                 --> free         (+ release)
   CAN mangiare.                 --> eat
@@ -1326,7 +1331,10 @@ EVERY blocco_definizioni IsA LOCATION
   CAN prendere_da.              --> take_from.   (+ remove from)
   CAN pulire.                   --> clean        (+ polish, wipe)
   CAN ricominciare_partita.     --> 'restart'
+  CAN riempire.                 --> fill
+  CAN riempire_con.             --> fill_with
   CAN rifare.                   --> 'again'
+  CAN rispondere.               --> answer (+ reply)
   CAN rompere.                  --> break        (+ destroy)
   CAN rompere_con.              --> break_with
   CAN salvare_partita.          --> save
@@ -1348,6 +1356,8 @@ EVERY blocco_definizioni IsA LOCATION
   CAN tagliare.                 --> cut
   CAN tagliare_con.             --> cut_with
   CAN tirare.                   --> pull
+  CAN toccare.                  --> touch (+ feel)
+  CAN toccare_con.              --> touch_with
   CAN trovare.                  --> find         (+ locate)
   CAN tuffarsi.                 --> dive
   CAN tuffarsi_in.              --> dive_in
@@ -1362,11 +1372,8 @@ EVERY blocco_definizioni IsA LOCATION
 
 --# NOT YET TRANSLATED:
   CAN about.
-  CAN answer.      -- (+ reply)
   CAN ask.         -- (+ enquire, inquire, interrogate)
   CAN ask_for.
-  CAN attack.      -- (+ beat, fight, hit, punch)
-  CAN attack_with.
   CAN bite.        -- (+ chew)
   CAN catch.
   CAN climb.
@@ -1374,11 +1381,8 @@ EVERY blocco_definizioni IsA LOCATION
   CAN credits.     -- (+ acknowledgments, author, copyright)
   CAN 'exit'.
   CAN extinguish.  -- (+ put out, quench)
-  CAN fill.
-  CAN fill_with.
   CAN fire.
   CAN fire_at.
-  CAN fix.         -- (+ mend, repair)
   CAN get_up.
   CAN get_off.
   CAN hint.        -- (+ hints)
@@ -1443,10 +1447,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN throw_at.
   CAN throw_in.
   CAN throw_to.
-  CAN tie.
-  CAN tie_to.
-  CAN touch.       -- (+ feel)
-  CAN touch_with.
   CAN turn.        -- (+ rotate)
   CAN turn_on.
   CAN turn_off.
@@ -1477,11 +1477,14 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   THEN
 
   MAKE mia_AT abbandonare_partita.      --> 'quit'
+  MAKE mia_AT aggiustare.               --> fix (+ mend, repair)
   MAKE mia_AT andare_a.                 --> go_to
   MAKE mia_AT aprire.                   --> open
   MAKE mia_AT aprire_con.               --> open_with
   MAKE mia_AT aspettare.                --> wait         (+ z)
   MAKE mia_AT assaggiare.               --> taste        (+ lick)
+  MAKE mia_AT attaccare.                --> attack (+ beat, fight, hit, punch)
+  MAKE mia_AT attaccare_con.            --> attack_with
   MAKE mia_AT attraversare.             --> climb_through
   MAKE mia_AT baciare.                  --> kiss         (+ hug, embrace)
   MAKE mia_AT bere.                     --> drink
@@ -1515,6 +1518,8 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT indossare.                --> wear
   MAKE mia_AT inventariare.             --> i            (+ inv, inventory)
   MAKE mia_AT lasciare.                 --> drop         (+ discard, dump, reject)
+  MAKE mia_AT legare.                   --> tie
+  MAKE mia_AT legare_a.                 --> tie_to
   MAKE mia_AT leggere.                  --> read
   MAKE mia_AT liberare.                 --> free         (+ release)
   MAKE mia_AT mangiare.                 --> eat
@@ -1530,7 +1535,10 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT prendere_da.              --> take_from.   (+ remove from)
   MAKE mia_AT pulire.                   --> clean        (+ polish, wipe)
   MAKE mia_AT ricominciare_partita.     --> 'restart'
+  MAKE mia_AT riempire.                 --> fill
+  MAKE mia_AT riempire_con.             --> fill_with
   MAKE mia_AT rifare.                   --> 'again'
+  MAKE mia_AT rispondere.               --> answer (+ reply)
   MAKE mia_AT rompere.                  --> break        (+ destroy)
   MAKE mia_AT rompere_con.              --> break_with
   MAKE mia_AT saltare.                  --> jump
@@ -1552,6 +1560,8 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT tagliare.                 --> cut
   MAKE mia_AT tagliare_con.             --> cut_with
   MAKE mia_AT tirare.                   --> pull
+  MAKE mia_AT toccare.                  --> touch (+ feel)
+  MAKE mia_AT toccare_con.              --> touch_with
   MAKE mia_AT trovare.                  --> find         (+ locate)
   MAKE mia_AT tuffarsi.                 --> dive
   MAKE mia_AT tuffarsi_in.              --> dive_in
@@ -1566,11 +1576,8 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
 
 --# NOT YET TRANSLATED:
   MAKE mia_AT about.
-  MAKE mia_AT answer.          -- (+ reply)
   MAKE mia_AT ask.             -- (+ enquire, inquire, interrogate)
   MAKE mia_AT ask_for.
-  MAKE mia_AT attack.          -- (+ beat, fight, hit, punch)
-  MAKE mia_AT attack_with.
   MAKE mia_AT bite.            -- (+ chew)
   MAKE mia_AT catch.
   MAKE mia_AT climb.
@@ -1578,11 +1585,8 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT credits.         -- (+ acknowledgments, author, copyright)
   MAKE mia_AT 'exit'.
   MAKE mia_AT extinguish.      -- (+ put out, quench)
-  MAKE mia_AT fill.
-  MAKE mia_AT fill_with.
   MAKE mia_AT fire.
   MAKE mia_AT fire_at.
-  MAKE mia_AT fix.             -- (+ mend, repair)
   MAKE mia_AT get_up.
   MAKE mia_AT get_off.
   MAKE mia_AT hint.            -- (+ hints)
@@ -1647,10 +1651,6 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT throw_at.
   MAKE mia_AT throw_in.
   MAKE mia_AT throw_to.
-  MAKE mia_AT tie.
-  MAKE mia_AT tie_to.
-  MAKE mia_AT touch.           -- (+ feel)
-  MAKE mia_AT touch_with.
   MAKE mia_AT turn.            -- (+ rotate)
   MAKE mia_AT turn_on.
   MAKE mia_AT turn_off.
@@ -1668,9 +1668,9 @@ ELSIF restricted_level OF mia_AT = 1  -- communication verbs are restricted
 
   MAKE mia_AT NOT cantare.                  --> sing
   MAKE mia_AT NOT gridare.                  --> shout       (+ scream, yell)
+  MAKE mia_AT NOT rispondere.               --> answer (+ reply)
 
 --# NOT YET TRANSLATED:
-  MAKE mia_AT NOT answer.
   MAKE mia_AT NOT ask.
   MAKE mia_AT NOT ask_for.
   MAKE mia_AT NOT 'say'.
@@ -1692,11 +1692,14 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   THEN
 
   MAKE mia_AT     abbandonare_partita.      --> 'quit'
+  MAKE mia_AT NOT aggiustare.               --> fix (+ mend, repair)
   MAKE mia_AT NOT andare_a.                 --> go_to
   MAKE mia_AT NOT aprire.                   --> open
   MAKE mia_AT NOT aprire_con.               --> open_with
   MAKE mia_AT     aspettare.                --> wait         (+ z)
   MAKE mia_AT NOT assaggiare.               --> taste        (+ lick)
+  MAKE mia_AT NOT attaccare.                --> attack (+ beat, fight, hit, punch)
+  MAKE mia_AT NOT attaccare_con.            --> attack_with
   MAKE mia_AT NOT attraversare.             --> climb_through
   MAKE mia_AT NOT baciare.                  --> kiss         (+ hug, embrace)
   MAKE mia_AT NOT bere.                     --> drink
@@ -1730,6 +1733,8 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT indossare.                --> wear
   MAKE mia_AT     inventariare.             --> i            (+ inv, inventory)
   MAKE mia_AT NOT lasciare.                 --> drop         (+ discard, dump, reject)
+  MAKE mia_AT NOT legare.                   --> tie
+  MAKE mia_AT NOT legare_a.                 --> tie_to
   MAKE mia_AT NOT leggere.                  --> read
   MAKE mia_AT NOT liberare.                 --> free         (+ release)
   MAKE mia_AT NOT mangiare.                 --> eat
@@ -1745,7 +1750,10 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT prendere_da.              --> take_from.   (+ remove from)
   MAKE mia_AT NOT pulire.                   --> clean        (+ polish, wipe)
   MAKE mia_AT     ricominciare_partita.     --> 'restart'
+  MAKE mia_AT NOT riempire.                 --> fill
+  MAKE mia_AT NOT riempire_con.             --> fill_with
   MAKE mia_AT     rifare.                   --> 'again'
+  MAKE mia_AT NOT rispondere.               --> answer (+ reply)
   MAKE mia_AT NOT rompere.                  --> break        (+ destroy)
   MAKE mia_AT NOT rompere_con.              --> break_with
   MAKE mia_AT NOT saltare.                  --> jump
@@ -1767,6 +1775,8 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT tagliare.                 --> cut
   MAKE mia_AT NOT tagliare_con.             --> cut_with
   MAKE mia_AT NOT tirare.                   --> pull
+  MAKE mia_AT NOT toccare.                  --> touch (+ feel)
+  MAKE mia_AT NOT toccare_con.              --> touch_with
   MAKE mia_AT NOT trovare.                  --> find         (+ locate)
   MAKE mia_AT NOT tuffarsi.                 --> dive
   MAKE mia_AT NOT tuffarsi_in.              --> dive_in
@@ -1782,11 +1792,8 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
 --# NOT YET TRANSLATED:
 
   MAKE mia_AT about.
-  MAKE mia_AT NOT answer.      -- (+ reply)
   MAKE mia_AT NOT ask.         -- (+ enquire, inquire, interrogate)
   MAKE mia_AT NOT ask_for.
-  MAKE mia_AT NOT attack.      -- (+ beat, fight, hit, punch)
-  MAKE mia_AT NOT attack_with.
   MAKE mia_AT NOT bite.        -- (+ chew)
   MAKE mia_AT NOT catch.
   MAKE mia_AT NOT climb.
@@ -1794,11 +1801,8 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT credits.         -- (+ acknowledgments, author, copyright)
   MAKE mia_AT NOT 'exit'.
   MAKE mia_AT NOT extinguish.  -- (+ put out, quench)
-  MAKE mia_AT NOT fill.
-  MAKE mia_AT NOT fill_with.
   MAKE mia_AT NOT fire.
   MAKE mia_AT NOT fire_at.
-  MAKE mia_AT NOT fix.         -- (+ mend, repair)
   MAKE mia_AT NOT get_up.
   MAKE mia_AT NOT get_off.
   MAKE mia_AT hint.            -- (+ hints)
@@ -1863,10 +1867,6 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT throw_at.
   MAKE mia_AT NOT throw_in.
   MAKE mia_AT NOT throw_to.
-  MAKE mia_AT NOT tie.
-  MAKE mia_AT NOT tie_to.
-  MAKE mia_AT NOT touch.       -- (+ feel)
-  MAKE mia_AT NOT touch_with.
   MAKE mia_AT NOT turn.        -- (+ rotate)
   MAKE mia_AT NOT turn_on.
   MAKE mia_AT NOT turn_off.
@@ -1886,11 +1886,14 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
 
 
   MAKE mia_AT     abbandonare_partita.      --> 'quit'
+  MAKE mia_AT NOT aggiustare.               --> fix (+ mend, repair)
   MAKE mia_AT NOT andare_a.                 --> go_to
   MAKE mia_AT NOT aprire.                   --> open
   MAKE mia_AT NOT aprire_con.               --> open_with
   MAKE mia_AT NOT aspettare.                --> wait         (+ z)
   MAKE mia_AT NOT assaggiare.               --> taste        (+ lick)
+  MAKE mia_AT NOT attaccare.                --> attack (+ beat, fight, hit, punch)
+  MAKE mia_AT NOT attaccare_con.            --> attack_with
   MAKE mia_AT NOT attraversare.             --> climb_through
   MAKE mia_AT NOT baciare.                  --> kiss         (+ hug, embrace)
   MAKE mia_AT NOT bere.                     --> drink
@@ -1930,6 +1933,8 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT indossare.                --> wear
   MAKE mia_AT NOT inventariare.             --> i            (+ inv, inventory)
   MAKE mia_AT NOT lasciare.                 --> drop         (+ discard, dump, reject)
+  MAKE mia_AT NOT legare.                   --> tie
+  MAKE mia_AT NOT legare_a.                 --> tie_to
   MAKE mia_AT NOT leggere.                  --> read
   MAKE mia_AT NOT liberare.                 --> free         (+ release)
   MAKE mia_AT NOT mangiare.                 --> eat
@@ -1945,7 +1950,10 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT prendere_da.              --> take_from.   (+ remove from)
   MAKE mia_AT NOT pulire.                   --> clean        (+ polish, wipe)
   MAKE mia_AT     ricominciare_partita.     --> 'restart'
+  MAKE mia_AT NOT riempire.                 --> fill
+  MAKE mia_AT NOT riempire_con.             --> fill_with
   MAKE mia_AT     rifare.                   --> 'again'
+  MAKE mia_AT NOT rispondere.               --> answer (+ reply)
   MAKE mia_AT NOT rompere.                  --> break        (+ destroy)
   MAKE mia_AT NOT rompere_con.              --> break_with
   MAKE mia_AT NOT saltare.                  --> jump
@@ -1967,6 +1975,8 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT tagliare.                 --> cut
   MAKE mia_AT NOT tagliare_con.             --> cut_with
   MAKE mia_AT NOT tirare.                   --> pull
+  MAKE mia_AT NOT toccare.                  --> touch (+ feel)
+  MAKE mia_AT NOT toccare_con.              --> touch_with
   MAKE mia_AT NOT trovare.                  --> find         (+ locate)
   MAKE mia_AT NOT tuffarsi.                 --> dive
   MAKE mia_AT NOT tuffarsi_in.              --> dive_in
@@ -1982,11 +1992,8 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
 --# NOT YET TRANSLATED:
 
   MAKE mia_AT about.
-  MAKE mia_AT NOT answer.      -- (+ reply)
   MAKE mia_AT NOT ask.         -- (+ enquire, inquire, interrogate)
   MAKE mia_AT NOT ask_for.
-  MAKE mia_AT NOT attack.      -- (+ beat, fight, hit, punch)
-  MAKE mia_AT NOT attack_with.
   MAKE mia_AT NOT bite.        -- (+ chew)
   MAKE mia_AT NOT catch.
   MAKE mia_AT NOT climb.
@@ -1994,11 +2001,8 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT credits.         -- (+ acknowledgments, author, copyright)
   MAKE mia_AT NOT 'exit'.
   MAKE mia_AT NOT extinguish.  -- (+ put out, quench)
-  MAKE mia_AT NOT fill.
-  MAKE mia_AT NOT fill_with.
   MAKE mia_AT NOT fire.
   MAKE mia_AT NOT fire_at.
-  MAKE mia_AT NOT fix.         -- (+ mend, repair)
   MAKE mia_AT NOT get_up.
   MAKE mia_AT NOT get_off.
   MAKE mia_AT hint.            -- (+ hints)
@@ -2063,10 +2067,6 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT throw_at.
   MAKE mia_AT NOT throw_in.
   MAKE mia_AT NOT throw_to.
-  MAKE mia_AT NOT tie.
-  MAKE mia_AT NOT tie_to.
-  MAKE mia_AT NOT touch.       -- (+ feel)
-  MAKE mia_AT NOT touch_with.
   MAKE mia_AT NOT turn.        -- (+ rotate)
   MAKE mia_AT NOT turn_on.
   MAKE mia_AT NOT turn_off.
@@ -2083,11 +2083,14 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
 
 
   MAKE mia_AT NOT abbandonare_partita.      --> 'quit'
+  MAKE mia_AT NOT aggiustare.               --> fix (+ mend, repair)
   MAKE mia_AT NOT andare_a.                 --> go_to
   MAKE mia_AT NOT aprire.                   --> open
   MAKE mia_AT NOT aprire_con.               --> open_with
   MAKE mia_AT NOT aspettare.                --> wait         (+ z)
   MAKE mia_AT NOT assaggiare.               --> taste        (+ lick)
+  MAKE mia_AT NOT attaccare.                --> attack (+ beat, fight, hit, punch)
+  MAKE mia_AT NOT attaccare_con.            --> attack_with
   MAKE mia_AT NOT attraversare.             --> climb_through
   MAKE mia_AT NOT baciare.                  --> kiss         (+ hug, embrace)
   MAKE mia_AT NOT bere.                     --> drink
@@ -2115,6 +2118,8 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT indossare.                --> wear
   MAKE mia_AT NOT inventariare.             --> i               (+ inv, inventory)
   MAKE mia_AT NOT lasciare.                 --> drop         (+ discard, dump, reject)
+  MAKE mia_AT NOT legare.                   --> tie
+  MAKE mia_AT NOT legare_a.                 --> tie_to
   MAKE mia_AT NOT leggere.                  --> read
   MAKE mia_AT NOT liberare.                 --> free         (+ release)
   MAKE mia_AT NOT mangiare.                 --> eat
@@ -2130,7 +2135,10 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT prendere_da.              --> take_from.   (+ remove from)
   MAKE mia_AT NOT pulire.                   --> clean        (+ polish, wipe)
   MAKE mia_AT NOT ricominciare_partita.     --> 'restart'
+  MAKE mia_AT NOT riempire.                 --> fill
+  MAKE mia_AT NOT riempire_con.             --> fill_with
   MAKE mia_AT NOT rifare.                   --> 'again'
+  MAKE mia_AT NOT rispondere.               --> answer (+ reply)
   MAKE mia_AT NOT rompere.                  --> break        (+ destroy)
   MAKE mia_AT NOT rompere_con.              --> break_with
   MAKE mia_AT NOT saltare.                  --> jump
@@ -2152,6 +2160,8 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT tagliare.                 --> cut
   MAKE mia_AT NOT tagliare_con.             --> cut_with
   MAKE mia_AT NOT tirare.                   --> pull
+  MAKE mia_AT NOT toccare.                  --> touch (+ feel)
+  MAKE mia_AT NOT toccare_con.              --> touch_with
   MAKE mia_AT NOT trovare.                  --> find         (+ locate)
   MAKE mia_AT NOT tuffarsi.                 --> dive
   MAKE mia_AT NOT tuffarsi_in.              --> dive_in
@@ -2167,11 +2177,8 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
 --# NOT YET TRANSLATED:
 
   MAKE mia_AT NOT about.
-  MAKE mia_AT NOT answer.      -- (+ reply)
   MAKE mia_AT NOT ask.         -- (+ enquire, inquire, interrogate)
   MAKE mia_AT NOT ask_for.
-  MAKE mia_AT NOT attack.      -- (+ beat, fight, hit, punch)
-  MAKE mia_AT NOT attack_with.
   MAKE mia_AT NOT bite.        -- (+ chew)
   MAKE mia_AT NOT catch.
   MAKE mia_AT NOT climb.
@@ -2179,11 +2186,8 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT credits.     -- (+ acknowledgments, author, copyright)
   MAKE mia_AT NOT 'exit'.
   MAKE mia_AT NOT extinguish.  -- (+ put out, quench)
-  MAKE mia_AT NOT fill.
-  MAKE mia_AT NOT fill_with.
   MAKE mia_AT NOT fire.
   MAKE mia_AT NOT fire_at.
-  MAKE mia_AT NOT fix.         -- (+ mend, repair)
   MAKE mia_AT NOT get_up.
   MAKE mia_AT NOT get_off.
   MAKE mia_AT NOT hint.        -- (+ hints)
@@ -2248,10 +2252,6 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT throw_at.
   MAKE mia_AT NOT throw_in.
   MAKE mia_AT NOT throw_to.
-  MAKE mia_AT NOT tie.
-  MAKE mia_AT NOT tie_to.
-  MAKE mia_AT NOT touch.       -- (+ feel)
-  MAKE mia_AT NOT touch_with.
   MAKE mia_AT NOT turn.        -- (+ rotate)
   MAKE mia_AT NOT turn_on.
   MAKE mia_AT NOT turn_off.

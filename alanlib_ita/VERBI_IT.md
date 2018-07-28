@@ -31,6 +31,8 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [inventario](#inventario)
     - [compra](#compra)
     - [vendi](#vendi)
+- [INTERAZIONI VERBALI](#interazioni-verbali)
+    - [rispondi](#rispondi)
 - [MANGIARE, BERE](#mangiare-bere)
     - [mangia](#mangia)
     - [bevi](#bevi)
@@ -119,6 +121,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [riposa]
 - [rompi]
 - [rompi con]
+- [rispondi]
 - [salva partita]
 - [salva]
 - [sblocca]
@@ -221,7 +224,7 @@ Ovvero, quei comandi che non riguardano il mondo dell'avventura ma funzionalità
 [carica partita]: #carica_partita "carica_partita"
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] caricare_partita
 
@@ -233,7 +236,7 @@ sintassi:
 
 condizioni:
 
-- `my_game CAN caricare_partita`
+- `mia_AT CAN caricare_partita`
 
 ## salva_partita
 
@@ -241,7 +244,7 @@ condizioni:
 [salva partita]: #salva_partita "salva_partita"
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] salvare_partita
 
@@ -253,7 +256,7 @@ sintassi:
 
 condizioni:
 
-- `my_game CAN salvare_partita`
+- `mia_AT CAN salvare_partita`
 
 ## ricomincia_partita
 
@@ -261,7 +264,7 @@ condizioni:
 [ricomincia partita]: #ricomincia_partita
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] ricominciare_partita
 
@@ -273,7 +276,7 @@ sintassi:
 
 condizioni:
 
-- `my_game CAN ricominciare_partita`
+- `mia_AT CAN ricominciare_partita`
 
 ## abbandona_partita
 
@@ -281,7 +284,7 @@ condizioni:
 [abbandona partita]: #abbandona_partita "abbandona_partita"
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] abbandonare_partita
 
@@ -297,7 +300,7 @@ sinonimi:
 
 condizioni:
 
-- `my_game CAN abbandonare_partita`
+- `mia_AT CAN abbandonare_partita`
 
 
 -------------------------------------------------------------------------------
@@ -313,7 +316,7 @@ Verbi che riguardano lo spostamento del personaggio protagonista nell'avventura:
 
 [vai a]: #vai_a "vai_a"
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] andare_a
 
@@ -334,7 +337,7 @@ sintassi:
 [attraversa]: #attraversa "attraversa"
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] attraversare
 
@@ -353,7 +356,7 @@ sintassi:
 [descrivi]: #esamina "esamina"
 [osserva]: #esamina "esamina"
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] esaminare
 
@@ -367,7 +370,7 @@ sintassi:
 
 [leggi]: #leggi "leggi"
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] leggere
 
@@ -381,7 +384,7 @@ sintassi:
 [scrivi]: #scrivi "scrivi"
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] scrivere
 
@@ -404,7 +407,7 @@ Questi verbi sono accomunati dal fatto che riguardano il trasferimento di oggett
 [raccogli]: #prendi "prendi"
 [trasporta]: #prendi "prendi"
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] prendere
 
@@ -419,7 +422,7 @@ sintassi:
 [rimuovi]: #prendi_da "prendi_da"
 [togli]: #prendi_da "prendi_da"
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] prendere_da
 
@@ -436,7 +439,7 @@ sintassi:
 [posa]: #lascia "lascia"
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] lasciare
 
@@ -452,7 +455,7 @@ sintassi:
 [porgi]: #dai_a "dai_a"
 [offri]: #dai_a "dai_a"
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] give
 
@@ -466,7 +469,7 @@ sintassi:
 
 [inventario]: #inventario "inventario"
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] inventariare
 
@@ -492,6 +495,23 @@ sintassi:
 
     vendi <merce>
 
+
+-------------------------------------------------------------------------------
+
+# INTERAZIONI VERBALI
+
+## rispondi
+
+[rispondi]: #rispondi
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] rispondere
+
+sintassi:
+
+    rispondi "testo"
 
 
 -------------------------------------------------------------------------------
@@ -525,7 +545,7 @@ sintassi:
 [apri]: #apri "apri"
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] aprire
 
@@ -539,7 +559,7 @@ sintassi:
 [apri con]: #apri_con "apri_con"
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] aprire_con
 
@@ -553,7 +573,7 @@ sintassi:
 [chiudi]: #chiudi "chiudi"
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] chiudere
 
@@ -568,7 +588,7 @@ sintassi:
 [chiudi con]: #chiudi_con "chiudi_con"
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] chiudere_con
 
@@ -584,7 +604,7 @@ sintassi:
 [serra]: #blocca "blocca"
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] bloccare
 
@@ -599,7 +619,7 @@ sintassi:
 [serra con]: #blocca_con "blocca_con"
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] bloccare_con
 
@@ -613,7 +633,7 @@ sintassi:
 [sblocca]: #sblocca "sblocca"
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] sbloccare
 
@@ -627,7 +647,7 @@ sintassi:
 [sblocca con]: #sblocca_con "sblocca_con"
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] sbloccare_con
 
@@ -649,7 +669,7 @@ Questi verbi sono legati tra loro.
 [spogliati]: #spogliati "spogliati"
 [svestiti]: #spogliati "spogliati"
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] spogliarsi
 
@@ -659,7 +679,7 @@ sintassi:
 
 condizioni:
 
-- `my_game CAN spogliarsi`
+- `mia_AT CAN spogliarsi`
 - `CURRENT LOCATION IS lit`
 
 esito:
@@ -711,7 +731,7 @@ sintassi:
 
 condizioni:
 
-- `my_game CAN rompere`
+- `mia_AT CAN rompere`
 - `ogg IS esaminabile`
 - `CURRENT LOCATION IS lit`
 - `ogg IS raggiungibile AND ogg IS NOT distante`
@@ -760,7 +780,7 @@ sintassi:
 
 condizioni:
 
-- `my_game CAN aspettare`
+- `mia_AT CAN aspettare`
 
 esito:
 
@@ -778,7 +798,7 @@ sintassi:
 
 condizioni:
 
-- `my_game CAN dormire`
+- `mia_AT CAN dormire`
 
 esito:
 
@@ -791,7 +811,7 @@ esito:
 [no]: #dici_no
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] dire_no
 
@@ -806,7 +826,7 @@ sintassi:
 [sì]: #dici_si
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] dire_sì
 
@@ -825,7 +845,7 @@ sintassi:
 
 condizioni:
 
-- `my_game CAN suonare`
+- `mia_AT CAN suonare`
 
 
 
@@ -839,7 +859,7 @@ sintassi:
 
 condizioni:
 
-- `my_game CAN pregare`
+- `mia_AT CAN pregare`
 
 esito:
 
@@ -856,7 +876,7 @@ sintassi:
 
 condizioni:
 
-- `my_game CAN suonare`
+- `mia_AT CAN suonare`
 
 
 
@@ -865,7 +885,7 @@ condizioni:
 [usa]: #usa "usa"
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] usare
 
@@ -885,7 +905,7 @@ Esito:
 [usa con]: #usa_con "usa_con"
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] usare_con
 
@@ -925,7 +945,7 @@ Per maggior informazioni su questi verbi, consultare il sorgente di "`lib_verbi.
 [trova]: #trova
 
 
-attributo `my_game`:
+attributo `mia_AT`:
 
     CAN [NOT] trovare
 

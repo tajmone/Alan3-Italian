@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.4.0 (2018/07/27)
+-- "lib_verbi.i" v0.4.1 (2018/07/28)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -13,60 +13,63 @@
 -- Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima)
 -- e comandi di gioco (dopo il divisorio orizzontale di tabella).
 
---+--------------------+------------------------------+-----------------------------+---+---+---+
---| VERBO              | SINONIMI                     | SINTASSI                    | M | A | O |
---|--------------------|------------------------------|-----------------------------|---|---|---|
---| abbandona_partita  | quit, Q                      | abbandona [partita]         | x | 0 |   |
---| carica_partita     | restore                      | carica [partita]            | x | 0 |   |
---| ricomincia_partita | restart                      | ricomincia [partita]        | x | 0 |   |
---| salva_partita      | save                         | salva [partita]             | x | 0 |   |
---+--------------------+------------------------------+-----------------------------+---+---+---+
---| apri               |                              | apri (ogg)                  |   | 1 | x |
---| apri_con           |                              | apri (ogg) con (strum)      |   | 2 | x |
---| aspetta            | attendi, Z                   | aspetta                     |   | 0 |   |
---| attraversa         |                              | attraversa (ogg)            |   | 1 | x |
---| bevi               |                              | bevi (liq)                  |   | 1 |   |
---| blocca             | serra                        | blocca (ogg)                |   | 1 | x |
---| blocca_con         | serra                        | blocca (ogg) con (chiave)   |   | 2 | x |
---| brucia             |                              | brucia (ogg)                |   | 1 | x |
---| brucia_con         |                              | brucia (ogg) con (strum)    |   | 2 | x |
---| chi_è              |                              | chi è (png)                 |   | 1 |   | * BUGGED!
---| chi_sono_io        |                              | chi sono                    |   | 0 |   |
---| chiudi             |                              | chiudi (ogg)                |   | 1 | x |
---| chiudi_con         |                              | chiudi (ogg) con (strum)    |   | 2 | x |
---| compra             | acquista                     | compra (merce)              |   | 1 |   |
---| cosa_è             |                              | cosa è (ogg)                |   | 1 | x | * BUGGED!
---| cosa_sono_io       |                              | cosa sono                   |   | 0 |   |
---| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)     |   | 2 | x |
---| dici_No            |                              | no                          |   | 0 |   |
---| dici_Sì            |                              | sì                          |   | 0 |   |
---| dormi              | riposa                       | dormi                       |   | 0 |   |
---| dove_è             |                              | dove è (ogg)                |   | 1 | x | * BUGGED!
---| dove_mi_trovo      |                              | dove sono                   |   | 0 |   |
---| esamina            | guarda, descrivi, osserva, X | esamina (ogg)               |   | 1 | x |
---| gioca_con          |                              | gioca con (ogg)             |   | 1 | x |
---| inventario         | inv                          | inventario                  | x | 0 |   |
---| lascia             | abbandona, metti giù, posa   | lascia (ogg)*               |   | 1 | x |
---| leggi              |                              | leggi (ogg)                 |   | 1 | x |
---| mangia             |                              | mangia (cibo)               |   | 1 |   |
---| prega              |                              | prega                       |   | 0 |   |
---| prendi             | afferra, raccogli, trasporta | prendi (ogg)                |   | 1 | x |
---| prendi_da          | rimuovi, togli               | prendi (ogg) da (detentore) |   | 2 | x |
---| rifai              | ancora, G                    | rifai                       |   | 0 |   |
---| rompi              | distruggi, spacca, sfonda    | rompi (ogg)                 |   | 1 | x |
---| rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)     |   | 2 | x |
---| sblocca            |                              | sblocca (ogg)               |   | 1 | x |
---| sblocca_con        |                              | sblocca (ogg) con (chiave)  |   | 2 | x |
---| scrivi             |                              | scrivi "testo" su (ogg)     |   | 1 | x |
---| spogliati          | svestiti                     | spogliati                   |   | 0 |   |
---| suona              |                              | suona (ogg)                 |   | 1 | x |
---| trova              |                              | trova (ogg)                 |   | 1 | x |
---| usa                |                              | usa (ogg)                   |   | 1 | x |
---| usa_con            |                              | usa (ogg) con (strum)       |   | 2 | x |
---| vai_a              |                              | vai a (dest)                |   | 1 |   |
---| vendi              |                              | vendi (merce)               |   | 1 |   |
---+--------------------+------------------------------+-----------------------------+---+---+---+
---|                    |                              |                             |   | 0 | x |
+--+--------------------+------------------------------+------------------------------+---+---+---+
+--| VERBO              | SINONIMI                     | SINTASSI                     | M | A | O |
+--|--------------------|------------------------------|------------------------------|---|---|---|
+--| abbandona_partita  | quit, Q                      | abbandona [partita]          | x | 0 |   |
+--| carica_partita     | restore                      | carica [partita]             | x | 0 |   |
+--| ricomincia_partita | restart                      | ricomincia [partita]         | x | 0 |   |
+--| salva_partita      | save                         | salva [partita]              | x | 0 |   |
+--+--------------------+------------------------------+------------------------------+---+---+---+
+--| apri               |                              | apri (ogg)                   |   | 1 | x |
+--| apri_con           |                              | apri (ogg) con (strum)       |   | 2 | x |
+--| aspetta            | attendi, Z                   | aspetta                      |   | 0 |   |
+--| attraversa         |                              | attraversa (ogg)             |   | 1 | x |
+--| bevi               |                              | bevi (liq)                   |   | 1 |   |
+--| blocca             | serra                        | blocca (ogg)                 |   | 1 | x |
+--| blocca_con         | serra                        | blocca (ogg) con (chiave)    |   | 2 | x |
+--| brucia             |                              | brucia (ogg)                 |   | 1 | x |
+--| brucia_con         |                              | brucia (ogg) con (strum)     |   | 2 | x |
+--| chi_è              |                              | chi è (png)                  |   | 1 |   | * BUGGED!
+--| chi_sono_io        |                              | chi sono                     |   | 0 |   |
+--| chiudi             |                              | chiudi (ogg)                 |   | 1 | x |
+--| chiudi_con         |                              | chiudi (ogg) con (strum)     |   | 2 | x |
+--| compra             | acquista                     | compra (merce)               |   | 1 |   |
+--| cosa_è             |                              | cosa è (ogg)                 |   | 1 | x | * BUGGED!
+--| cosa_sono_io       |                              | cosa sono                    |   | 0 |   |
+--| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)      |   | 2 | x |
+--| dici_No            |                              | no                           |   | 0 |   |
+--| dici_Sì            |                              | sì                           |   | 0 |   |
+--| dormi              | riposa                       | dormi                        |   | 0 |   |
+--| dove_è             |                              | dove è (ogg)                 |   | 1 | x | * BUGGED!
+--| dove_mi_trovo      |                              | dove sono                    |   | 0 |   |
+--| esamina            | guarda, descrivi, osserva, X | esamina (ogg)                |   | 1 | x |
+--| gioca_con          |                              | gioca con (ogg)              |   | 1 | x |
+--| inventario         | inv                          | inventario                   | x | 0 |   |
+--| lascia             | abbandona, metti giù, posa   | lascia (ogg)*                |   | 1 | x |
+--| leggi              |                              | leggi (ogg)                  |   | 1 | x |
+--| mangia             |                              | mangia (cibo)                |   | 1 |   |
+--| prega              |                              | prega                        |   | 0 |   |
+--| prendi             | afferra, raccogli, trasporta | prendi (ogg)                 |   | 1 | x |
+--| prendi_da          | rimuovi, togli               | prendi (ogg) da (detentore)  |   | 2 | x |
+--| rifai              | ancora, G                    | rifai                        |   | 0 |   |
+--| riempi             |                              | riempi (cont)                |   | 1 |   |
+--| riempi_con         |                              | riempi (cont) con (sostanza) |   | 2 |   |
+--| rompi              | distruggi, spacca, sfonda    | rompi (ogg)                  |   | 1 | x |
+--| rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)      |   | 2 | x |
+--| rispondi           |                              | rispondi (argomento)         |   | 1 |   |
+--| sblocca            |                              | sblocca (ogg)                |   | 1 | x |
+--| sblocca_con        |                              | sblocca (ogg) con (chiave)   |   | 2 | x |
+--| scrivi             |                              | scrivi "testo" su (ogg)      |   | 1 | x |
+--| spogliati          | svestiti                     | spogliati                    |   | 0 |   |
+--| suona              |                              | suona (ogg)                  |   | 1 | x |
+--| trova              |                              | trova (ogg)                  |   | 1 | x |
+--| usa                |                              | usa (ogg)                    |   | 1 | x |
+--| usa_con            |                              | usa (ogg) con (strum)        |   | 2 | x |
+--| vai_a              |                              | vai a (dest)                 |   | 1 |   |
+--| vendi              |                              | vendi (merce)                |   | 1 |   |
+--+--------------------+------------------------------+------------------------------+---+---+---+
+--|                    |                              |                              |   | 0 | x |
 
 -- Legenda Colonne:
 --   [M] Meta Verbo : 'x' = Sì
@@ -92,7 +95,7 @@
 
 ----- about       (+ help, info)                           about                               0
 -->>> again       (+ g)                                    again                               0
------ answer      (+ reply)                                answer (topic)                      1
+-->>> answer      (+ reply)                                answer (topic)                      1
 ----- ask         (+ enquire, inquire, interrogate)        ask (act) about (topic)             2
 ----- ask_for                                              ask (act) for (obj)                 2       x
 ----- attack      (+ beat, fight, hit, punch)              attack (target)                     1
@@ -130,8 +133,8 @@
 -->>> examine     (+ check, inspect, observe, x)           examine (obj)                       1       x
 ----- exit                                                 exit (obj)                          1
 ----- extinguish  (+ put out, quench)                      extinguish (obj)                    1       x
------ fill                                                 fill (cont)                         1
------ fill_with                                            fill (cont) with (substance)        1
+-->>> fill                                                 fill (cont)                         1
+-->>> fill_with                                            fill (cont) with (substance)        2
 -->>> find        (+ locate)                               find (obj)                          1       x
 ----- fire                                                 fire (weapon)                       1
 ----- fire_at                                              fire (weapon) at (target)           1
@@ -2442,6 +2445,153 @@ ADD TO EVERY THING
 END ADD TO.
 
 
+-- ==============================================================
+
+
+----- @RIEMPI --> @FILL
+
+
+-- ==============================================================
+-- # 'riempi' 'colma'
+
+-- SYNTAX fill = fill (cont)
+
+SYNTAX riempi = riempi (cont)
+  WHERE cont IsA OBJECT
+    ELSE
+      IF cont IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "riempire."
+  AND cont IsA CONTAINER
+    ELSE
+      IF cont IS NOT plurale
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "riempire."
+
+
+ADD TO EVERY OBJECT
+  VERB riempi
+    CHECK mia_AT CAN riempire
+      ELSE SAY azione_bloccata OF mia_AT.
+    AND cont IS esaminabile
+      ELSE
+        IF cont IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        END IF.
+        "riempire."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY imp_luogo_buio OF mia_AT.
+    DOES
+      SAY mia_AT:specificare_CON_cosa. "riempire" SAY THE cont.
+      -- "You have to say what you want to fill" SAY THE cont. "with."
+    END VERB.
+END ADD TO.
+
+
+
+-- ==============================================================
+
+
+----- @RIEMPI CON --> @FILL WITH
+
+
+-- ==============================================================
+
+-- SYNTAX fill_with = fill (cont) 'with' (sostanza)
+
+SYNTAX riempi_con = riempi (cont) con (sostanza)
+  WHERE cont IsA OBJECT
+    ELSE
+      IF cont IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "riempire."
+  AND cont IsA CONTAINER
+    ELSE
+      IF cont IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "riempire."
+  AND sostanza IsA OBJECT
+    ELSE
+      IF sostanza IS NOT plurale
+        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+      END IF.
+      "riempire" SAY THE cont. "."
+
+
+ADD TO EVERY OBJECT
+  VERB riempi_con
+    WHEN cont
+      CHECK mia_AT CAN riempire_con
+        ELSE SAY azione_bloccata OF mia_AT.
+      AND cont <> sostanza
+        ELSE SAY check_obj_not_obj2_with OF mia_AT.
+      AND sostanza IS esaminabile
+        ELSE
+          IF sostanza IS NOT plurale
+            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+          END IF.
+          "riempire" SAY THE cont. "."
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY imp_luogo_buio OF mia_AT.
+      AND sostanza NOT IN cont
+        --                                                                      TRANSLATE!
+        ELSE SAY check_obj_not_in_cont2 OF mia_AT.
+      AND sostanza IS prendibile
+        --                                                                      TRANSLATE!
+        ELSE SAY check_obj2_takeable1 OF mia_AT.
+      AND cont IS raggiungibile AND cont IS NOT distante
+        ELSE
+          IF cont IS NOT raggiungibile
+            THEN
+              IF cont IS NOT plurale
+                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
+                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              END IF.
+          ELSIF cont IS distante
+            THEN
+              IF cont IS NOT plurale
+                THEN SAY ogg1_distante_sg OF mia_AT. "."
+                ELSE SAY ogg1_distante_pl OF mia_AT. "."
+              END IF.
+          END IF.
+      AND sostanza IS raggiungibile AND sostanza IS NOT distante
+        ELSE
+          IF sostanza IS NOT raggiungibile
+            THEN
+              IF sostanza IS NOT plurale
+                THEN SAY ogg2_non_raggiungibile_sg OF mia_AT.
+                ELSE SAY ogg2_non_raggiungibile_pl OF mia_AT.
+              END IF.
+          ELSIF sostanza IS distante
+            THEN
+              IF sostanza IS NOT plurale
+                THEN SAY ogg2_distante_sg OF mia_AT. "."
+                ELSE SAY ogg2_distante_pl OF mia_AT. "."
+              END IF.
+          END IF.
+      DOES
+        -- allow the action at individual substances only!
+        "Non puoi riempire" SAY THE cont. "con" SAY THE sostanza. "."
+     -- "You can't fill" SAY THE cont. "with" SAY THE sostanza. "."
+  END VERB.
+END ADD TO.
+
+
 
 -- =============================================================
 
@@ -2471,6 +2621,36 @@ VERB rifai
     -- "[The AGAIN command is not supported in this game. As a workaround, try using
     --  the 'up' and 'down' arrow keys to scroll through your previous commands.]"
 END VERB.
+
+
+
+-- =============================================================
+
+
+----- @RISPONDI --> @ANSWER    (+ reply)
+
+
+-- =============================================================
+
+-- SYNTAX answer = answer (topic)
+-- SYNONYMS reply = answer.
+
+SYNTAX rispondi = rispondi (argomento)
+  WHERE argomento IsA STRING
+    ELSE SAY illegal_parameter_string OF mia_AT. --                             TRANSLATE!
+
+
+
+
+ADD TO EVERY STRING
+  VERB rispondi
+    CHECK mia_AT CAN rispondere
+      ELSE SAY azione_bloccata OF mia_AT.
+    DOES
+      "Qual'era la domanda?"
+   -- "What was the question?"
+    END VERB.
+END ADD TO.
 
 
 
@@ -3268,33 +3448,6 @@ VERB 'about'
 END VERB.
 
 
--- =============================================================
-
-
------ ANSWER    (+ reply)
-
-
--- =============================================================
-
-
-SYNTAX answer = answer (argomento)
-  WHERE argomento IsA STRING
-    ELSE SAY illegal_parameter_string OF mia_AT.
-
-
-SYNONYMS reply = answer.
-
-
-ADD TO EVERY STRING
-  VERB answer
-    CHECK mia_AT CAN answer
-      ELSE SAY azione_bloccata OF mia_AT.
-    DOES
-      "What was the question?"
-    END VERB.
-END ADD TO.
-
-
 
 -- =============================================================
 
@@ -3492,7 +3645,7 @@ SYNONYMS beat, fight, hit, punch = attack.
 
 ADD TO EVERY THING
   VERB attack
-    CHECK mia_AT CAN attack
+    CHECK mia_AT CAN attaccare
       ELSE SAY azione_bloccata OF mia_AT.
     AND bersaglio IS esaminabile
       ELSE
@@ -3568,7 +3721,7 @@ SYNTAX attack_with = attack (bersaglio) 'with' (arma)
 ADD TO EVERY THING
   VERB attack_with
     WHEN bersaglio
-      CHECK mia_AT CAN attack_with
+      CHECK mia_AT CAN attaccare_con
         ELSE SAY azione_bloccata OF mia_AT.
       AND bersaglio IS esaminabile
         ELSE
@@ -5017,145 +5170,6 @@ ADD TO EVERY OBJECT
     END VERB.
 END ADD TO.
 
--- ==============================================================
-
-
------ FILL
-
-
--- ==============================================================
-
-
-SYNTAX fill = fill (cont)
-  WHERE cont IsA OBJECT
-    ELSE
-      IF cont IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "riempire."
-  AND cont IsA CONTAINER
-    ELSE
-      IF cont IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
-      END IF.
-
-
-ADD TO EVERY OBJECT
-  VERB fill
-    CHECK mia_AT CAN fill
-      ELSE SAY azione_bloccata OF mia_AT.
-    AND cont IS esaminabile
-      ELSE
-        IF cont IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
-        END IF.
-        "riempire."
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
-    DOES
-      "You have to say what you want to fill" SAY THE cont. "with."
-    END VERB.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ FILL WITH
-
-
--- ==============================================================
-
-
-SYNTAX fill_with = fill (cont) 'with' (sostanza)
-  WHERE cont IsA OBJECT
-    ELSE
-      IF cont IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "riempire."
-  AND cont IsA CONTAINER
-    ELSE
-      IF cont IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "riempire."
-  AND sostanza IsA OBJECT
-    ELSE
-      IF sostanza IS NOT plurale
-        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
-      END IF.
-      "riempire" SAY THE cont. "."
-
-
-ADD TO EVERY OBJECT
-  VERB fill_with
-    WHEN cont
-      CHECK mia_AT CAN fill_with
-        ELSE SAY azione_bloccata OF mia_AT.
-      AND cont <> sostanza
-        ELSE SAY check_obj_not_obj2_with OF mia_AT.
-      AND sostanza IS esaminabile
-        ELSE
-          IF sostanza IS NOT plurale
-            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
-          END IF.
-          "riempire" SAY THE cont. "."
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
-      AND sostanza NOT IN cont
-        ELSE SAY check_obj_not_in_cont2 OF mia_AT.
-      AND sostanza IS prendibile
-        ELSE SAY check_obj2_takeable1 OF mia_AT.
-      AND cont IS raggiungibile AND cont IS NOT distante
-        ELSE
-          IF cont IS NOT raggiungibile
-            THEN
-              IF cont IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
-              END IF.
-          ELSIF cont IS distante
-            THEN
-              IF cont IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT. "."
-                ELSE SAY ogg1_distante_pl OF mia_AT. "."
-              END IF.
-          END IF.
-      AND sostanza IS raggiungibile AND sostanza IS NOT distante
-        ELSE
-          IF sostanza IS NOT raggiungibile
-            THEN
-              IF sostanza IS NOT plurale
-                THEN SAY ogg2_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg2_non_raggiungibile_pl OF mia_AT.
-              END IF.
-          ELSIF sostanza IS distante
-            THEN
-              IF sostanza IS NOT plurale
-                THEN SAY ogg2_distante_sg OF mia_AT. "."
-                ELSE SAY ogg2_distante_pl OF mia_AT. "."
-              END IF.
-          END IF.
-      DOES
-        "You can't fill" SAY THE cont. "with" SAY THE sostanza. "."
-        -- allow the action at individual substances only
-  END VERB.
-END ADD TO.
-
-
 
 -- ==============================================================
 
@@ -5303,7 +5317,7 @@ SYNONYMS mend, repair = fix.
 
 ADD TO EVERY OBJECT
   VERB fix
-    CHECK mia_AT CAN fix
+    CHECK mia_AT CAN aggiustare
       ELSE SAY azione_bloccata OF mia_AT.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY imp_luogo_buio OF mia_AT.
@@ -9237,7 +9251,7 @@ SYNTAX tie = tie (ogg)
 
 ADD TO EVERY OBJECT
   VERB tie
-    CHECK mia_AT CAN tie
+    CHECK mia_AT CAN legare
       ELSE SAY azione_bloccata OF mia_AT.
     AND ogg IS esaminabile
       ELSE
@@ -9276,7 +9290,7 @@ SYNTAX tie_to = tie (ogg) 'to' (bersaglio)
 ADD TO EVERY THING
   VERB tie_to
     WHEN ogg
-      CHECK mia_AT CAN tie_to
+      CHECK mia_AT CAN legare_a
         ELSE SAY azione_bloccata OF mia_AT.
       AND ogg IS esaminabile
         ELSE
@@ -9363,7 +9377,7 @@ SYNONYMS feel = touch.
 
 ADD TO EVERY THING
   VERB touch
-    CHECK mia_AT CAN touch
+    CHECK mia_AT CAN toccare
       ELSE SAY azione_bloccata OF mia_AT.
     AND ogg IS esaminabile
       ELSE
@@ -9430,7 +9444,7 @@ SYNTAX touch_with = touch (ogg) 'with' (strum)
 ADD TO EVERY THING
   VERB touch_with
     WHEN ogg
-      CHECK mia_AT CAN touch_with
+      CHECK mia_AT CAN toccare_con
         ELSE SAY azione_bloccata OF mia_AT.
       AND ogg IS esaminabile
         ELSE

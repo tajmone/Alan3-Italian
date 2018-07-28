@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.4.1 (2018/07/27)
+-- "lib_classi.i" v0.4.2 (2018/07/28)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1746,7 +1746,7 @@ EVERY liquido IsA OBJECT
   END VERB.
 
 
-  VERB fill_with
+  VERB riempi_con
     -- when something is filled with a liquid, this something becomes the
     -- vessel of the liquid:
     WHEN sostanza

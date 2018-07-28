@@ -11,6 +11,10 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/28](#20180728)
+    - [Verb Restriction Attributes](#verb-restriction-attributes)
+    - [Verb: `answer`](#verb-answer)
+    - [Verbs: `fill` and `fill_with`](#verbs-fill-and-fill_with)
 - [2018/07/27 \(7\)](#20180727-7)
 - [2018/07/27 \(6\)](#20180727-6)
     - [New THING Attribute `vocale` for Adjectives Conjucation](#new-thing-attribute-vocale-for-adjectives-conjucation)
@@ -53,15 +57,15 @@ Status: Alpha stage.
     - [Polish and Fix Translated Verbs](#polish-and-fix-translated-verbs)
     - [Verb Parameters Fixes](#verb-parameters-fixes)
 - [2018/07/25 \(8\)](#20180725-8)
-    - [Verb Restriction Attributes](#verb-restriction-attributes)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
     - [Verbs: `yes` and `no`](#verbs-yes-and-no)
 - [2018/07/25 \(7\)](#20180725-7)
 - [2018/07/25 \(6\)](#20180725-6)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
     - [Verb: `play`](#verb-play)
     - [Verb: `play_with`](#verb-play_with)
 - [2018/07/25 \(5\)](#20180725-5)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
 - [2018/07/25 \(4\)](#20180725-4)
 - [2018/07/25 \(3\)](#20180725-3)
     - [Library Instances](#library-instances)
@@ -181,9 +185,9 @@ Status: Alpha stage.
     - [Verb: `pray`](#verb-pray)
     - [Verb: `break`](#verb-break)
     - [Verb: `break_with`](#verb-break_with)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
-- [2018/05/22 \(2\)](#20180522-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-4)
+- [2018/05/22 \(2\)](#20180522-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-5)
 - [2018/05/22 \(1\)](#20180522-1)
     - [Verb: `undress`](#verb-undress)
 - [2018/05/19](#20180519)
@@ -200,6 +204,54 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/28
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.4.1)
+- [`lib_classi.i`][lib_classi] (v0.4.2)
+- [`lib_verbi.i`][lib_verbi] (v0.4.1)
+
+## Verb Restriction Attributes
+
+Translated `my_game` attributes for verb restrictions:
+
+|    English    |     Italian     |
+|---------------|-----------------|
+| `answer`      | `rispondere`    |
+| `attack`      | `attaccare`     |
+| `attack_with` | `attaccare_con` |
+| `fill`        | `riempire`      |
+| `fill_with`   | `riempire_con`  |
+| `fix`         | `aggiustare`    |
+| `tie`         | `legare`        |
+| `tie_to`      | `legare_a`      |
+| `touch`       | `toccare`       |
+| `touch_with`  | `toccare_con`   |
+
+
+## Verb: `answer`
+
+Translated verb `rispondi` (_answer_):
+
+    rispondi (argomento)
+
+with no synonyms.
+
+Where `argomento` is a string.
+
+## Verbs: `fill` and `fill_with`
+
+Translated verbs `riempi` and `riempi_con` (_fill_ and _fill with_):
+
+    riempi (cont)
+    riempi (cont) con (sostanza)
+
+with no synonyms (for now).
+
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/27 (7)
 
