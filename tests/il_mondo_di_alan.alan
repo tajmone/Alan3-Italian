@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione v0.4.0 (2018/07/27)
+--  versione v0.4.1 (2018/07/29)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -439,6 +439,59 @@ THE ccAtrio IsA stanza.
   EXIT sud   TO pzzaIF.
   EXIT ovest TO ccEmporio.
 END THE ccAtrio.
+
+
+--==============================================================================
+-- Candela
+--==============================================================================
+-- Per testare 'fonte_di_luce' naturale
+
+THE candela IsA fonte_di_luce AT ccAtrio.
+  HAS articolo "la".
+  -- IS naturale. --> Attributo `naturale` eliminato dalla libreria!
+  -- VERB esamina
+  --   DOES ONLY
+  --   IF THIS IS illuminato
+  --     THEN "La candela arde illuminando l'ambiente, la cera fusa forma delle
+  --           gocce lungo il suo fusto."
+  --     ELSE "La candela è spenta."
+  --   END IF.
+  -- END VERB.
+END THE candela.
+
+--==============================================================================
+-- Lampadine
+--==============================================================================
+-- Per testare 'fonte_di_luce' NOT naturale
+
+THE lampadine IsA fonte_di_luce AT ccAtrio.
+  HAS articolo "le".
+  IS NOT naturale.
+  -- VERB esamina
+  --   DOES ONLY
+  --   IF THIS IS illuminato
+  --     THEN "Le lampadine emettono un'intensa luce fredda."
+  --     ELSE "Le lampdadine sono spente."
+  --   END IF.
+  -- END VERB.
+END THE lampadine.
+
+--==============================================================================
+-- Bollitore
+--==============================================================================
+-- Per testare 'fonte_di_luce' naturale
+
+THE bollitore IsA dispositivo AT ccAtrio.
+  HAS articolo "il".
+  HAS xDesc "È un vecchio bollitore elettrico.".
+  -- VERB esamina
+  --   DOES ONLY
+  --   IF THIS IS acceso
+  --     THEN "Dal bollitore esce una nube di vapore caldo."
+  --     ELSE "Il bollitore è in immobile attesa di essere acceso."
+  --   END IF.
+  -- END VERB.
+END THE bollitore.
 
 
 -- =============================================================================

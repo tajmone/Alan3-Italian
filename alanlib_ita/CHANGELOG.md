@@ -11,14 +11,21 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/29](#20180729)
+    - [Accendere/Spegnere Dispositivi e Fonti di Luce](#accenderespegnere-dispositivi-e-fonti-di-luce)
+    - [Il Nocciolo del Problema](#il-nocciolo-del-problema)
+    - [Abolizione dell'Attributo `naturale`](#abolizione-dellattributo-naturale)
+    - [Rilfessioni sull'Attributo `illuminato`](#rilfessioni-sullattributo-illuminato)
+    - [Verb Restriction Attributes](#verb-restriction-attributes)
+    - [Testo dei Verbi](#testo-dei-verbi)
 - [2018/07/28 \(3\)](#20180728-3)
     - [Verb Responses](#verb-responses)
 - [2018/07/28 \(2\)](#20180728-2)
     - [Verb Responses](#verb-responses-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
     - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
 - [2018/07/28 \(1\)](#20180728-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
     - [Verb: `answer`](#verb-answer)
     - [Verbs: `fill` and `fill_with`](#verbs-fill-and-fill_with)
 - [2018/07/27 \(7\)](#20180727-7)
@@ -63,15 +70,15 @@ Status: Alpha stage.
     - [Polish and Fix Translated Verbs](#polish-and-fix-translated-verbs)
     - [Verb Parameters Fixes](#verb-parameters-fixes)
 - [2018/07/25 \(8\)](#20180725-8)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
     - [Verbs: `yes` and `no`](#verbs-yes-and-no)
 - [2018/07/25 \(7\)](#20180725-7)
 - [2018/07/25 \(6\)](#20180725-6)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
     - [Verb: `play`](#verb-play)
     - [Verb: `play_with`](#verb-play_with)
 - [2018/07/25 \(5\)](#20180725-5)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-5)
 - [2018/07/25 \(4\)](#20180725-4)
 - [2018/07/25 \(3\)](#20180725-3)
     - [Library Instances](#library-instances)
@@ -191,9 +198,9 @@ Status: Alpha stage.
     - [Verb: `pray`](#verb-pray)
     - [Verb: `break`](#verb-break)
     - [Verb: `break_with`](#verb-break_with)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-5)
-- [2018/05/22 \(2\)](#20180522-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-6)
+- [2018/05/22 \(2\)](#20180522-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-7)
 - [2018/05/22 \(1\)](#20180522-1)
     - [Verb: `undress`](#verb-undress)
 - [2018/05/19](#20180519)
@@ -210,6 +217,102 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/29
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.4.4)
+- [`lib_classi.i`][lib_classi] (v0.4.3)
+- [`lib_verbi.i`][lib_verbi] (v0.4.4)
+
+This commit translates and adapts to Italian the group of verbs and attributes that deal with switching on/of devices and lightsources. Because it required complex structural changes due to the differences in the two languages, all the explanations will be in Italian only!
+
+## Accendere/Spegnere Dispositivi e Fonti di Luce
+
+Queste modifiche interessano i verbi e gli attributi che si occupano di accendere e spegnere dispositivi e fonti di luce (naturali e non). Le differenze tra le due lingue nell'uso dei verbi interessati mi ha costretto ad apportare modifiche significative alle parti della libreria che li gestiscono.
+
+Esporrò sia le modifiche che le ragioni di tali modifiche.
+
+## Il Nocciolo del Problema
+
+La libreria distingue tra dispositivi e fonti di luce naturali o artificiali (`NOT naturale`) tramite le classi `dispositivo` e `fonte_di_luce`, sulle quali sono implementati i vari verbi in maniera differente tra loro.
+
+Il nocciolo del problema riguarda il fatto che in inglese sono presenti più verbi per indicare l'azione di accendere/spegnere gli uni o gli altri di quesi diversi tipi di oggetti, mentre in italiano i verbi accendere/spegnere sono tranquillamente applicabili sia agli uni che agli altri:
+
+- "accendi/spegni la candela" (`fonte_di_luce` naturale)
+- "accendi/spegni la lampadina" (`fonte_di_luce` non naturale)
+- "accendi/spegni il frullatore" (`dispostivo`)
+
+Questo ha comportato l'abolizione di alcuni verbi inglesi della libreria e il rinominare alcuni verbi che erano specifici per le fonti di luce naturali. In altre parole, ho dovuto semplificare queta parte della libreria.
+
+Questa tabella indica lo stato dei verbi originali e quelli attuali, dopo la loro traduzione, riadattazione e rimozione dei verbi superflui:
+
+|          Classe          |   Verbo EN    |   Verbo IT  |
+|--------------------------|--------------|-------------|
+| `dispostivo`             | `switch`     | _eliminato_ |
+| `fonte_di_luce`          | `switch`     | _eliminato_ |
+| `dispostivo`             | `turn_on`    | `accendi`   |
+| `dispostivo`             | `turn_off`   | `spegni`    |
+| `fonte_di_luce` naturale | `turn_on`    | _eliminato_ |
+| `fonte_di_luce` naturale | `turn_off`   | _eliminato_ |
+| `fonte_di_luce`          | `light`      | `accendi`   |
+| `fonte_di_luce`          | `extinguish` | `spegni`    |
+
+... e, per quanto riguarda le versioni generiche di questi verbi, implementate su ogni oggetto per intercettarne gli usi impropri, queste sono le modifiche:
+
+|   Verbo EN   |   Verbo IT  |
+|--------------|-------------|
+| `switch`     | _eliminato_ |
+| `turn_on`    | `accendere` |
+| `turn_off`   | `spegnere`  |
+| `light`      | _eliminato_ |
+| `extinguish` | _eliminato_ |
+
+Ovviamente, questa serie di riadattamenti ha richiesto varie modifiche al codice di SYNTAX e VERB della libreria originale.
+
+Praticamente, poiché in Italiano i verbi accendi/spegni funzioneranno sia per i dispositivi che le fonti di luci (naturali o meno), ho abolito i verbi specifici per l'accensione/spegnimento di sole luci naturali (`turn_on`/`off`) e rinominato i restanti su entrambe le classi come `accendi`/`spegni` — stesse sintassi, corpi di verbi eseguiti diversi, determinati dalla classe dai cui eredita l'istanza che il giocatore tenta di accendere/spegnere!
+
+Quanto al verbo `switch`, che in inglese serviva a passare da uno stato all'altro (acceso/spento), esso non trova equivalenti in italiano e l'ho perciò eliminato.
+
+In teoria, avrei potuto preservare `extinguish` e tradurlo con `estingui` ("estingui la candela/il fuoco"), e magari `light` tradurlo cone `dai fuoco a`, ma queste sintassi non sono versatali come gli equivalenti inglesi e in italiano non sarebbero altrettanto applicabili a tutte le fonti di luce naturale. Siccome l'aspettativa naturale è che il giocatore usi "accendi/spegni" in questi frangenti, ho preferito elimiare questi verbi e lasciare che sia l'autore a implementarli se proprio gli servono.
+
+## Abolizione dell'Attributo `naturale`
+
+In virtù delle modifiche sopramenzionate, l'attributo `naturale` per le fonti di luce viene meno al suo scopo: esso veniva impiegato in quei verbi inglesi che dovevano interagire solo con fonti di luce artificiali (`switch`). Siccome ora usiamo solo i verbi accendi/spegni per tutti i tipi di luci e per i dispostivi, la distinzione diventa superlua. Inoltre, nel codice della libreria non si fa più riferimento a questo attributo.
+
+In teoria, poteva essere utile all'utente finale in certi contesti, ma questi potrà implementare tale attributo da sé; mentre ritengo invece che non dovrebbero essere presenti nella libreria attributi non utilizzati da essa.
+
+## Rilfessioni sull'Attributo `illuminato`
+
+Sempre in virtù dei suddetti cambiamenti, avevo valutato di abbandonare l'attributo `illuminato` (nella classe `fonte_di_luce`) in favore di `acceso` (attributo già presente su ogni `THING`), proprio come accade con i dispositivi. 
+
+Le argomentazioni a favore di tale scelta sarebbero che quest'ultimo è più rappresentativo dei verbi utilizzati per cambiare tale stato (`illuminato` non è granché azzeccato) ed è preferibile avere un solo identificativo da ricordare.
+
+Le argomentazioni a sfavore di tale scelta sono che l'attributo non crea particolari complicazioni e potrebbe benissimo essere lasciato così com'è.
+
+Però ho poi considerato la possibilità che si vogliano creare oggetti che possano essere sia accesi/spenti che illuminati/non-illuminati. Per esempio, un dispositivo elettrico o meccanico che abbia anche (ma non solo) l'opzione di emettere luce. Un'automobile potrebbe essere accesa (motore acceso) ma il suo abitacolo non-illuminato. In tali contesti, l'uso di un solo attributo al posto degli attuali due complicherebbe la creazione di tali oggetti.
+
+Per prudenza, ho preferito lasciare questo attributo così com'è, e prendermi del tempo per valutare più a fondo se rimpiazzarlo con `acceso` possa portare dei reali benefici (oltre a quelli menzionati sopra). Ho comunque provato a operare tale sostituzione ai fini dei test, e non mi sono imbattuto in problematiche tecniche, quindi la sostituzione è fattibile.
+
+## Verb Restriction Attributes
+
+Questa serie di modifiche riguarda anche gli attributi per le restrizioni verbali della `mia_AT`: gli attributi che facevano riferimento a verbi rimossi sono stati anch'essi rimossi, gli altri tradotti.
+
+|   English    |   Italian   |
+|--------------|-------------|
+| `switch`     | _eliminato_ |
+| `turn_on`    | `accendere` |
+| `turn_off`   | `spegnere`  |
+| `light`      | _eliminato_ |
+| `extinguish` | _eliminato_ |
+
+
+## Testo dei Verbi
+
+Ho tradotto in italiano il testo prodotto dai verbi sopramenzionati, e anche quello del verbo `esamina` su `dispositivo` e `fonte_di_luce` — ma non ho tradotto ancora tutti i messaggi di risposta che usano attributi `mia_AT`!
+
+<!---------------------------------------------------------------------------->
+
+
 
 # 2018/07/28 (3)
 
@@ -268,8 +371,6 @@ Translated verbs `siediti` and `siediti_su`, "__siediti__":
 with synonyms:
 
     siedi = 'siediti'
-
-
 
 
 

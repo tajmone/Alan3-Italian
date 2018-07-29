@@ -9,6 +9,7 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [VERBI MANCANTI](#verbi-mancanti)
 - [Indice dei Verbi](#indice-dei-verbi)
 - [Tabella dei Verbi](#tabella-dei-verbi)
 - [META-COMANDI DI PARTITA](#meta-comandi-di-partita)
@@ -71,6 +72,13 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 <!-- /MarkdownTOC -->
 
 -----
+
+# VERBI MANCANTI
+
+Questi verbi sono stati tradotti/implementati ma non aconra aggiunti a questo file:
+
+- `accendi`
+- `spegni`
 
 # Indice dei Verbi
 
@@ -152,6 +160,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [vendi]
 
 -------------------------------------------------------------------------------
+
 
 # Tabella dei Verbi
 

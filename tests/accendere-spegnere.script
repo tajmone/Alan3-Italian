@@ -1,0 +1,26 @@
+nord
+
+; ==============================================================================
+; CANDELA: fonte_di_luce naturale
+; ==============================================================================
+esamina candela
+accendi candela
+esamina candela
+spegni candela
+esamina candela
+; ==============================================================================
+; LAMPADINE: fonte_di_luce NOT naturale
+; ==============================================================================
+esamina lampadine
+accendi lampadine
+esamina lampadine
+spegni lampadine
+esamina lampadine
+; ==============================================================================
+; BOLLITORE: dispostivo
+; ==============================================================================
+esamina bollitore
+accendi bollitore
+esamina bollitore
+spegni bollitore
+esamina bollitore

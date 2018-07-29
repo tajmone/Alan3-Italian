@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.4.2 (2018/07/28)
+-- "lib_classi.i" v0.4.3 (2018/07/29)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -144,9 +144,18 @@ END ADD.
 --+---------------------------+------------------------------------------------.
 --|                                                                            |
 
+-- **** TESTO DELLA SCHEDA COMPLETAMENTE DA RIVEDERE!!! ****
+
+--@NOTA: Questo non sarà più così dopo la traduzione italiana dei verbi dato
+--       che alcuni verbi si sovrapporranno e non ci sarà tale distinguo.
+--       Inoltre, il controllo per 'rotto' viene applicato in ogni caso, anche
+--       per le luci naturali!
+--       Il testo andrà rivisto!
+
 --| Una fonte di luce può essere 'naturale' (p.es. una candela, una fiaccola, 
 --| un falò) o 'NOT naturale' (ossia artificiale, come una torcia elettrica, 
 --| una bajour).
+
 
 --| Una fonte di luce artificiale la si può accendere, spegnere ed estinguere,
 --| purché non sia rotta.
@@ -975,21 +984,22 @@ EVERY dispositivo IsA OBJECT
   VERB esamina
     DOES AFTER
       IF THIS IS NOT plurale
-        THEN "It is"
-        ELSE "They are"
+        THEN "È"
+        ELSE "Sono"
       END IF.
 
       IF THIS IS acceso
-        THEN "currently on."
-        ELSE "currently off."
-      END IF.
+        THEN "acces$$"
+        ELSE "spent$$"
+      END IF. SAY THIS:vocale. "."
   END VERB.
 
 
-  VERB turn_on
+  VERB accendi --> turn_on
     CHECK THIS IS NOT acceso
       ELSE
         IF THIS IS NOT plurale
+-->>                                                                            TRANSLATE
           THEN SAY check_device_not_on_sg OF mia_AT.
           ELSE SAY check_device_not_on_pl OF mia_AT.
         END IF.
@@ -1011,17 +1021,25 @@ EVERY dispositivo IsA OBJECT
             END IF.
         END IF.
     AND THIS IS NOT rotto
+-->>                                                                            TRANSLATE
       ELSE SAY check_obj_not_broken OF mia_AT.
     DOES ONLY
-      "You turn on" SAY THE THIS. "."
+      "Fatto. Ora" SAY THE THIS.
+      IF THIS IS NOT plurale
+        THEN SAY "è".
+        ELSE SAY "sono".
+      END IF.
+      "acces$$" SAY THIS:vocale. "."
+   -- "You turn on" SAY THE THIS. "."
       MAKE THIS acceso.
   END VERB.
 
 
-  VERB turn_off
+  VERB spegni --> turn_off dispositivo
     CHECK THIS IS acceso
       ELSE
          IF THIS IS NOT plurale
+-->>                                                                            TRANSLATE
           THEN SAY check_device_on_sg OF mia_AT.
           ELSE SAY check_device_on_pl OF mia_AT.
          END IF.
@@ -1043,46 +1061,17 @@ EVERY dispositivo IsA OBJECT
             END IF.
         END IF.
     DOES ONLY
-      "You turn off" SAY THE THIS. "."
+      "Fatto. Ora" SAY THE THIS.
+      IF THIS IS NOT plurale
+        THEN SAY "è".
+        ELSE SAY "sono".
+      END IF.
+      "spent$$" SAY THIS:vocale. "."
+   -- "You turn off" SAY THE THIS. "."
       MAKE THIS NOT acceso.
   END VERB.
 
-
--- The following verb switches a device off if the device is on, and vice versa.
-
-
-  VERB switch
-    CHECK CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
-    AND THIS IS raggiungibile AND THIS IS NOT distante
-      ELSE
-        IF THIS IS NOT raggiungibile
-          THEN
-            IF THIS IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
-            END IF.
-        ELSIF THIS IS distante
-          THEN
-            IF THIS IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
-            END IF.
-        END IF.
-    AND THIS IS NOT rotto
-      ELSE SAY check_obj_not_broken OF mia_AT.
-    DOES ONLY
-      IF THIS IS acceso
-        THEN "You switch off" SAY THE THIS. "."
-          MAKE THIS NOT acceso.
-        ELSE "You switch on" SAY THE THIS. "."
-          MAKE THIS acceso.
-      END IF.
-  END VERB.
-
 END EVERY.
-
-
 
 -- =============================================================
 
@@ -1303,49 +1292,23 @@ END THE.
 
 EVERY fonte_di_luce IsA OBJECT
   IS NOT illuminato.
-  IS naturale. -- A natural lightsource is for example a candle, a match or a torch.
-               -- A NOT natural lightsource is for example a flashlight or a lamp.
-               -- You cannot switch on or off a natural lightsource.
-
 
   VERB esamina
     DOES AFTER
-      IF THIS IS illuminato
-        THEN
-          IF THIS IS naturale
-            THEN
-              IF THIS IS NOT plurale
-                THEN "It is"
-                ELSE "They are"
-              END IF.
-              "currently lit."
-            ELSE
-              IF THIS IS NOT plurale
-                THEN "It is"
-                ELSE "They are"
-              END IF.
-              "currently on."
-          END IF.
-        ELSE
-          IF THIS IS naturale
-            THEN
-              IF THIS IS NOT plurale
-                THEN "It is"
-                ELSE "They are"
-              END IF.
-              "currently not lit."
-            ELSE
-              IF THIS IS NOT plurale
-                THEN "It is"
-                ELSE "They are"
-              END IF.
-              "currently off."
-          END IF.
+
+      IF THIS IS NOT plurale
+        THEN "È"
+        ELSE "Sono"
       END IF.
+
+      IF THIS IS illuminato
+        THEN "acces$$"
+        ELSE "spent$$"
+      END IF. SAY THIS:vocale. "."
   END VERB.
 
 
-  VERB light
+  VERB accendi --> turn_on (fonte_di_luce)
     CHECK THIS IS NOT illuminato
       ELSE
         IF THIS IS NOT plurale
@@ -1355,97 +1318,35 @@ EVERY fonte_di_luce IsA OBJECT
     AND THIS IS NOT rotto
       ELSE SAY check_obj_not_broken OF mia_AT.
     DOES ONLY
-      IF THIS IS naturale
-        THEN "You light" SAY THE THIS. "."
-          MAKE THIS illuminato.
-        ELSE "You turn on" SAY THE THIS. "."
-          MAKE THIS illuminato.
+      "Fatto. Ora" SAY THE THIS.
+      IF THIS IS NOT plurale
+        THEN SAY "è".
+        ELSE SAY "sono".
       END IF.
+      "acces$$" SAY THIS:vocale. "."
+      MAKE THIS illuminato.
   END VERB.
 
 
-  VERB extinguish
+  VERB spegni --> extinguish fonte_di_luce
     CHECK THIS IS illuminato
       ELSE
         IF THIS IS NOT plurale
+-->>                                                                            TRANSLATE
           THEN SAY check_lightsource_lit_sg OF mia_AT.
           ELSE SAY check_lightsource_lit_pl OF mia_AT.
         END IF.
-    DOES ONLY "You extinguish" SAY THE THIS. "."
-      MAKE THIS NOT illuminato.
-  END VERB.
-
-
-  VERB turn_on
-    CHECK THIS IS NOT naturale
-      ELSE
-        IF THIS IS NOT plurale
-          THEN SAY check_obj_suitable_on_sg OF mia_AT.
-          ELSE SAY check_obj_suitable_on_pl OF mia_AT.
-        END IF.
-    AND THIS IS NOT illuminato
-      ELSE
-        IF THIS IS NOT plurale
-          THEN SAY check_lightsource_not_lit_sg OF mia_AT.
-          ELSE SAY check_lightsource_not_lit_pl OF mia_AT.
-        END IF.
-    AND THIS IS NOT rotto
-      ELSE SAY check_obj_not_broken OF mia_AT.
     DOES ONLY
-      "You turn on" SAY THE THIS. "."
-      MAKE THIS illuminato.
-
-  END VERB.
-
-
-  VERB turn_off
-    CHECK THIS IS NOT naturale
-      ELSE
-        IF THIS IS NOT plurale
-          THEN SAY check_obj_suitable_off_sg OF mia_AT.
-          ELSE SAY check_obj_suitable_off_pl OF mia_AT.
-        END IF.
-    AND THIS IS illuminato
-      ELSE
-        IF THIS IS NOT plurale
-          THEN SAY check_lightsource_lit_sg OF mia_AT.
-          ELSE SAY check_lightsource_lit_sg OF mia_AT.
-        END IF.
-
-    DOES ONLY
-      "You turn off" SAY THE THIS. "."
-      MAKE THIS NOT illuminato.
-
-  END VERB.
-
-
--- The following verb switches a NOT natural lightsource on if it is off, and vice versa
--- (when the player forgets, or doesn't bother, to type 'on' or 'off' after 'switch').
-
-
-  VERB switch
-    CHECK THIS IS NOT naturale
-      ELSE
-        IF THIS IS NOT plurale
-          THEN SAY check_lightsource_switchable_sg OF mia_AT.
-          ELSE SAY check_lightsource_switchable_pl OF mia_AT.
-        END IF.
-    AND THIS IS raggiungibile
-      ELSE
-        IF THIS IS NOT plurale
-          THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-          ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
-        END IF.
-    AND THIS IS NOT rotto
-      ELSE SAY check_obj_not_broken OF mia_AT.
-    DOES ONLY
-      IF THIS IS illuminato
-        THEN "You switch off" SAY THE THIS. "."
-          MAKE THIS NOT illuminato.
-        ELSE "You switch on" SAY THE THIS. "."
-          MAKE THIS illuminato.
+      "Fatto. Ora" SAY THE THIS.
+      IF THIS IS NOT plurale
+        THEN SAY "è".
+        ELSE SAY "sono".
       END IF.
+      "spent$$" SAY THIS:vocale. "."
+      MAKE THIS NOT illuminato.
   END VERB.
+
+
 
 
 END EVERY.

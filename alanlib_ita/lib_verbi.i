@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.4.3 (2018/07/28)
+-- "lib_verbi.i" v0.4.4 (2018/07/29)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -21,6 +21,7 @@
 --| ricomincia_partita | restart                      | ricomincia [partita]         | x | 0 |   |
 --| salva_partita      | save                         | salva [partita]              | x | 0 |   |
 --+--------------------+------------------------------+------------------------------+---+---+---+
+--| accendi            |                              | accendi (disp)               |   | 1 |   |
 --| apri               |                              | apri (ogg)                   |   | 1 | x |
 --| apri_con           |                              | apri (ogg) con (strum)       |   | 2 | x |
 --| aspetta            | attendi, Z                   | aspetta                      |   | 0 |   |
@@ -63,6 +64,7 @@
 --| scrivi             |                              | scrivi "testo" su (ogg)      |   | 1 | x |
 --| siediti            | siedi                        | siediti                      |   | 0 |   |
 --| siediti_su         | siedi                        | siediti su (superficie)      |   | 1 |   |
+--| spegni             |                              | spegni (disp)                |   | 1 |   |
 --| spogliati          | svestiti                     | spogliati                    |   | 0 |   |
 --| suona              |                              | suona (ogg)                  |   | 1 | x |
 --| trova              |                              | trova (ogg)                  |   | 1 | x |
@@ -92,6 +94,7 @@
 ----- Verbs originally defined in this file are the following:
 
 --# NOTA: i verbi preceduti da "-->>>" sono stati già tradotti.
+--#       i verbi preceduti da "--###" sono stati eliminati.
 
 ----- VERB        SYNONYMS                                 SYNTAX                              ARITY   OBJ
 
@@ -134,7 +137,7 @@
 ----- enter                                                enter (obj)                         1
 -->>> examine     (+ check, inspect, observe, x)           examine (obj)                       1       x
 ----- exit                                                 exit (obj)                          1
------ extinguish  (+ put out, quench)                      extinguish (obj)                    1       x
+--### extinguish  (+ put out, quench)                      extinguish (obj)                    1       x
 -->>> fill                                                 fill (cont)                         1
 -->>> fill_with                                            fill (cont) with (substance)        2
 -->>> find        (+ locate)                               find (obj)                          1       x
@@ -161,7 +164,7 @@
 ----- lie_in                                               lie in (cont)                       1
 ----- lie_on                                               lie on (surface)                    1
 ----- lift                                                 lift (obj)                          1       x
------ light       (+ lit)                                  light (obj)                         1       x
+--### light       (+ lit)                                  light (obj)                         1       x
 ----- listen0                                              listen                              0
 ----- listen                                               listen to (obj)                     1       x
 -->>> lock                                                 lock (obj)                          1       x
@@ -227,9 +230,9 @@
 ----- stand_on                                             stand on (surface)                  1
 ----- swim                                                 swim                                0
 ----- swim_in                                              swim in (liq)                       1
------ switch                                               switch (obj)                        1       x
------ switch_on   (defined at the verb 'turn_on')          switch on (app)                     1
------ switch_off  (defined at the verb 'turn_off')         switch off (app)                    1
+--### switch                                               switch (obj)                        1       x
+-->>> switch_on   (defined at the verb 'turn_on')          switch on (app)                     1
+-->>> switch_off  (defined at the verb 'turn_off')         switch off (app)                    1
 -->>> take        (+ carry, get, grab, hold, obtain)       take (obj)                          1       x
 -->>> take_from   (+ remove from)                          take (obj) from (holder)            2       x
 ----- talk                                                 talk                                0
@@ -409,6 +412,61 @@ END VERB.
 
 -- Comandi diretti al personaggio protagonista per interagire con l'avventura.
 
+
+
+-- ==============================================================
+
+
+----- @ACCENDI --- > @TURN ON
+
+
+-- ==============================================================
+
+-- SYNTAX  turn_on = turn 'on' (disp)
+--         turn_on = switch 'on' (disp).
+--         turn_on = turn (disp) 'on'.
+--         turn_on = switch (disp) 'on'.
+
+----- Only devices and lightsources can be turned on and off. These classes are
+----- defined in 'classes.i' with proper checks for 'on' and 'NOT on', 'lit' and 'NOT illuminato'.
+----- Trying to turn on or off an ordinary object will default here to "That's not
+----- something you can turn on".
+
+
+-- @TODO: Dovrei cambiare il param (disp) in qualcos'altro perché ora i verbi   FIXME!
+--        corrispettivi (in "lib_classi.i") si applicano sia ai dispositivi
+--        che alle fonti di luce!
+
+SYNTAX  accendi = accendi (disp)
+  WHERE disp IsA OBJECT
+    ELSE
+      IF disp IS NOT plurale
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "accendere."
+
+
+-- Note that 'switch' is not declared a synonym for 'turn'.
+-- This is because 'turn' has also other meanings, for example 'turn page' which is
+-- not equal with 'switch page'.
+-- A separate 'switch' verb is declared in 'classes.i', classes 'device' and 'lightsource'.
+-- This verb merely covers cases where the player forgets (or doesn't bother) to type 'on' or 'off'.
+
+
+
+ADD TO EVERY OBJECT
+  VERB accendi
+    CHECK mia_AT CAN accendere
+      ELSE SAY azione_bloccata OF mia_AT.
+    DOES
+      IF disp IS NOT plurale
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "accendere."
+  END VERB.
+END ADD TO.
 
 
 
@@ -3194,6 +3252,62 @@ END ADD TO.
 -- seduto o sdraiato.
 
 
+
+-- ==============================================================
+
+
+----- @SPEGNI --> @TURN OFF
+
+
+-- ==============================================================
+
+-- # syn/synt: 'spengi'?
+
+-- SYNTAX turn_off = turn off (disp)
+--        turn_off = switch off (disp).
+--        turn_off = turn (disp) off.
+--        turn_off = switch (disp) off.
+
+----- Only devices and lightsources can be turned on and off. These classes
+----- are defined in 'classes.i' with proper checks for 'on' and 'NOT on',
+----- 'lit' and 'NOT illuminato'.
+
+-- @TODO: Dovrei cambiare il param (disp) in qualcos'altro perché ora i verbi   FIXME!
+--        corrispettivi (in "lib_classi.i") si applicano sia ai dispositivi
+--        che alle fonti di luce!
+
+SYNTAX spegni = spegni (disp)
+  WHERE disp IsA OBJECT
+    ELSE
+      IF disp IS NOT plurale
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "spegnere."
+
+
+-- Note that 'switch' is not declared a synonym for 'turn'.
+-- This is because 'turn' has also other meanings, for example 'turn page' which is
+-- not equal with 'switch page'.
+-- A separate 'switch' verb is declared in 'classes.i', classes 'device' and 'lightsource'.
+-- This verb merely covers cases where the player forgets to type 'on' or 'off'.
+
+
+ADD TO EVERY OBJECT
+  VERB spegni
+    CHECK mia_AT CAN spegnere
+      ELSE SAY azione_bloccata OF mia_AT.
+    DOES
+      IF disp IS NOT plurale
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "spegnere."
+  END VERB.
+END ADD TO.
+
+
+
 -- ==============================================================
 
 
@@ -5231,72 +5345,6 @@ END VERB.
 
 
 
--- ==============================================================
-
-
------ EXTINGUISH  (+ put out)
-
-
--- ==============================================================
-
-
-
-SYNTAX extinguish = extinguish (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "estinguere."
-
-  extinguish = put 'out' (ogg).
-
-  extinguish = put (ogg) 'out'.
-
-
-
-SYNONYMS quench = extinguish.
-
-
-
-ADD TO EVERY OBJECT
-  VERB extinguish
-    CHECK mia_AT CAN extinguish
-      ELSE SAY azione_bloccata OF mia_AT.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
-        END IF.
-        "estinguere."
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
-            END IF.
-        END IF.
-    DOES
-      IF ogg IS NOT plurale
-        THEN "That's not"
-        ELSE "Those are not"
-      END IF.
-      "on fire."
-    END VERB.
-END ADD TO.
-
 
 -- ==============================================================
 
@@ -6339,65 +6387,6 @@ ADD TO EVERY OBJECT
         END IF.
   DOES
     "That wouldn't accomplish anything."
-  END VERB.
-END ADD TO.
-
--- ==============================================================
-
-
------ LIGHT (+ lit)
-
-
--- ==============================================================
--- NOTA: In italiano questo verbo potrebbe essere:
---         -- "da' fuoco a (ogg)"
---         -- "dai fuoco a (ogg)"
---       Non ci saranno problemi con SYNONYM 'dai'='da' perché non è stato
---       creato proprio a causa dei conflitti con il verbo 'dare'!!!
-
-SYNTAX light = light (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
-      END IF.
-
-
-SYNONYMS lit = light.
-
-
-ADD TO EVERY OBJECT
-  VERB light
-  CHECK mia_AT CAN light
-      ELSE SAY azione_bloccata OF mia_AT.
-  AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          THEN SAY check_obj_suitable_sg OF mia_AT.
-          ELSE SAY check_obj_suitable_pl OF mia_AT.
-        END IF.
-  AND ogg IS raggiungibile AND ogg IS NOT distante
-    ELSE
-      IF ogg IS NOT raggiungibile
-        THEN
-          IF ogg IS NOT plurale
-            THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-            ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
-          END IF.
-      ELSIF ogg IS distante
-        THEN
-          IF ogg IS NOT plurale
-            THEN SAY ogg1_distante_sg OF mia_AT.
-            ELSE SAY ogg1_distante_pl OF mia_AT.
-          END IF.
-      END IF.
-  DOES
-    IF ogg IS NOT plurale
-      THEN "That's not"
-      ELSE "Those are not"
-    END IF.
-    "something you can $v."
   END VERB.
 END ADD TO.
 
@@ -8521,77 +8510,6 @@ END ADD TO.
 -- ==============================================================
 
 
------ SWITCH
-
-
--- ==============================================================
-
-
--- This is a mere 'switch' verb with no 'on' or 'off' following after it.
--- This verb is defined further in 'classes.i', under 'device' and 'lightsource'.
--- This verb exists just to cover cases where the player forgets to write
--- 'on' or 'off' after 'switch'.
--- If the player types 'switch tv', the tv object will be switched on
--- if it is off, and vice cersa.
--- Below, just the basic syntax is declared.
-
-
-
-SYNTAX switch = switch (disp)      --> disp <--  app = apparatus, appliance
-  WHERE disp IsA OBJECT
-    ELSE
-      IF disp IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
-      END IF.
-
-
-ADD TO EVERY OBJECT
-  VERB switch
-    CHECK mia_AT CAN switch
-      ELSE SAY azione_bloccata OF mia_AT.
-    DOES
-      IF disp IS NOT plurale
-        THEN "That's not"
-        ELSE "Those are not"
-      END IF.
-      "not something you can switch."
-  END VERB.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ SWITCH ON
-
-
--- ==============================================================
-
-
------ The syntax for 'switch on' has been declared in the 'turn_on' verb.
-
-
-
-
--- ==============================================================
-
-
------ SWITCH OFF
-
-
--- ==============================================================
-
-
------ The syntax for 'switch off' has been declared in the 'turn_off' verb.
-
-
-
-
--- ==============================================================
-
-
 ----- TALK
 
 
@@ -9592,114 +9510,6 @@ ADD TO EVERY OBJECT
         THEN "You turn" SAY THE ogg. "in your hands, noticing nothing special."
         ELSE "That wouldn't accomplish anything."
       END IF.
-  END VERB.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ TURN ON
-
-
--- ==============================================================
-
-
------ Only devices and lightsources can be turned on and off. These classes are
------ defined in 'classes.i' with proper checks for 'on' and 'NOT on', 'lit' and 'NOT illuminato'.
------ Trying to turn on or off an ordinary object will default here to "That's not
------ something you can turn on".
-
-
-SYNTAX  turn_on = turn 'on' (disp)
-  WHERE disp IsA OBJECT
-    ELSE
-      IF disp IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "accendere."
-
-        turn_on = switch 'on' (disp).
-
-        turn_on = turn (disp) 'on'.
-
-        turn_on = switch (disp) 'on'.
-
-
-
--- Note that 'switch' is not declared a synonym for 'turn'.
--- This is because 'turn' has also other meanings, for example 'turn page' which is
--- not equal with 'switch page'.
--- A separate 'switch' verb is declared in 'classes.i', classes 'device' and 'lightsource'.
--- This verb merely covers cases where the player forgets (or doesn't bother) to type 'on' or 'off'.
-
-
-
-ADD TO EVERY OBJECT
-  VERB turn_on
-    CHECK mia_AT CAN turn_on
-      ELSE SAY azione_bloccata OF mia_AT.
-    DOES
-      IF disp IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "accendere."
-  END VERB.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ TURN OFF
-
-
--- ==============================================================
-
-
------ Only devices and lightsources can be turned on and off. These classes
------ are defined in 'classes.i' with proper checks for 'on' and 'NOT on',
------ 'lit' and 'NOT illuminato'.
-
-
-SYNTAX turn_off = turn off (disp)
-  WHERE disp IsA OBJECT
-    ELSE
-      IF disp IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "spegnere."
-
-      turn_off = switch off (disp).
-
-      turn_off = turn (disp) off.
-
-      turn_off = switch (disp) off.
-
-
-
--- Note that 'switch' is not declared a synonym for 'turn'.
--- This is because 'turn' has also other meanings, for example 'turn page' which is
--- not equal with 'switch page'.
--- A separate 'switch' verb is declared in 'classes.i', classes 'device' and 'lightsource'.
--- This verb merely covers cases where the player forgets to type 'on' or 'off'.
-
-
-ADD TO EVERY OBJECT
-  VERB turn_off
-    CHECK mia_AT CAN turn_off
-      ELSE SAY azione_bloccata OF mia_AT.
-    DOES
-      IF disp IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "spegnere."
   END VERB.
 END ADD TO.
 
