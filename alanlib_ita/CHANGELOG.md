@@ -11,7 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/07/29](#20180729)
+- [2018/07/29 \(2\)](#20180729-2)
+    - [Remove Verb Restriction Attributes](#remove-verb-restriction-attributes)
+- [2018/07/29 \(1\)](#20180729-1)
     - [Accendere/Spegnere Dispositivi e Fonti di Luce](#accenderespegnere-dispositivi-e-fonti-di-luce)
     - [Il Nocciolo del Problema](#il-nocciolo-del-problema)
     - [Abolizione dell'Attributo `naturale`](#abolizione-dellattributo-naturale)
@@ -218,7 +220,23 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/07/29
+# 2018/07/29 (2)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.4.5)
+
+## Remove Verb Restriction Attributes
+
+Removed `mia_AT` attributes for verb restrictions:
+
+|     English      |  Italian  |
+|------------------|-----------|
+| ~~`switch_on`~~  | _removed_ |
+| ~~`switch_off`~~ | _removed_ |
+
+
+<!---------------------------------------------------------------------------->
+
+# 2018/07/29 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.4)
 - [`lib_classi.i`][lib_classi] (v0.4.3)
@@ -1185,16 +1203,16 @@ Translated `my_game` attributes for verb restrictions:
 
 |    English    |    Italian    |
 |---------------|---------------|
-| `'empty'`     | `svuotare`    |
-| `dive_in`     | `tuffarsi_in` |
 | `dive`        | `tuffarsi`    |
+| `dive_in`     | `tuffarsi_in` |
 | `drive`       | `guidare`     |
+| `'empty'`     | `svuotare`    |
 | `empty_in`    | `svuotare_in` |
 | `empty_on`    | `svuotare_su` |
 | `knock`       | `bussare`     |
 | `sing`        | `cantare`     |
-| `think_about` | `pensare_a`   |
 | `think`       | `pensare`     |
+| `think_about` | `pensare_a`   |
 
 
 <!---------------------------------------------------------------------------->
@@ -3034,8 +3052,8 @@ Translated `my_game` attributes for verb restrictions:
 
 |   English    |   Italian   |
 |--------------|-------------|
-| `break`      | `rompi`     |
-| `break_with` | `rompi_con` |
+| `break`      | `rompere`     |
+| `break_with` | `rompere_con` |
 | `pray`       | `pregare`   |
 
 <!---------------------------------------------------------------------------->

@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.4.4 (2018/07/29)
+-- "lib_definizioni.i" v0.4.5 (2018/07/29)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1404,7 +1404,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN climb_on.
   CAN credits.     -- (+ acknowledgments, author, copyright)
   CAN 'exit'.
---CAN extinguish. --> ** VERBO ELIMINATO **  -- (+ put out, quench)
+--CAN extinguish. ----------------> ** VERBO ELIMINATO **  (+ put out, quench)
   CAN fire.
   CAN fire_at.
   CAN get_up.
@@ -1415,7 +1415,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN lie_in.
   CAN lie_on.
   CAN lift.
---CAN light. --> ** VERBO ELIMINATO **       -- (+ lit)
+--CAN light. ---------------------> ** VERBO ELIMINATO ** (+ lit)
   CAN listen0.
   CAN listen.
   CAN 'look'.      -- (+ gaze, peek)
@@ -1458,9 +1458,9 @@ EVERY blocco_definizioni IsA LOCATION
   CAN squeeze.
   CAN stand.       -- (up)
   CAN stand_on.
---CAN switch. --> ** VERBO ELIMINATO **
-  CAN switch_on.
-  CAN switch_off.
+--CAN switch. --------------------> ** VERBO ELIMINATO **
+--CAN switch_on. -----------------> ** VERBO ELIMINATO **
+--CAN switch_off. ----------------> ** VERBO ELIMINATO **
   CAN talk.
   CAN talk_to.     -- (+ speak)
   CAN tear.        -- (+ rip)
@@ -1608,7 +1608,7 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT climb_on.
   MAKE mia_AT credits.         -- (+ acknowledgments, author, copyright)
   MAKE mia_AT 'exit'.
---MAKE mia_AT extinguish. --> ** VERBO ELIMINATO **      -- (+ put out, quench)
+--MAKE mia_AT extinguish. --------> ** VERBO ELIMINATO ** (+ put out, quench)
   MAKE mia_AT fire.
   MAKE mia_AT fire_at.
   MAKE mia_AT get_up.
@@ -1619,7 +1619,7 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT lie_in.
   MAKE mia_AT lie_on.
   MAKE mia_AT lift.
---MAKE mia_AT light. --> ** VERBO ELIMINATO **           -- (+ lit)
+--MAKE mia_AT light. -------------> ** VERBO ELIMINATO ** (+ lit)
   MAKE mia_AT listen0.
   MAKE mia_AT listen.
   MAKE mia_AT 'look'.          -- (+ gaze, peek)
@@ -1662,9 +1662,9 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT squeeze.
   MAKE mia_AT stand.           -- (up)
   MAKE mia_AT stand_on.
---MAKE mia_AT switch. --> ** VERBO ELIMINATO **
-  MAKE mia_AT switch_on.
-  MAKE mia_AT switch_off.
+--MAKE mia_AT switch. ------------> ** VERBO ELIMINATO **
+--MAKE mia_AT switch_on. ---------> ** VERBO ELIMINATO **
+--MAKE mia_AT switch_off. ------> ** VERBO ELIMINATO **
   MAKE mia_AT talk.
   MAKE mia_AT talk_to.         -- (+ speak)
   MAKE mia_AT tear.            -- (+ rip)
@@ -1824,7 +1824,7 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT climb_on.
   MAKE mia_AT credits.         -- (+ acknowledgments, author, copyright)
   MAKE mia_AT NOT 'exit'.
---MAKE mia_AT NOT extinguish. --> ** VERBO ELIMINATO **  -- (+ put out, quench)
+--MAKE mia_AT NOT extinguish. ----> ** VERBO ELIMINATO ** (+ put out, quench)
   MAKE mia_AT NOT fire.
   MAKE mia_AT NOT fire_at.
   MAKE mia_AT NOT get_up.
@@ -1835,7 +1835,7 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT lie_in.
   MAKE mia_AT NOT lie_on.
   MAKE mia_AT NOT lift.
---MAKE mia_AT NOT light. --> ** VERBO ELIMINATO **       -- (+ lit)
+--MAKE mia_AT NOT light. ---------> ** VERBO ELIMINATO ** (+ lit)
   MAKE mia_AT listen0.
   MAKE mia_AT listen.
   MAKE mia_AT 'look'.          -- (+ gaze, peek)
@@ -1878,9 +1878,9 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT squeeze.
   MAKE mia_AT NOT stand.       -- (up)
   MAKE mia_AT NOT stand_on.
---MAKE mia_AT NOT switch. --> ** VERBO ELIMINATO **
-  MAKE mia_AT NOT switch_on.
-  MAKE mia_AT NOT switch_off.
+--MAKE mia_AT NOT switch. --------> ** VERBO ELIMINATO **
+--MAKE mia_AT NOT switch_on. -----> ** VERBO ELIMINATO **
+--MAKE mia_AT NOT switch_off. ----> ** VERBO ELIMINATO **
   MAKE mia_AT NOT talk.
   MAKE mia_AT NOT talk_to.     -- (+ speak)
   MAKE mia_AT NOT tear.        -- (+ rip)
@@ -2024,7 +2024,7 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT climb_on.
   MAKE mia_AT credits.         -- (+ acknowledgments, author, copyright)
   MAKE mia_AT NOT 'exit'.
---MAKE mia_AT NOT extinguish. --> ** VERBO ELIMINATO **  -- (+ put out, quench)
+--MAKE mia_AT NOT extinguish. ----> ** VERBO ELIMINATO ** (+ put out, quench)
   MAKE mia_AT NOT fire.
   MAKE mia_AT NOT fire_at.
   MAKE mia_AT NOT get_up.
@@ -2035,7 +2035,7 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT lie_in.
   MAKE mia_AT NOT lie_on.
   MAKE mia_AT NOT lift.
---MAKE mia_AT NOT light. --> ** VERBO ELIMINATO **       -- (+ lit)
+--MAKE mia_AT NOT light. ---------> ** VERBO ELIMINATO ** (+ lit)
   MAKE mia_AT NOT listen0.
   MAKE mia_AT NOT listen.
   MAKE mia_AT NOT 'look'.      -- (+ gaze, peek)
@@ -2078,9 +2078,9 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT squeeze.
   MAKE mia_AT NOT stand.       -- (up)
   MAKE mia_AT NOT stand_on.
---MAKE mia_AT NOT switch. --> ** VERBO ELIMINATO **
-  MAKE mia_AT NOT switch_on.
-  MAKE mia_AT NOT switch_off.
+--MAKE mia_AT NOT switch. --------> ** VERBO ELIMINATO **
+--MAKE mia_AT NOT switch_on. -----> ** VERBO ELIMINATO **
+--MAKE mia_AT NOT switch_off. ----> ** VERBO ELIMINATO **
   MAKE mia_AT NOT talk.
   MAKE mia_AT NOT talk_to.     -- (+ speak)
   MAKE mia_AT NOT tear.        -- (+ rip)
@@ -2209,7 +2209,7 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT climb_on.
   MAKE mia_AT NOT credits.     -- (+ acknowledgments, author, copyright)
   MAKE mia_AT NOT 'exit'.
---MAKE mia_AT NOT extinguish. --> ** VERBO ELIMINATO **  -- (+ put out, quench)
+--MAKE mia_AT NOT extinguish. ----> ** VERBO ELIMINATO ** (+ put out, quench)
   MAKE mia_AT NOT fire.
   MAKE mia_AT NOT fire_at.
   MAKE mia_AT NOT get_up.
@@ -2220,7 +2220,7 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT lie_in.
   MAKE mia_AT NOT lie_on.
   MAKE mia_AT NOT lift.
---MAKE mia_AT NOT light. --> ** VERBO ELIMINATO **       -- (+ lit)
+--MAKE mia_AT NOT light. ---------> ** VERBO ELIMINATO ** (+ lit)
   MAKE mia_AT NOT listen0.
   MAKE mia_AT NOT listen.
   MAKE mia_AT NOT 'look'.      -- (+ gaze, peek)
@@ -2263,9 +2263,9 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT squeeze.
   MAKE mia_AT NOT stand.       -- (up)
   MAKE mia_AT NOT stand_on.
---MAKE mia_AT NOT switch. --> ** VERBO ELIMINATO **
-  MAKE mia_AT NOT switch_on.
-  MAKE mia_AT NOT switch_off.
+--MAKE mia_AT NOT switch. -------> ** VERBO ELIMINATO **
+--MAKE mia_AT NOT switch_on. ----> ** VERBO ELIMINATO **
+--MAKE mia_AT NOT switch_off. ---> ** VERBO ELIMINATO **
   MAKE mia_AT NOT talk.
   MAKE mia_AT NOT talk_to.     -- (+ speak)
   MAKE mia_AT NOT tear.        -- (+ rip)

@@ -119,7 +119,7 @@ Attributes which are declared on (or inteded to be used with) multiple classes a
 |                    | `locked`       | `bloccato`             | boolean                  |
 | `lightsource`      |                | `fonte_di_luce`        | `OBJECT`                 |
 |                    | `lit`          | `illuminato`           | boolean                  |
-|                    | `natural`      | `naturale`             | boolean                  |
+|                    | ~~`natural`~~      | ~~`naturale`~~             | boolean (_removed_)                  |
 | `liquid`           |                | `liquido`              | `OBJECT` + `CONTAINER`   |
 |                    | `vessel`       | `recipiente`           | ref to an instance       |
 | `LISTED_CONTAINER` |                | `contenitore_elencato` | `CONTAINER`              |
@@ -280,186 +280,186 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 
 (defined in [`lib_definitions.i`][lib_definitions])
 
-> __NOT UPDATED!!!__ — the list below still needs to be filled in!
+> __NOT UPDATED!!!__ — the list below might not reflect the true status of the actual translated attributes!
 
-|   EN Attribute  |  Translation  | (_candidates_) |
-|-----------------|---------------|----------------|
-| `about`         |               |                |
-| `'again'`       |               |                |
-| `answer`        |               |                |
-| `ask`           |               |                |
-| `ask_for`       |               |                |
-| `attack`        |               |                |
-| `attack_with`   |               |                |
-| `bite`          |               |                |
-| `break`         |               |                |
-| `break_with`    |               |                |
-| `'brief'`       |               |                |
-| `burn`          |               |                |
-| `burn_with`     |               |                |
-| `buy`           |               |                |
-| `catch`         |               |                |
-| `clean`         |               |                |
-| `climb`         |               |                |
-| `climb_on`      |               |                |
-| `climb_through` |               |                |
-| `close`         |               |                |
-| `close_with`    |               |                |
-| `consult`       |               |                |
-| `credits`       |               |                |
-| `cut`           |               |                |
-| `cut_with`      |               |                |
-| `dance`         |               |                |
-| `dig`           |               |                |
-| `dive`          |               |                |
-| `dive_in`       |               |                |
-| `drink`         |               |                |
-| `drive`         |               |                |
-| `drop`          |               |                |
-| `eat`           |               |                |
-| `'empty'`       |               |                |
-| `empty_in`      |               |                |
-| `empty_on`      |               |                |
-| `enter`         |               |                |
-| `examine`       |               |                |
-| `'exit'`        |               |                |
-| `extinguish`    |               |                |
-| `fill`          |               |                |
-| `fill_with`     |               |                |
-| `find`          |               |                |
-| `fire`          |               |                |
-| `fire_at`       |               |                |
-| `fix`           |               |                |
-| `follow`        |               |                |
-| `free`          |               |                |
-| `get_up`        |               |                |
-| `get_off`       |               |                |
-| `give`          |               |                |
-| `go_to`         |               |                |
-| `hint`          |               |                |
-| `i`             |               |                |
-| `jump`          |               |                |
-| `jump_in`       |               |                |
-| `jump_on`       |               |                |
-| `kick`          |               |                |
-| `kill`          |               |                |
-| `kill_with`     |               |                |
-| `kiss`          |               |                |
-| `knock`         |               |                |
-| `lie_down`      |               |                |
-| `lie_in`        |               |                |
-| `lie_on`        |               |                |
-| `lift`          |               |                |
-| `light`         |               |                |
-| `listen0`       |               |                |
-| `listen`        |               |                |
-| `lock`          |               |                |
-| `lock_with`     |               |                |
-| `'look'`        |               |                |
-| `look_at`       |               |                |
-| `look_behind`   |               |                |
-| `look_in`       |               |                |
-| `look_out_of`   |               |                |
-| `look_through`  |               |                |
-| `look_under`    |               |                |
-| `look_up`       |               |                |
-| `'no'`          |               |                |
-| `'notify'`      |               |                |
-| `notify_on`     |               |                |
-| `notify_off`    |               |                |
-| `open`          |               |                |
-| `open_with`     |               |                |
-| `'play'`        |               |                |
-| `play_with`     |               |                |
-| `pour`          |               |                |
-| `pour_in`       |               |                |
-| `pour_on`       |               |                |
-| `pray`          |               |                |
-| `pry`           |               |                |
-| `pry_with`      |               |                |
-| `pull`          |               |                |
-| `push`          |               |                |
-| `push_with`     |               |                |
-| `put`           |               |                |
-| `put_against`   |               |                |
-| `put_behind`    |               |                |
-| `put_down`      |               |                |
-| `put_in`        |               |                |
-| `put_near`      |               |                |
-| `put_on`        |               |                |
-| `put_under`     |               |                |
-| `'quit'`        |               |                |
-| `read`          |               |                |
-| `remove`        |               |                |
-| `'restart'`     |               |                |
-| `'restore'`     |               |                |
-| `rub`           |               |                |
-| `'save'`        |               |                |
-| `'say'`         |               |                |
-| `say_to`        |               |                |
-| `'score'`       |               |                |
-| `scratch`       |               |                |
-| `'script'`      |               |                |
-| `script_on`     |               |                |
-| `script_off`    |               |                |
-| `search`        |               |                |
-| `sell`          |               |                |
-| `shake`         |               |                |
-| `shoot`         |               |                |
-| `shoot_with`    |               |                |
-| `shout`         |               |                |
-| `'show'`        |               |                |
-| `sing`          |               |                |
-| `sip`           |               |                |
-| `sit`           |               |                |
-| `sit_on`        |               |                |
-| `sleep`         |               |                |
-| `smell0`        |               |                |
-| `smell`         |               |                |
-| `squeeze`       |               |                |
-| `stand`         |               |                |
-| `stand_on`      |               |                |
-| `swim`          |               |                |
-| `swim_in`       |               |                |
-| `switch`        |               |                |
-| `switch_on`     |               |                |
-| `switch_off`    |               |                |
-| `take`          | `prendere`    |                |
-| `take_from`     | `prendere_da` |                |
-| `talk`          |               |                |
-| `talk_to`       |               |                |
-| `taste`         |               |                |
-| `tear`          |               |                |
-| `tell`          |               |                |
-| `think`         |               |                |
-| `think_about`   |               |                |
-| `throw`         |               |                |
-| `throw_at`      |               |                |
-| `throw_in`      |               |                |
-| `throw_to`      |               |                |
-| `tie`           |               |                |
-| `tie_to`        |               |                |
-| `touch`         |               |                |
-| `touch_with`    |               |                |
-| `turn`          |               |                |
-| `turn_on`       |               |                |
-| `turn_off`      |               |                |
-| `undress`       |               |                |
-| `unlock`        |               |                |
-| `unlock_with`   |               |                |
-| `'use'`         |               |                |
-| `use_with`      |               |                |
-| `'verbose'`     |               |                |
-| `'wait'`        |               |                |
-| `wear`          |               |                |
-| `what_am_i`     |               |                |
-| `what_is`       |               |                |
-| `where_am_i`    |               |                |
-| `where_is`      |               |                |
-| `who_am_i`      |               |                |
-| `who_is`        |               |                |
-| `write`         |               |                |
-| `yes`           |               |                |
+|   EN Attribute   |       IT Translation      |
+|------------------|---------------------------|
+| `about`          |                           |
+| `'again'`        | `rifare`                  |
+| `answer`         | `rispondere`              |
+| `ask`            |                           |
+| `ask_for`        |                           |
+| `attack`         | `attaccare`               |
+| `attack_with`    | `attaccare_con`           |
+| `bite`           |                           |
+| `break`          | `rompere`                 |
+| `break_with`     | `rompere_con`             |
+| `brief`          | `modalità_breve`          |
+| `burn`           | `bruciare`                |
+| `burn_with`      | `bruciare_con`            |
+| `buy`            | `comprare`                |
+| `catch`          |                           |
+| `clean`          | `pulire`                  |
+| `climb`          |                           |
+| `climb_on`       |                           |
+| `climb_through`  | `attraversare`            |
+| `close`          | `chiudere`                |
+| `close_with`     | `chiudere_con`            |
+| `consult`        | `consultare`              |
+| `credits`        |                           |
+| `cut`            | `tagliare`                |
+| `cut_with`       | `tagliare_con`            |
+| `dance`          | `danzare`                 |
+| `dig`            | `scavare`                 |
+| `dive`           | `tuffarsi`                |
+| `dive_in`        | `tuffarsi_in`             |
+| `drink`          | `bere`                    |
+| `drive`          | `guidare`                 |
+| `drop`           | `lasciare`                |
+| `eat`            | `mangiare`                |
+| `'empty'`        | `svuotare`                |
+| `empty_in`       | `svuotare_in`             |
+| `empty_on`       | `svuotare_su`             |
+| `enter`          | `entrare`                 |
+| `examine`        | `esaminare`               |
+| `'exit'`         |                           |
+| ~~`extinguish`~~ | _removed_                 |
+| `fill`           | `riempire`                |
+| `fill_with`      | `riempire_con`            |
+| `find`           | `trovare`                 |
+| `fire`           |                           |
+| `fire_at`        |                           |
+| `fix`            | `aggiustare`              |
+| `follow`         | `seguire`                 |
+| `free`           | `liberare`                |
+| `get_off`        |                           |
+| `get_up`         |                           |
+| `give`           | `dare`                    |
+| `go_to`          | `andare_a`                |
+| `hint`           |                           |
+| `i`              | `inventariare`            |
+| `jump`           | `saltare`                 |
+| `jump_in`        | `saltare_in`              |
+| `jump_on`        | `saltare_su`              |
+| `kick`           |                           |
+| `kill`           | `uccidere`                |
+| `kill_with`      | `uccidere_con`            |
+| `kiss`           | `baciare`                 |
+| `knock`          | `bussare`                 |
+| `lie_down`       |                           |
+| `lie_in`         |                           |
+| `lie_on`         |                           |
+| `lift`           |                           |
+| ~~`light`~~      | _removed_                 |
+| `listen0`        |                           |
+| `listen`         |                           |
+| `lock`           | `bloccare`                |
+| `lock_with`      | `bloccare_con`            |
+| `'look'`         |                           |
+| `look_at`        |                           |
+| `look_behind`    |                           |
+| `look_in`        |                           |
+| `look_out_of`    |                           |
+| `look_through`   |                           |
+| `look_under`     |                           |
+| `look_up`        |                           |
+| `'no'`           | `dire_no`                 |
+| `'notify'`       |                           |
+| `notify_off`     |                           |
+| `notify_on`      |                           |
+| `open`           | `aprire`                  |
+| `open_with`      | `aprire_con`              |
+| `'play'`         | `suonare`                 |
+| `play_with`      | `giocare_con`             |
+| `pour`           | `versare`                 |
+| `pour_in`        | `versare_in`              |
+| `pour_on`        | `versare_su`              |
+| `pray`           | `pregare`                 |
+| `pry`            |                           |
+| `pry_with`       |                           |
+| `pull`           | `tirare`                  |
+| `push`           | `spingere`                |
+| `push_with`      | `spingere_con`            |
+| `put`            |                           |
+| `put_against`    |                           |
+| `put_behind`     |                           |
+| `put_down`       |                           |
+| `put_in`         |                           |
+| `put_near`       |                           |
+| `put_on`         |                           |
+| `put_under`      |                           |
+| `'quit'`         | `abbandonare_partita`     |
+| `read`           | `leggere`                 |
+| `remove`         |                           |
+| `'restart'`      | `ricominciare_partita`    |
+| `'restore'`      | `caricare_partita`        |
+| `rub`            |                           |
+| `'save'`         | `salvare_partita`         |
+| `'say'`          |                           |
+| `say_to`         |                           |
+| `'score'`        |                           |
+| `scratch`        |                           |
+| `'script'`       |                           |
+| `script_off`     |                           |
+| `script_on`      |                           |
+| `search`         |                           |
+| `sell`           | `vendere`                 |
+| `shake`          |                           |
+| `shoot`          |                           |
+| `shoot_with`     |                           |
+| `shout`          | `gridare`                 |
+| `'show'`         | `mostrare`                |
+| `sing`           | `cantare`                 |
+| `sip`            |                           |
+| `sit`            | `sedersi`                 |
+| `sit_on`         | `sedersi_su`              |
+| `sleep`          | `dormire`                 |
+| `smell`          |                           |
+| `smell0`         |                           |
+| `squeeze`        |                           |
+| `stand`          |                           |
+| `stand_on`       |                           |
+| `swim`           | `nuotare`                 |
+| `swim_in`        | `nuotare_in`              |
+| ~~`switch`~~     | _removed_                 |
+| ~~`switch_off`~~ | _removed_                 |
+| ~~`switch_on`~~  | _removed_                 |
+| `take`           | `prendere`                |
+| `take_from`      | `prendere_da`             |
+| `talk`           |                           |
+| `talk_to`        |                           |
+| `taste`          | `assaggiare`              |
+| `tear`           |                           |
+| `tell`           |                           |
+| `think`          | `pensare`                 |
+| `think_about`    | `pensare_a`               |
+| `throw`          |                           |
+| `throw_at`       |                           |
+| `throw_in`       |                           |
+| `throw_to`       |                           |
+| `tie`            | `legare`                  |
+| `tie_to`         | `legare_a`                |
+| `touch`          | `toccare`                 |
+| `touch_with`     | `toccare_con`             |
+| `turn`           |                           |
+| `turn_off`       | `spegnere`                |
+| `turn_on`        | `accendere`               |
+| `undress`        | `spogliarsi`              |
+| `unlock`         | `sbloccare`               |
+| `unlock_with`    | `sbloccare_con`           |
+| `'use'`          | `usare`                   |
+| `use_with`       | `usare_con`               |
+| `'verbose'`      | `modalità_lunga`          |
+| `'wait'`         | `aspettare`               |
+| `wear`           | `indossare`               |
+| `what_am_i`      | `domandare_cosa_sono_io`  |
+| `what_is`        | `domandare_cosa_è`        |
+| `where_am_i`     | `domandare_dove_mi_trovo` |
+| `where_is`       | `domandare_dove_è`        |
+| `who_am_i`       | `domandare_chi_sono_io`   |
+| `who_is`         | `domandare_chi_è`         |
+| `write`          | `scrivere`                |
+| `yes`            | `dire_sì`                 |
 
  
 

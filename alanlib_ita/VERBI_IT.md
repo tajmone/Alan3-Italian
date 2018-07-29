@@ -9,7 +9,6 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [VERBI MANCANTI](#verbi-mancanti)
 - [Indice dei Verbi](#indice-dei-verbi)
 - [Tabella dei Verbi](#tabella-dei-verbi)
 - [META-COMANDI DI PARTITA](#meta-comandi-di-partita)
@@ -48,6 +47,9 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [blocca_con](#blocca_con)
     - [sblocca](#sblocca)
     - [sblocca_con](#sblocca_con)
+- [ACCENDERE, SPEGNERE](#accendere-spegnere)
+    - [accendi](#accendi)
+    - [spegni](#spegni)
 - [INDOSSARE, SPOGLIARSI](#indossare-spogliarsi)
     - [spogliati](#spogliati)
 - [ATTACCARE, ROMPERE, BRUCIARE](#attaccare-rompere-bruciare)
@@ -73,13 +75,6 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 
 -----
 
-# VERBI MANCANTI
-
-Questi verbi sono stati tradotti/implementati ma non aconra aggiunti a questo file:
-
-- `accendi`
-- `spegni`
-
 # Indice dei Verbi
 
 Siccome in questo documento i vari verbi sono raggrupati per categorie di affinità, il seguente indice elenca tutti i verbi disponibili (e loro sinonimi) linkandoli alla loro sezione nel documento.
@@ -88,6 +83,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [abbandona]  (partita)
 - [abbandona][abbandona ogg]  (oggetto)
 - [abbandona partita]
+- [accendi]
 - [afferra]
 - [apri]
 - [apri con]
@@ -148,6 +144,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [siediti su]
 - [spacca]
 - [spacca con]
+- [spegni]
 - [spogliati]
 - [suona]
 - [svestiti]
@@ -164,64 +161,71 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 
 # Tabella dei Verbi
 
-Copiata da "`lib_verbi.i`" v0.3.21 (2018/07/27).
+Copiata da "`lib_verbi.i`" v0.4.4 (2018/07/29).
 
 Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e comandi di gioco (dopo il divisorio orizzontale di tabella):
 
 ```
---+--------------------+------------------------------+-----------------------------+---+---+---+
---| VERBO              | SINONIMI                     | SINTASSI                    | M | A | O |
---|--------------------|------------------------------|-----------------------------|---|---|---|
---| abbandona_partita  | quit, Q                      | abbandona [partita]         | x | 0 |   |
---| carica_partita     | restore                      | carica [partita]            | x | 0 |   |
---| ricomincia_partita | restart                      | ricomincia [partita]        | x | 0 |   |
---| salva_partita      | save                         | salva [partita]             | x | 0 |   |
---+--------------------+------------------------------+-----------------------------+---+---+---+
---| apri               |                              | apri (ogg)                  |   | 1 | x |
---| apri_con           |                              | apri (ogg) con (strum)      |   | 2 | x |
---| aspetta            | attendi, Z                   | aspetta                     |   | 0 |   |
---| attraversa         |                              | attraversa (ogg)            |   | 1 | x |
---| bevi               |                              | bevi (liq)                  |   | 1 |   |
---| blocca             | serra                        | blocca (ogg)                |   | 1 | x |
---| blocca_con         | serra                        | blocca (ogg) con (chiave)   |   | 2 | x |
---| brucia             |                              | brucia (ogg)                |   | 1 | x |
---| brucia_con         |                              | brucia (ogg) con (strum)    |   | 2 | x |
---| chi_è              |                              | chi è (png)                 |   | 1 |   | * BUGGED!
---| chi_sono_io        |                              | chi sono                    |   | 0 |   |
---| chiudi             |                              | chiudi (ogg)                |   | 1 | x |
---| chiudi_con         |                              | chiudi (ogg) con (strum)    |   | 2 | x |
---| compra             | acquista                     | compra (merce)              |   | 1 |   |
---| cosa_è             |                              | cosa è (ogg)                |   | 1 | x | * BUGGED!
---| cosa_sono_io       |                              | cosa sono                   |   | 0 |   |
---| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)     |   | 2 | x |
---| dici_No            |                              | no                          |   | 0 |   |
---| dici_Sì            |                              | sì                          |   | 0 |   |
---| dormi              | riposa                       | dormi                       |   | 0 |   |
---| dove_è             |                              | dove è (ogg)                |   | 1 | x | * BUGGED!
---| dove_mi_trovo      |                              | dove sono                   |   | 0 |   |
---| esamina            | guarda, descrivi, osserva, X | esamina (ogg)               |   | 1 | x |
---| gioca_con          |                              | gioca con (ogg)             |   | 1 | x |
---| inventario         | inv                          | inventario                  | x | 0 |   |
---| lascia             | abbandona, metti giù, posa   | lascia (ogg)*               |   | 1 | x |
---| leggi              |                              | leggi (ogg)                 |   | 1 | x |
---| mangia             |                              | mangia (cibo)               |   | 1 |   |
---| prega              |                              | prega                       |   | 0 |   |
---| prendi             | afferra, raccogli, trasporta | prendi (ogg)                |   | 1 | x |
---| prendi_da          | rimuovi, togli               | prendi (ogg) da (detentore) |   | 2 | x |
---| rifai              | ancora, G                    | rifai                       |   | 0 |   |
---| rompi              | distruggi, spacca, sfonda    | rompi (ogg)                 |   | 1 | x |
---| rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)     |   | 2 | x |
---| sblocca            |                              | sblocca (ogg)               |   | 1 | x |
---| sblocca_con        |                              | sblocca (ogg) con (chiave)  |   | 2 | x |
---| scrivi             |                              | scrivi "testo" su (ogg)     |   | 1 | x |
---| spogliati          | svestiti                     | spogliati                   |   | 0 |   |
---| suona              |                              | suona (ogg)                 |   | 1 | x |
---| trova              |                              | trova (ogg)                 |   | 1 | x |
---| usa                |                              | usa (ogg)                   |   | 1 | x |
---| usa_con            |                              | usa (ogg) con (strum)       |   | 2 | x |
---| vai_a              |                              | vai a (dest)                |   | 1 |   |
---| vendi              |                              | vendi (merce)               |   | 1 |   |
---+--------------------+------------------------------+-----------------------------+---+---+---+
+--+--------------------+------------------------------+------------------------------+---+---+---+
+--| VERBO              | SINONIMI                     | SINTASSI                     | M | A | O |
+--|--------------------|------------------------------|------------------------------|---|---|---|
+--| abbandona_partita  | quit, Q                      | abbandona [partita]          | x | 0 |   |
+--| carica_partita     | restore                      | carica [partita]             | x | 0 |   |
+--| ricomincia_partita | restart                      | ricomincia [partita]         | x | 0 |   |
+--| salva_partita      | save                         | salva [partita]              | x | 0 |   |
+--+--------------------+------------------------------+------------------------------+---+---+---+
+--| accendi            |                              | accendi (disp)               |   | 1 |   |
+--| apri               |                              | apri (ogg)                   |   | 1 | x |
+--| apri_con           |                              | apri (ogg) con (strum)       |   | 2 | x |
+--| aspetta            | attendi, Z                   | aspetta                      |   | 0 |   |
+--| attraversa         |                              | attraversa (ogg)             |   | 1 | x |
+--| bevi               |                              | bevi (liq)                   |   | 1 |   |
+--| blocca             | serra                        | blocca (ogg)                 |   | 1 | x |
+--| blocca_con         | serra                        | blocca (ogg) con (chiave)    |   | 2 | x |
+--| brucia             |                              | brucia (ogg)                 |   | 1 | x |
+--| brucia_con         |                              | brucia (ogg) con (strum)     |   | 2 | x |
+--| chi_è              |                              | chi è (png)                  |   | 1 |   | * BUGGED!
+--| chi_sono_io        |                              | chi sono                     |   | 0 |   |
+--| chiudi             |                              | chiudi (ogg)                 |   | 1 | x |
+--| chiudi_con         |                              | chiudi (ogg) con (strum)     |   | 2 | x |
+--| compra             | acquista                     | compra (merce)               |   | 1 |   |
+--| cosa_è             |                              | cosa è (ogg)                 |   | 1 | x | * BUGGED!
+--| cosa_sono_io       |                              | cosa sono                    |   | 0 |   |
+--| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)      |   | 2 | x |
+--| dici_No            |                              | no                           |   | 0 |   |
+--| dici_Sì            |                              | sì                           |   | 0 |   |
+--| dormi              | riposa                       | dormi                        |   | 0 |   |
+--| dove_è             |                              | dove è (ogg)                 |   | 1 | x | * BUGGED!
+--| dove_mi_trovo      |                              | dove sono                    |   | 0 |   |
+--| esamina            | guarda, descrivi, osserva, X | esamina (ogg)                |   | 1 | x |
+--| gioca_con          |                              | gioca con (ogg)              |   | 1 | x |
+--| inventario         | inv                          | inventario                   | x | 0 |   |
+--| lascia             | abbandona, metti giù, posa   | lascia (ogg)*                |   | 1 | x |
+--| leggi              |                              | leggi (ogg)                  |   | 1 | x |
+--| mangia             |                              | mangia (cibo)                |   | 1 |   |
+--| prega              |                              | prega                        |   | 0 |   |
+--| prendi             | afferra, raccogli, trasporta | prendi (ogg)                 |   | 1 | x |
+--| prendi_da          | rimuovi, togli               | prendi (ogg) da (detentore)  |   | 2 | x |
+--| rifai              | ancora, G                    | rifai                        |   | 0 |   |
+--| riempi             |                              | riempi (cont)                |   | 1 |   |
+--| riempi_con         |                              | riempi (cont) con (sostanza) |   | 2 |   |
+--| rompi              | distruggi, spacca, sfonda    | rompi (ogg)                  |   | 1 | x |
+--| rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)      |   | 2 | x |
+--| rispondi           |                              | rispondi (argomento)         |   | 1 |   |
+--| sblocca            |                              | sblocca (ogg)                |   | 1 | x |
+--| sblocca_con        |                              | sblocca (ogg) con (chiave)   |   | 2 | x |
+--| scrivi             |                              | scrivi "testo" su (ogg)      |   | 1 | x |
+--| siediti            | siedi                        | siediti                      |   | 0 |   |
+--| siediti_su         | siedi                        | siediti su (superficie)      |   | 1 |   |
+--| spegni             |                              | spegni (disp)                |   | 1 |   |
+--| spogliati          | svestiti                     | spogliati                    |   | 0 |   |
+--| suona              |                              | suona (ogg)                  |   | 1 | x |
+--| trova              |                              | trova (ogg)                  |   | 1 | x |
+--| usa                |                              | usa (ogg)                    |   | 1 | x |
+--| usa_con            |                              | usa (ogg) con (strum)        |   | 2 | x |
+--| vai_a              |                              | vai a (dest)                 |   | 1 |   |
+--| vendi              |                              | vendi (merce)                |   | 1 |   |
+--+--------------------+------------------------------+------------------------------+---+---+---+
 ```
 
 
@@ -705,6 +709,50 @@ sintassi:
 
     sblocca <ogg> con <chiave>
 
+
+-------------------------------------------------------------------------------
+
+# ACCENDERE, SPEGNERE
+
+## accendi
+
+[accendi]: #accendi "accendi"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] accendere
+
+sintassi:
+
+    accendi <disp>
+
+Dove `disp` è un `dispositivo` o una `fonte_di_luce`.
+
+Se l'azione avrà successo, altererà il seguente attributo di `<disp>`:
+
+- `IS acceso`, se `<disp>` è un dispositivo, 
+- `IS illuminato` se `<disp>` è una `fonte_di_luce`.
+
+## spegni
+
+[spegni]: #spegni "spegni"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] spegnere
+
+sintassi:
+
+    spegni <disp>
+
+Dove `disp` è un `dispositivo` o una `fonte_di_luce`.
+
+Se l'azione avrà successo, altererà il seguente attributo di `<disp>`:
+
+- `IS NOT acceso`, se `<disp>` è un dispositivo, 
+- `IS NOT illuminato` se `<disp>` è una `fonte_di_luce`.
 
 
 -------------------------------------------------------------------------------
