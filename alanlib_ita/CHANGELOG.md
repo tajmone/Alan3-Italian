@@ -11,7 +11,11 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/07/31](#20180731)
+- [2018/07/31 \(2\)](#20180731-2)
+    - [Verb: `free`](#verb-free)
+    - [Verb: `think`](#verb-think)
+    - [Verb: `think_about`](#verb-think_about)
+- [2018/07/31 \(1\)](#20180731-1)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
     - [Verb Responses](#verb-responses)
     - [Verb: `fix`](#verb-fix)
@@ -224,7 +228,52 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/07/31
+# 2018/07/31 (2)
+
+- [`lib_verbi.i`][lib_verbi] (v0.4.6)
+
+## Verb: `free`
+
+Translated verb `libera`, "__libera__" (_free_):
+
+    libera (ogg)
+
+with synonyms:
+
+    rilascia
+
+
+## Verb: `think`
+
+Translated verb `pensa`, "__pensa__" (_think_):
+
+    (pensa|pondera|rifletti|medita)
+
+
+with synonyms:
+
+    medita = rifletti.
+
+
+## Verb: `think_about`
+
+Translated verb `pensa_a`, "__pensa a__" (_think about_):
+
+    pensa a <argomento>
+    (rifletti|medita) su <argomento>
+    pondera <argomento>
+
+with synonyms:
+
+    medita = rifletti.
+
+
+
+<!---------------------------------------------------------------------------->
+
+
+
+# 2018/07/31 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.4.4)
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.6)

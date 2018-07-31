@@ -329,7 +329,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `find`           | `trovare`                 |
 | `fire`           |                           |
 | `fire_at`        |                           |
-| `fix`            | `aggiustare`              |
+| `fix`            | `riparare`                |
 | `follow`         | `seguire`                 |
 | `free`           | `liberare`                |
 | `get_off`        |                           |

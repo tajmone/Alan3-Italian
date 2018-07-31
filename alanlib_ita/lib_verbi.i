@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.4.5 (2018/07/31)
+-- "lib_verbi.i" v0.4.6 (2018/07/31)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -49,7 +49,10 @@
 --| inventario         | inv                          | inventario                   | x | 0 |   |
 --| lascia             | abbandona, metti giù, posa   | lascia (ogg)*                |   | 1 | x |
 --| leggi              |                              | leggi (ogg)                  |   | 1 | x |
+--| libera             | rilascia                     | libera (ogg)                 |   | 1 | x |
 --| mangia             |                              | mangia (cibo)                |   | 1 |   |
+--| pensa              | pondera, rifletti, medita    | pensa                        |   | 0 |   |
+--| pensa_a            | rifletti/medita su, pondera  | pensa a (argomento)          |   | 1 |   |
 --| prega              |                              | prega                        |   | 0 |   |
 --| prendi             | afferra, raccogli, trasporta | prendi (ogg)                 |   | 1 | x |
 --| prendi_da          | rimuovi, togli               | prendi (ogg) da (detentore)  |   | 2 | x |
@@ -146,7 +149,7 @@
 ----- fire_at                                              fire (weapon) at (target)           1
 -->>> fix         (+ mend, repair)                         fix (obj)                           1       x
 ----- follow                                               follow (act)                        1
------ free        (+ release)                              free (obj)                          1       x
+-->>> free        (+ release)                              free (obj)                          1       x
 ----- get_up                                               get up                              0
 ----- get_off                                              get off (obj)                       1       x
 -->>> give                                                 give (obj) to (recipient)           1       x
@@ -241,8 +244,8 @@
 ----- taste       (+ lick)                                 taste (obj)                         1       x
 ----- tear        (+ rip)                                  tear (obj)                          1       x
 ----- tell        (+ enlighten, inform)                    tell (act) about (topic)            2
------ think                                                think                               0
------ think_about                                          think about (topic)                 1
+-->>> think                                                think                               0
+-->>> think_about                                          think about (topic)                 1
 ----- throw                                                throw (projectile)                  1
 ----- throw_at                                             throw (projectile) at (target)      2
 ----- throw_in                                             throw (projectile) in (cont)        2
@@ -2089,6 +2092,72 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
+
+-- ==============================================================
+
+
+----- @LIBERA --> @FREE (+ release)
+
+
+-- ==============================================================
+
+-- SYNTAX free = free (ogg)
+-- SYNONYMS release = free.
+
+SYNTAX libera = libera (ogg)
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "liberare."
+
+
+SYNONYMS rilascia = libera.
+
+
+ADD TO EVERY THING
+  VERB libera
+    CHECK mia_AT CAN liberare
+      ELSE SAY azione_bloccata OF mia_AT.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        END IF.
+        "liberare."
+    AND ogg <> hero
+      ELSE SAY check_obj_not_hero5 OF mia_AT.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY imp_luogo_buio OF mia_AT.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
+              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
+            END IF.
+        END IF.
+    DOES
+      "$+1 non necessita"
+      IF ogg IS plurale
+        THEN "$$no"
+      END IF.
+      "di essere liberat$$" SAY ogg:vocale. "."
+  END VERB.
+END ADD TO.
+
 -- ==============================================================
 
 
@@ -2158,6 +2227,75 @@ ADD TO EVERY OBJECT
   END VERB.
 END ADD.
 
+
+
+
+-- ==============================================================
+
+
+----- @PENSA --> @THINK   (+ ponder, meditate, reflect)
+
+
+-- ==============================================================
+--| SINTASSI: 
+--|   (pensa|pondera|rifletti|medita)
+--------------------------------------------------------------------------------
+
+
+-- SYNTAX think = think.
+-- SYNONYMS ponder, meditate, reflect = think.
+
+SYNTAX pensa = pensa.
+       pensa = pondera.
+       pensa = rifletti.
+
+SYNONYMS medita = rifletti.
+
+VERB pensa
+  CHECK mia_AT CAN pensare
+    ELSE SAY azione_bloccata OF mia_AT.
+  DOES
+    "Nothing helpful comes to your mind."
+END VERB.
+
+
+
+
+
+-- ==============================================================
+
+
+----- @PENSA A --> @THINK ABOUT
+
+
+-- ==============================================================
+--| SINTASSI: 
+--|   pensa a <argomento>
+--|   (rifletti|medita) su <argomento>
+--|   pondera <argomento>
+--------------------------------------------------------------------------------
+
+-- SYNTAX think_about = think 'about' (argomento)!
+
+SYNTAX  pensa_a = pensa a (argomento)!
+  WHERE argomento IsA THING
+    ELSE
+      IF argomento IS NOT plurale
+        THEN SAY illegal_parameter_about_sg OF mia_AT.
+        ELSE SAY illegal_parameter_about_pl OF mia_AT.
+      END IF.
+
+        pensa_a = rifletti su (argomento)!.
+        pensa_a = pondera (argomento)!.
+
+ADD TO EVERY THING
+  VERB pensa_a
+    CHECK mia_AT CAN pensare_a
+      ELSE SAY azione_bloccata OF mia_AT.
+    DOES
+      "Nothing helpful comes to your mind."
+  END VERB.
+END ADD TO.
 
 
 
@@ -5579,69 +5717,6 @@ ADD TO EVERY THING
 END ADD TO.
 
 
-
--- ==============================================================
-
-
------ FREE (+ release)
-
-
--- ==============================================================
-
-
-SYNTAX free = free (ogg)
-  WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "liberare."
-
-
-SYNONYMS release = free.
-
-
-ADD TO EVERY THING
-  VERB free
-    CHECK mia_AT CAN liberare
-      ELSE SAY azione_bloccata OF mia_AT.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
-        END IF.
-        "liberare."
-    AND ogg <> hero
-      ELSE SAY check_obj_not_hero5 OF mia_AT.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
-            END IF.
-        END IF.
-    DOES
-      IF ogg IS NOT plurale
-        THEN "That doesn't need to be $vd."
-        ELSE "Those don't need to be $vd."
-      END IF.
-  END VERB.
-END ADD TO.
-
 -- ==============================================================
 
 
@@ -8749,59 +8824,6 @@ ADD TO EVERY ACTOR
 
         "look interested."
 
-  END VERB.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ THINK   (+ ponder, meditate, reflect)
-
-
--- ==============================================================
-
-
-SYNTAX think = think.
-
-SYNONYMS ponder, meditate, reflect = think.
-
-VERB think
-  CHECK mia_AT CAN pensare
-    ELSE SAY azione_bloccata OF mia_AT.
-  DOES
-    "Nothing helpful comes to your mind."
-END VERB.
-
-
-
-
-
--- ==============================================================
-
-
------ THINK ABOUT
-
-
--- ==============================================================
-
-
-SYNTAX think_about = think 'about' (argomento)!
-  WHERE argomento IsA THING
-    ELSE
-      IF argomento IS NOT plurale
-        THEN SAY illegal_parameter_about_sg OF mia_AT.
-        ELSE SAY illegal_parameter_about_pl OF mia_AT.
-      END IF.
-
-
-ADD TO EVERY THING
-  VERB think_about
-    CHECK mia_AT CAN pensare_a
-      ELSE SAY azione_bloccata OF mia_AT.
-    DOES
-      "Nothing helpful comes to your mind."
   END VERB.
 END ADD TO.
 

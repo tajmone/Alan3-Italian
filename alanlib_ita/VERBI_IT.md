@@ -51,6 +51,7 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [accendi](#accendi)
     - [spegni](#spegni)
 - [INTERAZIONI VARIE CON OGGETTI](#interazioni-varie-con-oggetti)
+    - [libera](#libera)
     - [ripara](#ripara)
 - [INDOSSARE, SPOGLIARSI](#indossare-spogliarsi)
     - [spogliati](#spogliati)
@@ -65,6 +66,8 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [dici_No](#dici_no)
     - [dici_Sì](#dici_s%C3%AC)
     - [gioca_con](#gioca_con)
+    - [pensa](#pensa)
+    - [pensa_a](#pensa_a)
     - [prega](#prega)
     - [suona](#suona)
     - [usa](#usa)
@@ -113,11 +116,18 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [inventario]
 - [lascia]
 - [leggi]
+- [libera]
 - [mangia]
+- [medita]
+- [medita su]
 - [metti giù]
 - [no]
 - [offri]
 - [osserva]
+- [pensa]
+- [pensa a]
+- [pondera]
+- [pondera argomento]
 - [porgi]
 - [posa]
 - [prega]
@@ -126,11 +136,14 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [raccogli]
 - [ricomincia]
 - [ricomincia partita]
+- [rifletti]
+- [rifletti su]
 - [rimuovi]
 - [ripara]
 - [riposa]
 - [rompi]
 - [rompi con]
+- [rilascia]
 - [rispondi]
 - [salva partita]
 - [salva]
@@ -165,7 +178,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 
 # Tabella dei Verbi
 
-Copiata da "`lib_verbi.i`" v0.4.4 (2018/07/29).
+Copiata da "`lib_verbi.i`" v0.4.6 (2018/07/31).
 
 Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e comandi di gioco (dopo il divisorio orizzontale di tabella):
 
@@ -206,7 +219,10 @@ Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e 
 --| inventario         | inv                          | inventario                   | x | 0 |   |
 --| lascia             | abbandona, metti giù, posa   | lascia (ogg)*                |   | 1 | x |
 --| leggi              |                              | leggi (ogg)                  |   | 1 | x |
+--| libera             | rilascia                     | libera (ogg)                 |   | 1 | x |
 --| mangia             |                              | mangia (cibo)                |   | 1 |   |
+--| pensa              | pondera, rifletti, medita    | pensa                        |   | 0 |   |
+--| pensa_a            | rifletti/medita su, pondera  | pensa a (argomento)          |   | 1 |   |
 --| prega              |                              | prega                        |   | 0 |   |
 --| prendi             | afferra, raccogli, trasporta | prendi (ogg)                 |   | 1 | x |
 --| prendi_da          | rimuovi, togli               | prendi (ogg) da (detentore)  |   | 2 | x |
@@ -215,6 +231,7 @@ Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e 
 --| riempi_con         |                              | riempi (cont) con (sostanza) |   | 2 |   |
 --| rompi              | distruggi, spacca, sfonda    | rompi (ogg)                  |   | 1 | x |
 --| rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)      |   | 2 | x |
+--| ripara             | aggiusta                     | ripara (ogg)                 |   | 1 | x |
 --| rispondi           |                              | rispondi (argomento)         |   | 1 |   |
 --| sblocca            |                              | sblocca (ogg)                |   | 1 | x |
 --| sblocca_con        |                              | sblocca (ogg) con (chiave)   |   | 2 | x |
@@ -763,6 +780,24 @@ Se l'azione avrà successo, altererà il seguente attributo di `<disp>`:
 
 # INTERAZIONI VARIE CON OGGETTI
 
+- [libera]
+- [ripara]
+
+## libera
+
+[libera]: #libera "libera"
+[rilascia]: #libera "libera"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] liberare
+
+sintassi:
+
+    (libera|rilascia) <ogg>
+
+
 ## ripara
 
 [ripara]: #ripara "ripara"
@@ -890,6 +925,25 @@ esito:
 
 Raggruppo qui vari verbi che nell'implementazione di base della libreria sono riconosciuti ma non sortiscono alcun effetto (e che solitamente non dovrebbero fare nulla di speciale).
 
+- [aspetta]
+- [attendi]
+- [dormi]
+- [gioca con]
+- [medita]
+- [medita su]
+- [no]
+- [pensa]
+- [pensa a]
+- [pondera]
+- [pondera argomento]
+- [prega]
+- [rifletti]
+- [rifletti su]
+- [riposa]
+- [sì]
+- [suona]
+- [usa]
+- [usa con]
 
 ## aspetta
 
@@ -968,6 +1022,42 @@ sintassi:
 condizioni:
 
 - `mia_AT CAN suonare`
+
+
+## pensa
+
+[pensa]: #pensa "pensa"
+[pondera]: #pensa "pensa"
+[rifletti]: #pensa "pensa"
+[medita]: #pensa "pensa"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] pensare
+
+sintassi:
+
+    (pensa|pondera|rifletti|medita)
+
+
+## pensa_a
+
+[pensa a]: #pensa_a "pensa_a"
+[rifletti su]: #pensa_a "pensa_a"
+[medita su]: #pensa_a "pensa_a"
+[pondera argomento]: #pensa_a "pensa_a"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] pensare_a
+
+sintassi:
+
+    pensa a <argomento>
+    (rifletti|medita) su <argomento>
+    pondera <argomento>
 
 
 
