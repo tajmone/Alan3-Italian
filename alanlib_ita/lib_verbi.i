@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.4.4 (2018/07/29)
+-- "lib_verbi.i" v0.4.5 (2018/07/31)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -58,6 +58,7 @@
 --| riempi_con         |                              | riempi (cont) con (sostanza) |   | 2 |   |
 --| rompi              | distruggi, spacca, sfonda    | rompi (ogg)                  |   | 1 | x |
 --| rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)      |   | 2 | x |
+--| ripara             | aggiusta                     | ripara (ogg)                 |   | 1 | x |
 --| rispondi           |                              | rispondi (argomento)         |   | 1 |   |
 --| sblocca            |                              | sblocca (ogg)                |   | 1 | x |
 --| sblocca_con        |                              | sblocca (ogg) con (chiave)   |   | 2 | x |
@@ -143,7 +144,7 @@
 -->>> find        (+ locate)                               find (obj)                          1       x
 ----- fire                                                 fire (weapon)                       1
 ----- fire_at                                              fire (weapon) at (target)           1
------ fix         (+ mend, repair)                         fix (obj)                           1       x
+-->>> fix         (+ mend, repair)                         fix (obj)                           1       x
 ----- follow                                               follow (act)                        1
 ----- free        (+ release)                              free (obj)                          1       x
 ----- get_up                                               get up                              0
@@ -467,7 +468,6 @@ ADD TO EVERY OBJECT
       "accendere."
   END VERB.
 END ADD TO.
-
 
 
 -- ==============================================================
@@ -2682,6 +2682,70 @@ VERB rifai
     --  the 'up' and 'down' arrow keys to scroll through your previous commands.]"
 END VERB.
 
+
+
+
+-- ==============================================================
+
+
+----- @RIPARA --> @FIX (mend, repair)
+
+
+-- ==============================================================
+-- NOTA: Ho scelto "ripara" anziché "aggiusta" come verbo base poiché il primo
+--       copre un significato più preciso del secondo, dato che questo verbo è
+--       legato all'attributo 'rotto'.
+--       Es. "aggiusta il quadro" nel senso di "raddrizzalo" non implica che
+--       esso sia rotto.
+
+-- SYNTAX fix = fix (ogg)
+-- SYNONYMS mend, repair = fix.
+
+SYNTAX  ripara = ripara (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "riparare."
+
+SYNONYMS aggiusta = ripara.
+
+
+ADD TO EVERY OBJECT
+  VERB ripara
+    CHECK mia_AT CAN riparare
+      ELSE SAY azione_bloccata OF mia_AT.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY imp_luogo_buio OF mia_AT.
+    AND ogg IS rotto
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:ogg1_non_rotto_sg.
+          ELSE SAY mia_AT:ogg1_non_rotto_pl.
+        END IF.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
+              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
+            END IF.
+        END IF.
+    DOES
+      "Sii più specifico. Come intendi ripararl$$" SAY ogg:vocale. "?"
+   -- "Please be more specific. How do you intend to fix it?"
+  END VERB.
+END ADD TO.
 
 
 -- =============================================================
@@ -5465,62 +5529,6 @@ ADD TO EVERY THING
   END VERB.
 END ADD TO.
 
-
-
--- ==============================================================
-
-
------ FIX (mend, repair)
-
-
--- ==============================================================
-
-
-SYNTAX fix = fix (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "riparare."
-
-
-SYNONYMS mend, repair = fix.
-
-
-ADD TO EVERY OBJECT
-  VERB fix
-    CHECK mia_AT CAN aggiustare
-      ELSE SAY azione_bloccata OF mia_AT.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
-    AND ogg IS rotto
-      ELSE
-        IF ogg IS NOT plurale
-          THEN SAY check_obj_broken_sg OF mia_AT.
-          ELSE SAY check_obj_broken_pl OF mia_AT.
-        END IF.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
-            END IF.
-        END IF.
-    DOES
-      "Please be more specific. How do you intend to fix it?"
-  END VERB.
-END ADD TO.
 
 
 

@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.4.3 (2018/07/29)
+-- "lib_classi.i" v0.4.4 (2018/07/31)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1021,8 +1021,7 @@ EVERY dispositivo IsA OBJECT
             END IF.
         END IF.
     AND THIS IS NOT rotto
--->>                                                                            TRANSLATE
-      ELSE SAY check_obj_not_broken OF mia_AT.
+      ELSE SAY mia_AT:non_succede_nulla.
     DOES ONLY
       "Fatto. Ora" SAY THE THIS.
       IF THIS IS NOT plurale
@@ -1316,7 +1315,7 @@ EVERY fonte_di_luce IsA OBJECT
           ELSE SAY check_lightsource_not_lit_pl OF mia_AT.
         END IF.
     AND THIS IS NOT rotto
-      ELSE SAY check_obj_not_broken OF mia_AT.
+      ELSE SAY mia_AT:non_succede_nulla.
     DOES ONLY
       "Fatto. Ora" SAY THE THIS.
       IF THIS IS NOT plurale

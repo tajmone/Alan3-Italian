@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione v0.4.1 (2018/07/29)
+--  versione v0.4.2 (2018/07/31)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -253,6 +253,15 @@ THE aranciata IsA liquido IN bottiglia.
   IS  potabile.
 END THE aranciata.
 
+--==============================================================================
+-- Radio Rotta
+--==============================================================================
+-- Per testare attributo 'rotto'
+
+THE radio IsA dispositivo AT pzzaIF.
+  HAS articolo "la".
+  IS rotto.
+END THE radio.
 
 -- =============================================================================
 

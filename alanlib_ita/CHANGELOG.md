@@ -11,6 +11,10 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/07/31](#20180731)
+    - [Verb Restriction Attributes](#verb-restriction-attributes)
+    - [Verb Responses](#verb-responses)
+    - [Verb: `fix`](#verb-fix)
 - [2018/07/29 \(2\)](#20180729-2)
     - [Remove Verb Restriction Attributes](#remove-verb-restriction-attributes)
 - [2018/07/29 \(1\)](#20180729-1)
@@ -18,16 +22,16 @@ Status: Alpha stage.
     - [Il Nocciolo del Problema](#il-nocciolo-del-problema)
     - [Abolizione dell'Attributo `naturale`](#abolizione-dellattributo-naturale)
     - [Rilfessioni sull'Attributo `illuminato`](#rilfessioni-sullattributo-illuminato)
-    - [Verb Restriction Attributes](#verb-restriction-attributes)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
     - [Testo dei Verbi](#testo-dei-verbi)
 - [2018/07/28 \(3\)](#20180728-3)
-    - [Verb Responses](#verb-responses)
-- [2018/07/28 \(2\)](#20180728-2)
     - [Verb Responses](#verb-responses-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
+- [2018/07/28 \(2\)](#20180728-2)
+    - [Verb Responses](#verb-responses-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
     - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
 - [2018/07/28 \(1\)](#20180728-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
     - [Verb: `answer`](#verb-answer)
     - [Verbs: `fill` and `fill_with`](#verbs-fill-and-fill_with)
 - [2018/07/27 \(7\)](#20180727-7)
@@ -72,15 +76,15 @@ Status: Alpha stage.
     - [Polish and Fix Translated Verbs](#polish-and-fix-translated-verbs)
     - [Verb Parameters Fixes](#verb-parameters-fixes)
 - [2018/07/25 \(8\)](#20180725-8)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
     - [Verbs: `yes` and `no`](#verbs-yes-and-no)
 - [2018/07/25 \(7\)](#20180725-7)
 - [2018/07/25 \(6\)](#20180725-6)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-5)
     - [Verb: `play`](#verb-play)
     - [Verb: `play_with`](#verb-play_with)
 - [2018/07/25 \(5\)](#20180725-5)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-5)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-6)
 - [2018/07/25 \(4\)](#20180725-4)
 - [2018/07/25 \(3\)](#20180725-3)
     - [Library Instances](#library-instances)
@@ -200,9 +204,9 @@ Status: Alpha stage.
     - [Verb: `pray`](#verb-pray)
     - [Verb: `break`](#verb-break)
     - [Verb: `break_with`](#verb-break_with)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-6)
-- [2018/05/22 \(2\)](#20180522-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-7)
+- [2018/05/22 \(2\)](#20180522-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-8)
 - [2018/05/22 \(1\)](#20180522-1)
     - [Verb: `undress`](#verb-undress)
 - [2018/05/19](#20180519)
@@ -219,6 +223,45 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/07/31
+
+- [`lib_classi.i`][lib_classi] (v0.4.4)
+- [`lib_definizioni.i`][lib_definizioni] (v0.4.6)
+- [`lib_verbi.i`][lib_verbi] (v0.4.5)
+
+## Verb Restriction Attributes
+
+Renamed `mia_AT` attributes for verb restrictions:
+
+|     Old      |    New     |
+|--------------|------------|
+| `aggiustare` | `riparare` |
+
+
+## Verb Responses
+
+Translated verb responses attributes:
+
+|        Attribute EN        |       Attribute IT       |                   Text                  |
+|----------------------------|--------------------------|-----------------------------------------|
+| `check_obj_not_broken`     | `non_succede_nulla`      | `Fatto, ma non succede nulla.`          |
+| `check_obj_broken_sg`/`pl` | `ogg1_non_rotto_sg`/`pl` | `$+1 non necessita[no] di riparazioni.` |
+
+Now all occurences of those messages have been replaced by its Italian traslation.
+
+## Verb: `fix`
+
+Translated verb `ripara`, "__ripara__" (_fix_):
+
+    ripara (ogg)
+
+with synonyms:
+
+    aggiusta
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/29 (2)
 

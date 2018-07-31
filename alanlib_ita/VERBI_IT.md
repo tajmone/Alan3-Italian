@@ -50,6 +50,8 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 - [ACCENDERE, SPEGNERE](#accendere-spegnere)
     - [accendi](#accendi)
     - [spegni](#spegni)
+- [INTERAZIONI VARIE CON OGGETTI](#interazioni-varie-con-oggetti)
+    - [ripara](#ripara)
 - [INDOSSARE, SPOGLIARSI](#indossare-spogliarsi)
     - [spogliati](#spogliati)
 - [ATTACCARE, ROMPERE, BRUCIARE](#attaccare-rompere-bruciare)
@@ -85,6 +87,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [abbandona partita]
 - [accendi]
 - [afferra]
+- [aggiusta]
 - [apri]
 - [apri con]
 - [aspetta]
@@ -124,6 +127,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [ricomincia]
 - [ricomincia partita]
 - [rimuovi]
+- [ripara]
 - [riposa]
 - [rompi]
 - [rompi con]
@@ -753,6 +757,26 @@ Se l'azione avrà successo, altererà il seguente attributo di `<disp>`:
 
 - `IS NOT acceso`, se `<disp>` è un dispositivo, 
 - `IS NOT illuminato` se `<disp>` è una `fonte_di_luce`.
+
+
+-------------------------------------------------------------------------------
+
+# INTERAZIONI VARIE CON OGGETTI
+
+## ripara
+
+[ripara]: #ripara "ripara"
+[aggiusta]: #ripara "ripara"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] riparare
+
+sintassi:
+
+    (ripara|aggiusta) <ogg>
+
 
 
 -------------------------------------------------------------------------------

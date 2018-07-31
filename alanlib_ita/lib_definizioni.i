@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.4.5 (2018/07/29)
+-- "lib_definizioni.i" v0.4.6 (2018/07/31)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -791,10 +791,32 @@ EVERY blocco_definizioni IsA LOCATION
   HAS imp_luogo_buio  "È troppo buio.".                             --> (svariati verbi)
 
 
+  -- =========================
+  -- DISPOSITIVI/FONTI DI LUCE
+  -- =========================
+  
+  -- ----------------------
+  -- Dispositivo/Luce Rotto
+  -- ----------------------
+  -- VERBI: accendi
+
+  -- ORIGINAL EN:  check_obj_not_broken
+  HAS non_succede_nulla "Fatto, ma non succede nulla.".
+
+
+  -- ------------------------------
+  -- Oggetto/Dipositivo Non È Rotto
+  -- ------------------------------
+  -- VERBI: aggiusta
+
+  -- ORIGINAL EN:  check_obj_broken_sg/pl
+  HAS ogg1_non_rotto_sg "$+1 non necessita di riparazioni.".
+  HAS ogg1_non_rotto_pl "$+1 non necessitano di riparazioni.".
+  
+  
   -- ==============================
   -- OGGETTI APERTI/CHIUSI/BLOCCATI
   -- ==============================
-
 
   -- ---------------------------------------
   -- Tentare di aprire un oggetto già aperto
@@ -1044,8 +1066,6 @@ EVERY blocco_definizioni IsA LOCATION
   HAS check_obj_allowed_in_sg "$+1 doesn't belong in $+2.".             -- empty_in, pour_in, put_in, throw_in
   HAS check_obj_allowed_in_pl "$+1 don't belong in $+2.".
 
-  HAS check_obj_broken_sg "That doesn't need fixing.".              -- fix
-  HAS check_obj_broken_pl "Those don't need fixing.".
 
   HAS check_obj_inanimate1 "$+1 wouldn't probably appreciate that.".        -- push, push_with, scratch, search
   HAS check_obj_inanimate2 "You are not sure whether $+1 would appreciate that.".   -- rub, touch, touch_with
@@ -1172,7 +1192,6 @@ EVERY blocco_definizioni IsA LOCATION
   HAS check_lightsource_switchable_sg "That's not something you can switch on and off." .   -- lightsource: switch
   HAS check_lightsource_switchable_pl "Those are not something you can switch on and off.".
   HAS check_liquid_vessel_not_cont "You can't carry $+1 around in your bare hands.".      -- liquid: take_from
-  HAS check_obj_not_broken "Nothing happens.".                    -- device, lightsource: light, switch, turn_on
 
 
   -- messages for implicit taking:
@@ -1294,7 +1313,6 @@ EVERY blocco_definizioni IsA LOCATION
 
   CAN abbandonare_partita.      --> 'quit'
   CAN accendere.                --> turn_on
-  CAN aggiustare.               --> fix (+ mend, repair)
   CAN andare_a.                 --> go_to
   CAN aprire.                   --> open
   CAN aprire_con.               --> open_with
@@ -1355,6 +1373,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN riempire.                 --> fill
   CAN riempire_con.             --> fill_with
   CAN rifare.                   --> 'again'
+  CAN riparare.                 --> fix (+ mend, repair)
   CAN rispondere.               --> answer (+ reply)
   CAN rompere.                  --> break        (+ destroy)
   CAN rompere_con.              --> break_with
@@ -1498,7 +1517,6 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
 
   MAKE mia_AT abbandonare_partita.      --> 'quit'
   MAKE mia_AT accendere.                --> turn_on
-  MAKE mia_AT aggiustare.               --> fix (+ mend, repair)
   MAKE mia_AT andare_a.                 --> go_to
   MAKE mia_AT aprire.                   --> open
   MAKE mia_AT aprire_con.               --> open_with
@@ -1559,6 +1577,7 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT riempire.                 --> fill
   MAKE mia_AT riempire_con.             --> fill_with
   MAKE mia_AT rifare.                   --> 'again'
+  MAKE mia_AT riparare.                 --> fix (+ mend, repair)
   MAKE mia_AT rispondere.               --> answer (+ reply)
   MAKE mia_AT rompere.                  --> break        (+ destroy)
   MAKE mia_AT rompere_con.              --> break_with
@@ -1713,7 +1732,6 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
 
   MAKE mia_AT     abbandonare_partita.      --> 'quit'
   MAKE mia_AT NOT accendere.                --> turn_on
-  MAKE mia_AT NOT aggiustare.               --> fix (+ mend, repair)
   MAKE mia_AT NOT andare_a.                 --> go_to
   MAKE mia_AT NOT aprire.                   --> open
   MAKE mia_AT NOT aprire_con.               --> open_with
@@ -1774,6 +1792,7 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT riempire.                 --> fill
   MAKE mia_AT NOT riempire_con.             --> fill_with
   MAKE mia_AT     rifare.                   --> 'again'
+  MAKE mia_AT NOT riparare.                 --> fix (+ mend, repair)
   MAKE mia_AT NOT rispondere.               --> answer (+ reply)
   MAKE mia_AT NOT rompere.                  --> break        (+ destroy)
   MAKE mia_AT NOT rompere_con.              --> break_with
@@ -1907,7 +1926,6 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
 
   MAKE mia_AT     abbandonare_partita.      --> 'quit'
   MAKE mia_AT NOT accendere.                --> turn_on
-  MAKE mia_AT NOT aggiustare.               --> fix (+ mend, repair)
   MAKE mia_AT NOT andare_a.                 --> go_to
   MAKE mia_AT NOT aprire.                   --> open
   MAKE mia_AT NOT aprire_con.               --> open_with
@@ -1974,6 +1992,7 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT riempire.                 --> fill
   MAKE mia_AT NOT riempire_con.             --> fill_with
   MAKE mia_AT     rifare.                   --> 'again'
+  MAKE mia_AT NOT riparare.                 --> fix (+ mend, repair)
   MAKE mia_AT NOT rispondere.               --> answer (+ reply)
   MAKE mia_AT NOT rompere.                  --> break        (+ destroy)
   MAKE mia_AT NOT rompere_con.              --> break_with
@@ -2104,7 +2123,6 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
 
   MAKE mia_AT NOT abbandonare_partita.      --> 'quit'
   MAKE mia_AT NOT accendere.                --> turn_on
-  MAKE mia_AT NOT aggiustare.               --> fix (+ mend, repair)
   MAKE mia_AT NOT andare_a.                 --> go_to
   MAKE mia_AT NOT aprire.                   --> open
   MAKE mia_AT NOT aprire_con.               --> open_with
@@ -2159,6 +2177,7 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT riempire.                 --> fill
   MAKE mia_AT NOT riempire_con.             --> fill_with
   MAKE mia_AT NOT rifare.                   --> 'again'
+  MAKE mia_AT NOT riparare.                 --> fix (+ mend, repair)
   MAKE mia_AT NOT rispondere.               --> answer (+ reply)
   MAKE mia_AT NOT rompere.                  --> break        (+ destroy)
   MAKE mia_AT NOT rompere_con.              --> break_with
