@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.4.9 (2018/08/01)
+-- "lib_verbi.i" v0.4.10 (2018/08/01)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -30,12 +30,14 @@
 --| attacca            | combatti, picchia            | attacca (bersaglio)            |   | 1 |   |
 --| attacca_con        | combatti, picchia            | attacca (bersaglio) con (arma) |   | 2 |   |
 --| attraversa         |                              | attraversa (ogg)               |   | 1 | x |
+--| bacia              | abbraccia                    | bacia (ogg)                    |   | 1 | x |
 --| balla              | danza                        | balla                          |   | 0 |   |
 --| bevi               |                              | bevi (liq)                     |   | 1 |   |
 --| blocca             | serra                        | blocca (ogg)                   |   | 1 | x |
 --| blocca_con         | serra                        | blocca (ogg) con (chiave)      |   | 2 | x |
 --| brucia             |                              | brucia (ogg)                   |   | 1 | x |
 --| brucia_con         |                              | brucia (ogg) con (strum)       |   | 2 | x |
+--| canta              |                              | canta                          |   | 0 |   |
 --| chi_è              |                              | chi è (png)                    |   | 1 |   | * BUGGED!
 --| chi_sono_io        |                              | chi sono                       |   | 0 |   |
 --| chiudi             |                              | chiudi (ogg)                   |   | 1 | x |
@@ -80,6 +82,7 @@
 --| suona              |                              | suona (ogg)                    |   | 1 | x |
 --| taglia             |                              | taglia (ogg)                   |   | 1 | x |
 --| taglia_con         |                              | taglia (ogg) con (strum)       |   | 2 | x |
+--| tira               |                              | tira (ogg)                     |   | 1 | x |
 --| trova              |                              | trova (ogg)                    |   | 1 | x |
 --| usa                |                              | usa (ogg)                      |   | 1 | x |
 --| usa_con            |                              | usa (ogg) con (strum)          |   | 2 | x |
@@ -171,7 +174,7 @@
 ----- kick                                                 kick (target)                       1
 ----- kill        (+ murder)                               kill (victim)                       1
 ----- kill_with                                            kill (victim) with (weapon)         2
------ kiss        (+ hug, embrace)                         kiss (obj)                          1       x
+-->>> kiss        (+ hug, embrace)                         kiss (obj)                          1       x
 ----- knock (on)                                           knock on (obj)                      1       x
 ----- lie_down                                             lie down                            0
 ----- lie_in                                               lie in (cont)                       1
@@ -202,7 +205,7 @@
 -->>> pray                                                 pray                                0
 ----- pry                                                  pry (obj)                           1       x
 ----- pry_with                                             pry (obj) with (instr)              2       x
------ pull                                                 pull (obj)                          1       x
+-->>> pull                                                 pull (obj)                          1       x
 ----- push                                                 push (obj)                          1       x
 ----- push_with                                            push (obj) with (instr)             2       x
 ----- put         (+ lay, place)                           put (obj)                           1       x
@@ -231,7 +234,7 @@
 ----- shoot_with                                           shoot (target) with (weapon)        2
 ----- shout       (+ scream, yell)                         shout                               0
 ----- show        (+ reveal)                               show (obj) to (act)                 2       x
------ sing                                                 sing                                0
+-->>> sing                                                 sing                                0
 ----- sip                                                  sip (liq)                           1
 -->>> sit (down)                                           sit.  sit down.                     0
 -->>> sit_on                                               sit on (surface)                    1
@@ -262,9 +265,8 @@
 ----- tie                                                  tie (obj)                           1       x
 ----- tie_to                                               tie (obj) to (target)               2       x
 ----- touch       (+ feel)                                 touch (obj)                         1       x
------ turn        (+ rotate)                               turn (obj)                          1       x
------ turn_on                                              turn on (app)                       1
------ turn_off                                             turn off (app)                      1
+----- turn        (+ rotate)                               turn (obj)                          1       x-->>> turn_on                                              turn on (app)                       1
+-->>> turn_off                                             turn off (app)                      1
 -->>> undress                                              undress                             0
 -->>> unlock                                               unlock (obj)                        1       x
 -->>> unlock_with                                          unlock (obj) with (key)             2       x
@@ -1022,6 +1024,76 @@ END ADD TO.
 
 
 
+
+-- ==============================================================
+
+
+----- @BACIA --> @KISS (+ hug, embrace)
+
+
+-- ==============================================================
+
+-- SYNTAX kiss = kiss (ogg)
+-- SYNONYMS hug, embrace = kiss.
+
+SYNTAX bacia = bacia (ogg)
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "$vre." -- baciare/abbracciare
+
+SYNONYMS abbraccia = bacia.
+
+
+
+ADD TO EVERY THING
+  VERB bacia
+    CHECK mia_AT CAN baciare
+      ELSE SAY azione_bloccata OF mia_AT.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        END IF.
+        "$vre." -- baciare/abbracciare
+--                                                                              TRANSLATE!
+    AND ogg <> hero
+      ELSE SAY check_obj_not_hero6 OF mia_AT.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY imp_luogo_buio OF mia_AT.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
+              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
+            END IF.
+        END IF.
+    DOES
+      IF ogg IsA ACTOR
+        THEN SAY THE ogg. "respinge le tue avances."
+        --                "avoids your advances."
+        ELSE
+          -- "Farlo non servirebbe a nulla."
+          SAY mia_AT:non_servirebbe_a_nulla.
+        -- "Nothing would be achieved by that."
+      END IF.
+  END VERB.
+END ADD TO.
+
 -- ==============================================================
 
 
@@ -1464,6 +1536,30 @@ ADD TO EVERY OBJECT
      -- "You can't burn" SAY THE ogg. "with" SAY THE strum. "."
   END VERB.
 END ADD TO.
+
+
+
+-- ==============================================================
+
+
+----- @CANTA --> @SING (+ hum, whistle)
+
+
+-- ==============================================================
+
+-- SYNTAX sing = sing.
+-- SYNONYMS hum, whistle = sing.
+
+SYNTAX canta = canta.
+
+
+VERB canta
+  CHECK mia_AT CAN cantare
+    ELSE SAY azione_bloccata OF mia_AT.
+  DOES
+    "Canticchi una melodia."
+ -- "You $v a little tune."
+END VERB.
 
 
 
@@ -4171,6 +4267,66 @@ END ADD TO.
 -- ==============================================================
 
 
+----- @TIRA --> @PULL
+
+
+-- ==============================================================
+-- i6 accetta come sinonimo di 'tira': 'trascina'.
+
+-- SYNTAX pull = pull (ogg)
+
+SYNTAX tira = tira (ogg)
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "tirare." --@NOTA: ambiguità con "lanciare"
+
+
+ADD TO EVERY OBJECT
+  VERB tira
+    CHECK mia_AT CAN tirare
+      ELSE SAY azione_bloccata OF mia_AT.
+--                                                                              TRANSLATE!
+    AND ogg IS spostabile
+      ELSE SAY check_obj_movable OF mia_AT.
+--                                                                              TRANSLATE!
+    AND ogg <> hero
+      ELSE SAY check_obj_not_hero1 OF mia_AT.
+--                                                                              TRANSLATE!
+    AND ogg IS inanimato
+      ELSE SAY check_obj_inanimate1 OF mia_AT.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY imp_luogo_buio OF mia_AT.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
+              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
+            END IF.
+        END IF.
+    DOES
+      -- "Farlo non servirebbe a nulla."
+      SAY mia_AT:non_servirebbe_a_nulla.
+      -- "That wouldn't accomplish anything."
+  END VERB.
+END ADD TO.
+
+
+-- ==============================================================
+
+
 ----- @TROVA --> @FIND
 
 
@@ -4831,7 +4987,8 @@ ADD TO EVERY OBJECT
             END IF.
         END IF.
     DOES
-      "Farlo non servirebbe a nulla."
+      -- "Farlo non servirebbe a nulla."
+      SAY mia_AT:non_servirebbe_a_nulla.
       -- "Nothing would be achieved by that."
   END VERB.
 END ADD TO.
@@ -6234,71 +6391,6 @@ END ADD TO.
 -- ==============================================================
 
 
------ KISS (+ hug, embrace)
-
-
--- ==============================================================
-
-
-SYNTAX kiss = kiss (ogg)
-  WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "baciare."
-
-
-SYNONYMS hug, embrace = kiss.
-
-
-ADD TO EVERY THING
-  VERB kiss
-    CHECK mia_AT CAN baciare
-      ELSE SAY azione_bloccata OF mia_AT.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
-        END IF.
-        "baciare."
-    AND ogg <> hero
-      ELSE SAY check_obj_not_hero6 OF mia_AT.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
-            END IF.
-        END IF.
-    DOES
-      IF ogg IsA ACTOR
-        THEN SAY THE ogg. "avoids your advances."
-        ELSE
-          "Farlo non servirebbe a nulla."
-          -- "Nothing would be achieved by that."
-      END IF.
-  END VERB.
-END ADD TO.
-
-
--- ==============================================================
-
-
 ----- KNOCK
 
 
@@ -7087,59 +7179,6 @@ END ADD TO.
 
 
 
--- ==============================================================
-
-
------ PULL
-
-
--- ==============================================================
-
-
-SYNTAX pull = pull (ogg)
-  WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "tirare." --@NOTA: ambiguità con "lanciare"
-
-
-ADD TO EVERY OBJECT
-  VERB pull
-    CHECK mia_AT CAN tirare
-      ELSE SAY azione_bloccata OF mia_AT.
-    AND ogg IS spostabile
-      ELSE SAY check_obj_movable OF mia_AT.
-    AND ogg <> hero
-      ELSE SAY check_obj_not_hero1 OF mia_AT.
-    AND ogg IS inanimato
-      ELSE SAY check_obj_inanimate1 OF mia_AT.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
-            END IF.
-        END IF.
-    DOES
-      "That wouldn't accomplish anything."
-  END VERB.
-END ADD TO.
-
-
 
 -- ==============================================================
 
@@ -7744,7 +7783,8 @@ ADD TO EVERY THING
             END IF.
         END IF.
     DOES
-      "Farlo non servirebbe a nulla."
+      -- "Farlo non servirebbe a nulla."
+      SAY mia_AT:non_servirebbe_a_nulla.
       -- "Nothing would be achieved by that."
   END VERB.
 END ADD TO.
@@ -7903,7 +7943,8 @@ ADD TO EVERY THING
             END IF.
         END IF.
     DOES
-     "Farlo non servirebbe a nulla."
+      -- "Farlo non servirebbe a nulla."
+      SAY mia_AT:non_servirebbe_a_nulla.
      -- "Nothing would be achieved by that."
   END VERB.
 END ADD TO.
@@ -8281,30 +8322,6 @@ ADD TO EVERY OBJECT
         "not especially interested."
   END VERB.
 END ADD TO.
-
-
-
--- ==============================================================
-
-
------ SING (+ hum, whistle)
-
-
--- ==============================================================
-
-
-SYNTAX sing = sing.
-
-
-SYNONYMS hum, whistle = sing.
-
-
-VERB sing
-  CHECK mia_AT CAN cantare
-    ELSE SAY azione_bloccata OF mia_AT.
-  DOES
-        "You $v a little tune."
-END VERB.
 
 
 

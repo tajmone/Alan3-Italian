@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.4.8 (2018/08/01)
+-- "lib_definizioni.i" v0.4.9 (2018/08/01)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -934,6 +934,12 @@ EVERY blocco_definizioni IsA LOCATION
   -- VERBI: balla.
   -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
   HAS non_senti_bisogno_di "Al momento non senti il bisogno di".
+  
+
+  -- VERBI: bacia, tira | clean, rub, scratch.
+  -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
+  HAS non_servirebbe_a_nulla "Farlo non servirebbe a nulla.".
+  -- @NOTA: i6 usa: "Non otterrai niente con questo."
   
 
 

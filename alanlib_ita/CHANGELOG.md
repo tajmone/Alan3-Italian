@@ -11,11 +11,16 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/08/01 \(4\)](#20180801-4)
+    - [Verb Responses](#verb-responses)
+    - [Verb: `sing`](#verb-sing)
+    - [Verb: `kiss`](#verb-kiss)
+    - [Verb: `pull`](#verb-pull)
 - [2018/08/01 \(3\)](#20180801-3)
     - [Verbs: `attack` and `attack_with`](#verbs-attack-and-attack_with)
 - [2018/08/01 \(2\)](#20180801-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
-    - [Verb Responses](#verb-responses)
+    - [Verb Responses](#verb-responses-1)
     - [Verbs: `cut` and `cut_with`](#verbs-cut-and-cut_with)
     - [Verb: `dance`](#verb-dance)
     - [Verb: `dig`](#verb-dig)
@@ -29,7 +34,7 @@ Status: Alpha stage.
     - [Verb: `think_about`](#verb-think_about)
 - [2018/07/31 \(1\)](#20180731-1)
     - [Verb Restriction Attributes](#verb-restriction-attributes-2)
-    - [Verb Responses](#verb-responses-1)
+    - [Verb Responses](#verb-responses-2)
     - [Verb: `fix`](#verb-fix)
 - [2018/07/29 \(2\)](#20180729-2)
     - [Remove Verb Restriction Attributes](#remove-verb-restriction-attributes)
@@ -41,9 +46,9 @@ Status: Alpha stage.
     - [Verb Restriction Attributes](#verb-restriction-attributes-3)
     - [Testo dei Verbi](#testo-dei-verbi)
 - [2018/07/28 \(3\)](#20180728-3)
-    - [Verb Responses](#verb-responses-2)
-- [2018/07/28 \(2\)](#20180728-2)
     - [Verb Responses](#verb-responses-3)
+- [2018/07/28 \(2\)](#20180728-2)
+    - [Verb Responses](#verb-responses-4)
     - [Verb Restriction Attributes](#verb-restriction-attributes-4)
     - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
 - [2018/07/28 \(1\)](#20180728-1)
@@ -239,6 +244,58 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/08/01 (4)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.4.9)
+- [`lib_verbi.i`][lib_verbi] (v0.4.10)
+
+## Verb Responses
+
+New verb responses attributes (created for Italian library, no English counterpart):
+
+|        Attribute         |               Text              |
+|--------------------------|---------------------------------|
+| `non_servirebbe_a_nulla` | `Farlo non servirebbe a nulla.` |
+
+Used in the following verbs:  `bacia`, `tira`, `clean`, `rub`, `scratch`.
+
+## Verb: `sing`
+
+Translated verb `canta`, "__canta__" (_sing_):
+
+    canta
+
+with no synonyms.
+
+## Verb: `kiss`
+
+Translated verb `bacia`, "__bacia__" (_kiss_):
+
+    bacia (ogg)
+
+
+with synonyms:
+
+    abbraccia
+
+> __NOTA__ — Le risposte per questo verbo rispecchieranno il verbo usato (bacia/abbraccia), poiché usa la formula `"$vre."` nei messaggi, sfruttando il fatto che entrambi "bacia" e "abbraccia" finiscono con la "a" e si può ottenere l'infinito aggiungendovi "re"! 
+> 
+> L'unico problema è che se l'autore dovesse aggiungere sinonimi che terminano diversamente i messaggi sarebbero compromessi. Ma dire che per questo verbo non sono da prevedersi ulteriori sinonimi (in caso contrario, dovrà modificare il codice del verbo).
+
+## Verb: `pull`
+
+Translated verb `tira`, "__tira__" (_pull_):
+
+    tira (ogg)
+
+with no synonyms.
+
+> __NOTA__ — In Inform 6 Italian, `trascina` è sinonimo di `tira`. Io per ora non l'ho implementato poiché i due significati non si sovrappongono del tutto.
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/08/01 (3)
 
