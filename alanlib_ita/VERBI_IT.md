@@ -60,6 +60,8 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 - [INDOSSARE, SPOGLIARSI](#indossare-spogliarsi)
     - [spogliati](#spogliati)
 - [ATTACCARE, ROMPERE, BRUCIARE](#attaccare-rompere-bruciare)
+    - [attacca](#attacca)
+    - [attacca_con](#attacca_con)
     - [brucia](#brucia)
     - [brucia_con](#brucia_con)
     - [rompi](#rompi)
@@ -103,6 +105,8 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [ascolta][ascolta0]
 - [ascolta][ascolta] (oggetto)
 - [aspetta]
+- [attacca]
+- [attacca con]
 - [attendi]
 - [attraversa]
 - [balla]
@@ -115,6 +119,8 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [carica partita]
 - [chiudi]
 - [chiudi con]
+- [combatti]
+- [combatti con]
 - [compra]
 - [dai]
 - [danza]
@@ -136,6 +142,8 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [no]
 - [offri]
 - [osserva]
+- [picchia]
+- [picchia con]
 - [pensa]
 - [pensa a]
 - [pondera]
@@ -932,6 +940,46 @@ esito:
 
 # ATTACCARE, ROMPERE, BRUCIARE
 
+
+- [attacca]
+- [attacca_con]
+- [brucia]
+- [brucia_con]
+- [rompi]
+- [rompi_con]
+
+## attacca
+
+[attacca]: #attacca "attacca"
+[combatti]: #attacca "attacca"
+[picchia]: #attacca "attacca"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] attaccare
+
+sintassi:
+
+    (attacca|combatti|picchia) <bersaglio>
+
+## attacca_con
+
+[attacca_con]: #attacca_con "attacca_con"
+[attacca con]: #attacca_con "attacca_con"
+[combatti con]: #attacca_con "attacca_con"
+[picchia con]: #attacca_con "attacca_con"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] attaccare_con
+
+sintassi:
+
+    (attacca|combatti|picchia) <bersaglio> con (arma)
+
+
 ## brucia
 
 [brucia]: #brucia "brucia"
@@ -946,6 +994,7 @@ esito:
 
 ## brucia_con
 
+[brucia_con]: #brucia_con "brucia_con"
 [brucia con]: #brucia_con "brucia_con"
 
 sintassi:
@@ -982,10 +1031,11 @@ esito:
 
 ## rompi_con
 
+[rompi_con]: #rompi_con "rompi_con"
+[rompi con]: #rompi_con "rompi_con"
 [distruggi con]: #rompi_con "rompi_con"
 [spacca con]: #rompi_con "rompi_con"
 [sfonda con]: #rompi_con "rompi_con"
-[rompi con]: #rompi_con "rompi_con"
 
 
 sintassi:

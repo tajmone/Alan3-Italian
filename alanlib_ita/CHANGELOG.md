@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/08/01 \(3\)](#20180801-3)
+    - [Verbs: `attack` and `attack_with`](#verbs-attack-and-attack_with)
 - [2018/08/01 \(2\)](#20180801-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
     - [Verb Responses](#verb-responses)
@@ -237,6 +239,36 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/08/01 (3)
+
+- [`lib_verbi.i`][lib_verbi] (v0.4.9)
+
+
+## Verbs: `attack` and `attack_with`
+
+Translated verbs `attacca` and `attacca_con`, "__attacca__":
+
+    attacca (bersaglio)
+    attacca (bersaglio) con (arma)
+
+with synonyms:
+
+    combatti, picchia = attacca.
+
+
+> __NOTA__ — Inform 6 Italian (_Infit_) riconosce i seguenti sinomini di `attacca`: `rompi`, `colpisci`, `combatti`, `uccidi`, `tortura`, `lotta`, `sfonda`, `ammazza` e `picchia`. 
+> 
+> In Alan StdLib, `uccidi` e `ammazza` rientrano nei verbi `kill` e `kill_with`; mentre `rompi` e `sfonda` rientrano in `break` e `break_with` (qui tradotti con `rompi` e `rompi_con`).
+> 
+> Resterebbero quindi ancora `colpisci`, `tortura` e `lotta` che non ho messo tra i sononimi di `attacca`; devo valutare se implementarli o meno:
+> 
+>  - `tortura` mi sembra esuli dal contesto,
+>  - `lotta` richiederebbe la sintassi `lotta con` e sarebbe valido solo per gli attori, non per gli oggetti,
+>  - `colpisci` sembra un buon candidato come sinonimo, a meno che non rientri in qualche altro verbo della libreria di Alan.
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/08/01 (2)
 

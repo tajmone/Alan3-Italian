@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.4.8 (2018/08/01)
+-- "lib_verbi.i" v0.4.9 (2018/08/01)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -13,78 +13,80 @@
 -- Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima)
 -- e comandi di gioco (dopo il divisorio orizzontale di tabella).
 
---+--------------------+------------------------------+------------------------------+---+---+---+
---| VERBO              | SINONIMI                     | SINTASSI                     | M | A | O |
---|--------------------|------------------------------|------------------------------|---|---|---|
---| abbandona_partita  | quit, Q                      | abbandona [partita]          | x | 0 |   |
---| carica_partita     | restore                      | carica [partita]             | x | 0 |   |
---| ricomincia_partita | restart                      | ricomincia [partita]         | x | 0 |   |
---| salva_partita      | save                         | salva [partita]              | x | 0 |   |
---+--------------------+------------------------------+------------------------------+---+---+---+
---| accendi            |                              | accendi (disp)               |   | 1 |   |
---| apri               |                              | apri (ogg)                   |   | 1 | x |
---| apri_con           |                              | apri (ogg) con (strum)       |   | 2 | x |
---| ascolta0           |                              | ascolta                      |   | 0 |   |
---| ascolta            |                              | ascolta (ogg)!               |   | 1 | x |
---| aspetta            | attendi, Z                   | aspetta                      |   | 0 |   |
---| attraversa         |                              | attraversa (ogg)             |   | 1 | x |
---| balla              | danza                        | balla                        |   | 0 |   |
---| bevi               |                              | bevi (liq)                   |   | 1 |   |
---| blocca             | serra                        | blocca (ogg)                 |   | 1 | x |
---| blocca_con         | serra                        | blocca (ogg) con (chiave)    |   | 2 | x |
---| brucia             |                              | brucia (ogg)                 |   | 1 | x |
---| brucia_con         |                              | brucia (ogg) con (strum)     |   | 2 | x |
---| chi_è              |                              | chi è (png)                  |   | 1 |   | * BUGGED!
---| chi_sono_io        |                              | chi sono                     |   | 0 |   |
---| chiudi             |                              | chiudi (ogg)                 |   | 1 | x |
---| chiudi_con         |                              | chiudi (ogg) con (strum)     |   | 2 | x |
---| compra             | acquista                     | compra (merce)               |   | 1 |   |
---| cosa_è             |                              | cosa è (ogg)                 |   | 1 | x | * BUGGED!
---| cosa_sono_io       |                              | cosa sono                    |   | 0 |   |
---| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)      |   | 2 | x |
---| dici_No            |                              | no                           |   | 0 |   |
---| dici_Sì            |                              | sì                           |   | 0 |   |
---| dormi              | riposa                       | dormi                        |   | 0 |   |
---| dove_è             |                              | dove è (ogg)                 |   | 1 | x | * BUGGED!
---| dove_mi_trovo      |                              | dove sono                    |   | 0 |   |
---| esamina            | guarda, descrivi, osserva, X | esamina (ogg)                |   | 1 | x |
---| gioca_con          |                              | gioca con (ogg)              |   | 1 | x |
---| guida              |                              | guida (veicolo)              |   | 1 |   |
---| inventario         | inv                          | inventario                   | x | 0 |   |
---| lascia             | abbandona, metti giù, posa   | lascia (ogg)*                |   | 1 | x |
---| leggi              |                              | leggi (ogg)                  |   | 1 | x |
---| libera             | rilascia                     | libera (ogg)                 |   | 1 | x |
---| mangia             |                              | mangia (cibo)                |   | 1 |   |
---| pensa              | pondera, rifletti, medita    | pensa                        |   | 0 |   |
---| pensa_a            | rifletti/medita su, pondera  | pensa a (argomento)          |   | 1 |   |
---| prega              |                              | prega                        |   | 0 |   |
---| prendi             | afferra, raccogli, trasporta | prendi (ogg)                 |   | 1 | x |
---| prendi_da          | rimuovi, togli               | prendi (ogg) da (detentore)  |   | 2 | x |
---| rifai              | ancora, G                    | rifai                        |   | 0 |   |
---| riempi             |                              | riempi (cont)                |   | 1 |   |
---| riempi_con         |                              | riempi (cont) con (sostanza) |   | 2 |   |
---| rompi              | distruggi, spacca, sfonda    | rompi (ogg)                  |   | 1 | x |
---| rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)      |   | 2 | x |
---| ripara             | aggiusta                     | ripara (ogg)                 |   | 1 | x |
---| rispondi           |                              | rispondi (argomento)         |   | 1 |   |
---| sblocca            |                              | sblocca (ogg)                |   | 1 | x |
---| sblocca_con        |                              | sblocca (ogg) con (chiave)   |   | 2 | x |
---| scava              |                              | scava (ogg)                  |   | 1 | x |
---| scrivi             |                              | scrivi "testo" su (ogg)      |   | 1 | x |
---| siediti            | siedi                        | siediti                      |   | 0 |   |
---| siediti_su         | siedi                        | siediti su (superficie)      |   | 1 |   |
---| spegni             |                              | spegni (disp)                |   | 1 |   |
---| spogliati          | svestiti                     | spogliati                    |   | 0 |   |
---| suona              |                              | suona (ogg)                  |   | 1 | x |
---| taglia             |                              | taglia (ogg)                 |   | 1 | x |
---| taglia_con         |                              | taglia (ogg) con (strum)     |   | 2 | x |
---| trova              |                              | trova (ogg)                  |   | 1 | x |
---| usa                |                              | usa (ogg)                    |   | 1 | x |
---| usa_con            |                              | usa (ogg) con (strum)        |   | 2 | x |
---| vai_a              |                              | vai a (dest)                 |   | 1 |   |
---| vendi              |                              | vendi (merce)                |   | 1 |   |
---+--------------------+------------------------------+------------------------------+---+---+---+
---|                    |                              |                              |   | 0 | x |
+--+--------------------+------------------------------+--------------------------------+---+---+---+
+--| VERBO              | SINONIMI                     | SINTASSI                       | M | A | O |
+--|--------------------|------------------------------|--------------------------------|---|---|---|
+--| abbandona_partita  | quit, Q                      | abbandona [partita]            | x | 0 |   |
+--| carica_partita     | restore                      | carica [partita]               | x | 0 |   |
+--| ricomincia_partita | restart                      | ricomincia [partita]           | x | 0 |   |
+--| salva_partita      | save                         | salva [partita]                | x | 0 |   |
+--+--------------------+------------------------------+--------------------------------+---+---+---+
+--| accendi            |                              | accendi (disp)                 |   | 1 |   |
+--| apri               |                              | apri (ogg)                     |   | 1 | x |
+--| apri_con           |                              | apri (ogg) con (strum)         |   | 2 | x |
+--| ascolta0           |                              | ascolta                        |   | 0 |   |
+--| ascolta            |                              | ascolta (ogg)!                 |   | 1 | x |
+--| aspetta            | attendi, Z                   | aspetta                        |   | 0 |   |
+--| attacca            | combatti, picchia            | attacca (bersaglio)            |   | 1 |   |
+--| attacca_con        | combatti, picchia            | attacca (bersaglio) con (arma) |   | 2 |   |
+--| attraversa         |                              | attraversa (ogg)               |   | 1 | x |
+--| balla              | danza                        | balla                          |   | 0 |   |
+--| bevi               |                              | bevi (liq)                     |   | 1 |   |
+--| blocca             | serra                        | blocca (ogg)                   |   | 1 | x |
+--| blocca_con         | serra                        | blocca (ogg) con (chiave)      |   | 2 | x |
+--| brucia             |                              | brucia (ogg)                   |   | 1 | x |
+--| brucia_con         |                              | brucia (ogg) con (strum)       |   | 2 | x |
+--| chi_è              |                              | chi è (png)                    |   | 1 |   | * BUGGED!
+--| chi_sono_io        |                              | chi sono                       |   | 0 |   |
+--| chiudi             |                              | chiudi (ogg)                   |   | 1 | x |
+--| chiudi_con         |                              | chiudi (ogg) con (strum)       |   | 2 | x |
+--| compra             | acquista                     | compra (merce)                 |   | 1 |   |
+--| cosa_è             |                              | cosa è (ogg)                   |   | 1 | x | * BUGGED!
+--| cosa_sono_io       |                              | cosa sono                      |   | 0 |   |
+--| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)        |   | 2 | x |
+--| dici_No            |                              | no                             |   | 0 |   |
+--| dici_Sì            |                              | sì                             |   | 0 |   |
+--| dormi              | riposa                       | dormi                          |   | 0 |   |
+--| dove_è             |                              | dove è (ogg)                   |   | 1 | x | * BUGGED!
+--| dove_mi_trovo      |                              | dove sono                      |   | 0 |   |
+--| esamina            | guarda, descrivi, osserva, X | esamina (ogg)                  |   | 1 | x |
+--| gioca_con          |                              | gioca con (ogg)                |   | 1 | x |
+--| guida              |                              | guida (veicolo)                |   | 1 |   |
+--| inventario         | inv                          | inventario                     | x | 0 |   |
+--| lascia             | abbandona, metti giù, posa   | lascia (ogg)*                  |   | 1 | x |
+--| leggi              |                              | leggi (ogg)                    |   | 1 | x |
+--| libera             | rilascia                     | libera (ogg)                   |   | 1 | x |
+--| mangia             |                              | mangia (cibo)                  |   | 1 |   |
+--| pensa              | pondera, rifletti, medita    | pensa                          |   | 0 |   |
+--| pensa_a            | rifletti/medita su, pondera  | pensa a (argomento)            |   | 1 |   |
+--| prega              |                              | prega                          |   | 0 |   |
+--| prendi             | afferra, raccogli, trasporta | prendi (ogg)                   |   | 1 | x |
+--| prendi_da          | rimuovi, togli               | prendi (ogg) da (detentore)    |   | 2 | x |
+--| rifai              | ancora, G                    | rifai                          |   | 0 |   |
+--| riempi             |                              | riempi (cont)                  |   | 1 |   |
+--| riempi_con         |                              | riempi (cont) con (sostanza)   |   | 2 |   |
+--| rompi              | distruggi, spacca, sfonda    | rompi (ogg)                    |   | 1 | x |
+--| rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)        |   | 2 | x |
+--| ripara             | aggiusta                     | ripara (ogg)                   |   | 1 | x |
+--| rispondi           |                              | rispondi (argomento)           |   | 1 |   |
+--| sblocca            |                              | sblocca (ogg)                  |   | 1 | x |
+--| sblocca_con        |                              | sblocca (ogg) con (chiave)     |   | 2 | x |
+--| scava              |                              | scava (ogg)                    |   | 1 | x |
+--| scrivi             |                              | scrivi "testo" su (ogg)        |   | 1 | x |
+--| siediti            | siedi                        | siediti                        |   | 0 |   |
+--| siediti_su         | siedi                        | siediti su (superficie)        |   | 1 |   |
+--| spegni             |                              | spegni (disp)                  |   | 1 |   |
+--| spogliati          | svestiti                     | spogliati                      |   | 0 |   |
+--| suona              |                              | suona (ogg)                    |   | 1 | x |
+--| taglia             |                              | taglia (ogg)                   |   | 1 | x |
+--| taglia_con         |                              | taglia (ogg) con (strum)       |   | 2 | x |
+--| trova              |                              | trova (ogg)                    |   | 1 | x |
+--| usa                |                              | usa (ogg)                      |   | 1 | x |
+--| usa_con            |                              | usa (ogg) con (strum)          |   | 2 | x |
+--| vai_a              |                              | vai a (dest)                   |   | 1 |   |
+--| vendi              |                              | vendi (merce)                  |   | 1 |   |
+--+--------------------+------------------------------+--------------------------------+---+---+---+
+--|                    |                              |                                |   | 0 | x |
 
 -- Legenda Colonne:
 --   [M] Meta Verbo : 'x' = Sì
@@ -114,8 +116,8 @@
 -->>> answer      (+ reply)                                answer (topic)                      1
 ----- ask         (+ enquire, inquire, interrogate)        ask (act) about (topic)             2
 ----- ask_for                                              ask (act) for (obj)                 2       x
------ attack      (+ beat, fight, hit, punch)              attack (target)                     1
------ attack_with                                          attack (target) with (weapon)       2
+-->>> attack      (+ beat, fight, hit, punch)              attack (target)                     1
+-->>> attack_with                                          attack (target) with (weapon)       2
 ----- bite        (+ chew)                                 bite (obj)                          1       x
 -->>> break       (+ destroy)                              break (obj)                         1       x
 -->>> break_with                                           break (obj) with (instr)            2       x
@@ -780,6 +782,175 @@ VERB aspetta
   DOES
     "Il tempo passa."
 END VERB.
+
+
+
+-- =============================================================
+
+
+----- @ATTACCA --> @ATTACK (+ beat, fight, hit, punch)
+
+
+-- =============================================================
+-- @NOTA: In Inform 6 'attacca' riconosce questi sinonimi: 
+--        rompi, colpisci, combatti, uccidi, tortura, lotta, sfonda, ammazza,
+--        picchia.
+
+-- SYNTAX attack = attack (bersaglio)
+-- SYNONYMS beat, fight, hit, punch = attack.
+
+SYNTAX attacca = attacca (bersaglio)
+  WHERE bersaglio IsA THING
+    ELSE
+      IF bersaglio IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "attaccare."
+
+
+SYNONYMS combatti, picchia = attacca.
+
+-- Note that 'kick' is defined separately, to avoid absurd commands such as
+-- 'kick man with sword' (see 'attack_with' below)
+
+
+ADD TO EVERY THING
+  VERB attacca
+    CHECK mia_AT CAN attaccare
+      ELSE SAY azione_bloccata OF mia_AT.
+    AND bersaglio IS esaminabile
+      ELSE
+        IF bersaglio IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        END IF.
+        "attaccare."
+--                                                                              TRANSLATE!
+    AND bersaglio <> hero
+      ELSE SAY check_obj_not_hero1 OF mia_AT.
+--                                                                              TRANSLATE!
+    AND bersaglio NOT IN hero
+      ELSE SAY check_obj_not_in_hero1 OF mia_AT.
+--                                                                              TRANSLATE!
+    AND bersaglio NOT IN abbigliamento
+      ELSE SAY check_obj_not_in_worn2 OF mia_AT.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY imp_luogo_buio OF mia_AT.
+    AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
+      ELSE
+        IF bersaglio IS NOT raggiungibile
+          THEN
+            IF bersaglio IS NOT plurale
+              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
+              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+            END IF.
+        ELSIF bersaglio IS distante
+          THEN
+            IF bersaglio IS NOT plurale
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
+            END IF.
+        END IF.
+--                                                                              TRANSLATE!
+    AND hero IS NOT seduto
+      ELSE SAY check_hero_not_sitting2 OF mia_AT.
+--                                                                              TRANSLATE!
+    AND hero IS NOT sdraiato
+      ELSE SAY check_hero_not_lying_down2 OF mia_AT.
+        DOES
+          "La violenza non è la giusta risposta a questo." --> taken from i6
+          -- "Resorting to brute force is not the solution here."
+    END VERB.
+END ADD TO.
+
+
+
+
+-- ==============================================================
+
+
+----- @ATTACCA CON --> @ATTACK WITH
+
+
+-- ==============================================================
+
+-- SYNTAX attack_with = attack (bersaglio) 'with' (arma)
+
+SYNTAX attacca_con = attacca (bersaglio) con (arma)
+  WHERE bersaglio IsA THING
+    ELSE
+      IF bersaglio IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "attaccare."
+  AND arma IsA arma
+    ELSE
+      IF arma IS NOT plurale
+        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+      END IF.
+      "attaccare" SAY THE bersaglio. "."
+
+
+ADD TO EVERY THING
+  VERB attacca_con
+    WHEN bersaglio
+      CHECK mia_AT CAN attaccare_con
+        ELSE SAY azione_bloccata OF mia_AT.
+      AND bersaglio IS esaminabile
+        ELSE
+          IF bersaglio IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY ogg1_inadatto_sg OF mia_AT.
+            ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          END IF.
+          "attaccare."
+--                                                                              TRANSLATE!
+      AND bersaglio <> arma
+        ELSE SAY check_obj_not_obj2_with OF mia_AT.
+--                                                                              TRANSLATE!
+      AND bersaglio <> hero
+        ELSE SAY check_obj_not_hero1 OF mia_AT.
+--                                                                              TRANSLATE!
+      AND bersaglio NOT IN hero
+        ELSE SAY check_obj_not_in_hero1 OF mia_AT.
+--                                                                              TRANSLATE!
+      AND bersaglio NOT IN abbigliamento
+        ELSE SAY check_obj_not_in_worn2 OF mia_AT.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY imp_luogo_buio OF mia_AT.
+      AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
+        ELSE
+          IF bersaglio IS NOT raggiungibile
+            THEN
+              IF bersaglio IS NOT plurale
+                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
+                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              END IF.
+          ELSIF bersaglio IS distante
+            THEN
+              IF bersaglio IS NOT plurale
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
+              END IF.
+          END IF.
+--                                                                              TRANSLATE!
+      AND hero IS NOT seduto
+        ELSE SAY check_hero_not_sitting2 OF mia_AT.
+--                                                                              TRANSLATE!
+      AND hero IS NOT sdraiato
+        ELSE SAY check_hero_not_lying_down2 OF mia_AT.
+          DOES
+            "La violenza non è la giusta risposta a questo." --> taken from i6
+            -- "Resorting to brute force is not the solution here."
+  END VERB.
+END ADD TO.
+
 
 
 -- ==============================================================
@@ -4437,157 +4608,6 @@ ADD TO EVERY OBJECT
     DOES
       "Please use the formulation ASK PERSON FOR THING to ask somebody for
              something."
-  END VERB.
-END ADD TO.
-
-
-
--- =============================================================
-
-
------ ATTACK (+ beat, fight, hit, punch)
-
-
--- =============================================================
-
-
-SYNTAX attack = attack (bersaglio)
-  WHERE bersaglio IsA THING
-    ELSE
-      IF bersaglio IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "attaccare."
-
-
-SYNONYMS beat, fight, hit, punch = attack.
-
--- Note that 'kick' is defined separately, to avoid absurd commands such as
--- 'kick man with sword' (see 'attack_with' below)
-
-
-ADD TO EVERY THING
-  VERB attack
-    CHECK mia_AT CAN attaccare
-      ELSE SAY azione_bloccata OF mia_AT.
-    AND bersaglio IS esaminabile
-      ELSE
-        IF bersaglio IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
-        END IF.
-        "attaccare."
-    AND bersaglio <> hero
-      ELSE SAY check_obj_not_hero1 OF mia_AT.
-    AND bersaglio NOT IN hero
-      ELSE SAY check_obj_not_in_hero1 OF mia_AT.
-    AND bersaglio NOT IN abbigliamento
-      ELSE SAY check_obj_not_in_worn2 OF mia_AT.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
-    AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
-      ELSE
-        IF bersaglio IS NOT raggiungibile
-          THEN
-            IF bersaglio IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
-            END IF.
-        ELSIF bersaglio IS distante
-          THEN
-            IF bersaglio IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
-            END IF.
-        END IF.
-    AND hero IS NOT seduto
-      ELSE SAY check_hero_not_sitting2 OF mia_AT.
-    AND hero IS NOT sdraiato
-      ELSE SAY check_hero_not_lying_down2 OF mia_AT.
-        DOES
-          "La violenza non è la giusta risposta a questo." --> taken from i6
-          -- "Resorting to brute force is not the solution here."
-    END VERB.
-END ADD TO.
-
-
-
-
--- ==============================================================
-
-
------ ATTACK WITH
-
-
--- ==============================================================
-
-
-SYNTAX attack_with = attack (bersaglio) 'with' (arma)
-  WHERE bersaglio IsA THING
-    ELSE
-      IF bersaglio IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "attaccare."
-  AND arma IsA arma
-    ELSE
-      IF arma IS NOT plurale
-        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
-      END IF.
-      "attaccare" SAY THE bersaglio. "."
-
-
-ADD TO EVERY THING
-  VERB attack_with
-    WHEN bersaglio
-      CHECK mia_AT CAN attaccare_con
-        ELSE SAY azione_bloccata OF mia_AT.
-      AND bersaglio IS esaminabile
-        ELSE
-          IF bersaglio IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT.
-            ELSE SAY ogg1_inadatto_pl OF mia_AT.
-          END IF.
-          "attaccare."
-      AND bersaglio <> arma
-        ELSE SAY check_obj_not_obj2_with OF mia_AT.
-      AND bersaglio <> hero
-        ELSE SAY check_obj_not_hero1 OF mia_AT.
-      AND bersaglio NOT IN hero
-        ELSE SAY check_obj_not_in_hero1 OF mia_AT.
-      AND bersaglio NOT IN abbigliamento
-        ELSE SAY check_obj_not_in_worn2 OF mia_AT.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
-      AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
-        ELSE
-          IF bersaglio IS NOT raggiungibile
-            THEN
-              IF bersaglio IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
-              END IF.
-          ELSIF bersaglio IS distante
-            THEN
-              IF bersaglio IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
-              END IF.
-          END IF.
-      AND hero IS NOT seduto
-        ELSE SAY check_hero_not_sitting2 OF mia_AT.
-      AND hero IS NOT sdraiato
-        ELSE SAY check_hero_not_lying_down2 OF mia_AT.
-          DOES
-            "La violenza non è la giusta risposta a questo." --> taken from i6
-            -- "Resorting to brute force is not the solution here."
   END VERB.
 END ADD TO.
 
