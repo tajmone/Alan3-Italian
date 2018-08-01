@@ -55,6 +55,8 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 - [INTERAZIONI VARIE CON OGGETTI](#interazioni-varie-con-oggetti)
     - [libera](#libera)
     - [ripara](#ripara)
+    - [taglia](#taglia)
+    - [taglia_con](#taglia_con)
 - [INDOSSARE, SPOGLIARSI](#indossare-spogliarsi)
     - [spogliati](#spogliati)
 - [ATTACCARE, ROMPERE, BRUCIARE](#attaccare-rompere-bruciare)
@@ -64,6 +66,7 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [rompi_con](#rompi_con)
 - [VERBI CHE NON CONSEGUONO NULLA](#verbi-che-non-conseguono-nulla)
     - [aspetta](#aspetta)
+    - [balla](#balla)
     - [dormi](#dormi)
     - [dici_No](#dici_no)
     - [dici_Sì](#dici_s%C3%AC)
@@ -71,6 +74,7 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [pensa](#pensa)
     - [pensa_a](#pensa_a)
     - [prega](#prega)
+    - [scava](#scava)
     - [suona](#suona)
     - [usa](#usa)
     - [usa_con](#usa_con)
@@ -101,6 +105,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [aspetta]
 - [attendi]
 - [attraversa]
+- [balla]
 - [bevi]
 - [blocca]
 - [blocca con]
@@ -112,6 +117,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [chiudi con]
 - [compra]
 - [dai]
+- [danza]
 - [descrivi]
 - [distruggi]
 - [distruggi con]
@@ -155,6 +161,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [salva]
 - [sblocca]
 - [sblocca con]
+- [scava]
 - [scrivi]
 - [serra]
 - [serra con]
@@ -171,6 +178,8 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [spogliati]
 - [suona]
 - [svestiti]
+- [taglia]
+- [taglia con]
 - [togli]
 - [trasporta]
 - [trova]
@@ -826,6 +835,8 @@ Se l'azione avrà successo, altererà il seguente attributo di `<disp>`:
 
 - [libera]
 - [ripara]
+- [taglia]
+- [taglia con]
 
 ## libera
 
@@ -855,6 +866,33 @@ attributo `mia_AT`:
 sintassi:
 
     (ripara|aggiusta) <ogg>
+
+
+## taglia
+
+[taglia]: #taglia "taglia"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] tagliare
+
+sintassi:
+
+    taglia <ogg>
+
+## taglia_con
+
+[taglia con]: #taglia_con "taglia_con"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] tagliare_con
+
+sintassi:
+
+    taglia <ogg> con <strum>
 
 
 
@@ -971,6 +1009,7 @@ Raggruppo qui vari verbi che nell'implementazione di base della libreria sono ri
 
 - [aspetta]
 - [attendi]
+- [balla]
 - [dormi]
 - [gioca con]
 - [medita]
@@ -984,6 +1023,7 @@ Raggruppo qui vari verbi che nell'implementazione di base della libreria sono ri
 - [rifletti]
 - [rifletti su]
 - [riposa]
+- [scava]
 - [sì]
 - [suona]
 - [usa]
@@ -1005,6 +1045,21 @@ condizioni:
 esito:
 
 - Nulla, dice solo "`Il tempo passa.`" (testo preso da Inform 6 _Infit_).
+
+
+## balla
+
+[balla]: #balla "balla"
+[danza]: #balla "balla"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] ballare
+
+sintassi:
+
+    (balla|danza)
 
 
 ## dormi
@@ -1122,6 +1177,22 @@ esito:
 - Nulla, dice solo "`Sembra che le tue preghiere non siano state esaudite.`" (testo preso da Inform 6 _Infit_).
 
 
+## scava
+
+[scava]: #scava "scava"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] scavare
+
+sintassi:
+
+    scava <ogg>
+
+Risponde: "Qui non c'è nulla da scavare."
+
+
 ## suona
 
 [suona]: #suona "suona"
@@ -1172,9 +1243,6 @@ sintassi:
 Esito:
 
 - invita il giocatore ad essere più specifico.
-
-
-
 
 -------------------------------------------------------------------------------
 

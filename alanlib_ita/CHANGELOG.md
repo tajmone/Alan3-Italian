@@ -11,8 +11,14 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/08/01](#20180801)
+- [2018/08/01 \(2\)](#20180801-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
+    - [Verb Responses](#verb-responses)
+    - [Verbs: `cut` and `cut_with`](#verbs-cut-and-cut_with)
+    - [Verb: `dance`](#verb-dance)
+    - [Verb: `dig`](#verb-dig)
+- [2018/08/01 \(1\)](#20180801-1)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
     - [Verb: `drive`](#verb-drive)
     - [Verbs: `listen0` and `listen`](#verbs-listen0-and-listen)
 - [2018/07/31 \(2\)](#20180731-2)
@@ -20,8 +26,8 @@ Status: Alpha stage.
     - [Verb: `think`](#verb-think)
     - [Verb: `think_about`](#verb-think_about)
 - [2018/07/31 \(1\)](#20180731-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
-    - [Verb Responses](#verb-responses)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
+    - [Verb Responses](#verb-responses-1)
     - [Verb: `fix`](#verb-fix)
 - [2018/07/29 \(2\)](#20180729-2)
     - [Remove Verb Restriction Attributes](#remove-verb-restriction-attributes)
@@ -30,16 +36,16 @@ Status: Alpha stage.
     - [Il Nocciolo del Problema](#il-nocciolo-del-problema)
     - [Abolizione dell'Attributo `naturale`](#abolizione-dellattributo-naturale)
     - [Rilfessioni sull'Attributo `illuminato`](#rilfessioni-sullattributo-illuminato)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
     - [Testo dei Verbi](#testo-dei-verbi)
 - [2018/07/28 \(3\)](#20180728-3)
-    - [Verb Responses](#verb-responses-1)
-- [2018/07/28 \(2\)](#20180728-2)
     - [Verb Responses](#verb-responses-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
+- [2018/07/28 \(2\)](#20180728-2)
+    - [Verb Responses](#verb-responses-3)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
     - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
 - [2018/07/28 \(1\)](#20180728-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-5)
     - [Verb: `answer`](#verb-answer)
     - [Verbs: `fill` and `fill_with`](#verbs-fill-and-fill_with)
 - [2018/07/27 \(7\)](#20180727-7)
@@ -84,15 +90,15 @@ Status: Alpha stage.
     - [Polish and Fix Translated Verbs](#polish-and-fix-translated-verbs)
     - [Verb Parameters Fixes](#verb-parameters-fixes)
 - [2018/07/25 \(8\)](#20180725-8)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-5)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-6)
     - [Verbs: `yes` and `no`](#verbs-yes-and-no)
 - [2018/07/25 \(7\)](#20180725-7)
 - [2018/07/25 \(6\)](#20180725-6)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-6)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-7)
     - [Verb: `play`](#verb-play)
     - [Verb: `play_with`](#verb-play_with)
 - [2018/07/25 \(5\)](#20180725-5)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-7)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-8)
 - [2018/07/25 \(4\)](#20180725-4)
 - [2018/07/25 \(3\)](#20180725-3)
     - [Library Instances](#library-instances)
@@ -212,9 +218,9 @@ Status: Alpha stage.
     - [Verb: `pray`](#verb-pray)
     - [Verb: `break`](#verb-break)
     - [Verb: `break_with`](#verb-break_with)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-8)
-- [2018/05/22 \(2\)](#20180522-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-9)
+- [2018/05/22 \(2\)](#20180522-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-10)
 - [2018/05/22 \(1\)](#20180522-1)
     - [Verb: `undress`](#verb-undress)
 - [2018/05/19](#20180519)
@@ -232,7 +238,76 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/08/01
+# 2018/08/01 (2)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.4.8)
+- [`lib_verbi.i`][lib_verbi] (v0.4.8)
+
+This commit translates the following verbs:
+
+- `cut` and `cut_with`
+- `dance`
+- `dig`
+
+## Verb Restriction Attributes
+
+Renamed `mia_AT` attributes for verb restrictions:
+
+|   Old ID  |   New ID  |
+|-----------|-----------|
+| `danzare` | `ballare` |
+
+## Verb Responses
+
+New verb responses attributes (created for Italian library, no English counterpart):
+
+|       Attribute        |                 Text                 |
+|------------------------|--------------------------------------|
+| `non_senti_bisogno_di` | `Al momento non senti il bisogno di` |
+
+
+## Verbs: `cut` and `cut_with`
+
+Translated verbs `taglia` and `taglia_con`, "__taglia (ogg)__" and  "__taglia (ogg) con (strumento)__":
+
+    taglia (ogg)
+    taglia (ogg) con (strum)
+
+with no synonyms.
+
+> __NOTA__ — Inform 6 Italian (_Infit_) riconosce i seguenti sinomini di `taglia`: `affetta`, `sfronda`, `sfoltisci`, `spacca`, `strappa`. Invece in Inform 7 Italian ho trovato solo `taglia`. Devo valutare se implementare alcuni di quei sinonimi oppure lasciare all'autore la libertà di definirli da sé.
+
+## Verb: `dance`
+
+Translated verb `balla`, "__balla__" (_dance_):
+
+    balla
+
+with synonyms:
+
+    danza
+
+
+## Verb: `dig`
+
+Translated verb `scava`, "__scava__" (_dig_):
+
+    scava (ogg)
+
+with no synonyms.
+
+> __NOTA__ — Questo verbo si limita a rispondere "`Qui non c'è nulla da scavare.`", a prescindere dal suo oggetto. Inoltre, non è presente una versione per il verbo senza parametri (es, `scava0`) per intercettarne l'uso da parte del giocatore senza specifiche dell'oggetto. Probabilmente è stato volutamente definito in maniera vaga poiché le sue possibili implementazioni possono variare da avventura ad avventura — p.es., implementare il verbo su un luogo, o richiedere che lo si usi specificando uno strumento, ecc.
+> 
+> La mia unica perplessità è la risposta "`Qui non c'è nulla da scavare.`", che potrebbe invece inteferire quando nel luogo vi sono altri oggetti che potrebbero effettivamente essere scavati.
+> 
+> Inoltre, la risposta originale inglese era: "`There is nothing suitable to dig here.`", che potrebbe anche voler dire "Non c'è nulla CON CUI scavare qui." — ma questa risposta potrebbe confondere ulteriormente, facendo pensare al giocatore che se avesse lo strumento giusto il verbo sortirebbe qualche effetto, mentre in realtà è solo un verbo "segna posto" nella libreria.
+> 
+> Devo riflettere meglio sul messaggio, sulle implicazioni e portata del verbo in vari contesti d'uso, e se posso migliorarlo apportandovi modifiche.
+
+
+<!---------------------------------------------------------------------------->
+
+# 2018/08/01 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.7)
 - [`lib_verbi.i`][lib_verbi] (v0.4.7)

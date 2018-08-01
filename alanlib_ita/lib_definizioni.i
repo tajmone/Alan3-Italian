@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.4.7 (2018/08/01)
+-- "lib_definizioni.i" v0.4.8 (2018/08/01)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -925,6 +925,18 @@ EVERY blocco_definizioni IsA LOCATION
   HAS check_obj2_not_hero3 "You can't $v things to yourself.".                  -- give, tie_to
 
 
+  -- ===========
+  -- AZIONI VANE
+  -- ===========
+  -- Risposte per azioni che non conseguono nulla e vengono rifiutate con la
+  -- scusante che l'eroe non desidera farlo...
+
+  -- VERBI: balla.
+  -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
+  HAS non_senti_bisogno_di "Al momento non senti il bisogno di".
+  
+
+
   -- ================
   -- AZIONI SUPERFLUE
   -- ================
@@ -1324,6 +1336,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN attaccare_con.            --> attack_with
   CAN attraversare.             --> climb_through
   CAN baciare.                  --> kiss         (+ hug, embrace)
+  CAN ballare.                  --> dance
   CAN bere.                     --> drink
   CAN bloccare.                 --> lock
   CAN bloccare_con.             --> lock_with
@@ -1336,7 +1349,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN chiudere_con.             --> close_with
   CAN comprare.                 --> buy          (+ purchase)
   CAN consultare.               --> consult
-  CAN danzare.                  --> dance
   CAN dare.                     --> give
   CAN dire_no.                  --> 'no'
   CAN dire_sì.                  --> yes
@@ -1528,6 +1540,7 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT attaccare_con.            --> attack_with
   MAKE mia_AT attraversare.             --> climb_through
   MAKE mia_AT baciare.                  --> kiss         (+ hug, embrace)
+  MAKE mia_AT ballare.                  --> dance
   MAKE mia_AT bere.                     --> drink
   MAKE mia_AT bloccare.                 --> lock
   MAKE mia_AT bloccare_con.             --> lock_with
@@ -1540,7 +1553,6 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT chiudere_con.             --> close_with
   MAKE mia_AT comprare.                 --> buy          (+ purchase)
   MAKE mia_AT consultare.               --> consult
-  MAKE mia_AT danzare.                  --> dance
   MAKE mia_AT dare.                     --> give
   MAKE mia_AT dire_no.                  --> 'no'
   MAKE mia_AT dire_sì.                  --> yes
@@ -1743,6 +1755,7 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT attaccare_con.            --> attack_with
   MAKE mia_AT NOT attraversare.             --> climb_through
   MAKE mia_AT NOT baciare.                  --> kiss         (+ hug, embrace)
+  MAKE mia_AT NOT ballare.                  --> dance
   MAKE mia_AT NOT bere.                     --> drink
   MAKE mia_AT NOT bloccare.                 --> lock
   MAKE mia_AT NOT bloccare_con.             --> lock_with
@@ -1755,7 +1768,6 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT chiudere_con.             --> close_with
   MAKE mia_AT NOT comprare.                 --> buy          (+ purchase)
   MAKE mia_AT NOT consultare.               --> consult
-  MAKE mia_AT NOT danzare.                  --> dance
   MAKE mia_AT NOT dare.                     --> give
   MAKE mia_AT     dire_no.                  --> 'no'
   MAKE mia_AT     dire_sì.                  --> yes
@@ -1937,6 +1949,7 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT attaccare_con.            --> attack_with
   MAKE mia_AT NOT attraversare.             --> climb_through
   MAKE mia_AT NOT baciare.                  --> kiss         (+ hug, embrace)
+  MAKE mia_AT NOT ballare.                  --> dance
   MAKE mia_AT NOT bere.                     --> drink
   MAKE mia_AT NOT bloccare.                 --> lock
   MAKE mia_AT NOT bloccare_con.             --> lock_with
@@ -1949,7 +1962,6 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT chiudere_con.             --> close_with
   MAKE mia_AT NOT comprare.                 --> buy          (+ purchase)
   MAKE mia_AT NOT consultare.               --> consult
-  MAKE mia_AT NOT danzare.                  --> dance
   MAKE mia_AT NOT dare.                     --> give
   MAKE mia_AT     dire_no.                  --> 'no'
   MAKE mia_AT     dire_sì.                  --> yes
@@ -2134,6 +2146,7 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT attaccare_con.            --> attack_with
   MAKE mia_AT NOT attraversare.             --> climb_through
   MAKE mia_AT NOT baciare.                  --> kiss         (+ hug, embrace)
+  MAKE mia_AT NOT ballare.                  --> dance
   MAKE mia_AT NOT bere.                     --> drink
   MAKE mia_AT NOT bloccare.                 --> lock
   MAKE mia_AT NOT bloccare_con.             --> lock_with
@@ -2146,7 +2159,6 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT chiudere_con.             --> close_with
   MAKE mia_AT NOT comprare.                 --> buy          (+ purchase)
   MAKE mia_AT NOT consultare.               --> consult
-  MAKE mia_AT NOT danzare.                  --> dance
   MAKE mia_AT NOT dare.                     --> give
   MAKE mia_AT NOT dire_no.                  --> 'no'
   MAKE mia_AT NOT dire_sì.                  --> yes

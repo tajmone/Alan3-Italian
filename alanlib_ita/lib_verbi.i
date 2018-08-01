@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.4.7 (2018/08/01)
+-- "lib_verbi.i" v0.4.8 (2018/08/01)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -28,6 +28,7 @@
 --| ascolta            |                              | ascolta (ogg)!               |   | 1 | x |
 --| aspetta            | attendi, Z                   | aspetta                      |   | 0 |   |
 --| attraversa         |                              | attraversa (ogg)             |   | 1 | x |
+--| balla              | danza                        | balla                        |   | 0 |   |
 --| bevi               |                              | bevi (liq)                   |   | 1 |   |
 --| blocca             | serra                        | blocca (ogg)                 |   | 1 | x |
 --| blocca_con         | serra                        | blocca (ogg) con (chiave)    |   | 2 | x |
@@ -68,12 +69,15 @@
 --| rispondi           |                              | rispondi (argomento)         |   | 1 |   |
 --| sblocca            |                              | sblocca (ogg)                |   | 1 | x |
 --| sblocca_con        |                              | sblocca (ogg) con (chiave)   |   | 2 | x |
+--| scava              |                              | scava (ogg)                  |   | 1 | x |
 --| scrivi             |                              | scrivi "testo" su (ogg)      |   | 1 | x |
 --| siediti            | siedi                        | siediti                      |   | 0 |   |
 --| siediti_su         | siedi                        | siediti su (superficie)      |   | 1 |   |
 --| spegni             |                              | spegni (disp)                |   | 1 |   |
 --| spogliati          | svestiti                     | spogliati                    |   | 0 |   |
 --| suona              |                              | suona (ogg)                  |   | 1 | x |
+--| taglia             |                              | taglia (ogg)                 |   | 1 | x |
+--| taglia_con         |                              | taglia (ogg) con (strum)     |   | 2 | x |
 --| trova              |                              | trova (ogg)                  |   | 1 | x |
 --| usa                |                              | usa (ogg)                    |   | 1 | x |
 --| usa_con            |                              | usa (ogg) con (strum)        |   | 2 | x |
@@ -128,10 +132,10 @@
 -->>> close_with                                           close (obj) with (instr)            2       x
 ----- consult                                              consult (source) about (topic)      2
 ----- credits     (+ acknowledgments, author, copyright)   credits                             2
------ cut                                                  cut (obj)                           1       x
------ cut_with                                             cut (obj) with (instr)              2       x
------ dance                                                dance                               0
------ dig                                                  dig (obj)                           1       x
+-->>> cut                                                  cut (obj)                           1       x
+-->>> cut_with                                             cut (obj) with (instr)              2       x
+-->>> dance                                                dance                               0
+-->>> dig                                                  dig (obj)                           1       x
 ----- dive                                                 dive                                0
 ----- dive_in                                              dive in (liq)                       1
 -->>> drink                                                drink (liq)                         1
@@ -844,6 +848,40 @@ ADD TO EVERY OBJECT
    -- "something you can climb through."
   END VERB.
 END ADD TO.
+
+
+
+-- ==============================================================
+
+
+----- @BALLA --> @DANCE
+
+
+-- ==============================================================
+
+-- SYNTAX dance = dance.
+
+SYNTAX balla = balla.
+
+SYNONYMS danza = balla.
+
+
+VERB balla
+  CHECK mia_AT CAN ballare
+    ELSE SAY azione_bloccata OF mia_AT.
+  AND CURRENT LOCATION IS illuminato
+    ELSE SAY imp_luogo_buio OF mia_AT.
+--                                                                              TRANSLATE!
+  AND hero IS NOT seduto
+    ELSE SAY check_hero_not_sitting1 OF mia_AT.
+--                                                                              TRANSLATE!
+  AND hero IS NOT sdraiato
+    ELSE SAY check_hero_not_lying_down1 OF mia_AT.
+  DOES
+    SAY mia_AT:non_senti_bisogno_di. "ballare."
+ -- "How about a waltz?"
+END VERB.
+
 
 
 -- ==============================================================
@@ -3383,6 +3421,65 @@ END ADD TO.
 
 
 
+-- ==============================================================
+
+
+----- @SCAVA --> @DIG
+
+
+-- ==============================================================
+
+-- NOTA: Dovrei aggiungere una versione globale del verbo (scava0) per poter
+--       intercettare comandi come 'scava' e chiedere al giocatore cosa vorrebbe
+--       scavare? Oppure è troppo?
+
+-- SYNTAX dig = dig (ogg)
+
+SYNTAX scava = scava (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "scavare."
+
+
+ADD TO EVERY OBJECT
+  VERB scava
+    CHECK mia_AT CAN scavare
+      ELSE SAY azione_bloccata OF mia_AT.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY imp_luogo_buio OF mia_AT.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
+              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
+            END IF.
+        END IF.
+--                                                                              TRANSLATE!
+    AND hero IS NOT seduto
+      ELSE SAY check_hero_not_sitting2 OF mia_AT.
+--                                                                              TRANSLATE!
+    AND hero IS NOT sdraiato
+      ELSE SAY check_hero_not_lying_down2 OF mia_AT.
+    DOES
+      "Qui non c'è nulla da scavare."
+   -- "There is nothing suitable to dig here."
+  END VERB.
+END ADD TO.
+
+
 
 -- ==============================================================
 
@@ -3774,6 +3871,129 @@ ADD TO EVERY OBJECT
   END VERB.
 END ADD TO.
 
+
+
+
+-- ==============================================================
+
+
+----- @TAGLIA --> @CUT
+
+
+-- ==============================================================
+
+-- NOTA: i6 Italian accetta questi sinomini di 'taglia':
+--       'affetta' 'sfronda' 'sfoltisci' 'spacca' 'strappa'
+
+-- SYNTAX cut = cut (ogg)
+
+SYNTAX taglia = taglia (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "tagliare."
+
+
+ADD TO EVERY OBJECT
+  VERB taglia
+    CHECK mia_AT CAN tagliare
+      ELSE SAY azione_bloccata OF mia_AT.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        END IF.
+        "tagliare."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY imp_luogo_buio OF mia_AT.
+    DOES
+      SAY mia_AT:specificare_CON_cosa. "tagliare" SAY THE ogg.
+    -- "You need to specify what you want to cut" SAY THE ogg. "with."
+    END VERB.
+END ADD TO.
+
+
+
+-- ==============================================================
+
+
+----- @TAGLIA CON --> @CUT WITH
+
+
+-- ==============================================================
+
+-- SYNTAX cut_with = cut (ogg) 'with' (strum)
+
+SYNTAX taglia_con = taglia (ogg) con (strum)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "tagliare."
+  AND strum IsA OBJECT
+    ELSE
+      IF strum IS NOT plurale
+        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+      END IF.
+      "tagliare" SAY THE ogg. "."
+
+
+ADD TO EVERY OBJECT
+  VERB taglia_con
+    WHEN ogg
+      CHECK mia_AT CAN tagliare_con
+        ELSE SAY azione_bloccata OF mia_AT.
+      AND ogg <> strum
+        ELSE SAY check_obj_not_obj2_with OF mia_AT.
+      AND ogg IS esaminabile
+        ELSE
+          IF ogg IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY ogg1_inadatto_sg OF mia_AT.
+            ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          END IF.
+          "tagliare."
+      AND strum IS esaminabile
+        ELSE
+          IF strum IS NOT plurale
+            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
+            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+          END IF.
+          "tagliare" SAY THE ogg. "."
+      AND strum IN hero
+        ELSE SAY non_possiedi_ogg2 OF mia_AT.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY imp_luogo_buio OF mia_AT.
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
+                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY ogg1_distante_sg OF mia_AT.
+                ELSE SAY ogg1_distante_pl OF mia_AT.
+              END IF.
+          END IF.
+      DOES
+        "Non puoi tagliare" SAY THE ogg. "con" SAY THE strum. "."
+     -- "You can't cut" SAY THE ogg. "with" SAY THE strum. "."
+  END VERB.
+END ADD TO.
 
 
 
@@ -4834,200 +5054,6 @@ VERB credits
     the World Wide Web Internet site
     $ihttp://www.alanif.se$p"
 END VERB.
-
-
-
--- ==============================================================
-
-
------ CUT
-
-
--- ==============================================================
-
-
-SYNTAX cut = cut (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "tagliare."
-
-
-ADD TO EVERY OBJECT
-  VERB cut
-    CHECK mia_AT CAN tagliare
-      ELSE SAY azione_bloccata OF mia_AT.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
-        END IF.
-        "tagliare."
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
-    DOES "You need to specify what you want to cut" SAY THE ogg. "with."
-    END VERB.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ CUT WITH
-
-
--- ==============================================================
-
-
-SYNTAX cut_with = cut (ogg) 'with' (strum)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "tagliare."
-  AND strum IsA OBJECT
-    ELSE
-      IF strum IS NOT plurale
-        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
-      END IF.
-      "tagliare" SAY THE ogg. "."
-
-
-ADD TO EVERY OBJECT
-  VERB cut_with
-    WHEN ogg
-      CHECK mia_AT CAN tagliare_con
-        ELSE SAY azione_bloccata OF mia_AT.
-      AND ogg <> strum
-        ELSE SAY check_obj_not_obj2_with OF mia_AT.
-      AND ogg IS esaminabile
-        ELSE
-          IF ogg IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT.
-            ELSE SAY ogg1_inadatto_pl OF mia_AT.
-          END IF.
-          "tagliare."
-      AND strum IS esaminabile
-        ELSE
-          IF strum IS NOT plurale
-            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
-          END IF.
-          "tagliare" SAY THE ogg. "."
-      AND strum IN hero
-        ELSE SAY non_possiedi_ogg2 OF mia_AT.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
-      AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
-              END IF.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
-              END IF.
-          END IF.
-      DOES
-        "You can't cut" SAY THE ogg. "with" SAY THE strum. "."
-  END VERB.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ DANCE
-
-
--- ==============================================================
-
-
-SYNTAX dance = dance.
-
-
-VERB dance
-  CHECK mia_AT CAN danzare
-    ELSE SAY azione_bloccata OF mia_AT.
-  AND CURRENT LOCATION IS illuminato
-    ELSE SAY imp_luogo_buio OF mia_AT.
-  AND hero IS NOT seduto
-    ELSE SAY check_hero_not_sitting1 OF mia_AT.
-  AND hero IS NOT sdraiato
-    ELSE SAY check_hero_not_lying_down1 OF mia_AT.
-  DOES
-        "How about a waltz?"
-END VERB.
-
-
-
--- ==============================================================
-
-
------ DIG
-
-
--- ==============================================================
-
-
-SYNTAX dig = dig (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "scavare."
-
-
-ADD TO EVERY OBJECT
-  VERB dig
-    CHECK mia_AT CAN scavare
-      ELSE SAY azione_bloccata OF mia_AT.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
-            END IF.
-        END IF.
-    AND hero IS NOT seduto
-      ELSE SAY check_hero_not_sitting2 OF mia_AT.
-    AND hero IS NOT sdraiato
-      ELSE SAY check_hero_not_lying_down2 OF mia_AT.
-    DOES
-      "There is nothing suitable to dig here."
-  END VERB.
-END ADD TO.
 
 
 
