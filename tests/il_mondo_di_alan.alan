@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione v0.4.2 (2018/07/31)
+--  versione v0.4.3 (2018/08/01)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -281,6 +281,16 @@ THE albero IsA object AT Eden.
 END THE albero.
 
 --==============================================================================
+-- Le Gemelle
+--==============================================================================
+-- Per testare verbi con attori al plurale...
+
+THE gemelle IsA femmina AT Eden.
+  HAS articolo "le".
+END THE gemelle.
+
+
+--==============================================================================
 -- La Mela
 --==============================================================================
 -- TODO: Devo fare in modo che venga descritta meglio, che sia chiaro che si
@@ -383,7 +393,7 @@ THE voci IsA suono AT mercato.
   HAS articolo "le".
   DESCRIPTION "" --> non elencare
 
-  VERB listen
+  VERB ascolta
     DOES ONLY
       IF THIS AT hero
         THEN "Stanno discutendo sui prezzi della frutta."

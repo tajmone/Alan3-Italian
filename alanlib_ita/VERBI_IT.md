@@ -25,6 +25,8 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [esamina](#esamina)
     - [leggi](#leggi)
     - [scrivi](#scrivi)
+    - [ascolta0](#ascolta0)
+    - [ascolta](#ascolta)
 - [TRASFERIMENTO OGGETTI](#trasferimento-oggetti)
     - [prendi](#prendi)
     - [prendi_da](#prendi_da)
@@ -74,6 +76,7 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [usa_con](#usa_con)
 - [VERBI VARI](#verbi-vari)
     - [Domande Dirette](#domande-dirette)
+    - [guida](#guida)
     - [trova](#trova)
 
 <!-- /MarkdownTOC -->
@@ -93,6 +96,8 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [aggiusta]
 - [apri]
 - [apri con]
+- [ascolta][ascolta0]
+- [ascolta][ascolta] (oggetto)
 - [aspetta]
 - [attendi]
 - [attraversa]
@@ -113,6 +118,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [dormi]
 - [esamina]
 - [gioca con]
+- [guida]
 - [inventario]
 - [lascia]
 - [leggi]
@@ -425,6 +431,14 @@ sintassi:
 
 # ESAMINARE, LEGGERE, ISPEZIONARE, SCRIVERE
 
+
+- [ascolta0]
+- [ascolta] (oggetto)
+- [esamina]
+- [leggi]
+- [scrivi]
+
+
 ## esamina
 
 [esamina]: #esamina "esamina"
@@ -466,6 +480,36 @@ attributo `mia_AT`:
 sintassi:
 
     scrivi "testo" (su|in) <ogg>
+
+
+## ascolta0
+
+[ascolta0]: #ascolta0 "ascolta0"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] ascoltare0
+
+sintassi:
+
+    ascolta
+
+
+## ascolta
+
+[ascolta]: #ascolta "ascolta"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] ascoltare
+
+sintassi:
+
+    ascolta <ogg!>
+
+
 
 
 -------------------------------------------------------------------------------
@@ -1152,6 +1196,22 @@ Questi verbi non fanno un granché, e alcuni di essi sono affetti dal baco che i
 Per maggior informazioni su questi verbi, consultare il sorgente di "`lib_verbi.i`".
 
 
+
+## guida
+
+[guida]: #guida "guida"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] guidare
+
+sintassi:
+
+    guida <veicolo>
+
+
+
 ## trova
 
 [trova]: #trova
@@ -1166,3 +1226,4 @@ sintassi:
     trova <ogg>
 
 Dove `ogg` è un `THING`.
+

@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.4.6 (2018/07/31)
+-- "lib_definizioni.i" v0.4.7 (2018/08/01)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -906,6 +906,24 @@ EVERY blocco_definizioni IsA LOCATION
   -- AZIONI DIRETTE AL GIOCATORE
   -- ===========================
 
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+
+  -- d) checks guarding against actions directed at the hero him-/herself
+  -----------------------------------------------------------------------
+
+  HAS check_obj_not_hero1  "It doesn't make sense to $v yourself.".             -- ask, ask_for, attack, attack_with, catch, follow
+                                                                                -- kick, listen, pull, push, push_with, take,
+                                                                                -- take_from,tell
+  HAS check_obj_not_hero2  "There is no need to be that desperate.".            -- fire_at, kill, kill_with, shoot, shoot_with
+  HAS check_obj_not_hero3  "That wouldn't accomplish anything.".                -- scratch, touch
+  HAS check_obj_not_hero5  "You don't need to be freed.".                       -- free
+  HAS check_obj_not_hero6  "There is no time for that now.".                    -- kiss, play_with, rub
+  HAS check_obj_not_hero7  "Turning your head, you notice nothing unusual behind yourself.".   -- look_behind
+  HAS check_obj_not_hero8  "You notice nothing unusual under yourself.".        -- look_under
+  HAS check_obj2_not_hero1 "That doesn't make sense.".                          -- say_to, show, take_from, touch_with, throw_at/in/to
+  HAS check_obj2_not_hero2 "That would be futile.".                             -- put_against, put_behind, put_near, put_under
+  HAS check_obj2_not_hero3 "You can't $v things to yourself.".                  -- give, tie_to
+
 
   -- ================
   -- AZIONI SUPERFLUE
@@ -931,24 +949,6 @@ EVERY blocco_definizioni IsA LOCATION
   -- ORIGINAL EN:  check_obj_not_at_hero_sg/pl
   HAS ogg1_già_qui_sg "$+1 è proprio qui.".                -- find, follow, go_to, where_is
   HAS ogg1_già_qui_pl "$+1 sono proprio qui.".
-
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-
-  -- d) checks guarding against actions directed at the hero him-/herself
-  -----------------------------------------------------------------------
-
-  HAS check_obj_not_hero1  "It doesn't make sense to $v yourself.".      -- ask, ask_for, attack, attack_with, catch, follow
-                                   -- kick, listen, pull, push, push_with, take,
-                                   -- take_from,tell
-  HAS check_obj_not_hero2  "There is no need to be that desperate.".       -- fire_at, kill, kill_with, shoot, shoot_with
-  HAS check_obj_not_hero3  "That wouldn't accomplish anything.".       -- scratch, touch
-  HAS check_obj_not_hero5  "You don't need to be freed.".          -- free
-  HAS check_obj_not_hero6  "There is no time for that now.".               -- kiss, play_with, rub
-  HAS check_obj_not_hero7  "Turning your head, you notice nothing unusual behind yourself.".   -- look_behind
-  HAS check_obj_not_hero8  "You notice nothing unusual under yourself.".           -- look_under
-  HAS check_obj2_not_hero1 "That doesn't make sense.".            -- say_to, show, take_from, touch_with, throw_at/in/to
-  HAS check_obj2_not_hero2 "That would be futile.".           -- put_against, put_behind, put_near, put_under
-  HAS check_obj2_not_hero3 "You can't $v things to yourself.".        -- give, tie_to
 
 
   -- ============================================================================
@@ -1316,6 +1316,8 @@ EVERY blocco_definizioni IsA LOCATION
   CAN andare_a.                 --> go_to
   CAN aprire.                   --> open
   CAN aprire_con.               --> open_with
+  CAN ascoltare0.               --> listen0
+  CAN ascoltare.                --> listen
   CAN aspettare.                --> wait         (+ z)
   CAN assaggiare.               --> taste        (+ lick)
   CAN attaccare.                --> attack (+ beat, fight, hit, punch)
@@ -1435,8 +1437,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN lie_on.
   CAN lift.
 --CAN light. ---------------------> ** VERBO ELIMINATO ** (+ lit)
-  CAN listen0.
-  CAN listen.
   CAN 'look'.      -- (+ gaze, peek)
   CAN look_at.
   CAN look_behind.
@@ -1520,6 +1520,8 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT andare_a.                 --> go_to
   MAKE mia_AT aprire.                   --> open
   MAKE mia_AT aprire_con.               --> open_with
+  MAKE mia_AT ascoltare0.               --> listen0
+  MAKE mia_AT ascoltare.                --> listen
   MAKE mia_AT aspettare.                --> wait         (+ z)
   MAKE mia_AT assaggiare.               --> taste        (+ lick)
   MAKE mia_AT attaccare.                --> attack (+ beat, fight, hit, punch)
@@ -1639,8 +1641,6 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT lie_on.
   MAKE mia_AT lift.
 --MAKE mia_AT light. -------------> ** VERBO ELIMINATO ** (+ lit)
-  MAKE mia_AT listen0.
-  MAKE mia_AT listen.
   MAKE mia_AT 'look'.          -- (+ gaze, peek)
   MAKE mia_AT look_at.
   MAKE mia_AT look_behind.
@@ -1735,6 +1735,8 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT andare_a.                 --> go_to
   MAKE mia_AT NOT aprire.                   --> open
   MAKE mia_AT NOT aprire_con.               --> open_with
+  MAKE mia_AT ascoltare0.                   --> listen0
+  MAKE mia_AT ascoltare.                    --> listen
   MAKE mia_AT     aspettare.                --> wait         (+ z)
   MAKE mia_AT NOT assaggiare.               --> taste        (+ lick)
   MAKE mia_AT NOT attaccare.                --> attack (+ beat, fight, hit, punch)
@@ -1855,8 +1857,6 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT lie_on.
   MAKE mia_AT NOT lift.
 --MAKE mia_AT NOT light. ---------> ** VERBO ELIMINATO ** (+ lit)
-  MAKE mia_AT listen0.
-  MAKE mia_AT listen.
   MAKE mia_AT 'look'.          -- (+ gaze, peek)
   MAKE mia_AT look_at.
   MAKE mia_AT look_behind.
@@ -1929,6 +1929,8 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT andare_a.                 --> go_to
   MAKE mia_AT NOT aprire.                   --> open
   MAKE mia_AT NOT aprire_con.               --> open_with
+  MAKE mia_AT NOT ascoltare0.               --> listen0
+  MAKE mia_AT NOT ascoltare.                --> listen
   MAKE mia_AT NOT aspettare.                --> wait         (+ z)
   MAKE mia_AT NOT assaggiare.               --> taste        (+ lick)
   MAKE mia_AT NOT attaccare.                --> attack (+ beat, fight, hit, punch)
@@ -2055,8 +2057,6 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT lie_on.
   MAKE mia_AT NOT lift.
 --MAKE mia_AT NOT light. ---------> ** VERBO ELIMINATO ** (+ lit)
-  MAKE mia_AT NOT listen0.
-  MAKE mia_AT NOT listen.
   MAKE mia_AT NOT 'look'.      -- (+ gaze, peek)
   MAKE mia_AT NOT look_at.
   MAKE mia_AT NOT look_behind.
@@ -2126,6 +2126,8 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT andare_a.                 --> go_to
   MAKE mia_AT NOT aprire.                   --> open
   MAKE mia_AT NOT aprire_con.               --> open_with
+  MAKE mia_AT NOT ascoltare0.               --> listen0
+  MAKE mia_AT NOT ascoltare.                --> listen
   MAKE mia_AT NOT aspettare.                --> wait         (+ z)
   MAKE mia_AT NOT assaggiare.               --> taste        (+ lick)
   MAKE mia_AT NOT attaccare.                --> attack (+ beat, fight, hit, punch)
@@ -2240,8 +2242,6 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT lie_on.
   MAKE mia_AT NOT lift.
 --MAKE mia_AT NOT light. ---------> ** VERBO ELIMINATO ** (+ lit)
-  MAKE mia_AT NOT listen0.
-  MAKE mia_AT NOT listen.
   MAKE mia_AT NOT 'look'.      -- (+ gaze, peek)
   MAKE mia_AT NOT look_at.
   MAKE mia_AT NOT look_behind.

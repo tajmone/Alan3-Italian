@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.4.6 (2018/07/31)
+-- "lib_verbi.i" v0.4.7 (2018/08/01)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -24,6 +24,8 @@
 --| accendi            |                              | accendi (disp)               |   | 1 |   |
 --| apri               |                              | apri (ogg)                   |   | 1 | x |
 --| apri_con           |                              | apri (ogg) con (strum)       |   | 2 | x |
+--| ascolta0           |                              | ascolta                      |   | 0 |   |
+--| ascolta            |                              | ascolta (ogg)!               |   | 1 | x |
 --| aspetta            | attendi, Z                   | aspetta                      |   | 0 |   |
 --| attraversa         |                              | attraversa (ogg)             |   | 1 | x |
 --| bevi               |                              | bevi (liq)                   |   | 1 |   |
@@ -46,6 +48,7 @@
 --| dove_mi_trovo      |                              | dove sono                    |   | 0 |   |
 --| esamina            | guarda, descrivi, osserva, X | esamina (ogg)                |   | 1 | x |
 --| gioca_con          |                              | gioca con (ogg)              |   | 1 | x |
+--| guida              |                              | guida (veicolo)              |   | 1 |   |
 --| inventario         | inv                          | inventario                   | x | 0 |   |
 --| lascia             | abbandona, metti giù, posa   | lascia (ogg)*                |   | 1 | x |
 --| leggi              |                              | leggi (ogg)                  |   | 1 | x |
@@ -132,7 +135,7 @@
 ----- dive                                                 dive                                0
 ----- dive_in                                              dive in (liq)                       1
 -->>> drink                                                drink (liq)                         1
------ drive                                                drive (vehicle)                     1
+-->>> drive                                                drive (vehicle)                     1
 -->>> drop        (+ discard, dump, reject)                drop (obj)                          1       x
 -->>> eat                                                  eat (food)                          1
 ----- empty                                                empty (obj)                         1       x
@@ -169,8 +172,8 @@
 ----- lie_on                                               lie on (surface)                    1
 ----- lift                                                 lift (obj)                          1       x
 --### light       (+ lit)                                  light (obj)                         1       x
------ listen0                                              listen                              0
------ listen                                               listen to (obj)                     1       x
+-->>> listen0                                              listen                              0
+-->>> listen                                               listen to (obj)                     1       x
 -->>> lock                                                 lock (obj)                          1       x
 -->>> lock_with                                            lock (obj) with (key)               2       x
 ----- look        (+ gaze, peek)                           look                                0
@@ -670,6 +673,87 @@ ADD TO EVERY OBJECT
     END VERB.
 END ADD TO.
 
+
+
+-- ==============================================================
+
+
+----- @ASCOLTA0 --> @LISTEN
+
+
+-- ==============================================================
+
+-- SYNTAX listen0 = listen.
+
+
+SYNTAX ascolta0 = ascolta.
+
+
+VERB ascolta0
+  CHECK mia_AT CAN ascoltare0
+    ELSE SAY azione_bloccata OF mia_AT.
+  DOES
+    "Non odi niente di particolare."
+ -- "You hear nothing unusual."
+END VERB.
+
+
+
+-- ==============================================================
+
+
+-----  @ASCOLTA (OGG) --> @LISTEN TO
+
+
+-- ==============================================================
+
+-- SYNTAX listen = listen 'to' (ogg)!
+
+
+SYNTAX ascolta = ascolta (ogg)!
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "ascoltare."
+
+
+ADD TO EVERY THING
+  VERB ascolta
+    CHECK mia_AT CAN ascoltare
+      ELSE SAY azione_bloccata OF mia_AT.
+    AND ogg <> hero
+--                                                                              TRANSLATE!
+--             "It doesn't make sense to $v yourself."
+      ELSE SAY check_obj_not_hero1 OF mia_AT.
+    DOES
+      IF ogg AT hero
+        THEN
+          IF ogg IsA ACTOR
+            THEN SAY THE ogg. "non sta"
+              IF ogg IS plurale
+                THEN "$$nno"
+              END IF.
+              "parlando in questo momento."
+           -- "not talking right now."
+            ELSE "Non odi niente di particolare."
+              -- "You hear nothing unusual."
+          END IF.
+-- TODO: Se l'oggetto è lontano non produce nessuna risposta, ma forse dovrebbe
+--       produrre un qualche testo. Il problema qui è che comunque il tentativo
+--       svela l'esistenza dell'oggetto, laddove un oggetto inesistente avrebbe
+--       prodotto "Non conosco la parola 'xxx'.", questo messaggio (o la sua
+--       assenza) è indicatorio del fatto che l'oggetto esiste ma non si trova 
+--       in un luogo contiguo.
+      ELSIF ogg NEAR hero
+        THEN "Non riesci a sentire" SAY THE ogg. "da questa distanza."
+     -- THEN "You can't hear" SAY THE ogg. "very well from here."
+      END IF.
+  END VERB.
+END ADD TO.
 
 
 -- ==============================================================
@@ -1926,6 +2010,85 @@ ADD TO EVERY THING
   END VERB.
 END ADD TO.
 
+
+
+
+-- ==============================================================
+
+
+----- @GUIDA --> @DRIVE
+
+
+-- ==============================================================
+
+-- SYNTAX drive = drive (veicolo)
+
+SYNTAX guida = guida (veicolo)
+  WHERE veicolo IsA OBJECT
+    ELSE
+      IF veicolo IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "guidare."
+
+ADD TO EVERY OBJECT
+  VERB guida
+    CHECK mia_AT CAN guidare
+      ELSE SAY azione_bloccata OF mia_AT.
+    AND veicolo IS esaminabile
+      ELSE
+        IF veicolo IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY ogg1_inadatto_sg OF mia_AT.
+          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        END IF.
+        "guidare."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY imp_luogo_buio OF mia_AT.
+    AND veicolo IS raggiungibile AND veicolo IS NOT distante
+      ELSE
+        IF veicolo IS NOT raggiungibile
+          THEN
+            IF veicolo IS NOT plurale
+              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
+              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+            END IF.
+        ELSIF veicolo IS distante
+          THEN
+            IF veicolo IS NOT plurale
+              THEN SAY ogg1_distante_sg OF mia_AT.
+              ELSE SAY ogg1_distante_pl OF mia_AT.
+            END IF.
+        END IF.
+    AND hero IS NOT sdraiato
+--                                                                              TRANSLATE!
+      ELSE SAY check_hero_not_lying_down3 OF mia_AT.
+    DOES
+      IF veicolo IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY ogg1_inadatto_sg OF mia_AT.
+        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+      END IF.
+      "guidare."
+  END VERB.
+END ADD TO.
+
+
+--                                                                              TRANSLATE!
+-- another 'drive' formulation added to guide players to use the right phrasing:
+
+
+SYNTAX guida_errore = guida.
+
+-- @TODO: Aggiungere check 'mia_AT can guidare'? Se no il messaggio su come usare
+--        il verbo diventa ingannevole.
+
+VERB guida_errore
+  DOES "Per guidare un mezzo di trasporto, usa la formula GUIDA VEICOLO."
+  -- DOES "To drive something, use the phrasing DRIVE SOMETHING."
+END VERB.
 
 
 
@@ -4955,78 +5118,6 @@ END ADD TO.
 -- ==============================================================
 
 
------ DRIVE
-
-
--- ==============================================================
-
-
-SYNTAX drive = drive (veicolo)
-  WHERE veicolo IsA OBJECT
-    ELSE
-      IF veicolo IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "guidare."
-
-ADD TO EVERY OBJECT
-  VERB drive
-    CHECK mia_AT CAN guidare
-      ELSE SAY azione_bloccata OF mia_AT.
-    AND veicolo IS esaminabile
-      ELSE
-        IF veicolo IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
-        END IF.
-        "guidare."
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
-    AND veicolo IS raggiungibile AND veicolo IS NOT distante
-      ELSE
-        IF veicolo IS NOT raggiungibile
-          THEN
-            IF veicolo IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
-            END IF.
-        ELSIF veicolo IS distante
-          THEN
-            IF veicolo IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
-            END IF.
-        END IF.
-    AND hero IS NOT sdraiato
-      ELSE SAY check_hero_not_lying_down3 OF mia_AT.
-    DOES
-      IF veicolo IS NOT plurale
-        THEN "That's not"
-        ELSE "Those are not"
-      END IF.
-      "something you can drive."
-  END VERB.
-END ADD TO.
-
-
--- another 'drive' formulation added to guide players to use the right phrasing:
-
-
-SYNTAX drive_error = drive.
-
-
-VERB drive_error
-  DOES "To drive something, use the phrasing DRIVE SOMETHING."
-END VERB.
-
-
-
--- ==============================================================
-
-
 ----- EMPTY   (+ POUR)
 
 
@@ -6470,70 +6561,6 @@ ADD TO EVERY OBJECT
         END IF.
   DOES
     "That wouldn't accomplish anything."
-  END VERB.
-END ADD TO.
-
-
--- ==============================================================
-
-
------ LISTEN
-
-
--- ==============================================================
-
-
-SYNTAX listen0 = listen.
-
-
-VERB listen0
-  CHECK mia_AT CAN listen0
-    ELSE SAY azione_bloccata OF mia_AT.
-  DOES
-    "You hear nothing unusual."
-END VERB.
-
-
-
--- ==============================================================
-
-
------ LISTEN TO
-
-
--- ==============================================================
-
-
-SYNTAX listen = listen 'to' (ogg)!
-  WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_to_sg OF mia_AT.
-        ELSE SAY illegal_parameter_to_pl OF mia_AT.
-      END IF.
-
-
-ADD TO EVERY THING
-  VERB listen
-    CHECK mia_AT CAN listen
-      ELSE SAY azione_bloccata OF mia_AT.
-    AND ogg <> hero
-      ELSE SAY check_obj_not_hero1 OF mia_AT.
-    DOES
-      IF ogg AT hero
-        THEN
-          IF ogg IsA ACTOR
-            THEN SAY THE ogg.
-              IF ogg IS NOT plurale
-                THEN "is"
-                ELSE "are"
-              END IF.
-              "not talking right now."
-            ELSE "You hear nothing unusual."
-          END IF.
-      ELSIF ogg NEAR hero
-        THEN "You can't hear" SAY THE ogg. "very well from here."
-      END IF.
   END VERB.
 END ADD TO.
 

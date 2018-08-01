@@ -11,12 +11,16 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/08/01](#20180801)
+    - [Verb Restriction Attributes](#verb-restriction-attributes)
+    - [Verb: `drive`](#verb-drive)
+    - [Verbs: `listen0` and `listen`](#verbs-listen0-and-listen)
 - [2018/07/31 \(2\)](#20180731-2)
     - [Verb: `free`](#verb-free)
     - [Verb: `think`](#verb-think)
     - [Verb: `think_about`](#verb-think_about)
 - [2018/07/31 \(1\)](#20180731-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
     - [Verb Responses](#verb-responses)
     - [Verb: `fix`](#verb-fix)
 - [2018/07/29 \(2\)](#20180729-2)
@@ -26,16 +30,16 @@ Status: Alpha stage.
     - [Il Nocciolo del Problema](#il-nocciolo-del-problema)
     - [Abolizione dell'Attributo `naturale`](#abolizione-dellattributo-naturale)
     - [Rilfessioni sull'Attributo `illuminato`](#rilfessioni-sullattributo-illuminato)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
     - [Testo dei Verbi](#testo-dei-verbi)
 - [2018/07/28 \(3\)](#20180728-3)
     - [Verb Responses](#verb-responses-1)
 - [2018/07/28 \(2\)](#20180728-2)
     - [Verb Responses](#verb-responses-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
     - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
 - [2018/07/28 \(1\)](#20180728-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
     - [Verb: `answer`](#verb-answer)
     - [Verbs: `fill` and `fill_with`](#verbs-fill-and-fill_with)
 - [2018/07/27 \(7\)](#20180727-7)
@@ -80,15 +84,15 @@ Status: Alpha stage.
     - [Polish and Fix Translated Verbs](#polish-and-fix-translated-verbs)
     - [Verb Parameters Fixes](#verb-parameters-fixes)
 - [2018/07/25 \(8\)](#20180725-8)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-5)
     - [Verbs: `yes` and `no`](#verbs-yes-and-no)
 - [2018/07/25 \(7\)](#20180725-7)
 - [2018/07/25 \(6\)](#20180725-6)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-5)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-6)
     - [Verb: `play`](#verb-play)
     - [Verb: `play_with`](#verb-play_with)
 - [2018/07/25 \(5\)](#20180725-5)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-6)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-7)
 - [2018/07/25 \(4\)](#20180725-4)
 - [2018/07/25 \(3\)](#20180725-3)
     - [Library Instances](#library-instances)
@@ -208,9 +212,9 @@ Status: Alpha stage.
     - [Verb: `pray`](#verb-pray)
     - [Verb: `break`](#verb-break)
     - [Verb: `break_with`](#verb-break_with)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-7)
-- [2018/05/22 \(2\)](#20180522-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-8)
+- [2018/05/22 \(2\)](#20180522-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-9)
 - [2018/05/22 \(1\)](#20180522-1)
     - [Verb: `undress`](#verb-undress)
 - [2018/05/19](#20180519)
@@ -227,6 +231,42 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/08/01
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.4.7)
+- [`lib_verbi.i`][lib_verbi] (v0.4.7)
+
+## Verb Restriction Attributes
+
+Translated `mia_AT` attributes for verb restrictions:
+
+|  English  |   Italian    |
+|-----------|--------------|
+| `listen0` | `ascoltare0` |
+| `listen`  | `ascoltare`  |
+
+
+## Verb: `drive`
+
+Translated verb `guida`, "__guida__" (_drive_):
+
+    guida (veicolo)
+
+with no synonyms.
+
+## Verbs: `listen0` and `listen`
+
+Translated verbs `ascolta0` and `ascolta`, "__ascolta__" and "__ascolta (ogg)__":
+
+    ascolta
+    ascolta (ogg)!
+
+with no synonyms.
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/07/31 (2)
 

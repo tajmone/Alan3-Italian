@@ -351,8 +351,8 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `lie_on`         |                           |
 | `lift`           |                           |
 | ~~`light`~~      | _removed_                 |
-| `listen0`        |                           |
-| `listen`         |                           |
+| `listen0`        | `ascoltare0`              |
+| `listen`         | `ascoltare`               |
 | `lock`           | `bloccare`                |
 | `lock_with`      | `bloccare_con`            |
 | `'look'`         |                           |
