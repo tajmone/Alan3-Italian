@@ -10,6 +10,7 @@ Some pending tasks that need to be done.
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Locations in Verb Responses](#locations-in-verb-responses)
+- [Preposizioni Articolate of ACTORS](#preposizioni-articolate-of-actors)
 
 <!-- /MarkdownTOC -->
 
@@ -43,3 +44,19 @@ So, I'll have to think about how to fix this. Possible solutions:
 3. I could initialize  `LOCATION` to have an empty `ARTICLE` string.
 
 All these solutions have pros and cons, and they tend to add overhead. But the problem has to be handled somehow, so I need to think about it well before implementing it.
+
+# Preposizioni Articolate of ACTORS
+
+When initializing articles and prepositions, I must also ensure that for named actors the preposizioni articolare are set to the base preposition without article, othersiwe I'll get responses like this:
+
+```
+> lega pera a gustavo
+(taking la pera first)
+Non è possibile legare la pera al Gustavo.
+```
+
+... where it should be "__a Gustavo__" instead!
+
+Initialization of preposizioni articolate is being handled on `EVERY THING`: should I add some checks there to handle ACTORs differently (ie, _NAMED actors_), or should I add a dedicated initialization on the ACTOR classes?
+
+There is also an Italian initialization code for `EVERY ACTOR`, in "`lib_classi.i`", which is handling articles but not preposizioni articolate. It looks like I should add there the code to handle this problem!

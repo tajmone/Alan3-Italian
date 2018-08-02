@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.4.9 (2018/08/01)
+-- "lib_definizioni.i" v0.4.10 (2018/08/02)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -752,6 +752,7 @@ EVERY blocco_definizioni IsA LOCATION
   -- sintassi corretta del verbo.
 
   HAS specificare_CON_cosa  "Devi specificare con cosa vorresti".
+  HAS specificare_A_cosa    "Devi specificare a cosa vorresti".
 
 
   -- =======================

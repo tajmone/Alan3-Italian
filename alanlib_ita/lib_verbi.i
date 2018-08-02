@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.4.12 (2018/08/02)
+-- "lib_verbi.i" v0.4.13 (2018/08/02)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -56,6 +56,8 @@
 --| guida              |                              | guida (veicolo)                |   | 1 |   |
 --| inventario         | inv                          | inventario                     | x | 0 |   |
 --| lascia             | abbandona, metti giù, posa   | lascia (ogg)*                  |   | 1 | x |
+--| lega               |                              | lega (ogg)                     |   | 1 | x |
+--| lega_a             |                              | lega (ogg) a (bersaglio)       |   | 2 | x |
 --| leggi              |                              | leggi (ogg)                    |   | 1 | x |
 --| libera             | rilascia                     | libera (ogg)                   |   | 1 | x |
 --| mangia             |                              | mangia (cibo)                  |   | 1 |   |
@@ -267,8 +269,8 @@
 ----- throw_at                                             throw (projectile) at (target)      2
 ----- throw_in                                             throw (projectile) in (cont)        2
 ----- throw_to                                             throw (projectile) to (recipient)   2
------ tie                                                  tie (obj)                           1       x
------ tie_to                                               tie (obj) to (target)               2       x
+-->>> tie                                                  tie (obj)                           1       x
+-->>> tie_to                                               tie (obj) to (target)               2       x
 -->>> touch       (+ feel)                                 touch (obj)                         1       x
 -->>> touch_with  (+ feel)                                 touch (ogg) 'with' (strum)          2       x
 ----- turn        (+ rotate)                               turn (obj)                          1       x
@@ -2510,6 +2512,137 @@ END ADD TO.
 --|         drop = put down (ogg)*.
 --| SYNONYMS
 --|   discard, dump, reject = drop.
+
+
+-- ==============================================================
+
+
+----- @LEGA --> @TIE
+
+
+-- ==============================================================
+-- @NOTA: in i6: lega, fissa, congiungi, unisci, allaccia, annoda, attacca.
+
+-- SYNTAX tie = tie (ogg)
+
+SYNTAX lega = lega (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "legare."
+
+
+ADD TO EVERY OBJECT
+  VERB lega
+    CHECK mia_AT CAN legare
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+        END IF.
+        "legare."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
+    DOES
+      SAY mia_AT:specificare_A_cosa. "vorresti legare $+1."
+   -- "You must state where you want to tie" SAY THE ogg. "."
+    END VERB lega.
+END ADD TO.
+
+
+
+-- ==============================================================
+
+
+----- @LEGA A --> @TIE TO
+
+
+-- ==============================================================
+
+-- SYNTAX lega_a = tie (ogg) 'to' (target)
+
+SYNTAX lega_a = lega (ogg) a (bersaglio)
+  WHERE ogg IsA OBJECT
+    ELSE SAY  illegal_parameter_obj  OF mia_AT.
+  AND bersaglio IsA THING
+    ELSE SAY  illegal_parameter_obj  OF mia_AT.
+
+
+
+ADD TO EVERY THING
+  VERB lega_a
+    WHEN ogg
+      CHECK mia_AT CAN legare_a
+        ELSE SAY  azione_bloccata  OF mia_AT.
+      AND ogg IS esaminabile
+        ELSE
+          IF ogg IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT. "legare."
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT. "legare."
+          END IF.
+      AND bersaglio IS esaminabile
+        ELSE SAY  check_obj2_suitable_there  OF mia_AT.
+--                                                                              TRANSLATE!
+      AND ogg <> bersaglio
+        ELSE SAY  check_obj_not_obj2_to  OF mia_AT.
+--                                                                              TRANSLATE!
+      AND ogg IS prendibile
+        ELSE SAY  check_obj_takeable  OF mia_AT.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
+              END IF.
+          END IF.
+      AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
+        ELSE
+          IF bersaglio IS NOT raggiungibile
+            THEN
+              IF bersaglio IS NOT plurale
+                THEN SAY  ogg2_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg2_non_raggiungibile_pl  OF mia_AT.
+              END IF.
+          ELSIF bersaglio IS distante
+            THEN
+              IF bersaglio IS NOT plurale
+                THEN SAY  ogg2_distante_sg  OF mia_AT.
+                ELSE SAY  ogg2_distante_pl  OF mia_AT.
+              END IF.
+          END IF.
+      DOES
+        -- implicit taking:
+        IF ogg NOT DIRECTLY IN hero
+          THEN LOCATE ogg IN hero.
+--                                                                              TRANSLATE!
+            SAY  implicit_taking_message  OF mia_AT.
+        END IF.
+        -- end of implicit taking.
+
+        "Non è possibile legare $+1" SAY bersaglio:prep_A. "$2."
+     -- "It's not possible to tie" SAY THE ogg. "to" SAY THE bersaglio. "."
+
+  END VERB lega_a.
+END ADD TO.
+
 
 
 -- ==============================================================
@@ -9465,129 +9598,6 @@ ADD TO EVERY OBJECT
   END VERB throw_in.
 END ADD TO.
 
-
-
--- ==============================================================
-
-
------ TIE
-
-
--- ==============================================================
-
-
-SYNTAX tie = tie (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "legare."
-
-
-ADD TO EVERY OBJECT
-  VERB tie
-    CHECK mia_AT CAN legare
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-        END IF.
-        "legare."
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY  imp_luogo_buio  OF mia_AT.
-    DOES
-      "You must state where you want to tie" SAY THE ogg. "."
-    END VERB tie.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ TIE TO
-
-
--- ==============================================================
-
-
-SYNTAX tie_to = tie (ogg) 'to' (bersaglio)
-  WHERE ogg IsA OBJECT
-    ELSE SAY  illegal_parameter_obj  OF mia_AT.
-  AND bersaglio IsA THING
-    ELSE SAY  illegal_parameter_obj  OF mia_AT.
-
-
-
-ADD TO EVERY THING
-  VERB tie_to
-    WHEN ogg
-      CHECK mia_AT CAN legare_a
-        ELSE SAY  azione_bloccata  OF mia_AT.
-      AND ogg IS esaminabile
-        ELSE
-          IF ogg IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY  ogg1_inadatto_sg  OF mia_AT. "legare."
-            ELSE SAY  ogg1_inadatto_pl  OF mia_AT. "legare."
-          END IF.
-      AND bersaglio IS esaminabile
-        ELSE SAY  check_obj2_suitable_there  OF mia_AT.
-      AND ogg <> bersaglio
-        ELSE SAY  check_obj_not_obj2_to  OF mia_AT.
-      AND ogg IS prendibile
-        ELSE SAY  check_obj_takeable  OF mia_AT.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY  imp_luogo_buio  OF mia_AT.
-      AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
-              END IF.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY  ogg1_distante_sg  OF mia_AT.
-                ELSE SAY  ogg1_distante_pl  OF mia_AT.
-              END IF.
-          END IF.
-      AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
-        ELSE
-          IF bersaglio IS NOT raggiungibile
-            THEN
-              IF bersaglio IS NOT plurale
-                THEN SAY  ogg2_non_raggiungibile_sg  OF mia_AT.
-                ELSE SAY  ogg2_non_raggiungibile_pl  OF mia_AT.
-              END IF.
-          ELSIF bersaglio IS distante
-            THEN
-              IF bersaglio IS NOT plurale
-                THEN SAY  ogg2_distante_sg  OF mia_AT.
-                ELSE SAY  ogg2_distante_pl  OF mia_AT.
-              END IF.
-          END IF.
-      DOES
-        -- implicit taking:
-        IF ogg NOT DIRECTLY IN hero
-          THEN LOCATE ogg IN hero.
---                                                                              TRANSLATE!
-            SAY  implicit_taking_message  OF mia_AT.
-        END IF.
-        -- end of implicit taking.
-
-        "It's not possible to tie" SAY THE ogg. "to" SAY THE bersaglio. "."
-
-  END VERB tie_to.
-END ADD TO.
 
 
 

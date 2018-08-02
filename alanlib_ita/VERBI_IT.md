@@ -53,6 +53,8 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [accendi](#accendi)
     - [spegni](#spegni)
 - [INTERAZIONI VARIE CON OGGETTI](#interazioni-varie-con-oggetti)
+    - [lega](#lega)
+    - [lega_a](#lega_a)
     - [libera](#libera)
     - [ripara](#ripara)
     - [taglia](#taglia)
@@ -149,6 +151,8 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [guida]
 - [inventario]
 - [lascia]
+- [lega]
+- [lega a]
 - [leggi]
 - [libera]
 - [mangia]
@@ -872,6 +876,8 @@ Se l'azione avrà successo, altererà il seguente attributo di `<disp>`:
 
 # INTERAZIONI VARIE CON OGGETTI
 
+- [lega]
+- [lega_a]
 - [libera]
 - [ripara]
 - [taglia]
@@ -879,6 +885,37 @@ Se l'azione avrà successo, altererà il seguente attributo di `<disp>`:
 - [tira]
 - [tocca]
 - [tocca_con]
+
+
+## lega
+
+[lega]: #lega "lega"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] legare
+
+sintassi:
+
+    lega <ogg>
+
+
+## lega_a
+
+[lega_a]: #lega_a "lega_a"
+[lega a]: #lega_a "lega_a"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] legare_a
+
+sintassi:
+
+    lega <ogg> a <bersaglio>
+
+
 
 ## libera
 

@@ -11,13 +11,16 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/08/02 \(3\)](#20180802-3)
+    - [Verb Responses](#verb-responses)
+    - [Verbs: `tie` and `tie_to`](#verbs-tie-and-tie_to)
 - [2018/08/02 \(2\)](#20180802-2)
 - [2018/08/02 \(1\)](#20180802-1)
     - [Verbs: `kill` and `kill_with`](#verbs-kill-and-kill_with)
     - [Verbs: `touch` and `touch_with`](#verbs-touch-and-touch_with)
     - [Code Cleanup](#code-cleanup)
 - [2018/08/01 \(4\)](#20180801-4)
-    - [Verb Responses](#verb-responses)
+    - [Verb Responses](#verb-responses-1)
     - [Verb: `sing`](#verb-sing)
     - [Verb: `kiss`](#verb-kiss)
     - [Verb: `pull`](#verb-pull)
@@ -25,7 +28,7 @@ Status: Alpha stage.
     - [Verbs: `attack` and `attack_with`](#verbs-attack-and-attack_with)
 - [2018/08/01 \(2\)](#20180801-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
-    - [Verb Responses](#verb-responses-1)
+    - [Verb Responses](#verb-responses-2)
     - [Verbs: `cut` and `cut_with`](#verbs-cut-and-cut_with)
     - [Verb: `dance`](#verb-dance)
     - [Verb: `dig`](#verb-dig)
@@ -39,7 +42,7 @@ Status: Alpha stage.
     - [Verb: `think_about`](#verb-think_about)
 - [2018/07/31 \(1\)](#20180731-1)
     - [Verb Restriction Attributes](#verb-restriction-attributes-2)
-    - [Verb Responses](#verb-responses-2)
+    - [Verb Responses](#verb-responses-3)
     - [Verb: `fix`](#verb-fix)
 - [2018/07/29 \(2\)](#20180729-2)
     - [Remove Verb Restriction Attributes](#remove-verb-restriction-attributes)
@@ -51,9 +54,9 @@ Status: Alpha stage.
     - [Verb Restriction Attributes](#verb-restriction-attributes-3)
     - [Testo dei Verbi](#testo-dei-verbi)
 - [2018/07/28 \(3\)](#20180728-3)
-    - [Verb Responses](#verb-responses-3)
-- [2018/07/28 \(2\)](#20180728-2)
     - [Verb Responses](#verb-responses-4)
+- [2018/07/28 \(2\)](#20180728-2)
+    - [Verb Responses](#verb-responses-5)
     - [Verb Restriction Attributes](#verb-restriction-attributes-4)
     - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
 - [2018/07/28 \(1\)](#20180728-1)
@@ -249,6 +252,46 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/08/02 (3)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.4.10)
+- [`lib_verbi.i`][lib_verbi] (v0.4.13)
+
+## Verb Responses
+
+New verb responses attributes (created for Italian library, no English counterpart):
+
+|      Attribute       |                Text                |
+|----------------------|------------------------------------|
+| `specificare_A_cosa` | `Devi specificare a cosa vorresti` |
+
+
+## Verbs: `tie` and `tie_to`
+
+Translated verbs `lega` and `lega_a`, "__lega__":
+
+    lega (ogg)
+    lega (ogg) a (bersaglio)
+
+with no synonyms.
+
+> __NOTA 1__ — In _Infit_, il verbo `lega` riconosce i seguenti sinonimi: `fissa`, `congiungi`, `unisci`, `allaccia`, `annoda`, `attacca`. Però alcuni di essi vengono usati nella forma `lega <ogg> con <ogg>`, e potrebbero quindi non essere pertinenti in questo contesto. Devo riflettere se usare alcuni di questi sinonimi o se lasciare la libertà di scelta all'autore.
+
+<!-- sep -->
+
+> __NOTA 2__ — Attualmente, se si cerca di legare un oggetto ad un attore con nome proprio, il verbo `lega_a` produce una preposizione articolata anziché semplice:
+> 
+> ```
+> > lega pera a gustavo
+> (taking la pera first)
+> Non è possibile legare la pera al Gustavo.
+> ```
+> 
+> Il problema non è nel verbo né nel messaggio, ma nell'inizializzazione "italiana" delle istanze di `THING`; questo verbo ha solo portato a galla il problema. Si tratta di risolvere la questione a monte, includendo nell'inizializzazione dei controlli: se l'istanza inizializzanda è un `ACTOR` con nome proprio (`IS named`) allora gli attributi `prep_*` dovrebbero essere preposizioni semplici, senza articolo.
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/08/02 (2)
 
