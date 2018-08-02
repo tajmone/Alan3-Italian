@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.4.10 (2018/08/01)
+-- "lib_verbi.i" v0.4.11 (2018/08/02)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -83,7 +83,11 @@
 --| taglia             |                              | taglia (ogg)                   |   | 1 | x |
 --| taglia_con         |                              | taglia (ogg) con (strum)       |   | 2 | x |
 --| tira               |                              | tira (ogg)                     |   | 1 | x |
+--| tocca              | accarezza, carezza           | tocca (ogg)                    |   | 1 | x |
+--| tocca_con          | accarezza, carezza           | tocca (ogg) con (strum)        |   | 2 | x |
 --| trova              |                              | trova (ogg)                    |   | 1 | x |
+--| uccidi             | ammazza                      | uccidi (vittima)               |   | 1 |   |
+--| uccidi_con         | ammazza                      | uccidi (vittima) con (arma)    |   | 2 |   |
 --| usa                |                              | usa (ogg)                      |   | 1 | x |
 --| usa_con            |                              | usa (ogg) con (strum)          |   | 2 | x |
 --| vai_a              |                              | vai a (dest)                   |   | 1 |   |
@@ -172,8 +176,8 @@
 ----- jump_in                                              jump in (cont)                      1
 ----- jump_on                                              jump on (surface)                   1
 ----- kick                                                 kick (target)                       1
------ kill        (+ murder)                               kill (victim)                       1
------ kill_with                                            kill (victim) with (weapon)         2
+-->>> kill        (+ murder)                               kill (victim)                       1
+-->>> kill_with                                            kill (victim) with (weapon)         2
 -->>> kiss        (+ hug, embrace)                         kiss (obj)                          1       x
 ----- knock (on)                                           knock on (obj)                      1       x
 ----- lie_down                                             lie down                            0
@@ -264,8 +268,10 @@
 ----- throw_to                                             throw (projectile) to (recipient)   2
 ----- tie                                                  tie (obj)                           1       x
 ----- tie_to                                               tie (obj) to (target)               2       x
------ touch       (+ feel)                                 touch (obj)                         1       x
------ turn        (+ rotate)                               turn (obj)                          1       x-->>> turn_on                                              turn on (app)                       1
+-->>> touch       (+ feel)                                 touch (obj)                         1       x
+-->>> touch_with  (+ feel)                                 touch (ogg) 'with' (strum)          2       x
+----- turn        (+ rotate)                               turn (obj)                          1       x
+-->>> turn_on                                              turn on (app)                       1
 -->>> turn_off                                             turn off (app)                      1
 -->>> undress                                              undress                             0
 -->>> unlock                                               unlock (obj)                        1       x
@@ -326,10 +332,10 @@ SYNONYMS Q = 'quit'.
 
 META VERB abbandona_partita
   CHECK mia_AT CAN abbandonare_partita
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     QUIT.
-END VERB.
+END VERB abbandona_partita.
 
 
 -- ==============================================================
@@ -356,10 +362,10 @@ SYNTAX carica_partita = carica.
 
 META VERB carica_partita
   CHECK mia_AT CAN caricare_partita
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     RESTORE.
-END VERB.
+END VERB carica_partita.
 
 
 -- ==============================================================
@@ -381,10 +387,10 @@ SYNTAX ricomincia_partita = ricomincia partita.
 
 META VERB ricomincia_partita
   CHECK mia_AT CAN ricominciare_partita
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     RESTART.
-END VERB.
+END VERB ricomincia_partita.
 
 
 -- ==============================================================
@@ -409,10 +415,10 @@ SYNTAX salva_partita = salva.
 
 META VERB salva_partita
   CHECK mia_AT CAN salvare_partita
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     SAVE.
-END VERB.
+END VERB salva_partita.
 
 
 
@@ -456,8 +462,8 @@ SYNTAX  accendi = accendi (disp)
   WHERE disp IsA OBJECT
     ELSE
       IF disp IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "accendere."
 
@@ -473,14 +479,14 @@ SYNTAX  accendi = accendi (disp)
 ADD TO EVERY OBJECT
   VERB accendi
     CHECK mia_AT CAN accendere
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     DOES
       IF disp IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "accendere."
-  END VERB.
+  END VERB accendi.
 END ADD TO.
 
 
@@ -498,8 +504,8 @@ SYNTAX apri = apri (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "aprire."
 
@@ -507,30 +513,30 @@ SYNTAX apri = apri (ogg)
 ADD TO EVERY OBJECT
   VERB apri
     CHECK mia_AT CAN aprire
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS apribile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "aprire."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     AND ogg IS NOT aperto
@@ -538,13 +544,13 @@ ADD TO EVERY OBJECT
         IF ogg IS NOT femminile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg_già_aperto_ms OF mia_AT.
-              ELSE SAY ogg_già_aperto_mp OF mia_AT.
+              THEN SAY  ogg_già_aperto_ms  OF mia_AT.
+              ELSE SAY  ogg_già_aperto_mp  OF mia_AT.
             END IF.
           ELSE
             IF ogg IS NOT plurale
-              THEN SAY ogg_già_aperto_fs OF mia_AT.
-              ELSE SAY ogg_già_aperto_fp OF mia_AT.
+              THEN SAY  ogg_già_aperto_fs  OF mia_AT.
+              ELSE SAY  ogg_già_aperto_fp  OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -566,7 +572,7 @@ ADD TO EVERY OBJECT
         THEN MAKE ogg aperto.
         "Apri" SAY THE ogg. "."
       END IF.
-  END VERB.
+  END VERB apri.
 END ADD TO.
 
 
@@ -586,16 +592,16 @@ SYNTAX apri_con = apri (ogg) con (strum)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
     "aprire."
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
         --  "$+1 non [è/sono] qualcosa con cui poter"
-        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+        THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+        ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
       END IF.
       "aprire." -- @TODO: "aprire altre cose"??                                 IMPROVE!
 
@@ -605,56 +611,56 @@ ADD TO EVERY OBJECT
   VERB apri_con
         WHEN ogg
       CHECK mia_AT CAN aprire_con
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg IS apribile
         ELSE
           IF ogg IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT.
-            ELSE SAY ogg1_inadatto_pl OF mia_AT.
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
           END IF.
           "aprire."
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
             --  "$+1 non [è/sono] qualcosa con cui poter"
-            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+            THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+            ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
           END IF.
           "aprire." -- @TODO: ".. altre cose"??                                 IMPROVE!
       AND ogg <> strum
-        ELSE SAY check_obj_not_obj2_with OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       AND strum IN hero
-        ELSE SAY non_possiedi_ogg2 OF mia_AT.
+        ELSE SAY  non_possiedi_ogg2  OF mia_AT.
       AND ogg IS NOT aperto
         ELSE
           IF ogg IS NOT femminile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg_già_aperto_ms OF mia_AT.
-                ELSE SAY ogg_già_aperto_mp OF mia_AT.
+                THEN SAY  ogg_già_aperto_ms  OF mia_AT.
+                ELSE SAY  ogg_già_aperto_mp  OF mia_AT.
               END IF.
             ELSE
               IF ogg IS NOT plurale
-                THEN SAY ogg_già_aperto_fs OF mia_AT.
-                ELSE SAY ogg_già_aperto_fp OF mia_AT.
+                THEN SAY  ogg_già_aperto_fs  OF mia_AT.
+                ELSE SAY  ogg_già_aperto_fp  OF mia_AT.
               END IF.
           END IF.
       DOES
@@ -678,7 +684,7 @@ ADD TO EVERY OBJECT
         END IF.
 
 
-    END VERB.
+    END VERB apri_con.
 END ADD TO.
 
 
@@ -699,11 +705,11 @@ SYNTAX ascolta0 = ascolta.
 
 VERB ascolta0
   CHECK mia_AT CAN ascoltare0
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     "Non odi niente di particolare."
  -- "You hear nothing unusual."
-END VERB.
+END VERB ascolta0.
 
 
 
@@ -723,8 +729,8 @@ SYNTAX ascolta = ascolta (ogg)!
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "ascoltare."
 
@@ -732,11 +738,11 @@ SYNTAX ascolta = ascolta (ogg)!
 ADD TO EVERY THING
   VERB ascolta
     CHECK mia_AT CAN ascoltare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg <> hero
 --                                                                              TRANSLATE!
 --             "It doesn't make sense to $v yourself."
-      ELSE SAY check_obj_not_hero1 OF mia_AT.
+      ELSE SAY  check_obj_not_hero1  OF mia_AT.
     DOES
       IF ogg AT hero
         THEN
@@ -754,13 +760,13 @@ ADD TO EVERY THING
 --       produrre un qualche testo. Il problema qui è che comunque il tentativo
 --       svela l'esistenza dell'oggetto, laddove un oggetto inesistente avrebbe
 --       prodotto "Non conosco la parola 'xxx'.", questo messaggio (o la sua
---       assenza) è indicatorio del fatto che l'oggetto esiste ma non si trova 
+--       assenza) è indicatorio del fatto che l'oggetto esiste ma non si trova
 --       in un luogo contiguo.
       ELSIF ogg NEAR hero
         THEN "Non riesci a sentire" SAY THE ogg. "da questa distanza."
      -- THEN "You can't hear" SAY THE ogg. "very well from here."
       END IF.
-  END VERB.
+  END VERB ascolta.
 END ADD TO.
 
 
@@ -780,10 +786,10 @@ SYNONYMS
 
 VERB aspetta
   CHECK mia_AT CAN aspettare
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     "Il tempo passa."
-END VERB.
+END VERB aspetta.
 
 
 
@@ -794,7 +800,7 @@ END VERB.
 
 
 -- =============================================================
--- @NOTA: In Inform 6 'attacca' riconosce questi sinonimi: 
+-- @NOTA: In Inform 6 'attacca' riconosce questi sinonimi:
 --        rompi, colpisci, combatti, uccidi, tortura, lotta, sfonda, ammazza,
 --        picchia.
 
@@ -806,8 +812,8 @@ SYNTAX attacca = attacca (bersaglio)
     ELSE
       IF bersaglio IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "attaccare."
 
@@ -821,51 +827,51 @@ SYNONYMS combatti, picchia = attacca.
 ADD TO EVERY THING
   VERB attacca
     CHECK mia_AT CAN attaccare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND bersaglio IS esaminabile
       ELSE
         IF bersaglio IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "attaccare."
 --                                                                              TRANSLATE!
     AND bersaglio <> hero
-      ELSE SAY check_obj_not_hero1 OF mia_AT.
+      ELSE SAY  check_obj_not_hero1  OF mia_AT.
 --                                                                              TRANSLATE!
     AND bersaglio NOT IN hero
-      ELSE SAY check_obj_not_in_hero1 OF mia_AT.
+      ELSE SAY  check_obj_not_in_hero1  OF mia_AT.
 --                                                                              TRANSLATE!
     AND bersaglio NOT IN abbigliamento
-      ELSE SAY check_obj_not_in_worn2 OF mia_AT.
+      ELSE SAY  check_obj_not_in_worn2  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
       ELSE
         IF bersaglio IS NOT raggiungibile
           THEN
             IF bersaglio IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF bersaglio IS distante
           THEN
             IF bersaglio IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
 --                                                                              TRANSLATE!
     AND hero IS NOT seduto
-      ELSE SAY check_hero_not_sitting2 OF mia_AT.
+      ELSE SAY  check_hero_not_sitting2  OF mia_AT.
 --                                                                              TRANSLATE!
     AND hero IS NOT sdraiato
-      ELSE SAY check_hero_not_lying_down2 OF mia_AT.
+      ELSE SAY  check_hero_not_lying_down2  OF mia_AT.
         DOES
           "La violenza non è la giusta risposta a questo." --> taken from i6
           -- "Resorting to brute force is not the solution here."
-    END VERB.
+    END VERB attacca.
 END ADD TO.
 
 
@@ -886,15 +892,15 @@ SYNTAX attacca_con = attacca (bersaglio) con (arma)
     ELSE
       IF bersaglio IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "attaccare."
   AND arma IsA arma
     ELSE
       IF arma IS NOT plurale
-        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+        THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+        ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
       END IF.
       "attaccare" SAY THE bersaglio. "."
 
@@ -903,54 +909,54 @@ ADD TO EVERY THING
   VERB attacca_con
     WHEN bersaglio
       CHECK mia_AT CAN attaccare_con
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND bersaglio IS esaminabile
         ELSE
           IF bersaglio IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT.
-            ELSE SAY ogg1_inadatto_pl OF mia_AT.
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
           END IF.
           "attaccare."
 --                                                                              TRANSLATE!
       AND bersaglio <> arma
-        ELSE SAY check_obj_not_obj2_with OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
 --                                                                              TRANSLATE!
       AND bersaglio <> hero
-        ELSE SAY check_obj_not_hero1 OF mia_AT.
+        ELSE SAY  check_obj_not_hero1  OF mia_AT.
 --                                                                              TRANSLATE!
       AND bersaglio NOT IN hero
-        ELSE SAY check_obj_not_in_hero1 OF mia_AT.
+        ELSE SAY  check_obj_not_in_hero1  OF mia_AT.
 --                                                                              TRANSLATE!
       AND bersaglio NOT IN abbigliamento
-        ELSE SAY check_obj_not_in_worn2 OF mia_AT.
+        ELSE SAY  check_obj_not_in_worn2  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
         ELSE
           IF bersaglio IS NOT raggiungibile
             THEN
               IF bersaglio IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF bersaglio IS distante
             THEN
               IF bersaglio IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
 --                                                                              TRANSLATE!
       AND hero IS NOT seduto
-        ELSE SAY check_hero_not_sitting2 OF mia_AT.
+        ELSE SAY  check_hero_not_sitting2  OF mia_AT.
 --                                                                              TRANSLATE!
       AND hero IS NOT sdraiato
-        ELSE SAY check_hero_not_lying_down2 OF mia_AT.
+        ELSE SAY  check_hero_not_lying_down2  OF mia_AT.
           DOES
             "La violenza non è la giusta risposta a questo." --> taken from i6
             -- "Resorting to brute force is not the solution here."
-  END VERB.
+  END VERB attacca_con.
 END ADD TO.
 
 
@@ -969,49 +975,49 @@ SYNTAX attraversa = attraversa (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "attraversare."
 
 ADD TO EVERY OBJECT
   VERB attraversa
     CHECK mia_AT CAN attraversare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "attraversare."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     AND hero IS NOT seduto
       --> @TODO!!                                                               TRANSLATE!
-      ELSE SAY check_hero_not_sitting3 OF mia_AT.
+      ELSE SAY  check_hero_not_sitting3  OF mia_AT.
     AND hero IS NOT sdraiato
       --> @TODO!!                                                               TRANSLATE!
-      ELSE SAY check_hero_not_lying_down3 OF mia_AT.
+      ELSE SAY  check_hero_not_lying_down3  OF mia_AT.
     DOES
       IF ogg IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "attraversare."
    -- IF ogg IS NOT plurale
@@ -1019,7 +1025,7 @@ ADD TO EVERY OBJECT
    --   ELSE "Those are not"
    -- END IF.
    -- "something you can climb through."
-  END VERB.
+  END VERB attraversa.
 END ADD TO.
 
 
@@ -1041,8 +1047,8 @@ SYNTAX bacia = bacia (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "$vre." -- baciare/abbracciare
 
@@ -1053,33 +1059,33 @@ SYNONYMS abbraccia = bacia.
 ADD TO EVERY THING
   VERB bacia
     CHECK mia_AT CAN baciare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "$vre." -- baciare/abbracciare
 --                                                                              TRANSLATE!
     AND ogg <> hero
-      ELSE SAY check_obj_not_hero6 OF mia_AT.
+      ELSE SAY  check_obj_not_hero6  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -1091,7 +1097,7 @@ ADD TO EVERY THING
           SAY mia_AT:non_servirebbe_a_nulla.
         -- "Nothing would be achieved by that."
       END IF.
-  END VERB.
+  END VERB bacia.
 END ADD TO.
 
 -- ==============================================================
@@ -1111,19 +1117,19 @@ SYNONYMS danza = balla.
 
 VERB balla
   CHECK mia_AT CAN ballare
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   AND CURRENT LOCATION IS illuminato
-    ELSE SAY imp_luogo_buio OF mia_AT.
+    ELSE SAY  imp_luogo_buio  OF mia_AT.
 --                                                                              TRANSLATE!
   AND hero IS NOT seduto
-    ELSE SAY check_hero_not_sitting1 OF mia_AT.
+    ELSE SAY  check_hero_not_sitting1  OF mia_AT.
 --                                                                              TRANSLATE!
   AND hero IS NOT sdraiato
-    ELSE SAY check_hero_not_lying_down1 OF mia_AT.
+    ELSE SAY  check_hero_not_lying_down1  OF mia_AT.
   DOES
     SAY mia_AT:non_senti_bisogno_di. "ballare."
  -- "How about a waltz?"
-END VERB.
+END VERB balla.
 
 
 
@@ -1141,8 +1147,8 @@ SYNTAX bevi = bevi (liq)
   WHERE liq IsA liquido    -- see 'classes.i'
     ELSE
       IF liq IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "bere."
 
@@ -1150,30 +1156,30 @@ SYNTAX bevi = bevi (liq)
 ADD TO EVERY liquido
   VERB bevi
     CHECK mia_AT CAN bere
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND liq IS potabile
       ELSE
         IF liq IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "bere."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND liq IS raggiungibile AND liq IS NOT distante
       ELSE
         IF liq IS NOT raggiungibile
           THEN
             IF liq IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF liq IS distante
           THEN
             IF liq IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -1223,7 +1229,7 @@ ADD TO EVERY liquido
           END IF.
       END IF.
 
-  END VERB.
+  END VERB bevi.
 END ADD TO.
 
 
@@ -1246,8 +1252,8 @@ SYNTAX blocca = blocca (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "bloccare."
 
@@ -1258,30 +1264,30 @@ SYNONYMS
 ADD TO EVERY OBJECT
   VERB blocca
     CHECK mia_AT CAN bloccare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS bloccabile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "bloccare."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     AND ogg IS NOT bloccato
@@ -1289,13 +1295,13 @@ ADD TO EVERY OBJECT
         IF ogg IS NOT femminile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg_già_bloccato_ms OF mia_AT.
-              ELSE SAY ogg_già_bloccato_mp OF mia_AT.
+              THEN SAY  ogg_già_bloccato_ms  OF mia_AT.
+              ELSE SAY  ogg_già_bloccato_mp  OF mia_AT.
             END IF.
           ELSE
             IF ogg IS NOT plurale
-              THEN SAY ogg_già_bloccato_fs OF mia_AT.
-              ELSE SAY ogg_già_bloccato_fp OF mia_AT.
+              THEN SAY  ogg_già_bloccato_fs  OF mia_AT.
+              ELSE SAY  ogg_già_bloccato_fp  OF mia_AT.
             END IF.
         END IF.
   DOES
@@ -1310,12 +1316,12 @@ ADD TO EVERY OBJECT
 
         "blocchi" SAY THE ogg. "."
     ELSE
-      SAY specificare_CON_cosa OF mia_AT. "bloccare" SAY THE ogg.
+      SAY  specificare_CON_cosa  OF mia_AT. "bloccare" SAY THE ogg.
    -- ELSE "Devi specificare con cosa vuoi bloccare" SAY THE ogg.
    -- ELSE "You have to state what you want to lock" SAY THE ogg. "with."
     END IF.
 
-  END VERB.
+  END VERB blocca.
 END ADD TO.
 
 
@@ -1334,16 +1340,16 @@ SYNTAX blocca_con = blocca (ogg) con (chiave)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "bloccare."
   AND chiave IsA OBJECT
     ELSE
       IF chiave IS NOT plurale
         --  "$+1 non [è/sono] qualcosa con cui poter"
-        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+        THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+        ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
       END IF.
       "bloccare." -- @TODO: ".. altre cose"??                                   IMPROVE!
 
@@ -1352,39 +1358,39 @@ ADD TO EVERY OBJECT
     VERB blocca_con
         WHEN ogg
       CHECK mia_AT CAN bloccare_con
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg IS bloccabile
         ELSE
           IF ogg IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT.
-            ELSE SAY ogg1_inadatto_pl OF mia_AT.
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
           END IF.
           "bloccare."
       AND chiave IS esaminabile
         ELSE
           IF chiave IS NOT plurale
             --  "$+1 non [è/sono] qualcosa con cui poter"
-            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+            THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+            ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
           END IF.
           "bloccare." -- @TODO: ".. altre cose"??                               IMPROVE!
       AND ogg <> chiave
-        ELSE SAY check_obj_not_obj2_with OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg IS NOT bloccato
         ELSE
           IF ogg IS NOT femminile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg_già_bloccato_ms OF mia_AT.
-                ELSE SAY ogg_già_bloccato_mp OF mia_AT.
+                THEN SAY  ogg_già_bloccato_ms  OF mia_AT.
+                ELSE SAY  ogg_già_bloccato_mp  OF mia_AT.
               END IF.
             ELSE
               IF ogg IS NOT plurale
-                THEN SAY ogg_già_bloccato_fs OF mia_AT.
-                ELSE SAY ogg_già_bloccato_fp OF mia_AT.
+                THEN SAY  ogg_già_bloccato_fs  OF mia_AT.
+                ELSE SAY  ogg_già_bloccato_fp  OF mia_AT.
               END IF.
           END IF.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -1392,20 +1398,20 @@ ADD TO EVERY OBJECT
           IF ogg IS NOT raggiungibile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       AND chiave IN hero
-        ELSE SAY non_possiedi_ogg2 OF mia_AT.
+        ELSE SAY  non_possiedi_ogg2  OF mia_AT.
       AND chiave = chiave_abbinata OF ogg -- @TODO:                             TRANSLATE!
-        ELSE SAY check_door_matching_key OF mia_AT.
+        ELSE SAY  check_door_matching_key  OF mia_AT.
 
       DOES
         MAKE ogg bloccato. "Tu"
@@ -1414,7 +1420,7 @@ ADD TO EVERY OBJECT
             MAKE ogg NOT aperto.
         END IF.
         "blocchi" SAY THE ogg. "con" SAY THE chiave. "."
-    END VERB.
+    END VERB blocca_con.
 END ADD TO.
 
 
@@ -1434,29 +1440,29 @@ SYNTAX brucia = brucia (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "bruciare."
 
 ADD TO EVERY OBJECT
   VERB brucia
     CHECK mia_AT CAN bruciare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "bruciare."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     DOES
-      SAY specificare_CON_cosa OF mia_AT. "bruciare" SAY THE ogg. "."
+      SAY  specificare_CON_cosa  OF mia_AT. "bruciare" SAY THE ogg. "."
    -- "You must state what you want to burn" SAY THE ogg. "with."
-  END VERB.
+  END VERB brucia.
 END ADD TO.
 
 
@@ -1471,19 +1477,19 @@ END ADD TO.
 -- =================================================================
 
 
-SYNTAX brucia_con = brucia (ogg) 'con' (strum)
+SYNTAX brucia_con = brucia (ogg) con (strum)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "bruciare."
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
-        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+        THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+        ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
       END IF.
       "bruciare." -- @TODO: ".. altre cose"??                                   IMPROVE!
 
@@ -1492,49 +1498,49 @@ ADD TO EVERY OBJECT
   VERB brucia_con
     WHEN ogg
       CHECK mia_AT CAN bruciare_con
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg IS esaminabile
         ELSE
           IF ogg IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT.
-            ELSE SAY ogg1_inadatto_pl OF mia_AT.
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
           END IF.
           "bruciare."
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
-            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+            THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+            ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
           END IF.
           "bruciare" SAY THE ogg. "."
       AND ogg <> strum
         --> @TODO!!                                                             TRANSLATE!
-        ELSE SAY check_obj_not_obj2_with OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
       AND strum IN hero
-        ELSE SAY non_possiedi_ogg2 OF mia_AT.
+        ELSE SAY  non_possiedi_ogg2  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
 
       DOES
         "Non puoi bruciare" SAY THE ogg. "con" SAY THE strum. "."
      -- "You can't burn" SAY THE ogg. "with" SAY THE strum. "."
-  END VERB.
+  END VERB brucia_con.
 END ADD TO.
 
 
@@ -1555,11 +1561,11 @@ SYNTAX canta = canta.
 
 VERB canta
   CHECK mia_AT CAN cantare
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     "Canticchi una melodia."
  -- "You $v a little tune."
-END VERB.
+END VERB canta.
 
 
 
@@ -1590,8 +1596,8 @@ SYNTAX  chi_è = chi é (png)!   --> BUG: 'è' instead of 'é'                      
   WHERE png IsA ACTOR
     ELSE
       IF png IS NOT plurale
-        THEN SAY illegal_parameter_who_sg OF mia_AT.
-        ELSE SAY illegal_parameter_who_pl OF mia_AT.
+        THEN SAY  illegal_parameter_who_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_who_pl  OF mia_AT.
       END IF.
 
         chi_è = chi sono (png)!.
@@ -1600,11 +1606,11 @@ SYNTAX  chi_è = chi é (png)!   --> BUG: 'è' instead of 'é'                      
 ADD TO EVERY ACTOR
   VERB chi_è
     CHECK mia_AT CAN domandare_chi_è
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     DOES
       "Dovrai scoprirlo da te!"
    -- "You'll have to find it out yourself."
-    END VERB.
+    END VERB chi_è.
 END ADD TO.
 
 
@@ -1624,11 +1630,11 @@ SYNTAX chi_sono_io = chi sono io.
 
 VERB chi_sono_io
   CHECK mia_AT CAN domandare_chi_sono_io
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     "Hai provato a esaminare te stesso? Forse ti aiuterebbe."
  -- "Maybe examining yourself might help."
-END VERB.
+END VERB chi_sono_io.
 
 
 
@@ -1645,8 +1651,8 @@ SYNTAX chiudi = chiudi (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "chiudere."
 
@@ -1657,30 +1663,30 @@ SYNTAX chiudi = chiudi (ogg)
 ADD TO EVERY OBJECT
   VERB chiudi
     CHECK mia_AT CAN chiudere
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS apribile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "chiudere."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     AND ogg IS aperto
@@ -1688,20 +1694,20 @@ ADD TO EVERY OBJECT
         IF ogg IS NOT femminile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg_già_chiuso_ms OF mia_AT.
-              ELSE SAY ogg_già_chiuso_mp OF mia_AT.
+              THEN SAY  ogg_già_chiuso_ms  OF mia_AT.
+              ELSE SAY  ogg_già_chiuso_mp  OF mia_AT.
             END IF.
           ELSE
             IF ogg IS NOT plurale
-              THEN SAY ogg_già_chiuso_fs OF mia_AT.
-              ELSE SAY ogg_già_chiuso_fp OF mia_AT.
+              THEN SAY  ogg_già_chiuso_fs  OF mia_AT.
+              ELSE SAY  ogg_già_chiuso_fp  OF mia_AT.
             END IF.
         END IF.
 
     DOES
           MAKE ogg NOT aperto.
           "Chiudi" SAY THE ogg. "."
-  END VERB.
+  END VERB chiudi.
 END ADD TO.
 
 
@@ -1719,15 +1725,15 @@ SYNTAX chiudi_con = chiudi (ogg) con (strum)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "chiudere."
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
-        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+        THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+        ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
       END IF.
       "chiudere" SAY THE ogg. "." -- TODO:                                      IMPROVE!
 
@@ -1736,41 +1742,41 @@ ADD TO EVERY OBJECT
   VERB chiudi_con
     WHEN ogg
       CHECK mia_AT CAN chiudere_con
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg IS apribile
         ELSE
           IF ogg IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT.
-            ELSE SAY ogg1_inadatto_pl OF mia_AT.
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
           END IF.
           "chiudere."
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
-            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+            THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+            ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
           END IF.
           "chiudere" SAY THE ogg. "."
       AND ogg <> strum
-        ELSE SAY check_obj_not_obj2_with OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
       AND strum IN hero
-        ELSE SAY non_possiedi_ogg2 OF mia_AT.
+        ELSE SAY  non_possiedi_ogg2  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
         END IF.
       AND ogg IS aperto
@@ -1778,19 +1784,19 @@ ADD TO EVERY OBJECT
           IF ogg IS NOT femminile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg_già_chiuso_ms OF mia_AT.
-                ELSE SAY ogg_già_chiuso_mp OF mia_AT.
+                THEN SAY  ogg_già_chiuso_ms  OF mia_AT.
+                ELSE SAY  ogg_già_chiuso_mp  OF mia_AT.
               END IF.
             ELSE
               IF ogg IS NOT plurale
-                THEN SAY ogg_già_chiuso_fs OF mia_AT.
-                ELSE SAY ogg_già_chiuso_fp OF mia_AT.
+                THEN SAY  ogg_già_chiuso_fs  OF mia_AT.
+                ELSE SAY  ogg_già_chiuso_fp  OF mia_AT.
               END IF.
           END IF.
 
       DOES
         "Non puoi chiudere" SAY THE ogg. "con" SAY THE strum. "."
-  END VERB.
+  END VERB chiudi_con.
 END ADD TO.
 
 
@@ -1808,8 +1814,8 @@ SYNTAX compra = compra (merce)
     ELSE
       IF merce IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "comprare."
 
@@ -1820,13 +1826,13 @@ SYNONYMS acquista = compra.
 ADD TO EVERY OBJECT
   VERB compra
     CHECK mia_AT CAN comprare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND merce IS esaminabile
       ELSE
         IF merce IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "comprare."
     DOES
@@ -1839,7 +1845,7 @@ ADD TO EVERY OBJECT
       END IF.
       "in vendita."
       -- "for sale."
-  END VERB.
+  END VERB compra.
 END ADD TO.
 
 
@@ -1869,8 +1875,8 @@ SYNTAX  cosa_è = cosa é (ogg)!            --> BUG: 'è' instead of 'é'           
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_what_sg OF mia_AT.
-        ELSE SAY illegal_parameter_what_pl OF mia_AT.
+        THEN SAY  illegal_parameter_what_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_what_pl  OF mia_AT.
       END IF.
 
         cosa_è = che cosa é (ogg)!.       --> BUG: 'è' instead of 'é'           FIXME!
@@ -1885,11 +1891,11 @@ SYNTAX  cosa_è = cosa é (ogg)!            --> BUG: 'è' instead of 'é'           
 ADD TO EVERY THING
   VERB cosa_è
     CHECK mia_AT CAN domandare_cosa_è
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     DOES
       "Dovrai scoprirlo da te!"
    -- "You'll have to find it out yourself."
-    END VERB.
+    END VERB cosa_è.
 END ADD TO.
 
 
@@ -1915,11 +1921,11 @@ SYNTAX  cosa_sono_io = cosa sono.
 
 VERB cosa_sono_io
   CHECK mia_AT CAN domandare_cosa_sono_io
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     "Hai provato a esaminare te stesso? Forse ti aiuterebbe."
  -- "Maybe examining yourself might help."
-END VERB.
+END VERB cosa_sono_io.
 
 
 
@@ -1939,13 +1945,13 @@ END VERB.
 SYNTAX dai_a = 'dai' (ogg) 'a' (ricevente)
   WHERE ogg IsA OBJECT
     --> @TODO!!                                                                 TRANSLATE!
-    ELSE SAY illegal_parameter_obj OF mia_AT.
+    ELSE SAY  illegal_parameter_obj  OF mia_AT.
   AND ricevente IsA ACTOR
     ELSE
       IF ricevente IS NOT plurale
         --> @TODO!!                                                             TRANSLATE!
-        THEN SAY illegal_parameter2_to_sg OF mia_AT.
-        ELSE SAY illegal_parameter2_to_pl OF mia_AT.
+        THEN SAY  illegal_parameter2_to_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter2_to_pl  OF mia_AT.
       END IF.
 
 
@@ -1957,38 +1963,38 @@ ADD TO EVERY OBJECT
   VERB dai_a
         WHEN ogg
       CHECK mia_AT CAN dare -- (was CAN give)
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg IS prendibile
         --> @TODO!!                                                             TRANSLATE!
-        ELSE SAY check_obj_takeable OF mia_AT.
+        ELSE SAY  check_obj_takeable  OF mia_AT.
       AND ogg <> ricevente
         --> @TODO!!                                                             TRANSLATE!
-        ELSE SAY check_obj_not_obj2_to OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_to  OF mia_AT.
       AND ricevente <> hero
         --> @TODO!!                                                             TRANSLATE!
-        ELSE SAY check_obj2_not_hero3 OF mia_AT.
+        ELSE SAY  check_obj2_not_hero3  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg NOT IN ricevente
         ELSE
           IF ricevente IS NOT plurale
             --> @TODO!!                                                        TRANSLATE!
-            THEN SAY check_obj_not_in_act_sg OF mia_AT.
-            ELSE SAY check_obj_not_in_act_pl OF mia_AT.
+            THEN SAY  check_obj_not_in_act_sg  OF mia_AT.
+            ELSE SAY  check_obj_not_in_act_pl  OF mia_AT.
           END IF.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       AND ricevente IS raggiungibile AND ricevente IS NOT distante
@@ -1996,21 +2002,21 @@ ADD TO EVERY OBJECT
           IF ricevente IS NOT raggiungibile
             THEN
               IF ricevente IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF ricevente IS distante
             THEN
               IF ricevente IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
           DOES
         -- implicit taking:
         IF ogg NOT DIRECTLY IN hero
           --> @TODO!!                                                           TRANSLATE!
-          THEN SAY implicit_taking_message OF mia_AT.
+          THEN SAY  implicit_taking_message  OF mia_AT.
           LOCATE ogg IN hero.
         END IF.
         -- end of implicit taking.
@@ -2020,7 +2026,7 @@ ADD TO EVERY OBJECT
         "You give" SAY THE ogg. "to" SAY THE ricevente. "."
 
 
-  END VERB.
+  END VERB dai_a.
 END ADD TO.
 
 
@@ -2041,10 +2047,10 @@ SYNTAX dici_No = 'no'.
 
 VERB dici_No
   CHECK mia_AT CAN dire_no
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES "Davvero?"
     -- "Really?"
-END VERB.
+END VERB dici_No.
 
 
 -- ================================================================
@@ -2062,10 +2068,10 @@ SYNTAX dici_Sì = sì.
 
 VERB dici_Sì
   CHECK mia_AT CAN dire_sì
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES "Davvero?"
     -- "Really?"
-END VERB.
+END VERB dici_Sì.
 
 
 
@@ -2084,10 +2090,10 @@ SYNONYMS riposa = dormi.
 
 VERB dormi
   CHECK mia_AT CAN dormire
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     "Non è il momento di riposare."
-END VERB.
+END VERB dormi.
 
 
 
@@ -2119,8 +2125,8 @@ SYNTAX  dove_è = dove é (ogg)!            --> BUG: 'è' instead of 'é'           
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_what_sg OF mia_AT.
-        ELSE SAY illegal_parameter_what_pl OF mia_AT.
+        THEN SAY  illegal_parameter_what_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_what_pl  OF mia_AT.
       END IF.
 
         dove_è = 'dov''é' (ogg)!.         --> BUG: 'è' instead of 'é'           FIXME!
@@ -2132,17 +2138,17 @@ SYNTAX  dove_è = dove é (ogg)!            --> BUG: 'è' instead of 'é'           
 ADD TO EVERY THING
   VERB dove_è
     CHECK mia_AT CAN domandare_dove_è
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg NOT AT hero
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY ogg1_già_qui_sg OF mia_AT.
-          ELSE SAY ogg1_già_qui_pl OF mia_AT.
+          THEN SAY  ogg1_già_qui_sg  OF mia_AT.
+          ELSE SAY  ogg1_già_qui_pl  OF mia_AT.
         END IF.
     DOES
       "Dovrai scoprirlo da te!"
    -- "You'll have to find it out yourself."
-  END VERB.
+  END VERB dove_è.
 END ADD TO.
 
 
@@ -2168,10 +2174,10 @@ SYNTAX  dove_mi_trovo = dove mi trovo.
 
 VERB dove_mi_trovo
   CHECK mia_AT CAN domandare_dove_mi_trovo
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     LOOK.
-END VERB.
+END VERB dove_mi_trovo.
 
 
 
@@ -2204,8 +2210,8 @@ SYNTAX esamina = esamina (ogg)
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_examine_sg OF mia_AT.
-        ELSE SAY illegal_parameter_examine_pl OF mia_AT.
+        THEN SAY  illegal_parameter_examine_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_examine_pl  OF mia_AT.
       END IF.
 
        esamina = 'guarda' (ogg).
@@ -2217,20 +2223,20 @@ SYNONYMS
 ADD TO EVERY THING
   VERB esamina
     CHECK mia_AT CAN esaminare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
         AND ogg IS esaminabile
           ELSE
         IF ogg IS NOT plurale
-          THEN SAY check_obj_suitable_examine_sg OF mia_AT.
-          ELSE SAY check_obj_suitable_examine_pl OF mia_AT.
+          THEN SAY  check_obj_suitable_examine_sg  OF mia_AT.
+          ELSE SAY  check_obj_suitable_examine_pl  OF mia_AT.
         END IF.
         AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS NOT scenario
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY check_obj_not_scenery_sg OF mia_AT. --> "$+1 non è importante ai fini del gioco."
-          ELSE SAY check_obj_not_scenery_pl OF mia_AT. --> "$+1 non sono importanti ai fini del gioco."
+          THEN SAY  check_obj_not_scenery_sg  OF mia_AT. --> "$+1 non è importante ai fini del gioco."
+          ELSE SAY  check_obj_not_scenery_pl  OF mia_AT. --> "$+1 non sono importanti ai fini del gioco."
         END IF.
 
     DOES
@@ -2255,7 +2261,7 @@ ADD TO EVERY THING
         --#i7: "Non [trovi] nulla di particolare [inp the noun]."
         --#i6: "Esamini ", (the) x1, ", ma non noti niente di speciale."
       END IF.
-  END VERB.
+  END VERB esamina.
 END ADD TO.
 
 
@@ -2273,8 +2279,8 @@ SYNTAX gioca_con = gioca con (ogg)
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_with_sg OF mia_AT.
-        ELSE SAY illegal_parameter_with_pl OF mia_AT.
+        THEN SAY  illegal_parameter_with_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_with_pl  OF mia_AT.
       END IF.
 
 
@@ -2282,37 +2288,37 @@ SYNTAX gioca_con = gioca con (ogg)
 ADD TO EVERY THING
   VERB gioca_con
     CHECK mia_AT CAN giocare_con
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY check_obj_suitable_with_sg OF mia_AT.
-          ELSE SAY check_obj_suitable_with_pl OF mia_AT.
+          THEN SAY  check_obj_suitable_with_sg  OF mia_AT.
+          ELSE SAY  check_obj_suitable_with_pl  OF mia_AT.
         END IF.
     AND ogg <> hero
-      ELSE SAY check_obj_not_hero6 OF mia_AT.
+      ELSE SAY  check_obj_not_hero6  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
       "Ripensandoci, non vedi alcuna utilità nel giocare con" SAY THE ogg. "."
    -- "After second thought you don't find it purposeful to start
    --  playing with" SAY THE ogg. "."
-  END VERB.
+  END VERB gioca_con.
 END ADD TO.
 
 
@@ -2333,51 +2339,51 @@ SYNTAX guida = guida (veicolo)
     ELSE
       IF veicolo IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "guidare."
 
 ADD TO EVERY OBJECT
   VERB guida
     CHECK mia_AT CAN guidare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND veicolo IS esaminabile
       ELSE
         IF veicolo IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "guidare."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND veicolo IS raggiungibile AND veicolo IS NOT distante
       ELSE
         IF veicolo IS NOT raggiungibile
           THEN
             IF veicolo IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF veicolo IS distante
           THEN
             IF veicolo IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     AND hero IS NOT sdraiato
 --                                                                              TRANSLATE!
-      ELSE SAY check_hero_not_lying_down3 OF mia_AT.
+      ELSE SAY  check_hero_not_lying_down3  OF mia_AT.
     DOES
       IF veicolo IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "guidare."
-  END VERB.
+  END VERB guida.
 END ADD TO.
 
 
@@ -2393,7 +2399,7 @@ SYNTAX guida_errore = guida.
 VERB guida_errore
   DOES "Per guidare un mezzo di trasporto, usa la formula GUIDA VEICOLO."
   -- DOES "To drive something, use the phrasing DRIVE SOMETHING."
-END VERB.
+END VERB guida_errore.
 
 
 
@@ -2427,7 +2433,7 @@ SYNONYMS inv = inventario.
 
 META VERB inventario
   CHECK mia_AT CAN inventariare
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     LIST hero.
 
@@ -2435,7 +2441,7 @@ META VERB inventario
       THEN LIST abbigliamento.     -- This code will list what the hero is wearing.
     END IF.
 
-END VERB.
+END VERB inventario.
 
 
 
@@ -2454,8 +2460,8 @@ SYNTAX  lascia = lascia (ogg)*
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "lasciare." -- @TODO: "maneggiare"??                                      IMPROVE!
 
@@ -2468,19 +2474,19 @@ SYNTAX  lascia = lascia (ogg)*
 ADD TO EVERY OBJECT
   VERB lascia
     CHECK mia_AT CAN lasciare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IN hero
       ELSE
         IF ogg IN abbigliamento
-          THEN SAY check_obj_not_in_worn3 OF mia_AT.
-          ELSE SAY non_possiedi_ogg1 OF mia_AT.
+          THEN SAY  check_obj_not_in_worn3  OF mia_AT.
+          ELSE SAY  non_possiedi_ogg1  OF mia_AT.
         END IF.
 
     DOES
       LOCATE ogg HERE.
        "Lasci" SAY THE ogg. "."
     -- "Dropped."
-  END VERB.
+  END VERB lascia.
 END ADD TO.
 
 
@@ -2519,8 +2525,8 @@ SYNTAX leggi = leggi (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "leggere."
 
@@ -2528,22 +2534,22 @@ SYNTAX leggi = leggi (ogg)
 ADD TO EVERY OBJECT
     VERB leggi
     CHECK mia_AT CAN leggere
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS leggibile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "leggere."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY ogg1_distante_sg OF mia_AT.
-          ELSE SAY ogg1_distante_pl OF mia_AT.
+          THEN SAY  ogg1_distante_sg  OF mia_AT.
+          ELSE SAY  ogg1_distante_pl  OF mia_AT.
         END IF.
     DOES
       IF testo OF ogg = ""
@@ -2556,7 +2562,7 @@ ADD TO EVERY OBJECT
           END IF.
           """$$" SAY testo OF ogg. "$$""."
       END IF.
-    END VERB.
+    END VERB leggi.
 END ADD TO.
 
 
@@ -2577,8 +2583,8 @@ SYNTAX libera = libera (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "liberare."
 
@@ -2589,32 +2595,32 @@ SYNONYMS rilascia = libera.
 ADD TO EVERY THING
   VERB libera
     CHECK mia_AT CAN liberare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "liberare."
     AND ogg <> hero
-      ELSE SAY check_obj_not_hero5 OF mia_AT.
+      ELSE SAY  check_obj_not_hero5  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -2623,7 +2629,7 @@ ADD TO EVERY THING
         THEN "$$no"
       END IF.
       "di essere liberat$$" SAY ogg:vocale. "."
-  END VERB.
+  END VERB libera.
 END ADD TO.
 
 -- ==============================================================
@@ -2641,8 +2647,8 @@ SYNTAX mangia = mangia (cibo)
   WHERE cibo IsA OBJECT
     ELSE
       IF cibo IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "mangiare."
 
@@ -2650,33 +2656,33 @@ SYNTAX mangia = mangia (cibo)
 ADD TO EVERY OBJECT
   VERB mangia
     CHECK mia_AT CAN mangiare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND cibo IS commestibile
       ELSE
         IF cibo IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "mangiare."
     AND cibo IS prendibile
       --> @TODO!!                                                               TRANSLATE!
-      ELSE SAY check_obj_takeable OF mia_AT.
+      ELSE SAY  check_obj_takeable  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND cibo IS raggiungibile AND cibo IS NOT distante
       ELSE
         IF cibo IS NOT raggiungibile
           THEN
             IF cibo IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF cibo IS distante
           THEN
             IF cibo IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -2684,7 +2690,7 @@ ADD TO EVERY OBJECT
       IF cibo NOT DIRECTLY IN hero
         THEN LOCATE cibo IN hero.
           --> @TODO!!                                                           TRANSLATE!
-          SAY implicit_taking_message OF mia_AT.
+          SAY  implicit_taking_message  OF mia_AT.
       END IF.
       -- end of implicit taking.
 
@@ -2692,7 +2698,7 @@ ADD TO EVERY OBJECT
    -- "You eat all of" SAY THE cibo. "."
       LOCATE cibo AT limbo.
 
-  END VERB.
+  END VERB mangia.
 END ADD.
 
 
@@ -2705,7 +2711,7 @@ END ADD.
 
 
 -- ==============================================================
---| SINTASSI: 
+--| SINTASSI:
 --|   (pensa|pondera|rifletti|medita)
 --------------------------------------------------------------------------------
 
@@ -2721,10 +2727,10 @@ SYNONYMS medita = rifletti.
 
 VERB pensa
   CHECK mia_AT CAN pensare
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     "Nothing helpful comes to your mind."
-END VERB.
+END VERB pensa.
 
 
 
@@ -2737,7 +2743,7 @@ END VERB.
 
 
 -- ==============================================================
---| SINTASSI: 
+--| SINTASSI:
 --|   pensa a <argomento>
 --|   (rifletti|medita) su <argomento>
 --|   pondera <argomento>
@@ -2749,8 +2755,8 @@ SYNTAX  pensa_a = pensa a (argomento)!
   WHERE argomento IsA THING
     ELSE
       IF argomento IS NOT plurale
-        THEN SAY illegal_parameter_about_sg OF mia_AT.
-        ELSE SAY illegal_parameter_about_pl OF mia_AT.
+        THEN SAY  illegal_parameter_about_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_about_pl  OF mia_AT.
       END IF.
 
         pensa_a = rifletti su (argomento)!.
@@ -2759,10 +2765,10 @@ SYNTAX  pensa_a = pensa a (argomento)!
 ADD TO EVERY THING
   VERB pensa_a
     CHECK mia_AT CAN pensare_a
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     DOES
       "Nothing helpful comes to your mind."
-  END VERB.
+  END VERB pensa_a.
 END ADD TO.
 
 
@@ -2781,10 +2787,10 @@ SYNTAX prega = prega.
 
 VERB prega
   CHECK mia_AT CAN pregare
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES "Sembra che le tue preghiere non siano state esaudite." --> da i6
   -- DOES "Your prayers don't seem to help right now."
-END VERB.
+END VERB prega.
 
 
 -- ==============================================================
@@ -2804,8 +2810,8 @@ SYNTAX prendi = prendi (ogg)
       WHERE ogg IsA THING
         ELSE
       IF ogg IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "prendere." -- @TODO: "maneggiare"??                                      IMPROVE!
 
@@ -2834,29 +2840,29 @@ ADD TO EVERY THING
 -- @PRENDI -> @TAKE (VERB) => ADD TO EVERY THING
   VERB prendi
     CHECK mia_AT CAN prendere --> CAN take
-      ELSE SAY azione_bloccata OF mia_AT. --#-> "Non puoi farlo."
+      ELSE SAY  azione_bloccata  OF mia_AT. --#-> "Non puoi farlo."
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "prendere."
     AND ogg <> hero
       --> @TODO!!                                                               TRANSLATE!
-      ELSE SAY check_obj_not_hero1 OF mia_AT.
+      ELSE SAY  check_obj_not_hero1  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS NOT scenario
       ELSE
         IF THIS IS NOT plurale
           --> @TODO!!                                                           TRANSLATE!
-          THEN SAY check_obj_not_scenery_sg OF mia_AT. --#-> "$+1 is not important."
-          ELSE SAY check_obj_not_scenery_pl OF mia_AT. --#-> "$+1 are not important."
+          THEN SAY  check_obj_not_scenery_sg  OF mia_AT. --#-> "$+1 is not important."
+          ELSE SAY  check_obj_not_scenery_pl  OF mia_AT. --#-> "$+1 are not important."
         END IF.
     AND ogg IS spostabile
-   -- ELSE SAY check_obj_movable OF mia_AT. --#-> "It's not possible to $v $+1."
+   -- ELSE SAY  check_obj_movable  OF mia_AT. --#-> "It's not possible to $v $+1."
       ELSE
       --#i6/7: "È/Sono fissat* al proprio posto"
         IF ogg IS NOT femminile
@@ -2875,35 +2881,35 @@ ADD TO EVERY THING
           ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "prendere."
     AND ogg NOT DIRECTLY IN hero
       -- i.e. the object to be taken is not carried by the hero already
       --> @TODO!!                                                               TRANSLATE!
-      ELSE SAY check_obj_not_in_hero2 OF mia_AT.
+      ELSE SAY  check_obj_not_in_hero2  OF mia_AT.
         AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
         AND peso Of ogg < 50
           ELSE
         IF ogg IS NOT plurale
           --> @TODO!!                                                           TRANSLATE!
-          THEN SAY check_obj_weight_sg OF mia_AT.
-          ELSE SAY check_obj_weight_pl OF mia_AT.
+          THEN SAY  check_obj_weight_sg  OF mia_AT.
+          ELSE SAY  check_obj_weight_pl  OF mia_AT.
         END IF.
         DOES
       IF ogg IsA ACTOR
@@ -2929,7 +2935,7 @@ ADD TO EVERY THING
         -- Objects held by NPCs cannot be taken by the hero by default.
         -- The hero must *ask for* the object to obtain it.
 
-  END VERB.
+  END VERB prendi.
 END ADD TO.
 
 
@@ -2956,23 +2962,23 @@ SYNTAX prendi_da = 'prendi' (ogg) 'da' (detentore)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "prendere." -- @TODO: "maneggiare"??                                      IMPROVE
   AND detentore IsA THING
     ELSE
       IF detentore IS NOT plurale
         --> @TODO!!                                                             TRANSLATE!
-        THEN SAY illegal_parameter2_from_sg OF mia_AT. --> "That's not something you can take things from."
-        ELSE SAY illegal_parameter2_from_pl OF mia_AT. --> "Those are not something you can take things from."
+        THEN SAY  illegal_parameter2_from_sg  OF mia_AT. --> "That's not something you can take things from."
+        ELSE SAY  illegal_parameter2_from_pl  OF mia_AT. --> "Those are not something you can take things from."
       END IF.
   AND detentore IsA CONTAINER
     ELSE
       IF detentore IS NOT plurale
         --> @TODO!!                                                             TRANSLATE!
-        THEN SAY illegal_parameter2_from_sg OF mia_AT.
-        ELSE SAY illegal_parameter2_from_pl OF mia_AT.
+        THEN SAY  illegal_parameter2_from_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter2_from_pl  OF mia_AT.
       END IF.
 
   prendi_da = prendi  (ogg)  'dai' (detentore).
@@ -2993,43 +2999,43 @@ ADD TO EVERY THING
     VERB prendi_da
         WHEN ogg
       CHECK mia_AT CAN prendere_da --> CAN take_from
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg <> hero
         --> @TODO!!                                                             TRANSLATE!
-        ELSE SAY check_obj_not_hero1 OF mia_AT.
+        ELSE SAY  check_obj_not_hero1  OF mia_AT.
       AND detentore <> hero
         --> @TODO!!                                                             TRANSLATE!
-        ELSE SAY check_obj2_not_hero1 OF mia_AT.
+        ELSE SAY  check_obj2_not_hero1  OF mia_AT.
           AND ogg NOT DIRECTLY IN hero
-          ELSE  SAY check_obj_not_in_hero2 OF mia_AT. --#-> "You already have $+1."
+          ELSE  SAY  check_obj_not_in_hero2  OF mia_AT. --#-> "You already have $+1."
       AND ogg <> detentore
         --> @TODO!!                                                             TRANSLATE!
-        ELSE SAY check_obj_not_obj2_from OF mia_AT.  --#-> "It doesn't make sense to $v something from itself."
+        ELSE SAY  check_obj_not_obj2_from  OF mia_AT.  --#-> "It doesn't make sense to $v something from itself."
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg IS NOT scenario
         ELSE
           IF ogg IS NOT plurale
             --> @TODO!!                                                         TRANSLATE!
-            THEN SAY check_obj_not_scenery_sg OF mia_AT.
-            ELSE SAY check_obj_not_scenery_pl OF mia_AT.
+            THEN SAY  check_obj_not_scenery_sg  OF mia_AT.
+            ELSE SAY  check_obj_not_scenery_pl  OF mia_AT.
           END IF.
       AND detentore IS NOT scenario
         ELSE
           IF detentore IS NOT plurale
             --> @TODO!!                                                         TRANSLATE!
-            THEN SAY check_obj2_not_scenery_sg OF mia_AT.
-            ELSE SAY check_obj2_not_scenery_pl OF mia_AT.
+            THEN SAY  check_obj2_not_scenery_sg  OF mia_AT.
+            ELSE SAY  check_obj2_not_scenery_pl  OF mia_AT.
           END IF.
       AND ogg IS spostabile
         --> @TODO!!                                                             TRANSLATE!
-        ELSE SAY check_obj_movable OF mia_AT.
+        ELSE SAY  check_obj_movable  OF mia_AT.
       AND ogg IS prendibile
             ELSE
           IF ogg IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT.
-            ELSE SAY ogg1_inadatto_pl OF mia_AT.
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
           END IF.
           "prendere."
       AND detentore IS raggiungibile AND detentore IS NOT distante
@@ -3037,22 +3043,22 @@ ADD TO EVERY THING
           IF detentore IS NOT raggiungibile
             THEN
               IF detentore IS NOT plurale
-                THEN SAY ogg2_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg2_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg2_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg2_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF detentore IS distante
             THEN
               IF detentore IS NOT plurale
-                THEN SAY ogg2_distante_sg OF mia_AT.
-                ELSE SAY ogg2_distante_pl OF mia_AT.
+                THEN SAY  ogg2_distante_sg  OF mia_AT.
+                ELSE SAY  ogg2_distante_pl  OF mia_AT.
               END IF.
           END IF.
       AND peso Of ogg < 50
             ELSE
           IF ogg IS NOT plurale
             --> @TODO!!                                                         TRANSLATE!
-            THEN SAY check_obj_weight_sg OF mia_AT.
-            ELSE SAY check_obj_weight_pl OF mia_AT.
+            THEN SAY  check_obj_weight_sg  OF mia_AT.
+            ELSE SAY  check_obj_weight_pl  OF mia_AT.
           END IF.
           AND ogg IN detentore
         ELSE
@@ -3062,21 +3068,21 @@ ADD TO EVERY THING
                 THEN
                   IF ogg IS NOT plurale
                     --> @TODO!!                                                 TRANSLATE!
-                    THEN SAY check_obj_on_surface_sg OF mia_AT.
-                    ELSE SAY check_obj_on_surface_pl OF mia_AT.
+                    THEN SAY  check_obj_on_surface_sg  OF mia_AT.
+                    ELSE SAY  check_obj_on_surface_pl  OF mia_AT.
                   END IF.
                 ELSE
                   IF ogg IS NOT plurale
                     --> @TODO!!                                                 TRANSLATE!
-                    THEN SAY check_obj_in_cont_sg OF mia_AT.
-                    ELSE SAY check_obj_in_cont_pl OF mia_AT.
+                    THEN SAY  check_obj_in_cont_sg  OF mia_AT.
+                    ELSE SAY  check_obj_in_cont_pl  OF mia_AT.
                   END IF.
               END IF.
             ELSE
               IF detentore IS NOT plurale
                 --> @TODO!!                                                     TRANSLATE!
-                THEN SAY check_obj_in_act_sg OF mia_AT.
-                ELSE SAY check_obj_in_act_pl OF mia_AT.
+                THEN SAY  check_obj_in_act_sg  OF mia_AT.
+                ELSE SAY  check_obj_in_act_pl  OF mia_AT.
               END IF.
           END IF.
       DOES
@@ -3107,7 +3113,7 @@ ADD TO EVERY THING
           -- The hero must *ask for* the object to obtain it.
 
 
-    END VERB.
+    END VERB prendi_da.
 END ADD TO.
 
 
@@ -3127,15 +3133,15 @@ SYNTAX riempi = riempi (cont)
     ELSE
       IF cont IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "riempire."
   AND cont IsA CONTAINER
     ELSE
       IF cont IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "riempire."
 
@@ -3143,21 +3149,21 @@ SYNTAX riempi = riempi (cont)
 ADD TO EVERY OBJECT
   VERB riempi
     CHECK mia_AT CAN riempire
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND cont IS esaminabile
       ELSE
         IF cont IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "riempire."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     DOES
       SAY mia_AT:specificare_CON_cosa. "riempire" SAY THE cont.
       -- "You have to say what you want to fill" SAY THE cont. "with."
-    END VERB.
+    END VERB riempi.
 END ADD TO.
 
 
@@ -3177,23 +3183,23 @@ SYNTAX riempi_con = riempi (cont) con (sostanza)
     ELSE
       IF cont IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "riempire."
   AND cont IsA CONTAINER
     ELSE
       IF cont IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "riempire."
   AND sostanza IsA OBJECT
     ELSE
       IF sostanza IS NOT plurale
-        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+        THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+        ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
       END IF.
       "riempire" SAY THE cont. "."
 
@@ -3202,37 +3208,37 @@ ADD TO EVERY OBJECT
   VERB riempi_con
     WHEN cont
       CHECK mia_AT CAN riempire_con
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND cont <> sostanza
-        ELSE SAY check_obj_not_obj2_with OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
       AND sostanza IS esaminabile
         ELSE
           IF sostanza IS NOT plurale
-            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+            THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+            ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
           END IF.
           "riempire" SAY THE cont. "."
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND sostanza NOT IN cont
         --                                                                      TRANSLATE!
-        ELSE SAY check_obj_not_in_cont2 OF mia_AT.
+        ELSE SAY  check_obj_not_in_cont2  OF mia_AT.
       AND sostanza IS prendibile
         --                                                                      TRANSLATE!
-        ELSE SAY check_obj2_takeable1 OF mia_AT.
+        ELSE SAY  check_obj2_takeable1  OF mia_AT.
       AND cont IS raggiungibile AND cont IS NOT distante
         ELSE
           IF cont IS NOT raggiungibile
             THEN
               IF cont IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF cont IS distante
             THEN
               IF cont IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT. "."
-                ELSE SAY ogg1_distante_pl OF mia_AT. "."
+                THEN SAY  ogg1_distante_sg  OF mia_AT. "."
+                ELSE SAY  ogg1_distante_pl  OF mia_AT. "."
               END IF.
           END IF.
       AND sostanza IS raggiungibile AND sostanza IS NOT distante
@@ -3240,21 +3246,21 @@ ADD TO EVERY OBJECT
           IF sostanza IS NOT raggiungibile
             THEN
               IF sostanza IS NOT plurale
-                THEN SAY ogg2_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg2_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg2_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg2_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF sostanza IS distante
             THEN
               IF sostanza IS NOT plurale
-                THEN SAY ogg2_distante_sg OF mia_AT. "."
-                ELSE SAY ogg2_distante_pl OF mia_AT. "."
+                THEN SAY  ogg2_distante_sg  OF mia_AT. "."
+                ELSE SAY  ogg2_distante_pl  OF mia_AT. "."
               END IF.
           END IF.
       DOES
         -- allow the action at individual substances only!
         "Non puoi riempire" SAY THE cont. "con" SAY THE sostanza. "."
      -- "You can't fill" SAY THE cont. "with" SAY THE sostanza. "."
-  END VERB.
+  END VERB riempi_con.
 END ADD TO.
 
 
@@ -3280,13 +3286,13 @@ SYNONYMS g = rifai.
 
 VERB rifai
   CHECK mia_AT CAN rifare
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     "[Il comando ANCORA non è supportato in questo gioco. In alternativa, prova
     ad usare i tasti 'su' e 'giù' per navigare tra i comandi precedenti.]"
     -- "[The AGAIN command is not supported in this game. As a workaround, try using
     --  the 'up' and 'down' arrow keys to scroll through your previous commands.]"
-END VERB.
+END VERB rifai.
 
 
 
@@ -3312,8 +3318,8 @@ SYNTAX  ripara = ripara (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "riparare."
 
@@ -3323,9 +3329,9 @@ SYNONYMS aggiusta = ripara.
 ADD TO EVERY OBJECT
   VERB ripara
     CHECK mia_AT CAN riparare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS rotto
       ELSE
         IF ogg IS NOT plurale
@@ -3337,20 +3343,20 @@ ADD TO EVERY OBJECT
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
       "Sii più specifico. Come intendi ripararl$$" SAY ogg:vocale. "?"
    -- "Please be more specific. How do you intend to fix it?"
-  END VERB.
+  END VERB ripara.
 END ADD TO.
 
 
@@ -3367,7 +3373,7 @@ END ADD TO.
 
 SYNTAX rispondi = rispondi (argomento)
   WHERE argomento IsA STRING
-    ELSE SAY illegal_parameter_string OF mia_AT. --                             TRANSLATE!
+    ELSE SAY  illegal_parameter_string  OF mia_AT. --                             TRANSLATE!
 
 
 
@@ -3375,11 +3381,11 @@ SYNTAX rispondi = rispondi (argomento)
 ADD TO EVERY STRING
   VERB rispondi
     CHECK mia_AT CAN rispondere
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     DOES
       "Qual'era la domanda?"
    -- "What was the question?"
-    END VERB.
+    END VERB rispondi.
 END ADD TO.
 
 
@@ -3398,8 +3404,8 @@ SYNTAX rompi = rompi (ogg)
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "rompere."
 
@@ -3410,37 +3416,37 @@ SYNONYMS distruggi, spacca, sfonda = rompi.
 ADD TO EVERY OBJECT
   VERB rompi
     CHECK mia_AT CAN rompere
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "rompere."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
     --@TODO: Rivedi frase (magari "forza bruta")
       "La violenza non è la giusta risposta a questo." -- presa da i6!
       -- "Resorting to brute force is not the solution here."
-  END VERB.
+  END VERB rompi.
 END ADD TO.
 
 
@@ -3456,20 +3462,20 @@ END ADD TO.
 
 -- SYNTAX break_with = break (obj) 'with' (instr)
 
-SYNTAX rompi_con = rompi (ogg) 'con' (strum)
+SYNTAX rompi_con = rompi (ogg) con (strum)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "rompere."
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
-        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+        THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+        ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
       END IF.
       "rompere" SAY THE ogg. "."
 
@@ -3478,44 +3484,44 @@ ADD TO EVERY OBJECT
   VERB rompi_con
     WHEN ogg
       CHECK mia_AT CAN rompere_con
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg IS esaminabile
         ELSE
           IF ogg IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT.
-            ELSE SAY ogg1_inadatto_pl OF mia_AT.
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
           END IF.
           "rompere."
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
-            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+            THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+            ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
           END IF.
           "rompere" SAY THE ogg. "."
       AND ogg <> strum
         --> @TODO!!                                                             TRANSLATE!
-        ELSE SAY check_obj_not_obj2_with OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND strum IN hero
         --> @TODO!!                                                             TRANSLATE!
-        ELSE SAY non_possiedi_ogg2 OF mia_AT.
+        ELSE SAY  non_possiedi_ogg2  OF mia_AT.
         --> @TODO!!                                                             TRANSLATE!
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       DOES
@@ -3523,7 +3529,7 @@ ADD TO EVERY OBJECT
         "non risolverebbe nulla."
       -- "Trying to break" SAY THE obj. "with" SAY THE strum.
       -- "wouldn't accomplish anything."
-  END VERB.
+  END VERB rompi_con.
 END ADD TO.
 
 
@@ -3541,8 +3547,8 @@ SYNTAX sblocca = sblocca (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "sbloccare."
 
@@ -3550,28 +3556,28 @@ SYNTAX sblocca = sblocca (ogg)
 ADD TO EVERY OBJECT
   VERB sblocca
     CHECK mia_AT CAN sbloccare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS bloccabile
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY check_obj_suitable_sg OF mia_AT.
-          ELSE SAY check_obj_suitable_pl OF mia_AT.
+          THEN SAY  check_obj_suitable_sg  OF mia_AT.
+          ELSE SAY  check_obj_suitable_pl  OF mia_AT.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     AND ogg IS bloccato
@@ -3579,13 +3585,13 @@ ADD TO EVERY OBJECT
         IF ogg IS NOT femminile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg_già_sbloccato_ms OF mia_AT.
-              ELSE SAY ogg_già_sbloccato_mp OF mia_AT.
+              THEN SAY  ogg_già_sbloccato_ms  OF mia_AT.
+              ELSE SAY  ogg_già_sbloccato_mp  OF mia_AT.
             END IF.
           ELSE
             IF ogg IS NOT plurale
-              THEN SAY ogg_già_sbloccato_fs OF mia_AT.
-              ELSE SAY ogg_già_sbloccato_fp OF mia_AT.
+              THEN SAY  ogg_già_sbloccato_fs  OF mia_AT.
+              ELSE SAY  ogg_già_sbloccato_fp  OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -3596,7 +3602,7 @@ ADD TO EVERY OBJECT
         ELSE "Non possiedi la chiave che sblocca" SAY THE ogg. "."
      -- ELSE "You don't have the key that unlocks" SAY THE ogg. "."
       END IF.
-  END VERB.
+  END VERB sblocca.
 END ADD TO.
 
 
@@ -3615,53 +3621,53 @@ SYNTAX sblocca_con = sblocca (ogg) con (chiave)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "sbloccare."
   AND chiave IsA OBJECT
-      ELSE SAY illegal_parameter_with_sg OF mia_AT. "."
+      ELSE SAY  illegal_parameter_with_sg  OF mia_AT. "."
 
 
 ADD TO EVERY OBJECT
   VERB sblocca_con
     WHEN ogg
       CHECK mia_AT CAN sbloccare_con
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg IS bloccabile
         ELSE
           IF ogg IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT.
-            ELSE SAY ogg1_inadatto_pl OF mia_AT.
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
           END IF.
           "sbloccare."
       AND chiave IS esaminabile
         ELSE
           IF chiave IS NOT plurale
-            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+            THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+            ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
          END IF.
          "sbloccare" SAY THE ogg. "."
       AND chiave IN hero
-          ELSE SAY non_possiedi_ogg2 OF mia_AT.
+          ELSE SAY  non_possiedi_ogg2  OF mia_AT.
       AND ogg <> chiave
-        ELSE SAY check_obj_not_obj2_with OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       AND ogg IS bloccato
@@ -3669,21 +3675,21 @@ ADD TO EVERY OBJECT
           IF ogg IS NOT femminile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg_già_sbloccato_ms OF mia_AT.
-                ELSE SAY ogg_già_sbloccato_mp OF mia_AT.
+                THEN SAY  ogg_già_sbloccato_ms  OF mia_AT.
+                ELSE SAY  ogg_già_sbloccato_mp  OF mia_AT.
               END IF.
             ELSE
               IF ogg IS NOT plurale
-                THEN SAY ogg_già_sbloccato_fs OF mia_AT.
-                ELSE SAY ogg_già_sbloccato_fp OF mia_AT.
+                THEN SAY  ogg_già_sbloccato_fs  OF mia_AT.
+                ELSE SAY  ogg_già_sbloccato_fp  OF mia_AT.
               END IF.
           END IF.
       AND chiave = chiave_abbinata OF ogg
-        ELSE SAY check_door_matching_key OF mia_AT.
+        ELSE SAY  check_door_matching_key  OF mia_AT.
       DOES
         MAKE ogg NOT bloccato.
         "Sblocchi" SAY THE ogg. "con" SAY THE chiave. "."
-    END VERB.
+    END VERB sblocca_con.
 END ADD TO.
 
 
@@ -3707,8 +3713,8 @@ SYNTAX scava = scava (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "scavare."
 
@@ -3716,34 +3722,34 @@ SYNTAX scava = scava (ogg)
 ADD TO EVERY OBJECT
   VERB scava
     CHECK mia_AT CAN scavare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
 --                                                                              TRANSLATE!
     AND hero IS NOT seduto
-      ELSE SAY check_hero_not_sitting2 OF mia_AT.
+      ELSE SAY  check_hero_not_sitting2  OF mia_AT.
 --                                                                              TRANSLATE!
     AND hero IS NOT sdraiato
-      ELSE SAY check_hero_not_lying_down2 OF mia_AT.
+      ELSE SAY  check_hero_not_lying_down2  OF mia_AT.
     DOES
       "Qui non c'è nulla da scavare."
    -- "There is nothing suitable to dig here."
-  END VERB.
+  END VERB scava.
 END ADD TO.
 
 
@@ -3763,9 +3769,9 @@ END ADD TO.
 
 SYNTAX  scrivi = scrivi (txt) su (ogg)
     WHERE txt IsA STRING
-      ELSE SAY illegal_parameter_string OF mia_AT.
+      ELSE SAY  illegal_parameter_string  OF mia_AT.
     AND ogg IsA OBJECT
-      ELSE SAY illegal_parameter2_there OF mia_AT.
+      ELSE SAY  illegal_parameter2_there  OF mia_AT.
 
         scrivi = scrivi (txt) 'in' (ogg).
 
@@ -3774,24 +3780,24 @@ ADD TO EVERY OBJECT
   VERB scrivi
         WHEN ogg
       CHECK mia_AT CAN scrivere
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg IS scrivibile
-        ELSE SAY check_obj_writeable OF mia_AT.
+        ELSE SAY  check_obj_writeable  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
 
@@ -3808,7 +3814,7 @@ ADD TO EVERY OBJECT
         -- "You write ""$$" SAY txt. "$$"" on" SAY THE obj. "."
         -- MAKE obj readable.
         -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    END VERB.
+    END VERB scrivi.
 END ADD TO.
 
 
@@ -3830,7 +3836,7 @@ ADD TO EVERY OBJECT
     DOES
       "Per poter scrivere, usa la sintassi SCRIVI ""TESTO"" SU (IN) OGGETTO."
 
-  END VERB.
+  END VERB scrivi_errore1.
 END ADD TO.
 
 
@@ -3839,7 +3845,7 @@ SYNTAX scrivi_errore2 = scrivi.
 VERB scrivi_errore2
     DOES
       "Per poter scrivere, usa la sintassi SCRIVI ""TESTO"" SU (IN) OGGETTO."
-END VERB.
+END VERB scrivi_errore2.
 
 
 SYNTAX scrivi_errore3 = scrivi (txt)
@@ -3852,7 +3858,7 @@ ADD TO EVERY STRING
   VERB scrivi_errore3
     DOES
       "Per poter scrivere, usa la sintassi SCRIVI ""TESTO"" SU (IN) OGGETTO."
-  END VERB.
+  END VERB scrivi_errore3.
 END ADD TO.
 
 
@@ -3877,10 +3883,10 @@ SYNONYMS siedi = siediti.
 
 VERB siediti
   CHECK mia_AT CAN sedersi
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   AND hero IS NOT seduto
     --                                                                          TRANSLATE
-    ELSE SAY check_hero_not_sitting4 OF mia_AT.
+    ELSE SAY  check_hero_not_sitting4  OF mia_AT.
   DOES
     -- @TODO: Creare messaggio parziale "Al momento, non senti il bisogno di" ??
     "Non senti il bisogno di sederti in questo momento." --                     IMPROVE
@@ -3896,15 +3902,15 @@ VERB siediti
     -- END IF.
     -- MAKE hero seduto.
     -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-END VERB.
+END VERB siediti.
 
 -- Mentre l'eroe è 'seduto' o 'sdraiato', non gli sarà possibile eseguire certe
 -- azioni poiché molti verbi della libreria prima controllano che non si trovi
 -- in una di quelle posizioni. Per esempio, se l'eroe è seduto ed il giocatore
 -- digita 'attacca [qualcosa]', la risposta sarà:
--- 
+--
 --    It will be difficult to attack anything while sitting down."              TRANSLATE
--- 
+--
 -- Inoltre, sarà spesso necessario rendere alcuni oggetti non raggiungibili da
 -- seduto o sdraiato.
 
@@ -3923,8 +3929,8 @@ SYNTAX siediti_su = siediti su (superficie)
   WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
-        THEN SAY ogg1_illegale_SU_sg OF mia_AT.
-        ELSE SAY ogg1_illegale_SU_pl OF mia_AT.
+        THEN SAY  ogg1_illegale_SU_sg  OF mia_AT.
+        ELSE SAY  ogg1_illegale_SU_pl  OF mia_AT.
       END IF.
       "$$si sedere."
 
@@ -3932,25 +3938,25 @@ SYNTAX siediti_su = siediti su (superficie)
 ADD TO EVERY supporto
   VERB siediti_su
     CHECK mia_AT CAN sedersi_su
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND hero IS NOT seduto
       --                                                                        TRANSLATE
-      ELSE SAY check_hero_not_sitting4 OF mia_AT.
+      ELSE SAY  check_hero_not_sitting4  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND superficie IS raggiungibile AND superficie IS NOT distante
       ELSE
         IF superficie IS NOT raggiungibile
           THEN
             IF superficie IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF superficie IS distante
           THEN
             IF superficie IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -3966,7 +3972,7 @@ ADD TO EVERY supporto
       --   ELSE "Ti siedi" SAY superficie:prep_SU. SAY superficie. "."
       -- END IF.
       -- MAKE hero seduto.
-  END VERB.
+  END VERB siediti_su.
 END ADD TO.
 
 
@@ -3974,9 +3980,9 @@ END ADD TO.
 -- azioni poiché molti verbi della libreria prima controllano che non si trovi
 -- in una di quelle posizioni. Per esempio, se l'eroe è seduto ed il giocatore
 -- digita 'attacca [qualcosa]', la risposta sarà:
--- 
+--
 --    It will be difficult to attack anything while sitting down."              TRANSLATE
--- 
+--
 -- Inoltre, sarà spesso necessario rendere alcuni oggetti non raggiungibili da
 -- seduto o sdraiato.
 
@@ -4009,8 +4015,8 @@ SYNTAX spegni = spegni (disp)
   WHERE disp IsA OBJECT
     ELSE
       IF disp IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "spegnere."
 
@@ -4025,14 +4031,14 @@ SYNTAX spegni = spegni (disp)
 ADD TO EVERY OBJECT
   VERB spegni
     CHECK mia_AT CAN spegnere
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     DOES
       IF disp IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "spegnere."
-  END VERB.
+  END VERB spegni.
 END ADD TO.
 
 
@@ -4054,9 +4060,9 @@ SYNONYMS svestiti = spogliati.
 
 VERB spogliati
   CHECK mia_AT CAN spogliarsi
-    ELSE SAY azione_bloccata OF mia_AT.   --# "Non puoi farlo."
+    ELSE SAY  azione_bloccata  OF mia_AT.   --# "Non puoi farlo."
   AND CURRENT LOCATION IS illuminato
-    ELSE SAY imp_luogo_buio OF mia_AT. --# "È troppo buio."
+    ELSE SAY  imp_luogo_buio  OF mia_AT. --# "È troppo buio."
   --@TODO: modifica frase (non mi piace):
   DOES "Ripensandoci, spogliarsi qui e ora non è una buona idea."
 --DOES "You don't feel like undressing is a good idea right now."
@@ -4073,7 +4079,7 @@ VERB spogliati
 --|   -- ELSE "You're not wearing anything you can remove."
 --| END IF.
 --|--------------------------------------------------------
-END VERB.
+END VERB spogliati.
 
 
 
@@ -4091,8 +4097,8 @@ SYNTAX suona = suona (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "suonare."
 
@@ -4100,34 +4106,34 @@ SYNTAX suona = suona (ogg)
 ADD TO EVERY OBJECT
   VERB suona
     CHECK mia_AT CAN suonare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY check_obj_suitable_with_sg OF mia_AT.
-          ELSE SAY check_obj_suitable_with_pl OF mia_AT.
+          THEN SAY  check_obj_suitable_with_sg  OF mia_AT.
+          ELSE SAY  check_obj_suitable_with_pl  OF mia_AT.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
       IF ogg IS NOT plurale
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "suonare."
    -- IF ogg IS NOT plurale
@@ -4135,7 +4141,7 @@ ADD TO EVERY OBJECT
    --   ELSE "Those are not"
    -- END IF.
    -- "something you can play."
-  END VERB.
+  END VERB suona.
 END ADD TO.
 
 
@@ -4159,8 +4165,8 @@ SYNTAX taglia = taglia (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "tagliare."
 
@@ -4168,21 +4174,21 @@ SYNTAX taglia = taglia (ogg)
 ADD TO EVERY OBJECT
   VERB taglia
     CHECK mia_AT CAN tagliare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "tagliare."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     DOES
       SAY mia_AT:specificare_CON_cosa. "tagliare" SAY THE ogg.
     -- "You need to specify what you want to cut" SAY THE ogg. "with."
-    END VERB.
+    END VERB taglia.
 END ADD TO.
 
 
@@ -4202,15 +4208,15 @@ SYNTAX taglia_con = taglia (ogg) con (strum)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "tagliare."
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
-        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+        THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+        ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
       END IF.
       "tagliare" SAY THE ogg. "."
 
@@ -4219,47 +4225,47 @@ ADD TO EVERY OBJECT
   VERB taglia_con
     WHEN ogg
       CHECK mia_AT CAN tagliare_con
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg <> strum
-        ELSE SAY check_obj_not_obj2_with OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
       AND ogg IS esaminabile
         ELSE
           IF ogg IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT.
-            ELSE SAY ogg1_inadatto_pl OF mia_AT.
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
           END IF.
           "tagliare."
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
-            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+            THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+            ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
           END IF.
           "tagliare" SAY THE ogg. "."
       AND strum IN hero
-        ELSE SAY non_possiedi_ogg2 OF mia_AT.
+        ELSE SAY  non_possiedi_ogg2  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       DOES
         "Non puoi tagliare" SAY THE ogg. "con" SAY THE strum. "."
      -- "You can't cut" SAY THE ogg. "with" SAY THE strum. "."
-  END VERB.
+  END VERB taglia_con.
 END ADD TO.
 
 
@@ -4280,8 +4286,8 @@ SYNTAX tira = tira (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "tirare." --@NOTA: ambiguità con "lanciare"
 
@@ -4289,38 +4295,191 @@ SYNTAX tira = tira (ogg)
 ADD TO EVERY OBJECT
   VERB tira
     CHECK mia_AT CAN tirare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
 --                                                                              TRANSLATE!
     AND ogg IS spostabile
-      ELSE SAY check_obj_movable OF mia_AT.
+      ELSE SAY  check_obj_movable  OF mia_AT.
 --                                                                              TRANSLATE!
     AND ogg <> hero
-      ELSE SAY check_obj_not_hero1 OF mia_AT.
+      ELSE SAY  check_obj_not_hero1  OF mia_AT.
 --                                                                              TRANSLATE!
     AND ogg IS inanimato
-      ELSE SAY check_obj_inanimate1 OF mia_AT.
+      ELSE SAY  check_obj_inanimate1  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
       -- "Farlo non servirebbe a nulla."
       SAY mia_AT:non_servirebbe_a_nulla.
       -- "That wouldn't accomplish anything."
-  END VERB.
+  END VERB tira.
+END ADD TO.
+
+
+
+-- ==============================================================
+
+
+----- @TOCCA ---> @TOUCH
+
+
+-- ==============================================================
+-- @NOTA: i6 accetta come sinonimi di 'tocca':
+--        'accarezza', 'palpa', 'carezza'.
+
+-- SYNTAX touch = touch (ogg)
+-- SYNONYMS feel = touch.
+
+
+SYNTAX tocca = tocca (ogg)
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "toccare."
+
+SYNONYMS accarezza, carezza = tocca.
+
+
+ADD TO EVERY THING
+  VERB tocca
+    CHECK mia_AT CAN toccare
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+        END IF.
+        "toccare."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
+            END IF.
+        END IF.
+--                                                                              TRANSLATE!
+      AND ogg <> hero
+        ELSE SAY  check_obj_not_hero3  OF mia_AT.
+--                                                                              TRANSLATE!
+      AND ogg IS inanimato
+        ELSE SAY  check_obj_inanimate2  OF mia_AT.
+      DOES
+        "Tocchi $+1 ma non senti nulla di strano."
+     -- "You feel nothing unexpected."
+  END VERB tocca.
+END ADD TO.
+
+
+-- ==============================================================
+
+
+----- @TOCCA CON ---> @TOUCH WITH
+
+
+-- ==============================================================
+
+-- SYNTAX touch_with = touch (ogg) 'with' (strum)
+
+SYNTAX tocca_con = tocca (ogg) con (strum)
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "toccare."
+  AND strum IsA OBJECT
+    ELSE
+      IF strum IS NOT plurale
+        THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+        ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
+      END IF.
+      "toccare" SAY THE ogg. "."
+
+
+ADD TO EVERY THING
+  VERB tocca_con
+    WHEN ogg
+      CHECK mia_AT CAN toccare_con
+        ELSE SAY  azione_bloccata  OF mia_AT.
+      AND ogg IS esaminabile
+        ELSE
+          IF ogg IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+          END IF.
+          "toccare."
+      AND strum IS esaminabile
+        ELSE
+          IF strum IS NOT plurale
+            THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+            ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
+        END IF.
+        "toccare" SAY THE ogg. "."
+--                                                                              TRANSLATE!
+      AND ogg <> strum
+        ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
+--                                                                              TRANSLATE!
+      AND strum <> hero
+        ELSE SAY  check_obj2_not_hero1  OF mia_AT.
+      AND strum IN hero
+        ELSE SAY  non_possiedi_ogg2  OF mia_AT.
+--                                                                              TRANSLATE!
+      AND ogg IS inanimato
+        ELSE SAY  check_obj_inanimate2  OF mia_AT.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
+              END IF.
+          END IF.
+      DOES
+        "Tocchi $+1 con $+2 ma non succede nulla."
+     -- "You touch" SAY THE ogg. "with" SAY THE strum. ". Nothing special happens."
+  END VERB tocca_con.
 END ADD TO.
 
 
@@ -4340,8 +4499,8 @@ SYNTAX trova = trova (ogg)!
     ELSE
       IF ogg IS NOT plurale
       -- @NOTA: Qui potrebbe volerci un messaggio ad hoc per questo verbo!
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY  illegal_parameter_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_pl  OF mia_AT.
       END IF.
 
 
@@ -4352,21 +4511,120 @@ SYNTAX trova = trova (ogg)!
 ADD TO EVERY THING
   VERB trova
     CHECK mia_AT CAN trovare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg <> hero
-      ELSE SAY sei_già_qui OF mia_AT.
+      ELSE SAY  sei_già_qui  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg NOT AT hero
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY ogg1_già_qui_sg OF mia_AT.
-          ELSE SAY ogg1_già_qui_pl OF mia_AT.
+          THEN SAY  ogg1_già_qui_sg  OF mia_AT.
+          ELSE SAY  ogg1_già_qui_pl  OF mia_AT.
         END IF.
     DOES
       "Dovrai trovarlo da te!"
    -- "You'll have to $v it yourself."
-  END VERB.
+  END VERB trova.
+END ADD TO.
+
+
+
+-- ==============================================================
+
+
+-- @UCCIDI --> @KILL (+ murder)
+
+
+-- ==============================================================
+
+-- SYNTAX kill = kill (vittima)
+
+SYNTAX uccidi = uccidi (vittima)
+  WHERE vittima IsA ACTOR
+    ELSE
+      IF vittima IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "uccidere."
+
+SYNONYMS ammazza = uccidi.
+
+ADD TO EVERY ACTOR
+  VERB uccidi
+    CHECK mia_AT CAN uccidere
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    AND vittima IS esaminabile
+      ELSE
+        IF vittima IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+        END IF.
+        "uccidere."
+--                                                                              TRANSLATE!
+    AND vittima <> hero
+      ELSE SAY  check_obj_not_hero2  OF mia_AT.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
+    DOES "You have to state what you want to kill" SAY THE vittima. "with."
+  END VERB uccidi.
+END ADD TO.
+
+
+
+-- ==============================================================
+
+
+-- @UCCIDI CON --> @KILL WITH
+
+
+-- ==============================================================
+
+-- SYNTAX kill_with = kill (vittima) 'with' (arma)
+
+SYNTAX uccidi_con = uccidi (vittima) con (arma)
+  WHERE vittima IsA ACTOR
+    ELSE
+      IF vittima IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "uccidere."
+  AND arma IsA arma
+    ELSE
+      IF arma IS NOT plurale
+        THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+        ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
+      END IF.
+      "uccidere."
+
+
+ADD TO EVERY ACTOR
+  VERB uccidi_con
+    WHEN vittima
+      CHECK mia_AT CAN uccidere_con
+        ELSE SAY  azione_bloccata  OF mia_AT.
+--                                                                              TRANSLATE!
+      AND vittima <> hero
+        ELSE SAY  check_obj_not_hero2  OF mia_AT.
+      AND arma IN hero
+        ELSE SAY  non_possiedi_ogg2  OF mia_AT.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
+      AND vittima IS NOT distante
+        ELSE
+          IF vittima IS NOT plurale
+            THEN SAY  ogg1_distante_sg  OF mia_AT.
+            ELSE SAY  ogg1_distante_pl  OF mia_AT.
+          END IF.
+      DOES
+        "Sarebbe un atto di inutile brutalità."
+     -- "That would be needlessly brutal."
+  END VERB uccidi_con.
 END ADD TO.
 
 
@@ -4382,18 +4640,18 @@ END ADD TO.
 SYNTAX usa = usa (ogg)
   WHERE ogg IsA OBJECT
     ELSE "Solo gli oggetti sono utilizzabili!"
- -- ELSE SAY illegal_parameter_obj OF mia_AT.
+ -- ELSE SAY  illegal_parameter_obj  OF mia_AT.
 
 -- @TODO: Valutare se usare un messagio my_game per qui sopra!
 
 ADD TO EVERY OBJECT
   VERB usa
     CHECK mia_AT CAN usare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     DOES
    -- "Please be more specific. How do you intend to use"
       "Sii più specifico. Come vorresti usarl$$" SAY ogg:vocale. "?"
-    END VERB.
+    END VERB usa.
 END ADD TO.
 
 
@@ -4410,10 +4668,10 @@ END ADD TO.
 SYNTAX usa_con = usa (ogg) con (strum)
   WHERE ogg IsA OBJECT
     ELSE "Solo gli oggetti sono utilizzabili!"
- -- ELSE SAY illegal_parameter_obj OF mia_AT.
+ -- ELSE SAY  illegal_parameter_obj  OF mia_AT.
   AND strum IsA OBJECT
     ELSE "Solo gli oggetti sono utilizzabili!"
- -- ELSE SAY illegal_parameter_obj OF mia_AT.
+ -- ELSE SAY  illegal_parameter_obj  OF mia_AT.
 
 -- @TODO: Valutare se usare un messagio my_game per qui sopra!
 
@@ -4422,9 +4680,9 @@ ADD TO EVERY OBJECT
   VERB usa_con
     WHEN ogg
       CHECK mia_AT CAN usare_con
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg <> strum
-        ELSE SAY check_obj_not_obj2_with OF mia_AT. --@TODO                    TRANSLATE!
+        ELSE SAY  check_obj_not_obj2_with  OF mia_AT. --@TODO                    TRANSLATE!
       DOES
      -- "Please be more specific. How do you intend to use them together?"
         "Sii più specifico. Come vorresti usarl$$"
@@ -4432,7 +4690,7 @@ ADD TO EVERY OBJECT
           THEN "i?" --| Se anche solo uno dei due è maschile useremo il maschile,
           ELSE "e?" --| altrimenti il femminile.
         END IF.
-    END VERB.
+    END VERB usa_con.
 END ADD TO.
 
 
@@ -4454,7 +4712,7 @@ SYNTAX vai_a = 'a' (dest)!
   -- Because 'go' is predefined in the parser, it can't be used in verb definitions.
   -- The player will still be able to type 'go to [dest]' successfully.
   WHERE dest IsA THING
-    ELSE SAY destinazione_invalida OF mia_AT.
+    ELSE SAY  destinazione_invalida  OF mia_AT.
 
 
 SYNONYMS vai = go.
@@ -4470,41 +4728,41 @@ SYNONYMS vai = go.
 ADD TO EVERY THING
   VERB vai_a
     CHECK mia_AT CAN andare_a
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND dest <> hero
       -- @NOTA: Potrei fare a meno dell'attr. messaggio, e personalizzarlo qui!
-      ELSE SAY sei_già_qui OF mia_AT.
+      ELSE SAY  sei_già_qui  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND hero IS NOT seduto --                                                   TRANSLATE
-      ELSE SAY check_hero_not_sitting3 OF mia_AT.
+      ELSE SAY  check_hero_not_sitting3  OF mia_AT.
     AND hero IS NOT sdraiato
-      ELSE SAY check_hero_not_lying_down3 OF mia_AT.
+      ELSE SAY  check_hero_not_lying_down3  OF mia_AT.
     AND dest NOT AT hero --                                                     TRANSLATE
       ELSE
         IF dest IS NOT plurale
-          THEN SAY ogg1_già_qui_sg OF mia_AT.
-          ELSE SAY ogg1_già_qui_pl OF mia_AT.
+          THEN SAY  ogg1_già_qui_sg  OF mia_AT.
+          ELSE SAY  ogg1_già_qui_pl  OF mia_AT.
         END IF.
     AND dest IS raggiungibile AND dest IS NOT distante
       ELSE
         IF dest IS NOT raggiungibile
           THEN
             IF dest IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF dest IS distante
           THEN
             IF dest IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES --                                                                     TRANSLATE
       "You can't see" SAY THE dest. "anywhere nearby. You must state a
       direction where you want to go."
-    END VERB.
+    END VERB vai_a.
 END ADD TO.
 
 
@@ -4525,8 +4783,8 @@ SYNTAX vendi = vendi (merce)
     ELSE
       IF merce IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "vendere."
 
@@ -4534,21 +4792,21 @@ SYNTAX vendi = vendi (merce)
 ADD TO EVERY OBJECT
     VERB vendi
     CHECK mia_AT CAN vendere
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND merce IS esaminabile
       ELSE
         IF merce IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "vendere."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     DOES
       "Qui nessuno è interessanto ad acquistare" SAY THE merce. "."
    -- "There's nobody here who would be interested in buying" SAY THE merce. "."
-    END VERB.
+    END VERB vendi.
 END ADD TO.
 
 -- Depending on the situation, it might be good to add a check whether the item is carried
@@ -4585,7 +4843,7 @@ SYNONYMS help, info = 'about'.
 
 VERB 'about'
   CHECK mia_AT CAN about
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     "[This is a text adventure, also called interactive fiction, which means that what
     goes on in the story depends on what you type at the prompt. Commands you can type
@@ -4614,14 +4872,14 @@ SYNTAX ask = ask (png) about (argomento)!
   WHERE png IsA ACTOR
     ELSE
       IF png IS NOT plurale
-        THEN SAY illegal_parameter_talk_sg OF mia_AT.
-        ELSE SAY illegal_parameter_talk_pl OF mia_AT.
+        THEN SAY  illegal_parameter_talk_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_talk_pl  OF mia_AT.
       END IF.
   AND argomento IsA THING
     ELSE
       IF argomento IS NOT plurale
-        THEN SAY illegal_parameter_about_sg OF mia_AT.
-        ELSE SAY illegal_parameter_about_pl OF mia_AT.
+        THEN SAY  illegal_parameter_about_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_about_pl  OF mia_AT.
       END IF.
 
    ask = enquire (png) about (argomento)!.
@@ -4638,25 +4896,25 @@ ADD TO EVERY ACTOR
   VERB ask
     WHEN png
       CHECK mia_AT CAN ask
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND png <> hero
-        ELSE SAY check_obj_not_hero1 OF mia_AT.
+        ELSE SAY  check_obj_not_hero1  OF mia_AT.
       AND png CAN parlare
         ELSE
           IF png IS NOT plurale
-            THEN SAY check_act_can_talk_sg OF mia_AT.
-            ELSE SAY check_act_can_talk_pl OF mia_AT.
+            THEN SAY  check_act_can_talk_sg  OF mia_AT.
+            ELSE SAY  check_act_can_talk_pl  OF mia_AT.
           END IF.
       AND png IS NOT distante
         ELSE
           IF png IS NOT plurale
-            THEN SAY ogg1_distante_sg OF mia_AT.
-            ELSE SAY ogg1_distante_pl OF mia_AT.
+            THEN SAY  ogg1_distante_sg  OF mia_AT.
+            ELSE SAY  ogg1_distante_pl  OF mia_AT.
           END IF.
       DOES
         "Nessuna risposta." --> taken from i6
         -- "There is no reply."
-    END VERB.
+    END VERB ask.
 END ADD TO.
 
 
@@ -4678,14 +4936,14 @@ SYNTAX ask_for = ask (png) 'for' (ogg)
   WHERE png IsA ACTOR
     ELSE
       IF png IS NOT plurale
-        THEN SAY illegal_parameter_talk_sg OF mia_AT.
-        ELSE SAY illegal_parameter_talk_pl OF mia_AT.
+        THEN SAY  illegal_parameter_talk_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_talk_pl  OF mia_AT.
       END IF.
   AND ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_for_sg OF mia_AT.
-        ELSE SAY illegal_parameter_for_pl OF mia_AT.
+        THEN SAY  illegal_parameter_for_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_for_pl  OF mia_AT.
       END IF.
 
 
@@ -4693,50 +4951,50 @@ ADD TO EVERY ACTOR
   VERB ask_for
       WHEN png
       CHECK mia_AT CAN ask_for
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND png <> hero
-        ELSE SAY check_obj_not_hero1 OF mia_AT.
+        ELSE SAY  check_obj_not_hero1  OF mia_AT.
           AND png CAN parlare
               ELSE
           IF png IS NOT plurale
-            THEN SAY check_act_can_talk_sg OF mia_AT.
-            ELSE SAY check_act_can_talk_pl OF mia_AT.
+            THEN SAY  check_act_can_talk_sg  OF mia_AT.
+            ELSE SAY  check_act_can_talk_pl  OF mia_AT.
           END IF.
       AND ogg IS esaminabile
         ELSE
           IF ogg IS NOT plurale
-            THEN SAY check_obj2_suitable_for_sg OF mia_AT.
-            ELSE SAY check_obj2_suitable_for_pl OF mia_AT.
+            THEN SAY  check_obj2_suitable_for_sg  OF mia_AT.
+            ELSE SAY  check_obj2_suitable_for_pl  OF mia_AT.
           END IF.
       AND ogg NOT IN hero
-        ELSE SAY check_obj2_not_in_hero3 OF mia_AT.
+        ELSE SAY  check_obj2_not_in_hero3  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND png IS NOT distante
         ELSE
           IF png IS NOT plurale
-            THEN SAY ogg1_distante_sg OF mia_AT.
-            ELSE SAY ogg1_distante_pl OF mia_AT.
+            THEN SAY  ogg1_distante_sg  OF mia_AT.
+            ELSE SAY  ogg1_distante_pl  OF mia_AT.
           END IF.
       AND ogg IS prendibile
-        ELSE SAY check_obj2_takeable2 OF mia_AT.
+        ELSE SAY  check_obj2_takeable2  OF mia_AT.
 
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
-            THEN SAY check_obj_reachable_ask OF mia_AT.
+            THEN SAY  check_obj_reachable_ask  OF mia_AT.
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       AND ogg IS NOT scenario
         ELSE
           IF ogg IS NOT plurale
-            THEN SAY check_obj2_not_scenery_sg OF mia_AT.
-            ELSE SAY check_obj2_not_scenery_pl OF mia_AT.
+            THEN SAY  check_obj2_not_scenery_sg  OF mia_AT.
+            ELSE SAY  check_obj2_not_scenery_pl  OF mia_AT.
           END IF.
       DOES
         MAKE png compliant.
@@ -4745,7 +5003,7 @@ ADD TO EVERY ACTOR
         LOCATE ogg IN hero.
         SAY THE png. "gives" SAY THE ogg. "to you."
         MAKE png NOT compliant.
-  END VERB.
+  END VERB ask_for.
 END ADD TO.
 
 
@@ -4764,7 +5022,7 @@ ADD TO EVERY OBJECT
     DOES
       "Please use the formulation ASK PERSON FOR THING to ask somebody for
              something."
-  END VERB.
+  END VERB ask_for_error.
 END ADD TO.
 
 
@@ -4783,8 +5041,8 @@ SYNTAX bite = bite (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "mordere."
 
@@ -4794,32 +5052,32 @@ SYNONYMS chew = bite.
 ADD TO EVERY OBJECT
   VERB bite
     CHECK mia_AT CAN bite
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS commestibile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "mordere."
     AND ogg IS prendibile
-      ELSE SAY check_obj_takeable OF mia_AT.
+      ELSE SAY  check_obj_takeable  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS NOT distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -4832,7 +5090,7 @@ ADD TO EVERY OBJECT
       -- implicit taking:
       IF ogg NOT DIRECTLY IN hero
         THEN LOCATE ogg IN hero.
-             SAY implicit_taking_message OF mia_AT.
+             SAY  implicit_taking_message  OF mia_AT.
       END IF.
       -- end of implicit taking.
 
@@ -4842,7 +5100,7 @@ ADD TO EVERY OBJECT
           ELSE "They taste nothing out of the ordinary."
         END IF.
 
-  END VERB.
+  END VERB bite.
 END ADD TO.
 
 
@@ -4866,7 +5124,7 @@ SYNTAX brief = brief.
 
 VERB brief
   CHECK mia_AT CAN modalità_breve
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     Visits 1000.
     -- "Brief mode is now on. Location descriptions will only be shown
@@ -4874,7 +5132,7 @@ VERB brief
 
     "Il gioco è ora in modalità" STYLE EMPHASIZED. "breve" STYLE NORMAL. ", le
     descrizioni dei luoghi già visitati non saranno più mostrate."
-END VERB.
+END VERB brief.
 
 
 
@@ -4896,31 +5154,31 @@ SYNTAX catch = catch (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "catturare."
 
 ADD TO EVERY THING
   VERB catch
     CHECK mia_AT CAN catch
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "catturare."
     AND ogg <> hero
-      ELSE SAY check_obj_not_hero1 OF mia_AT.
+      ELSE SAY  check_obj_not_hero1  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND hero IS NOT seduto
-      ELSE SAY check_hero_not_sitting2 OF mia_AT.
+      ELSE SAY  check_hero_not_sitting2  OF mia_AT.
     AND hero IS NOT sdraiato
-      ELSE SAY check_hero_not_lying_down2 OF mia_AT.
+      ELSE SAY  check_hero_not_lying_down2  OF mia_AT.
     DOES
       IF ogg IS NOT plurale
         THEN "That doesn't"
@@ -4928,7 +5186,7 @@ ADD TO EVERY THING
       END IF.
 
           "need to be caught."
-  END VERB.
+  END VERB catch.
 END ADD TO.
 
 
@@ -4947,8 +5205,8 @@ SYNTAX clean = clean (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "pulire."
 
@@ -4960,37 +5218,37 @@ SYNONYMS wipe, polish = clean.
 ADD TO EVERY OBJECT
   VERB clean
     CHECK mia_AT CAN pulire
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "pulire."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
       -- "Farlo non servirebbe a nulla."
       SAY mia_AT:non_servirebbe_a_nulla.
       -- "Nothing would be achieved by that."
-  END VERB.
+  END VERB clean.
 END ADD TO.
 
 
@@ -5011,8 +5269,8 @@ SYNTAX climb = climb (ogg)
     ELSE
       IF ogg IS NOT plurale
       --@NOTA: Qui dovrò usare un messaggio personalizzato
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY  illegal_parameter_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_pl  OF mia_AT.
       END IF.
 
 
@@ -5020,7 +5278,7 @@ SYNTAX climb = climb (ogg)
 ADD TO EVERY OBJECT
   VERB climb
   CHECK mia_AT CAN climb
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   AND ogg IS esaminabile
     ELSE
       IF ogg IS NOT plurale
@@ -5028,37 +5286,37 @@ ADD TO EVERY OBJECT
       --@NOTA: Qui dovrò usare un messaggio personalizzato, del tipo:
       --       "$+1 non [è/sono] qualcosa su cui potersi arrampicare"
       --------------------------------------------------------------------------
-        THEN SAY check_obj_suitable_sg OF mia_AT.
-        ELSE SAY check_obj_suitable_pl OF mia_AT.
+        THEN SAY  check_obj_suitable_sg  OF mia_AT.
+        ELSE SAY  check_obj_suitable_pl  OF mia_AT.
       END IF.
   AND CURRENT LOCATION IS illuminato
-    ELSE SAY imp_luogo_buio OF mia_AT.
+    ELSE SAY  imp_luogo_buio  OF mia_AT.
   AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
   AND hero IS NOT seduto
-    ELSE SAY check_hero_not_sitting3 OF mia_AT.
+    ELSE SAY  check_hero_not_sitting3  OF mia_AT.
   AND hero IS NOT sdraiato
-    ELSE SAY check_hero_not_lying_down3 OF mia_AT.
+    ELSE SAY  check_hero_not_lying_down3  OF mia_AT.
   DOES
     IF ogg IS NOT plurale
       THEN "That's not"
       ELSE "Those are not"
     END IF.
     "something you can climb."
-  END VERB.
+  END VERB climb.
 END ADD TO.
 
 
@@ -5076,8 +5334,8 @@ SYNTAX climb_on = climb 'on' (superficie)
   WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
-        THEN SAY ogg1_illegale_SU_sg OF mia_AT.
-        ELSE SAY ogg1_illegale_SU_pl OF mia_AT.
+        THEN SAY  ogg1_illegale_SU_sg  OF mia_AT.
+        ELSE SAY  ogg1_illegale_SU_pl  OF mia_AT.
       END IF.
       "$$si arrampicare." --                                                    CHECK VERB!
 
@@ -5085,35 +5343,35 @@ SYNTAX climb_on = climb 'on' (superficie)
 ADD TO EVERY supporto
   VERB climb_on
     CHECK mia_AT CAN climb_on
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND superficie IS raggiungibile AND superficie IS NOT distante
       ELSE
         IF superficie IS NOT raggiungibile
           THEN
             IF superficie IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF superficie IS NOT distante
           THEN
             IF superficie IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     AND hero IS NOT seduto
-      ELSE SAY check_hero_not_sitting3 OF mia_AT.
+      ELSE SAY  check_hero_not_sitting3  OF mia_AT.
     AND hero IS NOT sdraiato
-      ELSE SAY check_hero_not_lying_down3 OF mia_AT.
+      ELSE SAY  check_hero_not_lying_down3  OF mia_AT.
     DOES
       IF superficie IS NOT plurale
         THEN "That's not"
         ELSE "Those are not"
       END IF.
       "something you can climb on."
-  END VERB.
+  END VERB climb_on.
 END ADD TO.
 
 
@@ -5135,15 +5393,15 @@ SYNTAX consult = consult (fonte) about (argomento)!
     ELSE
       IF fonte IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "consultare."
   AND argomento IsA THING
     ELSE
       IF argomento IS NOT plurale
-        THEN SAY illegal_parameter_consult_sg OF mia_AT.
-        ELSE SAY illegal_parameter_consult_pl OF mia_AT.
+        THEN SAY  illegal_parameter_consult_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_consult_pl  OF mia_AT.
       END IF.
 
   consult = 'look' 'up' (argomento) 'in' (fonte).
@@ -5153,36 +5411,36 @@ ADD TO EVERY THING
   VERB consult
     WHEN fonte
       CHECK mia_AT CAN consultare
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND fonte IS esaminabile
         ELSE
           IF fonte IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT.
-            ELSE SAY ogg1_inadatto_pl OF mia_AT.
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
           END IF.
           "consultare."
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND fonte IS raggiungibile AND fonte IS NOT distante
         ELSE
           IF fonte IS NOT raggiungibile
             THEN
               IF fonte IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF fonte IS distante
             THEN
               IF fonte IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       DOES
         "You find nothing useful about" SAY THE argomento. "in" SAY THE fonte. "."
 
-  END VERB.
+  END VERB consult.
 END ADD TO.
 
 
@@ -5199,7 +5457,7 @@ ADD TO EVERY THING
   VERB consult_error
     DOES "To consult something, please use the formulation
           CONSULT THING ABOUT PERSON/THING."
-    END VERB.
+    END VERB consult_error.
 END ADD TO.
 
 
@@ -5221,7 +5479,7 @@ SYNONYMS acknowledgments, author, copyright = credits.
 
 VERB credits
   CHECK mia_AT CAN credits
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     "The author retains the copyright to this game.
     $pThis game was written using the ALAN Adventure Language. ALAN is
@@ -5230,7 +5488,7 @@ VERB credits
     about the ALAN system can be obtained from
     the World Wide Web Internet site
     $ihttp://www.alanif.se$p"
-END VERB.
+END VERB credits.
 
 
 
@@ -5248,16 +5506,16 @@ SYNTAX dive = dive.
 
 VERB dive
   CHECK mia_AT CAN tuffarsi
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   AND CURRENT LOCATION IS illuminato
-    ELSE SAY imp_luogo_buio OF mia_AT.
+    ELSE SAY  imp_luogo_buio  OF mia_AT.
   AND hero IS NOT seduto
-    ELSE SAY check_hero_not_sitting3 OF mia_AT.
+    ELSE SAY  check_hero_not_sitting3  OF mia_AT.
   AND hero IS NOT sdraiato
-    ELSE SAY check_hero_not_lying_down3 OF mia_AT.
+    ELSE SAY  check_hero_not_lying_down3  OF mia_AT.
   DOES
     "There is no water suitable for swimming here."
-END VERB.
+END VERB dive.
 
 
 
@@ -5282,29 +5540,29 @@ SYNTAX dive_in = dive 'in' (liq)
   WHERE liq IsA liquido    -- see 'classes.i'
     ELSE
       IF liq IS NOT plurale
-        THEN SAY illegal_parameter_in_sg OF mia_AT.
-        ELSE SAY illegal_parameter_in_pl OF mia_AT.
+        THEN SAY  illegal_parameter_in_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_in_pl  OF mia_AT.
       END IF.
 
 
 ADD TO EVERY OBJECT
   VERB dive_in
     CHECK mia_AT CAN tuffarsi_in
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND hero IS NOT seduto
-      ELSE SAY check_hero_not_sitting3 OF mia_AT.
+      ELSE SAY  check_hero_not_sitting3  OF mia_AT.
     AND hero IS NOT sdraiato
-      ELSE SAY check_hero_not_lying_down3 OF mia_AT.
+      ELSE SAY  check_hero_not_lying_down3  OF mia_AT.
     -- notice that, unlike 'swim_in', it is possible to dive in a
     -- not reachable object (for example from a clifftop into a river)
     -- but not to a distant object:
     AND liq IS NOT distante
       ELSE
         IF liq IS NOT plurale
-          THEN SAY ogg1_distante_sg OF mia_AT.
-          ELSE SAY ogg1_distante_pl OF mia_AT.
+          THEN SAY  ogg1_distante_sg  OF mia_AT.
+          ELSE SAY  ogg1_distante_pl  OF mia_AT.
         END IF.
     DOES
       IF liq IS NOT plurale
@@ -5312,7 +5570,7 @@ ADD TO EVERY OBJECT
         ELSE "Those are not"
       END IF.
       "something you can dive in."
-  END VERB.
+  END VERB dive_in.
 END ADD TO.
 
 
@@ -5341,16 +5599,16 @@ SYNTAX 'empty' = 'empty' (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "svuotare."
   AND ogg IsA CONTAINER
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "svuotare."
 
@@ -5359,16 +5617,16 @@ SYNTAX 'empty' = 'empty' (ogg)
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "versare."
     AND ogg IsA CONTAINER
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "versare."
 
@@ -5376,24 +5634,24 @@ SYNTAX 'empty' = 'empty' (ogg)
 ADD TO EVERY OBJECT
   VERB 'empty', pour
     CHECK mia_AT CAN svuotare AND mia_AT CAN versare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS prendibile
-      ELSE SAY check_obj_takeable OF mia_AT.
+      ELSE SAY  check_obj_takeable  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     AND ogg IS aperto
@@ -5401,13 +5659,13 @@ ADD TO EVERY OBJECT
         IF ogg IS NOT femminile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY imp_ogg1_chiuso_ms OF mia_AT.
-              ELSE SAY imp_ogg1_chiuso_mp OF mia_AT.
+              THEN SAY  imp_ogg1_chiuso_ms  OF mia_AT.
+              ELSE SAY  imp_ogg1_chiuso_mp  OF mia_AT.
             END IF.
           ELSE
             IF ogg IS NOT plurale
-              THEN SAY imp_ogg1_chiuso_fs OF mia_AT.
-              ELSE SAY imp_ogg1_chiuso_fp OF mia_AT.
+              THEN SAY  imp_ogg1_chiuso_fs  OF mia_AT.
+              ELSE SAY  imp_ogg1_chiuso_fp  OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -5415,7 +5673,7 @@ ADD TO EVERY OBJECT
       -- implicit taking:
       IF ogg NOT DIRECTLY IN hero
         THEN LOCATE ogg IN hero.
-          SAY implicit_taking_message OF mia_AT.
+          SAY  implicit_taking_message  OF mia_AT.
       END IF.
       -- end of implicit taking.
 
@@ -5450,26 +5708,26 @@ SYNTAX empty_in = 'empty' (ogg) 'in' (cont)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "svuotare."
   AND ogg IsA CONTAINER
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "svuotare."
   AND cont IsA OBJECT
     ELSE
       IF cont IsA ACTOR
-        THEN SAY illegal_parameter_act OF mia_AT.
-        ELSE SAY illegal_parameter2_there OF mia_AT.
+        THEN SAY  illegal_parameter_act  OF mia_AT.
+        ELSE SAY  illegal_parameter2_there  OF mia_AT.
       END IF.
   AND cont IsA CONTAINER
-    ELSE SAY illegal_parameter2_there OF mia_AT.
+    ELSE SAY  illegal_parameter2_there  OF mia_AT.
 
 
 
@@ -5478,26 +5736,26 @@ pour_in = pour (ogg) 'in' (cont)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "versare."
   AND ogg IsA CONTAINER
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "versare."
   AND cont IsA OBJECT
     ELSE
       IF cont IsA ACTOR
-        THEN SAY illegal_parameter_act OF mia_AT.
-        ELSE SAY illegal_parameter2_there OF mia_AT.
+        THEN SAY  illegal_parameter_act  OF mia_AT.
+        ELSE SAY  illegal_parameter2_there  OF mia_AT.
       END IF.
   AND cont IsA CONTAINER
-    ELSE SAY illegal_parameter2_there OF mia_AT.
+    ELSE SAY  illegal_parameter2_there  OF mia_AT.
 
 
 
@@ -5506,28 +5764,28 @@ ADD TO EVERY OBJECT
   VERB empty_in, pour_in
     WHEN ogg
       CHECK mia_AT CAN svuotare_in AND mia_AT CAN versare_in
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg <> cont
-        ELSE SAY check_obj_not_obj2_in OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_in  OF mia_AT.
       AND ogg IS prendibile
-        ELSE SAY check_obj_takeable OF mia_AT.
+        ELSE SAY  check_obj_takeable  OF mia_AT.
       AND cont NOT IN ogg
-        ELSE SAY check_cont_not_in_obj OF mia_AT.
+        ELSE SAY  check_cont_not_in_obj  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       AND cont IS raggiungibile AND cont IS NOT distante
@@ -5535,34 +5793,34 @@ ADD TO EVERY OBJECT
           IF cont IS NOT raggiungibile
             THEN
               IF cont IS NOT plurale
-                THEN SAY ogg2_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg2_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg2_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg2_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF cont IS distante
             THEN
               IF cont IS NOT plurale
-                THEN SAY ogg2_distante_sg OF mia_AT.
-                ELSE SAY ogg2_distante_pl OF mia_AT.
+                THEN SAY  ogg2_distante_sg  OF mia_AT.
+                ELSE SAY  ogg2_distante_pl  OF mia_AT.
               END IF.
           END IF.
       AND ogg IN consentiti OF cont
         ELSE
           IF ogg IS NOT plurale
-            THEN SAY check_obj_allowed_in_sg OF mia_AT.
-            ELSE SAY check_obj_allowed_in_pl OF mia_AT.
+            THEN SAY  check_obj_allowed_in_sg  OF mia_AT.
+            ELSE SAY  check_obj_allowed_in_pl  OF mia_AT.
           END IF.
       AND ogg IS aperto
         ELSE
           IF ogg IS NOT femminile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY imp_ogg1_chiuso_ms OF mia_AT.
-                ELSE SAY imp_ogg1_chiuso_mp OF mia_AT.
+                THEN SAY  imp_ogg1_chiuso_ms  OF mia_AT.
+                ELSE SAY  imp_ogg1_chiuso_mp  OF mia_AT.
               END IF.
             ELSE
               IF ogg IS NOT plurale
-                THEN SAY imp_ogg1_chiuso_fs OF mia_AT.
-                ELSE SAY imp_ogg1_chiuso_fp OF mia_AT.
+                THEN SAY  imp_ogg1_chiuso_fs  OF mia_AT.
+                ELSE SAY  imp_ogg1_chiuso_fp  OF mia_AT.
               END IF.
           END IF.
       AND cont IS aperto
@@ -5570,13 +5828,13 @@ ADD TO EVERY OBJECT
           IF cont IS NOT femminile
             THEN
               IF cont IS NOT plurale
-                THEN SAY imp_ogg2_chiuso_ms OF mia_AT.
-                ELSE SAY imp_ogg2_chiuso_mp OF mia_AT.
+                THEN SAY  imp_ogg2_chiuso_ms  OF mia_AT.
+                ELSE SAY  imp_ogg2_chiuso_mp  OF mia_AT.
               END IF.
             ELSE
               IF cont IS NOT plurale
-                THEN SAY imp_ogg2_chiuso_fs OF mia_AT.
-                ELSE SAY imp_ogg2_chiuso_fp OF mia_AT.
+                THEN SAY  imp_ogg2_chiuso_fs  OF mia_AT.
+                ELSE SAY  imp_ogg2_chiuso_fp  OF mia_AT.
               END IF.
           END IF.
       DOES
@@ -5584,7 +5842,7 @@ ADD TO EVERY OBJECT
       -- implicit taking:
       IF ogg NOT DIRECTLY IN hero
         THEN LOCATE ogg IN hero.
-          SAY implicit_taking_message OF mia_AT.
+          SAY  implicit_taking_message  OF mia_AT.
       END IF.
       -- end of implicit taking.
 
@@ -5595,7 +5853,7 @@ ADD TO EVERY OBJECT
           "You $v the contents of" SAY THE ogg.
           "in" SAY THE cont. "."
       END IF.
-     END VERB.
+     END VERB empty_in.
 END ADD TO.
 
 
@@ -5615,70 +5873,70 @@ SYNTAX empty_on = 'empty' (ogg) 'on' (superficie)
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "svuotare."
     AND ogg IsA CONTAINER
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "svuotare."
     AND superficie IsA THING
-      ELSE SAY illegal_parameter2_there OF mia_AT.
+      ELSE SAY  illegal_parameter2_there  OF mia_AT.
     AND superficie IsA CONTAINER
-      ELSE SAY illegal_parameter2_there OF mia_AT.
+      ELSE SAY  illegal_parameter2_there  OF mia_AT.
 
   pour_on = pour (ogg) 'on' (superficie)
     WHERE ogg IsA OBJECT
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "versare."
     AND ogg IsA CONTAINER
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "versare."
     AND superficie IsA OBJECT
-      ELSE SAY illegal_parameter2_there OF mia_AT.
+      ELSE SAY  illegal_parameter2_there  OF mia_AT.
     AND superficie IsA CONTAINER
-      ELSE SAY illegal_parameter2_there OF mia_AT.
+      ELSE SAY  illegal_parameter2_there  OF mia_AT.
 
 
 ADD TO EVERY THING
   VERB empty_on, pour_on
       WHEN ogg
       CHECK mia_AT CAN svuotare_su AND mia_AT CAN versare_su
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg <> superficie
-        ELSE SAY check_obj_not_obj2_on OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_on  OF mia_AT.
       AND ogg IS prendibile
-        ELSE SAY check_obj_takeable OF mia_AT.
+        ELSE SAY  check_obj_takeable  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       AND superficie IS raggiungibile AND superficie IS NOT distante
@@ -5686,14 +5944,14 @@ ADD TO EVERY THING
           IF superficie IS NOT raggiungibile
             THEN
               IF superficie IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF superficie IS distante
             THEN
               IF superficie IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       AND ogg IS aperto
@@ -5701,20 +5959,20 @@ ADD TO EVERY THING
           IF ogg IS NOT femminile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY imp_ogg1_chiuso_ms OF mia_AT.
-                ELSE SAY imp_ogg1_chiuso_mp OF mia_AT.
+                THEN SAY  imp_ogg1_chiuso_ms  OF mia_AT.
+                ELSE SAY  imp_ogg1_chiuso_mp  OF mia_AT.
               END IF.
             ELSE
               IF ogg IS NOT plurale
-                THEN SAY imp_ogg1_chiuso_fs OF mia_AT.
-                ELSE SAY imp_ogg1_chiuso_fp OF mia_AT.
+                THEN SAY  imp_ogg1_chiuso_fs  OF mia_AT.
+                ELSE SAY  imp_ogg1_chiuso_fp  OF mia_AT.
               END IF.
           END IF.
       DOES
         -- implicit taking:
         IF ogg NOT DIRECTLY IN hero
           THEN LOCATE ogg IN hero.
-            SAY implicit_taking_message OF mia_AT.
+            SAY  implicit_taking_message  OF mia_AT.
         END IF.
         -- end of implicit taking.
 
@@ -5728,7 +5986,7 @@ ADD TO EVERY THING
             "You $v the contents of" SAY THE ogg.
             "on" SAY THE superficie. "."
         END IF.
-  END VERB.
+  END VERB empty_on.
 END ADD TO.
 
 
@@ -5753,8 +6011,8 @@ SYNTAX enter = enter (ogg)
     ELSE
       IF ogg IS NOT plurale
       -- @NOTA: Qui servirà un messaggio personalizzato a questo verbo!!
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY  illegal_parameter_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_pl  OF mia_AT.
       END IF.
 
 
@@ -5762,18 +6020,18 @@ SYNTAX enter = enter (ogg)
 ADD TO EVERY OBJECT
   VERB enter
     CHECK mia_AT CAN entrare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND hero IS NOT seduto
-      ELSE SAY check_hero_not_sitting2 OF mia_AT.
+      ELSE SAY  check_hero_not_sitting2  OF mia_AT.
     AND hero IS NOT sdraiato
-      ELSE SAY check_hero_not_lying_down2 OF mia_AT.
+      ELSE SAY  check_hero_not_lying_down2  OF mia_AT.
       DOES
       IF ogg IS NOT plurale
         THEN "That's not"
         ELSE "Those are not"
       END IF.
       "something you can enter."
-  END VERB.
+  END VERB enter.
 END ADD TO.
 
 
@@ -5785,7 +6043,7 @@ SYNTAX enter_error = enter.
 
 VERB enter_error
   DOES "You must state what you want to enter."
-END VERB.
+END VERB enter_error.
 
 
 
@@ -5808,8 +6066,8 @@ SYNTAX 'exit' = 'exit' (ogg)
     ELSE
       IF ogg IS NOT plurale
       -- @NOTA: Qui servirà un messaggio personalizzato per questo verbo!
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY  illegal_parameter_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_pl  OF mia_AT.
       END IF.
 
 
@@ -5817,7 +6075,7 @@ SYNTAX 'exit' = 'exit' (ogg)
 ADD TO EVERY OBJECT
   VERB 'exit'
     CHECK mia_AT CAN 'exit'
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     DOES
       IF ogg IS NOT plurale
         THEN "That's not"
@@ -5837,7 +6095,7 @@ SYNTAX exit_error = 'exit'.
 VERB exit_error
   DOES
     "You must state what you want to exit."
-END VERB.
+END VERB exit_error.
 
 
 
@@ -5856,27 +6114,27 @@ SYNTAX fire = fire (arma)
     ELSE
       IF arma IS NOT plurale
       -- @NOTA: Meglio usare un messaggio ad hoc qui!
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY  illegal_parameter_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_pl  OF mia_AT.
       END IF.
 
 
 ADD TO EVERY arma
   VERB fire
     CHECK mia_AT CAN fire
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND arma can sparare
       ELSE
         IF arma IS NOT plurale
-          THEN SAY check_obj_suitable_sg OF mia_AT.
-          ELSE SAY check_obj_suitable_pl OF mia_AT.
+          THEN SAY  check_obj_suitable_sg  OF mia_AT.
+          ELSE SAY  check_obj_suitable_pl  OF mia_AT.
         END IF.
 
   AND CURRENT LOCATION IS illuminato
-    ELSE SAY imp_luogo_buio OF mia_AT.
+    ELSE SAY  imp_luogo_buio  OF mia_AT.
   DOES
     "You fire" SAY THE arma. "into the air."
-  END VERB.
+  END VERB fire.
 END ADD TO.
 
 
@@ -5895,11 +6153,11 @@ SYNTAX fire_at = fire (arma) 'at' (bersaglio)
     ELSE
       IF arma IS NOT plurale
       -- @NOTA: Come per 'fire', usa messaggio ad hoc per verbo!
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY  illegal_parameter_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_pl  OF mia_AT.
       END IF.
   AND bersaglio IsA THING
-    ELSE SAY illegal_parameter_at OF mia_AT.
+    ELSE SAY  illegal_parameter_at  OF mia_AT.
 
 
 
@@ -5907,31 +6165,31 @@ ADD TO EVERY arma
   VERB fire_at
     WHEN arma
       CHECK mia_AT CAN fire_at
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND arma can sparare
         ELSE
           IF arma IS NOT plurale
-            THEN SAY check_obj_suitable_sg OF mia_AT.
-            ELSE SAY check_obj_suitable_pl OF mia_AT.
+            THEN SAY  check_obj_suitable_sg  OF mia_AT.
+            ELSE SAY  check_obj_suitable_pl  OF mia_AT.
           END IF.
       AND bersaglio IS esaminabile
-        ELSE SAY check_obj_suitable_at OF mia_AT.
+        ELSE SAY  check_obj_suitable_at  OF mia_AT.
       AND arma <> bersaglio
-        ELSE SAY check_obj_not_obj2_at OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_at  OF mia_AT.
       AND bersaglio <> hero
-        ELSE SAY check_obj_not_hero2 OF mia_AT.
+        ELSE SAY  check_obj_not_hero2  OF mia_AT.
       AND bersaglio IS NOT distante
         -- note that it is possible to fire at a "not reachable" bersaglio
         ELSE
           IF bersaglio IS NOT plurale
-            THEN SAY ogg1_distante_sg OF mia_AT.
-            ELSE SAY ogg1_distante_pl OF mia_AT.
+            THEN SAY  ogg1_distante_sg  OF mia_AT.
+            ELSE SAY  ogg1_distante_pl  OF mia_AT.
           END IF.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       DOES
         "Resorting to violence is not the solution here."
-  END VERB.
+  END VERB fire_at.
 END ADD TO.
 
 
@@ -5943,22 +6201,22 @@ SYNTAX fire_at_error = fire 'at' (bersaglio)
     ELSE
       IF bersaglio IS NOT plurale
       -- @NOTA: Qui serve messaggio ad hoc!
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY  illegal_parameter_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_pl  OF mia_AT.
       END IF.
 
 
 ADD TO EVERY THING
   VERB fire_at_error
     CHECK COUNT IsA ARMA, can sparare, DIRECTLY IN hero > 0
-      ELSE SAY check_count_weapon_in_hero OF mia_AT.
+      ELSE SAY  check_count_weapon_in_hero  OF mia_AT.
     AND bersaglio <> hero
-      ELSE SAY check_obj_not_hero2 OF mia_AT.
+      ELSE SAY  check_obj_not_hero2  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     DOES
       "Resorting to violence is not the solution here."
-  END VERB.
+  END VERB fire_at_error.
 END ADD TO.
 
 
@@ -5978,8 +6236,8 @@ SYNTAX follow = follow (png)!
     ELSE
       IF png IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "seguire."
 
@@ -5987,27 +6245,27 @@ SYNTAX follow = follow (png)!
 ADD TO EVERY THING
   VERB follow
     CHECK mia_AT CAN seguire
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND png <> hero
-      ELSE SAY check_obj_not_hero1 OF mia_AT.
+      ELSE SAY  check_obj_not_hero1  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND png NOT AT hero
       ELSE
         IF png IS NOT plurale
-          THEN SAY ogg1_già_qui_sg OF mia_AT.
-          ELSE SAY ogg1_già_qui_pl OF mia_AT.
+          THEN SAY  ogg1_già_qui_sg  OF mia_AT.
+          ELSE SAY  ogg1_già_qui_pl  OF mia_AT.
         END IF.
     AND hero IS NOT seduto
-      ELSE SAY check_hero_not_sitting2 OF mia_AT.
+      ELSE SAY  check_hero_not_sitting2  OF mia_AT.
     AND hero IS NOT sdraiato
-      ELSE SAY check_hero_not_lying_down2 OF mia_AT.
+      ELSE SAY  check_hero_not_lying_down2  OF mia_AT.
     AND png NEAR hero
-      ELSE SAY check_act_near_hero OF mia_AT.
+      ELSE SAY  check_act_near_hero  OF mia_AT.
     DOES
       LOCATE hero AT png.
       "You follow" SAY THE png. "."
-    END VERB.
+    END VERB follow.
 END ADD TO.
 
 
@@ -6024,14 +6282,14 @@ SYNTAX get_off = get off (superficie)
   WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
-        THEN SAY illegal_parameter_off_sg OF mia_AT.
-        ELSE SAY illegal_parameter_off_pl OF mia_AT.
+        THEN SAY  illegal_parameter_off_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_off_pl  OF mia_AT.
       END IF.
 
 ADD TO EVERY supporto
   VERB get_off
     CHECK mia_AT CAN get_off
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     DOES
       IF hero IS seduto OR hero IS sdraiato
         THEN "You get off" SAY THE superficie. "."
@@ -6039,7 +6297,7 @@ ADD TO EVERY supporto
           MAKE hero NOT seduto.
         ELSE "You're standing up already."
       END IF.
-    END VERB.
+    END VERB get_off.
 END ADD TO.
 
 
@@ -6057,7 +6315,7 @@ SYNTAX get_up = get up.
 
 VERB get_up
   CHECK mia_AT CAN get_up
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     IF hero IS seduto
       THEN "You stand up."
@@ -6069,7 +6327,7 @@ VERB get_up
         MAKE hero NOT seduto.
     ELSE "You're standing up already."
     END IF.
-END VERB.
+END VERB get_up.
 
 
 
@@ -6105,10 +6363,10 @@ SYNONYMS
 
 VERB hint
   CHECK mia_AT CAN hint
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     "Unfortunately hints are not available in this game."
-END VERB.
+END VERB hint.
 
 
 -- ==============================================================
@@ -6125,14 +6383,14 @@ SYNTAX jump = jump.
 
 VERB jump
   CHECK mia_AT CAN saltare
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   AND hero IS NOT seduto
-    ELSE SAY check_hero_not_sitting1 OF mia_AT.
+    ELSE SAY  check_hero_not_sitting1  OF mia_AT.
   AND hero IS NOT sdraiato
-    ELSE SAY check_hero_not_lying_down1 OF mia_AT.
+    ELSE SAY  check_hero_not_lying_down1  OF mia_AT.
   DOES
     "You jump on the spot, to no avail."
-END VERB.
+END VERB jump.
 
 
 
@@ -6149,14 +6407,14 @@ SYNTAX jump_in = jump 'in' (cont)
   WHERE cont IsA OBJECT
     ELSE
       IF cont IS NOT plurale
-        THEN SAY illegal_parameter_in_sg OF mia_AT.
-        ELSE SAY illegal_parameter_in_pl OF mia_AT.
+        THEN SAY  illegal_parameter_in_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_in_pl  OF mia_AT.
       END IF.
   AND cont IsA CONTAINER
     ELSE
       IF cont IS NOT plurale
-        THEN SAY illegal_parameter_in_sg OF mia_AT.
-        ELSE SAY illegal_parameter_in_pl OF mia_AT.
+        THEN SAY  illegal_parameter_in_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_in_pl  OF mia_AT.
       END IF.
 
 
@@ -6164,34 +6422,34 @@ SYNTAX jump_in = jump 'in' (cont)
 ADD TO EVERY OBJECT
   VERB jump_in
     CHECK mia_AT CAN saltare_in
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND cont IS raggiungibile AND cont IS NOT distante
       ELSE
         IF cont IS NOT raggiungibile
           THEN
             IF cont IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF cont IS distante
           THEN
             IF cont IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     AND hero IS NOT seduto
-      ELSE SAY check_hero_not_sitting1 OF mia_AT.
+      ELSE SAY  check_hero_not_sitting1  OF mia_AT.
     AND hero IS NOT sdraiato
-      ELSE SAY check_hero_not_lying_down1 OF mia_AT.
+      ELSE SAY  check_hero_not_lying_down1  OF mia_AT.
     DOES
       IF cont IS NOT plurale
         THEN "That's not something you can jump into."
         ELSE "Those are not something you can jump into."
       END IF.
-    END VERB.
+    END VERB jump_in.
 END ADD TO.
 
 
@@ -6209,8 +6467,8 @@ SYNTAX jump_on = jump 'on' (superficie)
   WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
-        THEN SAY ogg1_illegale_SU_sg OF mia_AT.
-        ELSE SAY ogg1_illegale_SU_pl OF mia_AT.
+        THEN SAY  ogg1_illegale_SU_sg  OF mia_AT.
+        ELSE SAY  ogg1_illegale_SU_pl  OF mia_AT.
       END IF.
       "saltare." --                                                             CHECK VERB
 
@@ -6218,20 +6476,20 @@ SYNTAX jump_on = jump 'on' (superficie)
 ADD TO EVERY OBJECT
   VERB jump_on
     CHECK mia_AT CAN saltare_su
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND hero IS NOT seduto
-      ELSE SAY check_hero_not_sitting1 OF mia_AT.
+      ELSE SAY  check_hero_not_sitting1  OF mia_AT.
     AND hero IS NOT sdraiato
-      ELSE SAY check_hero_not_lying_down1 OF mia_AT.
+      ELSE SAY  check_hero_not_lying_down1  OF mia_AT.
     DOES
       IF superficie IS NOT plurale
         THEN "That's not"
         ELSE "Those are not"
       END IF.
       "something you can jump onto."
-    END VERB.
+    END VERB jump_on.
 END ADD TO.
 
 
@@ -6250,140 +6508,48 @@ SYNTAX kick = kick (bersaglio)
     ELSE
       IF bersaglio IS NOT plurale
       -- @NOTA: Servirà messaggio ad hoc qui!
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY  illegal_parameter_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_pl  OF mia_AT.
       END IF.
 
 
 ADD TO EVERY THING
   VERB kick
     CHECK mia_AT CAN kick
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND bersaglio IS esaminabile
       ELSE
         IF bersaglio IS NOT plurale
-          THEN SAY check_obj_suitable_sg OF mia_AT.
-          ELSE SAY check_obj_suitable_pl OF mia_AT.
+          THEN SAY  check_obj_suitable_sg  OF mia_AT.
+          ELSE SAY  check_obj_suitable_pl  OF mia_AT.
         END IF.
     AND bersaglio <> hero
-      ELSE SAY check_obj_not_hero1 OF mia_AT.
+      ELSE SAY  check_obj_not_hero1  OF mia_AT.
     AND bersaglio NOT IN hero
-      ELSE SAY check_obj_not_in_hero1 OF mia_AT.
+      ELSE SAY  check_obj_not_in_hero1  OF mia_AT.
     AND bersaglio NOT IN abbigliamento
-      ELSE SAY check_obj_not_in_worn2 OF mia_AT.
+      ELSE SAY  check_obj_not_in_worn2  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
       ELSE
         IF bersaglio IS NOT raggiungibile
           THEN
             IF bersaglio IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF bersaglio IS distante
           THEN
             IF bersaglio IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
       "La violenza non è la giusta risposta a questo." --> taken from i6
    -- "Resorting to brute force is not the solution here."
-  END VERB.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
--- KILL (+ murder)
-
-
--- ==============================================================
-
-
-SYNTAX kill = kill (vittima)
-  WHERE vittima IsA ACTOR
-    ELSE
-      IF vittima IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "uccidere."
-
-
-ADD TO EVERY ACTOR
-  VERB kill
-    CHECK mia_AT CAN uccidere
-      ELSE SAY azione_bloccata OF mia_AT.
-    AND vittima IS esaminabile
-      ELSE
-        IF vittima IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
-        END IF.
-        "uccidere."
-    AND vittima <> hero
-      ELSE SAY check_obj_not_hero2 OF mia_AT.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
-    DOES "You have to state what you want to kill" SAY THE vittima. "with."
-  END VERB.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
--- KILL WITH
-
-
--- ==============================================================
-
-
-SYNTAX kill_with = kill (vittima) 'with' (arma)
-  WHERE vittima IsA ACTOR
-    ELSE
-      IF vittima IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "uccidere."
-  AND arma IsA arma
-    ELSE
-      IF arma IS NOT plurale
-        THEN SAY illegal_parameter_with_sg OF mia_AT.
-        ELSE SAY illegal_parameter_with_pl OF mia_AT.
-      END IF.
-
-
-ADD TO EVERY ACTOR
-  VERB kill_with
-    WHEN vittima
-      CHECK mia_AT CAN uccidere_con
-        ELSE SAY azione_bloccata OF mia_AT.
-      AND vittima <> hero
-        ELSE SAY check_obj_not_hero2 OF mia_AT.
-      AND arma IN hero
-        ELSE SAY non_possiedi_ogg2 OF mia_AT.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
-      AND vittima IS NOT distante
-        ELSE
-          IF vittima IS NOT plurale
-            THEN SAY ogg1_distante_sg OF mia_AT.
-            ELSE SAY ogg1_distante_pl OF mia_AT.
-          END IF.
-      DOES
-        "That would be needlessly brutal."
-  END VERB.
+  END VERB kick.
 END ADD TO.
 
 
@@ -6402,11 +6568,11 @@ SYNTAX knock = knock 'on' (ogg)
     ELSE
       IF ogg IS NOT plurale
 --| NOTA: Qui Ho usato il messaggio per prep_SU, come da originale, ma siccome
---|       il verbo italiano verrà usato anche per "bussa alla porta", dovrò 
+--|       il verbo italiano verrà usato anche per "bussa alla porta", dovrò
 --|       considerare se usare invece prep_A, o se mettere dei controlli nel
 --|       codice per decidire quale risposta usare. Per ora va bene così.
-        THEN SAY ogg1_illegale_SU_sg OF mia_AT.
-        ELSE SAY ogg1_illegale_SU_pl OF mia_AT.
+        THEN SAY  ogg1_illegale_SU_sg  OF mia_AT.
+        ELSE SAY  ogg1_illegale_SU_pl  OF mia_AT.
       END IF.
       "bussare." --                                                             CHECK VERB
 
@@ -6416,33 +6582,33 @@ SYNTAX knock = knock 'on' (ogg)
 ADD TO EVERY OBJECT
   VERB knock
     CHECK mia_AT CAN bussare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY check_obj_suitable_on_sg OF mia_AT.
-          ELSE SAY check_obj_suitable_on_pl OF mia_AT.
+          THEN SAY  check_obj_suitable_on_sg  OF mia_AT.
+          ELSE SAY  check_obj_suitable_on_pl  OF mia_AT.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
       "You knock on" SAY THE ogg. "$$. Nothing happens."
-  END VERB.
+  END VERB knock.
 END ADD TO.
 
 
@@ -6455,7 +6621,7 @@ SYNTAX knock_error = knock.
 VERB knock_error
   DOES
     "Please use the formulation KNOCK ON SOMETHING to knock on something."
-END VERB.
+END VERB knock_error.
 
 
 
@@ -6475,16 +6641,16 @@ SYNTAX lie_down = lie 'down'.
 
 VERB lie_down
   CHECK mia_AT CAN lie_down
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   AND hero IS NOT sdraiato
-    ELSE SAY check_hero_not_lying_down4 OF mia_AT.
+    ELSE SAY  check_hero_not_lying_down4  OF mia_AT.
   DOES
     "There's no need to lie down right now."
     -- If you need this to work, insert the following lines instead of the above:
         -- DOES "You lie down."
         -- MAKE hero lying_down.
         -- MAKE hero NOT sitting_down.
-END VERB.
+END VERB lie_down.
 
 
 -- When the hero is sitting or lying down, it will be impossible for her/him to
@@ -6511,14 +6677,14 @@ SYNTAX  lie_in = lie 'in' (cont)
   WHERE cont IsA OBJECT
     ELSE
       IF cont IS NOT plurale
-        THEN SAY illegal_parameter_in_sg OF mia_AT.
-        ELSE SAY illegal_parameter_in_pl OF mia_AT.
+        THEN SAY  illegal_parameter_in_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_in_pl  OF mia_AT.
       END IF.
   AND cont IsA CONTAINER
     ELSE
       IF cont IS NOT plurale
-        THEN SAY illegal_parameter_in_sg OF mia_AT.
-        ELSE SAY illegal_parameter_in_pl OF mia_AT.
+        THEN SAY  illegal_parameter_in_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_in_pl  OF mia_AT.
       END IF.
 
         lie_in = lie 'down' 'in' (cont).
@@ -6527,24 +6693,24 @@ SYNTAX  lie_in = lie 'in' (cont)
 ADD TO EVERY OBJECT
   VERB lie_in
     CHECK mia_AT CAN lie_in
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND hero IS NOT sdraiato
-      ELSE SAY check_hero_not_lying_down4 OF mia_AT.
+      ELSE SAY  check_hero_not_lying_down4  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND cont IS raggiungibile AND cont IS NOT distante
       ELSE
         IF cont IS NOT raggiungibile
           THEN
             IF cont IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF cont IS distante
           THEN
             IF cont IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -6553,7 +6719,7 @@ ADD TO EVERY OBJECT
       -- (for example THE in_bed IsA LOCATION AT bedroom; etc.)
       -- Remember to: MAKE hero lying_down.
       -- Presently, an actor cannot be located inside a container object.
-  END VERB.
+  END VERB lie_in.
 END ADD TO.
 
 
@@ -6581,8 +6747,8 @@ SYNTAX lie_on = lie 'on' (superficie)
   WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
-        THEN SAY ogg1_illegale_SU_sg OF mia_AT.
-        ELSE SAY ogg1_illegale_SU_pl OF mia_AT.
+        THEN SAY  ogg1_illegale_SU_sg  OF mia_AT.
+        ELSE SAY  ogg1_illegale_SU_pl  OF mia_AT.
       END IF.
       "$$si sdraiare."
 
@@ -6592,24 +6758,24 @@ SYNTAX lie_on = lie 'on' (superficie)
 ADD TO EVERY OBJECT
   VERB lie_on
     CHECK mia_AT CAN lie_on
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND hero IS NOT sdraiato
-      ELSE SAY check_hero_not_lying_down4 OF mia_AT.
+      ELSE SAY  check_hero_not_lying_down4  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND superficie IS raggiungibile AND superficie IS NOT distante
       ELSE
         IF superficie IS NOT raggiungibile
           THEN
             IF superficie IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF superficie IS distante
           THEN
             IF superficie IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -6619,7 +6785,7 @@ ADD TO EVERY OBJECT
       -- Remember to: MAKE hero lying_down.
                 -- Presently, an actor cannot be located inside a container object
       -- or on a supporter.
-  END VERB.
+  END VERB lie_on.
 END ADD TO.
 
 
@@ -6649,8 +6815,8 @@ SYNTAX lift = lift (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "sollevare." --# alzare?
 
@@ -6661,45 +6827,45 @@ SYNONYMS raise = lift.
 ADD TO EVERY OBJECT
   VERB lift
     CHECK mia_AT CAN lift
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "sollevare." --# alzare?
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg NOT IN hero
-      ELSE SAY check_obj_not_in_hero1 OF mia_AT.
+      ELSE SAY  check_obj_not_in_hero1  OF mia_AT.
     AND ogg IS spostabile
-      ELSE SAY check_obj_movable OF mia_AT.
+      ELSE SAY  check_obj_movable  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     AND peso OF ogg < 50
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY check_obj_weight_sg OF mia_AT.
-          ELSE SAY check_obj_weight_pl OF mia_AT.
+          THEN SAY  check_obj_weight_sg  OF mia_AT.
+          ELSE SAY  check_obj_weight_pl  OF mia_AT.
         END IF.
   DOES
     "That wouldn't accomplish anything."
-  END VERB.
+  END VERB lift.
 END ADD TO.
 
 
@@ -6721,7 +6887,7 @@ SYNONYMS l = 'look'.
 
 VERB 'look'
   CHECK mia_AT CAN 'look'
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     INCREASE descritto OF CURRENT LOCATION.
     -- see 'locations.i', attribute 'described'.
@@ -6753,25 +6919,25 @@ END VERB.
 
 SYNTAX look_behind = 'look' behind (bulk)
   WHERE bulk IsA THING
-    ELSE SAY illegal_parameter_there OF mia_AT.
+    ELSE SAY  illegal_parameter_there  OF mia_AT.
 
 
 ADD TO EVERY THING
   VERB look_behind
     CHECK mia_AT CAN look_behind
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND bulk IS esaminabile
-      ELSE SAY check_obj_suitable_there OF mia_AT.
+      ELSE SAY  check_obj_suitable_there  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND bulk <> hero
-      ELSE SAY check_obj_not_hero7 OF mia_AT.
+      ELSE SAY  check_obj_not_hero7  OF mia_AT.
     DOES
       IF bulk IN hero
         THEN "You turn" SAY THE bulk. "in your hands but notice nothing unusual about it."
         ELSE "You notice nothing unusual behind" SAY THE bulk. "."
       END IF.
-  END VERB.
+  END VERB look_behind.
 END ADD TO.
 
 
@@ -6788,36 +6954,36 @@ END ADD TO.
 SYNTAX
   look_in = 'look' 'in' (cont)
     WHERE cont IsA OBJECT
-      ELSE SAY illegal_parameter_there OF mia_AT.
+      ELSE SAY  illegal_parameter_there  OF mia_AT.
     AND cont IsA CONTAINER
-      ELSE SAY illegal_parameter_there OF mia_AT.
+      ELSE SAY  illegal_parameter_there  OF mia_AT.
 
 
 ADD TO EVERY OBJECT
   VERB look_in
     CHECK mia_AT CAN look_in
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND cont IS esaminabile
-      ELSE SAY check_obj_suitable_there OF mia_AT.
+      ELSE SAY  check_obj_suitable_there  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND cont IS aperto
       ELSE
         IF cont IS NOT femminile
           THEN
             IF cont IS NOT plurale
-              THEN SAY imp_ogg1_chiuso_ms OF mia_AT.
-              ELSE SAY imp_ogg1_chiuso_mp OF mia_AT.
+              THEN SAY  imp_ogg1_chiuso_ms  OF mia_AT.
+              ELSE SAY  imp_ogg1_chiuso_mp  OF mia_AT.
             END IF.
           ELSE
             IF cont IS NOT plurale
-              THEN SAY imp_ogg1_chiuso_fs OF mia_AT.
-              ELSE SAY imp_ogg1_chiuso_fp OF mia_AT.
+              THEN SAY  imp_ogg1_chiuso_fs  OF mia_AT.
+              ELSE SAY  imp_ogg1_chiuso_fp  OF mia_AT.
             END IF.
         END IF.
     DOES
       LIST cont.
-  END VERB.
+  END VERB look_in.
 END ADD TO.
 
 
@@ -6835,8 +7001,8 @@ SYNTAX look_out_of = 'look' 'out' 'of' (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_look_out_sg OF mia_AT.
-        ELSE SAY illegal_parameter_look_out_pl OF mia_AT.
+        THEN SAY  illegal_parameter_look_out_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_look_out_pl  OF mia_AT.
       END IF.
 
 
@@ -6844,22 +7010,22 @@ SYNTAX look_out_of = 'look' 'out' 'of' (ogg)
 ADD TO EVERY OBJECT
   VERB look_out_of
     CHECK mia_AT CAN look_out_of
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY check_obj_suitable_look_out_sg OF mia_AT.
-          ELSE SAY check_obj_suitable_look_out_pl OF mia_AT.
+          THEN SAY  check_obj_suitable_look_out_sg  OF mia_AT.
+          ELSE SAY  check_obj_suitable_look_out_pl  OF mia_AT.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     DOES
       IF ogg IS NOT plurale
         THEN "That's not"
         ELSE "Those are not"
       END IF.
       "something you can look out of."
-  END VERB.
+  END VERB look_out_of.
 END ADD TO.
 
 
@@ -6875,21 +7041,21 @@ END ADD TO.
 
 SYNTAX look_through = 'look' through (bulk)
   WHERE bulk IsA OBJECT
-    ELSE SAY illegal_parameter_look_through OF mia_AT.
+    ELSE SAY  illegal_parameter_look_through  OF mia_AT.
 
 
 
 ADD TO EVERY OBJECT
   VERB look_through
     CHECK mia_AT CAN look_through
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND bulk IS esaminabile
-      ELSE SAY check_obj_suitable_look_through OF mia_AT.
+      ELSE SAY  check_obj_suitable_look_through  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     DOES
       "You can't see through" SAY THE bulk. "."
-  END VERB.
+  END VERB look_through.
 END ADD TO.
 
 
@@ -6905,23 +7071,23 @@ END ADD TO.
 
 SYNTAX look_under = 'look' under (bulk)
   WHERE bulk IsA THING
-    ELSE SAY illegal_parameter_there OF mia_AT.
+    ELSE SAY  illegal_parameter_there  OF mia_AT.
 
 
 
 ADD TO EVERY THING
   VERB look_under
     CHECK mia_AT CAN look_under
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND bulk IS esaminabile
-      ELSE SAY check_obj_suitable_there OF mia_AT.
+      ELSE SAY  check_obj_suitable_there  OF mia_AT.
     AND bulk <> hero
-      ELSE SAY check_obj_not_hero8 OF mia_AT.
+      ELSE SAY  check_obj_not_hero8  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     DOES
       "You notice nothing unusual under" SAY THE bulk. "."
-  END VERB.
+  END VERB look_under.
 END ADD TO.
 
 
@@ -6940,9 +7106,9 @@ SYNTAX look_up = 'look' up.
 
 VERB look_up
   CHECK mia_AT CAN look_up
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES "Looking up, you see nothing unusual."
-END VERB.
+END VERB look_up.
 
 
 
@@ -6971,7 +7137,7 @@ SYNTAX notify = notify.
 
 VERB notify
   CHECK mia_AT CAN notify
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     IF mia_AT HAS notify_turned_on
       THEN MAKE mia_AT NOT notify_turned_on.
@@ -6980,12 +7146,12 @@ VERB notify
       ELSE MAKE mia_AT notify_turned_on. "Score notification is now enabled.
         (You can turn it off using the NOTIFY command again.)"
     END IF.
-END VERB.
+END VERB notify.
 
 
 VERB notify_on
   CHECK mia_AT CAN notify_on
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     IF mia_AT HAS notify_turned_on
       THEN "Score notification is already enabled."
@@ -6993,12 +7159,12 @@ VERB notify_on
         "Score notification is now enabled.
         (You can turn it off using the NOTIFY command again.)"
     END IF.
-END VERB.
+END VERB notify_on.
 
 
 VERB notify_off
   CHECK mia_AT CAN notify_off
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     IF mia_AT HAS notify_turned_on
       THEN MAKE mia_AT NOT notify_turned_on.
@@ -7006,7 +7172,7 @@ VERB notify_off
         using the NOTIFY command again.)"
       ELSE "Score notification is already disabled."
     END IF.
-END VERB.
+END VERB notify_off.
 
 
 -- The 'notify' verb allows the players to disable the score change
@@ -7086,25 +7252,25 @@ SYNTAX pry = pry (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY  illegal_parameter_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_pl  OF mia_AT.
       END IF.
 
 
 ADD TO EVERY OBJECT
   VERB pry
     CHECK mia_AT CAN pry
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY check_obj_suitable_sg OF mia_AT.
-          ELSE SAY check_obj_suitable_pl OF mia_AT.
+          THEN SAY  check_obj_suitable_sg  OF mia_AT.
+          ELSE SAY  check_obj_suitable_pl  OF mia_AT.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     DOES "You must state what you want to pry" SAY THE ogg. "with."
-  END VERB.
+  END VERB pry.
 END ADD TO.
 
 
@@ -7122,14 +7288,14 @@ SYNTAX pry_with = pry (ogg) 'with' (strum)
     WHERE ogg IsA OBJECT
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY illegal_parameter_sg OF mia_AT.
-          ELSE SAY illegal_parameter_pl OF mia_AT.
+          THEN SAY  illegal_parameter_sg  OF mia_AT.
+          ELSE SAY  illegal_parameter_pl  OF mia_AT.
         END IF.
     AND strum IsA OBJECT
       ELSE
         IF strum IS NOT plurale
-          THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-          ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+          THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+          ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
         END IF.
         "(prying)" SAY THE ogg. "." -- @TODO:                                   TRANSLATE!
 
@@ -7138,43 +7304,43 @@ ADD TO EVERY OBJECT
 VERB pry_with
   WHEN ogg
     CHECK mia_AT CAN pry_with
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY check_obj_suitable_sg OF mia_AT.
-          ELSE SAY check_obj_suitable_pl OF mia_AT.
+          THEN SAY  check_obj_suitable_sg  OF mia_AT.
+          ELSE SAY  check_obj_suitable_pl  OF mia_AT.
         END IF.
     AND strum IS esaminabile
       ELSE
         IF strum IS NOT plurale
-          THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-          ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+          THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+          ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
         END IF.
         "(prying)" SAY THE ogg. "." -- @TODO:                                   TRANSLATE!
     AND ogg <> strum
-      ELSE SAY check_obj_not_obj2_with OF mia_AT.
+      ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
     AND strum IN hero
-      ELSE SAY non_possiedi_ogg2 OF mia_AT.
+      ELSE SAY  non_possiedi_ogg2  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES "That doesn't work."
-  END VERB.
+  END VERB pry_with.
 END ADD TO.
 
 
@@ -7194,8 +7360,8 @@ SYNTAX push = push (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "spingere."
 
@@ -7206,33 +7372,33 @@ SYNONYMS press = push.
 ADD TO EVERY THING
   VERB push
     CHECK mia_AT CAN spingere
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS spostabile
-          ELSE SAY check_obj_movable OF mia_AT.
+          ELSE SAY  check_obj_movable  OF mia_AT.
     AND ogg <> hero
-      ELSE SAY check_obj_not_hero1 OF mia_AT.
+      ELSE SAY  check_obj_not_hero1  OF mia_AT.
     AND ogg IS inanimato
-      ELSE SAY check_obj_inanimate1 OF mia_AT.
+      ELSE SAY  check_obj_inanimate1  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
           "You give" SAY THE ogg. "a little push. Nothing happens."
-  END VERB.
+  END VERB push.
 END ADD TO.
 
 
@@ -7251,15 +7417,15 @@ SYNTAX push_with = push (ogg) 'with' (strum)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "spingere."
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
-        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+        THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+        ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
       END IF.
       "spingere" SAY THE ogg. "."
 
@@ -7268,44 +7434,44 @@ ADD TO EVERY THING
   VERB push_with
     WHEN ogg
       CHECK mia_AT CAN spingere_con
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg IS spostabile
-          ELSE SAY check_obj_movable OF mia_AT.
+          ELSE SAY  check_obj_movable  OF mia_AT.
       AND ogg <> strum
-        ELSE SAY check_obj_not_obj2_with OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
-            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+            THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+            ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
           END IF.
           "spingere" SAY THE ogg. "."
       AND strum IN hero
-        ELSE SAY non_possiedi_ogg2 OF mia_AT.
+        ELSE SAY  non_possiedi_ogg2  OF mia_AT.
       AND ogg <> hero
-        ELSE SAY check_obj_not_hero1 OF mia_AT.
+        ELSE SAY  check_obj_not_hero1  OF mia_AT.
       AND ogg IS inanimato
-        ELSE SAY check_obj_inanimate1 OF mia_AT.
+        ELSE SAY  check_obj_inanimate1  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       DOES
         "That wouldn't accomplish anything."
-  END VERB.
+  END VERB push_with.
 END ADD TO.
 
 
@@ -7321,7 +7487,7 @@ END ADD TO.
 
 SYNTAX put = put (ogg)
   WHERE ogg IsA OBJECT
-    ELSE SAY illegal_parameter_obj OF mia_AT.
+    ELSE SAY  illegal_parameter_obj  OF mia_AT.
 
 
 SYNONYMS lay, place = put.
@@ -7330,11 +7496,11 @@ SYNONYMS lay, place = put.
 ADD TO EVERY OBJECT
   VERB put
     CHECK mia_AT CAN put
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IN HERO
-      ELSE SAY non_possiedi_ogg1 OF mia_AT.
+      ELSE SAY  non_possiedi_ogg1  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     DOES
       "You must state where you want to put"
 
@@ -7342,7 +7508,7 @@ ADD TO EVERY OBJECT
         THEN "it."
         ELSE "them."
       END IF.
-  END VERB.
+  END VERB put.
 END ADD TO.
 
 
@@ -7371,15 +7537,15 @@ END ADD TO.
 
 SYNTAX put_in = put (ogg) 'in' (cont)
   WHERE ogg IsA OBJECT
-    ELSE SAY illegal_parameter_obj OF mia_AT.
+    ELSE SAY  illegal_parameter_obj  OF mia_AT.
   AND cont IsA OBJECT
     ELSE
       IF cont IsA ACTOR
-        THEN SAY illegal_parameter_act OF mia_AT.
-        ELSE SAY illegal_parameter2_there OF mia_AT.
+        THEN SAY  illegal_parameter_act  OF mia_AT.
+        ELSE SAY  illegal_parameter2_there  OF mia_AT.
       END IF.
   AND cont IsA CONTAINER
-    ELSE SAY illegal_parameter2_there OF mia_AT.
+    ELSE SAY  illegal_parameter2_there  OF mia_AT.
 
 
   put_in = insert (ogg) 'in' (cont).
@@ -7389,36 +7555,36 @@ ADD TO EVERY OBJECT
   VERB put_in
     WHEN ogg
       CHECK mia_AT CAN put_in
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg <> cont
-        ELSE SAY check_obj_not_obj2_in OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_in  OF mia_AT.
       AND ogg IS prendibile
-        ELSE SAY check_obj_takeable OF mia_AT.
+        ELSE SAY  check_obj_takeable  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       AND ogg NOT IN cont
         ELSE
           IF cont IsA supporto
-            THEN SAY check_cont_not_supporter OF mia_AT.
+            THEN SAY  check_cont_not_supporter  OF mia_AT.
           ELSE
             IF ogg IS NOT plurale -- @TODO: 'ogg' or 'cont'??                   CHECK!
-              THEN SAY check_obj_not_in_cont_sg OF mia_AT.
-              ELSE SAY check_obj_not_in_cont_pl OF mia_AT.
+              THEN SAY  check_obj_not_in_cont_sg  OF mia_AT.
+              ELSE SAY  check_obj_not_in_cont_pl  OF mia_AT.
             END IF.
           END IF.
       AND cont IS raggiungibile AND cont IS NOT distante
@@ -7426,40 +7592,40 @@ ADD TO EVERY OBJECT
           IF cont IS NOT raggiungibile
             THEN
               IF cont IS NOT plurale
-                THEN SAY ogg2_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg2_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg2_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg2_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF cont IS distante
             THEN
               IF cont IS NOT plurale
-                THEN SAY ogg2_distante_sg OF mia_AT.
-                ELSE SAY ogg2_distante_pl OF mia_AT.
+                THEN SAY  ogg2_distante_sg  OF mia_AT.
+                ELSE SAY  ogg2_distante_pl  OF mia_AT.
               END IF.
           END IF.
       AND ogg IN consentiti OF cont
         ELSE
           IF ogg IS NOT plurale
-            THEN SAY check_obj_allowed_in_sg OF mia_AT.
-            ELSE SAY check_obj_allowed_in_pl OF mia_AT.
+            THEN SAY  check_obj_allowed_in_sg  OF mia_AT.
+            ELSE SAY  check_obj_allowed_in_pl  OF mia_AT.
           END IF.
       AND cont IS aperto
         ELSE
           IF cont IS NOT femminile
             THEN
               IF cont IS NOT plurale
-                THEN SAY imp_ogg2_chiuso_ms OF mia_AT.
-                ELSE SAY imp_ogg2_chiuso_mp OF mia_AT.
+                THEN SAY  imp_ogg2_chiuso_ms  OF mia_AT.
+                ELSE SAY  imp_ogg2_chiuso_mp  OF mia_AT.
               END IF.
             ELSE
               IF cont IS NOT plurale
-                THEN SAY imp_ogg2_chiuso_fs OF mia_AT.
-                ELSE SAY imp_ogg2_chiuso_fp OF mia_AT.
+                THEN SAY  imp_ogg2_chiuso_fs  OF mia_AT.
+                ELSE SAY  imp_ogg2_chiuso_fp  OF mia_AT.
               END IF.
           END IF.
       DOES
         LOCATE ogg IN cont.
         "You put" SAY THE ogg. "into" SAY THE cont. "."
-  END VERB.
+  END VERB put_in.
 END ADD TO.
 
 
@@ -7476,33 +7642,33 @@ END ADD TO.
 
 SYNTAX put_against = put (ogg) against (bulk)
   WHERE ogg IsA OBJECT
-    ELSE SAY illegal_parameter_obj OF mia_AT.
+    ELSE SAY  illegal_parameter_obj  OF mia_AT.
   AND bulk IsA THING
-    ELSE SAY illegal_parameter2_there OF mia_AT.
+    ELSE SAY  illegal_parameter2_there  OF mia_AT.
 
 
 
 SYNTAX put_behind = put (ogg) behind (bulk)
   WHERE ogg IsA OBJECT
-    ELSE SAY illegal_parameter_obj OF mia_AT.
+    ELSE SAY  illegal_parameter_obj  OF mia_AT.
   AND bulk IsA THING
-    ELSE SAY illegal_parameter2_there OF mia_AT.
+    ELSE SAY  illegal_parameter2_there  OF mia_AT.
 
 
 
 SYNTAX put_near = put (ogg) 'near' (bulk)
   WHERE ogg IsA OBJECT
-    ELSE SAY illegal_parameter_obj OF mia_AT.
+    ELSE SAY  illegal_parameter_obj  OF mia_AT.
   AND bulk IsA THING
-    ELSE SAY illegal_parameter2_there OF mia_AT.
+    ELSE SAY  illegal_parameter2_there  OF mia_AT.
 
 
 
 SYNTAX put_under = put (ogg) under (bulk)
   WHERE ogg IsA OBJECT
-    ELSE SAY illegal_parameter_obj OF mia_AT.
+    ELSE SAY  illegal_parameter_obj  OF mia_AT.
   AND bulk IsA THING
-    ELSE SAY illegal_parameter2_there OF mia_AT.
+    ELSE SAY  illegal_parameter2_there  OF mia_AT.
 
 
 
@@ -7511,30 +7677,30 @@ ADD TO EVERY OBJECT
     WHEN ogg
       CHECK mia_AT CAN put_against AND mia_AT CAN put_behind
       AND mia_AT CAN put_near AND mia_AT CAN put_under
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND bulk NOT IN hero
-          ELSE SAY check_obj2_not_in_hero2 OF mia_AT.
+          ELSE SAY  check_obj2_not_in_hero2  OF mia_AT.
       AND ogg <> bulk
-          ELSE SAY check_obj_not_obj2_put OF mia_AT.
+          ELSE SAY  check_obj_not_obj2_put  OF mia_AT.
       AND ogg IS prendibile
-          ELSE SAY check_obj_takeable OF mia_AT.
+          ELSE SAY  check_obj_takeable  OF mia_AT.
       AND bulk <> hero
-          ELSE SAY check_obj2_not_hero2 OF mia_AT.
+          ELSE SAY  check_obj2_not_hero2  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-            ELSE SAY imp_luogo_buio OF mia_AT.
+            ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       AND bulk IS raggiungibile AND bulk IS NOT distante
@@ -7542,20 +7708,20 @@ ADD TO EVERY OBJECT
           IF bulk IS NOT raggiungibile
             THEN
               IF bulk IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF bulk IS distante
             THEN
               IF bulk IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       DOES
           "That wouldn't accomplish anything."
 
-  END VERB.
+  END VERB put_against.
 END ADD TO.
 
 
@@ -7580,9 +7746,9 @@ END ADD TO.
 
 SYNTAX put_on = put (ogg) 'on' (superficie)
   WHERE ogg IsA OBJECT
-      ELSE SAY illegal_parameter_obj OF mia_AT.
+      ELSE SAY  illegal_parameter_obj  OF mia_AT.
   AND superficie IsA supporto
-    ELSE SAY illegal_parameter2_there OF mia_AT.
+    ELSE SAY  illegal_parameter2_there  OF mia_AT.
 
 
 
@@ -7590,32 +7756,32 @@ ADD TO EVERY OBJECT
   VERB put_on
     WHEN ogg
       CHECK mia_AT CAN put_on
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg <> superficie
-        ELSE SAY check_obj_not_obj2_on OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_on  OF mia_AT.
       AND ogg IS prendibile
-        ELSE SAY check_obj_takeable OF mia_AT.
+        ELSE SAY  check_obj_takeable  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg NOT IN superficie
         ELSE
           IF ogg IS NOT plurale
-            THEN SAY check_obj_not_on_surface_sg OF mia_AT.
-            ELSE SAY check_obj_not_on_surface_pl OF mia_AT.
+            THEN SAY  check_obj_not_on_surface_sg  OF mia_AT.
+            ELSE SAY  check_obj_not_on_surface_pl  OF mia_AT.
           END IF.
           AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       AND superficie IS raggiungibile AND superficie IS NOT distante
@@ -7623,21 +7789,21 @@ ADD TO EVERY OBJECT
           IF superficie IS NOT raggiungibile
             THEN
               IF superficie IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF superficie IS distante
             THEN
               IF superficie IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       DOES
         -- implicit taking:
         IF ogg NOT DIRECTLY IN hero
           THEN LOCATE ogg IN hero.
-               SAY implicit_taking_message OF mia_AT.
+               SAY  implicit_taking_message  OF mia_AT.
         END IF.
         -- end of implicit taking.
 
@@ -7649,7 +7815,7 @@ ADD TO EVERY OBJECT
         "Posi" SAY THE ogg. SAY prep_SU of superficie. SAY superficie. "."
         -- "You put" SAY THE ogg. "on" SAY THE superficie. "."
 
-    END VERB.
+    END VERB put_on.
 END ADD TO.
 
 
@@ -7683,8 +7849,8 @@ SYNTAX  remove = remove (ogg)
     WHERE ogg IsA OBJECT
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY illegal_parameter_sg OF mia_AT. "since you're not wearing it."
-          ELSE SAY illegal_parameter_pl OF mia_AT. "since you're not wearing them."
+          THEN SAY  illegal_parameter_sg  OF mia_AT. "since you're not wearing it."
+          ELSE SAY  illegal_parameter_pl  OF mia_AT. "since you're not wearing them."
         END IF.
 
         remove = take 'off' (ogg).
@@ -7695,7 +7861,7 @@ SYNTAX  remove = remove (ogg)
 ADD TO EVERY OBJECT
   VERB remove
     CHECK mia_AT CAN remove
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     DOES
       IF ogg IS NOT plurale
         THEN "That's"
@@ -7708,7 +7874,7 @@ ADD TO EVERY OBJECT
         THEN "it."
         ELSE "them."
       END IF.
-  END VERB.
+  END VERB remove.
 END ADD TO.
 
 
@@ -7742,8 +7908,8 @@ SYNTAX rub = rub (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "strofinare."
 
@@ -7752,41 +7918,41 @@ SYNONYMS massage = rub.
 ADD TO EVERY THING
   VERB rub
     CHECK mia_AT CAN rub
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "strofinare."
     AND ogg <> hero
-      ELSE SAY check_obj_not_hero6 OF mia_AT.
+      ELSE SAY  check_obj_not_hero6  OF mia_AT.
     AND ogg IS inanimato
-      ELSE SAY check_obj_inanimate2 OF mia_AT.
+      ELSE SAY  check_obj_inanimate2  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
       -- "Farlo non servirebbe a nulla."
       SAY mia_AT:non_servirebbe_a_nulla.
       -- "Nothing would be achieved by that."
-  END VERB.
+  END VERB rub.
 END ADD TO.
 
 
@@ -7801,13 +7967,13 @@ END ADD TO.
 
 SYNTAX 'say' = 'say' (argomento)
       WHERE argomento IsA STRING
-    ELSE SAY illegal_parameter_string OF mia_AT.
+    ELSE SAY  illegal_parameter_string  OF mia_AT.
 
 
 ADD TO EVERY STRING
   VERB 'say'
     CHECK mia_AT CAN 'say'
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
         DOES
           "Nothing happens."
   END VERB.
@@ -7827,12 +7993,12 @@ END ADD TO.
 
 SYNTAX say_to = 'say' (argomento) 'to' (png)
   WHERE argomento IsA STRING
-    ELSE SAY illegal_parameter_string OF mia_AT.
+    ELSE SAY  illegal_parameter_string  OF mia_AT.
   AND png IsA ACTOR
     ELSE
       IF png IS NOT plurale
-        THEN SAY illegal_parameter_talk_sg OF mia_AT.
-        ELSE SAY illegal_parameter_talk_pl OF mia_AT.
+        THEN SAY  illegal_parameter_talk_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_talk_pl  OF mia_AT.
       END IF.
 
 
@@ -7840,20 +8006,20 @@ ADD TO EVERY ACTOR
   VERB say_to
     WHEN png
       CHECK mia_AT CAN say_to
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND png <> hero
-        ELSE SAY check_obj2_not_hero1 OF mia_AT.
+        ELSE SAY  check_obj2_not_hero1  OF mia_AT.
       AND png CAN parlare
         ELSE
           IF png IS NOT plurale
-            THEN SAY check_act_can_talk_sg OF mia_AT.
-            ELSE SAY check_act_can_talk_pl OF mia_AT.
+            THEN SAY  check_act_can_talk_sg  OF mia_AT.
+            ELSE SAY  check_act_can_talk_pl  OF mia_AT.
           END IF.
       AND png IS NOT distante
         ELSE
           IF png IS NOT plurale
-            THEN SAY ogg1_distante_sg OF mia_AT.
-            ELSE SAY ogg1_distante_pl OF mia_AT.
+            THEN SAY  ogg1_distante_sg  OF mia_AT.
+            ELSE SAY  ogg1_distante_pl  OF mia_AT.
           END IF.
       DOES
         SAY THE png.
@@ -7862,7 +8028,7 @@ ADD TO EVERY ACTOR
           ELSE "don't look"
         END IF.
         "interested."
-  END VERB.
+  END VERB say_to.
 END ADD TO.
 
 
@@ -7881,7 +8047,7 @@ SYNTAX 'score' = 'score'.
 
 VERB 'score'
   CHECK mia_AT CAN 'score'
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     SCORE.
     -- (or, if you wish to disable the score, use the following kind of
@@ -7905,8 +8071,8 @@ SYNTAX scratch = scratch (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "grattare." -- #graffiare?
 
@@ -7914,39 +8080,39 @@ SYNTAX scratch = scratch (ogg)
 ADD TO EVERY THING
   VERB scratch
     CHECK mia_AT CAN scratch
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY check_obj_suitable_sg OF mia_AT.
-          ELSE SAY check_obj_suitable_pl OF mia_AT.
+          THEN SAY  check_obj_suitable_sg  OF mia_AT.
+          ELSE SAY  check_obj_suitable_pl  OF mia_AT.
         END IF.
     AND ogg <> hero
-      ELSE SAY check_obj_not_hero3 OF mia_AT.
+      ELSE SAY  check_obj_not_hero3  OF mia_AT.
     AND ogg IS inanimato
-      ELSE SAY check_obj_inanimate1 OF mia_AT.
+      ELSE SAY  check_obj_inanimate1  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
       -- "Farlo non servirebbe a nulla."
       SAY mia_AT:non_servirebbe_a_nulla.
      -- "Nothing would be achieved by that."
-  END VERB.
+  END VERB scratch.
 END ADD TO.
 
 
@@ -7969,7 +8135,7 @@ SYNONYMS 'transcript' = 'script'.
 
 VERB 'script'
   CHECK mia_AT CAN 'script'
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     "You can turn transcripting on and off using the 'script on/off' command within the game.
     The transcript will be available in a file with a name starting with the game name.
@@ -7980,19 +8146,19 @@ END VERB.
 
 VERB script_on
   CHECK mia_AT CAN script_on
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     TRANSCRIPT ON.
     "Transcripting turned on."
-END VERB.
+END VERB script_on.
 
 VERB script_off
   CHECK mia_AT CAN script_off
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     TRANSCRIPT OFF.
     "Transcripting turned off."
-END VERB.
+END VERB script_off.
 
 
 
@@ -8010,39 +8176,39 @@ SYNTAX search = search (ogg)
     ELSE
       IF ogg IS NOT plurale
       -- @NOTA: Questo messaggio potrebbe dover essere ad hoc!
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY  illegal_parameter_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_pl  OF mia_AT.
       END IF.
 
 
 ADD TO EVERY THING
   VERB search
     CHECK mia_AT CAN search
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg <> hero
       ELSE LIST hero.
     AND ogg IS inanimato
-      ELSE SAY check_obj_inanimate1 OF mia_AT.
+      ELSE SAY  check_obj_inanimate1  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
       "You find nothing of interest."
-  END VERB.
+  END VERB search.
 END ADD TO.
 
 
@@ -8061,8 +8227,8 @@ SYNTAX shake = shake (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY  illegal_parameter_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_pl  OF mia_AT.
       END IF.
 
 
@@ -8070,30 +8236,30 @@ SYNTAX shake = shake (ogg)
 ADD TO EVERY OBJECT
   VERB shake
     CHECK mia_AT CAN shake
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY check_obj_suitable_sg OF mia_AT.
-          ELSE SAY check_obj_suitable_pl OF mia_AT.
+          THEN SAY  check_obj_suitable_sg  OF mia_AT.
+          ELSE SAY  check_obj_suitable_pl  OF mia_AT.
         END IF.
     AND ogg IS spostabile
-      ELSE SAY check_obj_movable OF mia_AT.
+      ELSE SAY  check_obj_movable  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -8101,7 +8267,7 @@ ADD TO EVERY OBJECT
         THEN "You shake" SAY THE ogg. "cautiously in your hands. Nothing happens."
         ELSE "There is no reason to start shaking" SAY THE ogg. "."
       END IF.
-  END VERB.
+  END VERB shake.
 END ADD TO.
 
 
@@ -8120,8 +8286,8 @@ SYNTAX  shoot = shoot (bersaglio)
   WHERE bersaglio IsA THING
     ELSE
       IF bersaglio IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY  illegal_parameter_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_pl  OF mia_AT.
       END IF.
 
         shoot = shoot 'at' (bersaglio).
@@ -8130,33 +8296,33 @@ SYNTAX  shoot = shoot (bersaglio)
 ADD TO EVERY THING
   VERB shoot
     CHECK mia_AT CAN shoot
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND bersaglio IS esaminabile
       ELSE
         IF bersaglio IS NOT plurale
-          THEN SAY check_obj_suitable_sg OF mia_AT.
-          ELSE SAY check_obj_suitable_pl OF mia_AT.
+          THEN SAY  check_obj_suitable_sg  OF mia_AT.
+          ELSE SAY  check_obj_suitable_pl  OF mia_AT.
         END IF.
     AND bersaglio <> hero
-      ELSE SAY check_obj_not_hero2 OF mia_AT.
+      ELSE SAY  check_obj_not_hero2  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND bersaglio NOT IN hero
-      ELSE SAY check_obj_not_in_hero1 OF mia_AT.
+      ELSE SAY  check_obj_not_in_hero1  OF mia_AT.
     AND bersaglio NOT IN abbigliamento
-      ELSE SAY check_obj_not_in_worn2 OF mia_AT.
+      ELSE SAY  check_obj_not_in_worn2  OF mia_AT.
     AND bersaglio IS NOT distante
       ELSE
         IF bersaglio IS NOT plurale
-          THEN SAY ogg1_distante_sg OF mia_AT.
-          ELSE SAY ogg1_distante_pl OF mia_AT.
+          THEN SAY  ogg1_distante_sg  OF mia_AT.
+          ELSE SAY  ogg1_distante_pl  OF mia_AT.
         END IF.
     DOES
       IF bersaglio IsA ACTOR
         THEN "That's quite uncalled-for."
           ELSE "That wouldn't accomplish anything."
       END IF.
-  END VERB.
+  END VERB shoot.
 END ADD TO.
 
 
@@ -8172,7 +8338,7 @@ SYNTAX shoot_error = shoot.
 VERB shoot_error
   DOES
     "You must state what you want to shoot, for example SHOOT BEAR WITH RIFLE."
-END VERB.
+END VERB shoot_error.
 
 
 
@@ -8189,14 +8355,14 @@ SYNTAX  shoot_with = shoot (bersaglio) 'with' (arma)
   WHERE bersaglio IsA THING
     ELSE
       IF bersaglio IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY  illegal_parameter_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_pl  OF mia_AT.
       END IF.
       AND arma IsA arma
         ELSE
       IF arma IS NOT plurale
-        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
+        THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+        ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
       END IF.
       "sparare." -- # "a THE bersaglio"???                                      IMPROVE?
 
@@ -8208,35 +8374,35 @@ ADD TO EVERY THING
   VERB shoot_with
     WHEN bersaglio
       CHECK mia_AT CAN shoot_with
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND bersaglio IS esaminabile
         ELSE
           IF bersaglio IS NOT plurale
-            THEN SAY check_obj_suitable_sg OF mia_AT.
-            ELSE SAY check_obj_suitable_pl OF mia_AT.
+            THEN SAY  check_obj_suitable_sg  OF mia_AT.
+            ELSE SAY  check_obj_suitable_pl  OF mia_AT.
           END IF.
       AND bersaglio <> hero
-        ELSE SAY check_obj_not_hero2 OF mia_AT.
+        ELSE SAY  check_obj_not_hero2  OF mia_AT.
       AND bersaglio <> arma
-        ELSE SAY check_obj_not_obj2_with OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND bersaglio NOT IN hero
-        ELSE SAY check_obj_not_in_hero1 OF mia_AT.
+        ELSE SAY  check_obj_not_in_hero1  OF mia_AT.
       AND bersaglio NOT IN abbigliamento
-        ELSE SAY check_obj_not_in_worn2 OF mia_AT.
+        ELSE SAY  check_obj_not_in_worn2  OF mia_AT.
       AND bersaglio IS NOT distante
         ELSE
           IF bersaglio IS NOT plurale
-            THEN SAY ogg1_distante_sg OF mia_AT.
-            ELSE SAY ogg1_distante_pl OF mia_AT.
+            THEN SAY  ogg1_distante_sg  OF mia_AT.
+            ELSE SAY  ogg1_distante_pl  OF mia_AT.
           END IF.
       DOES
         IF bersaglio IsA ACTOR
           THEN "That's quite uncalled-for."
           ELSE "That wouldn't accomplish anything."
         END IF.
-  END VERB.
+  END VERB shoot_with.
 END ADD TO.
 
 
@@ -8258,10 +8424,10 @@ SYNONYMS scream, yell = shout.
 
 VERB shout
   CHECK mia_AT CAN gridare
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     "Nothing results from your $ving."
-END VERB.
+END VERB shout.
 
 
 
@@ -8279,15 +8445,15 @@ SYNTAX 'show' = 'show' (ogg) 'to' (png)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "mostrare."
   AND png IsA ACTOR
     ELSE
       IF png IS NOT plurale
-        THEN SAY illegal_parameter2_to_sg OF mia_AT.
-        ELSE SAY illegal_parameter2_to_pl OF mia_AT.
+        THEN SAY  illegal_parameter2_to_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter2_to_pl  OF mia_AT.
       END IF.
 
 
@@ -8298,18 +8464,18 @@ ADD TO EVERY OBJECT
   VERB 'show'
     WHEN ogg
       CHECK mia_AT CAN mostrare
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND png <> hero
-        ELSE SAY check_obj2_not_hero1 OF mia_AT.
+        ELSE SAY  check_obj2_not_hero1  OF mia_AT.
       AND ogg IN hero
-        ELSE SAY non_possiedi_ogg1 OF mia_AT.
+        ELSE SAY  non_possiedi_ogg1  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND png IS NOT distante
         ELSE
           IF png IS NOT plurale
-            THEN SAY ogg2_distante_sg OF mia_AT.
-            ELSE SAY ogg2_distante_pl OF mia_AT.
+            THEN SAY  ogg2_distante_sg  OF mia_AT.
+            ELSE SAY  ogg2_distante_pl  OF mia_AT.
           END IF.
       DOES
         SAY THE png.
@@ -8339,8 +8505,8 @@ SYNTAX sip = sip (liq)
     ELSE
       IF liq IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "sorseggiare."
 
@@ -8348,30 +8514,30 @@ SYNTAX sip = sip (liq)
 ADD TO EVERY liquido
   VERB sip
     CHECK mia_AT CAN sip
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND liq IS potabile
       ELSE
         IF liq IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "sorseggiare."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND liq IS raggiungibile AND liq IS NOT distante
       ELSE
         IF liq IS NOT raggiungibile
           THEN
             IF liq IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF liq IS distante
           THEN
             IF liq IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -8402,7 +8568,7 @@ ADD TO EVERY liquido
           END IF.
       END IF.
 
-  END VERB.
+  END VERB sip.
 END ADD TO.
 
 
@@ -8424,10 +8590,10 @@ SYNTAX smell0 = smell.
 
 VERB smell0
   CHECK mia_AT CAN smell0
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     "You smell nothing unusual."
-END VERB.
+END VERB smell0.
 
 
 
@@ -8445,8 +8611,8 @@ SYNTAX smell = smell (odore)
     ELSE
       IF odore IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "annusare." -- #odorare?
 
@@ -8454,10 +8620,10 @@ SYNTAX smell = smell (odore)
 ADD TO EVERY THING
   VERB smell
     CHECK mia_AT CAN smell
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     DOES
       "You smell nothing unusual."
-  END VERB.
+  END VERB smell.
 END ADD TO.
 
 
@@ -8475,41 +8641,41 @@ SYNTAX squeeze = squeeze (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY illegal_parameter_sg OF mia_AT.
-        ELSE SAY illegal_parameter_pl OF mia_AT.
+        THEN SAY  illegal_parameter_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_pl  OF mia_AT.
       END IF.
 
 
 ADD TO EVERY THING
   VERB squeeze
     CHECK mia_AT CAN squeeze
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY check_obj_suitable_sg OF mia_AT.
-          ELSE SAY check_obj_suitable_pl OF mia_AT.
+          THEN SAY  check_obj_suitable_sg  OF mia_AT.
+          ELSE SAY  check_obj_suitable_pl  OF mia_AT.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
           "Trying to squeeze" SAY THE ogg. "wouldn't accomplish anything."
-  END VERB.
+  END VERB squeeze.
 END ADD TO.
 
 
@@ -8530,7 +8696,7 @@ SYNTAX stand = stand.
 
 VERB stand
   CHECK mia_AT CAN stand
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     IF hero IS seduto OR hero IS sdraiato
       THEN "You get up."
@@ -8538,7 +8704,7 @@ VERB stand
         MAKE hero NOT sdraiato.
       ELSE "You're standing up already."
     END IF.
-END VERB.
+END VERB stand.
 
 
 
@@ -8555,33 +8721,33 @@ SYNTAX  stand_on = stand 'on' (superficie)
   WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
-        THEN SAY ogg1_illegale_SU_sg OF mia_AT.
-        ELSE SAY ogg1_illegale_SU_pl OF mia_AT.
+        THEN SAY  ogg1_illegale_SU_sg  OF mia_AT.
+        ELSE SAY  ogg1_illegale_SU_pl  OF mia_AT.
       END IF.
       "(stand on)." --                                                          FIX VERB!
-  
+
         stand_on = get 'on' (superficie).
 
 
 ADD TO EVERY supporto
   VERB stand_on
     CHECK mia_AT CAN stand_on
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND superficie IS raggiungibile AND superficie IS NOT distante
       ELSE
         IF superficie IS NOT raggiungibile
           THEN
             IF superficie IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF superficie IS distante
           THEN
             IF superficie IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -8592,7 +8758,7 @@ ADD TO EVERY supporto
       -- It is not possible to actually locate him on the surface (unless
       -- you implement a nested location.)
       -- MAKE hero NOT sitting. MAKE hero NOT lying_down.
-  END VERB.
+  END VERB stand_on.
 END ADD TO.
 
 
@@ -8611,16 +8777,16 @@ SYNTAX swim = swim.
 
 VERB swim
   CHECK mia_AT CAN nuotare
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   AND hero IS NOT seduto
-    ELSE SAY check_hero_not_sitting1 OF mia_AT.
+    ELSE SAY  check_hero_not_sitting1  OF mia_AT.
   AND hero IS NOT sdraiato
-    ELSE SAY check_hero_not_lying_down1 OF mia_AT.
+    ELSE SAY  check_hero_not_lying_down1  OF mia_AT.
   AND CURRENT LOCATION IS illuminato
-    ELSE SAY imp_luogo_buio OF mia_AT.
+    ELSE SAY  imp_luogo_buio  OF mia_AT.
   DOES
     "There is no water suitable for swimming here."
-END VERB.
+END VERB swim.
 
 
 
@@ -8637,8 +8803,8 @@ SYNTAX swim_in = swim 'in' (liq)
   WHERE liq IsA liquido
     ELSE
       IF liq IS NOT plurale
-        THEN SAY illegal_parameter_in_sg OF mia_AT.
-        ELSE SAY illegal_parameter_in_pl OF mia_AT.
+        THEN SAY  illegal_parameter_in_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_in_pl  OF mia_AT.
       END IF.
 
 
@@ -8646,26 +8812,26 @@ SYNTAX swim_in = swim 'in' (liq)
 ADD TO EVERY OBJECT
   VERB swim_in
     CHECK mia_AT CAN nuotare_in
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND hero IS NOT seduto
-      ELSE SAY check_hero_not_sitting3 OF mia_AT.
+      ELSE SAY  check_hero_not_sitting3  OF mia_AT.
     AND hero IS NOT sdraiato
-      ELSE SAY check_hero_not_lying_down3 OF mia_AT.
+      ELSE SAY  check_hero_not_lying_down3  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND liq IS raggiungibile AND liq IS NOT distante
       ELSE
         IF liq IS NOT raggiungibile
           THEN
             IF liq IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF liq IS distante
           THEN
             IF liq IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
@@ -8675,7 +8841,7 @@ ADD TO EVERY OBJECT
       END IF.
 
       "something you can swim in."
-  END VERB.
+  END VERB swim_in.
 END ADD TO.
 
 
@@ -8694,11 +8860,11 @@ SYNTAX talk = talk.
 
 VERB talk
   CHECK mia_AT CAN talk
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     "To talk to somebody, you can ASK PERSON ABOUT THING
     or TELL PERSON ABOUT THING."
-END VERB.
+END VERB talk.
 
 
 
@@ -8715,19 +8881,19 @@ SYNTAX talk_to = talk 'to' (png)
   WHERE png IsA ACTOR
     ELSE
       IF png IS NOT plurale
-        THEN SAY illegal_parameter_to_sg OF mia_AT.
-        ELSE SAY illegal_parameter_to_pl OF mia_AT.
+        THEN SAY  illegal_parameter_to_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_to_pl  OF mia_AT.
       END IF.
 
 
 ADD TO EVERY ACTOR
   VERB talk_to
     CHECK mia_AT CAN talk_to
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     DOES
       "To talk to somebody, you can ASK PERSON ABOUT THING or
       TELL PERSON ABOUT THING."
-  END VERB.
+  END VERB talk_to.
 END ADD TO.
 
 
@@ -8746,8 +8912,8 @@ SYNTAX taste = taste (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "assaggiare."
 
@@ -8758,44 +8924,44 @@ SYNONYMS lick = taste.
 ADD TO EVERY OBJECT
   VERB taste
     CHECK mia_AT CAN assaggiare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "assaggiare."
     AND ogg IS commestibile OR ogg IS potabile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "assaggiare."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
       "Non hai sentito nessun sapore particolare." --> preso da i6
       -- "You taste nothing unexpected."
-  END VERB.
+  END VERB taste.
 END ADD TO.
 
 
@@ -8814,8 +8980,8 @@ SYNTAX tear = tear (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "strappare."
 
@@ -8826,35 +8992,35 @@ SYNONYMS rip = tear.
 ADD TO EVERY OBJECT
   VERB tear
     CHECK mia_AT CAN tear
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "strappare."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
       "Trying to $v" SAY THE ogg. "would be futile."
-  END VERB.
+  END VERB tear.
 END ADD TO.
 
 
@@ -8871,14 +9037,14 @@ SYNTAX tell = tell (png) about (argomento)!
   WHERE png IsA ACTOR
     ELSE
       IF png IS NOT plurale
-            THEN SAY illegal_parameter_talk_sg OF mia_AT.
-        ELSE SAY illegal_parameter_talk_pl OF mia_AT.
+            THEN SAY  illegal_parameter_talk_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_talk_pl  OF mia_AT.
       END IF.
   AND argomento IsA THING
     ELSE
       IF argomento IS NOT plurale
-        THEN SAY illegal_parameter_about_sg OF mia_AT.
-        ELSE SAY illegal_parameter_about_pl OF mia_AT.
+        THEN SAY  illegal_parameter_about_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_about_pl  OF mia_AT.
       END IF.
 
 
@@ -8889,20 +9055,20 @@ ADD TO EVERY ACTOR
   VERB tell
     WHEN png
       CHECK mia_AT CAN tell
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND png <> hero
-        ELSE SAY check_obj_not_hero1 OF mia_AT.
+        ELSE SAY  check_obj_not_hero1  OF mia_AT.
           AND png CAN parlare
               ELSE
           IF png IS NOT plurale
-            THEN SAY check_act_can_talk_sg OF mia_AT.
-            ELSE SAY check_act_can_talk_pl OF mia_AT.
+            THEN SAY  check_act_can_talk_sg  OF mia_AT.
+            ELSE SAY  check_act_can_talk_pl  OF mia_AT.
           END IF.
       AND png IS NOT distante
         ELSE
           IF png IS NOT plurale
-            THEN SAY ogg1_distante_sg OF mia_AT.
-            ELSE SAY ogg1_distante_pl OF mia_AT.
+            THEN SAY  ogg1_distante_sg  OF mia_AT.
+            ELSE SAY  ogg1_distante_pl  OF mia_AT.
           END IF.
       DOES
         SAY THE png.
@@ -8914,7 +9080,7 @@ ADD TO EVERY ACTOR
 
         "look interested."
 
-  END VERB.
+  END VERB tell.
 END ADD TO.
 
 
@@ -8930,45 +9096,45 @@ END ADD TO.
 
 SYNTAX throw = throw (proiettile)
   WHERE proiettile IsA OBJECT
-    ELSE SAY illegal_parameter_obj OF mia_AT.
+    ELSE SAY  illegal_parameter_obj  OF mia_AT.
 
 
 
 ADD TO EVERY OBJECT
   VERB throw
     CHECK mia_AT CAN throw
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND proiettile IS esaminabile
       ELSE
         IF proiettile IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT. "lanciare."
-          ELSE SAY ogg1_inadatto_pl OF mia_AT. "lanciare."
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT. "lanciare."
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT. "lanciare."
         END IF.
     AND proiettile IS prendibile
-      ELSE SAY check_obj_takeable OF mia_AT.
+      ELSE SAY  check_obj_takeable  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND proiettile IS raggiungibile AND proiettile IS NOT distante
       ELSE
         IF proiettile IS NOT raggiungibile
           THEN
             IF proiettile IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF proiettile IS distante
           THEN
             IF proiettile IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES
       -- implicit taking:
       IF proiettile NOT DIRECTLY IN hero
         THEN LOCATE proiettile IN hero.
-          SAY implicit_taking_message OF mia_AT.
+          SAY  implicit_taking_message  OF mia_AT.
       END IF.
       -- end of implicit taking.
 
@@ -8988,7 +9154,7 @@ ADD TO EVERY OBJECT
       "nearby."
           LOCATE proiettile AT hero.
 
-  END VERB.
+  END VERB throw.
 END ADD TO.
 
 
@@ -9005,9 +9171,9 @@ END ADD TO.
 
 SYNTAX throw_at = throw (proiettile) 'at' (bersaglio)
   WHERE proiettile IsA OBJECT
-    ELSE SAY illegal_parameter_obj OF mia_AT.
+    ELSE SAY  illegal_parameter_obj  OF mia_AT.
   AND bersaglio IsA THING
-    ELSE SAY illegal_parameter_at OF mia_AT.
+    ELSE SAY  illegal_parameter_at  OF mia_AT.
 
 
 
@@ -9015,53 +9181,53 @@ ADD TO EVERY OBJECT
   VERB throw_at
     WHEN proiettile
       CHECK mia_AT CAN throw_at
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND proiettile IS esaminabile
         ELSE
           IF proiettile IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT. "lanciare."
-            ELSE SAY ogg1_inadatto_pl OF mia_AT. "lanciare."
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT. "lanciare."
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT. "lanciare."
           END IF.
       AND proiettile IS prendibile
-        ELSE SAY check_obj_takeable OF mia_AT.
+        ELSE SAY  check_obj_takeable  OF mia_AT.
       AND bersaglio IS esaminabile
-        ELSE SAY check_obj_suitable_at OF mia_AT.
+        ELSE SAY  check_obj_suitable_at  OF mia_AT.
       AND proiettile <> bersaglio
-        ELSE SAY check_obj_not_obj2_at OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_at  OF mia_AT.
       AND bersaglio NOT IN hero
-        ELSE SAY check_obj2_not_in_hero1 OF mia_AT.
+        ELSE SAY  check_obj2_not_in_hero1  OF mia_AT.
       AND bersaglio <> hero
-        ELSE SAY check_obj2_not_hero1 OF mia_AT.
+        ELSE SAY  check_obj2_not_hero1  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND proiettile IS raggiungibile AND proiettile IS NOT distante
         ELSE
           IF proiettile IS NOT raggiungibile
             THEN
               IF proiettile IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF proiettile IS distante
             THEN
               IF proiettile IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       AND bersaglio IS NOT distante
         -- it is possible to throw something at an (otherwise) not reachable bersaglio
         ELSE
           IF bersaglio IS NOT plurale
-            THEN SAY ogg2_distante_sg OF mia_AT.
-            ELSE SAY ogg2_distante_pl OF mia_AT.
+            THEN SAY  ogg2_distante_sg  OF mia_AT.
+            ELSE SAY  ogg2_distante_pl  OF mia_AT.
           END IF.
       DOES
         -- implicit taking:
         IF proiettile NOT DIRECTLY IN hero
           THEN LOCATE proiettile IN hero.
-               SAY implicit_taking_message OF mia_AT.
+               SAY  implicit_taking_message  OF mia_AT.
         END IF.
         -- end of implicit taking.
 
@@ -9104,7 +9270,7 @@ ADD TO EVERY OBJECT
             -- when attacking enemies.
           END IF.
 
-  END VERB.
+  END VERB throw_at.
 END ADD TO.
 
 
@@ -9120,68 +9286,68 @@ END ADD TO.
 
 SYNTAX throw_to = throw (proiettile) 'to' (ricevente)
     WHERE proiettile IsA OBJECT
-      ELSE SAY illegal_parameter_obj OF mia_AT.
+      ELSE SAY  illegal_parameter_obj  OF mia_AT.
     AND ricevente IsA ACTOR
-      ELSE SAY illegal_parameter2_there OF mia_AT.
+      ELSE SAY  illegal_parameter2_there  OF mia_AT.
 
 
 ADD TO EVERY OBJECT
   VERB throw_to
     WHEN proiettile
       CHECK mia_AT CAN throw_to
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND proiettile IS esaminabile
         ELSE
           IF proiettile IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT. "lanciare."
-            ELSE SAY ogg1_inadatto_pl OF mia_AT. "lanciare."
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT. "lanciare."
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT. "lanciare."
           END IF.
       AND proiettile IS prendibile
-        ELSE SAY check_obj_takeable OF mia_AT.
+        ELSE SAY  check_obj_takeable  OF mia_AT.
       AND ricevente IS esaminabile
-        ELSE SAY check_obj_suitable_at OF mia_AT.
+        ELSE SAY  check_obj_suitable_at  OF mia_AT.
       AND proiettile <> ricevente
-        ELSE SAY check_obj_not_obj2_to OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_to  OF mia_AT.
       AND ricevente NOT IN hero
-        ELSE SAY check_obj2_not_in_hero1 OF mia_AT.
+        ELSE SAY  check_obj2_not_in_hero1  OF mia_AT.
       AND ricevente <> hero
-        ELSE SAY check_obj2_not_hero1 OF mia_AT.
+        ELSE SAY  check_obj2_not_hero1  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND proiettile IS raggiungibile AND proiettile IS NOT distante
         ELSE
           IF proiettile IS NOT raggiungibile
             THEN
               IF proiettile IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF proiettile IS distante
             THEN
               IF proiettile IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       AND ricevente IS NOT distante
         ELSE
           IF ricevente IS NOT plurale
-            THEN SAY ogg2_distante_sg OF mia_AT.
-            ELSE SAY ogg2_distante_pl OF mia_AT.
+            THEN SAY  ogg2_distante_sg  OF mia_AT.
+            ELSE SAY  ogg2_distante_pl  OF mia_AT.
           END IF.
       DOES
         -- implicit taking:
         IF proiettile NOT DIRECTLY IN hero
           THEN LOCATE proiettile IN hero.
-            SAY implicit_taking_message OF mia_AT.
+            SAY  implicit_taking_message  OF mia_AT.
         END IF.
         -- end of implicit taking.
 
         "It wouldn't accomplish anything trying to throw"
         SAY the proiettile. "to" SAY THE ricevente. "."
 
-  END VERB.
+  END VERB throw_to.
 END ADD TO.
 
 
@@ -9197,93 +9363,93 @@ END ADD TO.
 
 SYNTAX throw_in = throw (proiettile) 'in' (cont)
   WHERE proiettile IsA OBJECT
-    ELSE SAY illegal_parameter_obj OF mia_AT.
+    ELSE SAY  illegal_parameter_obj  OF mia_AT.
   AND cont IsA OBJECT
     ELSE
       IF cont IsA ACTOR
-        THEN SAY illegal_parameter_act OF mia_AT.
-        ELSE SAY illegal_parameter2_there OF mia_AT.
+        THEN SAY  illegal_parameter_act  OF mia_AT.
+        ELSE SAY  illegal_parameter2_there  OF mia_AT.
       END IF.
   AND cont IsA CONTAINER
-    ELSE SAY illegal_parameter2_there OF mia_AT.
+    ELSE SAY  illegal_parameter2_there  OF mia_AT.
 
 
 ADD TO EVERY OBJECT
   VERB throw_in
     WHEN proiettile
       CHECK mia_AT CAN throw_in
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND proiettile IS esaminabile
         ELSE
           IF proiettile IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT. "lanciare."
-            ELSE SAY ogg1_inadatto_pl OF mia_AT. "lanciare."
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT. "lanciare."
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT. "lanciare."
           END IF.
       AND proiettile IS prendibile
-          ELSE SAY check_obj_takeable OF mia_AT.
+          ELSE SAY  check_obj_takeable  OF mia_AT.
       AND cont IS esaminabile
-          ELSE SAY check_obj2_suitable_there OF mia_AT.
+          ELSE SAY  check_obj2_suitable_there  OF mia_AT.
       AND proiettile <> cont
-        ELSE SAY check_obj_not_obj2_in OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_in  OF mia_AT.
       AND cont <> hero
-        ELSE SAY check_obj2_not_hero1 OF mia_AT.
+        ELSE SAY  check_obj2_not_hero1  OF mia_AT.
       AND cont NOT IN hero
-        ELSE SAY check_obj2_not_in_hero1 OF mia_AT.
+        ELSE SAY  check_obj2_not_in_hero1  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-          ELSE SAY imp_luogo_buio OF mia_AT.
+          ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND proiettile NOT IN cont
         ELSE
           IF proiettile IS NOT plurale
-            THEN SAY check_obj_not_in_cont_sg OF mia_AT.
-            ELSE SAY check_obj_not_in_cont_pl OF mia_AT.
+            THEN SAY  check_obj_not_in_cont_sg  OF mia_AT.
+            ELSE SAY  check_obj_not_in_cont_pl  OF mia_AT.
           END IF.
       AND proiettile IS raggiungibile AND proiettile IS NOT distante
         ELSE
           IF proiettile IS NOT raggiungibile
             THEN
               IF proiettile IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF proiettile IS distante
             THEN
               IF proiettile IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       AND cont IS NOT distante
         ELSE
           IF cont IS NOT plurale
-            THEN SAY ogg2_distante_sg OF mia_AT.
-            ELSE SAY ogg2_distante_pl OF mia_AT.
+            THEN SAY  ogg2_distante_sg  OF mia_AT.
+            ELSE SAY  ogg2_distante_pl  OF mia_AT.
           END IF.
       AND proiettile IN consentiti OF cont
         ELSE
           IF proiettile IS NOT plurale
-            THEN SAY check_obj_allowed_in_sg OF mia_AT.
-            ELSE SAY check_obj_allowed_in_pl OF mia_AT.
+            THEN SAY  check_obj_allowed_in_sg  OF mia_AT.
+            ELSE SAY  check_obj_allowed_in_pl  OF mia_AT.
           END IF.
       AND cont IS aperto
         ELSE
           IF cont IS NOT femminile
             THEN
               IF cont IS NOT plurale
-                THEN SAY imp_ogg2_chiuso_ms OF mia_AT.
-                ELSE SAY imp_ogg2_chiuso_mp OF mia_AT.
+                THEN SAY  imp_ogg2_chiuso_ms  OF mia_AT.
+                ELSE SAY  imp_ogg2_chiuso_mp  OF mia_AT.
               END IF.
             ELSE
               IF cont IS NOT plurale
-                THEN SAY imp_ogg2_chiuso_fs OF mia_AT.
-                ELSE SAY imp_ogg2_chiuso_fp OF mia_AT.
+                THEN SAY  imp_ogg2_chiuso_fs  OF mia_AT.
+                ELSE SAY  imp_ogg2_chiuso_fp  OF mia_AT.
               END IF.
           END IF.
       DOES
         -- implicit taking:
         IF proiettile NOT DIRECTLY IN hero
           THEN LOCATE proiettile IN hero.
-            SAY implicit_taking_message OF mia_AT.
+            SAY  implicit_taking_message  OF mia_AT.
         END IF.
         -- end of implicit taking.
 
@@ -9295,7 +9461,7 @@ ADD TO EVERY OBJECT
         -- default; this is to avoid successful outcomes for commands like
         -- 'throw plate into cupboard' etc.
 
-  END VERB.
+  END VERB throw_in.
 END ADD TO.
 
 
@@ -9314,8 +9480,8 @@ SYNTAX tie = tie (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "legare."
 
@@ -9323,20 +9489,20 @@ SYNTAX tie = tie (ogg)
 ADD TO EVERY OBJECT
   VERB tie
     CHECK mia_AT CAN legare
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
         END IF.
         "legare."
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     DOES
       "You must state where you want to tie" SAY THE ogg. "."
-    END VERB.
+    END VERB tie.
 END ADD TO.
 
 
@@ -9352,9 +9518,9 @@ END ADD TO.
 
 SYNTAX tie_to = tie (ogg) 'to' (bersaglio)
   WHERE ogg IsA OBJECT
-    ELSE SAY illegal_parameter_obj OF mia_AT.
+    ELSE SAY  illegal_parameter_obj  OF mia_AT.
   AND bersaglio IsA THING
-    ELSE SAY illegal_parameter_obj OF mia_AT.
+    ELSE SAY  illegal_parameter_obj  OF mia_AT.
 
 
 
@@ -9362,35 +9528,35 @@ ADD TO EVERY THING
   VERB tie_to
     WHEN ogg
       CHECK mia_AT CAN legare_a
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg IS esaminabile
         ELSE
           IF ogg IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT. "legare."
-            ELSE SAY ogg1_inadatto_pl OF mia_AT. "legare."
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT. "legare."
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT. "legare."
           END IF.
       AND bersaglio IS esaminabile
-        ELSE SAY check_obj2_suitable_there OF mia_AT.
+        ELSE SAY  check_obj2_suitable_there  OF mia_AT.
       AND ogg <> bersaglio
-        ELSE SAY check_obj_not_obj2_to OF mia_AT.
+        ELSE SAY  check_obj_not_obj2_to  OF mia_AT.
       AND ogg IS prendibile
-        ELSE SAY check_obj_takeable OF mia_AT.
+        ELSE SAY  check_obj_takeable  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF ogg IS distante
             THEN
               IF ogg IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
               END IF.
           END IF.
       AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
@@ -9398,168 +9564,28 @@ ADD TO EVERY THING
           IF bersaglio IS NOT raggiungibile
             THEN
               IF bersaglio IS NOT plurale
-                THEN SAY ogg2_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg2_non_raggiungibile_pl OF mia_AT.
+                THEN SAY  ogg2_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg2_non_raggiungibile_pl  OF mia_AT.
               END IF.
           ELSIF bersaglio IS distante
             THEN
               IF bersaglio IS NOT plurale
-                THEN SAY ogg2_distante_sg OF mia_AT.
-                ELSE SAY ogg2_distante_pl OF mia_AT.
+                THEN SAY  ogg2_distante_sg  OF mia_AT.
+                ELSE SAY  ogg2_distante_pl  OF mia_AT.
               END IF.
           END IF.
       DOES
         -- implicit taking:
         IF ogg NOT DIRECTLY IN hero
           THEN LOCATE ogg IN hero.
-            SAY implicit_taking_message OF mia_AT.
+--                                                                              TRANSLATE!
+            SAY  implicit_taking_message  OF mia_AT.
         END IF.
         -- end of implicit taking.
 
         "It's not possible to tie" SAY THE ogg. "to" SAY THE bersaglio. "."
 
-  END VERB.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ TOUCH
-
-
--- ==============================================================
-
-
-SYNTAX touch = touch (ogg)
-  WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "toccare."
-
-
-SYNONYMS feel = touch.
-
-
-ADD TO EVERY THING
-  VERB touch
-    CHECK mia_AT CAN toccare
-      ELSE SAY azione_bloccata OF mia_AT.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY ogg1_inadatto_sg OF mia_AT.
-          ELSE SAY ogg1_inadatto_pl OF mia_AT.
-        END IF.
-        "toccare."
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
-            END IF.
-        END IF.
-      AND ogg <> hero
-        ELSE SAY check_obj_not_hero3 OF mia_AT.
-      AND ogg IS inanimato
-        ELSE SAY check_obj_inanimate2 OF mia_AT. "."
-      DOES
-          "You feel nothing unexpected."
-  END VERB.
-END ADD TO.
-
-
--- ==============================================================
-
-
------ TOUCH WITH
-
-
--- ==============================================================
-
-
-SYNTAX touch_with = touch (ogg) 'with' (strum)
-  WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
-      END IF.
-      "toccare."
-  AND strum IsA OBJECT
-    ELSE
-      IF strum IS NOT plurale
-        THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-        ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
-      END IF.
-      "toccare" SAY THE ogg. "."
-
-
-ADD TO EVERY THING
-  VERB touch_with
-    WHEN ogg
-      CHECK mia_AT CAN toccare_con
-        ELSE SAY azione_bloccata OF mia_AT.
-      AND ogg IS esaminabile
-        ELSE
-          IF ogg IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT.
-            ELSE SAY ogg1_inadatto_pl OF mia_AT.
-          END IF.
-          "toccare."
-      AND strum IS esaminabile
-        ELSE
-          IF strum IS NOT plurale
-            THEN SAY ogg2_illegale_CON_sg OF mia_AT.
-            ELSE SAY ogg2_illegale_CON_pl OF mia_AT.
-        END IF.
-        "toccare" SAY THE ogg. "."
-      AND ogg <> strum
-        ELSE SAY check_obj_not_obj2_with OF mia_AT.
-          AND strum <> hero
-        ELSE SAY check_obj2_not_hero1 OF mia_AT.
-      AND strum IN hero
-        ELSE SAY non_possiedi_ogg2 OF mia_AT.
-      AND ogg IS inanimato
-        ELSE SAY check_obj_inanimate2 OF mia_AT.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY imp_luogo_buio OF mia_AT.
-      AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-                ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
-              END IF.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY ogg1_distante_sg OF mia_AT.
-                ELSE SAY ogg1_distante_pl OF mia_AT.
-              END IF.
-          END IF.
-      DOES
-        "You touch" SAY THE ogg. "with" SAY THE strum. ". Nothing special happens."
-  END VERB.
+  END VERB tie_to.
 END ADD TO.
 
 
@@ -9582,8 +9608,8 @@ SYNTAX turn = turn (ogg)
         ELSE
           IF ogg IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY ogg1_inadatto_sg OF mia_AT.
-            ELSE SAY ogg1_inadatto_pl OF mia_AT.
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
           END IF.
           "girare." --# ruotare?
       END IF.
@@ -9594,34 +9620,34 @@ SYNTAX turn = turn (ogg)
 ADD TO EVERY OBJECT
   VERB turn
     CHECK mia_AT CAN turn
-      ELSE SAY azione_bloccata OF mia_AT.
+      ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY check_obj_suitable_sg OF mia_AT.
-          ELSE SAY check_obj_suitable_pl OF mia_AT.
+          THEN SAY  check_obj_suitable_sg  OF mia_AT.
+          ELSE SAY  check_obj_suitable_pl  OF mia_AT.
         END IF.
     AND ogg IS spostabile
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY check_obj_suitable_sg OF mia_AT.
-          ELSE SAY check_obj_suitable_pl OF mia_AT.
+          THEN SAY  check_obj_suitable_sg  OF mia_AT.
+          ELSE SAY  check_obj_suitable_pl  OF mia_AT.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
 
@@ -9630,7 +9656,7 @@ ADD TO EVERY OBJECT
         THEN "You turn" SAY THE ogg. "in your hands, noticing nothing special."
         ELSE "That wouldn't accomplish anything."
       END IF.
-  END VERB.
+  END VERB turn.
 END ADD TO.
 
 
@@ -9648,7 +9674,7 @@ SYNTAX verbose = verbose.
 
 VERB verbose
   CHECK mia_AT CAN modalità_lunga
-    ELSE SAY azione_bloccata OF mia_AT.
+    ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     VISITS 0.
     -- "Verbose mode is now on. Location descriptions will be
@@ -9656,7 +9682,7 @@ VERB verbose
 
     "Il gioco è ora in modalità" STYLE EMPHASIZED. "lunga" STYLE NORMAL. ", le
     descrizioni dei luoghi saranno mostrate sempre (anche se già visitati)."
-END VERB.
+END VERB verbose.
 
 
 
@@ -9678,8 +9704,8 @@ SYNTAX wear = wear (ogg)
     ELSE
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
       END IF.
       "indossare."
 
@@ -9691,30 +9717,30 @@ SYNTAX wear = wear (ogg)
 ADD TO EVERY OBJECT
   VERB wear
     CHECK mia_AT CAN indossare
-        ELSE SAY azione_bloccata OF mia_AT.
+        ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg NOT IN abbigliamento
-      ELSE SAY check_obj_not_in_worn1 OF mia_AT.
+      ELSE SAY  check_obj_not_in_worn1  OF mia_AT.
     AND ogg IS prendibile
       ELSE
         IF THIS IS NOT plurale
-          THEN SAY check_obj_takeable OF mia_AT.
-          ELSE SAY check_obj_takeable OF mia_AT.
+          THEN SAY  check_obj_takeable  OF mia_AT.
+          ELSE SAY  check_obj_takeable  OF mia_AT.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF ogg IS distante
           THEN
             IF ogg IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
 
@@ -9725,7 +9751,7 @@ ADD TO EVERY OBJECT
       END IF.
       "something you can wear."
 
-  END VERB.
+  END VERB wear.
 END ADD TO.
 
 

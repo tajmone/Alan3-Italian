@@ -1,4 +1,4 @@
--- "lib_luoghi.i" v0.4.0 (2018/07/27)
+-- "lib_luoghi.i" v0.4.1 (2018/08/02)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -43,11 +43,11 @@
 --       |     moduli della libreria.
 --       |  2) Che si tratti di un modulo indipendente ed opzionale.
 --       |
---       | Entrambi i punti non corrispondono allo stato attuale della StdLib, 
+--       | Entrambi i punti non corrispondono allo stato attuale della StdLib,
 --       | e mi chiedo se non si tratti di testo vecchio, che fa riferimento a
 --       | versioni precedenti della libreria. P.es., il 'limbo' (ex 'nowhere')
---       | è utilizzato spesso nei modulo dei verbi, e quindi non può essere 
---       | modificato a piacimento. Molto pobabilmente lo stesso vale per altri 
+--       | è utilizzato spesso nei modulo dei verbi, e quindi non può essere
+--       | modificato a piacimento. Molto pobabilmente lo stesso vale per altri
 --       | elementi definiti in questo modulo, quindi l'affermazione secondo cui
 --       | si è completamente liberi di editare questo file è un po' azzardata.
 --       | Quanto al punto (2), allo stato attuale la StdLib viene caricata
@@ -239,30 +239,30 @@ THE pavimento IsA oggetto_stanza
   VERB empty_in, pour_in
      WHEN cont
     DOES ONLY "That's not something you can $v things into."
-  END VERB.
+  END VERB empty_in.
 
 
   VERB look_in
     DOES ONLY "That's not possible."
-  END VERB.
+  END VERB look_in.
 
 
   VERB put_in
      WHEN cont
     DOES ONLY "That's not something you can $v things into."
-  END VERB.
+  END VERB put_in.
 
 -- @PRENDI_DA -> @TAKE_FROM (VERB) => FLOOR
   VERB prendi_da
      WHEN detentore
     DOES ONLY "If you want to pick up something, just TAKE it."
-  END VERB.
+  END VERB prendi_da.
 
 
   VERB throw_in
      WHEN cont
     DOES ONLY "That's not something you can $v things into."
-  END VERB.
+  END VERB throw_in.
 
 END THE.
 
@@ -304,31 +304,31 @@ THE suolo IsA oggetto_luogo_esterno
   VERB empty_in, pour_in
      WHEN cont
     DOES ONLY "That's not something you can $v things into."
-  END VERB.
+  END VERB empty_in.
 
 
   VERB look_in
     DOES ONLY "That's not possible."
-  END VERB.
+  END VERB look_in.
 
 
   VERB put_in
      WHEN cont
     DOES ONLY "That's not something you can $v things into."
-  END VERB.
+  END VERB put_in.
 
 
 -- @PRENDI_DA -> @TAKE_FROM (VERB) => GROUND
   VERB prendi_da
      WHEN detentore
     DOES ONLY "If you want to pick up something, just TAKE it."
-  END VERB.
+  END VERB prendi_da.
 
 
   VERB throw_in
      WHEN cont
     DOES ONLY "That's not something you can $v things into."
-  END VERB.
+  END VERB throw_in.
 
 
 END THE.
@@ -351,16 +351,16 @@ ADD TO EVERY oggetto_stanza
     WHEN bulk
       CHECK THIS = pareti
         ELSE "That's not possible."
-  END VERB.
+  END VERB put_against.
 
   VERB put_behind, put_near, put_under
     WHEN bulk
       DOES ONLY "That's not possible."
-  END VERB.
+  END VERB put_behind.
 
   VERB look_behind, look_through, look_under
     DOES ONLY "That's not possible."
-  END VERB.
+  END VERB look_behind.
 
 END ADD TO.
 
@@ -370,11 +370,11 @@ ADD TO EVERY oggetto_luogo_esterno
   VERB put_against, put_behind, put_near, put_under
     WHEN bulk
       DOES ONLY "That's not possible."
-  END VERB.
+  END VERB put_against.
 
   VERB look_behind, look_through, look_under
     DOES ONLY "That's not possible."
-  END VERB.
+  END VERB look_behind.
 
 END ADD TO.
 
@@ -439,7 +439,7 @@ EVERY luogo_buio IsA LOCATION
 
   DESCRIPTION
     CHECK THIS IS illuminato
-      ELSE SAY dark_loc_desc OF mia_AT.
+      ELSE SAY  dark_loc_desc  OF mia_AT.
 
 END EVERY luogo_buio.
 
@@ -463,7 +463,7 @@ THEN MAKE location OF hero NOT illuminato.
 
 
 EVENT light_off
-  SAY light_goes_off OF mia_AT.
+  SAY  light_goes_off  OF mia_AT.
 END EVENT.
 
 

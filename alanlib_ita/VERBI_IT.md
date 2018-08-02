@@ -58,6 +58,8 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [taglia](#taglia)
     - [taglia_con](#taglia_con)
     - [tira](#tira)
+    - [tocca](#tocca)
+    - [tocca_con](#tocca_con)
 - [INDOSSARE, SPOGLIARSI](#indossare-spogliarsi)
     - [spogliati](#spogliati)
 - [ATTACCARE, ROMPERE, BRUCIARE](#attaccare-rompere-bruciare)
@@ -67,6 +69,8 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [brucia_con](#brucia_con)
     - [rompi](#rompi)
     - [rompi_con](#rompi_con)
+    - [uccidi](#uccidi)
+    - [uccidi_con](#uccidi_con)
 - [VERBI CHE NON CONSEGUONO NULLA](#verbi-che-non-conseguono-nulla)
     - [aspetta](#aspetta)
     - [bacia](#bacia)
@@ -101,9 +105,13 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [abbandona][abbandona ogg]  (oggetto)
 - [abbandona partita]
 - [abbraccia]
+- [accarezza]
+- [accarezza con]
 - [accendi]
 - [afferra]
 - [aggiusta]
+- [ammazza]
+- [ammazza con]
 - [apri]
 - [apri con]
 - [ascolta][ascolta0]
@@ -121,6 +129,8 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [brucia]
 - [brucia con]
 - [canta]
+- [carezza]
+- [carezza con]
 - [carica]
 - [carica partita]
 - [chiudi]
@@ -196,8 +206,12 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [taglia con]
 - [tira]
 - [togli]
+- [tocca]
+- [tocca con]
 - [trasporta]
 - [trova]
+- [uccidi]
+- [uccidi con]
 - [usa]
 - [usa con]
 - [vai a]
@@ -863,6 +877,8 @@ Se l'azione avrà successo, altererà il seguente attributo di `<disp>`:
 - [taglia]
 - [taglia con]
 - [tira]
+- [tocca]
+- [tocca_con]
 
 ## libera
 
@@ -936,6 +952,40 @@ sintassi:
     tira <ogg>
 
 
+## tocca
+
+[tocca]: #tocca "tocca"
+[accarezza]: #tocca "tocca"
+[carezza]: #tocca "tocca"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] toccare
+
+sintassi:
+
+    (tocca|accarezza|carezza) <ogg>
+
+
+## tocca_con
+
+[tocca_con]: #tocca_con "tocca_con"
+[tocca con]: #tocca_con "tocca_con"
+[accarezza con]: #tocca_con "tocca_con"
+[carezza con]: #tocca_con "tocca_con"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] toccare_con
+
+sintassi:
+
+    (tocca|accarezza|carezza) <ogg> con <strum>
+
+
+
 -------------------------------------------------------------------------------
 
 # INDOSSARE, SPOGLIARSI
@@ -979,6 +1029,8 @@ esito:
 - [brucia_con]
 - [rompi]
 - [rompi_con]
+- [uccidi]
+- [uccidi_con]
 
 ## attacca
 
@@ -1072,7 +1124,7 @@ esito:
 
 sintassi:
 
-    (rompi|distruggi|spacca|sfonda) <ogg> 'con' <strum>
+    (rompi|distruggi|spacca|sfonda) <ogg> con <strum>
 
 condizioni:
 
@@ -1082,6 +1134,35 @@ esito:
 
 - Nulla, dice solo "`Tentare di rompere <THE ogg> con <THE strum> non risolverebbe nulla.`"  
 
+
+## uccidi
+
+[uccidi]: #uccidi "uccidi"
+[ammazza]: #uccidi "uccidi"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] uccidere
+
+sintassi:
+
+    (uccidi|ammazza) <vittima>
+
+## uccidi_con
+
+[uccidi_con]: #uccidi_con "uccidi_con"
+[uccidi con]: #uccidi_con "uccidi_con"
+[ammazza con]: #uccidi_con "uccidi_con"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] uccidere_con
+
+sintassi:
+
+    (uccidi|ammazza) <vittima> con <arma>
 
 -------------------------------------------------------------------------------
 

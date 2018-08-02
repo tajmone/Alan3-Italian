@@ -11,6 +11,10 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/08/02](#20180802)
+    - [Verbs: `kill` and `kill_with`](#verbs-kill-and-kill_with)
+    - [Verbs: `touch` and `touch_with`](#verbs-touch-and-touch_with)
+    - [Code Cleanup](#code-cleanup)
 - [2018/08/01 \(4\)](#20180801-4)
     - [Verb Responses](#verb-responses)
     - [Verb: `sing`](#verb-sing)
@@ -244,6 +248,44 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/08/02
+
+- [`lib_classi.i`][lib_classi] (v0.4.5)
+- [`lib_luoghi.i`][lib_luoghi] (v0.4.1)
+- [`lib_verbi.i`][lib_verbi] (v0.4.11)
+
+
+## Verbs: `kill` and `kill_with`
+
+Translated verbs `uccidi` and `uccidi_con`, "__uccidi__":
+
+    uccidi (vittima)
+    uccidi (vittima) con (arma)
+
+with synonyms:
+
+    ammazza
+
+## Verbs: `touch` and `touch_with`
+
+Translated verbs `tocca` and `tocca_con`, "__tocca__":
+
+    tocca (ogg)
+    tocca (ogg) con (strum)
+
+with synonyms:
+
+    accarezza, carezza = tocca
+
+
+## Code Cleanup
+
+This commit tweaks the library source to increase code readability during work:
+
+- Add the verb ID after `END VERB`, in all verbs.
+- Add spacing around `mia_AT` attributes in SAY statements.
+
 
 # 2018/08/01 (4)
 

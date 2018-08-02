@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.4.4 (2018/07/31)
+-- "lib_classi.i" v0.4.5 (2018/08/02)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -133,7 +133,7 @@ END ADD.
 --------------------------------------------------------------------------------
 
 -- @TODO: Mancano ancora troppi elementi per documentare le fonti di luce:
---        - La differenza tra i verbi inglesi "turned on and off, lighted and 
+--        - La differenza tra i verbi inglesi "turned on and off, lighted and
 --          extinguished" non ha ancora corrispondenti italiani, e al momento
 --          vi sono difficoltà in vista per la traduzione di questi verbi.
 --        - Il completamento della traduzione di questa scheda dovrà essere
@@ -381,8 +381,8 @@ END ADD.
 
 THE abbigliamento IsA ENTITY
   CONTAINER TAKING indumento.
-    HEADER SAY hero_worn_header OF mia_AT.
-    ELSE SAY hero_worn_else OF mia_AT.
+    HEADER SAY  hero_worn_header  OF mia_AT.
+    ELSE SAY  hero_worn_else  OF mia_AT.
 END THE.
 
 
@@ -479,14 +479,14 @@ EVERY indumento IsA OBJECT
             THEN LIST THIS.
           END IF.
       END IF.
-  END VERB.
+  END VERB esamina.
 
 
 
     VERB wear
 
     CHECK  genere OF THIS =  genere OF hero OR  genere OF THIS = 0
-      ELSE SAY check_clothing_sex OF mia_AT.
+      ELSE SAY  check_clothing_sex  OF mia_AT.
 
     DOES ONLY
 
@@ -664,15 +664,15 @@ EVERY indumento IsA OBJECT
       "You put on" SAY THE THIS. "."
     END IF.
 
-END VERB.
+END VERB wear.
 
 
 
 VERB remove
   CHECK THIS IN abbigliamento
-    ELSE SAY check_obj_in_worn OF mia_AT.
+    ELSE SAY  check_obj_in_worn  OF mia_AT.
   AND CURRENT LOCATION IS illuminato
-    ELSE SAY imp_luogo_buio OF mia_AT.
+    ELSE SAY  imp_luogo_buio  OF mia_AT.
 
   DOES ONLY
 
@@ -784,7 +784,7 @@ VERB remove
       EXCLUDE THIS FROM wearing OF hero.
       MAKE THIS NOT indossato.
   END IF.
-END VERB.
+END VERB remove.
 
 
 END EVERY.
@@ -992,7 +992,7 @@ EVERY dispositivo IsA OBJECT
         THEN "acces$$"
         ELSE "spent$$"
       END IF. SAY THIS:vocale. "."
-  END VERB.
+  END VERB esamina.
 
 
   VERB accendi --> turn_on
@@ -1000,24 +1000,24 @@ EVERY dispositivo IsA OBJECT
       ELSE
         IF THIS IS NOT plurale
 -->>                                                                            TRANSLATE
-          THEN SAY check_device_not_on_sg OF mia_AT.
-          ELSE SAY check_device_not_on_pl OF mia_AT.
+          THEN SAY  check_device_not_on_sg  OF mia_AT.
+          ELSE SAY  check_device_not_on_pl  OF mia_AT.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND THIS IS raggiungibile AND THIS IS NOT distante
       ELSE
         IF THIS IS NOT raggiungibile
           THEN
             IF THIS IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF THIS IS distante
           THEN
             IF THIS IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     AND THIS IS NOT rotto
@@ -1031,7 +1031,7 @@ EVERY dispositivo IsA OBJECT
       "acces$$" SAY THIS:vocale. "."
    -- "You turn on" SAY THE THIS. "."
       MAKE THIS acceso.
-  END VERB.
+  END VERB accendi.
 
 
   VERB spegni --> turn_off dispositivo
@@ -1039,24 +1039,24 @@ EVERY dispositivo IsA OBJECT
       ELSE
          IF THIS IS NOT plurale
 -->>                                                                            TRANSLATE
-          THEN SAY check_device_on_sg OF mia_AT.
-          ELSE SAY check_device_on_pl OF mia_AT.
+          THEN SAY  check_device_on_sg  OF mia_AT.
+          ELSE SAY  check_device_on_pl  OF mia_AT.
          END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY imp_luogo_buio OF mia_AT.
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND THIS IS raggiungibile AND THIS IS NOT distante
       ELSE
         IF THIS IS NOT raggiungibile
           THEN
             IF THIS IS NOT plurale
-              THEN SAY ogg1_non_raggiungibile_sg OF mia_AT.
-              ELSE SAY ogg1_non_raggiungibile_pl OF mia_AT.
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
             END IF.
         ELSIF THIS IS distante
           THEN
             IF THIS IS NOT plurale
-              THEN SAY ogg1_distante_sg OF mia_AT.
-              ELSE SAY ogg1_distante_pl OF mia_AT.
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
     DOES ONLY
@@ -1068,7 +1068,7 @@ EVERY dispositivo IsA OBJECT
       "spent$$" SAY THIS:vocale. "."
    -- "You turn off" SAY THE THIS. "."
       MAKE THIS NOT acceso.
-  END VERB.
+  END VERB spegni.
 
 END EVERY.
 
@@ -1175,7 +1175,7 @@ EVERY porta IsA OBJECT
         THEN "currently closed."
         ELSE "currently open."
       END IF.
-  END VERB.
+  END VERB esamina.
 
 
 
@@ -1190,7 +1190,7 @@ EVERY porta IsA OBJECT
           END IF.
 
       END IF.
-  END VERB.
+  END VERB knock.
 
 
 
@@ -1208,7 +1208,7 @@ EVERY porta IsA OBJECT
             ELSE "$$s."
           END IF.
       END IF.
-  END VERB.
+  END VERB look_behind.
 
 
 
@@ -1227,7 +1227,7 @@ EVERY porta IsA OBJECT
             ELSE "."
           END IF.
       END IF.
-  END VERB.
+  END VERB look_under.
 
 
 
@@ -1236,7 +1236,7 @@ EVERY porta IsA OBJECT
       IF altro_lato OF THIS <> porta_fittizia
         THEN MAKE altro_lato OF THIS NOT aperto.
       END IF.
-  END VERB.
+  END VERB chiudi.
 
 
   VERB blocca
@@ -1245,7 +1245,7 @@ EVERY porta IsA OBJECT
         THEN MAKE altro_lato OF THIS NOT aperto.
           MAKE altro_lato OF THIS bloccato.
       END IF.
-  END VERB.
+  END VERB blocca.
 
 
   VERB apri
@@ -1254,7 +1254,7 @@ EVERY porta IsA OBJECT
         THEN MAKE altro_lato OF THIS aperto.
           MAKE altro_lato OF THIS NOT bloccato.
       END IF.
-  END VERB.
+  END VERB apri.
 
 
   VERB sblocca
@@ -1262,7 +1262,7 @@ EVERY porta IsA OBJECT
       IF altro_lato OF THIS <> porta_fittizia
         THEN MAKE altro_lato OF THIS NOT bloccato.
       END IF.
-  END VERB.
+  END VERB sblocca.
 
 
 END EVERY.
@@ -1304,15 +1304,15 @@ EVERY fonte_di_luce IsA OBJECT
         THEN "acces$$"
         ELSE "spent$$"
       END IF. SAY THIS:vocale. "."
-  END VERB.
+  END VERB esamina.
 
 
   VERB accendi --> turn_on (fonte_di_luce)
     CHECK THIS IS NOT illuminato
       ELSE
         IF THIS IS NOT plurale
-          THEN SAY check_lightsource_not_lit_sg OF mia_AT.
-          ELSE SAY check_lightsource_not_lit_pl OF mia_AT.
+          THEN SAY  check_lightsource_not_lit_sg  OF mia_AT.
+          ELSE SAY  check_lightsource_not_lit_pl  OF mia_AT.
         END IF.
     AND THIS IS NOT rotto
       ELSE SAY mia_AT:non_succede_nulla.
@@ -1324,7 +1324,7 @@ EVERY fonte_di_luce IsA OBJECT
       END IF.
       "acces$$" SAY THIS:vocale. "."
       MAKE THIS illuminato.
-  END VERB.
+  END VERB accendi.
 
 
   VERB spegni --> extinguish fonte_di_luce
@@ -1332,8 +1332,8 @@ EVERY fonte_di_luce IsA OBJECT
       ELSE
         IF THIS IS NOT plurale
 -->>                                                                            TRANSLATE
-          THEN SAY check_lightsource_lit_sg OF mia_AT.
-          ELSE SAY check_lightsource_lit_pl OF mia_AT.
+          THEN SAY  check_lightsource_lit_sg  OF mia_AT.
+          ELSE SAY  check_lightsource_lit_pl  OF mia_AT.
         END IF.
     DOES ONLY
       "Fatto. Ora" SAY THE THIS.
@@ -1343,7 +1343,7 @@ EVERY fonte_di_luce IsA OBJECT
       END IF.
       "spent$$" SAY THIS:vocale. "."
       MAKE THIS NOT illuminato.
-  END VERB.
+  END VERB spegni.
 
 
 
@@ -1449,7 +1449,7 @@ EVERY liquido IsA OBJECT
           END IF.
         ELSE "You notice nothing unusual about" SAY THE THIS. "."
       END IF.
-  END VERB.
+  END VERB esamina.
 
 
   VERB look_in
@@ -1469,25 +1469,25 @@ EVERY liquido IsA OBJECT
           END IF.
         ELSE "You see nothing special in" SAY THE THIS. "."
       END IF.
-  END VERB.
+  END VERB look_in.
 
 -- @PRENDI -> @TAKE (VERB) => LIQUID
   VERB prendi
     CHECK recipiente OF THIS NOT IN hero
-      ELSE SAY check_obj_not_in_hero2 OF mia_AT.
+      ELSE SAY  check_obj_not_in_hero2  OF mia_AT.
     DOES ONLY
       IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT prendibile
         THEN "You can't carry" SAY THE THIS. "around in your bare hands."
       ELSE LOCATE recipiente OF THIS IN hero.
         "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nTaken."
       END IF.
-  END VERB.
+  END VERB prendi.
 
 -- @PRENDI_DA -> @TAKE_FROM (VERB) => LIQUID
   VERB prendi_da
      WHEN ogg
     CHECK detentore <> recipiente OF THIS
-      ELSE SAY check_liquid_vessel_not_cont OF mia_AT.
+      ELSE SAY  check_liquid_vessel_not_cont  OF mia_AT.
       -- the above is triggered when the player types for example
       -- >take juice from bottle   -- (when the juice is in the bottle)
     DOES ONLY
@@ -1496,7 +1496,7 @@ EVERY liquido IsA OBJECT
       ELSE LOCATE recipiente OF THIS IN hero.
         "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nTaken."
       END IF.
-  END VERB.
+  END VERB prendi_da.
 
 
   VERB lascia
@@ -1504,14 +1504,14 @@ EVERY liquido IsA OBJECT
       LOCATE recipiente OF THIS AT hero.
       "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nDropped."
 
-  END VERB.
+  END VERB lascia.
 
 
   VERB ask_for
     DOES ONLY
       LOCATE recipiente OF THIS IN hero.
       SAY THE png. "gives" SAY THE recipiente OF THIS. "of" SAY THIS. "to you."
-  END VERB.
+  END VERB ask_for.
 
 -- @DAI_A -> @GIVE (VERB) => LIQUID
   VERB dai_a
@@ -1538,7 +1538,7 @@ EVERY liquido IsA OBJECT
       -- there is no 'ELSE' statement in this last IF -clause, as the 'IF THIS NOT
       -- IN hero' clause above it takes care of the 'ELSE' alternative.
 
-  END VERB.
+  END VERB dai_a.
 
 
   VERB pour
@@ -1569,7 +1569,7 @@ EVERY liquido IsA OBJECT
             END IF.
       END IF.
 
-  END VERB.
+  END VERB pour.
 
 
   VERB pour_in
@@ -1610,7 +1610,7 @@ EVERY liquido IsA OBJECT
                 "closed."
             END IF.
         END IF.
-  END VERB.
+  END VERB pour_in.
 
 
   VERB pour_on
@@ -1643,7 +1643,7 @@ EVERY liquido IsA OBJECT
             ELSE "It wouldn't be sensible to pour anything on" SAY THE superficie.
             END IF.
         END IF.
-  END VERB.
+  END VERB pour_on.
 
 
   VERB riempi_con
@@ -1651,7 +1651,7 @@ EVERY liquido IsA OBJECT
     -- vessel of the liquid:
     WHEN sostanza
        DOES SET recipiente OF THIS TO cont.
-  END VERB.
+  END VERB riempi_con.
 
 
   VERB put_in
@@ -1700,7 +1700,7 @@ EVERY liquido IsA OBJECT
               "closed."
           END IF.
       END IF.
-  END VERB.
+  END VERB put_in.
 
 
   VERB put_on
@@ -1725,7 +1725,7 @@ EVERY liquido IsA OBJECT
         END IF.
     WHEN superficie
       DOES ONLY "It is not possible to $v" SAY ogg. "onto" SAY THE THIS. "."
-  END VERB.
+  END VERB put_on.
 
 
 
@@ -1741,12 +1741,12 @@ EVERY liquido IsA OBJECT
   VERB empty_in
     WHEN ogg
     DOES ONLY "You can only empty containers."
-  END VERB.
+  END VERB empty_in.
 
   VERB empty_on
     WHEN ogg
     DOES ONLY "You can only empty containers."
-  END VERB.
+  END VERB empty_on.
 
 
 END EVERY.
@@ -1816,7 +1816,7 @@ EVERY contenitore_elencato IsA OBJECT
         THEN LIST THIS.
         ELSE "Non puoi vedere dentro" SAY THE THIS. "."
       END IF.
-  END VERB.
+  END VERB esamina.
 
 
   VERB look_in
@@ -1825,7 +1825,7 @@ EVERY contenitore_elencato IsA OBJECT
         THEN LIST THIS.
         ELSE "Non puoi vedere dentro" SAY THE THIS. "."
       END IF.
-  END VERB.
+  END VERB look_in.
 
 
   VERB search
@@ -1834,7 +1834,7 @@ EVERY contenitore_elencato IsA OBJECT
         THEN LIST THIS.
         ELSE "Non puoi vedere dentro" SAY THE THIS. "."
       END IF.
-  END VERB.
+  END VERB search.
 
 
 -- ==============================
@@ -1872,7 +1872,7 @@ EVERY contenitore_elencato IsA OBJECT
           MAKE THIS NOT OPAQUE.
           LIST THIS.
       END IF.
-  END VERB.
+  END VERB apri.
 
 
   VERB apri_con
@@ -1882,7 +1882,7 @@ EVERY contenitore_elencato IsA OBJECT
           MAKE THIS NOT OPAQUE.
           LIST THIS.
       END IF.
-  END VERB.
+  END VERB apri_con.
 
 
   VERB chiudi, blocca
@@ -1891,7 +1891,7 @@ EVERY contenitore_elencato IsA OBJECT
         THEN
           MAKE THIS OPAQUE.
       END IF.
-  END VERB.
+  END VERB chiudi.
 
 
   VERB chiudi_con
@@ -1900,7 +1900,7 @@ EVERY contenitore_elencato IsA OBJECT
         THEN
            MAKE THIS OPAQUE.
       END IF.
-  END VERB.
+  END VERB chiudi_con.
 
   VERB blocca_con
     WHEN ogg DOES
@@ -1908,7 +1908,7 @@ EVERY contenitore_elencato IsA OBJECT
         THEN
           MAKE THIS OPAQUE.
       END IF.
-  END VERB.
+  END VERB blocca_con.
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1944,7 +1944,7 @@ EVERY suono IsA OBJECT
         ELSE "Those are not"
        END IF.
       "something you can smell."
-  END VERB.
+  END VERB smell.
 
 
 END EVERY.
@@ -1979,7 +1979,7 @@ EVERY supporto IsA OBJECT
   VERB esamina
     DOES
       LIST THIS.
-  END VERB.
+  END VERB esamina.
 
 
   -- in the following, we disable some verbs that are defined to work with normal containers:
@@ -1992,7 +1992,7 @@ EVERY supporto IsA OBJECT
         ELSE "Those are not"
       END IF.
       "something you can look into."
-  END VERB.
+  END VERB look_in.
 
 
   VERB empty_in, pour_in
@@ -2003,19 +2003,19 @@ EVERY supporto IsA OBJECT
         ELSE "Those are not"
       END IF.
       "something you can pour things into."
-  END VERB.
+  END VERB empty_in.
 
 
   VERB put_in
       WHEN cont
     DOES ONLY "Non puoi mettere nulla dentro" SAY THE THIS. "."
-  END VERB.
+  END VERB put_in.
 
 
   VERB throw_in
       WHEN cont
     DOES ONLY "Non puoi mettere nulla dentro" SAY THE THIS. "."
-  END VERB.
+  END VERB throw_in.
 
 
 END EVERY.
@@ -2085,13 +2085,13 @@ EVERY finestra IsA OBJECT
           END IF.
           "currently open."
       END IF.
-  END VERB.
+  END VERB esamina.
 
 
   VERB look_behind
     DOES ONLY
       "That's not possible."
-  END VERB.
+  END VERB look_behind.
 
 
   VERB look_out_of
@@ -2100,7 +2100,7 @@ EVERY finestra IsA OBJECT
           THEN "window."
           ELSE "windows."
         END IF.
-  END VERB.
+  END VERB look_out_of.
 
 
   VERB look_through
@@ -2109,7 +2109,7 @@ EVERY finestra IsA OBJECT
           THEN "window."
           ELSE "windows."
         END IF.
-  END VERB.
+  END VERB look_through.
 
 
 END EVERY.
@@ -2373,7 +2373,7 @@ ADD TO EVERY ACTOR
         THEN
           LIST THIS.
       END IF.
-  END VERB.
+  END VERB esamina.
 
 
 END ADD TO.
