@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.4.11 (2018/08/02)
+-- "lib_verbi.i" v0.4.12 (2018/08/02)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -140,7 +140,7 @@
 -->>> close       (+ shut)                                 close (obj)                         1       x
 -->>> close_with                                           close (obj) with (instr)            2       x
 ----- consult                                              consult (source) about (topic)      2
------ credits     (+ acknowledgments, author, copyright)   credits                             2
+----- credits     (+ acknowledgments, author, copyright)   credits                             0
 -->>> cut                                                  cut (obj)                           1       x
 -->>> cut_with                                             cut (obj) with (instr)              2       x
 -->>> dance                                                dance                               0
@@ -154,21 +154,21 @@
 ----- empty                                                empty (obj)                         1       x
 ----- empty_in                                             empty (obj) in (cont)               2       x
 ----- empty_on                                             empty (obj) on (surface)            2       x
------ enter                                                enter (obj)                         1
+----- enter                                                enter (obj)                         1       x
 -->>> examine     (+ check, inspect, observe, x)           examine (obj)                       1       x
------ exit                                                 exit (obj)                          1
+----- exit                                                 exit (obj)                          1       x
 --### extinguish  (+ put out, quench)                      extinguish (obj)                    1       x
 -->>> fill                                                 fill (cont)                         1
 -->>> fill_with                                            fill (cont) with (substance)        2
 -->>> find        (+ locate)                               find (obj)                          1       x
 ----- fire                                                 fire (weapon)                       1
------ fire_at                                              fire (weapon) at (target)           1
+----- fire_at                                              fire (weapon) at (target)           2
 -->>> fix         (+ mend, repair)                         fix (obj)                           1       x
 ----- follow                                               follow (act)                        1
 -->>> free        (+ release)                              free (obj)                          1       x
 ----- get_up                                               get up                              0
 ----- get_off                                              get off (obj)                       1       x
--->>> give                                                 give (obj) to (recipient)           1       x
+-->>> give                                                 give (obj) to (recipient)           2       x
 -->>> go_to                                                go to (dest)                        1
 ----- hint        (+ hints)                                hint                                0
 -->>> i           (+ inv, inventory)                       inventory                           0
@@ -220,6 +220,7 @@
 ----- put_near                                             put (obj) near (bulk)               2       x
 ----- put_on                                               put (obj) on (surface)              2       x
 ----- put_under                                            put (obj) under (bulk)              2       x
+-->>> quit        (+ q)                                    quit                                0
 -->>> read                                                 read (obj)                          1       x
 ----- remove                                               remove (obj)                        1       x
 -->>> restart                                              restart                             0
@@ -286,7 +287,7 @@
 -->>> where_am_i                                           where am i                          0
 -->>> where_is                                             where is (obj)                      1       x
 -->>> who_am_i                                             who am i                            0
--->>> who_is                                               who is (obj)                        1       x
+-->>> who_is                                               who is (act)                        1
 -->>> write                                                write (txt) on (obj)                2       x
 -->>> yes                                                  yes                                 0
 

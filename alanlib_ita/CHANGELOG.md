@@ -11,7 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/08/02](#20180802)
+- [2018/08/02 \(2\)](#20180802-2)
+- [2018/08/02 \(1\)](#20180802-1)
     - [Verbs: `kill` and `kill_with`](#verbs-kill-and-kill_with)
     - [Verbs: `touch` and `touch_with`](#verbs-touch-and-touch_with)
     - [Code Cleanup](#code-cleanup)
@@ -249,7 +250,18 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/08/02
+# 2018/08/02 (2)
+
+- [`lib_verbi.i`][lib_verbi] (v0.4.12)
+
+Fix English "Verbs List" in source comments.
+
+
+
+<!---------------------------------------------------------------------------->
+
+
+# 2018/08/02 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.4.5)
 - [`lib_luoghi.i`][lib_luoghi] (v0.4.1)
@@ -285,6 +297,10 @@ This commit tweaks the library source to increase code readability during work:
 
 - Add the verb ID after `END VERB`, in all verbs.
 - Add spacing around `mia_AT` attributes in SAY statements.
+
+
+
+<!---------------------------------------------------------------------------->
 
 
 # 2018/08/01 (4)
