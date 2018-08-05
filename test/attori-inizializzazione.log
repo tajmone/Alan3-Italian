@@ -1,0 +1,299 @@
+
+Provini Attori 
+Set cinematografici per effettuare test sugli attori. 
+(C) Tristano Ajmone, 2018. 
+Programmed with the ALAN Interactive Fiction Language v3.0 beta5
+Standard Library v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+Atrio Principale
+A NORDEST c'è una stanza piena di PNG con nomi propri.
+A NORDOVEST c'è una stanza piena di PNG senza nomi propri.
+
+> ; ==============================================================================
+> ;                         ATTRIBUTI PNG CON NOME PROPRIO                        
+> ; ==============================================================================
+> ; Verifichiamo la corretta inizializzazione degli attributi per l'italiano negli
+> ; attori con nome proprio.
+> nordest
+Sala dei Nomi Propri
+In questo set li attori hanno nomi propri.
+A OVEST c'è l'altro set.
+
+Mario is here. Maria is here. Romeo e Giuglietta is here. Thelma e Louise 
+is here.
+
+> debaca tutti
+(Mario) 
++------------------------------------------ 
+| NOME: Mario 
++------------------------------------------ 
+| HA NOME PROPRIO: Sì 
+| GENERE: maschio 
+| NUMERO: singolare 
+| ARTICOLO: il 
+| FORMA DETERMINATA:    Mario 
+| FORMA INDETERMINATA:  Mario 
+| VOCALE: o 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
++------------------------------------------
+
+(Maria) 
++------------------------------------------ 
+| NOME: Maria 
++------------------------------------------ 
+| HA NOME PROPRIO: Sì 
+| GENERE: femmina 
+| NUMERO: singolare 
+| ARTICOLO: la 
+| FORMA DETERMINATA:    Maria 
+| FORMA INDETERMINATA:  Maria 
+| VOCALE: a 
+| PREP. DI: della 
+| PREP. A:  alla 
+| PREP. DA: dalla 
+| PREP. IN: nella 
+| PREP. SU: sulla 
++------------------------------------------
+
+(Romeo e Giuglietta) 
++------------------------------------------ 
+| NOME: Romeo e Giuglietta 
++------------------------------------------ 
+| HA NOME PROPRIO: Sì 
+| GENERE: maschio 
+| NUMERO: singolare 
+| ARTICOLO: il 
+| FORMA DETERMINATA:    Romeo e Giuglietta 
+| FORMA INDETERMINATA:  Romeo e Giuglietta 
+| VOCALE: o 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
++------------------------------------------
+
+(Thelma e Louise) 
++------------------------------------------ 
+| NOME: Thelma e Louise 
++------------------------------------------ 
+| HA NOME PROPRIO: Sì 
+| GENERE: femmina 
+| NUMERO: singolare 
+| ARTICOLO: la 
+| FORMA DETERMINATA:    Thelma e Louise 
+| FORMA INDETERMINATA:  Thelma e Louise 
+| VOCALE: a 
+| PREP. DI: della 
+| PREP. A:  alla 
+| PREP. DA: dalla 
+| PREP. IN: nella 
+| PREP. SU: sulla 
++------------------------------------------
+
+(hero) 
++------------------------------------------ 
+| NOME: hero 
++------------------------------------------ 
+| HA NOME PROPRIO: No 
+| GENERE: maschio 
+| NUMERO: singolare 
+| ARTICOLO: il 
+| FORMA DETERMINATA:    il hero 
+| FORMA INDETERMINATA:  un hero 
+| VOCALE: o 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
++------------------------------------------
+
+> ; ==============================================================================
+> ;                        ATTRIBUTI PNG SENZA NOME PROPRIO                       
+> ; ==============================================================================
+> ; Ora verifichiamo l'inizializzazione dei medesimi attributi negli attori che
+> ; non hanno nome proprio. 
+> ovest
+Set Attori in Costume
+In questo set gli attori indossano costumi di personaggi, e non hanno
+nomi propri.
+A EST c'è l'altro set.
+
+There is un vampiro here. There is uno zombie here. There is un orco here. 
+There is una strega here. There is un arpia here. There are gemelli
+siamesi here. There are sciamani here. There are fate here.
+
+> debaca tutti
+(vampiro) 
++------------------------------------------ 
+| NOME: vampiro 
++------------------------------------------ 
+| HA NOME PROPRIO: No 
+| GENERE: maschio 
+| NUMERO: singolare 
+| ARTICOLO: il 
+| FORMA DETERMINATA:    il vampiro 
+| FORMA INDETERMINATA:  un vampiro 
+| VOCALE: o 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
++------------------------------------------
+
+(zombie) 
++------------------------------------------ 
+| NOME: zombie 
++------------------------------------------ 
+| HA NOME PROPRIO: No 
+| GENERE: maschio 
+| NUMERO: singolare 
+| ARTICOLO: lo 
+| FORMA DETERMINATA:    lo zombie 
+| FORMA INDETERMINATA:  uno zombie 
+| VOCALE: o 
+| PREP. DI: dello 
+| PREP. A:  allo 
+| PREP. DA: dallo 
+| PREP. IN: nello 
+| PREP. SU: sullo 
++------------------------------------------
+
+(orco) 
++------------------------------------------ 
+| NOME: orco 
++------------------------------------------ 
+| HA NOME PROPRIO: No 
+| GENERE: maschio 
+| NUMERO: singolare 
+| ARTICOLO: l' 
+| FORMA DETERMINATA:    l'orco 
+| FORMA INDETERMINATA:  un orco 
+| VOCALE: o 
+| PREP. DI: dell'
+| PREP. A:  all'
+| PREP. DA: dall'
+| PREP. IN: nell'
+| PREP. SU: sull'
++------------------------------------------
+
+(strega) 
++------------------------------------------ 
+| NOME: strega 
++------------------------------------------ 
+| HA NOME PROPRIO: No 
+| GENERE: femmina 
+| NUMERO: singolare 
+| ARTICOLO: la 
+| FORMA DETERMINATA:    la strega 
+| FORMA INDETERMINATA:  una strega 
+| VOCALE: a 
+| PREP. DI: della 
+| PREP. A:  alla 
+| PREP. DA: dalla 
+| PREP. IN: nella 
+| PREP. SU: sulla 
++------------------------------------------
+
+(arpia) 
++------------------------------------------ 
+| NOME: arpia 
++------------------------------------------ 
+| HA NOME PROPRIO: No 
+| GENERE: maschio 
+| NUMERO: singolare 
+| ARTICOLO: l' 
+| FORMA DETERMINATA:    l'arpia 
+| FORMA INDETERMINATA:  un arpia 
+| VOCALE: o 
+| PREP. DI: dell'
+| PREP. A:  all'
+| PREP. DA: dall'
+| PREP. IN: nell'
+| PREP. SU: sull'
++------------------------------------------
+
+(gemelli siamesi) 
++------------------------------------------ 
+| NOME: gemelli siamesi 
++------------------------------------------ 
+| HA NOME PROPRIO: No 
+| GENERE: maschio 
+| NUMERO: plurale 
+| ARTICOLO: i 
+| FORMA DETERMINATA:    i gemelli siamesi 
+| FORMA INDETERMINATA:  dei gemelli siamesi 
+| VOCALE: i 
+| PREP. DI: dei 
+| PREP. A:  ai 
+| PREP. DA: dai 
+| PREP. IN: nei 
+| PREP. SU: sui 
++------------------------------------------
+
+(sciamani) 
++------------------------------------------ 
+| NOME: sciamani 
++------------------------------------------ 
+| HA NOME PROPRIO: No 
+| GENERE: maschio 
+| NUMERO: plurale 
+| ARTICOLO: gli 
+| FORMA DETERMINATA:    gli sciamani 
+| FORMA INDETERMINATA:  degli sciamani 
+| VOCALE: i 
+| PREP. DI: degli 
+| PREP. A:  agli 
+| PREP. DA: dagli 
+| PREP. IN: negli 
+| PREP. SU: sugli 
++------------------------------------------
+
+(fate) 
++------------------------------------------ 
+| NOME: fate 
++------------------------------------------ 
+| HA NOME PROPRIO: No 
+| GENERE: femmina 
+| NUMERO: plurale 
+| ARTICOLO: le 
+| FORMA DETERMINATA:    le fate 
+| FORMA INDETERMINATA:  delle fate 
+| VOCALE: e 
+| PREP. DI: delle 
+| PREP. A:  alle 
+| PREP. DA: dalle 
+| PREP. IN: nelle 
+| PREP. SU: sulle 
++------------------------------------------
+
+(hero) 
++------------------------------------------ 
+| NOME: hero 
++------------------------------------------ 
+| HA NOME PROPRIO: No 
+| GENERE: maschio 
+| NUMERO: singolare 
+| ARTICOLO: il 
+| FORMA DETERMINATA:    il hero 
+| FORMA INDETERMINATA:  un hero 
+| VOCALE: o 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
++------------------------------------------
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

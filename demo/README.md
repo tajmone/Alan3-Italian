@@ -1,6 +1,10 @@
-# Tests Folder
+# Demo Folder
 
-Here is where all the testing takes places; for practical reasons all contents will be in Italian language.
+This folder will (eventually) contain a demo adventure using the Italian Stadard Library. Right now, it's just a messy adventure that was being used for testing purposes.
+
+For practical reasons all contents of this document will be in Italian language.
+
+> __NOTA__ — Al momento,i contenuti di questa cartella sono in fase di riorganizzazione. 
 
 
 -----
@@ -10,7 +14,6 @@ Here is where all the testing takes places; for practical reasons all contents w
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Introduzione](#introduzione)
-- [Avvertenza](#avvertenza)
 - [Contenuti](#contenuti)
 - [Prerequisiti](#prerequisiti)
 - [Compilare l'avventura dimostrativa](#compilare-lavventura-dimostrativa)
@@ -25,21 +28,19 @@ Here is where all the testing takes places; for practical reasons all contents w
 
 # Introduzione
 
-Per semplificare la manutenzione dei test, impiegherò una singola avventura dimostrativa di Alan ([`il_mondo_di_alan.alan`][mondo alan]) su cui eseguire tutti i test tramite script di comandi. Gli script producono file di log independenti tra loro, consentendo a ciascuno script di testare specifiche funzionalità in modo mirato.
+- [`il_mondo_di_alan.alan`][mondo alan]
 
-La demo è concepita appositamente per facilitare i vari tipi di test necessari.
+Quando sarà ultimata, _Il Mondo di Alan_ sarà un'avventura dimostrativa di Alan in italiano. Più che un gioco vero e proprio, sarà un _open world_ in cui poter provare la libreria standard italiana interagendo con un mondo narrativo studiato appositamente per offrire un assaggio delle potenzialità della libreria. 
+
+Durante le fasi iniziali del lavoro di traduzione, ho usato quella che doveva essere la demo per testare la libreria — era più pratico lavorare con un singolo sorgente che non tanti piccoli file da dover costantemente aggiornare man mando che venivano tradotti i termini della libreria.
+
+Di conseguenza, allo stato attuale _Il Mondo di Alan_ è soltanto un guazzabuglio caotico di stanze che sono state riempite a casaccio con oggetti e attori al solo fine di poter testare i vari verbi man mano che venivano tradotti.
+
+Ora che il grosso della libreria è stato già tradotto, ho creato una cartella dedicata ai test ([`../test/`][test]), e d'ora in avanti _Il Mondo di Alan_ sarà sviluppato come demo e non più come terreno per provare i comandi.
+
+Sono presenti in questa cartella vari script di comandi di gioco, usati per automatizzare differenti sessioni di gioco e salvarne su file la trascrizione. Gli script originali avevano lo scopo di testare le funzionalità della libreria, ma in futuro verranno sostituiti da sessioni di gioco esplorative, atte a produrre una trascrizione dimostrativa.
 
 Siccome il progetto è impostato affinché Git ignori i file delle avventure compilate, l'onere della compilazione dell'avventura dimostrativa ricade sull'utente finale (il quale dovrà inoltre assicurarsi di ricompilarla ogni volta che il sorgente viene aggiornato).
-
-# Avvertenza
-
-Poiché al momento mi sto concentrando sulla traduzione in italiano dei (molti) verbi e attributi della libreria, non mi è sempre possibile mantenere la demo al passo con tutti nuovi cambiamenti. Man mano che traduco un nuovo verbo (o altre funzionalità della libreria) aggiungo qualche oggetto al _Mondo di Alan_ al solo scopo di poter testare le nuove funzionalità. Questo implica che spesso vengono aggiunti all'avventura oggetti fuori contesto, con l'unica finalità di poter testare i verbi; il risultato è una demo un po' raffazzonata e di dubbia giocabilità.
-
-Per ovviare a questo, di tanto in tanto rimetterò mano all'intera demo, cercando di darle un forma compiuta che risulti sia utile ai test che gradevole da giocare. Detto questo, _Il Mondo di Alan_ non ambisce a diventare un'avventura gioco compiuta, sarà piuttosto una sorta di «parco giochi» in cui potersi muovere liberamente e saggiare le potenzialità di Alan Italian. 
-
-Altro punto degno di nota è che per poter testare le funzionalità di base della libreria è spesso necessario implementare oggetti «semplici» (ossia, evitando volutamente di personalizzare alcune risposte ai comandi predefiniti). Se da un lato questo semplifica i test della libreria, dall'altro costringe ad una demo dai tratti grezzi, laddove sarebbe invece possibile personalizzare il mondo dell'avventura rendendolo più realistico e colorato.
-
-Per ovviare a questo secondo iconveniente, in futuro creerò un'apposita cartella dedicata a testare le varie funzionalità della libreria tramite singoli sorgenti Alan, ciascuno focalizzato su un singolo aspetto da testare. Al momento questo approccio non è praticabile vista la rapidità con cui vengono tradotti i vari attributi e verbi — sarei costretto ad aggiornare troppi sorgenti ogni volta che vengono tradotti nuovi termini. Una volta tradotti tutti gli attributi ed i verbi principali, sicuramente ripiegherò su questo approccio, consentendo così al _Mondo di Alan_ di divenire una vera e propria demo in cui ogni oggetto è personalizzabile a tutto tondo.
 
 # Contenuti
 
@@ -48,7 +49,7 @@ Per ovviare a questo secondo iconveniente, in futuro creerò un'apposita cartell
 - [`ESEGUI.bat`][ESEGUI] — batch per eseguire uno script di comandi
 - [`AGGIORNA_TUTTO.bat`][AGGIORNA] — compila l'avventura ed esegue tutti gli script
 
-Script di comandi:
+Script di comandi (vecchi test):
 
 - [`comandi-risposte.script`](./comandi-risposte.script) — testa le risposte standard di vari verbi.
 - [`player_words.script`](./player_words.script) — testa l'implementazione italiana delle Player Words.
@@ -151,6 +152,7 @@ Options:
 ------------------------------------------------------------------------------>
 
 [mondo alan]: ./il_mondo_di_alan.alan
+[test]: ../test "Vai alla cartella 'test'"
 
 [COMPILA]: ./COMPILA.bat
 [ESEGUI]:  ./ESEGUI.bat

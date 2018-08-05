@@ -1,0 +1,14 @@
+; ==============================================================================
+;                         ATTRIBUTI PNG CON NOME PROPRIO                        
+; ==============================================================================
+; Verifichiamo la corretta inizializzazione degli attributi per l'italiano negli
+; attori con nome proprio.
+nordest
+debaca tutti
+; ==============================================================================
+;                        ATTRIBUTI PNG SENZA NOME PROPRIO                       
+; ==============================================================================
+; Ora verifichiamo l'inizializzazione dei medesimi attributi negli attori che
+; non hanno nome proprio. 
+ovest
+debaca tutti

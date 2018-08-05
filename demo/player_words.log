@@ -13,7 +13,7 @@ Ti trovi in una piazza spaziosa. Odi delle voci in lontananza. Puoi vedere
 una statua, una scatola, delle scatoline, uno scatolone, dei contenitori, 
 un corvo, una pozzanghera, una penna, un foglio di carta bianco, un libro
 antico, un sasso e una bottiglia qui. La bottiglia contiene dell'aranciata 
-e del latte.
+e del latte. Puoi vedere una radio qui.
 
 > ; ******************************************************************************
 > ; *                                                                            *
@@ -49,6 +49,10 @@ Prese.
 > ;                             Testiamo "TUTTO" ecc.                             
 > ; ==============================================================================
 > lascia TUTTO
+(pistola) Lasci la pistola.
+
+(coltello) Lasci il coltello.
+
 (magia) Lasci la magia.
 
 (pera) Lasci la pera.
