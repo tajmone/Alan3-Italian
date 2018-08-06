@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.4.5 (2018/08/02)
+-- "lib_classi.i" v0.4.6 (2018/08/06)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -418,21 +418,21 @@ EVERY indumento IsA OBJECT
     -- and NPCs:
 
     IF THIS IN abbigliamento
-      THEN INCLUDE THIS IN wearing OF hero.
+      THEN INCLUDE THIS IN indossati OF hero.
     END IF.
 
     FOR EACH ac IsA ACTOR
       DO
         IF ac = hero
           THEN
-            IF THIS IN wearing OF hero AND THIS <> indumento_fittizio
+            IF THIS IN indossati OF hero AND THIS <> indumento_fittizio
               THEN
                 IF THIS NOT IN abbigliamento
                   THEN LOCATE THIS IN abbigliamento.
                 END IF.
                 MAKE THIS indossato.
             END IF.
-        ELSIF THIS IN wearing OF ac AND THIS <> indumento_fittizio
+        ELSIF THIS IN indossati OF ac AND THIS <> indumento_fittizio
             THEN
               IF THIS NOT IN ac
                 THEN
@@ -660,7 +660,7 @@ EVERY indumento IsA OBJECT
     ELSE
       LOCATE THIS IN abbigliamento.
       MAKE THIS indossato.
-      INCLUDE THIS IN wearing OF hero.
+      INCLUDE THIS IN indossati OF hero.
       "You put on" SAY THE THIS. "."
     END IF.
 
@@ -781,7 +781,7 @@ VERB remove
     ELSE
       LOCATE THIS IN hero.
       "You take off" SAY THE THIS. "."
-      EXCLUDE THIS FROM wearing OF hero.
+      EXCLUDE THIS FROM indossati OF hero.
       MAKE THIS NOT indossato.
   END IF.
 END VERB remove.
@@ -821,7 +821,7 @@ END THE tempworn.
 EVENT worn_clothing_check
    FOR EACH ac IsA ACTOR
   DO
-    FOR EACH cl IsA indumento, IN wearing OF ac
+    FOR EACH cl IsA indumento, IN indossati OF ac
       DO
         IF ac = hero
           THEN
@@ -2128,23 +2128,24 @@ END EVERY.
 
 
 ADD TO EVERY ACTOR
-    IS NOT inanimato.
-    IS NOT following.
-    IS NOT seduto.   --> sitting
-    IS NOT sdraiato. --> lying_down
-    IS NOT named.
+    IS  NOT inanimato.                                      --> inanimate
+    IS  NOT seguendo.                                       --> following
+    IS  NOT seduto.                                         --> sitting
+    IS  NOT sdraiato.                                       --> lying_down
+    HAS NOT nome_proprio.                                   --> named
   -- = the actor's name is not known to the player
-  IS wearing { indumento_fittizio }.
+  HAS indossati { indumento_fittizio }.                     --> wearing
   -- = the actor's clothing is not specified.
   -- "null_clothing" is a dummy default that can be ignored.
-  IS NOT compliant.
+  IS NOT condiscendente.                                    --> compliant
   -- an actor only gives something to the hero if it is in a compliant mood.
   -- In practice, this happens by default when the hero asks the actor for anything.
   -- For example, implicit taking of objects is not successful if the object happens
   -- to be held by an NPC who is not compliant.
-  IS NOT prendibile.
+  IS NOT prendibile.                                        --> takeable
 
-  IS NOT present_actor.
+-- @NOTA: Questo attributo non viene menzionato in nessun altro posto: 
+  IS NOT present_actor.                                     --> present_actor   TRANSLATE!
 
 -- =============================
 -- @ARTICOLI PREDEFINITI (ACTOR)
@@ -2175,7 +2176,7 @@ ADD TO EVERY ACTOR
 
     DEFINITE ARTICLE
 
-    IF THIS IS named
+    IF THIS HAS nome_proprio
       THEN ""
       ELSE
         DEPENDING ON articolo of THIS
@@ -2207,7 +2208,7 @@ ADD TO EVERY ACTOR
 --  =========================
 --# codice originale inglese:
 --  =========================
-    -- IF THIS IS NOT named
+    -- IF THIS IS NOT nome_proprio
     --   THEN "the"
     --   ELSE ""
     -- END IF.
@@ -2218,7 +2219,7 @@ ADD TO EVERY ACTOR
 
     INDEFINITE ARTICLE
 
-    IF THIS IS named
+    IF THIS HAS nome_proprio
       THEN ""
       ELSE
         DEPENDING ON articolo of THIS
@@ -2254,7 +2255,7 @@ ADD TO EVERY ACTOR
 --  =========================
 --# codice originale inglese:
 --  =========================
-    -- IF THIS IS NOT named
+    -- IF THIS IS NOT nome_proprio
     --   THEN
     --     IF THIS IS NOT plural
     --       THEN "a"
@@ -2273,7 +2274,7 @@ ADD TO EVERY ACTOR
         THEN "You are carrying"
         ELSE
 
-          IF THIS IS NOT named
+          IF THIS HAS NOT nome_proprio
             THEN SAY THE THIS.
             ELSE SAY THIS.
           END IF.
@@ -2287,7 +2288,7 @@ ADD TO EVERY ACTOR
       IF THIS = hero
         THEN "You are empty-handed."
         ELSE
-          IF THIS IS NOT named
+          IF THIS HAS NOT nome_proprio
             THEN SAY THE THIS.
             ELSE SAY THIS.
           END IF.
@@ -2300,10 +2301,10 @@ ADD TO EVERY ACTOR
       END IF.
 
     EXTRACT
-      CHECK THIS IS compliant
+      CHECK THIS IS condiscendente
         ELSE
           "That seems to belong to"
-          IF THIS IS NOT named
+          IF THIS HAS NOT nome_proprio
             THEN SAY THE THIS.
             ELSE SAY THIS.
           END IF.
@@ -2313,13 +2314,13 @@ ADD TO EVERY ACTOR
 
     INITIALIZE
 
-    MAKE hero compliant.
+    MAKE hero condiscendente.
     -- so that the hero can give, drop, etc. carried objects.
 
 
     -- excluding the default dummy clothing object from all actors; ignore.
 
-    EXCLUDE indumento_fittizio FROM wearing OF THIS.
+    EXCLUDE indumento_fittizio FROM indossati OF THIS.
 
 
     -- all actors will obey this script from the start of the game:
@@ -2336,7 +2337,7 @@ ADD TO EVERY ACTOR
 
     STEP WAIT UNTIL hero NOT HERE
 
-      IF THIS IS following
+      IF THIS IS seguendo
         THEN
           LOCATE THIS AT hero.
           "$p" SAY THE THIS.
@@ -2353,7 +2354,7 @@ ADD TO EVERY ACTOR
   DESCRIPTION
     IF THIS IS scenario
       THEN "$$"
-    ELSIF THIS IS NOT named
+    ELSIF THIS HAS NOT nome_proprio
       THEN
         IF THIS IS NOT plurale
           THEN "There is" SAY AN THIS. "here."
@@ -2409,7 +2410,7 @@ EVERY persona IsA ACTOR
       END IF.
     ELSE
 
-      IF THIS IS NOT named
+      IF THIS HAS NOT nome_proprio
         THEN SAY THE THIS.
         ELSE SAY THIS.
       END IF.
@@ -2420,9 +2421,9 @@ EVERY persona IsA ACTOR
       END IF.
 
     EXTRACT
-      CHECK THIS IS compliant
+      CHECK THIS IS condiscendente
         ELSE "That seems to belong to"
-          IF THIS IS NOT named
+          IF THIS HAS NOT nome_proprio
             THEN SAY THE THIS.
             ELSE SAY THIS.
           END IF.

@@ -54,7 +54,7 @@ ADD TO EVERY ACTOR
       "$n| NOME: $1"
       "$n+------------------------------------------"
       "$n| HA NOME PROPRIO:$$"
-      IF THIS IS named
+      IF THIS HAS nome_proprio
         THEN " Sì"
         ELSE " No"
       END IF.
@@ -88,7 +88,7 @@ END ADD TO.
 -- attributi per l'italiano: la libreria deve occuparsi di inizializzarli una
 -- seconda volta (dopo l'avvenuta inizializzazione sulla classe THING) poiché
 -- la presenza del nome proprio richiede che vengano modificate le preposizioni
--- da articolate a semplici, affinché nei messaggi si legga:
+-- da articolate a semplici, affinchà nei messaggi si legga:
 --
 --    "Hai dato la palla A Marta."
 --
@@ -108,13 +108,13 @@ END THE.
 -- Maschile Singolare
 -- ==================
 THE Mario IsA maschio AT stanza1.
-  HAS named.
+  HAS nome_proprio.
 END THE.
 -- ===================
 -- Femminile Singolare
 -- ===================
 THE Maria IsA femmina AT stanza1.
-  HAS named.
+  HAS nome_proprio.
 END THE.
 -- ================
 -- Maschile Plurale
@@ -124,7 +124,7 @@ END THE.
 -- istanza, se anche solo uno di essi è maschile ci si dovrà riferire ad essi
 -- con il maschile.
 THE Romeo_Giulietta IsA maschio AT stanza1.
-  HAS named.
+  HAS nome_proprio.
   IS plurale.
   NAME 'Romeo e Giuglietta'.
   NAME Romeo.
@@ -135,7 +135,7 @@ END THE.
 -- Femminile Plurale
 -- =================
 THE Thelma_Louise IsA femmina AT stanza1.
-  HAS named.
+  HAS nome_proprio.
   IS plurale.
   NAME 'Thelma e Louise'.
   NAME Thelma.

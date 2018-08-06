@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.4.13 (2018/08/02)
+-- "lib_verbi.i" v0.4.14 (2018/08/06)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -3058,7 +3058,7 @@ ADD TO EVERY THING
               --> @TODO!!                                                       TRANSLATE!
               "You take off" SAY THE ogg. "and carry it in your hands."
               IF ogg IsA indumento
-                THEN EXCLUDE ogg FROM wearing OF hero.
+                THEN EXCLUDE ogg FROM indossati OF hero.
               END IF.
             ELSE LOCATE ogg IN hero.
               --@ "Taken." => "Pres[o|a|i|e]."
@@ -5131,12 +5131,12 @@ ADD TO EVERY ACTOR
             ELSE SAY  check_obj2_not_scenery_pl  OF mia_AT.
           END IF.
       DOES
-        MAKE png compliant.
+        MAKE png condiscendente.
         -- It is only possible to get something from an NPC
         -- if the NPC is 'compliant'.
         LOCATE ogg IN hero.
         SAY THE png. "gives" SAY THE ogg. "to you."
-        MAKE png NOT compliant.
+        MAKE png NOT condiscendente.
   END VERB ask_for.
 END ADD TO.
 

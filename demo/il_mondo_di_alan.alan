@@ -432,7 +432,7 @@ END THE voci.
 
 
 THE Gustavo IsA maschio AT mercato.
-  IS named.
+  HAS nome_proprio.
 END THE Gustavo.
 
 THE fruttivendolo IsA maschio AT mercato.

@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/08/06](#20180806)
+    - [Library Attributes](#library-attributes)
 - [2018/08/02 \(3\)](#20180802-3)
     - [Verb Responses](#verb-responses)
     - [Verbs: `tie` and `tie_to`](#verbs-tie-and-tie_to)
@@ -123,7 +125,7 @@ Status: Alpha stage.
 - [2018/07/25 \(1\)](#20180725-1)
     - [Clothing Attributes](#clothing-attributes)
 - [2018/07/24 \(5\)](#20180724-5)
-    - [Library Attributes](#library-attributes)
+    - [Library Attributes](#library-attributes-1)
     - [Library Classes](#library-classes-2)
     - [Library Instances](#library-instances-1)
 - [2018/07/24 \(4\)](#20180724-4)
@@ -252,6 +254,32 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/08/06
+
+- [`lib_classi.i`][lib_classi] (v0.4.6)
+- [`lib_verbi.i`][lib_verbi] (v0.4.14)
+
+
+## Library Attributes
+
+Translated library attributes related to ACTORs:
+
+|   English    |      Italian       |  Class  |              Type             |
+|--------------|--------------------|---------|-------------------------------|
+| `compliant`  | `condiscendente`   | `ACTOR` | boolean                       |
+| `following`  | `seguendo`         | `ACTOR` | boolean                       |
+| IS `named`   | HAS `nome_proprio` | `ACTOR` | boolean                       |
+| IS `wearing` | HAS `indossati`    | `ACTOR` | set of `clothing`/`indumento` |
+
+
+> __NOTE__ — There is still one untranslated ACTORs attribute left: `present_actor`; but this attribute doesn't appear anywhere in the library code except at its definition! (see [Issue #14])
+
+
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/08/02 (3)
 
@@ -3756,6 +3784,7 @@ The above changes had some side effects which required me to also change the Eng
 <!-- StdLib Issues & PRs ----------------------------------------------------->
 
 [Issue #8]: https://github.com/AnssiR66/AlanStdLib/issues/8
+[Issue #14]: https://github.com/AnssiR66/AlanStdLib/issues/14
 
 [PR #12 on StdLib]: https://github.com/AnssiR66/AlanStdLib/pull/12
 

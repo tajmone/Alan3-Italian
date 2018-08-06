@@ -532,7 +532,7 @@ VERB ask_for
     -- if the NPC is 'compliant'.
     LOCATE ogg IN hero.
     SAY THE png. "gives" SAY THE ogg. "to you."
-    MAKE png NOT compliant.
+    MAKE png NOT condiscendente.
 END VERB.
 
 

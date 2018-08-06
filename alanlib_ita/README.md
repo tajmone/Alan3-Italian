@@ -99,39 +99,44 @@ Attributes which are declared on (or inteded to be used with) multiple classes a
 
 ### Objects
 
-|      EN Class      |  EN Attribute  |      Translation       |           type           |
-|--------------------|----------------|------------------------|--------------------------|
-| `worn`             |                | `abbbigliamento`       | `ENTITY`                 |
-| `clothing`         |                | `indumento`            | `OBJECT`                 |
-|                    | `wearable`     | `indossabile`          | boolean                  |
-|                    | `sex`          | `genere`               | numeric                  |
-|                    | `headcover`    | `val_testa`            | numeric                  |
-|                    | `handscover`   | `val_mani`             | numeric                  |
-|                    | `feetcover`    | `val_piedi`            | numeric                  |
-|                    | `topcover`     | `val_tronco`           | numeric                  |
-|                    | `botcover`     | `val_gambe`            | numeric                  |
-|                    | `donned`       | `indossato`            | boolean                  |
-| `device`           |                | `dispositivo`          | `OBJECT`                 |
-| `door`             |                | `porta`                | `OBJECT`                 |
-|                    | `otherside`    | `altro_lato`           | ref to `door` instance   |
-|                    | `matching_key` | `chiave_abbinata`      | ref to `OBJECT` instance |
-|                    | `lockable`     | `bloccabile`           | boolean                  |
-|                    | `locked`       | `bloccato`             | boolean                  |
-| `lightsource`      |                | `fonte_di_luce`        | `OBJECT`                 |
-|                    | `lit`          | `illuminato`           | boolean                  |
-|                    | ~~`natural`~~      | ~~`naturale`~~             | boolean (_removed_)                  |
-| `liquid`           |                | `liquido`              | `OBJECT` + `CONTAINER`   |
-|                    | `vessel`       | `recipiente`           | ref to an instance       |
-| `LISTED_CONTAINER` |                | `contenitore_elencato` | `CONTAINER`              |
-| `sound`            |                | `suono`                | `OBJECT`                 |
-| `supporter`        |                | `supporto`             | `OBJECT`                 |
-| `weapon`           |                | `arma`                 | `OBJECT`                 |
-|                    | `fireable`     | CAN `sparare`          | boolean                  |
-| `window`           |                | `finestra`             | `OBJECT`                 |
-| `person`           |                | `persona`              | `ACTOR`                  |
-|                    | `talk`         | CAN `parlare`          | boolean                  |
-| `female`           |                | `maschio`              | `PERSON`                 |
-| `male`             |                | `femmina`              | `PERSON`                 |
+|      EN Class      |   EN Attribute  |      Translation       |           type           |
+|--------------------|-----------------|------------------------|--------------------------|
+| `worn`             |                 | `abbbigliamento`       | `ENTITY`                 |
+| `clothing`         |                 | `indumento`            | `OBJECT`                 |
+|                    | `wearable`      | `indossabile`          | boolean                  |
+|                    | `sex`           | `genere`               | numeric                  |
+|                    | `headcover`     | `val_testa`            | numeric                  |
+|                    | `handscover`    | `val_mani`             | numeric                  |
+|                    | `feetcover`     | `val_piedi`            | numeric                  |
+|                    | `topcover`      | `val_tronco`           | numeric                  |
+|                    | `botcover`      | `val_gambe`            | numeric                  |
+|                    | `donned`        | `indossato`            | boolean                  |
+| `device`           |                 | `dispositivo`          | `OBJECT`                 |
+| `door`             |                 | `porta`                | `OBJECT`                 |
+|                    | `otherside`     | `altro_lato`           | ref to `door` instance   |
+|                    | `matching_key`  | `chiave_abbinata`      | ref to `OBJECT` instance |
+|                    | `lockable`      | `bloccabile`           | boolean                  |
+|                    | `locked`        | `bloccato`             | boolean                  |
+| `lightsource`      |                 | `fonte_di_luce`        | `OBJECT`                 |
+|                    | `lit`           | `illuminato`           | boolean                  |
+|                    | ~~`natural`~~   | ~~`naturale`~~         | boolean (_removed_)      |
+| `liquid`           |                 | `liquido`              | `OBJECT` + `CONTAINER`   |
+|                    | `vessel`        | `recipiente`           | ref to an instance       |
+| `LISTED_CONTAINER` |                 | `contenitore_elencato` | `CONTAINER`              |
+| `sound`            |                 | `suono`                | `OBJECT`                 |
+| `supporter`        |                 | `supporto`             | `OBJECT`                 |
+| `weapon`           |                 | `arma`                 | `OBJECT`                 |
+|                    | `fireable`      | CAN `sparare`          | boolean                  |
+| `window`           |                 | `finestra`             | `OBJECT`                 |
+| `person`           |                 | `persona`              | `ACTOR`                  |
+|                    | `compliant`     | `condiscendente`       | boolean                  |
+|                    | `following`     | `seguendo`             | boolean                  |
+|                    | IS `named`      | HAS `nome_proprio`     | boolean                  |
+| _untranslated_     | `present_actor` | `XXXX`                 | boolean                  |
+|                    | CAN `talk`      | CAN `parlare`          | boolean                  |
+|                    | IS `wearing`    | HAS `indossati`        | set of `indumento`       |
+| `female`           |                 | `maschio`              | `PERSON`                 |
+| `male`             |                 | `femmina`              | `PERSON`                 |
 
 
 #### Opening and Locking
