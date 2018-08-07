@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.4.6 (2018/08/06)
+-- "lib_classi.i" v0.4.7 (2018/08/06)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -2126,13 +2126,20 @@ END EVERY.
 
 -- First, we declare some common characteristics for all actors:
 
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 2.1 - Attributi Comuni
+--------------------------------------------------------------------------------
+--==============================================================================
+-- Aggiungiamo alla classe degli attori degli attributi comuni a tutti i tipi di
+-- attori e le sue sottoclassi.
 
 ADD TO EVERY ACTOR
-    IS  NOT inanimato.                                      --> inanimate
-    IS  NOT seguendo.                                       --> following
-    IS  NOT seduto.                                         --> sitting
-    IS  NOT sdraiato.                                       --> lying_down
-    HAS NOT nome_proprio.                                   --> named
+  IS  NOT inanimato.                                        --> inanimate
+  IS  NOT seguendo.                                         --> following
+  IS  NOT seduto.                                           --> sitting
+  IS  NOT sdraiato.                                         --> lying_down
+  HAS NOT nome_proprio.                                     --> named
   -- = the actor's name is not known to the player
   HAS indossati { indumento_fittizio }.                     --> wearing
   -- = the actor's clothing is not specified.
@@ -2147,187 +2154,79 @@ ADD TO EVERY ACTOR
 -- @NOTA: Questo attributo non viene menzionato in nessun altro posto: 
   IS NOT present_actor.                                     --> present_actor   TRANSLATE!
 
--- =============================
--- @ARTICOLI PREDEFINITI (ACTOR)
--- =============================
--- Valgono qui le stesse regole per gli oggetti tranne quando l'attore ha un
--- nome proprio, nel qual caso DEINITE/INDEFINITE ARTICLE dovranno avere una
--- stringa vuota. La presenza dello IF statement ci costringe a ripetere qui il
--- codice usato in "lib_definizioni.i" per definire ARTICLE, altrimenti i valori
--- di default verrebbero sovrascritti da una stringa nulla. Invece, per quanto
--- riguarda le preposizioni, il genere ed il numero, gli attori erediteranno da
--- THING i valori correttamente impostati dalla libreria.
-
--- @NOTA: Devo ancora controllare alcune cose su come la libreria originale
---        gestisce gli ACTOR:
---
---        (2) La questione degli articoli predefiniti va considerata meglio,
---            esempi pratici alla mano, specie per quanto riguarda i plurali:
---             * quali sono i casi plurali contemplati dall'inglese?
---             * perché gli attori plurali non vogliono mai l'articolo?
---        (3) Devo controllare se devo intervenire diversamente su ACTOR, PERSON,
---            MALE e FEMALE.
---        (4) Devo rivedere prima i PRONOUN di MALE e FEMALE, e capire se e come
---            questi possano essere tradotti in italiano.
-
--- -----------------------
--- @ARTICOLI DETERMINATIVI
--- -----------------------
-
-    DEFINITE ARTICLE
-
-    IF THIS HAS nome_proprio
-      THEN ""
+  CONTAINER
+  -- so that actors can receive and carry objects
+  HEADER
+    IF THIS = hero
+      THEN "You are carrying"
       ELSE
-        DEPENDING ON articolo of THIS
-          = "il"  THEN   "il"               --> ms indet.
-          = "lo"  THEN   "lo"               --> ms indet.
-          = "la"  THEN   "la"               --> fs indet.
 
-          = "l'"  THEN   "l'$$"             --> *s det.  (masc & femm)
+        IF THIS HAS NOT nome_proprio
+          THEN SAY THE THIS.
+          ELSE SAY THIS.
+        END IF.
 
-          = "i"   THEN   "i"                --> mp det.
-          = "gli" THEN   "gli"              --> mp det.
-          = "le"  THEN   "le"               --> fp det.
-
-          ELSE -- se non è definito
-            IF THIS IS NOT femminile
-            THEN
-              IF THIS IS NOT plurale
-                  THEN   "il"               --> ms det.
-                  ELSE   "i"                --> mp det.
-              END IF.
-            ELSE
-              IF THIS IS NOT plurale
-                  THEN   "la"               --> fs det.
-                  ELSE   "le"               --> fp det.
-              END IF.
-            END IF.
-        END DEPEND.
+        IF THIS IS NOT plurale
+          THEN "is carrying"
+          ELSE "are carrying"
+        END IF.
     END IF.
---  =========================
---# codice originale inglese:
---  =========================
-    -- IF THIS IS NOT nome_proprio
-    --   THEN "the"
-    --   ELSE ""
-    -- END IF.
-
--- -------------------------
--- @ARTICOLI INDETERMINATIVI
--- -------------------------
-
-    INDEFINITE ARTICLE
-
-    IF THIS HAS nome_proprio
-      THEN ""
+  ELSE
+    IF THIS = hero
+      THEN "You are empty-handed."
       ELSE
-        DEPENDING ON articolo of THIS
-          = "il"  THEN   "un"               --> ms indet.
-          = "lo"  THEN   "uno"              --> ms indet.
-          = "la"  THEN   "una"              --> fs indet.
+        IF THIS HAS NOT nome_proprio
+          THEN SAY THE THIS.
+          ELSE SAY THIS.
+        END IF.
 
-          = "l'"  THEN
-            IF THIS IS NOT femminile
-                  THEN   "un"               --> ms indet.
-                  ELSE   "un'$$"            --> fs indet.
-            END IF.
+        IF THIS IS NOT plurale
+          THEN "is not carrying anything."
+          ELSE "are not carrying anything."
+        END IF.
 
-          = "i"   THEN   "dei"              --> mp indet.
-          = "gli" THEN   "degli"            --> mp indet.
-          = "le"  THEN   "delle"            --> fp indet.
-
-          ELSE -- se non è definito
-            IF THIS IS NOT femminile
-            THEN
-              IF THIS IS NOT plurale
-                  THEN   "un"               --> ms indet.
-                  ELSE   "dei"              --> mp indet.
-              END IF.
-            ELSE
-              IF THIS IS NOT plurale
-                  THEN   "una"              --> fs indet.
-                  ELSE   "delle"            --> fp indet.
-              END IF.
-            END IF.
-        END DEPEND.
     END IF.
---  =========================
---# codice originale inglese:
---  =========================
-    -- IF THIS IS NOT nome_proprio
-    --   THEN
-    --     IF THIS IS NOT plural
-    --       THEN "a"
-    --       ELSE ""
-    --     END IF.
-    --   ELSE ""
-    -- END IF.
 
-  -- if you need "an", you must declare it separately at the actor instance
-
-
-    CONTAINER
-    -- so that actors can receive and carry objects
-    HEADER
-      IF THIS = hero
-        THEN "You are carrying"
-        ELSE
-
-          IF THIS HAS NOT nome_proprio
-            THEN SAY THE THIS.
-            ELSE SAY THIS.
-          END IF.
-
-          IF THIS IS NOT plurale
-            THEN "is carrying"
-            ELSE "are carrying"
-          END IF.
-      END IF.
-    ELSE
-      IF THIS = hero
-        THEN "You are empty-handed."
-        ELSE
-          IF THIS HAS NOT nome_proprio
-            THEN SAY THE THIS.
-            ELSE SAY THIS.
-          END IF.
-
-          IF THIS IS NOT plurale
-            THEN "is not carrying anything."
-            ELSE "are not carrying anything."
-          END IF.
-
-      END IF.
-
-    EXTRACT
-      CHECK THIS IS condiscendente
-        ELSE
-          "That seems to belong to"
-          IF THIS HAS NOT nome_proprio
-            THEN SAY THE THIS.
-            ELSE SAY THIS.
-          END IF.
+  EXTRACT
+    CHECK THIS IS condiscendente
+      ELSE
+        "That seems to belong to"
+        IF THIS HAS NOT nome_proprio
+          THEN SAY THE THIS.
+          ELSE SAY THIS.
+        END IF.
           "."
 
+  VERB esamina
+    DOES AFTER
+      IF THIS <> hero
+        THEN
+          LIST THIS.
+      END IF.
+  END VERB esamina.
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 2.2 - Inizializzazione degli Attori
+--------------------------------------------------------------------------------
+--==============================================================================
+
+  INITIALIZE
+
+  MAKE hero condiscendente.
+  -- so that the hero can give, drop, etc. carried objects.
 
 
-    INITIALIZE
+  -- excluding the default dummy clothing object from all actors; ignore.
 
-    MAKE hero condiscendente.
-    -- so that the hero can give, drop, etc. carried objects.
-
-
-    -- excluding the default dummy clothing object from all actors; ignore.
-
-    EXCLUDE indumento_fittizio FROM indossati OF THIS.
+  EXCLUDE indumento_fittizio FROM indossati OF THIS.
 
 
-    -- all actors will obey this script from the start of the game:
+  -- all actors will obey this script from the start of the game:
 
-    IF THIS <> hero
-      THEN USE SCRIPT following_hero FOR THIS.
-    END IF.
+  IF THIS <> hero
+    THEN USE SCRIPT following_hero FOR THIS.
+  END IF.
 
 
 
@@ -2368,26 +2267,273 @@ ADD TO EVERY ACTOR
     END IF.
 
 
-  VERB esamina
-    DOES AFTER
-      IF THIS <> hero
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 2.3 - Inizializzazione di Genere, Numero e Preposizioni Articolate
+--------------------------------------------------------------------------------
+--==============================================================================
+-- Valgono qui le stesse regole per gli oggetti tranne quando l'attore ha un
+-- nome proprio: in tal caso DEINITE/INDEFINITE ARTICLE dovranno essere stringhe
+-- vuote, e le preposizioni dovranno essere semplici anziché articolate.
+-- Questo al fine di visualizzare correttamente le risposte dei verbi quando un
+-- parametro è un attore con nome proprio, esempio:
+--
+--    "Hai dato la palla A Maria"
+--
+-- e non:
+--
+--    "Hai dato la palla ALLA Maria"
+-- 
+-- La presenza dello IF statement ci costringe a ripetere qui il
+-- codice usato in "lib_definizioni.i" per definire ARTICLE, altrimenti i valori
+-- di default verrebbero sovrascritti da una stringa nulla. Invece, per quanto
+-- riguarda le preposizioni, il genere ed il numero, gli attori erediteranno da
+-- THING i valori correttamente impostati dalla libreria.
+
+-- @TODO: Devo ancora controllare alcune cose su come la libreria originale
+--        gestisce gli ACTOR:
+--
+--        (2) La questione degli articoli predefiniti va considerata meglio,
+--            esempi pratici alla mano, specie per quanto riguarda i plurali:
+--             * quali sono i casi plurali contemplati dall'inglese?
+--             * perché gli attori plurali non vogliono mai l'articolo?
+--        (3) Devo controllare se devo intervenire diversamente su ACTOR, PERSON,
+--            MALE e FEMALE.
+--        (4) Devo rivedere prima i PRONOUN di MALE e FEMALE, e capire se e come
+--            questi possano essere tradotti in italiano.
+--        (5) Potrei creare altre due sottoclassi di PERSONA, per le varianti
+--            plurali di attori maschili e femminili:
+--             * MASCHI  : IS NOT femminile.  IS plurale.
+--             * FEMMINE : IS femminile.      IS plurale.
+--        (6) HERO: devo controllare che venga inizializzato a dovere per la
+--            la lingua italiana, e assicurarmi che sia un attore maschile di
+--            default, ma vorrei anche fare in modo che sia possibile crare un
+--            hero femminile, e che questi venga inizializzazo correttamente
+--            (sinomini, ecc.).
+
+-- In base all'articolo specificato possiamo dedurre (e settare) genere e
+-- numero dell'istanza.
+
+
+
+--==============================================================================
+-- § 2.3.1 - Attori con Nome Proprio
+--==============================================================================
+--| Se l'attore ha nome proprio, verrà inizializzato ad hoc.
+  IF THIS HAS nome_proprio
+    THEN
+      -- Stabilisci quale vocale impostare per l'accordo degli aggettivi:
+      IF THIS IS NOT femminile
         THEN
-          LIST THIS.
+          IF THIS IS NOT plurale
+            THEN SET vocale  OF THIS TO "o". --> ms
+            ELSE SET vocale  OF THIS TO "i". --> mp
+          END IF.
+        ELSE
+          IF THIS IS NOT plurale
+            THEN SET vocale  OF THIS TO "a". --> fs
+            ELSE SET vocale  OF THIS TO "e". --> fp
+          END IF.
       END IF.
-  END VERB esamina.
+      -- Imposta le preposizioni semplici, anziché articolate:
+      SET prep_DI OF THIS TO "di".
+      SET prep_A  OF THIS TO  "a".
+      SET prep_DA OF THIS TO "da".
+      SET prep_IN OF THIS TO "in".
+      SET prep_SU OF THIS TO "su".
+
+--==============================================================================
+-- § 2.3.2 - Attori Senza Nome Proprio
+--==============================================================================
+    ELSE
+--| Se l'attore non ha nome proprio, verrà inizializzato come gli altri oggetti
+--| (si tratta di un sostantivo a tutti gli effetti).
+      IF THIS IS femminile               --| Questo è necessario per coprire il caso
+        THEN SET vocale  OF THIS TO "a". --| in cui 'articolo' = "l'", prima che il
+      END IF.                            --| codice seguente venga eseguito!
+
+      DEPENDING ON articolo of THIS
+        = "lo" THEN
+          MAKE THIS NOT femminile.
+          MAKE THIS NOT plurale.
+          SET vocale  OF THIS TO "o".
+          SET prep_DI OF THIS TO "dello".
+          SET prep_A  OF THIS TO  "allo".
+          SET prep_DA OF THIS TO "dallo".
+          SET prep_IN OF THIS TO "nello".
+          SET prep_SU OF THIS TO "sullo".
+
+        = "la" THEN
+          MAKE THIS femminile.
+          MAKE THIS NOT plurale.
+          SET vocale  OF THIS TO "a".
+          SET prep_DI OF THIS TO "della".
+          SET prep_A  OF THIS TO  "alla".
+          SET prep_DA OF THIS TO "dalla".
+          SET prep_IN OF THIS TO "nella".
+          SET prep_SU OF THIS TO "sulla".
+
+        = "l'" THEN              --| In questo caso non alteriamo il genere poiché
+          MAKE THIS NOT plurale. --| questa forma può essere sia masch. che femm.
+                                 --| Sta all'autore specificare il genere nell'istanza.
+          SET prep_DI OF THIS TO "dell'$$".
+          SET prep_A  OF THIS TO  "all'$$".
+          SET prep_DA OF THIS TO "dall'$$".
+          SET prep_IN OF THIS TO "nell'$$".
+          SET prep_SU OF THIS TO "sull'$$".
+
+        = "i" THEN
+          MAKE THIS NOT femminile.
+          MAKE THIS plurale.
+          SET vocale  OF THIS TO "i".
+          SET prep_DI OF THIS TO "dei".
+          SET prep_A  OF THIS TO  "ai".
+          SET prep_DA OF THIS TO "dai".
+          SET prep_IN OF THIS TO "nei".
+          SET prep_SU OF THIS TO "sui".
+
+        = "gli" THEN
+          MAKE THIS NOT femminile.
+          MAKE THIS plurale.
+          SET vocale  OF THIS TO "i".
+          SET prep_DI OF THIS TO "degli".
+          SET prep_A  OF THIS TO  "agli".
+          SET prep_DA OF THIS TO "dagli".
+          SET prep_IN OF THIS TO "negli".
+          SET prep_SU OF THIS TO "sugli".
+
+        = "le" THEN
+          MAKE THIS femminile.
+          MAKE THIS plurale.
+          SET vocale  OF THIS TO "e".
+          SET prep_DI OF THIS TO "delle".
+          SET prep_A  OF THIS TO  "alle".
+          SET prep_DA OF THIS TO "dalle".
+          SET prep_IN OF THIS TO "nelle".
+          SET prep_SU OF THIS TO "sulle".
+
+        ELSE -- = "il" (o dovrebbe esserlo)
+          MAKE THIS NOT femminile.
+          MAKE THIS NOT plurale.
+          SET prep_DI OF THIS TO "del".
+          SET prep_A  OF THIS TO  "al".
+          SET prep_DA OF THIS TO "dal".
+          SET prep_IN OF THIS TO "nel".
+          SET prep_SU OF THIS TO "sul".
+
+      END DEPEND.
+  END IF.
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 2.4 - Inizializzazione Articoli Indeterminativi
+--------------------------------------------------------------------------------
+--==============================================================================
+  INDEFINITE ARTICLE
+--==============================================================================
+-- § 2.4.1 - Attori con Nome Proprio
+--==============================================================================
+  IF THIS HAS nome_proprio
+    THEN ""
+    ELSE
+--==============================================================================
+-- § 2.4.2 - Attori Senza Nome Proprio
+--==============================================================================
+      DEPENDING ON articolo of THIS
+        = "il"  THEN   "un"               --> ms indet.
+        = "lo"  THEN   "uno"              --> ms indet.
+        = "la"  THEN   "una"              --> fs indet.
+
+        = "l'"  THEN
+          IF THIS IS NOT femminile
+                THEN   "un"               --> ms indet.
+                ELSE   "un'$$"            --> fs indet.
+          END IF.
+
+        = "i"   THEN   "dei"              --> mp indet.
+        = "gli" THEN   "degli"            --> mp indet.
+        = "le"  THEN   "delle"            --> fp indet.
+
+        ELSE -- se non è definito
+          IF THIS IS NOT femminile
+          THEN
+            IF THIS IS NOT plurale
+                THEN   "un"               --> ms indet.
+                ELSE   "dei"              --> mp indet.
+            END IF.
+          ELSE
+            IF THIS IS NOT plurale
+                THEN   "una"              --> fs indet.
+                ELSE   "delle"            --> fp indet.
+            END IF.
+          END IF.
+      END DEPEND.
+  END IF.
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 2.5 - Inizializzazione Articoli Determinativi
+--------------------------------------------------------------------------------
+--==============================================================================
+  DEFINITE ARTICLE
+--==============================================================================
+-- § 2.5.1 - Attori con Nome Proprio
+--==============================================================================
+  IF THIS HAS nome_proprio
+    THEN ""
+    ELSE
+--==============================================================================
+-- § 2.5.2 - Attori Senza Nome Proprio
+--==============================================================================
+      DEPENDING ON articolo of THIS
+        = "il"  THEN   "il"               --> ms indet.
+        = "lo"  THEN   "lo"               --> ms indet.
+        = "la"  THEN   "la"               --> fs indet.
+
+        = "l'"  THEN   "l'$$"             --> *s det.  (masc & femm)
+
+        = "i"   THEN   "i"                --> mp det.
+        = "gli" THEN   "gli"              --> mp det.
+        = "le"  THEN   "le"               --> fp det.
+
+        ELSE -- se non è definito
+          IF THIS IS NOT femminile
+          THEN
+            IF THIS IS NOT plurale
+                THEN   "il"               --> ms det.
+                ELSE   "i"                --> mp det.
+            END IF.
+          ELSE
+            IF THIS IS NOT plurale
+                THEN   "la"               --> fs det.
+                ELSE   "le"               --> fp det.
+            END IF.
+          END IF.
+      END DEPEND.
+  END IF.
+
+END ADD TO ACTOR.
 
 
-END ADD TO.
 
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- § x - Oggetti Fittizi
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § x.x - Indumento Fittizio
+--------------------------------------------------------------------------------
+--==============================================================================
 
 -- the default dummy clothing object; ignore
 
 THE indumento_fittizio IsA indumento
 END THE.
-
-
-
-
 
 -- ================================================================
 
@@ -2443,12 +2589,12 @@ END EVERY.
 
 -- ================================================================
 
-
 -- MALE and FEMALE are actually subclasses of PERSON, so they both
 -- have the ability to talk.
 
 
 EVERY femmina IsA persona
+  IS femminile.
   PRONOUN her
   HAS articolo "la".
 
@@ -2456,6 +2602,7 @@ END EVERY.
 
 
 EVERY maschio IsA persona
+  IS NOT femminile.
   PRONOUN him
   HAS articolo "il".
 END EVERY.

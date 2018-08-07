@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.4.10 (2018/08/02)
+-- "lib_definizioni.i" v0.4.11 (2018/08/06)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -82,7 +82,7 @@ ADD TO EVERY ENTITY
   IS NOT plurale.
   IS NOT femminile.
 
-END ADD TO.
+END ADD TO ENTITY.
 
 
 -- ================
@@ -223,16 +223,30 @@ ADD TO EVERY THING
 
   HAS vocale "o".
 
+END ADD TO THING.
+
 --==============================================================================
 --------------------------------------------------------------------------------
 -- § x.x - Inizializzazione di Genere, Numero e Preposizioni Articolate
 --------------------------------------------------------------------------------
 --==============================================================================
-
-  -- In base all'articolo specificato possiamo dedurre (e settare) genere e
-  -- numero dell'istanza.
+-- In questo modulo inizializzeremo solo le istanze di OBJECT, e lasceremo al
+-- modulo "lib_classi.i" l'onore di inizializzare le instanze di ACTOR. Questa
+-- separazione è necessaria per via del fatto che gli attori possono avere nome
+-- proprio, e in tal caso devono avere le stringhe degli articoli nulle, e usare
+-- preposizioni semplici anziché articolate.
+-- 
+-- La libreria originale inizializzava numero e articoli in EVERY THING, ma nel
+-- nostro caso questo comprometterebbe gli attributi definiti dall'utente sugli
+-- attori, dato che la classe THING ha la precedenza gerarchica su ACTOR, e dato
+-- che l'inizializzazione basata sull'articolo modifica anche il genere ed il
+-- numero dell'istanza in base ad esso.
+ADD TO EVERY OBJECT
 
   INITIALIZE
+
+-- In base all'articolo specificato possiamo dedurre (e settare) genere e
+-- numero dell'istanza.
 
   IF THIS IS femminile               --| Questo è necessario per coprire il caso
     THEN SET vocale  OF THIS TO "a". --| in cui 'articolo' = "l'", prima che il
@@ -387,7 +401,7 @@ ADD TO EVERY THING
         END IF.
     END DEPEND.
 
-END ADD TO.
+END ADD TO OBJECT.
 
 -- If you need "an", you should declare it separately at the instance, for example:
 

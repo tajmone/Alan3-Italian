@@ -10,13 +10,20 @@ Some pending tasks that need to be done.
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Locations in Verb Responses](#locations-in-verb-responses)
-- [Preposizioni Articolate of ACTORS](#preposizioni-articolate-of-actors)
+- [Hero Settings and Customization](#hero-settings-and-customization)
+    - [Female Hero](#female-hero)
+- [Pronouns](#pronouns)
+- [Library Messages](#library-messages)
 
 <!-- /MarkdownTOC -->
 
 -----
 
 # Locations in Verb Responses
+
+This topic is the subject of a very long discussion thread on Alan IF Yahoo group:
+
+- https://groups.yahoo.com/neo/groups/alan-if/conversations/messages/3474
 
 Currently, when verbs are given a LOCATION as a parameter they produce a malformed message when referencing the parameter with `$+1`.
 
@@ -45,18 +52,42 @@ So, I'll have to think about how to fix this. Possible solutions:
 
 All these solutions have pros and cons, and they tend to add overhead. But the problem has to be handled somehow, so I need to think about it well before implementing it.
 
-# Preposizioni Articolate of ACTORS
+Currently, the best solution seems __solution 1__: adding a conditional statement to produce a different response if parameter is a LOCATION. The number of verbs that use "!" is rather small, so this is the simplest solution to the problem right now. But __solution 3__ could also be employed, together with the former, as a security measure (not sure about its implications on authors).
 
-When initializing articles and prepositions, I must also ensure that for named actors the preposizioni articolare are set to the base preposition without article, othersiwe I'll get responses like this:
+-------------------------------------------------------------------------------
 
-```
-> lega pera a gustavo
-(taking la pera first)
-Non è possibile legare la pera al Gustavo.
-```
+# Hero Settings and Customization
 
-... where it should be "__a Gustavo__" instead!
+I need to check tha `hero` is initialized properly, and consider some customization optimizations.
 
-Initialization of preposizioni articolate is being handled on `EVERY THING`: should I add some checks there to handle ACTORs differently (ie, _NAMED actors_), or should I add a dedicated initialization on the ACTOR classes?
+## Female Hero
 
-There is also an Italian initialization code for `EVERY ACTOR`, in "`lib_classi.i`", which is handling articles but not preposizioni articolate. It looks like I should add there the code to handle this problem!
+The default settings should make `hero` a male character, but I must also allow to easily make `hero` a female by simply adding to it `IS femminile`.
+
+Need some testing (and possibly, some tweaks) and then document the feature.
+
+- [ ] Check if some library messages are affected by a female hero.
+- [ ] Check if different synonyms are required for a female hero.
+
+
+-------------------------------------------------------------------------------
+
+# Pronouns
+
+I still haven't looked into pronouns well enough, and there might be some room for exploiting them in Italian.
+
+- [ ] Special char `$!<n>` (Pronoun for the parameter `<n>`).
+- [ ] Predefined Player Words `THEM`.
+- [ ] `PRONOUN` keyword.
+
+
+-------------------------------------------------------------------------------
+
+# Library Messages
+
+There might be some room for improvements in the Italian messages/responses system. Beside looking into pronouns (already dealt with above), I should look into:
+
+- [ ] verbs whose syntaxes and synonyms all end in "a" could use the `$v` to build an infitive form based on the actual verb typed by the player, instead of spelling out a literal infinitive verb. For example, verb `bacia`: "bacia" e "abbraccia", uses "`$vre`" in responses (`bacia`+`re`/`abbraccia`+`re`).
+- [ ] Special char `$-<n>` (Negative form of parameter `<n>`) might be useful in message.
+- [ ] The original library uses a lot of `SAY THE obj` and `SAY THE instr` in VERBs, while a more simple approach would be to use just `$+1` and `$+2` in the strings. My tests have proven that the number `1` and `2` always refer to the position of the _main_ syntax definition, so if a verb has multiple syntaxes like `take (obj) from (act)` and  `take from (act) (obj)`, `$+1` and `$+2` will always refer to `obj` and `act` regardless of the inverted syntax used by player, because parameter positions always refer to the main (first) syntax definition!
+

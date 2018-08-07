@@ -11,7 +11,15 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/08/06](#20180806)
+- [2018/08/06 \(2\)](#20180806-2)
+    - [Inizializzazione di `OBJECT` anziché `THING`](#inizializzazione-di-object-anzich%C3%A9-thing)
+    - [Inizializzazione di `ACTOR`](#inizializzazione-di-actor)
+    - [Note Sugli Attori Con Nome Proprio](#note-sugli-attori-con-nome-proprio)
+        - [Attori Plurali](#attori-plurali)
+        - [Attori e `vocale`](#attori-e-vocale)
+        - [Preposizioni Semplici](#preposizioni-semplici)
+        - [Articoli](#articoli)
+- [2018/08/06 \(1\)](#20180806-1)
     - [Library Attributes](#library-attributes)
 - [2018/08/02 \(3\)](#20180802-3)
     - [Verb Responses](#verb-responses)
@@ -255,7 +263,124 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/08/06
+# 2018/08/06 (2)
+
+- [`lib_classi.i`][lib_classi] (v0.4.7)
+- [`lib_definizioni.i`][lib_definizioni] (v0.4.11)
+
+This commit changes the way ACTORS are initialized in order to handle correctly named actors. To achive this, initializazion of Italian attributes (gender, number, articles, ecc.) is no longer carried out inside the `ADD TO EVERY THING` block, but on a separate block targetting only `OBJECT`, so that it won't affect some user defined attributes on ACTORs. Then `EVERY ACTOR` is initialized separately, with a code that is very similar to the one used for `OBJECT`s initialization, except that it takes into account the `named` attribute (now `nome_proprio`). The rest of the explanations are in Italian, for practical purposes dealing with the language's grammar.
+
+## Inizializzazione di `OBJECT` anziché `THING`
+
+La parte del codice che si occupa dell'inizializzazione degli attributi grammaticali (genere, numero, vocale, articolo determinativo e indetrminativo, e preposizioni) è stato tolto dal blocco `ADD TO EVERY THING` e spostato in un nuovo blocco `ADD TO EVERY OBJECT`.
+
+Questo per via del fatto che l'inizializzazione sulla classe `THING` andava a sovrascrivere eventuali attributi definiti dall'utente sugli attori (poiché `THING` è la classe genitore comune a `OBJECT` ed `ACTOR`, e quindi ha la precedenza gerarchica nell'ordine di esecuzione delle inizializzazioni). Per esempio, se l'utente definiva un attore come plurale, questo attributo andava perso poiché l'inizializzazione di `THING` ripiegava sui valori predefiniti (articolo "`il`") per settare genere e numero in base all'articolo.
+
+Questa separazione delle inizializzazioni rende più semplice e pulita la gestione delle istanze di queste due classi distinte.
+
+## Inizializzazione di `ACTOR`
+
+Ora è stato implmentato sulla classe `ACTOR` un codice di inizializzazione _ad hoc_, che gestisce separatamente gli attori con nome proprio. Quanto agli attori senza nome proprio, il codice è lo stesso usato su `OBJECT` (in questo caso, si tratta di sostantivi a tutti gli effetti).
+
+In presenza di attori con `nome_proprio`, l'inizializzazione:
+
+1. Determina la stringa di `vocale` in base a genere e numero.
+2. Setta tutte le stringhe degli attributi `prep_*` con preposizioni semplici.
+3. Setta `DEFINITE`/`INDEFINITE ARTICLE` con stringhe vuote.
+
+Inoltre:
+
+- Alla classe `femmina` è stato aggiunto l'attributo predefinito `IS femminile` (se no l'inizializzazione per attori con nome proprio femminili falliva, dato che veniva eseguita prima l'inizializzazione su `ACTOR` e `PERSONA`, e solo in seguito su `femmina`, causando una modifica dell'attributo di genere da parte del codice di inizializzazione delle classi genitore).
+
+## Note Sugli Attori Con Nome Proprio
+
+Gli attori possono avere un nome proprio nel gioco, oppure no. Se non lo hanno, saranno trattati dalla libreria alla stregua di qualsiasi altro oggetto (si tratta di sostantivi). Se invece hanno un nome proprio, allora la libreria dovrà inizializzare tali oggetti diversamente, come indicato sopra. Qui darò un breve sunto delle ragioni e modalità di queste differenze.
+
+### Attori Plurali
+
+L'uso di attori plurali nelle AT è abbastanza comune quando si vuol rappresentare un gruppo o collettivo di attori tramite sostantivi come "la giuria", "gli operai" e via dicendo. In questo caso, essi vengono trattati dalla libreria come qualsiasi altro oggetto.
+
+Può però capitare che si vogliano creare attori plurali con nome proprio (`HAS nome_proprio`). Questo avviene quando si vuole implementare più personaggi tramite un'unica entità attore. Ad esempio, "Romeo e Giuglietta" possono essere un singolo `ACTOR` plurale (più specificamente, un'instanza di `maschio` con attributo `IS plurale`); al giocatore verrà fatto credere di star interagendo con due personaggi poiché questa entità riconoscerà sia "Romeo" che "Giuglietta" come riferimenti ad essa, ma si tratta di un solo attore all'interno dell'avventura.
+
+Nel caso di attori multipli con nome proprio, il genere verrà stabilito secondo le regole grammaticali italiane dell'accordo:
+
+- se tutti i personaggi sono femminili, l'entità sarà `IS femminile`.
+- se anche solo uno dei personaggi è maschile, l'entità sarà `IS NOT femminile`.
+
+La libreria deve assicurarsi di gestire in maniera adeguata gli attributi grammaticali per gli attori con nome proprio, sia plurali che non. Dal lato dell'autore, questi dovrà solo utilizzare le sottoclassi di `persona` (`maschio` o `femmina`) e settare l'attributo `IS plurale`:
+
+```alan
+THE Romeo_Giulietta IsA maschio AT salotto.
+  HAS nome_proprio.
+  IS plurale.
+  NAME 'Romeo e Giuglietta'.
+  NAME Romeo.
+  NAME Giuglietta.
+END THE.
+
+THE Thelma_Louise IsA femmina AT salotto.
+  HAS nome_proprio.
+  IS plurale.
+  NAME 'Thelma e Louise'.
+  NAME Thelma.
+  NAME Louise.
+END THE.
+```
+
+> __NOTA__ — Potrei creare due ulteriori sottoclassi di `persona` a tal scopo: `maschi` e `femmine`, ossia le varianti plurali dei già esistenti `maschio` e `femmina`.
+
+### Attori e `vocale`
+
+Il punto __1__ menzionato sopra, serve ad assicurarsi (come avviene per gli oggetti e attori senza nome proprio) che la `vocale` di riferimento per l'accordo dei sostantivi sia gestita correttamente. 
+
+Esempi (`"arrabbiat$$" SAY vocale OF THIS.`):
+
+- "Marco ora è arrabbiato"
+- "Gina ora è arrabbiata"
+- "Romeo e Giulietta ora sono arrabbiati"
+- "Thelma e Luise ora sono arrabbiate"
+
+### Preposizioni Semplici
+
+Il punto __2__ menzionato sopra, serve ad assicurarsi che negli attori con nome proprio gli attributi del gruppo `prep_*` contengano le preposizioni semplici anziché quelle articolate. Questo è necessario affinché i messaggi della libreria vengano mostrati correttamente.
+
+Esempi (`"Hai dato $+2" SAY prep_A OF THIS. "."`):
+
+- "Hai dato il libro a Marco."
+- "Hai dato il libro a Gina."
+- "Hai dato il libro a Romeo e Giulietta."
+- "Hai dato il libro a Thelma e Luise."
+
+(anziché "al Marco", "alla Gina", "ai Romeo e Giuglietta" e "alle Thelma e Luise", come avveniva prima di questo commit.)
+
+### Articoli
+
+In merito al punto __3__ dell'elenco inizializzazione di cui sopra:
+
+Per gli attori con nome proprio, sia `DEFINITE ARTICLE` che `INDEFINITE ARTICLE` vengono settati a stringhe vuote. Questo affinché la libreria mostri correttamente i messaggi.
+
+Esempi con art. determinativo (`"Non puoi $v $+1!"`):
+
+- "Non puoi mangiare Marco!"
+- "Non puoi mangiare Gina!"
+- "Non puoi mangiare Romeo e Giulietta!"
+- "Non puoi mangiare Thelma e Luise!"
+
+(anziché "il Marco", "la Gina", "i Romeo e Giuglietta" e "le Themla e Luise".)
+
+Esempi con art. indeterminativo (`"Qui puoi vedere $01."`):
+
+- "Qui puoi vedere Marco"
+- "Qui puoi vedere Gina"
+- "Qui puoi vedere Romeo e Giulietta"
+- "Qui puoi vedere Thelma e Luise"
+
+(anziché "un Marco", "una Gina", "dei Romeo e Giuglietta" e "delle Themla e Luise".)
+
+<!---------------------------------------------------------------------------->
+
+
+# 2018/08/06 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.4.6)
 - [`lib_verbi.i`][lib_verbi] (v0.4.14)

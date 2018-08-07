@@ -60,8 +60,8 @@ ADD TO EVERY ACTOR
       END IF.
       "$n| GENERE:$$"
       IF THIS IS femminile
-        THEN " femmina"
-        ELSE " maschio"
+        THEN " femminile"
+        ELSE " maschile"
       END IF.
       "$n| NUMERO:$$"
       IF THIS IS plurale
