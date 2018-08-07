@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/08/07](#20180807)
 - [2018/08/06 \(2\)](#20180806-2)
     - [Inizializzazione di `OBJECT` anziché `THING`](#inizializzazione-di-object-anzich%C3%A9-thing)
     - [Inizializzazione di `ACTOR`](#inizializzazione-di-actor)
@@ -262,6 +263,16 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/08/07
+
+- [`lib_classi.i`][lib_classi] (v0.4.8)
+
+Some code cleanup: repositioning of code blocks, translated documentation comments, etc.
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/08/06 (2)
 

@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.4.7 (2018/08/06)
+-- "lib_classi.i" v0.4.8 (2018/08/07)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -28,12 +28,32 @@ END ADD.
 --++--------------------------------------------------------------------------++
 --|//////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|
 --+============================================================================+
---|| § 0 - Panoramica del Modulo
---|| § 0.1 - Elenco e descrizione delle classi
+--|| § 0     | Panoramica del Modulo
+--|| § 0.1   | - Elenco e descrizione delle classi
+--||---------|-----------------------------------------------------------------
+--|| § 2     | Attori
+--|| § 2.1   | - Attributi Comuni
+--|| § 2.2   | - Inizializzazione degli Attori
+--|| § 2.3   | - Inizializzazione di Genere, Numero e Preposizioni Articolate
+--|| § 2.3.1 |   - Attori con Nome Proprio
+--|| § 2.3.2 |   - Attori Senza Nome Proprio
+--|| § 2.4   | - Inizializzazione Articoli Indeterminativi
+--|| § 2.4.1 |   - Attori con Nome Proprio
+--|| § 2.4.2 |   - Attori Senza Nome Proprio
+--|| § 2.5   | - Inizializzazione Articoli Determinativi
+--|| § 2.5.1 |   - Attori con Nome Proprio
+--|| § 2.5.2 |   - Attori Senza Nome Proprio
+--||---------|-----------------------------------------------------------------
+--|| § 3     | Sottoclassi di ACTOR
+--|| § 3.1   | - PERSONA (può parlare)
+--|| § 3.1.1 |   - MASCHIO
+--|| § 3.1.2 |   - FEMMINA
+--||---------|-----------------------------------------------------------------
+--|| § x     | Oggetti Fittizi
+--|| § x.x   | - Indumento Fittizio
 --++===========================================================================+
 
-
---=============================================================================
+---=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------
 -- § 0 - Panoramica del Modulo
@@ -1167,11 +1187,13 @@ EVERY porta IsA OBJECT
   VERB esamina
     DOES AFTER
       IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
         THEN "It is"
         ELSE "They are"
       END IF.
 
       IF THIS IS NOT aperto
+--                                                                              TRANSLATE!
         THEN "currently closed."
         ELSE "currently open."
       END IF.
@@ -1182,6 +1204,7 @@ EVERY porta IsA OBJECT
   VERB knock
     DOES ONLY
       IF THIS IS NOT aperto
+--                                                                              TRANSLATE!
         THEN "You knock on" SAY THE THIS. "$$. There is no reply."
         ELSE "You don't find it purposeful to knock on the open door"
           IF THIS IS NOT plurale
@@ -1197,11 +1220,13 @@ EVERY porta IsA OBJECT
   VERB look_behind
     DOES ONLY
       IF THIS IS NOT aperto
+--                                                                              TRANSLATE!
         THEN "You cannot look behind"
           IF THIS IS NOT plurale
             THEN "the door - it is closed."
             ELSE "the doors - they are closed."
           END IF.
+--                                                                              TRANSLATE!
         ELSE "You notice nothing special behind the door"
           IF THIS IS NOT plurale
             THEN "."
@@ -1215,10 +1240,12 @@ EVERY porta IsA OBJECT
   VERB look_under
     DOES ONLY
       IF THIS IS NOT aperto
+--                                                                              TRANSLATE!
         THEN "The gap under the closed door"
           IF THIS IS plurale
             THEN "$$s"
           END IF.
+--                                                                              TRANSLATE!
           "is so narrow that you can't
           see anything of what lies on the other side."
         ELSE "You notice nothing special under the door"
@@ -1367,6 +1394,7 @@ END EVERY.
 EVERY liquido IsA OBJECT
 
   CONTAINER
+--                                                                              TRANSLATE!
     HEADER "In" SAY THE THIS. "you see"
     ELSE "There is nothing in" SAY THE THIS. "."
 
@@ -1437,6 +1465,7 @@ EVERY liquido IsA OBJECT
       IF recipiente OF THIS <> recipiente_fittizio
         THEN
           IF recipiente OF THIS IS aperto
+--                                                                              TRANSLATE!
             THEN "You notice nothing unusual about" SAY THE THIS.
             ELSE "You can't, since" SAY THE recipiente OF THIS.
                 IF THIS IS NOT plurale
@@ -1447,6 +1476,7 @@ EVERY liquido IsA OBJECT
                 -- Here we prohibit the player from examining
                 -- a liquid when the liquid is in a closed container.
           END IF.
+--                                                                              TRANSLATE!
         ELSE "You notice nothing unusual about" SAY THE THIS. "."
       END IF.
   END VERB esamina.
@@ -1510,6 +1540,7 @@ EVERY liquido IsA OBJECT
   VERB ask_for
     DOES ONLY
       LOCATE recipiente OF THIS IN hero.
+--                                                                              TRANSLATE!
       SAY THE png. "gives" SAY THE recipiente OF THIS. "of" SAY THIS. "to you."
   END VERB ask_for.
 
@@ -1521,6 +1552,7 @@ EVERY liquido IsA OBJECT
       IF THIS NOT IN hero
         THEN
           IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT prendibile
+--                                                                              TRANSLATE!
             THEN "You can't carry" SAY THE THIS. "around in your bare hands."
           ELSE LOCATE recipiente OF THIS IN hero.
             "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
@@ -1531,6 +1563,7 @@ EVERY liquido IsA OBJECT
       IF THIS IN hero
         -- i.e. if the implicit taking was successful
         THEN
+--                                                                              TRANSLATE!
           "You give" SAY THE recipiente OF THIS. "of" SAY THIS. "to" SAY THE ricevente. "."
           LOCATE recipiente OF THIS IN ricevente.
       END IF.
@@ -1547,6 +1580,7 @@ EVERY liquido IsA OBJECT
       IF THIS NOT IN hero
         THEN
           IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT prendibile
+--                                                                              TRANSLATE!
             THEN "You can't pour" SAY THE THIS. "anywhere since you are not
               carrying"
                 IF THIS IS NOT plurale
@@ -1554,6 +1588,7 @@ EVERY liquido IsA OBJECT
                   ELSE "them."
                 END IF.
           ELSE LOCATE recipiente OF THIS IN hero.
+--                                                                              TRANSLATE!
             "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
           END IF.
       END IF.
@@ -1562,6 +1597,7 @@ EVERY liquido IsA OBJECT
       IF THIS IN hero
         THEN LOCATE THIS AT hero.
           SET recipiente OF THIS TO recipiente_fittizio.
+--                                                                              TRANSLATE!
           "You pour" SAY THE THIS.
             IF pavimento HERE
               THEN "on the floor."
@@ -1579,10 +1615,13 @@ EVERY liquido IsA OBJECT
         IF THIS NOT IN hero
           THEN
             IF recipiente OF THIS = recipiente_fittizio
+--                                                                              TRANSLATE!
               THEN "You can't carry" SAY THE THIS. "around in your bare hands."
             ELSIF recipiente OF THIS IS NOT prendibile
+--                                                                              TRANSLATE!
               THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
             ELSE LOCATE recipiente OF THIS IN hero.
+--                                                                              TRANSLATE!
               "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
             END IF.
         END IF.
@@ -1591,19 +1630,23 @@ EVERY liquido IsA OBJECT
         IF THIS IN hero   --i.e. if the implicit taking was successful
           THEN LOCATE THIS IN cont.
             SET recipiente OF THIS TO cont.
+--                                                                              TRANSLATE!
             "You pour" SAY THE THIS. "into" SAY THE cont. "."
         END IF.
     WHEN cont
       DOES ONLY
         IF recipiente OF THIS = recipiente_fittizio
           THEN
+--                                                                              TRANSLATE!
             "There's not much sense pouring" SAY THE ogg. "into" SAY THE THIS. "."
           ELSE
             IF recipiente OF THIS IS aperto
+--                                                                              TRANSLATE!
               THEN "It wouldn't accomplish anything trying to pour" SAY THE ogg.
                 "into" SAY THE THIS. "."
               ELSE "You can't, since" SAY THE recipiente OF THIS.
                 IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
                   THEN "is"
                   ELSE "are"
                 END IF.
@@ -1620,10 +1663,13 @@ EVERY liquido IsA OBJECT
         IF THIS NOT IN hero
           THEN
             IF recipiente OF THIS = recipiente_fittizio
+--                                                                              TRANSLATE!
               THEN "You can't carry" SAY THE THIS. "around in your bare hands."
             ELSIF recipiente OF THIS IS NOT prendibile
+--                                                                              TRANSLATE!
               THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
             ELSE LOCATE recipiente OF THIS IN hero.
+--                                                                              TRANSLATE!
               "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
             END IF.
         END IF.
@@ -1634,10 +1680,12 @@ EVERY liquido IsA OBJECT
           THEN
             IF superficie = pavimento OR superficie = suolo
               THEN LOCATE THIS AT hero.
+--                                                                              TRANSLATE!
                 "You pour" SAY THE THIS. "on" SAY THE superficie. "."
                 SET recipiente OF THIS TO recipiente_fittizio.
             ELSIF superficie IsA supporto
               THEN LOCATE THIS IN superficie.
+--                                                                              TRANSLATE!
                 "You pour" SAY THE THIS. "on" SAY THE superficie. "."
                   SET recipiente OF THIS TO recipiente_fittizio.
             ELSE "It wouldn't be sensible to pour anything on" SAY THE superficie.
@@ -1658,6 +1706,7 @@ EVERY liquido IsA OBJECT
     WHEN ogg
       DOES ONLY
         IF recipiente OF THIS = recipiente_fittizio
+--                                                                              TRANSLATE!
           THEN "You can't carry" SAY THE THIS. "around in your bare hands."
           ELSE
             IF recipiente OF THIS IS prendibile
@@ -1666,14 +1715,17 @@ EVERY liquido IsA OBJECT
                 IF THIS NOT IN hero
                   THEN
                     IF recipiente OF THIS = recipiente_fittizio
+--                                                                              TRANSLATE!
                       THEN "You can't carry" SAY THE THIS. "around in your bare hands."
                     ELSE LOCATE recipiente OF THIS IN hero.
+--                                                                              TRANSLATE!
                       "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
                     END IF.
                 END IF.
                 -- end of implicit taking.
 
                 LOCATE recipiente OF THIS IN cont.
+--                                                                              TRANSLATE!
                     "You put" SAY THE recipiente OF THIS. "of" SAY THIS. "into" SAY THE cont. "."
 
               ELSE "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
@@ -1683,17 +1735,20 @@ EVERY liquido IsA OBJECT
       DOES ONLY
       IF recipiente OF THIS = recipiente_fittizio
         THEN
+--                                                                              TRANSLATE!
           "There's not much sense putting" SAY THE ogg. "into" SAY THE THIS. "."
         ELSE
           IF recipiente OF THIS IS aperto
             THEN
               IF ogg = recipiente OF THIS
+--                                                                              TRANSLATE!
                 THEN "That doesn't make sense."
                 ELSE "It wouldn't accomplish anything trying to put" SAY THE ogg.
                   "into" SAY THE recipiente OF THIS. "of" SAY THIS. "."
               END IF.
             ELSE "You can't, since" SAY THE recipiente OF THIS. "of" SAY THIS.
                 IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
                   THEN "is"
                   ELSE "are"
                 END IF.
@@ -1710,10 +1765,13 @@ EVERY liquido IsA OBJECT
         IF THIS NOT IN hero
           THEN
             IF recipiente OF THIS = recipiente_fittizio
-              THEN "You can't carry" SAY THE THIS. "around in your bare hands."
+ --                                                                              TRANSLATE!
+             THEN "You can't carry" SAY THE THIS. "around in your bare hands."
             ELSIF recipiente OF THIS IS NOT prendibile
+--                                                                              TRANSLATE!
               THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
             ELSE LOCATE recipiente OF THIS IN hero.
+--                                                                              TRANSLATE!
               "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
             END IF.
         END IF.
@@ -1721,9 +1779,11 @@ EVERY liquido IsA OBJECT
 
         IF THIS IN hero
           -- i.e. if the implicit taking was successful
+--                                                                              TRANSLATE!
           THEN "You put" SAY THE recipiente OF THIS. "of" SAY THIS. "onto" SAY THE superficie. "."
         END IF.
     WHEN superficie
+--                                                                              TRANSLATE!
       DOES ONLY "It is not possible to $v" SAY ogg. "onto" SAY THE THIS. "."
   END VERB put_on.
 
@@ -1735,16 +1795,19 @@ EVERY liquido IsA OBJECT
 
   VERB 'empty'
     WHEN ogg
+--                                                                              TRANSLATE!
     DOES ONLY "You can only empty containers."
   END VERB.
 
   VERB empty_in
     WHEN ogg
+--                                                                              TRANSLATE!
     DOES ONLY "You can only empty containers."
   END VERB empty_in.
 
   VERB empty_on
     WHEN ogg
+--                                                                              TRANSLATE!
     DOES ONLY "You can only empty containers."
   END VERB empty_on.
 
@@ -1940,6 +2003,7 @@ EVERY suono IsA OBJECT
   VERB smell
     DOES ONLY
        IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
         THEN "That's not"
         ELSE "Those are not"
        END IF.
@@ -1972,8 +2036,8 @@ EVERY supporto IsA OBJECT
   CONTAINER
     HEADER "Sopra" SAY THE THIS. "vedi"
     ELSE "Non c'è nulla sopra" SAY THE THIS. "."
-    -- HEADER "On" SAY THE THIS. "you see"
-    -- ELSE "There's nothing on" SAY THE THIS. "."
+ -- HEADER "On" SAY THE THIS. "you see"
+ -- ELSE "There's nothing on" SAY THE THIS. "."
 
 
   VERB esamina
@@ -1988,6 +2052,7 @@ EVERY supporto IsA OBJECT
   VERB look_in
     DOES ONLY
       IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
         THEN "That's not"
         ELSE "Those are not"
       END IF.
@@ -1999,7 +2064,8 @@ EVERY supporto IsA OBJECT
      WHEN cont
     DOES ONLY
        IF THIS IS NOT plurale
-        THEN "That's not"
+  --                                                                              TRANSLATE!
+      THEN "That's not"
         ELSE "Those are not"
       END IF.
       "something you can pour things into."
@@ -2074,12 +2140,14 @@ EVERY finestra IsA OBJECT
       IF THIS IS NOT aperto
         THEN
           IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
             THEN "It is"
             ELSE "They are"
           END IF.
           "currently closed."
         ELSE
           IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
             THEN "It is"
             ELSE "They are"
           END IF.
@@ -2090,11 +2158,13 @@ EVERY finestra IsA OBJECT
 
   VERB look_behind
     DOES ONLY
+--                                                                              TRANSLATE!
       "That's not possible."
   END VERB look_behind.
 
 
   VERB look_out_of
+--                                                                              TRANSLATE!
     DOES ONLY "You see nothing special looking out of the"
         IF THIS IS NOT plurale
           THEN "window."
@@ -2104,6 +2174,7 @@ EVERY finestra IsA OBJECT
 
 
   VERB look_through
+--                                                                              TRANSLATE!
     DOES ONLY "You see nothing special looking through the"
         IF THIS IS NOT plurale
           THEN "window."
@@ -2158,6 +2229,7 @@ ADD TO EVERY ACTOR
   -- so that actors can receive and carry objects
   HEADER
     IF THIS = hero
+--                                                                              TRANSLATE!
       THEN "You are carrying"
       ELSE
 
@@ -2167,12 +2239,14 @@ ADD TO EVERY ACTOR
         END IF.
 
         IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
           THEN "is carrying"
           ELSE "are carrying"
         END IF.
     END IF.
   ELSE
     IF THIS = hero
+--                                                                              TRANSLATE!
       THEN "You are empty-handed."
       ELSE
         IF THIS HAS NOT nome_proprio
@@ -2181,6 +2255,7 @@ ADD TO EVERY ACTOR
         END IF.
 
         IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
           THEN "is not carrying anything."
           ELSE "are not carrying anything."
         END IF.
@@ -2190,6 +2265,7 @@ ADD TO EVERY ACTOR
   EXTRACT
     CHECK THIS IS condiscendente
       ELSE
+--                                                                              TRANSLATE!
         "That seems to belong to"
         IF THIS HAS NOT nome_proprio
           THEN SAY THE THIS.
@@ -2241,6 +2317,7 @@ ADD TO EVERY ACTOR
           LOCATE THIS AT hero.
           "$p" SAY THE THIS.
             IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
               THEN "follows you."
               ELSE "follow you."
             END IF.
@@ -2256,11 +2333,13 @@ ADD TO EVERY ACTOR
     ELSIF THIS HAS NOT nome_proprio
       THEN
         IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
           THEN "There is" SAY AN THIS. "here."
           ELSE "There are" SAY THIS. "here."
         END IF.
       ELSE SAY THIS.
         IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
           THEN "is here."
           ELSE "are here."
         END IF.
@@ -2519,30 +2598,30 @@ END ADD TO ACTOR.
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------
--- § x - Oggetti Fittizi
+-- § 3 - Sottoclassi di ACTOR
 --------------------------------------------------------------------------------
 --//////////////////////////////////////////////////////////////////////////////
 --=============================================================================
+-- La libreria definisce alcune sottoclassi specializzate di ACTOR:
+--
+-- ACTOR
+--   |
+--   +-- persona
+--          |
+--          +-- maschio
+--          |
+--          +-- femmina
 
 --==============================================================================
 --------------------------------------------------------------------------------
--- § x.x - Indumento Fittizio
+-- § 3.1 - PERSONA (può parlare)
 --------------------------------------------------------------------------------
 --==============================================================================
-
--- the default dummy clothing object; ignore
-
-THE indumento_fittizio IsA indumento
-END THE.
-
--- ================================================================
-
-
------ PERSON      -- CAN talk
-
-
--- ================================================================
-
+-- La classe 'persona' definisce le caratteristiche comuni per gli attori che
+-- sono persone (o comunque, esseri in grado di parlare), gettando le basi per
+-- le sue sottoclassi 'maschio' e 'femmina' che specializzano 'persona' in base
+-- al genere. Solitamente in un'avventura non si userà direttamente la classe
+-- 'persona' ma una delle sue sottoclassi: 'maschio' e 'femmina'.
 
 EVERY persona IsA ACTOR
   CAN parlare.
@@ -2551,6 +2630,7 @@ EVERY persona IsA ACTOR
     HEADER
       SAY THE THIS.
       IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
         THEN "is carrying"
         ELSE "are carrying"
       END IF.
@@ -2562,12 +2642,14 @@ EVERY persona IsA ACTOR
       END IF.
 
       IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
         THEN "is empty-handed."
         ELSE "are empty-handed."
       END IF.
 
     EXTRACT
       CHECK THIS IS condiscendente
+--                                                                              TRANSLATE!
         ELSE "That seems to belong to"
           IF THIS HAS NOT nome_proprio
             THEN SAY THE THIS.
@@ -2578,36 +2660,52 @@ EVERY persona IsA ACTOR
 END EVERY.
 
 
-
-
-
--- ================================================================
-
-
------ FEMALE and MALE
-
-
--- ================================================================
-
--- MALE and FEMALE are actually subclasses of PERSON, so they both
--- have the ability to talk.
-
-
-EVERY femmina IsA persona
-  IS femminile.
-  PRONOUN her
-  HAS articolo "la".
-
-END EVERY.
-
+--==============================================================================
+-- § 3.1.1 - MASCHIO
+--==============================================================================
 
 EVERY maschio IsA persona
   IS NOT femminile.
+--                                                                              TRANSLATE!
   PRONOUN him
   HAS articolo "il".
 END EVERY.
 
+--==============================================================================
+-- § 3.1.2 - FEMMINA
+--==============================================================================
 
+EVERY femmina IsA persona
+  IS femminile.
+--                                                                              TRANSLATE!
+  PRONOUN her
+  HAS articolo "la".
+END EVERY.
+
+
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- § x - Oggetti Fittizi
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+-- Gli oggetti fittizi sono istanze utilizzate per inizializzare correttamente
+-- gli attributi delle classi definite in questo modulo che fanno riferimento ad
+-- altre istanze o classi (attributi di tipo istanza o insieme).
+
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § x.x - Indumento Fittizio
+--------------------------------------------------------------------------------
+--==============================================================================
+
+-- the default dummy clothing object; ignore
+
+THE indumento_fittizio IsA indumento
+END THE.
 
 
 ---< Fine del File >---
