@@ -11,6 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/08/08](#20180808)
+    - [Deleted `present_actor` Attribute](#deleted-present_actor-attribute)
+    - [Translated Actors Inventory Messages](#translated-actors-inventory-messages)
 - [2018/08/07](#20180807)
 - [2018/08/06 \(2\)](#20180806-2)
     - [Inizializzazione di `OBJECT` anziché `THING`](#inizializzazione-di-object-anzich%C3%A9-thing)
@@ -264,11 +267,31 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
+# 2018/08/08
+
+- [`lib_classi.i`][lib_classi] (v0.4.9)
+
+## Deleted `present_actor` Attribute
+
+I've deleted the `present_actor` attribute (on `ACTOR` in `lib_classi.i`), which wasn't being referenced anywhere in the library. Anssi confirmed that it was a leftover experimental attribute. (See [Issue #14])
+
+## Translated Actors Inventory Messages
+
+This commit translates to Italian the `HEADER` and `EXTRACT` messages on `ACTOR` and `PERSONA`.
+
+> __NOTE__ — The same `HEADER` and `EXTRACT` code on `ACTOR` is duplicated on `PERSONA` (except the parts that check if current actor is the `hero`, since it will ever only be of `ACTOR` type). This seems redundant, as the code on `ACTOR` is also inherited by `PERSONA`, and I had to translate both blocks in order to attain identical Italian messages.
+> 
+> I'm evaluating if it might be OK to remove that redundant code on `PERSONA`. The pros of keeping it is that it would ensure that the library specific `PERSONA` class will always behave as expected, even if the author changes the `ACTOR` class `HEADER`; but chances are that isn't likely to happen. I can't think of any cons, except having to remember to change messages on both classes to keep them consistent. The duplicate code doesn't really had much overhead, it's more an issue of having some duplicate code that does the exact same thing of the code in its parent class.
+
+<!---------------------------------------------------------------------------->
+
+
 # 2018/08/07
 
 - [`lib_classi.i`][lib_classi] (v0.4.8)
 
 Some code cleanup: repositioning of code blocks, translated documentation comments, etc.
+
 
 
 <!---------------------------------------------------------------------------->

@@ -1,0 +1,38 @@
+; ==============================================================================
+;                            INVENTARIO PROTAGONISTA                            
+; ==============================================================================
+esamina me
+inventario
+lascia mazzo
+inventario
+; ******************************************************************************
+; *                                                                            *
+; *                           TEST SU CLASSE PERSONA                           *
+; *                                                                            *
+; ******************************************************************************
+; Iniziamo a testare con instanze di PERSONA! Vogliamo verificare le risposte a
+; vari tipi di azioni, tra cui i messaggi che riportano cosa stia trasportando
+; l'attore, e le risposte quando cerchiamo di prendere oggetti da loro. A tal
+; scopo, abbiamo creato PNG condiscendenti (i civli) e altr no (PNG in divisa).
+; ==============================================================================
+esamina il poliziotto
+prendi il manganello
+esamina il predicatore
+prendi l'opuscolo
+esamina il predicatore
+; ******************************************************************************
+; *                            TEST SU CLASSE ACTOR                            *
+; ******************************************************************************
+; Ora testiamo con istanze di ACTOR che non discendono da PERSONA, poiché il
+; codice che si occupa dei contenuti degli attori è duplicato sia su ACTOR che
+; su persona, quindi dobbiamo controllare che i messaggi siano gestiti bene su
+; entrambe le classi!
+; ==============================================================================
+est
+esamina il vigile
+prendi taccuino
+esamina le nonnine
+prendi la crostata
+esamina le nonnine
+
+

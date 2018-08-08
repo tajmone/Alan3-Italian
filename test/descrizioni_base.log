@@ -1,0 +1,95 @@
+
+Descrizioni di Base 
+Testa le descrizioni di base della libreria. 
+(C) Tristano Ajmone, 2018. 
+Programmed with the ALAN Interactive Fiction Language v3.0 beta5
+Standard Library v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+Piazza delle Persone
+In questa piazza tutti gli attori sono della classe PERSONA. There is un 
+poliziotto here. There is un predicatore here.
+
+> ; ==============================================================================
+> ;                            INVENTARIO PROTAGONISTA                            
+> ; ==============================================================================
+> esamina me
+Non noti niente di insolito in te stesso.
+
+> inventario
+Stai portando un mazzo di carte.
+
+> lascia mazzo
+Lasci il mazzo di carte.
+
+> inventario
+Non stai portando niente.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                           TEST SU CLASSE PERSONA                           *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Iniziamo a testare con instanze di PERSONA! Vogliamo verificare le risposte a
+> ; vari tipi di azioni, tra cui i messaggi che riportano cosa stia trasportando
+> ; l'attore, e le risposte quando cerchiamo di prendere oggetti da loro. A tal
+> ; scopo, abbiamo creato PNG condiscendenti (i civli) e altr no (PNG in divisa).
+> ; ==============================================================================
+> esamina il poliziotto
+Esamini il poliziotto, ma non noti niente di speciale. Il poliziotto sta 
+portando un manganello.
+
+> prendi il manganello
+Il poliziotto non sarebbe d'accordo.
+
+> esamina il predicatore
+Esamini il predicatore, ma non noti niente di speciale. Il predicatore sta 
+portando un opuscolo.
+
+> prendi l'opuscolo
+Preso.
+
+> esamina il predicatore
+Esamini il predicatore, ma non noti niente di speciale. Il predicatore 
+non sta portando niente.
+
+> ; ******************************************************************************
+> ; *                            TEST SU CLASSE ACTOR                            *
+> ; ******************************************************************************
+> ; Ora testiamo con istanze di ACTOR che non discendono da PERSONA, poiché il
+> ; codice che si occupa dei contenuti degli attori è duplicato sia su ACTOR che
+> ; su persona, quindi dobbiamo controllare che i messaggi siano gestiti bene su
+> ; entrambe le classi!
+> ; ==============================================================================
+> est
+Piazza degli Attori Semplici
+In questa piazza tutti gli attori sono della classe ACTOR. There is un 
+vigile here. There is delle nonnine here.
+
+> esamina il vigile
+Esamini il vigile, ma non noti niente di speciale. Il vigile sta portando 
+un taccuino.
+
+> prendi taccuino
+Il vigile non sarebbe d'accordo.
+
+> esamina le nonnine
+Esamini le nonnine, ma non noti niente di speciale. Le nonnine stanno 
+portando una crostata.
+
+> prendi la crostata
+Presa.
+
+> esamina le nonnine
+Esamini le nonnine, ma non noti niente di speciale. Le nonnine non stanno 
+portando niente.
+
+> 
+
+> 
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

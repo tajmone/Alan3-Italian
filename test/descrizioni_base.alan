@@ -1,0 +1,103 @@
+--==============================================================================
+-- "Descrizioni di Base" by Tristano Ajmone, 2018.
+--==============================================================================
+IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
+
+
+THE mia_AT IsA blocco_definizioni
+  ------------------------------------------------------------------------------
+  HAS       titolo  "Descrizioni di Base".
+  HAS  sottotitolo  "Testa le descrizioni di base della libreria.".
+  HAS       autore  "Tristano Ajmone".
+  HAS         anno   2018.
+  HAS     versione  "1".
+  ------------------------------------------------------------------------------
+END THE.
+
+-- =============================================================================
+
+
+----- ATTORI DELLA CLASSE "PERSONA"
+
+
+-- =============================================================================
+THE pzzaPersone IsA luogo_esterno
+  NAME 'Piazza delle Persone'.
+  DESCRIPTION "In questa piazza tutti gli attori sono della classe PERSONA."
+  EXIT est TO pzzaActor.
+END THE.
+
+--==============================================================================
+-- Il Protagonista
+--==============================================================================
+-- Diamo qualche oggetto da portare al protagonista...
+
+THE mazzo_carte IsA object IN hero.
+  NAME 'mazzo di carte'
+  NAME mazzo
+  NAME carte
+END THE.
+
+
+--==============================================================================
+-- Il Poliziotto
+--==============================================================================
+THE poliziotto IsA maschio AT pzzaPersone.
+  
+END THE.
+
+THE manganello IsA object IN poliziotto.
+  
+END THE.
+
+--==============================================================================
+-- Il Predicatore
+--==============================================================================
+THE predicatore IsA maschio AT pzzaPersone.
+  IS condiscendente.
+END THE.
+
+THE opuscolo IsA object IN predicatore.
+  HAS articolo "l'".
+  NAME opuscolo.
+  NAME 'l''opuscolo'.
+END THE.
+
+-- =============================================================================
+
+
+----- ATTORI DELLA CLASSE "ACTOR"
+
+
+-- =============================================================================
+THE pzzaActor IsA luogo_esterno
+  NAME 'Piazza degli Attori Semplici'.
+  DESCRIPTION "In questa piazza tutti gli attori sono della classe ACTOR."
+  EXIT ovest TO pzzaPersone.
+END THE.
+
+--==============================================================================
+-- Il Vigile
+--==============================================================================
+THE vigile IsA ACTOR AT pzzaActor.
+END THE.
+
+THE taccuino IsA object IN vigile.
+END THE.
+
+--==============================================================================
+-- Le Nonnine
+--==============================================================================
+THE nonnine IsA ACTOR AT pzzaActor.
+  HAS articolo "le".
+  IS condiscendente.
+END THE.
+
+THE crostata IsA object IN nonnine.
+  HAS articolo "la".
+END THE.
+
+
+--------------------------------------------------------------------------------
+Start at pzzaPersone.
+DESCRIBE intestazione.

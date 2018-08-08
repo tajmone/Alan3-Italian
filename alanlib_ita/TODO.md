@@ -14,6 +14,7 @@ Some pending tasks that need to be done.
     - [Female Hero](#female-hero)
 - [Pronouns](#pronouns)
 - [Library Messages](#library-messages)
+- [Redundant Code in Actors and Persona](#redundant-code-in-actors-and-persona)
 
 <!-- /MarkdownTOC -->
 
@@ -90,4 +91,20 @@ There might be some room for improvements in the Italian messages/responses syst
 - [ ] verbs whose syntaxes and synonyms all end in "a" could use the `$v` to build an infitive form based on the actual verb typed by the player, instead of spelling out a literal infinitive verb. For example, verb `bacia`: "bacia" e "abbraccia", uses "`$vre`" in responses (`bacia`+`re`/`abbraccia`+`re`).
 - [ ] Special char `$-<n>` (Negative form of parameter `<n>`) might be useful in message.
 - [ ] The original library uses a lot of `SAY THE obj` and `SAY THE instr` in VERBs, while a more simple approach would be to use just `$+1` and `$+2` in the strings. My tests have proven that the number `1` and `2` always refer to the position of the _main_ syntax definition, so if a verb has multiple syntaxes like `take (obj) from (act)` and  `take from (act) (obj)`, `$+1` and `$+2` will always refer to `obj` and `act` regardless of the inverted syntax used by player, because parameter positions always refer to the main (first) syntax definition!
+- [ ] 
 
+
+-------------------------------------------------------------------------------
+
+
+# Redundant Code in Actors and Persona
+
+In `lib_classi.i`, the code that handles listing inventory of `ACTOR`s (`HEADER` and `EXTRACT` messages) is also duplicated on `PERSONA` (except the parts that check if current actor is the `hero`, since it will ever only be of `ACTOR` type).
+
+This seems redundant, as the code on `ACTOR` is also inherited by `PERSONA`, and I had to translate both blocks in order to attain identical Italian messages.
+
+I'm evaluating if it might be OK to remove that redundant code on `PERSONA`. 
+
+The pros of keeping it is that it would ensure that the library specific `PERSONA` class will always behave as expected, even if the author changes the `ACTOR` class `HEADER`; but chances are that isn't likely to happen. I can't think of any cons, except having to remember to change messages on both classes to keep them consistent. The duplicate code doesn't really had much overhead, it's more an issue of having some duplicate code that does the exact same thing of the code in its parent class (and also makes debugging more complicate).
+
+But first I must look into it better and ask Anssi about it, as there might be some reasons for this which I'm failing to see.

@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.4.8 (2018/08/07)
+-- "lib_classi.i" v0.4.9 (2018/08/08)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -2222,56 +2222,83 @@ ADD TO EVERY ACTOR
   -- to be held by an NPC who is not compliant.
   IS NOT prendibile.                                        --> takeable
 
--- @NOTA: Questo attributo non viene menzionato in nessun altro posto: 
-  IS NOT present_actor.                                     --> present_actor   TRANSLATE!
 
-  CONTAINER
-  -- so that actors can receive and carry objects
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 2.2 - Possesso di Oggetti
+--------------------------------------------------------------------------------
+--==============================================================================
+  CONTAINER -- Rendi gli attori dei contentitori cosicché che possano ricevere e
+            -- trasportare oggetti.
+
+-- Il codice che segue gestisce il testo per elencare gli oggetti posseduti da
+-- un attore (tecnicamente, gli ogetti contenuti in un contenitore di questa
+-- classe).
+-- Per il protagonista, viene eseguito quando si usa 'inventario', per i PNG con
+-- il verbo esamina.
+--==============================================================================
+-- § 2.2.1 - Descrizione Inventario Non Vuoto
+--==============================================================================
+-- NOTA: Un codice simile è riprodotto anche nella classe PERSONA, tranne che
+--       per i controlli se l'attore è il protagonista (che sarà sempre e solo
+--       della classe ACTOR)! Se si modifica il testo delle risposte qui, ci si
+--       ricordi di modificarlo anche su ACTOR!
   HEADER
     IF THIS = hero
---                                                                              TRANSLATE!
-      THEN "You are carrying"
+      -- ==========================
+      -- L'Attore è il protagonista
+      -- ==========================
+      THEN "stai"
+      -- =================
+      -- L'Attore è un PNG
+      -- =================
       ELSE
-
-        IF THIS HAS NOT nome_proprio
-          THEN SAY THE THIS.
-          ELSE SAY THIS.
-        END IF.
-
-        IF THIS IS NOT plurale
---                                                                              TRANSLATE!
-          THEN "is carrying"
-          ELSE "are carrying"
+        SAY THE THIS. "sta"
+        IF THIS IS plurale
+          THEN "$$nno"
         END IF.
     END IF.
+    "portando"
+--==============================================================================
+-- § 2.2.2 - Descrizione Inventario Vuoto
+--==============================================================================
   ELSE
     IF THIS = hero
---                                                                              TRANSLATE!
-      THEN "You are empty-handed."
+      -- ==========================
+      -- L'Attore è il protagonista
+      -- ==========================
+      THEN "non stai"
+      -- =================
+      -- L'Attore è un PNG
+      -- =================
       ELSE
-        IF THIS HAS NOT nome_proprio
-          THEN SAY THE THIS.
-          ELSE SAY THIS.
+        SAY THE THIS. "non sta"
+        IF THIS IS plurale
+          THEN "$$nno"
         END IF.
-
-        IF THIS IS NOT plurale
---                                                                              TRANSLATE!
-          THEN "is not carrying anything."
-          ELSE "are not carrying anything."
-        END IF.
-
     END IF.
+    "portando niente."
+--==============================================================================
+-- § 2.2.3 - Estrazione Oggetti
+--==============================================================================
+-- Questa parte del codice interviene quando si cerca di estrarre i contenuti di
+-- un attore (in altre parole, quando si cerca di prendere ad un attore oggetti
+-- che gli appartengono).
 
   EXTRACT
     CHECK THIS IS condiscendente
       ELSE
---                                                                              TRANSLATE!
-        "That seems to belong to"
-        IF THIS HAS NOT nome_proprio
-          THEN SAY THE THIS.
-          ELSE SAY THIS.
-        END IF.
-          "."
+        SAY THE THIS. "non sarebbe"
+        IF THIS IS plurale
+          THEN "$$ro"
+        END IF. "d'accordo."
+
+--==============================================================================
+-- § 2.2.4 - Verbo Esamina
+--==============================================================================
+-- Questo corpo aggiuntivo del verbo 'esamina' sulla classe ACTOR, fà in modo
+-- che dopo aver esaminato un NPG ne venga elencato l'inventario. 
 
   VERB esamina
     DOES AFTER
@@ -2627,36 +2654,39 @@ EVERY persona IsA ACTOR
   CAN parlare.
 
   CONTAINER
+--==============================================================================
+-- § 3.1.2 - Descrizione Inventario Non Vuoto
+--==============================================================================
+-- NOTA: Questo codice è simile a quello presente sulla classe ACTOR, tranne per
+--       il fatto che qui non si verifica se l'attore possa essere HERO! Se si
+--       modifica il testo qui, ricordarsi di modificarlo anche su ACTOR!
     HEADER
-      SAY THE THIS.
-      IF THIS IS NOT plurale
---                                                                              TRANSLATE!
-        THEN "is carrying"
-        ELSE "are carrying"
-      END IF.
+      SAY THE THIS. "sta"
+      IF THIS IS plurale
+          THEN "$$nno"
+        END IF. "portando"
+--==============================================================================
+-- § 3.1.2 - Descrizione Inventario Vuoto
+--==============================================================================
     ELSE
-
-      IF THIS HAS NOT nome_proprio
-        THEN SAY THE THIS.
-        ELSE SAY THIS.
+      SAY THE THIS. "non sta"
+      IF THIS IS plurale
+        THEN "$$nno"
       END IF.
-
-      IF THIS IS NOT plurale
---                                                                              TRANSLATE!
-        THEN "is empty-handed."
-        ELSE "are empty-handed."
-      END IF.
-
+      "portando niente."
+--==============================================================================
+-- § 3.1.3 - Estrazione Oggetti
+--==============================================================================
+-- Questa parte del codice interviene quando si cerca di estrarre i contenuti di
+-- un attore (in altre parole, quando si cerca di prendere ad un attore oggetti
+-- che gli appartengono).
     EXTRACT
       CHECK THIS IS condiscendente
---                                                                              TRANSLATE!
-        ELSE "That seems to belong to"
-          IF THIS HAS NOT nome_proprio
-            THEN SAY THE THIS.
-            ELSE SAY THIS.
-          END IF.
-          "."
-
+        ELSE
+          SAY THE THIS. "non sarebbe"
+          IF THIS IS plurale
+            THEN "$$ro"
+          END IF. "d'accordo."
 END EVERY.
 
 
