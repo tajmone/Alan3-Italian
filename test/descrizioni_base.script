@@ -13,7 +13,7 @@ inventario
 ; Iniziamo a testare con instanze di PERSONA! Vogliamo verificare le risposte a
 ; vari tipi di azioni, tra cui i messaggi che riportano cosa stia trasportando
 ; l'attore, e le risposte quando cerchiamo di prendere oggetti da loro. A tal
-; scopo, abbiamo creato PNG condiscendenti (i civli) e altr no (PNG in divisa).
+; scopo, abbiamo creato PNG condiscendenti (i civli) e altri no (PNG in divisa).
 ; ==============================================================================
 esamina il poliziotto
 prendi il manganello

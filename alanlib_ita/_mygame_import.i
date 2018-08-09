@@ -1,4 +1,4 @@
--- "_mygame_import.i" v0.4.2 (2018/07/31)
+-- "_mygame_import.i" v0.4.3 (2018/08/09)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -116,8 +116,8 @@ THE mia_AT IsA blocco_definizioni
   -- easily overridden. Two of these messages are right here, the rest are
   -- e.g. in verb checks.
 
-  HAS hero_worn_header "You are wearing".
-  HAS hero_worn_else "You are not wearing anything.". 
+  HAS header_abbigliamento       "stai indossando".
+  HAS header_abbigliamento_else  "non stai indossando niente.".
 
   -- These messages are shown when you add "LIST abbigliamento." for example to the 'examine' verb.
 
@@ -400,10 +400,10 @@ THE mia_AT IsA blocco_definizioni
   -- checking whether an object is worn or not:
   --------------------------------------------- 
 
-  HAS check_obj_in_worn "You are not wearing $+1.".                 -- remove, take_off ('classes.i')
-  HAS check_obj_not_in_worn1 "You are already wearing $+1.".            -- put_on, wear ('classes.i')
-      HAS check_obj_not_in_worn2 "It doesn't make sense to $v something you're wearing.". -- attack, attack_with, kick, shoot, shoot_with
-  HAS check_obj_not_in_worn3 "You'll have to take off $+1 first.".        -- drop
+  HAS check_obj_in_worn  "You are not wearing $+1.".                 -- remove, take_off ('lib_classi.i')
+  HAS indossi_già        "Stai già indossando $+1.".                 -- indossa ('lib_classi.i')
+  HAS check_obj_not_in_worn2 "It doesn't make sense to $v something you're wearing.". -- attack, attack_with, kick, shoot, shoot_with
+  HAS indumento_andrebbe_rimosso  "Prima di poterlo fare dovresti toglierti $+1.". -- lascia
       
 
   -- c) Check della Locazione
@@ -527,7 +527,7 @@ END VERB.
 VERB ask_for
   DOES ONLY
     MAKE png compliant.   
-    -- see 'classes.i' -> ACTOR.
+    -- see 'lib_classi.i' -> ACTOR.
     -- It is only possible to get something from an NPC
     -- if the NPC is 'compliant'.
     LOCATE ogg IN hero.
@@ -1076,7 +1076,7 @@ VERB i
     -- If you leave the above addition out, the outcome will be just "You are carrying a bag.", with
     -- no comment on what is inside the bag.
     
-    IF COUNT DIRECTLY IN abbigliamento > 0    -- See the file 'classes.i', subclass 'clothing'.
+    IF COUNT DIRECTLY IN abbigliamento > 0    -- See the file 'lib_classi.i', subclass 'clothing'.
       THEN LIST abbigliamento.    -- This code will list what the hero is wearing.
     END IF.
   

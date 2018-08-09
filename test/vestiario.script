@@ -1,0 +1,18 @@
+; ******************************************************************************
+; *                                                                            *
+; *                              PROVE VESTIARIO                               *
+; *                                                                            *
+; ******************************************************************************
+esamina me
+inventario
+indossa la canottiera
+lascia la bombetta
+take off la bombetta
+indossa la bombetta
+indossa la bombetta
+indossa i jeans
+inventario
+; ==============================================================================
+;                              Test Messaggi Errore                             
+; ==============================================================================
+indossa la sedia

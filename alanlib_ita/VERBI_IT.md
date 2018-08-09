@@ -63,6 +63,7 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [tocca](#tocca)
     - [tocca_con](#tocca_con)
 - [INDOSSARE, SPOGLIARSI](#indossare-spogliarsi)
+    - [indossa](#indossa)
     - [spogliati](#spogliati)
 - [ATTACCARE, ROMPERE, BRUCIARE](#attaccare-rompere-bruciare)
     - [attacca](#attacca)
@@ -149,6 +150,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [esamina]
 - [gioca con]
 - [guida]
+- [indossa]
 - [inventario]
 - [lascia]
 - [lega]
@@ -1028,6 +1030,22 @@ sintassi:
 # INDOSSARE, SPOGLIARSI
 
 Questi verbi sono legati tra loro.
+
+- [spogliati]
+- [indossa]
+
+## indossa
+
+[indossa]: #indossa "indossa"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] indossare
+
+sintassi:
+
+    (indossa|mettiti) <ogg>
 
 
 ## spogliati

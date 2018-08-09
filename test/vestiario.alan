@@ -1,0 +1,102 @@
+--==============================================================================
+-- "Vestiario e Costumi" by Tristano Ajmone, 2018.
+--==============================================================================
+IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
+
+
+THE mia_AT IsA blocco_definizioni
+  ------------------------------------------------------------------------------
+  HAS       titolo  "Vestiario e Costumi".
+  HAS  sottotitolo  "Avventura per testare il vestiario.".
+  HAS       autore  "Tristano Ajmone".
+  HAS         anno   2018.
+  HAS     versione  "1".
+  ------------------------------------------------------------------------------
+END THE.
+
+
+
+-- =============================================================================
+
+----- Il Protagonista
+
+-- =============================================================================
+-- Diamo qualche accessorio di partenza all'eroe.
+
+
+--==============================================================================
+-- Abbigliamento Iniziale del Protagonista
+--==============================================================================
+THE hero IsA ACTOR.
+  HAS indossati { bombetta, jeans }.
+END THE hero.
+
+THE bombetta IsA ind_cappello.
+  NAME bombetta.
+  HAS articolo "la".
+  HAS xDesc "È una bombetta originale inglese.".
+END THE bombetta.
+
+THE jeans IsA ind_pantaloni AT camerino.
+  NAME jeans.
+  NAME blue jeans.
+  NAME blu jeans.
+  HAS articolo "il". --> sovrascriviamo l'articolo "i" della classe 'pantaloni'!
+  MENTIONED "paio di blue jeans"
+END THE jeans.
+
+-- =============================================================================
+
+----- Il Camerino
+
+-- =============================================================================
+
+THE camerino IsA LOCATION.
+  NAME 'Camerino degli Attori'
+END THE camerino.
+
+THE canottiera IsA ind_canottiera AT camerino.
+END THE canottiera.
+
+--==============================================================================
+-- Arredamento
+--==============================================================================
+THE sedia IsA object AT camerino.
+  HAS articolo "la".
+END THE sedia.
+
+
+-- =============================================================================
+
+----- Classi di Vestiario
+
+-- =============================================================================
+EVERY ind_cappello IsA indumento.
+  NAME cappello.
+  HAS val_testa 2.
+END EVERY.
+
+
+EVERY ind_canottiera IsA indumento.
+  NAME canottiera.
+  HAS articolo "la".
+  HAS val_tronco 2.
+END EVERY.
+
+
+EVERY ind_pantaloni IsA indumento.
+  NAME pantaloni.
+  HAS articolo "i".
+  HAS val_gambe 16.
+END EVERY.
+
+
+  -- HAS val_testa  0.
+  -- HAS val_tronco 0.
+  -- HAS val_gambe  0.
+  -- HAS val_piedi  0.
+  -- HAS val_mani   0.
+
+--------------------------------------------------------------------------------
+Start at camerino.
+DESCRIBE intestazione.

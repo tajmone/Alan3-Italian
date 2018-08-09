@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.4.11 (2018/08/06)
+-- "lib_definizioni.i" v0.4.12 (2018/08/09)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -574,9 +574,8 @@ EVERY blocco_definizioni IsA LOCATION
   -- easily overridden. Two of these messages are right here, the rest are
   -- for example in verb checks.
 
-  HAS hero_worn_header "You are wearing".
-  HAS hero_worn_else   "You are not wearing anything.".
-
+  HAS header_abbigliamento       "stai indossando".
+  HAS header_abbigliamento_else  "non stai indossando niente.".
 
 
 --==============================================================================
@@ -801,9 +800,9 @@ EVERY blocco_definizioni IsA LOCATION
   -- ===================
 
   --@TODO: migliora nome attributo e messaggio
-
+  -- VERBI: (svariati verbi)
   -- ORIGINAL EN:  check_current_loc_lit
-  HAS imp_luogo_buio  "È troppo buio.".                             --> (svariati verbi)
+  HAS imp_luogo_buio  "È troppo buio.".
 
 
   -- =========================
@@ -814,7 +813,6 @@ EVERY blocco_definizioni IsA LOCATION
   -- Dispositivo/Luce Rotto
   -- ----------------------
   -- VERBI: accendi
-
   -- ORIGINAL EN:  check_obj_not_broken
   HAS non_succede_nulla "Fatto, ma non succede nulla.".
 
@@ -823,7 +821,6 @@ EVERY blocco_definizioni IsA LOCATION
   -- Oggetto/Dipositivo Non È Rotto
   -- ------------------------------
   -- VERBI: aggiusta
-
   -- ORIGINAL EN:  check_obj_broken_sg/pl
   HAS ogg1_non_rotto_sg "$+1 non necessita di riparazioni.".
   HAS ogg1_non_rotto_pl "$+1 non necessitano di riparazioni.".
@@ -837,7 +834,6 @@ EVERY blocco_definizioni IsA LOCATION
   -- Tentare di aprire un oggetto già aperto
   -- ---------------------------------------
   -- VERBI: apri, apri_con
-
   -- ORIGINAL EN:  check_obj_not_open_sg/pl
   HAS ogg_già_aperto_ms "$+1 è già aperto".
   HAS ogg_già_aperto_mp "$+1 sono già aperti.".
@@ -848,7 +844,6 @@ EVERY blocco_definizioni IsA LOCATION
   -- Tentare di chiudere un oggetto già chiuso
   -- -----------------------------------------
   -- VERBI: chiudi, chiudi_con
-
   -- ORIGINAL EN:  check_obj_open1_sg/pl
   HAS ogg_già_chiuso_ms "$+1 è già chiuso".
   HAS ogg_già_chiuso_mp "$+1 sono già chiusi.".
@@ -859,7 +854,6 @@ EVERY blocco_definizioni IsA LOCATION
   -- Tentare di bloccare un oggetto già bloccato
   -- -------------------------------------------
   -- VERBI: blocca, blocca_con
-
   -- ORIGINAL EN:  check_obj_not_locked_sg/pl
   HAS ogg_già_bloccato_ms "$+1 è già bloccato".
   HAS ogg_già_bloccato_mp "$+1 sono già bloccati.".
@@ -870,7 +864,6 @@ EVERY blocco_definizioni IsA LOCATION
   -- Tentare di sbloccare un oggetto già sbloccato
   -- ---------------------------------------------
   -- VERBI: sblocca, sblocca_con
-
   -- ORIGINAL EN:  check_obj_locked_sg/pl
   HAS ogg_già_sbloccato_ms "$+1 è già sbloccato".
   HAS ogg_già_sbloccato_mp "$+1 sono già sbloccati.".
@@ -882,7 +875,6 @@ EVERY blocco_definizioni IsA LOCATION
   -- Un oggetto chiuso impedisce l'azione richista
   -- ---------------------------------------------
   -- VERBI: empty (in/on), pour (in/on), look_in
-
   -- ORIGINAL EN:  check_obj_open2_sg/pl
   HAS imp_ogg1_chiuso_ms "Non puoi farlo perché $+1 è chiuso".
   HAS imp_ogg1_chiuso_mp "Non puoi farlo perché $+1 sono chiusi.".
@@ -890,7 +882,6 @@ EVERY blocco_definizioni IsA LOCATION
   HAS imp_ogg1_chiuso_fp "Non puoi farlo perché $+1 sono chiuse.".
 
   -- VERBI: empty_in, pour_in, put_in, throw_in
-
   -- ORIGINAL EN:  check_obj2_open_sg/pl
   HAS imp_ogg2_chiuso_ms "Non puoi farlo perché $+2 è chiuso".
   HAS imp_ogg2_chiuso_mp "Non puoi farlo perché $+2 sono chiusi.".
@@ -909,7 +900,6 @@ EVERY blocco_definizioni IsA LOCATION
   -- Il giocatore non possiede un oggetto richiesto per l'azione
   -- -----------------------------------------------------------
   -- VERBI: empty_in, pour_in, put_in, throw_in
-
   -- ORIGINAL EN:  check_obj_in_hero  +  check_obj2_in_hero
   HAS non_possiedi_ogg1 "Non possiedi $+1.".              -- drop, fire, fire_at, put, show
   HAS non_possiedi_ogg2 "Non possiedi $+2.".             -- (numerous)
@@ -968,7 +958,6 @@ EVERY blocco_definizioni IsA LOCATION
   -- Il giocatore si trova già sul posto
   -- -----------------------------------
   -- VERBI: find, vai_a.
-
   -- ORIGINAL EN:  check_obj_not_hero4
   HAS sei_già_qui "Ti trovi già qui!".                                          --> find, vai_a
   -- HAS check_obj_not_hero4 "You're right here.".             -- find, go_to
@@ -978,10 +967,31 @@ EVERY blocco_definizioni IsA LOCATION
   -- L'oggetto si trova già sul posto
   -- --------------------------------
   -- VERBI: trova, follow, vai_a, dove_è.
-
   -- ORIGINAL EN:  check_obj_not_at_hero_sg/pl
   HAS ogg1_già_qui_sg "$+1 è proprio qui.".                -- find, follow, go_to, where_is
   HAS ogg1_già_qui_pl "$+1 sono proprio qui.".
+
+
+  -- ===============================
+  -- AZIONI RIGUARDANTI IL VESTIARIO
+  -- ===============================
+  -- VERBI: indossa.
+  -- ORIGINAL EN:  check_obj_not_in_worn1
+  HAS indossi_già  "Stai già indossando $+1.".
+
+  -- VERBI: lascia.
+  -- ORIGINAL EN:  check_obj_not_in_worn3
+  HAS indumento_andrebbe_rimosso  "Prima dovresti toglierti $+1.".
+
+  -- DELETE WHEN DONE:
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  
+  -- checking whether an object is worn or not:
+  ---------------------------------------------
+  HAS check_obj_in_worn "You are not wearing $+1.".                 -- remove, take_off ('classes.i')
+  HAS check_obj_not_in_worn2 "It doesn't make sense to $v something you're wearing.". -- attack, attack_with, kick, shoot, shoot_with
+
 
 
   -- ============================================================================
@@ -1175,14 +1185,6 @@ EVERY blocco_definizioni IsA LOCATION
   HAS check_obj_not_on_surface_sg "$+1 is already on $+2.".           -- put_on
   HAS check_obj_not_on_surface_pl "$+1 are already on $+2.".
 
-
-  -- checking whether an object is worn or not:
-  ---------------------------------------------
-
-  HAS check_obj_in_worn "You are not wearing $+1.".                 -- remove, take_off ('classes.i')
-  HAS check_obj_not_in_worn1 "You are already wearing $+1.".            -- put_on, wear ('classes.i')
-  HAS check_obj_not_in_worn2 "It doesn't make sense to $v something you're wearing.". -- attack, attack_with, kick, shoot, shoot_with
-  HAS check_obj_not_in_worn3 "You'll have to take off $+1 first.".        -- drop
 
 
   -- c) checking location states

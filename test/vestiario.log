@@ -1,0 +1,56 @@
+
+Vestiario e Costumi 
+Avventura per testare il vestiario. 
+(C) Tristano Ajmone, 2018. 
+Programmed with the ALAN Interactive Fiction Language v3.0 beta5
+Standard Library v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+Camerino degli Attori
+Puoi vedere una canottiera e una sedia qui.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                              PROVE VESTIARIO                               *
+> ; *                                                                            *
+> ; ******************************************************************************
+> esamina me
+Non noti niente di insolito in te stesso.
+
+> inventario
+Non stai portando niente. Stai indossando un paio di blue jeans e una 
+bombetta.
+
+> indossa la canottiera
+Prendi la canottiera e la indossi.
+
+> lascia la bombetta
+Prima dovresti toglierti la bombetta.
+
+> take off la bombetta
+Ti togli la bombetta.
+
+> indossa la bombetta
+Indossi la bombetta.
+
+> indossa la bombetta
+Stai già indossando la bombetta.
+
+> indossa i jeans
+Stai già indossando il paio di blue jeans.
+
+> inventario
+Non stai portando niente. Stai indossando una canottiera, un paio di blue
+jeans e una bombetta.
+
+> ; ==============================================================================
+> ;                              Test Messaggi Errore                             
+> ; ==============================================================================
+> indossa la sedia
+La sedia non è qualcosa che puoi indossare.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

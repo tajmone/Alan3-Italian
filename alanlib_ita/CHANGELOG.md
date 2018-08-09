@@ -11,6 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/08/09](#20180809)
+    - [Verb Responses](#verb-responses)
+    - [Verb: `wear`](#verb-wear)
 - [2018/08/08](#20180808)
     - [Deleted `present_actor` Attribute](#deleted-present_actor-attribute)
     - [Translated Actors Inventory Messages](#translated-actors-inventory-messages)
@@ -26,7 +29,7 @@ Status: Alpha stage.
 - [2018/08/06 \(1\)](#20180806-1)
     - [Library Attributes](#library-attributes)
 - [2018/08/02 \(3\)](#20180802-3)
-    - [Verb Responses](#verb-responses)
+    - [Verb Responses](#verb-responses-1)
     - [Verbs: `tie` and `tie_to`](#verbs-tie-and-tie_to)
 - [2018/08/02 \(2\)](#20180802-2)
 - [2018/08/02 \(1\)](#20180802-1)
@@ -34,7 +37,7 @@ Status: Alpha stage.
     - [Verbs: `touch` and `touch_with`](#verbs-touch-and-touch_with)
     - [Code Cleanup](#code-cleanup)
 - [2018/08/01 \(4\)](#20180801-4)
-    - [Verb Responses](#verb-responses-1)
+    - [Verb Responses](#verb-responses-2)
     - [Verb: `sing`](#verb-sing)
     - [Verb: `kiss`](#verb-kiss)
     - [Verb: `pull`](#verb-pull)
@@ -42,7 +45,7 @@ Status: Alpha stage.
     - [Verbs: `attack` and `attack_with`](#verbs-attack-and-attack_with)
 - [2018/08/01 \(2\)](#20180801-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
-    - [Verb Responses](#verb-responses-2)
+    - [Verb Responses](#verb-responses-3)
     - [Verbs: `cut` and `cut_with`](#verbs-cut-and-cut_with)
     - [Verb: `dance`](#verb-dance)
     - [Verb: `dig`](#verb-dig)
@@ -56,7 +59,7 @@ Status: Alpha stage.
     - [Verb: `think_about`](#verb-think_about)
 - [2018/07/31 \(1\)](#20180731-1)
     - [Verb Restriction Attributes](#verb-restriction-attributes-2)
-    - [Verb Responses](#verb-responses-3)
+    - [Verb Responses](#verb-responses-4)
     - [Verb: `fix`](#verb-fix)
 - [2018/07/29 \(2\)](#20180729-2)
     - [Remove Verb Restriction Attributes](#remove-verb-restriction-attributes)
@@ -68,9 +71,9 @@ Status: Alpha stage.
     - [Verb Restriction Attributes](#verb-restriction-attributes-3)
     - [Testo dei Verbi](#testo-dei-verbi)
 - [2018/07/28 \(3\)](#20180728-3)
-    - [Verb Responses](#verb-responses-4)
-- [2018/07/28 \(2\)](#20180728-2)
     - [Verb Responses](#verb-responses-5)
+- [2018/07/28 \(2\)](#20180728-2)
+    - [Verb Responses](#verb-responses-6)
     - [Verb Restriction Attributes](#verb-restriction-attributes-4)
     - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
 - [2018/07/28 \(1\)](#20180728-1)
@@ -266,6 +269,35 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/08/09
+
+- [`lib_classi.i`][lib_classi] (v0.4.10)
+- [`lib_definizioni.i`][lib_definizioni] (v0.4.12)
+- [`lib_verbi.i`][lib_verbi] (v0.4.15)
+
+## Verb Responses
+
+Translated verb responses attributes:
+
+|       Attribute EN       |         Attribute IT         |               Text              |
+|--------------------------|------------------------------|---------------------------------|
+| `hero_worn_header`       | `header_abbigliamento`       | `stai indossando`               |
+| `hero_worn_else`         | `header_abbigliamento_else`  | `non stai indossando niente.`   |
+| `check_obj_not_in_worn1` | `indossi_già`                | `Stai già indossando $+1.`      |
+| `check_obj_not_in_worn3` | `indumento_andrebbe_rimosso` | `Prima dovresti toglierti $+1.` |
+
+## Verb: `wear`
+
+Translated verb `indossa`, "__indossa__" (_wear_):
+
+    indossa (ogg)
+    mettiti (ogg)
+
+with no synonyms.
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/08/08
 

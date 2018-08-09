@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.4.14 (2018/08/06)
+-- "lib_verbi.i" v0.4.15 (2018/08/09)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -54,6 +54,7 @@
 --| esamina            | guarda, descrivi, osserva, X | esamina (ogg)                  |   | 1 | x |
 --| gioca_con          |                              | gioca con (ogg)                |   | 1 | x |
 --| guida              |                              | guida (veicolo)                |   | 1 |   |
+--| indossa            | mettiti                      | indossa (ogg)                  |   | 1 | x |
 --| inventario         | inv                          | inventario                     | x | 0 |   |
 --| lascia             | abbandona, metti giù, posa   | lascia (ogg)*                  |   | 1 | x |
 --| lega               |                              | lega (ogg)                     |   | 1 | x |
@@ -283,7 +284,7 @@
 -->>> use_with                                             use (obj) with (instr)              2       x
 ----- verbose                                              verbose                             0
 -->>> wait        (+ z)                                    wait                                0
------ wear                                                 wear (obj)                          1       x
+-->>> wear                                                 wear (obj)                          1       x
 -->>> what_am_i                                            what am i                           0
 -->>> what_is                                              what is (obj)                       1       x
 -->>> where_am_i                                           where am i                          0
@@ -2405,6 +2406,77 @@ VERB guida_errore
 END VERB guida_errore.
 
 
+-- ==============================================================
+
+
+----- @INDOSSA --> @WEAR
+
+
+-- ==============================================================
+
+-- SYNTAX  wear = wear (ogg)
+--         wear = put 'on' (ogg).
+--         wear = put (ogg) 'on'.
+--         wear = don (ogg).
+
+
+SYNTAX  indossa = indossa (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "indossare."
+
+        indossa = mettiti (ogg).
+
+
+ADD TO EVERY OBJECT
+  VERB indossa
+    CHECK mia_AT CAN indossare
+        ELSE SAY  azione_bloccata  OF mia_AT.
+    AND ogg NOT IN abbigliamento
+--                                                                              TRANSLATE!
+      ELSE SAY  indossi_già  OF mia_AT.
+    AND ogg IS prendibile
+      ELSE
+        IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
+          THEN SAY  check_obj_takeable  OF mia_AT.
+          ELSE SAY  check_obj_takeable  OF mia_AT.
+        END IF.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
+            END IF.
+        END IF.
+
+    DOES
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "indossare."
+
+  END VERB indossa.
+END ADD TO.
+
+
 
 -- ==============================================================
 
@@ -2481,7 +2553,7 @@ ADD TO EVERY OBJECT
     AND ogg IN hero
       ELSE
         IF ogg IN abbigliamento
-          THEN SAY  check_obj_not_in_worn3  OF mia_AT.
+          THEN SAY  indumento_andrebbe_rimosso  OF mia_AT.
           ELSE SAY  non_possiedi_ogg1  OF mia_AT.
         END IF.
 
@@ -9698,72 +9770,6 @@ END VERB verbose.
 
 
 
-
-
--- ==============================================================
-
-
------ WEAR
-
-
--- ==============================================================
-
-
-
-SYNTAX wear = wear (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "indossare."
-
-   wear = put 'on' (ogg).
-   wear = put (ogg) 'on'.
-   wear = don (ogg).
-
-
-ADD TO EVERY OBJECT
-  VERB wear
-    CHECK mia_AT CAN indossare
-        ELSE SAY  azione_bloccata  OF mia_AT.
-    AND ogg NOT IN abbigliamento
-      ELSE SAY  check_obj_not_in_worn1  OF mia_AT.
-    AND ogg IS prendibile
-      ELSE
-        IF THIS IS NOT plurale
-          THEN SAY  check_obj_takeable  OF mia_AT.
-          ELSE SAY  check_obj_takeable  OF mia_AT.
-        END IF.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY  imp_luogo_buio  OF mia_AT.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY  ogg1_distante_sg  OF mia_AT.
-              ELSE SAY  ogg1_distante_pl  OF mia_AT.
-            END IF.
-        END IF.
-
-    DOES
-      IF ogg IS NOT plurale
-        THEN "That's not"
-        ELSE "Those are not"
-      END IF.
-      "something you can wear."
-
-  END VERB wear.
-END ADD TO.
 
 
 -- end of file.

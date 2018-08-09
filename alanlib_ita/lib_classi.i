@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.4.9 (2018/08/08)
+-- "lib_classi.i" v0.4.10 (2018/08/09)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -401,8 +401,10 @@ END ADD.
 
 THE abbigliamento IsA ENTITY
   CONTAINER TAKING indumento.
-    HEADER SAY  hero_worn_header  OF mia_AT.
-    ELSE SAY  hero_worn_else  OF mia_AT.
+    HEADER
+      SAY  mia_AT:header_abbigliamento.
+    ELSE
+      SAY  mia_AT:header_abbigliamento_else.
 END THE.
 
 
@@ -422,10 +424,10 @@ EVERY indumento IsA OBJECT
   IS  genere 0.
 
   HAS val_testa  0.
-  HAS val_mani   0.
-  HAS val_piedi  0.
   HAS val_tronco 0.
   HAS val_gambe  0.
+  HAS val_piedi  0.
+  HAS val_mani   0.
 
   IS NOT indossato. -- not in the 'wearing' set of any actor; this attribute
                     -- is used internally in the library; ignore
@@ -488,7 +490,7 @@ EVERY indumento IsA OBJECT
   -- to allow for example a wallet to be put into a jacket
 
   -- If the clothing contains something, for example if a jacket contains a wallet,
-      -- the wallet will be mentioned by default when the jacket is examined:
+  -- the wallet will be mentioned by default when the jacket is examined:
 
 
   VERB esamina
@@ -503,13 +505,17 @@ EVERY indumento IsA OBJECT
 
 
 
-    VERB wear
+--==============================================================================
+-- § x.x.x - Verbo "indossa"
+--==============================================================================
+
+  VERB indossa
 
     CHECK  genere OF THIS =  genere OF hero OR  genere OF THIS = 0
+--                                                                              TRANSLATE!
       ELSE SAY  check_clothing_sex  OF mia_AT.
 
     DOES ONLY
-
 
 --------------------------------------------------------------------
 -- 'wear_flag' is a multi-purpose flag used for several purposes in
@@ -655,13 +661,15 @@ EVERY indumento IsA OBJECT
     IF wear_flag OF hero >1
       THEN
         IF THIS NOT IN hero
-          THEN "You pick up the" SAY THE THIS. "."
+          THEN "prendi" SAY THE THIS. "."
+       -- THEN "You pick up the" SAY THE THIS. "."
         END IF.
 
         LOCATE THIS IN hero.
         EMPTY abbigliamento IN tempworn.
         LIST tempworn.
 
+--                                                                              TRANSLATE!
         "Trying to put" SAY THE THIS. "on isn't very sensible."
 
         EMPTY tempworn IN abbigliamento.
@@ -670,23 +678,26 @@ EVERY indumento IsA OBJECT
       THEN
         LOCATE THIS IN abbigliamento.
 
-        "You pick up the" SAY THE THIS.
-
-        IF THIS IS NOT plurale
-          THEN "and put it on."
-          ELSE "and put them on."
-        END IF.
+        "prendi" SAY THE THIS. "e l$$" SAY THIS:vocale. "indossi."
+     -- "You pick up the" SAY THE THIS.
+     -- IF THIS IS NOT plurale
+     --   THEN "and put it on."
+     --   ELSE "and put them on."
+     -- END IF.
 
     ELSE
       LOCATE THIS IN abbigliamento.
       MAKE THIS indossato.
       INCLUDE THIS IN indossati OF hero.
-      "You put on" SAY THE THIS. "."
+      "indossi" SAY THE THIS. "."
+   -- "You put on" SAY THE THIS. "."
     END IF.
 
-END VERB wear.
+END VERB indossa.
 
-
+--==============================================================================
+-- § x.x.x - Verbo "remove"
+--==============================================================================
 
 VERB remove
   CHECK THIS IN abbigliamento
@@ -797,10 +808,12 @@ VERB remove
   IF wear_flag OF hero > 0
     THEN
       LIST abbigliamento.
+--                                                                              TRANSLATE!
       "Trying to take" SAY THE THIS. "off isn't very sensible."
     ELSE
       LOCATE THIS IN hero.
-      "You take off" SAY THE THIS. "."
+      "Ti togli" SAY THE THIS. "."
+   -- "You take off" SAY THE THIS. "."
       EXCLUDE THIS FROM indossati OF hero.
       MAKE THIS NOT indossato.
   END IF.
@@ -828,6 +841,7 @@ END ADD TO.
 
 THE tempworn IsA OBJECT
   CONTAINER TAKING indumento.
+--                                                                              TRANSLATE!
   HEADER "You're already wearing"
 END THE tempworn.
 
@@ -839,25 +853,25 @@ END THE tempworn.
 
 
 EVENT worn_clothing_check
-   FOR EACH ac IsA ACTOR
-  DO
-    FOR EACH cl IsA indumento, IN indossati OF ac
-      DO
-        IF ac = hero
-          THEN
-            IF cl NOT IN abbigliamento
-              THEN LOCATE cl IN abbigliamento.
-                MAKE cl indossato.
-            END IF.
-          ELSE
-            IF cl NOT IN ac
-              THEN LOCATE cl IN ac.
-                MAKE cl indossato.
-            END IF.
-        END IF.
-    END FOR.
-   END FOR.
-   SCHEDULE worn_clothing_check AFTER 1.
+  FOR EACH ac IsA ACTOR
+    DO
+      FOR EACH cl IsA indumento, IN indossati OF ac
+        DO
+          IF ac = hero
+            THEN
+              IF cl NOT IN abbigliamento
+                THEN LOCATE cl IN abbigliamento.
+                  MAKE cl indossato.
+              END IF.
+            ELSE
+              IF cl NOT IN ac
+                THEN LOCATE cl IN ac.
+                  MAKE cl indossato.
+              END IF.
+          END IF.
+      END FOR.
+  END FOR.
+  SCHEDULE worn_clothing_check AFTER 1.
 END EVENT.
 
 
@@ -2663,8 +2677,8 @@ EVERY persona IsA ACTOR
     HEADER
       SAY THE THIS. "sta"
       IF THIS IS plurale
-          THEN "$$nno"
-        END IF. "portando"
+        THEN "$$nno"
+      END IF. "portando"
 --==============================================================================
 -- § 3.1.2 - Descrizione Inventario Vuoto
 --==============================================================================
