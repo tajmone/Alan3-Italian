@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.4.12 (2018/08/09)
+-- "lib_definizioni.i" v0.4.13 (2018/08/11)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -959,17 +959,15 @@ EVERY blocco_definizioni IsA LOCATION
   -- -----------------------------------
   -- VERBI: find, vai_a.
   -- ORIGINAL EN:  check_obj_not_hero4
-  HAS sei_già_qui "Ti trovi già qui!".                                          --> find, vai_a
-  -- HAS check_obj_not_hero4 "You're right here.".             -- find, go_to
-  
+  HAS sei_già_qui  "Ti trovi già qui!".
 
   -- --------------------------------
   -- L'oggetto si trova già sul posto
   -- --------------------------------
   -- VERBI: trova, follow, vai_a, dove_è.
   -- ORIGINAL EN:  check_obj_not_at_hero_sg/pl
-  HAS ogg1_già_qui_sg "$+1 è proprio qui.".                -- find, follow, go_to, where_is
-  HAS ogg1_già_qui_pl "$+1 sono proprio qui.".
+  HAS ogg1_già_qui_sg  "$+1 è proprio qui.".
+  HAS ogg1_già_qui_pl  "$+1 sono proprio qui.".
 
 
   -- ===============================
@@ -983,13 +981,17 @@ EVERY blocco_definizioni IsA LOCATION
   -- ORIGINAL EN:  check_obj_not_in_worn3
   HAS indumento_andrebbe_rimosso  "Prima dovresti toglierti $+1.".
 
+  -- VERBI: togliti.
+  -- ORIGINAL EN:  check_obj_in_worn
+  HAS non_indossi  "Non stai indossando $+1.".
+
+
   -- DELETE WHEN DONE:
 
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
   
   -- checking whether an object is worn or not:
   ---------------------------------------------
-  HAS check_obj_in_worn "You are not wearing $+1.".                 -- remove, take_off ('classes.i')
   HAS check_obj_not_in_worn2 "It doesn't make sense to $v something you're wearing.". -- attack, attack_with, kick, shoot, shoot_with
 
 
@@ -1438,6 +1440,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN tirare.                   --> pull
   CAN toccare.                  --> touch (+ feel)
   CAN toccare_con.              --> touch_with
+  CAN togliersi_indumento.      --> remove
   CAN trovare.                  --> find         (+ locate)
   CAN tuffarsi.                 --> dive
   CAN tuffarsi_in.              --> dive_in
@@ -1493,7 +1496,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN put_near.
   CAN put_on.
   CAN put_under.
-  CAN remove.
   CAN rub.
   CAN 'say'.
   CAN say_to.
@@ -1642,6 +1644,7 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT tirare.                   --> pull
   MAKE mia_AT toccare.                  --> touch (+ feel)
   MAKE mia_AT toccare_con.              --> touch_with
+  MAKE mia_AT togliersi_indumento.      --> remove
   MAKE mia_AT trovare.                  --> find         (+ locate)
   MAKE mia_AT tuffarsi.                 --> dive
   MAKE mia_AT tuffarsi_in.              --> dive_in
@@ -1697,7 +1700,6 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT put_near.
   MAKE mia_AT put_on.
   MAKE mia_AT put_under.
-  MAKE mia_AT remove.
   MAKE mia_AT rub.
   MAKE mia_AT 'say'.
   MAKE mia_AT say_to.
@@ -1857,6 +1859,7 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT tirare.                   --> pull
   MAKE mia_AT NOT toccare.                  --> touch (+ feel)
   MAKE mia_AT NOT toccare_con.              --> touch_with
+  MAKE mia_AT NOT togliersi_indumento.      --> remove
   MAKE mia_AT NOT trovare.                  --> find         (+ locate)
   MAKE mia_AT NOT tuffarsi.                 --> dive
   MAKE mia_AT NOT tuffarsi_in.              --> dive_in
@@ -1913,7 +1916,6 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT put_near.
   MAKE mia_AT NOT put_on.
   MAKE mia_AT NOT put_under.
-  MAKE mia_AT NOT remove.
   MAKE mia_AT NOT rub.
   MAKE mia_AT NOT 'say'.
   MAKE mia_AT NOT say_to.
@@ -2057,6 +2059,7 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT tirare.                   --> pull
   MAKE mia_AT NOT toccare.                  --> touch (+ feel)
   MAKE mia_AT NOT toccare_con.              --> touch_with
+  MAKE mia_AT NOT togliersi_indumento.      --> remove
   MAKE mia_AT NOT trovare.                  --> find         (+ locate)
   MAKE mia_AT NOT tuffarsi.                 --> dive
   MAKE mia_AT NOT tuffarsi_in.              --> dive_in
@@ -2113,7 +2116,6 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT put_near.
   MAKE mia_AT NOT put_on.
   MAKE mia_AT NOT put_under.
-  MAKE mia_AT NOT remove.
   MAKE mia_AT NOT rub.
   MAKE mia_AT NOT 'say'.
   MAKE mia_AT NOT say_to.
@@ -2242,6 +2244,7 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT tirare.                   --> pull
   MAKE mia_AT NOT toccare.                  --> touch (+ feel)
   MAKE mia_AT NOT toccare_con.              --> touch_with
+  MAKE mia_AT NOT togliersi_indumento.      --> remove
   MAKE mia_AT NOT trovare.                  --> find         (+ locate)
   MAKE mia_AT NOT tuffarsi.                 --> dive
   MAKE mia_AT NOT tuffarsi_in.              --> dive_in
@@ -2298,7 +2301,6 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT put_near.
   MAKE mia_AT NOT put_on.
   MAKE mia_AT NOT put_under.
-  MAKE mia_AT NOT remove.
   MAKE mia_AT NOT rub.
   MAKE mia_AT NOT 'say'.
   MAKE mia_AT NOT say_to.

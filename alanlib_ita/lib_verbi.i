@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.4.15 (2018/08/09)
+-- "lib_verbi.i" v0.4.16 (2018/08/11)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -88,6 +88,7 @@
 --| tira               |                              | tira (ogg)                     |   | 1 | x |
 --| tocca              | accarezza, carezza           | tocca (ogg)                    |   | 1 | x |
 --| tocca_con          | accarezza, carezza           | tocca (ogg) con (strum)        |   | 2 | x |
+--| togliti            | sfilati, levati              | togliti (ogg)                  |   | 1 | x |
 --| trova              |                              | trova (ogg)                    |   | 1 | x |
 --| uccidi             | ammazza                      | uccidi (vittima)               |   | 1 |   |
 --| uccidi_con         | ammazza                      | uccidi (vittima) con (arma)    |   | 2 |   |
@@ -225,7 +226,7 @@
 ----- put_under                                            put (obj) under (bulk)              2       x
 -->>> quit        (+ q)                                    quit                                0
 -->>> read                                                 read (obj)                          1       x
------ remove                                               remove (obj)                        1       x
+-->>> remove                                               remove (obj)                        1       x
 -->>> restart                                              restart                             0
 -->>> restore                                              restore                             0
 ----- rub                                                  rub (obj)                           1       x
@@ -2414,6 +2415,8 @@ END VERB guida_errore.
 
 -- ==============================================================
 
+-- @ALTRI SINONIMI: 'infilati', 'calza' 
+
 -- SYNTAX  wear = wear (ogg)
 --         wear = put 'on' (ogg).
 --         wear = put (ogg) 'on'.
@@ -2423,6 +2426,8 @@ END VERB guida_errore.
 SYNTAX  indossa = indossa (ogg)
   WHERE ogg IsA OBJECT
     ELSE
+      -- TODO: Aggiungi messaggio alternativo se (ogg) = hero!                  FIXME!
+      --       Con versione hero maschile/femminiale!
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
         THEN SAY  ogg1_inadatto_sg  OF mia_AT.
@@ -4256,7 +4261,7 @@ END ADD TO.
 
 
 -- ==============================================================
-
+-- @ALTRI SINONIMI: 'denudati'
 
 SYNTAX spogliati = spogliati.
 
@@ -4692,6 +4697,58 @@ END ADD TO.
 -- ==============================================================
 
 
+-- @TOGLITI --> @REMOVE
+
+
+-- ==============================================================
+-- NOTA: 'togliti', 'levati', 'sfilati'.
+
+-- this verb only works with clothing (see 'classes.i').
+
+-- SYNTAX  remove = remove (ogg)
+--         remove = take 'off' (ogg).
+--         remove = take (ogg) 'off'.
+--         remove = doff (ogg).
+
+
+SYNTAX  togliti = togliti (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      -- TODO: Aggiungi messaggio alternativo se (ogg) = hero!                  FIXME!
+      --       Con versione hero maschile/femminiale!
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "indossare o toglierti."
+      --| NOTA: il messaggio originale inglese era:
+      --|       "That's not something you can remove since you're not wearing it."
+      --|       Ma non mi piaceva dato che non chiarificava che il parametro non
+      --|       è un indossabile per sua natura.
+
+        togliti = levati (ogg).
+        togliti = sfilati (ogg).
+
+
+ADD TO EVERY OBJECT
+  VERB togliti
+    CHECK mia_AT CAN togliersi_indumento
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    DOES
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "indossare o toglierti."
+  END VERB togliti.
+END ADD TO.
+
+
+-- ==============================================================
+
+
 ----- @TROVA --> @FIND
 
 
@@ -4703,6 +4760,7 @@ END ADD TO.
 SYNTAX trova = trova (ogg)!
   WHERE ogg IsA THING
     ELSE
+--                                                                              TRANSLATE!
       IF ogg IS NOT plurale
       -- @NOTA: Qui potrebbe volerci un messaggio ad hoc per questo verbo!
         THEN SAY  illegal_parameter_sg  OF mia_AT.
@@ -8039,49 +8097,6 @@ END ADD TO.
 
 
 
-
-
--- ==============================================================
-
-
--- REMOVE
-
-
--- ==============================================================
-
--- this verb only works with clothing (see 'classes.i').
-
-SYNTAX  remove = remove (ogg)
-    WHERE ogg IsA OBJECT
-      ELSE
-        IF ogg IS NOT plurale
-          THEN SAY  illegal_parameter_sg  OF mia_AT. "since you're not wearing it."
-          ELSE SAY  illegal_parameter_pl  OF mia_AT. "since you're not wearing them."
-        END IF.
-
-        remove = take 'off' (ogg).
-        remove = take (ogg) 'off'.
-        remove = doff (ogg).
-
-
-ADD TO EVERY OBJECT
-  VERB remove
-    CHECK mia_AT CAN remove
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    DOES
-      IF ogg IS NOT plurale
-        THEN "That's"
-        ELSE "Those are"
-      END IF.
-
-      "not something you can remove since you're not wearing"
-
-      IF ogg IS NOT plurale
-        THEN "it."
-        ELSE "them."
-      END IF.
-  END VERB remove.
-END ADD TO.
 
 
 

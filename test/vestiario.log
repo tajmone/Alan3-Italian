@@ -9,7 +9,7 @@ Tutti i diritti riservati.
 
 
 Camerino degli Attori
-Puoi vedere una canottiera e una sedia qui.
+Puoi vedere una canottiera e una sedia qui. There is un'assistente here.
 
 > ; ******************************************************************************
 > ; *                                                                            *
@@ -29,7 +29,7 @@ Prendi la canottiera e la indossi.
 > lascia la bombetta
 Prima dovresti toglierti la bombetta.
 
-> take off la bombetta
+> togliti la bombetta
 Ti togli la bombetta.
 
 > indossa la bombetta
@@ -45,11 +45,32 @@ Stai già indossando il paio di blue jeans.
 Non stai portando niente. Stai indossando una canottiera, un paio di blue
 jeans e una bombetta.
 
+> sfilati i jeans
+Ti togli il paio di blue jeans.
+
+> sfilati i jeans
+Non stai indossando il paio di blue jeans.
+
 > ; ==============================================================================
 > ;                              Test Messaggi Errore                             
 > ; ==============================================================================
 > indossa la sedia
 La sedia non è qualcosa che puoi indossare.
+
+> indossa l'assistente
+L'assistente non è qualcosa che puoi indossare.
+
+> indossa me
+Il hero non è qualcosa che puoi indossare.
+
+> togliti la sedia
+La sedia non è qualcosa che puoi indossare o toglierti.????
+
+> togliti l'assistente
+L'assistente non è qualcosa che puoi indossare o toglierti.
+
+> togliti me
+Il hero non è qualcosa che puoi indossare o toglierti.
 
 > 
 

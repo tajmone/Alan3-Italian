@@ -7,12 +7,19 @@ esamina me
 inventario
 indossa la canottiera
 lascia la bombetta
-take off la bombetta
+togliti la bombetta
 indossa la bombetta
 indossa la bombetta
 indossa i jeans
 inventario
+sfilati i jeans
+sfilati i jeans
 ; ==============================================================================
 ;                              Test Messaggi Errore                             
 ; ==============================================================================
 indossa la sedia
+indossa l'assistente
+indossa me
+togliti la sedia
+togliti l'assistente
+togliti me

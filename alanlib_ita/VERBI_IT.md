@@ -65,6 +65,7 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 - [INDOSSARE, SPOGLIARSI](#indossare-spogliarsi)
     - [indossa](#indossa)
     - [spogliati](#spogliati)
+    - [togliti](#togliti)
 - [ATTACCARE, ROMPERE, BRUCIARE](#attaccare-rompere-bruciare)
     - [attacca](#attacca)
     - [attacca_con](#attacca_con)
@@ -156,6 +157,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [lega]
 - [lega a]
 - [leggi]
+- [levati] (indumento)
 - [libera]
 - [mangia]
 - [medita]
@@ -195,6 +197,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [scrivi]
 - [serra]
 - [serra con]
+- [sfilati] (indumento)
 - [sfonda]
 - [sfonda con]
 - [sì]
@@ -214,6 +217,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [togli]
 - [tocca]
 - [tocca con]
+- [togliti] (indumento)
 - [trasporta]
 - [trova]
 - [uccidi]
@@ -222,6 +226,8 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [usa con]
 - [vai a]
 - [vendi]
+
+
 
 -------------------------------------------------------------------------------
 
@@ -1031,8 +1037,9 @@ sintassi:
 
 Questi verbi sono legati tra loro.
 
-- [spogliati]
 - [indossa]
+- [spogliati]
+- [togliti]
 
 ## indossa
 
@@ -1071,6 +1078,23 @@ esito:
 - Nulla, ti dice che ripensandoci non è una buona idea.
 
 > __NOTA__ — La definizione del verbo contiene del codice (commentato) di esempio su come implementare l'azione di spogliarsi. Quella parte andrebbe controllata meglio (messaggi, ecc.).
+
+
+## togliti
+
+[togliti]: #togliti "togliti"
+[levati]: #togliti "togliti"
+[sfilati]: #togliti "togliti"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] togliersi_indumento
+
+sintassi:
+
+    (togliti|levati|sfilati) <ogg>
+
 
 
 -------------------------------------------------------------------------------

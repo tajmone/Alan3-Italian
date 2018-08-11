@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.4.10 (2018/08/09)
+-- "lib_classi.i" v0.4.11 (2018/08/11)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -696,12 +696,12 @@ EVERY indumento IsA OBJECT
 END VERB indossa.
 
 --==============================================================================
--- § x.x.x - Verbo "remove"
+-- § x.x.x - Verbo "togliti"
 --==============================================================================
 
-VERB remove
+VERB togliti
   CHECK THIS IN abbigliamento
-    ELSE SAY  check_obj_in_worn  OF mia_AT.
+    ELSE SAY  non_indossi  OF mia_AT.
   AND CURRENT LOCATION IS illuminato
     ELSE SAY  imp_luogo_buio  OF mia_AT.
 
@@ -817,7 +817,7 @@ VERB remove
       EXCLUDE THIS FROM indossati OF hero.
       MAKE THIS NOT indossato.
   END IF.
-END VERB remove.
+END VERB togliti.
 
 
 END EVERY.

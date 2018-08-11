@@ -47,6 +47,20 @@ END THE jeans.
 
 -- =============================================================================
 
+----- L'Assistente
+
+-- =============================================================================
+
+THE assistente IsA femmina AT camerino.
+  NAME assistente.
+  NAME 'l''assistente'.
+  HAS articolo "l'".
+  HAS xDesc "È la tua assistente di scena per l'abbigliamento ed i costumi.".
+END THE assistente.
+
+
+-- =============================================================================
+
 ----- Il Camerino
 
 -- =============================================================================
