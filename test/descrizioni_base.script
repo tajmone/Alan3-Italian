@@ -23,16 +23,16 @@ esamina il predicatore
 ; ******************************************************************************
 ; *                            TEST SU CLASSE ACTOR                            *
 ; ******************************************************************************
-; Ora testiamo con istanze di ACTOR che non discendono da PERSONA, poiché il
-; codice che si occupa dei contenuti degli attori è duplicato sia su ACTOR che
-; su persona, quindi dobbiamo controllare che i messaggi siano gestiti bene su
-; entrambe le classi!
+; Ora testiamo con istanze di ACTOR che non discendono da PERSONA. Dato che il
+; codice che si occupa dei contenuti degli attori è implementato sia su ACTOR
+; che su persona, dobbiamo controllare che i messaggi siano gestiti bene su
+; entrambe le classi! Abbiamo reso condiscendenti gli animali domestici, mentre
+; quelli selvatici no.
 ; ==============================================================================
 est
-esamina il vigile
-prendi taccuino
-esamina le nonnine
-prendi la crostata
-esamina le nonnine
-
-
+esamina il leone
+esamina lo scimpanzé
+prendi la banana
+esamina le galline
+prendi la uova
+esamina le galline

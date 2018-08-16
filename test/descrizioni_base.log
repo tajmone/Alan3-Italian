@@ -9,8 +9,8 @@ Tutti i diritti riservati.
 
 
 Piazza delle Persone
-In questa piazza tutti gli attori sono della classe PERSONA. There is un 
-poliziotto here. There is un predicatore here.
+In questa piazza tutti gli attori sono della classe PERSONA. C'è un 
+poliziotto qui. C'è un predicatore qui.
 
 > ; ==============================================================================
 > ;                            INVENTARIO PROTAGONISTA                            
@@ -58,37 +58,39 @@ non sta portando niente.
 > ; ******************************************************************************
 > ; *                            TEST SU CLASSE ACTOR                            *
 > ; ******************************************************************************
-> ; Ora testiamo con istanze di ACTOR che non discendono da PERSONA, poiché il
-> ; codice che si occupa dei contenuti degli attori è duplicato sia su ACTOR che
-> ; su persona, quindi dobbiamo controllare che i messaggi siano gestiti bene su
-> ; entrambe le classi!
+> ; Ora testiamo con istanze di ACTOR che non discendono da PERSONA. Dato che il
+> ; codice che si occupa dei contenuti degli attori è implementato sia su ACTOR
+> ; che su persona, dobbiamo controllare che i messaggi siano gestiti bene su
+> ; entrambe le classi! Abbiamo reso condiscendenti gli animali domestici, mentre
+> ; quelli selvatici no.
 > ; ==============================================================================
 > est
-Piazza degli Attori Semplici
-In questa piazza tutti gli attori sono della classe ACTOR. There is un 
-vigile here. There is delle nonnine here.
+Piazza degli Attori Non-Persone
+In questa piazza tutti gli attori sono della classe ACTOR ma non sono
+persone (classe PERSONA). C'è un leone qui. C'è uno scimpanzé qui. Ci sono 
+delle galline qui.
 
-> esamina il vigile
-Esamini il vigile, ma non noti niente di speciale. Il vigile sta portando 
-un taccuino.
-
-> prendi taccuino
-Il vigile non sarebbe d'accordo.
-
-> esamina le nonnine
-Esamini le nonnine, ma non noti niente di speciale. Le nonnine stanno 
-portando una crostata.
-
-> prendi la crostata
-Presa.
-
-> esamina le nonnine
-Esamini le nonnine, ma non noti niente di speciale. Le nonnine non stanno 
+> esamina il leone
+Esamini il leone, ma non noti niente di speciale. Il leone non sta 
 portando niente.
 
-> 
+> esamina lo scimpanzé
+Esamini lo scimpanzé, ma non noti niente di speciale. Lo scimpanzé sta 
+portando una banana.
 
-> 
+> prendi la banana
+Lo scimpanzé non sarebbe d'accordo.
+
+> esamina le galline
+Esamini le galline, ma non noti niente di speciale. Le galline stanno 
+portando delle uova.
+
+> prendi la uova
+Prese.
+
+> esamina le galline
+Esamini le galline, ma non noti niente di speciale. Le galline non stanno 
+portando niente.
 
 > 
 

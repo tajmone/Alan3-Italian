@@ -22,8 +22,8 @@ Sala dei Nomi Propri
 In questo set li attori hanno nomi propri.
 A OVEST c'è l'altro set.
 
-Mario is here. Maria is here. Romeo e Giuglietta are here. Thelma e Louise 
-are here.
+Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise 
+sono qui.
 
 > debaca tutti
 (Mario) 
@@ -37,11 +37,11 @@ are here.
 | FORMA DETERMINATA:    Mario 
 | FORMA INDETERMINATA:  Mario 
 | VOCALE: o 
-| PREP. DI: di 
-| PREP. A:  a 
-| PREP. DA: da 
-| PREP. IN: in 
-| PREP. SU: su 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
 +------------------------------------------
 
 (Maria) 
@@ -54,12 +54,12 @@ are here.
 | ARTICOLO: la 
 | FORMA DETERMINATA:    Maria 
 | FORMA INDETERMINATA:  Maria 
-| VOCALE: a 
-| PREP. DI: di 
-| PREP. A:  a 
-| PREP. DA: da 
-| PREP. IN: in 
-| PREP. SU: su 
+| VOCALE: o 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
 +------------------------------------------
 
 (Romeo e Giuglietta) 
@@ -72,12 +72,12 @@ are here.
 | ARTICOLO: il 
 | FORMA DETERMINATA:    Romeo e Giuglietta 
 | FORMA INDETERMINATA:  Romeo e Giuglietta 
-| VOCALE: i 
-| PREP. DI: di 
-| PREP. A:  a 
-| PREP. DA: da 
-| PREP. IN: in 
-| PREP. SU: su 
+| VOCALE: o 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
 +------------------------------------------
 
 (Thelma e Louise) 
@@ -90,12 +90,12 @@ are here.
 | ARTICOLO: la 
 | FORMA DETERMINATA:    Thelma e Louise 
 | FORMA INDETERMINATA:  Thelma e Louise 
-| VOCALE: e 
-| PREP. DI: di 
-| PREP. A:  a 
-| PREP. DA: da 
-| PREP. IN: in 
-| PREP. SU: su 
+| VOCALE: o 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
 +------------------------------------------
 
 (hero) 
@@ -127,9 +127,9 @@ In questo set gli attori indossano costumi di personaggi, e non hanno
 nomi propri.
 A EST c'è l'altro set.
 
-There is un vampiro here. There is uno zombie here. There is un orco here. 
-There is una strega here. There is un'arpia here. There is dei gemelli
-siamesi here. There is degli sciamani here. There is delle fate here.
+C'è un vampiro qui. C'è uno zombie qui. C'è un orco qui. C'è una strega 
+qui. C'è un'arpia qui. Ci sono dei gemelli siamesi qui. Ci sono degli 
+sciamani qui. Ci sono delle fate qui.
 
 > debaca tutti
 (vampiro) 

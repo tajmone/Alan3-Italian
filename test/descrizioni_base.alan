@@ -21,6 +21,11 @@ END THE.
 
 
 -- =============================================================================
+-- Creiamo vari attori della classe PERSONA per testare descrizioni, verbi e
+-- risposte. Gli attori in uniforme non saranno condiscendenti, i civili invece
+-- sì; questo ci aiuterà a testare i verbi che richiedono consdiscendenza dei
+-- PNG.
+--------------------------------------------------------------------------------
 THE pzzaPersone IsA luogo_esterno
   NAME 'Piazza delle Persone'.
   DESCRIPTION "In questa piazza tutti gli attori sono della classe PERSONA."
@@ -66,35 +71,53 @@ END THE.
 -- =============================================================================
 
 
------ ATTORI DELLA CLASSE "ACTOR"
+----- ATTORI NON PERSONE (DELLA CLASSE "ACTOR")
 
 
 -- =============================================================================
+-- Alcuni verbi sono implementati diversamente su ACTOR e PERSONA (solo gli
+-- attori di tipo PERSONA possono parlare), quindi dobbiamo testare i vari
+-- verbi e messaggi della libreria anche sugli ACTOR. 
+--   Ai fini dei test, dichiariamo condiscendenti gli animali domestici, invece 
+-- gli animali selvatici saranno non condiscendenti.
+--   Nei test si tenga conto che la classe ACTOR è generica, e può essere usata
+-- per creare animali o altri tipi di creature (immaginarie e non); quindi le
+-- risposte predefinite della libreria dovrebbero essere adatte a vari contesti.
+--------------------------------------------------------------------------------
 THE pzzaActor IsA luogo_esterno
-  NAME 'Piazza degli Attori Semplici'.
-  DESCRIPTION "In questa piazza tutti gli attori sono della classe ACTOR."
+  NAME 'Piazza degli Attori Non-Persone'.
+  DESCRIPTION "In questa piazza tutti gli attori sono della classe ACTOR ma non
+               sono persone (classe PERSONA)."
   EXIT ovest TO pzzaPersone.
 END THE.
 
 --==============================================================================
--- Il Vigile
+-- Il Leone
 --==============================================================================
-THE vigile IsA ACTOR AT pzzaActor.
-END THE.
-
-THE taccuino IsA object IN vigile.
+THE leone IsA ACTOR AT pzzaActor.
 END THE.
 
 --==============================================================================
--- Le Nonnine
+-- Lo Scimpanzé
 --==============================================================================
-THE nonnine IsA ACTOR AT pzzaActor.
+THE scimpanzé IsA ACTOR AT pzzaActor.
+  HAS articolo "lo".
+END THE.
+
+THE banana IsA object IN scimpanzé.
+  HAS articolo "la".
+END THE.
+
+--==============================================================================
+-- Le Galline
+--==============================================================================
+THE galline IsA ACTOR AT pzzaActor.
   HAS articolo "le".
   IS condiscendente.
 END THE.
 
-THE crostata IsA object IN nonnine.
-  HAS articolo "la".
+THE uova IsA object IN galline.
+  HAS articolo "le".
 END THE.
 
 

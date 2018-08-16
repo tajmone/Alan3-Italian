@@ -11,7 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/08/16](#20180816)
+- [2018/08/16 \(2\)](#20180816-2)
+- [Fix Actors Initialization and Description](#fix-actors-initialization-and-description)
+- [2018/08/16 \(1\)](#20180816-1)
     - [Verb Responses](#verb-responses)
     - [Corretto Risposte Per `indossa` e `togliti`](#corretto-risposte-per-indossa-e-togliti)
 - [2018/08/11](#20180811)
@@ -277,7 +279,28 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/08/16
+# 2018/08/16 (2)
+
+- [`lib_classi.i`][lib_classi] (v0.4.12)
+
+# Fix Actors Initialization and Description
+
+This commit translated the text presenting actors when locations are described. It also fixes the initialization code by swapping order of some code blocks, placing the code that handles grammar-attributes initialization (setting gender and number based on the provided `articolo` attribute) before the part that initializes `DESCRIPTION` (which relies on `plurale` being already initialized).
+
+Here are some examples of how named and unamed `ACTOR`s and `PERSONA`s are presented in the text ouput:
+
+```
+C'è un poliziotto qui. C'è un leone qui. C'è uno scimpanzé qui. Ci sono delle
+galline qui. C'è una strega qui. C'è un'arpia qui. Ci sono dei gemelli siamesi
+qui. Ci sono degli sciamani qui. Ci sono delle fate qui. Mario è qui. Maria è
+qui. Romeo e Giuglietta sono qui. Thelma e Louise sono qui.
+```
+
+
+<!---------------------------------------------------------------------------->
+
+
+# 2018/08/16 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.14)
 - [`lib_verbi.i`][lib_verbi] (v0.4.17)

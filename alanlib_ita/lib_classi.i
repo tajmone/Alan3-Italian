@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.4.11 (2018/08/11)
+-- "lib_classi.i" v0.4.12 (2018/08/16)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -2367,27 +2367,6 @@ ADD TO EVERY ACTOR
       USE SCRIPT following_hero FOR THIS.
 
 
-
-  DESCRIPTION
-    IF THIS IS scenario
-      THEN "$$"
-    ELSIF THIS HAS NOT nome_proprio
-      THEN
-        IF THIS IS NOT plurale
---                                                                              TRANSLATE!
-          THEN "There is" SAY AN THIS. "here."
-          ELSE "There are" SAY THIS. "here."
-        END IF.
-      ELSE SAY THIS.
-        IF THIS IS NOT plurale
---                                                                              TRANSLATE!
-          THEN "is here."
-          ELSE "are here."
-        END IF.
-    END IF.
-
-
-
 --==============================================================================
 --------------------------------------------------------------------------------
 -- § 2.3 - Inizializzazione di Genere, Numero e Preposizioni Articolate
@@ -2631,6 +2610,32 @@ ADD TO EVERY ACTOR
           END IF.
       END DEPEND.
   END IF.
+
+  ------------------------------------------------------------------------------
+
+  DESCRIPTION
+    IF THIS IS scenario
+      THEN "$$"
+    ELSIF THIS HAS NOT nome_proprio
+      THEN
+        IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
+          THEN "C'è" SAY AN THIS.
+          ELSE "Ci sono" SAY AN THIS.
+       -- THEN "There is" SAY AN THIS. "here."
+       -- ELSE "There are" SAY THIS. "here."
+        END IF.
+      "qui."
+    ELSE SAY THIS.
+      IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
+        THEN "è"
+        ELSE "sono"
+     -- THEN "is here."
+     -- ELSE "are here."
+      END IF.
+      "qui."
+    END IF.
 
 END ADD TO ACTOR.
 
