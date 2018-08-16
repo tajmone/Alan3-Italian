@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.4.16 (2018/08/11)
+-- "lib_verbi.i" v0.4.17 (2018/08/16)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -2426,14 +2426,16 @@ END VERB guida_errore.
 SYNTAX  indossa = indossa (ogg)
   WHERE ogg IsA OBJECT
     ELSE
-      -- TODO: Aggiungi messaggio alternativo se (ogg) = hero!                  FIXME!
-      --       Con versione hero maschile/femminiale!
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      IF ogg <> hero
+        THEN
+          IF ogg IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+          END IF.
+          "indossare."
+        ELSE SAY  azione_insensata  OF mia_AT.
       END IF.
-      "indossare."
 
         indossa = mettiti (ogg).
 
@@ -4714,14 +4716,16 @@ END ADD TO.
 SYNTAX  togliti = togliti (ogg)
   WHERE ogg IsA OBJECT
     ELSE
-      -- TODO: Aggiungi messaggio alternativo se (ogg) = hero!                  FIXME!
-      --       Con versione hero maschile/femminiale!
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      IF ogg <> hero
+        THEN
+          IF ogg IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+          END IF.
+          "indossare o toglierti."
+        ELSE SAY  azione_insensata  OF mia_AT.
       END IF.
-      "indossare o toglierti."
       --| NOTA: il messaggio originale inglese era:
       --|       "That's not something you can remove since you're not wearing it."
       --|       Ma non mi piaceva dato che non chiarificava che il parametro non

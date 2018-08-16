@@ -11,12 +11,15 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/08/16](#20180816)
+    - [Verb Responses](#verb-responses)
+    - [Corretto Risposte Per `indossa` e `togliti`](#corretto-risposte-per-indossa-e-togliti)
 - [2018/08/11](#20180811)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
-    - [Verb Responses](#verb-responses)
+    - [Verb Responses](#verb-responses-1)
     - [Verb: `remove`](#verb-remove)
 - [2018/08/09](#20180809)
-    - [Verb Responses](#verb-responses-1)
+    - [Verb Responses](#verb-responses-2)
     - [Verb: `wear`](#verb-wear)
 - [2018/08/08](#20180808)
     - [Deleted `present_actor` Attribute](#deleted-present_actor-attribute)
@@ -33,7 +36,7 @@ Status: Alpha stage.
 - [2018/08/06 \(1\)](#20180806-1)
     - [Library Attributes](#library-attributes)
 - [2018/08/02 \(3\)](#20180802-3)
-    - [Verb Responses](#verb-responses-2)
+    - [Verb Responses](#verb-responses-3)
     - [Verbs: `tie` and `tie_to`](#verbs-tie-and-tie_to)
 - [2018/08/02 \(2\)](#20180802-2)
 - [2018/08/02 \(1\)](#20180802-1)
@@ -41,7 +44,7 @@ Status: Alpha stage.
     - [Verbs: `touch` and `touch_with`](#verbs-touch-and-touch_with)
     - [Code Cleanup](#code-cleanup)
 - [2018/08/01 \(4\)](#20180801-4)
-    - [Verb Responses](#verb-responses-3)
+    - [Verb Responses](#verb-responses-4)
     - [Verb: `sing`](#verb-sing)
     - [Verb: `kiss`](#verb-kiss)
     - [Verb: `pull`](#verb-pull)
@@ -49,7 +52,7 @@ Status: Alpha stage.
     - [Verbs: `attack` and `attack_with`](#verbs-attack-and-attack_with)
 - [2018/08/01 \(2\)](#20180801-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-1)
-    - [Verb Responses](#verb-responses-4)
+    - [Verb Responses](#verb-responses-5)
     - [Verbs: `cut` and `cut_with`](#verbs-cut-and-cut_with)
     - [Verb: `dance`](#verb-dance)
     - [Verb: `dig`](#verb-dig)
@@ -63,7 +66,7 @@ Status: Alpha stage.
     - [Verb: `think_about`](#verb-think_about)
 - [2018/07/31 \(1\)](#20180731-1)
     - [Verb Restriction Attributes](#verb-restriction-attributes-3)
-    - [Verb Responses](#verb-responses-5)
+    - [Verb Responses](#verb-responses-6)
     - [Verb: `fix`](#verb-fix)
 - [2018/07/29 \(2\)](#20180729-2)
     - [Remove Verb Restriction Attributes](#remove-verb-restriction-attributes)
@@ -75,9 +78,9 @@ Status: Alpha stage.
     - [Verb Restriction Attributes](#verb-restriction-attributes-4)
     - [Testo dei Verbi](#testo-dei-verbi)
 - [2018/07/28 \(3\)](#20180728-3)
-    - [Verb Responses](#verb-responses-6)
-- [2018/07/28 \(2\)](#20180728-2)
     - [Verb Responses](#verb-responses-7)
+- [2018/07/28 \(2\)](#20180728-2)
+    - [Verb Responses](#verb-responses-8)
     - [Verb Restriction Attributes](#verb-restriction-attributes-5)
     - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
 - [2018/07/28 \(1\)](#20180728-1)
@@ -273,6 +276,41 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/08/16
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.4.14)
+- [`lib_verbi.i`][lib_verbi] (v0.4.17)
+
+## Verb Responses
+
+New verb responses attributes (created for Italian library, no English counterpart):
+
+|     Attribute      |             Text             |
+|--------------------|------------------------------|
+| `azione_insensata` | `Questo non ha alcun senso.` |
+
+> __NOTE__ — The `azione_insensata` response will be used to replace various original English messages, depending on the context, due to linguistic differences.
+
+## Corretto Risposte Per `indossa` e `togliti`
+
+I verbi `indossa` e `togliti` ora producono un messaggio diverso quando rivolti al protagonista:
+
+```
+> indossa l'assistente
+L'assistente non è qualcosa che puoi indossare.
+
+> indossa me
+Questo non ha alcun senso.
+
+> togliti me
+Questo non ha alcun senso.
+```
+
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/08/11
 

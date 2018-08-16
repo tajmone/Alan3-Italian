@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.4.13 (2018/08/11)
+-- "lib_definizioni.i" v0.4.14 (2018/08/16)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -911,6 +911,9 @@ EVERY blocco_definizioni IsA LOCATION
   -- AZIONI DIRETTE AL GIOCATORE
   -- ===========================
 
+  -- VERBI: togliti
+  -- ORIGINAL EN: (nessuno, sostituisce vari messaggi inglesi)
+  HAS azione_insensata  "Questo non ha alcun senso.".
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
 
   -- d) checks guarding against actions directed at the hero him-/herself
