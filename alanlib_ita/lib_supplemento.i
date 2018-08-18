@@ -1,4 +1,4 @@
--- "lib_supplemento.i" v0.4.0 (2018/07/27)
+-- "lib_supplemento.i" v0.5.0 (2018/08/18)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -10,17 +10,6 @@
 --------------------------------------------------------------------------------
 ---- This supplementary library file defines some Italian specific synonyms.
 ---- It was not part of the original Standard Library.
-
-
---|============
---| TODOs LIST:
---|============
---| Preposizioni Articolate (SYNONYMS):
---|   - [x] DI + Art ( untested !!! )
---|   - [x]  A + Art
---|   - [x] DA + Art
---|   - [x] IN + Art ( untested !!! )
---|   - [x] SU + Art ( untested !!! )
 
 
 --=============================================================================
@@ -38,13 +27,11 @@
 --    AND:   and then
 --    BUT:   but except
 --    THEM:  them
---    NOISE: go the*
+--    NOISE: go the
 --
 -- Until the Italian language gets integrated into Alan as a natively supported
 -- language, the library needs to supply some soft-coded synonims for these
 -- Player Words.
---
--- NOTE: Although indicated in the Manual as being one, 'the' is not a NOISE WORD.
 --
 -- NOTE: Player Words for all supported languages are defined in Alan's source
 --       file "compiler/wrd.c" (line 182).
@@ -74,13 +61,10 @@ SYNONYMS e, poi = 'and'.
 -- =============================================================================
 -- NOISE WORDS
 -- =============================================================================
--- NOISE: go the*
+-- NOISE: go the
 -- -----------------------------------------------------------------------------
 -- Noise words are completely ignored by the parser.
--- The trick here is to make all noise words synonyms of 'GO' and not 'THE'.
--- Even though the Alan Manual mentions 'THE' as being one of the NOISE WORDS, it
--- actually isn't (as can be seen from the "compiler/wrd.c" source), so you can't
--- refer to 'THE' in the RHS of a synonym.
+-- The trick here is to make all noise words synonyms of 'THE'.
 
 -- DEFINITE ARTICLES
 -- =================
@@ -88,11 +72,11 @@ SYNONYMS e, poi = 'and'.
 -- it's seen as a single token by the parser. The only viable solution is to add
 -- to the instance a second NAME so that the parse will see it as a synonym of
 -- the instance.
-SYNONYMS il, lo, la, i, gli, le = 'go'.
+SYNONYMS il, lo, la, i, gli, le = 'the'.
 -- We also add "l'", to cover cases where the player omits the apostrophe or
 -- types a space after it, for conistency with the prepositions workaround (we
 -- can't implement "l" because of conflict with "look" shortcut):
-SYNONYMS 'l''' = 'go'. --| eg:  "l' albero"
+SYNONYMS 'l''' = 'the'. --| eg:  "l' albero"
 
 -- This is not going to be useful:
 -- SYNONYMS vai = 'go'.

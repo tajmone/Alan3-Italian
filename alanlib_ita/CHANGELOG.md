@@ -11,7 +11,10 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/08/18](#20180818)
+- [2018/08/18 \(2\)](#20180818-2)
+    - [Update to Alan 3 Beta 6](#update-to-alan-3-beta-6)
+    - [Fix Noise Words as Synomyms of `'the'`](#fix-noise-words-as-synomyms-of-the)
+- [2018/08/18 \(1\)](#20180818-1)
     - [Group Together Verbs That Are Questions/Statements](#group-together-verbs-that-are-questionsstatements)
 - [2018/08/16 \(2\)](#20180816-2)
     - [Fix Actors Initialization and Description](#fix-actors-initialization-and-description)
@@ -281,7 +284,43 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/08/18
+# 2018/08/18 (2)
+
+- [`libreria.i`][libreria] (v0.5.0)
+- [`lib_classi.i`][lib_classi] (v0.5.0)
+- [`lib_definizioni.i`][lib_definizioni] (v0.5.0)
+- [`lib_luoghi.i`][lib_luoghi] (v0.5.0)
+- [`lib_messaggi.i`][lib_messaggi] (v0.5.0)
+- [`lib_verbi.i`][lib_verbi] (v0.5.0)
+- [`lib_supplemento.i`][lib_supplemento] (v0.5.0)
+
+## Update to Alan 3 Beta 6
+
+Updated to [Alan SDK 3.0beta6]  (2018/08/10):
+
+
+    FEATURE: There was no way to print $500, as that was interpreted as a symbol
+    BUGFIX:  There was no way to create synonym for 'the'.
+    BUGFIX:  Compiler did not adhere to "Option Debug." in the source
+    BUGFIX:  You could say "Container Taking " without warnings or errors even
+             if the class was not allowed in container (actors and locations).
+    BUGFIX:  Description Checks was not respected when auto-listing instances at
+             a location.
+    BUGFIX:  Improved error handling for syntax errors in names, which previously
+             could cause a System Error.
+
+All library files bumped up to v0.5.0.
+
+## Fix Noise Words as Synomyms of `'the'`
+
+Since Alan SDK 3 Beta 6 fixed the issue that didn't allow to create NOISE WORD as synonyms of `go`, I've changed `lib_supplemento.i` to use `'the'` as reference NOISE WORD, and removed mentioning of the original problem.
+
+
+<!---------------------------------------------------------------------------->
+
+
+
+# 2018/08/18 (1)
 
 - [`lib_verbi.i`][lib_verbi] (v0.4.18)
 
@@ -4097,6 +4136,8 @@ The above changes had some side effects which required me to also change the Eng
 <!-- External Links ---------------------------------------------------------->
 
 [Alan StdLib upstream repository]: https://github.com/AnssiR66/AlanStdLib
+
+[Alan SDK 3.0beta6]: https://www.alanif.se/download-alan-v3/development-kits/development-kits-3-0beta6
 
 <!-- StdLib Issues & PRs ----------------------------------------------------->
 

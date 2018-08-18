@@ -1,6 +1,6 @@
--- "lib_definizioni.i" v0.4.14 (2018/08/16)
+-- "lib_definizioni.i" v0.5.0 (2018/08/18)
 --------------------------------------------------------------------------------
--- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
+-- Alan ITA Alpha Dev | Alan 3.0beta6 | StdLib 2.1
 --------------------------------------------------------------------------------
 -- Adapted to Italian from:
 -- ALAN Standard Library v2.1
