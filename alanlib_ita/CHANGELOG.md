@@ -11,8 +11,10 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/08/18](#20180818)
+    - [Group Together Verbs That Are Questions/Statements](#group-together-verbs-that-are-questionsstatements)
 - [2018/08/16 \(2\)](#20180816-2)
-- [Fix Actors Initialization and Description](#fix-actors-initialization-and-description)
+    - [Fix Actors Initialization and Description](#fix-actors-initialization-and-description)
 - [2018/08/16 \(1\)](#20180816-1)
     - [Verb Responses](#verb-responses)
     - [Corretto Risposte Per `indossa` e `togliti`](#corretto-risposte-per-indossa-e-togliti)
@@ -279,11 +281,32 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
+# 2018/08/18
+
+- [`lib_verbi.i`][lib_verbi] (v0.4.18)
+
+## Group Together Verbs That Are Questions/Statements
+
+I've added a third verbs group to keep together all verbs that are either questions or direct statement:
+
+- `chi_è`
+- `chi_sono_io`
+- `cosa_è`
+- `cosa_sono_io`
+- `dici_No`
+- `dici_Sì`
+- `dove_è`
+- `dove_mi_trovo`
+
+These verbs are now grouped together after the playing commands, for they constitute a category of commands of their own because they don't follow the usual pattern of imparting a command to the hero — instead, they are direct statements or questions from the hero himself ("yes", "who am I?", etc.).
+
+<!---------------------------------------------------------------------------->
+
 # 2018/08/16 (2)
 
 - [`lib_classi.i`][lib_classi] (v0.4.12)
 
-# Fix Actors Initialization and Description
+## Fix Actors Initialization and Description
 
 This commit translated the text presenting actors when locations are described. It also fixes the initialization code by swapping order of some code blocks, placing the code that handles grammar-attributes initialization (setting gender and number based on the provided `articolo` attribute) before the part that initializes `DESCRIPTION` (which relies on `plurale` being already initialized).
 

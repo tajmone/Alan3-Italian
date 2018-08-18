@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.4.17 (2018/08/16)
+-- "lib_verbi.i" v0.4.18 (2018/08/18)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -10,8 +10,10 @@
 --------------------------------------------------------------------------------
 ----- Tabella dei Verbi --------------------------------------------------------
 --------------------------------------------------------------------------------
--- Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima)
--- e comandi di gioco (dopo il divisorio orizzontale di tabella).
+-- Elenco alfabetico dei verbi tradotti, suddivisi in tre gruppi:
+-- 1) comandi di partita
+-- 2) comandi di gioco
+-- 3) comandi di affermazioni o domande
 
 --+--------------------+------------------------------+--------------------------------+---+---+---+
 --| VERBO              | SINONIMI                     | SINTASSI                       | M | A | O |
@@ -38,19 +40,11 @@
 --| brucia             |                              | brucia (ogg)                   |   | 1 | x |
 --| brucia_con         |                              | brucia (ogg) con (strum)       |   | 2 | x |
 --| canta              |                              | canta                          |   | 0 |   |
---| chi_è              |                              | chi è (png)                    |   | 1 |   | * BUGGED!
---| chi_sono_io        |                              | chi sono                       |   | 0 |   |
 --| chiudi             |                              | chiudi (ogg)                   |   | 1 | x |
 --| chiudi_con         |                              | chiudi (ogg) con (strum)       |   | 2 | x |
 --| compra             | acquista                     | compra (merce)                 |   | 1 |   |
---| cosa_è             |                              | cosa è (ogg)                   |   | 1 | x | * BUGGED!
---| cosa_sono_io       |                              | cosa sono                      |   | 0 |   |
 --| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)        |   | 2 | x |
---| dici_No            |                              | no                             |   | 0 |   |
---| dici_Sì            |                              | sì                             |   | 0 |   |
 --| dormi              | riposa                       | dormi                          |   | 0 |   |
---| dove_è             |                              | dove è (ogg)                   |   | 1 | x | * BUGGED!
---| dove_mi_trovo      |                              | dove sono                      |   | 0 |   |
 --| esamina            | guarda, descrivi, osserva, X | esamina (ogg)                  |   | 1 | x |
 --| gioca_con          |                              | gioca con (ogg)                |   | 1 | x |
 --| guida              |                              | guida (veicolo)                |   | 1 |   |
@@ -97,6 +91,15 @@
 --| vai_a              |                              | vai a (dest)                   |   | 1 |   |
 --| vendi              |                              | vendi (merce)                  |   | 1 |   |
 --+--------------------+------------------------------+--------------------------------+---+---+---+
+--| chi_è              |                              | chi è (png)                    |   | 1 |   | * BUGGED!
+--| chi_sono_io        |                              | chi sono                       |   | 0 |   |
+--| cosa_è             |                              | cosa è (ogg)                   |   | 1 | x | * BUGGED!
+--| cosa_sono_io       |                              | cosa sono                      |   | 0 |   |
+--| dici_No            |                              | no                             |   | 0 |   |
+--| dici_Sì            |                              | sì                             |   | 0 |   |
+--| dove_è             |                              | dove è (ogg)                   |   | 1 | x | * BUGGED!
+--| dove_mi_trovo      |                              | dove sono                      |   | 0 |   |
+--+--------------------+------------------------------+--------------------------------+---+---+---+
 --|                    |                              |                                |   | 0 | x |
 
 -- Legenda Colonne:
@@ -105,7 +108,9 @@
 --   [O] Oggetto    : 'x' = Sì
 
 -- L'ordine di apparizione dei verbi nella tabella rispecchia l'ordine in cui
--- appaiono nel codice sorgente qui di seguito.
+-- appaiono nel codice sorgente qui di seguito; ai tre gruppi della tabella
+-- corrispondono tre sezioni distinte in cui sono raggruppati i verbi in questo
+-- file.
 
 -- Le direzioni (nord, sud, su, giù, ecc.) sono definite in "lib_luoghi.i".
 
@@ -1578,74 +1583,6 @@ END VERB canta.
 -- ==============================================================
 
 
------ @CHI E' --> @WHO IS
-
-
--- ==============================================================
-
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
---|| BUG: Per qualche ragione, Alan non riesce a preservare la 'è' nelle sintassi
---||      e nei sinonimi! (mentre non ci sonop problemi con le istanze ed i parametri)
---||      Tutte le altre lettere accentate funzionano (à é ì ò ù), solo 'è' causa
---||      problemi!
---||
---||      Per ora dovrò ripiegare sulla 'é', finché il problema non è risolto a
---||      monte tramite un bugfix. So che è orribile (oltre che inutile), ma è
---||      giusto per andare avanti con il lavoro.
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
--- SYNTAX who_is = 'who' 'is' (png)!
---        who_is = 'who' 'are' (png)!.
-
-SYNTAX  chi_è = chi é (png)!   --> BUG: 'è' instead of 'é'                      FIXME!
-  WHERE png IsA ACTOR
-    ELSE
-      IF png IS NOT plurale
-        THEN SAY  illegal_parameter_who_sg  OF mia_AT.
-        ELSE SAY  illegal_parameter_who_pl  OF mia_AT.
-      END IF.
-
-        chi_è = chi sono (png)!.
-
-
-ADD TO EVERY ACTOR
-  VERB chi_è
-    CHECK mia_AT CAN domandare_chi_è
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    DOES
-      "Dovrai scoprirlo da te!"
-   -- "You'll have to find it out yourself."
-    END VERB chi_è.
-END ADD TO.
-
-
--- ==============================================================
-
-
------ @CHI SONO --> @WHO AM I
-
-
--- ==============================================================
-
--- SYNTAX who_am_i = who am i.
-
-SYNTAX chi_sono_io = chi sono io.
-       chi_sono_io = chi sono.
-
-
-VERB chi_sono_io
-  CHECK mia_AT CAN domandare_chi_sono_io
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES
-    "Hai provato a esaminare te stesso? Forse ti aiuterebbe."
- -- "Maybe examining yourself might help."
-END VERB chi_sono_io.
-
-
-
--- ==============================================================
-
-
 ----- @CHIUDI --> @CLOSE (+ shut)
 
 
@@ -1855,85 +1792,6 @@ END ADD TO.
 
 
 
--- ==============================================================
-
-
------ @COSA E'? ---> @WHAT IS
-
-
--- ==============================================================
-
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
---|| BUG: Per qualche ragione, Alan non riesce a preservare la 'è' nelle sintassi
---||      e nei sinonimi! (mentre non ci sonop problemi con le istanze ed i parametri)
---||      Tutte le altre lettere accentate funzionano (à é ì ò ù), solo 'è' causa
---||      problemi!
---||
---||      Per ora dovrò ripiegare sulla 'é', finché il problema non è risolto a
---||      monte tramite un bugfix. So che è orribile (oltre che inutile), ma è
---||      giusto per andare avanti con il lavoro.
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
--- SYNTAX what_is = 'what' 'is' (ogg)!
-
-SYNTAX  cosa_è = cosa é (ogg)!            --> BUG: 'è' instead of 'é'           FIXME!
-  WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY  illegal_parameter_what_sg  OF mia_AT.
-        ELSE SAY  illegal_parameter_what_pl  OF mia_AT.
-      END IF.
-
-        cosa_è = che cosa é (ogg)!.       --> BUG: 'è' instead of 'é'           FIXME!
-        cosa_è = 'cos''é' (ogg)!.         --> BUG: 'è' instead of 'é'           FIXME!
-        cosa_è = che 'cos''é' (ogg)!.     --> BUG: 'è' instead of 'é'           FIXME!
-
-        cosa_è = cosa sono (ogg)!.
-        cosa_è = che cosa sono (ogg)!.
-
-
-
-ADD TO EVERY THING
-  VERB cosa_è
-    CHECK mia_AT CAN domandare_cosa_è
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    DOES
-      "Dovrai scoprirlo da te!"
-   -- "You'll have to find it out yourself."
-    END VERB cosa_è.
-END ADD TO.
-
-
-
-
--- ==============================================================
-
-
------ @COSA SONO IO? ---> @WHAT AM I
-
-
--- ==============================================================
-
--- SYNTAX what_am_i = 'what' am i.
-
-SYNTAX  cosa_sono_io = cosa sono.
-        cosa_sono_io = cosa sono io.
-        cosa_sono_io = che sono.
-        cosa_sono_io = che sono io.
-        cosa_sono_io = che cosa sono.
-        cosa_sono_io = che cosa sono io.
-
-
-VERB cosa_sono_io
-  CHECK mia_AT CAN domandare_cosa_sono_io
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES
-    "Hai provato a esaminare te stesso? Forse ti aiuterebbe."
- -- "Maybe examining yourself might help."
-END VERB cosa_sono_io.
-
-
-
 
 -- ==============================================================
 
@@ -2040,49 +1898,6 @@ END ADD TO.
 -- ==============================================================
 
 
------ @DICI "No" --> @NO
-
-
--- ==============================================================
-
--- SYNTAX 'no' = 'no'.
-
-SYNTAX dici_No = 'no'.
-
-
-VERB dici_No
-  CHECK mia_AT CAN dire_no
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES "Davvero?"
-    -- "Really?"
-END VERB dici_No.
-
-
--- ================================================================
-
-
------ @DICI "Sì" --> @YES
-
-
--- ================================================================
-
--- SYNTAX yes = yes.
-
-SYNTAX dici_Sì = sì.
-
-
-VERB dici_Sì
-  CHECK mia_AT CAN dire_sì
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES "Davvero?"
-    -- "Really?"
-END VERB dici_Sì.
-
-
-
--- ==============================================================
-
-
 ----- @DORMI --> @SLEEP (+ rest)
 
 
@@ -2100,89 +1915,6 @@ VERB dormi
     "Non è il momento di riposare."
 END VERB dormi.
 
-
-
-
--- ==============================================================
-
-
------ @DOVE E' --> @WHERE IS
-
-
--- ==============================================================
-
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
---|| BUG: Per qualche ragione, Alan non riesce a preservare la 'è' nelle sintassi
---||      e nei sinonimi! (mentre non ci sonop problemi con le istanze ed i parametri)
---||      Tutte le altre lettere accentate funzionano (à é ì ò ù), solo 'è' causa
---||      problemi!
---||
---||      Per ora dovrò ripiegare sulla 'é', finché il problema non è risolto a
---||      monte tramite un bugfix. So che è orribile (oltre che inutile), ma è
---||      giusto per andare avanti con il lavoro.
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
--- SYNTAX where_is = 'where' 'is' (ogg)!
---        where_is = 'where' 'are' (ogg)!.
-
-SYNTAX  dove_è = dove é (ogg)!            --> BUG: 'è' instead of 'é'           FIXME!
-  WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY  illegal_parameter_what_sg  OF mia_AT.
-        ELSE SAY  illegal_parameter_what_pl  OF mia_AT.
-      END IF.
-
-        dove_è = 'dov''é' (ogg)!.         --> BUG: 'è' instead of 'é'           FIXME!
-        dove_è = dove sono (ogg)!.
-        dove_è = dove si trova (ogg)!.
-        dove_è = dove si trovano (ogg)!.
-
-
-ADD TO EVERY THING
-  VERB dove_è
-    CHECK mia_AT CAN domandare_dove_è
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    AND ogg NOT AT hero
-      ELSE
-        IF ogg IS NOT plurale
-          THEN SAY  ogg1_già_qui_sg  OF mia_AT.
-          ELSE SAY  ogg1_già_qui_pl  OF mia_AT.
-        END IF.
-    DOES
-      "Dovrai scoprirlo da te!"
-   -- "You'll have to find it out yourself."
-  END VERB dove_è.
-END ADD TO.
-
-
-
-
--- ==============================================================
-
-
------ @DOVE MI TROVO --> @WHERE AM I
-
-
--- ==============================================================
--- Ha to change it because the 'i' here was conflicting with the 'i' synonym
--- for NOISE WORDS. (befor 'i' was the default syntax for "inventory", so it
--- didn't conflict because it was not a synonym but a verb and syntax).
-
--- SYNTAX where_am_i = 'where' am i.
-
-SYNTAX  dove_mi_trovo = dove mi trovo.
-        dove_mi_trovo = dove sono io.
-        dove_mi_trovo = dove sono.
-
-
-VERB dove_mi_trovo
-  CHECK mia_AT CAN domandare_dove_mi_trovo
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES
-    LOOK.
-END VERB dove_mi_trovo.
 
 
 
@@ -3586,7 +3318,7 @@ END ADD TO.
 
 SYNTAX rispondi = rispondi (argomento)
   WHERE argomento IsA STRING
-    ELSE SAY  illegal_parameter_string  OF mia_AT. --                             TRANSLATE!
+    ELSE SAY  illegal_parameter_string  OF mia_AT. --                           TRANSLATE!
 
 
 
@@ -5079,6 +4811,294 @@ END ADD TO.
 
 -- Depending on the situation, it might be good to add a check whether the item is carried
 -- by the hero or not, etc.
+
+
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- § 3 - Comandi di Affermazioni o Domande
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+-- In questa sezioni sono raggruppati tutti quei comandi che non hanno la forma
+-- consueta di impartire un ordine al protegonista: hanno invece la forma di
+-- affermazioni o domande poste dal protagonista stesso (p.es. "chi sono?", "sì"
+-- o "dove è il tesoro").
+
+-- ==============================================================
+
+
+----- @CHI E' --> @WHO IS
+
+
+-- ==============================================================
+
+--||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--|| BUG: Per qualche ragione, Alan non riesce a preservare la 'è' nelle sintassi
+--||      e nei sinonimi! (mentre non ci sonop problemi con le istanze ed i parametri)
+--||      Tutte le altre lettere accentate funzionano (à é ì ò ù), solo 'è' causa
+--||      problemi!
+--||
+--||      Per ora dovrò ripiegare sulla 'é', finché il problema non è risolto a
+--||      monte tramite un bugfix. So che è orribile (oltre che inutile), ma è
+--||      giusto per andare avanti con il lavoro.
+--||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-- SYNTAX who_is = 'who' 'is' (png)!
+--        who_is = 'who' 'are' (png)!.
+
+SYNTAX  chi_è = chi é (png)!   --> BUG: 'è' instead of 'é'                      FIXME!
+  WHERE png IsA ACTOR
+    ELSE
+      IF png IS NOT plurale
+        THEN SAY  illegal_parameter_who_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_who_pl  OF mia_AT.
+      END IF.
+
+        chi_è = chi sono (png)!.
+
+
+ADD TO EVERY ACTOR
+  VERB chi_è
+    CHECK mia_AT CAN domandare_chi_è
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    DOES
+      "Dovrai scoprirlo da te!"
+   -- "You'll have to find it out yourself."
+    END VERB chi_è.
+END ADD TO.
+
+
+-- ==============================================================
+
+
+----- @CHI SONO --> @WHO AM I
+
+
+-- ==============================================================
+
+-- SYNTAX who_am_i = who am i.
+
+SYNTAX chi_sono_io = chi sono io.
+       chi_sono_io = chi sono.
+
+
+VERB chi_sono_io
+  CHECK mia_AT CAN domandare_chi_sono_io
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES
+    "Hai provato a esaminare te stesso? Forse ti aiuterebbe."
+ -- "Maybe examining yourself might help."
+END VERB chi_sono_io.
+
+
+
+
+-- ==============================================================
+
+
+----- @COSA E'? ---> @WHAT IS
+
+
+-- ==============================================================
+
+--||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--|| BUG: Per qualche ragione, Alan non riesce a preservare la 'è' nelle sintassi
+--||      e nei sinonimi! (mentre non ci sonop problemi con le istanze ed i parametri)
+--||      Tutte le altre lettere accentate funzionano (à é ì ò ù), solo 'è' causa
+--||      problemi!
+--||
+--||      Per ora dovrò ripiegare sulla 'é', finché il problema non è risolto a
+--||      monte tramite un bugfix. So che è orribile (oltre che inutile), ma è
+--||      giusto per andare avanti con il lavoro.
+--||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-- SYNTAX what_is = 'what' 'is' (ogg)!
+
+SYNTAX  cosa_è = cosa é (ogg)!            --> BUG: 'è' instead of 'é'           FIXME!
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY  illegal_parameter_what_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_what_pl  OF mia_AT.
+      END IF.
+
+        cosa_è = che cosa é (ogg)!.       --> BUG: 'è' instead of 'é'           FIXME!
+        cosa_è = 'cos''é' (ogg)!.         --> BUG: 'è' instead of 'é'           FIXME!
+        cosa_è = che 'cos''é' (ogg)!.     --> BUG: 'è' instead of 'é'           FIXME!
+
+        cosa_è = cosa sono (ogg)!.
+        cosa_è = che cosa sono (ogg)!.
+
+
+
+ADD TO EVERY THING
+  VERB cosa_è
+    CHECK mia_AT CAN domandare_cosa_è
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    DOES
+      "Dovrai scoprirlo da te!"
+   -- "You'll have to find it out yourself."
+    END VERB cosa_è.
+END ADD TO.
+
+
+
+
+-- ==============================================================
+
+
+----- @COSA SONO IO? ---> @WHAT AM I
+
+
+-- ==============================================================
+
+-- SYNTAX what_am_i = 'what' am i.
+
+SYNTAX  cosa_sono_io = cosa sono.
+        cosa_sono_io = cosa sono io.
+        cosa_sono_io = che sono.
+        cosa_sono_io = che sono io.
+        cosa_sono_io = che cosa sono.
+        cosa_sono_io = che cosa sono io.
+
+
+VERB cosa_sono_io
+  CHECK mia_AT CAN domandare_cosa_sono_io
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES
+    "Hai provato a esaminare te stesso? Forse ti aiuterebbe."
+ -- "Maybe examining yourself might help."
+END VERB cosa_sono_io.
+
+
+
+
+-- ==============================================================
+
+
+----- @DICI "No" --> @NO
+
+
+-- ==============================================================
+
+-- SYNTAX 'no' = 'no'.
+
+SYNTAX dici_No = 'no'.
+
+
+VERB dici_No
+  CHECK mia_AT CAN dire_no
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES "Davvero?"
+    -- "Really?"
+END VERB dici_No.
+
+
+-- ================================================================
+
+
+----- @DICI "Sì" --> @YES
+
+
+-- ================================================================
+
+-- SYNTAX yes = yes.
+
+SYNTAX dici_Sì = sì.
+
+
+VERB dici_Sì
+  CHECK mia_AT CAN dire_sì
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES "Davvero?"
+    -- "Really?"
+END VERB dici_Sì.
+
+
+
+-- ==============================================================
+
+
+----- @DOVE E' --> @WHERE IS
+
+
+-- ==============================================================
+
+--||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--|| BUG: Per qualche ragione, Alan non riesce a preservare la 'è' nelle sintassi
+--||      e nei sinonimi! (mentre non ci sonop problemi con le istanze ed i parametri)
+--||      Tutte le altre lettere accentate funzionano (à é ì ò ù), solo 'è' causa
+--||      problemi!
+--||
+--||      Per ora dovrò ripiegare sulla 'é', finché il problema non è risolto a
+--||      monte tramite un bugfix. So che è orribile (oltre che inutile), ma è
+--||      giusto per andare avanti con il lavoro.
+--||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+-- SYNTAX where_is = 'where' 'is' (ogg)!
+--        where_is = 'where' 'are' (ogg)!.
+
+SYNTAX  dove_è = dove é (ogg)!            --> BUG: 'è' instead of 'é'           FIXME!
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY  illegal_parameter_what_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_what_pl  OF mia_AT.
+      END IF.
+
+        dove_è = 'dov''é' (ogg)!.         --> BUG: 'è' instead of 'é'           FIXME!
+        dove_è = dove sono (ogg)!.
+        dove_è = dove si trova (ogg)!.
+        dove_è = dove si trovano (ogg)!.
+
+
+ADD TO EVERY THING
+  VERB dove_è
+    CHECK mia_AT CAN domandare_dove_è
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    AND ogg NOT AT hero
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY  ogg1_già_qui_sg  OF mia_AT.
+          ELSE SAY  ogg1_già_qui_pl  OF mia_AT.
+        END IF.
+    DOES
+      "Dovrai scoprirlo da te!"
+   -- "You'll have to find it out yourself."
+  END VERB dove_è.
+END ADD TO.
+
+
+
+
+-- ==============================================================
+
+
+----- @DOVE MI TROVO --> @WHERE AM I
+
+
+-- ==============================================================
+-- Ha to change it because the 'i' here was conflicting with the 'i' synonym
+-- for NOISE WORDS. (befor 'i' was the default syntax for "inventory", so it
+-- didn't conflict because it was not a synonym but a verb and syntax).
+
+-- SYNTAX where_am_i = 'where' am i.
+
+SYNTAX  dove_mi_trovo = dove mi trovo.
+        dove_mi_trovo = dove sono io.
+        dove_mi_trovo = dove sono.
+
+
+VERB dove_mi_trovo
+  CHECK mia_AT CAN domandare_dove_mi_trovo
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES
+    LOOK.
+END VERB dove_mi_trovo.
 
 
 
