@@ -28,12 +28,13 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [ascolta0](#ascolta0)
     - [ascolta](#ascolta)
 - [TRASFERIMENTO OGGETTI](#trasferimento-oggetti)
-    - [prendi](#prendi)
-    - [prendi_da](#prendi_da)
-    - [lascia](#lascia)
+    - [chiedi](#chiedi)
+    - [compra](#compra)
     - [dai_a](#dai_a)
     - [inventario](#inventario)
-    - [compra](#compra)
+    - [lascia](#lascia)
+    - [prendi](#prendi)
+    - [prendi_da](#prendi_da)
     - [vendi](#vendi)
 - [INTERAZIONI VERBALI](#interazioni-verbali)
     - [dì](#d%C3%AC)
@@ -139,6 +140,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [carezza con]
 - [carica]
 - [carica partita]
+- [chiedi]  (oggetto)
 - [chiudi]
 - [chiudi con]
 - [combatti]
@@ -238,7 +240,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 
 # Tabella dei Verbi
 
-Copiata da "`lib_verbi.i`" v0.4.10 (2018/08/01).
+Copiata da "`lib_verbi.i`" v0.5.2 (2018/08/22).
 
 Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e comandi di gioco (dopo il divisorio orizzontale di tabella):
 
@@ -260,6 +262,7 @@ Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e 
 --| attacca            | combatti, picchia            | attacca (bersaglio)            |   | 1 |   |
 --| attacca_con        | combatti, picchia            | attacca (bersaglio) con (arma) |   | 2 |   |
 --| attraversa         |                              | attraversa (ogg)               |   | 1 | x |
+--| bacia              | abbraccia                    | bacia (ogg)                    |   | 1 | x |
 --| balla              | danza                        | balla                          |   | 0 |   |
 --| bevi               |                              | bevi (liq)                     |   | 1 |   |
 --| blocca             | serra                        | blocca (ogg)                   |   | 1 | x |
@@ -267,24 +270,22 @@ Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e 
 --| brucia             |                              | brucia (ogg)                   |   | 1 | x |
 --| brucia_con         |                              | brucia (ogg) con (strum)       |   | 2 | x |
 --| canta              |                              | canta                          |   | 0 |   |
---| chi_è              |                              | chi è (png)                    |   | 1 |   | * BUGGED!
---| chi_sono_io        |                              | chi sono                       |   | 0 |   |
+--| chiedi             |                              | chiedi a (png) (ogg)           |   | 2 | x |
 --| chiudi             |                              | chiudi (ogg)                   |   | 1 | x |
 --| chiudi_con         |                              | chiudi (ogg) con (strum)       |   | 2 | x |
 --| compra             | acquista                     | compra (merce)                 |   | 1 |   |
---| cosa_è             |                              | cosa è (ogg)                   |   | 1 | x | * BUGGED!
---| cosa_sono_io       |                              | cosa sono                      |   | 0 |   |
 --| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)        |   | 2 | x |
---| dici_No            |                              | no                             |   | 0 |   |
---| dici_Sì            |                              | sì                             |   | 0 |   |
+--| dì                 |                              | dì (argomento)                 |   | 1 |   |
+--| dì_a               |                              | dì (argomento) a (png)         |   | 2 |   |
 --| dormi              | riposa                       | dormi                          |   | 0 |   |
---| dove_è             |                              | dove è (ogg)                   |   | 1 | x | * BUGGED!
---| dove_mi_trovo      |                              | dove sono                      |   | 0 |   |
 --| esamina            | guarda, descrivi, osserva, X | esamina (ogg)                  |   | 1 | x |
 --| gioca_con          |                              | gioca con (ogg)                |   | 1 | x |
 --| guida              |                              | guida (veicolo)                |   | 1 |   |
+--| indossa            | mettiti                      | indossa (ogg)                  |   | 1 | x |
 --| inventario         | inv                          | inventario                     | x | 0 |   |
 --| lascia             | abbandona, metti giù, posa   | lascia (ogg)*                  |   | 1 | x |
+--| lega               |                              | lega (ogg)                     |   | 1 | x |
+--| lega_a             |                              | lega (ogg) a (bersaglio)       |   | 2 | x |
 --| leggi              |                              | leggi (ogg)                    |   | 1 | x |
 --| libera             | rilascia                     | libera (ogg)                   |   | 1 | x |
 --| mangia             |                              | mangia (cibo)                  |   | 1 |   |
@@ -311,11 +312,26 @@ Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e 
 --| suona              |                              | suona (ogg)                    |   | 1 | x |
 --| taglia             |                              | taglia (ogg)                   |   | 1 | x |
 --| taglia_con         |                              | taglia (ogg) con (strum)       |   | 2 | x |
+--| tira               |                              | tira (ogg)                     |   | 1 | x |
+--| tocca              | accarezza, carezza           | tocca (ogg)                    |   | 1 | x |
+--| tocca_con          | accarezza, carezza           | tocca (ogg) con (strum)        |   | 2 | x |
+--| togliti            | sfilati, levati              | togliti (ogg)                  |   | 1 | x |
 --| trova              |                              | trova (ogg)                    |   | 1 | x |
+--| uccidi             | ammazza                      | uccidi (vittima)               |   | 1 |   |
+--| uccidi_con         | ammazza                      | uccidi (vittima) con (arma)    |   | 2 |   |
 --| usa                |                              | usa (ogg)                      |   | 1 | x |
 --| usa_con            |                              | usa (ogg) con (strum)          |   | 2 | x |
 --| vai_a              |                              | vai a (dest)                   |   | 1 |   |
 --| vendi              |                              | vendi (merce)                  |   | 1 |   |
+--+--------------------+------------------------------+--------------------------------+---+---+---+
+--| chi_è              |                              | chi è (png)                    |   | 1 |   | * BUGGED!
+--| chi_sono_io        |                              | chi sono                       |   | 0 |   |
+--| cosa_è             |                              | cosa è (ogg)                   |   | 1 | x | * BUGGED!
+--| cosa_sono_io       |                              | cosa sono                      |   | 0 |   |
+--| dici_No            |                              | no                             |   | 0 |   |
+--| dici_Sì            |                              | sì                             |   | 0 |   |
+--| dove_è             |                              | dove è (ogg)                   |   | 1 | x | * BUGGED!
+--| dove_mi_trovo      |                              | dove sono                      |   | 0 |   |
 --+--------------------+------------------------------+--------------------------------+---+---+---+
 ```
 
@@ -582,36 +598,69 @@ sintassi:
 
 Questi verbi sono accomunati dal fatto che riguardano il trasferimento di oggetti da un luogo/proprietario ad un altro.
 
+- [chiedi]
+- [compra]
+- [dai_a]
+- [inventario]
+- [lascia]
+- [prendi]
+- [prendi_da]
 
-## prendi
 
-[prendi]: #prendi "prendi"
-[afferra]: #prendi "prendi"
-[raccogli]: #prendi "prendi"
-[trasporta]: #prendi "prendi"
+## chiedi
+
+[chiedi]: #chiedi "chiedi"
+
 
 attributo `mia_AT`:
 
-    CAN [NOT] prendere
+    CAN [NOT] chiedere
 
 sintassi:
 
-    (prendi|afferra|raccogli|trasporta) <ogg>
+    chiedi a <png> <ogg>
+    chiedi <ogg> a <png>
 
 
-## prendi_da
 
-[prendi da]: #prendi_da "prendi_da"
-[rimuovi]: #prendi_da "prendi_da"
-[togli]: #prendi_da "prendi_da"
+## compra
+
+[compra]: #compra "compra"
+
+sintassi:
+
+    (compra|acquista) <merce>
+
+
+## dai_a
+
+[dai_a]: #dai_a "dai_a"
+[dai]: #dai_a "dai_a"
+[porgi]: #dai_a "dai_a"
+[offri]: #dai_a "dai_a"
 
 attributo `mia_AT`:
 
-    CAN [NOT] prendere_da
+    CAN [NOT] give
 
 sintassi:
 
-    (prendi|rimuovi|togli) <ogg> da <detentore>
+    (dai|porgi|offri) <ogg> a <ricevente>
+
+... dove `ricevente` è un ATTORE.
+
+
+## inventario
+
+[inventario]: #inventario "inventario"
+
+attributo `mia_AT`:
+
+    CAN [NOT] inventariare
+
+sintassi:
+
+    (inventario|inv)
 
 
 ## lascia
@@ -632,42 +681,37 @@ sintassi:
 
 
 
-## dai_a
 
-[dai]: #dai_a "dai_a"
-[porgi]: #dai_a "dai_a"
-[offri]: #dai_a "dai_a"
+## prendi
 
-attributo `mia_AT`:
-
-    CAN [NOT] give
-
-sintassi:
-
-    (dai|porgi|offri) <ogg> a <ricevente>
-
-... dove `ricevente` è un ATTORE.
-
-## inventario
-
-[inventario]: #inventario "inventario"
+[prendi]: #prendi "prendi"
+[afferra]: #prendi "prendi"
+[raccogli]: #prendi "prendi"
+[trasporta]: #prendi "prendi"
 
 attributo `mia_AT`:
 
-    CAN [NOT] inventariare
+    CAN [NOT] prendere
 
 sintassi:
 
-    (inventario|inv)
+    (prendi|afferra|raccogli|trasporta) <ogg>
 
 
-## compra
+## prendi_da
 
-[compra]: #compra "compra"
+[prendi_da]: #prendi_da "prendi_da"
+[prendi da]: #prendi_da "prendi_da"
+[rimuovi]: #prendi_da "prendi_da"
+[togli]: #prendi_da "prendi_da"
+
+attributo `mia_AT`:
+
+    CAN [NOT] prendere_da
 
 sintassi:
 
-    (compra|acquista) <merce>
+    (prendi|rimuovi|togli) <ogg> da <detentore>
 
 
 ## vendi

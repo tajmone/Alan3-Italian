@@ -1,0 +1,11 @@
+; ==============================================================================
+;                              PNG CON NOME PROPRIO                             
+; ==============================================================================
+; Eseguiamo test sugli attori con nome proprio, per verificare che i messaggi
+; vengano mostrati correttamente.
+nordest
+; ==============================================================================
+;                             PNG SENZA NOME PROPRIO                            
+; ==============================================================================
+; Ora testiamo con attori che non hanno nome proprio.
+ovest

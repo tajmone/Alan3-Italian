@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.5.1 (2018/08/22)
+-- "lib_verbi.i" v0.5.2 (2018/08/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -40,6 +40,7 @@
 --| brucia             |                              | brucia (ogg)                   |   | 1 | x |
 --| brucia_con         |                              | brucia (ogg) con (strum)       |   | 2 | x |
 --| canta              |                              | canta                          |   | 0 |   |
+--| chiedi             |                              | chiedi a (png) (ogg)           |   | 2 | x |
 --| chiudi             |                              | chiudi (ogg)                   |   | 1 | x |
 --| chiudi_con         |                              | chiudi (ogg) con (strum)       |   | 2 | x |
 --| compra             | acquista                     | compra (merce)                 |   | 1 |   |
@@ -133,7 +134,7 @@
 -->>> again       (+ g)                                    again                               0
 -->>> answer      (+ reply)                                answer (topic)                      1
 ----- ask         (+ enquire, inquire, interrogate)        ask (act) about (topic)             2
------ ask_for                                              ask (act) for (obj)                 2       x
+-->>> ask_for                                              ask (act) for (obj)                 2       x
 -->>> attack      (+ beat, fight, hit, punch)              attack (target)                     1
 -->>> attack_with                                          attack (target) with (weapon)       2
 ----- bite        (+ chew)                                 bite (obj)                          1       x
@@ -1578,6 +1579,130 @@ VERB canta
     "Canticchi una melodia."
  -- "You $v a little tune."
 END VERB canta.
+
+
+-- =============================================================
+
+
+----- @CHIEDI --> @ASK FOR
+
+
+-- =============================================================
+
+-- SYNTAX ask_for = ask (act) 'for' (obj)
+-- SYNTAX ask_for_error = ask 'for' (obj)
+
+SYNTAX  chiedi = chiedi a (png) (ogg)
+  WHERE png IsA ACTOR
+    ELSE
+      IF png IS NOT plurale
+--                                                                              TRANSLATE!
+        THEN SAY  illegal_parameter_talk_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_talk_pl  OF mia_AT.
+      END IF.
+  AND ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+--                                                                              TRANSLATE!
+        THEN SAY  illegal_parameter_for_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_for_pl  OF mia_AT.
+      END IF.
+
+        chiedi = chiedi (ogg) a (png).
+
+ADD TO EVERY ACTOR
+  VERB chiedi
+      WHEN png
+      CHECK mia_AT CAN chiedere
+        ELSE SAY  azione_bloccata  OF mia_AT.
+      AND png <> hero
+--                                                                              TRANSLATE!
+        ELSE SAY  check_obj_not_hero1  OF mia_AT.
+          AND png CAN parlare
+              ELSE
+          IF png IS NOT plurale
+--                                                                              TRANSLATE!
+            THEN SAY  check_act_can_talk_sg  OF mia_AT.
+            ELSE SAY  check_act_can_talk_pl  OF mia_AT.
+          END IF.
+      AND ogg IS esaminabile
+        ELSE
+          IF ogg IS NOT plurale
+--                                                                              TRANSLATE!
+            THEN SAY  check_obj2_suitable_for_sg  OF mia_AT.
+            ELSE SAY  check_obj2_suitable_for_pl  OF mia_AT.
+          END IF.
+      AND ogg NOT IN hero
+--                                                                              TRANSLATE!
+        ELSE SAY  check_obj2_not_in_hero3  OF mia_AT.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
+      AND png IS NOT distante
+        ELSE
+          IF png IS NOT plurale
+            THEN SAY  ogg1_distante_sg  OF mia_AT.
+            ELSE SAY  ogg1_distante_pl  OF mia_AT.
+          END IF.
+      AND ogg IS prendibile
+--                                                                              TRANSLATE!
+        ELSE SAY  check_obj2_takeable2  OF mia_AT.
+
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+--                                                                              TRANSLATE!
+            THEN SAY  check_obj_reachable_ask  OF mia_AT.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
+              END IF.
+          END IF.
+      AND ogg IS NOT scenario
+        ELSE
+          IF ogg IS NOT plurale
+--                                                                              TRANSLATE!
+            THEN SAY  check_obj2_not_scenery_sg  OF mia_AT.
+            ELSE SAY  check_obj2_not_scenery_pl  OF mia_AT.
+          END IF.
+      DOES
+        MAKE png condiscendente.
+        -- It is only possible to get something from an NPC
+        -- if the NPC is 'compliant'.
+        LOCATE ogg IN hero.
+--                                                                              TRANSLATE!
+        "$+1 ti"
+        IF png IS NOT plurale
+          THEN "dà"
+          ELSE "danno"
+        END IF.
+        "$+2."
+     -- SAY THE png. "gives" SAY THE ogg. "to you."
+        MAKE png NOT condiscendente.
+        -- @NOTE: Shouldn't this check if the actor was compliant before?
+        --        It should restore the actor to the compliance state it was!
+  END VERB chiedi.
+END ADD TO.
+
+
+
+--- another 'ask_for' formulation added to guide players to use the right phrasing:
+
+
+SYNTAX chiedi_errore = chiedi (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE "Please use the formulation ASK PERSON FOR THING to ask somebody for
+       something."
+
+
+ADD TO EVERY OBJECT
+  VERB chiedi_errore
+    DOES
+      "Please use the formulation ASK PERSON FOR THING to ask somebody for
+             something."
+  END VERB chiedi_errore.
+END ADD TO.
 
 
 
@@ -5295,109 +5420,6 @@ END ADD TO.
 
 ----- note that 'consult' is defined separately
 
-
-
--- =============================================================
-
-
------ ASK FOR
-
-
--- =============================================================
-
-
-SYNTAX ask_for = ask (png) 'for' (ogg)
-  WHERE png IsA ACTOR
-    ELSE
-      IF png IS NOT plurale
-        THEN SAY  illegal_parameter_talk_sg  OF mia_AT.
-        ELSE SAY  illegal_parameter_talk_pl  OF mia_AT.
-      END IF.
-  AND ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY  illegal_parameter_for_sg  OF mia_AT.
-        ELSE SAY  illegal_parameter_for_pl  OF mia_AT.
-      END IF.
-
-
-ADD TO EVERY ACTOR
-  VERB ask_for
-      WHEN png
-      CHECK mia_AT CAN ask_for
-        ELSE SAY  azione_bloccata  OF mia_AT.
-      AND png <> hero
-        ELSE SAY  check_obj_not_hero1  OF mia_AT.
-          AND png CAN parlare
-              ELSE
-          IF png IS NOT plurale
-            THEN SAY  check_act_can_talk_sg  OF mia_AT.
-            ELSE SAY  check_act_can_talk_pl  OF mia_AT.
-          END IF.
-      AND ogg IS esaminabile
-        ELSE
-          IF ogg IS NOT plurale
-            THEN SAY  check_obj2_suitable_for_sg  OF mia_AT.
-            ELSE SAY  check_obj2_suitable_for_pl  OF mia_AT.
-          END IF.
-      AND ogg NOT IN hero
-        ELSE SAY  check_obj2_not_in_hero3  OF mia_AT.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY  imp_luogo_buio  OF mia_AT.
-      AND png IS NOT distante
-        ELSE
-          IF png IS NOT plurale
-            THEN SAY  ogg1_distante_sg  OF mia_AT.
-            ELSE SAY  ogg1_distante_pl  OF mia_AT.
-          END IF.
-      AND ogg IS prendibile
-        ELSE SAY  check_obj2_takeable2  OF mia_AT.
-
-      AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN SAY  check_obj_reachable_ask  OF mia_AT.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY  ogg1_distante_sg  OF mia_AT.
-                ELSE SAY  ogg1_distante_pl  OF mia_AT.
-              END IF.
-          END IF.
-      AND ogg IS NOT scenario
-        ELSE
-          IF ogg IS NOT plurale
-            THEN SAY  check_obj2_not_scenery_sg  OF mia_AT.
-            ELSE SAY  check_obj2_not_scenery_pl  OF mia_AT.
-          END IF.
-      DOES
-        MAKE png condiscendente.
-        -- It is only possible to get something from an NPC
-        -- if the NPC is 'compliant'.
-        LOCATE ogg IN hero.
-        SAY THE png. "gives" SAY THE ogg. "to you."
-        MAKE png NOT condiscendente.
-  END VERB ask_for.
-END ADD TO.
-
-
-
---- another 'ask_for' formulation added to guide players to use the right phrasing:
-
-
-SYNTAX ask_for_error = ask 'for' (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE "Please use the formulation ASK PERSON FOR THING to ask somebody for
-       something."
-
-
-ADD TO EVERY OBJECT
-  VERB ask_for_error
-    DOES
-      "Please use the formulation ASK PERSON FOR THING to ask somebody for
-             something."
-  END VERB ask_for_error.
-END ADD TO.
 
 
 

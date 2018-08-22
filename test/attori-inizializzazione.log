@@ -10,9 +10,8 @@ Tutti i diritti riservati.
 
 
 Atrio Principale
-A NORDEST c'?una stanza piena di PNG con nomi propri.
-A NORDOVEST c'?una stanza piena di PNG senza nomi propri. Mario non
-sarebbe d'accordo.
+A NORDEST c'è una stanza piena di PNG con nomi propri.
+A NORDOVEST c'è una stanza piena di PNG senza nomi propri.
 
 > ; ==============================================================================
 > ;                         ATTRIBUTI PNG CON NOME PROPRIO                        
@@ -20,7 +19,12 @@ sarebbe d'accordo.
 > ; Verifichiamo la corretta inizializzazione degli attributi per l'italiano negli
 > ; attori con nome proprio.
 > nordest
+Sala dei Nomi Propri
+In questo set li attori hanno nomi propri.
+A OVEST c'è l'altro set.
 
+Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise 
+sono qui.
 
 > debaca tutti
 (Mario) 
@@ -122,7 +126,7 @@ sarebbe d'accordo.
 Set Attori in Costume
 In questo set gli attori indossano costumi di personaggi, e non hanno
 nomi propri.
-A EST c'?l'altro set.
+A EST c'è l'altro set.
 
 C'è un vampiro qui. C'è uno zombie qui. C'è un orco qui. C'è una strega 
 qui. C'è un'arpia qui. Ci sono dei gemelli siamesi qui. Ci sono degli 

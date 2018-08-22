@@ -3,5 +3,21 @@ dì "ciao" al mago
 dì al mago "ciao"
 dì "ciao" alla strega
 dì alla strega "ciao"
-dì "ciao" agli zombi
-dì agli zombi "ciao"
+dì "ciao" agli sciamani
+dì agli sciamani "ciao"
+; ==============================================================================
+;                         Testa "Chiedi" vs "Chiedi Di"                         
+; ==============================================================================
+; Assicuriamoci che le sintassi i verbi 'chiedi' e 'chiedi_di' non confliggano.
+chiedi la bacchetta magica
+chiedi al mago la bacchetta magica
+inventario
+dai la bacchetta magica al mago
+inventario
+chiedi la bacchetta magica al mago
+inventario
+chiedi agli sciamani il medaglione
+chiedi alla strega la mela
+inventario
+
+

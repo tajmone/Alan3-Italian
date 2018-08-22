@@ -21,8 +21,8 @@ END THE.
 THE stanza0 IsA STANZA.
   NAME 'Atrio Principale'.
   DESCRIPTION
-    "A NORDEST c'?una stanza piena di PNG con nomi propri.$n"
-    "A NORDOVEST c'?una stanza piena di PNG senza nomi propri."
+    "A NORDEST c'è una stanza piena di PNG con nomi propri.$n"
+    "A NORDOVEST c'è una stanza piena di PNG senza nomi propri."
   EXIT NORDEST TO stanza1.
   EXIT NORDOVEST TO stanza2.
 END THE.
@@ -33,9 +33,9 @@ END THE.
 --==============================================================================
 -- Gli attori con nome proprio sono un caso speciale per quanto riguarda gli
 -- attributi per l'italiano: la libreria deve occuparsi di inizializzarli una
--- seconda volta (dopo l'avvenuta inizializzazione sulla classe THING) poich?
+-- seconda volta (dopo l'avvenuta inizializzazione sulla classe THING) poiché
 -- la presenza del nome proprio richiede che vengano modificate le preposizioni
--- da articolate a semplici, affinch?nei messaggi si legga:
+-- da articolate a semplici, affinché nei messaggi si legga:
 --
 --    "Hai dato la palla A Marta."
 --
@@ -47,7 +47,7 @@ END THE.
 THE stanza1 IsA STANZA.
   NAME 'Sala dei Nomi Propri'.
   DESCRIPTION "In questo set li attori hanno nomi propri.$n"
-              "A OVEST c'?l'altro set.$p"
+              "A OVEST c'è l'altro set.$p"
   EXIT OVEST to stanza2.
 END THE.
 
@@ -66,9 +66,9 @@ END THE.
 -- ================
 -- Maschile Plurale
 -- ================
--- Questo esempio ?pi? ipotetico che pratico; comunque vale la regola che se
+-- Questo esempio è più ipotetico che pratico; comunque vale la regola che se
 -- diversi attori con nome proprio vengono rappresentati tramite un'unica
--- istanza, se anche solo uno di essi ?maschile ci si dovr?riferire ad essi
+-- istanza, se anche solo uno di essi è maschile ci si dovrà riferire ad essi
 -- con il maschile.
 THE Romeo_Giulietta IsA maschio AT stanza1.
   HAS nome_proprio.
@@ -96,7 +96,7 @@ THE stanza2 IsA STANZA.
   NAME 'Set Attori in Costume'.
   DESCRIPTION "In questo set gli attori indossano costumi di personaggi, e non
                hanno nomi propri.$n"
-              "A EST c'?l'altro set.$p"
+              "A EST c'è l'altro set.$p"
   EXIT EST to stanza1.
 END THE.
 

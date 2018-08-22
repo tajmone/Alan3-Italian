@@ -1,0 +1,35 @@
+
+
+Provini Attori 
+Set cinematografici per effettuare test sugli attori. 
+(C) Tristano Ajmone, 2018. 
+Programmed with the ALAN Interactive Fiction Language v3.0 beta5
+Standard Library v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+Atrio Principale
+A NORDEST c'è una stanza piena di PNG con nomi propri.
+A NORDOVEST c'è una stanza piena di PNG senza nomi propri.
+
+> ; ==============================================================================
+> ;                              PNG CON NOME PROPRIO                             
+> ; ==============================================================================
+> ; Eseguiamo test sugli attori con nome proprio, per verificare che i messaggi
+> ; vengano mostrati correttamente.
+> nordest
+Sala dei Nomi Propri
+In questo set li attori hanno nomi propri.
+A OVEST c'è l'altro set.
+
+Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise 
+sono qui.
+
+> ; ==============================================================================
+> ;                             PNG SENZA NOME PROPRIO                            
+> ; ==============================================================================
+> ; Ora testiamo con attori che non hanno nome proprio.
+> ovest
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

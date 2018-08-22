@@ -293,7 +293,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `'again'`        | `rifare`                  |
 | `answer`         | `rispondere`              |
 | `ask`            |                           |
-| `ask_for`        |                           |
+| `ask_for`        | `chiedere`                |
 | `attack`         | `attaccare`               |
 | `attack_with`    | `attaccare_con`           |
 | `bite`           |                           |

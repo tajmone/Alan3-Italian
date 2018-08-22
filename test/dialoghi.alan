@@ -36,20 +36,35 @@ THE mago IsA maschio AT prato.
   
 END THE.
 
+THE bacchetta_magica IsA object IN mago.
+  NAME bacchetta magica.
+  NAME bacchetta.
+  HAS articolo "la".
+END THE.
+
 --==============================================================================
 -- La Strega
 --==============================================================================
 THE strega IsA femmina AT prato.
   HAS articolo "la".
+  IS NOT condiscendente.
+END THE.
+
+THE mela_avvelenata IsA object IN strega.
+  NAME mela avvelenata.
+  NAME mela.
+  HAS articolo "la".
 END THE.
 
 --==============================================================================
--- Gli Zombi
+-- Gli Sciamani
 --==============================================================================
-THE zombi IsA maschio AT prato.
+THE sciamani IsA maschio AT prato.
   HAS articolo "gli".
 END THE.
 
+THE medaglione IsA object IN sciamani.
+END THE.
 
 --------------------------------------------------------------------------------
 Start at prato.

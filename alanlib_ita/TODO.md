@@ -9,7 +9,6 @@ Some pending tasks that need to be done.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [Named Actors Initialization](#named-actors-initialization)
 - [Locations in Verb Responses](#locations-in-verb-responses)
 - [Hero Settings and Customization](#hero-settings-and-customization)
     - [Female Hero](#female-hero)
@@ -20,15 +19,6 @@ Some pending tasks that need to be done.
 <!-- /MarkdownTOC -->
 
 -----
-
-# Named Actors Initialization
-
-There seems to be a problem with the newly implemented initialization of `ACTOR`s:
-
-- [ ] the `vocale` of named actors/persons is not set correctly.
-- [ ] unamed actors are not always initialized properly:
-    + [ ] `plurale` doesn't match article
-    + [ ] `femminile` doesn't match gender
 
 # Locations in Verb Responses
 

@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.5.1 (2018/08/22)
+-- "lib_definizioni.i" v0.5.2 (2018/08/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta6 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1373,6 +1373,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN bussare.                  --> knock
   CAN cantare.                  --> sing
   CAN caricare_partita.         --> 'restore'
+  CAN chiedere.                 --> ask_for
   CAN chiudere.                 --> close        (+ shut)
   CAN chiudere_con.             --> close_with
   CAN comprare.                 --> buy          (+ purchase)
@@ -1461,7 +1462,6 @@ EVERY blocco_definizioni IsA LOCATION
 --# NOT YET TRANSLATED:
   CAN about.
   CAN ask.         -- (+ enquire, inquire, interrogate)
-  CAN ask_for.
   CAN bite.        -- (+ chew)
   CAN catch.
   CAN climb.
@@ -1577,6 +1577,7 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT bussare.                  --> knock
   MAKE mia_AT cantare.                  --> sing
   MAKE mia_AT caricare_partita.         --> 'restore'
+  MAKE mia_AT chiedere.                 --> ask_for
   MAKE mia_AT chiudere.                 --> close        (+ shut)
   MAKE mia_AT chiudere_con.             --> close_with
   MAKE mia_AT comprare.                 --> buy          (+ purchase)
@@ -1665,7 +1666,6 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
 --# NOT YET TRANSLATED:
   MAKE mia_AT about.
   MAKE mia_AT ask.             -- (+ enquire, inquire, interrogate)
-  MAKE mia_AT ask_for.
   MAKE mia_AT bite.            -- (+ chew)
   MAKE mia_AT catch.
   MAKE mia_AT climb.
@@ -1746,6 +1746,7 @@ ELSIF restricted_level OF mia_AT = 1  -- communication verbs are restricted
   THEN
 
   MAKE mia_AT NOT cantare.                  --> sing
+  MAKE mia_AT NOT chiedere.                 --> ask_for
   MAKE mia_AT NOT dire.                     --> 'say'
   MAKE mia_AT NOT dire_a.                   --> say_to
   MAKE mia_AT NOT gridare.                  --> shout       (+ scream, yell)
@@ -1753,7 +1754,6 @@ ELSIF restricted_level OF mia_AT = 1  -- communication verbs are restricted
 
 --# NOT YET TRANSLATED:
   MAKE mia_AT NOT ask.
-  MAKE mia_AT NOT ask_for.
   MAKE mia_AT NOT tell.
 
 
@@ -1792,6 +1792,7 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT bussare.                  --> knock
   MAKE mia_AT NOT cantare.                  --> sing
   MAKE mia_AT     caricare_partita.         --> 'restore'
+  MAKE mia_AT NOT chiedere.                 --> ask_for
   MAKE mia_AT NOT chiudere.                 --> close        (+ shut)
   MAKE mia_AT NOT chiudere_con.             --> close_with
   MAKE mia_AT NOT comprare.                 --> buy          (+ purchase)
@@ -1881,7 +1882,6 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
 
   MAKE mia_AT about.
   MAKE mia_AT NOT ask.         -- (+ enquire, inquire, interrogate)
-  MAKE mia_AT NOT ask_for.
   MAKE mia_AT NOT bite.        -- (+ chew)
   MAKE mia_AT NOT catch.
   MAKE mia_AT NOT climb.
@@ -1986,6 +1986,7 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT bussare.                  --> knock
   MAKE mia_AT NOT cantare.                  --> sing
   MAKE mia_AT     caricare_partita.         --> 'restore'
+  MAKE mia_AT NOT chiedere.                 --> ask_for
   MAKE mia_AT NOT chiudere.                 --> close        (+ shut)
   MAKE mia_AT NOT chiudere_con.             --> close_with
   MAKE mia_AT NOT comprare.                 --> buy          (+ purchase)
@@ -2081,7 +2082,6 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
 
   MAKE mia_AT about.
   MAKE mia_AT NOT ask.         -- (+ enquire, inquire, interrogate)
-  MAKE mia_AT NOT ask_for.
   MAKE mia_AT NOT bite.        -- (+ chew)
   MAKE mia_AT NOT catch.
   MAKE mia_AT NOT climb.
@@ -2183,6 +2183,7 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT bussare.                  --> knock
   MAKE mia_AT NOT cantare.                  --> sing
   MAKE mia_AT NOT caricare_partita.         --> 'restore'
+  MAKE mia_AT NOT chiedere.                 --> ask_for
   MAKE mia_AT NOT chiudere.                 --> close        (+ shut)
   MAKE mia_AT NOT chiudere_con.             --> close_with
   MAKE mia_AT NOT comprare.                 --> buy          (+ purchase)
@@ -2266,7 +2267,6 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
 
   MAKE mia_AT NOT about.
   MAKE mia_AT NOT ask.         -- (+ enquire, inquire, interrogate)
-  MAKE mia_AT NOT ask_for.
   MAKE mia_AT NOT bite.        -- (+ chew)
   MAKE mia_AT NOT catch.
   MAKE mia_AT NOT climb.

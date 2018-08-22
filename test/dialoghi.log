@@ -10,7 +10,7 @@ Tutti i diritti riservati.
 
 
 Prato
-C'è un mago qui. C'è una strega qui. Ci sono degli zombi qui.
+C'è un mago qui. C'è una strega qui. Ci sono degli sciamani qui.
 
 > dì "ciao"
 Dici "ciao", ma non succede nulla.
@@ -27,11 +27,50 @@ La strega non sembra interessata.
 > dì alla strega "ciao"
 La strega non sembra interessata.
 
-> dì "ciao" agli zombi
-Gli zombi non sembrano interessati.
+> dì "ciao" agli sciamani
+Gli sciamani non sembrano interessati.
 
-> dì agli zombi "ciao"
-Gli zombi non sembrano interessati.
+> dì agli sciamani "ciao"
+Gli sciamani non sembrano interessati.
+
+> ; ==============================================================================
+> ;                         Testa "Chiedi" vs "Chiedi Di"                         
+> ; ==============================================================================
+> ; Assicuriamoci che le sintassi i verbi 'chiedi' e 'chiedi_di' non confliggano.
+> chiedi la bacchetta magica
+Please use the formulation ASK PERSON FOR THING to ask somebody for
+something.
+
+> chiedi al mago la bacchetta magica
+Il mago ti dà la bacchetta magica.
+
+> inventario
+Stai portando una bacchetta magica.
+
+> dai la bacchetta magica al mago
+You give la bacchetta magica to il mago.
+
+> inventario
+Non stai portando niente.
+
+> chiedi la bacchetta magica al mago
+Il mago ti dà la bacchetta magica.
+
+> inventario
+Stai portando una bacchetta magica.
+
+> chiedi agli sciamani il medaglione
+Gli sciamani ti danno il medaglione.
+
+> chiedi alla strega la mela
+La strega ti dà la mela avvelenata.
+
+> inventario
+Stai portando un medaglione, una mela avvelenata e una bacchetta magica.
+
+> 
+
+> 
 
 > 
 

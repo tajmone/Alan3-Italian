@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.5.1 (2018/08/22)
+-- "lib_classi.i" v0.5.2 (2018/08/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1551,12 +1551,12 @@ EVERY liquido IsA OBJECT
   END VERB lascia.
 
 
-  VERB ask_for
+  VERB chiedi
     DOES ONLY
       LOCATE recipiente OF THIS IN hero.
 --                                                                              TRANSLATE!
       SAY THE png. "gives" SAY THE recipiente OF THIS. "of" SAY THIS. "to you."
-  END VERB ask_for.
+  END VERB chiedi.
 
 -- @DAI_A -> @GIVE (VERB) => LIQUID
   VERB dai_a
@@ -2237,6 +2237,95 @@ ADD TO EVERY ACTOR
   IS NOT prendibile.                                        --> takeable
 
 
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 2.4 - Inizializzazione Articoli Indeterminativi
+--------------------------------------------------------------------------------
+--==============================================================================
+  INDEFINITE ARTICLE
+--==============================================================================
+-- § 2.4.1 - Attori con Nome Proprio
+--==============================================================================
+  IF THIS HAS nome_proprio
+    THEN ""
+    ELSE
+--==============================================================================
+-- § 2.4.2 - Attori Senza Nome Proprio
+--==============================================================================
+      DEPENDING ON articolo of THIS
+        = "il"  THEN   "un"               --> ms indet.
+        = "lo"  THEN   "uno"              --> ms indet.
+        = "la"  THEN   "una"              --> fs indet.
+
+        = "l'"  THEN
+          IF THIS IS NOT femminile
+                THEN   "un"               --> ms indet.
+                ELSE   "un'$$"            --> fs indet.
+          END IF.
+
+        = "i"   THEN   "dei"              --> mp indet.
+        = "gli" THEN   "degli"            --> mp indet.
+        = "le"  THEN   "delle"            --> fp indet.
+
+        ELSE -- se non è definito
+          IF THIS IS NOT femminile
+          THEN
+            IF THIS IS NOT plurale
+                THEN   "un"               --> ms indet.
+                ELSE   "dei"              --> mp indet.
+            END IF.
+          ELSE
+            IF THIS IS NOT plurale
+                THEN   "una"              --> fs indet.
+                ELSE   "delle"            --> fp indet.
+            END IF.
+          END IF.
+      END DEPEND.
+  END IF.
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 2.5 - Inizializzazione Articoli Determinativi
+--------------------------------------------------------------------------------
+--==============================================================================
+  DEFINITE ARTICLE
+--==============================================================================
+-- § 2.5.1 - Attori con Nome Proprio
+--==============================================================================
+  IF THIS HAS nome_proprio
+    THEN ""
+    ELSE
+--==============================================================================
+-- § 2.5.2 - Attori Senza Nome Proprio
+--==============================================================================
+      DEPENDING ON articolo of THIS
+        = "il"  THEN   "il"               --> ms indet.
+        = "lo"  THEN   "lo"               --> ms indet.
+        = "la"  THEN   "la"               --> fs indet.
+
+        = "l'"  THEN   "l'$$"             --> *s det.  (masc & femm)
+
+        = "i"   THEN   "i"                --> mp det.
+        = "gli" THEN   "gli"              --> mp det.
+        = "le"  THEN   "le"               --> fp det.
+
+        ELSE -- se non è definito
+          IF THIS IS NOT femminile
+          THEN
+            IF THIS IS NOT plurale
+                THEN   "il"               --> ms det.
+                ELSE   "i"                --> mp det.
+            END IF.
+          ELSE
+            IF THIS IS NOT plurale
+                THEN   "la"               --> fs det.
+                ELSE   "le"               --> fp det.
+            END IF.
+          END IF.
+      END DEPEND.
+  END IF.
+
+  ------------------------------------------------------------------------------
+
 
 --==============================================================================
 --------------------------------------------------------------------------------
@@ -2251,6 +2340,7 @@ ADD TO EVERY ACTOR
 -- classe).
 -- Per il protagonista, viene eseguito quando si usa 'inventario', per i PNG con
 -- il verbo esamina.
+
 --==============================================================================
 -- § 2.2.1 - Descrizione Inventario Non Vuoto
 --==============================================================================
@@ -2308,25 +2398,14 @@ ADD TO EVERY ACTOR
           THEN "$$ro"
         END IF. "d'accordo."
 
---==============================================================================
--- § 2.2.4 - Verbo Esamina
---==============================================================================
--- Questo corpo aggiuntivo del verbo 'esamina' sulla classe ACTOR, fà in modo
--- che dopo aver esaminato un NPG ne venga elencato l'inventario. 
-
-  VERB esamina
-    DOES AFTER
-      IF THIS <> hero
-        THEN
-          LIST THIS.
-      END IF.
-  END VERB esamina.
+END ADD TO ACTOR.
 
 --==============================================================================
 --------------------------------------------------------------------------------
 -- § 2.2 - Inizializzazione degli Attori
 --------------------------------------------------------------------------------
 --==============================================================================
+ADD TO EVERY ACTOR
 
   INITIALIZE
 
@@ -2488,94 +2567,44 @@ ADD TO EVERY ACTOR
       END DEPEND.
   END IF.
 
---==============================================================================
---------------------------------------------------------------------------------
--- § 2.4 - Inizializzazione Articoli Indeterminativi
---------------------------------------------------------------------------------
---==============================================================================
-  INDEFINITE ARTICLE
---==============================================================================
--- § 2.4.1 - Attori con Nome Proprio
---==============================================================================
-  IF THIS HAS nome_proprio
-    THEN ""
-    ELSE
---==============================================================================
--- § 2.4.2 - Attori Senza Nome Proprio
---==============================================================================
-      DEPENDING ON articolo of THIS
-        = "il"  THEN   "un"               --> ms indet.
-        = "lo"  THEN   "uno"              --> ms indet.
-        = "la"  THEN   "una"              --> fs indet.
 
-        = "l'"  THEN
-          IF THIS IS NOT femminile
-                THEN   "un"               --> ms indet.
-                ELSE   "un'$$"            --> fs indet.
-          END IF.
 
-        = "i"   THEN   "dei"              --> mp indet.
-        = "gli" THEN   "degli"            --> mp indet.
-        = "le"  THEN   "delle"            --> fp indet.
+  MAKE hero condiscendente.
+  -- so that the hero can give, drop, etc. carried objects.
 
-        ELSE -- se non è definito
-          IF THIS IS NOT femminile
-          THEN
-            IF THIS IS NOT plurale
-                THEN   "un"               --> ms indet.
-                ELSE   "dei"              --> mp indet.
-            END IF.
-          ELSE
-            IF THIS IS NOT plurale
-                THEN   "una"              --> fs indet.
-                ELSE   "delle"            --> fp indet.
-            END IF.
-          END IF.
-      END DEPEND.
-  END IF.
---==============================================================================
---------------------------------------------------------------------------------
--- § 2.5 - Inizializzazione Articoli Determinativi
---------------------------------------------------------------------------------
---==============================================================================
-  DEFINITE ARTICLE
---==============================================================================
--- § 2.5.1 - Attori con Nome Proprio
---==============================================================================
-  IF THIS HAS nome_proprio
-    THEN ""
-    ELSE
---==============================================================================
--- § 2.5.2 - Attori Senza Nome Proprio
---==============================================================================
-      DEPENDING ON articolo of THIS
-        = "il"  THEN   "il"               --> ms indet.
-        = "lo"  THEN   "lo"               --> ms indet.
-        = "la"  THEN   "la"               --> fs indet.
 
-        = "l'"  THEN   "l'$$"             --> *s det.  (masc & femm)
+  -- excluding the default dummy clothing object from all actors; ignore.
 
-        = "i"   THEN   "i"                --> mp det.
-        = "gli" THEN   "gli"              --> mp det.
-        = "le"  THEN   "le"               --> fp det.
+  EXCLUDE indumento_fittizio FROM indossati OF THIS.
 
-        ELSE -- se non è definito
-          IF THIS IS NOT femminile
-          THEN
-            IF THIS IS NOT plurale
-                THEN   "il"               --> ms det.
-                ELSE   "i"                --> mp det.
-            END IF.
-          ELSE
-            IF THIS IS NOT plurale
-                THEN   "la"               --> fs det.
-                ELSE   "le"               --> fp det.
-            END IF.
-          END IF.
-      END DEPEND.
+
+  -- all actors will obey this script from the start of the game:
+
+  IF THIS <> hero
+    THEN USE SCRIPT following_hero FOR THIS.
   END IF.
 
-  ------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+  SCRIPT following_hero
+    -- this code will make any actor follow the hero
+    -- if the actor is given the attribute 'following'.
+
+    STEP WAIT UNTIL hero NOT HERE
+
+      IF THIS IS seguendo
+        THEN
+          LOCATE THIS AT hero.
+          "$p" SAY THE THIS.
+            IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
+              THEN "follows you."
+              ELSE "follow you."
+            END IF.
+      END IF.
+
+      USE SCRIPT following_hero FOR THIS.
+
 
   DESCRIPTION
     IF THIS IS scenario
@@ -2601,41 +2630,19 @@ ADD TO EVERY ACTOR
       "qui."
     END IF.
 
-  MAKE hero condiscendente.
-  -- so that the hero can give, drop, etc. carried objects.
+--==============================================================================
+-- § 2.2.4 - Verbo Esamina
+--==============================================================================
+-- Questo corpo aggiuntivo del verbo 'esamina' sulla classe ACTOR, fà in modo
+-- che dopo aver esaminato un NPG ne venga elencato l'inventario. 
 
-
-  -- excluding the default dummy clothing object from all actors; ignore.
-
-  EXCLUDE indumento_fittizio FROM indossati OF THIS.
-
-
-  -- all actors will obey this script from the start of the game:
-
-  IF THIS <> hero
-    THEN USE SCRIPT following_hero FOR THIS.
-  END IF.
-
-
-
-  SCRIPT following_hero
-    -- this code will make any actor follow the hero
-    -- if the actor is given the attribute 'following'.
-
-    STEP WAIT UNTIL hero NOT HERE
-
-      IF THIS IS seguendo
+  VERB esamina
+    DOES AFTER
+      IF THIS <> hero
         THEN
-          LOCATE THIS AT hero.
-          "$p" SAY THE THIS.
-            IF THIS IS NOT plurale
---                                                                              TRANSLATE!
-              THEN "follows you."
-              ELSE "follow you."
-            END IF.
+          LIST THIS.
       END IF.
-
-      USE SCRIPT following_hero FOR THIS.
+  END VERB esamina.
 
 
 END ADD TO ACTOR.
@@ -2672,7 +2679,6 @@ END ADD TO ACTOR.
 
 EVERY persona IsA ACTOR
   CAN parlare.
-
 
   CONTAINER
 --==============================================================================
