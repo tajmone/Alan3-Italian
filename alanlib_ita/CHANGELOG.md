@@ -11,7 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/08/21](#20180821)
+- [2018/08/22 \(2\)](#20180822-2)
+    - [Fix Actors Initialization](#fix-actors-initialization)
+- [2018/08/22 \(1\)](#20180822-1)
     - [Verb: `say`](#verb-say)
     - [Verb: `say_to`](#verb-say_to)
 - [2018/08/18 \(2\)](#20180818-2)
@@ -287,7 +289,18 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/08/21
+# 2018/08/22 (2)
+
+- [`lib_classi.i`][lib_classi] (v0.5.1)
+
+## Fix Actors Initialization
+
+Changed the order of some code blocks within the `ACTOR`s' initialization, because some actors Italian grammar attributes where not being set properly according to `articolo`.
+
+<!---------------------------------------------------------------------------->
+
+
+# 2018/08/22 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.5.1)
 - [`lib_verbi.i`][lib_verbi] (v0.5.1)

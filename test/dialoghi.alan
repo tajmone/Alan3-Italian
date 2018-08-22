@@ -41,7 +41,6 @@ END THE.
 --==============================================================================
 THE strega IsA femmina AT prato.
   HAS articolo "la".
-  HAS vocale "a".                     --> FIXME: Non dovrebbe essere necessario!
 END THE.
 
 --==============================================================================
@@ -49,8 +48,6 @@ END THE.
 --==============================================================================
 THE zombi IsA maschio AT prato.
   HAS articolo "gli".
-  IS plurale.                         --> FIXME: Non dovrebbe essere necessario!
-  HAS vocale "i".                     --> FIXME: Non dovrebbe essere necessario!
 END THE.
 
 

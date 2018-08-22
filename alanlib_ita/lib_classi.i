@@ -1,4 +1,4 @@
--- "lib_classi.i" v0.5.0 (2018/08/18)
+-- "lib_classi.i" v0.5.1 (2018/08/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -2243,7 +2243,7 @@ ADD TO EVERY ACTOR
 -- § 2.2 - Possesso di Oggetti
 --------------------------------------------------------------------------------
 --==============================================================================
-  CONTAINER -- Rendi gli attori dei contentitori cosicché che possano ricevere e
+  CONTAINER -- Rendi gli attori dei contentitori affinché possano ricevere e
             -- trasportare oggetti.
 
 -- Il codice che segue gestisce il testo per elencare gli oggetti posseduti da
@@ -2329,42 +2329,6 @@ ADD TO EVERY ACTOR
 --==============================================================================
 
   INITIALIZE
-
-  MAKE hero condiscendente.
-  -- so that the hero can give, drop, etc. carried objects.
-
-
-  -- excluding the default dummy clothing object from all actors; ignore.
-
-  EXCLUDE indumento_fittizio FROM indossati OF THIS.
-
-
-  -- all actors will obey this script from the start of the game:
-
-  IF THIS <> hero
-    THEN USE SCRIPT following_hero FOR THIS.
-  END IF.
-
-
-
-  SCRIPT following_hero
-    -- this code will make any actor follow the hero
-    -- if the actor is given the attribute 'following'.
-
-    STEP WAIT UNTIL hero NOT HERE
-
-      IF THIS IS seguendo
-        THEN
-          LOCATE THIS AT hero.
-          "$p" SAY THE THIS.
-            IF THIS IS NOT plurale
---                                                                              TRANSLATE!
-              THEN "follows you."
-              ELSE "follow you."
-            END IF.
-      END IF.
-
-      USE SCRIPT following_hero FOR THIS.
 
 
 --==============================================================================
@@ -2637,6 +2601,43 @@ ADD TO EVERY ACTOR
       "qui."
     END IF.
 
+  MAKE hero condiscendente.
+  -- so that the hero can give, drop, etc. carried objects.
+
+
+  -- excluding the default dummy clothing object from all actors; ignore.
+
+  EXCLUDE indumento_fittizio FROM indossati OF THIS.
+
+
+  -- all actors will obey this script from the start of the game:
+
+  IF THIS <> hero
+    THEN USE SCRIPT following_hero FOR THIS.
+  END IF.
+
+
+
+  SCRIPT following_hero
+    -- this code will make any actor follow the hero
+    -- if the actor is given the attribute 'following'.
+
+    STEP WAIT UNTIL hero NOT HERE
+
+      IF THIS IS seguendo
+        THEN
+          LOCATE THIS AT hero.
+          "$p" SAY THE THIS.
+            IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
+              THEN "follows you."
+              ELSE "follow you."
+            END IF.
+      END IF.
+
+      USE SCRIPT following_hero FOR THIS.
+
+
 END ADD TO ACTOR.
 
 
@@ -2671,6 +2672,7 @@ END ADD TO ACTOR.
 
 EVERY persona IsA ACTOR
   CAN parlare.
+
 
   CONTAINER
 --==============================================================================
@@ -2715,9 +2717,9 @@ END EVERY.
 
 EVERY maschio IsA persona
   IS NOT femminile.
+  HAS articolo "il".
 --                                                                              TRANSLATE!
   PRONOUN him
-  HAS articolo "il".
 END EVERY.
 
 --==============================================================================
@@ -2726,9 +2728,9 @@ END EVERY.
 
 EVERY femmina IsA persona
   IS femminile.
+  HAS articolo "la".
 --                                                                              TRANSLATE!
   PRONOUN her
-  HAS articolo "la".
 END EVERY.
 
 

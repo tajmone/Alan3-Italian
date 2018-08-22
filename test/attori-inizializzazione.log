@@ -11,7 +11,8 @@ Tutti i diritti riservati.
 
 Atrio Principale
 A NORDEST c'?una stanza piena di PNG con nomi propri.
-A NORDOVEST c'?una stanza piena di PNG senza nomi propri.
+A NORDOVEST c'?una stanza piena di PNG senza nomi propri. Mario non
+sarebbe d'accordo.
 
 > ; ==============================================================================
 > ;                         ATTRIBUTI PNG CON NOME PROPRIO                        
@@ -19,12 +20,7 @@ A NORDOVEST c'?una stanza piena di PNG senza nomi propri.
 > ; Verifichiamo la corretta inizializzazione degli attributi per l'italiano negli
 > ; attori con nome proprio.
 > nordest
-Sala dei Nomi Propri
-In questo set li attori hanno nomi propri.
-A OVEST c'?l'altro set.
 
-Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise 
-sono qui.
 
 > debaca tutti
 (Mario) 
@@ -38,11 +34,11 @@ sono qui.
 | FORMA DETERMINATA:    Mario 
 | FORMA INDETERMINATA:  Mario 
 | VOCALE: o 
-| PREP. DI: del 
-| PREP. A:  al 
-| PREP. DA: dal 
-| PREP. IN: nel 
-| PREP. SU: sul 
+| PREP. DI: di 
+| PREP. A:  a 
+| PREP. DA: da 
+| PREP. IN: in 
+| PREP. SU: su 
 +------------------------------------------
 
 (Maria) 
@@ -55,12 +51,12 @@ sono qui.
 | ARTICOLO: la 
 | FORMA DETERMINATA:    Maria 
 | FORMA INDETERMINATA:  Maria 
-| VOCALE: o 
-| PREP. DI: del 
-| PREP. A:  al 
-| PREP. DA: dal 
-| PREP. IN: nel 
-| PREP. SU: sul 
+| VOCALE: a 
+| PREP. DI: di 
+| PREP. A:  a 
+| PREP. DA: da 
+| PREP. IN: in 
+| PREP. SU: su 
 +------------------------------------------
 
 (Romeo e Giuglietta) 
@@ -73,12 +69,12 @@ sono qui.
 | ARTICOLO: il 
 | FORMA DETERMINATA:    Romeo e Giuglietta 
 | FORMA INDETERMINATA:  Romeo e Giuglietta 
-| VOCALE: o 
-| PREP. DI: del 
-| PREP. A:  al 
-| PREP. DA: dal 
-| PREP. IN: nel 
-| PREP. SU: sul 
+| VOCALE: i 
+| PREP. DI: di 
+| PREP. A:  a 
+| PREP. DA: da 
+| PREP. IN: in 
+| PREP. SU: su 
 +------------------------------------------
 
 (Thelma e Louise) 
@@ -91,12 +87,12 @@ sono qui.
 | ARTICOLO: la 
 | FORMA DETERMINATA:    Thelma e Louise 
 | FORMA INDETERMINATA:  Thelma e Louise 
-| VOCALE: o 
-| PREP. DI: del 
-| PREP. A:  al 
-| PREP. DA: dal 
-| PREP. IN: nel 
-| PREP. SU: sul 
+| VOCALE: e 
+| PREP. DI: di 
+| PREP. A:  a 
+| PREP. DA: da 
+| PREP. IN: in 
+| PREP. SU: su 
 +------------------------------------------
 
 (hero) 

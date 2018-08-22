@@ -11,7 +11,7 @@ Tutti i diritti riservati.
 
 Piazza delle Persone
 In questa piazza tutti gli attori sono della classe PERSONA. C'è un 
-poliziotto qui. C'è un predicatore qui.
+poliziotto qui. C'è un predicatore qui. Il leone non sarebbe d'accordo.
 
 > ; ==============================================================================
 > ;                            INVENTARIO PROTAGONISTA                            
@@ -72,8 +72,8 @@ persone (classe PERSONA). C'è un leone qui. C'è uno scimpanzé qui. Ci sono
 delle galline qui.
 
 > esamina il leone
-Esamini il leone, ma non noti niente di speciale. Il leone non sta 
-portando niente.
+Esamini il leone, ma non noti niente di speciale. Il leone sta portando un 
+indumento_fittizio (indossato).
 
 > esamina lo scimpanzé
 Esamini lo scimpanzé, ma non noti niente di speciale. Lo scimpanzé sta 
