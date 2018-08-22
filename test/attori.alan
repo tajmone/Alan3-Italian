@@ -5,8 +5,8 @@
 -- nella Libreria, in particolar modo l'inizializzazione dei loro attributi per
 -- la lingua italiana.
 --------------------------------------------------------------------------------
-IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
-
+IMPORT 'libreria.i'.   -- ALAN Libreria Standard Italiana v2.1
+IMPORT 'inc_debaca.i'. -- Verbo 'debaca' per il debug degli attori.
 
 THE mia_AT IsA blocco_definizioni
   ------------------------------------------------------------------------------
@@ -21,74 +21,21 @@ END THE.
 THE stanza0 IsA STANZA.
   NAME 'Atrio Principale'.
   DESCRIPTION
-    "A NORDEST c'è una stanza piena di PNG con nomi propri.$n"
-    "A NORDOVEST c'è una stanza piena di PNG senza nomi propri."
+    "A NORDEST c'?una stanza piena di PNG con nomi propri.$n"
+    "A NORDOVEST c'?una stanza piena di PNG senza nomi propri."
   EXIT NORDEST TO stanza1.
   EXIT NORDOVEST TO stanza2.
 END THE.
 
---==============================================================================
--- Debug degli Attributi degli ACTOR
---==============================================================================
--- Il verbo 'debaca' mostra gli attributi per la grammatica italiana (usati
--- dalla libreria) di un'istanza di attore. Utile per verificarne la corretta 
--- inizializzazione da parte della libreria.
--- 
--- NOTA: "debaca" è la forma italianizzata del verbo inglese "debug" ("rimuovere
---       un baco"). Se ritieni che il termine sia orribile, o se questo offende
---       la tua sensibilità linguistica, sei libero di presentare un reclamo
---       ufficiale all'ADGAT:
--- 
---            ADGAT - Associazione Difesa Giocatori di Avventure Testuali
---            Piazza della Repubblica d'IF, 41/bis
---            10100 -- Torino
---------------------------------------------------------------------------------
-SYNTAX debaca = debaca (act)*
-  WHERE act IsA ACTOR
-    ELSE "$+1 non è un attore!"
-
-ADD TO EVERY ACTOR
-  VERB debaca
-    DOES
-      "$n+------------------------------------------"
-      "$n| NOME: $1"
-      "$n+------------------------------------------"
-      "$n| HA NOME PROPRIO:$$"
-      IF THIS HAS nome_proprio
-        THEN " Sì"
-        ELSE " No"
-      END IF.
-      "$n| GENERE:$$"
-      IF THIS IS femminile
-        THEN " femminile"
-        ELSE " maschile"
-      END IF.
-      "$n| NUMERO:$$"
-      IF THIS IS plurale
-        THEN " plurale"
-        ELSE " singolare"
-      END IF.
-      "$n| ARTICOLO: " SAY act:articolo.
-      "$n| FORMA DETERMINATA:$t$+1"
-      "$n| FORMA INDETERMINATA:$t$01"
-      "$n| VOCALE: " SAY act:vocale.
-      "$n| PREP. DI:$t" SAY act:prep_DI.
-      "$n| PREP.  A:$t" SAY act:prep_A.
-      "$n| PREP. DA:$t" SAY act:prep_DA.
-      "$n| PREP. IN:$t" SAY act:prep_IN.
-      "$n| PREP. SU:$t" SAY act:prep_SU.
-      "$n+------------------------------------------"
-  END VERB debaca.
-END ADD TO.
 
 --==============================================================================
 -- PNG Con Nomi Propri
 --==============================================================================
 -- Gli attori con nome proprio sono un caso speciale per quanto riguarda gli
 -- attributi per l'italiano: la libreria deve occuparsi di inizializzarli una
--- seconda volta (dopo l'avvenuta inizializzazione sulla classe THING) poiché
+-- seconda volta (dopo l'avvenuta inizializzazione sulla classe THING) poich?
 -- la presenza del nome proprio richiede che vengano modificate le preposizioni
--- da articolate a semplici, affinchà nei messaggi si legga:
+-- da articolate a semplici, affinch?nei messaggi si legga:
 --
 --    "Hai dato la palla A Marta."
 --
@@ -100,7 +47,7 @@ END ADD TO.
 THE stanza1 IsA STANZA.
   NAME 'Sala dei Nomi Propri'.
   DESCRIPTION "In questo set li attori hanno nomi propri.$n"
-              "A OVEST c'è l'altro set.$p"
+              "A OVEST c'?l'altro set.$p"
   EXIT OVEST to stanza2.
 END THE.
 
@@ -119,9 +66,9 @@ END THE.
 -- ================
 -- Maschile Plurale
 -- ================
--- Questo esempio è più ipotetico che pratico; comunque vale la regola che se
+-- Questo esempio ?pi? ipotetico che pratico; comunque vale la regola che se
 -- diversi attori con nome proprio vengono rappresentati tramite un'unica
--- istanza, se anche solo uno di essi è maschile ci si dovrà riferire ad essi
+-- istanza, se anche solo uno di essi ?maschile ci si dovr?riferire ad essi
 -- con il maschile.
 THE Romeo_Giulietta IsA maschio AT stanza1.
   HAS nome_proprio.
@@ -149,7 +96,7 @@ THE stanza2 IsA STANZA.
   NAME 'Set Attori in Costume'.
   DESCRIPTION "In questo set gli attori indossano costumi di personaggi, e non
                hanno nomi propri.$n"
-              "A EST c'è l'altro set.$p"
+              "A EST c'?l'altro set.$p"
   EXIT EST to stanza1.
 END THE.
 

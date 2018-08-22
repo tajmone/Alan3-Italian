@@ -1,0 +1,59 @@
+--==============================================================================
+-- "Dialoghi" by Tristano Ajmone, 2018.
+--==============================================================================
+IMPORT 'libreria.i'.   -- ALAN Libreria Standard Italiana v2.1
+IMPORT 'inc_debaca.i'. -- Verbo 'debaca' per il debug degli attori.
+
+
+THE mia_AT IsA blocco_definizioni
+  ------------------------------------------------------------------------------
+  HAS       titolo  "Dialoghi".
+  HAS  sottotitolo  "Avventura per testare i verbi di conversazione.".
+  HAS       autore  "Tristano Ajmone".
+  HAS         anno   2018.
+  HAS     versione  "1".
+  ------------------------------------------------------------------------------
+END THE.
+
+
+
+-- =============================================================================
+
+----- Il Prato
+
+-- =============================================================================
+-- Un luogo esterno.
+
+
+THE prato IsA luogo_esterno.
+  
+END THE prato.
+
+--==============================================================================
+-- Il Mago
+--==============================================================================
+THE mago IsA maschio AT prato.
+  
+END THE.
+
+--==============================================================================
+-- La Strega
+--==============================================================================
+THE strega IsA femmina AT prato.
+  HAS articolo "la".
+  HAS vocale "a".                     --> FIXME: Non dovrebbe essere necessario!
+END THE.
+
+--==============================================================================
+-- Gli Zombi
+--==============================================================================
+THE zombi IsA maschio AT prato.
+  HAS articolo "gli".
+  IS plurale.                         --> FIXME: Non dovrebbe essere necessario!
+  HAS vocale "i".                     --> FIXME: Non dovrebbe essere necessario!
+END THE.
+
+
+--------------------------------------------------------------------------------
+Start at prato.
+DESCRIBE intestazione.

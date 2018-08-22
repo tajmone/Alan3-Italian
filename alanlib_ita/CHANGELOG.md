@@ -11,6 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/08/21](#20180821)
+    - [Verb: `say`](#verb-say)
+    - [Verb: `say_to`](#verb-say_to)
 - [2018/08/18 \(2\)](#20180818-2)
     - [Update to Alan 3 Beta 6](#update-to-alan-3-beta-6)
     - [Fix Noise Words as Synomyms of `'the'`](#fix-noise-words-as-synomyms-of-the)
@@ -283,6 +286,40 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/08/21
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.5.1)
+- [`lib_verbi.i`][lib_verbi] (v0.5.1)
+
+Translated `mia_AT` attributes for verb restrictions:
+
+| English  | Italian  |
+|----------|----------|
+| `'say'`  | `dire`   |
+| `say_to` | `dire_a` |
+
+
+## Verb: `say`
+
+Translated verb `dì`, "__dì__" (_say_):
+
+    di "<argomento>"
+
+with no synonyms.
+
+## Verb: `say_to`
+
+Translated verb `dì_a`, "__dì a__" (_say_to_):
+
+    di "<argomento>" a <png>
+    di a <png> "<argomento>"
+
+with no synonyms.
+
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/08/18 (2)
 

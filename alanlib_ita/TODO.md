@@ -9,6 +9,7 @@ Some pending tasks that need to be done.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [Named Actors Initialization](#named-actors-initialization)
 - [Locations in Verb Responses](#locations-in-verb-responses)
 - [Hero Settings and Customization](#hero-settings-and-customization)
     - [Female Hero](#female-hero)
@@ -19,6 +20,15 @@ Some pending tasks that need to be done.
 <!-- /MarkdownTOC -->
 
 -----
+
+# Named Actors Initialization
+
+There seems to be a problem with the newly implemented initialization of `ACTOR`s:
+
+- [ ] the `vocale` of named actors/persons is not set correctly.
+- [ ] unamed actors are not always initialized properly:
+    + [ ] `plurale` doesn't match article
+    + [ ] `femminile` doesn't match gender
 
 # Locations in Verb Responses
 
@@ -102,6 +112,14 @@ There might be some room for improvements in the Italian messages/responses syst
 In `lib_classi.i`, the code that handles listing inventory of `ACTOR`s (`HEADER` and `EXTRACT` messages) is also duplicated on `PERSONA` (except the parts that check if current actor is the `hero`, since it will ever only be of `ACTOR` type).
 
 This seems redundant, as the code on `ACTOR` is also inherited by `PERSONA`, and I had to translate both blocks in order to attain identical Italian messages.
+
+But, as Anssi ha pointed out in [Issue #15], in English the reponse messages are not identical:
+
+[Issue #15]: https://github.com/AnssiR66/AlanStdLib/issues/15
+
+> After looking at the `ACTOR` and `PERSON` headers and else parts, I remembered why I have them defined separately. If you look closely, the messages are indeed not identical.
+> 
+> For Actors carrying nothing, the message is "`...is not carrying anything.`" while for Persons the corresponding message is "`... is empty-handed.`" This was to better cater for cases where the actor is for example a dog, and instead of "empty-handed" (because a dog of course doesn't have any hands) the "not carrying anything" message would be more appropriate. So, I would keep these two codings as they are now, and not change anything.
 
 I'm evaluating if it might be OK to remove that redundant code on `PERSONA`. 
 

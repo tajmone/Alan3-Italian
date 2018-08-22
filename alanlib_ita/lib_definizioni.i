@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.5.0 (2018/08/18)
+-- "lib_definizioni.i" v0.5.1 (2018/08/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta6 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1378,6 +1378,8 @@ EVERY blocco_definizioni IsA LOCATION
   CAN comprare.                 --> buy          (+ purchase)
   CAN consultare.               --> consult
   CAN dare.                     --> give
+  CAN dire.                     --> 'say'
+  CAN dire_a.                   --> say_to
   CAN dire_no.                  --> 'no'
   CAN dire_sì.                  --> yes
   CAN domandare_chi_sono_io.    --> who_am_i
@@ -1500,8 +1502,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN put_on.
   CAN put_under.
   CAN rub.
-  CAN 'say'.
-  CAN say_to.
   CAN 'score'.
   CAN scratch.
   CAN 'script'.
@@ -1582,6 +1582,8 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT comprare.                 --> buy          (+ purchase)
   MAKE mia_AT consultare.               --> consult
   MAKE mia_AT dare.                     --> give
+  MAKE mia_AT dire.                     --> 'say'
+  MAKE mia_AT dire_a.                   --> say_to
   MAKE mia_AT dire_no.                  --> 'no'
   MAKE mia_AT dire_sì.                  --> yes
   MAKE mia_AT domandare_chi_sono_io.    --> who_am_i
@@ -1704,8 +1706,6 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT put_on.
   MAKE mia_AT put_under.
   MAKE mia_AT rub.
-  MAKE mia_AT 'say'.
-  MAKE mia_AT say_to.
   MAKE mia_AT 'score'.
   MAKE mia_AT scratch.
   MAKE mia_AT 'script'.
@@ -1746,14 +1746,14 @@ ELSIF restricted_level OF mia_AT = 1  -- communication verbs are restricted
   THEN
 
   MAKE mia_AT NOT cantare.                  --> sing
+  MAKE mia_AT NOT dire.                     --> 'say'
+  MAKE mia_AT NOT dire_a.                   --> say_to
   MAKE mia_AT NOT gridare.                  --> shout       (+ scream, yell)
   MAKE mia_AT NOT rispondere.               --> answer (+ reply)
 
 --# NOT YET TRANSLATED:
   MAKE mia_AT NOT ask.
   MAKE mia_AT NOT ask_for.
-  MAKE mia_AT NOT 'say'.
-  MAKE mia_AT NOT say_to.
   MAKE mia_AT NOT tell.
 
 
@@ -1797,6 +1797,8 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT comprare.                 --> buy          (+ purchase)
   MAKE mia_AT NOT consultare.               --> consult
   MAKE mia_AT NOT dare.                     --> give
+  MAKE mia_AT NOT dire.                     --> 'say'
+  MAKE mia_AT NOT dire_a.                   --> say_to
   MAKE mia_AT     dire_no.                  --> 'no'
   MAKE mia_AT     dire_sì.                  --> yes
   MAKE mia_AT     domandare_chi_sono_io.    --> who_am_i
@@ -1920,8 +1922,6 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT put_on.
   MAKE mia_AT NOT put_under.
   MAKE mia_AT NOT rub.
-  MAKE mia_AT NOT 'say'.
-  MAKE mia_AT NOT say_to.
   MAKE mia_AT 'score'.
   MAKE mia_AT NOT scratch.
   MAKE mia_AT 'script'.
@@ -1991,6 +1991,8 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT comprare.                 --> buy          (+ purchase)
   MAKE mia_AT NOT consultare.               --> consult
   MAKE mia_AT NOT dare.                     --> give
+  MAKE mia_AT NOT dire.                     --> 'say'
+  MAKE mia_AT NOT dire_a.                   --> say_to
   MAKE mia_AT     dire_no.                  --> 'no'
   MAKE mia_AT     dire_sì.                  --> yes
   MAKE mia_AT NOT domandare_chi_sono_io.    --> who_am_i
@@ -2120,8 +2122,6 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT put_on.
   MAKE mia_AT NOT put_under.
   MAKE mia_AT NOT rub.
-  MAKE mia_AT NOT 'say'.
-  MAKE mia_AT NOT say_to.
   MAKE mia_AT 'score'.
   MAKE mia_AT NOT scratch.
   MAKE mia_AT 'script'.
@@ -2188,6 +2188,8 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT comprare.                 --> buy          (+ purchase)
   MAKE mia_AT NOT consultare.               --> consult
   MAKE mia_AT NOT dare.                     --> give
+  MAKE mia_AT NOT dire.                     --> 'say'
+  MAKE mia_AT NOT dire_a.                   --> say_to
   MAKE mia_AT NOT dire_no.                  --> 'no'
   MAKE mia_AT NOT dire_sì.                  --> yes
   MAKE mia_AT NOT dormire.                  --> sleep        (+ rest)
@@ -2305,8 +2307,6 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT put_on.
   MAKE mia_AT NOT put_under.
   MAKE mia_AT NOT rub.
-  MAKE mia_AT NOT 'say'.
-  MAKE mia_AT NOT say_to.
   MAKE mia_AT NOT 'score'.
   MAKE mia_AT NOT scratch.
   MAKE mia_AT NOT 'script'.

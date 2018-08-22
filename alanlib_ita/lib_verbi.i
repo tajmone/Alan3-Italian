@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.5.0 (2018/08/18)
+-- "lib_verbi.i" v0.5.1 (2018/08/22)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -44,6 +44,8 @@
 --| chiudi_con         |                              | chiudi (ogg) con (strum)       |   | 2 | x |
 --| compra             | acquista                     | compra (merce)                 |   | 1 |   |
 --| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)        |   | 2 | x |
+--| dì                 |                              | dì (argomento)                 |   | 1 |   |
+--| dì_a               |                              | dì (argomento) a (png)         |   | 2 |   |
 --| dormi              | riposa                       | dormi                          |   | 0 |   |
 --| esamina            | guarda, descrivi, osserva, X | esamina (ogg)                  |   | 1 | x |
 --| gioca_con          |                              | gioca con (ogg)                |   | 1 | x |
@@ -236,8 +238,8 @@
 -->>> restore                                              restore                             0
 ----- rub                                                  rub (obj)                           1       x
 -->>> save                                                 save                                0
------ say                                                  say (topic)                         1
------ say_to                                               say (topic) to (act)                2
+-->>> say                                                  say (topic)                         1
+-->>> say_to                                               say (topic) to (act)                2
 ----- score                                                score                               0
 ----- scratch                                              scratch (obj)                       1       x
 ----- script                                               script. script on. script off.      0
@@ -1890,6 +1892,90 @@ ADD TO EVERY OBJECT
 
 
   END VERB dai_a.
+END ADD TO.
+
+
+-- ==============================================================
+
+
+----- @DÌ --> @SAY
+
+
+-- ==============================================================
+
+-- SYNTAX 'say' = 'say' (topic)
+
+SYNTAX dì = dì (argomento)
+  WHERE argomento IsA STRING
+    ELSE SAY  illegal_parameter_string  OF mia_AT.
+
+
+ADD TO EVERY STRING
+  VERB dì
+    CHECK mia_AT CAN dire
+      ELSE SAY  azione_bloccata  OF mia_AT.
+        DOES
+          "Dici ""$1"", ma non succede nulla."
+       -- "Nothing happens."
+  END VERB dì.
+END ADD TO.
+
+
+
+
+-- ==============================================================
+
+
+----- @DÌ A --> @SAY TO
+
+
+-- ==============================================================
+
+-- SYNTAX say_to = 'say' (topic) 'to' (act)
+
+SYNTAX  dì_a = dì (argomento) a (png)
+  WHERE argomento IsA STRING
+    ELSE SAY  illegal_parameter_string  OF mia_AT.
+  AND png IsA ACTOR
+    ELSE
+      IF png IS NOT plurale
+        THEN SAY  illegal_parameter_talk_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_talk_pl  OF mia_AT.
+      END IF.
+
+        dì_a = dì a (png) (argomento).
+
+ADD TO EVERY ACTOR
+  VERB dì_a
+    WHEN png
+      CHECK mia_AT CAN dire_a
+        ELSE SAY  azione_bloccata  OF mia_AT.
+      AND png <> hero
+        ELSE SAY  check_obj2_not_hero1  OF mia_AT.
+      AND png CAN parlare
+        ELSE
+          IF png IS NOT plurale
+            THEN SAY  check_act_can_talk_sg  OF mia_AT.
+            ELSE SAY  check_act_can_talk_pl  OF mia_AT.
+          END IF.
+      AND png IS NOT distante
+        ELSE
+          IF png IS NOT plurale
+            THEN SAY  ogg1_distante_sg  OF mia_AT.
+            ELSE SAY  ogg1_distante_pl  OF mia_AT.
+          END IF.
+      DOES
+        "$+2 non sembra"
+        IF png IS plurale
+          THEN "$$no"
+        END IF.
+        "interessat$$" SAY png:vocale. "."
+     -- IF png IS NOT plurale
+     --   THEN "doesn't look"
+     --   ELSE "don't look"
+     -- END IF.
+     -- "interested."
+  END VERB dì_a.
 END ADD TO.
 
 
@@ -8198,82 +8284,6 @@ ADD TO EVERY THING
       SAY mia_AT:non_servirebbe_a_nulla.
       -- "Nothing would be achieved by that."
   END VERB rub.
-END ADD TO.
-
-
--- ==============================================================
-
-
------ SAY
-
-
--- ==============================================================
-
-
-SYNTAX 'say' = 'say' (argomento)
-      WHERE argomento IsA STRING
-    ELSE SAY  illegal_parameter_string  OF mia_AT.
-
-
-ADD TO EVERY STRING
-  VERB 'say'
-    CHECK mia_AT CAN 'say'
-      ELSE SAY  azione_bloccata  OF mia_AT.
-        DOES
-          "Nothing happens."
-  END VERB.
-END ADD TO.
-
-
-
-
--- ==============================================================
-
-
------ SAY TO
-
-
--- ==============================================================
-
-
-SYNTAX say_to = 'say' (argomento) 'to' (png)
-  WHERE argomento IsA STRING
-    ELSE SAY  illegal_parameter_string  OF mia_AT.
-  AND png IsA ACTOR
-    ELSE
-      IF png IS NOT plurale
-        THEN SAY  illegal_parameter_talk_sg  OF mia_AT.
-        ELSE SAY  illegal_parameter_talk_pl  OF mia_AT.
-      END IF.
-
-
-ADD TO EVERY ACTOR
-  VERB say_to
-    WHEN png
-      CHECK mia_AT CAN say_to
-        ELSE SAY  azione_bloccata  OF mia_AT.
-      AND png <> hero
-        ELSE SAY  check_obj2_not_hero1  OF mia_AT.
-      AND png CAN parlare
-        ELSE
-          IF png IS NOT plurale
-            THEN SAY  check_act_can_talk_sg  OF mia_AT.
-            ELSE SAY  check_act_can_talk_pl  OF mia_AT.
-          END IF.
-      AND png IS NOT distante
-        ELSE
-          IF png IS NOT plurale
-            THEN SAY  ogg1_distante_sg  OF mia_AT.
-            ELSE SAY  ogg1_distante_pl  OF mia_AT.
-          END IF.
-      DOES
-        SAY THE png.
-        IF png IS NOT plurale
-          THEN "doesn't look"
-          ELSE "don't look"
-        END IF.
-        "interested."
-  END VERB say_to.
 END ADD TO.
 
 

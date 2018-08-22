@@ -400,8 +400,8 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `'restore'`      | `caricare_partita`        |
 | `rub`            |                           |
 | `'save'`         | `salvare_partita`         |
-| `'say'`          |                           |
-| `say_to`         |                           |
+| `'say'`          | `dire`                    |
+| `say_to`         | `dire_a`                  |
 | `'score'`        |                           |
 | `scratch`        |                           |
 | `'script'`       |                           |

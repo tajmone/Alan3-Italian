@@ -1,0 +1,111 @@
+
+
+Dialoghi 
+Avventura per testare i verbi di conversazione. 
+(C) Tristano Ajmone, 2018. 
+Programmed with the ALAN Interactive Fiction Language v3.0 beta5
+Standard Library v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+Prato
+C'è un mago qui. C'è una strega qui. Ci sono degli zombi qui.
+
+> dì "ciao"
+Dici "ciao", ma non succede nulla.
+
+> dì "ciao" al mago
+Il mago non sembra interessato.
+
+> dì al mago "ciao"
+Il mago non sembra interessato.
+
+> dì "ciao" alla strega
+La strega non sembra interessata.
+
+> dì alla strega "ciao"
+La strega non sembra interessata.
+
+> dì "ciao" agli zombi
+Gli zombi non sembrano interessati.
+
+> dì agli zombi "ciao"
+Gli zombi non sembrano interessati.
+
+> debaca tutti
+(mago) 
++------------------------------------------ 
+| NOME: mago 
++------------------------------------------ 
+| HA NOME PROPRIO: No 
+| GENERE: maschile 
+| NUMERO: singolare 
+| ARTICOLO: il 
+| FORMA DETERMINATA:    il mago 
+| FORMA INDETERMINATA:  un mago 
+| VOCALE: o 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
++------------------------------------------
+
+(strega) 
++------------------------------------------ 
+| NOME: strega 
++------------------------------------------ 
+| HA NOME PROPRIO: No 
+| GENERE: femminile 
+| NUMERO: singolare 
+| ARTICOLO: la 
+| FORMA DETERMINATA:    la strega 
+| FORMA INDETERMINATA:  una strega 
+| VOCALE: a 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
++------------------------------------------
+
+(zombi) 
++------------------------------------------ 
+| NOME: zombi 
++------------------------------------------ 
+| HA NOME PROPRIO: No 
+| GENERE: maschile 
+| NUMERO: plurale 
+| ARTICOLO: gli 
+| FORMA DETERMINATA:    gli zombi 
+| FORMA INDETERMINATA:  degli zombi 
+| VOCALE: i 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
++------------------------------------------
+
+(hero) 
++------------------------------------------ 
+| NOME: hero 
++------------------------------------------ 
+| HA NOME PROPRIO: No 
+| GENERE: maschile 
+| NUMERO: singolare 
+| ARTICOLO: il 
+| FORMA DETERMINATA:    il hero 
+| FORMA INDETERMINATA:  un hero 
+| VOCALE: o 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
++------------------------------------------
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

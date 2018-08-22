@@ -36,6 +36,8 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [compra](#compra)
     - [vendi](#vendi)
 - [INTERAZIONI VERBALI](#interazioni-verbali)
+    - [dì](#d%C3%AC)
+    - [dì_a](#d%C3%AC_a)
     - [rispondi](#rispondi)
 - [MANGIARE, BERE](#mangiare-bere)
     - [mangia](#mangia)
@@ -145,6 +147,8 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [dai]
 - [danza]
 - [descrivi]
+- [dì]
+- [dì a]
 - [distruggi]
 - [distruggi con]
 - [dormi]
@@ -678,6 +682,40 @@ sintassi:
 -------------------------------------------------------------------------------
 
 # INTERAZIONI VERBALI
+
+- [dì]
+- [dì_a]
+- [rispondi]
+
+## dì
+
+[dì]: #di "dì"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] dire
+
+sintassi:
+
+    dì <"argomento">
+
+## dì_a
+
+[dì_a]: #di_a "dì_a"
+[dì a]: #di_a "dì_a"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] dire_a
+
+sintassi:
+
+    dì <"argomento"> a <png>
+    dì a <png> <"argomento">
+
+
 
 ## rispondi
 
