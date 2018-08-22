@@ -1,13 +1,13 @@
 @ECHO OFF
-:: "ESEGUI.bat" v1.0 (2018/05/19) | by Tristano Ajmone
+:: "ESEGUI.bat" v2.0 (2018/08/22) | by Tristano Ajmone
 :: =============================================================================
 ::                     ESEGUI TEST TRAMITE SCRIPT DI GIOCO                      
 :: =============================================================================
-:: ESEGUI <nomefile.script>
+:: ESEGUI <nomefile.a3sol>
 ::
 :: Questo batch file esegue la demo "il_mondo_di_alan" usando lo script passato
 :: come parametro. La trascrizione della sessione di gioco viene salvata in un
-:: file di log ed infine stampata sullo schermo. 
+:: file di log (.a3log) ed infine stampata sullo schermo. 
 :: -----------------------------------------------------------------------------
 SET _ERR=0
 :: ==================================================
@@ -26,11 +26,11 @@ IF [%1] EQU [] (
     SET _ERR=1
     GOTO :ESCI
 )
-:: ==============================================
-:: Verifica che il parametro sia un file *.script
-:: ==============================================
-IF [%~x1] NEQ [.script] (
-    ECHO ERRORE: Il parametro deve essere un file di script ^(^*.script^)
+:: =============================================
+:: Verifica che il parametro sia un file *.a3sol
+:: =============================================
+IF [%~x1] NEQ [.a3sol] (
+    ECHO ERRORE: Il parametro deve essere un file di script ^(^*.a3sol^)
     SET _ERR=1
     GOTO :ESCI
 )
@@ -41,8 +41,8 @@ IF [%~x1] NEQ [.script] (
 CHCP 65001
 :: Pulisci schermo così è più facile navigare nella trascrizione:
 CLS
-CALL arun il_mondo_di_alan.a3c < %~n1.script > %~n1.log
-TYPE %~n1.log
+CALL arun il_mondo_di_alan.a3c < %~n1.a3sol > %~n1.a3log
+TYPE %~n1.a3log
 :: =====================
 :: Termina batch ed esci
 :: =====================

@@ -20,6 +20,8 @@ Started on: 2018-04-13
 - [Introduction](#introduction)
 - [Status](#status)
 - [Project Contents](#project-contents)
+- [Work Environment Settings](#work-environment-settings)
+    - [File Encodings](#file-encodings)
 - [About](#about)
     - [Alan IF](#alan-if)
     - [Alan Standard Library](#alan-standard-library)
@@ -62,6 +64,20 @@ Gradually translating verbs and standard messages. A [demo adventure] file has b
 
 A full copy of every upstream _Alan Standard Library_ employed in this project is kept in the `/alanlib/` folder; when the library is updated, the upstream files of the currently used version can be diff-compared with the new version in order to track which changes should be integrated into the Italian files in order to bring them on par with the latest version of the Standard Library.
 
+# Work Environment Settings
+
+In order to work on this project, ensure that you get right a couple of settings in your editor.
+
+## File Encodings
+
+The following file extensions should be handled with [ISO-8859-1] enconding:
+
+- "`.alan`" — Alan adventure source file.
+- "`.i`" — Alan adventure included source file.
+- "`.a3log`" — adventure gameplay transcript.
+- "`.a3sol`" — solution file (aka "commands script") to run an adventure.
+
+... if not, you're going to experience problems with special characters like accented letters — and Italian uses them abundantly!
 
 # About
 
@@ -147,3 +163,6 @@ Special thanks to __S3RioUs JokER__, who is constantly helping me out translatin
 
 [i18n Problems]: https://github.com/tajmone/Alan3-Italian/wiki/i18n-Problems
 
+[ISO-8859-1]: https://en.wikipedia.org/wiki/ISO/IEC_8859-1 "See Wikipedia page on ISO-8859-1"
+
+<!-- EOF -->

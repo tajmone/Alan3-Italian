@@ -1,13 +1,13 @@
 @ECHO OFF
-:: "ESEGUI.bat" v1.0 (2018/08/05) | by Tristano Ajmone
+:: "ESEGUI.bat" v2.0 (2018/08/22) | by Tristano Ajmone
 :: =============================================================================
 ::                     ESEGUI TEST TRAMITE SCRIPT DI GIOCO                      
 :: =============================================================================
-:: ESEGUI <file-avventura.*> <nomefile.script>
+:: ESEGUI <file-avventura.*> <nomefile.a3sol>
 ::
 :: Questo batch file esegue l'avventura del primo parametro usando come script
 :: il file del secondo parametro. La trascrizione della sessione di gioco viene
-:: salvata in un file di log ed infine stampata sullo schermo (a meno che la
+:: salvata in un file di log (*.a3log) ed infine stampata sullo schermo (a meno che la
 :: variabile d'ambiente %_NASCONDI_TRANSCRIPT% non sia == 1).
 ::   L'estensione di <file-avventura> viene ignorata e convertita sempre in .a3c
 :: per ragioni di praticità d'uso negli script invocanti.
@@ -37,11 +37,11 @@ IF [%2] EQU [] (
 :: Per comodità d'uso nello script invocante, il nome file dell'avventura può
 :: avere qualsiasi estensione, ma noi qui la correggiamo in ".a3c".
 SET _ADV=%~n1.a3c
-:: ======================================================
-:: Verifica che il secondo parametro sia un file *.script
-:: ======================================================
-IF [%~x2] NEQ [.script] (
-    ECHO ERRORE: Il secondo parametro deve essere un file di script ^(^*.script^)
+:: =====================================================
+:: Verifica che il secondo parametro sia un file *.a3sol
+:: =====================================================
+IF [%~x2] NEQ [.a3sol] (
+    ECHO ERRORE: Il secondo parametro deve essere un file di script ^(^*.a3sol^)
     SET _ERR=1
     GOTO :ESCI
 )
@@ -69,7 +69,7 @@ ECHO [0m
 CHCP 65001
 :: Pulisci schermo così è più facile navigare nella trascrizione:
 rem CLS
-CALL arun -r %_ADV% < %~n2.script > %~n2.log
+CALL arun -r %_ADV% < %~n2.a3sol > %~n2.a3log
 
 IF %_NASCONDI_TRANSCRIPT% NEQ 1 (
     ECHO [0;32m
@@ -77,7 +77,7 @@ IF %_NASCONDI_TRANSCRIPT% NEQ 1 (
     ECHO TRASCRIZIONE DEL TEST-SCRIPT:
     ECHO -----------------------------
     ECHO [0;37m
-    TYPE %~n2.log
+    TYPE %~n2.a3log
 ) ELSE (
     ECHO [1;37m[102m
     ECHO ------------------------------

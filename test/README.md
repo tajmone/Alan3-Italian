@@ -23,7 +23,10 @@ Here is where all the testing takes places; for practical reasons all contents w
 
 # Introduzione
 
-Questa cartella contiene vari file sorgenti di avventure Alan che impiegano la Libreria Standard Italiana; lo scopo di queste "avventure" è di testare alcune caratteristiche mirate della liberia. A ciascuna avventura è associato un file batch che eseguirà su di essa uno o più script di comandi (`*.script`) , si tratta di sessioni di gioco automatizzate la cui trascrizione verrà salvata in un file di log (`*.log`).
+Questa cartella contiene vari file sorgenti di avventure Alan che impiegano la Libreria Standard Italiana; lo scopo di queste "avventure" è di testare alcune caratteristiche mirate della liberia. A ciascuna avventura è associato un file batch che eseguirà su di essa uno o più script di comandi (`*.a3sol`) , si tratta di sessioni di gioco automatizzate la cui trascrizione verrà salvata in un file di log (`*.a3log`).
+
+Le estensioni `*.a3sol` e `*.a3log` sono state adottate per semplificare le impostazioni dell'editor di codice affinché tratti queste estensioni con encoding [ISO-8859-1].
+
 
 # Contenuti
 
@@ -47,12 +50,12 @@ Nel codice sorgente dei batch script troverete dei commenti che ne illustrano le
 ## Avventure e script di comandi
 
 - [`attori.alan`][act src]/[`.bat`][act bat] — avventura per testare il corretto funzionamento della liberia con gli attori.
-    + [`attori-inizializzazione.script`][act-init scr]/[`.log`][act-init log] — sessione/trascrizione per testare l'inizializzazione degli attributi grammaticali italiani per gli attori con nome e proprio e senza.
+    + [`attori-inizializzazione.a3sol`][act-init scr]/[`.a3log`][act-init log] — sessione/trascrizione per testare l'inizializzazione degli attributi grammaticali italiani per gli attori con nome e proprio e senza.
 
 [act src]: ./attori.alan "Visualizza il sorgente di questa avventura-test"
 [act bat]: ./attori.bat  "Visualizza il batch per questa avventura-test"
-[act-init scr]: ./attori-inizializzazione.script "Visualizza lo script di comandi"
-[act-init log]: ./attori-inizializzazione.log "Visualizza la trascrizione della sessione di test"
+[act-init scr]: ./attori-inizializzazione.a3sol "Visualizza lo script di comandi"
+[act-init log]: ./attori-inizializzazione.a3log "Visualizza la trascrizione della sessione di test"
 
 # Prerequisiti
 
@@ -127,3 +130,6 @@ Options:
 [ESEGUI]:  ./ESEGUI.bat
 [AGGIORNA]: ./AGGIORNA_TUTTO.bat
 
+[ISO-8859-1]: https://it.wikipedia.org/wiki/ISO/IEC_8859-1 "Vedi la pagina Wikipedia su ISO-8859-1"
+
+<!-- EOF -->

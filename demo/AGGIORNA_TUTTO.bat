@@ -1,5 +1,5 @@
 @ECHO OFF
-:: "AGGIORNA_TUTTO.bat" v1.0 (2018/05/19) | by Tristano Ajmone
+:: "AGGIORNA_TUTTO.bat" v2.0 (2018/08/22) | by Tristano Ajmone
 :: ==============================================================================
 ::                         AGGIORNA TUTTI I FILE DI TEST                         
 :: ==============================================================================
@@ -13,7 +13,7 @@ SET _ERR=0
 ECHO 1/3) Cancella vecchi file
 DEL il_mondo_di_alan.a3c   > nul 2>&1
 DEL il_mondo_di_alan.ifid  > nul 2>&1
-DEL *.log                  > nul 2>&1
+DEL *.a3log                > nul 2>&1
 :: ================================
 :: Compila l'avventura dimostrativa
 :: ================================
@@ -30,9 +30,9 @@ IF ERRORLEVEL 1 (
 :: Esegui tutti gli script di comandi
 :: ==================================
 ECHO 3/3) Esegui script di comandi:
-FOR /R %%i IN (*.script) DO (
+FOR /R %%i IN (*.a3sol) DO (
     ECHO      -- "%%~nxi"
-    CALL arun il_mondo_di_alan.a3c < %%i > %%~ni.log
+    CALL arun il_mondo_di_alan.a3c < %%i > %%~ni.a3log
 )
 :: =====================
 :: Termina batch ed esci

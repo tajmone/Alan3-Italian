@@ -46,21 +46,21 @@ Siccome il progetto è impostato affinché Git ignori i file delle avventure com
 
 - [`il_mondo_di_alan.alan`][mondo alan] — sorgente dell'avventura dimostrativa
 - [`COMPILA.bat`][COMPILA] — batch per compilare l'avventura dimostrativa
-- [`ESEGUI.bat`][ESEGUI] — batch per eseguire uno script di comandi
+- [`ESEGUI.bat`][ESEGUI] — batch per eseguire uno script di comandi (`*.a3sol`)
 - [`AGGIORNA_TUTTO.bat`][AGGIORNA] — compila l'avventura ed esegue tutti gli script
 
 Script di comandi (vecchi test):
 
-- [`comandi-risposte.script`](./comandi-risposte.script) — testa le risposte standard di vari verbi.
-- [`player_words.script`](./player_words.script) — testa l'implementazione italiana delle Player Words.
-- [`preposizioni.script`](./preposizioni.script) — testa l'implementazione delle preposizioni articolate.
+- [`comandi-risposte.a3sol`](./comandi-risposte.a3sol) — testa le risposte standard di vari verbi.
+- [`player_words.a3sol`](./player_words.a3sol) — testa l'implementazione italiana delle Player Words.
+- [`preposizioni.a3sol`](./preposizioni.a3sol) — testa l'implementazione delle preposizioni articolate.
 
 
 Trascrizioni delle sessione di gioco degli script di comandi:
 
-- [`comandi-risposte.log`](./comandi-risposte.log)
-- [`player_words.log`](./player_words.log)
-- [`preposizioni.log`](./preposizioni.log)
+- [`comandi-risposte.a3log`](./comandi-risposte.a3log)
+- [`player_words.a3log`](./player_words.a3log)
+- [`preposizioni.a3log`](./preposizioni.a3log)
 
 # Prerequisiti
 
@@ -77,15 +77,15 @@ Per semplificare il compito, ho incluso uno script batch per compilare l'avventu
 
 # Eseguire gli script di comandi
 
-I test verranno eseguiti utilizzando script di comandi (estensione `*.script`) che vanno lanciati tramite il file di batch [`ESEGUI.bat`][ESEGUI], il quale salverà la trascrizione di gioco in un file di log avente lo stesso nome file dello script lanciato ma con l'estensione `.log`.
+I test verranno eseguiti utilizzando script di comandi (estensione `*.a3sol`) che vanno lanciati tramite il file di batch [`ESEGUI.bat`][ESEGUI], il quale salverà la trascrizione di gioco in un file di log avente lo stesso nome file dello script lanciato ma con l'estensione `.a3log`.
 
 Per lanciare uno script è sufficiente trascinarlo sopra il file `ESEGUI.bat` all'interno di Esplora Risorse; oppure, lo si può lanciare da CMD invocando `ESEGUI.bat` e passandogli il nome del file di comandi come parametro. Esempio:
 
 ```bat
-ESEGUI player_words.script
+ESEGUI player_words.a3sol
 ```
 
-... che creerà il file di trascrizione `player_words.log`, oltre a mostrare la sessione di gioco nella finestra del CMD.
+... che creerà il file di trascrizione `player_words.a3log`, oltre a mostrare la sessione di gioco nella finestra del CMD.
 
 # Lo script aggiorna tutto
 
