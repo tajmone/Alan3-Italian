@@ -4,6 +4,19 @@
 ; Eseguiamo test sugli attori con nome proprio, per verificare che i messaggi
 ; vengano mostrati correttamente.
 nordest
+x mario
+x maria
+; ------------------------------------------------------------------------------
+;                              TEST CONDISCENDENZA                              
+; ------------------------------------------------------------------------------
+; Verifichiamo che il verbo 'chiedi' ripristini correttamente lo stato di
+; condiscendenza dell'attore dopo l'esecuzione:
+verifica condiscendenza di mario
+chiedi a mario il quaderno
+verifica condiscendenza di mario
+verifica condiscendenza di maria
+chiedi a maria la mela
+verifica condiscendenza di maria
 ; ==============================================================================
 ;                             PNG SENZA NOME PROPRIO                            
 ; ==============================================================================

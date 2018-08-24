@@ -26,6 +26,25 @@ THE stanza0 IsA STANZA.
   EXIT NORDEST TO stanza1.
   EXIT NORDOVEST TO stanza2.
 END THE.
+-- =============================================================================
+
+----- "Strumenti di Debug" Per La Condiscendenza
+
+-- =============================================================================
+-- Un verbo atto a verificare lo stato di condiscendenza di un attore...
+
+SYNTAX test_condiscendenza = verifica condiscendenza di (png)
+  WHERE png IsA ACTOR
+    ELSE "$+1 non è un attore!"
+
+ADD TO EVERY ACTOR
+  VERB test_condiscendenza
+    DOES "$+1"
+      IF png IS NOT condiscendente
+        THEN "non"
+      END IF. "è condiscendente."
+  END VERB test_condiscendenza.
+END ADD TO ACTOR.
 
 
 --==============================================================================
@@ -57,11 +76,19 @@ END THE.
 THE Mario IsA maschio AT stanza1.
   HAS nome_proprio.
 END THE.
+
+THE quaderno IsA object IN Mario.
+END THE.
 -- ===================
 -- Femminile Singolare
 -- ===================
 THE Maria IsA femmina AT stanza1.
   HAS nome_proprio.
+  IS condiscendente.
+END THE.
+
+THE mela IsA object IN Maria.
+  HAS articolo "la".
 END THE.
 -- ================
 -- Maschile Plurale

@@ -26,6 +26,37 @@ A OVEST c'è l'altro set.
 Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise 
 sono qui.
 
+> x mario
+Esamini Mario, ma non noti niente di speciale. Mario sta portando un 
+quaderno.
+
+> x maria
+Esamini Maria, ma non noti niente di speciale. Maria sta portando una mela
+.
+
+> ; ------------------------------------------------------------------------------
+> ;                              TEST CONDISCENDENZA                              
+> ; ------------------------------------------------------------------------------
+> ; Verifichiamo che il verbo 'chiedi' ripristini correttamente lo stato di
+> ; condiscendenza dell'attore dopo l'esecuzione:
+> verifica condiscendenza di mario
+Mario non è condiscendente.
+
+> chiedi a mario il quaderno
+Mario ti dà il quaderno.
+
+> verifica condiscendenza di mario
+Mario non è condiscendente.
+
+> verifica condiscendenza di maria
+Maria è condiscendente.
+
+> chiedi a maria la mela
+Maria ti dà la mela.
+
+> verifica condiscendenza di maria
+Maria è condiscendente.
+
 > ; ==============================================================================
 > ;                             PNG SENZA NOME PROPRIO                            
 > ; ==============================================================================

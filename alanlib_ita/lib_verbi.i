@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.5.2 (2018/08/22)
+-- "lib_verbi.i" v0.5.3 (2018/08/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1667,9 +1667,14 @@ ADD TO EVERY ACTOR
             ELSE SAY  check_obj2_not_scenery_pl  OF mia_AT.
           END IF.
       DOES
+        -- Preserviamo copia dello stato di condiscendenza attuale del PNG:
+        IF png IS condiscendente
+          THEN MAKE mia_AT temp_condiscendente.
+          ELSE MAKE mia_AT NOT temp_condiscendente.
+        END IF.
+        -- Rendiamo temporaneamente condiscendente il PNG affinché sia possibile
+        -- rimuovere un oggetto contenuto da esso: 
         MAKE png condiscendente.
-        -- It is only possible to get something from an NPC
-        -- if the NPC is 'compliant'.
         LOCATE ogg IN hero.
 --                                                                              TRANSLATE!
         "$+1 ti"
@@ -1679,9 +1684,11 @@ ADD TO EVERY ACTOR
         END IF.
         "$+2."
      -- SAY THE png. "gives" SAY THE ogg. "to you."
-        MAKE png NOT condiscendente.
-        -- @NOTE: Shouldn't this check if the actor was compliant before?
-        --        It should restore the actor to the compliance state it was!
+        
+        -- Ora ripristiniamo lo stato di condiscendenza originale del PNG:
+        IF mia_AT IS NOT temp_condiscendente
+          THEN MAKE png NOT condiscendente.
+        END IF.
   END VERB chiedi.
 END ADD TO.
 

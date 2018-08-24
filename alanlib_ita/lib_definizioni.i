@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.5.2 (2018/08/22)
+-- "lib_definizioni.i" v0.5.3 (2018/08/24)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta6 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1272,7 +1272,7 @@ EVERY blocco_definizioni IsA LOCATION
   IS NOT seen_notify.
       -- Records whether player has seen the notify verb
       -- instructions yet.
-
+ 
   INITIALIZE
     SCHEDULE check_score AFTER 0.
     SCHEDULE check_restriction AFTER 0.
@@ -1332,6 +1332,20 @@ EVERY blocco_definizioni IsA LOCATION
     SET visitato  OF location OF hero TO 1.
     SET descritto OF location OF hero TO 1.
 
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- § x - Attributi Temporanei
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+-- Gli attributi che seguono servono a immagazzinare temporaneamente i valori di
+-- attributi che devono essere modificati e poi ripristinati in alcune parti
+-- della libreria (es., il verbo 'chiedi', in cui l'attore deve essere reso
+-- temporaneamente condiscendente al fine di portare a termine l'azione).
+
+  HAS temp_condiscendente.
 
 
 --=============================================================================

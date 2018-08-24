@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/08/24](#20180824)
+    - [Fix Verb `chiedi` \(`ask_for`\)](#fix-verb-chiedi-ask_for)
 - [2018/08/22 \(3\)](#20180822-3)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
     - [Verb: `ask_for`](#verb-ask_for)
@@ -293,6 +295,22 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/08/24
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.5.3)
+- [`lib_verbi.i`][lib_verbi] (v0.5.3)
+
+## Fix Verb `chiedi` (`ask_for`)
+
+This commit fixes the verb `chiedi` (was `ask_for`) which required to temporarily make an `ACTOR` compliant in order to extract an object from it, but it didn't restore the original state of compliance, thus resulting in this verb always transforming an actor into a compliant actor.
+
+This fix introduces a temporary attribute on `mia_AT` (`temp_condiscendente`) which is then used in verb `chiedi` to store the current compliance state of the actor before changing it, and then to restore its compliance to the original state.
+
+For a full discussion of the problem, see [Issue #18] on [Alan StdLib upstream repository].
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/08/22 (3)
 
@@ -4237,6 +4255,7 @@ The above changes had some side effects which required me to also change the Eng
 
 [Issue #8]: https://github.com/AnssiR66/AlanStdLib/issues/8
 [Issue #14]: https://github.com/AnssiR66/AlanStdLib/issues/14
+[Issue #18]: https://github.com/AnssiR66/AlanStdLib/issues/18
 
 [PR #12 on StdLib]: https://github.com/AnssiR66/AlanStdLib/pull/12
 
