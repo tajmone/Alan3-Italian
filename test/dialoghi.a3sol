@@ -1,3 +1,6 @@
+; ==============================================================================
+;                              Verbi 'dì' e 'dì_a'                              
+; ==============================================================================
 dì "ciao"
 dì "ciao" al mago
 dì al mago "ciao"
@@ -6,9 +9,28 @@ dì alla strega "ciao"
 dì "ciao" agli sciamani
 dì agli sciamani "ciao"
 ; ==============================================================================
+;                                    Domanda                                    
+; ==============================================================================
+domanda al mago della bacchetta magica
+domanda al mago riguardo la bacchetta magica
+domanda al mago circa la bacchetta magica
+chiedi al mago della bacchetta magica
+chiedi al mago riguardo la bacchetta magica
+chiedi al mago circa la bacchetta magica
+; ------------------------------------------------------------------------------
+;                          (ordine parametri invertito)                         
+; ------------------------------------------------------------------------------
+domanda della bacchetta magica al mago
+domanda riguardo la bacchetta magica al mago
+domanda circa la bacchetta magica al mago
+chiedi della bacchetta magica al mago
+chiedi riguardo la bacchetta magica al mago
+chiedi circa la bacchetta magica al mago
+; ==============================================================================
 ;                         Testa "Chiedi" vs "Chiedi Di"                         
 ; ==============================================================================
 ; Assicuriamoci che le sintassi i verbi 'chiedi' e 'chiedi_di' non confliggano.
+chiedi al mago della bacchetta magica
 chiedi la bacchetta magica
 chiedi al mago la bacchetta magica
 inventario

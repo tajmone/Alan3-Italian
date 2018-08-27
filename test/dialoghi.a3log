@@ -12,6 +12,9 @@ Tutti i diritti riservati.
 Prato
 C'è un mago qui. C'è una strega qui. Ci sono degli sciamani qui.
 
+> ; ==============================================================================
+> ;                              Verbi 'dì' e 'dì_a'                              
+> ; ==============================================================================
 > dì "ciao"
 Dici "ciao", ma non succede nulla.
 
@@ -34,9 +37,52 @@ Gli sciamani non sembrano interessati.
 Gli sciamani non sembrano interessati.
 
 > ; ==============================================================================
+> ;                                    Domanda                                    
+> ; ==============================================================================
+> domanda al mago della bacchetta magica
+Nessuna risposta.
+
+> domanda al mago riguardo la bacchetta magica
+Nessuna risposta.
+
+> domanda al mago circa la bacchetta magica
+Nessuna risposta.
+
+> chiedi al mago della bacchetta magica
+Nessuna risposta.
+
+> chiedi al mago riguardo bacchetta magica
+Nessuna risposta.
+
+> chiedi al mago circa bacchetta magica
+Nessuna risposta.
+
+> ; ORDINE PARAMETRI INVERTIT:
+> domanda della bacchetta magica al mago
+Nessuna risposta.
+
+> domanda riguardo la bacchetta magica al mago
+Nessuna risposta.
+
+> domanda circa la bacchetta magica al mago
+Nessuna risposta.
+
+> chiedi della bacchetta magica al mago
+Nessuna risposta.
+
+> chiedi riguardo bacchetta magica al mago
+Nessuna risposta.
+
+> chiedi circa bacchetta magica al mago
+Nessuna risposta.
+
+> ; ==============================================================================
 > ;                         Testa "Chiedi" vs "Chiedi Di"                         
 > ; ==============================================================================
 > ; Assicuriamoci che le sintassi i verbi 'chiedi' e 'chiedi_di' non confliggano.
+> chiedi al mago della bacchetta magica
+Nessuna risposta.
+
 > chiedi la bacchetta magica
 Please use the formulation ASK PERSON FOR THING to ask somebody for
 something.

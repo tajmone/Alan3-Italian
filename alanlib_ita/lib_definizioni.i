@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.5.3 (2018/08/24)
+-- "lib_definizioni.i" v0.5.4 (2018/08/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta6 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1397,6 +1397,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN dire_a.                   --> say_to
   CAN dire_no.                  --> 'no'
   CAN dire_sì.                  --> yes
+  CAN domandare.                --> ask (+ enquire, inquire, interrogate)
   CAN domandare_chi_sono_io.    --> who_am_i
   CAN domandare_chi_è.          --> who_is
   CAN domandare_cosa_sono_io.   --> what_am_i
@@ -1475,7 +1476,6 @@ EVERY blocco_definizioni IsA LOCATION
 
 --# NOT YET TRANSLATED:
   CAN about.
-  CAN ask.         -- (+ enquire, inquire, interrogate)
   CAN bite.        -- (+ chew)
   CAN catch.
   CAN climb.
@@ -1601,6 +1601,7 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT dire_a.                   --> say_to
   MAKE mia_AT dire_no.                  --> 'no'
   MAKE mia_AT dire_sì.                  --> yes
+  MAKE mia_AT domandare.                --> ask (+ enquire, inquire, interrogate)
   MAKE mia_AT domandare_chi_sono_io.    --> who_am_i
   MAKE mia_AT domandare_chi_è.          --> who_is
   MAKE mia_AT domandare_cosa_sono_io.   --> what_am_i
@@ -1679,7 +1680,6 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
 
 --# NOT YET TRANSLATED:
   MAKE mia_AT about.
-  MAKE mia_AT ask.             -- (+ enquire, inquire, interrogate)
   MAKE mia_AT bite.            -- (+ chew)
   MAKE mia_AT catch.
   MAKE mia_AT climb.
@@ -1763,11 +1763,11 @@ ELSIF restricted_level OF mia_AT = 1  -- communication verbs are restricted
   MAKE mia_AT NOT chiedere.                 --> ask_for
   MAKE mia_AT NOT dire.                     --> 'say'
   MAKE mia_AT NOT dire_a.                   --> say_to
+  MAKE mia_AT NOT domandare.                --> ask (+ enquire, inquire, interrogate)
   MAKE mia_AT NOT gridare.                  --> shout       (+ scream, yell)
   MAKE mia_AT NOT rispondere.               --> answer (+ reply)
 
 --# NOT YET TRANSLATED:
-  MAKE mia_AT NOT ask.
   MAKE mia_AT NOT tell.
 
 
@@ -1816,6 +1816,7 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT dire_a.                   --> say_to
   MAKE mia_AT     dire_no.                  --> 'no'
   MAKE mia_AT     dire_sì.                  --> yes
+  MAKE mia_AT NOT domandare.                --> ask (+ enquire, inquire, interrogate)
   MAKE mia_AT     domandare_chi_sono_io.    --> who_am_i
   MAKE mia_AT     domandare_chi_è.          --> who_is
   MAKE mia_AT     domandare_cosa_sono_io.   --> what_am_i
@@ -1895,7 +1896,6 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
 --# NOT YET TRANSLATED:
 
   MAKE mia_AT about.
-  MAKE mia_AT NOT ask.         -- (+ enquire, inquire, interrogate)
   MAKE mia_AT NOT bite.        -- (+ chew)
   MAKE mia_AT NOT catch.
   MAKE mia_AT NOT climb.
@@ -2010,6 +2010,7 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT dire_a.                   --> say_to
   MAKE mia_AT     dire_no.                  --> 'no'
   MAKE mia_AT     dire_sì.                  --> yes
+  MAKE mia_AT NOT domandare.                --> ask (+ enquire, inquire, interrogate)
   MAKE mia_AT NOT domandare_chi_sono_io.    --> who_am_i
   MAKE mia_AT NOT domandare_chi_sono_io.    --> who_am_i
   MAKE mia_AT NOT domandare_chi_è.          --> who_is
@@ -2095,7 +2096,6 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
 --# NOT YET TRANSLATED:
 
   MAKE mia_AT about.
-  MAKE mia_AT NOT ask.         -- (+ enquire, inquire, interrogate)
   MAKE mia_AT NOT bite.        -- (+ chew)
   MAKE mia_AT NOT catch.
   MAKE mia_AT NOT climb.
@@ -2207,6 +2207,7 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT dire_a.                   --> say_to
   MAKE mia_AT NOT dire_no.                  --> 'no'
   MAKE mia_AT NOT dire_sì.                  --> yes
+  MAKE mia_AT NOT domandare.                --> ask (+ enquire, inquire, interrogate)
   MAKE mia_AT NOT dormire.                  --> sleep        (+ rest)
   MAKE mia_AT NOT entrare.                  --> enter
   MAKE mia_AT NOT esaminare.                --> examine      (+ check, inspect, observe, x)
@@ -2280,7 +2281,6 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
 --# NOT YET TRANSLATED:
 
   MAKE mia_AT NOT about.
-  MAKE mia_AT NOT ask.         -- (+ enquire, inquire, interrogate)
   MAKE mia_AT NOT bite.        -- (+ chew)
   MAKE mia_AT NOT catch.
   MAKE mia_AT NOT climb.

@@ -11,16 +11,19 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/08/27](#20180827)
+    - [Verb Restriction Attributes](#verb-restriction-attributes)
+    - [Verb: `ask`](#verb-ask)
 - [2018/08/24](#20180824)
     - [Fix Verb `chiedi` \(`ask_for`\)](#fix-verb-chiedi-ask_for)
 - [2018/08/22 \(3\)](#20180822-3)
-    - [Verb Restriction Attributes](#verb-restriction-attributes)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
     - [Verb: `ask_for`](#verb-ask_for)
     - [Fix Actors Initialization \(Again\)](#fix-actors-initialization-again)
 - [2018/08/22 \(2\)](#20180822-2)
     - [Fix Actors Initialization](#fix-actors-initialization)
 - [2018/08/22 \(1\)](#20180822-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
     - [Verb: `say`](#verb-say)
     - [Verb: `say_to`](#verb-say_to)
 - [2018/08/18 \(2\)](#20180818-2)
@@ -34,7 +37,7 @@ Status: Alpha stage.
     - [Verb Responses](#verb-responses)
     - [Corretto Risposte Per `indossa` e `togliti`](#corretto-risposte-per-indossa-e-togliti)
 - [2018/08/11](#20180811)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
     - [Verb Responses](#verb-responses-1)
     - [Verb: `remove`](#verb-remove)
 - [2018/08/09](#20180809)
@@ -70,13 +73,13 @@ Status: Alpha stage.
 - [2018/08/01 \(3\)](#20180801-3)
     - [Verbs: `attack` and `attack_with`](#verbs-attack-and-attack_with)
 - [2018/08/01 \(2\)](#20180801-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
     - [Verb Responses](#verb-responses-5)
     - [Verbs: `cut` and `cut_with`](#verbs-cut-and-cut_with)
     - [Verb: `dance`](#verb-dance)
     - [Verb: `dig`](#verb-dig)
 - [2018/08/01 \(1\)](#20180801-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-5)
     - [Verb: `drive`](#verb-drive)
     - [Verbs: `listen0` and `listen`](#verbs-listen0-and-listen)
 - [2018/07/31 \(2\)](#20180731-2)
@@ -84,7 +87,7 @@ Status: Alpha stage.
     - [Verb: `think`](#verb-think)
     - [Verb: `think_about`](#verb-think_about)
 - [2018/07/31 \(1\)](#20180731-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-5)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-6)
     - [Verb Responses](#verb-responses-6)
     - [Verb: `fix`](#verb-fix)
 - [2018/07/29 \(2\)](#20180729-2)
@@ -94,16 +97,16 @@ Status: Alpha stage.
     - [Il Nocciolo del Problema](#il-nocciolo-del-problema)
     - [Abolizione dell'Attributo `naturale`](#abolizione-dellattributo-naturale)
     - [Rilfessioni sull'Attributo `illuminato`](#rilfessioni-sullattributo-illuminato)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-6)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-7)
     - [Testo dei Verbi](#testo-dei-verbi)
 - [2018/07/28 \(3\)](#20180728-3)
     - [Verb Responses](#verb-responses-7)
 - [2018/07/28 \(2\)](#20180728-2)
     - [Verb Responses](#verb-responses-8)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-7)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-8)
     - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
 - [2018/07/28 \(1\)](#20180728-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-8)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-9)
     - [Verb: `answer`](#verb-answer)
     - [Verbs: `fill` and `fill_with`](#verbs-fill-and-fill_with)
 - [2018/07/27 \(7\)](#20180727-7)
@@ -148,15 +151,15 @@ Status: Alpha stage.
     - [Polish and Fix Translated Verbs](#polish-and-fix-translated-verbs)
     - [Verb Parameters Fixes](#verb-parameters-fixes)
 - [2018/07/25 \(8\)](#20180725-8)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-9)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-10)
     - [Verbs: `yes` and `no`](#verbs-yes-and-no)
 - [2018/07/25 \(7\)](#20180725-7)
 - [2018/07/25 \(6\)](#20180725-6)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-10)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-11)
     - [Verb: `play`](#verb-play)
     - [Verb: `play_with`](#verb-play_with)
 - [2018/07/25 \(5\)](#20180725-5)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-11)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-12)
 - [2018/07/25 \(4\)](#20180725-4)
 - [2018/07/25 \(3\)](#20180725-3)
     - [Library Instances](#library-instances)
@@ -276,9 +279,9 @@ Status: Alpha stage.
     - [Verb: `pray`](#verb-pray)
     - [Verb: `break`](#verb-break)
     - [Verb: `break_with`](#verb-break_with)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-12)
-- [2018/05/22 \(2\)](#20180522-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-13)
+- [2018/05/22 \(2\)](#20180522-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-14)
 - [2018/05/22 \(1\)](#20180522-1)
     - [Verb: `undress`](#verb-undress)
 - [2018/05/19](#20180519)
@@ -295,6 +298,45 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/08/27
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.5.4)
+- [`lib_verbi.i`][lib_verbi] (v0.5.4)
+
+## Verb Restriction Attributes
+
+Translated `mia_AT` attributes for verb restrictions:
+
+| English |   Italian   |
+|---------|-------------|
+| `ask`   | `domandare` |
+
+
+## Verb: `ask`
+
+Translated verb `domanda`, "__domanda__" (_ask_):
+
+    domanda a (png) di (argomento)!
+    domanda a (png) riguardo (argomento)!
+    chiedi a (png) di (argomento)!
+    chiedi a (png) riguardo (argomento)!
+
+... with inverted order syntaxes:
+
+    domanda di (argomento)! a (png)
+    chiedi di (argomento)! a (png)
+
+with synonyms:
+
+    circa = riguardo
+
+> __NOTA__ — Allo stato attuale domande come "_Chiedi a Gino l'ora_" o "_Domanda informazioni a maria_" non possono essere gestite tramite il verbo `domanda` poiché questi esige che `<argomento>` sia sempre preceduto da `di/riguardo/circa`. Questo affinché non vi siano conflitti tra la sintassi di `chiedi` e `domanda` (dato anche quest'ultimo contempla l'uso di "_chiedi_") — laddove il primo è inteso come "chiedi per ottenere", mentre il secondo come "chiedi per sapere".
+> 
+> Esistono come vari metodi per implementare domande come queste, e saranno discussi nella documentazione. Allo stato attuale, tutta la parte della libreria che riguarda i dialoghi deve ancora essere testata. Una volta tradotti tutti i verbi di dialogo, sarà possibile collaudare i dialoghi e valutare se servono aggiustamenti alla libreria, e se i verbi di base sono in grado di gestire tutti i casi richiesti.
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/08/24
 
@@ -331,8 +373,8 @@ Translated `mia_AT` attributes for verb restrictions:
 
 Translated verb `chiedi`, "__chiedi__" (_ask for_):
 
-    chiedi a <png> <ogg>
-    chiedi <ogg> a <png>
+    chiedi a (png) (ogg)
+    chiedi (ogg) a (png)
 
 with no synonyms.
 
@@ -379,7 +421,7 @@ Translated `mia_AT` attributes for verb restrictions:
 
 Translated verb `dì`, "__dì__" (_say_):
 
-    di "<argomento>"
+    di "(argomento)"
 
 with no synonyms.
 
@@ -387,8 +429,8 @@ with no synonyms.
 
 Translated verb `dì_a`, "__dì a__" (_say_to_):
 
-    di "<argomento>" a <png>
-    di a <png> "<argomento>"
+    di "(argomento)" a (png)
+    di a (png) "(argomento)"
 
 with no synonyms.
 
@@ -772,7 +814,7 @@ Translated verbs `lega` and `lega_a`, "__lega__":
 
 with no synonyms.
 
-> __NOTA 1__ — In _Infit_, il verbo `lega` riconosce i seguenti sinonimi: `fissa`, `congiungi`, `unisci`, `allaccia`, `annoda`, `attacca`. Però alcuni di essi vengono usati nella forma `lega <ogg> con <ogg>`, e potrebbero quindi non essere pertinenti in questo contesto. Devo riflettere se usare alcuni di questi sinonimi o se lasciare la libertà di scelta all'autore.
+> __NOTA 1__ — In _Infit_, il verbo `lega` riconosce i seguenti sinonimi: `fissa`, `congiungi`, `unisci`, `allaccia`, `annoda`, `attacca`. Però alcuni di essi vengono usati nella forma `lega (ogg) con (ogg)`, e potrebbero quindi non essere pertinenti in questo contesto. Devo riflettere se usare alcuni di questi sinonimi o se lasciare la libertà di scelta all'autore.
 
 <!-- sep -->
 
@@ -1060,9 +1102,9 @@ with synonyms:
 
 Translated verb `pensa_a`, "__pensa a__" (_think about_):
 
-    pensa a <argomento>
-    (rifletti|medita) su <argomento>
-    pondera <argomento>
+    pensa a (argomento)
+    (rifletti|medita) su (argomento)
+    pondera (argomento)
 
 with synonyms:
 

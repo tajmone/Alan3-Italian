@@ -39,6 +39,7 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 - [INTERAZIONI VERBALI](#interazioni-verbali)
     - [dì](#d%C3%AC)
     - [dì_a](#d%C3%AC_a)
+    - [domanda](#domanda)
     - [rispondi](#rispondi)
 - [MANGIARE, BERE](#mangiare-bere)
     - [mangia](#mangia)
@@ -141,6 +142,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [carica]
 - [carica partita]
 - [chiedi]  (oggetto)
+- [chiedi di]  (argomento)
 - [chiudi]
 - [chiudi con]
 - [combatti]
@@ -153,6 +155,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [dì a]
 - [distruggi]
 - [distruggi con]
+- [domanda di]  (argomento)
 - [dormi]
 - [esamina]
 - [gioca con]
@@ -729,6 +732,7 @@ sintassi:
 
 - [dì]
 - [dì_a]
+- [domanda]
 - [rispondi]
 
 ## dì
@@ -758,6 +762,23 @@ sintassi:
 
     dì <"argomento"> a <png>
     dì a <png> <"argomento">
+
+
+## domanda
+
+[domanda]: #domanda "domanda"
+[domanda di]: #domanda "domanda"
+[chiedi di]: #domanda "domanda"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] domandare
+
+sintassi:
+
+    (domanda|chiedi) a <png> (di|circa|riguardo) <argomento!>
+    (domanda|chiedi) (di|circa|riguardo) <argomento!> a <png>
 
 
 

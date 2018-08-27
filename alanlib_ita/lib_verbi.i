@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.5.3 (2018/08/24)
+-- "lib_verbi.i" v0.5.4 (2018/08/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -47,6 +47,7 @@
 --| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)        |   | 2 | x |
 --| dì                 |                              | dì (argomento)                 |   | 1 |   |
 --| dì_a               |                              | dì (argomento) a (png)         |   | 2 |   |
+--| domanda            | chiedi                       | domanda a (png) di (argomento) |   | 2 |   |
 --| dormi              | riposa                       | dormi                          |   | 0 |   |
 --| esamina            | guarda, descrivi, osserva, X | esamina (ogg)                  |   | 1 | x |
 --| gioca_con          |                              | gioca con (ogg)                |   | 1 | x |
@@ -133,7 +134,7 @@
 ----- about       (+ help, info)                           about                               0
 -->>> again       (+ g)                                    again                               0
 -->>> answer      (+ reply)                                answer (topic)                      1
------ ask         (+ enquire, inquire, interrogate)        ask (act) about (topic)             2
+-->>> ask         (+ enquire, inquire, interrogate)        ask (act) about (topic)             2
 -->>> ask_for                                              ask (act) for (obj)                 2       x
 -->>> attack      (+ beat, fight, hit, punch)              attack (target)                     1
 -->>> attack_with                                          attack (target) with (weapon)       2
@@ -2109,6 +2110,84 @@ ADD TO EVERY ACTOR
      -- "interested."
   END VERB dì_a.
 END ADD TO.
+
+
+-- =============================================================
+
+
+----- @DOMANDA @ASK (= enquire, inquire, interrogate)
+
+
+-- =============================================================
+-- @TODO SININOMI: interroga su?
+
+-- SYNTAX ask = ask (png) about (argomento)!
+--        ask = enquire (png) about (argomento)!.
+--        ask = inquire (png) about (argomento)!.
+--        ask = interrogate (png) about (argomento)!.
+
+SYNTAX  domanda = domanda a (png) di (argomento)!
+  WHERE png IsA ACTOR
+    ELSE
+      IF png IS NOT plurale
+--                                                                              TRANSLATE!
+        THEN SAY  illegal_parameter_talk_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_talk_pl  OF mia_AT.
+      END IF.
+  AND argomento IsA THING
+    ELSE
+      IF argomento IS NOT plurale
+--                                                                              TRANSLATE!
+        THEN SAY  illegal_parameter_about_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_about_pl  OF mia_AT.
+      END IF.
+
+        domanda = domanda a (png) riguardo (argomento)!.
+        domanda = chiedi a (png) di (argomento)!.
+        domanda = chiedi a (png) riguardo (argomento)!.
+
+  -- Ordine dei parametri invertito:
+        domanda = domanda di (argomento)! a (png).
+        domanda = domanda riguardo (argomento)! a (png).
+        domanda = chiedi di (argomento)! a (png).
+        domanda = chiedi riguardo (argomento)! a (png).
+
+SYNONYMS
+  circa = riguardo.
+  -- Above, we define the alternative verbs in the syntax rather than as synonyms,
+  -- as the verb 'ask_for' below doesn't sound correct with these alternatives allowed.
+
+
+ADD TO EVERY ACTOR
+  VERB domanda
+    WHEN png
+      CHECK mia_AT CAN domandare
+        ELSE SAY  azione_bloccata  OF mia_AT.
+      AND png <> hero
+--                                                                              TRANSLATE!
+        ELSE SAY  check_obj_not_hero1  OF mia_AT.
+      AND png CAN parlare
+        ELSE
+          IF png IS NOT plurale
+--                                                                              TRANSLATE!
+            THEN SAY  check_act_can_talk_sg  OF mia_AT.
+            ELSE SAY  check_act_can_talk_pl  OF mia_AT.
+          END IF.
+      AND png IS NOT distante
+        ELSE
+          IF png IS NOT plurale
+            THEN SAY  ogg1_distante_sg  OF mia_AT.
+            ELSE SAY  ogg1_distante_pl  OF mia_AT.
+          END IF.
+      DOES
+        "Nessuna risposta." --> taken from i6
+        -- "There is no reply."
+    END VERB domanda.
+END ADD TO.
+
+
+
+----- note that 'consult' is defined separately
 
 
 
@@ -5363,69 +5442,6 @@ VERB 'about'
     $pTo stop playing and end the program, type QUIT.]$p"
 END VERB.
 
-
-
--- =============================================================
-
-
------ ASK (= enquire, inquire, interrogate)
-
-
--- =============================================================
-
-
-SYNTAX ask = ask (png) about (argomento)!
-  WHERE png IsA ACTOR
-    ELSE
-      IF png IS NOT plurale
-        THEN SAY  illegal_parameter_talk_sg  OF mia_AT.
-        ELSE SAY  illegal_parameter_talk_pl  OF mia_AT.
-      END IF.
-  AND argomento IsA THING
-    ELSE
-      IF argomento IS NOT plurale
-        THEN SAY  illegal_parameter_about_sg  OF mia_AT.
-        ELSE SAY  illegal_parameter_about_pl  OF mia_AT.
-      END IF.
-
-   ask = enquire (png) about (argomento)!.
-
-   ask = inquire (png) about (argomento)!.
-
-   ask = interrogate (png) about (argomento)!.
-
-  -- Above, we define the alternative verbs in the syntax rather than as synonyms,
-  -- as the verb 'ask_for' below doesn't sound correct with these alternatives allowed.
-
-
-ADD TO EVERY ACTOR
-  VERB ask
-    WHEN png
-      CHECK mia_AT CAN ask
-        ELSE SAY  azione_bloccata  OF mia_AT.
-      AND png <> hero
-        ELSE SAY  check_obj_not_hero1  OF mia_AT.
-      AND png CAN parlare
-        ELSE
-          IF png IS NOT plurale
-            THEN SAY  check_act_can_talk_sg  OF mia_AT.
-            ELSE SAY  check_act_can_talk_pl  OF mia_AT.
-          END IF.
-      AND png IS NOT distante
-        ELSE
-          IF png IS NOT plurale
-            THEN SAY  ogg1_distante_sg  OF mia_AT.
-            ELSE SAY  ogg1_distante_pl  OF mia_AT.
-          END IF.
-      DOES
-        "Nessuna risposta." --> taken from i6
-        -- "There is no reply."
-    END VERB ask.
-END ADD TO.
-
-
-
------ note that 'consult' is defined separately
 
 
 
