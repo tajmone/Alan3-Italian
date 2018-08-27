@@ -11,19 +11,23 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/08/27](#20180827)
+- [2018/08/27 \(2\)](#20180827-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
+    - [Verb Responses](#verb-responses)
+    - [Verbs: `talk` and `talk_to`](#verbs-talk-and-talk_to)
+- [2018/08/27 \(1\)](#20180827-1)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
     - [Verb: `ask`](#verb-ask)
 - [2018/08/24](#20180824)
     - [Fix Verb `chiedi` \(`ask_for`\)](#fix-verb-chiedi-ask_for)
 - [2018/08/22 \(3\)](#20180822-3)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
     - [Verb: `ask_for`](#verb-ask_for)
     - [Fix Actors Initialization \(Again\)](#fix-actors-initialization-again)
 - [2018/08/22 \(2\)](#20180822-2)
     - [Fix Actors Initialization](#fix-actors-initialization)
 - [2018/08/22 \(1\)](#20180822-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
     - [Verb: `say`](#verb-say)
     - [Verb: `say_to`](#verb-say_to)
 - [2018/08/18 \(2\)](#20180818-2)
@@ -34,14 +38,14 @@ Status: Alpha stage.
 - [2018/08/16 \(2\)](#20180816-2)
     - [Fix Actors Initialization and Description](#fix-actors-initialization-and-description)
 - [2018/08/16 \(1\)](#20180816-1)
-    - [Verb Responses](#verb-responses)
+    - [Verb Responses](#verb-responses-1)
     - [Corretto Risposte Per `indossa` e `togliti`](#corretto-risposte-per-indossa-e-togliti)
 - [2018/08/11](#20180811)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
-    - [Verb Responses](#verb-responses-1)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
+    - [Verb Responses](#verb-responses-2)
     - [Verb: `remove`](#verb-remove)
 - [2018/08/09](#20180809)
-    - [Verb Responses](#verb-responses-2)
+    - [Verb Responses](#verb-responses-3)
     - [Verb: `wear`](#verb-wear)
 - [2018/08/08](#20180808)
     - [Deleted `present_actor` Attribute](#deleted-present_actor-attribute)
@@ -58,7 +62,7 @@ Status: Alpha stage.
 - [2018/08/06 \(1\)](#20180806-1)
     - [Library Attributes](#library-attributes)
 - [2018/08/02 \(3\)](#20180802-3)
-    - [Verb Responses](#verb-responses-3)
+    - [Verb Responses](#verb-responses-4)
     - [Verbs: `tie` and `tie_to`](#verbs-tie-and-tie_to)
 - [2018/08/02 \(2\)](#20180802-2)
 - [2018/08/02 \(1\)](#20180802-1)
@@ -66,20 +70,20 @@ Status: Alpha stage.
     - [Verbs: `touch` and `touch_with`](#verbs-touch-and-touch_with)
     - [Code Cleanup](#code-cleanup)
 - [2018/08/01 \(4\)](#20180801-4)
-    - [Verb Responses](#verb-responses-4)
+    - [Verb Responses](#verb-responses-5)
     - [Verb: `sing`](#verb-sing)
     - [Verb: `kiss`](#verb-kiss)
     - [Verb: `pull`](#verb-pull)
 - [2018/08/01 \(3\)](#20180801-3)
     - [Verbs: `attack` and `attack_with`](#verbs-attack-and-attack_with)
 - [2018/08/01 \(2\)](#20180801-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
-    - [Verb Responses](#verb-responses-5)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-5)
+    - [Verb Responses](#verb-responses-6)
     - [Verbs: `cut` and `cut_with`](#verbs-cut-and-cut_with)
     - [Verb: `dance`](#verb-dance)
     - [Verb: `dig`](#verb-dig)
 - [2018/08/01 \(1\)](#20180801-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-5)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-6)
     - [Verb: `drive`](#verb-drive)
     - [Verbs: `listen0` and `listen`](#verbs-listen0-and-listen)
 - [2018/07/31 \(2\)](#20180731-2)
@@ -87,8 +91,8 @@ Status: Alpha stage.
     - [Verb: `think`](#verb-think)
     - [Verb: `think_about`](#verb-think_about)
 - [2018/07/31 \(1\)](#20180731-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-6)
-    - [Verb Responses](#verb-responses-6)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-7)
+    - [Verb Responses](#verb-responses-7)
     - [Verb: `fix`](#verb-fix)
 - [2018/07/29 \(2\)](#20180729-2)
     - [Remove Verb Restriction Attributes](#remove-verb-restriction-attributes)
@@ -97,16 +101,16 @@ Status: Alpha stage.
     - [Il Nocciolo del Problema](#il-nocciolo-del-problema)
     - [Abolizione dell'Attributo `naturale`](#abolizione-dellattributo-naturale)
     - [Rilfessioni sull'Attributo `illuminato`](#rilfessioni-sullattributo-illuminato)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-7)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-8)
     - [Testo dei Verbi](#testo-dei-verbi)
 - [2018/07/28 \(3\)](#20180728-3)
-    - [Verb Responses](#verb-responses-7)
-- [2018/07/28 \(2\)](#20180728-2)
     - [Verb Responses](#verb-responses-8)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-8)
+- [2018/07/28 \(2\)](#20180728-2)
+    - [Verb Responses](#verb-responses-9)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-9)
     - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
 - [2018/07/28 \(1\)](#20180728-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-9)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-10)
     - [Verb: `answer`](#verb-answer)
     - [Verbs: `fill` and `fill_with`](#verbs-fill-and-fill_with)
 - [2018/07/27 \(7\)](#20180727-7)
@@ -151,15 +155,15 @@ Status: Alpha stage.
     - [Polish and Fix Translated Verbs](#polish-and-fix-translated-verbs)
     - [Verb Parameters Fixes](#verb-parameters-fixes)
 - [2018/07/25 \(8\)](#20180725-8)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-10)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-11)
     - [Verbs: `yes` and `no`](#verbs-yes-and-no)
 - [2018/07/25 \(7\)](#20180725-7)
 - [2018/07/25 \(6\)](#20180725-6)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-11)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-12)
     - [Verb: `play`](#verb-play)
     - [Verb: `play_with`](#verb-play_with)
 - [2018/07/25 \(5\)](#20180725-5)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-12)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-13)
 - [2018/07/25 \(4\)](#20180725-4)
 - [2018/07/25 \(3\)](#20180725-3)
     - [Library Instances](#library-instances)
@@ -279,9 +283,9 @@ Status: Alpha stage.
     - [Verb: `pray`](#verb-pray)
     - [Verb: `break`](#verb-break)
     - [Verb: `break_with`](#verb-break_with)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-13)
-- [2018/05/22 \(2\)](#20180522-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-14)
+- [2018/05/22 \(2\)](#20180522-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-15)
 - [2018/05/22 \(1\)](#20180522-1)
     - [Verb: `undress`](#verb-undress)
 - [2018/05/19](#20180519)
@@ -299,7 +303,45 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/08/27
+# 2018/08/27 (2)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.5.5)
+- [`lib_verbi.i`][lib_verbi] (v0.5.5)
+
+## Verb Restriction Attributes
+
+Translated `mia_AT` attributes for verb restrictions:
+
+|  English  |    Italian    |
+|-----------|---------------|
+| `talk`    | `parlare`     |
+| `talk_to` | `parlare_con` |
+
+## Verb Responses
+
+New verb responses attributes (created for Italian library, no English counterpart):
+
+|          Attribute          |                   Text                   |
+|-----------------------------|------------------------------------------|
+| `ogg1_illegale_CON_sg`/`pl` | `$+1 non [è/sono] qualcosa con cui puoi` |
+
+
+## Verbs: `talk` and `talk_to`
+
+Translated verbs `parla` and `parla_con`, "__parla__":
+
+    parla
+    parla con (png)
+    parla a (png)
+
+with no synonyms.
+
+
+
+<!---------------------------------------------------------------------------->
+
+
+# 2018/08/27 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.5.4)
 - [`lib_verbi.i`][lib_verbi] (v0.5.4)

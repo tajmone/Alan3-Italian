@@ -13,6 +13,29 @@ Prato
 C'è un mago qui. C'è una strega qui. Ci sono degli sciamani qui.
 
 > ; ==============================================================================
+> ;                                   Parla Con                                   
+> ; ==============================================================================
+> ; I verbi 'parla' e 'parla_con' servono solo a inidirizzare il giocatore verso
+> ; l'uso dei verbi appropriati:
+> parla
+To talk to somebody, you can ASK PERSON ABOUT THING or TELL PERSON ABOUT
+THING.
+
+> parla con il mago
+To talk to somebody, you can ASK PERSON ABOUT THING or TELL PERSON ABOUT
+THING.
+
+> parla al mago
+To talk to somebody, you can ASK PERSON ABOUT THING or TELL PERSON ABOUT
+THING.
+
+> ; ------------------------------------------------------------------------------
+> ;                             (parametri non idonei)                            
+> ; ------------------------------------------------------------------------------
+> parla con la bacchetta magica
+La bacchetta magica non è qualcosa con cui puoi parlare.
+
+> ; ==============================================================================
 > ;                              Verbi 'dì' e 'dì_a'                              
 > ; ==============================================================================
 > dì "ciao"
@@ -51,13 +74,15 @@ Nessuna risposta.
 > chiedi al mago della bacchetta magica
 Nessuna risposta.
 
-> chiedi al mago riguardo bacchetta magica
+> chiedi al mago riguardo la bacchetta magica
 Nessuna risposta.
 
-> chiedi al mago circa bacchetta magica
+> chiedi al mago circa la bacchetta magica
 Nessuna risposta.
 
-> ; ORDINE PARAMETRI INVERTIT:
+> ; ------------------------------------------------------------------------------
+> ;                          (ordine parametri invertito)                         
+> ; ------------------------------------------------------------------------------
 > domanda della bacchetta magica al mago
 Nessuna risposta.
 
@@ -70,10 +95,10 @@ Nessuna risposta.
 > chiedi della bacchetta magica al mago
 Nessuna risposta.
 
-> chiedi riguardo bacchetta magica al mago
+> chiedi riguardo la bacchetta magica al mago
 Nessuna risposta.
 
-> chiedi circa bacchetta magica al mago
+> chiedi circa la bacchetta magica al mago
 Nessuna risposta.
 
 > ; ==============================================================================

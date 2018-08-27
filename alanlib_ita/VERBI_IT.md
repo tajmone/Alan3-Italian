@@ -40,6 +40,8 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [dì](#d%C3%AC)
     - [dì_a](#d%C3%AC_a)
     - [domanda](#domanda)
+    - [parla](#parla)
+    - [parla_con](#parla_con)
     - [rispondi](#rispondi)
 - [MANGIARE, BERE](#mangiare-bere)
     - [mangia](#mangia)
@@ -175,6 +177,9 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [no]
 - [offri]
 - [osserva]
+- [parla]
+- [parla a]
+- [parla con]
 - [picchia]
 - [picchia con]
 - [pensa]
@@ -243,7 +248,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 
 # Tabella dei Verbi
 
-Copiata da "`lib_verbi.i`" v0.5.2 (2018/08/22).
+Copiata da "`lib_verbi.i`" v0.5.5 (2018/08/27).
 
 Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e comandi di gioco (dopo il divisorio orizzontale di tabella):
 
@@ -280,6 +285,7 @@ Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e 
 --| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)        |   | 2 | x |
 --| dì                 |                              | dì (argomento)                 |   | 1 |   |
 --| dì_a               |                              | dì (argomento) a (png)         |   | 2 |   |
+--| domanda            | chiedi                       | domanda a (png) di (argomento) |   | 2 |   |
 --| dormi              | riposa                       | dormi                          |   | 0 |   |
 --| esamina            | guarda, descrivi, osserva, X | esamina (ogg)                  |   | 1 | x |
 --| gioca_con          |                              | gioca con (ogg)                |   | 1 | x |
@@ -292,6 +298,8 @@ Elenco alfabetico dei verbi tradotti, suddivisi in comandi di partita (prima) e 
 --| leggi              |                              | leggi (ogg)                    |   | 1 | x |
 --| libera             | rilascia                     | libera (ogg)                   |   | 1 | x |
 --| mangia             |                              | mangia (cibo)                  |   | 1 |   |
+--| parla              |                              | parla                          |   | 0 |   |
+--| parla_con          |                              | parla con (png)                |   | 1 |   |
 --| pensa              | pondera, rifletti, medita    | pensa                          |   | 0 |   |
 --| pensa_a            | rifletti/medita su, pondera  | pensa a (argomento)            |   | 1 |   |
 --| prega              |                              | prega                          |   | 0 |   |
@@ -733,6 +741,8 @@ sintassi:
 - [dì]
 - [dì_a]
 - [domanda]
+- [parla]
+- [parla_con]
 - [rispondi]
 
 ## dì
@@ -779,6 +789,35 @@ sintassi:
 
     (domanda|chiedi) a <png> (di|circa|riguardo) <argomento!>
     (domanda|chiedi) (di|circa|riguardo) <argomento!> a <png>
+
+## parla
+
+[parla]: #parla "parla"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] parlare
+
+sintassi:
+
+    parla
+
+
+## parla_con
+
+[parla_con]: #parla_con "parla_con"
+[parla con]: #parla_con "parla_con"
+[parla a]: #parla_con "parla_con"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] parlare_con
+
+sintassi:
+
+    parla (con|a) <png>
 
 
 

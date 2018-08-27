@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.5.4 (2018/08/27)
+-- "lib_definizioni.i" v0.5.5 (2018/08/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta6 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -744,8 +744,14 @@ EVERY blocco_definizioni IsA LOCATION
   -- ------------------
   -- PREPOSIZIONE "CON"
   -- ------------------
+  -- VERBI: parla_con.
+  -- ORIGINAL EN: (nessuno)
+  HAS ogg1_illegale_CON_sg  "$+1 non è qualcosa con cui puoi".
+  HAS ogg1_illegale_CON_pl  "$+1 non sono qualcosa con cui puoi".
+
+  -- VERBI: brucia_con.
   -- ORIGINAL EN: illegal_parameter2_with_sg/pl  +  check_obj2_suitable_with_sg/pl
-  HAS ogg2_illegale_CON_sg  "$+2 non è qualcosa con cui poter".                 --> brucia_con
+  HAS ogg2_illegale_CON_sg  "$+2 non è qualcosa con cui poter".
   HAS ogg2_illegale_CON_pl  "$+2 non sono qualcosa con cui poter".
 
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
@@ -1423,6 +1429,8 @@ EVERY blocco_definizioni IsA LOCATION
   CAN mostrare.                 --> 'show'       (+ reveal)
   CAN nuotare.                  --> swim
   CAN nuotare_in.               --> swim_in
+  CAN parlare.                  --> talk
+  CAN parlare_con.              --> talk_to (+ speak)
   CAN pensare.                  --> think
   CAN pensare_a.                --> think_about
   CAN pregare.                  --> pray
@@ -1534,8 +1542,6 @@ EVERY blocco_definizioni IsA LOCATION
 --CAN switch. --------------------> ** VERBO ELIMINATO **
 --CAN switch_on. -----------------> ** VERBO ELIMINATO **
 --CAN switch_off. ----------------> ** VERBO ELIMINATO **
-  CAN talk.
-  CAN talk_to.     -- (+ speak)
   CAN tear.        -- (+ rip)
   CAN tell.        -- (+ enlighten, inform)
   CAN throw.
@@ -1627,6 +1633,8 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT mostrare.                 --> 'show'       (+ reveal)
   MAKE mia_AT nuotare.                  --> swim
   MAKE mia_AT nuotare_in.               --> swim_in
+  MAKE mia_AT parlare.                  --> talk
+  MAKE mia_AT parlare_con.              --> talk_to (+ speak)
   MAKE mia_AT pensare.                  --> think
   MAKE mia_AT pensare_a.                --> think_about
   MAKE mia_AT pregare.                  --> pray
@@ -1738,8 +1746,6 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
 --MAKE mia_AT switch. ------------> ** VERBO ELIMINATO **
 --MAKE mia_AT switch_on. ---------> ** VERBO ELIMINATO **
 --MAKE mia_AT switch_off. ------> ** VERBO ELIMINATO **
-  MAKE mia_AT talk.
-  MAKE mia_AT talk_to.         -- (+ speak)
   MAKE mia_AT tear.            -- (+ rip)
   MAKE mia_AT tell.            -- (+ enlighten, inform)
   MAKE mia_AT throw.
@@ -1842,6 +1848,8 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT mostrare.                 --> 'show'       (+ reveal)
   MAKE mia_AT NOT nuotare.                  --> swim
   MAKE mia_AT NOT nuotare_in.               --> swim_in
+  MAKE mia_AT NOT parlare.                  --> talk
+  MAKE mia_AT NOT parlare_con.              --> talk_to (+ speak)
   MAKE mia_AT     pensare.                  --> think
   MAKE mia_AT     pensare_a.                --> think_about
   MAKE mia_AT     pregare.                  --> pray
@@ -1954,8 +1962,6 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
 --MAKE mia_AT NOT switch. --------> ** VERBO ELIMINATO **
 --MAKE mia_AT NOT switch_on. -----> ** VERBO ELIMINATO **
 --MAKE mia_AT NOT switch_off. ----> ** VERBO ELIMINATO **
-  MAKE mia_AT NOT talk.
-  MAKE mia_AT NOT talk_to.     -- (+ speak)
   MAKE mia_AT NOT tear.        -- (+ rip)
   MAKE mia_AT NOT tell.        -- (+ enlighten, inform)
   MAKE mia_AT NOT throw.
@@ -2044,6 +2050,8 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT pensare.                  --> think
   MAKE mia_AT NOT pensare_a.                --> think_about
   MAKE mia_AT NOT nuotare_in.               --> swim_in
+  MAKE mia_AT NOT parlare.                  --> talk
+  MAKE mia_AT NOT parlare_con.              --> talk_to (+ speak)
   MAKE mia_AT NOT pregare.                  --> pray
   MAKE mia_AT NOT prendere.                 --> take.        (+ carry, get, grab, hold, obtain)
   MAKE mia_AT NOT prendere_da.              --> take_from.   (+ remove from)
@@ -2154,8 +2162,6 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
 --MAKE mia_AT NOT switch. --------> ** VERBO ELIMINATO **
 --MAKE mia_AT NOT switch_on. -----> ** VERBO ELIMINATO **
 --MAKE mia_AT NOT switch_off. ----> ** VERBO ELIMINATO **
-  MAKE mia_AT NOT talk.
-  MAKE mia_AT NOT talk_to.     -- (+ speak)
   MAKE mia_AT NOT tear.        -- (+ rip)
   MAKE mia_AT NOT tell.        -- (+ enlighten, inform)
   MAKE mia_AT NOT throw.
@@ -2227,6 +2233,8 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT mostrare.                 --> 'show'       (+ reveal)
   MAKE mia_AT NOT nuotare.                  --> swim
   MAKE mia_AT NOT nuotare_in.               --> swim_in
+  MAKE mia_AT NOT parlare.                  --> talk
+  MAKE mia_AT NOT parlare_con.              --> talk_to (+ speak)
   MAKE mia_AT NOT pensare.                  --> think
   MAKE mia_AT NOT pensare_a.                --> think_about
   MAKE mia_AT NOT pregare.                  --> pray
@@ -2339,8 +2347,6 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
 --MAKE mia_AT NOT switch. -------> ** VERBO ELIMINATO **
 --MAKE mia_AT NOT switch_on. ----> ** VERBO ELIMINATO **
 --MAKE mia_AT NOT switch_off. ---> ** VERBO ELIMINATO **
-  MAKE mia_AT NOT talk.
-  MAKE mia_AT NOT talk_to.     -- (+ speak)
   MAKE mia_AT NOT tear.        -- (+ rip)
   MAKE mia_AT NOT tell.        -- (+ enlighten, inform)
   MAKE mia_AT NOT throw.

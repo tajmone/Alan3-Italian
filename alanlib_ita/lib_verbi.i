@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.5.4 (2018/08/27)
+-- "lib_verbi.i" v0.5.5 (2018/08/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -60,6 +60,8 @@
 --| leggi              |                              | leggi (ogg)                    |   | 1 | x |
 --| libera             | rilascia                     | libera (ogg)                   |   | 1 | x |
 --| mangia             |                              | mangia (cibo)                  |   | 1 |   |
+--| parla              |                              | parla                          |   | 0 |   |
+--| parla_con          |                              | parla con (png)                |   | 1 |   |
 --| pensa              | pondera, rifletti, medita    | pensa                          |   | 0 |   |
 --| pensa_a            | rifletti/medita su, pondera  | pensa a (argomento)            |   | 1 |   |
 --| prega              |                              | prega                          |   | 0 |   |
@@ -269,8 +271,8 @@
 -->>> switch_off  (defined at the verb 'turn_off')         switch off (app)                    1
 -->>> take        (+ carry, get, grab, hold, obtain)       take (obj)                          1       x
 -->>> take_from   (+ remove from)                          take (obj) from (holder)            2       x
------ talk                                                 talk                                0
------ talk_to     (+ speak)                                talk to (act)                       1
+-->>> talk                                                 talk                                0
+-->>> talk_to     (+ speak)                                talk to (act)                       1
 ----- taste       (+ lick)                                 taste (obj)                         1       x
 ----- tear        (+ rip)                                  tear (obj)                          1       x
 ----- tell        (+ enlighten, inform)                    tell (act) about (topic)            2
@@ -2943,6 +2945,63 @@ ADD TO EVERY OBJECT
   END VERB mangia.
 END ADD.
 
+
+
+-- ==============================================================
+
+
+----- @PARLA --> @TALK
+
+
+-- ==============================================================
+
+-- SYNTAX talk = talk.
+
+SYNTAX parla = parla.
+
+
+VERB parla
+  CHECK mia_AT CAN parlare
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES
+--                                                                              TRANSLATE!
+    "To talk to somebody, you can ASK PERSON ABOUT THING
+    or TELL PERSON ABOUT THING."
+END VERB parla.
+
+
+
+-- ==============================================================
+
+
+----- @PARLA CON --> @TALK_TO
+
+
+-- ==============================================================
+
+-- SYNTAX talk_to = talk 'to' (png)
+
+SYNTAX  parla_con = parla con (png)
+  WHERE png IsA ACTOR
+    ELSE
+      IF png IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa con cui puoi"
+        THEN SAY ogg1_illegale_CON_sg OF mia_AT.
+        ELSE SAY ogg1_illegale_CON_pl OF mia_AT.
+      END IF. "parlare."
+
+        parla_con = parla a (png).
+
+ADD TO EVERY ACTOR
+  VERB parla_con
+    CHECK mia_AT CAN parlare_con
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    DOES
+--                                                                              TRANSLATE!
+      "To talk to somebody, you can ASK PERSON ABOUT THING or
+      TELL PERSON ABOUT THING."
+  END VERB parla_con.
+END ADD TO.
 
 
 
@@ -9144,57 +9203,6 @@ ADD TO EVERY OBJECT
   END VERB swim_in.
 END ADD TO.
 
-
-
--- ==============================================================
-
-
------ TALK
-
-
--- ==============================================================
-
-
-SYNTAX talk = talk.
-
-
-VERB talk
-  CHECK mia_AT CAN talk
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES
-    "To talk to somebody, you can ASK PERSON ABOUT THING
-    or TELL PERSON ABOUT THING."
-END VERB talk.
-
-
-
--- ==============================================================
-
-
------ TALK_TO
-
-
--- ==============================================================
-
-
-SYNTAX talk_to = talk 'to' (png)
-  WHERE png IsA ACTOR
-    ELSE
-      IF png IS NOT plurale
-        THEN SAY  illegal_parameter_to_sg  OF mia_AT.
-        ELSE SAY  illegal_parameter_to_pl  OF mia_AT.
-      END IF.
-
-
-ADD TO EVERY ACTOR
-  VERB talk_to
-    CHECK mia_AT CAN talk_to
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    DOES
-      "To talk to somebody, you can ASK PERSON ABOUT THING or
-      TELL PERSON ABOUT THING."
-  END VERB talk_to.
-END ADD TO.
 
 
 

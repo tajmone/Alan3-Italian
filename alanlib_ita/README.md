@@ -292,7 +292,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `about`          |                           |
 | `'again'`        | `rifare`                  |
 | `answer`         | `rispondere`              |
-| `ask`            |                           |
+| `ask`            | `domandare`               |
 | `ask_for`        | `chiedere`                |
 | `attack`         | `attaccare`               |
 | `attack_with`    | `attaccare_con`           |
@@ -431,8 +431,8 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | ~~`switch_on`~~  | _removed_                 |
 | `take`           | `prendere`                |
 | `take_from`      | `prendere_da`             |
-| `talk`           |                           |
-| `talk_to`        |                           |
+| `talk`           | `parlare`                 |
+| `talk_to`        | `parlare_con`             |
 | `taste`          | `assaggiare`              |
 | `tear`           |                           |
 | `tell`           |                           |
