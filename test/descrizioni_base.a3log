@@ -28,6 +28,9 @@ Lasci il mazzo di carte.
 > inventario
 Non stai portando niente.
 
+> prendi il mazzo di carte
+Preso.
+
 > ; ******************************************************************************
 > ; *                                                                            *
 > ; *                           TEST SU CLASSE PERSONA                           *
@@ -92,6 +95,22 @@ Prese.
 > esamina le galline
 Esamini le galline, ma non noti niente di speciale. Le galline non stanno 
 portando niente.
+
+> ; ******************************************************************************
+> ; *                          MESSAGGI DI ERRORE VARI                           *
+> ; ******************************************************************************
+> ; SCRIVI
+> scrivi
+Per scrivere su qualcosa, usa SCRIVI "TESTO" SU (IN) OGGETTO.
+
+> scrivi sulle galline
+Per scrivere su qualcosa, usa SCRIVI "TESTO" SU (IN) OGGETTO.
+
+> scrivi sul mazzo di carte
+Per scrivere su qualcosa, usa SCRIVI "TESTO" SU (IN) OGGETTO.
+
+> scrivi "coccode"
+Per scrivere su qualcosa, usa SCRIVI "TESTO" SU (IN) OGGETTO.
 
 > 
 

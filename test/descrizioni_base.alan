@@ -38,9 +38,10 @@ END THE.
 -- Diamo qualche oggetto da portare al protagonista...
 
 THE mazzo_carte IsA object IN hero.
-  NAME 'mazzo di carte'
-  NAME mazzo
-  NAME carte
+  NAME mazzo di carte.
+  NAME mazzo di.
+  NAME mazzo.
+  NAME carte.
 END THE.
 
 

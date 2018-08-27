@@ -5,6 +5,7 @@ esamina me
 inventario
 lascia mazzo
 inventario
+prendi il mazzo di carte
 ; ******************************************************************************
 ; *                                                                            *
 ; *                           TEST SU CLASSE PERSONA                           *
@@ -36,3 +37,11 @@ prendi la banana
 esamina le galline
 prendi la uova
 esamina le galline
+; ******************************************************************************
+; *                          MESSAGGI DI ERRORE VARI                           *
+; ******************************************************************************
+; SCRIVI
+scrivi
+scrivi sulle galline
+scrivi sul mazzo di carte
+scrivi "coccode"

@@ -18,16 +18,16 @@ C'è un mago qui. C'è una strega qui. Ci sono degli sciamani qui.
 > ; I verbi 'parla' e 'parla_con' servono solo a inidirizzare il giocatore verso
 > ; l'uso dei verbi appropriati:
 > parla
-To talk to somebody, you can ASK PERSON ABOUT THING or TELL PERSON ABOUT
-THING.
+Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure
+RACCONTA A PERSONA DI ARGOMENTO.
 
 > parla con il mago
-To talk to somebody, you can ASK PERSON ABOUT THING or TELL PERSON ABOUT
-THING.
+Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure
+RACCONTA A PERSONA DI ARGOMENTO.
 
 > parla al mago
-To talk to somebody, you can ASK PERSON ABOUT THING or TELL PERSON ABOUT
-THING.
+Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure
+RACCONTA A PERSONA DI ARGOMENTO.
 
 > ; ------------------------------------------------------------------------------
 > ;                             (parametri non idonei)                            
@@ -109,8 +109,7 @@ Nessuna risposta.
 Nessuna risposta.
 
 > chiedi la bacchetta magica
-Please use the formulation ASK PERSON FOR THING to ask somebody for
-something.
+Per chiedere qualcosa a qualcuno usa CHIEDI A PERSONA OGGETTO.
 
 > chiedi al mago la bacchetta magica
 Il mago ti dà la bacchetta magica.

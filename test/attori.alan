@@ -47,6 +47,23 @@ ADD TO EVERY ACTOR
 END ADD TO ACTOR.
 
 
+
+
+-- =============================================================================
+
+----- Il Protagonista
+
+-- =============================================================================
+-- Equipaggiamo il nostro eroe con qualche oggetto utile ai fini dei test...
+
+THE mannaia IsA arma IN hero.
+  HAS articolo "la".
+END THE mannaia.
+
+THE fucile IsA arma IN hero.
+  CAN sparare.
+END THE fucile.
+
 --==============================================================================
 -- PNG Con Nomi Propri
 --==============================================================================
@@ -166,8 +183,8 @@ END THE.
 -- ===========
 THE gemelli IsA maschio AT stanza2.
   HAS articolo "i".
-  NAME 'gemelli siamesi'.
-  NAME 'gemelli'.
+  NAME gemelli siamesi.
+  NAME gemelli.
 END THE.
 -- =============
 -- Articolo: GLI

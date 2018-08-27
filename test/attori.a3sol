@@ -1,3 +1,4 @@
+inventario
 ; ==============================================================================
 ;                              PNG CON NOME PROPRIO                             
 ; ==============================================================================
@@ -6,6 +7,11 @@
 nordest
 x mario
 x maria
+; ------------------------------------------------------------------------------
+;                            MESSAGGI DI ERRORE VARI                            
+; ------------------------------------------------------------------------------
+chiedi mario
+chiedi quaderno
 ; ------------------------------------------------------------------------------
 ;                              TEST CONDISCENDENZA                              
 ; ------------------------------------------------------------------------------
@@ -22,3 +28,20 @@ verifica condiscendenza di maria
 ; ==============================================================================
 ; Ora testiamo con attori che non hanno nome proprio.
 ovest
+; ==============================================================================
+;                           TEST VERBI DI AGGRESSIONE                           
+; ==============================================================================
+; Testiamo le risposte predefinite condivise dai verbi di aggressione
+attacca il vampiro
+attacca il vampiro con la mannaia
+rompi il vampiro
+; ------------------------------------------------------------------------------
+;                          (verbi non ancora tradotti)                          
+; ------------------------------------------------------------------------------
+kick the vampiro
+kick the gemelli siamesi
+kick the fate
+fire at vampiro
+fire mannaia at vampiro
+fire fucile at vampiro
+

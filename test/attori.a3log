@@ -13,6 +13,9 @@ Atrio Principale
 A NORDEST c'è una stanza piena di PNG con nomi propri.
 A NORDOVEST c'è una stanza piena di PNG senza nomi propri.
 
+> inventario
+Stai portando un fucile e una mannaia.
+
 > ; ==============================================================================
 > ;                              PNG CON NOME PROPRIO                             
 > ; ==============================================================================
@@ -33,6 +36,15 @@ quaderno.
 > x maria
 Esamini Maria, ma non noti niente di speciale. Maria sta portando una mela
 .
+
+> ; ------------------------------------------------------------------------------
+> ;                            MESSAGGI DI ERRORE VARI                            
+> ; ------------------------------------------------------------------------------
+> chiedi mario
+Per chiedere qualcosa a qualcuno usa CHIEDI A PERSONA OGGETTO.
+
+> chiedi quaderno
+Per chiedere qualcosa a qualcuno usa CHIEDI A PERSONA OGGETTO.
 
 > ; ------------------------------------------------------------------------------
 > ;                              TEST CONDISCENDENZA                              
@@ -62,5 +74,51 @@ Maria è condiscendente.
 > ; ==============================================================================
 > ; Ora testiamo con attori che non hanno nome proprio.
 > ovest
+Set Attori in Costume
+In questo set gli attori indossano costumi di personaggi, e non hanno
+nomi propri.
+A EST c'è l'altro set.
+
+C'è un vampiro qui. C'è uno zombie qui. C'è un orco qui. C'è una strega 
+qui. C'è un'arpia qui. Ci sono dei gemelli siamesi qui. Ci sono degli 
+sciamani qui. Ci sono delle fate qui.
+
+> ; ==============================================================================
+> ;                           TEST VERBI DI AGGRESSIONE                           
+> ; ==============================================================================
+> ; Testiamo le risposte predefinite condivise dai verbi di aggressione
+> attacca il vampiro
+La violenza non è la giusta risposta a questo.
+
+> attacca il vampiro con la mannaia
+La violenza non è la giusta risposta a questo.
+
+> rompi il vampiro
+Il vampiro non è qualcosa che puoi rompere.
+
+> ; ------------------------------------------------------------------------------
+> ;                          (verbi non ancora tradotti)                          
+> ; ------------------------------------------------------------------------------
+> kick the vampiro
+La violenza non è la giusta risposta a questo.
+
+> kick the gemelli siamesi
+La violenza non è la giusta risposta a questo.
+
+> kick the fate
+La violenza non è la giusta risposta a questo.
+
+> fire at vampiro
+La violenza non è la giusta risposta a questo.
+
+> fire mannaia at vampiro
+That's not something you can fire.
+
+> fire fucile at vampiro
+La violenza non è la giusta risposta a questo.
+
+> 
+
+> 
 
 Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

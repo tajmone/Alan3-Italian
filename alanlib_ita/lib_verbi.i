@@ -1,4 +1,4 @@
--- "lib_verbi.i" v0.5.5 (2018/08/27)
+-- "lib_verbi.i" v0.5.6 (2018/08/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -885,7 +885,8 @@ ADD TO EVERY THING
     AND hero IS NOT sdraiato
       ELSE SAY  check_hero_not_lying_down2  OF mia_AT.
         DOES
-          "La violenza non è la giusta risposta a questo." --> taken from i6
+          -- "La violenza non è la giusta risposta a questo." --> taken from i6
+          SAY   la_violenza_non_è_la_risposta  OF mia_AT.
           -- "Resorting to brute force is not the solution here."
     END VERB attacca.
 END ADD TO.
@@ -970,7 +971,8 @@ ADD TO EVERY THING
       AND hero IS NOT sdraiato
         ELSE SAY  check_hero_not_lying_down2  OF mia_AT.
           DOES
-            "La violenza non è la giusta risposta a questo." --> taken from i6
+            -- "La violenza non è la giusta risposta a questo." --> taken from i6
+            SAY   la_violenza_non_è_la_risposta  OF mia_AT.
             -- "Resorting to brute force is not the solution here."
   END VERB attacca_con.
 END ADD TO.
@@ -1702,15 +1704,18 @@ END ADD TO.
 
 SYNTAX chiedi_errore = chiedi (ogg)
   WHERE ogg IsA OBJECT
-    ELSE "Please use the formulation ASK PERSON FOR THING to ask somebody for
-       something."
+    ELSE
+      -- "Per chiedere qualcosa a qualcuno usa CHIEDI A PERSONA OGGETTO."
+      SAY  per_chiedere_qlco_USA  OF mia_AT.
+    -- "Please use the formulation ASK PERSON FOR THING to ask somebody for
+    --  something."
 
 
 ADD TO EVERY OBJECT
   VERB chiedi_errore
     DOES
-      "Please use the formulation ASK PERSON FOR THING to ask somebody for
-             something."
+      -- "Per chiedere qualcosa a qualcuno usa CHIEDI A PERSONA OGGETTO."
+      SAY  per_chiedere_qlco_USA  OF mia_AT.
   END VERB chiedi_errore.
 END ADD TO.
 
@@ -2964,9 +2969,11 @@ VERB parla
   CHECK mia_AT CAN parlare
     ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
---                                                                              TRANSLATE!
-    "To talk to somebody, you can ASK PERSON ABOUT THING
-    or TELL PERSON ABOUT THING."
+    -- "Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure
+    --  RACCONTA A PERSONA DI ARGOMENTO.".    
+    SAY  per_parlare_con_USA  OF mia_AT.
+-- "To talk to somebody, you can ASK PERSON ABOUT THING
+--  or TELL PERSON ABOUT THING."
 END VERB parla.
 
 
@@ -2997,9 +3004,9 @@ ADD TO EVERY ACTOR
     CHECK mia_AT CAN parlare_con
       ELSE SAY  azione_bloccata  OF mia_AT.
     DOES
---                                                                              TRANSLATE!
-      "To talk to somebody, you can ASK PERSON ABOUT THING or
-      TELL PERSON ABOUT THING."
+      -- "Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure
+      --  RACCONTA A PERSONA DI ARGOMENTO.".    
+      SAY  per_parlare_con_USA  OF mia_AT.
   END VERB parla_con.
 END ADD TO.
 
@@ -3166,6 +3173,7 @@ ADD TO EVERY THING
    -- ELSE SAY  check_obj_movable  OF mia_AT. --#-> "It's not possible to $v $+1."
       ELSE
       --#i6/7: "È/Sono fissat* al proprio posto"
+        -- @TODO: optimize using vocale and spaghetti strings!                  OPTIMIZE!
         IF ogg IS NOT femminile
           THEN
             IF ogg IS NOT plurale
@@ -3744,8 +3752,8 @@ ADD TO EVERY OBJECT
             END IF.
         END IF.
     DOES
-    --@TODO: Rivedi frase (magari "forza bruta")
-      "La violenza non è la giusta risposta a questo." -- presa da i6!
+      -- "La violenza non è la giusta risposta a questo." --> taken from i6
+      SAY   la_violenza_non_è_la_risposta  OF mia_AT.
       -- "Resorting to brute force is not the solution here."
   END VERB rompi.
 END ADD TO.
@@ -4083,6 +4091,7 @@ ADD TO EVERY OBJECT
       CHECK mia_AT CAN scrivere
         ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg IS scrivibile
+--                                                                              TRANSLATE!
         ELSE SAY  check_obj_writeable  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY  imp_luogo_buio  OF mia_AT.
@@ -4126,16 +4135,18 @@ END ADD TO.
 SYNTAX  scrivi_errore1 = scrivi su (ogg)
   WHERE ogg IsA OBJECT
     ELSE
-      "Per poter scrivere, usa la sintassi SCRIVI ""TESTO"" SU (IN) OGGETTO."
-    -- "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
-     -- to write something."
+      -- "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
+      SAY  per_scrivere_USA  OF mia_AT.
+  -- "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
+  --  to write something."
 
         scrivi_errore1 = scrivi 'in' (ogg).
 
 ADD TO EVERY OBJECT
   VERB scrivi_errore1
     DOES
-      "Per poter scrivere, usa la sintassi SCRIVI ""TESTO"" SU (IN) OGGETTO."
+      -- "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
+      SAY  per_scrivere_USA  OF mia_AT.
 
   END VERB scrivi_errore1.
 END ADD TO.
@@ -4144,21 +4155,24 @@ END ADD TO.
 SYNTAX scrivi_errore2 = scrivi.
 
 VERB scrivi_errore2
-    DOES
-      "Per poter scrivere, usa la sintassi SCRIVI ""TESTO"" SU (IN) OGGETTO."
+  DOES
+    -- "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
+    SAY  per_scrivere_USA  OF mia_AT.
 END VERB scrivi_errore2.
 
 
 SYNTAX scrivi_errore3 = scrivi (txt)
   WHERE txt IsA STRING
     ELSE
-      "Per poter scrivere, usa la sintassi SCRIVI ""TESTO"" SU (IN) OGGETTO."
+      -- "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
+      SAY  per_scrivere_USA  OF mia_AT.
 
 
 ADD TO EVERY STRING
   VERB scrivi_errore3
     DOES
-      "Per poter scrivere, usa la sintassi SCRIVI ""TESTO"" SU (IN) OGGETTO."
+      -- "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
+      SAY  per_scrivere_USA  OF mia_AT.
   END VERB scrivi_errore3.
 END ADD TO.
 
@@ -5117,7 +5131,7 @@ ADD TO EVERY THING
         END IF.
     DOES --                                                                     TRANSLATE
       "You can't see" SAY THE dest. "anywhere nearby. You must state a
-      direction where you want to go."
+       direction where you want to go."
     END VERB vai_a.
 END ADD TO.
 
@@ -6666,7 +6680,9 @@ ADD TO EVERY arma
       AND CURRENT LOCATION IS illuminato
         ELSE SAY  imp_luogo_buio  OF mia_AT.
       DOES
-        "Resorting to violence is not the solution here."
+        -- "La violenza non è la giusta risposta a questo." --> taken from i6
+        SAY   la_violenza_non_è_la_risposta  OF mia_AT.
+    -- "Resorting to violence is not the solution here."
   END VERB fire_at.
 END ADD TO.
 
@@ -6693,7 +6709,9 @@ ADD TO EVERY THING
     AND CURRENT LOCATION IS illuminato
       ELSE SAY  imp_luogo_buio  OF mia_AT.
     DOES
-      "Resorting to violence is not the solution here."
+      -- "La violenza non è la giusta risposta a questo." --> taken from i6
+      SAY   la_violenza_non_è_la_risposta  OF mia_AT.
+  -- "Resorting to violence is not the solution here."
   END VERB fire_at_error.
 END ADD TO.
 
@@ -7025,7 +7043,8 @@ ADD TO EVERY THING
             END IF.
         END IF.
     DOES
-      "La violenza non è la giusta risposta a questo." --> taken from i6
+      -- "La violenza non è la giusta risposta a questo." --> taken from i6
+      SAY   la_violenza_non_è_la_risposta  OF mia_AT.
    -- "Resorting to brute force is not the solution here."
   END VERB kick.
 END ADD TO.

@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/08/27 \(3\)](#20180827-3)
+    - [New Recurrent Verb Responses Attributes](#new-recurrent-verb-responses-attributes)
 - [2018/08/27 \(2\)](#20180827-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
     - [Verb Responses](#verb-responses)
@@ -302,6 +304,28 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/08/27 (3)
+
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.5.6)
+- [`lib_verbi.i`][lib_verbi] (v0.5.6)
+
+## New Recurrent Verb Responses Attributes
+
+New verb responses attributes (created for Italian library, no English counterpart). 
+
+These are verb response messagges which appear as String statements more than once in variations of the same verb, so I'm converting them to `mia_AT` verb response attributes to avoide redundant strings — This makes it easier to maintain the strings when tweaking them, optimizes slightly memory consumption, but most of all simplifies user customization of the responses.
+
+|            Attribute            |                         Text                         |                                 Verbs                                 |
+|---------------------------------|------------------------------------------------------|-----------------------------------------------------------------------|
+| `la_violenza_non_è_la_risposta` | `La violenza non è la giusta risposta`               | `attacca`, `attacca_con`, `rompi`, `kick`, `fire_at`, `fire_at_error` |
+| `per_chiedere_qlco_USA`         | `Per chiedere qualcosa a qualcuno usa CHIEDI [...].` | `chiedi_errore`                                                       |
+| `per_parlare_con_USA`           | `Per parlare a qualcuno, usa DOMANDA A [...].`       | `parla`, `parla_con`                                                  |
+| `per_scrivere_USA`              | `Per scrivere su qualcosa, usa SCRIVI [...].`               | `scrivi_errore1`/`2`/`3`                                              |
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/08/27 (2)
 

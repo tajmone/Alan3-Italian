@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.5.5 (2018/08/27)
+-- "lib_definizioni.i" v0.5.6 (2018/08/27)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta6 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -634,6 +634,39 @@ EVERY blocco_definizioni IsA LOCATION
       -- by the "CAN NOT [verb]" attributes further down this file.
 
   HAS restricted_level 0.   -- 0 = no verbs are restricted
+
+
+  -- ==========================
+  -- RISPOSTE STANDARD RIPETUTE
+  -- ==========================
+  -- Queste risposte vengono invocate in più verbi (o varianti di un medesimo
+  -- verbo, o sia nelle clausole WHERE della sintassi che nel corpo del verbo),
+  -- perciò è meglio implementarle come un singolo attributo riutilizzabile.
+
+  -- VERBI: attacca, attacca_con, rompi, *kick*, fire_at, fire_at_error.
+  HAS la_violenza_non_è_la_risposta
+    "La violenza non è la giusta risposta a questo.". --> taken from i6
+
+  -- VERBI: chiedi_errore.
+  HAS per_chiedere_qlco_USA
+    "Per chiedere qualcosa a qualcuno usa CHIEDI A PERSONA OGGETTO.".
+
+  -- VERBI: parla_con.
+  HAS per_parlare_con_USA
+    "Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure
+     RACCONTA A PERSONA DI ARGOMENTO.".
+
+  -- VERBI: scrivi_errore1, scrivi_errore2, scrivi_errore3.
+  HAS per_scrivere_USA
+    "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
+
+  -- @TODO: Altri verbi che contengono risposte ripetute:
+  --        - siediti, siediti_su
+  --        - usa, usa_con
+  --        - chi_è, cosa_è, dove_è
+  --        - chi_sono_io, cosa_sono_io
+  --        - dici_No, dici_Sì
+  --        - consult_error
 
   -- ===========================================================================
   -- PROBLEMI RELATIVI AI PARAMETRI
