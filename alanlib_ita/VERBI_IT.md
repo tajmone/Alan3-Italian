@@ -42,6 +42,7 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
     - [domanda](#domanda)
     - [parla](#parla)
     - [parla_con](#parla_con)
+    - [racconta](#racconta)
     - [rispondi](#rispondi)
 - [MANGIARE, BERE](#mangiare-bere)
     - [mangia](#mangia)
@@ -155,6 +156,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [descrivi]
 - [dì]
 - [dì a]
+- [dì a di]  (a png, di argomento)
 - [distruggi]
 - [distruggi con]
 - [domanda di]  (argomento)
@@ -163,6 +165,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [gioca con]
 - [guida]
 - [indossa]
+- [informa]  (png, di argomento)
 - [inventario]
 - [lascia]
 - [lega]
@@ -178,10 +181,12 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [offri]
 - [osserva]
 - [parla]
+- [parla a di]  (a png, di argomento)
 - [parla a]
+- [parla con di]   (con png, di argomento)
 - [parla con]
-- [picchia]
 - [picchia con]
+- [picchia]
 - [pensa]
 - [pensa a]
 - [pondera]
@@ -192,6 +197,7 @@ Siccome in questo documento i vari verbi sono raggrupati per categorie di affini
 - [prendi]
 - [prendi da]
 - [raccogli]
+- [racconta]  (a png, di argomento)
 - [ricomincia]
 - [ricomincia partita]
 - [rifletti]
@@ -819,6 +825,25 @@ sintassi:
 
     parla (con|a) <png>
 
+
+## racconta
+
+[racconta]: #racconta "racconta"
+[parla a di]: #racconta "racconta"
+[parla con di]: #racconta "racconta"
+[informa]: #racconta "racconta"
+[dì a di]: #racconta "racconta"
+
+
+attributo `mia_AT`:
+
+    CAN [NOT] raccontare
+
+sintassi:
+
+    (racconta|parla|dì) a <png> di <argomento!>
+    (informa) <png> (di|su) <argomento!>
+    (parla) con <png> di <argomento!>
 
 
 ## rispondi

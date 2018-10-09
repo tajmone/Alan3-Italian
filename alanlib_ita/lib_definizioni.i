@@ -1,4 +1,4 @@
--- "lib_definizioni.i" v0.5.6 (2018/08/27)
+-- "lib_definizioni.i" v0.5.7 (2018/10/09)
 --------------------------------------------------------------------------------
 -- Alan ITA Alpha Dev | Alan 3.0beta6 | StdLib 2.1
 --------------------------------------------------------------------------------
@@ -1470,6 +1470,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN prendere.                 --> take.        (+ carry, get, grab, hold, obtain)
   CAN prendere_da.              --> take_from.   (+ remove from)
   CAN pulire.                   --> clean        (+ polish, wipe)
+  CAN raccontare.               --> tell         (+ enlighten, inform)
   CAN ricominciare_partita.     --> 'restart'
   CAN riempire.                 --> fill
   CAN riempire_con.             --> fill_with
@@ -1576,7 +1577,6 @@ EVERY blocco_definizioni IsA LOCATION
 --CAN switch_on. -----------------> ** VERBO ELIMINATO **
 --CAN switch_off. ----------------> ** VERBO ELIMINATO **
   CAN tear.        -- (+ rip)
-  CAN tell.        -- (+ enlighten, inform)
   CAN throw.
   CAN throw_at.
   CAN throw_in.
@@ -1674,6 +1674,7 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
   MAKE mia_AT prendere.                 --> take.        (+ carry, get, grab, hold, obtain)
   MAKE mia_AT prendere_da.              --> take_from.   (+ remove from)
   MAKE mia_AT pulire.                   --> clean        (+ polish, wipe)
+  MAKE mia_AT raccontare.               --> tell         (+ enlighten, inform)
   MAKE mia_AT ricominciare_partita.     --> 'restart'
   MAKE mia_AT riempire.                 --> fill
   MAKE mia_AT riempire_con.             --> fill_with
@@ -1780,7 +1781,6 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
 --MAKE mia_AT switch_on. ---------> ** VERBO ELIMINATO **
 --MAKE mia_AT switch_off. ------> ** VERBO ELIMINATO **
   MAKE mia_AT tear.            -- (+ rip)
-  MAKE mia_AT tell.            -- (+ enlighten, inform)
   MAKE mia_AT throw.
   MAKE mia_AT throw_at.
   MAKE mia_AT throw_in.
@@ -1804,10 +1804,10 @@ ELSIF restricted_level OF mia_AT = 1  -- communication verbs are restricted
   MAKE mia_AT NOT dire_a.                   --> say_to
   MAKE mia_AT NOT domandare.                --> ask (+ enquire, inquire, interrogate)
   MAKE mia_AT NOT gridare.                  --> shout       (+ scream, yell)
+  MAKE mia_AT NOT raccontare.               --> tell         (+ enlighten, inform)
   MAKE mia_AT NOT rispondere.               --> answer (+ reply)
 
 --# NOT YET TRANSLATED:
-  MAKE mia_AT NOT tell.
 
 
 
@@ -1889,6 +1889,7 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
   MAKE mia_AT NOT prendere.                 --> take.        (+ carry, get, grab, hold, obtain)
   MAKE mia_AT NOT prendere_da.              --> take_from.   (+ remove from)
   MAKE mia_AT NOT pulire.                   --> clean        (+ polish, wipe)
+  MAKE mia_AT NOT raccontare.               --> tell         (+ enlighten, inform)
   MAKE mia_AT     ricominciare_partita.     --> 'restart'
   MAKE mia_AT NOT riempire.                 --> fill
   MAKE mia_AT NOT riempire_con.             --> fill_with
@@ -1996,7 +1997,6 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
 --MAKE mia_AT NOT switch_on. -----> ** VERBO ELIMINATO **
 --MAKE mia_AT NOT switch_off. ----> ** VERBO ELIMINATO **
   MAKE mia_AT NOT tear.        -- (+ rip)
-  MAKE mia_AT NOT tell.        -- (+ enlighten, inform)
   MAKE mia_AT NOT throw.
   MAKE mia_AT NOT throw_at.
   MAKE mia_AT NOT throw_in.
@@ -2089,6 +2089,7 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
   MAKE mia_AT NOT prendere.                 --> take.        (+ carry, get, grab, hold, obtain)
   MAKE mia_AT NOT prendere_da.              --> take_from.   (+ remove from)
   MAKE mia_AT NOT pulire.                   --> clean        (+ polish, wipe)
+  MAKE mia_AT NOT raccontare.               --> tell         (+ enlighten, inform)
   MAKE mia_AT     ricominciare_partita.     --> 'restart'
   MAKE mia_AT NOT riempire.                 --> fill
   MAKE mia_AT NOT riempire_con.             --> fill_with
@@ -2196,7 +2197,6 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
 --MAKE mia_AT NOT switch_on. -----> ** VERBO ELIMINATO **
 --MAKE mia_AT NOT switch_off. ----> ** VERBO ELIMINATO **
   MAKE mia_AT NOT tear.        -- (+ rip)
-  MAKE mia_AT NOT tell.        -- (+ enlighten, inform)
   MAKE mia_AT NOT throw.
   MAKE mia_AT NOT throw_at.
   MAKE mia_AT NOT throw_in.
@@ -2274,6 +2274,7 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   MAKE mia_AT NOT prendere.                 --> take.        (+ carry, get, grab, hold, obtain)
   MAKE mia_AT NOT prendere_da.              --> take_from.   (+ remove from)
   MAKE mia_AT NOT pulire.                   --> clean        (+ polish, wipe)
+  MAKE mia_AT NOT raccontare.               --> tell         (+ enlighten, inform)
   MAKE mia_AT NOT ricominciare_partita.     --> 'restart'
   MAKE mia_AT NOT riempire.                 --> fill
   MAKE mia_AT NOT riempire_con.             --> fill_with
@@ -2381,7 +2382,6 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
 --MAKE mia_AT NOT switch_on. ----> ** VERBO ELIMINATO **
 --MAKE mia_AT NOT switch_off. ---> ** VERBO ELIMINATO **
   MAKE mia_AT NOT tear.        -- (+ rip)
-  MAKE mia_AT NOT tell.        -- (+ enlighten, inform)
   MAKE mia_AT NOT throw.
   MAKE mia_AT NOT throw_at.
   MAKE mia_AT NOT throw_in.
