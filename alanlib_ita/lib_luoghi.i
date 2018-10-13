@@ -1,10 +1,14 @@
--- "lib_luoghi.i" v0.5.0 (2018/08/18)
---------------------------------------------------------------------------------
--- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
---------------------------------------------------------------------------------
--- Adapted to Italian from:
--- ALAN Standard Library v2.1
--- "Locations" (original file name: 'lib_locations.i')
+--= Alan StdLib Italian: Luoghi
+--| Tristano Ajmone <tajmone@gmail.com>
+--~-----------------------------------------------------------------------------
+--~ "lib_luoghi.i"
+--| v0.6.0-Alpha, 2018-10-12: Alan 3.0beta6
+--|=============================================================================
+--| Adattamento italiano del modulo `lib_locations.i` della
+--| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
+--| Ad opera di Tristano Ajmone,  (C) 2018, Artistic License 2.1.
+--|=============================================================================
+
 --------------------------------------------------------------------------------
 --| Questo modulo della libreria, dedicato ai luoghi, definisce:
 --|  - Le direzioni cardinali predefinite (implementate come EXIT),

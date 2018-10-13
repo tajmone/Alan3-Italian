@@ -1,6 +1,6 @@
--- "_mygame_import.i" v0.5.0  (2018/08/18)
+-- "_mygame_import.i" v0.6.0  (2018/10/12)
 --------------------------------------------------------------------------------
--- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
+-- Alan ITA Alpha Dev | Alan 3.0beta6 | StdLib 2.1
 --------------------------------------------------------------------------------
 -- Adapted to Italian from:
 -- ALAN Standard Library v2.1

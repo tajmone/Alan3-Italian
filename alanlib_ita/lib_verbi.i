@@ -1,118 +1,49 @@
--- "lib_verbi.i" v0.5.7 (2018/10/09)
---------------------------------------------------------------------------------
--- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
---------------------------------------------------------------------------------
--- Adapted to Italian from:
--- ALAN Standard Library v2.1
--- "Verbs" (original file name: 'lib_verbs.i')
---------------------------------------------------------------------------------
+--= Alan StdLib Italian: Verbi
+--| Tristano Ajmone <tajmone@gmail.com>
+--~-----------------------------------------------------------------------------
+--~ "lib_verbi.i"
+--| v0.6.0-Alpha, 2018-10-12: Alan 3.0beta6
+--|=============================================================================
+--| Adattamento italiano del modulo `lib_verbs.i` della
+--| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
+--| Ad opera di Tristano Ajmone,  (C) 2018, Artistic License 2.1.
+--|=============================================================================
 
---------------------------------------------------------------------------------
------ Tabella dei Verbi --------------------------------------------------------
---------------------------------------------------------------------------------
--- Elenco alfabetico dei verbi tradotti, suddivisi in tre gruppi:
--- 1) comandi di partita
--- 2) comandi di gioco
--- 3) comandi di affermazioni o domande
+-- This library file defines common verbs needed in gameplay. The verbs
+-- are listed alphabetically. This file also includes common commands which are not
+-- actually verbs, such as "inventory", "verbose" and "again".
+-- Directions (north, south, up, etc.) are declared in the file 'locations.i'.
 
---+--------------------+------------------------------+----------------------------------+---+---+---+
---| VERBO              | SINONIMI                     | SINTASSI                         | M | A | O |
---|--------------------|------------------------------|----------------------------------|---|---|---|
---| abbandona_partita  | quit, Q                      | abbandona [partita]              | x | 0 |   |
---| carica_partita     | restore                      | carica [partita]                 | x | 0 |   |
---| ricomincia_partita | restart                      | ricomincia [partita]             | x | 0 |   |
---| salva_partita      | save                         | salva [partita]                  | x | 0 |   |
---+--------------------+------------------------------+----------------------------------+---+---+---+
---| accendi            |                              | accendi (disp)                   |   | 1 |   |
---| apri               |                              | apri (ogg)                       |   | 1 | x |
---| apri_con           |                              | apri (ogg) con (strum)           |   | 2 | x |
---| ascolta0           |                              | ascolta                          |   | 0 |   |
---| ascolta            |                              | ascolta (ogg)!                   |   | 1 | x |
---| aspetta            | attendi, Z                   | aspetta                          |   | 0 |   |
---| attacca            | combatti, picchia            | attacca (bersaglio)              |   | 1 |   |
---| attacca_con        | combatti, picchia            | attacca (bersaglio) con (arma)   |   | 2 |   |
---| attraversa         |                              | attraversa (ogg)                 |   | 1 | x |
---| bacia              | abbraccia                    | bacia (ogg)                      |   | 1 | x |
---| balla              | danza                        | balla                            |   | 0 |   |
---| bevi               |                              | bevi (liq)                       |   | 1 |   |
---| blocca             | serra                        | blocca (ogg)                     |   | 1 | x |
---| blocca_con         | serra                        | blocca (ogg) con (chiave)        |   | 2 | x |
---| brucia             |                              | brucia (ogg)                     |   | 1 | x |
---| brucia_con         |                              | brucia (ogg) con (strum)         |   | 2 | x |
---| canta              |                              | canta                            |   | 0 |   |
---| chiedi             |                              | chiedi a (png) (ogg)             |   | 2 | x |
---| chiudi             |                              | chiudi (ogg)                     |   | 1 | x |
---| chiudi_con         |                              | chiudi (ogg) con (strum)         |   | 2 | x |
---| compra             | acquista                     | compra (merce)                   |   | 1 |   |
---| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)          |   | 2 | x |
---| dì                 |                              | dì (argomento)                   |   | 1 |   |
---| dì_a               |                              | dì (argomento) a (png)           |   | 2 |   |
---| domanda            | chiedi                       | domanda a (png) di (argomento)!  |   | 2 |   |
---| dormi              | riposa                       | dormi                            |   | 0 |   |
---| esamina            | guarda, descrivi, osserva, X | esamina (ogg)                    |   | 1 | x |
---| gioca_con          |                              | gioca con (ogg)                  |   | 1 | x |
---| guida              |                              | guida (veicolo)                  |   | 1 |   |
---| indossa            | mettiti                      | indossa (ogg)                    |   | 1 | x |
---| inventario         | inv                          | inventario                       | x | 0 |   |
---| lascia             | abbandona, metti giù, posa   | lascia (ogg)*                    |   | 1 | x |
---| lega               |                              | lega (ogg)                       |   | 1 | x |
---| lega_a             |                              | lega (ogg) a (bersaglio)         |   | 2 | x |
---| leggi              |                              | leggi (ogg)                      |   | 1 | x |
---| libera             | rilascia                     | libera (ogg)                     |   | 1 | x |
---| mangia             |                              | mangia (cibo)                    |   | 1 |   |
---| parla              |                              | parla                            |   | 0 |   |
---| parla_con          |                              | parla con (png)                  |   | 1 |   |
---| pensa              | pondera, rifletti, medita    | pensa                            |   | 0 |   |
---| pensa_a            | rifletti/medita su, pondera  | pensa a (argomento)!             |   | 1 |   |
---| prega              |                              | prega                            |   | 0 |   |
---| prendi             | afferra, raccogli, trasporta | prendi (ogg)                     |   | 1 | x |
---| prendi_da          | rimuovi, togli               | prendi (ogg) da (detentore)      |   | 2 | x |
---| racconta           | informa, dì a, parla a       | racconta a (png) di (argomento)! |   | 2 |   |
---| rifai              | ancora, G                    | rifai                            |   | 0 |   |
---| riempi             |                              | riempi (cont)                    |   | 1 |   |
---| riempi_con         |                              | riempi (cont) con (sostanza)     |   | 2 |   |
---| rompi              | distruggi, spacca, sfonda    | rompi (ogg)                      |   | 1 | x |
---| rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)          |   | 2 | x |
---| ripara             | aggiusta                     | ripara (ogg)                     |   | 1 | x |
---| rispondi           |                              | rispondi (argomento)!            |   | 1 |   |
---| sblocca            |                              | sblocca (ogg)                    |   | 1 | x |
---| sblocca_con        |                              | sblocca (ogg) con (chiave)       |   | 2 | x |
---| scava              |                              | scava (ogg)                      |   | 1 | x |
---| scrivi             |                              | scrivi "testo" su (ogg)          |   | 1 | x |
---| siediti            | siedi                        | siediti                          |   | 0 |   |
---| siediti_su         | siedi                        | siediti su (superficie)          |   | 1 |   |
---| spegni             |                              | spegni (disp)                    |   | 1 |   |
---| spogliati          | svestiti                     | spogliati                        |   | 0 |   |
---| suona              |                              | suona (ogg)                      |   | 1 | x |
---| taglia             |                              | taglia (ogg)                     |   | 1 | x |
---| taglia_con         |                              | taglia (ogg) con (strum)         |   | 2 | x |
---| tira               |                              | tira (ogg)                       |   | 1 | x |
---| tocca              | accarezza, carezza           | tocca (ogg)                      |   | 1 | x |
---| tocca_con          | accarezza, carezza           | tocca (ogg) con (strum)          |   | 2 | x |
---| togliti            | sfilati, levati              | togliti (ogg)                    |   | 1 | x |
---| trova              |                              | trova (ogg)                      |   | 1 | x |
---| uccidi             | ammazza                      | uccidi (vittima)                 |   | 1 |   |
---| uccidi_con         | ammazza                      | uccidi (vittima) con (arma)      |   | 2 |   |
---| usa                |                              | usa (ogg)                        |   | 1 | x |
---| usa_con            |                              | usa (ogg) con (strum)            |   | 2 | x |
---| vai_a              |                              | vai a (dest)                     |   | 1 |   |
---| vendi              |                              | vendi (merce)                    |   | 1 |   |
---+--------------------+------------------------------+----------------------------------+---+---+---+
---| chi_è              |                              | chi è (png)                      |   | 1 |   | * BUGGED!
---| chi_sono_io        |                              | chi sono                         |   | 0 |   |
---| cosa_è             |                              | cosa è (ogg)                     |   | 1 | x | * BUGGED!
---| cosa_sono_io       |                              | cosa sono                        |   | 0 |   |
---| dici_No            |                              | no                               |   | 0 |   |
---| dici_Sì            |                              | sì                               |   | 0 |   |
---| dove_è             |                              | dove è (ogg)                     |   | 1 | x | * BUGGED!
---| dove_mi_trovo      |                              | dove sono                        |   | 0 |   |
---+--------------------+------------------------------+----------------------------------+---+---+---+
---|                    |                              |                                  |   | 0 | x |
 
--- Legenda Colonne:
---   [M] Meta Verbo : 'x' = Sì
---   [A] Arietà     : <n> = numero di parametri
---   [O] Oggetto    : 'x' = Sì
+
+-->elenco_verbi(1000)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--|== Elenco dei Verbi Italiani
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--| I verbi finora tradotti in italiano sono raggruppti in tre diversi gruppi:
+--| 
+--| 1. Comandi di partita
+--| 2. Comandi di gioco
+--| 3. Comandi di affermazioni o domande
+--| 
+--| Di seguito troverete una tabella per ciascun gruppo, in cui i verbi sono
+--| elencati in ordine alfabetico.
+--| 
+--|=============================================================================
+--| 
+--| [big]#*Legenda delle Tabelle*#
+--| 
+--| Il significato delle lettere nelle ultime quattro colonne è il seguente:
+--| 
+--| [horizontal]
+--|   [M] Meta Verbo :: {X} = Sì
+--|   [A] Arietà     :: <n> = numero di parametri
+--|   [O] Oggetto    :: {X} = Sì
+--|   [B] C'è un Bug :: {X} = Sì
+--|=============================================================================
+--<
 
 -- L'ordine di apparizione dei verbi nella tabella rispecchia l'ordine in cui
 -- appaiono nel codice sorgente qui di seguito; ai tre gruppi della tabella
@@ -120,197 +51,6 @@
 -- file.
 
 -- Le direzioni (nord, sud, su, giù, ecc.) sono definite in "lib_luoghi.i".
-
---------------------------------------------------------------------------------
------ Tabella dei Verbi Originali Inglesi
---------------------------------------------------------------------------------
------ This library file defines common verbs needed in gameplay. The verbs
------ are listed alphabetically. This file also includes common commands which are not
------ actually verbs, such as "inventory", "verbose" and "again".
------ Verbs originally defined in this file are the following:
-
---# NOTA: i verbi preceduti da "-->>>" sono stati già tradotti.
---#       i verbi preceduti da "--###" sono stati eliminati.
-
------ VERB        SYNONYMS                                 SYNTAX                              ARITY   OBJ
-
------ about       (+ help, info)                           about                               0
--->>> again       (+ g)                                    again                               0
--->>> answer      (+ reply)                                answer (topic)                      1
--->>> ask         (+ enquire, inquire, interrogate)        ask (act) about (topic)             2
--->>> ask_for                                              ask (act) for (obj)                 2       x
--->>> attack      (+ beat, fight, hit, punch)              attack (target)                     1
--->>> attack_with                                          attack (target) with (weapon)       2
------ bite        (+ chew)                                 bite (obj)                          1       x
--->>> break       (+ destroy)                              break (obj)                         1       x
--->>> break_with                                           break (obj) with (instr)            2       x
------ brief                                                brief                               0
--->>> burn                                                 burn (obj)                          1       x
--->>> burn_with                                            burn (obj) with (instr)             2       x
--->>> buy         (+ purchase)                             buy (item)                          1
------ catch                                                catch (obj)                         1       x
------ clean       (+ polish, wipe)                         clean (obj)                         1       x
------ climb                                                climb (obj)                         1       x
------ climb_on                                             climb on (surface)                  1
--->>> climb_through                                        climb through (obj)                 1       x
--->>> close       (+ shut)                                 close (obj)                         1       x
--->>> close_with                                           close (obj) with (instr)            2       x
------ consult                                              consult (source) about (topic)      2
------ credits     (+ acknowledgments, author, copyright)   credits                             0
--->>> cut                                                  cut (obj)                           1       x
--->>> cut_with                                             cut (obj) with (instr)              2       x
--->>> dance                                                dance                               0
--->>> dig                                                  dig (obj)                           1       x
------ dive                                                 dive                                0
------ dive_in                                              dive in (liq)                       1
--->>> drink                                                drink (liq)                         1
--->>> drive                                                drive (vehicle)                     1
--->>> drop        (+ discard, dump, reject)                drop (obj)                          1       x
--->>> eat                                                  eat (food)                          1
------ empty                                                empty (obj)                         1       x
------ empty_in                                             empty (obj) in (cont)               2       x
------ empty_on                                             empty (obj) on (surface)            2       x
------ enter                                                enter (obj)                         1       x
--->>> examine     (+ check, inspect, observe, x)           examine (obj)                       1       x
------ exit                                                 exit (obj)                          1       x
---### extinguish  (+ put out, quench)                      extinguish (obj)                    1       x
--->>> fill                                                 fill (cont)                         1
--->>> fill_with                                            fill (cont) with (substance)        2
--->>> find        (+ locate)                               find (obj)                          1       x
------ fire                                                 fire (weapon)                       1
------ fire_at                                              fire (weapon) at (target)           2
--->>> fix         (+ mend, repair)                         fix (obj)                           1       x
------ follow                                               follow (act)                        1
--->>> free        (+ release)                              free (obj)                          1       x
------ get_up                                               get up                              0
------ get_off                                              get off (obj)                       1       x
--->>> give                                                 give (obj) to (recipient)           2       x
--->>> go_to                                                go to (dest)                        1
------ hint        (+ hints)                                hint                                0
--->>> i           (+ inv, inventory)                       inventory                           0
------ jump                                                 jump                                0
------ jump_in                                              jump in (cont)                      1
------ jump_on                                              jump on (surface)                   1
------ kick                                                 kick (target)                       1
--->>> kill        (+ murder)                               kill (victim)                       1
--->>> kill_with                                            kill (victim) with (weapon)         2
--->>> kiss        (+ hug, embrace)                         kiss (obj)                          1       x
------ knock (on)                                           knock on (obj)                      1       x
------ lie_down                                             lie down                            0
------ lie_in                                               lie in (cont)                       1
------ lie_on                                               lie on (surface)                    1
------ lift                                                 lift (obj)                          1       x
---### light       (+ lit)                                  light (obj)                         1       x
--->>> listen0                                              listen                              0
--->>> listen                                               listen to (obj)                     1       x
--->>> lock                                                 lock (obj)                          1       x
--->>> lock_with                                            lock (obj) with (key)               2       x
------ look        (+ gaze, peek)                           look                                0
------ look_at                                              look at (obj)                       1       x
------ look_behind                                          look behind (bulk)                  1
------ look_in                                              look in (cont)                      1
------ look_out_of                                          look out of (obj)                   1       x
------ look_through                                         look through (bulk)                 1
------ look_under                                           look under (bulk)                   1
------ look_up                                              look up                             0
--->>> no                                                   no                                  0
------ notify (on, off)                                     notify. notify on. notify off       0
--->>> open                                                 open (obj)                          1       x
--->>> open_with                                            open (obj) with (instr)             2       x
--->>> play                                                 play (obj)                          1       x
--->>> play_with                                            play with (obj)                     1       x
------ pour        (= defined at the verb 'empty')          pour (obj)                          1       x
------ pour_in     (= defined at the verb 'emtpy_in')       pour (obj) in (cont)                2       x
------ pour_on     (= defined at the verb 'empty_on')       pour (obj) on (surface)             2       x
--->>> pray                                                 pray                                0
------ pry                                                  pry (obj)                           1       x
------ pry_with                                             pry (obj) with (instr)              2       x
--->>> pull                                                 pull (obj)                          1       x
------ push                                                 push (obj)                          1       x
------ push_with                                            push (obj) with (instr)             2       x
------ put         (+ lay, place)                           put (obj)                           1       x
------ put_against                                          put (obj) against (bulk))           2       x
------ put_behind                                           put (obj) behind (bulk)             2       x
--->>> put_down    (= defined at the verb 'drop')           put down (obj)                      1       x
------ put_in      (+ insert)                               put (obj) in (cont)                 2       x
------ put_near                                             put (obj) near (bulk)               2       x
------ put_on                                               put (obj) on (surface)              2       x
------ put_under                                            put (obj) under (bulk)              2       x
--->>> quit        (+ q)                                    quit                                0
--->>> read                                                 read (obj)                          1       x
--->>> remove                                               remove (obj)                        1       x
--->>> restart                                              restart                             0
--->>> restore                                              restore                             0
------ rub                                                  rub (obj)                           1       x
--->>> save                                                 save                                0
--->>> say                                                  say (topic)                         1
--->>> say_to                                               say (topic) to (act)                2
------ score                                                score                               0
------ scratch                                              scratch (obj)                       1       x
------ script                                               script. script on. script off.      0
------ search                                               search (obj)                        1       x
--->>> sell                                                 sell (item)                         1
------ shake                                                shake (obj)                         1       x
------ shoot (at)                                           shoot at (target)                   1
------ shoot_with                                           shoot (target) with (weapon)        2
------ shout       (+ scream, yell)                         shout                               0
------ show        (+ reveal)                               show (obj) to (act)                 2       x
--->>> sing                                                 sing                                0
------ sip                                                  sip (liq)                           1
--->>> sit (down)                                           sit.  sit down.                     0
--->>> sit_on                                               sit on (surface)                    1
--->>> sleep       (+ rest)                                 sleep                               0
------ smell0                                               smell                               0
------ smell                                                smell (odour)                       1
------ squeeze                                              squeeze (obj)                       1       x
------ stand (up)                                           stand.  stand up.                   0
------ stand_on                                             stand on (surface)                  1
------ swim                                                 swim                                0
------ swim_in                                              swim in (liq)                       1
---### switch                                               switch (obj)                        1       x
--->>> switch_on   (defined at the verb 'turn_on')          switch on (app)                     1
--->>> switch_off  (defined at the verb 'turn_off')         switch off (app)                    1
--->>> take        (+ carry, get, grab, hold, obtain)       take (obj)                          1       x
--->>> take_from   (+ remove from)                          take (obj) from (holder)            2       x
--->>> talk                                                 talk                                0
--->>> talk_to     (+ speak)                                talk to (act)                       1
------ taste       (+ lick)                                 taste (obj)                         1       x
------ tear        (+ rip)                                  tear (obj)                          1       x
--->>> tell        (+ enlighten, inform)                    tell (act) about (topic)            2
--->>> think                                                think                               0
--->>> think_about                                          think about (topic)                 1
------ throw                                                throw (projectile)                  1
------ throw_at                                             throw (projectile) at (target)      2
------ throw_in                                             throw (projectile) in (cont)        2
------ throw_to                                             throw (projectile) to (recipient)   2
--->>> tie                                                  tie (obj)                           1       x
--->>> tie_to                                               tie (obj) to (target)               2       x
--->>> touch       (+ feel)                                 touch (obj)                         1       x
--->>> touch_with  (+ feel)                                 touch (ogg) 'with' (strum)          2       x
------ turn        (+ rotate)                               turn (obj)                          1       x
--->>> turn_on                                              turn on (app)                       1
--->>> turn_off                                             turn off (app)                      1
--->>> undress                                              undress                             0
--->>> unlock                                               unlock (obj)                        1       x
--->>> unlock_with                                          unlock (obj) with (key)             2       x
--->>> use                                                  use (obj)                           1       x
--->>> use_with                                             use (obj) with (instr)              2       x
------ verbose                                              verbose                             0
--->>> wait        (+ z)                                    wait                                0
--->>> wear                                                 wear (obj)                          1       x
--->>> what_am_i                                            what am i                           0
--->>> what_is                                              what is (obj)                       1       x
--->>> where_am_i                                           where am i                          0
--->>> where_is                                             where is (obj)                      1       x
--->>> who_am_i                                             who am i                            0
--->>> who_is                                               who is (act)                        1
--->>> write                                                write (txt) on (obj)                2       x
--->>> yes                                                  yes                                 0
-
-
-
-
------ Directions (north, south, up, etc.) are declared in the file 'locations.i'.
 
 
 
@@ -321,10 +61,28 @@
 --------------------------------------------------------------------------------
 --//////////////////////////////////////////////////////////////////////////////
 --=============================================================================
+-->comandi_partita(2000)
+--| 
+--| === Meta Comandi di Partita
+--| 
+--| Comandi che riguardano aspetti della partita (salvare, uscire, ecc.) anziché
+--| il mondo dell'avventura. Perlopiù META VERBS, il cui uso non fa scorrere il
+--| conteggio del tempo nell'avventura (turni).
+--| Altresì noti come _comandi extradiegetici_.
+--<
 
--- Comandi che riguardano aspetti della partita (salvare, uscire, ecc.) e non il
--- mondo dell'avventura. Perlopiù META VERBS, il cui uso non fa scorrere il
--- conteggio del tempo nell'avventura (turni).
+-->tabella_comandi_partita(2100)
+--| .Elenco Comandi di Partita
+--| [cols="20m,30d,25d,4*^5d",options="header"]
+--| |=============================================================================================================
+--| | VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
+--~ +--------------------+------------------------------+----------------------------------+-----+---+-----+-----+
+--| | abbandona_partita  | quit, Q                      | abbandona [partita]              | {X} | 0 |     |
+--| | carica_partita     | restore                      | carica [partita]                 | {X} | 0 |     |
+--| | ricomincia_partita | restart                      | ricomincia [partita]             | {X} | 0 |     |
+--| | salva_partita      | save                         | salva [partita]                  | {X} | 0 |     |
+--| |=============================================================================================================
+--<
 
 -- ==============================================================
 
@@ -343,7 +101,7 @@
 SYNTAX
   abbandona_partita = abbandona.
   abbandona_partita = abbandona partita.
-  abbandona_partita = 'quit'. --> Bisogna conservare anche l'inglese!
+  abbandona_partita = 'quit'. ---> Bisogna conservare anche l'inglese!
 
 SYNONYMS Q = 'quit'.
 
@@ -375,7 +133,7 @@ END VERB abbandona_partita.
 
 SYNTAX carica_partita = carica.
        carica_partita = carica partita.
-       carica_partita = 'restore'. --> Bisogna conservare anche l'inglese!
+       carica_partita = 'restore'. ---> Bisogna conservare anche l'inglese!
 
 META VERB carica_partita
   CHECK mia_AT CAN caricare_partita
@@ -400,7 +158,7 @@ END VERB carica_partita.
 
 SYNTAX ricomincia_partita = ricomincia.
 SYNTAX ricomincia_partita = ricomincia partita.
-       ricomincia_partita = 'restart'. --> Bisogna conservare anche l'inglese!
+       ricomincia_partita = 'restart'. ---> Bisogna conservare anche l'inglese!
 
 META VERB ricomincia_partita
   CHECK mia_AT CAN ricominciare_partita
@@ -426,8 +184,8 @@ END VERB ricomincia_partita.
 --    SAVE_WHERE     -- Nome del file di salvataggio
 SYNTAX salva_partita = salva.
        salva_partita = salva partita.
-       salva_partita = 'save'. --> Meglio conservare anche l'inglese, dato che
-                               --  dobbiamo conservare RESTART, RESTORE e QUIT!
+       salva_partita = 'save'. ---> Meglio conservare anche l'inglese, dato che
+                               --   dobbiamo conservare RESTART, RESTORE e QUIT!
 
 
 META VERB salva_partita
@@ -447,9 +205,96 @@ END VERB salva_partita.
 --------------------------------------------------------------------------------
 --//////////////////////////////////////////////////////////////////////////////
 --=============================================================================
+-->comandi_gioco(3000)
+--| 
+--| === Comandi di Gioco
+--| 
+--| Comandi diretti al personaggio protagonista per interagire con l'avventura.
+--<
 
--- Comandi diretti al personaggio protagonista per interagire con l'avventura.
 
+-->tabella_comandi_gioco(3100)
+--| .Elenco dei Comandi di Gioco
+--| [cols="20m,30d,25d,4*^5d",options="header"]
+--| |=============================================================================================================
+--| | VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
+--~ +--------------------+------------------------------+----------------------------------+-----+---+-----+-----+
+--| | accendi            |                              | accendi (disp)                   |     | 1 |     |
+--| | apri               |                              | apri (ogg)                       |     | 1 | {X} |
+--| | apri_con           |                              | apri (ogg) con (strum)           |     | 2 | {X} |
+--| | ascolta0           |                              | ascolta                          |     | 0 |     |
+--| | ascolta            |                              | ascolta (ogg)!                   |     | 1 | {X} |
+--| | aspetta            | attendi, Z                   | aspetta                          |     | 0 |     |
+--| | attacca            | combatti, picchia            | attacca (bersaglio)              |     | 1 |     |
+--| | attacca_con        | combatti, picchia            | attacca (bersaglio) con (arma)   |     | 2 |     |
+--| | attraversa         |                              | attraversa (ogg)                 |     | 1 | {X} |
+--| | bacia              | abbraccia                    | bacia (ogg)                      |     | 1 | {X} |
+--| | balla              | danza                        | balla                            |     | 0 |     |
+--| | bevi               |                              | bevi (liq)                       |     | 1 |     |
+--| | blocca             | serra                        | blocca (ogg)                     |     | 1 | {X} |
+--| | blocca_con         | serra                        | blocca (ogg) con (chiave)        |     | 2 | {X} |
+--| | brucia             |                              | brucia (ogg)                     |     | 1 | {X} |
+--| | brucia_con         |                              | brucia (ogg) con (strum)         |     | 2 | {X} |
+--| | canta              |                              | canta                            |     | 0 |     |
+--| | chiedi             |                              | chiedi a (png) (ogg)             |     | 2 | {X} |
+--| | chiudi             |                              | chiudi (ogg)                     |     | 1 | {X} |
+--| | chiudi_con         |                              | chiudi (ogg) con (strum)         |     | 2 | {X} |
+--| | compra             | acquista                     | compra (merce)                   |     | 1 |     |
+--| | dai_a              | porgi, offri                 | dai (ogg) a (ricevente)          |     | 2 | {X} |
+--| | dì                 |                              | dì (argomento)                   |     | 1 |     |
+--| | dì_a               |                              | dì (argomento) a (png)           |     | 2 |     |
+--| | domanda            | chiedi                       | domanda a (png) di (argomento)!  |     | 2 |     |
+--| | dormi              | riposa                       | dormi                            |     | 0 |     |
+--| | esamina            | guarda, descrivi, osserva, X | esamina (ogg)                    |     | 1 | {X} |
+--| | gioca_con          |                              | gioca con (ogg)                  |     | 1 | {X} |
+--| | guida              |                              | guida (veicolo)                  |     | 1 |     |
+--| | indossa            | mettiti                      | indossa (ogg)                    |     | 1 | {X} |
+--| | inventario         | inv                          | inventario                       | {X} | 0 |     |
+--| | lascia             | abbandona, metti giù, posa   | lascia (ogg)*                    |     | 1 | {X} |
+--| | lega               |                              | lega (ogg)                       |     | 1 | {X} |
+--| | lega_a             |                              | lega (ogg) a (bersaglio)         |     | 2 | {X} |
+--| | leggi              |                              | leggi (ogg)                      |     | 1 | {X} |
+--| | libera             | rilascia                     | libera (ogg)                     |     | 1 | {X} |
+--| | mangia             |                              | mangia (cibo)                    |     | 1 |     |
+--| | parla              |                              | parla                            |     | 0 |     |
+--| | parla_con          |                              | parla con (png)                  |     | 1 |     |
+--| | pensa              | pondera, rifletti, medita    | pensa                            |     | 0 |     |
+--| | pensa_a            | rifletti/medita su, pondera  | pensa a (argomento)!             |     | 1 |     |
+--| | prega              |                              | prega                            |     | 0 |     |
+--| | prendi             | afferra, raccogli, trasporta | prendi (ogg)                     |     | 1 | {X} |
+--| | prendi_da          | rimuovi, togli               | prendi (ogg) da (detentore)      |     | 2 | {X} |
+--| | racconta           | informa, dì a, parla a       | racconta a (png) di (argomento)! |     | 2 |     |
+--| | rifai              | ancora, G                    | rifai                            |     | 0 |     |
+--| | riempi             |                              | riempi (cont)                    |     | 1 |     |
+--| | riempi_con         |                              | riempi (cont) con (sostanza)     |     | 2 |     |
+--| | rompi              | distruggi, spacca, sfonda    | rompi (ogg)                      |     | 1 | {X} |
+--| | rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)          |     | 2 | {X} |
+--| | ripara             | aggiusta                     | ripara (ogg)                     |     | 1 | {X} |
+--| | rispondi           |                              | rispondi (argomento)!            |     | 1 |     |
+--| | sblocca            |                              | sblocca (ogg)                    |     | 1 | {X} |
+--| | sblocca_con        |                              | sblocca (ogg) con (chiave)       |     | 2 | {X} |
+--| | scava              |                              | scava (ogg)                      |     | 1 | {X} |
+--| | scrivi             |                              | scrivi "testo" su (ogg)          |     | 1 | {X} |
+--| | siediti            | siedi                        | siediti                          |     | 0 |     |
+--| | siediti_su         | siedi                        | siediti su (superficie)          |     | 1 |     |
+--| | spegni             |                              | spegni (disp)                    |     | 1 |     |
+--| | spogliati          | svestiti                     | spogliati                        |     | 0 |     |
+--| | suona              |                              | suona (ogg)                      |     | 1 | {X} |
+--| | taglia             |                              | taglia (ogg)                     |     | 1 | {X} |
+--| | taglia_con         |                              | taglia (ogg) con (strum)         |     | 2 | {X} |
+--| | tira               |                              | tira (ogg)                       |     | 1 | {X} |
+--| | tocca              | accarezza, carezza           | tocca (ogg)                      |     | 1 | {X} |
+--| | tocca_con          | accarezza, carezza           | tocca (ogg) con (strum)          |     | 2 | {X} |
+--| | togliti            | sfilati, levati              | togliti (ogg)                    |     | 1 | {X} |
+--| | trova              |                              | trova (ogg)                      |     | 1 | {X} |
+--| | uccidi             | ammazza                      | uccidi (vittima)                 |     | 1 |     |
+--| | uccidi_con         | ammazza                      | uccidi (vittima) con (arma)      |     | 2 |     |
+--| | usa                |                              | usa (ogg)                        |     | 1 | {X} |
+--| | usa_con            |                              | usa (ogg) con (strum)            |     | 2 | {X} |
+--| | vai_a              |                              | vai a (dest)                     |     | 1 |     |
+--| | vendi              |                              | vendi (merce)                    |     | 1 |     |
+--| |=============================================================================================================
+--<
 
 
 -- ==============================================================
@@ -510,7 +355,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @APRI --> @OPEN
+----- @APRI ---> @OPEN
 
 
 -- ==============================================================
@@ -597,7 +442,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @APRI CON --> @OPEN WITH
+----- @APRI CON ---> @OPEN WITH
 
 
 -- ==============================================================
@@ -709,7 +554,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @ASCOLTA0 --> @LISTEN
+----- @ASCOLTA0 ---> @LISTEN
 
 
 -- ==============================================================
@@ -733,7 +578,7 @@ END VERB ascolta0.
 -- ==============================================================
 
 
------  @ASCOLTA (OGG) --> @LISTEN TO
+-----  @ASCOLTA (OGG) ---> @LISTEN TO
 
 
 -- ==============================================================
@@ -790,7 +635,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @ASPETTA --> WAIT (= z)
+----- @ASPETTA ---> WAIT (= z)
 
 
 -- ==============================================================
@@ -813,7 +658,7 @@ END VERB aspetta.
 -- =============================================================
 
 
------ @ATTACCA --> @ATTACK (+ beat, fight, hit, punch)
+----- @ATTACCA ---> @ATTACK (+ beat, fight, hit, punch)
 
 
 -- =============================================================
@@ -886,7 +731,7 @@ ADD TO EVERY THING
     AND hero IS NOT sdraiato
       ELSE SAY  check_hero_not_lying_down2  OF mia_AT.
         DOES
-          -- "La violenza non è la giusta risposta a questo." --> taken from i6
+          -- "La violenza non è la giusta risposta a questo." ---> taken from i6
           SAY   la_violenza_non_è_la_risposta  OF mia_AT.
           -- "Resorting to brute force is not the solution here."
     END VERB attacca.
@@ -898,7 +743,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @ATTACCA CON --> @ATTACK WITH
+----- @ATTACCA CON ---> @ATTACK WITH
 
 
 -- ==============================================================
@@ -972,7 +817,7 @@ ADD TO EVERY THING
       AND hero IS NOT sdraiato
         ELSE SAY  check_hero_not_lying_down2  OF mia_AT.
           DOES
-            -- "La violenza non è la giusta risposta a questo." --> taken from i6
+            -- "La violenza non è la giusta risposta a questo." ---> taken from i6
             SAY   la_violenza_non_è_la_risposta  OF mia_AT.
             -- "Resorting to brute force is not the solution here."
   END VERB attacca_con.
@@ -983,7 +828,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @ATTRAVERSA --> CLIMB THROUGH
+-- @ATTRAVERSA ---> CLIMB THROUGH
 
 
 -- ==============================================================
@@ -1028,10 +873,10 @@ ADD TO EVERY OBJECT
             END IF.
         END IF.
     AND hero IS NOT seduto
-      --> @TODO!!                                                               TRANSLATE!
+      ---> @TODO!!                                                              TRANSLATE!
       ELSE SAY  check_hero_not_sitting3  OF mia_AT.
     AND hero IS NOT sdraiato
-      --> @TODO!!                                                               TRANSLATE!
+      ---> @TODO!!                                                              TRANSLATE!
       ELSE SAY  check_hero_not_lying_down3  OF mia_AT.
     DOES
       IF ogg IS NOT plurale
@@ -1053,7 +898,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @BACIA --> @KISS (+ hug, embrace)
+----- @BACIA ---> @KISS (+ hug, embrace)
 
 
 -- ==============================================================
@@ -1122,7 +967,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @BALLA --> @DANCE
+----- @BALLA ---> @DANCE
 
 
 -- ==============================================================
@@ -1226,12 +1071,12 @@ ADD TO EVERY liquido
           IF recipiente OF liq NOT DIRECTLY IN hero
             THEN
               IF recipiente OF liq IS NOT prendibile
-                --> @TODO!!                                                     TRANSLATE!
+                ---> @TODO!!                                                    TRANSLATE!
                 THEN "You can't carry" SAY THE liq. "around in your bare hands."
                   -- the action stops here if the container is not takeable.
                 ELSE
                   LOCATE recipiente OF liq IN hero.
-                  --> @TODO!!                                                   TRANSLATE!
+                  ---> @TODO!!                                                  TRANSLATE!
                   "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
               END IF.
 
@@ -1260,7 +1105,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @BLOCCA --> @LOCK
+----- @BLOCCA ---> @LOCK
 
 
 -- ==============================================================
@@ -1348,7 +1193,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @BLOCCA CON --> @LOCK WITH
+----- @BLOCCA CON ---> @LOCK WITH
 
 
 -- ==============================================================
@@ -1446,7 +1291,7 @@ END ADD TO.
 
 -- =================================================================
 
------ @BRUCIA --> @BURN (VERB + SYNTAX)
+----- @BRUCIA ---> @BURN (VERB + SYNTAX)
 
 ----- BURN
 
@@ -1488,7 +1333,7 @@ END ADD TO.
 
 -- =================================================================
 
------ @BRUCIA_CON --> @BURN_WITH (VERB + SYNTAX)
+----- @BRUCIA_CON ---> @BURN_WITH (VERB + SYNTAX)
 
 ----- BURN WITH
 
@@ -1534,7 +1379,7 @@ ADD TO EVERY OBJECT
           END IF.
           "bruciare" SAY THE ogg. "."
       AND ogg <> strum
-        --> @TODO!!                                                             TRANSLATE!
+        ---> @TODO!!                                                            TRANSLATE!
         ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
       AND strum IN hero
         ELSE SAY  non_possiedi_ogg2  OF mia_AT.
@@ -1567,7 +1412,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @CANTA --> @SING (+ hum, whistle)
+----- @CANTA ---> @SING (+ hum, whistle)
 
 
 -- ==============================================================
@@ -1590,7 +1435,7 @@ END VERB canta.
 -- =============================================================
 
 
------ @CHIEDI --> @ASK FOR
+----- @CHIEDI ---> @ASK FOR
 
 
 -- =============================================================
@@ -1726,7 +1571,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @CHIUDI --> @CLOSE (+ shut)
+----- @CHIUDI ---> @CLOSE (+ shut)
 
 
 -- ==============================================================
@@ -1800,7 +1645,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @CHIUDI CON --> @CLOSE WITH
+----- @CHIUDI CON ---> @CLOSE WITH
 
 
 -- ==============================================================
@@ -1888,7 +1733,7 @@ END ADD TO.
 -- ==================================================================
 
 
------ @COMPRA --> @BUY (+ purchase)
+----- @COMPRA ---> @BUY (+ purchase)
 
 
 -- ==================================================================
@@ -1950,12 +1795,12 @@ END ADD TO.
 
 SYNTAX dai_a = 'dai' (ogg) 'a' (ricevente)
   WHERE ogg IsA OBJECT
-    --> @TODO!!                                                                 TRANSLATE!
+    ---> @TODO!!                                                                TRANSLATE!
     ELSE SAY  illegal_parameter_obj  OF mia_AT.
   AND ricevente IsA ACTOR
     ELSE
       IF ricevente IS NOT plurale
-        --> @TODO!!                                                             TRANSLATE!
+        ---> @TODO!!                                                            TRANSLATE!
         THEN SAY  illegal_parameter2_to_sg  OF mia_AT.
         ELSE SAY  illegal_parameter2_to_pl  OF mia_AT.
       END IF.
@@ -1971,20 +1816,20 @@ ADD TO EVERY OBJECT
       CHECK mia_AT CAN dare -- (was CAN give)
         ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg IS prendibile
-        --> @TODO!!                                                             TRANSLATE!
+        ---> @TODO!!                                                            TRANSLATE!
         ELSE SAY  check_obj_takeable  OF mia_AT.
       AND ogg <> ricevente
-        --> @TODO!!                                                             TRANSLATE!
+        ---> @TODO!!                                                            TRANSLATE!
         ELSE SAY  check_obj_not_obj2_to  OF mia_AT.
       AND ricevente <> hero
-        --> @TODO!!                                                             TRANSLATE!
+        ---> @TODO!!                                                            TRANSLATE!
         ELSE SAY  check_obj2_not_hero3  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg NOT IN ricevente
         ELSE
           IF ricevente IS NOT plurale
-            --> @TODO!!                                                        TRANSLATE!
+            ---> @TODO!!                                                       TRANSLATE!
             THEN SAY  check_obj_not_in_act_sg  OF mia_AT.
             ELSE SAY  check_obj_not_in_act_pl  OF mia_AT.
           END IF.
@@ -2021,14 +1866,14 @@ ADD TO EVERY OBJECT
           DOES
         -- implicit taking:
         IF ogg NOT DIRECTLY IN hero
-          --> @TODO!!                                                           TRANSLATE!
+          ---> @TODO!!                                                          TRANSLATE!
           THEN SAY  implicit_taking_message  OF mia_AT.
           LOCATE ogg IN hero.
         END IF.
         -- end of implicit taking.
 
         LOCATE ogg IN ricevente.
-        --> @TODO!!                                                             TRANSLATE!
+        ---> @TODO!!                                                            TRANSLATE!
         "You give" SAY THE ogg. "to" SAY THE ricevente. "."
 
 
@@ -2039,7 +1884,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @DÌ --> @SAY
+----- @DÌ ---> @SAY
 
 
 -- ==============================================================
@@ -2067,7 +1912,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @DÌ A --> @SAY TO
+----- @DÌ A ---> @SAY TO
 
 
 -- ==============================================================
@@ -2188,7 +2033,7 @@ ADD TO EVERY ACTOR
             ELSE SAY  ogg1_distante_pl  OF mia_AT.
           END IF.
       DOES
-        "Nessuna risposta." --> taken from i6
+        "Nessuna risposta." ---> taken from i6
         -- "There is no reply."
     END VERB domanda.
 END ADD TO.
@@ -2203,7 +2048,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @DORMI --> @SLEEP (+ rest)
+----- @DORMI ---> @SLEEP (+ rest)
 
 
 -- ==============================================================
@@ -2226,7 +2071,7 @@ END VERB dormi.
 -- ==============================================================
 
 
------ @ESAMINA --> @EXAMINE (+ look at)
+----- @ESAMINA ---> @EXAMINE (+ look at)
 
 
 -- ==============================================================
@@ -2277,8 +2122,8 @@ ADD TO EVERY THING
     AND ogg IS NOT scenario
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY  check_obj_not_scenery_sg  OF mia_AT. --> "$+1 non è importante ai fini del gioco."
-          ELSE SAY  check_obj_not_scenery_pl  OF mia_AT. --> "$+1 non sono importanti ai fini del gioco."
+          THEN SAY  check_obj_not_scenery_sg  OF mia_AT. ---> "$+1 non è importante ai fini del gioco."
+          ELSE SAY  check_obj_not_scenery_pl  OF mia_AT. ---> "$+1 non sono importanti ai fini del gioco."
         END IF.
 
     DOES
@@ -2310,7 +2155,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @GIOCA CON --> @PLAY WITH
+----- @GIOCA CON ---> @PLAY WITH
 
 
 -- ==============================================================
@@ -2369,7 +2214,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @GUIDA --> @DRIVE
+----- @GUIDA ---> @DRIVE
 
 
 -- ==============================================================
@@ -2447,7 +2292,7 @@ END VERB guida_errore.
 -- ==============================================================
 
 
------ @INDOSSA --> @WEAR
+----- @INDOSSA ---> @WEAR
 
 
 -- ==============================================================
@@ -2568,7 +2413,7 @@ END VERB inventario.
 -- ==============================================================
 
 
------ @LASCIA --> @DROP
+----- @LASCIA ---> @DROP
 
 
 -- ==============================================================
@@ -2633,7 +2478,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @LEGA --> @TIE
+----- @LEGA ---> @TIE
 
 
 -- ==============================================================
@@ -2677,7 +2522,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @LEGA A --> @TIE TO
+----- @LEGA A ---> @TIE TO
 
 
 -- ==============================================================
@@ -2764,7 +2609,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @LEGGI --> @READ
+----- @LEGGI ---> @READ
 
 
 -- ==============================================================
@@ -2820,7 +2665,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @LIBERA --> @FREE (+ release)
+----- @LIBERA ---> @FREE (+ release)
 
 
 -- ==============================================================
@@ -2916,7 +2761,7 @@ ADD TO EVERY OBJECT
         END IF.
         "mangiare."
     AND cibo IS prendibile
-      --> @TODO!!                                                               TRANSLATE!
+      ---> @TODO!!                                                              TRANSLATE!
       ELSE SAY  check_obj_takeable  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY  imp_luogo_buio  OF mia_AT.
@@ -2939,7 +2784,7 @@ ADD TO EVERY OBJECT
       -- implicit taking:
       IF cibo NOT DIRECTLY IN hero
         THEN LOCATE cibo IN hero.
-          --> @TODO!!                                                           TRANSLATE!
+          ---> @TODO!!                                                          TRANSLATE!
           SAY  implicit_taking_message  OF mia_AT.
       END IF.
       -- end of implicit taking.
@@ -2956,7 +2801,7 @@ END ADD.
 -- ==============================================================
 
 
------ @PARLA --> @TALK
+----- @PARLA ---> @TALK
 
 
 -- ==============================================================
@@ -2982,7 +2827,7 @@ END VERB parla.
 -- ==============================================================
 
 
------ @PARLA CON --> @TALK_TO
+----- @PARLA CON ---> @TALK_TO
 
 
 -- ==============================================================
@@ -3016,7 +2861,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @PENSA --> @THINK   (+ ponder, meditate, reflect)
+----- @PENSA ---> @THINK   (+ ponder, meditate, reflect)
 
 
 -- ==============================================================
@@ -3048,7 +2893,7 @@ END VERB pensa.
 -- ==============================================================
 
 
------ @PENSA A --> @THINK ABOUT
+----- @PENSA A ---> @THINK ABOUT
 
 
 -- ==============================================================
@@ -3085,7 +2930,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @PREGA --> @PRAY (VERB + SYNTAX)
+----- @PREGA ---> @PRAY (VERB + SYNTAX)
 
 
 -- ==============================================================
@@ -3097,7 +2942,7 @@ SYNTAX prega = prega.
 VERB prega
   CHECK mia_AT CAN pregare
     ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES "Sembra che le tue preghiere non siano state esaudite." --> da i6
+  DOES "Sembra che le tue preghiere non siano state esaudite." ---> da i6
   -- DOES "Your prayers don't seem to help right now."
 END VERB prega.
 
@@ -3148,7 +2993,7 @@ SYNONYMS
 ADD TO EVERY THING
 -- @PRENDI -> @TAKE (VERB) => ADD TO EVERY THING
   VERB prendi
-    CHECK mia_AT CAN prendere --> CAN take
+    CHECK mia_AT CAN prendere ---> CAN take
       ELSE SAY  azione_bloccata  OF mia_AT. --#-> "Non puoi farlo."
     AND ogg IS esaminabile
       ELSE
@@ -3159,14 +3004,14 @@ ADD TO EVERY THING
         END IF.
         "prendere."
     AND ogg <> hero
-      --> @TODO!!                                                               TRANSLATE!
+      ---> @TODO!!                                                              TRANSLATE!
       ELSE SAY  check_obj_not_hero1  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS NOT scenario
       ELSE
         IF THIS IS NOT plurale
-          --> @TODO!!                                                           TRANSLATE!
+          ---> @TODO!!                                                          TRANSLATE!
           THEN SAY  check_obj_not_scenery_sg  OF mia_AT. --#-> "$+1 is not important."
           ELSE SAY  check_obj_not_scenery_pl  OF mia_AT. --#-> "$+1 are not important."
         END IF.
@@ -3197,7 +3042,7 @@ ADD TO EVERY THING
         "prendere."
     AND ogg NOT DIRECTLY IN hero
       -- i.e. the object to be taken is not carried by the hero already
-      --> @TODO!!                                                               TRANSLATE!
+      ---> @TODO!!                                                              TRANSLATE!
       ELSE SAY  check_obj_not_in_hero2  OF mia_AT.
         AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
@@ -3217,13 +3062,13 @@ ADD TO EVERY THING
         AND peso Of ogg < 50
           ELSE
         IF ogg IS NOT plurale
-          --> @TODO!!                                                           TRANSLATE!
+          ---> @TODO!!                                                          TRANSLATE!
           THEN SAY  check_obj_weight_sg  OF mia_AT.
           ELSE SAY  check_obj_weight_pl  OF mia_AT.
         END IF.
         DOES
       IF ogg IsA ACTOR
-        --> @TODO!!                                                             TRANSLATE!
+        ---> @TODO!!                                                            TRANSLATE!
         THEN SAY THE ogg. "would probably object to that."
       -- actors are not prohibited from being taken in the checks; this is to
       -- allow for example a dog to be picked up, or a bird to be taken out of
@@ -3231,7 +3076,7 @@ ADD TO EVERY THING
       ELSIF ogg IsA OBJECT
         THEN IF ogg DIRECTLY IN abbigliamento
             THEN LOCATE ogg IN hero.
-              --> @TODO!!                                                       TRANSLATE!
+              ---> @TODO!!                                                      TRANSLATE!
               "You take off" SAY THE ogg. "and carry it in your hands."
               IF ogg IsA indumento
                 THEN EXCLUDE ogg FROM indossati OF hero.
@@ -3279,14 +3124,14 @@ SYNTAX prendi_da = 'prendi' (ogg) 'da' (detentore)
   AND detentore IsA THING
     ELSE
       IF detentore IS NOT plurale
-        --> @TODO!!                                                             TRANSLATE!
-        THEN SAY  illegal_parameter2_from_sg  OF mia_AT. --> "That's not something you can take things from."
-        ELSE SAY  illegal_parameter2_from_pl  OF mia_AT. --> "Those are not something you can take things from."
+        ---> @TODO!!                                                            TRANSLATE!
+        THEN SAY  illegal_parameter2_from_sg  OF mia_AT. ---> "That's not something you can take things from."
+        ELSE SAY  illegal_parameter2_from_pl  OF mia_AT. ---> "Those are not something you can take things from."
       END IF.
   AND detentore IsA CONTAINER
     ELSE
       IF detentore IS NOT plurale
-        --> @TODO!!                                                             TRANSLATE!
+        ---> @TODO!!                                                            TRANSLATE!
         THEN SAY  illegal_parameter2_from_sg  OF mia_AT.
         ELSE SAY  illegal_parameter2_from_pl  OF mia_AT.
       END IF.
@@ -3308,37 +3153,37 @@ SYNTAX prendi_da = 'prendi' (ogg) 'da' (detentore)
 ADD TO EVERY THING
     VERB prendi_da
         WHEN ogg
-      CHECK mia_AT CAN prendere_da --> CAN take_from
+      CHECK mia_AT CAN prendere_da ---> CAN take_from
         ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg <> hero
-        --> @TODO!!                                                             TRANSLATE!
+        ---> @TODO!!                                                            TRANSLATE!
         ELSE SAY  check_obj_not_hero1  OF mia_AT.
       AND detentore <> hero
-        --> @TODO!!                                                             TRANSLATE!
+        ---> @TODO!!                                                            TRANSLATE!
         ELSE SAY  check_obj2_not_hero1  OF mia_AT.
           AND ogg NOT DIRECTLY IN hero
           ELSE  SAY  check_obj_not_in_hero2  OF mia_AT. --#-> "You already have $+1."
       AND ogg <> detentore
-        --> @TODO!!                                                             TRANSLATE!
+        ---> @TODO!!                                                            TRANSLATE!
         ELSE SAY  check_obj_not_obj2_from  OF mia_AT.  --#-> "It doesn't make sense to $v something from itself."
       AND CURRENT LOCATION IS illuminato
         ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg IS NOT scenario
         ELSE
           IF ogg IS NOT plurale
-            --> @TODO!!                                                         TRANSLATE!
+            ---> @TODO!!                                                        TRANSLATE!
             THEN SAY  check_obj_not_scenery_sg  OF mia_AT.
             ELSE SAY  check_obj_not_scenery_pl  OF mia_AT.
           END IF.
       AND detentore IS NOT scenario
         ELSE
           IF detentore IS NOT plurale
-            --> @TODO!!                                                         TRANSLATE!
+            ---> @TODO!!                                                        TRANSLATE!
             THEN SAY  check_obj2_not_scenery_sg  OF mia_AT.
             ELSE SAY  check_obj2_not_scenery_pl  OF mia_AT.
           END IF.
       AND ogg IS spostabile
-        --> @TODO!!                                                             TRANSLATE!
+        ---> @TODO!!                                                            TRANSLATE!
         ELSE SAY  check_obj_movable  OF mia_AT.
       AND ogg IS prendibile
             ELSE
@@ -3366,7 +3211,7 @@ ADD TO EVERY THING
       AND peso Of ogg < 50
             ELSE
           IF ogg IS NOT plurale
-            --> @TODO!!                                                         TRANSLATE!
+            ---> @TODO!!                                                        TRANSLATE!
             THEN SAY  check_obj_weight_sg  OF mia_AT.
             ELSE SAY  check_obj_weight_pl  OF mia_AT.
           END IF.
@@ -3377,27 +3222,27 @@ ADD TO EVERY THING
               IF detentore IsA supporto
                 THEN
                   IF ogg IS NOT plurale
-                    --> @TODO!!                                                 TRANSLATE!
+                    ---> @TODO!!                                                TRANSLATE!
                     THEN SAY  check_obj_on_surface_sg  OF mia_AT.
                     ELSE SAY  check_obj_on_surface_pl  OF mia_AT.
                   END IF.
                 ELSE
                   IF ogg IS NOT plurale
-                    --> @TODO!!                                                 TRANSLATE!
+                    ---> @TODO!!                                                TRANSLATE!
                     THEN SAY  check_obj_in_cont_sg  OF mia_AT.
                     ELSE SAY  check_obj_in_cont_pl  OF mia_AT.
                   END IF.
               END IF.
             ELSE
               IF detentore IS NOT plurale
-                --> @TODO!!                                                     TRANSLATE!
+                ---> @TODO!!                                                    TRANSLATE!
                 THEN SAY  check_obj_in_act_sg  OF mia_AT.
                 ELSE SAY  check_obj_in_act_pl  OF mia_AT.
               END IF.
           END IF.
       DOES
         IF ogg IsA ACTOR
-          --> @TODO!!                                                           TRANSLATE!
+          ---> @TODO!!                                                          TRANSLATE!
           THEN SAY THE ogg. "would probably object to that."
             -- actors are not prohibited from being taken in the checks; this is to
             -- allow for example a dog to be picked up, or a bird to be taken out of
@@ -3405,7 +3250,7 @@ ADD TO EVERY THING
         ELSIF ogg IsA OBJECT
           THEN
             IF detentore IsA contenitore_elencato AND detentore IS NOT aperto
-              --> @TODO!!                                                       TRANSLATE!
+              ---> @TODO!!                                                      TRANSLATE!
               THEN "You can't;" SAY THE detentore.
                   IF detentore IS NOT plurale
                     THEN "is"
@@ -3414,7 +3259,7 @@ ADD TO EVERY THING
                 "closed."
               ELSE
                 LOCATE ogg IN hero.
-                --> @TODO!!                                                     TRANSLATE!
+                ---> @TODO!!                                                    TRANSLATE!
                 "You take" SAY THE ogg. "from" SAY THE detentore. "."
             END IF.
         END IF.
@@ -3429,7 +3274,7 @@ END ADD TO.
 -- ==============================================================
 
 
--- @RACCONTA --> @TELL  (+ enlighten, inform)
+-- @RACCONTA ---> @TELL  (+ enlighten, inform)
 
 
 -- ==============================================================
@@ -3501,7 +3346,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @RIEMPI --> @FILL
+----- @RIEMPI ---> @FILL
 
 
 -- ==============================================================
@@ -3552,7 +3397,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @RIEMPI CON --> @FILL WITH
+----- @RIEMPI CON ---> @FILL WITH
 
 
 -- ==============================================================
@@ -3649,7 +3494,7 @@ END ADD TO.
 -- =============================================================
 
 
------ @RIFAI --> @AGAIN (VERB + SYNTAX)
+----- @RIFAI ---> @AGAIN (VERB + SYNTAX)
 
 ----- AGAIN (= g)
 
@@ -3681,7 +3526,7 @@ END VERB rifai.
 -- ==============================================================
 
 
------ @RIPARA --> @FIX (mend, repair)
+----- @RIPARA ---> @FIX (mend, repair)
 
 
 -- ==============================================================
@@ -3744,7 +3589,7 @@ END ADD TO.
 -- =============================================================
 
 
------ @RISPONDI --> @ANSWER    (+ reply)
+----- @RISPONDI ---> @ANSWER    (+ reply)
 
 
 -- =============================================================
@@ -3774,7 +3619,7 @@ END ADD TO.
 -- ===============================================================
 
 
------ @ROMPI --> @BREAK (VERB + SYNTAX)
+----- @ROMPI ---> @BREAK (VERB + SYNTAX)
 
 
 -- ===============================================================
@@ -3824,7 +3669,7 @@ ADD TO EVERY OBJECT
             END IF.
         END IF.
     DOES
-      -- "La violenza non è la giusta risposta a questo." --> taken from i6
+      -- "La violenza non è la giusta risposta a questo." ---> taken from i6
       SAY   la_violenza_non_è_la_risposta  OF mia_AT.
       -- "Resorting to brute force is not the solution here."
   END VERB rompi.
@@ -3835,7 +3680,7 @@ END ADD TO.
 -- ===============================================================
 
 
------ @ROMPI_CON --> @BREAK WITH (VERB + SYNTAX)
+----- @ROMPI_CON ---> @BREAK WITH (VERB + SYNTAX)
 
 
 -- ===============================================================
@@ -3882,14 +3727,14 @@ ADD TO EVERY OBJECT
           END IF.
           "rompere" SAY THE ogg. "."
       AND ogg <> strum
-        --> @TODO!!                                                             TRANSLATE!
+        ---> @TODO!!                                                            TRANSLATE!
         ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND strum IN hero
-        --> @TODO!!                                                             TRANSLATE!
+        ---> @TODO!!                                                            TRANSLATE!
         ELSE SAY  non_possiedi_ogg2  OF mia_AT.
-        --> @TODO!!                                                             TRANSLATE!
+        ---> @TODO!!                                                            TRANSLATE!
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
@@ -3917,7 +3762,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @SBLOCCA --> @UNLOCK
+----- @SBLOCCA ---> @UNLOCK
 
 
 -- ==============================================================
@@ -3991,7 +3836,7 @@ END ADD TO.
 -- =============================================================
 
 
------ @SBLOCCA --> @UNLOCK WITH
+----- @SBLOCCA ---> @UNLOCK WITH
 
 
 -- =============================================================
@@ -4078,7 +3923,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @SCAVA --> @DIG
+----- @SCAVA ---> @DIG
 
 
 -- ==============================================================
@@ -4138,7 +3983,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @SCRIVI --> @WRITE
+----- @SCRIVI ---> @WRITE
 
 
 -- ==============================================================
@@ -4252,7 +4097,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @SIEDITI --> @SIT
+----- @SIEDITI ---> @SIT
 
 
 -- ==============================================================
@@ -4305,7 +4150,7 @@ END VERB siediti.
 -- ==============================================================
 
 
------ @SIEDITI SU --> @SIT_ON
+----- @SIEDITI SU ---> @SIT_ON
 
 
 -- ==============================================================
@@ -4378,7 +4223,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @SPEGNI --> @TURN OFF
+----- @SPEGNI ---> @TURN OFF
 
 
 -- ==============================================================
@@ -4474,7 +4319,7 @@ END VERB spogliati.
 -- ==============================================================
 
 
------ @SUONA --> @PLAY
+----- @SUONA ---> @PLAY
 
 
 -- ==============================================================
@@ -4537,7 +4382,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @TAGLIA --> @CUT
+----- @TAGLIA ---> @CUT
 
 
 -- ==============================================================
@@ -4583,7 +4428,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @TAGLIA CON --> @CUT WITH
+----- @TAGLIA CON ---> @CUT WITH
 
 
 -- ==============================================================
@@ -4660,7 +4505,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @TIRA --> @PULL
+----- @TIRA ---> @PULL
 
 
 -- ==============================================================
@@ -4873,7 +4718,7 @@ END ADD TO.
 -- ==============================================================
 
 
--- @TOGLITI --> @REMOVE
+-- @TOGLITI ---> @REMOVE
 
 
 -- ==============================================================
@@ -4927,7 +4772,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @TROVA --> @FIND
+----- @TROVA ---> @FIND
 
 
 -- ==============================================================
@@ -4975,7 +4820,7 @@ END ADD TO.
 -- ==============================================================
 
 
--- @UCCIDI --> @KILL (+ murder)
+-- @UCCIDI ---> @KILL (+ murder)
 
 
 -- ==============================================================
@@ -5020,7 +4865,7 @@ END ADD TO.
 -- ==============================================================
 
 
--- @UCCIDI CON --> @KILL WITH
+-- @UCCIDI CON ---> @KILL WITH
 
 
 -- ==============================================================
@@ -5073,7 +4918,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @USA --> @USE
+----- @USA ---> @USE
 
 
 -- ==============================================================
@@ -5101,7 +4946,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @USA CON --> @USE WITH
+----- @USA CON ---> @USE WITH
 
 
 -- ==============================================================
@@ -5213,7 +5058,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @VENDI --> @SELL
+----- @VENDI ---> @SELL
 
 
 -- ==============================================================
@@ -5263,16 +5108,39 @@ END ADD TO.
 --------------------------------------------------------------------------------
 --//////////////////////////////////////////////////////////////////////////////
 --=============================================================================
+-->comandi_affermazion(4000)
+--| 
+--| === Comandi di Affermazioni o Domande
+--| 
+--| Questo gruppo include tutti quei comandi che non seguono la consueta forma
+--| in cui il giocatore impartisce un ordine diretto al personaggio protagonista
+--| (p.es. "`prendi la mela`"), presentandosi invece sotto forma di affermazioni
+--| o domande poste dal protagonista stesso (p.es. "`chi sono?`", "`sì`", "`dove
+--| è il tesoro?`").
+--<
 
--- In questa sezioni sono raggruppati tutti quei comandi che non hanno la forma
--- consueta di impartire un ordine al protegonista: hanno invece la forma di
--- affermazioni o domande poste dal protagonista stesso (p.es. "chi sono?", "sì"
--- o "dove è il tesoro").
+-->tabella_comandi_affermazioni(4100)
+--| .Elenco Comandi di Affermazioni o Domande
+--| [cols="20m,30d,25d,4*^5d",options="header"]
+--| |=============================================================================================================
+--| | VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
+--~ +--------------------+------------------------------+----------------------------------+-----+---+-----+-----+
+--| | chi_è              |                              | chi è (png)                      |     | 1 |     | {X}
+--| | chi_sono_io        |                              | chi sono                         |     | 0 |     |
+--| | cosa_è             |                              | cosa è (ogg)                     |     | 1 | {X} | {X}
+--| | cosa_sono_io       |                              | cosa sono                        |     | 0 |     |
+--| | dici_No            |                              | no                               |     | 0 |     |
+--| | dici_Sì            |                              | sì                               |     | 0 |     |
+--| | dove_è             |                              | dove è (ogg)                     |     | 1 | {X} | {X}
+--| | dove_mi_trovo      |                              | dove sono                        |     | 0 |     |
+--| |=============================================================================================================
+--<
+
 
 -- ==============================================================
 
 
------ @CHI E' --> @WHO IS
+----- @CHI E' ---> @WHO IS
 
 
 -- ==============================================================
@@ -5291,7 +5159,7 @@ END ADD TO.
 -- SYNTAX who_is = 'who' 'is' (png)!
 --        who_is = 'who' 'are' (png)!.
 
-SYNTAX  chi_è = chi é (png)!   --> BUG: 'è' instead of 'é'                      FIXME!
+SYNTAX  chi_è = chi é (png)!   ---> BUG: 'è' instead of 'é'                      FIXME!
   WHERE png IsA ACTOR
     ELSE
       IF png IS NOT plurale
@@ -5316,7 +5184,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @CHI SONO --> @WHO AM I
+----- @CHI SONO ---> @WHO AM I
 
 
 -- ==============================================================
@@ -5359,7 +5227,7 @@ END VERB chi_sono_io.
 
 -- SYNTAX what_is = 'what' 'is' (ogg)!
 
-SYNTAX  cosa_è = cosa é (ogg)!            --> BUG: 'è' instead of 'é'           FIXME!
+SYNTAX  cosa_è = cosa é (ogg)!            ---> BUG: 'è' instead of 'é'           FIXME!
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
@@ -5367,9 +5235,9 @@ SYNTAX  cosa_è = cosa é (ogg)!            --> BUG: 'è' instead of 'é'           
         ELSE SAY  illegal_parameter_what_pl  OF mia_AT.
       END IF.
 
-        cosa_è = che cosa é (ogg)!.       --> BUG: 'è' instead of 'é'           FIXME!
-        cosa_è = 'cos''é' (ogg)!.         --> BUG: 'è' instead of 'é'           FIXME!
-        cosa_è = che 'cos''é' (ogg)!.     --> BUG: 'è' instead of 'é'           FIXME!
+        cosa_è = che cosa é (ogg)!.       ---> BUG: 'è' instead of 'é'           FIXME!
+        cosa_è = 'cos''é' (ogg)!.         ---> BUG: 'è' instead of 'é'           FIXME!
+        cosa_è = che 'cos''é' (ogg)!.     ---> BUG: 'è' instead of 'é'           FIXME!
 
         cosa_è = cosa sono (ogg)!.
         cosa_è = che cosa sono (ogg)!.
@@ -5421,7 +5289,7 @@ END VERB cosa_sono_io.
 -- ==============================================================
 
 
------ @DICI "No" --> @NO
+----- @DICI "No" ---> @NO
 
 
 -- ==============================================================
@@ -5442,7 +5310,7 @@ END VERB dici_No.
 -- ================================================================
 
 
------ @DICI "Sì" --> @YES
+----- @DICI "Sì" ---> @YES
 
 
 -- ================================================================
@@ -5464,7 +5332,7 @@ END VERB dici_Sì.
 -- ==============================================================
 
 
------ @DOVE E' --> @WHERE IS
+----- @DOVE E' ---> @WHERE IS
 
 
 -- ==============================================================
@@ -5484,7 +5352,7 @@ END VERB dici_Sì.
 -- SYNTAX where_is = 'where' 'is' (ogg)!
 --        where_is = 'where' 'are' (ogg)!.
 
-SYNTAX  dove_è = dove é (ogg)!            --> BUG: 'è' instead of 'é'           FIXME!
+SYNTAX  dove_è = dove é (ogg)!            ---> BUG: 'è' instead of 'é'           FIXME!
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
@@ -5492,7 +5360,7 @@ SYNTAX  dove_è = dove é (ogg)!            --> BUG: 'è' instead of 'é'           
         ELSE SAY  illegal_parameter_what_pl  OF mia_AT.
       END IF.
 
-        dove_è = 'dov''é' (ogg)!.         --> BUG: 'è' instead of 'é'           FIXME!
+        dove_è = 'dov''é' (ogg)!.         ---> BUG: 'è' instead of 'é'           FIXME!
         dove_è = dove sono (ogg)!.
         dove_è = dove si trova (ogg)!.
         dove_è = dove si trovano (ogg)!.
@@ -5520,7 +5388,7 @@ END ADD TO.
 -- ==============================================================
 
 
------ @DOVE MI TROVO --> @WHERE AM I
+----- @DOVE MI TROVO ---> @WHERE AM I
 
 
 -- ==============================================================
@@ -5546,10 +5414,197 @@ END VERB dove_mi_trovo.
 
 -- *****************************************************************************
 -- *                                                                           *
--- *                            UNTRANSLATED VERBS                             *
+-- *                            VERBI NON TRADOTTI                             *
 -- *                                                                           *
 -- *****************************************************************************
 
+-->verbi_non_tradotti(50100)
+--~-----------------------------------------------------------------------------
+--|=== Verbi da Tradurre
+--~-----------------------------------------------------------------------------
+
+--~ NOTA: i verbi preceduti da "--~*" sono stati già tradotti.
+--~       i verbi preceduti da "--~!" sono stati eliminati.
+
+--| .Elenco dei Verbi Non Tradotti
+--| [cols="20m,30d,25d,2*^5d",options="header"]
+--| |=======================================================================================================
+--| | VERBO              | SINONIMI                           | SINTASSI                          | A |  O  
+--~ +--------------------+------------------------------------+-----------------------------------+---+-----
+--| | about              | help, info                         | about                             | 0 |
+--~*| again              | G                                  | again                             | 0 |
+--~*| answer             | reply                              | answer (topic)                    | 1 |
+--~*| ask                | enquire, inquire, interrogate      | ask (act) about (topic)           | 2 |
+--~*| ask_for            |                                    | ask (act) for (obj)               | 2 | {x}
+--~*| attack             | beat, fight, hit, punch            | attack (target)                   | 1 |
+--~*| attack_with        |                                    | attack (target) with (weapon)     | 2 |
+--| | bite               | chew                               | bite (obj)                        | 1 | {x}
+--~*| break              | destroy                            | break (obj)                       | 1 | {x}
+--~*| break_with         |                                    | break (obj) with (instr)          | 2 | {x}
+--| | brief              |                                    | brief                             | 0 |
+--~*| burn               |                                    | burn (obj)                        | 1 | {x}
+--~*| burn_with          |                                    | burn (obj) with (instr)           | 2 | {x}
+--~*| buy                | purchase                           | buy (item)                        | 1 |
+--| | catch              |                                    | catch (obj)                       | 1 | {x}
+--| | clean              | polish, wipe                       | clean (obj)                       | 1 | {x}
+--| | climb              |                                    | climb (obj)                       | 1 | {x}
+--| | climb_on           |                                    | climb on (surface)                | 1 |
+--~*| climb_through      |                                    | climb through (obj)               | 1 | {x}
+--~*| close              | shut                               | close (obj)                       | 1 | {x}
+--~*| close_with         |                                    | close (obj) with (instr)          | 2 | {x}
+--| | consult            |                                    | consult (source) about (topic)    | 2 |
+--| | credits            | acknowledgments, author, copyright | credits                           | 0 |
+--~*| cut                |                                    | cut (obj)                         | 1 | {x}
+--~*| cut_with           |                                    | cut (obj) with (instr)            | 2 | {x}
+--~*| dance              |                                    | dance                             | 0 |
+--~*| dig                |                                    | dig (obj)                         | 1 | {x}
+--| | dive               |                                    | dive                              | 0 |
+--| | dive_in            |                                    | dive in (liq)                     | 1 |
+--~*| drink              |                                    | drink (liq)                       | 1 |
+--~*| drive              |                                    | drive (vehicle)                   | 1 |
+--~*| drop               | discard, dump, reject              | drop (obj)                        | 1 | {x}
+--~*| eat                |                                    | eat (food)                        | 1 |
+--| | empty              |                                    | empty (obj)                       | 1 | {x}
+--| | empty_in           |                                    | empty (obj) in (cont)             | 2 | {x}
+--| | empty_on           |                                    | empty (obj) on (surface)          | 2 | {x}
+--| | enter              |                                    | enter (obj)                       | 1 | {x}
+--~*| examine            | check, inspect, observe, X         | examine (obj)                     | 1 | {x}
+--| | exit               |                                    | exit (obj)                        | 1 | {x}
+--~!| extinguish         | put out, quench                    | extinguish (obj)                  | 1 | {x}
+--~*| fill               |                                    | fill (cont)                       | 1 |
+--~*| fill_with          |                                    | fill (cont) with (substance)      | 2 |
+--~*| find               | locate                             | find (obj)                        | 1 | {x}
+--| | fire               |                                    | fire (weapon)                     | 1 |
+--| | fire_at            |                                    | fire (weapon) at (target)         | 2 |
+--~*| fix                | mend, repair                       | fix (obj)                         | 1 | {x}
+--| | follow             |                                    | follow (act)                      | 1 |
+--~*| free               | release                            | free (obj)                        | 1 | {x}
+--| | get_up             |                                    | get up                            | 0 |
+--| | get_off            |                                    | get off (obj)                     | 1 | {x}
+--~*| give               |                                    | give (obj) to (recipient)         | 2 | {x}
+--~*| go_to              |                                    | go to (dest)                      | 1 |
+--| | hint               | hints                              | hint                              | 0 |
+--~*| i                  | inv, inventory                     | inventory                         | 0 |
+--| | jump               |                                    | jump                              | 0 |
+--| | jump_in            |                                    | jump in (cont)                    | 1 |
+--| | jump_on            |                                    | jump on (surface)                 | 1 |
+--| | kick               |                                    | kick (target)                     | 1 |
+--~*| kill               | murder                             | kill (victim)                     | 1 |
+--~*| kill_with          |                                    | kill (victim) with (weapon)       | 2 |
+--~*| kiss               | hug, embrace                       | kiss (obj)                        | 1 | {x}
+--| | knock (on)         |                                    | knock on (obj)                    | 1 | {x}
+--| | lie_down           |                                    | lie down                          | 0 |
+--| | lie_in             |                                    | lie in (cont)                     | 1 |
+--| | lie_on             |                                    | lie on (surface)                  | 1 |
+--| | lift               |                                    | lift (obj)                        | 1 | {x}
+--~!| light              | lit                                | light (obj)                       | 1 | {x}
+--~*| listen0            |                                    | listen                            | 0 |
+--~*| listen             |                                    | listen to (obj)                   | 1 | {x}
+--~*| lock               |                                    | lock (obj)                        | 1 | {x}
+--~*| lock_with          |                                    | lock (obj) with (key)             | 2 | {x}
+--| | look               | gaze, peek                         | look                              | 0 |
+--| | look_at            |                                    | look at (obj)                     | 1 | {x}
+--| | look_behind        |                                    | look behind (bulk)                | 1 |
+--| | look_in            |                                    | look in (cont)                    | 1 |
+--| | look_out_of        |                                    | look out of (obj)                 | 1 | {x}
+--| | look_through       |                                    | look through (bulk)               | 1 |
+--| | look_under         |                                    | look under (bulk)                 | 1 |
+--| | look_up            |                                    | look up                           | 0 |
+--~*| no                 |                                    | no                                | 0 |
+--| | notify (on, off)   |                                    | notify. notify on. notify off     | 0 |
+--~*| open               |                                    | open (obj)                        | 1 | {x}
+--~*| open_with          |                                    | open (obj) with (instr)           | 2 | {x}
+--~*| play               |                                    | play (obj)                        | 1 | {x}
+--~*| play_with          |                                    | play with (obj)                   | 1 | {x}
+--| | pour               | (= defined at the verb `empty`)    | pour (obj)                        | 1 | {x}
+--| | pour_in            | (= defined at the verb `emtpy_in`) | pour (obj) in (cont)              | 2 | {x}
+--| | pour_on            | (= defined at the verb `empty_on`) | pour (obj) on (surface)           | 2 | {x}
+--~*| pray               |                                    | pray                              | 0 |
+--| | pry                |                                    | pry (obj)                         | 1 | {x}
+--| | pry_with           |                                    | pry (obj) with (instr)            | 2 | {x}
+--~*| pull               |                                    | pull (obj)                        | 1 | {x}
+--| | push               |                                    | push (obj)                        | 1 | {x}
+--| | push_with          |                                    | push (obj) with (instr)           | 2 | {x}
+--| | put                | lay, place                         | put (obj)                         | 1 | {x}
+--| | put_against        |                                    | put (obj) against (bulk))         | 2 | {x}
+--| | put_behind         |                                    | put (obj) behind (bulk)           | 2 | {x}
+--~*| put_down           | (= defined at the verb `drop`)     | put down (obj)                    | 1 | {x}
+--| | put_in             | insert                             | put (obj) in (cont)               | 2 | {x}
+--| | put_near           |                                    | put (obj) near (bulk)             | 2 | {x}
+--| | put_on             |                                    | put (obj) on (surface)            | 2 | {x}
+--| | put_under          |                                    | put (obj) under (bulk)            | 2 | {x}
+--~*| quit               | Q                                  | quit                              | 0 |
+--~*| read               |                                    | read (obj)                        | 1 | {x}
+--~*| remove             |                                    | remove (obj)                      | 1 | {x}
+--~*| restart            |                                    | restart                           | 0 |
+--~*| restore            |                                    | restore                           | 0 |
+--| | rub                |                                    | rub (obj)                         | 1 | {x}
+--~*| save               |                                    | save                              | 0 |
+--~*| say                |                                    | say (topic)                       | 1 |
+--~*| say_to             |                                    | say (topic) to (act)              | 2 |
+--| | score              |                                    | score                             | 0 |
+--| | scratch            |                                    | scratch (obj)                     | 1 | {x}
+--| | script             |                                    | script. script on. script off.    | 0 |
+--| | search             |                                    | search (obj)                      | 1 | {x}
+--~*| sell               |                                    | sell (item)                       | 1 |
+--| | shake              |                                    | shake (obj)                       | 1 | {x}
+--| | shoot (at)         |                                    | shoot at (target)                 | 1 |
+--| | shoot_with         |                                    | shoot (target) with (weapon)      | 2 |
+--| | shout              | scream, yell                       | shout                             | 0 |
+--| | show               | reveal                             | show (obj) to (act)               | 2 | {x}
+--~*| sing               |                                    | sing                              | 0 |
+--| | sip                |                                    | sip (liq)                         | 1 |
+--~*| sit (down)         |                                    | sit.  sit down.                   | 0 |
+--~*| sit_on             |                                    | sit on (surface)                  | 1 |
+--~*| sleep              | rest                               | sleep                             | 0 |
+--| | smell0             |                                    | smell                             | 0 |
+--| | smell              |                                    | smell (odour)                     | 1 |
+--| | squeeze            |                                    | squeeze (obj)                     | 1 | {x}
+--| | stand (up)         |                                    | stand.  stand up.                 | 0 |
+--| | stand_on           |                                    | stand on (surface)                | 1 |
+--| | swim               |                                    | swim                              | 0 |
+--| | swim_in            |                                    | swim in (liq)                     | 1 |
+--~!| switch             |                                    | switch (obj)                      | 1 | {x}
+--~*| switch_on          | (defined at the verb `turn_on`)    | switch on (app)                   | 1 |
+--~*| switch_off         | (defined at the verb `turn_off`)   | switch off (app)                  | 1 |
+--~*| take               | carry, get, grab, hold, obtain     | take (obj)                        | 1 | {x}
+--~*| take_from          | remove from                        | take (obj) from (holder)          | 2 | {x}
+--~*| talk               |                                    | talk                              | 0 |
+--~*| talk_to            | speak                              | talk to (act)                     | 1 |
+--| | taste              | lick                               | taste (obj)                       | 1 | {x}
+--| | tear               | rip                                | tear (obj)                        | 1 | {x}
+--~*| tell               | enlighten, inform                  | tell (act) about (topic)          | 2 |
+--~*| think              |                                    | think                             | 0 |
+--~*| think_about        |                                    | think about (topic)               | 1 |
+--| | throw              |                                    | throw (projectile)                | 1 |
+--| | throw_at           |                                    | throw (projectile) at (target)    | 2 |
+--| | throw_in           |                                    | throw (projectile) in (cont)      | 2 |
+--| | throw_to           |                                    | throw (projectile) to (recipient) | 2 |
+--~*| tie                |                                    | tie (obj)                         | 1 | {x}
+--~*| tie_to             |                                    | tie (obj) to (target)             | 2 | {x}
+--~*| touch              | feel                               | touch (obj)                       | 1 | {x}
+--~*| touch_with         | feel                               | touch (ogg) 'with' (strum)        | 2 | {x}
+--| | turn               | rotate                             | turn (obj)                        | 1 | {x}
+--~*| turn_on            |                                    | turn on (app)                     | 1 |
+--~*| turn_off           |                                    | turn off (app)                    | 1 |
+--~*| undress            |                                    | undress                           | 0 |
+--~*| unlock             |                                    | unlock (obj)                      | 1 | {x}
+--~*| unlock_with        |                                    | unlock (obj) with (key)           | 2 | {x}
+--~*| use                |                                    | use (obj)                         | 1 | {x}
+--~*| use_with           |                                    | use (obj) with (instr)            | 2 | {x}
+--| | verbose            |                                    | verbose                           | 0 |
+--~*| wait               | Z                                  | wait                              | 0 |
+--~*| wear               |                                    | wear (obj)                        | 1 | {x}
+--~*| what_am_i          |                                    | what am i                         | 0 |
+--~*| what_is            |                                    | what is (obj)                     | 1 | {x}
+--~*| where_am_i         |                                    | where am i                        | 0 |
+--~*| where_is           |                                    | where is (obj)                    | 1 | {x}
+--~*| who_am_i           |                                    | who am i                          | 0 |
+--~*| who_is             |                                    | who is (act)                      | 1 |
+--~*| write              |                                    | write (txt) on (obj)              | 2 | {x}
+--~*| yes                |                                    | yes                               | 0 |
+--| |=======================================================================================================
+--<
 
 
 ----- The verbs and commands:
@@ -6752,7 +6807,7 @@ ADD TO EVERY arma
       AND CURRENT LOCATION IS illuminato
         ELSE SAY  imp_luogo_buio  OF mia_AT.
       DOES
-        -- "La violenza non è la giusta risposta a questo." --> taken from i6
+        -- "La violenza non è la giusta risposta a questo." ---> taken from i6
         SAY   la_violenza_non_è_la_risposta  OF mia_AT.
     -- "Resorting to violence is not the solution here."
   END VERB fire_at.
@@ -6781,7 +6836,7 @@ ADD TO EVERY THING
     AND CURRENT LOCATION IS illuminato
       ELSE SAY  imp_luogo_buio  OF mia_AT.
     DOES
-      -- "La violenza non è la giusta risposta a questo." --> taken from i6
+      -- "La violenza non è la giusta risposta a questo." ---> taken from i6
       SAY   la_violenza_non_è_la_risposta  OF mia_AT.
   -- "Resorting to violence is not the solution here."
   END VERB fire_at_error.
@@ -7115,7 +7170,7 @@ ADD TO EVERY THING
             END IF.
         END IF.
     DOES
-      -- "La violenza non è la giusta risposta a questo." --> taken from i6
+      -- "La violenza non è la giusta risposta a questo." ---> taken from i6
       SAY   la_violenza_non_è_la_risposta  OF mia_AT.
    -- "Resorting to brute force is not the solution here."
   END VERB kick.
@@ -9358,7 +9413,7 @@ ADD TO EVERY OBJECT
             END IF.
         END IF.
     DOES
-      "Non hai sentito nessun sapore particolare." --> preso da i6
+      "Non hai sentito nessun sapore particolare." ---> preso da i6
       -- "You taste nothing unexpected."
   END VERB taste.
 END ADD TO.
@@ -9902,10 +9957,35 @@ VERB verbose
     descrizioni dei luoghi saranno mostrate sempre (anche se già visitati)."
 END VERB verbose.
 
+-- *****************************************************************************
+-- *                                                                           *
+-- *                                   TODO                                    *
+-- *                                                                           *
+-- *****************************************************************************
+
+-->todo(50000)
+--| == TODO
+--| 
+--| Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
+--| italiano del modulo dei verbi.
+--<
 
 
 
+-->custom_attributes(100)
+--| ////
+--|=============================================================================
+--| Custom AsciiDoc Attributes for Doxter
+--|=============================================================================
+--| ////
 
+--| // Traduzione italiana degli attributi predefiniti di Asciidoctor:
+--| include::attributes-it.adoc[tag=attributes-it]
+
+--| // Definisci sostituzione di {X} con il carattere Unicode 'heavy check mark'
+--| // (U+2714), usato nelle tabelle dei verbi:
+--| :X: &#x2714;
+--<
 
 -- end of file.
 

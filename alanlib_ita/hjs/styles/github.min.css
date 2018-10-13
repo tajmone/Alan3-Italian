@@ -1,0 +1,37 @@
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   Highlight.js Themes for Alan Italian StdLib, by Tristano Ajmone
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* Highlight.js base styles */
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #000;
+  background: #F0F0F0; }
+
+/* HLJS Alan */
+code.hljs[data-lang=alan] {
+  color: #D3D0C8;
+  background: #2D2D2D; }
+  code.hljs[data-lang=alan] .hljs-comment {
+    color: #747369; }
+  code.hljs[data-lang=alan] .hljs-string {
+    color: #99CC99; }
+  code.hljs[data-lang=alan] .hljs-built_in {
+    color: #6699CC; }
+  code.hljs[data-lang=alan] .hljs-keyword {
+    color: #F2777A; }
+  code.hljs[data-lang=alan] .hljs-number {
+    color: #FFCC66; }
+
+/* Shell */
+div.shell pre,
+.listingblock.shell > .content pre {
+  background: #000000;
+  color: #C0C0C0; }
+div.shell .conum,
+.listingblock.shell > .content .conum {
+  background: #FFF945 !important;
+  color: #000 !important; }
+
+/*# sourceMappingURL=github.min.css.map */

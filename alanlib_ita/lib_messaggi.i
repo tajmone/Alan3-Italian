@@ -1,11 +1,13 @@
--- "lib_messaggi.i" v0.5.0 (2018/08/18)
---------------------------------------------------------------------------------
--- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
---------------------------------------------------------------------------------
--- Adapted to Italian from:
--- ALAN Standard Library v2.1
--- "Messages" (original file name: 'lib_messages.i')
---------------------------------------------------------------------------------
+--= Alan StdLib Italian: Messaggi
+--| Tristano Ajmone <tajmone@gmail.com>
+--~-----------------------------------------------------------------------------
+--~ "lib_messaggi.i"
+--| v0.6.0-Alpha, 2018-10-12: Alan 3.0beta6
+--|=============================================================================
+--| Adattamento italiano del modulo `lib_messages.i` della
+--| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
+--| Ad opera di Tristano Ajmone,  (C) 2018, Artistic License 2.1.
+--|=============================================================================
 
 
 -- All runtime messages are listed below.
@@ -87,7 +89,7 @@ MESSAGE
 --# xxxxxxxxxxxxxxxxxxxxxxxxx
 --  =========================
 
-  AGAIN: "" --> Messaggio da mostrare accanto al nome di luoghi già visistati.
+  AGAIN: "" ---> Messaggio da mostrare accanto al nome di luoghi già visistati.
             --  Es. "(già visitato)"
 
   CAN_NOT_CONTAIN: "$+1 non può contenere $+2." -- "$+1 can not contain $+2."

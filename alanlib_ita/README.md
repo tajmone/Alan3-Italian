@@ -12,6 +12,7 @@ This folder contains a copy of the Alan Standard Library v2.1 files which are be
 - [File Contents](#file-contents)
     - [Standard Library Files](#standard-library-files)
     - [Extra Standard Library Files](#extra-standard-library-files)
+    - [Library Documentation Files](#library-documentation-files)
 - [Translation](#translation)
     - [Directions and Movement](#directions-and-movement)
     - [Classes, Instances and Attributes](#classes-instances-and-attributes)
@@ -49,6 +50,21 @@ Boilerplates and templates from the StdLibrary have been renamed with a leading 
 
 - [`_newgame_ita.alan`](./_newgame_ita.alan) — adaptation of `newgame.alan`
 - [`_mygame_import.i`](./_mygame_import.i) (small changes)
+
+## Library Documentation Files
+
+The Italian library is currently switching to a new system which generates the AsciiDoc documentation directly from comments in the Alan source files using [Doxter]:
+
+- [`lib_verbi.asciidoc`][lib_verbi adoc]
+
+The AsciiDoc files are then converted to HTML:
+
+- [`lib_verbi.html`][lib_verbi html]  ([Live HTML Preview][lib_verbi html live])
+
+See also:
+
+- [`BUILD_DOCS.bat`][BUILD_DOCS]
+- [`ANNOTAZIONI_DOXTER.adoc`][ANNOTAZIONI_DOXTER]  (Italian)
 
 
 # Translation
@@ -494,4 +510,16 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 [lib_verbi]:        ./lib_verbi.i
 [lib_supplemento]:  ./lib_supplemento.i
 
+<!-- Library Documentation  -->
 
+[ANNOTAZIONI_DOXTER]: ./ANNOTAZIONI_DOXTER.adoc
+[BUILD_DOCS]: ./BUILD_DOCS.bat
+
+[lib_verbi adoc]: ./lib_verbi.asciidoc
+[lib_verbi html]: ./lib_verbi.html
+[lib_verbi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_verbi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+
+[Doxter]: https://git.io/doxter "Visit Doxter website"
+
+
+<!-- EOF -->

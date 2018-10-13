@@ -1,6 +1,14 @@
--- "lib_supplemento.i" v0.5.0 (2018/08/18)
---------------------------------------------------------------------------------
--- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
+--= Alan StdLib Italian: Supplemento
+--| Tristano Ajmone <tajmone@gmail.com>
+--~-----------------------------------------------------------------------------
+--~ "lib_supplemento.i"
+--| v0.6.0-Alpha, 2018-10-12: Alan 3.0beta6
+--|=============================================================================
+--| Modulo supplementare della liberia italiana, non presente nell'originale
+--| _ALAN Standard Library_ v2.1 di Anssi Räisänen.
+--| Creato da Tristano Ajmone,  (C) 2018, Artistic License 2.1.
+--|=============================================================================
+
 --------------------------------------------------------------------------------
 --| Questo modulo della libreria definisce vari sinonimi italiani per tradurre
 --| le Predefined Player Words inglesi di Alan.

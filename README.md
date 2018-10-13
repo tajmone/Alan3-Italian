@@ -1,7 +1,7 @@
 # Alan IF 3 Italian
 
     Alan Standard Library: 2.1
-    Alan Development Kit:  3.0beta5
+    Alan Development Kit:  3.0beta6
 
 - https://github.com/tajmone/Alan3-Italian
 

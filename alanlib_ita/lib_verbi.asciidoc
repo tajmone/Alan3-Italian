@@ -1,0 +1,286 @@
+= Alan StdLib Italian: Verbi
+Tristano Ajmone <tajmone@gmail.com>
+v0.6.0-Alpha, 2018-10-12: Alan 3.0beta6
+=============================================================================
+Adattamento italiano del modulo `lib_verbs.i` della
+_ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
+Ad opera di Tristano Ajmone,  (C) 2018, Artistic License 2.1.
+=============================================================================
+
+// tag::custom_attributes[]
+////
+=============================================================================
+Custom AsciiDoc Attributes for Doxter
+=============================================================================
+////
+
+// Traduzione italiana degli attributi predefiniti di Asciidoctor:
+include::attributes-it.adoc[tag=attributes-it]
+
+// Definisci sostituzione di {X} con il carattere Unicode 'heavy check mark'
+// (U+2714), usato nelle tabelle dei verbi:
+:X: &#x2714;
+
+// end::custom_attributes[]
+// tag::elenco_verbi[]
+== Elenco dei Verbi Italiani
+I verbi finora tradotti in italiano sono raggruppti in tre diversi gruppi:
+
+1. Comandi di partita
+2. Comandi di gioco
+3. Comandi di affermazioni o domande
+
+Di seguito troverete una tabella per ciascun gruppo, in cui i verbi sono
+elencati in ordine alfabetico.
+
+=============================================================================
+
+[big]#*Legenda delle Tabelle*#
+
+Il significato delle lettere nelle ultime quattro colonne è il seguente:
+
+[horizontal]
+  [M] Meta Verbo :: {X} = Sì
+  [A] Arietà     :: <n> = numero di parametri
+  [O] Oggetto    :: {X} = Sì
+  [B] C'è un Bug :: {X} = Sì
+=============================================================================
+
+// end::elenco_verbi[]
+// tag::comandi_partita[]
+
+=== Meta Comandi di Partita
+
+Comandi che riguardano aspetti della partita (salvare, uscire, ecc.) anziché
+il mondo dell'avventura. Perlopiù META VERBS, il cui uso non fa scorrere il
+conteggio del tempo nell'avventura (turni).
+Altresì noti come _comandi extradiegetici_.
+
+// end::comandi_partita[]
+// tag::tabella_comandi_partita[]
+.Elenco Comandi di Partita
+[cols="20m,30d,25d,4*^5d",options="header"]
+|=============================================================================================================
+| VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
+| abbandona_partita  | quit, Q                      | abbandona [partita]              | {X} | 0 |     |
+| carica_partita     | restore                      | carica [partita]                 | {X} | 0 |     |
+| ricomincia_partita | restart                      | ricomincia [partita]             | {X} | 0 |     |
+| salva_partita      | save                         | salva [partita]                  | {X} | 0 |     |
+|=============================================================================================================
+
+// end::tabella_comandi_partita[]
+// tag::comandi_gioco[]
+
+=== Comandi di Gioco
+
+Comandi diretti al personaggio protagonista per interagire con l'avventura.
+
+// end::comandi_gioco[]
+// tag::tabella_comandi_gioco[]
+.Elenco dei Comandi di Gioco
+[cols="20m,30d,25d,4*^5d",options="header"]
+|=============================================================================================================
+| VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
+| accendi            |                              | accendi (disp)                   |     | 1 |     |
+| apri               |                              | apri (ogg)                       |     | 1 | {X} |
+| apri_con           |                              | apri (ogg) con (strum)           |     | 2 | {X} |
+| ascolta0           |                              | ascolta                          |     | 0 |     |
+| ascolta            |                              | ascolta (ogg)!                   |     | 1 | {X} |
+| aspetta            | attendi, Z                   | aspetta                          |     | 0 |     |
+| attacca            | combatti, picchia            | attacca (bersaglio)              |     | 1 |     |
+| attacca_con        | combatti, picchia            | attacca (bersaglio) con (arma)   |     | 2 |     |
+| attraversa         |                              | attraversa (ogg)                 |     | 1 | {X} |
+| bacia              | abbraccia                    | bacia (ogg)                      |     | 1 | {X} |
+| balla              | danza                        | balla                            |     | 0 |     |
+| bevi               |                              | bevi (liq)                       |     | 1 |     |
+| blocca             | serra                        | blocca (ogg)                     |     | 1 | {X} |
+| blocca_con         | serra                        | blocca (ogg) con (chiave)        |     | 2 | {X} |
+| brucia             |                              | brucia (ogg)                     |     | 1 | {X} |
+| brucia_con         |                              | brucia (ogg) con (strum)         |     | 2 | {X} |
+| canta              |                              | canta                            |     | 0 |     |
+| chiedi             |                              | chiedi a (png) (ogg)             |     | 2 | {X} |
+| chiudi             |                              | chiudi (ogg)                     |     | 1 | {X} |
+| chiudi_con         |                              | chiudi (ogg) con (strum)         |     | 2 | {X} |
+| compra             | acquista                     | compra (merce)                   |     | 1 |     |
+| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)          |     | 2 | {X} |
+| dì                 |                              | dì (argomento)                   |     | 1 |     |
+| dì_a               |                              | dì (argomento) a (png)           |     | 2 |     |
+| domanda            | chiedi                       | domanda a (png) di (argomento)!  |     | 2 |     |
+| dormi              | riposa                       | dormi                            |     | 0 |     |
+| esamina            | guarda, descrivi, osserva, X | esamina (ogg)                    |     | 1 | {X} |
+| gioca_con          |                              | gioca con (ogg)                  |     | 1 | {X} |
+| guida              |                              | guida (veicolo)                  |     | 1 |     |
+| indossa            | mettiti                      | indossa (ogg)                    |     | 1 | {X} |
+| inventario         | inv                          | inventario                       | {X} | 0 |     |
+| lascia             | abbandona, metti giù, posa   | lascia (ogg)*                    |     | 1 | {X} |
+| lega               |                              | lega (ogg)                       |     | 1 | {X} |
+| lega_a             |                              | lega (ogg) a (bersaglio)         |     | 2 | {X} |
+| leggi              |                              | leggi (ogg)                      |     | 1 | {X} |
+| libera             | rilascia                     | libera (ogg)                     |     | 1 | {X} |
+| mangia             |                              | mangia (cibo)                    |     | 1 |     |
+| parla              |                              | parla                            |     | 0 |     |
+| parla_con          |                              | parla con (png)                  |     | 1 |     |
+| pensa              | pondera, rifletti, medita    | pensa                            |     | 0 |     |
+| pensa_a            | rifletti/medita su, pondera  | pensa a (argomento)!             |     | 1 |     |
+| prega              |                              | prega                            |     | 0 |     |
+| prendi             | afferra, raccogli, trasporta | prendi (ogg)                     |     | 1 | {X} |
+| prendi_da          | rimuovi, togli               | prendi (ogg) da (detentore)      |     | 2 | {X} |
+| racconta           | informa, dì a, parla a       | racconta a (png) di (argomento)! |     | 2 |     |
+| rifai              | ancora, G                    | rifai                            |     | 0 |     |
+| riempi             |                              | riempi (cont)                    |     | 1 |     |
+| riempi_con         |                              | riempi (cont) con (sostanza)     |     | 2 |     |
+| rompi              | distruggi, spacca, sfonda    | rompi (ogg)                      |     | 1 | {X} |
+| rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)          |     | 2 | {X} |
+| ripara             | aggiusta                     | ripara (ogg)                     |     | 1 | {X} |
+| rispondi           |                              | rispondi (argomento)!            |     | 1 |     |
+| sblocca            |                              | sblocca (ogg)                    |     | 1 | {X} |
+| sblocca_con        |                              | sblocca (ogg) con (chiave)       |     | 2 | {X} |
+| scava              |                              | scava (ogg)                      |     | 1 | {X} |
+| scrivi             |                              | scrivi "testo" su (ogg)          |     | 1 | {X} |
+| siediti            | siedi                        | siediti                          |     | 0 |     |
+| siediti_su         | siedi                        | siediti su (superficie)          |     | 1 |     |
+| spegni             |                              | spegni (disp)                    |     | 1 |     |
+| spogliati          | svestiti                     | spogliati                        |     | 0 |     |
+| suona              |                              | suona (ogg)                      |     | 1 | {X} |
+| taglia             |                              | taglia (ogg)                     |     | 1 | {X} |
+| taglia_con         |                              | taglia (ogg) con (strum)         |     | 2 | {X} |
+| tira               |                              | tira (ogg)                       |     | 1 | {X} |
+| tocca              | accarezza, carezza           | tocca (ogg)                      |     | 1 | {X} |
+| tocca_con          | accarezza, carezza           | tocca (ogg) con (strum)          |     | 2 | {X} |
+| togliti            | sfilati, levati              | togliti (ogg)                    |     | 1 | {X} |
+| trova              |                              | trova (ogg)                      |     | 1 | {X} |
+| uccidi             | ammazza                      | uccidi (vittima)                 |     | 1 |     |
+| uccidi_con         | ammazza                      | uccidi (vittima) con (arma)      |     | 2 |     |
+| usa                |                              | usa (ogg)                        |     | 1 | {X} |
+| usa_con            |                              | usa (ogg) con (strum)            |     | 2 | {X} |
+| vai_a              |                              | vai a (dest)                     |     | 1 |     |
+| vendi              |                              | vendi (merce)                    |     | 1 |     |
+|=============================================================================================================
+
+// end::tabella_comandi_gioco[]
+// tag::comandi_affermazion[]
+
+=== Comandi di Affermazioni o Domande
+
+Questo gruppo include tutti quei comandi che non seguono la consueta forma
+in cui il giocatore impartisce un ordine diretto al personaggio protagonista
+(p.es. "`prendi la mela`"), presentandosi invece sotto forma di affermazioni
+o domande poste dal protagonista stesso (p.es. "`chi sono?`", "`sì`", "`dove
+è il tesoro?`").
+
+// end::comandi_affermazion[]
+// tag::tabella_comandi_affermazioni[]
+.Elenco Comandi di Affermazioni o Domande
+[cols="20m,30d,25d,4*^5d",options="header"]
+|=============================================================================================================
+| VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
+| chi_è              |                              | chi è (png)                      |     | 1 |     | {X}
+| chi_sono_io        |                              | chi sono                         |     | 0 |     |
+| cosa_è             |                              | cosa è (ogg)                     |     | 1 | {X} | {X}
+| cosa_sono_io       |                              | cosa sono                        |     | 0 |     |
+| dici_No            |                              | no                               |     | 0 |     |
+| dici_Sì            |                              | sì                               |     | 0 |     |
+| dove_è             |                              | dove è (ogg)                     |     | 1 | {X} | {X}
+| dove_mi_trovo      |                              | dove sono                        |     | 0 |     |
+|=============================================================================================================
+
+// end::tabella_comandi_affermazioni[]
+// tag::todo[]
+== TODO
+
+Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
+italiano del modulo dei verbi.
+
+// end::todo[]
+// tag::verbi_non_tradotti[]
+=== Verbi da Tradurre
+
+
+.Elenco dei Verbi Non Tradotti
+[cols="20m,30d,25d,2*^5d",options="header"]
+|=======================================================================================================
+| VERBO              | SINONIMI                           | SINTASSI                          | A |  O  
+| about              | help, info                         | about                             | 0 |
+| bite               | chew                               | bite (obj)                        | 1 | {x}
+| brief              |                                    | brief                             | 0 |
+| catch              |                                    | catch (obj)                       | 1 | {x}
+| clean              | polish, wipe                       | clean (obj)                       | 1 | {x}
+| climb              |                                    | climb (obj)                       | 1 | {x}
+| climb_on           |                                    | climb on (surface)                | 1 |
+| consult            |                                    | consult (source) about (topic)    | 2 |
+| credits            | acknowledgments, author, copyright | credits                           | 0 |
+| dive               |                                    | dive                              | 0 |
+| dive_in            |                                    | dive in (liq)                     | 1 |
+| empty              |                                    | empty (obj)                       | 1 | {x}
+| empty_in           |                                    | empty (obj) in (cont)             | 2 | {x}
+| empty_on           |                                    | empty (obj) on (surface)          | 2 | {x}
+| enter              |                                    | enter (obj)                       | 1 | {x}
+| exit               |                                    | exit (obj)                        | 1 | {x}
+| fire               |                                    | fire (weapon)                     | 1 |
+| fire_at            |                                    | fire (weapon) at (target)         | 2 |
+| follow             |                                    | follow (act)                      | 1 |
+| get_up             |                                    | get up                            | 0 |
+| get_off            |                                    | get off (obj)                     | 1 | {x}
+| hint               | hints                              | hint                              | 0 |
+| jump               |                                    | jump                              | 0 |
+| jump_in            |                                    | jump in (cont)                    | 1 |
+| jump_on            |                                    | jump on (surface)                 | 1 |
+| kick               |                                    | kick (target)                     | 1 |
+| knock (on)         |                                    | knock on (obj)                    | 1 | {x}
+| lie_down           |                                    | lie down                          | 0 |
+| lie_in             |                                    | lie in (cont)                     | 1 |
+| lie_on             |                                    | lie on (surface)                  | 1 |
+| lift               |                                    | lift (obj)                        | 1 | {x}
+| look               | gaze, peek                         | look                              | 0 |
+| look_at            |                                    | look at (obj)                     | 1 | {x}
+| look_behind        |                                    | look behind (bulk)                | 1 |
+| look_in            |                                    | look in (cont)                    | 1 |
+| look_out_of        |                                    | look out of (obj)                 | 1 | {x}
+| look_through       |                                    | look through (bulk)               | 1 |
+| look_under         |                                    | look under (bulk)                 | 1 |
+| look_up            |                                    | look up                           | 0 |
+| notify (on, off)   |                                    | notify. notify on. notify off     | 0 |
+| pour               | (= defined at the verb `empty`)    | pour (obj)                        | 1 | {x}
+| pour_in            | (= defined at the verb `emtpy_in`) | pour (obj) in (cont)              | 2 | {x}
+| pour_on            | (= defined at the verb `empty_on`) | pour (obj) on (surface)           | 2 | {x}
+| pry                |                                    | pry (obj)                         | 1 | {x}
+| pry_with           |                                    | pry (obj) with (instr)            | 2 | {x}
+| push               |                                    | push (obj)                        | 1 | {x}
+| push_with          |                                    | push (obj) with (instr)           | 2 | {x}
+| put                | lay, place                         | put (obj)                         | 1 | {x}
+| put_against        |                                    | put (obj) against (bulk))         | 2 | {x}
+| put_behind         |                                    | put (obj) behind (bulk)           | 2 | {x}
+| put_in             | insert                             | put (obj) in (cont)               | 2 | {x}
+| put_near           |                                    | put (obj) near (bulk)             | 2 | {x}
+| put_on             |                                    | put (obj) on (surface)            | 2 | {x}
+| put_under          |                                    | put (obj) under (bulk)            | 2 | {x}
+| rub                |                                    | rub (obj)                         | 1 | {x}
+| score              |                                    | score                             | 0 |
+| scratch            |                                    | scratch (obj)                     | 1 | {x}
+| script             |                                    | script. script on. script off.    | 0 |
+| search             |                                    | search (obj)                      | 1 | {x}
+| shake              |                                    | shake (obj)                       | 1 | {x}
+| shoot (at)         |                                    | shoot at (target)                 | 1 |
+| shoot_with         |                                    | shoot (target) with (weapon)      | 2 |
+| shout              | scream, yell                       | shout                             | 0 |
+| show               | reveal                             | show (obj) to (act)               | 2 | {x}
+| sip                |                                    | sip (liq)                         | 1 |
+| smell0             |                                    | smell                             | 0 |
+| smell              |                                    | smell (odour)                     | 1 |
+| squeeze            |                                    | squeeze (obj)                     | 1 | {x}
+| stand (up)         |                                    | stand.  stand up.                 | 0 |
+| stand_on           |                                    | stand on (surface)                | 1 |
+| swim               |                                    | swim                              | 0 |
+| swim_in            |                                    | swim in (liq)                     | 1 |
+| taste              | lick                               | taste (obj)                       | 1 | {x}
+| tear               | rip                                | tear (obj)                        | 1 | {x}
+| throw              |                                    | throw (projectile)                | 1 |
+| throw_at           |                                    | throw (projectile) at (target)    | 2 |
+| throw_in           |                                    | throw (projectile) in (cont)      | 2 |
+| throw_to           |                                    | throw (projectile) to (recipient) | 2 |
+| turn               | rotate                             | turn (obj)                        | 1 | {x}
+| verbose            |                                    | verbose                           | 0 |
+|=======================================================================================================
+
+// end::verbi_non_tradotti[]
+

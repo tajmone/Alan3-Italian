@@ -1,12 +1,14 @@
--- "lib_classi.i" v0.5.2 (2018/08/22)
---------------------------------------------------------------------------------
--- Alan ITA Alpha Dev | Alan 3.0beta5 | StdLib 2.1
---------------------------------------------------------------------------------
--- Adapted to Italian from:
--- ALAN Standard Library v2.1
--- "Classes" (original file name: 'lib_classes.i')
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
+--= Alan StdLib Italian: Classi
+--| Tristano Ajmone <tajmone@gmail.com>
+--~-----------------------------------------------------------------------------
+--~ "lib_classi.i"
+--| v0.6.0-Alpha, 2018-10-12: Alan 3.0beta6
+--|=============================================================================
+--| Adattamento italiano del modulo `lib_classes.i` della
+--| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
+--| Ad opera di Tristano Ajmone,  (C) 2018, Artistic License 2.1.
+--|=============================================================================
+
 
 -- Anzitutto, definiamo la descrizione predefinita per gli oggetti di tipo
 -- scenario (ossia, nessuna descrizione).
@@ -1029,11 +1031,11 @@ EVERY dispositivo IsA OBJECT
   END VERB esamina.
 
 
-  VERB accendi --> turn_on
+  VERB accendi ---> turn_on
     CHECK THIS IS NOT acceso
       ELSE
         IF THIS IS NOT plurale
--->>                                                                            TRANSLATE
+---->                                                                           TRANSLATE
           THEN SAY  check_device_not_on_sg  OF mia_AT.
           ELSE SAY  check_device_not_on_pl  OF mia_AT.
         END IF.
@@ -1068,11 +1070,11 @@ EVERY dispositivo IsA OBJECT
   END VERB accendi.
 
 
-  VERB spegni --> turn_off dispositivo
+  VERB spegni ---> turn_off dispositivo
     CHECK THIS IS acceso
       ELSE
          IF THIS IS NOT plurale
--->>                                                                            TRANSLATE
+---->                                                                           TRANSLATE
           THEN SAY  check_device_on_sg  OF mia_AT.
           ELSE SAY  check_device_on_pl  OF mia_AT.
          END IF.
@@ -1109,7 +1111,7 @@ END EVERY.
 -- =============================================================
 
 
------ @PORTA --> @DOOR
+----- @PORTA ---> @DOOR
 
 
 -- =============================================================
@@ -1348,7 +1350,7 @@ EVERY fonte_di_luce IsA OBJECT
   END VERB esamina.
 
 
-  VERB accendi --> turn_on (fonte_di_luce)
+  VERB accendi ---> turn_on (fonte_di_luce)
     CHECK THIS IS NOT illuminato
       ELSE
         IF THIS IS NOT plurale
@@ -1368,11 +1370,11 @@ EVERY fonte_di_luce IsA OBJECT
   END VERB accendi.
 
 
-  VERB spegni --> extinguish fonte_di_luce
+  VERB spegni ---> extinguish fonte_di_luce
     CHECK THIS IS illuminato
       ELSE
         IF THIS IS NOT plurale
--->>                                                                            TRANSLATE
+---->                                                                           TRANSLATE
           THEN SAY  check_lightsource_lit_sg  OF mia_AT.
           ELSE SAY  check_lightsource_lit_pl  OF mia_AT.
         END IF.
@@ -1944,7 +1946,7 @@ EVERY contenitore_elencato IsA OBJECT
 
   VERB apri
     DOES
-      IF THIS IS aperto --> verifica che sia davvero aperta!
+      IF THIS IS aperto ---> verifica che sia davvero aperta!
         THEN
           MAKE THIS NOT OPAQUE.
           LIST THIS.
@@ -1954,7 +1956,7 @@ EVERY contenitore_elencato IsA OBJECT
 
   VERB apri_con
     WHEN ogg DOES
-      IF THIS IS aperto --> verifica che sia davvero aperta!
+      IF THIS IS aperto ---> verifica che sia davvero aperta!
         THEN
           MAKE THIS NOT OPAQUE.
           LIST THIS.
@@ -1964,7 +1966,7 @@ EVERY contenitore_elencato IsA OBJECT
 
   VERB chiudi, blocca
     DOES
-      IF THIS IS NOT aperto --> verifica che sia davvero chiuso!
+      IF THIS IS NOT aperto ---> verifica che sia davvero chiuso!
         THEN
           MAKE THIS OPAQUE.
       END IF.
@@ -1973,7 +1975,7 @@ EVERY contenitore_elencato IsA OBJECT
 
   VERB chiudi_con
     WHEN ogg DOES
-      IF THIS IS NOT aperto --> verifica che sia davvero chiuso!
+      IF THIS IS NOT aperto ---> verifica che sia davvero chiuso!
         THEN
            MAKE THIS OPAQUE.
       END IF.
@@ -1981,7 +1983,7 @@ EVERY contenitore_elencato IsA OBJECT
 
   VERB blocca_con
     WHEN ogg DOES
-      IF THIS IS NOT aperto --> verifica che sia davvero chiuso!
+      IF THIS IS NOT aperto ---> verifica che sia davvero chiuso!
         THEN
           MAKE THIS OPAQUE.
       END IF.
@@ -2109,7 +2111,7 @@ END EVERY.
 -- ==============================================================
 
 
------ @ARMA --> @WEAPON
+----- @ARMA ---> @WEAPON
 
 
 -- ==============================================================
@@ -2220,21 +2222,21 @@ END EVERY.
 -- attori e le sue sottoclassi.
 
 ADD TO EVERY ACTOR
-  IS  NOT inanimato.                                        --> inanimate
-  IS  NOT seguendo.                                         --> following
-  IS  NOT seduto.                                           --> sitting
-  IS  NOT sdraiato.                                         --> lying_down
-  HAS NOT nome_proprio.                                     --> named
+  IS  NOT inanimato.                                        ---> inanimate
+  IS  NOT seguendo.                                         ---> following
+  IS  NOT seduto.                                           ---> sitting
+  IS  NOT sdraiato.                                         ---> lying_down
+  HAS NOT nome_proprio.                                     ---> named
   -- = the actor's name is not known to the player
-  HAS indossati { indumento_fittizio }.                     --> wearing
+  HAS indossati { indumento_fittizio }.                     ---> wearing
   -- = the actor's clothing is not specified.
   -- "null_clothing" is a dummy default that can be ignored.
-  IS NOT condiscendente.                                    --> compliant
+  IS NOT condiscendente.                                    ---> compliant
   -- an actor only gives something to the hero if it is in a compliant mood.
   -- In practice, this happens by default when the hero asks the actor for anything.
   -- For example, implicit taking of objects is not successful if the object happens
   -- to be held by an NPC who is not compliant.
-  IS NOT prendibile.                                        --> takeable
+  IS NOT prendibile.                                        ---> takeable
 
 
 --==============================================================================
@@ -2253,31 +2255,31 @@ ADD TO EVERY ACTOR
 -- § 2.4.2 - Attori Senza Nome Proprio
 --==============================================================================
       DEPENDING ON articolo of THIS
-        = "il"  THEN   "un"               --> ms indet.
-        = "lo"  THEN   "uno"              --> ms indet.
-        = "la"  THEN   "una"              --> fs indet.
+        = "il"  THEN   "un"               ---> ms indet.
+        = "lo"  THEN   "uno"              ---> ms indet.
+        = "la"  THEN   "una"              ---> fs indet.
 
         = "l'"  THEN
           IF THIS IS NOT femminile
-                THEN   "un"               --> ms indet.
-                ELSE   "un'$$"            --> fs indet.
+                THEN   "un"               ---> ms indet.
+                ELSE   "un'$$"            ---> fs indet.
           END IF.
 
-        = "i"   THEN   "dei"              --> mp indet.
-        = "gli" THEN   "degli"            --> mp indet.
-        = "le"  THEN   "delle"            --> fp indet.
+        = "i"   THEN   "dei"              ---> mp indet.
+        = "gli" THEN   "degli"            ---> mp indet.
+        = "le"  THEN   "delle"            ---> fp indet.
 
         ELSE -- se non è definito
           IF THIS IS NOT femminile
           THEN
             IF THIS IS NOT plurale
-                THEN   "un"               --> ms indet.
-                ELSE   "dei"              --> mp indet.
+                THEN   "un"               ---> ms indet.
+                ELSE   "dei"              ---> mp indet.
             END IF.
           ELSE
             IF THIS IS NOT plurale
-                THEN   "una"              --> fs indet.
-                ELSE   "delle"            --> fp indet.
+                THEN   "una"              ---> fs indet.
+                ELSE   "delle"            ---> fp indet.
             END IF.
           END IF.
       END DEPEND.
@@ -2298,27 +2300,27 @@ ADD TO EVERY ACTOR
 -- § 2.5.2 - Attori Senza Nome Proprio
 --==============================================================================
       DEPENDING ON articolo of THIS
-        = "il"  THEN   "il"               --> ms indet.
-        = "lo"  THEN   "lo"               --> ms indet.
-        = "la"  THEN   "la"               --> fs indet.
+        = "il"  THEN   "il"               ---> ms indet.
+        = "lo"  THEN   "lo"               ---> ms indet.
+        = "la"  THEN   "la"               ---> fs indet.
 
-        = "l'"  THEN   "l'$$"             --> *s det.  (masc & femm)
+        = "l'"  THEN   "l'$$"             ---> *s det.  (masc & femm)
 
-        = "i"   THEN   "i"                --> mp det.
-        = "gli" THEN   "gli"              --> mp det.
-        = "le"  THEN   "le"               --> fp det.
+        = "i"   THEN   "i"                ---> mp det.
+        = "gli" THEN   "gli"              ---> mp det.
+        = "le"  THEN   "le"               ---> fp det.
 
         ELSE -- se non è definito
           IF THIS IS NOT femminile
           THEN
             IF THIS IS NOT plurale
-                THEN   "il"               --> ms det.
-                ELSE   "i"                --> mp det.
+                THEN   "il"               ---> ms det.
+                ELSE   "i"                ---> mp det.
             END IF.
           ELSE
             IF THIS IS NOT plurale
-                THEN   "la"               --> fs det.
-                ELSE   "le"               --> fp det.
+                THEN   "la"               ---> fs det.
+                ELSE   "le"               ---> fp det.
             END IF.
           END IF.
       END DEPEND.
@@ -2469,13 +2471,13 @@ ADD TO EVERY ACTOR
       IF THIS IS NOT femminile
         THEN
           IF THIS IS NOT plurale
-            THEN SET vocale  OF THIS TO "o". --> ms
-            ELSE SET vocale  OF THIS TO "i". --> mp
+            THEN SET vocale  OF THIS TO "o". ---> ms
+            ELSE SET vocale  OF THIS TO "i". ---> mp
           END IF.
         ELSE
           IF THIS IS NOT plurale
-            THEN SET vocale  OF THIS TO "a". --> fs
-            ELSE SET vocale  OF THIS TO "e". --> fp
+            THEN SET vocale  OF THIS TO "a". ---> fs
+            ELSE SET vocale  OF THIS TO "e". ---> fp
           END IF.
       END IF.
       -- Imposta le preposizioni semplici, anziché articolate:

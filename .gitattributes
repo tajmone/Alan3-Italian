@@ -59,9 +59,14 @@
 *.css      text
 *.js       text
 
+# Exceptions:
+highlight.min.js text eol=lf
+
 ## ===================
 ## DOCUMENTATION FILES
 ## ===================
+*.adoc       text
+*.asciidoc   text
 *.docx       binary
 *.markdown   text
 *.md         text

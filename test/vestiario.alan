@@ -41,7 +41,7 @@ THE jeans IsA ind_pantaloni AT camerino.
   NAME jeans.
   NAME blue jeans.
   NAME blu jeans.
-  HAS articolo "il". --> sovrascriviamo l'articolo "i" della classe 'pantaloni'!
+  HAS articolo "il". ---> sovrascriviamo l'articolo "i" della classe 'pantaloni'!
   MENTIONED "paio di blue jeans"
 END THE jeans.
 

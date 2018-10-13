@@ -1,11 +1,14 @@
--- "lib_definizioni.i" v0.5.7 (2018/10/09)
---------------------------------------------------------------------------------
--- Alan ITA Alpha Dev | Alan 3.0beta6 | StdLib 2.1
---------------------------------------------------------------------------------
--- Adapted to Italian from:
--- ALAN Standard Library v2.1
--- "Definitions" (original file name: 'lib_definitions.i')
---------------------------------------------------------------------------------
+--= Alan StdLib Italian: Definizioni
+--| Tristano Ajmone <tajmone@gmail.com>
+--~-----------------------------------------------------------------------------
+--~ "lib_definizioni.i"
+--| v0.6.0-Alpha, 2018-10-12: Alan 3.0beta6
+--|=============================================================================
+--| Adattamento italiano del modulo `lib_definitions.i` della
+--| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
+--| Ad opera di Tristano Ajmone,  (C) 2018, Artistic License 2.1.
+--|=============================================================================
+
 
 --+============================================================================+
 --|\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//////////////////////////////////////|
@@ -336,31 +339,31 @@ ADD TO EVERY OBJECT
   INDEFINITE ARTICLE
 
     DEPENDING ON articolo of THIS
-      = "il"  THEN   "un"               --> ms indet.
-      = "lo"  THEN   "uno"              --> ms indet.
-      = "la"  THEN   "una"              --> fs indet.
+      = "il"  THEN   "un"               ---> ms indet.
+      = "lo"  THEN   "uno"              ---> ms indet.
+      = "la"  THEN   "una"              ---> fs indet.
 
       = "l'"  THEN
         IF THIS IS NOT femminile
-              THEN   "un"               --> ms indet.
-              ELSE   "un'$$"            --> fs indet.
+              THEN   "un"               ---> ms indet.
+              ELSE   "un'$$"            ---> fs indet.
         END IF.
 
-      = "i"   THEN   "dei"              --> mp indet.
-      = "gli" THEN   "degli"            --> mp indet.
-      = "le"  THEN   "delle"            --> fp indet.
+      = "i"   THEN   "dei"              ---> mp indet.
+      = "gli" THEN   "degli"            ---> mp indet.
+      = "le"  THEN   "delle"            ---> fp indet.
 
       ELSE -- se non è definito
         IF THIS IS NOT femminile
         THEN
           IF THIS IS NOT plurale
-              THEN   "un"               --> ms indet.
-              ELSE   "dei"              --> mp indet.
+              THEN   "un"               ---> ms indet.
+              ELSE   "dei"              ---> mp indet.
           END IF.
         ELSE
           IF THIS IS NOT plurale
-              THEN   "una"              --> fs indet.
-              ELSE   "delle"            --> fp indet.
+              THEN   "una"              ---> fs indet.
+              ELSE   "delle"            ---> fp indet.
           END IF.
         END IF.
     END DEPEND.
@@ -376,27 +379,27 @@ ADD TO EVERY OBJECT
   DEFINITE ARTICLE
 
     DEPENDING ON articolo of THIS
-      = "il"  THEN   "il"               --> ms indet.
-      = "lo"  THEN   "lo"               --> ms indet.
-      = "la"  THEN   "la"               --> fs indet.
+      = "il"  THEN   "il"               ---> ms indet.
+      = "lo"  THEN   "lo"               ---> ms indet.
+      = "la"  THEN   "la"               ---> fs indet.
 
-      = "l'"  THEN   "l'$$"             --> *s det.  (masc & femm)
+      = "l'"  THEN   "l'$$"             ---> *s det.  (masc & femm)
 
-      = "i"   THEN   "i"                --> mp det.
-      = "gli" THEN   "gli"              --> mp det.
-      = "le"  THEN   "le"               --> fp det.
+      = "i"   THEN   "i"                ---> mp det.
+      = "gli" THEN   "gli"              ---> mp det.
+      = "le"  THEN   "le"               ---> fp det.
 
       ELSE -- se non è definito
         IF THIS IS NOT femminile
         THEN
           IF THIS IS NOT plurale
-              THEN   "il"               --> ms det.
-              ELSE   "i"                --> mp det.
+              THEN   "il"               ---> ms det.
+              ELSE   "i"                ---> mp det.
           END IF.
         ELSE
           IF THIS IS NOT plurale
-              THEN   "la"               --> fs det.
-              ELSE   "le"               --> fp det.
+              THEN   "la"               ---> fs det.
+              ELSE   "le"               ---> fp det.
           END IF.
         END IF.
     END DEPEND.
@@ -502,7 +505,7 @@ END ADD TO.
 
 SYNONYMS
 
-into, inside = 'in'.      --> @TODO                                             TRANSLATE!
+into, inside = 'in'.      ---> @TODO                                            TRANSLATE!
       onto   = on.
       thru   = through.
       using  = 'with'.
@@ -510,7 +513,7 @@ into, inside = 'in'.      --> @TODO                                             
 
 -- Here are some synonyms for the player character:
 
-me, myself, yourself, self = hero. --> @TODO                                    TRANSLATE!
+me, myself, yourself, self = hero. ---> @TODO                                   TRANSLATE!
 
 
 --------------------------------------------------------------------------------
@@ -645,7 +648,7 @@ EVERY blocco_definizioni IsA LOCATION
 
   -- VERBI: attacca, attacca_con, rompi, *kick*, fire_at, fire_at_error.
   HAS la_violenza_non_è_la_risposta
-    "La violenza non è la giusta risposta a questo.". --> taken from i6
+    "La violenza non è la giusta risposta a questo.". ---> taken from i6
 
   -- VERBI: chiedi_errore.
   HAS per_chiedere_qlco_USA
@@ -701,7 +704,7 @@ EVERY blocco_definizioni IsA LOCATION
   --       | di oggetti multipli o di "TUTTO".
 
   -- ORIGINAL EN:  illegal_parameter_sg/pl  +  check_obj_suitable_sg/pl
-  HAS ogg1_inadatto_sg  "$+1 non è qualcosa che puoi".                          --> (verbi vari)
+  HAS ogg1_inadatto_sg  "$+1 non è qualcosa che puoi".                          ---> (verbi vari)
   HAS ogg1_inadatto_pl  "$+1 non sono qualcosa che puoi".
 
   
@@ -767,7 +770,7 @@ EVERY blocco_definizioni IsA LOCATION
   -- PREPOSIZIONE "SU"
   -- -----------------
   -- ORIGINAL EN: illegal_parameter_on_sg/pl
-  HAS ogg1_illegale_SU_sg  "$+1 non è qualcosa su cui poter".                   --> climb_on, jump_on, knock, lie_on, sit_on,
+  HAS ogg1_illegale_SU_sg  "$+1 non è qualcosa su cui poter".                   ---> climb_on, jump_on, knock, lie_on, sit_on,
   HAS ogg1_illegale_SU_pl  "$+1 non sono qualcosa su cui poter".
 
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
@@ -1234,7 +1237,7 @@ EVERY blocco_definizioni IsA LOCATION
   -- c) checking location states
   ------------------------------
   -- HAS check_current_loc_lit "It is too dark to see.".           -- (numerous)
-  -- TRADOTTO --> imp_luogo_buio
+  -- TRADOTTO ---> imp_luogo_buio
 
 
 
@@ -1404,117 +1407,117 @@ EVERY blocco_definizioni IsA LOCATION
 -- synonyms, is disabled in-game. The restricted_response of the my_game instance (by default "You can't
 -- do that.") will be shown instead. The restriced_response is defined further up this file.
 
-  CAN abbandonare_partita.      --> 'quit'
-  CAN accendere.                --> turn_on
-  CAN andare_a.                 --> go_to
-  CAN aprire.                   --> open
-  CAN aprire_con.               --> open_with
-  CAN ascoltare0.               --> listen0
-  CAN ascoltare.                --> listen
-  CAN aspettare.                --> wait         (+ z)
-  CAN assaggiare.               --> taste        (+ lick)
-  CAN attaccare.                --> attack (+ beat, fight, hit, punch)
-  CAN attaccare_con.            --> attack_with
-  CAN attraversare.             --> climb_through
-  CAN baciare.                  --> kiss         (+ hug, embrace)
-  CAN ballare.                  --> dance
-  CAN bere.                     --> drink
-  CAN bloccare.                 --> lock
-  CAN bloccare_con.             --> lock_with
-  CAN bruciare.                 --> burn
-  CAN bruciare_con.             --> burn_with
-  CAN bussare.                  --> knock
-  CAN cantare.                  --> sing
-  CAN caricare_partita.         --> 'restore'
-  CAN chiedere.                 --> ask_for
-  CAN chiudere.                 --> close        (+ shut)
-  CAN chiudere_con.             --> close_with
-  CAN comprare.                 --> buy          (+ purchase)
-  CAN consultare.               --> consult
-  CAN dare.                     --> give
-  CAN dire.                     --> 'say'
-  CAN dire_a.                   --> say_to
-  CAN dire_no.                  --> 'no'
-  CAN dire_sì.                  --> yes
-  CAN domandare.                --> ask (+ enquire, inquire, interrogate)
-  CAN domandare_chi_sono_io.    --> who_am_i
-  CAN domandare_chi_è.          --> who_is
-  CAN domandare_cosa_sono_io.   --> what_am_i
-  CAN domandare_cosa_è.         --> what_is
-  CAN domandare_dove_mi_trovo.  --> where_am_i
-  CAN domandare_dove_è.         --> where_is
-  CAN dormire.                  --> sleep        (+ rest)
-  CAN entrare.                  --> enter
-  CAN esaminare.                --> examine      (+ check, inspect, observe, x)
-  CAN giocare_con.              --> play_with
-  CAN gridare.                  --> shout        (+ scream, yell)
-  CAN guidare.                  --> drive
-  CAN indossare.                --> wear
-  CAN inventariare.             --> i            (+ inv, inventory)
-  CAN lasciare.                 --> drop         (+ discard, dump, reject)
-  CAN legare.                   --> tie
-  CAN legare_a.                 --> tie_to
-  CAN leggere.                  --> read
-  CAN liberare.                 --> free         (+ release)
-  CAN mangiare.                 --> eat
-  CAN modalità_breve.           --> brief
-  CAN modalità_lunga.           --> verbose
-  CAN mostrare.                 --> 'show'       (+ reveal)
-  CAN nuotare.                  --> swim
-  CAN nuotare_in.               --> swim_in
-  CAN parlare.                  --> talk
-  CAN parlare_con.              --> talk_to (+ speak)
-  CAN pensare.                  --> think
-  CAN pensare_a.                --> think_about
-  CAN pregare.                  --> pray
-  CAN prendere.                 --> take.        (+ carry, get, grab, hold, obtain)
-  CAN prendere_da.              --> take_from.   (+ remove from)
-  CAN pulire.                   --> clean        (+ polish, wipe)
-  CAN raccontare.               --> tell         (+ enlighten, inform)
-  CAN ricominciare_partita.     --> 'restart'
-  CAN riempire.                 --> fill
-  CAN riempire_con.             --> fill_with
-  CAN rifare.                   --> 'again'
-  CAN riparare.                 --> fix (+ mend, repair)
-  CAN rispondere.               --> answer (+ reply)
-  CAN rompere.                  --> break        (+ destroy)
-  CAN rompere_con.              --> break_with
-  CAN salvare_partita.          --> save
-  CAN saltare.                  --> jump
-  CAN saltare_in.               --> jump_in
-  CAN saltare_su.               --> jump_on
-  CAN sbloccare.                --> unlock
-  CAN sbloccare_con.            --> unlock_with
-  CAN scavare.                  --> dig
-  CAN scrivere.                 --> write
-  CAN sedersi.                  --> sit (down)
-  CAN sedersi_su.               --> sit_on
-  CAN seguire.                  --> follow
-  CAN spegnere.                 --> turn_off
-  CAN spingere.                 --> push
-  CAN spingere_con.             --> push_with
-  CAN spogliarsi.               --> undress
-  CAN suonare.                  --> play
-  CAN svuotare.                 --> 'empty'
-  CAN svuotare_in.              --> empty_in
-  CAN svuotare_su.              --> empty_on
-  CAN tagliare.                 --> cut
-  CAN tagliare_con.             --> cut_with
-  CAN tirare.                   --> pull
-  CAN toccare.                  --> touch (+ feel)
-  CAN toccare_con.              --> touch_with
-  CAN togliersi_indumento.      --> remove
-  CAN trovare.                  --> find         (+ locate)
-  CAN tuffarsi.                 --> dive
-  CAN tuffarsi_in.              --> dive_in
-  CAN uccidere.                 --> kill         (+ murder)
-  CAN uccidere_con.             --> kill_with
-  CAN usare.                    --> 'use'
-  CAN usare_con.                --> use_with
-  CAN vendere.                  --> sell
-  CAN versare.                  --> pour
-  CAN versare_in.               --> pour_in
-  CAN versare_su.               --> pour_on
+  CAN abbandonare_partita.      ---> 'quit'
+  CAN accendere.                ---> turn_on
+  CAN andare_a.                 ---> go_to
+  CAN aprire.                   ---> open
+  CAN aprire_con.               ---> open_with
+  CAN ascoltare0.               ---> listen0
+  CAN ascoltare.                ---> listen
+  CAN aspettare.                ---> wait         (+ z)
+  CAN assaggiare.               ---> taste        (+ lick)
+  CAN attaccare.                ---> attack (+ beat, fight, hit, punch)
+  CAN attaccare_con.            ---> attack_with
+  CAN attraversare.             ---> climb_through
+  CAN baciare.                  ---> kiss         (+ hug, embrace)
+  CAN ballare.                  ---> dance
+  CAN bere.                     ---> drink
+  CAN bloccare.                 ---> lock
+  CAN bloccare_con.             ---> lock_with
+  CAN bruciare.                 ---> burn
+  CAN bruciare_con.             ---> burn_with
+  CAN bussare.                  ---> knock
+  CAN cantare.                  ---> sing
+  CAN caricare_partita.         ---> 'restore'
+  CAN chiedere.                 ---> ask_for
+  CAN chiudere.                 ---> close        (+ shut)
+  CAN chiudere_con.             ---> close_with
+  CAN comprare.                 ---> buy          (+ purchase)
+  CAN consultare.               ---> consult
+  CAN dare.                     ---> give
+  CAN dire.                     ---> 'say'
+  CAN dire_a.                   ---> say_to
+  CAN dire_no.                  ---> 'no'
+  CAN dire_sì.                  ---> yes
+  CAN domandare.                ---> ask (+ enquire, inquire, interrogate)
+  CAN domandare_chi_sono_io.    ---> who_am_i
+  CAN domandare_chi_è.          ---> who_is
+  CAN domandare_cosa_sono_io.   ---> what_am_i
+  CAN domandare_cosa_è.         ---> what_is
+  CAN domandare_dove_mi_trovo.  ---> where_am_i
+  CAN domandare_dove_è.         ---> where_is
+  CAN dormire.                  ---> sleep        (+ rest)
+  CAN entrare.                  ---> enter
+  CAN esaminare.                ---> examine      (+ check, inspect, observe, x)
+  CAN giocare_con.              ---> play_with
+  CAN gridare.                  ---> shout        (+ scream, yell)
+  CAN guidare.                  ---> drive
+  CAN indossare.                ---> wear
+  CAN inventariare.             ---> i            (+ inv, inventory)
+  CAN lasciare.                 ---> drop         (+ discard, dump, reject)
+  CAN legare.                   ---> tie
+  CAN legare_a.                 ---> tie_to
+  CAN leggere.                  ---> read
+  CAN liberare.                 ---> free         (+ release)
+  CAN mangiare.                 ---> eat
+  CAN modalità_breve.           ---> brief
+  CAN modalità_lunga.           ---> verbose
+  CAN mostrare.                 ---> 'show'       (+ reveal)
+  CAN nuotare.                  ---> swim
+  CAN nuotare_in.               ---> swim_in
+  CAN parlare.                  ---> talk
+  CAN parlare_con.              ---> talk_to (+ speak)
+  CAN pensare.                  ---> think
+  CAN pensare_a.                ---> think_about
+  CAN pregare.                  ---> pray
+  CAN prendere.                 ---> take.        (+ carry, get, grab, hold, obtain)
+  CAN prendere_da.              ---> take_from.   (+ remove from)
+  CAN pulire.                   ---> clean        (+ polish, wipe)
+  CAN raccontare.               ---> tell         (+ enlighten, inform)
+  CAN ricominciare_partita.     ---> 'restart'
+  CAN riempire.                 ---> fill
+  CAN riempire_con.             ---> fill_with
+  CAN rifare.                   ---> 'again'
+  CAN riparare.                 ---> fix (+ mend, repair)
+  CAN rispondere.               ---> answer (+ reply)
+  CAN rompere.                  ---> break        (+ destroy)
+  CAN rompere_con.              ---> break_with
+  CAN salvare_partita.          ---> save
+  CAN saltare.                  ---> jump
+  CAN saltare_in.               ---> jump_in
+  CAN saltare_su.               ---> jump_on
+  CAN sbloccare.                ---> unlock
+  CAN sbloccare_con.            ---> unlock_with
+  CAN scavare.                  ---> dig
+  CAN scrivere.                 ---> write
+  CAN sedersi.                  ---> sit (down)
+  CAN sedersi_su.               ---> sit_on
+  CAN seguire.                  ---> follow
+  CAN spegnere.                 ---> turn_off
+  CAN spingere.                 ---> push
+  CAN spingere_con.             ---> push_with
+  CAN spogliarsi.               ---> undress
+  CAN suonare.                  ---> play
+  CAN svuotare.                 ---> 'empty'
+  CAN svuotare_in.              ---> empty_in
+  CAN svuotare_su.              ---> empty_on
+  CAN tagliare.                 ---> cut
+  CAN tagliare_con.             ---> cut_with
+  CAN tirare.                   ---> pull
+  CAN toccare.                  ---> touch (+ feel)
+  CAN toccare_con.              ---> touch_with
+  CAN togliersi_indumento.      ---> remove
+  CAN trovare.                  ---> find         (+ locate)
+  CAN tuffarsi.                 ---> dive
+  CAN tuffarsi_in.              ---> dive_in
+  CAN uccidere.                 ---> kill         (+ murder)
+  CAN uccidere_con.             ---> kill_with
+  CAN usare.                    ---> 'use'
+  CAN usare_con.                ---> use_with
+  CAN vendere.                  ---> sell
+  CAN versare.                  ---> pour
+  CAN versare_in.               ---> pour_in
+  CAN versare_su.               ---> pour_on
 
 --# NOT YET TRANSLATED:
   CAN about.
@@ -1608,117 +1611,117 @@ EVENT check_restriction
 IF restricted_level OF mia_AT = 0    -- all verbs work normally
   THEN
 
-  MAKE mia_AT abbandonare_partita.      --> 'quit'
-  MAKE mia_AT accendere.                --> turn_on
-  MAKE mia_AT andare_a.                 --> go_to
-  MAKE mia_AT aprire.                   --> open
-  MAKE mia_AT aprire_con.               --> open_with
-  MAKE mia_AT ascoltare0.               --> listen0
-  MAKE mia_AT ascoltare.                --> listen
-  MAKE mia_AT aspettare.                --> wait         (+ z)
-  MAKE mia_AT assaggiare.               --> taste        (+ lick)
-  MAKE mia_AT attaccare.                --> attack (+ beat, fight, hit, punch)
-  MAKE mia_AT attaccare_con.            --> attack_with
-  MAKE mia_AT attraversare.             --> climb_through
-  MAKE mia_AT baciare.                  --> kiss         (+ hug, embrace)
-  MAKE mia_AT ballare.                  --> dance
-  MAKE mia_AT bere.                     --> drink
-  MAKE mia_AT bloccare.                 --> lock
-  MAKE mia_AT bloccare_con.             --> lock_with
-  MAKE mia_AT bruciare.                 --> burn
-  MAKE mia_AT bruciare_con.             --> burn_with
-  MAKE mia_AT bussare.                  --> knock
-  MAKE mia_AT cantare.                  --> sing
-  MAKE mia_AT caricare_partita.         --> 'restore'
-  MAKE mia_AT chiedere.                 --> ask_for
-  MAKE mia_AT chiudere.                 --> close        (+ shut)
-  MAKE mia_AT chiudere_con.             --> close_with
-  MAKE mia_AT comprare.                 --> buy          (+ purchase)
-  MAKE mia_AT consultare.               --> consult
-  MAKE mia_AT dare.                     --> give
-  MAKE mia_AT dire.                     --> 'say'
-  MAKE mia_AT dire_a.                   --> say_to
-  MAKE mia_AT dire_no.                  --> 'no'
-  MAKE mia_AT dire_sì.                  --> yes
-  MAKE mia_AT domandare.                --> ask (+ enquire, inquire, interrogate)
-  MAKE mia_AT domandare_chi_sono_io.    --> who_am_i
-  MAKE mia_AT domandare_chi_è.          --> who_is
-  MAKE mia_AT domandare_cosa_sono_io.   --> what_am_i
-  MAKE mia_AT domandare_cosa_è.         --> what_is
-  MAKE mia_AT domandare_dove_mi_trovo.  --> where_am_i
-  MAKE mia_AT domandare_dove_è.         --> where_is
-  MAKE mia_AT dormire.                  --> sleep        (+ rest)
-  MAKE mia_AT entrare.                  --> enter
-  MAKE mia_AT esaminare.                --> examine      (+ check, inspect, observe, x)
-  MAKE mia_AT giocare_con.              --> play_with
-  MAKE mia_AT gridare.                  --> shout        (+ scream, yell)
-  MAKE mia_AT guidare.                  --> drive
-  MAKE mia_AT indossare.                --> wear
-  MAKE mia_AT inventariare.             --> i            (+ inv, inventory)
-  MAKE mia_AT lasciare.                 --> drop         (+ discard, dump, reject)
-  MAKE mia_AT legare.                   --> tie
-  MAKE mia_AT legare_a.                 --> tie_to
-  MAKE mia_AT leggere.                  --> read
-  MAKE mia_AT liberare.                 --> free         (+ release)
-  MAKE mia_AT mangiare.                 --> eat
-  MAKE mia_AT modalità_breve.           --> brief
-  MAKE mia_AT modalità_lunga.           --> verbose
-  MAKE mia_AT mostrare.                 --> 'show'       (+ reveal)
-  MAKE mia_AT nuotare.                  --> swim
-  MAKE mia_AT nuotare_in.               --> swim_in
-  MAKE mia_AT parlare.                  --> talk
-  MAKE mia_AT parlare_con.              --> talk_to (+ speak)
-  MAKE mia_AT pensare.                  --> think
-  MAKE mia_AT pensare_a.                --> think_about
-  MAKE mia_AT pregare.                  --> pray
-  MAKE mia_AT prendere.                 --> take.        (+ carry, get, grab, hold, obtain)
-  MAKE mia_AT prendere_da.              --> take_from.   (+ remove from)
-  MAKE mia_AT pulire.                   --> clean        (+ polish, wipe)
-  MAKE mia_AT raccontare.               --> tell         (+ enlighten, inform)
-  MAKE mia_AT ricominciare_partita.     --> 'restart'
-  MAKE mia_AT riempire.                 --> fill
-  MAKE mia_AT riempire_con.             --> fill_with
-  MAKE mia_AT rifare.                   --> 'again'
-  MAKE mia_AT riparare.                 --> fix (+ mend, repair)
-  MAKE mia_AT rispondere.               --> answer (+ reply)
-  MAKE mia_AT rompere.                  --> break        (+ destroy)
-  MAKE mia_AT rompere_con.              --> break_with
-  MAKE mia_AT saltare.                  --> jump
-  MAKE mia_AT saltare_in.               --> jump_in
-  MAKE mia_AT saltare_su.               --> jump_on
-  MAKE mia_AT salvare_partita.          --> save
-  MAKE mia_AT sbloccare.                --> unlock
-  MAKE mia_AT sbloccare_con.            --> unlock_with
-  MAKE mia_AT scavare.                  --> dig
-  MAKE mia_AT scrivere.                 --> write
-  MAKE mia_AT sedersi.                  --> sit (down)
-  MAKE mia_AT sedersi_su.               --> sit_on
-  MAKE mia_AT seguire.                  --> follow
-  MAKE mia_AT spegnere.                 --> turn_off
-  MAKE mia_AT spingere.                 --> push
-  MAKE mia_AT spingere_con.             --> push_with
-  MAKE mia_AT spogliarsi.               --> undress
-  MAKE mia_AT suonare.                  --> play
-  MAKE mia_AT svuotare.                 --> 'empty'
-  MAKE mia_AT svuotare_in.              --> empty_in
-  MAKE mia_AT svuotare_su.              --> empty_on
-  MAKE mia_AT tagliare.                 --> cut
-  MAKE mia_AT tagliare_con.             --> cut_with
-  MAKE mia_AT tirare.                   --> pull
-  MAKE mia_AT toccare.                  --> touch (+ feel)
-  MAKE mia_AT toccare_con.              --> touch_with
-  MAKE mia_AT togliersi_indumento.      --> remove
-  MAKE mia_AT trovare.                  --> find         (+ locate)
-  MAKE mia_AT tuffarsi.                 --> dive
-  MAKE mia_AT tuffarsi_in.              --> dive_in
-  MAKE mia_AT uccidere.                 --> kill         (+ murder)
-  MAKE mia_AT uccidere_con.             --> kill_with
-  MAKE mia_AT usare.                    --> 'use'
-  MAKE mia_AT usare_con.                --> use_with
-  MAKE mia_AT vendere.                  --> sell
-  MAKE mia_AT versare.                  --> pour
-  MAKE mia_AT versare_in.               --> pour_in
-  MAKE mia_AT versare_su.               --> pour_on
+  MAKE mia_AT abbandonare_partita.      ---> 'quit'
+  MAKE mia_AT accendere.                ---> turn_on
+  MAKE mia_AT andare_a.                 ---> go_to
+  MAKE mia_AT aprire.                   ---> open
+  MAKE mia_AT aprire_con.               ---> open_with
+  MAKE mia_AT ascoltare0.               ---> listen0
+  MAKE mia_AT ascoltare.                ---> listen
+  MAKE mia_AT aspettare.                ---> wait         (+ z)
+  MAKE mia_AT assaggiare.               ---> taste        (+ lick)
+  MAKE mia_AT attaccare.                ---> attack (+ beat, fight, hit, punch)
+  MAKE mia_AT attaccare_con.            ---> attack_with
+  MAKE mia_AT attraversare.             ---> climb_through
+  MAKE mia_AT baciare.                  ---> kiss         (+ hug, embrace)
+  MAKE mia_AT ballare.                  ---> dance
+  MAKE mia_AT bere.                     ---> drink
+  MAKE mia_AT bloccare.                 ---> lock
+  MAKE mia_AT bloccare_con.             ---> lock_with
+  MAKE mia_AT bruciare.                 ---> burn
+  MAKE mia_AT bruciare_con.             ---> burn_with
+  MAKE mia_AT bussare.                  ---> knock
+  MAKE mia_AT cantare.                  ---> sing
+  MAKE mia_AT caricare_partita.         ---> 'restore'
+  MAKE mia_AT chiedere.                 ---> ask_for
+  MAKE mia_AT chiudere.                 ---> close        (+ shut)
+  MAKE mia_AT chiudere_con.             ---> close_with
+  MAKE mia_AT comprare.                 ---> buy          (+ purchase)
+  MAKE mia_AT consultare.               ---> consult
+  MAKE mia_AT dare.                     ---> give
+  MAKE mia_AT dire.                     ---> 'say'
+  MAKE mia_AT dire_a.                   ---> say_to
+  MAKE mia_AT dire_no.                  ---> 'no'
+  MAKE mia_AT dire_sì.                  ---> yes
+  MAKE mia_AT domandare.                ---> ask (+ enquire, inquire, interrogate)
+  MAKE mia_AT domandare_chi_sono_io.    ---> who_am_i
+  MAKE mia_AT domandare_chi_è.          ---> who_is
+  MAKE mia_AT domandare_cosa_sono_io.   ---> what_am_i
+  MAKE mia_AT domandare_cosa_è.         ---> what_is
+  MAKE mia_AT domandare_dove_mi_trovo.  ---> where_am_i
+  MAKE mia_AT domandare_dove_è.         ---> where_is
+  MAKE mia_AT dormire.                  ---> sleep        (+ rest)
+  MAKE mia_AT entrare.                  ---> enter
+  MAKE mia_AT esaminare.                ---> examine      (+ check, inspect, observe, x)
+  MAKE mia_AT giocare_con.              ---> play_with
+  MAKE mia_AT gridare.                  ---> shout        (+ scream, yell)
+  MAKE mia_AT guidare.                  ---> drive
+  MAKE mia_AT indossare.                ---> wear
+  MAKE mia_AT inventariare.             ---> i            (+ inv, inventory)
+  MAKE mia_AT lasciare.                 ---> drop         (+ discard, dump, reject)
+  MAKE mia_AT legare.                   ---> tie
+  MAKE mia_AT legare_a.                 ---> tie_to
+  MAKE mia_AT leggere.                  ---> read
+  MAKE mia_AT liberare.                 ---> free         (+ release)
+  MAKE mia_AT mangiare.                 ---> eat
+  MAKE mia_AT modalità_breve.           ---> brief
+  MAKE mia_AT modalità_lunga.           ---> verbose
+  MAKE mia_AT mostrare.                 ---> 'show'       (+ reveal)
+  MAKE mia_AT nuotare.                  ---> swim
+  MAKE mia_AT nuotare_in.               ---> swim_in
+  MAKE mia_AT parlare.                  ---> talk
+  MAKE mia_AT parlare_con.              ---> talk_to (+ speak)
+  MAKE mia_AT pensare.                  ---> think
+  MAKE mia_AT pensare_a.                ---> think_about
+  MAKE mia_AT pregare.                  ---> pray
+  MAKE mia_AT prendere.                 ---> take.        (+ carry, get, grab, hold, obtain)
+  MAKE mia_AT prendere_da.              ---> take_from.   (+ remove from)
+  MAKE mia_AT pulire.                   ---> clean        (+ polish, wipe)
+  MAKE mia_AT raccontare.               ---> tell         (+ enlighten, inform)
+  MAKE mia_AT ricominciare_partita.     ---> 'restart'
+  MAKE mia_AT riempire.                 ---> fill
+  MAKE mia_AT riempire_con.             ---> fill_with
+  MAKE mia_AT rifare.                   ---> 'again'
+  MAKE mia_AT riparare.                 ---> fix (+ mend, repair)
+  MAKE mia_AT rispondere.               ---> answer (+ reply)
+  MAKE mia_AT rompere.                  ---> break        (+ destroy)
+  MAKE mia_AT rompere_con.              ---> break_with
+  MAKE mia_AT saltare.                  ---> jump
+  MAKE mia_AT saltare_in.               ---> jump_in
+  MAKE mia_AT saltare_su.               ---> jump_on
+  MAKE mia_AT salvare_partita.          ---> save
+  MAKE mia_AT sbloccare.                ---> unlock
+  MAKE mia_AT sbloccare_con.            ---> unlock_with
+  MAKE mia_AT scavare.                  ---> dig
+  MAKE mia_AT scrivere.                 ---> write
+  MAKE mia_AT sedersi.                  ---> sit (down)
+  MAKE mia_AT sedersi_su.               ---> sit_on
+  MAKE mia_AT seguire.                  ---> follow
+  MAKE mia_AT spegnere.                 ---> turn_off
+  MAKE mia_AT spingere.                 ---> push
+  MAKE mia_AT spingere_con.             ---> push_with
+  MAKE mia_AT spogliarsi.               ---> undress
+  MAKE mia_AT suonare.                  ---> play
+  MAKE mia_AT svuotare.                 ---> 'empty'
+  MAKE mia_AT svuotare_in.              ---> empty_in
+  MAKE mia_AT svuotare_su.              ---> empty_on
+  MAKE mia_AT tagliare.                 ---> cut
+  MAKE mia_AT tagliare_con.             ---> cut_with
+  MAKE mia_AT tirare.                   ---> pull
+  MAKE mia_AT toccare.                  ---> touch (+ feel)
+  MAKE mia_AT toccare_con.              ---> touch_with
+  MAKE mia_AT togliersi_indumento.      ---> remove
+  MAKE mia_AT trovare.                  ---> find         (+ locate)
+  MAKE mia_AT tuffarsi.                 ---> dive
+  MAKE mia_AT tuffarsi_in.              ---> dive_in
+  MAKE mia_AT uccidere.                 ---> kill         (+ murder)
+  MAKE mia_AT uccidere_con.             ---> kill_with
+  MAKE mia_AT usare.                    ---> 'use'
+  MAKE mia_AT usare_con.                ---> use_with
+  MAKE mia_AT vendere.                  ---> sell
+  MAKE mia_AT versare.                  ---> pour
+  MAKE mia_AT versare_in.               ---> pour_in
+  MAKE mia_AT versare_su.               ---> pour_on
 
 --# NOT YET TRANSLATED:
   MAKE mia_AT about.
@@ -1798,14 +1801,14 @@ IF restricted_level OF mia_AT = 0    -- all verbs work normally
 ELSIF restricted_level OF mia_AT = 1  -- communication verbs are restricted
   THEN
 
-  MAKE mia_AT NOT cantare.                  --> sing
-  MAKE mia_AT NOT chiedere.                 --> ask_for
-  MAKE mia_AT NOT dire.                     --> 'say'
-  MAKE mia_AT NOT dire_a.                   --> say_to
-  MAKE mia_AT NOT domandare.                --> ask (+ enquire, inquire, interrogate)
-  MAKE mia_AT NOT gridare.                  --> shout       (+ scream, yell)
-  MAKE mia_AT NOT raccontare.               --> tell         (+ enlighten, inform)
-  MAKE mia_AT NOT rispondere.               --> answer (+ reply)
+  MAKE mia_AT NOT cantare.                  ---> sing
+  MAKE mia_AT NOT chiedere.                 ---> ask_for
+  MAKE mia_AT NOT dire.                     ---> 'say'
+  MAKE mia_AT NOT dire_a.                   ---> say_to
+  MAKE mia_AT NOT domandare.                ---> ask (+ enquire, inquire, interrogate)
+  MAKE mia_AT NOT gridare.                  ---> shout       (+ scream, yell)
+  MAKE mia_AT NOT raccontare.               ---> tell         (+ enlighten, inform)
+  MAKE mia_AT NOT rispondere.               ---> answer (+ reply)
 
 --# NOT YET TRANSLATED:
 
@@ -1823,117 +1826,117 @@ ELSIF restricted_level OF mia_AT = 2   -- all action verbs, including communicat
                 -- 'wait' and sensory verbs as well as all out-of-game verbs work
   THEN
 
-  MAKE mia_AT     abbandonare_partita.      --> 'quit'
-  MAKE mia_AT NOT accendere.                --> turn_on
-  MAKE mia_AT NOT andare_a.                 --> go_to
-  MAKE mia_AT NOT aprire.                   --> open
-  MAKE mia_AT NOT aprire_con.               --> open_with
-  MAKE mia_AT ascoltare0.                   --> listen0
-  MAKE mia_AT ascoltare.                    --> listen
-  MAKE mia_AT     aspettare.                --> wait         (+ z)
-  MAKE mia_AT NOT assaggiare.               --> taste        (+ lick)
-  MAKE mia_AT NOT attaccare.                --> attack (+ beat, fight, hit, punch)
-  MAKE mia_AT NOT attaccare_con.            --> attack_with
-  MAKE mia_AT NOT attraversare.             --> climb_through
-  MAKE mia_AT NOT baciare.                  --> kiss         (+ hug, embrace)
-  MAKE mia_AT NOT ballare.                  --> dance
-  MAKE mia_AT NOT bere.                     --> drink
-  MAKE mia_AT NOT bloccare.                 --> lock
-  MAKE mia_AT NOT bloccare_con.             --> lock_with
-  MAKE mia_AT NOT bruciare.                 --> burn
-  MAKE mia_AT NOT bruciare_con.             --> burn_with
-  MAKE mia_AT NOT bussare.                  --> knock
-  MAKE mia_AT NOT cantare.                  --> sing
-  MAKE mia_AT     caricare_partita.         --> 'restore'
-  MAKE mia_AT NOT chiedere.                 --> ask_for
-  MAKE mia_AT NOT chiudere.                 --> close        (+ shut)
-  MAKE mia_AT NOT chiudere_con.             --> close_with
-  MAKE mia_AT NOT comprare.                 --> buy          (+ purchase)
-  MAKE mia_AT NOT consultare.               --> consult
-  MAKE mia_AT NOT dare.                     --> give
-  MAKE mia_AT NOT dire.                     --> 'say'
-  MAKE mia_AT NOT dire_a.                   --> say_to
-  MAKE mia_AT     dire_no.                  --> 'no'
-  MAKE mia_AT     dire_sì.                  --> yes
-  MAKE mia_AT NOT domandare.                --> ask (+ enquire, inquire, interrogate)
-  MAKE mia_AT     domandare_chi_sono_io.    --> who_am_i
-  MAKE mia_AT     domandare_chi_è.          --> who_is
-  MAKE mia_AT     domandare_cosa_sono_io.   --> what_am_i
-  MAKE mia_AT     domandare_cosa_è.         --> what_is
-  MAKE mia_AT     domandare_dove_mi_trovo.  --> where_am_i
-  MAKE mia_AT     domandare_dove_è.         --> where_is
-  MAKE mia_AT NOT dormire.                  --> sleep        (+ rest)
-  MAKE mia_AT NOT entrare.                  --> enter
-  MAKE mia_AT     esaminare.                --> examine      (+ check, inspect, observe, x)
-  MAKE mia_AT NOT giocare_con.              --> play_with
-  MAKE mia_AT NOT gridare.                  --> shout        (+ scream, yell)
-  MAKE mia_AT NOT guidare.                  --> drive
-  MAKE mia_AT NOT indossare.                --> wear
-  MAKE mia_AT     inventariare.             --> i            (+ inv, inventory)
-  MAKE mia_AT NOT lasciare.                 --> drop         (+ discard, dump, reject)
-  MAKE mia_AT NOT legare.                   --> tie
-  MAKE mia_AT NOT legare_a.                 --> tie_to
-  MAKE mia_AT NOT leggere.                  --> read
-  MAKE mia_AT NOT liberare.                 --> free         (+ release)
-  MAKE mia_AT NOT mangiare.                 --> eat
-  MAKE mia_AT     modalità_breve.           --> brief
-  MAKE mia_AT     modalità_lunga.           --> verbose
-  MAKE mia_AT NOT mostrare.                 --> 'show'       (+ reveal)
-  MAKE mia_AT NOT nuotare.                  --> swim
-  MAKE mia_AT NOT nuotare_in.               --> swim_in
-  MAKE mia_AT NOT parlare.                  --> talk
-  MAKE mia_AT NOT parlare_con.              --> talk_to (+ speak)
-  MAKE mia_AT     pensare.                  --> think
-  MAKE mia_AT     pensare_a.                --> think_about
-  MAKE mia_AT     pregare.                  --> pray
-  MAKE mia_AT NOT prendere.                 --> take.        (+ carry, get, grab, hold, obtain)
-  MAKE mia_AT NOT prendere_da.              --> take_from.   (+ remove from)
-  MAKE mia_AT NOT pulire.                   --> clean        (+ polish, wipe)
-  MAKE mia_AT NOT raccontare.               --> tell         (+ enlighten, inform)
-  MAKE mia_AT     ricominciare_partita.     --> 'restart'
-  MAKE mia_AT NOT riempire.                 --> fill
-  MAKE mia_AT NOT riempire_con.             --> fill_with
-  MAKE mia_AT     rifare.                   --> 'again'
-  MAKE mia_AT NOT riparare.                 --> fix (+ mend, repair)
-  MAKE mia_AT NOT rispondere.               --> answer (+ reply)
-  MAKE mia_AT NOT rompere.                  --> break        (+ destroy)
-  MAKE mia_AT NOT rompere_con.              --> break_with
-  MAKE mia_AT NOT saltare.                  --> jump
-  MAKE mia_AT NOT saltare_in.               --> jump_in
-  MAKE mia_AT NOT saltare_su.               --> jump_on
-  MAKE mia_AT     salvare_partita.          --> save
-  MAKE mia_AT NOT sbloccare.                --> unlock
-  MAKE mia_AT NOT sbloccare_con.            --> unlock_with
-  MAKE mia_AT NOT scavare.                  --> dig
-  MAKE mia_AT NOT scrivere.                 --> write
-  MAKE mia_AT NOT sedersi.                  --> sit (down)
-  MAKE mia_AT NOT sedersi_su.               --> sit_on
-  MAKE mia_AT NOT seguire.                  --> follow
-  MAKE mia_AT NOT spegnere.                 --> turn_off
-  MAKE mia_AT NOT spingere.                 --> push
-  MAKE mia_AT NOT spingere_con.             --> push_with
-  MAKE mia_AT NOT spogliarsi.               --> undress
-  MAKE mia_AT NOT suonare.                  --> play
-  MAKE mia_AT NOT svuotare.                 --> 'empty'
-  MAKE mia_AT NOT svuotare_in.              --> empty_in
-  MAKE mia_AT NOT svuotare_su.              --> empty_on
-  MAKE mia_AT NOT tagliare.                 --> cut
-  MAKE mia_AT NOT tagliare_con.             --> cut_with
-  MAKE mia_AT NOT tirare.                   --> pull
-  MAKE mia_AT NOT toccare.                  --> touch (+ feel)
-  MAKE mia_AT NOT toccare_con.              --> touch_with
-  MAKE mia_AT NOT togliersi_indumento.      --> remove
-  MAKE mia_AT NOT trovare.                  --> find         (+ locate)
-  MAKE mia_AT NOT tuffarsi.                 --> dive
-  MAKE mia_AT NOT tuffarsi_in.              --> dive_in
-  MAKE mia_AT NOT uccidere.                 --> kill         (+ murder)
-  MAKE mia_AT NOT uccidere_con.             --> kill_with
-  MAKE mia_AT NOT usare.                    --> 'use'
-  MAKE mia_AT NOT usare_con.                --> use_with
-  MAKE mia_AT NOT vendere.                  --> sell
-  MAKE mia_AT NOT versare.                  --> pour
-  MAKE mia_AT NOT versare_in.               --> pour_in
-  MAKE mia_AT NOT versare_su.               --> pour_on
+  MAKE mia_AT     abbandonare_partita.      ---> 'quit'
+  MAKE mia_AT NOT accendere.                ---> turn_on
+  MAKE mia_AT NOT andare_a.                 ---> go_to
+  MAKE mia_AT NOT aprire.                   ---> open
+  MAKE mia_AT NOT aprire_con.               ---> open_with
+  MAKE mia_AT ascoltare0.                   ---> listen0
+  MAKE mia_AT ascoltare.                    ---> listen
+  MAKE mia_AT     aspettare.                ---> wait         (+ z)
+  MAKE mia_AT NOT assaggiare.               ---> taste        (+ lick)
+  MAKE mia_AT NOT attaccare.                ---> attack (+ beat, fight, hit, punch)
+  MAKE mia_AT NOT attaccare_con.            ---> attack_with
+  MAKE mia_AT NOT attraversare.             ---> climb_through
+  MAKE mia_AT NOT baciare.                  ---> kiss         (+ hug, embrace)
+  MAKE mia_AT NOT ballare.                  ---> dance
+  MAKE mia_AT NOT bere.                     ---> drink
+  MAKE mia_AT NOT bloccare.                 ---> lock
+  MAKE mia_AT NOT bloccare_con.             ---> lock_with
+  MAKE mia_AT NOT bruciare.                 ---> burn
+  MAKE mia_AT NOT bruciare_con.             ---> burn_with
+  MAKE mia_AT NOT bussare.                  ---> knock
+  MAKE mia_AT NOT cantare.                  ---> sing
+  MAKE mia_AT     caricare_partita.         ---> 'restore'
+  MAKE mia_AT NOT chiedere.                 ---> ask_for
+  MAKE mia_AT NOT chiudere.                 ---> close        (+ shut)
+  MAKE mia_AT NOT chiudere_con.             ---> close_with
+  MAKE mia_AT NOT comprare.                 ---> buy          (+ purchase)
+  MAKE mia_AT NOT consultare.               ---> consult
+  MAKE mia_AT NOT dare.                     ---> give
+  MAKE mia_AT NOT dire.                     ---> 'say'
+  MAKE mia_AT NOT dire_a.                   ---> say_to
+  MAKE mia_AT     dire_no.                  ---> 'no'
+  MAKE mia_AT     dire_sì.                  ---> yes
+  MAKE mia_AT NOT domandare.                ---> ask (+ enquire, inquire, interrogate)
+  MAKE mia_AT     domandare_chi_sono_io.    ---> who_am_i
+  MAKE mia_AT     domandare_chi_è.          ---> who_is
+  MAKE mia_AT     domandare_cosa_sono_io.   ---> what_am_i
+  MAKE mia_AT     domandare_cosa_è.         ---> what_is
+  MAKE mia_AT     domandare_dove_mi_trovo.  ---> where_am_i
+  MAKE mia_AT     domandare_dove_è.         ---> where_is
+  MAKE mia_AT NOT dormire.                  ---> sleep        (+ rest)
+  MAKE mia_AT NOT entrare.                  ---> enter
+  MAKE mia_AT     esaminare.                ---> examine      (+ check, inspect, observe, x)
+  MAKE mia_AT NOT giocare_con.              ---> play_with
+  MAKE mia_AT NOT gridare.                  ---> shout        (+ scream, yell)
+  MAKE mia_AT NOT guidare.                  ---> drive
+  MAKE mia_AT NOT indossare.                ---> wear
+  MAKE mia_AT     inventariare.             ---> i            (+ inv, inventory)
+  MAKE mia_AT NOT lasciare.                 ---> drop         (+ discard, dump, reject)
+  MAKE mia_AT NOT legare.                   ---> tie
+  MAKE mia_AT NOT legare_a.                 ---> tie_to
+  MAKE mia_AT NOT leggere.                  ---> read
+  MAKE mia_AT NOT liberare.                 ---> free         (+ release)
+  MAKE mia_AT NOT mangiare.                 ---> eat
+  MAKE mia_AT     modalità_breve.           ---> brief
+  MAKE mia_AT     modalità_lunga.           ---> verbose
+  MAKE mia_AT NOT mostrare.                 ---> 'show'       (+ reveal)
+  MAKE mia_AT NOT nuotare.                  ---> swim
+  MAKE mia_AT NOT nuotare_in.               ---> swim_in
+  MAKE mia_AT NOT parlare.                  ---> talk
+  MAKE mia_AT NOT parlare_con.              ---> talk_to (+ speak)
+  MAKE mia_AT     pensare.                  ---> think
+  MAKE mia_AT     pensare_a.                ---> think_about
+  MAKE mia_AT     pregare.                  ---> pray
+  MAKE mia_AT NOT prendere.                 ---> take.        (+ carry, get, grab, hold, obtain)
+  MAKE mia_AT NOT prendere_da.              ---> take_from.   (+ remove from)
+  MAKE mia_AT NOT pulire.                   ---> clean        (+ polish, wipe)
+  MAKE mia_AT NOT raccontare.               ---> tell         (+ enlighten, inform)
+  MAKE mia_AT     ricominciare_partita.     ---> 'restart'
+  MAKE mia_AT NOT riempire.                 ---> fill
+  MAKE mia_AT NOT riempire_con.             ---> fill_with
+  MAKE mia_AT     rifare.                   ---> 'again'
+  MAKE mia_AT NOT riparare.                 ---> fix (+ mend, repair)
+  MAKE mia_AT NOT rispondere.               ---> answer (+ reply)
+  MAKE mia_AT NOT rompere.                  ---> break        (+ destroy)
+  MAKE mia_AT NOT rompere_con.              ---> break_with
+  MAKE mia_AT NOT saltare.                  ---> jump
+  MAKE mia_AT NOT saltare_in.               ---> jump_in
+  MAKE mia_AT NOT saltare_su.               ---> jump_on
+  MAKE mia_AT     salvare_partita.          ---> save
+  MAKE mia_AT NOT sbloccare.                ---> unlock
+  MAKE mia_AT NOT sbloccare_con.            ---> unlock_with
+  MAKE mia_AT NOT scavare.                  ---> dig
+  MAKE mia_AT NOT scrivere.                 ---> write
+  MAKE mia_AT NOT sedersi.                  ---> sit (down)
+  MAKE mia_AT NOT sedersi_su.               ---> sit_on
+  MAKE mia_AT NOT seguire.                  ---> follow
+  MAKE mia_AT NOT spegnere.                 ---> turn_off
+  MAKE mia_AT NOT spingere.                 ---> push
+  MAKE mia_AT NOT spingere_con.             ---> push_with
+  MAKE mia_AT NOT spogliarsi.               ---> undress
+  MAKE mia_AT NOT suonare.                  ---> play
+  MAKE mia_AT NOT svuotare.                 ---> 'empty'
+  MAKE mia_AT NOT svuotare_in.              ---> empty_in
+  MAKE mia_AT NOT svuotare_su.              ---> empty_on
+  MAKE mia_AT NOT tagliare.                 ---> cut
+  MAKE mia_AT NOT tagliare_con.             ---> cut_with
+  MAKE mia_AT NOT tirare.                   ---> pull
+  MAKE mia_AT NOT toccare.                  ---> touch (+ feel)
+  MAKE mia_AT NOT toccare_con.              ---> touch_with
+  MAKE mia_AT NOT togliersi_indumento.      ---> remove
+  MAKE mia_AT NOT trovare.                  ---> find         (+ locate)
+  MAKE mia_AT NOT tuffarsi.                 ---> dive
+  MAKE mia_AT NOT tuffarsi_in.              ---> dive_in
+  MAKE mia_AT NOT uccidere.                 ---> kill         (+ murder)
+  MAKE mia_AT NOT uccidere_con.             ---> kill_with
+  MAKE mia_AT NOT usare.                    ---> 'use'
+  MAKE mia_AT NOT usare_con.                ---> use_with
+  MAKE mia_AT NOT vendere.                  ---> sell
+  MAKE mia_AT NOT versare.                  ---> pour
+  MAKE mia_AT NOT versare_in.               ---> pour_in
+  MAKE mia_AT NOT versare_su.               ---> pour_on
 
 --# NOT YET TRANSLATED:
 
@@ -2017,123 +2020,123 @@ ELSIF restricted_level OF mia_AT = 3   -- all in-game verbs are restricted, even
                                         -- 'save', 'quit' etc work.
 
 
-  MAKE mia_AT     abbandonare_partita.      --> 'quit'
-  MAKE mia_AT NOT accendere.                --> turn_on
-  MAKE mia_AT NOT andare_a.                 --> go_to
-  MAKE mia_AT NOT aprire.                   --> open
-  MAKE mia_AT NOT aprire_con.               --> open_with
-  MAKE mia_AT NOT ascoltare0.               --> listen0
-  MAKE mia_AT NOT ascoltare.                --> listen
-  MAKE mia_AT NOT aspettare.                --> wait         (+ z)
-  MAKE mia_AT NOT assaggiare.               --> taste        (+ lick)
-  MAKE mia_AT NOT attaccare.                --> attack (+ beat, fight, hit, punch)
-  MAKE mia_AT NOT attaccare_con.            --> attack_with
-  MAKE mia_AT NOT attraversare.             --> climb_through
-  MAKE mia_AT NOT baciare.                  --> kiss         (+ hug, embrace)
-  MAKE mia_AT NOT ballare.                  --> dance
-  MAKE mia_AT NOT bere.                     --> drink
-  MAKE mia_AT NOT bloccare.                 --> lock
-  MAKE mia_AT NOT bloccare_con.             --> lock_with
-  MAKE mia_AT NOT bruciare.                 --> burn
-  MAKE mia_AT NOT bruciare_con.             --> burn_with
-  MAKE mia_AT NOT bussare.                  --> knock
-  MAKE mia_AT NOT cantare.                  --> sing
-  MAKE mia_AT     caricare_partita.         --> 'restore'
-  MAKE mia_AT NOT chiedere.                 --> ask_for
-  MAKE mia_AT NOT chiudere.                 --> close        (+ shut)
-  MAKE mia_AT NOT chiudere_con.             --> close_with
-  MAKE mia_AT NOT comprare.                 --> buy          (+ purchase)
-  MAKE mia_AT NOT consultare.               --> consult
-  MAKE mia_AT NOT dare.                     --> give
-  MAKE mia_AT NOT dire.                     --> 'say'
-  MAKE mia_AT NOT dire_a.                   --> say_to
-  MAKE mia_AT     dire_no.                  --> 'no'
-  MAKE mia_AT     dire_sì.                  --> yes
-  MAKE mia_AT NOT domandare.                --> ask (+ enquire, inquire, interrogate)
-  MAKE mia_AT NOT domandare_chi_sono_io.    --> who_am_i
-  MAKE mia_AT NOT domandare_chi_sono_io.    --> who_am_i
-  MAKE mia_AT NOT domandare_chi_è.          --> who_is
-  MAKE mia_AT NOT domandare_chi_è.          --> who_is
-  MAKE mia_AT NOT domandare_cosa_sono_io.   --> what_am_i
-  MAKE mia_AT NOT domandare_cosa_sono_io.   --> what_am_i
-  MAKE mia_AT NOT domandare_cosa_è.         --> what_is
-  MAKE mia_AT NOT domandare_cosa_è.         --> what_is
-  MAKE mia_AT NOT domandare_dove_mi_trovo.  --> where_am_i
-  MAKE mia_AT NOT domandare_dove_mi_trovo.  --> where_am_i
-  MAKE mia_AT NOT domandare_dove_è.         --> where_is
-  MAKE mia_AT NOT domandare_dove_è.         --> where_is
-  MAKE mia_AT NOT dormire.                  --> sleep        (+ rest)
-  MAKE mia_AT NOT entrare.                  --> enter
-  MAKE mia_AT NOT esaminare.                --> examine      (+ check, inspect, observe, x)
-  MAKE mia_AT NOT giocare_con.              --> play_with
-  MAKE mia_AT NOT gridare.                  --> shout        (+ scream, yell)
-  MAKE mia_AT NOT guidare.                  --> drive
-  MAKE mia_AT NOT indossare.                --> wear
-  MAKE mia_AT NOT inventariare.             --> i            (+ inv, inventory)
-  MAKE mia_AT NOT lasciare.                 --> drop         (+ discard, dump, reject)
-  MAKE mia_AT NOT legare.                   --> tie
-  MAKE mia_AT NOT legare_a.                 --> tie_to
-  MAKE mia_AT NOT leggere.                  --> read
-  MAKE mia_AT NOT liberare.                 --> free         (+ release)
-  MAKE mia_AT NOT mangiare.                 --> eat
-  MAKE mia_AT     modalità_breve.           --> brief
-  MAKE mia_AT     modalità_lunga.           --> verbose
-  MAKE mia_AT NOT mostrare.                 --> 'show'       (+ reveal)
-  MAKE mia_AT NOT nuotare.                  --> swim
-  MAKE mia_AT NOT pensare.                  --> think
-  MAKE mia_AT NOT pensare_a.                --> think_about
-  MAKE mia_AT NOT nuotare_in.               --> swim_in
-  MAKE mia_AT NOT parlare.                  --> talk
-  MAKE mia_AT NOT parlare_con.              --> talk_to (+ speak)
-  MAKE mia_AT NOT pregare.                  --> pray
-  MAKE mia_AT NOT prendere.                 --> take.        (+ carry, get, grab, hold, obtain)
-  MAKE mia_AT NOT prendere_da.              --> take_from.   (+ remove from)
-  MAKE mia_AT NOT pulire.                   --> clean        (+ polish, wipe)
-  MAKE mia_AT NOT raccontare.               --> tell         (+ enlighten, inform)
-  MAKE mia_AT     ricominciare_partita.     --> 'restart'
-  MAKE mia_AT NOT riempire.                 --> fill
-  MAKE mia_AT NOT riempire_con.             --> fill_with
-  MAKE mia_AT     rifare.                   --> 'again'
-  MAKE mia_AT NOT riparare.                 --> fix (+ mend, repair)
-  MAKE mia_AT NOT rispondere.               --> answer (+ reply)
-  MAKE mia_AT NOT rompere.                  --> break        (+ destroy)
-  MAKE mia_AT NOT rompere_con.              --> break_with
-  MAKE mia_AT NOT saltare.                  --> jump
-  MAKE mia_AT NOT saltare_in.               --> jump_in
-  MAKE mia_AT NOT saltare_su.               --> jump_on
-  MAKE mia_AT     salvare_partita.          --> save
-  MAKE mia_AT NOT sbloccare.                --> unlock
-  MAKE mia_AT NOT sbloccare_con.            --> unlock_with
-  MAKE mia_AT NOT scavare.                  --> dig
-  MAKE mia_AT NOT scrivere.                 --> write
-  MAKE mia_AT NOT sedersi.                  --> sit (down)
-  MAKE mia_AT NOT sedersi_su.               --> sit_on
-  MAKE mia_AT NOT seguire.                  --> follow
-  MAKE mia_AT NOT spegnere.                 --> turn_off
-  MAKE mia_AT NOT spingere.                 --> push
-  MAKE mia_AT NOT spingere_con.             --> push_with
-  MAKE mia_AT NOT spogliarsi.               --> undress
-  MAKE mia_AT NOT suonare.                  --> play
-  MAKE mia_AT NOT svuotare.                 --> 'empty'
-  MAKE mia_AT NOT svuotare_in.              --> empty_in
-  MAKE mia_AT NOT svuotare_su.              --> empty_on
-  MAKE mia_AT NOT tagliare.                 --> cut
-  MAKE mia_AT NOT tagliare_con.             --> cut_with
-  MAKE mia_AT NOT tirare.                   --> pull
-  MAKE mia_AT NOT toccare.                  --> touch (+ feel)
-  MAKE mia_AT NOT toccare_con.              --> touch_with
-  MAKE mia_AT NOT togliersi_indumento.      --> remove
-  MAKE mia_AT NOT trovare.                  --> find         (+ locate)
-  MAKE mia_AT NOT tuffarsi.                 --> dive
-  MAKE mia_AT NOT tuffarsi_in.              --> dive_in
-  MAKE mia_AT NOT uccidere.                 --> kill         (+ murder)
-  MAKE mia_AT NOT uccidere_con.             --> kill_with
-  MAKE mia_AT NOT usare.                    --> 'use'
-  MAKE mia_AT NOT usare_con.                --> use_with
-  MAKE mia_AT NOT vendere.                  --> sell
-  MAKE mia_AT NOT versare.                  --> pour
-  MAKE mia_AT NOT versare_in.               --> pour_in
-  MAKE mia_AT NOT versare_su.               --> pour_on
+  MAKE mia_AT     abbandonare_partita.      ---> 'quit'
+  MAKE mia_AT NOT accendere.                ---> turn_on
+  MAKE mia_AT NOT andare_a.                 ---> go_to
+  MAKE mia_AT NOT aprire.                   ---> open
+  MAKE mia_AT NOT aprire_con.               ---> open_with
+  MAKE mia_AT NOT ascoltare0.               ---> listen0
+  MAKE mia_AT NOT ascoltare.                ---> listen
+  MAKE mia_AT NOT aspettare.                ---> wait         (+ z)
+  MAKE mia_AT NOT assaggiare.               ---> taste        (+ lick)
+  MAKE mia_AT NOT attaccare.                ---> attack (+ beat, fight, hit, punch)
+  MAKE mia_AT NOT attaccare_con.            ---> attack_with
+  MAKE mia_AT NOT attraversare.             ---> climb_through
+  MAKE mia_AT NOT baciare.                  ---> kiss         (+ hug, embrace)
+  MAKE mia_AT NOT ballare.                  ---> dance
+  MAKE mia_AT NOT bere.                     ---> drink
+  MAKE mia_AT NOT bloccare.                 ---> lock
+  MAKE mia_AT NOT bloccare_con.             ---> lock_with
+  MAKE mia_AT NOT bruciare.                 ---> burn
+  MAKE mia_AT NOT bruciare_con.             ---> burn_with
+  MAKE mia_AT NOT bussare.                  ---> knock
+  MAKE mia_AT NOT cantare.                  ---> sing
+  MAKE mia_AT     caricare_partita.         ---> 'restore'
+  MAKE mia_AT NOT chiedere.                 ---> ask_for
+  MAKE mia_AT NOT chiudere.                 ---> close        (+ shut)
+  MAKE mia_AT NOT chiudere_con.             ---> close_with
+  MAKE mia_AT NOT comprare.                 ---> buy          (+ purchase)
+  MAKE mia_AT NOT consultare.               ---> consult
+  MAKE mia_AT NOT dare.                     ---> give
+  MAKE mia_AT NOT dire.                     ---> 'say'
+  MAKE mia_AT NOT dire_a.                   ---> say_to
+  MAKE mia_AT     dire_no.                  ---> 'no'
+  MAKE mia_AT     dire_sì.                  ---> yes
+  MAKE mia_AT NOT domandare.                ---> ask (+ enquire, inquire, interrogate)
+  MAKE mia_AT NOT domandare_chi_sono_io.    ---> who_am_i
+  MAKE mia_AT NOT domandare_chi_sono_io.    ---> who_am_i
+  MAKE mia_AT NOT domandare_chi_è.          ---> who_is
+  MAKE mia_AT NOT domandare_chi_è.          ---> who_is
+  MAKE mia_AT NOT domandare_cosa_sono_io.   ---> what_am_i
+  MAKE mia_AT NOT domandare_cosa_sono_io.   ---> what_am_i
+  MAKE mia_AT NOT domandare_cosa_è.         ---> what_is
+  MAKE mia_AT NOT domandare_cosa_è.         ---> what_is
+  MAKE mia_AT NOT domandare_dove_mi_trovo.  ---> where_am_i
+  MAKE mia_AT NOT domandare_dove_mi_trovo.  ---> where_am_i
+  MAKE mia_AT NOT domandare_dove_è.         ---> where_is
+  MAKE mia_AT NOT domandare_dove_è.         ---> where_is
+  MAKE mia_AT NOT dormire.                  ---> sleep        (+ rest)
+  MAKE mia_AT NOT entrare.                  ---> enter
+  MAKE mia_AT NOT esaminare.                ---> examine      (+ check, inspect, observe, x)
+  MAKE mia_AT NOT giocare_con.              ---> play_with
+  MAKE mia_AT NOT gridare.                  ---> shout        (+ scream, yell)
+  MAKE mia_AT NOT guidare.                  ---> drive
+  MAKE mia_AT NOT indossare.                ---> wear
+  MAKE mia_AT NOT inventariare.             ---> i            (+ inv, inventory)
+  MAKE mia_AT NOT lasciare.                 ---> drop         (+ discard, dump, reject)
+  MAKE mia_AT NOT legare.                   ---> tie
+  MAKE mia_AT NOT legare_a.                 ---> tie_to
+  MAKE mia_AT NOT leggere.                  ---> read
+  MAKE mia_AT NOT liberare.                 ---> free         (+ release)
+  MAKE mia_AT NOT mangiare.                 ---> eat
+  MAKE mia_AT     modalità_breve.           ---> brief
+  MAKE mia_AT     modalità_lunga.           ---> verbose
+  MAKE mia_AT NOT mostrare.                 ---> 'show'       (+ reveal)
+  MAKE mia_AT NOT nuotare.                  ---> swim
+  MAKE mia_AT NOT pensare.                  ---> think
+  MAKE mia_AT NOT pensare_a.                ---> think_about
+  MAKE mia_AT NOT nuotare_in.               ---> swim_in
+  MAKE mia_AT NOT parlare.                  ---> talk
+  MAKE mia_AT NOT parlare_con.              ---> talk_to (+ speak)
+  MAKE mia_AT NOT pregare.                  ---> pray
+  MAKE mia_AT NOT prendere.                 ---> take.        (+ carry, get, grab, hold, obtain)
+  MAKE mia_AT NOT prendere_da.              ---> take_from.   (+ remove from)
+  MAKE mia_AT NOT pulire.                   ---> clean        (+ polish, wipe)
+  MAKE mia_AT NOT raccontare.               ---> tell         (+ enlighten, inform)
+  MAKE mia_AT     ricominciare_partita.     ---> 'restart'
+  MAKE mia_AT NOT riempire.                 ---> fill
+  MAKE mia_AT NOT riempire_con.             ---> fill_with
+  MAKE mia_AT     rifare.                   ---> 'again'
+  MAKE mia_AT NOT riparare.                 ---> fix (+ mend, repair)
+  MAKE mia_AT NOT rispondere.               ---> answer (+ reply)
+  MAKE mia_AT NOT rompere.                  ---> break        (+ destroy)
+  MAKE mia_AT NOT rompere_con.              ---> break_with
+  MAKE mia_AT NOT saltare.                  ---> jump
+  MAKE mia_AT NOT saltare_in.               ---> jump_in
+  MAKE mia_AT NOT saltare_su.               ---> jump_on
+  MAKE mia_AT     salvare_partita.          ---> save
+  MAKE mia_AT NOT sbloccare.                ---> unlock
+  MAKE mia_AT NOT sbloccare_con.            ---> unlock_with
+  MAKE mia_AT NOT scavare.                  ---> dig
+  MAKE mia_AT NOT scrivere.                 ---> write
+  MAKE mia_AT NOT sedersi.                  ---> sit (down)
+  MAKE mia_AT NOT sedersi_su.               ---> sit_on
+  MAKE mia_AT NOT seguire.                  ---> follow
+  MAKE mia_AT NOT spegnere.                 ---> turn_off
+  MAKE mia_AT NOT spingere.                 ---> push
+  MAKE mia_AT NOT spingere_con.             ---> push_with
+  MAKE mia_AT NOT spogliarsi.               ---> undress
+  MAKE mia_AT NOT suonare.                  ---> play
+  MAKE mia_AT NOT svuotare.                 ---> 'empty'
+  MAKE mia_AT NOT svuotare_in.              ---> empty_in
+  MAKE mia_AT NOT svuotare_su.              ---> empty_on
+  MAKE mia_AT NOT tagliare.                 ---> cut
+  MAKE mia_AT NOT tagliare_con.             ---> cut_with
+  MAKE mia_AT NOT tirare.                   ---> pull
+  MAKE mia_AT NOT toccare.                  ---> touch (+ feel)
+  MAKE mia_AT NOT toccare_con.              ---> touch_with
+  MAKE mia_AT NOT togliersi_indumento.      ---> remove
+  MAKE mia_AT NOT trovare.                  ---> find         (+ locate)
+  MAKE mia_AT NOT tuffarsi.                 ---> dive
+  MAKE mia_AT NOT tuffarsi_in.              ---> dive_in
+  MAKE mia_AT NOT uccidere.                 ---> kill         (+ murder)
+  MAKE mia_AT NOT uccidere_con.             ---> kill_with
+  MAKE mia_AT NOT usare.                    ---> 'use'
+  MAKE mia_AT NOT usare_con.                ---> use_with
+  MAKE mia_AT NOT vendere.                  ---> sell
+  MAKE mia_AT NOT versare.                  ---> pour
+  MAKE mia_AT NOT versare_in.               ---> pour_in
+  MAKE mia_AT NOT versare_su.               ---> pour_on
 
 --# NOT YET TRANSLATED:
 
@@ -2214,111 +2217,111 @@ ELSIF restricted_level OF mia_AT = 4   -- the strictest level of restriction;
   THEN                                  -- like 'save' and 'quit'.
 
 
-  MAKE mia_AT NOT abbandonare_partita.      --> 'quit'
-  MAKE mia_AT NOT accendere.                --> turn_on
-  MAKE mia_AT NOT andare_a.                 --> go_to
-  MAKE mia_AT NOT aprire.                   --> open
-  MAKE mia_AT NOT aprire_con.               --> open_with
-  MAKE mia_AT NOT ascoltare0.               --> listen0
-  MAKE mia_AT NOT ascoltare.                --> listen
-  MAKE mia_AT NOT aspettare.                --> wait         (+ z)
-  MAKE mia_AT NOT assaggiare.               --> taste        (+ lick)
-  MAKE mia_AT NOT attaccare.                --> attack (+ beat, fight, hit, punch)
-  MAKE mia_AT NOT attaccare_con.            --> attack_with
-  MAKE mia_AT NOT attraversare.             --> climb_through
-  MAKE mia_AT NOT baciare.                  --> kiss         (+ hug, embrace)
-  MAKE mia_AT NOT ballare.                  --> dance
-  MAKE mia_AT NOT bere.                     --> drink
-  MAKE mia_AT NOT bloccare.                 --> lock
-  MAKE mia_AT NOT bloccare_con.             --> lock_with
-  MAKE mia_AT NOT bruciare.                 --> burn
-  MAKE mia_AT NOT bruciare_con.             --> burn_with
-  MAKE mia_AT NOT bussare.                  --> knock
-  MAKE mia_AT NOT cantare.                  --> sing
-  MAKE mia_AT NOT caricare_partita.         --> 'restore'
-  MAKE mia_AT NOT chiedere.                 --> ask_for
-  MAKE mia_AT NOT chiudere.                 --> close        (+ shut)
-  MAKE mia_AT NOT chiudere_con.             --> close_with
-  MAKE mia_AT NOT comprare.                 --> buy          (+ purchase)
-  MAKE mia_AT NOT consultare.               --> consult
-  MAKE mia_AT NOT dare.                     --> give
-  MAKE mia_AT NOT dire.                     --> 'say'
-  MAKE mia_AT NOT dire_a.                   --> say_to
-  MAKE mia_AT NOT dire_no.                  --> 'no'
-  MAKE mia_AT NOT dire_sì.                  --> yes
-  MAKE mia_AT NOT domandare.                --> ask (+ enquire, inquire, interrogate)
-  MAKE mia_AT NOT dormire.                  --> sleep        (+ rest)
-  MAKE mia_AT NOT entrare.                  --> enter
-  MAKE mia_AT NOT esaminare.                --> examine      (+ check, inspect, observe, x)
-  MAKE mia_AT NOT giocare_con.              --> play_with
-  MAKE mia_AT NOT gridare.                  --> shout        (+ scream, yell)
-  MAKE mia_AT NOT guidare.                  --> drive
-  MAKE mia_AT NOT indossare.                --> wear
-  MAKE mia_AT NOT inventariare.             --> i               (+ inv, inventory)
-  MAKE mia_AT NOT lasciare.                 --> drop         (+ discard, dump, reject)
-  MAKE mia_AT NOT legare.                   --> tie
-  MAKE mia_AT NOT legare_a.                 --> tie_to
-  MAKE mia_AT NOT leggere.                  --> read
-  MAKE mia_AT NOT liberare.                 --> free         (+ release)
-  MAKE mia_AT NOT mangiare.                 --> eat
-  MAKE mia_AT NOT modalità_breve.           --> brief
-  MAKE mia_AT NOT modalità_lunga.           --> verbose
-  MAKE mia_AT NOT mostrare.                 --> 'show'       (+ reveal)
-  MAKE mia_AT NOT nuotare.                  --> swim
-  MAKE mia_AT NOT nuotare_in.               --> swim_in
-  MAKE mia_AT NOT parlare.                  --> talk
-  MAKE mia_AT NOT parlare_con.              --> talk_to (+ speak)
-  MAKE mia_AT NOT pensare.                  --> think
-  MAKE mia_AT NOT pensare_a.                --> think_about
-  MAKE mia_AT NOT pregare.                  --> pray
-  MAKE mia_AT NOT prendere.                 --> take.        (+ carry, get, grab, hold, obtain)
-  MAKE mia_AT NOT prendere_da.              --> take_from.   (+ remove from)
-  MAKE mia_AT NOT pulire.                   --> clean        (+ polish, wipe)
-  MAKE mia_AT NOT raccontare.               --> tell         (+ enlighten, inform)
-  MAKE mia_AT NOT ricominciare_partita.     --> 'restart'
-  MAKE mia_AT NOT riempire.                 --> fill
-  MAKE mia_AT NOT riempire_con.             --> fill_with
-  MAKE mia_AT NOT rifare.                   --> 'again'
-  MAKE mia_AT NOT riparare.                 --> fix (+ mend, repair)
-  MAKE mia_AT NOT rispondere.               --> answer (+ reply)
-  MAKE mia_AT NOT rompere.                  --> break        (+ destroy)
-  MAKE mia_AT NOT rompere_con.              --> break_with
-  MAKE mia_AT NOT saltare.                  --> jump
-  MAKE mia_AT NOT saltare_in.               --> jump_in
-  MAKE mia_AT NOT saltare_su.               --> jump_on
-  MAKE mia_AT NOT salvare_partita.          --> save
-  MAKE mia_AT NOT sbloccare.                --> unlock
-  MAKE mia_AT NOT sbloccare_con.            --> unlock_with
-  MAKE mia_AT NOT scavare.                  --> dig
-  MAKE mia_AT NOT scrivere.                 --> write
-  MAKE mia_AT NOT sedersi.                  --> sit (down)
-  MAKE mia_AT NOT sedersi_su.               --> sit_on
-  MAKE mia_AT NOT seguire.                  --> follow
-  MAKE mia_AT NOT spegnere.                 --> turn_off
-  MAKE mia_AT NOT spingere.                 --> push
-  MAKE mia_AT NOT spingere_con.             --> push_with
-  MAKE mia_AT NOT spogliarsi.               --> undress
-  MAKE mia_AT NOT suonare.                  --> play
-  MAKE mia_AT NOT svuotare.                 --> 'empty'
-  MAKE mia_AT NOT svuotare_in.              --> empty_in
-  MAKE mia_AT NOT svuotare_su.              --> empty_on
-  MAKE mia_AT NOT tagliare.                 --> cut
-  MAKE mia_AT NOT tagliare_con.             --> cut_with
-  MAKE mia_AT NOT tirare.                   --> pull
-  MAKE mia_AT NOT toccare.                  --> touch (+ feel)
-  MAKE mia_AT NOT toccare_con.              --> touch_with
-  MAKE mia_AT NOT togliersi_indumento.      --> remove
-  MAKE mia_AT NOT trovare.                  --> find         (+ locate)
-  MAKE mia_AT NOT tuffarsi.                 --> dive
-  MAKE mia_AT NOT tuffarsi_in.              --> dive_in
-  MAKE mia_AT NOT uccidere.                 --> kill         (+ murder)
-  MAKE mia_AT NOT uccidere_con.             --> kill_with
-  MAKE mia_AT NOT usare.                    --> 'use'
-  MAKE mia_AT NOT usare_con.                --> use_with
-  MAKE mia_AT NOT vendere.                  --> sell
-  MAKE mia_AT NOT versare.                  --> pour
-  MAKE mia_AT NOT versare_in.               --> pour_in
-  MAKE mia_AT NOT versare_su.               --> pour_on
+  MAKE mia_AT NOT abbandonare_partita.      ---> 'quit'
+  MAKE mia_AT NOT accendere.                ---> turn_on
+  MAKE mia_AT NOT andare_a.                 ---> go_to
+  MAKE mia_AT NOT aprire.                   ---> open
+  MAKE mia_AT NOT aprire_con.               ---> open_with
+  MAKE mia_AT NOT ascoltare0.               ---> listen0
+  MAKE mia_AT NOT ascoltare.                ---> listen
+  MAKE mia_AT NOT aspettare.                ---> wait         (+ z)
+  MAKE mia_AT NOT assaggiare.               ---> taste        (+ lick)
+  MAKE mia_AT NOT attaccare.                ---> attack (+ beat, fight, hit, punch)
+  MAKE mia_AT NOT attaccare_con.            ---> attack_with
+  MAKE mia_AT NOT attraversare.             ---> climb_through
+  MAKE mia_AT NOT baciare.                  ---> kiss         (+ hug, embrace)
+  MAKE mia_AT NOT ballare.                  ---> dance
+  MAKE mia_AT NOT bere.                     ---> drink
+  MAKE mia_AT NOT bloccare.                 ---> lock
+  MAKE mia_AT NOT bloccare_con.             ---> lock_with
+  MAKE mia_AT NOT bruciare.                 ---> burn
+  MAKE mia_AT NOT bruciare_con.             ---> burn_with
+  MAKE mia_AT NOT bussare.                  ---> knock
+  MAKE mia_AT NOT cantare.                  ---> sing
+  MAKE mia_AT NOT caricare_partita.         ---> 'restore'
+  MAKE mia_AT NOT chiedere.                 ---> ask_for
+  MAKE mia_AT NOT chiudere.                 ---> close        (+ shut)
+  MAKE mia_AT NOT chiudere_con.             ---> close_with
+  MAKE mia_AT NOT comprare.                 ---> buy          (+ purchase)
+  MAKE mia_AT NOT consultare.               ---> consult
+  MAKE mia_AT NOT dare.                     ---> give
+  MAKE mia_AT NOT dire.                     ---> 'say'
+  MAKE mia_AT NOT dire_a.                   ---> say_to
+  MAKE mia_AT NOT dire_no.                  ---> 'no'
+  MAKE mia_AT NOT dire_sì.                  ---> yes
+  MAKE mia_AT NOT domandare.                ---> ask (+ enquire, inquire, interrogate)
+  MAKE mia_AT NOT dormire.                  ---> sleep        (+ rest)
+  MAKE mia_AT NOT entrare.                  ---> enter
+  MAKE mia_AT NOT esaminare.                ---> examine      (+ check, inspect, observe, x)
+  MAKE mia_AT NOT giocare_con.              ---> play_with
+  MAKE mia_AT NOT gridare.                  ---> shout        (+ scream, yell)
+  MAKE mia_AT NOT guidare.                  ---> drive
+  MAKE mia_AT NOT indossare.                ---> wear
+  MAKE mia_AT NOT inventariare.             ---> i               (+ inv, inventory)
+  MAKE mia_AT NOT lasciare.                 ---> drop         (+ discard, dump, reject)
+  MAKE mia_AT NOT legare.                   ---> tie
+  MAKE mia_AT NOT legare_a.                 ---> tie_to
+  MAKE mia_AT NOT leggere.                  ---> read
+  MAKE mia_AT NOT liberare.                 ---> free         (+ release)
+  MAKE mia_AT NOT mangiare.                 ---> eat
+  MAKE mia_AT NOT modalità_breve.           ---> brief
+  MAKE mia_AT NOT modalità_lunga.           ---> verbose
+  MAKE mia_AT NOT mostrare.                 ---> 'show'       (+ reveal)
+  MAKE mia_AT NOT nuotare.                  ---> swim
+  MAKE mia_AT NOT nuotare_in.               ---> swim_in
+  MAKE mia_AT NOT parlare.                  ---> talk
+  MAKE mia_AT NOT parlare_con.              ---> talk_to (+ speak)
+  MAKE mia_AT NOT pensare.                  ---> think
+  MAKE mia_AT NOT pensare_a.                ---> think_about
+  MAKE mia_AT NOT pregare.                  ---> pray
+  MAKE mia_AT NOT prendere.                 ---> take.        (+ carry, get, grab, hold, obtain)
+  MAKE mia_AT NOT prendere_da.              ---> take_from.   (+ remove from)
+  MAKE mia_AT NOT pulire.                   ---> clean        (+ polish, wipe)
+  MAKE mia_AT NOT raccontare.               ---> tell         (+ enlighten, inform)
+  MAKE mia_AT NOT ricominciare_partita.     ---> 'restart'
+  MAKE mia_AT NOT riempire.                 ---> fill
+  MAKE mia_AT NOT riempire_con.             ---> fill_with
+  MAKE mia_AT NOT rifare.                   ---> 'again'
+  MAKE mia_AT NOT riparare.                 ---> fix (+ mend, repair)
+  MAKE mia_AT NOT rispondere.               ---> answer (+ reply)
+  MAKE mia_AT NOT rompere.                  ---> break        (+ destroy)
+  MAKE mia_AT NOT rompere_con.              ---> break_with
+  MAKE mia_AT NOT saltare.                  ---> jump
+  MAKE mia_AT NOT saltare_in.               ---> jump_in
+  MAKE mia_AT NOT saltare_su.               ---> jump_on
+  MAKE mia_AT NOT salvare_partita.          ---> save
+  MAKE mia_AT NOT sbloccare.                ---> unlock
+  MAKE mia_AT NOT sbloccare_con.            ---> unlock_with
+  MAKE mia_AT NOT scavare.                  ---> dig
+  MAKE mia_AT NOT scrivere.                 ---> write
+  MAKE mia_AT NOT sedersi.                  ---> sit (down)
+  MAKE mia_AT NOT sedersi_su.               ---> sit_on
+  MAKE mia_AT NOT seguire.                  ---> follow
+  MAKE mia_AT NOT spegnere.                 ---> turn_off
+  MAKE mia_AT NOT spingere.                 ---> push
+  MAKE mia_AT NOT spingere_con.             ---> push_with
+  MAKE mia_AT NOT spogliarsi.               ---> undress
+  MAKE mia_AT NOT suonare.                  ---> play
+  MAKE mia_AT NOT svuotare.                 ---> 'empty'
+  MAKE mia_AT NOT svuotare_in.              ---> empty_in
+  MAKE mia_AT NOT svuotare_su.              ---> empty_on
+  MAKE mia_AT NOT tagliare.                 ---> cut
+  MAKE mia_AT NOT tagliare_con.             ---> cut_with
+  MAKE mia_AT NOT tirare.                   ---> pull
+  MAKE mia_AT NOT toccare.                  ---> touch (+ feel)
+  MAKE mia_AT NOT toccare_con.              ---> touch_with
+  MAKE mia_AT NOT togliersi_indumento.      ---> remove
+  MAKE mia_AT NOT trovare.                  ---> find         (+ locate)
+  MAKE mia_AT NOT tuffarsi.                 ---> dive
+  MAKE mia_AT NOT tuffarsi_in.              ---> dive_in
+  MAKE mia_AT NOT uccidere.                 ---> kill         (+ murder)
+  MAKE mia_AT NOT uccidere_con.             ---> kill_with
+  MAKE mia_AT NOT usare.                    ---> 'use'
+  MAKE mia_AT NOT usare_con.                ---> use_with
+  MAKE mia_AT NOT vendere.                  ---> sell
+  MAKE mia_AT NOT versare.                  ---> pour
+  MAKE mia_AT NOT versare_in.               ---> pour_in
+  MAKE mia_AT NOT versare_su.               ---> pour_on
 
 --# NOT YET TRANSLATED:
 
@@ -2415,7 +2418,7 @@ END EVENT.
 -- debugger shows a smaller footprint for the 'banner' instance).
 --------------------------------------------------------------------------------
 
--- THE banner IsA blocco_definizioni --> Why?!
+-- THE banner IsA blocco_definizioni ---> Why?!
 
 THE intestazione IsA LOCATION
 

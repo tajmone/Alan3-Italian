@@ -1,0 +1,85 @@
+
+= Doxter: Note di Lavoro
+Tristano Ajmone <tajmone@gmail.com>
+:revdate: 2018-10-04
+:lang: it
+// TOC Settings:
+:toc: left
+:toclevels: 5
+// Sections Numbering:
+:sectnums!:
+:sectnumlevels: 2
+// Cross References:
+:xrefstyle: short
+:section-refsig: Sect.
+// Misc Settings:
+:experimental: true
+:icons: font
+:linkattrs: true
+
+// Custom Attributes
+:Doxter: pass:q[link:https://https://git.io/doxter/[Doxter^]]
+:lib_verbi: pass:q[link:./lib_verbi.i[`lib_verbi.i`^]]
+
+// *****************************************************************************
+// *                                                                           *
+// *                            Document Preamble                              *
+// *                                                                           *
+// *****************************************************************************
+
+
+== Introduzione a Doxter
+
+I moduli della Libreria Standard italiana di Alan includono la propria documentazione nei commenti del codice sorgente.
+La creazione e l'aggiornamento della documentazione viene gestita tramite {Doxter}, un applicativo in grado di estrarre la documentazione dai file sorgenti e ricomporla in documenti AsciiDoc, che vengono infine convertiti in formato HTML.
+
+* https://github.com/tajmone/doxter
+
+Questo documento contiene appunti sull'organizzazione delle regioni di ciascun documento.
+
+
+=== Regioni e pesi nella documentazione
+
+Nei file sorgenti, la documentazione è spezzettata in vari frammenti; ciascun frammento appartiene ad una regione taggata nel documento finale.
+Ogni regione ha un tag identificativo univoco, e i vari frammenti sparsi appartenenti alla medesima regione verrano collati assieme nel documento finale.
+Doxter offre un sistema di marcatura dei commenti che consente di assegnare a ciascuna regione un peso; nel documento finale le varie regioni verranno ordinate per peso.
+I frammenti delle regioni hanno un sottopeso; durante la fase di collatura del documento i vari frammenti di ciascuna regione verrano ordinati per sottopeso prima di essere fusi assieme.
+
+Questo sistema consente di produrre un documento finale in cui i vari frammenti testuali sono ordinati in maniera arbitraria, a prescindere dall'ordine in cui i medesimi appaiono nel codice sorgente.
+
+Per maggiori dettagli sull'uso delle regioni e del loro sistema di pesi e sottopesi, si rimanda alla documentazione di {Doxter}.
+
+Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della libreria, al fine di facilitarne la tracciazione durante il laovoro di editin.
+
+
+== Moduli e documentazione
+
+
+=== Modulo dei verbi
+
+
+
+* {lib_verbi}
+
+
+[cols="2*>10m,20m,60d",options="header"]
+|===============================================================================
+| weight  | subweight |                              | descrizione
+|  1000   |           | elenco_verbi                 | == Elenco dei Verbi Italiani
+|  2000   |           | comandi_partita              | === Meta Comandi di Partita
+|  2100   |           | tabella_comandi_partita      | [tabella verbi]
+|  3000   |           | comandi_gioco                | === Comandi di Gioco
+|  3100   |           | tabella_comandi_gioco        | [tabella verbi]
+|  4000   |           | comandi_affermazion          | === Comandi di Affermazioni o Domande
+|  4100   |           | tabella_comandi_affermazioni | [tabella verbi]
+| 50000   |           | todo                         | TODO
+| 50100   |           | verbi_non_tradotti           | === Verbi da Tradurre
+|===============================================================================
+
+
+////
+| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+////
+
+
+// EOF //

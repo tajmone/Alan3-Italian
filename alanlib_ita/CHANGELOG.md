@@ -11,7 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/010/09](#201801009)
+- [2018/10/13](#20181013)
+    - [Add Doxter for Documentation Generator](#add-doxter-for-documentation-generator)
+- [2018/10/09](#20181009)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
     - [Verb: `Tell`](#verb-tell)
 - [2018/08/27 \(3\)](#20180827-3)
@@ -308,7 +310,43 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/010/09
+# 2018/10/13
+
+- [`libreria.i`][libreria] (v0.6.0)
+- [`lib_classi.i`][lib_classi] (v0.6.0)
+- [`lib_definizioni.i`][lib_definizioni] (v0.6.0)
+- [`lib_luoghi.i`][lib_luoghi] (v0.6.0)
+- [`lib_messaggi.i`][lib_messaggi] (v0.6.0)
+- [`lib_verbi.i`][lib_verbi] (v0.6.0)
+- [`lib_supplemento.i`][lib_supplemento] (v0.6.0)
+
+## Add Doxter for Documentation Generator
+
+Introduce [Doxter] in the workflow, a tool to generate documentation from comments in source files. The new system will extract an AsciiDoc documentation file from each library module, and then convert it to HTML.
+
+All documents have been adapted to the new system to avoid conflicts with Doxter markers (all comments delimiters starting as `-->` had to be changed into `---->` or `--`). All sources bump up to v0.6.0.
+
+Extraction of documentation is handled via a batch script:
+
+- [`BUILD_DOCS.bat`][BUILD_DOCS]
+
+Currently, only `lib_verbi.i` produces Doxter documentation (other modules still need adaptation work); so the only AsciiDoc extracted file right now is:
+
+- [`lib_verbi.asciidoc`][lib_verbi adoc]  (Italian)
+
+The AsciiDoc file is then converted to HTML:
+
+- [`lib_verbi.html`][lib_verbi html]  (Italian — [Live HTML Preview][lib_verbi html live])
+
+More info on Doxter's workflow and current state is available in:
+
+- [`ANNOTAZIONI_DOXTER.adoc`][ANNOTAZIONI_DOXTER]  (Italian)
+
+
+<!---------------------------------------------------------------------------->
+
+
+# 2018/10/09
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.5.7)
 - [`lib_verbi.i`][lib_verbi] (v0.5.7)
@@ -4384,6 +4422,17 @@ The above changes had some side effects which required me to also change the Eng
 [VERBI_IT]: ./VERBI_IT.md
 
 [tests]: ../tests/
+
+<!-- Library Documentation  -->
+
+[Doxter]: https://git.io/doxter "Visit Doxter website"
+
+[ANNOTAZIONI_DOXTER]: ./ANNOTAZIONI_DOXTER.adoc
+[BUILD_DOCS]: ./BUILD_DOCS.bat
+
+[lib_verbi adoc]: ./lib_verbi.asciidoc
+[lib_verbi html]: ./lib_verbi.html
+[lib_verbi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_verbi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
 
 <!-- External Links ---------------------------------------------------------->

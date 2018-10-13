@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione v0.5.0  (2018/08/18)
+--  versione v0.6.0  (2018/10/12)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -81,7 +81,7 @@ THE pzzaIF IsA luogo_esterno
   EXIT ovest TO mercato.
   EXIT nord  TO ccAtrio.
   DESCRIPTION "Ti trovi in una piazza spaziosa.
-               Odi delle voci in lontananza." --> le 'voci' al mercato!
+               Odi delle voci in lontananza." ---> le 'voci' al mercato!
 END THE pzzaIF.
 
 THE statua_Alan IsA object AT pzzaIF.
@@ -106,7 +106,7 @@ END THE statua_Alan.
 
 THE targhetta IsA object AT pzzaIF.
   HAS articolo "la".
-  DESCRIPTION "" --> non elencare tra le cose visibili.
+  DESCRIPTION "" ---> non elencare tra le cose visibili.
   IS leggibile.
   HAS testo "Alan III".
   IS NOT già_letta.
@@ -210,7 +210,7 @@ THE foglio_bianco IsA OBJECT AT pzzaIF.
     DOES ONLY
       IF penna IN hero
         THEN
-          IF txt <> "" --> Non si accettano stringhe vuote!
+          IF txt <> "" ---> Non si accettano stringhe vuote!
             THEN
               IF testo OF ogg = ""
                 THEN SET testo OF ogg TO txt.
@@ -416,7 +416,7 @@ END THE mercato.
 --------------------------------------------------------------------------------
 THE voci IsA suono AT mercato.
   HAS articolo "le".
-  DESCRIPTION "" --> non elencare
+  DESCRIPTION "" ---> non elencare
 
   VERB ascolta
     DOES ONLY
@@ -492,7 +492,7 @@ END THE ccAtrio.
 
 THE candela IsA fonte_di_luce AT ccAtrio.
   HAS articolo "la".
-  -- IS naturale. --> Attributo `naturale` eliminato dalla libreria!
+  -- IS naturale. ---> Attributo `naturale` eliminato dalla libreria!
   -- VERB esamina
   --   DOES ONLY
   --   IF THIS IS illuminato
