@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/10/15](#20181015)
+    - [Doxterize `lib_luoghi.i` and `lib_supplemento.i`](#doxterize-lib_luoghii-and-lib_supplementoi)
 - [2018/10/14 \(3\)](#20181014-3)
     - [Doxterize `lib_classi.i`](#doxterize-lib_classii)
 - [2018/10/14 \(2\)](#20181014-2)
@@ -319,6 +321,22 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/10/15
+
+- [`lib_classi.i`][lib_classi] (v0.6.2)
+- [`lib_definizioni.i`][lib_definizioni] (v0.6.4)
+- [`lib_luoghi.i`][lib_luoghi] (v0.6.1)
+- [`lib_supplemento.i`][lib_supplemento] (v0.6.1)
+
+## Doxterize `lib_luoghi.i` and `lib_supplemento.i`
+
+This commit adds [Doxter] documentation to `lib_luoghi.i` and `lib_supplemento.i`.
+
+Also updates Doxter documentation and organization of other modules.
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/10/14 (3)
 

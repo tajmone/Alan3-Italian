@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.6.1-Alpha, 2018-10-14: Alan 3.0beta6
+--| v0.6.2-Alpha, 2018-10-15: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -2843,7 +2843,7 @@ END THE.
 --| Lista della spesa per le varie cosucce da fare:
 --<
 
--->todo_checklist(.666)
+-->todo_checklist(.665)
 --| 
 --| === Check List Doxter 
 --| 

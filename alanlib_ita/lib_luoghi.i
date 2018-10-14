@@ -2,34 +2,48 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_luoghi.i"
---| v0.6.0-Alpha, 2018-10-12: Alan 3.0beta6
+--| v0.6.1-Alpha, 2018-10-15: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_locations.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
 --| Ad opera di Tristano Ajmone,  (C) 2018, Artistic License 2.1.
 --|=============================================================================
 
---------------------------------------------------------------------------------
+
+-->intro(100.1)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| == Introduzione
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
 --| Questo modulo della libreria, dedicato ai luoghi, definisce:
---|  - Le direzioni cardinali predefinite (implementate come EXIT),
---|  - Il'limbo', un luogo in cui poter collocare oggetti e attori che si vuole
---|    rimuovere dal gioco,
---|  - Quattro classi di luoghi specializzate:
+--| 
+--|  * Le direzioni cardinali predefinite (implementate come `EXIT`).
+--|  * Il `limbo`, un luogo in cui poter collocare oggetti e attori che si vuole
+--|    rimuovere dal gioco.
+--|  * Tre classi di luoghi specializzate:
 --|
---|    1. 'stanza' (per locali d'interno),
---|    2. 'luogo_esterno' (per aree all'esterno),
---|    3. 'luogo_buio' (per luoghi privi di illuminazine propria).
+--|    1. `stanza` -- per locali d'interno.
+--|    2. `luogo_esterno` -- per aree all'esterno.
+--|    3. `luogo_buio` -- per luoghi privi di illuminazine propria.
 --|
---| Infine, aggiunge ad ogni luogo (eredi di LOCATION) i seguenti attributi di
---| tipo numerico:
+--|  * Due regioni contenitore per fornire attributi e comportamenti condivisi
+--|    da tutti i luoghi in esse contenuti:
 --|
---|  - 'visitato'
---|  - 'descritto'
+--|    1. `esterno` -- contiene tutte le stanze.
+--|    2. `interno` -- contiene tutti i luoghi esterni.
+--| 
+--| Infine, aggiunge ad ogni luogo (`location`) i seguenti attributi numerici:
+--|
+--|  * `visitato`
+--|  * `descritto`
 --|
 --| che fungono da variabili contatore per il numero di volte che ciascun luogo
 --| è stato visitato dal giocatore e a lui descritto, rispettivamente.
---------------------------------------------------------------------------------
-
+--~-----------------------------------------------------------------------------
+--<
 
 --------------------------------------------------------------------------------
 -- @TODO | Il testo inglese qui sotto è un po' ambiguo:
@@ -78,7 +92,9 @@
 
 
 
-
+-->todo_checklist(.666)
+--| * [ ] Doxterizza _Il 'LIMBO' e Le Direzioni Cardinali Predefinite_.
+--<<
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------
@@ -162,6 +178,11 @@ SYNONYMS
 -- END THE piece_of_paper.
 
 
+-->todo_checklist(.666)
+--| * [ ] _2. Location classes ROOM and SITE_:
+--| ** [ ] Traduci.
+--| ** [ ] Doxterizza.
+--<<
 
 -- =========================================================================
 
@@ -404,6 +425,11 @@ END ADD TO.
 
 
 
+-->todo_checklist(.666)
+--| * [ ] _3. Dark locations_:
+--| ** [ ] Traduci.
+--| ** [ ] Doxterizza.
+--<<
 
 -- ==========================================================
 
@@ -512,7 +538,9 @@ END EVENT.
 
 
 
-
+-->todo_checklist(.666)
+--| * [ ] Doxterizza _Gli Attribuiti VISITATO e DESCRITTO_.
+--<<
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------
@@ -550,5 +578,53 @@ ADD TO EVERY LOCATION
      END IF.
 
 END ADD TO.
+
+-->todo(50000.1)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| == TODO
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
+--| italiano del modulo dei luoghi.
+--<
+
+
+-->todo_checklist(51000.1)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| === Check List
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--| 
+--| Lista della spesa per le varie cosucce da fare:
+--| 
+--<
+
+-->todo_checklist(.665)
+--| 
+--| === Check List Doxter 
+--| 
+--| Finisci di trasformare commenti in documentazione Doxter:
+--<
+
+
+-->custom_attributes(100)
+--| ////
+--|=============================================================================
+--| Custom AsciiDoc Attributes for Doxter
+--|=============================================================================
+--| ////
+
+--| // Traduzione italiana degli attributi predefiniti di Asciidoctor:
+--| include::attributes-it.adoc[tag=attributes-it]
+
+--| // Definisci sostituzione di {X} con il carattere Unicode 'heavy check mark'
+--| // (U+2714), usato nelle tabelle dei verbi:
+--| :X: &#x2714;
+--<
 
 ---< Fine del File >---

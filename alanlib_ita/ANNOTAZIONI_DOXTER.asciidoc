@@ -1,7 +1,7 @@
 
 = Doxter: Note di Lavoro
 Tristano Ajmone <tajmone@gmail.com>
-:revdate: 2018-10-04
+:revdate: 2018-10-15
 :lang: it
 // TOC Settings:
 :toc: left
@@ -22,6 +22,8 @@ Tristano Ajmone <tajmone@gmail.com>
 :lib_verbi: pass:q[link:./lib_verbi.i[`lib_verbi.i`^]]
 :lib_definizioni: pass:q[link:./lib_definizioni.i[`lib_definizioni.i`^]]
 :lib_classi: pass:q[link:./lib_classi.i[`lib_classi.i`^]]
+:lib_luoghi: pass:q[link:./lib_luoghi.i[`lib_luoghi.i`^]]
+:lib_supplemento: pass:q[link:./lib_supplemento.i[`lib_supplemento.i`^]]
 
 // *****************************************************************************
 // *                                                                           *
@@ -114,7 +116,39 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 |  4100   |           | tabella_comandi_affermazioni | [tabella verbi]
 | 50000   |           | todo                         | TODO
 | 51000   |      1-33 | todo_checklist               | === Check List Generale
-| 51000   |       666 | todo_checklist               | === Check List Doxter
+| 51000   |   665-666 | todo_checklist               | === Check List Doxter
+|===============================================================================
+
+
+=== Modulo dei luoghi
+
+* {lib_luoghi}
+
+
+[cols="2*>10m,20m,60d",options="header"]
+|===============================================================================
+| weight  | subweight |                              | descrizione
+|   100   |         1 | intro                        | == Introduzione
+| 50000   |           | todo                         | TODO
+| 51000   |      1-33 | todo_checklist               | === Check List Generale
+| 51000   |   665-666 | todo_checklist               | === Check List Doxter
+|===============================================================================
+
+
+
+=== Modulo supplementare
+
+* {lib_supplemento}
+
+
+[cols="2*>10m,20m,60d",options="header"]
+|===============================================================================
+| weight  | subweight |                              | descrizione
+|   100   |         1 | intro                        | == Introduzione
+|  1000   |         1 | player_words                 | == Predefined Player Words
+| 50000   |           | todo                         | TODO
+| 51000   |      1-33 | todo_checklist               | === Check List Generale
+| 51000   |   665-666 | todo_checklist               | === Check List Doxter
 |===============================================================================
 
 
