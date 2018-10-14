@@ -11,6 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/10/14](#20181014)
+    - [Optimize Restricted Actions](#optimize-restricted-actions)
+    - [Tweak Level 2 Restrictions](#tweak-level-2-restrictions)
 - [2018/10/13](#20181013)
     - [Add Doxter for Documentation Generator](#add-doxter-for-documentation-generator)
 - [2018/10/09](#20181009)
@@ -309,6 +312,38 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/10/14
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.6.1)
+
+## Optimize Restricted Actions
+
+This commit optimizes the code that handles restricted actions, following the changes proposed in [Issue #6] and [PR #23] of the upstream repository.
+
+Whereas the original code used `IF`/`ELSIF` blocks that set every restriction attribute according to `restricted_level`, at every turn, the new optimized code only changes attributes if a change in restriction level is detected. Also, the new approach reduces redundancy in source code by apllying restrictions progressively, in a layered manner: all restriction attributes are first set to `CAN`, and then a series of `IF >=` checks apply the restrictions of each level by disabling only those actions that pertain to a given level. 
+
+- Add `previous_restricted_level` attribute to track changes in restriction
+level.
+- Optimize `EVENT check_restriction`:
+    + If `restricted_level` is same as `previous_restricted_level` don't do
+    antying, otherwise:
+        * Apply restriction levels in layers:
+            - Level 0 is always applied (all verbs set to `CAN`)
+            - Levels 1-4 only disable the verbs which they affect, each level being conditionally applied with a `>=` conditional check.
+
+Although this aproach ultimately adds some Run-Time redundancy of attributes changes — i.e. by first setting all attributes to `CAN` and then disabling them if restrictions are present — it still optimizes execution since now no changes at all are carried out if `restricted_level` hasn't changed since last turn. 
+
+Run-Time redundancy, even in its worst-case scenario (i.e. restriction level 4), where every attribute gets set twice, is still negligible in terms of execution impact (these are just boolean operations). 
+
+In terms of library maintainance, these changes reduce drastically the size of the source code and eliminate redundancy of attributes therein, ultimately reducing chances of introducing errors when modifying the source code. Also, the new system introduces a clear separation of which restrictions are introduced by each level, making the code more readable too.
+
+## Tweak Level 2 Restrictions
+
+Move restriction of verbs  `parlare` (`talk`) and `parlare_con` (`talk_to`) in restrictions level 2. Although these belong to communication verbs, for some reasons they were not being restricted at Level 2 in the original code, but only in levels 3-4. (See [Issue #24])
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/10/13
 
@@ -4443,11 +4478,14 @@ The above changes had some side effects which required me to also change the Eng
 
 <!-- StdLib Issues & PRs ----------------------------------------------------->
 
-[Issue #8]: https://github.com/AnssiR66/AlanStdLib/issues/8
-[Issue #14]: https://github.com/AnssiR66/AlanStdLib/issues/14
-[Issue #18]: https://github.com/AnssiR66/AlanStdLib/issues/18
+[Issue #6]: https://github.com/AnssiR66/AlanStdLib/issues/6 "View Issue on AlanStdLib repository"
+[Issue #8]: https://github.com/AnssiR66/AlanStdLib/issues/8" View Issue on AlanStdLib repository"
+[Issue #14]: https://github.com/AnssiR66/AlanStdLib/issues/14" View Issue on AlanStdLib repository"
+[Issue #18]: https://github.com/AnssiR66/AlanStdLib/issues/18" View Issue on AlanStdLib repository"
+[Issue #24]: https://github.com/AnssiR66/AlanStdLib/issues/24" View Issue on AlanStdLib repository"
 
-[PR #12 on StdLib]: https://github.com/AnssiR66/AlanStdLib/pull/12
+[PR #12 on StdLib]: https://github.com/AnssiR66/AlanStdLib/pull/12 "View Pull Request on AlanStdLib repository"
+[PR #23]: https://github.com/AnssiR66/AlanStdLib/pull/23 "View Pull Request on AlanStdLib repository"
 
 <!-- eof -->
 
