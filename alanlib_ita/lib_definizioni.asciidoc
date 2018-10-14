@@ -1,0 +1,248 @@
+= Alan StdLib Italian: Definizioni
+Tristano Ajmone <tajmone@gmail.com>
+v0.6.2-Alpha, 2018-10-14: Alan 3.0beta6
+=============================================================================
+Adattamento italiano del modulo `lib_definitions.i` della
+_ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
+Ad opera di Tristano Ajmone,  (C) 2018, Artistic License 2.1.
+=============================================================================
+
+// tag::custom_attributes[]
+////
+=============================================================================
+Custom AsciiDoc Attributes for Doxter
+=============================================================================
+////
+
+// Traduzione italiana degli attributi predefiniti di Asciidoctor:
+include::attributes-it.adoc[tag=attributes-it]
+
+// Definisci sostituzione di {X} con il carattere Unicode 'heavy check mark'
+// (U+2714), usato nelle tabelle dei verbi:
+:X: &#x2714;
+
+// end::custom_attributes[]
+// tag::restrizioni_verbali[]
+
+== Le Restrizioni Verbali
+
+La libreria dispone di un meccanismo di _restrizioni verbabli_ per limitare
+in maniera controllata il tipo di azioni consentite al giocatore. Ad ogni
+verbo della libreria corrisponde un attributo booleano nell'istanza `mia_AT`
+del `blocco_definizioni` che determina se il verbo (o i verbi) associati ad
+esso sono abilitati all'uso.
+
+Nel corpo dei verbi definiti dalla libreria, prima di portare a compimento
+l'azione viene sempre controllato se l'attributo di restrizione verbale cui
+il verbo fa riferimento è abilitato o meno (ossia, se è `CAN` o `CAN NOT`),
+e nel caso non lo fosse l'azione viene bloccata sul nascere, mostrando al 
+giocatore il messaggio "`Non puoi farlo.`".
+
+// end::restrizioni_verbali[]
+// tag::restrizioni_tradotte[]
+=== Elenco delle Restrizioni Verbali
+
+Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
+
+
+[source,alan]
+--------------------------------------------------------------------------------
+  CAN abbandonare_partita.      ---> 'quit'
+  CAN accendere.                ---> turn_on
+  CAN andare_a.                 ---> go_to
+  CAN aprire.                   ---> open
+  CAN aprire_con.               ---> open_with
+  CAN ascoltare0.               ---> listen0
+  CAN ascoltare.                ---> listen
+  CAN aspettare.                ---> wait         (+ z)
+  CAN assaggiare.               ---> taste        (+ lick)
+  CAN attaccare.                ---> attack (+ beat, fight, hit, punch)
+  CAN attaccare_con.            ---> attack_with
+  CAN attraversare.             ---> climb_through
+  CAN baciare.                  ---> kiss         (+ hug, embrace)
+  CAN ballare.                  ---> dance
+  CAN bere.                     ---> drink
+  CAN bloccare.                 ---> lock
+  CAN bloccare_con.             ---> lock_with
+  CAN bruciare.                 ---> burn
+  CAN bruciare_con.             ---> burn_with
+  CAN bussare.                  ---> knock
+  CAN cantare.                  ---> sing
+  CAN caricare_partita.         ---> 'restore'
+  CAN chiedere.                 ---> ask_for
+  CAN chiudere.                 ---> close        (+ shut)
+  CAN chiudere_con.             ---> close_with
+  CAN comprare.                 ---> buy          (+ purchase)
+  CAN consultare.               ---> consult
+  CAN dare.                     ---> give
+  CAN dire.                     ---> 'say'
+  CAN dire_a.                   ---> say_to
+  CAN dire_no.                  ---> 'no'
+  CAN dire_sì.                  ---> yes
+  CAN domandare.                ---> ask (+ enquire, inquire, interrogate)
+  CAN domandare_chi_sono_io.    ---> who_am_i
+  CAN domandare_chi_è.          ---> who_is
+  CAN domandare_cosa_sono_io.   ---> what_am_i
+  CAN domandare_cosa_è.         ---> what_is
+  CAN domandare_dove_mi_trovo.  ---> where_am_i
+  CAN domandare_dove_è.         ---> where_is
+  CAN dormire.                  ---> sleep        (+ rest)
+  CAN entrare.                  ---> enter
+  CAN esaminare.                ---> examine      (+ check, inspect, observe, x)
+  CAN giocare_con.              ---> play_with
+  CAN gridare.                  ---> shout        (+ scream, yell)
+  CAN guidare.                  ---> drive
+  CAN indossare.                ---> wear
+  CAN inventariare.             ---> i            (+ inv, inventory)
+  CAN lasciare.                 ---> drop         (+ discard, dump, reject)
+  CAN legare.                   ---> tie
+  CAN legare_a.                 ---> tie_to
+  CAN leggere.                  ---> read
+  CAN liberare.                 ---> free         (+ release)
+  CAN mangiare.                 ---> eat
+  CAN modalità_breve.           ---> brief
+  CAN modalità_lunga.           ---> verbose
+  CAN mostrare.                 ---> 'show'       (+ reveal)
+  CAN nuotare.                  ---> swim
+  CAN nuotare_in.               ---> swim_in
+  CAN parlare.                  ---> talk
+  CAN parlare_con.              ---> talk_to (+ speak)
+  CAN pensare.                  ---> think
+  CAN pensare_a.                ---> think_about
+  CAN pregare.                  ---> pray
+  CAN prendere.                 ---> take.        (+ carry, get, grab, hold, obtain)
+  CAN prendere_da.              ---> take_from.   (+ remove from)
+  CAN pulire.                   ---> clean        (+ polish, wipe)
+  CAN raccontare.               ---> tell         (+ enlighten, inform)
+  CAN ricominciare_partita.     ---> 'restart'
+  CAN riempire.                 ---> fill
+  CAN riempire_con.             ---> fill_with
+  CAN rifare.                   ---> 'again'
+  CAN riparare.                 ---> fix (+ mend, repair)
+  CAN rispondere.               ---> answer (+ reply)
+  CAN rompere.                  ---> break        (+ destroy)
+  CAN rompere_con.              ---> break_with
+  CAN salvare_partita.          ---> save
+  CAN saltare.                  ---> jump
+  CAN saltare_in.               ---> jump_in
+  CAN saltare_su.               ---> jump_on
+  CAN sbloccare.                ---> unlock
+  CAN sbloccare_con.            ---> unlock_with
+  CAN scavare.                  ---> dig
+  CAN scrivere.                 ---> write
+  CAN sedersi.                  ---> sit (down)
+  CAN sedersi_su.               ---> sit_on
+  CAN seguire.                  ---> follow
+  CAN spegnere.                 ---> turn_off
+  CAN spingere.                 ---> push
+  CAN spingere_con.             ---> push_with
+  CAN spogliarsi.               ---> undress
+  CAN suonare.                  ---> play
+  CAN svuotare.                 ---> 'empty'
+  CAN svuotare_in.              ---> empty_in
+  CAN svuotare_su.              ---> empty_on
+  CAN tagliare.                 ---> cut
+  CAN tagliare_con.             ---> cut_with
+  CAN tirare.                   ---> pull
+  CAN toccare.                  ---> touch (+ feel)
+  CAN toccare_con.              ---> touch_with
+  CAN togliersi_indumento.      ---> remove
+  CAN trovare.                  ---> find         (+ locate)
+  CAN tuffarsi.                 ---> dive
+  CAN tuffarsi_in.              ---> dive_in
+  CAN uccidere.                 ---> kill         (+ murder)
+  CAN uccidere_con.             ---> kill_with
+  CAN usare.                    ---> 'use'
+  CAN usare_con.                ---> use_with
+  CAN vendere.                  ---> sell
+  CAN versare.                  ---> pour
+  CAN versare_in.               ---> pour_in
+  CAN versare_su.               ---> pour_on
+--------------------------------------------------------------------------------
+
+
+// end::restrizioni_tradotte[]
+// tag::todo[]
+== TODO
+
+Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
+italiano del modulo delle definizioni.
+
+// end::todo[]
+// tag::restrizioni_non_tradotte[]
+=== Restrizioni Verbali da Tradurre
+
+Questo è l'elenco degli attributi verbali non ancora tradotti:
+
+[source,alan]
+--------------------------------------------------------------------------------
+  CAN about.
+  CAN bite.        -- (+ chew)
+  CAN catch.
+  CAN climb.
+  CAN climb_on.
+  CAN credits.     -- (+ acknowledgments, author, copyright)
+  CAN 'exit'.
+--CAN extinguish. ----------------> ** VERBO ELIMINATO **  (+ put out, quench)
+  CAN fire.
+  CAN fire_at.
+  CAN get_up.
+  CAN get_off.
+  CAN hint.        -- (+ hints)
+  CAN kick.
+  CAN lie_down.
+  CAN lie_in.
+  CAN lie_on.
+  CAN lift.
+--CAN light. ---------------------> ** VERBO ELIMINATO ** (+ lit)
+  CAN 'look'.      -- (+ gaze, peek)
+  CAN look_at.
+  CAN look_behind.
+  CAN look_in.
+  CAN look_out_of.
+  CAN look_through.
+  CAN look_under.
+  CAN look_up.
+  CAN 'notify'.
+  CAN notify_on.
+  CAN notify_off.
+  CAN pry.
+  CAN pry_with.
+  CAN put.         -- (+ lay, place)
+  CAN put_against.
+  CAN put_behind.
+  CAN put_down.
+  CAN put_in.      -- (+ insert)
+  CAN put_near.
+  CAN put_on.
+  CAN put_under.
+  CAN rub.
+  CAN 'score'.
+  CAN scratch.
+  CAN 'script'.
+  CAN script_on.
+  CAN script_off.
+  CAN search.
+  CAN shake.
+  CAN shoot.       -- (at)
+  CAN shoot_with.
+  CAN sip.
+  CAN smell0.
+  CAN smell.
+  CAN squeeze.
+  CAN stand.       -- (up)
+  CAN stand_on.
+--CAN switch. --------------------> ** VERBO ELIMINATO **
+--CAN switch_on. -----------------> ** VERBO ELIMINATO **
+--CAN switch_off. ----------------> ** VERBO ELIMINATO **
+  CAN tear.        -- (+ rip)
+  CAN throw.
+  CAN throw_at.
+  CAN throw_in.
+  CAN throw_to.
+  CAN turn.        -- (+ rotate)
+--------------------------------------------------------------------------------
+
+
+// end::restrizioni_non_tradotte[]
+

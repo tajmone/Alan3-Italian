@@ -20,6 +20,7 @@ Tristano Ajmone <tajmone@gmail.com>
 // Custom Attributes
 :Doxter: pass:q[link:https://https://git.io/doxter/[Doxter^]]
 :lib_verbi: pass:q[link:./lib_verbi.i[`lib_verbi.i`^]]
+:lib_definizioni: pass:q[link:./lib_definizioni.i[`lib_definizioni.i`^]]
 
 // *****************************************************************************
 // *                                                                           *
@@ -54,6 +55,22 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 
 == Moduli e documentazione
 
+
+=== Modulo delle definizioni
+
+
+
+* {lib_definizioni}
+
+
+[cols="2*>10m,20m,60d",options="header"]
+|===============================================================================
+| weight  | subweight |                          | descrizione
+|  4000   |           | restrizioni_verbali      | == Le Restrizioni Verbali
+|  3100   |           | restrizioni_tradotte     | === Elenco delle Restrizioni Verbali
+| 50000   |           | todo                     | TODO
+| 50100   |           | restrizioni_non_tradotte | === Restrizioni Verbali da Tradurre
+|===============================================================================
 
 === Modulo dei verbi
 

@@ -11,7 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/10/14](#20181014)
+- [2018/10/14 \(2\)](#20181014-2)
+    - [Doxterize `lib_definizioni.i`](#doxterize-lib_definizionii)
+- [2018/10/14 \(1\)](#20181014-1)
     - [Optimize Restricted Actions](#optimize-restricted-actions)
     - [Tweak Level 2 Restrictions](#tweak-level-2-restrictions)
 - [2018/10/13](#20181013)
@@ -313,7 +315,19 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/10/14
+# 2018/10/14 (2)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.6.2)
+
+## Doxterize `lib_definizioni.i`
+
+This commit adds [Doxter] documentation to `lib_definizioni.i`.
+
+
+<!---------------------------------------------------------------------------->
+
+
+# 2018/10/14 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.6.1)
 

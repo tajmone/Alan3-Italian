@@ -56,15 +56,18 @@ Boilerplates and templates from the StdLibrary have been renamed with a leading 
 The Italian library is currently switching to a new system which generates the AsciiDoc documentation directly from comments in the Alan source files using [Doxter]:
 
 - [`lib_verbi.asciidoc`][lib_verbi adoc]
+- [`lib_definizioni.asciidoc`][lib_definizioni adoc]
 
 The AsciiDoc files are then converted to HTML:
 
 - [`lib_verbi.html`][lib_verbi html]  ([Live HTML Preview][lib_verbi html live])
+- [`lib_definizioni.html`][lib_definizioni html]  ([Live HTML Preview][lib_definizioni html live])
 
 See also:
 
 - [`BUILD_DOCS.bat`][BUILD_DOCS]
-- [`ANNOTAZIONI_DOXTER.adoc`][ANNOTAZIONI_DOXTER]  (Italian)
+- [`ANNOTAZIONI_DOXTER.asciidoc`][ANNOTAZIONI_DOXTER adoc]  (Italian)
+- [`ANNOTAZIONI_DOXTER.html`][ANNOTAZIONI_DOXTER html]  (Italian)
 
 
 # Translation
@@ -512,12 +515,17 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 
 <!-- Library Documentation  -->
 
-[ANNOTAZIONI_DOXTER]: ./ANNOTAZIONI_DOXTER.adoc
+[ANNOTAZIONI_DOXTER adoc]: ./ANNOTAZIONI_DOXTER.asciidoc
+[ANNOTAZIONI_DOXTER html]: ./ANNOTAZIONI_DOXTER.html
 [BUILD_DOCS]: ./BUILD_DOCS.bat
 
 [lib_verbi adoc]: ./lib_verbi.asciidoc
 [lib_verbi html]: ./lib_verbi.html
 [lib_verbi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_verbi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+
+[lib_definizioni adoc]: ./lib_definizioni.asciidoc
+[lib_definizioni html]: ./lib_definizioni.html
+[lib_definizioni html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_definizioni.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
 [Doxter]: https://git.io/doxter "Visit Doxter website"
 

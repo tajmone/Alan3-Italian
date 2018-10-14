@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.6.1-Alpha, 2018-10-14: Alan 3.0beta6
+--| v0.6.2-Alpha, 2018-10-14: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -1393,6 +1393,25 @@ EVERY blocco_definizioni IsA LOCATION
 --------------------------------------------------------------------------------
 --//////////////////////////////////////////////////////////////////////////////
 --=============================================================================
+-->restrizioni_verbali(4000)
+--| 
+--| == Le Restrizioni Verbali
+--| 
+--| La libreria dispone di un meccanismo di _restrizioni verbabli_ per limitare
+--| in maniera controllata il tipo di azioni consentite al giocatore. Ad ogni
+--| verbo della libreria corrisponde un attributo booleano nell'istanza `mia_AT`
+--| del `blocco_definizioni` che determina se il verbo (o i verbi) associati ad
+--| esso sono abilitati all'uso.
+--| 
+--| Nel corpo dei verbi definiti dalla libreria, prima di portare a compimento
+--| l'azione viene sempre controllato se l'attributo di restrizione verbale cui
+--| il verbo fa riferimento è abilitato o meno (ossia, se è `CAN` o `CAN NOT`),
+--| e nel caso non lo fosse l'azione viene bloccata sul nascere, mostrando al 
+--| giocatore il messaggio "`Non puoi farlo.`".
+--<
+--| 
+--| Qui di seguito è riportato
+
 
 --------------------------------------------------------------------------------
 -- Finally, for restricted actions, we implement the following attributes,
@@ -1401,6 +1420,12 @@ EVERY blocco_definizioni IsA LOCATION
 -- disabled in-game. The restricted_response of the my_game instance (by default
 -- "You can't do that.") will be shown instead. The restriced_response is
 -- defined further up this file.
+--------------------------------------------------------------------------------
+
+-->restrizioni_tradotte(4100)
+--| === Elenco delle Restrizioni Verbali
+--| 
+--| Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
 
   CAN abbandonare_partita.      ---> 'quit'
   CAN accendere.                ---> turn_on
@@ -1513,8 +1538,12 @@ EVERY blocco_definizioni IsA LOCATION
   CAN versare.                  ---> pour
   CAN versare_in.               ---> pour_in
   CAN versare_su.               ---> pour_on
+--<
 
---# NOT YET TRANSLATED:
+-->restrizioni_non_tradotte(50100)
+--| === Restrizioni Verbali da Tradurre
+--| 
+--| Questo è l'elenco degli attributi verbali non ancora tradotti:
   CAN about.
   CAN bite.        -- (+ chew)
   CAN catch.
@@ -1580,7 +1609,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN throw_in.
   CAN throw_to.
   CAN turn.        -- (+ rotate)
-
+--<
 
 END EVERY blocco_definizioni.
 
@@ -2091,5 +2120,33 @@ THE intestazione IsA LOCATION
 
 END THE intestazione.
 
+-- *****************************************************************************
+-- *                                                                           *
+-- *                                   TODO                                    *
+-- *                                                                           *
+-- *****************************************************************************
+
+-->todo(50000)
+--| == TODO
+--| 
+--| Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
+--| italiano del modulo delle definizioni.
+--<
+
+
+-->custom_attributes(100)
+--| ////
+--|=============================================================================
+--| Custom AsciiDoc Attributes for Doxter
+--|=============================================================================
+--| ////
+
+--| // Traduzione italiana degli attributi predefiniti di Asciidoctor:
+--| include::attributes-it.adoc[tag=attributes-it]
+
+--| // Definisci sostituzione di {X} con il carattere Unicode 'heavy check mark'
+--| // (U+2714), usato nelle tabelle dei verbi:
+--| :X: &#x2714;
+--<
 
 ---< Fine del File >---
