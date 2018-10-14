@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.6.1-Alpha, 2018-10-14: Alan 3.0beta6
+v0.6.2-Alpha, 2018-10-14: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -283,4 +283,11 @@ italiano del modulo dei verbi.
 |=======================================================================================================
 
 // end::verbi_non_tradotti[]
+// tag::todo_checklist[]
+=== Check List
+
+Lista della spesa per le varie cosucce da fare:
+
+
+// end::todo_checklist[]
 

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.6.0-Alpha, 2018-10-12: Alan 3.0beta6
+--| v0.6.1-Alpha, 2018-10-14: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -965,6 +965,59 @@ END EVENT.
 
 
 -- The quick guide ends here.
+
+
+
+-->tabella_vestiario_intro(10000.1)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| == La Tabella del Vestiario
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| La tabella che segue riporta una selezione di indumenti d'uso comune ed i
+--| corrispettivi valori degli attributi per una corretta implementazione.
+--| 
+--| Per creare un indumento non figurante nella tabella, dovrebbe bastare un
+--| po' di ingegno nel rapportare il nuovo capo di vestiario a quelli presenti
+--| nella tabella, cercando di cogliere somilianze e differenze fino ad ottenere
+--| dei valori adatti allo scopo.
+--~ 
+--| Teniate a mente che *è obbligatorio* impiegare i valori esatti riportati nella
+--| tabella, e che sommare a casaccio valori intermedi produrrà quasi sicuramente
+--| dei bachi nell'avventura.
+--<
+
+-->todo_checklist(.33)
+--| * [ ] *Tabella del Vestiario*: finire traduzione.
+--<<
+
+
+-->tabella_vestiario(10100.1)
+--| .Indumenti Comuni
+--| [cols="<25d,5*^15m",options="header"]
+--| |===========================================================================
+--| | Indumento    |`val_testa`|`val_tronco`|`val_gambe`|`val_piedi`|`val_mani`
+--~ +--------------------------+------------+-----------+-----------+----------+
+--| | cappello             | 2 |          0 |         0 |         0 |        0
+--| | canottiera/reggiseno | 0 |          2 |         0 |         0 |        0
+--~                                                                             TRANSLATE!
+--| | undies/panties       | 0 |          0 |         2 |         0 |        0
+--| | teddy                | 0 |          4 |         4 |         0 |        0
+--| | blouse/shirt/T-shirt | 0 |          8 |         0 |         0 |        0
+--| | dress/coveralls      | 0 |          8 |        32 |         0 |        0
+--| | gonna                | 0 |          0 |        32 |         0 |        0
+--| | pantaloni/shorts     | 0 |          0 |        16 |         0 |        0
+--| | sweater/pullover     | 0 |         16 |         0 |         0 |        0
+--| | giacca               | 0 |         32 |         0 |         0 |        0
+--| | cappotto             | 0 |         64 |        64 |         0 |        0
+--| | socks/stockings      | 0 |          0 |         0 |         2 |        0
+--| | tights/pantiehose    | 0 |          0 |         8 |         2 |        0
+--| | scarpe/stivali       | 0 |          0 |         0 |         4 |        0
+--| | guanti               | 0 |          0 |         0 |         0 |        2
+--| |===========================================================================
+--<
 
 
 -- The clothing table
@@ -2766,5 +2819,52 @@ END EVERY.
 THE indumento_fittizio IsA indumento
 END THE.
 
+
+-->todo(50000.1)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| == TODO
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
+--| italiano del modulo delle classi.
+--<
+
+-->todo_checklist(51000.1)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| === Check List Generale
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--| 
+--| Lista della spesa per le varie cosucce da fare:
+--<
+
+-->todo_checklist(.666)
+--| 
+--| === Check List Doxter 
+--| 
+--| Finisci di trasformare commenti in documentazione Doxter:
+--<
+
+
+
+-->custom_attributes(100)
+--| ////
+--|=============================================================================
+--| Custom AsciiDoc Attributes for Doxter
+--|=============================================================================
+--| ////
+
+--| // Traduzione italiana degli attributi predefiniti di Asciidoctor:
+--| include::attributes-it.adoc[tag=attributes-it]
+
+--| // Definisci sostituzione di {X} con il carattere Unicode 'heavy check mark'
+--| // (U+2714), usato nelle tabelle dei verbi:
+--| :X: &#x2714;
+--<
 
 ---< Fine del File >---

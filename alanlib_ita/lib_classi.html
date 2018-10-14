@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.7.1">
 <meta name="author" content="Tristano Ajmone">
-<title>Doxter: Note di Lavoro</title>
+<title>Alan StdLib Italian: Classi</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -434,317 +434,235 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Doxter: Note di Lavoro</h1>
+<h1>Alan StdLib Italian: Classi</h1>
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revdate">2018-10-04</span>
+<span id="revnumber">versione 0.6.1-Alpha,</span>
+<span id="revdate">2018-10-14</span>
+<br><span id="revremark">Alan 3.0beta6</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_introduzione_a_doxter">Introduzione a Doxter</a>
+<li><a href="#_la_tabella_del_vestiario">La Tabella del Vestiario</a></li>
+<li><a href="#_todo">TODO</a>
 <ul class="sectlevel2">
-<li><a href="#_regioni_e_pesi_nella_documentazione">Regioni e pesi nella documentazione</a></li>
-</ul>
-</li>
-<li><a href="#_moduli_e_documentazione">Moduli e documentazione</a>
-<ul class="sectlevel2">
-<li><a href="#_modulo_delle_definizioni">Modulo delle definizioni</a></li>
-<li><a href="#_modulo_dei_verbi">Modulo dei verbi</a></li>
-<li><a href="#_modulo_delle_classi">Modulo delle classi</a></li>
+<li><a href="#_check_list_generale">Check List Generale</a></li>
+<li><a href="#_check_list_doxter">Check List Doxter</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_introduzione_a_doxter">Introduzione a Doxter</h2>
+<div id="preamble">
 <div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
 <div class="paragraph">
-<p>I moduli della Libreria Standard italiana di Alan includono la propria documentazione nei commenti del codice sorgente.
-La creazione e l&#8217;aggiornamento della documentazione viene gestita tramite <a href="https://https://git.io/doxter/" target="_blank" rel="noopener">Doxter</a>, un applicativo in grado di estrarre la documentazione dai file sorgenti e ricomporla in documenti AsciiDoc, che vengono infine convertiti in formato HTML.</p>
+<p>Adattamento italiano del modulo <code>lib_classes.i</code> della
+<em>ALAN Standard Library</em> v2.1, &#169; Anssi Räisänen, Artistic License 2.1.
+Ad opera di Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/tajmone/doxter" class="bare">https://github.com/tajmone/doxter</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Questo documento contiene appunti sull&#8217;organizzazione delle regioni di ciascun documento.</p>
-</div>
-<div class="sect2">
-<h3 id="_regioni_e_pesi_nella_documentazione">Regioni e pesi nella documentazione</h3>
-<div class="paragraph">
-<p>Nei file sorgenti, la documentazione è spezzettata in vari frammenti; ciascun frammento appartiene ad una regione taggata nel documento finale.
-Ogni regione ha un tag identificativo univoco, e i vari frammenti sparsi appartenenti alla medesima regione verrano collati assieme nel documento finale.
-Doxter offre un sistema di marcatura dei commenti che consente di assegnare a ciascuna regione un peso; nel documento finale le varie regioni verranno ordinate per peso.
-I frammenti delle regioni hanno un sottopeso; durante la fase di collatura del documento i vari frammenti di ciascuna regione verrano ordinati per sottopeso prima di essere fusi assieme.</p>
-</div>
-<div class="paragraph">
-<p>Questo sistema consente di produrre un documento finale in cui i vari frammenti testuali sono ordinati in maniera arbitraria, a prescindere dall&#8217;ordine in cui i medesimi appaiono nel codice sorgente.</p>
-</div>
-<div class="paragraph">
-<p>Per maggiori dettagli sull&#8217;uso delle regioni e del loro sistema di pesi e sottopesi, si rimanda alla documentazione di <a href="https://https://git.io/doxter/" target="_blank" rel="noopener">Doxter</a>.</p>
-</div>
-<div class="paragraph">
-<p>Questo documento annota l&#8217;ordine dei pesi utilizzati in ciascun modulo della libreria, al fine di facilitarne la tracciazione durante il laovoro di editin.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_moduli_e_documentazione">Moduli e documentazione</h2>
+<h2 id="_la_tabella_del_vestiario">La Tabella del Vestiario</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_modulo_delle_definizioni">Modulo delle definizioni</h3>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="./lib_definizioni.i" target="_blank" rel="noopener"><code>lib_definizioni.i</code></a></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>La tabella che segue riporta una selezione di indumenti d&#8217;uso comune ed i
+corrispettivi valori degli attributi per una corretta implementazione.</p>
+</div>
+<div class="paragraph">
+<p>Per creare un indumento non figurante nella tabella, dovrebbe bastare un
+po' di ingegno nel rapportare il nuovo capo di vestiario a quelli presenti
+nella tabella, cercando di cogliere somilianze e differenze fino ad ottenere
+dei valori adatti allo scopo.
+Teniate a mente che <strong>è obbligatorio</strong> impiegare i valori esatti riportati nella
+tabella, e che sommare a casaccio valori intermedi produrrà quasi sicuramente
+dei bachi nell&#8217;avventura.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
+<caption class="title">Tabella 1. Indumenti Comuni</caption>
 <colgroup>
-<col style="width: 10%;">
-<col style="width: 10%;">
-<col style="width: 20%;">
-<col style="width: 60%;">
+<col style="width: 25%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-right valign-top">weight</th>
-<th class="tableblock halign-right valign-top">subweight</th>
-<th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">descrizione</th>
+<th class="tableblock halign-left valign-top">Indumento</th>
+<th class="tableblock halign-center valign-top"><code>val_testa</code></th>
+<th class="tableblock halign-center valign-top"><code>val_tronco</code></th>
+<th class="tableblock halign-center valign-top"><code>val_gambe</code></th>
+<th class="tableblock halign-center valign-top"><code>val_piedi</code></th>
+<th class="tableblock halign-center valign-top"><code>val_mani</code></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>4000</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>restrizioni_verbali</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== Le Restrizioni Verbali</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cappello</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>4100</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>restrizioni_tradotte</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Elenco delle Restrizioni Verbali</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">canottiera/reggiseno</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>9000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>intestazione</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== L&#8217;Intestazione dell&#8217;Avventura (Banner)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">undies/panties</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>20</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>intestazione</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Attributi dell&#8217;Intestazione</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teddy</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>4</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>4</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>50000</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TODO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">blouse/shirt/T-shirt</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>8</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>50100</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>restrizioni_non_tradotte</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Restrizioni Verbali da Tradurre</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dress/coveralls</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>8</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>32</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gonna</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>32</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pantaloni/shorts</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>16</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sweater/pullover</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>16</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">giacca</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>32</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cappotto</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>64</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>64</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">socks/stockings</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tights/pantiehose</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>8</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scarpe/stivali</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>4</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">guanti</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</div>
+<div class="sect1">
+<h2 id="_todo">TODO</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Questa sezione contiene l&#8217;elenco delle cose da fare per ultimare l&#8217;adattamento
+italiano del modulo delle classi.</p>
+</div>
 <div class="sect2">
-<h3 id="_modulo_dei_verbi">Modulo dei verbi</h3>
-<div class="ulist">
-<ul>
+<h3 id="_check_list_generale">Check List Generale</h3>
+<div class="paragraph">
+<p>Lista della spesa per le varie cosucce da fare:</p>
+</div>
+<div class="ulist checklist">
+<ul class="checklist">
 <li>
-<p><a href="./lib_verbi.i" target="_blank" rel="noopener"><code>lib_verbi.i</code></a></p>
+<p><i class="fa fa-square-o"></i> <strong>Tabella del Vestiario</strong>: finire traduzione.</p>
 </li>
 </ul>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 10%;">
-<col style="width: 10%;">
-<col style="width: 20%;">
-<col style="width: 60%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-right valign-top">weight</th>
-<th class="tableblock halign-right valign-top">subweight</th>
-<th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">descrizione</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1000</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>elenco_verbi</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== Elenco dei Verbi Italiani</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>2000</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>comandi_partita</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Meta Comandi di Partita</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>2100</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tabella_comandi_partita</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[tabella verbi]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>3000</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>comandi_gioco</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Comandi di Gioco</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>3100</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tabella_comandi_gioco</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[tabella verbi]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>4000</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>comandi_affermazion</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Comandi di Affermazioni o Domande</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>4100</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tabella_comandi_affermazioni</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[tabella verbi]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>50000</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TODO</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>50100</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>verbi_non_tradotti</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Verbi da Tradurre</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>51000</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="sect2">
-<h3 id="_modulo_delle_classi">Modulo delle classi</h3>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="./lib_classi.i" target="_blank" rel="noopener"><code>lib_classi.i</code></a></p>
-</li>
-</ul>
+<h3 id="_check_list_doxter">Check List Doxter</h3>
+<div class="paragraph">
+<p>Finisci di trasformare commenti in documentazione Doxter:</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 10%;">
-<col style="width: 10%;">
-<col style="width: 20%;">
-<col style="width: 60%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-right valign-top">weight</th>
-<th class="tableblock halign-right valign-top">subweight</th>
-<th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">descrizione</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1000</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>elenco_verbi</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== Elenco dei Verbi Italiani</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>2000</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>comandi_partita</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Meta Comandi di Partita</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>2100</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tabella_comandi_partita</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[tabella verbi]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>3000</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>comandi_gioco</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Comandi di Gioco</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>3100</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tabella_comandi_gioco</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[tabella verbi]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>4000</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>comandi_affermazion</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Comandi di Affermazioni o Domande</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>4100</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tabella_comandi_affermazioni</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[tabella verbi]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>50000</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TODO</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>51000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1-33</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List Generale</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>51000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>666</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List Doxter</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-14 22:35:36 ora legale Europa occidentale
+Versione 0.6.1-Alpha<br>
+Ultimo aggiornamento 2018-10-14 22:39:50 ora legale Europa occidentale
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

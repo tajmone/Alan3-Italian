@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/10/14 \(3\)](#20181014-3)
+    - [Doxterize `lib_classi.i`](#doxterize-lib_classii)
 - [2018/10/14 \(2\)](#20181014-2)
     - [Banner Translation](#banner-translation)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
@@ -317,6 +319,20 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/10/14 (3)
+
+- [`lib_classi.i`][lib_classi] (v0.6.1)
+- [`lib_verbi.i`][lib_verbi] (v0.6.2)
+
+## Doxterize `lib_classi.i`
+
+This commit adds [Doxter] documentation to `lib_classi.i`.
+
+Also update Doxter organization of `lib_verbi.i`.
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/10/14 (2)
 
