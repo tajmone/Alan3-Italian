@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Definizioni
 Tristano Ajmone <tajmone@gmail.com>
-v0.6.2-Alpha, 2018-10-14: Alan 3.0beta6
+v0.6.3-Alpha, 2018-10-14: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_definitions.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -52,8 +52,7 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
   CAN andare_a.                 ---> go_to
   CAN aprire.                   ---> open
   CAN aprire_con.               ---> open_with
-  CAN ascoltare0.               ---> listen0
-  CAN ascoltare.                ---> listen
+  CAN ascoltare.                ---> listen + listen0 | ascolta0 + ascolta
   CAN aspettare.                ---> wait         (+ z)
   CAN assaggiare.               ---> taste        (+ lick)
   CAN attaccare.                ---> attack (+ beat, fight, hit, punch)
@@ -162,6 +161,69 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
 
 
 // end::restrizioni_tradotte[]
+// tag::intestazione[]
+== L'Intestazione dell'Avventura (Banner)
+Ogni avventura creata con la Libreria ha una sua _intestazione_ (detta anche
+_banner_) contenente informazioni sull'avventura, il suo autore e le versioni
+della libereria e del compilatore Alan utilizzati.
+
+L'uso del banner è facoltativo.
+
+L'instestazione viene creata dalla libreria tramite l'instanza
+`intestazione` della classe `location`. L'espediente consiste nello sfruttate
+la descrizione di questo luogo fittizio per visualizzare il testo del banner
+all'inizio della partita tramite `DESCRIBE intestazione.`.
+
+
+[source,alan]
+--------------------------------------------------------------------------------
+THE intestazione IsA LOCATION
+
+    DESCRIPTION
+
+    "$p" STYLE alert. SAY titolo OF mia_AT. STYLE normal.
+
+    IF sottotitolo OF mia_AT <> ""
+      THEN "$n" SAY sottotitolo OF mia_AT.
+      END IF.
+
+    "$n(C)" SAY autore OF mia_AT. "," SAY anno OF mia_AT. "."
+--                                                                              TRANSLATE!
+    "$nAvventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+     $nLibreria Standard Italiana v2.1"
+
+    IF versione OF mia_AT <> "0"
+      THEN "$nVersione" SAY versione OF mia_AT.
+      END IF.
+
+    "$nTutti i diritti riservati."
+
+END THE intestazione.
+
+--------------------------------------------------------------------------------
+
+La `DESCRIPTION` di `intestazione` agisce da template, e per riempire i
+dettagli del testo del banner essa attingerà ai vari attributi di intestazione
+presenti nell'istanza `mia_AT` dell'avventura.
+
+=== Attributi dell'Intestazione
+L'istanza `mia_AT` (del `blocco_definizioni`) espone all'autore degli
+attributi per fornire i dettagli del banner che potrà (facoltativamente)
+essere mostrato all'inizio della partita tramite il template dell'istanza
+`intestazione`:
+
+
+[source,alan]
+--------------------------------------------------------------------------------
+  HAS        titolo  "My New Game".
+  HAS   sottotitolo  "".
+  HAS        autore  "An ALAN Author".
+  HAS          anno   2018.
+  HAS      versione  "1".
+--------------------------------------------------------------------------------
+
+
+// end::intestazione[]
 // tag::todo[]
 == TODO
 

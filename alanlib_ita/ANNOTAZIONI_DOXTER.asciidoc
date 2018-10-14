@@ -67,7 +67,9 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 |===============================================================================
 | weight  | subweight |                          | descrizione
 |  4000   |           | restrizioni_verbali      | == Le Restrizioni Verbali
-|  3100   |           | restrizioni_tradotte     | === Elenco delle Restrizioni Verbali
+|  4100   |           | restrizioni_tradotte     | === Elenco delle Restrizioni Verbali
+|  9000   |         1 | intestazione             | == L'Intestazione dell'Avventura (Banner)
+|         |        20 | intestazione             | === Attributi dell'Intestazione
 | 50000   |           | todo                     | TODO
 | 50100   |           | restrizioni_non_tradotte | === Restrizioni Verbali da Tradurre
 |===============================================================================

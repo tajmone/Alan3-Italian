@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.6.2-Alpha,</span>
+<span id="revnumber">versione 0.6.3-Alpha,</span>
 <span id="revdate">2018-10-14</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
@@ -448,6 +448,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_le_restrizioni_verbali">Le Restrizioni Verbali</a>
 <ul class="sectlevel2">
 <li><a href="#_elenco_delle_restrizioni_verbali">Elenco delle Restrizioni Verbali</a></li>
+</ul>
+</li>
+<li><a href="#_lintestazione_dellavventura_banner">L&#8217;Intestazione dell&#8217;Avventura (Banner)</a>
+<ul class="sectlevel2">
+<li><a href="#_attributi_dellintestazione">Attributi dell&#8217;Intestazione</a></li>
 </ul>
 </li>
 <li><a href="#_todo">TODO</a>
@@ -501,8 +506,7 @@ giocatore il messaggio &#8220;Non puoi farlo.&#8221;.</p>
   CAN andare_a.                 ---&gt; go_to
   CAN aprire.                   ---&gt; open
   CAN aprire_con.               ---&gt; open_with
-  CAN ascoltare0.               ---&gt; listen0
-  CAN ascoltare.                ---&gt; listen
+  CAN ascoltare.                ---&gt; listen + listen0 | ascolta0 + ascolta
   CAN aspettare.                ---&gt; wait         (+ z)
   CAN assaggiare.               ---&gt; taste        (+ lick)
   CAN attaccare.                ---&gt; attack (+ beat, fight, hit, punch)
@@ -613,6 +617,74 @@ giocatore il messaggio &#8220;Non puoi farlo.&#8221;.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_lintestazione_dellavventura_banner">L&#8217;Intestazione dell&#8217;Avventura (Banner)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ogni avventura creata con la Libreria ha una sua <em>intestazione</em> (detta anche
+<em>banner</em>) contenente informazioni sull&#8217;avventura, il suo autore e le versioni
+della libereria e del compilatore Alan utilizzati.</p>
+</div>
+<div class="paragraph">
+<p>L&#8217;uso del banner è facoltativo.</p>
+</div>
+<div class="paragraph">
+<p>L&#8217;instestazione viene creata dalla libreria tramite l&#8217;instanza
+<code>intestazione</code> della classe <code>location</code>. L&#8217;espediente consiste nello sfruttate
+la descrizione di questo luogo fittizio per visualizzare il testo del banner
+all&#8217;inizio della partita tramite <code>DESCRIBE intestazione.</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">THE intestazione IsA LOCATION
+
+    DESCRIPTION
+
+    "$p" STYLE alert. SAY titolo OF mia_AT. STYLE normal.
+
+    IF sottotitolo OF mia_AT &lt;&gt; ""
+      THEN "$n" SAY sottotitolo OF mia_AT.
+      END IF.
+
+    "$n(C)" SAY autore OF mia_AT. "," SAY anno OF mia_AT. "."
+--                                                                              TRANSLATE!
+    "$nAvventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+     $nLibreria Standard Italiana v2.1"
+
+    IF versione OF mia_AT &lt;&gt; "0"
+      THEN "$nVersione" SAY versione OF mia_AT.
+      END IF.
+
+    "$nTutti i diritti riservati."
+
+END THE intestazione.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La <code>DESCRIPTION</code> di <code>intestazione</code> agisce da template, e per riempire i
+dettagli del testo del banner essa attingerà ai vari attributi di intestazione
+presenti nell&#8217;istanza <code>mia_AT</code> dell&#8217;avventura.</p>
+</div>
+<div class="sect2">
+<h3 id="_attributi_dellintestazione">Attributi dell&#8217;Intestazione</h3>
+<div class="paragraph">
+<p>L&#8217;istanza <code>mia_AT</code> (del <code>blocco_definizioni</code>) espone all&#8217;autore degli
+attributi per fornire i dettagli del banner che potrà (facoltativamente)
+essere mostrato all&#8217;inizio della partita tramite il template dell&#8217;istanza
+<code>intestazione</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS        titolo  "My New Game".
+  HAS   sottotitolo  "".
+  HAS        autore  "An ALAN Author".
+  HAS          anno   2018.
+  HAS      versione  "1".</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_todo">TODO</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -699,8 +771,8 @@ italiano del modulo delle definizioni.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.6.2-Alpha<br>
-Ultimo aggiornamento 2018-10-14 16:53:29 ora legale Europa occidentale
+Versione 0.6.3-Alpha<br>
+Ultimo aggiornamento 2018-10-14 18:59:15 ora legale Europa occidentale
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

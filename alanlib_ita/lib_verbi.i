@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.6.0-Alpha, 2018-10-12: Alan 3.0beta6
+--| v0.6.1-Alpha, 2018-10-14: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -566,7 +566,7 @@ SYNTAX ascolta0 = ascolta.
 
 
 VERB ascolta0
-  CHECK mia_AT CAN ascoltare0
+  CHECK mia_AT CAN ascoltare
     ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     "Non odi niente di particolare."
@@ -9987,5 +9987,5 @@ END VERB verbose.
 --| :X: &#x2714;
 --<
 
--- end of file.
+---< Fine del File >---
 

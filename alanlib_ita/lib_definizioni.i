@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.6.2-Alpha, 2018-10-14: Alan 3.0beta6
+--| v0.6.3-Alpha, 2018-10-14: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -540,27 +540,23 @@ me, myself, yourself, self = hero. ---> @TODO                                   
 EVERY blocco_definizioni IsA LOCATION
 
 
-
---==============================================================================
---------------------------------------------------------------------------------
--- § x.1 - Attributi del Banner
---------------------------------------------------------------------------------
---==============================================================================
-
-  -- attributes for the start section (banner):
-  -- ==========================================
+-->intestazione(.20)
+--~==============================================================================
+--~------------------------------------------------------------------------------
+--| === Attributi dell'Intestazione
+--~------------------------------------------------------------------------------
+--~==============================================================================
+--| L'istanza `mia_AT` (del `blocco_definizioni`) espone all'autore degli
+--| attributi per fornire i dettagli del banner che potrà (facoltativamente)
+--| essere mostrato all'inizio della partita tramite il template dell'istanza
+--| `intestazione`:
 
   HAS        titolo  "My New Game".
   HAS   sottotitolo  "".
   HAS        autore  "An ALAN Author".
   HAS          anno   2018.
   HAS      versione  "1".
-
-  -- These will be shown at the start of the game if you add
-  --   DESCRIBE banner.
-  -- after START AT [location].
-
-
+--<
 
 --==============================================================================
 --------------------------------------------------------------------------------
@@ -1432,8 +1428,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN andare_a.                 ---> go_to
   CAN aprire.                   ---> open
   CAN aprire_con.               ---> open_with
-  CAN ascoltare0.               ---> listen0
-  CAN ascoltare.                ---> listen
+  CAN ascoltare.                ---> listen + listen0 | ascolta0 + ascolta
   CAN aspettare.                ---> wait         (+ z)
   CAN assaggiare.               ---> taste        (+ lick)
   CAN attaccare.                ---> attack (+ beat, fight, hit, punch)
@@ -1653,8 +1648,7 @@ EVENT check_restriction
       MAKE mia_AT andare_a.                 ---> go_to
       MAKE mia_AT aprire.                   ---> open
       MAKE mia_AT aprire_con.               ---> open_with
-      MAKE mia_AT ascoltare0.               ---> listen0
-      MAKE mia_AT ascoltare.                ---> listen
+      MAKE mia_AT ascoltare.                ---> listen + listen0 | ascolta0 + ascolta
       MAKE mia_AT aspettare.                ---> wait         (+ z)
       MAKE mia_AT assaggiare.               ---> taste        (+ lick)
       MAKE mia_AT attaccare.                ---> attack (+ beat, fight, hit, punch)
@@ -1999,8 +1993,7 @@ EVENT check_restriction
       IF restricted_level OF mia_AT >= 3
         THEN
 
-          MAKE mia_AT NOT ascoltare0.               ---> listen0
-          MAKE mia_AT NOT ascoltare.                ---> listen
+          MAKE mia_AT NOT ascoltare.                ---> listen + listen0 | ascolta0 + ascolta
           MAKE mia_AT NOT aspettare.                ---> wait         (+ z)
           MAKE mia_AT NOT domandare_chi_sono_io.    ---> who_am_i
           MAKE mia_AT NOT domandare_chi_è.          ---> who_is
@@ -2074,28 +2067,24 @@ EVENT check_restriction
 
 END EVENT.
 
+-->intestazione(9000.1)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| == L'Intestazione dell'Avventura (Banner)
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| Ogni avventura creata con la Libreria ha una sua _intestazione_ (detta anche
+--| _banner_) contenente informazioni sull'avventura, il suo autore e le versioni
+--| della libereria e del compilatore Alan utilizzati.
+--| 
+--| L'uso del banner è facoltativo.
 
---=============================================================================
---\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---------------------------------------------------------------------------------
--- § X - L'Intestazione dell'Avventura (Banner)
---------------------------------------------------------------------------------
---//////////////////////////////////////////////////////////////////////////////
---=============================================================================
--- Not sure why in the original the 'banner' is an instance of 'DEFINITION_BLOCK'
--- but it doesn't seem to need being one at all (after all, it relies on the
--- attributes of 'my_game' for displaying the banner info). I've brought up the
--- issue to Anssi's attention (Issue #8):
---
---    https://github.com/AnssiR66/AlanStdLib/issues/8
---
--- In the meantime, I'll change 'banner' to an instance of LOCATION here, since
--- local tests revealed that it works just as fine and consumes less memory
--- (the compiled test adventure was 20Kb smaller with this tweak, and the ARun
--- debugger shows a smaller footprint for the 'banner' instance).
---------------------------------------------------------------------------------
-
--- THE banner IsA blocco_definizioni ---> Why?!
+--| L'instestazione viene creata dalla libreria tramite l'instanza
+--| `intestazione` della classe `location`. L'espediente consiste nello sfruttate
+--| la descrizione di questo luogo fittizio per visualizzare il testo del banner
+--| all'inizio della partita tramite `DESCRIBE intestazione.`.
 
 THE intestazione IsA LOCATION
 
@@ -2108,9 +2097,9 @@ THE intestazione IsA LOCATION
       END IF.
 
     "$n(C)" SAY autore OF mia_AT. "," SAY anno OF mia_AT. "."
-
-    "$nProgrammed with the ALAN Interactive Fiction Language v3.0 beta5
-    $nStandard Library v2.1"
+--                                                                              TRANSLATE!
+    "$nAvventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+     $nLibreria Standard Italiana v2.1"
 
     IF versione OF mia_AT <> "0"
       THEN "$nVersione" SAY versione OF mia_AT.
@@ -2119,6 +2108,11 @@ THE intestazione IsA LOCATION
     "$nTutti i diritti riservati."
 
 END THE intestazione.
+
+--| La `DESCRIPTION` di `intestazione` agisce da template, e per riempire i
+--| dettagli del testo del banner essa attingerà ai vari attributi di intestazione
+--| presenti nell'istanza `mia_AT` dell'avventura.
+--<
 
 -- *****************************************************************************
 -- *                                                                           *
