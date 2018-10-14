@@ -1,0 +1,245 @@
+
+
+Test per le Azioni Bloccate 
+Un'aventura per testare le restricted actions. 
+(C) Tristano Ajmone, 2018. 
+Programmed with the ALAN Interactive Fiction Language v3.0 beta5
+Standard Library v2.1 
+Versione 1 
+Tutti i diritti riservati. 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Ogni stanza è soggetta ad un diverso livello di restrizione delle azioni.
+Digita 'livello' per verificare il livello di restrizione effettivo.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Livello di Restrizione 0
+In questo livello tutte le azioni sono consentite.
+
+> ; ==============================================================================
+> ;                            Livello di Restrizione 0                           
+> ; ==============================================================================
+> ; Al Livello 0 nessuna azione deve essere bloccata:
+> ; ------------------------------------------------------------------------------
+> ; TEST/PASS: Azioni di Livello 0                             
+> ; ------------------------------------------------------------------------------
+> lascia il telefonino
+Lasci il cellulare.
+
+> prendi il telefonino
+Preso.
+
+> ; ------------------------------------------------------------------------------
+> ; TEST/PASS: Azioni di Livello 1 (verbi di comunicazione)                            
+> ; ------------------------------------------------------------------------------
+> dì "Ciao mondo crudele!"
+Dici "Ciao mondo crudele!", ma non succede nulla.
+
+> canta
+Canticchi una melodia.
+
+> ; ------------------------------------------------------------------------------
+> ; TEST/PASS: Azioni di Livello 2 (atti mentali e sensoriali)                             
+> ; ------------------------------------------------------------------------------
+> inventario
+Stai portando un cellulare.
+
+> aspetta
+Il tempo passa.
+
+> ; ------------------------------------------------------------------------------
+> ; TEST/PASS: Azioni di Livello 3 (azioni extradiegetiche)                             
+> ; ------------------------------------------------------------------------------
+> score
+Hai totalizzato 0 punti su 0 possibili.
+
+> ; ==============================================================================
+> ;                            Livello di Restrizione 1                           
+> ; ==============================================================================
+> ; Al Livello 1 tutte le azioni di comunicazione devono essere bloccate:
+> est
+Livello di Restrizione 1
+In questo livello i verbi di comunicazione sono bloccati.
+
+> ; ------------------------------------------------------------------------------
+> ; TEST/PASS: Azioni di Livello 0                             
+> ; ------------------------------------------------------------------------------
+> lascia il telefonino
+Lasci il cellulare.
+
+> prendi il telefonino
+Preso.
+
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; TEST/FAIL: Azioni di Livello 1 (verbi di comunicazione)                            
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; THESE ACTIONS SHOULD BE BLOCKED:
+> dì "Ciao mondo crudele!"
+Non puoi farlo.
+
+> canta
+Non puoi farlo.
+
+> ; ------------------------------------------------------------------------------
+> ; TEST/PASS: Azioni di Livello 2 (atti mentali e sensoriali)                             
+> ; ------------------------------------------------------------------------------
+> inventario
+Stai portando un cellulare.
+
+> aspetta
+Il tempo passa.
+
+> ; ------------------------------------------------------------------------------
+> ; TEST/PASS: Azioni di Livello 3 (azioni extradiegetiche)                             
+> ; ------------------------------------------------------------------------------
+> score
+Hai totalizzato 0 punti su 0 possibili.
+
+> ; ==============================================================================
+> ; Livello di Restrizione 2
+> ; ==============================================================================
+> ; Al Livello 2 sono consentiti solo i comandi extradiegetici e le azioni che non
+> ; richiedono interazione diretta con l'ambiente circostante (azioni mentali e 
+> ; sensoriali, 'aspetta', ecc.) 
+> est
+Livello di Restrizione 2
+In questo livello sono bloccate tutte le azioni ed i verbi di
+comunicazione.
+
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; TEST/FAIL: Azioni di Livello 0                             
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> lascia il telefonino
+Non puoi farlo.
+
+> prendi il telefonino
+Non puoi farlo.
+
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; TEST/FAIL: Azioni di Livello 1 (verbi di comunicazione)                            
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; THESE ACTIONS SHOULD BE BLOCKED:
+> dì "Ciao mondo crudele!"
+Non puoi farlo.
+
+> canta
+Non puoi farlo.
+
+> ; ------------------------------------------------------------------------------
+> ; TEST/PASS: Azioni di Livello 2 (atti mentali e sensoriali)                             
+> ; ------------------------------------------------------------------------------
+> inventario
+Stai portando un cellulare.
+
+> aspetta
+Il tempo passa.
+
+> smell
+You smell nothing unusual.
+
+> ; ------------------------------------------------------------------------------
+> ; TEST/PASS: Azioni di Livello 3 (azioni extradiegetiche)                             
+> ; ------------------------------------------------------------------------------
+> score
+Hai totalizzato 0 punti su 0 possibili.
+
+> ; ==============================================================================
+> ;                            Livello di Restrizione 3                           
+> ; ==============================================================================
+> ; With restriction level 3, only out-of-game verbs (like 'save', 'quit', etc)
+> ; should work.
+> est
+Livello di Restrizione 3
+In questo livello sono bloccate tutte le azioni di gioco.
+
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; TEST/FAIL: Azioni di Livello 0                             
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> lascia il telefonino
+Non puoi farlo.
+
+> prendi il telefonino
+Non puoi farlo.
+
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; TEST/FAIL: Azioni di Livello 1 (verbi di comunicazione)                            
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; THESE ACTIONS SHOULD BE BLOCKED:
+> dì "Ciao mondo crudele!"
+Non puoi farlo.
+
+> canta
+Non puoi farlo.
+
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; TEST/FAIL: Azioni di Livello 2 (atti mentali e sensoriali)                             
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> inventario
+Non puoi farlo.
+
+> aspetta
+Non puoi farlo.
+
+> smell
+Non puoi farlo.
+
+> ; ------------------------------------------------------------------------------
+> ; TEST/PASS: Azioni di Livello 3 (azioni extradiegetiche)                             
+> ; ------------------------------------------------------------------------------
+> score
+Hai totalizzato 0 punti su 0 possibili.
+
+> ; ==============================================================================
+> ;                            Livello di Restrizione 4                           
+> ; ==============================================================================
+> ; With restriction level 4 no verbs should work, not even out-of-game actions;
+> ; only exits directions.
+> est
+Livello di Restrizione 4
+In questo livello tutte le azioni sono bloccate, incluse le azioni di
+gioco.
+
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; TEST/FAIL: Azioni di Livello 0                             
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> lascia il telefonino
+Non puoi farlo.
+
+> prendi il telefonino
+Non puoi farlo.
+
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; TEST/FAIL: Azioni di Livello 1 (verbi di comunicazione)                            
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; THESE ACTIONS SHOULD BE BLOCKED:
+> dì "Ciao mondo crudele!"
+Non puoi farlo.
+
+> canta
+Non puoi farlo.
+
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; TEST/FAIL: Azioni di Livello 2 (atti mentali e sensoriali)                             
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> inventario
+Non puoi farlo.
+
+> aspetta
+Non puoi farlo.
+
+> smell
+Non puoi farlo.
+
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; TEST/FAIL: Azioni di Livello 3 (azioni extradiegetiche)                             
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> score
+Non puoi farlo.
+
+> about
+Non puoi farlo.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

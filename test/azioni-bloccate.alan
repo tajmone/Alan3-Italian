@@ -1,0 +1,128 @@
+--==============================================================================
+-- "Test per le Azioni Bloccate" by Tristano Ajmone, 2018.
+--==============================================================================
+IMPORT 'libreria.i'.   -- ALAN Libreria Standard Italiana v2.1
+
+
+THE mia_AT IsA blocco_definizioni
+  ------------------------------------------------------------------------------
+  HAS       titolo  "Test per le Azioni Bloccate".
+  HAS  sottotitolo  "Un'aventura per testare le restricted actions.".
+  HAS       autore  "Tristano Ajmone".
+  HAS         anno   2018.
+  HAS     versione  "1".
+  ------------------------------------------------------------------------------
+END THE.
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- § 1 - Stanze Con Livello di Restrizione
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+-- Creeremo una stanza per ciascun livello di restrizione della libreria in modo
+-- da poter testare le azioni bloccate in ognuna di esse. Aggiungiamo anche il
+-- verbo di debug "livello" che mostra il livello di restrizione attuale.
+
+EVERY stanza_livello IsA stanza.
+  HAS Livello 0.
+  ENTERED
+    SET mia_AT:restricted_level TO Livello OF THIS.
+
+END EVERY stanza_livello.
+
+VERB livello
+  DOES
+    "Livello di restrizione attuale:"
+    SAY mia_AT:restricted_level. "."
+END VERB livello.
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 1.0 - Livello di Restrizione 0
+--------------------------------------------------------------------------------
+--==============================================================================
+THE Livello0 IsA stanza_livello.
+  NAME 'Livello di Restrizione 0'
+  DESCRIPTION
+    "In questo livello tutte le azioni sono consentite."
+  HAS Livello 0.
+  EXIT est TO Livello1.
+END THE Livello0.
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 1.1 - Livello di Restrizione 1
+--------------------------------------------------------------------------------
+--==============================================================================
+THE Livello1 IsA stanza_livello.
+  NAME 'Livello di Restrizione 1'
+  DESCRIPTION
+    "In questo livello i verbi di comunicazione sono bloccati."
+  HAS Livello 1.
+  EXIT ovest TO Livello0.
+  EXIT est   TO Livello2.
+END THE Livello1.
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 1.2 - Livello di Restrizione 2
+--------------------------------------------------------------------------------
+--==============================================================================
+THE Livello2 IsA stanza_livello.
+  NAME 'Livello di Restrizione 2'
+  DESCRIPTION
+    "In questo livello sono bloccate tutte le azioni ed i verbi di comunicazione."
+  HAS Livello 2.
+  EXIT ovest TO Livello1.
+  EXIT est   TO Livello3.
+END THE Livello2.
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 1.3 - Livello di Restrizione 3
+--------------------------------------------------------------------------------
+--==============================================================================
+THE Livello3 IsA stanza_livello.
+  NAME 'Livello di Restrizione 3'
+  DESCRIPTION
+    "In questo livello sono bloccate tutte le azioni di gioco."
+  HAS Livello 3.
+  EXIT ovest TO Livello2.
+  EXIT est   TO Livello4.
+END THE Livello3.
+--==============================================================================
+--------------------------------------------------------------------------------
+-- § 1.4 - Livello di Restrizione 4
+--------------------------------------------------------------------------------
+--==============================================================================
+THE Livello4 IsA stanza_livello.
+  NAME 'Livello di Restrizione 4'
+  DESCRIPTION
+    "In questo livello tutte le azioni sono bloccate, incluse le azioni di gioco."
+  HAS Livello 4.
+  EXIT ovest TO Livello3.
+END THE Livello4.
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- § 2 - The Hero
+--------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+-- Let's equip our Hero with a few items to allow tests...
+
+THE cellulare IsA object IN HERO.
+  NAME cellulare.
+  NAME telefonino.
+  HAS ex "Un telefonino economico, per nulla ""smart"".".
+END THE cellulare.
+
+--------------------------------------------------------------------------------
+Start at Livello0.
+DESCRIBE intestazione.
+"$p~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ $nOgni stanza è soggetta ad un diverso livello di restrizione delle azioni.
+ $nDigita 'livello' per verificare il livello di restrizione effettivo.
+ $n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+
+-- EOF --
