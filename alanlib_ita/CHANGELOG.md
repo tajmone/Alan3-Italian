@@ -11,6 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/10/15 \(3\)](#20181015-3)
+    - [Move Messages Attributes to `lib_messaggi.i`](#move-messages-attributes-to-lib_messaggii)
+    - [Bump Up Lib to v0.7.0](#bump-up-lib-to-v070)
 - [2018/10/15 \(2\)](#20181015-2)
     - [Verb: `consult`](#verb-consult)
 - [2018/10/15 \(1\)](#20181015-1)
@@ -323,6 +326,48 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/10/15 (3)
+
+- [`libreria.i`][libreria] (v0.7.0)
+- [`lib_classi.i`][lib_classi] (v0.7.0)
+- [`lib_definizioni.i`][lib_definizioni] (v0.7.0)
+- [`lib_luoghi.i`][lib_luoghi] (v0.7.0)
+- [`lib_messaggi.i`][lib_messaggi] (v0.7.0)
+- [`lib_verbi.i`][lib_verbi] (v0.7.0)
+- [`lib_supplemento.i`][lib_supplemento] (v0.7.0)
+
+
+## Move Messages Attributes to `lib_messaggi.i`
+
+All string attributes of `mia_AT` regarding library messages output (verb responses, etc.) are now moved over from `lib_definizioni.i` to `lib_messaggi.i`.
+
+Here's a comparison of the two modules size in line numbers, before and after this change:
+
+|              | `lib_definizioni.i` | `lib_messaggi.i` |
+|--------------|---------------------|------------------|
+| lines before |                2163 |              254 |
+| lines after  |                1448 |             1002 |
+
+
+Clearly, this introduces some balance in their source length.
+
+This should improve maintainance of the library:
+
+1. All messages and verb responses strings are now in a single module, together with Alan runtime messages, making it easier to work on text output without distractions.
+2. This will reduce considerably the size of `lib_definizioni.i`, which was growin bigger an bigger due to Italian grammar added code, and to the language being more verbose than English. This will make more manageable working on the module's source code.
+3. On the other hand, `lib_messaggi.i` was quite small in size, and after moving all the library messages in it the modules' sizes are more balanced.
+4. Now editing verbs is easier because the verbs' bodies, restricted actions code, and verb respose attributes are in different files, which can be all kept open in the editor, no longer requiring to move up and down the source of `lib_definizioni.i` to alternate between verb restriction and response message attributes.
+5. Most end users will probably want to tweak the predefined library messages, and now they won't need to use the `_mygame_import.i` file anymore, as all the messages are in one library module.
+
+For more info, see the discussion at [Issue #25] on [AlanStdLib].
+
+## Bump Up Lib to v0.7.0
+
+These changes bump up all library files version to 0.7.0.
+
+<!---------------------------------------------------------------------------->
+
 
 # 2018/10/15 (2)
 
@@ -4573,6 +4618,8 @@ The above changes had some side effects which required me to also change the Eng
 
 [Alan StdLib upstream repository]: https://github.com/AnssiR66/AlanStdLib
 
+[AlanStdLib]: https://github.com/AnssiR66/AlanStdLib
+
 [Alan SDK 3.0beta6]: https://www.alanif.se/download-alan-v3/development-kits/development-kits-3-0beta6
 
 <!-- StdLib Issues & PRs ----------------------------------------------------->
@@ -4582,6 +4629,7 @@ The above changes had some side effects which required me to also change the Eng
 [Issue #14]: https://github.com/AnssiR66/AlanStdLib/issues/14" View Issue on AlanStdLib repository"
 [Issue #18]: https://github.com/AnssiR66/AlanStdLib/issues/18" View Issue on AlanStdLib repository"
 [Issue #24]: https://github.com/AnssiR66/AlanStdLib/issues/24" View Issue on AlanStdLib repository"
+[Issue #25]: https://github.com/AnssiR66/AlanStdLib/issues/25" View Issue on AlanStdLib repository"
 
 [PR #12 on StdLib]: https://github.com/AnssiR66/AlanStdLib/pull/12 "View Pull Request on AlanStdLib repository"
 [PR #23]: https://github.com/AnssiR66/AlanStdLib/pull/23 "View Pull Request on AlanStdLib repository"

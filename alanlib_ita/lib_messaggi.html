@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.7.1">
 <meta name="author" content="Tristano Ajmone">
-<title>Alan StdLib Italian: Classi</title>
+<title>Alan StdLib Italian: Messaggi</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -434,7 +434,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Alan StdLib Italian: Classi</h1>
+<h1>Alan StdLib Italian: Messaggi</h1>
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
@@ -445,7 +445,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_la_tabella_del_vestiario">La Tabella del Vestiario</a></li>
+<li><a href="#_introduzione">Introduzione</a></li>
+<li><a href="#_messaggi_runtime_di_alan">Messaggi Runtime di Alan</a></li>
+<li><a href="#_messaggi_della_libreria_standard">Messaggi della Libreria Standard</a></li>
 <li><a href="#_todo">TODO</a>
 <ul class="sectlevel2">
 <li><a href="#_check_list_generale">Check List Generale</a></li>
@@ -461,7 +463,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Adattamento italiano del modulo <code>lib_classes.i</code> della
+<p>Adattamento italiano del modulo <code>lib_messages.i</code> della
 <em>ALAN Standard Library</em> v2.1, &#169; Anssi Räisänen, Artistic License 2.1.
 Ad opera di Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
 </div>
@@ -470,164 +472,66 @@ Ad opera di Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_la_tabella_del_vestiario"><a class="anchor" href="#_la_tabella_del_vestiario"></a>La Tabella del Vestiario</h2>
+<h2 id="_introduzione"><a class="anchor" href="#_introduzione"></a>Introduzione</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>La tabella che segue riporta una selezione di indumenti d&#8217;uso comune ed i
-corrispettivi valori degli attributi per una corretta implementazione.</p>
+<p>Questo modulo della libreria è suddiviso in due parti:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>La prima parte ridefinisce i messaggi runtime di Alan.</p>
+</li>
+<li>
+<p>La seconda parte definisce gli attributi del <code>blocco_definizioni</code> che
+contengono le stringhe usate per la messaggistica della libreria.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>Per creare un indumento non figurante nella tabella, dovrebbe bastare un
-po' di ingegno nel rapportare il nuovo capo di vestiario a quelli presenti
-nella tabella, cercando di cogliere somilianze e differenze fino ad ottenere
-dei valori adatti allo scopo.
-Teniate a mente che <strong>è obbligatorio</strong> impiegare i valori esatti riportati nella
-tabella, e che sommare a casaccio valori intermedi produrrà quasi sicuramente
-dei bachi nell&#8217;avventura.</p>
+<p>Questo modulo è il cuore della libreria per quanto concerne il testo
+prodotto da essa. Modificando le stringhe degli attributi nella seconda parte
+è possibile alterare la forma ed i contenuti della maggior parte delle
+risposte predefinite dei vari verbi della libreria.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Tabella 1. Indumenti Comuni</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-</colgroup>
-<thead>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_messaggi_runtime_di_alan"><a class="anchor" href="#_messaggi_runtime_di_alan"></a>Messaggi Runtime di Alan</h2>
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
 <tr>
-<th class="tableblock halign-left valign-top">Indumento</th>
-<th class="tableblock halign-center valign-top"><code>val_testa</code></th>
-<th class="tableblock halign-center valign-top"><code>val_tronco</code></th>
-<th class="tableblock halign-center valign-top"><code>val_gambe</code></th>
-<th class="tableblock halign-center valign-top"><code>val_piedi</code></th>
-<th class="tableblock halign-center valign-top"><code>val_mani</code></th>
+<td class="icon">
+<i class="fa icon-warning" title="Attenzione"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Documentazione non ancora disponibile&#8230;&#8203;</p>
+</div>
+</td>
 </tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cappello</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">canottiera/reggiseno</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">undies/panties</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">teddy</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>4</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>4</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">blouse/shirt/T-shirt</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>8</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">dress/coveralls</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>8</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>32</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">gonna</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>32</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">pantaloni/shorts</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>16</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sweater/pullover</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>16</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">giacca</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>32</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cappotto</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>64</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>64</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">socks/stockings</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">tights/pantiehose</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>8</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">scarpe/stivali</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>4</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">guanti</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
-</tr>
-</tbody>
 </table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_messaggi_della_libreria_standard"><a class="anchor" href="#_messaggi_della_libreria_standard"></a>Messaggi della Libreria Standard</h2>
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Attenzione"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Documentazione non ancora disponibile&#8230;&#8203;</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -635,19 +539,12 @@ dei bachi nell&#8217;avventura.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Questa sezione contiene l&#8217;elenco delle cose da fare per ultimare l&#8217;adattamento
-italiano del modulo dei messaggi.</p>
+italiano del modulo delle classi.</p>
 </div>
 <div class="sect2">
 <h3 id="_check_list_generale"><a class="anchor" href="#_check_list_generale"></a>Check List Generale</h3>
 <div class="paragraph">
 <p>Lista della spesa per le varie cosucce da fare:</p>
-</div>
-<div class="ulist checklist">
-<ul class="checklist">
-<li>
-<p><i class="fa fa-square-o"></i> <strong>Tabella del Vestiario</strong>: finire traduzione.</p>
-</li>
-</ul>
 </div>
 </div>
 <div class="sect2">
@@ -662,7 +559,7 @@ italiano del modulo dei messaggi.</p>
 <div id="footer">
 <div id="footer-text">
 Versione 0.7.0-Alpha<br>
-Ultimo aggiornamento 2018-10-15 19:30:48 ora legale Europa occidentale
+Ultimo aggiornamento 2018-10-15 19:30:49 ora legale Europa occidentale
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.6.2-Alpha, 2018-10-15: Alan 3.0beta6
+--| v0.7.0-Alpha, 2018-10-15: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -2830,7 +2830,7 @@ END THE.
 --~============================================================================
 --| 
 --| Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
---| italiano del modulo delle classi.
+--| italiano del modulo dei messaggi.
 --<
 
 -->todo_checklist(51000.1)

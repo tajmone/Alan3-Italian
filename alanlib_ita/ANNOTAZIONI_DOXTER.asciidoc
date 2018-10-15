@@ -19,11 +19,12 @@ Tristano Ajmone <tajmone@gmail.com>
 
 // Custom Attributes
 :Doxter: pass:q[link:https://https://git.io/doxter/[Doxter^]]
-:lib_verbi: pass:q[link:./lib_verbi.i[`lib_verbi.i`^]]
-:lib_definizioni: pass:q[link:./lib_definizioni.i[`lib_definizioni.i`^]]
 :lib_classi: pass:q[link:./lib_classi.i[`lib_classi.i`^]]
+:lib_definizioni: pass:q[link:./lib_definizioni.i[`lib_definizioni.i`^]]
 :lib_luoghi: pass:q[link:./lib_luoghi.i[`lib_luoghi.i`^]]
+:lib_messaggi: pass:q[link:./lib_messaggi.i[`lib_supplemento.i`^]]
 :lib_supplemento: pass:q[link:./lib_supplemento.i[`lib_supplemento.i`^]]
+:lib_verbi: pass:q[link:./lib_verbi.i[`lib_verbi.i`^]]
 
 // *****************************************************************************
 // *                                                                           *
@@ -77,7 +78,7 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 
 
 
-=== Modulo dei verbi
+=== Modulo Verbi
 
 * {lib_verbi}
 
@@ -99,7 +100,7 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 
 
 
-=== Modulo delle classi
+=== Modulo Classi
 
 * {lib_classi}
 
@@ -120,7 +121,7 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 |===============================================================================
 
 
-=== Modulo dei luoghi
+=== Modulo Luoghi
 
 * {lib_luoghi}
 
@@ -135,8 +136,23 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 |===============================================================================
 
 
+=== Modulo Messaggi
 
-=== Modulo supplementare
+* {lib_messaggi}
+
+
+[cols="2*>10m,20m,60d",options="header"]
+|===============================================================================
+| weight  | subweight |                              | descrizione
+|   100   |         1 | intro                        | == Introduzione
+| 50000   |           | todo                         | TODO
+| 51000   |      1-33 | todo_checklist               | === Check List Generale
+| 51000   |   665-666 | todo_checklist               | === Check List Doxter
+|===============================================================================
+
+
+
+=== Modulo Supplementare
 
 * {lib_supplemento}
 

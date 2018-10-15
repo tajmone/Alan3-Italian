@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.6.2-Alpha, 2018-10-14: Alan 3.0beta6
+--| v0.7.0-Alpha, 2018-10-15: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -9979,18 +9979,22 @@ END VERB verbose.
 --| italiano del modulo dei verbi.
 --<
 
-
 -->todo_checklist(51000.1)
 --~=============================================================================
 --~-----------------------------------------------------------------------------
---| === Check List
+--| === Check List Generale
 --~-----------------------------------------------------------------------------
 --~=============================================================================
 --| 
 --| Lista della spesa per le varie cosucce da fare:
---| 
 --<
 
+-->todo_checklist(.665)
+--| 
+--| === Check List Doxter 
+--| 
+--| Finisci di trasformare commenti in documentazione Doxter:
+--<
 
 
 -->custom_attributes(100)

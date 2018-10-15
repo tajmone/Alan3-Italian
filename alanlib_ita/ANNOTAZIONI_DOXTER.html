@@ -451,10 +451,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_moduli_e_documentazione">Moduli e documentazione</a>
 <ul class="sectlevel2">
 <li><a href="#_modulo_delle_definizioni">Modulo delle definizioni</a></li>
-<li><a href="#_modulo_dei_verbi">Modulo dei verbi</a></li>
-<li><a href="#_modulo_delle_classi">Modulo delle classi</a></li>
-<li><a href="#_modulo_dei_luoghi">Modulo dei luoghi</a></li>
-<li><a href="#_modulo_supplementare">Modulo supplementare</a></li>
+<li><a href="#_modulo_verbi">Modulo Verbi</a></li>
+<li><a href="#_modulo_classi">Modulo Classi</a></li>
+<li><a href="#_modulo_luoghi">Modulo Luoghi</a></li>
+<li><a href="#_modulo_messaggi">Modulo Messaggi</a></li>
+<li><a href="#_modulo_supplementare">Modulo Supplementare</a></li>
 </ul>
 </li>
 </ul>
@@ -462,7 +463,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_introduzione_a_doxter">Introduzione a Doxter</h2>
+<h2 id="_introduzione_a_doxter"><a class="anchor" href="#_introduzione_a_doxter"></a>Introduzione a Doxter</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>I moduli della Libreria Standard italiana di Alan includono la propria documentazione nei commenti del codice sorgente.
@@ -479,7 +480,7 @@ La creazione e l&#8217;aggiornamento della documentazione viene gestita tramite 
 <p>Questo documento contiene appunti sull&#8217;organizzazione delle regioni di ciascun documento.</p>
 </div>
 <div class="sect2">
-<h3 id="_regioni_e_pesi_nella_documentazione">Regioni e pesi nella documentazione</h3>
+<h3 id="_regioni_e_pesi_nella_documentazione"><a class="anchor" href="#_regioni_e_pesi_nella_documentazione"></a>Regioni e pesi nella documentazione</h3>
 <div class="paragraph">
 <p>Nei file sorgenti, la documentazione è spezzettata in vari frammenti; ciascun frammento appartiene ad una regione taggata nel documento finale.
 Ogni regione ha un tag identificativo univoco, e i vari frammenti sparsi appartenenti alla medesima regione verrano collati assieme nel documento finale.
@@ -499,10 +500,10 @@ I frammenti delle regioni hanno un sottopeso; durante la fase di collatura del d
 </div>
 </div>
 <div class="sect1">
-<h2 id="_moduli_e_documentazione">Moduli e documentazione</h2>
+<h2 id="_moduli_e_documentazione"><a class="anchor" href="#_moduli_e_documentazione"></a>Moduli e documentazione</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_modulo_delle_definizioni">Modulo delle definizioni</h3>
+<h3 id="_modulo_delle_definizioni"><a class="anchor" href="#_modulo_delle_definizioni"></a>Modulo delle definizioni</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -566,7 +567,7 @@ I frammenti delle regioni hanno un sottopeso; durante la fase di collatura del d
 </table>
 </div>
 <div class="sect2">
-<h3 id="_modulo_dei_verbi">Modulo dei verbi</h3>
+<h3 id="_modulo_verbi"><a class="anchor" href="#_modulo_verbi"></a>Modulo Verbi</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -654,7 +655,7 @@ I frammenti delle regioni hanno un sottopeso; durante la fase di collatura del d
 </table>
 </div>
 <div class="sect2">
-<h3 id="_modulo_delle_classi">Modulo delle classi</h3>
+<h3 id="_modulo_classi"><a class="anchor" href="#_modulo_classi"></a>Modulo Classi</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -742,7 +743,7 @@ I frammenti delle regioni hanno un sottopeso; durante la fase di collatura del d
 </table>
 </div>
 <div class="sect2">
-<h3 id="_modulo_dei_luoghi">Modulo dei luoghi</h3>
+<h3 id="_modulo_luoghi"><a class="anchor" href="#_modulo_luoghi"></a>Modulo Luoghi</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -794,7 +795,59 @@ I frammenti delle regioni hanno un sottopeso; durante la fase di collatura del d
 </table>
 </div>
 <div class="sect2">
-<h3 id="_modulo_supplementare">Modulo supplementare</h3>
+<h3 id="_modulo_messaggi"><a class="anchor" href="#_modulo_messaggi"></a>Modulo Messaggi</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="./lib_messaggi.i" target="_blank" rel="noopener"><code>lib_supplemento.i</code></a></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 20%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">weight</th>
+<th class="tableblock halign-right valign-top">subweight</th>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>100</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>intro</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">== Introduzione</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>50000</code></p></td>
+<td class="tableblock halign-right valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TODO</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>51000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1-33</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List Generale</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>51000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>665-666</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List Doxter</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_modulo_supplementare"><a class="anchor" href="#_modulo_supplementare"></a>Modulo Supplementare</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -856,7 +909,7 @@ I frammenti delle regioni hanno un sottopeso; durante la fase di collatura del d
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-15 00:14:57 ora legale Europa occidentale
+Last updated 2018-10-15 19:30:45 ora legale Europa occidentale
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">
