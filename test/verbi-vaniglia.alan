@@ -1,0 +1,40 @@
+--==============================================================================
+-- "Verbi alla Vaniglia" by Tristano Ajmone, 2018.
+--==============================================================================
+IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
+
+
+THE mia_AT IsA blocco_definizioni
+  ------------------------------------------------------------------------------
+  HAS       titolo  "Verbi alla Vaniglia".
+  HAS  sottotitolo  "Avventura per eseguire test di base sui verbi.".
+  HAS       autore  "Tristano Ajmone".
+  HAS         anno   2018.
+  HAS     versione  "1".
+  ------------------------------------------------------------------------------
+END THE.
+
+
+
+-- =============================================================================
+
+----- L'Ufficio
+
+-- =============================================================================
+
+THE ufficio IsA stanza.
+  -- ////////
+END THE ufficio.
+
+
+THE tavolo IsA supporto AT ufficio.
+  -- ////////
+END THE tavolo.
+
+THE dizionario IsA object IN tavolo
+  HAS xDesc "È un piccolo dizionario tascabile.".
+END THE dizionario.
+
+--------------------------------------------------------------------------------
+Start at ufficio.
+DESCRIBE intestazione.

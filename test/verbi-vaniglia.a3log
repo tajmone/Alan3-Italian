@@ -1,0 +1,51 @@
+
+
+Verbi alla Vaniglia 
+Avventura per eseguire test di base sui verbi. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+Ufficio
+Puoi vedere un tavolo qui. Sopra il tavolo vedi un dizionario.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                        Test dei Verbi alla Vaniglia                        *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Questo script esegue una serie di test sui verbi della libreria così come sono
+> ; (alla "vaniglia"), ovvero senza creare varianti personalizzate. Lo scopo dei
+> ; test è verificare il corretto funzionamento dei verbi, le varianti sitattiche,
+> ; le risposte predfinite ed i messaggi d'errore.
+> ; ==============================================================================
+> ; Verbo "Consulta"
+> ; ==============================================================================
+> consulta dizionario
+To consult something, please use the formulation CONSULT THING ABOUT
+PERSON/THING.
+
+> consulta dizionario riguardo tavolo
+You find nothing useful about il tavolo in il dizionario.
+
+> consulta dizionario circa tavolo
+You find nothing useful about il tavolo in il dizionario.
+
+> guarda tavolo nel dizionario.
+You find nothing useful about il tavolo in il dizionario.
+
+
+> cerca tavolo nel dizionario.
+You find nothing useful about il tavolo in il dizionario.
+
+
+> ricerca tavolo nel dizionario.
+You find nothing useful about il tavolo in il dizionario.
+
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

@@ -11,7 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/10/15](#20181015)
+- [2018/10/15 \(2\)](#20181015-2)
+    - [Verb: `consult`](#verb-consult)
+- [2018/10/15 \(1\)](#20181015-1)
     - [Doxterize `lib_luoghi.i` and `lib_supplemento.i`](#doxterize-lib_luoghii-and-lib_supplementoi)
 - [2018/10/14 \(3\)](#20181014-3)
     - [Doxterize `lib_classi.i`](#doxterize-lib_classii)
@@ -322,7 +324,28 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/10/15
+# 2018/10/15 (2)
+
+- [`lib_verbi.i`][lib_verbi] (v0.6.3)
+
+## Verb: `consult`
+
+Translated verb `consulta`, "__consulta__" (_consult_):
+
+    consulta (fonte) riguardo (argomento)!
+    guarda (argomento) in (fonte)
+    cerca (argomento) in (fonte)
+    ricerca (argomento) in (fonte)
+
+with synonyms:
+
+    circa = riguardo
+
+
+<!---------------------------------------------------------------------------->
+
+
+# 2018/10/15 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.6.2)
 - [`lib_definizioni.i`][lib_definizioni] (v0.6.4)

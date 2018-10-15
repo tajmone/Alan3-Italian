@@ -1,0 +1,18 @@
+; ******************************************************************************
+; *                                                                            *
+; *                        Test dei Verbi alla Vaniglia                        *
+; *                                                                            *
+; ******************************************************************************
+; Questo script esegue una serie di test sui verbi della libreria così come sono
+; (alla "vaniglia"), ovvero senza creare varianti personalizzate. Lo scopo dei
+; test è verificare il corretto funzionamento dei verbi, le varianti sitattiche,
+; le risposte predfinite ed i messaggi d'errore.
+; ==============================================================================
+; Verbo "Consulta"
+; ==============================================================================
+consulta dizionario
+consulta dizionario riguardo tavolo
+consulta dizionario circa tavolo
+guarda tavolo nel dizionario.
+cerca tavolo nel dizionario.
+ricerca tavolo nel dizionario.

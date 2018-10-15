@@ -59,7 +59,7 @@ Altresì noti come _comandi extradiegetici_.
 // end::comandi_partita[]
 // tag::tabella_comandi_partita[]
 .Elenco Comandi di Partita
-[cols="20m,30d,25d,4*^5d",options="header"]
+[cols="15m,25d,35d,4*^5d",options="header"]
 |=============================================================================================================
 | VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
 | abbandona_partita  | quit, Q                      | abbandona [partita]              | {X} | 0 |     |
@@ -78,84 +78,85 @@ Comandi diretti al personaggio protagonista per interagire con l'avventura.
 // end::comandi_gioco[]
 // tag::tabella_comandi_gioco[]
 .Elenco dei Comandi di Gioco
-[cols="20m,30d,25d,4*^5d",options="header"]
-|=============================================================================================================
-| VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
-| accendi            |                              | accendi (disp)                   |     | 1 |     |
-| apri               |                              | apri (ogg)                       |     | 1 | {X} |
-| apri_con           |                              | apri (ogg) con (strum)           |     | 2 | {X} |
-| ascolta0           |                              | ascolta                          |     | 0 |     |
-| ascolta            |                              | ascolta (ogg)!                   |     | 1 | {X} |
-| aspetta            | attendi, Z                   | aspetta                          |     | 0 |     |
-| attacca            | combatti, picchia            | attacca (bersaglio)              |     | 1 |     |
-| attacca_con        | combatti, picchia            | attacca (bersaglio) con (arma)   |     | 2 |     |
-| attraversa         |                              | attraversa (ogg)                 |     | 1 | {X} |
-| bacia              | abbraccia                    | bacia (ogg)                      |     | 1 | {X} |
-| balla              | danza                        | balla                            |     | 0 |     |
-| bevi               |                              | bevi (liq)                       |     | 1 |     |
-| blocca             | serra                        | blocca (ogg)                     |     | 1 | {X} |
-| blocca_con         | serra                        | blocca (ogg) con (chiave)        |     | 2 | {X} |
-| brucia             |                              | brucia (ogg)                     |     | 1 | {X} |
-| brucia_con         |                              | brucia (ogg) con (strum)         |     | 2 | {X} |
-| canta              |                              | canta                            |     | 0 |     |
-| chiedi             |                              | chiedi a (png) (ogg)             |     | 2 | {X} |
-| chiudi             |                              | chiudi (ogg)                     |     | 1 | {X} |
-| chiudi_con         |                              | chiudi (ogg) con (strum)         |     | 2 | {X} |
-| compra             | acquista                     | compra (merce)                   |     | 1 |     |
-| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)          |     | 2 | {X} |
-| dì                 |                              | dì (argomento)                   |     | 1 |     |
-| dì_a               |                              | dì (argomento) a (png)           |     | 2 |     |
-| domanda            | chiedi                       | domanda a (png) di (argomento)!  |     | 2 |     |
-| dormi              | riposa                       | dormi                            |     | 0 |     |
-| esamina            | guarda, descrivi, osserva, X | esamina (ogg)                    |     | 1 | {X} |
-| gioca_con          |                              | gioca con (ogg)                  |     | 1 | {X} |
-| guida              |                              | guida (veicolo)                  |     | 1 |     |
-| indossa            | mettiti                      | indossa (ogg)                    |     | 1 | {X} |
-| inventario         | inv                          | inventario                       | {X} | 0 |     |
-| lascia             | abbandona, metti giù, posa   | lascia (ogg)*                    |     | 1 | {X} |
-| lega               |                              | lega (ogg)                       |     | 1 | {X} |
-| lega_a             |                              | lega (ogg) a (bersaglio)         |     | 2 | {X} |
-| leggi              |                              | leggi (ogg)                      |     | 1 | {X} |
-| libera             | rilascia                     | libera (ogg)                     |     | 1 | {X} |
-| mangia             |                              | mangia (cibo)                    |     | 1 |     |
-| parla              |                              | parla                            |     | 0 |     |
-| parla_con          |                              | parla con (png)                  |     | 1 |     |
-| pensa              | pondera, rifletti, medita    | pensa                            |     | 0 |     |
-| pensa_a            | rifletti/medita su, pondera  | pensa a (argomento)!             |     | 1 |     |
-| prega              |                              | prega                            |     | 0 |     |
-| prendi             | afferra, raccogli, trasporta | prendi (ogg)                     |     | 1 | {X} |
-| prendi_da          | rimuovi, togli               | prendi (ogg) da (detentore)      |     | 2 | {X} |
-| racconta           | informa, dì a, parla a       | racconta a (png) di (argomento)! |     | 2 |     |
-| rifai              | ancora, G                    | rifai                            |     | 0 |     |
-| riempi             |                              | riempi (cont)                    |     | 1 |     |
-| riempi_con         |                              | riempi (cont) con (sostanza)     |     | 2 |     |
-| rompi              | distruggi, spacca, sfonda    | rompi (ogg)                      |     | 1 | {X} |
-| rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)          |     | 2 | {X} |
-| ripara             | aggiusta                     | ripara (ogg)                     |     | 1 | {X} |
-| rispondi           |                              | rispondi (argomento)!            |     | 1 |     |
-| sblocca            |                              | sblocca (ogg)                    |     | 1 | {X} |
-| sblocca_con        |                              | sblocca (ogg) con (chiave)       |     | 2 | {X} |
-| scava              |                              | scava (ogg)                      |     | 1 | {X} |
-| scrivi             |                              | scrivi "testo" su (ogg)          |     | 1 | {X} |
-| siediti            | siedi                        | siediti                          |     | 0 |     |
-| siediti_su         | siedi                        | siediti su (superficie)          |     | 1 |     |
-| spegni             |                              | spegni (disp)                    |     | 1 |     |
-| spogliati          | svestiti                     | spogliati                        |     | 0 |     |
-| suona              |                              | suona (ogg)                      |     | 1 | {X} |
-| taglia             |                              | taglia (ogg)                     |     | 1 | {X} |
-| taglia_con         |                              | taglia (ogg) con (strum)         |     | 2 | {X} |
-| tira               |                              | tira (ogg)                       |     | 1 | {X} |
-| tocca              | accarezza, carezza           | tocca (ogg)                      |     | 1 | {X} |
-| tocca_con          | accarezza, carezza           | tocca (ogg) con (strum)          |     | 2 | {X} |
-| togliti            | sfilati, levati              | togliti (ogg)                    |     | 1 | {X} |
-| trova              |                              | trova (ogg)                      |     | 1 | {X} |
-| uccidi             | ammazza                      | uccidi (vittima)                 |     | 1 |     |
-| uccidi_con         | ammazza                      | uccidi (vittima) con (arma)      |     | 2 |     |
-| usa                |                              | usa (ogg)                        |     | 1 | {X} |
-| usa_con            |                              | usa (ogg) con (strum)            |     | 2 | {X} |
-| vai_a              |                              | vai a (dest)                     |     | 1 |     |
-| vendi              |                              | vendi (merce)                    |     | 1 |     |
-|=============================================================================================================
+[cols="15m,25d,35d,4*^5d",options="header"]
+|===================================================================================================================
+| VERBO              | SINONIMI                     | SINTASSI                               |  M  | A |  O  |  B
+| accendi            |                              | accendi (disp)                         |     | 1 |     |
+| apri               |                              | apri (ogg)                             |     | 1 | {X} |
+| apri_con           |                              | apri (ogg) con (strum)                 |     | 2 | {X} |
+| ascolta0           |                              | ascolta                                |     | 0 |     |
+| ascolta            |                              | ascolta (ogg)!                         |     | 1 | {X} |
+| aspetta            | attendi, Z                   | aspetta                                |     | 0 |     |
+| attacca            | combatti, picchia            | attacca (bersaglio)                    |     | 1 |     |
+| attacca_con        | combatti, picchia            | attacca (bersaglio) con (arma)         |     | 2 |     |
+| attraversa         |                              | attraversa (ogg)                       |     | 1 | {X} |
+| bacia              | abbraccia                    | bacia (ogg)                            |     | 1 | {X} |
+| balla              | danza                        | balla                                  |     | 0 |     |
+| bevi               |                              | bevi (liq)                             |     | 1 |     |
+| blocca             | serra                        | blocca (ogg)                           |     | 1 | {X} |
+| blocca_con         | serra                        | blocca (ogg) con (chiave)              |     | 2 | {X} |
+| brucia             |                              | brucia (ogg)                           |     | 1 | {X} |
+| brucia_con         |                              | brucia (ogg) con (strum)               |     | 2 | {X} |
+| canta              |                              | canta                                  |     | 0 |     |
+| chiedi             |                              | chiedi a (png) (ogg)                   |     | 2 | {X} |
+| chiudi             |                              | chiudi (ogg)                           |     | 1 | {X} |
+| chiudi_con         |                              | chiudi (ogg) con (strum)               |     | 2 | {X} |
+| compra             | acquista                     | compra (merce)                         |     | 1 |     |
+| consulta           | guarda, cerca, ricerca       | consulta (fonte) riguardo (argomento)! |     | 2 |     |
+| dai_a              | porgi, offri                 | dai (ogg) a (ricevente)                |     | 2 | {X} |
+| dì                 |                              | dì (argomento)                         |     | 1 |     |
+| dì_a               |                              | dì (argomento) a (png)                 |     | 2 |     |
+| domanda            | chiedi                       | domanda a (png) di (argomento)!        |     | 2 |     |
+| dormi              | riposa                       | dormi                                  |     | 0 |     |
+| esamina            | guarda, descrivi, osserva, X | esamina (ogg)                          |     | 1 | {X} |
+| gioca_con          |                              | gioca con (ogg)                        |     | 1 | {X} |
+| guida              |                              | guida (veicolo)                        |     | 1 |     |
+| indossa            | mettiti                      | indossa (ogg)                          |     | 1 | {X} |
+| inventario         | inv                          | inventario                             | {X} | 0 |     |
+| lascia             | abbandona, metti giù, posa   | lascia (ogg)*                          |     | 1 | {X} |
+| lega               |                              | lega (ogg)                             |     | 1 | {X} |
+| lega_a             |                              | lega (ogg) a (bersaglio)               |     | 2 | {X} |
+| leggi              |                              | leggi (ogg)                            |     | 1 | {X} |
+| libera             | rilascia                     | libera (ogg)                           |     | 1 | {X} |
+| mangia             |                              | mangia (cibo)                          |     | 1 |     |
+| parla              |                              | parla                                  |     | 0 |     |
+| parla_con          |                              | parla con (png)                        |     | 1 |     |
+| pensa              | pondera, rifletti, medita    | pensa                                  |     | 0 |     |
+| pensa_a            | rifletti/medita su, pondera  | pensa a (argomento)!                   |     | 1 |     |
+| prega              |                              | prega                                  |     | 0 |     |
+| prendi             | afferra, raccogli, trasporta | prendi (ogg)                           |     | 1 | {X} |
+| prendi_da          | rimuovi, togli               | prendi (ogg) da (detentore)            |     | 2 | {X} |
+| racconta           | informa, dì a, parla a       | racconta a (png) di (argomento)!       |     | 2 |     |
+| rifai              | ancora, G                    | rifai                                  |     | 0 |     |
+| riempi             |                              | riempi (cont)                          |     | 1 |     |
+| riempi_con         |                              | riempi (cont) con (sostanza)           |     | 2 |     |
+| rompi              | distruggi, spacca, sfonda    | rompi (ogg)                            |     | 1 | {X} |
+| rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)                |     | 2 | {X} |
+| ripara             | aggiusta                     | ripara (ogg)                           |     | 1 | {X} |
+| rispondi           |                              | rispondi (argomento)!                  |     | 1 |     |
+| sblocca            |                              | sblocca (ogg)                          |     | 1 | {X} |
+| sblocca_con        |                              | sblocca (ogg) con (chiave)             |     | 2 | {X} |
+| scava              |                              | scava (ogg)                            |     | 1 | {X} |
+| scrivi             |                              | scrivi "testo" su (ogg)                |     | 1 | {X} |
+| siediti            | siedi                        | siediti                                |     | 0 |     |
+| siediti_su         | siedi                        | siediti su (superficie)                |     | 1 |     |
+| spegni             |                              | spegni (disp)                          |     | 1 |     |
+| spogliati          | svestiti                     | spogliati                              |     | 0 |     |
+| suona              |                              | suona (ogg)                            |     | 1 | {X} |
+| taglia             |                              | taglia (ogg)                           |     | 1 | {X} |
+| taglia_con         |                              | taglia (ogg) con (strum)               |     | 2 | {X} |
+| tira               |                              | tira (ogg)                             |     | 1 | {X} |
+| tocca              | accarezza, carezza           | tocca (ogg)                            |     | 1 | {X} |
+| tocca_con          | accarezza, carezza           | tocca (ogg) con (strum)                |     | 2 | {X} |
+| togliti            | sfilati, levati              | togliti (ogg)                          |     | 1 | {X} |
+| trova              |                              | trova (ogg)                            |     | 1 | {X} |
+| uccidi             | ammazza                      | uccidi (vittima)                       |     | 1 |     |
+| uccidi_con         | ammazza                      | uccidi (vittima) con (arma)            |     | 2 |     |
+| usa                |                              | usa (ogg)                              |     | 1 | {X} |
+| usa_con            |                              | usa (ogg) con (strum)                  |     | 2 | {X} |
+| vai_a              |                              | vai a (dest)                           |     | 1 |     |
+| vendi              |                              | vendi (merce)                          |     | 1 |     |
+|===================================================================================================================
 
 // end::tabella_comandi_gioco[]
 // tag::comandi_affermazion[]
@@ -171,7 +172,7 @@ o domande poste dal protagonista stesso (p.es. "`chi sono?`", "`sì`", "`dove
 // end::comandi_affermazion[]
 // tag::tabella_comandi_affermazioni[]
 .Elenco Comandi di Affermazioni o Domande
-[cols="20m,30d,25d,4*^5d",options="header"]
+[cols="15m,25d,35d,4*^5d",options="header"]
 |=============================================================================================================
 | VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
 | chi_è              |                              | chi è (png)                      |     | 1 |     | {X}
@@ -207,7 +208,6 @@ italiano del modulo dei verbi.
 | clean              | polish, wipe                       | clean (obj)                       | 1 | {x}
 | climb              |                                    | climb (obj)                       | 1 | {x}
 | climb_on           |                                    | climb on (surface)                | 1 |
-| consult            |                                    | consult (source) about (topic)    | 2 |
 | credits            | acknowledgments, author, copyright | credits                           | 0 |
 | dive               |                                    | dive                              | 0 |
 | dive_in            |                                    | dive in (liq)                     | 1 |
