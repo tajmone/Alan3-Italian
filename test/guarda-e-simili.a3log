@@ -1,0 +1,120 @@
+
+
+Guarda E Verbi Affini 
+Avventure per testare il gruppo di verbi "guarda". 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+Nella Cripta
+Ogni cosa nella cripta è avvolta nella soffusa luce lunare che filtra dal
+lucernario. Puoi vedere un lucernario e una bara nera qui. La bara nera
+contiene uno scheletro. Puoi vedere una bara rossa qui.
+
+> guarda
+Nella Cripta
+Ogni cosa nella cripta è avvolta nella soffusa luce lunare che filtra dal
+lucernario. Puoi vedere un lucernario e una bara nera qui. La bara nera
+contiene uno scheletro. Puoi vedere una bara rossa qui.
+
+> guarda su
+Guardando su non noti nulla di interessante.
+
+> ; ----------------------------
+> ; GUARDA <OGG> = ESAMINA <OGG>
+> ; ----------------------------
+> esamina il lucernario
+È un lucernario rotondo, con dei raggi che ricordano una rosa o un disco
+solare. Si trova molto in alto.
+
+> guarda il lucernario
+È un lucernario rotondo, con dei raggi che ricordano una rosa o un disco
+solare. Si trova molto in alto.
+
+> guarda fuori dal lucernario
+That's not something you can look out of.
+
+> guarda attraverso il lucernario
+You can't see through il lucernario.
+
+> ; -------------
+> ; GLI AFFRESCHI
+> ; -------------
+> esamina affreschi
+Gli affreschi sulle pareti raffigurano l'apocalisse.
+
+> prendi affreschi
+Sono fissate al loro posto.
+
+> push affreschi
+It's not possible to push le pareti.
+
+> guarda dietro affreschi
+Non è una cosa fattibile.
+
+> guarda sotto affreschi
+Non è una cosa fattibile.
+
+> ; -------
+> ; LE BARE
+> ; -------
+> esamina la bara
+Non mi è chiaro se intendi dire la bara nera o la bara rossa.
+
+> esamina le bare
+Non mi è chiaro se intendi dire la bara nera o la bara rossa.
+
+> esamina la bara rossa
+La fioca luce lunare non ti consente di vedere cosa ci sia dentro.
+
+> esamina la bara nera
+La fioca luce lunare non ti consente di vedere cosa ci sia dentro.
+
+> esamina la nera
+La fioca luce lunare non ti consente di vedere cosa ci sia dentro.
+
+> guarda attraverso la bara rossa
+You can't see through la bara rossa.
+
+> guarda attraverso la bara nera
+You can't see through la bara nera.
+
+> guarda nella bara rossa
+La bara rossa è vuota.
+
+> guarda nella bara nera
+La bara nera contiene uno scheletro.
+
+> esamina lo scheletro
+Lo scheletro indossa ancora il suo vestito del funerale. I capelli si
+sono fatto radi, le ragnatele coprono il suo volto. Gli scheletri hanno
+un volto, giusto?
+
+> guarda sotto la bara rossa
+You notice nothing unusual under la bara rossa.
+
+> guarda sotto la bara nera
+You notice nothing unusual under la bara nera.
+
+> guarda dietro la bara rossa
+You notice nothing unusual behind la bara rossa.
+
+> guarda dietro la bara nera
+You notice nothing unusual behind la bara nera.
+
+> guarda fuori dalla bara rossa
+That's not something you can look out of.
+
+> guarda fuori dalla bara nera
+That's not something you can look out of.
+
+> 
+
+> 
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

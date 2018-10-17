@@ -6,6 +6,8 @@ Questo documento riassume i verbi finora tradotti in italiano, annotandone i var
 > 
 >  - [`lib_verbi.html`](./lib_verbi.html) ([Anteprima Live][lib_verbi html live])
 >  - [`lib_verbi.asciidoc`](./lib_verbi.asciidoc)
+>  
+>  __PERTANTO NON VERRÀ PIÙ AGGIORNATO!!__
 
 [lib_verbi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_verbi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 

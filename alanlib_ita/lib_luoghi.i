@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_luoghi.i"
---| v0.7.0-Alpha, 2018-10-15: Alan 3.0beta6
+--| v0.7.1-Alpha, 2018-10-17: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_locations.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -148,7 +148,7 @@ SYNONYMS
     alto  = su.
 --  a     = su. <- usato in i6; ma potrebbe confliggere con "a/to"?
     giu   = giù.         -- d  = down
-    sotto = giù.
+--  sotto = giù. <- confileggeva con "guarda sotto"!
     basso = giù.
     b     = giù. -- Si usa davvero?
 --@NOTA: i6 implementa anche "esterno" e "esternamente" per "fuori"
@@ -267,9 +267,9 @@ THE pavimento IsA oggetto_stanza
   END VERB empty_in.
 
 
-  VERB look_in
+  VERB guarda_in
     DOES ONLY "That's not possible."
-  END VERB look_in.
+  END VERB guarda_in.
 
 
   VERB put_in
@@ -332,9 +332,9 @@ THE suolo IsA oggetto_luogo_esterno
   END VERB empty_in.
 
 
-  VERB look_in
+  VERB guarda_in
     DOES ONLY "That's not possible."
-  END VERB look_in.
+  END VERB guarda_in.
 
 
   VERB put_in
@@ -375,17 +375,17 @@ ADD TO EVERY oggetto_stanza
   VERB put_against
     WHEN bulk
       CHECK THIS = pareti
-        ELSE "That's not possible."
+        ELSE "Non è una cosa fattibile."
   END VERB put_against.
 
   VERB put_behind, put_near, put_under
     WHEN bulk
-      DOES ONLY "That's not possible."
+      DOES ONLY "Non è una cosa fattibile."
   END VERB put_behind.
 
-  VERB look_behind, look_through, look_under
-    DOES ONLY "That's not possible."
-  END VERB look_behind.
+  VERB guarda_dietro, guarda_attraverso, guarda_sotto
+    DOES ONLY "Non è una cosa fattibile."
+  END VERB guarda_dietro.
 
 END ADD TO.
 
@@ -394,12 +394,12 @@ ADD TO EVERY oggetto_luogo_esterno
 
   VERB put_against, put_behind, put_near, put_under
     WHEN bulk
-      DOES ONLY "That's not possible."
+      DOES ONLY "Non è una cosa fattibile."
   END VERB put_against.
 
-  VERB look_behind, look_through, look_under
-    DOES ONLY "That's not possible."
-  END VERB look_behind.
+  VERB guarda_dietro, guarda_attraverso, guarda_sotto
+    DOES ONLY "Non è una cosa fattibile."
+  END VERB guarda_dietro.
 
 END ADD TO.
 

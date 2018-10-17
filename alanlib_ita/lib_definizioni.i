@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.0-Alpha, 2018-10-15: Alan 3.0beta6
+--| v0.7.1-Alpha, 2018-10-17: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -507,7 +507,7 @@ SYNONYMS
 
 into, inside = 'in'.      ---> @TODO                                            TRANSLATE!
       onto   = on.
-      thru   = through.
+   -- thru   = through.
       using  = 'with'.
 
 
@@ -751,6 +751,13 @@ EVERY blocco_definizioni IsA LOCATION
   CAN esaminare.                ---> examine      (+ check, inspect, observe, x)
   CAN giocare_con.              ---> play_with
   CAN gridare.                  ---> shout        (+ scream, yell)
+  CAN guardare.                 ---> look         (+ gaze, peek)
+  CAN guardare_attraverso.      ---> look_through
+  CAN guardare_dietro.          ---> look_behind
+  CAN guardare_fuori_da.        ---> look_out_of
+  CAN guardare_in.              ---> look_in
+  CAN guardare_sotto.           ---> look_under
+  CAN guardare_su.              ---> look_up
   CAN guidare.                  ---> drive
   CAN indossare.                ---> wear
   CAN inventariare.             ---> i            (+ inv, inventory)
@@ -843,14 +850,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN lie_on.
   CAN lift.
 --CAN light. ---------------------> ** VERBO ELIMINATO ** (+ lit)
-  CAN 'look'.      -- (+ gaze, peek)
-  CAN look_at.
-  CAN look_behind.
-  CAN look_in.
-  CAN look_out_of.
-  CAN look_through.
-  CAN look_under.
-  CAN look_up.
+--CAN look_at. -------------------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
   CAN 'notify'.
   CAN notify_on.
   CAN notify_off.
@@ -971,6 +971,13 @@ EVENT check_restriction
       MAKE mia_AT esaminare.                ---> examine      (+ check, inspect, observe, x)
       MAKE mia_AT giocare_con.              ---> play_with
       MAKE mia_AT gridare.                  ---> shout        (+ scream, yell)
+      MAKE mia_AT guardare.                 ---> look         (+ gaze, peek)
+      MAKE mia_AT guardare_attraverso.      ---> look_through
+      MAKE mia_AT guardare_dietro.          ---> look_behind
+      MAKE mia_AT guardare_fuori_da.        ---> look_out_of
+      MAKE mia_AT guardare_in.              ---> look_in
+      MAKE mia_AT guardare_sotto.           ---> look_under
+      MAKE mia_AT guardare_su.              ---> look_up
       MAKE mia_AT guidare.                  ---> drive
       MAKE mia_AT indossare.                ---> wear
       MAKE mia_AT inventariare.             ---> i            (+ inv, inventory)
@@ -1059,14 +1066,7 @@ EVENT check_restriction
       MAKE mia_AT lie_on.
       MAKE mia_AT lift.
     --MAKE mia_AT light. -------------> ** VERBO ELIMINATO ** (+ lit)
-      MAKE mia_AT 'look'.          -- (+ gaze, peek)
-      MAKE mia_AT look_at.
-      MAKE mia_AT look_behind.
-      MAKE mia_AT look_in.
-      MAKE mia_AT look_out_of.
-      MAKE mia_AT look_through.
-      MAKE mia_AT look_under.
-      MAKE mia_AT look_up.
+    --MAKE mia_AT look_at. -----------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
       MAKE mia_AT 'notify'.
       MAKE mia_AT notify_on.
       MAKE mia_AT notify_off.
@@ -1287,6 +1287,13 @@ EVENT check_restriction
           MAKE mia_AT NOT domandare_dove_mi_trovo.  ---> where_am_i
           MAKE mia_AT NOT domandare_dove_è.         ---> where_is
           MAKE mia_AT NOT esaminare.                ---> examine      (+ check, inspect, observe, x)
+          MAKE mia_AT NOT guardare.                 ---> look         (+ gaze, peek)
+          MAKE mia_AT NOT guardare_attraverso.      ---> look_through
+          MAKE mia_AT NOT guardare_dietro.          ---> look_behind
+          MAKE mia_AT NOT guardare_fuori_da.        ---> look_out_of
+          MAKE mia_AT NOT guardare_in.              ---> look_in
+          MAKE mia_AT NOT guardare_sotto.           ---> look_under
+          MAKE mia_AT NOT guardare_su.              ---> look_up
           MAKE mia_AT NOT inventariare.             ---> i            (+ inv, inventory)
           MAKE mia_AT NOT pensare.                  ---> think
           MAKE mia_AT NOT pensare_a.                ---> think_about
@@ -1294,14 +1301,7 @@ EVENT check_restriction
 
         --# NOT YET TRANSLATED:
 
-          MAKE mia_AT NOT 'look'.      -- (+ gaze, peek)
-          MAKE mia_AT NOT look_at.
-          MAKE mia_AT NOT look_behind.
-          MAKE mia_AT NOT look_in.
-          MAKE mia_AT NOT look_out_of.
-          MAKE mia_AT NOT look_through.
-          MAKE mia_AT NOT look_under.
-          MAKE mia_AT NOT look_up.
+        --MAKE mia_AT NOT look_at. -------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
           MAKE mia_AT NOT smell0.
           MAKE mia_AT NOT smell.
  

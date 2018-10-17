@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.0-Alpha, 2018-10-15: Alan 3.0beta6
+--| v0.7.1-Alpha, 2018-10-17: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -248,6 +248,13 @@ END VERB salva_partita.
 --| | dormi              | riposa                       | dormi                                  |     | 0 |     |
 --| | esamina            | guarda, descrivi, osserva, X | esamina (ogg)                          |     | 1 | {X} |
 --| | gioca_con          |                              | gioca con (ogg)                        |     | 1 | {X} |
+--| | guarda             | L                            | guarda                                 |     | 0 |     |
+--| | guarda_dietro      |                              | guarda dietro (bulk)                   |     | 1 |     |
+--| | guarda_in          |                              | guarda in (cont)                       |     | 1 |     |
+--| | guarda_fuori_da    |                              | guarda fuori da (ogg)                  |     | 1 | {X} |
+--| | guarda_attraverso  |                              | guarda attraverso (bulk)               |     | 1 |     |
+--| | guarda_sotto       |                              | guarda sotto (bulk)                    |     | 1 |     |
+--| | guarda_su          | L                            | guarda su                              |     | 0 |     |
 --| | guida              |                              | guida (veicolo)                        |     | 1 |     |
 --| | indossa            | mettiti                      | indossa (ogg)                          |     | 1 | {X} |
 --| | inventario         | inv                          | inventario                             | {X} | 0 |     |
@@ -2303,6 +2310,252 @@ ADD TO EVERY THING
   END VERB gioca_con.
 END ADD TO.
 
+
+
+-- ==============================================================
+
+
+----- @GUARDA -> @LOOK
+
+
+-- ==============================================================
+-- SYNTAX 'look' = 'look'.
+-- SYNONYMS l = 'look'.
+
+
+SYNTAX guarda = guarda.
+
+
+SYNONYMS l = guarda.
+
+
+VERB guarda
+  CHECK mia_AT CAN guardare
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES
+    INCREASE descritto OF CURRENT LOCATION.
+    -- vedi 'lib_luoghi.i', attributo 'descritto'.
+    LOOK.
+END VERB guarda.
+
+-- ==============================================================
+
+
+----- @GUARDA_DIETRO -> @LOOK BEHIND
+
+
+-- ==============================================================
+-- SYNTAX look_behind = 'look' behind (bulk)
+
+
+SYNTAX guarda_dietro = guarda dietro (bulk)
+  WHERE bulk IsA THING
+    ELSE SAY  illegal_parameter_there  OF mia_AT.
+
+
+ADD TO EVERY THING
+  VERB guarda_dietro
+    CHECK mia_AT CAN guardare_dietro
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    AND bulk IS esaminabile
+--                                                                              TRANSLATE!
+      ELSE SAY  check_obj_suitable_there  OF mia_AT.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
+    AND bulk <> hero
+      ELSE SAY  check_obj_not_hero7  OF mia_AT.
+    DOES
+      IF bulk IN hero
+--                                                                              TRANSLATE!
+        THEN "You turn" SAY THE bulk. "in your hands but notice nothing unusual about it."
+        ELSE "You notice nothing unusual behind" SAY THE bulk. "."
+      END IF.
+  END VERB guarda_dietro.
+END ADD TO.
+
+
+
+-- ==============================================================
+
+
+----- @GUARDA IN -> @LOOK IN
+
+
+-- ==============================================================
+-- SYNTAX look_in = 'look' 'in' (cont)
+
+
+SYNTAX guarda_in = guarda 'in' (cont)
+    WHERE cont IsA OBJECT
+      ELSE SAY  illegal_parameter_there  OF mia_AT.
+    AND cont IsA CONTAINER
+      ELSE SAY  illegal_parameter_there  OF mia_AT.
+
+
+ADD TO EVERY OBJECT
+  VERB guarda_in
+    CHECK mia_AT CAN guardare_in
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    AND cont IS esaminabile
+--                                                                              TRANSLATE!
+      ELSE SAY  check_obj_suitable_there  OF mia_AT.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
+    AND cont IS aperto
+      ELSE
+        IF cont IS NOT femminile
+          THEN
+            IF cont IS NOT plurale
+              THEN SAY  imp_ogg1_chiuso_ms  OF mia_AT.
+              ELSE SAY  imp_ogg1_chiuso_mp  OF mia_AT.
+            END IF.
+          ELSE
+            IF cont IS NOT plurale
+              THEN SAY  imp_ogg1_chiuso_fs  OF mia_AT.
+              ELSE SAY  imp_ogg1_chiuso_fp  OF mia_AT.
+            END IF.
+        END IF.
+    DOES
+      LIST cont.
+  END VERB guarda_in.
+END ADD TO.
+
+
+
+-- ==============================================================
+
+
+----- @GUARDA FUORI DA -> @LOOK OUT OF
+
+
+-- ==============================================================
+-- SYNTAX look_out_of = 'look' 'out' 'of' (ogg)
+
+
+SYNTAX guarda_fuori_da = guarda fuori da (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+--                                                                              TRANSLATE!
+        THEN SAY  illegal_parameter_look_out_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_look_out_pl  OF mia_AT.
+      END IF.
+
+ADD TO EVERY OBJECT
+  VERB guarda_fuori_da
+    CHECK mia_AT CAN guardare_fuori_da
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+--                                                                              TRANSLATE!
+          THEN SAY  check_obj_suitable_look_out_sg  OF mia_AT.
+          ELSE SAY  check_obj_suitable_look_out_pl  OF mia_AT.
+        END IF.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
+    DOES
+      IF ogg IS NOT plurale
+--                                                                              TRANSLATE!
+        THEN "That's not"
+        ELSE "Those are not"
+      END IF.
+      "something you can look out of."
+  END VERB guarda_fuori_da.
+END ADD TO.
+
+
+
+-- ==============================================================
+
+
+----- @GUARDA ATTRAVERSO -> @LOOK THROUGH
+
+
+-- ==============================================================
+-- SYNTAX look_through = 'look' through (bulk)
+
+
+SYNTAX guarda_attraverso = guarda attraverso (bulk)
+  WHERE bulk IsA OBJECT
+--                                                                              TRANSLATE!
+    ELSE SAY  illegal_parameter_look_through  OF mia_AT.
+
+
+
+ADD TO EVERY OBJECT
+  VERB guarda_attraverso
+    CHECK mia_AT CAN guardare_attraverso
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    AND bulk IS esaminabile
+--                                                                              TRANSLATE!
+      ELSE SAY  check_obj_suitable_look_through  OF mia_AT.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
+    DOES
+--                                                                              TRANSLATE!
+      "You can't see through" SAY THE bulk. "."
+  END VERB guarda_attraverso.
+END ADD TO.
+
+
+
+-- ==============================================================
+
+
+----- @GUARDA SOTTO -> @LOOK UNDER
+
+
+-- ==============================================================
+-- SYNTAX look_under = 'look' under (bulk)
+
+
+SYNTAX guarda_sotto = guarda sotto (bulk)
+  WHERE bulk IsA THING
+--                                                                              TRANSLATE!
+    ELSE SAY  illegal_parameter_there  OF mia_AT.
+
+
+
+ADD TO EVERY THING
+  VERB guarda_sotto
+    CHECK mia_AT CAN guardare_sotto
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    AND bulk IS esaminabile
+--                                                                              TRANSLATE!
+      ELSE SAY  check_obj_suitable_there  OF mia_AT.
+    AND bulk <> hero
+--                                                                              TRANSLATE!
+      ELSE SAY  check_obj_not_hero8  OF mia_AT.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
+    DOES
+--                                                                              TRANSLATE!
+      "You notice nothing unusual under" SAY THE bulk. "."
+  END VERB guarda_sotto.
+END ADD TO.
+
+
+
+-- ==============================================================
+
+
+----- @GUARDA SU -> @LOOK UP   (-> see also CONSULT)
+
+
+-- ==============================================================
+-- SYNTAX look_up = 'look' up.
+
+
+SYNTAX guarda_su = guarda su.
+
+
+VERB guarda_su
+  CHECK mia_AT CAN guardare_su
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES "Guardando su non noti nulla di interessante."
+    -- "Looking up, you see nothing unusual."
+END VERB guarda_su.
 
 
 
@@ -5597,14 +5850,14 @@ END VERB dove_mi_trovo.
 --~*| listen             |                                    | listen to (obj)                   | 1 | {x}
 --~*| lock               |                                    | lock (obj)                        | 1 | {x}
 --~*| lock_with          |                                    | lock (obj) with (key)             | 2 | {x}
---| | look               | gaze, peek                         | look                              | 0 |
---| | look_at            |                                    | look at (obj)                     | 1 | {x}
---| | look_behind        |                                    | look behind (bulk)                | 1 |
---| | look_in            |                                    | look in (cont)                    | 1 |
---| | look_out_of        |                                    | look out of (obj)                 | 1 | {x}
---| | look_through       |                                    | look through (bulk)               | 1 |
---| | look_under         |                                    | look under (bulk)                 | 1 |
---| | look_up            |                                    | look up                           | 0 |
+--~*| look               | gaze, peek                         | look                              | 0 |
+--~!| look_at            |                                    | look at (obj)                     | 1 | {x}
+--~*| look_behind        |                                    | look behind (bulk)                | 1 |
+--~*| look_in            |                                    | look in (cont)                    | 1 |
+--~*| look_out_of        |                                    | look out of (obj)                 | 1 | {x}
+--~*| look_through       |                                    | look through (bulk)               | 1 |
+--~*| look_under         |                                    | look under (bulk)                 | 1 |
+--~*| look_up            |                                    | look up                           | 0 |
 --~*| no                 |                                    | no                                | 0 |
 --| | notify (on, off)   |                                    | notify. notify on. notify off     | 0 |
 --~*| open               |                                    | open (obj)                        | 1 | {x}
@@ -7502,33 +7755,6 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
-
--- ==============================================================
-
-
------ LOOK
-
-
--- ==============================================================
-
-
-SYNTAX 'look' = 'look'.
-
-
-SYNONYMS l = 'look'.
-
-
-VERB 'look'
-  CHECK mia_AT CAN 'look'
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES
-    INCREASE descritto OF CURRENT LOCATION.
-    -- see 'locations.i', attribute 'described'.
-    LOOK.
-END VERB.
-
-
-
 -- ==============================================================
 
 
@@ -7536,212 +7762,6 @@ END VERB.
 
 
 -- ==============================================================
-
-
-
-
-
--- ==============================================================
-
-
------ LOOK BEHIND
-
-
--- ==============================================================
-
-
-SYNTAX look_behind = 'look' behind (bulk)
-  WHERE bulk IsA THING
-    ELSE SAY  illegal_parameter_there  OF mia_AT.
-
-
-ADD TO EVERY THING
-  VERB look_behind
-    CHECK mia_AT CAN look_behind
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    AND bulk IS esaminabile
-      ELSE SAY  check_obj_suitable_there  OF mia_AT.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY  imp_luogo_buio  OF mia_AT.
-    AND bulk <> hero
-      ELSE SAY  check_obj_not_hero7  OF mia_AT.
-    DOES
-      IF bulk IN hero
-        THEN "You turn" SAY THE bulk. "in your hands but notice nothing unusual about it."
-        ELSE "You notice nothing unusual behind" SAY THE bulk. "."
-      END IF.
-  END VERB look_behind.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ LOOK IN
-
-
--- ==============================================================
-
-
-SYNTAX
-  look_in = 'look' 'in' (cont)
-    WHERE cont IsA OBJECT
-      ELSE SAY  illegal_parameter_there  OF mia_AT.
-    AND cont IsA CONTAINER
-      ELSE SAY  illegal_parameter_there  OF mia_AT.
-
-
-ADD TO EVERY OBJECT
-  VERB look_in
-    CHECK mia_AT CAN look_in
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    AND cont IS esaminabile
-      ELSE SAY  check_obj_suitable_there  OF mia_AT.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY  imp_luogo_buio  OF mia_AT.
-    AND cont IS aperto
-      ELSE
-        IF cont IS NOT femminile
-          THEN
-            IF cont IS NOT plurale
-              THEN SAY  imp_ogg1_chiuso_ms  OF mia_AT.
-              ELSE SAY  imp_ogg1_chiuso_mp  OF mia_AT.
-            END IF.
-          ELSE
-            IF cont IS NOT plurale
-              THEN SAY  imp_ogg1_chiuso_fs  OF mia_AT.
-              ELSE SAY  imp_ogg1_chiuso_fp  OF mia_AT.
-            END IF.
-        END IF.
-    DOES
-      LIST cont.
-  END VERB look_in.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ LOOK OUT OF
-
-
--- ==============================================================
-
-
-SYNTAX look_out_of = 'look' 'out' 'of' (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY  illegal_parameter_look_out_sg  OF mia_AT.
-        ELSE SAY  illegal_parameter_look_out_pl  OF mia_AT.
-      END IF.
-
-
-
-ADD TO EVERY OBJECT
-  VERB look_out_of
-    CHECK mia_AT CAN look_out_of
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          THEN SAY  check_obj_suitable_look_out_sg  OF mia_AT.
-          ELSE SAY  check_obj_suitable_look_out_pl  OF mia_AT.
-        END IF.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY  imp_luogo_buio  OF mia_AT.
-    DOES
-      IF ogg IS NOT plurale
-        THEN "That's not"
-        ELSE "Those are not"
-      END IF.
-      "something you can look out of."
-  END VERB look_out_of.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ LOOK THROUGH
-
-
--- ==============================================================
-
-
-SYNTAX look_through = 'look' through (bulk)
-  WHERE bulk IsA OBJECT
-    ELSE SAY  illegal_parameter_look_through  OF mia_AT.
-
-
-
-ADD TO EVERY OBJECT
-  VERB look_through
-    CHECK mia_AT CAN look_through
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    AND bulk IS esaminabile
-      ELSE SAY  check_obj_suitable_look_through  OF mia_AT.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY  imp_luogo_buio  OF mia_AT.
-    DOES
-      "You can't see through" SAY THE bulk. "."
-  END VERB look_through.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ LOOK UNDER
-
-
--- ==============================================================
-
-
-SYNTAX look_under = 'look' under (bulk)
-  WHERE bulk IsA THING
-    ELSE SAY  illegal_parameter_there  OF mia_AT.
-
-
-
-ADD TO EVERY THING
-  VERB look_under
-    CHECK mia_AT CAN look_under
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    AND bulk IS esaminabile
-      ELSE SAY  check_obj_suitable_there  OF mia_AT.
-    AND bulk <> hero
-      ELSE SAY  check_obj_not_hero8  OF mia_AT.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY  imp_luogo_buio  OF mia_AT.
-    DOES
-      "You notice nothing unusual under" SAY THE bulk. "."
-  END VERB look_under.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------ LOOK UP   (-> see also CONSULT)
-
-
--- ==============================================================
-
-
-SYNTAX look_up = 'look' up.
-
-
-VERB look_up
-  CHECK mia_AT CAN look_up
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES "Looking up, you see nothing unusual."
-END VERB look_up.
 
 
 

@@ -379,14 +379,14 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `listen`         | `ascoltare`               |
 | `lock`           | `bloccare`                |
 | `lock_with`      | `bloccare_con`            |
-| `'look'`         |                           |
-| `look_at`        |                           |
-| `look_behind`    |                           |
-| `look_in`        |                           |
-| `look_out_of`    |                           |
-| `look_through`   |                           |
-| `look_under`     |                           |
-| `look_up`        |                           |
+| `'look'`         | `guardare`                |
+| ~~`look_at`~~    | _obsolete_                |
+| `look_behind`    | `guardare_dietro`         |
+| `look_in`        | `guardare_in`             |
+| `look_out_of`    | `guardare_fuori_da`       |
+| `look_through`   | `guardare_attraverso`     |
+| `look_under`     | `guardare_sotto`          |
+| `look_up`        | `guardare_su`             |
 | `'no'`           | `dire_no`                 |
 | `'notify'`       |                           |
 | `notify_off`     |                           |

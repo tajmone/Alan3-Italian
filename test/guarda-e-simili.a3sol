@@ -1,0 +1,38 @@
+guarda
+guarda su
+; ----------------------------
+; GUARDA <OGG> = ESAMINA <OGG>
+; ----------------------------
+esamina il lucernario
+guarda il lucernario
+guarda fuori dal lucernario
+guarda attraverso il lucernario
+; -------------
+; GLI AFFRESCHI
+; -------------
+esamina affreschi
+prendi affreschi
+push affreschi
+guarda dietro affreschi
+guarda sotto affreschi
+; -------
+; LE BARE
+; -------
+esamina la bara
+esamina le bare
+esamina la bara rossa
+esamina la bara nera
+esamina la nera
+guarda attraverso la bara rossa
+guarda attraverso la bara nera
+guarda nella bara rossa
+guarda nella bara nera
+esamina lo scheletro
+guarda sotto la bara rossa
+guarda sotto la bara nera
+guarda dietro la bara rossa
+guarda dietro la bara nera
+guarda fuori dalla bara rossa
+guarda fuori dalla bara nera
+
+

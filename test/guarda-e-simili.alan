@@ -1,0 +1,79 @@
+--==============================================================================
+-- "Guarda E Verbi Affini" by Tristano Ajmone, 2018.
+--==============================================================================
+IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
+
+
+THE mia_AT IsA blocco_definizioni
+  ------------------------------------------------------------------------------
+  HAS       titolo  "Guarda E Verbi Affini".
+  HAS  sottotitolo  "Avventure per testare il gruppo di verbi ""guarda"".".
+  HAS       autore  "Tristano Ajmone".
+  HAS         anno   2018.
+  HAS     versione  "1".
+  ------------------------------------------------------------------------------
+END THE.
+
+--==============================================================================
+-- La Cripta
+--==============================================================================
+
+THE cripta IsA stanza.
+  NAME 'Nella Cripta'
+  DESCRIPTION
+    "Ogni cosa nella cripta è avvolta nella soffusa luce lunare che filtra dal
+     lucernario."
+  HAS desc_pareti
+    "Gli affreschi sulle pareti raffigurano l'apocalisse.".
+END THE cripta.
+
+THE lucernario IsA object AT cripta.
+  HAS xDesc
+    "È un lucernario rotondo, con dei raggi che ricordano una rosa o un disco
+    solare. Si trova molto in alto.".
+END THE lucernario.
+
+--------------------------------------------------------------------------------
+-- Gli Affreschi
+--------------------------------------------------------------------------------
+-- Per implementare gli affreschi sfruttiamo le pareti predefinite nella classe
+-- "stanza".
+
+SYNONYMS affreschi = pareti.
+
+ADD TO EVERY stanza
+  VERB esamina
+    CHECK ogg <> pareti
+      ELSE SAY THIS:desc_pareti.
+  END VERB.
+END ADD.
+
+--==============================================================================
+-- Le Bare
+--==============================================================================
+EVERY bara IsA object.
+  CONTAINER.
+  NAME bara.
+  NAME bare.
+  HAS articolo "la".
+  HAS xDesc "La fioca luce lunare non ti consente di vedere cosa ci sia dentro.".
+END EVERY bara.
+
+THE bara_nera IsA bara AT cripta.
+  NAME bara nera.
+END THE bara_nera.
+
+THE bara_rossa IsA bara AT cripta.
+  NAME bara rossa.
+END THE bara_rossa.
+
+THE scheletro IsA object IN bara_nera.
+  HAS articolo "lo".
+  HAS xDesc
+    "Lo scheletro indossa ancora il suo vestito del funerale. I capelli si sono
+     fatto radi, le ragnatele coprono il suo volto. Gli scheletri hanno un volto,
+     giusto?".
+END THE scheletro.
+--------------------------------------------------------------------------------
+Start at cripta.
+DESCRIBE intestazione.
