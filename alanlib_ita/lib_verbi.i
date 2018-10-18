@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.1-Alpha, 2018-10-17: Alan 3.0beta6
+--| v0.7.2-Alpha, 2018-10-18: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -2351,24 +2351,26 @@ END VERB guarda.
 SYNTAX guarda_dietro = guarda dietro (bulk)
   WHERE bulk IsA THING
     ELSE SAY  illegal_parameter_there  OF mia_AT.
-
+-- @TODO: Aggiungi controllo per suoni, oppure implementa il verbo sulla classe
+--        dei suoni.                                                            FIXME!
 
 ADD TO EVERY THING
   VERB guarda_dietro
     CHECK mia_AT CAN guardare_dietro
       ELSE SAY  azione_bloccata  OF mia_AT.
     AND bulk IS esaminabile
---                                                                              TRANSLATE!
-      ELSE SAY  check_obj_suitable_there  OF mia_AT.
+      ELSE SAY  mia_AT:impossibile_guardare. "dietro $+1."
+             -- check_obj_suitable_there  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND bulk <> hero
       ELSE SAY  check_obj_not_hero7  OF mia_AT.
     DOES
       IF bulk IN hero
---                                                                              TRANSLATE!
-        THEN "You turn" SAY THE bulk. "in your hands but notice nothing unusual about it."
-        ELSE "You notice nothing unusual behind" SAY THE bulk. "."
+        THEN "Giri $+1 ma non noti niente di particolare."
+          -- "You turn" SAY THE bulk. "in your hands but notice nothing unusual about it."
+        ELSE "Non noti nulla di insolito dietro $+1."
+          -- "You notice nothing unusual behind" SAY THE bulk. "."
       END IF.
   END VERB guarda_dietro.
 END ADD TO.
@@ -2386,10 +2388,13 @@ END ADD TO.
 
 
 SYNTAX guarda_in = guarda 'in' (cont)
+-- @TODO: Can these be joined in a single WHERE?                                OPTIMIZE?
     WHERE cont IsA OBJECT
-      ELSE SAY  illegal_parameter_there  OF mia_AT.
+      ELSE SAY  mia_AT:impossibile_guardare. "dentro $+1."
+            --  illegal_parameter_there  OF mia_AT.
     AND cont IsA CONTAINER
-      ELSE SAY  illegal_parameter_there  OF mia_AT.
+      ELSE SAY  mia_AT:impossibile_guardare. "dentro $+1."
+            --  illegal_parameter_there  OF mia_AT.
 
 
 ADD TO EVERY OBJECT
@@ -2397,8 +2402,8 @@ ADD TO EVERY OBJECT
     CHECK mia_AT CAN guardare_in
       ELSE SAY  azione_bloccata  OF mia_AT.
     AND cont IS esaminabile
---                                                                              TRANSLATE!
-      ELSE SAY  check_obj_suitable_there  OF mia_AT.
+      ELSE SAY  mia_AT:impossibile_guardare. "dentro $+1."
+            --  check_obj_suitable_there  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND cont IS aperto
@@ -2435,11 +2440,13 @@ END ADD TO.
 SYNTAX guarda_fuori_da = guarda fuori da (ogg)
   WHERE ogg IsA OBJECT
     ELSE
+-- @TODO: Add checks for Hero!                                                  FIXME!
       IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-        THEN SAY  illegal_parameter_look_out_sg  OF mia_AT.
-        ELSE SAY  illegal_parameter_look_out_pl  OF mia_AT.
+        --  "$+1 non [è/sono] qualcosa da cui poter"
+        THEN SAY mia_AT:ogg1_illegale_DA_sg.
+        ELSE SAY mia_AT:ogg1_illegale_DA_pl.
       END IF.
+      "guardare fuori."
 
 ADD TO EVERY OBJECT
   VERB guarda_fuori_da
@@ -2530,8 +2537,9 @@ ADD TO EVERY THING
     AND CURRENT LOCATION IS illuminato
       ELSE SAY  imp_luogo_buio  OF mia_AT.
     DOES
---                                                                              TRANSLATE!
-      "You notice nothing unusual under" SAY THE bulk. "."
+-- @NOTE: Perché non controlla se l'oggeto è posseduto dal giocatore (come fa in look_behind)?
+      "Non noti nulla di insolito sotto $+1."
+  --  "You notice nothing unusual under" SAY THE bulk. "."
   END VERB guarda_sotto.
 END ADD TO.
 

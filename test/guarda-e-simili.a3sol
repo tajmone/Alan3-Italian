@@ -1,38 +1,122 @@
 guarda
 guarda su
-; ----------------------------
-; GUARDA <OGG> = ESAMINA <OGG>
-; ----------------------------
+; ----------------------------------
+; NOTA: guarda <ogg> = esamina <ogg>
+; ----------------------------------
+; ==============================================================================
+; LO SCRICCHIOLÌO | SUONO
+; ==============================================================================
+ascolta lo scricchiolìo
+esamina lo scricchiolio
+prendi lo scricchiolio
+guarda lo scricchiolìo
+guarda sotto lo scricchiolìo
+guarda dietro lo scricchiolìo
+guarda nello scricchiolìo
+guarda attraverso lo scricchiolìo
+guarda fuori dallo scricchiolìo
+; ==============================================================================
+; IL LUCERNARIO | object + distante + NOT raggiungibile
+; ==============================================================================
 esamina il lucernario
 guarda il lucernario
+prendi il lucernario
+guarda nel lucernario
 guarda fuori dal lucernario
+guarda dietro il lucernario
+guarda sotto il lucernario
 guarda attraverso il lucernario
-; -------------
-; GLI AFFRESCHI
-; -------------
+; ==============================================================================
+; GLI AFFRESCHI | oggetto_stanza (affreschi = pareti)
+; ==============================================================================
 esamina affreschi
 prendi affreschi
 push affreschi
 guarda dietro affreschi
 guarda sotto affreschi
-; -------
-; LE BARE
-; -------
+; ==============================================================================
+; LE BARE | object + OPAQUE CONTAINER + NOT prendibile
+; ==============================================================================
+; TEST disambiguazione:
 esamina la bara
 esamina le bare
-esamina la bara rossa
-esamina la bara nera
 esamina la nera
+esamina la rossa
+; TEST NOT prendibile
+prendi la bara nera
+prendi la bara rossa
+; --------------
+; TEST SCHELETRO
+; --------------
+; Lo scheletro non deve essere esaminabile finché non si è guardato dentro la
+; bara nera (implmentazione di gioco non-vaniglia):
+esamina scheletro
+; ----------
+; BARA ROSSA (vuota)
+; ----------
+esamina la bara rossa
 guarda attraverso la bara rossa
-guarda attraverso la bara nera
-guarda nella bara rossa
-guarda nella bara nera
-esamina lo scheletro
 guarda sotto la bara rossa
-guarda sotto la bara nera
 guarda dietro la bara rossa
-guarda dietro la bara nera
 guarda fuori dalla bara rossa
+guarda nella bara rossa
+; ---------
+; BARA NERA (non vuota / non vaniglia)
+; ---------
+esamina la bara nera
+guarda attraverso la bara nera
+guarda sotto la bara nera
+guarda dietro la bara nera
 guarda fuori dalla bara nera
-
-
+guarda nella bara nera
+; ora la bara non è più OPAQUE dato che il giocatore ne conosce il contenuto.
+esamina lo scheletro
+; bara_nera definisce ulteriormente esamina (AFTER):
+esamina la bara nera
+guarda
+; ==============================================================================
+; LA PIANTA | object + scenario
+; ==============================================================================
+esamina la pianta
+prendi la pianta
+guarda dietro la pianta
+guarda sotto la pianta
+guarda nella pianta
+guarda attraverso la pianta
+guarda fuori dalla pianta
+; ==============================================================================
+; IL CUBO | object
+; ==============================================================================
+esamina il cubo
+guarda dietro il cubo
+guarda sotto il cubo
+guarda nel cubo
+guarda attraverso il cubo
+guarda fuori dal cubo
+; TESTA su oggetto posseduto da Hero:
+prendi il cubo
+guarda dietro il cubo
+guarda sotto il cubo
+guarda nel cubo
+guarda attraverso il cubo
+guarda fuori dal cubo
+; ==============================================================================
+; IL FANTASMA | actor -> persona -> maschio (speciale)
+; ==============================================================================
+; TESTA su attore di tipo maschio:
+guarda il fantasma
+guarda dietro il fantasma
+guarda sotto il fantasma
+guarda nel fantasma
+guarda attraverso il fantasma
+guarda fuori dal fantasma
+; ==============================================================================
+; THE HERO | actor (speciale)
+; ==============================================================================
+; TESTA su attore protagonista:
+guarda me
+guarda dietro me
+guarda sotto me
+guarda in me
+guarda attraverso me
+guarda fuori da me

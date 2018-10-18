@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.0-Alpha, 2018-10-15: Alan 3.0beta6
+v0.7.2-Alpha, 2018-10-18: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -110,6 +110,13 @@ Comandi diretti al personaggio protagonista per interagire con l'avventura.
 | dormi              | riposa                       | dormi                                  |     | 0 |     |
 | esamina            | guarda, descrivi, osserva, X | esamina (ogg)                          |     | 1 | {X} |
 | gioca_con          |                              | gioca con (ogg)                        |     | 1 | {X} |
+| guarda             | L                            | guarda                                 |     | 0 |     |
+| guarda_dietro      |                              | guarda dietro (bulk)                   |     | 1 |     |
+| guarda_in          |                              | guarda in (cont)                       |     | 1 |     |
+| guarda_fuori_da    |                              | guarda fuori da (ogg)                  |     | 1 | {X} |
+| guarda_attraverso  |                              | guarda attraverso (bulk)               |     | 1 |     |
+| guarda_sotto       |                              | guarda sotto (bulk)                    |     | 1 |     |
+| guarda_su          | L                            | guarda su                              |     | 0 |     |
 | guida              |                              | guida (veicolo)                        |     | 1 |     |
 | indossa            | mettiti                      | indossa (ogg)                          |     | 1 | {X} |
 | inventario         | inv                          | inventario                             | {X} | 0 |     |
@@ -231,14 +238,6 @@ italiano del modulo dei verbi.
 | lie_in             |                                    | lie in (cont)                     | 1 |
 | lie_on             |                                    | lie on (surface)                  | 1 |
 | lift               |                                    | lift (obj)                        | 1 | {x}
-| look               | gaze, peek                         | look                              | 0 |
-| look_at            |                                    | look at (obj)                     | 1 | {x}
-| look_behind        |                                    | look behind (bulk)                | 1 |
-| look_in            |                                    | look in (cont)                    | 1 |
-| look_out_of        |                                    | look out of (obj)                 | 1 | {x}
-| look_through       |                                    | look through (bulk)               | 1 |
-| look_under         |                                    | look under (bulk)                 | 1 |
-| look_up            |                                    | look up                           | 0 |
 | notify (on, off)   |                                    | notify. notify on. notify off     | 0 |
 | pour               | (= defined at the verb `empty`)    | pour (obj)                        | 1 | {x}
 | pour_in            | (= defined at the verb `emtpy_in`) | pour (obj) in (cont)              | 2 | {x}

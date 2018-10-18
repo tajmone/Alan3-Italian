@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Definizioni
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.0-Alpha, 2018-10-15: Alan 3.0beta6
+v0.7.1-Alpha, 2018-10-17: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_definitions.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -90,6 +90,13 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
   CAN esaminare.                ---> examine      (+ check, inspect, observe, x)
   CAN giocare_con.              ---> play_with
   CAN gridare.                  ---> shout        (+ scream, yell)
+  CAN guardare.                 ---> look         (+ gaze, peek)
+  CAN guardare_attraverso.      ---> look_through
+  CAN guardare_dietro.          ---> look_behind
+  CAN guardare_fuori_da.        ---> look_out_of
+  CAN guardare_in.              ---> look_in
+  CAN guardare_sotto.           ---> look_under
+  CAN guardare_su.              ---> look_up
   CAN guidare.                  ---> drive
   CAN indossare.                ---> wear
   CAN inventariare.             ---> i            (+ inv, inventory)
@@ -257,14 +264,7 @@ Questo è l'elenco degli attributi verbali non ancora tradotti:
   CAN lie_on.
   CAN lift.
 --CAN light. ---------------------> ** VERBO ELIMINATO ** (+ lit)
-  CAN 'look'.      -- (+ gaze, peek)
-  CAN look_at.
-  CAN look_behind.
-  CAN look_in.
-  CAN look_out_of.
-  CAN look_through.
-  CAN look_under.
-  CAN look_up.
+--CAN look_at. -------------------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
   CAN 'notify'.
   CAN notify_on.
   CAN notify_off.

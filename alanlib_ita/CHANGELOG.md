@@ -11,6 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/10/18](#20181018)
+    - [Translate Responses for "Look" Verbs](#translate-responses-for-look-verbs)
+    - [Verb Responses](#verb-responses)
 - [2018/10/17](#20181017)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
     - [Translate "Look" Verbs](#translate-look-verbs)
@@ -48,7 +51,7 @@ Status: Alpha stage.
     - [New Recurrent Verb Responses Attributes](#new-recurrent-verb-responses-attributes)
 - [2018/08/27 \(2\)](#20180827-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-3)
-    - [Verb Responses](#verb-responses)
+    - [Verb Responses](#verb-responses-1)
     - [Verbs: `talk` and `talk_to`](#verbs-talk-and-talk_to)
 - [2018/08/27 \(1\)](#20180827-1)
     - [Verb Restriction Attributes](#verb-restriction-attributes-4)
@@ -73,14 +76,14 @@ Status: Alpha stage.
 - [2018/08/16 \(2\)](#20180816-2)
     - [Fix Actors Initialization and Description](#fix-actors-initialization-and-description)
 - [2018/08/16 \(1\)](#20180816-1)
-    - [Verb Responses](#verb-responses-1)
+    - [Verb Responses](#verb-responses-2)
     - [Corretto Risposte Per `indossa` e `togliti`](#corretto-risposte-per-indossa-e-togliti)
 - [2018/08/11](#20180811)
     - [Verb Restriction Attributes](#verb-restriction-attributes-7)
-    - [Verb Responses](#verb-responses-2)
+    - [Verb Responses](#verb-responses-3)
     - [Verb: `remove`](#verb-remove)
 - [2018/08/09](#20180809)
-    - [Verb Responses](#verb-responses-3)
+    - [Verb Responses](#verb-responses-4)
     - [Verb: `wear`](#verb-wear)
 - [2018/08/08](#20180808)
     - [Deleted `present_actor` Attribute](#deleted-present_actor-attribute)
@@ -97,7 +100,7 @@ Status: Alpha stage.
 - [2018/08/06 \(1\)](#20180806-1)
     - [Library Attributes](#library-attributes)
 - [2018/08/02 \(3\)](#20180802-3)
-    - [Verb Responses](#verb-responses-4)
+    - [Verb Responses](#verb-responses-5)
     - [Verbs: `tie` and `tie_to`](#verbs-tie-and-tie_to)
 - [2018/08/02 \(2\)](#20180802-2)
 - [2018/08/02 \(1\)](#20180802-1)
@@ -105,7 +108,7 @@ Status: Alpha stage.
     - [Verbs: `touch` and `touch_with`](#verbs-touch-and-touch_with)
     - [Code Cleanup](#code-cleanup)
 - [2018/08/01 \(4\)](#20180801-4)
-    - [Verb Responses](#verb-responses-5)
+    - [Verb Responses](#verb-responses-6)
     - [Verb: `sing`](#verb-sing)
     - [Verb: `kiss`](#verb-kiss)
     - [Verb: `pull`](#verb-pull)
@@ -113,7 +116,7 @@ Status: Alpha stage.
     - [Verbs: `attack` and `attack_with`](#verbs-attack-and-attack_with)
 - [2018/08/01 \(2\)](#20180801-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-8)
-    - [Verb Responses](#verb-responses-6)
+    - [Verb Responses](#verb-responses-7)
     - [Verbs: `cut` and `cut_with`](#verbs-cut-and-cut_with)
     - [Verb: `dance`](#verb-dance)
     - [Verb: `dig`](#verb-dig)
@@ -127,7 +130,7 @@ Status: Alpha stage.
     - [Verb: `think_about`](#verb-think_about)
 - [2018/07/31 \(1\)](#20180731-1)
     - [Verb Restriction Attributes](#verb-restriction-attributes-10)
-    - [Verb Responses](#verb-responses-7)
+    - [Verb Responses](#verb-responses-8)
     - [Verb: `fix`](#verb-fix)
 - [2018/07/29 \(2\)](#20180729-2)
     - [Remove Verb Restriction Attributes](#remove-verb-restriction-attributes)
@@ -139,9 +142,9 @@ Status: Alpha stage.
     - [Verb Restriction Attributes](#verb-restriction-attributes-11)
     - [Testo dei Verbi](#testo-dei-verbi)
 - [2018/07/28 \(3\)](#20180728-3)
-    - [Verb Responses](#verb-responses-8)
-- [2018/07/28 \(2\)](#20180728-2)
     - [Verb Responses](#verb-responses-9)
+- [2018/07/28 \(2\)](#20180728-2)
+    - [Verb Responses](#verb-responses-10)
     - [Verb Restriction Attributes](#verb-restriction-attributes-12)
     - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
 - [2018/07/28 \(1\)](#20180728-1)
@@ -337,6 +340,27 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/10/18
+
+- [`lib_messaggi.i`][lib_messaggi] (v0.7.1)
+- [`lib_verbi.i`][lib_verbi] (v0.7.2)
+
+## Translate Responses for "Look" Verbs
+
+This commits start to translate verb responses for the "look" verbs (`guarda*`).
+
+## Verb Responses
+
+New verb responses attributes (created for Italian library, no English counterpart):
+
+|         Attribute          |                    Text                    |
+|----------------------------|--------------------------------------------|
+| `impossibile_guardare`     | `"Non è possibile guardare"`               |
+| `ogg1_illegale_DA_sg`/`pl` | `"$+1 non [è/sono] qualcosa da cui poter"` |
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/10/17
 

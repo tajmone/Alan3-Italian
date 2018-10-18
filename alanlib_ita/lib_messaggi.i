@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi.i"
---| v0.7.0-Alpha, 2018-10-15: Alan 3.0beta6
+--| v0.7.1-Alpha, 2018-10-18: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -487,6 +487,13 @@ ADD TO EVERY blocco_definizioni
   -- Varianti dei messaggi precedenti, quando si tratta di parametri che richiedono
   -- preposizioni.
 
+  -- -----------------
+  -- PREPOSIZIONE "DA"
+  -- -----------------
+  -- ORIGINAL EN: (nessuno)
+  HAS ogg1_illegale_DA_sg  "$+1 non è qualcosa da cui poter".                   ---> guarda_fuori_da
+  HAS ogg1_illegale_DA_pl  "$+1 non sono qualcosa da cui poter".
+
   -- ----------------
   -- PREPOSIZIONE "A"
   -- ----------------
@@ -601,6 +608,11 @@ ADD TO EVERY blocco_definizioni
   HAS ogg1_non_rotto_sg "$+1 non necessita di riparazioni.".
   HAS ogg1_non_rotto_pl "$+1 non necessitano di riparazioni.".
   
+  
+  -- =======================
+  -- OGGETTI NON ESAMINABILI
+  -- =======================
+  HAS impossibile_guardare "Non è possibile guardare".
   
   -- ==============================
   -- OGGETTI APERTI/CHIUSI/BLOCCATI

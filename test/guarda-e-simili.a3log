@@ -11,21 +11,56 @@ Tutti i diritti riservati.
 
 Nella Cripta
 Ogni cosa nella cripta è avvolta nella soffusa luce lunare che filtra dal
-lucernario. Puoi vedere un lucernario e una bara nera qui. La bara nera
-contiene uno scheletro. Puoi vedere una bara rossa qui.
+lucernario. Odi un inquietante scricchiolìo in sottofondo. Puoi vedere un 
+lucernario, una bara rossa, una bara nera e un cubo qui. C'è un fantasma 
+qui.
 
 > guarda
 Nella Cripta
 Ogni cosa nella cripta è avvolta nella soffusa luce lunare che filtra dal
-lucernario. Puoi vedere un lucernario e una bara nera qui. La bara nera
-contiene uno scheletro. Puoi vedere una bara rossa qui.
+lucernario. Odi un inquietante scricchiolìo in sottofondo. Puoi vedere un 
+lucernario, una bara rossa, una bara nera e un cubo qui. C'è un fantasma 
+qui.
 
 > guarda su
 Guardando su non noti nulla di interessante.
 
-> ; ----------------------------
-> ; GUARDA <OGG> = ESAMINA <OGG>
-> ; ----------------------------
+> ; ----------------------------------
+> ; NOTA: guarda <ogg> = esamina <ogg>
+> ; ----------------------------------
+> ; ==============================================================================
+> ; LO SCRICCHIOLÌO | SUONO
+> ; ==============================================================================
+> ascolta lo scricchiolìo
+Non odi niente di particolare.
+
+> esamina lo scricchiolio
+That's not something you can examine.
+
+> prendi lo scricchiolio
+Lo scricchiolìo non è qualcosa che puoi prendere.
+
+> guarda lo scricchiolìo
+That's not something you can examine.
+
+> guarda sotto lo scricchiolìo
+It's not possible to guarda there.
+
+> guarda dietro lo scricchiolìo
+Non è possibile guardare dietro lo scricchiolìo.
+
+> guarda nello scricchiolìo
+Non è possibile guardare dentro lo scricchiolìo.
+
+> guarda attraverso lo scricchiolìo
+You can't look through lo scricchiolìo.
+
+> guarda fuori dallo scricchiolìo
+That's not something you can look out of.
+
+> ; ==============================================================================
+> ; IL LUCERNARIO | object + distante + NOT raggiungibile
+> ; ==============================================================================
 > esamina il lucernario
 È un lucernario rotondo, con dei raggi che ricordano una rosa o un disco
 solare. Si trova molto in alto.
@@ -34,15 +69,27 @@ solare. Si trova molto in alto.
 È un lucernario rotondo, con dei raggi che ricordano una rosa o un disco
 solare. Si trova molto in alto.
 
+> prendi il lucernario
+Il lucernario è fuori dalla tua portata.
+
+> guarda nel lucernario
+Non è possibile guardare dentro il lucernario.
+
 > guarda fuori dal lucernario
 That's not something you can look out of.
+
+> guarda dietro il lucernario
+Non noti nulla di insolito dietro il lucernario.
+
+> guarda sotto il lucernario
+Non noti nulla di insolito sotto il lucernario.
 
 > guarda attraverso il lucernario
 You can't see through il lucernario.
 
-> ; -------------
-> ; GLI AFFRESCHI
-> ; -------------
+> ; ==============================================================================
+> ; GLI AFFRESCHI | oggetto_stanza (affreschi = pareti)
+> ; ==============================================================================
 > esamina affreschi
 Gli affreschi sulle pareti raffigurano l'apocalisse.
 
@@ -58,62 +105,209 @@ Non è una cosa fattibile.
 > guarda sotto affreschi
 Non è una cosa fattibile.
 
-> ; -------
-> ; LE BARE
-> ; -------
+> ; ==============================================================================
+> ; LE BARE | object + OPAQUE CONTAINER + NOT prendibile
+> ; ==============================================================================
+> ; TEST disambiguazione:
 > esamina la bara
-Non mi è chiaro se intendi dire la bara nera o la bara rossa.
+Non mi è chiaro se intendi dire la bara rossa o la bara nera.
 
 > esamina le bare
-Non mi è chiaro se intendi dire la bara nera o la bara rossa.
-
-> esamina la bara rossa
-La fioca luce lunare non ti consente di vedere cosa ci sia dentro.
-
-> esamina la bara nera
-La fioca luce lunare non ti consente di vedere cosa ci sia dentro.
+Non mi è chiaro se intendi dire la bara rossa o la bara nera.
 
 > esamina la nera
+La fioca luce lunare non ti consente di vedere cosa ci sia dentro. Ma sai
+già che contiene uno scheletro.
+
+> esamina la rossa
+La fioca luce lunare non ti consente di vedere cosa ci sia dentro.
+
+> ; TEST NOT prendibile
+> prendi la bara nera
+La bara nera non è qualcosa che puoi prendere.
+
+> prendi la bara rossa
+La bara rossa non è qualcosa che puoi prendere.
+
+> ; --------------
+> ; TEST SCHELETRO
+> ; --------------
+> ; Lo scheletro non deve essere esaminabile finché non si è guardato dentro la
+> ; bara nera (implmentazione di gioco non-vaniglia):
+> esamina scheletro
+Qui non puoi vedere nulla del genere.
+
+> ; ----------
+> ; BARA ROSSA (vuota)
+> ; ----------
+> esamina la bara rossa
 La fioca luce lunare non ti consente di vedere cosa ci sia dentro.
 
 > guarda attraverso la bara rossa
 You can't see through la bara rossa.
 
-> guarda attraverso la bara nera
-You can't see through la bara nera.
-
-> guarda nella bara rossa
-La bara rossa è vuota.
-
-> guarda nella bara nera
-La bara nera contiene uno scheletro.
-
-> esamina lo scheletro
-Lo scheletro indossa ancora il suo vestito del funerale. I capelli si
-sono fatto radi, le ragnatele coprono il suo volto. Gli scheletri hanno
-un volto, giusto?
-
 > guarda sotto la bara rossa
-You notice nothing unusual under la bara rossa.
-
-> guarda sotto la bara nera
-You notice nothing unusual under la bara nera.
+Non noti nulla di insolito sotto la bara rossa.
 
 > guarda dietro la bara rossa
-You notice nothing unusual behind la bara rossa.
-
-> guarda dietro la bara nera
-You notice nothing unusual behind la bara nera.
+Non noti nulla di insolito dietro la bara rossa.
 
 > guarda fuori dalla bara rossa
 That's not something you can look out of.
 
+> guarda nella bara rossa
+La bara rossa è vuota.
+
+> ; ---------
+> ; BARA NERA (non vuota / non vaniglia)
+> ; ---------
+> esamina la bara nera
+La fioca luce lunare non ti consente di vedere cosa ci sia dentro. Ma sai
+già che contiene uno scheletro.
+
+> guarda attraverso la bara nera
+You can't see through la bara nera.
+
+> guarda sotto la bara nera
+Non noti nulla di insolito sotto la bara nera.
+
+> guarda dietro la bara nera
+Non noti nulla di insolito dietro la bara nera.
+
 > guarda fuori dalla bara nera
 That's not something you can look out of.
 
-> 
+> guarda nella bara nera
+La bara nera contiene uno scheletro.
 
-> 
+> ; ora la bara non è più OPAQUE dato che il giocatore ne conosce il contenuto.
+> esamina lo scheletro
+Lo scheletro giace in una postura pacifica sfoggiando in eterno il
+vestito del suo funerale. Il tempo, che ne ha divorato avidamente la
+carne, sembra aver risparmiato i suoi capelli, lasciando al buio il
+compito di tingerli di cenere. Fitte ragnatele coprono il suo viso. Gli
+scheletri hanno un viso, giusto?
+
+> ; bara_nera definisce ulteriormente esamina (AFTER):
+> esamina la bara nera
+La fioca luce lunare non ti consente di vedere cosa ci sia dentro. Ma sai
+già che contiene uno scheletro.
+
+> guarda
+Nella Cripta
+Ogni cosa nella cripta è avvolta nella soffusa luce lunare che filtra dal
+lucernario. Odi un inquietante scricchiolìo in sottofondo. Puoi vedere un 
+lucernario, una bara rossa e una bara nera qui. La bara nera contiene uno 
+scheletro. Puoi vedere un cubo qui. C'è un fantasma qui.
+
+> ; ==============================================================================
+> ; LA PIANTA | object + scenario
+> ; ==============================================================================
+> esamina la pianta
+La pianta non è importante ai fini del gioco.
+
+> prendi la pianta
+La pianta non è importante ai fini del gioco.
+
+> guarda dietro la pianta
+Non noti nulla di insolito dietro la pianta.
+
+> guarda sotto la pianta
+Non noti nulla di insolito sotto la pianta.
+
+> guarda nella pianta
+Non è possibile guardare dentro la pianta.
+
+> guarda attraverso la pianta
+You can't see through la pianta.
+
+> guarda fuori dalla pianta
+That's not something you can look out of.
+
+> ; ==============================================================================
+> ; IL CUBO | object
+> ; ==============================================================================
+> esamina il cubo
+Un misterioso cubo nero.
+
+> guarda dietro il cubo
+Non noti nulla di insolito dietro il cubo.
+
+> guarda sotto il cubo
+Non noti nulla di insolito sotto il cubo.
+
+> guarda nel cubo
+Non è possibile guardare dentro il cubo.
+
+> guarda attraverso il cubo
+You can't see through il cubo.
+
+> guarda fuori dal cubo
+That's not something you can look out of.
+
+> ; TESTA su oggetto posseduto da Hero:
+> prendi il cubo
+Preso.
+
+> guarda dietro il cubo
+Giri il cubo ma non noti niente di particolare.
+
+> guarda sotto il cubo
+Non noti nulla di insolito sotto il cubo.
+
+> guarda nel cubo
+Non è possibile guardare dentro il cubo.
+
+> guarda attraverso il cubo
+You can't see through il cubo.
+
+> guarda fuori dal cubo
+That's not something you can look out of.
+
+> ; ==============================================================================
+> ; IL FANTASMA | actor -> persona -> maschio (speciale)
+> ; ==============================================================================
+> ; TESTA su attore di tipo maschio:
+> guarda il fantasma
+Un vero fantasma in carne ed ossa -- Ops! mi correggo, "in spirito e
+plasma"! Il fantasma non sta portando niente.
+
+> guarda dietro il fantasma
+Non noti nulla di insolito dietro il fantasma.
+
+> guarda sotto il fantasma
+Non noti nulla di insolito sotto il fantasma.
+
+> guarda nel fantasma
+Non è possibile guardare dentro il fantasma.
+
+> guarda attraverso il fantasma
+You can't look through il fantasma.
+
+> guarda fuori dal fantasma
+Il fantasma non è qualcosa da cui poter guardare fuori.
+
+> ; ==============================================================================
+> ; THE HERO | actor (speciale)
+> ; ==============================================================================
+> ; TESTA su attore protagonista:
+> guarda me
+Non noti niente di insolito in te stesso.
+
+> guarda dietro me
+Turning your head, you notice nothing unusual behind yourself.
+
+> guarda sotto me
+You notice nothing unusual under yourself.
+
+> guarda in me
+Non è possibile guardare dentro il hero.
+
+> guarda attraverso me
+You can't look through il hero.
+
+> guarda fuori da me
+Il hero non è qualcosa da cui poter guardare fuori.
 
 > 
 

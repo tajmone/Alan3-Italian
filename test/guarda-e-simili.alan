@@ -14,10 +14,11 @@ THE mia_AT IsA blocco_definizioni
   ------------------------------------------------------------------------------
 END THE.
 
---==============================================================================
--- La Cripta
---==============================================================================
+-- =============================================================================
 
+-- La Cripta
+
+-- =============================================================================
 THE cripta IsA stanza.
   NAME 'Nella Cripta'
   DESCRIPTION
@@ -26,13 +27,6 @@ THE cripta IsA stanza.
   HAS desc_pareti
     "Gli affreschi sulle pareti raffigurano l'apocalisse.".
 END THE cripta.
-
-THE lucernario IsA object AT cripta.
-  HAS xDesc
-    "È un lucernario rotondo, con dei raggi che ricordano una rosa o un disco
-    solare. Si trova molto in alto.".
-END THE lucernario.
-
 --------------------------------------------------------------------------------
 -- Gli Affreschi
 --------------------------------------------------------------------------------
@@ -47,33 +41,102 @@ ADD TO EVERY stanza
       ELSE SAY THIS:desc_pareti.
   END VERB.
 END ADD.
-
+--==============================================================================
+-- Il Lucernario
+--==============================================================================
+THE lucernario IsA object AT cripta.
+  IS
+    distante.
+    NOT raggiungibile.
+  HAS xDesc
+    "È un lucernario rotondo, con dei raggi che ricordano una rosa o un disco
+    solare. Si trova molto in alto.".
+END THE lucernario.
 --==============================================================================
 -- Le Bare
 --==============================================================================
 EVERY bara IsA object.
-  CONTAINER.
+  OPAQUE CONTAINER.
   NAME bara.
   NAME bare.
   HAS articolo "la".
-  HAS xDesc "La fioca luce lunare non ti consente di vedere cosa ci sia dentro.".
+  IS NOT prendibile.
+  HAS xDesc "La fioca luce lunare non ti consente di vedere cosa ci sia dentro.".      
 END EVERY bara.
-
-THE bara_nera IsA bara AT cripta.
-  NAME bara nera.
-END THE bara_nera.
-
+--------------------------------------------------------------------------------
+-- Bara Rossa
+--------------------------------------------------------------------------------
 THE bara_rossa IsA bara AT cripta.
   NAME bara rossa.
 END THE bara_rossa.
+--------------------------------------------------------------------------------
+-- Bara Nera
+--------------------------------------------------------------------------------
+THE bara_nera IsA bara AT cripta.
+  NAME bara nera.
+
+  VERB guarda_in
+    DOES AFTER
+      MAKE THIS NOT OPAQUE.
+  END VERB.
+
+  VERB esamina
+    DOES AFTER
+      "Ma sai già che contiene uno scheletro."
+  END VERB.
+END THE bara_nera.
 
 THE scheletro IsA object IN bara_nera.
   HAS articolo "lo".
   HAS xDesc
-    "Lo scheletro indossa ancora il suo vestito del funerale. I capelli si sono
-     fatto radi, le ragnatele coprono il suo volto. Gli scheletri hanno un volto,
+    "Lo scheletro giace in una postura pacifica sfoggiando in eterno il vestito
+     del suo funerale. Il tempo, che ne ha divorato avidamente la carne, sembra
+     aver risparmiato i suoi capelli, lasciando al buio il compito di tingerli
+     di cenere. Fitte ragnatele coprono il suo viso. Gli scheletri hanno un viso,
      giusto?".
 END THE scheletro.
+--==============================================================================
+-- Lo Scricchiolio
+--==============================================================================
+THE scricchiolìo IsA suono AT cripta.
+  NAME scricchiolìo.
+  NAME scricchiolio.
+  HAS articolo "lo".
+  DESCRIPTION "Odi un inquietante scricchiolìo in sottofondo."
+END THE scricchiolìo.
+--==============================================================================
+-- La Pianta
+--==============================================================================
+-- Mettiamo anche un oggetto scenico ("scenario") da testare.
+THE pianta IsA object AT cripta.
+  HAS articolo "la".
+  IS scenario.
+  HAS xDesc "È una sorta di pianta funerea.".
+END THE pianta.
+--==============================================================================
+-- Il Cubo
+--==============================================================================
+THE cubo IsA object AT cripta.
+  HAS xDesc "Un misterioso cubo nero.".
+END THE cubo.
+
+-- =============================================================================
+
+-- ATTORI PNG
+
+-- =============================================================================
+-- Popoliamo la scena con qualche PNG per testare le risposte.
+
+--==============================================================================
+-- Il Fantasma
+--==============================================================================
+-- Mettiamo un attore maschio senza nome proprio...
+THE fantasma IsA maschio AT cripta.
+  HAS xDesc
+    "Un vero fantasma in carne ed ossa -- Ops! mi correggo, ""in spirito e 
+     plasma""!".
+END THE fantasma.
+
 --------------------------------------------------------------------------------
 Start at cripta.
 DESCRIBE intestazione.
