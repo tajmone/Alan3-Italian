@@ -49,7 +49,8 @@ The library files being translated:
 Boilerplates and templates from the StdLibrary have been renamed with a leading underscore, to distinguish them from the set of strictly needed files:
 
 - [`_newgame_ita.alan`](./_newgame_ita.alan) — adaptation of `newgame.alan`
-- [`_mygame_import.i`](./_mygame_import.i) (small changes)
+
+> __NOTE__ — The file `_mygame_import.i` (adaptation of the original `'mygame_import.i`) has now been deleted as maintaining it on par with the library changes was too cumbersome. Once the library translation is ultimated, I'll recreated it from scratch. 
 
 ## Library Documentation Files
 
@@ -422,7 +423,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `'say'`          | `dire`                    |
 | `say_to`         | `dire_a`                  |
 | `'score'`        |                           |
-| `scratch`        |                           |
+| `scratch`        | `grattare`                |
 | `'script'`       |                           |
 | `script_off`     |                           |
 | `script_on`      |                           |

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.1-Alpha, 2018-10-17: Alan 3.0beta6
+--| v0.7.2-Alpha, 2018-10-19: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -750,6 +750,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN entrare.                  ---> enter
   CAN esaminare.                ---> examine      (+ check, inspect, observe, x)
   CAN giocare_con.              ---> play_with
+  CAN grattare.                 ---> scratch
   CAN gridare.                  ---> shout        (+ scream, yell)
   CAN guardare.                 ---> look         (+ gaze, peek)
   CAN guardare_attraverso.      ---> look_through
@@ -866,7 +867,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN put_under.
   CAN rub.
   CAN 'score'.
-  CAN scratch.
   CAN 'script'.
   CAN script_on.
   CAN script_off.
@@ -970,6 +970,7 @@ EVENT check_restriction
       MAKE mia_AT entrare.                  ---> enter
       MAKE mia_AT esaminare.                ---> examine      (+ check, inspect, observe, x)
       MAKE mia_AT giocare_con.              ---> play_with
+      MAKE mia_AT grattare.                 ---> scratch
       MAKE mia_AT gridare.                  ---> shout        (+ scream, yell)
       MAKE mia_AT guardare.                 ---> look         (+ gaze, peek)
       MAKE mia_AT guardare_attraverso.      ---> look_through
@@ -1082,7 +1083,6 @@ EVENT check_restriction
       MAKE mia_AT put_under.
       MAKE mia_AT rub.
       MAKE mia_AT 'score'.
-      MAKE mia_AT scratch.
       MAKE mia_AT 'script'.
       MAKE mia_AT script_on.
       MAKE mia_AT script_off.
@@ -1164,6 +1164,7 @@ EVENT check_restriction
           MAKE mia_AT NOT dormire.                  ---> sleep        (+ rest)
           MAKE mia_AT NOT entrare.                  ---> enter
           MAKE mia_AT NOT giocare_con.              ---> play_with
+          MAKE mia_AT NOT grattare.                 ---> scratch
           MAKE mia_AT NOT guidare.                  ---> drive
           MAKE mia_AT NOT indossare.                ---> wear
           MAKE mia_AT NOT lasciare.                 ---> drop         (+ discard, dump, reject)
@@ -1248,7 +1249,6 @@ EVENT check_restriction
           MAKE mia_AT NOT put_on.
           MAKE mia_AT NOT put_under.
           MAKE mia_AT NOT rub.
-          MAKE mia_AT NOT scratch.
           MAKE mia_AT NOT search.
           MAKE mia_AT NOT shake.
           MAKE mia_AT NOT shoot.       -- (at)

@@ -7,12 +7,37 @@
 ; (alla "vaniglia"), ovvero senza creare varianti personalizzate. Lo scopo dei
 ; test è verificare il corretto funzionamento dei verbi, le varianti sitattiche,
 ; le risposte predfinite ed i messaggi d'errore.
+esamina il ronzio
+ascolta il ronzio
+ascolta
 ; ==============================================================================
 ; Verbo "Consulta"
 ; ==============================================================================
-consulta dizionario
-consulta dizionario riguardo tavolo
-consulta dizionario circa tavolo
+consulta il dizionario
+consulta il dizionario riguardo tavolo
+consulta il dizionario circa tavolo
 guarda tavolo nel dizionario.
 cerca tavolo nel dizionario.
 ricerca tavolo nel dizionario.
+; ==============================================================================
+; Verbo "Gratta"
+; ==============================================================================
+gratta
+; TESTA: Oggetti
+gratta il dizionario
+gratta il soffitto
+gratta il pavimento
+gratta il muro
+; LA PIANTA | object + scenario
+gratta la pianta
+; L'APATIA | object + NOT esaminabile
+gratta l'apatia
+; TESTA: Suoni
+gratta il ronzio
+; TESTA: Attori
+gratta l'inserviente
+gratta Gina
+gratta me
+; TESTA: stanza (not in scope)
+gratta l'ufficio
+

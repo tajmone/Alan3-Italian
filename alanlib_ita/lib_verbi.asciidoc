@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.2-Alpha, 2018-10-18: Alan 3.0beta6
+v0.7.3-Alpha, 2018-10-19: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -110,6 +110,7 @@ Comandi diretti al personaggio protagonista per interagire con l'avventura.
 | dormi              | riposa                       | dormi                                  |     | 0 |     |
 | esamina            | guarda, descrivi, osserva, X | esamina (ogg)                          |     | 1 | {X} |
 | gioca_con          |                              | gioca con (ogg)                        |     | 1 | {X} |
+| gratta             |                              | gratta (ogg)                           |     | 1 | {X} |
 | guarda             | L                            | guarda                                 |     | 0 |     |
 | guarda_dietro      |                              | guarda dietro (bulk)                   |     | 1 |     |
 | guarda_in          |                              | guarda in (cont)                       |     | 1 |     |
@@ -255,7 +256,6 @@ italiano del modulo dei verbi.
 | put_under          |                                    | put (obj) under (bulk)            | 2 | {x}
 | rub                |                                    | rub (obj)                         | 1 | {x}
 | score              |                                    | score                             | 0 |
-| scratch            |                                    | scratch (obj)                     | 1 | {x}
 | script             |                                    | script. script on. script off.    | 0 |
 | search             |                                    | search (obj)                      | 1 | {x}
 | shake              |                                    | shake (obj)                       | 1 | {x}

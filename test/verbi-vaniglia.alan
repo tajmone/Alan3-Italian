@@ -23,7 +23,10 @@ END THE.
 -- =============================================================================
 
 THE ufficio IsA stanza.
-  -- ////////
+  -- NAME 'Nell''Ufficio'.
+  NAME 'l''ufficio'.
+  NAME ufficio.
+  DESCRIPTION "L'ufficio è pervaso da un fastidioso ronzio."
 END THE ufficio.
 
 
@@ -34,6 +37,64 @@ END THE tavolo.
 THE dizionario IsA object IN tavolo
   HAS xDesc "È un piccolo dizionario tascabile.".
 END THE dizionario.
+
+THE pianta IsA object AT ufficio.
+  HAS articolo "la".
+  IS scenario.
+END THE pianta.
+
+--------------------------------------------------------------------------------
+-- L'APATIA
+--------------------------------------------------------------------------------
+-- Un'oggetto astratto, non esaminabile.
+THE apatia IsA object AT ufficio.
+  HAS articolo "l'".
+  IS femminile.
+  NAME apatia.
+  NAME 'l''apatia'.
+  IS NOT esaminabile.
+  DESCRIPTION
+    "Nell'aria c'è un'apatia così fitta che la si potrebbe tagliare con un coltello."
+END THE apatia.
+
+
+THE ronzio IsA suono AT ufficio.
+  DESCRIPTION ""
+
+  VERB ascolta
+    DOES ONLY
+      "Sembra il ronzio di un dispositivo elettrico."
+  END VERB ascolta.
+  
+END THE ronzio.
+
+-- =============================================================================
+
+-- ATTORI PNG
+
+-- =============================================================================
+-- Popoliamo la scena con qualche PNG per testare le risposte.
+
+--==============================================================================
+-- L'Inserviente
+--==============================================================================
+-- Mettiamo un attore maschio senza nome proprio...
+THE inserviente IsA maschio AT ufficio.
+  HAS articolo "l'".
+  NAME inserviente.
+  NAME 'l''inserviente'.
+  HAS xDesc
+    "L'inserviente è occupato a svolgere le sue mansioni.".
+END THE inserviente.
+--==============================================================================
+-- Gina
+--==============================================================================
+-- Un'attrice con nome proprio...
+THE Gina IsA femmina AT ufficio.
+  HAS nome_proprio.
+  HAS xDesc
+    "Gina è una tua collega.".
+END THE Gina.
 
 --------------------------------------------------------------------------------
 Start at ufficio.

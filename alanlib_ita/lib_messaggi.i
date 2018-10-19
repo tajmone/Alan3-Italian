@@ -676,10 +676,6 @@ ADD TO EVERY blocco_definizioni
   HAS imp_ogg2_chiuso_fs "Non puoi farlo perché $+2 è chiusa".
   HAS imp_ogg2_chiuso_fp "Non puoi farlo perché $+2 sono chiuse.".
 
-
-  
-  
-  
   -- ====================================
   -- PARAMETRI E INVENTARIO DEL GIOCATORE
   -- ====================================
@@ -702,6 +698,7 @@ ADD TO EVERY blocco_definizioni
   -- VERBI: togliti
   -- ORIGINAL EN: (nessuno, sostituisce vari messaggi inglesi)
   HAS azione_insensata  "Questo non ha alcun senso.".
+
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
 
   -- d) checks guarding against actions directed at the hero him-/herself
@@ -711,7 +708,6 @@ ADD TO EVERY blocco_definizioni
                                                                                 -- kick, listen, pull, push, push_with, take,
                                                                                 -- take_from,tell
   HAS check_obj_not_hero2  "There is no need to be that desperate.".            -- fire_at, kill, kill_with, shoot, shoot_with
-  HAS check_obj_not_hero3  "That wouldn't accomplish anything.".                -- scratch, touch
   HAS check_obj_not_hero5  "You don't need to be freed.".                       -- free
   HAS check_obj_not_hero6  "There is no time for that now.".                    -- kiss, play_with, rub
   HAS check_obj_not_hero7  "Turning your head, you notice nothing unusual behind yourself.".   -- look_behind
@@ -720,6 +716,17 @@ ADD TO EVERY blocco_definizioni
   HAS check_obj2_not_hero2 "That would be futile.".                             -- put_against, put_behind, put_near, put_under
   HAS check_obj2_not_hero3 "You can't $v things to yourself.".                  -- give, tie_to
 
+  -- =====================
+  -- AZIONI DIRETTE AI PNG
+  -- =====================
+
+  -- VERBI: gratta, tira | push, push_with, search.
+  -- ORIGINAL EN:  check_obj_inanimate1
+  HAS ogg1_png_non_apprezzerebbe  "non credo che $+1 gradirebbe.".
+
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  HAS check_obj_inanimate2 "You are not sure whether $+1 would appreciate that.".   -- rub, touch, touch_with
 
   -- ===========
   -- AZIONI VANE
@@ -732,7 +739,7 @@ ADD TO EVERY blocco_definizioni
   HAS non_senti_bisogno_di "Al momento non senti il bisogno di".
   
 
-  -- VERBI: bacia, tira | clean, rub, scratch.
+  -- VERBI: bacia, gratta, tira, tocca | clean, rub.
   -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
   HAS non_servirebbe_a_nulla "Farlo non servirebbe a nulla.".
   -- @NOTA: i6 usa: "Non otterrai niente con questo."
@@ -903,8 +910,6 @@ ADD TO EVERY blocco_definizioni
   HAS check_obj_allowed_in_pl "$+1 don't belong in $+2.".
 
 
-  HAS check_obj_inanimate1 "$+1 wouldn't probably appreciate that.".        -- push, push_with, scratch, search
-  HAS check_obj_inanimate2 "You are not sure whether $+1 would appreciate that.".   -- rub, touch, touch_with
 
   HAS check_obj_movable "It's not possible to $v $+1.". -- lift, pull, push, push_with, shake, take, take_from
 

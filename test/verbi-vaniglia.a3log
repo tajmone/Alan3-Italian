@@ -9,8 +9,11 @@ Versione 1
 Tutti i diritti riservati.
 
 
-Ufficio
-Puoi vedere un tavolo qui. Sopra il tavolo vedi un dizionario.
+L'ufficio
+L'ufficio è pervaso da un fastidioso ronzio. Nell'aria c'è un'apatia così
+fitta che la si potrebbe tagliare con un coltello. Puoi vedere un tavolo 
+qui. Sopra il tavolo vedi un dizionario. C'è un inserviente qui. Gina è 
+qui.
 
 > ; ******************************************************************************
 > ; *                                                                            *
@@ -21,17 +24,26 @@ Puoi vedere un tavolo qui. Sopra il tavolo vedi un dizionario.
 > ; (alla "vaniglia"), ovvero senza creare varianti personalizzate. Lo scopo dei
 > ; test è verificare il corretto funzionamento dei verbi, le varianti sitattiche,
 > ; le risposte predfinite ed i messaggi d'errore.
+> esamina il ronzio
+That's not something you can examine.
+
+> ascolta il ronzio
+Sembra il ronzio di un dispositivo elettrico.
+
+> ascolta
+Non odi niente di particolare.
+
 > ; ==============================================================================
 > ; Verbo "Consulta"
 > ; ==============================================================================
-> consulta dizionario
+> consulta il dizionario
 To consult something, please use the formulation CONSULT THING ABOUT
 PERSON/THING.
 
-> consulta dizionario riguardo tavolo
+> consulta il dizionario riguardo tavolo
 You find nothing useful about il tavolo in il dizionario.
 
-> consulta dizionario circa tavolo
+> consulta il dizionario circa tavolo
 You find nothing useful about il tavolo in il dizionario.
 
 > guarda tavolo nel dizionario.
@@ -45,6 +57,53 @@ You find nothing useful about il tavolo in il dizionario.
 > ricerca tavolo nel dizionario.
 You find nothing useful about il tavolo in il dizionario.
 
+
+> ; ==============================================================================
+> ; Verbo "Gratta"
+> ; ==============================================================================
+> gratta
+Non ho capito la frase.
+
+> ; TESTA: Oggetti
+> gratta il dizionario
+Farlo non servirebbe a nulla.
+
+> gratta il soffitto
+Il soffitto è fuori dalla tua portata.
+
+> gratta il pavimento
+Farlo non servirebbe a nulla.
+
+> gratta il muro
+Farlo non servirebbe a nulla.
+
+> ; LA PIANTA | object + scenario
+> gratta la pianta
+Farlo non servirebbe a nulla.
+
+> ; L'APATIA | object + NOT esaminabile
+> gratta l'apatia
+L'apatia non è qualcosa che puoi grattare.
+
+> ; TESTA: Suoni
+> gratta il ronzio
+Il ronzio non è qualcosa che puoi grattare.
+
+> ; TESTA: Attori
+> gratta l'inserviente
+Non credo che l'inserviente gradirebbe.
+
+> gratta Gina
+Non credo che Gina gradirebbe.
+
+> gratta me
+Farlo non servirebbe a nulla.
+
+> ; TESTA: stanza (not in scope)
+> gratta l'ufficio
+Qui non puoi vedere nulla del genere.
+
+> 
 
 > 
 

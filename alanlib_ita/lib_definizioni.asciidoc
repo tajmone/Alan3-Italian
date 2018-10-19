@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Definizioni
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.1-Alpha, 2018-10-17: Alan 3.0beta6
+v0.7.2-Alpha, 2018-10-19: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_definitions.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -89,6 +89,7 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
   CAN entrare.                  ---> enter
   CAN esaminare.                ---> examine      (+ check, inspect, observe, x)
   CAN giocare_con.              ---> play_with
+  CAN grattare.                 ---> scratch
   CAN gridare.                  ---> shout        (+ scream, yell)
   CAN guardare.                 ---> look         (+ gaze, peek)
   CAN guardare_attraverso.      ---> look_through
@@ -280,7 +281,6 @@ Questo è l'elenco degli attributi verbali non ancora tradotti:
   CAN put_under.
   CAN rub.
   CAN 'score'.
-  CAN scratch.
   CAN 'script'.
   CAN script_on.
   CAN script_off.

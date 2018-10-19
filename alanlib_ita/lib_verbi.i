@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.2-Alpha, 2018-10-18: Alan 3.0beta6
+--| v0.7.3-Alpha, 2018-10-19: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -248,6 +248,7 @@ END VERB salva_partita.
 --| | dormi              | riposa                       | dormi                                  |     | 0 |     |
 --| | esamina            | guarda, descrivi, osserva, X | esamina (ogg)                          |     | 1 | {X} |
 --| | gioca_con          |                              | gioca con (ogg)                        |     | 1 | {X} |
+--| | gratta             |                              | gratta (ogg)                           |     | 1 | {X} |
 --| | guarda             | L                            | guarda                                 |     | 0 |     |
 --| | guarda_dietro      |                              | guarda dietro (bulk)                   |     | 1 |     |
 --| | guarda_in          |                              | guarda in (cont)                       |     | 1 |     |
@@ -2308,6 +2309,73 @@ ADD TO EVERY THING
    -- "After second thought you don't find it purposeful to start
    --  playing with" SAY THE ogg. "."
   END VERB gioca_con.
+END ADD TO.
+
+
+
+
+-- ==============================================================
+
+
+----- @GRATTA --> @SCRATCH
+
+
+-- ==============================================================
+-- SYNTAX scratch = scratch (ogg)
+
+-- Non è chiaro se il verbo è inteso come "gratta" o "graffia".
+
+SYNTAX gratta = gratta (ogg)
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "grattare." -- #graffiare?
+
+
+ADD TO EVERY THING
+  VERB gratta
+    CHECK mia_AT CAN grattare
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+        END IF.
+        "grattare." -- #graffiare?
+    AND ogg <> hero
+      -- "Farlo non servirebbe a nulla."
+      ELSE SAY  mia_AT:non_servirebbe_a_nulla.
+    AND ogg IS inanimato
+      -- "non credo che $+1 gradirebbe."
+      ELSE SAY  mia_AT:ogg1_png_non_apprezzerebbe.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
+            END IF.
+        END IF.
+    DOES
+      -- "Farlo non servirebbe a nulla."
+      SAY mia_AT:non_servirebbe_a_nulla.
+      -- "Nothing would be achieved by that."
+  END VERB gratta.
 END ADD TO.
 
 
@@ -4890,9 +4958,9 @@ ADD TO EVERY OBJECT
 --                                                                              TRANSLATE!
     AND ogg <> hero
       ELSE SAY  check_obj_not_hero1  OF mia_AT.
---                                                                              TRANSLATE!
     AND ogg IS inanimato
-      ELSE SAY  check_obj_inanimate1  OF mia_AT.
+      -- "non credo che $+1 gradirebbe."
+      ELSE SAY  mia_AT:ogg1_png_non_apprezzerebbe.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -4975,9 +5043,9 @@ ADD TO EVERY THING
               ELSE SAY  ogg1_distante_pl  OF mia_AT.
             END IF.
         END IF.
---                                                                              TRANSLATE!
       AND ogg <> hero
-        ELSE SAY  check_obj_not_hero3  OF mia_AT.
+        -- "Farlo non servirebbe a nulla."
+        ELSE SAY  mia_AT:non_servirebbe_a_nulla.
 --                                                                              TRANSLATE!
       AND ogg IS inanimato
         ELSE SAY  check_obj_inanimate2  OF mia_AT.
@@ -5899,7 +5967,7 @@ END VERB dove_mi_trovo.
 --~*| say                |                                    | say (topic)                       | 1 |
 --~*| say_to             |                                    | say (topic) to (act)              | 2 |
 --| | score              |                                    | score                             | 0 |
---| | scratch            |                                    | scratch (obj)                     | 1 | {x}
+--~*| scratch            |                                    | scratch (obj)                     | 1 | {x}
 --| | script             |                                    | script. script on. script off.    | 0 |
 --| | search             |                                    | search (obj)                      | 1 | {x}
 --~*| sell               |                                    | sell (item)                       | 1 |
@@ -8039,7 +8107,8 @@ ADD TO EVERY THING
     AND ogg <> hero
       ELSE SAY  check_obj_not_hero1  OF mia_AT.
     AND ogg IS inanimato
-      ELSE SAY  check_obj_inanimate1  OF mia_AT.
+      -- "non credo che $+1 gradirebbe."
+      ELSE SAY  mia_AT:ogg1_png_non_apprezzerebbe.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -8112,7 +8181,8 @@ ADD TO EVERY THING
       AND ogg <> hero
         ELSE SAY  check_obj_not_hero1  OF mia_AT.
       AND ogg IS inanimato
-        ELSE SAY  check_obj_inanimate1  OF mia_AT.
+        -- "non credo che $+1 gradirebbe."
+        ELSE SAY  mia_AT:ogg1_png_non_apprezzerebbe.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -8602,67 +8672,6 @@ END VERB 'score'.
 -- ==============================================================
 
 
------ SCRATCH
-
-
--- ==============================================================
-
-
-SYNTAX scratch = scratch (ogg)
-  WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "grattare." -- #graffiare?
-
-
-ADD TO EVERY THING
-  VERB scratch
-    CHECK mia_AT CAN scratch
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          THEN SAY  check_obj_suitable_sg  OF mia_AT.
-          ELSE SAY  check_obj_suitable_pl  OF mia_AT.
-        END IF.
-    AND ogg <> hero
-      ELSE SAY  check_obj_not_hero3  OF mia_AT.
-    AND ogg IS inanimato
-      ELSE SAY  check_obj_inanimate1  OF mia_AT.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY  imp_luogo_buio  OF mia_AT.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY  ogg1_distante_sg  OF mia_AT.
-              ELSE SAY  ogg1_distante_pl  OF mia_AT.
-            END IF.
-        END IF.
-    DOES
-      -- "Farlo non servirebbe a nulla."
-      SAY mia_AT:non_servirebbe_a_nulla.
-     -- "Nothing would be achieved by that."
-  END VERB scratch.
-END ADD TO.
-
-
-
-
--- ==============================================================
-
-
 ------ SCRIPT
 
 
@@ -8730,7 +8739,8 @@ ADD TO EVERY THING
     AND ogg <> hero
       ELSE LIST hero.
     AND ogg IS inanimato
-      ELSE SAY  check_obj_inanimate1  OF mia_AT.
+      -- "non credo che $+1 gradirebbe."
+      ELSE SAY  mia_AT:ogg1_png_non_apprezzerebbe.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
