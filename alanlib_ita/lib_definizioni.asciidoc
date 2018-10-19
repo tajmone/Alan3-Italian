@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Definizioni
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.2-Alpha, 2018-10-19: Alan 3.0beta6
+v0.7.3-Alpha, 2018-10-19: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_definitions.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -125,6 +125,7 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
   CAN riempire.                 ---> fill
   CAN riempire_con.             ---> fill_with
   CAN rifare.                   ---> 'again'
+  CAN ringraziamenti.           ---> credits (+ acknowledgments, author, copyright)
   CAN riparare.                 ---> fix (+ mend, repair)
   CAN rispondere.               ---> answer (+ reply)
   CAN rompere.                  ---> break        (+ destroy)
@@ -251,7 +252,6 @@ Questo è l'elenco degli attributi verbali non ancora tradotti:
   CAN catch.
   CAN climb.
   CAN climb_on.
-  CAN credits.     -- (+ acknowledgments, author, copyright)
   CAN 'exit'.
 --CAN extinguish. ----------------> ** VERBO ELIMINATO **  (+ put out, quench)
   CAN fire.

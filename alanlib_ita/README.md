@@ -331,7 +331,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `close`          | `chiudere`                |
 | `close_with`     | `chiudere_con`            |
 | `consult`        | `consultare`              |
-| `credits`        |                           |
+| `credits`        | `ringraziamenti`          |
 | `cut`            | `tagliare`                |
 | `cut_with`       | `tagliare_con`            |
 | `dance`          | `danzare`                 |

@@ -1,0 +1,38 @@
+--==============================================================================
+-- "Meta Comandi di Partita" by Tristano Ajmone, 2018.
+--==============================================================================
+IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
+
+
+THE mia_AT IsA blocco_definizioni
+  ------------------------------------------------------------------------------
+  HAS       titolo  "Meta Comandi di Partita".
+  HAS  sottotitolo  "Test per i meta verbi di partita.".
+  HAS       autore  "Tristano Ajmone".
+  HAS         anno   2018.
+  HAS     versione  "1".
+  ------------------------------------------------------------------------------
+END THE.
+
+
+THE sala_collaudo IsA stanza.
+  NAME 'Sala Test e Collaudo'.
+  EXIT nord TO wc.
+  DESCRIPTION
+    "Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
+     Italiana di Alan. A nord c'è il W.C."
+  
+END THE sala_collaudo.
+
+THE wc IsA stanza.
+  NAME 'W.C.'.
+  EXIT sud TO sala_collaudo.
+  DESCRIPTION
+    "Ogni laboratorio che si rispetti a un W.C. (detto anche"STYLE EMPHASIZED.
+    "cesso" STYLE NORMAL. "$$). A sud puoi tornare alla sala test."
+
+END THE wc.
+
+--------------------------------------------------------------------------------
+Start at sala_collaudo.
+DESCRIBE intestazione.

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.2-Alpha, 2018-10-19: Alan 3.0beta6
+--| v0.7.3-Alpha, 2018-10-19: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -786,6 +786,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN riempire.                 ---> fill
   CAN riempire_con.             ---> fill_with
   CAN rifare.                   ---> 'again'
+  CAN ringraziamenti.           ---> credits (+ acknowledgments, author, copyright)
   CAN riparare.                 ---> fix (+ mend, repair)
   CAN rispondere.               ---> answer (+ reply)
   CAN rompere.                  ---> break        (+ destroy)
@@ -837,7 +838,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN catch.
   CAN climb.
   CAN climb_on.
-  CAN credits.     -- (+ acknowledgments, author, copyright)
   CAN 'exit'.
 --CAN extinguish. ----------------> ** VERBO ELIMINATO **  (+ put out, quench)
   CAN fire.
@@ -1006,6 +1006,7 @@ EVENT check_restriction
       MAKE mia_AT riempire.                 ---> fill
       MAKE mia_AT riempire_con.             ---> fill_with
       MAKE mia_AT rifare.                   ---> 'again'
+      MAKE mia_AT ringraziamenti.           ---> credits (+ acknowledgments, author, copyright)
       MAKE mia_AT riparare.                 ---> fix (+ mend, repair)
       MAKE mia_AT rispondere.               ---> answer (+ reply)
       MAKE mia_AT rompere.                  ---> break        (+ destroy)
@@ -1053,7 +1054,6 @@ EVENT check_restriction
       MAKE mia_AT catch.
       MAKE mia_AT climb.
       MAKE mia_AT climb_on.
-      MAKE mia_AT credits.         -- (+ acknowledgments, author, copyright)
       MAKE mia_AT 'exit'.
     --MAKE mia_AT extinguish. --------> ** VERBO ELIMINATO ** (+ put out, quench)
       MAKE mia_AT fire.
@@ -1325,12 +1325,12 @@ EVENT check_restriction
           MAKE mia_AT NOT modalità_lunga.           ---> verbose
           MAKE mia_AT NOT ricominciare_partita.     ---> 'restart'
           MAKE mia_AT NOT rifare.                   ---> 'again'
+          MAKE mia_AT NOT ringraziamenti.           ---> credits (+ acknowledgments, author, copyright)
           MAKE mia_AT NOT salvare_partita.          ---> save
 
         --# NOT YET TRANSLATED:
 
           MAKE mia_AT NOT about.
-          MAKE mia_AT NOT credits.     -- (+ acknowledgments, author, copyright)
           MAKE mia_AT NOT hint.        -- (+ hints)
           MAKE mia_AT NOT 'notify'.
           MAKE mia_AT NOT notify_on.

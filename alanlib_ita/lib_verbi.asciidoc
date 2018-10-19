@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.3-Alpha, 2018-10-19: Alan 3.0beta6
+v0.7.4-Alpha, 2018-10-19: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -20,6 +20,8 @@ include::attributes-it.adoc[tag=attributes-it]
 // Definisci sostituzione di {X} con il carattere Unicode 'heavy check mark'
 // (U+2714), usato nelle tabelle dei verbi:
 :X: &#x2714;
+// E di {B} con emoji 'skull' (U+E11C):
+:B: &#128128;
 
 // end::custom_attributes[]
 // tag::elenco_verbi[]
@@ -48,7 +50,6 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 
 // end::elenco_verbi[]
 // tag::comandi_partita[]
-
 === Meta Comandi di Partita
 
 Comandi che riguardano aspetti della partita (salvare, uscire, ecc.) anziché
@@ -64,13 +65,15 @@ Altresì noti come _comandi extradiegetici_.
 | VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
 | abbandona_partita  | quit, Q                      | abbandona [partita]              | {X} | 0 |     |
 | carica_partita     | restore                      | carica [partita]                 | {X} | 0 |     |
+| modalità_breve     | brief, modalità corta        | modalità breve                   | {X} | 0 |     | {B}
+| modalità_lunga     | verbose                      | modalità lunga                   | {X} | 0 |     |
 | ricomincia_partita | restart                      | ricomincia [partita]             | {X} | 0 |     |
+| ringraziamenti     | autore, copyright, credits   | ringraziamenti                   | {X} | 0 |     |
 | salva_partita      | save                         | salva [partita]                  | {X} | 0 |     |
 |=============================================================================================================
 
 // end::tabella_comandi_partita[]
 // tag::comandi_gioco[]
-
 === Comandi di Gioco
 
 Comandi diretti al personaggio protagonista per interagire con l'avventura.
@@ -168,7 +171,6 @@ Comandi diretti al personaggio protagonista per interagire con l'avventura.
 
 // end::tabella_comandi_gioco[]
 // tag::comandi_affermazion[]
-
 === Comandi di Affermazioni o Domande
 
 Questo gruppo include tutti quei comandi che non seguono la consueta forma
@@ -183,13 +185,13 @@ o domande poste dal protagonista stesso (p.es. "`chi sono?`", "`sì`", "`dove
 [cols="15m,25d,35d,4*^5d",options="header"]
 |=============================================================================================================
 | VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
-| chi_è              |                              | chi è (png)                      |     | 1 |     | {X}
+| chi_è              |                              | chi è (png)                      |     | 1 |     | {B}
 | chi_sono_io        |                              | chi sono                         |     | 0 |     |
-| cosa_è             |                              | cosa è (ogg)                     |     | 1 | {X} | {X}
+| cosa_è             |                              | cosa è (ogg)                     |     | 1 | {X} | {B}
 | cosa_sono_io       |                              | cosa sono                        |     | 0 |     |
 | dici_No            |                              | no                               |     | 0 |     |
 | dici_Sì            |                              | sì                               |     | 0 |     |
-| dove_è             |                              | dove è (ogg)                     |     | 1 | {X} | {X}
+| dove_è             |                              | dove è (ogg)                     |     | 1 | {X} | {B}
 | dove_mi_trovo      |                              | dove sono                        |     | 0 |     |
 |=============================================================================================================
 
@@ -211,12 +213,10 @@ italiano del modulo dei verbi.
 | VERBO              | SINONIMI                           | SINTASSI                          | A |  O  
 | about              | help, info                         | about                             | 0 |
 | bite               | chew                               | bite (obj)                        | 1 | {x}
-| brief              |                                    | brief                             | 0 |
 | catch              |                                    | catch (obj)                       | 1 | {x}
 | clean              | polish, wipe                       | clean (obj)                       | 1 | {x}
 | climb              |                                    | climb (obj)                       | 1 | {x}
 | climb_on           |                                    | climb on (surface)                | 1 |
-| credits            | acknowledgments, author, copyright | credits                           | 0 |
 | dive               |                                    | dive                              | 0 |
 | dive_in            |                                    | dive in (liq)                     | 1 |
 | empty              |                                    | empty (obj)                       | 1 | {x}
@@ -278,7 +278,6 @@ italiano del modulo dei verbi.
 | throw_in           |                                    | throw (projectile) in (cont)      | 2 |
 | throw_to           |                                    | throw (projectile) to (recipient) | 2 |
 | turn               | rotate                             | turn (obj)                        | 1 | {x}
-| verbose            |                                    | verbose                           | 0 |
 |=======================================================================================================
 
 // end::verbi_non_tradotti[]
