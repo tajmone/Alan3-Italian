@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/10/21](#20181021)
+    - [Fix META VERBs](#fix-meta-verbs)
 - [2018/10/19 \(2\)](#20181019-2)
     - [Verb: `verbose`](#verb-verbose)
     - [Verb: `brief` \(buggy\)](#verb-brief-buggy)
@@ -349,6 +351,27 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/10/21
+
+- [`lib_verbi.i`][lib_verbi] (v0.7.5)
+
+## Fix META VERBs
+
+The following out-of-game verbs where not set as `META`:
+
+- `ringraziamenti`
+- `'about'`
+- `hint`
+- `notify`
+- `notify_on`
+- `notify_off`
+- `'score'`
+- `'script'`
+- `script_on`
+- `script_off`
+
+<!---------------------------------------------------------------------------->
 
 # 2018/10/19 (2)
 

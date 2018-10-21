@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.4-Alpha, 2018-10-19: Alan 3.0beta6
+--| v0.7.5-Alpha, 2018-10-21: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -246,7 +246,7 @@ SYNTAX ringraziamenti = ringraziamenti.
        ringraziamenti = copyright.
 
 
-VERB ringraziamenti
+META VERB ringraziamenti
   CHECK mia_AT CAN ringraziamenti
     ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
@@ -6136,7 +6136,7 @@ SYNTAX 'about' = 'about'.
 SYNONYMS help, info = 'about'.
 
 
-VERB 'about'
+META VERB 'about'
   CHECK mia_AT CAN about
     ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
@@ -6150,8 +6150,7 @@ VERB 'about'
     later on.
     $pType CREDITS to see information about the author and the copyright issues.
     $pTo stop playing and end the program, type QUIT.]$p"
-END VERB.
-
+END VERB 'about'.
 
 
 
@@ -6171,7 +6170,7 @@ SYNONYMS
   hints = hint.
 
 
-VERB hint
+META VERB hint
   CHECK mia_AT CAN hint
     ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
@@ -6204,7 +6203,7 @@ SYNTAX notify = notify.
     -- In case (s)he adds the prepositions to the end anyway.
 
 
-VERB notify
+META VERB notify
   CHECK mia_AT CAN notify
     ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
@@ -6218,7 +6217,7 @@ VERB notify
 END VERB notify.
 
 
-VERB notify_on
+META VERB notify_on
   CHECK mia_AT CAN notify_on
     ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
@@ -6231,7 +6230,7 @@ VERB notify_on
 END VERB notify_on.
 
 
-VERB notify_off
+META VERB notify_off
   CHECK mia_AT CAN notify_off
     ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
@@ -6302,7 +6301,7 @@ END EVENT.
 SYNTAX 'score' = 'score'.
 
 
-VERB 'score'
+META VERB 'score'
   CHECK mia_AT CAN 'score'
     ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
@@ -6329,7 +6328,7 @@ SYNTAX 'script' = 'script'.
 
 SYNONYMS 'transcript' = 'script'.
 
-VERB 'script'
+META VERB 'script'
   CHECK mia_AT CAN 'script'
     ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
@@ -6338,9 +6337,9 @@ VERB 'script'
     $pIn a GUI version you can also find this in the drop-down menu in the interpreter.
     $pIn a command line version you can start your game with the '-s' switch to get a transcript
     of the whole game."
-END VERB.
+END VERB 'script'.
 
-VERB script_on
+META VERB script_on
   CHECK mia_AT CAN script_on
     ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
@@ -6348,7 +6347,7 @@ VERB script_on
     "Transcripting turned on."
 END VERB script_on.
 
-VERB script_off
+META VERB script_off
   CHECK mia_AT CAN script_off
     ELSE SAY  azione_bloccata  OF mia_AT.
   DOES

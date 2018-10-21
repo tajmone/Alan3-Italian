@@ -11,7 +11,18 @@ Tutti i diritti riservati.
 
 Sala Test e Collaudo
 Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
-Italiana di Alan. A nord c'è il W.C.
+Italiana di Alan. A nord c'è il W.C. 
+
+Conto alla rovescia: 5
+
+> ; ==============================================================================
+> ; CONTO ALLA ROVESCIA
+> ; ==============================================================================
+> ; Il conto alla rovescia ci aiuta a verificare se i META VERB si comportano come
+> ; dovrebbero. Nota che inviando al parser una riga vuota conta come un turno:
+> 
+
+Conto alla rovescia: 4
 
 > ; ==============================================================================
 > ; RINGRAZIAMENTI
@@ -44,7 +55,9 @@ puoi tornare alla sala test.
 > sud
 Sala Test e Collaudo
 Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
-Italiana di Alan. A nord c'è il W.C.
+Italiana di Alan. A nord c'è il W.C. 
+
+Conto alla rovescia: 2
 
 > nord
 W.C.
@@ -54,7 +67,9 @@ puoi tornare alla sala test.
 > sud
 Sala Test e Collaudo
 Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
-Italiana di Alan. A nord c'è il W.C.
+Italiana di Alan. A nord c'è il W.C. 
+
+BOOOOM!!! Conto alla rovescia terminato.
 
 > ; ==============================================================================
 > ; MODALITÀ LUNGA
@@ -71,9 +86,13 @@ puoi tornare alla sala test.
 > sud
 Sala Test e Collaudo
 Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
-Italiana di Alan. A nord c'è il W.C.
+Italiana di Alan. A nord c'è il W.C. 
+
+Conto alla rovescia: 4
 
 > 
+
+Conto alla rovescia: 3
 
 > 
 

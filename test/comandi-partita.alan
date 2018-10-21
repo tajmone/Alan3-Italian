@@ -15,6 +15,12 @@ THE mia_AT IsA blocco_definizioni
 END THE.
 
 
+-- =============================================================================
+
+-- La Sala Collaudo
+
+-- =============================================================================
+
 THE sala_collaudo IsA stanza.
   NAME 'Sala Test e Collaudo'.
   EXIT nord TO wc.
@@ -23,6 +29,12 @@ THE sala_collaudo IsA stanza.
      Italiana di Alan. A nord c'è il W.C."
   
 END THE sala_collaudo.
+
+--==============================================================================
+
+-- Il Gabinetto (WC)
+
+--==============================================================================
 
 THE wc IsA stanza.
   NAME 'W.C.'.
@@ -33,6 +45,29 @@ THE wc IsA stanza.
 
 END THE wc.
 
+--==============================================================================
+
+-- Miscellanea...
+
+--==============================================================================
+
+ADD TO EVERY blocco_definizioni
+  HAS contatore 5.
+END ADD TO blocco_definizioni.
+
+EVENT conto_rovescia
+  IF mia_AT:contatore = 0
+    THEN
+      STYLE EMPHASIZED. "$pBOOOOM!!!" STYLE NORMAL. "Conto alla rovescia terminato."
+      SET mia_AT:contatore TO 5.
+    ELSE
+      "$pConto alla rovescia: " SAY mia_AT:contatore.
+      SET mia_AT:contatore TO mia_AT:contatore -1.
+    END IF.
+  SCHEDULE conto_rovescia AFTER 1.
+END EVENT.
+
 --------------------------------------------------------------------------------
 Start at sala_collaudo.
 DESCRIBE intestazione.
+SCHEDULE conto_rovescia AFTER 0.

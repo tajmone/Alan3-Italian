@@ -1,4 +1,10 @@
 ; ==============================================================================
+; CONTO ALLA ROVESCIA
+; ==============================================================================
+; Il conto alla rovescia ci aiuta a verificare se i META VERB si comportano come
+; dovrebbero. Nota che inviando al parser una riga vuota conta come un turno:
+
+; ==============================================================================
 ; RINGRAZIAMENTI
 ; ==============================================================================
 ringraziamenti
