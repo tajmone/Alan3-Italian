@@ -1,26 +1,96 @@
 ; ==============================================================================
-; CONTO ALLA ROVESCIA
+; CONTO ALLA ROVESCIA & CONTROLLO DEI 'TICK'
 ; ==============================================================================
 ; Il conto alla rovescia ci aiuta a verificare se i META VERB si comportano come
-; dovrebbero. Nota che inviando al parser una riga vuota conta come un turno:
+; dovrebbero: se il contatore varia è trascorso un 'tick' (turno).
+; --------------------
+; COMANDI VUOTI & TICK
+; --------------------
+; Nota che inviare al parser una riga vuota conta come un turno:
 
+; ---------------------
+; COMANDI ERRATI & TICK
+; ---------------------
+; Un comando errato non dovrebbe consumare tick:
+ABCDEF
+; ----------------------
+; DISAMBIGUAZIONE & TICK
+; ----------------------
+; La disambiguazione neanche:
+prendi frutto
+; -----------------------
+; COMANDI NON PRATICABILI
+; -----------------------
+; Vediamo se i comandi non praticabili consumano tick:
+est
+prendi tutto
+domanda alla mela di me
 ; ==============================================================================
 ; RINGRAZIAMENTI
 ; ==============================================================================
 ringraziamenti
 ; ==============================================================================
-; MODALITÀ BREVE
+; MODALITÀ BREVE vs LUNGA
 ; ==============================================================================
+; La libreria rende disponibili due modalità: breve e lunga.
+; --------------
+; MODALITÀ BREVE
+; --------------
 ; ** BUG ** Sembra che la direttiva VISITS non funzioni comde dovrebbe...
 modalità breve
 nord
 sud
 nord
 sud
-; ==============================================================================
+; --------------
 ; MODALITÀ LUNGA
-; ==============================================================================
+; --------------
 modalità lunga
 nord
 sud
-
+; ==============================================================================
+; PUNTEGGIO & NOTIFICHE
+; ==============================================================================
+; NOTA: Ogni frutto mangiato incrementerà il punteggio di 1.
+score
+; Il punteggio è riportato anche sul tabellone:
+esamina il tabellone
+; ------------------------------------------------------------------------------
+; TESTA Istruzioni Notifiche
+; ------------------------------------------------------------------------------
+; Le istruzioni su come usare il comando 'notifica' devono essere mostrate solo
+; la prima volta che viene notificato il punteggio:
+mangia l'avocado
+; Ora non dovrebbero più comparire:
+mangia l'arancia
+; -----------------------------
+; DISATTIVA NOTIFICHE PUNTEGGIO
+; -----------------------------
+notifica disattivata
+mangia la banana
+esamina il tabellone
+; --------------------------
+; ATTIVA NOTIFICHE PUNTEGGIO
+; --------------------------
+notifica attivata
+esamina la mela
+mangia la mela
+esamina il tabellone
+; ---------------------------
+; ALTERNA NOTIFICHE PUNTEGGIO
+; ---------------------------
+notifica
+mangia il fico
+esamina il tabellone
+notifica
+notifica
+score
+; ------------------------------------------------------------------------------
+; NOTIFICHE RIDONDANTI
+; ------------------------------------------------------------------------------
+; Verifichiamo il messaggio quando si richiede una modalità già attiva:
+notifica disattivata
+notifica attivata
+notifica attivata
+notifica disattivata
+notifica disattivata

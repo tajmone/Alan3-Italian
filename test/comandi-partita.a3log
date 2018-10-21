@@ -11,18 +11,52 @@ Tutti i diritti riservati.
 
 Sala Test e Collaudo
 Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
-Italiana di Alan. A nord c'è il W.C. 
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
+tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
+fico e una mela qui. 
 
-Conto alla rovescia: 5
+* Conto alla rovescia: 5  *
 
 > ; ==============================================================================
-> ; CONTO ALLA ROVESCIA
+> ; CONTO ALLA ROVESCIA & CONTROLLO DEI 'TICK'
 > ; ==============================================================================
 > ; Il conto alla rovescia ci aiuta a verificare se i META VERB si comportano come
-> ; dovrebbero. Nota che inviando al parser una riga vuota conta come un turno:
+> ; dovrebbero: se il contatore varia è trascorso un 'tick' (turno).
+> ; --------------------
+> ; COMANDI VUOTI & TICK
+> ; --------------------
+> ; Nota che inviare al parser una riga vuota conta come un turno:
 > 
 
-Conto alla rovescia: 4
+* Conto alla rovescia: 4  *
+
+> ; ---------------------
+> ; COMANDI ERRATI & TICK
+> ; ---------------------
+> ; Un comando errato non dovrebbe consumare tick:
+> ABCDEF
+Non conosco la parola 'ABCDEF'.
+
+> ; ----------------------
+> ; DISAMBIGUAZIONE & TICK
+> ; ----------------------
+> ; La disambiguazione neanche:
+> prendi frutto
+Non mi è chiaro se intendi dire l'arancia, l'avocado, la banana, il fico o 
+la mela.
+
+> ; -----------------------
+> ; COMANDI NON PRATICABILI
+> ; -----------------------
+> ; Vediamo se i comandi non praticabili consumano tick:
+> est
+Non puoi andare in quella direzione.
+
+> prendi tutto
+Non puoi usare più di un oggetto con 'prendi'.
+
+> domanda alla mela di me
+That's not something you can talk to.
 
 > ; ==============================================================================
 > ; RINGRAZIAMENTI
@@ -40,8 +74,12 @@ Per maggiori informazioni su ALAN, vistate il sito web:
 
 
 > ; ==============================================================================
-> ; MODALITÀ BREVE
+> ; MODALITÀ BREVE vs LUNGA
 > ; ==============================================================================
+> ; La libreria rende disponibili due modalità: breve e lunga.
+> ; --------------
+> ; MODALITÀ BREVE
+> ; --------------
 > ; ** BUG ** Sembra che la direttiva VISITS non funzioni comde dovrebbe...
 > modalità breve
 Il gioco è ora in modalità breve, le descrizioni dei luoghi già visitati
@@ -50,30 +88,38 @@ non saranno più mostrate.
 > nord
 W.C.
 Ogni laboratorio che si rispetti a un W.C. (detto anche cesso). A sud
-puoi tornare alla sala test.
+puoi tornare alla sala test. 
+
+* Conto alla rovescia: 3  *
 
 > sud
 Sala Test e Collaudo
 Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
-Italiana di Alan. A nord c'è il W.C. 
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
+tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
+fico e una mela qui. 
 
-Conto alla rovescia: 2
+* Conto alla rovescia: 2  *
 
 > nord
 W.C.
 Ogni laboratorio che si rispetti a un W.C. (detto anche cesso). A sud
-puoi tornare alla sala test.
+puoi tornare alla sala test. 
+
+* Conto alla rovescia: 1  *
 
 > sud
 Sala Test e Collaudo
 Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
-Italiana di Alan. A nord c'è il W.C. 
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
+tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
+fico e una mela qui. 
 
 BOOOOM!!! Conto alla rovescia terminato.
 
-> ; ==============================================================================
+> ; --------------
 > ; MODALITÀ LUNGA
-> ; ==============================================================================
+> ; --------------
 > modalità lunga
 Il gioco è ora in modalità lunga, le descrizioni dei luoghi saranno
 mostrate sempre (anche se già visitati).
@@ -81,18 +127,149 @@ mostrate sempre (anche se già visitati).
 > nord
 W.C.
 Ogni laboratorio che si rispetti a un W.C. (detto anche cesso). A sud
-puoi tornare alla sala test.
+puoi tornare alla sala test. 
+
+* Conto alla rovescia: 5  *
 
 > sud
 Sala Test e Collaudo
 Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
-Italiana di Alan. A nord c'è il W.C. 
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
+tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
+fico e una mela qui. 
 
-Conto alla rovescia: 4
+* Conto alla rovescia: 4  *
 
-> 
+> ; ==============================================================================
+> ; PUNTEGGIO & NOTIFICHE
+> ; ==============================================================================
+> ; NOTA: Ogni frutto mangiato incrementerà il punteggio di 1.
+> score
+Hai totalizzato 0 punti su 670 possibili.
 
-Conto alla rovescia: 3
+> ; Il punteggio è riportato anche sul tabellone:
+> esamina il tabellone
+Il tabellone segna 0 punti. 
+
+* Conto alla rovescia: 3  *
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA Istruzioni Notifiche
+> ; ------------------------------------------------------------------------------
+> ; Le istruzioni su come usare il comando 'notifica' devono essere mostrate solo
+> ; la prima volta che viene notificato il punteggio:
+> mangia l'avocado
+(taking l'avocado first)
+Mangi l'avocado. 
+
+(Il tuo punteggio è appena salito di 1 punto.) 
+
+(Per disabilitare le notifiche di punteggio usa il comando NOTIFICA.) 
+
+* Conto alla rovescia: 2  *
+
+> ; Ora non dovrebbero più comparire:
+> mangia l'arancia
+(taking l'arancia first)
+Mangi l'arancia. 
+
+(Il tuo punteggio è appena salito di 1 punto.) 
+
+* Conto alla rovescia: 1  *
+
+> ; -----------------------------
+> ; DISATTIVA NOTIFICHE PUNTEGGIO
+> ; -----------------------------
+> notifica disattivata
+Notifica del punteggio disattivata.
+(Per riattivarla usa il comando NOTIFICA)
+
+> mangia la banana
+(taking la banana first)
+Mangi la banana. 
+
+BOOOOM!!! Conto alla rovescia terminato.
+
+> esamina il tabellone
+Il tabellone segna 3 punti. 
+
+* Conto alla rovescia: 5  *
+
+> ; --------------------------
+> ; ATTIVA NOTIFICHE PUNTEGGIO
+> ; --------------------------
+> notifica attivata
+Notifica del punteggio attivata.
+(Per disattivarla usa il comando NOTIFICA)
+
+> esamina la mela
+Questa mela ha un aspetto irresistibile. Un piccolo bollino adesivo
+riporta che è stata colta nei giardini dell'Eden. 
+
+* Conto alla rovescia: 4  *
+
+> mangia la mela
+(taking la mela first)
+Mangi la mela. 
+
+(Il tuo punteggio è appena salito di 666 punti.) 
+
+* Conto alla rovescia: 3  *
+
+> esamina il tabellone
+Il tabellone segna 669 punti. 
+
+* Conto alla rovescia: 2  *
+
+> ; ---------------------------
+> ; ALTERNA NOTIFICHE PUNTEGGIO
+> ; ---------------------------
+> notifica
+Notifica del punteggio disattivata.
+(Per riattivarla usa il comando NOTIFICA)
+
+> mangia il fico
+(taking il fico first)
+Mangi il fico. 
+
+* Conto alla rovescia: 1  *
+
+> esamina il tabellone
+Il tabellone segna 670 punti. 
+
+BOOOOM!!! Conto alla rovescia terminato.
+
+> notifica
+Notifica del punteggio attivata.
+(Per disattivarla usa il comando NOTIFICA)
+
+> notifica
+Notifica del punteggio disattivata.
+(Per riattivarla usa il comando NOTIFICA)
+
+> score
+Hai totalizzato 670 punti su 670 possibili.
+
+> ; ------------------------------------------------------------------------------
+> ; NOTIFICHE RIDONDANTI
+> ; ------------------------------------------------------------------------------
+> ; Verifichiamo il messaggio quando si richiede una modalità già attiva:
+> notifica disattivata
+La notifica del punteggio è già disattiva.
+
+> notifica attivata
+Notifica del punteggio attivata.
+(Per disattivarla usa il comando NOTIFICA)
+
+> notifica attivata
+La notifica del punteggio è già attiva.
+
+> notifica disattivata
+Notifica del punteggio disattivata.
+(Per riattivarla usa il comando NOTIFICA)
+
+> notifica disattivata
+La notifica del punteggio è già disattiva.
 
 > 
 

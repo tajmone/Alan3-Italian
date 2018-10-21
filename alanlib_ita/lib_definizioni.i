@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.4-Alpha, 2018-10-21: Alan 3.0beta6
+--| v0.7.5-Alpha, 2018-10-21: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -576,24 +576,22 @@ EVERY blocco_definizioni IsA LOCATION
 --------------------------------------------------------------------------------
 --//////////////////////////////////////////////////////////////////////////////
 --=============================================================================
+-- I tre attributi che seguono, e lo `SCHEDULE controlla_punteggio` dopo di essi,
+-- sono utilizzati dal comando 'notifica' (in "lib_verbi.i").
 
-
-
-  -- These three attributes, as well as the 'schedule' statement following them,
-  -- are needed for the 'notify' command ('lib_verbi.i'); ignore.
-
-  HAS oldscore 0.
-      -- Records previous score so 'checkscore' event
-      -- can compare with the current score
-  IS notify_turned_on.
-      -- Set by 'notify' verb, records whether
-      -- player wants to see score messages or not.
-  IS NOT seen_notify.
-      -- Records whether player has seen the notify verb
-      -- instructions yet.
+  HAS ultimo_punteggio 0.
+      -- Traccia l'ultimo punteggio noto affinché l'evento 'controlla_punteggio'
+      -- possa compararlo a quello attuale per rilevare cambiamenti e notificare
+      -- il giocatore (se 'notifiche_attive' == TRUE).
+  HAS notifiche_attive.
+      -- Attributo gestito dal verbo 'notifica', serve a tracciare se il
+      -- giocatore desidera essere notificato quando consegue punti nel gioco.
+  HAS NOT visto_notifica.
+      -- Traccia se il giocatore ha già visto le istruzioni riguardo l'uso del
+      -- verbo 'notifica' (mostrate la prima volta che ottiene un punto).
  
   INITIALIZE
-    SCHEDULE check_score AFTER 0.
+    SCHEDULE controlla_punteggio AFTER 0.
     SCHEDULE check_restriction AFTER 0.
 
    -- ==========================================================================================

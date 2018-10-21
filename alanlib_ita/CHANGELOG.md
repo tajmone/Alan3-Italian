@@ -11,10 +11,15 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/10/21 \(1\)](#20181021-1)
+- [2018/10/21 \(3\)](#20181021-3)
+    - [`notify*` Verbs](#notify-verbs)
+    - [Verb Responses](#verb-responses)
+    - [Library Attributes for Notify](#library-attributes-for-notify)
+    - [Score Event](#score-event)
+- [2018/10/21 \(2\)](#20181021-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
     - [Fix VERB END IDs](#fix-verb-end-ids)
-- [2018/10/21 \(1\)](#20181021-1-1)
+- [2018/10/21 \(1\)](#20181021-1)
     - [Fix META VERBs](#fix-meta-verbs)
 - [2018/10/19 \(2\)](#20181019-2)
     - [Verb: `verbose`](#verb-verbose)
@@ -24,10 +29,10 @@ Status: Alpha stage.
 - [2018/10/19 \(1\)](#20181019-1)
     - [Verb: `scratch`](#verb-scratch)
     - [Verb Restriction Attributes](#verb-restriction-attributes-2)
-    - [Verb Responses](#verb-responses)
+    - [Verb Responses](#verb-responses-1)
 - [2018/10/18](#20181018)
     - [Translate Responses for "Look" Verbs](#translate-responses-for-look-verbs)
-    - [Verb Responses](#verb-responses-1)
+    - [Verb Responses](#verb-responses-2)
 - [2018/10/17](#20181017)
     - [Verb Restriction Attributes](#verb-restriction-attributes-3)
     - [Translate "Look" Verbs](#translate-look-verbs)
@@ -65,7 +70,7 @@ Status: Alpha stage.
     - [New Recurrent Verb Responses Attributes](#new-recurrent-verb-responses-attributes)
 - [2018/08/27 \(2\)](#20180827-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-6)
-    - [Verb Responses](#verb-responses-2)
+    - [Verb Responses](#verb-responses-3)
     - [Verbs: `talk` and `talk_to`](#verbs-talk-and-talk_to)
 - [2018/08/27 \(1\)](#20180827-1)
     - [Verb Restriction Attributes](#verb-restriction-attributes-7)
@@ -90,14 +95,14 @@ Status: Alpha stage.
 - [2018/08/16 \(2\)](#20180816-2)
     - [Fix Actors Initialization and Description](#fix-actors-initialization-and-description)
 - [2018/08/16 \(1\)](#20180816-1)
-    - [Verb Responses](#verb-responses-3)
+    - [Verb Responses](#verb-responses-4)
     - [Corretto Risposte Per `indossa` e `togliti`](#corretto-risposte-per-indossa-e-togliti)
 - [2018/08/11](#20180811)
     - [Verb Restriction Attributes](#verb-restriction-attributes-10)
-    - [Verb Responses](#verb-responses-4)
+    - [Verb Responses](#verb-responses-5)
     - [Verb: `remove`](#verb-remove)
 - [2018/08/09](#20180809)
-    - [Verb Responses](#verb-responses-5)
+    - [Verb Responses](#verb-responses-6)
     - [Verb: `wear`](#verb-wear)
 - [2018/08/08](#20180808)
     - [Deleted `present_actor` Attribute](#deleted-present_actor-attribute)
@@ -114,7 +119,7 @@ Status: Alpha stage.
 - [2018/08/06 \(1\)](#20180806-1)
     - [Library Attributes](#library-attributes)
 - [2018/08/02 \(3\)](#20180802-3)
-    - [Verb Responses](#verb-responses-6)
+    - [Verb Responses](#verb-responses-7)
     - [Verbs: `tie` and `tie_to`](#verbs-tie-and-tie_to)
 - [2018/08/02 \(2\)](#20180802-2)
 - [2018/08/02 \(1\)](#20180802-1)
@@ -122,7 +127,7 @@ Status: Alpha stage.
     - [Verbs: `touch` and `touch_with`](#verbs-touch-and-touch_with)
     - [Code Cleanup](#code-cleanup)
 - [2018/08/01 \(4\)](#20180801-4)
-    - [Verb Responses](#verb-responses-7)
+    - [Verb Responses](#verb-responses-8)
     - [Verb: `sing`](#verb-sing)
     - [Verb: `kiss`](#verb-kiss)
     - [Verb: `pull`](#verb-pull)
@@ -130,7 +135,7 @@ Status: Alpha stage.
     - [Verbs: `attack` and `attack_with`](#verbs-attack-and-attack_with)
 - [2018/08/01 \(2\)](#20180801-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-11)
-    - [Verb Responses](#verb-responses-8)
+    - [Verb Responses](#verb-responses-9)
     - [Verbs: `cut` and `cut_with`](#verbs-cut-and-cut_with)
     - [Verb: `dance`](#verb-dance)
     - [Verb: `dig`](#verb-dig)
@@ -144,7 +149,7 @@ Status: Alpha stage.
     - [Verb: `think_about`](#verb-think_about)
 - [2018/07/31 \(1\)](#20180731-1)
     - [Verb Restriction Attributes](#verb-restriction-attributes-13)
-    - [Verb Responses](#verb-responses-9)
+    - [Verb Responses](#verb-responses-10)
     - [Verb: `fix`](#verb-fix)
 - [2018/07/29 \(2\)](#20180729-2)
     - [Remove Verb Restriction Attributes](#remove-verb-restriction-attributes)
@@ -156,9 +161,9 @@ Status: Alpha stage.
     - [Verb Restriction Attributes](#verb-restriction-attributes-14)
     - [Testo dei Verbi](#testo-dei-verbi)
 - [2018/07/28 \(3\)](#20180728-3)
-    - [Verb Responses](#verb-responses-10)
-- [2018/07/28 \(2\)](#20180728-2)
     - [Verb Responses](#verb-responses-11)
+- [2018/07/28 \(2\)](#20180728-2)
+    - [Verb Responses](#verb-responses-12)
     - [Verb Restriction Attributes](#verb-restriction-attributes-15)
     - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
 - [2018/07/28 \(1\)](#20180728-1)
@@ -355,7 +360,61 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/10/21 (1)
+# 2018/10/21 (3)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.7.5)
+- [`lib_messaggi.i`][lib_messaggi] (v0.7.2)
+- [`lib_verbi.i`][lib_verbi] (v0.7.7)
+
+## `notify*` Verbs
+
+Translated verbs:
+
+|   Verb EN    |    Verb IT     |
+|--------------|----------------|
+| `notify`     | `notifica`     |
+| `notify_on`  | `notifica_on`  |
+| `notify_off` | `notifica_off` |
+
+
+    notifica
+    notifica (off|disattivata)
+    notifica (on|attivata)
+
+with no synonyms.
+
+## Verb Responses
+
+New verb responses attributes (created for Italian library, no English counterpart):
+
+|       Attribute        |                      Text                     |
+|------------------------|-----------------------------------------------|
+| `notifica_attivata`    | `"Notifica del punteggio attivata. [...]"`    |
+| `notifica_disattivata` | `"Notifica del punteggio disattivata. [...]"` |
+
+
+
+
+## Library Attributes for Notify
+
+Translated library attributes:
+
+|      English       |      Italian       |        Class         |
+|--------------------|--------------------|----------------------|
+| `notify_turned_on` | `notifiche_attive` | `blocco_definizioni` |
+| `seen_notify`      | `visto_notifica`   | `blocco_definizioni` |
+| `oldscore`         | `ultimo_punteggio` | `blocco_definizioni` |
+
+## Score Event
+
+|    Event EN   |        Italian        |
+|---------------|-----------------------|
+| `check_score` | `controlla_punteggio` |
+
+
+<!---------------------------------------------------------------------------->
+
+# 2018/10/21 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.4)
 - [`lib_verbi.i`][lib_verbi] (v0.7.6)

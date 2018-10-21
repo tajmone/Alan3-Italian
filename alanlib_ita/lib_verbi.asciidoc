@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.6-Alpha, 2018-10-21: Alan 3.0beta6
+v0.7.7-Alpha, 2018-10-21: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -67,6 +67,9 @@ Altresì noti come _comandi extradiegetici_.
 | carica_partita     | restore                      | carica [partita]                 | {X} | 0 |     |
 | modalità_breve     | brief, modalità corta        | modalità breve                   | {X} | 0 |     | {B}
 | modalità_lunga     | verbose                      | modalità lunga                   | {X} | 0 |     |
+| notifica           |                              | notifica                         | {X} | 0 |     |
+| notifica_off       | notifica off                 | notifica disattivata             | {X} | 0 |     |
+| notifica_on        | notifica on                  | notifica attivata                | {X} | 0 |     |
 | ricomincia_partita | restart                      | ricomincia [partita]             | {X} | 0 |     |
 | ringraziamenti     | autore, copyright, credits   | ringraziamenti                   | {X} | 0 |     |
 | salva_partita      | save                         | salva [partita]                  | {X} | 0 |     |
@@ -239,7 +242,6 @@ italiano del modulo dei verbi.
 | lie_in             |                                    | lie in (cont)                     | 1 |
 | lie_on             |                                    | lie on (surface)                  | 1 |
 | lift               |                                    | lift (obj)                        | 1 | {x}
-| notify (on, off)   |                                    | notify. notify on. notify off     | 0 |
 | pour               | (= defined at the verb `empty`)    | pour (obj)                        | 1 | {x}
 | pour_in            | (= defined at the verb `emtpy_in`) | pour (obj) in (cont)              | 2 | {x}
 | pour_on            | (= defined at the verb `empty_on`) | pour (obj) on (surface)           | 2 | {x}

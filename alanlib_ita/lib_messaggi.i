@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi.i"
---| v0.7.1-Alpha, 2018-10-18: Alan 3.0beta6
+--| v0.7.2-Alpha, 2018-10-21: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -396,6 +396,21 @@ ADD TO EVERY blocco_definizioni
   -- VERBI: scrivi_errore1, scrivi_errore2, scrivi_errore3.
   HAS per_scrivere_USA
     "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
+
+
+  -- -------------------
+  -- NOTIFICHE PUNTEGGIO
+  -- -------------------
+  -- VERBI: notifica, notifica_off, notifica_on.
+  
+  HAS notifica_attivata
+    "Notifica del punteggio attivata.
+     $n(Per disattivarla usa il comando NOTIFICA)".
+
+  HAS notifica_disattivata
+    "Notifica del punteggio disattivata.
+     $n(Per riattivarla usa il comando NOTIFICA)".
+  
 
   -- @TODO: Altri verbi che contengono risposte ripetute:
   --        - siediti, siediti_su

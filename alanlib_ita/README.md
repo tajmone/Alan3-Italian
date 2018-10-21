@@ -389,9 +389,9 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `look_under`     | `guardare_sotto`          |
 | `look_up`        | `guardare_su`             |
 | `'no'`           | `dire_no`                 |
-| `'notify'`       |                           |
-| `notify_off`     |                           |
-| `notify_on`      |                           |
+| `'notify'`       | `notificare`              |
+| `notify_off`     | `notificare_off`          |
+| `notify_on`      | `notificare_on`           |
 | `open`           | `aprire`                  |
 | `open_with`      | `aprire_con`              |
 | `'play'`         | `suonare`                 |

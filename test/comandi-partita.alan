@@ -47,9 +47,11 @@ END THE wc.
 
 --==============================================================================
 
--- Miscellanea...
+-- Conto Alla Rovescia
 
 --==============================================================================
+-- Il contro alla rovescia ci consentirà di verificare quali comandi consumano
+-- un 'tick' (turno) e quali no, e se i META VERBI funzionano come dovrebbero.
 
 ADD TO EVERY blocco_definizioni
   HAS contatore 5.
@@ -61,13 +63,110 @@ EVENT conto_rovescia
       STYLE EMPHASIZED. "$pBOOOOM!!!" STYLE NORMAL. "Conto alla rovescia terminato."
       SET mia_AT:contatore TO 5.
     ELSE
-      "$pConto alla rovescia: " SAY mia_AT:contatore.
+      "$p* Conto alla rovescia: " SAY mia_AT:contatore. " *"
       SET mia_AT:contatore TO mia_AT:contatore -1.
     END IF.
-  SCHEDULE conto_rovescia AFTER 1.
+  SCHEDULE conto_rovescia AT hero AFTER 1.
 END EVENT.
+
+
+-- =============================================================================
+
+-- Test Punteggio
+
+-- =============================================================================
+-- Espedienti per testare il punteggio e relativi verbi.
+
+--==============================================================================
+-- Tabellone Punteggio
+--==============================================================================
+-- Piazziamo sul muro della sala collaudo un bel tabellone che mostra semppre il
+-- punteggio attuale (richiede 'esamina')...
+
+THE tabellone IsA object AT sala_collaudo.
+  IS NOT prendibile.
+  DESCRIPTION "Affisso alla parete è appeso un tabellone segna punti."
+
+  VERB esamina
+    DOES ONLY "Il tabellone segna" SAY SCORE. "punti."
+  END VERB.
+END THE tabellone.
+
+--==============================================================================
+-- FRUTTA -- Disambiguazione & Punteggio
+--==============================================================================
+-- Creiamo la classe frutto al fine di introdurre nel test la disambiguazione
+-- dei comandi, per verificare se incidono sui tick/turni.
+-- Inoltre, aggiungiamo a ciascuna istanza di frutta il verbo 'mangia' di modo
+-- che mangiare un frutto alzi il punteggio (un frutto = 1 punto, tranne la mela
+-- che conferisce 666 punti).
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+-- NOTA: Il comando SCORE viene valutato una sola volta per contesto, quindi se
+--       l'avessimo implementato nel verbo 'mangia' sulla classe 'frutto', il
+--       punteggio sarebbe salito solo con il primo frutto mangiato. Perciò
+--       il verbo è stato implementato su ogni singola istanza!
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+EVERY frutto IsA object.
+  NAME frutto.
+  IS commestibile.
+  HAS xDesc "Un frutto, sembra appetitoso.".
+END EVERY.
+------------------------------------------------------------------------ ARANCIA
+THE ARANCIA IsA frutto AT sala_collaudo.
+  HAS articolo "l'".
+  IS femminile.
+  NAME arancia.
+  NAME 'l''arancia'.
+  HAS xDesc "Un'arancia succulenta.".
+
+  VERB mangia
+    DOES AFTER SCORE 1.
+  END VERB mangia.
+END THE.
+------------------------------------------------------------------------ AVOCADO
+THE avocado IsA frutto AT sala_collaudo.
+  HAS articolo "l'".
+  NAME avocado.
+  NAME 'l''avocado'.
+  HAS xDesc "Un avocado maturo.".
+
+  VERB mangia
+    DOES AFTER SCORE 1.
+  END VERB mangia.
+END THE.
+------------------------------------------------------------------------- BANANA
+THE banana IsA frutto AT sala_collaudo.
+  HAS articolo "la".
+  NAME banana.
+  HAS xDesc "Una banana col bollino blu.".
+
+  VERB mangia
+    DOES AFTER SCORE 1.
+  END VERB mangia.
+END THE.
+--------------------------------------------------------------------------- FICO
+THE fico IsA frutto AT sala_collaudo.
+  NAME fico.
+  HAS xDesc "Un fico dall'aspetto invitante.".
+
+  VERB mangia
+    DOES AFTER SCORE 1.
+  END VERB mangia.
+END THE.
+-- MELA ------------------------------------------------------------------------
+THE mela IsA frutto AT sala_collaudo.
+  HAS articolo "la".
+  NAME mela.
+  HAS xDesc
+    "Questa mela ha un aspetto irresistibile. Un piccolo bollino adesivo riporta
+     che è stata colta nei giardini dell'Eden.".
+
+  VERB mangia
+    DOES AFTER SCORE 666.
+  END VERB mangia.
+END THE.
 
 --------------------------------------------------------------------------------
 Start at sala_collaudo.
 DESCRIBE intestazione.
-SCHEDULE conto_rovescia AFTER 0.
+SCHEDULE conto_rovescia AT hero AFTER 0.

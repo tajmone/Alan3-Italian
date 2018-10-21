@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.6-Alpha, 2018-10-21: Alan 3.0beta6
+--| v0.7.7-Alpha, 2018-10-21: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -78,6 +78,9 @@
 --| | carica_partita     | restore                      | carica [partita]                 | {X} | 0 |     |
 --| | modalità_breve     | brief, modalità corta        | modalità breve                   | {X} | 0 |     | {B}
 --| | modalità_lunga     | verbose                      | modalità lunga                   | {X} | 0 |     |
+--| | notifica           |                              | notifica                         | {X} | 0 |     |
+--| | notifica_off       | notifica off                 | notifica disattivata             | {X} | 0 |     |
+--| | notifica_on        | notifica on                  | notifica attivata                | {X} | 0 |     |
 --| | ricomincia_partita | restart                      | ricomincia [partita]             | {X} | 0 |     |
 --| | ringraziamenti     | autore, copyright, credits   | ringraziamenti                   | {X} | 0 |     |
 --| | salva_partita      | save                         | salva [partita]                  | {X} | 0 |     |
@@ -202,6 +205,120 @@ META VERB modalità_lunga
     "Il gioco è ora in modalità" STYLE EMPHASIZED. "lunga" STYLE NORMAL. ", le
     descrizioni dei luoghi saranno mostrate sempre (anche se già visitati)."
 END VERB modalità_lunga.
+
+
+
+-- ==============================================================
+
+
+-- @NOTIFICA -> @NOTIFY
+
+
+-- ==============================================================
+-- SYNTAX notify = notify.
+--        notify_on = notify 'on'.
+--        notify_off = notify 'off'.
+
+-- @NOTA: i7 implementa anche i sinonimi:
+--        - sipunti
+--        - sipunteggio
+--        - nopunti
+--        - nopunteggio
+
+--                                                                              TRANSLATE!
+-- Thanks to Steve Griffiths whose 'Score notification' sample was used
+-- in declaring this verb.
+
+
+SYNTAX  notifica = notifica.
+
+        notifica_on = notifica 'on'.
+        notifica_on = notifica attivata.
+--                                                                              TRANSLATE!
+        -- The instructions tell the player that mere 'notify'
+        -- is enough, but these two verbs are implemented
+        notifica_off = notifica 'off'.
+        notifica_off = notifica disattivata.
+--                                                                              TRANSLATE!
+        -- In case (s)he adds the prepositions to the end anyway.
+
+
+META VERB notifica
+  CHECK mia_AT CAN notificare
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES
+    IF mia_AT HAS notifiche_attive
+      THEN MAKE mia_AT NOT notifiche_attive. SAY mia_AT:notifica_disattivata.
+      ELSE MAKE mia_AT     notifiche_attive. SAY mia_AT:notifica_attivata.
+    END IF.
+END VERB notifica.
+
+
+META VERB notifica_on
+  CHECK mia_AT CAN notificare_on
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES
+    IF mia_AT HAS notifiche_attive
+      THEN "La notifica del punteggio è già attiva."
+      ELSE MAKE mia_AT notifiche_attive. SAY mia_AT:notifica_attivata.
+    END IF.
+END VERB notifica_on.
+
+
+META VERB notifica_off
+  CHECK mia_AT CAN notificare_off
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES
+    IF mia_AT HAS notifiche_attive
+      THEN MAKE mia_AT NOT notifiche_attive. SAY mia_AT:notifica_disattivata.
+      ELSE "La notifica del punteggio è già disattiva."
+    END IF.
+END VERB notifica_off.
+
+--                                                                              TRANSLATE!
+-- The 'notify' verb allows the players to disable the score change
+-- messages. (Some players find such messages annoying.)
+-- The verb toggles the hero's 'notify_on' attribute on and off. That
+-- attribute is checked by the 'checkscore' event to determine whether
+-- to display the score msg or not.
+
+-- The following event is run each turn to check if the game score is greater than
+-- the last recorded score (which is stored in the Hero's 'ultimo_punteggio'
+-- attribute). If the score is greater, then the 'Score has gone up...'
+-- text is displayed (as long as the player hasn't disabled it by using the
+-- 'notify' verb - which sets 'notify_on' to off
+-- - i.e. the hero 'IS NOT notify_on'.)
+
+-- NOTE: The ALAN scoring system records the game score in a thing called
+-- score. It isn't called score OF anything; its just 'score'.
+
+-- NOTE: This event assumes score can only increase, if score can go
+-- down then you would need to modify this code a bit.
+
+
+EVENT controlla_punteggio
+  IF ultimo_punteggio OF mia_AT < SCORE
+    THEN
+      IF mia_AT HAS notifiche_attive
+        THEN -- Il giocatore desidera essere notificato del punteggio:
+          "$p(Il tuo punteggio è appena salito di"
+          SAY (SCORE - ultimo_punteggio OF mia_AT). "punt$$"
+          IF  (SCORE - ultimo_punteggio OF mia_AT) = 1
+            THEN "o"
+            ELSE "i"
+          END IF. "$$.)"
+          -- Il seguente avviso verrà mostrato solo alla prima notifica:
+          IF mia_AT HAS NOT  visto_notifica
+            THEN MAKE mia_AT visto_notifica.
+              "$p(Per disabilitare le notifiche di punteggio usa il comando NOTIFICA.)"
+          END IF.
+      END IF.
+
+      SET ultimo_punteggio OF mia_AT TO SCORE.
+  END IF.
+  -- Ripeti questo evento al prossimo turno:
+  SCHEDULE controlla_punteggio AT hero AFTER 1.
+END EVENT.
 
 -- ==============================================================
 
@@ -6012,7 +6129,7 @@ END VERB dove_mi_trovo.
 --~*| look_under         |                                    | look under (bulk)                 | 1 |
 --~*| look_up            |                                    | look up                           | 0 |
 --~*| no                 |                                    | no                                | 0 |
---| | notify (on, off)   |                                    | notify. notify on. notify off     | 0 |
+--~*| notify (on, off)   |                                    | notify. notify on. notify off     | 0 |
 --~*| open               |                                    | open (obj)                        | 1 | {x}
 --~*| open_with          |                                    | open (obj) with (instr)           | 2 | {x}
 --~*| play               |                                    | play (obj)                        | 1 | {x}
@@ -6178,118 +6295,6 @@ META VERB hint
 END VERB hint.
 
 
-
-
--- ==============================================================
-
-
--- @NOTIFY
-
-
--- ==============================================================
--- SYNTAX notify = notify.
---        notify_on = notify 'on'.
---        notify_off = notify 'off'.
-
-
--- Thanks to Steve Griffiths whose 'Score notification' sample was used
--- in declaring this verb.
-
-
-
-SYNTAX notify = notify.
-
-   notify_on = notify 'on'.
-    -- The instructions tell the player that mere 'notify'
-    -- is enough, but these two verbs are implemented
-   notify_off = notify 'off'.
-    -- In case (s)he adds the prepositions to the end anyway.
-
-
-META VERB notify
-  CHECK mia_AT CAN notificare
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES
-    IF mia_AT HAS notify_turned_on
-      THEN MAKE mia_AT NOT notify_turned_on.
-        "Score notification is now disabled. (You can turn it back on
-        using the NOTIFY command again.)"
-      ELSE MAKE mia_AT notify_turned_on. "Score notification is now enabled.
-        (You can turn it off using the NOTIFY command again.)"
-    END IF.
-END VERB notify.
-
-
-META VERB notify_on
-  CHECK mia_AT CAN notificare_on
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES
-    IF mia_AT HAS notify_turned_on
-      THEN "Score notification is already enabled."
-      ELSE MAKE mia_AT notify_turned_on.
-        "Score notification is now enabled.
-        (You can turn it off using the NOTIFY command again.)"
-    END IF.
-END VERB notify_on.
-
-
-META VERB notify_off
-  CHECK mia_AT CAN notificare_off
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES
-    IF mia_AT HAS notify_turned_on
-      THEN MAKE mia_AT NOT notify_turned_on.
-        "Score notification is now disabled. (You can turn it back on
-        using the NOTIFY command again.)"
-      ELSE "Score notification is already disabled."
-    END IF.
-END VERB notify_off.
-
-
--- The 'notify' verb allows the players to disable the score change
--- messages. (Some players find such messages annoying.)
--- The verb toggles the hero's 'notify_on' attribute on and off. That
--- attribute is checked by the 'checkscore' event to determine whether
--- to display the score msg or not.
-
--- The following event is run each turn to check if the game score is greater than
--- the last recorded score (which is stored in the Hero's 'oldscore'
--- attribute). If the score is greater, then the 'Score has gone up...'
--- text is displayed (as long as the player hasn't disabled it by using the
--- 'notify' verb - which sets 'notify_on' to off
--- - i.e. the hero 'IS NOT notify_on'.)
-
--- NOTE: The ALAN scoring system records the game score in a thing called
--- score. It isn't called score OF anything; its just 'score'.
-
--- NOTE: This event assumes score can only increase, if score can go
--- down then you would need to modify this code a bit.
-
-
-EVENT check_score
-  IF oldscore OF mia_AT < score
-    THEN
-      IF mia_AT HAS notify_turned_on
-        THEN
-          -- ie: the player wants to see score msgs
-          "$p(Your score has just gone up by" SAY (score - oldscore OF mia_AT).
-          IF (score - oldscore OF mia_AT) = 1
-            THEN "point.)"
-            ELSE "points.)"
-          END IF.
-          -- this msg only displayed the first time player is notified
-          -- of a score change
-          IF mia_AT HAS NOT seen_notify
-            THEN MAKE mia_AT seen_notify.
-              "$p(You can use the NOTIFY command to disable score change messages.)"
-          END IF.
-      END IF.
-
-      SET oldscore OF mia_AT TO score.
-  END IF.
-  -- run the 'check_score' event again next turn:
-  SCHEDULE check_score AT hero AFTER 1.
-END EVENT.
 
 
 -- ==============================================================
