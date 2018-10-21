@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.3-Alpha, 2018-10-19: Alan 3.0beta6
+--| v0.7.4-Alpha, 2018-10-21: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -771,6 +771,9 @@ EVERY blocco_definizioni IsA LOCATION
   CAN modalità_breve.           ---> brief
   CAN modalità_lunga.           ---> verbose
   CAN mostrare.                 ---> 'show'       (+ reveal)
+  CAN notificare.               ---> 'notify'
+  CAN notificare_off.           ---> notify_off
+  CAN notificare_on.            ---> notify_on
   CAN nuotare.                  ---> swim
   CAN nuotare_in.               ---> swim_in
   CAN parlare.                  ---> talk
@@ -852,9 +855,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN lift.
 --CAN light. ---------------------> ** VERBO ELIMINATO ** (+ lit)
 --CAN look_at. -------------------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
-  CAN 'notify'.
-  CAN notify_on.
-  CAN notify_off.
   CAN pry.
   CAN pry_with.
   CAN put.         -- (+ lay, place)
@@ -992,6 +992,9 @@ EVENT check_restriction
       MAKE mia_AT modalità_lunga.           ---> verbose
       MAKE mia_AT mostrare.                 ---> 'show'       (+ reveal)
       MAKE mia_AT nuotare.                  ---> swim
+      MAKE mia_AT notificare.               ---> 'notify'
+      MAKE mia_AT notificare_off.           ---> notify_off
+      MAKE mia_AT notificare_on.            ---> notify_on
       MAKE mia_AT nuotare_in.               ---> swim_in
       MAKE mia_AT parlare.                  ---> talk
       MAKE mia_AT parlare_con.              ---> talk_to (+ speak)
@@ -1068,9 +1071,6 @@ EVENT check_restriction
       MAKE mia_AT lift.
     --MAKE mia_AT light. -------------> ** VERBO ELIMINATO ** (+ lit)
     --MAKE mia_AT look_at. -----------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
-      MAKE mia_AT 'notify'.
-      MAKE mia_AT notify_on.
-      MAKE mia_AT notify_off.
       MAKE mia_AT pry.
       MAKE mia_AT pry_with.
       MAKE mia_AT put.             -- (+ lay, place)
@@ -1323,6 +1323,9 @@ EVENT check_restriction
           MAKE mia_AT NOT dire_sì.                  ---> yes
           MAKE mia_AT NOT modalità_breve.           ---> brief
           MAKE mia_AT NOT modalità_lunga.           ---> verbose
+          MAKE mia_AT NOT notificare.               ---> 'notify'
+          MAKE mia_AT NOT notificare_off.           ---> notify_off
+          MAKE mia_AT NOT notificare_on.            ---> notify_on
           MAKE mia_AT NOT ricominciare_partita.     ---> 'restart'
           MAKE mia_AT NOT rifare.                   ---> 'again'
           MAKE mia_AT NOT ringraziamenti.           ---> credits (+ acknowledgments, author, copyright)
@@ -1332,9 +1335,6 @@ EVENT check_restriction
 
           MAKE mia_AT NOT about.
           MAKE mia_AT NOT hint.        -- (+ hints)
-          MAKE mia_AT NOT 'notify'.
-          MAKE mia_AT NOT notify_on.
-          MAKE mia_AT NOT notify_off.
           MAKE mia_AT NOT 'score'.
           MAKE mia_AT NOT 'script'.
           MAKE mia_AT NOT script_on.

@@ -1866,7 +1866,7 @@ EVERY liquido IsA OBJECT
     WHEN ogg
 --                                                                              TRANSLATE!
     DOES ONLY "You can only empty containers."
-  END VERB.
+  END VERB 'empty'.
 
   VERB empty_in
     WHEN ogg

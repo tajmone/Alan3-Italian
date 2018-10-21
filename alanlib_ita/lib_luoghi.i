@@ -171,9 +171,9 @@ SYNONYMS
 -- THE piece_of_paper IsA OBJECT
 -- ...
 --    VERB tear
---    DOES ONLY "You tear the piece of paper to shreds."
---    LOCATE piece_of_paper AT limbo.
---  END VERB.
+--      DOES ONLY "You tear the piece of paper to shreds."
+--        LOCATE piece_of_paper AT limbo.
+--    END VERB tear.
 --
 -- END THE piece_of_paper.
 
@@ -419,7 +419,7 @@ END ADD TO.
 --          ELSIF...
 --          END IF.
 --    ...
--- END VERB.
+-- END VERB examine.
 --
 -- END THE mia_AT.
 

@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Definizioni
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.3-Alpha, 2018-10-19: Alan 3.0beta6
+v0.7.4-Alpha, 2018-10-21: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_definitions.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -110,6 +110,9 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
   CAN modalità_breve.           ---> brief
   CAN modalità_lunga.           ---> verbose
   CAN mostrare.                 ---> 'show'       (+ reveal)
+  CAN notificare.               ---> 'notify'
+  CAN notificare_off.           ---> notify_off
+  CAN notificare_on.            ---> notify_on
   CAN nuotare.                  ---> swim
   CAN nuotare_in.               ---> swim_in
   CAN parlare.                  ---> talk
@@ -266,9 +269,6 @@ Questo è l'elenco degli attributi verbali non ancora tradotti:
   CAN lift.
 --CAN light. ---------------------> ** VERBO ELIMINATO ** (+ lit)
 --CAN look_at. -------------------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
-  CAN 'notify'.
-  CAN notify_on.
-  CAN notify_off.
   CAN pry.
   CAN pry_with.
   CAN put.         -- (+ lay, place)

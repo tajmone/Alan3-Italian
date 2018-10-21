@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.5-Alpha, 2018-10-21: Alan 3.0beta6
+--| v0.7.6-Alpha, 2018-10-21: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -6187,6 +6187,9 @@ END VERB hint.
 
 
 -- ==============================================================
+-- SYNTAX notify = notify.
+--        notify_on = notify 'on'.
+--        notify_off = notify 'off'.
 
 
 -- Thanks to Steve Griffiths whose 'Score notification' sample was used
@@ -6204,7 +6207,7 @@ SYNTAX notify = notify.
 
 
 META VERB notify
-  CHECK mia_AT CAN notify
+  CHECK mia_AT CAN notificare
     ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     IF mia_AT HAS notify_turned_on
@@ -6218,7 +6221,7 @@ END VERB notify.
 
 
 META VERB notify_on
-  CHECK mia_AT CAN notify_on
+  CHECK mia_AT CAN notificare_on
     ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     IF mia_AT HAS notify_turned_on
@@ -6231,7 +6234,7 @@ END VERB notify_on.
 
 
 META VERB notify_off
-  CHECK mia_AT CAN notify_off
+  CHECK mia_AT CAN notificare_off
     ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
     IF mia_AT HAS notify_turned_on
@@ -6877,7 +6880,7 @@ ADD TO EVERY OBJECT
           EMPTY ogg AT hero.
       END IF.
 
-  END VERB.
+  END VERB 'empty'. -- + pour
 END ADD TO.
 
 
@@ -7271,7 +7274,7 @@ ADD TO EVERY OBJECT
         ELSE "Those are not"
       END IF.
       "something you can exit."
-    END VERB.
+    END VERB 'exit'.
 END ADD TO.
 
 
@@ -9066,7 +9069,7 @@ ADD TO EVERY OBJECT
         END IF.
 
         "not especially interested."
-  END VERB.
+  END VERB 'show'.
 END ADD TO.
 
 

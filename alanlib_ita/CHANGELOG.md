@@ -11,22 +11,25 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/10/21](#20181021)
+- [2018/10/21 \(1\)](#20181021-1)
+    - [Verb Restriction Attributes](#verb-restriction-attributes)
+    - [Fix VERB END IDs](#fix-verb-end-ids)
+- [2018/10/21 \(1\)](#20181021-1-1)
     - [Fix META VERBs](#fix-meta-verbs)
 - [2018/10/19 \(2\)](#20181019-2)
     - [Verb: `verbose`](#verb-verbose)
     - [Verb: `brief` \(buggy\)](#verb-brief-buggy)
     - [Verb: `credits`](#verb-credits)
-    - [Verb Restriction Attributes](#verb-restriction-attributes)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
 - [2018/10/19 \(1\)](#20181019-1)
     - [Verb: `scratch`](#verb-scratch)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
     - [Verb Responses](#verb-responses)
 - [2018/10/18](#20181018)
     - [Translate Responses for "Look" Verbs](#translate-responses-for-look-verbs)
     - [Verb Responses](#verb-responses-1)
 - [2018/10/17](#20181017)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
     - [Translate "Look" Verbs](#translate-look-verbs)
         - [Verb: `'look'`](#verb-look)
         - [Verb: `look behind`](#verb-look-behind)
@@ -47,7 +50,7 @@ Status: Alpha stage.
     - [Doxterize `lib_classi.i`](#doxterize-lib_classii)
 - [2018/10/14 \(2\)](#20181014-2)
     - [Banner Translation](#banner-translation)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
 - [2018/10/14 \(2\)](#20181014-2-1)
     - [Doxterize `lib_definizioni.i`](#doxterize-lib_definizionii)
 - [2018/10/14 \(1\)](#20181014-1)
@@ -56,27 +59,27 @@ Status: Alpha stage.
 - [2018/10/13](#20181013)
     - [Add Doxter for Documentation Generator](#add-doxter-for-documentation-generator)
 - [2018/10/09](#20181009)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-5)
     - [Verb: `Tell`](#verb-tell)
 - [2018/08/27 \(3\)](#20180827-3)
     - [New Recurrent Verb Responses Attributes](#new-recurrent-verb-responses-attributes)
 - [2018/08/27 \(2\)](#20180827-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-5)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-6)
     - [Verb Responses](#verb-responses-2)
     - [Verbs: `talk` and `talk_to`](#verbs-talk-and-talk_to)
 - [2018/08/27 \(1\)](#20180827-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-6)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-7)
     - [Verb: `ask`](#verb-ask)
 - [2018/08/24](#20180824)
     - [Fix Verb `chiedi` \(`ask_for`\)](#fix-verb-chiedi-ask_for)
 - [2018/08/22 \(3\)](#20180822-3)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-7)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-8)
     - [Verb: `ask_for`](#verb-ask_for)
     - [Fix Actors Initialization \(Again\)](#fix-actors-initialization-again)
 - [2018/08/22 \(2\)](#20180822-2)
     - [Fix Actors Initialization](#fix-actors-initialization)
 - [2018/08/22 \(1\)](#20180822-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-8)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-9)
     - [Verb: `say`](#verb-say)
     - [Verb: `say_to`](#verb-say_to)
 - [2018/08/18 \(2\)](#20180818-2)
@@ -90,7 +93,7 @@ Status: Alpha stage.
     - [Verb Responses](#verb-responses-3)
     - [Corretto Risposte Per `indossa` e `togliti`](#corretto-risposte-per-indossa-e-togliti)
 - [2018/08/11](#20180811)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-9)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-10)
     - [Verb Responses](#verb-responses-4)
     - [Verb: `remove`](#verb-remove)
 - [2018/08/09](#20180809)
@@ -126,13 +129,13 @@ Status: Alpha stage.
 - [2018/08/01 \(3\)](#20180801-3)
     - [Verbs: `attack` and `attack_with`](#verbs-attack-and-attack_with)
 - [2018/08/01 \(2\)](#20180801-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-10)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-11)
     - [Verb Responses](#verb-responses-8)
     - [Verbs: `cut` and `cut_with`](#verbs-cut-and-cut_with)
     - [Verb: `dance`](#verb-dance)
     - [Verb: `dig`](#verb-dig)
 - [2018/08/01 \(1\)](#20180801-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-11)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-12)
     - [Verb: `drive`](#verb-drive)
     - [Verbs: `listen0` and `listen`](#verbs-listen0-and-listen)
 - [2018/07/31 \(2\)](#20180731-2)
@@ -140,7 +143,7 @@ Status: Alpha stage.
     - [Verb: `think`](#verb-think)
     - [Verb: `think_about`](#verb-think_about)
 - [2018/07/31 \(1\)](#20180731-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-12)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-13)
     - [Verb Responses](#verb-responses-9)
     - [Verb: `fix`](#verb-fix)
 - [2018/07/29 \(2\)](#20180729-2)
@@ -150,16 +153,16 @@ Status: Alpha stage.
     - [Il Nocciolo del Problema](#il-nocciolo-del-problema)
     - [Abolizione dell'Attributo `naturale`](#abolizione-dellattributo-naturale)
     - [Rilfessioni sull'Attributo `illuminato`](#rilfessioni-sullattributo-illuminato)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-13)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-14)
     - [Testo dei Verbi](#testo-dei-verbi)
 - [2018/07/28 \(3\)](#20180728-3)
     - [Verb Responses](#verb-responses-10)
 - [2018/07/28 \(2\)](#20180728-2)
     - [Verb Responses](#verb-responses-11)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-14)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-15)
     - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
 - [2018/07/28 \(1\)](#20180728-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-15)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-16)
     - [Verb: `answer`](#verb-answer)
     - [Verbs: `fill` and `fill_with`](#verbs-fill-and-fill_with)
 - [2018/07/27 \(7\)](#20180727-7)
@@ -204,15 +207,15 @@ Status: Alpha stage.
     - [Polish and Fix Translated Verbs](#polish-and-fix-translated-verbs)
     - [Verb Parameters Fixes](#verb-parameters-fixes)
 - [2018/07/25 \(8\)](#20180725-8)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-16)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-17)
     - [Verbs: `yes` and `no`](#verbs-yes-and-no)
 - [2018/07/25 \(7\)](#20180725-7)
 - [2018/07/25 \(6\)](#20180725-6)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-17)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-18)
     - [Verb: `play`](#verb-play)
     - [Verb: `play_with`](#verb-play_with)
 - [2018/07/25 \(5\)](#20180725-5)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-18)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-19)
 - [2018/07/25 \(4\)](#20180725-4)
 - [2018/07/25 \(3\)](#20180725-3)
     - [Library Instances](#library-instances)
@@ -332,9 +335,9 @@ Status: Alpha stage.
     - [Verb: `pray`](#verb-pray)
     - [Verb: `break`](#verb-break)
     - [Verb: `break_with`](#verb-break_with)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-19)
-- [2018/05/22 \(2\)](#20180522-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-20)
+- [2018/05/22 \(2\)](#20180522-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-21)
 - [2018/05/22 \(1\)](#20180522-1)
     - [Verb: `undress`](#verb-undress)
 - [2018/05/19](#20180519)
@@ -352,7 +355,28 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/10/21
+# 2018/10/21 (1)
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.7.4)
+- [`lib_verbi.i`][lib_verbi] (v0.7.6)
+
+## Verb Restriction Attributes
+
+Translated `mia_AT` attributes for verb restrictions:
+
+|   English    |     Italian      |
+|--------------|------------------|
+| `'notify'`   | `notificare`     |
+| `notify_on`  | `notificare_on`  |
+| `notify_off` | `notificare_off` |
+
+## Fix VERB END IDs
+
+Some verbs didn't have their ID mentioned at `VERB END`; added them to improve code readability.
+
+<!---------------------------------------------------------------------------->
+
+# 2018/10/21 (1)
 
 - [`lib_verbi.i`][lib_verbi] (v0.7.5)
 
