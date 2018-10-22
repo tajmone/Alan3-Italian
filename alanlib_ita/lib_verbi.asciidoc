@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.7-Alpha, 2018-10-21: Alan 3.0beta6
+v0.7.8-Alpha, 2018-10-22: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -192,10 +192,10 @@ o domande poste dal protagonista stesso (p.es. "`chi sono?`", "`sì`", "`dove
 | chi_sono_io        |                              | chi sono                         |     | 0 |     |
 | cosa_è             |                              | cosa è (ogg)                     |     | 1 | {X} | {B}
 | cosa_sono_io       |                              | cosa sono                        |     | 0 |     |
-| dici_No            |                              | no                               |     | 0 |     |
-| dici_Sì            |                              | sì                               |     | 0 |     |
 | dove_è             |                              | dove è (ogg)                     |     | 1 | {X} | {B}
 | dove_mi_trovo      |                              | dove sono                        |     | 0 |     |
+| rispondi_No        |                              | no                               |     | 0 |     |
+| rispondi_Sì        |                              | sì                               |     | 0 |     |
 |=============================================================================================================
 
 // end::tabella_comandi_affermazioni[]

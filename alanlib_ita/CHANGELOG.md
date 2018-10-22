@@ -11,6 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/10/22](#20181022)
+    - [Rename Restriction Attributes](#rename-restriction-attributes)
+    - [Rename Verbs](#rename-verbs)
 - [2018/10/21 \(3\)](#20181021-3)
     - [`notify*` Verbs](#notify-verbs)
     - [Verb Responses](#verb-responses)
@@ -359,6 +362,33 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/10/22
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.7.6)
+- [`lib_messaggi.i`][lib_messaggi] (v0.7.3)
+- [`lib_verbi.i`][lib_verbi] (v0.7.8)
+
+## Rename Restriction Attributes
+
+Renamed `mia_AT` attributes for verb restrictions:
+
+|   Old ID  |      New ID     |
+|-----------|-----------------|
+| `dire_no` | `rispondere_No` |
+| `dire_sì` | `rispondere_Sì` |
+
+## Rename Verbs
+
+Renamed verbs:
+
+|   Old ID  |     New ID    |
+|-----------|---------------|
+| `dici_No` | `rispondi_No` |
+| `dici_Sì` | `rispondi_Sì` |
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/10/21 (3)
 

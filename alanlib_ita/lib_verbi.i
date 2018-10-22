@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.7-Alpha, 2018-10-21: Alan 3.0beta6
+--| v0.7.8-Alpha, 2018-10-22: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -5749,10 +5749,10 @@ END ADD TO.
 --| | chi_sono_io        |                              | chi sono                         |     | 0 |     |
 --| | cosa_è             |                              | cosa è (ogg)                     |     | 1 | {X} | {B}
 --| | cosa_sono_io       |                              | cosa sono                        |     | 0 |     |
---| | dici_No            |                              | no                               |     | 0 |     |
---| | dici_Sì            |                              | sì                               |     | 0 |     |
 --| | dove_è             |                              | dove è (ogg)                     |     | 1 | {X} | {B}
 --| | dove_mi_trovo      |                              | dove sono                        |     | 0 |     |
+--| | rispondi_No        |                              | no                               |     | 0 |     |
+--| | rispondi_Sì        |                              | sì                               |     | 0 |     |
 --| |=============================================================================================================
 --<
 
@@ -5904,51 +5904,6 @@ VERB cosa_sono_io
 END VERB cosa_sono_io.
 
 
-
-
--- ==============================================================
-
-
--- @DICI "No" ---> @NO
-
-
--- ==============================================================
-
--- SYNTAX 'no' = 'no'.
-
-SYNTAX dici_No = 'no'.
-
-
-VERB dici_No
-  CHECK mia_AT CAN dire_no
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES "Davvero?"
-    -- "Really?"
-END VERB dici_No.
-
-
--- ================================================================
-
-
--- @DICI "Sì" ---> @YES
-
-
--- ================================================================
-
--- SYNTAX yes = yes.
-
-SYNTAX dici_Sì = sì.
-
-
-VERB dici_Sì
-  CHECK mia_AT CAN dire_sì
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES "Davvero?"
-    -- "Really?"
-END VERB dici_Sì.
-
-
-
 -- ==============================================================
 
 
@@ -6030,6 +5985,48 @@ VERB dove_mi_trovo
     LOOK.
 END VERB dove_mi_trovo.
 
+
+
+-- ==============================================================
+
+
+-- @RISPONDI "No" ---> @NO
+
+
+-- ==============================================================
+
+-- SYNTAX 'no' = 'no'.
+
+SYNTAX rispondi_No = 'no'.
+
+
+VERB rispondi_No
+  CHECK mia_AT CAN rispondere_No
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES "Davvero?"
+    -- "Really?"
+END VERB rispondi_No.
+
+
+-- ================================================================
+
+
+-- @RISPONDI "Sì" ---> @YES
+
+
+-- ================================================================
+
+-- SYNTAX yes = yes.
+
+SYNTAX rispondi_Sì = sì.
+
+
+VERB rispondi_Sì
+  CHECK mia_AT CAN rispondere_Sì
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES "Davvero?"
+    -- "Really?"
+END VERB rispondi_Sì.
 
 
 -->verbi_non_tradotti(50100)

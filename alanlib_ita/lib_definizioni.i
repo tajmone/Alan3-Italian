@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.5-Alpha, 2018-10-21: Alan 3.0beta6
+--| v0.7.6-Alpha, 2018-10-22: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -735,8 +735,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN dare.                     ---> give
   CAN dire.                     ---> 'say'
   CAN dire_a.                   ---> say_to
-  CAN dire_no.                  ---> 'no'
-  CAN dire_sì.                  ---> yes
   CAN domandare.                ---> ask (+ enquire, inquire, interrogate)
   CAN domandare_chi_sono_io.    ---> who_am_i
   CAN domandare_chi_è.          ---> who_is
@@ -790,6 +788,8 @@ EVERY blocco_definizioni IsA LOCATION
   CAN ringraziamenti.           ---> credits (+ acknowledgments, author, copyright)
   CAN riparare.                 ---> fix (+ mend, repair)
   CAN rispondere.               ---> answer (+ reply)
+  CAN rispondere_No.            ---> 'no'
+  CAN rispondere_Sì.            ---> yes
   CAN rompere.                  ---> break        (+ destroy)
   CAN rompere_con.              ---> break_with
   CAN salvare_partita.          ---> save
@@ -955,8 +955,6 @@ EVENT check_restriction
       MAKE mia_AT dare.                     ---> give
       MAKE mia_AT dire.                     ---> 'say'
       MAKE mia_AT dire_a.                   ---> say_to
-      MAKE mia_AT dire_no.                  ---> 'no'
-      MAKE mia_AT dire_sì.                  ---> yes
       MAKE mia_AT domandare.                ---> ask (+ enquire, inquire, interrogate)
       MAKE mia_AT domandare_chi_sono_io.    ---> who_am_i
       MAKE mia_AT domandare_chi_è.          ---> who_is
@@ -1010,6 +1008,8 @@ EVENT check_restriction
       MAKE mia_AT ringraziamenti.           ---> credits (+ acknowledgments, author, copyright)
       MAKE mia_AT riparare.                 ---> fix (+ mend, repair)
       MAKE mia_AT rispondere.               ---> answer (+ reply)
+      MAKE mia_AT rispondere_No.            ---> 'no'
+      MAKE mia_AT rispondere_Sì.            ---> yes
       MAKE mia_AT rompere.                  ---> break        (+ destroy)
       MAKE mia_AT rompere_con.              ---> break_with
       MAKE mia_AT saltare.                  ---> jump
@@ -1317,8 +1317,6 @@ EVENT check_restriction
 
           MAKE mia_AT NOT abbandonare_partita.      ---> 'quit'
           MAKE mia_AT NOT caricare_partita.         ---> 'restore'
-          MAKE mia_AT NOT dire_no.                  ---> 'no'
-          MAKE mia_AT NOT dire_sì.                  ---> yes
           MAKE mia_AT NOT modalità_breve.           ---> brief
           MAKE mia_AT NOT modalità_lunga.           ---> verbose
           MAKE mia_AT NOT notificare.               ---> 'notify'
@@ -1327,6 +1325,8 @@ EVENT check_restriction
           MAKE mia_AT NOT ricominciare_partita.     ---> 'restart'
           MAKE mia_AT NOT rifare.                   ---> 'again'
           MAKE mia_AT NOT ringraziamenti.           ---> credits (+ acknowledgments, author, copyright)
+          MAKE mia_AT NOT rispondere_No.            ---> 'no'
+          MAKE mia_AT NOT rispondere_Sì.            ---> yes
           MAKE mia_AT NOT salvare_partita.          ---> save
 
         --# NOT YET TRANSLATED:

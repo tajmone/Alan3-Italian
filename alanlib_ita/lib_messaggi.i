@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi.i"
---| v0.7.2-Alpha, 2018-10-21: Alan 3.0beta6
+--| v0.7.3-Alpha, 2018-10-22: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -417,7 +417,7 @@ ADD TO EVERY blocco_definizioni
   --        - usa, usa_con
   --        - chi_è, cosa_è, dove_è
   --        - chi_sono_io, cosa_sono_io
-  --        - dici_No, dici_Sì
+  --        - rispondi_No, rispondi_Sì
   --        - consult_error
 
   -- ===========================================================================
