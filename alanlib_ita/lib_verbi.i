@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.8-Alpha, 2018-10-22: Alan 3.0beta6
+--| v0.7.9-Alpha, 2018-10-22: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -84,6 +84,9 @@
 --| | ricomincia_partita | restart                      | ricomincia [partita]             | {X} | 0 |     |
 --| | ringraziamenti     | autore, copyright, credits   | ringraziamenti                   | {X} | 0 |     |
 --| | salva_partita      | save                         | salva [partita]                  | {X} | 0 |     |
+--| | trascrizione       |                              | trascrizione                     | {X} | 0 |     |
+--| | trascrizione_off   | trascrizione off             | trascrizione disattivata         | {X} | 0 |     |
+--| | trascrizione_on    | trascrizione on              | trascrizione attivata            | {X} | 0 |     |
 --| |=============================================================================================================
 --<
 
@@ -411,6 +414,66 @@ META VERB salva_partita
   DOES
     SAVE.
 END VERB salva_partita.
+
+
+-- ==============================================================
+
+
+-- @TRASCRIZIONE -> @SCRIPT
+
+
+-- ==============================================================
+-- SYNTAX 'script' = 'script'.
+--         script_on = 'script' 'on'.
+--         script_off = 'script' 'off'.
+
+
+SYNTAX  trascrizione     = trascrizione.
+        trascrizione_on  = trascrizione 'on'.
+        trascrizione_on  = trascrizione attivata.
+        trascrizione_off = trascrizione 'off'.
+        trascrizione_off = trascrizione disattivata.
+
+SYNONYMS 'transcript' = trascrizione.
+
+META VERB trascrizione
+  CHECK mia_AT CAN trascrivere
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES
+    "Puoi avviare/interrompere la trascrizione della partita in corso tramite i
+     comandi TRASCRIZIONE ON/OFF.
+
+     La trascrizione sarà salvata in un file con il nome dell'avventura seguito
+     dalla data e dall'estensione "".log"".
+ 
+     $pNell'interprete con interfaccia grafica, puoi accedere alle funzionalità
+     di trascrizione tramite menù.
+    
+     $pL'interprete a riga di comando ARun può essere avviato con l'opzione
+     ""-l"" per abilitare la trascrizione dell'intera partita."
+
+  -- "You can turn transcripting on and off using the 'script on/off' command within the game.
+  -- The transcript will be available in a file with a name starting with the game name.
+  -- $pIn a GUI version you can also find this in the drop-down menu in the interpreter.
+  -- $pIn a command line version you can start your game with the '-s' switch to get a transcript
+  -- of the whole game."
+END VERB trascrizione.
+
+META VERB trascrizione_on
+  CHECK mia_AT CAN trascrivere_on
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES
+    TRANSCRIPT ON.
+    "Trascrizione avviata."
+END VERB trascrizione_on.
+
+META VERB trascrizione_off
+  CHECK mia_AT CAN trascrivere_off
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES
+    TRANSCRIPT OFF.
+    "Trascrizione terminata."
+END VERB trascrizione_off.
 
 
 
@@ -6159,7 +6222,7 @@ END VERB rispondi_Sì.
 --~*| say_to             |                                    | say (topic) to (act)              | 2 |
 --| | score              |                                    | score                             | 0 |
 --~*| scratch            |                                    | scratch (obj)                     | 1 | {x}
---| | script             |                                    | script. script on. script off.    | 0 |
+--~*| script             |                                    | script. script on. script off.    | 0 |
 --| | search             |                                    | search (obj)                      | 1 | {x}
 --~*| sell               |                                    | sell (item)                       | 1 |
 --| | shake              |                                    | shake (obj)                       | 1 | {x}
@@ -6315,50 +6378,6 @@ META VERB 'score'
       -- line instead of the above:
     -- "There is no score in this game.")
 END VERB 'score'.
-
-
-
--- ==============================================================
-
-
------- SCRIPT
-
-
--- ==============================================================
-
-
-SYNTAX 'script' = 'script'.
-   script_on = 'script' 'on'.
-   script_off = 'script' 'off'.
-
-SYNONYMS 'transcript' = 'script'.
-
-META VERB 'script'
-  CHECK mia_AT CAN 'script'
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES
-    "You can turn transcripting on and off using the 'script on/off' command within the game.
-    The transcript will be available in a file with a name starting with the game name.
-    $pIn a GUI version you can also find this in the drop-down menu in the interpreter.
-    $pIn a command line version you can start your game with the '-s' switch to get a transcript
-    of the whole game."
-END VERB 'script'.
-
-META VERB script_on
-  CHECK mia_AT CAN script_on
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES
-    TRANSCRIPT ON.
-    "Transcripting turned on."
-END VERB script_on.
-
-META VERB script_off
-  CHECK mia_AT CAN script_off
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES
-    TRANSCRIPT OFF.
-    "Transcripting turned off."
-END VERB script_off.
 
 
 

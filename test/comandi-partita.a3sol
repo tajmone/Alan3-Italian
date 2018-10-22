@@ -26,6 +26,12 @@ est
 prendi tutto
 domanda alla mela di me
 ; ==============================================================================
+; SALVATAGGIO PARTITA
+; ==============================================================================
+; Testiamo il salvataggio della partita
+salva partita
+comandi-partita.sav
+; ==============================================================================
 ; RINGRAZIAMENTI
 ; ==============================================================================
 ringraziamenti
@@ -94,3 +100,78 @@ notifica attivata
 notifica attivata
 notifica disattivata
 notifica disattivata
+; ==============================================================================
+; TRASCRIZIONE PARTITA
+; ==============================================================================
+; Testiamo i comandi per attivare/disattivare la trascrizione.
+trascrizione
+trascrizione attivata
+; popoliamo la trascrizione con dei comandi...
+guarda
+inventario
+trascrizione disattivata
+; ------------------------------------------------------------------------------
+; CONTROLLO manuale del file "comandi-partita[data].log"
+; ------------------------------------------------------------------------------
+; *** BUG Alan 3.0beta6 *** IL FILE DI TRASCRZIONE È VUOTO!
+; ==============================================================================
+; CARICAMENTO PARTITA
+; ==============================================================================
+; Testiamo il caricamento della partita salvata
+carica partita
+comandi-partita.sav
+; La frutta dovrebbe essere tutta qui dato che abbiamo salvato prima di mangiarla:
+guarda POI esamina la mela
+; ==============================================================================
+; RICOMINCIA PARTITA
+; ==============================================================================
+; Mangiamo la mela e poi rivviamo la partita...
+mangia la mela
+ricomincia partita
+
+; La mela dovrebbe esserci di nuovo:
+esamina la mela
+; ------------------------------------------------------------------------------
+; TEST 'SAVE_MISSING': carica file salvataggio inesistente
+; ------------------------------------------------------------------------------
+carica partita
+file-inesistente.sav
+; ------------------------------------------------------------------------------
+; TEST 'NOT_A_SAVEFILE': carica file che non è un salvataggio
+; ------------------------------------------------------------------------------
+carica partita
+comandi-partita.ifid
+; ------------------------------------------------------------------------------
+; TEST 'SAVE_VERSION': carica salvataggio creato con interprete diverso
+; ------------------------------------------------------------------------------
+carica partita
+comandi-partita_arun-diverso.sav
+; ==============================================================================
+; ABBANDONA PARTITA (Quit)
+; ==============================================================================
+; Testiamo le varie opzioni di abbandono partita...
+; ------------------------------------------------------------------------------
+; ABBANDONA + RESTART
+; ------------------------------------------------------------------------------
+abbandona partita
+restart
+; ------------------------------------------------------------------------------
+; ABBANDONA + UNDO
+; ------------------------------------------------------------------------------
+; Avviamo il menù di Quit ma poi lo abbandoniamo...
+abbandona partita
+undo
+; ------------------------------------------------------------------------------
+; ABBANDONA + RESTORE
+; ------------------------------------------------------------------------------
+abbandona partita
+restore
+comandi-partita.sav
+; ------------------------------------------------------------------------------
+; ABBANDONA + QUIT
+; ------------------------------------------------------------------------------
+; Dopo "quit" qualsiasi altro comando dovrebbe essere ignorato...
+abbandona partita
+quit
+; *** SE VEDI QUESTA RINGA NEL LOG ALLORA ABBIAMO UN PROBLEMA!*** 
+inventario

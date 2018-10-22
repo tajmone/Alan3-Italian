@@ -1,4 +1,4 @@
-:: "BUILD_DOCS.bat" v0.1.4 (2018/10/15) by Tristano Ajmone
+:: "BUILD_DOCS.bat" v0.1.5 (2018/10/22) by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 :: To use this script you'll need the Doxter binary tool to be either in this
 :: folder or on the system PATH:
@@ -51,6 +51,7 @@ EXIT /B
 ECHO Converting: %~nx1
 CALL asciidoctor^
   -S unsafe^
+  -a reproducible^
   -a data-uri^
   -a icons=font^
   -a toc=left^

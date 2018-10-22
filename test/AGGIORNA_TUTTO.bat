@@ -1,5 +1,5 @@
 @ECHO OFF
-:: "AGGIORNA_TUTTO.bat" v2.0 (2018/08/22) | by Tristano Ajmone
+:: "AGGIORNA_TUTTO.bat" v2.1 (2018/10/22) | by Tristano Ajmone
 :: ==============================================================================
 ::                         AGGIORNA TUTTI I FILE DI TEST                         
 :: ==============================================================================
@@ -20,6 +20,7 @@ SET _NASCONDI_TRANSCRIPT=1
 :: ===================
 DEL *.a3c   > nul 2>&1
 DEL *.ifid  > nul 2>&1
+DEL *.log   > nul 2>&1
 DEL *.a3log > nul 2>&1
 
 :: ====================

@@ -59,6 +59,13 @@ Non puoi usare più di un oggetto con 'prendi'.
 That's not something you can talk to.
 
 > ; ==============================================================================
+> ; SALVATAGGIO PARTITA
+> ; ==============================================================================
+> ; Testiamo il salvataggio della partita
+> salva partita
+Inserisci il nome del file (comandi-partita.sav) : comandi-partita.sav
+
+> ; ==============================================================================
 > ; RINGRAZIAMENTI
 > ; ==============================================================================
 > ringraziamenti
@@ -271,6 +278,180 @@ Notifica del punteggio disattivata.
 > notifica disattivata
 La notifica del punteggio è già disattiva.
 
-> 
+> ; ==============================================================================
+> ; TRASCRIZIONE PARTITA
+> ; ==============================================================================
+> ; Testiamo i comandi per attivare/disattivare la trascrizione.
+> trascrizione
+Puoi avviare/interrompere la trascrizione della partita in corso tramite
+i comandi TRASCRIZIONE ON/OFF. La trascrizione sarà salvata in un file
+con il nome dell'avventura seguito dalla data e dall'estensione ".log".
 
-Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 
+Nell'interprete con interfaccia grafica, puoi accedere alle funzionalità
+di trascrizione tramite menù.
+
+L'interprete a riga di comando ARun può essere avviato con l'opzione "-l"
+per abilitare la trascrizione dell'intera partita.
+
+> trascrizione attivata
+Trascrizione avviata.
+
+> ; popoliamo la trascrizione con dei comandi...
+> guarda
+Sala Test e Collaudo
+Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
+tabellone segna punti. 
+
+* Conto alla rovescia: 5  *
+
+> inventario
+Non stai portando niente.
+
+> trascrizione disattivata
+Trascrizione terminata.
+
+> ; ------------------------------------------------------------------------------
+> ; CONTROLLO manuale del file "comandi-partita[data].log"
+> ; ------------------------------------------------------------------------------
+> ; *** BUG Alan 3.0beta6 *** IL FILE DI TRASCRZIONE È VUOTO!
+> ; ==============================================================================
+> ; CARICAMENTO PARTITA
+> ; ==============================================================================
+> ; Testiamo il caricamento della partita salvata
+> carica partita
+Inserisci il nome del file (comandi-partita.sav) : comandi-partita.sav
+
+> ; La frutta dovrebbe essere tutta qui dato che abbiamo salvato prima di mangiarla:
+> guarda POI esamina la mela
+Sala Test e Collaudo
+Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
+tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
+fico e una mela qui. 
+
+* Conto alla rovescia: 3  *
+
+Questa mela ha un aspetto irresistibile. Un piccolo bollino adesivo
+riporta che è stata colta nei giardini dell'Eden. 
+
+* Conto alla rovescia: 2  *
+
+> ; ==============================================================================
+> ; RICOMINCIA PARTITA
+> ; ==============================================================================
+> ; Mangiamo la mela e poi rivviamo la partita...
+> mangia la mela
+(taking la mela first)
+Mangi la mela. 
+
+(Il tuo punteggio è appena salito di 666 punti.) 
+
+(Per disabilitare le notifiche di punteggio usa il comando NOTIFICA.) 
+
+* Conto alla rovescia: 1  *
+
+> ricomincia partita
+
+Sei sicuro (premi INVIO per confermare)?
+
+
+Meta Comandi di Partita 
+Test per i meta verbi di partita. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+Sala Test e Collaudo
+Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
+tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
+fico e una mela qui.
+
+> ; La mela dovrebbe esserci di nuovo:
+> esamina la mela
+Questa mela ha un aspetto irresistibile. Un piccolo bollino adesivo
+riporta che è stata colta nei giardini dell'Eden. 
+
+* Conto alla rovescia: 5  *
+
+> ; ------------------------------------------------------------------------------
+> ; TEST 'SAVE_MISSING': carica file salvataggio inesistente
+> ; ------------------------------------------------------------------------------
+> carica partita
+Inserisci il nome del file (comandi-partita.sav) : file-inesistente.sav
+Caricamento fallito, impossibile aprire il file richiesto.
+
+> ; ------------------------------------------------------------------------------
+> ; TEST 'NOT_A_SAVEFILE': carica file che non è un salvataggio
+> ; ------------------------------------------------------------------------------
+> carica partita
+Inserisci il nome del file (comandi-partita.sav) : comandi-partita.ifid
+Caricamento fallito, il file indicato non è una partita salvata.
+
+> ; ------------------------------------------------------------------------------
+> ; TEST 'SAVE_VERSION': carica salvataggio creato con interprete diverso
+> ; ------------------------------------------------------------------------------
+> carica partita
+Inserisci il nome del file (comandi-partita.ifid) : comandi-partita_arun-diverso.sav
+Caricamento fallito, il file indicato è stato creato con una versione
+diversa dell'avventura o dell'interprete.
+
+> ; ==============================================================================
+> ; ABBANDONA PARTITA (Quit)
+> ; ==============================================================================
+> ; Testiamo le varie opzioni di abbandono partita...
+> ; ------------------------------------------------------------------------------
+> ; ABBANDONA + RESTART
+> ; ------------------------------------------------------------------------------
+> abbandona partita
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? restart
+
+
+
+Meta Comandi di Partita 
+Test per i meta verbi di partita. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+Sala Test e Collaudo
+Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
+tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
+fico e una mela qui.
+
+> ; ------------------------------------------------------------------------------
+> ; ABBANDONA + UNDO
+> ; ------------------------------------------------------------------------------
+> ; Avviamo il menù di Quit ma poi lo abbandoniamo...
+> abbandona partita
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? undo
+'abbandona partita'
+annullato.
+
+> ; ------------------------------------------------------------------------------
+> ; ABBANDONA + RESTORE
+> ; ------------------------------------------------------------------------------
+> abbandona partita
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? restore
+Inserisci il nome del file 
+(comandi-partita_arun-diverso.sav) : comandi-partita.sav
+
+> ; ------------------------------------------------------------------------------
+> ; ABBANDONA + QUIT
+> ; ------------------------------------------------------------------------------
+> ; Dopo "quit" qualsiasi altro comando dovrebbe essere ignorato...
+> abbandona partita
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? quit
+

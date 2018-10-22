@@ -424,9 +424,9 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `say_to`         | `dire_a`                  |
 | `'score'`        |                           |
 | `scratch`        | `grattare`                |
-| `'script'`       |                           |
-| `script_off`     |                           |
-| `script_on`      |                           |
+| `'script'`       | `trascrivere`             |
+| `script_off`     | `trascrivere_off`         |
+| `script_on`      | `trascrivere_on`          |
 | `search`         |                           |
 | `sell`           | `vendere`                 |
 | `shake`          |                           |

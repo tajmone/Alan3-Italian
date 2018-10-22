@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.8-Alpha, 2018-10-22: Alan 3.0beta6
+v0.7.9-Alpha, 2018-10-22: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -73,6 +73,9 @@ Altresì noti come _comandi extradiegetici_.
 | ricomincia_partita | restart                      | ricomincia [partita]             | {X} | 0 |     |
 | ringraziamenti     | autore, copyright, credits   | ringraziamenti                   | {X} | 0 |     |
 | salva_partita      | save                         | salva [partita]                  | {X} | 0 |     |
+| trascrizione       |                              | trascrizione                     | {X} | 0 |     |
+| trascrizione_off   | trascrizione off             | trascrizione disattivata         | {X} | 0 |     |
+| trascrizione_on    | trascrizione on              | trascrizione attivata            | {X} | 0 |     |
 |=============================================================================================================
 
 // end::tabella_comandi_partita[]
@@ -258,7 +261,6 @@ italiano del modulo dei verbi.
 | put_under          |                                    | put (obj) under (bulk)            | 2 | {x}
 | rub                |                                    | rub (obj)                         | 1 | {x}
 | score              |                                    | score                             | 0 |
-| script             |                                    | script. script on. script off.    | 0 |
 | search             |                                    | search (obj)                      | 1 | {x}
 | shake              |                                    | shake (obj)                       | 1 | {x}
 | shoot (at)         |                                    | shoot at (target)                 | 1 |

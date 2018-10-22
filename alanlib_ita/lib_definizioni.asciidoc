@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Definizioni
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.6-Alpha, 2018-10-22: Alan 3.0beta6
+v0.7.7-Alpha, 2018-10-22: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_definitions.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -158,6 +158,9 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
   CAN toccare.                  ---> touch (+ feel)
   CAN toccare_con.              ---> touch_with
   CAN togliersi_indumento.      ---> remove
+  CAN trascrivere.              ---> 'script'
+  CAN trascrivere_off.          ---> script_off
+  CAN trascrivere_on.           ---> script_on
   CAN trovare.                  ---> find         (+ locate)
   CAN tuffarsi.                 ---> dive
   CAN tuffarsi_in.              ---> dive_in
@@ -281,9 +284,6 @@ Questo è l'elenco degli attributi verbali non ancora tradotti:
   CAN put_under.
   CAN rub.
   CAN 'score'.
-  CAN 'script'.
-  CAN script_on.
-  CAN script_off.
   CAN search.
   CAN shake.
   CAN shoot.       -- (at)

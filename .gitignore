@@ -10,7 +10,9 @@
 ## ==========
 *.a3c
 *.ifid
+*.log
 *.sav
+!test/comandi-partita_arun-diverso.sav
 
 ## =============
 ## AlanIDE Files

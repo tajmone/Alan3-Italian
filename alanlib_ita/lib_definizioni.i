@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.6-Alpha, 2018-10-22: Alan 3.0beta6
+--| v0.7.7-Alpha, 2018-10-22: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -817,6 +817,9 @@ EVERY blocco_definizioni IsA LOCATION
   CAN toccare.                  ---> touch (+ feel)
   CAN toccare_con.              ---> touch_with
   CAN togliersi_indumento.      ---> remove
+  CAN trascrivere.              ---> 'script'
+  CAN trascrivere_off.          ---> script_off
+  CAN trascrivere_on.           ---> script_on
   CAN trovare.                  ---> find         (+ locate)
   CAN tuffarsi.                 ---> dive
   CAN tuffarsi_in.              ---> dive_in
@@ -865,9 +868,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN put_under.
   CAN rub.
   CAN 'score'.
-  CAN 'script'.
-  CAN script_on.
-  CAN script_off.
   CAN search.
   CAN shake.
   CAN shoot.       -- (at)
@@ -1037,6 +1037,9 @@ EVENT check_restriction
       MAKE mia_AT toccare.                  ---> touch (+ feel)
       MAKE mia_AT toccare_con.              ---> touch_with
       MAKE mia_AT togliersi_indumento.      ---> remove
+      MAKE mia_AT trascrivere.              ---> 'script'
+      MAKE mia_AT trascrivere_off.          ---> script_off
+      MAKE mia_AT trascrivere_on.           ---> script_on
       MAKE mia_AT trovare.                  ---> find         (+ locate)
       MAKE mia_AT tuffarsi.                 ---> dive
       MAKE mia_AT tuffarsi_in.              ---> dive_in
@@ -1081,9 +1084,6 @@ EVENT check_restriction
       MAKE mia_AT put_under.
       MAKE mia_AT rub.
       MAKE mia_AT 'score'.
-      MAKE mia_AT 'script'.
-      MAKE mia_AT script_on.
-      MAKE mia_AT script_off.
       MAKE mia_AT search.
       MAKE mia_AT shake.
       MAKE mia_AT shoot.           -- (at)
@@ -1328,15 +1328,15 @@ EVENT check_restriction
           MAKE mia_AT NOT rispondere_No.            ---> 'no'
           MAKE mia_AT NOT rispondere_Sì.            ---> yes
           MAKE mia_AT NOT salvare_partita.          ---> save
+          MAKE mia_AT NOT trascrivere.              ---> 'script'
+          MAKE mia_AT NOT trascrivere_off.          ---> script_off
+          MAKE mia_AT NOT trascrivere_on.           ---> script_on
 
         --# NOT YET TRANSLATED:
 
           MAKE mia_AT NOT about.
           MAKE mia_AT NOT hint.        -- (+ hints)
           MAKE mia_AT NOT 'score'.
-          MAKE mia_AT NOT 'script'.
-          MAKE mia_AT NOT script_on.
-          MAKE mia_AT NOT script_off.
 
       END IF.
 
