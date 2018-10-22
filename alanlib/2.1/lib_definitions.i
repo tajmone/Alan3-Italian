@@ -242,7 +242,8 @@ EVERY definition_block ISA LOCATION
     -- This message is shown whenever the player used a verb that has been restricted
      -- by the "CAN NOT [verb]" attributes further down this file.
 
-  HAS restricted_level 0.   -- 0 = no verbs are restricted
+  HAS restricted_level 0.           -- 0 = no verbs are restricted
+  HAS previous_restricted_level 0.  -- used to detect changes in restrcition level.
 
 
 
@@ -295,8 +296,7 @@ EVERY definition_block ISA LOCATION
 
   HAS illegal_parameter_act "That doesn't make sense.".             -- empty_in, pour_in, put_in, throw_in
 
-  HAS illegal_parameter_consult_sg "That's not something you can find information   -- consult_about
-                about.".
+  HAS illegal_parameter_consult_sg "That's not something you can find information about.". -- consult_about
   HAS illegal_parameter_consult_pl "Those are not something you can find
                 information about.".
 
@@ -398,7 +398,8 @@ EVERY definition_block ISA LOCATION
   HAS check_obj_reachable_ask "$+1 can't reach $+2.".         -- ask_for
   HAS check_obj_not_distant_sg "$+1 is too far away.".          -- (numerous)
   HAS check_obj_not_distant_pl "$+1 are too far away.".
-  HAS check_obj2_not_distant_sg "$+2 is too far away.".         -- empty_in, fill_with, pour_in, put_in, show, take_from,                                  -- + throw_at, throw_in, throw_to
+  HAS check_obj2_not_distant_sg "$+2 is too far away.".         -- empty_in, fill_with, pour_in, put_in, show, take_from,
+                                                                -- + throw_at, throw_in, throw_to
   HAS check_obj2_not_distant_pl "$+2 are too far away.".
 
 
@@ -458,8 +459,8 @@ EVERY definition_block ISA LOCATION
   -- containment checks for actors other than the hero (checks for the hero are listed separately below):
   -------------------------------------------------------------------------------------------------------
 
-  HAS check_act_near_hero "You don't quite know where $+1 went.           -- follow
-    You should state a direction where you want to go.".
+  HAS check_act_near_hero "You don't quite know where $+1 went.           
+                           You should state a direction where you want to go.". -- follow
 
   HAS check_obj_in_act_sg "$+2 doesn't have $+1.".              -- take_from
   HAS check_obj_in_act_pl "$+2 don't have $+1.".
@@ -474,8 +475,8 @@ EVERY definition_block ISA LOCATION
 
   HAS check_obj_not_at_hero_sg "$+1 is right here.".                -- find, follow, go_to, where_is
   HAS check_obj_not_at_hero_pl "$+1 are right here.".
-  HAS check_obj_in_hero "You don't have the $+1.".              -- drop, fire, fire_at, put, show
-  HAS check_obj2_in_hero "You don't have the $+2.".             -- (numerous)
+  HAS check_obj_in_hero "You don't have $+1.".              -- drop, fire, fire_at, put, show
+  HAS check_obj2_in_hero "You don't have $+2.".             -- (numerous)
   HAS check_obj_not_in_hero1 "It doesn't make sense to $v something you're holding.".   -- attack, attack_with, kick, lift, shoot, shoot_with
   HAS check_obj_not_in_hero2 "You already have $+1.".             -- take, take_from
   HAS check_obj2_not_in_hero1 "You are carrying $+2.".              -- throw_at, throw_in, throw_to
@@ -544,14 +545,15 @@ EVERY definition_block ISA LOCATION
   HAS check_obj_not_obj2_in "It doesn't make sense to $v something into itself.".   -- empty_in, pour_in, put_in, throw_in
   HAS check_obj_not_obj2_on "It doesn't make sense to $v something onto itself.".   -- empty_on, pour_on, put_on
   HAS check_obj_not_obj2_to "It doesn't make sense to $v something to itself.".   -- give, show, throw_to, tie_to
-  HAS check_obj_not_obj2_with "It doesn't make sense to $v something with itself.".   -- attack_with, break_with, burn_with, close_with,                                       -- + cut_with, fill_with, lock_with,
-                                     -- + open_with, push_with, pry_with, shoot_with,
-                                     -- + touch_withm unlock_with, use_with
+  HAS check_obj_not_obj2_with "It doesn't make sense to $v something with itself.".   -- attack_with, break_with, burn_with, close_with,
+                                                                                      -- + cut_with, fill_with, lock_with,
+                                                                                      -- + open_with, push_with, pry_with, shoot_with,
+                                                                                      -- + touch_withm unlock_with, use_with
 
   HAS check_obj_not_obj2_put "That doesn't make sense." .         -- put_against, put_behind, put_near, put_under
 
 
-      -- f) additional checks for classes:
+  -- f) additional checks for classes:
   ------------------------------------
 
   HAS check_clothing_sex "On second thoughts you decide $+1 won't really suit you.".      -- clothing: wear
@@ -599,6 +601,14 @@ EVERY definition_block ISA LOCATION
   IS NOT seen_notify.
       -- Records whether player has seen the notify verb
       -- instructions yet.
+
+  -- --------------------
+  -- Temporary Attributes
+  -- --------------------
+  -- The following attributes are used internally by the Library to temporarily
+  -- store values of attributes which need to be changed and then restored; ignore.
+  HAS temp_compliant.
+  
 
   INITIALIZE
     SCHEDULE check_score AFTER 0.
@@ -661,13 +671,15 @@ EVERY definition_block ISA LOCATION
 
 
 
-
--- Finally, for restricted actions, we implement the following attributes, corresponding to the library verbs.
-  -- If you change any of these to CAN NOT..., for examle "CAN NOT attack.", that verb, together with its
-  -- synonyms, is disabled in-game. The restricted_response of the my_game instance (by default "You can't
-  --- do that.") will be shown instead. The restriced_response is defined further up this file.
-
-
+-- =============================
+-- Restricted Actions Attributes
+-- =============================
+-- Finally, for restricted actions, we implement the following attributes,
+-- corresponding to the library verbs. If you change any of these to CAN NOT...,
+-- for examle "CAN NOT attack.", that verb, together with its synonyms, is
+-- disabled in-game. The restricted_response of the my_game instance (by default
+-- "You can't do that.") will be shown instead. The restriced_response is
+-- defined further up this file.
 
   CAN about.
   CAN 'again'.
@@ -741,7 +753,6 @@ EVERY definition_block ISA LOCATION
   CAN lock.
   CAN lock_with.
   CAN 'look'.        -- (+ gaze, peek)
-  CAN look_at.
   CAN look_behind.
   CAN look_in.
   CAN look_out_of.
@@ -749,7 +760,7 @@ EVERY definition_block ISA LOCATION
   CAN look_under.
   CAN look_up.
   CAN 'no'.
-  CAN 'notify'.
+  CAN notify.
   CAN notify_on.
   CAN notify_off.
   CAN open.
@@ -850,759 +861,417 @@ EVERY definition_block ISA LOCATION
 END EVERY.
 
 
+-- ========================
+-- Restricted Actions Event
+-- ========================
 -- This event runs every turn from the start of the game:
 
 EVENT check_restriction
+  -- To optimize performance, we compare the current value of restriction with
+  -- last value encountered, and if no changes are detected we don't change
+  -- any action restrictions attributes.
+  IF restricted_level OF my_game <> previous_restricted_level OF my_game
+    THEN
+      -- A change in restriction level was detected. Since restriction levels
+      -- are built on top of each other, in a progressively restricting manner,
+      -- like layers, we first apply all the unrestricted attributes of Level 0,
+      -- and then conditionally apply the requried constraints layers ...
+      ----------------------
+      -- Restriction Level 0
+      ----------------------
+      -- All verbs work normally, without restriction.
+ 
+      MAKE my_game about.
+      MAKE my_game 'again'.
+      MAKE my_game answer.      -- (+ reply)
+      MAKE my_game ask.         -- (+ enquire, inquire, interrogate)
+      MAKE my_game ask_for.
+      MAKE my_game attack.      -- (+ beat, fight, hit, punch)
+      MAKE my_game attack_with.
+      MAKE my_game bite.        -- (+ chew)
+      MAKE my_game break.       -- (+ destroy)
+      MAKE my_game break_with.
+      MAKE my_game 'brief'.
+      MAKE my_game burn.
+      MAKE my_game burn_with.
+      MAKE my_game buy.         -- (+ purchase)
+      MAKE my_game catch.
+      MAKE my_game clean.       -- (+ polish, wipe)
+      MAKE my_game climb.
+      MAKE my_game climb_on.
+      MAKE my_game climb_through.
+      MAKE my_game close.       -- (+ shut)
+      MAKE my_game close_with.
+      MAKE my_game consult.
+      MAKE my_game credits.     -- (+ acknowledgments, author, copyright)
+      MAKE my_game cut.
+      MAKE my_game cut_with.
+      MAKE my_game dance.
+      MAKE my_game dig.
+      MAKE my_game dive.
+      MAKE my_game dive_in.
+      MAKE my_game drink.
+      MAKE my_game drive.
+      MAKE my_game drop.        -- (+ discard, dump, reject)
+      MAKE my_game eat.
+      MAKE my_game 'empty'.
+      MAKE my_game empty_in.
+      MAKE my_game empty_on.
+      MAKE my_game enter.
+      MAKE my_game examine.     -- (+ check, inspect, observe, x)
+      MAKE my_game 'exit'.
+      MAKE my_game extinguish.  -- (+ put out, quench)
+      MAKE my_game fill.
+      MAKE my_game fill_with.
+      MAKE my_game find.        -- (+ locate)
+      MAKE my_game fire.
+      MAKE my_game fire_at.
+      MAKE my_game fix.     -- (+ mend, repair)
+      MAKE my_game follow.
+      MAKE my_game free.        -- (+ release)
+      MAKE my_game get_up.
+      MAKE my_game get_off.
+      MAKE my_game give.
+      MAKE my_game go_to.
+      MAKE my_game hint.        -- (+ hints)
+      MAKE my_game i.        -- (+ inv, inventory)
+      MAKE my_game jump.
+      MAKE my_game jump_in.
+      MAKE my_game jump_on.
+      MAKE my_game kick.
+      MAKE my_game kill.        -- (+ murder)
+      MAKE my_game kill_with.
+      MAKE my_game kiss.        -- (+ hug, embrace)
+      MAKE my_game knock.
+      MAKE my_game lie_down.
+      MAKE my_game lie_in.
+      MAKE my_game lie_on.
+      MAKE my_game lift.
+      MAKE my_game light.       -- (+ lit)
+      MAKE my_game listen0.
+      MAKE my_game listen.
+      MAKE my_game lock.
+      MAKE my_game lock_with.
+      MAKE my_game 'look'.        -- (+ gaze, peek)
+      MAKE my_game look_behind.
+      MAKE my_game look_in.
+      MAKE my_game look_out_of.
+      MAKE my_game look_through.
+      MAKE my_game look_under.
+      MAKE my_game look_up.
+      MAKE my_game 'no'.
+      MAKE my_game notify.
+      MAKE my_game notify_on.
+      MAKE my_game notify_off.
+      MAKE my_game open.
+      MAKE my_game open_with.
+      MAKE my_game 'play'.
+      MAKE my_game play_with.
+      MAKE my_game pour.
+      MAKE my_game pour_in.
+      MAKE my_game pour_on.
+      MAKE my_game pray.
+      MAKE my_game pry.
+      MAKE my_game pry_with.
+      MAKE my_game pull.
+      MAKE my_game push.
+      MAKE my_game push_with.
+      MAKE my_game put.         -- (+ lay, place)
+      MAKE my_game put_against.
+      MAKE my_game put_behind.
+      MAKE my_game put_down.
+      MAKE my_game put_in.      -- (+ insert)
+      MAKE my_game put_near.
+      MAKE my_game put_on.
+      MAKE my_game put_under.
+      MAKE my_game 'quit'.
+      MAKE my_game read.
+      MAKE my_game remove.
+      MAKE my_game 'restart'.
+      MAKE my_game 'restore'.
+      MAKE my_game rub.
+      MAKE my_game 'save'.
+      MAKE my_game 'say'.
+      MAKE my_game say_to.
+      MAKE my_game 'score'.
+      MAKE my_game scratch.
+      MAKE my_game 'script'.
+      MAKE my_game script_on.
+      MAKE my_game script_off.
+      MAKE my_game search.
+      MAKE my_game sell.
+      MAKE my_game shake.
+      MAKE my_game shoot. -- (at)
+      MAKE my_game shoot_with.
+      MAKE my_game shout.       -- (+ scream, yell)
+      MAKE my_game 'show'.      -- (+ reveal)
+      MAKE my_game sing.
+      MAKE my_game sip.
+      MAKE my_game sit. -- (down)
+      MAKE my_game sit_on.
+      MAKE my_game sleep.       -- (+ rest)
+      MAKE my_game smell0.
+      MAKE my_game smell.
+      MAKE my_game squeeze.
+      MAKE my_game stand. -- (up)
+      MAKE my_game stand_on.
+      MAKE my_game swim.
+      MAKE my_game swim_in.
+      MAKE my_game switch.
+      MAKE my_game switch_on.
+      MAKE my_game switch_off.
+      MAKE my_game take.        -- (+ carry, get, grab, hold, obtain)
+      MAKE my_game take_from.   -- (+ remove from)
+      MAKE my_game talk.
+      MAKE my_game talk_to.     -- (+ speak)
+      MAKE my_game taste.       -- (+ lick)
+      MAKE my_game tear.        -- (+ rip)
+      MAKE my_game tell.        -- (+ enlighten, inform)
+      MAKE my_game think.
+      MAKE my_game think_about.
+      MAKE my_game throw.
+      MAKE my_game throw_at.
+      MAKE my_game throw_in.
+      MAKE my_game throw_to.
+      MAKE my_game tie.
+      MAKE my_game tie_to.
+      MAKE my_game touch.       -- (+ feel)
+      MAKE my_game touch_with.
+      MAKE my_game turn.        -- (+ rotate)
+      MAKE my_game turn_on.
+      MAKE my_game turn_off.
+      MAKE my_game undress.
+      MAKE my_game unlock.
+      MAKE my_game unlock_with.
+      MAKE my_game 'use'.
+      MAKE my_game use_with.
+      MAKE my_game 'verbose'.
+      MAKE my_game 'wait'.        -- (+ z)
+      MAKE my_game wear.
+      MAKE my_game what_am_i.
+      MAKE my_game what_is.
+      MAKE my_game where_am_i.
+      MAKE my_game where_is.
+      MAKE my_game who_am_i.
+      MAKE my_game who_is.
+      MAKE my_game write.
+      MAKE my_game yes.
+      ----------------------
+      -- Restriction Level 1
+      ----------------------
+      -- This level restricts communication verbs.
 
-IF restricted_level OF my_game = 0    -- all verbs work normally
-  THEN
+      IF restricted_level OF my_game >= 1  
+        THEN
+          MAKE my_game NOT 'say'.
+          MAKE my_game NOT answer.
+          MAKE my_game NOT ask.
+          MAKE my_game NOT ask_for.
+          MAKE my_game NOT say_to.
+          MAKE my_game NOT shout.
+          MAKE my_game NOT sing.
+          MAKE my_game NOT talk.
+          MAKE my_game NOT talk_to.     -- (+ speak)
+          MAKE my_game NOT tell.
+     END IF.
+      ----------------------
+      -- Restriction Level 2
+      ----------------------
+      -- This level further restricts all in-game actions except mental and
+      -- sensory acts which don't involve physical interaction with the
+      -- environment.
+      -- It doesn't affect out-of-game verbs (extradiegetic actions).
 
-  MAKE my_game about.
-  MAKE my_game 'again'.
-  MAKE my_game answer.      -- (+ reply)
-  MAKE my_game ask.         -- (+ enquire, inquire, interrogate)
-  MAKE my_game ask_for.
-  MAKE my_game attack.      -- (+ beat, fight, hit, punch)
-  MAKE my_game attack_with.
-  MAKE my_game bite.        -- (+ chew)
-  MAKE my_game break.       -- (+ destroy)
-  MAKE my_game break_with.
-  MAKE my_game 'brief'.
-  MAKE my_game burn.
-  MAKE my_game burn_with.
-  MAKE my_game buy.         -- (+ purchase)
-  MAKE my_game catch.
-  MAKE my_game clean.       -- (+ polish, wipe)
-  MAKE my_game climb.
-  MAKE my_game climb_on.
-  MAKE my_game climb_through.
-  MAKE my_game close.       -- (+ shut)
-  MAKE my_game close_with.
-  MAKE my_game consult.
-  MAKE my_game credits.     -- (+ acknowledgments, author, copyright)
-  MAKE my_game cut.
-  MAKE my_game cut_with.
-  MAKE my_game dance.
-  MAKE my_game dig.
-  MAKE my_game dive.
-  MAKE my_game dive_in.
-  MAKE my_game drink.
-  MAKE my_game drive.
-  MAKE my_game drop.        -- (+ discard, dump, reject)
-  MAKE my_game eat.
-  MAKE my_game 'empty'.
-  MAKE my_game empty_in.
-  MAKE my_game empty_on.
-  MAKE my_game enter.
-  MAKE my_game examine.     -- (+ check, inspect, observe, x)
-  MAKE my_game 'exit'.
-  MAKE my_game extinguish.  -- (+ put out, quench)
-  MAKE my_game fill.
-  MAKE my_game fill_with.
-  MAKE my_game find.        -- (+ locate)
-  MAKE my_game fire.
-  MAKE my_game fire_at.
-  MAKE my_game fix.     -- (+ mend, repair)
-  MAKE my_game follow.
-  MAKE my_game free.        -- (+ release)
-  MAKE my_game get_up.
-  MAKE my_game get_off.
-  MAKE my_game give.
-  MAKE my_game go_to.
-  MAKE my_game hint.        -- (+ hints)
-  MAKE my_game i.        -- (+ inv, inventory)
-  MAKE my_game jump.
-  MAKE my_game jump_in.
-  MAKE my_game jump_on.
-  MAKE my_game kick.
-  MAKE my_game kill.        -- (+ murder)
-  MAKE my_game kill_with.
-  MAKE my_game kiss.        -- (+ hug, embrace)
-  MAKE my_game knock.
-  MAKE my_game lie_down.
-  MAKE my_game lie_in.
-  MAKE my_game lie_on.
-  MAKE my_game lift.
-  MAKE my_game light.       -- (+ lit)
-  MAKE my_game listen0.
-  MAKE my_game listen.
-  MAKE my_game lock.
-  MAKE my_game lock_with.
-  MAKE my_game 'look'.        -- (+ gaze, peek)
-  MAKE my_game look_at.
-  MAKE my_game look_behind.
-  MAKE my_game look_in.
-  MAKE my_game look_out_of.
-  MAKE my_game look_through.
-  MAKE my_game look_under.
-  MAKE my_game look_up.
-  MAKE my_game 'no'.
-  MAKE my_game 'notify'.
-  MAKE my_game notify_on.
-  MAKE my_game notify_off.
-  MAKE my_game open.
-  MAKE my_game open_with.
-  MAKE my_game 'play'.
-  MAKE my_game play_with.
-  MAKE my_game pour.
-  MAKE my_game pour_in.
-  MAKE my_game pour_on.
-  MAKE my_game pray.
-  MAKE my_game pry.
-  MAKE my_game pry_with.
-  MAKE my_game pull.
-  MAKE my_game push.
-  MAKE my_game push_with.
-  MAKE my_game put.         -- (+ lay, place)
-  MAKE my_game put_against.
-  MAKE my_game put_behind.
-  MAKE my_game put_down.
-  MAKE my_game put_in.      -- (+ insert)
-  MAKE my_game put_near.
-  MAKE my_game put_on.
-  MAKE my_game put_under.
-  MAKE my_game 'quit'.
-  MAKE my_game read.
-  MAKE my_game remove.
-  MAKE my_game 'restart'.
-  MAKE my_game 'restore'.
-  MAKE my_game rub.
-  MAKE my_game 'save'.
-  MAKE my_game 'say'.
-  MAKE my_game say_to.
-  MAKE my_game 'score'.
-  MAKE my_game scratch.
-  MAKE my_game 'script'.
-  MAKE my_game script_on.
-  MAKE my_game script_off.
-  MAKE my_game search.
-  MAKE my_game sell.
-  MAKE my_game shake.
-  MAKE my_game shoot. -- (at)
-  MAKE my_game shoot_with.
-  MAKE my_game shout.       -- (+ scream, yell)
-  MAKE my_game 'show'.      -- (+ reveal)
-  MAKE my_game sing.
-  MAKE my_game sip.
-  MAKE my_game sit. -- (down)
-  MAKE my_game sit_on.
-  MAKE my_game sleep.       -- (+ rest)
-  MAKE my_game smell0.
-  MAKE my_game smell.
-  MAKE my_game squeeze.
-  MAKE my_game stand. -- (up)
-  MAKE my_game stand_on.
-  MAKE my_game swim.
-  MAKE my_game swim_in.
-  MAKE my_game switch.
-  MAKE my_game switch_on.
-  MAKE my_game switch_off.
-  MAKE my_game take.        -- (+ carry, get, grab, hold, obtain)
-  MAKE my_game take_from.   -- (+ remove from)
-  MAKE my_game talk.
-  MAKE my_game talk_to.     -- (+ speak)
-  MAKE my_game taste.       -- (+ lick)
-  MAKE my_game tear.        -- (+ rip)
-  MAKE my_game tell.        -- (+ enlighten, inform)
-  MAKE my_game think.
-  MAKE my_game think_about.
-  MAKE my_game throw.
-  MAKE my_game throw_at.
-  MAKE my_game throw_in.
-  MAKE my_game throw_to.
-  MAKE my_game tie.
-  MAKE my_game tie_to.
-  MAKE my_game touch.       -- (+ feel)
-  MAKE my_game touch_with.
-  MAKE my_game turn.        -- (+ rotate)
-  MAKE my_game turn_on.
-  MAKE my_game turn_off.
-  MAKE my_game undress.
-  MAKE my_game unlock.
-  MAKE my_game unlock_with.
-  MAKE my_game 'use'.
-  MAKE my_game use_with.
-  MAKE my_game 'verbose'.
-  MAKE my_game 'wait'.        -- (+ z)
-  MAKE my_game wear.
-  MAKE my_game what_am_i.
-  MAKE my_game what_is.
-  MAKE my_game where_am_i.
-  MAKE my_game where_is.
-  MAKE my_game who_am_i.
-  MAKE my_game who_is.
-  MAKE my_game write.
-  MAKE my_game yes.
+      IF restricted_level OF my_game >= 2
+        THEN  
+          MAKE my_game NOT attack.      -- (+ beat, fight, hit, punch)
+          MAKE my_game NOT attack_with.
+          MAKE my_game NOT bite.        -- (+ chew)
+          MAKE my_game NOT break.       -- (+ destroy)
+          MAKE my_game NOT break_with.
+          MAKE my_game NOT burn.
+          MAKE my_game NOT burn_with.
+          MAKE my_game NOT buy.         -- (+ purchase)
+          MAKE my_game NOT catch.
+          MAKE my_game NOT clean.       -- (+ polish, wipe)
+          MAKE my_game NOT climb.
+          MAKE my_game NOT climb_on.
+          MAKE my_game NOT climb_through.
+          MAKE my_game NOT close.       -- (+ shut)
+          MAKE my_game NOT close_with.
+          MAKE my_game NOT consult.
+          MAKE my_game NOT cut.
+          MAKE my_game NOT cut_with.
+          MAKE my_game NOT dance.
+          MAKE my_game NOT dig.
+          MAKE my_game NOT dive.
+          MAKE my_game NOT dive_in.
+          MAKE my_game NOT drink.
+          MAKE my_game NOT drive.
+          MAKE my_game NOT drop.        -- (+ discard, dump, reject)
+          MAKE my_game NOT eat.
+          MAKE my_game NOT 'empty'.
+          MAKE my_game NOT empty_in.
+          MAKE my_game NOT empty_on.
+          MAKE my_game NOT enter.
+          MAKE my_game NOT 'exit'.
+          MAKE my_game NOT extinguish.  -- (+ put out, quench)
+          MAKE my_game NOT fill.
+          MAKE my_game NOT fill_with.
+          MAKE my_game NOT find.        -- (+ locate)
+          MAKE my_game NOT fire.
+          MAKE my_game NOT fire_at.
+          MAKE my_game NOT fix.     -- (+ mend, repair)
+          MAKE my_game NOT follow.
+          MAKE my_game NOT free.        -- (+ release)
+          MAKE my_game NOT get_up.
+          MAKE my_game NOT get_off.
+          MAKE my_game NOT give.
+          MAKE my_game NOT go_to.
+          MAKE my_game NOT jump.
+          MAKE my_game NOT jump_in.
+          MAKE my_game NOT jump_on.
+          MAKE my_game NOT kick.
+          MAKE my_game NOT kill.        -- (+ murder)
+          MAKE my_game NOT kill_with.
+          MAKE my_game NOT kiss.        -- (+ hug, embrace)
+          MAKE my_game NOT knock.
+          MAKE my_game NOT lie_down.
+          MAKE my_game NOT lie_in.
+          MAKE my_game NOT lie_on.
+          MAKE my_game NOT lift.
+          MAKE my_game NOT light.       -- (+ lit)
+          MAKE my_game NOT lock.
+          MAKE my_game NOT lock_with.
+          MAKE my_game NOT open.
+          MAKE my_game NOT open_with.
+          MAKE my_game NOT 'play'.
+          MAKE my_game NOT play_with.
+          MAKE my_game NOT pour.
+          MAKE my_game NOT pour_in.
+          MAKE my_game NOT pour_on.
+          MAKE my_game NOT pry.
+          MAKE my_game NOT pry_with.
+          MAKE my_game NOT pull.
+          MAKE my_game NOT push.
+          MAKE my_game NOT push_with.
+          MAKE my_game NOT put.         -- (+ lay, place)
+          MAKE my_game NOT put_against.
+          MAKE my_game NOT put_behind.
+          MAKE my_game NOT put_down.
+          MAKE my_game NOT put_in.      -- (+ insert)
+          MAKE my_game NOT put_near.
+          MAKE my_game NOT put_on.
+          MAKE my_game NOT put_under.
+          MAKE my_game NOT read.
+          MAKE my_game NOT remove.
+          MAKE my_game NOT rub.
+          MAKE my_game NOT scratch.
+          MAKE my_game NOT search.
+          MAKE my_game NOT sell.
+          MAKE my_game NOT shake.
+          MAKE my_game NOT shoot. -- (at)
+          MAKE my_game NOT shoot_with.
+          MAKE my_game NOT 'show'.      -- (+ reveal)
+          MAKE my_game NOT sip.
+          MAKE my_game NOT sit. -- (down)
+          MAKE my_game NOT sit_on.
+          MAKE my_game NOT sleep.       -- (+ rest)
+          MAKE my_game NOT squeeze.
+          MAKE my_game NOT stand. -- (up)
+          MAKE my_game NOT stand_on.
+          MAKE my_game NOT swim.
+          MAKE my_game NOT swim_in.
+          MAKE my_game NOT switch.
+          MAKE my_game NOT switch_on.
+          MAKE my_game NOT switch_off.
+          MAKE my_game NOT take.        -- (+ carry, get, grab, hold, obtain)
+          MAKE my_game NOT take_from.   -- (+ remove from)
+          MAKE my_game NOT taste.       -- (+ lick)
+          MAKE my_game NOT tear.        -- (+ rip)
+          MAKE my_game NOT throw.
+          MAKE my_game NOT throw_at.
+          MAKE my_game NOT throw_in.
+          MAKE my_game NOT throw_to.
+          MAKE my_game NOT tie.
+          MAKE my_game NOT tie_to.
+          MAKE my_game NOT touch.       -- (+ feel)
+          MAKE my_game NOT touch_with.
+          MAKE my_game NOT turn.        -- (+ rotate)
+          MAKE my_game NOT turn_on.
+          MAKE my_game NOT turn_off.
+          MAKE my_game NOT undress.
+          MAKE my_game NOT unlock.
+          MAKE my_game NOT unlock_with.
+          MAKE my_game NOT 'use'.
+          MAKE my_game NOT use_with.
+          MAKE my_game NOT wear.
+          MAKE my_game NOT write.
+      END IF.
+      ----------------------
+      -- Restriction Level 3
+      ----------------------
+      -- This level further restricts any verb which isn't an out-of-game action.
+      IF restricted_level OF my_game >= 3
+        THEN
+          MAKE my_game NOT examine.     -- (+ check, inspect, observe, x)
+          MAKE my_game NOT i.        -- (+ inv, inventory)
+          MAKE my_game NOT listen0.
+          MAKE my_game NOT listen.
+          MAKE my_game NOT 'look'.        -- (+ gaze, peek)
+          MAKE my_game NOT look_behind.
+          MAKE my_game NOT look_in.
+          MAKE my_game NOT look_out_of.
+          MAKE my_game NOT look_through.
+          MAKE my_game NOT look_under.
+          MAKE my_game NOT look_up.
+          MAKE my_game NOT pray.
+          MAKE my_game NOT smell0.
+          MAKE my_game NOT smell.
+          MAKE my_game NOT think.
+          MAKE my_game NOT think_about.
+          MAKE my_game NOT 'wait'.        -- (+ z)
+          MAKE my_game NOT what_am_i.
+          MAKE my_game NOT what_is.
+          MAKE my_game NOT where_am_i.
+          MAKE my_game NOT where_is.
+          MAKE my_game NOT who_am_i.
+          MAKE my_game NOT who_is.
+      END IF.
+      ----------------------
+      -- Restriction Level 4
+      ----------------------
+      -- This last level further restricts out-of-game actions (extradiegetic).
+      IF restricted_level OF my_game >= 4
+        THEN
+          MAKE my_game NOT about.
+          MAKE my_game NOT 'again'.
+          MAKE my_game NOT 'brief'.
+          MAKE my_game NOT credits.     -- (+ acknowledgments, author, copyright)
+          MAKE my_game NOT hint.        -- (+ hints)
+          MAKE my_game NOT 'no'.
+          MAKE my_game NOT notify.
+          MAKE my_game NOT notify_on.
+          MAKE my_game NOT notify_off.
+          MAKE my_game NOT 'quit'.
+          MAKE my_game NOT 'restart'.
+          MAKE my_game NOT 'restore'.
+          MAKE my_game NOT 'save'.
+          MAKE my_game NOT 'score'.
+          MAKE my_game NOT 'script'.
+          MAKE my_game NOT script_on.
+          MAKE my_game NOT script_off.
+          MAKE my_game NOT 'verbose'.
+          MAKE my_game NOT yes.
+      END IF.
 
+      -- Update attribute for tracking restrictions-changes:
+      SET previous_restricted_level OF my_game TO restricted_level OF my_game.
 
-ELSIF restricted_level OF my_game = 1  -- communication verbs are restricted
-  THEN
+    END IF.
 
-  MAKE my_game NOT answer.
-  MAKE my_game NOT ask.
-  MAKE my_game NOT ask_for.
-  MAKE my_game NOT 'say'.
-  MAKE my_game NOT say_to.
-  MAKE my_game NOT shout.
-  MAKE my_game NOT sing.
-  MAKE my_game NOT tell.
-
-
-
-
-
-ELSIF restricted_level OF my_game = 2   -- all action verbs, including communication verbs,
-                -- are restricted. Verbs like 'examine', 'look', , 'inventory, 'think'
-                -- 'wait' and sensory verbs as well as all out-of-game verbs work
-  THEN
-
-  MAKE my_game about.
-  MAKE my_game 'again'.
-  MAKE my_game NOT answer.      -- (+ reply)
-  MAKE my_game NOT ask.         -- (+ enquire, inquire, interrogate)
-  MAKE my_game NOT ask_for.
-  MAKE my_game NOT attack.      -- (+ beat, fight, hit, punch)
-  MAKE my_game NOT attack_with.
-  MAKE my_game NOT bite.        -- (+ chew)
-  MAKE my_game NOT break.       -- (+ destroy)
-  MAKE my_game NOT break_with.
-  MAKE my_game 'brief'.
-  MAKE my_game NOT burn.
-  MAKE my_game NOT burn_with.
-  MAKE my_game NOT buy.         -- (+ purchase)
-  MAKE my_game NOT catch.
-  MAKE my_game NOT clean.       -- (+ polish, wipe)
-  MAKE my_game NOT climb.
-  MAKE my_game NOT climb_on.
-  MAKE my_game NOT climb_through.
-  MAKE my_game NOT close.       -- (+ shut)
-  MAKE my_game NOT close_with.
-  MAKE my_game NOT consult.
-  MAKE my_game credits.     -- (+ acknowledgments, author, copyright)
-  MAKE my_game NOT cut.
-  MAKE my_game NOT cut_with.
-  MAKE my_game NOT dance.
-  MAKE my_game NOT dig.
-  MAKE my_game NOT dive.
-  MAKE my_game NOT dive_in.
-  MAKE my_game NOT drink.
-  MAKE my_game NOT drive.
-  MAKE my_game NOT drop.        -- (+ discard, dump, reject)
-  MAKE my_game NOT eat.
-  MAKE my_game NOT 'empty'.
-  MAKE my_game NOT empty_in.
-  MAKE my_game NOT empty_on.
-  MAKE my_game NOT enter.
-  MAKE my_game examine.     -- (+ check, inspect, observe, x)
-  MAKE my_game NOT 'exit'.
-  MAKE my_game NOT extinguish.  -- (+ put out, quench)
-  MAKE my_game NOT fill.
-  MAKE my_game NOT fill_with.
-  MAKE my_game NOT find.        -- (+ locate)
-  MAKE my_game NOT fire.
-  MAKE my_game NOT fire_at.
-  MAKE my_game NOT fix.     -- (+ mend, repair)
-  MAKE my_game NOT follow.
-  MAKE my_game NOT free.        -- (+ release)
-  MAKE my_game NOT get_up.
-  MAKE my_game NOT get_off.
-  MAKE my_game NOT give.
-  MAKE my_game NOT go_to.
-  MAKE my_game hint.        -- (+ hints)
-  MAKE my_game i.        -- (+ inv, inventory)
-  MAKE my_game NOT jump.
-  MAKE my_game NOT jump_in.
-  MAKE my_game NOT jump_on.
-  MAKE my_game NOT kick.
-  MAKE my_game NOT kill.        -- (+ murder)
-  MAKE my_game NOT kill_with.
-  MAKE my_game NOT kiss.        -- (+ hug, embrace)
-  MAKE my_game NOT knock.
-  MAKE my_game NOT lie_down.
-  MAKE my_game NOT lie_in.
-  MAKE my_game NOT lie_on.
-  MAKE my_game NOT lift.
-  MAKE my_game NOT light.       -- (+ lit)
-  MAKE my_game listen0.
-  MAKE my_game listen.
-  MAKE my_game NOT lock.
-  MAKE my_game NOT lock_with.
-  MAKE my_game 'look'.        -- (+ gaze, peek)
-  MAKE my_game look_at.
-  MAKE my_game look_behind.
-  MAKE my_game look_in.
-  MAKE my_game look_out_of.
-  MAKE my_game look_through.
-  MAKE my_game look_under.
-  MAKE my_game look_up.
-  MAKE my_game 'no'.
-  MAKE my_game 'notify'.
-  MAKE my_game notify_on.
-  MAKE my_game notify_off.
-  MAKE my_game NOT open.
-  MAKE my_game NOT open_with.
-  MAKE my_game NOT 'play'.
-  MAKE my_game NOT play_with.
-  MAKE my_game NOT pour.
-  MAKE my_game NOT pour_in.
-  MAKE my_game NOT pour_on.
-  MAKE my_game pray.
-  MAKE my_game NOT pry.
-  MAKE my_game NOT pry_with.
-  MAKE my_game NOT pull.
-  MAKE my_game NOT push.
-  MAKE my_game NOT push_with.
-  MAKE my_game NOT put.         -- (+ lay, place)
-  MAKE my_game NOT put_against.
-  MAKE my_game NOT put_behind.
-  MAKE my_game NOT put_down.
-  MAKE my_game NOT put_in.      -- (+ insert)
-  MAKE my_game NOT put_near.
-  MAKE my_game NOT put_on.
-  MAKE my_game NOT put_under.
-  MAKE my_game 'quit'.
-  MAKE my_game NOT read.
-  MAKE my_game NOT remove.
-  MAKE my_game 'restart'.
-  MAKE my_game 'restore'.
-  MAKE my_game NOT rub.
-  MAKE my_game 'save'.
-  MAKE my_game NOT 'say'.
-  MAKE my_game NOT say_to.
-  MAKE my_game 'score'.
-  MAKE my_game NOT scratch.
-  MAKE my_game 'script'.
-  MAKE my_game script_on.
-  MAKE my_game script_off.
-  MAKE my_game NOT search.
-  MAKE my_game NOT sell.
-  MAKE my_game NOT shake.
-  MAKE my_game NOT shoot. -- (at)
-  MAKE my_game NOT shoot_with.
-  MAKE my_game NOT shout.       -- (+ scream, yell)
-  MAKE my_game NOT 'show'.      -- (+ reveal)
-  MAKE my_game NOT sing.
-  MAKE my_game NOT sip.
-  MAKE my_game NOT sit. -- (down)
-  MAKE my_game NOT sit_on.
-  MAKE my_game NOT sleep.       -- (+ rest)
-  MAKE my_game smell0.
-  MAKE my_game smell.
-  MAKE my_game NOT squeeze.
-  MAKE my_game NOT stand. -- (up)
-  MAKE my_game NOT stand_on.
-  MAKE my_game NOT swim.
-  MAKE my_game NOT swim_in.
-  MAKE my_game NOT switch.
-  MAKE my_game NOT switch_on.
-  MAKE my_game NOT switch_off.
-  MAKE my_game NOT take.        -- (+ carry, get, grab, hold, obtain)
-  MAKE my_game NOT take_from.   -- (+ remove from)
-  MAKE my_game NOT talk.
-  MAKE my_game NOT talk_to.     -- (+ speak)
-  MAKE my_game NOT taste.       -- (+ lick)
-  MAKE my_game NOT tear.        -- (+ rip)
-  MAKE my_game NOT tell.        -- (+ enlighten, inform)
-  MAKE my_game think.
-  MAKE my_game think_about.
-  MAKE my_game NOT throw.
-  MAKE my_game NOT throw_at.
-  MAKE my_game NOT throw_in.
-  MAKE my_game NOT throw_to.
-  MAKE my_game NOT tie.
-  MAKE my_game NOT tie_to.
-  MAKE my_game NOT touch.       -- (+ feel)
-  MAKE my_game NOT touch_with.
-  MAKE my_game NOT turn.        -- (+ rotate)
-  MAKE my_game NOT turn_on.
-  MAKE my_game NOT turn_off.
-  MAKE my_game NOT undress.
-  MAKE my_game NOT unlock.
-  MAKE my_game NOT unlock_with.
-  MAKE my_game NOT 'use'.
-  MAKE my_game NOT use_with.
-  MAKE my_game 'verbose'.
-  MAKE my_game 'wait'.        -- (+ z)
-  MAKE my_game NOT wear.
-  MAKE my_game what_am_i.
-  MAKE my_game what_is.
-  MAKE my_game where_am_i.
-  MAKE my_game where_is.
-  MAKE my_game who_am_i.
-  MAKE my_game who_is.
-  MAKE my_game NOT write.
-  MAKE my_game yes.
-
-
-
-
-ELSIF restricted_level OF my_game = 3   -- all in-game verbs are restricted, even
-  THEN              -- 'examine', 'look' etc. Only out-of-game verbs like
-                -- 'save', 'quit' etc work.
-
-
-  MAKE my_game about.
-  MAKE my_game 'again'.
-  MAKE my_game NOT answer.      -- (+ reply)
-  MAKE my_game NOT ask.         -- (+ enquire, inquire, interrogate)
-  MAKE my_game NOT ask_for.
-  MAKE my_game NOT attack.      -- (+ beat, fight, hit, punch)
-  MAKE my_game NOT attack_with.
-  MAKE my_game NOT bite.        -- (+ chew)
-  MAKE my_game NOT break.       -- (+ destroy)
-  MAKE my_game NOT break_with.
-  MAKE my_game 'brief'.
-  MAKE my_game NOT burn.
-  MAKE my_game NOT burn_with.
-  MAKE my_game NOT buy.         -- (+ purchase)
-  MAKE my_game NOT catch.
-  MAKE my_game NOT clean.       -- (+ polish, wipe)
-  MAKE my_game NOT climb.
-  MAKE my_game NOT climb_on.
-  MAKE my_game NOT climb_through.
-  MAKE my_game NOT close.       -- (+ shut)
-  MAKE my_game NOT close_with.
-  MAKE my_game NOT consult.
-  MAKE my_game credits.     -- (+ acknowledgments, author, copyright)
-  MAKE my_game NOT cut.
-  MAKE my_game NOT cut_with.
-  MAKE my_game NOT dance.
-  MAKE my_game NOT dig.
-  MAKE my_game NOT dive.
-  MAKE my_game NOT dive_in.
-  MAKE my_game NOT drink.
-  MAKE my_game NOT drive.
-  MAKE my_game NOT drop.        -- (+ discard, dump, reject)
-  MAKE my_game NOT eat.
-  MAKE my_game NOT 'empty'.
-  MAKE my_game NOT empty_in.
-  MAKE my_game NOT empty_on.
-  MAKE my_game NOT enter.
-  MAKE my_game NOT examine.     -- (+ check, inspect, observe, x)
-  MAKE my_game NOT 'exit'.
-  MAKE my_game NOT extinguish.  -- (+ put out, quench)
-  MAKE my_game NOT fill.
-  MAKE my_game NOT fill_with.
-  MAKE my_game NOT find.        -- (+ locate)
-  MAKE my_game NOT fire.
-  MAKE my_game NOT fire_at.
-  MAKE my_game NOT fix.     -- (+ mend, repair)
-  MAKE my_game NOT follow.
-  MAKE my_game NOT free.        -- (+ release)
-  MAKE my_game NOT get_up.
-  MAKE my_game NOT get_off.
-  MAKE my_game NOT give.
-  MAKE my_game NOT go_to.
-  MAKE my_game hint.        -- (+ hints)
-  MAKE my_game NOT i.        -- (+ inv, inventory)
-  MAKE my_game NOT jump.
-  MAKE my_game NOT jump_in.
-  MAKE my_game NOT jump_on.
-  MAKE my_game NOT kick.
-  MAKE my_game NOT kill.        -- (+ murder)
-  MAKE my_game NOT kill_with.
-  MAKE my_game NOT kiss.        -- (+ hug, embrace)
-  MAKE my_game NOT knock.
-  MAKE my_game NOT lie_down.
-  MAKE my_game NOT lie_in.
-  MAKE my_game NOT lie_on.
-  MAKE my_game NOT lift.
-  MAKE my_game NOT light.       -- (+ lit)
-  MAKE my_game NOT listen0.
-  MAKE my_game NOT listen.
-  MAKE my_game NOT lock.
-  MAKE my_game NOT lock_with.
-  MAKE my_game NOT 'look'.        -- (+ gaze, peek)
-  MAKE my_game NOT look_at.
-  MAKE my_game NOT look_behind.
-  MAKE my_game NOT look_in.
-  MAKE my_game NOT look_out_of.
-  MAKE my_game NOT look_through.
-  MAKE my_game NOT look_under.
-  MAKE my_game NOT look_up.
-  MAKE my_game 'no'.
-  MAKE my_game 'notify'.
-  MAKE my_game notify_on.
-  MAKE my_game notify_off.
-  MAKE my_game NOT open.
-  MAKE my_game NOT open_with.
-  MAKE my_game NOT 'play'.
-  MAKE my_game NOT play_with.
-  MAKE my_game NOT pour.
-  MAKE my_game NOT pour_in.
-  MAKE my_game NOT pour_on.
-  MAKE my_game NOT pray.
-  MAKE my_game NOT pry.
-  MAKE my_game NOT pry_with.
-  MAKE my_game NOT pull.
-  MAKE my_game NOT push.
-  MAKE my_game NOT push_with.
-  MAKE my_game NOT put.         -- (+ lay, place)
-  MAKE my_game NOT put_against.
-  MAKE my_game NOT put_behind.
-  MAKE my_game NOT put_down.
-  MAKE my_game NOT put_in.      -- (+ insert)
-  MAKE my_game NOT put_near.
-  MAKE my_game NOT put_on.
-  MAKE my_game NOT put_under.
-  MAKE my_game 'quit'.
-  MAKE my_game NOT read.
-  MAKE my_game NOT remove.
-  MAKE my_game 'restart'.
-  MAKE my_game 'restore'.
-  MAKE my_game NOT rub.
-  MAKE my_game 'save'.
-  MAKE my_game NOT 'say'.
-  MAKE my_game NOT say_to.
-  MAKE my_game 'score'.
-  MAKE my_game NOT scratch.
-  MAKE my_game 'script'.
-  MAKE my_game script_on.
-  MAKE my_game script_off.
-  MAKE my_game NOT search.
-  MAKE my_game NOT sell.
-  MAKE my_game NOT shake.
-  MAKE my_game NOT shoot. -- (at)
-  MAKE my_game NOT shoot_with.
-  MAKE my_game NOT shout.       -- (+ scream, yell)
-  MAKE my_game NOT 'show'.      -- (+ reveal)
-  MAKE my_game NOT sing.
-  MAKE my_game NOT sip.
-  MAKE my_game NOT sit. -- (down)
-  MAKE my_game NOT sit_on.
-  MAKE my_game NOT sleep.       -- (+ rest)
-  MAKE my_game NOT smell0.
-  MAKE my_game NOT smell.
-  MAKE my_game NOT squeeze.
-  MAKE my_game NOT stand. -- (up)
-  MAKE my_game NOT stand_on.
-  MAKE my_game NOT swim.
-  MAKE my_game NOT swim_in.
-  MAKE my_game NOT switch.
-  MAKE my_game NOT switch_on.
-  MAKE my_game NOT switch_off.
-  MAKE my_game NOT take.        -- (+ carry, get, grab, hold, obtain)
-  MAKE my_game NOT take_from.   -- (+ remove from)
-  MAKE my_game NOT talk.
-  MAKE my_game NOT talk_to.     -- (+ speak)
-  MAKE my_game NOT taste.       -- (+ lick)
-  MAKE my_game NOT tear.        -- (+ rip)
-  MAKE my_game NOT tell.        -- (+ enlighten, inform)
-  MAKE my_game NOT think.
-  MAKE my_game NOT think_about.
-  MAKE my_game NOT throw.
-  MAKE my_game NOT throw_at.
-  MAKE my_game NOT throw_in.
-  MAKE my_game NOT throw_to.
-  MAKE my_game NOT tie.
-  MAKE my_game NOT tie_to.
-  MAKE my_game NOT touch.       -- (+ feel)
-  MAKE my_game NOT touch_with.
-  MAKE my_game NOT turn.        -- (+ rotate)
-  MAKE my_game NOT turn_on.
-  MAKE my_game NOT turn_off.
-  MAKE my_game NOT undress.
-  MAKE my_game NOT unlock.
-  MAKE my_game NOT unlock_with.
-  MAKE my_game NOT 'use'.
-  MAKE my_game NOT use_with.
-  MAKE my_game 'verbose'.
-  MAKE my_game NOT 'wait'.        -- (+ z)
-  MAKE my_game NOT wear.
-  MAKE my_game NOT what_am_i.
-  MAKE my_game NOT what_is.
-  MAKE my_game NOT where_am_i.
-  MAKE my_game NOT where_is.
-  MAKE my_game NOT who_am_i.
-  MAKE my_game NOT who_is.
-  MAKE my_game NOT write.
-  MAKE my_game yes.
-
-
-ELSIF restricted_level OF my_game = 4   -- the strictest level of restriction;
-                -- no verbs work, not even out-of-game verbs
-  THEN              -- like 'save' and 'quit'.
-
-  MAKE my_game NOT about.
-  MAKE my_game NOT 'again'.
-  MAKE my_game NOT answer.      -- (+ reply)
-  MAKE my_game NOT ask.         -- (+ enquire, inquire, interrogate)
-  MAKE my_game NOT ask_for.
-  MAKE my_game NOT attack.      -- (+ beat, fight, hit, punch)
-  MAKE my_game NOT attack_with.
-  MAKE my_game NOT bite.        -- (+ chew)
-  MAKE my_game NOT break.       -- (+ destroy)
-  MAKE my_game NOT break_with.
-  MAKE my_game NOT 'brief'.
-  MAKE my_game NOT burn.
-  MAKE my_game NOT burn_with.
-  MAKE my_game NOT buy.         -- (+ purchase)
-  MAKE my_game NOT catch.
-  MAKE my_game NOT clean.       -- (+ polish, wipe)
-  MAKE my_game NOT climb.
-  MAKE my_game NOT climb_on.
-  MAKE my_game NOT climb_through.
-  MAKE my_game NOT close.       -- (+ shut)
-  MAKE my_game NOT close_with.
-  MAKE my_game NOT consult.
-  MAKE my_game NOT credits.     -- (+ acknowledgments, author, copyright)
-  MAKE my_game NOT cut.
-  MAKE my_game NOT cut_with.
-  MAKE my_game NOT dance.
-  MAKE my_game NOT dig.
-  MAKE my_game NOT dive.
-  MAKE my_game NOT dive_in.
-  MAKE my_game NOT drink.
-  MAKE my_game NOT drive.
-  MAKE my_game NOT drop.        -- (+ discard, dump, reject)
-  MAKE my_game NOT eat.
-  MAKE my_game NOT 'empty'.
-  MAKE my_game NOT empty_in.
-  MAKE my_game NOT empty_on.
-  MAKE my_game NOT enter.
-  MAKE my_game NOT examine.     -- (+ check, inspect, observe, x)
-  MAKE my_game NOT 'exit'.
-  MAKE my_game NOT extinguish.  -- (+ put out, quench)
-  MAKE my_game NOT fill.
-  MAKE my_game NOT fill_with.
-  MAKE my_game NOT find.        -- (+ locate)
-  MAKE my_game NOT fire.
-  MAKE my_game NOT fire_at.
-  MAKE my_game NOT fix.     -- (+ mend, repair)
-  MAKE my_game NOT follow.
-  MAKE my_game NOT free.        -- (+ release)
-  MAKE my_game NOT get_up.
-  MAKE my_game NOT get_off.
-  MAKE my_game NOT give.
-  MAKE my_game NOT go_to.
-  MAKE my_game NOT hint.        -- (+ hints)
-  MAKE my_game NOT i.        -- (+ inv, inventory)
-  MAKE my_game NOT jump.
-  MAKE my_game NOT jump_in.
-  MAKE my_game NOT jump_on.
-  MAKE my_game NOT kick.
-  MAKE my_game NOT kill.        -- (+ murder)
-  MAKE my_game NOT kill_with.
-  MAKE my_game NOT kiss.        -- (+ hug, embrace)
-  MAKE my_game NOT knock.
-  MAKE my_game NOT lie_down.
-  MAKE my_game NOT lie_in.
-  MAKE my_game NOT lie_on.
-  MAKE my_game NOT lift.
-  MAKE my_game NOT light.       -- (+ lit)
-  MAKE my_game NOT listen0.
-  MAKE my_game NOT listen.
-  MAKE my_game NOT lock.
-  MAKE my_game NOT lock_with.
-  MAKE my_game NOT 'look'.        -- (+ gaze, peek)
-  MAKE my_game NOT look_at.
-  MAKE my_game NOT look_behind.
-  MAKE my_game NOT look_in.
-  MAKE my_game NOT look_out_of.
-  MAKE my_game NOT look_through.
-  MAKE my_game NOT look_under.
-  MAKE my_game NOT look_up.
-  MAKE my_game NOT 'no'.
-  MAKE my_game NOT 'notify'.
-  MAKE my_game NOT notify_on.
-  MAKE my_game NOT notify_off.
-  MAKE my_game NOT open.
-  MAKE my_game NOT open_with.
-  MAKE my_game NOT 'play'.
-  MAKE my_game NOT play_with.
-  MAKE my_game NOT pour.
-  MAKE my_game NOT pour_in.
-  MAKE my_game NOT pour_on.
-  MAKE my_game NOT pray.
-  MAKE my_game NOT pry.
-  MAKE my_game NOT pry_with.
-  MAKE my_game NOT pull.
-  MAKE my_game NOT push.
-  MAKE my_game NOT push_with.
-  MAKE my_game NOT put.         -- (+ lay, place)
-  MAKE my_game NOT put_against.
-  MAKE my_game NOT put_behind.
-  MAKE my_game NOT put_down.
-  MAKE my_game NOT put_in.      -- (+ insert)
-  MAKE my_game NOT put_near.
-  MAKE my_game NOT put_on.
-  MAKE my_game NOT put_under.
-  MAKE my_game NOT 'quit'.
-  MAKE my_game NOT read.
-  MAKE my_game NOT remove.
-  MAKE my_game NOT 'restart'.
-  MAKE my_game NOT 'restore'.
-  MAKE my_game NOT rub.
-  MAKE my_game NOT 'save'.
-  MAKE my_game NOT 'say'.
-  MAKE my_game NOT say_to.
-  MAKE my_game NOT 'score'.
-  MAKE my_game NOT scratch.
-  MAKE my_game NOT 'script'.
-  MAKE my_game NOT script_on.
-  MAKE my_game NOT script_off.
-  MAKE my_game NOT search.
-  MAKE my_game NOT sell.
-  MAKE my_game NOT shake.
-  MAKE my_game NOT shoot. -- (at)
-  MAKE my_game NOT shoot_with.
-  MAKE my_game NOT shout.       -- (+ scream, yell)
-  MAKE my_game NOT 'show'.      -- (+ reveal)
-  MAKE my_game NOT sing.
-  MAKE my_game NOT sip.
-  MAKE my_game NOT sit. -- (down)
-  MAKE my_game NOT sit_on.
-  MAKE my_game NOT sleep.       -- (+ rest)
-  MAKE my_game NOT smell0.
-  MAKE my_game NOT smell.
-  MAKE my_game NOT squeeze.
-  MAKE my_game NOT stand. -- (up)
-  MAKE my_game NOT stand_on.
-  MAKE my_game NOT swim.
-  MAKE my_game NOT swim_in.
-  MAKE my_game NOT switch.
-  MAKE my_game NOT switch_on.
-  MAKE my_game NOT switch_off.
-  MAKE my_game NOT take.        -- (+ carry, get, grab, hold, obtain)
-  MAKE my_game NOT take_from.   -- (+ remove from)
-  MAKE my_game NOT talk.
-  MAKE my_game NOT talk_to.     -- (+ speak)
-  MAKE my_game NOT taste.       -- (+ lick)
-  MAKE my_game NOT tear.        -- (+ rip)
-  MAKE my_game NOT tell.        -- (+ enlighten, inform)
-  MAKE my_game NOT think.
-  MAKE my_game NOT think_about.
-  MAKE my_game NOT throw.
-  MAKE my_game NOT throw_at.
-  MAKE my_game NOT throw_in.
-  MAKE my_game NOT throw_to.
-  MAKE my_game NOT tie.
-  MAKE my_game NOT tie_to.
-  MAKE my_game NOT touch.       -- (+ feel)
-  MAKE my_game NOT touch_with.
-  MAKE my_game NOT turn.        -- (+ rotate)
-  MAKE my_game NOT turn_on.
-  MAKE my_game NOT turn_off.
-  MAKE my_game NOT undress.
-  MAKE my_game NOT unlock.
-  MAKE my_game NOT unlock_with.
-  MAKE my_game NOT 'use'.
-  MAKE my_game NOT use_with.
-  MAKE my_game NOT 'verbose'.
-  MAKE my_game NOT 'wait'.        -- (+ z)
-  MAKE my_game NOT wear.
-  MAKE my_game NOT what_am_i.
-  MAKE my_game NOT what_is.
-  MAKE my_game NOT where_am_i.
-  MAKE my_game NOT where_is.
-  MAKE my_game NOT who_am_i.
-  MAKE my_game NOT who_is.
-  MAKE my_game NOT write.
-  MAKE my_game NOT yes.
-
-END IF.
-
-SCHEDULE check_restriction AFTER 1.
+  -- Reschedule this event:
+  SCHEDULE check_restriction AFTER 1.
 
 END EVENT.
 
@@ -1617,7 +1286,7 @@ END EVENT.
 -- ===========
 
 
-THE banner ISA DEFINITION_BLOCK
+THE banner ISA LOCATION
 
     DESCRIPTION
 

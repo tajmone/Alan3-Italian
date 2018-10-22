@@ -3,8 +3,9 @@
 This folder contains copies of every release of the upstream _Alan Standard Library_ employed in this project; when the library is updated, the upstream files of the currently used version can be diff-compared with the new version in order to track which changes should be integrated into the Italian files in order to bring them on par with the latest version of the Standard Library.
 
 
-- [`/2.1/`](./2.1/) (updated: 2018/06/03)
+- [`/2.1/`](./2.1/) (updated: 2018/10/22 | commit [`cc7071a`][commit])
 
+[commit]: https://github.com/AnssiR66/AlanStdLib/tree/cc7071a85d23ebd01f8d2b9b9f167aaa81c382ee
 
 # CHANGELOG
 
