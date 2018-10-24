@@ -151,7 +151,7 @@ fico e una mela qui.
 > ; PUNTEGGIO & NOTIFICHE
 > ; ==============================================================================
 > ; NOTA: Ogni frutto mangiato incrementerà il punteggio di 1.
-> score
+> punteggio
 Hai totalizzato 0 punti su 670 possibili.
 
 > ; Il punteggio è riportato anche sul tabellone:
@@ -254,7 +254,7 @@ Notifica del punteggio attivata.
 Notifica del punteggio disattivata.
 (Per riattivarla usa il comando NOTIFICA)
 
-> score
+> punteggio
 Hai totalizzato 670 punti su 670 possibili.
 
 > ; ------------------------------------------------------------------------------

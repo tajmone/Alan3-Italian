@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.7-Alpha, 2018-10-22: Alan 3.0beta6
+--| v0.7.8-Alpha, 2018-10-24: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -827,6 +827,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN uccidere_con.             ---> kill_with
   CAN usare.                    ---> 'use'
   CAN usare_con.                ---> use_with
+  CAN vedere_punteggio.         ---> 'score'
   CAN vendere.                  ---> sell
   CAN versare.                  ---> pour
   CAN versare_in.               ---> pour_in
@@ -867,7 +868,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN put_on.
   CAN put_under.
   CAN rub.
-  CAN 'score'.
   CAN search.
   CAN shake.
   CAN shoot.       -- (at)
@@ -1047,6 +1047,7 @@ EVENT check_restriction
       MAKE mia_AT uccidere_con.             ---> kill_with
       MAKE mia_AT usare.                    ---> 'use'
       MAKE mia_AT usare_con.                ---> use_with
+      MAKE mia_AT vedere_punteggio.         ---> 'score'
       MAKE mia_AT vendere.                  ---> sell
       MAKE mia_AT versare.                  ---> pour
       MAKE mia_AT versare_in.               ---> pour_in
@@ -1083,7 +1084,6 @@ EVENT check_restriction
       MAKE mia_AT put_on.
       MAKE mia_AT put_under.
       MAKE mia_AT rub.
-      MAKE mia_AT 'score'.
       MAKE mia_AT search.
       MAKE mia_AT shake.
       MAKE mia_AT shoot.           -- (at)
@@ -1331,12 +1331,12 @@ EVENT check_restriction
           MAKE mia_AT NOT trascrivere.              ---> 'script'
           MAKE mia_AT NOT trascrivere_off.          ---> script_off
           MAKE mia_AT NOT trascrivere_on.           ---> script_on
+          MAKE mia_AT NOT vedere_punteggio.         ---> 'score'
 
         --# NOT YET TRANSLATED:
 
           MAKE mia_AT NOT about.
           MAKE mia_AT NOT hint.        -- (+ hints)
-          MAKE mia_AT NOT 'score'.
 
       END IF.
 

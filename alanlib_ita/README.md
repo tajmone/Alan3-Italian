@@ -422,7 +422,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `'save'`         | `salvare_partita`         |
 | `'say'`          | `dire`                    |
 | `say_to`         | `dire_a`                  |
-| `'score'`        |                           |
+| `'score'`        | `vedere_punteggio`        |
 | `scratch`        | `grattare`                |
 | `'script'`       | `trascrivere`             |
 | `script_off`     | `trascrivere_off`         |

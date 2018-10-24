@@ -58,7 +58,7 @@ sud
 ; PUNTEGGIO & NOTIFICHE
 ; ==============================================================================
 ; NOTA: Ogni frutto mangiato incrementerà il punteggio di 1.
-score
+punteggio
 ; Il punteggio è riportato anche sul tabellone:
 esamina il tabellone
 ; ------------------------------------------------------------------------------
@@ -90,7 +90,7 @@ mangia il fico
 esamina il tabellone
 notifica
 notifica
-score
+punteggio
 ; ------------------------------------------------------------------------------
 ; NOTIFICHE RIDONDANTI
 ; ------------------------------------------------------------------------------

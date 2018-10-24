@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.9-Alpha, 2018-10-22: Alan 3.0beta6
+--| v0.7.10-Alpha, 2018-10-24: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -87,6 +87,7 @@
 --| | trascrizione       |                              | trascrizione                     | {X} | 0 |     |
 --| | trascrizione_off   | trascrizione off             | trascrizione disattivata         | {X} | 0 |     |
 --| | trascrizione_on    | trascrizione on              | trascrizione attivata            | {X} | 0 |     |
+--| | vedi_punteggio     |                              | punteggio                        | {X} | 0 |     |
 --| |=============================================================================================================
 --<
 
@@ -322,6 +323,31 @@ EVENT controlla_punteggio
   -- Ripeti questo evento al prossimo turno:
   SCHEDULE controlla_punteggio AT hero AFTER 1.
 END EVENT.
+
+
+-- ==============================================================
+
+
+-- @PUNTEGGIO --> @SCORE
+
+
+-- ==============================================================
+
+
+SYNTAX vedi_punteggio = punteggio.
+
+
+META VERB vedi_punteggio
+  CHECK mia_AT CAN vedere_punteggio
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES
+    SCORE.
+    -- Per disabilitare il punteggio, rimpiazza la riga precedente con qualcosa
+    -- come:
+    -- "In questa avventura non c'è punteggio."
+END VERB vedi_punteggio.
+
+
 
 -- ==============================================================
 
@@ -6220,7 +6246,7 @@ END VERB rispondi_Sì.
 --~*| save               |                                    | save                              | 0 |
 --~*| say                |                                    | say (topic)                       | 1 |
 --~*| say_to             |                                    | say (topic) to (act)              | 2 |
---| | score              |                                    | score                             | 0 |
+--~*| score              |                                    | score                             | 0 |
 --~*| scratch            |                                    | scratch (obj)                     | 1 | {x}
 --~*| script             |                                    | script. script on. script off.    | 0 |
 --| | search             |                                    | search (obj)                      | 1 | {x}
@@ -6356,28 +6382,6 @@ END VERB hint.
 
 
 
-
--- ==============================================================
-
-
--- @SCORE
-
-
--- ==============================================================
-
-
-SYNTAX 'score' = 'score'.
-
-
-META VERB 'score'
-  CHECK mia_AT CAN 'score'
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES
-    SCORE.
-    -- (or, if you wish to disable the score, use the following kind of
-      -- line instead of the above:
-    -- "There is no score in this game.")
-END VERB 'score'.
 
 
 
