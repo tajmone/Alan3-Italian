@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.10-Alpha, 2018-10-24: Alan 3.0beta6
+--| v0.7.11-Alpha, 2018-10-25: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -15,18 +15,24 @@
 -- Directions (north, south, up, etc.) are declared in the file 'locations.i'.
 
 
-
 -->elenco_verbi(1000)
 --~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~-----------------------------------------------------------------------------
---|== Elenco dei Verbi Italiani
+--|
+--| == Elenco dei Verbi Italiani
+--|
 --~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
+--|
 --| I verbi finora tradotti in italiano sono raggruppti in tre diversi gruppi:
 --| 
---| 1. Comandi di partita
---| 2. Comandi di gioco
---| 3. Comandi di affermazioni o domande
+--| 1. <<Meta Verbi di Partita>>
+--| 2. <<Verbi di Gioco>>
+--| 3. <<Verbi di Domande>>
 --| 
 --| Di seguito troverete una tabella per ciascun gruppo, in cui i verbi sono
 --| elencati in ordine alfabetico.
@@ -41,7 +47,7 @@
 --|   [M] Meta Verbo :: {X} = Sì
 --|   [A] Arietà     :: <n> = numero di parametri
 --|   [O] Oggetto    :: {X} = Sì
---|   [B] C'è un Bug :: {X} = Sì
+--|   [B] C'è un Bug :: {B} = Sì
 --|=============================================================================
 --<
 
@@ -53,23 +59,27 @@
 -- Le direzioni (nord, sud, su, giù, ecc.) sono definite in "lib_luoghi.i".
 
 
--->comandi_partita(2000)
---~============================================================================
---~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+-->comandi_partita(10000)
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~-----------------------------------------------------------------------------
---| === Meta Comandi di Partita
+--|
+--| == Meta Verbi di Partita
+--|
 --~-----------------------------------------------------------------------------
---~/////////////////////////////////////////////////////////////////////////////
---~============================================================================
---| 
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--|
 --| Comandi che riguardano aspetti della partita (salvare, uscire, ecc.) anziché
---| il mondo dell'avventura. Perlopiù META VERBS, il cui uso non fa scorrere il
---| conteggio del tempo nell'avventura (turni).
+--| il mondo dell'avventura. Sono tutti `META VERB`, il cui uso non consuma un
+--| turno di gioco nell'avventura.
 --| Altresì noti come _comandi extradiegetici_.
 --<
 
--->tabella_comandi_partita(2100)
---| .Elenco Comandi di Partita
+-->tabella_verbi_partita(1010)
+--| === Tabella Comandi di Partita
 --| [cols="15m,25d,35d,4*^5d",options="header"]
 --| |=============================================================================================================
 --| | VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
@@ -91,42 +101,33 @@
 --| |=============================================================================================================
 --<
 
--- ==============================================================
+
+-->gruppo_file(10100)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Salvataggio e Caricamento
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--|
+--| Questo gruppo include i verbi che riguardano il salvataggio ed il carimento
+--| della partita.
+--<
+
+-->verbo_carica_partita(10110)    @CARICA_PARTITA -> @RESTORE
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== carica_partita
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `carica_partita`.
+--<
 
 
--- @ABBANDONA_PARTITA -> @QUIT (VERB + SYNTAX)
-
-
--- ==============================================================
---#NOTA: A questo verbo diamo l'ID "abbandona_partita" per lasciare
---       libero l'ID "abbandona" nel caso l'utente volesse creare un
---       verbo "abbandona" nel gioco.
--- MESSAGGI DI SISTEMA CORRELATI (alcuni visibili solo in ARun):
---    QUIT_ACTION      -- "Do you want to RESTART, RESTORE, QUIT or UNDO? ".
-
-
-SYNTAX
-  abbandona_partita = abbandona.
-  abbandona_partita = abbandona partita.
-  abbandona_partita = 'quit'. ---> Bisogna conservare anche l'inglese!
-
-SYNONYMS Q = 'quit'.
-
-META VERB abbandona_partita
-  CHECK mia_AT CAN abbandonare_partita
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES
-    QUIT.
-END VERB abbandona_partita.
-
-
--- ==============================================================
-
-
--- @CARICA_PARTITA -> @RESTORE (VERB + SYNTAX)
-
-
--- ==============================================================
 --#NOTA: A questo verbo diamo l'ID "carica_partita" per lasciare
 --       libero l'ID "carica" nel caso l'utente volesse creare un
 --       verbo "carica_partita" nel gioco.
@@ -150,66 +151,182 @@ META VERB carica_partita
 END VERB carica_partita.
 
 
--- ================================================================
+-->verbo_salva_partita(10120)   @SALVA_PARTITA -> @SAVE
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== salva_partita
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `salva_partita`.
+--<
 
 
--- @MODALITÀ BREVE -> @BRIEF
+--#NOTA: A questo verbo diamo l'ID "salva_partita" per lasciare
+--       libero l'ID "salva" nel caso l'utente volesse creare un
+--       verbo "salva" nel gioco.
+-- MESSAGGI DI SISTEMA CORRELATI (alcuni visibili solo in ARun):
+--    SAVE_FAILED    -- Se il salvataggio fallisce.
+--    SAVE_OVERWRITE -- Conferma sovrascrittura file.
+--    SAVE_WHERE     -- Nome del file di salvataggio
+SYNTAX salva_partita = salva.
+       salva_partita = salva partita.
+       salva_partita = 'save'. ---> Meglio conservare anche l'inglese, dato che
+                               --   dobbiamo conservare RESTART, RESTORE e QUIT!
 
 
--- ================================================================
--- SYNTAX brief = brief.
-
--- @BUG: The VISITS statement seems to be broken, and "brief" verb doesn't
---       behave as expected!
-
--- Use "Visits 0." or "Visits 1000." in the START section if you want
--- the game to start in verbose or brief mode. (By default,
--- all games start in the verbose mode.)
-
-
-SYNTAX  modalità_breve = modalità breve.
-        modalità_breve = modalità corta.
-        modalità_breve = brief.
-
-
-META VERB modalità_breve
-  CHECK mia_AT CAN modalità_breve
+META VERB salva_partita
+  CHECK mia_AT CAN salvare_partita
     ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
-    VISITS 1000.
-    -- "Brief mode is now on. Location descriptions will only be shown
-    -- the first time you visit."
-
-    "Il gioco è ora in modalità" STYLE EMPHASIZED. "breve" STYLE NORMAL. ", le
-    descrizioni dei luoghi già visitati non saranno più mostrate."
-END VERB modalità_breve.
-
--- ==============================================================
+    SAVE.
+END VERB salva_partita.
 
 
--- @MODALITÀ LUNGA -> @VERBOSE (see also -> BRIEF)
+-->gruppo_trascrizione(10200)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Trascrizione
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi che controllano l'avvio e l'arresto della
+--| trascrizione della partita su un file di log.
+--<
 
 
--- ==============================================================
--- SYNTAX verbose = verbose.
+-->verbo_trascrizione(10210)   @TRASCRIZIONE -> @SCRIPT
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== trascrizione
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+
+-- SYNTAX 'script' = 'script'.
+--         script_on = 'script' 'on'.
+--         script_off = 'script' 'off'.
 
 
-SYNTAX  modalità_lunga = modalità lunga.
-        modalità_lunga = verbose.
+SYNTAX  trascrizione     = trascrizione.
+        trascrizione_on  = trascrizione 'on'.
+        trascrizione_on  = trascrizione attivata.
+        trascrizione_off = trascrizione 'off'.
+        trascrizione_off = trascrizione disattivata.
 
+SYNONYMS 'transcript' = trascrizione.
 
-META VERB modalità_lunga
-  CHECK mia_AT CAN modalità_lunga
+META VERB trascrizione
+  CHECK mia_AT CAN trascrivere
     ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
-    VISITS 0.
-    -- "Verbose mode is now on. Location descriptions will be
-    -- always shown in full."
+    "Puoi avviare/interrompere la trascrizione della partita in corso tramite i
+     comandi TRASCRIZIONE ON/OFF.
 
-    "Il gioco è ora in modalità" STYLE EMPHASIZED. "lunga" STYLE NORMAL. ", le
-    descrizioni dei luoghi saranno mostrate sempre (anche se già visitati)."
-END VERB modalità_lunga.
+     La trascrizione sarà salvata in un file con il nome dell'avventura seguito
+     dalla data e dall'estensione "".log"".
+ 
+     $pNell'interprete con interfaccia grafica, puoi accedere alle funzionalità
+     di trascrizione tramite menù.
+    
+     $pL'interprete a riga di comando ARun può essere avviato con l'opzione
+     ""-l"" per abilitare la trascrizione dell'intera partita."
 
+  -- "You can turn transcripting on and off using the 'script on/off' command within the game.
+  -- The transcript will be available in a file with a name starting with the game name.
+  -- $pIn a GUI version you can also find this in the drop-down menu in the interpreter.
+  -- $pIn a command line version you can start your game with the '-s' switch to get a transcript
+  -- of the whole game."
+END VERB trascrizione.
+
+
+-->verbo_trascrizione_on(10220)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== trascrizione_on
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `trascrizione_on`.
+--<
+
+META VERB trascrizione_on
+  CHECK mia_AT CAN trascrivere_on
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES
+    TRANSCRIPT ON.
+    "Trascrizione avviata."
+END VERB trascrizione_on.
+
+-->verbo_trascrizione_off(10230)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== trascrizione_off
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `trascrizione_off`.
+--<
+
+META VERB trascrizione_off
+  CHECK mia_AT CAN trascrivere_off
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES
+    TRANSCRIPT OFF.
+    "Trascrizione terminata."
+END VERB trascrizione_off.
+
+
+
+-->gruppo_punteggio(10300)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Punteggio e Notifiche
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi che riguardano il salvataggio ed il carimento
+--| della partita:
+--| 
+--| * `vedi_punteggio`
+--| * `notifica`
+--| * `notifica_on`
+--| * `notifica_off`
+--<
+
+
+-->verbo_vedi_punteggio(10310)   @PUNTEGGIO --> @SCORE
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== vedi_punteggio
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `vedi_punteggio`.
+--<
+
+SYNTAX vedi_punteggio = punteggio.
+
+
+META VERB vedi_punteggio
+  CHECK mia_AT CAN vedere_punteggio
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES
+    SCORE.
+    -- Per disabilitare il punteggio, rimpiazza la riga precedente con qualcosa
+    -- come:
+    -- "In questa avventura non c'è punteggio."
+END VERB vedi_punteggio.
 
 
 -- ==============================================================
@@ -246,6 +363,16 @@ SYNTAX  notifica = notifica.
 --                                                                              TRANSLATE!
         -- In case (s)he adds the prepositions to the end anyway.
 
+-->verbo_notifica(10320)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== notifica
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `notifica`.
+--<
 
 META VERB notifica
   CHECK mia_AT CAN notificare
@@ -257,6 +384,16 @@ META VERB notifica
     END IF.
 END VERB notifica.
 
+-->verbo_notifica_on(10330)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== notifica_on
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `notifica_on`.
+--<
 
 META VERB notifica_on
   CHECK mia_AT CAN notificare_on
@@ -268,6 +405,16 @@ META VERB notifica_on
     END IF.
 END VERB notifica_on.
 
+-->verbo_notifica_off(10340)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== notifica_off
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `notifica_off`.
+--<
 
 META VERB notifica_off
   CHECK mia_AT CAN notificare_off
@@ -325,37 +472,147 @@ EVENT controlla_punteggio
 END EVENT.
 
 
--- ==============================================================
+-->gruppo_verbosity(10400)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Descrizioni Brevi e Lunghe
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo di verbi controlla la verbosità della descrizioni, offrendo due
+--| modalità: breve e lunga.
+--| 
+--| * `modalità_breve`
+--| * `modalità_lunga`
+--<
+
+-->verbo_modalita_breve(10410)  @MODALITÀ BREVE -> @BRIEF
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== modalità_breve
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `modalità_breve`.
+--<
+
+-- SYNTAX brief = brief.
+
+-- @BUG: The VISITS statement seems to be broken, and "brief" verb doesn't
+--       behave as expected!
+
+-- Use "Visits 0." or "Visits 1000." in the START section if you want
+-- the game to start in verbose or brief mode. (By default,
+-- all games start in the verbose mode.)
 
 
--- @PUNTEGGIO --> @SCORE
+SYNTAX  modalità_breve = modalità breve.
+        modalità_breve = modalità corta.
+        modalità_breve = brief.
 
 
--- ==============================================================
-
-
-SYNTAX vedi_punteggio = punteggio.
-
-
-META VERB vedi_punteggio
-  CHECK mia_AT CAN vedere_punteggio
+META VERB modalità_breve
+  CHECK mia_AT CAN modalità_breve
     ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
-    SCORE.
-    -- Per disabilitare il punteggio, rimpiazza la riga precedente con qualcosa
-    -- come:
-    -- "In questa avventura non c'è punteggio."
-END VERB vedi_punteggio.
+    VISITS 1000.
+    -- "Brief mode is now on. Location descriptions will only be shown
+    -- the first time you visit."
+
+    "Il gioco è ora in modalità" STYLE EMPHASIZED. "breve" STYLE NORMAL. ", le
+    descrizioni dei luoghi già visitati non saranno più mostrate."
+END VERB modalità_breve.
+
+-->verbo_modalita_lunga(10420)  @MODALITÀ LUNGA -> @VERBOSE (see also -> BRIEF)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== modalità_lunga
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `modalità_lunga`.
+--<
+
+-- SYNTAX verbose = verbose.
+
+SYNTAX  modalità_lunga = modalità lunga.
+        modalità_lunga = verbose.
 
 
+META VERB modalità_lunga
+  CHECK mia_AT CAN modalità_lunga
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES
+    VISITS 0.
+    -- "Verbose mode is now on. Location descriptions will be
+    -- always shown in full."
 
--- ==============================================================
+    "Il gioco è ora in modalità" STYLE EMPHASIZED. "lunga" STYLE NORMAL. ", le
+    descrizioni dei luoghi saranno mostrate sempre (anche se già visitati)."
+END VERB modalità_lunga.
 
 
--- @RICOMINCIA_PARTITA -> @RESTART (VERB + SYNTAX)
+-->gruppo_misc_meta(10500)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Meta Verbi Vari
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Qui di seguito sono elencati i vari meta verbi che non rientrano in alcun
+--| gruppo specifico.
+--<
+
+-->verbo_abbandona_partita(10510)  @ABBANDONA_PARTITA -> @QUIT
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== abbandona_partita
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `abbandona_partita`.
+--<
+
+--#NOTA: A questo verbo diamo l'ID "abbandona_partita" per lasciare
+--       libero l'ID "abbandona" nel caso l'utente volesse creare un
+--       verbo "abbandona" nel gioco.
+-- MESSAGGI DI SISTEMA CORRELATI (alcuni visibili solo in ARun):
+--    QUIT_ACTION      -- "Do you want to RESTART, RESTORE, QUIT or UNDO? ".
 
 
--- ==============================================================
+SYNTAX
+  abbandona_partita = abbandona.
+  abbandona_partita = abbandona partita.
+  abbandona_partita = 'quit'. ---> Bisogna conservare anche l'inglese!
+
+SYNONYMS Q = 'quit'.
+
+META VERB abbandona_partita
+  CHECK mia_AT CAN abbandonare_partita
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES
+    QUIT.
+END VERB abbandona_partita.
+
+
+-->verbo_ricomincia_partita(10520)  @RICOMINCIA_PARTITA -> @RESTART
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== ricomincia_partita
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `ricomincia_partita`.
+--<
+
 --#NOTA: A questo verbo diamo l'ID "ricomincia_partita" per lasciare
 --       libero l'ID "ricomincia" nel caso l'utente volesse creare un
 --       verbo "ricomincia" nel gioco.
@@ -373,15 +630,17 @@ META VERB ricomincia_partita
     RESTART.
 END VERB ricomincia_partita.
 
+-->verbo_ringraziamenti(10530)  @RINGRAZIAMENTI -> @CREDITS (+ acknowledgments, author, copyright)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== ringraziamenti
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `ringraziamenti`.
+--<
 
-
--- ==============================================================
-
-
--- @RINGRAZIAMENTI -> @CREDITS (+ acknowledgments, author, copyright)
-
-
--- ==============================================================
 -- SYNTAX credits = credits.
 -- SYNONYMS acknowledgments, author, copyright = credits.
 
@@ -414,110 +673,25 @@ META VERB ringraziamenti
 END VERB ringraziamenti.
 
 
--- ==============================================================
-
-
--- @SALVA_PARTITA -> @SAVE (VERB + SYNTAX)
-
-
--- ==============================================================
---#NOTA: A questo verbo diamo l'ID "salva_partita" per lasciare
---       libero l'ID "salva" nel caso l'utente volesse creare un
---       verbo "salva" nel gioco.
--- MESSAGGI DI SISTEMA CORRELATI (alcuni visibili solo in ARun):
---    SAVE_FAILED    -- Se il salvataggio fallisce.
---    SAVE_OVERWRITE -- Conferma sovrascrittura file.
---    SAVE_WHERE     -- Nome del file di salvataggio
-SYNTAX salva_partita = salva.
-       salva_partita = salva partita.
-       salva_partita = 'save'. ---> Meglio conservare anche l'inglese, dato che
-                               --   dobbiamo conservare RESTART, RESTORE e QUIT!
-
-
-META VERB salva_partita
-  CHECK mia_AT CAN salvare_partita
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES
-    SAVE.
-END VERB salva_partita.
-
-
--- ==============================================================
-
-
--- @TRASCRIZIONE -> @SCRIPT
-
-
--- ==============================================================
--- SYNTAX 'script' = 'script'.
---         script_on = 'script' 'on'.
---         script_off = 'script' 'off'.
-
-
-SYNTAX  trascrizione     = trascrizione.
-        trascrizione_on  = trascrizione 'on'.
-        trascrizione_on  = trascrizione attivata.
-        trascrizione_off = trascrizione 'off'.
-        trascrizione_off = trascrizione disattivata.
-
-SYNONYMS 'transcript' = trascrizione.
-
-META VERB trascrizione
-  CHECK mia_AT CAN trascrivere
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES
-    "Puoi avviare/interrompere la trascrizione della partita in corso tramite i
-     comandi TRASCRIZIONE ON/OFF.
-
-     La trascrizione sarà salvata in un file con il nome dell'avventura seguito
-     dalla data e dall'estensione "".log"".
- 
-     $pNell'interprete con interfaccia grafica, puoi accedere alle funzionalità
-     di trascrizione tramite menù.
-    
-     $pL'interprete a riga di comando ARun può essere avviato con l'opzione
-     ""-l"" per abilitare la trascrizione dell'intera partita."
-
-  -- "You can turn transcripting on and off using the 'script on/off' command within the game.
-  -- The transcript will be available in a file with a name starting with the game name.
-  -- $pIn a GUI version you can also find this in the drop-down menu in the interpreter.
-  -- $pIn a command line version you can start your game with the '-s' switch to get a transcript
-  -- of the whole game."
-END VERB trascrizione.
-
-META VERB trascrizione_on
-  CHECK mia_AT CAN trascrivere_on
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES
-    TRANSCRIPT ON.
-    "Trascrizione avviata."
-END VERB trascrizione_on.
-
-META VERB trascrizione_off
-  CHECK mia_AT CAN trascrivere_off
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES
-    TRANSCRIPT OFF.
-    "Trascrizione terminata."
-END VERB trascrizione_off.
-
-
-
--->comandi_gioco(3000)
---~============================================================================
---~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+-->comandi_gioco(20000)
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~-----------------------------------------------------------------------------
---| === Comandi di Gioco
+--|
+--| == Verbi di Gioco
+--|
 --~-----------------------------------------------------------------------------
---~/////////////////////////////////////////////////////////////////////////////
---~============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
 --| 
 --| Comandi diretti al personaggio protagonista per interagire con l'avventura.
 --<
 
 
--->tabella_comandi_gioco(3100)
---| .Elenco dei Comandi di Gioco
+-->tabella_verbi_gioco(1020)
+--| === Tabella Comandi di Gioco
 --| [cols="15m,25d,35d,4*^5d",options="header"]
 --| |===================================================================================================================
 --| | VERBO              | SINONIMI                     | SINTASSI                               |  M  | A |  O  |  B
@@ -561,7 +735,7 @@ END VERB trascrizione_off.
 --| | guarda_su          | L                            | guarda su                              |     | 0 |     |
 --| | guida              |                              | guida (veicolo)                        |     | 1 |     |
 --| | indossa            | mettiti                      | indossa (ogg)                          |     | 1 | {X} |
---| | inventario         | inv                          | inventario                             | {X} | 0 |     |
+--| | inventario         | inv                          | inventario                             |     | 0 |     |
 --| | lascia             | abbandona, metti giù, posa   | lascia (ogg)*                          |     | 1 | {X} |
 --| | lega               |                              | lega (ogg)                             |     | 1 | {X} |
 --| | lega_a             |                              | lega (ogg) a (bersaglio)               |     | 2 | {X} |
@@ -3115,7 +3289,7 @@ SYNTAX inventario = inventario.
 SYNONYMS inv = inventario.
 
 
-META VERB inventario
+VERB inventario
   CHECK mia_AT CAN inventariare
     ELSE SAY  azione_bloccata  OF mia_AT.
   DOES
@@ -5812,14 +5986,19 @@ END ADD TO.
 -- by the hero or not, etc.
 
 
--->comandi_affermazion(4000)
---~============================================================================
---~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+-->comandi_domande(30000)
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~-----------------------------------------------------------------------------
---| === Comandi di Affermazioni o Domande
+--|
+--| == Verbi di Domande
+--|
 --~-----------------------------------------------------------------------------
---~/////////////////////////////////////////////////////////////////////////////
---~============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
 --| 
 --| Questo gruppo include tutti quei comandi che non seguono la consueta forma
 --| in cui il giocatore impartisce un ordine diretto al personaggio protagonista
@@ -5828,8 +6007,8 @@ END ADD TO.
 --| è il tesoro?`").
 --<
 
--->tabella_comandi_affermazioni(4100)
---| .Elenco Comandi di Affermazioni o Domande
+-->tabella_verbi_domande(1030)
+--| === Tabella Comandi Domande
 --| [cols="15m,25d,35d,4*^5d",options="header"]
 --| |=============================================================================================================
 --| | VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
@@ -6119,13 +6298,17 @@ END VERB rispondi_Sì.
 
 
 -->verbi_non_tradotti(50100)
---~============================================================================
---~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~-----------------------------------------------------------------------------
---|=== Verbi da Tradurre
+--|
+--| == Verbi da Tradurre
+--|
 --~-----------------------------------------------------------------------------
---~/////////////////////////////////////////////////////////////////////////////
---~============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
 
 --~ NOTA: i verbi preceduti da "--~*" sono stati già tradotti.
 --~       i verbi preceduti da "--~!" sono stati eliminati.
@@ -6315,11 +6498,13 @@ END VERB rispondi_Sì.
 
 
 
---==============================================================================
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------
--- Comandi di Partita Non Tradotti 
---------------------------------------------------------------------------------
---==============================================================================
+-- Comandi di Partita Non Tradotti
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
 
 
 -- =============================================================
@@ -6385,12 +6570,13 @@ END VERB hint.
 
 
 
-
---==============================================================================
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------
 -- Comandi di Gioco Non Tradotti 
---------------------------------------------------------------------------------
---==============================================================================
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
 
 
 

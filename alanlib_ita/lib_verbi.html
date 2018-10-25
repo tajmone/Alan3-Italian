@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.7.10-Alpha,</span>
-<span id="revdate">2018-10-24</span>
+<span id="revnumber">versione 0.7.11-Alpha,</span>
+<span id="revdate">2018-10-25</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
 <div id="toc" class="toc2">
@@ -447,14 +447,54 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel1">
 <li><a href="#_elenco_dei_verbi_italiani">Elenco dei Verbi Italiani</a>
 <ul class="sectlevel2">
-<li><a href="#_meta_comandi_di_partita">Meta Comandi di Partita</a></li>
-<li><a href="#_comandi_di_gioco">Comandi di Gioco</a></li>
-<li><a href="#_comandi_di_affermazioni_o_domande">Comandi di Affermazioni o Domande</a></li>
+<li><a href="#_tabella_comandi_di_partita">Tabella Comandi di Partita</a></li>
+<li><a href="#_tabella_comandi_di_gioco">Tabella Comandi di Gioco</a></li>
+<li><a href="#_tabella_comandi_domande">Tabella Comandi Domande</a></li>
 </ul>
 </li>
-<li><a href="#_todo">TODO</a>
+<li><a href="#_meta_verbi_di_partita">Meta Verbi di Partita</a>
 <ul class="sectlevel2">
-<li><a href="#_verbi_da_tradurre">Verbi da Tradurre</a></li>
+<li><a href="#_salvataggio_e_caricamento">Salvataggio e Caricamento</a>
+<ul class="sectlevel3">
+<li><a href="#_carica_partita">carica_partita</a></li>
+<li><a href="#_salva_partita">salva_partita</a></li>
+</ul>
+</li>
+<li><a href="#_trascrizione">Trascrizione</a>
+<ul class="sectlevel3">
+<li><a href="#_trascrizione_2">trascrizione</a></li>
+<li><a href="#_trascrizione_on">trascrizione_on</a></li>
+<li><a href="#_trascrizione_off">trascrizione_off</a></li>
+</ul>
+</li>
+<li><a href="#_punteggio_e_notifiche">Punteggio e Notifiche</a>
+<ul class="sectlevel3">
+<li><a href="#_vedi_punteggio">vedi_punteggio</a></li>
+<li><a href="#_notifica">notifica</a></li>
+<li><a href="#_notifica_on">notifica_on</a></li>
+<li><a href="#_notifica_off">notifica_off</a></li>
+</ul>
+</li>
+<li><a href="#_descrizioni_brevi_e_lunghe">Descrizioni Brevi e Lunghe</a>
+<ul class="sectlevel3">
+<li><a href="#_modalità_breve">modalità_breve</a></li>
+<li><a href="#_modalità_lunga">modalità_lunga</a></li>
+</ul>
+</li>
+<li><a href="#_meta_verbi_vari">Meta Verbi Vari</a>
+<ul class="sectlevel3">
+<li><a href="#_abbandona_partita">abbandona_partita</a></li>
+<li><a href="#_ricomincia_partita">ricomincia_partita</a></li>
+<li><a href="#_ringraziamenti">ringraziamenti</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_verbi_di_gioco">Verbi di Gioco</a></li>
+<li><a href="#_verbi_di_domande">Verbi di Domande</a></li>
+<li><a href="#_todo">TODO</a></li>
+<li><a href="#_verbi_da_tradurre">Verbi da Tradurre</a>
+<ul class="sectlevel2">
 <li><a href="#_check_list_generale">Check List Generale</a></li>
 <li><a href="#_check_list_doxter">Check List Doxter</a></li>
 </ul>
@@ -485,13 +525,13 @@ Ad opera di Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Comandi di partita</p>
+<p><a href="#_meta_verbi_di_partita">Meta Verbi di Partita</a></p>
 </li>
 <li>
-<p>Comandi di gioco</p>
+<p><a href="#_verbi_di_gioco">Verbi di Gioco</a></p>
 </li>
 <li>
-<p>Comandi di affermazioni o domande</p>
+<p><a href="#_verbi_di_domande">Verbi di Domande</a></p>
 </li>
 </ol>
 </div>
@@ -538,7 +578,7 @@ elencati in ordine alfabetico.</p>
 [B] C&#8217;è un Bug 
 </td>
 <td class="hdlist2">
-<p>&#x2714; = Sì</p>
+<p>&#128128; = Sì</p>
 </td>
 </tr>
 </table>
@@ -546,15 +586,8 @@ elencati in ordine alfabetico.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_meta_comandi_di_partita"><a class="anchor" href="#_meta_comandi_di_partita"></a>Meta Comandi di Partita</h3>
-<div class="paragraph">
-<p>Comandi che riguardano aspetti della partita (salvare, uscire, ecc.) anziché
-il mondo dell&#8217;avventura. Perlopiù META VERBS, il cui uso non fa scorrere il
-conteggio del tempo nell&#8217;avventura (turni).
-Altresì noti come <em>comandi extradiegetici</em>.</p>
-</div>
+<h3 id="_tabella_comandi_di_partita"><a class="anchor" href="#_tabella_comandi_di_partita"></a>Tabella Comandi di Partita</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Tabella 1. Elenco Comandi di Partita</caption>
 <colgroup>
 <col style="width: 15.7894%;">
 <col style="width: 26.3157%;">
@@ -706,12 +739,8 @@ Altresì noti come <em>comandi extradiegetici</em>.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_comandi_di_gioco"><a class="anchor" href="#_comandi_di_gioco"></a>Comandi di Gioco</h3>
-<div class="paragraph">
-<p>Comandi diretti al personaggio protagonista per interagire con l&#8217;avventura.</p>
-</div>
+<h3 id="_tabella_comandi_di_gioco"><a class="anchor" href="#_tabella_comandi_di_gioco"></a>Tabella Comandi di Gioco</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Tabella 2. Elenco dei Comandi di Gioco</caption>
 <colgroup>
 <col style="width: 15.7894%;">
 <col style="width: 26.3157%;">
@@ -1088,7 +1117,7 @@ Altresì noti come <em>comandi extradiegetici</em>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>inventario</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">inv</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">inventario</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
+<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
@@ -1484,16 +1513,8 @@ Altresì noti come <em>comandi extradiegetici</em>.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_comandi_di_affermazioni_o_domande"><a class="anchor" href="#_comandi_di_affermazioni_o_domande"></a>Comandi di Affermazioni o Domande</h3>
-<div class="paragraph">
-<p>Questo gruppo include tutti quei comandi che non seguono la consueta forma
-in cui il giocatore impartisce un ordine diretto al personaggio protagonista
-(p.es. &#8220;prendi la mela&#8221;), presentandosi invece sotto forma di affermazioni
-o domande poste dal protagonista stesso (p.es. &#8220;chi sono?&#8221;, &#8220;sì&#8221;, &#8220;dove
-è il tesoro?&#8221;).</p>
-</div>
+<h3 id="_tabella_comandi_domande"><a class="anchor" href="#_tabella_comandi_domande"></a>Tabella Comandi Domande</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Tabella 3. Elenco Comandi di Affermazioni o Domande</caption>
 <colgroup>
 <col style="width: 15.7894%;">
 <col style="width: 26.3157%;">
@@ -1593,16 +1614,167 @@ o domande poste dal protagonista stesso (p.es. &#8220;chi sono?&#8221;, &#8220;s
 </div>
 </div>
 <div class="sect1">
+<h2 id="_meta_verbi_di_partita"><a class="anchor" href="#_meta_verbi_di_partita"></a>Meta Verbi di Partita</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Comandi che riguardano aspetti della partita (salvare, uscire, ecc.) anziché
+il mondo dell&#8217;avventura. Sono tutti <code>META VERB</code>, il cui uso non consuma un
+turno di gioco nell&#8217;avventura.
+Altresì noti come <em>comandi extradiegetici</em>.</p>
+</div>
+<div class="sect2">
+<h3 id="_salvataggio_e_caricamento"><a class="anchor" href="#_salvataggio_e_caricamento"></a>Salvataggio e Caricamento</h3>
+<div class="paragraph">
+<p>Questo gruppo include i verbi che riguardano il salvataggio ed il carimento
+della partita.</p>
+</div>
+<div class="sect3">
+<h4 id="_carica_partita"><a class="anchor" href="#_carica_partita"></a>carica_partita</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_salva_partita"><a class="anchor" href="#_salva_partita"></a>salva_partita</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_trascrizione"><a class="anchor" href="#_trascrizione"></a>Trascrizione</h3>
+<div class="paragraph">
+<p>Questo gruppo include i verbi che controllano l&#8217;avvio e l&#8217;arresto della
+trascrizione della partita su un file di log.</p>
+</div>
+<div class="sect3">
+<h4 id="_trascrizione_2"><a class="anchor" href="#_trascrizione_2"></a>trascrizione</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_trascrizione_on"><a class="anchor" href="#_trascrizione_on"></a>trascrizione_on</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_trascrizione_off"><a class="anchor" href="#_trascrizione_off"></a>trascrizione_off</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_punteggio_e_notifiche"><a class="anchor" href="#_punteggio_e_notifiche"></a>Punteggio e Notifiche</h3>
+<div class="paragraph">
+<p>Questo gruppo include i verbi che riguardano il salvataggio ed il carimento
+della partita:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>vedi_punteggio</code></p>
+</li>
+<li>
+<p><code>notifica</code></p>
+</li>
+<li>
+<p><code>notifica_on</code></p>
+</li>
+<li>
+<p><code>notifica_off</code></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_vedi_punteggio"><a class="anchor" href="#_vedi_punteggio"></a>vedi_punteggio</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_notifica"><a class="anchor" href="#_notifica"></a>notifica</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_notifica_on"><a class="anchor" href="#_notifica_on"></a>notifica_on</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_notifica_off"><a class="anchor" href="#_notifica_off"></a>notifica_off</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_descrizioni_brevi_e_lunghe"><a class="anchor" href="#_descrizioni_brevi_e_lunghe"></a>Descrizioni Brevi e Lunghe</h3>
+<div class="paragraph">
+<p>Questo gruppo di verbi controlla la verbosità della descrizioni, offrendo due
+modalità: breve e lunga.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>modalità_breve</code></p>
+</li>
+<li>
+<p><code>modalità_lunga</code></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_modalità_breve"><a class="anchor" href="#_modalità_breve"></a>modalità_breve</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_modalità_lunga"><a class="anchor" href="#_modalità_lunga"></a>modalità_lunga</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_meta_verbi_vari"><a class="anchor" href="#_meta_verbi_vari"></a>Meta Verbi Vari</h3>
+<div class="paragraph">
+<p>Qui di seguito sono elencati i vari meta verbi che non rientrano in alcun
+gruppo specifico.</p>
+</div>
+<div class="sect3">
+<h4 id="_abbandona_partita"><a class="anchor" href="#_abbandona_partita"></a>abbandona_partita</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_ricomincia_partita"><a class="anchor" href="#_ricomincia_partita"></a>ricomincia_partita</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_ringraziamenti"><a class="anchor" href="#_ringraziamenti"></a>ringraziamenti</h4>
+
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_verbi_di_gioco"><a class="anchor" href="#_verbi_di_gioco"></a>Verbi di Gioco</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Comandi diretti al personaggio protagonista per interagire con l&#8217;avventura.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_verbi_di_domande"><a class="anchor" href="#_verbi_di_domande"></a>Verbi di Domande</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Questo gruppo include tutti quei comandi che non seguono la consueta forma
+in cui il giocatore impartisce un ordine diretto al personaggio protagonista
+(p.es. &#8220;prendi la mela&#8221;), presentandosi invece sotto forma di affermazioni
+o domande poste dal protagonista stesso (p.es. &#8220;chi sono?&#8221;, &#8220;sì&#8221;, &#8220;dove
+è il tesoro?&#8221;).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_todo"><a class="anchor" href="#_todo"></a>TODO</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Questa sezione contiene l&#8217;elenco delle cose da fare per ultimare l&#8217;adattamento
 italiano del modulo dei verbi.</p>
 </div>
-<div class="sect2">
-<h3 id="_verbi_da_tradurre"><a class="anchor" href="#_verbi_da_tradurre"></a>Verbi da Tradurre</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_verbi_da_tradurre"><a class="anchor" href="#_verbi_da_tradurre"></a>Verbi da Tradurre</h2>
+<div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Tabella 4. Elenco dei Verbi Non Tradotti</caption>
+<caption class="title">Tabella 1. Elenco dei Verbi Non Tradotti</caption>
 <colgroup>
 <col style="width: 23.5294%;">
 <col style="width: 35.2941%;">
@@ -2070,7 +2242,6 @@ italiano del modulo dei verbi.</p>
 </tr>
 </tbody>
 </table>
-</div>
 <div class="sect2">
 <h3 id="_check_list_generale"><a class="anchor" href="#_check_list_generale"></a>Check List Generale</h3>
 <div class="paragraph">
@@ -2082,13 +2253,56 @@ italiano del modulo dei verbi.</p>
 <div class="paragraph">
 <p>Finisci di trasformare commenti in documentazione Doxter:</p>
 </div>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>carica_partita</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>salva_partita</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>trascrizione_on</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>trascrizione_off</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>vedi_punteggio</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>notifica</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>notifica_on</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>notifica_off</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>modalità_breve</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>modalità_lunga</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>abbandona_partita</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>ricomincia_partita</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>ringraziamenti</code>.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.7.10-Alpha<br>
+Versione 0.7.11-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

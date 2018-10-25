@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.10-Alpha, 2018-10-24: Alan 3.0beta6
+v0.7.11-Alpha, 2018-10-25: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -25,12 +25,15 @@ include::attributes-it.adoc[tag=attributes-it]
 
 // end::custom_attributes[]
 // tag::elenco_verbi[]
+
 == Elenco dei Verbi Italiani
+
+
 I verbi finora tradotti in italiano sono raggruppti in tre diversi gruppi:
 
-1. Comandi di partita
-2. Comandi di gioco
-3. Comandi di affermazioni o domande
+1. <<Meta Verbi di Partita>>
+2. <<Verbi di Gioco>>
+3. <<Verbi di Domande>>
 
 Di seguito troverete una tabella per ciascun gruppo, in cui i verbi sono
 elencati in ordine alfabetico.
@@ -45,21 +48,12 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
   [M] Meta Verbo :: {X} = Sì
   [A] Arietà     :: <n> = numero di parametri
   [O] Oggetto    :: {X} = Sì
-  [B] C'è un Bug :: {X} = Sì
+  [B] C'è un Bug :: {B} = Sì
 =============================================================================
 
 // end::elenco_verbi[]
-// tag::comandi_partita[]
-=== Meta Comandi di Partita
-
-Comandi che riguardano aspetti della partita (salvare, uscire, ecc.) anziché
-il mondo dell'avventura. Perlopiù META VERBS, il cui uso non fa scorrere il
-conteggio del tempo nell'avventura (turni).
-Altresì noti come _comandi extradiegetici_.
-
-// end::comandi_partita[]
-// tag::tabella_comandi_partita[]
-.Elenco Comandi di Partita
+// tag::tabella_verbi_partita[]
+=== Tabella Comandi di Partita
 [cols="15m,25d,35d,4*^5d",options="header"]
 |=============================================================================================================
 | VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
@@ -79,15 +73,9 @@ Altresì noti come _comandi extradiegetici_.
 | vedi_punteggio     |                              | punteggio                        | {X} | 0 |     |
 |=============================================================================================================
 
-// end::tabella_comandi_partita[]
-// tag::comandi_gioco[]
-=== Comandi di Gioco
-
-Comandi diretti al personaggio protagonista per interagire con l'avventura.
-
-// end::comandi_gioco[]
-// tag::tabella_comandi_gioco[]
-.Elenco dei Comandi di Gioco
+// end::tabella_verbi_partita[]
+// tag::tabella_verbi_gioco[]
+=== Tabella Comandi di Gioco
 [cols="15m,25d,35d,4*^5d",options="header"]
 |===================================================================================================================
 | VERBO              | SINONIMI                     | SINTASSI                               |  M  | A |  O  |  B
@@ -130,7 +118,7 @@ Comandi diretti al personaggio protagonista per interagire con l'avventura.
 | guarda_su          | L                            | guarda su                              |     | 0 |     |
 | guida              |                              | guida (veicolo)                        |     | 1 |     |
 | indossa            | mettiti                      | indossa (ogg)                          |     | 1 | {X} |
-| inventario         | inv                          | inventario                             | {X} | 0 |     |
+| inventario         | inv                          | inventario                             |     | 0 |     |
 | lascia             | abbandona, metti giù, posa   | lascia (ogg)*                          |     | 1 | {X} |
 | lega               |                              | lega (ogg)                             |     | 1 | {X} |
 | lega_a             |                              | lega (ogg) a (bersaglio)               |     | 2 | {X} |
@@ -176,19 +164,9 @@ Comandi diretti al personaggio protagonista per interagire con l'avventura.
 | vendi              |                              | vendi (merce)                          |     | 1 |     |
 |===================================================================================================================
 
-// end::tabella_comandi_gioco[]
-// tag::comandi_affermazion[]
-=== Comandi di Affermazioni o Domande
-
-Questo gruppo include tutti quei comandi che non seguono la consueta forma
-in cui il giocatore impartisce un ordine diretto al personaggio protagonista
-(p.es. "`prendi la mela`"), presentandosi invece sotto forma di affermazioni
-o domande poste dal protagonista stesso (p.es. "`chi sono?`", "`sì`", "`dove
-è il tesoro?`").
-
-// end::comandi_affermazion[]
-// tag::tabella_comandi_affermazioni[]
-.Elenco Comandi di Affermazioni o Domande
+// end::tabella_verbi_gioco[]
+// tag::tabella_verbi_domande[]
+=== Tabella Comandi Domande
 [cols="15m,25d,35d,4*^5d",options="header"]
 |=============================================================================================================
 | VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
@@ -202,7 +180,137 @@ o domande poste dal protagonista stesso (p.es. "`chi sono?`", "`sì`", "`dove
 | rispondi_Sì        |                              | sì                               |     | 0 |     |
 |=============================================================================================================
 
-// end::tabella_comandi_affermazioni[]
+// end::tabella_verbi_domande[]
+// tag::comandi_partita[]
+
+== Meta Verbi di Partita
+
+
+Comandi che riguardano aspetti della partita (salvare, uscire, ecc.) anziché
+il mondo dell'avventura. Sono tutti `META VERB`, il cui uso non consuma un
+turno di gioco nell'avventura.
+Altresì noti come _comandi extradiegetici_.
+
+// end::comandi_partita[]
+// tag::gruppo_file[]
+=== Salvataggio e Caricamento
+
+Questo gruppo include i verbi che riguardano il salvataggio ed il carimento
+della partita.
+
+// end::gruppo_file[]
+// tag::verbo_carica_partita[]
+==== carica_partita
+
+// end::verbo_carica_partita[]
+// tag::verbo_salva_partita[]
+==== salva_partita
+
+// end::verbo_salva_partita[]
+// tag::gruppo_trascrizione[]
+=== Trascrizione
+
+Questo gruppo include i verbi che controllano l'avvio e l'arresto della
+trascrizione della partita su un file di log.
+
+// end::gruppo_trascrizione[]
+// tag::verbo_trascrizione[]
+==== trascrizione
+
+// end::verbo_trascrizione[]
+// tag::verbo_trascrizione_on[]
+==== trascrizione_on
+
+// end::verbo_trascrizione_on[]
+// tag::verbo_trascrizione_off[]
+==== trascrizione_off
+
+// end::verbo_trascrizione_off[]
+// tag::gruppo_punteggio[]
+=== Punteggio e Notifiche
+
+Questo gruppo include i verbi che riguardano il salvataggio ed il carimento
+della partita:
+
+* `vedi_punteggio`
+* `notifica`
+* `notifica_on`
+* `notifica_off`
+
+// end::gruppo_punteggio[]
+// tag::verbo_vedi_punteggio[]
+==== vedi_punteggio
+
+// end::verbo_vedi_punteggio[]
+// tag::verbo_notifica[]
+==== notifica
+
+// end::verbo_notifica[]
+// tag::verbo_notifica_on[]
+==== notifica_on
+
+// end::verbo_notifica_on[]
+// tag::verbo_notifica_off[]
+==== notifica_off
+
+// end::verbo_notifica_off[]
+// tag::gruppo_verbosity[]
+=== Descrizioni Brevi e Lunghe
+
+Questo gruppo di verbi controlla la verbosità della descrizioni, offrendo due
+modalità: breve e lunga.
+
+* `modalità_breve`
+* `modalità_lunga`
+
+// end::gruppo_verbosity[]
+// tag::verbo_modalita_breve[]
+==== modalità_breve
+
+// end::verbo_modalita_breve[]
+// tag::verbo_modalita_lunga[]
+==== modalità_lunga
+
+// end::verbo_modalita_lunga[]
+// tag::gruppo_misc_meta[]
+=== Meta Verbi Vari
+
+Qui di seguito sono elencati i vari meta verbi che non rientrano in alcun
+gruppo specifico.
+
+// end::gruppo_misc_meta[]
+// tag::verbo_abbandona_partita[]
+==== abbandona_partita
+
+// end::verbo_abbandona_partita[]
+// tag::verbo_ricomincia_partita[]
+==== ricomincia_partita
+
+// end::verbo_ricomincia_partita[]
+// tag::verbo_ringraziamenti[]
+==== ringraziamenti
+
+// end::verbo_ringraziamenti[]
+// tag::comandi_gioco[]
+
+== Verbi di Gioco
+
+
+Comandi diretti al personaggio protagonista per interagire con l'avventura.
+
+// end::comandi_gioco[]
+// tag::comandi_domande[]
+
+== Verbi di Domande
+
+
+Questo gruppo include tutti quei comandi che non seguono la consueta forma
+in cui il giocatore impartisce un ordine diretto al personaggio protagonista
+(p.es. "`prendi la mela`"), presentandosi invece sotto forma di affermazioni
+o domande poste dal protagonista stesso (p.es. "`chi sono?`", "`sì`", "`dove
+è il tesoro?`").
+
+// end::comandi_domande[]
 // tag::todo[]
 == TODO
 
@@ -211,7 +319,9 @@ italiano del modulo dei verbi.
 
 // end::todo[]
 // tag::verbi_non_tradotti[]
-=== Verbi da Tradurre
+
+== Verbi da Tradurre
+
 
 
 .Elenco dei Verbi Non Tradotti
@@ -294,6 +404,32 @@ Lista della spesa per le varie cosucce da fare:
 === Check List Doxter 
 
 Finisci di trasformare commenti in documentazione Doxter:
+
+* [ ] Descrizione `carica_partita`.
+
+* [ ] Descrizione `salva_partita`.
+
+* [ ] Descrizione `trascrizione_on`.
+
+* [ ] Descrizione `trascrizione_off`.
+
+* [ ] Descrizione `vedi_punteggio`.
+
+* [ ] Descrizione `notifica`.
+
+* [ ] Descrizione `notifica_on`.
+
+* [ ] Descrizione `notifica_off`.
+
+* [ ] Descrizione `modalità_breve`.
+
+* [ ] Descrizione `modalità_lunga`.
+
+* [ ] Descrizione `abbandona_partita`.
+
+* [ ] Descrizione `ricomincia_partita`.
+
+* [ ] Descrizione `ringraziamenti`.
 
 // end::todo_checklist[]
 

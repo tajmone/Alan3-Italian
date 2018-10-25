@@ -1,7 +1,7 @@
 
 = Doxter: Note di Lavoro
 Tristano Ajmone <tajmone@gmail.com>
-:revdate: 2018-10-15
+:revdate: 2018-10-25
 :lang: it
 // TOC Settings:
 :toc: left
@@ -77,27 +77,62 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 |===============================================================================
 
 
+////
+| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+////
 
 === Modulo Verbi
 
 * {lib_verbi}
 
-
 [cols="2*>10m,20m,60d",options="header"]
 |===============================================================================
 | weight  | subweight |                              | descrizione
 |  1000   |           | elenco_verbi                 | == Elenco dei Verbi Italiani
-|  2000   |           | comandi_partita              | === Meta Comandi di Partita
-|  2100   |           | tabella_comandi_partita      | [tabella verbi]
-|  3000   |           | comandi_gioco                | === Comandi di Gioco
-|  3100   |           | tabella_comandi_gioco        | [tabella verbi]
-|  4000   |           | comandi_affermazion          | === Comandi di Affermazioni o Domande
-|  4100   |           | tabella_comandi_affermazioni | [tabella verbi]
+|  1010   |           | tabella_verbi_partita        | === Tabella Comandi di Partita
+|  1020   |           | tabella_verbi_gioco          | === Tabella Comandi di Gioco
+|  1030   |           | tabella_verbi_domande        | === Tabella Comandi Domande
+// =============================================================================
+| 10000   |           | comandi_partita              | == Meta Verbi di Partita
+// -----------------------------------------------------------------------------
+| 10100   |           | gruppo_file                  | === Salvataggio e Caricamento
+| 10110   |           | verbo_carica_partita         | ==== carica_partita
+| 10120   |           | verbo_salva_partita          | ==== salva_partita
+// -----------------------------------------------------------------------------
+| 10200   |           | gruppo_trascrizione          | === Trascrizione
+| 10210   |           | verbo_trascrizione           | ==== trascrizione
+| 10220   |           | verbo_trascrizione_on        | ==== trascrizione_on
+| 10230   |           | verbo_trascrizione_off       | ==== trascrizione_off
+// -----------------------------------------------------------------------------
+| 10300   |           | gruppo_punteggio             | === Punteggio e Notifiche
+| 10310   |           | verbo_vedi_punteggio         | ==== vedi_punteggio
+| 10320   |           | verbo_notifica               | ==== notifica
+| 10330   |           | verbo_notifica_on            | ==== notifica_on
+| 10330   |           | verbo_notifica_on            | ==== notifica_on
+| 10340   |           | verbo_notifica_off           | ==== notifica_off
+// -----------------------------------------------------------------------------
+| 10400   |           | gruppo_verbosity             | === Descrizioni Brevi e Lunghe
+| 10410   |           | verbo_modalita_breve         | ==== modalità_breve
+| 10420   |           | verbo_modalita_lunga         | ==== modalità_lunga
+// -----------------------------------------------------------------------------
+| 10500   |           | gruppo_misc_meta             | === Meta Verbi Vari
+| 10510   |           | verbo_abbandona_partita      | ==== abbandona_partita
+| 10520   |           | verbo_ricomincia_partita     | ==== ricomincia_partita
+| 10530   |           | verbo_ringraziamenti         | ==== ringraziamenti
+// | 1050   |           | verbo_xxxx      | ==== xxxx
+// =============================================================================
+| 20000   |           | comandi_gioco                | == Verbi di Gioco
+// =============================================================================
+| 30000   |           | comandi_comandi_domande      | == Verbi di Domande
+// -----------------------------------------------------------------------------
 | 50000   |           | todo                         | TODO
 | 50100   |           | verbi_non_tradotti           | === Verbi da Tradurre
 | 51000   |           | todo_checklist               | === Check List
 |===============================================================================
 
+////
+| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+////
 
 
 === Modulo Classi
@@ -108,18 +143,16 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 [cols="2*>10m,20m,60d",options="header"]
 |===============================================================================
 | weight  | subweight |                              | descrizione
-|  1000   |           | elenco_verbi                 | == Elenco dei Verbi Italiani
-|  2000   |           | comandi_partita              | === Meta Comandi di Partita
-|  2100   |           | tabella_comandi_partita      | [tabella verbi]
-|  3000   |           | comandi_gioco                | === Comandi di Gioco
-|  3100   |           | tabella_comandi_gioco        | [tabella verbi]
-|  4000   |           | comandi_affermazion          | === Comandi di Affermazioni o Domande
-|  4100   |           | tabella_comandi_affermazioni | [tabella verbi]
+| 10000   |         1 | tabella_vestiario_intro      | == La Tabella del Vestiario
+| 10100   |         1 | tabella_vestiario            | [tabella vestiario]
 | 50000   |           | todo                         | TODO
 | 51000   |      1-33 | todo_checklist               | === Check List Generale
 | 51000   |   665-666 | todo_checklist               | === Check List Doxter
 |===============================================================================
 
+////
+| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+////
 
 === Modulo Luoghi
 
@@ -135,6 +168,9 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 | 51000   |   665-666 | todo_checklist               | === Check List Doxter
 |===============================================================================
 
+////
+| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+////
 
 === Modulo Messaggi
 
@@ -150,6 +186,9 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 | 51000   |   665-666 | todo_checklist               | === Check List Doxter
 |===============================================================================
 
+////
+| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+////
 
 
 === Modulo Supplementare

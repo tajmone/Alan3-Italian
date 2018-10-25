@@ -11,6 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/10/25](#20181025)
+    - [Make `inventario` Not META](#make-inventario-not-meta)
+    - [Doxterize](#doxterize)
 - [2018/10/24](#20181024)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
     - [Verb: `'score'`](#verb-score)
@@ -368,6 +371,23 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/10/25
+
+- [`lib_verbi.i`][lib_verbi] (v0.7.10)
+
+## Make `inventario` Not META
+
+With an afterthought, the verb `inventario` (_inventory_) is now no longer a `META VERB`.
+
+## Doxterize
+
+This commit focuses on improving documentation of the verbs module:
+
+- Begin grouping related verbs under same heading.
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/10/24
 

@@ -1,4 +1,4 @@
-:: "BUILD_DOCS.bat" v0.1.5 (2018/10/22) by Tristano Ajmone
+:: "BUILD_DOCS.bat" v0.1.6 (2018/10/25) by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 :: To use this script you'll need the Doxter binary tool to be either in this
 :: folder or on the system PATH:
@@ -55,6 +55,7 @@ CALL asciidoctor^
   -a data-uri^
   -a icons=font^
   -a toc=left^
+  -a toclevels=5^
   -a experimental^
   -a linkattrs^
   -a sectanchors^
