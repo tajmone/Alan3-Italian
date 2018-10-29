@@ -398,9 +398,9 @@ This commit focuses on improving documentation of the verbs module:
 
 Translated `mia_AT` attributes for verb restrictions:
 
-| English | Italian |
-|---------|---------|
-| `'score'`   | `vedere_punteggio`   |
+|  English  |      Italian       |
+|-----------|--------------------|
+| `'score'` | `vedere_punteggio` |
 
 ## Verb: `'score'`
 
