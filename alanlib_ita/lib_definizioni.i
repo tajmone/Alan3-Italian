@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.8-Alpha, 2018-10-24: Alan 3.0beta6
+--| v0.7.9-Alpha, 2018-10-31: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -709,6 +709,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN abbandonare_partita.      ---> 'quit'
   CAN accendere.                ---> turn_on
   CAN andare_a.                 ---> go_to
+  CAN annusare.                 ---> smell
   CAN aprire.                   ---> open
   CAN aprire_con.               ---> open_with
   CAN ascoltare.                ---> listen + listen0 | ascolta0 + ascolta
@@ -873,8 +874,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN shoot.       -- (at)
   CAN shoot_with.
   CAN sip.
-  CAN smell0.
-  CAN smell.
+--CAN smell0. --------------------> ** ATTRIBUTO ELIMINATO **
   CAN squeeze.
   CAN stand.       -- (up)
   CAN stand_on.
@@ -929,6 +929,7 @@ EVENT check_restriction
       MAKE mia_AT abbandonare_partita.      ---> 'quit'
       MAKE mia_AT accendere.                ---> turn_on
       MAKE mia_AT andare_a.                 ---> go_to
+      MAKE mia_AT annusare.                 ---> smell
       MAKE mia_AT aprire.                   ---> open
       MAKE mia_AT aprire_con.               ---> open_with
       MAKE mia_AT ascoltare.                ---> listen + listen0 | ascolta0 + ascolta
@@ -1089,8 +1090,7 @@ EVENT check_restriction
       MAKE mia_AT shoot.           -- (at)
       MAKE mia_AT shoot_with.
       MAKE mia_AT sip.
-      MAKE mia_AT smell0.
-      MAKE mia_AT smell.
+    --MAKE mia_AT smell0. ------------> ** ATTRIBUTO ELIMINATO **
       MAKE mia_AT squeeze.
       MAKE mia_AT stand.           -- (up)
       MAKE mia_AT stand_on.
@@ -1276,6 +1276,7 @@ EVENT check_restriction
       IF restricted_level OF mia_AT >= 3
         THEN
 
+          MAKE mia_AT NOT annusare.                 ---> smell
           MAKE mia_AT NOT ascoltare.                ---> listen + listen0 | ascolta0 + ascolta
           MAKE mia_AT NOT aspettare.                ---> wait         (+ z)
           MAKE mia_AT NOT domandare_chi_sono_io.    ---> who_am_i
@@ -1300,8 +1301,7 @@ EVENT check_restriction
         --# NOT YET TRANSLATED:
 
         --MAKE mia_AT NOT look_at. -------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
-          MAKE mia_AT NOT smell0.
-          MAKE mia_AT NOT smell.
+        --MAKE mia_AT NOT smell0. --------> ** ATTRIBUTO ELIMINATO **
  
       END IF.
 --==============================================================================

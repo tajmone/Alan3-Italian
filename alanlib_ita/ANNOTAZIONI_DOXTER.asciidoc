@@ -136,10 +136,12 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 | 20260   |           | verbo_chiudi_con             | ==== chiudi_con
 // -----------------------------------------------------------------------------
 | 20300   |           | gruppo_sensi                 | == Azioni Sensoriali
-| 20310   |           | verbo_ascolta0               | ==== ascolta0
-| 20320   |           | verbo_ascolta                | ==== ascolta
-| 20330   |           | verbo_tocca                  | ==== tocca
-| 20340   |           | verbo_tocca_con              | ==== tocca_con
+| 20310   |           | verbo_annusa0                | ==== annusa0
+| 20320   |           | verbo_annusa                 | ==== annusa
+| 20330   |           | verbo_ascolta0               | ==== ascolta0
+| 20340   |           | verbo_ascolta                | ==== ascolta
+| 20350   |           | verbo_tocca                  | ==== tocca
+| 20360   |           | verbo_tocca_con              | ==== tocca_con
 // -----------------------------------------------------------------------------
 | 20400   |           | gruppo_conversare            | == Conversare
 | 20410   |           | verbo_chiedi                 | ==== chiedi

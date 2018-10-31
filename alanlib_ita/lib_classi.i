@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.7.0-Alpha, 2018-10-15: Alan 3.0beta6
+--| v0.7.1-Alpha, 2018-10-31: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -2069,7 +2069,7 @@ EVERY suono IsA OBJECT
   IS NOT raggiungibile.
   IS NOT spostabile.
 
-  VERB smell
+  VERB annusa
     DOES ONLY
        IF THIS IS NOT plurale
 --                                                                              TRANSLATE!
@@ -2077,7 +2077,7 @@ EVERY suono IsA OBJECT
         ELSE "Those are not"
        END IF.
       "something you can smell."
-  END VERB smell.
+  END VERB annusa.
 
 
 END EVERY.

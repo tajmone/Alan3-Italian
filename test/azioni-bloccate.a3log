@@ -135,8 +135,8 @@ Stai portando un cellulare.
 > aspetta
 Il tempo passa.
 
-> smell
-You smell nothing unusual.
+> annusa
+Non senti alcun odore particolare.
 
 > ; ------------------------------------------------------------------------------
 > ; TEST/PASS: Azioni di Livello 3 (azioni extradiegetiche)                             
@@ -181,7 +181,7 @@ Non puoi farlo.
 > aspetta
 Non puoi farlo.
 
-> smell
+> annusa
 Non puoi farlo.
 
 > ; ------------------------------------------------------------------------------
@@ -228,7 +228,7 @@ Non puoi farlo.
 > aspetta
 Non puoi farlo.
 
-> smell
+> annusa
 Non puoi farlo.
 
 > ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

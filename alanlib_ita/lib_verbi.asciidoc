@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.12-Alpha, 2018-10-31: Alan 3.0beta6
+v0.7.13-Alpha, 2018-10-31: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -80,6 +80,8 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 |===================================================================================================================
 | VERBO              | SINONIMI                     | SINTASSI                               |  M  | A |  O  |  B
 | accendi            |                              | accendi (disp)                         |     | 1 |     |
+| annusa0            | odora                        | annusa                                 |     | 0 |     |
+| annusa             | odora                        | annusa (odore)                         |     | 1 |     |
 | apri               |                              | apri (ogg)                             |     | 1 | {X} |
 | apri_con           |                              | apri (ogg) con (strum)                 |     | 2 | {X} |
 | ascolta0           |                              | ascolta                                |     | 0 |     |
@@ -359,6 +361,8 @@ Questo gruppo include i verbi per aprire, chiudere e bloccare:
 
 Questo gruppo include i verbi per le azioni sensoriali:
 
+* `annusa0`
+* `annusa`
 * `ascolta0`
 * `ascolta`
 * `tocca`
@@ -366,13 +370,26 @@ Questo gruppo include i verbi per le azioni sensoriali:
 
 Verbi non tradotti appartenenti a questo gruppo:
 
-* `smell0`
-* `smell`
-* `taste` (oppure in altro gruppo, assieme a `mangia`?)
+* `taste` (oppure in altro gruppo, assieme a `mangia`? in fondo riguarda il
+   senso del gusto)
 
-Il verbo guarda andrebbe in questo gruppo o con `esamina`? 
+Il verbo `guarda` andrebbe in questo gruppo o con `esamina`? 
+
+[NOTE]
+============================================================================
+Il verbo `annusa` è anche definito in `lib_classi.i` sulla classe `suono`
+(per rispondere che i suoni non sono qualcosa che si possa annusare).
+============================================================================
 
 // end::gruppo_sensi[]
+// tag::verbo_annusa0[]
+==== annusa0
+
+// end::verbo_annusa0[]
+// tag::verbo_annusa[]
+==== annusa
+
+// end::verbo_annusa[]
 // tag::verbo_ascolta0[]
 ==== ascolta0
 
@@ -524,8 +541,6 @@ italiano del modulo dei verbi.
 | shout              | scream, yell                       | shout                             | 0 |
 | show               | reveal                             | show (obj) to (act)               | 2 | {x}
 | sip                |                                    | sip (liq)                         | 1 |
-| smell0             |                                    | smell                             | 0 |
-| smell              |                                    | smell (odour)                     | 1 |
 | squeeze            |                                    | squeeze (obj)                     | 1 | {x}
 | stand (up)         |                                    | stand.  stand up.                 | 0 |
 | stand_on           |                                    | stand on (surface)                | 1 |
@@ -592,6 +607,10 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `chiudi`.
 
 * [ ] Descrizione `chiudi_con`.
+
+* [ ] Descrizione `annusa0`.
+
+* [ ] Descrizione `annusa`.
 
 * [ ] Descrizione `ascolta0`.
 

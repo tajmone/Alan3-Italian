@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.7.12-Alpha,</span>
+<span id="revnumber">versione 0.7.13-Alpha,</span>
 <span id="revdate">2018-10-31</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
@@ -510,6 +510,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_azioni_sensoriali">Azioni Sensoriali</a>
 <ul class="sectlevel3">
+<li><a href="#_annusa0">annusa0</a></li>
+<li><a href="#_annusa">annusa</a></li>
 <li><a href="#_ascolta0">ascolta0</a></li>
 <li><a href="#_ascolta">ascolta</a></li>
 <li><a href="#_tocca">tocca</a></li>
@@ -805,6 +807,24 @@ elencati in ordine alfabetico.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>accendi</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">accendi (disp)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>annusa0</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odora</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">annusa</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>annusa</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">odora</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">annusa (odore)</p></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"></td>
@@ -1871,6 +1891,12 @@ luce e dispositivi:</p>
 <div class="ulist">
 <ul>
 <li>
+<p><code>annusa0</code></p>
+</li>
+<li>
+<p><code>annusa</code></p>
+</li>
+<li>
 <p><code>ascolta0</code></p>
 </li>
 <li>
@@ -1890,18 +1916,36 @@ luce e dispositivi:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>smell0</code></p>
-</li>
-<li>
-<p><code>smell</code></p>
-</li>
-<li>
-<p><code>taste</code> (oppure in altro gruppo, assieme a <code>mangia</code>?)</p>
+<p><code>taste</code> (oppure in altro gruppo, assieme a <code>mangia</code>? in fondo riguarda il
+senso del gusto)</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Il verbo guarda andrebbe in questo gruppo o con <code>esamina</code>?</p>
+<p>Il verbo <code>guarda</code> andrebbe in questo gruppo o con <code>esamina</code>?</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Il verbo <code>annusa</code> è anche definito in <code>lib_classi.i</code> sulla classe <code>suono</code>
+(per rispondere che i suoni non sono qualcosa che si possa annusare).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_annusa0"><a class="anchor" href="#_annusa0"></a>annusa0</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_annusa"><a class="anchor" href="#_annusa"></a>annusa</h4>
+
 </div>
 <div class="sect3">
 <h4 id="_ascolta0"><a class="anchor" href="#_ascolta0"></a>ascolta0</h4>
@@ -2402,20 +2446,6 @@ italiano del modulo dei verbi.</p>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>smell0</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">smell</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>smell</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">smell (odour)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>squeeze</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">squeeze (obj)</p></td>
@@ -2578,6 +2608,12 @@ italiano del modulo dei verbi.</p>
 <p><i class="fa fa-square-o"></i> Descrizione <code>chiudi_con</code>.</p>
 </li>
 <li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>annusa0</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>annusa</code>.</p>
+</li>
+<li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>ascolta0</code>.</p>
 </li>
 <li>
@@ -2621,7 +2657,7 @@ italiano del modulo dei verbi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.7.12-Alpha<br>
+Versione 0.7.13-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.12-Alpha, 2018-10-31: Alan 3.0beta6
+--| v0.7.13-Alpha, 2018-10-31: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -697,6 +697,8 @@ END VERB ringraziamenti.
 --| | VERBO              | SINONIMI                     | SINTASSI                               |  M  | A |  O  |  B
 --~ +--------------------+------------------------------+----------------------------------------+-----+---+-----+-----+
 --| | accendi            |                              | accendi (disp)                         |     | 1 |     |
+--| | annusa0            | odora                        | annusa                                 |     | 0 |     |
+--| | annusa             | odora                        | annusa (odore)                         |     | 1 |     |
 --| | apri               |                              | apri (ogg)                             |     | 1 | {X} |
 --| | apri_con           |                              | apri (ogg) con (strum)                 |     | 2 | {X} |
 --| | ascolta0           |                              | ascolta                                |     | 0 |     |
@@ -1480,6 +1482,8 @@ END ADD TO.
 --| 
 --| Questo gruppo include i verbi per le azioni sensoriali:
 --| 
+--| * `annusa0`
+--| * `annusa`
 --| * `ascolta0`
 --| * `ascolta`
 --| * `tocca`
@@ -1487,15 +1491,79 @@ END ADD TO.
 --| 
 --| Verbi non tradotti appartenenti a questo gruppo:
 --| 
---| * `smell0`
---| * `smell`
---| * `taste` (oppure in altro gruppo, assieme a `mangia`?)
+--| * `taste` (oppure in altro gruppo, assieme a `mangia`? in fondo riguarda il
+--|    senso del gusto)
 --| 
---| Il verbo guarda andrebbe in questo gruppo o con `esamina`? 
+--| Il verbo `guarda` andrebbe in questo gruppo o con `esamina`? 
+--| 
+--| [NOTE]
+--| ============================================================================
+--| Il verbo `annusa` è anche definito in `lib_classi.i` sulla classe `suono`
+--| (per rispondere che i suoni non sono qualcosa che si possa annusare).
+--| ============================================================================
 --<
 
+-->verbo_annusa0(20310)  @ANNUSA --> @SMELL (smell0)
+--~=============================================================================
+--| ==== annusa0
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `annusa0`.
+--<
 
--->verbo_ascolta0(20310)  @ASCOLTA0 ---> @LISTEN
+-- SYNTAX smell0 = smell.
+
+
+SYNTAX annusa0 = annusa.
+
+SYNONYMS odora = annusa.
+
+VERB annusa0
+  CHECK mia_AT CAN annusare
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES
+-- @TODO: Crea un attributo condiviso per la risposta                           OPTIMIZE!
+    "Non senti alcun odore particolare." -- preso da i6.
+ -- "You smell nothing unusual."
+END VERB annusa0.
+
+
+-->verbo_annusa(20320)  @ANNUSA (ODORE) --> @SMELL (+ ogg)
+--~=============================================================================
+--| ==== annusa
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `annusa`.
+--<
+
+-- @TODO: Perché questo verbo non usa 'ogg' al posto di 'odore'?                VERIFY!
+
+SYNTAX annusa = annusa (odore)
+  WHERE odore IsA THING
+    ELSE
+      IF odore IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "annusare." -- #odorare?
+
+
+ADD TO EVERY THING
+  VERB annusa
+    CHECK mia_AT CAN annusare
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    DOES
+    "Non senti alcun odore particolare." -- preso da i6.
+ -- "You smell nothing unusual."
+  END VERB annusa.
+END ADD TO.
+
+
+
+-->verbo_ascolta0(20330)  @ASCOLTA0 ---> @LISTEN
 --~=============================================================================
 --| ==== ascolta0
 --~=============================================================================
@@ -1520,7 +1588,7 @@ END VERB ascolta0.
 
 
 
--->verbo_ascolta(20320)  @ASCOLTA (OGG) ---> @LISTEN TO
+-->verbo_ascolta(20340)  @ASCOLTA (OGG) ---> @LISTEN TO
 --~=============================================================================
 --| ==== ascolta
 --~=============================================================================
@@ -1578,7 +1646,7 @@ ADD TO EVERY THING
   END VERB ascolta.
 END ADD TO.
 
--->verbo_tocca(20330)  @TOCCA ---> @TOUCH
+-->verbo_tocca(20350)  @TOCCA ---> @TOUCH
 --~=============================================================================
 --| ==== tocca
 --~=============================================================================
@@ -1649,7 +1717,7 @@ ADD TO EVERY THING
   END VERB tocca.
 END ADD TO.
 
--->verbo_tocca_con(20340)  @TOCCA CON ---> @TOUCH WITH
+-->verbo_tocca_con(20360)  @TOCCA CON ---> @TOUCH WITH
 --~=============================================================================
 --| ==== tocca_con
 --~=============================================================================
@@ -6549,8 +6617,8 @@ END VERB rispondi_Sì.
 --~*| sit (down)         |                                    | sit.  sit down.                   | 0 |
 --~*| sit_on             |                                    | sit on (surface)                  | 1 |
 --~*| sleep              | rest                               | sleep                             | 0 |
---| | smell0             |                                    | smell                             | 0 |
---| | smell              |                                    | smell (odour)                     | 1 |
+--~*| smell0             |                                    | smell                             | 0 |
+--~*| smell              |                                    | smell (odour)                     | 1 |
 --| | squeeze            |                                    | squeeze (obj)                     | 1 | {x}
 --| | stand (up)         |                                    | stand.  stand up.                 | 0 |
 --| | stand_on           |                                    | stand on (surface)                | 1 |
@@ -9473,57 +9541,6 @@ END ADD TO.
 
 -- See also the verb 'drink'.
 
-
-
--- ==============================================================
-
-
--- @SMELL (smell0)
-
-
--- ==============================================================
-
-
-SYNTAX smell0 = smell.
-
-
-VERB smell0
-  CHECK mia_AT CAN smell0
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES
-    "You smell nothing unusual."
-END VERB smell0.
-
-
-
--- ==============================================================
-
-
--- @SMELL (+ ogg)
-
-
--- ==============================================================
-
-
-SYNTAX smell = smell (odore)
-  WHERE odore IsA THING
-    ELSE
-      IF odore IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "annusare." -- #odorare?
-
-
-ADD TO EVERY THING
-  VERB smell
-    CHECK mia_AT CAN smell
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    DOES
-      "You smell nothing unusual."
-  END VERB smell.
-END ADD TO.
 
 
 

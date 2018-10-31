@@ -439,8 +439,8 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `sit`            | `sedersi`                 |
 | `sit_on`         | `sedersi_su`              |
 | `sleep`          | `dormire`                 |
-| `smell`          |                           |
-| `smell0`         |                           |
+| `smell`          | `annusare`                |
+| ~~`smell0`~~     |                           |
 | `squeeze`        |                           |
 | `stand`          |                           |
 | `stand_on`       |                           |
