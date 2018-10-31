@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.11-Alpha, 2018-10-25: Alan 3.0beta6
+v0.7.12-Alpha, 2018-10-31: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -299,6 +299,152 @@ gruppo specifico.
 Comandi diretti al personaggio protagonista per interagire con l'avventura.
 
 // end::comandi_gioco[]
+// tag::gruppo_accendi[]
+=== Accensione e Spegnimento
+
+Questo gruppo include i verbi per l'accensione e lo spegnimento di fonti di
+luce e dispositivi:
+
+* `accendi`
+* `spegni`
+
+// end::gruppo_accendi[]
+// tag::verbo_accendi[]
+==== accendi
+
+// end::verbo_accendi[]
+// tag::verbo_spegni[]
+==== spegni
+
+// end::verbo_spegni[]
+// tag::gruppo_apri[]
+=== Apertura e Chiusura
+
+Questo gruppo include i verbi per aprire, chiudere e bloccare:
+
+* `apri`
+* `apri_con`
+* `blocca`
+* `blocca_con`
+* `chiudi`
+* `chiudi_con`
+
+// end::gruppo_apri[]
+// tag::verbo_apri[]
+==== apri
+
+// end::verbo_apri[]
+// tag::verbo_apri_con[]
+==== apri_con
+
+// end::verbo_apri_con[]
+// tag::verbo_blocca[]
+==== blocca
+
+// end::verbo_blocca[]
+// tag::verbo_blocca_con[]
+==== blocca_con
+
+// end::verbo_blocca_con[]
+// tag::verbo_chiudi[]
+==== chiudi
+
+// end::verbo_chiudi[]
+// tag::verbo_chiudi_con[]
+==== chiudi_con
+
+// end::verbo_chiudi_con[]
+// tag::gruppo_sensi[]
+=== Azioni Sensoriali
+
+Questo gruppo include i verbi per le azioni sensoriali:
+
+* `ascolta0`
+* `ascolta`
+* `tocca`
+* `tocca_con`
+
+Verbi non tradotti appartenenti a questo gruppo:
+
+* `smell0`
+* `smell`
+* `taste` (oppure in altro gruppo, assieme a `mangia`?)
+
+Il verbo guarda andrebbe in questo gruppo o con `esamina`? 
+
+// end::gruppo_sensi[]
+// tag::verbo_ascolta0[]
+==== ascolta0
+
+// end::verbo_ascolta0[]
+// tag::verbo_ascolta[]
+==== ascolta
+
+// end::verbo_ascolta[]
+// tag::verbo_tocca[]
+==== tocca
+
+// end::verbo_tocca[]
+// tag::verbo_tocca_con[]
+==== tocca_con
+
+// end::verbo_tocca_con[]
+// tag::gruppo_conversare[]
+=== Conversare
+
+Questo gruppo include i verbi per conversare:
+
+* `chiedi` (da spostare in altro gruppo!)
+* `chiedi_errore` (_idem_)
+* `domanda`
+* `dì`
+* `dì_a`
+* `parla`
+* `parla_a`
+* `racconta`
+* `rispondi`
+
+[NOTE]
+============================================================================
+I verbo `chiedi` e `chiedi_errore` andrebbero spostati in un altro gruppo dato
+che non riguardano la conversazione ma il domandare un oggetto a un altro
+PNG (chiedere per avere, anziché per sapere). Per ora li lascio qui, finché
+non decido in quale gruppo spostarli.
+============================================================================
+
+// end::gruppo_conversare[]
+// tag::verbo_chiedi[]
+==== chiedi
+
+// end::verbo_chiedi[]
+// tag::verbo_dire[]
+==== dì
+
+// end::verbo_dire[]
+// tag::verbo_dire_a[]
+==== dì_a
+
+// end::verbo_dire_a[]
+// tag::verbo_domanda[]
+==== domanda
+
+// end::verbo_domanda[]
+// tag::verbo_parla[]
+==== parla
+
+// end::verbo_parla[]
+// tag::verbo_parla_con[]
+==== parla_con
+
+// end::verbo_parla_con[]
+// tag::verbo_racconta[]
+==== racconta
+
+// end::verbo_racconta[]
+// tag::verbo_rispondi[]
+==== rispondi
+
+// end::verbo_rispondi[]
 // tag::comandi_domande[]
 
 == Verbi di Domande
@@ -430,6 +576,46 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `ricomincia_partita`.
 
 * [ ] Descrizione `ringraziamenti`.
+
+* [ ] Descrizione `accendi`.
+
+* [ ] Descrizione `spegni`.
+
+* [ ] Descrizione `apri`.
+
+* [ ] Descrizione `apri_con`.
+
+* [ ] Descrizione `blocca`.
+
+* [ ] Descrizione `blocca_con`.
+
+* [ ] Descrizione `chiudi`.
+
+* [ ] Descrizione `chiudi_con`.
+
+* [ ] Descrizione `ascolta0`.
+
+* [ ] Descrizione `ascolta`.
+
+* [ ] Descrizione `tocca`.
+
+* [ ] Descrizione `tocca_con`.
+
+* [ ] Descrizione `chiedi`.
+
+* [ ] Descrizione `dì`.
+
+* [ ] Descrizione `dì_a`.
+
+* [ ] Descrizione `domanda`.
+
+* [ ] Descrizione `parla`.
+
+* [ ] Descrizione `parla_con`.
+
+* [ ] Descrizione `racconta`.
+
+* [ ] Descrizione `rispondi`.
 
 // end::todo_checklist[]
 

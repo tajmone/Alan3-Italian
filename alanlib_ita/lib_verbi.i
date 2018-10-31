@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.11-Alpha, 2018-10-25: Alan 3.0beta6
+--| v0.7.12-Alpha, 2018-10-31: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -782,14 +782,32 @@ END VERB ringraziamenti.
 --| |===================================================================================================================
 --<
 
+-->gruppo_accendi(20100)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Accensione e Spegnimento
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi per l'accensione e lo spegnimento di fonti di
+--| luce e dispositivi:
+--| 
+--| * `accendi`
+--| * `spegni`
+--<
 
--- ==============================================================
-
-
--- @ACCENDI --- > @TURN ON
-
-
--- ==============================================================
+-->verbo_accendi(20110)  @ACCENDI --- > @TURN ON
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== accendi
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `accendi`.
+--<
 
 -- SYNTAX  turn_on = turn 'on' (disp)
 --         turn_on = switch 'on' (disp).
@@ -837,15 +855,87 @@ ADD TO EVERY OBJECT
   END VERB accendi.
 END ADD TO.
 
+-->verbo_spegni(20120)  @SPEGNI ---> @TURN OFF
+--~=============================================================================
+--| ==== spegni
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `spegni`.
+--<
 
--- ==============================================================
+-- # syn/synt: 'spengi'?
+
+-- SYNTAX turn_off = turn off (disp)
+--        turn_off = switch off (disp).
+--        turn_off = turn (disp) off.
+--        turn_off = switch (disp) off.
+
+----- Only devices and lightsources can be turned on and off. These classes
+----- are defined in 'classes.i' with proper checks for 'on' and 'NOT on',
+----- 'lit' and 'NOT illuminato'.
+
+-- @TODO: Dovrei cambiare il param (disp) in qualcos'altro perché ora i verbi   FIXME!
+--        corrispettivi (in "lib_classi.i") si applicano sia ai dispositivi
+--        che alle fonti di luce!
+
+SYNTAX spegni = spegni (disp)
+  WHERE disp IsA OBJECT
+    ELSE
+      IF disp IS NOT plurale
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "spegnere."
 
 
--- @APRI ---> @OPEN
+-- Note that 'switch' is not declared a synonym for 'turn'.
+-- This is because 'turn' has also other meanings, for example 'turn page' which is
+-- not equal with 'switch page'.
+-- A separate 'switch' verb is declared in 'classes.i', classes 'device' and 'lightsource'.
+-- This verb merely covers cases where the player forgets to type 'on' or 'off'.
 
 
--- ==============================================================
+ADD TO EVERY OBJECT
+  VERB spegni
+    CHECK mia_AT CAN spegnere
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    DOES
+      IF disp IS NOT plurale
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "spegnere."
+  END VERB spegni.
+END ADD TO.
 
+-->gruppo_apri(20200)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Apertura e Chiusura
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi per aprire, chiudere e bloccare:
+--| 
+--| * `apri`
+--| * `apri_con`
+--| * `blocca`
+--| * `blocca_con`
+--| * `chiudi`
+--| * `chiudi_con`
+--<
+
+-->verbo_apri(20210)  @APRI ---> @OPEN
+--~=============================================================================
+--| ==== apri
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `apri`.
+--<
 
 SYNTAX apri = apri (ogg)
   WHERE ogg IsA OBJECT
@@ -923,15 +1013,14 @@ ADD TO EVERY OBJECT
   END VERB apri.
 END ADD TO.
 
-
-
--- ==============================================================
-
-
--- @APRI CON ---> @OPEN WITH
-
-
--- ==============================================================
+-->verbo_apri_con(20220)   @APRI CON ---> @OPEN WITH
+--~=============================================================================
+--| ==== apri_con
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `apri_con`.
+--<
 
 -- SYNTAX open_with = open (ogg) 'with' (strum)
 
@@ -1030,20 +1119,390 @@ ADD TO EVERY OBJECT
             END IF.
           ELSE "Non puoi aprire" SAY THE ogg. "con" SAY THE strum. "."
         END IF.
-
-
     END VERB apri_con.
 END ADD TO.
 
+-->verbo_blocca(20230)  @BLOCCA ---> @LOCK
+--~=============================================================================
+--| ==== blocca
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `blocca`.
+--<
 
 
--- ==============================================================
+SYNTAX blocca = blocca (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "bloccare."
+
+SYNONYMS
+  serra = blocca.
 
 
--- @ASCOLTA0 ---> @LISTEN
+ADD TO EVERY OBJECT
+  VERB blocca
+    CHECK mia_AT CAN bloccare
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    AND ogg IS bloccabile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+        END IF.
+        "bloccare."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
+            END IF.
+        END IF.
+    AND ogg IS NOT bloccato
+      ELSE
+        IF ogg IS NOT femminile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg_già_bloccato_ms  OF mia_AT.
+              ELSE SAY  ogg_già_bloccato_mp  OF mia_AT.
+            END IF.
+          ELSE
+            IF ogg IS NOT plurale
+              THEN SAY  ogg_già_bloccato_fs  OF mia_AT.
+              ELSE SAY  ogg_già_bloccato_fp  OF mia_AT.
+            END IF.
+        END IF.
+  DOES
+    IF chiave_abbinata OF ogg IN hero
+      THEN MAKE ogg bloccato.
+        "(con" SAY THE chiave_abbinata OF ogg. "$$)$n"
+        "Tu"
+        IF ogg IS aperto
+          THEN "chiudi e"
+            MAKE ogg NOT aperto.
+        END IF.
+
+        "blocchi" SAY THE ogg. "."
+    ELSE
+      SAY  specificare_CON_cosa  OF mia_AT. "bloccare" SAY THE ogg.
+   -- ELSE "Devi specificare con cosa vuoi bloccare" SAY THE ogg.
+   -- ELSE "You have to state what you want to lock" SAY THE ogg. "with."
+    END IF.
+
+  END VERB blocca.
+END ADD TO.
+
+-->verbo_blocca_con(20240)   @BLOCCA CON ---> @LOCK WITH
+--~=============================================================================
+--| ==== blocca_con
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `blocca_con`.
+--<
 
 
--- ==============================================================
+SYNTAX blocca_con = blocca (ogg) con (chiave)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "bloccare."
+  AND chiave IsA OBJECT
+    ELSE
+      IF chiave IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa con cui poter"
+        THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+        ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
+      END IF.
+      "bloccare." -- @TODO: ".. altre cose"??                                   IMPROVE!
+
+
+ADD TO EVERY OBJECT
+    VERB blocca_con
+        WHEN ogg
+      CHECK mia_AT CAN bloccare_con
+        ELSE SAY  azione_bloccata  OF mia_AT.
+      AND ogg IS bloccabile
+        ELSE
+          IF ogg IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+          END IF.
+          "bloccare."
+      AND chiave IS esaminabile
+        ELSE
+          IF chiave IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa con cui poter"
+            THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+            ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
+          END IF.
+          "bloccare." -- @TODO: ".. altre cose"??                               IMPROVE!
+      AND ogg <> chiave
+        ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
+      AND ogg IS NOT bloccato
+        ELSE
+          IF ogg IS NOT femminile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  ogg_già_bloccato_ms  OF mia_AT.
+                ELSE SAY  ogg_già_bloccato_mp  OF mia_AT.
+              END IF.
+            ELSE
+              IF ogg IS NOT plurale
+                THEN SAY  ogg_già_bloccato_fs  OF mia_AT.
+                ELSE SAY  ogg_già_bloccato_fp  OF mia_AT.
+              END IF.
+          END IF.
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
+              END IF.
+          END IF.
+      AND chiave IN hero
+        ELSE SAY  non_possiedi_ogg2  OF mia_AT.
+      AND chiave = chiave_abbinata OF ogg -- @TODO:                             TRANSLATE!
+        ELSE SAY  check_door_matching_key  OF mia_AT.
+
+      DOES
+        MAKE ogg bloccato. "Tu"
+        IF ogg IS aperto
+          THEN "chiudi e"
+            MAKE ogg NOT aperto.
+        END IF.
+        "blocchi" SAY THE ogg. "con" SAY THE chiave. "."
+    END VERB blocca_con.
+END ADD TO.
+
+-->verbo_chiudi(20260)    @CHIUDI ---> @CLOSE (+ shut)
+--~=============================================================================
+--| ==== chiudi
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `chiudi`.
+--<
+
+
+SYNTAX chiudi = chiudi (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "chiudere."
+
+
+-- SYNONYMS shut = close.
+
+
+ADD TO EVERY OBJECT
+  VERB chiudi
+    CHECK mia_AT CAN chiudere
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    AND ogg IS apribile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+        END IF.
+        "chiudere."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
+            END IF.
+        END IF.
+    AND ogg IS aperto
+      ELSE
+        IF ogg IS NOT femminile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg_già_chiuso_ms  OF mia_AT.
+              ELSE SAY  ogg_già_chiuso_mp  OF mia_AT.
+            END IF.
+          ELSE
+            IF ogg IS NOT plurale
+              THEN SAY  ogg_già_chiuso_fs  OF mia_AT.
+              ELSE SAY  ogg_già_chiuso_fp  OF mia_AT.
+            END IF.
+        END IF.
+
+    DOES
+          MAKE ogg NOT aperto.
+          "Chiudi" SAY THE ogg. "."
+  END VERB chiudi.
+END ADD TO.
+
+
+-->verbo_chiudi_con(20260)    @CHIUDI CON ---> @CLOSE WITH
+--~=============================================================================
+--| ==== chiudi_con
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `chiudi_con`.
+--<
+
+
+SYNTAX chiudi_con = chiudi (ogg) con (strum)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "chiudere."
+  AND strum IsA OBJECT
+    ELSE
+      IF strum IS NOT plurale
+        THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+        ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
+      END IF.
+      "chiudere" SAY THE ogg. "." -- TODO:                                      IMPROVE!
+
+
+ADD TO EVERY OBJECT
+  VERB chiudi_con
+    WHEN ogg
+      CHECK mia_AT CAN chiudere_con
+        ELSE SAY  azione_bloccata  OF mia_AT.
+      AND ogg IS apribile
+        ELSE
+          IF ogg IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+          END IF.
+          "chiudere."
+      AND strum IS esaminabile
+        ELSE
+          IF strum IS NOT plurale
+            THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+            ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
+          END IF.
+          "chiudere" SAY THE ogg. "."
+      AND ogg <> strum
+        ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
+      AND strum IN hero
+        ELSE SAY  non_possiedi_ogg2  OF mia_AT.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
+              END IF.
+        END IF.
+      AND ogg IS aperto
+        ELSE
+          IF ogg IS NOT femminile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  ogg_già_chiuso_ms  OF mia_AT.
+                ELSE SAY  ogg_già_chiuso_mp  OF mia_AT.
+              END IF.
+            ELSE
+              IF ogg IS NOT plurale
+                THEN SAY  ogg_già_chiuso_fs  OF mia_AT.
+                ELSE SAY  ogg_già_chiuso_fp  OF mia_AT.
+              END IF.
+          END IF.
+
+      DOES
+        "Non puoi chiudere" SAY THE ogg. "con" SAY THE strum. "."
+  END VERB chiudi_con.
+END ADD TO.
+
+-->gruppo_sensi(20300)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Azioni Sensoriali
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi per le azioni sensoriali:
+--| 
+--| * `ascolta0`
+--| * `ascolta`
+--| * `tocca`
+--| * `tocca_con`
+--| 
+--| Verbi non tradotti appartenenti a questo gruppo:
+--| 
+--| * `smell0`
+--| * `smell`
+--| * `taste` (oppure in altro gruppo, assieme a `mangia`?)
+--| 
+--| Il verbo guarda andrebbe in questo gruppo o con `esamina`? 
+--<
+
+
+-->verbo_ascolta0(20310)  @ASCOLTA0 ---> @LISTEN
+--~=============================================================================
+--| ==== ascolta0
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `ascolta0`.
+--<
 
 -- SYNTAX listen0 = listen.
 
@@ -1061,13 +1520,15 @@ END VERB ascolta0.
 
 
 
--- ==============================================================
+-->verbo_ascolta(20320)  @ASCOLTA (OGG) ---> @LISTEN TO
+--~=============================================================================
+--| ==== ascolta
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `ascolta`.
+--<
 
-
--- @ASCOLTA (OGG) ---> @LISTEN TO
-
-
--- ==============================================================
 
 -- SYNTAX listen = listen 'to' (ogg)!
 
@@ -1116,6 +1577,664 @@ ADD TO EVERY THING
       END IF.
   END VERB ascolta.
 END ADD TO.
+
+-->verbo_tocca(20330)  @TOCCA ---> @TOUCH
+--~=============================================================================
+--| ==== tocca
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `tocca`.
+--<
+
+
+-- @NOTA: i6 accetta come sinonimi di 'tocca':
+--        'accarezza', 'palpa', 'carezza'.
+
+-- SYNTAX touch = touch (ogg)
+-- SYNONYMS feel = touch.
+
+
+SYNTAX tocca = tocca (ogg)
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "toccare."
+
+SYNONYMS accarezza, carezza = tocca.
+
+
+ADD TO EVERY THING
+  VERB tocca
+    CHECK mia_AT CAN toccare
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+        END IF.
+        "toccare."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
+            END IF.
+        END IF.
+      AND ogg <> hero
+        -- "Farlo non servirebbe a nulla."
+        ELSE SAY  mia_AT:non_servirebbe_a_nulla.
+--                                                                              TRANSLATE!
+      AND ogg IS inanimato
+        ELSE SAY  check_obj_inanimate2  OF mia_AT.
+      DOES
+        "Tocchi $+1 ma non senti nulla di strano."
+     -- "You feel nothing unexpected."
+  END VERB tocca.
+END ADD TO.
+
+-->verbo_tocca_con(20340)  @TOCCA CON ---> @TOUCH WITH
+--~=============================================================================
+--| ==== tocca_con
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `tocca_con`.
+--<
+
+-- SYNTAX touch_with = touch (ogg) 'with' (strum)
+
+SYNTAX tocca_con = tocca (ogg) con (strum)
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "toccare."
+  AND strum IsA OBJECT
+    ELSE
+      IF strum IS NOT plurale
+        THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+        ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
+      END IF.
+      "toccare" SAY THE ogg. "."
+
+
+ADD TO EVERY THING
+  VERB tocca_con
+    WHEN ogg
+      CHECK mia_AT CAN toccare_con
+        ELSE SAY  azione_bloccata  OF mia_AT.
+      AND ogg IS esaminabile
+        ELSE
+          IF ogg IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+          END IF.
+          "toccare."
+      AND strum IS esaminabile
+        ELSE
+          IF strum IS NOT plurale
+            THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
+            ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
+        END IF.
+        "toccare" SAY THE ogg. "."
+--                                                                              TRANSLATE!
+      AND ogg <> strum
+        ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
+--                                                                              TRANSLATE!
+      AND strum <> hero
+        ELSE SAY  check_obj2_not_hero1  OF mia_AT.
+      AND strum IN hero
+        ELSE SAY  non_possiedi_ogg2  OF mia_AT.
+--                                                                              TRANSLATE!
+      AND ogg IS inanimato
+        ELSE SAY  check_obj_inanimate2  OF mia_AT.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
+              END IF.
+          END IF.
+      DOES
+        "Tocchi $+1 con $+2 ma non succede nulla."
+     -- "You touch" SAY THE ogg. "with" SAY THE strum. ". Nothing special happens."
+  END VERB tocca_con.
+END ADD TO.
+
+-->gruppo_conversare(20400)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Conversare
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi per conversare:
+--| 
+--| * `chiedi` (da spostare in altro gruppo!)
+--| * `chiedi_errore` (_idem_)
+--| * `domanda`
+--| * `dì`
+--| * `dì_a`
+--| * `parla`
+--| * `parla_a`
+--| * `racconta`
+--| * `rispondi`
+--| 
+--| [NOTE]
+--| ============================================================================
+--| I verbo `chiedi` e `chiedi_errore` andrebbero spostati in un altro gruppo dato
+--| che non riguardano la conversazione ma il domandare un oggetto a un altro
+--| PNG (chiedere per avere, anziché per sapere). Per ora li lascio qui, finché
+--| non decido in quale gruppo spostarli.
+--| ============================================================================
+--<
+
+-->verbo_chiedi(20410)  @CHIEDI ---> @ASK FOR
+--~=============================================================================
+--| ==== chiedi
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `chiedi`.
+--<
+
+-- SYNTAX ask_for = ask (act) 'for' (obj)
+-- SYNTAX ask_for_error = ask 'for' (obj)
+
+SYNTAX  chiedi = chiedi a (png) (ogg)
+  WHERE png IsA ACTOR
+    ELSE
+      IF png IS NOT plurale
+--                                                                              TRANSLATE!
+        THEN SAY  illegal_parameter_talk_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_talk_pl  OF mia_AT.
+      END IF.
+  AND ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+--                                                                              TRANSLATE!
+        THEN SAY  illegal_parameter_for_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_for_pl  OF mia_AT.
+      END IF.
+
+        chiedi = chiedi (ogg) a (png).
+
+ADD TO EVERY ACTOR
+  VERB chiedi
+      WHEN png
+      CHECK mia_AT CAN chiedere
+        ELSE SAY  azione_bloccata  OF mia_AT.
+      AND png <> hero
+--                                                                              TRANSLATE!
+        ELSE SAY  check_obj_not_hero1  OF mia_AT.
+          AND png CAN parlare
+              ELSE
+          IF png IS NOT plurale
+--                                                                              TRANSLATE!
+            THEN SAY  check_act_can_talk_sg  OF mia_AT.
+            ELSE SAY  check_act_can_talk_pl  OF mia_AT.
+          END IF.
+      AND ogg IS esaminabile
+        ELSE
+          IF ogg IS NOT plurale
+--                                                                              TRANSLATE!
+            THEN SAY  check_obj2_suitable_for_sg  OF mia_AT.
+            ELSE SAY  check_obj2_suitable_for_pl  OF mia_AT.
+          END IF.
+      AND ogg NOT IN hero
+--                                                                              TRANSLATE!
+        ELSE SAY  check_obj2_not_in_hero3  OF mia_AT.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
+      AND png IS NOT distante
+        ELSE
+          IF png IS NOT plurale
+            THEN SAY  ogg1_distante_sg  OF mia_AT.
+            ELSE SAY  ogg1_distante_pl  OF mia_AT.
+          END IF.
+      AND ogg IS prendibile
+--                                                                              TRANSLATE!
+        ELSE SAY  check_obj2_takeable2  OF mia_AT.
+
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+--                                                                              TRANSLATE!
+            THEN SAY  check_obj_reachable_ask  OF mia_AT.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
+              END IF.
+          END IF.
+      AND ogg IS NOT scenario
+        ELSE
+          IF ogg IS NOT plurale
+--                                                                              TRANSLATE!
+            THEN SAY  check_obj2_not_scenery_sg  OF mia_AT.
+            ELSE SAY  check_obj2_not_scenery_pl  OF mia_AT.
+          END IF.
+      DOES
+        -- Preserviamo copia dello stato di condiscendenza attuale del PNG:
+        IF png IS condiscendente
+          THEN MAKE mia_AT temp_condiscendente.
+          ELSE MAKE mia_AT NOT temp_condiscendente.
+        END IF.
+        -- Rendiamo temporaneamente condiscendente il PNG affinché sia possibile
+        -- rimuovere un oggetto contenuto da esso: 
+        MAKE png condiscendente.
+        LOCATE ogg IN hero.
+--                                                                              TRANSLATE!
+        "$+1 ti"
+        IF png IS NOT plurale
+          THEN "dà"
+          ELSE "danno"
+        END IF.
+        "$+2."
+     -- SAY THE png. "gives" SAY THE ogg. "to you."
+        
+        -- Ora ripristiniamo lo stato di condiscendenza originale del PNG:
+        IF mia_AT IS NOT temp_condiscendente
+          THEN MAKE png NOT condiscendente.
+        END IF.
+  END VERB chiedi.
+END ADD TO.
+
+
+
+--- another 'ask_for' formulation added to guide players to use the right phrasing:
+
+
+SYNTAX chiedi_errore = chiedi (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      -- "Per chiedere qualcosa a qualcuno usa CHIEDI A PERSONA OGGETTO."
+      SAY  per_chiedere_qlco_USA  OF mia_AT.
+    -- "Please use the formulation ASK PERSON FOR THING to ask somebody for
+    --  something."
+
+
+ADD TO EVERY OBJECT
+  VERB chiedi_errore
+    DOES
+      -- "Per chiedere qualcosa a qualcuno usa CHIEDI A PERSONA OGGETTO."
+      SAY  per_chiedere_qlco_USA  OF mia_AT.
+  END VERB chiedi_errore.
+END ADD TO.
+
+-->verbo_dire(20420)  @DÌ ---> @SAY
+--~=============================================================================
+--| ==== dì
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `dì`.
+--<
+
+
+-- SYNTAX 'say' = 'say' (topic)
+
+SYNTAX dì = dì (argomento)
+  WHERE argomento IsA STRING
+    ELSE SAY  illegal_parameter_string  OF mia_AT.
+
+
+ADD TO EVERY STRING
+  VERB dì
+    CHECK mia_AT CAN dire
+      ELSE SAY  azione_bloccata  OF mia_AT.
+        DOES
+          "Dici ""$1"", ma non succede nulla."
+       -- "Nothing happens."
+  END VERB dì.
+END ADD TO.
+
+
+-->verbo_dire_a(20430)  @DÌ A ---> @SAY TO
+--~=============================================================================
+--| ==== dì_a
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `dì_a`.
+--<
+
+
+-- SYNTAX say_to = 'say' (topic) 'to' (act)
+
+SYNTAX  dì_a = dì (argomento) a (png)
+  WHERE argomento IsA STRING
+    ELSE SAY  illegal_parameter_string  OF mia_AT.
+  AND png IsA ACTOR
+    ELSE
+      IF png IS NOT plurale
+        THEN SAY  illegal_parameter_talk_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_talk_pl  OF mia_AT.
+      END IF.
+
+        dì_a = dì a (png) (argomento).
+
+ADD TO EVERY ACTOR
+  VERB dì_a
+    WHEN png
+      CHECK mia_AT CAN dire_a
+        ELSE SAY  azione_bloccata  OF mia_AT.
+      AND png <> hero
+        ELSE SAY  check_obj2_not_hero1  OF mia_AT.
+      AND png CAN parlare
+        ELSE
+          IF png IS NOT plurale
+            THEN SAY  check_act_can_talk_sg  OF mia_AT.
+            ELSE SAY  check_act_can_talk_pl  OF mia_AT.
+          END IF.
+      AND png IS NOT distante
+        ELSE
+          IF png IS NOT plurale
+            THEN SAY  ogg1_distante_sg  OF mia_AT.
+            ELSE SAY  ogg1_distante_pl  OF mia_AT.
+          END IF.
+      DOES
+        "$+2 non sembra"
+        IF png IS plurale
+          THEN "$$no"
+        END IF.
+        "interessat$$" SAY png:vocale. "."
+     -- IF png IS NOT plurale
+     --   THEN "doesn't look"
+     --   ELSE "don't look"
+     -- END IF.
+     -- "interested."
+  END VERB dì_a.
+END ADD TO.
+
+
+-->verbo_domanda(20440)  @DOMANDA @ASK (= enquire, inquire, interrogate)
+--~=============================================================================
+--| ==== domanda
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `domanda`.
+--<
+
+-- @TODO SININOMI: interroga su?
+
+-- SYNTAX ask = ask (png) about (argomento)!
+--        ask = enquire (png) about (argomento)!.
+--        ask = inquire (png) about (argomento)!.
+--        ask = interrogate (png) about (argomento)!.
+
+SYNTAX  domanda = domanda a (png) di (argomento)!
+  WHERE png IsA ACTOR
+    ELSE
+      IF png IS NOT plurale
+--                                                                              TRANSLATE!
+        THEN SAY  illegal_parameter_talk_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_talk_pl  OF mia_AT.
+      END IF.
+  AND argomento IsA THING
+    ELSE
+      IF argomento IS NOT plurale
+--                                                                              TRANSLATE!
+        THEN SAY  illegal_parameter_about_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_about_pl  OF mia_AT.
+      END IF.
+
+        domanda = domanda a (png) riguardo (argomento)!.
+        domanda = chiedi a (png) di (argomento)!.
+        domanda = chiedi a (png) riguardo (argomento)!.
+
+  -- Ordine dei parametri invertito:
+        domanda = domanda di (argomento)! a (png).
+        domanda = domanda riguardo (argomento)! a (png).
+        domanda = chiedi di (argomento)! a (png).
+        domanda = chiedi riguardo (argomento)! a (png).
+
+SYNONYMS
+  circa = riguardo.
+  -- Above, we define the alternative verbs in the syntax rather than as synonyms,
+  -- as the verb 'ask_for' below doesn't sound correct with these alternatives allowed.
+
+
+ADD TO EVERY ACTOR
+  VERB domanda
+    WHEN png
+      CHECK mia_AT CAN domandare
+        ELSE SAY  azione_bloccata  OF mia_AT.
+      AND png <> hero
+--                                                                              TRANSLATE!
+        ELSE SAY  check_obj_not_hero1  OF mia_AT.
+      AND png CAN parlare
+        ELSE
+          IF png IS NOT plurale
+--                                                                              TRANSLATE!
+            THEN SAY  check_act_can_talk_sg  OF mia_AT.
+            ELSE SAY  check_act_can_talk_pl  OF mia_AT.
+          END IF.
+      AND png IS NOT distante
+        ELSE
+          IF png IS NOT plurale
+            THEN SAY  ogg1_distante_sg  OF mia_AT.
+            ELSE SAY  ogg1_distante_pl  OF mia_AT.
+          END IF.
+      DOES
+        "Nessuna risposta." ---> taken from i6
+        -- "There is no reply."
+    END VERB domanda.
+END ADD TO.
+
+
+
+----- note that 'consult' is defined separately
+
+
+-->verbo_parla(20450)   @PARLA ---> @TALK
+--~=============================================================================
+--| ==== parla
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `parla`.
+--<
+
+
+-- SYNTAX talk = talk.
+
+SYNTAX parla = parla.
+
+
+VERB parla
+  CHECK mia_AT CAN parlare
+    ELSE SAY  azione_bloccata  OF mia_AT.
+  DOES
+    -- "Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure
+    --  RACCONTA A PERSONA DI ARGOMENTO.".    
+    SAY  per_parlare_con_USA  OF mia_AT.
+-- "To talk to somebody, you can ASK PERSON ABOUT THING
+--  or TELL PERSON ABOUT THING."
+END VERB parla.
+
+
+-->verbo_parla_con(20460)  @PARLA CON ---> @TALK_TO
+--~=============================================================================
+--| ==== parla_con
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `parla_con`.
+--<
+
+-- SYNTAX talk_to = talk 'to' (png)
+
+SYNTAX  parla_con = parla con (png)
+  WHERE png IsA ACTOR
+    ELSE
+      IF png IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa con cui puoi"
+        THEN SAY ogg1_illegale_CON_sg OF mia_AT.
+        ELSE SAY ogg1_illegale_CON_pl OF mia_AT.
+      END IF. "parlare."
+
+        parla_con = parla a (png).
+
+ADD TO EVERY ACTOR
+  VERB parla_con
+    CHECK mia_AT CAN parlare_con
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    DOES
+      -- "Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure
+      --  RACCONTA A PERSONA DI ARGOMENTO.".    
+      SAY  per_parlare_con_USA  OF mia_AT.
+  END VERB parla_con.
+END ADD TO.
+
+-->verbo_racconta(20470)  @RACCONTA ---> @TELL  (+ enlighten, inform)
+--~=============================================================================
+--| ==== racconta
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `racconta`.
+--<
+
+
+-- SYNTAX tell = tell (png) about (topic)!
+-- SYNONYMS enlighten, inform = tell.
+
+SYNTAX  racconta = racconta a (png) di (argomento)!
+  WHERE png IsA ACTOR
+    ELSE
+      IF png IS NOT plurale
+            THEN SAY  illegal_parameter_talk_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_talk_pl  OF mia_AT.
+      END IF.
+  AND argomento IsA THING
+    ELSE
+      IF argomento IS NOT plurale
+        THEN SAY  illegal_parameter_about_sg  OF mia_AT.
+        ELSE SAY  illegal_parameter_about_pl  OF mia_AT.
+      END IF.
+
+        racconta = parla a (png) di (argomento)!.
+        racconta = parla con (png) di (argomento)!.
+        racconta = informa (png) di (argomento)!.
+        racconta = informa (png) su (argomento)!.
+        racconta = dì a (png) di (argomento)!.
+
+-- SYNONYMS enlighten, inform = racconta.
+
+
+ADD TO EVERY ACTOR
+  VERB racconta
+    WHEN png
+      CHECK mia_AT CAN raccontare
+        ELSE SAY  azione_bloccata  OF mia_AT.
+      AND png <> hero
+--                                                                              TRANSLATE!        ELSE SAY  check_obj_not_hero1  OF mia_AT.
+        ELSE SAY  check_obj_not_hero1  OF mia_AT.
+          AND png CAN parlare
+              ELSE
+          IF png IS NOT plurale
+--                                                                              TRANSLATE!        ELSE SAY  check_obj_not_hero1  OF mia_AT.
+            THEN SAY  check_act_can_talk_sg  OF mia_AT.
+            ELSE SAY  check_act_can_talk_pl  OF mia_AT.
+          END IF.
+      AND png IS NOT distante
+        ELSE
+          IF png IS NOT plurale
+            THEN SAY  ogg1_distante_sg  OF mia_AT.
+            ELSE SAY  ogg1_distante_pl  OF mia_AT.
+          END IF.
+      DOES
+        SAY THE png. "non sembra"
+        IF png IS plurale
+          THEN "$$no"
+        END IF.
+        "interessat$$" SAY png:vocale. "."
+
+      -- IF png IS NOT plurale
+      --   THEN "doesn't"
+      --   ELSE "don't"
+      -- END IF.
+
+      -- "look interested."
+
+  END VERB racconta.
+END ADD TO.
+
+
+-->verbo_rispondi(20480)  @RISPONDI ---> @ANSWER    (+ reply)
+--~=============================================================================
+--| ==== rispondi
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `rispondi`.
+--<
+
+
+-- SYNTAX answer = answer (topic)
+-- SYNONYMS reply = answer.
+
+SYNTAX rispondi = rispondi (argomento)
+  WHERE argomento IsA STRING
+    ELSE SAY  illegal_parameter_string  OF mia_AT. --                           TRANSLATE!
+
+
+
+
+ADD TO EVERY STRING
+  VERB rispondi
+    CHECK mia_AT CAN rispondere
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    DOES
+      "Qual'era la domanda?"
+   -- "What was the question?"
+    END VERB rispondi.
+END ADD TO.
+
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- VERBI NON ANCORA RAGGRUPPATI 
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
 
 
 -- ==============================================================
@@ -1588,193 +2707,6 @@ END ADD TO.
 
 
 
--- ==============================================================
-
-
--- @BLOCCA ---> @LOCK
-
-
--- ==============================================================
-
-
-SYNTAX blocca = blocca (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "bloccare."
-
-SYNONYMS
-  serra = blocca.
-
-
-ADD TO EVERY OBJECT
-  VERB blocca
-    CHECK mia_AT CAN bloccare
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    AND ogg IS bloccabile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-        END IF.
-        "bloccare."
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY  imp_luogo_buio  OF mia_AT.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY  ogg1_distante_sg  OF mia_AT.
-              ELSE SAY  ogg1_distante_pl  OF mia_AT.
-            END IF.
-        END IF.
-    AND ogg IS NOT bloccato
-      ELSE
-        IF ogg IS NOT femminile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY  ogg_già_bloccato_ms  OF mia_AT.
-              ELSE SAY  ogg_già_bloccato_mp  OF mia_AT.
-            END IF.
-          ELSE
-            IF ogg IS NOT plurale
-              THEN SAY  ogg_già_bloccato_fs  OF mia_AT.
-              ELSE SAY  ogg_già_bloccato_fp  OF mia_AT.
-            END IF.
-        END IF.
-  DOES
-    IF chiave_abbinata OF ogg IN hero
-      THEN MAKE ogg bloccato.
-        "(con" SAY THE chiave_abbinata OF ogg. "$$)$n"
-        "Tu"
-        IF ogg IS aperto
-          THEN "chiudi e"
-            MAKE ogg NOT aperto.
-        END IF.
-
-        "blocchi" SAY THE ogg. "."
-    ELSE
-      SAY  specificare_CON_cosa  OF mia_AT. "bloccare" SAY THE ogg.
-   -- ELSE "Devi specificare con cosa vuoi bloccare" SAY THE ogg.
-   -- ELSE "You have to state what you want to lock" SAY THE ogg. "with."
-    END IF.
-
-  END VERB blocca.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
--- @BLOCCA CON ---> @LOCK WITH
-
-
--- ==============================================================
-
-
-SYNTAX blocca_con = blocca (ogg) con (chiave)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "bloccare."
-  AND chiave IsA OBJECT
-    ELSE
-      IF chiave IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa con cui poter"
-        THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
-        ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
-      END IF.
-      "bloccare." -- @TODO: ".. altre cose"??                                   IMPROVE!
-
-
-ADD TO EVERY OBJECT
-    VERB blocca_con
-        WHEN ogg
-      CHECK mia_AT CAN bloccare_con
-        ELSE SAY  azione_bloccata  OF mia_AT.
-      AND ogg IS bloccabile
-        ELSE
-          IF ogg IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-          END IF.
-          "bloccare."
-      AND chiave IS esaminabile
-        ELSE
-          IF chiave IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa con cui poter"
-            THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
-            ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
-          END IF.
-          "bloccare." -- @TODO: ".. altre cose"??                               IMPROVE!
-      AND ogg <> chiave
-        ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY  imp_luogo_buio  OF mia_AT.
-      AND ogg IS NOT bloccato
-        ELSE
-          IF ogg IS NOT femminile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY  ogg_già_bloccato_ms  OF mia_AT.
-                ELSE SAY  ogg_già_bloccato_mp  OF mia_AT.
-              END IF.
-            ELSE
-              IF ogg IS NOT plurale
-                THEN SAY  ogg_già_bloccato_fs  OF mia_AT.
-                ELSE SAY  ogg_già_bloccato_fp  OF mia_AT.
-              END IF.
-          END IF.
-      AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
-              END IF.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY  ogg1_distante_sg  OF mia_AT.
-                ELSE SAY  ogg1_distante_pl  OF mia_AT.
-              END IF.
-          END IF.
-      AND chiave IN hero
-        ELSE SAY  non_possiedi_ogg2  OF mia_AT.
-      AND chiave = chiave_abbinata OF ogg -- @TODO:                             TRANSLATE!
-        ELSE SAY  check_door_matching_key  OF mia_AT.
-
-      DOES
-        MAKE ogg bloccato. "Tu"
-        IF ogg IS aperto
-          THEN "chiudi e"
-            MAKE ogg NOT aperto.
-        END IF.
-        "blocchi" SAY THE ogg. "con" SAY THE chiave. "."
-    END VERB blocca_con.
-END ADD TO.
-
-
-
 -- =================================================================
 
 -- @BRUCIA ---> @BURN (VERB + SYNTAX)
@@ -1910,304 +2842,6 @@ VERB canta
     "Canticchi una melodia."
  -- "You $v a little tune."
 END VERB canta.
-
-
--- =============================================================
-
-
--- @CHIEDI ---> @ASK FOR
-
-
--- =============================================================
-
--- SYNTAX ask_for = ask (act) 'for' (obj)
--- SYNTAX ask_for_error = ask 'for' (obj)
-
-SYNTAX  chiedi = chiedi a (png) (ogg)
-  WHERE png IsA ACTOR
-    ELSE
-      IF png IS NOT plurale
---                                                                              TRANSLATE!
-        THEN SAY  illegal_parameter_talk_sg  OF mia_AT.
-        ELSE SAY  illegal_parameter_talk_pl  OF mia_AT.
-      END IF.
-  AND ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-        THEN SAY  illegal_parameter_for_sg  OF mia_AT.
-        ELSE SAY  illegal_parameter_for_pl  OF mia_AT.
-      END IF.
-
-        chiedi = chiedi (ogg) a (png).
-
-ADD TO EVERY ACTOR
-  VERB chiedi
-      WHEN png
-      CHECK mia_AT CAN chiedere
-        ELSE SAY  azione_bloccata  OF mia_AT.
-      AND png <> hero
---                                                                              TRANSLATE!
-        ELSE SAY  check_obj_not_hero1  OF mia_AT.
-          AND png CAN parlare
-              ELSE
-          IF png IS NOT plurale
---                                                                              TRANSLATE!
-            THEN SAY  check_act_can_talk_sg  OF mia_AT.
-            ELSE SAY  check_act_can_talk_pl  OF mia_AT.
-          END IF.
-      AND ogg IS esaminabile
-        ELSE
-          IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-            THEN SAY  check_obj2_suitable_for_sg  OF mia_AT.
-            ELSE SAY  check_obj2_suitable_for_pl  OF mia_AT.
-          END IF.
-      AND ogg NOT IN hero
---                                                                              TRANSLATE!
-        ELSE SAY  check_obj2_not_in_hero3  OF mia_AT.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY  imp_luogo_buio  OF mia_AT.
-      AND png IS NOT distante
-        ELSE
-          IF png IS NOT plurale
-            THEN SAY  ogg1_distante_sg  OF mia_AT.
-            ELSE SAY  ogg1_distante_pl  OF mia_AT.
-          END IF.
-      AND ogg IS prendibile
---                                                                              TRANSLATE!
-        ELSE SAY  check_obj2_takeable2  OF mia_AT.
-
-      AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
---                                                                              TRANSLATE!
-            THEN SAY  check_obj_reachable_ask  OF mia_AT.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY  ogg1_distante_sg  OF mia_AT.
-                ELSE SAY  ogg1_distante_pl  OF mia_AT.
-              END IF.
-          END IF.
-      AND ogg IS NOT scenario
-        ELSE
-          IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-            THEN SAY  check_obj2_not_scenery_sg  OF mia_AT.
-            ELSE SAY  check_obj2_not_scenery_pl  OF mia_AT.
-          END IF.
-      DOES
-        -- Preserviamo copia dello stato di condiscendenza attuale del PNG:
-        IF png IS condiscendente
-          THEN MAKE mia_AT temp_condiscendente.
-          ELSE MAKE mia_AT NOT temp_condiscendente.
-        END IF.
-        -- Rendiamo temporaneamente condiscendente il PNG affinché sia possibile
-        -- rimuovere un oggetto contenuto da esso: 
-        MAKE png condiscendente.
-        LOCATE ogg IN hero.
---                                                                              TRANSLATE!
-        "$+1 ti"
-        IF png IS NOT plurale
-          THEN "dà"
-          ELSE "danno"
-        END IF.
-        "$+2."
-     -- SAY THE png. "gives" SAY THE ogg. "to you."
-        
-        -- Ora ripristiniamo lo stato di condiscendenza originale del PNG:
-        IF mia_AT IS NOT temp_condiscendente
-          THEN MAKE png NOT condiscendente.
-        END IF.
-  END VERB chiedi.
-END ADD TO.
-
-
-
---- another 'ask_for' formulation added to guide players to use the right phrasing:
-
-
-SYNTAX chiedi_errore = chiedi (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      -- "Per chiedere qualcosa a qualcuno usa CHIEDI A PERSONA OGGETTO."
-      SAY  per_chiedere_qlco_USA  OF mia_AT.
-    -- "Please use the formulation ASK PERSON FOR THING to ask somebody for
-    --  something."
-
-
-ADD TO EVERY OBJECT
-  VERB chiedi_errore
-    DOES
-      -- "Per chiedere qualcosa a qualcuno usa CHIEDI A PERSONA OGGETTO."
-      SAY  per_chiedere_qlco_USA  OF mia_AT.
-  END VERB chiedi_errore.
-END ADD TO.
-
-
-
-
--- ==============================================================
-
-
--- @CHIUDI ---> @CLOSE (+ shut)
-
-
--- ==============================================================
-
-
-SYNTAX chiudi = chiudi (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "chiudere."
-
-
--- SYNONYMS shut = close.
-
-
-ADD TO EVERY OBJECT
-  VERB chiudi
-    CHECK mia_AT CAN chiudere
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    AND ogg IS apribile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-        END IF.
-        "chiudere."
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY  imp_luogo_buio  OF mia_AT.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY  ogg1_distante_sg  OF mia_AT.
-              ELSE SAY  ogg1_distante_pl  OF mia_AT.
-            END IF.
-        END IF.
-    AND ogg IS aperto
-      ELSE
-        IF ogg IS NOT femminile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY  ogg_già_chiuso_ms  OF mia_AT.
-              ELSE SAY  ogg_già_chiuso_mp  OF mia_AT.
-            END IF.
-          ELSE
-            IF ogg IS NOT plurale
-              THEN SAY  ogg_già_chiuso_fs  OF mia_AT.
-              ELSE SAY  ogg_già_chiuso_fp  OF mia_AT.
-            END IF.
-        END IF.
-
-    DOES
-          MAKE ogg NOT aperto.
-          "Chiudi" SAY THE ogg. "."
-  END VERB chiudi.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
--- @CHIUDI CON ---> @CLOSE WITH
-
-
--- ==============================================================
-
-
-SYNTAX chiudi_con = chiudi (ogg) con (strum)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "chiudere."
-  AND strum IsA OBJECT
-    ELSE
-      IF strum IS NOT plurale
-        THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
-        ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
-      END IF.
-      "chiudere" SAY THE ogg. "." -- TODO:                                      IMPROVE!
-
-
-ADD TO EVERY OBJECT
-  VERB chiudi_con
-    WHEN ogg
-      CHECK mia_AT CAN chiudere_con
-        ELSE SAY  azione_bloccata  OF mia_AT.
-      AND ogg IS apribile
-        ELSE
-          IF ogg IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-          END IF.
-          "chiudere."
-      AND strum IS esaminabile
-        ELSE
-          IF strum IS NOT plurale
-            THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
-            ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
-          END IF.
-          "chiudere" SAY THE ogg. "."
-      AND ogg <> strum
-        ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
-      AND strum IN hero
-        ELSE SAY  non_possiedi_ogg2  OF mia_AT.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY  imp_luogo_buio  OF mia_AT.
-      AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
-              END IF.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY  ogg1_distante_sg  OF mia_AT.
-                ELSE SAY  ogg1_distante_pl  OF mia_AT.
-              END IF.
-        END IF.
-      AND ogg IS aperto
-        ELSE
-          IF ogg IS NOT femminile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY  ogg_già_chiuso_ms  OF mia_AT.
-                ELSE SAY  ogg_già_chiuso_mp  OF mia_AT.
-              END IF.
-            ELSE
-              IF ogg IS NOT plurale
-                THEN SAY  ogg_già_chiuso_fs  OF mia_AT.
-                ELSE SAY  ogg_già_chiuso_fp  OF mia_AT.
-              END IF.
-          END IF.
-
-      DOES
-        "Non puoi chiudere" SAY THE ogg. "con" SAY THE strum. "."
-  END VERB chiudi_con.
-END ADD TO.
 
 
 -- ==================================================================
@@ -2452,169 +3086,6 @@ ADD TO EVERY OBJECT
 
   END VERB dai_a.
 END ADD TO.
-
-
--- ==============================================================
-
-
--- @DÌ ---> @SAY
-
-
--- ==============================================================
-
--- SYNTAX 'say' = 'say' (topic)
-
-SYNTAX dì = dì (argomento)
-  WHERE argomento IsA STRING
-    ELSE SAY  illegal_parameter_string  OF mia_AT.
-
-
-ADD TO EVERY STRING
-  VERB dì
-    CHECK mia_AT CAN dire
-      ELSE SAY  azione_bloccata  OF mia_AT.
-        DOES
-          "Dici ""$1"", ma non succede nulla."
-       -- "Nothing happens."
-  END VERB dì.
-END ADD TO.
-
-
-
-
--- ==============================================================
-
-
--- @DÌ A ---> @SAY TO
-
-
--- ==============================================================
-
--- SYNTAX say_to = 'say' (topic) 'to' (act)
-
-SYNTAX  dì_a = dì (argomento) a (png)
-  WHERE argomento IsA STRING
-    ELSE SAY  illegal_parameter_string  OF mia_AT.
-  AND png IsA ACTOR
-    ELSE
-      IF png IS NOT plurale
-        THEN SAY  illegal_parameter_talk_sg  OF mia_AT.
-        ELSE SAY  illegal_parameter_talk_pl  OF mia_AT.
-      END IF.
-
-        dì_a = dì a (png) (argomento).
-
-ADD TO EVERY ACTOR
-  VERB dì_a
-    WHEN png
-      CHECK mia_AT CAN dire_a
-        ELSE SAY  azione_bloccata  OF mia_AT.
-      AND png <> hero
-        ELSE SAY  check_obj2_not_hero1  OF mia_AT.
-      AND png CAN parlare
-        ELSE
-          IF png IS NOT plurale
-            THEN SAY  check_act_can_talk_sg  OF mia_AT.
-            ELSE SAY  check_act_can_talk_pl  OF mia_AT.
-          END IF.
-      AND png IS NOT distante
-        ELSE
-          IF png IS NOT plurale
-            THEN SAY  ogg1_distante_sg  OF mia_AT.
-            ELSE SAY  ogg1_distante_pl  OF mia_AT.
-          END IF.
-      DOES
-        "$+2 non sembra"
-        IF png IS plurale
-          THEN "$$no"
-        END IF.
-        "interessat$$" SAY png:vocale. "."
-     -- IF png IS NOT plurale
-     --   THEN "doesn't look"
-     --   ELSE "don't look"
-     -- END IF.
-     -- "interested."
-  END VERB dì_a.
-END ADD TO.
-
-
--- =============================================================
-
-
--- @DOMANDA @ASK (= enquire, inquire, interrogate)
-
-
--- =============================================================
--- @TODO SININOMI: interroga su?
-
--- SYNTAX ask = ask (png) about (argomento)!
---        ask = enquire (png) about (argomento)!.
---        ask = inquire (png) about (argomento)!.
---        ask = interrogate (png) about (argomento)!.
-
-SYNTAX  domanda = domanda a (png) di (argomento)!
-  WHERE png IsA ACTOR
-    ELSE
-      IF png IS NOT plurale
---                                                                              TRANSLATE!
-        THEN SAY  illegal_parameter_talk_sg  OF mia_AT.
-        ELSE SAY  illegal_parameter_talk_pl  OF mia_AT.
-      END IF.
-  AND argomento IsA THING
-    ELSE
-      IF argomento IS NOT plurale
---                                                                              TRANSLATE!
-        THEN SAY  illegal_parameter_about_sg  OF mia_AT.
-        ELSE SAY  illegal_parameter_about_pl  OF mia_AT.
-      END IF.
-
-        domanda = domanda a (png) riguardo (argomento)!.
-        domanda = chiedi a (png) di (argomento)!.
-        domanda = chiedi a (png) riguardo (argomento)!.
-
-  -- Ordine dei parametri invertito:
-        domanda = domanda di (argomento)! a (png).
-        domanda = domanda riguardo (argomento)! a (png).
-        domanda = chiedi di (argomento)! a (png).
-        domanda = chiedi riguardo (argomento)! a (png).
-
-SYNONYMS
-  circa = riguardo.
-  -- Above, we define the alternative verbs in the syntax rather than as synonyms,
-  -- as the verb 'ask_for' below doesn't sound correct with these alternatives allowed.
-
-
-ADD TO EVERY ACTOR
-  VERB domanda
-    WHEN png
-      CHECK mia_AT CAN domandare
-        ELSE SAY  azione_bloccata  OF mia_AT.
-      AND png <> hero
---                                                                              TRANSLATE!
-        ELSE SAY  check_obj_not_hero1  OF mia_AT.
-      AND png CAN parlare
-        ELSE
-          IF png IS NOT plurale
---                                                                              TRANSLATE!
-            THEN SAY  check_act_can_talk_sg  OF mia_AT.
-            ELSE SAY  check_act_can_talk_pl  OF mia_AT.
-          END IF.
-      AND png IS NOT distante
-        ELSE
-          IF png IS NOT plurale
-            THEN SAY  ogg1_distante_sg  OF mia_AT.
-            ELSE SAY  ogg1_distante_pl  OF mia_AT.
-          END IF.
-      DOES
-        "Nessuna risposta." ---> taken from i6
-        -- "There is no reply."
-    END VERB domanda.
-END ADD TO.
-
-
-
------ note that 'consult' is defined separately
-
 
 
 
@@ -3695,66 +4166,6 @@ END ADD.
 -- ==============================================================
 
 
--- @PARLA ---> @TALK
-
-
--- ==============================================================
-
--- SYNTAX talk = talk.
-
-SYNTAX parla = parla.
-
-
-VERB parla
-  CHECK mia_AT CAN parlare
-    ELSE SAY  azione_bloccata  OF mia_AT.
-  DOES
-    -- "Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure
-    --  RACCONTA A PERSONA DI ARGOMENTO.".    
-    SAY  per_parlare_con_USA  OF mia_AT.
--- "To talk to somebody, you can ASK PERSON ABOUT THING
---  or TELL PERSON ABOUT THING."
-END VERB parla.
-
-
-
--- ==============================================================
-
-
--- @PARLA CON ---> @TALK_TO
-
-
--- ==============================================================
-
--- SYNTAX talk_to = talk 'to' (png)
-
-SYNTAX  parla_con = parla con (png)
-  WHERE png IsA ACTOR
-    ELSE
-      IF png IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa con cui puoi"
-        THEN SAY ogg1_illegale_CON_sg OF mia_AT.
-        ELSE SAY ogg1_illegale_CON_pl OF mia_AT.
-      END IF. "parlare."
-
-        parla_con = parla a (png).
-
-ADD TO EVERY ACTOR
-  VERB parla_con
-    CHECK mia_AT CAN parlare_con
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    DOES
-      -- "Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure
-      --  RACCONTA A PERSONA DI ARGOMENTO.".    
-      SAY  per_parlare_con_USA  OF mia_AT.
-  END VERB parla_con.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
 -- @PENSA ---> @THINK   (+ ponder, meditate, reflect)
 
 
@@ -4159,77 +4570,6 @@ ADD TO EVERY THING
     END VERB prendi_da.
 END ADD TO.
 
--- ==============================================================
-
-
--- @RACCONTA ---> @TELL  (+ enlighten, inform)
-
-
--- ==============================================================
-
--- SYNTAX tell = tell (png) about (topic)!
--- SYNONYMS enlighten, inform = tell.
-
-SYNTAX  racconta = racconta a (png) di (argomento)!
-  WHERE png IsA ACTOR
-    ELSE
-      IF png IS NOT plurale
-            THEN SAY  illegal_parameter_talk_sg  OF mia_AT.
-        ELSE SAY  illegal_parameter_talk_pl  OF mia_AT.
-      END IF.
-  AND argomento IsA THING
-    ELSE
-      IF argomento IS NOT plurale
-        THEN SAY  illegal_parameter_about_sg  OF mia_AT.
-        ELSE SAY  illegal_parameter_about_pl  OF mia_AT.
-      END IF.
-
-        racconta = parla a (png) di (argomento)!.
-        racconta = parla con (png) di (argomento)!.
-        racconta = informa (png) di (argomento)!.
-        racconta = informa (png) su (argomento)!.
-        racconta = dì a (png) di (argomento)!.
-
--- SYNONYMS enlighten, inform = racconta.
-
-
-ADD TO EVERY ACTOR
-  VERB racconta
-    WHEN png
-      CHECK mia_AT CAN raccontare
-        ELSE SAY  azione_bloccata  OF mia_AT.
-      AND png <> hero
---                                                                              TRANSLATE!        ELSE SAY  check_obj_not_hero1  OF mia_AT.
-        ELSE SAY  check_obj_not_hero1  OF mia_AT.
-          AND png CAN parlare
-              ELSE
-          IF png IS NOT plurale
---                                                                              TRANSLATE!        ELSE SAY  check_obj_not_hero1  OF mia_AT.
-            THEN SAY  check_act_can_talk_sg  OF mia_AT.
-            ELSE SAY  check_act_can_talk_pl  OF mia_AT.
-          END IF.
-      AND png IS NOT distante
-        ELSE
-          IF png IS NOT plurale
-            THEN SAY  ogg1_distante_sg  OF mia_AT.
-            ELSE SAY  ogg1_distante_pl  OF mia_AT.
-          END IF.
-      DOES
-        SAY THE png. "non sembra"
-        IF png IS plurale
-          THEN "$$no"
-        END IF.
-        "interessat$$" SAY png:vocale. "."
-
-      -- IF png IS NOT plurale
-      --   THEN "doesn't"
-      --   ELSE "don't"
-      -- END IF.
-
-      -- "look interested."
-
-  END VERB racconta.
-END ADD TO.
 
 -- ==============================================================
 
@@ -4469,35 +4809,6 @@ ADD TO EVERY OBJECT
       "Sii più specifico. Come intendi ripararl$$" SAY ogg:vocale. "?"
    -- "Please be more specific. How do you intend to fix it?"
   END VERB ripara.
-END ADD TO.
-
-
--- =============================================================
-
-
--- @RISPONDI ---> @ANSWER    (+ reply)
-
-
--- =============================================================
-
--- SYNTAX answer = answer (topic)
--- SYNONYMS reply = answer.
-
-SYNTAX rispondi = rispondi (argomento)
-  WHERE argomento IsA STRING
-    ELSE SAY  illegal_parameter_string  OF mia_AT. --                           TRANSLATE!
-
-
-
-
-ADD TO EVERY STRING
-  VERB rispondi
-    CHECK mia_AT CAN rispondere
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    DOES
-      "Qual'era la domanda?"
-   -- "What was the question?"
-    END VERB rispondi.
 END ADD TO.
 
 
@@ -5106,60 +5417,6 @@ END ADD TO.
 
 
 
--- ==============================================================
-
-
--- @SPEGNI ---> @TURN OFF
-
-
--- ==============================================================
-
--- # syn/synt: 'spengi'?
-
--- SYNTAX turn_off = turn off (disp)
---        turn_off = switch off (disp).
---        turn_off = turn (disp) off.
---        turn_off = switch (disp) off.
-
------ Only devices and lightsources can be turned on and off. These classes
------ are defined in 'classes.i' with proper checks for 'on' and 'NOT on',
------ 'lit' and 'NOT illuminato'.
-
--- @TODO: Dovrei cambiare il param (disp) in qualcos'altro perché ora i verbi   FIXME!
---        corrispettivi (in "lib_classi.i") si applicano sia ai dispositivi
---        che alle fonti di luce!
-
-SYNTAX spegni = spegni (disp)
-  WHERE disp IsA OBJECT
-    ELSE
-      IF disp IS NOT plurale
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "spegnere."
-
-
--- Note that 'switch' is not declared a synonym for 'turn'.
--- This is because 'turn' has also other meanings, for example 'turn page' which is
--- not equal with 'switch page'.
--- A separate 'switch' verb is declared in 'classes.i', classes 'device' and 'lightsource'.
--- This verb merely covers cases where the player forgets to type 'on' or 'off'.
-
-
-ADD TO EVERY OBJECT
-  VERB spegni
-    CHECK mia_AT CAN spegnere
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    DOES
-      IF disp IS NOT plurale
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "spegnere."
-  END VERB spegni.
-END ADD TO.
-
-
 
 -- ==============================================================
 
@@ -5447,158 +5704,6 @@ ADD TO EVERY OBJECT
   END VERB tira.
 END ADD TO.
 
-
-
--- ==============================================================
-
-
--- @TOCCA ---> @TOUCH
-
-
--- ==============================================================
--- @NOTA: i6 accetta come sinonimi di 'tocca':
---        'accarezza', 'palpa', 'carezza'.
-
--- SYNTAX touch = touch (ogg)
--- SYNONYMS feel = touch.
-
-
-SYNTAX tocca = tocca (ogg)
-  WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "toccare."
-
-SYNONYMS accarezza, carezza = tocca.
-
-
-ADD TO EVERY THING
-  VERB tocca
-    CHECK mia_AT CAN toccare
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-        END IF.
-        "toccare."
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY  imp_luogo_buio  OF mia_AT.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY  ogg1_distante_sg  OF mia_AT.
-              ELSE SAY  ogg1_distante_pl  OF mia_AT.
-            END IF.
-        END IF.
-      AND ogg <> hero
-        -- "Farlo non servirebbe a nulla."
-        ELSE SAY  mia_AT:non_servirebbe_a_nulla.
---                                                                              TRANSLATE!
-      AND ogg IS inanimato
-        ELSE SAY  check_obj_inanimate2  OF mia_AT.
-      DOES
-        "Tocchi $+1 ma non senti nulla di strano."
-     -- "You feel nothing unexpected."
-  END VERB tocca.
-END ADD TO.
-
-
--- ==============================================================
-
-
--- @TOCCA CON ---> @TOUCH WITH
-
-
--- ==============================================================
-
--- SYNTAX touch_with = touch (ogg) 'with' (strum)
-
-SYNTAX tocca_con = tocca (ogg) con (strum)
-  WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "toccare."
-  AND strum IsA OBJECT
-    ELSE
-      IF strum IS NOT plurale
-        THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
-        ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
-      END IF.
-      "toccare" SAY THE ogg. "."
-
-
-ADD TO EVERY THING
-  VERB tocca_con
-    WHEN ogg
-      CHECK mia_AT CAN toccare_con
-        ELSE SAY  azione_bloccata  OF mia_AT.
-      AND ogg IS esaminabile
-        ELSE
-          IF ogg IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-            ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-          END IF.
-          "toccare."
-      AND strum IS esaminabile
-        ELSE
-          IF strum IS NOT plurale
-            THEN SAY  ogg2_illegale_CON_sg  OF mia_AT.
-            ELSE SAY  ogg2_illegale_CON_pl  OF mia_AT.
-        END IF.
-        "toccare" SAY THE ogg. "."
---                                                                              TRANSLATE!
-      AND ogg <> strum
-        ELSE SAY  check_obj_not_obj2_with  OF mia_AT.
---                                                                              TRANSLATE!
-      AND strum <> hero
-        ELSE SAY  check_obj2_not_hero1  OF mia_AT.
-      AND strum IN hero
-        ELSE SAY  non_possiedi_ogg2  OF mia_AT.
---                                                                              TRANSLATE!
-      AND ogg IS inanimato
-        ELSE SAY  check_obj_inanimate2  OF mia_AT.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY  imp_luogo_buio  OF mia_AT.
-      AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
-              END IF.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY  ogg1_distante_sg  OF mia_AT.
-                ELSE SAY  ogg1_distante_pl  OF mia_AT.
-              END IF.
-          END IF.
-      DOES
-        "Tocchi $+1 con $+2 ma non succede nulla."
-     -- "You touch" SAY THE ogg. "with" SAY THE strum. ". Nothing special happens."
-  END VERB tocca_con.
-END ADD TO.
 
 
 -- ==============================================================

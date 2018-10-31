@@ -11,9 +11,11 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/10/31](#20181031)
+    - [Doxterize Verbs](#doxterize-verbs)
 - [2018/10/25](#20181025)
     - [Make `inventario` Not META](#make-inventario-not-meta)
-    - [Doxterize](#doxterize)
+    - [Doxterize Verbs](#doxterize-verbs-1)
 - [2018/10/24](#20181024)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
     - [Verb: `'score'`](#verb-score)
@@ -372,19 +374,83 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
+# 2018/10/31
+
+- [`lib_verbi.i`][lib_verbi] (v0.7.12)
+
+## Doxterize Verbs
+
+This commit focuses on improving documentation of the verbs module:
+
+- Begin grouping related game verbs under same heading.
+
+Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
+
+- Accensione e Spegnimento:
+    + `accendi`
+    + `spegni`
+- Apertura e Chiusura:
+    + `apri`
+    + `apri_con`
+    + `blocca`
+    + `blocca_con`
+    + `chiudi`
+    + `chiudi_con`
+- Azioni Sensoriali:
+    + `ascolta0`
+    + `ascolta`
+    + `tocca`
+    + `tocca_con`
+- Conversare:
+    + `chiedi`
+    + `chiedi_errore`
+    + `domanda`
+    + `dì`
+    + `dì_a`
+    + `parla`
+    + `parla_a`
+    + `racconta`
+    + `rispondi`
+
+
+<!---------------------------------------------------------------------------->
+
+
 # 2018/10/25
 
-- [`lib_verbi.i`][lib_verbi] (v0.7.10)
+- [`lib_verbi.i`][lib_verbi] (v0.7.11)
 
 ## Make `inventario` Not META
 
 With an afterthought, the verb `inventario` (_inventory_) is now no longer a `META VERB`.
 
-## Doxterize
+## Doxterize Verbs
 
 This commit focuses on improving documentation of the verbs module:
 
-- Begin grouping related verbs under same heading.
+- Begin grouping related meta verbs under same heading.
+
+Organizza i Meta Verbi di Partita in gruppi di appartenenza correlati:
+
+- Salvataggio e Caricamento:
+    + `carica_partita`
+    + `salva_partita`
+- Trascrizione:
+    + `trascrizione`
+    + `trascrizione_on`
+    + `trascrizione_off`
+- Punteggio e Notifiche:
+    + `vedi_punteggio`
+    + `notifica`
+    + `notifica_on`
+    + `notifica_off`
+- Descrizioni Brevi e Lunghe:
+    + `modalità_breve`
+    + `modalità_lunga`
+- Meta Verbi Vari:
+    + `abbandona_partita`
+    + `ricomincia_partita`
+    + `ringraziamenti`
 
 
 <!---------------------------------------------------------------------------->

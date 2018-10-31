@@ -1,7 +1,7 @@
 
 = Doxter: Note di Lavoro
 Tristano Ajmone <tajmone@gmail.com>
-:revdate: 2018-10-25
+:revdate: 2018-10-31
 :lang: it
 // TOC Settings:
 :toc: left
@@ -122,6 +122,34 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 // | 1050   |           | verbo_xxxx      | ==== xxxx
 // =============================================================================
 | 20000   |           | comandi_gioco                | == Verbi di Gioco
+// -----------------------------------------------------------------------------
+| 20100   |           | gruppo_accendi               | == Verbi di Gioco
+| 20110   |           | verbo_accendi                | ==== accendi
+| 20120   |           | verbo_spegni                 | ==== spegni
+// -----------------------------------------------------------------------------
+| 20200   |           | gruppo_apri                  | == Apertura e Chiusura
+| 20210   |           | verbo_apri                   | ==== apri
+| 20220   |           | verbo_apri_con               | ==== apri_con
+| 20230   |           | verbo_blocca                 | ==== blocca
+| 20240   |           | verbo_blocca_con             | ==== blocca_con
+| 20250   |           | verbo_chiudi                 | ==== chiudi
+| 20260   |           | verbo_chiudi_con             | ==== chiudi_con
+// -----------------------------------------------------------------------------
+| 20300   |           | gruppo_sensi                 | == Azioni Sensoriali
+| 20310   |           | verbo_ascolta0               | ==== ascolta0
+| 20320   |           | verbo_ascolta                | ==== ascolta
+| 20330   |           | verbo_tocca                  | ==== tocca
+| 20340   |           | verbo_tocca_con              | ==== tocca_con
+// -----------------------------------------------------------------------------
+| 20400   |           | gruppo_conversare            | == Conversare
+| 20410   |           | verbo_chiedi                 | ==== chiedi
+| 20420   |           | verbo_dire                   | ==== dì
+| 20430   |           | verbo_dire_a                 | ==== dì_a
+| 20440   |           | verbo_domanda                | ==== domanda
+| 20450   |           | verbo_parla                  | ==== parla
+| 20460   |           | verbo_parla_con              | ==== parla_con
+| 20470   |           | verbo_racconta               | ==== racconta
+| 20480   |           | verbo_rispondi               | ==== rispondi
 // =============================================================================
 | 30000   |           | comandi_comandi_domande      | == Verbi di Domande
 // -----------------------------------------------------------------------------
