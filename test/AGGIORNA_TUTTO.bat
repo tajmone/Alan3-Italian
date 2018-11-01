@@ -1,4 +1,4 @@
-:: "AGGIORNA_TUTTO.bat" v3.0 (2018/10/29) | by Tristano Ajmone
+:: "AGGIORNA_TUTTO.bat" v3.1 (2018/11/01) | by Tristano Ajmone
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                                                            ::
 ::                 TEST SUITE DELLA LIBRERIA STANDARD DI ALAN                 ::
@@ -121,6 +121,7 @@ SET _ERR=
 SET _CNT=
 SET _ADVSOURCES=
 SET _ADVCOMPILE=
+SET _ADVTESTED=
 SET _SCRIPTSCNT=
 
 :: Azzera colori ANSI del terminale:
@@ -167,10 +168,11 @@ EXIT /B
 ::                         Esegui gli Script di Comandi                         
 :: =============================================================================
 :: L'avventura "<nomefile>.alan" passata nel parametro verra eseguita con ogni
-:: script di comandi che inizi con "<nomefile>" (ossia: "<nomefile>*.a3sol".
+:: script di comandi che inizi con "<nomefile>" (ossia: "<nomefile>*.a3sol").
 :: Questo sistema consente di testare la medesima avventura con più script di
 :: tests. Se non viene trovato almeno uno script di comand verrà riportato un
 :: errore. L'aspettativa minima è di trovare almeno "<nomefile>.a3sol".
+:: -----------------------------------------------------------------------------
 :RunTestScript
 
 SET _ADVFILE=%~n1.a3c  &:: L'avventura usata è sempre la stessa!
@@ -178,25 +180,23 @@ SET _SCRIPT=%~n1.a3sol &:: Da usare in caso di errore (nessuno script trovato).
 :: ======================================================
 :: Esegui Tutti gli Script di Comandi per quest'Avventura
 :: ======================================================
-:: %_FOUND% traccia se è stato trovato almeno uno script:
+:: '%_FOUND%' traccia se è stato trovato almeno uno script:
 SET _FOUND=
 
 FOR /R %%i IN (%~n1*.a3sol) DO (
 	SET "_FOUND=1"
     REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    REM NOTE: IlThe code doesn't actually check that ARun returned without error,
+    REM NOTE: The code doesn't actually check that ARun returned without error,
     REM       or that the log was actually created. Should improve this!
     REM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     SET /A _SCRIPTSCNT=!_SCRIPTSCNT! +1
     CALL arun.exe -r %_ADVFILE% < %%i > %%~ni.a3log
-    rem CALL arun.exe -r %_ADVFILE% < %%i > %_LOG%
     ECHO %BG_GREEN%
     ECHO ----------------------------------
     ECHO  TRASCRIZIONE SALVATA SU DISCO^^!^^!^^! 
     ECHO ----------------------------------
     ECHO %RESET_COLORS%%GREEN%
     ECHO Trascrizione del test salvata in "%YELLOW%%%~ni.a3log%GREEN%".
-    rem ECHO Trascrizione del test salvata in "%YELLOW%%_LOG%%GREEN%".
 )
 IF NOT DEFINED _FOUND (
     SET /A _ERR=%_ERR% +1
@@ -207,8 +207,10 @@ IF NOT DEFINED _FOUND (
     ECHO %RESET_COLORS%%RED%
     ECHO Lo script "%YELLOW%%_SCRIPT%%RED%" non è stato trovato.
 ) ELSE SET /A _ADVTESTED=!_ADVTESTED! +1
+:: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 :: NOTA: Lo ELSE qui sopra aumenta di uno il totale delle avventure testate,
 ::       mentre il FOR loop precedente incrementa il totale dei test eseguiti. 
+:: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 EXIT /B
 
 :: =============================================================================
