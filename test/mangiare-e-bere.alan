@@ -1,0 +1,151 @@
+--==============================================================================
+-- "Mangiare e Bere" by Tristano Ajmone, 2018.
+--==============================================================================
+IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
+
+
+THE mia_AT IsA blocco_definizioni
+  ------------------------------------------------------------------------------
+  HAS       titolo  "Mangiare e Bere".
+  HAS  sottotitolo  "Test per i verbi riguardanti cibo e bevande.".
+  HAS       autore  "Tristano Ajmone".
+  HAS         anno   2018.
+  HAS     versione  "1".
+  ------------------------------------------------------------------------------
+END THE.
+
+
+
+-- =============================================================================
+
+-- La Radura
+
+-- =============================================================================
+-- Il setting per questi test sarà un picnic in una radura, con un ruscello per
+-- testare bere liquidi senza contenitore.
+
+
+THE radura IsA luogo_esterno.
+  NAME 'Radura Nel Bosco'
+END THE.
+
+--==============================================================================
+-- Il Fiume
+--==============================================================================
+THE fiume IsA liquido AT radura.
+  IS potabile.
+  HAS xDesc "Un piccolo fiume dall'acqua limpida.".
+END THE.
+
+THE pesce IsA object IN fiume.
+  NAME pesce.
+  NAME trota.
+  HAS xDesc "È una trota.".
+  is commestibile.
+
+  VERB mangia
+    DOES BEFORE
+      "Cruda?! Beh ... perché no? Il sushi è di moda dopotutto.$n"
+  END VERB mangia.
+END THE.
+
+--==============================================================================
+-- L'Albero e La Mela
+--==============================================================================
+-- Aggiungiamo anche un albero con una mela non raggiungibile...
+
+THE albero IsA object AT radura.
+  HAS articolo "l'".
+  NAME albero.
+  NAME 'l''albero'.
+  HAS xDesc "Esaminando l'albero noti una mela appesa ad un ramo.".
+  
+END THE albero.
+
+--==============================================================================
+-- Frutta
+--==============================================================================
+EVERY frutto IsA object.
+  NAME frutto.
+  IS commestibile.
+  HAS xDesc "Un frutto, sembra appetitoso.".
+END EVERY.
+------------------------------------------------------------------------ ARANCIA
+THE ARANCIA IsA frutto AT radura.
+  HAS articolo "l'".
+  IS femminile.
+  NAME arancia.
+  NAME 'l''arancia'.
+  HAS xDesc "Un'arancia succulenta.".
+END THE.
+------------------------------------------------------------------------ AVOCADO
+THE avocado IsA frutto AT radura.
+  HAS articolo "l'".
+  NAME avocado.
+  NAME 'l''avocado'.
+  HAS xDesc "Un avocado maturo.".
+END THE.
+------------------------------------------------------------------------- BANANA
+THE banana IsA frutto AT radura.
+  HAS articolo "la".
+  NAME banana.
+  HAS xDesc "Una banana col bollino blu.".
+END THE.
+--------------------------------------------------------------------------- FICO
+THE fico IsA frutto AT radura.
+  NAME fico.
+  HAS xDesc "Un fico dall'aspetto invitante.".
+END THE.
+-- MELA ------------------------------------------------------------------- MELA
+THE mela IsA frutto AT radura.
+  HAS articolo "la".
+  NAME mela.
+  IS NOT raggiungibile.
+  DESCRIPTION "" -- Non deve essere visibile nella descrizione del luogo, ma solo
+                 -- esaminando l'albero.
+  HAS xDesc
+    "La mela penzola invitante dall'albero, ma è troppo lontana affinché tu
+     possa afferrarla.".
+END THE.
+--==============================================================================
+-- Bevande
+--==============================================================================
+THE lattina IsA object AT radura.
+  CONTAINER
+  HAS articolo "la".
+  HAS xDesc "È una lattina di aranciata.".
+    
+END THE lattina.
+
+THE aranciata IsA liquido IN lattina.
+  HAS articolo "l'".
+  IS femminile.
+  NAME aranciata.
+  NAME 'l''aranciata'.
+  INDEFINITE ARTICLE "dell'$$"
+  HAS recipiente lattina.
+  IS potabile.
+
+  VERB bevi
+    DOES AFTER
+      SET THIS:recipiente:xDesc TO "Una lattina di aranciata vuota.".
+  END VERB bevi.
+
+END THE aranciata.
+
+--==============================================================================
+-- Oggetti Non Commestibili
+--==============================================================================
+THE roccia IsA object AT radura.
+  HAS articolo "la".
+  HAS xDesc "Una roccia è una roccia, non so se mi spiego.".
+END THE.
+
+
+
+--------------------------------------------------------------------------------
+Start at radura.
+DESCRIBE intestazione.
+"$p~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ $pOggi è il tuo giorno libero, così hai deciso di recarti nel bosco per goderti
+ un picnic in santa pace."

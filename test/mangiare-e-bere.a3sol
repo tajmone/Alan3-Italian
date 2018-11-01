@@ -1,0 +1,46 @@
+; ==============================================================================
+; BERE: TESTA NON POTABILI
+; ==============================================================================
+bevi la roccia
+esamina il fiume
+esamina il pesce
+bevi il pesce
+bevi la mela
+; ==============================================================================
+; SORSEGGIA: TESTA NON POTABILI
+; ==============================================================================
+sorseggia la roccia
+esamina il fiume
+esamina il pesce
+sorseggia il pesce
+; ==============================================================================
+; MANGIARE: TESTA NON COMMESTIBILI
+; ==============================================================================
+mangia la roccia
+mangia il fiume
+; ==============================================================================
+; MANGIARE: TESTA NON RAGGIUNGIBILI
+; ==============================================================================
+esamina l'albero
+esamina la mela
+mangia la mela
+prendi la mela
+; ==============================================================================
+; BERE
+; ==============================================================================
+esamina la lattina
+bevi la lattina
+sorseggia l'aranciata
+lascia l'aranciata
+bevi l'aranciata
+sorseggia l'aranciata
+bevi il fiume
+sorseggia il fiume
+; ==============================================================================
+; MANGIARE
+; ==============================================================================
+; TESTA DISAMBIGUAZIONE:
+mangia il frutto
+; TESTA COMMESTIBILI:
+mangia l'arancia
+mangia il pesce

@@ -1,0 +1,129 @@
+
+
+Mangiare e Bere 
+Test per i verbi riguardanti cibo e bevande. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati. 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Oggi è il tuo giorno libero, così hai deciso di recarti nel bosco per
+goderti un picnic in santa pace.
+
+
+Radura Nel Bosco
+Puoi vedere un fiume qui. In il fiume you see un pesce. Puoi vedere un 
+albero, un'arancia, un avocado, una banana, un fico e una lattina qui. La 
+lattina contiene dell'aranciata. Puoi vedere una roccia qui.
+
+> ; ==============================================================================
+> ; BERE: TESTA NON POTABILI
+> ; ==============================================================================
+> bevi la roccia
+La roccia non è qualcosa che puoi bere.
+
+> esamina il fiume
+You notice nothing unusual about il fiume.
+
+> esamina il pesce
+È una trota.
+
+> bevi il pesce
+Il pesce non è qualcosa che puoi bere.
+
+> bevi la mela
+La mela non è qualcosa che puoi bere.
+
+> ; ==============================================================================
+> ; SORSEGGIA: TESTA NON POTABILI
+> ; ==============================================================================
+> sorseggia la roccia
+La roccia non è qualcosa che puoi sorseggiare.
+
+> esamina il fiume
+You notice nothing unusual about il fiume.
+
+> esamina il pesce
+È una trota.
+
+> sorseggia il pesce
+Il pesce non è qualcosa che puoi sorseggiare.
+
+> ; ==============================================================================
+> ; MANGIARE: TESTA NON COMMESTIBILI
+> ; ==============================================================================
+> mangia la roccia
+La roccia non è qualcosa che puoi mangiare.
+
+> mangia il fiume
+Il fiume non è qualcosa che puoi mangiare.
+
+> ; ==============================================================================
+> ; MANGIARE: TESTA NON RAGGIUNGIBILI
+> ; ==============================================================================
+> esamina l'albero
+Esaminando l'albero noti una mela appesa ad un ramo.
+
+> esamina la mela
+La mela penzola invitante dall'albero, ma è troppo lontana affinché tu
+possa afferrarla.
+
+> mangia la mela
+La mela è fuori dalla tua portata.
+
+> prendi la mela
+La mela è fuori dalla tua portata.
+
+> ; ==============================================================================
+> ; BERE
+> ; ==============================================================================
+> esamina la lattina
+È una lattina di aranciata.
+
+> bevi la lattina
+La lattina non è qualcosa che puoi bere.
+
+> sorseggia l'aranciata
+(prima prendi la lattina)
+Bevi un sorso di aranciata.
+
+> lascia l'aranciata
+Lasci la lattina dell'aranciata.
+
+> bevi l'aranciata
+(prima prendi la lattina dell'aranciata)
+Bevi tutta l'aranciata.
+
+> sorseggia l'aranciata
+Qui non puoi vedere nulla del genere.
+
+> bevi il fiume
+Bevi un po' di fiume.
+
+> sorseggia il fiume
+Bevi un sorso di fiume.
+
+> ; ==============================================================================
+> ; MANGIARE
+> ; ==============================================================================
+> ; TESTA DISAMBIGUAZIONE:
+> mangia il frutto
+Non mi è chiaro se intendi dire l'arancia, l'avocado, la banana, il fico o 
+la mela.
+
+> ; TESTA COMMESTIBILI:
+> mangia l'arancia
+(prima prendi l'arancia)
+Mangi l'arancia.
+
+> mangia il pesce
+Cruda?! Beh ... perché no? Il sushi è di moda dopotutto.
+(prima prendi il pesce)
+Mangi il pesce.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

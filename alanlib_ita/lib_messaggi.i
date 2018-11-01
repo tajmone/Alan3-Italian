@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi.i"
---| v0.7.3-Alpha, 2018-10-22: Alan 3.0beta6
+--| v0.7.4-Alpha, 2018-11-01: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -419,6 +419,26 @@ ADD TO EVERY blocco_definizioni
   --        - chi_sono_io, cosa_sono_io
   --        - rispondi_No, rispondi_Sì
   --        - consult_error
+
+
+  -- ===========================================================================
+  -- AZIONI IMPLICITE
+  -- ===========================================================================
+
+
+  -- ----------------
+  -- PRENDI IMPLICITO
+  -- ----------------
+--                                                                              TRANSLATE!
+  -- | In ditransitive verbs, only the first parameter (the direct object) is
+  -- | taken implicitly. For example, >push door with pole  won't work if the hero
+  -- | is not carrying the pole.
+
+  -- VERBI: dai_a, lega_a, mangia, prendi, | bite, 'empty', empty_in, empty_on, put_on, throw, throw_at, throw_to, throw_in
+
+  -- ORIGINAL EN:  implicit_taking_message
+  HAS riferisci_prendi_implicito "(prima prendi $+1)$n".
+
 
   -- ===========================================================================
   -- PROBLEMI RELATIVI AI PARAMETRI
@@ -1042,16 +1062,6 @@ ADD TO EVERY blocco_definizioni
   HAS check_liquid_vessel_not_cont "You can't carry $+1 around in your bare hands.".      -- liquid: take_from
 
 
-  -- messages for implicit taking:
-  -- =============================
-
-  HAS implicit_taking_message "(taking $+1 first)$n".
-
-  -- The following verbs are preceded by implicit taking:
-  --    bite, drink, eat, empty, empty_in, empty_on, give, pour, pour_in, pour_on,
-  --    put_in, put_on, throw, throw_at, throw_in, throw_to, tie_to.
-  -- In ditransitive verbs, only the first parameter (the direct object) is taken implicitly.
-  -- For example, >push door with pole  won't work if the hero is not carrying the pole.
 
 END ADD TO blocco_definizioni.
 

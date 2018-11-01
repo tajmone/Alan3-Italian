@@ -435,7 +435,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `shout`          | `gridare`                 |
 | `'show'`         | `mostrare`                |
 | `sing`           | `cantare`                 |
-| `sip`            |                           |
+| `sip`            | `sorseggiare`             |
 | `sit`            | `sedersi`                 |
 | `sit_on`         | `sedersi_su`              |
 | `sleep`          | `dormire`                 |

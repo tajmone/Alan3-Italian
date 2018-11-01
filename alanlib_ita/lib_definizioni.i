@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.9-Alpha, 2018-10-31: Alan 3.0beta6
+--| v0.7.10-Alpha, 2018-11-01: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -804,6 +804,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN sedersi.                  ---> sit (down)
   CAN sedersi_su.               ---> sit_on
   CAN seguire.                  ---> follow
+  CAN sorseggiare.              ---> sip
   CAN spegnere.                 ---> turn_off
   CAN spingere.                 ---> push
   CAN spingere_con.             ---> push_with
@@ -873,7 +874,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN shake.
   CAN shoot.       -- (at)
   CAN shoot_with.
-  CAN sip.
 --CAN smell0. --------------------> ** ATTRIBUTO ELIMINATO **
   CAN squeeze.
   CAN stand.       -- (up)
@@ -1024,6 +1024,7 @@ EVENT check_restriction
       MAKE mia_AT sedersi.                  ---> sit (down)
       MAKE mia_AT sedersi_su.               ---> sit_on
       MAKE mia_AT seguire.                  ---> follow
+      MAKE mia_AT sorseggiare.              ---> sip
       MAKE mia_AT spegnere.                 ---> turn_off
       MAKE mia_AT spingere.                 ---> push
       MAKE mia_AT spingere_con.             ---> push_with
@@ -1089,7 +1090,6 @@ EVENT check_restriction
       MAKE mia_AT shake.
       MAKE mia_AT shoot.           -- (at)
       MAKE mia_AT shoot_with.
-      MAKE mia_AT sip.
     --MAKE mia_AT smell0. ------------> ** ATTRIBUTO ELIMINATO **
       MAKE mia_AT squeeze.
       MAKE mia_AT stand.           -- (up)
@@ -1192,6 +1192,7 @@ EVENT check_restriction
           MAKE mia_AT NOT sedersi.                  ---> sit (down)
           MAKE mia_AT NOT sedersi_su.               ---> sit_on
           MAKE mia_AT NOT seguire.                  ---> follow
+          MAKE mia_AT NOT sorseggiare.              ---> sip
           MAKE mia_AT NOT spegnere.                 ---> turn_off
           MAKE mia_AT NOT spingere.                 ---> push
           MAKE mia_AT NOT spingere_con.             ---> push_with
@@ -1251,7 +1252,6 @@ EVENT check_restriction
           MAKE mia_AT NOT shake.
           MAKE mia_AT NOT shoot.       -- (at)
           MAKE mia_AT NOT shoot_with.
-          MAKE mia_AT NOT sip.
           MAKE mia_AT NOT squeeze.
           MAKE mia_AT NOT stand.       -- (up)
           MAKE mia_AT NOT stand_on.

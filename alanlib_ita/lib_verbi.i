@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.13-Alpha, 2018-10-31: Alan 3.0beta6
+--| v0.7.14-Alpha, 2018-11-01: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -765,6 +765,7 @@ END VERB ringraziamenti.
 --| | scrivi             |                              | scrivi "testo" su (ogg)                |     | 1 | {X} |
 --| | siediti            | siedi                        | siediti                                |     | 0 |     |
 --| | siediti_su         | siedi                        | siediti su (superficie)                |     | 1 |     |
+--| | sorseggia          |                              | sorseggia (liq)                        |     | 1 |     |
 --| | spegni             |                              | spegni (disp)                          |     | 1 |     |
 --| | spogliati          | svestiti                     | spogliati                              |     | 0 |     |
 --| | suona              |                              | suona (ogg)                            |     | 1 | {X} |
@@ -2295,6 +2296,297 @@ ADD TO EVERY STRING
     END VERB rispondi.
 END ADD TO.
 
+-->gruppo_mangiabevi(20500)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Mangiare e Bere
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi che riguardano mangiare e bere:
+--| 
+--| * `bevi`
+--| * `mangia`
+--| * `sorseggia`
+--| 
+--| [cols="15m,25d,60d",options="header"]
+--| |====================================================
+--| | verbo     | sintassi        | parametri
+--~ |-----------+-----------------+---------------------- 
+--| | bevi      | bevi (liq)      | liq è `potabile`
+--| | mangia    | mangia (cibo)   | cibo è `commestibile`
+--| | sorseggia | sorseggia (liq) | liq è `potabile`
+--| |====================================================
+--| 
+--| Verbi di questo gruppo non ancora tradotti:
+--| 
+--| * `bite`
+--| * `taste`
+--<
+
+
+-->verbo_bevi(20510)  @BEVI --> @DRINK
+--~=============================================================================
+--| ==== bevi
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `bevi`.
+--<
+
+-- SYNTAX drink = drink (liq)
+
+SYNTAX bevi = bevi (liq)
+  WHERE liq IsA liquido    -- see 'classes.i'
+    ELSE
+      IF liq IS NOT plurale
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "bere."
+
+
+ADD TO EVERY liquido
+  VERB bevi
+    CHECK mia_AT CAN bere
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    AND liq IS potabile
+      ELSE
+        IF liq IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+        END IF.
+        "bere."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
+    AND liq IS raggiungibile AND liq IS NOT distante
+      ELSE
+        IF liq IS NOT raggiungibile
+          THEN
+            IF liq IS NOT plurale
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+            END IF.
+        ELSIF liq IS distante
+          THEN
+            IF liq IS NOT plurale
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
+            END IF.
+        END IF.
+    DOES
+      IF recipiente OF liq = recipiente_fittizio
+        -- Se il liquido non è in un contenitore, l'eroe ne berrà solo un po' (e
+        -- il liquido non verrà consumato). Questo serve a consentire di bere da
+        -- un fiume, o da altri liquidi allo stato libero.
+
+        --| NOTA: Questa risposta è un po' generica e potrebbe non essere sempre
+        --|       adatta. Dipende dall'oggetto in questione, e se il suo nome
+        --|       visualizzato si riferisce al contenitore o al contenuto.
+        --|       Es., "un po' di fiume", laddove "un po' dal fiume" sarebbe
+        --|       stato meglio (o anche "po' di acqua dal fiume").
+        --|       Sta all'autore scegliere bene il nome da visualizzare con
+        --|       MENTIONED, ma la questione merita di essere approfondita e
+        --|       capire se ci sono soluzioni migliori. In ogni caso, il blocco
+        --|       DOES del verbo può sempre essere implementato sull'istanza
+        --|       specifica per ottenere un testo ad hoc.
+        THEN "Bevi un po' di" SAY liq. "."
+     -- THEN "You drink a bit of" SAY THE liq. "."
+      ELSE
+          -- Se invece il liquido è in un contenitore:
+
+          -- >>> prendi implicito: >>>
+          IF recipiente OF liq NOT DIRECTLY IN hero
+            THEN
+              IF recipiente OF liq IS NOT prendibile
+                ---> @TODO!!                                                    TRANSLATE!
+                THEN "You can't carry" SAY THE liq. "around in your bare hands."
+                  -- the action stops here if the container is not takeable.
+                ELSE
+                  LOCATE recipiente OF liq IN hero.
+                  "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
+              END IF.
+
+          END IF.
+          -- <<< prendi implicito <<<
+
+          IF liq IN hero
+            -- i.e. if the implicit taking was successful
+            -- Se il prendi implicito è andato in porto:
+            THEN
+              "Bevi tutt$$" SAY liq:vocale.
+              SAY THE liq. "."
+              LOCATE liq AT limbo.
+          END IF.
+      END IF.
+
+  END VERB bevi.
+END ADD TO.
+
+
+-- Note that the verb 'sip' is defined separately, with a slightly different behaviour.
+
+-->verbo_mangia(20520)  @MANGIA -> @EAT
+--~=============================================================================
+--| ==== mangia
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `mangia`.
+--<
+
+
+-- SYNTAX eat = eat (food)
+
+SYNTAX mangia = mangia (cibo)
+  WHERE cibo IsA OBJECT
+    ELSE
+      IF cibo IS NOT plurale
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "mangiare."
+
+
+ADD TO EVERY OBJECT
+  VERB mangia
+    CHECK mia_AT CAN mangiare
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    AND cibo IS commestibile
+      ELSE
+        IF cibo IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+        END IF.
+        "mangiare."
+    AND cibo IS prendibile
+      ---> @TODO!!                                                              TRANSLATE!
+      ELSE SAY  check_obj_takeable  OF mia_AT.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
+    AND cibo IS raggiungibile AND cibo IS NOT distante
+      ELSE
+        IF cibo IS NOT raggiungibile
+          THEN
+            IF cibo IS NOT plurale
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+            END IF.
+        ELSIF cibo IS distante
+          THEN
+            IF cibo IS NOT plurale
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
+            END IF.
+        END IF.
+    DOES
+      -- >>> prendi implicito: >>>
+      IF cibo NOT DIRECTLY IN hero
+        THEN LOCATE cibo IN hero.
+          SAY  mia_AT:riferisci_prendi_implicito.
+      END IF.
+      -- <<< prendi implicito <<<
+
+      "Mangi" SAY THE cibo. "."
+   -- "You eat all of" SAY THE cibo. "."
+      LOCATE cibo AT limbo.
+
+  END VERB mangia.
+END ADD.
+
+-->verbo_sorseggia(20530)  @SORSEGGIA --> @SIP
+--~=============================================================================
+--| ==== sorseggia
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `sorseggia`.
+--<
+
+
+SYNTAX sorseggia = sorseggia (liq)
+  WHERE liq IsA liquido
+    ELSE
+      IF liq IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "sorseggiare."
+
+
+ADD TO EVERY liquido
+  VERB sorseggia
+    CHECK mia_AT CAN sorseggiare
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    AND liq IS potabile
+      ELSE
+        IF liq IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+        END IF.
+        "sorseggiare."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
+    AND liq IS raggiungibile AND liq IS NOT distante
+      ELSE
+        IF liq IS NOT raggiungibile
+          THEN
+            IF liq IS NOT plurale
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+            END IF.
+        ELSIF liq IS distante
+          THEN
+            IF liq IS NOT plurale
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
+            END IF.
+        END IF.
+    DOES
+      IF recipiente OF liq = recipiente_fittizio
+        -- Se il liquido non ha un contenitore (p.es. se l'eroe beve un sorso
+        -- dal fiume) l'azione viene eseguita con successo.
+        THEN "Bevi un sorso di" SAY liq. "."
+          -- "You take a sip of" SAY THE liq. "."
+        ELSE
+          -- >>> prendi implicito: >>>
+          IF recipiente OF liq NOT DIRECTLY IN hero
+            THEN
+              IF recipiente OF liq IS NOT prendibile
+                -- Se il recipiente non può essere preso, l'azione si ferma qui.
+--                                                                              TRANSLATE!
+                THEN "You can't carry" SAY THE liq. "around in your bare hands."
+                ELSE LOCATE recipiente OF liq IN hero.
+                "(prima prendi" SAY THE recipiente OF liq. "$$)$n"
+              END IF.
+          END IF.
+          -- <<< prendi implicito <<<
+      END IF.
+
+      IF liq IN hero    -- i.e. if the implicit taking was successful
+        THEN
+          IF recipiente OF liq IS NOT aperto
+--                                                                              TRANSLATE!
+            THEN "You can't, since" SAY THE recipiente OF liq. "is closed."
+            ELSE "Bevi un sorso di" SAY liq. "."
+              -- "You take a sip of" SAY THE liq. "."
+          END IF.
+      END IF.
+
+  END VERB sorseggia.
+END ADD TO.
+
+
+-- See also the verb 'drink'.
+
+
+
 
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -2670,111 +2962,6 @@ END VERB balla.
 
 
 
--- ==============================================================
-
-
--- @BEVI -- @DRINK
-
-
--- ==============================================================
-
--- SYNTAX drink = drink (liq)
-
-SYNTAX bevi = bevi (liq)
-  WHERE liq IsA liquido    -- see 'classes.i'
-    ELSE
-      IF liq IS NOT plurale
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "bere."
-
-
-ADD TO EVERY liquido
-  VERB bevi
-    CHECK mia_AT CAN bere
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    AND liq IS potabile
-      ELSE
-        IF liq IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-        END IF.
-        "bere."
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY  imp_luogo_buio  OF mia_AT.
-    AND liq IS raggiungibile AND liq IS NOT distante
-      ELSE
-        IF liq IS NOT raggiungibile
-          THEN
-            IF liq IS NOT plurale
-              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
-            END IF.
-        ELSIF liq IS distante
-          THEN
-            IF liq IS NOT plurale
-              THEN SAY  ogg1_distante_sg  OF mia_AT.
-              ELSE SAY  ogg1_distante_pl  OF mia_AT.
-            END IF.
-        END IF.
-    DOES
-      IF recipiente OF liq = recipiente_fittizio
-        -- Se il liquido non è in un contenitore, l'eroe ne berrà solo un po' (e
-        -- il liquido non verrà consumato). Questo serve a consentire di bere da
-        -- un fiume, o da altri liquidi allo stato libero.
-
-        --| NOTA: Questa risposta è un po' generica e potrebbe non essere sempre
-        --|       adatta. Dipende dall'oggetto in questione, e se il suo nome
-        --|       visualizzato si riferisce al contenitore o al contenuto.
-        --|       Es., "un po' di fiume", laddove "un po' dal fiume" sarebbe
-        --|       stato meglio (o anche "po' di acqua dal fiume").
-        --|       Sta all'autore scegliere bene il nome da visualizzare con
-        --|       MENTIONED, ma la questione merita di essere approfondita e
-        --|       capire se ci sono soluzioni migliori. In ogni caso, il blocco
-        --|       DOES del verbo può sempre essere implementato sull'istanza
-        --|       specifica per ottenere un testo ad hoc.
-        THEN "Bevi un po' di" SAY liq. "."
-     -- THEN "You drink a bit of" SAY THE liq. "."
-      ELSE
-          -- Se invece il liquido è in un contenitore:
-
-          -- >>> prendi implicito: >>>
-          IF recipiente OF liq NOT DIRECTLY IN hero
-            THEN
-              IF recipiente OF liq IS NOT prendibile
-                ---> @TODO!!                                                    TRANSLATE!
-                THEN "You can't carry" SAY THE liq. "around in your bare hands."
-                  -- the action stops here if the container is not takeable.
-                ELSE
-                  LOCATE recipiente OF liq IN hero.
-                  ---> @TODO!!                                                  TRANSLATE!
-                  "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
-              END IF.
-
-          END IF.
-          -- <<< prendi implicito <<<
-
-          IF liq IN hero
-            -- i.e. if the implicit taking was successful
-            -- Se il prendi implicito è andato in porto:
-            THEN
-              "Bevi tutt$$" SAY liq:vocale.
-              SAY THE liq. "."
-              LOCATE liq AT limbo.
-          END IF.
-      END IF.
-
-  END VERB bevi.
-END ADD TO.
-
-
--- Note that the verb 'sip' is defined separately, with a slightly different behaviour.
-
-
-
-
 -- =================================================================
 
 -- @BRUCIA ---> @BURN (VERB + SYNTAX)
@@ -3139,13 +3326,12 @@ ADD TO EVERY OBJECT
               END IF.
           END IF.
           DOES
-        -- implicit taking:
+        -- >>> prendi implicito: >>>
         IF ogg NOT DIRECTLY IN hero
-          ---> @TODO!!                                                          TRANSLATE!
-          THEN SAY  implicit_taking_message  OF mia_AT.
+          THEN SAY  mia_AT:riferisci_prendi_implicito.
           LOCATE ogg IN hero.
         END IF.
-        -- end of implicit taking.
+        -- <<< prendi implicito <<<
 
         LOCATE ogg IN ricevente.
         ---> @TODO!!                                                            TRANSLATE!
@@ -4023,13 +4209,12 @@ ADD TO EVERY THING
               END IF.
           END IF.
       DOES
-        -- implicit taking:
+        -- >>> prendi implicito: >>>
         IF ogg NOT DIRECTLY IN hero
           THEN LOCATE ogg IN hero.
---                                                                              TRANSLATE!
-            SAY  implicit_taking_message  OF mia_AT.
+            SAY  mia_AT:riferisci_prendi_implicito.
         END IF.
-        -- end of implicit taking.
+        -- <<< prendi implicito <<<
 
         "Non è possibile legare $+1" SAY bersaglio:prep_A. "$2."
      -- "It's not possible to tie" SAY THE ogg. "to" SAY THE bersaglio. "."
@@ -4159,76 +4344,6 @@ ADD TO EVERY THING
       "di essere liberat$$" SAY ogg:vocale. "."
   END VERB libera.
 END ADD TO.
-
--- ==============================================================
-
-
--- @MANGIA -> @EAT
-
-
--- ==============================================================
-
-
--- SYNTAX eat = eat (food)
-
-SYNTAX mangia = mangia (cibo)
-  WHERE cibo IsA OBJECT
-    ELSE
-      IF cibo IS NOT plurale
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "mangiare."
-
-
-ADD TO EVERY OBJECT
-  VERB mangia
-    CHECK mia_AT CAN mangiare
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    AND cibo IS commestibile
-      ELSE
-        IF cibo IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-        END IF.
-        "mangiare."
-    AND cibo IS prendibile
-      ---> @TODO!!                                                              TRANSLATE!
-      ELSE SAY  check_obj_takeable  OF mia_AT.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY  imp_luogo_buio  OF mia_AT.
-    AND cibo IS raggiungibile AND cibo IS NOT distante
-      ELSE
-        IF cibo IS NOT raggiungibile
-          THEN
-            IF cibo IS NOT plurale
-              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
-            END IF.
-        ELSIF cibo IS distante
-          THEN
-            IF cibo IS NOT plurale
-              THEN SAY  ogg1_distante_sg  OF mia_AT.
-              ELSE SAY  ogg1_distante_pl  OF mia_AT.
-            END IF.
-        END IF.
-    DOES
-      -- implicit taking:
-      IF cibo NOT DIRECTLY IN hero
-        THEN LOCATE cibo IN hero.
-          ---> @TODO!!                                                          TRANSLATE!
-          SAY  implicit_taking_message  OF mia_AT.
-      END IF.
-      -- end of implicit taking.
-
-      "Mangi" SAY THE cibo. "."
-   -- "You eat all of" SAY THE cibo. "."
-      LOCATE cibo AT limbo.
-
-  END VERB mangia.
-END ADD.
-
 
 
 -- ==============================================================
@@ -6613,7 +6728,7 @@ END VERB rispondi_Sì.
 --| | shout              | scream, yell                       | shout                             | 0 |
 --| | show               | reveal                             | show (obj) to (act)               | 2 | {x}
 --~*| sing               |                                    | sing                              | 0 |
---| | sip                |                                    | sip (liq)                         | 1 |
+--~*| sip                |                                    | sip (liq)                         | 1 |
 --~*| sit (down)         |                                    | sit.  sit down.                   | 0 |
 --~*| sit_on             |                                    | sit on (surface)                  | 1 |
 --~*| sleep              | rest                               | sleep                             | 0 |
@@ -6813,12 +6928,12 @@ ADD TO EVERY OBJECT
       -- This same if-statement is found in numerous other verbs throughout
       -- the library, as well.
 
-      -- implicit taking:
+      -- >>> prendi implicito: >>>
       IF ogg NOT DIRECTLY IN hero
         THEN LOCATE ogg IN hero.
-             SAY  implicit_taking_message  OF mia_AT.
+          SAY  mia_AT:riferisci_prendi_implicito.
       END IF.
-      -- end of implicit taking.
+      -- <<< prendi implicito <<<
 
       "You take a bite of" SAY THE ogg. "$$."
         IF ogg IS NOT plurale
@@ -7246,12 +7361,12 @@ ADD TO EVERY OBJECT
         END IF.
     DOES
 
-      -- implicit taking:
+      -- >>> prendi implicito: >>>
       IF ogg NOT DIRECTLY IN hero
         THEN LOCATE ogg IN hero.
-          SAY  implicit_taking_message  OF mia_AT.
+          SAY  mia_AT:riferisci_prendi_implicito.
       END IF.
-      -- end of implicit taking.
+      -- <<< prendi implicito <<<
 
       IF COUNT IsA OBJECT, DIRECTLY IN ogg = 0
         THEN "There is nothing in" SAY THE ogg. "."
@@ -7415,12 +7530,12 @@ ADD TO EVERY OBJECT
           END IF.
       DOES
 
-      -- implicit taking:
+      -- >>> prendi implicito: >>>
       IF ogg NOT DIRECTLY IN hero
         THEN LOCATE ogg IN hero.
-          SAY  implicit_taking_message  OF mia_AT.
+          SAY  mia_AT:riferisci_prendi_implicito.
       END IF.
-      -- end of implicit taking.
+      -- <<< prendi implicito <<<
 
       IF COUNT IsA OBJECT, DIRECTLY IN ogg = 0
         THEN "There is nothing in" SAY THE ogg. "."
@@ -7545,12 +7660,12 @@ ADD TO EVERY THING
               END IF.
           END IF.
       DOES
-        -- implicit taking:
+        -- >>> prendi implicito: >>>
         IF ogg NOT DIRECTLY IN hero
           THEN LOCATE ogg IN hero.
-            SAY  implicit_taking_message  OF mia_AT.
+            SAY  mia_AT:riferisci_prendi_implicito.
         END IF.
-        -- end of implicit taking.
+        -- <<< prendi implicito <<<
 
         IF COUNT IsA OBJECT, DIRECTLY IN ogg = 0
           THEN "There is nothing in" SAY THE ogg. "."
@@ -9013,12 +9128,12 @@ ADD TO EVERY OBJECT
               END IF.
           END IF.
       DOES
-        -- implicit taking:
+        -- >>> prendi implicito: >>>
         IF ogg NOT DIRECTLY IN hero
           THEN LOCATE ogg IN hero.
-               SAY  implicit_taking_message  OF mia_AT.
+            SAY  mia_AT:riferisci_prendi_implicito.
         END IF.
-        -- end of implicit taking.
+        -- <<< prendi implicito <<<
 
         IF superficie = pavimento OR superficie = suolo
           THEN LOCATE ogg AT hero.
@@ -9461,92 +9576,6 @@ END ADD TO.
 -- ==============================================================
 
 
--- @SIP
-
-
--- ==============================================================
-
-
-SYNTAX sip = sip (liq)
-  WHERE liq IsA liquido
-    ELSE
-      IF liq IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "sorseggiare."
-
-
-ADD TO EVERY liquido
-  VERB sip
-    CHECK mia_AT CAN sip
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    AND liq IS potabile
-      ELSE
-        IF liq IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-        END IF.
-        "sorseggiare."
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY  imp_luogo_buio  OF mia_AT.
-    AND liq IS raggiungibile AND liq IS NOT distante
-      ELSE
-        IF liq IS NOT raggiungibile
-          THEN
-            IF liq IS NOT plurale
-              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
-            END IF.
-        ELSIF liq IS distante
-          THEN
-            IF liq IS NOT plurale
-              THEN SAY  ogg1_distante_sg  OF mia_AT.
-              ELSE SAY  ogg1_distante_pl  OF mia_AT.
-            END IF.
-        END IF.
-    DOES
-      IF recipiente OF liq = recipiente_fittizio
-        -- here, if the liquid is in no container, for example
-        -- the hero takes a sip of water from a river,
-        -- the action is allowed to succeed.
-        THEN "You take a sip of" SAY THE liq. "."
-        ELSE
-          -- implicit taking:
-          IF recipiente OF liq NOT DIRECTLY IN hero
-            THEN
-              IF recipiente OF liq IS NOT prendibile
-                THEN "You can't carry" SAY THE liq. "around in your bare hands."
-                  -- the action stops here if the container is not takeable.
-                ELSE LOCATE recipiente OF liq IN hero.
-                "(taking" SAY THE recipiente OF liq. "first)$n"
-              END IF.
-          END IF.
-          -- end of implicit taking.
-      END IF.
-
-      IF liq IN hero    -- i.e. if the implicit taking was successful
-        THEN
-          IF recipiente OF liq IS NOT aperto
-            THEN "You can't, since" SAY THE recipiente OF liq. "is closed."
-            ELSE "You take a sip of" SAY THE liq. "."
-          END IF.
-      END IF.
-
-  END VERB sip.
-END ADD TO.
-
-
--- See also the verb 'drink'.
-
-
-
-
--- ==============================================================
-
-
 -- @SQUEEZE
 
 
@@ -9938,12 +9967,12 @@ ADD TO EVERY OBJECT
             END IF.
         END IF.
     DOES
-      -- implicit taking:
+      -- >>> prendi implicito: >>>
       IF proiettile NOT DIRECTLY IN hero
         THEN LOCATE proiettile IN hero.
-          SAY  implicit_taking_message  OF mia_AT.
+          SAY  mia_AT:riferisci_prendi_implicito.
       END IF.
-      -- end of implicit taking.
+      -- <<< prendi implicito <<<
 
       "You can't throw very far;" SAY THE proiettile.
 
@@ -10031,12 +10060,12 @@ ADD TO EVERY OBJECT
             ELSE SAY  ogg2_distante_pl  OF mia_AT.
           END IF.
       DOES
-        -- implicit taking:
+        -- >>> prendi implicito: >>>
         IF proiettile NOT DIRECTLY IN hero
           THEN LOCATE proiettile IN hero.
-               SAY  implicit_taking_message  OF mia_AT.
+            SAY  mia_AT:riferisci_prendi_implicito.
         END IF.
-        -- end of implicit taking.
+        -- <<< prendi implicito <<<
 
         IF bersaglio IS inanimato
           THEN
@@ -10144,12 +10173,12 @@ ADD TO EVERY OBJECT
             ELSE SAY  ogg2_distante_pl  OF mia_AT.
           END IF.
       DOES
-        -- implicit taking:
+        -- >>> prendi implicito: >>>
         IF proiettile NOT DIRECTLY IN hero
           THEN LOCATE proiettile IN hero.
-            SAY  implicit_taking_message  OF mia_AT.
+            SAY  mia_AT:riferisci_prendi_implicito.
         END IF.
-        -- end of implicit taking.
+        -- <<< prendi implicito <<<
 
         "It wouldn't accomplish anything trying to throw"
         SAY the proiettile. "to" SAY THE ricevente. "."
@@ -10253,12 +10282,12 @@ ADD TO EVERY OBJECT
               END IF.
           END IF.
       DOES
-        -- implicit taking:
+        -- >>> prendi implicito: >>>
         IF proiettile NOT DIRECTLY IN hero
           THEN LOCATE proiettile IN hero.
-            SAY  implicit_taking_message  OF mia_AT.
+            SAY  mia_AT:riferisci_prendi_implicito.
         END IF.
-        -- end of implicit taking.
+        -- <<< prendi implicito <<<
 
         "It wouldn't accomplish anything trying to throw"
         SAY THE proiettile. "into" SAY THE cont. "."

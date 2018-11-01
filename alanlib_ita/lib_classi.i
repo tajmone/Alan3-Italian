@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.7.1-Alpha, 2018-10-31: Alan 3.0beta6
+--| v0.7.2-Alpha, 2018-11-01: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -1467,11 +1467,11 @@ EVERY liquido IsA OBJECT
     HEADER "In" SAY THE THIS. "you see"
     ELSE "There is nothing in" SAY THE THIS. "."
 
-    -- We declare this class a container to enable player commands such as
-    -- 'throw sack into water', 'look into water' and 'take pearl from water'.
-    -- Also cases such as 'pour red potion into blue potion' require that this
-    -- class behaves like a container.
-
+    -- Dichiariamo questa classe un contenitore al fine di consentire comandi
+    -- come "butta il sacco in acqua", "guarda nell'acqua" e "prendi la perla
+    -- dall'acqua". Vi sono anche altri casi che richiedono che questa classe
+    -- si comporti come un contenitore, ad esempio "versa la pozione rossa nella
+    -- pozione blue"
 
   HAS recipiente recipiente_fittizio.
 
@@ -1529,6 +1529,8 @@ EVERY liquido IsA OBJECT
     SCHEDULE check_vessel AT THIS AFTER 0.    -- this event is defined further below
 
 
+-- @TODO: Se ha 'xDesc', mostra il testo?                                       IMPROVE
+
   VERB esamina
     DOES ONLY
       IF recipiente OF THIS <> recipiente_fittizio
@@ -1584,16 +1586,18 @@ EVERY liquido IsA OBJECT
 
 -- @PRENDI_DA -> @TAKE_FROM (VERB) => LIQUID
   VERB prendi_da
-     WHEN ogg
-    CHECK detentore <> recipiente OF THIS
-      ELSE SAY  check_liquid_vessel_not_cont  OF mia_AT.
-      -- the above is triggered when the player types for example
-      -- >take juice from bottle   -- (when the juice is in the bottle)
+    WHEN ogg
+      CHECK detentore <> recipiente OF THIS
+        ELSE SAY  check_liquid_vessel_not_cont  OF mia_AT.
+        -- the above is triggered when the player types for example
+        -- >take juice from bottle   -- (when the juice is in the bottle)
     DOES ONLY
       IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT prendibile
         THEN "You can't carry" SAY THE THIS. "around in your bare hands."
       ELSE LOCATE recipiente OF THIS IN hero.
-        "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nTaken."
+      "($$" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)
+       $nPres$$" SAY THIS:vocale. "."
+     -- "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nTaken."
       END IF.
   END VERB prendi_da.
 
@@ -1601,8 +1605,12 @@ EVERY liquido IsA OBJECT
   VERB lascia
     DOES ONLY
       LOCATE recipiente OF THIS AT hero.
-      "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nDropped."
-
+-- @NOTE: Non sono sicuro se lasciarlo così o se usare invece come sopra (prendi_da):
+--    "($$" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)
+--     $nLasciat$$" SAY THIS:vocale. ".""
+      "Lasci" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "."
+      -- @DELME when done:
+      -- "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nDropped."
   END VERB lascia.
 
 
@@ -1617,17 +1625,17 @@ EVERY liquido IsA OBJECT
   VERB dai_a
     WHEN ogg
     DOES ONLY
-      -- implicit taking:
+      -- >>> prendi implicito: >>>
       IF THIS NOT IN hero
         THEN
           IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT prendibile
 --                                                                              TRANSLATE!
             THEN "You can't carry" SAY THE THIS. "around in your bare hands."
           ELSE LOCATE recipiente OF THIS IN hero.
-            "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
+            "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
           END IF.
       END IF.
-      -- end of implicit taking.
+      -- <<< prendi implicito <<<
 
       IF THIS IN hero
         -- i.e. if the implicit taking was successful
@@ -1645,7 +1653,7 @@ EVERY liquido IsA OBJECT
 
   VERB pour
     DOES ONLY
-      -- implicit taking:
+      -- >>> prendi implicito: >>>
       IF THIS NOT IN hero
         THEN
           IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT prendibile
@@ -1657,11 +1665,10 @@ EVERY liquido IsA OBJECT
                   ELSE "them."
                 END IF.
           ELSE LOCATE recipiente OF THIS IN hero.
---                                                                              TRANSLATE!
-            "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
+            "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
           END IF.
       END IF.
-      -- end of implicit taking.
+      -- <<< prendi implicito <<<
 
       IF THIS IN hero
         THEN LOCATE THIS AT hero.
@@ -1680,7 +1687,7 @@ EVERY liquido IsA OBJECT
   VERB pour_in
     WHEN ogg
       DOES ONLY
-        -- implicit taking:
+        -- >>> prendi implicito: >>>
         IF THIS NOT IN hero
           THEN
             IF recipiente OF THIS = recipiente_fittizio
@@ -1690,11 +1697,10 @@ EVERY liquido IsA OBJECT
 --                                                                              TRANSLATE!
               THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
             ELSE LOCATE recipiente OF THIS IN hero.
---                                                                              TRANSLATE!
-              "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
+              "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
             END IF.
         END IF.
-        -- end of implicit taking.
+        -- <<< prendi implicito <<<
 
         IF THIS IN hero   --i.e. if the implicit taking was successful
           THEN LOCATE THIS IN cont.
@@ -1728,7 +1734,7 @@ EVERY liquido IsA OBJECT
   VERB pour_on
     WHEN ogg
       DOES ONLY
-        -- implicit taking:
+        -- >>> prendi implicito: >>>
         IF THIS NOT IN hero
           THEN
             IF recipiente OF THIS = recipiente_fittizio
@@ -1738,11 +1744,10 @@ EVERY liquido IsA OBJECT
 --                                                                              TRANSLATE!
               THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
             ELSE LOCATE recipiente OF THIS IN hero.
---                                                                              TRANSLATE!
-              "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
+              "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
             END IF.
         END IF.
-        -- end of implicit taking.
+        -- <<< prendi implicito <<<
 
         IF THIS IN hero
           -- i.e. if the implicit taking was successful
@@ -1780,18 +1785,17 @@ EVERY liquido IsA OBJECT
           ELSE
             IF recipiente OF THIS IS prendibile
               THEN
-                -- implicit taking:
+                -- >>> prendi implicito: >>>
                 IF THIS NOT IN hero
                   THEN
                     IF recipiente OF THIS = recipiente_fittizio
 --                                                                              TRANSLATE!
                       THEN "You can't carry" SAY THE THIS. "around in your bare hands."
                     ELSE LOCATE recipiente OF THIS IN hero.
---                                                                              TRANSLATE!
-                      "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
+                      "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
                     END IF.
                 END IF.
-                -- end of implicit taking.
+                -- <<< prendi implicito <<<
 
                 LOCATE recipiente OF THIS IN cont.
 --                                                                              TRANSLATE!
@@ -1830,7 +1834,7 @@ EVERY liquido IsA OBJECT
   VERB put_on
     WHEN ogg
       DOES ONLY
-        -- implicit taking:
+        -- >>> prendi implicito: >>>
         IF THIS NOT IN hero
           THEN
             IF recipiente OF THIS = recipiente_fittizio
@@ -1840,11 +1844,10 @@ EVERY liquido IsA OBJECT
 --                                                                              TRANSLATE!
               THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
             ELSE LOCATE recipiente OF THIS IN hero.
---                                                                              TRANSLATE!
-              "(taking" SAY THE recipiente OF THIS. "of" SAY THIS. "first)$n"
+              "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
             END IF.
         END IF.
-        -- end of implicit taking.
+        -- <<< prendi implicito <<<
 
         IF THIS IN hero
           -- i.e. if the implicit taking was successful
@@ -1940,7 +1943,7 @@ EVERY contenitore_elencato IsA OBJECT
 
 
 
-
+-- @TODO: Se ha 'xDesc', mostra il testo?                                       IMPROVE
 
   VERB esamina
     DOES ONLY
@@ -2203,6 +2206,7 @@ EVERY finestra IsA OBJECT
   IS NOT aperto.
   IS NOT prendibile.
 
+-- @TODO: Se ha 'xDesc', mostra il testo?                                       IMPROVE
 
   VERB esamina
     DOES

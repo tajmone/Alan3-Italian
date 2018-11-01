@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.13-Alpha, 2018-10-31: Alan 3.0beta6
+v0.7.14-Alpha, 2018-11-01: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -148,6 +148,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | scrivi             |                              | scrivi "testo" su (ogg)                |     | 1 | {X} |
 | siediti            | siedi                        | siediti                                |     | 0 |     |
 | siediti_su         | siedi                        | siediti su (superficie)                |     | 1 |     |
+| sorseggia          |                              | sorseggia (liq)                        |     | 1 |     |
 | spegni             |                              | spegni (disp)                          |     | 1 |     |
 | spogliati          | svestiti                     | spogliati                              |     | 0 |     |
 | suona              |                              | suona (ogg)                            |     | 1 | {X} |
@@ -462,6 +463,41 @@ non decido in quale gruppo spostarli.
 ==== rispondi
 
 // end::verbo_rispondi[]
+// tag::gruppo_mangiabevi[]
+=== Mangiare e Bere
+
+Questo gruppo include i verbi che riguardano mangiare e bere:
+
+* `bevi`
+* `mangia`
+* `sorseggia`
+
+[cols="15m,25d,60d",options="header"]
+|====================================================
+| verbo     | sintassi        | parametri
+| bevi      | bevi (liq)      | liq è `potabile`
+| mangia    | mangia (cibo)   | cibo è `commestibile`
+| sorseggia | sorseggia (liq) | liq è `potabile`
+|====================================================
+
+Verbi di questo gruppo non ancora tradotti:
+
+* `bite`
+* `taste`
+
+// end::gruppo_mangiabevi[]
+// tag::verbo_bevi[]
+==== bevi
+
+// end::verbo_bevi[]
+// tag::verbo_mangia[]
+==== mangia
+
+// end::verbo_mangia[]
+// tag::verbo_sorseggia[]
+==== sorseggia
+
+// end::verbo_sorseggia[]
 // tag::comandi_domande[]
 
 == Verbi di Domande
@@ -540,7 +576,6 @@ italiano del modulo dei verbi.
 | shoot_with         |                                    | shoot (target) with (weapon)      | 2 |
 | shout              | scream, yell                       | shout                             | 0 |
 | show               | reveal                             | show (obj) to (act)               | 2 | {x}
-| sip                |                                    | sip (liq)                         | 1 |
 | squeeze            |                                    | squeeze (obj)                     | 1 | {x}
 | stand (up)         |                                    | stand.  stand up.                 | 0 |
 | stand_on           |                                    | stand on (surface)                | 1 |
@@ -635,6 +670,12 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `racconta`.
 
 * [ ] Descrizione `rispondi`.
+
+* [ ] Descrizione `bevi`.
+
+* [ ] Descrizione `mangia`.
+
+* [ ] Descrizione `sorseggia`.
 
 // end::todo_checklist[]
 
