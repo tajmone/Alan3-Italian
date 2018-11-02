@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.14-Alpha, 2018-11-01: Alan 3.0beta6
+--| v0.7.15-Alpha, 2018-11-02: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -704,6 +704,7 @@ END VERB ringraziamenti.
 --| | ascolta0           |                              | ascolta                                |     | 0 |     |
 --| | ascolta            |                              | ascolta (ogg)!                         |     | 1 | {X} |
 --| | aspetta            | attendi, Z                   | aspetta                                |     | 0 |     |
+--| | assaggia           | lecca                        | assaggia (ogg)                         |     | 1 | {X} |
 --| | attacca            | combatti, picchia            | attacca (bersaglio)                    |     | 1 |     |
 --| | attacca_con        | combatti, picchia            | attacca (bersaglio) con (arma)         |     | 2 |     |
 --| | attraversa         |                              | attraversa (ogg)                       |     | 1 | {X} |
@@ -1489,11 +1490,6 @@ END ADD TO.
 --| * `ascolta`
 --| * `tocca`
 --| * `tocca_con`
---| 
---| Verbi non tradotti appartenenti a questo gruppo:
---| 
---| * `taste` (oppure in altro gruppo, assieme a `mangia`? in fondo riguarda il
---|    senso del gusto)
 --| 
 --| Il verbo `guarda` andrebbe in questo gruppo o con `esamina`? 
 --| 
@@ -2307,27 +2303,98 @@ END ADD TO.
 --| 
 --| Questo gruppo include i verbi che riguardano mangiare e bere:
 --| 
+--| * `assaggia`
 --| * `bevi`
 --| * `mangia`
 --| * `sorseggia`
 --| 
 --| [cols="15m,25d,60d",options="header"]
---| |====================================================
+--| |================================================================
 --| | verbo     | sintassi        | parametri
---~ |-----------+-----------------+---------------------- 
+--~ |-----------+-----------------+----------------------------------
+--| | assaggia  | assaggia (ogg)  | ogg è `commestibile` o `potabile`
 --| | bevi      | bevi (liq)      | liq è `potabile`
 --| | mangia    | mangia (cibo)   | cibo è `commestibile`
 --| | sorseggia | sorseggia (liq) | liq è `potabile`
---| |====================================================
+--| |================================================================
 --| 
 --| Verbi di questo gruppo non ancora tradotti:
 --| 
 --| * `bite`
---| * `taste`
 --<
 
 
--->verbo_bevi(20510)  @BEVI --> @DRINK
+-->verbo_assaggia(20510)  @ASSAGGIA --> @TASTE   (+ lick)
+--~=============================================================================
+--| ==== assaggia
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `assaggia`.
+--<
+
+
+
+SYNTAX assaggia = assaggia (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "assaggiare."
+
+
+SYNONYMS lecca = assaggia.
+
+
+ADD TO EVERY OBJECT
+  VERB assaggia
+    CHECK mia_AT CAN assaggiare
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+        END IF.
+        "assaggiare."
+    AND ogg IS commestibile OR ogg IS potabile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+        END IF.
+        "assaggiare."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
+            END IF.
+        END IF.
+    DOES
+      "Non hai sentito nessun sapore particolare." ---> preso da i6
+      -- "You taste nothing unexpected."
+  END VERB assaggia.
+END ADD TO.
+
+
+
+-->verbo_bevi(20520)  @BEVI --> @DRINK
 --~=============================================================================
 --| ==== bevi
 --~=============================================================================
@@ -2429,7 +2496,7 @@ END ADD TO.
 
 -- Note that the verb 'sip' is defined separately, with a slightly different behaviour.
 
--->verbo_mangia(20520)  @MANGIA -> @EAT
+-->verbo_mangia(20530)  @MANGIA -> @EAT
 --~=============================================================================
 --| ==== mangia
 --~=============================================================================
@@ -2498,7 +2565,7 @@ ADD TO EVERY OBJECT
   END VERB mangia.
 END ADD.
 
--->verbo_sorseggia(20530)  @SORSEGGIA --> @SIP
+-->verbo_sorseggia(20540)  @SORSEGGIA --> @SIP
 --~=============================================================================
 --| ==== sorseggia
 --~=============================================================================
@@ -6746,7 +6813,7 @@ END VERB rispondi_Sì.
 --~*| take_from          | remove from                        | take (obj) from (holder)          | 2 | {x}
 --~*| talk               |                                    | talk                              | 0 |
 --~*| talk_to            | speak                              | talk to (act)                     | 1 |
---| | taste              | lick                               | taste (obj)                       | 1 | {x}
+--~*| taste              | lick                               | taste (obj)                       | 1 | {x}
 --| | tear               | rip                                | tear (obj)                        | 1 | {x}
 --~*| tell               | enlighten, inform                  | tell (act) about (topic)          | 2 |
 --~*| think              |                                    | think                             | 0 |
@@ -9789,74 +9856,6 @@ ADD TO EVERY OBJECT
   END VERB swim_in.
 END ADD TO.
 
-
-
-
--- ==============================================================
-
-
--- @TASTE   (+ lick)
-
-
--- ==============================================================
-
-
-SYNTAX taste = taste (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "assaggiare."
-
-
-SYNONYMS lick = taste.
-
-
-ADD TO EVERY OBJECT
-  VERB taste
-    CHECK mia_AT CAN assaggiare
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-        END IF.
-        "assaggiare."
-    AND ogg IS commestibile OR ogg IS potabile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-        END IF.
-        "assaggiare."
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY  imp_luogo_buio  OF mia_AT.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY  ogg1_distante_sg  OF mia_AT.
-              ELSE SAY  ogg1_distante_pl  OF mia_AT.
-            END IF.
-        END IF.
-    DOES
-      "Non hai sentito nessun sapore particolare." ---> preso da i6
-      -- "You taste nothing unexpected."
-  END VERB taste.
-END ADD TO.
 
 
 

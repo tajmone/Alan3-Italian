@@ -1,7 +1,7 @@
 
 = Doxter: Note di Lavoro
 Tristano Ajmone <tajmone@gmail.com>
-:revdate: 2018-11-01
+:revdate: 2018-11-02
 :lang: it
 // TOC Settings:
 :toc: left
@@ -154,9 +154,10 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 | 20480   |           | verbo_rispondi               | ==== rispondi
 // -----------------------------------------------------------------------------
 | 20500   |           | gruppo_mangiabevi            | == Mangiare e Bere
-| 20510   |           | verbo_bevi                   | ==== bevi
-| 20520   |           | verbo_mangia                 | ==== mangia
-| 20530   |           | verbo_sorseggia              | ==== sorseggia
+| 20510   |           | verbo_assaggia               | ==== assaggia
+| 20520   |           | verbo_bevi                   | ==== bevi
+| 20530   |           | verbo_mangia                 | ==== mangia
+| 20540   |           | verbo_sorseggia              | ==== sorseggia
 // =============================================================================
 | 30000   |           | comandi_comandi_domande      | == Verbi di Domande
 // -----------------------------------------------------------------------------

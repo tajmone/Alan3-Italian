@@ -25,6 +25,9 @@ lattina contiene dell'aranciata. Puoi vedere una roccia qui.
 > bevi la roccia
 La roccia non è qualcosa che puoi bere.
 
+> bevi l'albero
+L'albero non è qualcosa che puoi bere.
+
 > esamina il fiume
 You notice nothing unusual about il fiume.
 
@@ -43,6 +46,9 @@ La mela non è qualcosa che puoi bere.
 > sorseggia la roccia
 La roccia non è qualcosa che puoi sorseggiare.
 
+> sorseggia l'albero
+L'albero non è qualcosa che puoi sorseggiare.
+
 > esamina il fiume
 You notice nothing unusual about il fiume.
 
@@ -53,10 +59,25 @@ You notice nothing unusual about il fiume.
 Il pesce non è qualcosa che puoi sorseggiare.
 
 > ; ==============================================================================
+> ; ASSAGGIARE: TESTA NON COMMESTIBILI
+> ; ==============================================================================
+> assaggia la roccia
+La roccia non è qualcosa che puoi assaggiare.
+
+> assaggia la lattina
+La lattina non è qualcosa che puoi assaggiare.
+
+> assaggia l'albero
+L'albero non è qualcosa che puoi assaggiare.
+
+> ; ==============================================================================
 > ; MANGIARE: TESTA NON COMMESTIBILI
 > ; ==============================================================================
 > mangia la roccia
 La roccia non è qualcosa che puoi mangiare.
+
+> mangia l'albero
+L'albero non è qualcosa che puoi mangiare.
 
 > mangia il fiume
 Il fiume non è qualcosa che puoi mangiare.
@@ -74,8 +95,23 @@ possa afferrarla.
 > mangia la mela
 La mela è fuori dalla tua portata.
 
-> prendi la mela
+> ; ==============================================================================
+> ; ASSAGGIARE: TESTA NON RAGGIUNGIBILI
+> ; ==============================================================================
+> assaggia la mela
 La mela è fuori dalla tua portata.
+
+> ; ==============================================================================
+> ; ASSAGGIARE
+> ; ==============================================================================
+> assaggia il pesce
+Non hai sentito nessun sapore particolare.
+
+> assaggia il fiume
+Non hai sentito nessun sapore particolare.
+
+> assaggia l'aranciata
+Non hai sentito nessun sapore particolare.
 
 > ; ==============================================================================
 > ; BERE

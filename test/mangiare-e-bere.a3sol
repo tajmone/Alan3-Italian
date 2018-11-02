@@ -2,6 +2,7 @@
 ; BERE: TESTA NON POTABILI
 ; ==============================================================================
 bevi la roccia
+bevi l'albero
 esamina il fiume
 esamina il pesce
 bevi il pesce
@@ -10,13 +11,21 @@ bevi la mela
 ; SORSEGGIA: TESTA NON POTABILI
 ; ==============================================================================
 sorseggia la roccia
+sorseggia l'albero
 esamina il fiume
 esamina il pesce
 sorseggia il pesce
 ; ==============================================================================
+; ASSAGGIARE: TESTA NON COMMESTIBILI
+; ==============================================================================
+assaggia la roccia
+assaggia la lattina
+assaggia l'albero
+; ==============================================================================
 ; MANGIARE: TESTA NON COMMESTIBILI
 ; ==============================================================================
 mangia la roccia
+mangia l'albero
 mangia il fiume
 ; ==============================================================================
 ; MANGIARE: TESTA NON RAGGIUNGIBILI
@@ -24,7 +33,16 @@ mangia il fiume
 esamina l'albero
 esamina la mela
 mangia la mela
-prendi la mela
+; ==============================================================================
+; ASSAGGIARE: TESTA NON RAGGIUNGIBILI
+; ==============================================================================
+assaggia la mela
+; ==============================================================================
+; ASSAGGIARE
+; ==============================================================================
+assaggia il pesce
+assaggia il fiume
+assaggia l'aranciata
 ; ==============================================================================
 ; BERE
 ; ==============================================================================

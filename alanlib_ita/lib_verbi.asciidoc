@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.14-Alpha, 2018-11-01: Alan 3.0beta6
+v0.7.15-Alpha, 2018-11-02: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -87,6 +87,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | ascolta0           |                              | ascolta                                |     | 0 |     |
 | ascolta            |                              | ascolta (ogg)!                         |     | 1 | {X} |
 | aspetta            | attendi, Z                   | aspetta                                |     | 0 |     |
+| assaggia           | lecca                        | assaggia (ogg)                         |     | 1 | {X} |
 | attacca            | combatti, picchia            | attacca (bersaglio)                    |     | 1 |     |
 | attacca_con        | combatti, picchia            | attacca (bersaglio) con (arma)         |     | 2 |     |
 | attraversa         |                              | attraversa (ogg)                       |     | 1 | {X} |
@@ -369,11 +370,6 @@ Questo gruppo include i verbi per le azioni sensoriali:
 * `tocca`
 * `tocca_con`
 
-Verbi non tradotti appartenenti a questo gruppo:
-
-* `taste` (oppure in altro gruppo, assieme a `mangia`? in fondo riguarda il
-   senso del gusto)
-
 Il verbo `guarda` andrebbe in questo gruppo o con `esamina`? 
 
 [NOTE]
@@ -468,24 +464,29 @@ non decido in quale gruppo spostarli.
 
 Questo gruppo include i verbi che riguardano mangiare e bere:
 
+* `assaggia`
 * `bevi`
 * `mangia`
 * `sorseggia`
 
 [cols="15m,25d,60d",options="header"]
-|====================================================
+|================================================================
 | verbo     | sintassi        | parametri
+| assaggia  | assaggia (ogg)  | ogg è `commestibile` o `potabile`
 | bevi      | bevi (liq)      | liq è `potabile`
 | mangia    | mangia (cibo)   | cibo è `commestibile`
 | sorseggia | sorseggia (liq) | liq è `potabile`
-|====================================================
+|================================================================
 
 Verbi di questo gruppo non ancora tradotti:
 
 * `bite`
-* `taste`
 
 // end::gruppo_mangiabevi[]
+// tag::verbo_assaggia[]
+==== assaggia
+
+// end::verbo_assaggia[]
 // tag::verbo_bevi[]
 ==== bevi
 
@@ -581,7 +582,6 @@ italiano del modulo dei verbi.
 | stand_on           |                                    | stand on (surface)                | 1 |
 | swim               |                                    | swim                              | 0 |
 | swim_in            |                                    | swim in (liq)                     | 1 |
-| taste              | lick                               | taste (obj)                       | 1 | {x}
 | tear               | rip                                | tear (obj)                        | 1 | {x}
 | throw              |                                    | throw (projectile)                | 1 |
 | throw_at           |                                    | throw (projectile) at (target)    | 2 |
@@ -670,6 +670,8 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `racconta`.
 
 * [ ] Descrizione `rispondi`.
+
+* [ ] Descrizione `assaggia`.
 
 * [ ] Descrizione `bevi`.
 

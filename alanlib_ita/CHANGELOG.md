@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/11/02](#20181102)
+    - [Verb: `taste`](#verb-taste)
 - [2018/11/01](#20181101)
     - [Verb: `sip`](#verb-sip)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
@@ -383,6 +385,25 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
+# 2018/11/02
+
+- [`lib_verbi.i`][lib_verbi] (v0.7.15)
+
+
+## Verb: `taste`
+
+Translated verb `assaggia`, "__assaggia__" (_taste_):
+
+    assaggia (ogg)
+
+with synonyms:
+
+    lecca = assaggia
+
+
+<!---------------------------------------------------------------------------->
+
+
 # 2018/11/01
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.10)
@@ -434,7 +455,8 @@ Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 - Add some TODO annotations to `lib_classi.i`.
 - Translations and mall improvements here and there.
 
--------------------------------------------------------------------------------
+
+<!---------------------------------------------------------------------------->
 
 # 2018/10/31 (2)
 
