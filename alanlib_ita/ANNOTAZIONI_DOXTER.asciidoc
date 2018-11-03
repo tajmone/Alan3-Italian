@@ -1,7 +1,7 @@
 
 = Doxter: Note di Lavoro
 Tristano Ajmone <tajmone@gmail.com>
-:revdate: 2018-11-02
+:revdate: 2018-11-03
 :lang: it
 // TOC Settings:
 :toc: left
@@ -157,7 +157,8 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 | 20510   |           | verbo_assaggia               | ==== assaggia
 | 20520   |           | verbo_bevi                   | ==== bevi
 | 20530   |           | verbo_mangia                 | ==== mangia
-| 20540   |           | verbo_sorseggia              | ==== sorseggia
+| 20540   |           | verbo_mordi                  | ==== mordi
+| 20550   |           | verbo_sorseggia              | ==== sorseggia
 // -----------------------------------------------------------------------------
 | 20600   |           | gruppo_svuota                | == Svuotare e Versare
 | 20610   |           | verbo_svuota                 | ==== svuota + versa

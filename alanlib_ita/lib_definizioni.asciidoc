@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Definizioni
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.10-Alpha, 2018-11-01: Alan 3.0beta6
+v0.7.11-Alpha, 2018-11-03: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_definitions.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -108,6 +108,7 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
   CAN mangiare.                 ---> eat
   CAN modalità_breve.           ---> brief
   CAN modalità_lunga.           ---> verbose
+  CAN mordere.                  ---> bite (+ chew)
   CAN mostrare.                 ---> 'show'       (+ reveal)
   CAN notificare.               ---> 'notify'
   CAN notificare_off.           ---> notify_off
@@ -257,7 +258,6 @@ Questo è l'elenco degli attributi verbali non ancora tradotti:
 [source,alan]
 --------------------------------------------------------------------------------
   CAN about.
-  CAN bite.        -- (+ chew)
   CAN catch.
   CAN climb.
   CAN climb_on.

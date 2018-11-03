@@ -316,7 +316,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `ask_for`        | `chiedere`                |
 | `attack`         | `attaccare`               |
 | `attack_with`    | `attaccare_con`           |
-| `bite`           |                           |
+| `bite`           | `mordere`                 |
 | `break`          | `rompere`                 |
 | `break_with`     | `rompere_con`             |
 | `brief`          | `modalità_breve`          |

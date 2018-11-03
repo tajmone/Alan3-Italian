@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.16-Alpha, 2018-11-02: Alan 3.0beta6
+v0.7.17-Alpha, 2018-11-03: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -128,6 +128,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | leggi              |                              | leggi (ogg)                            |     | 1 | {X} |
 | libera             | rilascia                     | libera (ogg)                           |     | 1 | {X} |
 | mangia             |                              | mangia (cibo)                          |     | 1 |     |
+| mordi              |                              | mordi (ogg)                            |     | 1 | {X} |
 | parla              |                              | parla                                  |     | 0 |     |
 | parla_con          |                              | parla con (png)                        |     | 1 |     |
 | pensa              | pondera, rifletti, medita    | pensa                                  |     | 0 |     |
@@ -473,6 +474,7 @@ Questo gruppo include i verbi che riguardano mangiare e bere:
 * `assaggia`
 * `bevi`
 * `mangia`
+* `mordi`
 * `sorseggia`
 
 [cols="15m,25d,60d",options="header"]
@@ -481,12 +483,9 @@ Questo gruppo include i verbi che riguardano mangiare e bere:
 | assaggia  | assaggia (ogg)  | ogg è `commestibile` o `potabile`
 | bevi      | bevi (liq)      | liq è `potabile`
 | mangia    | mangia (cibo)   | cibo è `commestibile`
+| mordi     | mordi (ogg)     | ogg è `commestibile`
 | sorseggia | sorseggia (liq) | liq è `potabile`
 |================================================================
-
-Verbi di questo gruppo non ancora tradotti:
-
-* `bite`
 
 // end::gruppo_mangiabevi[]
 // tag::verbo_assaggia[]
@@ -501,6 +500,10 @@ Verbi di questo gruppo non ancora tradotti:
 ==== mangia
 
 // end::verbo_mangia[]
+// tag::verbo_mordi[]
+==== mordi
+
+// end::verbo_mordi[]
 // tag::verbo_sorseggia[]
 ==== sorseggia
 
@@ -570,7 +573,6 @@ italiano del modulo dei verbi.
 |=======================================================================================================
 | VERBO              | SINONIMI                           | SINTASSI                          | A |  O  
 | about              | help, info                         | about                             | 0 |
-| bite               | chew                               | bite (obj)                        | 1 | {x}
 | catch              |                                    | catch (obj)                       | 1 | {x}
 | clean              | polish, wipe                       | clean (obj)                       | 1 | {x}
 | climb              |                                    | climb (obj)                       | 1 | {x}
@@ -711,6 +713,8 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `bevi`.
 
 * [ ] Descrizione `mangia`.
+
+* [ ] Descrizione `mordi`.
 
 * [ ] Descrizione `sorseggia`.
 

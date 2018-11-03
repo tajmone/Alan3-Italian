@@ -71,6 +71,18 @@ La lattina non è qualcosa che puoi assaggiare.
 L'albero non è qualcosa che puoi assaggiare.
 
 > ; ==============================================================================
+> ; MORDERE: TESTA NON COMMESTIBILI
+> ; ==============================================================================
+> mordi la roccia
+La roccia non è qualcosa che puoi mordere.
+
+> mordi la lattina
+La lattina non è qualcosa che puoi mordere.
+
+> mordi l'albero
+L'albero non è qualcosa che puoi mordere.
+
+> ; ==============================================================================
 > ; MANGIARE: TESTA NON COMMESTIBILI
 > ; ==============================================================================
 > mangia la roccia
@@ -102,16 +114,33 @@ La mela è fuori dalla tua portata.
 La mela è fuori dalla tua portata.
 
 > ; ==============================================================================
+> ; MORDERE: TESTA NON RAGGIUNGIBILI
+> ; ==============================================================================
+> mordi la mela
+La mela è fuori dalla tua portata.
+
+> ; ==============================================================================
 > ; ASSAGGIARE
 > ; ==============================================================================
 > assaggia il pesce
-Non hai sentito nessun sapore particolare.
+Assaggi pesce ma non senti nessun sapore particolare.
 
 > assaggia il fiume
-Non hai sentito nessun sapore particolare.
+Assaggi fiume ma non senti nessun sapore particolare.
 
 > assaggia l'aranciata
-Non hai sentito nessun sapore particolare.
+Assaggi aranciata ma non senti nessun sapore particolare.
+
+> ; ==============================================================================
+> ; MORDERE
+> ; ==============================================================================
+> mordi il pesce
+(prima prendi il pesce)
+Dai un morso al pesce ma non senti nessun sapore particolare.
+
+> mordi l'arancia
+(prima prendi l'arancia)
+Dai un morso all'arancia ma non senti nessun sapore particolare.
 
 > ; ==============================================================================
 > ; BERE
@@ -152,12 +181,10 @@ la mela.
 
 > ; TESTA COMMESTIBILI:
 > mangia l'arancia
-(prima prendi l'arancia)
 Mangi l'arancia.
 
 > mangia il pesce
 Cruda?! Beh ... perché no? Il sushi è di moda dopotutto.
-(prima prendi il pesce)
 Mangi il pesce.
 
 > 

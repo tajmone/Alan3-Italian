@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.10-Alpha, 2018-11-01: Alan 3.0beta6
+--| v0.7.11-Alpha, 2018-11-03: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -767,6 +767,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN mangiare.                 ---> eat
   CAN modalità_breve.           ---> brief
   CAN modalità_lunga.           ---> verbose
+  CAN mordere.                  ---> bite (+ chew)
   CAN mostrare.                 ---> 'show'       (+ reveal)
   CAN notificare.               ---> 'notify'
   CAN notificare_off.           ---> notify_off
@@ -841,7 +842,6 @@ EVERY blocco_definizioni IsA LOCATION
 --| 
 --| Questo è l'elenco degli attributi verbali non ancora tradotti:
   CAN about.
-  CAN bite.        -- (+ chew)
   CAN catch.
   CAN climb.
   CAN climb_on.
@@ -987,6 +987,7 @@ EVENT check_restriction
       MAKE mia_AT mangiare.                 ---> eat
       MAKE mia_AT modalità_breve.           ---> brief
       MAKE mia_AT modalità_lunga.           ---> verbose
+      MAKE mia_AT mordere.                  ---> bite (+ chew)
       MAKE mia_AT mostrare.                 ---> 'show'       (+ reveal)
       MAKE mia_AT nuotare.                  ---> swim
       MAKE mia_AT notificare.               ---> 'notify'
@@ -1057,7 +1058,6 @@ EVENT check_restriction
 
     --# NOT YET TRANSLATED:
       MAKE mia_AT about.
-      MAKE mia_AT bite.            -- (+ chew)
       MAKE mia_AT catch.
       MAKE mia_AT climb.
       MAKE mia_AT climb_on.
@@ -1171,6 +1171,7 @@ EVENT check_restriction
           MAKE mia_AT NOT leggere.                  ---> read
           MAKE mia_AT NOT liberare.                 ---> free         (+ release)
           MAKE mia_AT NOT mangiare.                 ---> eat
+          MAKE mia_AT NOT mordere.                  ---> bite (+ chew)
           MAKE mia_AT NOT mostrare.                 ---> 'show'       (+ reveal)
           MAKE mia_AT NOT nuotare.                  ---> swim
           MAKE mia_AT NOT nuotare_in.               ---> swim_in
@@ -1221,7 +1222,6 @@ EVENT check_restriction
 
         --# NOT YET TRANSLATED:
 
-          MAKE mia_AT NOT bite.        -- (+ chew)
           MAKE mia_AT NOT catch.
           MAKE mia_AT NOT climb.
           MAKE mia_AT NOT climb_on.

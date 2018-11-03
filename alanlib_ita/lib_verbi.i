@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.16-Alpha, 2018-11-02: Alan 3.0beta6
+--| v0.7.17-Alpha, 2018-11-03: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -745,6 +745,7 @@ END VERB ringraziamenti.
 --| | leggi              |                              | leggi (ogg)                            |     | 1 | {X} |
 --| | libera             | rilascia                     | libera (ogg)                           |     | 1 | {X} |
 --| | mangia             |                              | mangia (cibo)                          |     | 1 |     |
+--| | mordi              |                              | mordi (ogg)                            |     | 1 | {X} |
 --| | parla              |                              | parla                                  |     | 0 |     |
 --| | parla_con          |                              | parla con (png)                        |     | 1 |     |
 --| | pensa              | pondera, rifletti, medita    | pensa                                  |     | 0 |     |
@@ -2352,6 +2353,7 @@ END ADD TO.
 --| * `assaggia`
 --| * `bevi`
 --| * `mangia`
+--| * `mordi`
 --| * `sorseggia`
 --| 
 --| [cols="15m,25d,60d",options="header"]
@@ -2361,12 +2363,9 @@ END ADD TO.
 --| | assaggia  | assaggia (ogg)  | ogg è `commestibile` o `potabile`
 --| | bevi      | bevi (liq)      | liq è `potabile`
 --| | mangia    | mangia (cibo)   | cibo è `commestibile`
+--| | mordi     | mordi (ogg)     | ogg è `commestibile`
 --| | sorseggia | sorseggia (liq) | liq è `potabile`
 --| |================================================================
---| 
---| Verbi di questo gruppo non ancora tradotti:
---| 
---| * `bite`
 --<
 
 
@@ -2435,8 +2434,9 @@ ADD TO EVERY OBJECT
             END IF.
         END IF.
     DOES
-      "Non hai sentito nessun sapore particolare." ---> preso da i6
-      -- "You taste nothing unexpected."
+      "Assaggi $1 ma"
+      -- "non senti nessun sapore particolare."
+      SAY mia_AT:nessun_sapore.
   END VERB assaggia.
 END ADD TO.
 
@@ -2616,7 +2616,83 @@ ADD TO EVERY OBJECT
   END VERB mangia.
 END ADD.
 
--->verbo_sorseggia(20540)  @SORSEGGIA --> @SIP
+
+-->verbo_mordi(20540)   @MORDI --> @BITE  (+ chew)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== mordi
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `mordi`.
+--<
+
+-- SYNONYMS chew = mordi.
+
+-- @NOTE: perché 'ogg' e non 'cibo' dato che deve essere 'commestibile'?
+
+SYNTAX mordi = mordi (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "mordere."
+
+
+
+ADD TO EVERY OBJECT
+  VERB mordi
+    CHECK mia_AT CAN mordere
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    AND ogg IS commestibile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+        END IF.
+        "mordere."
+    AND ogg IS prendibile
+      ELSE SAY  mia_AT:ogg1_non_posseduto.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+            END IF.
+        ELSIF ogg IS NOT distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
+            END IF.
+        END IF.
+    DOES
+      -- >>> prendi implicito: >>>
+      IF ogg NOT DIRECTLY IN hero
+        THEN LOCATE ogg IN hero.
+          SAY  mia_AT:riferisci_prendi_implicito.
+      END IF.
+      -- <<< prendi implicito <<<
+
+      "Dai un morso" SAY ogg:prep_A. "$1 ma"
+      -- "non senti nessun sapore particolare."
+      SAY mia_AT:nessun_sapore.
+  END VERB mordi.
+END ADD TO.
+
+
+
+
+-->verbo_sorseggia(20550)  @SORSEGGIA --> @SIP
 --~=============================================================================
 --~-----------------------------------------------------------------------------
 --| ==== sorseggia
@@ -7202,7 +7278,7 @@ END VERB rispondi_Sì.
 --~*| ask_for            |                                    | ask (act) for (obj)               | 2 | {x}
 --~*| attack             | beat, fight, hit, punch            | attack (target)                   | 1 |
 --~*| attack_with        |                                    | attack (target) with (weapon)     | 2 |
---| | bite               | chew                               | bite (obj)                        | 1 | {x}
+--~*| bite               | chew                               | bite (obj)                        | 1 | {x}
 --~*| break              | destroy                            | break (obj)                       | 1 | {x}
 --~*| break_with         |                                    | break (obj) with (instr)          | 2 | {x}
 --~*| brief              |                                    | brief                             | 0 |
@@ -7454,84 +7530,6 @@ END VERB hint.
 -------------------------------------------------------------------------------
 --//////////////////////////////////////////////////////////////////////////////
 --=============================================================================
-
-
-
--- ===============================================================
-
-
--- @BITE  (+ chew)
-
-
--- ===============================================================
-
-
-SYNTAX bite = bite (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "mordere."
-
-SYNONYMS chew = bite.
-
-
-ADD TO EVERY OBJECT
-  VERB bite
-    CHECK mia_AT CAN bite
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    AND ogg IS commestibile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-        END IF.
-        "mordere."
-    AND ogg IS prendibile
-      ELSE SAY  mia_AT:ogg1_non_posseduto.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY  imp_luogo_buio  OF mia_AT.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
-            END IF.
-        ELSIF ogg IS NOT distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY  ogg1_distante_sg  OF mia_AT.
-              ELSE SAY  ogg1_distante_pl  OF mia_AT.
-            END IF.
-        END IF.
-    DOES
-      -- This if-statement takes care of implicit taking; i.e. if the hero
-      -- doesn't have the object, (s)he will take it automatically first
-      -- - unless it's carried by another actor.
-      -- This same if-statement is found in numerous other verbs throughout
-      -- the library, as well.
-
-      -- >>> prendi implicito: >>>
-      IF ogg NOT DIRECTLY IN hero
-        THEN LOCATE ogg IN hero.
-          SAY  mia_AT:riferisci_prendi_implicito.
-      END IF.
-      -- <<< prendi implicito <<<
-
-      "You take a bite of" SAY THE ogg. "$$."
-        IF ogg IS NOT plurale
-          THEN "It tastes nothing out of the ordinary."
-          ELSE "They taste nothing out of the ordinary."
-        END IF.
-
-  END VERB bite.
-END ADD TO.
 
 
 

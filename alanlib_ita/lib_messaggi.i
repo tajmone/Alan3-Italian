@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi.i"
---| v0.7.5-Alpha, 2018-11-02: Alan 3.0beta6
+--| v0.7.6-Alpha, 2018-11-03: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -396,6 +396,11 @@ ADD TO EVERY blocco_definizioni
   -- VERBI: scrivi_errore1, scrivi_errore2, scrivi_errore3.
   HAS per_scrivere_USA
     "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
+
+
+  -- VERBI: assaggia, mordi.
+  HAS nessun_sapore
+    "non senti nessun sapore particolare.". ---> ispirato a i6
 
 
   -- -------------------
