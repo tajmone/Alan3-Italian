@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_luoghi.i"
---| v0.7.1-Alpha, 2018-10-17: Alan 3.0beta6
+--| v0.7.2-Alpha, 2018-11-03: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_locations.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -469,7 +469,7 @@ EVERY luogo_buio IsA LOCATION
 
   DESCRIPTION
     CHECK THIS IS illuminato
-      ELSE SAY  dark_loc_desc  OF mia_AT.
+      ELSE SAY mia_AT:dark_loc_desc.
 
 END EVERY luogo_buio.
 
@@ -493,7 +493,7 @@ THEN MAKE location OF hero NOT illuminato.
 
 
 EVENT light_off
-  SAY  light_goes_off  OF mia_AT.
+  SAY mia_AT:light_goes_off.
 END EVENT.
 
 

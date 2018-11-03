@@ -1,6 +1,6 @@
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione v0.6.0  (2018/10/12)
+--  versione v0.6.1  (2018/11/03)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -216,7 +216,7 @@ THE foglio_bianco IsA OBJECT AT pzzaIF.
                 THEN SET testo OF ogg TO txt.
                 ELSE SET testo OF ogg TO testo OF ogg + " " + txt.
               END IF.
-              "Scrivi ""$$" SAY txt. "$$""" SAY prep_SU of ogg. SAY ogg. "."
+              "Scrivi ""$$" SAY txt. "$$""" SAY ogg:prep_SU. SAY ogg. "."
               MAKE ogg leggibile.
             ELSE "Devi fornire dei contenuti da scrivere!"
           END IF.

@@ -96,74 +96,38 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 | 10000   |           | comandi_partita              | == Meta Verbi di Partita
 // -----------------------------------------------------------------------------
 | 10100   |           | gruppo_file                  | === Salvataggio e Caricamento
-| 10110   |           | verbo_carica_partita         | ==== carica_partita
-| 10120   |           | verbo_salva_partita          | ==== salva_partita
 // -----------------------------------------------------------------------------
 | 10200   |           | gruppo_trascrizione          | === Trascrizione
-| 10210   |           | verbo_trascrizione           | ==== trascrizione
-| 10220   |           | verbo_trascrizione_on        | ==== trascrizione_on
-| 10230   |           | verbo_trascrizione_off       | ==== trascrizione_off
 // -----------------------------------------------------------------------------
 | 10300   |           | gruppo_punteggio             | === Punteggio e Notifiche
-| 10310   |           | verbo_vedi_punteggio         | ==== vedi_punteggio
-| 10320   |           | verbo_notifica               | ==== notifica
-| 10330   |           | verbo_notifica_on            | ==== notifica_on
-| 10330   |           | verbo_notifica_on            | ==== notifica_on
-| 10340   |           | verbo_notifica_off           | ==== notifica_off
 // -----------------------------------------------------------------------------
 | 10400   |           | gruppo_verbosity             | === Descrizioni Brevi e Lunghe
-| 10410   |           | verbo_modalita_breve         | ==== modalità_breve
-| 10420   |           | verbo_modalita_lunga         | ==== modalità_lunga
 // -----------------------------------------------------------------------------
 | 10500   |           | gruppo_misc_meta             | === Meta Verbi Vari
-| 10510   |           | verbo_abbandona_partita      | ==== abbandona_partita
-| 10520   |           | verbo_ricomincia_partita     | ==== ricomincia_partita
-| 10530   |           | verbo_ringraziamenti         | ==== ringraziamenti
-// | 1050   |           | verbo_xxxx      | ==== xxxx
 // =============================================================================
 | 20000   |           | comandi_gioco                | == Verbi di Gioco
 // -----------------------------------------------------------------------------
 | 20100   |           | gruppo_accendi               | == Verbi di Gioco
-| 20110   |           | verbo_accendi                | ==== accendi
-| 20120   |           | verbo_spegni                 | ==== spegni
 // -----------------------------------------------------------------------------
 | 20200   |           | gruppo_apri                  | == Apertura e Chiusura
-| 20210   |           | verbo_apri                   | ==== apri
-| 20220   |           | verbo_apri_con               | ==== apri_con
-| 20230   |           | verbo_blocca                 | ==== blocca
-| 20240   |           | verbo_blocca_con             | ==== blocca_con
-| 20250   |           | verbo_chiudi                 | ==== chiudi
-| 20260   |           | verbo_chiudi_con             | ==== chiudi_con
 // -----------------------------------------------------------------------------
 | 20300   |           | gruppo_sensi                 | == Azioni Sensoriali
-| 20310   |           | verbo_annusa0                | ==== annusa0
-| 20320   |           | verbo_annusa                 | ==== annusa
-| 20330   |           | verbo_ascolta0               | ==== ascolta0
-| 20340   |           | verbo_ascolta                | ==== ascolta
-| 20350   |           | verbo_tocca                  | ==== tocca
-| 20360   |           | verbo_tocca_con              | ==== tocca_con
 // -----------------------------------------------------------------------------
 | 20400   |           | gruppo_conversare            | == Conversare
-| 20410   |           | verbo_chiedi                 | ==== chiedi
-| 20420   |           | verbo_dire                   | ==== dì
-| 20430   |           | verbo_dire_a                 | ==== dì_a
-| 20440   |           | verbo_domanda                | ==== domanda
-| 20450   |           | verbo_parla                  | ==== parla
-| 20460   |           | verbo_parla_con              | ==== parla_con
-| 20470   |           | verbo_racconta               | ==== racconta
-| 20480   |           | verbo_rispondi               | ==== rispondi
 // -----------------------------------------------------------------------------
 | 20500   |           | gruppo_mangiabevi            | == Mangiare e Bere
-| 20510   |           | verbo_assaggia               | ==== assaggia
-| 20520   |           | verbo_bevi                   | ==== bevi
-| 20530   |           | verbo_mangia                 | ==== mangia
-| 20540   |           | verbo_mordi                  | ==== mordi
-| 20550   |           | verbo_sorseggia              | ==== sorseggia
 // -----------------------------------------------------------------------------
 | 20600   |           | gruppo_svuota                | == Svuotare e Versare
-| 20610   |           | verbo_svuota                 | ==== svuota + versa
-| 20620   |           | verbo_svuota_in              | ==== svuota_in + versa_in
-| 20630   |           | verbo_svuota_su              | ==== svuota_su + versa_su
+// -----------------------------------------------------------------------------
+| 20700   |           | gruppo_guarda                | == Guardare ed Esaminare
+// -----------------------------------------------------------------------------
+| 20800   |           | gruppo_commercio             | == Commerciare
+// -----------------------------------------------------------------------------
+| 20900   |           | gruppo_rompi_aggiusta        | == Rompere ed Aggiustare
+// -----------------------------------------------------------------------------
+| 21000   |           | gruppo_dare                  | == Dare e Prendere
+// -----------------------------------------------------------------------------
+| 21100   |           | gruppo_vestirsi              | == Vestirsi e Svestirsi
 // =============================================================================
 | 30000   |           | comandi_comandi_domande      | == Verbi di Domande
 // -----------------------------------------------------------------------------

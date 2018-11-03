@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.7.3-Alpha, 2018-11-02: Alan 3.0beta6
+--| v0.7.4-Alpha, 2018-11-03: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -269,7 +269,7 @@ EVERY indumento IsA OBJECT
 
     CHECK  genere OF THIS =  genere OF hero OR  genere OF THIS = 0
 --                                                                              TRANSLATE!
-      ELSE SAY  check_clothing_sex  OF mia_AT.
+      ELSE SAY mia_AT:check_clothing_sex.
 
     DOES ONLY
 
@@ -457,9 +457,9 @@ END VERB indossa.
 
 VERB togliti
   CHECK THIS IN abbigliamento
-    ELSE SAY  non_indossi  OF mia_AT.
+    ELSE SAY mia_AT:non_indossi.
   AND CURRENT LOCATION IS illuminato
-    ELSE SAY  imp_luogo_buio  OF mia_AT.
+    ELSE SAY mia_AT:imp_luogo_buio.
 
   DOES ONLY
 
@@ -874,24 +874,24 @@ EVERY dispositivo IsA OBJECT
       ELSE
         IF THIS IS NOT plurale
 ---->                                                                           TRANSLATE
-          THEN SAY  check_device_not_on_sg  OF mia_AT.
-          ELSE SAY  check_device_not_on_pl  OF mia_AT.
+          THEN SAY mia_AT:check_device_not_on_sg.
+          ELSE SAY mia_AT:check_device_not_on_pl.
         END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY  imp_luogo_buio  OF mia_AT.
+      ELSE SAY mia_AT:imp_luogo_buio.
     AND THIS IS raggiungibile AND THIS IS NOT distante
       ELSE
         IF THIS IS NOT raggiungibile
           THEN
             IF THIS IS NOT plurale
-              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
             END IF.
         ELSIF THIS IS distante
           THEN
             IF THIS IS NOT plurale
-              THEN SAY  ogg1_distante_sg  OF mia_AT.
-              ELSE SAY  ogg1_distante_pl  OF mia_AT.
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
             END IF.
         END IF.
     AND THIS IS NOT rotto
@@ -913,24 +913,24 @@ EVERY dispositivo IsA OBJECT
       ELSE
          IF THIS IS NOT plurale
 ---->                                                                           TRANSLATE
-          THEN SAY  check_device_on_sg  OF mia_AT.
-          ELSE SAY  check_device_on_pl  OF mia_AT.
+          THEN SAY mia_AT:check_device_on_sg.
+          ELSE SAY mia_AT:check_device_on_pl.
          END IF.
     AND CURRENT LOCATION IS illuminato
-      ELSE SAY  imp_luogo_buio  OF mia_AT.
+      ELSE SAY mia_AT:imp_luogo_buio.
     AND THIS IS raggiungibile AND THIS IS NOT distante
       ELSE
         IF THIS IS NOT raggiungibile
           THEN
             IF THIS IS NOT plurale
-              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
             END IF.
         ELSIF THIS IS distante
           THEN
             IF THIS IS NOT plurale
-              THEN SAY  ogg1_distante_sg  OF mia_AT.
-              ELSE SAY  ogg1_distante_pl  OF mia_AT.
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
             END IF.
         END IF.
     DOES ONLY
@@ -1367,8 +1367,8 @@ EVERY fonte_di_luce IsA OBJECT
     CHECK THIS IS NOT illuminato
       ELSE
         IF THIS IS NOT plurale
-          THEN SAY  check_lightsource_not_lit_sg  OF mia_AT.
-          ELSE SAY  check_lightsource_not_lit_pl  OF mia_AT.
+          THEN SAY mia_AT:check_lightsource_not_lit_sg.
+          ELSE SAY mia_AT:check_lightsource_not_lit_pl.
         END IF.
     AND THIS IS NOT rotto
       ELSE SAY mia_AT:non_succede_nulla.
@@ -1388,8 +1388,8 @@ EVERY fonte_di_luce IsA OBJECT
       ELSE
         IF THIS IS NOT plurale
 ---->                                                                           TRANSLATE
-          THEN SAY  check_lightsource_lit_sg  OF mia_AT.
-          ELSE SAY  check_lightsource_lit_pl  OF mia_AT.
+          THEN SAY mia_AT:check_lightsource_lit_sg.
+          ELSE SAY mia_AT:check_lightsource_lit_pl.
         END IF.
     DOES ONLY
       "Fatto. Ora" SAY THE THIS.
@@ -1591,7 +1591,7 @@ EVERY liquido IsA OBJECT
 -- @PRENDI -> @TAKE (VERB) => LIQUID
   VERB prendi
     CHECK recipiente OF THIS NOT IN hero
-      ELSE SAY  check_obj_not_in_hero2  OF mia_AT.
+      ELSE SAY mia_AT:check_obj_not_in_hero2.
     DOES ONLY
       IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT prendibile
         THEN "You can't carry" SAY THE THIS. "around in your bare hands."
@@ -1615,7 +1615,7 @@ EVERY liquido IsA OBJECT
   VERB prendi_da
     WHEN ogg
       CHECK detentore <> recipiente OF THIS
-        ELSE SAY  check_liquid_vessel_not_cont  OF mia_AT.
+        ELSE SAY mia_AT:check_liquid_vessel_not_cont.
         -- the above is triggered when the player types for example
         -- >take juice from bottle   -- (when the juice is in the bottle)
     DOES ONLY

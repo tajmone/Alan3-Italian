@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Definizioni
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.11-Alpha, 2018-11-03: Alan 3.0beta6
+v0.7.12-Alpha, 2018-11-03: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_definitions.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -200,19 +200,19 @@ THE intestazione IsA LOCATION
 
     DESCRIPTION
 
-    "$p" STYLE alert. SAY titolo OF mia_AT. STYLE normal.
+    "$p" STYLE alert. SAY mia_AT:titolo. STYLE normal.
 
     IF sottotitolo OF mia_AT <> ""
-      THEN "$n" SAY sottotitolo OF mia_AT.
+      THEN "$n" SAY mia_AT:sottotitolo.
       END IF.
 
-    "$n(C)" SAY autore OF mia_AT. "," SAY anno OF mia_AT. "."
+    "$n(C)" SAY mia_AT:autore. "," SAY mia_AT:anno. "."
 --                                                                              TRANSLATE!
     "$nAvventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
      $nLibreria Standard Italiana v2.1"
 
     IF versione OF mia_AT <> "0"
-      THEN "$nVersione" SAY versione OF mia_AT.
+      THEN "$nVersione" SAY mia_AT:versione.
       END IF.
 
     "$nTutti i diritti riservati."

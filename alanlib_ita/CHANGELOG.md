@@ -11,7 +11,10 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/11/03](#20181103)
+- [2018/11/03 \(2\)](#20181103-2)
+    - [Code Cleanup](#code-cleanup)
+    - [Doxterzie](#doxterzie)
+- [2018/11/03 \(1\)](#20181103-1)
     - [Verb: `bite`](#verb-bite)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
     - [Verb Responses](#verb-responses)
@@ -158,7 +161,7 @@ Status: Alpha stage.
 - [2018/08/02 \(1\)](#20180802-1)
     - [Verbs: `kill` and `kill_with`](#verbs-kill-and-kill_with)
     - [Verbs: `touch` and `touch_with`](#verbs-touch-and-touch_with)
-    - [Code Cleanup](#code-cleanup)
+    - [Code Cleanup](#code-cleanup-1)
 - [2018/08/01 \(4\)](#20180801-4)
     - [Verb Responses](#verb-responses-11)
     - [Verb: `sing`](#verb-sing)
@@ -393,7 +396,56 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/11/03
+# 2018/11/03 (2)
+
+- [`lib_classi.i`][lib_classi] (v0.7.4)
+- [`lib_definizioni.i`][lib_definizioni] (v0.7.12)
+- [`lib_luoghi.i`][lib_luoghi] (v0.7.2)
+- [`lib_verbi.i`][lib_verbi] (v0.7.18)
+
+
+## Code Cleanup
+
+General code cleanup.
+
+- Change all `SAY xxx OF yyy.` to short form `SAY yyy:xxx.`.
+
+## Doxterzie
+
+Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
+
+- Guardare ed Esaminare:
+    + `esamina`
+    + `guarda`
+    + `guarda_attraverso`
+    + `guarda_dietro`
+    + `guarda_fuori_da`
+    + `guarda_in`
+    + `guarda_sotto`
+    + `guarda_su`
+- Commerciare:
+    + `compra`
+    + `vendi`
+- Rompere ed Aggiustare:
+    + `ripara`
+    + `rompi`
+    + `rompi_con`
+- Dare e Prendere:
+    + `dai_a`
+    + `lascia`
+    + `prendi`
+    + `prendi_da`
+- Vestirsi e Svestirsi:
+    + `indossa`
+    + `togliti`
+    + `spogliati`
+
+
+
+<!---------------------------------------------------------------------------->
+
+
+# 2018/11/03 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.11)
 - [`lib_messaggi.i`][lib_messaggi] (v0.7.6)

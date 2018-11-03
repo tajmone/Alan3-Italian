@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.7.11-Alpha,</span>
+<span id="revnumber">versione 0.7.12-Alpha,</span>
 <span id="revdate">2018-11-03</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
@@ -659,19 +659,19 @@ all&#8217;inizio della partita tramite <code>DESCRIBE intestazione.</code>.</p>
 
     DESCRIPTION
 
-    "$p" STYLE alert. SAY titolo OF mia_AT. STYLE normal.
+    "$p" STYLE alert. SAY mia_AT:titolo. STYLE normal.
 
     IF sottotitolo OF mia_AT &lt;&gt; ""
-      THEN "$n" SAY sottotitolo OF mia_AT.
+      THEN "$n" SAY mia_AT:sottotitolo.
       END IF.
 
-    "$n(C)" SAY autore OF mia_AT. "," SAY anno OF mia_AT. "."
+    "$n(C)" SAY mia_AT:autore. "," SAY mia_AT:anno. "."
 --                                                                              TRANSLATE!
     "$nAvventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
      $nLibreria Standard Italiana v2.1"
 
     IF versione OF mia_AT &lt;&gt; "0"
-      THEN "$nVersione" SAY versione OF mia_AT.
+      THEN "$nVersione" SAY mia_AT:versione.
       END IF.
 
     "$nTutti i diritti riservati."
@@ -778,7 +778,7 @@ italiano del modulo delle definizioni.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.7.11-Alpha<br>
+Versione 0.7.12-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">
