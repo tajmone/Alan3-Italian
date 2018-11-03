@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi.i"
---| v0.7.4-Alpha, 2018-11-01: Alan 3.0beta6
+--| v0.7.5-Alpha, 2018-11-02: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -573,6 +573,19 @@ ADD TO EVERY blocco_definizioni
   HAS illegal_parameter_with_sg "That's not something you can $v with.".    -- kill_with, shoot_with, play_with
   HAS illegal_parameter_with_pl "Those are not something you can $v with.".
 
+  
+  -- ==============================
+  -- PARAMETRI INADATTI CONTENITORI
+  -- ==============================
+  -- Messaggi per verbi riguardanti problemi con i parmetri che coinvolgono
+  -- contenitori.
+
+  -- VERBI: [liquidi: svuota, svuota_in, svuota_su].
+  -- ORIGINAL EN: (nessuno)
+  HAS svuotare_solo_contenitori  "Solo i contenitori possono essere svuotati.".
+
+  
+
   -- ==================
   -- PARAMETRI MANCANTI
   -- ==================
@@ -607,6 +620,23 @@ ADD TO EVERY blocco_definizioni
 
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
   HAS check_obj_reachable_ask "$+1 can't reach $+2.".         -- ask_for
+
+  -- ===========================================================================
+  -- OGGETTI MANCANTI & NON OTTENIBILI
+  -- ===========================================================================
+  
+  -- VERBI: (svariati, specie nei verbi con prendi implicito).
+  -- ORIGINAL EN: check_obj_takeable
+  HAS ogg1_non_posseduto  "Non possiedi $+1.".
+
+  -- VERBI: riempi_con.
+  -- ORIGINAL EN: check_obj2_takeable1
+  HAS ogg2_non_posseduto  "Non possiedi $+2.".
+
+  -- VERBI: chiedi.
+  -- ORIGINAL EN: check_obj2_takeable2
+  HAS ogg2_non_ottenibile  "Non puoi avere $+2.".
+
 
   -- ===========================================================================
   -- PROBLEMI RELATIVI AGLI ATTRIBUTI
@@ -802,6 +832,14 @@ ADD TO EVERY blocco_definizioni
   HAS ogg1_già_qui_sg  "$+1 è proprio qui.".
   HAS ogg1_già_qui_pl  "$+1 sono proprio qui.".
 
+  -- --------------------------------
+  -- Il Contenitore è già vuoto 
+  -- --------------------------------
+  -- VERBI: svuota + versa.
+  -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
+  HAS ogg1_vuoto_sg  "ci provi, ma $+1 era vuot$$".
+  HAS ogg1_vuoto_pl  "ci provi, ma $+1 erano vuot$$".
+
 
   -- ===============================
   -- AZIONI RIGUARDANTI IL VESTIARIO
@@ -960,9 +998,6 @@ ADD TO EVERY blocco_definizioni
   HAS check_obj_suitable_there "It's not possible to $v there.".          -- look_behind, look_in, look_under
   HAS check_obj2_suitable_there "It's not possible to $v anything there.".      -- throw_in, tie_to
 
-  HAS check_obj_takeable "You don't have $+1.".             -- (numerous; this check is in verbs using implicit taking)
-  HAS check_obj2_takeable1 "You don't have $+2.".               -- fill_with
-  HAS check_obj2_takeable2 "You can't have $+2.".               -- ask_for
 
   HAS check_obj_weight_sg "$+1 is too heavy to $v.".              -- lift, take, take_from
   HAS check_obj_weight_pl "$+1 are too heavy to $v.".

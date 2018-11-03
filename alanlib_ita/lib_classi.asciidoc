@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Classi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.2-Alpha, 2018-11-01: Alan 3.0beta6
+v0.7.3-Alpha, 2018-11-02: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_classes.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -22,8 +22,68 @@ include::attributes-it.adoc[tag=attributes-it]
 :X: &#x2714;
 
 // end::custom_attributes[]
+// tag::intro[]
+
+== Introduzione
+
+
+Questo modulo della libreria definisce varie classi di oggetti e attori.
+Siccome molte di queste classi ricorrono spesso nelle definizioni dei verbi
+nel modulo `lib_verbi.i`, si consiglia di procedere con cautela prima di
+modificarle o cancellarle. Per semplificare tale compito, all'inizio di
+ciascuna classe viene riportato se e dove venga fatto riferimento ad essa
+negli altri moduli della libreria.
+
+// end::intro[]
+// tag::elenco_classi[]
+=== Elenco delle Classi
+
+[WARNING]
+=================================
+Sezione non ancora disponibile...
+=================================
+
+// end::elenco_classi[]
+// tag::vestiario[]
+
+== Vestiario
+
+
+Un `indumento` è un capo di vestiario implementato secondo le regole
+dell'estensione `xwear.i` di Alan Bampton. Il codice di questa classe
+impedisce di indossare gli indumenti in ordine insensato -- per esempio, non
+puoi indossare una camicia se stai già indossando una giacca, e via dicendo.
+Queste funzionalità si applicano solo al protagonista, e non possono essere
+estese ai PNG.
+
+Questa classe include la definizione dei verbi `indossa` e `togliti`.
+
+[NOTE]
+============================================================================
+Questa classe è basata sull'estensione `xwear.i` creata da Alan Bampton per
+ALAN v2. Con il permesso dell'autore, l'estensione è stata adattata per
+funzionare con ALAN v3, ed è stata interamente assimilata nella libreria.
+Si ringrazia Alan Bampton per aver concesso l'autorizzazione a utilizzarne
+il codice.
+============================================================================
+
+
+[NOTE]
+========================================================================
+Il modulo `lib_verbi.i` fa riferimento a questa classe nei verbi `inventario`
+e `prendi`, che utilizzano il contenitore `abbigliamento` definito in questa
+classe.
+========================================================================
+
+// end::vestiario[]
+// tag::vestiario_istruzioni[]
+=== Istruzioni per l'Uso del Vestiario
+
+
+// end::vestiario_istruzioni[]
 // tag::tabella_vestiario_intro[]
-== La Tabella del Vestiario
+==== La Tabella del Vestiario
+
 La tabella che segue riporta una selezione di indumenti d'uso comune ed i
 corrispettivi valori degli attributi per una corretta implementazione.
 
@@ -59,11 +119,253 @@ dei bachi nell'avventura.
 |===========================================================================
 
 // end::tabella_vestiario[]
+// tag::dispositiv[]
+
+== Dispositivi
+
+
+Un macchinario o congengo ellettrico che è possibile accendere e spegnere,
+a meno che non sia rotto. Se esaminato, la descrizione includerà il suo
+stato attuale (acceso o spento).
+
+ESEMPI: Interruttore, Tv, computer, radio, generatore elettrico.
+
+[cols="50m,50d",options="header"]
+|===========================================================================
+| attributi e valori predefiniti | significato
+| IS NOT acceso.                 | È spento.
+| IS NOT rotto.                  | È funzionante.
+|===========================================================================
+
+[NOTE]
+========================================================================
+Questa classe non ricorre altrove, né in questo file né in altri moduli.
+========================================================================
+
+// end::dispositiv[]
+// tag::porte[]
+
+== Porte
+
+
+Può essere aperta o chiusa, e (opzionale) bloccata e sbloccata. Di default
+le porte sono chiuse e non bloccate. Per poter aprire una porta bloccata è
+richiesta la sua chiave (`chiave_abbinata`). Se esaminata, la descrizione
+includerà il suo stato attuale (aperta o chiusa).
+
+Le porte hanno anche l'attributo `altro_lato` tramite il quale è possibile
+abbinare tra loro due porte situate in stanze diverse, creando l'illusione
+di una sola porta che si affaccia su entrambe le stanze. Quando due porte
+sono associate tra loro in questo modo, ossia dichiarando ciascuna porta
+come `altro_lato` dell'altra, la libreria sincronizzerà i cambiamenti di
+stato (aperta/chiusa, bloccata/sbloccata) tra esse, di modo che aprendo,
+chiudendo, sbloccando o bloccando una di esse tali azioni abbiano effetto
+automatico anche sulla porta associata.
+
+
+[cols="50m,50d",options="header"]
+|===========================================================================
+| attributi e valori predefiniti       | significato
+| IS apribile.                         | Può essere aperta e chiusa.
+| IS NOT aperto.                       | È chiusa.
+| IS NOT bloccabile.                   | Non ha una serratura.
+| IS NOT bloccato.                     | Non è blocata.
+| IS NOT prendibile.                   | È fissa.
+| HAS chiave_abbinata chiave_fittizia. | Non ha nessuna chiave abbinata.
+|===========================================================================
+
+[NOTE]
+========================================================================
+Questa classe non ricorre altrove, né in questo file né in altri moduli.
+========================================================================
+
+// end::porte[]
+// tag::finestre[]
+
+== Finestre
+
+
+Può essere aperta o chiusa; si può guardare attraverso e fuori da essa. Se
+esaminata, la descrizione includerà il suo stato attuale (aperta o chiusa).
+
+[cols="50m,50d",options="header"]
+|===========================================================================
+| attributi e valori predefiniti | significato
+| IS apribile.                   |
+| IS NOT aperto.                 |
+| IS NOT prendibile.             |
+|===========================================================================
+
+[NOTE]
+========================================================================
+Questa classe non ricorre altrove, né in questo file né in altri moduli.
+========================================================================
+
+// end::finestre[]
+// tag::fonte_di_luce[]
+
+== Fonti di Luce
+
+
+
+
+// end::fonte_di_luce[]
+// tag::liquido[]
+
+== Liquidi
+
+
+
+Si può prendere un liquido solo se è in un contenitore. Si possono usare i
+liquidi per riempire qualcosa, e li si può versare.
+Di default un liquido non è potabile.
+
+=== Verbi
+
+
+==== esamina
+
+==== look_in
+
+==== prendi
+
+==== prendi_da
+
+==== lascia
+
+==== chiedi
+
+==== dai_a
+
+==== versa
+
+==== versa_in
+
+==== versa_su
+
+==== svuota
+
+==== svuota_in
+
+==== svuota_su
+
+==== riempi_con
+
+==== put_in
+
+==== put_on
+
+// end::liquido[]
+// tag::contenitore_elencato[]
+
+== Contenitore Elencato
+
+
+Si tratta di un contenitore i cui contenuti (se è aperto) saranno elencati
+sia nella descrizione del luogo (entrandovi, o usando '`guarda`') sia quando
+viene esaminato o aperto. La libreria autogestisce lo stato di opacità di
+questo tipo di contenitore, rendendolo non opaco (NOT OPAQUE) quando viene
+aperto, e opaco quando viene chiuso, affinché i suoi contenuti non vengano
+svelati (elencati) quando esso è chiuso.
+
+[NOTE]
+============================================================================
+I contenuti di un contenitore normale non vengono elencati con il verbo
+'`esamnina`', ma solo con '`guarda`', '`guarda dentro`' o quando viene
+effettiata la descrizione del luogo.
+============================================================================
+
+[NOTE]
+========================================================================
+Questa classe non ricorre altrove, né in questo file né in altri moduli.
+========================================================================
+
+// end::contenitore_elencato[]
+// tag::suono[]
+
+== Suoni
+
+
+È possibile ascoltare i suoni ma non esaminarli, annusarli né manipolarli.
+(volendo, li si può accendere e spegnere.)
+
+[cols="50m,50d",options="header"]
+|===========================================================================
+| attributi e valori predefiniti | significato
+| IS NOT esaminabile.            |
+| IS NOT prendibile.             |
+| IS NOT raggiungibile.          |
+| IS NOT spostabile.             |
+|===========================================================================
+
+[NOTE]
+========================================================================
+Questa classe non ricorre altrove, né in questo file né in altri moduli.
+========================================================================
+
+// end::suono[]
+// tag::supporto[]
+
+== Supporti
+
+
+Una superficie su cui poter mettere cose e su cui si può salire e scendere.
+Si tratta di un oggetto di tipo contenitore, perciò è possibile prendere le
+cose vi si trovano sopra (in realtà, dentro di esso, ma viene presentato in
+modo da crare l'illusione che sia una superficie).
+Di default, gli oggetti su un supporto saranno elencati nella descrizione
+del luogo o quando il supporto viene esamintao.
+
+// end::supporto[]
+// tag::19000[]
+
+=== Armi
+
+
+Di default un'arma non può essere sparata (p.es., un coltello, una mazza),
+ma settando l'attributo `CAN sparare` si avrà un'arma da fuoco che sarà
+utilizzabile con il verbo "spara" (p.es., una pistola, un cannone).
+
+[cols="50m,50d",options="header"]
+|===========================================================================
+| attributi e valori predefiniti | significato
+| CAN NOT sparare.               | È un'arma bianca
+|===========================================================================
+
+// end::19000[]
+// tag::classi_attori[]
+
+== Attori
+
+
+
+// end::classi_attori[]
+// tag::some_tag[]
+=== Sottoclassi di ACTOR
+
+La libreria definisce alcune sottoclassi specializzate di `ACTOR`:
+
+* `ACTOR`
+** `persona`
+*** `maschio`
+*** `femmina`
+
+// end::some_tag[]
+// tag::oggetti_fittizi[]
+
+== Oggetti Fittizi
+
+
+Gli oggetti fittizi sono istanze utilizzate per inizializzare correttamente
+gli attributi delle classi definite in questo modulo che fanno riferimento ad
+altre istanze o classi (attributi di tipo istanza o insieme).
+
+// end::oggetti_fittizi[]
 // tag::todo[]
 == TODO
 
 Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
-italiano del modulo dei messaggi.
+italiano del modulo delle classi.
 
 // end::todo[]
 // tag::todo_checklist[]
@@ -73,9 +375,41 @@ Lista della spesa per le varie cosucce da fare:
 
 * [ ] *Tabella del Vestiario*: finire traduzione.
 
-=== Check List Doxter 
+=== Check List Doxter
 
 Finisci di trasformare commenti in documentazione Doxter:
+
+* [ ] Descrizione `esamina`.
+
+* [ ] Descrizione `look_in`.
+
+* [ ] Descrizione `prendi`.
+
+* [ ] Descrizione `prendi_da`.
+
+* [ ] Descrizione `lascia`.
+
+* [ ] Descrizione `chiedi`.
+
+* [ ] Descrizione `dai_a`.
+
+* [ ] Descrizione `versa`.
+
+* [ ] Descrizione `versa_in`.
+
+* [ ] Descrizione `versa_su`.
+
+* [ ] Descrizione `svuota`.
+
+* [ ] Descrizione `svuota_in`.
+
+* [ ] Descrizione `svuota_su`.
+
+* [ ] Descrizione `riempi_con`.
+
+* [ ] Descrizione `put_in`.
+
+* [ ] Descrizione `put_on`.
 
 // end::todo_checklist[]
 

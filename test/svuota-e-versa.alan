@@ -1,0 +1,142 @@
+--==============================================================================
+-- "Svuotare e Versare" by Tristano Ajmone, 2018.
+--==============================================================================
+IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
+
+
+THE mia_AT IsA blocco_definizioni
+  ------------------------------------------------------------------------------
+  HAS       titolo  "Svuotare e Versare".
+  HAS  sottotitolo  "Testa i verbi del gruppo 'svuota' e 'versa'.".
+  HAS       autore  "Tristano Ajmone".
+  HAS         anno   2018.
+  HAS     versione  "1".
+  ------------------------------------------------------------------------------
+END THE.
+
+
+-- =============================================================================
+
+-- La Radura
+
+-- =============================================================================
+-- Il setting per questi test sarà un picnic in una radura, con un ruscello per
+-- testare con i liquidi senza contenitore.
+
+THE radura IsA luogo_esterno.
+  NAME 'Radura Nel Bosco'
+END THE.
+
+--==============================================================================
+-- Il Tavolo
+--==============================================================================
+-- Una superficie su cui testare i verbi.
+THE tavolo IsA supporto AT radura.
+  HAS xDesc "Un tavolo da picnic.".
+END THE.
+
+--==============================================================================
+-- Il Fiume
+--==============================================================================
+THE fiume IsA liquido AT radura.
+  IS potabile.
+  HAS consentiti {barattolo,sacchetto,busta,bottiglia}.
+  HAS xDesc "Un piccolo fiume dall'acqua limpida.".
+END THE.
+
+--==============================================================================
+-- La Vasca
+--==============================================================================
+THE vasca IsA contenitore_elencato AT radura.
+  HAS articolo "la".
+  DESCRIPTION "Al centro del prato c'è una vasca in pietra."
+  IS NOT spostabile.
+  IS NOT prendibile.
+  HAS consentiti {barattolo,sacchetto,busta,bottiglia,lattina}.
+  HAS xDesc "Una grossa vasca in pietra.".
+END THE.
+
+-- =============================================================================
+
+-- Contenitori Per Solidi 
+
+-- =============================================================================
+
+--==============================================================================
+-- Barattolo di Noccioline
+--==============================================================================
+THE barattolo IsA contenitore_elencato AT radura.
+  HAS xDesc "È un barattolo di noccioline.".
+  HAS consentiti {sacchetto,busta}.
+END THE barattolo.
+
+THE noccioline IsA object IN barattolo.
+  HAS articolo "le".
+  IS commestibile.
+END THE.
+--==============================================================================
+-- Sacchetto di Patatine
+--==============================================================================
+THE sacchetto IsA contenitore_elencato AT radura.
+  HAS xDesc "È un sacchetto di patatine.".
+  HAS consentiti {barattolo,busta}.
+END THE.
+
+THE patatine IsA object IN sacchetto.
+  HAS articolo "le".
+  IS commestibile.
+END THE.
+--==============================================================================
+-- Busta di Caramelle
+--==============================================================================
+THE busta IsA contenitore_elencato AT radura.
+  HAS articolo "la".
+  HAS xDesc "Una busta di carta.".
+  HAS consentiti {barattolo,sacchetto}.
+END THE.
+
+THE caramelle IsA object IN busta.
+  HAS articolo "le".
+  IS commestibile.
+END THE.
+-- =============================================================================
+
+-- Contenitori Per Liquidi 
+
+-- =============================================================================
+-- Alcuni liquidi per testare 'versa' e 'svuota'...
+
+--==============================================================================
+-- Bottiglia di Vino
+--==============================================================================
+THE bottiglia IsA contenitore_elencato AT radura.
+  HAS articolo "la".
+  HAS xDesc "Una bottiglia di plastica.".
+  HAS consentiti {lattina,fiume}.
+END THE.
+
+THE vino IsA liquido IN bottiglia.
+  INDEFINITE ARTICLE "del"
+  HAS recipiente bottiglia.
+  IS potabile.
+END THE.
+
+--==============================================================================
+-- Lattina di Aranciata
+--==============================================================================
+THE lattina IsA contenitore_elencato AT radura.
+  HAS articolo "la".
+  HAS xDesc "Una lattina per bibite.".
+  HAS consentiti {bottiglia,fiume}.
+END THE.
+
+THE aranciata IsA liquido IN lattina.
+  INDEFINITE ARTICLE "dell'$$"
+  HAS recipiente lattina.
+  IS potabile.
+END THE.
+
+
+--------------------------------------------------------------------------------
+Start at radura.
+DESCRIBE intestazione.

@@ -11,12 +11,16 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/11/02](#20181102)
+- [2018/11/02 \(2\)](#20181102-2)
+    - [Doxterize Classes](#doxterize-classes)
+    - [Verbs: `empty*` and `pour*`](#verbs-empty-and-pour)
+    - [Verb Responses](#verb-responses)
+- [2018/11/02 \(1\)](#20181102-1)
     - [Verb: `taste`](#verb-taste)
 - [2018/11/01](#20181101)
     - [Verb: `sip`](#verb-sip)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
-    - [Verb Responses](#verb-responses)
+    - [Verb Responses](#verb-responses-1)
     - [Doxterize Verbs](#doxterize-verbs)
     - [Tweak Lib Classes](#tweak-lib-classes)
 - [2018/10/31 \(2\)](#20181031-2)
@@ -38,7 +42,7 @@ Status: Alpha stage.
     - [Rename Verbs](#rename-verbs)
 - [2018/10/21 \(3\)](#20181021-3)
     - [`notify*` Verbs](#notify-verbs)
-    - [Verb Responses](#verb-responses-1)
+    - [Verb Responses](#verb-responses-2)
     - [Library Attributes for Notify](#library-attributes-for-notify)
     - [Score Event](#score-event)
 - [2018/10/21 \(2\)](#20181021-2)
@@ -54,10 +58,10 @@ Status: Alpha stage.
 - [2018/10/19 \(1\)](#20181019-1)
     - [Verb: `scratch`](#verb-scratch)
     - [Verb Restriction Attributes](#verb-restriction-attributes-6)
-    - [Verb Responses](#verb-responses-2)
+    - [Verb Responses](#verb-responses-3)
 - [2018/10/18](#20181018)
     - [Translate Responses for "Look" Verbs](#translate-responses-for-look-verbs)
-    - [Verb Responses](#verb-responses-3)
+    - [Verb Responses](#verb-responses-4)
 - [2018/10/17](#20181017)
     - [Verb Restriction Attributes](#verb-restriction-attributes-7)
     - [Translate "Look" Verbs](#translate-look-verbs)
@@ -95,7 +99,7 @@ Status: Alpha stage.
     - [New Recurrent Verb Responses Attributes](#new-recurrent-verb-responses-attributes)
 - [2018/08/27 \(2\)](#20180827-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-10)
-    - [Verb Responses](#verb-responses-4)
+    - [Verb Responses](#verb-responses-5)
     - [Verbs: `talk` and `talk_to`](#verbs-talk-and-talk_to)
 - [2018/08/27 \(1\)](#20180827-1)
     - [Verb Restriction Attributes](#verb-restriction-attributes-11)
@@ -120,14 +124,14 @@ Status: Alpha stage.
 - [2018/08/16 \(2\)](#20180816-2)
     - [Fix Actors Initialization and Description](#fix-actors-initialization-and-description)
 - [2018/08/16 \(1\)](#20180816-1)
-    - [Verb Responses](#verb-responses-5)
+    - [Verb Responses](#verb-responses-6)
     - [Corretto Risposte Per `indossa` e `togliti`](#corretto-risposte-per-indossa-e-togliti)
 - [2018/08/11](#20180811)
     - [Verb Restriction Attributes](#verb-restriction-attributes-14)
-    - [Verb Responses](#verb-responses-6)
+    - [Verb Responses](#verb-responses-7)
     - [Verb: `remove`](#verb-remove)
 - [2018/08/09](#20180809)
-    - [Verb Responses](#verb-responses-7)
+    - [Verb Responses](#verb-responses-8)
     - [Verb: `wear`](#verb-wear)
 - [2018/08/08](#20180808)
     - [Deleted `present_actor` Attribute](#deleted-present_actor-attribute)
@@ -144,7 +148,7 @@ Status: Alpha stage.
 - [2018/08/06 \(1\)](#20180806-1)
     - [Library Attributes](#library-attributes)
 - [2018/08/02 \(3\)](#20180802-3)
-    - [Verb Responses](#verb-responses-8)
+    - [Verb Responses](#verb-responses-9)
     - [Verbs: `tie` and `tie_to`](#verbs-tie-and-tie_to)
 - [2018/08/02 \(2\)](#20180802-2)
 - [2018/08/02 \(1\)](#20180802-1)
@@ -152,7 +156,7 @@ Status: Alpha stage.
     - [Verbs: `touch` and `touch_with`](#verbs-touch-and-touch_with)
     - [Code Cleanup](#code-cleanup)
 - [2018/08/01 \(4\)](#20180801-4)
-    - [Verb Responses](#verb-responses-9)
+    - [Verb Responses](#verb-responses-10)
     - [Verb: `sing`](#verb-sing)
     - [Verb: `kiss`](#verb-kiss)
     - [Verb: `pull`](#verb-pull)
@@ -160,7 +164,7 @@ Status: Alpha stage.
     - [Verbs: `attack` and `attack_with`](#verbs-attack-and-attack_with)
 - [2018/08/01 \(2\)](#20180801-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-15)
-    - [Verb Responses](#verb-responses-10)
+    - [Verb Responses](#verb-responses-11)
     - [Verbs: `cut` and `cut_with`](#verbs-cut-and-cut_with)
     - [Verb: `dance`](#verb-dance)
     - [Verb: `dig`](#verb-dig)
@@ -174,7 +178,7 @@ Status: Alpha stage.
     - [Verb: `think_about`](#verb-think_about)
 - [2018/07/31 \(1\)](#20180731-1)
     - [Verb Restriction Attributes](#verb-restriction-attributes-17)
-    - [Verb Responses](#verb-responses-11)
+    - [Verb Responses](#verb-responses-12)
     - [Verb: `fix`](#verb-fix)
 - [2018/07/29 \(2\)](#20180729-2)
     - [Remove Verb Restriction Attributes](#remove-verb-restriction-attributes)
@@ -186,9 +190,9 @@ Status: Alpha stage.
     - [Verb Restriction Attributes](#verb-restriction-attributes-18)
     - [Testo dei Verbi](#testo-dei-verbi)
 - [2018/07/28 \(3\)](#20180728-3)
-    - [Verb Responses](#verb-responses-12)
-- [2018/07/28 \(2\)](#20180728-2)
     - [Verb Responses](#verb-responses-13)
+- [2018/07/28 \(2\)](#20180728-2)
+    - [Verb Responses](#verb-responses-14)
     - [Verb Restriction Attributes](#verb-restriction-attributes-19)
     - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
 - [2018/07/28 \(1\)](#20180728-1)
@@ -385,7 +389,68 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
-# 2018/11/02
+# 2018/11/02 (2)
+
+- [`lib_classi.i`][lib_classi] (v0.7.3)
+- [`lib_messaggi.i`][lib_messaggi] (v0.7.5)
+- [`lib_verbi.i`][lib_verbi] (v0.7.16)
+
+## Doxterize Classes
+
+Inizia a organizzare l'auto-documentazione di `lib_classi.i`.
+
+## Verbs: `empty*` and `pour*`
+
+Translated the verbs of the group `empty*` and `pour*`:
+
+
+|  English   |   Italian   |
+|------------|-------------|
+| `empty`    | `svuota`    |
+| `empty_in` | `svuota_in` |
+| `empty_on` | `svuota_su` |
+| `pour`     | `versa`     |
+| `pour_in`  | `versa_in`  |
+| `pour_on`  | `versa_su`  |
+
+With solid contents:
+
+    (svuota|versa) (ogg)
+    (svuota|versa) (ogg) in (cont)
+    (svuota|versa) (ogg) su (superficie)
+
+with no synonyms.
+
+There are still quite a few untranslated verb responses attributes, especially in the verbs definitions in `lib_classi.i`; also the tests don't yet cover all possible cases.
+
+A bug surfaced with the use of `put_in` in relation to these verbs, due to how it's implemented on `liquid` class — it always changes the liquid's associated `recipiente`, even if `put_in` failed (which is the default behaviour). For more info, see:
+
+- https://github.com/AnssiR66/AlanStdLib/issues/39
+
+## Verb Responses
+
+Translated verb responses attributes:
+
+|      Attribute EN      |      Attribute IT     |           Text          |
+|------------------------|-----------------------|-------------------------|
+| `check_obj_takeable`   | `ogg1_non_posseduto`  | `"Non possiedi $+1.".`  |
+| `check_obj2_takeable1` | `ogg2_non_posseduto`  | `"Non possiedi $+2.".`  |
+| `check_obj2_takeable2` | `ogg2_non_ottenibile` | `"Non puoi avere $+2."` |
+
+Original attributes deleted since all occurence have been replaced.
+
+New verb responses attributes (created for Italian library, no English counterpart):
+
+|          Attribute          |                       Text                      |
+|-----------------------------|-------------------------------------------------|
+| `ogg1_vuoto_sg`/`pl`        | `"ci provi, ma $+1 [era/erano] vuot$$"`         |
+| `svuotare_solo_contenitori` | `"Solo i contenitori possono essere svuotati."` |
+
+
+
+<!---------------------------------------------------------------------------->
+
+# 2018/11/02 (1)
 
 - [`lib_verbi.i`][lib_verbi] (v0.7.15)
 

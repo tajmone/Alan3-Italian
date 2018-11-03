@@ -158,6 +158,11 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 | 20520   |           | verbo_bevi                   | ==== bevi
 | 20530   |           | verbo_mangia                 | ==== mangia
 | 20540   |           | verbo_sorseggia              | ==== sorseggia
+// -----------------------------------------------------------------------------
+| 20600   |           | gruppo_svuota                | == Svuotare e Versare
+| 20610   |           | verbo_svuota                 | ==== svuota + versa
+| 20620   |           | verbo_svuota_in              | ==== svuota_in + versa_in
+| 20630   |           | verbo_svuota_su              | ==== svuota_su + versa_su
 // =============================================================================
 | 30000   |           | comandi_comandi_domande      | == Verbi di Domande
 // -----------------------------------------------------------------------------
@@ -182,8 +187,40 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 [cols="2*>10m,20m,60d",options="header"]
 |===============================================================================
 | weight  | subweight |                              | descrizione
-| 10000   |         1 | tabella_vestiario_intro      | == La Tabella del Vestiario
-| 10100   |         1 | tabella_vestiario            | [tabella vestiario]
+|   100   |         1 | intro                        | == Introduzione
+|  1000   |         1 | elenco_classi                | === Elenco e Descrizione delle Classi
+// =============================================================================
+| 10000   |         1 | vestiario                    | == Vestiario
+// -----------------------------------------------------------------------------
+| 10900   |         1 | vestiario_istruzioni         | === Istruzioni per l'Uso del Vestiario
+| 10950   |         1 | tabella_vestiario_intro      | == La Tabella del Vestiario
+| 10960   |         1 | tabella_vestiario            | [tabella vestiario]
+// =============================================================================
+| 11000   |         1 | dispositivi                  | == Dispositivi
+// =============================================================================
+| 12000   |         1 | porte                        | == Porte
+// =============================================================================
+| 13000   |         1 | finestre                     | == Finestre
+// =============================================================================
+| 14000   |         1 | fonte_di_luce                | == Fonti di Luce
+// =============================================================================
+| 15000   |         1 | liquido                      | == Liquidi
+// =============================================================================
+| 16000   |         1 | contenitore_elencato         | == Contenitore Elencato
+// =============================================================================
+| 17000   |         1 | suono                        | == Suoni
+// =============================================================================
+| 18000   |         1 | supporto                     | == Supporti
+// =============================================================================
+| 19000   |         1 | arma                         | == Armi
+// -----------------------------------------------------------------------------
+// | 1000   |         1 | xxxxxxxxxx | === xxxxxxxxxx
+// =============================================================================
+| 20000   |         1 | classi_attori                | == Attori
+| 21000   |         1 | sottoclassi_attori           | == Sottoclassi di ACTOR
+// =============================================================================
+| 30000   |         1 | oggetti_fittizi              | == Oggetti Fittizi
+// =============================================================================
 | 50000   |           | todo                         | TODO
 | 51000   |      1-33 | todo_checklist               | === Check List Generale
 | 51000   |   665-666 | todo_checklist               | === Check List Doxter

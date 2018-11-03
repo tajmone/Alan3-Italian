@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.7.2-Alpha, 2018-11-01: Alan 3.0beta6
+--| v0.7.3-Alpha, 2018-11-02: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -55,343 +55,100 @@ END ADD.
 --|| § x.x   | - Indumento Fittizio
 --++===========================================================================+
 
----=============================================================================
---\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---------------------------------------------------------------------------------
--- § 0 - Panoramica del Modulo
---------------------------------------------------------------------------------
---//////////////////////////////////////////////////////////////////////////////
---=============================================================================
 
+-->intro(100.1)
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == Introduzione
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--|
 --| Questo modulo della libreria definisce varie classi di oggetti e attori.
 --| Siccome molte di queste classi ricorrono spesso nelle definizioni dei verbi
---| nel modulo 'lib_verbi.i', si consiglia di procedere con cautela prima di
+--| nel modulo `lib_verbi.i`, si consiglia di procedere con cautela prima di
 --| modificarle o cancellarle. Per semplificare tale compito, all'inizio di
 --| ciascuna classe viene riportato se e dove venga fatto riferimento ad essa
 --| negli altri moduli della libreria.
+--<
+
+
+-->elenco_classi(1000.1)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Elenco delle Classi
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--|
+--| [WARNING]
+--| =================================
+--| Sezione non ancora disponibile...
+--| =================================
+--<
 
 
 
---==============================================================================
+-->vestiario(10000.1)
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == Vestiario
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--| 
+--| Un `indumento` è un capo di vestiario implementato secondo le regole
+--| dell'estensione `xwear.i` di Alan Bampton. Il codice di questa classe
+--| impedisce di indossare gli indumenti in ordine insensato -- per esempio, non
+--| puoi indossare una camicia se stai già indossando una giacca, e via dicendo.
+--| Queste funzionalità si applicano solo al protagonista, e non possono essere
+--| estese ai PNG.
+--|
+--| Questa classe include la definizione dei verbi `indossa` e `togliti`.
+--|
+--| [NOTE]
+--| ============================================================================
+--| Questa classe è basata sull'estensione `xwear.i` creata da Alan Bampton per
+--| ALAN v2. Con il permesso dell'autore, l'estensione è stata adattata per
+--| funzionare con ALAN v3, ed è stata interamente assimilata nella libreria.
+--| Si ringrazia Alan Bampton per aver concesso l'autorizzazione a utilizzarne
+--| il codice.
+--| ============================================================================
+
+--|
+--| [NOTE]
+--| ========================================================================
+--| Il modulo `lib_verbi.i` fa riferimento a questa classe nei verbi `inventario`
+--| e `prendi`, che utilizzano il contenitore `abbigliamento` definito in questa
+--| classe.
+--| ========================================================================
+--<
+
+
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------------------
--- § 0.1 - Elenco e descrizione delle classi
---------------------------------------------------------------------------------
---==============================================================================
-
-
-
---==============================================================================
--- § 0.1.1 - Oggetti
---==============================================================================
-
-
---.-------------------.
---| I N D U M E N T O |
---+-------------------+--------------------------------------------------------.
---|                                                                            |
---`----------------------------------------------------------------------------'
-
--- CLOTHING
-  -- Is a piece of clothing that behaves according to Alan Bampton's 'xwear.i' extension.
-  -- The said extension has been fully assimilated to this library.
-  -- This extension prevents clothes from being worn in an illogical order, for example you
-  -- cannot put on a shirt if you are already wearing a jacket, and so forth.
-  -- This only applies to the hero; NPCs cannot be made to wear clothing in layers.
-  -- Also the verbs 'wear', 'remove' and 'undress' are defined here.
-
-
---.-----------------------.
---| D I S P O S I T I V O |
---+-----------------------+----------------------------------------------------.
---| Un macchinario o congengo ellettrico che è possibile accendere e spegnere, |
---| a meno che non sia rotto. Se esaminato, la descrizione includerà il suo    |
---| stato attuale (acceso o spento).                                           |
---+----------------------------------------------------------------------------+
---| ESEMPI: Interruttore, Tv, computer, radio, generatore elettrico.           |
---+----------------------------------------------------------------------------+
---| ATTRIBUTI PREDEFINITI: |                                                   |
---|                        |                                                   |
---|   - IS NOT acceso.     | = spento                                          |
---|   - IS NOT rotto.      | = funzionante                                     |
---`----------------------------------------------------------------------------'
-
-
---.-----------.
---| P O R T A |
---+-----------+----------------------------------------------------------------.
---| Può essere aperta o chiusa, e (opzionale) bloccata e sbloccata. Di default |
---| le porte sono chiuse e non bloccate. Per poter aprire una porta bloccata è |
---| richiesta la sua chiave ('chiave_abbinata'). Se esaminata, la descrizione  |
---| includerà il suo stato attuale (aperta o chiusa).                          |
---|                                                                            |
---| Le porte hanno anche l'attributo 'altro_lato' tramite il quale è possibile |
---| abbinare tra loro due porte situate in stanze diverse, creando l'illusione |
---| di una sola porta che si affaccia su entrambe le stanze. Quando due porte  |
---| sono associate tra loro in questo modo, ossia dichiarando ciascuna porta   |
---| come 'altro_lato' dell'altra, la libreria sincronizzerà i cambiamenti di   |
---| stato (aperta/chiusa, bloccata/sbloccata) tra esse, di modo che aprendo,   |
---| chiudendo, sbloccando o bloccando una di esse tali azioni abbiano effetto  |
---| automatico anche sulla porta associata.                                    |
---+----------------------------------------------------------------------------+
---| ATTRIBUTI PREDEFINITI:                  |                                  |
---|                                         |                                  |
---|  - IS apribile.                         |                                  |
---|  - IS NOT aperto.                       | = chiusa                         |
---|  - IS NOT bloccabile.                   | = nessuna serratura              |
---|  - IS NOT bloccato.                     |                                  |
---|  - IS NOT prendibile.                   | = fissa                          |
---|  - HAS chiave_abbinata chiave_fittizia. | = nessuna chiave                 |
---`----------------------------------------------------------------------------'
-
-
---.---------------.
---| L I Q U I D O |
---+---------------+------------------------------------------------------------.
---| Si può prendere un liquido solo se è in un contenitore. Si possono usare i |
---| liquidi per riempire qualcosa, e li si può versare.                        |
---| Di default un liquido non è potabile.                                      |
---`----------------------------------------------------------------------------'
-
---------------------------------------------------------------------------------
-
--- @TODO: Mancano ancora troppi elementi per documentare le fonti di luce:
---        - La differenza tra i verbi inglesi "turned on and off, lighted and
---          extinguished" non ha ancora corrispondenti italiani, e al momento
---          vi sono difficoltà in vista per la traduzione di questi verbi.
---        - Il completamento della traduzione di questa scheda dovrà essere
---          rimandato a quando tutti i verbi saranno tradotti!
-
---.---------------------------.
---| F O N T E   D I   L U C E |
---+---------------------------+------------------------------------------------.
---|                                                                            |
-
--- **** TESTO DELLA SCHEDA COMPLETAMENTE DA RIVEDERE!!! ****
-
---@NOTA: Questo non sarà più così dopo la traduzione italiana dei verbi dato
---       che alcuni verbi si sovrapporranno e non ci sarà tale distinguo.
---       Inoltre, il controllo per 'rotto' viene applicato in ogni caso, anche
---       per le luci naturali!
---       Il testo andrà rivisto!
-
---| Una fonte di luce può essere 'naturale' (p.es. una candela, una fiaccola, 
---| un falò) o 'NOT naturale' (ossia artificiale, come una torcia elettrica, 
---| una bajour).
-
-
---| Una fonte di luce artificiale la si può accendere, spegnere ed estinguere,
---| purché non sia rotta.
-
---| Una fonte di luce naturale può essere appiccata ed estinta, ma non accessa
---| o spenta.
-
---| Quando si esamina una fonte di luce, nella descrizione ne verrà menzionato 
---| automaticamente lo stato (accesa/spenta).
-
---`----------------------------------------------------------------------------'
-
--- LIGHTSOURCE
-  -- IS natural or NOT natural
-  -- (a natural lightsource is for example a match or a torch).
-  -- Can be turned on and off, lighted and extinguished (= put out) if it
-  -- is not broken. A natural lightsource
-  -- cannot be turned on or off, it can only be lighted and extinguished (= put out).
-  -- When examined, a lightsource is automatically supplied with a description of
-  -- whether it is providing light or not.
-
---------------------------------------------------------------------------------
-
---.-----------------------------------------.
---| C O N T E N I T O R E   E L E N C A T O |
---+-----------------------------------------+----------------------------------.
---| Si tratta di un contenitore i cui contenuti (se è aperto) saranno elencati |
---| sia nella descrizione del luogo (entrandovi, o usando 'guarda') sia quando |
---| viene esaminato o aperto. La libreria autogestisce lo stato di opacità di  |
---| questo tipo di contenitore, rendendolo non opaco (NOT OPAQUE) quando viene |
---| aperto, e opaco quando viene chiuso, affinché i suoi contenuti non vengano |
---| svelati (elencati) quando esso è chiuso.                                   |
---+----------------------------------------------------------------------------+
---| NOTA: I contenuti di un contenitore normale non vengono elencati con il    |
---|       verbo 'esamnina', ma solo con 'guarda', 'guarda dentro' o durante la |
---|       descrizione del luogo.                                               |
---`----------------------------------------------------------------------------'
-
-
---.-----------.
---| S U O N O |
---+-----------+----------------------------------------------------------------.
---| È possibile ascoltare i suoni ma non esaminarli, annusarli né manipolarli. |
---| (volendo, li si può accendere e spegnere.)                                 |
---+----------------------------------------------------------------------------+
---| ATTRIBUTI PREDEFINITI:                                                     |
---|                                                                            |
---|  - IS NOT esaminabile.                                                     |
---|  - IS NOT prendibile.                                                      |
---|  - IS NOT raggiungibile.                                                   |
---|  - IS NOT spostabile.                                                      |
---`----------------------------------------------------------------------------'
-
-
---.-----------------.
---| S U P P O R T O |
---+-----------------+----------------------------------------------------------.
---| Una superficie su cui poter mettere cose e su cui si può salire e scendere. | 
---| Si tratta di un oggetto di tipo contenitore, perciò è possibile prendere le |
---| cose vi si trovano sopra (in realtà, dentro di esso, ma viene presentato in |
---| modo da crare l'illusione che sia una superficie).                          |
---| Di default, gli oggetti su un supporto saranno elencati nella descrizione   |
---| del luogo o quando il supporto viene esamintao.                             |
---`----------------------------------------------------------------------------'
-
-
---.---------.
---| A R M A |
---+---------+------------------------------------------------------------------.
---| Di default un'arma non può essere sparata (p.es., un coltello, una mazza), |
---| ma settando l'attributo 'CAN sparare' si avrà un'arma da fuoco che sarà    |
---| utilizzabile con il verbo "spara" (p.es., una pistola, un cannone).        |
---+----------------------------------------------------------------------------+
---| ATTRIBUTI PREDEFINITI: |                                                   |
---|                        |                                                   |
---|  - CAN NOT sparare.    | = arma bianca                                     |
---`----------------------------------------------------------------------------'
-
-
---.-----------------.
---| F I N E S T R A |
---+-----------------+----------------------------------------------------------.
---| Può essere aperta o chiusa; si può guardare attraverso e fuori da essa. Se |
---| esaminata, la descrizione includerà il suo stato attuale (aperta o chiusa).|
---+----------------------------------------------------------------------------+
---| ATTRIBUTI PREDEFINITI:                                                     |
---|                                                                            |
---|  - IS apribile.                                                            |
---|  - IS NOT aperto.                                                          |
---|  - IS NOT prendibile.                                                      |
---`----------------------------------------------------------------------------'
-
-
---------------------------------------------------------------------------------
-
-
-
---==============================================================================
--- § 0.1.2 - Attori
---==============================================================================
-
--- Tutti gli attori (ossia, la classe ACTOR) vengono definiti dalla libreria
--- come non inanimati e contenitori (affinché possano ricevere e trasportare
--- cose).
-
--- Di norma, gli attori vengono preceduti da un articolo nel testo del gioco,
--- come accade con gli oggetti:
--- 
---    "Puoi vedere un uomo qui."
---    "Puoi vedere la professoressa qui."
---    "Esamini il cane, ma non noti niente di speciale."
--- 
--- A meno che l'attore non venga dichiarato 'named', ossia avente nome proprio,
--- nel qual caso l'articolo (sia determinativo che indeterminativo) verrà omesso:
--- 
---    "Puoi vedere Alessandro Joker qui."
-
-
--- 2. ACTOR CLASSES
--- ================
-
--- the ACTORS are defined to be NOT inanimate CONTAINERS (so that they can for example
--- receive and carry things.
---
--- Actors are usually preceded by an article in-game:
--- for example "You see a man here."
---    "There is nothing special about the dog."
--- unless they are declared as 'named'.
---
--- The following classes for actors are defined in this library:
-
---------------------------------------------------------------------------------
-
---.---------------.
---| P E R S O N A |
---+---------------+------------------------------------------------------------.
-
---`----------------------------------------------------------------------------'
-
-
--- PERSON
-  -- is able to talk (= 'CAN talk').
-
---------------------------------------------------------------------------------
-
---.---------------.
---| F E M M I N A |
---+---------------+------------------------------------------------------------.
-
---`----------------------------------------------------------------------------'
-
--- FEMALE
-  -- a subclass of person (= is able to talk)
-      -- can be referred to with the pronoun 'her'
---------------------------------------------------------------------------------
-
---.---------------.
---| M A S C H I O |
---+---------------+------------------------------------------------------------.
-
---`----------------------------------------------------------------------------'
-
-
--- MALE
-  -- a subclass of person (= is able to talk)
-      -- can be referred to with the pronoun 'him'
-
-
-
-
-
--- The contents end here.
-
-
-
-
---=============================================================================
---\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---------------------------------------------------------------------------------
--- § 1 - Classi di Oggetti
---------------------------------------------------------------------------------
---//////////////////////////////////////////////////////////////////////////////
---=============================================================================
-
-
-
---==============================================================================
---------------------------------------------------------------------------------
--- § 1.1 - Vestiario
---------------------------------------------------------------------------------
---==============================================================================
-
--- ==============================================================
-
-
------ CLOTHING
-
-
--- ==============================================================
-
-
--- (See the file 'lib_verbi.i', verbs 'inventory' and 'take' where the
--- container 'worn', defined below, is used in the verb definitions.)
-
-
 -- To use this class, see the documentation text right after the
 -- code below.
+--------------------------------------------------------------------------------
 
--- This class makes use of Alan Bampton's 'xwear.i' extension
--- written originally for ALAN V2, converted here to V3 and
--- assimilated fully to the present library. Thanks to Alan Bampton
--- for the permission to use the code here.
+-- @NOTE: I can't find 'undress' defined here:
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- Also the verbs 'wear', 'remove' and 'undress' are defined here.
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+--                                                                              TRANSLATE!
 -----------------------------------------------------------------
 -- First, we declare the container for clothing.
 -----------------------------------------------------------------
@@ -409,10 +166,7 @@ THE abbigliamento IsA ENTITY
       SAY  mia_AT:header_abbigliamento_else.
 END THE.
 
-
-
-
-
+--                                                                              TRANSLATE!
 -------------------------------------------------------------------
 -- Now, we define some common attributes for clothing as well as
 -- how the verbs 'remove', 'undress' and 'wear' (and their synonyms) behave with this class.
@@ -878,6 +632,16 @@ END EVENT.
 
 
 
+-->vestiario_istruzioni(10900.1)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Istruzioni per l'Uso del Vestiario
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--<
 
 --------------------------------------------------------------------
 
@@ -968,22 +732,21 @@ END EVENT.
 
 
 
--->tabella_vestiario_intro(10000.1)
---~============================================================================
---~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+-->tabella_vestiario_intro(10950.1)
+--~=============================================================================
 --~-----------------------------------------------------------------------------
---| == La Tabella del Vestiario
+--| ==== La Tabella del Vestiario
 --~-----------------------------------------------------------------------------
---~/////////////////////////////////////////////////////////////////////////////
---~============================================================================
+--~=============================================================================
+--|
 --| La tabella che segue riporta una selezione di indumenti d'uso comune ed i
 --| corrispettivi valori degli attributi per una corretta implementazione.
---| 
+--|
 --| Per creare un indumento non figurante nella tabella, dovrebbe bastare un
 --| po' di ingegno nel rapportare il nuovo capo di vestiario a quelli presenti
 --| nella tabella, cercando di cogliere somilianze e differenze fino ad ottenere
 --| dei valori adatti allo scopo.
---~ 
+--~
 --| Teniate a mente che *è obbligatorio* impiegare i valori esatti riportati nella
 --| tabella, e che sommare a casaccio valori intermedi produrrà quasi sicuramente
 --| dei bachi nell'avventura.
@@ -994,7 +757,7 @@ END EVENT.
 --<<
 
 
--->tabella_vestiario(10100.1)
+-->tabella_vestiario(10960.1)
 --| .Indumenti Comuni
 --| [cols="<25d,5*^15m",options="header"]
 --| |===========================================================================
@@ -1055,16 +818,38 @@ END EVENT.
 
 
 
--- =============================================================
-
-
------ DEVICE
-
-
--- =============================================================
-
-
--- (This class is not cross-referenced elsewhere in this or any other library file.)
+-->dispositiv(11000.1)  @DISPOSITIVO --> @DEVICE
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == Dispositivi
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--| 
+--| Un macchinario o congengo ellettrico che è possibile accendere e spegnere,
+--| a meno che non sia rotto. Se esaminato, la descrizione includerà il suo
+--| stato attuale (acceso o spento).
+--|
+--| ESEMPI: Interruttore, Tv, computer, radio, generatore elettrico.
+--|
+--| [cols="50m,50d",options="header"]
+--| |===========================================================================
+--| | attributi e valori predefiniti | significato
+--~ |--------------------------------+------------------------------------------
+--| | IS NOT acceso.                 | È spento.
+--| | IS NOT rotto.                  | È funzionante.
+--| |===========================================================================
+--|
+--| [NOTE]
+--| ========================================================================
+--| Questa classe non ricorre altrove, né in questo file né in altri moduli.
+--| ========================================================================
+--<
 
 
 EVERY dispositivo IsA OBJECT
@@ -1161,16 +946,53 @@ EVERY dispositivo IsA OBJECT
 
 END EVERY.
 
--- =============================================================
 
+-->porte(12000.1)  @PORTA ---> @DOOR
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == Porte
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--| 
+--| Può essere aperta o chiusa, e (opzionale) bloccata e sbloccata. Di default
+--| le porte sono chiuse e non bloccate. Per poter aprire una porta bloccata è
+--| richiesta la sua chiave (`chiave_abbinata`). Se esaminata, la descrizione
+--| includerà il suo stato attuale (aperta o chiusa).
+--|
+--| Le porte hanno anche l'attributo `altro_lato` tramite il quale è possibile
+--| abbinare tra loro due porte situate in stanze diverse, creando l'illusione
+--| di una sola porta che si affaccia su entrambe le stanze. Quando due porte
+--| sono associate tra loro in questo modo, ossia dichiarando ciascuna porta
+--| come `altro_lato` dell'altra, la libreria sincronizzerà i cambiamenti di
+--| stato (aperta/chiusa, bloccata/sbloccata) tra esse, di modo che aprendo,
+--| chiudendo, sbloccando o bloccando una di esse tali azioni abbiano effetto
+--| automatico anche sulla porta associata.
+--|
+--|
+--| [cols="50m,50d",options="header"]
+--| |===========================================================================
+--| | attributi e valori predefiniti       | significato
+--~ |--------------------------------------+------------------------------------
+--| | IS apribile.                         | Può essere aperta e chiusa.
+--| | IS NOT aperto.                       | È chiusa.
+--| | IS NOT bloccabile.                   | Non ha una serratura.
+--| | IS NOT bloccato.                     | Non è blocata.
+--| | IS NOT prendibile.                   | È fissa.
+--| | HAS chiave_abbinata chiave_fittizia. | Non ha nessuna chiave abbinata.
+--| |===========================================================================
+--|
+--| [NOTE]
+--| ========================================================================
+--| Questa classe non ricorre altrove, né in questo file né in altri moduli.
+--| ========================================================================
+--<
 
------ @PORTA ---> @DOOR
-
-
--- =============================================================
-
-
--- (This class is not cross-referenced elsewhere in this or any other library file.)
 
 
 EVERY porta IsA OBJECT
@@ -1370,15 +1192,153 @@ THE porta_fittizia IsA porta
 END THE.
 
 
+-->finestre(13000.1)  @FINESTRA ---> @WINDOW
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == Finestre
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--| 
+--| Può essere aperta o chiusa; si può guardare attraverso e fuori da essa. Se
+--| esaminata, la descrizione includerà il suo stato attuale (aperta o chiusa).
+--|
+--| [cols="50m,50d",options="header"]
+--| |===========================================================================
+--| | attributi e valori predefiniti | significato
+--~ |--------------------------------+------------------------------------------
+--| | IS apribile.                   |
+--| | IS NOT aperto.                 |
+--| | IS NOT prendibile.             |
+--| |===========================================================================
+--|
+--| [NOTE]
+--| ========================================================================
+--| Questa classe non ricorre altrove, né in questo file né in altri moduli.
+--| ========================================================================
+--<
 
--- =============================================================
+
+-- You can look out of and through a window.
+-- When examined, a window is by default described as being either open or closed.
 
 
------ LIGHTSOURCE
+EVERY finestra IsA OBJECT
+  IS apribile.
+  IS NOT aperto.
+  IS NOT prendibile.
+
+-- @TODO: Se ha 'xDesc', mostra il testo?                                       IMPROVE
+
+  VERB esamina
+    DOES
+      IF THIS IS NOT aperto
+        THEN
+          IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
+            THEN "It is"
+            ELSE "They are"
+          END IF.
+          "currently closed."
+        ELSE
+          IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
+            THEN "It is"
+            ELSE "They are"
+          END IF.
+          "currently open."
+      END IF.
+  END VERB esamina.
 
 
--- =============================================================
+  VERB look_behind
+    DOES ONLY
+--                                                                              TRANSLATE!
+      "That's not possible."
+  END VERB look_behind.
 
+
+  VERB look_out_of
+--                                                                              TRANSLATE!
+    DOES ONLY "You see nothing special looking out of the"
+        IF THIS IS NOT plurale
+          THEN "window."
+          ELSE "windows."
+        END IF.
+  END VERB look_out_of.
+
+
+  VERB look_through
+--                                                                              TRANSLATE!
+    DOES ONLY "You see nothing special looking through the"
+        IF THIS IS NOT plurale
+          THEN "window."
+          ELSE "windows."
+        END IF.
+  END VERB look_through.
+
+
+END EVERY.
+
+
+-->fonte_di_luce(14000.1)  @FONTE_DI_LUCE --> @LIGHTSOURCE
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == Fonti di Luce
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--| 
+--|
+--<
+
+--.---------------------------.
+--| F O N T E   D I   L U C E |
+--+---------------------------+------------------------------------------------.
+--|                                                                            |
+
+-- **** TESTO DELLA SCHEDA COMPLETAMENTE DA RIVEDERE!!! ****
+
+--@NOTA: Questo non sarà più così dopo la traduzione italiana dei verbi dato
+--       che alcuni verbi si sovrapporranno e non ci sarà tale distinguo.
+--       Inoltre, il controllo per 'rotto' viene applicato in ogni caso, anche
+--       per le luci naturali!
+--       Il testo andrà rivisto!
+
+--| Una fonte di luce può essere 'naturale' (p.es. una candela, una fiaccola,
+--| un falò) o 'NOT naturale' (ossia artificiale, come una torcia elettrica,
+--| una bajour).
+
+
+--| Una fonte di luce artificiale la si può accendere, spegnere ed estinguere,
+--| purché non sia rotta.
+
+--| Una fonte di luce naturale può essere appiccata ed estinta, ma non accessa
+--| o spenta.
+
+--| Quando si esamina una fonte di luce, nella descrizione ne verrà menzionato
+--| automaticamente lo stato (accesa/spenta).
+
+--`----------------------------------------------------------------------------'
+
+-- LIGHTSOURCE
+  -- IS natural or NOT natural
+  -- (a natural lightsource is for example a match or a torch).
+  -- Can be turned on and off, lighted and extinguished (= put out) if it
+  -- is not broken. A natural lightsource
+  -- cannot be turned on or off, it can only be lighted and extinguished (= put out).
+  -- When examined, a lightsource is automatically supplied with a description of
+  -- whether it is providing light or not.
 
 -- (In the file 'lib_verbi.i', IsA fonte_di_luce is used in the syntax definition of the verb 'light'.
 -- Also, in 'lib_luoghi.i', LIGHTSOURCE is used in defining the behavior of the class DARK_LOCATION.)
@@ -1447,14 +1407,24 @@ EVERY fonte_di_luce IsA OBJECT
 END EVERY.
 
 
-
--- ==============================================================
-
-
------ LIQUID
-
-
--- ==============================================================
+-->liquido(15000.1)  @LIQUIDO --> @LIQUID
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == Liquidi
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--| 
+--|
+--| Si può prendere un liquido solo se è in un contenitore. Si possono usare i
+--| liquidi per riempire qualcosa, e li si può versare.
+--| Di default un liquido non è potabile.
+--<
 
 
 -- (In the file 'lib_verbi.i', IsA liquid is used in the syntax definitions of the verbs 'drink' and 'sip'.)
@@ -1529,6 +1499,30 @@ EVERY liquido IsA OBJECT
     SCHEDULE check_vessel AT THIS AFTER 0.    -- this event is defined further below
 
 
+-->liquido
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Verbi
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--<
+
+
+
+-->liquido
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== esamina
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `esamina`.
+--<
+
 -- @TODO: Se ha 'xDesc', mostra il testo?                                       IMPROVE
 
   VERB esamina
@@ -1553,6 +1547,17 @@ EVERY liquido IsA OBJECT
   END VERB esamina.
 
 
+-->liquido    @LOOK IN
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== look_in
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `look_in`.
+--<
+
   VERB look_in
     DOES ONLY
       IF recipiente OF THIS <> recipiente_fittizio
@@ -1572,6 +1577,17 @@ EVERY liquido IsA OBJECT
       END IF.
   END VERB look_in.
 
+-->liquido
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== prendi
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `prendi`.
+--<
+
 -- @PRENDI -> @TAKE (VERB) => LIQUID
   VERB prendi
     CHECK recipiente OF THIS NOT IN hero
@@ -1583,6 +1599,17 @@ EVERY liquido IsA OBJECT
         "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nTaken."
       END IF.
   END VERB prendi.
+
+-->liquido
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== prendi_da
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `prendi_da`.
+--<
 
 -- @PRENDI_DA -> @TAKE_FROM (VERB) => LIQUID
   VERB prendi_da
@@ -1601,6 +1628,16 @@ EVERY liquido IsA OBJECT
       END IF.
   END VERB prendi_da.
 
+-->liquido
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== lascia
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `lascia`.
+--<
 
   VERB lascia
     DOES ONLY
@@ -1613,6 +1650,16 @@ EVERY liquido IsA OBJECT
       -- "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nDropped."
   END VERB lascia.
 
+-->liquido
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== chiedi
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `chiedi`.
+--<
 
   VERB chiedi
     DOES ONLY
@@ -1621,7 +1668,17 @@ EVERY liquido IsA OBJECT
       SAY THE png. "gives" SAY THE recipiente OF THIS. "of" SAY THIS. "to you."
   END VERB chiedi.
 
--- @DAI_A -> @GIVE (VERB) => LIQUID
+-->liquido   @DAI_A -> @GIVE TO => LIQUID
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== dai_a
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `dai_a`.
+--<
+
   VERB dai_a
     WHEN ogg
     DOES ONLY
@@ -1650,8 +1707,18 @@ EVERY liquido IsA OBJECT
 
   END VERB dai_a.
 
+-->liquido  @VERSA --> @POUR
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== versa
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `versa`.
+--<
 
-  VERB pour
+  VERB versa
     DOES ONLY
       -- >>> prendi implicito: >>>
       IF THIS NOT IN hero
@@ -1681,10 +1748,20 @@ EVERY liquido IsA OBJECT
             END IF.
       END IF.
 
-  END VERB pour.
+  END VERB versa.
 
+-->liquido
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== versa_in
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `versa_in`.
+--<
 
-  VERB pour_in
+  VERB versa_in
     WHEN ogg
       DOES ONLY
         -- >>> prendi implicito: >>>
@@ -1696,8 +1773,8 @@ EVERY liquido IsA OBJECT
             ELSIF recipiente OF THIS IS NOT prendibile
 --                                                                              TRANSLATE!
               THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
-            ELSE LOCATE recipiente OF THIS IN hero.
-              "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
+              ELSE LOCATE recipiente OF THIS IN hero.
+                "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
             END IF.
         END IF.
         -- <<< prendi implicito <<<
@@ -1716,6 +1793,9 @@ EVERY liquido IsA OBJECT
             "There's not much sense pouring" SAY THE ogg. "into" SAY THE THIS. "."
           ELSE
             IF recipiente OF THIS IS aperto
+-- @NOTE: Why not? You can empty containers with solids into liquids but you    CHECK!
+--        can't 'pour' thme -- yet both verbs are good with them when no liquids
+--        are involved!
 --                                                                              TRANSLATE!
               THEN "It wouldn't accomplish anything trying to pour" SAY THE ogg.
                 "into" SAY THE THIS. "."
@@ -1728,10 +1808,21 @@ EVERY liquido IsA OBJECT
                 "closed."
             END IF.
         END IF.
-  END VERB pour_in.
+  END VERB versa_in.
+
+-->liquido
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== versa_su
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `versa_su`.
+--<
 
 
-  VERB pour_on
+  VERB versa_su
     WHEN ogg
       DOES ONLY
         -- >>> prendi implicito: >>>
@@ -1765,8 +1856,76 @@ EVERY liquido IsA OBJECT
             ELSE "It wouldn't be sensible to pour anything on" SAY THE superficie.
             END IF.
         END IF.
-  END VERB pour_on.
+  END VERB versa_su.
 
+
+-->liquido
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== svuota
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `svuota`.
+--<
+
+-- The verbs 'empty', 'empty_in' and 'empty_on' will be disabled as ungrammatical with liquids:
+
+  VERB svuota
+    WHEN ogg
+      DOES ONLY SAY mia_AT:svuotare_solo_contenitori.
+  END VERB svuota.
+
+-->liquido
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== svuota_in
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `svuota_in`.
+--<
+
+  VERB svuota_in
+    WHEN ogg
+      DOES ONLY SAY mia_AT:svuotare_solo_contenitori.
+  END VERB svuota_in.
+
+-->liquido
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== svuota_su
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `svuota_su`.
+--<
+
+  VERB svuota_su
+    WHEN ogg
+      DOES ONLY SAY mia_AT:svuotare_solo_contenitori.
+  END VERB svuota_su.
+
+-->liquido
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== riempi_con
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `riempi_con`.
+--<
+
+-- @FIXME: Qui c'è un problema, perché anche se l'azione di default non va in   BUG!
+--         porto, il recipiente del liquido viene cambiato lo stesso, e poi il
+--         verbo svuota è sballato (p.es., cerca di prendere il nuovo recipiente
+--         assegnato anziché quello originale). Vedi:
+-- 
+--         https://github.com/AnssiR66/AlanStdLib/issues/39
 
   VERB riempi_con
     -- when something is filled with a liquid, this something becomes the
@@ -1775,6 +1934,16 @@ EVERY liquido IsA OBJECT
        DOES SET recipiente OF THIS TO cont.
   END VERB riempi_con.
 
+-->liquido    @PUT IN 
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== put_in
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `put_in`.
+--<
 
   VERB put_in
     WHEN ogg
@@ -1830,6 +1999,17 @@ EVERY liquido IsA OBJECT
       END IF.
   END VERB put_in.
 
+-->liquido    @PUT ON 
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== put_on
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `put_on`.
+--<
+
 
   VERB put_on
     WHEN ogg
@@ -1860,30 +2040,6 @@ EVERY liquido IsA OBJECT
   END VERB put_on.
 
 
-
-
-
-  -- The verbs 'empty', 'empty_in' and 'empty_on' will be disabled as ungrammatical with liquids:
-
-  VERB 'empty'
-    WHEN ogg
---                                                                              TRANSLATE!
-    DOES ONLY "You can only empty containers."
-  END VERB 'empty'.
-
-  VERB empty_in
-    WHEN ogg
---                                                                              TRANSLATE!
-    DOES ONLY "You can only empty containers."
-  END VERB empty_in.
-
-  VERB empty_on
-    WHEN ogg
---                                                                              TRANSLATE!
-    DOES ONLY "You can only empty containers."
-  END VERB empty_on.
-
-
 END EVERY.
 
 
@@ -1911,18 +2067,38 @@ END EVENT.
 
 
 
-
--- =============================================================
-
-
------ LISTED_CONTAINER
-
-
--- =============================================================
-
-
--- (This class is not cross-referenced elsewhere in this or any other library file.)
-
+-->contenitore_elencato(16000.1)  @CONTENITORE_ELENCATO --> @LISTED_CONTAINER
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == Contenitore Elencato
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--| 
+--| Si tratta di un contenitore i cui contenuti (se è aperto) saranno elencati
+--| sia nella descrizione del luogo (entrandovi, o usando '`guarda`') sia quando
+--| viene esaminato o aperto. La libreria autogestisce lo stato di opacità di
+--| questo tipo di contenitore, rendendolo non opaco (NOT OPAQUE) quando viene
+--| aperto, e opaco quando viene chiuso, affinché i suoi contenuti non vengano
+--| svelati (elencati) quando esso è chiuso.
+--|
+--| [NOTE]
+--| ============================================================================
+--| I contenuti di un contenitore normale non vengono elencati con il verbo
+--| '`esamnina`', ma solo con '`guarda`', '`guarda dentro`' o quando viene
+--| effettiata la descrizione del luogo.
+--| ============================================================================
+--|
+--| [NOTE]
+--| ========================================================================
+--| Questa classe non ricorre altrove, né in questo file né in altri moduli.
+--| ========================================================================
+--<
 
 EVERY contenitore_elencato IsA OBJECT
   CONTAINER
@@ -2051,20 +2227,37 @@ EVERY contenitore_elencato IsA OBJECT
 END EVERY.
 
 
-
-
-
--- ===============================================================
-
-
------ SOUND
-
-
--- ===============================================================
-
-
--- (This class is not cross-referenced in this or any other library file.)
-
+-->suono(17000.1)  @SUONO --> @SOUND
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == Suoni
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--| 
+--| È possibile ascoltare i suoni ma non esaminarli, annusarli né manipolarli.
+--| (volendo, li si può accendere e spegnere.)
+--|
+--| [cols="50m,50d",options="header"]
+--| |===========================================================================
+--| | attributi e valori predefiniti | significato
+--~ |--------------------------------+------------------------------------------
+--| | IS NOT esaminabile.            |
+--| | IS NOT prendibile.             |
+--| | IS NOT raggiungibile.          |
+--| | IS NOT spostabile.             |
+--| |===========================================================================
+--|
+--| [NOTE]
+--| ========================================================================
+--| Questa classe non ricorre altrove, né in questo file né in altri moduli.
+--| ========================================================================
+--<
 
 EVERY suono IsA OBJECT
   IS NOT esaminabile.
@@ -2086,14 +2279,27 @@ EVERY suono IsA OBJECT
 END EVERY.
 
 
+-->supporto(18000.1) @SUPPORTO --> @SUPPORTER
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == Supporti
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--| 
+--| Una superficie su cui poter mettere cose e su cui si può salire e scendere.
+--| Si tratta di un oggetto di tipo contenitore, perciò è possibile prendere le
+--| cose vi si trovano sopra (in realtà, dentro di esso, ma viene presentato in
+--| modo da crare l'illusione che sia una superficie).
+--| Di default, gli oggetti su un supporto saranno elencati nella descrizione
+--| del luogo o quando il supporto viene esamintao.
+--<
 
--- ==============================================================
-
-
------ SUPPORTER
-
-
--- ==============================================================
 
 
 -- (See the file 'verbs.i', verbs 'climb_on', 'empty_on', 'get_off', 'jump_on',
@@ -2132,7 +2338,7 @@ EVERY supporto IsA OBJECT
   END VERB look_in.
 
 
-  VERB empty_in, pour_in
+  VERB svuota_in, versa_in
      WHEN cont
     DOES ONLY
        IF THIS IS NOT plurale
@@ -2141,7 +2347,7 @@ EVERY supporto IsA OBJECT
         ELSE "Those are not"
       END IF.
       "something you can pour things into."
-  END VERB empty_in.
+  END VERB svuota_in.
 
 
   VERB put_in
@@ -2159,18 +2365,30 @@ EVERY supporto IsA OBJECT
 END EVERY.
 
 
-
-
-
-
-
--- ==============================================================
-
-
------ @ARMA ---> @WEAPON
-
-
--- ==============================================================
+-->19000(arma.1)  @ARMA ---> @WEAPON
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| === Armi
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--| 
+--| Di default un'arma non può essere sparata (p.es., un coltello, una mazza),
+--| ma settando l'attributo `CAN sparare` si avrà un'arma da fuoco che sarà
+--| utilizzabile con il verbo "spara" (p.es., una pistola, un cannone).
+--|
+--| [cols="50m,50d",options="header"]
+--| |===========================================================================
+--| | attributi e valori predefiniti | significato
+--~ |--------------------------------+------------------------------------------
+--| | CAN NOT sparare.               | È un'arma bianca
+--| |===========================================================================
+--<
 
 
 -- (See the file 'lib_verbi.i', verbs 'attack_with', 'fire',
@@ -2183,89 +2401,20 @@ EVERY arma IsA OBJECT
 END EVERY.
 
 
-
-
--- ==============================================================
-
-
------ WINDOW
-
-
--- ==============================================================
-
-
--- (This class is not cross-referenced elsewhere in this or any other library file.)
-
-
--- You can look out of and through a window.
--- When examined, a window is by default described as being either open or closed.
-
-
-EVERY finestra IsA OBJECT
-  IS apribile.
-  IS NOT aperto.
-  IS NOT prendibile.
-
--- @TODO: Se ha 'xDesc', mostra il testo?                                       IMPROVE
-
-  VERB esamina
-    DOES
-      IF THIS IS NOT aperto
-        THEN
-          IF THIS IS NOT plurale
---                                                                              TRANSLATE!
-            THEN "It is"
-            ELSE "They are"
-          END IF.
-          "currently closed."
-        ELSE
-          IF THIS IS NOT plurale
---                                                                              TRANSLATE!
-            THEN "It is"
-            ELSE "They are"
-          END IF.
-          "currently open."
-      END IF.
-  END VERB esamina.
-
-
-  VERB look_behind
-    DOES ONLY
---                                                                              TRANSLATE!
-      "That's not possible."
-  END VERB look_behind.
-
-
-  VERB look_out_of
---                                                                              TRANSLATE!
-    DOES ONLY "You see nothing special looking out of the"
-        IF THIS IS NOT plurale
-          THEN "window."
-          ELSE "windows."
-        END IF.
-  END VERB look_out_of.
-
-
-  VERB look_through
---                                                                              TRANSLATE!
-    DOES ONLY "You see nothing special looking through the"
-        IF THIS IS NOT plurale
-          THEN "window."
-          ELSE "windows."
-        END IF.
-  END VERB look_through.
-
-
-END EVERY.
-
-
---=============================================================================
---\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---------------------------------------------------------------------------------
--- § 2 - Attori
---------------------------------------------------------------------------------
---//////////////////////////////////////////////////////////////////////////////
---=============================================================================
+-->classi_attori(20000.1)
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == Attori
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--|
+--<
 
 
 -- First, we declare some common characteristics for all actors:
@@ -2485,7 +2634,7 @@ ADD TO EVERY ACTOR
 -- e non:
 --
 --    "Hai dato la palla ALLA Maria"
--- 
+--
 -- La presenza dello IF statement ci costringe a ripetere qui il
 -- codice usato in "lib_definizioni.i" per definire ARTICLE, altrimenti i valori
 -- di default verrebbero sovrascritti da una stringa nulla. Invece, per quanto
@@ -2693,7 +2842,7 @@ ADD TO EVERY ACTOR
 -- § 2.2.4 - Verbo Esamina
 --==============================================================================
 -- Questo corpo aggiuntivo del verbo 'esamina' sulla classe ACTOR, fà in modo
--- che dopo aver esaminato un NPG ne venga elencato l'inventario. 
+-- che dopo aver esaminato un NPG ne venga elencato l'inventario.
 
   VERB esamina
     DOES AFTER
@@ -2707,15 +2856,23 @@ ADD TO EVERY ACTOR
 END ADD TO ACTOR.
 
 
+-->some_tag(21000.1)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Sottoclassi di ACTOR
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--|
+--| La libreria definisce alcune sottoclassi specializzate di `ACTOR`:
+--|
+--| * `ACTOR`
+--| ** `persona`
+--| *** `maschio`
+--| *** `femmina`
+--<
 
---=============================================================================
---\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---------------------------------------------------------------------------------
--- § 3 - Sottoclassi di ACTOR
---------------------------------------------------------------------------------
---//////////////////////////////////////////////////////////////////////////////
---=============================================================================
--- La libreria definisce alcune sottoclassi specializzate di ACTOR:
 --
 -- ACTOR
 --   |
@@ -2799,17 +2956,24 @@ EVERY femmina IsA persona
 END EVERY.
 
 
+-->oggetti_fittizi(30000.1)
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == Oggetti Fittizi
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--|
+--| Gli oggetti fittizi sono istanze utilizzate per inizializzare correttamente
+--| gli attributi delle classi definite in questo modulo che fanno riferimento ad
+--| altre istanze o classi (attributi di tipo istanza o insieme).
+--<
 
---=============================================================================
---\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---------------------------------------------------------------------------------
--- § x - Oggetti Fittizi
---------------------------------------------------------------------------------
---//////////////////////////////////////////////////////////////////////////////
---=============================================================================
--- Gli oggetti fittizi sono istanze utilizzate per inizializzare correttamente
--- gli attributi delle classi definite in questo modulo che fanno riferimento ad
--- altre istanze o classi (attributi di tipo istanza o insieme).
 
 
 --==============================================================================
@@ -2832,9 +2996,9 @@ END THE.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
---| italiano del modulo dei messaggi.
+--| italiano del modulo delle classi.
 --<
 
 -->todo_checklist(51000.1)
@@ -2843,14 +3007,14 @@ END THE.
 --| === Check List Generale
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 --| Lista della spesa per le varie cosucce da fare:
 --<
 
 -->todo_checklist(.665)
---| 
---| === Check List Doxter 
---| 
+--|
+--| === Check List Doxter
+--|
 --| Finisci di trasformare commenti in documentazione Doxter:
 --<
 

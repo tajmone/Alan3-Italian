@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.15-Alpha, 2018-11-02: Alan 3.0beta6
+--| v0.7.16-Alpha, 2018-11-02: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -770,6 +770,9 @@ END VERB ringraziamenti.
 --| | spegni             |                              | spegni (disp)                          |     | 1 |     |
 --| | spogliati          | svestiti                     | spogliati                              |     | 0 |     |
 --| | suona              |                              | suona (ogg)                            |     | 1 | {X} |
+--| | svuota             |                              | svuota (ogg)                           |     | 1 | {X} |
+--| | svuota_in          |                              | svuota (ogg) in (cont)                 |     | 2 | {X} |
+--| | svuota_su          |                              | svuota (ogg) su (superficie)           |     | 2 | {X} |
 --| | taglia             |                              | taglia (ogg)                           |     | 1 | {X} |
 --| | taglia_con         |                              | taglia (ogg) con (strum)               |     | 2 | {X} |
 --| | tira               |                              | tira (ogg)                             |     | 1 | {X} |
@@ -783,6 +786,9 @@ END VERB ringraziamenti.
 --| | usa_con            |                              | usa (ogg) con (strum)                  |     | 2 | {X} |
 --| | vai_a              |                              | vai a (dest)                           |     | 1 |     |
 --| | vendi              |                              | vendi (merce)                          |     | 1 |     |
+--| | versa              |                              | versa (ogg)                            |     | 1 | {X} |
+--| | versa_in           |                              | versa (ogg) in (cont)                  |     | 2 | {X} |
+--| | versa_su           |                              | versa (ogg) su (superficie)            |     | 2 | {X} |
 --| |===================================================================================================================
 --<
 
@@ -861,7 +867,9 @@ END ADD TO.
 
 -->verbo_spegni(20120)  @SPEGNI ---> @TURN OFF
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== spegni
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -934,7 +942,9 @@ END ADD TO.
 
 -->verbo_apri(20210)  @APRI ---> @OPEN
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== apri
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -1019,7 +1029,9 @@ END ADD TO.
 
 -->verbo_apri_con(20220)   @APRI CON ---> @OPEN WITH
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== apri_con
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -1128,7 +1140,9 @@ END ADD TO.
 
 -->verbo_blocca(20230)  @BLOCCA ---> @LOCK
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== blocca
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -1215,7 +1229,9 @@ END ADD TO.
 
 -->verbo_blocca_con(20240)   @BLOCCA CON ---> @LOCK WITH
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== blocca_con
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -1313,7 +1329,9 @@ END ADD TO.
 
 -->verbo_chiudi(20260)    @CHIUDI ---> @CLOSE (+ shut)
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== chiudi
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -1387,7 +1405,9 @@ END ADD TO.
 
 -->verbo_chiudi_con(20260)    @CHIUDI CON ---> @CLOSE WITH
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== chiudi_con
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -1502,7 +1522,9 @@ END ADD TO.
 
 -->verbo_annusa0(20310)  @ANNUSA --> @SMELL (smell0)
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== annusa0
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -1528,7 +1550,9 @@ END VERB annusa0.
 
 -->verbo_annusa(20320)  @ANNUSA (ODORE) --> @SMELL (+ ogg)
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== annusa
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -1562,7 +1586,9 @@ END ADD TO.
 
 -->verbo_ascolta0(20330)  @ASCOLTA0 ---> @LISTEN
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== ascolta0
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -1587,7 +1613,9 @@ END VERB ascolta0.
 
 -->verbo_ascolta(20340)  @ASCOLTA (OGG) ---> @LISTEN TO
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== ascolta
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -1645,7 +1673,9 @@ END ADD TO.
 
 -->verbo_tocca(20350)  @TOCCA ---> @TOUCH
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== tocca
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -1716,7 +1746,9 @@ END ADD TO.
 
 -->verbo_tocca_con(20360)  @TOCCA CON ---> @TOUCH WITH
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== tocca_con
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -1829,7 +1861,9 @@ END ADD TO.
 
 -->verbo_chiedi(20410)  @CHIEDI ---> @ASK FOR
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== chiedi
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -1891,9 +1925,7 @@ ADD TO EVERY ACTOR
             ELSE SAY  ogg1_distante_pl  OF mia_AT.
           END IF.
       AND ogg IS prendibile
---                                                                              TRANSLATE!
-        ELSE SAY  check_obj2_takeable2  OF mia_AT.
-
+        ELSE SAY  mia_AT:ogg2_non_ottenibile.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
@@ -1963,7 +1995,9 @@ END ADD TO.
 
 -->verbo_dire(20420)  @DÌ ---> @SAY
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== dì
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -1991,7 +2025,9 @@ END ADD TO.
 
 -->verbo_dire_a(20430)  @DÌ A ---> @SAY TO
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== dì_a
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -2049,7 +2085,9 @@ END ADD TO.
 
 -->verbo_domanda(20440)  @DOMANDA @ASK (= enquire, inquire, interrogate)
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== domanda
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -2129,7 +2167,9 @@ END ADD TO.
 
 -->verbo_parla(20450)   @PARLA ---> @TALK
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== parla
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -2156,7 +2196,9 @@ END VERB parla.
 
 -->verbo_parla_con(20460)  @PARLA CON ---> @TALK_TO
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== parla_con
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -2189,7 +2231,9 @@ END ADD TO.
 
 -->verbo_racconta(20470)  @RACCONTA ---> @TELL  (+ enlighten, inform)
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== racconta
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -2264,7 +2308,9 @@ END ADD TO.
 
 -->verbo_rispondi(20480)  @RISPONDI ---> @ANSWER    (+ reply)
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== rispondi
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -2326,7 +2372,9 @@ END ADD TO.
 
 -->verbo_assaggia(20510)  @ASSAGGIA --> @TASTE   (+ lick)
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== assaggia
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -2396,7 +2444,9 @@ END ADD TO.
 
 -->verbo_bevi(20520)  @BEVI --> @DRINK
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== bevi
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -2498,7 +2548,9 @@ END ADD TO.
 
 -->verbo_mangia(20530)  @MANGIA -> @EAT
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== mangia
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -2531,8 +2583,7 @@ ADD TO EVERY OBJECT
         END IF.
         "mangiare."
     AND cibo IS prendibile
-      ---> @TODO!!                                                              TRANSLATE!
-      ELSE SAY  check_obj_takeable  OF mia_AT.
+      ELSE SAY  mia_AT:ogg1_non_posseduto.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND cibo IS raggiungibile AND cibo IS NOT distante
@@ -2567,7 +2618,9 @@ END ADD.
 
 -->verbo_sorseggia(20540)  @SORSEGGIA --> @SIP
 --~=============================================================================
+--~-----------------------------------------------------------------------------
 --| ==== sorseggia
+--~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
@@ -2652,6 +2705,482 @@ END ADD TO.
 
 -- See also the verb 'drink'.
 
+
+
+-->gruppo_svuota(20600)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Svuotare e Versare
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi per svuotare i contenitori e versarne il
+--| contenuto (a terra o su/in un altro contenitore):
+--| 
+--| * `svuota`
+--| * `svuota_in`
+--| * `svuota_su`
+--| * `versa`
+--| * `versa_in`
+--| * `versa_su`
+--| 
+--| In questo modulo, i verbi `svuota` e `versa` hanno sintassi e comportamento
+--| simili; tuttavia non sono dichiarati sinonimi (ossia, hanno sintassi
+--| indipendenti) poiché il loro uso non si sovrappone del tutto. Per esempio, è
+--| possibile versare un liquido ma non svuotarlo.
+--| 
+--| Questa è la ragione per cui in `lib_classi.i` questi verbi sono ridefiniti
+--| nella classe `liquido` affinché si possa utilizzare il verbo `versa` con un
+--| liquido ma non il verbo `svuota`.
+--<
+
+
+-->verbo_svuota(20610)  @SVUOTA + @VERSA --> @EMPTY   (+ @POUR)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== svuota + versa
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `svuota` + `versa`.
+--<
+
+-- @NOTE: i6 adotta anche il sinonimo 'rovescia'.
+
+SYNTAX svuota = svuota (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "svuotare."
+  AND ogg IsA CONTAINER
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "svuotare."
+
+  versa = versa (ogg)
+    WHERE ogg IsA OBJECT
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+        END IF.
+        "versare."
+    AND ogg IsA CONTAINER
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+        END IF.
+        "versare."
+
+
+ADD TO EVERY OBJECT
+  VERB svuota, versa
+    CHECK mia_AT CAN svuotare AND mia_AT CAN versare
+      ELSE SAY  azione_bloccata  OF mia_AT.
+    AND ogg IS prendibile
+      ELSE SAY  mia_AT:ogg1_non_posseduto.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY  imp_luogo_buio  OF mia_AT.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  ogg1_distante_sg  OF mia_AT.
+              ELSE SAY  ogg1_distante_pl  OF mia_AT.
+            END IF.
+        END IF.
+    AND ogg IS aperto
+      ELSE
+        IF ogg IS NOT femminile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY  imp_ogg1_chiuso_ms  OF mia_AT.
+              ELSE SAY  imp_ogg1_chiuso_mp  OF mia_AT.
+            END IF.
+          ELSE
+            IF ogg IS NOT plurale
+              THEN SAY  imp_ogg1_chiuso_fs  OF mia_AT.
+              ELSE SAY  imp_ogg1_chiuso_fp  OF mia_AT.
+            END IF.
+        END IF.
+    DOES
+
+      -- >>> prendi implicito: >>>
+      IF ogg NOT DIRECTLY IN hero
+        THEN LOCATE ogg IN hero.
+          SAY  mia_AT:riferisci_prendi_implicito.
+      END IF.
+      -- <<< prendi implicito <<<
+
+      IF COUNT IsA OBJECT, DIRECTLY IN ogg = 0
+        THEN
+     -- THEN "There is nothing in" SAY THE ogg. "."
+          IF ogg IS NOT plurale
+            --  "ci provi, ma $+1 [era/erano] vuot$$"
+            THEN SAY mia_AT:ogg1_vuoto_sg.
+            ELSE SAY mia_AT:ogg1_vuoto_pl.
+          END IF.
+          SAY ogg:vocale. "."
+        ELSE
+          "Svuoti il contenuto" SAY ogg:prep_DI. SAY ogg.
+            IF pavimento HERE -- (ossia, se siamo in una 'stanza')
+              THEN "sul pavimento."
+              ELSE "in terra."
+            END IF.
+          EMPTY ogg AT hero.
+      END IF.
+
+  END VERB svuota. -- + versa
+END ADD TO.
+
+-->verbo_svuota_in(20620)  @SVUOTA IN + @VERSA IN --> @EMPTY IN  (+ POUR IN)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== svuota_in + versa_in
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `svuota_in` + `versa_in`.
+--<
+
+SYNTAX svuota_in = svuota (ogg) 'in' (cont)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "svuotare."
+  AND ogg IsA CONTAINER
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "svuotare."
+  AND cont IsA OBJECT
+    ELSE
+      IF cont IsA ACTOR
+--                                                                              TRANSLATE!
+        THEN SAY  illegal_parameter_act  OF mia_AT.
+        ELSE SAY  illegal_parameter2_there  OF mia_AT.
+      END IF.
+  AND cont IsA CONTAINER
+    ELSE SAY  illegal_parameter2_there  OF mia_AT.
+
+
+
+versa_in = versa (ogg) 'in' (cont)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "versare."
+  AND ogg IsA CONTAINER
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+      END IF.
+      "versare."
+  AND cont IsA OBJECT
+    ELSE
+      IF cont IsA ACTOR
+--                                                                              TRANSLATE!
+        THEN SAY  illegal_parameter_act  OF mia_AT.
+        ELSE SAY  illegal_parameter2_there  OF mia_AT.
+      END IF.
+  AND cont IsA CONTAINER
+--                                                                              TRANSLATE!
+    ELSE SAY  illegal_parameter2_there  OF mia_AT.
+
+
+
+
+ADD TO EVERY OBJECT
+  VERB svuota_in, versa_in
+    WHEN ogg
+      CHECK mia_AT CAN svuotare_in AND mia_AT CAN versare_in
+        ELSE SAY  azione_bloccata  OF mia_AT.
+      AND ogg <> cont
+--                                                                              TRANSLATE!
+        ELSE SAY  check_obj_not_obj2_in  OF mia_AT.
+      AND ogg IS prendibile
+        ELSE SAY  mia_AT:ogg1_non_posseduto.
+      AND cont NOT IN ogg
+--                                                                              TRANSLATE!
+        ELSE SAY  check_cont_not_in_obj  OF mia_AT.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
+              END IF.
+          END IF.
+      AND cont IS raggiungibile AND cont IS NOT distante
+        ELSE
+          IF cont IS NOT raggiungibile
+            THEN
+              IF cont IS NOT plurale
+                THEN SAY  ogg2_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg2_non_raggiungibile_pl  OF mia_AT.
+              END IF.
+          ELSIF cont IS distante
+            THEN
+              IF cont IS NOT plurale
+                THEN SAY  ogg2_distante_sg  OF mia_AT.
+                ELSE SAY  ogg2_distante_pl  OF mia_AT.
+              END IF.
+          END IF.
+      AND ogg IN consentiti OF cont
+        ELSE
+          IF ogg IS NOT plurale
+--                                                                              TRANSLATE!
+            THEN SAY  check_obj_allowed_in_sg  OF mia_AT.
+            ELSE SAY  check_obj_allowed_in_pl  OF mia_AT.
+          END IF.
+      AND ogg IS aperto
+        ELSE
+          IF ogg IS NOT femminile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  imp_ogg1_chiuso_ms  OF mia_AT.
+                ELSE SAY  imp_ogg1_chiuso_mp  OF mia_AT.
+              END IF.
+            ELSE
+              IF ogg IS NOT plurale
+                THEN SAY  imp_ogg1_chiuso_fs  OF mia_AT.
+                ELSE SAY  imp_ogg1_chiuso_fp  OF mia_AT.
+              END IF.
+          END IF.
+      AND cont IS aperto
+        ELSE
+          IF cont IS NOT femminile
+            THEN
+              IF cont IS NOT plurale
+                THEN SAY  imp_ogg2_chiuso_ms  OF mia_AT.
+                ELSE SAY  imp_ogg2_chiuso_mp  OF mia_AT.
+              END IF.
+            ELSE
+              IF cont IS NOT plurale
+                THEN SAY  imp_ogg2_chiuso_fs  OF mia_AT.
+                ELSE SAY  imp_ogg2_chiuso_fp  OF mia_AT.
+              END IF.
+          END IF.
+      DOES
+
+      -- >>> prendi implicito: >>>
+      IF ogg NOT DIRECTLY IN hero
+        THEN LOCATE ogg IN hero.
+          SAY  mia_AT:riferisci_prendi_implicito.
+      END IF.
+      -- <<< prendi implicito <<<
+
+      IF COUNT IsA OBJECT, DIRECTLY IN ogg = 0
+        THEN
+     -- THEN "There is nothing in" SAY THE ogg. "."
+          IF ogg IS NOT plurale
+            --  "ci provi, ma $+1 [era/erano] vuot$$"
+            THEN SAY mia_AT:ogg1_vuoto_sg.
+            ELSE SAY mia_AT:ogg1_vuoto_pl.
+          END IF.
+          SAY ogg:vocale. "."
+        ELSE
+          EMPTY ogg IN cont.
+          "Svuoti il contenuto" SAY ogg:prep_DI. SAY ogg.
+          SAY cont:prep_IN. SAY cont. "."
+       -- "You $v the contents of" SAY THE ogg.
+       -- "in" SAY THE cont. "."
+      END IF.
+     END VERB svuota_in.
+END ADD TO.
+
+
+-->verbo_svuota_su(20620)  @SVUOTA  SU + @VERSA SU --> @EMPTY ON  (+ @POUR ON)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== svuota_su + versa_su
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `svuota_su` + `versa_su`.
+--<
+
+
+SYNTAX svuota_su = svuota (ogg) su (superficie)
+    WHERE ogg IsA OBJECT
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+        END IF.
+        "svuotare."
+    AND ogg IsA CONTAINER
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+        END IF.
+        "svuotare."
+    AND superficie IsA THING
+--                                                                              TRANSLATE!
+      ELSE SAY  illegal_parameter2_there  OF mia_AT.
+    AND superficie IsA CONTAINER
+--                                                                              TRANSLATE!
+      ELSE SAY  illegal_parameter2_there  OF mia_AT.
+
+  versa_su = versa (ogg) su (superficie)
+    WHERE ogg IsA OBJECT
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+        END IF.
+        "versare."
+    AND ogg IsA CONTAINER
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
+          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
+        END IF.
+        "versare."
+    AND superficie IsA OBJECT
+--                                                                              TRANSLATE!
+      ELSE SAY  illegal_parameter2_there  OF mia_AT.
+    AND superficie IsA CONTAINER
+--                                                                              TRANSLATE!
+      ELSE SAY  illegal_parameter2_there  OF mia_AT.
+
+
+ADD TO EVERY THING
+  VERB svuota_su, versa_su
+      WHEN ogg
+      CHECK mia_AT CAN svuotare_su AND mia_AT CAN versare_su
+        ELSE SAY  azione_bloccata  OF mia_AT.
+      AND ogg <> superficie
+--                                                                              TRANSLATE!
+        ELSE SAY  check_obj_not_obj2_on  OF mia_AT.
+      AND ogg IS prendibile
+        ELSE SAY  mia_AT:ogg1_non_posseduto.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY  imp_luogo_buio  OF mia_AT.
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
+              END IF.
+          END IF.
+      AND superficie IS raggiungibile AND superficie IS NOT distante
+        ELSE
+          IF superficie IS NOT raggiungibile
+            THEN
+              IF superficie IS NOT plurale
+                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
+                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
+              END IF.
+          ELSIF superficie IS distante
+            THEN
+              IF superficie IS NOT plurale
+                THEN SAY  ogg1_distante_sg  OF mia_AT.
+                ELSE SAY  ogg1_distante_pl  OF mia_AT.
+              END IF.
+          END IF.
+      AND ogg IS aperto
+        ELSE
+          IF ogg IS NOT femminile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY  imp_ogg1_chiuso_ms  OF mia_AT.
+                ELSE SAY  imp_ogg1_chiuso_mp  OF mia_AT.
+              END IF.
+            ELSE
+              IF ogg IS NOT plurale
+                THEN SAY  imp_ogg1_chiuso_fs  OF mia_AT.
+                ELSE SAY  imp_ogg1_chiuso_fp  OF mia_AT.
+              END IF.
+          END IF.
+      DOES
+        -- >>> prendi implicito: >>>
+        IF ogg NOT DIRECTLY IN hero
+          THEN LOCATE ogg IN hero.
+            SAY  mia_AT:riferisci_prendi_implicito.
+        END IF.
+        -- <<< prendi implicito <<<
+
+        IF COUNT IsA OBJECT, DIRECTLY IN ogg = 0
+          THEN
+       -- THEN "There is nothing in" SAY THE ogg. "."
+            IF ogg IS NOT plurale
+              --  "ci provi, ma $+1 [era/erano] vuot$$"
+              THEN SAY mia_AT:ogg1_vuoto_sg.
+              ELSE SAY mia_AT:ogg1_vuoto_pl.
+            END IF.
+            SAY ogg:vocale. "."
+          ELSE
+            IF superficie = pavimento OR superficie = suolo
+              THEN EMPTY ogg AT hero.
+              ELSE EMPTY ogg IN superficie.
+            END IF.
+--                                                                              TRANSLATE!
+            "Svuoti il contenuto" SAY ogg:prep_DI. SAY ogg.
+            SAY superficie:prep_SU. SAY superficie. "."
+         -- "You $v the contents of" SAY THE ogg.
+         -- "on" SAY THE superficie. "."
+        END IF.
+  END VERB svuota_su.
+END ADD TO.
 
 
 
@@ -3345,8 +3874,7 @@ ADD TO EVERY OBJECT
       CHECK mia_AT CAN dare -- (was CAN give)
         ELSE SAY  azione_bloccata  OF mia_AT.
       AND ogg IS prendibile
-        ---> @TODO!!                                                            TRANSLATE!
-        ELSE SAY  check_obj_takeable  OF mia_AT.
+        ELSE SAY  mia_AT:ogg1_non_posseduto.
       AND ogg <> ricevente
         ---> @TODO!!                                                            TRANSLATE!
         ELSE SAY  check_obj_not_obj2_to  OF mia_AT.
@@ -4013,15 +4541,9 @@ ADD TO EVERY OBJECT
     CHECK mia_AT CAN indossare
         ELSE SAY  azione_bloccata  OF mia_AT.
     AND ogg NOT IN abbigliamento
---                                                                              TRANSLATE!
       ELSE SAY  indossi_già  OF mia_AT.
     AND ogg IS prendibile
-      ELSE
-        IF THIS IS NOT plurale
---                                                                              TRANSLATE!
-          THEN SAY  check_obj_takeable  OF mia_AT.
-          ELSE SAY  check_obj_takeable  OF mia_AT.
-        END IF.
+      ELSE SAY  mia_AT:ogg1_non_posseduto.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -4240,9 +4762,8 @@ ADD TO EVERY THING
 --                                                                              TRANSLATE!
       AND ogg <> bersaglio
         ELSE SAY  check_obj_not_obj2_to  OF mia_AT.
---                                                                              TRANSLATE!
       AND ogg IS prendibile
-        ELSE SAY  check_obj_takeable  OF mia_AT.
+        ELSE SAY  mia_AT:ogg1_non_posseduto.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -4929,7 +5450,8 @@ ADD TO EVERY OBJECT
         ELSE SAY  check_obj_not_in_cont2  OF mia_AT.
       AND sostanza IS prendibile
         --                                                                      TRANSLATE!
-        ELSE SAY  check_obj2_takeable1  OF mia_AT.
+        ELSE SAY  mia_AT:ogg2_non_posseduto.
+     -- ELSE SAY  check_obj2_takeable1  OF mia_AT.
       AND cont IS raggiungibile AND cont IS NOT distante
         ELSE
           IF cont IS NOT raggiungibile
@@ -6706,9 +7228,9 @@ END VERB rispondi_Sì.
 --~*| drive              |                                    | drive (vehicle)                   | 1 |
 --~*| drop               | discard, dump, reject              | drop (obj)                        | 1 | {x}
 --~*| eat                |                                    | eat (food)                        | 1 |
---| | empty              |                                    | empty (obj)                       | 1 | {x}
---| | empty_in           |                                    | empty (obj) in (cont)             | 2 | {x}
---| | empty_on           |                                    | empty (obj) on (surface)          | 2 | {x}
+--~*| empty              |                                    | empty (obj)                       | 1 | {x}
+--~*| empty_in           |                                    | empty (obj) in (cont)             | 2 | {x}
+--~*| empty_on           |                                    | empty (obj) on (surface)          | 2 | {x}
 --| | enter              |                                    | enter (obj)                       | 1 | {x}
 --~*| examine            | check, inspect, observe, X         | examine (obj)                     | 1 | {x}
 --| | exit               |                                    | exit (obj)                        | 1 | {x}
@@ -6758,9 +7280,9 @@ END VERB rispondi_Sì.
 --~*| open_with          |                                    | open (obj) with (instr)           | 2 | {x}
 --~*| play               |                                    | play (obj)                        | 1 | {x}
 --~*| play_with          |                                    | play with (obj)                   | 1 | {x}
---| | pour               | (= defined at the verb `empty`)    | pour (obj)                        | 1 | {x}
---| | pour_in            | (= defined at the verb `emtpy_in`) | pour (obj) in (cont)              | 2 | {x}
---| | pour_on            | (= defined at the verb `empty_on`) | pour (obj) on (surface)           | 2 | {x}
+--~*| pour               | (= defined at the verb `empty`)    | pour (obj)                        | 1 | {x}
+--~*| pour_in            | (= defined at the verb `emtpy_in`) | pour (obj) in (cont)              | 2 | {x}
+--~*| pour_on            | (= defined at the verb `empty_on`) | pour (obj) on (surface)           | 2 | {x}
 --~*| pray               |                                    | pray                              | 0 |
 --| | pry                |                                    | pry (obj)                         | 1 | {x}
 --| | pry_with           |                                    | pry (obj) with (instr)            | 2 | {x}
@@ -6970,7 +7492,7 @@ ADD TO EVERY OBJECT
         END IF.
         "mordere."
     AND ogg IS prendibile
-      ELSE SAY  check_obj_takeable  OF mia_AT.
+      ELSE SAY  mia_AT:ogg1_non_posseduto.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -7331,421 +7853,6 @@ ADD TO EVERY OBJECT
   END VERB dive_in.
 END ADD TO.
 
-
-
-
--- ==============================================================
-
-
--- @EMPTY   (+ POUR)
-
-
--- ==============================================================
-
-
--- The verbs 'empty' and 'pour' have similar syntaxes and behaviour here. They are, however,
--- not declared as synonyms but kept separate, as their usage doesn't overlap 100%; for example
--- you can pour liquids but not empty them.
--- That's why in 'classes.i', liquids are defined only to work with the verb 'pour',
--- and the verb 'empty' is disabled for liquids.
-
-
-
-
-SYNTAX 'empty' = 'empty' (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "svuotare."
-  AND ogg IsA CONTAINER
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "svuotare."
-
-  pour = pour (ogg)
-    WHERE ogg IsA OBJECT
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-        END IF.
-        "versare."
-    AND ogg IsA CONTAINER
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-        END IF.
-        "versare."
-
-
-ADD TO EVERY OBJECT
-  VERB 'empty', pour
-    CHECK mia_AT CAN svuotare AND mia_AT CAN versare
-      ELSE SAY  azione_bloccata  OF mia_AT.
-    AND ogg IS prendibile
-      ELSE SAY  check_obj_takeable  OF mia_AT.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY  imp_luogo_buio  OF mia_AT.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-              ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY  ogg1_distante_sg  OF mia_AT.
-              ELSE SAY  ogg1_distante_pl  OF mia_AT.
-            END IF.
-        END IF.
-    AND ogg IS aperto
-      ELSE
-        IF ogg IS NOT femminile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY  imp_ogg1_chiuso_ms  OF mia_AT.
-              ELSE SAY  imp_ogg1_chiuso_mp  OF mia_AT.
-            END IF.
-          ELSE
-            IF ogg IS NOT plurale
-              THEN SAY  imp_ogg1_chiuso_fs  OF mia_AT.
-              ELSE SAY  imp_ogg1_chiuso_fp  OF mia_AT.
-            END IF.
-        END IF.
-    DOES
-
-      -- >>> prendi implicito: >>>
-      IF ogg NOT DIRECTLY IN hero
-        THEN LOCATE ogg IN hero.
-          SAY  mia_AT:riferisci_prendi_implicito.
-      END IF.
-      -- <<< prendi implicito <<<
-
-      IF COUNT IsA OBJECT, DIRECTLY IN ogg = 0
-        THEN "There is nothing in" SAY THE ogg. "."
-        ELSE
-          "You $v the contents of" SAY THE ogg.
-            IF pavimento HERE
-              THEN "on the floor."
-              ELSE "on the ground."
-            END IF.
-          EMPTY ogg AT hero.
-      END IF.
-
-  END VERB 'empty'. -- + pour
-END ADD TO.
-
-
-
--- ==============================================================
-
-
--- @EMPTY IN  (+ POUR IN)
-
-
--- ==============================================================
-
-
-
-SYNTAX empty_in = 'empty' (ogg) 'in' (cont)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "svuotare."
-  AND ogg IsA CONTAINER
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "svuotare."
-  AND cont IsA OBJECT
-    ELSE
-      IF cont IsA ACTOR
-        THEN SAY  illegal_parameter_act  OF mia_AT.
-        ELSE SAY  illegal_parameter2_there  OF mia_AT.
-      END IF.
-  AND cont IsA CONTAINER
-    ELSE SAY  illegal_parameter2_there  OF mia_AT.
-
-
-
-pour_in = pour (ogg) 'in' (cont)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "versare."
-  AND ogg IsA CONTAINER
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-        ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-      END IF.
-      "versare."
-  AND cont IsA OBJECT
-    ELSE
-      IF cont IsA ACTOR
-        THEN SAY  illegal_parameter_act  OF mia_AT.
-        ELSE SAY  illegal_parameter2_there  OF mia_AT.
-      END IF.
-  AND cont IsA CONTAINER
-    ELSE SAY  illegal_parameter2_there  OF mia_AT.
-
-
-
-
-ADD TO EVERY OBJECT
-  VERB empty_in, pour_in
-    WHEN ogg
-      CHECK mia_AT CAN svuotare_in AND mia_AT CAN versare_in
-        ELSE SAY  azione_bloccata  OF mia_AT.
-      AND ogg <> cont
-        ELSE SAY  check_obj_not_obj2_in  OF mia_AT.
-      AND ogg IS prendibile
-        ELSE SAY  check_obj_takeable  OF mia_AT.
-      AND cont NOT IN ogg
-        ELSE SAY  check_cont_not_in_obj  OF mia_AT.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY  imp_luogo_buio  OF mia_AT.
-      AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
-              END IF.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY  ogg1_distante_sg  OF mia_AT.
-                ELSE SAY  ogg1_distante_pl  OF mia_AT.
-              END IF.
-          END IF.
-      AND cont IS raggiungibile AND cont IS NOT distante
-        ELSE
-          IF cont IS NOT raggiungibile
-            THEN
-              IF cont IS NOT plurale
-                THEN SAY  ogg2_non_raggiungibile_sg  OF mia_AT.
-                ELSE SAY  ogg2_non_raggiungibile_pl  OF mia_AT.
-              END IF.
-          ELSIF cont IS distante
-            THEN
-              IF cont IS NOT plurale
-                THEN SAY  ogg2_distante_sg  OF mia_AT.
-                ELSE SAY  ogg2_distante_pl  OF mia_AT.
-              END IF.
-          END IF.
-      AND ogg IN consentiti OF cont
-        ELSE
-          IF ogg IS NOT plurale
-            THEN SAY  check_obj_allowed_in_sg  OF mia_AT.
-            ELSE SAY  check_obj_allowed_in_pl  OF mia_AT.
-          END IF.
-      AND ogg IS aperto
-        ELSE
-          IF ogg IS NOT femminile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY  imp_ogg1_chiuso_ms  OF mia_AT.
-                ELSE SAY  imp_ogg1_chiuso_mp  OF mia_AT.
-              END IF.
-            ELSE
-              IF ogg IS NOT plurale
-                THEN SAY  imp_ogg1_chiuso_fs  OF mia_AT.
-                ELSE SAY  imp_ogg1_chiuso_fp  OF mia_AT.
-              END IF.
-          END IF.
-      AND cont IS aperto
-        ELSE
-          IF cont IS NOT femminile
-            THEN
-              IF cont IS NOT plurale
-                THEN SAY  imp_ogg2_chiuso_ms  OF mia_AT.
-                ELSE SAY  imp_ogg2_chiuso_mp  OF mia_AT.
-              END IF.
-            ELSE
-              IF cont IS NOT plurale
-                THEN SAY  imp_ogg2_chiuso_fs  OF mia_AT.
-                ELSE SAY  imp_ogg2_chiuso_fp  OF mia_AT.
-              END IF.
-          END IF.
-      DOES
-
-      -- >>> prendi implicito: >>>
-      IF ogg NOT DIRECTLY IN hero
-        THEN LOCATE ogg IN hero.
-          SAY  mia_AT:riferisci_prendi_implicito.
-      END IF.
-      -- <<< prendi implicito <<<
-
-      IF COUNT IsA OBJECT, DIRECTLY IN ogg = 0
-        THEN "There is nothing in" SAY THE ogg. "."
-        ELSE
-          EMPTY ogg IN cont.
-          "You $v the contents of" SAY THE ogg.
-          "in" SAY THE cont. "."
-      END IF.
-     END VERB empty_in.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
--- @EMPTY ON  (+ POUR ON)
-
-
--- ==============================================================
-
-
-
-SYNTAX empty_on = 'empty' (ogg) 'on' (superficie)
-    WHERE ogg IsA OBJECT
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-        END IF.
-        "svuotare."
-    AND ogg IsA CONTAINER
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-        END IF.
-        "svuotare."
-    AND superficie IsA THING
-      ELSE SAY  illegal_parameter2_there  OF mia_AT.
-    AND superficie IsA CONTAINER
-      ELSE SAY  illegal_parameter2_there  OF mia_AT.
-
-  pour_on = pour (ogg) 'on' (superficie)
-    WHERE ogg IsA OBJECT
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-        END IF.
-        "versare."
-    AND ogg IsA CONTAINER
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY  ogg1_inadatto_sg  OF mia_AT.
-          ELSE SAY  ogg1_inadatto_pl  OF mia_AT.
-        END IF.
-        "versare."
-    AND superficie IsA OBJECT
-      ELSE SAY  illegal_parameter2_there  OF mia_AT.
-    AND superficie IsA CONTAINER
-      ELSE SAY  illegal_parameter2_there  OF mia_AT.
-
-
-ADD TO EVERY THING
-  VERB empty_on, pour_on
-      WHEN ogg
-      CHECK mia_AT CAN svuotare_su AND mia_AT CAN versare_su
-        ELSE SAY  azione_bloccata  OF mia_AT.
-      AND ogg <> superficie
-        ELSE SAY  check_obj_not_obj2_on  OF mia_AT.
-      AND ogg IS prendibile
-        ELSE SAY  check_obj_takeable  OF mia_AT.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY  imp_luogo_buio  OF mia_AT.
-      AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
-              END IF.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY  ogg1_distante_sg  OF mia_AT.
-                ELSE SAY  ogg1_distante_pl  OF mia_AT.
-              END IF.
-          END IF.
-      AND superficie IS raggiungibile AND superficie IS NOT distante
-        ELSE
-          IF superficie IS NOT raggiungibile
-            THEN
-              IF superficie IS NOT plurale
-                THEN SAY  ogg1_non_raggiungibile_sg  OF mia_AT.
-                ELSE SAY  ogg1_non_raggiungibile_pl  OF mia_AT.
-              END IF.
-          ELSIF superficie IS distante
-            THEN
-              IF superficie IS NOT plurale
-                THEN SAY  ogg1_distante_sg  OF mia_AT.
-                ELSE SAY  ogg1_distante_pl  OF mia_AT.
-              END IF.
-          END IF.
-      AND ogg IS aperto
-        ELSE
-          IF ogg IS NOT femminile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY  imp_ogg1_chiuso_ms  OF mia_AT.
-                ELSE SAY  imp_ogg1_chiuso_mp  OF mia_AT.
-              END IF.
-            ELSE
-              IF ogg IS NOT plurale
-                THEN SAY  imp_ogg1_chiuso_fs  OF mia_AT.
-                ELSE SAY  imp_ogg1_chiuso_fp  OF mia_AT.
-              END IF.
-          END IF.
-      DOES
-        -- >>> prendi implicito: >>>
-        IF ogg NOT DIRECTLY IN hero
-          THEN LOCATE ogg IN hero.
-            SAY  mia_AT:riferisci_prendi_implicito.
-        END IF.
-        -- <<< prendi implicito <<<
-
-        IF COUNT IsA OBJECT, DIRECTLY IN ogg = 0
-          THEN "There is nothing in" SAY THE ogg. "."
-          ELSE
-            IF superficie = pavimento OR superficie = suolo
-              THEN EMPTY ogg AT hero.
-              ELSE EMPTY ogg IN superficie.
-            END IF.
-            "You $v the contents of" SAY THE ogg.
-            "on" SAY THE superficie. "."
-        END IF.
-  END VERB empty_on.
-END ADD TO.
 
 
 
@@ -8954,7 +9061,7 @@ ADD TO EVERY OBJECT
       AND ogg <> cont
         ELSE SAY  check_obj_not_obj2_in  OF mia_AT.
       AND ogg IS prendibile
-        ELSE SAY  check_obj_takeable  OF mia_AT.
+        ELSE SAY  mia_AT:ogg1_non_posseduto.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -9078,7 +9185,7 @@ ADD TO EVERY OBJECT
       AND ogg <> bulk
           ELSE SAY  check_obj_not_obj2_put  OF mia_AT.
       AND ogg IS prendibile
-          ELSE SAY  check_obj_takeable  OF mia_AT.
+          ELSE SAY  mia_AT:ogg1_non_posseduto.
       AND bulk <> hero
           ELSE SAY  check_obj2_not_hero2  OF mia_AT.
       AND CURRENT LOCATION IS illuminato
@@ -9155,7 +9262,7 @@ ADD TO EVERY OBJECT
       AND ogg <> superficie
         ELSE SAY  check_obj_not_obj2_on  OF mia_AT.
       AND ogg IS prendibile
-        ELSE SAY  check_obj_takeable  OF mia_AT.
+        ELSE SAY  mia_AT:ogg1_non_posseduto.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY  imp_luogo_buio  OF mia_AT.
       AND ogg NOT IN superficie
@@ -9947,7 +10054,7 @@ ADD TO EVERY OBJECT
           ELSE SAY  ogg1_inadatto_pl  OF mia_AT. "lanciare."
         END IF.
     AND proiettile IS prendibile
-      ELSE SAY  check_obj_takeable  OF mia_AT.
+      ELSE SAY  mia_AT:ogg1_non_posseduto.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY  imp_luogo_buio  OF mia_AT.
     AND proiettile IS raggiungibile AND proiettile IS NOT distante
@@ -10025,7 +10132,7 @@ ADD TO EVERY OBJECT
             ELSE SAY  ogg1_inadatto_pl  OF mia_AT. "lanciare."
           END IF.
       AND proiettile IS prendibile
-        ELSE SAY  check_obj_takeable  OF mia_AT.
+        ELSE SAY  mia_AT:ogg1_non_posseduto.
       AND bersaglio IS esaminabile
         ELSE SAY  check_obj_suitable_at  OF mia_AT.
       AND proiettile <> bersaglio
@@ -10139,7 +10246,7 @@ ADD TO EVERY OBJECT
             ELSE SAY  ogg1_inadatto_pl  OF mia_AT. "lanciare."
           END IF.
       AND proiettile IS prendibile
-        ELSE SAY  check_obj_takeable  OF mia_AT.
+        ELSE SAY  mia_AT:ogg1_non_posseduto.
       AND ricevente IS esaminabile
         ELSE SAY  check_obj_suitable_at  OF mia_AT.
       AND proiettile <> ricevente
@@ -10222,7 +10329,7 @@ ADD TO EVERY OBJECT
             ELSE SAY  ogg1_inadatto_pl  OF mia_AT. "lanciare."
           END IF.
       AND proiettile IS prendibile
-          ELSE SAY  check_obj_takeable  OF mia_AT.
+          ELSE SAY  mia_AT:ogg1_non_posseduto.
       AND cont IS esaminabile
           ELSE SAY  check_obj2_suitable_there  OF mia_AT.
       AND proiettile <> cont

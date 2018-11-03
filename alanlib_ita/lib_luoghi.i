@@ -261,10 +261,10 @@ THE pavimento IsA oggetto_stanza
   -- defined to work with containers:
 
 
-  VERB empty_in, pour_in
+  VERB svuota_in, versa_in
      WHEN cont
     DOES ONLY "That's not something you can $v things into."
-  END VERB empty_in.
+  END VERB svuota_in.
 
 
   VERB guarda_in
@@ -326,10 +326,10 @@ THE suolo IsA oggetto_luogo_esterno
   -- defined to work with containers:
 
 
-  VERB empty_in, pour_in
+  VERB svuota_in, versa_in
      WHEN cont
     DOES ONLY "That's not something you can $v things into."
-  END VERB empty_in.
+  END VERB svuota_in.
 
 
   VERB guarda_in

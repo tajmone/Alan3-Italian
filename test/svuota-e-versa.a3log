@@ -1,0 +1,187 @@
+
+
+Svuotare e Versare 
+Testa i verbi del gruppo 'svuota' e 'versa'. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+Radura Nel Bosco
+Al centro del prato c'è una vasca in pietra. Puoi vedere un tavolo, un 
+fiume e un barattolo qui. Il barattolo contiene delle noccioline. Puoi
+vedere un sacchetto qui. Il sacchetto contiene delle patatine. Puoi vedere 
+una busta qui. La busta contiene delle caramelle. Puoi vedere una 
+bottiglia qui. La bottiglia contiene del vino. Puoi vedere una lattina 
+qui. La lattina contiene dell'aranciata.
+
+> inventario
+Non stai portando niente.
+
+> ; ==============================================================================
+> ; CONTENUTI SOLIDI
+> ; ==============================================================================
+> ; Testiamo prima con i contenuti solidi (non liquidi). Con essi, i verbi 'svuota'
+> ; e 'versa' si equivalgono.
+> ; ------------------------------------------------------------------------------
+> ; SVUOTA / VERSA
+> ; ------------------------------------------------------------------------------
+> esamina il barattolo
+Il barattolo contiene delle noccioline.
+
+> svuota il barattolo
+(prima prendi il barattolo)
+Svuoti il contenuto del barattolo in terra.
+
+> svuota il barattolo
+Ci provi, ma il barattolo era vuoto.
+
+> esamina il barattolo
+Il barattolo è vuoto.
+
+> guarda
+Radura Nel Bosco
+Al centro del prato c'è una vasca in pietra. Puoi vedere un tavolo, un 
+fiume, delle noccioline e un sacchetto qui. Il sacchetto contiene delle 
+patatine. Puoi vedere una busta qui. La busta contiene delle caramelle. 
+Puoi vedere una bottiglia qui. La bottiglia contiene del vino. Puoi vedere 
+una lattina qui. La lattina contiene dell'aranciata.
+
+> ; Riempiamolo di nuovo e svuotiamolo con 'versa':
+> prendi le noccioline
+Prese.
+
+> PUT le noccioline nel barattolo
+You put le noccioline into il barattolo.
+
+> versa il barattolo
+Svuoti il contenuto del barattolo in terra.
+
+> ; LA VASCA non è prendibile/spostabile:
+> versa la vasca
+Non possiedi la vasca.
+
+> ; Ora con gli altri contenitori...
+> ; ------------------------------------------------------------------------------
+> ; SVUOTA_IN / VERSA_IN
+> ; ------------------------------------------------------------------------------
+> ; TRAVASA DA UN CONTENITORE ALL'ALTRO:
+> esamina il sacchetto
+Il sacchetto contiene delle patatine.
+
+> esamina la busta
+La busta contiene delle caramelle.
+
+> svuota il sacchetto nella busta
+(prima prendi il sacchetto)
+Svuoti il contenuto del sacchetto nella busta.
+
+> svuota il sacchetto nella busta
+Ci provi, ma il sacchetto era vuoto.
+
+> esamina il sacchetto
+Il sacchetto è vuoto.
+
+> esamina la busta
+La busta contiene delle caramelle e delle patatine.
+
+> versa la busta nel sacchetto
+(prima prendi la busta)
+Svuoti il contenuto della busta nel sacchetto.
+
+> versa la busta nel sacchetto
+Ci provi, ma la busta era vuota.
+
+> esamina il sacchetto
+Il sacchetto contiene delle caramelle e delle patatine.
+
+> esamina la busta
+La busta è vuota.
+
+> guarda
+Radura Nel Bosco
+Al centro del prato c'è una vasca in pietra. Puoi vedere un tavolo, un 
+fiume, delle noccioline e una bottiglia qui. La bottiglia contiene del 
+vino. Puoi vedere una lattina qui. La lattina contiene dell'aranciata.
+
+> ; VERSA NEL FIUME:
+> PUT le noccioline nel barattolo
+You put le noccioline into il barattolo.
+
+> versa il barattolo nel fiume
+There's not much sense pouring il barattolo into il fiume.
+
+> svuota il barattolo nel fiume
+Svuoti il contenuto del barattolo nel fiume.
+
+> ; ------------------------------------------------------------------------------
+> ; SVUOTA_SU / VERSA_SU
+> ; ------------------------------------------------------------------------------
+> esamina il tavolo
+Un tavolo da picnic. Non c'è nulla sopra il tavolo.
+
+> svuota il sacchetto sul tavolo
+Svuoti il contenuto del sacchetto sul tavolo.
+
+> svuota il sacchetto sul tavolo
+Ci provi, ma il sacchetto era vuoto.
+
+> esamina il sacchetto
+Il sacchetto è vuoto.
+
+> esamina il tavolo
+Un tavolo da picnic. Sopra il tavolo vedi delle caramelle e delle patatine
+.
+
+> guarda
+Radura Nel Bosco
+Al centro del prato c'è una vasca in pietra. Puoi vedere un tavolo qui. 
+Sopra il tavolo vedi delle caramelle e delle patatine. Puoi vedere un 
+fiume qui. In il fiume you see delle noccioline. Puoi vedere una bottiglia 
+qui. La bottiglia contiene del vino. Puoi vedere una lattina qui. La 
+lattina contiene dell'aranciata.
+
+> ; ==============================================================================
+> ; CONTENUTI LIQUIDI
+> ; ==============================================================================
+> ; ------------------------------------------------------------------------------
+> ; SVUOTA
+> ; ------------------------------------------------------------------------------
+> esamina la bottiglia
+La bottiglia contiene del vino.
+
+> svuota il vino
+Solo i contenitori possono essere svuotati.
+
+> svuota la bottiglia
+(prima prendi la bottiglia)
+Svuoti il contenuto della bottiglia in terra.
+
+> ; ------------------------------------------------------------------------------
+> ;VERSA
+> ; ------------------------------------------------------------------------------
+> ; VERSA IN TERRA
+> esamina la bottiglia
+La bottiglia è vuota.
+
+> versa la bottiglia
+Ci provi, ma la bottiglia era vuota.
+
+> versa il vino
+You can't pour il vino anywhere since you are not carrying it.
+
+> esamina la bottiglia
+La bottiglia è vuota.
+
+> guarda
+Radura Nel Bosco
+Al centro del prato c'è una vasca in pietra. Puoi vedere un tavolo qui. 
+Sopra il tavolo vedi delle caramelle e delle patatine. Puoi vedere un 
+fiume qui. In il fiume you see delle noccioline. Puoi vedere del vino e 
+una lattina qui. La lattina contiene dell'aranciata.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

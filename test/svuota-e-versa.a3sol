@@ -1,0 +1,67 @@
+inventario
+; ==============================================================================
+; CONTENUTI SOLIDI
+; ==============================================================================
+; Testiamo prima con i contenuti solidi (non liquidi). Con essi, i verbi 'svuota'
+; e 'versa' si equivalgono.
+; ------------------------------------------------------------------------------
+; SVUOTA / VERSA
+; ------------------------------------------------------------------------------
+esamina il barattolo
+svuota il barattolo
+svuota il barattolo
+esamina il barattolo
+guarda
+; Riempiamolo di nuovo e svuotiamolo con 'versa':
+prendi le noccioline
+PUT le noccioline nel barattolo
+versa il barattolo
+; LA VASCA non è prendibile/spostabile:
+versa la vasca
+; Ora con gli altri contenitori...
+; ------------------------------------------------------------------------------
+; SVUOTA_IN / VERSA_IN
+; ------------------------------------------------------------------------------
+; TRAVASA DA UN CONTENITORE ALL'ALTRO:
+esamina il sacchetto
+esamina la busta
+svuota il sacchetto nella busta
+svuota il sacchetto nella busta
+esamina il sacchetto
+esamina la busta
+versa la busta nel sacchetto
+versa la busta nel sacchetto
+esamina il sacchetto
+esamina la busta
+guarda
+; VERSA NEL FIUME:
+PUT le noccioline nel barattolo
+versa il barattolo nel fiume
+svuota il barattolo nel fiume
+; ------------------------------------------------------------------------------
+; SVUOTA_SU / VERSA_SU
+; ------------------------------------------------------------------------------
+esamina il tavolo
+svuota il sacchetto sul tavolo
+svuota il sacchetto sul tavolo
+esamina il sacchetto
+esamina il tavolo
+guarda
+; ==============================================================================
+; CONTENUTI LIQUIDI
+; ==============================================================================
+; ------------------------------------------------------------------------------
+; SVUOTA
+; ------------------------------------------------------------------------------
+esamina la bottiglia
+svuota il vino
+svuota la bottiglia
+; ------------------------------------------------------------------------------
+;VERSA
+; ------------------------------------------------------------------------------
+; VERSA IN TERRA
+esamina la bottiglia
+versa la bottiglia
+versa il vino
+esamina la bottiglia
+guarda

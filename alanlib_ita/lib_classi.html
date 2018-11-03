@@ -438,14 +438,68 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.7.2-Alpha,</span>
-<span id="revdate">2018-11-01</span>
+<span id="revnumber">versione 0.7.3-Alpha,</span>
+<span id="revdate">2018-11-02</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
+<li><a href="#_introduzione">Introduzione</a>
+<ul class="sectlevel2">
+<li><a href="#_elenco_delle_classi">Elenco delle Classi</a></li>
+</ul>
+</li>
+<li><a href="#_vestiario">Vestiario</a>
+<ul class="sectlevel2">
+<li><a href="#_istruzioni_per_luso_del_vestiario">Istruzioni per l&#8217;Uso del Vestiario</a>
+<ul class="sectlevel3">
 <li><a href="#_la_tabella_del_vestiario">La Tabella del Vestiario</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_dispositivi">Dispositivi</a></li>
+<li><a href="#_porte">Porte</a></li>
+<li><a href="#_finestre">Finestre</a></li>
+<li><a href="#_fonti_di_luce">Fonti di Luce</a></li>
+<li><a href="#_liquidi">Liquidi</a>
+<ul class="sectlevel2">
+<li><a href="#_verbi">Verbi</a>
+<ul class="sectlevel3">
+<li><a href="#_esamina">esamina</a></li>
+<li><a href="#_look_in">look_in</a></li>
+<li><a href="#_prendi">prendi</a></li>
+<li><a href="#_prendi_da">prendi_da</a></li>
+<li><a href="#_lascia">lascia</a></li>
+<li><a href="#_chiedi">chiedi</a></li>
+<li><a href="#_dai_a">dai_a</a></li>
+<li><a href="#_versa">versa</a></li>
+<li><a href="#_versa_in">versa_in</a></li>
+<li><a href="#_versa_su">versa_su</a></li>
+<li><a href="#_svuota">svuota</a></li>
+<li><a href="#_svuota_in">svuota_in</a></li>
+<li><a href="#_svuota_su">svuota_su</a></li>
+<li><a href="#_riempi_con">riempi_con</a></li>
+<li><a href="#_put_in">put_in</a></li>
+<li><a href="#_put_on">put_on</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_contenitore_elencato">Contenitore Elencato</a></li>
+<li><a href="#_suoni">Suoni</a></li>
+<li><a href="#_supporti">Supporti</a>
+<ul class="sectlevel2">
+<li><a href="#_armi">Armi</a></li>
+</ul>
+</li>
+<li><a href="#_attori">Attori</a>
+<ul class="sectlevel2">
+<li><a href="#_sottoclassi_di_actor">Sottoclassi di ACTOR</a></li>
+</ul>
+</li>
+<li><a href="#_oggetti_fittizi">Oggetti Fittizi</a></li>
 <li><a href="#_todo">TODO</a>
 <ul class="sectlevel2">
 <li><a href="#_check_list_generale">Check List Generale</a></li>
@@ -470,8 +524,87 @@ Ad opera di Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_la_tabella_del_vestiario"><a class="anchor" href="#_la_tabella_del_vestiario"></a>La Tabella del Vestiario</h2>
+<h2 id="_introduzione"><a class="anchor" href="#_introduzione"></a>Introduzione</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Questo modulo della libreria definisce varie classi di oggetti e attori.
+Siccome molte di queste classi ricorrono spesso nelle definizioni dei verbi
+nel modulo <code>lib_verbi.i</code>, si consiglia di procedere con cautela prima di
+modificarle o cancellarle. Per semplificare tale compito, all&#8217;inizio di
+ciascuna classe viene riportato se e dove venga fatto riferimento ad essa
+negli altri moduli della libreria.</p>
+</div>
+<div class="sect2">
+<h3 id="_elenco_delle_classi"><a class="anchor" href="#_elenco_delle_classi"></a>Elenco delle Classi</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Attenzione"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Sezione non ancora disponibile&#8230;&#8203;</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_vestiario"><a class="anchor" href="#_vestiario"></a>Vestiario</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Un <code>indumento</code> è un capo di vestiario implementato secondo le regole
+dell&#8217;estensione <code>xwear.i</code> di Alan Bampton. Il codice di questa classe
+impedisce di indossare gli indumenti in ordine insensato&#8201;&#8212;&#8201;per esempio, non
+puoi indossare una camicia se stai già indossando una giacca, e via dicendo.
+Queste funzionalità si applicano solo al protagonista, e non possono essere
+estese ai PNG.</p>
+</div>
+<div class="paragraph">
+<p>Questa classe include la definizione dei verbi <code>indossa</code> e <code>togliti</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Questa classe è basata sull&#8217;estensione <code>xwear.i</code> creata da Alan Bampton per
+ALAN v2. Con il permesso dell&#8217;autore, l&#8217;estensione è stata adattata per
+funzionare con ALAN v3, ed è stata interamente assimilata nella libreria.
+Si ringrazia Alan Bampton per aver concesso l&#8217;autorizzazione a utilizzarne
+il codice.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Il modulo <code>lib_verbi.i</code> fa riferimento a questa classe nei verbi <code>inventario</code>
+e <code>prendi</code>, che utilizzano il contenitore <code>abbigliamento</code> definito in questa
+classe.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_istruzioni_per_luso_del_vestiario"><a class="anchor" href="#_istruzioni_per_luso_del_vestiario"></a>Istruzioni per l&#8217;Uso del Vestiario</h3>
+<div class="sect3">
+<h4 id="_la_tabella_del_vestiario"><a class="anchor" href="#_la_tabella_del_vestiario"></a>La Tabella del Vestiario</h4>
 <div class="paragraph">
 <p>La tabella che segue riporta una selezione di indumenti d&#8217;uso comune ed i
 corrispettivi valori degli attributi per una corretta implementazione.</p>
@@ -630,12 +763,448 @@ dei bachi nell&#8217;avventura.</p>
 </table>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dispositivi"><a class="anchor" href="#_dispositivi"></a>Dispositivi</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Un macchinario o congengo ellettrico che è possibile accendere e spegnere,
+a meno che non sia rotto. Se esaminato, la descrizione includerà il suo
+stato attuale (acceso o spento).</p>
+</div>
+<div class="paragraph">
+<p>ESEMPI: Interruttore, Tv, computer, radio, generatore elettrico.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">attributi e valori predefiniti</th>
+<th class="tableblock halign-left valign-top">significato</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IS NOT acceso.</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">È spento.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IS NOT rotto.</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">È funzionante.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Questa classe non ricorre altrove, né in questo file né in altri moduli.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_porte"><a class="anchor" href="#_porte"></a>Porte</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Può essere aperta o chiusa, e (opzionale) bloccata e sbloccata. Di default
+le porte sono chiuse e non bloccate. Per poter aprire una porta bloccata è
+richiesta la sua chiave (<code>chiave_abbinata</code>). Se esaminata, la descrizione
+includerà il suo stato attuale (aperta o chiusa).</p>
+</div>
+<div class="paragraph">
+<p>Le porte hanno anche l&#8217;attributo <code>altro_lato</code> tramite il quale è possibile
+abbinare tra loro due porte situate in stanze diverse, creando l&#8217;illusione
+di una sola porta che si affaccia su entrambe le stanze. Quando due porte
+sono associate tra loro in questo modo, ossia dichiarando ciascuna porta
+come <code>altro_lato</code> dell&#8217;altra, la libreria sincronizzerà i cambiamenti di
+stato (aperta/chiusa, bloccata/sbloccata) tra esse, di modo che aprendo,
+chiudendo, sbloccando o bloccando una di esse tali azioni abbiano effetto
+automatico anche sulla porta associata.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">attributi e valori predefiniti</th>
+<th class="tableblock halign-left valign-top">significato</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IS apribile.</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Può essere aperta e chiusa.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IS NOT aperto.</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">È chiusa.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IS NOT bloccabile.</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Non ha una serratura.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IS NOT bloccato.</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Non è blocata.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IS NOT prendibile.</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">È fissa.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>HAS chiave_abbinata chiave_fittizia.</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Non ha nessuna chiave abbinata.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Questa classe non ricorre altrove, né in questo file né in altri moduli.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_finestre"><a class="anchor" href="#_finestre"></a>Finestre</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Può essere aperta o chiusa; si può guardare attraverso e fuori da essa. Se
+esaminata, la descrizione includerà il suo stato attuale (aperta o chiusa).</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">attributi e valori predefiniti</th>
+<th class="tableblock halign-left valign-top">significato</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IS apribile.</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IS NOT aperto.</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IS NOT prendibile.</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Questa classe non ricorre altrove, né in questo file né in altri moduli.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fonti_di_luce"><a class="anchor" href="#_fonti_di_luce"></a>Fonti di Luce</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_liquidi"><a class="anchor" href="#_liquidi"></a>Liquidi</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Si può prendere un liquido solo se è in un contenitore. Si possono usare i
+liquidi per riempire qualcosa, e li si può versare.
+Di default un liquido non è potabile.</p>
+</div>
+<div class="sect2">
+<h3 id="_verbi"><a class="anchor" href="#_verbi"></a>Verbi</h3>
+<div class="sect3">
+<h4 id="_esamina"><a class="anchor" href="#_esamina"></a>esamina</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_look_in"><a class="anchor" href="#_look_in"></a>look_in</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_prendi"><a class="anchor" href="#_prendi"></a>prendi</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_prendi_da"><a class="anchor" href="#_prendi_da"></a>prendi_da</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_lascia"><a class="anchor" href="#_lascia"></a>lascia</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_chiedi"><a class="anchor" href="#_chiedi"></a>chiedi</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_dai_a"><a class="anchor" href="#_dai_a"></a>dai_a</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_versa"><a class="anchor" href="#_versa"></a>versa</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_versa_in"><a class="anchor" href="#_versa_in"></a>versa_in</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_versa_su"><a class="anchor" href="#_versa_su"></a>versa_su</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_svuota"><a class="anchor" href="#_svuota"></a>svuota</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_svuota_in"><a class="anchor" href="#_svuota_in"></a>svuota_in</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_svuota_su"><a class="anchor" href="#_svuota_su"></a>svuota_su</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_riempi_con"><a class="anchor" href="#_riempi_con"></a>riempi_con</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_put_in"><a class="anchor" href="#_put_in"></a>put_in</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_put_on"><a class="anchor" href="#_put_on"></a>put_on</h4>
+
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_contenitore_elencato"><a class="anchor" href="#_contenitore_elencato"></a>Contenitore Elencato</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Si tratta di un contenitore i cui contenuti (se è aperto) saranno elencati
+sia nella descrizione del luogo (entrandovi, o usando &#8216;guarda&#8217;) sia quando
+viene esaminato o aperto. La libreria autogestisce lo stato di opacità di
+questo tipo di contenitore, rendendolo non opaco (NOT OPAQUE) quando viene
+aperto, e opaco quando viene chiuso, affinché i suoi contenuti non vengano
+svelati (elencati) quando esso è chiuso.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>I contenuti di un contenitore normale non vengono elencati con il verbo
+&#8216;esamnina&#8217;, ma solo con &#8216;guarda&#8217;, &#8216;guarda dentro&#8217; o quando viene
+effettiata la descrizione del luogo.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Questa classe non ricorre altrove, né in questo file né in altri moduli.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_suoni"><a class="anchor" href="#_suoni"></a>Suoni</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>È possibile ascoltare i suoni ma non esaminarli, annusarli né manipolarli.
+(volendo, li si può accendere e spegnere.)</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">attributi e valori predefiniti</th>
+<th class="tableblock halign-left valign-top">significato</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IS NOT esaminabile.</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IS NOT prendibile.</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IS NOT raggiungibile.</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>IS NOT spostabile.</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Questa classe non ricorre altrove, né in questo file né in altri moduli.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_supporti"><a class="anchor" href="#_supporti"></a>Supporti</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Una superficie su cui poter mettere cose e su cui si può salire e scendere.
+Si tratta di un oggetto di tipo contenitore, perciò è possibile prendere le
+cose vi si trovano sopra (in realtà, dentro di esso, ma viene presentato in
+modo da crare l&#8217;illusione che sia una superficie).
+Di default, gli oggetti su un supporto saranno elencati nella descrizione
+del luogo o quando il supporto viene esamintao.</p>
+</div>
+<div class="sect2">
+<h3 id="_armi"><a class="anchor" href="#_armi"></a>Armi</h3>
+<div class="paragraph">
+<p>Di default un&#8217;arma non può essere sparata (p.es., un coltello, una mazza),
+ma settando l&#8217;attributo <code>CAN sparare</code> si avrà un&#8217;arma da fuoco che sarà
+utilizzabile con il verbo "spara" (p.es., una pistola, un cannone).</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">attributi e valori predefiniti</th>
+<th class="tableblock halign-left valign-top">significato</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CAN NOT sparare.</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">È un&#8217;arma bianca</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_attori"><a class="anchor" href="#_attori"></a>Attori</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_sottoclassi_di_actor"><a class="anchor" href="#_sottoclassi_di_actor"></a>Sottoclassi di ACTOR</h3>
+<div class="paragraph">
+<p>La libreria definisce alcune sottoclassi specializzate di <code>ACTOR</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ACTOR</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>persona</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>maschio</code></p>
+</li>
+<li>
+<p><code>femmina</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_oggetti_fittizi"><a class="anchor" href="#_oggetti_fittizi"></a>Oggetti Fittizi</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Gli oggetti fittizi sono istanze utilizzate per inizializzare correttamente
+gli attributi delle classi definite in questo modulo che fanno riferimento ad
+altre istanze o classi (attributi di tipo istanza o insieme).</p>
+</div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="_todo"><a class="anchor" href="#_todo"></a>TODO</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Questa sezione contiene l&#8217;elenco delle cose da fare per ultimare l&#8217;adattamento
-italiano del modulo dei messaggi.</p>
+italiano del modulo delle classi.</p>
 </div>
 <div class="sect2">
 <h3 id="_check_list_generale"><a class="anchor" href="#_check_list_generale"></a>Check List Generale</h3>
@@ -655,13 +1224,65 @@ italiano del modulo dei messaggi.</p>
 <div class="paragraph">
 <p>Finisci di trasformare commenti in documentazione Doxter:</p>
 </div>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>esamina</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>look_in</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>prendi</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>prendi_da</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>lascia</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>chiedi</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>dai_a</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>versa</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>versa_in</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>versa_su</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>svuota</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>svuota_in</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>svuota_su</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>riempi_con</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>put_in</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>put_on</code>.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.7.2-Alpha<br>
+Versione 0.7.3-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

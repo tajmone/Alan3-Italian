@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.15-Alpha, 2018-11-02: Alan 3.0beta6
+v0.7.16-Alpha, 2018-11-02: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -153,6 +153,9 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | spegni             |                              | spegni (disp)                          |     | 1 |     |
 | spogliati          | svestiti                     | spogliati                              |     | 0 |     |
 | suona              |                              | suona (ogg)                            |     | 1 | {X} |
+| svuota             |                              | svuota (ogg)                           |     | 1 | {X} |
+| svuota_in          |                              | svuota (ogg) in (cont)                 |     | 2 | {X} |
+| svuota_su          |                              | svuota (ogg) su (superficie)           |     | 2 | {X} |
 | taglia             |                              | taglia (ogg)                           |     | 1 | {X} |
 | taglia_con         |                              | taglia (ogg) con (strum)               |     | 2 | {X} |
 | tira               |                              | tira (ogg)                             |     | 1 | {X} |
@@ -166,6 +169,9 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | usa_con            |                              | usa (ogg) con (strum)                  |     | 2 | {X} |
 | vai_a              |                              | vai a (dest)                           |     | 1 |     |
 | vendi              |                              | vendi (merce)                          |     | 1 |     |
+| versa              |                              | versa (ogg)                            |     | 1 | {X} |
+| versa_in           |                              | versa (ogg) in (cont)                  |     | 2 | {X} |
+| versa_su           |                              | versa (ogg) su (superficie)            |     | 2 | {X} |
 |===================================================================================================================
 
 // end::tabella_verbi_gioco[]
@@ -499,6 +505,41 @@ Verbi di questo gruppo non ancora tradotti:
 ==== sorseggia
 
 // end::verbo_sorseggia[]
+// tag::gruppo_svuota[]
+=== Svuotare e Versare
+
+Questo gruppo include i verbi per svuotare i contenitori e versarne il
+contenuto (a terra o su/in un altro contenitore):
+
+* `svuota`
+* `svuota_in`
+* `svuota_su`
+* `versa`
+* `versa_in`
+* `versa_su`
+
+In questo modulo, i verbi `svuota` e `versa` hanno sintassi e comportamento
+simili; tuttavia non sono dichiarati sinonimi (ossia, hanno sintassi
+indipendenti) poiché il loro uso non si sovrappone del tutto. Per esempio, è
+possibile versare un liquido ma non svuotarlo.
+
+Questa è la ragione per cui in `lib_classi.i` questi verbi sono ridefiniti
+nella classe `liquido` affinché si possa utilizzare il verbo `versa` con un
+liquido ma non il verbo `svuota`.
+
+// end::gruppo_svuota[]
+// tag::verbo_svuota[]
+==== svuota + versa
+
+// end::verbo_svuota[]
+// tag::verbo_svuota_in[]
+==== svuota_in + versa_in
+
+// end::verbo_svuota_in[]
+// tag::verbo_svuota_su[]
+==== svuota_su + versa_su
+
+// end::verbo_svuota_su[]
 // tag::comandi_domande[]
 
 == Verbi di Domande
@@ -536,9 +577,6 @@ italiano del modulo dei verbi.
 | climb_on           |                                    | climb on (surface)                | 1 |
 | dive               |                                    | dive                              | 0 |
 | dive_in            |                                    | dive in (liq)                     | 1 |
-| empty              |                                    | empty (obj)                       | 1 | {x}
-| empty_in           |                                    | empty (obj) in (cont)             | 2 | {x}
-| empty_on           |                                    | empty (obj) on (surface)          | 2 | {x}
 | enter              |                                    | enter (obj)                       | 1 | {x}
 | exit               |                                    | exit (obj)                        | 1 | {x}
 | fire               |                                    | fire (weapon)                     | 1 |
@@ -556,9 +594,6 @@ italiano del modulo dei verbi.
 | lie_in             |                                    | lie in (cont)                     | 1 |
 | lie_on             |                                    | lie on (surface)                  | 1 |
 | lift               |                                    | lift (obj)                        | 1 | {x}
-| pour               | (= defined at the verb `empty`)    | pour (obj)                        | 1 | {x}
-| pour_in            | (= defined at the verb `emtpy_in`) | pour (obj) in (cont)              | 2 | {x}
-| pour_on            | (= defined at the verb `empty_on`) | pour (obj) on (surface)           | 2 | {x}
 | pry                |                                    | pry (obj)                         | 1 | {x}
 | pry_with           |                                    | pry (obj) with (instr)            | 2 | {x}
 | push               |                                    | push (obj)                        | 1 | {x}
@@ -678,6 +713,12 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `mangia`.
 
 * [ ] Descrizione `sorseggia`.
+
+* [ ] Descrizione `svuota` + `versa`.
+
+* [ ] Descrizione `svuota_in` + `versa_in`.
+
+* [ ] Descrizione `svuota_su` + `versa_su`.
 
 // end::todo_checklist[]
 
