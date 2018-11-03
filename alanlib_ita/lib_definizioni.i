@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.12-Alpha, 2018-11-03: Alan 3.0beta6
+--| v0.7.13-Alpha, 2018-11-03: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -765,9 +765,16 @@ EVERY blocco_definizioni IsA LOCATION
   CAN leggere.                  ---> read
   CAN liberare.                 ---> free         (+ release)
   CAN mangiare.                 ---> eat
+  CAN mettere.                  ---> put          (+ lay, place)
+  CAN mettere_contro.           ---> put_against
+  CAN mettere_dietro.           ---> put_behind
+  CAN mettere_in.               ---> put_in       (+ insert)
+  CAN mettere_sotto.            ---> put_under
+  CAN mettere_su.               ---> put_on
+  CAN mettere_vicino.           ---> put_near
   CAN modalità_breve.           ---> brief
   CAN modalità_lunga.           ---> verbose
-  CAN mordere.                  ---> bite (+ chew)
+  CAN mordere.                  ---> bite         (+ chew)
   CAN mostrare.                 ---> 'show'       (+ reveal)
   CAN notificare.               ---> 'notify'
   CAN notificare_off.           ---> notify_off
@@ -775,7 +782,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN nuotare.                  ---> swim
   CAN nuotare_in.               ---> swim_in
   CAN parlare.                  ---> talk
-  CAN parlare_con.              ---> talk_to (+ speak)
+  CAN parlare_con.              ---> talk_to      (+ speak)
   CAN pensare.                  ---> think
   CAN pensare_a.                ---> think_about
   CAN pregare.                  ---> pray
@@ -787,9 +794,9 @@ EVERY blocco_definizioni IsA LOCATION
   CAN riempire.                 ---> fill
   CAN riempire_con.             ---> fill_with
   CAN rifare.                   ---> 'again'
-  CAN ringraziamenti.           ---> credits (+ acknowledgments, author, copyright)
-  CAN riparare.                 ---> fix (+ mend, repair)
-  CAN rispondere.               ---> answer (+ reply)
+  CAN ringraziamenti.           ---> credits      (+ acknowledgments, author, copyright)
+  CAN riparare.                 ---> fix          (+ mend, repair)
+  CAN rispondere.               ---> answer       (+ reply)
   CAN rispondere_No.            ---> 'no'
   CAN rispondere_Sì.            ---> yes
   CAN rompere.                  ---> break        (+ destroy)
@@ -857,18 +864,11 @@ EVERY blocco_definizioni IsA LOCATION
   CAN lie_in.
   CAN lie_on.
   CAN lift.
---CAN light. ---------------------> ** VERBO ELIMINATO ** (+ lit)
+--CAN light. ---------------------> ** VERBO ELIMINATO **
 --CAN look_at. -------------------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
   CAN pry.
   CAN pry_with.
-  CAN put.         -- (+ lay, place)
-  CAN put_against.
-  CAN put_behind.
-  CAN put_down.
-  CAN put_in.      -- (+ insert)
-  CAN put_near.
-  CAN put_on.
-  CAN put_under.
+--CAN put_down. ------------------> ** WASN'T USED! (SEE 'drop'!) **
   CAN rub.
   CAN search.
   CAN shake.
@@ -985,6 +985,13 @@ EVENT check_restriction
       MAKE mia_AT leggere.                  ---> read
       MAKE mia_AT liberare.                 ---> free         (+ release)
       MAKE mia_AT mangiare.                 ---> eat
+      MAKE mia_AT mettere.                  ---> put          (+ lay, place)
+      MAKE mia_AT mettere_contro.           ---> put_against
+      MAKE mia_AT mettere_dietro.           ---> put_behind
+      MAKE mia_AT mettere_in.               ---> put_in       (+ insert)
+      MAKE mia_AT mettere_sotto.            ---> put_under
+      MAKE mia_AT mettere_su.               ---> put_on
+      MAKE mia_AT mettere_vicino.           ---> put_near
       MAKE mia_AT modalità_breve.           ---> brief
       MAKE mia_AT modalità_lunga.           ---> verbose
       MAKE mia_AT mordere.                  ---> bite (+ chew)
@@ -1073,18 +1080,11 @@ EVENT check_restriction
       MAKE mia_AT lie_in.
       MAKE mia_AT lie_on.
       MAKE mia_AT lift.
-    --MAKE mia_AT light. -------------> ** VERBO ELIMINATO ** (+ lit)
+    --MAKE mia_AT light. -------------> ** VERBO ELIMINATO **
     --MAKE mia_AT look_at. -----------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
       MAKE mia_AT pry.
       MAKE mia_AT pry_with.
-      MAKE mia_AT put.             -- (+ lay, place)
-      MAKE mia_AT put_against.
-      MAKE mia_AT put_behind.
-      MAKE mia_AT put_down.
-      MAKE mia_AT put_in.          -- (+ insert)
-      MAKE mia_AT put_near.
-      MAKE mia_AT put_on.
-      MAKE mia_AT put_under.
+    --MAKE mia_AT put_down. ----------> ** WASN'T USED! (SEE 'drop'!) **
       MAKE mia_AT rub.
       MAKE mia_AT search.
       MAKE mia_AT shake.
@@ -1171,6 +1171,13 @@ EVENT check_restriction
           MAKE mia_AT NOT leggere.                  ---> read
           MAKE mia_AT NOT liberare.                 ---> free         (+ release)
           MAKE mia_AT NOT mangiare.                 ---> eat
+          MAKE mia_AT NOT mettere.                  ---> put          (+ lay, place)
+          MAKE mia_AT NOT mettere_contro.           ---> put_against
+          MAKE mia_AT NOT mettere_dietro.           ---> put_behind
+          MAKE mia_AT NOT mettere_in.               ---> put_in       (+ insert)
+          MAKE mia_AT NOT mettere_sotto.            ---> put_under
+          MAKE mia_AT NOT mettere_su.               ---> put_on
+          MAKE mia_AT NOT mettere_vicino.           ---> put_near
           MAKE mia_AT NOT mordere.                  ---> bite (+ chew)
           MAKE mia_AT NOT mostrare.                 ---> 'show'       (+ reveal)
           MAKE mia_AT NOT nuotare.                  ---> swim
@@ -1236,17 +1243,10 @@ EVENT check_restriction
           MAKE mia_AT NOT lie_in.
           MAKE mia_AT NOT lie_on.
           MAKE mia_AT NOT lift.
-        --MAKE mia_AT NOT light. ---------> ** VERBO ELIMINATO ** (+ lit)
+        --MAKE mia_AT NOT light. ---------> ** VERBO ELIMINATO **
           MAKE mia_AT NOT pry.
           MAKE mia_AT NOT pry_with.
-          MAKE mia_AT NOT put.         -- (+ lay, place)
-          MAKE mia_AT NOT put_against.
-          MAKE mia_AT NOT put_behind.
-          MAKE mia_AT NOT put_down.
-          MAKE mia_AT NOT put_in.      -- (+ insert)
-          MAKE mia_AT NOT put_near.
-          MAKE mia_AT NOT put_on.
-          MAKE mia_AT NOT put_under.
+        --MAKE mia_AT NOT put_down. ------> ** WASN'T USED! (SEE 'drop'!) **
           MAKE mia_AT NOT rub.
           MAKE mia_AT NOT search.
           MAKE mia_AT NOT shake.

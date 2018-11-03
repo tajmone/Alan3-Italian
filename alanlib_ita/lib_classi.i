@@ -1937,15 +1937,15 @@ EVERY liquido IsA OBJECT
 -->liquido    @PUT IN 
 --~=============================================================================
 --~-----------------------------------------------------------------------------
---| ==== put_in
+--| ==== metti_in
 --~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
---| * [ ] Descrizione `put_in`.
+--| * [ ] Descrizione `metti_in`.
 --<
 
-  VERB put_in
+  VERB metti_in
     WHEN ogg
       DOES ONLY
         IF recipiente OF THIS = recipiente_fittizio
@@ -1997,21 +1997,21 @@ EVERY liquido IsA OBJECT
               "closed."
           END IF.
       END IF.
-  END VERB put_in.
+  END VERB metti_in.
 
 -->liquido    @PUT ON 
 --~=============================================================================
 --~-----------------------------------------------------------------------------
---| ==== put_on
+--| ==== metti_su
 --~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
---| * [ ] Descrizione `put_on`.
+--| * [ ] Descrizione `metti_su`.
 --<
 
 
-  VERB put_on
+  VERB metti_su
     WHEN ogg
       DOES ONLY
         -- >>> prendi implicito: >>>
@@ -2037,7 +2037,7 @@ EVERY liquido IsA OBJECT
     WHEN superficie
 --                                                                              TRANSLATE!
       DOES ONLY "It is not possible to $v" SAY ogg. "onto" SAY THE THIS. "."
-  END VERB put_on.
+  END VERB metti_su.
 
 
 END EVERY.
@@ -2303,7 +2303,7 @@ END EVERY.
 
 
 -- (See the file 'verbs.i', verbs 'climb_on', 'empty_on', 'get_off', 'jump_on',
--- 'lie_on', 'pour_on', 'put_in', 'put_on', 'sit_on', 'stand_on', and 'take_from'
+-- 'lie_on', 'pour_on', 'metti_in', 'put_on', 'sit_on', 'stand_on', and 'take_from'
 -- where SUPPORTER is used in either syntax definitions, verb checks
 -- or verb definitions.)
 
@@ -2350,10 +2350,10 @@ EVERY supporto IsA OBJECT
   END VERB svuota_in.
 
 
-  VERB put_in
+  VERB metti_in
       WHEN cont
     DOES ONLY "Non puoi mettere nulla dentro" SAY THE THIS. "."
-  END VERB put_in.
+  END VERB metti_in.
 
 
   VERB throw_in

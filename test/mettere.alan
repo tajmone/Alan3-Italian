@@ -1,0 +1,106 @@
+--==============================================================================
+-- "Mettere" by Tristano Ajmone, 2018.
+--==============================================================================
+IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
+
+
+THE mia_AT IsA blocco_definizioni
+  ------------------------------------------------------------------------------
+  HAS       titolo  "Mettere".
+  HAS  sottotitolo  "Test per il verbo mettere ed affini.".
+  HAS       autore  "Tristano Ajmone".
+  HAS         anno   2018.
+  HAS     versione  "1".
+  ------------------------------------------------------------------------------
+END THE.
+
+
+
+-- =============================================================================
+
+-- La Cucina
+
+-- =============================================================================
+THE cucina IsA stanza.
+  
+END THE cucina.
+
+-- =============================================================================
+
+-- I "Bulk"
+
+-- =============================================================================
+-- Gli oggetti per testare i vari verbi 'metti sopra/dietro/ecc'.
+
+--==============================================================================
+-- Frigorifero (contenitore)
+--==============================================================================
+THE frigo IsA contenitore_elencato AT cucina.
+  NAME frigorifero.
+  NAME frigo.
+  HAS xDesc "Un vecchio catafalco di frigo sopravvissuto agli anni '70.".
+  -- HAS consentiti {}.
+  INITIALIZE
+    FOR EACH fruit IsA frutto DO
+      INCLUDE fruit IN consentiti OF THIS.
+    END FOR.
+END THE.
+--==============================================================================
+-- Tavolo (supporto)
+--==============================================================================
+THE tavolo IsA supporto AT cucina.
+  HAS xDesc "Un vecchio tavolo da cucina laminato in plastica.".
+END THE.
+-- =============================================================================
+
+-- Oggetti ed Attori Per i Test
+
+-- =============================================================================
+
+
+--==============================================================================
+-- Attori
+--==============================================================================
+THE cuoca IsA femmina AT cucina.
+  
+END THE cuoca.
+
+THE mario IsA maschio AT cucina.
+  HAS nome_proprio.
+END THE mario.
+
+--==============================================================================
+-- Cesto di Frutta
+--==============================================================================
+
+THE cesto IsA contenitore_elencato IN tavolo.
+  HAS xDesc "Un cesto da frutta in vimini.".
+END THE cesto.
+
+
+EVERY frutto IsA object.
+  NAME frutto.
+  IS commestibile.
+  HAS xDesc "Un frutto, sembra appetitoso.".
+END EVERY.
+
+------------------------------------------------------------------------ ARANCIA
+THE arancia IsA frutto IN cesto.
+  HAS articolo "l'".
+  IS femminile.
+  NAME arancia.
+  NAME 'l''arancia'.
+  HAS xDesc "Un'arancia succulenta.".
+END THE.
+------------------------------------------------------------------------ AVOCADO
+THE avocado IsA frutto IN cesto.
+  HAS articolo "l'".
+  NAME avocado.
+  NAME 'l''avocado'.
+  HAS xDesc "Un avocado maturo.".
+END THE.
+
+
+--------------------------------------------------------------------------------
+Start at cucina.
+DESCRIBE intestazione.

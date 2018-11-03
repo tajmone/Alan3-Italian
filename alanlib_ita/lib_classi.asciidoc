@@ -251,9 +251,9 @@ Di default un liquido non è potabile.
 
 ==== riempi_con
 
-==== put_in
+==== metti_in
 
-==== put_on
+==== metti_su
 
 // end::liquido[]
 // tag::contenitore_elencato[]
@@ -407,9 +407,9 @@ Finisci di trasformare commenti in documentazione Doxter:
 
 * [ ] Descrizione `riempi_con`.
 
-* [ ] Descrizione `put_in`.
+* [ ] Descrizione `metti_in`.
 
-* [ ] Descrizione `put_on`.
+* [ ] Descrizione `metti_su`.
 
 // end::todo_checklist[]
 

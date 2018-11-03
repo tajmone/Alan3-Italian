@@ -261,9 +261,10 @@ THE pavimento IsA oggetto_stanza
   -- defined to work with containers:
 
 
+-- @NOTE: It doesn't seem this ever gets executed!                              CHECK!
   VERB svuota_in, versa_in
-     WHEN cont
-    DOES ONLY "That's not something you can $v things into."
+    WHEN cont
+      DOES ONLY "That's not something you can $v things into."
   END VERB svuota_in.
 
 
@@ -272,10 +273,21 @@ THE pavimento IsA oggetto_stanza
   END VERB guarda_in.
 
 
-  VERB put_in
-     WHEN cont
-    DOES ONLY "That's not something you can $v things into."
-  END VERB put_in.
+-- @NOTE: It doesn't seem this ever gets executed!                              CHECK!
+--        The problem seems to be that 'metti_in' checks that
+--        OGG IN CONSENTITI OF CONT -- so we never get here because checks are
+--        inherited also if there is DOES ONLY cause!
+  VERB metti_in
+    WHEN cont
+      DOES ONLY
+   -- DOES ONLY "That's not something you can $v things into."
+        IF ogg IS NOT plurale
+          --  "$+2 non [è/sono] qualcosa in cui poter"
+          THEN SAY mia_AT:ogg2_illegale_IN_sg.
+          ELSE SAY mia_AT:ogg2_illegale_IN_pl.
+        END IF.
+        "mettere le cose."
+  END VERB metti_in.
 
 -- @PRENDI_DA -> @TAKE_FROM (VERB) => FLOOR
   VERB prendi_da
@@ -325,10 +337,10 @@ THE suolo IsA oggetto_luogo_esterno
   -- As we have declared the ground to be a container, we will disable some verbs
   -- defined to work with containers:
 
-
+-- @NOTE: It doesn't seem this ever gets executed!                              CHECK!
   VERB svuota_in, versa_in
-     WHEN cont
-    DOES ONLY "That's not something you can $v things into."
+    WHEN cont
+      DOES ONLY "That's not something you can $v things into."
   END VERB svuota_in.
 
 
@@ -337,10 +349,10 @@ THE suolo IsA oggetto_luogo_esterno
   END VERB guarda_in.
 
 
-  VERB put_in
+  VERB metti_in
      WHEN cont
     DOES ONLY "That's not something you can $v things into."
-  END VERB put_in.
+  END VERB metti_in.
 
 
 -- @PRENDI_DA -> @TAKE_FROM (VERB) => GROUND
@@ -372,19 +384,19 @@ END THE.
 
 ADD TO EVERY oggetto_stanza
 
-  VERB put_against
+  VERB metti_contro
     WHEN bulk
       CHECK THIS = pareti
-        ELSE "Non è una cosa fattibile."
-  END VERB put_against.
+        ELSE SAY mia_AT:non_fattibile.    ---> "Non è una cosa fattibile."
+  END VERB metti_contro.
 
-  VERB put_behind, put_near, put_under
+  VERB metti_dietro, metti_vicino, metti_sotto
     WHEN bulk
-      DOES ONLY "Non è una cosa fattibile."
-  END VERB put_behind.
+      DOES ONLY SAY mia_AT:non_fattibile. ---> "Non è una cosa fattibile."
+  END VERB metti_dietro.
 
   VERB guarda_dietro, guarda_attraverso, guarda_sotto
-    DOES ONLY "Non è una cosa fattibile."
+    DOES ONLY SAY mia_AT:non_fattibile.   ---> "Non è una cosa fattibile."
   END VERB guarda_dietro.
 
 END ADD TO.
@@ -392,13 +404,13 @@ END ADD TO.
 
 ADD TO EVERY oggetto_luogo_esterno
 
-  VERB put_against, put_behind, put_near, put_under
+  VERB metti_contro, metti_dietro, metti_vicino, metti_sotto
     WHEN bulk
-      DOES ONLY "Non è una cosa fattibile."
-  END VERB put_against.
+      DOES ONLY SAY mia_AT:non_fattibile. ---> "Non è una cosa fattibile."
+  END VERB metti_contro.
 
   VERB guarda_dietro, guarda_attraverso, guarda_sotto
-    DOES ONLY "Non è una cosa fattibile."
+    DOES ONLY SAY mia_AT:non_fattibile.   ---> "Non è una cosa fattibile."
   END VERB guarda_dietro.
 
 END ADD TO.

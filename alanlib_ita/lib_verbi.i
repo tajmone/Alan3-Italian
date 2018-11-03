@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.18-Alpha, 2018-11-03: Alan 3.0beta6
+--| v0.7.19-Alpha, 2018-11-03: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -745,6 +745,13 @@ END VERB ringraziamenti.
 --| | leggi              |                              | leggi (ogg)                            |     | 1 | {X} |
 --| | libera             | rilascia                     | libera (ogg)                           |     | 1 | {X} |
 --| | mangia             |                              | mangia (cibo)                          |     | 1 |     |
+--| | metti              |                              | metti (ogg)                            |     | 1 | {X} |
+--| | metti_contro       |                              | metti (ogg) contro (bulk)              |     | 2 | {X} |
+--| | metti_dietro       |                              | metti (ogg) dietro (bulk)              |     | 2 | {X} |
+--| | metti_in           |                              | metti (ogg) in (cont)                  |     | 2 | {X} |
+--| | metti_sotto        |                              | metti (ogg) sotto (bulk)               |     | 2 | {X} |
+--| | metti_su           |                              | metti (ogg) su (superficie)            |     | 2 | {X} |
+--| | metti_vicino       |                              | metti (ogg) vicino a (bulk)            |     | 2 | {X} |
 --| | mordi              |                              | mordi (ogg)                            |     | 1 | {X} |
 --| | parla              |                              | parla                                  |     | 0 |     |
 --| | parla_con          |                              | parla con (png)                        |     | 1 |     |
@@ -4896,6 +4903,385 @@ VERB spogliati
 --|--------------------------------------------------------
 END VERB spogliati.
 
+-->gruppo_mettere(21200)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Mettere
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include il verbo '`mettere`' e simili:
+--| 
+--| * `metti`
+--| * `metti_contro`
+--| * `metti_dietro`
+--| * `metti_in`
+--| * `metti_sotto`
+--| * `metti_su`
+--| * `metti_vicino`
+--| 
+--| Verbi di questo gruppo non ancora tradotti:
+--| 
+--<
+
+
+-->gruppo_mettere                                                @METTI <-- @PUT
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== metti
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `metti`.
+--<
+
+-- SYNTAX put = put (ogg)
+-- SYNONYMS lay, place = put.
+
+SYNTAX metti = metti (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE SAY mia_AT:illegal_parameter_obj.
+
+
+ADD TO EVERY OBJECT
+  VERB metti
+    CHECK mia_AT CAN mettere
+      ELSE SAY mia_AT:azione_bloccata.
+    AND ogg IN HERO
+      ELSE SAY mia_AT:non_possiedi_ogg1.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    DOES
+      -- "Devi specificare dove vorresti"
+      SAY mia_AT:specificare_DOVE. "metterl$$" SAY ogg:vocale. "."
+  END VERB metti.
+END ADD TO.
+
+-->gruppo_mettere   @METTI CONTRO | @METTI DIETRO <-- @PUT AGAINST | @PUT BEHIND
+--~                 @METTI VICINO | @METTI SOTTO  <-- @PUT NEAR    | @PUT UNDER
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== metti_contro + metti_dietro + metti_vicino + metti_sotto
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `metti_contro` + `metti_dietro` + `metti_vicino` + `metti_sotto`.
+--<
+
+
+SYNTAX metti_contro = metti (ogg) contro (bulk)
+  WHERE ogg IsA OBJECT
+--                                                                              TRANSLATE!
+    --             "You can only $v objects."
+    ELSE SAY mia_AT:illegal_parameter_obj.
+  AND bulk IsA THING
+--                                                                              TRANSLATE!
+    --             "It's not possible to $v anything there."
+    ELSE SAY mia_AT:illegal_parameter2_there.
+
+
+
+SYNTAX metti_dietro = metti (ogg) dietro (bulk)
+  WHERE ogg IsA OBJECT
+--                                                                              TRANSLATE!
+    ELSE SAY mia_AT:illegal_parameter_obj.
+  AND bulk IsA THING
+--                                                                              TRANSLATE!
+    ELSE SAY mia_AT:illegal_parameter2_there.
+
+
+
+SYNTAX metti_vicino = metti (ogg) vicino a (bulk)
+  WHERE ogg IsA OBJECT
+--                                                                              TRANSLATE!
+    ELSE SAY mia_AT:illegal_parameter_obj.
+  AND bulk IsA THING
+--                                                                              TRANSLATE!
+    ELSE SAY mia_AT:illegal_parameter2_there.
+
+
+
+SYNTAX metti_sotto = metti (ogg) sotto (bulk)
+  WHERE ogg IsA OBJECT
+--                                                                              TRANSLATE!
+    ELSE SAY mia_AT:illegal_parameter_obj.
+  AND bulk IsA THING
+--                                                                              TRANSLATE!
+    ELSE SAY mia_AT:illegal_parameter2_there.
+
+
+
+ADD TO EVERY OBJECT
+  VERB metti_contro, metti_dietro, metti_vicino, metti_sotto
+    WHEN ogg
+      CHECK mia_AT CAN mettere_contro AND mia_AT CAN mettere_dietro
+      AND mia_AT CAN mettere_vicino AND mia_AT CAN mettere_sotto
+        ELSE SAY mia_AT:azione_bloccata.
+      AND bulk NOT IN hero
+--                                                                              TRANSLATE!
+        ELSE SAY mia_AT:check_obj2_not_in_hero2.
+      AND ogg <> bulk
+--                                                                              TRANSLATE!
+        ELSE SAY mia_AT:check_obj_not_obj2_put.
+      AND ogg IS prendibile
+        ELSE SAY  mia_AT:ogg1_non_posseduto.
+      AND bulk <> hero
+--                                                                              TRANSLATE!
+        ELSE SAY mia_AT:check_obj2_not_hero2.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY mia_AT:imp_luogo_buio.
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_distante_sg.
+                ELSE SAY mia_AT:ogg1_distante_pl.
+              END IF.
+          END IF.
+      AND bulk IS raggiungibile AND bulk IS NOT distante
+        ELSE
+          IF bulk IS NOT raggiungibile
+            THEN
+              IF bulk IS NOT plurale
+                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+              END IF.
+          ELSIF bulk IS distante
+            THEN
+              IF bulk IS NOT plurale
+                THEN SAY mia_AT:ogg1_distante_sg.
+                ELSE SAY mia_AT:ogg1_distante_pl.
+              END IF.
+          END IF.
+      DOES SAY mia_AT:non_servirebbe_a_nulla.
+  END VERB metti_contro.
+END ADD TO.
+
+
+
+-->gruppo_mettere                                          @METTI IN <-- @PUT IN
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== metti_in
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `metti_in`.
+--<
+
+
+-- SYNTAX put_in = put (ogg) 'in' (cont)
+-- put_in = insert (ogg) 'in' (cont).
+
+
+SYNTAX metti_in = metti (ogg) 'in' (cont)
+  WHERE ogg IsA OBJECT
+    ELSE SAY mia_AT:illegal_parameter_obj.
+  AND cont IsA OBJECT
+    ELSE
+      IF cont IsA ACTOR
+        THEN SAY mia_AT:illegal_parameter_act.
+        ELSE SAY mia_AT:illegal_parameter2_there.
+      END IF.
+  AND cont IsA CONTAINER
+    ELSE SAY mia_AT:illegal_parameter2_there.
+
+
+  -- metti_in = insert (ogg) 'in' (cont).
+
+
+ADD TO EVERY OBJECT
+  VERB metti_in
+    WHEN ogg
+      CHECK mia_AT CAN mettere_in
+        ELSE SAY mia_AT:azione_bloccata.
+      AND ogg <> cont
+        ELSE SAY mia_AT:check_obj_not_obj2_in.
+      AND ogg IS prendibile
+        ELSE SAY  mia_AT:ogg1_non_posseduto.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY mia_AT:imp_luogo_buio.
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_distante_sg.
+                ELSE SAY mia_AT:ogg1_distante_pl.
+              END IF.
+          END IF.
+      AND ogg NOT IN cont
+        ELSE
+          IF cont IsA supporto
+--                                                                              TRANSLATE!
+            THEN SAY mia_AT:check_cont_not_supporter.
+          ELSE
+            IF ogg IS NOT plurale -- @TODO: 'ogg' or 'cont'??                   CHECK!
+              THEN SAY mia_AT:check_obj_not_in_cont_sg.
+              ELSE SAY mia_AT:check_obj_not_in_cont_pl.
+            END IF.
+          END IF.
+      AND cont IS raggiungibile AND cont IS NOT distante
+        ELSE
+          IF cont IS NOT raggiungibile
+            THEN
+              IF cont IS NOT plurale
+                THEN SAY mia_AT:ogg2_non_raggiungibile_sg.
+                ELSE SAY mia_AT:ogg2_non_raggiungibile_pl.
+              END IF.
+          ELSIF cont IS distante
+            THEN
+              IF cont IS NOT plurale
+                THEN SAY mia_AT:ogg2_distante_sg.
+                ELSE SAY mia_AT:ogg2_distante_pl.
+              END IF.
+          END IF.
+-- @NOTE: This should not apply if 'ogg' is an oggetto_stanza like pavimento    CHECK!
+--        or suolo, otherwise the DOES ONLY part declared in those objects will
+--        never be executed!
+      AND ogg IN consentiti OF cont
+        ELSE
+          IF ogg IS NOT plurale
+            THEN SAY mia_AT:check_obj_allowed_in_sg.
+            ELSE SAY mia_AT:check_obj_allowed_in_pl.
+          END IF.
+      AND cont IS aperto
+        ELSE
+          IF cont IS NOT femminile
+            THEN
+              IF cont IS NOT plurale
+                THEN SAY mia_AT:imp_ogg2_chiuso_ms.
+                ELSE SAY mia_AT:imp_ogg2_chiuso_mp.
+              END IF.
+            ELSE
+              IF cont IS NOT plurale
+                THEN SAY mia_AT:imp_ogg2_chiuso_fs.
+                ELSE SAY mia_AT:imp_ogg2_chiuso_fp.
+              END IF.
+          END IF.
+      DOES
+        LOCATE ogg IN cont.
+        "You put" SAY THE ogg. "into" SAY THE cont. "."
+  END VERB metti_in.
+END ADD TO.
+
+
+
+-->gruppo_mettere                                          @METTI SU <-- @PUT_ON
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== metti_su
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `metti_su`.
+--<
+
+-- You can put things on the floor/ground (= drop them). In other
+-- cases, the action will fail by default. Allow the action with
+-- individual instances only.
+
+-- @TODO: Sinonimi/sintassi "sopra"?
+
+SYNTAX metti_su = metti (ogg) su (superficie)
+  WHERE ogg IsA OBJECT
+--                                                                              TRANSLATE!
+    ELSE SAY mia_AT:illegal_parameter_obj.
+  AND superficie IsA supporto
+--                                                                              TRANSLATE!
+    ELSE SAY mia_AT:illegal_parameter2_there.
+
+
+
+ADD TO EVERY OBJECT
+  VERB metti_su
+    WHEN ogg
+      CHECK mia_AT CAN mettere_su
+        ELSE SAY mia_AT:azione_bloccata.
+      AND ogg <> superficie
+--                                                                              TRANSLATE!
+        ELSE SAY mia_AT:check_obj_not_obj2_on.
+      AND ogg IS prendibile
+        ELSE SAY  mia_AT:ogg1_non_posseduto.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY mia_AT:imp_luogo_buio.
+      AND ogg NOT IN superficie
+        ELSE
+          IF ogg IS NOT plurale
+--                                                                              TRANSLATE!
+            THEN SAY mia_AT:check_obj_not_on_surface_sg.
+            ELSE SAY mia_AT:check_obj_not_on_surface_pl.
+          END IF.
+          AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_distante_sg.
+                ELSE SAY mia_AT:ogg1_distante_pl.
+              END IF.
+          END IF.
+      AND superficie IS raggiungibile AND superficie IS NOT distante
+        ELSE
+          IF superficie IS NOT raggiungibile
+            THEN
+              IF superficie IS NOT plurale
+                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+              END IF.
+          ELSIF superficie IS distante
+            THEN
+              IF superficie IS NOT plurale
+                THEN SAY mia_AT:ogg1_distante_sg.
+                ELSE SAY mia_AT:ogg1_distante_pl.
+              END IF.
+          END IF.
+      DOES
+        -- >>> prendi implicito: >>>
+        IF ogg NOT DIRECTLY IN hero
+          THEN LOCATE ogg IN hero.
+            SAY  mia_AT:riferisci_prendi_implicito.
+        END IF.
+        -- <<< prendi implicito <<<
+
+        IF superficie = pavimento OR superficie = suolo
+          THEN LOCATE ogg AT hero.
+          ELSE LOCATE ogg IN superficie.
+        END IF.
+
+        "Posi" SAY THE ogg. SAY superficie:prep_SU. SAY superficie. "."
+        -- "You put" SAY THE ogg. "on" SAY THE superficie. "."
+
+    END VERB metti_su.
+END ADD TO.
+
+
+
 
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -7559,14 +7945,14 @@ END VERB rispondi_Sì.
 --~*| pull               |                                    | pull (obj)                        | 1 | {x}
 --| | push               |                                    | push (obj)                        | 1 | {x}
 --| | push_with          |                                    | push (obj) with (instr)           | 2 | {x}
---| | put                | lay, place                         | put (obj)                         | 1 | {x}
---| | put_against        |                                    | put (obj) against (bulk))         | 2 | {x}
---| | put_behind         |                                    | put (obj) behind (bulk)           | 2 | {x}
+--~*| put                | lay, place                         | put (obj)                         | 1 | {x}
+--~*| put_against        |                                    | put (obj) against (bulk))         | 2 | {x}
+--~*| put_behind         |                                    | put (obj) behind (bulk)           | 2 | {x}
 --~*| put_down           | (= defined at the verb `drop`)     | put down (obj)                    | 1 | {x}
---| | put_in             | insert                             | put (obj) in (cont)               | 2 | {x}
---| | put_near           |                                    | put (obj) near (bulk)             | 2 | {x}
---| | put_on             |                                    | put (obj) on (surface)            | 2 | {x}
---| | put_under          |                                    | put (obj) under (bulk)            | 2 | {x}
+--~*| put_in             | insert                             | put (obj) in (cont)               | 2 | {x}
+--~*| put_near           |                                    | put (obj) near (bulk)             | 2 | {x}
+--~*| put_on             |                                    | put (obj) on (surface)            | 2 | {x}
+--~*| put_under          |                                    | put (obj) under (bulk)            | 2 | {x}
 --~*| quit               | Q                                  | quit                              | 0 |
 --~*| read               |                                    | read (obj)                        | 1 | {x}
 --~*| remove             |                                    | remove (obj)                      | 1 | {x}
@@ -9186,365 +9572,6 @@ ADD TO EVERY THING
       DOES
         "That wouldn't accomplish anything."
   END VERB push_with.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
--- @PUT (+ lay, locate, place)
-
-
--- ==============================================================
-
-
-SYNTAX put = put (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE SAY mia_AT:illegal_parameter_obj.
-
-
-SYNONYMS lay, place = put.
-
-
-ADD TO EVERY OBJECT
-  VERB put
-    CHECK mia_AT CAN put
-      ELSE SAY mia_AT:azione_bloccata.
-    AND ogg IN HERO
-      ELSE SAY mia_AT:non_possiedi_ogg1.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    DOES
-      "You must state where you want to put"
-
-      IF ogg IS NOT plurale
-        THEN "it."
-        ELSE "them."
-      END IF.
-  END VERB put.
-END ADD TO.
-
-
--- ==============================================================
-
-
--- @PUT DOWN  (works as  'drop')
-
-
--- ==============================================================
-
-
------ The syntax for 'put down' has been declared in the 'drop' verb.
-
-
-
-
--- ==============================================================
-
-
--- @PUT IN  (+ insert)
-
-
--- ==============================================================
-
-
-SYNTAX put_in = put (ogg) 'in' (cont)
-  WHERE ogg IsA OBJECT
-    ELSE SAY mia_AT:illegal_parameter_obj.
-  AND cont IsA OBJECT
-    ELSE
-      IF cont IsA ACTOR
-        THEN SAY mia_AT:illegal_parameter_act.
-        ELSE SAY mia_AT:illegal_parameter2_there.
-      END IF.
-  AND cont IsA CONTAINER
-    ELSE SAY mia_AT:illegal_parameter2_there.
-
-
-  put_in = insert (ogg) 'in' (cont).
-
-
-ADD TO EVERY OBJECT
-  VERB put_in
-    WHEN ogg
-      CHECK mia_AT CAN put_in
-        ELSE SAY mia_AT:azione_bloccata.
-      AND ogg <> cont
-        ELSE SAY mia_AT:check_obj_not_obj2_in.
-      AND ogg IS prendibile
-        ELSE SAY  mia_AT:ogg1_non_posseduto.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY mia_AT:imp_luogo_buio.
-      AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-              END IF.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY mia_AT:ogg1_distante_sg.
-                ELSE SAY mia_AT:ogg1_distante_pl.
-              END IF.
-          END IF.
-      AND ogg NOT IN cont
-        ELSE
-          IF cont IsA supporto
-            THEN SAY mia_AT:check_cont_not_supporter.
-          ELSE
-            IF ogg IS NOT plurale -- @TODO: 'ogg' or 'cont'??                   CHECK!
-              THEN SAY mia_AT:check_obj_not_in_cont_sg.
-              ELSE SAY mia_AT:check_obj_not_in_cont_pl.
-            END IF.
-          END IF.
-      AND cont IS raggiungibile AND cont IS NOT distante
-        ELSE
-          IF cont IS NOT raggiungibile
-            THEN
-              IF cont IS NOT plurale
-                THEN SAY mia_AT:ogg2_non_raggiungibile_sg.
-                ELSE SAY mia_AT:ogg2_non_raggiungibile_pl.
-              END IF.
-          ELSIF cont IS distante
-            THEN
-              IF cont IS NOT plurale
-                THEN SAY mia_AT:ogg2_distante_sg.
-                ELSE SAY mia_AT:ogg2_distante_pl.
-              END IF.
-          END IF.
-      AND ogg IN consentiti OF cont
-        ELSE
-          IF ogg IS NOT plurale
-            THEN SAY mia_AT:check_obj_allowed_in_sg.
-            ELSE SAY mia_AT:check_obj_allowed_in_pl.
-          END IF.
-      AND cont IS aperto
-        ELSE
-          IF cont IS NOT femminile
-            THEN
-              IF cont IS NOT plurale
-                THEN SAY mia_AT:imp_ogg2_chiuso_ms.
-                ELSE SAY mia_AT:imp_ogg2_chiuso_mp.
-              END IF.
-            ELSE
-              IF cont IS NOT plurale
-                THEN SAY mia_AT:imp_ogg2_chiuso_fs.
-                ELSE SAY mia_AT:imp_ogg2_chiuso_fp.
-              END IF.
-          END IF.
-      DOES
-        LOCATE ogg IN cont.
-        "You put" SAY THE ogg. "into" SAY THE cont. "."
-  END VERB put_in.
-END ADD TO.
-
-
-
-
--- ==============================================================
-
-
--- @PUT AGAINST, BEHIND, NEAR, UNDER
-
-
--- ==============================================================
-
-
-SYNTAX put_against = put (ogg) against (bulk)
-  WHERE ogg IsA OBJECT
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:illegal_parameter_obj.
-  AND bulk IsA THING
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:illegal_parameter2_there.
-
-
-
-SYNTAX put_behind = put (ogg) behind (bulk)
-  WHERE ogg IsA OBJECT
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:illegal_parameter_obj.
-  AND bulk IsA THING
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:illegal_parameter2_there.
-
-
-
-SYNTAX put_near = put (ogg) 'near' (bulk)
-  WHERE ogg IsA OBJECT
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:illegal_parameter_obj.
-  AND bulk IsA THING
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:illegal_parameter2_there.
-
-
-
-SYNTAX put_under = put (ogg) under (bulk)
-  WHERE ogg IsA OBJECT
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:illegal_parameter_obj.
-  AND bulk IsA THING
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:illegal_parameter2_there.
-
-
-
-ADD TO EVERY OBJECT
-  VERB put_against, put_behind, put_near, put_under
-    WHEN ogg
-      CHECK mia_AT CAN put_against AND mia_AT CAN put_behind
-      AND mia_AT CAN put_near AND mia_AT CAN put_under
-        ELSE SAY mia_AT:azione_bloccata.
-      AND bulk NOT IN hero
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj2_not_in_hero2.
-      AND ogg <> bulk
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_put.
-      AND ogg IS prendibile
-        ELSE SAY  mia_AT:ogg1_non_posseduto.
-      AND bulk <> hero
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj2_not_hero2.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY mia_AT:imp_luogo_buio.
-      AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-              END IF.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY mia_AT:ogg1_distante_sg.
-                ELSE SAY mia_AT:ogg1_distante_pl.
-              END IF.
-          END IF.
-      AND bulk IS raggiungibile AND bulk IS NOT distante
-        ELSE
-          IF bulk IS NOT raggiungibile
-            THEN
-              IF bulk IS NOT plurale
-                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-              END IF.
-          ELSIF bulk IS distante
-            THEN
-              IF bulk IS NOT plurale
-                THEN SAY mia_AT:ogg1_distante_sg.
-                ELSE SAY mia_AT:ogg1_distante_pl.
-              END IF.
-          END IF.
-      DOES
-          "That wouldn't accomplish anything."
-
-  END VERB put_against.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
--- @PUT_ON
-
-
--- ==============================================================
-
-
--- To use this verb in the meaning 'wear', see the file 'classes.i',
--- class 'clothing', verb 'wear'.
-
--- You can put things on the floor/ground (= drop them). In other
--- cases, the action will fail by default. Allow the action with
--- individual instances only.
-
-
-
-SYNTAX put_on = put (ogg) 'on' (superficie)
-  WHERE ogg IsA OBJECT
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:illegal_parameter_obj.
-  AND superficie IsA supporto
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:illegal_parameter2_there.
-
-
-
-ADD TO EVERY OBJECT
-  VERB put_on
-    WHEN ogg
-      CHECK mia_AT CAN put_on
-        ELSE SAY mia_AT:azione_bloccata.
-      AND ogg <> superficie
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_on.
-      AND ogg IS prendibile
-        ELSE SAY  mia_AT:ogg1_non_posseduto.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY mia_AT:imp_luogo_buio.
-      AND ogg NOT IN superficie
-        ELSE
-          IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-            THEN SAY mia_AT:check_obj_not_on_surface_sg.
-            ELSE SAY mia_AT:check_obj_not_on_surface_pl.
-          END IF.
-          AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-              END IF.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY mia_AT:ogg1_distante_sg.
-                ELSE SAY mia_AT:ogg1_distante_pl.
-              END IF.
-          END IF.
-      AND superficie IS raggiungibile AND superficie IS NOT distante
-        ELSE
-          IF superficie IS NOT raggiungibile
-            THEN
-              IF superficie IS NOT plurale
-                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-              END IF.
-          ELSIF superficie IS distante
-            THEN
-              IF superficie IS NOT plurale
-                THEN SAY mia_AT:ogg1_distante_sg.
-                ELSE SAY mia_AT:ogg1_distante_pl.
-              END IF.
-          END IF.
-      DOES
-        -- >>> prendi implicito: >>>
-        IF ogg NOT DIRECTLY IN hero
-          THEN LOCATE ogg IN hero.
-            SAY  mia_AT:riferisci_prendi_implicito.
-        END IF.
-        -- <<< prendi implicito <<<
-
-        IF superficie = pavimento OR superficie = suolo
-          THEN LOCATE ogg AT hero.
-          ELSE LOCATE ogg IN superficie.
-        END IF.
-
-        "Posi" SAY THE ogg. SAY superficie:prep_SU. SAY superficie. "."
-        -- "You put" SAY THE ogg. "on" SAY THE superficie. "."
-
-    END VERB put_on.
 END ADD TO.
 
 

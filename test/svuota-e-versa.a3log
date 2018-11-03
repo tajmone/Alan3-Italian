@@ -54,10 +54,10 @@ una lattina qui. La lattina contiene dell'aranciata.
 Prese.
 
 > PUT le noccioline nel barattolo
-You put le noccioline into il barattolo.
+Non conosco la parola 'PUT'.
 
 > versa il barattolo
-Svuoti il contenuto del barattolo in terra.
+Ci provi, ma il barattolo era vuoto.
 
 > ; LA VASCA non è prendibile/spostabile:
 > versa la vasca
@@ -103,18 +103,18 @@ La busta è vuota.
 > guarda
 Radura Nel Bosco
 Al centro del prato c'è una vasca in pietra. Puoi vedere un tavolo, un 
-fiume, delle noccioline e una bottiglia qui. La bottiglia contiene del 
-vino. Puoi vedere una lattina qui. La lattina contiene dell'aranciata.
+fiume e una bottiglia qui. La bottiglia contiene del vino. Puoi vedere una 
+lattina qui. La lattina contiene dell'aranciata.
 
 > ; VERSA NEL FIUME:
 > PUT le noccioline nel barattolo
-You put le noccioline into il barattolo.
+Non conosco la parola 'PUT'.
 
 > versa il barattolo nel fiume
 There's not much sense pouring il barattolo into il fiume.
 
 > svuota il barattolo nel fiume
-Svuoti il contenuto del barattolo nel fiume.
+Ci provi, ma il barattolo era vuoto.
 
 > ; ------------------------------------------------------------------------------
 > ; SVUOTA_SU / VERSA_SU
@@ -139,9 +139,8 @@ Un tavolo da picnic. Sopra il tavolo vedi delle caramelle e delle patatine
 Radura Nel Bosco
 Al centro del prato c'è una vasca in pietra. Puoi vedere un tavolo qui. 
 Sopra il tavolo vedi delle caramelle e delle patatine. Puoi vedere un 
-fiume qui. In il fiume you see delle noccioline. Puoi vedere una bottiglia 
-qui. La bottiglia contiene del vino. Puoi vedere una lattina qui. La 
-lattina contiene dell'aranciata.
+fiume e una bottiglia qui. La bottiglia contiene del vino. Puoi vedere una 
+lattina qui. La lattina contiene dell'aranciata.
 
 > ; ==============================================================================
 > ; CONTENUTI LIQUIDI
@@ -179,8 +178,35 @@ La bottiglia è vuota.
 Radura Nel Bosco
 Al centro del prato c'è una vasca in pietra. Puoi vedere un tavolo qui. 
 Sopra il tavolo vedi delle caramelle e delle patatine. Puoi vedere un 
-fiume qui. In il fiume you see delle noccioline. Puoi vedere del vino e 
-una lattina qui. La lattina contiene dell'aranciata.
+fiume, del vino e una lattina qui. La lattina contiene dell'aranciata.
+
+> ; ==============================================================================
+> ; TESTA OGGETTI LUOGO
+> ; ==============================================================================
+> ricomincia partita
+
+Sei sicuro (premi INVIO per confermare)?
+
+
+Svuotare e Versare 
+Testa i verbi del gruppo 'svuota' e 'versa'. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+Radura Nel Bosco
+Al centro del prato c'è una vasca in pietra. Puoi vedere un tavolo, un 
+fiume e un barattolo qui. Il barattolo contiene delle noccioline. Puoi
+vedere un sacchetto qui. Il sacchetto contiene delle patatine. Puoi vedere 
+una busta qui. La busta contiene delle caramelle. Puoi vedere una 
+bottiglia qui. La bottiglia contiene del vino. Puoi vedere una lattina 
+qui. La lattina contiene dell'aranciata.
+
+> svuota bottiglia nel suolo
+La bottiglia doesn't belong in il suolo.
 
 > 
 

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi.i"
---| v0.7.6-Alpha, 2018-11-03: Alan 3.0beta6
+--| v0.7.7-Alpha, 2018-11-03: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -548,6 +548,14 @@ ADD TO EVERY blocco_definizioni
   HAS illegal_parameter_at "You can't $v anything at $+2.".         -- fire_at, throw_at
 
   -- -----------------
+  -- PREPOSIZIONE "IN"
+  -- -----------------
+  -- VERBI: .
+  -- ORIGINAL EN: (nessuno)
+  HAS ogg2_illegale_IN_sg  "$+2 non è qualcosa in cui poter".
+  HAS ogg2_illegale_IN_pl  "$+2 non sono qualcosa in cui poter".
+
+  -- -----------------
   -- PREPOSIZIONE "SU"
   -- -----------------
   -- ORIGINAL EN: illegal_parameter_on_sg/pl
@@ -600,6 +608,7 @@ ADD TO EVERY blocco_definizioni
   -- a intercettare il comando incompleto per informare il giocatore sulla
   -- sintassi corretta del verbo.
 
+  HAS specificare_DOVE      "Devi specificare dove vorresti".
   HAS specificare_CON_cosa  "Devi specificare con cosa vorresti".
   HAS specificare_A_cosa    "Devi specificare a cosa vorresti".
 
@@ -797,6 +806,16 @@ ADD TO EVERY blocco_definizioni
 
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
   HAS check_obj_inanimate2 "You are not sure whether $+1 would appreciate that.".   -- rub, touch, touch_with
+
+  -- ==================
+  -- AZIONI IMPOSSIBILI
+  -- ==================
+  -- Risposte per azioni che non possono essere eseguite ...
+
+  -- VERBI: [lib_classi.i: metti_contro, metti_dietro, metti_vicino, metti_sotto
+  --                       guarda_dietro, guarda_attraverso, guarda_sotto].
+  -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
+  HAS non_fattibile "Non è una cosa fattibile.".
 
   -- ===========
   -- AZIONI VANE

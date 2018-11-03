@@ -71,7 +71,7 @@ EVERY frutto IsA object.
   HAS xDesc "Un frutto, sembra appetitoso.".
 END EVERY.
 ------------------------------------------------------------------------ ARANCIA
-THE ARANCIA IsA frutto AT radura.
+THE arancia IsA frutto AT radura.
   HAS articolo "l'".
   IS femminile.
   NAME arancia.

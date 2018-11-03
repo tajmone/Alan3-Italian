@@ -1,0 +1,136 @@
+
+
+Mettere 
+Test per il verbo mettere ed affini. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+Cucina
+Puoi vedere un frigorifero e un tavolo qui. Sopra il tavolo vedi un cesto. 
+C'è una cuoca qui. Mario è qui.
+
+> metti l'avocado
+Non possiedi l'avocado.
+
+> prendi l'avocado
+Preso.
+
+> metti l'avocado
+Devi specificare dove vorresti metterlo.
+
+> prendi l'arancia
+Presa.
+
+> metti l'arancia
+Devi specificare dove vorresti metterla.
+
+> ; ==============================================================================
+> ; TESTA OGGETTI STANZA
+> ; ==============================================================================
+> metti l'avocado contro le pareti
+Farlo non servirebbe a nulla.
+
+> metti l'avocado sotto le pareti
+Non è una cosa fattibile.
+
+> metti l'avocado vicino alle pareti
+Non è una cosa fattibile.
+
+> metti l'avocado dietro le pareti
+Non è una cosa fattibile.
+
+> metti l'arancia nel pavimento
+L'arancia doesn't belong in il pavimento.
+
+> ; ==============================================================================
+> ; TESTA PARAMETRI INADATTI
+> ; ==============================================================================
+> ; ------------------------------------------------------------------------------
+> ; PERSONE: La Cuoca
+> ; ------------------------------------------------------------------------------
+> metti la cuoca dietro il frigo
+You can only metti objects.
+
+> ; ------------------------------------------------------------------------------
+> ; PERSONE: Mario
+> ; ------------------------------------------------------------------------------
+> metti mario dietro il frigo
+You can only metti objects.
+
+> ; ------------------------------------------------------------------------------
+> ; METTI SU: NON SUPPORTO
+> ; ------------------------------------------------------------------------------
+> metti l'arancia sul frigo
+It's not possible to metti anything there.
+
+> ; ==============================================================================
+> ; METTI DIETRO
+> ; ==============================================================================
+> metti l'arancia dietro il frigo
+Farlo non servirebbe a nulla.
+
+> ; ==============================================================================
+> ; METTI SOTTO
+> ; ==============================================================================
+> metti l'arancia sotto il frigo
+Farlo non servirebbe a nulla.
+
+> ; ==============================================================================
+> ; METTI SU
+> ; ==============================================================================
+> metti l'arancia sul tavolo
+Posi l'arancia sul tavolo.
+
+> esamina il tavolo
+Un vecchio tavolo da cucina laminato in plastica. Sopra il tavolo vedi un'
+arancia e un cesto.
+
+> guarda
+Cucina
+Puoi vedere un frigorifero e un tavolo qui. Sopra il tavolo vedi un'
+arancia e un cesto. C'è una cuoca qui. Mario è qui.
+
+> ; ==============================================================================
+> ; METTI VICINO
+> ; ==============================================================================
+> metti l'arancia vicino al frigo
+Farlo non servirebbe a nulla.
+
+> ; ==============================================================================
+> ; METTI CONTRO
+> ; ==============================================================================
+> metti l'arancia contro il frigo
+Farlo non servirebbe a nulla.
+
+> ; ==============================================================================
+> ; METTI IN
+> ; ==============================================================================
+> esamina il frigo
+Il frigorifero è vuoto.
+
+> metti l'arancia in frigo
+You put l'arancia into il frigorifero.
+
+> esamina il frigo
+Il frigorifero contiene un'arancia.
+
+> metti l'arancia nel cesto
+You put l'arancia into il cesto.
+
+> esamina il cesto
+Il cesto contiene un'arancia.
+
+> guarda
+Cucina
+Puoi vedere un frigorifero e un tavolo qui. Sopra il tavolo vedi un cesto. 
+C'è una cuoca qui. Mario è qui.
+
+> 
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

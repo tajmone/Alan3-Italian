@@ -128,6 +128,8 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 | 21000   |           | gruppo_dare                  | == Dare e Prendere
 // -----------------------------------------------------------------------------
 | 21100   |           | gruppo_vestirsi              | == Vestirsi e Svestirsi
+// -----------------------------------------------------------------------------
+| 21200   |           | gruppo_mettere               | == Mettere
 // =============================================================================
 | 30000   |           | comandi_comandi_domande      | == Verbi di Domande
 // -----------------------------------------------------------------------------

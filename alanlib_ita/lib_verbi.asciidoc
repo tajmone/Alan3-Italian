@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.18-Alpha, 2018-11-03: Alan 3.0beta6
+v0.7.19-Alpha, 2018-11-03: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -128,6 +128,13 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | leggi              |                              | leggi (ogg)                            |     | 1 | {X} |
 | libera             | rilascia                     | libera (ogg)                           |     | 1 | {X} |
 | mangia             |                              | mangia (cibo)                          |     | 1 |     |
+| metti              |                              | metti (ogg)                            |     | 1 | {X} |
+| metti_contro       |                              | metti (ogg) contro (bulk)              |     | 2 | {X} |
+| metti_dietro       |                              | metti (ogg) dietro (bulk)              |     | 2 | {X} |
+| metti_in           |                              | metti (ogg) in (cont)                  |     | 2 | {X} |
+| metti_sotto        |                              | metti (ogg) sotto (bulk)               |     | 2 | {X} |
+| metti_su           |                              | metti (ogg) su (superficie)            |     | 2 | {X} |
+| metti_vicino       |                              | metti (ogg) vicino a (bulk)            |     | 2 | {X} |
 | mordi              |                              | mordi (ogg)                            |     | 1 | {X} |
 | parla              |                              | parla                                  |     | 0 |     |
 | parla_con          |                              | parla con (png)                        |     | 1 |     |
@@ -584,6 +591,31 @@ Questo gruppo raccoglie i verbi riguardanti il vestiario e denudarsi:
 ==== spogliati
 
 // end::gruppo_vestirsi[]
+// tag::gruppo_mettere[]
+=== Mettere
+
+Questo gruppo include il verbo '`mettere`' e simili:
+
+* `metti`
+* `metti_contro`
+* `metti_dietro`
+* `metti_in`
+* `metti_sotto`
+* `metti_su`
+* `metti_vicino`
+
+Verbi di questo gruppo non ancora tradotti:
+
+
+==== metti
+
+==== metti_contro + metti_dietro + metti_vicino + metti_sotto
+
+==== metti_in
+
+==== metti_su
+
+// end::gruppo_mettere[]
 // tag::comandi_domande[]
 
 == Verbi di Domande
@@ -641,13 +673,6 @@ italiano del modulo dei verbi.
 | pry_with           |                                    | pry (obj) with (instr)            | 2 | {x}
 | push               |                                    | push (obj)                        | 1 | {x}
 | push_with          |                                    | push (obj) with (instr)           | 2 | {x}
-| put                | lay, place                         | put (obj)                         | 1 | {x}
-| put_against        |                                    | put (obj) against (bulk))         | 2 | {x}
-| put_behind         |                                    | put (obj) behind (bulk)           | 2 | {x}
-| put_in             | insert                             | put (obj) in (cont)               | 2 | {x}
-| put_near           |                                    | put (obj) near (bulk)             | 2 | {x}
-| put_on             |                                    | put (obj) on (surface)            | 2 | {x}
-| put_under          |                                    | put (obj) under (bulk)            | 2 | {x}
 | rub                |                                    | rub (obj)                         | 1 | {x}
 | search             |                                    | search (obj)                      | 1 | {x}
 | shake              |                                    | shake (obj)                       | 1 | {x}
@@ -808,6 +833,14 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `togliti`.
 
 * [ ] Descrizione `spogliati`.
+
+* [ ] Descrizione `metti`.
+
+* [ ] Descrizione `metti_contro` + `metti_dietro` + `metti_vicino` + `metti_sotto`.
+
+* [ ] Descrizione `metti_in`.
+
+* [ ] Descrizione `metti_su`.
 
 // end::todo_checklist[]
 

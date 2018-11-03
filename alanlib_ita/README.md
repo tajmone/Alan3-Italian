@@ -405,14 +405,14 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `pull`           | `tirare`                  |
 | `push`           | `spingere`                |
 | `push_with`      | `spingere_con`            |
-| `put`            |                           |
-| `put_against`    |                           |
-| `put_behind`     |                           |
-| `put_down`       |                           |
-| `put_in`         |                           |
-| `put_near`       |                           |
-| `put_on`         |                           |
-| `put_under`      |                           |
+| `put`            | `mettere`                 |
+| `put_against`    | `mettere_contro`          |
+| `put_behind`     | `mettere_dietro`          |
+| ~~`put_down`~~   |                           |
+| `put_in`         | `mettere_in`              |
+| `put_near`       | `mettere_vicino`          |
+| `put_on`         | `mettere_su`              |
+| `put_under`      | `mettere_sotto`           |
 | `'quit'`         | `abbandonare_partita`     |
 | `read`           | `leggere`                 |
 | `remove`         |                           |
