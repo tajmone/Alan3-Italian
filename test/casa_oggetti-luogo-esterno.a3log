@@ -1,0 +1,222 @@
+
+
+La Casa 
+Un set per eseguire test su stanze e luoghi esterni. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+La Cucina
+A sud c'è il tuo giardino. Puoi vedere un frigo e un tavolo qui. Sopra il 
+tavolo vedi una bottiglia, un sacchetto, un vasetto e un cesto per la
+frutta.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                        TESTA OGGETTI LUOGO ESTERNO                         *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Questo script di comandi esegue dei test sulla classe 'oggetto_luogo_esterno'.
+> esamina il tavolo
+Esamini il tavolo, ma non noti niente di speciale. Sopra il tavolo vedi 
+una bottiglia, un sacchetto, un vasetto e un cesto per la frutta.
+
+> esamina il cesto
+Il cesto per la frutta contiene una pera, una banana e una mela.
+
+> prendi la mela
+Presa.
+
+> prendi la pera
+Presa.
+
+> prendi la banana
+Presa.
+
+> prendi la bottiglia
+Presa.
+
+> prendi il sacchetto
+Preso.
+
+> sud
+Il Giardino di Casa
+A nord puoi tornare in casa.
+
+> ; ==============================================================================
+> ; SUOLO
+> ; ==============================================================================
+> ; L'istanza 'suolo' (presente in tutte le istanze di classe 'luogo_esterno')
+> ; contiene la propria definizione dei seguenti verbi:
+> ;   svuota_in, versa_in, guarda_in, metti_in, prendi_da, throw_in.
+> ; Qui testeremo se i suddetti verbi vengono eseguiti corettamente...
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'metti_in' (ERRORE!)
+> ; ------------------------------------------------------------------------------
+> ; **ERR!** Il verbo 'metti_in' dell'istanza 'suolo' dovrebbe essere eseguito
+> ;          e produrre "That's not something you can $v things into.":
+> metti la mela nel suolo
+La mela doesn't belong in il suolo.
+
+> ;          Invece abbiamo ottenuto la risposta del CHECK 'AND ogg IN consentiti OF cont'
+> ;          del verbo principale 'metti_in', definito in 'lib_verbi.i'; questo
+> ;          CHECK preveiene l'esecuzione del verbo in 'suolo'.
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'metti_su' (???)
+> ; ------------------------------------------------------------------------------
+> ; **ERR???** Nei commenti presenti in 'lib_luoghi.i' è menzionato che la prioprietà
+> ;            CONTAINER è finalizzata a consentire di svuoatre/versare/mettere
+> ;            cose sul suolo.
+> metti la pera sul suolo
+It's not possible to metti anything there.
+
+> ;            Ma dato che non è presente alcuna ridefinizione del verbo 'metti_su'
+> ;            nell'istanza 'suolo', la SYNTAX del verbo principale si limita a
+> ;            bloccare l'azione poiché 'suolo' non è un 'supporto'
+> ;
+> ;               WHERE ...
+> ;               ...
+> ;               AND superficie IsA supporto
+> ;
+> ;            Si dovrebbe fare in modo che "metti (ogg) sul suolo" sia un'eccezione
+> ;            e che venga intesto come "lascia"?
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'versa_in' (ERRORE!)
+> ; ------------------------------------------------------------------------------
+> ; **ERR!** Il verbo 'versa_in' dell'istanza 'suolo' dovrebbe essere eseguito
+> ;          e produrre "That's not something you can $v things into.":
+> versa il vino nel suolo
+Il vino doesn't belong in il suolo.
+
+> ;          Invece abbiamo ottenuto la risposta del CHECK 'AND ogg IN consentiti OF cont'
+> ;          del verbo principale 'versa_in', definito in 'lib_verbi.i'; questo
+> ;          CHECK preveiene l'esecuzione del verbo in 'suolo'.
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'svuota_in' (ERRORE!)
+> ; ------------------------------------------------------------------------------
+> ; **ERR!** Ci si aspetta "That's not something you can $v things into.":
+> svuota il sacchetto nel suolo
+Il sacchetto doesn't belong in il suolo.
+
+> ;          Come per il verbo 'versa_in' (entrambi condividono lo stesso corpo del
+> ;          verbo sia nella definizione principale che in quella su 'suolo').
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'throw_in' (ERRORE!)
+> ; ------------------------------------------------------------------------------
+> ; **ERR!** Ci si aspetta "That's not something you can $v things into.":
+> throw il sacchetto nel suolo
+Il sacchetto doesn't belong in il suolo.
+
+> ;          Abbiamo ottenuto invece la risposta del CEHCK 'projectile IN allowed OF cont'
+> ;          della definizione principale in 'lib_verbi.i', che previene l'esecuzione
+> ;          del corpo del verbo 'throw_in' su 'suolo'.
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'guarda_in'
+> ; ------------------------------------------------------------------------------
+> ; ATTESO: "That's not possible."
+> guarda nel suolo
+That's not possible.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'prendi_da' (ERRORE!)
+> ; ------------------------------------------------------------------------------
+> lascia la mela
+Lasci la mela.
+
+> ; **ERR!** La mela dovrebbe essere IN 'suolo' dato che l'abbiamo lasciata:
+> prendi la mela dal suolo
+La mela is not in il suolo.
+
+> ; ==============================================================================
+> ; OGGETTO_LUOGO_ESTERNO
+> ; ==============================================================================
+> ; La classe 'oggetto_luogo_esterno' ridefinisce i verbi:
+> ;   metti_sotto, metti_vicino, metti_sotto, guarda_sotto,
+> ;   guarda_attraverso, guarda_sotto.
+> ;
+> ; NOTA: I verbi 'metti_contro', 'metti_sotto', 'metti_vicino' e 'metti_sotto'
+> ;       condividono la stessa definizione di VERB in 'lib_verbi.i'.
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'metti_contro'
+> ; ------------------------------------------------------------------------------
+> ; ATTESO: "Non è una cosa fattibile.":
+> metti la mela contro il suolo
+Non è una cosa fattibile.
+
+> ; **ERR!** Con 'cielo', il verbo 'metti_sotto' definito su 'oggetto_luogo_esterno'
+> ;          non viene eseguito, otteniamo invece la risposta del verbo principale:
+> metti la mela contro il cielo
+Il cielo è troppo distante.
+
+> ;          Questo accade poiché 'cielo' è 'NOT prendibile' + 'distante' e quindi
+> ;          non passa il CHECK 'AND ogg IS raggiungibile AND ogg IS NOT distante'
+> ;          nel verbo principale in 'lib_verbi.i'.
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'metti_dietro'
+> ; ------------------------------------------------------------------------------
+> ; ATTESO: "Non è una cosa fattibile.":
+> metti la mela dietro il suolo
+Non è una cosa fattibile.
+
+> ; **ERR!** Come sopra, 'cielo' non passa il CHECK poiché 'distante':
+> metti la mela dietro il cielo
+Il cielo è troppo distante.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'metti_vicino'
+> ; ------------------------------------------------------------------------------
+> ; ATTESO: "Non è una cosa fattibile.":
+> metti la mela vicino al suolo
+Non è una cosa fattibile.
+
+> ; **ERR!** Come sopra, 'cielo' non passa il CHECK poiché 'distante':
+> metti la mela vicino al cielo
+Il cielo è troppo distante.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'metti_sotto'
+> ; ------------------------------------------------------------------------------
+> ; ATTESO: "Non è una cosa fattibile.":
+> metti la mela sotto il suolo
+Non è una cosa fattibile.
+
+> ; **ERR!** Come sopra, 'cielo' non passa il CHECK poiché 'distante':
+> metti la mela sotto il cielo
+Il cielo è troppo distante.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'guarda_sotto'
+> ; ------------------------------------------------------------------------------
+> ; ATTESO: "Non è una cosa fattibile.":
+> guarda sotto il suolo
+Non è una cosa fattibile.
+
+> guarda sotto il cielo
+Non è una cosa fattibile.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'guarda_attraverso'
+> ; ------------------------------------------------------------------------------
+> ; ATTESO: "Non è una cosa fattibile.":
+> guarda attraverso il suolo
+Non è una cosa fattibile.
+
+> guarda attraverso il cielo
+Non è una cosa fattibile.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'guarda_sotto'
+> ; ------------------------------------------------------------------------------
+> ; ATTESO: "Non è una cosa fattibile.":
+> guarda sotto il suolo
+Non è una cosa fattibile.
+
+> guarda sotto il cielo
+Non è una cosa fattibile.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

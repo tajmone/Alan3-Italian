@@ -10,11 +10,13 @@ Here is where all the testing takes places; for practical reasons all contents w
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Introduzione](#introduzione)
-    - [Convenzioni Nomi File](#convenzioni-nomi-file)
-    - [Convenzioni Estensioni Script](#convenzioni-estensioni-script)
 - [Contenuti](#contenuti)
     - [Batch script di automazione](#batch-script-di-automazione)
-- [Prerequisiti](#prerequisiti)
+- [Requisiti di Sistema](#requisiti-di-sistema)
+- [Organizzazione dei Test](#organizzazione-dei-test)
+    - [Scopo dei Test](#scopo-dei-test)
+    - [Convenzioni Nomi File](#convenzioni-nomi-file)
+    - [Convenzioni Estensioni Script](#convenzioni-estensioni-script)
 - [Alan Compiler Help](#alan-compiler-help)
 
 <!-- /MarkdownTOC -->
@@ -25,27 +27,9 @@ Here is where all the testing takes places; for practical reasons all contents w
 
 Questa cartella contiene vari file sorgenti di avventure Alan che impiegano la Libreria Standard Italiana; lo scopo di queste "avventure" è di testare alcune caratteristiche mirate della liberia. A ciascuna avventura sono associati uno o più più script di comandi (`*.a3sol`), si tratta di sessioni di gioco automatizzate la cui trascrizione verrà salvata in un file di log (`*.a3log`).
 
-## Convenzioni Nomi File
-
-Per ogni avventura avente nome "`<nomefile>.alan`", lo script batch di automazione compilerà l'avventura in "`<nomefile>.a3c`", e poi cercherà tutti i file `*.a3sol` che iniziano per `<nomefile>`, secondo il pattern `<nomefile>*.a3sol`. Grazie a questo sistema è possibile eseguire script di test diversi sulla medesima avventura. Esempio:
-
-- "`attori.alan`" -> "`attori.a3c`":
-    -  "`attori.a3sol`" -> "`attori.a3log`"
-    -  "`attori_avanzato.a3sol`" -> "`attori_avanzato.a3log`"
-
-Ne consegue che non bisogna creare avventure il cui nome costituisca la parte iniziale di un altra avventura (es "`attori.alan`" e "`attori_due.alan`)" poiché gli script di comandi della seconda verrebbero eseguiti anche per la prima dato che rientrerebbero nel pattern `attori*.a3sol`.
-
-## Convenzioni Estensioni Script
-
-Le estensioni `*.a3sol` e `*.a3log` sono state adottate per semplificare le impostazioni dell'editor di codice affinché tratti queste estensioni con encoding [ISO-8859-1].
-
-Inoltre, queste due estensioni sono supportate da __Sublime Alan__, un estensione di Sublime Text 3 a cui sto lavorando per supportare la sintassi di Alan. __Sublime Alan__ offre colorazione della sintassi per queste estensioni e altre funzionalità utili:
-
-- https://github.com/tajmone/sublime-alan
-
 # Contenuti
 
-Gli script in questa cartella sono studiati per essere eseguiti su Windows OS. Sono stati testati su Windows 10.
+Gli script in questa cartella sono studiati per essere eseguiti su sistema operativo Windows (testati su Windows 10).
 
 ## Batch script di automazione
 
@@ -64,13 +48,58 @@ Se invece vuoi eseguire dei test individuali, puoi usare i seguenti script:
 
 Nel codice sorgente dei batch script troverete dei commenti che ne illustrano le modalità d'utilizzo.
 
-# Prerequisiti
+# Requisiti di Sistema
 
 Al fine di poter utilizzare i test in questa cartella, dovrete copiare al suo interno gli eseguibili del compilatore di Alan e dell'interprete ARun, assicurandovi di prenderli dalla stessa versione di Alan usata in questo progetto (`Alan 3.0beta6`). Per il sistema operativo Windows, i file da copiare saranno:
 
 - `alan.exe`
 - `arun.exe`
 
+
+-------------------------------------------------------------------------------
+
+# Organizzazione dei Test
+
+Sebbene gli attuali test non siano ancora organizzati in maniera formale e strutturata, l'obiettivo finale è di creare una test suite ben strutturata e formalizzata.
+
+I primi test furono realizzati creando una singola avventura per ciascuna funzionalità da testare. Il nuovo approccio consisterà nel creare un numero limitato di avventure sorgenti e associare a ciascuna di esse vari script di comandi, ciascuno mirato a testare aspetti e funzionalità specifiche della libreria.
+
+Il nuovo approccio consente di creare avventure sorgenti più elaborate, studiate in modo da rendere disponibili varie classi di oggetti da poter testare in maniera flessibile. Per esempio, l'avventura sorgente "`casa.alan`" implementa una stanza e un giardino per poter testare le classi `stanza` e `luogo_esterno`, e in cui sono presenti una moltitudine di oggetti rappresentanti le varie classi della libreria (cibi, bevande, liquidi, contenitori, e via dicendo) di modo da poter testare in maniera esaustiva sia i verbi che li riguardano che i verbi con cui non andrebbero usati (per verificare i messaggi di errore).
+
+## Scopo dei Test
+
+I test hanno un duplice obiettivo:
+
+1. Testare tutte le funzionalità, messaggi e verbi della libreria.
+2. Rilevare le conseguenze delle modifiche alla libreria.
+
+Il punto (1) richiede che per ciascun verbo vengano testati tutti i contesti ed errori che li riguardano. Siccome alcuni verbi sono sovrascritti nelle classi o istanze della libreria (p.es nei liquidi o nelle persone), è necessario testarli con ognuno dei possibili parametri che porterebbero ad esecuzioni o risposte diverse, inclusi i messaggi di errore.
+
+Il punto (2) è particolarmente utile per lo sviluppo della libreria. Aggiornando tutti i test dopo ogni modifica al codice sorgente della liberia, Git ci segnalerà come file modificati quelle trascrizioni dei test in cui le modifiche al codice hanno determinato risultati diversi. Grazie al diffing dei file modificati, è possibile visionare con facilità l'impatto globale delle modifiche alla libreria.
+
+Questo consente non solo di verificare che le modifiche apportate abbiano l'esito desiderato (p.es. traduzione e modifica dei messaggi di risposta), ma consente anche di rilevare eventuali effetti collaterali inattesi.
+
+
+## Convenzioni Nomi File
+
+Per ogni avventura avente nome "`<nomefile>.alan`", lo script batch di automazione compilerà l'avventura in "`<nomefile>.a3c`", e poi cercherà tutti i file `*.a3sol` che iniziano per `<nomefile>`, secondo il pattern `<nomefile>*.a3sol`. Grazie a questo sistema è possibile eseguire script di test diversi sulla medesima avventura. Esempio:
+
+- "`attori.alan`" -> "`attori.a3c`":
+    -  "`attori.a3sol`" -> "`attori.a3log`"
+    -  "`attori_avanzato.a3sol`" -> "`attori_avanzato.a3log`"
+
+Ne consegue che non bisogna creare avventure il cui nome costituisca la parte iniziale di un'altra avventura (es "`attori.alan`" e "`attori_due.alan`)" poiché gli script di comandi della seconda verrebbero eseguiti anche per la prima dato che rientrerebbero nel pattern `attori*.a3sol`.
+
+## Convenzioni Estensioni Script
+
+Le estensioni `*.a3sol` e `*.a3log` sono state adottate per semplificare le impostazioni dell'editor di codice affinché tratti queste estensioni con encoding [ISO-8859-1].
+
+Inoltre, queste due estensioni sono supportate da __Sublime Alan__, un package che sto creando per Sublime Text 3 al fine di aggiungere il supporto per la sintassi di Alan. __Sublime Alan__ offre colorazione della sintassi per queste estensioni e altre funzionalità utili:
+
+- https://github.com/tajmone/sublime-alan
+
+
+-------------------------------------------------------------------------------
 
 
 # Alan Compiler Help

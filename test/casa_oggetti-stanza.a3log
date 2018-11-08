@@ -1,0 +1,235 @@
+
+
+La Casa 
+Un set per eseguire test su stanze e luoghi esterni. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+La Cucina
+A sud c'è il tuo giardino. Puoi vedere un frigo e un tavolo qui. Sopra il 
+tavolo vedi una bottiglia, un sacchetto, un vasetto e un cesto per la
+frutta.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                            TESTA OGGETTI STANZA                            *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Questo script di comandi esegue dei test sulla classe 'oggetto_stanza'.
+> esamina il tavolo
+Esamini il tavolo, ma non noti niente di speciale. Sopra il tavolo vedi 
+una bottiglia, un sacchetto, un vasetto e un cesto per la frutta.
+
+> esamina il cesto
+Il cesto per la frutta contiene una pera, una banana e una mela.
+
+> ; ==============================================================================
+> ; PAVIMENTO
+> ; ==============================================================================
+> ; L'istanza 'pavimento' (presente in tutte le istanze di classe 'stanza')
+> ; contiene la propria definizione dei seguenti verbi:
+> ;   svuota_in, versa_in, guarda_in, metti_in, prendi_da, throw_in.
+> ; Qui testeremo se i suddetti verbi vengono eseguiti corettamente...
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'metti_in' (ERRORE!)
+> ; ------------------------------------------------------------------------------
+> ; **ERR!** Il verbo 'metti_in' dell'istanza 'pavimento' dovrebbe essere eseguito
+> ;          e produrre "That's not something you can $v things into.":
+> metti la mela nel pavimento
+La mela doesn't belong in il pavimento.
+
+> ;          Invece abbiamo ottenuto la risposta del CHECK 'AND ogg IN consentiti OF cont'
+> ;          del verbo principale 'metti_in', definito in 'lib_verbi.i'; questo
+> ;          CHECK preveiene l'esecuzione del verbo in 'pavimento'.
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'metti_su' (???)
+> ; ------------------------------------------------------------------------------
+> ; **ERR???** Nei commenti presenti in 'lib_luoghi.i' è menzionato che la prioprietà
+> ;            CONTAINER è finalizzata a consentire di svuoatre/versare/mettere
+> ;            cose sul pavimento.
+> metti la pera sul pavimento
+It's not possible to metti anything there.
+
+> ;            Ma dato che non è presente alcuna ridefinizione del verbo 'metti_su'
+> ;            nell'istanza 'pavimento', la SYNTAX del verbo principale si limita a
+> ;            bloccare l'azione poiché 'pavimento' non è un 'supporto'
+> ;
+> ;               WHERE ...
+> ;               ...
+> ;               AND superficie IsA supporto
+> ;
+> ;            Si dovrebbe fare in modo che "metti (ogg) sul pavimento" sia un'eccezione
+> ;            e che venga intesto come "lascia"?
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'versa_in' (ERRORE!)
+> ; ------------------------------------------------------------------------------
+> ; **ERR!** Il verbo 'versa_in' dell'istanza 'pavimento' dovrebbe essere eseguito
+> ;          e produrre "That's not something you can $v things into.":
+> versa il vino nel pavimento
+Il vino doesn't belong in il pavimento.
+
+> ;          Invece abbiamo ottenuto la risposta del CHECK 'AND ogg IN consentiti OF cont'
+> ;          del verbo principale 'versa_in', definito in 'lib_verbi.i'; questo
+> ;          CHECK preveiene l'esecuzione del verbo in 'pavimento'.
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'svuota_in' (ERRORE!)
+> ; ------------------------------------------------------------------------------
+> ; **ERR!** Ci si aspetta "That's not something you can $v things into.":
+> svuota il sacchetto nel pavimento
+Il sacchetto doesn't belong in il pavimento.
+
+> ;          Come per il verbo 'versa_in' (entrambi condividono lo stesso corpo del
+> ;          verbo sia nella definizione principale che in quella su 'pavimento').
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'throw_in' (ERRORE!)
+> ; ------------------------------------------------------------------------------
+> ; **ERR!** Ci si aspetta "That's not something you can $v things into.":
+> throw il sacchetto nel pavimento
+Il sacchetto doesn't belong in il pavimento.
+
+> ;          Abbiamo ottenuto invece la risposta del CEHCK 'projectile IN allowed OF cont'
+> ;          della definizione principale in 'lib_verbi.i', che previene l'esecuzione
+> ;          del corpo del verbo 'throw_in' su 'pavimento'.
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'guarda_in' (PASS)
+> ; ------------------------------------------------------------------------------
+> ; ATTESO: "That's not possible."
+> guarda nel pavimento
+That's not possible.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'prendi_da' (ERRORE!)
+> ; ------------------------------------------------------------------------------
+> prendi la mela
+Presa.
+
+> lascia la mela
+Lasci la mela.
+
+> ; **ERR!** La mela dovrebbe essere IN 'pavimento' dato che l'abbiamo lasciata:
+> prendi la mela dal pavimento
+La mela is not in il pavimento.
+
+> ; ==============================================================================
+> ; OGGETTI STANZA
+> ; ==============================================================================
+> ; La classe 'oggetto_stanza' ridefinisce i verbi:
+> ;   metti_sotto, metti_vicino, metti_sotto, guarda_sotto,
+> ;   guarda_attraverso, guarda_sotto.
+> ;
+> ; NOTA: I verbi 'metti_contro', 'metti_sotto', 'metti_vicino' e 'metti_sotto'
+> ;       condividono la stessa definizione di VERB in 'lib_verbi.i'.
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'metti_contro'
+> ; ------------------------------------------------------------------------------
+> ; ATTESO: "Non è una cosa fattibile.":
+> metti la mela contro il pavimento
+Non è una cosa fattibile.
+
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; ATTESO: "Farlo non servirebbe a nulla.":
+> metti la mela contro il muro
+Farlo non servirebbe a nulla.
+
+> ; NOTA: Nella classe 'oggetto_stanza' al verbo 'metti_contro' viene aggiunto un
+> ;       ulteriore CHECK che garantisce che l'azione possa essere eseguita solo
+> ;       con 'pareti'. Quindi il messaggio ottenuto è quello del DOES nel verbo
+> ;       principale in  'lib_verbi.i'.
+> ;   
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; **ERR!** Con 'soffitto', il verbo 'metti_contro' definito su 'oggetto_stanza'
+> ;          non viene eseguito, otteniamo invece la risposta del verbo principale:
+> metti la mela contro il soffitto
+Il soffitto è fuori dalla tua portata.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'metti_dietro'
+> ; ------------------------------------------------------------------------------
+> ; ATTESO: "Non è una cosa fattibile.":
+> metti la mela dietro il pavimento
+Non è una cosa fattibile.
+
+> metti la mela dietro il muro
+Non è una cosa fattibile.
+
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; **ERR!** Come sopra, 'soffitto' non passa il CHECK poiché 'distante':
+> metti la mela dietro il soffitto
+Il soffitto è fuori dalla tua portata.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'metti_vicino'
+> ; ------------------------------------------------------------------------------
+> ; ATTESO: "Non è una cosa fattibile.":
+> metti la mela vicino al pavimento
+Non è una cosa fattibile.
+
+> metti la mela vicino al muro
+Non è una cosa fattibile.
+
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; **ERR!** Come sopra, 'soffitto' non passa il CHECK poiché 'distante':
+> metti la mela vicino al soffitto
+Il soffitto è fuori dalla tua portata.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'metti_sotto'
+> ; ------------------------------------------------------------------------------
+> ; ATTESO: "Non è una cosa fattibile.":
+> metti la mela sotto il pavimento
+Non è una cosa fattibile.
+
+> metti la mela sotto il muro
+Non è una cosa fattibile.
+
+> ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; **ERR!** Come sopra, 'soffitto' non passa il CHECK poiché 'distante':
+> metti la mela sotto il soffitto
+Il soffitto è fuori dalla tua portata.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'guarda_dietro'
+> ; ------------------------------------------------------------------------------
+> ; ATTESO: "Non è una cosa fattibile.":
+> guarda dietro il pavimento
+Non è una cosa fattibile.
+
+> guarda dietro il muro
+Non è una cosa fattibile.
+
+> guarda dietro il soffitto
+Non è una cosa fattibile.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'guarda_attraverso'
+> ; ------------------------------------------------------------------------------
+> ; ATTESO: "Non è una cosa fattibile.":
+> guarda attraverso il pavimento
+Non è una cosa fattibile.
+
+> guarda attraverso il muro
+Non è una cosa fattibile.
+
+> guarda attraverso il soffitto
+Non è una cosa fattibile.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBO 'guarda_sotto'
+> ; ------------------------------------------------------------------------------
+> ; ATTESO: "Non è una cosa fattibile.":
+> guarda sotto il pavimento
+Non è una cosa fattibile.
+
+> guarda sotto il muro
+Non è una cosa fattibile.
+
+> guarda sotto il soffitto
+Non è una cosa fattibile.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

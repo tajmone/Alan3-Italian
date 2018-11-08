@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/11/08](#20181108)
+        - [Fix Verb Responses](#fix-verb-responses)
 - [2018/11/03 \(3\)](#20181103-3)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
     - [Verbs `put*`](#verbs-put)
@@ -400,6 +402,41 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/11/08
+
+- [`lib_verbi.i`][lib_verbi] (v0.7.20)
+
+### Fix Verb Responses
+
+The following verbs (shared `VERB` body) where giving the wrong `CHECK` response:
+
+- `metti_contro`
+- `metti_dietro`
+- `metti_sotto`
+- `metti_vicino`
+
+for they were using the same message for the first parameter when the problem was with the second parameter (`bulk`):
+
+```alan
+      AND bulk IS raggiungibile AND bulk IS NOT distante
+        ELSE
+          IF bulk IS NOT raggiungibile
+            THEN
+              IF bulk IS NOT plurale
+                THEN SAY mia_AT:ogg1_non_raggiungibile_sg. -- SHOULD BE 'ogg2'!
+                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl. -- SHOULD BE 'ogg2'!
+              END IF.
+          ELSIF bulk IS distante
+            THEN
+              IF bulk IS NOT plurale
+                THEN SAY mia_AT:ogg1_distante_sg.           -- SHOULD BE 'ogg2'!
+                ELSE SAY mia_AT:ogg1_distante_pl.           -- SHOULD BE 'ogg2'!
+```
+
+Now fixed to use `ogg2_distante_sg`/`pl` with `bulk IS NOT raggiungibile`/`IS distante` errors .
+
+<!---------------------------------------------------------------------------->
 
 # 2018/11/03 (3)
 

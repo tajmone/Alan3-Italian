@@ -1,0 +1,222 @@
+--==============================================================================
+-- "La Casa" by Tristano Ajmone, 2018.
+--==============================================================================
+IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
+
+
+THE mia_AT IsA blocco_definizioni
+  ------------------------------------------------------------------------------
+  HAS       titolo  "La Casa".
+  HAS  sottotitolo  "Un set per eseguire test su stanze e luoghi esterni.".
+  HAS       autore  "Tristano Ajmone".
+  HAS         anno   2018.
+  HAS     versione  "1".
+  ------------------------------------------------------------------------------
+END THE.
+
+-- =============================================================================
+
+-- STANZA: La Cucina
+
+-- =============================================================================
+-- La cucina sarà il nostro luogo per testare la classe 'stanza'.
+
+THE cucina IsA stanza.
+  NAME 'La Cucina'.
+  EXIT sud TO giardino.
+  DESCRIPTION "A sud c'è il tuo giardino."
+END THE cucina.
+
+-- =============================================================================
+
+-- LUOGO ESTERNO: Il Giardino
+
+-- =============================================================================
+-- Il giardino sarà il nostro luogo per testare la classe 'luogo_esterno'.
+
+THE giardino IsA luogo_esterno.
+  NAME 'Il Giardino di Casa'.
+  EXIT nord TO cucina.
+  DESCRIPTION "A nord puoi tornare in casa."
+END THE giardino.
+
+-- =============================================================================
+
+-- Scenografia Cucina
+
+-- =============================================================================
+
+--==============================================================================
+-- Il Frigorifero (contenitore_elencato + apribile)
+--==============================================================================
+THE frigo IsA contenitore_elencato AT cucina.
+  OPAQUE CONTAINER -- NOTE: The library doesn't initialize closed listed containers
+                   --       to be automatically opaque!
+  IS apribile.
+  IS NOT aperto.
+
+  INITIALIZE -- Consenti al frigo di contenere qualsiasi alimento del gioco:
+    FOR EACH oAlimento IsA alimento
+      DO INCLUDE oAlimento IN consentiti OF THIS.
+    END FOR.
+  
+END THE frigo.
+--==============================================================================
+-- Il Tavolo da Cucina (supporto)
+--==============================================================================
+
+THE tavolo_cucina IsA supporto AT cucina.
+  IS NOT prendibile.
+  NAME tavolo.
+END THE tavolo_cucina.
+
+--==============================================================================
+-- Frutta Basket (listed container on tavolo)
+--==============================================================================
+
+THE cesto_frutta IsA cont_alimenti IN tavolo_cucina.
+  NAME cesto.
+  MENTIONED "cesto per la frutta"
+END THE cesto_frutta.
+
+-- =============================================================================
+
+-- Cibi & Bevande (Commestibili & Potabili)
+
+-- =============================================================================
+-- Creiamo alcune classi per gli oggetti di tipo 'commestibile' e 'potabile' al
+-- fine di poter testare i cibi solidi e liquidi. La gerarchia delle sottoclassi
+-- ci consentirà di impostare facilmente quali tipi di alimenti possano essere
+-- messi nei vari contenitori, e consentono anche di testare la disambiguazione.
+--==============================================================================
+-- Classi di Alimenti
+--==============================================================================
+-- La classe 'alimento' è riservata ai cibi solidi, 'bevanda' a quelli liquidi.
+
+EVERY alimento IsA object.
+  HAS articolo "l'".
+  NAME alimento.
+  IS commestibile.
+END EVERY.
+
+EVERY bevanda IsA liquido.
+  HAS articolo "la".
+  IS potabile.
+  NAME bevanda.
+END EVERY.
+
+EVERY snack IsA alimento.
+  HAS articolo "lo".
+  NAME snack.
+END EVERY.
+--------------------------------------------------------------------------------
+-- Sottoclassi Alimentari
+--------------------------------------------------------------------------------
+EVERY frutto IsA alimento.
+  HAS articolo "il".
+  NAME frutto.
+END EVERY frutto.
+--------------------------------------------------------------------------------
+-- Contenitori per Alimenti (solidi)
+--------------------------------------------------------------------------------
+-- Creiamo una classe specializzata per i contenitori destinati ai cibi solidi,
+-- al fine di semplificare i vari test...
+
+EVERY cont_alimenti IsA contenitore_elencato.
+  NAME contenitore.
+
+  INITIALIZE -- Consenti ai 'cont_alimenti' di contenere qualsiasi alimento del gioco:
+    FOR EACH oAlimento IsA alimento
+      DO INCLUDE oAlimento IN consentiti OF THIS.
+    END FOR.
+END EVERY cont_alimenti.
+--------------------------------------------------------------------------------
+-- Contenitori per Bevande
+--------------------------------------------------------------------------------
+-- Creiamo una classe specializzata per i contenitori destinati alle bevande, al
+-- fine di semplificare il travaso di liquidi da un contenitore all'altro...
+
+EVERY cont_bevanda IsA contenitore_elencato.
+  NAME contenitore.
+
+  INITIALIZE -- Consenti ai 'cont_bevanda' di contenere qualsiasi bevanda del gioco:
+    FOR EACH oBevanda IsA bevanda
+      DO INCLUDE oBevanda IN consentiti OF THIS.
+    END FOR.
+END EVERY cont_bevanda.
+--------------------------------------------------------------------------------
+-- Contenitori per Snack
+--------------------------------------------------------------------------------
+-- I contenitori per snack sono finalizzati a contenere stuzzichini alimentari di
+-- piccole dimensioni (patatine, olive, ecc.) ma non cibi grossi (come la frutta,
+-- ecc.). Sono utili a testare le risposte dei verbi che consento di mettere
+-- oggetti nei contenitori.
+
+EVERY cont_snack IsA contenitore_elencato.
+  NAME contenitore.
+  
+  INITIALIZE -- Consenti ai 'cont_snack' di contenere qualsiasi snack del gioco:
+    FOR EACH oSnack IsA snack
+      DO INCLUDE oSnack IN consentiti OF THIS.
+    END FOR.
+END EVERY cont_snack.
+
+--==============================================================================
+-- ISTANZE ALIMENTI: Frutta
+--==============================================================================
+-- Mettiamo un po' di frutta nel cesto per la frutta...
+
+THE mela IsA frutto IN cesto_frutta.
+  HAS articolo "la".
+  NAME mela.
+END THE.
+
+THE banana IsA frutto IN cesto_frutta.
+  HAS articolo "la".
+  NAME banana.
+END THE.
+
+THE pera IsA frutto IN cesto_frutta.
+  HAS articolo "la".
+  NAME pera.
+END THE.
+--==============================================================================
+-- ISTANZE BEVANDE
+--==============================================================================
+
+--------------------------------------------------------------------------------
+-- Vasetto Vuoto
+--------------------------------------------------------------------------------
+THE vasetto IsA cont_bevanda IN tavolo_cucina.
+  NAME vasetto.
+  HAS consentiti {vino}.
+END THE.
+--------------------------------------------------------------------------------
+-- Bottiglia di Vino
+--------------------------------------------------------------------------------
+THE bottiglia IsA cont_bevanda IN tavolo_cucina.
+  NAME bottiglia.
+  HAS articolo "la".
+END THE.
+
+THE vino IsA liquido IN bottiglia.
+  HAS vessel bottiglia. 
+  INDEFINITE ARTICLE "del"
+END THE.
+--==============================================================================
+-- ISTANZE SNACK
+--==============================================================================
+-- TODO: implemtalo come un contenitore mono-apribile (ossia, una volta aperto
+--       il sacchetto è rotto e non lo si può richiudere).
+THE sacchetto IsA cont_snack IN tavolo_cucina.
+  NAME sacchetto.
+END THE sacchetto.
+
+THE patatine IsA snack IN sacchetto.
+  HAS articolo "le".
+  INDEFINITE ARTICLE "delle"
+END THE patatine.
+
+--------------------------------------------------------------------------------
+START AT cucina.
+DESCRIBE intestazione.

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.19-Alpha, 2018-11-03: Alan 3.0beta6
+--| v0.7.20-Alpha, 2018-11-08: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -5054,14 +5054,14 @@ ADD TO EVERY OBJECT
           IF bulk IS NOT raggiungibile
             THEN
               IF bulk IS NOT plurale
-                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+                THEN SAY mia_AT:ogg2_non_raggiungibile_sg.
+                ELSE SAY mia_AT:ogg2_non_raggiungibile_pl.
               END IF.
           ELSIF bulk IS distante
             THEN
               IF bulk IS NOT plurale
-                THEN SAY mia_AT:ogg1_distante_sg.
-                ELSE SAY mia_AT:ogg1_distante_pl.
+                THEN SAY mia_AT:ogg2_distante_sg.
+                ELSE SAY mia_AT:ogg2_distante_pl.
               END IF.
           END IF.
       DOES SAY mia_AT:non_servirebbe_a_nulla.
