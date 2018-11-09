@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.26-Alpha, 2018-11-09: Alan 3.0beta6
+--| v0.7.27-Alpha, 2018-11-09: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -716,6 +716,7 @@ END VERB ringraziamenti.
 --| | blocca_con         | serra                        | blocca (ogg) con (chiave)              |     | 2 | {X} |
 --| | brucia             |                              | brucia (ogg)                           |     | 1 | {X} |
 --| | brucia_con         |                              | brucia (ogg) con (strum)               |     | 2 | {X} |
+--| | calcia             |                              | calcia (bersaglio)                     |     | 1 |     |
 --| | canta              |                              | canta                                  |     | 0 |     |
 --| | chiedi             |                              | chiedi a (png) (ogg)                   |     | 2 | {X} |
 --| | chiudi             |                              | chiudi (ogg)                           |     | 1 | {X} |
@@ -6916,47 +6917,37 @@ ADD TO EVERY OBJECT
   END VERB tira.
 END ADD TO.
 
+-->gruppo_attaccare(21800)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Attaccare e Simili
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi di violenza come attaccare, uccidere, prendere
+--| a calci, colpire e simili:
+--| 
+--| * `attacca`
+--| * `attacca_con`
+--| * `calcia`
+--| * `uccidi`
+--| * `uccidi_con`
+--<
 
 
---=============================================================================
---\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---------------------------------------------------------------------------------
--- VERBI NON ANCORA RAGGRUPPATI 
--------------------------------------------------------------------------------
---//////////////////////////////////////////////////////////////////////////////
---=============================================================================
+-->gruppo_attaccare                                         @ATTACCA <-- @ATTACK
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== attacca
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `attacca`.
+--<
 
-
--- ==============================================================
-
-
--- @ASPETTA ---> WAIT (= z)
-
-
--- ==============================================================
-
-
-SYNTAX aspetta = aspetta.
-
-SYNONYMS
-  z, attendi = aspetta.
-
-VERB aspetta
-  CHECK mia_AT CAN aspettare
-    ELSE SAY mia_AT:azione_bloccata.
-  DOES
-    "Il tempo passa."
-END VERB aspetta.
-
-
-
--- =============================================================
-
-
--- @ATTACCA ---> @ATTACK (+ beat, fight, hit, punch)
-
-
--- =============================================================
 -- @NOTA: In Inform 6 'attacca' riconosce questi sinonimi:
 --        rompi, colpisci, combatti, uccidi, tortura, lotta, sfonda, ammazza,
 --        picchia.
@@ -7036,13 +7027,16 @@ END ADD TO.
 
 
 
--- ==============================================================
-
-
--- @ATTACCA CON ---> @ATTACK WITH
-
-
--- ==============================================================
+-->gruppo_attaccare                                @ATTACCA CON <-- @ATTACK WITH
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== attacca_con
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `attacca_con`.
+--<
 
 -- SYNTAX attack_with = attack (bersaglio) 'with' (arma)
 
@@ -7119,6 +7113,210 @@ ADD TO EVERY THING
             -- "Resorting to brute force is not the solution here."
   END VERB attacca_con.
 END ADD TO.
+
+
+-->gruppo_attaccare                                            @CALCIA <-- @KICK
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== calcia
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `calcia`.
+--<
+
+
+SYNTAX calcia = calcia (bersaglio)
+  WHERE bersaglio IsA THING
+    ELSE
+      IF bersaglio IS NOT plurale
+      -- @NOTA: Servirà messaggio ad hoc qui!                                   TRANSLATE!
+        THEN SAY mia_AT:illegal_parameter_sg.
+        ELSE SAY mia_AT:illegal_parameter_pl.
+      END IF.
+
+
+ADD TO EVERY THING
+  VERB calcia
+    CHECK mia_AT CAN calciare
+      ELSE SAY mia_AT:azione_bloccata.
+    AND bersaglio IS esaminabile
+      ELSE
+        IF bersaglio IS NOT plurale
+--                                                                              TRANSLATE!
+          THEN SAY mia_AT:check_obj_suitable_sg.
+          ELSE SAY mia_AT:check_obj_suitable_pl.
+        END IF.
+    AND bersaglio <> hero
+--                                                                              TRANSLATE!
+      ELSE SAY mia_AT:check_obj_not_hero1.
+    AND bersaglio NOT IN hero
+--                                                                              TRANSLATE!
+      ELSE SAY mia_AT:check_obj_not_in_hero1.
+    AND bersaglio NOT IN abbigliamento
+--                                                                              TRANSLATE!
+      ELSE SAY mia_AT:check_obj_not_in_worn2.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
+      ELSE
+        IF bersaglio IS NOT raggiungibile
+          THEN
+            IF bersaglio IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF bersaglio IS distante
+          THEN
+            IF bersaglio IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+    DOES
+      -- "La violenza non è la giusta risposta a questo." ---> taken from i6
+      SAY mia_AT:la_violenza_non_è_la_risposta.
+   -- "Resorting to brute force is not the solution here."
+  END VERB calcia.
+END ADD TO.
+
+-->gruppo_attaccare                                            @UCCIDI <-- @KILL
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== uccidi
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `uccidi`.
+--<
+
+
+-- KILL (+ murder)
+-- SYNTAX kill = kill (vittima)
+
+SYNTAX uccidi = uccidi (vittima)
+  WHERE vittima IsA ACTOR
+    ELSE
+      IF vittima IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF.
+      "uccidere."
+
+SYNONYMS ammazza = uccidi.
+
+ADD TO EVERY ACTOR
+  VERB uccidi
+    CHECK mia_AT CAN uccidere
+      ELSE SAY mia_AT:azione_bloccata.
+    AND vittima IS esaminabile
+      ELSE
+        IF vittima IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF.
+        "uccidere."
+    AND vittima <> hero
+--                                                                              TRANSLATE!
+      ELSE SAY mia_AT:check_obj_not_hero2.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    DOES "You have to state what you want to kill" SAY THE vittima. "with."
+  END VERB uccidi.
+END ADD TO.
+
+
+
+-->gruppo_attaccare                                   @UCCIDI CON <-- @KILL WITH
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== uccidi_con
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `uccidi_con`.
+--<
+
+-- SYNTAX kill_with = kill (vittima) 'with' (arma)
+
+SYNTAX uccidi_con = uccidi (vittima) con (arma)
+  WHERE vittima IsA ACTOR
+    ELSE
+      IF vittima IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF.
+      "uccidere."
+  AND arma IsA arma
+    ELSE
+      IF arma IS NOT plurale
+        THEN SAY mia_AT:ogg2_illegale_CON_sg.
+        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+      END IF.
+      "uccidere."
+
+
+ADD TO EVERY ACTOR
+  VERB uccidi_con
+    WHEN vittima
+      CHECK mia_AT CAN uccidere_con
+        ELSE SAY mia_AT:azione_bloccata.
+--                                                                              TRANSLATE!
+      AND vittima <> hero
+        ELSE SAY mia_AT:check_obj_not_hero2.
+      AND arma IN hero
+        ELSE SAY mia_AT:non_possiedi_ogg2.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY mia_AT:imp_luogo_buio.
+      AND vittima IS NOT distante
+        ELSE
+          IF vittima IS NOT plurale
+            THEN SAY mia_AT:ogg1_distante_sg.
+            ELSE SAY mia_AT:ogg1_distante_pl.
+          END IF.
+      DOES
+        "Sarebbe un atto di inutile brutalità."
+     -- "That would be needlessly brutal."
+  END VERB uccidi_con.
+END ADD TO.
+
+
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- VERBI NON ANCORA RAGGRUPPATI 
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+
+-- ==============================================================
+
+
+-- @ASPETTA ---> WAIT (= z)
+
+
+-- ==============================================================
+
+
+SYNTAX aspetta = aspetta.
+
+SYNONYMS
+  z, attendi = aspetta.
+
+VERB aspetta
+  CHECK mia_AT CAN aspettare
+    ELSE SAY mia_AT:azione_bloccata.
+  DOES
+    "Il tempo passa."
+END VERB aspetta.
 
 
 
@@ -8603,105 +8801,6 @@ ADD TO EVERY THING
 END ADD TO.
 
 
-
--- ==============================================================
-
-
--- @UCCIDI ---> @KILL (+ murder)
-
-
--- ==============================================================
-
--- SYNTAX kill = kill (vittima)
-
-SYNTAX uccidi = uccidi (vittima)
-  WHERE vittima IsA ACTOR
-    ELSE
-      IF vittima IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "uccidere."
-
-SYNONYMS ammazza = uccidi.
-
-ADD TO EVERY ACTOR
-  VERB uccidi
-    CHECK mia_AT CAN uccidere
-      ELSE SAY mia_AT:azione_bloccata.
-    AND vittima IS esaminabile
-      ELSE
-        IF vittima IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY mia_AT:ogg1_inadatto_sg.
-          ELSE SAY mia_AT:ogg1_inadatto_pl.
-        END IF.
-        "uccidere."
-    AND vittima <> hero
---                                                                              TRANSLATE!
-      ELSE SAY mia_AT:check_obj_not_hero2.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    DOES "You have to state what you want to kill" SAY THE vittima. "with."
-  END VERB uccidi.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
--- @UCCIDI CON ---> @KILL WITH
-
-
--- ==============================================================
-
--- SYNTAX kill_with = kill (vittima) 'with' (arma)
-
-SYNTAX uccidi_con = uccidi (vittima) con (arma)
-  WHERE vittima IsA ACTOR
-    ELSE
-      IF vittima IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "uccidere."
-  AND arma IsA arma
-    ELSE
-      IF arma IS NOT plurale
-        THEN SAY mia_AT:ogg2_illegale_CON_sg.
-        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
-      END IF.
-      "uccidere."
-
-
-ADD TO EVERY ACTOR
-  VERB uccidi_con
-    WHEN vittima
-      CHECK mia_AT CAN uccidere_con
-        ELSE SAY mia_AT:azione_bloccata.
---                                                                              TRANSLATE!
-      AND vittima <> hero
-        ELSE SAY mia_AT:check_obj_not_hero2.
-      AND arma IN hero
-        ELSE SAY mia_AT:non_possiedi_ogg2.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY mia_AT:imp_luogo_buio.
-      AND vittima IS NOT distante
-        ELSE
-          IF vittima IS NOT plurale
-            THEN SAY mia_AT:ogg1_distante_sg.
-            ELSE SAY mia_AT:ogg1_distante_pl.
-          END IF.
-      DOES
-        "Sarebbe un atto di inutile brutalità."
-     -- "That would be needlessly brutal."
-  END VERB uccidi_con.
-END ADD TO.
-
-
 -- ==============================================================
 
 
@@ -9231,7 +9330,7 @@ END VERB rispondi_Sì.
 --~*| jump               |                                    | jump                              | 0 |
 --~*| jump_in            |                                    | jump in (cont)                    | 1 |
 --~*| jump_on            |                                    | jump on (surface)                 | 1 |
---| | kick               |                                    | kick (target)                     | 1 |
+--~*| kick               |                                    | kick (target)                     | 1 |
 --~*| kill               | murder                             | kill (victim)                     | 1 |
 --~*| kill_with          |                                    | kill (victim) with (weapon)       | 2 |
 --~*| kiss               | hug, embrace                       | kiss (obj)                        | 1 | {x}
@@ -9961,83 +10060,6 @@ ADD TO EVERY THING
       LOCATE hero AT png.
       "You follow" SAY THE png. "."
     END VERB follow.
-END ADD TO.
-
-
-
-
--- ==============================================================
-
-
--- @HELP -> see ABOUT
-
-
--- ==============================================================
-
-
-
-
--- =============================================================
-
-
--- @KICK
-
-
--- =============================================================
-
-
-SYNTAX kick = kick (bersaglio)
-  WHERE bersaglio IsA THING
-    ELSE
-      IF bersaglio IS NOT plurale
-      -- @NOTA: Servirà messaggio ad hoc qui!                                   TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter_sg.
-        ELSE SAY mia_AT:illegal_parameter_pl.
-      END IF.
-
-
-ADD TO EVERY THING
-  VERB kick
-    CHECK mia_AT CAN kick
-      ELSE SAY mia_AT:azione_bloccata.
-    AND bersaglio IS esaminabile
-      ELSE
-        IF bersaglio IS NOT plurale
---                                                                              TRANSLATE!
-          THEN SAY mia_AT:check_obj_suitable_sg.
-          ELSE SAY mia_AT:check_obj_suitable_pl.
-        END IF.
-    AND bersaglio <> hero
---                                                                              TRANSLATE!
-      ELSE SAY mia_AT:check_obj_not_hero1.
-    AND bersaglio NOT IN hero
---                                                                              TRANSLATE!
-      ELSE SAY mia_AT:check_obj_not_in_hero1.
-    AND bersaglio NOT IN abbigliamento
---                                                                              TRANSLATE!
-      ELSE SAY mia_AT:check_obj_not_in_worn2.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
-      ELSE
-        IF bersaglio IS NOT raggiungibile
-          THEN
-            IF bersaglio IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF bersaglio IS distante
-          THEN
-            IF bersaglio IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    DOES
-      -- "La violenza non è la giusta risposta a questo." ---> taken from i6
-      SAY mia_AT:la_violenza_non_è_la_risposta.
-   -- "Resorting to brute force is not the solution here."
-  END VERB kick.
 END ADD TO.
 
 

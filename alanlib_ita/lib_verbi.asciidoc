@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.26-Alpha, 2018-11-09: Alan 3.0beta6
+v0.7.27-Alpha, 2018-11-09: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -99,6 +99,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | blocca_con         | serra                        | blocca (ogg) con (chiave)              |     | 2 | {X} |
 | brucia             |                              | brucia (ogg)                           |     | 1 | {X} |
 | brucia_con         |                              | brucia (ogg) con (strum)               |     | 2 | {X} |
+| calcia             |                              | calcia (bersaglio)                     |     | 1 |     |
 | canta              |                              | canta                                  |     | 0 |     |
 | chiedi             |                              | chiedi a (png) (ogg)                   |     | 2 | {X} |
 | chiudi             |                              | chiudi (ogg)                           |     | 1 | {X} |
@@ -746,6 +747,29 @@ Verbi di questo gruppo non ancora spostati:
 ==== tira
 
 // end::gruppo_spingere[]
+// tag::gruppo_attaccare[]
+=== Attaccare e Simili
+
+Questo gruppo include i verbi di violenza come attaccare, uccidere, prendere
+a calci, colpire e simili:
+
+* `attacca`
+* `attacca_con`
+* `calcia`
+* `uccidi`
+* `uccidi_con`
+
+==== attacca
+
+==== attacca_con
+
+==== calcia
+
+==== uccidi
+
+==== uccidi_con
+
+// end::gruppo_attaccare[]
 // tag::comandi_domande[]
 
 == Verbi di Domande
@@ -786,7 +810,6 @@ italiano del modulo dei verbi.
 | fire_at            |                                    | fire (weapon) at (target)         | 2 |
 | follow             |                                    | follow (act)                      | 1 |
 | hint               | hints                              | hint                              | 0 |
-| kick               |                                    | kick (target)                     | 1 |
 | knock (on)         |                                    | knock on (obj)                    | 1 | {x}
 | lift               |                                    | lift (obj)                        | 1 | {x}
 | pry                |                                    | pry (obj)                         | 1 | {x}
@@ -999,6 +1022,16 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `spingi_con`.
 
 * [ ] Descrizione `tira`.
+
+* [ ] Descrizione `attacca`.
+
+* [ ] Descrizione `attacca_con`.
+
+* [ ] Descrizione `calcia`.
+
+* [ ] Descrizione `uccidi`.
+
+* [ ] Descrizione `uccidi_con`.
 
 // end::todo_checklist[]
 

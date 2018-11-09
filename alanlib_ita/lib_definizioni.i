@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.16-Alpha, 2018-11-09: Alan 3.0beta6
+--| v0.7.17-Alpha, 2018-11-09: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -727,6 +727,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN bruciare.                 ---> burn
   CAN bruciare_con.             ---> burn_with
   CAN bussare.                  ---> knock
+  CAN calciare.                 ---> kick
   CAN cantare.                  ---> sing
   CAN caricare_partita.         ---> 'restore'
   CAN chiedere.                 ---> ask_for
@@ -868,7 +869,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN fire_at.
 --CAN get_up. --------------------> ** VERBO ELIMINATO **
   CAN hint.        -- (+ hints)
-  CAN kick.
   CAN lift.
 --CAN light. ---------------------> ** VERBO ELIMINATO **
 --CAN look_at. -------------------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
@@ -947,6 +947,7 @@ EVENT check_restriction
       MAKE mia_AT bruciare.                 ---> burn
       MAKE mia_AT bruciare_con.             ---> burn_with
       MAKE mia_AT bussare.                  ---> knock
+      MAKE mia_AT calciare.                 ---> kick
       MAKE mia_AT cantare.                  ---> sing
       MAKE mia_AT caricare_partita.         ---> 'restore'
       MAKE mia_AT chiedere.                 ---> ask_for
@@ -1084,7 +1085,6 @@ EVENT check_restriction
       MAKE mia_AT fire_at.
     --MAKE mia_AT get_up. ------------> ** VERBO ELIMINATO **
       MAKE mia_AT hint.            -- (+ hints)
-      MAKE mia_AT kick.
       MAKE mia_AT lift.
     --MAKE mia_AT light. -------------> ** VERBO ELIMINATO **
     --MAKE mia_AT look_at. -----------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
@@ -1155,6 +1155,7 @@ EVENT check_restriction
           MAKE mia_AT NOT bruciare.                 ---> burn
           MAKE mia_AT NOT bruciare_con.             ---> burn_with
           MAKE mia_AT NOT bussare.                  ---> knock
+          MAKE mia_AT NOT calciare.                 ---> kick
           MAKE mia_AT NOT chiudere.                 ---> close        (+ shut)
           MAKE mia_AT NOT chiudere_con.             ---> close_with
           MAKE mia_AT NOT comprare.                 ---> buy          (+ purchase)
@@ -1247,7 +1248,6 @@ EVENT check_restriction
           MAKE mia_AT NOT fire.
           MAKE mia_AT NOT fire_at.
         --MAKE mia_AT NOT get_up. --------> ** VERBO ELIMINATO **
-          MAKE mia_AT NOT kick.
           MAKE mia_AT NOT lift.
         --MAKE mia_AT NOT light. ---------> ** VERBO ELIMINATO **
           MAKE mia_AT NOT pry.

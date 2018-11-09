@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Definizioni
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.16-Alpha, 2018-11-09: Alan 3.0beta6
+v0.7.17-Alpha, 2018-11-09: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_definitions.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -68,6 +68,7 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
   CAN bruciare.                 ---> burn
   CAN bruciare_con.             ---> burn_with
   CAN bussare.                  ---> knock
+  CAN calciare.                 ---> kick
   CAN cantare.                  ---> sing
   CAN caricare_partita.         ---> 'restore'
   CAN chiedere.                 ---> ask_for
@@ -283,7 +284,6 @@ Questo è l'elenco degli attributi verbali non ancora tradotti:
   CAN fire_at.
 --CAN get_up. --------------------> ** VERBO ELIMINATO **
   CAN hint.        -- (+ hints)
-  CAN kick.
   CAN lift.
 --CAN light. ---------------------> ** VERBO ELIMINATO **
 --CAN look_at. -------------------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)

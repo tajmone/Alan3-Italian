@@ -366,7 +366,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `jump`           | `saltare`                 |
 | `jump_in`        | `saltare_in`              |
 | `jump_on`        | `saltare_su`              |
-| `kick`           |                           |
+| `kick`           | `calciare`                |
 | `kill`           | `uccidere`                |
 | `kill_with`      | `uccidere_con`            |
 | `kiss`           | `baciare`                 |
