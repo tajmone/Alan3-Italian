@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.25-Alpha, 2018-11-09: Alan 3.0beta6
+v0.7.26-Alpha, 2018-11-09: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -173,6 +173,8 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | siediti_su         | siedi                        | siediti su (superficie)                |     | 1 |     |
 | sorseggia          |                              | sorseggia (liq)                        |     | 1 |     |
 | spegni             |                              | spegni (disp)                          |     | 1 |     |
+| spingi             |                              | spingi (ogg)                           |     | 1 | {X} |
+| spingi_con         |                              | spingi (ogg) con (strum)               |     | 2 | {X} |
 | spogliati          | svestiti                     | spogliati                              |     | 0 |     |
 | strappa            |                              | strappa (ogg)                          |     | 1 | {X} |
 | suona              |                              | suona (ogg)                            |     | 1 | {X} |
@@ -726,6 +728,24 @@ Questo gruppo include i verbi per tuffarsi e nuotare in liquidi:
 ==== tuffati_in
 
 // end::gruppo_nuotare[]
+// tag::gruppo_spingere[]
+=== Spingere e Tirare
+
+Questo gruppo include i verbi per spingere e tirare oggetti:
+
+Verbi di questo gruppo non ancora spostati:
+
+* `spingi`
+* `spingi_con`
+* `tira`
+
+==== spingi
+
+==== spingi_con
+
+==== tira
+
+// end::gruppo_spingere[]
 // tag::comandi_domande[]
 
 == Verbi di Domande
@@ -771,8 +791,6 @@ italiano del modulo dei verbi.
 | lift               |                                    | lift (obj)                        | 1 | {x}
 | pry                |                                    | pry (obj)                         | 1 | {x}
 | pry_with           |                                    | pry (obj) with (instr)            | 2 | {x}
-| push               |                                    | push (obj)                        | 1 | {x}
-| push_with          |                                    | push (obj) with (instr)           | 2 | {x}
 | rub                |                                    | rub (obj)                         | 1 | {x}
 | search             |                                    | search (obj)                      | 1 | {x}
 | shake              |                                    | shake (obj)                       | 1 | {x}
@@ -975,6 +993,12 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `tuffati`.
 
 * [ ] Descrizione `tuffati_in`.
+
+* [ ] Descrizione `spingi`.
+
+* [ ] Descrizione `spingi_con`.
+
+* [ ] Descrizione `tira`.
 
 // end::todo_checklist[]
 

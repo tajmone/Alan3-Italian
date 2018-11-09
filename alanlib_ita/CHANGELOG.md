@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/11/09 \(6\)](#20181109-6)
+    - [Group of Verbs: `push*`](#group-of-verbs-push)
 - [2018/11/09 \(5\)](#20181109-5)
     - [Group of Verbs: `dive*` and `swim*`](#group-of-verbs-dive-and-swim)
 - [2018/11/09 \(4\)](#20181109-4)
@@ -419,6 +421,27 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/11/09 (6)
+
+- [`lib_verbi.i`][lib_verbi] (v0.7.26)
+
+## Group of Verbs: `push*`
+
+Translated verbs of the `push*` group:
+
+|   English   |   Italian    |
+|-------------|--------------|
+| `push_with` | `spingi`     |
+| `push_with` | `spingi_con` |
+
+
+    spingi (ogg)
+    spingi (ogg) con (strum)
+
+with no synonyms.
+
+<!---------------------------------------------------------------------------->
 
 # 2018/11/09 (5)
 

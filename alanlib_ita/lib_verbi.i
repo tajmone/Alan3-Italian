@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.25-Alpha, 2018-11-09: Alan 3.0beta6
+--| v0.7.26-Alpha, 2018-11-09: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -790,6 +790,8 @@ END VERB ringraziamenti.
 --| | siediti_su         | siedi                        | siediti su (superficie)                |     | 1 |     |
 --| | sorseggia          |                              | sorseggia (liq)                        |     | 1 |     |
 --| | spegni             |                              | spegni (disp)                          |     | 1 |     |
+--| | spingi             |                              | spingi (ogg)                           |     | 1 | {X} |
+--| | spingi_con         |                              | spingi (ogg) con (strum)               |     | 2 | {X} |
 --| | spogliati          | svestiti                     | spogliati                              |     | 0 |     |
 --| | strappa            |                              | strappa (ogg)                          |     | 1 | {X} |
 --| | suona              |                              | suona (ogg)                            |     | 1 | {X} |
@@ -6687,6 +6689,233 @@ ADD TO EVERY OBJECT
   END VERB tuffati_in.
 END ADD TO.
 
+-->gruppo_spingere(21700)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Spingere e Tirare
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi per spingere e tirare oggetti:
+--| 
+--| Verbi di questo gruppo non ancora spostati:
+--| 
+--| * `spingi`
+--| * `spingi_con`
+--| * `tira`
+--<
+
+
+-->gruppo_spingere                                             @SPINGI <-- @PUSH
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== spingi
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `spingi`.
+--<
+
+-- SYNTAX   push = push (ogg)
+-- SYNONYMS press = push.
+
+SYNTAX spingi = spingi (ogg)
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF.
+      "spingere."
+
+
+
+
+ADD TO EVERY THING
+  VERB spingi
+    CHECK mia_AT CAN spingere
+      ELSE SAY mia_AT:azione_bloccata.
+--                                                                              TRANSLATE!
+    AND ogg IS spostabile
+          ELSE SAY mia_AT:check_obj_movable.
+--                                                                              TRANSLATE!
+    AND ogg <> hero
+      ELSE SAY mia_AT:check_obj_not_hero1.
+    AND ogg IS inanimato
+      -- "non credo che $+1 gradirebbe."
+      ELSE SAY  mia_AT:ogg1_png_non_apprezzerebbe.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+    DOES
+--                                                                              TRANSLATE!
+          "You give" SAY THE ogg. "a little push. Nothing happens."
+  END VERB spingi.
+END ADD TO.
+
+
+
+-->gruppo_spingere                                    @SPINGI CON <-- @PUSH WITH
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== spingi_con
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `spingi_con`.
+--<
+
+
+SYNTAX spingi_con = spingi (ogg) con (strum)
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF.
+      "spingere."
+  AND strum IsA OBJECT
+    ELSE
+      IF strum IS NOT plurale
+        THEN SAY mia_AT:ogg2_illegale_CON_sg.
+        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+      END IF.
+      "spingere" SAY THE ogg. "."
+
+
+ADD TO EVERY THING
+  VERB spingi_con
+    WHEN ogg
+      CHECK mia_AT CAN spingere_con
+        ELSE SAY mia_AT:azione_bloccata.
+      AND ogg IS spostabile
+--                                                                              TRANSLATE!
+        ELSE SAY mia_AT:check_obj_movable.
+      AND ogg <> strum
+--                                                                              TRANSLATE!
+        ELSE SAY mia_AT:check_obj_not_obj2_with.
+      AND strum IS esaminabile
+        ELSE
+          IF strum IS NOT plurale
+            THEN SAY mia_AT:ogg2_illegale_CON_sg.
+            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+          END IF.
+          "spingere" SAY THE ogg. "."
+      AND strum IN hero
+        ELSE SAY mia_AT:non_possiedi_ogg2.
+      AND ogg <> hero
+        ELSE SAY mia_AT:check_obj_not_hero1.
+      AND ogg IS inanimato
+        -- "non credo che $+1 gradirebbe."
+        ELSE SAY  mia_AT:ogg1_png_non_apprezzerebbe.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY mia_AT:imp_luogo_buio.
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_distante_sg.
+                ELSE SAY mia_AT:ogg1_distante_pl.
+              END IF.
+          END IF.
+      DOES
+--                                                                              TRANSLATE!
+        "That wouldn't accomplish anything."
+  END VERB spingi_con.
+END ADD TO.
+
+
+-->gruppo_spingere                                               @TIRA <-- @PULL
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== tira
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `tira`.
+--<
+
+
+-- i6 accetta come sinonimo di 'tira': 'trascina'.
+
+-- SYNTAX pull = pull (ogg)
+
+SYNTAX tira = tira (ogg)
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF.
+      "tirare." --@NOTA: ambiguità con "lanciare"
+
+
+ADD TO EVERY OBJECT
+  VERB tira
+    CHECK mia_AT CAN tirare
+      ELSE SAY mia_AT:azione_bloccata.
+--                                                                              TRANSLATE!
+    AND ogg IS spostabile
+      ELSE SAY mia_AT:check_obj_movable.
+--                                                                              TRANSLATE!
+    AND ogg <> hero
+      ELSE SAY mia_AT:check_obj_not_hero1.
+    AND ogg IS inanimato
+      -- "non credo che $+1 gradirebbe."
+      ELSE SAY  mia_AT:ogg1_png_non_apprezzerebbe.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+    DOES
+      -- "Farlo non servirebbe a nulla."
+      SAY mia_AT:non_servirebbe_a_nulla.
+      -- "That wouldn't accomplish anything."
+  END VERB tira.
+END ADD TO.
+
 
 
 --=============================================================================
@@ -8322,67 +8551,6 @@ END ADD TO.
 
 
 
-
--- ==============================================================
-
-
--- @TIRA ---> @PULL
-
-
--- ==============================================================
--- i6 accetta come sinonimo di 'tira': 'trascina'.
-
--- SYNTAX pull = pull (ogg)
-
-SYNTAX tira = tira (ogg)
-  WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "tirare." --@NOTA: ambiguità con "lanciare"
-
-
-ADD TO EVERY OBJECT
-  VERB tira
-    CHECK mia_AT CAN tirare
-      ELSE SAY mia_AT:azione_bloccata.
---                                                                              TRANSLATE!
-    AND ogg IS spostabile
-      ELSE SAY mia_AT:check_obj_movable.
---                                                                              TRANSLATE!
-    AND ogg <> hero
-      ELSE SAY mia_AT:check_obj_not_hero1.
-    AND ogg IS inanimato
-      -- "non credo che $+1 gradirebbe."
-      ELSE SAY  mia_AT:ogg1_png_non_apprezzerebbe.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    DOES
-      -- "Farlo non servirebbe a nulla."
-      SAY mia_AT:non_servirebbe_a_nulla.
-      -- "That wouldn't accomplish anything."
-  END VERB tira.
-END ADD TO.
-
-
 -- ==============================================================
 
 
@@ -9098,8 +9266,8 @@ END VERB rispondi_Sì.
 --| | pry                |                                    | pry (obj)                         | 1 | {x}
 --| | pry_with           |                                    | pry (obj) with (instr)            | 2 | {x}
 --~*| pull               |                                    | pull (obj)                        | 1 | {x}
---| | push               |                                    | push (obj)                        | 1 | {x}
---| | push_with          |                                    | push (obj) with (instr)           | 2 | {x}
+--~*| push               |                                    | push (obj)                        | 1 | {x}
+--~*| push_with          |                                    | push (obj) with (instr)           | 2 | {x}
 --~*| put                | lay, place                         | put (obj)                         | 1 | {x}
 --~*| put_against        |                                    | put (obj) against (bulk))         | 2 | {x}
 --~*| put_behind         |                                    | put (obj) behind (bulk)           | 2 | {x}
@@ -10146,141 +10314,6 @@ VERB pry_with
         END IF.
     DOES "That doesn't work."
   END VERB pry_with.
-END ADD TO.
-
-
-
-
--- ==============================================================
-
-
--- @PUSH
-
-
--- ==============================================================
-
-
-SYNTAX push = push (ogg)
-  WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "spingere."
-
-
-SYNONYMS press = push.
-
-
-ADD TO EVERY THING
-  VERB push
-    CHECK mia_AT CAN spingere
-      ELSE SAY mia_AT:azione_bloccata.
-    AND ogg IS spostabile
-          ELSE SAY mia_AT:check_obj_movable.
-    AND ogg <> hero
-      ELSE SAY mia_AT:check_obj_not_hero1.
-    AND ogg IS inanimato
-      -- "non credo che $+1 gradirebbe."
-      ELSE SAY  mia_AT:ogg1_png_non_apprezzerebbe.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    DOES
-          "You give" SAY THE ogg. "a little push. Nothing happens."
-  END VERB push.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
--- @PUSH WITH
-
-
--- ==============================================================
-
-
-SYNTAX push_with = push (ogg) 'with' (strum)
-  WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "spingere."
-  AND strum IsA OBJECT
-    ELSE
-      IF strum IS NOT plurale
-        THEN SAY mia_AT:ogg2_illegale_CON_sg.
-        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
-      END IF.
-      "spingere" SAY THE ogg. "."
-
-
-ADD TO EVERY THING
-  VERB push_with
-    WHEN ogg
-      CHECK mia_AT CAN spingere_con
-        ELSE SAY mia_AT:azione_bloccata.
-      AND ogg IS spostabile
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_movable.
-      AND ogg <> strum
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_with.
-      AND strum IS esaminabile
-        ELSE
-          IF strum IS NOT plurale
-            THEN SAY mia_AT:ogg2_illegale_CON_sg.
-            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
-          END IF.
-          "spingere" SAY THE ogg. "."
-      AND strum IN hero
-        ELSE SAY mia_AT:non_possiedi_ogg2.
-      AND ogg <> hero
-        ELSE SAY mia_AT:check_obj_not_hero1.
-      AND ogg IS inanimato
-        -- "non credo che $+1 gradirebbe."
-        ELSE SAY  mia_AT:ogg1_png_non_apprezzerebbe.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY mia_AT:imp_luogo_buio.
-      AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-              END IF.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY mia_AT:ogg1_distante_sg.
-                ELSE SAY mia_AT:ogg1_distante_pl.
-              END IF.
-          END IF.
-      DOES
-        "That wouldn't accomplish anything."
-  END VERB push_with.
 END ADD TO.
 
 

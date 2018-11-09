@@ -138,6 +138,8 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 | 21500   |           | gruppo_lanciare              | == Lanciare
 // -----------------------------------------------------------------------------
 | 21600   |           | gruppo_nuotare               | == Nuotare e Tuffarsi
+// -----------------------------------------------------------------------------
+| 21700   |           | gruppo_spingere              | == Spingere e Tirare
 // =============================================================================
 | 30000   |           | comandi_comandi_domande      | == Verbi di Domande
 // -----------------------------------------------------------------------------
