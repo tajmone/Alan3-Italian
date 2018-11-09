@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.21-Alpha, 2018-11-09: Alan 3.0beta6
+--| v0.7.22-Alpha, 2018-11-09: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -697,6 +697,7 @@ END VERB ringraziamenti.
 --| | VERBO              | SINONIMI                     | SINTASSI                               |  M  | A |  O  |  B
 --~ +--------------------+------------------------------+----------------------------------------+-----+---+-----+-----+
 --| | accendi            |                              | accendi (disp)                         |     | 1 |     |
+--| | alzati             |                              | alzati                                 |     | 0 |     |
 --| | annusa0            | odora                        | annusa                                 |     | 0 |     |
 --| | annusa             | odora                        | annusa (odore)                         |     | 1 |     |
 --| | apri               |                              | apri (ogg)                             |     | 1 | {X} |
@@ -774,7 +775,11 @@ END VERB ringraziamenti.
 --| | sblocca            |                              | sblocca (ogg)                          |     | 1 | {X} |
 --| | sblocca_con        |                              | sblocca (ogg) con (chiave)             |     | 2 | {X} |
 --| | scava              |                              | scava (ogg)                            |     | 1 | {X} |
+--| | scendi_da          |                              | scendi da (superficie)                 |     | 1 |     |
 --| | scrivi             |                              | scrivi "testo" su (ogg)                |     | 1 | {X} |
+--| | sdraiati           |                              | sdraiati                               |     | 0 |     |
+--| | sdraiati_in        |                              | sdraiati in (cont)                     |     | 1 |     |
+--| | sdraiati_su        |                              | sdraiati su (superficie)               |     | 1 |     |
 --| | siediti            | siedi                        | siediti                                |     | 0 |     |
 --| | siediti_su         | siedi                        | siediti su (superficie)                |     | 1 |     |
 --| | sorseggia          |                              | sorseggia (liq)                        |     | 1 |     |
@@ -5433,6 +5438,425 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
+-->gruppo_sedersi(21400)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Sedersi, Sdraiarsi, Alzarsi
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi per sedersi, sdraiarsi ed alazarsi:
+--| 
+--| * `alzati`
+--| * `scendi_da`
+--| * `siediti`
+--| * `siediti_su`
+--| * `sdraiati`
+--| * `sdraiati_in`
+--| * `sdraiati_su`
+--| 
+--| Verbi di questo gruppo non ancora tradotti:
+--| 
+--| * `stand_on`
+--<
+
+
+-->gruppo_sedersi                                             @ALZATI <-- @STAND
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== alzati
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `alzati`.
+--<
+
+-- SYNTAX stand = stand.
+--        stand = stand 'up'.
+
+
+SYNTAX alzati = alzati.
+
+VERB alzati
+  CHECK mia_AT CAN alzarsi
+    ELSE SAY mia_AT:azione_bloccata.
+  DOES
+    IF hero IS seduto OR hero IS sdraiato
+      THEN "Ti alzi in piedi."
+        MAKE hero NOT seduto.
+        MAKE hero NOT sdraiato.
+      ELSE "Sei già in piedi."
+    END IF.
+END VERB alzati.
+
+
+-->gruppo_sedersi                                        @SCENDI_DA <-- @GET OFF
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== scendi_da
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `scendi_da`.
+--<
+
+SYNTAX scendi_da = scendi da (superficie)
+  WHERE superficie IsA supporto
+    ELSE
+      IF superficie IS NOT plurale
+--                                                                              TRANSLATE!
+        THEN SAY mia_AT:illegal_parameter_off_sg.
+        ELSE SAY mia_AT:illegal_parameter_off_pl.
+      END IF.
+
+ADD TO EVERY supporto
+  VERB scendi_da
+    CHECK mia_AT CAN scendere_da
+      ELSE SAY mia_AT:azione_bloccata.
+    DOES
+--                                                                              TRANSLATE!
+      IF hero IS seduto OR hero IS sdraiato
+        THEN "Ti alzi" SAY superficie:prep_DA. SAY superficie. "."
+          MAKE hero NOT sdraiato.
+          MAKE hero NOT seduto.
+--      @TODO: create common attribute:                                         OPTIMIZE!
+        ELSE "Sei già in piedi."
+      END IF.
+   -- IF hero IS seduto OR hero IS sdraiato
+   --   THEN "You get off" SAY THE superficie. "."
+   --     MAKE hero NOT sdraiato.
+   --     MAKE hero NOT seduto.
+   --   ELSE "You're standing up already."
+   -- END IF.
+    END VERB scendi_da.
+END ADD TO.
+
+
+
+-->gruppo_sedersi                                        @SDRAIATI <-- @LIE DOWN
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== sdraiati
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `sdraiati`.
+--<
+
+
+SYNTAX sdraiati = sdraiati.
+
+SYNONYMS coricati = sdraiati.
+
+
+VERB sdraiati
+  CHECK mia_AT CAN sdraiarsi
+    ELSE SAY mia_AT:azione_bloccata.
+  AND hero IS NOT sdraiato
+--                                                                              TRANSLATE!
+    ELSE SAY mia_AT:check_hero_not_lying_down4.
+  DOES
+--                                                                              TRANSLATE!
+    "There's no need to lie down right now."
+
+    -- Affinché l'azione abbia effetto, si sostituisca la riga precedente con:
+    --  DOES "You lie down."
+    --    MAKE hero sdraiato.
+    --    MAKE hero NOT seduto.
+END VERB sdraiati.
+
+
+--                                                                              TRANSLATE!
+-- When the hero is sitting or lying down, it will be impossible for her/him to
+-- perform certain actions, as numerous verbs in the library have checks for this.
+-- For example, if the hero is lying down and the player types 'attack [something]',
+-- the response will be "It will be difficult to attack anything while
+-- lying down."
+
+-- Also, it is often essential to make certain objects NOT reachable when you are sitting
+-- or lying down.
+
+
+-->gruppo_sedersi                                       @SDRAIATI IN <-- @LIE IN
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== sdraiati_in
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `sdraiati_in`.
+--<
+
+
+SYNTAX  sdraiati_in = sdraiati 'in' (cont)
+  WHERE cont IsA OBJECT
+    ELSE
+--                                                                              TRANSLATE!
+      IF cont IS NOT plurale
+        THEN SAY mia_AT:illegal_parameter_in_sg.
+        ELSE SAY mia_AT:illegal_parameter_in_pl.
+      END IF.
+  AND cont IsA CONTAINER
+    ELSE
+--                                                                              TRANSLATE!
+      IF cont IS NOT plurale
+        THEN SAY mia_AT:illegal_parameter_in_sg.
+        ELSE SAY mia_AT:illegal_parameter_in_pl.
+      END IF.
+
+
+ADD TO EVERY OBJECT
+  VERB sdraiati_in
+    CHECK mia_AT CAN sdraiarsi_in
+      ELSE SAY mia_AT:azione_bloccata.
+--                                                                              TRANSLATE!
+    AND hero IS NOT sdraiato
+      ELSE SAY mia_AT:check_hero_not_lying_down4.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND cont IS raggiungibile AND cont IS NOT distante
+      ELSE
+        IF cont IS NOT raggiungibile
+          THEN
+            IF cont IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF cont IS distante
+          THEN
+            IF cont IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+    DOES
+--                                                                              TRANSLATE!
+      "There's no need to lie down in" SAY THE cont. "."
+--                                                                              TRANSLATE!
+      -- If you need this to work, make a nested location
+      -- (for example THE in_bed IsA LOCATION AT bedroom; etc.)
+      -- Remember to: MAKE hero lying_down.
+      -- Presently, an actor cannot be located inside a container object.
+  END VERB sdraiati_in.
+END ADD TO.
+
+
+--                                                                              TRANSLATE!
+-- When the hero is sitting or lying down, it will be impossible for her/him to
+-- perform certain actions, as numerous verbs in the library have checks for this.
+-- For example, if the hero is lying down and the player types 'attack [something]',
+-- the response will be "It will be difficult to attack anything while
+-- lying down."
+
+-- Also, it is often essential to make certain objects NOT reachable when you are sitting
+-- or lying down.
+
+-->gruppo_sedersi                                       @SDRAIATI SU <-- @LIE ON
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== sdraiati_su
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `sdraiati_su`.
+--<
+
+-- SYNTAX lie_on = lie 'on' (surface)
+--        lie_on = lie 'down' 'on' (surface).
+
+
+SYNTAX sdraiati_su = sdraiati su (superficie)
+  WHERE superficie IsA supporto
+    ELSE
+      IF superficie IS NOT plurale
+        THEN SAY mia_AT:ogg1_illegale_SU_sg.
+        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
+      END IF.
+      "$$si sdraiare."
+
+
+ADD TO EVERY OBJECT
+  VERB sdraiati_su
+    CHECK mia_AT CAN sdraiarsi_su
+      ELSE SAY mia_AT:azione_bloccata.
+--                                                                              TRANSLATE!
+    AND hero IS NOT sdraiato
+      ELSE SAY mia_AT:check_hero_not_lying_down4.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND superficie IS raggiungibile AND superficie IS NOT distante
+      ELSE
+        IF superficie IS NOT raggiungibile
+          THEN
+            IF superficie IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF superficie IS distante
+          THEN
+            IF superficie IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+    DOES
+--                                                                              TRANSLATE!
+      "There's no need to lie down on" SAY THE superficie. "."
+--                                                                              TRANSLATE!
+      -- If you need this to work, make a nested location
+      -- (for example THE on_bed IsA LOCATION AT bedroom; etc.)
+      -- Remember to: MAKE hero lying_down.
+                -- Presently, an actor cannot be located inside a container object
+      -- or on a supporter.
+  END VERB sdraiati_su.
+END ADD TO.
+
+
+--                                                                              TRANSLATE!
+
+-- When the hero is sitting or lying down, it will be impossible for her/him to
+-- perform certain actions, as numerous verbs in the library have checks for this.
+-- For example, if the hero is lying down and the player types 'attack [something]',
+-- the response will be "It will be difficult to attack anything while
+-- lying down."
+
+-- Also, it is often essential to make certain objects NOT reachable when you are sitting
+-- or lying down.
+
+
+-->gruppo_sedersi                                              @SIEDITI <-- @SIT
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== siediti
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `siediti`.
+--<
+
+-- SYNTAX sit = sit.
+--        sit = sit 'down'.
+
+
+SYNTAX siediti = siediti.
+
+SYNONYMS siedi = siediti.
+
+
+VERB siediti
+  CHECK mia_AT CAN sedersi
+    ELSE SAY mia_AT:azione_bloccata.
+  AND hero IS NOT seduto
+    --                                                                          TRANSLATE
+    ELSE SAY mia_AT:check_hero_not_sitting4.
+  DOES
+    -- @TODO: Creare messaggio parziale "Al momento, non senti il bisogno di" ??
+    "Non senti il bisogno di sederti in questo momento." --                     IMPROVE
+ -- "You feel no urge to sit down at present."
+
+    --| Se invece si desidera che l'azione venga portata a termine, rimpiazzare
+    --| la riga precedente con il seguente codice:
+    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    -- IF hero IS sdraiato
+    --   THEN "Ti tiri su a sedere."
+    --     MAKE hero NOT sdraiato.
+    --   ELSE "Ti siedi."
+    -- END IF.
+    -- MAKE hero seduto.
+    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+END VERB siediti.
+
+-- Mentre l'eroe è 'seduto' o 'sdraiato', non gli sarà possibile eseguire certe
+-- azioni poiché molti verbi della libreria prima controllano che non si trovi
+-- in una di quelle posizioni. Per esempio, se l'eroe è seduto ed il giocatore
+-- digita 'attacca [qualcosa]', la risposta sarà:
+--
+--    It will be difficult to attack anything while sitting down."              TRANSLATE
+--
+-- Inoltre, sarà spesso necessario rendere alcuni oggetti non raggiungibili da
+-- seduto o sdraiato.
+
+
+-->gruppo_sedersi                                        @SIEDITI SU <-- @SIT_ON
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== siediti_su
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `siediti_su`.
+--<
+
+SYNTAX siediti_su = siediti su (superficie)
+  WHERE superficie IsA supporto
+    ELSE
+      IF superficie IS NOT plurale
+        THEN SAY mia_AT:ogg1_illegale_SU_sg.
+        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
+      END IF.
+      "$$si sedere."
+
+
+ADD TO EVERY supporto
+  VERB siediti_su
+    CHECK mia_AT CAN sedersi_su
+      ELSE SAY mia_AT:azione_bloccata.
+    AND hero IS NOT seduto
+      --                                                                        TRANSLATE
+      ELSE SAY mia_AT:check_hero_not_sitting4.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND superficie IS raggiungibile AND superficie IS NOT distante
+      ELSE
+        IF superficie IS NOT raggiungibile
+          THEN
+            IF superficie IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF superficie IS distante
+          THEN
+            IF superficie IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+    DOES
+      "Non senti il bisogno di sederti in questo momento." --                   IMPROVE
+      -- "You feel no urge to sit down at present."
+
+      --| Se invece si desidera che l'azione venga portata a termine, rimpiazzare
+      --| la riga precedente con il seguente codice:
+      -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      -- IF hero sdraiato
+      --   THEN "Ti alzi e ti siedi" SAY superficie:prep_SU. SAY superficie. "."
+      --     MAKE hero NOT sdraiato.
+      --   ELSE "Ti siedi" SAY superficie:prep_SU. SAY superficie. "."
+      -- END IF.
+      -- MAKE hero seduto.
+  END VERB siediti_su.
+END ADD TO.
+
+
+-- Mentre l'eroe è 'seduto' o 'sdraiato', non gli sarà possibile eseguire certe
+-- azioni poiché molti verbi della libreria prima controllano che non si trovi
+-- in una di quelle posizioni. Per esempio, se l'eroe è seduto ed il giocatore
+-- digita 'attacca [qualcosa]', la risposta sarà:
+--
+--    It will be difficult to attack anything while sitting down."              TRANSLATE
+--
+-- Inoltre, sarà spesso necessario rendere alcuni oggetti non raggiungibili da
+-- seduto o sdraiato.
+
 
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -7002,131 +7426,6 @@ ADD TO EVERY STRING
 END ADD TO.
 
 
--- ==============================================================
-
-
--- @SIEDITI ---> @SIT
-
-
--- ==============================================================
-
--- SYNTAX sit = sit.
-
---        sit = sit 'down'.
-
-SYNTAX siediti = siediti.
-
-       -- siediti = siedi.
-
-SYNONYMS siedi = siediti.
-
-
-VERB siediti
-  CHECK mia_AT CAN sedersi
-    ELSE SAY mia_AT:azione_bloccata.
-  AND hero IS NOT seduto
-    --                                                                          TRANSLATE
-    ELSE SAY mia_AT:check_hero_not_sitting4.
-  DOES
-    -- @TODO: Creare messaggio parziale "Al momento, non senti il bisogno di" ??
-    "Non senti il bisogno di sederti in questo momento." --                     IMPROVE
- -- "You feel no urge to sit down at present."
-
-    --| Se invece si desidera che l'azione venga portata a termine, rimpiazzare
-    --| la riga precedente con il seguente codice:
-    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    -- IF hero IS sdraiato
-    --   THEN "Ti tiri su a sedere."
-    --     MAKE hero NOT sdraiato.
-    --   ELSE "Ti siedi."
-    -- END IF.
-    -- MAKE hero seduto.
-    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-END VERB siediti.
-
--- Mentre l'eroe è 'seduto' o 'sdraiato', non gli sarà possibile eseguire certe
--- azioni poiché molti verbi della libreria prima controllano che non si trovi
--- in una di quelle posizioni. Per esempio, se l'eroe è seduto ed il giocatore
--- digita 'attacca [qualcosa]', la risposta sarà:
---
---    It will be difficult to attack anything while sitting down."              TRANSLATE
---
--- Inoltre, sarà spesso necessario rendere alcuni oggetti non raggiungibili da
--- seduto o sdraiato.
-
-
--- ==============================================================
-
-
--- @SIEDITI SU ---> @SIT_ON
-
-
--- ==============================================================
-
--- SYNTAX sit_on = sit 'on' (superficie)
-
-SYNTAX siediti_su = siediti su (superficie)
-  WHERE superficie IsA supporto
-    ELSE
-      IF superficie IS NOT plurale
-        THEN SAY mia_AT:ogg1_illegale_SU_sg.
-        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
-      END IF.
-      "$$si sedere."
-
-
-ADD TO EVERY supporto
-  VERB siediti_su
-    CHECK mia_AT CAN sedersi_su
-      ELSE SAY mia_AT:azione_bloccata.
-    AND hero IS NOT seduto
-      --                                                                        TRANSLATE
-      ELSE SAY mia_AT:check_hero_not_sitting4.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND superficie IS raggiungibile AND superficie IS NOT distante
-      ELSE
-        IF superficie IS NOT raggiungibile
-          THEN
-            IF superficie IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF superficie IS distante
-          THEN
-            IF superficie IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    DOES
-      "Non senti il bisogno di sederti in questo momento." --                   IMPROVE
-      -- "You feel no urge to sit down at present."
-
-      --| Se invece si desidera che l'azione venga portata a termine, rimpiazzare
-      --| la riga precedente con il seguente codice:
-      -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      -- IF hero sdraiato
-      --   THEN "Ti alzi e ti siedi" SAY superficie:prep_SU. SAY superficie. "."
-      --     MAKE hero NOT sdraiato.
-      --   ELSE "Ti siedi" SAY superficie:prep_SU. SAY superficie. "."
-      -- END IF.
-      -- MAKE hero seduto.
-  END VERB siediti_su.
-END ADD TO.
-
-
--- Mentre l'eroe è 'seduto' o 'sdraiato', non gli sarà possibile eseguire certe
--- azioni poiché molti verbi della libreria prima controllano che non si trovi
--- in una di quelle posizioni. Per esempio, se l'eroe è seduto ed il giocatore
--- digita 'attacca [qualcosa]', la risposta sarà:
---
---    It will be difficult to attack anything while sitting down."              TRANSLATE
---
--- Inoltre, sarà spesso necessario rendere alcuni oggetti non raggiungibili da
--- seduto o sdraiato.
-
-
 
 
 -- ==============================================================
@@ -8048,8 +8347,8 @@ END VERB rispondi_Sì.
 --~*| fix                | mend, repair                       | fix (obj)                         | 1 | {x}
 --| | follow             |                                    | follow (act)                      | 1 |
 --~*| free               | release                            | free (obj)                        | 1 | {x}
---| | get_up             |                                    | get up                            | 0 |
---| | get_off            |                                    | get off (obj)                     | 1 | {x}
+--~!| get_up             |                                    | get up                            | 0 |
+--~*| get_off            |                                    | get off (obj)                     | 1 | {x}
 --~*| give               |                                    | give (obj) to (recipient)         | 2 | {x}
 --~*| go_to              |                                    | go to (dest)                      | 1 |
 --| | hint               | hints                              | hint                              | 0 |
@@ -8062,9 +8361,9 @@ END VERB rispondi_Sì.
 --~*| kill_with          |                                    | kill (victim) with (weapon)       | 2 |
 --~*| kiss               | hug, embrace                       | kiss (obj)                        | 1 | {x}
 --| | knock (on)         |                                    | knock on (obj)                    | 1 | {x}
---| | lie_down           |                                    | lie down                          | 0 |
---| | lie_in             |                                    | lie in (cont)                     | 1 |
---| | lie_on             |                                    | lie on (surface)                  | 1 |
+--~*| lie_down           |                                    | lie down                          | 0 |
+--~*| lie_in             |                                    | lie in (cont)                     | 1 |
+--~*| lie_on             |                                    | lie on (surface)                  | 1 |
 --| | lift               |                                    | lift (obj)                        | 1 | {x}
 --~!| light              | lit                                | light (obj)                       | 1 | {x}
 --~*| listen0            |                                    | listen                            | 0 |
@@ -8129,7 +8428,7 @@ END VERB rispondi_Sì.
 --~*| smell0             |                                    | smell                             | 0 |
 --~*| smell              |                                    | smell (odour)                     | 1 |
 --| | squeeze            |                                    | squeeze (obj)                     | 1 | {x}
---| | stand (up)         |                                    | stand.  stand up.                 | 0 |
+--~*| stand (up)         |                                    | stand.  stand up.                 | 0 |
 --| | stand_on           |                                    | stand on (surface)                | 1 |
 --| | swim               |                                    | swim                              | 0 |
 --| | swim_in            |                                    | swim in (liq)                     | 1 |
@@ -8873,68 +9172,6 @@ ADD TO EVERY THING
 END ADD TO.
 
 
--- ==============================================================
-
-
------- GET OFF
-
-
--- ==============================================================
-
-
-SYNTAX get_off = get off (superficie)
-  WHERE superficie IsA supporto
-    ELSE
-      IF superficie IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_off_sg.
-        ELSE SAY mia_AT:illegal_parameter_off_pl.
-      END IF.
-
-ADD TO EVERY supporto
-  VERB get_off
-    CHECK mia_AT CAN get_off
-      ELSE SAY mia_AT:azione_bloccata.
-    DOES
-      IF hero IS seduto OR hero IS sdraiato
-        THEN "You get off" SAY THE superficie. "."
-          MAKE hero NOT sdraiato.
-          MAKE hero NOT seduto.
-        ELSE "You're standing up already."
-      END IF.
-    END VERB get_off.
-END ADD TO.
-
-
--- ==============================================================
-
-
------- GET UP
-
-
--- ==============================================================
-
-
-SYNTAX get_up = get up.
-
-
-VERB get_up
-  CHECK mia_AT CAN get_up
-    ELSE SAY mia_AT:azione_bloccata.
-  DOES
-    IF hero IS seduto
-      THEN "You stand up."
-        MAKE hero NOT seduto.
-        MAKE hero NOT sdraiato.
-    ELSIF hero IS sdraiato
-      THEN "You get up."
-        MAKE hero NOT sdraiato.
-        MAKE hero NOT seduto.
-    ELSE "You're standing up already."
-    END IF.
-END VERB get_up.
-
-
-
 
 
 -- ==============================================================
@@ -9081,182 +9318,6 @@ VERB knock_error
   DOES
     "Please use the formulation KNOCK ON SOMETHING to knock on something."
 END VERB knock_error.
-
-
-
--- ==============================================================
-
-
--- @LIE DOWN
-
-
--- ==============================================================
-
-
-SYNTAX lie_down = lie 'down'.
-
-    lie_down = lie.
-
-
-VERB lie_down
-  CHECK mia_AT CAN lie_down
-    ELSE SAY mia_AT:azione_bloccata.
-  AND hero IS NOT sdraiato
-    ELSE SAY mia_AT:check_hero_not_lying_down4.
-  DOES
-    "There's no need to lie down right now."
-    -- If you need this to work, insert the following lines instead of the above:
-        -- DOES "You lie down."
-        -- MAKE hero lying_down.
-        -- MAKE hero NOT sitting_down.
-END VERB lie_down.
-
-
--- When the hero is sitting or lying down, it will be impossible for her/him to
--- perform certain actions, as numerous verbs in the library have checks for this.
--- For example, if the hero is lying down and the player types 'attack [something]',
--- the response will be "It will be difficult to attack anything while
--- lying down."
-
--- Also, it is often essential to make certain objects NOT reachable when you are sitting
--- or lying down.
-
-
-
--- ==============================================================
-
-
--- @LIE IN
-
-
--- ==============================================================
-
-
-SYNTAX  lie_in = lie 'in' (cont)
-  WHERE cont IsA OBJECT
-    ELSE
-      IF cont IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_in_sg.
-        ELSE SAY mia_AT:illegal_parameter_in_pl.
-      END IF.
-  AND cont IsA CONTAINER
-    ELSE
-      IF cont IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_in_sg.
-        ELSE SAY mia_AT:illegal_parameter_in_pl.
-      END IF.
-
-        lie_in = lie 'down' 'in' (cont).
-
-
-ADD TO EVERY OBJECT
-  VERB lie_in
-    CHECK mia_AT CAN lie_in
-      ELSE SAY mia_AT:azione_bloccata.
-    AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down4.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND cont IS raggiungibile AND cont IS NOT distante
-      ELSE
-        IF cont IS NOT raggiungibile
-          THEN
-            IF cont IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF cont IS distante
-          THEN
-            IF cont IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    DOES
-      "There's no need to lie down in" SAY THE cont. "."
-      -- If you need this to work, make a nested location
-      -- (for example THE in_bed IsA LOCATION AT bedroom; etc.)
-      -- Remember to: MAKE hero lying_down.
-      -- Presently, an actor cannot be located inside a container object.
-  END VERB lie_in.
-END ADD TO.
-
-
--- When the hero is sitting or lying down, it will be impossible for her/him to
--- perform certain actions, as numerous verbs in the library have checks for this.
--- For example, if the hero is lying down and the player types 'attack [something]',
--- the response will be "It will be difficult to attack anything while
--- lying down."
-
--- Also, it is often essential to make certain objects NOT reachable when you are sitting
--- or lying down.
-
-
-
--- ==============================================================
-
-
--- @LIE ON
-
-
--- ==============================================================
-
-
-SYNTAX lie_on = lie 'on' (superficie)
-  WHERE superficie IsA supporto
-    ELSE
-      IF superficie IS NOT plurale
-        THEN SAY mia_AT:ogg1_illegale_SU_sg.
-        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
-      END IF.
-      "$$si sdraiare."
-
-   lie_on = lie 'down' 'on' (superficie).
-
-
-ADD TO EVERY OBJECT
-  VERB lie_on
-    CHECK mia_AT CAN lie_on
-      ELSE SAY mia_AT:azione_bloccata.
-    AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down4.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND superficie IS raggiungibile AND superficie IS NOT distante
-      ELSE
-        IF superficie IS NOT raggiungibile
-          THEN
-            IF superficie IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF superficie IS distante
-          THEN
-            IF superficie IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    DOES
-      "There's no need to lie down on" SAY THE superficie. "."
-      -- If you need this to work, make a nested location
-      -- (for example THE on_bed IsA LOCATION AT bedroom; etc.)
-      -- Remember to: MAKE hero lying_down.
-                -- Presently, an actor cannot be located inside a container object
-      -- or on a supporter.
-  END VERB lie_on.
-END ADD TO.
-
-
-
--- When the hero is sitting or lying down, it will be impossible for her/him to
--- perform certain actions, as numerous verbs in the library have checks for this.
--- For example, if the hero is lying down and the player types 'attack [something]',
--- the response will be "It will be difficult to attack anything while
--- lying down."
-
--- Also, it is often essential to make certain objects NOT reachable when you are sitting
--- or lying down.
 
 
 
@@ -10089,33 +10150,6 @@ END ADD TO.
 
 
 
--- ==============================================================
-
-
--- @STAND
-
-
--- ==============================================================
-
-
-SYNTAX stand = stand.
-
-   stand = stand 'up'.
-
-
-VERB stand
-  CHECK mia_AT CAN stand
-    ELSE SAY mia_AT:azione_bloccata.
-  DOES
-    IF hero IS seduto OR hero IS sdraiato
-      THEN "You get up."
-        MAKE hero NOT seduto.
-        MAKE hero NOT sdraiato.
-      ELSE "You're standing up already."
-    END IF.
-END VERB stand.
-
-
 
 -- ==============================================================
 
@@ -10166,7 +10200,7 @@ ADD TO EVERY supporto
       -- (Make an attribute for the hero to check that he's on the surface.
       -- It is not possible to actually locate him on the surface (unless
       -- you implement a nested location.)
-      -- MAKE hero NOT sitting. MAKE hero NOT lying_down.
+      --   MAKE hero NOT sitting. MAKE hero NOT lying_down.
   END VERB stand_on.
 END ADD TO.
 

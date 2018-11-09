@@ -1,0 +1,78 @@
+; ******************************************************************************
+; *                                                                            *
+; *                TESTA VERBI PER SDRAIARSI, SEDERSI E ALZARSI                *
+; *                                                                            *
+; ******************************************************************************
+siediti
+sdraiati
+alzati
+; ==============================================================================
+; TESTA VERBO 'siediti_su'
+; ==============================================================================
+; ------------------------------------------------------------------------------
+; LA SEDIA
+; ------------------------------------------------------------------------------
+; Abbiamo creato una sedia su cui è implementato il verbo 'siediti_su'.
+siediti sulla sedia
+alzati
+alzati
+siediti sulla sedia
+scendi dalla sedia
+scendi dalla sedia
+; ==============================================================================
+; TESTA VERBO 'sdraiati_su'
+; ==============================================================================
+; ------------------------------------------------------------------------------
+; TEST ALLA VANIGLIA
+; ------------------------------------------------------------------------------
+; Poiché sui seguenti oggetto di tipo 'supporto' non è implementato il verbo
+; 'sdraiati_su', otterremo la risposta "alla vaniglia" del DOES del verbo
+; principale:
+sdraiati sulla sedia
+sdraiati sul tavolo
+; ------------------------------------------------------------------------------
+; TESTA USI IMPROPRI
+; ------------------------------------------------------------------------------
+; Oggetti che non sono sottoclassi di 'supporto' (non hanno superficie):
+sdraiati sul cesto
+; ==============================================================================
+; TESTA VERBO 'sdraiati_in'
+; ==============================================================================
+sud
+sdraiati sul lettino
+alzati
+alzati
+sdraiati sul lettino
+scendi dal lettino
+scendi dal lettino
+; ------------------------------------------------------------------------------
+; TEST ALLA VANIGLIA
+; ------------------------------------------------------------------------------
+; Poiché sui seguenti oggetto contenitori non è implementato il verbo
+; 'sdraiati_in', otterremo la risposta "alla vaniglia" del DOES del verbo
+; principale:
+nord
+sdraiati nel cesto
+sdraiati nel tavolo
+; ------------------------------------------------------------------------------
+; TESTA USI IMPROPRI
+; ------------------------------------------------------------------------------
+; Oggetti che non sono contenitori:
+sdraiati sulla sedia
+sdraiati sulla pera
+sdraiati sul pavimento
+sdraiati sul soffitto
+; ==============================================================================
+; TESTA VERBO 'sideiti'
+; ==============================================================================
+; Proviamo a usare 'sideiti' quando siamo già seduti su qualcosa:
+siediti sulla sedia
+siediti
+; ==============================================================================
+; TESTA VERBO 'sdraiati'
+; ==============================================================================
+; Proviamo a usare 'sdraiati' quando siamo già sdraiati su qualcosa:
+nord
+sdraiati sul lettino
+; **ERR!** Dovrebbe rispondere che siamo già sdraiati (come fa per 'siediti'):
+sdraiati

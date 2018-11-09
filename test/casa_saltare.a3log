@@ -51,14 +51,17 @@ Non puoi farlo da seduto.
 > ; ------------------------------------------------------------------------------
 > ; DA SDRAIATO
 > ; ------------------------------------------------------------------------------
-> STAND UP
-You get up.
+> alzati
+Ti alzi in piedi.
+
+> alzati
+Sei già in piedi.
 
 > sud
 Il Giardino di Casa
 A nord puoi tornare in casa. Puoi vedere un tavolo e un lettino qui.
 
-> lie on il lettino
+> sdraiati sul lettino
 Ti sdrai sul lettino.
 
 > salta
@@ -70,7 +73,8 @@ Non puoi farlo da sdraiato.
 > salta nel cesto
 Qui non puoi vedere nulla del genere.
 
-> 
+> scendi dal lettino
+Ti alzi dal lettino.
 
 > 
 

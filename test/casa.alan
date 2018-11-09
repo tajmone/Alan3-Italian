@@ -259,9 +259,12 @@ END THE tavolo_giardino.
 -- protagonista è sdraiato.
 
 THE lettino IsA supporto AT giardino.
+  NAME lettino.
+  NAME letto.
+
   HAS xDesc "È un lettino pieghevole, di quelli usati in campeggio.".
   
-  VERB lie_on
+  VERB sdraiati_su
     DOES ONLY
       IF hero IS seduto
         THEN "Ti alzi e"
@@ -269,7 +272,7 @@ THE lettino IsA supporto AT giardino.
       END IF.
       "ti sdrai" SAY superficie:prep_SU. SAY superficie. "."
       MAKE hero sdraiato.
-  END VERB lie_on.
+  END VERB sdraiati_su.
 END THE lettino.
 
 --------------------------------------------------------------------------------

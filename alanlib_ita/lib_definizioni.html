@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.7.13-Alpha,</span>
-<span id="revdate">2018-11-03</span>
+<span id="revnumber">versione 0.7.14-Alpha,</span>
+<span id="revdate">2018-11-09</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
 <div id="toc" class="toc2">
@@ -504,6 +504,7 @@ giocatore il messaggio &#8220;Non puoi farlo.&#8221;.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  CAN abbandonare_partita.      ---&gt; 'quit'
   CAN accendere.                ---&gt; turn_on
+  CAN alzarsi.                  ---&gt; stand (up)
   CAN andare_a.                 ---&gt; go_to
   CAN annusare.                 ---&gt; smell
   CAN aprire.                   ---&gt; open
@@ -604,7 +605,11 @@ giocatore il messaggio &#8220;Non puoi farlo.&#8221;.</p>
   CAN sbloccare.                ---&gt; unlock
   CAN sbloccare_con.            ---&gt; unlock_with
   CAN scavare.                  ---&gt; dig
+  CAN scendere_da.              ---&gt; get_off
   CAN scrivere.                 ---&gt; write
+  CAN sdraiarsi.                ---&gt; lie_down
+  CAN sdraiarsi_in.             ---&gt; lie_in
+  CAN sdraiarsi_su.             ---&gt; lie_on
   CAN sedersi.                  ---&gt; sit (down)
   CAN sedersi_su.               ---&gt; sit_on
   CAN seguire.                  ---&gt; follow
@@ -733,13 +738,9 @@ italiano del modulo delle definizioni.</p>
 --CAN extinguish. ----------------&gt; ** VERBO ELIMINATO **  (+ put out, quench)
   CAN fire.
   CAN fire_at.
-  CAN get_up.
-  CAN get_off.
+--CAN get_up. --------------------&gt; ** VERBO ELIMINATO **
   CAN hint.        -- (+ hints)
   CAN kick.
-  CAN lie_down.
-  CAN lie_in.
-  CAN lie_on.
   CAN lift.
 --CAN light. ---------------------&gt; ** VERBO ELIMINATO **
 --CAN look_at. -------------------&gt; ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
@@ -753,7 +754,6 @@ italiano del modulo delle definizioni.</p>
   CAN shoot_with.
 --CAN smell0. --------------------&gt; ** ATTRIBUTO ELIMINATO **
   CAN squeeze.
-  CAN stand.       -- (up)
   CAN stand_on.
 --CAN switch. --------------------&gt; ** VERBO ELIMINATO **
 --CAN switch_on. -----------------&gt; ** VERBO ELIMINATO **
@@ -778,7 +778,7 @@ italiano del modulo delle definizioni.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.7.13-Alpha<br>
+Versione 0.7.14-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

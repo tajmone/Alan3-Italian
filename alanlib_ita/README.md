@@ -357,8 +357,8 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `fix`            | `riparare`                |
 | `follow`         | `seguire`                 |
 | `free`           | `liberare`                |
-| `get_off`        |                           |
-| `get_up`         |                           |
+| `get_off`        | `scendere_da`             |
+| ~~`get_up`~~     |                           |
 | `give`           | `dare`                    |
 | `go_to`          | `andare_a`                |
 | `hint`           |                           |
@@ -371,9 +371,9 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `kill_with`      | `uccidere_con`            |
 | `kiss`           | `baciare`                 |
 | `knock`          | `bussare`                 |
-| `lie_down`       |                           |
-| `lie_in`         |                           |
-| `lie_on`         |                           |
+| `lie_down`       | `sdraiarsi`               |
+| `lie_in`         | `sdraiarsi_in`            |
+| `lie_on`         | `sdraiarsi_su`            |
 | `lift`           |                           |
 | ~~`light`~~      | _removed_                 |
 | `listen0`        | `ascoltare0`              |
@@ -442,7 +442,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `smell`          | `annusare`                |
 | ~~`smell0`~~     |                           |
 | `squeeze`        |                           |
-| `stand`          |                           |
+| `stand`          | `alzarsi`                 |
 | `stand_on`       |                           |
 | `swim`           | `nuotare`                 |
 | `swim_in`        | `nuotare_in`              |

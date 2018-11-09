@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.7.21-Alpha,</span>
+<span id="revnumber">versione 0.7.22-Alpha,</span>
 <span id="revdate">2018-11-09</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
@@ -601,6 +601,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_salta">salta</a></li>
 <li><a href="#_salta_in">salta_in</a></li>
 <li><a href="#_salta_su">salta_su</a></li>
+</ul>
+</li>
+<li><a href="#_sedersi_sdraiarsi_alzarsi">Sedersi, Sdraiarsi, Alzarsi</a>
+<ul class="sectlevel3">
+<li><a href="#_alzati">alzati</a></li>
+<li><a href="#_scendi_da">scendi_da</a></li>
+<li><a href="#_sdraiati">sdraiati</a></li>
+<li><a href="#_sdraiati_in">sdraiati_in</a></li>
+<li><a href="#_sdraiati_su">sdraiati_su</a></li>
+<li><a href="#_siediti">siediti</a></li>
+<li><a href="#_siediti_su">siediti_su</a></li>
 </ul>
 </li>
 </ul>
@@ -882,6 +893,15 @@ elencati in ordine alfabetico.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">accendi (disp)</p></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>alzati</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alzati</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
@@ -1579,12 +1599,48 @@ elencati in ordine alfabetico.</p>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scendi_da</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scendi da (superficie)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scrivi</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">scrivi "testo" su (ogg)</p></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sdraiati</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sdraiati</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sdraiati_in</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sdraiati in (cont)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sdraiati_su</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sdraiati su (superficie)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
@@ -2740,6 +2796,75 @@ l&#8217;attributo <code>xDesc</code> (che di default è una stringa vuota).</p>
 
 </div>
 </div>
+<div class="sect2">
+<h3 id="_sedersi_sdraiarsi_alzarsi"><a class="anchor" href="#_sedersi_sdraiarsi_alzarsi"></a>Sedersi, Sdraiarsi, Alzarsi</h3>
+<div class="paragraph">
+<p>Questo gruppo include i verbi per sedersi, sdraiarsi ed alazarsi:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>alzati</code></p>
+</li>
+<li>
+<p><code>scendi_da</code></p>
+</li>
+<li>
+<p><code>siediti</code></p>
+</li>
+<li>
+<p><code>siediti_su</code></p>
+</li>
+<li>
+<p><code>sdraiati</code></p>
+</li>
+<li>
+<p><code>sdraiati_in</code></p>
+</li>
+<li>
+<p><code>sdraiati_su</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Verbi di questo gruppo non ancora tradotti:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>stand_on</code></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_alzati"><a class="anchor" href="#_alzati"></a>alzati</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_scendi_da"><a class="anchor" href="#_scendi_da"></a>scendi_da</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_sdraiati"><a class="anchor" href="#_sdraiati"></a>sdraiati</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_sdraiati_in"><a class="anchor" href="#_sdraiati_in"></a>sdraiati_in</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_sdraiati_su"><a class="anchor" href="#_sdraiati_su"></a>sdraiati_su</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_siediti"><a class="anchor" href="#_siediti"></a>siediti</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_siediti_su"><a class="anchor" href="#_siediti_su"></a>siediti_su</h4>
+
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -2870,20 +2995,6 @@ italiano del modulo dei verbi.</p>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>get_up</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">get up</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>get_off</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">get off (obj)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>hint</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">hints</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">hint</p></td>
@@ -2903,27 +3014,6 @@ italiano del modulo dei verbi.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">knock on (obj)</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lie_down</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">lie down</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lie_in</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">lie in (cont)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lie_on</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">lie on (surface)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>lift</code></p></td>
@@ -3015,13 +3105,6 @@ italiano del modulo dei verbi.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">squeeze (obj)</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>stand (up)</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">stand.  stand up.</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>stand_on</code></p></td>
@@ -3317,6 +3400,27 @@ italiano del modulo dei verbi.</p>
 <li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>salta_su</code>.</p>
 </li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>alzati</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>scendi_da</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>sdraiati</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>sdraiati_in</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>sdraiati_su</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>siediti</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>siediti_su</code>.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -3325,7 +3429,7 @@ italiano del modulo dei verbi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.7.21-Alpha<br>
+Versione 0.7.22-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

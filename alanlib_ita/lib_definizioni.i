@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.13-Alpha, 2018-11-03: Alan 3.0beta6
+--| v0.7.14-Alpha, 2018-11-09: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -708,6 +708,7 @@ EVERY blocco_definizioni IsA LOCATION
 
   CAN abbandonare_partita.      ---> 'quit'
   CAN accendere.                ---> turn_on
+  CAN alzarsi.                  ---> stand (up)
   CAN andare_a.                 ---> go_to
   CAN annusare.                 ---> smell
   CAN aprire.                   ---> open
@@ -808,7 +809,11 @@ EVERY blocco_definizioni IsA LOCATION
   CAN sbloccare.                ---> unlock
   CAN sbloccare_con.            ---> unlock_with
   CAN scavare.                  ---> dig
+  CAN scendere_da.              ---> get_off
   CAN scrivere.                 ---> write
+  CAN sdraiarsi.                ---> lie_down
+  CAN sdraiarsi_in.             ---> lie_in
+  CAN sdraiarsi_su.             ---> lie_on
   CAN sedersi.                  ---> sit (down)
   CAN sedersi_su.               ---> sit_on
   CAN seguire.                  ---> follow
@@ -856,13 +861,9 @@ EVERY blocco_definizioni IsA LOCATION
 --CAN extinguish. ----------------> ** VERBO ELIMINATO **  (+ put out, quench)
   CAN fire.
   CAN fire_at.
-  CAN get_up.
-  CAN get_off.
+--CAN get_up. --------------------> ** VERBO ELIMINATO **
   CAN hint.        -- (+ hints)
   CAN kick.
-  CAN lie_down.
-  CAN lie_in.
-  CAN lie_on.
   CAN lift.
 --CAN light. ---------------------> ** VERBO ELIMINATO **
 --CAN look_at. -------------------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
@@ -876,7 +877,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN shoot_with.
 --CAN smell0. --------------------> ** ATTRIBUTO ELIMINATO **
   CAN squeeze.
-  CAN stand.       -- (up)
   CAN stand_on.
 --CAN switch. --------------------> ** VERBO ELIMINATO **
 --CAN switch_on. -----------------> ** VERBO ELIMINATO **
@@ -928,6 +928,7 @@ EVENT check_restriction
 
       MAKE mia_AT abbandonare_partita.      ---> 'quit'
       MAKE mia_AT accendere.                ---> turn_on
+      MAKE mia_AT alzarsi.                  ---> stand (up)
       MAKE mia_AT andare_a.                 ---> go_to
       MAKE mia_AT annusare.                 ---> smell
       MAKE mia_AT aprire.                   ---> open
@@ -1028,7 +1029,11 @@ EVENT check_restriction
       MAKE mia_AT sbloccare.                ---> unlock
       MAKE mia_AT sbloccare_con.            ---> unlock_with
       MAKE mia_AT scavare.                  ---> dig
+      MAKE mia_AT scendere_da.              ---> get_off
       MAKE mia_AT scrivere.                 ---> write
+      MAKE mia_AT sdraiarsi.                ---> lie_down
+      MAKE mia_AT sdraiarsi_in.             ---> lie_in
+      MAKE mia_AT sdraiarsi_su.             ---> lie_on
       MAKE mia_AT sedersi.                  ---> sit (down)
       MAKE mia_AT sedersi_su.               ---> sit_on
       MAKE mia_AT seguire.                  ---> follow
@@ -1072,13 +1077,9 @@ EVENT check_restriction
     --MAKE mia_AT extinguish. --------> ** VERBO ELIMINATO ** (+ put out, quench)
       MAKE mia_AT fire.
       MAKE mia_AT fire_at.
-      MAKE mia_AT get_up.
-      MAKE mia_AT get_off.
+    --MAKE mia_AT get_up. ------------> ** VERBO ELIMINATO **
       MAKE mia_AT hint.            -- (+ hints)
       MAKE mia_AT kick.
-      MAKE mia_AT lie_down.
-      MAKE mia_AT lie_in.
-      MAKE mia_AT lie_on.
       MAKE mia_AT lift.
     --MAKE mia_AT light. -------------> ** VERBO ELIMINATO **
     --MAKE mia_AT look_at. -----------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
@@ -1092,7 +1093,6 @@ EVENT check_restriction
       MAKE mia_AT shoot_with.
     --MAKE mia_AT smell0. ------------> ** ATTRIBUTO ELIMINATO **
       MAKE mia_AT squeeze.
-      MAKE mia_AT stand.           -- (up)
       MAKE mia_AT stand_on.
     --MAKE mia_AT switch. ------------> ** VERBO ELIMINATO **
     --MAKE mia_AT switch_on. ---------> ** VERBO ELIMINATO **
@@ -1139,6 +1139,7 @@ EVENT check_restriction
         THEN  
 
           MAKE mia_AT NOT accendere.                ---> turn_on
+          MAKE mia_AT NOT alzarsi.                  ---> stand (up)
           MAKE mia_AT NOT andare_a.                 ---> go_to
           MAKE mia_AT NOT aprire.                   ---> open
           MAKE mia_AT NOT aprire_con.               ---> open_with
@@ -1196,7 +1197,11 @@ EVENT check_restriction
           MAKE mia_AT NOT sbloccare.                ---> unlock
           MAKE mia_AT NOT sbloccare_con.            ---> unlock_with
           MAKE mia_AT NOT scavare.                  ---> dig
+          MAKE mia_AT NOT scendere_da.              ---> get_off
           MAKE mia_AT NOT scrivere.                 ---> write
+          MAKE mia_AT NOT sdraiarsi.                ---> lie_down
+          MAKE mia_AT NOT sdraiarsi_in.             ---> lie_in
+          MAKE mia_AT NOT sdraiarsi_su.             ---> lie_on
           MAKE mia_AT NOT sedersi.                  ---> sit (down)
           MAKE mia_AT NOT sedersi_su.               ---> sit_on
           MAKE mia_AT NOT seguire.                  ---> follow
@@ -1236,12 +1241,8 @@ EVENT check_restriction
         --MAKE mia_AT NOT extinguish. ----> ** VERBO ELIMINATO ** (+ put out, quench)
           MAKE mia_AT NOT fire.
           MAKE mia_AT NOT fire_at.
-          MAKE mia_AT NOT get_up.
-          MAKE mia_AT NOT get_off.
+        --MAKE mia_AT NOT get_up. --------> ** VERBO ELIMINATO **
           MAKE mia_AT NOT kick.
-          MAKE mia_AT NOT lie_down.
-          MAKE mia_AT NOT lie_in.
-          MAKE mia_AT NOT lie_on.
           MAKE mia_AT NOT lift.
         --MAKE mia_AT NOT light. ---------> ** VERBO ELIMINATO **
           MAKE mia_AT NOT pry.
@@ -1253,7 +1254,6 @@ EVENT check_restriction
           MAKE mia_AT NOT shoot.       -- (at)
           MAKE mia_AT NOT shoot_with.
           MAKE mia_AT NOT squeeze.
-          MAKE mia_AT NOT stand.       -- (up)
           MAKE mia_AT NOT stand_on.
         --MAKE mia_AT NOT switch. --------> ** VERBO ELIMINATO **
         --MAKE mia_AT NOT switch_on. -----> ** VERBO ELIMINATO **

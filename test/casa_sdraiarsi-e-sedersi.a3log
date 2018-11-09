@@ -1,0 +1,163 @@
+
+
+La Casa 
+Un set per eseguire test su stanze e luoghi esterni. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+La Cucina
+A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
+qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un vasetto e un 
+cesto per la frutta.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                TESTA VERBI PER SDRAIARSI, SEDERSI E ALZARSI                *
+> ; *                                                                            *
+> ; ******************************************************************************
+> siediti
+Non senti il bisogno di sederti in questo momento.
+
+> sdraiati
+There's no need to lie down right now.
+
+> alzati
+Sei già in piedi.
+
+> ; ==============================================================================
+> ; TESTA VERBO 'siediti_su'
+> ; ==============================================================================
+> ; ------------------------------------------------------------------------------
+> ; LA SEDIA
+> ; ------------------------------------------------------------------------------
+> ; Abbiamo creato una sedia su cui è implementato il verbo 'siediti_su'.
+> siediti sulla sedia
+Ti siedi sulla sedia.
+
+> alzati
+Ti alzi in piedi.
+
+> alzati
+Sei già in piedi.
+
+> siediti sulla sedia
+Ti siedi sulla sedia.
+
+> scendi dalla sedia
+Ti alzi dalla sedia.
+
+> scendi dalla sedia
+Sei già in piedi.
+
+> ; ==============================================================================
+> ; TESTA VERBO 'sdraiati_su'
+> ; ==============================================================================
+> ; ------------------------------------------------------------------------------
+> ; TEST ALLA VANIGLIA
+> ; ------------------------------------------------------------------------------
+> ; Poiché sui seguenti oggetto di tipo 'supporto' non è implementato il verbo
+> ; 'sdraiati_su', otterremo la risposta "alla vaniglia" del DOES del verbo
+> ; principale:
+> sdraiati sulla sedia
+There's no need to lie down on la sedia.
+
+> sdraiati sul tavolo
+There's no need to lie down on il tavolo.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA USI IMPROPRI
+> ; ------------------------------------------------------------------------------
+> ; Oggetti che non sono sottoclassi di 'supporto' (non hanno superficie):
+> sdraiati sul cesto
+Il cesto per la frutta non è qualcosa su cui potersi sdraiare.
+
+> ; ==============================================================================
+> ; TESTA VERBO 'sdraiati_in'
+> ; ==============================================================================
+> sud
+Il Giardino di Casa
+A nord puoi tornare in casa. Puoi vedere un tavolo e un lettino qui.
+
+> sdraiati sul lettino
+Ti sdrai sul lettino.
+
+> alzati
+Ti alzi in piedi.
+
+> alzati
+Sei già in piedi.
+
+> sdraiati sul lettino
+Ti sdrai sul lettino.
+
+> scendi dal lettino
+Ti alzi dal lettino.
+
+> scendi dal lettino
+Sei già in piedi.
+
+> ; ------------------------------------------------------------------------------
+> ; TEST ALLA VANIGLIA
+> ; ------------------------------------------------------------------------------
+> ; Poiché sui seguenti oggetto contenitori non è implementato il verbo
+> ; 'sdraiati_in', otterremo la risposta "alla vaniglia" del DOES del verbo
+> ; principale:
+> nord
+La Cucina
+A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
+qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un vasetto e un 
+cesto per la frutta.
+
+> sdraiati nel cesto
+There's no need to lie down in il cesto per la frutta.
+
+> sdraiati nel tavolo
+There's no need to lie down in il tavolo.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA USI IMPROPRI
+> ; ------------------------------------------------------------------------------
+> ; Oggetti che non sono contenitori:
+> sdraiati sulla sedia
+There's no need to lie down on la sedia.
+
+> sdraiati sulla pera
+La pera non è qualcosa su cui potersi sdraiare.
+
+> sdraiati sul pavimento
+Il pavimento non è qualcosa su cui potersi sdraiare.
+
+> sdraiati sul soffitto
+Il soffitto non è qualcosa su cui potersi sdraiare.
+
+> ; ==============================================================================
+> ; TESTA VERBO 'sideiti'
+> ; ==============================================================================
+> ; Proviamo a usare 'sideiti' quando siamo già seduti su qualcosa:
+> siediti sulla sedia
+Ti siedi sulla sedia.
+
+> siediti
+You're sitting down already.
+
+> ; ==============================================================================
+> ; TESTA VERBO 'sdraiati'
+> ; ==============================================================================
+> ; Proviamo a usare 'sdraiati' quando siamo già sdraiati su qualcosa:
+> nord
+Non puoi andare in quella direzione.
+
+> sdraiati sul lettino
+Qui non puoi vedere nulla del genere.
+
+> ; **ERR!** Dovrebbe rispondere che siamo già sdraiati (come fa per 'siediti'):
+> sdraiati
+There's no need to lie down right now.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

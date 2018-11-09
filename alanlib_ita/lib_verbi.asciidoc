@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.21-Alpha, 2018-11-09: Alan 3.0beta6
+v0.7.22-Alpha, 2018-11-09: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -80,6 +80,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 |===================================================================================================================
 | VERBO              | SINONIMI                     | SINTASSI                               |  M  | A |  O  |  B
 | accendi            |                              | accendi (disp)                         |     | 1 |     |
+| alzati             |                              | alzati                                 |     | 0 |     |
 | annusa0            | odora                        | annusa                                 |     | 0 |     |
 | annusa             | odora                        | annusa (odore)                         |     | 1 |     |
 | apri               |                              | apri (ogg)                             |     | 1 | {X} |
@@ -157,7 +158,11 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | sblocca            |                              | sblocca (ogg)                          |     | 1 | {X} |
 | sblocca_con        |                              | sblocca (ogg) con (chiave)             |     | 2 | {X} |
 | scava              |                              | scava (ogg)                            |     | 1 | {X} |
+| scendi_da          |                              | scendi da (superficie)                 |     | 1 |     |
 | scrivi             |                              | scrivi "testo" su (ogg)                |     | 1 | {X} |
+| sdraiati           |                              | sdraiati                               |     | 0 |     |
+| sdraiati_in        |                              | sdraiati in (cont)                     |     | 1 |     |
+| sdraiati_su        |                              | sdraiati su (superficie)               |     | 1 |     |
 | siediti            | siedi                        | siediti                                |     | 0 |     |
 | siediti_su         | siedi                        | siediti su (superficie)                |     | 1 |     |
 | sorseggia          |                              | sorseggia (liq)                        |     | 1 |     |
@@ -635,6 +640,38 @@ Questo gruppo include i verbi per saltare:
 ==== salta_su
 
 // end::gruppo_saltare[]
+// tag::gruppo_sedersi[]
+=== Sedersi, Sdraiarsi, Alzarsi
+
+Questo gruppo include i verbi per sedersi, sdraiarsi ed alazarsi:
+
+* `alzati`
+* `scendi_da`
+* `siediti`
+* `siediti_su`
+* `sdraiati`
+* `sdraiati_in`
+* `sdraiati_su`
+
+Verbi di questo gruppo non ancora tradotti:
+
+* `stand_on`
+
+==== alzati
+
+==== scendi_da
+
+==== sdraiati
+
+==== sdraiati_in
+
+==== sdraiati_su
+
+==== siediti
+
+==== siediti_su
+
+// end::gruppo_sedersi[]
 // tag::comandi_domande[]
 
 == Verbi di Domande
@@ -676,14 +713,9 @@ italiano del modulo dei verbi.
 | fire               |                                    | fire (weapon)                     | 1 |
 | fire_at            |                                    | fire (weapon) at (target)         | 2 |
 | follow             |                                    | follow (act)                      | 1 |
-| get_up             |                                    | get up                            | 0 |
-| get_off            |                                    | get off (obj)                     | 1 | {x}
 | hint               | hints                              | hint                              | 0 |
 | kick               |                                    | kick (target)                     | 1 |
 | knock (on)         |                                    | knock on (obj)                    | 1 | {x}
-| lie_down           |                                    | lie down                          | 0 |
-| lie_in             |                                    | lie in (cont)                     | 1 |
-| lie_on             |                                    | lie on (surface)                  | 1 |
 | lift               |                                    | lift (obj)                        | 1 | {x}
 | pry                |                                    | pry (obj)                         | 1 | {x}
 | pry_with           |                                    | pry (obj) with (instr)            | 2 | {x}
@@ -697,7 +729,6 @@ italiano del modulo dei verbi.
 | shout              | scream, yell                       | shout                             | 0 |
 | show               | reveal                             | show (obj) to (act)               | 2 | {x}
 | squeeze            |                                    | squeeze (obj)                     | 1 | {x}
-| stand (up)         |                                    | stand.  stand up.                 | 0 |
 | stand_on           |                                    | stand on (surface)                | 1 |
 | swim               |                                    | swim                              | 0 |
 | swim_in            |                                    | swim in (liq)                     | 1 |
@@ -863,6 +894,20 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `salta_in`.
 
 * [ ] Descrizione `salta_su`.
+
+* [ ] Descrizione `alzati`.
+
+* [ ] Descrizione `scendi_da`.
+
+* [ ] Descrizione `sdraiati`.
+
+* [ ] Descrizione `sdraiati_in`.
+
+* [ ] Descrizione `sdraiati_su`.
+
+* [ ] Descrizione `siediti`.
+
+* [ ] Descrizione `siediti_su`.
 
 // end::todo_checklist[]
 
