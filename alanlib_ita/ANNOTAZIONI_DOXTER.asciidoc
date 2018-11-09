@@ -130,6 +130,8 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 | 21100   |           | gruppo_vestirsi              | == Vestirsi e Svestirsi
 // -----------------------------------------------------------------------------
 | 21200   |           | gruppo_mettere               | == Mettere
+// -----------------------------------------------------------------------------
+| 21300   |           | gruppo_saltare               | == Saltare
 // =============================================================================
 | 30000   |           | comandi_comandi_domande      | == Verbi di Domande
 // -----------------------------------------------------------------------------

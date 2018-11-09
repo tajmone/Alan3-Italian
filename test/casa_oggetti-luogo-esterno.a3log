@@ -10,9 +10,9 @@ Tutti i diritti riservati.
 
 
 La Cucina
-A sud c'è il tuo giardino. Puoi vedere un frigo e un tavolo qui. Sopra il 
-tavolo vedi una bottiglia, un sacchetto, un vasetto e un cesto per la
-frutta.
+A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
+qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un vasetto e un 
+cesto per la frutta.
 
 > ; ******************************************************************************
 > ; *                                                                            *
@@ -44,7 +44,7 @@ Preso.
 
 > sud
 Il Giardino di Casa
-A nord puoi tornare in casa.
+A nord puoi tornare in casa. Puoi vedere un tavolo e un lettino qui.
 
 > ; ==============================================================================
 > ; SUOLO

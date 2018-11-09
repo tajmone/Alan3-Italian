@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.7.19-Alpha,</span>
-<span id="revdate">2018-11-03</span>
+<span id="revnumber">versione 0.7.21-Alpha,</span>
+<span id="revdate">2018-11-09</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
 <div id="toc" class="toc2">
@@ -594,6 +594,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_metti_contro_metti_dietro_metti_vicino_metti_sotto">metti_contro + metti_dietro + metti_vicino + metti_sotto</a></li>
 <li><a href="#_metti_in">metti_in</a></li>
 <li><a href="#_metti_su">metti_su</a></li>
+</ul>
+</li>
+<li><a href="#_saltare">Saltare</a>
+<ul class="sectlevel3">
+<li><a href="#_salta">salta</a></li>
+<li><a href="#_salta_in">salta_in</a></li>
+<li><a href="#_salta_su">salta_su</a></li>
 </ul>
 </li>
 </ul>
@@ -1512,6 +1519,33 @@ elencati in ordine alfabetico.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>rispondi</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">rispondi (argomento)!</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>salta</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salta</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>salta_in</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salta in (cont)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>salta_su</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salta su (superficie)</p></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"></td>
@@ -2675,6 +2709,37 @@ l&#8217;attributo <code>xDesc</code> (che di default è una stringa vuota).</p>
 
 </div>
 </div>
+<div class="sect2">
+<h3 id="_saltare"><a class="anchor" href="#_saltare"></a>Saltare</h3>
+<div class="paragraph">
+<p>Questo gruppo include i verbi per saltare:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>salta</code></p>
+</li>
+<li>
+<p><code>salta_in</code></p>
+</li>
+<li>
+<p><code>salta_su</code></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_salta"><a class="anchor" href="#_salta"></a>salta</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_salta_in"><a class="anchor" href="#_salta_in"></a>salta_in</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_salta_su"><a class="anchor" href="#_salta_su"></a>salta_su</h4>
+
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -2823,27 +2888,6 @@ italiano del modulo dei verbi.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">hints</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">hint</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>jump</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">jump</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>jump_in</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">jump in (cont)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>jump_on</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">jump on (surface)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
@@ -3264,6 +3308,15 @@ italiano del modulo dei verbi.</p>
 <li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>metti_su</code>.</p>
 </li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>salta</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>salta_in</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>salta_su</code>.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -3272,7 +3325,7 @@ italiano del modulo dei verbi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.7.19-Alpha<br>
+Versione 0.7.21-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

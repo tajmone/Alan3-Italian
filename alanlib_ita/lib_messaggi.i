@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi.i"
---| v0.7.7-Alpha, 2018-11-03: Alan 3.0beta6
+--| v0.7.8-Alpha, 2018-11-09: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -550,6 +550,11 @@ ADD TO EVERY blocco_definizioni
   -- -----------------
   -- PREPOSIZIONE "IN"
   -- -----------------
+  -- VERBI: salta_in.
+  -- ORIGINAL EN: (nessuno)
+  HAS ogg1_illegale_IN_sg  "$+1 non è qualcosa in cui poter".
+  HAS ogg1_illegale_IN_pl  "$+1 non sono qualcosa in cui poter".
+
   -- VERBI: .
   -- ORIGINAL EN: (nessuno)
   HAS ogg2_illegale_IN_sg  "$+2 non è qualcosa in cui poter".
@@ -770,6 +775,39 @@ ADD TO EVERY blocco_definizioni
 -- NOTA: | Potrei usare un solo attributo e mettere '$+1.' e '$+2.' nel codice
 --       | del verbo!
 
+  
+  -- ===========================================
+  -- AZIONI IMPEDITE DALLA POSTURA DEL GIOCATORE
+  -- ===========================================
+  -- Messaggi di risposta per azioni impossibilitate dal fatto che il giocatore
+  -- è seduto o sdraiato.
+  
+  -- ---------------------
+  -- IL GIOCATORE È SEDUTO
+  -- ---------------------
+  -- VERBI: balla, salta, salta_in, salta_su | swim.
+  -- ORIGINAL EN:  check_hero_not_sitting1
+  HAS impossibile_da_seduto "Non puoi farlo da seduto.".
+
+ 
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  HAS check_hero_not_sitting2 "It is difficult to $v anything while sitting down.". -- (with many transitive verbs)
+  HAS check_hero_not_sitting3 "It is difficult to $v anywhere while sitting down.". -- (with many verbs of motion)
+  HAS check_hero_not_sitting4 "You're sitting down already.".         -- sit, sit_on
+
+  -- -----------------------
+  -- IL GIOCATORE È SDRAIATO
+  -- -----------------------
+  -- VERBI: balla, salta, salta_in, salta_su | swim.
+  -- ORIGINAL EN:  check_hero_not_lying_down1
+  HAS impossibile_da_sdraiato "Non puoi farlo da sdraiato.".
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  HAS check_hero_not_lying_down2 "It is difficult to $v anything while lying down.".  -- (with many transitive verbs)
+  HAS check_hero_not_lying_down3 "It is difficult to $v anywhere while lying down.".  -- (with many verbs of motion)
+  HAS check_hero_not_lying_down4 "You're lying down already.".          -- lie_down, lie_in
+
+
   -- ===========================
   -- AZIONI DIRETTE AL GIOCATORE
   -- ===========================
@@ -984,17 +1022,6 @@ ADD TO EVERY blocco_definizioni
 
 
 
-  -- checks for the hero sitting or lying_down:
-  ---------------------------------------------
-
-  HAS check_hero_not_sitting1 "It is difficult to $v while sitting down.".      -- (with many intransitive verbs)
-  HAS check_hero_not_sitting2 "It is difficult to $v anything while sitting down.". -- (with many transitive verbs)
-  HAS check_hero_not_sitting3 "It is difficult to $v anywhere while sitting down.". -- (with many verbs of motion)
-  HAS check_hero_not_sitting4 "You're sitting down already.".         -- sit, sit_on
-  HAS check_hero_not_lying_down1 "It is difficult to $v while lying down.".     -- (with many intranstive verbs)
-  HAS check_hero_not_lying_down2 "It is difficult to $v anything while lying down.".  -- (with many transitive verbs)
-  HAS check_hero_not_lying_down3 "It is difficult to $v anywhere while lying down.".  -- (with many verbs of motion)
-  HAS check_hero_not_lying_down4 "You're lying down already.".          -- lie_down, lie_in
 
 
   -- other attribute checks:

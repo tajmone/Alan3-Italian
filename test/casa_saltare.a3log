@@ -1,0 +1,77 @@
+
+
+La Casa 
+Un set per eseguire test su stanze e luoghi esterni. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+La Cucina
+A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
+qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un vasetto e un 
+cesto per la frutta.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                          TESTA VERBI PER SALTARE                           *
+> ; *                                                                            *
+> ; ******************************************************************************
+> salta
+Salti sul posto, senza risultato.
+
+> salta sul tavolo
+Il tavolo non è qualcosa su cui poter saltare.
+
+> salta nel cesto
+Il cesto per la frutta non è qualcosa in cui poter saltare.
+
+> ; ==============================================================================
+> ; TESTA I CHECK DEI VERBI
+> ; ==============================================================================
+> ; Creiamo situazioni e combinazioni di parametri tali da visualizzare tutti i
+> ; messaggi possibili per questi verbi (risposte dei CHECK non passati).
+> ; ------------------------------------------------------------------------------
+> ; DA SEDUTO
+> ; ------------------------------------------------------------------------------
+> siediti sulla sedia
+Ti siedi sulla sedia.
+
+> salta
+Non puoi farlo da seduto.
+
+> salta sul tavolo
+Non puoi farlo da seduto.
+
+> salta nel cesto
+Non puoi farlo da seduto.
+
+> ; ------------------------------------------------------------------------------
+> ; DA SDRAIATO
+> ; ------------------------------------------------------------------------------
+> STAND UP
+You get up.
+
+> sud
+Il Giardino di Casa
+A nord puoi tornare in casa. Puoi vedere un tavolo e un lettino qui.
+
+> lie on il lettino
+Ti sdrai sul lettino.
+
+> salta
+Non puoi farlo da sdraiato.
+
+> salta sul tavolo
+Non puoi farlo da sdraiato.
+
+> salta nel cesto
+Qui non puoi vedere nulla del genere.
+
+> 
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.20-Alpha, 2018-11-08: Alan 3.0beta6
+--| v0.7.21-Alpha, 2018-11-09: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -768,6 +768,9 @@ END VERB ringraziamenti.
 --| | rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)                |     | 2 | {X} |
 --| | ripara             | aggiusta                     | ripara (ogg)                           |     | 1 | {X} |
 --| | rispondi           |                              | rispondi (argomento)!                  |     | 1 |     |
+--| | salta              |                              | salta                                  |     | 0 |     |
+--| | salta_in           |                              | salta in (cont)                        |     | 1 |     |
+--| | salta_su           |                              | salta su (superficie)                  |     | 1 |     |
 --| | sblocca            |                              | sblocca (ogg)                          |     | 1 | {X} |
 --| | sblocca_con        |                              | sblocca (ogg) con (chiave)             |     | 2 | {X} |
 --| | scava              |                              | scava (ogg)                            |     | 1 | {X} |
@@ -5281,6 +5284,154 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
+-->gruppo_saltare(21300)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Saltare
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi per saltare:
+--| 
+--| * `salta`
+--| * `salta_in`
+--| * `salta_su`
+--<
+
+
+-->gruppo_saltare                                               @SALTA <-- @JUMP
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== salta
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `salta`.
+--<
+
+SYNTAX salta = salta.
+
+
+VERB salta
+  CHECK mia_AT CAN saltare
+    ELSE SAY mia_AT:azione_bloccata.
+  AND hero IS NOT seduto
+    ELSE SAY mia_AT:impossibile_da_seduto.
+  AND hero IS NOT sdraiato
+    ELSE SAY mia_AT:impossibile_da_sdraiato.
+  DOES "Salti sul posto, senza risultato." -- preso da i6
+    -- "You jump on the spot, to no avail."
+END VERB salta.
+
+
+
+
+-->gruppo_saltare                                         @SALTA IN <-- @JUMP IN
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== salta_in
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `salta_in`.
+--<
+
+SYNTAX salta_in = salta 'in' (cont)
+  WHERE cont IsA OBJECT
+    ELSE
+      IF cont IS NOT plurale
+        --       "$+1 non [è/sono] qualcosa in cui poter"
+        THEN SAY mia_AT:ogg1_illegale_IN_sg.
+        ELSE SAY mia_AT:ogg1_illegale_IN_pl.
+      END IF. "saltare."
+  AND cont IsA CONTAINER
+    ELSE
+      IF cont IS NOT plurale
+        --       "$+1 non [è/sono] qualcosa in cui poter"
+        THEN SAY mia_AT:ogg1_illegale_IN_sg.
+        ELSE SAY mia_AT:ogg1_illegale_IN_pl.
+      END IF. "saltare."
+
+
+ADD TO EVERY OBJECT
+  VERB salta_in
+    CHECK mia_AT CAN saltare_in
+      ELSE SAY mia_AT:azione_bloccata.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND cont IS raggiungibile AND cont IS NOT distante
+      ELSE
+        IF cont IS NOT raggiungibile
+          THEN
+            IF cont IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF cont IS distante
+          THEN
+            IF cont IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+    AND hero IS NOT seduto
+      ELSE SAY mia_AT:impossibile_da_seduto.
+    AND hero IS NOT sdraiato
+      ELSE SAY mia_AT:impossibile_da_sdraiato.
+    DOES
+      IF cont IS NOT plurale
+        --       "$+1 non [è/sono] qualcosa in cui poter"
+        THEN SAY mia_AT:ogg1_illegale_IN_sg.
+        ELSE SAY mia_AT:ogg1_illegale_IN_pl.
+      END IF. "saltare."
+    END VERB salta_in.
+END ADD TO.
+
+
+
+-->gruppo_saltare                                         @SALTA SU <-- @JUMP ON
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== salta_su
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `salta_su`.
+--<
+
+SYNTAX salta_su = salta su (superficie)
+  WHERE superficie IsA supporto
+    ELSE
+      IF superficie IS NOT plurale
+        THEN SAY mia_AT:ogg1_illegale_SU_sg.
+        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
+      END IF. "saltare."
+
+
+ADD TO EVERY OBJECT
+  VERB salta_su
+    CHECK mia_AT CAN saltare_su
+      ELSE SAY mia_AT:azione_bloccata.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND hero IS NOT seduto
+      ELSE SAY mia_AT:impossibile_da_seduto.
+    AND hero IS NOT sdraiato
+      ELSE SAY mia_AT:impossibile_da_sdraiato.
+    DOES
+      IF superficie IS NOT plurale
+        --       "$+1 non [è/sono] qualcosa in cui poter"
+        THEN SAY mia_AT:ogg1_illegale_SU_sg.
+        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
+      END IF. "saltare."
+    END VERB salta_su.
+END ADD TO.
+
 
 
 --=============================================================================
@@ -5646,12 +5797,10 @@ VERB balla
     ELSE SAY mia_AT:azione_bloccata.
   AND CURRENT LOCATION IS illuminato
     ELSE SAY mia_AT:imp_luogo_buio.
---                                                                              TRANSLATE!
   AND hero IS NOT seduto
-    ELSE SAY mia_AT:check_hero_not_sitting1.
---                                                                              TRANSLATE!
+    ELSE SAY mia_AT:impossibile_da_seduto.
   AND hero IS NOT sdraiato
-    ELSE SAY mia_AT:check_hero_not_lying_down1.
+    ELSE SAY mia_AT:impossibile_da_sdraiato.
   DOES
     SAY mia_AT:non_senti_bisogno_di. "ballare."
  -- "How about a waltz?"
@@ -7905,9 +8054,9 @@ END VERB rispondi_Sì.
 --~*| go_to              |                                    | go to (dest)                      | 1 |
 --| | hint               | hints                              | hint                              | 0 |
 --~*| i                  | inv, inventory                     | inventory                         | 0 |
---| | jump               |                                    | jump                              | 0 |
---| | jump_in            |                                    | jump in (cont)                    | 1 |
---| | jump_on            |                                    | jump on (surface)                 | 1 |
+--~*| jump               |                                    | jump                              | 0 |
+--~*| jump_in            |                                    | jump in (cont)                    | 1 |
+--~*| jump_on            |                                    | jump on (surface)                 | 1 |
 --| | kick               |                                    | kick (target)                     | 1 |
 --~*| kill               | murder                             | kill (victim)                     | 1 |
 --~*| kill_with          |                                    | kill (victim) with (weapon)       | 2 |
@@ -8796,131 +8945,6 @@ END VERB get_up.
 
 -- ==============================================================
 
-
-
-
--- ==============================================================
-
-
--- @JUMP
-
-
--- ==============================================================
-
-
-SYNTAX jump = jump.
-
-
-VERB jump
-  CHECK mia_AT CAN saltare
-    ELSE SAY mia_AT:azione_bloccata.
-  AND hero IS NOT seduto
-    ELSE SAY mia_AT:check_hero_not_sitting1.
-  AND hero IS NOT sdraiato
-    ELSE SAY mia_AT:check_hero_not_lying_down1.
-  DOES
-    "You jump on the spot, to no avail."
-END VERB jump.
-
-
-
--- ==============================================================
-
-
--- @JUMP IN
-
-
--- ==============================================================
-
-
-SYNTAX jump_in = jump 'in' (cont)
-  WHERE cont IsA OBJECT
-    ELSE
-      IF cont IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_in_sg.
-        ELSE SAY mia_AT:illegal_parameter_in_pl.
-      END IF.
-  AND cont IsA CONTAINER
-    ELSE
-      IF cont IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_in_sg.
-        ELSE SAY mia_AT:illegal_parameter_in_pl.
-      END IF.
-
-
-
-ADD TO EVERY OBJECT
-  VERB jump_in
-    CHECK mia_AT CAN saltare_in
-      ELSE SAY mia_AT:azione_bloccata.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND cont IS raggiungibile AND cont IS NOT distante
-      ELSE
-        IF cont IS NOT raggiungibile
-          THEN
-            IF cont IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF cont IS distante
-          THEN
-            IF cont IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    AND hero IS NOT seduto
-      ELSE SAY mia_AT:check_hero_not_sitting1.
-    AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down1.
-    DOES
-      IF cont IS NOT plurale
-        THEN "That's not something you can jump into."
-        ELSE "Those are not something you can jump into."
-      END IF.
-    END VERB jump_in.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
--- @JUMP ON
-
-
--- ==============================================================
-
-
-SYNTAX jump_on = jump 'on' (superficie)
-  WHERE superficie IsA supporto
-    ELSE
-      IF superficie IS NOT plurale
-        THEN SAY mia_AT:ogg1_illegale_SU_sg.
-        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
-      END IF.
-      "saltare." --                                                             CHECK VERB
-
-
-ADD TO EVERY OBJECT
-  VERB jump_on
-    CHECK mia_AT CAN saltare_su
-      ELSE SAY mia_AT:azione_bloccata.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND hero IS NOT seduto
-      ELSE SAY mia_AT:check_hero_not_sitting1.
-    AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down1.
-    DOES
-      IF superficie IS NOT plurale
-        THEN "That's not"
-        ELSE "Those are not"
-      END IF.
-      "something you can jump onto."
-    END VERB jump_on.
-END ADD TO.
 
 
 
@@ -10164,9 +10188,9 @@ VERB swim
   CHECK mia_AT CAN nuotare
     ELSE SAY mia_AT:azione_bloccata.
   AND hero IS NOT seduto
-    ELSE SAY mia_AT:check_hero_not_sitting1.
+    ELSE SAY mia_AT:impossibile_da_seduto.
   AND hero IS NOT sdraiato
-    ELSE SAY mia_AT:check_hero_not_lying_down1.
+    ELSE SAY mia_AT:impossibile_da_sdraiato.
   AND CURRENT LOCATION IS illuminato
     ELSE SAY mia_AT:imp_luogo_buio.
   DOES

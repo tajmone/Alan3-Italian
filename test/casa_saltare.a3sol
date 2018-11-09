@@ -1,0 +1,30 @@
+; ******************************************************************************
+; *                                                                            *
+; *                          TESTA VERBI PER SALTARE                           *
+; *                                                                            *
+; ******************************************************************************
+salta
+salta sul tavolo
+salta nel cesto
+; ==============================================================================
+; TESTA I CHECK DEI VERBI
+; ==============================================================================
+; Creiamo situazioni e combinazioni di parametri tali da visualizzare tutti i
+; messaggi possibili per questi verbi (risposte dei CHECK non passati).
+; ------------------------------------------------------------------------------
+; DA SEDUTO
+; ------------------------------------------------------------------------------
+siediti sulla sedia
+salta
+salta sul tavolo
+salta nel cesto
+; ------------------------------------------------------------------------------
+; DA SDRAIATO
+; ------------------------------------------------------------------------------
+STAND UP
+sud
+lie on il lettino
+salta
+salta sul tavolo
+salta nel cesto
+

@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.19-Alpha, 2018-11-03: Alan 3.0beta6
+v0.7.21-Alpha, 2018-11-09: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -151,6 +151,9 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)                |     | 2 | {X} |
 | ripara             | aggiusta                     | ripara (ogg)                           |     | 1 | {X} |
 | rispondi           |                              | rispondi (argomento)!                  |     | 1 |     |
+| salta              |                              | salta                                  |     | 0 |     |
+| salta_in           |                              | salta in (cont)                        |     | 1 |     |
+| salta_su           |                              | salta su (superficie)                  |     | 1 |     |
 | sblocca            |                              | sblocca (ogg)                          |     | 1 | {X} |
 | sblocca_con        |                              | sblocca (ogg) con (chiave)             |     | 2 | {X} |
 | scava              |                              | scava (ogg)                            |     | 1 | {X} |
@@ -616,6 +619,22 @@ Verbi di questo gruppo non ancora tradotti:
 ==== metti_su
 
 // end::gruppo_mettere[]
+// tag::gruppo_saltare[]
+=== Saltare
+
+Questo gruppo include i verbi per saltare:
+
+* `salta`
+* `salta_in`
+* `salta_su`
+
+==== salta
+
+==== salta_in
+
+==== salta_su
+
+// end::gruppo_saltare[]
 // tag::comandi_domande[]
 
 == Verbi di Domande
@@ -660,9 +679,6 @@ italiano del modulo dei verbi.
 | get_up             |                                    | get up                            | 0 |
 | get_off            |                                    | get off (obj)                     | 1 | {x}
 | hint               | hints                              | hint                              | 0 |
-| jump               |                                    | jump                              | 0 |
-| jump_in            |                                    | jump in (cont)                    | 1 |
-| jump_on            |                                    | jump on (surface)                 | 1 |
 | kick               |                                    | kick (target)                     | 1 |
 | knock (on)         |                                    | knock on (obj)                    | 1 | {x}
 | lie_down           |                                    | lie down                          | 0 |
@@ -841,6 +857,12 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `metti_in`.
 
 * [ ] Descrizione `metti_su`.
+
+* [ ] Descrizione `salta`.
+
+* [ ] Descrizione `salta_in`.
+
+* [ ] Descrizione `salta_su`.
 
 // end::todo_checklist[]
 

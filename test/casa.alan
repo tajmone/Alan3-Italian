@@ -47,6 +47,26 @@ END THE giardino.
 -- =============================================================================
 
 --==============================================================================
+-- La Sedia
+--==============================================================================
+-- Creiamo una sedia che sia utilizzabile.
+
+THE sedia IsA supporto AT cucina.
+  HAS articolo "la".
+  
+  VERB siediti_su
+    DOES ONLY
+      IF hero IS sdraiato
+        THEN "Ti alzi e"
+          MAKE hero NOT sdraiato.
+      END IF.
+      "ti siedi" SAY superficie:prep_SU. SAY superficie. "."
+      MAKE hero seduto.
+  END VERB siediti_su.
+END THE sedia.
+
+
+--==============================================================================
 -- Il Frigorifero (contenitore_elencato + apribile)
 --==============================================================================
 THE frigo IsA contenitore_elencato AT cucina.
@@ -216,6 +236,41 @@ THE patatine IsA snack IN sacchetto.
   HAS articolo "le".
   INDEFINITE ARTICLE "delle"
 END THE patatine.
+
+-- =============================================================================
+
+-- Scenografia Giardino
+
+-- =============================================================================
+--==============================================================================
+-- Il Tavolo da Giardino (supporto)
+--==============================================================================
+
+THE tavolo_giardino IsA supporto AT giardino.
+  IS NOT prendibile.
+  NAME tavolo.
+END THE tavolo_giardino.
+
+--==============================================================================
+-- Il Lettino
+--==============================================================================
+-- Creiamo un lettino su cui ci si possa sdraiare così da poter testare il verbo
+-- 'sdraiati' ed i messaggi dei CHECK che bloccano le azioni intentate quando il
+-- protagonista è sdraiato.
+
+THE lettino IsA supporto AT giardino.
+  HAS xDesc "È un lettino pieghevole, di quelli usati in campeggio.".
+  
+  VERB lie_on
+    DOES ONLY
+      IF hero IS seduto
+        THEN "Ti alzi e"
+          MAKE hero NOT seduto.
+      END IF.
+      "ti sdrai" SAY superficie:prep_SU. SAY superficie. "."
+      MAKE hero sdraiato.
+  END VERB lie_on.
+END THE lettino.
 
 --------------------------------------------------------------------------------
 START AT cucina.
