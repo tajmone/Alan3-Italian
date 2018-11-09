@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.22-Alpha, 2018-11-09: Alan 3.0beta6
+--| v0.7.23-Alpha, 2018-11-09: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -740,6 +740,10 @@ END VERB ringraziamenti.
 --| | guida              |                              | guida (veicolo)                        |     | 1 |     |
 --| | indossa            | mettiti                      | indossa (ogg)                          |     | 1 | {X} |
 --| | inventario         | inv                          | inventario                             |     | 0 |     |
+--| | lancia             |                              | lancia (proiettile)                    |     | 1 |     |
+--| | lancia_a           |                              | lancia (proiettile) a (ricevente)      |     | 2 |     |
+--| | lancia_contro      |                              | lancia (proiettile) contro (bersaglio) |     | 2 |     |
+--| | lancia_in          |                              | lancia (proiettile) in (cont)          |     | 2 |     |
 --| | lascia             | abbandona, metti giù, posa   | lascia (ogg)*                          |     | 1 | {X} |
 --| | lega               |                              | lega (ogg)                             |     | 1 | {X} |
 --| | lega_a             |                              | lega (ogg) a (bersaglio)               |     | 2 | {X} |
@@ -5858,6 +5862,443 @@ END ADD TO.
 -- seduto o sdraiato.
 
 
+
+-->gruppo_lanciare(21500)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Lanciare
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi per lanciare oggetti:
+--| 
+--| * `lancia`
+--| * `lancia_a`
+--| * `lancia_contro`
+--| * `lancia_in`
+--<
+
+
+-->gruppo_lanciare                                            @LANCIA <-- @THROW
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== lancia
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `lancia`.
+--<
+
+
+SYNTAX lancia = lancia (proiettile)
+  WHERE proiettile IsA OBJECT
+--                                                                              TRANSLATE!
+    ELSE SAY mia_AT:illegal_parameter_obj.
+
+
+ADD TO EVERY OBJECT
+  VERB lancia
+    CHECK mia_AT CAN lanciare
+      ELSE SAY mia_AT:azione_bloccata.
+    AND proiettile IS esaminabile
+      ELSE
+        IF proiettile IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY mia_AT:ogg1_inadatto_sg. "lanciare."
+          ELSE SAY mia_AT:ogg1_inadatto_pl. "lanciare."
+        END IF.
+    AND proiettile IS prendibile
+      ELSE SAY  mia_AT:ogg1_non_posseduto.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND proiettile IS raggiungibile AND proiettile IS NOT distante
+      ELSE
+        IF proiettile IS NOT raggiungibile
+          THEN
+            IF proiettile IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF proiettile IS distante
+          THEN
+            IF proiettile IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+    DOES
+      -- >>> prendi implicito: >>>
+      IF proiettile NOT DIRECTLY IN hero
+        THEN LOCATE proiettile IN hero.
+          SAY  mia_AT:riferisci_prendi_implicito.
+      END IF.
+      -- <<< prendi implicito <<<
+
+--                                                                              TRANSLATE!
+      -- "You can't throw very far;" SAY THE proiettile.
+      "You can't throw very far;" SAY THE proiettile.
+
+      IF proiettile IS NOT plurale
+        THEN "ends up"
+        ELSE "end up"
+      END IF.
+
+      IF pavimento HERE
+        THEN "on the floor"
+      ELSIF suolo HERE
+        THEN "on the ground"
+      END IF.
+
+      "nearby."
+      LOCATE proiettile AT hero.
+
+  END VERB lancia.
+END ADD TO.
+
+
+-->gruppo_lanciare                                       @LANCIA A <-- @THROW TO
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== lancia_a
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `lancia_a`.
+--<
+
+
+SYNTAX lancia_a = lancia (proiettile) a (ricevente)
+--                                                                              TRANSLATE!
+    WHERE proiettile IsA OBJECT
+      ELSE SAY mia_AT:illegal_parameter_obj.
+--                                                                              TRANSLATE!
+    AND ricevente IsA ACTOR
+      ELSE SAY mia_AT:illegal_parameter2_there.
+
+
+ADD TO EVERY OBJECT
+  VERB lancia_a
+    WHEN proiettile
+      CHECK mia_AT CAN lanciare_a
+        ELSE SAY mia_AT:azione_bloccata.
+      AND proiettile IS esaminabile
+        ELSE
+          IF proiettile IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY mia_AT:ogg1_inadatto_sg. "lanciare."
+            ELSE SAY mia_AT:ogg1_inadatto_pl. "lanciare."
+          END IF.
+      AND proiettile IS prendibile
+        ELSE SAY  mia_AT:ogg1_non_posseduto.
+--                                                                              TRANSLATE!
+      AND ricevente IS esaminabile
+        ELSE SAY mia_AT:check_obj_suitable_at.
+--                                                                              TRANSLATE!
+      AND proiettile <> ricevente
+        ELSE SAY mia_AT:check_obj_not_obj2_to.
+--                                                                              TRANSLATE!
+      AND ricevente NOT IN hero
+        ELSE SAY mia_AT:check_obj2_not_in_hero1.
+--                                                                              TRANSLATE!
+      AND ricevente <> hero
+        ELSE SAY mia_AT:check_obj2_not_hero1.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY mia_AT:imp_luogo_buio.
+      AND proiettile IS raggiungibile AND proiettile IS NOT distante
+        ELSE
+          IF proiettile IS NOT raggiungibile
+            THEN
+              IF proiettile IS NOT plurale
+                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+              END IF.
+          ELSIF proiettile IS distante
+            THEN
+              IF proiettile IS NOT plurale
+                THEN SAY mia_AT:ogg1_distante_sg.
+                ELSE SAY mia_AT:ogg1_distante_pl.
+              END IF.
+          END IF.
+      AND ricevente IS NOT distante
+        ELSE
+          IF ricevente IS NOT plurale
+            THEN SAY mia_AT:ogg2_distante_sg.
+            ELSE SAY mia_AT:ogg2_distante_pl.
+          END IF.
+      DOES
+        -- >>> prendi implicito: >>>
+        IF proiettile NOT DIRECTLY IN hero
+          THEN LOCATE proiettile IN hero.
+            SAY  mia_AT:riferisci_prendi_implicito.
+        END IF.
+        -- <<< prendi implicito <<<
+
+--                                                                              TRANSLATE!
+        "It wouldn't accomplish anything trying to throw"
+        SAY the proiettile. "to" SAY THE ricevente. "."
+
+  END VERB lancia_a.
+END ADD TO.
+
+
+-->gruppo_lanciare                                  @LANCIA CONTRO <-- @THROW AT
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== lancia_contro
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `lancia_contro`.
+--<
+
+
+SYNTAX lancia_contro = lancia (proiettile) contro (bersaglio)
+--                                                                              TRANSLATE!
+  WHERE proiettile IsA OBJECT
+    ELSE SAY mia_AT:illegal_parameter_obj.
+--                                                                              TRANSLATE!
+  AND bersaglio IsA THING
+    ELSE SAY mia_AT:illegal_parameter_at.
+
+
+
+ADD TO EVERY OBJECT
+  VERB lancia_contro
+    WHEN proiettile
+      CHECK mia_AT CAN lanciare_contro
+        ELSE SAY mia_AT:azione_bloccata.
+      AND proiettile IS esaminabile
+        ELSE
+          IF proiettile IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY mia_AT:ogg1_inadatto_sg. "lanciare."
+            ELSE SAY mia_AT:ogg1_inadatto_pl. "lanciare."
+          END IF.
+      AND proiettile IS prendibile
+        ELSE SAY  mia_AT:ogg1_non_posseduto.
+--                                                                              TRANSLATE!
+      AND bersaglio IS esaminabile
+        ELSE SAY mia_AT:check_obj_suitable_at.
+--                                                                              TRANSLATE!
+      AND proiettile <> bersaglio
+        ELSE SAY mia_AT:check_obj_not_obj2_at.
+--                                                                              TRANSLATE!
+      AND bersaglio NOT IN hero
+        ELSE SAY mia_AT:check_obj2_not_in_hero1.
+--                                                                              TRANSLATE!
+      AND bersaglio <> hero
+        ELSE SAY mia_AT:check_obj2_not_hero1.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY mia_AT:imp_luogo_buio.
+      AND proiettile IS raggiungibile AND proiettile IS NOT distante
+        ELSE
+          IF proiettile IS NOT raggiungibile
+            THEN
+              IF proiettile IS NOT plurale
+                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+              END IF.
+          ELSIF proiettile IS distante
+            THEN
+              IF proiettile IS NOT plurale
+                THEN SAY mia_AT:ogg1_distante_sg.
+                ELSE SAY mia_AT:ogg1_distante_pl.
+              END IF.
+          END IF.
+      AND bersaglio IS NOT distante
+        -- it is possible to throw something at an (otherwise) not reachable bersaglio
+        ELSE
+          IF bersaglio IS NOT plurale
+            THEN SAY mia_AT:ogg2_distante_sg.
+            ELSE SAY mia_AT:ogg2_distante_pl.
+          END IF.
+      DOES
+        -- >>> prendi implicito: >>>
+        IF proiettile NOT DIRECTLY IN hero
+          THEN LOCATE proiettile IN hero.
+            SAY  mia_AT:riferisci_prendi_implicito.
+        END IF.
+        -- <<< prendi implicito <<<
+
+        IF bersaglio IS inanimato
+          THEN
+--                                                                              TRANSLATE!
+            IF bersaglio NOT DIRECTLY AT hero
+              -- for example the bersaglio is inside a box
+              THEN "It wouldn't accomplish anything trying to throw
+                 something at" SAY THE bersaglio. "."
+--                                                                              TRANSLATE!
+              ELSE
+                SAY THE proiettile.
+
+                IF proiettile IS NOT plurale
+                  THEN "bounces"
+                  ELSE "bounce"
+                END IF.
+
+                "harmlessly off"
+
+                SAY THE bersaglio. "and"
+
+                IF proiettile IS NOT plurale
+                  THEN "ends up"
+                  ELSE "end up"
+                END IF.
+
+                  IF pavimento HERE
+                  THEN "on the floor"
+                ELSIF suolo HERE
+                  THEN "on the ground"
+                  END IF.
+
+                    "nearby."
+                  LOCATE proiettile AT hero.
+            END IF.
+
+--                                                                              TRANSLATE!
+          ELSE SAY THE bersaglio. "wouldn't probably appreciate that."
+            -- Throwing objects at actors is not disabled in the checks
+            -- as in some situations this might be desired, for example
+            -- when attacking enemies.
+          END IF.
+
+  END VERB lancia_contro.
+END ADD TO.
+
+
+-->gruppo_lanciare                                      @LANCIA IN <-- @THROW IN
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== lancia_in
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `lancia_in`.
+--<
+
+
+SYNTAX lancia_in = lancia (proiettile) 'in' (cont)
+--                                                                              TRANSLATE!
+  WHERE proiettile IsA OBJECT
+    ELSE SAY mia_AT:illegal_parameter_obj.
+  AND cont IsA OBJECT
+    ELSE
+--                                                                              TRANSLATE!
+      IF cont IsA ACTOR
+        THEN SAY mia_AT:illegal_parameter_act.
+        ELSE SAY mia_AT:illegal_parameter2_there.
+      END IF.
+--                                                                              TRANSLATE!
+  AND cont IsA CONTAINER
+    ELSE SAY mia_AT:illegal_parameter2_there.
+
+
+ADD TO EVERY OBJECT
+  VERB lancia_in
+    WHEN proiettile
+      CHECK mia_AT CAN lanciare_in
+        ELSE SAY mia_AT:azione_bloccata.
+      AND proiettile IS esaminabile
+        ELSE
+          IF proiettile IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY mia_AT:ogg1_inadatto_sg. "lanciare."
+            ELSE SAY mia_AT:ogg1_inadatto_pl. "lanciare."
+          END IF.
+      AND proiettile IS prendibile
+          ELSE SAY  mia_AT:ogg1_non_posseduto.
+--                                                                              TRANSLATE!
+      AND cont IS esaminabile
+          ELSE SAY mia_AT:check_obj2_suitable_there.
+--                                                                              TRANSLATE!
+      AND proiettile <> cont
+        ELSE SAY mia_AT:check_obj_not_obj2_in.
+--                                                                              TRANSLATE!
+      AND cont <> hero
+        ELSE SAY mia_AT:check_obj2_not_hero1.
+--                                                                              TRANSLATE!
+      AND cont NOT IN hero
+        ELSE SAY mia_AT:check_obj2_not_in_hero1.
+      AND CURRENT LOCATION IS illuminato
+          ELSE SAY mia_AT:imp_luogo_buio.
+--                                                                              TRANSLATE!
+      AND proiettile NOT IN cont
+        ELSE
+          IF proiettile IS NOT plurale
+            THEN SAY mia_AT:check_obj_not_in_cont_sg.
+            ELSE SAY mia_AT:check_obj_not_in_cont_pl.
+          END IF.
+      AND proiettile IS raggiungibile AND proiettile IS NOT distante
+        ELSE
+          IF proiettile IS NOT raggiungibile
+            THEN
+              IF proiettile IS NOT plurale
+                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+              END IF.
+          ELSIF proiettile IS distante
+            THEN
+              IF proiettile IS NOT plurale
+                THEN SAY mia_AT:ogg1_distante_sg.
+                ELSE SAY mia_AT:ogg1_distante_pl.
+              END IF.
+          END IF.
+      AND cont IS NOT distante
+        ELSE
+          IF cont IS NOT plurale
+            THEN SAY mia_AT:ogg2_distante_sg.
+            ELSE SAY mia_AT:ogg2_distante_pl.
+          END IF.
+--                                                                              TRANSLATE!
+      AND proiettile IN consentiti OF cont
+        ELSE
+          IF proiettile IS NOT plurale
+            THEN SAY mia_AT:check_obj_allowed_in_sg.
+            ELSE SAY mia_AT:check_obj_allowed_in_pl.
+          END IF.
+      AND cont IS aperto
+        ELSE
+          IF cont IS NOT femminile
+            THEN
+              IF cont IS NOT plurale
+                THEN SAY mia_AT:imp_ogg2_chiuso_ms.
+                ELSE SAY mia_AT:imp_ogg2_chiuso_mp.
+              END IF.
+            ELSE
+              IF cont IS NOT plurale
+                THEN SAY mia_AT:imp_ogg2_chiuso_fs.
+                ELSE SAY mia_AT:imp_ogg2_chiuso_fp.
+              END IF.
+          END IF.
+      DOES
+        -- >>> prendi implicito: >>>
+        IF proiettile NOT DIRECTLY IN hero
+          THEN LOCATE proiettile IN hero.
+            SAY  mia_AT:riferisci_prendi_implicito.
+        END IF.
+        -- <<< prendi implicito <<<
+
+--                                                                              TRANSLATE!
+        "It wouldn't accomplish anything trying to throw"
+        SAY THE proiettile. "into" SAY THE cont. "."
+
+        -- Throwing objects into containers, even when these objects are
+        -- in the 'allowed' set of the container, is not successful by
+        -- default; this is to avoid successful outcomes for commands like
+        -- 'throw plate into cupboard' etc.
+
+  END VERB lancia_in.
+END ADD TO.
+
+
+
+
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------
@@ -8444,10 +8885,10 @@ END VERB rispondi_Sì.
 --~*| tell               | enlighten, inform                  | tell (act) about (topic)          | 2 |
 --~*| think              |                                    | think                             | 0 |
 --~*| think_about        |                                    | think about (topic)               | 1 |
---| | throw              |                                    | throw (projectile)                | 1 |
---| | throw_at           |                                    | throw (projectile) at (target)    | 2 |
---| | throw_in           |                                    | throw (projectile) in (cont)      | 2 |
---| | throw_to           |                                    | throw (projectile) to (recipient) | 2 |
+--~*| throw              |                                    | throw (projectile)                | 1 |
+--~*| throw_at           |                                    | throw (projectile) at (target)    | 2 |
+--~*| throw_in           |                                    | throw (projectile) in (cont)      | 2 |
+--~*| throw_to           |                                    | throw (projectile) to (recipient) | 2 |
 --~*| tie                |                                    | tie (obj)                         | 1 | {x}
 --~*| tie_to             |                                    | tie (obj) to (target)             | 2 | {x}
 --~*| touch              | feel                               | touch (obj)                       | 1 | {x}
@@ -10346,391 +10787,6 @@ ADD TO EVERY OBJECT
       "Trying to $v" SAY THE ogg. "would be futile."
   END VERB tear.
 END ADD TO.
-
-
-
-
-
--- ==============================================================
-
-
--- @THROW
-
-
--- ==============================================================
-
-
-SYNTAX throw = throw (proiettile)
-  WHERE proiettile IsA OBJECT
-    ELSE SAY mia_AT:illegal_parameter_obj.
-
-
-
-ADD TO EVERY OBJECT
-  VERB throw
-    CHECK mia_AT CAN throw
-      ELSE SAY mia_AT:azione_bloccata.
-    AND proiettile IS esaminabile
-      ELSE
-        IF proiettile IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY mia_AT:ogg1_inadatto_sg. "lanciare."
-          ELSE SAY mia_AT:ogg1_inadatto_pl. "lanciare."
-        END IF.
-    AND proiettile IS prendibile
-      ELSE SAY  mia_AT:ogg1_non_posseduto.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND proiettile IS raggiungibile AND proiettile IS NOT distante
-      ELSE
-        IF proiettile IS NOT raggiungibile
-          THEN
-            IF proiettile IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF proiettile IS distante
-          THEN
-            IF proiettile IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    DOES
-      -- >>> prendi implicito: >>>
-      IF proiettile NOT DIRECTLY IN hero
-        THEN LOCATE proiettile IN hero.
-          SAY  mia_AT:riferisci_prendi_implicito.
-      END IF.
-      -- <<< prendi implicito <<<
-
-      "You can't throw very far;" SAY THE proiettile.
-
-      IF proiettile IS NOT plurale
-        THEN "ends up"
-        ELSE "end up"
-      END IF.
-
-      IF pavimento HERE
-        THEN "on the floor"
-      ELSIF suolo HERE
-        THEN "on the ground"
-      END IF.
-
-      "nearby."
-          LOCATE proiettile AT hero.
-
-  END VERB throw.
-END ADD TO.
-
-
-
-
--- ==============================================================
-
-
--- @THROW AT
-
-
--- ==============================================================
-
-
-SYNTAX throw_at = throw (proiettile) 'at' (bersaglio)
-  WHERE proiettile IsA OBJECT
-    ELSE SAY mia_AT:illegal_parameter_obj.
-  AND bersaglio IsA THING
-    ELSE SAY mia_AT:illegal_parameter_at.
-
-
-
-ADD TO EVERY OBJECT
-  VERB throw_at
-    WHEN proiettile
-      CHECK mia_AT CAN throw_at
-        ELSE SAY mia_AT:azione_bloccata.
-      AND proiettile IS esaminabile
-        ELSE
-          IF proiettile IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY mia_AT:ogg1_inadatto_sg. "lanciare."
-            ELSE SAY mia_AT:ogg1_inadatto_pl. "lanciare."
-          END IF.
-      AND proiettile IS prendibile
-        ELSE SAY  mia_AT:ogg1_non_posseduto.
-      AND bersaglio IS esaminabile
-        ELSE SAY mia_AT:check_obj_suitable_at.
-      AND proiettile <> bersaglio
-        ELSE SAY mia_AT:check_obj_not_obj2_at.
-      AND bersaglio NOT IN hero
-        ELSE SAY mia_AT:check_obj2_not_in_hero1.
-      AND bersaglio <> hero
-        ELSE SAY mia_AT:check_obj2_not_hero1.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY mia_AT:imp_luogo_buio.
-      AND proiettile IS raggiungibile AND proiettile IS NOT distante
-        ELSE
-          IF proiettile IS NOT raggiungibile
-            THEN
-              IF proiettile IS NOT plurale
-                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-              END IF.
-          ELSIF proiettile IS distante
-            THEN
-              IF proiettile IS NOT plurale
-                THEN SAY mia_AT:ogg1_distante_sg.
-                ELSE SAY mia_AT:ogg1_distante_pl.
-              END IF.
-          END IF.
-      AND bersaglio IS NOT distante
-        -- it is possible to throw something at an (otherwise) not reachable bersaglio
-        ELSE
-          IF bersaglio IS NOT plurale
-            THEN SAY mia_AT:ogg2_distante_sg.
-            ELSE SAY mia_AT:ogg2_distante_pl.
-          END IF.
-      DOES
-        -- >>> prendi implicito: >>>
-        IF proiettile NOT DIRECTLY IN hero
-          THEN LOCATE proiettile IN hero.
-            SAY  mia_AT:riferisci_prendi_implicito.
-        END IF.
-        -- <<< prendi implicito <<<
-
-        IF bersaglio IS inanimato
-          THEN
-            IF bersaglio NOT DIRECTLY AT hero
-              -- for example the bersaglio is inside a box
-              THEN "It wouldn't accomplish anything trying to throw
-                 something at" SAY THE bersaglio. "."
-              ELSE
-                SAY THE proiettile.
-
-                IF proiettile IS NOT plurale
-                  THEN "bounces"
-                  ELSE "bounce"
-                END IF.
-
-                "harmlessly off"
-
-                SAY THE bersaglio. "and"
-
-                IF proiettile IS NOT plurale
-                  THEN "ends up"
-                  ELSE "end up"
-                END IF.
-
-                  IF pavimento HERE
-                  THEN "on the floor"
-                ELSIF suolo HERE
-                  THEN "on the ground"
-                  END IF.
-
-                    "nearby."
-                  LOCATE proiettile AT hero.
-            END IF.
-
-          ELSE SAY THE bersaglio. "wouldn't probably appreciate that."
-            -- Throwing objects at actors is not disabled in the checks
-            -- as in some situations this might be desired, for example
-            -- when attacking enemies.
-          END IF.
-
-  END VERB throw_at.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
--- @THROW TO
-
-
--- ==============================================================
-
-
-SYNTAX throw_to = throw (proiettile) 'to' (ricevente)
-    WHERE proiettile IsA OBJECT
-      ELSE SAY mia_AT:illegal_parameter_obj.
-    AND ricevente IsA ACTOR
-      ELSE SAY mia_AT:illegal_parameter2_there.
-
-
-ADD TO EVERY OBJECT
-  VERB throw_to
-    WHEN proiettile
-      CHECK mia_AT CAN throw_to
-        ELSE SAY mia_AT:azione_bloccata.
-      AND proiettile IS esaminabile
-        ELSE
-          IF proiettile IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY mia_AT:ogg1_inadatto_sg. "lanciare."
-            ELSE SAY mia_AT:ogg1_inadatto_pl. "lanciare."
-          END IF.
-      AND proiettile IS prendibile
-        ELSE SAY  mia_AT:ogg1_non_posseduto.
-      AND ricevente IS esaminabile
-        ELSE SAY mia_AT:check_obj_suitable_at.
-      AND proiettile <> ricevente
-        ELSE SAY mia_AT:check_obj_not_obj2_to.
-      AND ricevente NOT IN hero
-        ELSE SAY mia_AT:check_obj2_not_in_hero1.
-      AND ricevente <> hero
-        ELSE SAY mia_AT:check_obj2_not_hero1.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY mia_AT:imp_luogo_buio.
-      AND proiettile IS raggiungibile AND proiettile IS NOT distante
-        ELSE
-          IF proiettile IS NOT raggiungibile
-            THEN
-              IF proiettile IS NOT plurale
-                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-              END IF.
-          ELSIF proiettile IS distante
-            THEN
-              IF proiettile IS NOT plurale
-                THEN SAY mia_AT:ogg1_distante_sg.
-                ELSE SAY mia_AT:ogg1_distante_pl.
-              END IF.
-          END IF.
-      AND ricevente IS NOT distante
-        ELSE
-          IF ricevente IS NOT plurale
-            THEN SAY mia_AT:ogg2_distante_sg.
-            ELSE SAY mia_AT:ogg2_distante_pl.
-          END IF.
-      DOES
-        -- >>> prendi implicito: >>>
-        IF proiettile NOT DIRECTLY IN hero
-          THEN LOCATE proiettile IN hero.
-            SAY  mia_AT:riferisci_prendi_implicito.
-        END IF.
-        -- <<< prendi implicito <<<
-
-        "It wouldn't accomplish anything trying to throw"
-        SAY the proiettile. "to" SAY THE ricevente. "."
-
-  END VERB throw_to.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
------- THROW IN
-
-
--- ==============================================================
-
-
-SYNTAX throw_in = throw (proiettile) 'in' (cont)
-  WHERE proiettile IsA OBJECT
-    ELSE SAY mia_AT:illegal_parameter_obj.
-  AND cont IsA OBJECT
-    ELSE
-      IF cont IsA ACTOR
-        THEN SAY mia_AT:illegal_parameter_act.
-        ELSE SAY mia_AT:illegal_parameter2_there.
-      END IF.
-  AND cont IsA CONTAINER
-    ELSE SAY mia_AT:illegal_parameter2_there.
-
-
-ADD TO EVERY OBJECT
-  VERB throw_in
-    WHEN proiettile
-      CHECK mia_AT CAN throw_in
-        ELSE SAY mia_AT:azione_bloccata.
-      AND proiettile IS esaminabile
-        ELSE
-          IF proiettile IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY mia_AT:ogg1_inadatto_sg. "lanciare."
-            ELSE SAY mia_AT:ogg1_inadatto_pl. "lanciare."
-          END IF.
-      AND proiettile IS prendibile
-          ELSE SAY  mia_AT:ogg1_non_posseduto.
-      AND cont IS esaminabile
-          ELSE SAY mia_AT:check_obj2_suitable_there.
-      AND proiettile <> cont
-        ELSE SAY mia_AT:check_obj_not_obj2_in.
-      AND cont <> hero
-        ELSE SAY mia_AT:check_obj2_not_hero1.
-      AND cont NOT IN hero
-        ELSE SAY mia_AT:check_obj2_not_in_hero1.
-      AND CURRENT LOCATION IS illuminato
-          ELSE SAY mia_AT:imp_luogo_buio.
-      AND proiettile NOT IN cont
-        ELSE
-          IF proiettile IS NOT plurale
-            THEN SAY mia_AT:check_obj_not_in_cont_sg.
-            ELSE SAY mia_AT:check_obj_not_in_cont_pl.
-          END IF.
-      AND proiettile IS raggiungibile AND proiettile IS NOT distante
-        ELSE
-          IF proiettile IS NOT raggiungibile
-            THEN
-              IF proiettile IS NOT plurale
-                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-              END IF.
-          ELSIF proiettile IS distante
-            THEN
-              IF proiettile IS NOT plurale
-                THEN SAY mia_AT:ogg1_distante_sg.
-                ELSE SAY mia_AT:ogg1_distante_pl.
-              END IF.
-          END IF.
-      AND cont IS NOT distante
-        ELSE
-          IF cont IS NOT plurale
-            THEN SAY mia_AT:ogg2_distante_sg.
-            ELSE SAY mia_AT:ogg2_distante_pl.
-          END IF.
-      AND proiettile IN consentiti OF cont
-        ELSE
-          IF proiettile IS NOT plurale
---                                                                              TRANSLATE!
-            THEN SAY mia_AT:check_obj_allowed_in_sg.
-            ELSE SAY mia_AT:check_obj_allowed_in_pl.
-          END IF.
-      AND cont IS aperto
-        ELSE
-          IF cont IS NOT femminile
-            THEN
-              IF cont IS NOT plurale
-                THEN SAY mia_AT:imp_ogg2_chiuso_ms.
-                ELSE SAY mia_AT:imp_ogg2_chiuso_mp.
-              END IF.
-            ELSE
-              IF cont IS NOT plurale
-                THEN SAY mia_AT:imp_ogg2_chiuso_fs.
-                ELSE SAY mia_AT:imp_ogg2_chiuso_fp.
-              END IF.
-          END IF.
-      DOES
-        -- >>> prendi implicito: >>>
-        IF proiettile NOT DIRECTLY IN hero
-          THEN LOCATE proiettile IN hero.
-            SAY  mia_AT:riferisci_prendi_implicito.
-        END IF.
-        -- <<< prendi implicito <<<
-
-        "It wouldn't accomplish anything trying to throw"
-        SAY THE proiettile. "into" SAY THE cont. "."
-
-        -- Throwing objects into containers, even when these objects are
-        -- in the 'allowed' set of the container, is not successful by
-        -- default; this is to avoid successful outcomes for commands like
-        -- 'throw plate into cupboard' etc.
-
-  END VERB throw_in.
-END ADD TO.
-
 
 
 

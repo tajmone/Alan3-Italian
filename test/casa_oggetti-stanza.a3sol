@@ -11,7 +11,7 @@ esamina il cesto
 ; ==============================================================================
 ; L'istanza 'pavimento' (presente in tutte le istanze di classe 'stanza')
 ; contiene la propria definizione dei seguenti verbi:
-;   svuota_in, versa_in, guarda_in, metti_in, prendi_da, throw_in.
+;   svuota_in, versa_in, guarda_in, metti_in, prendi_da, lancia_in.
 ; Qui testeremo se i suddetti verbi vengono eseguiti corettamente...
 ; ------------------------------------------------------------------------------
 ; TESTA VERBO 'metti_in' (ERRORE!)
@@ -56,13 +56,13 @@ svuota il sacchetto nel pavimento
 ;          Come per il verbo 'versa_in' (entrambi condividono lo stesso corpo del
 ;          verbo sia nella definizione principale che in quella su 'pavimento').
 ; ------------------------------------------------------------------------------
-; TESTA VERBO 'throw_in' (ERRORE!)
+; TESTA VERBO 'lancia_in' (ERRORE!)
 ; ------------------------------------------------------------------------------
 ; **ERR!** Ci si aspetta "That's not something you can $v things into.":
-throw il sacchetto nel pavimento
+lancia il sacchetto nel pavimento
 ;          Abbiamo ottenuto invece la risposta del CEHCK 'projectile IN allowed OF cont'
 ;          della definizione principale in 'lib_verbi.i', che previene l'esecuzione
-;          del corpo del verbo 'throw_in' su 'pavimento'.
+;          del corpo del verbo 'lancia_in' su 'pavimento'.
 ; ------------------------------------------------------------------------------
 ; TESTA VERBO 'guarda_in' (PASS)
 ; ------------------------------------------------------------------------------

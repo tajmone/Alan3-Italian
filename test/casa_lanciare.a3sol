@@ -1,0 +1,16 @@
+; ******************************************************************************
+; *                                                                            *
+; *                      TESTA VERBI PER LANCIARE OGGETTI                      *
+; *                                                                            *
+; ******************************************************************************
+lancia la mela
+lancia la mela contro il tavolo
+lancia la mela nel cesto
+; * * * * * * * * * * * * * * * * FINE DEI TEST! * * * * * * * * * * * * * * * *
+abbandona partita
+quit
+; \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;                                  TESTS TODOs                                  
+; //////////////////////////////////////////////////////////////////////////////
+; * Aggiungi attori per testare 'lancia_a'
+; * Implementa 'lancia_in' sul cesto, così che la frutta sia lanciabile in esso.

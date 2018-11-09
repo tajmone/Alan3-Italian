@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.7.22-Alpha,</span>
+<span id="revnumber">versione 0.7.23-Alpha,</span>
 <span id="revdate">2018-11-09</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
@@ -612,6 +612,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_sdraiati_su">sdraiati_su</a></li>
 <li><a href="#_siediti">siediti</a></li>
 <li><a href="#_siediti_su">siediti_su</a></li>
+</ul>
+</li>
+<li><a href="#_lanciare">Lanciare</a>
+<ul class="sectlevel3">
+<li><a href="#_lancia">lancia</a></li>
+<li><a href="#_lancia_a">lancia_a</a></li>
+<li><a href="#_lancia_contro">lancia_contro</a></li>
+<li><a href="#_lancia_in">lancia_in</a></li>
 </ul>
 </li>
 </ul>
@@ -1280,6 +1288,42 @@ elencati in ordine alfabetico.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">inventario</p></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lancia</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lancia (proiettile)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lancia_a</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lancia (proiettile) a (ricevente)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lancia_contro</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lancia (proiettile) contro (bersaglio)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lancia_in</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lancia (proiettile) in (cont)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
@@ -2865,6 +2909,44 @@ l&#8217;attributo <code>xDesc</code> (che di default è una stringa vuota).</p>
 
 </div>
 </div>
+<div class="sect2">
+<h3 id="_lanciare"><a class="anchor" href="#_lanciare"></a>Lanciare</h3>
+<div class="paragraph">
+<p>Questo gruppo include i verbi per lanciare oggetti:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>lancia</code></p>
+</li>
+<li>
+<p><code>lancia_a</code></p>
+</li>
+<li>
+<p><code>lancia_contro</code></p>
+</li>
+<li>
+<p><code>lancia_in</code></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_lancia"><a class="anchor" href="#_lancia"></a>lancia</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_lancia_a"><a class="anchor" href="#_lancia_a"></a>lancia_a</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_lancia_contro"><a class="anchor" href="#_lancia_contro"></a>lancia_contro</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_lancia_in"><a class="anchor" href="#_lancia_in"></a>lancia_in</h4>
+
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -3135,34 +3217,6 @@ italiano del modulo dei verbi.</p>
 <td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>throw</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">throw (projectile)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>throw_at</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">throw (projectile) at (target)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>throw_in</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">throw (projectile) in (cont)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>throw_to</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">throw (projectile) to (recipient)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>turn</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">rotate</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">turn (obj)</p></td>
@@ -3421,6 +3475,18 @@ italiano del modulo dei verbi.</p>
 <li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>siediti_su</code>.</p>
 </li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>lancia</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>lancia_a</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>lancia_contro</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>lancia_in</code>.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -3429,7 +3495,7 @@ italiano del modulo dei verbi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.7.22-Alpha<br>
+Versione 0.7.23-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

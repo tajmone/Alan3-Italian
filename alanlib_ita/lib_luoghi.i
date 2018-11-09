@@ -296,10 +296,10 @@ THE pavimento IsA oggetto_stanza
   END VERB prendi_da.
 
 
-  VERB throw_in
+  VERB lancia_in
      WHEN cont
     DOES ONLY "That's not something you can $v things into."
-  END VERB throw_in.
+  END VERB lancia_in.
 
 END THE.
 
@@ -362,10 +362,10 @@ THE suolo IsA oggetto_luogo_esterno
   END VERB prendi_da.
 
 
-  VERB throw_in
+  VERB lancia_in
      WHEN cont
     DOES ONLY "That's not something you can $v things into."
-  END VERB throw_in.
+  END VERB lancia_in.
 
 
 END THE.

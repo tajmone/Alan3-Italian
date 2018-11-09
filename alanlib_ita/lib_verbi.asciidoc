@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.22-Alpha, 2018-11-09: Alan 3.0beta6
+v0.7.23-Alpha, 2018-11-09: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -123,6 +123,10 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | guida              |                              | guida (veicolo)                        |     | 1 |     |
 | indossa            | mettiti                      | indossa (ogg)                          |     | 1 | {X} |
 | inventario         | inv                          | inventario                             |     | 0 |     |
+| lancia             |                              | lancia (proiettile)                    |     | 1 |     |
+| lancia_a           |                              | lancia (proiettile) a (ricevente)      |     | 2 |     |
+| lancia_contro      |                              | lancia (proiettile) contro (bersaglio) |     | 2 |     |
+| lancia_in          |                              | lancia (proiettile) in (cont)          |     | 2 |     |
 | lascia             | abbandona, metti giù, posa   | lascia (ogg)*                          |     | 1 | {X} |
 | lega               |                              | lega (ogg)                             |     | 1 | {X} |
 | lega_a             |                              | lega (ogg) a (bersaglio)               |     | 2 | {X} |
@@ -672,6 +676,25 @@ Verbi di questo gruppo non ancora tradotti:
 ==== siediti_su
 
 // end::gruppo_sedersi[]
+// tag::gruppo_lanciare[]
+=== Lanciare
+
+Questo gruppo include i verbi per lanciare oggetti:
+
+* `lancia`
+* `lancia_a`
+* `lancia_contro`
+* `lancia_in`
+
+==== lancia
+
+==== lancia_a
+
+==== lancia_contro
+
+==== lancia_in
+
+// end::gruppo_lanciare[]
 // tag::comandi_domande[]
 
 == Verbi di Domande
@@ -733,10 +756,6 @@ italiano del modulo dei verbi.
 | swim               |                                    | swim                              | 0 |
 | swim_in            |                                    | swim in (liq)                     | 1 |
 | tear               | rip                                | tear (obj)                        | 1 | {x}
-| throw              |                                    | throw (projectile)                | 1 |
-| throw_at           |                                    | throw (projectile) at (target)    | 2 |
-| throw_in           |                                    | throw (projectile) in (cont)      | 2 |
-| throw_to           |                                    | throw (projectile) to (recipient) | 2 |
 | turn               | rotate                             | turn (obj)                        | 1 | {x}
 |=======================================================================================================
 
@@ -908,6 +927,14 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `siediti`.
 
 * [ ] Descrizione `siediti_su`.
+
+* [ ] Descrizione `lancia`.
+
+* [ ] Descrizione `lancia_a`.
+
+* [ ] Descrizione `lancia_contro`.
+
+* [ ] Descrizione `lancia_in`.
 
 // end::todo_checklist[]
 

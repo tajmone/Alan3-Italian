@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi.i"
---| v0.7.8-Alpha, 2018-11-09: Alan 3.0beta6
+--| v0.7.9-Alpha, 2018-11-09: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -753,7 +753,7 @@ ADD TO EVERY blocco_definizioni
   HAS imp_ogg1_chiuso_fs "Non puoi farlo perché $+1 è chiusa".
   HAS imp_ogg1_chiuso_fp "Non puoi farlo perché $+1 sono chiuse.".
 
-  -- VERBI: empty_in, pour_in, put_in, throw_in
+  -- VERBI: svuota_in, versa_in, metti_in, lancia_in
   -- ORIGINAL EN:  check_obj2_open_sg/pl
   HAS imp_ogg2_chiuso_ms "Non puoi farlo perché $+2 è chiuso".
   HAS imp_ogg2_chiuso_mp "Non puoi farlo perché $+2 sono chiusi.".
@@ -767,7 +767,7 @@ ADD TO EVERY blocco_definizioni
   -- -----------------------------------------------------------
   -- Il giocatore non possiede un oggetto richiesto per l'azione
   -- -----------------------------------------------------------
-  -- VERBI: empty_in, pour_in, put_in, throw_in
+  -- VERBI: svuota_in, versa_in, metti_in, lancia_in
   -- ORIGINAL EN:  check_obj_in_hero  +  check_obj2_in_hero
   HAS non_possiedi_ogg1 "Non possiedi $+1.".              -- drop, fire, fire_at, put, show
   HAS non_possiedi_ogg2 "Non possiedi $+2.".             -- (numerous)

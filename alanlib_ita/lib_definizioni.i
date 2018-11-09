@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.14-Alpha, 2018-11-09: Alan 3.0beta6
+--| v0.7.15-Alpha, 2018-11-09: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -760,6 +760,10 @@ EVERY blocco_definizioni IsA LOCATION
   CAN guidare.                  ---> drive
   CAN indossare.                ---> wear
   CAN inventariare.             ---> i            (+ inv, inventory)
+  CAN lanciare.                 ---> throw
+  CAN lanciare_a.               ---> throw_to
+  CAN lanciare_contro.          ---> throw_at
+  CAN lanciare_in.              ---> throw_in
   CAN lasciare.                 ---> drop         (+ discard, dump, reject)
   CAN legare.                   ---> tie
   CAN legare_a.                 ---> tie_to
@@ -882,10 +886,6 @@ EVERY blocco_definizioni IsA LOCATION
 --CAN switch_on. -----------------> ** VERBO ELIMINATO **
 --CAN switch_off. ----------------> ** VERBO ELIMINATO **
   CAN tear.        -- (+ rip)
-  CAN throw.
-  CAN throw_at.
-  CAN throw_in.
-  CAN throw_to.
   CAN turn.        -- (+ rotate)
 --<
 
@@ -980,6 +980,10 @@ EVENT check_restriction
       MAKE mia_AT guidare.                  ---> drive
       MAKE mia_AT indossare.                ---> wear
       MAKE mia_AT inventariare.             ---> i            (+ inv, inventory)
+      MAKE mia_AT lanciare.                 ---> throw
+      MAKE mia_AT lanciare_a.               ---> throw_to
+      MAKE mia_AT lanciare_contro.          ---> throw_at
+      MAKE mia_AT lanciare_in.              ---> throw_in
       MAKE mia_AT lasciare.                 ---> drop         (+ discard, dump, reject)
       MAKE mia_AT legare.                   ---> tie
       MAKE mia_AT legare_a.                 ---> tie_to
@@ -1098,10 +1102,6 @@ EVENT check_restriction
     --MAKE mia_AT switch_on. ---------> ** VERBO ELIMINATO **
     --MAKE mia_AT switch_off. ------> ** VERBO ELIMINATO **
       MAKE mia_AT tear.            -- (+ rip)
-      MAKE mia_AT throw.
-      MAKE mia_AT throw_at.
-      MAKE mia_AT throw_in.
-      MAKE mia_AT throw_to.
       MAKE mia_AT turn.            -- (+ rotate)
 
 --==============================================================================
@@ -1166,6 +1166,10 @@ EVENT check_restriction
           MAKE mia_AT NOT grattare.                 ---> scratch
           MAKE mia_AT NOT guidare.                  ---> drive
           MAKE mia_AT NOT indossare.                ---> wear
+          MAKE mia_AT NOT lanciare.                 ---> throw
+          MAKE mia_AT NOT lanciare_a.               ---> throw_to
+          MAKE mia_AT NOT lanciare_contro.          ---> throw_at
+          MAKE mia_AT NOT lanciare_in.              ---> throw_in
           MAKE mia_AT NOT lasciare.                 ---> drop         (+ discard, dump, reject)
           MAKE mia_AT NOT legare.                   ---> tie
           MAKE mia_AT NOT legare_a.                 ---> tie_to
@@ -1259,10 +1263,6 @@ EVENT check_restriction
         --MAKE mia_AT NOT switch_on. -----> ** VERBO ELIMINATO **
         --MAKE mia_AT NOT switch_off. ----> ** VERBO ELIMINATO **
           MAKE mia_AT NOT tear.        -- (+ rip)
-          MAKE mia_AT NOT throw.
-          MAKE mia_AT NOT throw_at.
-          MAKE mia_AT NOT throw_in.
-          MAKE mia_AT NOT throw_to.
           MAKE mia_AT NOT turn.        -- (+ rotate)
 
       END IF.

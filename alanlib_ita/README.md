@@ -458,10 +458,10 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `tell`           | `raccontare`              |
 | `think`          | `pensare`                 |
 | `think_about`    | `pensare_a`               |
-| `throw`          |                           |
-| `throw_at`       |                           |
-| `throw_in`       |                           |
-| `throw_to`       |                           |
+| `throw`          | `lanciare`                |
+| `throw_at`       | `lanciare_contro`         |
+| `throw_in`       | `lanciare_in`             |
+| `throw_to`       | `lanciare_a`              |
 | `tie`            | `legare`                  |
 | `tie_to`         | `legare_a`                |
 | `touch`          | `toccare`                 |

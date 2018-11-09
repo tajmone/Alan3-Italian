@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Definizioni
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.14-Alpha, 2018-11-09: Alan 3.0beta6
+v0.7.15-Alpha, 2018-11-09: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_definitions.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -101,6 +101,10 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
   CAN guidare.                  ---> drive
   CAN indossare.                ---> wear
   CAN inventariare.             ---> i            (+ inv, inventory)
+  CAN lanciare.                 ---> throw
+  CAN lanciare_a.               ---> throw_to
+  CAN lanciare_contro.          ---> throw_at
+  CAN lanciare_in.              ---> throw_in
   CAN lasciare.                 ---> drop         (+ discard, dump, reject)
   CAN legare.                   ---> tie
   CAN legare_a.                 ---> tie_to
@@ -298,10 +302,6 @@ Questo è l'elenco degli attributi verbali non ancora tradotti:
 --CAN switch_on. -----------------> ** VERBO ELIMINATO **
 --CAN switch_off. ----------------> ** VERBO ELIMINATO **
   CAN tear.        -- (+ rip)
-  CAN throw.
-  CAN throw_at.
-  CAN throw_in.
-  CAN throw_to.
   CAN turn.        -- (+ rotate)
 --------------------------------------------------------------------------------
 

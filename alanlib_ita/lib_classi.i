@@ -2356,10 +2356,10 @@ EVERY supporto IsA OBJECT
   END VERB metti_in.
 
 
-  VERB throw_in
+  VERB lancia_in
       WHEN cont
     DOES ONLY "Non puoi mettere nulla dentro" SAY THE THIS. "."
-  END VERB throw_in.
+  END VERB lancia_in.
 
 
 END EVERY.
