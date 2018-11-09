@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.7.23-Alpha,</span>
+<span id="revnumber">versione 0.7.24-Alpha,</span>
 <span id="revdate">2018-11-09</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
@@ -566,11 +566,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_vendi">vendi</a></li>
 </ul>
 </li>
-<li><a href="#_rompere_ed_aggiustare">Rompere ed Aggiustare</a>
+<li><a href="#_rompere_strappare_tagliare_e_riparare">Rompere, Strappare, Tagliare e Riparare</a>
 <ul class="sectlevel3">
 <li><a href="#_ripara">ripara</a></li>
 <li><a href="#_rompi">rompi</a></li>
 <li><a href="#_rompi_con">rompi_con</a></li>
+<li><a href="#_strappa">strappa</a></li>
+<li><a href="#_taglia">taglia</a></li>
+<li><a href="#_taglia_con">taglia_con</a></li>
 </ul>
 </li>
 <li><a href="#_dare_e_prendere">Dare e Prendere</a>
@@ -1733,6 +1736,15 @@ elencati in ordine alfabetico.</p>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>strappa</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">strappa (ogg)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>suona</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">suona (ogg)</p></td>
@@ -2657,12 +2669,10 @@ l&#8217;attributo <code>xDesc</code> (che di default è una stringa vuota).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_rompere_ed_aggiustare"><a class="anchor" href="#_rompere_ed_aggiustare"></a>Rompere ed Aggiustare</h3>
+<h3 id="_rompere_strappare_tagliare_e_riparare"><a class="anchor" href="#_rompere_strappare_tagliare_e_riparare"></a>Rompere, Strappare, Tagliare e Riparare</h3>
 <div class="paragraph">
-<p>Questo gruppo include i verbi per danneggiare o riparare cose:</p>
-</div>
-<div class="paragraph">
-<p>Verbi di questo gruppo non ancora tradotti:</p>
+<p>Questo gruppo include i verbi per rompere, danneggiare, dividiere, spezzare
+e riparare cose:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2674,6 +2684,15 @@ l&#8217;attributo <code>xDesc</code> (che di default è una stringa vuota).</p>
 </li>
 <li>
 <p><code>rompi_con</code></p>
+</li>
+<li>
+<p><code>strappa</code></p>
+</li>
+<li>
+<p><code>taglia</code></p>
+</li>
+<li>
+<p><code>taglia_con</code></p>
 </li>
 </ul>
 </div>
@@ -2687,6 +2706,18 @@ l&#8217;attributo <code>xDesc</code> (che di default è una stringa vuota).</p>
 </div>
 <div class="sect3">
 <h4 id="_rompi_con"><a class="anchor" href="#_rompi_con"></a>rompi_con</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_strappa"><a class="anchor" href="#_strappa"></a>strappa</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_taglia"><a class="anchor" href="#_taglia"></a>taglia</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_taglia_con"><a class="anchor" href="#_taglia_con"></a>taglia_con</h4>
 
 </div>
 </div>
@@ -3210,13 +3241,6 @@ italiano del modulo dei verbi.</p>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tear</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">rip</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">tear (obj)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>turn</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">rotate</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">turn (obj)</p></td>
@@ -3413,6 +3437,15 @@ italiano del modulo dei verbi.</p>
 <p><i class="fa fa-square-o"></i> Descrizione <code>rompi_con</code>.</p>
 </li>
 <li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>strappa</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>taglia</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>taglia_con</code>.</p>
+</li>
+<li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>dai_a</code>.</p>
 </li>
 <li>
@@ -3495,7 +3528,7 @@ italiano del modulo dei verbi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.7.23-Alpha<br>
+Versione 0.7.24-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

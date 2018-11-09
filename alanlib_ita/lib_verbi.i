@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.23-Alpha, 2018-11-09: Alan 3.0beta6
+--| v0.7.24-Alpha, 2018-11-09: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -789,6 +789,7 @@ END VERB ringraziamenti.
 --| | sorseggia          |                              | sorseggia (liq)                        |     | 1 |     |
 --| | spegni             |                              | spegni (disp)                          |     | 1 |     |
 --| | spogliati          | svestiti                     | spogliati                              |     | 0 |     |
+--| | strappa            |                              | strappa (ogg)                          |     | 1 | {X} |
 --| | suona              |                              | suona (ogg)                            |     | 1 | {X} |
 --| | svuota             |                              | svuota (ogg)                           |     | 1 | {X} |
 --| | svuota_in          |                              | svuota (ogg) in (cont)                 |     | 2 | {X} |
@@ -3972,19 +3973,20 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Rompere ed Aggiustare
+--| === Rompere, Strappare, Tagliare e Riparare
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
 --| 
---| Questo gruppo include i verbi per danneggiare o riparare cose:
---| 
---| 
---| Verbi di questo gruppo non ancora tradotti:
+--| Questo gruppo include i verbi per rompere, danneggiare, dividiere, spezzare
+--| e riparare cose:
 --| 
 --| * `ripara`
 --| * `rompi`
 --| * `rompi_con`
+--| * `strappa`
+--| * `taglia`
+--| * `taglia_con`
 --<
 
 
@@ -4065,15 +4067,6 @@ END ADD TO.
 -->todo_checklist(.666) Doxter
 --| * [ ] Descrizione `rompi`.
 --<
-
-
--- ===============================================================
-
-
--- @ROMPI ---> @BREAK (VERB + SYNTAX)
-
-
--- ===============================================================
 
 
 SYNTAX rompi = rompi (ogg)
@@ -4208,6 +4201,195 @@ ADD TO EVERY OBJECT
       -- "wouldn't accomplish anything."
   END VERB rompi_con.
 END ADD TO.
+
+
+-->gruppo_rompi_aggiusta                                      @STRAPPA <-- @TEAR
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== strappa
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `strappa`.
+--<
+
+-- SYNTAX  tear = tear (ogg)
+-- SYNONYMS rip = tear.
+
+SYNTAX strappa = strappa (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF.
+      "strappare."
+
+
+ADD TO EVERY OBJECT
+  VERB strappa
+    CHECK mia_AT CAN strappare
+      ELSE SAY mia_AT:azione_bloccata.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF.
+        "strappare."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+    DOES
+      "Trying to $v" SAY THE ogg. "would be futile."
+  END VERB strappa.
+END ADD TO.
+
+
+-->gruppo_rompi_aggiusta                                        @TAGLIA <-- @CUT
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== taglia
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `taglia`.
+--<
+
+-- NOTA: i6 Italian accetta questi sinomini di 'taglia':
+--       'affetta' 'sfronda' 'sfoltisci' 'spacca' 'strappa'
+
+-- SYNTAX cut = cut (ogg)
+
+SYNTAX taglia = taglia (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF.
+      "tagliare."
+
+
+ADD TO EVERY OBJECT
+  VERB taglia
+    CHECK mia_AT CAN tagliare
+      ELSE SAY mia_AT:azione_bloccata.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF.
+        "tagliare."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    DOES
+      SAY mia_AT:specificare_CON_cosa. "tagliare" SAY THE ogg.
+    -- "You need to specify what you want to cut" SAY THE ogg. "with."
+    END VERB taglia.
+END ADD TO.
+
+
+
+-->gruppo_rompi_aggiusta                               @TAGLIA CON <-- @CUT WITH
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== taglia_con
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `taglia_con`.
+--<
+
+SYNTAX taglia_con = taglia (ogg) con (strum)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF.
+      "tagliare."
+  AND strum IsA OBJECT
+    ELSE
+      IF strum IS NOT plurale
+        THEN SAY mia_AT:ogg2_illegale_CON_sg.
+        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+      END IF.
+      "tagliare" SAY THE ogg. "."
+
+
+ADD TO EVERY OBJECT
+  VERB taglia_con
+    WHEN ogg
+      CHECK mia_AT CAN tagliare_con
+        ELSE SAY mia_AT:azione_bloccata.
+      AND ogg <> strum
+--                                                                              TRANSLATE!
+        ELSE SAY mia_AT:check_obj_not_obj2_with.
+      AND ogg IS esaminabile
+        ELSE
+          IF ogg IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY mia_AT:ogg1_inadatto_sg.
+            ELSE SAY mia_AT:ogg1_inadatto_pl.
+          END IF.
+          "tagliare."
+      AND strum IS esaminabile
+        ELSE
+          IF strum IS NOT plurale
+            THEN SAY mia_AT:ogg2_illegale_CON_sg.
+            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+          END IF.
+          "tagliare" SAY THE ogg. "."
+      AND strum IN hero
+        ELSE SAY mia_AT:non_possiedi_ogg2.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY mia_AT:imp_luogo_buio.
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_distante_sg.
+                ELSE SAY mia_AT:ogg1_distante_pl.
+              END IF.
+          END IF.
+      DOES
+        "Non puoi tagliare" SAY THE ogg. "con" SAY THE strum. "."
+     -- "You can't cut" SAY THE ogg. "with" SAY THE strum. "."
+  END VERB taglia_con.
+END ADD TO.
+
+
 
 -->gruppo_dare(21000)
 --~============================================================================
@@ -6298,7 +6480,6 @@ END ADD TO.
 
 
 
-
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------
@@ -7936,130 +8117,6 @@ END ADD TO.
 -- ==============================================================
 
 
--- @TAGLIA ---> @CUT
-
-
--- ==============================================================
-
--- NOTA: i6 Italian accetta questi sinomini di 'taglia':
---       'affetta' 'sfronda' 'sfoltisci' 'spacca' 'strappa'
-
--- SYNTAX cut = cut (ogg)
-
-SYNTAX taglia = taglia (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "tagliare."
-
-
-ADD TO EVERY OBJECT
-  VERB taglia
-    CHECK mia_AT CAN tagliare
-      ELSE SAY mia_AT:azione_bloccata.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY mia_AT:ogg1_inadatto_sg.
-          ELSE SAY mia_AT:ogg1_inadatto_pl.
-        END IF.
-        "tagliare."
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    DOES
-      SAY mia_AT:specificare_CON_cosa. "tagliare" SAY THE ogg.
-    -- "You need to specify what you want to cut" SAY THE ogg. "with."
-    END VERB taglia.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
--- @TAGLIA CON ---> @CUT WITH
-
-
--- ==============================================================
-
--- SYNTAX cut_with = cut (ogg) 'with' (strum)
-
-SYNTAX taglia_con = taglia (ogg) con (strum)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "tagliare."
-  AND strum IsA OBJECT
-    ELSE
-      IF strum IS NOT plurale
-        THEN SAY mia_AT:ogg2_illegale_CON_sg.
-        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
-      END IF.
-      "tagliare" SAY THE ogg. "."
-
-
-ADD TO EVERY OBJECT
-  VERB taglia_con
-    WHEN ogg
-      CHECK mia_AT CAN tagliare_con
-        ELSE SAY mia_AT:azione_bloccata.
-      AND ogg <> strum
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_with.
-      AND ogg IS esaminabile
-        ELSE
-          IF ogg IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY mia_AT:ogg1_inadatto_sg.
-            ELSE SAY mia_AT:ogg1_inadatto_pl.
-          END IF.
-          "tagliare."
-      AND strum IS esaminabile
-        ELSE
-          IF strum IS NOT plurale
-            THEN SAY mia_AT:ogg2_illegale_CON_sg.
-            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
-          END IF.
-          "tagliare" SAY THE ogg. "."
-      AND strum IN hero
-        ELSE SAY mia_AT:non_possiedi_ogg2.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY mia_AT:imp_luogo_buio.
-      AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-              END IF.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY mia_AT:ogg1_distante_sg.
-                ELSE SAY mia_AT:ogg1_distante_pl.
-              END IF.
-          END IF.
-      DOES
-        "Non puoi tagliare" SAY THE ogg. "con" SAY THE strum. "."
-     -- "You can't cut" SAY THE ogg. "with" SAY THE strum. "."
-  END VERB taglia_con.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
 -- @TIRA ---> @PULL
 
 
@@ -8881,7 +8938,7 @@ END VERB rispondi_Sì.
 --~*| talk               |                                    | talk                              | 0 |
 --~*| talk_to            | speak                              | talk to (act)                     | 1 |
 --~*| taste              | lick                               | taste (obj)                       | 1 | {x}
---| | tear               | rip                                | tear (obj)                        | 1 | {x}
+--~*| tear               | rip                                | tear (obj)                        | 1 | {x}
 --~*| tell               | enlighten, inform                  | tell (act) about (topic)          | 2 |
 --~*| think              |                                    | think                             | 0 |
 --~*| think_about        |                                    | think about (topic)               | 1 |
@@ -10726,66 +10783,6 @@ ADD TO EVERY OBJECT
 
       "something you can swim in."
   END VERB swim_in.
-END ADD TO.
-
-
-
-
--- ==============================================================
-
-
--- @TEAR  (+ rip)
-
-
--- ==============================================================
-
-
-SYNTAX tear = tear (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "strappare."
-
-
-SYNONYMS rip = tear.
-
-
-ADD TO EVERY OBJECT
-  VERB tear
-    CHECK mia_AT CAN tear
-      ELSE SAY mia_AT:azione_bloccata.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY mia_AT:ogg1_inadatto_sg.
-          ELSE SAY mia_AT:ogg1_inadatto_pl.
-        END IF.
-        "strappare."
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    DOES
-      "Trying to $v" SAY THE ogg. "would be futile."
-  END VERB tear.
 END ADD TO.
 
 

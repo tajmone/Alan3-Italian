@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Definizioni
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.15-Alpha, 2018-11-09: Alan 3.0beta6
+v0.7.16-Alpha, 2018-11-09: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_definitions.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -167,6 +167,7 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
   CAN spingere.                 ---> push
   CAN spingere_con.             ---> push_with
   CAN spogliarsi.               ---> undress
+  CAN strappare.                ---> tear (+ rip)
   CAN suonare.                  ---> play
   CAN svuotare.                 ---> 'empty'
   CAN svuotare_in.              ---> empty_in
@@ -223,7 +224,6 @@ THE intestazione IsA LOCATION
       END IF.
 
     "$n(C)" SAY mia_AT:autore. "," SAY mia_AT:anno. "."
---                                                                              TRANSLATE!
     "$nAvventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
      $nLibreria Standard Italiana v2.1"
 
@@ -250,9 +250,9 @@ essere mostrato all'inizio della partita tramite il template dell'istanza
 
 [source,alan]
 --------------------------------------------------------------------------------
-  HAS        titolo  "My New Game".
+  HAS        titolo  "Nuova Avventura".
   HAS   sottotitolo  "".
-  HAS        autore  "An ALAN Author".
+  HAS        autore  "Il Mio Nome".
   HAS          anno   2018.
   HAS      versione  "1".
 --------------------------------------------------------------------------------
@@ -301,7 +301,6 @@ Questo è l'elenco degli attributi verbali non ancora tradotti:
 --CAN switch. --------------------> ** VERBO ELIMINATO **
 --CAN switch_on. -----------------> ** VERBO ELIMINATO **
 --CAN switch_off. ----------------> ** VERBO ELIMINATO **
-  CAN tear.        -- (+ rip)
   CAN turn.        -- (+ rotate)
 --------------------------------------------------------------------------------
 

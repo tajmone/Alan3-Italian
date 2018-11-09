@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.15-Alpha, 2018-11-09: Alan 3.0beta6
+--| v0.7.16-Alpha, 2018-11-09: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -551,9 +551,9 @@ EVERY blocco_definizioni IsA LOCATION
 --| essere mostrato all'inizio della partita tramite il template dell'istanza
 --| `intestazione`:
 
-  HAS        titolo  "My New Game".
+  HAS        titolo  "Nuova Avventura".
   HAS   sottotitolo  "".
-  HAS        autore  "An ALAN Author".
+  HAS        autore  "Il Mio Nome".
   HAS          anno   2018.
   HAS      versione  "1".
 --<
@@ -826,6 +826,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN spingere.                 ---> push
   CAN spingere_con.             ---> push_with
   CAN spogliarsi.               ---> undress
+  CAN strappare.                ---> tear (+ rip)
   CAN suonare.                  ---> play
   CAN svuotare.                 ---> 'empty'
   CAN svuotare_in.              ---> empty_in
@@ -885,7 +886,6 @@ EVERY blocco_definizioni IsA LOCATION
 --CAN switch. --------------------> ** VERBO ELIMINATO **
 --CAN switch_on. -----------------> ** VERBO ELIMINATO **
 --CAN switch_off. ----------------> ** VERBO ELIMINATO **
-  CAN tear.        -- (+ rip)
   CAN turn.        -- (+ rotate)
 --<
 
@@ -1046,6 +1046,7 @@ EVENT check_restriction
       MAKE mia_AT spingere.                 ---> push
       MAKE mia_AT spingere_con.             ---> push_with
       MAKE mia_AT spogliarsi.               ---> undress
+      MAKE mia_AT strappare.                ---> tear (+ rip)
       MAKE mia_AT suonare.                  ---> play
       MAKE mia_AT svuotare.                 ---> 'empty'
       MAKE mia_AT svuotare_in.              ---> empty_in
@@ -1101,7 +1102,6 @@ EVENT check_restriction
     --MAKE mia_AT switch. ------------> ** VERBO ELIMINATO **
     --MAKE mia_AT switch_on. ---------> ** VERBO ELIMINATO **
     --MAKE mia_AT switch_off. ------> ** VERBO ELIMINATO **
-      MAKE mia_AT tear.            -- (+ rip)
       MAKE mia_AT turn.            -- (+ rotate)
 
 --==============================================================================
@@ -1214,6 +1214,7 @@ EVENT check_restriction
           MAKE mia_AT NOT spingere.                 ---> push
           MAKE mia_AT NOT spingere_con.             ---> push_with
           MAKE mia_AT NOT spogliarsi.               ---> undress
+          MAKE mia_AT NOT strappare.                ---> tear (+ rip)
           MAKE mia_AT NOT suonare.                  ---> play
           MAKE mia_AT NOT svuotare.                 ---> 'empty'
           MAKE mia_AT NOT svuotare_in.              ---> empty_in
@@ -1262,7 +1263,6 @@ EVENT check_restriction
         --MAKE mia_AT NOT switch. --------> ** VERBO ELIMINATO **
         --MAKE mia_AT NOT switch_on. -----> ** VERBO ELIMINATO **
         --MAKE mia_AT NOT switch_off. ----> ** VERBO ELIMINATO **
-          MAKE mia_AT NOT tear.        -- (+ rip)
           MAKE mia_AT NOT turn.        -- (+ rotate)
 
       END IF.
@@ -1380,7 +1380,6 @@ THE intestazione IsA LOCATION
       END IF.
 
     "$n(C)" SAY mia_AT:autore. "," SAY mia_AT:anno. "."
---                                                                              TRANSLATE!
     "$nAvventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
      $nLibreria Standard Italiana v2.1"
 

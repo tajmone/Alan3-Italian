@@ -1,7 +1,7 @@
 
 = Doxter: Note di Lavoro
 Tristano Ajmone <tajmone@gmail.com>
-:revdate: 2018-11-03
+:revdate: 2018-11-09
 :lang: it
 // TOC Settings:
 :toc: left
@@ -123,7 +123,7 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 // -----------------------------------------------------------------------------
 | 20800   |           | gruppo_commercio             | == Commerciare
 // -----------------------------------------------------------------------------
-| 20900   |           | gruppo_rompi_aggiusta        | == Rompere ed Aggiustare
+| 20900   |           | gruppo_rompi_aggiusta        | == Rompere, Strappare, Tagliare e Riparare
 // -----------------------------------------------------------------------------
 | 21000   |           | gruppo_dare                  | == Dare e Prendere
 // -----------------------------------------------------------------------------

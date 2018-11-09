@@ -454,7 +454,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `talk`           | `parlare`                 |
 | `talk_to`        | `parlare_con`             |
 | `taste`          | `assaggiare`              |
-| `tear`           |                           |
+| `tear`           | `strappare`               |
 | `tell`           | `raccontare`              |
 | `think`          | `pensare`                 |
 | `think_about`    | `pensare_a`               |

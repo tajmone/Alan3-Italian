@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.23-Alpha, 2018-11-09: Alan 3.0beta6
+v0.7.24-Alpha, 2018-11-09: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -172,6 +172,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | sorseggia          |                              | sorseggia (liq)                        |     | 1 |     |
 | spegni             |                              | spegni (disp)                          |     | 1 |     |
 | spogliati          | svestiti                     | spogliati                              |     | 0 |     |
+| strappa            |                              | strappa (ogg)                          |     | 1 | {X} |
 | suona              |                              | suona (ogg)                            |     | 1 | {X} |
 | svuota             |                              | svuota (ogg)                           |     | 1 | {X} |
 | svuota_in          |                              | svuota (ogg) in (cont)                 |     | 2 | {X} |
@@ -550,22 +551,29 @@ Questo gruppo include i verbi per la compravendita:
 
 // end::gruppo_commercio[]
 // tag::gruppo_rompi_aggiusta[]
-=== Rompere ed Aggiustare
+=== Rompere, Strappare, Tagliare e Riparare
 
-Questo gruppo include i verbi per danneggiare o riparare cose:
-
-
-Verbi di questo gruppo non ancora tradotti:
+Questo gruppo include i verbi per rompere, danneggiare, dividiere, spezzare
+e riparare cose:
 
 * `ripara`
 * `rompi`
 * `rompi_con`
+* `strappa`
+* `taglia`
+* `taglia_con`
 
 ==== ripara
 
 ==== rompi
 
 ==== rompi_con
+
+==== strappa
+
+==== taglia
+
+==== taglia_con
 
 // end::gruppo_rompi_aggiusta[]
 // tag::gruppo_dare[]
@@ -755,7 +763,6 @@ italiano del modulo dei verbi.
 | stand_on           |                                    | stand on (surface)                | 1 |
 | swim               |                                    | swim                              | 0 |
 | swim_in            |                                    | swim in (liq)                     | 1 |
-| tear               | rip                                | tear (obj)                        | 1 | {x}
 | turn               | rotate                             | turn (obj)                        | 1 | {x}
 |=======================================================================================================
 
@@ -885,6 +892,12 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `rompi`.
 
 * [ ] Descrizione `rompi_con`.
+
+* [ ] Descrizione `strappa`.
+
+* [ ] Descrizione `taglia`.
+
+* [ ] Descrizione `taglia_con`.
 
 * [ ] Descrizione `dai_a`.
 

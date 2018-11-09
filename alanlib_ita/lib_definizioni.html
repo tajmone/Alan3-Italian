@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.7.15-Alpha,</span>
+<span id="revnumber">versione 0.7.16-Alpha,</span>
 <span id="revdate">2018-11-09</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
@@ -622,6 +622,7 @@ giocatore il messaggio &#8220;Non puoi farlo.&#8221;.</p>
   CAN spingere.                 ---&gt; push
   CAN spingere_con.             ---&gt; push_with
   CAN spogliarsi.               ---&gt; undress
+  CAN strappare.                ---&gt; tear (+ rip)
   CAN suonare.                  ---&gt; play
   CAN svuotare.                 ---&gt; 'empty'
   CAN svuotare_in.              ---&gt; empty_in
@@ -682,7 +683,6 @@ all&#8217;inizio della partita tramite <code>DESCRIBE intestazione.</code>.</p>
       END IF.
 
     "$n(C)" SAY mia_AT:autore. "," SAY mia_AT:anno. "."
---                                                                              TRANSLATE!
     "$nAvventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
      $nLibreria Standard Italiana v2.1"
 
@@ -710,9 +710,9 @@ essere mostrato all&#8217;inizio della partita tramite il template dell&#8217;is
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS        titolo  "My New Game".
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS        titolo  "Nuova Avventura".
   HAS   sottotitolo  "".
-  HAS        autore  "An ALAN Author".
+  HAS        autore  "Il Mio Nome".
   HAS          anno   2018.
   HAS      versione  "1".</code></pre>
 </div>
@@ -762,7 +762,6 @@ italiano del modulo delle definizioni.</p>
 --CAN switch. --------------------&gt; ** VERBO ELIMINATO **
 --CAN switch_on. -----------------&gt; ** VERBO ELIMINATO **
 --CAN switch_off. ----------------&gt; ** VERBO ELIMINATO **
-  CAN tear.        -- (+ rip)
   CAN turn.        -- (+ rotate)</code></pre>
 </div>
 </div>
@@ -778,7 +777,7 @@ italiano del modulo delle definizioni.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.7.15-Alpha<br>
+Versione 0.7.16-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">
