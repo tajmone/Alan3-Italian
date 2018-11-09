@@ -136,6 +136,8 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 | 21400   |           | gruppo_sedersi               | == Sedersi, Sdraiarsi, Alzarsi
 // -----------------------------------------------------------------------------
 | 21500   |           | gruppo_lanciare              | == Lanciare
+// -----------------------------------------------------------------------------
+| 21600   |           | gruppo_nuotare               | == Nuotare e Tuffarsi
 // =============================================================================
 | 30000   |           | comandi_comandi_domande      | == Verbi di Domande
 // -----------------------------------------------------------------------------

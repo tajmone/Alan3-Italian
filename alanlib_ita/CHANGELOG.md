@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/11/09 \(5\)](#20181109-5)
+    - [Group of Verbs: `dive*` and `swim*`](#group-of-verbs-dive-and-swim)
 - [2018/11/09 \(4\)](#20181109-4)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
     - [Verb: `tear`](#verb-tear)
@@ -417,6 +419,33 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/11/09 (5)
+
+- [`lib_verbi.i`][lib_verbi] (v0.7.25)
+
+## Group of Verbs: `dive*` and `swim*`
+
+Translated verbs of the diving and swimming group:
+
+|  English  |   Italian    |
+|-----------|--------------|
+| `swim`    | `nuota`      |
+| `swim_in` | `nuota_in`   |
+| `dive`    | `tuffati`    |
+| `dive_in` | `tuffati_in` |
+
+
+
+    nuota
+    nuota in (liq)
+    tuffati
+    tuffati in (liq)
+
+with no synonyms.
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/11/09 (4)
 

@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.24-Alpha, 2018-11-09: Alan 3.0beta6
+v0.7.25-Alpha, 2018-11-09: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -141,6 +141,8 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | metti_su           |                              | metti (ogg) su (superficie)            |     | 2 | {X} |
 | metti_vicino       |                              | metti (ogg) vicino a (bulk)            |     | 2 | {X} |
 | mordi              |                              | mordi (ogg)                            |     | 1 | {X} |
+| nuota              |                              | nuota                                  |     | 0 |     |
+| nuota_in           |                              | nuota in (liq)                         |     | 1 |     |
 | parla              |                              | parla                                  |     | 0 |     |
 | parla_con          |                              | parla con (png)                        |     | 1 |     |
 | pensa              | pondera, rifletti, medita    | pensa                                  |     | 0 |     |
@@ -184,6 +186,8 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | tocca_con          | accarezza, carezza           | tocca (ogg) con (strum)                |     | 2 | {X} |
 | togliti            | sfilati, levati              | togliti (ogg)                          |     | 1 | {X} |
 | trova              |                              | trova (ogg)                            |     | 1 | {X} |
+| tuffati            |                              | tuffati                                |     | 0 |     |
+| tuffati_in         |                              | tuffati in (liq)                       |     | 1 |     |
 | uccidi             | ammazza                      | uccidi (vittima)                       |     | 1 |     |
 | uccidi_con         | ammazza                      | uccidi (vittima) con (arma)            |     | 2 |     |
 | usa                |                              | usa (ogg)                              |     | 1 | {X} |
@@ -703,6 +707,25 @@ Questo gruppo include i verbi per lanciare oggetti:
 ==== lancia_in
 
 // end::gruppo_lanciare[]
+// tag::gruppo_nuotare[]
+=== Nuotare e Tuffarsi
+
+Questo gruppo include i verbi per tuffarsi e nuotare in liquidi:
+
+* `nuota`
+* `nuota_in`
+* `tuffati`
+* `tuffati_in`
+
+==== nuota
+
+==== nuota_in
+
+==== tuffati
+
+==== tuffati_in
+
+// end::gruppo_nuotare[]
 // tag::comandi_domande[]
 
 == Verbi di Domande
@@ -737,8 +760,6 @@ italiano del modulo dei verbi.
 | clean              | polish, wipe                       | clean (obj)                       | 1 | {x}
 | climb              |                                    | climb (obj)                       | 1 | {x}
 | climb_on           |                                    | climb on (surface)                | 1 |
-| dive               |                                    | dive                              | 0 |
-| dive_in            |                                    | dive in (liq)                     | 1 |
 | enter              |                                    | enter (obj)                       | 1 | {x}
 | exit               |                                    | exit (obj)                        | 1 | {x}
 | fire               |                                    | fire (weapon)                     | 1 |
@@ -761,8 +782,6 @@ italiano del modulo dei verbi.
 | show               | reveal                             | show (obj) to (act)               | 2 | {x}
 | squeeze            |                                    | squeeze (obj)                     | 1 | {x}
 | stand_on           |                                    | stand on (surface)                | 1 |
-| swim               |                                    | swim                              | 0 |
-| swim_in            |                                    | swim in (liq)                     | 1 |
 | turn               | rotate                             | turn (obj)                        | 1 | {x}
 |=======================================================================================================
 
@@ -948,6 +967,14 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `lancia_contro`.
 
 * [ ] Descrizione `lancia_in`.
+
+* [ ] Descrizione `nuota`.
+
+* [ ] Descrizione `nuota_in`.
+
+* [ ] Descrizione `tuffati`.
+
+* [ ] Descrizione `tuffati_in`.
 
 // end::todo_checklist[]
 

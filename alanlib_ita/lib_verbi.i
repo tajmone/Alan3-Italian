@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.24-Alpha, 2018-11-09: Alan 3.0beta6
+--| v0.7.25-Alpha, 2018-11-09: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -758,6 +758,8 @@ END VERB ringraziamenti.
 --| | metti_su           |                              | metti (ogg) su (superficie)            |     | 2 | {X} |
 --| | metti_vicino       |                              | metti (ogg) vicino a (bulk)            |     | 2 | {X} |
 --| | mordi              |                              | mordi (ogg)                            |     | 1 | {X} |
+--| | nuota              |                              | nuota                                  |     | 0 |     |
+--| | nuota_in           |                              | nuota in (liq)                         |     | 1 |     |
 --| | parla              |                              | parla                                  |     | 0 |     |
 --| | parla_con          |                              | parla con (png)                        |     | 1 |     |
 --| | pensa              | pondera, rifletti, medita    | pensa                                  |     | 0 |     |
@@ -801,6 +803,8 @@ END VERB ringraziamenti.
 --| | tocca_con          | accarezza, carezza           | tocca (ogg) con (strum)                |     | 2 | {X} |
 --| | togliti            | sfilati, levati              | togliti (ogg)                          |     | 1 | {X} |
 --| | trova              |                              | trova (ogg)                            |     | 1 | {X} |
+--| | tuffati            |                              | tuffati                                |     | 0 |     |
+--| | tuffati_in         |                              | tuffati in (liq)                       |     | 1 |     |
 --| | uccidi             | ammazza                      | uccidi (vittima)                       |     | 1 |     |
 --| | uccidi_con         | ammazza                      | uccidi (vittima) con (arma)            |     | 2 |     |
 --| | usa                |                              | usa (ogg)                              |     | 1 | {X} |
@@ -6478,6 +6482,211 @@ ADD TO EVERY OBJECT
   END VERB lancia_in.
 END ADD TO.
 
+-->gruppo_nuotare(21600)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Nuotare e Tuffarsi
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi per tuffarsi e nuotare in liquidi:
+--| 
+--| * `nuota`
+--| * `nuota_in`
+--| * `tuffati`
+--| * `tuffati_in`
+--<
+
+
+-->gruppo_nuotare                                               @NUOTA <-- @SWIM
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== nuota
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `nuota`.
+--<
+
+
+SYNTAX nuota = nuota.
+
+
+VERB nuota
+  CHECK mia_AT CAN nuotare
+    ELSE SAY mia_AT:azione_bloccata.
+  AND hero IS NOT seduto
+    ELSE SAY mia_AT:impossibile_da_seduto.
+  AND hero IS NOT sdraiato
+    ELSE SAY mia_AT:impossibile_da_sdraiato.
+  AND CURRENT LOCATION IS illuminato
+    ELSE SAY mia_AT:imp_luogo_buio.
+--                                                                              TRANSLATE!
+  DOES
+    "There is no water suitable for swimming here."
+END VERB nuota.
+
+
+
+-->gruppo_nuotare                                         @NUOTA IN <-- @SWIM IN
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== nuota_in
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `nuota_in`.
+--<
+
+
+SYNTAX nuota_in = nuota 'in' (liq)
+  WHERE liq IsA liquido
+    ELSE
+--                                                                              TRANSLATE!
+      IF liq IS NOT plurale
+        THEN SAY mia_AT:illegal_parameter_in_sg.
+        ELSE SAY mia_AT:illegal_parameter_in_pl.
+      END IF.
+
+
+
+ADD TO EVERY OBJECT
+  VERB nuota_in
+    CHECK mia_AT CAN nuotare_in
+      ELSE SAY mia_AT:azione_bloccata.
+--                                                                              TRANSLATE!
+    AND hero IS NOT seduto
+      ELSE SAY mia_AT:check_hero_not_sitting3.
+--                                                                              TRANSLATE!
+    AND hero IS NOT sdraiato
+      ELSE SAY mia_AT:check_hero_not_lying_down3.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND liq IS raggiungibile AND liq IS NOT distante
+      ELSE
+        IF liq IS NOT raggiungibile
+          THEN
+            IF liq IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF liq IS distante
+          THEN
+            IF liq IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+    DOES
+--                                                                              TRANSLATE!
+      IF liq IS NOT plurale
+        THEN "That's not"
+        ELSE "Those are not"
+      END IF.
+      "something you can swim in."
+  END VERB nuota_in.
+END ADD TO.
+
+
+-->gruppo_nuotare                                             @TUFFATI <-- @DIVE
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== tuffati
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `tuffati`.
+--<
+
+
+SYNTAX tuffati = tuffati.
+
+
+VERB tuffati
+  CHECK mia_AT CAN tuffarsi
+    ELSE SAY mia_AT:azione_bloccata.
+  AND CURRENT LOCATION IS illuminato
+    ELSE SAY mia_AT:imp_luogo_buio.
+--                                                                              TRANSLATE!
+  AND hero IS NOT seduto
+    ELSE SAY mia_AT:check_hero_not_sitting3.
+--                                                                              TRANSLATE!
+  AND hero IS NOT sdraiato
+    ELSE SAY mia_AT:check_hero_not_lying_down3.
+  DOES
+--                                                                              TRANSLATE!
+    "There is no water suitable for swimming here."
+END VERB tuffati.
+
+
+-->gruppo_nuotare                                       @TUFFATI IN <-- @DIVE IN
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== tuffati_in
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `tuffati_in`.
+--<
+
+
+-- @NOTA | dive 'in' (liq) coprirebbe "tuffati in acqua" ma non
+--       | "tuffati nella piscina". In teoria, servirebbe un'altra
+--       | sintassi del tipo dive 'in' (recipiente) che controlli un attributo che
+--       | specifica se il contenitore contiene liquidi e se è grande abbastanza
+--       | per potervici tuffare. Se no, usando "piscina" come sinonimo di "acqua"
+--       | per far sì che ci si possa tuffare in essa, crerebbe il problema che
+--       | i verbi riguardanti i liquidi si applicherebbero anche alla piscina.
+--       | Magari in realtà il problema non sussiste, ma devo tenerne conto.
+
+
+SYNTAX tuffati_in = tuffati 'in' (liq)
+  WHERE liq IsA liquido    -- see 'classes.i'
+    ELSE
+ --                                                                              TRANSLATE!
+     IF liq IS NOT plurale
+        THEN SAY mia_AT:illegal_parameter_in_sg.
+        ELSE SAY mia_AT:illegal_parameter_in_pl.
+      END IF.
+
+
+ADD TO EVERY OBJECT
+  VERB tuffati_in
+    CHECK mia_AT CAN tuffarsi_in
+      ELSE SAY mia_AT:azione_bloccata.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+--                                                                              TRANSLATE!
+    AND hero IS NOT seduto
+      ELSE SAY mia_AT:check_hero_not_sitting3.
+--                                                                              TRANSLATE!
+    AND hero IS NOT sdraiato
+      ELSE SAY mia_AT:check_hero_not_lying_down3.
+    -- notice that, unlike 'swim_in', it is possible to dive in a
+    -- not reachable object (for example from a clifftop into a river)
+    -- but not to a distant object:
+    AND liq IS NOT distante
+      ELSE
+        IF liq IS NOT plurale
+          THEN SAY mia_AT:ogg1_distante_sg.
+          ELSE SAY mia_AT:ogg1_distante_pl.
+        END IF.
+    DOES
+--                                                                              TRANSLATE!
+      IF liq IS NOT plurale
+        THEN "That's not"
+        ELSE "Those are not"
+      END IF.
+      "something you can dive in."
+  END VERB tuffati_in.
+END ADD TO.
+
 
 
 --=============================================================================
@@ -8824,8 +9033,8 @@ END VERB rispondi_Sì.
 --~*| cut_with           |                                    | cut (obj) with (instr)            | 2 | {x}
 --~*| dance              |                                    | dance                             | 0 |
 --~*| dig                |                                    | dig (obj)                         | 1 | {x}
---| | dive               |                                    | dive                              | 0 |
---| | dive_in            |                                    | dive in (liq)                     | 1 |
+--~*| dive               |                                    | dive                              | 0 |
+--~*| dive_in            |                                    | dive in (liq)                     | 1 |
 --~*| drink              |                                    | drink (liq)                       | 1 |
 --~*| drive              |                                    | drive (vehicle)                   | 1 |
 --~*| drop               | discard, dump, reject              | drop (obj)                        | 1 | {x}
@@ -8928,8 +9137,8 @@ END VERB rispondi_Sì.
 --| | squeeze            |                                    | squeeze (obj)                     | 1 | {x}
 --~*| stand (up)         |                                    | stand.  stand up.                 | 0 |
 --| | stand_on           |                                    | stand on (surface)                | 1 |
---| | swim               |                                    | swim                              | 0 |
---| | swim_in            |                                    | swim in (liq)                     | 1 |
+--~*| swim               |                                    | swim                              | 0 |
+--~*| swim_in            |                                    | swim in (liq)                     | 1 |
 --~!| switch             |                                    | switch (obj)                      | 1 | {x}
 --~*| switch_on          | (defined at the verb `turn_on`)    | switch on (app)                   | 1 |
 --~*| switch_off         | (defined at the verb `turn_off`)   | switch off (app)                  | 1 |
@@ -9299,89 +9508,6 @@ ADD TO EVERY supporto
   END VERB climb_on.
 END ADD TO.
 
-
-
-
--- ==============================================================
-
-
--- @DIVE
-
-
--- ==============================================================
-
-
-SYNTAX dive = dive.
-
-
-VERB dive
-  CHECK mia_AT CAN tuffarsi
-    ELSE SAY mia_AT:azione_bloccata.
-  AND CURRENT LOCATION IS illuminato
-    ELSE SAY mia_AT:imp_luogo_buio.
-  AND hero IS NOT seduto
-    ELSE SAY mia_AT:check_hero_not_sitting3.
-  AND hero IS NOT sdraiato
-    ELSE SAY mia_AT:check_hero_not_lying_down3.
-  DOES
-    "There is no water suitable for swimming here."
-END VERB dive.
-
-
-
--- ==============================================================
-
-
--- @DIVE IN
-
-
--- ==============================================================
--- @NOTA | dive 'in' (liq) coprirebbe "tuffati in acqua" ma non
---       | "tuffati nella piscina". In teoria, servirebbe un'altra
---       | sintassi del tipo dive 'in' (recipiente) che controlli un attributo che
---       | specifica se il contenitore contiene liquidi e se è grande abbastanza
---       | per potervici tuffare. Se no, usando "piscina" come sinonimo di "acqua"
---       | per far sì che ci si possa tuffare in essa, crerebbe il problema che
---       | i verbi riguardanti i liquidi si applicherebbero anche alla piscina.
---       | Magari in realtà il problema non sussiste, ma devo tenerne conto.
-
-
-SYNTAX dive_in = dive 'in' (liq)
-  WHERE liq IsA liquido    -- see 'classes.i'
-    ELSE
-      IF liq IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_in_sg.
-        ELSE SAY mia_AT:illegal_parameter_in_pl.
-      END IF.
-
-
-ADD TO EVERY OBJECT
-  VERB dive_in
-    CHECK mia_AT CAN tuffarsi_in
-      ELSE SAY mia_AT:azione_bloccata.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND hero IS NOT seduto
-      ELSE SAY mia_AT:check_hero_not_sitting3.
-    AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down3.
-    -- notice that, unlike 'swim_in', it is possible to dive in a
-    -- not reachable object (for example from a clifftop into a river)
-    -- but not to a distant object:
-    AND liq IS NOT distante
-      ELSE
-        IF liq IS NOT plurale
-          THEN SAY mia_AT:ogg1_distante_sg.
-          ELSE SAY mia_AT:ogg1_distante_pl.
-        END IF.
-    DOES
-      IF liq IS NOT plurale
-        THEN "That's not"
-        ELSE "Those are not"
-      END IF.
-      "something you can dive in."
-  END VERB dive_in.
-END ADD TO.
 
 
 -- ==============================================================
@@ -10700,89 +10826,6 @@ ADD TO EVERY supporto
       -- you implement a nested location.)
       --   MAKE hero NOT sitting. MAKE hero NOT lying_down.
   END VERB stand_on.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
--- @SWIM
-
-
--- ==============================================================
-
-
-SYNTAX swim = swim.
-
-
-VERB swim
-  CHECK mia_AT CAN nuotare
-    ELSE SAY mia_AT:azione_bloccata.
-  AND hero IS NOT seduto
-    ELSE SAY mia_AT:impossibile_da_seduto.
-  AND hero IS NOT sdraiato
-    ELSE SAY mia_AT:impossibile_da_sdraiato.
-  AND CURRENT LOCATION IS illuminato
-    ELSE SAY mia_AT:imp_luogo_buio.
-  DOES
-    "There is no water suitable for swimming here."
-END VERB swim.
-
-
-
--- ==============================================================
-
-
--- @SWIM IN
-
-
--- ==============================================================
-
-
-SYNTAX swim_in = swim 'in' (liq)
-  WHERE liq IsA liquido
-    ELSE
-      IF liq IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_in_sg.
-        ELSE SAY mia_AT:illegal_parameter_in_pl.
-      END IF.
-
-
-
-ADD TO EVERY OBJECT
-  VERB swim_in
-    CHECK mia_AT CAN nuotare_in
-      ELSE SAY mia_AT:azione_bloccata.
-    AND hero IS NOT seduto
-      ELSE SAY mia_AT:check_hero_not_sitting3.
-    AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down3.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND liq IS raggiungibile AND liq IS NOT distante
-      ELSE
-        IF liq IS NOT raggiungibile
-          THEN
-            IF liq IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF liq IS distante
-          THEN
-            IF liq IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    DOES
-      IF liq IS NOT plurale
-        THEN "That's not"
-        ELSE "Those are not"
-      END IF.
-
-      "something you can swim in."
-  END VERB swim_in.
 END ADD TO.
 
 
