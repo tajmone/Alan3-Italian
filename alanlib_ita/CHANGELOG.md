@@ -11,6 +11,7 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/11/09 \(8\)](#20181109-8)
 - [2018/11/09 \(7\)](#20181109-7)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
     - [Verb: `kick`](#verb-kick)
@@ -425,6 +426,14 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/11/09 (8)
+
+- [`lib_verbi.i`][lib_verbi] (v0.7.28)
+
+Raccogli nel gruppo "Verbi Sfusi" tutti i verbi tradotti che non sono ancora stati raggruppati.
+
+<!---------------------------------------------------------------------------->
 
 # 2018/11/09 (7)
 

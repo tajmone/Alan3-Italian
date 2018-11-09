@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.27-Alpha, 2018-11-09: Alan 3.0beta6
+v0.7.28-Alpha, 2018-11-09: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -770,6 +770,104 @@ a calci, colpire e simili:
 ==== uccidi_con
 
 // end::gruppo_attaccare[]
+// tag::gruppo_sfusi[]
+=== Verbi Sfusi
+
+Questo gruppo raccoglie i verbi per i quali non è ancora stato creato un:
+gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
+
+* `aspetta`
+* `attraversa`
+* `bacia`
+* `balla`
+* `brucia`
+* `brucia_con`
+* `canta`
+* `consulta`
+* `dormi`
+* `gioca_con`
+* `gratta`
+* `guida`
+* `inventario`
+* `lega`
+* `lega_a`
+* `leggi`
+* `libera`
+* `pensa`
+* `pensa_a`
+* `prega`
+* `riempi`
+* `riempi_con`
+* `rifai`
+* `scava`
+* `scrivi`
+* `suona`
+* `trova`
+* `usa`
+* `usa_con`
+* `vai_a`
+
+==== aspetta
+
+==== attraversa
+
+==== bacia
+
+==== balla
+
+==== brucia
+
+==== brucia_con
+
+==== canta
+
+==== consulta
+
+==== dormi
+
+==== gioca_con
+
+==== gratta
+
+==== guida
+
+==== inventario
+
+==== lega
+
+==== lega_a
+
+==== leggi
+
+==== libera
+
+==== pensa
+
+==== pensa_a
+
+==== prega
+
+==== riempi
+
+==== riempi_con
+
+==== rifai
+
+==== scava
+
+==== scrivi
+
+==== suona
+
+==== trova
+
+==== usa
+
+==== usa_con
+
+==== vai_a
+
+// end::gruppo_sfusi[]
 // tag::comandi_domande[]
 
 == Verbi di Domande
@@ -1032,6 +1130,66 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `uccidi`.
 
 * [ ] Descrizione `uccidi_con`.
+
+* [ ] Descrizione `aspetta`.
+
+* [ ] Descrizione `attraversa`.
+
+* [ ] Descrizione `bacia`.
+
+* [ ] Descrizione `balla`.
+
+* [ ] Descrizione `brucia`.
+
+* [ ] Descrizione `brucia_con`.
+
+* [ ] Descrizione `canta`.
+
+* [ ] Descrizione `consulta`.
+
+* [ ] Descrizione `dormi`.
+
+* [ ] Descrizione `gioca_con`.
+
+* [ ] Descrizione `gratta`.
+
+* [ ] Descrizione `guida`.
+
+* [ ] Descrizione `inventario`.
+
+* [ ] Descrizione `lega`.
+
+* [ ] Descrizione `lega_a`.
+
+* [ ] Descrizione `leggi`.
+
+* [ ] Descrizione `libera`.
+
+* [ ] Descrizione `pensa`.
+
+* [ ] Descrizione `pensa_a`.
+
+* [ ] Descrizione `prega`.
+
+* [ ] Descrizione `riempi`.
+
+* [ ] Descrizione `riempi_con`.
+
+* [ ] Descrizione `rifai`.
+
+* [ ] Descrizione `scava`.
+
+* [ ] Descrizione `scrivi`.
+
+* [ ] Descrizione `suona`.
+
+* [ ] Descrizione `trova`.
+
+* [ ] Descrizione `usa`.
+
+* [ ] Descrizione `usa_con`.
+
+* [ ] Descrizione `vai_a`.
 
 // end::todo_checklist[]
 
