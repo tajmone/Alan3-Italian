@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.30-Alpha, 2018-11-10: Alan 3.0beta6
+--| v0.7.31-Alpha, 2018-11-10: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -732,6 +732,7 @@ END VERB ringraziamenti.
 --| | esamina            | guarda, descrivi, osserva, X | esamina (ogg)                          |     | 1 | {X} |
 --| | gioca_con          |                              | gioca con (ogg)                        |     | 1 | {X} |
 --| | gratta             |                              | gratta (ogg)                           |     | 1 | {X} |
+--| | grida              | strilla, urla                | grida                                  |     | 0 |     |
 --| | guarda             | L                            | guarda                                 |     | 0 |     |
 --| | guarda_dietro      |                              | guarda dietro (bulk)                   |     | 1 |     |
 --| | guarda_in          |                              | guarda in (cont)                       |     | 1 |     |
@@ -7978,6 +7979,7 @@ END ADD TO.
 --| * `dormi`
 --| * `gioca_con`
 --| * `gratta`
+--| * `grida`
 --| * `guida`
 --| * `inventario`
 --| * `lega`
@@ -8527,6 +8529,38 @@ ADD TO EVERY THING
       -- "Nothing would be achieved by that."
   END VERB gratta.
 END ADD TO.
+
+
+
+-->gruppo_sfusi                                                @GRIDA <-- @SHOUT
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== grida
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `grida`.
+--<
+
+-- SYNTAX shout = shout.
+-- SYNONYMS scream, yell = shout.
+
+
+SYNTAX grida = grida.
+
+
+SYNONYMS strilla, urla = grida.
+
+
+VERB grida
+  CHECK mia_AT CAN gridare
+    ELSE SAY mia_AT:azione_bloccata.
+  DOES
+    "Le tue grida non sono servite a nulla."
+ -- "Nothing results from your $ving."
+END VERB grida.
+
 
 -->gruppo_sfusi                                                @GUIDA <-- @DRIVE
 --~=============================================================================
@@ -9614,7 +9648,7 @@ END VERB rispondi_Sì.
 --| | shake              |                                    | shake (obj)                       | 1 | {x}
 --| | shoot (at)         |                                    | shoot at (target)                 | 1 |
 --| | shoot_with         |                                    | shoot (target) with (weapon)      | 2 |
---| | shout              | scream, yell                       | shout                             | 0 |
+--~*| shout              | scream, yell                       | shout                             | 0 |
 --| | show               | reveal                             | show (obj) to (act)               | 2 | {x}
 --~*| sing               |                                    | sing                              | 0 |
 --~*| sip                |                                    | sip (liq)                         | 1 |
@@ -10857,29 +10891,6 @@ ADD TO EVERY THING
   END VERB shoot_with.
 END ADD TO.
 
-
-
--- ==============================================================
-
-
--- @SHOUT
-
-
--- ==============================================================
-
-
-SYNTAX shout = shout.
-
-
-SYNONYMS scream, yell = shout.
-
-
-VERB shout
-  CHECK mia_AT CAN gridare
-    ELSE SAY mia_AT:azione_bloccata.
-  DOES
-    "Nothing results from your $ving."
-END VERB shout.
 
 
 

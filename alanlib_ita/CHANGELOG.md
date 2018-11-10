@@ -11,6 +11,8 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/11/10 \(3\)](#20181110-3)
+    - [Verb: `shout`](#verb-shout)
 - [2018/11/10 \(2\)](#20181110-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
     - [Verb: `catch`](#verb-catch)
@@ -431,6 +433,23 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/11/10 (3)
+
+- [`lib_verbi.i`][lib_verbi] (v0.7.31)
+
+## Verb: `shout`
+
+Translated verb `grida`, "__grida__" (_shout_):
+
+    grida
+
+with synonyms:
+
+    strilla, urla = grida
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/11/10 (2)
 
