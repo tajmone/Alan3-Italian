@@ -1,0 +1,67 @@
+
+
+La Casa 
+Un set per eseguire test su stanze e luoghi esterni. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+La Cucina
+A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
+qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un vasetto e un 
+cesto per la frutta.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                          TESTA ENTRARE ED USCIRE                           *
+> ; *                                                                            *
+> ; ******************************************************************************
+> entra
+Devi specificare in cosa vorresti vorresti entrare.
+
+> esci
+Devi specificare da cosa vorresti vorresti uscire.
+
+> entra nel frigo
+Il frigo non è qualcosa in cui poter entrare.
+
+> esci dal frigo
+Il frigo non è qualcosa da cui poter uscire.
+
+> ; ==============================================================================
+> ; La Piscina
+> ; ==============================================================================
+> ; La piscina è un liquido su cui sono stati implementati i verbi 'entra_in' e
+> ; 'esci_da', i quali trasportano il giocatore in un luogo annidato nel giardino.
+> sud
+Il Giardino di Casa
+A nord puoi tornare in casa. Puoi vedere un tavolo, un lettino e una 
+piscina qui.
+
+> entra in piscina
+Ti tuffi a bomba nella piscina.
+
+Nella Piscina (Giardino di Casa)
+La piscina è abbastanza ampia per fare delle piccole nuotate.
+
+> entra nella piscina
+Sei già in piscina.
+
+> esci dalla piscina
+Ti issi sul bordo della piscina ed esci.
+
+Il Giardino di Casa
+A nord puoi tornare in casa. Puoi vedere un tavolo, un lettino e una 
+piscina qui.
+
+> esci dalla piscina
+Non sei dentro la piscina.
+
+> 
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

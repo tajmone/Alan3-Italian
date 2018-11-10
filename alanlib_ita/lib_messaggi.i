@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi.i"
---| v0.7.9-Alpha, 2018-11-09: Alan 3.0beta6
+--| v0.7.10-Alpha, 2018-11-10: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -614,8 +614,10 @@ ADD TO EVERY blocco_definizioni
   -- sintassi corretta del verbo.
 
   HAS specificare_DOVE      "Devi specificare dove vorresti".
-  HAS specificare_CON_cosa  "Devi specificare con cosa vorresti".
   HAS specificare_A_cosa    "Devi specificare a cosa vorresti".
+  HAS specificare_DA_cosa   "Devi specificare da cosa vorresti".
+  HAS specificare_IN_cosa   "Devi specificare in cosa vorresti".
+  HAS specificare_CON_cosa  "Devi specificare con cosa vorresti".
 
 
   -- =======================

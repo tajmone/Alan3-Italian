@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Messaggi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.9-Alpha, 2018-11-09: Alan 3.0beta6
+v0.7.10-Alpha, 2018-11-10: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_messages.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.

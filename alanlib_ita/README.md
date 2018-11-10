@@ -347,7 +347,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `empty_on`       | `svuotare_su`             |
 | `enter`          | `entrare`                 |
 | `examine`        | `esaminare`               |
-| `'exit'`         |                           |
+| `'exit'`         | `uscire`                  |
 | ~~`extinguish`~~ | _removed_                 |
 | `fill`           | `riempire`                |
 | `fill_with`      | `riempire_con`            |

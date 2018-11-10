@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.19-Alpha, 2018-11-10: Alan 3.0beta6
+--| v0.7.20-Alpha, 2018-11-10: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -850,6 +850,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN uccidere_con.             ---> kill_with
   CAN usare.                    ---> 'use'
   CAN usare_con.                ---> use_with
+  CAN uscire.                   ---> 'exit'
   CAN vedere_punteggio.         ---> 'score'
   CAN vendere.                  ---> sell
   CAN versare.                  ---> pour
@@ -864,7 +865,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN about.
   CAN climb.
   CAN climb_on.
-  CAN 'exit'.
 --CAN extinguish. ----------------> ** VERBO ELIMINATO **  (+ put out, quench)
   CAN fire.
   CAN fire_at.
@@ -1070,6 +1070,7 @@ EVENT check_restriction
       MAKE mia_AT uccidere_con.             ---> kill_with
       MAKE mia_AT usare.                    ---> 'use'
       MAKE mia_AT usare_con.                ---> use_with
+      MAKE mia_AT uscire.                   ---> 'exit'
       MAKE mia_AT vedere_punteggio.         ---> 'score'
       MAKE mia_AT vendere.                  ---> sell
       MAKE mia_AT versare.                  ---> pour
@@ -1080,7 +1081,6 @@ EVENT check_restriction
       MAKE mia_AT about.
       MAKE mia_AT climb.
       MAKE mia_AT climb_on.
-      MAKE mia_AT 'exit'.
     --MAKE mia_AT extinguish. --------> ** VERBO ELIMINATO ** (+ put out, quench)
       MAKE mia_AT fire.
       MAKE mia_AT fire_at.
@@ -1235,6 +1235,7 @@ EVENT check_restriction
           MAKE mia_AT NOT uccidere_con.             ---> kill_with
           MAKE mia_AT NOT usare.                    ---> 'use'
           MAKE mia_AT NOT usare_con.                ---> use_with
+          MAKE mia_AT NOT uscire.                   ---> 'exit'
           MAKE mia_AT NOT vendere.                  ---> sell
           MAKE mia_AT NOT versare.                  ---> pour
           MAKE mia_AT NOT versare_in.               ---> pour_in
@@ -1244,7 +1245,6 @@ EVENT check_restriction
 
           MAKE mia_AT NOT climb.
           MAKE mia_AT NOT climb_on.
-          MAKE mia_AT NOT 'exit'.
         --MAKE mia_AT NOT extinguish. ----> ** VERBO ELIMINATO ** (+ put out, quench)
           MAKE mia_AT NOT fire.
           MAKE mia_AT NOT fire_at.

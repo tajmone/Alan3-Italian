@@ -1,0 +1,20 @@
+; ******************************************************************************
+; *                                                                            *
+; *                          TESTA ENTRARE ED USCIRE                           *
+; *                                                                            *
+; ******************************************************************************
+entra
+esci
+entra nel frigo
+esci dal frigo
+; ==============================================================================
+; La Piscina
+; ==============================================================================
+; La piscina è un liquido su cui sono stati implementati i verbi 'entra_in' e
+; 'esci_da', i quali trasportano il giocatore in un luogo annidato nel giardino.
+sud
+entra in piscina
+entra nella piscina
+esci dalla piscina
+esci dalla piscina
+

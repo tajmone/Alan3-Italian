@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.32-Alpha, 2018-11-10: Alan 3.0beta6
+v0.7.33-Alpha, 2018-11-10: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -112,7 +112,11 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | dì_a               |                              | dì (argomento) a (png)                 |     | 2 |     |
 | domanda            | chiedi                       | domanda a (png) di (argomento)!        |     | 2 |     |
 | dormi              | riposa                       | dormi                                  |     | 0 |     |
+| entra              |                              | entra                                  |     | 0 |     |
+| entra_in           |                              | entra in (ogg)                         |     | 1 | {X} |
 | esamina            | guarda, descrivi, osserva, X | esamina (ogg)                          |     | 1 | {X} |
+| esci               |                              | esci                                   |     | 0 |     |
+| esci_da            |                              | esci da (ogg)                          |     | 1 | {X} |
 | gioca_con          |                              | gioca con (ogg)                        |     | 1 | {X} |
 | gira               |                              | gira (ogg)                             |     | 1 | {X} |
 | gratta             |                              | gratta (ogg)                           |     | 1 | {X} |
@@ -831,6 +835,21 @@ Questo gruppo include i verbi per ZZZZ:
 ==== pensa_a
 
 // end::gruppo_pensare[]
+// tag::gruppo_entrare[]
+=== Entrare e Uscire
+
+Questo gruppo include i verbi per entrare e uscire:
+
+* `entra`
+* `entra_in`
+* `esci`
+* `esci_da`
+
+==== entra + entra_in
+
+==== esci + esci_da
+
+// end::gruppo_entrare[]
 // tag::gruppo_sfusi[]
 === Verbi Sfusi
 
@@ -941,8 +960,6 @@ italiano del modulo dei verbi.
 | clean              | polish, wipe                       | clean (obj)                       | 1 | {x}
 | climb              |                                    | climb (obj)                       | 1 | {x}
 | climb_on           |                                    | climb on (surface)                | 1 |
-| enter              |                                    | enter (obj)                       | 1 | {x}
-| exit               |                                    | exit (obj)                        | 1 | {x}
 | fire               |                                    | fire (weapon)                     | 1 |
 | fire_at            |                                    | fire (weapon) at (target)         | 2 |
 | follow             |                                    | follow (act)                      | 1 |
@@ -1187,6 +1204,10 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `pensa`.
 
 * [ ] Descrizione `pensa_a`.
+
+* [ ] Descrizione `entra` + `entra_in`.
+
+* [ ] Descrizione `esci` + `esci_da`.
 
 * [ ] Descrizione `acchiappa`.
 

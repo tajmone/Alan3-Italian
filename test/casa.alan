@@ -275,6 +275,60 @@ THE lettino IsA supporto AT giardino.
   END VERB sdraiati_su.
 END THE lettino.
 
+--==============================================================================
+-- La Piscina
+--==============================================================================
+-- Creiamo una piscina per testare sia 'nuota' che 'entra'.
+
+THE piscina IsA liquido AT giardino.
+  HAS articolo "la".
+  NAME piscina.
+  NAME acqua.
+
+  VERB nuota
+    DOES ONLY
+      IF hero DIRECTLY AT nella_piscina
+        THEN "Sei già in piscina."
+        ELSE
+          LOCATE hero AT nella_piscina.
+      END IF.
+  END VERB nuota.
+    
+  VERB entra_in
+    DOES ONLY
+      IF hero DIRECTLY AT nella_piscina
+        THEN "Sei già in piscina."
+        ELSE
+          LOCATE hero AT nella_piscina.
+      END IF.
+  END VERB entra_in.
+
+  VERB esci_da
+    DOES ONLY
+      IF hero NOT DIRECTLY AT nella_piscina
+        THEN "Non sei dentro la piscina."
+        ELSE
+          "Ti issi sul bordo della piscina ed esci."
+          LOCATE hero AT giardino.
+      END IF.
+  END VERB esci_da.
+END THE piscina.
+
+--------------------------------------------------------------------------------
+-- Dentro La Piscina
+--------------------------------------------------------------------------------
+-- Per simulare quando il protagonista entra nella piscina creiamo un luogo
+-- annidato nel giardino.
+
+THE nella_piscina IsA location AT giardino.
+  NAME 'Nella Piscina (Giardino di Casa)'.
+  DESCRIPTION
+    "La piscina è abbastanza ampia per fare delle piccole nuotate."
+
+  ENTERED
+    "Ti tuffi a bomba nella piscina."
+END THE nella_piscina.
+
 --------------------------------------------------------------------------------
 START AT cucina.
 DESCRIBE intestazione.

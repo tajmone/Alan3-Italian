@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Definizioni
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.19-Alpha, 2018-11-10: Alan 3.0beta6
+v0.7.20-Alpha, 2018-11-10: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_definitions.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -191,6 +191,7 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
   CAN uccidere_con.             ---> kill_with
   CAN usare.                    ---> 'use'
   CAN usare_con.                ---> use_with
+  CAN uscire.                   ---> 'exit'
   CAN vedere_punteggio.         ---> 'score'
   CAN vendere.                  ---> sell
   CAN versare.                  ---> pour
@@ -279,7 +280,6 @@ Questo è l'elenco degli attributi verbali non ancora tradotti:
   CAN about.
   CAN climb.
   CAN climb_on.
-  CAN 'exit'.
 --CAN extinguish. ----------------> ** VERBO ELIMINATO **  (+ put out, quench)
   CAN fire.
   CAN fire_at.

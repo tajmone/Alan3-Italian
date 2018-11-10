@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.32-Alpha, 2018-11-10: Alan 3.0beta6
+--| v0.7.33-Alpha, 2018-11-10: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -729,7 +729,11 @@ END VERB ringraziamenti.
 --| | dì_a               |                              | dì (argomento) a (png)                 |     | 2 |     |
 --| | domanda            | chiedi                       | domanda a (png) di (argomento)!        |     | 2 |     |
 --| | dormi              | riposa                       | dormi                                  |     | 0 |     |
+--| | entra              |                              | entra                                  |     | 0 |     |
+--| | entra_in           |                              | entra in (ogg)                         |     | 1 | {X} |
 --| | esamina            | guarda, descrivi, osserva, X | esamina (ogg)                          |     | 1 | {X} |
+--| | esci               |                              | esci                                   |     | 0 |     |
+--| | esci_da            |                              | esci da (ogg)                          |     | 1 | {X} |
 --| | gioca_con          |                              | gioca con (ogg)                        |     | 1 | {X} |
 --| | gira               |                              | gira (ogg)                             |     | 1 | {X} |
 --| | gratta             |                              | gratta (ogg)                           |     | 1 | {X} |
@@ -7949,6 +7953,136 @@ ADD TO EVERY THING
   END VERB pensa_a.
 END ADD TO.
 
+-->gruppo_entrare(22300)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Entrare e Uscire
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi per entrare e uscire:
+--| 
+--| * `entra`
+--| * `entra_in`
+--| * `esci`
+--| * `esci_da`
+--<
+
+
+-->gruppo_entrare                                              @ENTRA <-- @ENTER
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== entra + entra_in
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `entra` + `entra_in`.
+--<
+
+
+-- Poiché Alan non consente di mettere gli attori dentro i contenitori, si dovrà
+-- simulare che il protagonista entri in un contenitore implementando un luogo
+-- annidato in quello attuale.
+
+
+--                                                                              TRANSLATE!
+-- In the present version of ALAN, actors cannot enter containers.
+-- You can simulate the hero entering a container by making the 'container'
+-- a nested location and locating the hero there in the DOES ONLY
+-- section of this verb under the instance at hand.
+
+
+-- La versione semplice del verbo `entra` serve a indirizzare il giocatore verso
+-- la sintassi corretta del verbo.
+
+SYNTAX entra = entra.
+
+
+VERB entra
+  DOES SAY mia_AT:specificare_IN_cosa. "vorresti entrare."
+END VERB entra.
+
+
+SYNTAX entra_in = entra 'in' (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      -- "$+1 non [è/sono] qualcosa in cui poter"
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg1_illegale_IN_sg.
+        ELSE SAY mia_AT:ogg1_illegale_IN_pl.
+      END IF. "entrare."
+
+
+ADD TO EVERY OBJECT
+  VERB entra_in
+    CHECK mia_AT CAN entrare
+      ELSE SAY mia_AT:azione_bloccata.
+--                                                                              TRANSLATE!
+    AND hero IS NOT seduto
+      ELSE SAY mia_AT:check_hero_not_sitting2.
+--                                                                              TRANSLATE!
+    AND hero IS NOT sdraiato
+      ELSE SAY mia_AT:check_hero_not_lying_down2.
+    DOES
+      -- "$+1 non [è/sono] qualcosa in cui poter"
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg1_illegale_IN_sg.
+        ELSE SAY mia_AT:ogg1_illegale_IN_pl.
+      END IF. "entrare."
+  END VERB entra_in.
+END ADD TO.
+
+
+-->gruppo_entrare                                                @ESCI <-- @EXIT
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== esci + esci_da
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `esci` + `esci_da`.
+--<
+
+
+--- another 'exit' formulation added to guide players to use the right formulation:
+
+
+SYNTAX esci = esci.
+
+
+VERB esci
+  DOES SAY mia_AT:specificare_DA_cosa. "vorresti uscire."
+END VERB esci.
+
+
+SYNTAX esci_da = esci da (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      -- "$+1 non [è/sono] qualcosa da cui poter"
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg1_illegale_DA_sg.
+        ELSE SAY mia_AT:ogg1_illegale_DA_pl.
+      END IF. "uscire."
+
+
+ADD TO EVERY OBJECT
+  VERB esci_da
+    CHECK mia_AT CAN uscire
+      ELSE SAY mia_AT:azione_bloccata.
+    DOES
+      -- "$+1 non [è/sono] qualcosa da cui poter"
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg1_illegale_DA_sg.
+        ELSE SAY mia_AT:ogg1_illegale_DA_pl.
+      END IF. "uscire."
+    END VERB esci_da.
+END ADD TO.
+
+
 
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -9640,9 +9774,9 @@ END VERB rispondi_Sì.
 --~*| empty              |                                    | empty (obj)                       | 1 | {x}
 --~*| empty_in           |                                    | empty (obj) in (cont)             | 2 | {x}
 --~*| empty_on           |                                    | empty (obj) on (surface)          | 2 | {x}
---| | enter              |                                    | enter (obj)                       | 1 | {x}
+--~*| enter              |                                    | enter (obj)                       | 1 | {x}
 --~*| examine            | check, inspect, observe, X         | examine (obj)                     | 1 | {x}
---| | exit               |                                    | exit (obj)                        | 1 | {x}
+--~*| exit               |                                    | exit (obj)                        | 1 | {x}
 --~!| extinguish         | put out, quench                    | extinguish (obj)                  | 1 | {x}
 --~*| fill               |                                    | fill (cont)                       | 1 |
 --~*| fill_with          |                                    | fill (cont) with (substance)      | 2 |
@@ -10051,115 +10185,6 @@ ADD TO EVERY supporto
       "something you can climb on."
   END VERB climb_on.
 END ADD TO.
-
-
-
--- ==============================================================
-
-
--- @ENTER
-
-
--- ==============================================================
-
-
--- In the present version of ALAN, actors cannot enter containers.
--- You can simulate the hero entering a container by making the 'container'
--- a nested location and locating the hero there in the DOES ONLY
--- section of this verb under the instance at hand.
-
-
-SYNTAX enter = enter (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-      -- @NOTA: Qui servirà un messaggio ad hoc a questo verbo!! (prep_IN)      TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter_sg.
-        ELSE SAY mia_AT:illegal_parameter_pl.
-      END IF.
-
-
-
-ADD TO EVERY OBJECT
-  VERB enter
-    CHECK mia_AT CAN entrare
-      ELSE SAY mia_AT:azione_bloccata.
-    AND hero IS NOT seduto
-      ELSE SAY mia_AT:check_hero_not_sitting2.
-    AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down2.
-      DOES
-      IF ogg IS NOT plurale
-        THEN "That's not"
-        ELSE "Those are not"
-      END IF.
-      "something you can enter."
-  END VERB enter.
-END ADD TO.
-
-
---- another 'enter' formulation declared to guide players to use the right formulation:
-
-
-SYNTAX enter_error = enter.
-
-
-VERB enter_error
-  DOES "You must state what you want to enter."
-END VERB enter_error.
-
-
-
--- ==============================================================
-
-
--- @EXIT
-
-
--- ==============================================================
-
--- In the present version of ALAN, actors are not allowed inside containers.
-
--- You can simulate the hero exiting something by modifying the default
--- response below in the DOES ONLY part of this verb under the instance at hand.
-
-
-SYNTAX 'exit' = 'exit' (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-      -- @NOTA: Qui servirà un messaggio ad hoc per questo verbo! (prep_DA)     TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter_sg.
-        ELSE SAY mia_AT:illegal_parameter_pl.
-      END IF.
-
-
-
-ADD TO EVERY OBJECT
-  VERB 'exit'
-    CHECK mia_AT CAN 'exit'
-      ELSE SAY mia_AT:azione_bloccata.
-    DOES
-      IF ogg IS NOT plurale
-        THEN "That's not"
-        ELSE "Those are not"
-      END IF.
-      "something you can exit."
-    END VERB 'exit'.
-END ADD TO.
-
-
---- another 'exit' formulation added to guide players to use the right formulation:
-
-
-SYNTAX exit_error = 'exit'.
-
-
-VERB exit_error
-  DOES
-    "You must state what you want to exit."
-END VERB exit_error.
-
 
 
 
