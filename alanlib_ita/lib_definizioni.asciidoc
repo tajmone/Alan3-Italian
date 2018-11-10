@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Definizioni
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.17-Alpha, 2018-11-09: Alan 3.0beta6
+v0.7.18-Alpha, 2018-11-10: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_definitions.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -49,6 +49,7 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
 --------------------------------------------------------------------------------
   CAN abbandonare_partita.      ---> 'quit'
   CAN accendere.                ---> turn_on
+  CAN acchiappare.              ---> catch
   CAN alzarsi.                  ---> stand (up)
   CAN andare_a.                 ---> go_to
   CAN annusare.                 ---> smell
@@ -275,7 +276,6 @@ Questo è l'elenco degli attributi verbali non ancora tradotti:
 [source,alan]
 --------------------------------------------------------------------------------
   CAN about.
-  CAN catch.
   CAN climb.
   CAN climb_on.
   CAN 'exit'.

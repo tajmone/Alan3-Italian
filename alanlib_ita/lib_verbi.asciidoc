@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.29-Alpha, 2018-11-10: Alan 3.0beta6
+v0.7.30-Alpha, 2018-11-10: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -80,6 +80,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 |===================================================================================================================
 | VERBO              | SINONIMI                     | SINTASSI                               |  M  | A |  O  |  B
 | accendi            |                              | accendi (disp)                         |     | 1 |     |
+| acchiappa          |                              | acchiappa (ogg)                        |     | 1 | {X} |
 | alzati             |                              | alzati                                 |     | 0 |     |
 | annusa0            | odora                        | annusa                                 |     | 0 |     |
 | annusa             | odora                        | annusa (odore)                         |     | 1 |     |
@@ -834,6 +835,7 @@ Questo gruppo include i verbi per ZZZZ:
 Questo gruppo raccoglie i verbi per i quali non è ancora stato creato un:
 gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 
+* `acchiappa`
 * `aspetta`
 * `attraversa`
 * `bacia`
@@ -854,6 +856,8 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 * `suona`
 * `trova`
 * `vai_a`
+
+==== acchiappa
 
 ==== aspetta
 
@@ -926,7 +930,6 @@ italiano del modulo dei verbi.
 |=======================================================================================================
 | VERBO              | SINONIMI                           | SINTASSI                          | A |  O  
 | about              | help, info                         | about                             | 0 |
-| catch              |                                    | catch (obj)                       | 1 | {x}
 | clean              | polish, wipe                       | clean (obj)                       | 1 | {x}
 | climb              |                                    | climb (obj)                       | 1 | {x}
 | climb_on           |                                    | climb on (surface)                | 1 |
@@ -1178,6 +1181,8 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `pensa`.
 
 * [ ] Descrizione `pensa_a`.
+
+* [ ] Descrizione `acchiappa`.
 
 * [ ] Descrizione `aspetta`.
 

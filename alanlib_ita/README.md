@@ -323,7 +323,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `burn`           | `bruciare`                |
 | `burn_with`      | `bruciare_con`            |
 | `buy`            | `comprare`                |
-| `catch`          |                           |
+| `catch`          | `acchiappa`               |
 | `clean`          | `pulire`                  |
 | `climb`          |                           |
 | `climb_on`       |                           |

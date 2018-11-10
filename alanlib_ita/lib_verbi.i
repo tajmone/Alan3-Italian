@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.29-Alpha, 2018-11-10: Alan 3.0beta6
+--| v0.7.30-Alpha, 2018-11-10: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -697,6 +697,7 @@ END VERB ringraziamenti.
 --| | VERBO              | SINONIMI                     | SINTASSI                               |  M  | A |  O  |  B
 --~ +--------------------+------------------------------+----------------------------------------+-----+---+-----+-----+
 --| | accendi            |                              | accendi (disp)                         |     | 1 |     |
+--| | acchiappa          |                              | acchiappa (ogg)                        |     | 1 | {X} |
 --| | alzati             |                              | alzati                                 |     | 0 |     |
 --| | annusa0            | odora                        | annusa                                 |     | 0 |     |
 --| | annusa             | odora                        | annusa (odore)                         |     | 1 |     |
@@ -7967,6 +7968,7 @@ END ADD TO.
 --| Questo gruppo raccoglie i verbi per i quali non è ancora stato creato un:
 --| gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 --| 
+--| * `acchiappa`
 --| * `aspetta`
 --| * `attraversa`
 --| * `bacia`
@@ -7988,6 +7990,64 @@ END ADD TO.
 --| * `trova`
 --| * `vai_a`
 --<
+
+
+-->gruppo_sfusi                                            @ACCHIAPPA <-- @CATCH
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== acchiappa
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `acchiappa`.
+--<
+
+
+-- 'catch' = 'acchiappare' (una cosa al volo) ma anche 'catturare' (un animale).
+
+SYNTAX acchiappa = acchiappa (ogg)
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF.
+      "acchiappare."
+
+ADD TO EVERY THING
+  VERB acchiappa
+    CHECK mia_AT CAN acchiappare
+      ELSE SAY mia_AT:azione_bloccata.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF.
+        "acchiappare."
+    AND ogg <> hero
+--                                                                              TRANSLATE!
+      ELSE SAY mia_AT:check_obj_not_hero1.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND hero IS NOT seduto
+--                                                                              TRANSLATE!
+      ELSE SAY mia_AT:check_hero_not_sitting2.
+    AND hero IS NOT sdraiato
+--                                                                              TRANSLATE!
+      ELSE SAY mia_AT:check_hero_not_lying_down2.
+    DOES
+      IF ogg IS NOT plurale
+        THEN "That doesn't"
+        ELSE "Those don't"
+      END IF.
+
+          "need to be caught."
+  END VERB acchiappa.
+END ADD TO.
 
 
 -->gruppo_sfusi                                                @ASPETTA <-- WAIT
@@ -9449,7 +9509,7 @@ END VERB rispondi_Sì.
 --~*| burn               |                                    | burn (obj)                        | 1 | {x}
 --~*| burn_with          |                                    | burn (obj) with (instr)           | 2 | {x}
 --~*| buy                | purchase                           | buy (item)                        | 1 |
---| | catch              |                                    | catch (obj)                       | 1 | {x}
+--~*| catch              |                                    | catch (obj)                       | 1 | {x}
 --| | clean              | polish, wipe                       | clean (obj)                       | 1 | {x}
 --| | climb              |                                    | climb (obj)                       | 1 | {x}
 --| | climb_on           |                                    | climb on (surface)                | 1 |
@@ -9694,60 +9754,6 @@ END VERB hint.
 -------------------------------------------------------------------------------
 --//////////////////////////////////////////////////////////////////////////////
 --=============================================================================
-
-
-
--- ==================================================================
-
-
--- @CATCH
-
-
--- ==================================================================
-
-
-SYNTAX catch = catch (ogg)
-  WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "catturare."
-
-ADD TO EVERY THING
-  VERB catch
-    CHECK mia_AT CAN catch
-      ELSE SAY mia_AT:azione_bloccata.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY mia_AT:ogg1_inadatto_sg.
-          ELSE SAY mia_AT:ogg1_inadatto_pl.
-        END IF.
-        "catturare."
-    AND ogg <> hero
---                                                                              TRANSLATE!
-      ELSE SAY mia_AT:check_obj_not_hero1.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND hero IS NOT seduto
---                                                                              TRANSLATE!
-      ELSE SAY mia_AT:check_hero_not_sitting2.
-    AND hero IS NOT sdraiato
---                                                                              TRANSLATE!
-      ELSE SAY mia_AT:check_hero_not_lying_down2.
-    DOES
-      IF ogg IS NOT plurale
-        THEN "That doesn't"
-        ELSE "Those don't"
-      END IF.
-
-          "need to be caught."
-  END VERB catch.
-END ADD TO.
 
 
 

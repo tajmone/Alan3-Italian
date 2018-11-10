@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.17-Alpha, 2018-11-09: Alan 3.0beta6
+--| v0.7.18-Alpha, 2018-11-10: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -708,6 +708,7 @@ EVERY blocco_definizioni IsA LOCATION
 
   CAN abbandonare_partita.      ---> 'quit'
   CAN accendere.                ---> turn_on
+  CAN acchiappare.              ---> catch
   CAN alzarsi.                  ---> stand (up)
   CAN andare_a.                 ---> go_to
   CAN annusare.                 ---> smell
@@ -860,7 +861,6 @@ EVERY blocco_definizioni IsA LOCATION
 --| 
 --| Questo è l'elenco degli attributi verbali non ancora tradotti:
   CAN about.
-  CAN catch.
   CAN climb.
   CAN climb_on.
   CAN 'exit'.
@@ -928,6 +928,7 @@ EVENT check_restriction
 
       MAKE mia_AT abbandonare_partita.      ---> 'quit'
       MAKE mia_AT accendere.                ---> turn_on
+      MAKE mia_AT acchiappare.              ---> catch
       MAKE mia_AT alzarsi.                  ---> stand (up)
       MAKE mia_AT andare_a.                 ---> go_to
       MAKE mia_AT annusare.                 ---> smell
@@ -1076,7 +1077,6 @@ EVENT check_restriction
 
     --# NOT YET TRANSLATED:
       MAKE mia_AT about.
-      MAKE mia_AT catch.
       MAKE mia_AT climb.
       MAKE mia_AT climb_on.
       MAKE mia_AT 'exit'.
@@ -1139,6 +1139,7 @@ EVENT check_restriction
         THEN  
 
           MAKE mia_AT NOT accendere.                ---> turn_on
+          MAKE mia_AT NOT acchiappare.              ---> catch
           MAKE mia_AT NOT alzarsi.                  ---> stand (up)
           MAKE mia_AT NOT andare_a.                 ---> go_to
           MAKE mia_AT NOT aprire.                   ---> open
@@ -1240,7 +1241,6 @@ EVENT check_restriction
 
         --# NOT YET TRANSLATED:
 
-          MAKE mia_AT NOT catch.
           MAKE mia_AT NOT climb.
           MAKE mia_AT NOT climb_on.
           MAKE mia_AT NOT 'exit'.
