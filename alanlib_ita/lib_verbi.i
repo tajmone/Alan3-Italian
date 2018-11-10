@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.31-Alpha, 2018-11-10: Alan 3.0beta6
+--| v0.7.32-Alpha, 2018-11-10: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -731,6 +731,7 @@ END VERB ringraziamenti.
 --| | dormi              | riposa                       | dormi                                  |     | 0 |     |
 --| | esamina            | guarda, descrivi, osserva, X | esamina (ogg)                          |     | 1 | {X} |
 --| | gioca_con          |                              | gioca con (ogg)                        |     | 1 | {X} |
+--| | gira               |                              | gira (ogg)                             |     | 1 | {X} |
 --| | gratta             |                              | gratta (ogg)                           |     | 1 | {X} |
 --| | grida              | strilla, urla                | grida                                  |     | 0 |     |
 --| | guarda             | L                            | guarda                                 |     | 0 |     |
@@ -7978,6 +7979,7 @@ END ADD TO.
 --| * `consulta`
 --| * `dormi`
 --| * `gioca_con`
+--| * `gira`
 --| * `gratta`
 --| * `grida`
 --| * `guida`
@@ -8458,6 +8460,79 @@ ADD TO EVERY THING
    -- "After second thought you don't find it purposeful to start
    --  playing with" SAY THE ogg. "."
   END VERB gioca_con.
+END ADD TO.
+
+
+-->gruppo_sfusi                                                  @GIRA <-- @TURN
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== gira
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `gira`.
+--<
+
+-- TURN  (+ rotate)
+
+SYNTAX gira = gira (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF mia_AT CAN NOT girare
+        THEN
+          "The verb '$v' is not in your vocabulary."
+        ELSE
+          IF ogg IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY mia_AT:ogg1_inadatto_sg.
+            ELSE SAY mia_AT:ogg1_inadatto_pl.
+          END IF.
+          "girare." --# ruotare?
+      END IF.
+
+ADD TO EVERY OBJECT
+  VERB gira
+    CHECK mia_AT CAN girare
+      ELSE SAY mia_AT:azione_bloccata.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+--                                                                              TRANSLATE!
+          THEN SAY mia_AT:check_obj_suitable_sg.
+          ELSE SAY mia_AT:check_obj_suitable_pl.
+        END IF.
+    AND ogg IS spostabile
+      ELSE
+        IF ogg IS NOT plurale
+--                                                                              TRANSLATE!
+          THEN SAY mia_AT:check_obj_suitable_sg.
+          ELSE SAY mia_AT:check_obj_suitable_pl.
+        END IF.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+
+    DOES
+      IF ogg DIRECTLY IN hero
+        THEN "You turn" SAY THE ogg. "in your hands, noticing nothing special."
+        ELSE "That wouldn't accomplish anything."
+      END IF.
+  END VERB gira.
 END ADD TO.
 
 
@@ -9682,7 +9757,7 @@ END VERB rispondi_Sì.
 --~*| tie_to             |                                    | tie (obj) to (target)             | 2 | {x}
 --~*| touch              | feel                               | touch (obj)                       | 1 | {x}
 --~*| touch_with         | feel                               | touch (ogg) 'with' (strum)        | 2 | {x}
---| | turn               | rotate                             | turn (obj)                        | 1 | {x}
+--~*| turn               | rotate                             | turn (obj)                        | 1 | {x}
 --~*| turn_on            |                                    | turn on (app)                     | 1 |
 --~*| turn_off           |                                    | turn off (app)                    | 1 |
 --~*| undress            |                                    | undress                           | 0 |
@@ -11062,78 +11137,6 @@ ADD TO EVERY supporto
   END VERB stand_on.
 END ADD TO.
 
-
-
--- ==============================================================
-
-
--- @TURN  (+ rotate)
-
-
--- ==============================================================
-
-
-SYNTAX turn = turn (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF mia_AT CAN NOT turn
-        THEN
-          "The verb '$v' is not in your vocabulary."
-        ELSE
-          IF ogg IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY mia_AT:ogg1_inadatto_sg.
-            ELSE SAY mia_AT:ogg1_inadatto_pl.
-          END IF.
-          "girare." --# ruotare?
-      END IF.
-
-
-
-
-ADD TO EVERY OBJECT
-  VERB turn
-    CHECK mia_AT CAN turn
-      ELSE SAY mia_AT:azione_bloccata.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-          THEN SAY mia_AT:check_obj_suitable_sg.
-          ELSE SAY mia_AT:check_obj_suitable_pl.
-        END IF.
-    AND ogg IS spostabile
-      ELSE
-        IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-          THEN SAY mia_AT:check_obj_suitable_sg.
-          ELSE SAY mia_AT:check_obj_suitable_pl.
-        END IF.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-
-    DOES
-      IF ogg DIRECTLY IN hero
-        THEN "You turn" SAY THE ogg. "in your hands, noticing nothing special."
-        ELSE "That wouldn't accomplish anything."
-      END IF.
-  END VERB turn.
-END ADD TO.
 
 
 -->todo(50000.1)

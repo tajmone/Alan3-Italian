@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.18-Alpha, 2018-11-10: Alan 3.0beta6
+--| v0.7.19-Alpha, 2018-11-10: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -750,6 +750,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN entrare.                  ---> enter
   CAN esaminare.                ---> examine      (+ check, inspect, observe, x)
   CAN giocare_con.              ---> play_with
+  CAN girare.                   ---> turn (+ rotate)
   CAN grattare.                 ---> scratch
   CAN gridare.                  ---> shout        (+ scream, yell)
   CAN guardare.                 ---> look         (+ gaze, peek)
@@ -886,7 +887,6 @@ EVERY blocco_definizioni IsA LOCATION
 --CAN switch. --------------------> ** VERBO ELIMINATO **
 --CAN switch_on. -----------------> ** VERBO ELIMINATO **
 --CAN switch_off. ----------------> ** VERBO ELIMINATO **
-  CAN turn.        -- (+ rotate)
 --<
 
 END EVERY blocco_definizioni.
@@ -970,6 +970,7 @@ EVENT check_restriction
       MAKE mia_AT entrare.                  ---> enter
       MAKE mia_AT esaminare.                ---> examine      (+ check, inspect, observe, x)
       MAKE mia_AT giocare_con.              ---> play_with
+      MAKE mia_AT girare.                   ---> turn (+ rotate)
       MAKE mia_AT grattare.                 ---> scratch
       MAKE mia_AT gridare.                  ---> shout        (+ scream, yell)
       MAKE mia_AT guardare.                 ---> look         (+ gaze, peek)
@@ -1102,7 +1103,6 @@ EVENT check_restriction
     --MAKE mia_AT switch. ------------> ** VERBO ELIMINATO **
     --MAKE mia_AT switch_on. ---------> ** VERBO ELIMINATO **
     --MAKE mia_AT switch_off. ------> ** VERBO ELIMINATO **
-      MAKE mia_AT turn.            -- (+ rotate)
 
 --==============================================================================
 --------------------------------------------------------------------------------
@@ -1165,6 +1165,7 @@ EVENT check_restriction
           MAKE mia_AT NOT dormire.                  ---> sleep        (+ rest)
           MAKE mia_AT NOT entrare.                  ---> enter
           MAKE mia_AT NOT giocare_con.              ---> play_with
+          MAKE mia_AT NOT girare.                   ---> turn (+ rotate)
           MAKE mia_AT NOT grattare.                 ---> scratch
           MAKE mia_AT NOT guidare.                  ---> drive
           MAKE mia_AT NOT indossare.                ---> wear
@@ -1263,7 +1264,6 @@ EVENT check_restriction
         --MAKE mia_AT NOT switch. --------> ** VERBO ELIMINATO **
         --MAKE mia_AT NOT switch_on. -----> ** VERBO ELIMINATO **
         --MAKE mia_AT NOT switch_off. ----> ** VERBO ELIMINATO **
-          MAKE mia_AT NOT turn.        -- (+ rotate)
 
       END IF.
 --==============================================================================

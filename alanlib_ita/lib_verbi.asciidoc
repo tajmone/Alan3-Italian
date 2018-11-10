@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.31-Alpha, 2018-11-10: Alan 3.0beta6
+v0.7.32-Alpha, 2018-11-10: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -114,6 +114,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | dormi              | riposa                       | dormi                                  |     | 0 |     |
 | esamina            | guarda, descrivi, osserva, X | esamina (ogg)                          |     | 1 | {X} |
 | gioca_con          |                              | gioca con (ogg)                        |     | 1 | {X} |
+| gira               |                              | gira (ogg)                             |     | 1 | {X} |
 | gratta             |                              | gratta (ogg)                           |     | 1 | {X} |
 | grida              | strilla, urla                | grida                                  |     | 0 |     |
 | guarda             | L                            | guarda                                 |     | 0 |     |
@@ -845,6 +846,7 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 * `consulta`
 * `dormi`
 * `gioca_con`
+* `gira`
 * `gratta`
 * `grida`
 * `guida`
@@ -876,6 +878,8 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 ==== dormi
 
 ==== gioca_con
+
+==== gira
 
 ==== gratta
 
@@ -955,7 +959,6 @@ italiano del modulo dei verbi.
 | show               | reveal                             | show (obj) to (act)               | 2 | {x}
 | squeeze            |                                    | squeeze (obj)                     | 1 | {x}
 | stand_on           |                                    | stand on (surface)                | 1 |
-| turn               | rotate                             | turn (obj)                        | 1 | {x}
 |=======================================================================================================
 
 // end::verbi_non_tradotti[]
@@ -1202,6 +1205,8 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `dormi`.
 
 * [ ] Descrizione `gioca_con`.
+
+* [ ] Descrizione `gira`.
 
 * [ ] Descrizione `gratta`.
 
