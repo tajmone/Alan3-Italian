@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.7.28-Alpha,</span>
-<span id="revdate">2018-11-09</span>
+<span id="revnumber">versione 0.7.29-Alpha,</span>
+<span id="revdate">2018-11-10</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
 <div id="toc" class="toc2">
@@ -541,8 +541,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_sorseggia">sorseggia</a></li>
 </ul>
 </li>
-<li><a href="#_svuotare_e_versare">Svuotare e Versare</a>
+<li><a href="#_riempire_svuotare_e_versare">Riempire, Svuotare e Versare</a>
 <ul class="sectlevel3">
+<li><a href="#_riempi">riempi</a></li>
+<li><a href="#_riempi_con">riempi_con</a></li>
 <li><a href="#_svuota_versa">svuota + versa</a></li>
 <li><a href="#_svuota_in_versa_in">svuota_in + versa_in</a></li>
 <li><a href="#_svuota_su_versa_su">svuota_su + versa_su</a></li>
@@ -649,14 +651,36 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_uccidi_con">uccidi_con</a></li>
 </ul>
 </li>
+<li><a href="#_leggere_e_scrivere">Leggere e Scrivere</a>
+<ul class="sectlevel3">
+<li><a href="#_leggi">leggi</a></li>
+<li><a href="#_scrivi">scrivi</a></li>
+</ul>
+</li>
+<li><a href="#_bruciare">Bruciare</a>
+<ul class="sectlevel3">
+<li><a href="#_brucia">brucia</a></li>
+<li><a href="#_brucia_con">brucia_con</a></li>
+</ul>
+</li>
+<li><a href="#_usare">Usare</a>
+<ul class="sectlevel3">
+<li><a href="#_usa">usa</a></li>
+<li><a href="#_usa_con">usa_con</a></li>
+</ul>
+</li>
+<li><a href="#_pensare">Pensare</a>
+<ul class="sectlevel3">
+<li><a href="#_pensa">pensa</a></li>
+<li><a href="#_pensa_a">pensa_a</a></li>
+</ul>
+</li>
 <li><a href="#_verbi_sfusi">Verbi Sfusi</a>
 <ul class="sectlevel3">
 <li><a href="#_aspetta">aspetta</a></li>
 <li><a href="#_attraversa">attraversa</a></li>
 <li><a href="#_bacia">bacia</a></li>
 <li><a href="#_balla">balla</a></li>
-<li><a href="#_brucia">brucia</a></li>
-<li><a href="#_brucia_con">brucia_con</a></li>
 <li><a href="#_canta">canta</a></li>
 <li><a href="#_consulta">consulta</a></li>
 <li><a href="#_dormi">dormi</a></li>
@@ -666,20 +690,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_inventario">inventario</a></li>
 <li><a href="#_lega">lega</a></li>
 <li><a href="#_lega_a">lega_a</a></li>
-<li><a href="#_leggi">leggi</a></li>
 <li><a href="#_libera">libera</a></li>
-<li><a href="#_pensa">pensa</a></li>
-<li><a href="#_pensa_a">pensa_a</a></li>
 <li><a href="#_prega">prega</a></li>
-<li><a href="#_riempi">riempi</a></li>
-<li><a href="#_riempi_con">riempi_con</a></li>
 <li><a href="#_rifai">rifai</a></li>
 <li><a href="#_scava">scava</a></li>
-<li><a href="#_scrivi">scrivi</a></li>
 <li><a href="#_suona">suona</a></li>
 <li><a href="#_trova">trova</a></li>
-<li><a href="#_usa">usa</a></li>
-<li><a href="#_usa_con">usa_con</a></li>
 <li><a href="#_vai_a">vai_a</a></li>
 </ul>
 </li>
@@ -2617,13 +2633,19 @@ non decido in quale gruppo spostarli.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_svuotare_e_versare"><a class="anchor" href="#_svuotare_e_versare"></a>Svuotare e Versare</h3>
+<h3 id="_riempire_svuotare_e_versare"><a class="anchor" href="#_riempire_svuotare_e_versare"></a>Riempire, Svuotare e Versare</h3>
 <div class="paragraph">
-<p>Questo gruppo include i verbi per svuotare i contenitori e versarne il
-contenuto (a terra o su/in un altro contenitore):</p>
+<p>Questo gruppo include i verbi per riempire e svuotare i contenitori e versarne
+il contenuto (a terra o su/in un altro contenitore):</p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p><code>riempi</code></p>
+</li>
+<li>
+<p><code>riempi_con</code></p>
+</li>
 <li>
 <p><code>svuota</code></p>
 </li>
@@ -2654,6 +2676,14 @@ possibile versare un liquido ma non svuotarlo.</p>
 <p>Questa è la ragione per cui in <code>lib_classi.i</code> questi verbi sono ridefiniti
 nella classe <code>liquido</code> affinché si possa utilizzare il verbo <code>versa</code> con un
 liquido ma non il verbo <code>svuota</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="_riempi"><a class="anchor" href="#_riempi"></a>riempi</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_riempi_con"><a class="anchor" href="#_riempi_con"></a>riempi_con</h4>
+
 </div>
 <div class="sect3">
 <h4 id="_svuota_versa"><a class="anchor" href="#_svuota_versa"></a>svuota + versa</h4>
@@ -3218,6 +3248,102 @@ a calci, colpire e simili:</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="_leggere_e_scrivere"><a class="anchor" href="#_leggere_e_scrivere"></a>Leggere e Scrivere</h3>
+<div class="paragraph">
+<p>Questo gruppo include i verbi per leggere e scrivere:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>leggi</code></p>
+</li>
+<li>
+<p><code>scrivi</code></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_leggi"><a class="anchor" href="#_leggi"></a>leggi</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_scrivi"><a class="anchor" href="#_scrivi"></a>scrivi</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bruciare"><a class="anchor" href="#_bruciare"></a>Bruciare</h3>
+<div class="paragraph">
+<p>Questo gruppo include i verbi per bruciare le cose:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>brucia</code></p>
+</li>
+<li>
+<p><code>brucia_con</code></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_brucia"><a class="anchor" href="#_brucia"></a>brucia</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_brucia_con"><a class="anchor" href="#_brucia_con"></a>brucia_con</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_usare"><a class="anchor" href="#_usare"></a>Usare</h3>
+<div class="paragraph">
+<p>Questo gruppo include i verbi per usare:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>usa</code></p>
+</li>
+<li>
+<p><code>usa_con</code></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_usa"><a class="anchor" href="#_usa"></a>usa</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_usa_con"><a class="anchor" href="#_usa_con"></a>usa_con</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pensare"><a class="anchor" href="#_pensare"></a>Pensare</h3>
+<div class="paragraph">
+<p>Questo gruppo include i verbi per ZZZZ:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>pensa</code></p>
+</li>
+<li>
+<p><code>pensa_a</code></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_pensa"><a class="anchor" href="#_pensa"></a>pensa</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_pensa_a"><a class="anchor" href="#_pensa_a"></a>pensa_a</h4>
+
+</div>
+</div>
+<div class="sect2">
 <h3 id="_verbi_sfusi"><a class="anchor" href="#_verbi_sfusi"></a>Verbi Sfusi</h3>
 <div class="paragraph">
 <p>Questo gruppo raccoglie i verbi per i quali non è ancora stato creato un:
@@ -3236,12 +3362,6 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:</p>
 </li>
 <li>
 <p><code>balla</code></p>
-</li>
-<li>
-<p><code>brucia</code></p>
-</li>
-<li>
-<p><code>brucia_con</code></p>
 </li>
 <li>
 <p><code>canta</code></p>
@@ -3271,25 +3391,10 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:</p>
 <p><code>lega_a</code></p>
 </li>
 <li>
-<p><code>leggi</code></p>
-</li>
-<li>
 <p><code>libera</code></p>
 </li>
 <li>
-<p><code>pensa</code></p>
-</li>
-<li>
-<p><code>pensa_a</code></p>
-</li>
-<li>
 <p><code>prega</code></p>
-</li>
-<li>
-<p><code>riempi</code></p>
-</li>
-<li>
-<p><code>riempi_con</code></p>
 </li>
 <li>
 <p><code>rifai</code></p>
@@ -3298,19 +3403,10 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:</p>
 <p><code>scava</code></p>
 </li>
 <li>
-<p><code>scrivi</code></p>
-</li>
-<li>
 <p><code>suona</code></p>
 </li>
 <li>
 <p><code>trova</code></p>
-</li>
-<li>
-<p><code>usa</code></p>
-</li>
-<li>
-<p><code>usa_con</code></p>
 </li>
 <li>
 <p><code>vai_a</code></p>
@@ -3331,14 +3427,6 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:</p>
 </div>
 <div class="sect3">
 <h4 id="_balla"><a class="anchor" href="#_balla"></a>balla</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_brucia"><a class="anchor" href="#_brucia"></a>brucia</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_brucia_con"><a class="anchor" href="#_brucia_con"></a>brucia_con</h4>
 
 </div>
 <div class="sect3">
@@ -3378,31 +3466,11 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:</p>
 
 </div>
 <div class="sect3">
-<h4 id="_leggi"><a class="anchor" href="#_leggi"></a>leggi</h4>
-
-</div>
-<div class="sect3">
 <h4 id="_libera"><a class="anchor" href="#_libera"></a>libera</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_pensa"><a class="anchor" href="#_pensa"></a>pensa</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_pensa_a"><a class="anchor" href="#_pensa_a"></a>pensa_a</h4>
-
-</div>
-<div class="sect3">
 <h4 id="_prega"><a class="anchor" href="#_prega"></a>prega</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_riempi"><a class="anchor" href="#_riempi"></a>riempi</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_riempi_con"><a class="anchor" href="#_riempi_con"></a>riempi_con</h4>
 
 </div>
 <div class="sect3">
@@ -3414,23 +3482,11 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:</p>
 
 </div>
 <div class="sect3">
-<h4 id="_scrivi"><a class="anchor" href="#_scrivi"></a>scrivi</h4>
-
-</div>
-<div class="sect3">
 <h4 id="_suona"><a class="anchor" href="#_suona"></a>suona</h4>
 
 </div>
 <div class="sect3">
 <h4 id="_trova"><a class="anchor" href="#_trova"></a>trova</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_usa"><a class="anchor" href="#_usa"></a>usa</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_usa_con"><a class="anchor" href="#_usa_con"></a>usa_con</h4>
 
 </div>
 <div class="sect3">
@@ -3800,6 +3856,12 @@ italiano del modulo dei verbi.</p>
 <p><i class="fa fa-square-o"></i> Descrizione <code>sorseggia</code>.</p>
 </li>
 <li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>riempi</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>riempi_con</code>.</p>
+</li>
+<li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>svuota</code> + <code>versa</code>.</p>
 </li>
 <li>
@@ -3968,6 +4030,30 @@ italiano del modulo dei verbi.</p>
 <p><i class="fa fa-square-o"></i> Descrizione <code>uccidi_con</code>.</p>
 </li>
 <li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>leggi</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>scrivi</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>brucia</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>brucia_con</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>usa</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>usa_con</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>pensa</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>pensa_a</code>.</p>
+</li>
+<li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>aspetta</code>.</p>
 </li>
 <li>
@@ -3978,12 +4064,6 @@ italiano del modulo dei verbi.</p>
 </li>
 <li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>balla</code>.</p>
-</li>
-<li>
-<p><i class="fa fa-square-o"></i> Descrizione <code>brucia</code>.</p>
-</li>
-<li>
-<p><i class="fa fa-square-o"></i> Descrizione <code>brucia_con</code>.</p>
 </li>
 <li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>canta</code>.</p>
@@ -4013,25 +4093,10 @@ italiano del modulo dei verbi.</p>
 <p><i class="fa fa-square-o"></i> Descrizione <code>lega_a</code>.</p>
 </li>
 <li>
-<p><i class="fa fa-square-o"></i> Descrizione <code>leggi</code>.</p>
-</li>
-<li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>libera</code>.</p>
 </li>
 <li>
-<p><i class="fa fa-square-o"></i> Descrizione <code>pensa</code>.</p>
-</li>
-<li>
-<p><i class="fa fa-square-o"></i> Descrizione <code>pensa_a</code>.</p>
-</li>
-<li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>prega</code>.</p>
-</li>
-<li>
-<p><i class="fa fa-square-o"></i> Descrizione <code>riempi</code>.</p>
-</li>
-<li>
-<p><i class="fa fa-square-o"></i> Descrizione <code>riempi_con</code>.</p>
 </li>
 <li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>rifai</code>.</p>
@@ -4040,19 +4105,10 @@ italiano del modulo dei verbi.</p>
 <p><i class="fa fa-square-o"></i> Descrizione <code>scava</code>.</p>
 </li>
 <li>
-<p><i class="fa fa-square-o"></i> Descrizione <code>scrivi</code>.</p>
-</li>
-<li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>suona</code>.</p>
 </li>
 <li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>trova</code>.</p>
-</li>
-<li>
-<p><i class="fa fa-square-o"></i> Descrizione <code>usa</code>.</p>
-</li>
-<li>
-<p><i class="fa fa-square-o"></i> Descrizione <code>usa_con</code>.</p>
 </li>
 <li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>vai_a</code>.</p>
@@ -4065,7 +4121,7 @@ italiano del modulo dei verbi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.7.28-Alpha<br>
+Versione 0.7.29-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

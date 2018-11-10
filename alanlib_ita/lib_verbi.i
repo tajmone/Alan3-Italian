@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.28-Alpha, 2018-11-09: Alan 3.0beta6
+--| v0.7.29-Alpha, 2018-11-10: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -2987,14 +2987,16 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Svuotare e Versare
+--| === Riempire, Svuotare e Versare
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
 --| 
---| Questo gruppo include i verbi per svuotare i contenitori e versarne il
---| contenuto (a terra o su/in un altro contenitore):
+--| Questo gruppo include i verbi per riempire e svuotare i contenitori e versarne
+--| il contenuto (a terra o su/in un altro contenitore):
 --| 
+--| * `riempi`
+--| * `riempi_con`
 --| * `svuota`
 --| * `svuota_in`
 --| * `svuota_su`
@@ -3012,6 +3014,160 @@ END ADD TO.
 --| liquido ma non il verbo `svuota`.
 --<
 
+
+-->gruppo_svuota                                               @RIEMPI <-- @FILL
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== riempi
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `riempi`.
+--<
+
+-- # 'riempi' 'colma'
+
+-- SYNTAX fill = fill (cont)
+
+SYNTAX riempi = riempi (cont)
+  WHERE cont IsA OBJECT
+    ELSE
+      IF cont IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF.
+      "riempire."
+  AND cont IsA CONTAINER
+    ELSE
+      IF cont IS NOT plurale
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF.
+      "riempire."
+
+
+ADD TO EVERY OBJECT
+  VERB riempi
+    CHECK mia_AT CAN riempire
+      ELSE SAY mia_AT:azione_bloccata.
+    AND cont IS esaminabile
+      ELSE
+        IF cont IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF.
+        "riempire."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    DOES
+      SAY mia_AT:specificare_CON_cosa. "riempire" SAY THE cont.
+      -- "You have to say what you want to fill" SAY THE cont. "with."
+    END VERB riempi.
+END ADD TO.
+
+-->gruppo_svuota                                      @RIEMPI CON <-- @FILL WITH
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== riempi_con
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `riempi_con`.
+--<
+
+
+-- SYNTAX fill_with = fill (cont) 'with' (sostanza)
+
+SYNTAX riempi_con = riempi (cont) con (sostanza)
+  WHERE cont IsA OBJECT
+    ELSE
+      IF cont IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF.
+      "riempire."
+  AND cont IsA CONTAINER
+    ELSE
+      IF cont IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF.
+      "riempire."
+  AND sostanza IsA OBJECT
+    ELSE
+      IF sostanza IS NOT plurale
+        THEN SAY mia_AT:ogg2_illegale_CON_sg.
+        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+      END IF.
+      "riempire" SAY THE cont. "."
+
+
+ADD TO EVERY OBJECT
+  VERB riempi_con
+    WHEN cont
+      CHECK mia_AT CAN riempire_con
+        ELSE SAY mia_AT:azione_bloccata.
+      AND cont <> sostanza
+--                                                                              TRANSLATE!
+        ELSE SAY mia_AT:check_obj_not_obj2_with.
+      AND sostanza IS esaminabile
+        ELSE
+          IF sostanza IS NOT plurale
+            THEN SAY mia_AT:ogg2_illegale_CON_sg.
+            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+          END IF.
+          "riempire" SAY THE cont. "."
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY mia_AT:imp_luogo_buio.
+      AND sostanza NOT IN cont
+        --                                                                      TRANSLATE!
+        ELSE SAY mia_AT:check_obj_not_in_cont2.
+      AND sostanza IS prendibile
+        --                                                                      TRANSLATE!
+        ELSE SAY  mia_AT:ogg2_non_posseduto.
+     -- ELSE SAY mia_AT:check_obj2_takeable1.
+      AND cont IS raggiungibile AND cont IS NOT distante
+        ELSE
+          IF cont IS NOT raggiungibile
+            THEN
+              IF cont IS NOT plurale
+                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+              END IF.
+          ELSIF cont IS distante
+            THEN
+              IF cont IS NOT plurale
+                THEN SAY mia_AT:ogg1_distante_sg. "."
+                ELSE SAY mia_AT:ogg1_distante_pl. "."
+              END IF.
+          END IF.
+      AND sostanza IS raggiungibile AND sostanza IS NOT distante
+        ELSE
+          IF sostanza IS NOT raggiungibile
+            THEN
+              IF sostanza IS NOT plurale
+                THEN SAY mia_AT:ogg2_non_raggiungibile_sg.
+                ELSE SAY mia_AT:ogg2_non_raggiungibile_pl.
+              END IF.
+          ELSIF sostanza IS distante
+            THEN
+              IF sostanza IS NOT plurale
+                THEN SAY mia_AT:ogg2_distante_sg. "."
+                ELSE SAY mia_AT:ogg2_distante_pl. "."
+              END IF.
+          END IF.
+      DOES
+        -- allow the action at individual substances only!
+        "Non puoi riempire" SAY THE cont. "con" SAY THE sostanza. "."
+     -- "You can't fill" SAY THE cont. "with" SAY THE sostanza. "."
+  END VERB riempi_con.
+END ADD TO.
 
 -->gruppo_svuota                             @SVUOTA + @VERSA <-- @EMPTY + @POUR
 --~=============================================================================
@@ -7286,6 +7442,509 @@ ADD TO EVERY ACTOR
   END VERB uccidi_con.
 END ADD TO.
 
+-->gruppo_leggere(21900)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Leggere e Scrivere
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi per leggere e scrivere:
+--| 
+--| * `leggi`
+--| * `scrivi`
+--<
+
+
+-->gruppo_leggere                                               @LEGGI <-- @READ
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== leggi
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `leggi`.
+--<
+
+SYNTAX leggi = leggi (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF.
+      "leggere."
+
+
+ADD TO EVERY OBJECT
+    VERB leggi
+    CHECK mia_AT CAN leggere
+      ELSE SAY mia_AT:azione_bloccata.
+    AND ogg IS leggibile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF.
+        "leggere."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:ogg1_distante_sg.
+          ELSE SAY mia_AT:ogg1_distante_pl.
+        END IF.
+    DOES
+      IF testo OF ogg = ""
+     -- THEN "There is nothing written on" SAY THE ogg. "."
+        THEN "Non c'è nulla da leggere" SAY ogg:prep_SU. SAY ogg. "."
+          ELSE "Leggi" SAY THE ogg. "."
+            IF ogg IS NOT plurale
+              THEN "Dice"
+              ELSE "Dicono"
+          END IF.
+          """$$" SAY ogg:testo. "$$""."
+      END IF.
+    END VERB leggi.
+END ADD TO.
+
+
+
+-->gruppo_leggere                                             @SCRIVI <-- @WRITE
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== scrivi
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `scrivi`.
+--<
+-- @TODO: Handle when (txt) is and empty string: should not add anything,
+--        and/or report error!
+
+-- SYNTAX write = write (txt) 'on' (obj)
+--        write = write (txt) 'in' (obj).
+
+SYNTAX  scrivi = scrivi (txt) su (ogg)
+    WHERE txt IsA STRING
+      ELSE SAY mia_AT:illegal_parameter_string.
+    AND ogg IsA OBJECT
+      ELSE SAY mia_AT:illegal_parameter2_there.
+
+        scrivi = scrivi (txt) 'in' (ogg).
+
+
+ADD TO EVERY OBJECT
+  VERB scrivi
+        WHEN ogg
+      CHECK mia_AT CAN scrivere
+        ELSE SAY mia_AT:azione_bloccata.
+      AND ogg IS scrivibile
+--                                                                              TRANSLATE!
+        ELSE SAY mia_AT:check_obj_writeable.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY mia_AT:imp_luogo_buio.
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_distante_sg.
+                ELSE SAY mia_AT:ogg1_distante_pl.
+              END IF.
+          END IF.
+
+      DOES
+        "Non hai nulla con cui scrivere."
+      -- "You don't have anything to write with."
+
+        -- To make it work:
+        -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        -- IF text OF obj = ""
+        --   THEN SET text OF obj TO txt.
+        --   ELSE SET text OF obj TO text OF obj + " " + txt.
+        -- END IF.
+        -- "You write ""$$" SAY txt. "$$"" on" SAY THE obj. "."
+        -- MAKE obj readable.
+        -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    END VERB scrivi.
+END ADD TO.
+
+
+-- A couple of other formulations are understood but they guide the player to
+-- use the correct syntax:
+
+
+SYNTAX  scrivi_errore1 = scrivi su (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      -- "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
+      SAY mia_AT:per_scrivere_USA.
+  -- "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
+  --  to write something."
+
+        scrivi_errore1 = scrivi 'in' (ogg).
+
+ADD TO EVERY OBJECT
+  VERB scrivi_errore1
+    DOES
+      -- "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
+      SAY mia_AT:per_scrivere_USA.
+
+  END VERB scrivi_errore1.
+END ADD TO.
+
+
+SYNTAX scrivi_errore2 = scrivi.
+
+VERB scrivi_errore2
+  DOES
+    -- "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
+    SAY mia_AT:per_scrivere_USA.
+END VERB scrivi_errore2.
+
+
+SYNTAX scrivi_errore3 = scrivi (txt)
+  WHERE txt IsA STRING
+    ELSE
+      -- "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
+      SAY mia_AT:per_scrivere_USA.
+
+
+ADD TO EVERY STRING
+  VERB scrivi_errore3
+    DOES
+      -- "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
+      SAY mia_AT:per_scrivere_USA.
+  END VERB scrivi_errore3.
+END ADD TO.
+
+-->gruppo_bruciare(22000)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Bruciare
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi per bruciare le cose:
+--| 
+--| * `brucia`
+--| * `brucia_con`
+--<
+
+
+-->gruppo_bruciare                                             @BRUCIA <-- @BURN
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== brucia
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `brucia`.
+--<
+
+-- @NOTA: In i6 "incendia" è sinonimo di "brucia" e "brucia con".
+--        Inoltre, "col" è sinonimo di "con".
+
+SYNTAX brucia = brucia (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF.
+      "bruciare."
+
+ADD TO EVERY OBJECT
+  VERB brucia
+    CHECK mia_AT CAN bruciare
+      ELSE SAY mia_AT:azione_bloccata.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF.
+        "bruciare."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    DOES
+      SAY mia_AT:specificare_CON_cosa. "bruciare" SAY THE ogg. "."
+   -- "You must state what you want to burn" SAY THE ogg. "with."
+  END VERB brucia.
+END ADD TO.
+
+
+-->gruppo_bruciare                                                   @BRUCIA_CON
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== brucia_con
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `brucia_con`.
+--<
+
+
+SYNTAX brucia_con = brucia (ogg) con (strum)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF.
+      "bruciare."
+  AND strum IsA OBJECT
+    ELSE
+      IF strum IS NOT plurale
+        THEN SAY mia_AT:ogg2_illegale_CON_sg.
+        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+      END IF.
+      "bruciare." -- @TODO: ".. altre cose"??                                   IMPROVE!
+
+
+ADD TO EVERY OBJECT
+  VERB brucia_con
+    WHEN ogg
+      CHECK mia_AT CAN bruciare_con
+        ELSE SAY mia_AT:azione_bloccata.
+      AND ogg IS esaminabile
+        ELSE
+          IF ogg IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa che puoi"
+            THEN SAY mia_AT:ogg1_inadatto_sg.
+            ELSE SAY mia_AT:ogg1_inadatto_pl.
+          END IF.
+          "bruciare."
+      AND strum IS esaminabile
+        ELSE
+          IF strum IS NOT plurale
+            THEN SAY mia_AT:ogg2_illegale_CON_sg.
+            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+          END IF.
+          "bruciare" SAY THE ogg. "."
+      AND ogg <> strum
+        ---> @TODO!!                                                            TRANSLATE!
+        ELSE SAY mia_AT:check_obj_not_obj2_with.
+      AND strum IN hero
+        ELSE SAY mia_AT:non_possiedi_ogg2.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY mia_AT:imp_luogo_buio.
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_distante_sg.
+                ELSE SAY mia_AT:ogg1_distante_pl.
+              END IF.
+          END IF.
+
+      DOES
+        "Non puoi bruciare" SAY THE ogg. "con" SAY THE strum. "."
+     -- "You can't burn" SAY THE ogg. "with" SAY THE strum. "."
+  END VERB brucia_con.
+END ADD TO.
+
+
+-->gruppo_usare(22100)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Usare
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi per usare:
+--| 
+--| * `usa`
+--| * `usa_con`
+--<
+
+
+-->gruppo_usare                                                    @USA <-- @USE
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== usa
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `usa`.
+--<
+
+
+SYNTAX usa = usa (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE "Solo gli oggetti sono utilizzabili!"
+ -- ELSE SAY mia_AT:illegal_parameter_obj.
+
+-- @TODO: Valutare se usare un messagio my_game per qui sopra!
+
+ADD TO EVERY OBJECT
+  VERB usa
+    CHECK mia_AT CAN usare
+      ELSE SAY mia_AT:azione_bloccata.
+    DOES
+   -- "Please be more specific. How do you intend to use"
+      "Sii più specifico. Come vorresti usarl$$" SAY ogg:vocale. "?"
+    END VERB usa.
+END ADD TO.
+
+
+-->gruppo_usare                                           @USA CON <-- @USE WITH
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== usa_con
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `usa_con`.
+--<
+
+
+SYNTAX usa_con = usa (ogg) con (strum)
+  WHERE ogg IsA OBJECT
+    ELSE "Solo gli oggetti sono utilizzabili!"
+ -- ELSE SAY mia_AT:illegal_parameter_obj.
+  AND strum IsA OBJECT
+    ELSE "Solo gli oggetti sono utilizzabili!"
+ -- ELSE SAY mia_AT:illegal_parameter_obj.
+
+-- @TODO: Valutare se usare un messagio my_game per qui sopra!
+
+
+ADD TO EVERY OBJECT
+  VERB usa_con
+    WHEN ogg
+      CHECK mia_AT CAN usare_con
+        ELSE SAY mia_AT:azione_bloccata.
+      AND ogg <> strum
+--                                                                              TRANSLATE!
+        ELSE SAY mia_AT:check_obj_not_obj2_with.
+      DOES
+     -- "Please be more specific. How do you intend to use them together?"
+        "Sii più specifico. Come vorresti usarl$$"
+        IF ogg IS NOT femminile OR strum IS NOT femminile
+          THEN "i?" --| Se anche solo uno dei due è maschile useremo il maschile,
+          ELSE "e?" --| altrimenti il femminile.
+        END IF.
+    END VERB usa_con.
+END ADD TO.
+
+-->gruppo_pensare(22200)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Pensare
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi per ZZZZ:
+--| 
+--| * `pensa`
+--| * `pensa_a`
+--<
+
+
+-->gruppo_pensare                                              @PENSA <-- @THINK
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== pensa
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `pensa`.
+--<
+
+--| SINTASSI:
+--|   (pensa|pondera|rifletti|medita)
+--------------------------------------------------------------------------------
+
+
+-- SYNTAX think = think.
+-- SYNONYMS ponder, meditate, reflect = think.
+
+SYNTAX pensa = pensa.
+       pensa = pondera.
+       pensa = rifletti.
+
+SYNONYMS medita = rifletti.
+
+VERB pensa
+  CHECK mia_AT CAN pensare
+    ELSE SAY mia_AT:azione_bloccata.
+  DOES
+    "Nothing helpful comes to your mind."
+END VERB pensa.
+
+
+
+-->gruppo_pensare                                      @PENSA A <-- @THINK ABOUT
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== pensa_a
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `pensa_a`.
+--<
+
+--| SINTASSI:
+--|   pensa a <argomento>
+--|   (rifletti|medita) su <argomento>
+--|   pondera <argomento>
+--------------------------------------------------------------------------------
+
+-- SYNTAX think_about = think 'about' (argomento)!
+
+SYNTAX  pensa_a = pensa a (argomento)!
+  WHERE argomento IsA THING
+    ELSE
+      IF argomento IS NOT plurale
+        THEN SAY mia_AT:illegal_parameter_about_sg.
+        ELSE SAY mia_AT:illegal_parameter_about_pl.
+      END IF.
+
+        pensa_a = rifletti su (argomento)!.
+        pensa_a = pondera (argomento)!.
+
+ADD TO EVERY THING
+  VERB pensa_a
+    CHECK mia_AT CAN pensare_a
+      ELSE SAY mia_AT:azione_bloccata.
+    DOES
+      "Nothing helpful comes to your mind."
+  END VERB pensa_a.
+END ADD TO.
 
 
 --=============================================================================
@@ -7312,8 +7971,6 @@ END ADD TO.
 --| * `attraversa`
 --| * `bacia`
 --| * `balla`
---| * `brucia`
---| * `brucia_con`
 --| * `canta`
 --| * `consulta`
 --| * `dormi`
@@ -7323,20 +7980,12 @@ END ADD TO.
 --| * `inventario`
 --| * `lega`
 --| * `lega_a`
---| * `leggi`
 --| * `libera`
---| * `pensa`
---| * `pensa_a`
 --| * `prega`
---| * `riempi`
---| * `riempi_con`
 --| * `rifai`
 --| * `scava`
---| * `scrivi`
 --| * `suona`
 --| * `trova`
---| * `usa`
---| * `usa_con`
 --| * `vai_a`
 --<
 
@@ -7537,128 +8186,6 @@ VERB balla
     SAY mia_AT:non_senti_bisogno_di. "ballare."
  -- "How about a waltz?"
 END VERB balla.
-
--->gruppo_sfusi                                                @BRUCIA <-- @BURN
---~=============================================================================
---~-----------------------------------------------------------------------------
---| ==== brucia
---~-----------------------------------------------------------------------------
---~=============================================================================
---<
--->todo_checklist(.666) Doxter
---| * [ ] Descrizione `brucia`.
---<
-
--- @NOTA: In i6 "incendia" è sinonimo di "brucia" e "brucia con".
---        Inoltre, "col" è sinonimo di "con".
-
-SYNTAX brucia = brucia (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "bruciare."
-
-ADD TO EVERY OBJECT
-  VERB brucia
-    CHECK mia_AT CAN bruciare
-      ELSE SAY mia_AT:azione_bloccata.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY mia_AT:ogg1_inadatto_sg.
-          ELSE SAY mia_AT:ogg1_inadatto_pl.
-        END IF.
-        "bruciare."
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    DOES
-      SAY mia_AT:specificare_CON_cosa. "bruciare" SAY THE ogg. "."
-   -- "You must state what you want to burn" SAY THE ogg. "with."
-  END VERB brucia.
-END ADD TO.
-
-
--->gruppo_sfusi                                                      @BRUCIA_CON
---~=============================================================================
---~-----------------------------------------------------------------------------
---| ==== brucia_con
---~-----------------------------------------------------------------------------
---~=============================================================================
---<
--->todo_checklist(.666) Doxter
---| * [ ] Descrizione `brucia_con`.
---<
-
-
-SYNTAX brucia_con = brucia (ogg) con (strum)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "bruciare."
-  AND strum IsA OBJECT
-    ELSE
-      IF strum IS NOT plurale
-        THEN SAY mia_AT:ogg2_illegale_CON_sg.
-        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
-      END IF.
-      "bruciare." -- @TODO: ".. altre cose"??                                   IMPROVE!
-
-
-ADD TO EVERY OBJECT
-  VERB brucia_con
-    WHEN ogg
-      CHECK mia_AT CAN bruciare_con
-        ELSE SAY mia_AT:azione_bloccata.
-      AND ogg IS esaminabile
-        ELSE
-          IF ogg IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY mia_AT:ogg1_inadatto_sg.
-            ELSE SAY mia_AT:ogg1_inadatto_pl.
-          END IF.
-          "bruciare."
-      AND strum IS esaminabile
-        ELSE
-          IF strum IS NOT plurale
-            THEN SAY mia_AT:ogg2_illegale_CON_sg.
-            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
-          END IF.
-          "bruciare" SAY THE ogg. "."
-      AND ogg <> strum
-        ---> @TODO!!                                                            TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_with.
-      AND strum IN hero
-        ELSE SAY mia_AT:non_possiedi_ogg2.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY mia_AT:imp_luogo_buio.
-      AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-              END IF.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY mia_AT:ogg1_distante_sg.
-                ELSE SAY mia_AT:ogg1_distante_pl.
-              END IF.
-          END IF.
-
-      DOES
-        "Non puoi bruciare" SAY THE ogg. "con" SAY THE strum. "."
-     -- "You can't burn" SAY THE ogg. "with" SAY THE strum. "."
-  END VERB brucia_con.
-END ADD TO.
 
 -->gruppo_sfusi                                                 @CANTA <-- @SING
 --~=============================================================================
@@ -8198,61 +8725,6 @@ ADD TO EVERY THING
 END ADD TO.
 
 
--->gruppo_sfusi                                                 @LEGGI <-- @READ
---~=============================================================================
---~-----------------------------------------------------------------------------
---| ==== leggi
---~-----------------------------------------------------------------------------
---~=============================================================================
---<
--->todo_checklist(.666) Doxter
---| * [ ] Descrizione `leggi`.
---<
-
-SYNTAX leggi = leggi (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "leggere."
-
-
-ADD TO EVERY OBJECT
-    VERB leggi
-    CHECK mia_AT CAN leggere
-      ELSE SAY mia_AT:azione_bloccata.
-    AND ogg IS leggibile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY mia_AT:ogg1_inadatto_sg.
-          ELSE SAY mia_AT:ogg1_inadatto_pl.
-        END IF.
-        "leggere."
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT plurale
-          THEN SAY mia_AT:ogg1_distante_sg.
-          ELSE SAY mia_AT:ogg1_distante_pl.
-        END IF.
-    DOES
-      IF testo OF ogg = ""
-     -- THEN "There is nothing written on" SAY THE ogg. "."
-        THEN "Non c'è nulla da leggere" SAY ogg:prep_SU. SAY ogg. "."
-          ELSE "Leggi" SAY THE ogg. "."
-            IF ogg IS NOT plurale
-              THEN "Dice"
-              ELSE "Dicono"
-          END IF.
-          """$$" SAY ogg:testo. "$$""."
-      END IF.
-    END VERB leggi.
-END ADD TO.
-
 
 -->gruppo_sfusi                                                 @LIBERA <-- @FREE
 --~=============================================================================
@@ -8322,79 +8794,6 @@ ADD TO EVERY THING
   END VERB libera.
 END ADD TO.
 
--->gruppo_sfusi                                                @PENSA <-- @THINK
---~=============================================================================
---~-----------------------------------------------------------------------------
---| ==== pensa
---~-----------------------------------------------------------------------------
---~=============================================================================
---<
--->todo_checklist(.666) Doxter
---| * [ ] Descrizione `pensa`.
---<
-
---| SINTASSI:
---|   (pensa|pondera|rifletti|medita)
---------------------------------------------------------------------------------
-
-
--- SYNTAX think = think.
--- SYNONYMS ponder, meditate, reflect = think.
-
-SYNTAX pensa = pensa.
-       pensa = pondera.
-       pensa = rifletti.
-
-SYNONYMS medita = rifletti.
-
-VERB pensa
-  CHECK mia_AT CAN pensare
-    ELSE SAY mia_AT:azione_bloccata.
-  DOES
-    "Nothing helpful comes to your mind."
-END VERB pensa.
-
-
-
--->gruppo_sfusi                                        @PENSA A <-- @THINK ABOUT
---~=============================================================================
---~-----------------------------------------------------------------------------
---| ==== pensa_a
---~-----------------------------------------------------------------------------
---~=============================================================================
---<
--->todo_checklist(.666) Doxter
---| * [ ] Descrizione `pensa_a`.
---<
-
---| SINTASSI:
---|   pensa a <argomento>
---|   (rifletti|medita) su <argomento>
---|   pondera <argomento>
---------------------------------------------------------------------------------
-
--- SYNTAX think_about = think 'about' (argomento)!
-
-SYNTAX  pensa_a = pensa a (argomento)!
-  WHERE argomento IsA THING
-    ELSE
-      IF argomento IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_about_sg.
-        ELSE SAY mia_AT:illegal_parameter_about_pl.
-      END IF.
-
-        pensa_a = rifletti su (argomento)!.
-        pensa_a = pondera (argomento)!.
-
-ADD TO EVERY THING
-  VERB pensa_a
-    CHECK mia_AT CAN pensare_a
-      ELSE SAY mia_AT:azione_bloccata.
-    DOES
-      "Nothing helpful comes to your mind."
-  END VERB pensa_a.
-END ADD TO.
-
 -->gruppo_sfusi                                                 @PREGA <-- @PRAY
 --~=============================================================================
 --~-----------------------------------------------------------------------------
@@ -8415,160 +8814,6 @@ VERB prega
   DOES "Sembra che le tue preghiere non siano state esaudite." ---> da i6
   -- DOES "Your prayers don't seem to help right now."
 END VERB prega.
-
--->gruppo_sfusi                                                @RIEMPI <-- @FILL
---~=============================================================================
---~-----------------------------------------------------------------------------
---| ==== riempi
---~-----------------------------------------------------------------------------
---~=============================================================================
---<
--->todo_checklist(.666) Doxter
---| * [ ] Descrizione `riempi`.
---<
-
--- # 'riempi' 'colma'
-
--- SYNTAX fill = fill (cont)
-
-SYNTAX riempi = riempi (cont)
-  WHERE cont IsA OBJECT
-    ELSE
-      IF cont IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "riempire."
-  AND cont IsA CONTAINER
-    ELSE
-      IF cont IS NOT plurale
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "riempire."
-
-
-ADD TO EVERY OBJECT
-  VERB riempi
-    CHECK mia_AT CAN riempire
-      ELSE SAY mia_AT:azione_bloccata.
-    AND cont IS esaminabile
-      ELSE
-        IF cont IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY mia_AT:ogg1_inadatto_sg.
-          ELSE SAY mia_AT:ogg1_inadatto_pl.
-        END IF.
-        "riempire."
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    DOES
-      SAY mia_AT:specificare_CON_cosa. "riempire" SAY THE cont.
-      -- "You have to say what you want to fill" SAY THE cont. "with."
-    END VERB riempi.
-END ADD TO.
-
--->gruppo_sfusi                                       @RIEMPI CON <-- @FILL WITH
---~=============================================================================
---~-----------------------------------------------------------------------------
---| ==== riempi_con
---~-----------------------------------------------------------------------------
---~=============================================================================
---<
--->todo_checklist(.666) Doxter
---| * [ ] Descrizione `riempi_con`.
---<
-
-
--- SYNTAX fill_with = fill (cont) 'with' (sostanza)
-
-SYNTAX riempi_con = riempi (cont) con (sostanza)
-  WHERE cont IsA OBJECT
-    ELSE
-      IF cont IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "riempire."
-  AND cont IsA CONTAINER
-    ELSE
-      IF cont IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "riempire."
-  AND sostanza IsA OBJECT
-    ELSE
-      IF sostanza IS NOT plurale
-        THEN SAY mia_AT:ogg2_illegale_CON_sg.
-        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
-      END IF.
-      "riempire" SAY THE cont. "."
-
-
-ADD TO EVERY OBJECT
-  VERB riempi_con
-    WHEN cont
-      CHECK mia_AT CAN riempire_con
-        ELSE SAY mia_AT:azione_bloccata.
-      AND cont <> sostanza
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_with.
-      AND sostanza IS esaminabile
-        ELSE
-          IF sostanza IS NOT plurale
-            THEN SAY mia_AT:ogg2_illegale_CON_sg.
-            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
-          END IF.
-          "riempire" SAY THE cont. "."
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY mia_AT:imp_luogo_buio.
-      AND sostanza NOT IN cont
-        --                                                                      TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_in_cont2.
-      AND sostanza IS prendibile
-        --                                                                      TRANSLATE!
-        ELSE SAY  mia_AT:ogg2_non_posseduto.
-     -- ELSE SAY mia_AT:check_obj2_takeable1.
-      AND cont IS raggiungibile AND cont IS NOT distante
-        ELSE
-          IF cont IS NOT raggiungibile
-            THEN
-              IF cont IS NOT plurale
-                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-              END IF.
-          ELSIF cont IS distante
-            THEN
-              IF cont IS NOT plurale
-                THEN SAY mia_AT:ogg1_distante_sg. "."
-                ELSE SAY mia_AT:ogg1_distante_pl. "."
-              END IF.
-          END IF.
-      AND sostanza IS raggiungibile AND sostanza IS NOT distante
-        ELSE
-          IF sostanza IS NOT raggiungibile
-            THEN
-              IF sostanza IS NOT plurale
-                THEN SAY mia_AT:ogg2_non_raggiungibile_sg.
-                ELSE SAY mia_AT:ogg2_non_raggiungibile_pl.
-              END IF.
-          ELSIF sostanza IS distante
-            THEN
-              IF sostanza IS NOT plurale
-                THEN SAY mia_AT:ogg2_distante_sg. "."
-                ELSE SAY mia_AT:ogg2_distante_pl. "."
-              END IF.
-          END IF.
-      DOES
-        -- allow the action at individual substances only!
-        "Non puoi riempire" SAY THE cont. "con" SAY THE sostanza. "."
-     -- "You can't fill" SAY THE cont. "with" SAY THE sostanza. "."
-  END VERB riempi_con.
-END ADD TO.
 
 -->gruppo_sfusi                                                @RIFAI <-- @AGAIN
 --~=============================================================================
@@ -8661,123 +8906,6 @@ ADD TO EVERY OBJECT
       "Qui non c'è nulla da scavare."
    -- "There is nothing suitable to dig here."
   END VERB scava.
-END ADD TO.
-
-
--->gruppo_sfusi                                               @SCRIVI <-- @WRITE
---~=============================================================================
---~-----------------------------------------------------------------------------
---| ==== scrivi
---~-----------------------------------------------------------------------------
---~=============================================================================
---<
--->todo_checklist(.666) Doxter
---| * [ ] Descrizione `scrivi`.
---<
--- @TODO: Handle when (txt) is and empty string: should not add anything,
---        and/or report error!
-
--- SYNTAX write = write (txt) 'on' (obj)
---        write = write (txt) 'in' (obj).
-
-SYNTAX  scrivi = scrivi (txt) su (ogg)
-    WHERE txt IsA STRING
-      ELSE SAY mia_AT:illegal_parameter_string.
-    AND ogg IsA OBJECT
-      ELSE SAY mia_AT:illegal_parameter2_there.
-
-        scrivi = scrivi (txt) 'in' (ogg).
-
-
-ADD TO EVERY OBJECT
-  VERB scrivi
-        WHEN ogg
-      CHECK mia_AT CAN scrivere
-        ELSE SAY mia_AT:azione_bloccata.
-      AND ogg IS scrivibile
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_writeable.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY mia_AT:imp_luogo_buio.
-      AND ogg IS raggiungibile AND ogg IS NOT distante
-        ELSE
-          IF ogg IS NOT raggiungibile
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-              END IF.
-          ELSIF ogg IS distante
-            THEN
-              IF ogg IS NOT plurale
-                THEN SAY mia_AT:ogg1_distante_sg.
-                ELSE SAY mia_AT:ogg1_distante_pl.
-              END IF.
-          END IF.
-
-      DOES
-        "Non hai nulla con cui scrivere."
-      -- "You don't have anything to write with."
-
-        -- To make it work:
-        -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        -- IF text OF obj = ""
-        --   THEN SET text OF obj TO txt.
-        --   ELSE SET text OF obj TO text OF obj + " " + txt.
-        -- END IF.
-        -- "You write ""$$" SAY txt. "$$"" on" SAY THE obj. "."
-        -- MAKE obj readable.
-        -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    END VERB scrivi.
-END ADD TO.
-
-
--- A couple of other formulations are understood but they guide the player to
--- use the correct syntax:
-
-
-SYNTAX  scrivi_errore1 = scrivi su (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      -- "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
-      SAY mia_AT:per_scrivere_USA.
-  -- "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
-  --  to write something."
-
-        scrivi_errore1 = scrivi 'in' (ogg).
-
-ADD TO EVERY OBJECT
-  VERB scrivi_errore1
-    DOES
-      -- "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
-      SAY mia_AT:per_scrivere_USA.
-
-  END VERB scrivi_errore1.
-END ADD TO.
-
-
-SYNTAX scrivi_errore2 = scrivi.
-
-VERB scrivi_errore2
-  DOES
-    -- "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
-    SAY mia_AT:per_scrivere_USA.
-END VERB scrivi_errore2.
-
-
-SYNTAX scrivi_errore3 = scrivi (txt)
-  WHERE txt IsA STRING
-    ELSE
-      -- "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
-      SAY mia_AT:per_scrivere_USA.
-
-
-ADD TO EVERY STRING
-  VERB scrivi_errore3
-    DOES
-      -- "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
-      SAY mia_AT:per_scrivere_USA.
-  END VERB scrivi_errore3.
 END ADD TO.
 
 
@@ -8900,78 +9028,6 @@ ADD TO EVERY THING
    -- "You'll have to $v it yourself."
   END VERB trova.
 END ADD TO.
-
--->gruppo_sfusi                                                    @USA <-- @USE
---~=============================================================================
---~-----------------------------------------------------------------------------
---| ==== usa
---~-----------------------------------------------------------------------------
---~=============================================================================
---<
--->todo_checklist(.666) Doxter
---| * [ ] Descrizione `usa`.
---<
-
-
-SYNTAX usa = usa (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE "Solo gli oggetti sono utilizzabili!"
- -- ELSE SAY mia_AT:illegal_parameter_obj.
-
--- @TODO: Valutare se usare un messagio my_game per qui sopra!
-
-ADD TO EVERY OBJECT
-  VERB usa
-    CHECK mia_AT CAN usare
-      ELSE SAY mia_AT:azione_bloccata.
-    DOES
-   -- "Please be more specific. How do you intend to use"
-      "Sii più specifico. Come vorresti usarl$$" SAY ogg:vocale. "?"
-    END VERB usa.
-END ADD TO.
-
-
--->gruppo_sfusi                                           @USA CON <-- @USE WITH
---~=============================================================================
---~-----------------------------------------------------------------------------
---| ==== usa_con
---~-----------------------------------------------------------------------------
---~=============================================================================
---<
--->todo_checklist(.666) Doxter
---| * [ ] Descrizione `usa_con`.
---<
-
-
-SYNTAX usa_con = usa (ogg) con (strum)
-  WHERE ogg IsA OBJECT
-    ELSE "Solo gli oggetti sono utilizzabili!"
- -- ELSE SAY mia_AT:illegal_parameter_obj.
-  AND strum IsA OBJECT
-    ELSE "Solo gli oggetti sono utilizzabili!"
- -- ELSE SAY mia_AT:illegal_parameter_obj.
-
--- @TODO: Valutare se usare un messagio my_game per qui sopra!
-
-
-ADD TO EVERY OBJECT
-  VERB usa_con
-    WHEN ogg
-      CHECK mia_AT CAN usare_con
-        ELSE SAY mia_AT:azione_bloccata.
-      AND ogg <> strum
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_with.
-      DOES
-     -- "Please be more specific. How do you intend to use them together?"
-        "Sii più specifico. Come vorresti usarl$$"
-        IF ogg IS NOT femminile OR strum IS NOT femminile
-          THEN "i?" --| Se anche solo uno dei due è maschile useremo il maschile,
-          ELSE "e?" --| altrimenti il femminile.
-        END IF.
-    END VERB usa_con.
-END ADD TO.
-
 
 
 -->gruppo_sfusi                                                 @VAI A <- @GO TO

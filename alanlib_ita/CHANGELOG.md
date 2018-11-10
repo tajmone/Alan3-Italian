@@ -11,11 +11,13 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/11/10](#20181110)
+    - [Doxterize Verbs Groups](#doxterize-verbs-groups)
 - [2018/11/09 \(8\)](#20181109-8)
 - [2018/11/09 \(7\)](#20181109-7)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
     - [Verb: `kick`](#verb-kick)
-    - [Doxterzie](#doxterzie)
+    - [Doxterize](#doxterize)
 - [2018/11/09 \(6\)](#20181109-6)
     - [Group of Verbs: `push*`](#group-of-verbs-push)
 - [2018/11/09 \(5\)](#20181109-5)
@@ -41,10 +43,10 @@ Status: Alpha stage.
     - [Verb Restriction Attributes](#verb-restriction-attributes-4)
     - [Verbs `put*`](#verbs-put)
     - [Verb Responses](#verb-responses-1)
-    - [Doxterzie](#doxterzie-1)
+    - [Doxterize](#doxterize-1)
 - [2018/11/03 \(2\)](#20181103-2)
     - [Code Cleanup](#code-cleanup)
-    - [Doxterzie](#doxterzie-2)
+    - [Doxterize](#doxterize-2)
 - [2018/11/03 \(1\)](#20181103-1)
     - [Verb: `bite`](#verb-bite)
     - [Verb Restriction Attributes](#verb-restriction-attributes-5)
@@ -427,6 +429,29 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
+# 2018/11/10
+
+- [`lib_verbi.i`][lib_verbi] (v0.7.29)
+
+## Doxterize Verbs Groups
+
+Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
+
+- Leggere e Scrivere:
+    + `leggi`
+    + `scrivi`
+- Bruciare:
+    + `brucia`
+    + `brucia_con`
+- Usare:
+    + `usa`
+    + `usa_con`
+- Pensare:
+    + `pensa`
+    + `pensa_a`
+
+<!---------------------------------------------------------------------------->
+
 # 2018/11/09 (8)
 
 - [`lib_verbi.i`][lib_verbi] (v0.7.28)
@@ -456,7 +481,7 @@ Translated verb `calcia`, "__calcia__" (_kick_):
 
 with no synonyms.
 
-## Doxterzie
+## Doxterize
 
 Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 
@@ -789,7 +814,7 @@ New verb responses attributes (created for Italian library, no English counterpa
 | `ogg2_illegale_IN_sg`/`pl` | `"$+2 non [è/sono] qualcosa in cui poter"` |
 
 
-## Doxterzie
+## Doxterize
 
 Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 
@@ -820,7 +845,7 @@ General code cleanup.
 
 - Change all `SAY xxx OF yyy.` to short form `SAY yyy:xxx.`.
 
-## Doxterzie
+## Doxterize
 
 Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 

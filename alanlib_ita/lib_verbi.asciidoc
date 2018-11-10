@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.28-Alpha, 2018-11-09: Alan 3.0beta6
+v0.7.29-Alpha, 2018-11-10: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -460,11 +460,13 @@ Questo gruppo include i verbi che riguardano mangiare e bere:
 
 // end::gruppo_mangiabevi[]
 // tag::gruppo_svuota[]
-=== Svuotare e Versare
+=== Riempire, Svuotare e Versare
 
-Questo gruppo include i verbi per svuotare i contenitori e versarne il
-contenuto (a terra o su/in un altro contenitore):
+Questo gruppo include i verbi per riempire e svuotare i contenitori e versarne
+il contenuto (a terra o su/in un altro contenitore):
 
+* `riempi`
+* `riempi_con`
 * `svuota`
 * `svuota_in`
 * `svuota_su`
@@ -480,6 +482,10 @@ possibile versare un liquido ma non svuotarlo.
 Questa è la ragione per cui in `lib_classi.i` questi verbi sono ridefiniti
 nella classe `liquido` affinché si possa utilizzare il verbo `versa` con un
 liquido ma non il verbo `svuota`.
+
+==== riempi
+
+==== riempi_con
 
 ==== svuota + versa
 
@@ -770,6 +776,58 @@ a calci, colpire e simili:
 ==== uccidi_con
 
 // end::gruppo_attaccare[]
+// tag::gruppo_leggere[]
+=== Leggere e Scrivere
+
+Questo gruppo include i verbi per leggere e scrivere:
+
+* `leggi`
+* `scrivi`
+
+==== leggi
+
+==== scrivi
+
+// end::gruppo_leggere[]
+// tag::gruppo_bruciare[]
+=== Bruciare
+
+Questo gruppo include i verbi per bruciare le cose:
+
+* `brucia`
+* `brucia_con`
+
+==== brucia
+
+==== brucia_con
+
+// end::gruppo_bruciare[]
+// tag::gruppo_usare[]
+=== Usare
+
+Questo gruppo include i verbi per usare:
+
+* `usa`
+* `usa_con`
+
+==== usa
+
+==== usa_con
+
+// end::gruppo_usare[]
+// tag::gruppo_pensare[]
+=== Pensare
+
+Questo gruppo include i verbi per ZZZZ:
+
+* `pensa`
+* `pensa_a`
+
+==== pensa
+
+==== pensa_a
+
+// end::gruppo_pensare[]
 // tag::gruppo_sfusi[]
 === Verbi Sfusi
 
@@ -780,8 +838,6 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 * `attraversa`
 * `bacia`
 * `balla`
-* `brucia`
-* `brucia_con`
 * `canta`
 * `consulta`
 * `dormi`
@@ -791,20 +847,12 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 * `inventario`
 * `lega`
 * `lega_a`
-* `leggi`
 * `libera`
-* `pensa`
-* `pensa_a`
 * `prega`
-* `riempi`
-* `riempi_con`
 * `rifai`
 * `scava`
-* `scrivi`
 * `suona`
 * `trova`
-* `usa`
-* `usa_con`
 * `vai_a`
 
 ==== aspetta
@@ -814,10 +862,6 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 ==== bacia
 
 ==== balla
-
-==== brucia
-
-==== brucia_con
 
 ==== canta
 
@@ -837,33 +881,17 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 
 ==== lega_a
 
-==== leggi
-
 ==== libera
 
-==== pensa
-
-==== pensa_a
-
 ==== prega
-
-==== riempi
-
-==== riempi_con
 
 ==== rifai
 
 ==== scava
 
-==== scrivi
-
 ==== suona
 
 ==== trova
-
-==== usa
-
-==== usa_con
 
 ==== vai_a
 
@@ -1019,6 +1047,10 @@ Finisci di trasformare commenti in documentazione Doxter:
 
 * [ ] Descrizione `sorseggia`.
 
+* [ ] Descrizione `riempi`.
+
+* [ ] Descrizione `riempi_con`.
+
 * [ ] Descrizione `svuota` + `versa`.
 
 * [ ] Descrizione `svuota_in` + `versa_in`.
@@ -1131,6 +1163,22 @@ Finisci di trasformare commenti in documentazione Doxter:
 
 * [ ] Descrizione `uccidi_con`.
 
+* [ ] Descrizione `leggi`.
+
+* [ ] Descrizione `scrivi`.
+
+* [ ] Descrizione `brucia`.
+
+* [ ] Descrizione `brucia_con`.
+
+* [ ] Descrizione `usa`.
+
+* [ ] Descrizione `usa_con`.
+
+* [ ] Descrizione `pensa`.
+
+* [ ] Descrizione `pensa_a`.
+
 * [ ] Descrizione `aspetta`.
 
 * [ ] Descrizione `attraversa`.
@@ -1138,10 +1186,6 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `bacia`.
 
 * [ ] Descrizione `balla`.
-
-* [ ] Descrizione `brucia`.
-
-* [ ] Descrizione `brucia_con`.
 
 * [ ] Descrizione `canta`.
 
@@ -1161,33 +1205,17 @@ Finisci di trasformare commenti in documentazione Doxter:
 
 * [ ] Descrizione `lega_a`.
 
-* [ ] Descrizione `leggi`.
-
 * [ ] Descrizione `libera`.
 
-* [ ] Descrizione `pensa`.
-
-* [ ] Descrizione `pensa_a`.
-
 * [ ] Descrizione `prega`.
-
-* [ ] Descrizione `riempi`.
-
-* [ ] Descrizione `riempi_con`.
 
 * [ ] Descrizione `rifai`.
 
 * [ ] Descrizione `scava`.
 
-* [ ] Descrizione `scrivi`.
-
 * [ ] Descrizione `suona`.
 
 * [ ] Descrizione `trova`.
-
-* [ ] Descrizione `usa`.
-
-* [ ] Descrizione `usa_con`.
 
 * [ ] Descrizione `vai_a`.
 
