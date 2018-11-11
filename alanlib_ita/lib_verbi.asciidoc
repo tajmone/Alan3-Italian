@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.34-Alpha, 2018-11-11: Alan 3.0beta6
+v0.7.35-Alpha, 2018-11-11: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -100,6 +100,8 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | blocca_con         | serra                        | blocca (ogg) con (chiave)              |     | 2 | {X} |
 | brucia             |                              | brucia (ogg)                           |     | 1 | {X} |
 | brucia_con         |                              | brucia (ogg) con (strum)               |     | 2 | {X} |
+| bussa              |                              | bussa (ogg)                            |     | 1 | {X} |
+| bussa_errore       |                              | bussa                                  |     | 0 |     |
 | calcia             |                              | calcia (bersaglio)                     |     | 1 |     |
 | canta              |                              | canta                                  |     | 0 |     |
 | chiedi             |                              | chiedi a (png) (ogg)                   |     | 2 | {X} |
@@ -177,8 +179,10 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | sdraiati           |                              | sdraiati                               |     | 0 |     |
 | sdraiati_in        |                              | sdraiati in (cont)                     |     | 1 |     |
 | sdraiati_su        |                              | sdraiati su (superficie)               |     | 1 |     |
+| segui              |                              | segui (png)!                           |     | 1 |     |
 | siediti            | siedi                        | siediti                                |     | 0 |     |
 | siediti_su         | siedi                        | siediti su (superficie)                |     | 1 |     |
+| solleva            | alza                         | solleva (ogg)                          |     | 1 | {X} |
 | sorseggia          |                              | sorseggia (liq)                        |     | 1 |     |
 | spara              |                              | spara con (arma)                       |     | 1 |     |
 | spara_errore       |                              | spara                                  |     | 0 |     |
@@ -747,15 +751,16 @@ Questo gruppo include i verbi per tuffarsi e nuotare in liquidi:
 
 // end::gruppo_nuotare[]
 // tag::gruppo_spingere[]
-=== Spingere e Tirare
+=== Spingere, Tirare e Sollevare
 
-Questo gruppo include i verbi per spingere e tirare oggetti:
+Questo gruppo include i verbi per spostare oggetti oggetti:
 
-Verbi di questo gruppo non ancora spostati:
-
+* `solleva`
 * `spingi`
 * `spingi_con`
 * `tira`
+
+==== solleva
 
 ==== spingi
 
@@ -887,6 +892,7 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 * `attraversa`
 * `bacia`
 * `balla`
+* `bussa`
 * `canta`
 * `consulta`
 * `dormi`
@@ -902,6 +908,7 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 * `prega`
 * `rifai`
 * `scava`
+* `segui`
 * `suona`
 * `trova`
 * `vai_a`
@@ -915,6 +922,8 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 ==== bacia
 
 ==== balla
+
+==== bussa
 
 ==== canta
 
@@ -945,6 +954,8 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 ==== rifai
 
 ==== scava
+
+==== segui
 
 ==== suona
 
@@ -986,10 +997,7 @@ italiano del modulo dei verbi.
 | clean              | polish, wipe                       | clean (obj)                       | 1 | {x}
 | climb              |                                    | climb (obj)                       | 1 | {x}
 | climb_on           |                                    | climb on (surface)                | 1 |
-| follow             |                                    | follow (act)                      | 1 |
 | hint               | hints                              | hint                              | 0 |
-| knock (on)         |                                    | knock on (obj)                    | 1 | {x}
-| lift               |                                    | lift (obj)                        | 1 | {x}
 | pry                |                                    | pry (obj)                         | 1 | {x}
 | pry_with           |                                    | pry (obj) with (instr)            | 2 | {x}
 | rub                |                                    | rub (obj)                         | 1 | {x}
@@ -1195,6 +1203,8 @@ Finisci di trasformare commenti in documentazione Doxter:
 
 * [ ] Descrizione `tuffati_in`.
 
+* [ ] Descrizione `solleva`.
+
 * [ ] Descrizione `spingi`.
 
 * [ ] Descrizione `spingi_con`.
@@ -1249,6 +1259,8 @@ Finisci di trasformare commenti in documentazione Doxter:
 
 * [ ] Descrizione `balla`.
 
+* [ ] Descrizione `bussa`.
+
 * [ ] Descrizione `canta`.
 
 * [ ] Descrizione `consulta`.
@@ -1278,6 +1290,8 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `rifai`.
 
 * [ ] Descrizione `scava`.
+
+* [ ] Descrizione `segui`.
 
 * [ ] Descrizione `suona`.
 

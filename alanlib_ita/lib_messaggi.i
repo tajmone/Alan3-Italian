@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi.i"
---| v0.7.11-Alpha, 2018-11-11: Alan 3.0beta6
+--| v0.7.12-Alpha, 2018-11-11: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -701,6 +701,16 @@ ADD TO EVERY blocco_definizioni
   -- =======================
   HAS impossibile_guardare "Non è possibile guardare".
   
+  -- ======================
+  -- OGGETTI TROPPO PESANTI
+  -- ======================
+
+  -- VERBI: 'prendi', 'prendi_da' e 'solleva'.
+  -- ORIGINAL EN: check_obj_weight_sg/pl.
+  HAS ogg1_troppo_pesante_sg  "$+1 è troppo pesante".
+  HAS ogg1_troppo_pesante_pl  "$+1 sono troppo pesanti".
+
+
   -- ==============================
   -- OGGETTI APERTI/CHIUSI/BLOCCATI
   -- ==============================
@@ -1080,8 +1090,6 @@ ADD TO EVERY blocco_definizioni
   HAS check_obj2_suitable_there "It's not possible to $v anything there.".      -- throw_in, tie_to
 
 
-  HAS check_obj_weight_sg "$+1 is too heavy to $v.".              -- lift, take, take_from
-  HAS check_obj_weight_pl "$+1 are too heavy to $v.".
 
   HAS check_obj_writeable "Nothing can be written there.".            -- write
 

@@ -1,0 +1,53 @@
+
+
+La Casa 
+Un set per eseguire test su stanze e luoghi esterni. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+La Cucina
+A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
+qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un coltello, una 
+pistola, un vasetto e un cesto per la frutta.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                           TESTA SPOSTARE OGGETTI                           *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; ==============================================================================
+> ; VERBO 'spingi'
+> ; ==============================================================================
+> spingi il frigo
+You give il frigo a little push. Nothing happens.
+
+> ; ==============================================================================
+> ; VERBO 'tira'
+> ; ==============================================================================
+> tira il frigo
+Farlo non servirebbe a nulla.
+
+> ; ==============================================================================
+> ; VERBO 'solleva'
+> ; ==============================================================================
+> ; Il verbo solleva verifica che l'oggetto non abbia 'peso' >= 50.
+> solleva il tavolo
+Farlo non servirebbe a nulla.
+
+> ; ==============================================================================
+> ; TESTA OGGETTI PESANTI
+> ; ==============================================================================
+> ; Il frigo ha 'peso 50' per impedire i verbi 'prendi', 'prendi_da' e 'solleva'.
+> solleva il frigo
+Il frigo è troppo pesante da sollevare.
+
+> prendi il frigo
+Il frigo è troppo pesante.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

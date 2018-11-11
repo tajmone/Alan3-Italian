@@ -139,7 +139,7 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 // -----------------------------------------------------------------------------
 | 21600   |           | gruppo_nuotare               | == Nuotare e Tuffarsi
 // -----------------------------------------------------------------------------
-| 21700   |           | gruppo_spingere              | == Spingere e Tirare
+| 21700   |           | gruppo_spingere              | == Spingere, Tirare e Sollevare
 // -----------------------------------------------------------------------------
 | 21800   |           | gruppo_attaccare             | == Attaccare e Simili
 // -----------------------------------------------------------------------------

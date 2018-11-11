@@ -103,6 +103,31 @@ Farlo non servirebbe a nulla.
 > gratta l'ufficio
 Qui non puoi vedere nulla del genere.
 
+> ; ==============================================================================
+> ; Verbo "Bussa"
+> ; ==============================================================================
+> bussa
+Per bussare a qualcosa, usa BUSSA A OGGETTO.
+
+> bussa al tavolo
+Bussi al tavolo ma non succedde nulla.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA parametri non idonei
+> ; ------------------------------------------------------------------------------
+> bussa il ronzio
+Il ronzio non è qualcosa a cui poter bussare.
+
+> bussa l'inserviente
+L'inserviente non è qualcosa a cui poter bussare.
+
+> bussa Gina
+Gina non è qualcosa a cui poter bussare.
+
+> ; **FIXME** Questa risposta va rivista:
+> bussa me
+Il hero non è qualcosa a cui poter bussare.
+
 > 
 
 > 

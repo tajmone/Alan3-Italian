@@ -67,13 +67,15 @@ END THE sedia.
 
 
 --==============================================================================
--- Il Frigorifero (contenitore_elencato + apribile)
+-- Il Frigorifero (contenitore_elencato + apribile + peso 50)
 --==============================================================================
 THE frigo IsA contenitore_elencato AT cucina.
   OPAQUE CONTAINER -- NOTE: The library doesn't initialize closed listed containers
                    --       to be automatically opaque!
   IS apribile.
   IS NOT aperto.
+  HAS peso 50. -- Peso >= 50 impedisce i verbi 'prendi', 'prendi_da' e 'solleva'.
+  
 
   INITIALIZE -- Consenti al frigo di contenere qualsiasi alimento del gioco:
     FOR EACH oAlimento IsA alimento

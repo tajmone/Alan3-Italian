@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.21-Alpha, 2018-11-11: Alan 3.0beta6
+--| v0.7.22-Alpha, 2018-11-11: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -824,6 +824,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN sedersi.                  ---> sit (down)
   CAN sedersi_su.               ---> sit_on
   CAN seguire.                  ---> follow
+  CAN sollevare.                ---> lift
   CAN sorseggiare.              ---> sip
   CAN sparare.                  ---> fire
   CAN sparare_a.                ---> fire_at
@@ -870,7 +871,6 @@ EVERY blocco_definizioni IsA LOCATION
 --CAN extinguish. ----------------> ** VERBO ELIMINATO **  (+ put out, quench)
 --CAN get_up. --------------------> ** VERBO ELIMINATO **
   CAN hint.        -- (+ hints)
-  CAN lift.
 --CAN light. ---------------------> ** VERBO ELIMINATO **
 --CAN look_at. -------------------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
   CAN pry.
@@ -1044,6 +1044,7 @@ EVENT check_restriction
       MAKE mia_AT sedersi.                  ---> sit (down)
       MAKE mia_AT sedersi_su.               ---> sit_on
       MAKE mia_AT seguire.                  ---> follow
+      MAKE mia_AT sollevare.                ---> lift
       MAKE mia_AT sorseggiare.              ---> sip
       MAKE mia_AT sparare.                  ---> fire
       MAKE mia_AT sparare_a.                ---> fire_at
@@ -1086,7 +1087,6 @@ EVENT check_restriction
     --MAKE mia_AT extinguish. --------> ** VERBO ELIMINATO ** (+ put out, quench)
     --MAKE mia_AT get_up. ------------> ** VERBO ELIMINATO **
       MAKE mia_AT hint.            -- (+ hints)
-      MAKE mia_AT lift.
     --MAKE mia_AT light. -------------> ** VERBO ELIMINATO **
     --MAKE mia_AT look_at. -----------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
       MAKE mia_AT pry.
@@ -1212,6 +1212,7 @@ EVENT check_restriction
           MAKE mia_AT NOT sedersi.                  ---> sit (down)
           MAKE mia_AT NOT sedersi_su.               ---> sit_on
           MAKE mia_AT NOT seguire.                  ---> follow
+          MAKE mia_AT NOT sollevare.                ---> lift
           MAKE mia_AT NOT sorseggiare.              ---> sip
           MAKE mia_AT NOT sparare.                  ---> fire
           MAKE mia_AT NOT sparare_a.                ---> fire_at
@@ -1249,7 +1250,6 @@ EVENT check_restriction
           MAKE mia_AT NOT climb_on.
         --MAKE mia_AT NOT extinguish. ----> ** VERBO ELIMINATO ** (+ put out, quench)
         --MAKE mia_AT NOT get_up. --------> ** VERBO ELIMINATO **
-          MAKE mia_AT NOT lift.
         --MAKE mia_AT NOT light. ---------> ** VERBO ELIMINATO **
           MAKE mia_AT NOT pry.
           MAKE mia_AT NOT pry_with.

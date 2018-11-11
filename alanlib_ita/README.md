@@ -374,7 +374,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `lie_down`       | `sdraiarsi`               |
 | `lie_in`         | `sdraiarsi_in`            |
 | `lie_on`         | `sdraiarsi_su`            |
-| `lift`           |                           |
+| `lift`           | `sollevare`               |
 | ~~`light`~~      | _removed_                 |
 | `listen0`        | `ascoltare0`              |
 | `listen`         | `ascoltare`               |

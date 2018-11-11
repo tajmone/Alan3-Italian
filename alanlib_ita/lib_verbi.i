@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.34-Alpha, 2018-11-11: Alan 3.0beta6
+--| v0.7.35-Alpha, 2018-11-11: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -717,6 +717,8 @@ END VERB ringraziamenti.
 --| | blocca_con         | serra                        | blocca (ogg) con (chiave)              |     | 2 | {X} |
 --| | brucia             |                              | brucia (ogg)                           |     | 1 | {X} |
 --| | brucia_con         |                              | brucia (ogg) con (strum)               |     | 2 | {X} |
+--| | bussa              |                              | bussa (ogg)                            |     | 1 | {X} |
+--| | bussa_errore       |                              | bussa                                  |     | 0 |     |
 --| | calcia             |                              | calcia (bersaglio)                     |     | 1 |     |
 --| | canta              |                              | canta                                  |     | 0 |     |
 --| | chiedi             |                              | chiedi a (png) (ogg)                   |     | 2 | {X} |
@@ -794,8 +796,10 @@ END VERB ringraziamenti.
 --| | sdraiati           |                              | sdraiati                               |     | 0 |     |
 --| | sdraiati_in        |                              | sdraiati in (cont)                     |     | 1 |     |
 --| | sdraiati_su        |                              | sdraiati su (superficie)               |     | 1 |     |
+--| | segui              |                              | segui (png)!                           |     | 1 |     |
 --| | siediti            | siedi                        | siediti                                |     | 0 |     |
 --| | siediti_su         | siedi                        | siediti su (superficie)                |     | 1 |     |
+--| | solleva            | alza                         | solleva (ogg)                          |     | 1 | {X} |
 --| | sorseggia          |                              | sorseggia (liq)                        |     | 1 |     |
 --| | spara              |                              | spara con (arma)                       |     | 1 |     |
 --| | spara_errore       |                              | spara                                  |     | 0 |     |
@@ -4870,10 +4874,9 @@ ADD TO EVERY THING
         AND peso Of ogg < 50
           ELSE
         IF ogg IS NOT plurale
-          ---> @TODO!!                                                          TRANSLATE!
-          THEN SAY mia_AT:check_obj_weight_sg.
-          ELSE SAY mia_AT:check_obj_weight_pl.
-        END IF.
+          THEN SAY mia_AT:ogg1_troppo_pesante_sg.
+          ELSE SAY mia_AT:ogg1_troppo_pesante_pl.
+        END IF. "."
         DOES
       IF ogg IsA ACTOR
         ---> @TODO!!                                                            TRANSLATE!
@@ -4942,6 +4945,8 @@ SYNTAX prendi_da = 'prendi' (ogg) 'da' (detentore)
         THEN SAY mia_AT:illegal_parameter2_from_sg.
         ELSE SAY mia_AT:illegal_parameter2_from_pl.
       END IF.
+
+-- @TODO: Devo verificare la sintassi onnipotente!                              CHECK!
 
   prendi_da = prendi  (ogg)  'dai' (detentore).
   prendi_da = rimuovi (ogg)* 'da'  (detentore).
@@ -5018,10 +5023,9 @@ ADD TO EVERY THING
       AND peso Of ogg < 50
             ELSE
           IF ogg IS NOT plurale
-            ---> @TODO!!                                                        TRANSLATE!
-            THEN SAY mia_AT:check_obj_weight_sg.
-            ELSE SAY mia_AT:check_obj_weight_pl.
-          END IF.
+            THEN SAY mia_AT:ogg1_troppo_pesante_sg.
+            ELSE SAY mia_AT:ogg1_troppo_pesante_pl.
+          END IF. "."
           AND ogg IN detentore
         ELSE
           IF detentore IS inanimato
@@ -6860,19 +6864,90 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Spingere e Tirare
+--| === Spingere, Tirare e Sollevare
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
 --| 
---| Questo gruppo include i verbi per spingere e tirare oggetti:
+--| Questo gruppo include i verbi per spostare oggetti oggetti:
 --| 
---| Verbi di questo gruppo non ancora spostati:
---| 
+--| * `solleva`
 --| * `spingi`
 --| * `spingi_con`
 --| * `tira`
 --<
+
+
+-->gruppo_spingere                                           @SOLLEVA <--  @LIFT
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== solleva
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `solleva`.
+--<
+
+
+SYNTAX solleva = solleva (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF.
+      "sollevare." --# alzare?
+
+
+SYNONYMS alza = solleva.
+
+
+ADD TO EVERY OBJECT
+  VERB solleva
+    CHECK mia_AT CAN sollevare
+      ELSE SAY mia_AT:azione_bloccata.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF.
+        "sollevare." --# alzare?
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+--                                                                              TRANSLATE!
+    AND ogg NOT IN hero
+      ELSE SAY mia_AT:check_obj_not_in_hero1.
+--                                                                              TRANSLATE!
+    AND ogg IS spostabile
+      ELSE SAY mia_AT:check_obj_movable.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+    AND peso OF ogg < 50
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:ogg1_troppo_pesante_sg.
+          ELSE SAY mia_AT:ogg1_troppo_pesante_pl.
+        END IF. "da sollevare."
+    DOES SAY mia_AT:non_servirebbe_a_nulla.
+  END VERB solleva.
+END ADD TO.
 
 
 -->gruppo_spingere                                             @SPINGI <-- @PUSH
@@ -6898,8 +6973,6 @@ SYNTAX spingi = spingi (ogg)
         ELSE SAY mia_AT:ogg1_inadatto_pl.
       END IF.
       "spingere."
-
-
 
 
 ADD TO EVERY THING
@@ -7012,9 +7085,7 @@ ADD TO EVERY THING
                 ELSE SAY mia_AT:ogg1_distante_pl.
               END IF.
           END IF.
-      DOES
---                                                                              TRANSLATE!
-        "That wouldn't accomplish anything."
+      DOES SAY mia_AT:non_servirebbe_a_nulla.
   END VERB spingi_con.
 END ADD TO.
 
@@ -8293,6 +8364,7 @@ END ADD TO.
 --| * `attraversa`
 --| * `bacia`
 --| * `balla`
+--| * `bussa`
 --| * `canta`
 --| * `consulta`
 --| * `dormi`
@@ -8308,6 +8380,7 @@ END ADD TO.
 --| * `prega`
 --| * `rifai`
 --| * `scava`
+--| * `segui`
 --| * `suona`
 --| * `trova`
 --| * `vai_a`
@@ -8568,6 +8641,75 @@ VERB balla
     SAY mia_AT:non_senti_bisogno_di. "ballare."
  -- "How about a waltz?"
 END VERB balla.
+
+-->gruppo_sfusi                                                @BUSSA <-- @KNOCK
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== bussa
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `bussa`.
+--<
+
+
+SYNTAX bussa = bussa a (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg1_illegale_A_sg.
+        ELSE SAY mia_AT:ogg1_illegale_A_pl.
+      END IF. "bussare."
+
+       bussa = bussa (ogg).
+
+
+ADD TO EVERY OBJECT
+  VERB bussa
+    CHECK mia_AT CAN bussare
+      ELSE SAY mia_AT:azione_bloccata.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:ogg1_illegale_A_sg.
+          ELSE SAY mia_AT:ogg1_illegale_A_pl.
+        END IF. "bussare."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+    DOES
+      "Bussi" SAY ogg:prep_A. "$1 ma non succedde nulla."
+  END VERB bussa.
+END ADD TO.
+
+
+--- another 'knock' formulation added to guide players to use the right phrasing:
+
+
+SYNTAX bussa_errore = bussa.
+
+
+VERB bussa_errore
+  DOES
+    "Per bussare a qualcosa, usa BUSSA A OGGETTO."
+ -- "Please use the formulation KNOCK ON SOMETHING to knock on something."
+END VERB bussa_errore.
+
 
 -->gruppo_sfusi                                                 @CANTA <-- @SING
 --~=============================================================================
@@ -9396,6 +9538,61 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
+-->gruppo_sfusi                                               @SEGUI <-- @FOLLOW
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== segui
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `segui`.
+--<
+
+-- @NOTA: possibili sinonimi: insegui, pedina, rincorri.
+
+SYNTAX segui = segui (png)!
+  WHERE png IsA ACTOR
+    ELSE
+      IF png IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF. "seguire."
+
+
+ADD TO EVERY THING
+  VERB segui
+    CHECK mia_AT CAN seguire
+      ELSE SAY mia_AT:azione_bloccata.
+--                                                                              TRANSLATE!
+    AND png <> hero
+      ELSE SAY mia_AT:check_obj_not_hero1.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND png NOT AT hero
+      ELSE
+        IF png IS NOT plurale
+          THEN SAY mia_AT:ogg1_già_qui_sg.
+          ELSE SAY mia_AT:ogg1_già_qui_pl.
+        END IF.
+--                                                                              TRANSLATE!
+    AND hero IS NOT seduto
+      ELSE SAY mia_AT:check_hero_not_sitting2.
+    AND hero IS NOT sdraiato
+--                                                                              TRANSLATE!
+      ELSE SAY mia_AT:check_hero_not_lying_down2.
+    AND png NEAR hero
+      ELSE SAY mia_AT:check_act_near_hero.
+    DOES
+      LOCATE hero AT png.
+--                                                                              TRANSLATE!
+      "You follow" SAY THE png. "."
+    END VERB segui.
+END ADD TO.
+
+
+
 -->gruppo_sfusi                                                 @SUONA <-- @PLAY
 --~=============================================================================
 --~-----------------------------------------------------------------------------
@@ -9968,7 +10165,7 @@ END VERB rispondi_Sì.
 --~*| fire               |                                    | fire (weapon)                     | 1 |
 --~*| fire_at            |                                    | fire (weapon) at (target)         | 2 |
 --~*| fix                | mend, repair                       | fix (obj)                         | 1 | {x}
---| | follow             |                                    | follow (act)                      | 1 |
+--~*| follow             |                                    | follow (act)                      | 1 |
 --~*| free               | release                            | free (obj)                        | 1 | {x}
 --~!| get_up             |                                    | get up                            | 0 |
 --~*| get_off            |                                    | get off (obj)                     | 1 | {x}
@@ -9983,11 +10180,11 @@ END VERB rispondi_Sì.
 --~*| kill               | murder                             | kill (victim)                     | 1 |
 --~*| kill_with          |                                    | kill (victim) with (weapon)       | 2 |
 --~*| kiss               | hug, embrace                       | kiss (obj)                        | 1 | {x}
---| | knock (on)         |                                    | knock on (obj)                    | 1 | {x}
+--~*| knock (on)         |                                    | knock on (obj)                    | 1 | {x}
 --~*| lie_down           |                                    | lie down                          | 0 |
 --~*| lie_in             |                                    | lie in (cont)                     | 1 |
 --~*| lie_on             |                                    | lie on (surface)                  | 1 |
---| | lift               |                                    | lift (obj)                        | 1 | {x}
+--~*| lift               |                                    | lift (obj)                        | 1 | {x}
 --~!| light              | lit                                | light (obj)                       | 1 | {x}
 --~*| listen0            |                                    | listen                            | 0 |
 --~*| listen             |                                    | listen to (obj)                   | 1 | {x}
@@ -10372,195 +10569,6 @@ END ADD TO.
 
 
 
-
--- ==============================================================
-
-
--- @FOLLOW
-
-
--- ==============================================================
-
-
-SYNTAX follow = follow (png)!
-  WHERE png IsA ACTOR
-    ELSE
-      IF png IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "seguire."
-
-
-ADD TO EVERY THING
-  VERB follow
-    CHECK mia_AT CAN seguire
-      ELSE SAY mia_AT:azione_bloccata.
-    AND png <> hero
-      ELSE SAY mia_AT:check_obj_not_hero1.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND png NOT AT hero
-      ELSE
-        IF png IS NOT plurale
-          THEN SAY mia_AT:ogg1_già_qui_sg.
-          ELSE SAY mia_AT:ogg1_già_qui_pl.
-        END IF.
-    AND hero IS NOT seduto
-      ELSE SAY mia_AT:check_hero_not_sitting2.
-    AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down2.
-    AND png NEAR hero
-      ELSE SAY mia_AT:check_act_near_hero.
-    DOES
-      LOCATE hero AT png.
-      "You follow" SAY THE png. "."
-    END VERB follow.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
--- @KNOCK
-
-
--- ==============================================================
-
-
-SYNTAX knock = knock 'on' (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
---| NOTA: Qui Ho usato il messaggio per prep_SU, come da originale, ma siccome
---|       il verbo italiano verrà usato anche per "bussa alla porta", dovrò
---|       considerare se usare invece prep_A, o se mettere dei controlli nel
---|       codice per decidire quale risposta usare. Per ora va bene così.
-        THEN SAY mia_AT:ogg1_illegale_SU_sg.
-        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
-      END IF.
-      "bussare." --                                                             CHECK VERB
-
-       knock = knock (ogg).
-
-
-ADD TO EVERY OBJECT
-  VERB knock
-    CHECK mia_AT CAN bussare
-      ELSE SAY mia_AT:azione_bloccata.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          THEN SAY mia_AT:check_obj_suitable_on_sg.
-          ELSE SAY mia_AT:check_obj_suitable_on_pl.
-        END IF.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    DOES
-      "You knock on" SAY THE ogg. "$$. Nothing happens."
-  END VERB knock.
-END ADD TO.
-
-
---- another 'knock' formulation added to guide players to use the right phrasing:
-
-
-SYNTAX knock_error = knock.
-
-
-VERB knock_error
-  DOES
-    "Please use the formulation KNOCK ON SOMETHING to knock on something."
-END VERB knock_error.
-
-
-
--- ==============================================================
-
-
--- @LIFT
-
-
--- ==============================================================
-
-
-SYNTAX lift = lift (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "sollevare." --# alzare?
-
-
-SYNONYMS raise = lift.
-
-
-ADD TO EVERY OBJECT
-  VERB lift
-    CHECK mia_AT CAN lift
-      ELSE SAY mia_AT:azione_bloccata.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY mia_AT:ogg1_inadatto_sg.
-          ELSE SAY mia_AT:ogg1_inadatto_pl.
-        END IF.
-        "sollevare." --# alzare?
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND ogg NOT IN hero
-      ELSE SAY mia_AT:check_obj_not_in_hero1.
-    AND ogg IS spostabile
-      ELSE SAY mia_AT:check_obj_movable.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    AND peso OF ogg < 50
-      ELSE
-        IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-          THEN SAY mia_AT:check_obj_weight_sg.
-          ELSE SAY mia_AT:check_obj_weight_pl.
-        END IF.
-  DOES
-    "That wouldn't accomplish anything."
-  END VERB lift.
-END ADD TO.
-
-
 -- ==============================================================
 
 
@@ -10853,6 +10861,14 @@ END ADD TO.
 
 -- ==============================================================
 
+-- @NOTA1: possibili traduzioni: scuoti + agita
+--         Il verbo principale dovrebbe essere "scuoti" perché è puù generico e
+--         va bene in tutte le risposte:
+--         - "scuoti albero"  -> "scuoti l'albero..."
+--         - "agita flaccone" -> "scuoti il flaccone..."
+-- @NOTA2: La risposta inglese tiene conto se l'oggetto è posseduto o meno:
+--            "You shake XXX cautiously in your hands."
+
 
 SYNTAX shake = shake (ogg)
   WHERE ogg IsA OBJECT
@@ -10904,14 +10920,15 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
-
 -- ==============================================================
 
 
--- @SHOW
+-- @MOSTRA <-- @SHOW
 
 
 -- ==============================================================
+-- SYNTAX  'show' = 'show' (ogg) 'to' (png)
+-- SYNONYMS reveal = 'show'.
 
 
 SYNTAX 'show' = 'show' (ogg) 'to' (png)
@@ -10925,6 +10942,7 @@ SYNTAX 'show' = 'show' (ogg) 'to' (png)
       "mostrare."
   AND png IsA ACTOR
     ELSE
+--                                                                              TRANSLATE!
       IF png IS NOT plurale
         THEN SAY mia_AT:illegal_parameter2_to_sg.
         ELSE SAY mia_AT:illegal_parameter2_to_pl.
@@ -10953,17 +10971,15 @@ ADD TO EVERY OBJECT
             ELSE SAY mia_AT:ogg2_distante_pl.
           END IF.
       DOES
+--                                                                              TRANSLATE!
         SAY THE png.
-
         IF png IS NOT plurale
           THEN "is"
           ELSE "are"
         END IF.
-
         "not especially interested."
   END VERB 'show'.
 END ADD TO.
-
 
 
 -- ==============================================================
@@ -10974,6 +10990,17 @@ END ADD TO.
 
 -- ==============================================================
 
+-- @NOTA: Questo verbo è difficile da tradurre poiché i vari significati inglesi
+--        non si sovrappongono in Italiano, tranne "spremi:
+--        - "squeeze lemon" -> "spremi limone"
+--        Ma che utilità avrebbe questo verbo di base?
+--        Sarebbe più utile implementare "premi", "schiaccia", che almeno è usato
+--        spesso (pulsanti, ecc.).
+--        Il vero problema qui è la risposta che si ottiene: se uno usa "premi" o
+--        "schiaccia" e nella risposta poi legge "spremi" (o viceversa) non ha
+--        senso, quindi "spremi" e "schiaccia/premi" si escludono tra loro.
+--        Purtroppo abbiamo a che fare con verbi il cui infinito non può essere
+--        formato dall'imperativo tramite '$v'.
 
 SYNTAX squeeze = squeeze (ogg)
   WHERE ogg IsA OBJECT
@@ -11013,7 +11040,7 @@ ADD TO EVERY THING
             END IF.
         END IF.
     DOES
-          "Trying to squeeze" SAY THE ogg. "wouldn't accomplish anything."
+      "Trying to squeeze" SAY THE ogg. "wouldn't accomplish anything."
   END VERB squeeze.
 END ADD TO.
 

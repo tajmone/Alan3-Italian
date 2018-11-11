@@ -40,4 +40,17 @@ gratta Gina
 gratta me
 ; TESTA: stanza (not in scope)
 gratta l'ufficio
+; ==============================================================================
+; Verbo "Bussa"
+; ==============================================================================
+bussa
+bussa al tavolo
+; ------------------------------------------------------------------------------
+; TESTA parametri non idonei
+; ------------------------------------------------------------------------------
+bussa il ronzio
+bussa l'inserviente
+bussa Gina
+; **FIXME** Questa risposta va rivista:
+bussa me
 
