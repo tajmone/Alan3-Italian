@@ -11,8 +11,8 @@ Tutti i diritti riservati.
 
 La Cucina
 A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
-qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un vasetto e un 
-cesto per la frutta.
+qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un coltello, una 
+pistola, un vasetto e un cesto per la frutta.
 
 > ; ******************************************************************************
 > ; *                                                                            *
@@ -22,7 +22,8 @@ cesto per la frutta.
 > ; Questo script di comandi esegue dei test sulla classe 'oggetto_stanza'.
 > esamina il tavolo
 Esamini il tavolo, ma non noti niente di speciale. Sopra il tavolo vedi 
-una bottiglia, un sacchetto, un vasetto e un cesto per la frutta.
+una bottiglia, un sacchetto, un coltello, una pistola, un vasetto e un 
+cesto per la frutta.
 
 > esamina il cesto
 Il cesto per la frutta contiene una pera, una banana e una mela.

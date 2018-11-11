@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Definizioni
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.20-Alpha, 2018-11-10: Alan 3.0beta6
+v0.7.21-Alpha, 2018-11-11: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_definitions.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -166,6 +166,8 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
   CAN sedersi_su.               ---> sit_on
   CAN seguire.                  ---> follow
   CAN sorseggiare.              ---> sip
+  CAN sparare.                  ---> fire
+  CAN sparare_a.                ---> fire_at
   CAN spegnere.                 ---> turn_off
   CAN spingere.                 ---> push
   CAN spingere_con.             ---> push_with
@@ -281,8 +283,6 @@ Questo è l'elenco degli attributi verbali non ancora tradotti:
   CAN climb.
   CAN climb_on.
 --CAN extinguish. ----------------> ** VERBO ELIMINATO **  (+ put out, quench)
-  CAN fire.
-  CAN fire_at.
 --CAN get_up. --------------------> ** VERBO ELIMINATO **
   CAN hint.        -- (+ hints)
   CAN lift.
@@ -294,8 +294,8 @@ Questo è l'elenco degli attributi verbali non ancora tradotti:
   CAN rub.
   CAN search.
   CAN shake.
-  CAN shoot.       -- (at)
-  CAN shoot_with.
+--CAN shoot. ---------------------> ** VERBO ELIMINATO **
+--CAN shoot_with. ----------------> ** VERBO ELIMINATO **
 --CAN smell0. --------------------> ** ATTRIBUTO ELIMINATO **
   CAN squeeze.
   CAN stand_on.

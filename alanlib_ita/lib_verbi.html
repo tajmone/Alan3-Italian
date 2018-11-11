@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.7.33-Alpha,</span>
-<span id="revdate">2018-11-10</span>
+<span id="revnumber">versione 0.7.34-Alpha,</span>
+<span id="revdate">2018-11-11</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
 <div id="toc" class="toc2">
@@ -679,6 +679,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel3">
 <li><a href="#_entra_entra_in">entra + entra_in</a></li>
 <li><a href="#_esci_esci_da">esci + esci_da</a></li>
+</ul>
+</li>
+<li><a href="#_sparare">Sparare</a>
+<ul class="sectlevel3">
+<li><a href="#_spara">spara</a></li>
+<li><a href="#_spara_errore">spara_errore</a></li>
+<li><a href="#_spara_a">spara_a</a></li>
+<li><a href="#_spara_a_errore">spara_a_errore</a></li>
 </ul>
 </li>
 <li><a href="#_verbi_sfusi">Verbi Sfusi</a>
@@ -1885,6 +1893,42 @@ elencati in ordine alfabetico.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sorseggia</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sorseggia (liq)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spara</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">spara con (arma)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spara_errore</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">spara</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spara_a</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">spara a (bersaglio) con (arma)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spara_a_errore</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">spara a (bersaglio)</p></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"></td>
@@ -3446,6 +3490,48 @@ a calci, colpire e simili:</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="_sparare"><a class="anchor" href="#_sparare"></a>Sparare</h3>
+<div class="paragraph">
+<p>Questo gruppo include i verbi per sparare con armi da fuoco (o comunque armi
+in grado di espellere proiettili di qualche tipo):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>spara</code></p>
+</li>
+<li>
+<p><code>spara_errore</code></p>
+</li>
+<li>
+<p><code>spara_a</code></p>
+</li>
+<li>
+<p><code>spara_a_errore</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>L&#8217;arma del parametro deve avere l&#8217;attributo <code>sparabile</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="_spara"><a class="anchor" href="#_spara"></a>spara</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_spara_errore"><a class="anchor" href="#_spara_errore"></a>spara_errore</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_spara_a"><a class="anchor" href="#_spara_a"></a>spara_a</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_spara_a_errore"><a class="anchor" href="#_spara_a_errore"></a>spara_a_errore</h4>
+
+</div>
+</div>
+<div class="sect2">
 <h3 id="_verbi_sfusi"><a class="anchor" href="#_verbi_sfusi"></a>Verbi Sfusi</h3>
 <div class="paragraph">
 <p>Questo gruppo raccoglie i verbi per i quali non è ancora stato creato un:
@@ -3691,20 +3777,6 @@ italiano del modulo dei verbi.</p>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>fire</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">fire (weapon)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>fire_at</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">fire (weapon) at (target)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>follow</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">follow (act)</p></td>
@@ -3766,20 +3838,6 @@ italiano del modulo dei verbi.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">shake (obj)</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>shoot (at)</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shoot at (target)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>shoot_with</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shoot (target) with (weapon)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>show</code></p></td>
@@ -4148,6 +4206,18 @@ italiano del modulo dei verbi.</p>
 <p><i class="fa fa-square-o"></i> Descrizione <code>esci</code> + <code>esci_da</code>.</p>
 </li>
 <li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>spara</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>spara_errore</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>spara_a</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>spara_a_errore</code>.</p>
+</li>
+<li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>acchiappa</code>.</p>
 </li>
 <li>
@@ -4224,7 +4294,7 @@ italiano del modulo dei verbi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.7.33-Alpha<br>
+Versione 0.7.34-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

@@ -1,7 +1,7 @@
 
 = Doxter: Note di Lavoro
 Tristano Ajmone <tajmone@gmail.com>
-:revdate: 2018-11-10
+:revdate: 2018-11-11
 :lang: it
 // TOC Settings:
 :toc: left
@@ -152,6 +152,8 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 | 22200   |           | gruppo_pensare               | == Pensare
 // -----------------------------------------------------------------------------
 | 22300   |           | gruppo_entrare               | == Entrare e Uscire
+// -----------------------------------------------------------------------------
+| 22400   |           | gruppo_sparare               | == Sparare
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 | 29999   |           | gruppo_sfusi                 | == Verbi Sfusi

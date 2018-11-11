@@ -101,6 +101,99 @@ END THE cesto_frutta.
 
 -- =============================================================================
 
+-- Scenografia Giardino
+
+-- =============================================================================
+
+--==============================================================================
+-- Il Tavolo da Giardino (supporto)
+--==============================================================================
+
+THE tavolo_giardino IsA supporto AT giardino.
+  IS NOT prendibile.
+  NAME tavolo.
+END THE tavolo_giardino.
+
+--==============================================================================
+-- Il Lettino
+--==============================================================================
+-- Creiamo un lettino su cui ci si possa sdraiare così da poter testare il verbo
+-- 'sdraiati' ed i messaggi dei CHECK che bloccano le azioni intentate quando il
+-- protagonista è sdraiato.
+
+THE lettino IsA supporto AT giardino.
+  NAME lettino.
+  NAME letto.
+
+  HAS xDesc "È un lettino pieghevole, di quelli usati in campeggio.".
+  
+  VERB sdraiati_su
+    DOES ONLY
+      IF hero IS seduto
+        THEN "Ti alzi e"
+          MAKE hero NOT seduto.
+      END IF.
+      "ti sdrai" SAY superficie:prep_SU. SAY superficie. "."
+      MAKE hero sdraiato.
+  END VERB sdraiati_su.
+END THE lettino.
+
+--==============================================================================
+-- La Piscina
+--==============================================================================
+-- Creiamo una piscina per testare sia 'nuota' che 'entra'.
+
+THE piscina IsA liquido AT giardino.
+  HAS articolo "la".
+  NAME piscina.
+  NAME acqua.
+
+  VERB nuota
+    DOES ONLY
+      IF hero DIRECTLY AT nella_piscina
+        THEN "Sei già in piscina."
+        ELSE
+          LOCATE hero AT nella_piscina.
+      END IF.
+  END VERB nuota.
+    
+  VERB entra_in
+    DOES ONLY
+      IF hero DIRECTLY AT nella_piscina
+        THEN "Sei già in piscina."
+        ELSE
+          LOCATE hero AT nella_piscina.
+      END IF.
+  END VERB entra_in.
+
+  VERB esci_da
+    DOES ONLY
+      IF hero NOT DIRECTLY AT nella_piscina
+        THEN "Non sei dentro la piscina."
+        ELSE
+          "Ti issi sul bordo della piscina ed esci."
+          LOCATE hero AT giardino.
+      END IF.
+  END VERB esci_da.
+END THE piscina.
+
+--------------------------------------------------------------------------------
+-- Dentro La Piscina
+--------------------------------------------------------------------------------
+-- Per simulare quando il protagonista entra nella piscina creiamo un luogo
+-- annidato nel giardino.
+
+THE nella_piscina IsA location AT giardino.
+  NAME 'Nella Piscina (Giardino di Casa)'.
+  DESCRIPTION
+    "La piscina è abbastanza ampia per fare delle piccole nuotate."
+
+  ENTERED
+    "Ti tuffi a bomba nella piscina."
+END THE nella_piscina.
+
+-- =============================================================================
+
 -- Cibi & Bevande (Commestibili & Potabili)
 
 -- =============================================================================
@@ -239,95 +332,36 @@ END THE patatine.
 
 -- =============================================================================
 
--- Scenografia Giardino
+-- ARMI
 
 -- =============================================================================
---==============================================================================
--- Il Tavolo da Giardino (supporto)
---==============================================================================
+-- Qualche arma bianca e da fuoco per testare i verbi che le riguardano.
 
-THE tavolo_giardino IsA supporto AT giardino.
-  IS NOT prendibile.
-  NAME tavolo.
-END THE tavolo_giardino.
+THE coltello IsA arma IN tavolo_cucina.
+  HAS xDesc "Un grosso coltello, molto affilato.".
+END THE coltello.
 
---==============================================================================
--- Il Lettino
---==============================================================================
--- Creiamo un lettino su cui ci si possa sdraiare così da poter testare il verbo
--- 'sdraiati' ed i messaggi dei CHECK che bloccano le azioni intentate quando il
--- protagonista è sdraiato.
-
-THE lettino IsA supporto AT giardino.
-  NAME lettino.
-  NAME letto.
-
-  HAS xDesc "È un lettino pieghevole, di quelli usati in campeggio.".
-  
-  VERB sdraiati_su
-    DOES ONLY
-      IF hero IS seduto
-        THEN "Ti alzi e"
-          MAKE hero NOT seduto.
-      END IF.
-      "ti sdrai" SAY superficie:prep_SU. SAY superficie. "."
-      MAKE hero sdraiato.
-  END VERB sdraiati_su.
-END THE lettino.
-
---==============================================================================
--- La Piscina
---==============================================================================
--- Creiamo una piscina per testare sia 'nuota' che 'entra'.
-
-THE piscina IsA liquido AT giardino.
+THE pistola IsA arma IN tavolo_cucina.
+  NAME pistola.
+  NAME rivoltella.
   HAS articolo "la".
-  NAME piscina.
-  NAME acqua.
+  CAN sparare.
+  HAS xDesc "È una rivoltella.".
+END THE pistola.
 
-  VERB nuota
-    DOES ONLY
-      IF hero DIRECTLY AT nella_piscina
-        THEN "Sei già in piscina."
-        ELSE
-          LOCATE hero AT nella_piscina.
-      END IF.
-  END VERB nuota.
-    
-  VERB entra_in
-    DOES ONLY
-      IF hero DIRECTLY AT nella_piscina
-        THEN "Sei già in piscina."
-        ELSE
-          LOCATE hero AT nella_piscina.
-      END IF.
-  END VERB entra_in.
+-- =============================================================================
 
-  VERB esci_da
-    DOES ONLY
-      IF hero NOT DIRECTLY AT nella_piscina
-        THEN "Non sei dentro la piscina."
-        ELSE
-          "Ti issi sul bordo della piscina ed esci."
-          LOCATE hero AT giardino.
-      END IF.
-  END VERB esci_da.
-END THE piscina.
+-- ATTORI
 
---------------------------------------------------------------------------------
--- Dentro La Piscina
---------------------------------------------------------------------------------
--- Per simulare quando il protagonista entra nella piscina creiamo un luogo
--- annidato nel giardino.
+-- =============================================================================
+-- Qualche attore di base per testare i verbi...
 
-THE nella_piscina IsA location AT giardino.
-  NAME 'Nella Piscina (Giardino di Casa)'.
-  DESCRIPTION
-    "La piscina è abbastanza ampia per fare delle piccole nuotate."
+THE giardiniere IsA maschio AT giardino.
+  HAS xDesc "Il giardiniere è intento a curare le piante.".
+  
+END THE giardiniere.
 
-  ENTERED
-    "Ti tuffi a bomba nella piscina."
-END THE nella_piscina.
+
 
 --------------------------------------------------------------------------------
 START AT cucina.

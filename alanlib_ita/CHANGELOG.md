@@ -11,23 +11,28 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/11/10 \(5\)](#20181110-5)
+- [2018/11/11](#20181111)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
-    - [Verbs: `enter` and `'exit'`](#verbs-enter-and-exit)
+    - [Group of Verbs: `fire*`](#group-of-verbs-fire)
+    - [Delete `shoot*` Verbs](#delete-shoot-verbs)
     - [Verb Responses](#verb-responses)
-- [2018/11/10 \(4\)](#20181110-4)
+- [2018/11/10 \(5\)](#20181110-5)
     - [Verb Restriction Attributes](#verb-restriction-attributes-1)
+    - [Verbs: `enter` and `'exit'`](#verbs-enter-and-exit)
+    - [Verb Responses](#verb-responses-1)
+- [2018/11/10 \(4\)](#20181110-4)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
     - [Verb: `turn`](#verb-turn)
 - [2018/11/10 \(3\)](#20181110-3)
     - [Verb: `shout`](#verb-shout)
 - [2018/11/10 \(2\)](#20181110-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
     - [Verb: `catch`](#verb-catch)
 - [2018/11/10 \(1\)](#20181110-1)
     - [Doxterize Verbs Groups](#doxterize-verbs-groups)
 - [2018/11/09 \(8\)](#20181109-8)
 - [2018/11/09 \(7\)](#20181109-7)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
     - [Verb: `kick`](#verb-kick)
     - [Doxterize](#doxterize)
 - [2018/11/09 \(6\)](#20181109-6)
@@ -35,48 +40,48 @@ Status: Alpha stage.
 - [2018/11/09 \(5\)](#20181109-5)
     - [Group of Verbs: `dive*` and `swim*`](#group-of-verbs-dive-and-swim)
 - [2018/11/09 \(4\)](#20181109-4)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-5)
     - [Verb: `tear`](#verb-tear)
 - [2018/11/09 \(3\)](#20181109-3)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-5)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-6)
     - [Group of Verbs: `throw*`](#group-of-verbs-throw)
 - [2018/11/09 \(2\)](#20181109-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-6)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-7)
     - [Verb: `stand`](#verb-stand)
     - [Delete Verb: `get_up`](#delete-verb-get_up)
     - [Verb: `get_off`](#verb-get_off)
     - [Verbs `lie_*`](#verbs-lie_)
 - [2018/11/09 \(1\)](#20181109-1)
     - [Verbs: `jump`, `jump_in` and `jump_on`](#verbs-jump-jump_in-and-jump_on)
-    - [Verb Responses](#verb-responses-1)
+    - [Verb Responses](#verb-responses-2)
 - [2018/11/08](#20181108)
         - [Fix Verb Responses](#fix-verb-responses)
 - [2018/11/03 \(3\)](#20181103-3)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-7)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-8)
     - [Verbs `put*`](#verbs-put)
-    - [Verb Responses](#verb-responses-2)
+    - [Verb Responses](#verb-responses-3)
     - [Doxterize](#doxterize-1)
 - [2018/11/03 \(2\)](#20181103-2)
     - [Code Cleanup](#code-cleanup)
     - [Doxterize](#doxterize-2)
 - [2018/11/03 \(1\)](#20181103-1)
     - [Verb: `bite`](#verb-bite)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-8)
-    - [Verb Responses](#verb-responses-3)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-9)
+    - [Verb Responses](#verb-responses-4)
 - [2018/11/02 \(2\)](#20181102-2)
     - [Doxterize Classes](#doxterize-classes)
     - [Verbs: `empty*` and `pour*`](#verbs-empty-and-pour)
-    - [Verb Responses](#verb-responses-4)
+    - [Verb Responses](#verb-responses-5)
 - [2018/11/02 \(1\)](#20181102-1)
     - [Verb: `taste`](#verb-taste)
 - [2018/11/01](#20181101)
     - [Verb: `sip`](#verb-sip)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-9)
-    - [Verb Responses](#verb-responses-5)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-10)
+    - [Verb Responses](#verb-responses-6)
     - [Doxterize Verbs](#doxterize-verbs)
     - [Tweak Lib Classes](#tweak-lib-classes)
 - [2018/10/31 \(2\)](#20181031-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-10)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-11)
     - [Verbs: `smell0` and `smell`](#verbs-smell0-and-smell)
 - [2018/10/31 \(1\)](#20181031-1)
     - [Doxterize Verbs](#doxterize-verbs-1)
@@ -84,21 +89,21 @@ Status: Alpha stage.
     - [Make `inventario` Not META](#make-inventario-not-meta)
     - [Doxterize Verbs](#doxterize-verbs-2)
 - [2018/10/24](#20181024)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-11)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-12)
     - [Verb: `'score'`](#verb-score)
 - [2018/10/22 \(2\)](#20181022-2)
     - [`script*` Verbs](#script-verbs)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-12)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-13)
 - [2018/10/22 \(1\)](#20181022-1)
     - [Rename Restriction Attributes](#rename-restriction-attributes)
     - [Rename Verbs](#rename-verbs)
 - [2018/10/21 \(3\)](#20181021-3)
     - [`notify*` Verbs](#notify-verbs)
-    - [Verb Responses](#verb-responses-6)
+    - [Verb Responses](#verb-responses-7)
     - [Library Attributes for Notify](#library-attributes-for-notify)
     - [Score Event](#score-event)
 - [2018/10/21 \(2\)](#20181021-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-13)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-14)
     - [Fix VERB END IDs](#fix-verb-end-ids)
 - [2018/10/21 \(1\)](#20181021-1)
     - [Fix META VERBs](#fix-meta-verbs)
@@ -106,16 +111,16 @@ Status: Alpha stage.
     - [Verb: `verbose`](#verb-verbose)
     - [Verb: `brief` \(buggy\)](#verb-brief-buggy)
     - [Verb: `credits`](#verb-credits)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-14)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-15)
 - [2018/10/19 \(1\)](#20181019-1)
     - [Verb: `scratch`](#verb-scratch)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-15)
-    - [Verb Responses](#verb-responses-7)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-16)
+    - [Verb Responses](#verb-responses-8)
 - [2018/10/18](#20181018)
     - [Translate Responses for "Look" Verbs](#translate-responses-for-look-verbs)
-    - [Verb Responses](#verb-responses-8)
+    - [Verb Responses](#verb-responses-9)
 - [2018/10/17](#20181017)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-16)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-17)
     - [Translate "Look" Verbs](#translate-look-verbs)
         - [Verb: `'look'`](#verb-look)
         - [Verb: `look behind`](#verb-look-behind)
@@ -136,7 +141,7 @@ Status: Alpha stage.
     - [Doxterize `lib_classi.i`](#doxterize-lib_classii)
 - [2018/10/14 \(2\)](#20181014-2)
     - [Banner Translation](#banner-translation)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-17)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-18)
 - [2018/10/14 \(2\)](#20181014-2-1)
     - [Doxterize `lib_definizioni.i`](#doxterize-lib_definizionii)
 - [2018/10/14 \(1\)](#20181014-1)
@@ -145,27 +150,27 @@ Status: Alpha stage.
 - [2018/10/13](#20181013)
     - [Add Doxter for Documentation Generator](#add-doxter-for-documentation-generator)
 - [2018/10/09](#20181009)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-18)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-19)
     - [Verb: `Tell`](#verb-tell)
 - [2018/08/27 \(3\)](#20180827-3)
     - [New Recurrent Verb Responses Attributes](#new-recurrent-verb-responses-attributes)
 - [2018/08/27 \(2\)](#20180827-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-19)
-    - [Verb Responses](#verb-responses-9)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-20)
+    - [Verb Responses](#verb-responses-10)
     - [Verbs: `talk` and `talk_to`](#verbs-talk-and-talk_to)
 - [2018/08/27 \(1\)](#20180827-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-20)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-21)
     - [Verb: `ask`](#verb-ask)
 - [2018/08/24](#20180824)
     - [Fix Verb `chiedi` \(`ask_for`\)](#fix-verb-chiedi-ask_for)
 - [2018/08/22 \(3\)](#20180822-3)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-21)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-22)
     - [Verb: `ask_for`](#verb-ask_for)
     - [Fix Actors Initialization \(Again\)](#fix-actors-initialization-again)
 - [2018/08/22 \(2\)](#20180822-2)
     - [Fix Actors Initialization](#fix-actors-initialization)
 - [2018/08/22 \(1\)](#20180822-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-22)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-23)
     - [Verb: `say`](#verb-say)
     - [Verb: `say_to`](#verb-say_to)
 - [2018/08/18 \(2\)](#20180818-2)
@@ -176,14 +181,14 @@ Status: Alpha stage.
 - [2018/08/16 \(2\)](#20180816-2)
     - [Fix Actors Initialization and Description](#fix-actors-initialization-and-description)
 - [2018/08/16 \(1\)](#20180816-1)
-    - [Verb Responses](#verb-responses-10)
+    - [Verb Responses](#verb-responses-11)
     - [Corretto Risposte Per `indossa` e `togliti`](#corretto-risposte-per-indossa-e-togliti)
 - [2018/08/11](#20180811)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-23)
-    - [Verb Responses](#verb-responses-11)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-24)
+    - [Verb Responses](#verb-responses-12)
     - [Verb: `remove`](#verb-remove)
 - [2018/08/09](#20180809)
-    - [Verb Responses](#verb-responses-12)
+    - [Verb Responses](#verb-responses-13)
     - [Verb: `wear`](#verb-wear)
 - [2018/08/08](#20180808)
     - [Deleted `present_actor` Attribute](#deleted-present_actor-attribute)
@@ -200,7 +205,7 @@ Status: Alpha stage.
 - [2018/08/06 \(1\)](#20180806-1)
     - [Library Attributes](#library-attributes)
 - [2018/08/02 \(3\)](#20180802-3)
-    - [Verb Responses](#verb-responses-13)
+    - [Verb Responses](#verb-responses-14)
     - [Verbs: `tie` and `tie_to`](#verbs-tie-and-tie_to)
 - [2018/08/02 \(2\)](#20180802-2)
 - [2018/08/02 \(1\)](#20180802-1)
@@ -208,20 +213,20 @@ Status: Alpha stage.
     - [Verbs: `touch` and `touch_with`](#verbs-touch-and-touch_with)
     - [Code Cleanup](#code-cleanup-1)
 - [2018/08/01 \(4\)](#20180801-4)
-    - [Verb Responses](#verb-responses-14)
+    - [Verb Responses](#verb-responses-15)
     - [Verb: `sing`](#verb-sing)
     - [Verb: `kiss`](#verb-kiss)
     - [Verb: `pull`](#verb-pull)
 - [2018/08/01 \(3\)](#20180801-3)
     - [Verbs: `attack` and `attack_with`](#verbs-attack-and-attack_with)
 - [2018/08/01 \(2\)](#20180801-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-24)
-    - [Verb Responses](#verb-responses-15)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-25)
+    - [Verb Responses](#verb-responses-16)
     - [Verbs: `cut` and `cut_with`](#verbs-cut-and-cut_with)
     - [Verb: `dance`](#verb-dance)
     - [Verb: `dig`](#verb-dig)
 - [2018/08/01 \(1\)](#20180801-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-25)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-26)
     - [Verb: `drive`](#verb-drive)
     - [Verbs: `listen0` and `listen`](#verbs-listen0-and-listen)
 - [2018/07/31 \(2\)](#20180731-2)
@@ -229,8 +234,8 @@ Status: Alpha stage.
     - [Verb: `think`](#verb-think)
     - [Verb: `think_about`](#verb-think_about)
 - [2018/07/31 \(1\)](#20180731-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-26)
-    - [Verb Responses](#verb-responses-16)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-27)
+    - [Verb Responses](#verb-responses-17)
     - [Verb: `fix`](#verb-fix)
 - [2018/07/29 \(2\)](#20180729-2)
     - [Remove Verb Restriction Attributes](#remove-verb-restriction-attributes)
@@ -239,16 +244,16 @@ Status: Alpha stage.
     - [Il Nocciolo del Problema](#il-nocciolo-del-problema)
     - [Abolizione dell'Attributo `naturale`](#abolizione-dellattributo-naturale)
     - [Rilfessioni sull'Attributo `illuminato`](#rilfessioni-sullattributo-illuminato)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-27)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-28)
     - [Testo dei Verbi](#testo-dei-verbi)
 - [2018/07/28 \(3\)](#20180728-3)
-    - [Verb Responses](#verb-responses-17)
-- [2018/07/28 \(2\)](#20180728-2)
     - [Verb Responses](#verb-responses-18)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-28)
+- [2018/07/28 \(2\)](#20180728-2)
+    - [Verb Responses](#verb-responses-19)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-29)
     - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
 - [2018/07/28 \(1\)](#20180728-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-29)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-30)
     - [Verb: `answer`](#verb-answer)
     - [Verbs: `fill` and `fill_with`](#verbs-fill-and-fill_with)
 - [2018/07/27 \(7\)](#20180727-7)
@@ -293,15 +298,15 @@ Status: Alpha stage.
     - [Polish and Fix Translated Verbs](#polish-and-fix-translated-verbs)
     - [Verb Parameters Fixes](#verb-parameters-fixes)
 - [2018/07/25 \(8\)](#20180725-8)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-30)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-31)
     - [Verbs: `yes` and `no`](#verbs-yes-and-no)
 - [2018/07/25 \(7\)](#20180725-7)
 - [2018/07/25 \(6\)](#20180725-6)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-31)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-32)
     - [Verb: `play`](#verb-play)
     - [Verb: `play_with`](#verb-play_with)
 - [2018/07/25 \(5\)](#20180725-5)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-32)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-33)
 - [2018/07/25 \(4\)](#20180725-4)
 - [2018/07/25 \(3\)](#20180725-3)
     - [Library Instances](#library-instances)
@@ -421,9 +426,9 @@ Status: Alpha stage.
     - [Verb: `pray`](#verb-pray)
     - [Verb: `break`](#verb-break)
     - [Verb: `break_with`](#verb-break_with)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-33)
-- [2018/05/22 \(2\)](#20180522-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-34)
+- [2018/05/22 \(2\)](#20180522-2)
+    - [Verb Restriction Attributes](#verb-restriction-attributes-35)
 - [2018/05/22 \(1\)](#20180522-1)
     - [Verb: `undress`](#verb-undress)
 - [2018/05/19](#20180519)
@@ -441,6 +446,92 @@ Status: Alpha stage.
 
 -------------------------------------------------------------------------------
 
+
+# 2018/11/11
+
+- [`lib_definizioni.i`][lib_definizioni] (v0.7.21)
+- [`lib_messaggi.i`][lib_messaggi] (v0.7.11)
+- [`lib_verbi.i`][lib_verbi] (v0.7.34)
+
+## Verb Restriction Attributes
+
+Translated `mia_AT` attributes for verb restrictions:
+
+|     English     |      Italian       |
+|-----------------|--------------------|
+| `fire`          | `sparare`          |
+| `fire_at`       | `sparare_a`        |
+
+Deleted `mia_AT` attributes for verb restrictions:
+
+|  Attribute   |
+|--------------|
+| `shoot`      |
+| `shoot_with` |
+
+## Group of Verbs: `fire*`
+
+Translated verbs of the `fire*` group, and added an extra one:
+
+|     English     |     Italian      |              syntax              |
+|-----------------|------------------|----------------------------------|
+| `fire`          | `spara`          | `spara con (arma)`               |
+|                 | `spara_errore`   | `spara`                          |
+| `fire_at`       | `spara_a`        | `spara con (arma) a (bersaglio)` |
+| `fire_at_error` | `spara_a_errore` | `spara a (bersaglio)`            |
+
+
+    spara con (arma)
+    spara a (bersaglio) con (arma)
+    spara con (arma) a (bersaglio)
+
+... plus the syntaxes of `spara_errore` and `spara_a_errore`:
+
+    spara
+    spara a (bersaglio)
+
+with no synonyms.
+
+> __NOTA__ — La libreria originale offriva sia i verbi "fire" che "shoot". "Fire" serviva per sparare solo con armi da fuoco (`IS fireable`) mentre "shoot" poteva essere usato con qualsiasi arma (incluse quelle da fuoco).
+> 
+> Poiché in italiano non abbiamo verbi che colgano questa distinzione, ho preservato solo i verbi del gruppo `fire*`, tradotti come "spara" — i quali richiedono che l'arma sia `sparabile` (a prescindere se sia un'arma da fuoco o di qualche altro tipo.)
+> 
+> L'attributo `sparabile` va inteso come un'`arma` in grado di espellere un qualche tipo di proiettile.
+
+
+## Delete `shoot*` Verbs
+
+We'll keep only the `fire*` verbs for shooting with `fireable` weapons since in Italian we don't have two separate verbs to handle both cases of "shoot" and "fire":
+
+|      Verb     |
+|---------------|
+| `shoot`       |
+| `shoot_with`  |
+| `shoot_error` |
+
+## Verb Responses
+
+Translated verb responses attributes:
+
+|         Attribute EN         |        Attribute IT       |                        Text                        |
+|------------------------------|---------------------------|----------------------------------------------------|
+| `check_count_weapon_in_hero` | `non_hai_armi_da_fuoco`   | `"Non stai portando nessun'arma da fuoco con te."` |
+| `illegal_parameter_at`       | `ogg2_illegale_A_sg`/`pl` | `"$+2 non [è/sono] qualcosa a cui poter"`          |
+| `check_obj_not_hero2`        | `no_autolesionismo`       | `"L'autolesionismo non è contemplato."`            |
+
+Delete original English attributes for all occurences have been substituted.
+
+New verb responses attributes (created for Italian library, no English counterpart):
+
+|             Attribute              |                    Text                   |
+|------------------------------------|-------------------------------------------|
+| `ogg2_non_arma_adatta_per_sg`/`pl` | `"$+2 non [è/sono] un'arma adatta per"`   |
+| `ogg1_non_arma_da_fuoco_sg`/`pl`   | `"$+1 non [è/sono] un'arma da fuoco."`    |
+| `no_suicidio`                      | `"Il suicidio non è un'opzione."`         |
+| `ogg1_illegale_A_sg`/`pl`          | `"$+1 non [è/sono] qualcosa a cui poter"` |
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/11/10 (5)
 
@@ -484,6 +575,7 @@ New verb responses attributes (created for Italian library, no English counterpa
 |-----------------------|---------------------------------------|
 | `specificare_DA_cosa` | `"Devi specificare da cosa vorresti"` |
 | `specificare_IN_cosa` | `"Devi specificare in cosa vorresti"` |
+| `xxx`/`pl` | `xxx` |
 
 <!---------------------------------------------------------------------------->
 

@@ -1,0 +1,221 @@
+
+
+La Casa 
+Un set per eseguire test su stanze e luoghi esterni. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+La Cucina
+A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
+qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un coltello, una 
+pistola, un vasetto e un cesto per la frutta.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                        TESTA AZIONI VIOLENTE E ARMI                        *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; La libreria definisce due tipi di armi: 'arma' e 'arma' + 'sparabile'.
+> prendi il coltello
+Preso.
+
+> prendi il sacchetto
+Preso.
+
+> ; ==============================================================================
+> ; TESTA 'spara'
+> ; ==============================================================================
+> spara
+Non stai portando nessun'arma da fuoco con te.
+
+> prendi la pistola
+Presa.
+
+> spara
+Devi specificare con cosa vorresti sparare.
+
+> spara con la pistola
+Spari un colpo in aria con la pistola.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA parametri non idonei
+> ; ------------------------------------------------------------------------------
+> spara con il sacchetto
+Il sacchetto non è un'arma da fuoco.
+
+> spara con il coltello
+Il coltello non è un'arma da fuoco.
+
+> ; ==============================================================================
+> ; TESTA 'spara_a'
+> ; ==============================================================================
+> spara al tavolo
+La violenza non è la giusta risposta a questo.
+
+> spara al tavolo con la pistola
+La violenza non è la giusta risposta a questo.
+
+> ; BERSAGLIO NON 'THING': con "spara a 1" il 'bersaglio' è di classe 'integer':
+> spara a 1
+1 non è qualcosa a cui poter sparare.
+
+> spara a 1 con la pistola
+1 non è qualcosa a cui poter sparare
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA parametri non idonei
+> ; ------------------------------------------------------------------------------
+> spara al tavolo con il sacchetto
+Il sacchetto non è un'arma da fuoco.
+
+> spara al tavolo con il coltello
+Il coltello non è un'arma da fuoco.
+
+> spara al tavolo con 1
+1 non è un'arma da fuoco.
+
+> ; @TODO: test with 'bersaglio' which is 'NOT esaminabile'
+> ; ------------------------------------------------------------------------------
+> ; TESTA etero-dirette
+> ; ------------------------------------------------------------------------------
+> spara a me
+L'autolesionismo non è contemplato.
+
+> spara a me con il sacchetto
+Il sacchetto non è un'arma da fuoco.
+
+> spara a me con il coltello
+Il coltello non è un'arma da fuoco.
+
+> spara a me con la pistola
+L'autolesionismo non è contemplato.
+
+> ; ==============================================================================
+> ; TESTA 'attacca'
+> ; ==============================================================================
+> sud
+Il Giardino di Casa
+A nord puoi tornare in casa. Puoi vedere un tavolo, un lettino e una 
+piscina qui. C'è un giardiniere qui.
+
+> attacca il giardiniere
+La violenza non è la giusta risposta a questo.
+
+> ; ==============================================================================
+> ; TESTA 'attacca_con'
+> ; ==============================================================================
+> attacca il giardiniere con il coltello
+La violenza non è la giusta risposta a questo.
+
+> attacca il giardiniere con la pistola
+La violenza non è la giusta risposta a questo.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA parametri non idonei
+> ; ------------------------------------------------------------------------------
+> attacca il giardiniere con il sacchetto
+Il sacchetto non è un'arma adatta per attaccare il giardiniere.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA etero-dirette
+> ; ------------------------------------------------------------------------------
+> attacca me
+It doesn't make sense to attacca yourself.
+
+> ; **FIXME** Questa risposta va ritoccata:
+> attacca me con il sacchetto
+Il sacchetto non è un'arma adatta per attaccare il hero.
+
+> attacca me con il coltello
+It doesn't make sense to attacca yourself.
+
+> attacca me con la pistola
+It doesn't make sense to attacca yourself.
+
+> ; ==============================================================================
+> ; TESTA 'uccidi'
+> ; ==============================================================================
+> uccidi il giardiniere
+Devi specificare con cosa vorresti uccidere il giardiniere.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA parametri non idonei
+> ; ------------------------------------------------------------------------------
+> uccidi la piscina
+La piscina non è qualcosa che puoi uccidere.
+
+> ; ==============================================================================
+> ; TESTA 'uccidi_con'
+> ; ==============================================================================
+> uccidi il giardiniere con il coltello
+Sarebbe un atto di inutile brutalità.
+
+> uccidi il giardiniere con la pistola
+Sarebbe un atto di inutile brutalità.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA parametri non idonei
+> ; ------------------------------------------------------------------------------
+> uccidi il giardiniere con il sacchetto
+Il sacchetto non è un'arma adatta per uccidere il giardiniere.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA etero-dirette
+> ; ------------------------------------------------------------------------------
+> uccidi me
+Il suicidio non è un'opzione.
+
+> ; **FIXME** Questa risposta va ritoccata:
+> uccidi me con il sacchetto
+Il sacchetto non è un'arma adatta per uccidere il hero.
+
+> uccidi me con il coltello
+Il suicidio non è un'opzione.
+
+> uccidi me con la pistola
+Il suicidio non è un'opzione.
+
+> ; ==============================================================================
+> ; TESTA 'calcia'
+> ; ==============================================================================
+> calcia il giardiniere
+La violenza non è la giusta risposta a questo.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA parametri non idonei
+> ; ------------------------------------------------------------------------------
+> ; ------------------------------------------------------------------------------
+> ; TESTA etero-dirette
+> ; ------------------------------------------------------------------------------
+> calcia me
+It doesn't make sense to calcia yourself.
+
+> ; ==============================================================================
+> ; TESTA 'lancia_contro'
+> ; ==============================================================================
+> ; Anche il verbo 'lancia_contro' è annoverabile tra i tipi di aggressione.
+> lancia il coltello contro il giardiniere
+Il giardiniere wouldn't probably appreciate that.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA parametri non idonei
+> ; ------------------------------------------------------------------------------
+> lancia 1 contro il giardiniere
+You can only lancia objects.
+
+> lancia il coltello contro 1
+You can't lancia anything at 1.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA etero-dirette
+> ; ------------------------------------------------------------------------------
+> lancia il coltello contro me
+That doesn't make sense.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi.i"
---| v0.7.10-Alpha, 2018-11-10: Alan 3.0beta6
+--| v0.7.11-Alpha, 2018-11-11: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -380,10 +380,6 @@ ADD TO EVERY blocco_definizioni
   -- verbo, o sia nelle clausole WHERE della sintassi che nel corpo del verbo),
   -- perciò è meglio implementarle come un singolo attributo riutilizzabile.
 
-  -- VERBI: attacca, attacca_con, rompi, *kick*, fire_at, fire_at_error.
-  HAS la_violenza_non_è_la_risposta
-    "La violenza non è la giusta risposta a questo.". ---> taken from i6
-
   -- VERBI: chiedi_errore.
   HAS per_chiedere_qlco_USA
     "Per chiedere qualcosa a qualcuno usa CHIEDI A PERSONA OGGETTO.".
@@ -396,7 +392,6 @@ ADD TO EVERY blocco_definizioni
   -- VERBI: scrivi_errore1, scrivi_errore2, scrivi_errore3.
   HAS per_scrivere_USA
     "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
-
 
   -- VERBI: assaggia, mordi.
   HAS nessun_sapore
@@ -537,15 +532,21 @@ ADD TO EVERY blocco_definizioni
   -- ----------------
   -- PREPOSIZIONE "A"
   -- ----------------
-  -- ORIGINAL EN: ????
-  -- NON ANCORA UTILIZZATO, E FORSE QUESTA FORMA NON VA BENE:
-  -- HAS ogg1_illegale_A_sg  "$+1 non è qualcosa a cui poter".
-  -- HAS ogg1_illegale_A_pl  "$+1 non sono qualcosa a cui poter".
+  -- VERBI: spara_a_errore.
+  -- ORIGINAL EN: illegal_parameter_at
+  HAS ogg1_illegale_A_sg  "$+1 non è qualcosa a cui poter".
+  HAS ogg1_illegale_A_pl  "$+1 non sono qualcosa a cui poter".
+
+  -- VERBI: spara_a.
+  -- ORIGINAL EN: illegal_parameter_at
+  HAS ogg2_illegale_A_sg  "$+2 non è qualcosa a cui poter".
+  HAS ogg2_illegale_A_pl  "$+2 non sono qualcosa a cui poter".
+
+  HAS illegal_parameter_at "You can't $v anything at $+2.".         -- fire_at, throw_at
 
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
   HAS check_obj_suitable_at "You can't $v anything at $+2.".          -- fire_at, throw_at, throw_to
 
-  HAS illegal_parameter_at "You can't $v anything at $+2.".         -- fire_at, throw_at
 
   -- -----------------
   -- PREPOSIZIONE "IN"
@@ -810,13 +811,21 @@ ADD TO EVERY blocco_definizioni
   HAS check_hero_not_lying_down4 "You're lying down already.".          -- lie_down, lie_in
 
 
-  -- ===========================
-  -- AZIONI DIRETTE AL GIOCATORE
-  -- ===========================
+  -- ====================
+  -- AZIONI ETERO-DIRETTE
+  -- ====================
 
   -- VERBI: togliti
   -- ORIGINAL EN: (nessuno, sostituisce vari messaggi inglesi)
   HAS azione_insensata  "Questo non ha alcun senso.".
+
+  -- VERBI: spara_a, spara_a_errore.
+  -- ORIGINAL EN: check_obj_not_hero2.
+  HAS no_autolesionismo  "L'autolesionismo non è contemplato.".
+
+  -- VERBI: uccidi, uccidi_con.
+  -- ORIGINAL EN: check_obj_not_hero2.
+  HAS no_suicidio  "Il suicidio non è un'opzione.".
 
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
 
@@ -826,7 +835,6 @@ ADD TO EVERY blocco_definizioni
   HAS check_obj_not_hero1  "It doesn't make sense to $v yourself.".             -- ask, ask_for, attack, attack_with, catch, follow
                                                                                 -- kick, listen, pull, push, push_with, take,
                                                                                 -- take_from,tell
-  HAS check_obj_not_hero2  "There is no need to be that desperate.".            -- fire_at, kill, kill_with, shoot, shoot_with
   HAS check_obj_not_hero5  "You don't need to be freed.".                       -- free
   HAS check_obj_not_hero6  "There is no time for that now.".                    -- kiss, play_with, rub
   HAS check_obj_not_hero7  "Turning your head, you notice nothing unusual behind yourself.".   -- look_behind
@@ -847,15 +855,19 @@ ADD TO EVERY blocco_definizioni
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
   HAS check_obj_inanimate2 "You are not sure whether $+1 would appreciate that.".   -- rub, touch, touch_with
 
-  -- ==================
-  -- AZIONI IMPOSSIBILI
-  -- ==================
+  -- ================
+  -- AZIONI PREVENUTE
+  -- ================
   -- Risposte per azioni che non possono essere eseguite ...
 
   -- VERBI: [lib_classi.i: metti_contro, metti_dietro, metti_vicino, metti_sotto
   --                       guarda_dietro, guarda_attraverso, guarda_sotto].
   -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
   HAS non_fattibile "Non è una cosa fattibile.".
+
+  -- VERBI: attacca, attacca_con, calcia, rompi, spara, spara_a_errore.
+  HAS la_violenza_non_è_la_risposta
+    "La violenza non è la giusta risposta a questo.". ---> taken from i6
 
   -- ===========
   -- AZIONI VANE
@@ -927,9 +939,25 @@ ADD TO EVERY blocco_definizioni
   
   -- checking whether an object is worn or not:
   ---------------------------------------------
-  HAS check_obj_not_in_worn2 "It doesn't make sense to $v something you're wearing.". -- attack, attack_with, kick, shoot, shoot_with
+  HAS check_obj_not_in_worn2  "It doesn't make sense to $v something you're wearing.". -- attack, attack_with, kick, shoot, shoot_with
 
 
+  -- =======================
+  -- AZIONI RIGUARDANTI ARMI
+  -- =======================
+  -- VERBI: spara_errore, spara_a_errore.
+  -- ORIGINAL EN:  check_count_weapon_in_hero
+  HAS non_hai_armi_da_fuoco  "Non stai portando nessun'arma da fuoco con te.".
+
+  -- VERBI: uccidi_con, attacca_con.
+  -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
+  HAS ogg2_non_arma_adatta_per_sg  "$+2 non è un'arma adatta per".
+  HAS ogg2_non_arma_adatta_per_pl  "$+2 non sono un'arma adatta per".
+
+  -- VERBI: spara, spara_a.
+  -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
+  HAS ogg1_non_arma_da_fuoco_sg  "$+1 non è un'arma da fuoco.".
+  HAS ogg1_non_arma_da_fuoco_pl  "$+1 non sono un'arma da fuoco.".
 
   -- ============================================================================
 
@@ -1077,7 +1105,6 @@ ADD TO EVERY blocco_definizioni
   -- location and containment checks for the hero:
   ------------------------------------------------
 
-  HAS check_count_weapon_in_hero "You are not carrying any firearms.".        -- shoot
 
   HAS check_obj_not_in_hero1 "It doesn't make sense to $v something you're holding.".   -- attack, attack_with, kick, lift, shoot, shoot_with
 -- @TAKE (MESSAGE)

@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.7.20-Alpha,</span>
-<span id="revdate">2018-11-10</span>
+<span id="revnumber">versione 0.7.21-Alpha,</span>
+<span id="revdate">2018-11-11</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
 <div id="toc" class="toc2">
@@ -621,6 +621,8 @@ giocatore il messaggio &#8220;Non puoi farlo.&#8221;.</p>
   CAN sedersi_su.               ---&gt; sit_on
   CAN seguire.                  ---&gt; follow
   CAN sorseggiare.              ---&gt; sip
+  CAN sparare.                  ---&gt; fire
+  CAN sparare_a.                ---&gt; fire_at
   CAN spegnere.                 ---&gt; turn_off
   CAN spingere.                 ---&gt; push
   CAN spingere_con.             ---&gt; push_with
@@ -742,8 +744,6 @@ italiano del modulo delle definizioni.</p>
   CAN climb.
   CAN climb_on.
 --CAN extinguish. ----------------&gt; ** VERBO ELIMINATO **  (+ put out, quench)
-  CAN fire.
-  CAN fire_at.
 --CAN get_up. --------------------&gt; ** VERBO ELIMINATO **
   CAN hint.        -- (+ hints)
   CAN lift.
@@ -755,8 +755,8 @@ italiano del modulo delle definizioni.</p>
   CAN rub.
   CAN search.
   CAN shake.
-  CAN shoot.       -- (at)
-  CAN shoot_with.
+--CAN shoot. ---------------------&gt; ** VERBO ELIMINATO **
+--CAN shoot_with. ----------------&gt; ** VERBO ELIMINATO **
 --CAN smell0. --------------------&gt; ** ATTRIBUTO ELIMINATO **
   CAN squeeze.
   CAN stand_on.
@@ -777,7 +777,7 @@ italiano del modulo delle definizioni.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.7.20-Alpha<br>
+Versione 0.7.21-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

@@ -11,8 +11,8 @@ Tutti i diritti riservati.
 
 La Cucina
 A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
-qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un vasetto e un 
-cesto per la frutta.
+qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un coltello, una 
+pistola, un vasetto e un cesto per la frutta.
 
 > ; ******************************************************************************
 > ; *                                                                            *
@@ -39,7 +39,7 @@ Il frigo non è qualcosa da cui poter uscire.
 > sud
 Il Giardino di Casa
 A nord puoi tornare in casa. Puoi vedere un tavolo, un lettino e una 
-piscina qui.
+piscina qui. C'è un giardiniere qui.
 
 > entra in piscina
 Ti tuffi a bomba nella piscina.
@@ -55,7 +55,7 @@ Ti issi sul bordo della piscina ed esci.
 
 Il Giardino di Casa
 A nord puoi tornare in casa. Puoi vedere un tavolo, un lettino e una 
-piscina qui.
+piscina qui. C'è un giardiniere qui.
 
 > esci dalla piscina
 Non sei dentro la piscina.

@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.33-Alpha, 2018-11-10: Alan 3.0beta6
+v0.7.34-Alpha, 2018-11-11: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -180,6 +180,10 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | siediti            | siedi                        | siediti                                |     | 0 |     |
 | siediti_su         | siedi                        | siediti su (superficie)                |     | 1 |     |
 | sorseggia          |                              | sorseggia (liq)                        |     | 1 |     |
+| spara              |                              | spara con (arma)                       |     | 1 |     |
+| spara_errore       |                              | spara                                  |     | 0 |     |
+| spara_a            |                              | spara a (bersaglio) con (arma)         |     | 2 |     |
+| spara_a_errore     |                              | spara a (bersaglio)                    |     | 1 |     |
 | spegni             |                              | spegni (disp)                          |     | 1 |     |
 | spingi             |                              | spingi (ogg)                           |     | 1 | {X} |
 | spingi_con         |                              | spingi (ogg) con (strum)               |     | 2 | {X} |
@@ -850,6 +854,28 @@ Questo gruppo include i verbi per entrare e uscire:
 ==== esci + esci_da
 
 // end::gruppo_entrare[]
+// tag::gruppo_sparare[]
+=== Sparare
+
+Questo gruppo include i verbi per sparare con armi da fuoco (o comunque armi
+in grado di espellere proiettili di qualche tipo):
+
+* `spara`
+* `spara_errore`
+* `spara_a`
+* `spara_a_errore`
+
+L'arma del parametro deve avere l'attributo `sparabile`.
+
+==== spara
+
+==== spara_errore
+
+==== spara_a
+
+==== spara_a_errore
+
+// end::gruppo_sparare[]
 // tag::gruppo_sfusi[]
 === Verbi Sfusi
 
@@ -960,8 +986,6 @@ italiano del modulo dei verbi.
 | clean              | polish, wipe                       | clean (obj)                       | 1 | {x}
 | climb              |                                    | climb (obj)                       | 1 | {x}
 | climb_on           |                                    | climb on (surface)                | 1 |
-| fire               |                                    | fire (weapon)                     | 1 |
-| fire_at            |                                    | fire (weapon) at (target)         | 2 |
 | follow             |                                    | follow (act)                      | 1 |
 | hint               | hints                              | hint                              | 0 |
 | knock (on)         |                                    | knock on (obj)                    | 1 | {x}
@@ -971,8 +995,6 @@ italiano del modulo dei verbi.
 | rub                |                                    | rub (obj)                         | 1 | {x}
 | search             |                                    | search (obj)                      | 1 | {x}
 | shake              |                                    | shake (obj)                       | 1 | {x}
-| shoot (at)         |                                    | shoot at (target)                 | 1 |
-| shoot_with         |                                    | shoot (target) with (weapon)      | 2 |
 | show               | reveal                             | show (obj) to (act)               | 2 | {x}
 | squeeze            |                                    | squeeze (obj)                     | 1 | {x}
 | stand_on           |                                    | stand on (surface)                | 1 |
@@ -1208,6 +1230,14 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `entra` + `entra_in`.
 
 * [ ] Descrizione `esci` + `esci_da`.
+
+* [ ] Descrizione `spara`.
+
+* [ ] Descrizione `spara_errore`.
+
+* [ ] Descrizione `spara_a`.
+
+* [ ] Descrizione `spara_a_errore`.
 
 * [ ] Descrizione `acchiappa`.
 

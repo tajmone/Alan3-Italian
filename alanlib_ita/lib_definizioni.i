@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.20-Alpha, 2018-11-10: Alan 3.0beta6
+--| v0.7.21-Alpha, 2018-11-11: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -825,6 +825,8 @@ EVERY blocco_definizioni IsA LOCATION
   CAN sedersi_su.               ---> sit_on
   CAN seguire.                  ---> follow
   CAN sorseggiare.              ---> sip
+  CAN sparare.                  ---> fire
+  CAN sparare_a.                ---> fire_at
   CAN spegnere.                 ---> turn_off
   CAN spingere.                 ---> push
   CAN spingere_con.             ---> push_with
@@ -866,8 +868,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN climb.
   CAN climb_on.
 --CAN extinguish. ----------------> ** VERBO ELIMINATO **  (+ put out, quench)
-  CAN fire.
-  CAN fire_at.
 --CAN get_up. --------------------> ** VERBO ELIMINATO **
   CAN hint.        -- (+ hints)
   CAN lift.
@@ -879,8 +879,8 @@ EVERY blocco_definizioni IsA LOCATION
   CAN rub.
   CAN search.
   CAN shake.
-  CAN shoot.       -- (at)
-  CAN shoot_with.
+--CAN shoot. ---------------------> ** VERBO ELIMINATO **
+--CAN shoot_with. ----------------> ** VERBO ELIMINATO **
 --CAN smell0. --------------------> ** ATTRIBUTO ELIMINATO **
   CAN squeeze.
   CAN stand_on.
@@ -1045,6 +1045,8 @@ EVENT check_restriction
       MAKE mia_AT sedersi_su.               ---> sit_on
       MAKE mia_AT seguire.                  ---> follow
       MAKE mia_AT sorseggiare.              ---> sip
+      MAKE mia_AT sparare.                  ---> fire
+      MAKE mia_AT sparare_a.                ---> fire_at
       MAKE mia_AT spegnere.                 ---> turn_off
       MAKE mia_AT spingere.                 ---> push
       MAKE mia_AT spingere_con.             ---> push_with
@@ -1082,8 +1084,6 @@ EVENT check_restriction
       MAKE mia_AT climb.
       MAKE mia_AT climb_on.
     --MAKE mia_AT extinguish. --------> ** VERBO ELIMINATO ** (+ put out, quench)
-      MAKE mia_AT fire.
-      MAKE mia_AT fire_at.
     --MAKE mia_AT get_up. ------------> ** VERBO ELIMINATO **
       MAKE mia_AT hint.            -- (+ hints)
       MAKE mia_AT lift.
@@ -1095,8 +1095,8 @@ EVENT check_restriction
       MAKE mia_AT rub.
       MAKE mia_AT search.
       MAKE mia_AT shake.
-      MAKE mia_AT shoot.           -- (at)
-      MAKE mia_AT shoot_with.
+    --MAKE mia_AT shoot. -------------> ** VERBO ELIMINATO **
+    --MAKE mia_AT shoot_with. --------> ** VERBO ELIMINATO **
     --MAKE mia_AT smell0. ------------> ** ATTRIBUTO ELIMINATO **
       MAKE mia_AT squeeze.
       MAKE mia_AT stand_on.
@@ -1213,6 +1213,8 @@ EVENT check_restriction
           MAKE mia_AT NOT sedersi_su.               ---> sit_on
           MAKE mia_AT NOT seguire.                  ---> follow
           MAKE mia_AT NOT sorseggiare.              ---> sip
+          MAKE mia_AT NOT sparare.                  ---> fire
+          MAKE mia_AT NOT sparare_a.                ---> fire_at
           MAKE mia_AT NOT spegnere.                 ---> turn_off
           MAKE mia_AT NOT spingere.                 ---> push
           MAKE mia_AT NOT spingere_con.             ---> push_with
@@ -1246,8 +1248,6 @@ EVENT check_restriction
           MAKE mia_AT NOT climb.
           MAKE mia_AT NOT climb_on.
         --MAKE mia_AT NOT extinguish. ----> ** VERBO ELIMINATO ** (+ put out, quench)
-          MAKE mia_AT NOT fire.
-          MAKE mia_AT NOT fire_at.
         --MAKE mia_AT NOT get_up. --------> ** VERBO ELIMINATO **
           MAKE mia_AT NOT lift.
         --MAKE mia_AT NOT light. ---------> ** VERBO ELIMINATO **
@@ -1257,8 +1257,8 @@ EVENT check_restriction
           MAKE mia_AT NOT rub.
           MAKE mia_AT NOT search.
           MAKE mia_AT NOT shake.
-          MAKE mia_AT NOT shoot.       -- (at)
-          MAKE mia_AT NOT shoot_with.
+        --MAKE mia_AT NOT shoot. ---------> ** VERBO ELIMINATO **
+        --MAKE mia_AT NOT shoot_with. ----> ** VERBO ELIMINATO **
           MAKE mia_AT NOT squeeze.
           MAKE mia_AT NOT stand_on.
         --MAKE mia_AT NOT switch. --------> ** VERBO ELIMINATO **

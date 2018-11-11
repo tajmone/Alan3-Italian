@@ -430,8 +430,8 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `search`         |                           |
 | `sell`           | `vendere`                 |
 | `shake`          |                           |
-| `shoot`          |                           |
-| `shoot_with`     |                           |
+| ~~`shoot`~~      |                           |
+| ~~`shoot_with`~~ |                           |
 | `shout`          | `gridare`                 |
 | `'show'`         | `mostrare`                |
 | `sing`           | `cantare`                 |

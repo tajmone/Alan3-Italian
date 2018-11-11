@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.33-Alpha, 2018-11-10: Alan 3.0beta6
+--| v0.7.34-Alpha, 2018-11-11: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -797,6 +797,10 @@ END VERB ringraziamenti.
 --| | siediti            | siedi                        | siediti                                |     | 0 |     |
 --| | siediti_su         | siedi                        | siediti su (superficie)                |     | 1 |     |
 --| | sorseggia          |                              | sorseggia (liq)                        |     | 1 |     |
+--| | spara              |                              | spara con (arma)                       |     | 1 |     |
+--| | spara_errore       |                              | spara                                  |     | 0 |     |
+--| | spara_a            |                              | spara a (bersaglio) con (arma)         |     | 2 |     |
+--| | spara_a_errore     |                              | spara a (bersaglio)                    |     | 1 |     |
 --| | spegni             |                              | spegni (disp)                          |     | 1 |     |
 --| | spingi             |                              | spingi (ogg)                           |     | 1 | {X} |
 --| | spingi_con         |                              | spingi (ogg) con (strum)               |     | 2 | {X} |
@@ -4285,7 +4289,6 @@ ADD TO EVERY OBJECT
     DOES
       -- "La violenza non è la giusta risposta a questo." ---> taken from i6
       SAY mia_AT:la_violenza_non_è_la_risposta.
-      -- "Resorting to brute force is not the solution here."
   END VERB rompi.
 END ADD TO.
 
@@ -7215,10 +7218,9 @@ SYNTAX attacca_con = attacca (bersaglio) con (arma)
   AND arma IsA arma
     ELSE
       IF arma IS NOT plurale
-        THEN SAY mia_AT:ogg2_illegale_CON_sg.
-        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
-      END IF.
-      "attaccare" SAY THE bersaglio. "."
+        THEN SAY mia_AT:ogg2_non_arma_adatta_per_sg.
+        ELSE SAY mia_AT:ogg2_non_arma_adatta_per_pl.
+      END IF. "attaccare" SAY THE bersaglio. "."
 
 
 ADD TO EVERY THING
@@ -7384,11 +7386,11 @@ ADD TO EVERY ACTOR
         END IF.
         "uccidere."
     AND vittima <> hero
---                                                                              TRANSLATE!
-      ELSE SAY mia_AT:check_obj_not_hero2.
+      ELSE SAY mia_AT:no_suicidio.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
-    DOES "You have to state what you want to kill" SAY THE vittima. "with."
+    DOES
+      SAY mia_AT:specificare_CON_cosa. "uccidere" SAY THE vittima. "."
   END VERB uccidi.
 END ADD TO.
 
@@ -7419,10 +7421,9 @@ SYNTAX uccidi_con = uccidi (vittima) con (arma)
   AND arma IsA arma
     ELSE
       IF arma IS NOT plurale
-        THEN SAY mia_AT:ogg2_illegale_CON_sg.
-        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
-      END IF.
-      "uccidere."
+        THEN SAY mia_AT:ogg2_non_arma_adatta_per_sg.
+        ELSE SAY mia_AT:ogg2_non_arma_adatta_per_pl.
+      END IF. "uccidere" SAY THE vittima. "."
 
 
 ADD TO EVERY ACTOR
@@ -7430,9 +7431,8 @@ ADD TO EVERY ACTOR
     WHEN vittima
       CHECK mia_AT CAN uccidere_con
         ELSE SAY mia_AT:azione_bloccata.
---                                                                              TRANSLATE!
       AND vittima <> hero
-        ELSE SAY mia_AT:check_obj_not_hero2.
+        ELSE SAY mia_AT:no_suicidio.
       AND arma IN hero
         ELSE SAY mia_AT:non_possiedi_ogg2.
       AND CURRENT LOCATION IS illuminato
@@ -7443,9 +7443,7 @@ ADD TO EVERY ACTOR
             THEN SAY mia_AT:ogg1_distante_sg.
             ELSE SAY mia_AT:ogg1_distante_pl.
           END IF.
-      DOES
-        "Sarebbe un atto di inutile brutalità."
-     -- "That would be needlessly brutal."
+      DOES "Sarebbe un atto di inutile brutalità."
   END VERB uccidi_con.
 END ADD TO.
 
@@ -8081,6 +8079,192 @@ ADD TO EVERY OBJECT
       END IF. "uscire."
     END VERB esci_da.
 END ADD TO.
+
+-->gruppo_sparare(22400)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Sparare
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi per sparare con armi da fuoco (o comunque armi
+--| in grado di espellere proiettili di qualche tipo):
+--| 
+--| * `spara`
+--| * `spara_errore`
+--| * `spara_a`
+--| * `spara_a_errore`
+--| 
+--| L'arma del parametro deve avere l'attributo `sparabile`.
+--<
+
+
+-->gruppo_sparare                                               @SPARA <-- @FIRE
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== spara
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `spara`.
+--<
+
+SYNTAX spara = spara con (arma)
+  WHERE arma IsA arma
+    ELSE
+      IF arma IS NOT plurale
+        THEN SAY mia_AT:ogg1_non_arma_da_fuoco_sg.
+        ELSE SAY mia_AT:ogg1_non_arma_da_fuoco_pl.
+      END IF.
+
+
+ADD TO EVERY arma
+  VERB spara
+    CHECK mia_AT CAN sparare
+      ELSE SAY mia_AT:azione_bloccata.
+    AND arma can sparare
+      ELSE
+        IF arma IS NOT plurale
+        THEN SAY mia_AT:ogg1_non_arma_da_fuoco_sg.
+        ELSE SAY mia_AT:ogg1_non_arma_da_fuoco_pl.
+        END IF.
+
+  AND CURRENT LOCATION IS illuminato
+    ELSE SAY mia_AT:imp_luogo_buio.
+  DOES
+    "Spari un colpo in aria con" SAY THE arma. "."
+  END VERB spara.
+END ADD TO.
+
+
+-->gruppo_sparare                                               @SPARA <-- @FIRE
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== spara_errore
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `spara_errore`.
+--<
+SYNTAX spara_errore = spara.
+
+VERB spara_errore
+  CHECK COUNT IsA ARMA, can sparare, DIRECTLY IN hero > 0
+    ELSE SAY mia_AT:non_hai_armi_da_fuoco.
+  DOES
+    SAY mia_AT:specificare_CON_cosa. "sparare."
+END VERB spara_errore.
+
+
+
+-->gruppo_sparare                                          @SPARA A <-- @FIRE AT
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== spara_a
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `spara_a`.
+--<
+
+
+SYNTAX  spara_a = spara con (arma) a (bersaglio)
+  WHERE arma IsA arma
+    ELSE
+      IF arma IS NOT plurale
+        THEN SAY mia_AT:ogg1_non_arma_da_fuoco_sg.
+        ELSE SAY mia_AT:ogg1_non_arma_da_fuoco_pl.
+      END IF.
+  AND bersaglio IsA THING
+    ELSE
+      IF arma IS NOT plurale
+        THEN SAY mia_AT:ogg2_illegale_A_sg.
+        ELSE SAY mia_AT:ogg2_illegale_A_pl.
+      END IF. "sparare"
+
+        spara_a = spara a (bersaglio) con (arma).
+
+
+ADD TO EVERY arma
+  VERB spara_a
+    WHEN arma
+      CHECK mia_AT CAN sparare_a
+        ELSE SAY mia_AT:azione_bloccata.
+      AND arma can sparare
+        ELSE
+          IF arma IS NOT plurale
+            THEN SAY mia_AT:ogg1_non_arma_da_fuoco_sg.
+            ELSE SAY mia_AT:ogg1_non_arma_da_fuoco_pl.
+          END IF.
+      AND bersaglio IS esaminabile
+        ELSE
+          IF arma IS NOT plurale
+            THEN SAY mia_AT:ogg2_illegale_A_sg.
+            ELSE SAY mia_AT:ogg2_illegale_A_pl.
+          END IF. "sparare"
+      AND arma <> bersaglio
+--                                                                              TRANSLATE!
+        ELSE SAY mia_AT:check_obj_not_obj2_at.
+      AND bersaglio <> hero
+        ELSE SAY mia_AT:no_autolesionismo.
+      AND bersaglio IS NOT distante
+        -- note that it is possible to fire at a "not reachable" bersaglio
+        ELSE
+          IF bersaglio IS NOT plurale
+            THEN SAY mia_AT:ogg1_distante_sg.
+            ELSE SAY mia_AT:ogg1_distante_pl.
+          END IF.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY mia_AT:imp_luogo_buio.
+      DOES
+        -- "La violenza non è la giusta risposta a questo." ---> taken from i6
+        SAY mia_AT:la_violenza_non_è_la_risposta.
+  END VERB spara_a.
+END ADD TO.
+
+-->gruppo_sparare                                          @SPARA A <-- @FIRE AT
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== spara_a_errore
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `spara_a_errore`.
+--<
+
+
+-- another formulation added:
+
+
+SYNTAX spara_a_errore = spara a (bersaglio)
+  WHERE bersaglio IsA THING
+    ELSE
+      IF bersaglio IS NOT plurale
+        THEN SAY mia_AT:ogg1_illegale_A_sg.
+        ELSE SAY mia_AT:ogg1_illegale_A_pl.
+      END IF. "sparare."
+
+
+ADD TO EVERY THING
+  VERB spara_a_errore
+    CHECK COUNT IsA ARMA, can sparare, DIRECTLY IN hero > 0
+    ELSE SAY mia_AT:non_hai_armi_da_fuoco.
+    AND bersaglio <> hero
+      ELSE SAY mia_AT:no_autolesionismo.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    DOES
+      -- "La violenza non è la giusta risposta a questo." ---> taken from i6
+      SAY mia_AT:la_violenza_non_è_la_risposta.
+  END VERB spara_a_errore.
+END ADD TO.
+
 
 
 
@@ -9781,8 +9965,8 @@ END VERB rispondi_Sì.
 --~*| fill               |                                    | fill (cont)                       | 1 |
 --~*| fill_with          |                                    | fill (cont) with (substance)      | 2 |
 --~*| find               | locate                             | find (obj)                        | 1 | {x}
---| | fire               |                                    | fire (weapon)                     | 1 |
---| | fire_at            |                                    | fire (weapon) at (target)         | 2 |
+--~*| fire               |                                    | fire (weapon)                     | 1 |
+--~*| fire_at            |                                    | fire (weapon) at (target)         | 2 |
 --~*| fix                | mend, repair                       | fix (obj)                         | 1 | {x}
 --| | follow             |                                    | follow (act)                      | 1 |
 --~*| free               | release                            | free (obj)                        | 1 | {x}
@@ -9855,8 +10039,8 @@ END VERB rispondi_Sì.
 --| | search             |                                    | search (obj)                      | 1 | {x}
 --~*| sell               |                                    | sell (item)                       | 1 |
 --| | shake              |                                    | shake (obj)                       | 1 | {x}
---| | shoot (at)         |                                    | shoot at (target)                 | 1 |
---| | shoot_with         |                                    | shoot (target) with (weapon)      | 2 |
+--~!| shoot (at)         |                                    | shoot at (target)                 | 1 |
+--~!| shoot_with         |                                    | shoot (target) with (weapon)      | 2 |
 --~*| shout              | scream, yell                       | shout                             | 0 |
 --| | show               | reveal                             | show (obj) to (act)               | 2 | {x}
 --~*| sing               |                                    | sing                              | 0 |
@@ -10184,135 +10368,6 @@ ADD TO EVERY supporto
       END IF.
       "something you can climb on."
   END VERB climb_on.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
--- @FIRE
-
-
--- ==============================================================
-
-
-SYNTAX fire = fire (arma)
-  WHERE arma IsA arma
-    ELSE
-      IF arma IS NOT plurale
-      -- @NOTA: Meglio usare un messaggio ad hoc qui!                           TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter_sg.
-        ELSE SAY mia_AT:illegal_parameter_pl.
-      END IF.
-
-
-ADD TO EVERY arma
-  VERB fire
-    CHECK mia_AT CAN fire
-      ELSE SAY mia_AT:azione_bloccata.
-    AND arma can sparare
-      ELSE
-        IF arma IS NOT plurale
-          THEN SAY mia_AT:check_obj_suitable_sg.
-          ELSE SAY mia_AT:check_obj_suitable_pl.
-        END IF.
-
-  AND CURRENT LOCATION IS illuminato
-    ELSE SAY mia_AT:imp_luogo_buio.
-  DOES
-    "You fire" SAY THE arma. "into the air."
-  END VERB fire.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
--- @FIRE AT
-
-
--- ==============================================================
-
-
-SYNTAX fire_at = fire (arma) 'at' (bersaglio)
-  WHERE arma IsA arma
-    ELSE
-      IF arma IS NOT plurale
-      -- @NOTA: Come per 'fire', usa messaggio ad hoc per verbo! (prep A)       TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter_sg.
-        ELSE SAY mia_AT:illegal_parameter_pl.
-      END IF.
-  AND bersaglio IsA THING
-    ELSE SAY mia_AT:illegal_parameter_at.
-
-
-
-ADD TO EVERY arma
-  VERB fire_at
-    WHEN arma
-      CHECK mia_AT CAN fire_at
-        ELSE SAY mia_AT:azione_bloccata.
-      AND arma can sparare
-        ELSE
-          IF arma IS NOT plurale
---                                                                              TRANSLATE!
-            THEN SAY mia_AT:check_obj_suitable_sg.
-            ELSE SAY mia_AT:check_obj_suitable_pl.
-          END IF.
-      AND bersaglio IS esaminabile
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_suitable_at.
-      AND arma <> bersaglio
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_at.
-      AND bersaglio <> hero
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_hero2.
-      AND bersaglio IS NOT distante
-        -- note that it is possible to fire at a "not reachable" bersaglio
-        ELSE
-          IF bersaglio IS NOT plurale
-            THEN SAY mia_AT:ogg1_distante_sg.
-            ELSE SAY mia_AT:ogg1_distante_pl.
-          END IF.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY mia_AT:imp_luogo_buio.
-      DOES
-        -- "La violenza non è la giusta risposta a questo." ---> taken from i6
-        SAY mia_AT:la_violenza_non_è_la_risposta.
-    -- "Resorting to violence is not the solution here."
-  END VERB fire_at.
-END ADD TO.
-
-
--- another formulation added:
-
-
-SYNTAX fire_at_error = fire 'at' (bersaglio)
-  WHERE bersaglio IsA THING
-    ELSE
-      IF bersaglio IS NOT plurale
-      -- @NOTA: Qui serve messaggio ad hoc! (prep A)                            TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter_sg.
-        ELSE SAY mia_AT:illegal_parameter_pl.
-      END IF.
-
-
-ADD TO EVERY THING
-  VERB fire_at_error
-    CHECK COUNT IsA ARMA, can sparare, DIRECTLY IN hero > 0
-      ELSE SAY mia_AT:check_count_weapon_in_hero.
-    AND bersaglio <> hero
-      ELSE SAY mia_AT:check_obj_not_hero2.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    DOES
-      -- "La violenza non è la giusta risposta a questo." ---> taken from i6
-      SAY mia_AT:la_violenza_non_è_la_risposta.
-  -- "Resorting to violence is not the solution here."
-  END VERB fire_at_error.
 END ADD TO.
 
 
@@ -10847,150 +10902,6 @@ ADD TO EVERY OBJECT
       END IF.
   END VERB shake.
 END ADD TO.
-
-
-
--- ==============================================================
-
-
--- @SHOOT
-
-
--- ==============================================================
-
-
-
-SYNTAX  shoot = shoot (bersaglio)
-  WHERE bersaglio IsA THING
-    ELSE
-      IF bersaglio IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_sg.
-        ELSE SAY mia_AT:illegal_parameter_pl.
-      END IF.
-
-        shoot = shoot 'at' (bersaglio).
-
-
-ADD TO EVERY THING
-  VERB shoot
-    CHECK mia_AT CAN shoot
-      ELSE SAY mia_AT:azione_bloccata.
-    AND bersaglio IS esaminabile
-      ELSE
-        IF bersaglio IS NOT plurale
---                                                                              TRANSLATE!
-          THEN SAY mia_AT:check_obj_suitable_sg.
-          ELSE SAY mia_AT:check_obj_suitable_pl.
-        END IF.
-    AND bersaglio <> hero
---                                                                              TRANSLATE!
-      ELSE SAY mia_AT:check_obj_not_hero2.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND bersaglio NOT IN hero
-      ELSE SAY mia_AT:check_obj_not_in_hero1.
-    AND bersaglio NOT IN abbigliamento
---                                                                              TRANSLATE!
-      ELSE SAY mia_AT:check_obj_not_in_worn2.
-    AND bersaglio IS NOT distante
-      ELSE
-        IF bersaglio IS NOT plurale
-          THEN SAY mia_AT:ogg1_distante_sg.
-          ELSE SAY mia_AT:ogg1_distante_pl.
-        END IF.
-    DOES
-      IF bersaglio IsA ACTOR
-        THEN "That's quite uncalled-for."
-          ELSE "That wouldn't accomplish anything."
-      END IF.
-  END VERB shoot.
-END ADD TO.
-
-
--- note that it is possible to shoot (at) both not reachable and distant objects.
-
-
--- another  'shoot' formulation added, to guide players to use the right phrasing:
-
-
-SYNTAX shoot_error = shoot.
-
-
-VERB shoot_error
-  DOES
-    "You must state what you want to shoot, for example SHOOT BEAR WITH RIFLE."
-END VERB shoot_error.
-
-
-
--- ==============================================================
-
-
--- @SHOOT WITH
-
-
--- ==============================================================
-
-
-SYNTAX  shoot_with = shoot (bersaglio) 'with' (arma)
-  WHERE bersaglio IsA THING
-    ELSE
-      IF bersaglio IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_sg.
-        ELSE SAY mia_AT:illegal_parameter_pl.
-      END IF.
-      AND arma IsA arma
-        ELSE
-      IF arma IS NOT plurale
-        THEN SAY mia_AT:ogg2_illegale_CON_sg.
-        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
-      END IF.
-      "sparare." -- # "a THE bersaglio"???                                      IMPROVE?
-
-        shoot_with = shoot (arma) 'at' (bersaglio).
-        -- to allow player input such as 'shoot rifle at bear'
-
-
-ADD TO EVERY THING
-  VERB shoot_with
-    WHEN bersaglio
-      CHECK mia_AT CAN shoot_with
-        ELSE SAY mia_AT:azione_bloccata.
-      AND bersaglio IS esaminabile
-        ELSE
-          IF bersaglio IS NOT plurale
---                                                                              TRANSLATE!
-            THEN SAY mia_AT:check_obj_suitable_sg.
-            ELSE SAY mia_AT:check_obj_suitable_pl.
-          END IF.
-      AND bersaglio <> hero
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_hero2.
-      AND bersaglio <> arma
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_with.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY mia_AT:imp_luogo_buio.
-      AND bersaglio NOT IN hero
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_in_hero1.
-      AND bersaglio NOT IN abbigliamento
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_in_worn2.
-      AND bersaglio IS NOT distante
-        ELSE
-          IF bersaglio IS NOT plurale
-            THEN SAY mia_AT:ogg1_distante_sg.
-            ELSE SAY mia_AT:ogg1_distante_pl.
-          END IF.
-      DOES
-        IF bersaglio IsA ACTOR
-          THEN "That's quite uncalled-for."
-          ELSE "That wouldn't accomplish anything."
-        END IF.
-  END VERB shoot_with.
-END ADD TO.
-
 
 
 
