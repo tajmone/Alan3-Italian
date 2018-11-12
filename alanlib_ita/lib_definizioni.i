@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.24-Alpha, 2018-11-12: Alan 3.0beta6
+--| v0.7.25-Alpha, 2018-11-12: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -714,6 +714,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN annusare.                 ---> smell
   CAN aprire.                   ---> open
   CAN aprire_con.               ---> open_with
+  CAN arrampicarsi.             ---> climb_on
   CAN ascoltare.                ---> listen + listen0 | ascolta0 + ascolta
   CAN aspettare.                ---> wait         (+ z)
   CAN assaggiare.               ---> taste        (+ lick)
@@ -812,6 +813,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN rispondere_Sì.            ---> yes
   CAN rompere.                  ---> break        (+ destroy)
   CAN rompere_con.              ---> break_with
+  CAN salire_su.                ---> stand_on
   CAN salvare_partita.          ---> save
   CAN saltare.                  ---> jump
   CAN saltare_in.               ---> jump_in
@@ -869,7 +871,6 @@ EVERY blocco_definizioni IsA LOCATION
 --| 
 --| Questo è l'elenco degli attributi verbali non ancora tradotti:
   CAN climb.
-  CAN climb_on.
 --CAN extinguish. ----------------> ** VERBO ELIMINATO **  (+ put out, quench)
 --CAN get_up. --------------------> ** VERBO ELIMINATO **
 --CAN light. ---------------------> ** VERBO ELIMINATO **
@@ -883,7 +884,6 @@ EVERY blocco_definizioni IsA LOCATION
 --CAN shoot_with. ----------------> ** VERBO ELIMINATO **
 --CAN smell0. --------------------> ** ATTRIBUTO ELIMINATO **
   CAN squeeze.
-  CAN stand_on.
 --CAN switch. --------------------> ** VERBO ELIMINATO **
 --CAN switch_on. -----------------> ** VERBO ELIMINATO **
 --CAN switch_off. ----------------> ** VERBO ELIMINATO **
@@ -934,6 +934,7 @@ EVENT check_restriction
       MAKE mia_AT annusare.                 ---> smell
       MAKE mia_AT aprire.                   ---> open
       MAKE mia_AT aprire_con.               ---> open_with
+      MAKE mia_AT arrampicarsi.             ---> climb_on
       MAKE mia_AT ascoltare.                ---> listen + listen0 | ascolta0 + ascolta
       MAKE mia_AT aspettare.                ---> wait         (+ z)
       MAKE mia_AT assaggiare.               ---> taste        (+ lick)
@@ -1032,6 +1033,7 @@ EVENT check_restriction
       MAKE mia_AT rispondere_Sì.            ---> yes
       MAKE mia_AT rompere.                  ---> break        (+ destroy)
       MAKE mia_AT rompere_con.              ---> break_with
+      MAKE mia_AT salire_su.                ---> stand_on
       MAKE mia_AT saltare.                  ---> jump
       MAKE mia_AT saltare_in.               ---> jump_in
       MAKE mia_AT saltare_su.               ---> jump_on
@@ -1085,7 +1087,6 @@ EVENT check_restriction
 
     --# NOT YET TRANSLATED:
       MAKE mia_AT climb.
-      MAKE mia_AT climb_on.
     --MAKE mia_AT extinguish. --------> ** VERBO ELIMINATO ** (+ put out, quench)
     --MAKE mia_AT get_up. ------------> ** VERBO ELIMINATO **
     --MAKE mia_AT light. -------------> ** VERBO ELIMINATO **
@@ -1099,7 +1100,6 @@ EVENT check_restriction
     --MAKE mia_AT shoot_with. --------> ** VERBO ELIMINATO **
     --MAKE mia_AT smell0. ------------> ** ATTRIBUTO ELIMINATO **
       MAKE mia_AT squeeze.
-      MAKE mia_AT stand_on.
     --MAKE mia_AT switch. ------------> ** VERBO ELIMINATO **
     --MAKE mia_AT switch_on. ---------> ** VERBO ELIMINATO **
     --MAKE mia_AT switch_off. ------> ** VERBO ELIMINATO **
@@ -1144,6 +1144,7 @@ EVENT check_restriction
           MAKE mia_AT NOT andare_a.                 ---> go_to
           MAKE mia_AT NOT aprire.                   ---> open
           MAKE mia_AT NOT aprire_con.               ---> open_with
+          MAKE mia_AT NOT arrampicarsi.             ---> climb_on
           MAKE mia_AT NOT assaggiare.               ---> taste        (+ lick)
           MAKE mia_AT NOT attaccare.                ---> attack (+ beat, fight, hit, punch)
           MAKE mia_AT NOT attaccare_con.            ---> attack_with
@@ -1199,6 +1200,7 @@ EVENT check_restriction
           MAKE mia_AT NOT riparare.                 ---> fix (+ mend, repair)
           MAKE mia_AT NOT rompere.                  ---> break        (+ destroy)
           MAKE mia_AT NOT rompere_con.              ---> break_with
+          MAKE mia_AT NOT salire_su.                ---> stand_on
           MAKE mia_AT NOT saltare.                  ---> jump
           MAKE mia_AT NOT saltare_in.               ---> jump_in
           MAKE mia_AT NOT saltare_su.               ---> jump_on
@@ -1248,7 +1250,6 @@ EVENT check_restriction
         --# NOT YET TRANSLATED:
 
           MAKE mia_AT NOT climb.
-          MAKE mia_AT NOT climb_on.
         --MAKE mia_AT NOT extinguish. ----> ** VERBO ELIMINATO ** (+ put out, quench)
         --MAKE mia_AT NOT get_up. --------> ** VERBO ELIMINATO **
         --MAKE mia_AT NOT light. ---------> ** VERBO ELIMINATO **
@@ -1260,7 +1261,6 @@ EVENT check_restriction
         --MAKE mia_AT NOT shoot. ---------> ** VERBO ELIMINATO **
         --MAKE mia_AT NOT shoot_with. ----> ** VERBO ELIMINATO **
           MAKE mia_AT NOT squeeze.
-          MAKE mia_AT NOT stand_on.
         --MAKE mia_AT NOT switch. --------> ** VERBO ELIMINATO **
         --MAKE mia_AT NOT switch_on. -----> ** VERBO ELIMINATO **
         --MAKE mia_AT NOT switch_off. ----> ** VERBO ELIMINATO **

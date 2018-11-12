@@ -135,7 +135,7 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 // -----------------------------------------------------------------------------
 | 21300   |           | gruppo_saltare               | == Saltare
 // -----------------------------------------------------------------------------
-| 21400   |           | gruppo_sedersi               | == Sedersi, Sdraiarsi, Alzarsi
+| 21400   |           | gruppo_sedersi               | == Posizionarsi su Superfici
 // -----------------------------------------------------------------------------
 | 21500   |           | gruppo_lanciare              | == Lanciare
 // -----------------------------------------------------------------------------

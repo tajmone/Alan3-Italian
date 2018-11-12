@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.38-Alpha, 2018-11-12: Alan 3.0beta6
+--| v0.7.39-Alpha, 2018-11-12: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -833,6 +833,7 @@ END VERB ricomincia_partita.
 --| | annusa             | odora                        | annusa (odore)                         |     | 1 |     |
 --| | apri               |                              | apri (ogg)                             |     | 1 | {X} |
 --| | apri_con           |                              | apri (ogg) con (strum)                 |     | 2 | {X} |
+--| | arrampicati        |                              | arrampicati su (superficie)            |     | 1 |     |
 --| | ascolta0           |                              | ascolta                                |     | 0 |     |
 --| | ascolta            |                              | ascolta (ogg)!                         |     | 1 | {X} |
 --| | aspetta            | attendi, Z                   | aspetta                                |     | 0 |     |
@@ -917,6 +918,7 @@ END VERB ricomincia_partita.
 --| | rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)                |     | 2 | {X} |
 --| | ripara             | aggiusta                     | ripara (ogg)                           |     | 1 | {X} |
 --| | rispondi           |                              | rispondi (argomento)!                  |     | 1 |     |
+--| | sali_su            | mettiti                      | sali su (superficie)                   |     | 1 |     |
 --| | salta              |                              | salta                                  |     | 0 |     |
 --| | salta_in           |                              | salta in (cont)                        |     | 1 |     |
 --| | salta_su           |                              | salta su (superficie)                  |     | 1 |     |
@@ -5996,7 +5998,7 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Sedersi, Sdraiarsi, Alzarsi
+--| === Posizionarsi su Superfici
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -6004,17 +6006,16 @@ END ADD TO.
 --| Questo gruppo include i verbi per sedersi, sdraiarsi ed alazarsi:
 --| 
 --| * `alzati`
+--| * `arrampicati`
+--| * `sali_su`
 --| * `scendi_da`
 --| * `siediti`
 --| * `siediti_su`
 --| * `sdraiati`
 --| * `sdraiati_in`
 --| * `sdraiati_su`
---| 
---| Verbi di questo gruppo non ancora tradotti:
---| 
---| * `stand_on`
 --<
+
 
 
 -->gruppo_sedersi                                             @ALZATI <-- @STAND
@@ -6045,6 +6046,126 @@ VERB alzati
       ELSE "Sei già in piedi."
     END IF.
 END VERB alzati.
+
+
+-->gruppo_sedersi                                     @ARRAMPICATI <-- @CLIMB ON
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== arrampicati
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `arrampicati`.
+--<
+
+
+SYNTAX arrampicati = arrampicati su (superficie)
+  WHERE superficie IsA supporto
+    ELSE
+      IF superficie IS NOT plurale
+        THEN SAY mia_AT:ogg1_illegale_SU_sg.
+        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
+      END IF. "$$si arrampicare."
+
+
+ADD TO EVERY supporto
+  VERB arrampicati
+    CHECK mia_AT CAN arrampicarsi
+      ELSE SAY mia_AT:azione_bloccata.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND superficie IS raggiungibile AND superficie IS NOT distante
+      ELSE
+        IF superficie IS NOT raggiungibile
+          THEN
+            IF superficie IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF superficie IS NOT distante
+          THEN
+            IF superficie IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+--                                                                              TODO!
+    AND hero IS NOT seduto
+      ELSE SAY mia_AT:check_hero_not_sitting3.
+--                                                                              TODO!
+    AND hero IS NOT sdraiato
+      ELSE SAY mia_AT:check_hero_not_lying_down3.
+    DOES
+      IF superficie IS NOT plurale
+        THEN SAY mia_AT:ogg1_illegale_SU_sg.
+        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
+      END IF. "$$si arrampicare."
+  END VERB arrampicati.
+END ADD TO.
+
+
+-->gruppo_sedersi                                         @SALI SU <-- @STAND_ON
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== sali_su
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `sali_su`.
+--<
+
+
+-- SYNTAX  stand_on = stand 'on' (superficie)
+--         stand_on = get 'on' (superficie).
+        
+SYNTAX  sali_su = sali su (superficie)
+  WHERE superficie IsA supporto
+    ELSE
+      IF superficie IS NOT plurale
+        THEN SAY mia_AT:ogg1_illegale_SU_sg.
+        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
+      END IF.
+      "salire."
+
+        sali_su = mettiti su (superficie).
+
+
+ADD TO EVERY supporto
+  VERB sali_su
+    CHECK mia_AT CAN salire_su
+      ELSE SAY mia_AT:azione_bloccata.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND superficie IS raggiungibile AND superficie IS NOT distante
+      ELSE
+        IF superficie IS NOT raggiungibile
+          THEN
+            IF superficie IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF superficie IS distante
+          THEN
+            IF superficie IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+    DOES
+--                                                                              TODO!
+      "You feel no urge to stand on" SAY THE superficie. "."
+--                                                                              TODO!
+      -- or, to make it work, use the following instead of the above:
+      -- "You get on" SAY THE surface. "."
+      -- (Make an attribute for the hero to check that he's on the surface.
+      -- It is not possible to actually locate him on the surface (unless
+      -- you implement a nested location.)
+      --   MAKE hero NOT sitting. MAKE hero NOT lying_down.
+  END VERB sali_su.
+END ADD TO.
+
 
 
 -->gruppo_sedersi                                        @SCENDI_DA <-- @GET OFF
@@ -10387,7 +10508,7 @@ END VERB rispondi_Sì.
 --~*| catch              |                                    | catch (obj)                       | 1 | {x}
 --| | clean              | polish, wipe                       | clean (obj)                       | 1 | {x}
 --| | climb              |                                    | climb (obj)                       | 1 | {x}
---| | climb_on           |                                    | climb on (surface)                | 1 |
+--~*| climb_on           |                                    | climb on (surface)                | 1 |
 --~*| climb_through      |                                    | climb through (obj)               | 1 | {x}
 --~*| close              | shut                               | close (obj)                       | 1 | {x}
 --~*| close_with         |                                    | close (obj) with (instr)          | 2 | {x}
@@ -10500,7 +10621,7 @@ END VERB rispondi_Sì.
 --~*| smell              |                                    | smell (odour)                     | 1 |
 --| | squeeze            |                                    | squeeze (obj)                     | 1 | {x}
 --~*| stand (up)         |                                    | stand.  stand up.                 | 0 |
---| | stand_on           |                                    | stand on (surface)                | 1 |
+--~*| stand_on           |                                    | stand on (surface)                | 1 |
 --~*| swim               |                                    | swim                              | 0 |
 --~*| swim_in            |                                    | swim in (liq)                     | 1 |
 --~!| switch             |                                    | switch (obj)                      | 1 | {x}
@@ -10684,61 +10805,6 @@ ADD TO EVERY OBJECT
     END IF.
     "something you can climb."
   END VERB climb.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
--- @CLIMB ON
-
-
--- ==============================================================
-
-
-SYNTAX climb_on = climb 'on' (superficie)
-  WHERE superficie IsA supporto
-    ELSE
-      IF superficie IS NOT plurale
-        THEN SAY mia_AT:ogg1_illegale_SU_sg.
-        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
-      END IF.
-      "$$si arrampicare." --                                                    CHECK VERB!
-
-
-ADD TO EVERY supporto
-  VERB climb_on
-    CHECK mia_AT CAN climb_on
-      ELSE SAY mia_AT:azione_bloccata.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND superficie IS raggiungibile AND superficie IS NOT distante
-      ELSE
-        IF superficie IS NOT raggiungibile
-          THEN
-            IF superficie IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF superficie IS NOT distante
-          THEN
-            IF superficie IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    AND hero IS NOT seduto
-      ELSE SAY mia_AT:check_hero_not_sitting3.
-    AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down3.
-    DOES
-      IF superficie IS NOT plurale
-        THEN "That's not"
-        ELSE "Those are not"
-      END IF.
-      "something you can climb on."
-  END VERB climb_on.
 END ADD TO.
 
 
@@ -11104,61 +11170,6 @@ ADD TO EVERY THING
   END VERB squeeze.
 END ADD TO.
 
-
-
-
--- ==============================================================
-
-
--- @STAND_ON
-
-
--- ==============================================================
-
-
-SYNTAX  stand_on = stand 'on' (superficie)
-  WHERE superficie IsA supporto
-    ELSE
-      IF superficie IS NOT plurale
-        THEN SAY mia_AT:ogg1_illegale_SU_sg.
-        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
-      END IF.
-      "(stand on)." --                                                          FIX VERB!
-
-        stand_on = get 'on' (superficie).
-
-
-ADD TO EVERY supporto
-  VERB stand_on
-    CHECK mia_AT CAN stand_on
-      ELSE SAY mia_AT:azione_bloccata.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND superficie IS raggiungibile AND superficie IS NOT distante
-      ELSE
-        IF superficie IS NOT raggiungibile
-          THEN
-            IF superficie IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF superficie IS distante
-          THEN
-            IF superficie IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    DOES
-      "You feel no urge to stand on" SAY THE superficie. "."
-      -- or, to make it work, use the following instead of the above:
-      -- "You get on" SAY THE surface. "."
-      -- (Make an attribute for the hero to check that he's on the surface.
-      -- It is not possible to actually locate him on the surface (unless
-      -- you implement a nested location.)
-      --   MAKE hero NOT sitting. MAKE hero NOT lying_down.
-  END VERB stand_on.
-END ADD TO.
 
 
 

@@ -326,7 +326,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `catch`          | `acchiappa`               |
 | `clean`          | `pulire`                  |
 | `climb`          |                           |
-| `climb_on`       |                           |
+| `climb_on`       | `arrampicarsi`            |
 | `climb_through`  | `attraversare`            |
 | `close`          | `chiudere`                |
 | `close_with`     | `chiudere_con`            |
@@ -443,7 +443,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | ~~`smell0`~~     |                           |
 | `squeeze`        |                           |
 | `stand`          | `alzarsi`                 |
-| `stand_on`       |                           |
+| `stand_on`       | `salire_su`               |
 | `swim`           | `nuotare`                 |
 | `swim_in`        | `nuotare_in`              |
 | ~~`switch`~~     | _removed_                 |

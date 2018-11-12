@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Definizioni
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.24-Alpha, 2018-11-12: Alan 3.0beta6
+v0.7.25-Alpha, 2018-11-12: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_definitions.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -55,6 +55,7 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
   CAN annusare.                 ---> smell
   CAN aprire.                   ---> open
   CAN aprire_con.               ---> open_with
+  CAN arrampicarsi.             ---> climb_on
   CAN ascoltare.                ---> listen + listen0 | ascolta0 + ascolta
   CAN aspettare.                ---> wait         (+ z)
   CAN assaggiare.               ---> taste        (+ lick)
@@ -153,6 +154,7 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
   CAN rispondere_Sì.            ---> yes
   CAN rompere.                  ---> break        (+ destroy)
   CAN rompere_con.              ---> break_with
+  CAN salire_su.                ---> stand_on
   CAN salvare_partita.          ---> save
   CAN saltare.                  ---> jump
   CAN saltare_in.               ---> jump_in
@@ -284,7 +286,6 @@ Questo è l'elenco degli attributi verbali non ancora tradotti:
 [source,alan]
 --------------------------------------------------------------------------------
   CAN climb.
-  CAN climb_on.
 --CAN extinguish. ----------------> ** VERBO ELIMINATO **  (+ put out, quench)
 --CAN get_up. --------------------> ** VERBO ELIMINATO **
 --CAN light. ---------------------> ** VERBO ELIMINATO **
@@ -298,7 +299,6 @@ Questo è l'elenco degli attributi verbali non ancora tradotti:
 --CAN shoot_with. ----------------> ** VERBO ELIMINATO **
 --CAN smell0. --------------------> ** ATTRIBUTO ELIMINATO **
   CAN squeeze.
-  CAN stand_on.
 --CAN switch. --------------------> ** VERBO ELIMINATO **
 --CAN switch_on. -----------------> ** VERBO ELIMINATO **
 --CAN switch_off. ----------------> ** VERBO ELIMINATO **

@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.38-Alpha, 2018-11-12: Alan 3.0beta6
+v0.7.39-Alpha, 2018-11-12: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -88,6 +88,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | annusa             | odora                        | annusa (odore)                         |     | 1 |     |
 | apri               |                              | apri (ogg)                             |     | 1 | {X} |
 | apri_con           |                              | apri (ogg) con (strum)                 |     | 2 | {X} |
+| arrampicati        |                              | arrampicati su (superficie)            |     | 1 |     |
 | ascolta0           |                              | ascolta                                |     | 0 |     |
 | ascolta            |                              | ascolta (ogg)!                         |     | 1 | {X} |
 | aspetta            | attendi, Z                   | aspetta                                |     | 0 |     |
@@ -172,6 +173,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | rompi_con          | distruggi, spacca, sfonda    | rompi (ogg) con (strum)                |     | 2 | {X} |
 | ripara             | aggiusta                     | ripara (ogg)                           |     | 1 | {X} |
 | rispondi           |                              | rispondi (argomento)!                  |     | 1 |     |
+| sali_su            | mettiti                      | sali su (superficie)                   |     | 1 |     |
 | salta              |                              | salta                                  |     | 0 |     |
 | salta_in           |                              | salta in (cont)                        |     | 1 |     |
 | salta_su           |                              | salta su (superficie)                  |     | 1 |     |
@@ -709,11 +711,13 @@ Questo gruppo include i verbi per saltare:
 
 // end::gruppo_saltare[]
 // tag::gruppo_sedersi[]
-=== Sedersi, Sdraiarsi, Alzarsi
+=== Posizionarsi su Superfici
 
 Questo gruppo include i verbi per sedersi, sdraiarsi ed alazarsi:
 
 * `alzati`
+* `arrampicati`
+* `sali_su`
 * `scendi_da`
 * `siediti`
 * `siediti_su`
@@ -721,11 +725,11 @@ Questo gruppo include i verbi per sedersi, sdraiarsi ed alazarsi:
 * `sdraiati_in`
 * `sdraiati_su`
 
-Verbi di questo gruppo non ancora tradotti:
-
-* `stand_on`
-
 ==== alzati
+
+==== arrampicati
+
+==== sali_su
 
 ==== scendi_da
 
@@ -1026,13 +1030,11 @@ italiano del modulo dei verbi.
 | VERBO              | SINONIMI                           | SINTASSI                          | A |  O  
 | clean              | polish, wipe                       | clean (obj)                       | 1 | {x}
 | climb              |                                    | climb (obj)                       | 1 | {x}
-| climb_on           |                                    | climb on (surface)                | 1 |
 | pry                |                                    | pry (obj)                         | 1 | {x}
 | pry_with           |                                    | pry (obj) with (instr)            | 2 | {x}
 | rub                |                                    | rub (obj)                         | 1 | {x}
 | shake              |                                    | shake (obj)                       | 1 | {x}
 | squeeze            |                                    | squeeze (obj)                     | 1 | {x}
-| stand_on           |                                    | stand on (surface)                | 1 |
 |=======================================================================================================
 
 // end::verbi_non_tradotti[]
@@ -1207,6 +1209,10 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `salta_su`.
 
 * [ ] Descrizione `alzati`.
+
+* [ ] Descrizione `arrampicati`.
+
+* [ ] Descrizione `sali_su`.
 
 * [ ] Descrizione `scendi_da`.
 

@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.7.24-Alpha,</span>
+<span id="revnumber">versione 0.7.25-Alpha,</span>
 <span id="revdate">2018-11-12</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
@@ -510,6 +510,7 @@ giocatore il messaggio &#8220;Non puoi farlo.&#8221;.</p>
   CAN annusare.                 ---&gt; smell
   CAN aprire.                   ---&gt; open
   CAN aprire_con.               ---&gt; open_with
+  CAN arrampicarsi.             ---&gt; climb_on
   CAN ascoltare.                ---&gt; listen + listen0 | ascolta0 + ascolta
   CAN aspettare.                ---&gt; wait         (+ z)
   CAN assaggiare.               ---&gt; taste        (+ lick)
@@ -608,6 +609,7 @@ giocatore il messaggio &#8220;Non puoi farlo.&#8221;.</p>
   CAN rispondere_Sì.            ---&gt; yes
   CAN rompere.                  ---&gt; break        (+ destroy)
   CAN rompere_con.              ---&gt; break_with
+  CAN salire_su.                ---&gt; stand_on
   CAN salvare_partita.          ---&gt; save
   CAN saltare.                  ---&gt; jump
   CAN saltare_in.               ---&gt; jump_in
@@ -745,7 +747,6 @@ italiano del modulo delle definizioni.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  CAN climb.
-  CAN climb_on.
 --CAN extinguish. ----------------&gt; ** VERBO ELIMINATO **  (+ put out, quench)
 --CAN get_up. --------------------&gt; ** VERBO ELIMINATO **
 --CAN light. ---------------------&gt; ** VERBO ELIMINATO **
@@ -759,7 +760,6 @@ italiano del modulo delle definizioni.</p>
 --CAN shoot_with. ----------------&gt; ** VERBO ELIMINATO **
 --CAN smell0. --------------------&gt; ** ATTRIBUTO ELIMINATO **
   CAN squeeze.
-  CAN stand_on.
 --CAN switch. --------------------&gt; ** VERBO ELIMINATO **
 --CAN switch_on. -----------------&gt; ** VERBO ELIMINATO **
 --CAN switch_off. ----------------&gt; ** VERBO ELIMINATO **</code></pre>
@@ -777,7 +777,7 @@ italiano del modulo delle definizioni.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.7.24-Alpha<br>
+Versione 0.7.25-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">
