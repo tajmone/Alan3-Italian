@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.40-Alpha, 2018-11-12: Alan 3.0beta6
+v0.7.41-Alpha, 2018-11-12: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -182,6 +182,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | sblocca            |                              | sblocca (ogg)                          |     | 1 | {X} |
 | sblocca_con        |                              | sblocca (ogg) con (chiave)             |     | 2 | {X} |
 | scava              |                              | scava (ogg)                            |     | 1 | {X} |
+| scavalca           |                              | scavalca (ogg)                         |     | 1 | {X} |
 | scendi_da          |                              | scendi da (superficie)                 |     | 1 |     |
 | scrivi             |                              | scrivi "testo" su (ogg)                |     | 1 | {X} |
 | sdraiati           |                              | sdraiati                               |     | 0 |     |
@@ -949,6 +950,7 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 * `prega`
 * `rifai`
 * `scava`
+* `scavalca`
 * `segui`
 * `suona`
 * `trova`
@@ -998,6 +1000,8 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 
 ==== scava
 
+==== scavalca
+
 ==== segui
 
 ==== suona
@@ -1037,7 +1041,6 @@ italiano del modulo dei verbi.
 |=======================================================================================================
 | VERBO              | SINONIMI                           | SINTASSI                          | A |  O  
 | clean              | polish, wipe                       | clean (obj)                       | 1 | {x}
-| climb              |                                    | climb (obj)                       | 1 | {x}
 | rub                |                                    | rub (obj)                         | 1 | {x}
 | shake              |                                    | shake (obj)                       | 1 | {x}
 | squeeze            |                                    | squeeze (obj)                     | 1 | {x}
@@ -1341,6 +1344,8 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `rifai`.
 
 * [ ] Descrizione `scava`.
+
+* [ ] Descrizione `scavalca`.
 
 * [ ] Descrizione `segui`.
 

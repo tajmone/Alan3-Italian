@@ -305,7 +305,6 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 
 (defined in [`lib_definitions.i`][lib_definitions])
 
-> __NOT UPDATED!!!__ — the list below might not reflect the true status of the actual translated attributes!
 
 |   EN Attribute   |       IT Translation      |
 |------------------|---------------------------|
@@ -325,7 +324,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `buy`            | `comprare`                |
 | `catch`          | `acchiappa`               |
 | `clean`          | `pulire`                  |
-| `climb`          |                           |
+| `climb`          | `scavalcare`              |
 | `climb_on`       | `arrampicarsi`            |
 | `climb_through`  | `attraversare`            |
 | `close`          | `chiudere`                |
@@ -352,13 +351,13 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `fill`           | `riempire`                |
 | `fill_with`      | `riempire_con`            |
 | `find`           | `trovare`                 |
-| `fire`           |                           |
-| `fire_at`        |                           |
+| `fire`           | `sparare`                 |
+| `fire_at`        | `sparare_a`               |
 | `fix`            | `riparare`                |
 | `follow`         | `seguire`                 |
 | `free`           | `liberare`                |
 | `get_off`        | `scendere_da`             |
-| ~~`get_up`~~     |                           |
+| ~~`get_up`~~     | _removed_                 |
 | `give`           | `dare`                    |
 | `go_to`          | `andare_a`                |
 | `hint`           | `mostrare_suggerimenti`   |
@@ -408,14 +407,14 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `put`            | `mettere`                 |
 | `put_against`    | `mettere_contro`          |
 | `put_behind`     | `mettere_dietro`          |
-| ~~`put_down`~~   |                           |
+| ~~`put_down`~~   | _removed_                 |
 | `put_in`         | `mettere_in`              |
 | `put_near`       | `mettere_vicino`          |
 | `put_on`         | `mettere_su`              |
 | `put_under`      | `mettere_sotto`           |
 | `'quit'`         | `abbandonare_partita`     |
 | `read`           | `leggere`                 |
-| `remove`         |                           |
+| `remove`         | `togliersi_indumento`     |
 | `'restart'`      | `ricominciare_partita`    |
 | `'restore'`      | `caricare_partita`        |
 | `rub`            |                           |
@@ -430,8 +429,8 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `search`         | `ispezionare`             |
 | `sell`           | `vendere`                 |
 | `shake`          |                           |
-| ~~`shoot`~~      |                           |
-| ~~`shoot_with`~~ |                           |
+| ~~`shoot`~~      | _removed_                 |
+| ~~`shoot_with`~~ | _removed_                 |
 | `shout`          | `gridare`                 |
 | `'show'`         | `mostrare`                |
 | `sing`           | `cantare`                 |
@@ -440,7 +439,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `sit_on`         | `sedersi_su`              |
 | `sleep`          | `dormire`                 |
 | `smell`          | `annusare`                |
-| ~~`smell0`~~     |                           |
+| ~~`smell0`~~     | _removed_                 |
 | `squeeze`        |                           |
 | `stand`          | `alzarsi`                 |
 | `stand_on`       | `salire_su`               |
@@ -466,7 +465,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `tie_to`         | `legare_a`                |
 | `touch`          | `toccare`                 |
 | `touch_with`     | `toccare_con`             |
-| `turn`           |                           |
+| `turn`           | `girare`                  |
 | `turn_off`       | `spegnere`                |
 | `turn_on`        | `accendere`               |
 | `undress`        | `spogliarsi`              |

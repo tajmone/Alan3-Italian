@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.40-Alpha, 2018-11-12: Alan 3.0beta6
+--| v0.7.41-Alpha, 2018-11-12: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -927,6 +927,7 @@ END VERB ricomincia_partita.
 --| | sblocca            |                              | sblocca (ogg)                          |     | 1 | {X} |
 --| | sblocca_con        |                              | sblocca (ogg) con (chiave)             |     | 2 | {X} |
 --| | scava              |                              | scava (ogg)                            |     | 1 | {X} |
+--| | scavalca           |                              | scavalca (ogg)                         |     | 1 | {X} |
 --| | scendi_da          |                              | scendi da (superficie)                 |     | 1 |     |
 --| | scrivi             |                              | scrivi "testo" su (ogg)                |     | 1 | {X} |
 --| | sdraiati           |                              | sdraiati                               |     | 0 |     |
@@ -8804,6 +8805,7 @@ END ADD TO.
 --| * `prega`
 --| * `rifai`
 --| * `scava`
+--| * `scavalca`
 --| * `segui`
 --| * `suona`
 --| * `trova`
@@ -10024,6 +10026,74 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
+-->gruppo_sfusi                                             @SCAVALCA <-- @CLIMB
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== scavalca
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `scavalca`.
+--<
+
+-- @NOTA: Ho scelto arbitrariamente di tradurre questo verbo con 'scavalca'
+--        poiché altri usi più consoni all'originale sarebbero stati meno utili
+--        ai fini delle avventure.
+
+SYNTAX scavalca = scavalca (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+      --@NOTA: Qui dovrò usare un messaggio personalizzato (prep_SU)            TRANSLATE!
+        THEN SAY mia_AT:illegal_parameter_sg.
+        ELSE SAY mia_AT:illegal_parameter_pl.
+      END IF.
+
+
+ADD TO EVERY OBJECT
+  VERB scavalca
+  CHECK mia_AT CAN scavalcare
+    ELSE SAY mia_AT:azione_bloccata.
+  AND ogg IS esaminabile
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF. "scavalcare."
+  AND CURRENT LOCATION IS illuminato
+    ELSE SAY mia_AT:imp_luogo_buio.
+  AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+  AND hero IS NOT seduto
+--                                                                              TRANSLATE!
+    ELSE SAY mia_AT:check_hero_not_sitting3.
+  AND hero IS NOT sdraiato
+--                                                                              TRANSLATE!
+    ELSE SAY mia_AT:check_hero_not_lying_down3.
+  DOES
+    IF ogg IS NOT plurale
+      THEN SAY mia_AT:ogg1_inadatto_sg.
+      ELSE SAY mia_AT:ogg1_inadatto_pl.
+    END IF. "scavalcare."
+  END VERB scavalca.
+END ADD TO.
+
+
+
 -->gruppo_sfusi                                               @SEGUI <-- @FOLLOW
 --~=============================================================================
 --~-----------------------------------------------------------------------------
@@ -10621,7 +10691,7 @@ END VERB rispondi_Sì.
 --~*| buy                | purchase                           | buy (item)                        | 1 |
 --~*| catch              |                                    | catch (obj)                       | 1 | {x}
 --| | clean              | polish, wipe                       | clean (obj)                       | 1 | {x}
---| | climb              |                                    | climb (obj)                       | 1 | {x}
+--~*| climb              |                                    | climb (obj)                       | 1 | {x}
 --~*| climb_on           |                                    | climb on (surface)                | 1 |
 --~*| climb_through      |                                    | climb through (obj)               | 1 | {x}
 --~*| close              | shut                               | close (obj)                       | 1 | {x}
@@ -10851,75 +10921,6 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
-
-
-
--- ==============================================================
-
-
--- @CLIMB
-
-
--- ==============================================================
-
-
-SYNTAX climb = climb (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-      --@NOTA: Qui dovrò usare un messaggio personalizzato (prep_SU)            TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter_sg.
-        ELSE SAY mia_AT:illegal_parameter_pl.
-      END IF.
-
-
-
-ADD TO EVERY OBJECT
-  VERB climb
-  CHECK mia_AT CAN climb
-    ELSE SAY mia_AT:azione_bloccata.
-  AND ogg IS esaminabile
-    ELSE
-      IF ogg IS NOT plurale
-      --------------------------------------------------------------------------
-      --@NOTA: Qui dovrò usare un messaggio personalizzato, del tipo:
-      --       "$+1 non [è/sono] qualcosa su cui potersi arrampicare"
-      --------------------------------------------------------------------------
---                                                                              TRANSLATE!
-        THEN SAY mia_AT:check_obj_suitable_sg.
-        ELSE SAY mia_AT:check_obj_suitable_pl.
-      END IF.
-  AND CURRENT LOCATION IS illuminato
-    ELSE SAY mia_AT:imp_luogo_buio.
-  AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-  AND hero IS NOT seduto
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:check_hero_not_sitting3.
-  AND hero IS NOT sdraiato
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:check_hero_not_lying_down3.
-  DOES
-    IF ogg IS NOT plurale
-      THEN "That's not"
-      ELSE "Those are not"
-    END IF.
-    "something you can climb."
-  END VERB climb.
-END ADD TO.
 
 
 

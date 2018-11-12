@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.7.26-Alpha,</span>
+<span id="revnumber">versione 0.7.27-Alpha,</span>
 <span id="revdate">2018-11-12</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
@@ -618,6 +618,7 @@ giocatore il messaggio &#8220;Non puoi farlo.&#8221;.</p>
   CAN saltare_su.               ---&gt; jump_on
   CAN sbloccare.                ---&gt; unlock
   CAN sbloccare_con.            ---&gt; unlock_with
+  CAN scavalcare.               ---&gt;climb
   CAN scavare.                  ---&gt; dig
   CAN scendere_da.              ---&gt; get_off
   CAN scrivere.                 ---&gt; write
@@ -748,8 +749,7 @@ italiano del modulo delle definizioni.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  CAN climb.
---CAN extinguish. ----------------&gt; ** VERBO ELIMINATO **  (+ put out, quench)
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">--CAN extinguish. ----------------&gt; ** VERBO ELIMINATO **  (+ put out, quench)
 --CAN get_up. --------------------&gt; ** VERBO ELIMINATO **
 --CAN light. ---------------------&gt; ** VERBO ELIMINATO **
 --CAN look_at. -------------------&gt; ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
@@ -777,7 +777,7 @@ italiano del modulo delle definizioni.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.7.26-Alpha<br>
+Versione 0.7.27-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

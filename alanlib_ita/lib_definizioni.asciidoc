@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Definizioni
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.26-Alpha, 2018-11-12: Alan 3.0beta6
+v0.7.27-Alpha, 2018-11-12: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_definitions.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -163,6 +163,7 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
   CAN saltare_su.               ---> jump_on
   CAN sbloccare.                ---> unlock
   CAN sbloccare_con.            ---> unlock_with
+  CAN scavalcare.               --->climb
   CAN scavare.                  ---> dig
   CAN scendere_da.              ---> get_off
   CAN scrivere.                 ---> write
@@ -287,7 +288,6 @@ Questo è l'elenco degli attributi verbali non ancora tradotti:
 
 [source,alan]
 --------------------------------------------------------------------------------
-  CAN climb.
 --CAN extinguish. ----------------> ** VERBO ELIMINATO **  (+ put out, quench)
 --CAN get_up. --------------------> ** VERBO ELIMINATO **
 --CAN light. ---------------------> ** VERBO ELIMINATO **

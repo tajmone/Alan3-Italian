@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.26-Alpha, 2018-11-12: Alan 3.0beta6
+--| v0.7.27-Alpha, 2018-11-12: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -822,6 +822,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN saltare_su.               ---> jump_on
   CAN sbloccare.                ---> unlock
   CAN sbloccare_con.            ---> unlock_with
+  CAN scavalcare.               --->climb
   CAN scavare.                  ---> dig
   CAN scendere_da.              ---> get_off
   CAN scrivere.                 ---> write
@@ -872,7 +873,6 @@ EVERY blocco_definizioni IsA LOCATION
 --| === Restrizioni Verbali da Tradurre
 --| 
 --| Questo è l'elenco degli attributi verbali non ancora tradotti:
-  CAN climb.
 --CAN extinguish. ----------------> ** VERBO ELIMINATO **  (+ put out, quench)
 --CAN get_up. --------------------> ** VERBO ELIMINATO **
 --CAN light. ---------------------> ** VERBO ELIMINATO **
@@ -1042,6 +1042,7 @@ EVENT check_restriction
       MAKE mia_AT salvare_partita.          ---> save
       MAKE mia_AT sbloccare.                ---> unlock
       MAKE mia_AT sbloccare_con.            ---> unlock_with
+      MAKE mia_AT scavalcare.               --->climb
       MAKE mia_AT scavare.                  ---> dig
       MAKE mia_AT scendere_da.              ---> get_off
       MAKE mia_AT scrivere.                 ---> write
@@ -1088,7 +1089,6 @@ EVENT check_restriction
       MAKE mia_AT versare_su.               ---> pour_on
 
     --# NOT YET TRANSLATED:
-      MAKE mia_AT climb.
     --MAKE mia_AT extinguish. --------> ** VERBO ELIMINATO ** (+ put out, quench)
     --MAKE mia_AT get_up. ------------> ** VERBO ELIMINATO **
     --MAKE mia_AT light. -------------> ** VERBO ELIMINATO **
@@ -1208,6 +1208,7 @@ EVENT check_restriction
           MAKE mia_AT NOT saltare_su.               ---> jump_on
           MAKE mia_AT NOT sbloccare.                ---> unlock
           MAKE mia_AT NOT sbloccare_con.            ---> unlock_with
+          MAKE mia_AT NOT scavalcare.               --->climb
           MAKE mia_AT NOT scavare.                  ---> dig
           MAKE mia_AT NOT scendere_da.              ---> get_off
           MAKE mia_AT NOT scrivere.                 ---> write
@@ -1251,7 +1252,6 @@ EVENT check_restriction
 
         --# NOT YET TRANSLATED:
 
-          MAKE mia_AT NOT climb.
         --MAKE mia_AT NOT extinguish. ----> ** VERBO ELIMINATO ** (+ put out, quench)
         --MAKE mia_AT NOT get_up. --------> ** VERBO ELIMINATO **
         --MAKE mia_AT NOT light. ---------> ** VERBO ELIMINATO **
