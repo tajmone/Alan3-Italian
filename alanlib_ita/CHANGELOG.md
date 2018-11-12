@@ -11,6 +11,9 @@ Status: Alpha stage.
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/11/12](#20181112)
+    - [Verb Responses](#verb-responses)
+    - [Verb: `'show'`](#verb-show)
 - [2018/11/11 \(2\)](#20181111-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes)
     - [Verbs: `knock` and `knock_error`](#verbs-knock-and-knock_error)
@@ -20,11 +23,11 @@ Status: Alpha stage.
     - [Verb Restriction Attributes](#verb-restriction-attributes-1)
     - [Group of Verbs: `fire*`](#group-of-verbs-fire)
     - [Delete `shoot*` Verbs](#delete-shoot-verbs)
-    - [Verb Responses](#verb-responses)
+    - [Verb Responses](#verb-responses-1)
 - [2018/11/10 \(5\)](#20181110-5)
     - [Verb Restriction Attributes](#verb-restriction-attributes-2)
     - [Verbs: `enter` and `'exit'`](#verbs-enter-and-exit)
-    - [Verb Responses](#verb-responses-1)
+    - [Verb Responses](#verb-responses-2)
 - [2018/11/10 \(4\)](#20181110-4)
     - [Verb Restriction Attributes](#verb-restriction-attributes-3)
     - [Verb: `turn`](#verb-turn)
@@ -58,13 +61,13 @@ Status: Alpha stage.
     - [Verbs `lie_*`](#verbs-lie_)
 - [2018/11/09 \(1\)](#20181109-1)
     - [Verbs: `jump`, `jump_in` and `jump_on`](#verbs-jump-jump_in-and-jump_on)
-    - [Verb Responses](#verb-responses-2)
+    - [Verb Responses](#verb-responses-3)
 - [2018/11/08](#20181108)
         - [Fix Verb Responses](#fix-verb-responses)
 - [2018/11/03 \(3\)](#20181103-3)
     - [Verb Restriction Attributes](#verb-restriction-attributes-9)
     - [Verbs `put*`](#verbs-put)
-    - [Verb Responses](#verb-responses-3)
+    - [Verb Responses](#verb-responses-4)
     - [Doxterize](#doxterize-1)
 - [2018/11/03 \(2\)](#20181103-2)
     - [Code Cleanup](#code-cleanup)
@@ -72,17 +75,17 @@ Status: Alpha stage.
 - [2018/11/03 \(1\)](#20181103-1)
     - [Verb: `bite`](#verb-bite)
     - [Verb Restriction Attributes](#verb-restriction-attributes-10)
-    - [Verb Responses](#verb-responses-4)
+    - [Verb Responses](#verb-responses-5)
 - [2018/11/02 \(2\)](#20181102-2)
     - [Doxterize Classes](#doxterize-classes)
     - [Verbs: `empty*` and `pour*`](#verbs-empty-and-pour)
-    - [Verb Responses](#verb-responses-5)
+    - [Verb Responses](#verb-responses-6)
 - [2018/11/02 \(1\)](#20181102-1)
     - [Verb: `taste`](#verb-taste)
 - [2018/11/01](#20181101)
     - [Verb: `sip`](#verb-sip)
     - [Verb Restriction Attributes](#verb-restriction-attributes-11)
-    - [Verb Responses](#verb-responses-6)
+    - [Verb Responses](#verb-responses-7)
     - [Doxterize Verbs](#doxterize-verbs)
     - [Tweak Lib Classes](#tweak-lib-classes)
 - [2018/10/31 \(2\)](#20181031-2)
@@ -104,7 +107,7 @@ Status: Alpha stage.
     - [Rename Verbs](#rename-verbs)
 - [2018/10/21 \(3\)](#20181021-3)
     - [`notify*` Verbs](#notify-verbs)
-    - [Verb Responses](#verb-responses-7)
+    - [Verb Responses](#verb-responses-8)
     - [Library Attributes for Notify](#library-attributes-for-notify)
     - [Score Event](#score-event)
 - [2018/10/21 \(2\)](#20181021-2)
@@ -120,10 +123,10 @@ Status: Alpha stage.
 - [2018/10/19 \(1\)](#20181019-1)
     - [Verb: `scratch`](#verb-scratch)
     - [Verb Restriction Attributes](#verb-restriction-attributes-17)
-    - [Verb Responses](#verb-responses-8)
+    - [Verb Responses](#verb-responses-9)
 - [2018/10/18](#20181018)
     - [Translate Responses for "Look" Verbs](#translate-responses-for-look-verbs)
-    - [Verb Responses](#verb-responses-9)
+    - [Verb Responses](#verb-responses-10)
 - [2018/10/17](#20181017)
     - [Verb Restriction Attributes](#verb-restriction-attributes-18)
     - [Translate "Look" Verbs](#translate-look-verbs)
@@ -161,7 +164,7 @@ Status: Alpha stage.
     - [New Recurrent Verb Responses Attributes](#new-recurrent-verb-responses-attributes)
 - [2018/08/27 \(2\)](#20180827-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-21)
-    - [Verb Responses](#verb-responses-10)
+    - [Verb Responses](#verb-responses-11)
     - [Verbs: `talk` and `talk_to`](#verbs-talk-and-talk_to)
 - [2018/08/27 \(1\)](#20180827-1)
     - [Verb Restriction Attributes](#verb-restriction-attributes-22)
@@ -186,14 +189,14 @@ Status: Alpha stage.
 - [2018/08/16 \(2\)](#20180816-2)
     - [Fix Actors Initialization and Description](#fix-actors-initialization-and-description)
 - [2018/08/16 \(1\)](#20180816-1)
-    - [Verb Responses](#verb-responses-11)
+    - [Verb Responses](#verb-responses-12)
     - [Corretto Risposte Per `indossa` e `togliti`](#corretto-risposte-per-indossa-e-togliti)
 - [2018/08/11](#20180811)
     - [Verb Restriction Attributes](#verb-restriction-attributes-25)
-    - [Verb Responses](#verb-responses-12)
+    - [Verb Responses](#verb-responses-13)
     - [Verb: `remove`](#verb-remove)
 - [2018/08/09](#20180809)
-    - [Verb Responses](#verb-responses-13)
+    - [Verb Responses](#verb-responses-14)
     - [Verb: `wear`](#verb-wear)
 - [2018/08/08](#20180808)
     - [Deleted `present_actor` Attribute](#deleted-present_actor-attribute)
@@ -210,7 +213,7 @@ Status: Alpha stage.
 - [2018/08/06 \(1\)](#20180806-1)
     - [Library Attributes](#library-attributes)
 - [2018/08/02 \(3\)](#20180802-3)
-    - [Verb Responses](#verb-responses-14)
+    - [Verb Responses](#verb-responses-15)
     - [Verbs: `tie` and `tie_to`](#verbs-tie-and-tie_to)
 - [2018/08/02 \(2\)](#20180802-2)
 - [2018/08/02 \(1\)](#20180802-1)
@@ -218,7 +221,7 @@ Status: Alpha stage.
     - [Verbs: `touch` and `touch_with`](#verbs-touch-and-touch_with)
     - [Code Cleanup](#code-cleanup-1)
 - [2018/08/01 \(4\)](#20180801-4)
-    - [Verb Responses](#verb-responses-15)
+    - [Verb Responses](#verb-responses-16)
     - [Verb: `sing`](#verb-sing)
     - [Verb: `kiss`](#verb-kiss)
     - [Verb: `pull`](#verb-pull)
@@ -226,7 +229,7 @@ Status: Alpha stage.
     - [Verbs: `attack` and `attack_with`](#verbs-attack-and-attack_with)
 - [2018/08/01 \(2\)](#20180801-2)
     - [Verb Restriction Attributes](#verb-restriction-attributes-26)
-    - [Verb Responses](#verb-responses-16)
+    - [Verb Responses](#verb-responses-17)
     - [Verbs: `cut` and `cut_with`](#verbs-cut-and-cut_with)
     - [Verb: `dance`](#verb-dance)
     - [Verb: `dig`](#verb-dig)
@@ -240,7 +243,7 @@ Status: Alpha stage.
     - [Verb: `think_about`](#verb-think_about)
 - [2018/07/31 \(1\)](#20180731-1)
     - [Verb Restriction Attributes](#verb-restriction-attributes-28)
-    - [Verb Responses](#verb-responses-17)
+    - [Verb Responses](#verb-responses-18)
     - [Verb: `fix`](#verb-fix)
 - [2018/07/29 \(2\)](#20180729-2)
     - [Remove Verb Restriction Attributes](#remove-verb-restriction-attributes)
@@ -252,9 +255,9 @@ Status: Alpha stage.
     - [Verb Restriction Attributes](#verb-restriction-attributes-29)
     - [Testo dei Verbi](#testo-dei-verbi)
 - [2018/07/28 \(3\)](#20180728-3)
-    - [Verb Responses](#verb-responses-18)
-- [2018/07/28 \(2\)](#20180728-2)
     - [Verb Responses](#verb-responses-19)
+- [2018/07/28 \(2\)](#20180728-2)
+    - [Verb Responses](#verb-responses-20)
     - [Verb Restriction Attributes](#verb-restriction-attributes-30)
     - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
 - [2018/07/28 \(1\)](#20180728-1)
@@ -450,6 +453,27 @@ Status: Alpha stage.
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
+
+# 2018/11/12
+
+- [`lib_messaggi.i`][lib_messaggi] (v0.7.13)
+- [`lib_verbi.i`][lib_verbi] (v0.7.36)
+
+## Verb Responses
+
+Subtitute all occurences of `check_obj2_not_hero1` with `azione_insensata` and delete original.
+
+
+## Verb: `'show'`
+
+Translated verb `mostra`, "__mostra__" (_show_):
+
+    mostra (ogg) a (png)
+
+with no synonyms.
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/11/11 (2)
 

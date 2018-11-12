@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.35-Alpha, 2018-11-11: Alan 3.0beta6
+--| v0.7.36-Alpha, 2018-11-12: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -768,6 +768,7 @@ END VERB ringraziamenti.
 --| | metti_su           |                              | metti (ogg) su (superficie)            |     | 2 | {X} |
 --| | metti_vicino       |                              | metti (ogg) vicino a (bulk)            |     | 2 | {X} |
 --| | mordi              |                              | mordi (ogg)                            |     | 1 | {X} |
+--| | mostra             |                              | mostra (ogg) a (png)                   |     | 2 | {X} |
 --| | nuota              |                              | nuota                                  |     | 0 |     |
 --| | nuota_in           |                              | nuota in (liq)                         |     | 1 |     |
 --| | parla              |                              | parla                                  |     | 0 |     |
@@ -2015,8 +2016,7 @@ ADD TO EVERY THING
         ELSE SAY mia_AT:check_obj_not_obj2_with.
 --                                                                              TRANSLATE!
       AND strum <> hero
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj2_not_hero1.
+        ELSE SAY mia_AT:azione_insensata.
       AND strum IN hero
         ELSE SAY mia_AT:non_possiedi_ogg2.
 --                                                                              TRANSLATE!
@@ -2272,8 +2272,7 @@ ADD TO EVERY ACTOR
       CHECK mia_AT CAN dire_a
         ELSE SAY mia_AT:azione_bloccata.
       AND png <> hero
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj2_not_hero1.
+        ELSE SAY mia_AT:azione_insensata.
       AND png CAN parlare
         ELSE
           IF png IS NOT plurale
@@ -4971,8 +4970,7 @@ ADD TO EVERY THING
         ---> @TODO!!                                                            TRANSLATE!
         ELSE SAY mia_AT:check_obj_not_hero1.
       AND detentore <> hero
-        ---> @TODO!!                                                            TRANSLATE!
-        ELSE SAY mia_AT:check_obj2_not_hero1.
+        ELSE SAY mia_AT:azione_insensata.
           AND ogg NOT DIRECTLY IN hero
           ELSE  SAY mia_AT:check_obj_not_in_hero2. --#-> "You already have $+1."
       AND ogg <> detentore
@@ -6362,9 +6360,8 @@ ADD TO EVERY OBJECT
 --                                                                              TRANSLATE!
       AND ricevente NOT IN hero
         ELSE SAY mia_AT:check_obj2_not_in_hero1.
---                                                                              TRANSLATE!
       AND ricevente <> hero
-        ELSE SAY mia_AT:check_obj2_not_hero1.
+        ELSE SAY mia_AT:azione_insensata.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND proiettile IS raggiungibile AND proiettile IS NOT distante
@@ -6449,9 +6446,8 @@ ADD TO EVERY OBJECT
 --                                                                              TRANSLATE!
       AND bersaglio NOT IN hero
         ELSE SAY mia_AT:check_obj2_not_in_hero1.
---                                                                              TRANSLATE!
       AND bersaglio <> hero
-        ELSE SAY mia_AT:check_obj2_not_hero1.
+        ELSE SAY mia_AT:azione_insensata.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND proiettile IS raggiungibile AND proiettile IS NOT distante
@@ -6578,9 +6574,8 @@ ADD TO EVERY OBJECT
 --                                                                              TRANSLATE!
       AND proiettile <> cont
         ELSE SAY mia_AT:check_obj_not_obj2_in.
---                                                                              TRANSLATE!
       AND cont <> hero
-        ELSE SAY mia_AT:check_obj2_not_hero1.
+        ELSE SAY mia_AT:azione_insensata.
 --                                                                              TRANSLATE!
       AND cont NOT IN hero
         ELSE SAY mia_AT:check_obj2_not_in_hero1.
@@ -8377,6 +8372,7 @@ END ADD TO.
 --| * `lega`
 --| * `lega_a`
 --| * `libera`
+--| * `mostra`
 --| * `prega`
 --| * `rifai`
 --| * `scava`
@@ -9423,6 +9419,68 @@ ADD TO EVERY THING
   END VERB libera.
 END ADD TO.
 
+-->gruppo_sfusi                                                @MOSTRA <-- @SHOW
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== mostra
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `mostra`.
+--<
+
+-- SYNTAX  'show' = 'show' (ogg) 'to' (png)
+-- SYNONYMS reveal = 'show'.
+
+
+SYNTAX mostra = mostra (ogg) a (png)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg = hero
+        THEN SAY mia_AT:azione_insensata.
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF. "mostrare."
+      END IF.
+  AND png IsA ACTOR
+    ELSE
+      IF png IS NOT plurale
+        THEN SAY mia_AT:ogg2_illegale_A_sg.
+        ELSE SAY mia_AT:ogg2_illegale_A_pl.
+      END IF. "mostrare $+1."
+
+
+ADD TO EVERY OBJECT
+  VERB mostra
+    WHEN ogg
+      CHECK mia_AT CAN mostrare
+        ELSE SAY mia_AT:azione_bloccata.
+      AND png <> hero
+        ELSE SAY mia_AT:azione_insensata.
+      AND ogg IN hero
+        ELSE SAY mia_AT:non_possiedi_ogg1.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY mia_AT:imp_luogo_buio.
+      AND png IS NOT distante
+        ELSE
+          IF png IS NOT plurale
+            THEN SAY mia_AT:ogg2_distante_sg.
+            ELSE SAY mia_AT:ogg2_distante_pl.
+          END IF.
+      DOES
+        SAY THE png. "non sembra"
+        IF png IS plurale
+          THEN "$$no"
+        END IF.
+        "interessat$$" SAY png:vocale. "."
+  END VERB mostra.
+END ADD TO.
+
+
 -->gruppo_sfusi                                                 @PREGA <-- @PRAY
 --~=============================================================================
 --~-----------------------------------------------------------------------------
@@ -10239,7 +10297,7 @@ END VERB rispondi_Sì.
 --~!| shoot (at)         |                                    | shoot at (target)                 | 1 |
 --~!| shoot_with         |                                    | shoot (target) with (weapon)      | 2 |
 --~*| shout              | scream, yell                       | shout                             | 0 |
---| | show               | reveal                             | show (obj) to (act)               | 2 | {x}
+--~*| show               | reveal                             | show (obj) to (act)               | 2 | {x}
 --~*| sing               |                                    | sing                              | 0 |
 --~*| sip                |                                    | sip (liq)                         | 1 |
 --~*| sit (down)         |                                    | sit.  sit down.                   | 0 |
@@ -10293,11 +10351,6 @@ END VERB rispondi_Sì.
 --~*| yes                |                                    | yes                               | 0 |
 --| |=======================================================================================================
 --<
-
-
------ The verbs and commands:
-
-
 
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -10365,10 +10418,6 @@ META VERB hint
   DOES
     "Unfortunately hints are not available in this game."
 END VERB hint.
-
-
-
-
 
 
 --=============================================================================
@@ -10917,68 +10966,6 @@ ADD TO EVERY OBJECT
         ELSE "There is no reason to start shaking" SAY THE ogg. "."
       END IF.
   END VERB shake.
-END ADD TO.
-
-
--- ==============================================================
-
-
--- @MOSTRA <-- @SHOW
-
-
--- ==============================================================
--- SYNTAX  'show' = 'show' (ogg) 'to' (png)
--- SYNONYMS reveal = 'show'.
-
-
-SYNTAX 'show' = 'show' (ogg) 'to' (png)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "mostrare."
-  AND png IsA ACTOR
-    ELSE
---                                                                              TRANSLATE!
-      IF png IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter2_to_sg.
-        ELSE SAY mia_AT:illegal_parameter2_to_pl.
-      END IF.
-
-
-SYNONYMS reveal = 'show'.
-
-
-ADD TO EVERY OBJECT
-  VERB 'show'
-    WHEN ogg
-      CHECK mia_AT CAN mostrare
-        ELSE SAY mia_AT:azione_bloccata.
-      AND png <> hero
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj2_not_hero1.
-      AND ogg IN hero
-        ELSE SAY mia_AT:non_possiedi_ogg1.
-      AND CURRENT LOCATION IS illuminato
-        ELSE SAY mia_AT:imp_luogo_buio.
-      AND png IS NOT distante
-        ELSE
-          IF png IS NOT plurale
-            THEN SAY mia_AT:ogg2_distante_sg.
-            ELSE SAY mia_AT:ogg2_distante_pl.
-          END IF.
-      DOES
---                                                                              TRANSLATE!
-        SAY THE png.
-        IF png IS NOT plurale
-          THEN "is"
-          ELSE "are"
-        END IF.
-        "not especially interested."
-  END VERB 'show'.
 END ADD TO.
 
 

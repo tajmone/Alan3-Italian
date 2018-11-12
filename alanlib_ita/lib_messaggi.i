@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi.i"
---| v0.7.12-Alpha, 2018-11-11: Alan 3.0beta6
+--| v0.7.13-Alpha, 2018-11-12: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -826,7 +826,7 @@ ADD TO EVERY blocco_definizioni
   -- ====================
 
   -- VERBI: togliti
-  -- ORIGINAL EN: (nessuno, sostituisce vari messaggi inglesi)
+  -- ORIGINAL EN: (vari messaggi inglesi: check_obj2_not_hero1)
   HAS azione_insensata  "Questo non ha alcun senso.".
 
   -- VERBI: spara_a, spara_a_errore.
@@ -849,7 +849,6 @@ ADD TO EVERY blocco_definizioni
   HAS check_obj_not_hero6  "There is no time for that now.".                    -- kiss, play_with, rub
   HAS check_obj_not_hero7  "Turning your head, you notice nothing unusual behind yourself.".   -- look_behind
   HAS check_obj_not_hero8  "You notice nothing unusual under yourself.".        -- look_under
-  HAS check_obj2_not_hero1 "That doesn't make sense.".                          -- say_to, show, take_from, touch_with, throw_at/in/to
   HAS check_obj2_not_hero2 "That would be futile.".                             -- put_against, put_behind, put_near, put_under
   HAS check_obj2_not_hero3 "You can't $v things to yourself.".                  -- give, tie_to
 
@@ -895,6 +894,9 @@ ADD TO EVERY blocco_definizioni
   HAS non_servirebbe_a_nulla "Farlo non servirebbe a nulla.".
   -- @NOTA: i6 usa: "Non otterrai niente con questo."
   
+  -- VERBI: xxx.
+  -- ORIGINAL EN: xxx.
+  HAS yyyy  "zzzz".
 
 
   -- ================

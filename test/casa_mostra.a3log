@@ -1,0 +1,74 @@
+
+
+La Casa 
+Un set per eseguire test su stanze e luoghi esterni. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+La Cucina
+A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
+qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un coltello, una 
+pistola, un vasetto e un cesto per la frutta.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                              TESTA "MOSTRA A"                              *
+> ; *                                                                            *
+> ; ******************************************************************************
+> prendi le mela
+Presa.
+
+> sud
+Il Giardino di Casa
+A nord puoi tornare in casa. Puoi vedere un tavolo, un lettino e una 
+piscina qui. C'è un giardiniere qui.
+
+> ; ==============================================================================
+> ; TESTA 'mostra'
+> ; ==============================================================================
+> mostra la mela al giardiniere
+Il giardiniere non sembra interessato.
+
+> nord
+La Cucina
+A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
+qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un coltello, una 
+pistola, un vasetto e un cesto per la frutta.
+
+> ; ==============================================================================
+> ; Parametri Non Validi
+> ; ==============================================================================
+> mostra 1 a 1
+1 non è qualcosa che puoi mostrare.
+
+> ; ------------------------------------------------------------------------------
+> ; Parametro 1
+> ; ------------------------------------------------------------------------------
+> mostra 1 al tavolo
+1 non è qualcosa che puoi mostrare.
+
+> ; ------------------------------------------------------------------------------
+> ; Parametro 2
+> ; ------------------------------------------------------------------------------
+> mostra il cesto al tavolo
+Il tavolo non è qualcosa a cui poter mostrare il cesto per la frutta.
+
+> mostra il cesto a 1
+1 non è qualcosa a cui poter mostrare il cesto per la frutta.
+
+> ; ------------------------------------------------------------------------------
+> ; Etero-Dirette
+> ; ------------------------------------------------------------------------------
+> mostra me al tavolo
+Questo non ha alcun senso.
+
+> mostra il cesto a me
+Questo non ha alcun senso.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 
