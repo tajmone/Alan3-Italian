@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.7.39-Alpha,</span>
+<span id="revnumber">versione 0.7.40-Alpha,</span>
 <span id="revdate">2018-11-12</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
@@ -512,6 +512,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_blocca_con">blocca_con</a></li>
 <li><a href="#_chiudi">chiudi</a></li>
 <li><a href="#_chiudi_con">chiudi_con</a></li>
+<li><a href="#_forza">forza</a></li>
+<li><a href="#_forza_con">forza_con</a></li>
 <li><a href="#_sblocca">sblocca</a></li>
 <li><a href="#_sblocca_con">sblocca_con</a></li>
 </ul>
@@ -1386,6 +1388,24 @@ elencati in ordine alfabetico.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">esci da (ogg)</p></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>forza</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">forza (ogg)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>forza_con</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">forza (ogg) con (strum)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
@@ -2614,6 +2634,12 @@ luce e dispositivi:</p>
 <p><code>chiudi_con</code></p>
 </li>
 <li>
+<p><code>forza</code></p>
+</li>
+<li>
+<p><code>forza_con</code></p>
+</li>
+<li>
 <p><code>sblocca</code></p>
 </li>
 <li>
@@ -2643,6 +2669,14 @@ luce e dispositivi:</p>
 </div>
 <div class="sect3">
 <h4 id="_chiudi_con"><a class="anchor" href="#_chiudi_con"></a>chiudi_con</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_forza"><a class="anchor" href="#_forza"></a>forza</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_forza_con"><a class="anchor" href="#_forza_con"></a>forza_con</h4>
 
 </div>
 <div class="sect3">
@@ -3947,20 +3981,6 @@ italiano del modulo dei verbi.</p>
 <td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pry</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">pry (obj)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pry_with</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">pry (obj) with (instr)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>rub</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">rub (obj)</p></td>
@@ -4064,6 +4084,12 @@ italiano del modulo dei verbi.</p>
 </li>
 <li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>chiudi_con</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>forza</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>forza_con</code>.</p>
 </li>
 <li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>sblocca</code>.</p>
@@ -4442,7 +4468,7 @@ italiano del modulo dei verbi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.7.39-Alpha<br>
+Versione 0.7.40-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

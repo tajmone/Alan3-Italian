@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.39-Alpha, 2018-11-12: Alan 3.0beta6
+v0.7.40-Alpha, 2018-11-12: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -122,6 +122,8 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | esamina            | guarda, descrivi, osserva, X | esamina (ogg)                          |     | 1 | {X} |
 | esci               |                              | esci                                   |     | 0 |     |
 | esci_da            |                              | esci da (ogg)                          |     | 1 | {X} |
+| forza              |                              | forza (ogg)                            |     | 1 | {X} |
+| forza_con          |                              | forza (ogg) con (strum)                |     | 2 | {X} |
 | gioca_con          |                              | gioca con (ogg)                        |     | 1 | {X} |
 | gira               |                              | gira (ogg)                             |     | 1 | {X} |
 | gratta             |                              | gratta (ogg)                           |     | 1 | {X} |
@@ -376,6 +378,8 @@ Questo gruppo include i verbi per aprire, chiudere e bloccare:
 * `blocca_con`
 * `chiudi`
 * `chiudi_con`
+* `forza`
+* `forza_con`
 * `sblocca`
 * `sblocca_con`
 
@@ -390,6 +394,10 @@ Questo gruppo include i verbi per aprire, chiudere e bloccare:
 ==== chiudi
 
 ==== chiudi_con
+
+==== forza
+
+==== forza_con
 
 ==== sblocca
 
@@ -1030,8 +1038,6 @@ italiano del modulo dei verbi.
 | VERBO              | SINONIMI                           | SINTASSI                          | A |  O  
 | clean              | polish, wipe                       | clean (obj)                       | 1 | {x}
 | climb              |                                    | climb (obj)                       | 1 | {x}
-| pry                |                                    | pry (obj)                         | 1 | {x}
-| pry_with           |                                    | pry (obj) with (instr)            | 2 | {x}
 | rub                |                                    | rub (obj)                         | 1 | {x}
 | shake              |                                    | shake (obj)                       | 1 | {x}
 | squeeze            |                                    | squeeze (obj)                     | 1 | {x}
@@ -1093,6 +1099,10 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `chiudi`.
 
 * [ ] Descrizione `chiudi_con`.
+
+* [ ] Descrizione `forza`.
+
+* [ ] Descrizione `forza_con`.
 
 * [ ] Descrizione `sblocca`.
 

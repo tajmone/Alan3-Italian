@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Definizioni
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.25-Alpha, 2018-11-12: Alan 3.0beta6
+v0.7.26-Alpha, 2018-11-12: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_definitions.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -91,6 +91,8 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
   CAN dormire.                  ---> sleep        (+ rest)
   CAN entrare.                  ---> enter
   CAN esaminare.                ---> examine      (+ check, inspect, observe, x)
+  CAN forzare.                  ---> pry
+  CAN forzare_con.              ---> pry_with
   CAN giocare_con.              ---> play_with
   CAN girare.                   ---> turn (+ rotate)
   CAN grattare.                 ---> scratch
@@ -290,8 +292,6 @@ Questo è l'elenco degli attributi verbali non ancora tradotti:
 --CAN get_up. --------------------> ** VERBO ELIMINATO **
 --CAN light. ---------------------> ** VERBO ELIMINATO **
 --CAN look_at. -------------------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
-  CAN pry.
-  CAN pry_with.
 --CAN put_down. ------------------> ** WASN'T USED! (SEE 'drop'!) **
   CAN rub.
   CAN shake.

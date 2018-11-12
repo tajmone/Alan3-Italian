@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.7.25-Alpha,</span>
+<span id="revnumber">versione 0.7.26-Alpha,</span>
 <span id="revdate">2018-11-12</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
@@ -546,6 +546,8 @@ giocatore il messaggio &#8220;Non puoi farlo.&#8221;.</p>
   CAN dormire.                  ---&gt; sleep        (+ rest)
   CAN entrare.                  ---&gt; enter
   CAN esaminare.                ---&gt; examine      (+ check, inspect, observe, x)
+  CAN forzare.                  ---&gt; pry
+  CAN forzare_con.              ---&gt; pry_with
   CAN giocare_con.              ---&gt; play_with
   CAN girare.                   ---&gt; turn (+ rotate)
   CAN grattare.                 ---&gt; scratch
@@ -751,8 +753,6 @@ italiano del modulo delle definizioni.</p>
 --CAN get_up. --------------------&gt; ** VERBO ELIMINATO **
 --CAN light. ---------------------&gt; ** VERBO ELIMINATO **
 --CAN look_at. -------------------&gt; ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
-  CAN pry.
-  CAN pry_with.
 --CAN put_down. ------------------&gt; ** WASN'T USED! (SEE 'drop'!) **
   CAN rub.
   CAN shake.
@@ -777,7 +777,7 @@ italiano del modulo delle definizioni.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.7.25-Alpha<br>
+Versione 0.7.26-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

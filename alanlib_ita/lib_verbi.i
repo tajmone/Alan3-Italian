@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.39-Alpha, 2018-11-12: Alan 3.0beta6
+--| v0.7.40-Alpha, 2018-11-12: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -867,6 +867,8 @@ END VERB ricomincia_partita.
 --| | esamina            | guarda, descrivi, osserva, X | esamina (ogg)                          |     | 1 | {X} |
 --| | esci               |                              | esci                                   |     | 0 |     |
 --| | esci_da            |                              | esci da (ogg)                          |     | 1 | {X} |
+--| | forza              |                              | forza (ogg)                            |     | 1 | {X} |
+--| | forza_con          |                              | forza (ogg) con (strum)                |     | 2 | {X} |
 --| | gioca_con          |                              | gioca con (ogg)                        |     | 1 | {X} |
 --| | gira               |                              | gira (ogg)                             |     | 1 | {X} |
 --| | gratta             |                              | gratta (ogg)                           |     | 1 | {X} |
@@ -1115,6 +1117,8 @@ END ADD TO.
 --| * `blocca_con`
 --| * `chiudi`
 --| * `chiudi_con`
+--| * `forza`
+--| * `forza_con`
 --| * `sblocca`
 --| * `sblocca_con`
 --<
@@ -1674,6 +1678,117 @@ ADD TO EVERY OBJECT
         "Non puoi chiudere" SAY THE ogg. "con" SAY THE strum. "."
   END VERB chiudi_con.
 END ADD TO.
+
+
+
+-->gruppo_apri                                                   @FORZA <-- @PRY
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== forza
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `forza`.
+--<
+
+
+SYNTAX forza = forza (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF. "forzare."
+
+
+ADD TO EVERY OBJECT
+  VERB forza
+    CHECK mia_AT CAN forzare
+      ELSE SAY mia_AT:azione_bloccata.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF. "forzare."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    DOES
+      SAY mia_AT:specificare_CON_cosa. "forzare $+1."
+     -- "You must state what you want to pry" SAY THE ogg. "with."
+  END VERB forza.
+END ADD TO.
+
+-->gruppo_apri                                          @FORZA CON <-- @PRY_WITH
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== forza_con
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `forza_con`.
+--<
+
+SYNTAX forza_con = forza (ogg) con (strum)
+    WHERE ogg IsA OBJECT
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF. "forzare."
+    AND strum IsA OBJECT
+      ELSE
+        IF strum IS NOT plurale
+          THEN SAY mia_AT:ogg2_illegale_CON_sg.
+          ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+        END IF. "forzare $+1."
+
+-- @TODO: Add check if obj is closed?                                           TODO!
+ADD TO EVERY OBJECT
+  VERB forza_con
+    WHEN ogg
+      CHECK mia_AT CAN forzare_con
+        ELSE SAY mia_AT:azione_bloccata.
+      AND ogg IS esaminabile
+        ELSE
+          IF ogg IS NOT plurale
+            THEN SAY mia_AT:ogg1_inadatto_sg.
+            ELSE SAY mia_AT:ogg1_inadatto_pl.
+          END IF. "forzare."
+      AND strum IS esaminabile
+        ELSE
+          IF strum IS NOT plurale
+            THEN SAY mia_AT:ogg2_illegale_CON_sg.
+            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+          END IF. "forzare $+1."
+      AND ogg <> strum
+  --                                                                              TRANSLATE!
+        ELSE SAY mia_AT:check_obj_not_obj2_with.
+      AND strum IN hero
+        ELSE SAY mia_AT:non_possiedi_ogg2.
+      AND CURRENT LOCATION IS illuminato
+        ELSE SAY mia_AT:imp_luogo_buio.
+      AND ogg IS raggiungibile AND ogg IS NOT distante
+        ELSE
+          IF ogg IS NOT raggiungibile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+                ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+              END IF.
+          ELSIF ogg IS distante
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_distante_sg.
+                ELSE SAY mia_AT:ogg1_distante_pl.
+              END IF.
+          END IF.
+      DOES "Non funzionerebbe."
+    END VERB forza_con.
+END ADD TO.
+
 
 -->gruppo_apri                                              @SBLOCCA <-- @UNLOCK
 --~=============================================================================
@@ -4360,7 +4475,6 @@ END ADD TO.
 --| * `taglia`
 --| * `taglia_con`
 --<
-
 
 -->gruppo_rompi_aggiusta                                        @RIPARA <-- @FIX
 --~=============================================================================
@@ -10580,8 +10694,8 @@ END VERB rispondi_Sì.
 --~*| pour_in            | (= defined at the verb `emtpy_in`) | pour (obj) in (cont)              | 2 | {x}
 --~*| pour_on            | (= defined at the verb `empty_on`) | pour (obj) on (surface)           | 2 | {x}
 --~*| pray               |                                    | pray                              | 0 |
---| | pry                |                                    | pry (obj)                         | 1 | {x}
---| | pry_with           |                                    | pry (obj) with (instr)            | 2 | {x}
+--~*| pry                |                                    | pry (obj)                         | 1 | {x}
+--~*| pry_with           |                                    | pry (obj) with (instr)            | 2 | {x}
 --~*| pull               |                                    | pull (obj)                        | 1 | {x}
 --~*| push               |                                    | push (obj)                        | 1 | {x}
 --~*| push_with          |                                    | push (obj) with (instr)           | 2 | {x}
@@ -10831,117 +10945,6 @@ END ADD TO.
 
 -- => SEE EMPTY, EMPTY IN, EMPTY ON
 
-
-
-
--- ==============================================================
-
-
--- @PRY
-
-
--- ==============================================================
-
-
-SYNTAX pry = pry (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-      -- @NOTA: Qui serve messaggio ad hoc!                                     TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter_sg.
-        ELSE SAY mia_AT:illegal_parameter_pl.
-      END IF.
-
-
-ADD TO EVERY OBJECT
-  VERB pry
-    CHECK mia_AT CAN pry
-      ELSE SAY mia_AT:azione_bloccata.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          THEN SAY mia_AT:check_obj_suitable_sg.
-          ELSE SAY mia_AT:check_obj_suitable_pl.
-        END IF.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    DOES "You must state what you want to pry" SAY THE ogg. "with."
-  END VERB pry.
-END ADD TO.
-
-
-
--- ==============================================================
-
-
--- @PRY_WITH
-
-
--- ==============================================================
-
-
-SYNTAX pry_with = pry (ogg) 'with' (strum)
-    WHERE ogg IsA OBJECT
-      ELSE
-        IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-          THEN SAY mia_AT:illegal_parameter_sg.
-          ELSE SAY mia_AT:illegal_parameter_pl.
-        END IF.
-    AND strum IsA OBJECT
-      ELSE
-        IF strum IS NOT plurale
---                                                                              TRANSLATE!
-          THEN SAY mia_AT:ogg2_illegale_CON_sg.
-          ELSE SAY mia_AT:ogg2_illegale_CON_pl.
-        END IF.
-        "(prying)" SAY THE ogg. "." -- @TODO:                                   TRANSLATE!
-
-
-ADD TO EVERY OBJECT
-VERB pry_with
-  WHEN ogg
-    CHECK mia_AT CAN pry_with
-      ELSE SAY mia_AT:azione_bloccata.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-          THEN SAY mia_AT:check_obj_suitable_sg.
-          ELSE SAY mia_AT:check_obj_suitable_pl.
-        END IF.
-    AND strum IS esaminabile
-      ELSE
-        IF strum IS NOT plurale
-          THEN SAY mia_AT:ogg2_illegale_CON_sg.
-          ELSE SAY mia_AT:ogg2_illegale_CON_pl.
-        END IF.
-        "(prying)" SAY THE ogg. "." -- @TODO:                                   TRANSLATE!
-    AND ogg <> strum
---                                                                              TRANSLATE!
-      ELSE SAY mia_AT:check_obj_not_obj2_with.
-    AND strum IN hero
-      ELSE SAY mia_AT:non_possiedi_ogg2.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    DOES "That doesn't work."
-  END VERB pry_with.
-END ADD TO.
 
 
 

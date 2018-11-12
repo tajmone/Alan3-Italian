@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.25-Alpha, 2018-11-12: Alan 3.0beta6
+--| v0.7.26-Alpha, 2018-11-12: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -503,12 +503,12 @@ END ADD TO.
 -- "put ball into box", etc:
 
 
+--                                                                              TRANSLATE!
 SYNONYMS
-
-into, inside = 'in'.      ---> @TODO                                            TRANSLATE!
+into, inside = 'in'.
       onto   = on.
    -- thru   = through.
-      using  = 'with'.
+   -- using  = 'with'.
 
 
 -- Here are some synonyms for the player character:
@@ -750,6 +750,8 @@ EVERY blocco_definizioni IsA LOCATION
   CAN dormire.                  ---> sleep        (+ rest)
   CAN entrare.                  ---> enter
   CAN esaminare.                ---> examine      (+ check, inspect, observe, x)
+  CAN forzare.                  ---> pry
+  CAN forzare_con.              ---> pry_with
   CAN giocare_con.              ---> play_with
   CAN girare.                   ---> turn (+ rotate)
   CAN grattare.                 ---> scratch
@@ -875,8 +877,6 @@ EVERY blocco_definizioni IsA LOCATION
 --CAN get_up. --------------------> ** VERBO ELIMINATO **
 --CAN light. ---------------------> ** VERBO ELIMINATO **
 --CAN look_at. -------------------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
-  CAN pry.
-  CAN pry_with.
 --CAN put_down. ------------------> ** WASN'T USED! (SEE 'drop'!) **
   CAN rub.
   CAN shake.
@@ -970,6 +970,8 @@ EVENT check_restriction
       MAKE mia_AT dormire.                  ---> sleep        (+ rest)
       MAKE mia_AT entrare.                  ---> enter
       MAKE mia_AT esaminare.                ---> examine      (+ check, inspect, observe, x)
+      MAKE mia_AT forzare.                  ---> pry
+      MAKE mia_AT forzare_con.              ---> pry_with
       MAKE mia_AT giocare_con.              ---> play_with
       MAKE mia_AT girare.                   ---> turn (+ rotate)
       MAKE mia_AT grattare.                 ---> scratch
@@ -1091,8 +1093,6 @@ EVENT check_restriction
     --MAKE mia_AT get_up. ------------> ** VERBO ELIMINATO **
     --MAKE mia_AT light. -------------> ** VERBO ELIMINATO **
     --MAKE mia_AT look_at. -----------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
-      MAKE mia_AT pry.
-      MAKE mia_AT pry_with.
     --MAKE mia_AT put_down. ----------> ** WASN'T USED! (SEE 'drop'!) **
       MAKE mia_AT rub.
       MAKE mia_AT shake.
@@ -1165,6 +1165,8 @@ EVENT check_restriction
           MAKE mia_AT NOT dare.                     ---> give
           MAKE mia_AT NOT dormire.                  ---> sleep        (+ rest)
           MAKE mia_AT NOT entrare.                  ---> enter
+          MAKE mia_AT NOT forzare.                  ---> pry
+          MAKE mia_AT NOT forzare_con.              ---> pry_with
           MAKE mia_AT NOT giocare_con.              ---> play_with
           MAKE mia_AT NOT girare.                   ---> turn (+ rotate)
           MAKE mia_AT NOT grattare.                 ---> scratch
@@ -1253,8 +1255,6 @@ EVENT check_restriction
         --MAKE mia_AT NOT extinguish. ----> ** VERBO ELIMINATO ** (+ put out, quench)
         --MAKE mia_AT NOT get_up. --------> ** VERBO ELIMINATO **
         --MAKE mia_AT NOT light. ---------> ** VERBO ELIMINATO **
-          MAKE mia_AT NOT pry.
-          MAKE mia_AT NOT pry_with.
         --MAKE mia_AT NOT put_down. ------> ** WASN'T USED! (SEE 'drop'!) **
           MAKE mia_AT NOT rub.
           MAKE mia_AT NOT shake.

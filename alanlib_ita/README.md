@@ -400,8 +400,8 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `pour_in`        | `versare_in`              |
 | `pour_on`        | `versare_su`              |
 | `pray`           | `pregare`                 |
-| `pry`            |                           |
-| `pry_with`       |                           |
+| `pry`            | `forzare`                 |
+| `pry_with`       | `forzare_con`             |
 | `pull`           | `tirare`                  |
 | `push`           | `spingere`                |
 | `push_with`      | `spingere_con`            |
