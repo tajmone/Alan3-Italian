@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.23-Alpha, 2018-11-12: Alan 3.0beta6
+--| v0.7.24-Alpha, 2018-11-12: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -785,6 +785,8 @@ EVERY blocco_definizioni IsA LOCATION
   CAN modalità_lunga.           ---> verbose
   CAN mordere.                  ---> bite         (+ chew)
   CAN mostrare.                 ---> 'show'       (+ reveal)
+  CAN mostrare_istruzioni.      ---> about
+  CAN mostrare_suggerimenti.    ---> hint (+ hints)
   CAN notificare.               ---> 'notify'
   CAN notificare_off.           ---> notify_off
   CAN notificare_on.            ---> notify_on
@@ -866,12 +868,10 @@ EVERY blocco_definizioni IsA LOCATION
 --| === Restrizioni Verbali da Tradurre
 --| 
 --| Questo è l'elenco degli attributi verbali non ancora tradotti:
-  CAN about.
   CAN climb.
   CAN climb_on.
 --CAN extinguish. ----------------> ** VERBO ELIMINATO **  (+ put out, quench)
 --CAN get_up. --------------------> ** VERBO ELIMINATO **
-  CAN hint.        -- (+ hints)
 --CAN light. ---------------------> ** VERBO ELIMINATO **
 --CAN look_at. -------------------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
   CAN pry.
@@ -1005,6 +1005,8 @@ EVENT check_restriction
       MAKE mia_AT modalità_lunga.           ---> verbose
       MAKE mia_AT mordere.                  ---> bite (+ chew)
       MAKE mia_AT mostrare.                 ---> 'show'       (+ reveal)
+      MAKE mia_AT mostrare_istruzioni.      ---> about
+      MAKE mia_AT mostrare_suggerimenti.    ---> hint (+ hints)
       MAKE mia_AT nuotare.                  ---> swim
       MAKE mia_AT notificare.               ---> 'notify'
       MAKE mia_AT notificare_off.           ---> notify_off
@@ -1082,12 +1084,10 @@ EVENT check_restriction
       MAKE mia_AT versare_su.               ---> pour_on
 
     --# NOT YET TRANSLATED:
-      MAKE mia_AT about.
       MAKE mia_AT climb.
       MAKE mia_AT climb_on.
     --MAKE mia_AT extinguish. --------> ** VERBO ELIMINATO ** (+ put out, quench)
     --MAKE mia_AT get_up. ------------> ** VERBO ELIMINATO **
-      MAKE mia_AT hint.            -- (+ hints)
     --MAKE mia_AT light. -------------> ** VERBO ELIMINATO **
     --MAKE mia_AT look_at. -----------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
       MAKE mia_AT pry.
@@ -1294,6 +1294,7 @@ EVENT check_restriction
           MAKE mia_AT NOT guardare_sotto.           ---> look_under
           MAKE mia_AT NOT guardare_su.              ---> look_up
           MAKE mia_AT NOT inventariare.             ---> i            (+ inv, inventory)
+          MAKE mia_AT NOT mostrare_suggerimenti.    ---> hint (+ hints)
           MAKE mia_AT NOT pensare.                  ---> think
           MAKE mia_AT NOT pensare_a.                ---> think_about
           MAKE mia_AT NOT pregare.                  ---> pray
@@ -1319,6 +1320,7 @@ EVENT check_restriction
           MAKE mia_AT NOT caricare_partita.         ---> 'restore'
           MAKE mia_AT NOT modalità_breve.           ---> brief
           MAKE mia_AT NOT modalità_lunga.           ---> verbose
+          MAKE mia_AT NOT mostrare_istruzioni.      ---> about
           MAKE mia_AT NOT notificare.               ---> 'notify'
           MAKE mia_AT NOT notificare_off.           ---> notify_off
           MAKE mia_AT NOT notificare_on.            ---> notify_on
@@ -1335,8 +1337,6 @@ EVENT check_restriction
 
         --# NOT YET TRANSLATED:
 
-          MAKE mia_AT NOT about.
-          MAKE mia_AT NOT hint.        -- (+ hints)
 
       END IF.
 

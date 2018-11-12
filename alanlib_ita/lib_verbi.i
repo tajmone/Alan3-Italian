@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.37-Alpha, 2018-11-12: Alan 3.0beta6
+--| v0.7.38-Alpha, 2018-11-12: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -86,6 +86,7 @@
 --~ +--------------------+------------------------------+----------------------------------+-----+---+-----+-----+
 --| | abbandona_partita  | quit, Q                      | abbandona [partita]              | {X} | 0 |     |
 --| | carica_partita     | restore                      | carica [partita]                 | {X} | 0 |     |
+--| | istruzioni         | help, info                   | istruzioni                       | {X} | 0 |     |
 --| | modalità_breve     | brief, modalità corta        | modalità breve                   | {X} | 0 |     | {B}
 --| | modalità_lunga     | verbose                      | modalità lunga                   | {X} | 0 |     |
 --| | notifica           |                              | notifica                         | {X} | 0 |     |
@@ -94,6 +95,7 @@
 --| | ricomincia_partita | restart                      | ricomincia [partita]             | {X} | 0 |     |
 --| | ringraziamenti     | autore, copyright, credits   | ringraziamenti                   | {X} | 0 |     |
 --| | salva_partita      | save                         | salva [partita]                  | {X} | 0 |     |
+--| | suggerimento       | hint, aiutino                | suggerimento                     | {X} | 0 |     |
 --| | trascrizione       |                              | trascrizione                     | {X} | 0 |     |
 --| | trascrizione_off   | trascrizione off             | trascrizione disattivata         | {X} | 0 |     |
 --| | trascrizione_on    | trascrizione on              | trascrizione attivata            | {X} | 0 |     |
@@ -556,7 +558,173 @@ META VERB modalità_lunga
 END VERB modalità_lunga.
 
 
--->gruppo_misc_meta(10500)
+-->gruppo_info(10500)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Istruzioni, Info e Aiuto
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i meta verbi per accedere a informazioni sul gioco,
+--| aiuti, ecc.:
+--| 
+--| * `istruzioni`
+--| * `ringraziamenti`
+--| 
+--| Verbi di questo gruppo non ancora tradotti:
+--| 
+--| * `hint`
+--<
+
+
+-->gruppo_info                                            @ISTRUZIONI <-- @ABOUT
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== istruzioni
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `istruzioni`.
+--<
+
+-- SYNTAX 'about' = 'about'.
+-- SYNONYMS help, info = 'about'.
+
+-- @NOTA: istruzioni, info, (ma 'aiuto' lo terrei per hint).
+
+SYNTAX istruzioni = istruzioni.
+
+
+SYNONYMS help, info = istruzioni.
+
+-- @TODO: Il testo di aiuto dovrei spostarlo in un attributo in messaggi,       TODO!
+--        cosicché ogni autore possa personalizzarlo senza dover modificare il
+--        sorgente della libreria!
+
+META VERB istruzioni
+  CHECK mia_AT CAN mostrare_istruzioni
+    ELSE SAY mia_AT:azione_bloccata.
+  DOES
+ 
+    "Questa è un'avventura testuale, anche nota come" STYLE EMPHASIZED.
+    "interactive fiction" STYLE NORMAL. "(IF). Nel gioco interpreti il ruolo del
+     personaggio principale, e l'esito della storia dipenderà dalla tue scelte.
+     Per interagire con l'ambiente dovrai impartire dei comandi al tuo personaggio
+     digitandoli con la tastiera usando la forma imperativa VERBO + OGGETTO
+     (PRENDI MELA, MANGIA LA MELA, ecc.). Per spostarti nel mondo dell'avventura
+     usa le direzioni cardinali (NORD, SUD, NORDOVEST, SOPRA, SOTTO, ecc.).
+
+     $pPer osservare l'ambiente digita GUARDA, ti verrà mostrata una descrizione
+     del luogo in cui ti trovi e degli oggetti e personaggi che ti circondano.
+     Esaminare l'ambiente e gli oggetti è importante al fine di trovare inidizi
+     utili a procedere con la storia. Oltre alla descrizione del luogo, anche i
+     singoli oggetti e personaggi possono essere esaminati per ottenere una loro
+     descrizione dettagliata (ESAMINA IL MOBILE).
+
+     $pEsplorare attivamente l'ambiente (ISPEZIONA L'ARMADIO, GUARDA SOTTO IL
+     LETTO, GUARDA DIETRO IL MOBILE, ecc.) può rivelare nuovi indizi o oggetti
+     utili a sbloccare situazioni di stallo (trovare una chiave, un passaggio
+     segreto, ecc.).
+
+     $pOgni avventura è diversa, così come diversi sono i verbi/comandi disponibili
+     in esse. Sii creativo e prova a usare i comandi che ti vengono in mente per
+     conseguire i tuoi obiettivi, e leggi attentamente le risposte che ottieni
+     dal gioco poiché esse (assieme alle descrizioni dei luoghi e degli oggetti)
+     ti indirizzeranno verso gli obiettivi.
+
+     $pL'uso degli articoli nei comandi è sempre facoltativo (APRI PORTA è
+     sufficiente). Allo stato attuale non è possibile usare preposizioni
+     articolate con l'apostrofo, per cui dovrai inserire uno spazio tra la
+     preposizione e il sostantivo (SULL' ALBERO) -- anche omettendo l'apostrofo
+     se preferisci (SULL ALBERO). Per comodità puoi usare sempre le preposizioni
+     semplici anziché quelle articolate (GUARDA IN FRIGO anziché GUARDA NEL
+     FRIGO). Questi piccoli accorgimenti ti consentiranno di digitare più in
+     fretta i comandi, rendendo l'esperienza di gioco più scorrevole.
+
+     $pPer maggiori informazioni su questa avventura ed il suo autore, digita
+     RINGRAZIAMENTI. Per uscire dal gioco, digita ABBANDONA PARTITA. Per salvare
+     la partiata in corso, digita SALVA PARTITA, e per caricare una partita
+     salvata digita CARICA PARTITA."
+
+END VERB istruzioni.
+
+
+-->gruppo_info                                      @RINGRAZIAMENTI <-- @CREDITS
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== ringraziamenti
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `ringraziamenti`.
+--<
+
+-- SYNTAX credits = credits.
+-- SYNONYMS acknowledgments, author, copyright = credits.
+
+
+SYNTAX ringraziamenti = ringraziamenti.
+       ringraziamenti = credits.
+       ringraziamenti = autore.
+       ringraziamenti = copyright.
+
+
+META VERB ringraziamenti
+  CHECK mia_AT CAN ringraziamenti
+    ELSE SAY mia_AT:azione_bloccata.
+  DOES
+--                                                                              IMPROVE!
+    "I diritti d'autore ed il copyright di questa avventura appartengono al suo
+     autore.
+     $pQuesta avventura è stata realizzata con ALAN Adventure Language, il sistema
+     per lo sviluppo di interactive fiction di Thomas Nilsson.
+     $nE-mail: thomas@alanif.se
+     $pPer maggiori informazioni su ALAN, vistate il sito web:
+     $ihttp://www.alanif.se$p"
+--  "The author retains the copyright to this game.
+--  $pThis game was written using the ALAN Adventure Language. ALAN is
+--  an interactive fiction authoring system by Thomas Nilsson.
+--  $nE-mail address: thomas@alanif.se $pFurther information
+--  about the ALAN system can be obtained from
+--  the World Wide Web Internet site
+--  $ihttp://www.alanif.se$p"
+END VERB ringraziamenti.
+
+
+-->gruppo_info                                           @SUGGERIMENTO <-- @HINT
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== suggerimento
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `suggerimento`.
+--<
+-- SYNTAX hint = hint.
+-- SYNONYMS hints = hint.
+
+SYNTAX suggerimento = suggerimento.
+
+
+SYNONYMS
+  hint, aiutino = suggerimento.
+
+
+META VERB suggerimento
+  CHECK mia_AT CAN mostrare_suggerimenti
+    ELSE SAY mia_AT:azione_bloccata.
+  DOES
+    "Nessun suggerimento disponibile (vedi ISTRUZIONI se hai bisogno di aiuto)."
+ -- "Unfortunately hints are not available in this game."
+END VERB suggerimento.
+
+
+-->gruppo_misc_meta(19999)
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
@@ -567,6 +735,9 @@ END VERB modalità_lunga.
 --| 
 --| Qui di seguito sono elencati i vari meta verbi che non rientrano in alcun
 --| gruppo specifico.
+--| 
+--| * `abbandona_partita`
+--| * `ricomincia_partita`
 --<
 
 -->gruppo_misc_meta                                 @ABBANDONA_PARTITA <-- @QUIT
@@ -630,47 +801,6 @@ META VERB ricomincia_partita
     RESTART.
 END VERB ricomincia_partita.
 
--->gruppo_misc_meta                                 @RINGRAZIAMENTI <-- @CREDITS
---~=============================================================================
---~-----------------------------------------------------------------------------
---| ==== ringraziamenti
---~-----------------------------------------------------------------------------
---~=============================================================================
---<
--->todo_checklist(.666) Doxter
---| * [ ] Descrizione `ringraziamenti`.
---<
-
--- SYNTAX credits = credits.
--- SYNONYMS acknowledgments, author, copyright = credits.
-
-
-SYNTAX ringraziamenti = ringraziamenti.
-       ringraziamenti = credits.
-       ringraziamenti = autore.
-       ringraziamenti = copyright.
-
-
-META VERB ringraziamenti
-  CHECK mia_AT CAN ringraziamenti
-    ELSE SAY mia_AT:azione_bloccata.
-  DOES
---                                                                              IMPROVE!
-    "I diritti d'autore ed il copyright di questa avventura appartengono al suo
-     autore.
-     $pQuesta avventura è stata realizzata con ALAN Adventure Language, il sistema
-     per lo sviluppo di interactive fiction di Thomas Nilsson.
-     $nE-mail: thomas@alanif.se
-     $pPer maggiori informazioni su ALAN, vistate il sito web:
-     $ihttp://www.alanif.se$p"
---  "The author retains the copyright to this game.
---  $pThis game was written using the ALAN Adventure Language. ALAN is
---  an interactive fiction authoring system by Thomas Nilsson.
---  $nE-mail address: thomas@alanif.se $pFurther information
---  about the ALAN system can be obtained from
---  the World Wide Web Internet site
---  $ihttp://www.alanif.se$p"
-END VERB ringraziamenti.
 
 
 -->comandi_gioco(20000)
@@ -10240,7 +10370,7 @@ END VERB rispondi_Sì.
 --| |=======================================================================================================
 --| | VERBO              | SINONIMI                           | SINTASSI                          | A |  O  
 --~ +--------------------+------------------------------------+-----------------------------------+---+-----
---| | about              | help, info                         | about                             | 0 |
+--~*| about              | help, info                         | about                             | 0 |
 --~*| again              | G                                  | again                             | 0 |
 --~*| answer             | reply                              | answer (topic)                    | 1 |
 --~*| ask                | enquire, inquire, interrogate      | ask (act) about (topic)           | 2 |
@@ -10292,7 +10422,7 @@ END VERB rispondi_Sì.
 --~*| get_off            |                                    | get off (obj)                     | 1 | {x}
 --~*| give               |                                    | give (obj) to (recipient)         | 2 | {x}
 --~*| go_to              |                                    | go to (dest)                      | 1 |
---| | hint               | hints                              | hint                              | 0 |
+--~*| hint               | hints                              | hint                              | 0 |
 --~*| i                  | inv, inventory                     | inventory                         | 0 |
 --~*| jump               |                                    | jump                              | 0 |
 --~*| jump_in            |                                    | jump in (cont)                    | 1 |
@@ -10414,74 +10544,6 @@ END VERB rispondi_Sì.
 --~*| yes                |                                    | yes                               | 0 |
 --| |=======================================================================================================
 --<
-
---=============================================================================
---\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---------------------------------------------------------------------------------
--- Comandi di Partita Non Tradotti
--------------------------------------------------------------------------------
---//////////////////////////////////////////////////////////////////////////////
---=============================================================================
-
-
--- =============================================================
-
-
--- @ABOUT
-
-
--- =============================================================
--- SYNTAX 'about' = 'about'.
--- SYNONYMS help, info = 'about'.
-
-
-SYNTAX 'about' = 'about'.
-
-
-SYNONYMS help, info = 'about'.
-
-
-META VERB 'about'
-  CHECK mia_AT CAN about
-    ELSE SAY mia_AT:azione_bloccata.
-  DOES
-    "[This is a text adventure, also called interactive fiction, which means that what
-    goes on in the story depends on what you type at the prompt. Commands you can type
-    are for example GO NORTH (or NORTH or just N), WEST, SOUTHEAST, UP, IN etc for
-    moving around, but you can try many
-        other things too, like TAKE LAMP, DROP EVERYTHING, EAT APPLE, EXAMINE BIRD or
-    FOLLOW OLD MAN, to name just a few. LOOK (L) describes your surroundings, and
-    INVENTORY (I) lists what you are carrying. You can SAVE your game and RESTORE it
-    later on.
-    $pType CREDITS to see information about the author and the copyright issues.
-    $pTo stop playing and end the program, type QUIT.]$p"
-END VERB 'about'.
-
-
-
--- ==============================================================
-
-
--- @HINT (+ hints)
-
-
--- ==============================================================
-
-
-SYNTAX hint = hint.
-
-
-SYNONYMS
-  hints = hint.
-
-
-META VERB hint
-  CHECK mia_AT CAN hint
-    ELSE SAY mia_AT:azione_bloccata.
-  DOES
-    "Unfortunately hints are not available in this game."
-END VERB hint.
-
 
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\

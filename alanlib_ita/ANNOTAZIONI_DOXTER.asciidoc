@@ -1,7 +1,7 @@
 
 = Doxter: Note di Lavoro
 Tristano Ajmone <tajmone@gmail.com>
-:revdate: 2018-11-11
+:revdate: 2018-11-12
 :lang: it
 // TOC Settings:
 :toc: left
@@ -103,7 +103,9 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 // -----------------------------------------------------------------------------
 | 10400   |           | gruppo_verbosity             | === Descrizioni Brevi e Lunghe
 // -----------------------------------------------------------------------------
-| 10500   |           | gruppo_misc_meta             | === Meta Verbi Vari
+| 10500   |           | gruppo_info                  | === Istruzioni, Info e Aiuto
+// -----------------------------------------------------------------------------
+| 19999   |           | gruppo_misc_meta             | === Meta Verbi Vari
 // =============================================================================
 | 20000   |           | comandi_gioco                | == Verbi di Gioco
 // -----------------------------------------------------------------------------

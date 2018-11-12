@@ -17,6 +17,11 @@ fico e una mela qui.
 
 * Conto alla rovescia: 5  *
 
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                       TESTA META COMANDI DI PARTITA                        *
+> ; *                                                                            *
+> ; ******************************************************************************
 > ; ==============================================================================
 > ; CONTO ALLA ROVESCIA & CONTROLLO DEI 'TICK'
 > ; ==============================================================================
@@ -79,6 +84,57 @@ E-mail: thomas@alanif.se
 Per maggiori informazioni su ALAN, vistate il sito web:
     http://www.alanif.se
 
+
+> ; ==============================================================================
+> ; ISTRUZIONI
+> ; ==============================================================================
+> istruzioni
+Questa è un'avventura testuale, anche nota come interactive fiction (IF).
+Nel gioco interpreti il ruolo del personaggio principale, e l'esito della
+storia dipenderà dalla tue scelte. Per interagire con l'ambiente dovrai
+impartire dei comandi al tuo personaggio digitandoli con la tastiera
+usando la forma imperativa VERBO + OGGETTO (PRENDI MELA, MANGIA LA MELA,
+ecc.). Per spostarti nel mondo dell'avventura usa le direzioni cardinali
+(NORD, SUD, NORDOVEST, SOPRA, SOTTO, ecc.).
+
+Per osservare l'ambiente digita GUARDA, ti verrà mostrata una descrizione
+del luogo in cui ti trovi e degli oggetti e personaggi che ti circondano.
+Esaminare l'ambiente e gli oggetti è importante al fine di trovare
+inidizi utili a procedere con la storia. Oltre alla descrizione del
+luogo, anche i singoli oggetti e personaggi possono essere esaminati per
+ottenere una loro descrizione dettagliata (ESAMINA IL MOBILE).
+
+Esplorare attivamente l'ambiente (ISPEZIONA L'ARMADIO, GUARDA SOTTO IL
+LETTO, GUARDA DIETRO IL MOBILE, ecc.) può rivelare nuovi indizi o oggetti
+utili a sbloccare situazioni di stallo (trovare una chiave, un passaggio
+segreto, ecc.).
+
+Ogni avventura è diversa, così come diversi sono i verbi/comandi
+disponibili in esse. Sii creativo e prova a usare i comandi che ti
+vengono in mente per conseguire i tuoi obiettivi, e leggi attentamente le
+risposte che ottieni dal gioco poiché esse (assieme alle descrizioni dei
+luoghi e degli oggetti) ti indirizzeranno verso gli obiettivi.
+
+L'uso degli articoli nei comandi è sempre facoltativo (APRI PORTA è
+sufficiente). Allo stato attuale non è possibile usare preposizioni
+articolate con l'apostrofo, per cui dovrai inserire uno spazio tra la
+preposizione e il sostantivo (SULL' ALBERO) -- anche omettendo 
+l'apostrofo se preferisci (SULL ALBERO). Per comodità puoi usare sempre
+le preposizioni semplici anziché quelle articolate (GUARDA IN FRIGO
+anziché GUARDA NEL FRIGO). Questi piccoli accorgimenti ti consentiranno
+di digitare più in fretta i comandi, rendendo l'esperienza di gioco più
+scorrevole.
+
+Per maggiori informazioni su questa avventura ed il suo autore, digita
+RINGRAZIAMENTI. Per uscire dal gioco, digita ABBANDONA PARTITA. Per
+salvare la partiata in corso, digita SALVA PARTITA, e per caricare una
+partita salvata digita CARICA PARTITA.
+
+> ; ==============================================================================
+> ; SUGGERIMENTO (+ "aiutino" + "hint")
+> ; ==============================================================================
+> suggerimento
+Nessun suggerimento disponibile (vedi ISTRUZIONI se hai bisogno di aiuto).
 
 > ; ==============================================================================
 > ; MODALITÀ BREVE vs LUNGA

@@ -309,7 +309,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 
 |   EN Attribute   |       IT Translation      |
 |------------------|---------------------------|
-| `about`          |                           |
+| `about`          | `mostrare_istruzioni`     |
 | `'again'`        | `rifare`                  |
 | `answer`         | `rispondere`              |
 | `ask`            | `domandare`               |
@@ -361,7 +361,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | ~~`get_up`~~     |                           |
 | `give`           | `dare`                    |
 | `go_to`          | `andare_a`                |
-| `hint`           |                           |
+| `hint`           | `mostrare_suggerimenti`   |
 | `i`              | `inventariare`            |
 | `jump`           | `saltare`                 |
 | `jump_in`        | `saltare_in`              |

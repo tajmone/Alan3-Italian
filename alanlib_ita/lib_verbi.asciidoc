@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.37-Alpha, 2018-11-12: Alan 3.0beta6
+v0.7.38-Alpha, 2018-11-12: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -59,6 +59,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
 | abbandona_partita  | quit, Q                      | abbandona [partita]              | {X} | 0 |     |
 | carica_partita     | restore                      | carica [partita]                 | {X} | 0 |     |
+| istruzioni         | help, info                   | istruzioni                       | {X} | 0 |     |
 | modalità_breve     | brief, modalità corta        | modalità breve                   | {X} | 0 |     | {B}
 | modalità_lunga     | verbose                      | modalità lunga                   | {X} | 0 |     |
 | notifica           |                              | notifica                         | {X} | 0 |     |
@@ -67,6 +68,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | ricomincia_partita | restart                      | ricomincia [partita]             | {X} | 0 |     |
 | ringraziamenti     | autore, copyright, credits   | ringraziamenti                   | {X} | 0 |     |
 | salva_partita      | save                         | salva [partita]                  | {X} | 0 |     |
+| suggerimento       | hint, aiutino                | suggerimento                     | {X} | 0 |     |
 | trascrizione       |                              | trascrizione                     | {X} | 0 |     |
 | trascrizione_off   | trascrizione off             | trascrizione disattivata         | {X} | 0 |     |
 | trascrizione_on    | trascrizione on              | trascrizione attivata            | {X} | 0 |     |
@@ -305,17 +307,38 @@ modalità: breve e lunga.
 ==== modalità_lunga
 
 // end::gruppo_verbosity[]
+// tag::gruppo_info[]
+=== Istruzioni, Info e Aiuto
+
+Questo gruppo include i meta verbi per accedere a informazioni sul gioco,
+aiuti, ecc.:
+
+* `istruzioni`
+* `ringraziamenti`
+
+Verbi di questo gruppo non ancora tradotti:
+
+* `hint`
+
+==== istruzioni
+
+==== ringraziamenti
+
+==== suggerimento
+
+// end::gruppo_info[]
 // tag::gruppo_misc_meta[]
 === Meta Verbi Vari
 
 Qui di seguito sono elencati i vari meta verbi che non rientrano in alcun
 gruppo specifico.
 
+* `abbandona_partita`
+* `ricomincia_partita`
+
 ==== abbandona_partita
 
 ==== ricomincia_partita
-
-==== ringraziamenti
 
 // end::gruppo_misc_meta[]
 // tag::comandi_gioco[]
@@ -1001,11 +1024,9 @@ italiano del modulo dei verbi.
 [cols="20m,30d,25d,2*^5d",options="header"]
 |=======================================================================================================
 | VERBO              | SINONIMI                           | SINTASSI                          | A |  O  
-| about              | help, info                         | about                             | 0 |
 | clean              | polish, wipe                       | clean (obj)                       | 1 | {x}
 | climb              |                                    | climb (obj)                       | 1 | {x}
 | climb_on           |                                    | climb on (surface)                | 1 |
-| hint               | hints                              | hint                              | 0 |
 | pry                |                                    | pry (obj)                         | 1 | {x}
 | pry_with           |                                    | pry (obj) with (instr)            | 2 | {x}
 | rub                |                                    | rub (obj)                         | 1 | {x}
@@ -1045,11 +1066,15 @@ Finisci di trasformare commenti in documentazione Doxter:
 
 * [ ] Descrizione `modalità_lunga`.
 
+* [ ] Descrizione `istruzioni`.
+
+* [ ] Descrizione `ringraziamenti`.
+
+* [ ] Descrizione `suggerimento`.
+
 * [ ] Descrizione `abbandona_partita`.
 
 * [ ] Descrizione `ricomincia_partita`.
-
-* [ ] Descrizione `ringraziamenti`.
 
 * [ ] Descrizione `accendi`.
 
