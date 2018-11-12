@@ -1,0 +1,63 @@
+; ******************************************************************************
+; *                                                                            *
+; *                          TESTA VERBI ESPLORATIVI                           *
+; *                                                                            *
+; ******************************************************************************
+; Questo file testa i verbi per esplorare l'ambiente (guardare, esaminare, 
+; ispezionare, ecc.).
+; ==============================================================================
+; VERBO 'ispeziona'
+; ==============================================================================
+ispeziona il tavolo
+; ------------------------------------------------------------------------------
+; Parametri Inadatti
+; ------------------------------------------------------------------------------
+ispeziona il soffitto
+sud
+ispeziona il cielo
+ispeziona il giardiniere
+ispeziona il cinquettio
+; ==============================================================================
+; VERBO 'ascolta'
+; ==============================================================================
+nord
+; ------------------------------------------------------------------------------
+; Risposte Alla Vaniglia
+; ------------------------------------------------------------------------------
+ascolta
+sud
+ascolta il lettino
+; **ERR!** Per qualche motivo 'ascolta' restituisce una stringa vuota se usato
+;          con oggetti stanza/luogo_esterno:
+ascolta il cielo
+ascolta il suolo
+ascolta il giardiniere
+; TESTIAMO IN PISCINA:
+entra in piscina
+ascolta il giardiniere
+esci dalla piscina
+; ------------------------------------------------------------------------------
+; Risposte Personalizzate
+; ------------------------------------------------------------------------------
+ascolta
+ascolta il cinquettio
+; TESTIAMO IN PISCINA:
+entra in piscina
+ascolta il cinquettio
+esci dalla piscina
+; ------------------------------------------------------------------------------
+; TESTA oggetti in altra stanza
+; ------------------------------------------------------------------------------
+; Testiamolo in cucina, dato che il verbo 'ascolta' accetta parametri che non
+; sono presenti nel luogo: 
+nord
+; **ERR!** Il cielo non è NEARBY dato che è situato in un luogo che avvolge
+;          il giardino (ma non la casa).
+ascolta il cielo
+ascolta il giardiniere
+ascolta la piscina
+ascolta il cinquettio
+; ------------------------------------------------------------------------------
+; Parametri Inadatti
+; ------------------------------------------------------------------------------
+ascolta me

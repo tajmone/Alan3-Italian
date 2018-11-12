@@ -427,7 +427,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `'script'`       | `trascrivere`             |
 | `script_off`     | `trascrivere_off`         |
 | `script_on`      | `trascrivere_on`          |
-| `search`         |                           |
+| `search`         | `ispezionare`             |
 | `sell`           | `vendere`                 |
 | `shake`          |                           |
 | ~~`shoot`~~      |                           |

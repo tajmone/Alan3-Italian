@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.22-Alpha, 2018-11-11: Alan 3.0beta6
+--| v0.7.23-Alpha, 2018-11-12: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -763,6 +763,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN guidare.                  ---> drive
   CAN indossare.                ---> wear
   CAN inventariare.             ---> i            (+ inv, inventory)
+  CAN ispezionare.              ---> search
   CAN lanciare.                 ---> throw
   CAN lanciare_a.               ---> throw_to
   CAN lanciare_contro.          ---> throw_at
@@ -877,7 +878,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN pry_with.
 --CAN put_down. ------------------> ** WASN'T USED! (SEE 'drop'!) **
   CAN rub.
-  CAN search.
   CAN shake.
 --CAN shoot. ---------------------> ** VERBO ELIMINATO **
 --CAN shoot_with. ----------------> ** VERBO ELIMINATO **
@@ -983,6 +983,7 @@ EVENT check_restriction
       MAKE mia_AT guidare.                  ---> drive
       MAKE mia_AT indossare.                ---> wear
       MAKE mia_AT inventariare.             ---> i            (+ inv, inventory)
+      MAKE mia_AT ispezionare.              ---> search
       MAKE mia_AT lanciare.                 ---> throw
       MAKE mia_AT lanciare_a.               ---> throw_to
       MAKE mia_AT lanciare_contro.          ---> throw_at
@@ -1093,7 +1094,6 @@ EVENT check_restriction
       MAKE mia_AT pry_with.
     --MAKE mia_AT put_down. ----------> ** WASN'T USED! (SEE 'drop'!) **
       MAKE mia_AT rub.
-      MAKE mia_AT search.
       MAKE mia_AT shake.
     --MAKE mia_AT shoot. -------------> ** VERBO ELIMINATO **
     --MAKE mia_AT shoot_with. --------> ** VERBO ELIMINATO **
@@ -1169,6 +1169,7 @@ EVENT check_restriction
           MAKE mia_AT NOT grattare.                 ---> scratch
           MAKE mia_AT NOT guidare.                  ---> drive
           MAKE mia_AT NOT indossare.                ---> wear
+          MAKE mia_AT NOT ispezionare.              ---> search
           MAKE mia_AT NOT lanciare.                 ---> throw
           MAKE mia_AT NOT lanciare_a.               ---> throw_to
           MAKE mia_AT NOT lanciare_contro.          ---> throw_at
@@ -1255,7 +1256,6 @@ EVENT check_restriction
           MAKE mia_AT NOT pry_with.
         --MAKE mia_AT NOT put_down. ------> ** WASN'T USED! (SEE 'drop'!) **
           MAKE mia_AT NOT rub.
-          MAKE mia_AT NOT search.
           MAKE mia_AT NOT shake.
         --MAKE mia_AT NOT shoot. ---------> ** VERBO ELIMINATO **
         --MAKE mia_AT NOT shoot_with. ----> ** VERBO ELIMINATO **

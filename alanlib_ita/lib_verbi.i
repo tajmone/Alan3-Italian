@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.36-Alpha, 2018-11-12: Alan 3.0beta6
+--| v0.7.37-Alpha, 2018-11-12: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -750,6 +750,7 @@ END VERB ringraziamenti.
 --| | guida              |                              | guida (veicolo)                        |     | 1 |     |
 --| | indossa            | mettiti                      | indossa (ogg)                          |     | 1 | {X} |
 --| | inventario         | inv                          | inventario                             |     | 0 |     |
+--| | ispeziona          | perquisisci                  | ispeziona (ogg)                        |     | 1 | {X} |
 --| | lancia             |                              | lancia (proiettile)                    |     | 1 |     |
 --| | lancia_a           |                              | lancia (proiettile) a (ricevente)      |     | 2 |     |
 --| | lancia_contro      |                              | lancia (proiettile) contro (bersaglio) |     | 2 |     |
@@ -1861,7 +1862,11 @@ ADD TO EVERY THING
 --             "It doesn't make sense to $v yourself."
       ELSE SAY mia_AT:check_obj_not_hero1.
     DOES
-      IF ogg AT hero
+      -- @NOTA: Ho invertito 'hero' e 'ogg' se no il verbo non copriva i casi
+      --        in cui l'erore è in una locazione annidata, oppure l'ogg è in
+      --        un contenitore esterno (es. il cielo o il soffitto)...
+   -- IF ogg AT hero
+      IF hero AT ogg
         THEN
           IF ogg IsA ACTOR
             THEN SAY THE ogg. "non sta"
@@ -1869,11 +1874,9 @@ ADD TO EVERY THING
                 THEN "$$nno"
               END IF.
               "parlando in questo momento."
-           -- "not talking right now."
             ELSE "Non odi niente di particolare."
-              -- "You hear nothing unusual."
           END IF.
--- TODO: Se l'oggetto è lontano non produce nessuna risposta, ma forse dovrebbe
+-- TODO: Se l'oggetto è lontano non produce nessuna risposta, ma forse dovrebbe CHECK!
 --       produrre un qualche testo. Il problema qui è che comunque il tentativo
 --       svela l'esistenza dell'oggetto, laddove un oggetto inesistente avrebbe
 --       prodotto "Non conosco la parola 'xxx'.", questo messaggio (o la sua
@@ -3647,6 +3650,7 @@ END ADD TO.
 --| * `guarda_in`
 --| * `guarda_sotto`
 --| * `guarda_su`
+--| * `ispeziona`
 --| 
 --| Verbi di questo gruppo non ancora tradotti:
 --| 
@@ -3751,6 +3755,7 @@ ADD TO EVERY THING
       END IF.
   END VERB esamina.
 END ADD TO.
+
 
 -->gruppo_guarda                                               @GUARDA <-- @LOOK
 --~=============================================================================
@@ -4030,6 +4035,64 @@ VERB guarda_su
   DOES "Guardando su non noti nulla di interessante."
     -- "Looking up, you see nothing unusual."
 END VERB guarda_su.
+
+
+
+-->gruppo_guarda                                          @ISPEZIONA <-- @SEARCH
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== ispeziona
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `ispeziona`.
+--<
+
+SYNTAX ispeziona = ispeziona (ogg)
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF.
+
+SYNONYMS perquisisci = ispeziona.
+
+
+ADD TO EVERY THING
+  VERB ispeziona
+    CHECK mia_AT CAN ispezionare
+      ELSE SAY mia_AT:azione_bloccata.
+    AND ogg <> hero
+      ELSE LIST hero.
+    AND ogg IS inanimato
+      -- "non credo che $+1 gradirebbe."
+      ELSE SAY  mia_AT:ogg1_png_non_apprezzerebbe.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+    DOES
+      "Non hai trovato niente di interessante." -- preso da i6
+  END VERB ispeziona.
+END ADD TO.
+
+
 
 -->gruppo_commercio(20800)
 --~============================================================================
@@ -10291,7 +10354,7 @@ END VERB rispondi_Sì.
 --~*| score              |                                    | score                             | 0 |
 --~*| scratch            |                                    | scratch (obj)                     | 1 | {x}
 --~*| script             |                                    | script. script on. script off.    | 0 |
---| | search             |                                    | search (obj)                      | 1 | {x}
+--~*| search             |                                    | search (obj)                      | 1 | {x}
 --~*| sell               |                                    | sell (item)                       | 1 |
 --| | shake              |                                    | shake (obj)                       | 1 | {x}
 --~!| shoot (at)         |                                    | shoot at (target)                 | 1 |
@@ -10846,58 +10909,6 @@ ADD TO EVERY THING
   END VERB rub.
 END ADD TO.
 
-
-
-
--- ==============================================================
-
-
--- @SEARCH
-
-
--- ==============================================================
-
-
-SYNTAX search = search (ogg)
-  WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-      -- @NOTA: Questo messaggio potrebbe dover essere ad hoc!                  TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter_sg.
-        ELSE SAY mia_AT:illegal_parameter_pl.
-      END IF.
-
-
-ADD TO EVERY THING
-  VERB search
-    CHECK mia_AT CAN search
-      ELSE SAY mia_AT:azione_bloccata.
-    AND ogg <> hero
-      ELSE LIST hero.
-    AND ogg IS inanimato
-      -- "non credo che $+1 gradirebbe."
-      ELSE SAY  mia_AT:ogg1_png_non_apprezzerebbe.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    DOES
-      "You find nothing of interest."
-  END VERB search.
-END ADD TO.
 
 
 

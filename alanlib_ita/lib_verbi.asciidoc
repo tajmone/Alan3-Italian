@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.36-Alpha, 2018-11-12: Alan 3.0beta6
+v0.7.37-Alpha, 2018-11-12: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -133,6 +133,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | guida              |                              | guida (veicolo)                        |     | 1 |     |
 | indossa            | mettiti                      | indossa (ogg)                          |     | 1 | {X} |
 | inventario         | inv                          | inventario                             |     | 0 |     |
+| ispeziona          | perquisisci                  | ispeziona (ogg)                        |     | 1 | {X} |
 | lancia             |                              | lancia (proiettile)                    |     | 1 |     |
 | lancia_a           |                              | lancia (proiettile) a (ricevente)      |     | 2 |     |
 | lancia_contro      |                              | lancia (proiettile) contro (bersaglio) |     | 2 |     |
@@ -523,6 +524,7 @@ Questo gruppo raccoglie i verbi '`eamina`' e '`guarda`', con le loro varianti:
 * `guarda_in`
 * `guarda_sotto`
 * `guarda_su`
+* `ispeziona`
 
 Verbi di questo gruppo non ancora tradotti:
 
@@ -563,6 +565,8 @@ l'attributo `xDesc` (che di default è una stringa vuota).
 ==== guarda_sotto
 
 ==== guarda_su
+
+==== ispeziona
 
 // end::gruppo_guarda[]
 // tag::gruppo_commercio[]
@@ -1005,7 +1009,6 @@ italiano del modulo dei verbi.
 | pry                |                                    | pry (obj)                         | 1 | {x}
 | pry_with           |                                    | pry (obj) with (instr)            | 2 | {x}
 | rub                |                                    | rub (obj)                         | 1 | {x}
-| search             |                                    | search (obj)                      | 1 | {x}
 | shake              |                                    | shake (obj)                       | 1 | {x}
 | squeeze            |                                    | squeeze (obj)                     | 1 | {x}
 | stand_on           |                                    | stand on (surface)                | 1 |
@@ -1131,6 +1134,8 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `guarda_sotto`.
 
 * [ ] Descrizione `guarda_su`.
+
+* [ ] Descrizione `ispeziona`.
 
 * [ ] Descrizione `compra`.
 

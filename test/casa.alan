@@ -38,6 +38,10 @@ THE giardino IsA luogo_esterno.
   NAME 'Il Giardino di Casa'.
   EXIT nord TO cucina.
   DESCRIPTION "A nord puoi tornare in casa."
+
+  VERB ascolta0
+    DOES ONLY "Puoi udire un cinquettio."
+  END VERB ascolta0.
 END THE giardino.
 
 -- =============================================================================
@@ -106,6 +110,25 @@ END THE cesto_frutta.
 -- Scenografia Giardino
 
 -- =============================================================================
+
+--==============================================================================
+-- Il Cinquettio
+--==============================================================================
+-- Un 'suono' per testare sia 'ascolta' che con oggetti che NON sono:
+--    esaminabile, prendibile, raggiungibile, spostabile.
+THE cinquettio IsA suono AT giardino.
+  DESCRIPTION "" -- non vogliamo che compaia nella descrizione (compare se si
+                 -- 'ascolta' in giardino).
+
+  VERB ascolta
+    DOES ONLY
+      IF hero AT ogg
+        THEN "Si direbbe il canto della cinciallegra."
+      ELSIF ogg NEAR hero
+        THEN "Da questa distanza è difficile capire di che uccelli si tratti."
+      END IF.
+  END VERB ascolta.
+END THE cinquettio.
 
 --==============================================================================
 -- Il Tavolo da Giardino (supporto)
