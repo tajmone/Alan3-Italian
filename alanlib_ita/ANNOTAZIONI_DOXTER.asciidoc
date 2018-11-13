@@ -1,7 +1,7 @@
 
 = Doxter: Note di Lavoro
 Tristano Ajmone <tajmone@gmail.com>
-:revdate: 2018-11-12
+:revdate: 2018-11-13
 :lang: it
 // TOC Settings:
 :toc: left
@@ -88,7 +88,7 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 [cols="2*>10m,20m,60d",options="header"]
 |===============================================================================
 | weight  | subweight |                              | descrizione
-|  1000   |           | elenco_verbi                 | == Elenco dei Verbi Italiani
+|  1000   |           | elenco_verbi                 | == Elenco Completo dei Verbi
 |  1010   |           | tabella_verbi_partita        | === Tabella Comandi di Partita
 |  1020   |           | tabella_verbi_gioco          | === Tabella Comandi di Gioco
 |  1030   |           | tabella_verbi_domande        | === Tabella Comandi Domande
@@ -162,7 +162,15 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 // =============================================================================
 | 30000   |           | comandi_comandi_domande      | == Verbi di Domande
 // -----------------------------------------------------------------------------
-| 50000   |           | todo                         | TODO
+| 30100   |           | gruppo_chi                   | == Domanda Chi
+// -----------------------------------------------------------------------------
+| 30200   |           | gruppo_cosa                  | == Domanda Cosa
+// -----------------------------------------------------------------------------
+| 30300   |           | gruppo_dove                  | == Domanda Dove
+// -----------------------------------------------------------------------------
+| 30400   |           | gruppo_risposte              | == Risposte
+// =============================================================================
+| 50000   |           | todo                         | == TODO
 | 50100   |           | verbi_non_tradotti           | === Verbi da Tradurre
 | 51000   |           | todo_checklist               | === Check List
 |===============================================================================

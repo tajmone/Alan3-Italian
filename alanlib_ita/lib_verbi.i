@@ -21,21 +21,24 @@
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~-----------------------------------------------------------------------------
 --|
---| == Elenco dei Verbi Italiani
+--| == Elenco Completo dei Verbi
 --|
 --~-----------------------------------------------------------------------------
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
 --|
---| I verbi finora tradotti in italiano sono raggruppti in tre diversi gruppi:
+--| Qui di seguito sono elencati tutti i verbi definiti dalla libreria, divisi
+--| in tre diversi gruppi:
 --| 
 --| 1. <<Meta Verbi di Partita>>
 --| 2. <<Verbi di Gioco>>
 --| 3. <<Verbi di Domande>>
 --| 
---| Di seguito troverete una tabella per ciascun gruppo, in cui i verbi sono
---| elencati in ordine alfabetico.
+--| I verbi nelle tabelle sono elencati in ordine alfabetico, per facilitarne la
+--| consultazione. Nel codice sorgente i verbi sono invece aggregati in base
+--| alla loro affinità, di modo da rendere più facile consultare il codice di
+--| verbi correlati tra loro.
 --| 
 --|=============================================================================
 --| 
@@ -51,12 +54,8 @@
 --|=============================================================================
 --<
 
--- L'ordine di apparizione dei verbi nella tabella rispecchia l'ordine in cui
--- appaiono nel codice sorgente qui di seguito; ai tre gruppi della tabella
--- corrispondono tre sezioni distinte in cui sono raggruppati i verbi in questo
--- file.
-
--- Le direzioni (nord, sud, su, giù, ecc.) sono definite in "lib_luoghi.i".
+-- Le direzioni (nord, sud, su, giù, ecc.) sono definite nel modulo della libreria
+-- "`lib_luoghi.i`".
 
 
 -->comandi_partita(10000)
@@ -10664,29 +10663,63 @@ END ADD TO.
 --<
 
 
--- ==============================================================
+-->comandi_domande
+--|
+--| [WARNING]
+--| ============================================================================
+--| *BUG!*  Per qualche ragione, Alan non riesce a preservare la `è` grave nelle
+--| sintassi e nei sinonimi (il problema non si verifica nelle istanze e nei
+--| parametri). Tutte le altre lettere accentate (`à`, `é`, `ì`, `ò` e `ù`)
+--| funzionano correttamente, solo la `è` grave causa problemi.
+--|
+--| Questo implica che tutti i verbi di domande che contengono la `è` grave non
+--| funzionano allo stato attuale poiché l'interprete non riesce a riconoscere
+--| la `è` della sintassi:
+--|
+--| * `chi_è`
+--| * `cosa_è`
+--| * `dove_è`
+--|
+--| Per ora si dovrà ripiegare sull'uso della `é` acuta, finché il problema non
+--| è risolto a monte tramite un bugfix. Più che una soluzione è un compromesso
+--| (orribile, oltre che inutile), ma è giusto per andare avanti con il lavoro e
+--| preservare il codice di questi verbi.
+--| ============================================================================
+--<
 
 
--- @CHI E' ---> @WHO IS
+-->gruppo_chi(30100)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Domanda Chi
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi:
+--| 
+--| * `chi_è`
+--| * `chi_sono_io`
+--<
 
 
--- ==============================================================
+-->gruppo_chi                                                 @CHI È <-- @WHO IS
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== chi_è
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `chi_è`.
+--<
 
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
---|| BUG: Per qualche ragione, Alan non riesce a preservare la 'è' nelle sintassi
---||      e nei sinonimi! (mentre non ci sonop problemi con le istanze ed i parametri)
---||      Tutte le altre lettere accentate funzionano (à é ì ò ù), solo 'è' causa
---||      problemi!
---||
---||      Per ora dovrò ripiegare sulla 'é', finché il problema non è risolto a
---||      monte tramite un bugfix. So che è orribile (oltre che inutile), ma è
---||      giusto per andare avanti con il lavoro.
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -- SYNTAX who_is = 'who' 'is' (png)!
 --        who_is = 'who' 'are' (png)!.
 
-SYNTAX  chi_è = chi é (png)!   ---> BUG: 'è' instead of 'é'                      FIXME!
+SYNTAX  chi_è = chi è (png)!   ---> BUG: La 'è' non viene riconosciuta!         BUG!
   WHERE png IsA ACTOR
     ELSE
       IF png IS NOT plurale
@@ -10694,6 +10727,7 @@ SYNTAX  chi_è = chi é (png)!   ---> BUG: 'è' instead of 'é'                     
         ELSE SAY mia_AT:illegal_parameter_who_pl.
       END IF.
 
+        chi_è = chi é (png)!.     ---> RIPIEGO ('é' anziché 'è'!)               FIXME!
         chi_è = chi sono (png)!.
 
 
@@ -10707,14 +10741,16 @@ ADD TO EVERY ACTOR
     END VERB chi_è.
 END ADD TO.
 
-
--- ==============================================================
-
-
--- @CHI SONO ---> @WHO AM I
-
-
--- ==============================================================
+-->gruppo_chi                                            @CHI SONO <-- @WHO AM I
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== chi_sono_io
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `chi_sono_io`.
+--<
 
 -- SYNTAX who_am_i = who am i.
 
@@ -10731,30 +10767,36 @@ VERB chi_sono_io
 END VERB chi_sono_io.
 
 
+-->gruppo_cosa(30200)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Domanda Cosa
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi:
+--| 
+--| * `cosa_è`
+--| * `cosa_sono_io`
+--<
 
 
--- ==============================================================
-
-
--- @COSA E'? ---> @WHAT IS
-
-
--- ==============================================================
-
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
---|| BUG: Per qualche ragione, Alan non riesce a preservare la 'è' nelle sintassi
---||      e nei sinonimi! (mentre non ci sonop problemi con le istanze ed i parametri)
---||      Tutte le altre lettere accentate funzionano (à é ì ò ù), solo 'è' causa
---||      problemi!
---||
---||      Per ora dovrò ripiegare sulla 'é', finché il problema non è risolto a
---||      monte tramite un bugfix. So che è orribile (oltre che inutile), ma è
---||      giusto per andare avanti con il lavoro.
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->gruppo_cosa                                              @COSA È <-- @WHAT IS
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== cosa_è
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `cosa_è`.
+--<
 
 -- SYNTAX what_is = 'what' 'is' (ogg)!
 
-SYNTAX  cosa_è = cosa é (ogg)!            ---> BUG: 'è' instead of 'é'          FIXME!
+SYNTAX  cosa_è = cosa è (ogg)!  ---> BUG: La 'è' non viene riconosciuta!        BUG!
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
@@ -10762,10 +10804,14 @@ SYNTAX  cosa_è = cosa é (ogg)!            ---> BUG: 'è' instead of 'é'          
         ELSE SAY mia_AT:illegal_parameter_what_pl.
       END IF.
 
-        cosa_è = che cosa é (ogg)!.       ---> BUG: 'è' instead of 'é'          FIXME!
-        cosa_è = 'cos''é' (ogg)!.         ---> BUG: 'è' instead of 'é'          FIXME!
-        cosa_è = che 'cos''é' (ogg)!.     ---> BUG: 'è' instead of 'é'          FIXME!
+        cosa_è = cosa é (ogg)!.        ---> RIPIEGO ('é' anziché 'è'!)          FIXME!
+        cosa_è = che cosa é (ogg)!.    ---> RIPIEGO
+        cosa_è = 'cos''é' (ogg)!.      ---> RIPIEGO
+        cosa_è = che 'cos''é' (ogg)!.  ---> RIPIEGO
 
+        cosa_è = che cosa è (ogg)!.
+        cosa_è = 'cos''è' (ogg)!.
+        cosa_è = che 'cos''è' (ogg)!.
         cosa_è = cosa sono (ogg)!.
         cosa_è = che cosa sono (ogg)!.
 
@@ -10783,14 +10829,16 @@ END ADD TO.
 
 
 
-
--- ==============================================================
-
-
--- @COSA SONO IO? ---> @WHAT AM I
-
-
--- ==============================================================
+-->gruppo_cosa                                     @COSA SONO IO? <-- @WHAT AM I
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== cosa_sono_io
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `cosa_sono_io`.
+--<
 
 -- SYNTAX what_am_i = 'what' am i.
 
@@ -10811,30 +10859,38 @@ VERB cosa_sono_io
 END VERB cosa_sono_io.
 
 
--- ==============================================================
+-->gruppo_dove(30300)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Domanda Dove
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi:
+--| 
+--| * `dove_è`
+--| * `dove_mi_trovo`
+--<
 
 
--- @DOVE E' ---> @WHERE IS
-
-
--- ==============================================================
-
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
---|| BUG: Per qualche ragione, Alan non riesce a preservare la 'è' nelle sintassi
---||      e nei sinonimi! (mentre non ci sonop problemi con le istanze ed i parametri)
---||      Tutte le altre lettere accentate funzionano (à é ì ò ù), solo 'è' causa
---||      problemi!
---||
---||      Per ora dovrò ripiegare sulla 'é', finché il problema non è risolto a
---||      monte tramite un bugfix. So che è orribile (oltre che inutile), ma è
---||      giusto per andare avanti con il lavoro.
---||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->gruppo_dove                                             @DOVE È <-- @WHERE IS
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== dove_è
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `dove_è`.
+--<
 
 
 -- SYNTAX where_is = 'where' 'is' (ogg)!
 --        where_is = 'where' 'are' (ogg)!.
 
-SYNTAX  dove_è = dove é (ogg)!            ---> BUG: 'è' instead of 'é'          FIXME!
+SYNTAX  dove_è = dove è (ogg)!  ---> BUG: La 'è' non viene riconosciuta!        BUG!
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
@@ -10842,7 +10898,10 @@ SYNTAX  dove_è = dove é (ogg)!            ---> BUG: 'è' instead of 'é'          
         ELSE SAY mia_AT:illegal_parameter_what_pl.
       END IF.
 
-        dove_è = 'dov''é' (ogg)!.         ---> BUG: 'è' instead of 'é'          FIXME!
+        dove_è = dove é (ogg)!.     ---> RIPIEGO ('é' anziché 'è'!)             FIXME!
+        dove_è = 'dov''é' (ogg)!.   ---> RIPIEGO
+        
+        dove_è = 'dov''è' (ogg)!.
         dove_è = dove sono (ogg)!.
         dove_è = dove si trova (ogg)!.
         dove_è = dove si trovano (ogg)!.
@@ -10865,15 +10924,17 @@ ADD TO EVERY THING
 END ADD TO.
 
 
+-->gruppo_dove                                    @DOVE MI TROVO <-- @WHERE AM I
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== dove_mi_trovo
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `dove_mi_trovo`.
+--<
 
-
--- ==============================================================
-
-
--- @DOVE MI TROVO ---> @WHERE AM I
-
-
--- ==============================================================
 -- Ha to change it because the 'i' here was conflicting with the 'i' synonym
 -- for NOISE WORDS. (befor 'i' was the default syntax for "inventory", so it
 -- didn't conflict because it was not a synonym but a verb and syntax).
@@ -10893,14 +10954,33 @@ VERB dove_mi_trovo
 END VERB dove_mi_trovo.
 
 
+-->gruppo_risposte(30400)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Risposte
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Questo gruppo include i verbi:
+--| 
+--| * `rispondi_No`
+--| * `rispondi_Sì`
+--<
 
--- ==============================================================
 
+-->gruppo_risposte                                          @RISPONDI NO <-- @NO
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== rispondi_No
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `rispondi_No`.
+--<
 
--- @RISPONDI "No" ---> @NO
-
-
--- ==============================================================
 
 -- SYNTAX 'no' = 'no'.
 
@@ -10914,14 +10994,16 @@ VERB rispondi_No
     -- "Really?"
 END VERB rispondi_No.
 
-
--- ================================================================
-
-
--- @RISPONDI "Sì" ---> @YES
-
-
--- ================================================================
+-->gruppo_risposte                                         @RISPONDI SÌ <-- @YES
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== rispondi_Sì
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `rispondi_Sì`.
+--<
 
 -- SYNTAX yes = yes.
 
@@ -10936,14 +11018,19 @@ VERB rispondi_Sì
 END VERB rispondi_Sì.
 
 
+
 -->todo(50000.1)
---~============================================================================
---~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~-----------------------------------------------------------------------------
+--|
 --| == TODO
+--|
 --~-----------------------------------------------------------------------------
---~/////////////////////////////////////////////////////////////////////////////
---~============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
 --| 
 --| Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
 --| italiano del modulo dei verbi.
@@ -10957,6 +11044,9 @@ END VERB rispondi_Sì.
 --~=============================================================================
 --| 
 --| Lista della spesa per le varie cosucce da fare:
+--| 
+--| * [ ] Ragruppa i vari verbi in maniera intuitiva e pratica in modo da tenere
+--|       vicini tra loro verbi correlati, simmetrici e/o complementari.
 --<
 
 -->todo_checklist(.665)

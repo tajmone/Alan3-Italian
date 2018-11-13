@@ -1,0 +1,30 @@
+; ******************************************************************************
+; *                                                                            *
+; *                        TESTA VERBI DOMANDE/RISPOSTE                        *
+; *                                                                            *
+; ******************************************************************************
+; Questo test riguarda queio di verbi che sono domande poste dal protagonista,
+; o risposte.
+; ==============================================================================
+; *** BUG 'È' ***
+; ==============================================================================
+; Allo stato attuale c'è un baco in Alan che impedisce l'uso della 'è' grave nella
+; sintassi dei verbi:
+chi è il giardiniere
+cosa è la piscina
+cos'è la piscina
+che cosa è la piscina
+che cos'è la piscina
+dove è il giardiniere
+dov'è la piscina
+; ------------------------------------------------------------------------------
+; Ripiego su 'é' acuta
+; ------------------------------------------------------------------------------
+; Invece le sintassi alternative di ripiego (che usano la 'é' acuta) funzionano
+; correttamente. Questo dimostra che il problema è isolato alla 'è' grave.
+chi é il giardiniere
+cosa é la piscina
+cos'é la piscina
+che cos'é la piscina
+dove é il giardiniere
+dov'é la piscina

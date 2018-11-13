@@ -26,17 +26,20 @@ include::attributes-it.adoc[tag=attributes-it]
 // end::custom_attributes[]
 // tag::elenco_verbi[]
 
-== Elenco dei Verbi Italiani
+== Elenco Completo dei Verbi
 
 
-I verbi finora tradotti in italiano sono raggruppti in tre diversi gruppi:
+Qui di seguito sono elencati tutti i verbi definiti dalla libreria, divisi
+in tre diversi gruppi:
 
 1. <<Meta Verbi di Partita>>
 2. <<Verbi di Gioco>>
 3. <<Verbi di Domande>>
 
-Di seguito troverete una tabella per ciascun gruppo, in cui i verbi sono
-elencati in ordine alfabetico.
+I verbi nelle tabelle sono elencati in ordine alfabetico, per facilitarne la
+consultazione. Nel codice sorgente i verbi sono invece aggregati in base
+alla loro affinità, di modo da rendere più facile consultare il codice di
+verbi correlati tra loro.
 
 =============================================================================
 
@@ -1038,9 +1041,85 @@ in cui il giocatore impartisce un ordine diretto al personaggio protagonista
 o domande poste dal protagonista stesso (p.es. "`chi sono?`", "`sì`", "`dove
 è il tesoro?`").
 
+
+[WARNING]
+============================================================================
+*BUG!*  Per qualche ragione, Alan non riesce a preservare la `è` grave nelle
+sintassi e nei sinonimi (il problema non si verifica nelle istanze e nei
+parametri). Tutte le altre lettere accentate (`à`, `é`, `ì`, `ò` e `ù`)
+funzionano correttamente, solo la `è` grave causa problemi.
+
+Questo implica che tutti i verbi di domande che contengono la `è` grave non
+funzionano allo stato attuale poiché l'interprete non riesce a riconoscere
+la `è` della sintassi:
+
+* `chi_è`
+* `cosa_è`
+* `dove_è`
+
+Per ora si dovrà ripiegare sull'uso della `é` acuta, finché il problema non
+è risolto a monte tramite un bugfix. Più che una soluzione è un compromesso
+(orribile, oltre che inutile), ma è giusto per andare avanti con il lavoro e
+preservare il codice di questi verbi.
+============================================================================
+
 // end::comandi_domande[]
+// tag::gruppo_chi[]
+=== Domanda Chi
+
+Questo gruppo include i verbi:
+
+* `chi_è`
+* `chi_sono_io`
+
+==== chi_è
+
+==== chi_sono_io
+
+// end::gruppo_chi[]
+// tag::gruppo_cosa[]
+=== Domanda Cosa
+
+Questo gruppo include i verbi:
+
+* `cosa_è`
+* `cosa_sono_io`
+
+==== cosa_è
+
+==== cosa_sono_io
+
+// end::gruppo_cosa[]
+// tag::gruppo_dove[]
+=== Domanda Dove
+
+Questo gruppo include i verbi:
+
+* `dove_è`
+* `dove_mi_trovo`
+
+==== dove_è
+
+==== dove_mi_trovo
+
+// end::gruppo_dove[]
+// tag::gruppo_risposte[]
+=== Risposte
+
+Questo gruppo include i verbi:
+
+* `rispondi_No`
+* `rispondi_Sì`
+
+==== rispondi_No
+
+==== rispondi_Sì
+
+// end::gruppo_risposte[]
 // tag::todo[]
+
 == TODO
+
 
 Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
 italiano del modulo dei verbi.
@@ -1050,6 +1129,9 @@ italiano del modulo dei verbi.
 === Check List Generale
 
 Lista della spesa per le varie cosucce da fare:
+
+* [ ] Ragruppa i vari verbi in maniera intuitiva e pratica in modo da tenere
+      vicini tra loro verbi correlati, simmetrici e/o complementari.
 
 
 === Check List Doxter 
@@ -1361,6 +1443,22 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `trova`.
 
 * [ ] Descrizione `vai_a`.
+
+* [ ] Descrizione `chi_è`.
+
+* [ ] Descrizione `chi_sono_io`.
+
+* [ ] Descrizione `cosa_è`.
+
+* [ ] Descrizione `cosa_sono_io`.
+
+* [ ] Descrizione `dove_è`.
+
+* [ ] Descrizione `dove_mi_trovo`.
+
+* [ ] Descrizione `rispondi_No`.
+
+* [ ] Descrizione `rispondi_Sì`.
 
 // end::todo_checklist[]
 

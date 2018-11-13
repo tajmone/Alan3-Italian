@@ -445,7 +445,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_elenco_dei_verbi_italiani">Elenco dei Verbi Italiani</a>
+<li><a href="#_elenco_completo_dei_verbi">Elenco Completo dei Verbi</a>
 <ul class="sectlevel2">
 <li><a href="#_tabella_comandi_di_partita">Tabella Comandi di Partita</a></li>
 <li><a href="#_tabella_comandi_di_gioco">Tabella Comandi di Gioco</a></li>
@@ -738,7 +738,34 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#_verbi_di_domande">Verbi di Domande</a></li>
+<li><a href="#_verbi_di_domande">Verbi di Domande</a>
+<ul class="sectlevel2">
+<li><a href="#_domanda_chi">Domanda Chi</a>
+<ul class="sectlevel3">
+<li><a href="#_chi_è">chi_è</a></li>
+<li><a href="#_chi_sono_io">chi_sono_io</a></li>
+</ul>
+</li>
+<li><a href="#_domanda_cosa">Domanda Cosa</a>
+<ul class="sectlevel3">
+<li><a href="#_cosa_è">cosa_è</a></li>
+<li><a href="#_cosa_sono_io">cosa_sono_io</a></li>
+</ul>
+</li>
+<li><a href="#_domanda_dove">Domanda Dove</a>
+<ul class="sectlevel3">
+<li><a href="#_dove_è">dove_è</a></li>
+<li><a href="#_dove_mi_trovo">dove_mi_trovo</a></li>
+</ul>
+</li>
+<li><a href="#_risposte">Risposte</a>
+<ul class="sectlevel3">
+<li><a href="#_rispondi_no">rispondi_No</a></li>
+<li><a href="#_rispondi_sì">rispondi_Sì</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#_todo">TODO</a>
 <ul class="sectlevel2">
 <li><a href="#_check_list_generale">Check List Generale</a></li>
@@ -763,10 +790,11 @@ Ad opera di Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_elenco_dei_verbi_italiani"><a class="anchor" href="#_elenco_dei_verbi_italiani"></a>Elenco dei Verbi Italiani</h2>
+<h2 id="_elenco_completo_dei_verbi"><a class="anchor" href="#_elenco_completo_dei_verbi"></a>Elenco Completo dei Verbi</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>I verbi finora tradotti in italiano sono raggruppti in tre diversi gruppi:</p>
+<p>Qui di seguito sono elencati tutti i verbi definiti dalla libreria, divisi
+in tre diversi gruppi:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -782,8 +810,10 @@ Ad opera di Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Di seguito troverete una tabella per ciascun gruppo, in cui i verbi sono
-elencati in ordine alfabetico.</p>
+<p>I verbi nelle tabelle sono elencati in ordine alfabetico, per facilitarne la
+consultazione. Nel codice sorgente i verbi sono invece aggregati in base
+alla loro affinità, di modo da rendere più facile consultare il codice di
+verbi correlati tra loro.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -4017,6 +4047,143 @@ in cui il giocatore impartisce un ordine diretto al personaggio protagonista
 o domande poste dal protagonista stesso (p.es. &#8220;chi sono?&#8221;, &#8220;sì&#8221;, &#8220;dove
 è il tesoro?&#8221;).</p>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Attenzione"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>BUG!</strong>  Per qualche ragione, Alan non riesce a preservare la <code>è</code> grave nelle
+sintassi e nei sinonimi (il problema non si verifica nelle istanze e nei
+parametri). Tutte le altre lettere accentate (<code>à</code>, <code>é</code>, <code>ì</code>, <code>ò</code> e <code>ù</code>)
+funzionano correttamente, solo la <code>è</code> grave causa problemi.</p>
+</div>
+<div class="paragraph">
+<p>Questo implica che tutti i verbi di domande che contengono la <code>è</code> grave non
+funzionano allo stato attuale poiché l&#8217;interprete non riesce a riconoscere
+la <code>è</code> della sintassi:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>chi_è</code></p>
+</li>
+<li>
+<p><code>cosa_è</code></p>
+</li>
+<li>
+<p><code>dove_è</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Per ora si dovrà ripiegare sull&#8217;uso della <code>é</code> acuta, finché il problema non
+è risolto a monte tramite un bugfix. Più che una soluzione è un compromesso
+(orribile, oltre che inutile), ma è giusto per andare avanti con il lavoro e
+preservare il codice di questi verbi.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_domanda_chi"><a class="anchor" href="#_domanda_chi"></a>Domanda Chi</h3>
+<div class="paragraph">
+<p>Questo gruppo include i verbi:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>chi_è</code></p>
+</li>
+<li>
+<p><code>chi_sono_io</code></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_chi_è"><a class="anchor" href="#_chi_è"></a>chi_è</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_chi_sono_io"><a class="anchor" href="#_chi_sono_io"></a>chi_sono_io</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_domanda_cosa"><a class="anchor" href="#_domanda_cosa"></a>Domanda Cosa</h3>
+<div class="paragraph">
+<p>Questo gruppo include i verbi:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>cosa_è</code></p>
+</li>
+<li>
+<p><code>cosa_sono_io</code></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_cosa_è"><a class="anchor" href="#_cosa_è"></a>cosa_è</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_cosa_sono_io"><a class="anchor" href="#_cosa_sono_io"></a>cosa_sono_io</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_domanda_dove"><a class="anchor" href="#_domanda_dove"></a>Domanda Dove</h3>
+<div class="paragraph">
+<p>Questo gruppo include i verbi:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>dove_è</code></p>
+</li>
+<li>
+<p><code>dove_mi_trovo</code></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_dove_è"><a class="anchor" href="#_dove_è"></a>dove_è</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_dove_mi_trovo"><a class="anchor" href="#_dove_mi_trovo"></a>dove_mi_trovo</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_risposte"><a class="anchor" href="#_risposte"></a>Risposte</h3>
+<div class="paragraph">
+<p>Questo gruppo include i verbi:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>rispondi_No</code></p>
+</li>
+<li>
+<p><code>rispondi_Sì</code></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_rispondi_no"><a class="anchor" href="#_rispondi_no"></a>rispondi_No</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_rispondi_sì"><a class="anchor" href="#_rispondi_sì"></a>rispondi_Sì</h4>
+
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -4030,6 +4197,14 @@ italiano del modulo dei verbi.</p>
 <h3 id="_check_list_generale"><a class="anchor" href="#_check_list_generale"></a>Check List Generale</h3>
 <div class="paragraph">
 <p>Lista della spesa per le varie cosucce da fare:</p>
+</div>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="fa fa-square-o"></i> Ragruppa i vari verbi in maniera intuitiva e pratica in modo da tenere
+vicini tra loro verbi correlati, simmetrici e/o complementari.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -4497,6 +4672,30 @@ italiano del modulo dei verbi.</p>
 </li>
 <li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>vai_a</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>chi_è</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>chi_sono_io</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>cosa_è</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>cosa_sono_io</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>dove_è</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>dove_mi_trovo</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>rispondi_No</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Descrizione <code>rispondi_Sì</code>.</p>
 </li>
 </ul>
 </div>
