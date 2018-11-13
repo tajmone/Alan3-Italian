@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.41-Alpha, 2018-11-12: Alan 3.0beta6
+v0.8.0-Alpha, 2018-11-13: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -83,6 +83,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | VERBO              | SINONIMI                     | SINTASSI                               |  M  | A |  O  |  B
 | accendi            |                              | accendi (disp)                         |     | 1 |     |
 | acchiappa          |                              | acchiappa (ogg)                        |     | 1 | {X} |
+| agita              | scuoti                       | agita (ogg)                            |     | 1 | {X} |
 | alzati             |                              | alzati                                 |     | 0 |     |
 | annusa0            | odora                        | annusa                                 |     | 0 |     |
 | annusa             | odora                        | annusa (odore)                         |     | 1 |     |
@@ -167,6 +168,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | prega              |                              | prega                                  |     | 0 |     |
 | prendi             | afferra, raccogli, trasporta | prendi (ogg)                           |     | 1 | {X} |
 | prendi_da          | rimuovi, togli               | prendi (ogg) da (detentore)            |     | 2 | {X} |
+| pulisci            | strofina, lucida             | pulisci (ogg)                          |     | 1 | {X} |
 | racconta           | informa, dì a, parla a       | racconta a (png) di (argomento)!       |     | 2 |     |
 | rifai              | ancora, G                    | rifai                                  |     | 0 |     |
 | riempi             |                              | riempi (cont)                          |     | 1 |     |
@@ -189,6 +191,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | sdraiati_in        |                              | sdraiati in (cont)                     |     | 1 |     |
 | sdraiati_su        |                              | sdraiati su (superficie)               |     | 1 |     |
 | segui              |                              | segui (png)!                           |     | 1 |     |
+| sfrega             | massaggia                    | sfrega (ogg)                           |     | 1 | {X} |
 | siediti            | siedi                        | siediti                                |     | 0 |     |
 | siediti_su         | siedi                        | siediti su (superficie)                |     | 1 |     |
 | solleva            | alza                         | solleva (ogg)                          |     | 1 | {X} |
@@ -201,6 +204,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 | spingi             |                              | spingi (ogg)                           |     | 1 | {X} |
 | spingi_con         |                              | spingi (ogg) con (strum)               |     | 2 | {X} |
 | spogliati          | svestiti                     | spogliati                              |     | 0 |     |
+| spremi             | strizza                      | spremi (ogg)                           |     | 1 | {X} |
 | strappa            |                              | strappa (ogg)                          |     | 1 | {X} |
 | suona              |                              | suona (ogg)                            |     | 1 | {X} |
 | svuota             |                              | svuota (ogg)                           |     | 1 | {X} |
@@ -929,6 +933,7 @@ Questo gruppo raccoglie i verbi per i quali non è ancora stato creato un:
 gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 
 * `acchiappa`
+* `agita`
 * `aspetta`
 * `attraversa`
 * `bacia`
@@ -947,16 +952,21 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 * `lega_a`
 * `libera`
 * `mostra`
+* `pulisci`
 * `prega`
 * `rifai`
 * `scava`
 * `scavalca`
 * `segui`
+* `sfrega`
+* `spremi`
 * `suona`
 * `trova`
 * `vai_a`
 
 ==== acchiappa
+
+==== agita
 
 ==== aspetta
 
@@ -996,6 +1006,8 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 
 ==== prega
 
+==== pulisci
+
 ==== rifai
 
 ==== scava
@@ -1003,6 +1015,10 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 ==== scavalca
 
 ==== segui
+
+==== sfrega
+
+==== spremi
 
 ==== suona
 
@@ -1030,23 +1046,6 @@ Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
 italiano del modulo dei verbi.
 
 // end::todo[]
-// tag::verbi_non_tradotti[]
-
-== Verbi da Tradurre
-
-
-
-.Elenco dei Verbi Non Tradotti
-[cols="20m,30d,25d,2*^5d",options="header"]
-|=======================================================================================================
-| VERBO              | SINONIMI                           | SINTASSI                          | A |  O  
-| clean              | polish, wipe                       | clean (obj)                       | 1 | {x}
-| rub                |                                    | rub (obj)                         | 1 | {x}
-| shake              |                                    | shake (obj)                       | 1 | {x}
-| squeeze            |                                    | squeeze (obj)                     | 1 | {x}
-|=======================================================================================================
-
-// end::verbi_non_tradotti[]
 // tag::todo_checklist[]
 === Check List Generale
 
@@ -1303,6 +1302,8 @@ Finisci di trasformare commenti in documentazione Doxter:
 
 * [ ] Descrizione `acchiappa`.
 
+* [ ] Descrizione `agita`.
+
 * [ ] Descrizione `aspetta`.
 
 * [ ] Descrizione `attraversa`.
@@ -1341,6 +1342,8 @@ Finisci di trasformare commenti in documentazione Doxter:
 
 * [ ] Descrizione `prega`.
 
+* [ ] Descrizione `pulisci`.
+
 * [ ] Descrizione `rifai`.
 
 * [ ] Descrizione `scava`.
@@ -1348,6 +1351,10 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `scavalca`.
 
 * [ ] Descrizione `segui`.
+
+* [ ] Descrizione `sfrega`.
+
+* [ ] Descrizione `spremi`.
 
 * [ ] Descrizione `suona`.
 

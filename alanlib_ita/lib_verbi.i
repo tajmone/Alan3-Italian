@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.7.41-Alpha, 2018-11-12: Alan 3.0beta6
+--| v0.8.0-Alpha, 2018-11-13: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -828,6 +828,7 @@ END VERB ricomincia_partita.
 --~ +--------------------+------------------------------+----------------------------------------+-----+---+-----+-----+
 --| | accendi            |                              | accendi (disp)                         |     | 1 |     |
 --| | acchiappa          |                              | acchiappa (ogg)                        |     | 1 | {X} |
+--| | agita              | scuoti                       | agita (ogg)                            |     | 1 | {X} |
 --| | alzati             |                              | alzati                                 |     | 0 |     |
 --| | annusa0            | odora                        | annusa                                 |     | 0 |     |
 --| | annusa             | odora                        | annusa (odore)                         |     | 1 |     |
@@ -912,6 +913,7 @@ END VERB ricomincia_partita.
 --| | prega              |                              | prega                                  |     | 0 |     |
 --| | prendi             | afferra, raccogli, trasporta | prendi (ogg)                           |     | 1 | {X} |
 --| | prendi_da          | rimuovi, togli               | prendi (ogg) da (detentore)            |     | 2 | {X} |
+--| | pulisci            | strofina, lucida             | pulisci (ogg)                          |     | 1 | {X} |
 --| | racconta           | informa, dì a, parla a       | racconta a (png) di (argomento)!       |     | 2 |     |
 --| | rifai              | ancora, G                    | rifai                                  |     | 0 |     |
 --| | riempi             |                              | riempi (cont)                          |     | 1 |     |
@@ -934,6 +936,7 @@ END VERB ricomincia_partita.
 --| | sdraiati_in        |                              | sdraiati in (cont)                     |     | 1 |     |
 --| | sdraiati_su        |                              | sdraiati su (superficie)               |     | 1 |     |
 --| | segui              |                              | segui (png)!                           |     | 1 |     |
+--| | sfrega             | massaggia                    | sfrega (ogg)                           |     | 1 | {X} |
 --| | siediti            | siedi                        | siediti                                |     | 0 |     |
 --| | siediti_su         | siedi                        | siediti su (superficie)                |     | 1 |     |
 --| | solleva            | alza                         | solleva (ogg)                          |     | 1 | {X} |
@@ -946,6 +949,7 @@ END VERB ricomincia_partita.
 --| | spingi             |                              | spingi (ogg)                           |     | 1 | {X} |
 --| | spingi_con         |                              | spingi (ogg) con (strum)               |     | 2 | {X} |
 --| | spogliati          | svestiti                     | spogliati                              |     | 0 |     |
+--| | spremi             | strizza                      | spremi (ogg)                           |     | 1 | {X} |
 --| | strappa            |                              | strappa (ogg)                          |     | 1 | {X} |
 --| | suona              |                              | suona (ogg)                            |     | 1 | {X} |
 --| | svuota             |                              | svuota (ogg)                           |     | 1 | {X} |
@@ -8784,6 +8788,7 @@ END ADD TO.
 --| gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 --| 
 --| * `acchiappa`
+--| * `agita`
 --| * `aspetta`
 --| * `attraversa`
 --| * `bacia`
@@ -8802,11 +8807,14 @@ END ADD TO.
 --| * `lega_a`
 --| * `libera`
 --| * `mostra`
+--| * `pulisci`
 --| * `prega`
 --| * `rifai`
 --| * `scava`
 --| * `scavalca`
 --| * `segui`
+--| * `sfrega`
+--| * `spremi`
 --| * `suona`
 --| * `trova`
 --| * `vai_a`
@@ -8834,8 +8842,7 @@ SYNTAX acchiappa = acchiappa (ogg)
         --  "$+1 non [è/sono] qualcosa che puoi"
         THEN SAY mia_AT:ogg1_inadatto_sg.
         ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "acchiappare."
+      END IF. "acchiappare."
 
 ADD TO EVERY THING
   VERB acchiappa
@@ -8847,8 +8854,7 @@ ADD TO EVERY THING
           --  "$+1 non [è/sono] qualcosa che puoi"
           THEN SAY mia_AT:ogg1_inadatto_sg.
           ELSE SAY mia_AT:ogg1_inadatto_pl.
-        END IF.
-        "acchiappare."
+        END IF. "acchiappare."
     AND ogg <> hero
 --                                                                              TRANSLATE!
       ELSE SAY mia_AT:check_obj_not_hero1.
@@ -8868,6 +8874,79 @@ ADD TO EVERY THING
 
           "need to be caught."
   END VERB acchiappa.
+END ADD TO.
+
+
+-->gruppo_sfusi                                                @AGITA <-- @SHAKE
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== agita
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `agita`.
+--<
+
+-- @NOTA1: possibili traduzioni: scuoti + agita
+--         Il verbo principale dovrebbe essere "scuoti" perché è puù generico e
+--         va bene in tutte le risposte:
+--         - "scuoti albero"  -> "scuoti l'albero..."
+--         - "agita flaccone" -> "scuoti il flaccone..."
+-- @NOTA2: La risposta inglese tiene conto se l'oggetto è posseduto o meno:
+--            "You shake XXX cautiously in your hands."
+
+
+SYNTAX agita = agita (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF. "agitare."
+
+SYNONYMS scuoti = agita.
+
+
+ADD TO EVERY OBJECT
+  VERB agita
+    CHECK mia_AT CAN agitare
+      ELSE SAY mia_AT:azione_bloccata.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF. "agitare."
+--                                                                              TRANSLATE!
+    AND ogg IS spostabile
+      ELSE SAY mia_AT:check_obj_movable.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+    DOES
+      IF ogg IN hero
+        THEN
+          "Agiti cautamente $+1 con la mano, ma senza risultato."
+        -- "You shake" SAY THE ogg. "cautiously in your hands. Nothing happens."
+        ELSE "Non c'è motivo di scuotere $+1."
+        -- "There is no reason to start shaking" SAY THE ogg. "."
+      END IF.
+  END VERB agita.
 END ADD TO.
 
 
@@ -9932,6 +10011,74 @@ VERB prega
   -- DOES "Your prayers don't seem to help right now."
 END VERB prega.
 
+-->gruppo_sfusi                                              @PULISCI <-- @CLEAN
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== pulisci
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `pulisci`.
+--<
+
+-- SYNTAX clean = clean (ogg)
+-- SYNONYMS wipe, polish = clean.
+
+SYNTAX pulisci = pulisci (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF.
+      "pulire."
+
+
+SYNONYMS strofina, lucida = pulisci.
+
+----- notice that 'rub' is defined separately
+
+ADD TO EVERY OBJECT
+  VERB pulisci
+    CHECK mia_AT CAN pulire
+      ELSE SAY mia_AT:azione_bloccata.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF. "pulire."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+    DOES
+      -- "Farlo non servirebbe a nulla."
+      SAY mia_AT:non_servirebbe_a_nulla.
+      -- "Nothing would be achieved by that."
+  END VERB pulisci.
+END ADD TO.
+
+
+
+
+
 -->gruppo_sfusi                                                @RIFAI <-- @AGAIN
 --~=============================================================================
 --~-----------------------------------------------------------------------------
@@ -10145,6 +10292,141 @@ ADD TO EVERY THING
 --                                                                              TRANSLATE!
       "You follow" SAY THE png. "."
     END VERB segui.
+END ADD TO.
+
+
+
+-->gruppo_sfusi                                                 @SFREGA <-- @RUB
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== sfrega
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `sfrega`.
+--<
+
+-- SYNTAX rub = rub (ogg)
+-- SYNONYMS massage = rub.
+
+SYNTAX sfrega = sfrega (ogg)
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+        --  "$+1 non [è/sono] qualcosa che puoi"
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF. "sfregare."
+
+SYNONYMS massaggia = sfrega.
+
+ADD TO EVERY THING
+  VERB sfrega
+    CHECK mia_AT CAN sfregare
+      ELSE SAY mia_AT:azione_bloccata.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa che puoi"
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF. "sfregare."
+--                                                                              TRANSLATE!
+    AND ogg <> hero
+      ELSE SAY mia_AT:check_obj_not_hero6.
+    AND ogg IS inanimato
+      ELSE SAY mia_AT:check_obj_inanimate2.
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+    DOES
+      -- "Farlo non servirebbe a nulla."
+      SAY mia_AT:non_servirebbe_a_nulla.
+      -- "Nothing would be achieved by that."
+  END VERB sfrega.
+END ADD TO.
+
+
+-->gruppo_sfusi                                             @SPREMI <-- @SQUEEZE
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== spremi
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
+-->todo_checklist(.666) Doxter
+--| * [ ] Descrizione `spremi`.
+--<
+
+-- @NOTA: Questo verbo è difficile da tradurre poiché i vari significati inglesi
+--        non si sovrappongono in Italiano, tranne "spremi:
+--        - "squeeze lemon" -> "spremi limone"
+--        Ma che utilità avrebbe questo verbo di base?
+--        Sarebbe più utile implementare "premi", "schiaccia", che almeno è usato
+--        spesso (pulsanti, ecc.).
+--        Il vero problema qui è la risposta che si ottiene: se uno usa "premi" o
+--        "schiaccia" e nella risposta poi legge "spremi" (o viceversa) non ha
+--        senso, quindi "spremi" e "schiaccia/premi" si escludono tra loro.
+--        Purtroppo abbiamo a che fare con verbi il cui infinito non può essere
+--        formato dall'imperativo tramite '$v'.
+
+SYNTAX spremi = spremi (ogg)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF. "spremere."
+
+SYNONYMS strizza = spremi.
+
+
+ADD TO EVERY THING
+  VERB spremi
+    CHECK mia_AT CAN spremere
+      ELSE SAY mia_AT:azione_bloccata.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF. "spremere."
+    AND CURRENT LOCATION IS illuminato
+      ELSE SAY mia_AT:imp_luogo_buio.
+    AND ogg IS raggiungibile AND ogg IS NOT distante
+      ELSE
+        IF ogg IS NOT raggiungibile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
+              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
+            END IF.
+        ELSIF ogg IS distante
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_distante_sg.
+              ELSE SAY mia_AT:ogg1_distante_pl.
+            END IF.
+        END IF.
+    DOES
+      "Tentare si spremere $+1 non servirebbe a nulla."
+    -- "Trying to squeeze" SAY THE ogg. "wouldn't accomplish anything."
+  END VERB spremi.
 END ADD TO.
 
 
@@ -10472,7 +10754,7 @@ END VERB chi_sono_io.
 
 -- SYNTAX what_is = 'what' 'is' (ogg)!
 
-SYNTAX  cosa_è = cosa é (ogg)!            ---> BUG: 'è' instead of 'é'           FIXME!
+SYNTAX  cosa_è = cosa é (ogg)!            ---> BUG: 'è' instead of 'é'          FIXME!
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
@@ -10480,9 +10762,9 @@ SYNTAX  cosa_è = cosa é (ogg)!            ---> BUG: 'è' instead of 'é'          
         ELSE SAY mia_AT:illegal_parameter_what_pl.
       END IF.
 
-        cosa_è = che cosa é (ogg)!.       ---> BUG: 'è' instead of 'é'           FIXME!
-        cosa_è = 'cos''é' (ogg)!.         ---> BUG: 'è' instead of 'é'           FIXME!
-        cosa_è = che 'cos''é' (ogg)!.     ---> BUG: 'è' instead of 'é'           FIXME!
+        cosa_è = che cosa é (ogg)!.       ---> BUG: 'è' instead of 'é'          FIXME!
+        cosa_è = 'cos''é' (ogg)!.         ---> BUG: 'è' instead of 'é'          FIXME!
+        cosa_è = che 'cos''é' (ogg)!.     ---> BUG: 'è' instead of 'é'          FIXME!
 
         cosa_è = cosa sono (ogg)!.
         cosa_è = che cosa sono (ogg)!.
@@ -10552,7 +10834,7 @@ END VERB cosa_sono_io.
 -- SYNTAX where_is = 'where' 'is' (ogg)!
 --        where_is = 'where' 'are' (ogg)!.
 
-SYNTAX  dove_è = dove é (ogg)!            ---> BUG: 'è' instead of 'é'           FIXME!
+SYNTAX  dove_è = dove é (ogg)!            ---> BUG: 'è' instead of 'é'          FIXME!
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
@@ -10560,7 +10842,7 @@ SYNTAX  dove_è = dove é (ogg)!            ---> BUG: 'è' instead of 'é'          
         ELSE SAY mia_AT:illegal_parameter_what_pl.
       END IF.
 
-        dove_è = 'dov''é' (ogg)!.         ---> BUG: 'è' instead of 'é'           FIXME!
+        dove_è = 'dov''é' (ogg)!.         ---> BUG: 'è' instead of 'é'          FIXME!
         dove_è = dove sono (ogg)!.
         dove_è = dove si trova (ogg)!.
         dove_è = dove si trovano (ogg)!.
@@ -10652,529 +10934,6 @@ VERB rispondi_Sì
   DOES "Davvero?"
     -- "Really?"
 END VERB rispondi_Sì.
-
-
--->verbi_non_tradotti(50100)
---~=============================================================================
---~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
---~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
---~-----------------------------------------------------------------------------
---|
---| == Verbi da Tradurre
---|
---~-----------------------------------------------------------------------------
---~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
---~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
---~=============================================================================
-
---~ NOTA: i verbi preceduti da "--~*" sono stati già tradotti.
---~       i verbi preceduti da "--~!" sono stati eliminati.
-
---| .Elenco dei Verbi Non Tradotti
---| [cols="20m,30d,25d,2*^5d",options="header"]
---| |=======================================================================================================
---| | VERBO              | SINONIMI                           | SINTASSI                          | A |  O  
---~ +--------------------+------------------------------------+-----------------------------------+---+-----
---~*| about              | help, info                         | about                             | 0 |
---~*| again              | G                                  | again                             | 0 |
---~*| answer             | reply                              | answer (topic)                    | 1 |
---~*| ask                | enquire, inquire, interrogate      | ask (act) about (topic)           | 2 |
---~*| ask_for            |                                    | ask (act) for (obj)               | 2 | {x}
---~*| attack             | beat, fight, hit, punch            | attack (target)                   | 1 |
---~*| attack_with        |                                    | attack (target) with (weapon)     | 2 |
---~*| bite               | chew                               | bite (obj)                        | 1 | {x}
---~*| break              | destroy                            | break (obj)                       | 1 | {x}
---~*| break_with         |                                    | break (obj) with (instr)          | 2 | {x}
---~*| brief              |                                    | brief                             | 0 |
---~*| burn               |                                    | burn (obj)                        | 1 | {x}
---~*| burn_with          |                                    | burn (obj) with (instr)           | 2 | {x}
---~*| buy                | purchase                           | buy (item)                        | 1 |
---~*| catch              |                                    | catch (obj)                       | 1 | {x}
---| | clean              | polish, wipe                       | clean (obj)                       | 1 | {x}
---~*| climb              |                                    | climb (obj)                       | 1 | {x}
---~*| climb_on           |                                    | climb on (surface)                | 1 |
---~*| climb_through      |                                    | climb through (obj)               | 1 | {x}
---~*| close              | shut                               | close (obj)                       | 1 | {x}
---~*| close_with         |                                    | close (obj) with (instr)          | 2 | {x}
---~*| consult            |                                    | consult (source) about (topic)    | 2 |
---~*| credits            | acknowledgments, author, copyright | credits                           | 0 |
---~*| cut                |                                    | cut (obj)                         | 1 | {x}
---~*| cut_with           |                                    | cut (obj) with (instr)            | 2 | {x}
---~*| dance              |                                    | dance                             | 0 |
---~*| dig                |                                    | dig (obj)                         | 1 | {x}
---~*| dive               |                                    | dive                              | 0 |
---~*| dive_in            |                                    | dive in (liq)                     | 1 |
---~*| drink              |                                    | drink (liq)                       | 1 |
---~*| drive              |                                    | drive (vehicle)                   | 1 |
---~*| drop               | discard, dump, reject              | drop (obj)                        | 1 | {x}
---~*| eat                |                                    | eat (food)                        | 1 |
---~*| empty              |                                    | empty (obj)                       | 1 | {x}
---~*| empty_in           |                                    | empty (obj) in (cont)             | 2 | {x}
---~*| empty_on           |                                    | empty (obj) on (surface)          | 2 | {x}
---~*| enter              |                                    | enter (obj)                       | 1 | {x}
---~*| examine            | check, inspect, observe, X         | examine (obj)                     | 1 | {x}
---~*| exit               |                                    | exit (obj)                        | 1 | {x}
---~!| extinguish         | put out, quench                    | extinguish (obj)                  | 1 | {x}
---~*| fill               |                                    | fill (cont)                       | 1 |
---~*| fill_with          |                                    | fill (cont) with (substance)      | 2 |
---~*| find               | locate                             | find (obj)                        | 1 | {x}
---~*| fire               |                                    | fire (weapon)                     | 1 |
---~*| fire_at            |                                    | fire (weapon) at (target)         | 2 |
---~*| fix                | mend, repair                       | fix (obj)                         | 1 | {x}
---~*| follow             |                                    | follow (act)                      | 1 |
---~*| free               | release                            | free (obj)                        | 1 | {x}
---~!| get_up             |                                    | get up                            | 0 |
---~*| get_off            |                                    | get off (obj)                     | 1 | {x}
---~*| give               |                                    | give (obj) to (recipient)         | 2 | {x}
---~*| go_to              |                                    | go to (dest)                      | 1 |
---~*| hint               | hints                              | hint                              | 0 |
---~*| i                  | inv, inventory                     | inventory                         | 0 |
---~*| jump               |                                    | jump                              | 0 |
---~*| jump_in            |                                    | jump in (cont)                    | 1 |
---~*| jump_on            |                                    | jump on (surface)                 | 1 |
---~*| kick               |                                    | kick (target)                     | 1 |
---~*| kill               | murder                             | kill (victim)                     | 1 |
---~*| kill_with          |                                    | kill (victim) with (weapon)       | 2 |
---~*| kiss               | hug, embrace                       | kiss (obj)                        | 1 | {x}
---~*| knock (on)         |                                    | knock on (obj)                    | 1 | {x}
---~*| lie_down           |                                    | lie down                          | 0 |
---~*| lie_in             |                                    | lie in (cont)                     | 1 |
---~*| lie_on             |                                    | lie on (surface)                  | 1 |
---~*| lift               |                                    | lift (obj)                        | 1 | {x}
---~!| light              | lit                                | light (obj)                       | 1 | {x}
---~*| listen0            |                                    | listen                            | 0 |
---~*| listen             |                                    | listen to (obj)                   | 1 | {x}
---~*| lock               |                                    | lock (obj)                        | 1 | {x}
---~*| lock_with          |                                    | lock (obj) with (key)             | 2 | {x}
---~*| look               | gaze, peek                         | look                              | 0 |
---~!| look_at            |                                    | look at (obj)                     | 1 | {x}
---~*| look_behind        |                                    | look behind (bulk)                | 1 |
---~*| look_in            |                                    | look in (cont)                    | 1 |
---~*| look_out_of        |                                    | look out of (obj)                 | 1 | {x}
---~*| look_through       |                                    | look through (bulk)               | 1 |
---~*| look_under         |                                    | look under (bulk)                 | 1 |
---~*| look_up            |                                    | look up                           | 0 |
---~*| no                 |                                    | no                                | 0 |
---~*| notify (on, off)   |                                    | notify. notify on. notify off     | 0 |
---~*| open               |                                    | open (obj)                        | 1 | {x}
---~*| open_with          |                                    | open (obj) with (instr)           | 2 | {x}
---~*| play               |                                    | play (obj)                        | 1 | {x}
---~*| play_with          |                                    | play with (obj)                   | 1 | {x}
---~*| pour               | (= defined at the verb `empty`)    | pour (obj)                        | 1 | {x}
---~*| pour_in            | (= defined at the verb `emtpy_in`) | pour (obj) in (cont)              | 2 | {x}
---~*| pour_on            | (= defined at the verb `empty_on`) | pour (obj) on (surface)           | 2 | {x}
---~*| pray               |                                    | pray                              | 0 |
---~*| pry                |                                    | pry (obj)                         | 1 | {x}
---~*| pry_with           |                                    | pry (obj) with (instr)            | 2 | {x}
---~*| pull               |                                    | pull (obj)                        | 1 | {x}
---~*| push               |                                    | push (obj)                        | 1 | {x}
---~*| push_with          |                                    | push (obj) with (instr)           | 2 | {x}
---~*| put                | lay, place                         | put (obj)                         | 1 | {x}
---~*| put_against        |                                    | put (obj) against (bulk))         | 2 | {x}
---~*| put_behind         |                                    | put (obj) behind (bulk)           | 2 | {x}
---~*| put_down           | (= defined at the verb `drop`)     | put down (obj)                    | 1 | {x}
---~*| put_in             | insert                             | put (obj) in (cont)               | 2 | {x}
---~*| put_near           |                                    | put (obj) near (bulk)             | 2 | {x}
---~*| put_on             |                                    | put (obj) on (surface)            | 2 | {x}
---~*| put_under          |                                    | put (obj) under (bulk)            | 2 | {x}
---~*| quit               | Q                                  | quit                              | 0 |
---~*| read               |                                    | read (obj)                        | 1 | {x}
---~*| remove             |                                    | remove (obj)                      | 1 | {x}
---~*| restart            |                                    | restart                           | 0 |
---~*| restore            |                                    | restore                           | 0 |
---| | rub                |                                    | rub (obj)                         | 1 | {x}
---~*| save               |                                    | save                              | 0 |
---~*| say                |                                    | say (topic)                       | 1 |
---~*| say_to             |                                    | say (topic) to (act)              | 2 |
---~*| score              |                                    | score                             | 0 |
---~*| scratch            |                                    | scratch (obj)                     | 1 | {x}
---~*| script             |                                    | script. script on. script off.    | 0 |
---~*| search             |                                    | search (obj)                      | 1 | {x}
---~*| sell               |                                    | sell (item)                       | 1 |
---| | shake              |                                    | shake (obj)                       | 1 | {x}
---~!| shoot (at)         |                                    | shoot at (target)                 | 1 |
---~!| shoot_with         |                                    | shoot (target) with (weapon)      | 2 |
---~*| shout              | scream, yell                       | shout                             | 0 |
---~*| show               | reveal                             | show (obj) to (act)               | 2 | {x}
---~*| sing               |                                    | sing                              | 0 |
---~*| sip                |                                    | sip (liq)                         | 1 |
---~*| sit (down)         |                                    | sit.  sit down.                   | 0 |
---~*| sit_on             |                                    | sit on (surface)                  | 1 |
---~*| sleep              | rest                               | sleep                             | 0 |
---~*| smell0             |                                    | smell                             | 0 |
---~*| smell              |                                    | smell (odour)                     | 1 |
---| | squeeze            |                                    | squeeze (obj)                     | 1 | {x}
---~*| stand (up)         |                                    | stand.  stand up.                 | 0 |
---~*| stand_on           |                                    | stand on (surface)                | 1 |
---~*| swim               |                                    | swim                              | 0 |
---~*| swim_in            |                                    | swim in (liq)                     | 1 |
---~!| switch             |                                    | switch (obj)                      | 1 | {x}
---~*| switch_on          | (defined at the verb `turn_on`)    | switch on (app)                   | 1 |
---~*| switch_off         | (defined at the verb `turn_off`)   | switch off (app)                  | 1 |
---~*| take               | carry, get, grab, hold, obtain     | take (obj)                        | 1 | {x}
---~*| take_from          | remove from                        | take (obj) from (holder)          | 2 | {x}
---~*| talk               |                                    | talk                              | 0 |
---~*| talk_to            | speak                              | talk to (act)                     | 1 |
---~*| taste              | lick                               | taste (obj)                       | 1 | {x}
---~*| tear               | rip                                | tear (obj)                        | 1 | {x}
---~*| tell               | enlighten, inform                  | tell (act) about (topic)          | 2 |
---~*| think              |                                    | think                             | 0 |
---~*| think_about        |                                    | think about (topic)               | 1 |
---~*| throw              |                                    | throw (projectile)                | 1 |
---~*| throw_at           |                                    | throw (projectile) at (target)    | 2 |
---~*| throw_in           |                                    | throw (projectile) in (cont)      | 2 |
---~*| throw_to           |                                    | throw (projectile) to (recipient) | 2 |
---~*| tie                |                                    | tie (obj)                         | 1 | {x}
---~*| tie_to             |                                    | tie (obj) to (target)             | 2 | {x}
---~*| touch              | feel                               | touch (obj)                       | 1 | {x}
---~*| touch_with         | feel                               | touch (ogg) 'with' (strum)        | 2 | {x}
---~*| turn               | rotate                             | turn (obj)                        | 1 | {x}
---~*| turn_on            |                                    | turn on (app)                     | 1 |
---~*| turn_off           |                                    | turn off (app)                    | 1 |
---~*| undress            |                                    | undress                           | 0 |
---~*| unlock             |                                    | unlock (obj)                      | 1 | {x}
---~*| unlock_with        |                                    | unlock (obj) with (key)           | 2 | {x}
---~*| use                |                                    | use (obj)                         | 1 | {x}
---~*| use_with           |                                    | use (obj) with (instr)            | 2 | {x}
---~*| verbose            |                                    | verbose                           | 0 |
---~*| wait               | Z                                  | wait                              | 0 |
---~*| wear               |                                    | wear (obj)                        | 1 | {x}
---~*| what_am_i          |                                    | what am i                         | 0 |
---~*| what_is            |                                    | what is (obj)                     | 1 | {x}
---~*| where_am_i         |                                    | where am i                        | 0 |
---~*| where_is           |                                    | where is (obj)                    | 1 | {x}
---~*| who_am_i           |                                    | who am i                          | 0 |
---~*| who_is             |                                    | who is (act)                      | 1 |
---~*| write              |                                    | write (txt) on (obj)              | 2 | {x}
---~*| yes                |                                    | yes                               | 0 |
---| |=======================================================================================================
---<
-
---=============================================================================
---\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---------------------------------------------------------------------------------
--- Comandi di Gioco Non Tradotti 
--------------------------------------------------------------------------------
---//////////////////////////////////////////////////////////////////////////////
---=============================================================================
-
-
-
--- ==================================================================
-
-
--- @CLEAN ( + wipe, polish)
-
-
--- ==================================================================
-
-
-SYNTAX clean = clean (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "pulire."
-
-
-SYNONYMS wipe, polish = clean.
-
------ notice that 'rub' is defined separately
-
-ADD TO EVERY OBJECT
-  VERB clean
-    CHECK mia_AT CAN pulire
-      ELSE SAY mia_AT:azione_bloccata.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY mia_AT:ogg1_inadatto_sg.
-          ELSE SAY mia_AT:ogg1_inadatto_pl.
-        END IF.
-        "pulire."
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    DOES
-      -- "Farlo non servirebbe a nulla."
-      SAY mia_AT:non_servirebbe_a_nulla.
-      -- "Nothing would be achieved by that."
-  END VERB clean.
-END ADD TO.
-
-
-
-
-
--- ==============================================================
-
-
--- @LOOK AT -> see EXAMINE
-
-
--- ==============================================================
-
-
-
--- ==============================================================
-
-
--- @POUR, POUR IN, POUR ON
-
-
--- ==============================================================
-
-
-
--- => SEE EMPTY, EMPTY IN, EMPTY ON
-
-
-
-
--- ==============================================================
-
-
--- @PUT OUT  (works as -> EXTINGUISH)
-
-
--- ==============================================================
-
-
------ The syntax for 'put out' has been declared in the 'extinguish' verb.
-
-
-
-
-
-
--- ==============================================================
-
-
--- @REMOVE FROM => TAKE FROM
-
-
--- ==============================================================
-
-
------ this verb works as 'take from'
-
-
-
-
-
--- ==============================================================
-
-
--- @RUB (+ massage)
-
-
--- ==============================================================
-
-
-SYNTAX rub = rub (ogg)
-  WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "strofinare."
-
-SYNONYMS massage = rub.
-
-ADD TO EVERY THING
-  VERB rub
-    CHECK mia_AT CAN rub
-      ELSE SAY mia_AT:azione_bloccata.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY mia_AT:ogg1_inadatto_sg.
-          ELSE SAY mia_AT:ogg1_inadatto_pl.
-        END IF.
-        "strofinare."
-    AND ogg <> hero
-      ELSE SAY mia_AT:check_obj_not_hero6.
-    AND ogg IS inanimato
-      ELSE SAY mia_AT:check_obj_inanimate2.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    DOES
-      -- "Farlo non servirebbe a nulla."
-      SAY mia_AT:non_servirebbe_a_nulla.
-      -- "Nothing would be achieved by that."
-  END VERB rub.
-END ADD TO.
-
-
-
-
-
--- ==============================================================
-
-
--- @SHAKE
-
-
--- ==============================================================
-
--- @NOTA1: possibili traduzioni: scuoti + agita
---         Il verbo principale dovrebbe essere "scuoti" perché è puù generico e
---         va bene in tutte le risposte:
---         - "scuoti albero"  -> "scuoti l'albero..."
---         - "agita flaccone" -> "scuoti il flaccone..."
--- @NOTA2: La risposta inglese tiene conto se l'oggetto è posseduto o meno:
---            "You shake XXX cautiously in your hands."
-
-
-SYNTAX shake = shake (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter_sg.
-        ELSE SAY mia_AT:illegal_parameter_pl.
-      END IF.
-
-
-
-ADD TO EVERY OBJECT
-  VERB shake
-    CHECK mia_AT CAN shake
-      ELSE SAY mia_AT:azione_bloccata.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-          THEN SAY mia_AT:check_obj_suitable_sg.
-          ELSE SAY mia_AT:check_obj_suitable_pl.
-        END IF.
-    AND ogg IS spostabile
-      ELSE SAY mia_AT:check_obj_movable.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    DOES
-      IF ogg IN hero
-        THEN "You shake" SAY THE ogg. "cautiously in your hands. Nothing happens."
-        ELSE "There is no reason to start shaking" SAY THE ogg. "."
-      END IF.
-  END VERB shake.
-END ADD TO.
-
-
--- ==============================================================
-
-
--- @SQUEEZE
-
-
--- ==============================================================
-
--- @NOTA: Questo verbo è difficile da tradurre poiché i vari significati inglesi
---        non si sovrappongono in Italiano, tranne "spremi:
---        - "squeeze lemon" -> "spremi limone"
---        Ma che utilità avrebbe questo verbo di base?
---        Sarebbe più utile implementare "premi", "schiaccia", che almeno è usato
---        spesso (pulsanti, ecc.).
---        Il vero problema qui è la risposta che si ottiene: se uno usa "premi" o
---        "schiaccia" e nella risposta poi legge "spremi" (o viceversa) non ha
---        senso, quindi "spremi" e "schiaccia/premi" si escludono tra loro.
---        Purtroppo abbiamo a che fare con verbi il cui infinito non può essere
---        formato dall'imperativo tramite '$v'.
-
-SYNTAX squeeze = squeeze (ogg)
-  WHERE ogg IsA OBJECT
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_sg.
-        ELSE SAY mia_AT:illegal_parameter_pl.
-      END IF.
-
-
-ADD TO EVERY THING
-  VERB squeeze
-    CHECK mia_AT CAN squeeze
-      ELSE SAY mia_AT:azione_bloccata.
-    AND ogg IS esaminabile
-      ELSE
-        IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-          THEN SAY mia_AT:check_obj_suitable_sg.
-          ELSE SAY mia_AT:check_obj_suitable_pl.
-        END IF.
-    AND CURRENT LOCATION IS illuminato
-      ELSE SAY mia_AT:imp_luogo_buio.
-    AND ogg IS raggiungibile AND ogg IS NOT distante
-      ELSE
-        IF ogg IS NOT raggiungibile
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
-              ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
-            END IF.
-        ELSIF ogg IS distante
-          THEN
-            IF ogg IS NOT plurale
-              THEN SAY mia_AT:ogg1_distante_sg.
-              ELSE SAY mia_AT:ogg1_distante_pl.
-            END IF.
-        END IF.
-    DOES
-      "Trying to squeeze" SAY THE ogg. "wouldn't accomplish anything."
-  END VERB squeeze.
-END ADD TO.
-
-
 
 
 -->todo(50000.1)

@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Definizioni
 Tristano Ajmone <tajmone@gmail.com>
-v0.7.27-Alpha, 2018-11-12: Alan 3.0beta6
+v0.8.0-Alpha, 2018-11-13: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_definitions.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -50,6 +50,7 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
   CAN abbandonare_partita.      ---> 'quit'
   CAN accendere.                ---> turn_on
   CAN acchiappare.              ---> catch
+  CAN agitare.                  ---> shake
   CAN alzarsi.                  ---> stand (up)
   CAN andare_a.                 ---> go_to
   CAN annusare.                 ---> smell
@@ -173,6 +174,7 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
   CAN sedersi.                  ---> sit (down)
   CAN sedersi_su.               ---> sit_on
   CAN seguire.                  ---> follow
+  CAN sfregare.                 ---> rub
   CAN sollevare.                ---> lift
   CAN sorseggiare.              ---> sip
   CAN sparare.                  ---> fire
@@ -181,6 +183,7 @@ Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
   CAN spingere.                 ---> push
   CAN spingere_con.             ---> push_with
   CAN spogliarsi.               ---> undress
+  CAN spremere.                 ---> squeeze
   CAN strappare.                ---> tear (+ rip)
   CAN suonare.                  ---> play
   CAN svuotare.                 ---> 'empty'
@@ -281,31 +284,6 @@ Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
 italiano del modulo delle definizioni.
 
 // end::todo[]
-// tag::restrizioni_non_tradotte[]
-=== Restrizioni Verbali da Tradurre
-
-Questo è l'elenco degli attributi verbali non ancora tradotti:
-
-[source,alan]
---------------------------------------------------------------------------------
---CAN extinguish. ----------------> ** VERBO ELIMINATO **  (+ put out, quench)
---CAN get_up. --------------------> ** VERBO ELIMINATO **
---CAN light. ---------------------> ** VERBO ELIMINATO **
---CAN look_at. -------------------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
---CAN put_down. ------------------> ** WASN'T USED! (SEE 'drop'!) **
-  CAN rub.
-  CAN shake.
---CAN shoot. ---------------------> ** VERBO ELIMINATO **
---CAN shoot_with. ----------------> ** VERBO ELIMINATO **
---CAN smell0. --------------------> ** ATTRIBUTO ELIMINATO **
-  CAN squeeze.
---CAN switch. --------------------> ** VERBO ELIMINATO **
---CAN switch_on. -----------------> ** VERBO ELIMINATO **
---CAN switch_off. ----------------> ** VERBO ELIMINATO **
---------------------------------------------------------------------------------
-
-
-// end::restrizioni_non_tradotte[]
 // tag::todo_checklist[]
 === Check List
 

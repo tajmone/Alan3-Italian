@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.7.27-Alpha, 2018-11-12: Alan 3.0beta6
+--| v0.8.0-Alpha, 2018-11-13: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -709,6 +709,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN abbandonare_partita.      ---> 'quit'
   CAN accendere.                ---> turn_on
   CAN acchiappare.              ---> catch
+  CAN agitare.                  ---> shake
   CAN alzarsi.                  ---> stand (up)
   CAN andare_a.                 ---> go_to
   CAN annusare.                 ---> smell
@@ -832,6 +833,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN sedersi.                  ---> sit (down)
   CAN sedersi_su.               ---> sit_on
   CAN seguire.                  ---> follow
+  CAN sfregare.                 ---> rub
   CAN sollevare.                ---> lift
   CAN sorseggiare.              ---> sip
   CAN sparare.                  ---> fire
@@ -840,6 +842,7 @@ EVERY blocco_definizioni IsA LOCATION
   CAN spingere.                 ---> push
   CAN spingere_con.             ---> push_with
   CAN spogliarsi.               ---> undress
+  CAN spremere.                 ---> squeeze
   CAN strappare.                ---> tear (+ rip)
   CAN suonare.                  ---> play
   CAN svuotare.                 ---> 'empty'
@@ -868,27 +871,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN versare_in.               ---> pour_in
   CAN versare_su.               ---> pour_on
 --<
-
--->restrizioni_non_tradotte(50100)
---| === Restrizioni Verbali da Tradurre
---| 
---| Questo è l'elenco degli attributi verbali non ancora tradotti:
---CAN extinguish. ----------------> ** VERBO ELIMINATO **  (+ put out, quench)
---CAN get_up. --------------------> ** VERBO ELIMINATO **
---CAN light. ---------------------> ** VERBO ELIMINATO **
---CAN look_at. -------------------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
---CAN put_down. ------------------> ** WASN'T USED! (SEE 'drop'!) **
-  CAN rub.
-  CAN shake.
---CAN shoot. ---------------------> ** VERBO ELIMINATO **
---CAN shoot_with. ----------------> ** VERBO ELIMINATO **
---CAN smell0. --------------------> ** ATTRIBUTO ELIMINATO **
-  CAN squeeze.
---CAN switch. --------------------> ** VERBO ELIMINATO **
---CAN switch_on. -----------------> ** VERBO ELIMINATO **
---CAN switch_off. ----------------> ** VERBO ELIMINATO **
---<
-
 END EVERY blocco_definizioni.
 
 
@@ -929,6 +911,7 @@ EVENT check_restriction
       MAKE mia_AT abbandonare_partita.      ---> 'quit'
       MAKE mia_AT accendere.                ---> turn_on
       MAKE mia_AT acchiappare.              ---> catch
+      MAKE mia_AT agitare.                  ---> shake
       MAKE mia_AT alzarsi.                  ---> stand (up)
       MAKE mia_AT andare_a.                 ---> go_to
       MAKE mia_AT annusare.                 ---> smell
@@ -1052,6 +1035,7 @@ EVENT check_restriction
       MAKE mia_AT sedersi.                  ---> sit (down)
       MAKE mia_AT sedersi_su.               ---> sit_on
       MAKE mia_AT seguire.                  ---> follow
+      MAKE mia_AT sfregare.                 ---> rub
       MAKE mia_AT sollevare.                ---> lift
       MAKE mia_AT sorseggiare.              ---> sip
       MAKE mia_AT sparare.                  ---> fire
@@ -1060,6 +1044,7 @@ EVENT check_restriction
       MAKE mia_AT spingere.                 ---> push
       MAKE mia_AT spingere_con.             ---> push_with
       MAKE mia_AT spogliarsi.               ---> undress
+      MAKE mia_AT spremere.                 ---> squeeze
       MAKE mia_AT strappare.                ---> tear (+ rip)
       MAKE mia_AT suonare.                  ---> play
       MAKE mia_AT svuotare.                 ---> 'empty'
@@ -1087,22 +1072,6 @@ EVENT check_restriction
       MAKE mia_AT versare.                  ---> pour
       MAKE mia_AT versare_in.               ---> pour_in
       MAKE mia_AT versare_su.               ---> pour_on
-
-    --# NOT YET TRANSLATED:
-    --MAKE mia_AT extinguish. --------> ** VERBO ELIMINATO ** (+ put out, quench)
-    --MAKE mia_AT get_up. ------------> ** VERBO ELIMINATO **
-    --MAKE mia_AT light. -------------> ** VERBO ELIMINATO **
-    --MAKE mia_AT look_at. -----------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
-    --MAKE mia_AT put_down. ----------> ** WASN'T USED! (SEE 'drop'!) **
-      MAKE mia_AT rub.
-      MAKE mia_AT shake.
-    --MAKE mia_AT shoot. -------------> ** VERBO ELIMINATO **
-    --MAKE mia_AT shoot_with. --------> ** VERBO ELIMINATO **
-    --MAKE mia_AT smell0. ------------> ** ATTRIBUTO ELIMINATO **
-      MAKE mia_AT squeeze.
-    --MAKE mia_AT switch. ------------> ** VERBO ELIMINATO **
-    --MAKE mia_AT switch_on. ---------> ** VERBO ELIMINATO **
-    --MAKE mia_AT switch_off. ------> ** VERBO ELIMINATO **
 
 --==============================================================================
 --------------------------------------------------------------------------------
@@ -1140,6 +1109,7 @@ EVENT check_restriction
 
           MAKE mia_AT NOT accendere.                ---> turn_on
           MAKE mia_AT NOT acchiappare.              ---> catch
+          MAKE mia_AT NOT agitare.                  ---> shake
           MAKE mia_AT NOT alzarsi.                  ---> stand (up)
           MAKE mia_AT NOT andare_a.                 ---> go_to
           MAKE mia_AT NOT aprire.                   ---> open
@@ -1218,6 +1188,7 @@ EVENT check_restriction
           MAKE mia_AT NOT sedersi.                  ---> sit (down)
           MAKE mia_AT NOT sedersi_su.               ---> sit_on
           MAKE mia_AT NOT seguire.                  ---> follow
+          MAKE mia_AT NOT sfregare.                 ---> rub
           MAKE mia_AT NOT sollevare.                ---> lift
           MAKE mia_AT NOT sorseggiare.              ---> sip
           MAKE mia_AT NOT sparare.                  ---> fire
@@ -1226,6 +1197,7 @@ EVENT check_restriction
           MAKE mia_AT NOT spingere.                 ---> push
           MAKE mia_AT NOT spingere_con.             ---> push_with
           MAKE mia_AT NOT spogliarsi.               ---> undress
+          MAKE mia_AT NOT spremere.                 ---> squeeze
           MAKE mia_AT NOT strappare.                ---> tear (+ rip)
           MAKE mia_AT NOT suonare.                  ---> play
           MAKE mia_AT NOT svuotare.                 ---> 'empty'
@@ -1249,21 +1221,6 @@ EVENT check_restriction
           MAKE mia_AT NOT versare.                  ---> pour
           MAKE mia_AT NOT versare_in.               ---> pour_in
           MAKE mia_AT NOT versare_su.               ---> pour_on
-
-        --# NOT YET TRANSLATED:
-
-        --MAKE mia_AT NOT extinguish. ----> ** VERBO ELIMINATO ** (+ put out, quench)
-        --MAKE mia_AT NOT get_up. --------> ** VERBO ELIMINATO **
-        --MAKE mia_AT NOT light. ---------> ** VERBO ELIMINATO **
-        --MAKE mia_AT NOT put_down. ------> ** WASN'T USED! (SEE 'drop'!) **
-          MAKE mia_AT NOT rub.
-          MAKE mia_AT NOT shake.
-        --MAKE mia_AT NOT shoot. ---------> ** VERBO ELIMINATO **
-        --MAKE mia_AT NOT shoot_with. ----> ** VERBO ELIMINATO **
-          MAKE mia_AT NOT squeeze.
-        --MAKE mia_AT NOT switch. --------> ** VERBO ELIMINATO **
-        --MAKE mia_AT NOT switch_on. -----> ** VERBO ELIMINATO **
-        --MAKE mia_AT NOT switch_off. ----> ** VERBO ELIMINATO **
 
       END IF.
 --==============================================================================
@@ -1299,11 +1256,6 @@ EVENT check_restriction
           MAKE mia_AT NOT pensare_a.                ---> think_about
           MAKE mia_AT NOT pregare.                  ---> pray
 
-        --# NOT YET TRANSLATED:
-
-        --MAKE mia_AT NOT look_at. -------> ** VERBO OBSOLETO (StdLib 1?) ** (= esamina)
-        --MAKE mia_AT NOT smell0. --------> ** ATTRIBUTO ELIMINATO **
- 
       END IF.
 --==============================================================================
 --------------------------------------------------------------------------------
@@ -1334,9 +1286,6 @@ EVENT check_restriction
           MAKE mia_AT NOT trascrivere_off.          ---> script_off
           MAKE mia_AT NOT trascrivere_on.           ---> script_on
           MAKE mia_AT NOT vedere_punteggio.         ---> 'score'
-
-        --# NOT YET TRANSLATED:
-
 
       END IF.
 

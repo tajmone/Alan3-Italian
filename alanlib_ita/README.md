@@ -417,7 +417,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `remove`         | `togliersi_indumento`     |
 | `'restart'`      | `ricominciare_partita`    |
 | `'restore'`      | `caricare_partita`        |
-| `rub`            |                           |
+| `rub`            | `sfregare`                |
 | `'save'`         | `salvare_partita`         |
 | `'say'`          | `dire`                    |
 | `say_to`         | `dire_a`                  |
@@ -428,7 +428,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `script_on`      | `trascrivere_on`          |
 | `search`         | `ispezionare`             |
 | `sell`           | `vendere`                 |
-| `shake`          |                           |
+| `shake`          | `agitare`                 |
 | ~~`shoot`~~      | _removed_                 |
 | ~~`shoot_with`~~ | _removed_                 |
 | `shout`          | `gridare`                 |
@@ -440,7 +440,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `sleep`          | `dormire`                 |
 | `smell`          | `annusare`                |
 | ~~`smell0`~~     | _removed_                 |
-| `squeeze`        |                           |
+| `squeeze`        | `spremere`                |
 | `stand`          | `alzarsi`                 |
 | `stand_on`       | `salire_su`               |
 | `swim`           | `nuotare`                 |
