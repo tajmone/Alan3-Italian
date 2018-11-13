@@ -75,7 +75,11 @@ See also:
 
 Current status of translation work.
 
-> __NOTE__ — This section is updated from time to time and might not reflect the actual translation progress of the library; to check the actual status see the [CHANGELOG] file instead.
+> __NOTE__ — This section is updated from time to time and might not reflect the actual translation progress of the library; to check the actual status see the [CHANGELOG] files instead:
+> 
+> - [`CHANGELOG.md`][CHANGELOG] — current changelog.
+> - [`CHANGELOG_OLD.md`][CHANGELOG_OLD] — previous changelog (Alpha v0.0.1–0.8.0).
+
 
 ## Directions and Movement
 
@@ -492,6 +496,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 ------------------------------------------------------------------------------>
 
 [CHANGELOG]: ./CHANGELOG.md
+[CHANGELOG_OLD]: ./CHANGELOG_OLD.md
 
 <!-- OLD LIBRARY FILENAMES -->
 

@@ -9,7 +9,7 @@ This repository is a WIP translation to Italian of the _Alan Standard Library_ v
 
 [License]: Artistic License 2.0
 
-Started on: 2018-04-13
+Project start date: 2018-04-13.
 
 -----
 
@@ -45,12 +45,25 @@ You can follow the discussion on this project on the [Alan-IF discussion group a
 
 [open an issue here]: https://github.com/tajmone/Alan3-Italian/issues/new "Open an issue for this project"
 
+> __NOTICE__ — From now on all project documentation will be converted to Italian language, as well as future commits messages. During the initial stages of the translation work all documents, logs and commits were kept in English to facilitate collaboration and help from expert developers of the Alan community. But the project has now reached a stage where it's approching completion, and should therefore move toward a fully Italian documentation.
+> 
+> Once all docs are translated to Italian, a separate English README will be added to project.
 
 # Status
 
-Gradually translating verbs and standard messages. A [demo adventure] file has been created to test the features being translated, along with automation scripts to quickly simulate a game session. Transcript logs of the test sessions are preserved in the [`/tests/`](./tests) folder, for the benefit of anyone whishing to preview the current status of the translation (in real use scenarios) without having to compile the demo and run the tests.
+All verbs (ca. 171) have been translated to Italian — for more details, see:
 
-[demo adventure]: ./tests/il_mondo_di_alan.alan "View the sourcefile of the demo adventure 'il_mondo_di_alan.alan'"
+- [`alanlib_ita/lib_verbi.asciidoc`][lib_verbi adoc]
+- [`alanlib_ita/lib_verbi.html`][lib_verbi html]  ([Live HTML Preview][lib_verbi html live])
+
+Now the verb response messages need to be translated, and the whole library documented.
+
+A library test suite is being developed in the [`/test/`](./test) folder, for the benefit of anyone whishing to preview the current status of the translation (mostly vanilla test scenarios) without having to compile the tests sources and running them.
+
+A [demo adventure] file is on the making in the [`/demo/`](./demo) folder (the original demo became messy and is going to be rebuilt from sratch), along with automation scripts to quickly simulate game sessions and provide transcripts.
+
+
+[demo adventure]: ./demo/README.md "View the sourcefile of the demo adventure 'il_mondo_di_alan.alan'"
 
 # Project Contents
 
@@ -164,5 +177,21 @@ Special thanks to __S3RioUs JokER__, who is constantly helping me out translatin
 [i18n Problems]: https://github.com/tajmone/Alan3-Italian/wiki/i18n-Problems
 
 [ISO-8859-1]: https://en.wikipedia.org/wiki/ISO/IEC_8859-1 "See Wikipedia page on ISO-8859-1"
+
+<!-- Library Documentation  -->
+
+[ANNOTAZIONI_DOXTER adoc]: ./alanlib_ita/ANNOTAZIONI_DOXTER.asciidoc
+[ANNOTAZIONI_DOXTER html]: ./alanlib_ita/ANNOTAZIONI_DOXTER.html
+[BUILD_DOCS]: ./alanlib_ita/BUILD_DOCS.bat
+
+[lib_verbi adoc]: ./alanlib_ita/lib_verbi.asciidoc
+[lib_verbi html]: ./alanlib_ita/lib_verbi.html
+[lib_verbi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_verbi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+
+[lib_definizioni adoc]: ./alanlib_ita/lib_definizioni.asciidoc
+[lib_definizioni html]: ./alanlib_ita/lib_definizioni.html
+[lib_definizioni html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_definizioni.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+
+[Doxter]: https://git.io/doxter "Visit Doxter website"
 
 <!-- EOF -->
