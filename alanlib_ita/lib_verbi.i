@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.8.2-Alpha, 2018-11-15: Alan 3.0beta6
+--| v0.8.3-Alpha, 2018-11-16: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -200,7 +200,7 @@ END VERB salva_partita.
 --| 
 --| [cols="20m,30d,50d",options="header",separator=¦]
 --| |===========================================================================
---| ¦ verbo            ¦ sintassi della direttiva       ¦ esito
+--| ¦ verbo            ¦ sintassi                       ¦ esito
 --~ ¦------------------+--------------------------------+-----------------------
 --| ¦ trascrizione     ¦ trascrizione                   ¦ Mostra istruzioni.
 --| ¦ trascrizione_on  ¦ trascrizione (on|attivata)     ¦ Avvia trascrizione.
@@ -526,11 +526,34 @@ END EVENT.
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
 --| 
---| Questo gruppo di verbi controlla la verbosità della descrizioni, offrendo due
---| modalità: breve e lunga.
+--| La libreria offre due direttive per controllare la '`verbosità`' delle
+--| descrizioni dei luoghi durante il gioco:
 --| 
---| * `modalità_breve`
---| * `modalità_lunga`
+--| [cols="20m,30d,50d",options="header",separator=¦]
+--| |===========================================================================
+--| ¦ verbo          ¦ sintassi               ¦ esito
+--~ ¦----------------+------------------------+---------------------------------
+--| ¦ modalità_breve ¦ modalità (breve|corta) ¦ Nascondi descrizioni già lette.
+--| ¦ modalità_lunga ¦ modalità lunga         ¦ Mostra sempre le descrizioni.
+--| |===========================================================================
+--| 
+--| Sono disponibili anche le sintassi alternative inglesi `brief` e `verbose`,
+--| per facilitare l'uso a giocatori abituati ad altri sistemi di IF.
+--| 
+--| [WARNING]
+--| ============================================================================
+--| Allo stato attuale la modalità breve non funziona a causa degli attributi
+--| `visitato` e `descritto` che la libreria definisce su ogni `location`.
+--| Siccome la libreria aggiorna questi attributi ad ogni visita o descrizione
+--| del luogo, Alan resetta il contatore interno utilizzato per onorare `VISITS`,
+--| poiché i cambiamenti agli attributi del luogo hanno la precedenza su `VISITS`.
+--| 
+--| In attesa di una possibile soluzione al problema, questi verbi restano nella
+--| libreria, ma verranno rimossi qualora non se ne dovesse trovare una.
+--| Per maggiori informazioni, vedi:
+--| 
+--| * https://github.com/AnssiR66/AlanStdLib/issues/32
+--| ============================================================================
 --<
 
 -->gruppo_verbosity                                   @MODALITÀ BREVE <-- @BRIEF
@@ -543,11 +566,6 @@ END EVENT.
 -->todo_checklist(.666) Doxter
 --| * [ ] Descrizione `modalità_breve`.
 --<
-
--- SYNTAX brief = brief.
-
--- @BUG: The VISITS statement seems to be broken, and "brief" verb doesn't
---       behave as expected!
 
 -- Use "Visits 0." or "Visits 1000." in the START section if you want
 -- the game to start in verbose or brief mode. (By default,

@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.8.0-Alpha,</span>
-<span id="revdate">2018-11-13</span>
+<span id="revnumber">versione 0.8.1-Alpha,</span>
+<span id="revdate">2018-11-16</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
 <div id="toc" class="toc2">
@@ -447,7 +447,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel1">
 <li><a href="#_introduzione">Introduzione</a></li>
 <li><a href="#_messaggi_runtime_di_alan">Messaggi Runtime di Alan</a></li>
-<li><a href="#_messaggi_della_libreria_standard">Messaggi della Libreria Standard</a></li>
+<li><a href="#_messaggi_della_libreria_standard">Messaggi della Libreria Standard</a>
+<ul class="sectlevel3">
+<li><a href="#_messaggi_dei_verbi">Messaggi dei Verbi</a></li>
+</ul>
+</li>
 <li><a href="#_todo">TODO</a>
 <ul class="sectlevel2">
 <li><a href="#_check_list_generale">Check List Generale</a></li>
@@ -526,11 +530,33 @@ risposte predefinite dei vari verbi della libreria.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Documentazione non ancora disponibile&#8230;&#8203;</p>
+<p>Documentazione in fase di preparazione&#8230;&#8203;</p>
 </div>
 </td>
 </tr>
 </table>
+</div>
+<div class="sect3">
+<h4 id="_messaggi_dei_verbi"><a class="anchor" href="#_messaggi_dei_verbi"></a>Messaggi dei Verbi</h4>
+<div class="paragraph">
+<p>Siccome i messaggi dei verbi italiani richiedono spesso l&#8217;uso della forma
+infinita del verbo cui fanno riferimento, molti di questi messaggi sono
+troncati e spetterà al codice che si occupa dei controlli sul verbo di far
+seguire al messaggio l&#8217;infinito del verbo in questione.</p>
+</div>
+<div class="paragraph">
+<p>Questo avviene poiché in italiano non è sempre possibile derivare la forma
+infinita aggiungendo &#8220;re&#8221; all&#8217;imperativo (es. "mangia" &#8594; "mangiare"),
+laddove in inglese l&#8217;imperativo è l&#8217;infinito si equivalgono in forma. Nella
+libreria inglese il compito era quindi semplificato dalla possibilità di
+utilizzare la sequenza speciale <code>$v</code> all&#8217;interno delle stringhe dei messaggi,
+che Alan poi sostituisce con il verbo digitato dal giocatore.</p>
+</div>
+<div class="paragraph">
+<p>Questa complicazione ha portato a una rielaborazione dell&#8217;intero corpo degli
+attributi stringa dei messaggi, nonché della loro modalità d&#8217;uso all&#8217;interno
+dei verbi, disconstandosi parecchio dalla libreria originale.</p>
+</div>
 </div>
 </div>
 </div>
@@ -558,7 +584,7 @@ italiano del modulo delle classi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.8.0-Alpha<br>
+Versione 0.8.1-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

@@ -1,7 +1,7 @@
 
 = Doxter: Note di Lavoro
 Tristano Ajmone <tajmone@gmail.com>
-:revdate: 2018-11-15
+:revdate: 2018-11-16
 :lang: it
 // TOC Settings:
 :toc: left
@@ -259,11 +259,13 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 
 [cols="2*>10m,20m,60d",options="header"]
 |===============================================================================
-| weight  | subweight |                              | descrizione
-|   100   |         1 | intro                        | == Introduzione
-| 50000   |           | todo                         | TODO
-| 51000   |      1-33 | todo_checklist               | === Check List Generale
-| 51000   |   665-666 | todo_checklist               | === Check List Doxter
+| weight  | subweight |                   | descrizione
+|   100   |         1 | intro             | == Introduzione
+| 10000   |         1 | messaggi_runtime  | ==  Messaggi Runtime di Alan
+| 20000   |         1 | messaggi_libreria | ==  Messaggi della Libreria Standard
+| 50000   |           | todo              | TODO
+| 51000   |      1-33 | todo_checklist    | === Check List Generale
+| 51000   |   665-666 | todo_checklist    | === Check List Doxter
 |===============================================================================
 
 ////

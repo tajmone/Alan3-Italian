@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Messaggi
 Tristano Ajmone <tajmone@gmail.com>
-v0.8.0-Alpha, 2018-11-13: Alan 3.0beta6
+v0.8.1-Alpha, 2018-11-16: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_messages.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -50,10 +50,30 @@ Documentazione non ancora disponibile...
 
 [WARNING]
 ========================================
-Documentazione non ancora disponibile...
+Documentazione in fase di preparazione...
 ========================================
 
 // end::messaggi_libreria[]
+// tag::libmsg_verbi[]
+==== Messaggi dei Verbi
+
+Siccome i messaggi dei verbi italiani richiedono spesso l'uso della forma
+infinita del verbo cui fanno riferimento, molti di questi messaggi sono
+troncati e spetterà al codice che si occupa dei controlli sul verbo di far
+seguire al messaggio l'infinito del verbo in questione.
+
+Questo avviene poiché in italiano non è sempre possibile derivare la forma
+infinita aggiungendo "`re`" all'imperativo (es. "mangia" -> "mangiare"),
+laddove in inglese l'imperativo è l'infinito si equivalgono in forma. Nella
+libreria inglese il compito era quindi semplificato dalla possibilità di
+utilizzare la sequenza speciale `$v` all'interno delle stringhe dei messaggi,
+che Alan poi sostituisce con il verbo digitato dal giocatore.
+
+Questa complicazione ha portato a una rielaborazione dell'intero corpo degli
+attributi stringa dei messaggi, nonché della loro modalità d'uso all'interno
+dei verbi, disconstandosi parecchio dalla libreria originale.
+
+// end::libmsg_verbi[]
 // tag::todo[]
 == TODO
 

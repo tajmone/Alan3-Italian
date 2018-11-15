@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.8.2-Alpha,</span>
-<span id="revdate">2018-11-15</span>
+<span id="revnumber">versione 0.8.3-Alpha,</span>
+<span id="revdate">2018-11-16</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
 <div id="toc" class="toc2">
@@ -2522,7 +2522,7 @@ trascrizione della partita in un file di log:</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">verbo</th>
-<th class="tableblock halign-left valign-top">sintassi della direttiva</th>
+<th class="tableblock halign-left valign-top">sintassi</th>
 <th class="tableblock halign-left valign-top">esito</th>
 </tr>
 </thead>
@@ -2676,18 +2676,68 @@ della partita:</p>
 <div class="sect2">
 <h3 id="_descrizioni_brevi_e_lunghe"><a class="anchor" href="#_descrizioni_brevi_e_lunghe"></a>Descrizioni Brevi e Lunghe</h3>
 <div class="paragraph">
-<p>Questo gruppo di verbi controlla la verbosità della descrizioni, offrendo due
-modalità: breve e lunga.</p>
+<p>La libreria offre due direttive per controllare la &#8216;verbosità&#8217; delle
+descrizioni dei luoghi durante il gioco:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 30%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">verbo</th>
+<th class="tableblock halign-left valign-top">sintassi</th>
+<th class="tableblock halign-left valign-top">esito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>modalità_breve</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">modalità (breve|corta)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nascondi descrizioni già lette.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>modalità_lunga</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">modalità lunga</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mostra sempre le descrizioni.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Sono disponibili anche le sintassi alternative inglesi <code>brief</code> e <code>verbose</code>,
+per facilitare l&#8217;uso a giocatori abituati ad altri sistemi di IF.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Attenzione"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Allo stato attuale la modalità breve non funziona a causa degli attributi
+<code>visitato</code> e <code>descritto</code> che la libreria definisce su ogni <code>location</code>.
+Siccome la libreria aggiorna questi attributi ad ogni visita o descrizione
+del luogo, Alan resetta il contatore interno utilizzato per onorare <code>VISITS</code>,
+poiché i cambiamenti agli attributi del luogo hanno la precedenza su <code>VISITS</code>.</p>
+</div>
+<div class="paragraph">
+<p>In attesa di una possibile soluzione al problema, questi verbi restano nella
+libreria, ma verranno rimossi qualora non se ne dovesse trovare una.
+Per maggiori informazioni, vedi:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>modalità_breve</code></p>
-</li>
-<li>
-<p><code>modalità_lunga</code></p>
+<p><a href="https://github.com/AnssiR66/AlanStdLib/issues/32" class="bare">https://github.com/AnssiR66/AlanStdLib/issues/32</a></p>
 </li>
 </ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sect3">
 <h4 id="_modalità_breve"><a class="anchor" href="#_modalità_breve"></a>modalità_breve</h4>
@@ -4807,7 +4857,7 @@ vicini tra loro verbi correlati, simmetrici e/o complementari.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.8.2-Alpha<br>
+Versione 0.8.3-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

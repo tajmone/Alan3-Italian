@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi.i"
---| v0.8.0-Alpha, 2018-11-13: Alan 3.0beta6
+--| v0.8.1-Alpha, 2018-11-16: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -32,7 +32,7 @@
 --<
 
 
--->messaggi_runtime(1000.1)
+-->messaggi_runtime(10000.1)
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
@@ -290,7 +290,7 @@ MESSAGE
   UNDONE: "'$1' annullato."
 
 
--->messaggi_libreria(2000.1)
+-->messaggi_libreria(20000.1)
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
@@ -301,7 +301,7 @@ MESSAGE
 --| 
 --| [WARNING]
 --| ========================================
---| Documentazione non ancora disponibile...
+--| Documentazione in fase di preparazione...
 --| ========================================
 --<
 
@@ -348,17 +348,30 @@ ADD TO EVERY blocco_definizioni
 
 
 
+-->libmsg_verbi(23000)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Messaggi dei Verbi
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--| 
+--| Siccome i messaggi dei verbi italiani richiedono spesso l'uso della forma
+--| infinita del verbo cui fanno riferimento, molti di questi messaggi sono
+--| troncati e spetterà al codice che si occupa dei controlli sul verbo di far
+--| seguire al messaggio l'infinito del verbo in questione.
+--| 
+--| Questo avviene poiché in italiano non è sempre possibile derivare la forma
+--| infinita aggiungendo "`re`" all'imperativo (es. "mangia" -> "mangiare"),
+--| laddove in inglese l'imperativo è l'infinito si equivalgono in forma. Nella
+--| libreria inglese il compito era quindi semplificato dalla possibilità di
+--| utilizzare la sequenza speciale `$v` all'interno delle stringhe dei messaggi,
+--| che Alan poi sostituisce con il verbo digitato dal giocatore.
+--| 
+--| Questa complicazione ha portato a una rielaborazione dell'intero corpo degli
+--| attributi stringa dei messaggi, nonché della loro modalità d'uso all'interno
+--| dei verbi, disconstandosi parecchio dalla libreria originale.
+--<
 
---==============================================================================
---------------------------------------------------------------------------------
--- § x.4 - Messaggi dei Verbi
---------------------------------------------------------------------------------
---==============================================================================
-
-  -- Siccome i messaggi in italiano richiedono l'uso della forma infinita del
-  -- verbo, molti di questi messaggi sono troncati e spetterà al codice che si
-  -- occupa dei controlli sul verbo di far seguire al messaggio l'infinito del
-  -- verbo in questione.
    -----------------------------------------------------------------------------
   -- @NOTA: Alcune stringhe di messaggi sono identiche (anche nell'originale)
   --        tranne per il nome dell'attributo. Questo perché l'autore originale
