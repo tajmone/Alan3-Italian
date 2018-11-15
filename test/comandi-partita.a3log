@@ -352,6 +352,10 @@ per abilitare la trascrizione dell'intera partita.
 > trascrizione attivata
 Trascrizione avviata.
 
+> ; proviamo ad avviare una trascrizione quando questa è già attiva: 
+> trascrizione attivata
+Trascrizione avviata.
+
 > ; popoliamo la trascrizione con dei comandi...
 > guarda
 Sala Test e Collaudo
@@ -366,6 +370,10 @@ Non stai portando niente.
 
 * Conto alla rovescia: 4  *
 
+> trascrizione disattivata
+Trascrizione terminata.
+
+> ; proviamo a disattivare una trascrizione quando questa non è attiva:
 > trascrizione disattivata
 Trascrizione terminata.
 

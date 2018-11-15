@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.8.0-Alpha, 2018-11-13: Alan 3.0beta6
+v0.8.2-Alpha, 2018-11-15: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -273,16 +273,87 @@ della partita.
 
 // end::gruppo_file[]
 // tag::gruppo_trascrizione[]
-=== Trascrizione
+=== Trascrizione della Partita
 
-Questo gruppo include i verbi che controllano l'avvio e l'arresto della
-trascrizione della partita su un file di log.
+La libreria definisce tre verbi che controllano l'avvio e l'arresto della
+trascrizione della partita in un file di log:
+
+[cols="20m,30d,50d",options="header",separator=¦]
+|===========================================================================
+¦ verbo            ¦ sintassi della direttiva       ¦ esito
+¦ trascrizione     ¦ trascrizione                   ¦ Mostra istruzioni.
+¦ trascrizione_on  ¦ trascrizione (on|attivata)     ¦ Avvia trascrizione.
+¦ trascrizione_off ¦ trascrizione (off|disattivata) ¦ Termina trascrizione.
+|===========================================================================
+
+È altresì definito come sinonimo di '`trascrizione`' il termine inglese
+'`transcript`', per facilitare l'uso della direttiva a giocatori non
+familiarizzati con la libreria di Alan, poiché nelle avventure italiane
+questa direttiva non viene solitamente tradotta.
+
+[NOTE]
+========================================================================
+I verbi per la trascrizione ricorrono all'istruzione di Alan `TRANSCRIPT`,
+il cui comportamento può variare a seconda dell'interprete utilizzato
+(p.es. aprire una finestra di dialogo in cui viene chiesto il nome del file,
+oppure operare silenziosamente adottando nomi di file prestabiliti, ecc.).
+========================================================================
+
 
 ==== trascrizione
 
+Il verbo `trascrizione` serve principalmente ad intercettare una direttiva
+di trascrizione digitata in forma incompleta, e mostrare quindi al giocatore
+istruzioni sull'uso sintatticco corretto delle due direttive per il controllo
+della trascrizione.
+
+Ma poiché questo comando fornisce anche istruzioni su come invocare
+l'interprete da riga di comando ARun con le opzioni per la trascrizione
+automatica dell'intera partita, questa direttiva ha anche un suo valore
+intrinseco quale promemoria per il giocatore.
+
 ==== trascrizione_on
+Questo verbo funge da mera interfaccia tra la direttiva del giocatore e
+l'istruzione nativa di Alan `TRANSCRIPT ON` e, a parte verificare la presenza
+di un blocco per quest'azione (tramite l'attributo `trascrivere_on`), la
+gestionalità della trascrizione viene delegata interamente all'interprete:
+
+
+
+[source,alan]
+--------------------------------------------------------------------------------
+META VERB trascrizione_on
+  CHECK mia_AT CAN trascrivere_on
+    ELSE SAY mia_AT:azione_bloccata.
+  DOES TRANSCRIPT ON. "Trascrizione avviata."
+END VERB trascrizione_on.
+
+--------------------------------------------------------------------------------
+
+[NOTE]
+========================================================================
+Tentare di avviare una trascrizione già attiva non produrrà errori ma verrà
+silenziosamente ignorato; lo stesso vale per il tentativo di arrestare una
+transcrizione non in corso.
+========================================================================
 
 ==== trascrizione_off
+
+Come con `trascrizione_on`, anche questo verbo funge da mera interfaccia tra
+il giocatore e l'istruzione nativa di Alan per interrompere la trascrizione
+in corso:
+
+
+
+[source,alan]
+--------------------------------------------------------------------------------
+META VERB trascrizione_off
+  CHECK mia_AT CAN trascrivere_off
+    ELSE SAY mia_AT:azione_bloccata.
+  DOES TRANSCRIPT OFF. "Trascrizione terminata."
+END VERB trascrizione_off.
+--------------------------------------------------------------------------------
+
 
 // end::gruppo_trascrizione[]
 // tag::gruppo_punteggio[]
@@ -1141,10 +1212,6 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `carica_partita`.
 
 * [ ] Descrizione `salva_partita`.
-
-* [ ] Descrizione `trascrizione_on`.
-
-* [ ] Descrizione `trascrizione_off`.
 
 * [ ] Descrizione `vedi_punteggio`.
 

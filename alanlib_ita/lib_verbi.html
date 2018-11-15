@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.8.0-Alpha,</span>
-<span id="revdate">2018-11-13</span>
+<span id="revnumber">versione 0.8.2-Alpha,</span>
+<span id="revdate">2018-11-15</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
 <div id="toc" class="toc2">
@@ -460,9 +460,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_salva_partita">salva_partita</a></li>
 </ul>
 </li>
-<li><a href="#_trascrizione">Trascrizione</a>
+<li><a href="#_trascrizione_della_partita">Trascrizione della Partita</a>
 <ul class="sectlevel3">
-<li><a href="#_trascrizione_2">trascrizione</a></li>
+<li><a href="#_trascrizione">trascrizione</a></li>
 <li><a href="#_trascrizione_on">trascrizione_on</a></li>
 <li><a href="#_trascrizione_off">trascrizione_off</a></li>
 </ul>
@@ -2508,22 +2508,130 @@ della partita.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_trascrizione"><a class="anchor" href="#_trascrizione"></a>Trascrizione</h3>
+<h3 id="_trascrizione_della_partita"><a class="anchor" href="#_trascrizione_della_partita"></a>Trascrizione della Partita</h3>
 <div class="paragraph">
-<p>Questo gruppo include i verbi che controllano l&#8217;avvio e l&#8217;arresto della
-trascrizione della partita su un file di log.</p>
+<p>La libreria definisce tre verbi che controllano l&#8217;avvio e l&#8217;arresto della
+trascrizione della partita in un file di log:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 30%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">verbo</th>
+<th class="tableblock halign-left valign-top">sintassi della direttiva</th>
+<th class="tableblock halign-left valign-top">esito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>trascrizione</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">trascrizione</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mostra istruzioni.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>trascrizione_on</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">trascrizione (on|attivata)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Avvia trascrizione.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>trascrizione_off</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">trascrizione (off|disattivata)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Termina trascrizione.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>È altresì definito come sinonimo di &#8216;trascrizione&#8217; il termine inglese
+&#8216;transcript&#8217;, per facilitare l&#8217;uso della direttiva a giocatori non
+familiarizzati con la libreria di Alan, poiché nelle avventure italiane
+questa direttiva non viene solitamente tradotta.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>I verbi per la trascrizione ricorrono all&#8217;istruzione di Alan <code>TRANSCRIPT</code>,
+il cui comportamento può variare a seconda dell&#8217;interprete utilizzato
+(p.es. aprire una finestra di dialogo in cui viene chiesto il nome del file,
+oppure operare silenziosamente adottando nomi di file prestabiliti, ecc.).</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sect3">
-<h4 id="_trascrizione_2"><a class="anchor" href="#_trascrizione_2"></a>trascrizione</h4>
-
+<h4 id="_trascrizione"><a class="anchor" href="#_trascrizione"></a>trascrizione</h4>
+<div class="paragraph">
+<p>Il verbo <code>trascrizione</code> serve principalmente ad intercettare una direttiva
+di trascrizione digitata in forma incompleta, e mostrare quindi al giocatore
+istruzioni sull&#8217;uso sintatticco corretto delle due direttive per il controllo
+della trascrizione.</p>
+</div>
+<div class="paragraph">
+<p>Ma poiché questo comando fornisce anche istruzioni su come invocare
+l&#8217;interprete da riga di comando ARun con le opzioni per la trascrizione
+automatica dell&#8217;intera partita, questa direttiva ha anche un suo valore
+intrinseco quale promemoria per il giocatore.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_trascrizione_on"><a class="anchor" href="#_trascrizione_on"></a>trascrizione_on</h4>
-
+<div class="paragraph">
+<p>Questo verbo funge da mera interfaccia tra la direttiva del giocatore e
+l&#8217;istruzione nativa di Alan <code>TRANSCRIPT ON</code> e, a parte verificare la presenza
+di un blocco per quest&#8217;azione (tramite l&#8217;attributo <code>trascrivere_on</code>), la
+gestionalità della trascrizione viene delegata interamente all&#8217;interprete:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">META VERB trascrizione_on
+  CHECK mia_AT CAN trascrivere_on
+    ELSE SAY mia_AT:azione_bloccata.
+  DOES TRANSCRIPT ON. "Trascrizione avviata."
+END VERB trascrizione_on.</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Tentare di avviare una trascrizione già attiva non produrrà errori ma verrà
+silenziosamente ignorato; lo stesso vale per il tentativo di arrestare una
+transcrizione non in corso.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_trascrizione_off"><a class="anchor" href="#_trascrizione_off"></a>trascrizione_off</h4>
-
+<div class="paragraph">
+<p>Come con <code>trascrizione_on</code>, anche questo verbo funge da mera interfaccia tra
+il giocatore e l&#8217;istruzione nativa di Alan per interrompere la trascrizione
+in corso:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">META VERB trascrizione_off
+  CHECK mia_AT CAN trascrivere_off
+    ELSE SAY mia_AT:azione_bloccata.
+  DOES TRANSCRIPT OFF. "Trascrizione terminata."
+END VERB trascrizione_off.</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -4221,12 +4329,6 @@ vicini tra loro verbi correlati, simmetrici e/o complementari.</p>
 <p><i class="fa fa-square-o"></i> Descrizione <code>salva_partita</code>.</p>
 </li>
 <li>
-<p><i class="fa fa-square-o"></i> Descrizione <code>trascrizione_on</code>.</p>
-</li>
-<li>
-<p><i class="fa fa-square-o"></i> Descrizione <code>trascrizione_off</code>.</p>
-</li>
-<li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>vedi_punteggio</code>.</p>
 </li>
 <li>
@@ -4705,7 +4807,7 @@ vicini tra loro verbi correlati, simmetrici e/o complementari.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.8.0-Alpha<br>
+Versione 0.8.2-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

@@ -119,9 +119,13 @@ notifica disattivata
 ; Testiamo i comandi per attivare/disattivare la trascrizione.
 trascrizione
 trascrizione attivata
+; proviamo ad avviare una trascrizione quando questa è già attiva: 
+trascrizione attivata
 ; popoliamo la trascrizione con dei comandi...
 guarda
 inventario
+trascrizione disattivata
+; proviamo a disattivare una trascrizione quando questa non è attiva:
 trascrizione disattivata
 ; ------------------------------------------------------------------------------
 ; CONTROLLO manuale del file "comandi-partita[data].log"

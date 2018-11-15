@@ -1,7 +1,7 @@
 
 = Doxter: Note di Lavoro
 Tristano Ajmone <tajmone@gmail.com>
-:revdate: 2018-11-13
+:revdate: 2018-11-15
 :lang: it
 // TOC Settings:
 :toc: left
@@ -97,7 +97,7 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 // -----------------------------------------------------------------------------
 | 10100   |           | gruppo_file                  | === Salvataggio e Caricamento
 // -----------------------------------------------------------------------------
-| 10200   |           | gruppo_trascrizione          | === Trascrizione
+| 10200   |           | gruppo_trascrizione          | === Trascrizione della Partita
 // -----------------------------------------------------------------------------
 | 10300   |           | gruppo_punteggio             | === Punteggio e Notifiche
 // -----------------------------------------------------------------------------

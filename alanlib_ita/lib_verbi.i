@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.8.0-Alpha, 2018-11-13: Alan 3.0beta6
+--| v0.8.2-Alpha, 2018-11-15: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -190,28 +190,28 @@ END VERB salva_partita.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Trascrizione
+--| === Trascrizione della Partita
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
 --| 
---| Questo gruppo include i verbi che controllano l'avvio e l'arresto della
---| trascrizione della partita su un file di log.
+--| La libreria definisce tre verbi che controllano l'avvio e l'arresto della
+--| trascrizione della partita in un file di log:
+--| 
+--| [cols="20m,30d,50d",options="header",separator=¦]
+--| |===========================================================================
+--| ¦ verbo            ¦ sintassi della direttiva       ¦ esito
+--~ ¦------------------+--------------------------------+-----------------------
+--| ¦ trascrizione     ¦ trascrizione                   ¦ Mostra istruzioni.
+--| ¦ trascrizione_on  ¦ trascrizione (on|attivata)     ¦ Avvia trascrizione.
+--| ¦ trascrizione_off ¦ trascrizione (off|disattivata) ¦ Termina trascrizione.
+--| |===========================================================================
+--| 
+--| È altresì definito come sinonimo di '`trascrizione`' il termine inglese
+--| '`transcript`', per facilitare l'uso della direttiva a giocatori non
+--| familiarizzati con la libreria di Alan, poiché nelle avventure italiane
+--| questa direttiva non viene solitamente tradotta.
 --<
-
-
--->gruppo_trascrizione                                 @TRASCRIZIONE <-- @SCRIPT
---~=============================================================================
---~-----------------------------------------------------------------------------
---| ==== trascrizione
---~-----------------------------------------------------------------------------
---~=============================================================================
---<
-
--- SYNTAX 'script' = 'script'.
---         script_on = 'script' 'on'.
---         script_off = 'script' 'off'.
-
 
 SYNTAX  trascrizione     = trascrizione.
         trascrizione_on  = trascrizione 'on'.
@@ -220,6 +220,34 @@ SYNTAX  trascrizione     = trascrizione.
         trascrizione_off = trascrizione disattivata.
 
 SYNONYMS 'transcript' = trascrizione.
+
+-->gruppo_trascrizione 
+--| [NOTE]
+--| ========================================================================
+--| I verbi per la trascrizione ricorrono all'istruzione di Alan `TRANSCRIPT`,
+--| il cui comportamento può variare a seconda dell'interprete utilizzato
+--| (p.es. aprire una finestra di dialogo in cui viene chiesto il nome del file,
+--| oppure operare silenziosamente adottando nomi di file prestabiliti, ecc.).
+--| ========================================================================
+
+
+--~                                                    @TRASCRIZIONE <-- @SCRIPT
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== trascrizione
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--| 
+--| Il verbo `trascrizione` serve principalmente ad intercettare una direttiva
+--| di trascrizione digitata in forma incompleta, e mostrare quindi al giocatore
+--| istruzioni sull'uso sintatticco corretto delle due direttive per il controllo
+--| della trascrizione.
+--| 
+--| Ma poiché questo comando fornisce anche istruzioni su come invocare
+--| l'interprete da riga di comando ARun con le opzioni per la trascrizione
+--| automatica dell'intera partita, questa direttiva ha anche un suo valore
+--| intrinseco quale promemoria per il giocatore.
+--<
 
 META VERB trascrizione
   CHECK mia_AT CAN trascrivere
@@ -251,18 +279,32 @@ END VERB trascrizione.
 --| ==== trascrizione_on
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---<
--->todo_checklist(.666) Doxter
---| * [ ] Descrizione `trascrizione_on`.
---<
+--| Questo verbo funge da mera interfaccia tra la direttiva del giocatore e
+--| l'istruzione nativa di Alan `TRANSCRIPT ON` e, a parte verificare la presenza
+--| di un blocco per quest'azione (tramite l'attributo `trascrivere_on`), la
+--| gestionalità della trascrizione viene delegata interamente all'interprete:
+
+--~ @TODO: Potrei usare un attributo per verificare se la trascrizione è        TODO!
+--~        già stata attivata, così da produrre un messaggio adeguato ed
+--~        evitare di invocare di nuovo TRANSCRIPT ON.
 
 META VERB trascrizione_on
   CHECK mia_AT CAN trascrivere_on
     ELSE SAY mia_AT:azione_bloccata.
-  DOES
-    TRANSCRIPT ON.
-    "Trascrizione avviata."
+  DOES TRANSCRIPT ON. "Trascrizione avviata."
 END VERB trascrizione_on.
+
+--| [NOTE]
+--| ========================================================================
+--| Tentare di avviare una trascrizione già attiva non produrrà errori ma verrà
+--| silenziosamente ignorato; lo stesso vale per il tentativo di arrestare una
+--| transcrizione non in corso.
+--| ========================================================================
+--<
+
+-- @NOTA: Dovrei usare un singolo attributo di verb restriction per entrambi    OPTIMIZE!
+--        i verbi -- che senso avrebbe bloccare l'uno ma non l'altro?!
+
 
 -->gruppo_trascrizione                          @TRASCIZIONE OFF <-- @SCRIPT OFF
 --~=============================================================================
@@ -270,19 +312,21 @@ END VERB trascrizione_on.
 --| ==== trascrizione_off
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---<
--->todo_checklist(.666) Doxter
---| * [ ] Descrizione `trascrizione_off`.
---<
+
+--| Come con `trascrizione_on`, anche questo verbo funge da mera interfaccia tra
+--| il giocatore e l'istruzione nativa di Alan per interrompere la trascrizione
+--| in corso:
+
+--~ @TODO: Potrei usare un attributo per verificare se la trascrizione è        TODO!
+--~        davvero attivata, così da produrre un messaggio adeguato ed
+--~        evitare di invocare TRANSCRIPT OFF inutilmente.
 
 META VERB trascrizione_off
   CHECK mia_AT CAN trascrivere_off
     ELSE SAY mia_AT:azione_bloccata.
-  DOES
-    TRANSCRIPT OFF.
-    "Trascrizione terminata."
+  DOES TRANSCRIPT OFF. "Trascrizione terminata."
 END VERB trascrizione_off.
-
+--<
 
 
 -->gruppo_punteggio(10300)

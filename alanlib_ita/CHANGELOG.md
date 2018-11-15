@@ -17,6 +17,8 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/11/15](#20181115)
+    - [Documentazione verbi](#documentazione-verbi)
 - [2018/11/13 \(2\)](#20181113-2)
     - [Pulizia documentazione verbi](#pulizia-documentazione-verbi)
     - [Documenta il baco della "è"](#documenta-il-baco-della-%C3%A8)
@@ -26,6 +28,16 @@ For previuos changes, see:
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/11/15
+
+- [`lib_verbi.i`][lib_verbi] (v0.8.2)
+
+## Documentazione verbi
+
+Aggiungi commenti Doxter per documentare i verbi preposti al controllo della trascrizione della partita.
+
+-------------------------------------------------------------------------------
 
 # 2018/11/13 (2)
 
