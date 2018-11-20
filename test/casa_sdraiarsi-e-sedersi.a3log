@@ -32,7 +32,7 @@ Sei già in piedi.
 > ; TESTA VERBO 'siediti_su'
 > ; ==============================================================================
 > ; ------------------------------------------------------------------------------
-> ; LA SEDIA
+> ; LA SEDIA (supporto + verbo 'siediti_su')
 > ; ------------------------------------------------------------------------------
 > ; Abbiamo creato una sedia su cui è implementato il verbo 'siediti_su'.
 > siediti sulla sedia
@@ -57,27 +57,9 @@ Sei già in piedi.
 > ; TESTA VERBO 'sdraiati_su'
 > ; ==============================================================================
 > ; ------------------------------------------------------------------------------
-> ; TEST ALLA VANIGLIA
+> ; IL LETTINO (supporto + verbo 'sdraiati_su')
 > ; ------------------------------------------------------------------------------
-> ; Poiché sui seguenti oggetto di tipo 'supporto' non è implementato il verbo
-> ; 'sdraiati_su', otterremo la risposta "alla vaniglia" del DOES del verbo
-> ; principale:
-> sdraiati sulla sedia
-There's no need to lie down on la sedia.
-
-> sdraiati sul tavolo
-There's no need to lie down on il tavolo.
-
-> ; ------------------------------------------------------------------------------
-> ; TESTA USI IMPROPRI
-> ; ------------------------------------------------------------------------------
-> ; Oggetti che non sono sottoclassi di 'supporto' (non hanno superficie):
-> sdraiati sul cesto
-Il cesto per la frutta non è qualcosa su cui potersi sdraiare.
-
-> ; ==============================================================================
-> ; TESTA VERBO 'sdraiati_in'
-> ; ==============================================================================
+> ; Abbiamo creato una lettino su cui è implementato il verbo 'sdraiati_su'.
 > sud
 Il Giardino di Casa
 A nord puoi tornare in casa. Puoi vedere un tavolo, un lettino e una 
@@ -104,27 +86,27 @@ Sei già in piedi.
 > ; ------------------------------------------------------------------------------
 > ; TEST ALLA VANIGLIA
 > ; ------------------------------------------------------------------------------
-> ; Poiché sui seguenti oggetto contenitori non è implementato il verbo
-> ; 'sdraiati_in', otterremo la risposta "alla vaniglia" del DOES del verbo
-> ; principale:
 > nord
 La Cucina
 A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
 qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un coltello, una 
 pistola, un vasetto e un cesto per la frutta.
 
-> sdraiati nel cesto
-There's no need to lie down in il cesto per la frutta.
+> ; Poiché sui seguenti oggetto di tipo 'supporto' non è implementato il verbo
+> ; 'sdraiati_su', otterremo la risposta "alla vaniglia" del DOES del verbo
+> ; principale:
+> sdraiati sulla sedia
+There's no need to lie down on la sedia.
 
-> sdraiati nel tavolo
-There's no need to lie down in il tavolo.
+> sdraiati sul tavolo
+There's no need to lie down on il tavolo.
 
 > ; ------------------------------------------------------------------------------
 > ; TESTA USI IMPROPRI
 > ; ------------------------------------------------------------------------------
-> ; Oggetti che non sono contenitori:
-> sdraiati sulla sedia
-There's no need to lie down on la sedia.
+> ; Oggetti che non sono sottoclassi di 'supporto' (non hanno superficie):
+> sdraiati sul cesto
+Il cesto per la frutta non è qualcosa su cui potersi sdraiare.
 
 > sdraiati sulla pera
 La pera non è qualcosa su cui potersi sdraiare.
@@ -136,9 +118,40 @@ Il pavimento non è qualcosa su cui potersi sdraiare.
 Il soffitto non è qualcosa su cui potersi sdraiare.
 
 > ; ==============================================================================
-> ; TESTA VERBO 'sideiti'
+> ; TESTA VERBO 'sdraiati_in'
 > ; ==============================================================================
-> ; Proviamo a usare 'sideiti' quando siamo già seduti su qualcosa:
+> ; ------------------------------------------------------------------------------
+> ; TEST ALLA VANIGLIA
+> ; ------------------------------------------------------------------------------
+> ; Poiché sui seguenti oggetto contenitori non è implementato il verbo
+> ; 'sdraiati_in', otterremo la risposta "alla vaniglia" del DOES del verbo
+> ; principale:
+> sdraiati nel cesto
+There's no need to lie down in il cesto per la frutta.
+
+> sdraiati nel tavolo
+There's no need to lie down in il tavolo.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA USI IMPROPRI
+> ; ------------------------------------------------------------------------------
+> ; Oggetti che non sono contenitori:
+> sdraiati nella sedia
+There's no need to lie down in la sedia.
+
+> sdraiati nella pera
+That's not something you can sdraiati in.
+
+> sdraiati nel pavimento
+There's no need to lie down in il pavimento.
+
+> sdraiati nel soffitto
+That's not something you can sdraiati in.
+
+> ; ==============================================================================
+> ; TESTA VERBO 'siediti'
+> ; ==============================================================================
+> ; Proviamo a usare 'siediti' quando siamo già seduti su qualcosa:
 > siediti sulla sedia
 Ti siedi sulla sedia.
 
@@ -149,15 +162,17 @@ You're sitting down already.
 > ; TESTA VERBO 'sdraiati'
 > ; ==============================================================================
 > ; Proviamo a usare 'sdraiati' quando siamo già sdraiati su qualcosa:
-> nord
-Non puoi andare in quella direzione.
+> sud
+Il Giardino di Casa
+A nord puoi tornare in casa. Puoi vedere un tavolo, un lettino e una 
+piscina qui. C'è un giardiniere qui.
 
 > sdraiati sul lettino
-Qui non puoi vedere nulla del genere.
+Ti alzi e ti sdrai sul lettino.
 
 > ; **ERR!** Dovrebbe rispondere che siamo già sdraiati (come fa per 'siediti'):
 > sdraiati
-There's no need to lie down right now.
+You're lying down already.
 
 > 
 

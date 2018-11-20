@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.8.3-Alpha, 2018-11-16: Alan 3.0beta6
+--| v0.8.4-Alpha, 2018-11-20: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -21,7 +21,7 @@
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~-----------------------------------------------------------------------------
 --|
---| == Elenco Completo dei Verbi
+--| == Elenco completo dei verbi
 --|
 --~-----------------------------------------------------------------------------
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -31,9 +31,9 @@
 --| Qui di seguito sono elencati tutti i verbi definiti dalla libreria, divisi
 --| in tre diversi gruppi:
 --| 
---| 1. <<Meta Verbi di Partita>>
---| 2. <<Verbi di Gioco>>
---| 3. <<Verbi di Domande>>
+--| 1. <<Meta verbi di partita>>
+--| 2. <<Verbi di gioco>>
+--| 3. <<Verbi di domande>>
 --| 
 --| I verbi nelle tabelle sono elencati in ordine alfabetico, per facilitarne la
 --| consultazione. Nel codice sorgente i verbi sono invece aggregati in base
@@ -64,7 +64,7 @@
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~-----------------------------------------------------------------------------
 --|
---| == Meta Verbi di Partita
+--| == Meta verbi di partita
 --|
 --~-----------------------------------------------------------------------------
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -78,7 +78,7 @@
 --<
 
 -->tabella_verbi_partita(1010)
---| === Tabella Comandi di Partita
+--| === Tabella comandi di partita
 --| [cols="15m,25d,35d,4*^5d",options="header"]
 --| |=============================================================================================================
 --| | VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
@@ -107,7 +107,7 @@
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Salvataggio e Caricamento
+--| === Salvataggio e caricamento
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -190,7 +190,7 @@ END VERB salva_partita.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Trascrizione della Partita
+--| === Trascrizione della partita
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -333,7 +333,7 @@ END VERB trascrizione_off.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Punteggio e Notifiche
+--| === Punteggio e notifiche
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -521,7 +521,7 @@ END EVENT.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Descrizioni Brevi e Lunghe
+--| === Descrizioni brevi e lunghe
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -623,7 +623,7 @@ END VERB modalità_lunga.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Istruzioni, Info e Aiuto
+--| === Istruzioni, info e aiuto
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -789,7 +789,7 @@ END VERB suggerimento.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Meta Verbi Vari
+--| === Meta verbi vari
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -870,7 +870,7 @@ END VERB ricomincia_partita.
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~-----------------------------------------------------------------------------
 --|
---| == Verbi di Gioco
+--| == Verbi di gioco
 --|
 --~-----------------------------------------------------------------------------
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -882,7 +882,7 @@ END VERB ricomincia_partita.
 
 
 -->tabella_verbi_gioco(1020)
---| === Tabella Comandi di Gioco
+--| === Tabella comandi di gioco
 --| [cols="15m,25d,35d,4*^5d",options="header"]
 --| |===================================================================================================================
 --| | VERBO              | SINONIMI                     | SINTASSI                               |  M  | A |  O  |  B
@@ -1041,7 +1041,7 @@ END VERB ricomincia_partita.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Accensione e Spegnimento
+--| === Accensione e spegnimento
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -1170,7 +1170,7 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Apertura e Chiusura
+--| === Apertura e chiusura
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -1302,8 +1302,8 @@ SYNTAX apri_con = apri (ogg) con (strum)
     ELSE
       IF strum IS NOT plurale
         --  "$+1 non [è/sono] qualcosa con cui poter"
-        THEN SAY mia_AT:ogg2_illegale_CON_sg.
-        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+        THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
       END IF.
       "aprire." -- @TODO: "aprire altre cose"??                                 IMPROVE!
 
@@ -1326,8 +1326,8 @@ ADD TO EVERY OBJECT
         ELSE
           IF strum IS NOT plurale
             --  "$+1 non [è/sono] qualcosa con cui poter"
-            THEN SAY mia_AT:ogg2_illegale_CON_sg.
-            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+            THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
           END IF.
           "aprire." -- @TODO: ".. altre cose"??                                 IMPROVE!
       AND ogg <> strum
@@ -1502,8 +1502,8 @@ SYNTAX blocca_con = blocca (ogg) con (chiave)
     ELSE
       IF chiave IS NOT plurale
         --  "$+1 non [è/sono] qualcosa con cui poter"
-        THEN SAY mia_AT:ogg2_illegale_CON_sg.
-        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+        THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
       END IF.
       "bloccare." -- @TODO: ".. altre cose"??                                   IMPROVE!
 
@@ -1525,8 +1525,8 @@ ADD TO EVERY OBJECT
         ELSE
           IF chiave IS NOT plurale
             --  "$+1 non [è/sono] qualcosa con cui poter"
-            THEN SAY mia_AT:ogg2_illegale_CON_sg.
-            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+            THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
           END IF.
           "bloccare." -- @TODO: ".. altre cose"??                               IMPROVE!
       AND ogg <> chiave
@@ -1677,8 +1677,8 @@ SYNTAX chiudi_con = chiudi (ogg) con (strum)
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
-        THEN SAY mia_AT:ogg2_illegale_CON_sg.
-        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+        THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
       END IF.
       "chiudere" SAY THE ogg. "." -- TODO:                                      IMPROVE!
 
@@ -1699,8 +1699,8 @@ ADD TO EVERY OBJECT
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
-            THEN SAY mia_AT:ogg2_illegale_CON_sg.
-            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+            THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
           END IF.
           "chiudere" SAY THE ogg. "."
       AND ogg <> strum
@@ -1807,8 +1807,8 @@ SYNTAX forza_con = forza (ogg) con (strum)
     AND strum IsA OBJECT
       ELSE
         IF strum IS NOT plurale
-          THEN SAY mia_AT:ogg2_illegale_CON_sg.
-          ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+          THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+          ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
         END IF. "forzare $+1."
 
 -- @TODO: Add check if obj is closed?                                           TODO!
@@ -1826,8 +1826,8 @@ ADD TO EVERY OBJECT
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
-            THEN SAY mia_AT:ogg2_illegale_CON_sg.
-            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+            THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
           END IF. "forzare $+1."
       AND ogg <> strum
   --                                                                              TRANSLATE!
@@ -1972,8 +1972,8 @@ ADD TO EVERY OBJECT
       AND chiave IS esaminabile
         ELSE
           IF chiave IS NOT plurale
-            THEN SAY mia_AT:ogg2_illegale_CON_sg.
-            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+            THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
          END IF.
          "sbloccare" SAY THE ogg. "."
       AND chiave IN hero
@@ -2026,7 +2026,7 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Azioni Sensoriali
+--| === Azioni sensoriali
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -2301,8 +2301,8 @@ SYNTAX tocca_con = tocca (ogg) con (strum)
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
-        THEN SAY mia_AT:ogg2_illegale_CON_sg.
-        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+        THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
       END IF.
       "toccare" SAY THE ogg. "."
 
@@ -2323,8 +2323,8 @@ ADD TO EVERY THING
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
-            THEN SAY mia_AT:ogg2_illegale_CON_sg.
-            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+            THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
         END IF.
         "toccare" SAY THE ogg. "."
 --                                                                              TRANSLATE!
@@ -2745,8 +2745,8 @@ SYNTAX  parla_con = parla con (png)
     ELSE
       IF png IS NOT plurale
         --  "$+1 non [è/sono] qualcosa con cui puoi"
-        THEN SAY mia_AT:ogg1_illegale_CON_sg.
-        ELSE SAY mia_AT:ogg1_illegale_CON_pl.
+        THEN SAY mia_AT:ogg1_inadatto_CON_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_CON_pl.
       END IF. "parlare."
 
         parla_con = parla a (png).
@@ -2874,7 +2874,7 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Mangiare e Bere
+--| === Mangiare e bere
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -3317,7 +3317,7 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Riempire, Svuotare e Versare
+--| === Riempire, svuotare e versare
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -3432,8 +3432,8 @@ SYNTAX riempi_con = riempi (cont) con (sostanza)
   AND sostanza IsA OBJECT
     ELSE
       IF sostanza IS NOT plurale
-        THEN SAY mia_AT:ogg2_illegale_CON_sg.
-        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+        THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
       END IF.
       "riempire" SAY THE cont. "."
 
@@ -3449,8 +3449,8 @@ ADD TO EVERY OBJECT
       AND sostanza IS esaminabile
         ELSE
           IF sostanza IS NOT plurale
-            THEN SAY mia_AT:ogg2_illegale_CON_sg.
-            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+            THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
           END IF.
           "riempire" SAY THE cont. "."
       AND CURRENT LOCATION IS illuminato
@@ -3948,7 +3948,7 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Guardare ed Esaminare
+--| === Guardare ed esaminare
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -4202,8 +4202,8 @@ SYNTAX guarda_fuori_da = guarda fuori da (ogg)
 -- @TODO: Add checks for Hero!                                                  FIXME!
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa da cui poter"
-        THEN SAY mia_AT:ogg1_illegale_DA_sg.
-        ELSE SAY mia_AT:ogg1_illegale_DA_pl.
+        THEN SAY mia_AT:ogg1_inadatto_DA_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_DA_pl.
       END IF.
       "guardare fuori."
 
@@ -4369,7 +4369,7 @@ SYNTAX ispeziona = ispeziona (ogg)
         --  "$+1 non [è/sono] qualcosa che puoi"
         THEN SAY mia_AT:ogg1_inadatto_sg.
         ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
+      END IF. "ispezionare."
 
 SYNONYMS perquisisci = ispeziona.
 
@@ -4526,7 +4526,7 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Rompere, Strappare, Tagliare e Riparare
+--| === Rompere, strappare, tagliare e riparare
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -4695,8 +4695,8 @@ SYNTAX rompi_con = rompi (ogg) con (strum)
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
-        THEN SAY mia_AT:ogg2_illegale_CON_sg.
-        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+        THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
       END IF.
       "rompere" SAY THE ogg. "."
 
@@ -4717,8 +4717,8 @@ ADD TO EVERY OBJECT
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
-            THEN SAY mia_AT:ogg2_illegale_CON_sg.
-            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+            THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
           END IF.
           "rompere" SAY THE ogg. "."
       AND ogg <> strum
@@ -4886,8 +4886,8 @@ SYNTAX taglia_con = taglia (ogg) con (strum)
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
-        THEN SAY mia_AT:ogg2_illegale_CON_sg.
-        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+        THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
       END IF.
       "tagliare" SAY THE ogg. "."
 
@@ -4911,8 +4911,8 @@ ADD TO EVERY OBJECT
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
-            THEN SAY mia_AT:ogg2_illegale_CON_sg.
-            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+            THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
           END IF.
           "tagliare" SAY THE ogg. "."
       AND strum IN hero
@@ -4946,7 +4946,7 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Dare e Prendere
+--| === Dare e prendere
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -5459,7 +5459,7 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Vestirsi e Svestirsi
+--| === Vestirsi e svestirsi
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -6086,15 +6086,15 @@ SYNTAX salta_in = salta 'in' (cont)
     ELSE
       IF cont IS NOT plurale
         --       "$+1 non [è/sono] qualcosa in cui poter"
-        THEN SAY mia_AT:ogg1_illegale_IN_sg.
-        ELSE SAY mia_AT:ogg1_illegale_IN_pl.
+        THEN SAY mia_AT:ogg1_inadatto_IN_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_IN_pl.
       END IF. "saltare."
   AND cont IsA CONTAINER
     ELSE
       IF cont IS NOT plurale
         --       "$+1 non [è/sono] qualcosa in cui poter"
-        THEN SAY mia_AT:ogg1_illegale_IN_sg.
-        ELSE SAY mia_AT:ogg1_illegale_IN_pl.
+        THEN SAY mia_AT:ogg1_inadatto_IN_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_IN_pl.
       END IF. "saltare."
 
 
@@ -6126,8 +6126,8 @@ ADD TO EVERY OBJECT
     DOES
       IF cont IS NOT plurale
         --       "$+1 non [è/sono] qualcosa in cui poter"
-        THEN SAY mia_AT:ogg1_illegale_IN_sg.
-        ELSE SAY mia_AT:ogg1_illegale_IN_pl.
+        THEN SAY mia_AT:ogg1_inadatto_IN_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_IN_pl.
       END IF. "saltare."
     END VERB salta_in.
 END ADD TO.
@@ -6149,8 +6149,8 @@ SYNTAX salta_su = salta su (superficie)
   WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
-        THEN SAY mia_AT:ogg1_illegale_SU_sg.
-        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
+        THEN SAY mia_AT:ogg1_inadatto_SU_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_SU_pl.
       END IF. "saltare."
 
 
@@ -6167,8 +6167,8 @@ ADD TO EVERY OBJECT
     DOES
       IF superficie IS NOT plurale
         --       "$+1 non [è/sono] qualcosa in cui poter"
-        THEN SAY mia_AT:ogg1_illegale_SU_sg.
-        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
+        THEN SAY mia_AT:ogg1_inadatto_SU_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_SU_pl.
       END IF. "saltare."
     END VERB salta_su.
 END ADD TO.
@@ -6178,7 +6178,7 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Posizionarsi su Superfici
+--| === Posizionarsi su superfici
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -6244,8 +6244,8 @@ SYNTAX arrampicati = arrampicati su (superficie)
   WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
-        THEN SAY mia_AT:ogg1_illegale_SU_sg.
-        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
+        THEN SAY mia_AT:ogg1_inadatto_SU_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_SU_pl.
       END IF. "$$si arrampicare."
 
 
@@ -6278,8 +6278,8 @@ ADD TO EVERY supporto
       ELSE SAY mia_AT:check_hero_not_lying_down3.
     DOES
       IF superficie IS NOT plurale
-        THEN SAY mia_AT:ogg1_illegale_SU_sg.
-        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
+        THEN SAY mia_AT:ogg1_inadatto_SU_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_SU_pl.
       END IF. "$$si arrampicare."
   END VERB arrampicati.
 END ADD TO.
@@ -6304,8 +6304,8 @@ SYNTAX  sali_su = sali su (superficie)
   WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
-        THEN SAY mia_AT:ogg1_illegale_SU_sg.
-        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
+        THEN SAY mia_AT:ogg1_inadatto_SU_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_SU_pl.
       END IF.
       "salire."
 
@@ -6531,8 +6531,8 @@ SYNTAX sdraiati_su = sdraiati su (superficie)
   WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
-        THEN SAY mia_AT:ogg1_illegale_SU_sg.
-        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
+        THEN SAY mia_AT:ogg1_inadatto_SU_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_SU_pl.
       END IF.
       "$$si sdraiare."
 
@@ -6655,8 +6655,8 @@ SYNTAX siediti_su = siediti su (superficie)
   WHERE superficie IsA supporto
     ELSE
       IF superficie IS NOT plurale
-        THEN SAY mia_AT:ogg1_illegale_SU_sg.
-        ELSE SAY mia_AT:ogg1_illegale_SU_pl.
+        THEN SAY mia_AT:ogg1_inadatto_SU_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_SU_pl.
       END IF.
       "$$si sedere."
 
@@ -7148,7 +7148,7 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Nuotare e Tuffarsi
+--| === Nuotare e tuffarsi
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -7353,7 +7353,7 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Spingere, Tirare e Sollevare
+--| === Spingere, tirare e sollevare
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -7526,8 +7526,8 @@ SYNTAX spingi_con = spingi (ogg) con (strum)
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
-        THEN SAY mia_AT:ogg2_illegale_CON_sg.
-        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+        THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
       END IF.
       "spingere" SAY THE ogg. "."
 
@@ -7546,8 +7546,8 @@ ADD TO EVERY THING
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
-            THEN SAY mia_AT:ogg2_illegale_CON_sg.
-            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+            THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
           END IF.
           "spingere" SAY THE ogg. "."
       AND strum IN hero
@@ -7647,7 +7647,7 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Attaccare e Simili
+--| === Attaccare e simili
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -8011,7 +8011,7 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Leggere e Scrivere
+--| === Leggere e scrivere
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -8279,8 +8279,8 @@ SYNTAX brucia_con = brucia (ogg) con (strum)
   AND strum IsA OBJECT
     ELSE
       IF strum IS NOT plurale
-        THEN SAY mia_AT:ogg2_illegale_CON_sg.
-        ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+        THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
       END IF.
       "bruciare." -- @TODO: ".. altre cose"??                                   IMPROVE!
 
@@ -8301,8 +8301,8 @@ ADD TO EVERY OBJECT
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
-            THEN SAY mia_AT:ogg2_illegale_CON_sg.
-            ELSE SAY mia_AT:ogg2_illegale_CON_pl.
+            THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
           END IF.
           "bruciare" SAY THE ogg. "."
       AND ogg <> strum
@@ -8515,7 +8515,7 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Entrare e Uscire
+--| === Entrare e uscire
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -8569,8 +8569,8 @@ SYNTAX entra_in = entra 'in' (ogg)
     ELSE
       -- "$+1 non [è/sono] qualcosa in cui poter"
       IF ogg IS NOT plurale
-        THEN SAY mia_AT:ogg1_illegale_IN_sg.
-        ELSE SAY mia_AT:ogg1_illegale_IN_pl.
+        THEN SAY mia_AT:ogg1_inadatto_IN_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_IN_pl.
       END IF. "entrare."
 
 
@@ -8587,8 +8587,8 @@ ADD TO EVERY OBJECT
     DOES
       -- "$+1 non [è/sono] qualcosa in cui poter"
       IF ogg IS NOT plurale
-        THEN SAY mia_AT:ogg1_illegale_IN_sg.
-        ELSE SAY mia_AT:ogg1_illegale_IN_pl.
+        THEN SAY mia_AT:ogg1_inadatto_IN_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_IN_pl.
       END IF. "entrare."
   END VERB entra_in.
 END ADD TO.
@@ -8622,8 +8622,8 @@ SYNTAX esci_da = esci da (ogg)
     ELSE
       -- "$+1 non [è/sono] qualcosa da cui poter"
       IF ogg IS NOT plurale
-        THEN SAY mia_AT:ogg1_illegale_DA_sg.
-        ELSE SAY mia_AT:ogg1_illegale_DA_pl.
+        THEN SAY mia_AT:ogg1_inadatto_DA_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_DA_pl.
       END IF. "uscire."
 
 
@@ -8634,8 +8634,8 @@ ADD TO EVERY OBJECT
     DOES
       -- "$+1 non [è/sono] qualcosa da cui poter"
       IF ogg IS NOT plurale
-        THEN SAY mia_AT:ogg1_illegale_DA_sg.
-        ELSE SAY mia_AT:ogg1_illegale_DA_pl.
+        THEN SAY mia_AT:ogg1_inadatto_DA_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_DA_pl.
       END IF. "uscire."
     END VERB esci_da.
 END ADD TO.
@@ -8743,8 +8743,8 @@ SYNTAX  spara_a = spara con (arma) a (bersaglio)
   AND bersaglio IsA THING
     ELSE
       IF arma IS NOT plurale
-        THEN SAY mia_AT:ogg2_illegale_A_sg.
-        ELSE SAY mia_AT:ogg2_illegale_A_pl.
+        THEN SAY mia_AT:ogg2_inadatto_A_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_A_pl.
       END IF. "sparare"
 
         spara_a = spara a (bersaglio) con (arma).
@@ -8764,8 +8764,8 @@ ADD TO EVERY arma
       AND bersaglio IS esaminabile
         ELSE
           IF arma IS NOT plurale
-            THEN SAY mia_AT:ogg2_illegale_A_sg.
-            ELSE SAY mia_AT:ogg2_illegale_A_pl.
+            THEN SAY mia_AT:ogg2_inadatto_A_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_A_pl.
           END IF. "sparare"
       AND arma <> bersaglio
 --                                                                              TRANSLATE!
@@ -8806,8 +8806,8 @@ SYNTAX spara_a_errore = spara a (bersaglio)
   WHERE bersaglio IsA THING
     ELSE
       IF bersaglio IS NOT plurale
-        THEN SAY mia_AT:ogg1_illegale_A_sg.
-        ELSE SAY mia_AT:ogg1_illegale_A_pl.
+        THEN SAY mia_AT:ogg1_inadatto_A_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_A_pl.
       END IF. "sparare."
 
 
@@ -8840,7 +8840,7 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Verbi Sfusi
+--| === Verbi sfusi
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -9224,8 +9224,8 @@ SYNTAX bussa = bussa a (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY mia_AT:ogg1_illegale_A_sg.
-        ELSE SAY mia_AT:ogg1_illegale_A_pl.
+        THEN SAY mia_AT:ogg1_inadatto_A_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_A_pl.
       END IF. "bussare."
 
        bussa = bussa (ogg).
@@ -9238,8 +9238,8 @@ ADD TO EVERY OBJECT
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
-          THEN SAY mia_AT:ogg1_illegale_A_sg.
-          ELSE SAY mia_AT:ogg1_illegale_A_pl.
+          THEN SAY mia_AT:ogg1_inadatto_A_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_A_pl.
         END IF. "bussare."
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
@@ -10019,8 +10019,8 @@ SYNTAX mostra = mostra (ogg) a (png)
   AND png IsA ACTOR
     ELSE
       IF png IS NOT plurale
-        THEN SAY mia_AT:ogg2_illegale_A_sg.
-        ELSE SAY mia_AT:ogg2_illegale_A_pl.
+        THEN SAY mia_AT:ogg2_inadatto_A_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_A_pl.
       END IF. "mostrare $+1."
 
 
@@ -10693,7 +10693,7 @@ END ADD TO.
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~-----------------------------------------------------------------------------
 --|
---| == Verbi di Domande
+--| == Verbi di domande
 --|
 --~-----------------------------------------------------------------------------
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -10708,7 +10708,7 @@ END ADD TO.
 --<
 
 -->tabella_verbi_domande(1030)
---| === Tabella Comandi Domande
+--| === Tabella comandi domande
 --| [cols="15m,25d,35d,4*^5d",options="header"]
 --| |=============================================================================================================
 --| | VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
@@ -10754,7 +10754,7 @@ END ADD TO.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Domanda Chi
+--| === Domanda chi
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -10833,7 +10833,7 @@ END VERB chi_sono_io.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Domanda Cosa
+--| === Domanda cosa
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -10925,7 +10925,7 @@ END VERB cosa_sono_io.
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Domanda Dove
+--| === Domanda dove
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -11101,7 +11101,7 @@ END VERB rispondi_Sì.
 -->todo_checklist(51000.1)
 --~=============================================================================
 --~-----------------------------------------------------------------------------
---| === Check List Generale
+--| === Check-list generale
 --~-----------------------------------------------------------------------------
 --~=============================================================================
 --| 
@@ -11113,7 +11113,7 @@ END VERB rispondi_Sì.
 
 -->todo_checklist(.665)
 --| 
---| === Check List Doxter 
+--| === Check-list per Doxter
 --| 
 --| Finisci di trasformare commenti in documentazione Doxter:
 --<

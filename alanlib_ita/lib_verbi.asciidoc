@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.8.3-Alpha, 2018-11-16: Alan 3.0beta6
+v0.8.4-Alpha, 2018-11-20: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -26,15 +26,15 @@ include::attributes-it.adoc[tag=attributes-it]
 // end::custom_attributes[]
 // tag::elenco_verbi[]
 
-== Elenco Completo dei Verbi
+== Elenco completo dei verbi
 
 
 Qui di seguito sono elencati tutti i verbi definiti dalla libreria, divisi
 in tre diversi gruppi:
 
-1. <<Meta Verbi di Partita>>
-2. <<Verbi di Gioco>>
-3. <<Verbi di Domande>>
+1. <<Meta verbi di partita>>
+2. <<Verbi di gioco>>
+3. <<Verbi di domande>>
 
 I verbi nelle tabelle sono elencati in ordine alfabetico, per facilitarne la
 consultazione. Nel codice sorgente i verbi sono invece aggregati in base
@@ -56,7 +56,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 
 // end::elenco_verbi[]
 // tag::tabella_verbi_partita[]
-=== Tabella Comandi di Partita
+=== Tabella comandi di partita
 [cols="15m,25d,35d,4*^5d",options="header"]
 |=============================================================================================================
 | VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
@@ -80,7 +80,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 
 // end::tabella_verbi_partita[]
 // tag::tabella_verbi_gioco[]
-=== Tabella Comandi di Gioco
+=== Tabella comandi di gioco
 [cols="15m,25d,35d,4*^5d",options="header"]
 |===================================================================================================================
 | VERBO              | SINONIMI                     | SINTASSI                               |  M  | A |  O  |  B
@@ -235,7 +235,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 
 // end::tabella_verbi_gioco[]
 // tag::tabella_verbi_domande[]
-=== Tabella Comandi Domande
+=== Tabella comandi domande
 [cols="15m,25d,35d,4*^5d",options="header"]
 |=============================================================================================================
 | VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
@@ -252,7 +252,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
 // end::tabella_verbi_domande[]
 // tag::comandi_partita[]
 
-== Meta Verbi di Partita
+== Meta verbi di partita
 
 
 Comandi che riguardano aspetti della partita (salvare, uscire, ecc.) anziché
@@ -262,7 +262,7 @@ Altresì noti come _comandi extradiegetici_.
 
 // end::comandi_partita[]
 // tag::gruppo_file[]
-=== Salvataggio e Caricamento
+=== Salvataggio e caricamento
 
 Questo gruppo include i verbi che riguardano il salvataggio ed il carimento
 della partita.
@@ -273,7 +273,7 @@ della partita.
 
 // end::gruppo_file[]
 // tag::gruppo_trascrizione[]
-=== Trascrizione della Partita
+=== Trascrizione della partita
 
 La libreria definisce tre verbi che controllano l'avvio e l'arresto della
 trascrizione della partita in un file di log:
@@ -357,7 +357,7 @@ END VERB trascrizione_off.
 
 // end::gruppo_trascrizione[]
 // tag::gruppo_punteggio[]
-=== Punteggio e Notifiche
+=== Punteggio e notifiche
 
 Questo gruppo include i verbi che riguardano il salvataggio ed il carimento
 della partita:
@@ -377,7 +377,7 @@ della partita:
 
 // end::gruppo_punteggio[]
 // tag::gruppo_verbosity[]
-=== Descrizioni Brevi e Lunghe
+=== Descrizioni brevi e lunghe
 
 La libreria offre due direttive per controllare la '`verbosità`' delle
 descrizioni dei luoghi durante il gioco:
@@ -413,7 +413,7 @@ Per maggiori informazioni, vedi:
 
 // end::gruppo_verbosity[]
 // tag::gruppo_info[]
-=== Istruzioni, Info e Aiuto
+=== Istruzioni, info e aiuto
 
 Questo gruppo include i meta verbi per accedere a informazioni sul gioco,
 aiuti, ecc.:
@@ -433,7 +433,7 @@ Verbi di questo gruppo non ancora tradotti:
 
 // end::gruppo_info[]
 // tag::gruppo_misc_meta[]
-=== Meta Verbi Vari
+=== Meta verbi vari
 
 Qui di seguito sono elencati i vari meta verbi che non rientrano in alcun
 gruppo specifico.
@@ -448,14 +448,14 @@ gruppo specifico.
 // end::gruppo_misc_meta[]
 // tag::comandi_gioco[]
 
-== Verbi di Gioco
+== Verbi di gioco
 
 
 Comandi diretti al personaggio protagonista per interagire con l'avventura.
 
 // end::comandi_gioco[]
 // tag::gruppo_accendi[]
-=== Accensione e Spegnimento
+=== Accensione e spegnimento
 
 Questo gruppo include i verbi per l'accensione e lo spegnimento di fonti di
 luce e dispositivi:
@@ -469,7 +469,7 @@ luce e dispositivi:
 
 // end::gruppo_accendi[]
 // tag::gruppo_apri[]
-=== Apertura e Chiusura
+=== Apertura e chiusura
 
 Questo gruppo include i verbi per aprire, chiudere e bloccare:
 
@@ -506,7 +506,7 @@ Questo gruppo include i verbi per aprire, chiudere e bloccare:
 
 // end::gruppo_apri[]
 // tag::gruppo_sensi[]
-=== Azioni Sensoriali
+=== Azioni sensoriali
 
 Questo gruppo include i verbi per le azioni sensoriali:
 
@@ -579,7 +579,7 @@ non decido in quale gruppo spostarli.
 
 // end::gruppo_conversare[]
 // tag::gruppo_mangiabevi[]
-=== Mangiare e Bere
+=== Mangiare e bere
 
 Questo gruppo include i verbi che riguardano mangiare e bere:
 
@@ -611,7 +611,7 @@ Questo gruppo include i verbi che riguardano mangiare e bere:
 
 // end::gruppo_mangiabevi[]
 // tag::gruppo_svuota[]
-=== Riempire, Svuotare e Versare
+=== Riempire, svuotare e versare
 
 Questo gruppo include i verbi per riempire e svuotare i contenitori e versarne
 il contenuto (a terra o su/in un altro contenitore):
@@ -646,7 +646,7 @@ liquido ma non il verbo `svuota`.
 
 // end::gruppo_svuota[]
 // tag::gruppo_guarda[]
-=== Guardare ed Esaminare
+=== Guardare ed esaminare
 
 Questo gruppo raccoglie i verbi '`eamina`' e '`guarda`', con le loro varianti:
 
@@ -718,7 +718,7 @@ Questo gruppo include i verbi per la compravendita:
 
 // end::gruppo_commercio[]
 // tag::gruppo_rompi_aggiusta[]
-=== Rompere, Strappare, Tagliare e Riparare
+=== Rompere, strappare, tagliare e riparare
 
 Questo gruppo include i verbi per rompere, danneggiare, dividiere, spezzare
 e riparare cose:
@@ -744,7 +744,7 @@ e riparare cose:
 
 // end::gruppo_rompi_aggiusta[]
 // tag::gruppo_dare[]
-=== Dare e Prendere
+=== Dare e prendere
 
 Questo gruppo riguarda i verbi per dare, prendere e lasciare oggetti:
 
@@ -763,7 +763,7 @@ Questo gruppo riguarda i verbi per dare, prendere e lasciare oggetti:
 
 // end::gruppo_dare[]
 // tag::gruppo_vestirsi[]
-=== Vestirsi e Svestirsi
+=== Vestirsi e svestirsi
 
 Questo gruppo raccoglie i verbi riguardanti il vestiario e denudarsi:
 
@@ -820,7 +820,7 @@ Questo gruppo include i verbi per saltare:
 
 // end::gruppo_saltare[]
 // tag::gruppo_sedersi[]
-=== Posizionarsi su Superfici
+=== Posizionarsi su superfici
 
 Questo gruppo include i verbi per sedersi, sdraiarsi ed alazarsi:
 
@@ -873,7 +873,7 @@ Questo gruppo include i verbi per lanciare oggetti:
 
 // end::gruppo_lanciare[]
 // tag::gruppo_nuotare[]
-=== Nuotare e Tuffarsi
+=== Nuotare e tuffarsi
 
 Questo gruppo include i verbi per tuffarsi e nuotare in liquidi:
 
@@ -892,7 +892,7 @@ Questo gruppo include i verbi per tuffarsi e nuotare in liquidi:
 
 // end::gruppo_nuotare[]
 // tag::gruppo_spingere[]
-=== Spingere, Tirare e Sollevare
+=== Spingere, tirare e sollevare
 
 Questo gruppo include i verbi per spostare oggetti oggetti:
 
@@ -911,7 +911,7 @@ Questo gruppo include i verbi per spostare oggetti oggetti:
 
 // end::gruppo_spingere[]
 // tag::gruppo_attaccare[]
-=== Attaccare e Simili
+=== Attaccare e simili
 
 Questo gruppo include i verbi di violenza come attaccare, uccidere, prendere
 a calci, colpire e simili:
@@ -934,7 +934,7 @@ a calci, colpire e simili:
 
 // end::gruppo_attaccare[]
 // tag::gruppo_leggere[]
-=== Leggere e Scrivere
+=== Leggere e scrivere
 
 Questo gruppo include i verbi per leggere e scrivere:
 
@@ -986,7 +986,7 @@ Questo gruppo include i verbi per ZZZZ:
 
 // end::gruppo_pensare[]
 // tag::gruppo_entrare[]
-=== Entrare e Uscire
+=== Entrare e uscire
 
 Questo gruppo include i verbi per entrare e uscire:
 
@@ -1023,7 +1023,7 @@ L'arma del parametro deve avere l'attributo `sparabile`.
 
 // end::gruppo_sparare[]
 // tag::gruppo_sfusi[]
-=== Verbi Sfusi
+=== Verbi sfusi
 
 Questo gruppo raccoglie i verbi per i quali non è ancora stato creato un:
 gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
@@ -1125,7 +1125,7 @@ gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
 // end::gruppo_sfusi[]
 // tag::comandi_domande[]
 
-== Verbi di Domande
+== Verbi di domande
 
 
 Questo gruppo include tutti quei comandi che non seguono la consueta forma
@@ -1158,7 +1158,7 @@ preservare il codice di questi verbi.
 
 // end::comandi_domande[]
 // tag::gruppo_chi[]
-=== Domanda Chi
+=== Domanda chi
 
 Questo gruppo include i verbi:
 
@@ -1171,7 +1171,7 @@ Questo gruppo include i verbi:
 
 // end::gruppo_chi[]
 // tag::gruppo_cosa[]
-=== Domanda Cosa
+=== Domanda cosa
 
 Questo gruppo include i verbi:
 
@@ -1184,7 +1184,7 @@ Questo gruppo include i verbi:
 
 // end::gruppo_cosa[]
 // tag::gruppo_dove[]
-=== Domanda Dove
+=== Domanda dove
 
 Questo gruppo include i verbi:
 
@@ -1219,7 +1219,7 @@ italiano del modulo dei verbi.
 
 // end::todo[]
 // tag::todo_checklist[]
-=== Check List Generale
+=== Check-list generale
 
 Lista della spesa per le varie cosucce da fare:
 
@@ -1227,7 +1227,7 @@ Lista della spesa per le varie cosucce da fare:
       vicini tra loro verbi correlati, simmetrici e/o complementari.
 
 
-=== Check List Doxter 
+=== Check-list per Doxter
 
 Finisci di trasformare commenti in documentazione Doxter:
 

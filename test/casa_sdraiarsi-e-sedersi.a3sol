@@ -10,7 +10,7 @@ alzati
 ; TESTA VERBO 'siediti_su'
 ; ==============================================================================
 ; ------------------------------------------------------------------------------
-; LA SEDIA
+; LA SEDIA (supporto + verbo 'siediti_su')
 ; ------------------------------------------------------------------------------
 ; Abbiamo creato una sedia su cui è implementato il verbo 'siediti_su'.
 siediti sulla sedia
@@ -23,21 +23,9 @@ scendi dalla sedia
 ; TESTA VERBO 'sdraiati_su'
 ; ==============================================================================
 ; ------------------------------------------------------------------------------
-; TEST ALLA VANIGLIA
+; IL LETTINO (supporto + verbo 'sdraiati_su')
 ; ------------------------------------------------------------------------------
-; Poiché sui seguenti oggetto di tipo 'supporto' non è implementato il verbo
-; 'sdraiati_su', otterremo la risposta "alla vaniglia" del DOES del verbo
-; principale:
-sdraiati sulla sedia
-sdraiati sul tavolo
-; ------------------------------------------------------------------------------
-; TESTA USI IMPROPRI
-; ------------------------------------------------------------------------------
-; Oggetti che non sono sottoclassi di 'supporto' (non hanno superficie):
-sdraiati sul cesto
-; ==============================================================================
-; TESTA VERBO 'sdraiati_in'
-; ==============================================================================
+; Abbiamo creato una lettino su cui è implementato il verbo 'sdraiati_su'.
 sud
 sdraiati sul lettino
 alzati
@@ -48,31 +36,50 @@ scendi dal lettino
 ; ------------------------------------------------------------------------------
 ; TEST ALLA VANIGLIA
 ; ------------------------------------------------------------------------------
+nord
+; Poiché sui seguenti oggetto di tipo 'supporto' non è implementato il verbo
+; 'sdraiati_su', otterremo la risposta "alla vaniglia" del DOES del verbo
+; principale:
+sdraiati sulla sedia
+sdraiati sul tavolo
+; ------------------------------------------------------------------------------
+; TESTA USI IMPROPRI
+; ------------------------------------------------------------------------------
+; Oggetti che non sono sottoclassi di 'supporto' (non hanno superficie):
+sdraiati sul cesto
+sdraiati sulla pera
+sdraiati sul pavimento
+sdraiati sul soffitto
+; ==============================================================================
+; TESTA VERBO 'sdraiati_in'
+; ==============================================================================
+; ------------------------------------------------------------------------------
+; TEST ALLA VANIGLIA
+; ------------------------------------------------------------------------------
 ; Poiché sui seguenti oggetto contenitori non è implementato il verbo
 ; 'sdraiati_in', otterremo la risposta "alla vaniglia" del DOES del verbo
 ; principale:
-nord
 sdraiati nel cesto
 sdraiati nel tavolo
 ; ------------------------------------------------------------------------------
 ; TESTA USI IMPROPRI
 ; ------------------------------------------------------------------------------
 ; Oggetti che non sono contenitori:
-sdraiati sulla sedia
-sdraiati sulla pera
-sdraiati sul pavimento
-sdraiati sul soffitto
+sdraiati nella sedia
+sdraiati nella pera
+sdraiati nel pavimento
+sdraiati nel soffitto
 ; ==============================================================================
-; TESTA VERBO 'sideiti'
+; TESTA VERBO 'siediti'
 ; ==============================================================================
-; Proviamo a usare 'sideiti' quando siamo già seduti su qualcosa:
+; Proviamo a usare 'siediti' quando siamo già seduti su qualcosa:
 siediti sulla sedia
 siediti
 ; ==============================================================================
 ; TESTA VERBO 'sdraiati'
 ; ==============================================================================
 ; Proviamo a usare 'sdraiati' quando siamo già sdraiati su qualcosa:
-nord
+sud
 sdraiati sul lettino
 ; **ERR!** Dovrebbe rispondere che siamo già sdraiati (come fa per 'siediti'):
 sdraiati

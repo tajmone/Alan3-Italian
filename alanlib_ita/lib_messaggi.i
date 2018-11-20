@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi.i"
---| v0.8.1-Alpha, 2018-11-16: Alan 3.0beta6
+--| v0.8.2-Alpha, 2018-11-20: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -11,13 +11,18 @@
 
 
 -->intro(100.1)
---~============================================================================
---~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~-----------------------------------------------------------------------------
+--|
 --| == Introduzione
+--|
 --~-----------------------------------------------------------------------------
---~/////////////////////////////////////////////////////////////////////////////
---~============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--| 
 --| Questo modulo della libreria è suddiviso in due parti:
 --| 
 --| 1. La prima parte ridefinisce i messaggi runtime di Alan.
@@ -27,19 +32,23 @@
 --| Questo modulo è il cuore della libreria per quanto concerne il testo
 --| prodotto da essa. Modificando le stringhe degli attributi nella seconda parte
 --| è possibile alterare la forma ed i contenuti della maggior parte delle
---| risposte predefinite dei vari verbi della libreria.
+--| risposte predefinite dei verbi della libreria.
 --~-----------------------------------------------------------------------------
 --<
 
 
 -->messaggi_runtime(10000.1)
---~============================================================================
---~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~-----------------------------------------------------------------------------
---| == Messaggi Runtime di Alan
+--|
+--| == Messaggi runtime di Alan
+--|
 --~-----------------------------------------------------------------------------
---~/////////////////////////////////////////////////////////////////////////////
---~============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
 --| 
 --| [WARNING]
 --| ========================================
@@ -291,13 +300,17 @@ MESSAGE
 
 
 -->messaggi_libreria(20000.1)
---~============================================================================
---~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~-----------------------------------------------------------------------------
---| == Messaggi della Libreria Standard
+--|
+--| == Messaggi della Libreria
+--|
 --~-----------------------------------------------------------------------------
---~/////////////////////////////////////////////////////////////////////////////
---~============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
 --| 
 --| [WARNING]
 --| ========================================
@@ -305,12 +318,65 @@ MESSAGE
 --| ========================================
 --<
 
-ADD TO EVERY blocco_definizioni
 
+-->libmsg_convenzioni(20100.1)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Convenzioni negli identificativi degli attributi
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Nella scelta degli identificativi degli attributi stringa per i messaggi
+--| della libreria sono state adottate le sequenti convenzioni.
+--| 
+--| [NOTE]
+--| ========================================================================
+--| Sebbene irrilevante ai fini della compilazione del codice, l'uso di lettere
+--| maiuscole e minuscole negli identificativi degli attributi di messaggi è
+--| rilevante ai fini delle presenti convenzioni poiché il maiuscolo viene
+--| impiegato in contesti specifici.
+--| ========================================================================
+--|
+
+--| Si è cercato di creare identificativi in grado di veicolare il senso del
+--| messaggio che rappresentano in maniera succinta e intuitiva. Per ragioni di
+--| spazio, sono state adottate una serie di abbreviazioni di uso comune:
+--| 
+--| [horizontal]
+--| `ogg`  :: -> '`oggetto`' del verbo, inteso come _parametro_.
+--| `prep` :: -> '`preposizione,`' in genere intesa come _preposizione articolata_.
+--| `qlco` :: -> '`qualcosa`'.
+
+--| Alcune abbreviazioni sono indicatrici di alcune caratteristiche tecniche del
+--| messaggio che rappresentano:
+
+--| * `ogg1` e `ogg2` indicano che il messaggio fa riferimento ad uno specifico
+--|   parametro del verbo utilizzando `$+1` o `$+2`, rispettivamente, nella
+--|   stringa dell'attributo. Es. `ogg2_non_posseduto`.
+
+--| * `_sg` e `_pl` rappresentano varianti di un medesimo messaggio, il primo
+--|   da utilizzarsi con un referente singolare, il secondo con uno plurale.
+--|   Es. `ogg1_inadatto_sg` e `ogg1_inadatto_pl`.
+
+--| * `_USA` è impiegato nei messaggi volti a indirizzare il giocatore all'uso
+--|   corretto di un verbo, solitamente associato a verbi creati appositamente
+--|   per intercettare comandi incompleti. Es. `per_scrivere_USA`.
+--<
+
+--| * `xx` 
+--| 
+
+
+
+
+
+ADD TO EVERY blocco_definizioni
 
 --==============================================================================
 --------------------------------------------------------------------------------
--- § x.2 - Messaggi sull'Eroe
+-- § x.2 - Messaggi riguardanti il protagonista
 --------------------------------------------------------------------------------
 --==============================================================================
 
@@ -329,7 +395,7 @@ ADD TO EVERY blocco_definizioni
 
 --==============================================================================
 --------------------------------------------------------------------------------
--- § x.3 - Messaggi sui Luoghi Bui
+-- § x.3 - Messaggi sui luoghi bui
 --------------------------------------------------------------------------------
 --==============================================================================
 
@@ -347,39 +413,146 @@ ADD TO EVERY blocco_definizioni
     -- This message is shown when a light goes off and the location becomes dark.
 
 
-
 -->libmsg_verbi(23000)
---~=============================================================================
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| ==== Messaggi dei Verbi
+--| === Messaggi dei verbi
 --~-----------------------------------------------------------------------------
---~=============================================================================
---| 
---| Siccome i messaggi dei verbi italiani richiedono spesso l'uso della forma
---| infinita del verbo cui fanno riferimento, molti di questi messaggi sono
---| troncati e spetterà al codice che si occupa dei controlli sul verbo di far
---| seguire al messaggio l'infinito del verbo in questione.
---| 
---| Questo avviene poiché in italiano non è sempre possibile derivare la forma
---| infinita aggiungendo "`re`" all'imperativo (es. "mangia" -> "mangiare"),
---| laddove in inglese l'imperativo è l'infinito si equivalgono in forma. Nella
---| libreria inglese il compito era quindi semplificato dalla possibilità di
---| utilizzare la sequenza speciale `$v` all'interno delle stringhe dei messaggi,
---| che Alan poi sostituisce con il verbo digitato dal giocatore.
---| 
---| Questa complicazione ha portato a una rielaborazione dell'intero corpo degli
---| attributi stringa dei messaggi, nonché della loro modalità d'uso all'interno
---| dei verbi, disconstandosi parecchio dalla libreria originale.
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
 --<
 
-   -----------------------------------------------------------------------------
-  -- @NOTA: Alcune stringhe di messaggi sono identiche (anche nell'originale)
-  --        tranne per il nome dell'attributo. Questo perché l'autore originale
-  --        ha voluto preservare la coerenza nei nomi degli attributi rispetto
-  --        alla funzione che svolgono. Quando tutti i messaggi saranno tradotti
-  --        in italiano varebbe la pena valutare se eliminare i messaggi duplicati,
-  --        a costo di rivedere la metodologia dei nomi di attributi.
-  ------------------------------------------------------------------------------
+
+-->23100(libmsg_verbi_vsym)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Note sull'uso di `$v`
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--| 
+--| Nelle stringhe di risposta dei verbi, la libreria originale inglese faceva
+--| abbondante uso del simbolo speciale `$v`, che Alan sostituisce con il verbo
+--| digitato dal giocatore. Per esempio, ipotizzando che il giocatore abbia
+--| digitato "`talk to wall,`" queste stringhe di codice produrrebero:
+--| 
+--| [horizontal]
+--| `"You can't $v to $+1."`     :: -> You can't talk to the wall.
+--| `"$ving to $+1 is useless."` :: -> Talking to the wall is useless.
+--| 
+--| Poiché in inglese il verbo imperativo digitato dal giocatore corrisponde
+--| alla forma base del verbo, il simbolo `$v` è utilizzabile in svariati tempi
+--| verbali, e per ottenere il participio presente basta aggiungervi "`ing`"
+--| (`$ving`).
+--| 
+--| Nella libreria inglese, questo ha reso possibile la creazione di attributi
+--| stringa per risposte riutilizzabili con svariati verbi e in maniera
+--| flessibile. Inoltre, nel caso di verbi con sinonimi o sintassi alternative,
+--| ha consentito di poter includere nella risposta l'esatto verbo digitato dal
+--| giocatore, consentendo una maggior flessibilità nel riutilizzo dei verbi.
+--| 
+--| [NOTE]
+--| ========================================================================
+--| Nell'output, `$v` viene sempre sostituito dal verbo digitato dal giocatore,
+--| a prescindere se esso corrisponda alla definizione del verbo di base, ad una
+--| sintassi alternativa o un sinonimo.
+--| ========================================================================
+--| 
+--| In italiano, purtroppo, l'impiego di `$v` nelle risposte non è altrettanto
+--| flessibile. Nel caso di verbi il cui imperativo termina in '`a`', è possibile
+--| utilizzare `$v` come nella libreria inglese. Per esempio, ipotizzando che il
+--| giocatore abbia digitato "`mangia il maestro`":
+--| 
+--| [horizontal]
+--| `"Non puoi $vre $+1."`        :: -> Non puoi mangiare il maestro.
+--| `"$+1 non vuol essere $vto."` :: -> Il maestro non vuol essere mangiato.
+--| `"$+1 non è $vbile."`         :: -> Il maestro non è mangiabile.
+--| 
+--| Ma in italiano sono frequenti i verbi in cui questo non funzionerebbe.
+--| Per esempio, dai seguenti verbi non è possibile derivare l'infinito dalla
+--| forma imperativa del comando usando la formula `$+v`+`re` (`"$vre"`):
+--| 
+--| [horizontal]
+--| bevi    :: -> bevire.
+--| siediti :: -> sieditire.
+--| dai     :: -> daire.
+--| 
+--| Questo problema ha determinato un uso limitato di `$v` nella della libreria
+--| italiana, e ad una rielaborazione dell'intero corpo degli attributi stringa
+--| dei messaggi, nonché della loro modalità d'uso all'interno dei verbi,
+--| disconstandosi parecchio dalla libreria originale.
+--| 
+--| Laddove la libreria originale definiva attributi stringa con risposte
+--| complete, e condivise da più verbi, grazie all'uso di `$v`, nella libreria
+--| italiana si è dovuto creare messaggi parziali in cui è omesso il verbo,
+--| facendo ricadere sul corpo del verbo l'onore di completare la frase.
+--| 
+--| Ad esempio, la libreria inglese definisce i seguenti attributi per le
+--| risposte in caso di parametri non idonei al verbo:
+--| 
+--| [source,alan]
+--|   HAS illegal_parameter_sg "That's not something you can $v.".
+--|   HAS illegal_parameter_pl "Those are not something you can $v.".
+--| 
+--| Ciascun attributo è una risposta completa e non richiede ulteriore testo.
+--| Nella libreria italiana questi attributi sono stati tradotti così:
+--| 
+--| [source,alan]
+--|   HAS ogg1_inadatto_sg  "$+1 non è qualcosa che puoi".
+--|   HAS ogg1_inadatto_pl  "$+1 non sono qualcosa che puoi".
+--| 
+--| L'impedimento ad usare `$v` ha costretto a troncare le frasi negli attributi,
+--| e a doverle completare nel codice dei verbi stessi. Ad esempio:
+--| 
+--| [source,alan]
+--| -----------------------------------------
+--| SYNTAX ispeziona = ispeziona (ogg)
+--|   WHERE ogg IsA THING
+--|     ELSE
+--|       IF ogg IS NOT plurale
+--|         THEN SAY mia_AT:ogg1_inadatto_sg.
+--|         ELSE SAY mia_AT:ogg1_inadatto_pl.
+--|       END IF. "ispezionare."
+--| 
+--| SYNONYMS perquisisci = ispeziona.
+--| -----------------------------------------
+--| 
+--| Questo approccio consente di riutilizzare il messaggio con tutti i verbi,
+--| inclusi quelli che non terminano per '`a`'.
+--| 
+--| Nel caso di messaggi più complessi, nei quali il verbo ricade
+--| necessariamente al centro della frase, è impossibile creare un messaggio
+--| completo tramite un solo attributo stringa. Per esempio, messaggi della
+--| libreria originale come questo:
+--| 
+--| [source,alan]
+--|   HAS check_obj_not_in_worn2 "It doesn't make sense to $v something you're wearing.".
+--| 
+--| non possono essere tradotti in italiano se non utilizzando due attributi
+--| distinti (scelta poco pratica). In simili casi la frase della risposta
+--| va rimpiazzata con una più adatta all'uso, oppure si rinuncia ad usare un
+--| attributo stringa e si implementa la risposta usando semplici stringhe nel
+--|  corpo verbo.
+--| 
+--| Ritornando all'esempio precedente, si noterà che l'infinito del verbo è
+--| rappresentato da una stringa letterale, perciò il verbo mostrato nella
+--| risposta sarà sempre "`ispezionare`", anche quando il giocatore userà il
+--| sinonimo '`perquisisci`'. Questo è per via del fatto che '`perquisisci`'
+--| sarebbe inadatto all'uso di `$vre` (= '`perquisiscire`').
+--| 
+--| Quando tutte le sintassi ed i sinonimi di un verbo terminano in '`a`' si può
+--| anche ricorrere al'uso `$v` nel codice del verbo. Questo rende le risposte più
+--| fluide, specie nel caso di verbi che coprono sintassi simili ma con
+--| significati diversi (e.s. '`graffia`' e '`gratta`' come traduzione del verbo
+--| inglese '`scratch`'). Il rischio però è che un autore possa aggiungere
+--| ulteriori sinonimi o sintassi per il verbo, e che alcuni di essi possano
+--| condurre a risposte sgrammaticate.
+--| 
+--| In alcuni casi l'implementazione di sinonimi è finalizzata a catturare
+--| potenziali comandi del giocatore mal formulati; in questi casi l'utilizzo di
+--| un verbo diverso da quello digitato serve anche a sottolineare al giocatore
+--| quale sia il corretto verbo di base associato all'azione.
+--<
 
   HAS azione_bloccata  "Non puoi farlo.". -- "You can't do that."
     --| Questo è il messaggio mostrato quando il giocatore tenta di usare un
@@ -539,21 +712,21 @@ ADD TO EVERY blocco_definizioni
   -- PREPOSIZIONE "DA"
   -- -----------------
   -- ORIGINAL EN: (nessuno)
-  HAS ogg1_illegale_DA_sg  "$+1 non è qualcosa da cui poter".                   ---> guarda_fuori_da
-  HAS ogg1_illegale_DA_pl  "$+1 non sono qualcosa da cui poter".
+  HAS ogg1_inadatto_DA_sg  "$+1 non è qualcosa da cui poter".                   ---> guarda_fuori_da
+  HAS ogg1_inadatto_DA_pl  "$+1 non sono qualcosa da cui poter".
 
   -- ----------------
   -- PREPOSIZIONE "A"
   -- ----------------
   -- VERBI: spara_a_errore.
   -- ORIGINAL EN: illegal_parameter_at
-  HAS ogg1_illegale_A_sg  "$+1 non è qualcosa a cui poter".
-  HAS ogg1_illegale_A_pl  "$+1 non sono qualcosa a cui poter".
+  HAS ogg1_inadatto_A_sg  "$+1 non è qualcosa a cui poter".
+  HAS ogg1_inadatto_A_pl  "$+1 non sono qualcosa a cui poter".
 
   -- VERBI: spara_a.
   -- ORIGINAL EN: illegal_parameter_at
-  HAS ogg2_illegale_A_sg  "$+2 non è qualcosa a cui poter".
-  HAS ogg2_illegale_A_pl  "$+2 non sono qualcosa a cui poter".
+  HAS ogg2_inadatto_A_sg  "$+2 non è qualcosa a cui poter".
+  HAS ogg2_inadatto_A_pl  "$+2 non sono qualcosa a cui poter".
 
   HAS illegal_parameter_at "You can't $v anything at $+2.".         -- fire_at, throw_at
 
@@ -566,20 +739,20 @@ ADD TO EVERY blocco_definizioni
   -- -----------------
   -- VERBI: salta_in.
   -- ORIGINAL EN: (nessuno)
-  HAS ogg1_illegale_IN_sg  "$+1 non è qualcosa in cui poter".
-  HAS ogg1_illegale_IN_pl  "$+1 non sono qualcosa in cui poter".
+  HAS ogg1_inadatto_IN_sg  "$+1 non è qualcosa in cui poter".
+  HAS ogg1_inadatto_IN_pl  "$+1 non sono qualcosa in cui poter".
 
   -- VERBI: .
   -- ORIGINAL EN: (nessuno)
-  HAS ogg2_illegale_IN_sg  "$+2 non è qualcosa in cui poter".
-  HAS ogg2_illegale_IN_pl  "$+2 non sono qualcosa in cui poter".
+  HAS ogg2_inadatto_IN_sg  "$+2 non è qualcosa in cui poter".
+  HAS ogg2_inadatto_IN_pl  "$+2 non sono qualcosa in cui poter".
 
   -- -----------------
   -- PREPOSIZIONE "SU"
   -- -----------------
   -- ORIGINAL EN: illegal_parameter_on_sg/pl
-  HAS ogg1_illegale_SU_sg  "$+1 non è qualcosa su cui poter".                   ---> climb_on, jump_on, knock, lie_on, sit_on,
-  HAS ogg1_illegale_SU_pl  "$+1 non sono qualcosa su cui poter".
+  HAS ogg1_inadatto_SU_sg  "$+1 non è qualcosa su cui poter".                   ---> climb_on, jump_on, knock, lie_on, sit_on,
+  HAS ogg1_inadatto_SU_pl  "$+1 non sono qualcosa su cui poter".
 
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
   HAS check_obj_suitable_on_sg "That's not something you can $v on.".     -- knock, switch_on, turn_on
@@ -590,13 +763,13 @@ ADD TO EVERY blocco_definizioni
   -- ------------------
   -- VERBI: parla_con.
   -- ORIGINAL EN: (nessuno)
-  HAS ogg1_illegale_CON_sg  "$+1 non è qualcosa con cui puoi".
-  HAS ogg1_illegale_CON_pl  "$+1 non sono qualcosa con cui puoi".
+  HAS ogg1_inadatto_CON_sg  "$+1 non è qualcosa con cui puoi".
+  HAS ogg1_inadatto_CON_pl  "$+1 non sono qualcosa con cui puoi".
 
   -- VERBI: brucia_con.
   -- ORIGINAL EN: illegal_parameter2_with_sg/pl  +  check_obj2_suitable_with_sg/pl
-  HAS ogg2_illegale_CON_sg  "$+2 non è qualcosa con cui poter".
-  HAS ogg2_illegale_CON_pl  "$+2 non sono qualcosa con cui poter".
+  HAS ogg2_inadatto_CON_sg  "$+2 non è qualcosa con cui poter".
+  HAS ogg2_inadatto_CON_pl  "$+2 non sono qualcosa con cui poter".
 
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
   HAS check_obj_suitable_with_sg "That's not something you can $v with.".   -- play_with
@@ -1219,7 +1392,7 @@ END ADD TO blocco_definizioni.
 -->todo_checklist(51000.1)
 --~=============================================================================
 --~-----------------------------------------------------------------------------
---| === Check List Generale
+--| === Check-list generale
 --~-----------------------------------------------------------------------------
 --~=============================================================================
 --| 
@@ -1228,7 +1401,7 @@ END ADD TO blocco_definizioni.
 
 -->todo_checklist(.665)
 --| 
---| === Check List Doxter 
+--| === Check-list per Doxter
 --| 
 --| Finisci di trasformare commenti in documentazione Doxter:
 --<

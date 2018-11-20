@@ -17,6 +17,9 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/11/20](#20181120)
+    - [Documentazione Messaggi](#documentazione-messaggi)
+    - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi)
 - [2018/11/16](#20181116)
     - [Documentazione verbi](#documentazione-verbi)
 - [2018/11/15](#20181115)
@@ -30,6 +33,43 @@ For previuos changes, see:
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/11/20
+
+- [`lib_classi.i`][lib_classi] (v0.8.1)
+- [`lib_definizioni.i`][lib_definizioni] (v0.8.1)
+- [`lib_messaggi.i`][lib_messaggi] (v0.8.2)
+- [`lib_verbi.i`][lib_verbi] (v0.8.4)
+- [`lib_luoghi.i`][lib_luoghi] (v0.8.1)
+- [`lib_supplemento.i`][lib_supplemento] (v0.8.1)
+
+
+Correggi maiuscole nei titoli.
+
+## Documentazione Messaggi
+
+Aggiungi note riguardo l'uso del simbolo speciale `$v` nei messaggi di risposta dei verbi, e i relativi problemi riguardo la formazione del verbo infinito.
+
+Inizia a documentare le abbreviazioni e convenzioni adottate negli identificativi degli attributi stringa dei messaggi.
+
+## Rinomina messaggi dei verbi
+
+Rinominati in `ogg?_inadatto_*` tutti gli attributi per i messaggi dei verbi che avevano il nome `ogg?_illegale_*`.
+
+|          Vecchio ID         |           Nuovo ID          |
+|-----------------------------|-----------------------------|
+| `ogg1_illegale_DA_sg`/`pl`  | `ogg1_inadatto_DA_sg`/`pl`  |
+| `ogg1_illegale_A_sg`/`pl`   | `ogg1_inadatto_A_sg`/`pl`   |
+| `ogg2_illegale_A_sg`/`pl`   | `ogg2_inadatto_A_sg`/`pl`   |
+| `ogg1_illegale_IN_sg`/`pl`  | `ogg1_inadatto_IN_sg`/`pl`  |
+| `ogg2_illegale_IN_sg`/`pl`  | `ogg2_inadatto_IN_sg`/`pl`  |
+| `ogg1_illegale_SU_sg`/`pl`  | `ogg1_inadatto_SU_sg`/`pl`  |
+| `ogg1_illegale_CON_sg`/`pl` | `ogg1_inadatto_CON_sg`/`pl` |
+| `ogg2_illegale_CON_sg`/`pl` | `ogg2_inadatto_CON_sg`/`pl` |
+
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/11/16
 

@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Definizioni
 Tristano Ajmone <tajmone@gmail.com>
-v0.8.0-Alpha, 2018-11-13: Alan 3.0beta6
+v0.8.1-Alpha, 2018-11-20: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_definitions.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -259,7 +259,7 @@ La `DESCRIPTION` di `intestazione` agisce da template, e per riempire i
 dettagli del testo del banner essa attingerà ai vari attributi di intestazione
 presenti nell'istanza `mia_AT` dell'avventura.
 
-=== Attributi dell'Intestazione
+=== Attributi dell'intestazione
 L'istanza `mia_AT` (del `blocco_definizioni`) espone all'autore degli
 attributi per fornire i dettagli del banner che potrà (facoltativamente)
 essere mostrato all'inizio della partita tramite il template dell'istanza
@@ -285,7 +285,7 @@ italiano del modulo delle definizioni.
 
 // end::todo[]
 // tag::todo_checklist[]
-=== Check List
+=== Check-list generale
 
 Lista della spesa per le varie cosucce da fare:
 

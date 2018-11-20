@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Luoghi
 Tristano Ajmone <tajmone@gmail.com>
-v0.8.0-Alpha, 2018-11-13: Alan 3.0beta6
+v0.8.1-Alpha, 2018-11-20: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_locations.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -58,13 +58,13 @@ italiano del modulo dei luoghi.
 
 // end::todo[]
 // tag::todo_checklist[]
-=== Check List
+=== Check-list generale
 
 Lista della spesa per le varie cosucce da fare:
 
 
 
-=== Check List Doxter 
+=== Check-list per Doxter
 
 Finisci di trasformare commenti in documentazione Doxter:
 

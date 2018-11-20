@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Classi
 Tristano Ajmone <tajmone@gmail.com>
-v0.8.0-Alpha, 2018-11-13: Alan 3.0beta6
+v0.8.1-Alpha, 2018-11-20: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_classes.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -36,7 +36,7 @@ negli altri moduli della libreria.
 
 // end::intro[]
 // tag::elenco_classi[]
-=== Elenco delle Classi
+=== Elenco delle classi
 
 [WARNING]
 =================================
@@ -77,12 +77,12 @@ classe.
 
 // end::vestiario[]
 // tag::vestiario_istruzioni[]
-=== Istruzioni per l'Uso del Vestiario
+=== Istruzioni per l'uso del vestiario
 
 
 // end::vestiario_istruzioni[]
 // tag::tabella_vestiario_intro[]
-==== La Tabella del Vestiario
+==== La tabella del vestiario
 
 La tabella che segue riporta una selezione di indumenti d'uso comune ed i
 corrispettivi valori degli attributi per una corretta implementazione.
@@ -204,7 +204,7 @@ Questa classe non ricorre altrove, né in questo file né in altri moduli.
 // end::finestre[]
 // tag::fonte_di_luce[]
 
-== Fonti di Luce
+== Fonti di luce
 
 
 
@@ -258,7 +258,7 @@ Di default un liquido non è potabile.
 // end::liquido[]
 // tag::contenitore_elencato[]
 
-== Contenitore Elencato
+== Contenitore elencato
 
 
 Si tratta di un contenitore i cui contenuti (se è aperto) saranno elencati
@@ -341,7 +341,7 @@ utilizzabile con il verbo "spara" (p.es., una pistola, un cannone).
 
 // end::classi_attori[]
 // tag::some_tag[]
-=== Sottoclassi di ACTOR
+=== Sottoclassi di actor
 
 La libreria definisce alcune sottoclassi specializzate di `ACTOR`:
 
@@ -353,7 +353,7 @@ La libreria definisce alcune sottoclassi specializzate di `ACTOR`:
 // end::some_tag[]
 // tag::oggetti_fittizi[]
 
-== Oggetti Fittizi
+== Oggetti fittizi
 
 
 Gli oggetti fittizi sono istanze utilizzate per inizializzare correttamente
@@ -369,13 +369,13 @@ italiano del modulo delle classi.
 
 // end::todo[]
 // tag::todo_checklist[]
-=== Check List Generale
+=== Check-list generale
 
 Lista della spesa per le varie cosucce da fare:
 
 * [ ] *Tabella del Vestiario*: finire traduzione.
 
-=== Check List Doxter
+=== Check-list per Doxter
 
 Finisci di trasformare commenti in documentazione Doxter:
 
