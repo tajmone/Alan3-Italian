@@ -32,7 +32,10 @@ spara a 1 con la pistola
 spara al tavolo con il sacchetto
 spara al tavolo con il coltello
 spara al tavolo con 1
-; @TODO: test with 'bersaglio' which is 'NOT esaminabile'
+; ------------------------------------------------------------------------------
+; TESTA parametri coincidenti
+; ------------------------------------------------------------------------------
+spara alla pistola con la pistola
 ; ------------------------------------------------------------------------------
 ; TESTA etero-dirette
 ; ------------------------------------------------------------------------------
@@ -112,3 +115,9 @@ lancia il coltello contro 1
 ; TESTA etero-dirette
 ; ------------------------------------------------------------------------------
 lancia il coltello contro me
+abbandona partita
+quit
+; ******************************************************************************
+; *                                NOTE & TODO                                 *
+; ******************************************************************************
+; Testa sparare a 'bersaglio' che è'NOT esaminabile'.

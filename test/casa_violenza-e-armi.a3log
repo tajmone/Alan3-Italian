@@ -78,7 +78,12 @@ Il coltello non è un'arma da fuoco.
 > spara al tavolo con 1
 1 non è un'arma da fuoco.
 
-> ; @TODO: test with 'bersaglio' which is 'NOT esaminabile'
+> ; ------------------------------------------------------------------------------
+> ; TESTA parametri coincidenti
+> ; ------------------------------------------------------------------------------
+> spara alla pistola con la pistola
+Questo non ha alcun senso.
+
 > ; ------------------------------------------------------------------------------
 > ; TESTA etero-dirette
 > ; ------------------------------------------------------------------------------
@@ -216,6 +221,7 @@ You can't lancia anything at 1.
 > lancia il coltello contro me
 Questo non ha alcun senso.
 
-> 
+> abbandona partita
 
-Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? quit
+

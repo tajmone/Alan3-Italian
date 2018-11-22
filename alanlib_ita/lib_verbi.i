@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.8.4-Alpha, 2018-11-20: Alan 3.0beta6
+--| v0.8.5-Alpha, 2018-11-22: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -373,14 +373,16 @@ META VERB vedi_punteggio
     -- "In questa avventura non c'è punteggio."
 END VERB vedi_punteggio.
 
+-->gruppo_punteggio                                        @NOTIFICA <-- @NOTIFY
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== vedi_punteggio
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--<
 
--- ==============================================================
+-- Questo verbo è basato sull'esempio "Score notification" di Steve Griffiths.
 
-
--- @NOTIFICA -> @NOTIFY
-
-
--- ==============================================================
 -- SYNTAX notify = notify.
 --        notify_on = notify 'on'.
 --        notify_off = notify 'off'.
@@ -391,22 +393,16 @@ END VERB vedi_punteggio.
 --        - nopunti
 --        - nopunteggio
 
---                                                                              TRANSLATE!
--- Thanks to Steve Griffiths whose 'Score notification' sample was used
--- in declaring this verb.
-
-
 SYNTAX  notifica = notifica.
+
+-- Anche se è sufficiente usare 'notifica' per passare da uno stato all'altro,
+-- questi verbi sono disponibili per le sintassi esplicite:
 
         notifica_on = notifica 'on'.
         notifica_on = notifica attivata.
---                                                                              TRANSLATE!
-        -- The instructions tell the player that mere 'notify'
-        -- is enough, but these two verbs are implemented
+
         notifica_off = notifica 'off'.
         notifica_off = notifica disattivata.
---                                                                              TRANSLATE!
-        -- In case (s)he adds the prepositions to the end anyway.
 
 -->gruppo_punteggio                                        @NOTIFICA <-- @NOTIFY
 --~=============================================================================
@@ -1331,8 +1327,7 @@ ADD TO EVERY OBJECT
           END IF.
           "aprire." -- @TODO: ".. altre cose"??                                 IMPROVE!
       AND ogg <> strum
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_with.
+        ELSE SAY mia_AT:azione_insensata.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -1530,8 +1525,7 @@ ADD TO EVERY OBJECT
           END IF.
           "bloccare." -- @TODO: ".. altre cose"??                               IMPROVE!
       AND ogg <> chiave
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_with.
+        ELSE SAY mia_AT:azione_insensata.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND ogg IS NOT bloccato
@@ -1704,8 +1698,7 @@ ADD TO EVERY OBJECT
           END IF.
           "chiudere" SAY THE ogg. "."
       AND ogg <> strum
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_with.
+        ELSE SAY mia_AT:azione_insensata.
       AND strum IN hero
         ELSE SAY mia_AT:non_possiedi_ogg2.
       AND CURRENT LOCATION IS illuminato
@@ -1830,8 +1823,7 @@ ADD TO EVERY OBJECT
             ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
           END IF. "forzare $+1."
       AND ogg <> strum
-  --                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_with.
+        ELSE SAY mia_AT:azione_insensata.
       AND strum IN hero
         ELSE SAY mia_AT:non_possiedi_ogg2.
       AND CURRENT LOCATION IS illuminato
@@ -1979,7 +1971,7 @@ ADD TO EVERY OBJECT
       AND chiave IN hero
           ELSE SAY mia_AT:non_possiedi_ogg2.
       AND ogg <> chiave
-        ELSE SAY mia_AT:check_obj_not_obj2_with.
+        ELSE SAY mia_AT:azione_insensata.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -2264,8 +2256,7 @@ ADD TO EVERY THING
             END IF.
         END IF.
       AND ogg <> hero
-        -- "Farlo non servirebbe a nulla."
-        ELSE SAY  mia_AT:non_servirebbe_a_nulla.
+        ELSE SAY  mia_AT:azione_futile.
 --                                                                              TRANSLATE!
       AND ogg IS inanimato
 --                                                                              TRANSLATE!
@@ -2327,10 +2318,8 @@ ADD TO EVERY THING
             ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
         END IF.
         "toccare" SAY THE ogg. "."
---                                                                              TRANSLATE!
       AND ogg <> strum
-        ELSE SAY mia_AT:check_obj_not_obj2_with.
---                                                                              TRANSLATE!
+        ELSE SAY mia_AT:azione_insensata.
       AND strum <> hero
         ELSE SAY mia_AT:azione_insensata.
       AND strum IN hero
@@ -3444,8 +3433,7 @@ ADD TO EVERY OBJECT
       CHECK mia_AT CAN riempire_con
         ELSE SAY mia_AT:azione_bloccata.
       AND cont <> sostanza
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_with.
+        ELSE SAY mia_AT:azione_insensata.
       AND sostanza IS esaminabile
         ELSE
           IF sostanza IS NOT plurale
@@ -3693,13 +3681,11 @@ ADD TO EVERY OBJECT
       CHECK mia_AT CAN svuotare_in AND mia_AT CAN versare_in
         ELSE SAY mia_AT:azione_bloccata.
       AND ogg <> cont
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_in.
+        ELSE SAY mia_AT:azione_insensata.
       AND ogg IS prendibile
         ELSE SAY  mia_AT:ogg1_non_posseduto.
       AND cont NOT IN ogg
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_cont_not_in_obj.
+        ELSE SAY mia_AT:azione_insensata.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -3863,8 +3849,7 @@ ADD TO EVERY THING
       CHECK mia_AT CAN svuotare_su AND mia_AT CAN versare_su
         ELSE SAY mia_AT:azione_bloccata.
       AND ogg <> superficie
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_on.
+        ELSE SAY mia_AT:azione_insensata.
       AND ogg IS prendibile
         ELSE SAY  mia_AT:ogg1_non_posseduto.
       AND CURRENT LOCATION IS illuminato
@@ -4722,8 +4707,7 @@ ADD TO EVERY OBJECT
           END IF.
           "rompere" SAY THE ogg. "."
       AND ogg <> strum
-        ---> @TODO!!                                                            TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_with.
+        ELSE SAY mia_AT:azione_insensata.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND strum IN hero
@@ -4898,8 +4882,7 @@ ADD TO EVERY OBJECT
       CHECK mia_AT CAN tagliare_con
         ELSE SAY mia_AT:azione_bloccata.
       AND ogg <> strum
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_with.
+        ELSE SAY mia_AT:azione_insensata.
       AND ogg IS esaminabile
         ELSE
           IF ogg IS NOT plurale
@@ -5001,8 +4984,7 @@ ADD TO EVERY OBJECT
       AND ogg IS prendibile
         ELSE SAY  mia_AT:ogg1_non_posseduto.
       AND ogg <> ricevente
-        ---> @TODO!!                                                            TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_to.
+        ELSE SAY mia_AT:azione_insensata.
       AND ricevente <> hero
         ---> @TODO!!                                                            TRANSLATE!
         ELSE SAY mia_AT:check_obj2_not_hero3.
@@ -5349,8 +5331,7 @@ ADD TO EVERY THING
           AND ogg NOT DIRECTLY IN hero
           ELSE  SAY mia_AT:check_obj_not_in_hero2. --#-> "You already have $+1."
       AND ogg <> detentore
-        ---> @TODO!!                                                            TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_from.  --#-> "It doesn't make sense to $v something from itself."
+        ELSE SAY mia_AT:azione_insensata.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND ogg IS NOT scenario
@@ -5766,16 +5747,13 @@ ADD TO EVERY OBJECT
       AND mia_AT CAN mettere_vicino AND mia_AT CAN mettere_sotto
         ELSE SAY mia_AT:azione_bloccata.
       AND bulk NOT IN hero
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj2_not_in_hero2.
+        ELSE SAY mia_AT:azione_futile.
       AND ogg <> bulk
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_put.
+        ELSE SAY mia_AT:azione_insensata.
       AND ogg IS prendibile
         ELSE SAY  mia_AT:ogg1_non_posseduto.
       AND bulk <> hero
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj2_not_hero2.
+        ELSE SAY mia_AT:azione_futile.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -5808,7 +5786,7 @@ ADD TO EVERY OBJECT
                 ELSE SAY mia_AT:ogg2_distante_pl.
               END IF.
           END IF.
-      DOES SAY mia_AT:non_servirebbe_a_nulla.
+      DOES SAY mia_AT:azione_futile.
   END VERB metti_contro.
 END ADD TO.
 
@@ -5852,7 +5830,7 @@ ADD TO EVERY OBJECT
       CHECK mia_AT CAN mettere_in
         ELSE SAY mia_AT:azione_bloccata.
       AND ogg <> cont
-        ELSE SAY mia_AT:check_obj_not_obj2_in.
+        ELSE SAY mia_AT:azione_insensata.
       AND ogg IS prendibile
         ELSE SAY  mia_AT:ogg1_non_posseduto.
       AND CURRENT LOCATION IS illuminato
@@ -5962,8 +5940,7 @@ ADD TO EVERY OBJECT
       CHECK mia_AT CAN mettere_su
         ELSE SAY mia_AT:azione_bloccata.
       AND ogg <> superficie
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_on.
+        ELSE SAY mia_AT:azione_insensata.
       AND ogg IS prendibile
         ELSE SAY  mia_AT:ogg1_non_posseduto.
       AND CURRENT LOCATION IS illuminato
@@ -6848,9 +6825,8 @@ ADD TO EVERY OBJECT
 --                                                                              TRANSLATE!
       AND ricevente IS esaminabile
         ELSE SAY mia_AT:check_obj_suitable_at.
---                                                                              TRANSLATE!
       AND proiettile <> ricevente
-        ELSE SAY mia_AT:check_obj_not_obj2_to.
+        ELSE SAY mia_AT:azione_insensata.
 --                                                                              TRANSLATE!
       AND ricevente NOT IN hero
         ELSE SAY mia_AT:check_obj2_not_in_hero1.
@@ -6934,9 +6910,8 @@ ADD TO EVERY OBJECT
 --                                                                              TRANSLATE!
       AND bersaglio IS esaminabile
         ELSE SAY mia_AT:check_obj_suitable_at.
---                                                                              TRANSLATE!
       AND proiettile <> bersaglio
-        ELSE SAY mia_AT:check_obj_not_obj2_at.
+        ELSE SAY mia_AT:azione_insensata.
 --                                                                              TRANSLATE!
       AND bersaglio NOT IN hero
         ELSE SAY mia_AT:check_obj2_not_in_hero1.
@@ -7065,9 +7040,8 @@ ADD TO EVERY OBJECT
 --                                                                              TRANSLATE!
       AND cont IS esaminabile
           ELSE SAY mia_AT:check_obj2_suitable_there.
---                                                                              TRANSLATE!
       AND proiettile <> cont
-        ELSE SAY mia_AT:check_obj_not_obj2_in.
+        ELSE SAY mia_AT:azione_insensata.
       AND cont <> hero
         ELSE SAY mia_AT:azione_insensata.
 --                                                                              TRANSLATE!
@@ -7434,7 +7408,7 @@ ADD TO EVERY OBJECT
           THEN SAY mia_AT:ogg1_troppo_pesante_sg.
           ELSE SAY mia_AT:ogg1_troppo_pesante_pl.
         END IF. "da sollevare."
-    DOES SAY mia_AT:non_servirebbe_a_nulla.
+    DOES SAY mia_AT:azione_futile.
   END VERB solleva.
 END ADD TO.
 
@@ -7541,8 +7515,7 @@ ADD TO EVERY THING
 --                                                                              TRANSLATE!
         ELSE SAY mia_AT:check_obj_movable.
       AND ogg <> strum
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_with.
+        ELSE SAY mia_AT:azione_insensata.
       AND strum IS esaminabile
         ELSE
           IF strum IS NOT plurale
@@ -7574,7 +7547,7 @@ ADD TO EVERY THING
                 ELSE SAY mia_AT:ogg1_distante_pl.
               END IF.
           END IF.
-      DOES SAY mia_AT:non_servirebbe_a_nulla.
+      DOES SAY mia_AT:azione_futile.
   END VERB spingi_con.
 END ADD TO.
 
@@ -7636,10 +7609,7 @@ ADD TO EVERY OBJECT
               ELSE SAY mia_AT:ogg1_distante_pl.
             END IF.
         END IF.
-    DOES
-      -- "Farlo non servirebbe a nulla."
-      SAY mia_AT:non_servirebbe_a_nulla.
-      -- "That wouldn't accomplish anything."
+    DOES SAY mia_AT:azione_futile.
   END VERB tira.
 END ADD TO.
 
@@ -7796,9 +7766,8 @@ ADD TO EVERY THING
             ELSE SAY mia_AT:ogg1_inadatto_pl.
           END IF.
           "attaccare."
---                                                                              TRANSLATE!
       AND bersaglio <> arma
-        ELSE SAY mia_AT:check_obj_not_obj2_with.
+        ELSE SAY mia_AT:azione_insensata.
 --                                                                              TRANSLATE!
       AND bersaglio <> hero
         ELSE SAY mia_AT:check_obj_not_hero1.
@@ -8306,8 +8275,7 @@ ADD TO EVERY OBJECT
           END IF.
           "bruciare" SAY THE ogg. "."
       AND ogg <> strum
-        ---> @TODO!!                                                            TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_with.
+        ELSE SAY mia_AT:azione_insensata.
       AND strum IN hero
         ELSE SAY mia_AT:non_possiedi_ogg2.
       AND CURRENT LOCATION IS illuminato
@@ -8410,8 +8378,7 @@ ADD TO EVERY OBJECT
       CHECK mia_AT CAN usare_con
         ELSE SAY mia_AT:azione_bloccata.
       AND ogg <> strum
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_with.
+        ELSE SAY mia_AT:azione_insensata.
       DOES
      -- "Please be more specific. How do you intend to use them together?"
         "Sii più specifico. Come vorresti usarl$$"
@@ -8768,8 +8735,8 @@ ADD TO EVERY arma
             ELSE SAY mia_AT:ogg2_inadatto_A_pl.
           END IF. "sparare"
       AND arma <> bersaglio
---                                                                              TRANSLATE!
-        ELSE SAY mia_AT:check_obj_not_obj2_at.
+      ELSE SAY mia_AT:azione_insensata.
+
       AND bersaglio <> hero
         ELSE SAY mia_AT:no_autolesionismo.
       AND bersaglio IS NOT distante
@@ -9169,11 +9136,7 @@ ADD TO EVERY THING
     DOES
       IF ogg IsA ACTOR
         THEN SAY THE ogg. "respinge le tue avances."
-        --                "avoids your advances."
-        ELSE
-          -- "Farlo non servirebbe a nulla."
-          SAY mia_AT:non_servirebbe_a_nulla.
-        -- "Nothing would be achieved by that."
+        ELSE SAY mia_AT:azione_futile.
       END IF.
   END VERB bacia.
 END ADD TO.
@@ -9602,8 +9565,7 @@ ADD TO EVERY THING
         END IF.
         "grattare." -- #graffiare?
     AND ogg <> hero
-      -- "Farlo non servirebbe a nulla."
-      ELSE SAY  mia_AT:non_servirebbe_a_nulla.
+      ELSE SAY  mia_AT:azione_futile.
     AND ogg IS inanimato
       -- "non credo che $+1 gradirebbe."
       ELSE SAY  mia_AT:ogg1_png_non_apprezzerebbe.
@@ -9624,10 +9586,7 @@ ADD TO EVERY THING
               ELSE SAY mia_AT:ogg1_distante_pl.
             END IF.
         END IF.
-    DOES
-      -- "Farlo non servirebbe a nulla."
-      SAY mia_AT:non_servirebbe_a_nulla.
-      -- "Nothing would be achieved by that."
+    DOES SAY mia_AT:azione_futile.
   END VERB gratta.
 END ADD TO.
 
@@ -9868,9 +9827,8 @@ ADD TO EVERY THING
           END IF.
       AND bersaglio IS esaminabile
         ELSE SAY mia_AT:check_obj2_suitable_there.
---                                                                              TRANSLATE!
       AND ogg <> bersaglio
-        ELSE SAY mia_AT:check_obj_not_obj2_to.
+        ELSE SAY mia_AT:azione_insensata.
       AND ogg IS prendibile
         ELSE SAY  mia_AT:ogg1_non_posseduto.
       AND CURRENT LOCATION IS illuminato
@@ -10129,10 +10087,7 @@ ADD TO EVERY OBJECT
               ELSE SAY mia_AT:ogg1_distante_pl.
             END IF.
         END IF.
-    DOES
-      -- "Farlo non servirebbe a nulla."
-      SAY mia_AT:non_servirebbe_a_nulla.
-      -- "Nothing would be achieved by that."
+    DOES SAY mia_AT:azione_futile.
   END VERB pulisci.
 END ADD TO.
 
@@ -10415,10 +10370,7 @@ ADD TO EVERY THING
               ELSE SAY mia_AT:ogg1_distante_pl.
             END IF.
         END IF.
-    DOES
-      -- "Farlo non servirebbe a nulla."
-      SAY mia_AT:non_servirebbe_a_nulla.
-      -- "Nothing would be achieved by that."
+    DOES SAY mia_AT:azione_futile.
   END VERB sfrega.
 END ADD TO.
 

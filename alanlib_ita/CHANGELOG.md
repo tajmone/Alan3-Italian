@@ -17,6 +17,11 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/11/22](#20181122)
+    - [Messaggi dei verbi](#messaggi-dei-verbi)
+        - [Rinomina attributi](#rinomina-attributi)
+        - [Azioni insensate](#azioni-insensate)
+        - [Azioni Futili](#azioni-futili)
 - [2018/11/20](#20181120)
     - [Documentazione Messaggi](#documentazione-messaggi)
     - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi)
@@ -33,6 +38,69 @@ For previuos changes, see:
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/11/22
+
+- [`lib_messaggi.i`][lib_messaggi] (v0.8.3)
+- [`lib_verbi.i`][lib_verbi] (v0.8.5)
+
+## Messaggi dei verbi
+
+### Rinomina attributi
+
+Rinominati i seguenti attributi per i messaggi di risposta dei verbi:
+
+|        Vecchio ID        |     Nuovo ID    |               Testo               |
+|--------------------------|-----------------|-----------------------------------|
+| `non_servirebbe_a_nulla` | `azione_futile` | `"Farlo non servirebbe a nulla."` |
+
+### Azioni insensate
+
+Tutte le occorrenze dei seguenti attributi sono stati rimpiazzate con `azione_insensata` ("Questo non ha alcun senso."):
+
+|        Attributo EN       |            Testo             |
+|---------------------------|------------------------------|
+| `check_cont_not_in_obj`   | `"That doesn't make sense."` |
+
+Gli attributi originali inglesi sono stati eliminati.
+
+#### Usare un oggetto su se stesso
+
+Anche le occorrenze dei seguenti attributi sono stati rimpiazzate con `azione_insensata`:
+
+|        Attributo EN       |                         Testo                          |
+|---------------------------|--------------------------------------------------------|
+| `check_obj_not_obj2_at`   | `"It doesn't make sense to $v something at itself."`   |
+| `check_obj_not_obj2_from` | `"It doesn't make sense to $v something from itself."` |
+| `check_obj_not_obj2_in`   | `"It doesn't make sense to $v something into itself."` |
+| `check_obj_not_obj2_on`   | `"It doesn't make sense to $v something onto itself."` |
+| `check_obj_not_obj2_put`  | `"That doesn't make sense."`                           |
+| `check_obj_not_obj2_to`   | `"It doesn't make sense to $v something to itself."`   |
+| `check_obj_not_obj2_with` | `"It doesn't make sense to $v something with itself."` |
+
+Gli attributi originali inglesi sono stati eliminati.
+
+La libreria originale inglese utilizzava questi messaggi nei verbi con parametri multipli, quando il giocatore tenta di usare un oggetto su se stesso.
+
+In italiano non è possibile utilizzare dei modelli di risposta altrettanto flessibili, soprattutto per l'impossibilità a utilizzare `$v` nelle risposte (a noi serve l'infinito del verbo). Per evitare macchinose complicazioni, tutti questi messaggi sono stati rimpiazzati con l'attributo `azione_insensata`, già presente nella libreria.
+
+Il contesto dell'errore è sufficientemente chiaro da non richiedere ulteriori spiegazioni, perciò il messaggio "Questo non ha alcun senso." dovrebbe bastare. Quindi, per ora utilizzerò questa soluzione, se poi mi viene in mente una soluzione migliore la implementerò.
+
+> __NOTA__ — In teoria, potrebbero presentarsi casi in cui l'errore è dovuto all'uso di sinonimi implementati come escamotage per creare l'illusione di due oggetti diversi nel gioco, ma in simili casi un messaggio di risposta che utilizzi `$+1` e `$+2` creerebbe solo più confusione dato che Alan mostrerebbe per entrambi il nome principale dell'oggetto e non il sinonimo digitato dal giocatore. 
+
+### Azioni Futili
+
+Tutte le occorrenze dei seguenti attributi sono stati rimpiazzate con `azione_futile` ("Farlo non servirebbe a nulla."):
+
+|        Attributo EN       |            Testo             |
+|---------------------------|------------------------------|
+| `check_obj2_not_hero2`    | `"That would be futile."`    |
+| `check_obj2_not_in_hero2` | `"That would be futile."`    |
+
+Gli attributi originali inglesi sono stati eliminati.
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/11/20
 

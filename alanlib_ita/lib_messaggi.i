@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi.i"
---| v0.8.2-Alpha, 2018-11-20: Alan 3.0beta6
+--| v0.8.3-Alpha, 2018-11-22: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -559,6 +559,18 @@ ADD TO EVERY blocco_definizioni
     --| verbo che è stato disabilitato tramite "CAN NOT [verb]" (vedi sotto).
 
 
+  -- ================================
+  -- SCAMPOLI DI TESTO RIUTILIZZABILI
+  -- ================================
+  -- Alcune risposte richiedono l'uso di più messaggi per formare una frase
+  -- completa, in genere a causa del verbo che si colloca a metà della frase.
+  -- Questi attributi definiscono scampoli di testo riutilizzabili in simili
+  -- messaggi composti (o anche in messaggi brevi).
+
+  -- @NOTA: ALCUNI POSSIBILI SCAMPOLI DI TESTO DA USARE IN FUTURO:
+  -- HAS impossibile  "Non è possibile".
+
+
   -- ==========================
   -- RISPOSTE STANDARD RIPETUTE
   -- ==========================
@@ -790,8 +802,7 @@ ADD TO EVERY blocco_definizioni
   HAS svuotare_solo_contenitori  "Solo i contenitori possono essere svuotati.".
 
   
-
-  -- ==================
+   -- ==================
   -- PARAMETRI MANCANTI
   -- ==================
   -- Messaggi per verbi che richiedono ulteriori parametri. Di solito li si
@@ -1011,7 +1022,7 @@ ADD TO EVERY blocco_definizioni
   -- AZIONI ETERO-DIRETTE
   -- ====================
 
-  -- VERBI: togliti
+  -- VERBI: (moltissimi)
   -- ORIGINAL EN: (vari messaggi inglesi: check_obj2_not_hero1)
   HAS azione_insensata  "Questo non ha alcun senso.".
 
@@ -1035,7 +1046,6 @@ ADD TO EVERY blocco_definizioni
   HAS check_obj_not_hero6  "There is no time for that now.".                    -- kiss, play_with, rub
   HAS check_obj_not_hero7  "Turning your head, you notice nothing unusual behind yourself.".   -- look_behind
   HAS check_obj_not_hero8  "You notice nothing unusual under yourself.".        -- look_under
-  HAS check_obj2_not_hero2 "That would be futile.".                             -- put_against, put_behind, put_near, put_under
   HAS check_obj2_not_hero3 "You can't $v things to yourself.".                  -- give, tie_to
 
   -- =====================
@@ -1075,16 +1085,13 @@ ADD TO EVERY blocco_definizioni
   HAS non_senti_bisogno_di "Al momento non senti il bisogno di".
   
 
-  -- VERBI: bacia, gratta, tira, tocca | clean, rub.
+  -- VERBI: bacia, gratta, metti_contro, metti_dietro, metti_sotto,
+  --        metti_vicino, solleva, spingi_con, tira, tocca, pulisci, sfrega.
   -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
-  HAS non_servirebbe_a_nulla "Farlo non servirebbe a nulla.".
+  HAS azione_futile "Farlo non servirebbe a nulla.".
   -- @NOTA: i6 usa: "Non otterrai niente con questo."
+
   
-  -- VERBI: xxx.
-  -- ORIGINAL EN: xxx.
-  HAS yyyy  "zzzz".
-
-
   -- ================
   -- AZIONI SUPERFLUE
   -- ================
@@ -1306,14 +1313,12 @@ ADD TO EVERY blocco_definizioni
 -- @TAKE (MESSAGE)
   HAS check_obj_not_in_hero2 "You already have $+1.".             -- take, take_from
   HAS check_obj2_not_in_hero1 "You are carrying $+2.".              -- throw_at, throw_in, throw_to
-  HAS check_obj2_not_in_hero2 "That would be futile.".              -- put_against, put_behind, put_near, put_under
   HAS check_obj2_not_in_hero3 "You already have $+2.".              -- ask_for
 
 
   -- checking whether an object is in a container or not:
   -------------------------------------------------------
 
-  HAS check_cont_not_in_obj "That doesn't make sense.".             -- empty_in, pour_in, put_in
   HAS check_obj_in_cont_sg "$+1 is not in $+2.".                -- take_from
   HAS check_obj_in_cont_pl "$+1 are not in $+2.".
   HAS check_obj_not_in_cont_sg "$+1 is in $+2 already.".            -- put_in, throw_in
@@ -1338,20 +1343,6 @@ ADD TO EVERY blocco_definizioni
 
 
 
-
-  -- e) checks guarding against actions where an object is used with itself
-  -------------------------------------------------------------------------
-
-  HAS check_obj_not_obj2_at "It doesn't make sense to $v something at itself.".   -- fire_at, throw_at
-  HAS check_obj_not_obj2_from "It doesn't make sense to $v something from itself.". -- take_from
-  HAS check_obj_not_obj2_in "It doesn't make sense to $v something into itself.".   -- empty_in, pour_in, put_in, throw_in
-  HAS check_obj_not_obj2_on "It doesn't make sense to $v something onto itself.".   -- empty_on, pour_on, put_on
-  HAS check_obj_not_obj2_to "It doesn't make sense to $v something to itself.".   -- give, show, throw_to, tie_to
-  HAS check_obj_not_obj2_with "It doesn't make sense to $v something with itself.".   -- attack_with, break_with, burn_with, close_with,                                       -- + cut_with, fill_with, lock_with,
-                                     -- + open_with, push_with, pry_with, shoot_with,
-                                     -- + touch_withm unlock_with, use_with
-
-  HAS check_obj_not_obj2_put "That doesn't make sense." .         -- put_against, put_behind, put_near, put_under
 
 
       -- f) additional checks for classes:
