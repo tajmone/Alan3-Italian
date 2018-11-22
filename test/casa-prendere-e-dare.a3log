@@ -82,19 +82,29 @@ Possiedi già il vino.
 > ; TESTA 'metti_su' + 'liquido'
 > ; ------------------------------------------------------------------------------
 > metti il vino sul tavolo
-You put la bottiglia of vino onto il tavolo.
+Posi la bottiglia sul tavolo.
 
-> ; **ERRORE!** Il vino non è sul tavolo!
+> metti il vino sul tavolo
+Il vino is already on il tavolo.
+
 > esamina il tavolo
-Esamini il tavolo, ma non noti niente di speciale. Sopra il tavolo vedi un 
-sacchetto, un coltello, una pistola, un vasetto e un cesto per la frutta.
+Esamini il tavolo, ma non noti niente di speciale. Sopra il tavolo vedi 
+una bottiglia, un sacchetto, un coltello, una pistola, un vasetto e un 
+cesto per la frutta.
+
+> esamina la bottiglia
+La bottiglia contiene del vino.
 
 > inventario
-Stai portando una bottiglia, una pera e una mela.
+Stai portando una pera e una mela.
 
 > ; ------------------------------------------------------------------------------
 > ; TESTA 'prendi_da' + 'liquido'
 > ; ------------------------------------------------------------------------------
+> prendi il vino dal tavolo
+(la bottiglia del vino)
+Preso.
+
 > prendi il vino dal tavolo
 Il vino is not on il tavolo.
 

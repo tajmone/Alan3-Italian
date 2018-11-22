@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.9.0-Alpha, 2018-11-22: Alan 3.0beta6
+--| v0.9.1-Alpha, 2018-11-22: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -2037,9 +2037,11 @@ EVERY liquido IsA OBJECT
         -- <<< prendi implicito <<<
 
         IF THIS IN hero
-          -- i.e. if the implicit taking was successful
---                                                                              TRANSLATE!
-          THEN "You put" SAY THE recipiente OF THIS. "of" SAY THIS. "onto" SAY THE superficie. "."
+          -- ossia, se il giocatore era già in possesso del liquido o se il
+          -- 'prendi implicito' qui sopra è andato a buon fine...
+          THEN
+            "Posi" SAY THE THIS:recipiente. SAY superficie:prep_SU. SAY superficie. "."
+            LOCATE recipiente OF THIS IN superficie.
         END IF.
     WHEN superficie
 --                                                                              TRANSLATE!

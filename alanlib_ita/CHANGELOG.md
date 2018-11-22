@@ -17,6 +17,8 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/11/22 \(4\)](#20181122-4)
+    - [Correggi Baco in LIQUIDO](#correggi-baco-in-liquido)
 - [2018/11/22 \(3\)](#20181122-3)
     - [Documentazione](#documentazione)
     - [Verbi](#verbi)
@@ -45,6 +47,16 @@ For previuos changes, see:
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/11/22 (4)
+
+- [`lib_classi.i`][lib_classi] (v0.9.1)
+
+## Correggi Baco in LIQUIDO
+
+Il verbo `metti_su` implementato sulla classe `liquido` non spostava il contenitore del liquido sulla superficie indicata dal parametro, si limitava a dire di averlo fatto.
+
+<!---------------------------------------------------------------------------->
 
 # 2018/11/22 (3)
 

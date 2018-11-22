@@ -35,11 +35,13 @@ prendi il vino
 ; TESTA 'metti_su' + 'liquido'
 ; ------------------------------------------------------------------------------
 metti il vino sul tavolo
-; **ERRORE!** Il vino non è sul tavolo!
+metti il vino sul tavolo
 esamina il tavolo
+esamina la bottiglia
 inventario
 ; ------------------------------------------------------------------------------
 ; TESTA 'prendi_da' + 'liquido'
 ; ------------------------------------------------------------------------------
+prendi il vino dal tavolo
 prendi il vino dal tavolo
 
