@@ -1,0 +1,45 @@
+; ******************************************************************************
+; *                                                                            *
+; *                   TESTA I VERBI PER PRENDERE E LASCIARE                    *
+; *                                                                            *
+; ******************************************************************************
+esamina il cesto
+; ==============================================================================
+; TESTA 'prendi'
+; ==============================================================================
+prendi la mela
+prendi la mela
+; ==============================================================================
+; TESTA 'prendi_da'
+; ==============================================================================
+prendi la pera dal cesto
+prendi la pera dal cesto
+; ==============================================================================
+; TESTA LIQUIDI
+; ==============================================================================
+; I liquidi in contenitori trasportabili possono essere presi e lasciati usando
+; o il nome del liquido o quello del contenitore.
+esamina la bottiglia
+prendi la bottiglia
+metti la bottiglia sul tavolo
+prendi la bottiglia dal tavolo
+metti la bottiglia sul tavolo
+esamina il tavolo
+inventario
+; ------------------------------------------------------------------------------
+; TESTA 'prendi' + 'liquido'
+; ------------------------------------------------------------------------------
+prendi il vino
+prendi il vino
+; ------------------------------------------------------------------------------
+; TESTA 'metti_su' + 'liquido'
+; ------------------------------------------------------------------------------
+metti il vino sul tavolo
+; **ERRORE!** Il vino non è sul tavolo!
+esamina il tavolo
+inventario
+; ------------------------------------------------------------------------------
+; TESTA 'prendi_da' + 'liquido'
+; ------------------------------------------------------------------------------
+prendi il vino dal tavolo
+

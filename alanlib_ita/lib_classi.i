@@ -1367,6 +1367,7 @@ EVERY fonte_di_luce IsA OBJECT
     CHECK THIS IS NOT illuminato
       ELSE
         IF THIS IS NOT plurale
+--                                                                              TRANSLATE!
           THEN SAY mia_AT:check_lightsource_not_lit_sg.
           ELSE SAY mia_AT:check_lightsource_not_lit_pl.
         END IF.
@@ -1591,11 +1592,16 @@ EVERY liquido IsA OBJECT
 -- @PRENDI -> @TAKE (VERB) => LIQUID
   VERB prendi
     CHECK recipiente OF THIS NOT IN hero
-      ELSE SAY mia_AT:check_obj_not_in_hero2.
+      ELSE
+        --         "Possiedi già $+1."
+        SAY mia_AT:ogg1_già_posseduto.
     DOES ONLY
-      IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT prendibile
+      IF recipiente OF THIS = recipiente_fittizio
+      OR recipiente OF THIS IS NOT prendibile
+--                                                                              TRANSLATE!
         THEN "You can't carry" SAY THE THIS. "around in your bare hands."
       ELSE LOCATE recipiente OF THIS IN hero.
+--                                                                              TRANSLATE!
         "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nTaken."
       END IF.
   END VERB prendi.
@@ -1614,6 +1620,7 @@ EVERY liquido IsA OBJECT
 -- @PRENDI_DA -> @TAKE_FROM (VERB) => LIQUID
   VERB prendi_da
     WHEN ogg
+--                                                                              TRANSLATE!
       CHECK detentore <> recipiente OF THIS
         ELSE SAY mia_AT:check_liquid_vessel_not_cont.
         -- the above is triggered when the player types for example

@@ -1,0 +1,105 @@
+
+
+La Casa 
+Un set per eseguire test su stanze e luoghi esterni. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+La Cucina
+A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
+qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un coltello, una 
+pistola, un vasetto e un cesto per la frutta.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                   TESTA I VERBI PER PRENDERE E LASCIARE                    *
+> ; *                                                                            *
+> ; ******************************************************************************
+> esamina il cesto
+Il cesto per la frutta contiene una pera, una banana e una mela.
+
+> ; ==============================================================================
+> ; TESTA 'prendi'
+> ; ==============================================================================
+> prendi la mela
+Presa.
+
+> prendi la mela
+Possiedi già la mela.
+
+> ; ==============================================================================
+> ; TESTA 'prendi_da'
+> ; ==============================================================================
+> prendi la pera dal cesto
+You take la pera from il cesto per la frutta.
+
+> prendi la pera dal cesto
+Possiedi già la pera.
+
+> ; ==============================================================================
+> ; TESTA LIQUIDI
+> ; ==============================================================================
+> ; I liquidi in contenitori trasportabili possono essere presi e lasciati usando
+> ; o il nome del liquido o quello del contenitore.
+> esamina la bottiglia
+La bottiglia contiene del vino.
+
+> prendi la bottiglia
+Presa.
+
+> metti la bottiglia sul tavolo
+Posi la bottiglia sul tavolo.
+
+> prendi la bottiglia dal tavolo
+You take la bottiglia from il tavolo.
+
+> metti la bottiglia sul tavolo
+Posi la bottiglia sul tavolo.
+
+> esamina il tavolo
+Esamini il tavolo, ma non noti niente di speciale. Sopra il tavolo vedi 
+una bottiglia, un sacchetto, un coltello, una pistola, un vasetto e un 
+cesto per la frutta.
+
+> inventario
+Stai portando una pera e una mela.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'prendi' + 'liquido'
+> ; ------------------------------------------------------------------------------
+> prendi il vino
+(la bottiglia of vino)
+Taken.
+
+> prendi il vino
+Possiedi già il vino.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'metti_su' + 'liquido'
+> ; ------------------------------------------------------------------------------
+> metti il vino sul tavolo
+You put la bottiglia of vino onto il tavolo.
+
+> ; **ERRORE!** Il vino non è sul tavolo!
+> esamina il tavolo
+Esamini il tavolo, ma non noti niente di speciale. Sopra il tavolo vedi un 
+sacchetto, un coltello, una pistola, un vasetto e un cesto per la frutta.
+
+> inventario
+Stai portando una bottiglia, una pera e una mela.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'prendi_da' + 'liquido'
+> ; ------------------------------------------------------------------------------
+> prendi il vino dal tavolo
+Il vino is not on il tavolo.
+
+> 
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

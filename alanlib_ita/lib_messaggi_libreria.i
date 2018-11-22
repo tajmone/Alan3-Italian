@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.9.0-Alpha, 2018-11-22: Alan 3.0beta6
+--| v0.9.1-Alpha, 2018-11-22: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
@@ -11,7 +11,7 @@
 --|=============================================================================
 
 
--->messaggi_libreria(20000.1)
+-->messaggi_libreria(100.1)
 --~=============================================================================
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -36,7 +36,7 @@
 --<
 
 
--->libmsg_convenzioni(20100.1)
+-->libmsg_convenzioni(500.1)
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
@@ -82,12 +82,6 @@
 --|   per intercettare comandi incompleti. Es. `per_scrivere_USA`.
 --<
 
---| * `xx` 
---| 
-
-
-
-
 
 ADD TO EVERY blocco_definizioni
 
@@ -130,7 +124,7 @@ ADD TO EVERY blocco_definizioni
     -- This message is shown when a light goes off and the location becomes dark.
 
 
--->libmsg_verbi(23000)
+-->libmsg_verbi(20000)
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
@@ -141,7 +135,7 @@ ADD TO EVERY blocco_definizioni
 --<
 
 
--->23100(libmsg_verbi_vsym)
+-->20100(libmsg_verbi_vsym)
 --~=============================================================================
 --~-----------------------------------------------------------------------------
 --| ==== Note sull'uso di `$v`
@@ -839,6 +833,30 @@ ADD TO EVERY blocco_definizioni
   HAS ogg1_vuoto_pl  "ci provi, ma $+1 erano vuot$$".
 
 
+  -- ---------------------
+  -- Oggetto già posseduto
+  -- ---------------------
+  -- VERBI: prendi, prendi_da
+  -- ORIGINAL EN:  check_obj_not_in_hero2
+  HAS ogg1_già_posseduto  "Possiedi già $+1.".
+
+  -- VERBI: chiedi
+  -- ORIGINAL EN:  check_obj2_not_in_hero3
+  HAS ogg2_già_posseduto  "Possiedi già $+2.".
+  
+
+  -- -------------------
+  -- Bersaglio posseduto
+  -- -------------------
+    
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  
+  -- @NOTA: Questo messaggio è usato nei verbi per lanciare le cose 
+  --       (lancia_a, lancia_contro, lancia_in) e viene usato quando la destinazione
+  --       del lancio è tra i possedimenti del giocatore (quindi non ha senso eseguire
+  --       un lancio dato).
+  HAS check_obj2_not_in_hero1 "You are carrying $+2.". -- throw_at, throw_in, throw_to
+
   -- ===============================
   -- AZIONI RIGUARDANTI IL VESTIARIO
   -- ===============================
@@ -1027,10 +1045,6 @@ ADD TO EVERY blocco_definizioni
 
 
   HAS check_obj_not_in_hero1 "It doesn't make sense to $v something you're holding.".   -- attack, attack_with, kick, lift, shoot, shoot_with
--- @TAKE (MESSAGE)
-  HAS check_obj_not_in_hero2 "You already have $+1.".             -- take, take_from
-  HAS check_obj2_not_in_hero1 "You are carrying $+2.".              -- throw_at, throw_in, throw_to
-  HAS check_obj2_not_in_hero3 "You already have $+2.".              -- ask_for
 
 
   -- checking whether an object is in a container or not:

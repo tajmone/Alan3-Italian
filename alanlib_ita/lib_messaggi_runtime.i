@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_runtime.i"
---| v0.9.0-Alpha, 2018-11-22: Alan 3.0beta6
+--| v0.9.1-Alpha, 2018-11-22: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -10,34 +10,7 @@
 --|=============================================================================
 
 
--->intro(100.1)
---~=============================================================================
---~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
---~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
---~-----------------------------------------------------------------------------
---|
---| == Introduzione
---|
---~-----------------------------------------------------------------------------
---~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
---~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
---~=============================================================================
---| 
---| Questo modulo della libreria è suddiviso in due parti:
---| 
---| 1. La prima parte ridefinisce i messaggi runtime di Alan.
---| 2. La seconda parte definisce gli attributi del `blocco_definizioni` che
---|    contengono le stringhe usate per la messaggistica della libreria.
---| 
---| Questo modulo è il cuore della libreria per quanto concerne il testo
---| prodotto da essa. Modificando le stringhe degli attributi nella seconda parte
---| è possibile alterare la forma ed i contenuti della maggior parte delle
---| risposte predefinite dei verbi della libreria.
---~-----------------------------------------------------------------------------
---<
-
-
--->messaggi_runtime(10000.1)
+-->messaggi_runtime(100.1)
 --~=============================================================================
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

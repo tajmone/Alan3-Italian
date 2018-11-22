@@ -69,48 +69,49 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 
 [cols="2*>10m,20m,60d",options="header"]
 |===============================================================================
-| weight  | subweight |                              | descrizione
-|   100   |         1 | intro                        | == Introduzione
-|  1000   |         1 | elenco_classi                | === Elenco e Descrizione delle Classi
+| weight | subw    |                              | descrizione
 // =============================================================================
-| 10000   |         1 | vestiario                    | == Vestiario
+|   100  |       1 | intro                        | == Introduzione
+|  1000  |       1 | elenco_classi                | === Elenco e Descrizione delle Classi
+// =============================================================================
+| 10000  |       1 | vestiario                    | == Vestiario
 // -----------------------------------------------------------------------------
-| 10900   |         1 | vestiario_istruzioni         | === Istruzioni per l'Uso del Vestiario
-| 10950   |         1 | tabella_vestiario_intro      | == La Tabella del Vestiario
-| 10960   |         1 | tabella_vestiario            | [tabella vestiario]
+| 10900  |       1 | vestiario_istruzioni         | === Istruzioni per l'Uso del Vestiario
+| 10950  |       1 | tabella_vestiario_intro      | == La Tabella del Vestiario
+| 10960  |       1 | tabella_vestiario            | [tabella vestiario]
 // =============================================================================
-| 11000   |         1 | dispositivi                  | == Dispositivi
+| 11000  |       1 | dispositivi                  | == Dispositivi
 // =============================================================================
-| 12000   |         1 | porte                        | == Porte
+| 12000  |       1 | porte                        | == Porte
 // =============================================================================
-| 13000   |         1 | finestre                     | == Finestre
+| 13000  |       1 | finestre                     | == Finestre
 // =============================================================================
-| 14000   |         1 | fonte_di_luce                | == Fonti di Luce
+| 14000  |       1 | fonte_di_luce                | == Fonti di Luce
 // =============================================================================
-| 15000   |         1 | liquido                      | == Liquidi
+| 15000  |       1 | liquido                      | == Liquidi
 // =============================================================================
-| 16000   |         1 | contenitore_elencato         | == Contenitore Elencato
+| 16000  |       1 | contenitore_elencato         | == Contenitore Elencato
 // =============================================================================
-| 17000   |         1 | suono                        | == Suoni
+| 17000  |       1 | suono                        | == Suoni
 // =============================================================================
-| 18000   |         1 | supporto                     | == Supporti
+| 18000  |       1 | supporto                     | == Supporti
 // =============================================================================
-| 19000   |         1 | arma                         | == Armi
+| 19000  |       1 | arma                         | == Armi
 // -----------------------------------------------------------------------------
 // | 1000   |         1 | xxxxxxxxxx | === xxxxxxxxxx
 // =============================================================================
-| 20000   |         1 | classi_attori                | == Attori
-| 21000   |         1 | sottoclassi_attori           | == Sottoclassi di ACTOR
+| 20000  |       1 | classi_attori                | == Attori
+| 21000  |       1 | sottoclassi_attori           | == Sottoclassi di ACTOR
 // =============================================================================
-| 30000   |         1 | oggetti_fittizi              | == Oggetti Fittizi
+| 30000  |       1 | oggetti_fittizi              | == Oggetti Fittizi
 // =============================================================================
-| 50000   |           | todo                         | TODO
-| 51000   |      1-33 | todo_checklist               | === Check List Generale
-| 51000   |   665-666 | todo_checklist               | === Check List Doxter
+| 50000  |         | todo                         | TODO
+| 51000  |    1-33 | todo_checklist               | === Check List Generale
+| 51000  | 665-666 | todo_checklist               | === Check List Doxter
 |===============================================================================
 
 ////
-| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+| 00000  |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
 ////
 
 
@@ -121,18 +122,19 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 
 [cols="2*>10m,20m,60d",options="header"]
 |===============================================================================
-| weight  | subweight |                          | descrizione
-|  4000   |           | restrizioni_verbali      | == Le Restrizioni Verbali
-|  4100   |           | restrizioni_tradotte     | === Elenco delle Restrizioni Verbali
-|  9000   |         1 | intestazione             | == L'Intestazione dell'Avventura (Banner)
-|         |        20 | intestazione             | === Attributi dell'Intestazione
-| 50000   |           | todo                     | TODO
-| 50100   |           | restrizioni_non_tradotte | === Restrizioni Verbali da Tradurre
+| weight | subw |                          | descrizione
+// =============================================================================
+|  4000  |      | restrizioni_verbali      | == Le Restrizioni Verbali
+|  4100  |      | restrizioni_tradotte     | === Elenco delle Restrizioni Verbali
+|  9000  |    1 | intestazione             | == L'Intestazione dell'Avventura (Banner)
+|        |   20 | intestazione             | === Attributi dell'Intestazione
+| 50000  |      | todo                     | TODO
+| 50100  |      | restrizioni_non_tradotte | === Restrizioni Verbali da Tradurre
 |===============================================================================
 
 
 ////
-| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+| 00000  |         | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
 ////
 
 
@@ -143,15 +145,16 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 
 [cols="2*>10m,20m,60d",options="header"]
 |===============================================================================
-| weight  | subweight |                              | descrizione
-|   100   |         1 | intro                        | == Introduzione
-| 50000   |           | todo                         | TODO
-| 51000   |      1-33 | todo_checklist               | === Check List Generale
-| 51000   |   665-666 | todo_checklist               | === Check List Doxter
+| weight | subw    |                              | descrizione
+// =============================================================================
+|   100  |       1 | intro                        | == Introduzione
+| 50000  |         | todo                         | TODO
+| 51000  |    1-33 | todo_checklist               | === Check List Generale
+| 51000  | 665-666 | todo_checklist               | === Check List Doxter
 |===============================================================================
 
 ////
-| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+| 00000  |         | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
 ////
 
 === Modulo Messaggi Runtime
@@ -161,16 +164,16 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 
 [cols="2*>10m,20m,60d",options="header"]
 |===============================================================================
-| weight  | subweight |                   | descrizione
-|   100   |         1 | intro             | = Introduzione
-| 10000   |         1 | messaggi_runtime  | ==  Messaggi Runtime di Alan
-| 50000   |           | todo              | TODO
-| 51000   |      1-33 | todo_checklist    | === Check List Generale
-| 51000   |   665-666 | todo_checklist    | === Check List Doxter
+| weight | subw    |                   | descrizione
+// =============================================================================
+|   100  |       1 | messaggi_runtime   | ==  Messaggi Runtime di Alan
+| 50000  |         | todo              | TODO
+| 51000  |    1-33 | todo_checklist    | === Check List Generale
+| 51000  | 665-666 | todo_checklist    | === Check List Doxter
 |===============================================================================
 
 ////
-| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+| 00000  |         | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
 ////
 
 
@@ -181,17 +184,19 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 
 [cols="2*>10m,20m,60d",options="header"]
 |===============================================================================
-| weight  | subweight |                   | descrizione
-| 20000   |         1 | messaggi_libreria | ==  Messaggi della Libreria
-| 23000   |           | libmsg_verbi      | === Messaggi dei Verbi
-| 23100   |           | libmsg_verbi_vsym | ==== Note Riguardo l'Uso di `$v`
-| 50000   |           | todo              | TODO
-| 51000   |      1-33 | todo_checklist    | === Check List Generale
-| 51000   |   665-666 | todo_checklist    | === Check List Doxter
+| weight | subw    |                    | descrizione
+// =============================================================================
+|   100  |       1 | messaggi_libreria  | ==  Messaggi della Libreria
+|   500  |       1 | libmsg_convenzioni | === Convenzioni negli identificativi degli attributi
+| 20000  |         | libmsg_verbi       | === Messaggi dei Verbi
+| 20100  |         | libmsg_verbi_vsym  | ==== Note Riguardo l'Uso di `$v`
+| 50000  |         | todo               | TODO
+| 51000  |    1-33 | todo_checklist     | === Check List Generale
+| 51000  | 665-666 | todo_checklist     | === Check List Doxter
 |===============================================================================
 
 ////
-| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+| 00000  |         | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
 ////
 
 === Modulo Verbi
@@ -200,99 +205,100 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 
 [cols="2*>10m,20m,60d",options="header"]
 |===============================================================================
-| weight  | subweight |                              | descrizione
-|  1000   |           | elenco_verbi                 | == Elenco Completo dei Verbi
-|  1010   |           | tabella_verbi_partita        | === Tabella Comandi di Partita
-|  1020   |           | tabella_verbi_gioco          | === Tabella Comandi di Gioco
-|  1030   |           | tabella_verbi_domande        | === Tabella Comandi Domande
+| weight | subw    |                              | descrizione
 // =============================================================================
-| 10000   |           | comandi_partita              | == Meta Verbi di Partita
-// -----------------------------------------------------------------------------
-| 10100   |           | gruppo_file                  | === Salvataggio e Caricamento
-// -----------------------------------------------------------------------------
-| 10200   |           | gruppo_trascrizione          | === Trascrizione della Partita
-// -----------------------------------------------------------------------------
-| 10300   |           | gruppo_punteggio             | === Punteggio e Notifiche
-// -----------------------------------------------------------------------------
-| 10400   |           | gruppo_verbosity             | === Descrizioni Brevi e Lunghe
-// -----------------------------------------------------------------------------
-| 10500   |           | gruppo_info                  | === Istruzioni, Info e Aiuto
-// -----------------------------------------------------------------------------
-| 19999   |           | gruppo_misc_meta             | === Meta Verbi Vari
+|  1000  |         | elenco_verbi                 | == Elenco Completo dei Verbi
+|  1010  |         | tabella_verbi_partita        | === Tabella Comandi di Partita
+|  1020  |         | tabella_verbi_gioco          | === Tabella Comandi di Gioco
+|  1030  |         | tabella_verbi_domande        | === Tabella Comandi Domande
 // =============================================================================
-| 20000   |           | comandi_gioco                | == Verbi di Gioco
+| 10000  |         | comandi_partita              | == Meta Verbi di Partita
 // -----------------------------------------------------------------------------
-| 20100   |           | gruppo_accendi               | == Accensione e Spegnimento
+| 10100  |         | gruppo_file                  | === Salvataggio e Caricamento
 // -----------------------------------------------------------------------------
-| 20200   |           | gruppo_apri                  | == Apertura e Chiusura
+| 10200  |         | gruppo_trascrizione          | === Trascrizione della Partita
 // -----------------------------------------------------------------------------
-| 20300   |           | gruppo_sensi                 | == Azioni Sensoriali
+| 10300  |         | gruppo_punteggio             | === Punteggio e Notifiche
 // -----------------------------------------------------------------------------
-| 20400   |           | gruppo_conversare            | == Conversare
+| 10400  |         | gruppo_verbosity             | === Descrizioni Brevi e Lunghe
 // -----------------------------------------------------------------------------
-| 20500   |           | gruppo_mangiabevi            | == Mangiare e Bere
+| 10500  |         | gruppo_info                  | === Istruzioni, Info e Aiuto
 // -----------------------------------------------------------------------------
-| 20600   |           | gruppo_svuota                | == Svuotare e Versare
-// -----------------------------------------------------------------------------
-| 20700   |           | gruppo_guarda                | == Guardare ed Esaminare
-// -----------------------------------------------------------------------------
-| 20800   |           | gruppo_commercio             | == Commerciare
-// -----------------------------------------------------------------------------
-| 20900   |           | gruppo_rompi_aggiusta        | == Rompere, Strappare, Tagliare e Riparare
-// -----------------------------------------------------------------------------
-| 21000   |           | gruppo_dare                  | == Dare e Prendere
-// -----------------------------------------------------------------------------
-| 21100   |           | gruppo_vestirsi              | == Vestirsi e Svestirsi
-// -----------------------------------------------------------------------------
-| 21200   |           | gruppo_mettere               | == Mettere
-// -----------------------------------------------------------------------------
-| 21300   |           | gruppo_saltare               | == Saltare
-// -----------------------------------------------------------------------------
-| 21400   |           | gruppo_sedersi               | == Posizionarsi su Superfici
-// -----------------------------------------------------------------------------
-| 21500   |           | gruppo_lanciare              | == Lanciare
-// -----------------------------------------------------------------------------
-| 21600   |           | gruppo_nuotare               | == Nuotare e Tuffarsi
-// -----------------------------------------------------------------------------
-| 21700   |           | gruppo_spingere              | == Spingere, Tirare e Sollevare
-// -----------------------------------------------------------------------------
-| 21800   |           | gruppo_attaccare             | == Attaccare e Simili
-// -----------------------------------------------------------------------------
-| 21900   |           | gruppo_leggere               | == Leggere e Scrivere
-// -----------------------------------------------------------------------------
-| 22000   |           | gruppo_bruciare              | == Bruciare
-// -----------------------------------------------------------------------------
-| 22100   |           | gruppo_usare                 | == Usare
-// -----------------------------------------------------------------------------
-| 22200   |           | gruppo_pensare               | == Pensare
-// -----------------------------------------------------------------------------
-| 22300   |           | gruppo_entrare               | == Entrare e Uscire
-// -----------------------------------------------------------------------------
-| 22400   |           | gruppo_sparare               | == Sparare
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-| 29999   |           | gruppo_sfusi                 | == Verbi Sfusi
+| 19999  |         | gruppo_misc_meta             | === Meta Verbi Vari
 // =============================================================================
-| 30000   |           | comandi_comandi_domande      | == Verbi di Domande
+| 20000  |         | comandi_gioco                | == Verbi di Gioco
 // -----------------------------------------------------------------------------
-| 30100   |           | gruppo_chi                   | == Domanda Chi
+| 20100  |         | gruppo_accendi               | == Accensione e Spegnimento
 // -----------------------------------------------------------------------------
-| 30200   |           | gruppo_cosa                  | == Domanda Cosa
+| 20200  |         | gruppo_apri                  | == Apertura e Chiusura
 // -----------------------------------------------------------------------------
-| 30300   |           | gruppo_dove                  | == Domanda Dove
+| 20300  |         | gruppo_sensi                 | == Azioni Sensoriali
 // -----------------------------------------------------------------------------
-| 30400   |           | gruppo_risposte              | == Risposte
+| 20400  |         | gruppo_conversare            | == Conversare
+// -----------------------------------------------------------------------------
+| 20500  |         | gruppo_mangiabevi            | == Mangiare e Bere
+// -----------------------------------------------------------------------------
+| 20600  |         | gruppo_svuota                | == Svuotare e Versare
+// -----------------------------------------------------------------------------
+| 20700  |         | gruppo_guarda                | == Guardare ed Esaminare
+// -----------------------------------------------------------------------------
+| 20800  |         | gruppo_commercio             | == Commerciare
+// -----------------------------------------------------------------------------
+| 20900  |         | gruppo_rompi_aggiusta        | == Rompere, Strappare, Tagliare e Riparare
+// -----------------------------------------------------------------------------
+| 21000  |         | gruppo_dare                  | == Dare e Prendere
+// -----------------------------------------------------------------------------
+| 21100  |         | gruppo_vestirsi              | == Vestirsi e Svestirsi
+// -----------------------------------------------------------------------------
+| 21200  |         | gruppo_mettere               | == Mettere
+// -----------------------------------------------------------------------------
+| 21300  |         | gruppo_saltare               | == Saltare
+// -----------------------------------------------------------------------------
+| 21400  |         | gruppo_sedersi               | == Posizionarsi su Superfici
+// -----------------------------------------------------------------------------
+| 21500  |         | gruppo_lanciare              | == Lanciare
+// -----------------------------------------------------------------------------
+| 21600  |         | gruppo_nuotare               | == Nuotare e Tuffarsi
+// -----------------------------------------------------------------------------
+| 21700  |         | gruppo_spingere              | == Spingere, Tirare e Sollevare
+// -----------------------------------------------------------------------------
+| 21800  |         | gruppo_attaccare             | == Attaccare e Simili
+// -----------------------------------------------------------------------------
+| 21900  |         | gruppo_leggere               | == Leggere e Scrivere
+// -----------------------------------------------------------------------------
+| 22000  |         | gruppo_bruciare              | == Bruciare
+// -----------------------------------------------------------------------------
+| 22100  |         | gruppo_usare                 | == Usare
+// -----------------------------------------------------------------------------
+| 22200  |         | gruppo_pensare               | == Pensare
+// -----------------------------------------------------------------------------
+| 22300  |         | gruppo_entrare               | == Entrare e Uscire
+// -----------------------------------------------------------------------------
+| 22400  |         | gruppo_sparare               | == Sparare
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+| 29999  |         | gruppo_sfusi                 | == Verbi Sfusi
 // =============================================================================
-| 50000   |           | todo                         | == TODO
-| 50100   |           | verbi_non_tradotti           | === Verbi da Tradurre
-| 51000   |           | todo_checklist               | === Check List
+| 30000  |         | comandi_comandi_domande      | == Verbi di Domande
+// -----------------------------------------------------------------------------
+| 30100  |         | gruppo_chi                   | == Domanda Chi
+// -----------------------------------------------------------------------------
+| 30200  |         | gruppo_cosa                  | == Domanda Cosa
+// -----------------------------------------------------------------------------
+| 30300  |         | gruppo_dove                  | == Domanda Dove
+// -----------------------------------------------------------------------------
+| 30400  |         | gruppo_risposte              | == Risposte
+// =============================================================================
+| 50000  |         | todo                         | == TODO
+| 50100  |         | verbi_non_tradotti           | === Verbi da Tradurre
+| 51000  |         | todo_checklist               | === Check List
 |===============================================================================
 
 ////
-| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+| 00000  |         | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
 // -----------------------------------------------------------------------------
-| 000   |           | gruppo_XXXXX            | == XXXXX
-| 010   |           | verbo_YYYYY                 | ==== YYYYY
+| 000  |         | gruppo_XXXXX            | == XXXXX
+| 010  |         | verbo_YYYYY                 | ==== YYYYY
 ////
 
 
@@ -303,17 +309,18 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 
 [cols="2*>10m,20m,60d",options="header"]
 |===============================================================================
-| weight  | subweight |                              | descrizione
-|   100   |         1 | intro                        | == Introduzione
-|  1000   |         1 | player_words                 | == Predefined Player Words
-| 50000   |           | todo                         | TODO
-| 51000   |      1-33 | todo_checklist               | === Check List Generale
-| 51000   |   665-666 | todo_checklist               | === Check List Doxter
+| weight | subw    |                              | descrizione
+// =============================================================================
+|   100  |       1 | intro                        | == Introduzione
+|  1000  |       1 | player_words                 | == Predefined Player Words
+| 50000  |         | todo                         | TODO
+| 51000  |    1-33 | todo_checklist               | === Check List Generale
+| 51000  | 665-666 | todo_checklist               | === Check List Doxter
 |===============================================================================
 
 
 ////
-| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+| 00000  |         | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
 ////
 
 

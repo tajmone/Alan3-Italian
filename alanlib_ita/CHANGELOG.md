@@ -17,11 +17,15 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/11/22 \(3\)](#20181122-3)
+    - [Documentazione](#documentazione)
+    - [Verbi](#verbi)
+    - [Messaggi dei verbi](#messaggi-dei-verbi)
 - [2018/11/22 \(2\)](#20181122-2)
     - [Suddivisione modulo messaggi](#suddivisione-modulo-messaggi)
     - [Passa alla v0.9.0](#passa-alla-v090)
 - [2018/11/22 \(1\)](#20181122-1)
-    - [Messaggi dei verbi](#messaggi-dei-verbi)
+    - [Messaggi dei verbi](#messaggi-dei-verbi-1)
         - [Rinomina attributi](#rinomina-attributi)
         - [Azioni insensate](#azioni-insensate)
         - [Azioni Futili](#azioni-futili)
@@ -41,6 +45,36 @@ For previuos changes, see:
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/11/22 (3)
+
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] (v0.9.1)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.1)
+- [`lib_verbi.i`][lib_verbi] (v0.9.1)
+
+## Documentazione
+
+Riorganizza e metti un po' in ordine la documentazione Doxter.
+
+## Verbi
+
+Sostituisi attributi di risposte inglesi con attributi italiani già tradotti ma non ancora sostituiti.
+
+Annota gli attributi messagi non ancora tradotti.
+
+## Messaggi dei verbi
+
+Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
+
+|        Attributo EN       |     Attributo IT     |         Testo         |
+|---------------------------|----------------------|-----------------------|
+| `check_obj_not_in_hero2`  | `ogg1_già_posseduto` | `"Possiedi già $+1."` |
+| `check_obj2_not_in_hero3` | `ogg2_già_posseduto` | `"Possiedi già $+2."` |
+
+Gli attributi originali inglesi sono stati eliminati.
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/11/22 (2)
 
