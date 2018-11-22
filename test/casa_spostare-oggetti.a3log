@@ -48,6 +48,81 @@ Il frigo è troppo pesante da sollevare.
 > prendi il frigo
 Il frigo è troppo pesante.
 
+> ; ==============================================================================
+> ; TESTA SUPERFICI
+> ; ==============================================================================
+> prendi la mela
+Presa.
+
+> metti la mela sul tavolo
+Posi la mela sul tavolo.
+
+> metti la mela sul tavolo
+La mela è già sul tavolo.
+
+> prendi la mela dal tavolo
+You take la mela from il tavolo.
+
+> prendi la mela dal tavolo
+Possiedi già la mela.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'metti_su' CON SECONDI PARAMETRI NON VALIDI
+> ; ------------------------------------------------------------------------------
+> metti la mela sulla pera
+La pera non è qualcosa su cui poter mettere cose.
+
+> ; ==============================================================================
+> ; TESTA 'metti_contro'
+> ; ==============================================================================
+> metti la mela contro il frigo
+Farlo non servirebbe a nulla.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'metti_contro' CON SECONDI PARAMETRI NON VALIDI
+> ; ------------------------------------------------------------------------------
+> metti la mela contro 1
+1 non è qualcosa contro cui poter mettere cose.
+
+> ; ==============================================================================
+> ; TESTA 'metti_dietro'
+> ; ==============================================================================
+> metti la mela dietro il frigo
+Farlo non servirebbe a nulla.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'metti_dietro' CON SECONDI PARAMETRI NON VALIDI
+> ; ------------------------------------------------------------------------------
+> metti la mela dietro 1
+1 non è qualcosa dietro cui poter mettere cose.
+
+> ; ==============================================================================
+> ; TESTA 'metti_sotto'
+> ; ==============================================================================
+> metti la mela sotto al frigo
+Farlo non servirebbe a nulla.
+
+> metti la mela sotto il frigo
+Farlo non servirebbe a nulla.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'metti_sotto' CON SECONDI PARAMETRI NON VALIDI
+> ; ------------------------------------------------------------------------------
+> metti la mela sotto a 1
+1 non è qualcosa sotto cui poter mettere cose.
+
+> ; ==============================================================================
+> ; TESTA 'metti_vicino'
+> ; ==============================================================================
+> metti la mela vicino al frigo
+Farlo non servirebbe a nulla.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'metti_vicino' CON SECONDI PARAMETRI NON VALIDI
+> ; ------------------------------------------------------------------------------
+> metti la mela vicino a 1
+1 non è qualcosa vicino a cui poter mettere cose.
+
 > 
 
 Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

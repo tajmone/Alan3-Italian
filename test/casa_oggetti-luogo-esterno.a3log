@@ -73,7 +73,7 @@ La mela doesn't belong in il suolo.
 > ;            CONTAINER è finalizzata a consentire di svuoatre/versare/mettere
 > ;            cose sul suolo.
 > metti la pera sul suolo
-It's not possible to metti anything there.
+Il suolo non è qualcosa su cui poter mettere cose.
 
 > ;            Ma dato che non è presente alcuna ridefinizione del verbo 'metti_su'
 > ;            nell'istanza 'suolo', la SYNTAX del verbo principale si limita a

@@ -53,7 +53,7 @@ La mela doesn't belong in il pavimento.
 > ;            CONTAINER è finalizzata a consentire di svuoatre/versare/mettere
 > ;            cose sul pavimento.
 > metti la pera sul pavimento
-It's not possible to metti anything there.
+Il pavimento non è qualcosa su cui poter mettere cose.
 
 > ;            Ma dato che non è presente alcuna ridefinizione del verbo 'metti_su'
 > ;            nell'istanza 'pavimento', la SYNTAX del verbo principale si limita a

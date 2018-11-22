@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.9.1-Alpha, 2018-11-22: Alan 3.0beta6
+--| v0.9.2-Alpha, 2018-11-22: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
@@ -416,20 +416,16 @@ ADD TO EVERY blocco_definizioni
 
   HAS illegal_parameter_there "It's not possible to look there.".         -- look_behind, look_in, look_under
 
-  HAS illegal_parameter2_there "It's not possible to $v anything there.".       -- empty_in, empty_on, pour_in, pour_on, put_in,
-                                       -- + put_on, put_against, put_behind, put_near,
-                                   -- + put_under, throw_in, throw_to, tie_to, write
-
   HAS illegal_parameter_what_sg "That's not something I know about.".       -- what_is, where_is
   HAS illegal_parameter_what_pl "Those are not something I know about.".      -- what_is, where_is
   HAS illegal_parameter_who_sg "That's not somebody I know about.".       -- who_is
   HAS illegal_parameter_who_pl "Those are not somebody I know about.".        -- who_is
 
-  -- =====================================
-  -- PARAMETRI INADATTI (CON PREPOSIZIONI)
-  -- =====================================
+  -- =============================================
+  -- PARAMETRI INADATTI CON PREPOSIZIONI ARICOLATE
+  -- =============================================
   -- Varianti dei messaggi precedenti, quando si tratta di parametri che richiedono
-  -- preposizioni.
+  -- preposizioni articolate.
 
   -- -----------------
   -- PREPOSIZIONE "DA"
@@ -474,20 +470,21 @@ ADD TO EVERY blocco_definizioni
   -- PREPOSIZIONE "SU"
   -- -----------------
   -- ORIGINAL EN: illegal_parameter_on_sg/pl
-  HAS ogg1_inadatto_SU_sg  "$+1 non è qualcosa su cui poter".                   ---> climb_on, jump_on, knock, lie_on, sit_on,
+  HAS ogg1_inadatto_SU_sg  "$+1 non è qualcosa su cui poter".
   HAS ogg1_inadatto_SU_pl  "$+1 non sono qualcosa su cui poter".
 
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_obj_suitable_on_sg "That's not something you can $v on.".     -- knock, switch_on, turn_on
-  HAS check_obj_suitable_on_pl "Those are not something you can $v on." .
+
+  HAS ogg2_inadatto_SU_sg  "$+2 non è qualcosa su cui poter".
+  HAS ogg2_inadatto_SU_pl  "$+2 non sono qualcosa su cui poter".
+
 
   -- ------------------
   -- PREPOSIZIONE "CON"
   -- ------------------
   -- VERBI: parla_con.
   -- ORIGINAL EN: (nessuno)
-  HAS ogg1_inadatto_CON_sg  "$+1 non è qualcosa con cui puoi".
-  HAS ogg1_inadatto_CON_pl  "$+1 non sono qualcosa con cui puoi".
+  HAS ogg1_inadatto_CON_sg  "$+1 non è qualcosa con cui poter".
+  HAS ogg1_inadatto_CON_pl  "$+1 non sono qualcosa con cui poter".
 
   -- VERBI: brucia_con.
   -- ORIGINAL EN: illegal_parameter2_with_sg/pl  +  check_obj2_suitable_with_sg/pl
@@ -500,6 +497,45 @@ ADD TO EVERY blocco_definizioni
 
   HAS illegal_parameter_with_sg "That's not something you can $v with.".    -- kill_with, shoot_with, play_with
   HAS illegal_parameter_with_pl "Those are not something you can $v with.".
+
+  -- =============================================
+  -- PARAMETRI INADATTI CON PREPOSIZIONI IMPROPRIE
+  -- =============================================
+  -- Varianti dei messaggi precedenti, quando si tratta di parametri che richiedono
+  -- preposizioni improprie.
+
+  -- ---------------------
+  -- PREPOSIZIONE "CONTRO"
+  -- ---------------------
+  -- VERBI: metti_contro.
+  -- ORIGINAL EN: (nessuno)
+  HAS ogg2_inadatto_CONTRO_sg  "$+2 non è qualcosa contro cui poter".
+  HAS ogg2_inadatto_CONTRO_pl  "$+2 non sono qualcosa contro cui poter".
+
+  -- ---------------------
+  -- PREPOSIZIONE "DIETRO"
+  -- ---------------------
+  -- VERBI: metti_dietro.
+  -- ORIGINAL EN: (nessuno)
+  HAS ogg2_inadatto_DIETRO_sg  "$+2 non è qualcosa dietro cui poter".
+  HAS ogg2_inadatto_DIETRO_pl  "$+2 non sono qualcosa dietro cui poter".
+
+  -- --------------------
+  -- PREPOSIZIONE "SOTTO"
+  -- --------------------
+  -- VERBI: metti_dietro.
+  -- ORIGINAL EN: (nessuno)
+  HAS ogg2_inadatto_SOTTO_sg  "$+2 non è qualcosa sotto cui poter".
+  HAS ogg2_inadatto_SOTTO_pl  "$+2 non sono qualcosa sotto cui poter".
+
+  
+  -- -----------------------
+  -- PREPOSIZIONE "VICINO A"
+  -- -----------------------
+  -- VERBI: metti_vicino.
+  -- ORIGINAL EN: (nessuno)
+  HAS ogg2_inadatto_VICINO_A_sg  "$+2 non è qualcosa vicino a cui poter".
+  HAS ogg2_inadatto_VICINO_A_pl  "$+2 non sono qualcosa vicino a cui poter".
 
   
   -- ==============================
@@ -1062,21 +1098,9 @@ ADD TO EVERY blocco_definizioni
 
   HAS check_obj_on_surface_sg "$+1 is not on $+2.".             -- take_from
   HAS check_obj_on_surface_pl "$+1 are not on $+2.".
-  HAS check_obj_not_on_surface_sg "$+1 is already on $+2.".           -- put_on
-  HAS check_obj_not_on_surface_pl "$+1 are already on $+2.".
 
 
-
-  -- c) checking location states
-  ------------------------------
-  -- HAS check_current_loc_lit "It is too dark to see.".           -- (numerous)
-  -- TRADOTTO ---> imp_luogo_buio
-
-
-
-
-
-      -- f) additional checks for classes:
+  -- f) additional checks for classes:
   ------------------------------------
 
   HAS check_clothing_sex "On second thoughts you decide $+1 won't really suit you.".      -- clothing: wear

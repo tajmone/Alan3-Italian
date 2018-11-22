@@ -54,8 +54,14 @@ Presa.
 > metti la bottiglia sul tavolo
 Posi la bottiglia sul tavolo.
 
+> metti la bottiglia sul tavolo
+La bottiglia è già sul tavolo.
+
 > prendi la bottiglia dal tavolo
 You take la bottiglia from il tavolo.
+
+> prendi la bottiglia dal tavolo
+Possiedi già la bottiglia.
 
 > metti la bottiglia sul tavolo
 Posi la bottiglia sul tavolo.
@@ -85,7 +91,7 @@ Possiedi già il vino.
 Posi la bottiglia sul tavolo.
 
 > metti il vino sul tavolo
-Il vino is already on il tavolo.
+Il vino è già sul tavolo.
 
 > esamina il tavolo
 Esamini il tavolo, ma non noti niente di speciale. Sopra il tavolo vedi 

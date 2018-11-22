@@ -17,17 +17,21 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/11/22 \(5\)](#20181122-5)
+    - [Messaggi dei verbi](#messaggi-dei-verbi)
+        - [Elimina Messaggi dei verbi](#elimina-messaggi-dei-verbi)
+        - [Nuovi Messaggi dei verbi](#nuovi-messaggi-dei-verbi)
 - [2018/11/22 \(4\)](#20181122-4)
     - [Correggi Baco in LIQUIDO](#correggi-baco-in-liquido)
 - [2018/11/22 \(3\)](#20181122-3)
     - [Documentazione](#documentazione)
     - [Verbi](#verbi)
-    - [Messaggi dei verbi](#messaggi-dei-verbi)
+    - [Messaggi dei verbi](#messaggi-dei-verbi-1)
 - [2018/11/22 \(2\)](#20181122-2)
     - [Suddivisione modulo messaggi](#suddivisione-modulo-messaggi)
     - [Passa alla v0.9.0](#passa-alla-v090)
 - [2018/11/22 \(1\)](#20181122-1)
-    - [Messaggi dei verbi](#messaggi-dei-verbi-1)
+    - [Messaggi dei verbi](#messaggi-dei-verbi-2)
         - [Rinomina attributi](#rinomina-attributi)
         - [Azioni insensate](#azioni-insensate)
         - [Azioni Futili](#azioni-futili)
@@ -47,6 +51,43 @@ For previuos changes, see:
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/11/22 (5)
+
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.2)
+- [`lib_verbi.i`][lib_verbi] (v0.9.2)
+
+## Messaggi dei verbi
+
+### Elimina Messaggi dei verbi
+
+Elimina attributi inglesi per i messaggi di risposta dei verbi:
+
+|             Attributo              |                    Testo                    |
+|------------------------------------|---------------------------------------------|
+| `check_obj_not_on_surface_sg`/`pl` | `"$+1 [is/are] already on $+2."`            |
+| `check_obj_suitable_on_sg`/`pl`    | `"That's not something you can $v on."`     |
+| `illegal_parameter2_there`         | `"It's not possible to $v anything there."` |
+
+Nel verbo in cui venivano utilizzati `check_obj_not_on_surface_sg`/`pl` (solo in `metti_su`) è stato più semplice implementare le risposte direttamente nel verbo.
+
+Invece `illegal_parameter2_there`, a seconda del verbo, è stato rimpiazzato da attributi diversi (con preposizioni articolate o improprie).
+
+Gli altri attributi erano rimasti nel modulo messaggi ma non erano più utilizzati nei verbi.
+
+### Nuovi Messaggi dei verbi
+
+Creati nuovi attributi per i messaggi di risposta dei verbi (usati per rimpiazzare svariati attributi della libreria originale inglese le cui traduzioni in si sovrappongono a quelle italiane):
+
+|           Attributo            |                      Testo                       |
+|--------------------------------|--------------------------------------------------|
+| `ogg2_inadatto_SU_sg`/`pl`     | `"$+2 non [è/sono] qualcosa su cui poter"`       |
+| `ogg2_inadatto_CONTRO_sg`/`pl` | `"$+2 non [è/sono] qualcosa contro cui poter"`   |
+| `ogg2_inadatto_DIETRO_sg`/`pl` | `"$+2 non [è/sono] qualcosa dietro cui poter"`   |
+| `ogg2_inadatto_SOTTO_sg`/`pl`  | `"$+2 non [è/sono] qualcosa sottocui poter"`     |
+| `ogg2_inadatto_VICINO_sg`/`pl` | `"$+2 non [è/sono] qualcosa vicino a cui poter"` |
+
+<!---------------------------------------------------------------------------->
 
 # 2018/11/22 (4)
 

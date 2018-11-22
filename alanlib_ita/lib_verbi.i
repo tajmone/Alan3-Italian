@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.9.1-Alpha, 2018-11-22: Alan 3.0beta6
+--| v0.9.2-Alpha, 2018-11-22: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -3634,11 +3634,18 @@ SYNTAX svuota_in = svuota (ogg) 'in' (cont)
       IF cont IsA ACTOR
 --                                                                              TRANSLATE!
         THEN SAY mia_AT:illegal_parameter_act.
-        ELSE SAY mia_AT:illegal_parameter2_there.
+        ELSE
+          IF ogg IS NOT plurale
+            THEN SAY mia_AT:ogg2_inadatto_IN_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_IN_pl.
+          END IF. "svuotare cose."
       END IF.
   AND cont IsA CONTAINER
-    ELSE SAY mia_AT:illegal_parameter2_there.
-
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg2_inadatto_IN_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_IN_pl.
+      END IF. "svuotare cose."
 
 
 versa_in = versa (ogg) 'in' (cont)
@@ -3663,12 +3670,18 @@ versa_in = versa (ogg) 'in' (cont)
       IF cont IsA ACTOR
 --                                                                              TRANSLATE!
         THEN SAY mia_AT:illegal_parameter_act.
-        ELSE SAY mia_AT:illegal_parameter2_there.
+        ELSE
+          IF ogg IS NOT plurale
+            THEN SAY mia_AT:ogg2_inadatto_IN_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_IN_pl.
+          END IF. "versare cose."
       END IF.
   AND cont IsA CONTAINER
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:illegal_parameter2_there.
-
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg2_inadatto_IN_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_IN_pl.
+      END IF. "versare cose."
 
 
 
@@ -3809,11 +3822,17 @@ SYNTAX svuota_su = svuota (ogg) su (superficie)
         END IF.
         "svuotare."
     AND superficie IsA THING
---                                                                              TRANSLATE!
-      ELSE SAY mia_AT:illegal_parameter2_there.
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:ogg2_inadatto_SU_sg.
+          ELSE SAY mia_AT:ogg2_inadatto_SU_pl.
+        END IF. "svuotare cose."
     AND superficie IsA CONTAINER
---                                                                              TRANSLATE!
-      ELSE SAY mia_AT:illegal_parameter2_there.
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:ogg2_inadatto_SU_sg.
+          ELSE SAY mia_AT:ogg2_inadatto_SU_pl.
+        END IF. "svuotare cose."
 
   versa_su = versa (ogg) su (superficie)
     WHERE ogg IsA OBJECT
@@ -3833,11 +3852,17 @@ SYNTAX svuota_su = svuota (ogg) su (superficie)
         END IF.
         "versare."
     AND superficie IsA OBJECT
---                                                                              TRANSLATE!
-      ELSE SAY mia_AT:illegal_parameter2_there.
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:ogg2_inadatto_SU_sg.
+          ELSE SAY mia_AT:ogg2_inadatto_SU_pl.
+        END IF. "versare cose."
     AND superficie IsA CONTAINER
---                                                                              TRANSLATE!
-      ELSE SAY mia_AT:illegal_parameter2_there.
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:ogg2_inadatto_SU_sg.
+          ELSE SAY mia_AT:ogg2_inadatto_SU_pl.
+        END IF. "svuotare cose."
 
 
 ADD TO EVERY THING
@@ -5704,9 +5729,11 @@ SYNTAX metti_contro = metti (ogg) contro (bulk)
     --             "You can only $v objects."
     ELSE SAY mia_AT:illegal_parameter_obj.
   AND bulk IsA THING
---                                                                              TRANSLATE!
-    --             "It's not possible to $v anything there."
-    ELSE SAY mia_AT:illegal_parameter2_there.
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg2_inadatto_CONTRO_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_CONTRO_pl.
+      END IF. "mettere cose."
 
 
 
@@ -5715,8 +5742,11 @@ SYNTAX metti_dietro = metti (ogg) dietro (bulk)
 --                                                                              TRANSLATE!
     ELSE SAY mia_AT:illegal_parameter_obj.
   AND bulk IsA THING
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:illegal_parameter2_there.
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg2_inadatto_DIETRO_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_DIETRO_pl.
+      END IF. "mettere cose."
 
 
 
@@ -5725,19 +5755,26 @@ SYNTAX metti_vicino = metti (ogg) vicino a (bulk)
 --                                                                              TRANSLATE!
     ELSE SAY mia_AT:illegal_parameter_obj.
   AND bulk IsA THING
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:illegal_parameter2_there.
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg2_inadatto_VICINO_A_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_VICINO_A_pl.
+      END IF. "mettere cose."
 
 
 
-SYNTAX metti_sotto = metti (ogg) sotto (bulk)
+SYNTAX  metti_sotto = metti (ogg) sotto (bulk)
   WHERE ogg IsA OBJECT
 --                                                                              TRANSLATE!
     ELSE SAY mia_AT:illegal_parameter_obj.
   AND bulk IsA THING
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:illegal_parameter2_there.
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg2_inadatto_SOTTO_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_SOTTO_pl.
+      END IF. "mettere cose."
 
+        metti_sotto = metti (ogg) sotto a (bulk).
 
 
 ADD TO EVERY OBJECT
@@ -5815,10 +5852,18 @@ SYNTAX metti_in = metti (ogg) 'in' (cont)
     ELSE
       IF cont IsA ACTOR
         THEN SAY mia_AT:illegal_parameter_act.
-        ELSE SAY mia_AT:illegal_parameter2_there.
+        ELSE
+          IF ogg IS NOT plurale
+            THEN SAY mia_AT:ogg2_inadatto_IN_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_IN_pl.
+          END IF. "mettere cose."
       END IF.
   AND cont IsA CONTAINER
-    ELSE SAY mia_AT:illegal_parameter2_there.
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg2_inadatto_IN_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_IN_pl.
+      END IF. "mettere cose."
 
 
   -- metti_in = insert (ogg) 'in' (cont).
@@ -5930,9 +5975,11 @@ SYNTAX metti_su = metti (ogg) su (superficie)
 --                                                                              TRANSLATE!
     ELSE SAY mia_AT:illegal_parameter_obj.
   AND superficie IsA supporto
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:illegal_parameter2_there.
-
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg2_inadatto_SU_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_SU_pl.
+      END IF. "mettere cose."
 
 
 ADD TO EVERY OBJECT
@@ -5948,12 +5995,13 @@ ADD TO EVERY OBJECT
         ELSE SAY mia_AT:imp_luogo_buio.
       AND ogg NOT IN superficie
         ELSE
+          "$+1"
           IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-            THEN SAY mia_AT:check_obj_not_on_surface_sg.
-            ELSE SAY mia_AT:check_obj_not_on_surface_pl.
+            THEN "è"
+            ELSE "sono"
           END IF.
-          AND ogg IS raggiungibile AND ogg IS NOT distante
+          "già" SAY superficie:prep_SU. "$2."
+      AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
             THEN
@@ -6806,7 +6854,11 @@ SYNTAX lancia_a = lancia (proiettile) a (ricevente)
       ELSE SAY mia_AT:illegal_parameter_obj.
 --                                                                              TRANSLATE!
     AND ricevente IsA ACTOR
-      ELSE SAY mia_AT:illegal_parameter2_there.
+      ELSE
+        IF ricevente IS NOT plurale
+          THEN SAY mia_AT:ogg2_inadatto_A_sg.
+          ELSE SAY mia_AT:ogg2_inadatto_A_pl.
+        END IF. "lanciare cose."
 
 
 ADD TO EVERY OBJECT
@@ -7021,11 +7073,19 @@ SYNTAX lancia_in = lancia (proiettile) 'in' (cont)
 --                                                                              TRANSLATE!
       IF cont IsA ACTOR
         THEN SAY mia_AT:illegal_parameter_act.
-        ELSE SAY mia_AT:illegal_parameter2_there.
-      END IF.
+        ELSE
+          IF cont IS NOT plurale
+            THEN SAY mia_AT:ogg2_inadatto_IN_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_IN_pl.
+          END IF. "lanciare cose."
+        END IF.
 --                                                                              TRANSLATE!
   AND cont IsA CONTAINER
-    ELSE SAY mia_AT:illegal_parameter2_there.
+    ELSE
+      IF cont IS NOT plurale
+        THEN SAY mia_AT:ogg2_inadatto_IN_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_IN_pl.
+      END IF. "lanciare cose."
 
 
 ADD TO EVERY OBJECT
@@ -8074,7 +8134,11 @@ SYNTAX  scrivi = scrivi (txt) su (ogg)
     WHERE txt IsA STRING
       ELSE SAY mia_AT:illegal_parameter_string.
     AND ogg IsA OBJECT
-      ELSE SAY mia_AT:illegal_parameter2_there.
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:ogg2_inadatto_SU_sg.
+          ELSE SAY mia_AT:ogg2_inadatto_SU_pl.
+        END IF. "scrivere."
 
         scrivi = scrivi (txt) 'in' (ogg).
 
