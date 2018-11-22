@@ -69,7 +69,7 @@ A [demo adventure] file is on the making in the [`/demo/`](./demo) folder (the o
 
 - [`/alanlib_ita/`](./alanlib_ita) — standard library 2.1 translation to Italian (WIP)
 - [`/alanlib/`](./alanlib) — copies of the upstream standard library:
-    + [`/2.1/`](./alanlib/2.1/) (updated: 2018/06/11)
+    + [`/2.1/`](./alanlib/2.1/) (updated: 2018/10/22)
 - [`/demo/`](./demo) — a demo adventure (eventually, but right now very messy)
 - [`/test/`](./test) — various adventure test files and commands scripts
 - [`LICENSE`][License] — Artistic License 2.0
@@ -126,7 +126,7 @@ The _Alan Standard Library_  is a set of preprogrammed basic verbs and classes t
 
 # Known Limitations
 
-Currently, there is no solution to handle correctly prepositions with an apostrophe, therefore commands like:
+Currently, the parser can't handle prepositions with an apostrophe, therefore commands like:
 
     prendi la mela dall'albero
 
@@ -141,17 +141,13 @@ Currently, there is no solution to handle correctly prepositions with an apostro
 
 The nature of the problem is fully described in the Wiki page "[i18n Problems]".
 
-This limitation poses a rather serious problem. Although it doesn't prevent playing the game, it nevertheless enforces on the player usage of bad Italian as a workaround. Wether this is an issue that comprmosises the usability of the whole Italian library project is a matter of debate. To quantify the severity of the problem using English as a parallel, imagine that the player would have to type `Bob s car` instead of `Bob's car` due to a limitation in parsing correctly the apostrophe in the possessive morpheme `'s`.
-
-Some Italian IF authors and developers have suggested that the problem is sever enough to justify either giving up the whole project or to modify the source of Alan's interpreter to create a dedicate terp for playing Italian adventures — ie, which could preprocess the player's input and replace the culprit apostrophe with a space before it gets processed by the parser.
-
-The original intention which motivated me to localize to Italian the Alan StdLib was the desire to have an IF authoring tool that could be used by non-programmers. The whole idea was to expand the domain of IF beyond the circle of expert programmers, hoping that IF authoring would spread beyond it. I therefore believe that the above mentioned limitation is not going to prevent people from learning how to create an IF work with Alan, although I do realize that it's definitely going to affect the status of the project, making it second choice whenever an authoring tool without this limit is affordable.
-
-I've filed a [feature request] to Alan's developer exposing the problem and hoping that a new feature might be introduced into the language to handle preprocessing the raw input player before it gets to the parser. Such a feature would allow overcoming this and other similar issues not only in Italian but also in other languages, like French.
-
-I've therefore decided to carry on with the project despite this problem (and suggestions against it), hoping that my plead for a solution via a new Alan feature will be fulfilled sometime in the future. I've also given some thought to the idea of creating a modified distribution of the Alan interpreter, as a last resort; but have finally dediced against it. First, it would introduce the burden of maintaining the code up to date with its upstream; second, it would require to maintain up to date precompiled binaries for all the supported platforms, inlcuding macOS (which I don't have access to). 
-
-Therefore, I'm prepared to accept the fact that what I hoped would become a  full-fledged Italian IF authoring tool might have now recessed in status to being just an experimental tool to learn authoring IF, but not destined to be used in the production of adventures intended for publication.
+> __UPDATE__ — A new feature is currently being implemented in Alan to allow support for apostrophes, to support languages like Italian and French:
+> 
+> - https://groups.yahoo.com/neo/groups/alan-if/conversations/messages/3635
+> 
+> The feature will be made available soon in public release, it's currently still being tested and documented.
+> 
+> My gratitude to __Thomas Nilefalk__ for having implemented this feature in support of the Italian Library project!
 
 
 # Acknowledgements

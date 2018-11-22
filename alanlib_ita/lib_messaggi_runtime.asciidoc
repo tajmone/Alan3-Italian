@@ -1,0 +1,73 @@
+= Alan StdLib Italian: Messaggi Runtime
+Tristano Ajmone <tajmone@gmail.com>
+v0.9.0-Alpha, 2018-11-22: Alan 3.0beta6
+=============================================================================
+Adattamento italiano del modulo `lib_messages.i` della
+_ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
+Ad opera di Tristano Ajmone,  (C) 2018, Artistic License 2.1.
+=============================================================================
+
+// tag::custom_attributes[]
+////
+=============================================================================
+Custom AsciiDoc Attributes for Doxter
+=============================================================================
+////
+
+// Traduzione italiana degli attributi predefiniti di Asciidoctor:
+include::attributes-it.adoc[tag=attributes-it]
+
+// Definisci sostituzione di {X} con il carattere Unicode 'heavy check mark'
+// (U+2714), usato nelle tabelle dei verbi:
+:X: &#x2714;
+
+// end::custom_attributes[]
+// tag::intro[]
+
+== Introduzione
+
+
+Questo modulo della libreria è suddiviso in due parti:
+
+1. La prima parte ridefinisce i messaggi runtime di Alan.
+2. La seconda parte definisce gli attributi del `blocco_definizioni` che
+   contengono le stringhe usate per la messaggistica della libreria.
+
+Questo modulo è il cuore della libreria per quanto concerne il testo
+prodotto da essa. Modificando le stringhe degli attributi nella seconda parte
+è possibile alterare la forma ed i contenuti della maggior parte delle
+risposte predefinite dei verbi della libreria.
+
+// end::intro[]
+// tag::messaggi_runtime[]
+
+== Messaggi runtime di Alan
+
+
+Questo modulo della libreria ridefinisce i messaggi runtime di Alan.
+
+[WARNING]
+========================================
+Documentazione non ancora disponibile...
+========================================
+
+// end::messaggi_runtime[]
+// tag::todo[]
+== TODO
+
+Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
+italiano del modulo delle classi.
+
+// end::todo[]
+// tag::todo_checklist[]
+=== Check-list generale
+
+Lista della spesa per le varie cosucce da fare:
+
+
+=== Check-list per Doxter
+
+Finisci di trasformare commenti in documentazione Doxter:
+
+// end::todo_checklist[]
+

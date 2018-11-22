@@ -1,7 +1,7 @@
--- "_newgame_ita.alan" v0.6.0  (2018/10 | Alan 3.0beta6 | Std Lib v2.1
+-- "_newgame_ita.alan" v0.9.0 (2018/11/22) | Alan 3.0beta6 | Std Lib v2.1
 --------------------------------------------------------------------------------
 --| Sorgente base standard per creare avventure con ALAN Italian library v2.1.
---| Basato sul file "newgame.alan" della Standard Library 2.1)
+--| Basato sul file "newgame.alan" della Standard Library 2.1.
 --------------------------------------------------------------------------------
 IMPORT 'libreria.i'.
 

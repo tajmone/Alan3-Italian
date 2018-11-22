@@ -35,13 +35,14 @@ This folder contains a copy of the Alan Standard Library v2.1 files which are be
 
 The library files being translated:
 
-- [`lib_classi.i`][lib_classi] (adpatation of `lib_classes.i`)
-- [`lib_definizioni.i`][lib_definizioni] (adpatation of `lib_definitions.i`)
-- [`lib_luoghi.i`][lib_luoghi] (adpatation of `lib_locations.i`)
-- [`lib_messaggi.i`][lib_messaggi] (adpatation of `lib_messages.i`)
-- [`lib_verbi.i`][lib_verbi] (adpatation of `lib_verbs.i`)
-- [`libreria.i`][libreria] (adpatation of `library.i`)
-- [`lib_supplemento.i`][lib_supplemento] (not in original StdLib)
+- [`libreria.i`][libreria] — adpatation of `library.i`, the main import module:
+    + [`lib_classi.i`][lib_classi] — adpatation of `lib_classes.i`.
+    + [`lib_definizioni.i`][lib_definizioni] — adpatation of `lib_definitions.i`.
+    + [`lib_luoghi.i`][lib_luoghi] — adpatation of `lib_locations.i`.
+    + [`lib_messaggi_runtime.i`][lib_messaggi_runtime] — adpatation of `lib_messages.i`.
+    + [`lib_messaggi_libreria.i`][lib_messaggi_libreria] — adpatation of verb responses attributes from `lib_definitions.i`.
+    + [`lib_verbi.i`][lib_verbi] — adpatation of `lib_verbs.i`.
+    + [`lib_supplemento.i`][lib_supplemento] — not in original StdLib.
 
 
 ## Extra Standard Library Files
@@ -56,13 +57,26 @@ Boilerplates and templates from the StdLibrary have been renamed with a leading 
 
 The Italian library is currently switching to a new system which generates the AsciiDoc documentation directly from comments in the Alan source files using [Doxter]:
 
-- [`lib_verbi.asciidoc`][lib_verbi adoc]
+- [`libreria.asciidoc`][libreria adoc]
+- [`lib_classi.asciidoc`][lib_classi adoc]
 - [`lib_definizioni.asciidoc`][lib_definizioni adoc]
+- [`lib_luoghi.asciidoc`][lib_luoghi adoc]
+- [`lib_messaggi_libreria.asciidoc`][lib_messaggi_libreria adoc]
+- [`lib_messaggi_runtime.asciidoc`][lib_messaggi_runtime adoc]
+- [`lib_verbi.asciidoc`][lib_verbi adoc]
+- [`lib_supplemento.asciidoc`][lib_supplemento adoc]
 
 The AsciiDoc files are then converted to HTML:
 
-- [`lib_verbi.html`][lib_verbi html]  ([Live HTML Preview][lib_verbi html live])
+- [`libreria.html`][libreria html]  ([Live HTML Preview][libreria html live])
+- [`lib_classi.html`][lib_classi html]  ([Live HTML Preview][lib_classi html live])
 - [`lib_definizioni.html`][lib_definizioni html]  ([Live HTML Preview][lib_definizioni html live])
+- [`lib_luoghi.html`][lib_luoghi html]  ([Live HTML Preview][lib_luoghi html live])
+- [`lib_messaggi_libreria.html`][lib_messaggi_libreria html]  ([Live HTML Preview][lib_messaggi_libreria html live])
+- [`lib_messaggi_runtime.html`][lib_messaggi_runtime html]  ([Live HTML Preview][lib_messaggi_runtime html live])
+- [`lib_verbi.html`][lib_verbi html]  ([Live HTML Preview][lib_verbi html live])
+- [`lib_supplemento.html`][lib_supplemento html]  ([Live HTML Preview][lib_supplemento html live])
+
 
 See also:
 
@@ -510,13 +524,14 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 
 <!-- NEW LIBRARY FILENAMES -->
 
-[libreria]:         ./libreria.i
-[lib_classi]:       ./lib_classi.i
-[lib_definizioni]:  ./lib_definizioni.i
-[lib_luoghi]:       ./lib_luoghi.i
-[lib_messaggi]:     ./lib_messaggi.i
-[lib_verbi]:        ./lib_verbi.i
-[lib_supplemento]:  ./lib_supplemento.i
+[libreria]:              ./libreria.i
+[lib_classi]:            ./lib_classi.i
+[lib_definizioni]:       ./lib_definizioni.i
+[lib_luoghi]:            ./lib_luoghi.i
+[lib_messaggi_runtime]:  ./lib_messaggi_runtime.i
+[lib_messaggi_libreria]: ./lib_messaggi_libreria.i
+[lib_verbi]:             ./lib_verbi.i
+[lib_supplemento]:       ./lib_supplemento.i
 
 <!-- Library Documentation  -->
 
@@ -524,13 +539,38 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 [ANNOTAZIONI_DOXTER html]: ./ANNOTAZIONI_DOXTER.html
 [BUILD_DOCS]: ./BUILD_DOCS.bat
 
-[lib_verbi adoc]: ./lib_verbi.asciidoc
-[lib_verbi html]: ./lib_verbi.html
-[lib_verbi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_verbi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+
+[libreria adoc]: ./libreria.asciidoc
+[libreria html]: ./libreria.html
+[libreria html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/libreria.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+
+[lib_classi adoc]: ./lib_classi.asciidoc
+[lib_classi html]: ./lib_classi.html
+[lib_classi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_classi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
 [lib_definizioni adoc]: ./lib_definizioni.asciidoc
 [lib_definizioni html]: ./lib_definizioni.html
 [lib_definizioni html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_definizioni.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+
+[lib_luoghi adoc]: ./lib_luoghi.asciidoc
+[lib_luoghi html]: ./lib_luoghi.html
+[lib_luoghi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_luoghi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+
+[lib_messaggi_runtime adoc]: ./lib_messaggi_runtime.asciidoc
+[lib_messaggi_runtime html]: ./lib_messaggi_runtime.html
+[lib_messaggi_runtime html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_messaggi_runtime.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+
+[lib_messaggi_libreria adoc]: ./lib_messaggi_libreria.asciidoc
+[lib_messaggi_libreria html]: ./lib_messaggi_libreria.html
+[lib_messaggi_libreria html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_messaggi_libreria.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+
+[lib_verbi adoc]: ./lib_verbi.asciidoc
+[lib_verbi html]: ./lib_verbi.html
+[lib_verbi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_verbi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+
+[lib_supplemento adoc]: ./lib_supplemento.asciidoc
+[lib_supplemento html]: ./lib_supplemento.html
+[lib_supplemento html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_supplemento.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
 [Doxter]: https://git.io/doxter "Visit Doxter website"
 

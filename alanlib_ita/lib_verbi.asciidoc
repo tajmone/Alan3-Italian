@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.8.4-Alpha, 2018-11-20: Alan 3.0beta6
+v0.9.0-Alpha, 2018-11-22: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -366,6 +366,8 @@ della partita:
 * `notifica`
 * `notifica_on`
 * `notifica_off`
+
+==== vedi_punteggio
 
 ==== vedi_punteggio
 

@@ -8,6 +8,9 @@ For the latest changes, see:
 
 - [`CHANGELOG.md`](./CHANGELOG.md)  (v0.8.0–)
 
+> __NOTE__ — due to some library modules having been renamed, split into separate file, or part of their contents moved to another module, some of the source files linked in CHANGELOG entries might now point to a module which no longer holds the original contents edited by that commit.
+> 
+> Please refer to Git's history and blame functionality for accurate references.
 
 -----
 
@@ -4419,7 +4422,7 @@ Housekeeping:
 
 # 2018/07/24 (3)
 
-- [`lib_messaggi.i`][lib_messaggi] (v0.2.4)
+- [`lib_messaggi.i`][lib_messaggi_runtime] (v0.2.4)
 
 ## Input Response Messages
 
@@ -5918,7 +5921,7 @@ Translated some response messages for containers and supporters.
 
 # 2018/05/31:2
 
-- [`lib_messages.i`][lib_messages] (v0.0.4)
+- [`lib_messages.i`][lib_messaggi_runtime] (v0.0.4)
 
 Translated RUN-TIME MESSAGES:
 
@@ -6370,7 +6373,7 @@ The above changes had some side effects which required me to also change the Eng
                                REFERENCE LINKS                                
 ------------------------------------------------------------------------------>
 
-<!-- OLD LIBRARY FILENAMES -->
+<!-- OLD LIBRARY FILENAMES 1 -->
 
 [library]:         ./libreria.i
 [lib_classes]:     ./lib_classi.i
@@ -6380,15 +6383,20 @@ The above changes had some side effects which required me to also change the Eng
 [lib_verbs]:       ./lib_verbi.i
 [lib_supplement]:  ./lib_supplemento.i
 
+<!-- OLD LIBRARY FILENAMES 2 -->
+
+[lib_messaggi]: ./lib_messaggi_libreria.i
+
 <!-- NEW LIBRARY FILENAMES -->
 
-[libreria]:         ./libreria.i
-[lib_classi]:       ./lib_classi.i
-[lib_definizioni]:  ./lib_definizioni.i
-[lib_luoghi]:       ./lib_luoghi.i
-[lib_messaggi]:     ./lib_messaggi.i
-[lib_verbi]:        ./lib_verbi.i
-[lib_supplemento]:  ./lib_supplemento.i
+[libreria]:              ./libreria.i
+[lib_classi]:            ./lib_classi.i
+[lib_definizioni]:       ./lib_definizioni.i
+[lib_luoghi]:            ./lib_luoghi.i
+[lib_messaggi_runtime]:  ./lib_messaggi_runtime.i
+[lib_messaggi_libreria]: ./lib_messaggi_libreria.i
+[lib_verbi]:             ./lib_verbi.i
+[lib_supplemento]:       ./lib_supplemento.i
 
 
 [VERBI_IT]: ./VERBI_IT.md

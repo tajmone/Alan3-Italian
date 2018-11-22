@@ -1,4 +1,4 @@
-:: "BUILD_DOCS.bat" v0.1.6 (2018/10/25) by Tristano Ajmone
+:: "BUILD_DOCS.bat" v0.2.0 (2018/11/22) by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 :: To use this script you'll need the Doxter binary tool to be either in this
 :: folder or on the system PATH:
@@ -14,17 +14,9 @@ ECHO ===========================================================================
 ECHO Doxterising Library Sources ...
 ECHO ==============================================================================
 
-:: For the time being we'll pick manually only sources that have documentation:
-CALL :doxterize lib_definizioni.i
-CALL :doxterize lib_verbi.i
-CALL :doxterize lib_classi.i
-CALL :doxterize lib_luoghi.i
-CALL :doxterize lib_supplemento.i
-CALL :doxterize lib_messaggi.i
-
-:: FOR %%i IN (*.alan, *.i) DO (
-::   CALL :doxterize  %%i
-:: )
+FOR %%i IN (*.i) DO (
+  CALL :doxterize  %%i
+)
 
 ECHO.
 ECHO ==============================================================================
@@ -51,15 +43,15 @@ EXIT /B
 ECHO Converting: %~nx1
 CALL asciidoctor^
   -S unsafe^
-  -a reproducible^
   -a data-uri^
+  -a experimental^
   -a icons=font^
+  -a lang=it^
+  -a linkattrs^
+  -a reproducible^
+  -a sectanchors^
   -a toc=left^
   -a toclevels=5^
-  -a experimental^
-  -a linkattrs^
-  -a sectanchors^
-  -a lang=it^
   -a version-label=Versione^
   -a source-highlighter=highlightjs^
   -a highlightjsdir=hjs^

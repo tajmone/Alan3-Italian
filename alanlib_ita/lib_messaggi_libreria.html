@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.7.1">
 <meta name="author" content="Tristano Ajmone">
-<title>Alan StdLib Italian: Definizioni</title>
+<title>Alan StdLib Italian: Messaggi Libreria</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -434,7 +434,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Alan StdLib Italian: Definizioni</h1>
+<h1>Alan StdLib Italian: Messaggi Libreria</h1>
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
@@ -445,19 +445,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_le_restrizioni_verbali">Le Restrizioni Verbali</a>
+<li><a href="#_messaggi_della_libreria">Messaggi della Libreria</a>
 <ul class="sectlevel2">
-<li><a href="#_elenco_delle_restrizioni_verbali">Elenco delle Restrizioni Verbali</a></li>
+<li><a href="#_convenzioni_negli_identificativi_degli_attributi">Convenzioni negli identificativi degli attributi</a></li>
+<li><a href="#_messaggi_dei_verbi">Messaggi dei verbi</a>
+<ul class="sectlevel3">
+<li><a href="#_note_sulluso_di_v">Note sull&#8217;uso di <code>$v</code></a></li>
 </ul>
 </li>
-<li><a href="#_lintestazione_dellavventura_banner">L&#8217;Intestazione dell&#8217;Avventura (Banner)</a>
-<ul class="sectlevel2">
-<li><a href="#_attributi_dellintestazione">Attributi dell&#8217;intestazione</a></li>
 </ul>
 </li>
 <li><a href="#_todo">TODO</a>
 <ul class="sectlevel2">
 <li><a href="#_check_list_generale">Check-list generale</a></li>
+<li><a href="#_check_list_per_doxter">Check-list per Doxter</a></li>
 </ul>
 </li>
 </ul>
@@ -469,7 +470,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Adattamento italiano del modulo <code>lib_definitions.i</code> della
+<p>Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
+dal modulo <code>lib_definitions.i</code> della
 <em>ALAN Standard Library</em> v2.1, &#169; Anssi Räisänen, Artistic License 2.1.
 Ad opera di Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
 </div>
@@ -478,260 +480,326 @@ Ad opera di Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_le_restrizioni_verbali"><a class="anchor" href="#_le_restrizioni_verbali"></a>Le Restrizioni Verbali</h2>
+<h2 id="_messaggi_della_libreria"><a class="anchor" href="#_messaggi_della_libreria"></a>Messaggi della Libreria</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>La libreria dispone di un meccanismo di <em>restrizioni verbabli</em> per limitare
-in maniera controllata il tipo di azioni consentite al giocatore. Ad ogni
-verbo della libreria corrisponde un attributo booleano nell&#8217;istanza <code>mia_AT</code>
-del <code>blocco_definizioni</code> che determina se il verbo (o i verbi) associati ad
-esso sono abilitati all&#8217;uso.</p>
+<p>Questo modulo è il cuore della libreria per quanto concerne il testo
+prodotto da essa. Modificando le stringhe degli attributi qui definiti, è
+possibile alterare la forma ed i contenuti della maggior parte delle risposte
+predefinite dei verbi della libreria.</p>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Attenzione"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Nel corpo dei verbi definiti dalla libreria, prima di portare a compimento
-l&#8217;azione viene sempre controllato se l&#8217;attributo di restrizione verbale cui
-il verbo fa riferimento è abilitato o meno (ossia, se è <code>CAN</code> o <code>CAN NOT</code>),
-e nel caso non lo fosse l&#8217;azione viene bloccata sul nascere, mostrando al
-giocatore il messaggio &#8220;Non puoi farlo.&#8221;.</p>
+<p>Documentazione in fase di preparazione&#8230;&#8203;</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sect2">
-<h3 id="_elenco_delle_restrizioni_verbali"><a class="anchor" href="#_elenco_delle_restrizioni_verbali"></a>Elenco delle Restrizioni Verbali</h3>
+<h3 id="_convenzioni_negli_identificativi_degli_attributi"><a class="anchor" href="#_convenzioni_negli_identificativi_degli_attributi"></a>Convenzioni negli identificativi degli attributi</h3>
 <div class="paragraph">
-<p>Questo è l&#8217;elenco degli attributi di restrizioni verbali sinora tradotti:</p>
+<p>Nella scelta degli identificativi degli attributi stringa per i messaggi
+della libreria sono state adottate le sequenti convenzioni.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  CAN abbandonare_partita.      ---&gt; 'quit'
-  CAN accendere.                ---&gt; turn_on
-  CAN acchiappare.              ---&gt; catch
-  CAN agitare.                  ---&gt; shake
-  CAN alzarsi.                  ---&gt; stand (up)
-  CAN andare_a.                 ---&gt; go_to
-  CAN annusare.                 ---&gt; smell
-  CAN aprire.                   ---&gt; open
-  CAN aprire_con.               ---&gt; open_with
-  CAN arrampicarsi.             ---&gt; climb_on
-  CAN ascoltare.                ---&gt; listen + listen0 | ascolta0 + ascolta
-  CAN aspettare.                ---&gt; wait         (+ z)
-  CAN assaggiare.               ---&gt; taste        (+ lick)
-  CAN attaccare.                ---&gt; attack (+ beat, fight, hit, punch)
-  CAN attaccare_con.            ---&gt; attack_with
-  CAN attraversare.             ---&gt; climb_through
-  CAN baciare.                  ---&gt; kiss         (+ hug, embrace)
-  CAN ballare.                  ---&gt; dance
-  CAN bere.                     ---&gt; drink
-  CAN bloccare.                 ---&gt; lock
-  CAN bloccare_con.             ---&gt; lock_with
-  CAN bruciare.                 ---&gt; burn
-  CAN bruciare_con.             ---&gt; burn_with
-  CAN bussare.                  ---&gt; knock
-  CAN calciare.                 ---&gt; kick
-  CAN cantare.                  ---&gt; sing
-  CAN caricare_partita.         ---&gt; 'restore'
-  CAN chiedere.                 ---&gt; ask_for
-  CAN chiudere.                 ---&gt; close        (+ shut)
-  CAN chiudere_con.             ---&gt; close_with
-  CAN comprare.                 ---&gt; buy          (+ purchase)
-  CAN consultare.               ---&gt; consult
-  CAN dare.                     ---&gt; give
-  CAN dire.                     ---&gt; 'say'
-  CAN dire_a.                   ---&gt; say_to
-  CAN domandare.                ---&gt; ask (+ enquire, inquire, interrogate)
-  CAN domandare_chi_sono_io.    ---&gt; who_am_i
-  CAN domandare_chi_è.          ---&gt; who_is
-  CAN domandare_cosa_sono_io.   ---&gt; what_am_i
-  CAN domandare_cosa_è.         ---&gt; what_is
-  CAN domandare_dove_mi_trovo.  ---&gt; where_am_i
-  CAN domandare_dove_è.         ---&gt; where_is
-  CAN dormire.                  ---&gt; sleep        (+ rest)
-  CAN entrare.                  ---&gt; enter
-  CAN esaminare.                ---&gt; examine      (+ check, inspect, observe, x)
-  CAN forzare.                  ---&gt; pry
-  CAN forzare_con.              ---&gt; pry_with
-  CAN giocare_con.              ---&gt; play_with
-  CAN girare.                   ---&gt; turn (+ rotate)
-  CAN grattare.                 ---&gt; scratch
-  CAN gridare.                  ---&gt; shout        (+ scream, yell)
-  CAN guardare.                 ---&gt; look         (+ gaze, peek)
-  CAN guardare_attraverso.      ---&gt; look_through
-  CAN guardare_dietro.          ---&gt; look_behind
-  CAN guardare_fuori_da.        ---&gt; look_out_of
-  CAN guardare_in.              ---&gt; look_in
-  CAN guardare_sotto.           ---&gt; look_under
-  CAN guardare_su.              ---&gt; look_up
-  CAN guidare.                  ---&gt; drive
-  CAN indossare.                ---&gt; wear
-  CAN inventariare.             ---&gt; i            (+ inv, inventory)
-  CAN ispezionare.              ---&gt; search
-  CAN lanciare.                 ---&gt; throw
-  CAN lanciare_a.               ---&gt; throw_to
-  CAN lanciare_contro.          ---&gt; throw_at
-  CAN lanciare_in.              ---&gt; throw_in
-  CAN lasciare.                 ---&gt; drop         (+ discard, dump, reject)
-  CAN legare.                   ---&gt; tie
-  CAN legare_a.                 ---&gt; tie_to
-  CAN leggere.                  ---&gt; read
-  CAN liberare.                 ---&gt; free         (+ release)
-  CAN mangiare.                 ---&gt; eat
-  CAN mettere.                  ---&gt; put          (+ lay, place)
-  CAN mettere_contro.           ---&gt; put_against
-  CAN mettere_dietro.           ---&gt; put_behind
-  CAN mettere_in.               ---&gt; put_in       (+ insert)
-  CAN mettere_sotto.            ---&gt; put_under
-  CAN mettere_su.               ---&gt; put_on
-  CAN mettere_vicino.           ---&gt; put_near
-  CAN modalità_breve.           ---&gt; brief
-  CAN modalità_lunga.           ---&gt; verbose
-  CAN mordere.                  ---&gt; bite         (+ chew)
-  CAN mostrare.                 ---&gt; 'show'       (+ reveal)
-  CAN mostrare_istruzioni.      ---&gt; about
-  CAN mostrare_suggerimenti.    ---&gt; hint (+ hints)
-  CAN notificare.               ---&gt; 'notify'
-  CAN notificare_off.           ---&gt; notify_off
-  CAN notificare_on.            ---&gt; notify_on
-  CAN nuotare.                  ---&gt; swim
-  CAN nuotare_in.               ---&gt; swim_in
-  CAN parlare.                  ---&gt; talk
-  CAN parlare_con.              ---&gt; talk_to      (+ speak)
-  CAN pensare.                  ---&gt; think
-  CAN pensare_a.                ---&gt; think_about
-  CAN pregare.                  ---&gt; pray
-  CAN prendere.                 ---&gt; take.        (+ carry, get, grab, hold, obtain)
-  CAN prendere_da.              ---&gt; take_from.   (+ remove from)
-  CAN pulire.                   ---&gt; clean        (+ polish, wipe)
-  CAN raccontare.               ---&gt; tell         (+ enlighten, inform)
-  CAN ricominciare_partita.     ---&gt; 'restart'
-  CAN riempire.                 ---&gt; fill
-  CAN riempire_con.             ---&gt; fill_with
-  CAN rifare.                   ---&gt; 'again'
-  CAN ringraziamenti.           ---&gt; credits      (+ acknowledgments, author, copyright)
-  CAN riparare.                 ---&gt; fix          (+ mend, repair)
-  CAN rispondere.               ---&gt; answer       (+ reply)
-  CAN rispondere_No.            ---&gt; 'no'
-  CAN rispondere_Sì.            ---&gt; yes
-  CAN rompere.                  ---&gt; break        (+ destroy)
-  CAN rompere_con.              ---&gt; break_with
-  CAN salire_su.                ---&gt; stand_on
-  CAN salvare_partita.          ---&gt; save
-  CAN saltare.                  ---&gt; jump
-  CAN saltare_in.               ---&gt; jump_in
-  CAN saltare_su.               ---&gt; jump_on
-  CAN sbloccare.                ---&gt; unlock
-  CAN sbloccare_con.            ---&gt; unlock_with
-  CAN scavalcare.               ---&gt;climb
-  CAN scavare.                  ---&gt; dig
-  CAN scendere_da.              ---&gt; get_off
-  CAN scrivere.                 ---&gt; write
-  CAN sdraiarsi.                ---&gt; lie_down
-  CAN sdraiarsi_in.             ---&gt; lie_in
-  CAN sdraiarsi_su.             ---&gt; lie_on
-  CAN sedersi.                  ---&gt; sit (down)
-  CAN sedersi_su.               ---&gt; sit_on
-  CAN seguire.                  ---&gt; follow
-  CAN sfregare.                 ---&gt; rub
-  CAN sollevare.                ---&gt; lift
-  CAN sorseggiare.              ---&gt; sip
-  CAN sparare.                  ---&gt; fire
-  CAN sparare_a.                ---&gt; fire_at
-  CAN spegnere.                 ---&gt; turn_off
-  CAN spingere.                 ---&gt; push
-  CAN spingere_con.             ---&gt; push_with
-  CAN spogliarsi.               ---&gt; undress
-  CAN spremere.                 ---&gt; squeeze
-  CAN strappare.                ---&gt; tear (+ rip)
-  CAN suonare.                  ---&gt; play
-  CAN svuotare.                 ---&gt; 'empty'
-  CAN svuotare_in.              ---&gt; empty_in
-  CAN svuotare_su.              ---&gt; empty_on
-  CAN tagliare.                 ---&gt; cut
-  CAN tagliare_con.             ---&gt; cut_with
-  CAN tirare.                   ---&gt; pull
-  CAN toccare.                  ---&gt; touch (+ feel)
-  CAN toccare_con.              ---&gt; touch_with
-  CAN togliersi_indumento.      ---&gt; remove
-  CAN trascrivere.              ---&gt; 'script'
-  CAN trascrivere_off.          ---&gt; script_off
-  CAN trascrivere_on.           ---&gt; script_on
-  CAN trovare.                  ---&gt; find         (+ locate)
-  CAN tuffarsi.                 ---&gt; dive
-  CAN tuffarsi_in.              ---&gt; dive_in
-  CAN uccidere.                 ---&gt; kill         (+ murder)
-  CAN uccidere_con.             ---&gt; kill_with
-  CAN usare.                    ---&gt; 'use'
-  CAN usare_con.                ---&gt; use_with
-  CAN uscire.                   ---&gt; 'exit'
-  CAN vedere_punteggio.         ---&gt; 'score'
-  CAN vendere.                  ---&gt; sell
-  CAN versare.                  ---&gt; pour
-  CAN versare_in.               ---&gt; pour_in
-  CAN versare_su.               ---&gt; pour_on</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_lintestazione_dellavventura_banner"><a class="anchor" href="#_lintestazione_dellavventura_banner"></a>L&#8217;Intestazione dell&#8217;Avventura (Banner)</h2>
-<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Ogni avventura creata con la Libreria ha una sua <em>intestazione</em> (detta anche
-<em>banner</em>) contenente informazioni sull&#8217;avventura, il suo autore e le versioni
-della libereria e del compilatore Alan utilizzati.</p>
+<p>Sebbene irrilevante ai fini della compilazione del codice, l&#8217;uso di lettere
+maiuscole e minuscole negli identificativi degli attributi di messaggi è
+rilevante ai fini delle presenti convenzioni poiché il maiuscolo viene
+impiegato in contesti specifici.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>L&#8217;uso del banner è facoltativo.</p>
+<p>Si è cercato di creare identificativi in grado di veicolare il senso del
+messaggio che rappresentano in maniera succinta e intuitiva. Per ragioni di
+spazio, sono state adottate una serie di abbreviazioni di uso comune:</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<code>ogg</code>  
+</td>
+<td class="hdlist2">
+<p>&#8594; &#8216;oggetto&#8217; del verbo, inteso come <em>parametro</em>.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>prep</code> 
+</td>
+<td class="hdlist2">
+<p>&#8594; &#8216;preposizione,&#8217; in genere intesa come <em>preposizione articolata</em>.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>qlco</code> 
+</td>
+<td class="hdlist2">
+<p>&#8594; &#8216;qualcosa&#8217;.</p>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>L&#8217;instestazione viene creata dalla libreria tramite l&#8217;instanza
-<code>intestazione</code> della classe <code>location</code>. L&#8217;espediente consiste nello sfruttate
-la descrizione di questo luogo fittizio per visualizzare il testo del banner
-all&#8217;inizio della partita tramite <code>DESCRIBE intestazione.</code>.</p>
+<p>Alcune abbreviazioni sono indicatrici di alcune caratteristiche tecniche del
+messaggio che rappresentano:</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">THE intestazione IsA LOCATION
-
-    DESCRIPTION
-
-    "$p" STYLE alert. SAY mia_AT:titolo. STYLE normal.
-
-    IF sottotitolo OF mia_AT &lt;&gt; ""
-      THEN "$n" SAY mia_AT:sottotitolo.
-      END IF.
-
-    "$n(C)" SAY mia_AT:autore. "," SAY mia_AT:anno. "."
-    "$nAvventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
-     $nLibreria Standard Italiana v2.1"
-
-    IF versione OF mia_AT &lt;&gt; "0"
-      THEN "$nVersione" SAY mia_AT:versione.
-      END IF.
-
-    "$nTutti i diritti riservati."
-
-END THE intestazione.</code></pre>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ogg1</code> e <code>ogg2</code> indicano che il messaggio fa riferimento ad uno specifico
+parametro del verbo utilizzando <code>$+1</code> o <code>$+2</code>, rispettivamente, nella
+stringa dell&#8217;attributo. Es. <code>ogg2_non_posseduto</code>.</p>
+</li>
+<li>
+<p><code>_sg</code> e <code>_pl</code> rappresentano varianti di un medesimo messaggio, il primo
+da utilizzarsi con un referente singolare, il secondo con uno plurale.
+Es. <code>ogg1_inadatto_sg</code> e <code>ogg1_inadatto_pl</code>.</p>
+</li>
+<li>
+<p><code>_USA</code> è impiegato nei messaggi volti a indirizzare il giocatore all&#8217;uso
+corretto di un verbo, solitamente associato a verbi creati appositamente
+per intercettare comandi incompleti. Es. <code>per_scrivere_USA</code>.</p>
+</li>
+</ul>
 </div>
-</div>
-<div class="paragraph">
-<p>La <code>DESCRIPTION</code> di <code>intestazione</code> agisce da template, e per riempire i
-dettagli del testo del banner essa attingerà ai vari attributi di intestazione
-presenti nell&#8217;istanza <code>mia_AT</code> dell&#8217;avventura.</p>
 </div>
 <div class="sect2">
-<h3 id="_attributi_dellintestazione"><a class="anchor" href="#_attributi_dellintestazione"></a>Attributi dell&#8217;intestazione</h3>
+<h3 id="_messaggi_dei_verbi"><a class="anchor" href="#_messaggi_dei_verbi"></a>Messaggi dei verbi</h3>
+<div class="sect3">
+<h4 id="_note_sulluso_di_v"><a class="anchor" href="#_note_sulluso_di_v"></a>Note sull&#8217;uso di <code>$v</code></h4>
 <div class="paragraph">
-<p>L&#8217;istanza <code>mia_AT</code> (del <code>blocco_definizioni</code>) espone all&#8217;autore degli
-attributi per fornire i dettagli del banner che potrà (facoltativamente)
-essere mostrato all&#8217;inizio della partita tramite il template dell&#8217;istanza
-<code>intestazione</code>:</p>
+<p>Nelle stringhe di risposta dei verbi, la libreria originale inglese faceva
+abbondante uso del simbolo speciale <code>$v</code>, che Alan sostituisce con il verbo
+digitato dal giocatore. Per esempio, ipotizzando che il giocatore abbia
+digitato &#8220;talk to wall,&#8221; queste stringhe di codice produrrebero:</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<code>"You can&#8217;t $v to $+1."</code>     
+</td>
+<td class="hdlist2">
+<p>&#8594; You can&#8217;t talk to the wall.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>"$ving to $+1 is useless."</code> 
+</td>
+<td class="hdlist2">
+<p>&#8594; Talking to the wall is useless.</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Poiché in inglese il verbo imperativo digitato dal giocatore corrisponde
+alla forma base del verbo, il simbolo <code>$v</code> è utilizzabile in svariati tempi
+verbali, e per ottenere il participio presente basta aggiungervi &#8220;ing&#8221;
+(<code>$ving</code>).</p>
+</div>
+<div class="paragraph">
+<p>Nella libreria inglese, questo ha reso possibile la creazione di attributi
+stringa per risposte riutilizzabili con svariati verbi e in maniera
+flessibile. Inoltre, nel caso di verbi con sinonimi o sintassi alternative,
+ha consentito di poter includere nella risposta l&#8217;esatto verbo digitato dal
+giocatore, consentendo una maggior flessibilità nel riutilizzo dei verbi.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Nell&#8217;output, <code>$v</code> viene sempre sostituito dal verbo digitato dal giocatore,
+a prescindere se esso corrisponda alla definizione del verbo di base, ad una
+sintassi alternativa o un sinonimo.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In italiano, purtroppo, l&#8217;impiego di <code>$v</code> nelle risposte non è altrettanto
+flessibile. Nel caso di verbi il cui imperativo termina in &#8216;a&#8217;, è possibile
+utilizzare <code>$v</code> come nella libreria inglese. Per esempio, ipotizzando che il
+giocatore abbia digitato &#8220;mangia il maestro&#8221;:</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<code>"Non puoi $vre $+1."</code>        
+</td>
+<td class="hdlist2">
+<p>&#8594; Non puoi mangiare il maestro.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>"$+1 non vuol essere $vto."</code> 
+</td>
+<td class="hdlist2">
+<p>&#8594; Il maestro non vuol essere mangiato.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>"$+1 non è $vbile."</code>         
+</td>
+<td class="hdlist2">
+<p>&#8594; Il maestro non è mangiabile.</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Ma in italiano sono frequenti i verbi in cui questo non funzionerebbe.
+Per esempio, dai seguenti verbi non è possibile derivare l&#8217;infinito dalla
+forma imperativa del comando usando la formula <code>$+v</code>+<code>re</code> (<code>"$vre"</code>):</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+bevi    
+</td>
+<td class="hdlist2">
+<p>&#8594; bevire.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+siediti 
+</td>
+<td class="hdlist2">
+<p>&#8594; sieditire.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+dai     
+</td>
+<td class="hdlist2">
+<p>&#8594; daire.</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Questo problema ha determinato un uso limitato di <code>$v</code> nella della libreria
+italiana, e ad una rielaborazione dell&#8217;intero corpo degli attributi stringa
+dei messaggi, nonché della loro modalità d&#8217;uso all&#8217;interno dei verbi,
+disconstandosi parecchio dalla libreria originale.</p>
+</div>
+<div class="paragraph">
+<p>Laddove la libreria originale definiva attributi stringa con risposte
+complete, e condivise da più verbi, grazie all&#8217;uso di <code>$v</code>, nella libreria
+italiana si è dovuto creare messaggi parziali in cui è omesso il verbo,
+facendo ricadere sul corpo del verbo l&#8217;onore di completare la frase.</p>
+</div>
+<div class="paragraph">
+<p>Ad esempio, la libreria inglese definisce i seguenti attributi per le
+risposte in caso di parametri non idonei al verbo:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS        titolo  "Nuova Avventura".
-  HAS   sottotitolo  "".
-  HAS        autore  "Il Mio Nome".
-  HAS          anno   2018.
-  HAS      versione  "1".</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS illegal_parameter_sg "That's not something you can $v.".
+  HAS illegal_parameter_pl "Those are not something you can $v.".</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ciascun attributo è una risposta completa e non richiede ulteriore testo.
+Nella libreria italiana questi attributi sono stati tradotti così:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS ogg1_inadatto_sg  "$+1 non è qualcosa che puoi".
+  HAS ogg1_inadatto_pl  "$+1 non sono qualcosa che puoi".</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L&#8217;impedimento ad usare <code>$v</code> ha costretto a troncare le frasi negli attributi,
+e a doverle completare nel codice dei verbi stessi. Ad esempio:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNTAX ispeziona = ispeziona (ogg)
+  WHERE ogg IsA THING
+    ELSE
+      IF ogg IS NOT plurale
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF. "ispezionare."
+
+SYNONYMS perquisisci = ispeziona.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Questo approccio consente di riutilizzare il messaggio con tutti i verbi,
+inclusi quelli che non terminano per &#8216;a&#8217;.</p>
+</div>
+<div class="paragraph">
+<p>Nel caso di messaggi più complessi, nei quali il verbo ricade
+necessariamente al centro della frase, è impossibile creare un messaggio
+completo tramite un solo attributo stringa. Per esempio, messaggi della
+libreria originale come questo:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS check_obj_not_in_worn2 "It doesn't make sense to $v something you're wearing.".</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>non possono essere tradotti in italiano se non utilizzando due attributi
+distinti (scelta poco pratica). In simili casi la frase della risposta
+va rimpiazzata con una più adatta all&#8217;uso, oppure si rinuncia ad usare un
+attributo stringa e si implementa la risposta usando semplici stringhe nel
+ corpo verbo.</p>
+</div>
+<div class="paragraph">
+<p>Ritornando all&#8217;esempio precedente, si noterà che l&#8217;infinito del verbo è
+rappresentato da una stringa letterale, perciò il verbo mostrato nella
+risposta sarà sempre &#8220;ispezionare&#8221;, anche quando il giocatore userà il
+sinonimo &#8216;perquisisci&#8217;. Questo è per via del fatto che &#8216;perquisisci&#8217;
+sarebbe inadatto all&#8217;uso di <code>$vre</code> (= &#8216;perquisiscire&#8217;).</p>
+</div>
+<div class="paragraph">
+<p>Quando tutte le sintassi ed i sinonimi di un verbo terminano in &#8216;a&#8217; si può
+anche ricorrere al&#8217;uso <code>$v</code> nel codice del verbo. Questo rende le risposte più
+fluide, specie nel caso di verbi che coprono sintassi simili ma con
+significati diversi (e.s. &#8216;graffia&#8217; e &#8216;gratta&#8217; come traduzione del verbo
+inglese &#8216;scratch&#8217;). Il rischio però è che un autore possa aggiungere
+ulteriori sinonimi o sintassi per il verbo, e che alcuni di essi possano
+condurre a risposte sgrammaticate.</p>
+</div>
+<div class="paragraph">
+<p>In alcuni casi l&#8217;implementazione di sinonimi è finalizzata a catturare
+potenziali comandi del giocatore mal formulati; in questi casi l&#8217;utilizzo di
+un verbo diverso da quello digitato serve anche a sottolineare al giocatore
+quale sia il corretto verbo di base associato all&#8217;azione.</p>
 </div>
 </div>
 </div>
@@ -742,12 +810,18 @@ essere mostrato all&#8217;inizio della partita tramite il template dell&#8217;is
 <div class="sectionbody">
 <div class="paragraph">
 <p>Questa sezione contiene l&#8217;elenco delle cose da fare per ultimare l&#8217;adattamento
-italiano del modulo delle definizioni.</p>
+italiano del modulo delle classi.</p>
 </div>
 <div class="sect2">
 <h3 id="_check_list_generale"><a class="anchor" href="#_check_list_generale"></a>Check-list generale</h3>
 <div class="paragraph">
 <p>Lista della spesa per le varie cosucce da fare:</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_check_list_per_doxter"><a class="anchor" href="#_check_list_per_doxter"></a>Check-list per Doxter</h3>
+<div class="paragraph">
+<p>Finisci di trasformare commenti in documentazione Doxter:</p>
 </div>
 </div>
 </div>

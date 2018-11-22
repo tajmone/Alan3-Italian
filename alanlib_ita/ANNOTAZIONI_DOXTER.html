@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revdate">2018-11-20</span>
+<span id="revdate">2018-11-22</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -450,11 +450,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_moduli_e_documentazione">Moduli e documentazione</a>
 <ul class="sectlevel2">
-<li><a href="#_modulo_delle_definizioni">Modulo delle definizioni</a></li>
-<li><a href="#_modulo_verbi">Modulo Verbi</a></li>
 <li><a href="#_modulo_classi">Modulo Classi</a></li>
+<li><a href="#_modulo_definizioni">Modulo Definizioni</a></li>
 <li><a href="#_modulo_luoghi">Modulo Luoghi</a></li>
-<li><a href="#_modulo_messaggi">Modulo Messaggi</a></li>
+<li><a href="#_modulo_messaggi_runtime">Modulo Messaggi Runtime</a></li>
+<li><a href="#_modulo_messaggi_libreria">Modulo Messaggi Libreria</a></li>
+<li><a href="#_modulo_verbi">Modulo Verbi</a></li>
 <li><a href="#_modulo_supplementare">Modulo Supplementare</a></li>
 </ul>
 </li>
@@ -503,7 +504,161 @@ I frammenti delle regioni hanno un sottopeso; durante la fase di collatura del d
 <h2 id="_moduli_e_documentazione"><a class="anchor" href="#_moduli_e_documentazione"></a>Moduli e documentazione</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_modulo_delle_definizioni"><a class="anchor" href="#_modulo_delle_definizioni"></a>Modulo delle definizioni</h3>
+<h3 id="_modulo_classi"><a class="anchor" href="#_modulo_classi"></a>Modulo Classi</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="./lib_classi.i" target="_blank" rel="noopener"><code>lib_classi.i</code></a></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 20%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">weight</th>
+<th class="tableblock halign-right valign-top">subweight</th>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>100</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>intro</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">== Introduzione</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>elenco_classi</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">=== Elenco e Descrizione delle Classi</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>10000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vestiario</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">== Vestiario</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>10900</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vestiario_istruzioni</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">=== Istruzioni per l&#8217;Uso del Vestiario</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>10950</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tabella_vestiario_intro</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">== La Tabella del Vestiario</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>10960</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tabella_vestiario</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[tabella vestiario]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>11000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dispositivi</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">== Dispositivi</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>12000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>porte</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">== Porte</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>13000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>finestre</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">== Finestre</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>14000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>fonte_di_luce</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">== Fonti di Luce</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>15000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>liquido</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">== Liquidi</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>16000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>contenitore_elencato</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">== Contenitore Elencato</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>17000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>suono</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">== Suoni</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>18000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>supporto</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">== Supporti</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>19000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>arma</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">== Armi</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>20000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>classi_attori</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">== Attori</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>21000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sottoclassi_attori</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">== Sottoclassi di ACTOR</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>30000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>oggetti_fittizi</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">== Oggetti Fittizi</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>50000</code></p></td>
+<td class="tableblock halign-right valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TODO</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>51000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1-33</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List Generale</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>51000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>665-666</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List Doxter</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_modulo_definizioni"><a class="anchor" href="#_modulo_definizioni"></a>Modulo Definizioni</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -562,6 +717,180 @@ I frammenti delle regioni hanno un sottopeso; durante la fase di collatura del d
 <td class="tableblock halign-right valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>restrizioni_non_tradotte</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">=== Restrizioni Verbali da Tradurre</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_modulo_luoghi"><a class="anchor" href="#_modulo_luoghi"></a>Modulo Luoghi</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="./lib_luoghi.i" target="_blank" rel="noopener"><code>lib_luoghi.i</code></a></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 20%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">weight</th>
+<th class="tableblock halign-right valign-top">subweight</th>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>100</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>intro</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">== Introduzione</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>50000</code></p></td>
+<td class="tableblock halign-right valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TODO</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>51000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1-33</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List Generale</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>51000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>665-666</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List Doxter</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_modulo_messaggi_runtime"><a class="anchor" href="#_modulo_messaggi_runtime"></a>Modulo Messaggi Runtime</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="./lib_messaggi_runtime.i" target="_blank" rel="noopener"><code>lib_messaggi_runtime.i</code></a></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 20%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">weight</th>
+<th class="tableblock halign-right valign-top">subweight</th>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>100</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>intro</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">= Introduzione</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>10000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>messaggi_runtime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">==  Messaggi Runtime di Alan</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>50000</code></p></td>
+<td class="tableblock halign-right valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TODO</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>51000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1-33</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List Generale</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>51000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>665-666</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List Doxter</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_modulo_messaggi_libreria"><a class="anchor" href="#_modulo_messaggi_libreria"></a>Modulo Messaggi Libreria</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="./lib_messaggi_libreria.i" target="_blank" rel="noopener"><code>lib_messaggi_libreria.i</code></a></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 20%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">weight</th>
+<th class="tableblock halign-right valign-top">subweight</th>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">descrizione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>20000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>messaggi_libreria</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">==  Messaggi della Libreria</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>23000</code></p></td>
+<td class="tableblock halign-right valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>libmsg_verbi</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">=== Messaggi dei Verbi</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>23100</code></p></td>
+<td class="tableblock halign-right valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>libmsg_verbi_vsym</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">==== Note Riguardo l&#8217;Uso di <code>$v</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>50000</code></p></td>
+<td class="tableblock halign-right valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TODO</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>51000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1-33</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List Generale</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>51000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>665-666</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List Doxter</p></td>
 </tr>
 </tbody>
 </table>
@@ -860,288 +1189,6 @@ I frammenti delle regioni hanno un sottopeso; durante la fase di collatura del d
 <td class="tableblock halign-right valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_modulo_classi"><a class="anchor" href="#_modulo_classi"></a>Modulo Classi</h3>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="./lib_classi.i" target="_blank" rel="noopener"><code>lib_classi.i</code></a></p>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 10%;">
-<col style="width: 10%;">
-<col style="width: 20%;">
-<col style="width: 60%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-right valign-top">weight</th>
-<th class="tableblock halign-right valign-top">subweight</th>
-<th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">descrizione</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>100</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>intro</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== Introduzione</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>elenco_classi</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Elenco e Descrizione delle Classi</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>10000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vestiario</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== Vestiario</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>10900</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vestiario_istruzioni</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Istruzioni per l&#8217;Uso del Vestiario</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>10950</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tabella_vestiario_intro</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== La Tabella del Vestiario</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>10960</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tabella_vestiario</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[tabella vestiario]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>11000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dispositivi</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== Dispositivi</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>12000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>porte</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== Porte</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>13000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>finestre</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== Finestre</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>14000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>fonte_di_luce</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== Fonti di Luce</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>15000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>liquido</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== Liquidi</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>16000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>contenitore_elencato</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== Contenitore Elencato</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>17000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>suono</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== Suoni</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>18000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>supporto</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== Supporti</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>19000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>arma</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== Armi</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>20000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>classi_attori</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== Attori</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>21000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sottoclassi_attori</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== Sottoclassi di ACTOR</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>30000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>oggetti_fittizi</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== Oggetti Fittizi</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>50000</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TODO</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>51000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1-33</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List Generale</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>51000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>665-666</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List Doxter</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_modulo_luoghi"><a class="anchor" href="#_modulo_luoghi"></a>Modulo Luoghi</h3>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="./lib_luoghi.i" target="_blank" rel="noopener"><code>lib_luoghi.i</code></a></p>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 10%;">
-<col style="width: 10%;">
-<col style="width: 20%;">
-<col style="width: 60%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-right valign-top">weight</th>
-<th class="tableblock halign-right valign-top">subweight</th>
-<th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">descrizione</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>100</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>intro</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">== Introduzione</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>50000</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TODO</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>51000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1-33</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List Generale</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>51000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>665-666</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List Doxter</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_modulo_messaggi"><a class="anchor" href="#_modulo_messaggi"></a>Modulo Messaggi</h3>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="./lib_messaggi.i" target="_blank" rel="noopener"><code>lib_supplemento.i</code></a></p>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 10%;">
-<col style="width: 10%;">
-<col style="width: 20%;">
-<col style="width: 60%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-right valign-top">weight</th>
-<th class="tableblock halign-right valign-top">subweight</th>
-<th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">descrizione</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>100</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>intro</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">= Introduzione</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>10000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>messaggi_runtime</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">==  Messaggi Runtime di Alan</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>20000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>messaggi_libreria</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">==  Messaggi della Libreria</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>23000</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>libmsg_verbi</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Messaggi dei Verbi</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>23100</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>libmsg_verbi_vsym</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">==== Note Riguardo l&#8217;Uso di <code>$v</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>50000</code></p></td>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TODO</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>51000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1-33</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List Generale</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>51000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>665-666</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>todo_checklist</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">=== Check List Doxter</p></td>
 </tr>
 </tbody>
 </table>

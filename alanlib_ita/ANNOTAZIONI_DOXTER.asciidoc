@@ -1,7 +1,7 @@
 
 = Doxter: Note di Lavoro
 Tristano Ajmone <tajmone@gmail.com>
-:revdate: 2018-11-20
+:revdate: 2018-11-22
 :lang: it
 // TOC Settings:
 :toc: left
@@ -22,7 +22,8 @@ Tristano Ajmone <tajmone@gmail.com>
 :lib_classi: pass:q[link:./lib_classi.i[`lib_classi.i`^]]
 :lib_definizioni: pass:q[link:./lib_definizioni.i[`lib_definizioni.i`^]]
 :lib_luoghi: pass:q[link:./lib_luoghi.i[`lib_luoghi.i`^]]
-:lib_messaggi: pass:q[link:./lib_messaggi.i[`lib_supplemento.i`^]]
+:lib_messaggi_runtime: pass:q[link:./lib_messaggi_runtime.i[`lib_messaggi_runtime.i`^]]
+:lib_messaggi_libreria: pass:q[link:./lib_messaggi_libreria.i[`lib_messaggi_libreria.i`^]]
 :lib_supplemento: pass:q[link:./lib_supplemento.i[`lib_supplemento.i`^]]
 :lib_verbi: pass:q[link:./lib_verbi.i[`lib_verbi.i`^]]
 
@@ -60,7 +61,60 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 == Moduli e documentazione
 
 
-=== Modulo delle definizioni
+
+=== Modulo Classi
+
+* {lib_classi}
+
+
+[cols="2*>10m,20m,60d",options="header"]
+|===============================================================================
+| weight  | subweight |                              | descrizione
+|   100   |         1 | intro                        | == Introduzione
+|  1000   |         1 | elenco_classi                | === Elenco e Descrizione delle Classi
+// =============================================================================
+| 10000   |         1 | vestiario                    | == Vestiario
+// -----------------------------------------------------------------------------
+| 10900   |         1 | vestiario_istruzioni         | === Istruzioni per l'Uso del Vestiario
+| 10950   |         1 | tabella_vestiario_intro      | == La Tabella del Vestiario
+| 10960   |         1 | tabella_vestiario            | [tabella vestiario]
+// =============================================================================
+| 11000   |         1 | dispositivi                  | == Dispositivi
+// =============================================================================
+| 12000   |         1 | porte                        | == Porte
+// =============================================================================
+| 13000   |         1 | finestre                     | == Finestre
+// =============================================================================
+| 14000   |         1 | fonte_di_luce                | == Fonti di Luce
+// =============================================================================
+| 15000   |         1 | liquido                      | == Liquidi
+// =============================================================================
+| 16000   |         1 | contenitore_elencato         | == Contenitore Elencato
+// =============================================================================
+| 17000   |         1 | suono                        | == Suoni
+// =============================================================================
+| 18000   |         1 | supporto                     | == Supporti
+// =============================================================================
+| 19000   |         1 | arma                         | == Armi
+// -----------------------------------------------------------------------------
+// | 1000   |         1 | xxxxxxxxxx | === xxxxxxxxxx
+// =============================================================================
+| 20000   |         1 | classi_attori                | == Attori
+| 21000   |         1 | sottoclassi_attori           | == Sottoclassi di ACTOR
+// =============================================================================
+| 30000   |         1 | oggetti_fittizi              | == Oggetti Fittizi
+// =============================================================================
+| 50000   |           | todo                         | TODO
+| 51000   |      1-33 | todo_checklist               | === Check List Generale
+| 51000   |   665-666 | todo_checklist               | === Check List Doxter
+|===============================================================================
+
+////
+| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+////
+
+
+=== Modulo Definizioni
 
 * {lib_definizioni}
 
@@ -76,6 +130,65 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 | 50100   |           | restrizioni_non_tradotte | === Restrizioni Verbali da Tradurre
 |===============================================================================
 
+
+////
+| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+////
+
+
+=== Modulo Luoghi
+
+* {lib_luoghi}
+
+
+[cols="2*>10m,20m,60d",options="header"]
+|===============================================================================
+| weight  | subweight |                              | descrizione
+|   100   |         1 | intro                        | == Introduzione
+| 50000   |           | todo                         | TODO
+| 51000   |      1-33 | todo_checklist               | === Check List Generale
+| 51000   |   665-666 | todo_checklist               | === Check List Doxter
+|===============================================================================
+
+////
+| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+////
+
+=== Modulo Messaggi Runtime
+
+* {lib_messaggi_runtime}
+
+
+[cols="2*>10m,20m,60d",options="header"]
+|===============================================================================
+| weight  | subweight |                   | descrizione
+|   100   |         1 | intro             | = Introduzione
+| 10000   |         1 | messaggi_runtime  | ==  Messaggi Runtime di Alan
+| 50000   |           | todo              | TODO
+| 51000   |      1-33 | todo_checklist    | === Check List Generale
+| 51000   |   665-666 | todo_checklist    | === Check List Doxter
+|===============================================================================
+
+////
+| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+////
+
+
+=== Modulo Messaggi Libreria
+
+* {lib_messaggi_libreria}
+
+
+[cols="2*>10m,20m,60d",options="header"]
+|===============================================================================
+| weight  | subweight |                   | descrizione
+| 20000   |         1 | messaggi_libreria | ==  Messaggi della Libreria
+| 23000   |           | libmsg_verbi      | === Messaggi dei Verbi
+| 23100   |           | libmsg_verbi_vsym | ==== Note Riguardo l'Uso di `$v`
+| 50000   |           | todo              | TODO
+| 51000   |      1-33 | todo_checklist    | === Check List Generale
+| 51000   |   665-666 | todo_checklist    | === Check List Doxter
+|===============================================================================
 
 ////
 | 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
@@ -180,98 +293,6 @@ Questo documento annota l'ordine dei pesi utilizzati in ciascun modulo della lib
 // -----------------------------------------------------------------------------
 | 000   |           | gruppo_XXXXX            | == XXXXX
 | 010   |           | verbo_YYYYY                 | ==== YYYYY
-////
-
-
-=== Modulo Classi
-
-* {lib_classi}
-
-
-[cols="2*>10m,20m,60d",options="header"]
-|===============================================================================
-| weight  | subweight |                              | descrizione
-|   100   |         1 | intro                        | == Introduzione
-|  1000   |         1 | elenco_classi                | === Elenco e Descrizione delle Classi
-// =============================================================================
-| 10000   |         1 | vestiario                    | == Vestiario
-// -----------------------------------------------------------------------------
-| 10900   |         1 | vestiario_istruzioni         | === Istruzioni per l'Uso del Vestiario
-| 10950   |         1 | tabella_vestiario_intro      | == La Tabella del Vestiario
-| 10960   |         1 | tabella_vestiario            | [tabella vestiario]
-// =============================================================================
-| 11000   |         1 | dispositivi                  | == Dispositivi
-// =============================================================================
-| 12000   |         1 | porte                        | == Porte
-// =============================================================================
-| 13000   |         1 | finestre                     | == Finestre
-// =============================================================================
-| 14000   |         1 | fonte_di_luce                | == Fonti di Luce
-// =============================================================================
-| 15000   |         1 | liquido                      | == Liquidi
-// =============================================================================
-| 16000   |         1 | contenitore_elencato         | == Contenitore Elencato
-// =============================================================================
-| 17000   |         1 | suono                        | == Suoni
-// =============================================================================
-| 18000   |         1 | supporto                     | == Supporti
-// =============================================================================
-| 19000   |         1 | arma                         | == Armi
-// -----------------------------------------------------------------------------
-// | 1000   |         1 | xxxxxxxxxx | === xxxxxxxxxx
-// =============================================================================
-| 20000   |         1 | classi_attori                | == Attori
-| 21000   |         1 | sottoclassi_attori           | == Sottoclassi di ACTOR
-// =============================================================================
-| 30000   |         1 | oggetti_fittizi              | == Oggetti Fittizi
-// =============================================================================
-| 50000   |           | todo                         | TODO
-| 51000   |      1-33 | todo_checklist               | === Check List Generale
-| 51000   |   665-666 | todo_checklist               | === Check List Doxter
-|===============================================================================
-
-////
-| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
-////
-
-=== Modulo Luoghi
-
-* {lib_luoghi}
-
-
-[cols="2*>10m,20m,60d",options="header"]
-|===============================================================================
-| weight  | subweight |                              | descrizione
-|   100   |         1 | intro                        | == Introduzione
-| 50000   |           | todo                         | TODO
-| 51000   |      1-33 | todo_checklist               | === Check List Generale
-| 51000   |   665-666 | todo_checklist               | === Check List Doxter
-|===============================================================================
-
-////
-| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
-////
-
-=== Modulo Messaggi
-
-* {lib_messaggi}
-
-
-[cols="2*>10m,20m,60d",options="header"]
-|===============================================================================
-| weight  | subweight |                   | descrizione
-|   100   |         1 | intro             | = Introduzione
-| 10000   |         1 | messaggi_runtime  | ==  Messaggi Runtime di Alan
-| 20000   |         1 | messaggi_libreria | ==  Messaggi della Libreria
-| 23000   |           | libmsg_verbi      | === Messaggi dei Verbi
-| 23100   |           | libmsg_verbi_vsym | ==== Note Riguardo l'Uso di `$v`
-| 50000   |           | todo              | TODO
-| 51000   |      1-33 | todo_checklist    | === Check List Generale
-| 51000   |   665-666 | todo_checklist    | === Check List Doxter
-|===============================================================================
-
-////
-| 00000   |           | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
 ////
 
 

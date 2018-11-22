@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "libreria.i"
---| v0.8.0-Alpha, 2018-11-13: Alan 3.0beta6
+--| v0.9.0-Alpha, 2018-11-22: Alan 3.0beta6
 --|=============================================================================
 --| Modulo principale dell'adattamento italiano della libreria
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -11,10 +11,13 @@
 
 -- Importa tutti i moduli della liberia:
 
-IMPORT 'lib_classi.i'.        ---> lib_classes.i
-IMPORT 'lib_definizioni.i'.   ---> lib_definitions.i
-IMPORT 'lib_luoghi.i'.        ---> lib_locations.i
-IMPORT 'lib_messaggi.i'.      ---> lib_messages.i
-IMPORT 'lib_verbi.i'.         ---> lib_verbs.i
+IMPORT 'lib_classi.i'.            -- Adattamento di -> `lib_classes.i`.
+IMPORT 'lib_definizioni.i'.       -- Adattamento di -> `lib_definitions.i` (1).
+IMPORT 'lib_luoghi.i'.            -- Adattamento di -> `lib_locations.i`.
+IMPORT 'lib_messaggi_runtime.i'.  -- Adattamento di -> `lib_messages.i`.
+IMPORT 'lib_messaggi_libreria.i'. -- Adattamento di -> `lib_definitions.i` (2).
+IMPORT 'lib_verbi.i'.             -- Adattamento di -> `lib_verbs.i`.
 
-IMPORT 'lib_supplemento.i'.   -- Additional Italian-specific synonyms
+IMPORT 'lib_supplemento.i'.       -- Modulo creato appositamente per l'italiano.
+
+---< Fine del File >---

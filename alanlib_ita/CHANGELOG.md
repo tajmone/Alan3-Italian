@@ -17,7 +17,10 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/11/22](#20181122)
+- [2018/11/22 \(2\)](#20181122-2)
+    - [Suddivisione modulo messaggi](#suddivisione-modulo-messaggi)
+    - [Passa alla v0.9.0](#passa-alla-v090)
+- [2018/11/22 \(1\)](#20181122-1)
     - [Messaggi dei verbi](#messaggi-dei-verbi)
         - [Rinomina attributi](#rinomina-attributi)
         - [Azioni insensate](#azioni-insensate)
@@ -33,15 +36,40 @@ For previuos changes, see:
     - [Pulizia documentazione verbi](#pulizia-documentazione-verbi)
     - [Documenta il baco della "è"](#documenta-il-baco-della-%C3%A8)
 - [2018/11/13 \(1\)](#20181113-1)
-    - [Bump to v0.8.0: All Verbs Translated](#bump-to-v080-all-verbs-translated)
+    - [Passa alla v0.8.0: Tutti i verbi tradotti](#passa-alla-v080-tutti-i-verbi-tradotti)
 
 <!-- /MarkdownTOC -->
 
 -----
 
-# 2018/11/22
+# 2018/11/22 (2)
 
-- [`lib_messaggi.i`][lib_messaggi] (v0.8.3)
+- [`libreria.i`][libreria] (v0.9.0)
+- [`lib_classi.i`][lib_classi] (v0.9.0)
+- [`lib_definizioni.i`][lib_definizioni] (v0.9.0)
+- [`lib_luoghi.i`][lib_luoghi] (v0.9.0)
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] (v0.9.0)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.0)
+- [`lib_verbi.i`][lib_verbi] (v0.9.0)
+- [`lib_supplemento.i`][lib_supplemento] (v0.9.0)
+
+## Suddivisione modulo messaggi
+
+Per ragioni pratiche, il modulo `lib_messaggi.i` è stato diviso in due moduli distinti:
+
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime]
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria]
+
+## Passa alla v0.9.0
+
+Tutti i moduli della libreria passano alla versione 0.9.0.
+
+
+-------------------------------------------------------------------------------
+
+# 2018/11/22 (1)
+
+- [`lib_messaggi.i`][lib_messaggi_libreria] (v0.8.3)
 - [`lib_verbi.i`][lib_verbi] (v0.8.5)
 
 ## Messaggi dei verbi
@@ -106,7 +134,7 @@ Gli attributi originali inglesi sono stati eliminati.
 
 - [`lib_classi.i`][lib_classi] (v0.8.1)
 - [`lib_definizioni.i`][lib_definizioni] (v0.8.1)
-- [`lib_messaggi.i`][lib_messaggi] (v0.8.2)
+- [`lib_messaggi.i`][lib_messaggi_libreria] (v0.8.2)
 - [`lib_verbi.i`][lib_verbi] (v0.8.4)
 - [`lib_luoghi.i`][lib_luoghi] (v0.8.1)
 - [`lib_supplemento.i`][lib_supplemento] (v0.8.1)
@@ -141,7 +169,7 @@ Rinominati in `ogg?_inadatto_*` tutti gli attributi per i messaggi dei verbi che
 
 # 2018/11/16
 
-- [`lib_messaggi.i`][lib_messaggi] (v0.8.1)
+- [`lib_messaggi.i`][lib_messaggi_libreria] (v0.8.1)
 - [`lib_verbi.i`][lib_verbi] (v0.8.2)
 
 ## Documentazione verbi
@@ -196,15 +224,15 @@ Grazie alle trascrizioni dei test, sarà possibile rilevare automaticamente even
 - [`lib_classi.i`][lib_classi] (v0.8.0)
 - [`lib_definizioni.i`][lib_definizioni] (v0.8.0)
 - [`lib_luoghi.i`][lib_luoghi] (v0.8.0)
-- [`lib_messaggi.i`][lib_messaggi] (v0.8.0)
+- [`lib_messaggi.i`][lib_messaggi_libreria] (v0.8.0)
 - [`lib_verbi.i`][lib_verbi] (v0.8.0)
 - [`lib_supplemento.i`][lib_supplemento] (v0.8.0)
 
-## Bump to v0.8.0: All Verbs Translated
+## Passa alla v0.8.0: Tutti i verbi tradotti
 
-With this commit all library verbs and their restriction attributes have been now translated. 
+Con questo commit tutti i verbi della libreria ed i corrispettivi attributi di restrizione sono stati tradotti in italiano.
 
-Bump up all library files version to 0.8.0.
+Tutti i moduli della libreria passano alla versione 0.8.0.
 
 
 
@@ -212,17 +240,19 @@ Bump up all library files version to 0.8.0.
                                REFERENCE LINKS                                
 ------------------------------------------------------------------------------>
 
-<!-- NEW LIBRARY FILENAMES -->
+<!-- NOMI FILE LIBRERIA (NUOVI) -->
 
-[libreria]:         ./libreria.i
-[lib_classi]:       ./lib_classi.i
-[lib_definizioni]:  ./lib_definizioni.i
-[lib_luoghi]:       ./lib_luoghi.i
-[lib_messaggi]:     ./lib_messaggi.i
-[lib_verbi]:        ./lib_verbi.i
-[lib_supplemento]:  ./lib_supplemento.i
+[libreria]:              ./libreria.i
+[lib_classi]:            ./lib_classi.i
+[lib_definizioni]:       ./lib_definizioni.i
+[lib_luoghi]:            ./lib_luoghi.i
+[lib_messaggi_runtime]:  ./lib_messaggi_runtime.i
+[lib_messaggi_libreria]: ./lib_messaggi_libreria.i
+[lib_verbi]:             ./lib_verbi.i
+[lib_supplemento]:       ./lib_supplemento.i
 
-[tests]: ../tests/
+[test]: ../test/
+
 
 <!-- Library Documentation  -->
 
