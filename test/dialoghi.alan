@@ -66,6 +66,17 @@ END THE.
 THE medaglione IsA object IN sciamani.
 END THE.
 
+--==============================================================================
+-- Il Cane
+--==============================================================================
+THE cane IsA actor AT prato.
+  
+END THE cane.
+
+THE collare IsA object IN cane.
+  
+END THE collare.
+
 --------------------------------------------------------------------------------
 Start at prato.
 DESCRIBE intestazione.

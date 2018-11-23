@@ -17,7 +17,11 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/11/23](#20181123)
+- [2018/11/23 \(2\)](#20181123-2)
+    - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi)
+    - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi)
+    - [Traduci Messaggi dei verbi](#traduci-messaggi-dei-verbi)
+- [2018/11/23 \(1\)](#20181123-1)
     - [Correggi Baco LIQUIDI](#correggi-baco-liquidi)
 - [2018/11/22 \(5\)](#20181122-5)
     - [Messaggi dei verbi](#messaggi-dei-verbi)
@@ -39,7 +43,7 @@ For previuos changes, see:
         - [Azioni Futili](#azioni-futili)
 - [2018/11/20](#20181120)
     - [Documentazione Messaggi](#documentazione-messaggi)
-    - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi)
+    - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi-1)
 - [2018/11/16](#20181116)
     - [Documentazione verbi](#documentazione-verbi)
 - [2018/11/15](#20181115)
@@ -54,7 +58,58 @@ For previuos changes, see:
 
 -----
 
-# 2018/11/23
+# 2018/11/23 (2)
+
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.3)
+- [`lib_verbi.i`][lib_verbi] (v0.9.3)
+
+Annota il codice sorgente.
+
+<!-- Aggiorna documentazione della messaggistica di libreria. -->
+
+## Rinomina messaggi dei verbi
+
+Rinominati gli attributi per i messaggi di risposta dei verbi secondo nuovi criteri:
+
+- Usa `png1` e `png2` per messaggi che fanno riferimenti a parametri che sono esclusivamente attori.
+
+
+|          Vecchio ID          |         Nuovo ID         |
+|------------------------------|--------------------------|
+| `ogg1_png_non_apprezzerebbe` | `png1_non_apprezzerebbe` |
+
+
+## Sostituisci messaggi inglesi dei verbi
+
+Sostituisci tutte le occorrenze degli attributi inglesi per i messaggi di risposta dei verbi con attributi italiani:
+
+|      Attributo EN      |        Attributo IT       |
+|------------------------|---------------------------|
+| `check_obj_inanimate2` |  `png1_non_apprezzerebbe` |
+
+Gli attributi originali inglesi sono stati eliminati.
+
+## Traduci Messaggi dei verbi
+
+Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
+
+|           Attributo EN           |          Attributo IT          |
+|----------------------------------|--------------------------------|
+| `illegal_parameter_talk_sg`/`pl` | `ogg1_non_può_capirti_sg`/`pl` |
+| `illegal_parameter_talk_sg`/`pl` | `ogg2_non_può_capirti_sg`/`pl` |
+| `check_act_can_talk_sg`/`pl`     | `ogg1_non_può_capirti_sg`/`pl` |
+| `check_act_can_talk_sg`/`pl`     | `ogg2_non_può_capirti_sg`/`pl` |
+
+Dove in italiano le risposte sono:
+
+|          Attributo IT          |                   Testo                   |
+|--------------------------------|-------------------------------------------|
+| `ogg1_non_può_capirti_sg`/`pl` | `"$+1 non [è/sono] in grado di capirti."` |
+| `ogg2_non_può_capirti_sg`/`pl` | `"$+2 non [è/sono] in grado di capirti."` |
+
+<!---------------------------------------------------------------------------->
+
+# 2018/11/23 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.9.2)
 

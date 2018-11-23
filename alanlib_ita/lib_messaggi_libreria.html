@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.9.2-Alpha,</span>
-<span id="revdate">2018-11-22</span>
+<span id="revnumber">versione 0.9.3-Alpha,</span>
+<span id="revdate">2018-11-23</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
 <div id="toc" class="toc2">
@@ -542,6 +542,14 @@ spazio, sono state adottate una serie di abbreviazioni di uso comune:</p>
 </tr>
 <tr>
 <td class="hdlist1">
+<code>png</code>  
+</td>
+<td class="hdlist2">
+<p>&#8594; &#8216;personaggio non giocante,&#8217; inteso come un&#8217;istanza <em>attore</em>.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
 <code>prep</code> 
 </td>
 <td class="hdlist2">
@@ -565,9 +573,14 @@ messaggio che rappresentano:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>ogg1</code> e <code>ogg2</code> indicano che il messaggio fa riferimento ad uno specifico
-parametro del verbo utilizzando <code>$+1</code> o <code>$+2</code>, rispettivamente, nella
-stringa dell&#8217;attributo. Es. <code>ogg2_non_posseduto</code>.</p>
+<p><code>ogg1</code> e <code>ogg2</code> indicano che la stringa del messaggio fa riferimento ad un
+parametro specifico del verbo tramite il simbolo <code>$</code> (<code>$+1</code>/<code>$1</code> o <code>$+2</code>/<code>$2</code>,
+rispettivamente). Es. <code>ogg2_non_posseduto</code>.</p>
+</li>
+<li>
+<p><code>png1</code> e <code>png2</code> indicano che il <code>$</code> nel messaggio fa rigerimento ad un
+parametro che è un attore. Questo tipo di messaggio è adatto ad essere
+utilizzato solo con attori. Es. <code>png1_non_apprezzerebbe</code>.</p>
 </li>
 <li>
 <p><code>_sg</code> e <code>_pl</code> rappresentano varianti di un medesimo messaggio, il primo
@@ -576,7 +589,7 @@ Es. <code>ogg1_inadatto_sg</code> e <code>ogg1_inadatto_pl</code>.</p>
 </li>
 <li>
 <p><code>_USA</code> è impiegato nei messaggi volti a indirizzare il giocatore all&#8217;uso
-corretto di un verbo, solitamente associato a verbi creati appositamente
+corretto di un comando. Solitamente associato a verbi creati appositamente
 per intercettare comandi incompleti. Es. <code>per_scrivere_USA</code>.</p>
 </li>
 </ul>
@@ -829,7 +842,7 @@ italiano del modulo delle classi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.9.2-Alpha<br>
+Versione 0.9.3-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

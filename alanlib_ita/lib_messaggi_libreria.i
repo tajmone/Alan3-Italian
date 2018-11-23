@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.9.2-Alpha, 2018-11-22: Alan 3.0beta6
+--| v0.9.3-Alpha, 2018-11-23: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
@@ -63,22 +63,27 @@
 --| 
 --| [horizontal]
 --| `ogg`  :: -> '`oggetto`' del verbo, inteso come _parametro_.
+--| `png`  :: -> '`personaggio non giocante,`' inteso come un'istanza _attore_.
 --| `prep` :: -> '`preposizione,`' in genere intesa come _preposizione articolata_.
 --| `qlco` :: -> '`qualcosa`'.
 
 --| Alcune abbreviazioni sono indicatrici di alcune caratteristiche tecniche del
 --| messaggio che rappresentano:
 
---| * `ogg1` e `ogg2` indicano che il messaggio fa riferimento ad uno specifico
---|   parametro del verbo utilizzando `$+1` o `$+2`, rispettivamente, nella
---|   stringa dell'attributo. Es. `ogg2_non_posseduto`.
+--| * `ogg1` e `ogg2` indicano che la stringa del messaggio fa riferimento ad un
+--|   parametro specifico del verbo tramite il simbolo `$` (`$+1`/`$1` o `$+2`/`$2`,
+--|   rispettivamente). Es. `ogg2_non_posseduto`.
+
+--| * `png1` e `png2` indicano che il `$` nel messaggio fa rigerimento ad un
+--|    parametro che è un attore. Questo tipo di messaggio è adatto ad essere
+--|    utilizzato solo con attori. Es. `png1_non_apprezzerebbe`.
 
 --| * `_sg` e `_pl` rappresentano varianti di un medesimo messaggio, il primo
 --|   da utilizzarsi con un referente singolare, il secondo con uno plurale.
 --|   Es. `ogg1_inadatto_sg` e `ogg1_inadatto_pl`.
 
 --| * `_USA` è impiegato nei messaggi volti a indirizzare il giocatore all'uso
---|   corretto di un verbo, solitamente associato a verbi creati appositamente
+--|   corretto di un comando. Solitamente associato a verbi creati appositamente
 --|   per intercettare comandi incompleti. Es. `per_scrivere_USA`.
 --<
 
@@ -411,9 +416,6 @@ ADD TO EVERY blocco_definizioni
 
   HAS illegal_parameter_string "Please state inside double quotes ("""") what you want to $v.". -- answer, say, say_to, write
 
-  HAS illegal_parameter_talk_sg "That's not something you can talk to.".      -- ask, ask_for, say_to, tell
-  HAS illegal_parameter_talk_pl "Those are not something you can talk to.".
-
   HAS illegal_parameter_there "It's not possible to look there.".         -- look_behind, look_in, look_under
 
   HAS illegal_parameter_what_sg "That's not something I know about.".       -- what_is, where_is
@@ -549,7 +551,7 @@ ADD TO EVERY blocco_definizioni
   HAS svuotare_solo_contenitori  "Solo i contenitori possono essere svuotati.".
 
   
-   -- ==================
+  -- ==================
   -- PARAMETRI MANCANTI
   -- ==================
   -- Messaggi per verbi che richiedono ulteriori parametri. Di solito li si
@@ -607,6 +609,23 @@ ADD TO EVERY blocco_definizioni
   -- ===========================================================================
   -- PROBLEMI RELATIVI AGLI ATTRIBUTI
   -- ===========================================================================
+
+  -- ========================================
+  -- PARAMETRI INADATTI A INTERAZIONI VERBALI
+  -- ========================================
+  -- Messaggi per verbi che implicano scambi verbali, quando il destinatario non
+  -- è ha l'attributo 'CAN parlare'.
+  
+  -- VERBI: chiedi, domanda, racconta.
+  -- ORIGINAL EN: illegal_parameter_talk_sg
+  HAS ogg1_non_può_capirti_sg  "$+1 non è in grado di capirti.".
+  HAS ogg1_non_può_capirti_pl  "$+1 non sono in grado di capirti.".
+
+
+  -- VERBI: dì_a.
+  -- ORIGINAL EN: illegal_parameter_talk_sg
+  HAS ogg2_non_può_capirti_sg  "$+2 non è in grado di capirti.".
+  HAS ogg2_non_può_capirti_pl  "$+2 non sono in grado di capirti.".
 
 
   -- ===================
@@ -799,13 +818,11 @@ ADD TO EVERY blocco_definizioni
   -- AZIONI DIRETTE AI PNG
   -- =====================
 
-  -- VERBI: gratta, tira | push, push_with, search.
-  -- ORIGINAL EN:  check_obj_inanimate1
-  HAS ogg1_png_non_apprezzerebbe  "non credo che $+1 gradirebbe.".
-
-
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_obj_inanimate2 "You are not sure whether $+1 would appreciate that.".   -- rub, touch, touch_with
+  -- VERBI: gratta, ispeziona, sfrega, spingi, spingi_con, tira, tocca, tocca_con
+  -- ORIGINAL EN:  check_obj_inanimate1 + check_obj_inanimate2
+  --               "$+1 wouldn't probably appreciate that."
+  --               "You are not sure whether $+1 would appreciate that."
+  HAS png1_non_apprezzerebbe  "Non credo che $+1 gradirebbe.".
 
   -- ================
   -- AZIONI PREVENUTE
@@ -1033,8 +1050,6 @@ ADD TO EVERY blocco_definizioni
   -- other attribute checks:
   --------------------------
 
-  HAS check_act_can_talk_sg "That's not something you can talk to.".        -- ask, ask_for, say_to, tell
-  HAS check_act_can_talk_pl "Those are not something you can talk to.".
 
   HAS check_obj_allowed_in_sg "$+1 doesn't belong in $+2.".             -- empty_in, pour_in, put_in, throw_in
   HAS check_obj_allowed_in_pl "$+1 don't belong in $+2.".

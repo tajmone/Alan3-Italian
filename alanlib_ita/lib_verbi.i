@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.9.2-Alpha, 2018-11-22: Alan 3.0beta6
+--| v0.9.3-Alpha, 2018-11-23: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -1560,6 +1560,7 @@ ADD TO EVERY OBJECT
       AND chiave IN hero
         ELSE SAY mia_AT:non_possiedi_ogg2.
       AND chiave = chiave_abbinata OF ogg -- @TODO:                             TRANSLATE!
+        --              "You can't use $+2 to $v $+1.".
         ELSE SAY mia_AT:check_door_matching_key.
 
       DOES
@@ -2003,6 +2004,7 @@ ADD TO EVERY OBJECT
           END IF.
 --                                                                              TRANSLATE!
       AND chiave = chiave_abbinata OF ogg
+        --              "You can't use $+2 to $v $+1.".
         ELSE SAY mia_AT:check_door_matching_key.
       DOES
         MAKE ogg NOT bloccato.
@@ -2254,12 +2256,10 @@ ADD TO EVERY THING
               ELSE SAY mia_AT:ogg1_distante_pl.
             END IF.
         END IF.
---                                                                              TRANSLATE!
       AND ogg <> hero
         ELSE SAY  mia_AT:azione_futile.
---                                                                              TRANSLATE!
       AND ogg IS inanimato
-        ELSE SAY mia_AT:check_obj_inanimate2.
+        ELSE SAY mia_AT:png1_non_apprezzerebbe.
       DOES
         "Tocchi $+1 ma non senti nulla di strano."
      -- "You feel nothing unexpected."
@@ -2323,9 +2323,8 @@ ADD TO EVERY THING
         ELSE SAY mia_AT:azione_insensata.
       AND strum IN hero
         ELSE SAY mia_AT:non_possiedi_ogg2.
---                                                                              TRANSLATE!
       AND ogg IS inanimato
-        ELSE SAY mia_AT:check_obj_inanimate2.
+        ELSE SAY mia_AT:png1_non_apprezzerebbe.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -2397,9 +2396,8 @@ SYNTAX  chiedi = chiedi a (png) (ogg)
   WHERE png IsA ACTOR
     ELSE
       IF png IS NOT plurale
---                                                                              TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter_talk_sg.
-        ELSE SAY mia_AT:illegal_parameter_talk_pl.
+        THEN SAY mia_AT:ogg1_non_può_capirti_sg.
+        ELSE SAY mia_AT:ogg1_non_può_capirti_pl.
       END IF.
   AND ogg IsA OBJECT
     ELSE
@@ -2422,9 +2420,8 @@ ADD TO EVERY ACTOR
           AND png CAN parlare
               ELSE
           IF png IS NOT plurale
---                                                                              TRANSLATE!
-            THEN SAY mia_AT:check_act_can_talk_sg.
-            ELSE SAY mia_AT:check_act_can_talk_pl.
+            THEN SAY mia_AT:ogg1_non_può_capirti_sg.
+            ELSE SAY mia_AT:ogg1_non_può_capirti_pl.
           END IF.
       AND ogg IS esaminabile
         ELSE
@@ -2562,8 +2559,8 @@ SYNTAX  dì_a = dì (argomento) a (png)
   AND png IsA ACTOR
     ELSE
       IF png IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_talk_sg.
-        ELSE SAY mia_AT:illegal_parameter_talk_pl.
+        THEN SAY mia_AT:ogg2_non_può_capirti_sg.
+        ELSE SAY mia_AT:ogg2_non_può_capirti_pl.
       END IF.
 
         dì_a = dì a (png) (argomento).
@@ -2577,10 +2574,9 @@ ADD TO EVERY ACTOR
         ELSE SAY mia_AT:azione_insensata.
       AND png CAN parlare
         ELSE
---                                                                              TRANSLATE!
           IF png IS NOT plurale
-            THEN SAY mia_AT:check_act_can_talk_sg.
-            ELSE SAY mia_AT:check_act_can_talk_pl.
+            THEN SAY mia_AT:ogg2_non_può_capirti_sg.
+            ELSE SAY mia_AT:ogg2_non_può_capirti_pl.
           END IF.
       AND png IS NOT distante
         ELSE
@@ -2625,9 +2621,8 @@ SYNTAX  domanda = domanda a (png) di (argomento)!
   WHERE png IsA ACTOR
     ELSE
       IF png IS NOT plurale
---                                                                              TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter_talk_sg.
-        ELSE SAY mia_AT:illegal_parameter_talk_pl.
+        THEN SAY mia_AT:ogg1_non_può_capirti_sg.
+        ELSE SAY mia_AT:ogg1_non_può_capirti_pl.
       END IF.
   AND argomento IsA THING
     ELSE
@@ -2664,9 +2659,8 @@ ADD TO EVERY ACTOR
       AND png CAN parlare
         ELSE
           IF png IS NOT plurale
---                                                                              TRANSLATE!
-            THEN SAY mia_AT:check_act_can_talk_sg.
-            ELSE SAY mia_AT:check_act_can_talk_pl.
+            THEN SAY mia_AT:ogg1_non_può_capirti_sg.
+            ELSE SAY mia_AT:ogg1_non_può_capirti_pl.
           END IF.
       AND png IS NOT distante
         ELSE
@@ -2768,8 +2762,8 @@ SYNTAX  racconta = racconta a (png) di (argomento)!
   WHERE png IsA ACTOR
     ELSE
       IF png IS NOT plurale
-            THEN SAY mia_AT:illegal_parameter_talk_sg.
-        ELSE SAY mia_AT:illegal_parameter_talk_pl.
+        THEN SAY mia_AT:ogg1_non_può_capirti_sg.
+        ELSE SAY mia_AT:ogg1_non_può_capirti_pl.
       END IF.
   AND argomento IsA THING
     ELSE
@@ -2798,9 +2792,8 @@ ADD TO EVERY ACTOR
        AND png CAN parlare
         ELSE
           IF png IS NOT plurale
---                                                                              TRANSLATE!
-            THEN SAY mia_AT:check_act_can_talk_sg.
-            ELSE SAY mia_AT:check_act_can_talk_pl.
+            THEN SAY mia_AT:ogg1_non_può_capirti_sg.
+            ELSE SAY mia_AT:ogg1_non_può_capirti_pl.
           END IF.
       AND png IS NOT distante
         ELSE
@@ -4389,7 +4382,7 @@ ADD TO EVERY THING
       ELSE LIST hero.
     AND ogg IS inanimato
       -- "non credo che $+1 gradirebbe."
-      ELSE SAY  mia_AT:ogg1_png_non_apprezzerebbe.
+      ELSE SAY  mia_AT:png1_non_apprezzerebbe.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -4982,8 +4975,8 @@ END ADD TO.
 -- SYNTAX give_to = 'give' (obj) 'to' (recipient)
 
 SYNTAX dai_a = 'dai' (ogg) 'a' (ricevente)
+-- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
   WHERE ogg IsA OBJECT
-    ---> @TODO!!                                                                TRANSLATE!
     ELSE SAY mia_AT:illegal_parameter_obj.
   AND ricevente IsA ACTOR
     ELSE
@@ -5692,6 +5685,7 @@ END VERB spogliati.
 -- SYNONYMS lay, place = put.
 
 SYNTAX metti = metti (ogg)
+-- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
   WHERE ogg IsA OBJECT
     ELSE SAY mia_AT:illegal_parameter_obj.
 
@@ -5724,8 +5718,8 @@ END ADD TO.
 
 
 SYNTAX metti_contro = metti (ogg) contro (bulk)
+-- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
   WHERE ogg IsA OBJECT
---                                                                              TRANSLATE!
     --             "You can only $v objects."
     ELSE SAY mia_AT:illegal_parameter_obj.
   AND bulk IsA THING
@@ -5738,8 +5732,8 @@ SYNTAX metti_contro = metti (ogg) contro (bulk)
 
 
 SYNTAX metti_dietro = metti (ogg) dietro (bulk)
+-- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
   WHERE ogg IsA OBJECT
---                                                                              TRANSLATE!
     ELSE SAY mia_AT:illegal_parameter_obj.
   AND bulk IsA THING
     ELSE
@@ -5751,8 +5745,8 @@ SYNTAX metti_dietro = metti (ogg) dietro (bulk)
 
 
 SYNTAX metti_vicino = metti (ogg) vicino a (bulk)
+-- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
   WHERE ogg IsA OBJECT
---                                                                              TRANSLATE!
     ELSE SAY mia_AT:illegal_parameter_obj.
   AND bulk IsA THING
     ELSE
@@ -5764,8 +5758,8 @@ SYNTAX metti_vicino = metti (ogg) vicino a (bulk)
 
 
 SYNTAX  metti_sotto = metti (ogg) sotto (bulk)
+-- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
   WHERE ogg IsA OBJECT
---                                                                              TRANSLATE!
     ELSE SAY mia_AT:illegal_parameter_obj.
   AND bulk IsA THING
     ELSE
@@ -5846,6 +5840,7 @@ END ADD TO.
 
 
 SYNTAX metti_in = metti (ogg) 'in' (cont)
+-- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
   WHERE ogg IsA OBJECT
     ELSE SAY mia_AT:illegal_parameter_obj.
   AND cont IsA OBJECT
@@ -5971,8 +5966,8 @@ END ADD TO.
 -- @TODO: Sinonimi/sintassi "sopra"?
 
 SYNTAX metti_su = metti (ogg) su (superficie)
+-- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
   WHERE ogg IsA OBJECT
---                                                                              TRANSLATE!
     ELSE SAY mia_AT:illegal_parameter_obj.
   AND superficie IsA supporto
     ELSE
@@ -6784,9 +6779,9 @@ ADD TO EVERY OBJECT
       ELSE
         IF proiettile IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
-          THEN SAY mia_AT:ogg1_inadatto_sg. "lanciare."
-          ELSE SAY mia_AT:ogg1_inadatto_pl. "lanciare."
-        END IF.
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF.  "lanciare."
     AND proiettile IS prendibile
       ELSE SAY  mia_AT:ogg1_non_posseduto.
     AND CURRENT LOCATION IS illuminato
@@ -7516,7 +7511,7 @@ ADD TO EVERY THING
       ELSE SAY mia_AT:check_obj_not_hero1.
     AND ogg IS inanimato
       -- "non credo che $+1 gradirebbe."
-      ELSE SAY  mia_AT:ogg1_png_non_apprezzerebbe.
+      ELSE SAY  mia_AT:png1_non_apprezzerebbe.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -7596,7 +7591,7 @@ ADD TO EVERY THING
         ELSE SAY mia_AT:check_obj_not_hero1.
       AND ogg IS inanimato
         -- "non credo che $+1 gradirebbe."
-        ELSE SAY  mia_AT:ogg1_png_non_apprezzerebbe.
+        ELSE SAY  mia_AT:png1_non_apprezzerebbe.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -7658,7 +7653,7 @@ ADD TO EVERY OBJECT
       ELSE SAY mia_AT:check_obj_not_hero1.
     AND ogg IS inanimato
       -- "non credo che $+1 gradirebbe."
-      ELSE SAY  mia_AT:ogg1_png_non_apprezzerebbe.
+      ELSE SAY  mia_AT:png1_non_apprezzerebbe.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -9637,7 +9632,7 @@ ADD TO EVERY THING
       ELSE SAY  mia_AT:azione_futile.
     AND ogg IS inanimato
       -- "non credo che $+1 gradirebbe."
-      ELSE SAY  mia_AT:ogg1_png_non_apprezzerebbe.
+      ELSE SAY  mia_AT:png1_non_apprezzerebbe.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -10422,9 +10417,8 @@ ADD TO EVERY THING
 --                                                                              TRANSLATE!
     AND ogg <> hero
       ELSE SAY mia_AT:check_obj_not_hero6.
---                                                                              TRANSLATE!
     AND ogg IS inanimato
-      ELSE SAY mia_AT:check_obj_inanimate2.
+      ELSE SAY mia_AT:png1_non_apprezzerebbe.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND ogg IS raggiungibile AND ogg IS NOT distante

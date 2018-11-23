@@ -1,3 +1,4 @@
+esamina il cane
 ; ==============================================================================
 ;                                   Parla Con                                   
 ; ==============================================================================
@@ -9,7 +10,9 @@ parla al mago
 ; ------------------------------------------------------------------------------
 ;                             (parametri non idonei)                            
 ; ------------------------------------------------------------------------------
+parla con 1
 parla con la bacchetta magica
+parla con il cane
 ; ==============================================================================
 ;                              Verbi 'dì' e 'dì_a'                              
 ; ==============================================================================
@@ -20,6 +23,12 @@ dì "ciao" alla strega
 dì alla strega "ciao"
 dì "ciao" agli sciamani
 dì agli sciamani "ciao"
+; ------------------------------------------------------------------------------
+;                             (parametri non idonei)                            
+; ------------------------------------------------------------------------------
+dì "ciao" a 1
+dì "ciao" alla bacchetta magica
+dì "ciao" al cane
 ; ==============================================================================
 ;                                Verbo 'racconta'                               
 ; ==============================================================================
@@ -29,6 +38,12 @@ parla con il mago della bacchetta magica
 informa il mago della bacchetta magica
 informa il mago sulla bacchetta magica
 dì al mago della bacchetta magica
+; ------------------------------------------------------------------------------
+;                             (parametri non idonei)                            
+; ------------------------------------------------------------------------------
+racconta a 1 della mela
+racconta alla bacchetta della mela
+racconta al cane della mela
 ; ==============================================================================
 ;                                    Domanda                                    
 ; ==============================================================================
@@ -38,6 +53,12 @@ domanda al mago circa la bacchetta magica
 chiedi al mago della bacchetta magica
 chiedi al mago riguardo la bacchetta magica
 chiedi al mago circa la bacchetta magica
+; ------------------------------------------------------------------------------
+;                             (parametri non idonei)                            
+; ------------------------------------------------------------------------------
+domanda a 1 circa la mela
+domanda alla bacchetta circa la mela
+domanda al cane circa la mela
 ; ------------------------------------------------------------------------------
 ;                          (ordine parametri invertito)                         
 ; ------------------------------------------------------------------------------
@@ -62,5 +83,11 @@ inventario
 chiedi agli sciamani il medaglione
 chiedi alla strega la mela
 inventario
+; ------------------------------------------------------------------------------
+;                             (parametri non idonei)                            
+; ------------------------------------------------------------------------------
+chiedi a 1 la bacchetta magica
+chiedi alla bacchetta magica il mago
+chiedi al cane il collare
 
 
