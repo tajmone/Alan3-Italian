@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Classi
 Tristano Ajmone <tajmone@gmail.com>
-v0.9.1-Alpha, 2018-11-22: Alan 3.0beta6
+v0.9.2-Alpha, 2018-11-23: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_classes.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -249,8 +249,6 @@ Di default un liquido non è potabile.
 
 ==== svuota_su
 
-==== riempi_con
-
 ==== metti_in
 
 ==== metti_su
@@ -404,8 +402,6 @@ Finisci di trasformare commenti in documentazione Doxter:
 * [ ] Descrizione `svuota_in`.
 
 * [ ] Descrizione `svuota_su`.
-
-* [ ] Descrizione `riempi_con`.
 
 * [ ] Descrizione `metti_in`.
 

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.9.1-Alpha, 2018-11-22: Alan 3.0beta6
+--| v0.9.2-Alpha, 2018-11-23: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -1916,30 +1916,6 @@ EVERY liquido IsA OBJECT
       DOES ONLY SAY mia_AT:svuotare_solo_contenitori.
   END VERB svuota_su.
 
--->liquido
---~=============================================================================
---~-----------------------------------------------------------------------------
---| ==== riempi_con
---~-----------------------------------------------------------------------------
---~=============================================================================
---<
--->todo_checklist(.666) Doxter
---| * [ ] Descrizione `riempi_con`.
---<
-
--- @FIXME: Qui c'è un problema, perché anche se l'azione di default non va in   BUG!
---         porto, il recipiente del liquido viene cambiato lo stesso, e poi il
---         verbo svuota è sballato (p.es., cerca di prendere il nuovo recipiente
---         assegnato anziché quello originale). Vedi:
--- 
---         https://github.com/AnssiR66/AlanStdLib/issues/39
-
-  VERB riempi_con
-    -- when something is filled with a liquid, this something becomes the
-    -- vessel of the liquid:
-    WHEN sostanza
-       DOES SET recipiente OF THIS TO cont.
-  END VERB riempi_con.
 
 -->liquido    @PUT IN 
 --~=============================================================================
@@ -2071,6 +2047,13 @@ EVENT check_vessel
   FOR EACH liq IsA liquido, DIRECTLY AT CURRENT LOCATION DO
       SET recipiente OF liq TO recipiente_fittizio.
   END FOR.
+
+  FOR EACH contel IsA contenitore_elencato DO
+    FOR EACH liq IsA liquido, DIRECTLY IN contel
+      DO SET recipiente OF liq TO contel.
+    END FOR.
+  END FOR.
+
   SCHEDULE check_vessel AFTER 1.
 END EVENT.
 

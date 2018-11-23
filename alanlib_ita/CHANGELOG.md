@@ -17,6 +17,8 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/11/23](#20181123)
+    - [Correggi Baco LIQUIDI](#correggi-baco-liquidi)
 - [2018/11/22 \(5\)](#20181122-5)
     - [Messaggi dei verbi](#messaggi-dei-verbi)
         - [Elimina Messaggi dei verbi](#elimina-messaggi-dei-verbi)
@@ -51,6 +53,25 @@ For previuos changes, see:
 <!-- /MarkdownTOC -->
 
 -----
+
+# 2018/11/23
+
+- [`lib_classi.i`][lib_classi] (v0.9.2)
+
+## Correggi Baco LIQUIDI
+
+Risolto il baco per cui dopo aver tentato di riempire un contenitore con un liquido (verbo `riempi_con`, azione bloccata di default) il `recipiente` del liquido veniva sempre e comunque cambiato nel contenitore menzionato nel verbo, a prescindere dall'esito dell'azione.
+
+- Modifica l'evento `check_vessel` di modo che, a ogni turno, il `recipiente` di ogni `liquido` venga settato al `contenitore_elenecato` in cui esso è direttamente contenuto.
+- Elimina il verbo `riempi_con` implementato sulla classe `liquido`.
+
+Per maggiori dettagli, vedi [AlanStdLib/#39] e la [soluzione proposta in #47] da @AnssiR66.
+
+[AlanStdLib/#39]: https://github.com/AnssiR66/AlanStdLib/issues/39
+[soluzione proposta in #47]: https://github.com/AnssiR66/AlanStdLib/pull/47#issuecomment-441152924
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/11/22 (5)
 

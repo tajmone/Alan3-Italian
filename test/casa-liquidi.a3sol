@@ -1,0 +1,35 @@
+; ******************************************************************************
+; *                                                                            *
+; *                              TEST SUI LIQUIDI                              *
+; *                                                                            *
+; ******************************************************************************
+; ==============================================================================
+; MANEGGIARE LIQUIDI IN RECIPIENTI
+; ==============================================================================
+; Un 'liquido' può essere contenuto in un 'contenitore_listato', che è il suo
+; 'recipiente' di riferimento (attributo referenza istanza).
+esamina il tavolo
+esamina la bottiglia
+; ------------------------------------------------------------------------------
+; MANEGGIARE IL RECIPIENTE
+; ------------------------------------------------------------------------------
+prendi la bottiglia
+metti la bottiglia sul tavolo
+; ------------------------------------------------------------------------------
+; MANEGGIARE IL LIQUIDO
+; ------------------------------------------------------------------------------
+; I verbi indirizzati ad un liquido contenuto in un recipiente verranno trattati
+; come se l'oggetto fosse il recipiente del liquido.
+prendi il vino
+metti il vino sul tavolo
+; ==============================================================================
+; TRAVASARE LIQUIDI
+; ==============================================================================
+prendi la bottiglia
+prendi il vasetto
+esamina il vasetto
+; NOTA: Il verbo 'riempi_con' di default non consente l'azione:
+riempi il vasetto con il vino
+esamina il vasetto
+esamina la bottiglia
+versa il vino

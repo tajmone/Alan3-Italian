@@ -1,0 +1,83 @@
+
+
+La Casa 
+Un set per eseguire test su stanze e luoghi esterni. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+La Cucina
+A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
+qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un coltello, una 
+pistola, un vasetto e un cesto per la frutta.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                              TEST SUI LIQUIDI                              *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; ==============================================================================
+> ; MANEGGIARE LIQUIDI IN RECIPIENTI
+> ; ==============================================================================
+> ; Un 'liquido' può essere contenuto in un 'contenitore_listato', che è il suo
+> ; 'recipiente' di riferimento (attributo referenza istanza).
+> esamina il tavolo
+Esamini il tavolo, ma non noti niente di speciale. Sopra il tavolo vedi 
+una bottiglia, un sacchetto, un coltello, una pistola, un vasetto e un 
+cesto per la frutta.
+
+> esamina la bottiglia
+La bottiglia contiene del vino.
+
+> ; ------------------------------------------------------------------------------
+> ; MANEGGIARE IL RECIPIENTE
+> ; ------------------------------------------------------------------------------
+> prendi la bottiglia
+Presa.
+
+> metti la bottiglia sul tavolo
+Posi la bottiglia sul tavolo.
+
+> ; ------------------------------------------------------------------------------
+> ; MANEGGIARE IL LIQUIDO
+> ; ------------------------------------------------------------------------------
+> ; I verbi indirizzati ad un liquido contenuto in un recipiente verranno trattati
+> ; come se l'oggetto fosse il recipiente del liquido.
+> prendi il vino
+(la bottiglia of vino)
+Taken.
+
+> metti il vino sul tavolo
+Posi la bottiglia sul tavolo.
+
+> ; ==============================================================================
+> ; TRAVASARE LIQUIDI
+> ; ==============================================================================
+> prendi la bottiglia
+Presa.
+
+> prendi il vasetto
+Preso.
+
+> esamina il vasetto
+Il vasetto è vuoto.
+
+> ; NOTA: Il verbo 'riempi_con' di default non consente l'azione:
+> riempi il vasetto con il vino
+Non puoi riempire il vasetto con il vino.
+
+> esamina il vasetto
+Il vasetto è vuoto.
+
+> esamina la bottiglia
+La bottiglia contiene del vino.
+
+> versa il vino
+You pour il vino on the floor.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 
