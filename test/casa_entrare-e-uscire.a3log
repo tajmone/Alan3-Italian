@@ -38,8 +38,10 @@ Il frigo non è qualcosa da cui poter uscire.
 > ; 'esci_da', i quali trasportano il giocatore in un luogo annidato nel giardino.
 > sud
 Il Giardino di Casa
-A nord puoi tornare in casa. Puoi vedere un tavolo, un lettino e una 
-piscina qui. C'è un giardiniere qui.
+A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
+e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
+un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
+una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
 
 > entra in piscina
 Ti tuffi a bomba nella piscina.
@@ -54,8 +56,10 @@ Sei già in piscina.
 Ti issi sul bordo della piscina ed esci.
 
 Il Giardino di Casa
-A nord puoi tornare in casa. Puoi vedere un tavolo, un lettino e una 
-piscina qui. C'è un giardiniere qui.
+A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
+e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
+un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
+una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
 
 > esci dalla piscina
 Non sei dentro la piscina.

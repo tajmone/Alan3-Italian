@@ -35,8 +35,10 @@ Il soffitto è fuori dalla tua portata.
 
 > sud
 Il Giardino di Casa
-A nord puoi tornare in casa. Puoi vedere un tavolo, un lettino e una 
-piscina qui. C'è un giardiniere qui.
+A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
+e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
+un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
+una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
 
 > ispeziona il cielo
 Il cielo è troppo distante.
@@ -44,8 +46,8 @@ Il cielo è troppo distante.
 > ispeziona il giardiniere
 Non credo che il giardiniere gradirebbe.
 
-> ispeziona il cinquettio
-Il cinquettio è fuori dalla tua portata.
+> ispeziona il cinguettio
+Il cinguettio è fuori dalla tua portata.
 
 > ; ==============================================================================
 > ; VERBO 'ascolta'
@@ -64,8 +66,10 @@ Non odi niente di particolare.
 
 > sud
 Il Giardino di Casa
-A nord puoi tornare in casa. Puoi vedere un tavolo, un lettino e una 
-piscina qui. C'è un giardiniere qui.
+A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
+e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
+un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
+una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
 
 > ascolta il lettino
 Non odi niente di particolare.
@@ -95,16 +99,18 @@ Il giardiniere non sta parlando in questo momento.
 Ti issi sul bordo della piscina ed esci.
 
 Il Giardino di Casa
-A nord puoi tornare in casa. Puoi vedere un tavolo, un lettino e una 
-piscina qui. C'è un giardiniere qui.
+A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
+e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
+un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
+una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
 
 > ; ------------------------------------------------------------------------------
 > ; Risposte Personalizzate
 > ; ------------------------------------------------------------------------------
 > ascolta
-Puoi udire un cinquettio.
+Puoi udire un cinguettio.
 
-> ascolta il cinquettio
+> ascolta il cinguettio
 Si direbbe il canto della cinciallegra.
 
 > ; TESTIAMO IN PISCINA:
@@ -114,15 +120,17 @@ Ti tuffi a bomba nella piscina.
 Nella Piscina (Giardino di Casa)
 La piscina è abbastanza ampia per fare delle piccole nuotate.
 
-> ascolta il cinquettio
+> ascolta il cinguettio
 Si direbbe il canto della cinciallegra.
 
 > esci dalla piscina
 Ti issi sul bordo della piscina ed esci.
 
 Il Giardino di Casa
-A nord puoi tornare in casa. Puoi vedere un tavolo, un lettino e una 
-piscina qui. C'è un giardiniere qui.
+A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
+e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
+un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
+una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
 
 > ; ------------------------------------------------------------------------------
 > ; TESTA oggetti in altra stanza
@@ -145,14 +153,14 @@ Non riesci a sentire il giardiniere da questa distanza.
 > ascolta la piscina
 Non riesci a sentire la piscina da questa distanza.
 
-> ascolta il cinquettio
+> ascolta il cinguettio
 Da questa distanza è difficile capire di che uccelli si tratti.
 
 > ; ------------------------------------------------------------------------------
 > ; Parametri Inadatti
 > ; ------------------------------------------------------------------------------
 > ascolta me
-It doesn't make sense to ascolta yourself.
+Questo non ha alcun senso.
 
 > 
 

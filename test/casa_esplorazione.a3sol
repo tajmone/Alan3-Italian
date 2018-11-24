@@ -16,7 +16,7 @@ ispeziona il soffitto
 sud
 ispeziona il cielo
 ispeziona il giardiniere
-ispeziona il cinquettio
+ispeziona il cinguettio
 ; ==============================================================================
 ; VERBO 'ascolta'
 ; ==============================================================================
@@ -40,10 +40,10 @@ esci dalla piscina
 ; Risposte Personalizzate
 ; ------------------------------------------------------------------------------
 ascolta
-ascolta il cinquettio
+ascolta il cinguettio
 ; TESTIAMO IN PISCINA:
 entra in piscina
-ascolta il cinquettio
+ascolta il cinguettio
 esci dalla piscina
 ; ------------------------------------------------------------------------------
 ; TESTA oggetti in altra stanza
@@ -56,7 +56,7 @@ nord
 ascolta il cielo
 ascolta il giardiniere
 ascolta la piscina
-ascolta il cinquettio
+ascolta il cinguettio
 ; ------------------------------------------------------------------------------
 ; Parametri Inadatti
 ; ------------------------------------------------------------------------------

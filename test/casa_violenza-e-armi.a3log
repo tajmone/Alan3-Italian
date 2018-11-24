@@ -104,8 +104,10 @@ L'autolesionismo non è contemplato.
 > ; ==============================================================================
 > sud
 Il Giardino di Casa
-A nord puoi tornare in casa. Puoi vedere un tavolo, un lettino e una 
-piscina qui. C'è un giardiniere qui.
+A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
+e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
+un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
+una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
 
 > attacca il giardiniere
 La violenza non è la giusta risposta a questo.
@@ -129,17 +131,17 @@ Il sacchetto non è un'arma adatta per attaccare il giardiniere.
 > ; TESTA etero-dirette
 > ; ------------------------------------------------------------------------------
 > attacca me
-It doesn't make sense to attacca yourself.
+Questo non ha alcun senso.
 
 > ; **FIXME** Questa risposta va ritoccata:
 > attacca me con il sacchetto
 Il sacchetto non è un'arma adatta per attaccare il hero.
 
 > attacca me con il coltello
-It doesn't make sense to attacca yourself.
+Questo non ha alcun senso.
 
 > attacca me con la pistola
-It doesn't make sense to attacca yourself.
+Questo non ha alcun senso.
 
 > ; ==============================================================================
 > ; TESTA 'uccidi'
@@ -197,7 +199,7 @@ La violenza non è la giusta risposta a questo.
 > ; TESTA etero-dirette
 > ; ------------------------------------------------------------------------------
 > calcia me
-It doesn't make sense to calcia yourself.
+Questo non ha alcun senso.
 
 > ; ==============================================================================
 > ; TESTA 'lancia_contro'

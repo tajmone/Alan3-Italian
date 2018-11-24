@@ -1,0 +1,65 @@
+; ******************************************************************************
+; *                                                                            *
+; *                      TESTA CHIEDERE OGGETTI A ATTORI                       *
+; *                                                                            *
+; ******************************************************************************
+prendi la mela
+; ==============================================================================
+; TESTA 'SYNTAX WHERE' FAILURES
+; ==============================================================================
+; ------------------------------------------------------------------------------
+; PARAM 1 NON VALIDO (png non è ACTOR)
+; ------------------------------------------------------------------------------
+chiedi al tavolo la mela
+chiedi a 1 la mela
+; ------------------------------------------------------------------------------
+; PARAM 2 NON VALIDO (ogg non è OBJECT)
+; ------------------------------------------------------------------------------
+sud
+chiedi al giardiniere 1
+chiedi al giardiniere il cinguettio
+chiedi al giardiniere la vicina
+; ==============================================================================
+; TESTA 'VERB CHECK' FAILURES
+; ==============================================================================
+; NOTA: Nei CHECK [04][08][09][10] dobbiamo fare attenzione a non testare oggetti
+;       che hanno attributi che fanno fallire un CHECK previo a quello che si
+;       vuole testare:
+; +--------------------------------------------------------------+
+; | istanza    | classe     | esam? | prend? | ragg? | NOT dist? | 
+; |------------+------------+-------+--------+-------+-----------|
+; | cinguettio | suono      | NO    | NO     | NO    | sì        |
+; |------------+------------+-------+--------+-------+-----------|
+; | cielo      | ogg.l.est. | sì    | NO     | sì    | NO        |
+; |------------+------------+-------+--------+-------+-----------|
+; | ombrellone | object     | sì    | sì     | NO    | sì        |
+; | aquilone   | object     | sì    | sì     | sì    | NO        |
+; |------------+------------+-------+--------+-------+-----------|
+; | vicina     | femmina    | sì    | NO     | NO    | NO        |
+; +--------------------------------------------------------------+
+;
+; [01] CHECK: mia_AT CAN chiedere:
+; [02] CHECK: png <> hero:
+chiedi a me la mela
+; [03] CHECK: png CAN parlare:
+chiedi al gatto la mela
+; [04] CHECK: ogg IS esaminabile:
+chiedi al giardiniere il cinguettio
+; [05] CHECK: ogg NOT IN hero:
+chiedi al giardiniere la mela
+; [06] CHECK: CURRENT LOCATION IS illuminato:
+; [07] CHECK: png IS NOT distante:
+chiedi alla vicina la rivista
+; [08] CHECK: ogg IS prendibile:
+chiedi al giardiniere il cielo
+; [09] CHECK: ogg IS raggiungibile:
+chiedi al giardiniere l'ombrellone
+; [10] CHECK: ogg IS NOT distante:
+chiedi al giardiniere l'aquilone
+; [11] CHECK: ogg IS NOT scenario:
+chiedi al giardiniere il prato
+; ==============================================================================
+; TESTA VERBO VANIGLIA
+; ==============================================================================
+chiedi al giardiniere la rivista
+inventario

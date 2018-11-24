@@ -13,31 +13,37 @@ For previuos changes, see:
 
 -----
 
-**Table of Contents**
+**Indice**
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/11/24](#20181124)
+    - [Messaggi dei verbi](#messaggi-dei-verbi)
+        - [Correggi baco in `chiedi`](#correggi-baco-in-chiedi)
+        - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
+    - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
 - [2018/11/23 \(2\)](#20181123-2)
     - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi)
-    - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi)
-    - [Traduci Messaggi dei verbi](#traduci-messaggi-dei-verbi)
+    - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi-1)
+    - [Traduci Messaggi dei verbi](#traduci-messaggi-dei-verbi-1)
 - [2018/11/23 \(1\)](#20181123-1)
     - [Correggi Baco LIQUIDI](#correggi-baco-liquidi)
 - [2018/11/22 \(5\)](#20181122-5)
-    - [Messaggi dei verbi](#messaggi-dei-verbi)
+    - [Messaggi dei verbi](#messaggi-dei-verbi-1)
         - [Elimina Messaggi dei verbi](#elimina-messaggi-dei-verbi)
-        - [Nuovi Messaggi dei verbi](#nuovi-messaggi-dei-verbi)
+        - [Nuovi Messaggi dei verbi](#nuovi-messaggi-dei-verbi-1)
 - [2018/11/22 \(4\)](#20181122-4)
     - [Correggi Baco in LIQUIDO](#correggi-baco-in-liquido)
 - [2018/11/22 \(3\)](#20181122-3)
     - [Documentazione](#documentazione)
     - [Verbi](#verbi)
-    - [Messaggi dei verbi](#messaggi-dei-verbi-1)
+    - [Messaggi dei verbi](#messaggi-dei-verbi-2)
 - [2018/11/22 \(2\)](#20181122-2)
     - [Suddivisione modulo messaggi](#suddivisione-modulo-messaggi)
     - [Passa alla v0.9.0](#passa-alla-v090)
 - [2018/11/22 \(1\)](#20181122-1)
-    - [Messaggi dei verbi](#messaggi-dei-verbi-2)
+    - [Messaggi dei verbi](#messaggi-dei-verbi-3)
         - [Rinomina attributi](#rinomina-attributi)
         - [Azioni insensate](#azioni-insensate)
         - [Azioni Futili](#azioni-futili)
@@ -57,6 +63,94 @@ For previuos changes, see:
 <!-- /MarkdownTOC -->
 
 -----
+
+
+# 2018/11/24
+
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.4)
+- [`lib_verbi.i`][lib_verbi] (v0.9.4)
+
+## Messaggi dei verbi
+
+Tradotte varie risposte nel corpo dei verbi.
+
+### Correggi baco in `chiedi`
+
+Corretto baco nel verbo `chiedi`, dove un CHECK impiegava i messaggi per il parametro sbagliato: `mia_AT:ogg1_distante_sg`/`pl` anziché  `mia_AT:ogg2_distante_sg`/`pl`.
+
+### Sostituisci messaggi inglesi dei verbi
+
+Sostituisci tutte le occorrenze degli attributi inglesi per i messaggi di risposta dei verbi con attributi italiani:
+
+|            Attributo EN           |         Attributo IT        |
+|-----------------------------------|-----------------------------|
+| `check_obj_not_hero1`             | `azione_insensata`          |
+| `check_obj_suitable_with_sg`/`pl` | `ogg1_inadatto_CON_sg`/`pl` |
+| `illegal_parameter_with_sg`/`pl`  | `ogg1_inadatto_CON_sg`/`pl` |
+| `illegal_parameter_with_sg`/`pl`  | `ogg2_inadatto_CON_sg`/`pl` |
+
+Gli attributi originali inglesi sono stati eliminati.
+
+
+### Traduci messaggi dei verbi
+
+Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
+
+|      Attributo EN     |            Attributo IT            |                         Testo                         |
+|-----------------------|------------------------------------|-------------------------------------------------------|
+| `check_act_near_hero` | `impossibile_seguire_png1_sg`/`pl` | `"Non hai idea di dove si [trovi/trovino] $+1 [...]"` |
+| `check_obj_not_hero6` | `azione_irrelevante`               | `"Hai cose più importanti a cui pensare."`            |
+
+
+#### Messaggio in quattro attributi
+
+Nel verbo `chiedi`, il seguente attributo inglese:
+
+|        Attributo EN       |          Testo           |
+|---------------------------|--------------------------|
+| `check_obj_reachable_ask` | `"$+1 can't reach $+2."` |
+
+ha richiesto quattro attributi distinti in italiano, poiché entrambi i parametri cui fa riferimento potrebbero essere singolari o plurali:
+
+|             Attributo IT            |                              Testo                              |
+|-------------------------------------|-----------------------------------------------------------------|
+| `ogg2_sg_non_raggiungibile_png1_sg` | `"$+1 non può prendere $+2, è fuori dalla sua portata."`        |
+| `ogg2_sg_non_raggiungibile_png1_pl` | `"$+1 non possono prendere $+2, è fuori dalla sua portata."`    |
+| `ogg2_pl_non_raggiungibile_png1_sg` | `"$+1 non può prendere $+2, sono fuori dalla sua portata."`     |
+| `ogg2_pl_non_raggiungibile_png1_pl` | `"$+1 non possono prendere $+2, sono fuori dalla sua portata."` |
+
+Nel codice del verbo si sono dovuti inserire altrettanti controlli:
+
+```alan
+THEN
+  IF ogg IS NOT plurale
+    THEN
+      IF png IS NOT plurale
+        THEN SAY mia_AT:ogg1_sg_non_raggiungibile_png2_sg.
+        ELSE SAY mia_AT:ogg1_sg_non_raggiungibile_png2_pl.
+      END IF.
+    ELSE
+      IF png IS NOT plurale
+        THEN SAY mia_AT:ogg1_pl_non_raggiungibile_png2_sg.
+        ELSE SAY mia_AT:ogg1_pl_non_raggiungibile_png2_pl.
+      END IF.
+  END IF.
+```
+
+L'attributo originale inglese è stato elimato (non era utilizzato in altri verbi).
+
+
+## Nuovi messaggi dei verbi
+
+Creati nuovi attributi per i messaggi di risposta dei verbi (nessuna controparte nella libreria originale inglese):
+
+|         Attributo         |                     Testo                      |
+|---------------------------|------------------------------------------------|
+| `per_consultare_qlco_USA` | `"Per consultare qualcosa usa CONSULTA [...]"` |
+
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/11/23 (2)
 

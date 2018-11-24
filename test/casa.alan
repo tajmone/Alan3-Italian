@@ -40,7 +40,7 @@ THE giardino IsA luogo_esterno.
   DESCRIPTION "A nord puoi tornare in casa."
 
   VERB ascolta0
-    DOES ONLY "Puoi udire un cinquettio."
+    DOES ONLY "Puoi udire un cinguettio."
   END VERB ascolta0.
 END THE giardino.
 
@@ -112,11 +112,59 @@ END THE cesto_frutta.
 -- =============================================================================
 
 --==============================================================================
--- Il Cinquettio
+-- La Staccionata
+--==============================================================================
+-- La staccionata è un escamotage per poter mettere nel giardino cose e attori
+-- non raggiungibili. L'idea è che anche se li si può vedere sono comunque non
+-- raggiungibili (ma non distanti).
+
+THE staccionata IsA object AT giardino.
+  HAS articolo "la".
+  DESCRIPTION
+    "Oltre la staccionata intravedi un ombrellone e, in lontananza,
+     la tua vicina."
+END THE staccionata.
+
+--==============================================================================
+-- L'ombrellone
+--==============================================================================
+-- È un oggetto non raggiungibile, utile per testare svariati verbi.
+
+THE ombrellone IsA object AT giardino.
+  NAME ombrellone.
+  NAME 'l''ombrellone'.
+  HAS articolo "l'".
+  IS NOT raggiungibile.
+END THE ombrellone.
+
+--==============================================================================
+-- L'aquilone
+--==============================================================================
+-- Un oggetto distante...
+THE aquilone IsA object AT giardino.
+  NAME aquilone.
+  NAME 'l''aquilone'.
+  HAS articolo "l'".
+  IS distante.
+END THE aquilone.
+
+--==============================================================================
+-- Il prato (/erba)
+--==============================================================================
+-- Creiamo il prato solo perché ci serve un oggetto scenario da testare.
+
+THE prato IsA object AT giardino.
+  IS scenario.
+  NAME prato.
+  NAME erba.
+END THE prato.
+
+--==============================================================================
+-- Il Cinguettio
 --==============================================================================
 -- Un 'suono' per testare sia 'ascolta' che con oggetti che NON sono:
 --    esaminabile, prendibile, raggiungibile, spostabile.
-THE cinquettio IsA suono AT giardino.
+THE cinguettio IsA suono AT giardino.
   DESCRIPTION "" -- non vogliamo che compaia nella descrizione (compare se si
                  -- 'ascolta' in giardino).
 
@@ -128,7 +176,7 @@ THE cinquettio IsA suono AT giardino.
         THEN "Da questa distanza è difficile capire di che uccelli si tratti."
       END IF.
   END VERB ascolta.
-END THE cinquettio.
+END THE cinguettio.
 
 --==============================================================================
 -- Il Tavolo da Giardino (supporto)
@@ -138,6 +186,15 @@ THE tavolo_giardino IsA supporto AT giardino.
   IS NOT prendibile.
   NAME tavolo.
 END THE tavolo_giardino.
+
+--------------------------------------------------------------------------------
+-- La Rivista
+--------------------------------------------------------------------------------
+THE rivista IsA object IN tavolo_giardino.
+  HAS articolo "la".
+  -- @TODO: implementala come leggibile!
+END THE rivista.
+
 
 --==============================================================================
 -- Il Lettino
@@ -383,9 +440,23 @@ END THE pistola.
 
 THE giardiniere IsA maschio AT giardino.
   HAS xDesc "Il giardiniere è intento a curare le piante.".
-  
 END THE giardiniere.
 
+THE gatto IsA actor AT giardino.
+END THE gatto.
+
+--------------------------------------------------------------------------------
+-- La vicina di casa
+--------------------------------------------------------------------------------
+-- La vicina è al di là della staccionata e in lontananza. Quindi non sarà
+-- possibile parlarle, lanciarle cose, ecc.
+
+THE vicina IsA femmina AT giardino.
+  IS NOT raggiungibile.
+  IS distante.
+  DESCRIPTION "" -- La descriviamo assieme alla staccionata!
+  HAS xDesc "È la tua vicina di casa, ma non sai come si chiama.".
+END THE vicina.
 
 
 --------------------------------------------------------------------------------

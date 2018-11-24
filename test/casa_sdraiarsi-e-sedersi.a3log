@@ -62,8 +62,10 @@ Sei già in piedi.
 > ; Abbiamo creato una lettino su cui è implementato il verbo 'sdraiati_su'.
 > sud
 Il Giardino di Casa
-A nord puoi tornare in casa. Puoi vedere un tavolo, un lettino e una 
-piscina qui. C'è un giardiniere qui.
+A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
+e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
+un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
+una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
 
 > sdraiati sul lettino
 Ti sdrai sul lettino.
@@ -164,8 +166,10 @@ You're sitting down already.
 > ; Proviamo a usare 'sdraiati' quando siamo già sdraiati su qualcosa:
 > sud
 Il Giardino di Casa
-A nord puoi tornare in casa. Puoi vedere un tavolo, un lettino e una 
-piscina qui. C'è un giardiniere qui.
+A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
+e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
+un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
+una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
 
 > sdraiati sul lettino
 Ti alzi e ti sdrai sul lettino.

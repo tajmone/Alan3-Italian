@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.9.3-Alpha, 2018-11-23: Alan 3.0beta6
+--| v0.9.4-Alpha, 2018-11-24: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
@@ -294,6 +294,15 @@ ADD TO EVERY blocco_definizioni
   -- verbo, o sia nelle clausole WHERE della sintassi che nel corpo del verbo),
   -- perciò è meglio implementarle come un singolo attributo riutilizzabile.
 
+  -- VERBI: assaggia, mordi.
+  HAS nessun_sapore
+    "non senti nessun sapore particolare.". ---> ispirato a i6
+
+
+  -- --------------------------------
+  -- Istruzioni per l'uso dei comandi
+  -- --------------------------------
+
   -- VERBI: chiedi_errore.
   HAS per_chiedere_qlco_USA
     "Per chiedere qualcosa a qualcuno usa CHIEDI A PERSONA OGGETTO.".
@@ -307,9 +316,10 @@ ADD TO EVERY blocco_definizioni
   HAS per_scrivere_USA
     "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
 
-  -- VERBI: assaggia, mordi.
-  HAS nessun_sapore
-    "non senti nessun sapore particolare.". ---> ispirato a i6
+  -- VERBI: .
+  HAS per_consultare_qlco_USA
+    "Per consultare qualcosa usa CONSULTA FONTE RIGUARDO PERSONA/COSA.".
+
 
 
   -- -------------------
@@ -387,7 +397,7 @@ ADD TO EVERY blocco_definizioni
   --       | di oggetti multipli o di "TUTTO".
 
   -- ORIGINAL EN:  illegal_parameter_sg/pl  +  check_obj_suitable_sg/pl
-  HAS ogg1_inadatto_sg  "$+1 non è qualcosa che puoi".                          ---> (verbi vari)
+  HAS ogg1_inadatto_sg  "$+1 non è qualcosa che puoi".
   HAS ogg1_inadatto_pl  "$+1 non sono qualcosa che puoi".
 
   
@@ -427,14 +437,7 @@ ADD TO EVERY blocco_definizioni
   -- PARAMETRI INADATTI CON PREPOSIZIONI ARICOLATE
   -- =============================================
   -- Varianti dei messaggi precedenti, quando si tratta di parametri che richiedono
-  -- preposizioni articolate.
-
-  -- -----------------
-  -- PREPOSIZIONE "DA"
-  -- -----------------
-  -- ORIGINAL EN: (nessuno)
-  HAS ogg1_inadatto_DA_sg  "$+1 non è qualcosa da cui poter".                   ---> guarda_fuori_da
-  HAS ogg1_inadatto_DA_pl  "$+1 non sono qualcosa da cui poter".
+  -- preposizioni articolate (di|a|da|in|con|su).
 
   -- ----------------
   -- PREPOSIZIONE "A"
@@ -454,6 +457,12 @@ ADD TO EVERY blocco_definizioni
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
   HAS check_obj_suitable_at "You can't $v anything at $+2.".          -- fire_at, throw_at, throw_to
 
+  -- -----------------
+  -- PREPOSIZIONE "DA"
+  -- -----------------
+  -- ORIGINAL EN: (nessuno)
+  HAS ogg1_inadatto_DA_sg  "$+1 non è qualcosa da cui poter".                   ---> guarda_fuori_da
+  HAS ogg1_inadatto_DA_pl  "$+1 non sono qualcosa da cui poter".
 
   -- -----------------
   -- PREPOSIZIONE "IN"
@@ -468,6 +477,19 @@ ADD TO EVERY blocco_definizioni
   HAS ogg2_inadatto_IN_sg  "$+2 non è qualcosa in cui poter".
   HAS ogg2_inadatto_IN_pl  "$+2 non sono qualcosa in cui poter".
 
+  -- ------------------
+  -- PREPOSIZIONE "CON"
+  -- ------------------
+  -- VERBI: gioca_con, parla_con.
+  -- ORIGINAL EN: check_obj_suitable_with_sg/pl + illegal_parameter_with_sg/+pl
+  HAS ogg1_inadatto_CON_sg  "$+1 non è qualcosa con cui poter".
+  HAS ogg1_inadatto_CON_pl  "$+1 non sono qualcosa con cui poter".
+
+  -- VERBI: brucia_con.
+  -- ORIGINAL EN: illegal_parameter2_with_sg/pl  +  check_obj2_suitable_with_sg/pl
+  HAS ogg2_inadatto_CON_sg  "$+2 non è qualcosa con cui poter".
+  HAS ogg2_inadatto_CON_pl  "$+2 non sono qualcosa con cui poter".
+
   -- -----------------
   -- PREPOSIZIONE "SU"
   -- -----------------
@@ -479,26 +501,6 @@ ADD TO EVERY blocco_definizioni
   HAS ogg2_inadatto_SU_sg  "$+2 non è qualcosa su cui poter".
   HAS ogg2_inadatto_SU_pl  "$+2 non sono qualcosa su cui poter".
 
-
-  -- ------------------
-  -- PREPOSIZIONE "CON"
-  -- ------------------
-  -- VERBI: parla_con.
-  -- ORIGINAL EN: (nessuno)
-  HAS ogg1_inadatto_CON_sg  "$+1 non è qualcosa con cui poter".
-  HAS ogg1_inadatto_CON_pl  "$+1 non sono qualcosa con cui poter".
-
-  -- VERBI: brucia_con.
-  -- ORIGINAL EN: illegal_parameter2_with_sg/pl  +  check_obj2_suitable_with_sg/pl
-  HAS ogg2_inadatto_CON_sg  "$+2 non è qualcosa con cui poter".
-  HAS ogg2_inadatto_CON_pl  "$+2 non sono qualcosa con cui poter".
-
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_obj_suitable_with_sg "That's not something you can $v with.".   -- play_with
-  HAS check_obj_suitable_with_pl "Those are not something you can $v with.".
-
-  HAS illegal_parameter_with_sg "That's not something you can $v with.".    -- kill_with, shoot_with, play_with
-  HAS illegal_parameter_with_pl "Those are not something you can $v with.".
 
   -- =============================================
   -- PARAMETRI INADATTI CON PREPOSIZIONI IMPROPRIE
@@ -575,19 +577,27 @@ ADD TO EVERY blocco_definizioni
   -- (attributi: "NOT raggiungibile" e "distante").
 
   -- ORIGINAL EN:  check_obj_reachable_sg/pl  +  check_obj2_reachable_sg/pl
-  HAS ogg1_non_raggiungibile_sg  "$+1 è fuori dalla tua portata.".       -- (numerous)
+  HAS ogg1_non_raggiungibile_sg  "$+1 è fuori dalla tua portata.".
   HAS ogg1_non_raggiungibile_pl  "$+1 sono fuori dalla tua portata.".
-  HAS ogg2_non_raggiungibile_sg  "$+2 è fuori dalla tua portata.".        -- empty_in, fill_with, pour_in, put_in, take_from, tie_to
+  HAS ogg2_non_raggiungibile_sg  "$+2 è fuori dalla tua portata.".
   HAS ogg2_non_raggiungibile_pl  "$+2 sono fuori dalla tua portata.".
 
-  -- ORIGINAL EN:  check_obj_not_distant_sg/pl  +  check_obj2_not_distant_sg/pl
-  HAS ogg1_distante_sg "$+1 è troppo distante.".          -- (numerous)
-  HAS ogg1_distante_pl "$+1 sono troppo distanti.".
-  HAS ogg2_distante_sg "$+2 è troppo distante.".         -- empty_in, fill_with, pour_in, put_in, show, take_from,                                  -- + throw_at, throw_in, throw_to
-  HAS ogg2_distante_pl "$+2 sono troppo distanti.".
+  -- VERBI: chiedi.
+  -- ORIGINAL EN: check_obj_reachable_ask.
+  HAS ogg2_sg_non_raggiungibile_png1_sg
+    "$+1 non può prendere $+2, è fuori dalla sua portata.".
+  HAS ogg2_sg_non_raggiungibile_png1_pl
+    "$+1 non possono prendere $+2, è fuori dalla sua portata.".
+  HAS ogg2_pl_non_raggiungibile_png1_sg
+    "$+1 non può prendere $+2, sono fuori dalla sua portata.".
+  HAS ogg2_pl_non_raggiungibile_png1_pl
+    "$+1 non possono prendere $+2, sono fuori dalla sua portata.".
 
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_obj_reachable_ask "$+1 can't reach $+2.".         -- ask_for
+  -- ORIGINAL EN:  check_obj_not_distant_sg/pl  +  check_obj2_not_distant_sg/pl
+  HAS ogg1_distante_sg "$+1 è troppo distante.".
+  HAS ogg1_distante_pl "$+1 sono troppo distanti.".
+  HAS ogg2_distante_sg "$+2 è troppo distante.".
+  HAS ogg2_distante_pl "$+2 sono troppo distanti.".
 
   -- ===========================================================================
   -- OGGETTI MANCANTI & NON OTTENIBILI
@@ -789,7 +799,7 @@ ADD TO EVERY blocco_definizioni
   -- ====================
 
   -- VERBI: (moltissimi)
-  -- ORIGINAL EN: (vari messaggi inglesi: check_obj2_not_hero1)
+  -- ORIGINAL EN: check_obj_not_hero1 + check_obj2_not_hero1
   HAS azione_insensata  "Questo non ha alcun senso.".
 
   -- VERBI: spara_a, spara_a_errore.
@@ -805,11 +815,7 @@ ADD TO EVERY blocco_definizioni
   -- d) checks guarding against actions directed at the hero him-/herself
   -----------------------------------------------------------------------
 
-  HAS check_obj_not_hero1  "It doesn't make sense to $v yourself.".             -- ask, ask_for, attack, attack_with, catch, follow
-                                                                                -- kick, listen, pull, push, push_with, take,
-                                                                                -- take_from,tell
   HAS check_obj_not_hero5  "You don't need to be freed.".                       -- free
-  HAS check_obj_not_hero6  "There is no time for that now.".                    -- kiss, play_with, rub
   HAS check_obj_not_hero7  "Turning your head, you notice nothing unusual behind yourself.".   -- look_behind
   HAS check_obj_not_hero8  "You notice nothing unusual under yourself.".        -- look_under
   HAS check_obj2_not_hero3 "You can't $v things to yourself.".                  -- give, tie_to
@@ -838,6 +844,20 @@ ADD TO EVERY blocco_definizioni
   HAS la_violenza_non_è_la_risposta
     "La violenza non è la giusta risposta a questo.". ---> taken from i6
 
+  -- VERBI: segui.
+  -- ORIGINAL EN: check_act_near_hero.
+  HAS impossibile_seguire_png1_sg  "Non hai idea di dove si trovi $+1 ora.
+                                    Specifica la direzione in cui vorresti andare.".
+  HAS impossibile_seguire_png1_pl  "Non hai idea di dove si trovi $+1 ora.
+                                    Specifica la direzione in cui vorresti andare.".
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  
+  HAS check_obj_in_act_sg "$+2 doesn't have $+1.".              -- take_from
+  HAS check_obj_in_act_pl "$+2 don't have $+1.".
+  HAS check_obj_not_in_act_sg "$+2 already has $+1.".             -- give
+  HAS check_obj_not_in_act_pl "$+2 already have $+1.".
+
   -- ===========
   -- AZIONI VANE
   -- ===========
@@ -854,6 +874,10 @@ ADD TO EVERY blocco_definizioni
   -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
   HAS azione_futile "Farlo non servirebbe a nulla.".
   -- @NOTA: i6 usa: "Non otterrai niente con questo."
+
+  -- VERBI: bacia, gioca_con, sfrega.
+  -- ORIGINAL EN: check_obj_not_hero6.
+  HAS azione_irrelevante  "Hai cose più importanti a cui pensare.".
 
   
   -- ================
@@ -1030,10 +1054,6 @@ ADD TO EVERY blocco_definizioni
   HAS check_obj_suitable_off_sg "That's not something you can $v off.".     -- turn_off, switch_off
   HAS check_obj_suitable_off_pl "Those are not something you can $v off.".
   
-  -- HAS check_obj2_suitable_with_sg "That's not something you can $v things with.".   -- break_with, burn_with, close_with, cut_with, fill_with,
-  -- HAS check_obj2_suitable_with_pl "Those are not something you can $v things with.".   -- + lock_with, open_with, pry_with, push_with,
-                                   -- + touch_with, unlock_with
-
   HAS check_obj_suitable_examine_sg "That's not something you can examine.".      -- examine
   HAS check_obj_suitable_examine_pl "Those are not something you can examine.".   -- examine
 
@@ -1042,18 +1062,11 @@ ADD TO EVERY blocco_definizioni
   HAS check_obj_suitable_look_through "You can't look through $+1.".        -- look_through
 
 
-
-
-
-
-
   -- other attribute checks:
   --------------------------
 
-
   HAS check_obj_allowed_in_sg "$+1 doesn't belong in $+2.".             -- empty_in, pour_in, put_in, throw_in
   HAS check_obj_allowed_in_pl "$+1 don't belong in $+2.".
-
 
 
   HAS check_obj_movable "It's not possible to $v $+1.". -- lift, pull, push, push_with, shake, take, take_from
@@ -1077,18 +1090,6 @@ ADD TO EVERY blocco_definizioni
 
   -- b) location and containment checks for actors and objects
   ------------------------------------------------------------
-
-
-  -- containment checks for actors other than the hero (checks for the hero are listed separately below):
-  -------------------------------------------------------------------------------------------------------
-
-  HAS check_act_near_hero "You don't quite know where $+1 went.           
-                          You should state a direction where you want to go.". -- follow
-
-  HAS check_obj_in_act_sg "$+2 doesn't have $+1.".              -- take_from
-  HAS check_obj_in_act_pl "$+2 don't have $+1.".
-  HAS check_obj_not_in_act_sg "$+2 already has $+1.".             -- give
-  HAS check_obj_not_in_act_pl "$+2 already have $+1.".
 
 
   -- location and containment checks for the hero:
