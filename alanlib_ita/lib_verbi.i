@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.9.5-Alpha, 2018-11-25: Alan 3.0beta6
+--| v0.9.6-Alpha, 2018-11-25: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -40,7 +40,7 @@
 --| alla loro affinità, di modo da rendere più facile consultare il codice di
 --| verbi correlati tra loro.
 --| 
---|=============================================================================
+--| ============================================================================
 --| 
 --| [big]#*Legenda delle Tabelle*#
 --| 
@@ -51,7 +51,7 @@
 --|   [A] Arietà     :: <n> = numero di parametri
 --|   [O] Oggetto    :: {X} = Sì
 --|   [B] C'è un Bug :: {B} = Sì
---|=============================================================================
+--| ============================================================================
 --<
 
 -- Le direzioni (nord, sud, su, giù, ecc.) sono definite nel modulo della libreria
@@ -11125,9 +11125,9 @@ END VERB rispondi_Sì.
 
 -->custom_attributes(100)
 --| ////
---|=============================================================================
+--| ============================================================================
 --| Custom AsciiDoc Attributes for Doxter
---|=============================================================================
+--| ============================================================================
 --| ////
 
 --| // Traduzione italiana degli attributi predefiniti di Asciidoctor:

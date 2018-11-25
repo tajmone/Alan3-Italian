@@ -17,7 +17,9 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/11/25](#20181125)
+- [2018/11/25 \(2\)](#20181125-2)
+    - [Aggiornamento Doxter](#aggiornamento-doxter)
+- [2018/11/25 \(1\)](#20181125-1)
     - [Messaggi dei verbi](#messaggi-dei-verbi)
         - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
         - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
@@ -70,7 +72,24 @@ For previuos changes, see:
 -----
 
 
-# 2018/11/25
+# 2018/11/25 (2)
+
+- [`libreria.i`][libreria] (v0.9.1)
+- [`lib_classi.i`][lib_classi] (v0.9.3)
+- [`lib_definizioni.i`][lib_definizioni] (v0.9.1)
+- [`lib_luoghi.i`][lib_luoghi] (v0.9.1)
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] (v0.9.2)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.6)
+- [`lib_verbi.i`][lib_verbi] (v0.9.6)
+- [`lib_supplemento.i`][lib_supplemento] (v0.9.1)
+
+## Aggiornamento Doxter
+
+L'aggiornamento a Doxter v0.2.4-alpha ha richiesto delle piccole modifiche in elementi comuni a tutti i moduli della libreria (lo spazio dopo un marcatore Doxter è ora obbligatorio).
+
+<!---------------------------------------------------------------------------->
+
+# 2018/11/25 (1)
 
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.5)
 - [`lib_verbi.i`][lib_verbi] (v0.9.5)

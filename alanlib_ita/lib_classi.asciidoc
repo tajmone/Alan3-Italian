@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Classi
 Tristano Ajmone <tajmone@gmail.com>
-v0.9.2-Alpha, 2018-11-23: Alan 3.0beta6
+v0.9.3-Alpha, 2018-11-25: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_classes.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -9,9 +9,9 @@ Ad opera di Tristano Ajmone,  (C) 2018, Artistic License 2.1.
 
 // tag::custom_attributes[]
 ////
-=============================================================================
+============================================================================
 Custom AsciiDoc Attributes for Doxter
-=============================================================================
+============================================================================
 ////
 
 // Traduzione italiana degli attributi predefiniti di Asciidoctor:

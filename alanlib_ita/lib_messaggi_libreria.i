@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.9.5-Alpha, 2018-11-25: Alan 3.0beta6
+--| v0.9.6-Alpha, 2018-11-25: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
@@ -1196,9 +1196,9 @@ END ADD TO blocco_definizioni.
 
 -->custom_attributes(100)
 --| ////
---|=============================================================================
+--| ============================================================================
 --| Custom AsciiDoc Attributes for Doxter
---|=============================================================================
+--| ============================================================================
 --| ////
 
 --| // Traduzione italiana degli attributi predefiniti di Asciidoctor:

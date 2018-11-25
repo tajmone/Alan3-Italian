@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.9.5-Alpha, 2018-11-25: Alan 3.0beta6
+v0.9.6-Alpha, 2018-11-25: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -9,9 +9,9 @@ Ad opera di Tristano Ajmone,  (C) 2018, Artistic License 2.1.
 
 // tag::custom_attributes[]
 ////
-=============================================================================
+============================================================================
 Custom AsciiDoc Attributes for Doxter
-=============================================================================
+============================================================================
 ////
 
 // Traduzione italiana degli attributi predefiniti di Asciidoctor:
@@ -41,7 +41,7 @@ consultazione. Nel codice sorgente i verbi sono invece aggregati in base
 alla loro affinità, di modo da rendere più facile consultare il codice di
 verbi correlati tra loro.
 
-=============================================================================
+============================================================================
 
 [big]#*Legenda delle Tabelle*#
 
@@ -52,7 +52,7 @@ Il significato delle lettere nelle ultime quattro colonne è il seguente:
   [A] Arietà     :: <n> = numero di parametri
   [O] Oggetto    :: {X} = Sì
   [B] C'è un Bug :: {B} = Sì
-=============================================================================
+============================================================================
 
 // end::elenco_verbi[]
 // tag::tabella_verbi_partita[]
