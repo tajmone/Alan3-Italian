@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.9.4-Alpha, 2018-11-24: Alan 3.0beta6
+--| v0.9.5-Alpha, 2018-11-25: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -2449,8 +2449,6 @@ ADD TO EVERY ACTOR
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
---                                                                              TRANSLATE!
-         -- THEN SAY mia_AT:check_obj_reachable_ask.
             THEN
               IF ogg IS NOT plurale
                 THEN
@@ -2474,9 +2472,9 @@ ADD TO EVERY ACTOR
       AND ogg IS NOT scenario
         ELSE
           IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-            THEN SAY mia_AT:check_obj2_not_scenery_sg.
-            ELSE SAY mia_AT:check_obj2_not_scenery_pl.
+          --              "$+1 non [è/sono] importante ai fini del gioco."
+            THEN SAY mia_AT:ogg2_scenario_sg.
+            ELSE SAY mia_AT:ogg2_scenario_pl.
           END IF.
       DOES
         -- Preserviamo copia dello stato di condiscendenza attuale del PNG:
@@ -2488,15 +2486,12 @@ ADD TO EVERY ACTOR
         -- rimuovere un oggetto contenuto da esso: 
         MAKE png condiscendente.
         LOCATE ogg IN hero.
---                                                                              TRANSLATE!
         "$+1 ti"
         IF png IS NOT plurale
           THEN "dà"
           ELSE "danno"
         END IF.
         "$+2."
-     -- SAY THE png. "gives" SAY THE ogg. "to you."
-        
         -- Ora ripristiniamo lo stato di condiscendenza originale del PNG:
         IF mia_AT IS NOT temp_condiscendente
           THEN MAKE png NOT condiscendente.
@@ -2861,7 +2856,6 @@ ADD TO EVERY STRING
       ELSE SAY mia_AT:azione_bloccata.
     DOES
       "Qual'era la domanda?"
-   -- "What was the question?"
     END VERB rispondi.
 END ADD TO.
 
@@ -3045,9 +3039,9 @@ ADD TO EVERY liquido
           IF recipiente OF liq NOT DIRECTLY IN hero
             THEN
               IF recipiente OF liq IS NOT prendibile
-                ---> @TODO!!                                                    TRANSLATE!
-                THEN "You can't carry" SAY THE liq. "around in your bare hands."
-                  -- the action stops here if the container is not takeable.
+                -- L'azione termina qui se il contenitore non è prendibile:
+                THEN SAY mia_AT:impossibile_maneggiare_liq1.
+              --THEN "You can't carry" SAY THE liq. "around in your bare hands."
                 ELSE
                   LOCATE recipiente OF liq IN hero.
                   "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
@@ -3064,7 +3058,6 @@ ADD TO EVERY liquido
               LOCATE liq AT limbo.
           END IF.
       END IF.
-
   END VERB bevi.
 END ADD TO.
 
@@ -3281,8 +3274,7 @@ ADD TO EVERY liquido
             THEN
               IF recipiente OF liq IS NOT prendibile
                 -- Se il recipiente non può essere preso, l'azione si ferma qui.
---                                                                              TRANSLATE!
-                THEN "You can't carry" SAY THE liq. "around in your bare hands."
+                THEN SAY mia_AT:impossibile_maneggiare_liq1.
                 ELSE LOCATE recipiente OF liq IN hero.
                 "(prima prendi" SAY THE recipiente OF liq. "$$)$n"
               END IF.
@@ -3299,7 +3291,6 @@ ADD TO EVERY liquido
               -- "You take a sip of" SAY THE liq. "."
           END IF.
       END IF.
-
   END VERB sorseggia.
 END ADD TO.
 
@@ -3640,8 +3631,7 @@ SYNTAX svuota_in = svuota (ogg) 'in' (cont)
   AND cont IsA OBJECT
     ELSE
       IF cont IsA ACTOR
---                                                                              TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter_act.
+        THEN SAY mia_AT:azione_insensata.
         ELSE
           IF ogg IS NOT plurale
             THEN SAY mia_AT:ogg2_inadatto_IN_sg.
@@ -3676,8 +3666,7 @@ versa_in = versa (ogg) 'in' (cont)
   AND cont IsA OBJECT
     ELSE
       IF cont IsA ACTOR
---                                                                              TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter_act.
+        THEN SAY mia_AT:azione_insensata.
         ELSE
           IF ogg IS NOT plurale
             THEN SAY mia_AT:ogg2_inadatto_IN_sg.
@@ -4054,9 +4043,9 @@ ADD TO EVERY THING
     AND ogg IS NOT scenario
       ELSE
         IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-          THEN SAY mia_AT:check_obj_not_scenery_sg. ---> "$+1 non è importante ai fini del gioco."
-          ELSE SAY mia_AT:check_obj_not_scenery_pl. ---> "$+1 non sono importanti ai fini del gioco."
+          --              "$+1 non [è/sono] importante ai fini del gioco."
+          THEN SAY mia_AT:ogg1_scenario_sg.
+          ELSE SAY mia_AT:ogg1_scenario_pl.
         END IF.
 
     DOES
@@ -5208,9 +5197,9 @@ ADD TO EVERY THING
     AND ogg IS NOT scenario
       ELSE
         IF THIS IS NOT plurale
---                                                                              TRANSLATE!
-          THEN SAY mia_AT:check_obj_not_scenery_sg. --#-> "$+1 is not important."
-          ELSE SAY mia_AT:check_obj_not_scenery_pl. --#-> "$+1 are not important."
+          --              "$+1 non [è/sono] importante ai fini del gioco."
+          THEN SAY mia_AT:ogg1_scenario_sg.
+          ELSE SAY mia_AT:ogg1_scenario_pl.
         END IF.
     AND ogg IS spostabile
    -- ELSE SAY mia_AT:check_obj_movable. --#-> "It's not possible to $v $+1."
@@ -5368,16 +5357,16 @@ ADD TO EVERY THING
       AND ogg IS NOT scenario
         ELSE
           IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-            THEN SAY mia_AT:check_obj_not_scenery_sg.
-            ELSE SAY mia_AT:check_obj_not_scenery_pl.
+          --              "$+1 non [è/sono] importante ai fini del gioco."
+            THEN SAY mia_AT:ogg1_scenario_sg.
+            ELSE SAY mia_AT:ogg1_scenario_pl.
           END IF.
       AND detentore IS NOT scenario
         ELSE
           IF detentore IS NOT plurale
---                                                                              TRANSLATE!
-            THEN SAY mia_AT:check_obj2_not_scenery_sg.
-            ELSE SAY mia_AT:check_obj2_not_scenery_pl.
+          --              "$+1 non [è/sono] importante ai fini del gioco."
+            THEN SAY mia_AT:ogg2_scenario_sg.
+            ELSE SAY mia_AT:ogg2_scenario_pl.
           END IF.
 --                                                                              TRANSLATE!
       AND ogg IS spostabile
@@ -5859,7 +5848,7 @@ SYNTAX metti_in = metti (ogg) 'in' (cont)
   AND cont IsA OBJECT
     ELSE
       IF cont IsA ACTOR
-        THEN SAY mia_AT:illegal_parameter_act.
+        THEN SAY mia_AT:azione_insensata.
         ELSE
           IF ogg IS NOT plurale
             THEN SAY mia_AT:ogg2_inadatto_IN_sg.
@@ -7078,9 +7067,8 @@ SYNTAX lancia_in = lancia (proiettile) 'in' (cont)
     ELSE SAY mia_AT:illegal_parameter_obj.
   AND cont IsA OBJECT
     ELSE
---                                                                              TRANSLATE!
       IF cont IsA ACTOR
-        THEN SAY mia_AT:illegal_parameter_act.
+        THEN SAY mia_AT:azione_insensata.
         ELSE
           IF cont IS NOT plurale
             THEN SAY mia_AT:ogg2_inadatto_IN_sg.

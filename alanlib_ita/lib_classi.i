@@ -1593,13 +1593,11 @@ EVERY liquido IsA OBJECT
   VERB prendi
     CHECK recipiente OF THIS NOT IN hero
       ELSE
-        --         "Possiedi già $+1."
         SAY mia_AT:ogg1_già_posseduto.
     DOES ONLY
       IF recipiente OF THIS = recipiente_fittizio
       OR recipiente OF THIS IS NOT prendibile
---                                                                              TRANSLATE!
-        THEN "You can't carry" SAY THE THIS. "around in your bare hands."
+        THEN SAY mia_AT:impossibile_maneggiare_liq1.
       ELSE LOCATE recipiente OF THIS IN hero.
 --                                                                              TRANSLATE!
         "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nTaken."
@@ -1626,8 +1624,9 @@ EVERY liquido IsA OBJECT
         -- the above is triggered when the player types for example
         -- >take juice from bottle   -- (when the juice is in the bottle)
     DOES ONLY
-      IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT prendibile
-        THEN "You can't carry" SAY THE THIS. "around in your bare hands."
+      IF recipiente OF THIS = recipiente_fittizio
+      OR recipiente OF THIS IS NOT prendibile
+        THEN SAY mia_AT:impossibile_maneggiare_liq1.
       ELSE LOCATE recipiente OF THIS IN hero.
       "($$" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)
        $nPres$$" SAY THIS:vocale. "."
@@ -1692,11 +1691,11 @@ EVERY liquido IsA OBJECT
       -- >>> prendi implicito: >>>
       IF THIS NOT IN hero
         THEN
-          IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT prendibile
---                                                                              TRANSLATE!
-            THEN "You can't carry" SAY THE THIS. "around in your bare hands."
-          ELSE LOCATE recipiente OF THIS IN hero.
-            "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
+          IF recipiente OF THIS = recipiente_fittizio
+          OR recipiente OF THIS IS NOT prendibile
+            THEN SAY mia_AT:impossibile_maneggiare_liq1.
+            ELSE LOCATE recipiente OF THIS IN hero.
+              "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
           END IF.
       END IF.
       -- <<< prendi implicito <<<
@@ -1775,8 +1774,7 @@ EVERY liquido IsA OBJECT
         IF THIS NOT IN hero
           THEN
             IF recipiente OF THIS = recipiente_fittizio
---                                                                              TRANSLATE!
-              THEN "You can't carry" SAY THE THIS. "around in your bare hands."
+              THEN SAY mia_AT:impossibile_maneggiare_liq1.
             ELSIF recipiente OF THIS IS NOT prendibile
 --                                                                              TRANSLATE!
               THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
@@ -1836,8 +1834,7 @@ EVERY liquido IsA OBJECT
         IF THIS NOT IN hero
           THEN
             IF recipiente OF THIS = recipiente_fittizio
---                                                                              TRANSLATE!
-              THEN "You can't carry" SAY THE THIS. "around in your bare hands."
+              THEN SAY mia_AT:impossibile_maneggiare_liq1.
             ELSIF recipiente OF THIS IS NOT prendibile
 --                                                                              TRANSLATE!
               THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
@@ -1932,8 +1929,7 @@ EVERY liquido IsA OBJECT
     WHEN ogg
       DOES ONLY
         IF recipiente OF THIS = recipiente_fittizio
---                                                                              TRANSLATE!
-          THEN "You can't carry" SAY THE THIS. "around in your bare hands."
+          THEN SAY mia_AT:impossibile_maneggiare_liq1.
           ELSE
             IF recipiente OF THIS IS prendibile
               THEN
@@ -1941,10 +1937,9 @@ EVERY liquido IsA OBJECT
                 IF THIS NOT IN hero
                   THEN
                     IF recipiente OF THIS = recipiente_fittizio
---                                                                              TRANSLATE!
-                      THEN "You can't carry" SAY THE THIS. "around in your bare hands."
-                    ELSE LOCATE recipiente OF THIS IN hero.
-                      "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
+                      THEN SAY mia_AT:impossibile_maneggiare_liq1.
+                      ELSE LOCATE recipiente OF THIS IN hero.
+                        "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
                     END IF.
                 END IF.
                 -- <<< prendi implicito <<<
@@ -2001,13 +1996,12 @@ EVERY liquido IsA OBJECT
         IF THIS NOT IN hero
           THEN
             IF recipiente OF THIS = recipiente_fittizio
- --                                                                              TRANSLATE!
-             THEN "You can't carry" SAY THE THIS. "around in your bare hands."
-            ELSIF recipiente OF THIS IS NOT prendibile
+              THEN SAY mia_AT:impossibile_maneggiare_liq1.
+              ELSIF recipiente OF THIS IS NOT prendibile
 --                                                                              TRANSLATE!
               THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
-            ELSE LOCATE recipiente OF THIS IN hero.
-              "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
+              ELSE LOCATE recipiente OF THIS IN hero.
+                "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
             END IF.
         END IF.
         -- <<< prendi implicito <<<

@@ -229,6 +229,7 @@ THE piscina IsA liquido AT giardino.
   HAS articolo "la".
   NAME piscina.
   NAME acqua.
+  NAME 'l''acqua'.
 
   VERB nuota
     DOES ONLY

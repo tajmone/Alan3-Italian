@@ -20,7 +20,7 @@ pistola, un vasetto e un cesto per la frutta.
 > ; *                                                                            *
 > ; ******************************************************************************
 > ; ==============================================================================
-> ; MANEGGIARE LIQUIDI IN RECIPIENTI
+> ; MANEGGIARE LIQUIDI IN RECIPIENTI PRENDIBILI
 > ; ==============================================================================
 > ; Un 'liquido' può essere contenuto in un 'contenitore_listato', che è il suo
 > ; 'recipiente' di riferimento (attributo referenza istanza).
@@ -77,6 +77,44 @@ La bottiglia contiene del vino.
 
 > versa il vino
 You pour il vino on the floor.
+
+> ; ==============================================================================
+> ; LIQUIDI IN 'recipiente_fittizio'
+> ; ==============================================================================
+> ; Se un liquido non viene creato all'interno di un recipiente avrà di default un
+> ; 'recipiente_fittizio' come contenitore, questi non è prendibile e quindi per
+> ; maneggiare il liquido sarà necessario usare dei recipienti idonei.
+> sud
+Il Giardino di Casa
+A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
+e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
+un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
+una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
+
+> ; ------------------------------------------------------------------------------
+> ; LA PISCINA
+> ; ------------------------------------------------------------------------------
+> ; La piscina è un liquido con NAME piscina + acqua. Questo perché si tratta di
+> ; un liquido senza contenitore. È possibile interagire con questo oggetto sia
+> ; come piscina che come acqua, ma le risposte dei verbi vi si riferiranno sempre
+> ; come "piscina", che con alcune azioni produce messaggi poco eleganti:
+> esamina la piscina
+You notice nothing unusual about la piscina.
+
+> esamina l'acqua
+You notice nothing unusual about la piscina.
+
+> bevi la piscina
+La piscina non è qualcosa che puoi bere.
+
+> bevi l'acqua
+La piscina non è qualcosa che puoi bere.
+
+> prendi la piscina
+Non puoi maneggiare la piscina a mani nude.
+
+> prendi l'acqua
+Non puoi maneggiare la piscina a mani nude.
 
 > 
 

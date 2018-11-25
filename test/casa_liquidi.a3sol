@@ -4,7 +4,7 @@
 ; *                                                                            *
 ; ******************************************************************************
 ; ==============================================================================
-; MANEGGIARE LIQUIDI IN RECIPIENTI
+; MANEGGIARE LIQUIDI IN RECIPIENTI PRENDIBILI
 ; ==============================================================================
 ; Un 'liquido' può essere contenuto in un 'contenitore_listato', che è il suo
 ; 'recipiente' di riferimento (attributo referenza istanza).
@@ -33,3 +33,23 @@ riempi il vasetto con il vino
 esamina il vasetto
 esamina la bottiglia
 versa il vino
+; ==============================================================================
+; LIQUIDI IN 'recipiente_fittizio'
+; ==============================================================================
+; Se un liquido non viene creato all'interno di un recipiente avrà di default un
+; 'recipiente_fittizio' come contenitore, questi non è prendibile e quindi per
+; maneggiare il liquido sarà necessario usare dei recipienti idonei.
+sud
+; ------------------------------------------------------------------------------
+; LA PISCINA
+; ------------------------------------------------------------------------------
+; La piscina è un liquido con NAME piscina + acqua. Questo perché si tratta di
+; un liquido senza contenitore. È possibile interagire con questo oggetto sia
+; come piscina che come acqua, ma le risposte dei verbi vi si riferiranno sempre
+; come "piscina", che con alcune azioni produce messaggi poco eleganti:
+esamina la piscina
+esamina l'acqua
+bevi la piscina
+bevi l'acqua
+prendi la piscina
+prendi l'acqua

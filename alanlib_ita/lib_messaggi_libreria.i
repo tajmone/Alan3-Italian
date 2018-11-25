@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.9.4-Alpha, 2018-11-24: Alan 3.0beta6
+--| v0.9.5-Alpha, 2018-11-25: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
@@ -405,7 +405,6 @@ ADD TO EVERY blocco_definizioni
 
   -- other illegal parameter messages:
   ------------------------------------
-  HAS illegal_parameter_act "That doesn't make sense.".             -- empty_in, pour_in, put_in, throw_in
 
   HAS illegal_parameter_consult_sg "That's not something you can find information about.".  -- consult_about
   HAS illegal_parameter_consult_pl "Those are not something you can find
@@ -673,6 +672,25 @@ ADD TO EVERY blocco_definizioni
   -- OGGETTI NON ESAMINABILI
   -- =======================
   HAS impossibile_guardare "Non è possibile guardare".
+
+
+  -- ================
+  -- OGGETTI SCENARIO
+  -- ================
+ 
+  --@ SCENERY CHECKS -> CAN'T MESSAGES...
+  --#i7: "[The noun] non si [puoi] trasportare."
+  --#i6: "Non @`e importante ai fini del gioco."
+
+  -- VERBI: esamina, prendi, prendi_da.
+  -- ORIGINAL EN: ogg1_scenario_sg/pl.
+  HAS ogg1_scenario_sg "$+1 non è importante ai fini del gioco.".
+  HAS ogg1_scenario_pl "$+1 non sono importanti ai fini del gioco.".
+
+  -- VERBI: chiedi, prendi_da.
+  -- ORIGINAL EN: check_obj2_not_scenery_sg/pl.
+  HAS ogg2_scenario_sg "$+2 non è importante ai fini del gioco.".
+  HAS ogg2_scenario_pl "$+2 non sono importanti ai fini del gioco.".
   
   -- ======================
   -- OGGETTI TROPPO PESANTI
@@ -798,10 +816,6 @@ ADD TO EVERY blocco_definizioni
   -- AZIONI ETERO-DIRETTE
   -- ====================
 
-  -- VERBI: (moltissimi)
-  -- ORIGINAL EN: check_obj_not_hero1 + check_obj2_not_hero1
-  HAS azione_insensata  "Questo non ha alcun senso.".
-
   -- VERBI: spara_a, spara_a_errore.
   -- ORIGINAL EN: check_obj_not_hero2.
   HAS no_autolesionismo  "L'autolesionismo non è contemplato.".
@@ -857,6 +871,15 @@ ADD TO EVERY blocco_definizioni
   HAS check_obj_in_act_pl "$+2 don't have $+1.".
   HAS check_obj_not_in_act_sg "$+2 already has $+1.".             -- give
   HAS check_obj_not_in_act_pl "$+2 already have $+1.".
+
+
+  -- ================
+  -- AZIONI INSENSATE
+  -- ================
+
+  -- VERBI: (moltissimi)
+  -- ORIGINAL EN: check_obj_not_hero1 + check_obj2_not_hero1
+  HAS azione_insensata  "Questo non ha alcun senso.".
 
   -- ===========
   -- AZIONI VANE
@@ -934,9 +957,9 @@ ADD TO EVERY blocco_definizioni
   --       un lancio dato).
   HAS check_obj2_not_in_hero1 "You are carrying $+2.". -- throw_at, throw_in, throw_to
 
-  -- ===============================
-  -- AZIONI RIGUARDANTI IL VESTIARIO
-  -- ===============================
+  -- =================================
+  -- MESSAGGI RIGUARDANTI IL VESTIARIO
+  -- =================================
   -- VERBI: indossa.
   -- ORIGINAL EN:  check_obj_not_in_worn1
   HAS indossi_già  "Stai già indossando $+1.".
@@ -959,9 +982,9 @@ ADD TO EVERY blocco_definizioni
   HAS check_obj_not_in_worn2  "It doesn't make sense to $v something you're wearing.". -- attack, attack_with, kick, shoot, shoot_with
 
 
-  -- =======================
-  -- AZIONI RIGUARDANTI ARMI
-  -- =======================
+  -- ============================
+  -- MESSAGGI RIGUARDANTI LE ARMI
+  -- ============================
   -- VERBI: spara_errore, spara_a_errore.
   -- ORIGINAL EN:  check_count_weapon_in_hero
   HAS non_hai_armi_da_fuoco  "Non stai portando nessun'arma da fuoco con te.".
@@ -975,6 +998,16 @@ ADD TO EVERY blocco_definizioni
   -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
   HAS ogg1_non_arma_da_fuoco_sg  "$+1 non è un'arma da fuoco.".
   HAS ogg1_non_arma_da_fuoco_pl  "$+1 non sono un'arma da fuoco.".
+
+
+  -- ==============================
+  -- MESSAGGI RIGUARDANTI I LIQUIDI
+  -- ==============================
+  
+  -- VERBI: bevi, prendi (..altri..).
+  -- ORIGINAL EN: (nessuno)
+  HAS impossibile_maneggiare_liq1  "Non puoi maneggiare $+1 a mani nude.".
+
 
   -- ============================================================================
 
@@ -1071,14 +1104,6 @@ ADD TO EVERY blocco_definizioni
 
   HAS check_obj_movable "It's not possible to $v $+1.". -- lift, pull, push, push_with, shake, take, take_from
 
-  --@ SCENERY CHECKS -> CAN'T MESSAGES...
-  --#i7: "[The noun] non si [puoi] trasportare."
-  --#i6: "Non @`e importante ai fini del gioco."
-  HAS check_obj_not_scenery_sg "$+1 non è importante ai fini del gioco.". -- examine, take, take_from
-  HAS check_obj_not_scenery_pl "$+1 non sono importanti ai fini del gioco.".
-
-  HAS check_obj2_not_scenery_sg "$+2 is not important.".              -- ask_for, take_from
-  HAS check_obj2_not_scenery_pl "$+2 are not important.".
 
   HAS check_obj_suitable_there "It's not possible to $v there.".          -- look_behind, look_in, look_under
   HAS check_obj2_suitable_there "It's not possible to $v anything there.".      -- throw_in, tie_to
