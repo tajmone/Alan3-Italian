@@ -10,9 +10,9 @@ Tutti i diritti riservati.
 
 
 La Cucina
-A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
-qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un coltello, una 
-pistola, un vasetto e un cesto per la frutta.
+A sud c'è il tuo giardino, a est il tuo studio. Puoi vedere una sedia, un 
+frigo e un tavolo qui. Sopra il tavolo vedi una bottiglia, un sacchetto, 
+un coltello, una pistola, un vasetto e un cesto per la frutta.
 
 > ; ******************************************************************************
 > ; *                                                                            *
@@ -37,7 +37,8 @@ Il cesto per la frutta non è qualcosa in cui poter saltare.
 > ; DA SEDUTO
 > ; ------------------------------------------------------------------------------
 > siediti sulla sedia
-Ti siedi sulla sedia.
+[[ istanza 'sedia' --> VERB 'siediti_su' --> DOES ONLY ]]
+ti siedi sulla sedia.
 
 > salta
 Non puoi farlo da seduto.
@@ -65,7 +66,8 @@ un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e
 una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
 
 > sdraiati sul lettino
-Ti sdrai sul lettino.
+[[ istanza 'lettino' --> VERB 'sdraiati_su' --> DOES ONLY ]]
+ti sdrai sul lettino.
 
 > salta
 Non puoi farlo da sdraiato.

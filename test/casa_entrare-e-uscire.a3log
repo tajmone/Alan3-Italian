@@ -10,9 +10,9 @@ Tutti i diritti riservati.
 
 
 La Cucina
-A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
-qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un coltello, una 
-pistola, un vasetto e un cesto per la frutta.
+A sud c'è il tuo giardino, a est il tuo studio. Puoi vedere una sedia, un 
+frigo e un tavolo qui. Sopra il tavolo vedi una bottiglia, un sacchetto, 
+un coltello, una pistola, un vasetto e un cesto per la frutta.
 
 > ; ******************************************************************************
 > ; *                                                                            *
@@ -44,15 +44,19 @@ un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e
 una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
 
 > entra in piscina
+[[ istanza 'piscina' --> VERB 'entra_in' --> DOES ONLY ]]
+[[ istanza 'nella_piscina' (location) --> ENTERED ]]
 Ti tuffi a bomba nella piscina.
 
 Nella Piscina (Giardino di Casa)
 La piscina è abbastanza ampia per fare delle piccole nuotate.
 
 > entra nella piscina
+[[ istanza 'piscina' --> VERB 'entra_in' --> DOES ONLY ]]
 Sei già in piscina.
 
 > esci dalla piscina
+[[ istanza 'piscina' --> VERB 'esci_da' --> DOES ONLY ]]
 Ti issi sul bordo della piscina ed esci.
 
 Il Giardino di Casa
@@ -62,6 +66,7 @@ un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e
 una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
 
 > esci dalla piscina
+[[ istanza 'piscina' --> VERB 'esci_da' --> DOES ONLY ]]
 Non sei dentro la piscina.
 
 > 

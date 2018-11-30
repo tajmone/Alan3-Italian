@@ -17,40 +17,45 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/11/30](#20181130)
+    - [Messaggi dei verbi](#messaggi-dei-verbi)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
+        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi)
+    - [Rinomina parametri del verbo `scrivi`](#rinomina-parametri-del-verbo-scrivi)
 - [2018/11/25 \(2\)](#20181125-2)
     - [Aggiornamento Doxter](#aggiornamento-doxter)
 - [2018/11/25 \(1\)](#20181125-1)
-    - [Messaggi dei verbi](#messaggi-dei-verbi)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
+    - [Messaggi dei verbi](#messaggi-dei-verbi-1)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-1)
         - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
         - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi)
 - [2018/11/24](#20181124)
-    - [Messaggi dei verbi](#messaggi-dei-verbi-1)
+    - [Messaggi dei verbi](#messaggi-dei-verbi-2)
         - [Correggi baco in `chiedi`](#correggi-baco-in-chiedi)
         - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi-1)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-1)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-2)
     - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-1)
 - [2018/11/23 \(2\)](#20181123-2)
     - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi)
     - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi-2)
-    - [Traduci Messaggi dei verbi](#traduci-messaggi-dei-verbi-2)
+    - [Traduci Messaggi dei verbi](#traduci-messaggi-dei-verbi-3)
 - [2018/11/23 \(1\)](#20181123-1)
     - [Correggi Baco LIQUIDI](#correggi-baco-liquidi)
 - [2018/11/22 \(5\)](#20181122-5)
-    - [Messaggi dei verbi](#messaggi-dei-verbi-2)
-        - [Elimina Messaggi dei verbi](#elimina-messaggi-dei-verbi)
+    - [Messaggi dei verbi](#messaggi-dei-verbi-3)
+        - [Elimina Messaggi dei verbi](#elimina-messaggi-dei-verbi-1)
         - [Nuovi Messaggi dei verbi](#nuovi-messaggi-dei-verbi-2)
 - [2018/11/22 \(4\)](#20181122-4)
     - [Correggi Baco in LIQUIDO](#correggi-baco-in-liquido)
 - [2018/11/22 \(3\)](#20181122-3)
     - [Documentazione](#documentazione)
     - [Verbi](#verbi)
-    - [Messaggi dei verbi](#messaggi-dei-verbi-3)
+    - [Messaggi dei verbi](#messaggi-dei-verbi-4)
 - [2018/11/22 \(2\)](#20181122-2)
     - [Suddivisione modulo messaggi](#suddivisione-modulo-messaggi)
     - [Passa alla v0.9.0](#passa-alla-v090)
 - [2018/11/22 \(1\)](#20181122-1)
-    - [Messaggi dei verbi](#messaggi-dei-verbi-4)
+    - [Messaggi dei verbi](#messaggi-dei-verbi-5)
         - [Rinomina attributi](#rinomina-attributi)
         - [Azioni insensate](#azioni-insensate)
         - [Azioni Futili](#azioni-futili)
@@ -71,6 +76,41 @@ For previuos changes, see:
 
 -----
 
+
+# 2018/11/30
+
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.7)
+- [`lib_verbi.i`][lib_verbi] (v0.9.7)
+
+
+## Messaggi dei verbi
+
+### Traduci messaggi dei verbi
+
+Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
+
+|       Attributo EN      |        Attributo IT        |                 Testo                  |
+|-------------------------|----------------------------|----------------------------------------|
+| `ogg_stringa_richiesto` | `illegal_parameter_string` | `"Usa le virgolette ("""") per [...]"` |
+
+Gli attributi originali inglesi sono stati eliminati.
+
+### Elimina messaggi dei verbi
+
+Elimina attributi inglesi per i messaggi di risposta dei verbi:
+
+|       Attributo       |               Testo               |
+|-----------------------|-----------------------------------|
+| `check_obj_writeable` | `"Nothing can be written there."` |
+
+Al posto degli attributi originali sono stati impiegati attributi italiani preesistenti, oppure la risposta è stata gestita direttamente nel codice del verbo.
+
+## Rinomina parametri del verbo `scrivi`
+
+Rinomina parametro `txt` in `testo` nei verbi `scrivi` e `scrivi_errore3`.
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/11/25 (2)
 

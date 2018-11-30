@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.9.6-Alpha, 2018-11-25: Alan 3.0beta6
+--| v0.9.7-Alpha, 2018-11-30: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
@@ -400,37 +400,6 @@ ADD TO EVERY blocco_definizioni
   HAS ogg1_inadatto_sg  "$+1 non è qualcosa che puoi".
   HAS ogg1_inadatto_pl  "$+1 non sono qualcosa che puoi".
 
-  
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-
-  -- other illegal parameter messages:
-  ------------------------------------
-
-  HAS illegal_parameter_consult_sg "That's not something you can find information about.".  -- consult_about
-  HAS illegal_parameter_consult_pl "Those are not something you can find
-                information about.".
-
-  HAS illegal_parameter_examine_sg "That's not something you can examine.".     -- examine
-  HAS illegal_parameter_examine_pl "Those are not something you can examine.".
-
-
-  HAS illegal_parameter_look_out_sg "That's not something you can look out of.".    -- look_out_of
-  HAS illegal_parameter_look_out_pl "Those are not something you can look out of.".
-  HAS illegal_parameter_look_through "You can't look through $+1.".       -- look_through
-
-  HAS illegal_parameter_obj "You can only $v objects.".             -- give, put, put_in, put_on, put_against,
-                                     -- + put_behind, put_near, put_under,
-                                     -- + throw_at, throw_in, throw_to, tie_to,
-                                     -- + use, use_with
-
-  HAS illegal_parameter_string "Please state inside double quotes ("""") what you want to $v.". -- answer, say, say_to, write
-
-  HAS illegal_parameter_there "It's not possible to look there.".         -- look_behind, look_in, look_under
-
-  HAS illegal_parameter_what_sg "That's not something I know about.".       -- what_is, where_is
-  HAS illegal_parameter_what_pl "Those are not something I know about.".      -- what_is, where_is
-  HAS illegal_parameter_who_sg "That's not somebody I know about.".       -- who_is
-  HAS illegal_parameter_who_pl "Those are not somebody I know about.".        -- who_is
 
   -- =============================================
   -- PARAMETRI INADATTI CON PREPOSIZIONI ARICOLATE
@@ -540,6 +509,49 @@ ADD TO EVERY blocco_definizioni
   HAS ogg2_inadatto_VICINO_A_sg  "$+2 non è qualcosa vicino a cui poter".
   HAS ogg2_inadatto_VICINO_A_pl  "$+2 non sono qualcosa vicino a cui poter".
 
+  -- ========================================
+  -- PARAMETRI INADATTI PER AZIONI SPECIFICHE
+  -- ========================================
+  -- NESSUN VERBO IN QUESTA SEZIONE PER ORA...
+
+  -- =================
+  -- PARAMETRI STRINGA
+  -- =================
+  
+  -- VERBI: dì, dì_a, rispondi, scrivi.
+  -- ORIGINAL EN: illegal_parameter_string.
+  HAS ogg_stringa_richiesto  "Usa le virgolette ("""") per delimitare l'oggetto della tua azione.".
+
+ 
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+
+  -- other illegal parameter messages:
+  ------------------------------------
+
+  HAS illegal_parameter_consult_sg "That's not something you can find information about.".  -- consult_about
+  HAS illegal_parameter_consult_pl "Those are not something you can find
+                information about.".
+
+  HAS illegal_parameter_examine_sg "That's not something you can examine.".     -- examine
+  HAS illegal_parameter_examine_pl "Those are not something you can examine.".
+
+
+  HAS illegal_parameter_look_out_sg "That's not something you can look out of.".    -- look_out_of
+  HAS illegal_parameter_look_out_pl "Those are not something you can look out of.".
+  HAS illegal_parameter_look_through "You can't look through $+1.".       -- look_through
+
+  HAS illegal_parameter_obj "You can only $v objects.".             -- give, put, put_in, put_on, put_against,
+                                     -- + put_behind, put_near, put_under,
+                                     -- + throw_at, throw_in, throw_to, tie_to,
+                                     -- + use, use_with
+
+
+  HAS illegal_parameter_there "It's not possible to look there.".         -- look_behind, look_in, look_under
+
+  HAS illegal_parameter_what_sg "That's not something I know about.".       -- what_is, where_is
+  HAS illegal_parameter_what_pl "Those are not something I know about.".      -- what_is, where_is
+  HAS illegal_parameter_who_sg "That's not somebody I know about.".       -- who_is
+  HAS illegal_parameter_who_pl "Those are not somebody I know about.".        -- who_is
   
   -- ==============================
   -- PARAMETRI INADATTI CONTENITORI
@@ -618,6 +630,8 @@ ADD TO EVERY blocco_definizioni
   -- ===========================================================================
   -- PROBLEMI RELATIVI AGLI ATTRIBUTI
   -- ===========================================================================
+
+
 
   -- ========================================
   -- PARAMETRI INADATTI A INTERAZIONI VERBALI
@@ -1108,9 +1122,6 @@ ADD TO EVERY blocco_definizioni
   HAS check_obj_suitable_there "It's not possible to $v there.".          -- look_behind, look_in, look_under
   HAS check_obj2_suitable_there "It's not possible to $v anything there.".      -- throw_in, tie_to
 
-
-
-  HAS check_obj_writeable "Nothing can be written there.".            -- write
 
 
   -- b) location and containment checks for actors and objects

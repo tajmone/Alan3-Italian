@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.9.6-Alpha, 2018-11-25: Alan 3.0beta6
+--| v0.9.7-Alpha, 2018-11-30: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -2537,7 +2537,7 @@ END ADD TO.
 
 SYNTAX dì = dì (argomento)
   WHERE argomento IsA STRING
-    ELSE SAY mia_AT:illegal_parameter_string.
+    ELSE SAY mia_AT:ogg_stringa_richiesto.
 
 
 ADD TO EVERY STRING
@@ -2567,7 +2567,7 @@ END ADD TO.
 
 SYNTAX  dì_a = dì (argomento) a (png)
   WHERE argomento IsA STRING
-    ELSE SAY mia_AT:illegal_parameter_string.
+    ELSE SAY mia_AT:ogg_stringa_richiesto.
   AND png IsA ACTOR
     ELSE
       IF png IS NOT plurale
@@ -2846,8 +2846,7 @@ END ADD TO.
 
 SYNTAX rispondi = rispondi (argomento)
   WHERE argomento IsA STRING
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:illegal_parameter_string.
+    ELSE SAY mia_AT:ogg_stringa_richiesto.
 
 
 ADD TO EVERY STRING
@@ -4063,13 +4062,11 @@ ADD TO EVERY THING
           END IF.
           """$$" SAY ogg:testo. "$$""."
       ELSIF ogg = hero
-     -- THEN "You notice nothing unusual about yourself."
+--  @TODO: Servirà vocale di Hero per PG femminile!                             FIXME!
         THEN "Non noti niente di insolito in te stesso."
+--  @TODO: Converti in attributo risposta:                                      FIXME!
         ELSE "Esamini" SAY THE ogg. ", ma non noti niente di speciale."
-     -- ELSE "You notice nothing unusual about" SAY THE ogg. "."
-        --#i7: "Non [trovi] nulla di particolare [inp the noun]."
-        --#i6: "Esamini ", (the) x1, ", ma non noti niente di speciale."
-      END IF.
+     END IF.
   END VERB esamina.
 END ADD TO.
 
@@ -8120,9 +8117,9 @@ END ADD TO.
 -- SYNTAX write = write (txt) 'on' (obj)
 --        write = write (txt) 'in' (obj).
 
-SYNTAX  scrivi = scrivi (txt) su (ogg)
-    WHERE txt IsA STRING
-      ELSE SAY mia_AT:illegal_parameter_string.
+SYNTAX  scrivi = scrivi (testo) su (ogg)
+    WHERE testo IsA STRING
+      ELSE SAY mia_AT:ogg_stringa_richiesto.
     AND ogg IsA OBJECT
       ELSE
         IF ogg IS NOT plurale
@@ -8130,17 +8127,20 @@ SYNTAX  scrivi = scrivi (txt) su (ogg)
           ELSE SAY mia_AT:ogg2_inadatto_SU_pl.
         END IF. "scrivere."
 
-        scrivi = scrivi (txt) 'in' (ogg).
+        scrivi = scrivi (testo) 'in' (ogg).
 
 
 ADD TO EVERY OBJECT
   VERB scrivi
-        WHEN ogg
+    WHEN ogg
       CHECK mia_AT CAN scrivere
         ELSE SAY mia_AT:azione_bloccata.
---                                                                              TRANSLATE!
       AND ogg IS scrivibile
-        ELSE SAY mia_AT:check_obj_writeable.
+        ELSE
+          IF ogg IS NOT plurale
+            THEN SAY mia_AT:ogg2_inadatto_SU_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_SU_pl.
+          END IF. "scrivere."
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -8160,17 +8160,18 @@ ADD TO EVERY OBJECT
           END IF.
 
       DOES
+--       @NOTA: Questa risposta non mi piace, non sappiamo se l'eroe            FIXME!
+--              possiede o meno oggetti idonei alla scrittura!
         "Non hai nulla con cui scrivere."
-      -- "You don't have anything to write with."
 
-        -- To make it work:
+        -- Per eseguire la scrittura:
         -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        -- IF text OF obj = ""
-        --   THEN SET text OF obj TO txt.
-        --   ELSE SET text OF obj TO text OF obj + " " + txt.
+        -- IF ogg:testo = ""
+        --   THEN SET ogg:testo TO testo.
+        --   ELSE SET ogg:testo TO ogg:testo + " " + testo.
         -- END IF.
-        -- "You write ""$$" SAY txt. "$$"" on" SAY THE obj. "."
-        -- MAKE obj readable.
+        -- "Hai scritto ""$1""" SAY ogg:prep_SU. "$2."
+        -- MAKE ogg leggibile.
         -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     END VERB scrivi.
 END ADD TO.
@@ -8209,8 +8210,8 @@ VERB scrivi_errore2
 END VERB scrivi_errore2.
 
 
-SYNTAX scrivi_errore3 = scrivi (txt)
-  WHERE txt IsA STRING
+SYNTAX scrivi_errore3 = scrivi (testo)
+  WHERE testo IsA STRING
     ELSE
       -- "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
       SAY mia_AT:per_scrivere_USA.
@@ -8839,7 +8840,7 @@ SYNTAX spara_a_errore = spara a (bersaglio)
 ADD TO EVERY THING
   VERB spara_a_errore
     CHECK COUNT IsA ARMA, can sparare, DIRECTLY IN hero > 0
-    ELSE SAY mia_AT:non_hai_armi_da_fuoco.
+      ELSE SAY mia_AT:non_hai_armi_da_fuoco.
     AND bersaglio <> hero
       ELSE SAY mia_AT:no_autolesionismo.
     AND CURRENT LOCATION IS illuminato

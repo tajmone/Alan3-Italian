@@ -1,0 +1,100 @@
+
+
+La Casa 
+Un set per eseguire test su stanze e luoghi esterni. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+La Cucina
+A sud c'è il tuo giardino, a est il tuo studio. Puoi vedere una sedia, un 
+frigo e un tavolo qui. Sopra il tavolo vedi una bottiglia, un sacchetto, 
+un coltello, una pistola, un vasetto e un cesto per la frutta.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                          TESTA LEGGERE E SCRIVERE                          *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Per testare i verbi 'leggi' e 'scrivi' abbiamo allestito vari oggetti ad hoc
+> ; nello studio.
+> est
+Lo Studio
+A ovest c'è la cucina. Puoi vedere una tavolo qui. Sopra la tavolo vedi 
+una penna, una busta e un foglio.
+
+> ; ==============================================================================
+> ; TESTA 'leggi' vs 'esamina'
+> ; ==============================================================================
+> ; ------------------------------------------------------------------------------
+> ; IL FOGLIO: 'xDesc' == ""  &  'testo' == ""
+> ; ------------------------------------------------------------------------------
+> ; Se un oggetto è 'leggibile' e la sua stringa 'xDesc' è vuota il verbo 'esamina'
+> ; si comporterà come leggi, ma solo se la stringa 'testo' non è vuota:
+> leggi il foglio
+Non c'è nulla da leggere sul foglio.
+
+> esamina il foglio
+Esamini il foglio, ma non noti niente di speciale.
+
+> ; ------------------------------------------------------------------------------
+> ; IL FOGLIO: 'xDesc' == ""  &  'testo' <> ""
+> ; ------------------------------------------------------------------------------
+> scrivi "Era una notte buia" sul foglio
+[[ classe 'ogg_scrivibile' --> VERB 'scrivi' --> CHECK ]]
+Non hai nulla con cui scrivere.
+
+> prendi la penna
+Presa.
+
+> scrivi "Era una notte buia" sul foglio
+[[ classe 'ogg_scrivibile' --> VERB 'scrivi' --> DOES ONLY ]]
+Hai scritto "Era una notte buia" sul foglio.
+
+> ; Dopo aver scritto del testo sul foglio, 'esamina' si comporta come 'leggi':
+> leggi il foglio
+Leggi il foglio. Dice "Era una notte buia".
+
+> ; Ulteriori scritture concateneranno la nuova stringa al testo preesistente:
+> scrivi "e tempestosa" sul foglio
+[[ classe 'ogg_scrivibile' --> VERB 'scrivi' --> DOES ONLY ]]
+Hai scritto "e tempestosa" sul foglio.
+
+> leggi il foglio
+Leggi il foglio. Dice "Era una notte buia e tempestosa".
+
+> esamina il foglio
+Leggi il foglio. Dice "Era una notte buia e tempestosa".
+
+> ; ------------------------------------------------------------------------------
+> ; LA BUSTA:  'xDesc' <> ""  &  'testo' == ""
+> ; ------------------------------------------------------------------------------
+> ; Poiché la busta possiede una stringa xDesc, 'esamina' non si comporterà come
+> ; 'leggi', nonostante si tratti di un ogetto 'IS scrivibile':
+> leggi la busta
+Non c'è nulla da leggere sulla busta.
+
+> esamina la busta
+È una busta da lettera, di buona qualità.
+
+> ; ------------------------------------------------------------------------------
+> ; LA BUSTA:  'xDesc' <> ""  &  'testo' <> ""
+> ; ------------------------------------------------------------------------------
+> scrivi "ZenFactor Spa" sulla busta
+[[ classe 'ogg_scrivibile' --> VERB 'scrivi' --> DOES ONLY ]]
+Hai scritto "ZenFactor Spa" sulla busta.
+
+> leggi la busta
+Leggi la busta. Dice "ZenFactor Spa".
+
+> esamina la busta
+È una busta da lettera, di buona qualità.
+
+> 
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

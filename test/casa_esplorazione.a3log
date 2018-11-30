@@ -10,9 +10,9 @@ Tutti i diritti riservati.
 
 
 La Cucina
-A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
-qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un coltello, una 
-pistola, un vasetto e un cesto per la frutta.
+A sud c'è il tuo giardino, a est il tuo studio. Puoi vedere una sedia, un 
+frigo e un tavolo qui. Sopra il tavolo vedi una bottiglia, un sacchetto, 
+un coltello, una pistola, un vasetto e un cesto per la frutta.
 
 > ; ******************************************************************************
 > ; *                                                                            *
@@ -54,9 +54,9 @@ Il cinguettio è fuori dalla tua portata.
 > ; ==============================================================================
 > nord
 La Cucina
-A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
-qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un coltello, una 
-pistola, un vasetto e un cesto per la frutta.
+A sud c'è il tuo giardino, a est il tuo studio. Puoi vedere una sedia, un 
+frigo e un tavolo qui. Sopra il tavolo vedi una bottiglia, un sacchetto, 
+un coltello, una pistola, un vasetto e un cesto per la frutta.
 
 > ; ------------------------------------------------------------------------------
 > ; Risposte Alla Vaniglia
@@ -87,6 +87,8 @@ Il giardiniere non sta parlando in questo momento.
 
 > ; TESTIAMO IN PISCINA:
 > entra in piscina
+[[ istanza 'piscina' --> VERB 'entra_in' --> DOES ONLY ]]
+[[ istanza 'nella_piscina' (location) --> ENTERED ]]
 Ti tuffi a bomba nella piscina.
 
 Nella Piscina (Giardino di Casa)
@@ -96,6 +98,7 @@ La piscina è abbastanza ampia per fare delle piccole nuotate.
 Il giardiniere non sta parlando in questo momento.
 
 > esci dalla piscina
+[[ istanza 'piscina' --> VERB 'esci_da' --> DOES ONLY ]]
 Ti issi sul bordo della piscina ed esci.
 
 Il Giardino di Casa
@@ -108,22 +111,28 @@ una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
 > ; Risposte Personalizzate
 > ; ------------------------------------------------------------------------------
 > ascolta
-Puoi udire un cinguettio.
+[[ istanza 'giardino' --> VERB 'ascolta0' --> DOES ONLY ]]
+ Puoi udire un cinguettio.
 
 > ascolta il cinguettio
+[[ istanza 'cinguettio' --> VERB 'ascolta' --> DOES ONLY ]]
 Si direbbe il canto della cinciallegra.
 
 > ; TESTIAMO IN PISCINA:
 > entra in piscina
+[[ istanza 'piscina' --> VERB 'entra_in' --> DOES ONLY ]]
+[[ istanza 'nella_piscina' (location) --> ENTERED ]]
 Ti tuffi a bomba nella piscina.
 
 Nella Piscina (Giardino di Casa)
 La piscina è abbastanza ampia per fare delle piccole nuotate.
 
 > ascolta il cinguettio
+[[ istanza 'cinguettio' --> VERB 'ascolta' --> DOES ONLY ]]
 Si direbbe il canto della cinciallegra.
 
 > esci dalla piscina
+[[ istanza 'piscina' --> VERB 'esci_da' --> DOES ONLY ]]
 Ti issi sul bordo della piscina ed esci.
 
 Il Giardino di Casa
@@ -139,9 +148,9 @@ una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
 > ; sono presenti nel luogo: 
 > nord
 La Cucina
-A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
-qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un coltello, una 
-pistola, un vasetto e un cesto per la frutta.
+A sud c'è il tuo giardino, a est il tuo studio. Puoi vedere una sedia, un 
+frigo e un tavolo qui. Sopra il tavolo vedi una bottiglia, un sacchetto, 
+un coltello, una pistola, un vasetto e un cesto per la frutta.
 
 > ; **ERR!** Il cielo non è NEARBY dato che è situato in un luogo che avvolge
 > ;          il giardino (ma non la casa).
@@ -154,6 +163,7 @@ Non riesci a sentire il giardiniere da questa distanza.
 Non riesci a sentire la piscina da questa distanza.
 
 > ascolta il cinguettio
+[[ istanza 'cinguettio' --> VERB 'ascolta' --> DOES ONLY ]]
 Da questa distanza è difficile capire di che uccelli si tratti.
 
 > ; ------------------------------------------------------------------------------

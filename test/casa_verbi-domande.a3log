@@ -10,9 +10,9 @@ Tutti i diritti riservati.
 
 
 La Cucina
-A sud c'è il tuo giardino. Puoi vedere una sedia, un frigo e un tavolo 
-qui. Sopra il tavolo vedi una bottiglia, un sacchetto, un coltello, una 
-pistola, un vasetto e un cesto per la frutta.
+A sud c'è il tuo giardino, a est il tuo studio. Puoi vedere una sedia, un 
+frigo e un tavolo qui. Sopra il tavolo vedi una bottiglia, un sacchetto, 
+un coltello, una pistola, un vasetto e un cesto per la frutta.
 
 > ; ******************************************************************************
 > ; *                                                                            *
@@ -69,6 +69,54 @@ Dovrai scoprirlo da te!
 
 > dov'é la piscina
 Dovrai scoprirlo da te!
+
+> ; ==============================================================================
+> ; TESTA 'dì'
+> ; ==============================================================================
+> sud
+Il Giardino di Casa
+A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
+e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
+un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
+una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
+
+> dì "ciao"
+Dici "ciao", ma non succede nulla.
+
+> ; ------------------------------------------------------------------------------
+> ; parametri invalidi
+> ; ------------------------------------------------------------------------------
+> dì piscina
+Usa le virgolette ("") per delimitare l'oggetto della tua azione.
+
+> dì 1
+Usa le virgolette ("") per delimitare l'oggetto della tua azione.
+
+> dì me
+Usa le virgolette ("") per delimitare l'oggetto della tua azione.
+
+> ; ==============================================================================
+> ; TESTA 'dì_a'
+> ; ==============================================================================
+> dì "ciao" al giardiniere
+Il giardiniere non sembra interessato.
+
+> ; ------------------------------------------------------------------------------
+> ; parametri invalidi
+> ; ------------------------------------------------------------------------------
+> dì piscina al giardiniere
+Usa le virgolette ("") per delimitare l'oggetto della tua azione.
+
+> dì giardiniere al giardiniere
+Usa le virgolette ("") per delimitare l'oggetto della tua azione.
+
+> dì 1 al giardiniere
+Usa le virgolette ("") per delimitare l'oggetto della tua azione.
+
+> dì me al giardiniere
+Usa le virgolette ("") per delimitare l'oggetto della tua azione.
+
+> 
 
 > 
 

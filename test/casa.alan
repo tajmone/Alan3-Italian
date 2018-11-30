@@ -14,9 +14,23 @@ THE mia_AT IsA blocco_definizioni
   ------------------------------------------------------------------------------
 END THE.
 
+
+--==============================================================================
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--------------------------------------------------------------------------------
+--
+-- MAPPA DEL GIOCO
+--
+--------------------------------------------------------------------------------
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--==============================================================================
+-- Le varie stanze e luoghi esterni dell'avventura...
+
 -- =============================================================================
 
--- STANZA: La Cucina
+-- LA CUCINA (stanza)
 
 -- =============================================================================
 -- La cucina sarà il nostro luogo per testare la classe 'stanza'.
@@ -24,12 +38,26 @@ END THE.
 THE cucina IsA stanza.
   NAME 'La Cucina'.
   EXIT sud TO giardino.
-  DESCRIPTION "A sud c'è il tuo giardino."
+  EXIT est TO studio.
+  DESCRIPTION "A sud c'è il tuo giardino, a est il tuo studio."
 END THE cucina.
 
 -- =============================================================================
 
--- LUOGO ESTERNO: Il Giardino
+-- LO STUDIO (stanza)
+
+-- =============================================================================
+-- Lo studio è un luogo per testare leggere e scrivere.
+
+THE studio IsA stanza.
+  NAME 'Lo Studio'.
+  EXIT ovest TO cucina.
+  DESCRIPTION "A ovest c'è la cucina."
+END THE studio.
+
+-- =============================================================================
+
+-- IL GIARDINO (luogo esterno)
 
 -- =============================================================================
 -- Il giardino sarà il nostro luogo per testare la classe 'luogo_esterno'.
@@ -40,252 +68,45 @@ THE giardino IsA luogo_esterno.
   DESCRIPTION "A nord puoi tornare in casa."
 
   VERB ascolta0
-    DOES ONLY "Puoi udire un cinguettio."
+    DOES ONLY
+      "[[ istanza 'giardino' --> VERB 'ascolta0' --> DOES ONLY ]]$n
+      Puoi udire un cinguettio."
   END VERB ascolta0.
 END THE giardino.
 
--- =============================================================================
-
--- Scenografia Cucina
-
--- =============================================================================
 
 --==============================================================================
--- La Sedia
---==============================================================================
--- Creiamo una sedia che sia utilizzabile.
-
-THE sedia IsA supporto AT cucina.
-  HAS articolo "la".
-  
-  VERB siediti_su
-    DOES ONLY
-      IF hero IS sdraiato
-        THEN "Ti alzi e"
-          MAKE hero NOT sdraiato.
-      END IF.
-      "ti siedi" SAY superficie:prep_SU. SAY superficie. "."
-      MAKE hero seduto.
-  END VERB siediti_su.
-END THE sedia.
-
-
---==============================================================================
--- Il Frigorifero (contenitore_elencato + apribile + peso 50)
---==============================================================================
-THE frigo IsA contenitore_elencato AT cucina.
-  OPAQUE CONTAINER -- NOTE: The library doesn't initialize closed listed containers
-                   --       to be automatically opaque!
-  IS apribile.
-  IS NOT aperto.
-  HAS peso 50. -- Peso >= 50 impedisce i verbi 'prendi', 'prendi_da' e 'solleva'.
-  
-
-  INITIALIZE -- Consenti al frigo di contenere qualsiasi alimento del gioco:
-    FOR EACH oAlimento IsA alimento
-      DO INCLUDE oAlimento IN consentiti OF THIS.
-    END FOR.
-  
-END THE frigo.
---==============================================================================
--- Il Tavolo da Cucina (supporto)
---==============================================================================
-
-THE tavolo_cucina IsA supporto AT cucina.
-  IS NOT prendibile.
-  NAME tavolo.
-END THE tavolo_cucina.
-
---==============================================================================
--- Frutta Basket (listed container on tavolo)
---==============================================================================
-
-THE cesto_frutta IsA cont_alimenti IN tavolo_cucina.
-  NAME cesto.
-  MENTIONED "cesto per la frutta"
-END THE cesto_frutta.
-
--- =============================================================================
-
--- Scenografia Giardino
-
--- =============================================================================
-
---==============================================================================
--- La Staccionata
---==============================================================================
--- La staccionata è un escamotage per poter mettere nel giardino cose e attori
--- non raggiungibili. L'idea è che anche se li si può vedere sono comunque non
--- raggiungibili (ma non distanti).
-
-THE staccionata IsA object AT giardino.
-  HAS articolo "la".
-  DESCRIPTION
-    "Oltre la staccionata intravedi un ombrellone e, in lontananza,
-     la tua vicina."
-END THE staccionata.
-
---==============================================================================
--- L'ombrellone
---==============================================================================
--- È un oggetto non raggiungibile, utile per testare svariati verbi.
-
-THE ombrellone IsA object AT giardino.
-  NAME ombrellone.
-  NAME 'l''ombrellone'.
-  HAS articolo "l'".
-  IS NOT raggiungibile.
-END THE ombrellone.
-
---==============================================================================
--- L'aquilone
---==============================================================================
--- Un oggetto distante...
-THE aquilone IsA object AT giardino.
-  NAME aquilone.
-  NAME 'l''aquilone'.
-  HAS articolo "l'".
-  IS distante.
-END THE aquilone.
-
---==============================================================================
--- Il prato (/erba)
---==============================================================================
--- Creiamo il prato solo perché ci serve un oggetto scenario da testare.
-
-THE prato IsA object AT giardino.
-  IS scenario.
-  NAME prato.
-  NAME erba.
-END THE prato.
-
---==============================================================================
--- Il Cinguettio
---==============================================================================
--- Un 'suono' per testare sia 'ascolta' che con oggetti che NON sono:
---    esaminabile, prendibile, raggiungibile, spostabile.
-THE cinguettio IsA suono AT giardino.
-  DESCRIPTION "" -- non vogliamo che compaia nella descrizione (compare se si
-                 -- 'ascolta' in giardino).
-
-  VERB ascolta
-    DOES ONLY
-      IF hero AT ogg
-        THEN "Si direbbe il canto della cinciallegra."
-      ELSIF ogg NEAR hero
-        THEN "Da questa distanza è difficile capire di che uccelli si tratti."
-      END IF.
-  END VERB ascolta.
-END THE cinguettio.
-
---==============================================================================
--- Il Tavolo da Giardino (supporto)
---==============================================================================
-
-THE tavolo_giardino IsA supporto AT giardino.
-  IS NOT prendibile.
-  NAME tavolo.
-END THE tavolo_giardino.
-
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --------------------------------------------------------------------------------
--- La Rivista
+--
+-- CLASSI SPECIALIZZATE
+--
 --------------------------------------------------------------------------------
-THE rivista IsA object IN tavolo_giardino.
-  HAS articolo "la".
-  -- @TODO: implementala come leggibile!
-END THE rivista.
-
-
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --==============================================================================
--- Il Lettino
---==============================================================================
--- Creiamo un lettino su cui ci si possa sdraiare così da poter testare il verbo
--- 'sdraiati' ed i messaggi dei CHECK che bloccano le azioni intentate quando il
--- protagonista è sdraiato.
 
-THE lettino IsA supporto AT giardino.
-  NAME lettino.
-  NAME letto.
+-- Per semplificarci la vita creeremo delle classi specializzati per alcuni tipi
+-- di oggetti..
 
-  HAS xDesc "È un lettino pieghevole, di quelli usati in campeggio.".
-  
-  VERB sdraiati_su
-    DOES ONLY
-      IF hero IS seduto
-        THEN "Ti alzi e"
-          MAKE hero NOT seduto.
-      END IF.
-      "ti sdrai" SAY superficie:prep_SU. SAY superficie. "."
-      MAKE hero sdraiato.
-  END VERB sdraiati_su.
-END THE lettino.
-
---==============================================================================
--- La Piscina
---==============================================================================
--- Creiamo una piscina per testare sia 'nuota' che 'entra'.
-
-THE piscina IsA liquido AT giardino.
-  HAS articolo "la".
-  NAME piscina.
-  NAME acqua.
-  NAME 'l''acqua'.
-
-  VERB nuota
-    DOES ONLY
-      IF hero DIRECTLY AT nella_piscina
-        THEN "Sei già in piscina."
-        ELSE
-          LOCATE hero AT nella_piscina.
-      END IF.
-  END VERB nuota.
-    
-  VERB entra_in
-    DOES ONLY
-      IF hero DIRECTLY AT nella_piscina
-        THEN "Sei già in piscina."
-        ELSE
-          LOCATE hero AT nella_piscina.
-      END IF.
-  END VERB entra_in.
-
-  VERB esci_da
-    DOES ONLY
-      IF hero NOT DIRECTLY AT nella_piscina
-        THEN "Non sei dentro la piscina."
-        ELSE
-          "Ti issi sul bordo della piscina ed esci."
-          LOCATE hero AT giardino.
-      END IF.
-  END VERB esci_da.
-END THE piscina.
-
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------
--- Dentro La Piscina
---------------------------------------------------------------------------------
--- Per simulare quando il protagonista entra nella piscina creiamo un luogo
--- annidato nel giardino.
+-- CIBI & BEVANDE (commestibili & potabili)
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
 
-THE nella_piscina IsA location AT giardino.
-  NAME 'Nella Piscina (Giardino di Casa)'.
-  DESCRIPTION
-    "La piscina è abbastanza ampia per fare delle piccole nuotate."
-
-  ENTERED
-    "Ti tuffi a bomba nella piscina."
-END THE nella_piscina.
-
--- =============================================================================
-
--- Cibi & Bevande (Commestibili & Potabili)
-
--- =============================================================================
 -- Creiamo alcune classi per gli oggetti di tipo 'commestibile' e 'potabile' al
 -- fine di poter testare i cibi solidi e liquidi. La gerarchia delle sottoclassi
 -- ci consentirà di impostare facilmente quali tipi di alimenti possano essere
 -- messi nei vari contenitori, e consentono anche di testare la disambiguazione.
+
 --==============================================================================
--- Classi di Alimenti
+
+-- CLASSI DI ALIMENTI
+
 --==============================================================================
 -- La classe 'alimento' è riservata ai cibi solidi, 'bevanda' a quelli liquidi.
 
@@ -306,14 +127,22 @@ EVERY snack IsA alimento.
   NAME snack.
 END EVERY.
 --------------------------------------------------------------------------------
--- Sottoclassi Alimentari
+-- Sottoclassi alimentari
 --------------------------------------------------------------------------------
 EVERY frutto IsA alimento.
   HAS articolo "il".
   NAME frutto.
 END EVERY frutto.
+--==============================================================================
+
+-- CLASSI DI CONTENITORI PER ALIMENTI
+
+--==============================================================================
+-- Definiamo delle classi di contenitori idonei a contenere i vari generi
+-- alimentari...
+
 --------------------------------------------------------------------------------
--- Contenitori per Alimenti (solidi)
+-- Contenitori per alimenti (cibi solidi)
 --------------------------------------------------------------------------------
 -- Creiamo una classe specializzata per i contenitori destinati ai cibi solidi,
 -- al fine di semplificare i vari test...
@@ -327,7 +156,7 @@ EVERY cont_alimenti IsA contenitore_elencato.
     END FOR.
 END EVERY cont_alimenti.
 --------------------------------------------------------------------------------
--- Contenitori per Bevande
+-- Contenitori per bevande
 --------------------------------------------------------------------------------
 -- Creiamo una classe specializzata per i contenitori destinati alle bevande, al
 -- fine di semplificare il travaso di liquidi da un contenitore all'altro...
@@ -341,7 +170,7 @@ EVERY cont_bevanda IsA contenitore_elencato.
     END FOR.
 END EVERY cont_bevanda.
 --------------------------------------------------------------------------------
--- Contenitori per Snack
+-- Contenitori per snack
 --------------------------------------------------------------------------------
 -- I contenitori per snack sono finalizzati a contenere stuzzichini alimentari di
 -- piccole dimensioni (patatine, olive, ecc.) ma non cibi grossi (come la frutta,
@@ -357,8 +186,126 @@ EVERY cont_snack IsA contenitore_elencato.
     END FOR.
 END EVERY cont_snack.
 
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- OGGETTI SCRIVIBILI E STRUMENTI PER LA SCRITTURA
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+-- Poiché il verbo alla vaniglia 'scrivi' della libreria non porta a termine
+-- l'azione, creeremo una classe apposita su cui reimplementeremo 'scrivi' di
+-- modo che la stringa del parametro venga aggiunta al testo dell'oggetto.
+
+EVERY ogg_scrivibile IsA object.
+  IS scrivibile.
+
+  VERB scrivi
+    WHEN ogg
+      -- Verifichiamo che l'eroe possieda almeno un oggetto con cui scrivere:
+      CHECK COUNT IsA ogg_scrittura, DIRECTLY IN hero > 0
+        ELSE
+          "[[ classe 'ogg_scrivibile' --> VERB 'scrivi' --> CHECK ]]
+          $nNon hai nulla con cui scrivere."
+      DOES ONLY
+        "[[ classe 'ogg_scrivibile' --> VERB 'scrivi' --> DOES ONLY ]]$n"
+        IF ogg:testo = ""
+          THEN SET ogg:testo TO testo.
+          ELSE SET ogg:testo TO ogg:testo + " " + testo.
+        END IF.
+        "Hai scritto ""$1""" SAY ogg:prep_SU. "$2."
+        MAKE ogg leggibile.
+  END VERB scrivi.
+END EVERY ogg_scrivibile. 
+
+-- Creiamo anche una classe generica per gli oggetti idonei alla scrittura...
+EVERY ogg_scrittura IsA object.
+  
+END EVERY ogg_scrittura.
+
 --==============================================================================
--- ISTANZE ALIMENTI: Frutta
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--------------------------------------------------------------------------------
+--
+-- ALLESTIMENTO DELE SCENOGRAFIE 
+--
+--------------------------------------------------------------------------------
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--==============================================================================
+
+-- Ora popoliamo le varie stanze e luoghi esterni con ogetti e attori...
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- SCENOGRAFIA CUCINA 
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+--==============================================================================
+-- LA SEDIA
+--==============================================================================
+-- Creiamo una sedia che sia utilizzabile.
+
+THE sedia IsA supporto AT cucina.
+  HAS articolo "la".
+  
+  VERB siediti_su
+    DOES ONLY
+      "[[ istanza 'sedia' --> VERB 'siediti_su' --> DOES ONLY ]]$n"
+      IF hero IS sdraiato
+        THEN "Ti alzi e"
+          MAKE hero NOT sdraiato.
+      END IF.
+      "ti siedi" SAY superficie:prep_SU. SAY superficie. "."
+      MAKE hero seduto.
+  END VERB siediti_su.
+END THE sedia.
+
+
+--==============================================================================
+-- IL FRIGORIFERO (contenitore_elencato + apribile + peso 50)
+--==============================================================================
+
+THE frigo IsA contenitore_elencato AT cucina.
+  OPAQUE CONTAINER -- NOTE: The library doesn't initialize closed listed containers
+                   --       to be automatically opaque!
+  IS apribile.
+  IS NOT aperto.
+  HAS peso 50. -- Peso >= 50 impedisce i verbi 'prendi', 'prendi_da' e 'solleva'.
+  
+
+  INITIALIZE -- Consenti al frigo di contenere qualsiasi alimento del gioco:
+    FOR EACH oAlimento IsA alimento
+      DO INCLUDE oAlimento IN consentiti OF THIS.
+    END FOR.
+  
+END THE frigo.
+
+--==============================================================================
+-- IL TAVOLO DA CUCINA (supporto)
+--==============================================================================
+
+THE tavolo_cucina IsA supporto AT cucina.
+  IS NOT prendibile.
+  NAME tavolo.
+END THE tavolo_cucina.
+
+--==============================================================================
+-- IL CESTO PER LA FRUTTA (contenitore_elencato sul tavolo)
+--==============================================================================
+
+THE cesto_frutta IsA cont_alimenti IN tavolo_cucina.
+  NAME cesto.
+  MENTIONED "cesto per la frutta"
+END THE cesto_frutta.
+
+--==============================================================================
+-- Istanze alimenti: FRUTTA
 --==============================================================================
 -- Mettiamo un po' di frutta nel cesto per la frutta...
 
@@ -377,18 +324,18 @@ THE pera IsA frutto IN cesto_frutta.
   NAME pera.
 END THE.
 --==============================================================================
--- ISTANZE BEVANDE
+-- Istanze bevande
 --==============================================================================
 
 --------------------------------------------------------------------------------
--- Vasetto Vuoto
+-- IL VASETTO VUOTO
 --------------------------------------------------------------------------------
 THE vasetto IsA cont_bevanda IN tavolo_cucina.
   NAME vasetto.
   HAS consentiti {vino}.
 END THE.
 --------------------------------------------------------------------------------
--- Bottiglia di Vino
+-- LA BOTTIGLIA DI VINO
 --------------------------------------------------------------------------------
 THE bottiglia IsA cont_bevanda IN tavolo_cucina.
   NAME bottiglia.
@@ -400,7 +347,7 @@ THE vino IsA liquido IN bottiglia.
   INDEFINITE ARTICLE "del"
 END THE.
 --==============================================================================
--- ISTANZE SNACK
+-- Istanze snack
 --==============================================================================
 -- TODO: implemtalo come un contenitore mono-apribile (ossia, una volta aperto
 --       il sacchetto è rotto e non lo si può richiudere).
@@ -412,7 +359,6 @@ THE patatine IsA snack IN sacchetto.
   HAS articolo "le".
   INDEFINITE ARTICLE "delle"
 END THE patatine.
-
 -- =============================================================================
 
 -- ARMI
@@ -432,6 +378,242 @@ THE pistola IsA arma IN tavolo_cucina.
   HAS xDesc "È una rivoltella.".
 END THE pistola.
 
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- SCENOGRAFIA STUDIO
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+--==============================================================================
+-- LA SCRIVANIA (supporto)
+--==============================================================================
+
+THE scrivania IsA supporto AT studio.
+  HAS articolo "la".
+  IS NOT prendibile.
+  NAME tavolo.
+END THE scrivania.
+
+--==============================================================================
+
+-- OGGETTI PER SCRIVERE E SCRIVIBILI
+
+--==============================================================================
+-- Alcuni oggetti scrivibili avranno una 'xDesc', altri no, così sarà possibile
+-- testare i casi in cui 'esamina' si comporta come 'leggi'...
+
+--==============================================================================
+-- IL FOGLIO DI CARTA
+--==============================================================================
+THE foglio IsA ogg_scrivibile IN scrivania.
+  NAME foglio.
+  NAME carta.
+  IS leggibile.
+  IS scrivibile.
+END THE foglio.
+
+--==============================================================================
+-- LA BUSTA DA LETTERA
+--==============================================================================
+THE busta_lettera IsA ogg_scrivibile IN scrivania.
+  HAS articolo "la".
+  NAME busta.
+  NAME lettera.
+  IS leggibile.
+  IS scrivibile.
+  HAS xDesc "È una busta da lettera, di buona qualità.".
+END THE busta_lettera.
+
+--==============================================================================
+-- LA PENNA BIRO
+--==============================================================================
+THE penna IsA ogg_scrittura IN scrivania.
+  HAS articolo "la".
+  NAME penna.
+  NAME biro.
+  HAS xDesc "È una penna a sfera.".
+END THE penna.
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- SCENOGRAFIA GIARDINO
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+--==============================================================================
+-- LA STACCIONATA
+--==============================================================================
+-- La staccionata è un escamotage per poter mettere nel giardino cose e attori
+-- non raggiungibili. L'idea è che anche se li si può vedere sono comunque non
+-- raggiungibili (ma non distanti).
+
+THE staccionata IsA object AT giardino.
+  HAS articolo "la".
+  DESCRIPTION
+    "Oltre la staccionata intravedi un ombrellone e, in lontananza,
+     la tua vicina."
+END THE staccionata.
+
+--==============================================================================
+-- L'OMBRELLONE
+--==============================================================================
+-- È un oggetto non raggiungibile, utile per testare svariati verbi.
+
+THE ombrellone IsA object AT giardino.
+  NAME ombrellone.
+  NAME 'l''ombrellone'.
+  HAS articolo "l'".
+  IS NOT raggiungibile.
+END THE ombrellone.
+
+--==============================================================================
+-- L'AQUILONE
+--==============================================================================
+-- Un oggetto distante...
+THE aquilone IsA object AT giardino.
+  NAME aquilone.
+  NAME 'l''aquilone'.
+  HAS articolo "l'".
+  IS distante.
+END THE aquilone.
+
+--==============================================================================
+-- IL PRATO (/erba)
+--==============================================================================
+-- Creiamo il prato solo perché ci serve un oggetto scenario da testare.
+
+THE prato IsA object AT giardino.
+  IS scenario.
+  NAME prato.
+  NAME erba.
+END THE prato.
+
+--==============================================================================
+-- IL CINGUETTIO
+--==============================================================================
+-- Un 'suono' per testare sia 'ascolta' che con oggetti che NON sono:
+--    esaminabile, prendibile, raggiungibile, spostabile.
+THE cinguettio IsA suono AT giardino.
+  DESCRIPTION "" -- non vogliamo che compaia nella descrizione (compare se si
+                 -- 'ascolta' in giardino).
+
+  VERB ascolta
+    DOES ONLY
+     "[[ istanza 'cinguettio' --> VERB 'ascolta' --> DOES ONLY ]]$n"
+     IF hero AT ogg
+        THEN "Si direbbe il canto della cinciallegra."
+      ELSIF ogg NEAR hero
+        THEN "Da questa distanza è difficile capire di che uccelli si tratti."
+      END IF.
+  END VERB ascolta.
+END THE cinguettio.
+
+--==============================================================================
+-- IL TAVOLO DA GIARDINO (supporto)
+--==============================================================================
+
+THE tavolo_giardino IsA supporto AT giardino.
+  IS NOT prendibile.
+  NAME tavolo.
+END THE tavolo_giardino.
+
+--------------------------------------------------------------------------------
+-- LA RIVISTA
+--------------------------------------------------------------------------------
+THE rivista IsA object IN tavolo_giardino.
+  HAS articolo "la".
+  -- @TODO: implementala come leggibile!
+END THE rivista.
+
+
+--==============================================================================
+-- IL LETTINO
+--==============================================================================
+-- Creiamo un lettino su cui ci si possa sdraiare così da poter testare il verbo
+-- 'sdraiati' ed i messaggi dei CHECK che bloccano le azioni intentate quando il
+-- protagonista è sdraiato.
+
+THE lettino IsA supporto AT giardino.
+  NAME lettino.
+  NAME letto.
+
+  HAS xDesc "È un lettino pieghevole, di quelli usati in campeggio.".
+  
+  VERB sdraiati_su
+    DOES ONLY
+     "[[ istanza 'lettino' --> VERB 'sdraiati_su' --> DOES ONLY ]]$n"
+      IF hero IS seduto
+        THEN "Ti alzi e"
+          MAKE hero NOT seduto.
+      END IF.
+      "ti sdrai" SAY superficie:prep_SU. SAY superficie. "."
+      MAKE hero sdraiato.
+  END VERB sdraiati_su.
+END THE lettino.
+
+--==============================================================================
+-- LA PISCINA
+--==============================================================================
+-- Creiamo una piscina per testare sia 'nuota' che 'entra'.
+
+THE piscina IsA liquido AT giardino.
+  HAS articolo "la".
+  NAME piscina.
+  NAME acqua.
+  NAME 'l''acqua'.
+
+  VERB nuota
+    DOES ONLY
+      "[[ istanza 'piscina' --> VERB 'nuota' --> DOES ONLY ]]$n"
+      IF hero DIRECTLY AT nella_piscina
+        THEN "Sei già in piscina."
+        ELSE
+          LOCATE hero AT nella_piscina.
+      END IF.
+  END VERB nuota.
+    
+  VERB entra_in
+    DOES ONLY
+      "[[ istanza 'piscina' --> VERB 'entra_in' --> DOES ONLY ]]$n"
+      IF hero DIRECTLY AT nella_piscina
+        THEN "Sei già in piscina."
+        ELSE
+          LOCATE hero AT nella_piscina.
+      END IF.
+  END VERB entra_in.
+
+  VERB esci_da
+    DOES ONLY
+      "[[ istanza 'piscina' --> VERB 'esci_da' --> DOES ONLY ]]$n"
+      IF hero NOT DIRECTLY AT nella_piscina
+        THEN "Non sei dentro la piscina."
+        ELSE
+          "Ti issi sul bordo della piscina ed esci."
+          LOCATE hero AT giardino.
+      END IF.
+  END VERB esci_da.
+END THE piscina.
+
+--------------------------------------------------------------------------------
+-- Dentro la piscina
+--------------------------------------------------------------------------------
+-- Per simulare quando il protagonista entra nella piscina creiamo un luogo
+-- annidato nel giardino.
+
+THE nella_piscina IsA location AT giardino.
+  NAME 'Nella Piscina (Giardino di Casa)'.
+  DESCRIPTION
+    "La piscina è abbastanza ampia per fare delle piccole nuotate."
+
+  ENTERED
+    "[[ istanza 'nella_piscina' (location) --> ENTERED ]]$n"
+    "Ti tuffi a bomba nella piscina."
+END THE nella_piscina.
+
 -- =============================================================================
 
 -- ATTORI
@@ -439,6 +621,9 @@ END THE pistola.
 -- =============================================================================
 -- Qualche attore di base per testare i verbi...
 
+--------------------------------------------------------------------------------
+-- IL GIARDINIERE
+--------------------------------------------------------------------------------
 THE giardiniere IsA maschio AT giardino.
   HAS xDesc "Il giardiniere è intento a curare le piante.".
 END THE giardiniere.
@@ -447,7 +632,7 @@ THE gatto IsA actor AT giardino.
 END THE gatto.
 
 --------------------------------------------------------------------------------
--- La vicina di casa
+-- LA VICINA DI CASA
 --------------------------------------------------------------------------------
 -- La vicina è al di là della staccionata e in lontananza. Quindi non sarà
 -- possibile parlarle, lanciarle cose, ecc.
