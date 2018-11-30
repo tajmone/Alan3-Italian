@@ -1,6 +1,6 @@
 = Alan StdLib Italian: Verbi
 Tristano Ajmone <tajmone@gmail.com>
-v0.9.7-Alpha, 2018-11-30: Alan 3.0beta6
+v0.9.8-Alpha, 2018-11-30: Alan 3.0beta6
 =============================================================================
 Adattamento italiano del modulo `lib_verbs.i` della
 _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -990,12 +990,35 @@ Questo gruppo include i verbi per ZZZZ:
 // tag::gruppo_entrare[]
 === Entrare e uscire
 
-Questo gruppo include i verbi per entrare e uscire:
+La libreria definisce i seguenti verbi per entrare e uscire da un oggetto:
 
 * `entra`
 * `entra_in`
 * `esci`
 * `esci_da`
+
+
+Poiché in Alan non è consentito collocare un attore dentro ad un contenitore,
+si dovrà ricorrere ad un luogo annidato in quello attuale per creare tale
+illusione.
+
+Ad esempio, volendo implementare una cabina telefonica in cui il giocatore
+possa entrare, si creerà un oggetto `cabina_telefonica` che rappresenti la
+cabina nel luogo attuale, e si creerà anche il luogo annidato `interno_cabina`
+in cui spostare l'eroe quando questi entra nella cabina.
+
+Sull'oggetto `cabina_telefonica` si implementeranno i verbi `entra` ed
+`esci` affinché questi collochino l'eroe dentro e fuori il luogo annidato
+`interno_cabina`. Quando l'eroe si troverà in `interno_cabina` sarà comunque
+_anche_ dentro il luogo che ospita la cabina (contenimento transitivo), perciò
+gli oggetti di entrambi i luoghi saranno alla sua portata.
+
+Intervenendo sull'istanza `interno_cabina` sarà infine possibile controllare
+quali azioni saranno consentite dall'interno della cabina e quali no -- p.es.
+fare in modo che dalla cabina sia visibile tutto ciò che si trova nel luogo
+principale, impedire interazioni che richiedano contatto fisico con gli
+oggetti al di fuori di essa, rendere accessibili il telefono e la guida
+telefonica, ecc.
 
 ==== entra + entra_in
 

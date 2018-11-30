@@ -41,10 +41,32 @@ You take la pera from il cesto per la frutta.
 Possiedi già la pera.
 
 > ; ==============================================================================
+> ; TESTA 'dai_a'
+> ; ==============================================================================
+> sud
+Il Giardino di Casa
+A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
+e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
+un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
+una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
+
+> dai la pera al giardiniere
+Consegni la pera al giardiniere.
+
+> dai la pera al giardiniere
+Il giardiniere possiede già la pera.
+
+> ; ==============================================================================
 > ; TESTA LIQUIDI
 > ; ==============================================================================
 > ; I liquidi in contenitori trasportabili possono essere presi e lasciati usando
 > ; o il nome del liquido o quello del contenitore.
+> nord
+La Cucina
+A sud c'è il tuo giardino, a est il tuo studio. Puoi vedere una sedia, un 
+frigo e un tavolo qui. Sopra il tavolo vedi una bottiglia, un sacchetto, 
+un coltello, una pistola, un vasetto e un cesto per la frutta.
+
 > esamina la bottiglia
 La bottiglia contiene del vino.
 
@@ -72,7 +94,7 @@ una bottiglia, un sacchetto, un coltello, una pistola, un vasetto e un
 cesto per la frutta.
 
 > inventario
-Stai portando una pera e una mela.
+Stai portando una mela.
 
 > ; ------------------------------------------------------------------------------
 > ; TESTA 'prendi' + 'liquido'
@@ -102,7 +124,7 @@ cesto per la frutta.
 La bottiglia contiene del vino.
 
 > inventario
-Stai portando una pera e una mela.
+Stai portando una mela.
 
 > ; ------------------------------------------------------------------------------
 > ; TESTA 'prendi_da' + 'liquido'

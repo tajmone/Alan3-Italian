@@ -56,7 +56,7 @@ Non è possibile guardare dentro lo scricchiolìo.
 You can't look through lo scricchiolìo.
 
 > guarda fuori dallo scricchiolìo
-That's not something you can look out of.
+Lo scricchiolìo non è qualcosa da cui poter guardare fuori.
 
 > ; ==============================================================================
 > ; IL LUCERNARIO | object + distante + NOT raggiungibile
@@ -76,7 +76,7 @@ Il lucernario è fuori dalla tua portata.
 Non è possibile guardare dentro il lucernario.
 
 > guarda fuori dal lucernario
-That's not something you can look out of.
+Il lucernario non è qualcosa da cui poter guardare fuori.
 
 > guarda dietro il lucernario
 Non noti nulla di insolito dietro il lucernario.
@@ -153,7 +153,7 @@ Non noti nulla di insolito sotto la bara rossa.
 Non noti nulla di insolito dietro la bara rossa.
 
 > guarda fuori dalla bara rossa
-That's not something you can look out of.
+La bara rossa non è qualcosa da cui poter guardare fuori.
 
 > guarda nella bara rossa
 La bara rossa è vuota.
@@ -175,7 +175,7 @@ Non noti nulla di insolito sotto la bara nera.
 Non noti nulla di insolito dietro la bara nera.
 
 > guarda fuori dalla bara nera
-That's not something you can look out of.
+La bara nera non è qualcosa da cui poter guardare fuori.
 
 > guarda nella bara nera
 La bara nera contiene uno scheletro.
@@ -222,7 +222,7 @@ Non è possibile guardare dentro la pianta.
 You can't see through la pianta.
 
 > guarda fuori dalla pianta
-That's not something you can look out of.
+La pianta non è qualcosa da cui poter guardare fuori.
 
 > ; ==============================================================================
 > ; IL CUBO | object
@@ -243,7 +243,7 @@ Non è possibile guardare dentro il cubo.
 You can't see through il cubo.
 
 > guarda fuori dal cubo
-That's not something you can look out of.
+Il cubo non è qualcosa da cui poter guardare fuori.
 
 > ; TESTA su oggetto posseduto da Hero:
 > prendi il cubo
@@ -262,7 +262,7 @@ Non è possibile guardare dentro il cubo.
 You can't see through il cubo.
 
 > guarda fuori dal cubo
-That's not something you can look out of.
+Il cubo non è qualcosa da cui poter guardare fuori.
 
 > ; ==============================================================================
 > ; IL FANTASMA | actor -> persona -> maschio (speciale)
@@ -282,7 +282,7 @@ Non noti nulla di insolito sotto il fantasma.
 Non è possibile guardare dentro il fantasma.
 
 > guarda attraverso il fantasma
-You can't look through il fantasma.
+ You can't look through il fantasma.
 
 > guarda fuori dal fantasma
 Il fantasma non è qualcosa da cui poter guardare fuori.
@@ -304,7 +304,7 @@ You notice nothing unusual under yourself.
 Non è possibile guardare dentro il hero.
 
 > guarda attraverso me
-You can't look through il hero.
+ You can't look through il hero.
 
 > guarda fuori da me
 Il hero non è qualcosa da cui poter guardare fuori.

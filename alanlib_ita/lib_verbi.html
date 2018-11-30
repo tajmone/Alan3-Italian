@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.9.7-Alpha,</span>
+<span id="revnumber">versione 0.9.8-Alpha,</span>
 <span id="revdate">2018-11-30</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
@@ -3901,7 +3901,7 @@ a calci, colpire e simili:</p>
 <div class="sect2">
 <h3 id="_entrare_e_uscire"><a class="anchor" href="#_entrare_e_uscire"></a>Entrare e uscire</h3>
 <div class="paragraph">
-<p>Questo gruppo include i verbi per entrare e uscire:</p>
+<p>La libreria definisce i seguenti verbi per entrare e uscire da un oggetto:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3918,6 +3918,32 @@ a calci, colpire e simili:</p>
 <p><code>esci_da</code></p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Poiché in Alan non è consentito collocare un attore dentro ad un contenitore,
+si dovrà ricorrere ad un luogo annidato in quello attuale per creare tale
+illusione.</p>
+</div>
+<div class="paragraph">
+<p>Ad esempio, volendo implementare una cabina telefonica in cui il giocatore
+possa entrare, si creerà un oggetto <code>cabina_telefonica</code> che rappresenti la
+cabina nel luogo attuale, e si creerà anche il luogo annidato <code>interno_cabina</code>
+in cui spostare l&#8217;eroe quando questi entra nella cabina.</p>
+</div>
+<div class="paragraph">
+<p>Sull&#8217;oggetto <code>cabina_telefonica</code> si implementeranno i verbi <code>entra</code> ed
+<code>esci</code> affinché questi collochino l&#8217;eroe dentro e fuori il luogo annidato
+<code>interno_cabina</code>. Quando l&#8217;eroe si troverà in <code>interno_cabina</code> sarà comunque
+<em>anche</em> dentro il luogo che ospita la cabina (contenimento transitivo), perciò
+gli oggetti di entrambi i luoghi saranno alla sua portata.</p>
+</div>
+<div class="paragraph">
+<p>Intervenendo sull&#8217;istanza <code>interno_cabina</code> sarà infine possibile controllare
+quali azioni saranno consentite dall&#8217;interno della cabina e quali no&#8201;&#8212;&#8201;p.es.
+fare in modo che dalla cabina sia visibile tutto ciò che si trova nel luogo
+principale, impedire interazioni che richiedano contatto fisico con gli
+oggetti al di fuori di essa, rendere accessibili il telefono e la guida
+telefonica, ecc.</p>
 </div>
 <div class="sect3">
 <h4 id="_entra_entra_in"><a class="anchor" href="#_entra_entra_in"></a>entra + entra_in</h4>
@@ -4862,7 +4888,7 @@ vicini tra loro verbi correlati, simmetrici e/o complementari.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.9.7-Alpha<br>
+Versione 0.9.8-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

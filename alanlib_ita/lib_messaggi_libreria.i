@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.9.7-Alpha, 2018-11-30: Alan 3.0beta6
+--| v0.9.8-Alpha, 2018-11-30: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
@@ -76,7 +76,8 @@
 
 --| * `png1` e `png2` indicano che il `$` nel messaggio fa rigerimento ad un
 --|    parametro che è un attore. Questo tipo di messaggio è adatto ad essere
---|    utilizzato solo con attori. Es. `png1_non_apprezzerebbe`.
+--|    utilizzato solo con attori.
+--|    Es. `png1_non_gradirebbe_sg` e `png1_non_gradirebbe_pl`.
 
 --| * `_sg` e `_pl` rappresentano varianti di un medesimo messaggio, il primo
 --|   da utilizzarsi con un referente singolare, il secondo con uno plurale.
@@ -476,6 +477,15 @@ ADD TO EVERY blocco_definizioni
   -- Varianti dei messaggi precedenti, quando si tratta di parametri che richiedono
   -- preposizioni improprie.
 
+  -- -------------------------
+  -- PREPOSIZIONE "ATTRAVERSO"
+  -- -------------------------
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  HAS illegal_parameter_look_through " You can't look through $+1.". -- look_through
+  HAS check_obj_suitable_look_through "You can't look through $+1.". -- look_through
+
+
   -- ---------------------
   -- PREPOSIZIONE "CONTRO"
   -- ---------------------
@@ -491,6 +501,11 @@ ADD TO EVERY blocco_definizioni
   -- ORIGINAL EN: (nessuno)
   HAS ogg2_inadatto_DIETRO_sg  "$+2 non è qualcosa dietro cui poter".
   HAS ogg2_inadatto_DIETRO_pl  "$+2 non sono qualcosa dietro cui poter".
+
+  -- -----------------------
+  -- PREPOSIZIONE "FUORI DA"
+  -- -----------------------
+
 
   -- --------------------
   -- PREPOSIZIONE "SOTTO"
@@ -509,6 +524,8 @@ ADD TO EVERY blocco_definizioni
   HAS ogg2_inadatto_VICINO_A_sg  "$+2 non è qualcosa vicino a cui poter".
   HAS ogg2_inadatto_VICINO_A_pl  "$+2 non sono qualcosa vicino a cui poter".
 
+
+
   -- ========================================
   -- PARAMETRI INADATTI PER AZIONI SPECIFICHE
   -- ========================================
@@ -525,9 +542,6 @@ ADD TO EVERY blocco_definizioni
  
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
 
-  -- other illegal parameter messages:
-  ------------------------------------
-
   HAS illegal_parameter_consult_sg "That's not something you can find information about.".  -- consult_about
   HAS illegal_parameter_consult_pl "Those are not something you can find
                 information about.".
@@ -536,11 +550,8 @@ ADD TO EVERY blocco_definizioni
   HAS illegal_parameter_examine_pl "Those are not something you can examine.".
 
 
-  HAS illegal_parameter_look_out_sg "That's not something you can look out of.".    -- look_out_of
-  HAS illegal_parameter_look_out_pl "Those are not something you can look out of.".
-  HAS illegal_parameter_look_through "You can't look through $+1.".       -- look_through
-
-  HAS illegal_parameter_obj "You can only $v objects.".             -- give, put, put_in, put_on, put_against,
+  HAS illegal_parameter_obj "You can only $v objects.".
+                                     -- give, put, put_in, put_on, put_against,
                                      -- + put_behind, put_near, put_under,
                                      -- + throw_at, throw_in, throw_to, tie_to,
                                      -- + use, use_with
@@ -548,10 +559,13 @@ ADD TO EVERY blocco_definizioni
 
   HAS illegal_parameter_there "It's not possible to look there.".         -- look_behind, look_in, look_under
 
-  HAS illegal_parameter_what_sg "That's not something I know about.".       -- what_is, where_is
-  HAS illegal_parameter_what_pl "Those are not something I know about.".      -- what_is, where_is
-  HAS illegal_parameter_who_sg "That's not somebody I know about.".       -- who_is
-  HAS illegal_parameter_who_pl "Those are not somebody I know about.".        -- who_is
+  HAS illegal_parameter_what_sg "That's not something I know about.".    -- what_is, where_is
+  HAS illegal_parameter_what_pl "Those are not something I know about.". -- what_is, where_is
+  HAS illegal_parameter_who_sg  "That's not somebody I know about.".     -- who_is
+  HAS illegal_parameter_who_pl  "Those are not somebody I know about.".  -- who_is
+
+
+
   
   -- ==============================
   -- PARAMETRI INADATTI CONTENITORI
@@ -803,7 +817,7 @@ ADD TO EVERY blocco_definizioni
   -- ---------------------
   -- IL GIOCATORE È SEDUTO
   -- ---------------------
-  -- VERBI: balla, salta, salta_in, salta_su | swim.
+  -- VERBI: balla, nuota, salta, salta_in, salta_su.
   -- ORIGINAL EN:  check_hero_not_sitting1
   HAS impossibile_da_seduto "Non puoi farlo da seduto.".
 
@@ -811,7 +825,6 @@ ADD TO EVERY blocco_definizioni
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
   HAS check_hero_not_sitting2 "It is difficult to $v anything while sitting down.". -- (with many transitive verbs)
   HAS check_hero_not_sitting3 "It is difficult to $v anywhere while sitting down.". -- (with many verbs of motion)
-  HAS check_hero_not_sitting4 "You're sitting down already.".         -- sit, sit_on
 
   -- -----------------------
   -- IL GIOCATORE È SDRAIATO
@@ -823,8 +836,6 @@ ADD TO EVERY blocco_definizioni
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
   HAS check_hero_not_lying_down2 "It is difficult to $v anything while lying down.".  -- (with many transitive verbs)
   HAS check_hero_not_lying_down3 "It is difficult to $v anywhere while lying down.".  -- (with many verbs of motion)
-  HAS check_hero_not_lying_down4 "You're lying down already.".          -- lie_down, lie_in
-
 
   -- ====================
   -- AZIONI ETERO-DIRETTE
@@ -856,7 +867,8 @@ ADD TO EVERY blocco_definizioni
   -- ORIGINAL EN:  check_obj_inanimate1 + check_obj_inanimate2
   --               "$+1 wouldn't probably appreciate that."
   --               "You are not sure whether $+1 would appreciate that."
-  HAS png1_non_apprezzerebbe  "Non credo che $+1 gradirebbe.".
+  HAS png1_non_gradirebbe_sg  "Non credo che $+1 gradirebbe.".
+  HAS png1_non_gradirebbe_pl  "Non credo che $+1 gradirebbero.".
 
   -- ================
   -- AZIONI PREVENUTE
@@ -883,8 +895,6 @@ ADD TO EVERY blocco_definizioni
   
   HAS check_obj_in_act_sg "$+2 doesn't have $+1.".              -- take_from
   HAS check_obj_in_act_pl "$+2 don't have $+1.".
-  HAS check_obj_not_in_act_sg "$+2 already has $+1.".             -- give
-  HAS check_obj_not_in_act_pl "$+2 already have $+1.".
 
 
   -- ================
@@ -916,12 +926,23 @@ ADD TO EVERY blocco_definizioni
   -- ORIGINAL EN: check_obj_not_hero6.
   HAS azione_irrelevante  "Hai cose più importanti a cui pensare.".
 
-  
-  -- ================
-  -- AZIONI SUPERFLUE
-  -- ================
-  -- Risposte per azioni che sono superflue poiché tentano di conseguire un
-  -- risultato che è già disponibile...
+
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- AZIONI SUPERFLUE 
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+-- Risposte per azioni che sono superflue poiché tentano di conseguire un
+-- risultato che è già disponibile...
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- Azioni superflue eroe
+--------------------------------------------------------------------------------
+--==============================================================================
 
   -- -----------------------------------
   -- Il giocatore si trova già sul posto
@@ -930,6 +951,24 @@ ADD TO EVERY blocco_definizioni
   -- ORIGINAL EN:  check_obj_not_hero4
   HAS sei_già_qui  "Ti trovi già qui!".
 
+
+  -- -------------------------------------------
+  -- il giocatore è già in una certa una postura
+  -- -------------------------------------------
+  -- @NOTA: In futuro differenziare tra eroe ed eroina in questi messaggi.      FIXME!
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+
+  HAS check_hero_not_sitting4    "You're sitting down already.". -- sit, sit_on
+  HAS check_hero_not_lying_down4 "You're lying down already.".   -- lie_down, lie_in
+
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- Azioni superflue oggetti 
+--------------------------------------------------------------------------------
+--==============================================================================
+
   -- --------------------------------
   -- L'oggetto si trova già sul posto
   -- --------------------------------
@@ -937,15 +976,6 @@ ADD TO EVERY blocco_definizioni
   -- ORIGINAL EN:  check_obj_not_at_hero_sg/pl
   HAS ogg1_già_qui_sg  "$+1 è proprio qui.".
   HAS ogg1_già_qui_pl  "$+1 sono proprio qui.".
-
-  -- --------------------------------
-  -- Il Contenitore è già vuoto 
-  -- --------------------------------
-  -- VERBI: svuota + versa.
-  -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
-  HAS ogg1_vuoto_sg  "ci provi, ma $+1 era vuot$$".
-  HAS ogg1_vuoto_pl  "ci provi, ma $+1 erano vuot$$".
-
 
   -- ---------------------
   -- Oggetto già posseduto
@@ -957,7 +987,6 @@ ADD TO EVERY blocco_definizioni
   -- VERBI: chiedi
   -- ORIGINAL EN:  check_obj2_not_in_hero3
   HAS ogg2_già_posseduto  "Possiedi già $+2.".
-  
 
   -- -------------------
   -- Bersaglio posseduto
@@ -971,12 +1000,72 @@ ADD TO EVERY blocco_definizioni
   --       un lancio dato).
   HAS check_obj2_not_in_hero1 "You are carrying $+2.". -- throw_at, throw_in, throw_to
 
-  -- =================================
-  -- MESSAGGI RIGUARDANTI IL VESTIARIO
-  -- =================================
+  -- ----------------------------
+  -- Oggetto già posseduto da PNG
+  -- ----------------------------
+  -- VERBI: dai_a.
+  -- ORIGINAL EN: check_obj_not_in_act_sg/pl.
+  HAS ogg1_già_posseduto_da_png2_sg  "$+2 possiede già $+1.".
+  HAS ogg1_già_posseduto_da_png2_pl  "$+2 possiedeno già $+1.".
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- Azioni superflue contenitori 
+--------------------------------------------------------------------------------
+--==============================================================================
+
+  -- --------------------------------
+  -- Il Contenitore è già vuoto 
+  -- --------------------------------
+  -- VERBI: svuota + versa.
+  -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
+  HAS ogg1_vuoto_sg  "ci provi, ma $+1 era vuot$$".
+  HAS ogg1_vuoto_pl  "ci provi, ma $+1 erano vuot$$".
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  HAS check_obj_not_in_cont_sg "$+1 is in $+2 already.".            -- put_in, throw_in
+  HAS check_obj_not_in_cont_pl "$+1 are in $+2 already.".
+  HAS check_obj_not_in_cont2 "$+1 is already full of $+2.".           -- fill_with
+
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- Azioni superflue vestiario
+--------------------------------------------------------------------------------
+--==============================================================================
   -- VERBI: indossa.
   -- ORIGINAL EN:  check_obj_not_in_worn1
-  HAS indossi_già  "Stai già indossando $+1.".
+  HAS ogg1_già_indossato  "Stai già indossando $+1.".
+    
+--==============================================================================
+--------------------------------------------------------------------------------
+-- Azioni superflue dispositivi
+--------------------------------------------------------------------------------
+--==============================================================================
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  HAS check_device_on_sg "$+1 is already off.".     -- device: turn_off, switch_off
+  HAS check_device_on_pl "$+1 are already off.".
+  HAS check_device_not_on_sg "$+1 is already on.".  -- device: turn_on, switch_on
+  HAS check_device_not_on_pl "$+1 are already on.".
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- Azioni superflue fonti di luce
+--------------------------------------------------------------------------------
+--==============================================================================
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  HAS check_lightsource_not_lit_sg "$+1 is already lit.".  -- lightsource: light, turn_on
+  HAS check_lightsource_not_lit_pl "$+1 are already lit.".
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- MESSAGGI VESTIARIO
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
 
   -- VERBI: lascia.
   -- ORIGINAL EN:  check_obj_not_in_worn3
@@ -996,9 +1085,14 @@ ADD TO EVERY blocco_definizioni
   HAS check_obj_not_in_worn2  "It doesn't make sense to $v something you're wearing.". -- attack, attack_with, kick, shoot, shoot_with
 
 
-  -- ============================
-  -- MESSAGGI RIGUARDANTI LE ARMI
-  -- ============================
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- MESSAGGI ARMI
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
   -- VERBI: spara_errore, spara_a_errore.
   -- ORIGINAL EN:  check_count_weapon_in_hero
   HAS non_hai_armi_da_fuoco  "Non stai portando nessun'arma da fuoco con te.".
@@ -1014,27 +1108,38 @@ ADD TO EVERY blocco_definizioni
   HAS ogg1_non_arma_da_fuoco_pl  "$+1 non sono un'arma da fuoco.".
 
 
-  -- ==============================
-  -- MESSAGGI RIGUARDANTI I LIQUIDI
-  -- ==============================
-  
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- MESSAGGI LIQUIDI
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
   -- VERBI: bevi, prendi (..altri..).
   -- ORIGINAL EN: (nessuno)
   HAS impossibile_maneggiare_liq1  "Non puoi maneggiare $+1 a mani nude.".
 
 
-  -- ============================================================================
+--==============================================================================
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--------------------------------------------------------------------------------
+--
+-- MESSAGGI ORIGINALI INGLESE NON ANCORA TRADOTTI 
+--
+--------------------------------------------------------------------------------
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--==============================================================================
 
-  -- MESSAGGI DEI VERBI (ORIGINALI INGLESE)
-
-  -- ============================================================================
-  -- @NOTA: Quando tutti i messaggi saranno stati tradotti/implmentati in italiano
-  --        gli originali inglesi qui di seguito verranno cancellati. Fino ad
-  --        allora bisogna tenerli poiché sono richiesti dai verbi non ancora
-  --        tradotti. Però mano mano che mi concentro su un blocco di messaggi
-  --        simili li sposto nella sezione italiana, così posso seguire meglio
-  --        il lavoro di traduzione.
-  ------------------------------------------------------------------------------
+-- @NOTA: Quando tutti i messaggi saranno stati tradotti/implmentati in italiano
+--        gli originali inglesi qui di seguito verranno cancellati. Fino ad
+--        allora bisogna tenerli poiché sono richiesti dai verbi non ancora
+--        tradotti. Però mano mano che mi concentro su un blocco di messaggi
+--        simili li sposto nella sezione italiana, così posso seguire meglio
+--        il lavoro di traduzione.
+------------------------------------------------------------------------------
 
 
   -- all illegal parameter messages, typically found in the ELSE parts of SYNTAX structures and
@@ -1104,15 +1209,11 @@ ADD TO EVERY blocco_definizioni
   HAS check_obj_suitable_examine_sg "That's not something you can examine.".      -- examine
   HAS check_obj_suitable_examine_pl "Those are not something you can examine.".   -- examine
 
-  HAS check_obj_suitable_look_out_sg "That's not something you can look out of.".   -- look_out_of
-  HAS check_obj_suitable_look_out_pl "Those are not something you can look out of.".
-  HAS check_obj_suitable_look_through "You can't look through $+1.".        -- look_through
-
 
   -- other attribute checks:
   --------------------------
 
-  HAS check_obj_allowed_in_sg "$+1 doesn't belong in $+2.".             -- empty_in, pour_in, put_in, throw_in
+  HAS check_obj_allowed_in_sg "$+1 doesn't belong in $+2.". -- empty_in, pour_in, put_in, throw_in
   HAS check_obj_allowed_in_pl "$+1 don't belong in $+2.".
 
 
@@ -1140,9 +1241,6 @@ ADD TO EVERY blocco_definizioni
 
   HAS check_obj_in_cont_sg "$+1 is not in $+2.".                -- take_from
   HAS check_obj_in_cont_pl "$+1 are not in $+2.".
-  HAS check_obj_not_in_cont_sg "$+1 is in $+2 already.".            -- put_in, throw_in
-  HAS check_obj_not_in_cont_pl "$+1 are in $+2 already.".
-  HAS check_obj_not_in_cont2 "$+1 is already full of $+2.".           -- fill_with
 
 
   -- checking whether an object is on a surface or not:
@@ -1157,20 +1255,12 @@ ADD TO EVERY blocco_definizioni
 
   HAS check_clothing_sex "On second thoughts you decide $+1 won't really suit you.".      -- clothing: wear
   HAS check_cont_not_supporter "You can't put $+1 inside $+2.".             -- supporter: put_in
-  HAS check_device_on_sg "$+1 is already off.".                     -- device: turn_off, switch_off
-  HAS check_device_on_pl "$+1 are already off.".
-  HAS check_device_not_on_sg "$+1 is already on.".                  -- device: turn_on, switch_on
-  HAS check_device_not_on_pl "$+1 are already on.".
   HAS check_door_matching_key "You can't use $+2 to $v $+1.".             -- door: lock_with, unlock_with
   HAS check_lightsource_lit_sg "But $+1 is not lit.".                 -- lightsource: extinguish, turn_off
   HAS check_lightsource_lit_pl "But $+1 are not lit.".
-  HAS check_lightsource_not_lit_sg "$+1 is already lit.".               -- lightsource: light, turn_on
-  HAS check_lightsource_not_lit_pl "$+1 are already lit.".
   HAS check_lightsource_switchable_sg "That's not something you can switch on and off." .   -- lightsource: switch
   HAS check_lightsource_switchable_pl "Those are not something you can switch on and off.".
   HAS check_liquid_vessel_not_cont "You can't carry $+1 around in your bare hands.".      -- liquid: take_from
-
-
 
 END ADD TO blocco_definizioni.
 

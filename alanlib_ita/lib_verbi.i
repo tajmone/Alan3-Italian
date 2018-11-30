@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.9.7-Alpha, 2018-11-30: Alan 3.0beta6
+--| v0.9.8-Alpha, 2018-11-30: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -2262,10 +2262,13 @@ ADD TO EVERY THING
       AND ogg <> hero
         ELSE SAY  mia_AT:azione_futile.
       AND ogg IS inanimato
-        ELSE SAY mia_AT:png1_non_apprezzerebbe.
+        ELSE
+          IF ogg IS NOT plurale
+            THEN SAY mia_AT:png1_non_gradirebbe_sg.
+            ELSE SAY mia_AT:png1_non_gradirebbe_pl.
+          END IF.
       DOES
         "Tocchi $+1 ma non senti nulla di strano."
-     -- "You feel nothing unexpected."
   END VERB tocca.
 END ADD TO.
 
@@ -2327,7 +2330,11 @@ ADD TO EVERY THING
       AND strum IN hero
         ELSE SAY mia_AT:non_possiedi_ogg2.
       AND ogg IS inanimato
-        ELSE SAY mia_AT:png1_non_apprezzerebbe.
+        ELSE
+          IF ogg IS NOT plurale
+            THEN SAY mia_AT:png1_non_gradirebbe_sg.
+            ELSE SAY mia_AT:png1_non_gradirebbe_pl.
+          END IF.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -2345,9 +2352,7 @@ ADD TO EVERY THING
                 ELSE SAY mia_AT:ogg1_distante_pl.
               END IF.
           END IF.
-      DOES
-        "Tocchi $+1 con $+2 ma non succede nulla."
-     -- "You touch" SAY THE ogg. "with" SAY THE strum. ". Nothing special happens."
+      DOES "Tocchi $+1 con $+2 ma non succede nulla."
   END VERB tocca_con.
 END ADD TO.
 
@@ -4032,12 +4037,12 @@ ADD TO EVERY THING
       ELSE SAY mia_AT:azione_bloccata.
         AND ogg IS esaminabile
           ELSE
-        IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-          THEN SAY mia_AT:check_obj_suitable_examine_sg.
-          ELSE SAY mia_AT:check_obj_suitable_examine_pl.
-        END IF.
-        AND CURRENT LOCATION IS illuminato
+            IF ogg IS NOT plurale
+    --                                                                              TRANSLATE!
+              THEN SAY mia_AT:check_obj_suitable_examine_sg.
+              ELSE SAY mia_AT:check_obj_suitable_examine_pl.
+            END IF.
+    AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND ogg IS NOT scenario
       ELSE
@@ -4123,7 +4128,6 @@ SYNTAX guarda_attraverso = guarda attraverso (bulk)
     ELSE SAY mia_AT:illegal_parameter_look_through.
 
 
-
 ADD TO EVERY OBJECT
   VERB guarda_attraverso
     CHECK mia_AT CAN guardare_attraverso
@@ -4155,6 +4159,7 @@ END ADD TO.
 
 
 SYNTAX guarda_dietro = guarda dietro (bulk)
+--                                                                              TRANSLATE!
   WHERE bulk IsA THING
     ELSE SAY mia_AT:illegal_parameter_there.
 -- @TODO: Aggiungi controllo per suoni, oppure implementa il verbo sulla classe
@@ -4202,7 +4207,6 @@ SYNTAX guarda_fuori_da = guarda fuori da (ogg)
     ELSE
 -- @TODO: Add checks for Hero!                                                  FIXME!
       IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa da cui poter"
         THEN SAY mia_AT:ogg1_inadatto_DA_sg.
         ELSE SAY mia_AT:ogg1_inadatto_DA_pl.
       END IF.
@@ -4215,19 +4219,18 @@ ADD TO EVERY OBJECT
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-          THEN SAY mia_AT:check_obj_suitable_look_out_sg.
-          ELSE SAY mia_AT:check_obj_suitable_look_out_pl.
+          THEN SAY mia_AT:ogg1_inadatto_DA_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_DA_pl.
         END IF.
+        "guardare fuori."
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     DOES
       IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-        THEN "That's not"
-        ELSE "Those are not"
+        THEN SAY mia_AT:ogg1_inadatto_DA_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_DA_pl.
       END IF.
-      "something you can look out of."
+      "guardare fuori."
   END VERB guarda_fuori_da.
 END ADD TO.
 
@@ -4382,8 +4385,11 @@ ADD TO EVERY THING
     AND ogg <> hero
       ELSE LIST hero.
     AND ogg IS inanimato
-      -- "non credo che $+1 gradirebbe."
-      ELSE SAY  mia_AT:png1_non_apprezzerebbe.
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:png1_non_gradirebbe_sg.
+          ELSE SAY mia_AT:png1_non_gradirebbe_pl.
+        END IF.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -5008,10 +5014,9 @@ ADD TO EVERY OBJECT
         ELSE SAY mia_AT:imp_luogo_buio.
       AND ogg NOT IN ricevente
         ELSE
---                                                                              TRANSLATE!
           IF ricevente IS NOT plurale
-            THEN SAY mia_AT:check_obj_not_in_act_sg.
-            ELSE SAY mia_AT:check_obj_not_in_act_pl.
+            THEN SAY mia_AT:ogg1_già_posseduto_da_png2_sg.
+            ELSE SAY mia_AT:ogg1_già_posseduto_da_png2_pl.
           END IF.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
@@ -5043,19 +5048,15 @@ ADD TO EVERY OBJECT
                 ELSE SAY mia_AT:ogg1_distante_pl.
               END IF.
           END IF.
-          DOES
+      DOES
         -- >>> prendi implicito: >>>
         IF ogg NOT DIRECTLY IN hero
           THEN SAY  mia_AT:riferisci_prendi_implicito.
           LOCATE ogg IN hero.
         END IF.
         -- <<< prendi implicito <<<
-
         LOCATE ogg IN ricevente.
-        ---> @TODO!!                                                            TRANSLATE!
-        "You give" SAY THE ogg. "to" SAY THE ricevente. "."
-
-
+        "Consegni $+1" SAY ricevente:prep_A. "$2."
   END VERB dai_a.
 END ADD TO.
 
@@ -5512,7 +5513,7 @@ ADD TO EVERY OBJECT
     CHECK mia_AT CAN indossare
         ELSE SAY mia_AT:azione_bloccata.
     AND ogg NOT IN abbigliamento
-      ELSE SAY mia_AT:indossi_già.
+      ELSE SAY mia_AT:ogg1_già_indossato.
     AND ogg IS prendibile
       ELSE SAY  mia_AT:ogg1_non_posseduto.
     AND CURRENT LOCATION IS illuminato
@@ -7507,8 +7508,11 @@ ADD TO EVERY THING
     AND ogg <> hero
       ELSE SAY mia_AT:azione_insensata.
     AND ogg IS inanimato
-      -- "non credo che $+1 gradirebbe."
-      ELSE SAY  mia_AT:png1_non_apprezzerebbe.
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:png1_non_gradirebbe_sg.
+          ELSE SAY mia_AT:png1_non_gradirebbe_pl.
+        END IF.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -7586,8 +7590,11 @@ ADD TO EVERY THING
       AND ogg <> hero
         ELSE SAY mia_AT:azione_insensata.
       AND ogg IS inanimato
-        -- "non credo che $+1 gradirebbe."
-        ELSE SAY  mia_AT:png1_non_apprezzerebbe.
+        ELSE
+          IF ogg IS NOT plurale
+            THEN SAY mia_AT:png1_non_gradirebbe_sg.
+            ELSE SAY mia_AT:png1_non_gradirebbe_pl.
+          END IF.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -7647,8 +7654,11 @@ ADD TO EVERY OBJECT
     AND ogg <> hero
       ELSE SAY mia_AT:azione_insensata.
     AND ogg IS inanimato
-      -- "non credo che $+1 gradirebbe."
-      ELSE SAY  mia_AT:png1_non_apprezzerebbe.
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:png1_non_gradirebbe_sg.
+          ELSE SAY mia_AT:png1_non_gradirebbe_pl.
+        END IF.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -8547,13 +8557,42 @@ END ADD TO.
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
 --| 
---| Questo gruppo include i verbi per entrare e uscire:
+--| La libreria definisce i seguenti verbi per entrare e uscire da un oggetto:
 --| 
 --| * `entra`
 --| * `entra_in`
 --| * `esci`
 --| * `esci_da`
+--| 
+--| 
+--| Poiché in Alan non è consentito collocare un attore dentro ad un contenitore,
+--| si dovrà ricorrere ad un luogo annidato in quello attuale per creare tale
+--| illusione.
+--| 
+--| Ad esempio, volendo implementare una cabina telefonica in cui il giocatore
+--| possa entrare, si creerà un oggetto `cabina_telefonica` che rappresenti la
+--| cabina nel luogo attuale, e si creerà anche il luogo annidato `interno_cabina`
+--| in cui spostare l'eroe quando questi entra nella cabina.
+--| 
+--| Sull'oggetto `cabina_telefonica` si implementeranno i verbi `entra` ed
+--| `esci` affinché questi collochino l'eroe dentro e fuori il luogo annidato
+--| `interno_cabina`. Quando l'eroe si troverà in `interno_cabina` sarà comunque
+--| _anche_ dentro il luogo che ospita la cabina (contenimento transitivo), perciò
+--| gli oggetti di entrambi i luoghi saranno alla sua portata.
+--| 
+--| Intervenendo sull'istanza `interno_cabina` sarà infine possibile controllare
+--| quali azioni saranno consentite dall'interno della cabina e quali no -- p.es.
+--| fare in modo che dalla cabina sia visibile tutto ciò che si trova nel luogo
+--| principale, impedire interazioni che richiedano contatto fisico con gli
+--| oggetti al di fuori di essa, rendere accessibili il telefono e la guida
+--| telefonica, ecc.
 --<
+
+-- In the present version of ALAN, actors cannot enter containers.
+-- You can simulate the hero entering a container by making the 'container'
+-- a nested location and locating the hero there in the DOES ONLY
+-- section of this verb under the instance at hand.
+
 
 
 -->gruppo_entrare                                              @ENTRA <-- @ENTER
@@ -8567,17 +8606,6 @@ END ADD TO.
 --| * [ ] Descrizione `entra` + `entra_in`.
 --<
 
-
--- Poiché Alan non consente di mettere gli attori dentro i contenitori, si dovrà
--- simulare che il protagonista entri in un contenitore implementando un luogo
--- annidato in quello attuale.
-
-
---                                                                              TRANSLATE!
--- In the present version of ALAN, actors cannot enter containers.
--- You can simulate the hero entering a container by making the 'container'
--- a nested location and locating the hero there in the DOES ONLY
--- section of this verb under the instance at hand.
 
 
 -- La versione semplice del verbo `entra` serve a indirizzare il giocatore verso
@@ -9616,8 +9644,11 @@ ADD TO EVERY THING
     AND ogg <> hero
       ELSE SAY  mia_AT:azione_futile.
     AND ogg IS inanimato
-      -- "non credo che $+1 gradirebbe."
-      ELSE SAY  mia_AT:png1_non_apprezzerebbe.
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:png1_non_gradirebbe_sg.
+          ELSE SAY mia_AT:png1_non_gradirebbe_pl.
+        END IF.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -10398,14 +10429,17 @@ ADD TO EVERY THING
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
           THEN SAY mia_AT:ogg1_inadatto_sg.
           ELSE SAY mia_AT:ogg1_inadatto_pl.
         END IF. "sfregare."
     AND ogg <> hero
       ELSE SAY mia_AT:azione_irrelevante.
     AND ogg IS inanimato
-      ELSE SAY mia_AT:png1_non_apprezzerebbe.
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:png1_non_gradirebbe_sg.
+          ELSE SAY mia_AT:png1_non_gradirebbe_pl.
+        END IF.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND ogg IS raggiungibile AND ogg IS NOT distante

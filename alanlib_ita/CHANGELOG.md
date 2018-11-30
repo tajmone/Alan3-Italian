@@ -17,51 +17,58 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/11/30](#20181130)
+- [2018/11/30 \(2\)](#20181130-2)
+    - [Documentazione](#documentazione)
     - [Messaggi dei verbi](#messaggi-dei-verbi)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
         - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi)
+        - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi)
+        - [Correggi messaggi dei verbi](#correggi-messaggi-dei-verbi)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
+- [2018/11/30 \(1\)](#20181130-1)
+    - [Messaggi dei verbi](#messaggi-dei-verbi-1)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-1)
+        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-1)
     - [Rinomina parametri del verbo `scrivi`](#rinomina-parametri-del-verbo-scrivi)
 - [2018/11/25 \(2\)](#20181125-2)
     - [Aggiornamento Doxter](#aggiornamento-doxter)
 - [2018/11/25 \(1\)](#20181125-1)
-    - [Messaggi dei verbi](#messaggi-dei-verbi-1)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-1)
+    - [Messaggi dei verbi](#messaggi-dei-verbi-2)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-2)
         - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
         - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi)
 - [2018/11/24](#20181124)
-    - [Messaggi dei verbi](#messaggi-dei-verbi-2)
+    - [Messaggi dei verbi](#messaggi-dei-verbi-3)
         - [Correggi baco in `chiedi`](#correggi-baco-in-chiedi)
         - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi-1)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-2)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-3)
     - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-1)
 - [2018/11/23 \(2\)](#20181123-2)
-    - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi)
+    - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi-1)
     - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi-2)
-    - [Traduci Messaggi dei verbi](#traduci-messaggi-dei-verbi-3)
+    - [Traduci Messaggi dei verbi](#traduci-messaggi-dei-verbi-4)
 - [2018/11/23 \(1\)](#20181123-1)
     - [Correggi Baco LIQUIDI](#correggi-baco-liquidi)
 - [2018/11/22 \(5\)](#20181122-5)
-    - [Messaggi dei verbi](#messaggi-dei-verbi-3)
-        - [Elimina Messaggi dei verbi](#elimina-messaggi-dei-verbi-1)
+    - [Messaggi dei verbi](#messaggi-dei-verbi-4)
+        - [Elimina Messaggi dei verbi](#elimina-messaggi-dei-verbi-2)
         - [Nuovi Messaggi dei verbi](#nuovi-messaggi-dei-verbi-2)
 - [2018/11/22 \(4\)](#20181122-4)
     - [Correggi Baco in LIQUIDO](#correggi-baco-in-liquido)
 - [2018/11/22 \(3\)](#20181122-3)
-    - [Documentazione](#documentazione)
+    - [Documentazione](#documentazione-1)
     - [Verbi](#verbi)
-    - [Messaggi dei verbi](#messaggi-dei-verbi-4)
+    - [Messaggi dei verbi](#messaggi-dei-verbi-5)
 - [2018/11/22 \(2\)](#20181122-2)
     - [Suddivisione modulo messaggi](#suddivisione-modulo-messaggi)
     - [Passa alla v0.9.0](#passa-alla-v090)
 - [2018/11/22 \(1\)](#20181122-1)
-    - [Messaggi dei verbi](#messaggi-dei-verbi-5)
+    - [Messaggi dei verbi](#messaggi-dei-verbi-6)
         - [Rinomina attributi](#rinomina-attributi)
         - [Azioni insensate](#azioni-insensate)
         - [Azioni Futili](#azioni-futili)
 - [2018/11/20](#20181120)
     - [Documentazione Messaggi](#documentazione-messaggi)
-    - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi-1)
+    - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi-2)
 - [2018/11/16](#20181116)
     - [Documentazione verbi](#documentazione-verbi)
 - [2018/11/15](#20181115)
@@ -77,7 +84,62 @@ For previuos changes, see:
 -----
 
 
-# 2018/11/30
+# 2018/11/30 (2)
+
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.8)
+- [`lib_verbi.i`][lib_verbi] (v0.9.8)
+
+## Documentazione
+
+Nei verbi `entra` ed `esci` documenta l'uso di luoghi annidati per simulare l'eroe che entra ed esce da contenitori.
+
+## Messaggi dei verbi
+
+Riordina i messaggi da tradurre inserendoli nei gruppi di appartenenza degli attributi già tradotti.
+
+### Elimina messaggi dei verbi
+
+Elimina attributi inglesi per i messaggi di risposta dei verbi:
+
+|               Attributo               |                     Testo                     |
+|---------------------------------------|-----------------------------------------------|
+| `check_obj_suitable_look_out_sg`/`pl` | `"That's not something you can look out of."` |
+| `illegal_parameter_look_out_sg`/`pl`  | `"That's not something you can look out of."` |
+
+Al posto degli attributi originali sono stati impiegati attributi italiani preesistenti, oppure la risposta è stata gestita direttamente nel codice del verbo.
+
+### Rinomina messaggi dei verbi
+
+Rinominati i seguenti attributi per i messaggi di risposta dei verbi:
+
+|   Vecchio ID  |       Nuovo ID       |
+|---------------|----------------------|
+| `indossi_già` | `ogg1_già_indossato` |
+
+### Correggi messaggi dei verbi
+
+Modificati i seguenti attributi per i messaggi di risposta dei verbi per adattarli a coprire anche la forma plurale:
+
+|        Vecchio ID        |            Nuovi ID           |
+|--------------------------|-------------------------------|
+| `png1_non_apprezzerebbe` | `png1_non_gradirebbe_sg`/`pl` |
+
+
+### Traduci messaggi dei verbi
+
+Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
+
+|          Attributo EN          |             Attributo IT             |                 Testo                  |
+|--------------------------------|--------------------------------------|----------------------------------------|
+| `check_obj_not_in_act_sg`/`pl` | `ogg1_già_posseduto_da_png2_sg`/`pl` | `"$+2 [possiede/possiedono] già $+1."` |
+
+Gli attributi originali inglesi sono stati eliminati.
+
+
+
+<!---------------------------------------------------------------------------->
+
+# 2018/11/30 (1)
 
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.7)
 - [`lib_verbi.i`][lib_verbi] (v0.9.7)

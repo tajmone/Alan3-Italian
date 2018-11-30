@@ -495,6 +495,31 @@ tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un
 fico e una mela qui.
 
 > ; ------------------------------------------------------------------------------
+> ; ABBANDONA + RESTORE
+> ; ------------------------------------------------------------------------------
+> abbandona partita
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? restore
+Inserisci il nome del file 
+(comandi-partita_arun-diverso.sav) : comandi-partita.sav
+
+> esamina la mela
+Questa mela ha un aspetto irresistibile. Un piccolo bollino adesivo
+riporta che è stata colta nei giardini dell'Eden. 
+
+* Conto alla rovescia: 3  *
+
+> mangia la mela
+(prima prendi la mela)
+Mangi la mela. 
+
+(Il tuo punteggio è appena salito di 666 punti.) 
+
+(Per disabilitare le notifiche di punteggio usa il comando NOTIFICA.) 
+
+* Conto alla rovescia: 2  *
+
+> ; ------------------------------------------------------------------------------
 > ; ABBANDONA + UNDO
 > ; ------------------------------------------------------------------------------
 > ; Avviamo il menù di Quit ma poi lo abbandoniamo...
@@ -504,14 +529,8 @@ Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? undo
 'abbandona partita'
 annullato.
 
-> ; ------------------------------------------------------------------------------
-> ; ABBANDONA + RESTORE
-> ; ------------------------------------------------------------------------------
-> abbandona partita
-
-Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? restore
-Inserisci il nome del file 
-(comandi-partita_arun-diverso.sav) : comandi-partita.sav
+> esamina la mela
+Qui non puoi vedere nulla del genere.
 
 > ; ------------------------------------------------------------------------------
 > ; ABBANDONA + QUIT

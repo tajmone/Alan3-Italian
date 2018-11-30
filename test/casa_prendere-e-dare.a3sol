@@ -15,10 +15,17 @@ prendi la mela
 prendi la pera dal cesto
 prendi la pera dal cesto
 ; ==============================================================================
+; TESTA 'dai_a'
+; ==============================================================================
+sud
+dai la pera al giardiniere
+dai la pera al giardiniere
+; ==============================================================================
 ; TESTA LIQUIDI
 ; ==============================================================================
 ; I liquidi in contenitori trasportabili possono essere presi e lasciati usando
 ; o il nome del liquido o quello del contenitore.
+nord
 esamina la bottiglia
 prendi la bottiglia
 metti la bottiglia sul tavolo

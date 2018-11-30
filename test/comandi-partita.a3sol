@@ -173,17 +173,20 @@ comandi-partita_arun-diverso.sav
 abbandona partita
 restart
 ; ------------------------------------------------------------------------------
-; ABBANDONA + UNDO
-; ------------------------------------------------------------------------------
-; Avviamo il menù di Quit ma poi lo abbandoniamo...
-abbandona partita
-undo
-; ------------------------------------------------------------------------------
 ; ABBANDONA + RESTORE
 ; ------------------------------------------------------------------------------
 abbandona partita
 restore
 comandi-partita.sav
+esamina la mela
+mangia la mela
+; ------------------------------------------------------------------------------
+; ABBANDONA + UNDO
+; ------------------------------------------------------------------------------
+; Avviamo il menù di Quit ma poi lo abbandoniamo...
+abbandona partita
+undo
+esamina la mela
 ; ------------------------------------------------------------------------------
 ; ABBANDONA + QUIT
 ; ------------------------------------------------------------------------------
