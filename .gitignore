@@ -3,8 +3,6 @@
 # https://github.com/tajmone/Alan3-Italian                                     #
 ################################################################################
 
-
-*.tmp
 ## ==========
 ## Alan Files
 ## ==========
@@ -19,9 +17,15 @@
 ## =============
 .project
 
+## ===============
+## Documentazione
+## ===============
+docs_src/lib*.asciidoc
 
+## ===============
 ## Misc Work Files
 ## ===============
+*.tmp
 
 # Backup Files
 ___*.*

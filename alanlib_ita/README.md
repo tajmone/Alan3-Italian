@@ -55,18 +55,7 @@ Boilerplates and templates from the StdLibrary have been renamed with a leading 
 
 ## Library Documentation Files
 
-The Italian library is currently switching to a new system which generates the AsciiDoc documentation directly from comments in the Alan source files using [Doxter]:
-
-- [`libreria.asciidoc`][libreria adoc]
-- [`lib_classi.asciidoc`][lib_classi adoc]
-- [`lib_definizioni.asciidoc`][lib_definizioni adoc]
-- [`lib_luoghi.asciidoc`][lib_luoghi adoc]
-- [`lib_messaggi_libreria.asciidoc`][lib_messaggi_libreria adoc]
-- [`lib_messaggi_runtime.asciidoc`][lib_messaggi_runtime adoc]
-- [`lib_verbi.asciidoc`][lib_verbi adoc]
-- [`lib_supplemento.asciidoc`][lib_supplemento adoc]
-
-The AsciiDoc files are then converted to HTML:
+The Italian library is currently switching to a new system which extracts the AsciiDoc documentation for each module directly from the comments in the Alan source files of the library, via the [Doxter] tool. The AsciiDoc files are then converted to HTML:
 
 - [`libreria.html`][libreria html]  ([Live HTML Preview][libreria html live])
 - [`lib_classi.html`][lib_classi html]  ([Live HTML Preview][lib_classi html live])
@@ -78,11 +67,10 @@ The AsciiDoc files are then converted to HTML:
 - [`lib_supplemento.html`][lib_supplemento html]  ([Live HTML Preview][lib_supplemento html live])
 
 
-See also:
+For more information on how the documentation is built, see:
 
-- [`BUILD_DOCS.bat`][BUILD_DOCS]
-- [`ANNOTAZIONI_DOXTER.asciidoc`][ANNOTAZIONI_DOXTER adoc]  (Italian)
-- [`ANNOTAZIONI_DOXTER.html`][ANNOTAZIONI_DOXTER html]  (Italian)
+- [`../docs_src/`](../docs_src/)
+
 
 
 # Translation
@@ -535,42 +523,30 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 
 <!-- Library Documentation  -->
 
-[ANNOTAZIONI_DOXTER adoc]: ./ANNOTAZIONI_DOXTER.asciidoc
-[ANNOTAZIONI_DOXTER html]: ./ANNOTAZIONI_DOXTER.html
-[BUILD_DOCS]: ./BUILD_DOCS.bat
 
+[libreria html]: ../docs/libreria.html
+[libreria html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/libreria.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
-[libreria adoc]: ./libreria.asciidoc
-[libreria html]: ./libreria.html
-[libreria html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/libreria.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_classi html]: ../docs/lib_classi.html
+[lib_classi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_classi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
-[lib_classi adoc]: ./lib_classi.asciidoc
-[lib_classi html]: ./lib_classi.html
-[lib_classi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_classi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_definizioni html]: ../docs/lib_definizioni.html
+[lib_definizioni html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_definizioni.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
-[lib_definizioni adoc]: ./lib_definizioni.asciidoc
-[lib_definizioni html]: ./lib_definizioni.html
-[lib_definizioni html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_definizioni.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_luoghi html]: ../docs/lib_luoghi.html
+[lib_luoghi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_luoghi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
-[lib_luoghi adoc]: ./lib_luoghi.asciidoc
-[lib_luoghi html]: ./lib_luoghi.html
-[lib_luoghi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_luoghi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_messaggi_runtime html]: ../docs/lib_messaggi_runtime.html
+[lib_messaggi_runtime html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_messaggi_runtime.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
-[lib_messaggi_runtime adoc]: ./lib_messaggi_runtime.asciidoc
-[lib_messaggi_runtime html]: ./lib_messaggi_runtime.html
-[lib_messaggi_runtime html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_messaggi_runtime.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_messaggi_libreria html]: ../docs/lib_messaggi_libreria.html
+[lib_messaggi_libreria html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_messaggi_libreria.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
-[lib_messaggi_libreria adoc]: ./lib_messaggi_libreria.asciidoc
-[lib_messaggi_libreria html]: ./lib_messaggi_libreria.html
-[lib_messaggi_libreria html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_messaggi_libreria.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_verbi html]: ../docs/lib_verbi.html
+[lib_verbi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_verbi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
-[lib_verbi adoc]: ./lib_verbi.asciidoc
-[lib_verbi html]: ./lib_verbi.html
-[lib_verbi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_verbi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
-
-[lib_supplemento adoc]: ./lib_supplemento.asciidoc
-[lib_supplemento html]: ./lib_supplemento.html
-[lib_supplemento html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_supplemento.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_supplemento html]: ../docs/lib_supplemento.html
+[lib_supplemento html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_supplemento.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
 [Doxter]: https://git.io/doxter "Visit Doxter website"
 

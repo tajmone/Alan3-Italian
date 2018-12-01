@@ -40,7 +40,7 @@ In the future, more syntaxes might be included if needed in the Alan Italian doc
 
 - https://github.com/highlightjs/highlight.js
 
-[Highlight.js] is Copyright (C) 2006, Ivan Sagalaev, and is released under the BSD3 license:
+[Highlight.js] is Copyright (C) 2006, [Ivan Sagalaev], and is released under the BSD3 license:
 
     Copyright (c) 2006, Ivan Sagalaev
     All rights reserved.
@@ -100,6 +100,7 @@ For the Highlight.js CSS theme for Alan, I've used the colors of the [Base16 Eig
 ------------------------------------------------------------------------------>
 
 [highlight.js]: https://highlightjs.org/ "Visit highlight.js website"
+[Ivan Sagalaev]: https://github.com/isagalaev "View Ivan Sagalaev's GitHub profile"
 
 [Base16 Eighties]: https://github.com/chriskempson/base16-builder/blob/master/schemes/eighties.yml "View upstream source scheme"
 [Chris Kempson]: http://chriskempson.com "Visit Chris Kempson's website"
