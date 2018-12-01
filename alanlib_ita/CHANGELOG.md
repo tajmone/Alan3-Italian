@@ -17,6 +17,8 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/12/01](#20181201)
+    - [Documentazione Messaggi Libreria](#documentazione-messaggi-libreria)
 - [2018/11/30 \(2\)](#20181130-2)
     - [Documentazione](#documentazione)
     - [Messaggi dei verbi](#messaggi-dei-verbi)
@@ -83,6 +85,18 @@ For previuos changes, see:
 
 -----
 
+
+# 2018/12/01
+
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.9)
+
+## Documentazione Messaggi Libreria
+
+Sposta la regione Doxter che documenta l'uso di `$v` dal modulo `lib_messaggi_libreria.i` al file `doc_src/appunti-lavoro.asciidoc`.
+
+Inizia a doxterizzare la documentazione dei messaggi, rendendo consultabili le categorie nelle quali sono attualmente organizzati.
+
+<!---------------------------------------------------------------------------->
 
 # 2018/11/30 (2)
 

@@ -9,6 +9,7 @@ Questa è la cartella di lavoro per la creazione automatizzata della documentazi
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [Contenuti della cartella](#contenuti-della-cartella)
 - [Introduzione](#introduzione)
     - [Organizzazione dei contenuti](#organizzazione-dei-contenuti)
     - [Requisiti di sistema](#requisiti-di-sistema)
@@ -26,6 +27,13 @@ Questa è la cartella di lavoro per la creazione automatizzata della documentazi
 <!-- /MarkdownTOC -->
 
 -----
+
+# Contenuti della cartella
+
+- [`attributes-it.adoc`][attributes-it] — traduzione italiana attributi AsciiDoc (a cura di Marco Ciampa).
+- [`DOCUMENTA.bat`][DOCUMENTA.bat] — script per generare la documentazione.
+- [`index.asciidoc`][index adoc] — homepage della documentazione.
+
 
 # Introduzione
 
@@ -58,6 +66,7 @@ La seguente tabella illustra la catena di lavoro dei file della documentazione.
 
 |                            input Doxter                           |                        input Asciidoctor                         |                            output HTML                             |
 |-------------------------------------------------------------------|------------------------------------------------------------------|--------------------------------------------------------------------|
+|                                                                   | [`./index.asciidoc`][index adoc]                                 | [`../docs/index.html`][index html]                                 |
 | [`../alanlib_ita/libreria.i`][libreria]                           | [`./libreria.asciidoc`][libreria adoc]                           | [`../docs/libreria.html`][libreria html]                           |
 | [`../alanlib_ita/lib_classi.i`][lib_classi]                       | [`./lib_classi.asciidoc`][lib_classi adoc]                       | [`../docs/lib_classi.html`][lib_classi html]                       |
 | [`../alanlib_ita/lib_definizioni.i`][lib_definizioni]             | [`./lib_definizioni.asciidoc`][lib_definizioni adoc]             | [`../docs/lib_definizioni.html`][lib_definizioni html]             |
@@ -132,7 +141,7 @@ Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in cia
 | 51000    | 665-666   | `todo_checklist`            | === Check List Doxter                     |
 
 <!-- 
-| 00000  |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+| 00000  |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx |
 -->
 
 ## Modulo Definizioni
@@ -151,7 +160,7 @@ Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in cia
 
 
 <!-- 
-| 00000  |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+| 00000  |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx |
 -->
 
 
@@ -168,7 +177,7 @@ Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in cia
 | 51000    | 665-666   | `todo_checklist`            | === Check List Doxter                     |
 
 <!-- 
-| 00000  |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+| 00000  |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx |
 -->
 
 ## Modulo Messaggi Runtime
@@ -184,7 +193,7 @@ Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in cia
 | 51000    | 665-666   | `todo_checklist`            | === Check List Doxter                     |
 
 <!-- 
-| 00000  |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+| 00000  |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx |
 -->
 
 
@@ -197,14 +206,15 @@ Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in cia
 | -------: | --------: | :-------------------------- | :----------------------------------------            |
 | 100      | 1         | `messaggi_libreria`         | ==  Messaggi della Libreria                          |
 | 500      | 1         | `libmsg_convenzioni`        | === Convenzioni negli identificativi degli attributi |
-| 20000    |           | `libmsg_verbi`              | === Messaggi dei Verbi                               |
-| 20100    |           | `libmsg_verbi_vsym`         | ==== Note Riguardo l'Uso di `$v`                     |
+| 1000     |           | `libmsg_tipi`               | == Tipologie di Messaggi                             |
+| 2000     |           | `msg_hero`                  | === Messaggi riguardanti il protagonista             |
+| 3000     |           | `msg_ripetuti`              | === Risposte Ripetute                                |
 | 50000    |           | `todo`                      | TODO                                                 |
 | 51000    | 1-33      | `todo_checklist`            | === Check List Generale                              |
 | 51000    | 665-666   | `todo_checklist`            | === Check List Doxter                                |
 
 <!-- 
-| 00000  |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+| 00000  |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx |
 -->
 
 ## Modulo Verbi
@@ -280,7 +290,7 @@ Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in cia
 
 
 <!-- 
-| 00000  |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
+| 00000  |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx |
 -->
 
 <!-----------------------------------------------------------------------------
@@ -295,6 +305,8 @@ Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in cia
 
 [DOCUMENTA.bat]: ./DOCUMENTA.bat "Vedi sorgente"
 [docs]: ../docs/ "Vai alla cartella"
+[attributes-it]: ./attributes-it.adoc "Vedi sorgente"
+
 
 <!-- MODULI LIBRERIA -->
 
@@ -310,42 +322,41 @@ Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in cia
 
 <!-- FILE DOCUMENTAZIONE  -->
 
-[ANNOTAZIONI_DOXTER adoc]: ./ANNOTAZIONI_DOXTER.asciidoc
-[ANNOTAZIONI_DOXTER html]: ./ANNOTAZIONI_DOXTER.html
-[BUILD_DOCS]: ./BUILD_DOCS.bat
-
+[index adoc]: ./index.asciidoc
+[index html]: ../docs/index.html
+[index html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/index.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
 [libreria adoc]: ./libreria.asciidoc
 [libreria html]: ../docs/libreria.html
-[libreria html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/libreria.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[libreria html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/libreria.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
 [lib_classi adoc]: ./lib_classi.asciidoc
 [lib_classi html]: ../docs/lib_classi.html
-[lib_classi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_classi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_classi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_classi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
 [lib_definizioni adoc]: ./lib_definizioni.asciidoc
 [lib_definizioni html]: ../docs/lib_definizioni.html
-[lib_definizioni html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_definizioni.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_definizioni html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_definizioni.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
 [lib_luoghi adoc]: ./lib_luoghi.asciidoc
 [lib_luoghi html]: ../docs/lib_luoghi.html
-[lib_luoghi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_luoghi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_luoghi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_luoghi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
 [lib_messaggi_runtime adoc]: ./lib_messaggi_runtime.asciidoc
 [lib_messaggi_runtime html]: ../docs/lib_messaggi_runtime.html
-[lib_messaggi_runtime html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_messaggi_runtime.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_messaggi_runtime html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_messaggi_runtime.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
 [lib_messaggi_libreria adoc]: ./lib_messaggi_libreria.asciidoc
 [lib_messaggi_libreria html]: ../docs/lib_messaggi_libreria.html
-[lib_messaggi_libreria html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_messaggi_libreria.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_messaggi_libreria html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_messaggi_libreria.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
 [lib_verbi adoc]: ./lib_verbi.asciidoc
 [lib_verbi html]: ../docs/lib_verbi.html
-[lib_verbi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_verbi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_verbi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_verbi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
 [lib_supplemento adoc]: ./lib_supplemento.asciidoc
 [lib_supplemento html]: ../docs/lib_supplemento.html
-[lib_supplemento html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_supplemento.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_supplemento html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_supplemento.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
 [Doxter]: https://git.io/doxter "Visit Doxter website"
 

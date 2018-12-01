@@ -1,4 +1,4 @@
-:: "DOCUMENTA.bat" v0.1.0 (2018-12-01)
+:: "DOCUMENTA.bat" v0.1.1 (2018-12-01)
 :: -----------------------------------------------------------------------------
 @ECHO OFF & CLS
 ECHO.
@@ -44,6 +44,7 @@ CALL asciidoctor^
   -a linkattrs^
   -a reproducible^
   -a sectanchors^
+  -a toc-title="Indice dei contenuti"^
   -a toc=left^
   -a toclevels=5^
   -a version-label=Versione^

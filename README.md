@@ -30,6 +30,7 @@ Project start date: 2018-04-13.
 - [Third Party Assets](#third-party-assets)
     - [Highlight.js](#highlightjs)
     - [Base16 Eighties](#base16-eighties)
+    - [Asciidoctor Attributes i18n IT](#asciidoctor-attributes-i18n-it)
 
 <!-- /MarkdownTOC -->
 
@@ -223,6 +224,36 @@ For the Highlight.js CSS theme for Alan, I've used the colors of the [Base16 Eig
     LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
     OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
     WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+## Asciidoctor Attributes i18n IT
+
+- https://github.com/asciidoctor/asciidoctor/blob/a9dc0e2/data/locale/attributes-it.adoc
+
+The documentation uses an adaptation of Asciidcotor `attributes-it.adoc`, translated by Marco Ciampa, released under MIT License:
+
+    MIT License
+
+    Copyright (C) 2012-2018 Dan Allen, Ryan Waldron and the Asciidoctor Project
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+
 
 
 <!-----------------------------------------------------------------------------

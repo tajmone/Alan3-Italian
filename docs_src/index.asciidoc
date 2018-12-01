@@ -1,0 +1,53 @@
+= Documentazione di Alan Italian
+Tristano Ajmone <tajmone@gmail.com>
+:lang: it
+// TOC Settings:
+:toc: left
+:toclevels: 5
+// Sections Numbering:
+:sectnums!:
+:sectnumlevels: 2
+// Cross References:
+:xrefstyle: short
+:section-refsig: sez.
+// Misc Settings:
+:experimental: true
+:icons: font
+:linkattrs: true
+:reproducible: true
+:sectanchors:
+// Traduzione italiana degli attributi predefiniti di Asciidoctor:
+include::attributes-it.adoc[tag=attributes-it]
+
+// *****************************************************************************
+// *                                                                           *
+// *                            Document Preamble                              *
+// *                                                                           *
+// *****************************************************************************
+
+[WARNING]
+================================================================================
+La documentazione è ancora in fase di preparazione.
+================================================================================
+
+== Documentazione dei moduli
+
+È possibile consultare la documentazione dei singoli moduli della libreria:
+
+* link:lib_classi.html[`lib_classi.i`]
+* link:lib_definizioni.html[`lib_definizioni.i`]
+* link:lib_luoghi.html[`lib_luoghi.i`]
+* link:lib_messaggi_libreria.html[`lib_messaggi_libreria.i`]
+* link:lib_messaggi_runtime.html[`lib_messaggi_runtime.i`]
+* link:lib_verbi.html[`lib_verbi.i`]
+* link:lib_supplemento.html[`lib_supplemento.i`]
+
+
+== Documenti vari
+
+Questi sono i link a vari documenti in fase di preparazione:
+
+* link:appunti-lavoro.html[Appunti di lavoro]
+
+
+// EOF //
