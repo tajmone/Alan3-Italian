@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.9.11-Alpha, 2018-12-04: Alan 3.0beta6
+--| v0.9.12-Alpha, 2018-12-04: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
@@ -999,6 +999,15 @@ ADD TO EVERY blocco_definizioni
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
 
+--| Scampolo generico riutilizzabile in varie risposte:
+
+  -- VERBI: xxx.
+  -- ORIGINAL EN: (nessuno)
+  HAS ogg1_già_sg  "$+1 è già".
+  HAS ogg1_già_pl  "$+1 è già".
+
+
+
 --| L'oggetto si trova già sul posto:
 
   -- VERBI: trova, follow, vai_a, dove_è.
@@ -1119,34 +1128,6 @@ ADD TO EVERY blocco_definizioni
   -- VERBI: indossa.
   -- ORIGINAL EN:  check_obj_not_in_worn1
   HAS ogg1_già_indossato  "Stai già indossando $+1.".
---<
-
--->============================================================================
---~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---~-----------------------------------------------------------------------------
---| === Superflue dispositivi
---~-----------------------------------------------------------------------------
---~/////////////////////////////////////////////////////////////////////////////
---~============================================================================
-
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_device_on_sg "$+1 is already off.".     -- device: turn_off, switch_off
-  HAS check_device_on_pl "$+1 are already off.".
-  HAS check_device_not_on_sg "$+1 is already on.".  -- device: turn_on, switch_on
-  HAS check_device_not_on_pl "$+1 are already on.".
---<
-
--->============================================================================
---~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---~-----------------------------------------------------------------------------
---| === Superflue fonti di luce
---~-----------------------------------------------------------------------------
---~/////////////////////////////////////////////////////////////////////////////
---~============================================================================
-
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_lightsource_not_lit_sg "$+1 is already lit.".  -- lightsource: light, turn_on
-  HAS check_lightsource_not_lit_pl "$+1 are already lit.".
 --<
 
 -->=============================================================================
@@ -1424,13 +1405,6 @@ ADD TO EVERY blocco_definizioni
   -- door: lock_with, unlock_with
   HAS check_door_matching_key "You can't use $+2 to $v $+1.".
   
-  -- lightsource: extinguish, turn_off
-  HAS check_lightsource_lit_sg "But $+1 is not lit.".
-  HAS check_lightsource_lit_pl "But $+1 are not lit.".
-  
-  -- lightsource: switch
-  HAS check_lightsource_switchable_sg "That's not something you can switch on and off." .
-  HAS check_lightsource_switchable_pl "Those are not something you can switch on and off.".
   
   -- liquid: take_from
   HAS check_liquid_vessel_not_cont "You can't carry $+1 around in your bare hands.".

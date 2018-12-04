@@ -17,10 +17,16 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/12/04 \(2\)](#20181204-2)
+- [2018/12/04 \(3\)](#20181204-3)
     - [Messaggi libreria](#messaggi-libreria)
-- [2018/12/04 \(1\)](#20181204-1)
+        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
+        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi)
+    - [Risposte dei verbi](#risposte-dei-verbi)
+        - [Risposte per dispositivi e fonti di luce](#risposte-per-dispositivi-e-fonti-di-luce)
+- [2018/12/04 \(2\)](#20181204-2)
     - [Messaggi libreria](#messaggi-libreria-1)
+- [2018/12/04 \(1\)](#20181204-1)
+    - [Messaggi libreria](#messaggi-libreria-2)
         - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
         - [Azioni eterodirette](#azioni-eterodirette)
         - [Traduci messaggi delle classi](#traduci-messaggi-delle-classi)
@@ -30,28 +36,28 @@ For previuos changes, see:
 - [2018/11/30 \(2\)](#20181130-2)
     - [Documentazione](#documentazione)
     - [Messaggi dei verbi](#messaggi-dei-verbi)
-        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi)
+        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-1)
         - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi)
         - [Correggi messaggi dei verbi](#correggi-messaggi-dei-verbi)
         - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-1)
 - [2018/11/30 \(1\)](#20181130-1)
     - [Messaggi dei verbi](#messaggi-dei-verbi-1)
         - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-2)
-        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-1)
+        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-2)
     - [Rinomina parametri del verbo `scrivi`](#rinomina-parametri-del-verbo-scrivi)
 - [2018/11/25 \(2\)](#20181125-2)
     - [Aggiornamento Doxter](#aggiornamento-doxter)
 - [2018/11/25 \(1\)](#20181125-1)
     - [Messaggi dei verbi](#messaggi-dei-verbi-2)
         - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-3)
-        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
+        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-1)
         - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi)
 - [2018/11/24](#20181124)
     - [Messaggi dei verbi](#messaggi-dei-verbi-3)
         - [Correggi baco in `chiedi`](#correggi-baco-in-chiedi)
         - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi-1)
         - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-4)
-    - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-1)
+    - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-2)
 - [2018/11/23 \(2\)](#20181123-2)
     - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi-1)
     - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi-2)
@@ -60,8 +66,8 @@ For previuos changes, see:
     - [Correggi Baco LIQUIDI](#correggi-baco-liquidi)
 - [2018/11/22 \(5\)](#20181122-5)
     - [Messaggi dei verbi](#messaggi-dei-verbi-4)
-        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-2)
-        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-2)
+        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-3)
+        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-3)
 - [2018/11/22 \(4\)](#20181122-4)
     - [Correggi Baco in LIQUIDO](#correggi-baco-in-liquido)
 - [2018/11/22 \(3\)](#20181122-3)
@@ -93,6 +99,47 @@ For previuos changes, see:
 
 -----
 
+
+# 2018/12/04 (3)
+
+- [`lib_classi.i`][lib_classi] (v0.9.5)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.12)
+
+## Messaggi libreria
+
+### Nuovi messaggi dei verbi
+
+Creati nuovi attributi per i messaggi di risposta dei verbi (nessuna controparte nella libreria originale inglese):
+
+|     Attributo      |     Testo     |
+|--------------------|---------------|
+| `ogg1_già_sg`/`pl` | `"$+1 è già"` |
+
+### Elimina messaggi dei verbi
+
+Elimina attributi inglesi per i messaggi di risposta dei verbi:
+
+|               Attributo                |                        Testo                        |   classe d'uso  |
+|----------------------------------------|-----------------------------------------------------|-----------------|
+| `check_device_on_sg`/`pl`              | `"$+1 [is/are] already off."`                       | `dispostivo`    |
+| `check_device_not_on_sg`/`pl`          | `"$+1 [is/are] already on."`                        | `dispostivo`    |
+| `check_lightsource_not_lit_sg`/`pl`    | `"$+1 is already lit."`                             | `fonte_di_luce` |
+| `check_lightsource_lit_sg`/`pl`        | `"But $+1 is not lit."`                             | `fonte_di_luce` |
+| `check_lightsource_switchable_sg`/`pl` | `"That's not something you can switch on and off."` |                 |
+
+## Risposte dei verbi
+
+Tradotte varie risposte all'interno dei verbi:
+
+- `lancia`
+
+### Risposte per dispositivi e fonti di luce
+
+Tradotte le ultime risposte dei verbi per dispositivi e fonti di luce.
+
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/12/04 (2)
 

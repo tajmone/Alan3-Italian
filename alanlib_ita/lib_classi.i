@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.9.4-Alpha, 2018-12-04: Alan 3.0beta6
+--| v0.9.5-Alpha, 2018-12-04: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -267,7 +267,7 @@ EVERY indumento IsA OBJECT
 
   VERB indossa
 
-    CHECK  genere OF THIS =  genere OF hero OR  genere OF THIS = 0
+    CHECK  genere OF THIS = genere OF hero OR genere OF THIS = 0
 --                                                                              TRANSLATE!
       ELSE SAY mia_AT:check_clothing_sex.
 
@@ -869,14 +869,13 @@ EVERY dispositivo IsA OBJECT
   END VERB esamina.
 
 
-  VERB accendi ---> turn_on
+  VERB accendi
     CHECK THIS IS NOT acceso
       ELSE
         IF THIS IS NOT plurale
----->                                                                           TRANSLATE
-          THEN SAY mia_AT:check_device_not_on_sg.
-          ELSE SAY mia_AT:check_device_not_on_pl.
-        END IF.
+          THEN SAY mia_AT:ogg1_già_sg.
+          ELSE SAY mia_AT:ogg1_già_pl.
+        END IF. "acces$$" SAY THIS:vocale. "."
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND THIS IS raggiungibile AND THIS IS NOT distante
@@ -903,19 +902,17 @@ EVERY dispositivo IsA OBJECT
         ELSE SAY "sono".
       END IF.
       "acces$$" SAY THIS:vocale. "."
-   -- "You turn on" SAY THE THIS. "."
       MAKE THIS acceso.
   END VERB accendi.
 
 
-  VERB spegni ---> turn_off dispositivo
+  VERB spegni
     CHECK THIS IS acceso
       ELSE
-         IF THIS IS NOT plurale
----->                                                                           TRANSLATE
-          THEN SAY mia_AT:check_device_on_sg.
-          ELSE SAY mia_AT:check_device_on_pl.
-         END IF.
+        IF THIS IS NOT plurale
+          THEN SAY mia_AT:ogg1_già_sg.
+          ELSE SAY mia_AT:ogg1_già_pl.
+        END IF. "spent$$" SAY THIS:vocale. "."
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND THIS IS raggiungibile AND THIS IS NOT distante
@@ -940,7 +937,6 @@ EVERY dispositivo IsA OBJECT
         ELSE SAY "sono".
       END IF.
       "spent$$" SAY THIS:vocale. "."
-   -- "You turn off" SAY THE THIS. "."
       MAKE THIS NOT acceso.
   END VERB spegni.
 
@@ -1363,14 +1359,13 @@ EVERY fonte_di_luce IsA OBJECT
   END VERB esamina.
 
 
-  VERB accendi ---> turn_on (fonte_di_luce)
+  VERB accendi
     CHECK THIS IS NOT illuminato
       ELSE
         IF THIS IS NOT plurale
---                                                                              TRANSLATE!
-          THEN SAY mia_AT:check_lightsource_not_lit_sg.
-          ELSE SAY mia_AT:check_lightsource_not_lit_pl.
-        END IF.
+          THEN SAY mia_AT:ogg1_già_sg.
+          ELSE SAY mia_AT:ogg1_già_pl.
+        END IF. "acces$$" SAY THIS:vocale. "."
     AND THIS IS NOT rotto
       ELSE SAY mia_AT:non_succede_nulla.
     DOES ONLY
@@ -1384,14 +1379,13 @@ EVERY fonte_di_luce IsA OBJECT
   END VERB accendi.
 
 
-  VERB spegni ---> extinguish fonte_di_luce
+  VERB spegni
     CHECK THIS IS illuminato
       ELSE
         IF THIS IS NOT plurale
----->                                                                           TRANSLATE
-          THEN SAY mia_AT:check_lightsource_lit_sg.
-          ELSE SAY mia_AT:check_lightsource_lit_pl.
-        END IF.
+          THEN SAY mia_AT:ogg1_già_sg.
+          ELSE SAY mia_AT:ogg1_già_pl.
+        END IF. "spent$$" SAY THIS:vocale. "."
     DOES ONLY
       "Fatto. Ora" SAY THE THIS.
       IF THIS IS NOT plurale
@@ -1442,7 +1436,7 @@ EVERY liquido IsA OBJECT
     -- come "butta il sacco in acqua", "guarda nell'acqua" e "prendi la perla
     -- dall'acqua". Vi sono anche altri casi che richiedono che questa classe
     -- si comporti come un contenitore, ad esempio "versa la pozione rossa nella
-    -- pozione blue"
+    -- pozione blu."
 
   HAS recipiente recipiente_fittizio.
 

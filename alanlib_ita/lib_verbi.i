@@ -6844,23 +6844,17 @@ ADD TO EVERY OBJECT
           SAY  mia_AT:riferisci_prendi_implicito.
       END IF.
       -- <<< prendi implicito <<<
-
---                                                                              TRANSLATE!
-      -- "You can't throw very far;" SAY THE proiettile.
-      "You can't throw very far;" SAY THE proiettile.
-
+      "Non lanci molto lontano, $+1 finisc$$"
       IF proiettile IS NOT plurale
-        THEN "ends up"
-        ELSE "end up"
+        THEN "e"
+        ELSE "ono"
       END IF.
 
       IF pavimento HERE
-        THEN "on the floor"
+        THEN "sul pavimento."
       ELSIF suolo HERE
-        THEN "on the ground"
+        THEN "a terra."
       END IF.
-
-      "nearby."
       LOCATE proiettile AT hero.
 
   END VERB lancia.

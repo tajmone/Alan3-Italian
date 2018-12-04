@@ -1,0 +1,28 @@
+; ******************************************************************************
+; *                                                                            *
+; *                            TESTA FONTI DI LUCE                             *
+; *                                                                            *
+; ******************************************************************************
+; ==============================================================================
+; LA TORCIA
+; ==============================================================================
+; La torcia può essere accesa, spenta e riparata; per romperla basta lanciarla.
+inventario
+esamina la torcia
+accendi la torcia
+accendi la torcia
+spegni la torcia
+spegni la torcia
+; ------------------------------------------------------------------------------
+; TESTA TORCIA ROTTA
+; ------------------------------------------------------------------------------
+accendi la torcia
+lancia la torcia
+esamina la torcia
+accendi la torcia
+; ------------------------------------------------------------------------------
+; TESTA RIPARA TORCIA
+; ------------------------------------------------------------------------------
+ripara la torcia
+accendi la torcia
+ripara la torcia

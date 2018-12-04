@@ -80,6 +80,48 @@ END THE giardino.
 --* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --------------------------------------------------------------------------------
 --
+-- INVENTARIO EROE 
+--
+--------------------------------------------------------------------------------
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--==============================================================================
+
+-- Diamo qualche oggetto in dotazione al nostro eroe ...
+
+--==============================================================================
+-- LA TORCIA (fonte_di_luce)
+--==============================================================================
+-- Facciamo in modo che sia possibile romperla lanciandola, e anche ripararla.
+
+THE torcia IsA fonte_di_luce IN hero.
+  HAS articolo "la".
+  HAS xDesc "Una torcia elettrica, ""made in China"".".
+  
+  VERB lancia
+    DOES AFTER
+      "$p[[ istanza 'torcia' --> VERB 'lancia' --> DOES AFTER ]]$n"
+      IF THIS IS illuminato
+        THEN "Dopo la caduta la torcia si è spenta ... un brutto segno."
+        ELSE "La torcia sembra aver preso una bella botta, speriamo in bene."
+      END IF.
+      MAKE THIS rotto.
+      MAKE THIS NOT illuminato.
+  END VERB lancia.
+
+  VERB ripara
+    DOES ONLY
+      "[[ istanza 'torcia' --> VERB 'ripara' --> DOES ONLY ]]
+      $nDai qualche colpetto alla torcia e questa torna a funzionare."
+      MAKE THIS NOT rotto.
+  END VERB ripara.
+END THE torcia.
+
+--==============================================================================
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--------------------------------------------------------------------------------
+--
 -- CLASSI SPECIALIZZATE
 --
 --------------------------------------------------------------------------------
@@ -336,6 +378,33 @@ THE frigo IsA contenitore_elencato AT cucina.
     END FOR.
   
 END THE frigo.
+
+--==============================================================================
+-- LA RADIO (dispositivo)
+--==============================================================================
+-- Facciamo in modo che si possa rompre la radio lanciandola, e poi ripararla.
+THE radio IsA dispositivo IN tavolo_cucina.
+  HAS articolo "la".
+  HAS xDesc "Una piccola radio tascabile, a batterie.".
+  
+  VERB lancia
+    DOES AFTER
+      "$p[[ istanza 'radio' --> VERB 'lancia' --> DOES AFTER ]]$n"
+      IF THIS IS acceso
+        THEN "Dopo la caduta la radio si è spenta ... un brutto segno."
+        ELSE "La radio sembra aver preso una bella botta, speriamo in bene."
+      END IF.
+      MAKE THIS rotto.
+      MAKE THIS NOT acceso.
+  END VERB lancia.
+
+  VERB ripara
+    DOES ONLY
+      "[[ istanza 'radio' --> VERB 'ripara' --> DOES ONLY ]]
+      $nSmanetti un po' con la radio finché torna a funzionare."
+      MAKE THIS NOT rotto.
+  END VERB ripara.
+END THE radio.
 
 --==============================================================================
 -- IL TAVOLO DA CUCINA (supporto)

@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.9.11-Alpha,</span>
+<span id="revnumber">versione 0.9.12-Alpha,</span>
 <span id="revdate">2018-12-04</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
@@ -532,8 +532,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_superflue_aprichiudiblocca">Superflue apri/chiudi/blocca</a></li>
 <li><a href="#_superflue_contenitori">Superflue contenitori</a></li>
 <li><a href="#_superflue_vestiario">Superflue vestiario</a></li>
-<li><a href="#_superflue_dispositivi">Superflue dispositivi</a></li>
-<li><a href="#_superflue_fonti_di_luce">Superflue fonti di luce</a></li>
 </ul>
 </li>
 <li><a href="#_vestiario">Vestiario</a></li>
@@ -1438,6 +1436,17 @@ risultato che è già disponibile&#8230;&#8203;</p>
 <div class="sect2">
 <h3 id="_superflue_oggetti"><a class="anchor" href="#_superflue_oggetti"></a>Superflue oggetti</h3>
 <div class="paragraph">
+<p>Scampolo generico riutilizzabile in varie risposte:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: xxx.
+  -- ORIGINAL EN: (nessuno)
+  HAS ogg1_già_sg  "$+1 è già".
+  HAS ogg1_già_pl  "$+1 è già".</code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>L&#8217;oggetto si trova già sul posto:</p>
 </div>
 <div class="listingblock">
@@ -1586,28 +1595,6 @@ dato).</p>
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: indossa.
   -- ORIGINAL EN:  check_obj_not_in_worn1
   HAS ogg1_già_indossato  "Stai già indossando $+1.".</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_superflue_dispositivi"><a class="anchor" href="#_superflue_dispositivi"></a>Superflue dispositivi</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_device_on_sg "$+1 is already off.".     -- device: turn_off, switch_off
-  HAS check_device_on_pl "$+1 are already off.".
-  HAS check_device_not_on_sg "$+1 is already on.".  -- device: turn_on, switch_on
-  HAS check_device_not_on_pl "$+1 are already on.".</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_superflue_fonti_di_luce"><a class="anchor" href="#_superflue_fonti_di_luce"></a>Superflue fonti di luce</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_lightsource_not_lit_sg "$+1 is already lit.".  -- lightsource: light, turn_on
-  HAS check_lightsource_not_lit_pl "$+1 are already lit.".</code></pre>
 </div>
 </div>
 </div>
@@ -1888,13 +1875,6 @@ required after the verb:</p>
   -- door: lock_with, unlock_with
   HAS check_door_matching_key "You can't use $+2 to $v $+1.".
 
-  -- lightsource: extinguish, turn_off
-  HAS check_lightsource_lit_sg "But $+1 is not lit.".
-  HAS check_lightsource_lit_pl "But $+1 are not lit.".
-
-  -- lightsource: switch
-  HAS check_lightsource_switchable_sg "That's not something you can switch on and off." .
-  HAS check_lightsource_switchable_pl "Those are not something you can switch on and off.".
 
   -- liquid: take_from
   HAS check_liquid_vessel_not_cont "You can't carry $+1 around in your bare hands.".</code></pre>
@@ -1927,7 +1907,7 @@ italiano del modulo delle classi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.9.11-Alpha<br>
+Versione 0.9.12-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

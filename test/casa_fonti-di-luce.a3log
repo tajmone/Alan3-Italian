@@ -1,0 +1,78 @@
+
+
+La Casa 
+Un set per eseguire test su stanze e luoghi esterni. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+La Cucina
+A sud c'è il tuo giardino, a est il tuo studio. Puoi vedere una sedia, un 
+frigo e un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un 
+sacchetto, un coltello, una pistola, un cesto per la frutta e una radio. 
+Al centro della stanza c'è Mr Nicky, il tuo cagnolino.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                            TESTA FONTI DI LUCE                             *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; ==============================================================================
+> ; LA TORCIA
+> ; ==============================================================================
+> ; La torcia può essere accesa, spenta e riparata; per romperla basta lanciarla.
+> inventario
+Stai portando una torcia.
+
+> esamina la torcia
+Una torcia elettrica, "made in China". È spenta.
+
+> accendi la torcia
+Fatto. Ora la torcia è accesa.
+
+> accendi la torcia
+La torcia è già accesa.
+
+> spegni la torcia
+Fatto. Ora la torcia è spenta.
+
+> spegni la torcia
+La torcia è già spenta.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA TORCIA ROTTA
+> ; ------------------------------------------------------------------------------
+> accendi la torcia
+Fatto. Ora la torcia è accesa.
+
+> lancia la torcia
+Non lanci molto lontano, la torcia finisce sul pavimento. 
+
+[[ istanza 'torcia' --> VERB 'lancia' --> DOES AFTER ]]
+Dopo la caduta la torcia si è spenta ... un brutto segno.
+
+> esamina la torcia
+Una torcia elettrica, "made in China". È spenta.
+
+> accendi la torcia
+Fatto, ma non succede nulla.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA RIPARA TORCIA
+> ; ------------------------------------------------------------------------------
+> ripara la torcia
+[[ istanza 'torcia' --> VERB 'ripara' --> DOES ONLY ]]
+Dai qualche colpetto alla torcia e questa torna a funzionare.
+
+> accendi la torcia
+Fatto. Ora la torcia è accesa.
+
+> ripara la torcia
+La torcia non necessita di riparazioni.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 
