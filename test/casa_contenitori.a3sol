@@ -1,0 +1,46 @@
+; ******************************************************************************
+; *                                                                            *
+; *                     TESTA CONTENITORI E RELATIVI VERBI                     *
+; *                                                                            *
+; ******************************************************************************
+; Questo test riguarda le interazioni con contenitori (non superifici) e oggetti
+; solidi (non liquidi).
+prendi la pistola
+esamina il cesto
+; ==============================================================================
+; TESTA 'metti_in'
+; ==============================================================================
+metti la mela nel cesto
+prendi la mela
+metti la mela nel cesto
+; ------------------------------------------------------------------------------
+; TESTA parametri non adatti
+; ------------------------------------------------------------------------------
+metti 1 nel cesto
+metti la pistola nel cesto
+metti nicky nel cesto
+metti me nel cesto
+; ==============================================================================
+; TESTA riempi_con'
+; ==============================================================================
+riempi il cesto con la mela
+; ------------------------------------------------------------------------------
+; TESTA parametri non adatti
+; ------------------------------------------------------------------------------
+riempi il cesto con 1
+riempi il cesto con la pistola
+riempi il cesto con nicky
+riempi il cesto con me
+; ==============================================================================
+; TESTA 'lancia_in'
+; ==============================================================================
+lancia la mela nel cesto
+prendi la mela
+lancia la mela nel cesto
+; ------------------------------------------------------------------------------
+; TESTA parametri non adatti
+; ------------------------------------------------------------------------------
+lancia 1 nel cesto
+lancia la pistola nel cesto
+lancia nicky nel cesto
+lancia me nel cesto

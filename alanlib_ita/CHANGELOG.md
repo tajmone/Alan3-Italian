@@ -17,43 +17,49 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2018/12/04](#20181204)
+    - [Messaggi libreria](#messaggi-libreria)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
+        - [Azioni eterodirette](#azioni-eterodirette)
+        - [Traduci messaggi delle classi](#traduci-messaggi-delle-classi)
+    - [Modulo classi](#modulo-classi)
 - [2018/12/01](#20181201)
-    - [Documentazione Messaggi Libreria](#documentazione-messaggi-libreria)
+    - [Documentazione messaggi libreria](#documentazione-messaggi-libreria)
 - [2018/11/30 \(2\)](#20181130-2)
     - [Documentazione](#documentazione)
     - [Messaggi dei verbi](#messaggi-dei-verbi)
         - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi)
         - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi)
         - [Correggi messaggi dei verbi](#correggi-messaggi-dei-verbi)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-1)
 - [2018/11/30 \(1\)](#20181130-1)
     - [Messaggi dei verbi](#messaggi-dei-verbi-1)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-1)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-2)
         - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-1)
     - [Rinomina parametri del verbo `scrivi`](#rinomina-parametri-del-verbo-scrivi)
 - [2018/11/25 \(2\)](#20181125-2)
     - [Aggiornamento Doxter](#aggiornamento-doxter)
 - [2018/11/25 \(1\)](#20181125-1)
     - [Messaggi dei verbi](#messaggi-dei-verbi-2)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-2)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-3)
         - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
         - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi)
 - [2018/11/24](#20181124)
     - [Messaggi dei verbi](#messaggi-dei-verbi-3)
         - [Correggi baco in `chiedi`](#correggi-baco-in-chiedi)
         - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi-1)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-3)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-4)
     - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-1)
 - [2018/11/23 \(2\)](#20181123-2)
     - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi-1)
     - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi-2)
-    - [Traduci Messaggi dei verbi](#traduci-messaggi-dei-verbi-4)
+    - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-5)
 - [2018/11/23 \(1\)](#20181123-1)
     - [Correggi Baco LIQUIDI](#correggi-baco-liquidi)
 - [2018/11/22 \(5\)](#20181122-5)
     - [Messaggi dei verbi](#messaggi-dei-verbi-4)
-        - [Elimina Messaggi dei verbi](#elimina-messaggi-dei-verbi-2)
-        - [Nuovi Messaggi dei verbi](#nuovi-messaggi-dei-verbi-2)
+        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-2)
+        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-2)
 - [2018/11/22 \(4\)](#20181122-4)
     - [Correggi Baco in LIQUIDO](#correggi-baco-in-liquido)
 - [2018/11/22 \(3\)](#20181122-3)
@@ -69,7 +75,7 @@ For previuos changes, see:
         - [Azioni insensate](#azioni-insensate)
         - [Azioni Futili](#azioni-futili)
 - [2018/11/20](#20181120)
-    - [Documentazione Messaggi](#documentazione-messaggi)
+    - [Documentazione messaggi](#documentazione-messaggi)
     - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi-2)
 - [2018/11/16](#20181116)
     - [Documentazione verbi](#documentazione-verbi)
@@ -86,11 +92,77 @@ For previuos changes, see:
 -----
 
 
+# 2018/12/04
+
+- [`lib_classi.i`][lib_classi] (v0.9.4)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.10)
+- [`lib_verbi.i`][lib_verbi] (v0.9.8)
+
+## Messaggi libreria
+
+Continua a riorganizzare i messaggi per affinità.
+
+### Traduci messaggi dei verbi
+
+Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
+
+|           Attributo EN          |           Attributo IT          |              Testo               |
+|---------------------------------|---------------------------------|----------------------------------|
+| `check_obj_not_in_cont_sg`/`pl` | `ogg1_sg_già_dentro_cont2`/`pl` | `"$+1 [è/sono] già dentro $+2."` |
+
+### Azioni eterodirette
+
+Nei verbi che richiedono un parametro `object`, aggiungi un ulteriore controllo per verificare se il parametro è l'eroe e, in caso affermativo, mostra il messaggio `azione_insensata` anziché il messaggio originale della libreria (`illegal_parameter_obj`). Esempio:
+
+```alan
+SYNTAX metti_in = metti (ogg) 'in' (cont)
+  WHERE ogg IsA OBJECT
+    ELSE
+      IF ogg = hero
+        THEN SAY mia_AT:azione_insensata.
+        ELSE SAY mia_AT:illegal_parameter_obj.
+      END IF.
+```
+
+Questo produce una risposta più adatta per comandi del tipo "metti me nella scatola".
+
+Verbi modificati:
+
+- `dai_a`
+- `lancia_a`
+- `lancia_contro` (solo parametro 1, dato che il controllo c'è già nel corpo del verbo)
+- `lancia_in`
+- `lancia`
+- `metti_contro`
+- `metti_dietro`
+- `metti_in`
+- `metti_sotto`
+- `metti_su`
+- `metti_vicino`
+- `metti`
+- `usa_con` (parametro 1)
+
+Alcuni verbi in cui questo controllo è stato tralasciato — o perché tale comando non sarebbe del tutto insensato da parte del giocatore, o perché la risposta standard va più che bene, oppure perché servirebbe una risposta dedicata al contesto:
+
+- `lega_a`
+- `usa_con` (parametro 2)
+- `usa`
+
+### Traduci messaggi delle classi
+
+Tradotti i messaggi per gli attori che seguono l'eroe.
+
+## Modulo classi
+
+- Traduci pronomi di `maschio` ("lui") e `femmina` ("lei").
+
+<!---------------------------------------------------------------------------->
+
 # 2018/12/01
 
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.9)
 
-## Documentazione Messaggi Libreria
+## Documentazione messaggi libreria
 
 Sposta la regione Doxter che documenta l'uso di `$v` dal modulo `lib_messaggi_libreria.i` al file `doc_src/appunti-lavoro.asciidoc`.
 
@@ -366,7 +438,7 @@ Sostituisci tutte le occorrenze degli attributi inglesi per i messaggi di rispos
 
 Gli attributi originali inglesi sono stati eliminati.
 
-## Traduci Messaggi dei verbi
+## Traduci messaggi dei verbi
 
 Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
 
@@ -412,7 +484,7 @@ Per maggiori dettagli, vedi [AlanStdLib/#39] e la [soluzione proposta in #47] da
 
 ## Messaggi dei verbi
 
-### Elimina Messaggi dei verbi
+### Elimina messaggi dei verbi
 
 Elimina attributi inglesi per i messaggi di risposta dei verbi:
 
@@ -428,7 +500,7 @@ Invece `illegal_parameter2_there`, a seconda del verbo, è stato rimpiazzato da 
 
 Gli altri attributi erano rimasti nel modulo messaggi ma non erano più utilizzati nei verbi.
 
-### Nuovi Messaggi dei verbi
+### Nuovi messaggi dei verbi
 
 Creati nuovi attributi per i messaggi di risposta dei verbi (usati per rimpiazzare svariati attributi della libreria originale inglese le cui traduzioni in si sovrappongono a quelle italiane):
 
@@ -582,7 +654,7 @@ Gli attributi originali inglesi sono stati eliminati.
 
 Correggi maiuscole nei titoli.
 
-## Documentazione Messaggi
+## Documentazione messaggi
 
 Aggiungi note riguardo l'uso del simbolo speciale `$v` nei messaggi di risposta dei verbi, e i relativi problemi riguardo la formazione del verbo infinito.
 

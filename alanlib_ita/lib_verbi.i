@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.9.8-Alpha, 2018-11-30: Alan 3.0beta6
+--| v0.9.9-Alpha, 2018-12-04: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -4982,9 +4982,13 @@ END ADD TO.
 -- SYNTAX give_to = 'give' (obj) 'to' (recipient)
 
 SYNTAX dai_a = 'dai' (ogg) 'a' (ricevente)
--- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
   WHERE ogg IsA OBJECT
-    ELSE SAY mia_AT:illegal_parameter_obj.
+    ELSE
+      IF ogg = hero
+        THEN SAY mia_AT:azione_insensata.
+-- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
+        ELSE SAY mia_AT:illegal_parameter_obj.
+      END IF.
   AND ricevente IsA ACTOR
     ELSE
       IF ricevente IS NOT plurale
@@ -5687,7 +5691,11 @@ END VERB spogliati.
 SYNTAX metti = metti (ogg)
 -- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
   WHERE ogg IsA OBJECT
-    ELSE SAY mia_AT:illegal_parameter_obj.
+    ELSE
+      IF ogg = hero
+        THEN SAY mia_AT:azione_insensata.
+        ELSE SAY mia_AT:illegal_parameter_obj.
+      END IF.
 
 
 ADD TO EVERY OBJECT
@@ -5718,10 +5726,13 @@ END ADD TO.
 
 
 SYNTAX metti_contro = metti (ogg) contro (bulk)
--- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
   WHERE ogg IsA OBJECT
-    --             "You can only $v objects."
-    ELSE SAY mia_AT:illegal_parameter_obj.
+    ELSE
+      IF ogg = hero
+        THEN SAY mia_AT:azione_insensata.
+-- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
+        ELSE SAY mia_AT:illegal_parameter_obj.
+      END IF.
   AND bulk IsA THING
     ELSE
       IF ogg IS NOT plurale
@@ -5732,9 +5743,13 @@ SYNTAX metti_contro = metti (ogg) contro (bulk)
 
 
 SYNTAX metti_dietro = metti (ogg) dietro (bulk)
--- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
   WHERE ogg IsA OBJECT
-    ELSE SAY mia_AT:illegal_parameter_obj.
+    ELSE
+      IF ogg = hero
+        THEN SAY mia_AT:azione_insensata.
+-- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
+        ELSE SAY mia_AT:illegal_parameter_obj.
+      END IF.
   AND bulk IsA THING
     ELSE
       IF ogg IS NOT plurale
@@ -5745,9 +5760,13 @@ SYNTAX metti_dietro = metti (ogg) dietro (bulk)
 
 
 SYNTAX metti_vicino = metti (ogg) vicino a (bulk)
--- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
   WHERE ogg IsA OBJECT
-    ELSE SAY mia_AT:illegal_parameter_obj.
+    ELSE
+      IF ogg = hero
+        THEN SAY mia_AT:azione_insensata.
+-- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
+        ELSE SAY mia_AT:illegal_parameter_obj.
+      END IF.
   AND bulk IsA THING
     ELSE
       IF ogg IS NOT plurale
@@ -5758,9 +5777,13 @@ SYNTAX metti_vicino = metti (ogg) vicino a (bulk)
 
 
 SYNTAX  metti_sotto = metti (ogg) sotto (bulk)
--- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
   WHERE ogg IsA OBJECT
-    ELSE SAY mia_AT:illegal_parameter_obj.
+    ELSE
+      IF ogg = hero
+        THEN SAY mia_AT:azione_insensata.
+-- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
+        ELSE SAY mia_AT:illegal_parameter_obj.
+      END IF.
   AND bulk IsA THING
     ELSE
       IF ogg IS NOT plurale
@@ -5840,9 +5863,13 @@ END ADD TO.
 
 
 SYNTAX metti_in = metti (ogg) 'in' (cont)
--- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
   WHERE ogg IsA OBJECT
-    ELSE SAY mia_AT:illegal_parameter_obj.
+    ELSE
+      IF ogg = hero
+        THEN SAY mia_AT:azione_insensata.
+-- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
+        ELSE SAY mia_AT:illegal_parameter_obj.
+      END IF.
   AND cont IsA OBJECT
     ELSE
       IF cont IsA ACTOR
@@ -5896,9 +5923,9 @@ ADD TO EVERY OBJECT
           IF cont IsA supporto
             THEN SAY mia_AT:check_cont_not_supporter.
           ELSE
-            IF ogg IS NOT plurale -- @TODO: 'ogg' or 'cont'??                   CHECK!
-              THEN SAY mia_AT:check_obj_not_in_cont_sg.
-              ELSE SAY mia_AT:check_obj_not_in_cont_pl.
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_sg_già_dentro_cont2.
+              ELSE SAY mia_AT:ogg1_pl_già_dentro_cont2.
             END IF.
           END IF.
       AND cont IS raggiungibile AND cont IS NOT distante
@@ -5942,7 +5969,8 @@ ADD TO EVERY OBJECT
           END IF.
       DOES
         LOCATE ogg IN cont.
-        "You put" SAY THE ogg. "into" SAY THE cont. "."
+        "Fatto, ora $+1 è" SAY cont:prep_IN. "$2."
+        -- "You put" SAY THE ogg. "into" SAY THE cont. "."
   END VERB metti_in.
 END ADD TO.
 
@@ -5966,9 +5994,13 @@ END ADD TO.
 -- @TODO: Sinonimi/sintassi "sopra"?
 
 SYNTAX metti_su = metti (ogg) su (superficie)
--- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
   WHERE ogg IsA OBJECT
-    ELSE SAY mia_AT:illegal_parameter_obj.
+    ELSE
+      IF ogg = hero
+        THEN SAY mia_AT:azione_insensata.
+-- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
+        ELSE SAY mia_AT:illegal_parameter_obj.
+      END IF.
   AND superficie IsA supporto
     ELSE
       IF ogg IS NOT plurale
@@ -6768,7 +6800,11 @@ END ADD TO.
 SYNTAX lancia = lancia (proiettile)
   WHERE proiettile IsA OBJECT
 --                                                                              TRANSLATE!
-    ELSE SAY mia_AT:illegal_parameter_obj.
+    ELSE
+      IF proiettile = hero
+        THEN SAY mia_AT:azione_insensata.
+        ELSE SAY mia_AT:illegal_parameter_obj.
+      END IF.
 
 
 ADD TO EVERY OBJECT
@@ -6845,15 +6881,19 @@ END ADD TO.
 
 SYNTAX lancia_a = lancia (proiettile) a (ricevente)
 --                                                                              TRANSLATE!
-    WHERE proiettile IsA OBJECT
-      ELSE SAY mia_AT:illegal_parameter_obj.
+  WHERE proiettile IsA OBJECT
+    ELSE
+      IF proiettile = hero
+        THEN SAY mia_AT:azione_insensata.
+        ELSE SAY mia_AT:illegal_parameter_obj.
+      END IF.
 --                                                                              TRANSLATE!
-    AND ricevente IsA ACTOR
-      ELSE
-        IF ricevente IS NOT plurale
-          THEN SAY mia_AT:ogg2_inadatto_A_sg.
-          ELSE SAY mia_AT:ogg2_inadatto_A_pl.
-        END IF. "lanciare cose."
+  AND ricevente IsA ACTOR
+    ELSE
+      IF ricevente IS NOT plurale
+        THEN SAY mia_AT:ogg2_inadatto_A_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_A_pl.
+      END IF. "lanciare cose."
 
 
 ADD TO EVERY OBJECT
@@ -6937,7 +6977,11 @@ END ADD TO.
 SYNTAX lancia_contro = lancia (proiettile) contro (bersaglio)
 --                                                                              TRANSLATE!
   WHERE proiettile IsA OBJECT
-    ELSE SAY mia_AT:illegal_parameter_obj.
+    ELSE
+      IF proiettile = hero
+        THEN SAY mia_AT:azione_insensata.
+        ELSE SAY mia_AT:illegal_parameter_obj.
+      END IF.
 --                                                                              TRANSLATE!
   AND bersaglio IsA THING
     ELSE SAY mia_AT:illegal_parameter_at.
@@ -7062,7 +7106,11 @@ END ADD TO.
 SYNTAX lancia_in = lancia (proiettile) 'in' (cont)
 --                                                                              TRANSLATE!
   WHERE proiettile IsA OBJECT
-    ELSE SAY mia_AT:illegal_parameter_obj.
+    ELSE
+      IF proiettile = hero
+        THEN SAY mia_AT:azione_insensata.
+        ELSE SAY mia_AT:illegal_parameter_obj.
+      END IF.
   AND cont IsA OBJECT
     ELSE
       IF cont IsA ACTOR
@@ -7112,9 +7160,8 @@ ADD TO EVERY OBJECT
       AND proiettile NOT IN cont
         ELSE
           IF proiettile IS NOT plurale
---                                                                              TRANSLATE!
-            THEN SAY mia_AT:check_obj_not_in_cont_sg.
-            ELSE SAY mia_AT:check_obj_not_in_cont_pl.
+            THEN SAY mia_AT:ogg1_sg_già_dentro_cont2.
+            ELSE SAY mia_AT:ogg1_pl_già_dentro_cont2.
           END IF.
       AND proiettile IS raggiungibile AND proiettile IS NOT distante
         ELSE
@@ -7165,15 +7212,11 @@ ADD TO EVERY OBJECT
             SAY  mia_AT:riferisci_prendi_implicito.
         END IF.
         -- <<< prendi implicito <<<
+        "Non otterresti nulla lanciando $+1" SAY proiettile:prep_IN. "$2."
 
---                                                                              TRANSLATE!
-        "It wouldn't accomplish anything trying to throw"
-        SAY THE proiettile. "into" SAY THE cont. "."
-
-        -- Throwing objects into containers, even when these objects are
-        -- in the 'allowed' set of the container, is not successful by
-        -- default; this is to avoid successful outcomes for commands like
-        -- 'throw plate into cupboard' etc.
+        -- L'azione di lanciare oggetti in contenitori è prevenuta di default,
+        -- anche se l'oggetto rientra nei 'consentiti' del contitore. Questo al
+        -- fine di prevenire azioni come "lancia il piatto nell'armadietto".
 
   END VERB lancia_in.
 END ADD TO.
@@ -8430,16 +8473,22 @@ END ADD TO.
 --| * [ ] Descrizione `usa_con`.
 --<
 
-
+-- Qui andrebbe usato un attributo per la risposta:                             TODO!
 SYNTAX usa_con = usa (ogg) con (strum)
   WHERE ogg IsA OBJECT
-    ELSE "Solo gli oggetti sono utilizzabili!"
- -- ELSE SAY mia_AT:illegal_parameter_obj.
+    ELSE
+      IF ogg = hero
+        THEN SAY mia_AT:azione_insensata.
+        ELSE "Solo gli oggetti sono utilizzabili!"
+     -- ELSE SAY mia_AT:illegal_parameter_obj.
+      END IF.
   AND strum IsA OBJECT
     ELSE "Solo gli oggetti sono utilizzabili!"
  -- ELSE SAY mia_AT:illegal_parameter_obj.
 
--- @TODO: Valutare se usare un messagio my_game per qui sopra!
+-- @NOTA: Non ho messo 'azione_insensata' per il parametro strum, poiché non
+--        sarebbe del tutto insensato. Ma dovrei comunque pensare a un messaggio
+--        apposito nel caso si tratta dell'eroe.
 
 
 ADD TO EVERY OBJECT
@@ -9884,6 +9933,11 @@ END ADD TO.
 -->todo_checklist(.666) Doxter
 --| * [ ] Descrizione `lega_a`.
 --<
+
+-- @NOTA: In questo verbo non ho messo il controllo 'IF ogg = hero', perché in
+--        fondo non è del tutto insensato cercare di usare "lega me a Mario";
+--        quindi anche se l'azione è bloccata non bisognerebbe dichiararla una
+--        richiesta insensata!
 
 SYNTAX lega_a = lega (ogg) a (bersaglio)
   WHERE ogg IsA OBJECT

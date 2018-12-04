@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.9.3-Alpha, 2018-11-25: Alan 3.0beta6
+--| v0.9.4-Alpha, 2018-12-04: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -2076,7 +2076,7 @@ END EVENT.
 --| [NOTE]
 --| ============================================================================
 --| I contenuti di un contenitore normale non vengono elencati con il verbo
---| '`esamnina`', ma solo con '`guarda`', '`guarda dentro`' o quando viene
+--| '`esamina`', ma solo con '`guarda`', '`guarda dentro`' o quando viene
 --| effettiata la descrizione del luogo.
 --| ============================================================================
 --|
@@ -2771,8 +2771,13 @@ ADD TO EVERY ACTOR
 
   EXCLUDE indumento_fittizio FROM indossati OF THIS.
 
-
-  -- all actors will obey this script from the start of the game:
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| Attori che seguono l'eroe
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+-- 
+-- Tutti gli attori seguiranno questo copione sin dall'inizio del gioco:
 
   IF THIS <> hero
     THEN USE SCRIPT following_hero FOR THIS.
@@ -2789,16 +2794,20 @@ ADD TO EVERY ACTOR
       IF THIS IS seguendo
         THEN
           LOCATE THIS AT hero.
-          "$p" SAY THE THIS.
+          "$p" SAY THE THIS. "ti"
             IF THIS IS NOT plurale
---                                                                              TRANSLATE!
-              THEN "follows you."
-              ELSE "follow you."
+              THEN "segue."
+              ELSE "seguono."
             END IF.
       END IF.
 
       USE SCRIPT following_hero FOR THIS.
 
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| Descrizioni degli attori
+--~-----------------------------------------------------------------------------
+--~=============================================================================
 
   DESCRIPTION
     IF THIS IS scenario
@@ -2811,8 +2820,7 @@ ADD TO EVERY ACTOR
           ELSE "Ci sono" SAY AN THIS.
        -- THEN "There is" SAY AN THIS. "here."
        -- ELSE "There are" SAY THIS. "here."
-        END IF.
-      "qui."
+        END IF. "qui."
     ELSE SAY THIS.
       IF THIS IS NOT plurale
 --                                                                              TRANSLATE!
@@ -2820,15 +2828,14 @@ ADD TO EVERY ACTOR
         ELSE "sono"
      -- THEN "is here."
      -- ELSE "are here."
-      END IF.
-      "qui."
+      END IF. "qui."
     END IF.
 
 --==============================================================================
 -- § 2.2.4 - Verbo esamina
 --==============================================================================
 -- Questo corpo aggiuntivo del verbo 'esamina' sulla classe ACTOR, fà in modo
--- che dopo aver esaminato un NPG ne venga elencato l'inventario.
+-- che dopo aver esaminato un PNG ne venga elencato l'inventario.
 
   VERB esamina
     DOES AFTER
@@ -2926,8 +2933,7 @@ END EVERY.
 EVERY maschio IsA persona
   IS NOT femminile.
   HAS articolo "il".
---                                                                              TRANSLATE!
-  PRONOUN him
+  PRONOUN lui
 END EVERY.
 
 --==============================================================================
@@ -2937,8 +2943,7 @@ END EVERY.
 EVERY femmina IsA persona
   IS femminile.
   HAS articolo "la".
---                                                                              TRANSLATE!
-  PRONOUN her
+  PRONOUN lei
 END EVERY.
 
 

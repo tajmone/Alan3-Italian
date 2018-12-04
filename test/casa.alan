@@ -224,6 +224,57 @@ EVERY ogg_scrittura IsA object.
   
 END EVERY ogg_scrittura.
 
+
+--==============================================================================
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--------------------------------------------------------------------------------
+--
+-- ATTORI DINAMICI 
+--
+--------------------------------------------------------------------------------
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--==============================================================================
+
+-- Alcuni attori con copioni che li fanno spostare nel mondo del gioco...
+
+
+--==============================================================================
+-- MR NICKY (attore: cane)
+--==============================================================================
+-- "Mr Nicky" è il mio adorato cagnolino nella vita reale, quindi perché non
+-- infilarlo in quest'avventura?
+
+THE nicky IsA actor AT cucina.
+  NAME 'Mr Nicky'.
+  NAME nicky.
+  HAS nome_proprio.
+  IS seguendo. -- Nicky seguirà l'eroe ovunque esso vada!
+  HAS xDesc "È Mr Nicky, il tuo amato nonché fedele amico a quattro zampe.".
+
+  -- Esercitiamo un po' di controllo dinamico sulla sua descrizione:
+  IS NOT già_descritto.
+  DESCRIPTION
+    IF THIS IS NOT già_descritto
+        THEN "Al centro della stanza c'è Mr Nicky, il tuo cagnolino."
+        MAKE THIS già_descritto.
+      ELSE
+        DEPENDING ON RANDOM 1 TO 3
+          = 1 THEN
+            "Mr Nicky ti osserva incuriosito."
+          = 2 THEN
+            "Mr Nicky gironzola annusando."
+          = 3 THEN
+            "Mr Nicky poltrisce"
+            IF CURRENT LOCATION IsA STANZA
+              THEN "in un angolo"
+              ELSE "a terra"
+            END IF. "."
+        END DEPEND.
+    END IF.
+END THE nicky.
+
 --==============================================================================
 -- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -236,7 +287,7 @@ END EVERY ogg_scrittura.
 -- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --==============================================================================
 
--- Ora popoliamo le varie stanze e luoghi esterni con ogetti e attori...
+-- Ora popoliamo le varie stanze e luoghi esterni con oggetti ed attori...
 
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.9.9-Alpha, 2018-12-01: Alan 3.0beta6
+--| v0.9.10-Alpha, 2018-12-04: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
@@ -126,7 +126,7 @@ ADD TO EVERY blocco_definizioni
 -->============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --~-----------------------------------------------------------------------------
---| === Messaggi riguardanti il protagonista
+--| === Messaggi riguardanti l'eroe
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
@@ -146,6 +146,70 @@ ADD TO EVERY blocco_definizioni
 --| Gli altri messaggi riguardanti l'erore sono attualmente sparpagliati in
 --| questo modulo, in attesa di essere riordinati.
 --| ============================================================================
+
+--| Il giocatore non possiede un oggetto richiesto per l'azione:
+ 
+  -- VERBI: svuota_in, versa_in, metti_in, lancia_in
+  -- ORIGINAL EN:  check_obj_in_hero  +  check_obj2_in_hero
+  HAS non_possiedi_ogg1 "Non possiedi $+1.".
+  HAS non_possiedi_ogg2 "Non possiedi $+2.".
+
+--<
+  
+
+-->=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Postura Eroe 
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+
+--| Azioni impedite dalla postura del giocatore.
+--| 
+--| L'eroe è seduto:
+
+  -- VERBI: balla, nuota, salta, salta_in, salta_su.
+  -- ORIGINAL EN:  check_hero_not_sitting1
+  HAS impossibile_da_seduto "Non puoi farlo da seduto.".
+
+ 
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  HAS check_hero_not_sitting2 "It is difficult to $v anything while sitting down.". -- (with many transitive verbs)
+  HAS check_hero_not_sitting3 "It is difficult to $v anywhere while sitting down.". -- (with many verbs of motion)
+
+--| L'eroe è sdraiato:
+
+  -- VERBI: balla, salta, salta_in, salta_su | swim.
+  -- ORIGINAL EN:  check_hero_not_lying_down1
+  HAS impossibile_da_sdraiato "Non puoi farlo da sdraiato.".
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  HAS check_hero_not_lying_down2 "It is difficult to $v anything while lying down.".  -- (with many transitive verbs)
+  HAS check_hero_not_lying_down3 "It is difficult to $v anywhere while lying down.".  -- (with many verbs of motion)
+--<
+
+-->=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Azioni etero-dirette
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+
+  -- VERBI: spara_a, spara_a_errore.
+  -- ORIGINAL EN: check_obj_not_hero2.
+  HAS no_autolesionismo  "L'autolesionismo non è contemplato.".
+
+  -- VERBI: uccidi, uccidi_con.
+  -- ORIGINAL EN: check_obj_not_hero2.
+  HAS no_suicidio  "Il suicidio non è un'opzione.".
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+
+  -- d) checks guarding against actions directed at the hero him-/herself
+  -----------------------------------------------------------------------
+
+  HAS check_obj_not_hero5  "You don't need to be freed.".                       -- free
+  HAS check_obj_not_hero7  "Turning your head, you notice nothing unusual behind yourself.".   -- look_behind
+  HAS check_obj_not_hero8  "You notice nothing unusual under yourself.".        -- look_under
+  HAS check_obj2_not_hero3 "You can't $v things to yourself.".                  -- give, tie_to
 --<
 
 
@@ -777,99 +841,6 @@ ADD TO EVERY blocco_definizioni
 --<
 
 
--->============================================================================
---~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---~-----------------------------------------------------------------------------
---| === Parametri e inventario del giocatore
---~-----------------------------------------------------------------------------
---~/////////////////////////////////////////////////////////////////////////////
---~============================================================================
-
-
- --~=============================================================================
- --~-----------------------------------------------------------------------------
- --| ==== Il giocatore non possiede un oggetto richiesto per l'azione
- --~-----------------------------------------------------------------------------
- --~=============================================================================
- 
-  -- VERBI: svuota_in, versa_in, metti_in, lancia_in
-  -- ORIGINAL EN:  check_obj_in_hero  +  check_obj2_in_hero
-  HAS non_possiedi_ogg1 "Non possiedi $+1.".
-  HAS non_possiedi_ogg2 "Non possiedi $+2.".
-
---<
-  
-
--->============================================================================
---~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---~-----------------------------------------------------------------------------
---| === Azioni impedite dalla postura del giocatore
---~-----------------------------------------------------------------------------
---~/////////////////////////////////////////////////////////////////////////////
---~============================================================================
---| 
---| Messaggi di risposta per azioni impossibilitate dal fatto che il giocatore è
---| seduto o sdraiato.
-
-
---~=============================================================================
---~-----------------------------------------------------------------------------
---| ==== Il giocatore è seduto
---~-----------------------------------------------------------------------------
---~=============================================================================
-
-  -- VERBI: balla, nuota, salta, salta_in, salta_su.
-  -- ORIGINAL EN:  check_hero_not_sitting1
-  HAS impossibile_da_seduto "Non puoi farlo da seduto.".
-
- 
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_hero_not_sitting2 "It is difficult to $v anything while sitting down.". -- (with many transitive verbs)
-  HAS check_hero_not_sitting3 "It is difficult to $v anywhere while sitting down.". -- (with many verbs of motion)
-
---~=============================================================================
---~-----------------------------------------------------------------------------
---| ==== Il giocatore è sdraiato
---~-----------------------------------------------------------------------------
---~=============================================================================
-
-  -- VERBI: balla, salta, salta_in, salta_su | swim.
-  -- ORIGINAL EN:  check_hero_not_lying_down1
-  HAS impossibile_da_sdraiato "Non puoi farlo da sdraiato.".
-
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_hero_not_lying_down2 "It is difficult to $v anything while lying down.".  -- (with many transitive verbs)
-  HAS check_hero_not_lying_down3 "It is difficult to $v anywhere while lying down.".  -- (with many verbs of motion)
---<
-
-
--->============================================================================
---~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---~-----------------------------------------------------------------------------
---| === Azioni etero-dirette
---~-----------------------------------------------------------------------------
---~/////////////////////////////////////////////////////////////////////////////
---~============================================================================
-
-  -- VERBI: spara_a, spara_a_errore.
-  -- ORIGINAL EN: check_obj_not_hero2.
-  HAS no_autolesionismo  "L'autolesionismo non è contemplato.".
-
-  -- VERBI: uccidi, uccidi_con.
-  -- ORIGINAL EN: check_obj_not_hero2.
-  HAS no_suicidio  "Il suicidio non è un'opzione.".
-
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-
-  -- d) checks guarding against actions directed at the hero him-/herself
-  -----------------------------------------------------------------------
-
-  HAS check_obj_not_hero5  "You don't need to be freed.".                       -- free
-  HAS check_obj_not_hero7  "Turning your head, you notice nothing unusual behind yourself.".   -- look_behind
-  HAS check_obj_not_hero8  "You notice nothing unusual under yourself.".        -- look_under
-  HAS check_obj2_not_hero3 "You can't $v things to yourself.".                  -- give, tie_to
---<
-
 
 -->============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -1056,9 +1027,13 @@ ADD TO EVERY blocco_definizioni
   HAS ogg1_vuoto_sg  "ci provi, ma $+1 era vuot$$".
   HAS ogg1_vuoto_pl  "ci provi, ma $+1 erano vuot$$".
 
+
+  -- VERBI: metti_in, lancia_in.
+  -- ORIGINAL EN: check_obj_not_in_cont_sg/pl.
+  HAS ogg1_sg_già_dentro_cont2  "$+1 è già dentro $+2.".
+  HAS ogg1_pl_già_dentro_cont2  "$+1 sono già dentro $+2.".
+
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_obj_not_in_cont_sg "$+1 is in $+2 already.".            -- put_in, throw_in
-  HAS check_obj_not_in_cont_pl "$+1 are in $+2 already.".
   HAS check_obj_not_in_cont2 "$+1 is already full of $+2.".           -- fill_with
 
 -->=============================================================================

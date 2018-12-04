@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.9.9-Alpha,</span>
-<span id="revdate">2018-12-01</span>
+<span id="revnumber">versione 0.9.10-Alpha,</span>
+<span id="revdate">2018-12-04</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
 <div id="toc" class="toc2">
@@ -452,7 +452,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_tipologie_di_messaggi">Tipologie di Messaggi</a>
 <ul class="sectlevel2">
-<li><a href="#_messaggi_riguardanti_il_protagonista">Messaggi riguardanti il protagonista</a></li>
+<li><a href="#_messaggi_riguardanti_leroe">Messaggi riguardanti l&#8217;eroe</a>
+<ul class="sectlevel3">
+<li><a href="#_postura_eroe">Postura Eroe</a></li>
+<li><a href="#_azioni_etero_dirette">Azioni etero-dirette</a></li>
+</ul>
+</li>
 <li><a href="#_messaggi_sui_luoghi_bui">Messaggi sui luoghi bui</a></li>
 <li><a href="#_azioni_bloccate">Azioni bloccate</a></li>
 <li><a href="#_risposte_ripetute">Risposte Ripetute</a>
@@ -509,18 +514,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#_parametri_e_inventario_del_giocatore">Parametri e inventario del giocatore</a>
-<ul class="sectlevel3">
-<li><a href="#_il_giocatore_non_possiede_un_oggetto_richiesto_per_lazione">Il giocatore non possiede un oggetto richiesto per l&#8217;azione</a></li>
-</ul>
-</li>
-<li><a href="#_azioni_impedite_dalla_postura_del_giocatore">Azioni impedite dalla postura del giocatore</a>
-<ul class="sectlevel3">
-<li><a href="#_il_giocatore_è_seduto">Il giocatore è seduto</a></li>
-<li><a href="#_il_giocatore_è_sdraiato">Il giocatore è sdraiato</a></li>
-</ul>
-</li>
-<li><a href="#_azioni_etero_dirette">Azioni etero-dirette</a></li>
 <li><a href="#_azioni_dirette_ai_png">Azioni dirette ai png</a></li>
 <li><a href="#_azioni_prevenute">Azioni prevenute</a></li>
 <li><a href="#_azioni_insensate">Azioni insensate</a></li>
@@ -727,7 +720,7 @@ ragrupparli.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_messaggi_riguardanti_il_protagonista"><a class="anchor" href="#_messaggi_riguardanti_il_protagonista"></a>Messaggi riguardanti il protagonista</h3>
+<h3 id="_messaggi_riguardanti_leroe"><a class="anchor" href="#_messaggi_riguardanti_leroe"></a>Messaggi riguardanti l&#8217;eroe</h3>
 <div class="paragraph">
 <p>La libreria non definisce l&#8217;istanza dell&#8217;eroe, lasciando quindi all&#8217;autore
 la libertà di definirlo come meglio crede. Quantunque, la libreria definisce
@@ -757,6 +750,76 @@ questo modulo, in attesa di essere riordinati.</p>
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>Il giocatore non possiede un oggetto richiesto per l&#8217;azione:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: svuota_in, versa_in, metti_in, lancia_in
+  -- ORIGINAL EN:  check_obj_in_hero  +  check_obj2_in_hero
+  HAS non_possiedi_ogg1 "Non possiedi $+1.".
+  HAS non_possiedi_ogg2 "Non possiedi $+2.".</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_postura_eroe"><a class="anchor" href="#_postura_eroe"></a>Postura Eroe</h4>
+<div class="paragraph">
+<p>Azioni impedite dalla postura del giocatore.</p>
+</div>
+<div class="paragraph">
+<p>L&#8217;eroe è seduto:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: balla, nuota, salta, salta_in, salta_su.
+  -- ORIGINAL EN:  check_hero_not_sitting1
+  HAS impossibile_da_seduto "Non puoi farlo da seduto.".
+
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  HAS check_hero_not_sitting2 "It is difficult to $v anything while sitting down.". -- (with many transitive verbs)
+  HAS check_hero_not_sitting3 "It is difficult to $v anywhere while sitting down.". -- (with many verbs of motion)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L&#8217;eroe è sdraiato:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: balla, salta, salta_in, salta_su | swim.
+  -- ORIGINAL EN:  check_hero_not_lying_down1
+  HAS impossibile_da_sdraiato "Non puoi farlo da sdraiato.".
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  HAS check_hero_not_lying_down2 "It is difficult to $v anything while lying down.".  -- (with many transitive verbs)
+  HAS check_hero_not_lying_down3 "It is difficult to $v anywhere while lying down.".  -- (with many verbs of motion)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_azioni_etero_dirette"><a class="anchor" href="#_azioni_etero_dirette"></a>Azioni etero-dirette</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: spara_a, spara_a_errore.
+  -- ORIGINAL EN: check_obj_not_hero2.
+  HAS no_autolesionismo  "L'autolesionismo non è contemplato.".
+
+  -- VERBI: uccidi, uccidi_con.
+  -- ORIGINAL EN: check_obj_not_hero2.
+  HAS no_suicidio  "Il suicidio non è un'opzione.".
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+
+  -- d) checks guarding against actions directed at the hero him-/herself
+  -----------------------------------------------------------------------
+
+  HAS check_obj_not_hero5  "You don't need to be freed.".                       -- free
+  HAS check_obj_not_hero7  "Turning your head, you notice nothing unusual behind yourself.".   -- look_behind
+  HAS check_obj_not_hero8  "You notice nothing unusual under yourself.".        -- look_under
+  HAS check_obj2_not_hero3 "You can't $v things to yourself.".                  -- give, tie_to</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1273,80 +1336,6 @@ causa di uno (o più) parametri fuori dalla portata dell&#8217;eroe.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_parametri_e_inventario_del_giocatore"><a class="anchor" href="#_parametri_e_inventario_del_giocatore"></a>Parametri e inventario del giocatore</h3>
-<div class="sect3">
-<h4 id="_il_giocatore_non_possiede_un_oggetto_richiesto_per_lazione"><a class="anchor" href="#_il_giocatore_non_possiede_un_oggetto_richiesto_per_lazione"></a>Il giocatore non possiede un oggetto richiesto per l&#8217;azione</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: svuota_in, versa_in, metti_in, lancia_in
-  -- ORIGINAL EN:  check_obj_in_hero  +  check_obj2_in_hero
-  HAS non_possiedi_ogg1 "Non possiedi $+1.".
-  HAS non_possiedi_ogg2 "Non possiedi $+2.".</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_azioni_impedite_dalla_postura_del_giocatore"><a class="anchor" href="#_azioni_impedite_dalla_postura_del_giocatore"></a>Azioni impedite dalla postura del giocatore</h3>
-<div class="paragraph">
-<p>Messaggi di risposta per azioni impossibilitate dal fatto che il giocatore è
-seduto o sdraiato.</p>
-</div>
-<div class="sect3">
-<h4 id="_il_giocatore_è_seduto"><a class="anchor" href="#_il_giocatore_è_seduto"></a>Il giocatore è seduto</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: balla, nuota, salta, salta_in, salta_su.
-  -- ORIGINAL EN:  check_hero_not_sitting1
-  HAS impossibile_da_seduto "Non puoi farlo da seduto.".
-
-
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_hero_not_sitting2 "It is difficult to $v anything while sitting down.". -- (with many transitive verbs)
-  HAS check_hero_not_sitting3 "It is difficult to $v anywhere while sitting down.". -- (with many verbs of motion)</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_il_giocatore_è_sdraiato"><a class="anchor" href="#_il_giocatore_è_sdraiato"></a>Il giocatore è sdraiato</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: balla, salta, salta_in, salta_su | swim.
-  -- ORIGINAL EN:  check_hero_not_lying_down1
-  HAS impossibile_da_sdraiato "Non puoi farlo da sdraiato.".
-
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_hero_not_lying_down2 "It is difficult to $v anything while lying down.".  -- (with many transitive verbs)
-  HAS check_hero_not_lying_down3 "It is difficult to $v anywhere while lying down.".  -- (with many verbs of motion)</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_azioni_etero_dirette"><a class="anchor" href="#_azioni_etero_dirette"></a>Azioni etero-dirette</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: spara_a, spara_a_errore.
-  -- ORIGINAL EN: check_obj_not_hero2.
-  HAS no_autolesionismo  "L'autolesionismo non è contemplato.".
-
-  -- VERBI: uccidi, uccidi_con.
-  -- ORIGINAL EN: check_obj_not_hero2.
-  HAS no_suicidio  "Il suicidio non è un'opzione.".
-
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-
-  -- d) checks guarding against actions directed at the hero him-/herself
-  -----------------------------------------------------------------------
-
-  HAS check_obj_not_hero5  "You don't need to be freed.".                       -- free
-  HAS check_obj_not_hero7  "Turning your head, you notice nothing unusual behind yourself.".   -- look_behind
-  HAS check_obj_not_hero8  "You notice nothing unusual under yourself.".        -- look_under
-  HAS check_obj2_not_hero3 "You can't $v things to yourself.".                  -- give, tie_to</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
 <h3 id="_azioni_dirette_ai_png"><a class="anchor" href="#_azioni_dirette_ai_png"></a>Azioni dirette ai png</h3>
 <div class="listingblock">
 <div class="content">
@@ -1515,9 +1504,13 @@ risultato che è già disponibile&#8230;&#8203;</p>
   HAS ogg1_vuoto_sg  "ci provi, ma $+1 era vuot$$".
   HAS ogg1_vuoto_pl  "ci provi, ma $+1 erano vuot$$".
 
+
+  -- VERBI: metti_in, lancia_in.
+  -- ORIGINAL EN: check_obj_not_in_cont_sg/pl.
+  HAS ogg1_sg_già_dentro_cont2  "$+1 è già dentro $+2.".
+  HAS ogg1_pl_già_dentro_cont2  "$+1 sono già dentro $+2.".
+
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_obj_not_in_cont_sg "$+1 is in $+2 already.".            -- put_in, throw_in
-  HAS check_obj_not_in_cont_pl "$+1 are in $+2 already.".
   HAS check_obj_not_in_cont2 "$+1 is already full of $+2.".           -- fill_with
 
 --&gt;=============================================================================</code></pre>
@@ -1871,7 +1864,7 @@ italiano del modulo delle classi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.9.9-Alpha<br>
+Versione 0.9.10-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

@@ -1,6 +1,6 @@
 # Alan StdLib Italian TODOs
 
-Some pending tasks that need to be done.
+Some pending tasks that need to be addressed.
 
 
 -----
@@ -15,6 +15,12 @@ Some pending tasks that need to be done.
 - [Pronouns](#pronouns)
 - [Library Messages](#library-messages)
 - [Redundant Code in Actors and Persona](#redundant-code-in-actors-and-persona)
+- [Verbo `take`](#verbo-take)
+    - [Take vs Remove](#take-vs-remove)
+    - [Take in Inform](#take-in-inform)
+        - [Other Take Related Stuff](#other-take-related-stuff)
+        - [Remove \(clothing\) in Alan](#remove-clothing-in-alan)
+- [List of i7 Verbs](#list-of-i7-verbs)
 
 <!-- /MarkdownTOC -->
 
@@ -91,7 +97,6 @@ There might be some room for improvements in the Italian messages/responses syst
 - [ ] verbs whose syntaxes and synonyms all end in "a" could use the `$v` to build an infitive form based on the actual verb typed by the player, instead of spelling out a literal infinitive verb. For example, verb `bacia`: "bacia" e "abbraccia", uses "`$vre`" in responses (`bacia`+`re`/`abbraccia`+`re`).
 - [ ] Special char `$-<n>` (Negative form of parameter `<n>`) might be useful in message.
 - [ ] The original library uses a lot of `SAY THE obj` and `SAY THE instr` in VERBs, while a more simple approach would be to use just `$+1` and `$+2` in the strings. My tests have proven that the number `1` and `2` always refer to the position of the _main_ syntax definition, so if a verb has multiple syntaxes like `take (obj) from (act)` and  `take from (act) (obj)`, `$+1` and `$+2` will always refer to `obj` and `act` regardless of the inverted syntax used by player, because parameter positions always refer to the main (first) syntax definition!
-- [ ] 
 
 
 -------------------------------------------------------------------------------
@@ -116,3 +121,220 @@ I'm evaluating if it might be OK to remove that redundant code on `PERSONA`.
 The pros of keeping it is that it would ensure that the library specific `PERSONA` class will always behave as expected, even if the author changes the `ACTOR` class `HEADER`; but chances are that isn't likely to happen. I can't think of any cons, except having to remember to change messages on both classes to keep them consistent. The duplicate code doesn't really had much overhead, it's more an issue of having some duplicate code that does the exact same thing of the code in its parent class (and also makes debugging more complicate).
 
 But first I must look into it better and ask Anssi about it, as there might be some reasons for this which I'm failing to see.
+
+
+-------------------------------------------------------------------------------
+
+# Verbo `take`
+
+
+## Take vs Remove
+
+`take_off` e `remove` si sovrappongono in inglese, ma non in italiano. Quindi bisognerà rettificare la sintassi di:
+
+```alan
+  take_from = remove (obj)* 'from' (holder).
+ 
+  take_from = get (obj) 'from' (holder).
+```
+
+... e il verbo `remove`, inteso come "togliti", "disindossa":
+
+```alan
+SYNTAX remove = remove (obj)
+    WHERE obj ISA OBJECT
+      ELSE 
+        IF obj IS NOT plural
+          THEN SAY illegal_parameter_sg OF my_game. "since you're not wearing it."
+          ELSE SAY illegal_parameter_pl OF my_game. "since you're not wearing them."
+        END IF.
+   remove = take 'off' (obj).
+   remove = take (obj) 'off'.
+   remove = doff (obj).
+
+
+ADD TO EVERY OBJECT
+  VERB remove
+    CHECK my_game CAN remove
+      ELSE SAY restricted_response OF my_game.
+    DOES
+      IF obj IS NOT plural
+        THEN "That's"
+        ELSE "Those are"
+      END IF. 
+      
+      "not something you can remove since you're not wearing"
+          
+      IF obj IS NOT plural
+        THEN "it."
+        ELSE "them."
+      END IF. 
+  END VERB.
+END ADD TO.
+```
+
+## Take in Inform
+
+`italiang.h` (542):
+
+```inform
+Verb 'prendi' 'trasporta' 'afferra' 'raccogli'
+  * multi                                       -> Take
+  * multiinside 'da'/'dal'/'dallo'/'dalla'/
+    'dall^'/'dagli'/'dalle'/'dai' noun          -> Remove;
+```
+
+Inform 7 (3400):
+
+```inform7
+Understand "prendi [things]" or "prendi [art-det] [something]" as taking.
+```
+
+Inform 7 (3520):
+
+```inform7
+Understand "prendi [things] da [something]" or "prendi [art-det] [something] [da-art] [something]" as removing it from.
+```
+
+
+### Other Take Related Stuff
+
+Inform 6 `italian.h` (425):
+
+```inform
+Verb 'pela' 'sbuccia'
+  * noun            -> Take;
+```
+
+Inform 6 `italian.h` (465):
+
+```inform
+Verb 'rimuovi' 'togli'
+  * held            -> Disrobe
+  * worn            -> Disrobe
+  * multi           -> Take
+  * multiinside 'da'/'dal'/'dallo'/'dalla'/
+    'dall^'/'dagli'/'dalle'/'dai' noun    -> Remove;
+```
+
+### Remove (clothing) in Alan
+
+In Alan, "remove" verb only works with clothing.
+
+syntax:
+
+```
+remove (obj)
+take 'off' (obj)
+take (obj) 'off'
+doff (obj)
+```
+
+
+
+
+```alan
+-- this verb only works with clothing (see 'classes.i').
+
+SYNTAX remove = remove (obj)
+    WHERE obj ISA OBJECT
+      ELSE
+        IF obj IS NOT plural
+          THEN SAY illegal_parameter_sg OF my_game. "since you're not wearing it."
+          ELSE SAY illegal_parameter_pl OF my_game. "since you're not wearing them."
+        END IF.
+   remove = take 'off' (obj).
+   remove = take (obj) 'off'.
+   remove = doff (obj).
+```
+
+... but handled more in depth in `classes.i`:
+
+```alan
+-------------------------------------------------------------------
+-- Now, we define some common attributes for clothing as well as
+-- how the verbs 'remove', 'undress' and 'wear' (and their synonyms) behave with this class.
+-------------------------------------------------------------------
+
+```
+
+
+-------------------------------------------------------------------------------
+
+
+# List of i7 Verbs
+
+This is a list of Italian verbs declared in Inform 7 (2406), as `In Italian stare is a verb.`:
+
+```inform7
+Chapter 3.1.1 - Responses in the Standard Rules
+
+[Many thanks to Sarganar for the Collection of Responses]
+In Italian stare is a verb.
+In Italian guardare is a verb.
+[...]
+```
+
+Full list, in alphabetical order:
+
+- `accendere`
+- `afferrare`
+- `agitare`
+- `agitare`
+- `andare`
+- `annusare`
+- `aprire`
+- `arrivare`
+- `ascoltare`
+- `aspettare`
+- `assaggiare`
+- `bloccare`
+- `chiedere`
+- `chiudere`
+- `contenere`
+- `dare`
+- `dire`
+- `dovere`
+- `entrare`
+- `fare`
+- `guardare`
+- `ispezionare`
+- `lasciare`
+- `mangiare`
+- `mettere`
+- `odorare`
+- `ottenere`
+- `parlare`
+- `passare`
+- `porgere`
+- `posizionare`
+- `possedere`
+- `potere`
+- `prendere`
+- `provare`
+- `rispondere`
+- `ruotare`
+- `salire`
+- `salutare`
+- `scendere`
+- `scoprire`
+- `sedere`
+- `sembrare`
+- `sentire`
+- `sfilare`
+- `sostenere`
+- `spegnere`
+- `spingere`
+- `stare`
+- `strizzare`
+- `tenere`
+- `tirare`
+- `toccare`
+- `togliere`
+- `trovare`
+- `uscire`
+- `vedere`
+
+
+
+<!-- EOF -->

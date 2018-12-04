@@ -12,7 +12,8 @@ Tutti i diritti riservati.
 La Cucina
 A sud c'è il tuo giardino, a est il tuo studio. Puoi vedere una sedia, un 
 frigo e un tavolo qui. Sopra il tavolo vedi una bottiglia, un sacchetto, 
-un coltello, una pistola, un vasetto e un cesto per la frutta.
+un coltello, una pistola, un vasetto e un cesto per la frutta. Al centro
+della stanza c'è Mr Nicky, il tuo cagnolino.
 
 > ; ******************************************************************************
 > ; *                                                                            *
@@ -24,7 +25,9 @@ un coltello, una pistola, un vasetto e un cesto per la frutta.
 > est
 Lo Studio
 A ovest c'è la cucina. Puoi vedere una tavolo qui. Sopra la tavolo vedi 
-una penna, una busta e un foglio.
+una penna, una busta e un foglio. 
+
+Mr Nicky ti segue.
 
 > ; ==============================================================================
 > ; TESTA 'leggi' vs 'esamina'

@@ -12,7 +12,8 @@ Tutti i diritti riservati.
 La Cucina
 A sud c'è il tuo giardino, a est il tuo studio. Puoi vedere una sedia, un 
 frigo e un tavolo qui. Sopra il tavolo vedi una bottiglia, un sacchetto, 
-un coltello, una pistola, un vasetto e un cesto per la frutta.
+un coltello, una pistola, un vasetto e un cesto per la frutta. Al centro
+della stanza c'è Mr Nicky, il tuo cagnolino.
 
 > ; ******************************************************************************
 > ; *                                                                            *
@@ -38,7 +39,9 @@ Il Giardino di Casa
 A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
 e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
 un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
-una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
+una piscina qui. C'è un giardiniere qui. C'è un gatto qui. 
+
+Mr Nicky ti segue.
 
 > ispeziona il cielo
 Il cielo è troppo distante.
@@ -56,7 +59,9 @@ Il cinguettio è fuori dalla tua portata.
 La Cucina
 A sud c'è il tuo giardino, a est il tuo studio. Puoi vedere una sedia, un 
 frigo e un tavolo qui. Sopra il tavolo vedi una bottiglia, un sacchetto, 
-un coltello, una pistola, un vasetto e un cesto per la frutta.
+un coltello, una pistola, un vasetto e un cesto per la frutta. 
+
+Mr Nicky ti segue.
 
 > ; ------------------------------------------------------------------------------
 > ; Risposte Alla Vaniglia
@@ -69,7 +74,9 @@ Il Giardino di Casa
 A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
 e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
 un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
-una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
+una piscina qui. C'è un giardiniere qui. C'è un gatto qui. 
+
+Mr Nicky ti segue.
 
 > ascolta il lettino
 Non odi niente di particolare.
@@ -92,7 +99,11 @@ Il giardiniere non sta parlando in questo momento.
 Ti tuffi a bomba nella piscina.
 
 Nella Piscina (Giardino di Casa)
-La piscina è abbastanza ampia per fare delle piccole nuotate.
+La piscina è abbastanza ampia per fare delle piccole nuotate. [[ istanza
+'nella_piscina' (location) --> ENTERED ]]
+Ti tuffi a bomba nella piscina. 
+
+Mr Nicky ti segue.
 
 > ascolta il giardiniere
 Il giardiniere non sta parlando in questo momento.
@@ -125,7 +136,8 @@ Si direbbe il canto della cinciallegra.
 Ti tuffi a bomba nella piscina.
 
 Nella Piscina (Giardino di Casa)
-La piscina è abbastanza ampia per fare delle piccole nuotate.
+La piscina è abbastanza ampia per fare delle piccole nuotate. Mr Nicky ti
+osserva incuriosito.
 
 > ascolta il cinguettio
 [[ istanza 'cinguettio' --> VERB 'ascolta' --> DOES ONLY ]]
@@ -150,7 +162,9 @@ una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
 La Cucina
 A sud c'è il tuo giardino, a est il tuo studio. Puoi vedere una sedia, un 
 frigo e un tavolo qui. Sopra il tavolo vedi una bottiglia, un sacchetto, 
-un coltello, una pistola, un vasetto e un cesto per la frutta.
+un coltello, una pistola, un vasetto e un cesto per la frutta. 
+
+Mr Nicky ti segue.
 
 > ; **ERR!** Il cielo non è NEARBY dato che è situato in un luogo che avvolge
 > ;          il giardino (ma non la casa).
