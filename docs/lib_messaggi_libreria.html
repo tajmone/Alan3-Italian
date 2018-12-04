@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.9.10-Alpha,</span>
+<span id="revnumber">versione 0.9.11-Alpha,</span>
 <span id="revdate">2018-12-04</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
@@ -447,29 +447,35 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel1">
 <li><a href="#_messaggi_della_libreria">Messaggi della Libreria</a>
 <ul class="sectlevel2">
+<li><a href="#_organizzazione_dei_messaggi">Organizzazione dei messaggi</a></li>
 <li><a href="#_convenzioni_negli_identificativi_degli_attributi">Convenzioni negli identificativi degli attributi</a></li>
 </ul>
 </li>
-<li><a href="#_tipologie_di_messaggi">Tipologie di Messaggi</a>
+<li><a href="#_leroe">L&#8217;eroe</a>
 <ul class="sectlevel2">
-<li><a href="#_messaggi_riguardanti_leroe">Messaggi riguardanti l&#8217;eroe</a>
-<ul class="sectlevel3">
 <li><a href="#_postura_eroe">Postura Eroe</a></li>
-<li><a href="#_azioni_etero_dirette">Azioni etero-dirette</a></li>
+<li><a href="#_azioni_su_se_stessi">Azioni su se stessi</a></li>
 </ul>
 </li>
-<li><a href="#_messaggi_sui_luoghi_bui">Messaggi sui luoghi bui</a></li>
+<li><a href="#_luoghi_bui">Luoghi Bui</a></li>
 <li><a href="#_azioni_bloccate">Azioni bloccate</a></li>
-<li><a href="#_risposte_ripetute">Risposte Ripetute</a>
-<ul class="sectlevel3">
+<li><a href="#_messaggi_ricorrenti">Messaggi Ricorrenti</a>
+<ul class="sectlevel2">
 <li><a href="#_istruzioni_per_luso_dei_comandi">Istruzioni per l&#8217;uso dei comandi</a></li>
 </ul>
 </li>
 <li><a href="#_notifiche_punteggio">Notifiche punteggio</a></li>
-<li><a href="#_problemi_relativi_ai_parametri">Problemi relativi ai parametri</a>
+<li><a href="#_azioni_implicite">Azioni implicite</a>
+<ul class="sectlevel2">
+<li><a href="#_prendere">Prendere</a></li>
+</ul>
+</li>
+<li><a href="#_parametri_inadatti">Parametri inadatti</a>
+<ul class="sectlevel2">
+<li><a href="#_parametri_inadatti_semplici">Parametri inadatti semplici</a></li>
+<li><a href="#_inadatti_con_preposizioni">Inadatti con preposizioni</a>
 <ul class="sectlevel3">
-<li><a href="#_parametri_inadatti_semplici">Parametri inadatti (semplici)</a></li>
-<li><a href="#_parametri_inadatti_con_preposizioni_articolate">Parametri inadatti con preposizioni articolate</a>
+<li><a href="#_preposizioni_articolate">Preposizioni articolate</a>
 <ul class="sectlevel4">
 <li><a href="#_preposizione_a">Preposizione &#8220;A&#8221;</a></li>
 <li><a href="#_preposizione_da">Preposizione &#8220;DA&#8221;</a></li>
@@ -478,7 +484,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_preposizione_su">Preposizione &#8220;SU&#8221;</a></li>
 </ul>
 </li>
-<li><a href="#_parametri_inadatti_con_preposizioni_improprie">Parametri inadatti con preposizioni improprie</a>
+<li><a href="#_preposizioni_improprie">Preposizioni improprie</a>
 <ul class="sectlevel4">
 <li><a href="#_preposizione_attraverso">Preposizione &#8220;ATTRAVERSO&#8221;</a></li>
 <li><a href="#_preposizione_contro">Preposizione &#8220;CONTRO&#8221;</a></li>
@@ -490,9 +496,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#_problemi_con_i_parametri">Problemi con i parametri</a>
+<ul class="sectlevel2">
+<li><a href="#_destinazione_non_valida">Destinazione non valida</a></li>
 <li><a href="#_parametri_stringa">Parametri stringa</a></li>
 <li><a href="#_parametri_inadatti_contenitori">Parametri inadatti contenitori</a></li>
-<li><a href="#_parametri_mancanti">Parametri mancanti</a></li>
+</ul>
+</li>
+<li><a href="#_parametri_mancanti">Parametri mancanti</a>
+<ul class="sectlevel2">
 <li><a href="#_parametri_fuori_portata">Parametri fuori portata</a></li>
 <li><a href="#_oggetti_mancanti_non_ottenibili">Oggetti mancanti &amp; non ottenibili</a></li>
 <li><a href="#_problemi_relativi_agli_attributi">Problemi relativi agli attributi</a>
@@ -503,36 +517,28 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_oggetti_non_esaminabili">Oggetti non esaminabili</a></li>
 <li><a href="#_oggetti_scenario">Oggetti scenario</a></li>
 <li><a href="#_oggetti_troppo_pesanti">Oggetti troppo pesanti</a></li>
-<li><a href="#_oggetti_apertichiusibloccati">Oggetti aperti/chiusi/bloccati</a>
-<ul class="sectlevel4">
-<li><a href="#_tentare_di_aprire_un_oggetto_già_aperto">Tentare di aprire un oggetto già aperto</a></li>
-<li><a href="#_tentare_di_chiudere_un_oggetto_già_chiuso">Tentare di chiudere un oggetto già chiuso</a></li>
-<li><a href="#_tentare_di_bloccare_un_oggetto_già_bloccato">Tentare di bloccare un oggetto già bloccato</a></li>
-<li><a href="#_tentare_di_sbloccare_un_oggetto_già_sbloccato">Tentare di sbloccare un oggetto già sbloccato</a></li>
-<li><a href="#_un_oggetto_chiuso_impedisce_lazione_richista">Un oggetto chiuso impedisce l&#8217;azione richista</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li><a href="#_azioni_dirette_ai_png">Azioni dirette ai png</a></li>
+</ul>
+</li>
 <li><a href="#_azioni_prevenute">Azioni prevenute</a></li>
 <li><a href="#_azioni_insensate">Azioni insensate</a></li>
 <li><a href="#_azioni_vane">Azioni vane</a></li>
 <li><a href="#_azioni_superflue">Azioni superflue</a>
-<ul class="sectlevel3">
-<li><a href="#_azioni_superflue_eroe">Azioni superflue eroe</a></li>
-<li><a href="#_azioni_superflue_oggetti">Azioni superflue oggetti</a></li>
-<li><a href="#_azioni_superflue_contenitori">Azioni superflue contenitori</a></li>
-<li><a href="#_azioni_superflue_vestiario">Azioni superflue vestiario</a></li>
-<li><a href="#_azioni_superflue_dispositivi">Azioni superflue dispositivi</a></li>
-<li><a href="#_azioni_superflue_fonti_di_luce">Azioni superflue fonti di luce</a></li>
+<ul class="sectlevel2">
+<li><a href="#_superflue_eroe">Superflue eroe</a></li>
+<li><a href="#_superflue_oggetti">Superflue oggetti</a></li>
+<li><a href="#_superflue_aprichiudiblocca">Superflue apri/chiudi/blocca</a></li>
+<li><a href="#_superflue_contenitori">Superflue contenitori</a></li>
+<li><a href="#_superflue_vestiario">Superflue vestiario</a></li>
+<li><a href="#_superflue_dispositivi">Superflue dispositivi</a></li>
+<li><a href="#_superflue_fonti_di_luce">Superflue fonti di luce</a></li>
 </ul>
 </li>
-<li><a href="#_messaggi_vestiario">Messaggi vestiario</a></li>
-<li><a href="#_messaggi_armi">Messaggi armi</a></li>
-<li><a href="#_messaggi_liquidi">Messaggi liquidi</a></li>
-</ul>
-</li>
+<li><a href="#_vestiario">Vestiario</a></li>
+<li><a href="#_armi">Armi</a></li>
+<li><a href="#_liquidi">Liquidi</a></li>
 <li><a href="#_messaggi_non_tradotti">MESSAGGI NON TRADOTTI</a>
 <ul class="sectlevel2">
 <li><a href="#_parametri_inadatti_per_azioni_specifiche">Parametri inadatti per azioni specifiche</a></li>
@@ -565,6 +571,20 @@ Ad opera di Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
 </div>
 </div>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Documentazione in fase di preparazione&#8230;&#8203;</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -572,9 +592,10 @@ Ad opera di Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Questo modulo è il cuore della libreria per quanto concerne il testo
-prodotto da essa. I messaggi sono definiti tramite attributi stringa sulla
-classe <code>blocco_definizioni</code> (della quale è presente in ogni avventura
-l&#8217;istanza <code>mia_AT</code>):</p>
+prodotto da essa.
+I messaggi sono definiti tramite attributi stringa sulla classe
+<code>blocco_definizioni</code> (della quale è presente in ogni avventura l&#8217;istanza
+<code>mia_AT</code>):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -586,6 +607,12 @@ l&#8217;istanza <code>mia_AT</code>):</p>
 la forma ed i contenuti della maggior parte delle risposte predefinite dei
 verbi della libreria.</p>
 </div>
+<div class="sect2">
+<h3 id="_organizzazione_dei_messaggi"><a class="anchor" href="#_organizzazione_dei_messaggi"></a>Organizzazione dei messaggi</h3>
+<div class="paragraph">
+<p>Per quanto possibile, si è cercato di raggruppare per tipologia i messaggi
+affini, di modo da semplificare la consultazione.</p>
+</div>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -594,11 +621,14 @@ verbi della libreria.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Documentazione in fase di preparazione&#8230;&#8203;</p>
+<p>L&#8217;organizzazione dei messaggi per categorie affini è tutt&#8217;altro che ottimale.
+Man mano che saranno tradotti i restanti messaggi, diverrà più chiaro come
+ragrupparli.</p>
 </div>
 </td>
 </tr>
 </table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_convenzioni_negli_identificativi_degli_attributi"><a class="anchor" href="#_convenzioni_negli_identificativi_degli_attributi"></a>Convenzioni negli identificativi degli attributi</h3>
@@ -697,30 +727,8 @@ per intercettare comandi incompleti. Es. <code>per_scrivere_USA</code>.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_tipologie_di_messaggi"><a class="anchor" href="#_tipologie_di_messaggi"></a>Tipologie di Messaggi</h2>
+<h2 id="_leroe"><a class="anchor" href="#_leroe"></a>L&#8217;eroe</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Per quanto possibile, si è cercato di raggruppare per tipologia i messaggi
-affini, di modo da semplificare la consultazione.</p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Attenzione"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>L&#8217;organizzazione dei messaggi per categorie affini è tutt&#8217;altro che ottimale.
-Man mano che saranno tradotti i restanti messaggi, diverrà più chiaro come
-ragrupparli.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_messaggi_riguardanti_leroe"><a class="anchor" href="#_messaggi_riguardanti_leroe"></a>Messaggi riguardanti l&#8217;eroe</h3>
 <div class="paragraph">
 <p>La libreria non definisce l&#8217;istanza dell&#8217;eroe, lasciando quindi all&#8217;autore
 la libertà di definirlo come meglio crede. Quantunque, la libreria definisce
@@ -762,8 +770,8 @@ questo modulo, in attesa di essere riordinati.</p>
   HAS non_possiedi_ogg2 "Non possiedi $+2.".</code></pre>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_postura_eroe"><a class="anchor" href="#_postura_eroe"></a>Postura Eroe</h4>
+<div class="sect2">
+<h3 id="_postura_eroe"><a class="anchor" href="#_postura_eroe"></a>Postura Eroe</h3>
 <div class="paragraph">
 <p>Azioni impedite dalla postura del giocatore.</p>
 </div>
@@ -797,8 +805,8 @@ questo modulo, in attesa di essere riordinati.</p>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_azioni_etero_dirette"><a class="anchor" href="#_azioni_etero_dirette"></a>Azioni etero-dirette</h4>
+<div class="sect2">
+<h3 id="_azioni_su_se_stessi"><a class="anchor" href="#_azioni_su_se_stessi"></a>Azioni su se stessi</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: spara_a, spara_a_errore.
@@ -822,15 +830,18 @@ questo modulo, in attesa di essere riordinati.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_messaggi_sui_luoghi_bui"><a class="anchor" href="#_messaggi_sui_luoghi_bui"></a>Messaggi sui luoghi bui</h3>
+</div>
+<div class="sect1">
+<h2 id="_luoghi_bui"><a class="anchor" href="#_luoghi_bui"></a>Luoghi Bui</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Questo messaggio viene mostrato quando il giocatore tenta di usare in un
 luogo buio il comando GUARDA, o altre azioni che richiedono illuminazione:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS dark_loc_desc  "È buio e non riesci a vedere nulla".</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- @TODO: *** UNTRANSLATED ATTRIBUTE: ***
+  HAS dark_loc_desc  "È buio e non riesci a vedere nulla".</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -839,12 +850,15 @@ luogo diventa buio:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS light_goes_off  "It is now pitch black.".</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  HAS light_goes_off  "It is now pitch black.".</code></pre>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_azioni_bloccate"><a class="anchor" href="#_azioni_bloccate"></a>Azioni bloccate</h3>
+</div>
+<div class="sect1">
+<h2 id="_azioni_bloccate"><a class="anchor" href="#_azioni_bloccate"></a>Azioni bloccate</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Questo è il messaggio mostrato quando il giocatore tenta di usare un verbo
 che è stato disabilitato tramite <code>CAN NOT &lt;verbp&gt;</code>  manualmente o tramite
@@ -856,8 +870,10 @@ l&#8217;attributo <code>mia_AT:restricted_level</code>.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_risposte_ripetute"><a class="anchor" href="#_risposte_ripetute"></a>Risposte Ripetute</h3>
+</div>
+<div class="sect1">
+<h2 id="_messaggi_ricorrenti"><a class="anchor" href="#_messaggi_ricorrenti"></a>Messaggi Ricorrenti</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Queste risposte vengono invocate in più verbi (o varianti di un medesimo
 verbo, o sia nelle clausole <code>WHERE</code> della sintassi che nel corpo del verbo),
@@ -866,19 +882,11 @@ perciò sono implementate come un singolo attributo riutilizzabile.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: assaggia, mordi.
-  HAS nessun_sapore "non senti nessun sapore particolare.".
-
--- @TODO: Altri verbi che contengono risposte ripetute:
---        - siediti, siediti_su
---        - usa, usa_con
---        - chi_è, cosa_è, dove_è
---        - chi_sono_io, cosa_sono_io
---        - rispondi_No, rispondi_Sì
---        - consult_error</code></pre>
+  HAS nessun_sapore "non senti nessun sapore particolare.".</code></pre>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_istruzioni_per_luso_dei_comandi"><a class="anchor" href="#_istruzioni_per_luso_dei_comandi"></a>Istruzioni per l&#8217;uso dei comandi</h4>
+<div class="sect2">
+<h3 id="_istruzioni_per_luso_dei_comandi"><a class="anchor" href="#_istruzioni_per_luso_dei_comandi"></a>Istruzioni per l&#8217;uso dei comandi</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: chiedi_errore.
@@ -901,8 +909,10 @@ perciò sono implementate come un singolo attributo riutilizzabile.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_notifiche_punteggio"><a class="anchor" href="#_notifiche_punteggio"></a>Notifiche punteggio</h3>
+</div>
+<div class="sect1">
+<h2 id="_notifiche_punteggio"><a class="anchor" href="#_notifiche_punteggio"></a>Notifiche punteggio</h2>
+<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: notifica, notifica_off, notifica_on.
@@ -917,8 +927,36 @@ perciò sono implementate come un singolo attributo riutilizzabile.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="_azioni_implicite"><a class="anchor" href="#_azioni_implicite"></a>Azioni implicite</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Alcuni verbi della libreria eseguono azioni implicite al fine di rendere
+possibile il comando del giocatore (p.es. prendere un oggetto non poseduto
+per eseguire comandi come "metti &lt;ogg&gt; in &lt;contenitore&gt;").</p>
+</div>
 <div class="sect2">
-<h3 id="_problemi_relativi_ai_parametri"><a class="anchor" href="#_problemi_relativi_ai_parametri"></a>Problemi relativi ai parametri</h3>
+<h3 id="_prendere"><a class="anchor" href="#_prendere"></a>Prendere</h3>
+<div class="paragraph">
+<p>Nei verbi che ammettono più parametri, solo il complemento oggetto verrà
+preso implicitamente. Per esempio, &#8220;spingi la porta con il palo&#8221; non verrà
+eseguito se l&#8217;eroe non possiede il palo.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: dai_a, lega_a, mangia, prendi, | bite, 'empty', empty_in, empty_on, put_on, throw, throw_at, throw_to, throw_in
+
+  -- ORIGINAL EN:  implicit_taking_message
+  HAS riferisci_prendi_implicito "(prima prendi $+1)$n".</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parametri_inadatti"><a class="anchor" href="#_parametri_inadatti"></a>Parametri inadatti</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Messaggi per quando uno dei parametri è inadatto al verbo. Questi messaggi
 vengono utilizzati sia nei blocchi condizionali <code>ELSE</code> della <code>SYNTAX</code> dei
@@ -929,8 +967,8 @@ verbi che nei <code>CHECK</code> del verbo stesso.</p>
 messaggi per <code>SYNTAX</code> e <code>CHECK</code>, ci focalizziamo invece sul parametro che
 impedisce l&#8217;azione (qui riferito come <code>ogg1</code>, <code>ogg2</code>, ecc.).</p>
 </div>
-<div class="sect3">
-<h4 id="_parametri_inadatti_semplici"><a class="anchor" href="#_parametri_inadatti_semplici"></a>Parametri inadatti (semplici)</h4>
+<div class="sect2">
+<h3 id="_parametri_inadatti_semplici"><a class="anchor" href="#_parametri_inadatti_semplici"></a>Parametri inadatti semplici</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- ORIGINAL EN:  illegal_parameter_sg/pl  +  check_obj_suitable_sg/pl
@@ -939,8 +977,10 @@ impedisce l&#8217;azione (qui riferito come <code>ogg1</code>, <code>ogg2</code>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_inadatti_con_preposizioni"><a class="anchor" href="#_inadatti_con_preposizioni"></a>Inadatti con preposizioni</h3>
 <div class="sect3">
-<h4 id="_parametri_inadatti_con_preposizioni_articolate"><a class="anchor" href="#_parametri_inadatti_con_preposizioni_articolate"></a>Parametri inadatti con preposizioni articolate</h4>
+<h4 id="_preposizioni_articolate"><a class="anchor" href="#_preposizioni_articolate"></a>Preposizioni articolate</h4>
 <div class="paragraph">
 <p>Varianti dei messaggi precedenti, quando si tratta di parametri che
 richiedono preposizioni articolate (di|a|da|in|con|su).</p>
@@ -1025,7 +1065,7 @@ richiedono preposizioni articolate (di|a|da|in|con|su).</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_parametri_inadatti_con_preposizioni_improprie"><a class="anchor" href="#_parametri_inadatti_con_preposizioni_improprie"></a>Parametri inadatti con preposizioni improprie</h4>
+<h4 id="_preposizioni_improprie"><a class="anchor" href="#_preposizioni_improprie"></a>Preposizioni improprie</h4>
 <div class="paragraph">
 <p>Varianti dei messaggi precedenti, quando si tratta di parametri che richiedono
 preposizioni improprie.</p>
@@ -1090,6 +1130,22 @@ preposizioni improprie.</p>
 </div>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_problemi_con_i_parametri"><a class="anchor" href="#_problemi_con_i_parametri"></a>Problemi con i parametri</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_destinazione_non_valida"><a class="anchor" href="#_destinazione_non_valida"></a>Destinazione non valida</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: vai_a.
+
+  -- ORIGINAL EN:  illegal_parameter_go
+   HAS destinazione_invalida "Non puoi andare lì.".</code></pre>
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_parametri_stringa"><a class="anchor" href="#_parametri_stringa"></a>Parametri stringa</h3>
 <div class="listingblock">
@@ -1115,8 +1171,11 @@ contenitori.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_parametri_mancanti"><a class="anchor" href="#_parametri_mancanti"></a>Parametri mancanti</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parametri_mancanti"><a class="anchor" href="#_parametri_mancanti"></a>Parametri mancanti</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Messaggi per verbi che richiedono ulteriori parametri. Di solito li si
 trova nella variante base dei verbi che richiedono un ulteriore parametro
@@ -1131,7 +1190,6 @@ sintassi corretta del verbo.</p>
   HAS specificare_DA_cosa   "Devi specificare da cosa vorresti".
   HAS specificare_IN_cosa   "Devi specificare in cosa vorresti".
   HAS specificare_CON_cosa  "Devi specificare con cosa vorresti".</code></pre>
-</div>
 </div>
 </div>
 <div class="sect2">
@@ -1259,81 +1317,6 @@ causa di uno (o più) parametri fuori dalla portata dell&#8217;eroe.
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_oggetti_apertichiusibloccati"><a class="anchor" href="#_oggetti_apertichiusibloccati"></a>Oggetti aperti/chiusi/bloccati</h4>
-<div class="sect4">
-<h5 id="_tentare_di_aprire_un_oggetto_già_aperto"><a class="anchor" href="#_tentare_di_aprire_un_oggetto_già_aperto"></a>Tentare di aprire un oggetto già aperto</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: apri, apri_con
-  -- ORIGINAL EN:  check_obj_not_open_sg/pl
-  HAS ogg_già_aperto_ms "$+1 è già aperto".
-  HAS ogg_già_aperto_mp "$+1 sono già aperti.".
-  HAS ogg_già_aperto_fs "$+1 è già aperta".
-  HAS ogg_già_aperto_fp "$+1 sono già aperte.".</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_tentare_di_chiudere_un_oggetto_già_chiuso"><a class="anchor" href="#_tentare_di_chiudere_un_oggetto_già_chiuso"></a>Tentare di chiudere un oggetto già chiuso</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: chiudi, chiudi_con
-  -- ORIGINAL EN:  check_obj_open1_sg/pl
-  HAS ogg_già_chiuso_ms "$+1 è già chiuso".
-  HAS ogg_già_chiuso_mp "$+1 sono già chiusi.".
-  HAS ogg_già_chiuso_fs "$+1 è già chiusa".
-  HAS ogg_già_chiuso_fp "$+1 sono già chiuse.".</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_tentare_di_bloccare_un_oggetto_già_bloccato"><a class="anchor" href="#_tentare_di_bloccare_un_oggetto_già_bloccato"></a>Tentare di bloccare un oggetto già bloccato</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: blocca, blocca_con
-  -- ORIGINAL EN:  check_obj_not_locked_sg/pl
-  HAS ogg_già_bloccato_ms "$+1 è già bloccato".
-  HAS ogg_già_bloccato_mp "$+1 sono già bloccati.".
-  HAS ogg_già_bloccato_fs "$+1 è già bloccata".
-  HAS ogg_già_bloccato_fp "$+1 sono già bloccate.".</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_tentare_di_sbloccare_un_oggetto_già_sbloccato"><a class="anchor" href="#_tentare_di_sbloccare_un_oggetto_già_sbloccato"></a>Tentare di sbloccare un oggetto già sbloccato</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: sblocca, sblocca_con
-  -- ORIGINAL EN:  check_obj_locked_sg/pl
-  HAS ogg_già_sbloccato_ms "$+1 è già sbloccato".
-  HAS ogg_già_sbloccato_mp "$+1 sono già sbloccati.".
-  HAS ogg_già_sbloccato_fs "$+1 è già sbloccata".
-  HAS ogg_già_sbloccato_fp "$+1 sono già sbloccate.".</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_un_oggetto_chiuso_impedisce_lazione_richista"><a class="anchor" href="#_un_oggetto_chiuso_impedisce_lazione_richista"></a>Un oggetto chiuso impedisce l&#8217;azione richista</h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: empty (in/on), pour (in/on), look_in
-  -- ORIGINAL EN:  check_obj_open2_sg/pl
-  HAS imp_ogg1_chiuso_ms "Non puoi farlo perché $+1 è chiuso".
-  HAS imp_ogg1_chiuso_mp "Non puoi farlo perché $+1 sono chiusi.".
-  HAS imp_ogg1_chiuso_fs "Non puoi farlo perché $+1 è chiusa".
-  HAS imp_ogg1_chiuso_fp "Non puoi farlo perché $+1 sono chiuse.".
-
-  -- VERBI: svuota_in, versa_in, metti_in, lancia_in
-  -- ORIGINAL EN:  check_obj2_open_sg/pl
-  HAS imp_ogg2_chiuso_ms "Non puoi farlo perché $+2 è chiuso".
-  HAS imp_ogg2_chiuso_mp "Non puoi farlo perché $+2 sono chiusi.".
-  HAS imp_ogg2_chiuso_fs "Non puoi farlo perché $+2 è chiusa".
-  HAS imp_ogg2_chiuso_fp "Non puoi farlo perché $+2 sono chiuse.".</code></pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div class="sect2">
 <h3 id="_azioni_dirette_ai_png"><a class="anchor" href="#_azioni_dirette_ai_png"></a>Azioni dirette ai png</h3>
@@ -1348,8 +1331,11 @@ causa di uno (o più) parametri fuori dalla portata dell&#8217;eroe.
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_azioni_prevenute"><a class="anchor" href="#_azioni_prevenute"></a>Azioni prevenute</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_azioni_prevenute"><a class="anchor" href="#_azioni_prevenute"></a>Azioni prevenute</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Risposte per azioni che non possono essere eseguite.</p>
 </div>
@@ -1378,8 +1364,10 @@ causa di uno (o più) parametri fuori dalla portata dell&#8217;eroe.
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_azioni_insensate"><a class="anchor" href="#_azioni_insensate"></a>Azioni insensate</h3>
+</div>
+<div class="sect1">
+<h2 id="_azioni_insensate"><a class="anchor" href="#_azioni_insensate"></a>Azioni insensate</h2>
+<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: (moltissimi)
@@ -1388,8 +1376,10 @@ causa di uno (o più) parametri fuori dalla portata dell&#8217;eroe.
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_azioni_vane"><a class="anchor" href="#_azioni_vane"></a>Azioni vane</h3>
+</div>
+<div class="sect1">
+<h2 id="_azioni_vane"><a class="anchor" href="#_azioni_vane"></a>Azioni vane</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Risposte per azioni che non conseguono nulla e vengono rifiutate con la
 scusante che l&#8217;eroe non desidera farlo&#8230;&#8203;</p>
@@ -1413,93 +1403,167 @@ scusante che l&#8217;eroe non desidera farlo&#8230;&#8203;</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_azioni_superflue"><a class="anchor" href="#_azioni_superflue"></a>Azioni superflue</h3>
+</div>
+<div class="sect1">
+<h2 id="_azioni_superflue"><a class="anchor" href="#_azioni_superflue"></a>Azioni superflue</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Risposte per azioni che sono superflue poiché tentano di conseguire un
 risultato che è già disponibile&#8230;&#8203;</p>
 </div>
-<div class="sect3">
-<h4 id="_azioni_superflue_eroe"><a class="anchor" href="#_azioni_superflue_eroe"></a>Azioni superflue eroe</h4>
+<div class="sect2">
+<h3 id="_superflue_eroe"><a class="anchor" href="#_superflue_eroe"></a>Superflue eroe</h3>
+<div class="paragraph">
+<p>Il giocatore si trova già sul posto:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- -----------------------------------
-  -- Il giocatore si trova già sul posto
-  -- -----------------------------------
-  -- VERBI: find, vai_a.
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: find, vai_a.
   -- ORIGINAL EN:  check_obj_not_hero4
-  HAS sei_già_qui  "Ti trovi già qui!".
-
-
-  -- -------------------------------------------
-  -- il giocatore è già in una certa una postura
-  -- -------------------------------------------
-  -- @NOTA: In futuro differenziare tra eroe ed eroina in questi messaggi.      FIXME!
-
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  HAS sei_già_qui  "Ti trovi già qui!".</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>il giocatore è già in una certa una postura</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- @TODO: *** UNTRANSLATED MESSAGES: ***
 
   HAS check_hero_not_sitting4    "You're sitting down already.". -- sit, sit_on
-  HAS check_hero_not_lying_down4 "You're lying down already.".   -- lie_down, lie_in
-
---&gt;=============================================================================</code></pre>
+  HAS check_hero_not_lying_down4 "You're lying down already.".   -- lie_down, lie_in</code></pre>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_azioni_superflue_oggetti"><a class="anchor" href="#_azioni_superflue_oggetti"></a>Azioni superflue oggetti</h4>
+<div class="sect2">
+<h3 id="_superflue_oggetti"><a class="anchor" href="#_superflue_oggetti"></a>Superflue oggetti</h3>
+<div class="paragraph">
+<p>L&#8217;oggetto si trova già sul posto:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- --------------------------------
-  -- L'oggetto si trova già sul posto
-  -- --------------------------------
-  -- VERBI: trova, follow, vai_a, dove_è.
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: trova, follow, vai_a, dove_è.
   -- ORIGINAL EN:  check_obj_not_at_hero_sg/pl
   HAS ogg1_già_qui_sg  "$+1 è proprio qui.".
-  HAS ogg1_già_qui_pl  "$+1 sono proprio qui.".
-
-  -- ---------------------
-  -- Oggetto già posseduto
-  -- ---------------------
-  -- VERBI: prendi, prendi_da
+  HAS ogg1_già_qui_pl  "$+1 sono proprio qui.".</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Oggetto già posseduto:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: prendi, prendi_da
   -- ORIGINAL EN:  check_obj_not_in_hero2
   HAS ogg1_già_posseduto  "Possiedi già $+1.".
 
   -- VERBI: chiedi
   -- ORIGINAL EN:  check_obj2_not_in_hero3
-  HAS ogg2_già_posseduto  "Possiedi già $+2.".
-
-  -- -------------------
-  -- Bersaglio posseduto
-  -- -------------------
-
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-
-  -- @NOTA: Questo messaggio è usato nei verbi per lanciare le cose
-  --       (lancia_a, lancia_contro, lancia_in) e viene usato quando la destinazione
-  --       del lancio è tra i possedimenti del giocatore (quindi non ha senso eseguire
-  --       un lancio dato).
-  HAS check_obj2_not_in_hero1 "You are carrying $+2.". -- throw_at, throw_in, throw_to
-
-  -- ----------------------------
-  -- Oggetto già posseduto da PNG
-  -- ----------------------------
-  -- VERBI: dai_a.
-  -- ORIGINAL EN: check_obj_not_in_act_sg/pl.
-  HAS ogg1_già_posseduto_da_png2_sg  "$+2 possiede già $+1.".
-  HAS ogg1_già_posseduto_da_png2_pl  "$+2 possiedeno già $+1.".
-
---&gt;=============================================================================</code></pre>
+  HAS ogg2_già_posseduto  "Possiedi già $+2.".</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Oggetto &#8216;bersaglio&#8217; già posseduto:</p>
 </div>
-<div class="sect3">
-<h4 id="_azioni_superflue_contenitori"><a class="anchor" href="#_azioni_superflue_contenitori"></a>Azioni superflue contenitori</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- --------------------------------
-  -- Il Contenitore è già vuoto
-  -- --------------------------------
-  -- VERBI: svuota + versa.
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+
+  HAS check_obj2_not_in_hero1 "You are carrying $+2.". -- throw_at, throw_in, throw_to</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Il messaggio sopra è usato nei verbi per lanciare le cose (<code>lancia_a</code>,
+<code>lancia_contro</code>, <code>lancia_in</code>) e viene usato quando la destinazione del lancio
+è tra i possedimenti del giocatore (quindi non ha senso eseguire un lancio
+dato).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Oggetto già posseduto da PNG:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: dai_a.
+  -- ORIGINAL EN: check_obj_not_in_act_sg/pl.
+  HAS ogg1_già_posseduto_da_png2_sg  "$+2 possiede già $+1.".
+  HAS ogg1_già_posseduto_da_png2_pl  "$+2 possiedeno già $+1.".</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_superflue_aprichiudiblocca"><a class="anchor" href="#_superflue_aprichiudiblocca"></a>Superflue apri/chiudi/blocca</h3>
+<div class="paragraph">
+<p>Tentare di aprire un oggetto già aperto:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: apri, apri_con
+  -- ORIGINAL EN:  check_obj_not_open_sg/pl
+  HAS ogg_già_aperto_ms "$+1 è già aperto".
+  HAS ogg_già_aperto_mp "$+1 sono già aperti.".
+  HAS ogg_già_aperto_fs "$+1 è già aperta".
+  HAS ogg_già_aperto_fp "$+1 sono già aperte.".</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Tentare di chiudere un oggetto già chiuso:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: chiudi, chiudi_con
+  -- ORIGINAL EN:  check_obj_open1_sg/pl
+  HAS ogg_già_chiuso_ms "$+1 è già chiuso".
+  HAS ogg_già_chiuso_mp "$+1 sono già chiusi.".
+  HAS ogg_già_chiuso_fs "$+1 è già chiusa".
+  HAS ogg_già_chiuso_fp "$+1 sono già chiuse.".</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Tentare di bloccare un oggetto già bloccato:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: blocca, blocca_con
+  -- ORIGINAL EN:  check_obj_not_locked_sg/pl
+  HAS ogg_già_bloccato_ms "$+1 è già bloccato".
+  HAS ogg_già_bloccato_mp "$+1 sono già bloccati.".
+  HAS ogg_già_bloccato_fs "$+1 è già bloccata".
+  HAS ogg_già_bloccato_fp "$+1 sono già bloccate.".</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Tentare di sbloccare un oggetto già sbloccato:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: sblocca, sblocca_con
+  -- ORIGINAL EN:  check_obj_locked_sg/pl
+  HAS ogg_già_sbloccato_ms "$+1 è già sbloccato".
+  HAS ogg_già_sbloccato_mp "$+1 sono già sbloccati.".
+  HAS ogg_già_sbloccato_fs "$+1 è già sbloccata".
+  HAS ogg_già_sbloccato_fp "$+1 sono già sbloccate.".</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_superflue_contenitori"><a class="anchor" href="#_superflue_contenitori"></a>Superflue contenitori</h3>
+<div class="paragraph">
+<p>Il Contenitore è già vuoto:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: svuota + versa.
   -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
   HAS ogg1_vuoto_sg  "ci provi, ma $+1 era vuot$$".
   HAS ogg1_vuoto_pl  "ci provi, ma $+1 erano vuot$$".
@@ -1511,40 +1575,34 @@ risultato che è già disponibile&#8230;&#8203;</p>
   HAS ogg1_pl_già_dentro_cont2  "$+1 sono già dentro $+2.".
 
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_obj_not_in_cont2 "$+1 is already full of $+2.".           -- fill_with
-
---&gt;=============================================================================</code></pre>
+  HAS check_obj_not_in_cont2 "$+1 is already full of $+2.".           -- fill_with</code></pre>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_azioni_superflue_vestiario"><a class="anchor" href="#_azioni_superflue_vestiario"></a>Azioni superflue vestiario</h4>
+<div class="sect2">
+<h3 id="_superflue_vestiario"><a class="anchor" href="#_superflue_vestiario"></a>Superflue vestiario</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: indossa.
   -- ORIGINAL EN:  check_obj_not_in_worn1
-  HAS ogg1_già_indossato  "Stai già indossando $+1.".
-
---&gt;=============================================================================</code></pre>
+  HAS ogg1_già_indossato  "Stai già indossando $+1.".</code></pre>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_azioni_superflue_dispositivi"><a class="anchor" href="#_azioni_superflue_dispositivi"></a>Azioni superflue dispositivi</h4>
+<div class="sect2">
+<h3 id="_superflue_dispositivi"><a class="anchor" href="#_superflue_dispositivi"></a>Superflue dispositivi</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- @TODO: *** UNTRANSLATED MESSAGES: ***
   HAS check_device_on_sg "$+1 is already off.".     -- device: turn_off, switch_off
   HAS check_device_on_pl "$+1 are already off.".
   HAS check_device_not_on_sg "$+1 is already on.".  -- device: turn_on, switch_on
-  HAS check_device_not_on_pl "$+1 are already on.".
-
---&gt;=============================================================================</code></pre>
+  HAS check_device_not_on_pl "$+1 are already on.".</code></pre>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_azioni_superflue_fonti_di_luce"><a class="anchor" href="#_azioni_superflue_fonti_di_luce"></a>Azioni superflue fonti di luce</h4>
+<div class="sect2">
+<h3 id="_superflue_fonti_di_luce"><a class="anchor" href="#_superflue_fonti_di_luce"></a>Superflue fonti di luce</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- @TODO: *** UNTRANSLATED MESSAGES: ***
@@ -1554,8 +1612,10 @@ risultato che è già disponibile&#8230;&#8203;</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_messaggi_vestiario"><a class="anchor" href="#_messaggi_vestiario"></a>Messaggi vestiario</h3>
+</div>
+<div class="sect1">
+<h2 id="_vestiario"><a class="anchor" href="#_vestiario"></a>Vestiario</h2>
+<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: lascia.
@@ -1573,8 +1633,10 @@ risultato che è già disponibile&#8230;&#8203;</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_messaggi_armi"><a class="anchor" href="#_messaggi_armi"></a>Messaggi armi</h3>
+</div>
+<div class="sect1">
+<h2 id="_armi"><a class="anchor" href="#_armi"></a>Armi</h2>
+<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: spara_errore, spara_a_errore.
@@ -1593,14 +1655,15 @@ risultato che è già disponibile&#8230;&#8203;</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_messaggi_liquidi"><a class="anchor" href="#_messaggi_liquidi"></a>Messaggi liquidi</h3>
+</div>
+<div class="sect1">
+<h2 id="_liquidi"><a class="anchor" href="#_liquidi"></a>Liquidi</h2>
+<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: bevi, prendi (..altri..).
   -- ORIGINAL EN: (nessuno)
   HAS impossibile_maneggiare_liq1  "Non puoi maneggiare $+1 a mani nude.".</code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -1864,7 +1927,7 @@ italiano del modulo delle classi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.9.10-Alpha<br>
+Versione 0.9.11-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

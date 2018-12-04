@@ -17,8 +17,10 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/12/04](#20181204)
+- [2018/12/04 \(2\)](#20181204-2)
     - [Messaggi libreria](#messaggi-libreria)
+- [2018/12/04 \(1\)](#20181204-1)
+    - [Messaggi libreria](#messaggi-libreria-1)
         - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
         - [Azioni eterodirette](#azioni-eterodirette)
         - [Traduci messaggi delle classi](#traduci-messaggi-delle-classi)
@@ -92,7 +94,19 @@ For previuos changes, see:
 -----
 
 
-# 2018/12/04
+# 2018/12/04 (2)
+
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.11)
+
+
+## Messaggi libreria
+
+Continua a riorganizzare i messaggi della libreria raggruppandoli per affinità.
+
+
+<!---------------------------------------------------------------------------->
+
+# 2018/12/04 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.9.4)
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.10)
@@ -100,7 +114,7 @@ For previuos changes, see:
 
 ## Messaggi libreria
 
-Continua a riorganizzare i messaggi per affinità.
+Continua a riorganizzare i messaggi della libreria raggruppandoli per affinità.
 
 ### Traduci messaggi dei verbi
 
