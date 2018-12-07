@@ -26,7 +26,9 @@ END THE.
 --* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 -- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --==============================================================================
--- Le varie stanze e luoghi esterni dell'avventura...
+-- Le varie stanze e luoghi esterni dell'avventura.
+-- Per rendere più leggibili il codice, l'arredamento delle varie stanze viene
+-- definitio in seguito, eccetto per porte, finistre ed eventuali chiavi.
 
 -- =============================================================================
 
@@ -36,10 +38,10 @@ END THE.
 -- La cucina sarà il nostro luogo per testare la classe 'stanza'.
 
 THE cucina IsA stanza.
-  NAME 'La Cucina'.
+  NAME 'LA CUCINA'.
   EXIT sud TO giardino.
-  EXIT est TO studio.
-  DESCRIPTION "A sud c'è il tuo giardino, a est il tuo studio."
+  EXIT est TO ingresso.
+  DESCRIPTION "A sud c'è il tuo giardino, a est l'ingresso."
 END THE cucina.
 
 -- =============================================================================
@@ -50,9 +52,9 @@ END THE cucina.
 -- Lo studio è un luogo per testare leggere e scrivere.
 
 THE studio IsA stanza.
-  NAME 'Lo Studio'.
-  EXIT ovest TO cucina.
-  DESCRIPTION "A ovest c'è la cucina."
+  NAME 'LO STUDIO'.
+  EXIT ovest TO ingresso.
+  DESCRIPTION "A ovest c'è l'ingresso."
 END THE studio.
 
 -- =============================================================================
@@ -63,7 +65,7 @@ END THE studio.
 -- Il giardino sarà il nostro luogo per testare la classe 'luogo_esterno'.
 
 THE giardino IsA luogo_esterno.
-  NAME 'Il Giardino di Casa'.
+  NAME 'IL GIARDINO DI CASA'.
   EXIT nord TO cucina.
   DESCRIPTION "A nord puoi tornare in casa."
 
@@ -73,6 +75,78 @@ THE giardino IsA luogo_esterno.
       Puoi udire un cinguettio."
   END VERB ascolta0.
 END THE giardino.
+
+
+-- =============================================================================
+
+-- L'INGRESSO
+
+-- =============================================================================
+
+THE ingresso IsA stanza.
+  NAME 'L''INGRESSO DI CASA'.
+  EXIT ovest TO cucina.
+  EXIT est   TO studio.
+  EXIT nord  TO vialetto
+    CHECK chiave_casa_mia IN hero
+      ELSE
+        "[[ istanza 'ingresso' --> EXIT 'nord' ]]
+         $nUscire di casa senza portarti dietro la chiave è una pessima idea."
+    -- Verifica che la porta sia aperta:
+    AND porta_casa_tuaR IS aperto
+      ELSE
+        "[[ istanza 'ingresso' --> EXIT 'nord' ]]
+         $nDovresti aprire la porta prima."
+  END EXIT.
+  DESCRIPTION
+    "Ti trovi nell'ingresso della tua casa. A ovest c'è la cucina, a est il tuo
+     studio."
+END THE ingresso.
+
+--------------------------------------------------------------------------------
+-- LA PORTA DI CASA (LATO ANTERIORE)
+--------------------------------------------------------------------------------
+-- NOTA: La chiave della porta è definita nell'inventario dell'eroe.
+
+THE porta_casa_tuaR IsA porta_casa AT ingresso.
+  NAME 'porta di casa'.
+  IS NOT bloccato. -- (dato che l'eroe è in casa).
+  HAS chiave_abbinata chiave_casa_mia.
+  DESCRIPTION "A nord, oltre la porta di casa, c'è il mondo esterno."
+  
+  HAS altro_lato porta_casa_tuaF.
+  HAS xDesc "È la porta di casa tua, conduce alla strada.". 
+END THE porta_casa_tuaR.
+
+-- =============================================================================
+
+-- IL VIALETTO
+
+-- =============================================================================
+-- Il vialetto di casa è il punto d'accesso al mondo esterno uscendo di casa...
+
+THE vialetto IsA luogo_esterno.
+  NAME 'DAVANTI A CASA TUA'.
+  EXIT sud TO ingresso
+    CHECK porta_casa_tuaF IS aperto
+    ELSE
+      "[[ istanza 'vialetto' --> EXIT 'sud' ]]
+       $nLa porta di casa tua è chiusa."
+  END EXIT.
+  DESCRIPTION "Ti trovi nel vialetto di fronte a casa tua."
+END THE vialetto.
+
+-- Porta di casa (fronte):
+THE porta_casa_tuaF IsA porta_casa AT vialetto.
+  NAME 'porta di casa tua'.
+  IS NOT bloccato.
+  DESCRIPTION "" -- nascondiamo la descrizione
+
+  -- HAS altro_lato porta_casa_tuaR.
+  HAS xDesc "È la porta di casa tua.".
+END THE porta_casa_tuaF.
+
+-- TODO: Implementa casa fittizia esamibaile.
 
 
 --==============================================================================
@@ -88,6 +162,18 @@ END THE giardino.
 --==============================================================================
 
 -- Diamo qualche oggetto in dotazione al nostro eroe ...
+
+--==============================================================================
+-- CHIAVE DI CASA
+--==============================================================================
+
+
+THE chiave_casa_mia IsA object IN hero.
+  NAME chiave.
+  HAS articolo "la".
+  HAS xDesc "È la chiave della tua casa".
+  
+END THE chiave_casa_mia.
 
 --==============================================================================
 -- LA TORCIA (fonte_di_luce)
@@ -131,6 +217,27 @@ END THE torcia.
 
 -- Per semplificarci la vita creeremo delle classi specializzati per alcuni tipi
 -- di oggetti..
+
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- PORTE, PORTONI E CANCELLI 
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+--------------------------------------------------------------------------------
+-- Porte delle case
+--------------------------------------------------------------------------------
+-- Le porte delle case sono bloccabili e bloccate di default.
+
+EVERY porta_casa IsA porta.
+  NAME porta.
+  HAS articolo "la".
+  IS bloccabile.
+  IS bloccato.
+END EVERY porta_casa.
 
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -725,7 +832,7 @@ END THE piscina.
 -- annidato nel giardino.
 
 THE nella_piscina IsA location AT giardino.
-  NAME 'Nella Piscina (Giardino di Casa)'.
+  NAME 'GIARDINO DI CASA (DENTRO LA PISCINA)'.
   DESCRIPTION
     "La piscina è abbastanza ampia per fare delle piccole nuotate."
 

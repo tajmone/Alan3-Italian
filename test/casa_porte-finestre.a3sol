@@ -1,0 +1,74 @@
+; ******************************************************************************
+; *                                                                            *
+; *                           TESTA PORTE E FINESTRE                           *
+; *                                                                            *
+; ******************************************************************************
+est
+; ==============================================================================
+; LA PORTA DI CASA
+; ==============================================================================
+nord
+esamina la porta
+apri la porta
+apri la porta
+nord
+esamina la porta
+; ------------------------------------------------------------------------------
+; TESTA 'blocca' con chiudi implicito
+; ------------------------------------------------------------------------------
+blocca la porta
+blocca la porta
+esamina la porta
+chiudi la porta
+; ------------------------------------------------------------------------------
+; TESTA 'apri' con sblocca implicito
+; ------------------------------------------------------------------------------
+apri la porta
+; ------------------------------------------------------------------------------
+; TESTA 'chiudi' e 'blocca' separatamente
+; ------------------------------------------------------------------------------
+chiudi la porta
+chiudi la porta
+esamina la porta
+blocca la porta
+blocca la porta
+esamina la porta
+; ------------------------------------------------------------------------------
+; TESTA 'sblocca' e 'apri' separatamente
+; ------------------------------------------------------------------------------
+sblocca la porta
+apri la porta
+; ==============================================================================
+; TESTA 'blocca_con'/'sblocca_con'
+; ==============================================================================
+; ------------------------------------------------------------------------------
+; TESTA 'sblocca' (già sbloccata) con strumento non idoneo
+; ------------------------------------------------------------------------------
+sblocca la porta con la torcia
+sblocca la porta con 1
+sblocca la porta con Nicky
+; ** FIXME **
+sblocca la porta con me
+; ------------------------------------------------------------------------------
+; TESTA 'blocca' (non bloccata) con strumento non idoneo
+; ------------------------------------------------------------------------------
+blocca la porta con la torcia
+blocca la porta con 1
+blocca la porta con Nicky
+; ** FIXME **
+blocca la porta con me
+; ------------------------------------------------------------------------------
+; TESTA 'blocca' (già bloccata) con strumento non idoneo
+; ------------------------------------------------------------------------------
+blocca la porta con la torcia
+blocca la porta con 1
+blocca la porta con Nicky
+blocca la porta con me
+; ------------------------------------------------------------------------------
+; TESTA 'sblocca' (non sbloccata) con strumento non idoneo
+; ------------------------------------------------------------------------------
+sblocca la porta con la torcia
+sblocca la porta con 1
+sblocca la porta con Nicky
+sblocca la porta con me
+

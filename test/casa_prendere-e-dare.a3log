@@ -9,8 +9,8 @@ Versione 1
 Tutti i diritti riservati.
 
 
-La Cucina
-A sud c'è il tuo giardino, a est il tuo studio. Puoi vedere una sedia, un 
+LA CUCINA
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un 
 frigo e un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un 
 sacchetto, un coltello, una pistola, un cesto per la frutta e una radio. 
 Al centro della stanza c'è Mr Nicky, il tuo cagnolino.
@@ -45,7 +45,7 @@ Possiedi già la pera.
 > ; TESTA 'dai_a'
 > ; ==============================================================================
 > sud
-Il Giardino di Casa
+IL GIARDINO DI CASA
 A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
 e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
 un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
@@ -65,8 +65,8 @@ Il giardiniere possiede già la pera.
 > ; I liquidi in contenitori trasportabili possono essere presi e lasciati usando
 > ; o il nome del liquido o quello del contenitore.
 > nord
-La Cucina
-A sud c'è il tuo giardino, a est il tuo studio. Puoi vedere una sedia, un 
+LA CUCINA
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un 
 frigo e un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un 
 sacchetto, un coltello, una pistola, un cesto per la frutta e una radio. 
 
@@ -99,7 +99,7 @@ vasetto, una bottiglia, un sacchetto, un coltello, una pistola, un cesto
 per la frutta e una radio.
 
 > inventario
-Stai portando una mela e una torcia.
+Stai portando una mela, una torcia e una chiave.
 
 > ; ------------------------------------------------------------------------------
 > ; TESTA 'prendi' + 'liquido'
@@ -129,7 +129,7 @@ per la frutta e una radio.
 La bottiglia contiene del vino.
 
 > inventario
-Stai portando una mela e una torcia.
+Stai portando una mela, una torcia e una chiave.
 
 > ; ------------------------------------------------------------------------------
 > ; TESTA 'prendi_da' + 'liquido'

@@ -9,8 +9,8 @@ Versione 1
 Tutti i diritti riservati.
 
 
-La Cucina
-A sud c'è il tuo giardino, a est il tuo studio. Puoi vedere una sedia, un 
+LA CUCINA
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un 
 frigo e un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un 
 sacchetto, un coltello, una pistola, un cesto per la frutta e una radio. 
 Al centro della stanza c'è Mr Nicky, il tuo cagnolino.
@@ -23,8 +23,15 @@ Al centro della stanza c'è Mr Nicky, il tuo cagnolino.
 > ; Per testare i verbi 'leggi' e 'scrivi' abbiamo allestito vari oggetti ad hoc
 > ; nello studio.
 > est
-Lo Studio
-A ovest c'è la cucina. Puoi vedere una tavolo qui. Sopra la tavolo vedi 
+L'INGRESSO DI CASA
+Ti trovi nell'ingresso della tua casa. A ovest c'è la cucina, a est il
+tuo studio. A nord, oltre la porta di casa, c'è il mondo esterno. 
+
+Mr Nicky ti segue.
+
+> est
+LO STUDIO
+A ovest c'è l'ingresso. Puoi vedere una tavolo qui. Sopra la tavolo vedi 
 una penna, una busta e un foglio. 
 
 Mr Nicky ti segue.

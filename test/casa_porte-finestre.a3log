@@ -1,0 +1,177 @@
+
+
+La Casa 
+Un set per eseguire test su stanze e luoghi esterni. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+LA CUCINA
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un 
+frigo e un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un 
+sacchetto, un coltello, una pistola, un cesto per la frutta e una radio. 
+Al centro della stanza c'è Mr Nicky, il tuo cagnolino.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                           TESTA PORTE E FINESTRE                           *
+> ; *                                                                            *
+> ; ******************************************************************************
+> est
+L'INGRESSO DI CASA
+Ti trovi nell'ingresso della tua casa. A ovest c'è la cucina, a est il
+tuo studio. A nord, oltre la porta di casa, c'è il mondo esterno. 
+
+Mr Nicky ti segue.
+
+> ; ==============================================================================
+> ; LA PORTA DI CASA
+> ; ==============================================================================
+> nord
+[[ istanza 'ingresso' --> EXIT 'nord' ]]
+Dovresti aprire la porta prima.
+
+> esamina la porta
+È la porta di casa tua, conduce alla strada. It is currently closed.
+
+> apri la porta
+Apri la porta di casa.
+
+> apri la porta
+La porta di casa è già aperta
+
+> nord
+DAVANTI A CASA TUA
+Ti trovi nel vialetto di fronte a casa tua. 
+
+Mr Nicky ti segue.
+
+> esamina la porta
+È la porta di casa tua. It is currently open.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'blocca' con chiudi implicito
+> ; ------------------------------------------------------------------------------
+> blocca la porta
+(con la chiave)
+Tu chiudi e blocchi la porta di casa tua.
+
+> blocca la porta
+La porta di casa tua è già bloccata
+
+> esamina la porta
+È la porta di casa tua. It is currently closed.
+
+> chiudi la porta
+La porta di casa tua è già chiusa
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'apri' con sblocca implicito
+> ; ------------------------------------------------------------------------------
+> apri la porta
+(con la chiave)
+Sblocchi ed apri la porta di casa tua.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'chiudi' e 'blocca' separatamente
+> ; ------------------------------------------------------------------------------
+> chiudi la porta
+Chiudi la porta di casa tua.
+
+> chiudi la porta
+La porta di casa tua è già chiusa
+
+> esamina la porta
+È la porta di casa tua. It is currently closed.
+
+> blocca la porta
+(con la chiave)
+Tu blocchi la porta di casa tua.
+
+> blocca la porta
+La porta di casa tua è già bloccata
+
+> esamina la porta
+È la porta di casa tua. It is currently closed.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'sblocca' e 'apri' separatamente
+> ; ------------------------------------------------------------------------------
+> sblocca la porta
+(con la chiave)
+Sblocchi la porta di casa tua.
+
+> apri la porta
+Apri la porta di casa tua.
+
+> ; ==============================================================================
+> ; TESTA 'blocca_con'/'sblocca_con'
+> ; ==============================================================================
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'sblocca' (già sbloccata) con strumento non idoneo
+> ; ------------------------------------------------------------------------------
+> sblocca la porta con la torcia
+La porta di casa tua è già sbloccata
+
+> sblocca la porta con 1
+1 non è qualcosa con cui poter sbloccare la porta di casa tua.
+
+> sblocca la porta con Nicky
+Mr Nicky non è qualcosa con cui poter sbloccare la porta di casa tua.
+
+> sblocca la porta con me
+Il hero non è qualcosa con cui poter sbloccare la porta di casa tua.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'blocca' (non bloccata) con strumento non idoneo
+> ; ------------------------------------------------------------------------------
+> blocca la porta con la torcia
+You can't use la torcia to blocca la porta di casa tua.
+
+> blocca la porta con 1
+1 non è qualcosa con cui poter bloccare.
+
+> blocca la porta con Nicky
+Mr Nicky non è qualcosa con cui poter bloccare.
+
+> blocca la porta con me
+Il hero non è qualcosa con cui poter bloccare.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'blocca' (già bloccata) con strumento non idoneo
+> ; ------------------------------------------------------------------------------
+> blocca la porta con la torcia
+You can't use la torcia to blocca la porta di casa tua.
+
+> blocca la porta con 1
+1 non è qualcosa con cui poter bloccare.
+
+> blocca la porta con Nicky
+Mr Nicky non è qualcosa con cui poter bloccare.
+
+> blocca la porta con me
+Il hero non è qualcosa con cui poter bloccare.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'sblocca' (non sbloccata) con strumento non idoneo
+> ; ------------------------------------------------------------------------------
+> sblocca la porta con la torcia
+La porta di casa tua è già sbloccata
+
+> sblocca la porta con 1
+1 non è qualcosa con cui poter sbloccare la porta di casa tua.
+
+> sblocca la porta con Nicky
+Mr Nicky non è qualcosa con cui poter sbloccare la porta di casa tua.
+
+> sblocca la porta con me
+Il hero non è qualcosa con cui poter sbloccare la porta di casa tua.
+
+> 
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

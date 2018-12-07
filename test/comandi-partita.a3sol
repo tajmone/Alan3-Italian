@@ -146,7 +146,7 @@ guarda POI esamina la mela
 mangia la mela
 ricomincia partita
 
-; La mela dovrebbe esserci di nuovo:
+; La mela dovrebbe esserci di nuovo dato che è una partita nuova:
 esamina la mela
 ; ------------------------------------------------------------------------------
 ; TEST 'SAVE_MISSING': carica file salvataggio inesistente
@@ -172,13 +172,16 @@ comandi-partita_arun-diverso.sav
 ; ------------------------------------------------------------------------------
 abbandona partita
 restart
+guarda POI esamina la mela
+mangia la mela
 ; ------------------------------------------------------------------------------
 ; ABBANDONA + RESTORE
 ; ------------------------------------------------------------------------------
 abbandona partita
 restore
 comandi-partita.sav
-esamina la mela
+; La frutta dovrebbe essere tutta qui dato che abbiamo salvato prima di mangiarla:
+guarda POI esamina la mela
 mangia la mela
 ; ------------------------------------------------------------------------------
 ; ABBANDONA + UNDO
@@ -186,6 +189,7 @@ mangia la mela
 ; Avviamo il menù di Quit ma poi lo abbandoniamo...
 abbandona partita
 undo
+; La mela non dovrebbe esserci dato che l'abbiamo appena mangiata:
 esamina la mela
 ; ------------------------------------------------------------------------------
 ; ABBANDONA + QUIT

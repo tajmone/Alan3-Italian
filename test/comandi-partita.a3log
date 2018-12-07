@@ -437,7 +437,7 @@ Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
 tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
 fico e una mela qui.
 
-> ; La mela dovrebbe esserci di nuovo:
+> ; La mela dovrebbe esserci di nuovo dato che è una partita nuova:
 > esamina la mela
 Questa mela ha un aspetto irresistibile. Un piccolo bollino adesivo
 riporta che è stata colta nei giardini dell'Eden. 
@@ -494,20 +494,19 @@ Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
 tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
 fico e una mela qui.
 
-> ; ------------------------------------------------------------------------------
-> ; ABBANDONA + RESTORE
-> ; ------------------------------------------------------------------------------
-> abbandona partita
+> guarda POI esamina la mela
+Sala Test e Collaudo
+Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
+tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
+fico e una mela qui. 
 
-Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? restore
-Inserisci il nome del file 
-(comandi-partita_arun-diverso.sav) : comandi-partita.sav
+* Conto alla rovescia: 5  *
 
-> esamina la mela
 Questa mela ha un aspetto irresistibile. Un piccolo bollino adesivo
 riporta che è stata colta nei giardini dell'Eden. 
 
-* Conto alla rovescia: 3  *
+* Conto alla rovescia: 4  *
 
 > mangia la mela
 (prima prendi la mela)
@@ -517,7 +516,41 @@ Mangi la mela.
 
 (Per disabilitare le notifiche di punteggio usa il comando NOTIFICA.) 
 
+* Conto alla rovescia: 3  *
+
+> ; ------------------------------------------------------------------------------
+> ; ABBANDONA + RESTORE
+> ; ------------------------------------------------------------------------------
+> abbandona partita
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? restore
+Inserisci il nome del file 
+(comandi-partita_arun-diverso.sav) : comandi-partita.sav
+
+> ; La frutta dovrebbe essere tutta qui dato che abbiamo salvato prima di mangiarla:
+> guarda POI esamina la mela
+Sala Test e Collaudo
+Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
+tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
+fico e una mela qui. 
+
+* Conto alla rovescia: 3  *
+
+Questa mela ha un aspetto irresistibile. Un piccolo bollino adesivo
+riporta che è stata colta nei giardini dell'Eden. 
+
 * Conto alla rovescia: 2  *
+
+> mangia la mela
+(prima prendi la mela)
+Mangi la mela. 
+
+(Il tuo punteggio è appena salito di 666 punti.) 
+
+(Per disabilitare le notifiche di punteggio usa il comando NOTIFICA.) 
+
+* Conto alla rovescia: 1  *
 
 > ; ------------------------------------------------------------------------------
 > ; ABBANDONA + UNDO
@@ -526,17 +559,3 @@ Mangi la mela.
 > abbandona partita
 
 Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? undo
-'abbandona partita'
-annullato.
-
-> esamina la mela
-Qui non puoi vedere nulla del genere.
-
-> ; ------------------------------------------------------------------------------
-> ; ABBANDONA + QUIT
-> ; ------------------------------------------------------------------------------
-> ; Dopo "quit" qualsiasi altro comando dovrebbe essere ignorato...
-> abbandona partita
-
-Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? quit
-

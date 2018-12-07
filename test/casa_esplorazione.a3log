@@ -9,8 +9,8 @@ Versione 1
 Tutti i diritti riservati.
 
 
-La Cucina
-A sud c'è il tuo giardino, a est il tuo studio. Puoi vedere una sedia, un 
+LA CUCINA
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un 
 frigo e un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un 
 sacchetto, un coltello, una pistola, un cesto per la frutta e una radio. 
 Al centro della stanza c'è Mr Nicky, il tuo cagnolino.
@@ -35,7 +35,7 @@ Non hai trovato niente di interessante.
 Il soffitto è fuori dalla tua portata.
 
 > sud
-Il Giardino di Casa
+IL GIARDINO DI CASA
 A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
 e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
 un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
@@ -56,8 +56,8 @@ Il cinguettio è fuori dalla tua portata.
 > ; VERBO 'ascolta'
 > ; ==============================================================================
 > nord
-La Cucina
-A sud c'è il tuo giardino, a est il tuo studio. Puoi vedere una sedia, un 
+LA CUCINA
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un 
 frigo e un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un 
 sacchetto, un coltello, una pistola, un cesto per la frutta e una radio. 
 
@@ -70,7 +70,7 @@ Mr Nicky ti segue.
 Non odi niente di particolare.
 
 > sud
-Il Giardino di Casa
+IL GIARDINO DI CASA
 A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
 e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
 un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
@@ -98,7 +98,7 @@ Il giardiniere non sta parlando in questo momento.
 [[ istanza 'nella_piscina' (location) --> ENTERED ]]
 Ti tuffi a bomba nella piscina.
 
-Nella Piscina (Giardino di Casa)
+GIARDINO DI CASA (DENTRO LA PISCINA)
 La piscina è abbastanza ampia per fare delle piccole nuotate. [[ istanza
 'nella_piscina' (location) --> ENTERED ]]
 Ti tuffi a bomba nella piscina. 
@@ -112,7 +112,7 @@ Il giardiniere non sta parlando in questo momento.
 [[ istanza 'piscina' --> VERB 'esci_da' --> DOES ONLY ]]
 Ti issi sul bordo della piscina ed esci.
 
-Il Giardino di Casa
+IL GIARDINO DI CASA
 A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
 e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
 un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
@@ -135,7 +135,7 @@ Si direbbe il canto della cinciallegra.
 [[ istanza 'nella_piscina' (location) --> ENTERED ]]
 Ti tuffi a bomba nella piscina.
 
-Nella Piscina (Giardino di Casa)
+GIARDINO DI CASA (DENTRO LA PISCINA)
 La piscina è abbastanza ampia per fare delle piccole nuotate. Mr Nicky ti
 osserva incuriosito.
 
@@ -147,7 +147,7 @@ Si direbbe il canto della cinciallegra.
 [[ istanza 'piscina' --> VERB 'esci_da' --> DOES ONLY ]]
 Ti issi sul bordo della piscina ed esci.
 
-Il Giardino di Casa
+IL GIARDINO DI CASA
 A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
 e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
 un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
@@ -159,8 +159,8 @@ una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
 > ; Testiamolo in cucina, dato che il verbo 'ascolta' accetta parametri che non
 > ; sono presenti nel luogo: 
 > nord
-La Cucina
-A sud c'è il tuo giardino, a est il tuo studio. Puoi vedere una sedia, un 
+LA CUCINA
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un 
 frigo e un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un 
 sacchetto, un coltello, una pistola, un cesto per la frutta e una radio. 
 
