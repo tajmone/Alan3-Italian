@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.9.5-Alpha, 2018-12-04: Alan 3.0beta6
+--| v0.9.6-Alpha, 2018-12-07: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -227,15 +227,14 @@ EVERY indumento IsA OBJECT
 
 
     FOR EACH o IsA OBJECT, DIRECTLY IN THIS
-      DO
-        INCLUDE o IN consentiti OF THIS.
+      DO INCLUDE o IN consentiti OF THIS.
     END FOR.
 
 
 
 
     -- all clothing acquired and worn by the hero or an NPC mid-game is checked to
-           -- show correctly when the possessions of an actor are listed:
+    -- show correctly when the possessions of an actor are listed:
 
 
     SCHEDULE worn_clothing_check AFTER 0.
@@ -267,41 +266,40 @@ EVERY indumento IsA OBJECT
 
   VERB indossa
 
-    CHECK  genere OF THIS = genere OF hero OR genere OF THIS = 0
+    CHECK THIS:genere = hero:genere OR THIS:genere = 0
 --                                                                              TRANSLATE!
       ELSE SAY mia_AT:check_clothing_sex.
 
     DOES ONLY
 
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------
 -- 'wear_flag' is a multi-purpose flag used for several purposes in
 -- this library, here it is reset to 0 before proceeding as a matter
 -- of 'housekeeping' for the code.
 --------------------------------------------------------------------
 
+      SET hero:wear_flag TO 0.
 
-    SET wear_flag OF hero TO 0.
-
-
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------
 -- First check to see if the player is carrying the item already, if
 -- not, set the 'wear_flag' to 1 to indicate the item was picked up
 -- in this turn.
 --------------------------------------------------------------------
 
+      IF THIS NOT IN hero
+        THEN SET hero:wear_flag TO 1.
+      END IF.
 
-    IF THIS NOT IN hero
-      THEN
-        SET wear_flag OF hero TO 1.
-    END IF.
-
-
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------
 --  Now see if the player can put this item on by testing
 --  all of its coverage attributes against the player's state.
 --------------------------------------------------------------------
 
 
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------
 -- First check the 'topcover' attributes, if 'obj' fails this test
 -- then it means the hero is already wearing clothes that cover the
@@ -312,42 +310,40 @@ EVERY indumento IsA OBJECT
 --------------------------------------------------------------------
 
 
-    IF val_tronco OF THIS <> 0 AND
-       val_tronco OF THIS <= SUM OF val_tronco DIRECTLY IN abbigliamento
-      THEN
-        INCREASE wear_flag OF hero BY 5.
-    END IF.
+      IF  THIS:val_tronco <> 0
+      AND THIS:val_tronco <= SUM OF val_tronco DIRECTLY IN abbigliamento
+        THEN INCREASE hero:wear_flag BY 5.
+      END IF.
 
 
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------
 -- Perform a similar test for other attributes.
 --------------------------------------------------------------------
 
 
-    --IF THIS IN tempworn
-      --THEN
+      --IF THIS IN tempworn
+        --THEN
 
-    IF val_mani OF THIS <> 0 AND
-       val_mani OF THIS <= SUM OF val_mani DIRECTLY IN abbigliamento
-      THEN
-        INCREASE wear_flag OF hero BY 5.
-    END IF.
-
-
-    IF val_piedi OF THIS <> 0 AND
-       val_piedi OF THIS <= SUM OF val_piedi DIRECTLY IN abbigliamento
-      THEN
-        INCREASE wear_flag OF hero BY 5.
-    END IF.
+      IF  THIS:val_mani <> 0
+      AND THIS:val_mani <= SUM OF val_mani DIRECTLY IN abbigliamento
+        THEN INCREASE hero:wear_flag BY 5.
+      END IF.
 
 
-    IF val_testa OF THIS <> 0 AND
-       val_testa OF THIS <= SUM OF val_testa DIRECTLY IN abbigliamento
-      THEN
-        INCREASE wear_flag OF hero BY 5.
-    END IF.
+      IF  THIS:val_piedi <> 0
+      AND THIS:val_piedi <= SUM OF val_piedi DIRECTLY IN abbigliamento
+        THEN INCREASE hero:wear_flag BY 5.
+      END IF.
 
 
+      IF  THIS:val_testa <> 0
+      AND THIS:val_testa <= SUM OF val_testa DIRECTLY IN abbigliamento
+        THEN INCREASE hero:wear_flag BY 5.
+      END IF.
+
+
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------
 --  botcover is a special case, adjust the 'tempcovered OF hero'
 --  attribute so that the code rejects non sensible options.
@@ -356,14 +352,14 @@ EVERY indumento IsA OBJECT
 --------------------------------------------------------------------
 
 
-    SET tempcovered OF hero TO SUM OF val_gambe DIRECTLY IN abbigliamento.
+      SET hero:tempcovered TO SUM OF val_gambe DIRECTLY IN abbigliamento.
 
-    IF tempcovered OF hero >63 AND val_gambe OF THIS < 33
-      THEN
-        SET tempcovered OF hero TO tempcovered OF hero -64.
-    END IF.
+      IF hero:tempcovered >63 AND THIS:val_gambe < 33
+        THEN SET hero:tempcovered TO hero:tempcovered -64.
+      END IF.
 
 
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------
 -- Now discount any dress/ skirt coverall like clothes as these do
 -- not technically affect ability to put on lower body only clothes.
@@ -374,13 +370,12 @@ EVERY indumento IsA OBJECT
 --------------------------------------------------------------------
 
 
-    IF tempcovered OF hero >31 AND
-       val_gambe OF THIS < 16 AND val_gambe OF THIS <> 4
-      THEN
-        SET tempcovered OF hero TO tempcovered OF hero -32.
-    END IF.
+      IF hero:tempcovered >31 AND THIS:val_gambe < 16 AND THIS:val_gambe <> 4
+        THEN SET hero:tempcovered TO hero:tempcovered -32.
+      END IF.
 
 
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------
 -- IF tempcovered OF hero is still > 15 then must have trousers
 -- type clothing on - therefore disallow wearing dress type clothing
@@ -388,24 +383,23 @@ EVERY indumento IsA OBJECT
 --------------------------------------------------------------------
 
 
-    IF tempcovered OF hero >15 AND val_gambe OF THIS > 16
-      THEN
-        SET tempcovered OF hero TO tempcovered OF hero +16.
-    END IF.
+      IF hero:tempcovered >15 AND THIS:val_gambe > 16
+        THEN SET hero:tempcovered TO hero:tempcovered +16.
+      END IF.
 
 
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------
 --  From here down, clothes DO work as they do for other areas.
 --------------------------------------------------------------------
 
 
-    IF val_gambe OF THIS <> 0 AND
-       val_gambe OF THIS <= tempcovered OF hero
-      THEN
-        INCREASE wear_flag OF hero BY 5.
-    END IF.
+      IF THIS:val_gambe <> 0 AND THIS:val_gambe <= hero:tempcovered
+        THEN INCREASE hero:wear_flag BY 5.
+      END IF.
 
 
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------
 -- At this point, 'wear_flag' will be 0 if the obj was held by the
 -- player and can be put on, or l if he picked it up this turn and
@@ -414,40 +408,33 @@ EVERY indumento IsA OBJECT
 --------------------------------------------------------------------
 
 
-    IF wear_flag OF hero >1
-      THEN
-        IF THIS NOT IN hero
-          THEN "prendi" SAY THE THIS. "."
-       -- THEN "You pick up the" SAY THE THIS. "."
-        END IF.
+      IF hero:wear_flag >1
+        THEN
+          IF THIS NOT IN hero
+            THEN "prendi" SAY THE THIS. "."
+         -- THEN "You pick up the" SAY THE THIS. "."
+          END IF.
 
-        LOCATE THIS IN hero.
-        EMPTY abbigliamento IN tempworn.
-        LIST tempworn.
+          LOCATE THIS IN hero.
+          EMPTY abbigliamento IN tempworn.
+          LIST tempworn.
 
---                                                                              TRANSLATE!
-        "Trying to put" SAY THE THIS. "on isn't very sensible."
+  --                                                                              TRANSLATE!
+          "Trying to put" SAY THE THIS. "on isn't very sensible."
 
-        EMPTY tempworn IN abbigliamento.
+          EMPTY tempworn IN abbigliamento.
 
-    ELSIF wear_flag OF hero = 1
-      THEN
-        LOCATE THIS IN abbigliamento.
+      ELSIF hero:wear_flag = 1
+        THEN
+          LOCATE THIS IN abbigliamento.
 
-        "prendi" SAY THE THIS. "e l$$" SAY THIS:vocale. "indossi."
-     -- "You pick up the" SAY THE THIS.
-     -- IF THIS IS NOT plurale
-     --   THEN "and put it on."
-     --   ELSE "and put them on."
-     -- END IF.
-
-    ELSE
-      LOCATE THIS IN abbigliamento.
-      MAKE THIS indossato.
-      INCLUDE THIS IN indossati OF hero.
-      "indossi" SAY THE THIS. "."
-   -- "You put on" SAY THE THIS. "."
-    END IF.
+          "prendi" SAY THE THIS. "e l$$" SAY THIS:vocale. "indossi."
+        ELSE
+          LOCATE THIS IN abbigliamento.
+          MAKE THIS indossato.
+          INCLUDE THIS IN indossati OF hero.
+          "indossi" SAY THE THIS. "."
+      END IF.
 
 END VERB indossa.
 
@@ -463,9 +450,10 @@ VERB togliti
 
   DOES ONLY
 
-  SET wear_flag OF hero TO 0.
+    SET hero:wear_flag TO 0.
 
 
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------
 -- Check the total 'topcover' of items worn. Because of the number
 -- sequence used, by dividing the sum of the worn attributes by two
@@ -478,56 +466,50 @@ VERB togliti
 --------------------------------------------------------------------
 
 
-  SET tempcovered OF hero TO SUM OF val_tronco DIRECTLY IN abbigliamento /2.
-    IF val_tronco OF THIS <> 0 AND
-     val_tronco OF THIS < tempcovered OF hero
-    THEN
-      INCREASE wear_flag OF hero BY 1.
-  END IF.
+    SET hero:tempcovered TO SUM OF val_tronco DIRECTLY IN abbigliamento /2.
+      IF THIS:val_tronco <> 0 AND THIS:val_tronco < hero:tempcovered
+        THEN INCREASE hero:wear_flag BY 1.
+      END IF.
 
 
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------
 -- Perform a similar test for other attributes.
 --------------------------------------------------------------------
 
 
-  SET tempcovered OF hero TO SUM OF val_mani DIRECTLY IN abbigliamento /2.
-    IF val_mani OF THIS <> 0 AND
-     val_mani OF THIS < tempcovered OF hero
-    THEN
-      INCREASE wear_flag OF hero BY 1.
-  END IF.
+    SET hero:tempcovered TO SUM OF val_mani DIRECTLY IN abbigliamento /2.
+      IF THIS:val_mani <> 0 AND THIS:val_mani < hero:tempcovered
+        THEN INCREASE hero:wear_flag BY 1.
+      END IF.
 
 
-  SET tempcovered OF hero TO SUM OF val_piedi DIRECTLY IN abbigliamento /2.
-  IF val_piedi OF THIS <> 0 AND
-     val_piedi OF THIS < tempcovered OF hero
-    THEN
-      INCREASE wear_flag OF hero BY 1.
-  END IF.
+    SET hero:tempcovered TO SUM OF val_piedi DIRECTLY IN abbigliamento /2.
+    IF THIS:val_piedi <> 0 AND THIS:val_piedi < hero:tempcovered
+      THEN INCREASE hero:wear_flag BY 1.
+    END IF.
 
 
-  SET tempcovered OF hero TO SUM OF val_testa DIRECTLY IN abbigliamento /2.
-  IF val_testa OF THIS <> 0 AND
-     val_testa OF THIS < tempcovered OF hero
-    THEN
-      INCREASE wear_flag OF hero BY 1.
-  END IF.
+    SET hero:tempcovered TO SUM OF val_testa DIRECTLY IN abbigliamento /2.
+    IF THIS:val_testa <> 0 AND THIS:val_testa < hero:tempcovered
+      THEN INCREASE hero:wear_flag BY 1.
+    END IF.
 
 
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------
 -- botcover is a special case - first discount any coatlike clothes
 -- as these do not affect ability to take off other lower garments.
 --------------------------------------------------------------------
 
 
-  SET tempcovered OF hero TO SUM OF val_gambe DIRECTLY IN abbigliamento.
-  IF tempcovered OF hero >63
-    THEN
-      SET tempcovered OF hero TO tempcovered OF hero -64.
-  END IF.
+    SET hero:tempcovered TO SUM OF val_gambe DIRECTLY IN abbigliamento.
+    IF hero:tempcovered >63
+      THEN SET hero:tempcovered TO hero:tempcovered -64.
+    END IF.
 
 
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------
 -- Now discount any dress/ skirt coverall like clothes as these do
 -- not affect ability to take off other lower garments. The 'teddy'
@@ -535,44 +517,43 @@ VERB togliti
 --------------------------------------------------------------------
 
 
-  IF tempcovered OF hero >31 AND val_gambe OF THIS <>4
-    THEN
-      SET tempcovered OF hero TO tempcovered OF hero -32.
-  END IF.
+    IF hero:tempcovered >31 AND THIS:val_gambe <>4
+      THEN SET hero:tempcovered TO hero:tempcovered -32.
+    END IF.
 
 
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------
 -- Now process the manipulated value just as was done for the others
 --------------------------------------------------------------------
 
 
-  SET tempcovered OF hero TO tempcovered OF hero /2.
-  IF val_gambe OF THIS <> 0 AND
-     val_gambe OF THIS < tempcovered OF hero
-    THEN
-      INCREASE wear_flag OF hero BY 1.
-  END IF.
+    SET hero:tempcovered TO hero:tempcovered /2.
+    IF THIS:val_gambe <> 0 AND THIS:val_gambe < hero:tempcovered
+      THEN INCREASE hero:wear_flag BY 1.
+    END IF.
 
 
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------
 -- Depending on the value of 'wear_flag' print and process the obj
 -- as needed. If 'wear_flag' is NOT 0 then the clothes cannot be
 -- removed.
 --------------------------------------------------------------------
 
+--  Use $1 instead of THIS:                                                     OPTIMIZE!
 
-  IF wear_flag OF hero > 0
-    THEN
-      LIST abbigliamento.
---                                                                              TRANSLATE!
-      "Trying to take" SAY THE THIS. "off isn't very sensible."
-    ELSE
-      LOCATE THIS IN hero.
-      "Ti togli" SAY THE THIS. "."
-   -- "You take off" SAY THE THIS. "."
-      EXCLUDE THIS FROM indossati OF hero.
-      MAKE THIS NOT indossato.
-  END IF.
+    IF hero:wear_flag > 0
+      THEN
+        LIST abbigliamento.
+  --                                                                              TRANSLATE!
+        "Trying to take" SAY THE THIS. "off isn't very sensible."
+      ELSE
+        LOCATE THIS IN hero.
+        "Ti togli" SAY THE THIS. "."
+        EXCLUDE THIS FROM hero:indossati.
+        MAKE THIS NOT indossato.
+    END IF.
 END VERB togliti.
 
 
@@ -580,6 +561,7 @@ END EVERY.
 
 
 
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------
 -- These attributes are used internally in the library - ignore!
 --------------------------------------------------------------------
@@ -591,17 +573,18 @@ ADD TO EVERY ACTOR
 END ADD TO.
 
 
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------
 -- A container used to provide a temporary storage space - ignore!
 --------------------------------------------------------------------
 
 THE tempworn IsA OBJECT
   CONTAINER TAKING indumento.
---                                                                              TRANSLATE!
-  HEADER "You're already wearing"
+  HEADER "Stai già indossando"
 END THE tempworn.
 
 
+--                                                                              TRANSLATE!
 --------------------------------------------------------------------
 -- An event checking that clothing acquired and worn by an actor
 -- mid-game is recognised to be worn by the actor:
@@ -645,6 +628,7 @@ END EVENT.
 
 --------------------------------------------------------------------
 
+--                                                                              TRANSLATE!
 -----------------------------------------------------------------------
 -- INSTRUCTIONS FOR USING THE CLOTHING CLASS
 -----------------------------------------------------------------------
@@ -783,42 +767,7 @@ END EVENT.
 --<
 
 
--- The clothing table
------------------------
-
-
--- Here is the chart showing a selection of fairly typical clothing items and the values to
--- set to obtain appropriate behaviour. Should you wish to create an article of clothing not
--- listed, usually a bit of lateral thought as to what it is most like and where it fits into
--- the scheme of things will suggest a workable set of values, but be aware that you MUST use
--- values in this chart, simply adding things with intermediate values is probably going to
--- create nasty bugs:
-
-
---+--------------------------+----------+----------+-----------+-----------+
---| Clothing     | Headcover | Topcover | Botcover | Footcover | Handcover |
---+--------------------------+----------+----------+-----------+-----------+
---| hat                    2 |        0 |        0 |         0 |         0 |
---| vest/bra               0 |        2 |        0 |         0 |         0 |
---| undies/panties         0 |        0 |        2 |         0 |         0 |
---| teddy                  0 |        4 |        4 |         0 |         0 |
---| blouse/shirt/T-shirt   0 |        8 |        0 |         0 |         0 |
---| dress/coveralls        0 |        8 |       32 |         0 |         0 |
---| skirt                  0 |        0 |       32 |         0 |         0 |
---| trousers/shorts        0 |        0 |       16 |         0 |         0 |
---| sweater/pullover       0 |       16 |        0 |         0 |         0 |
---| jacket                 0 |       32 |        0 |         0 |         0 |
---| coat                   0 |       64 |       64 |         0 |         0 |
---| socks/stockings        0 |        0 |        0 |         2 |         0 |
---| tights/pantiehose      0 |        0 |        8 |         2 |         0 |
---| shoes/boots            0 |        0 |        0 |         4 |         0 |
---| gloves                 0 |        0 |        0 |         0 |         2 |
---+--------------------------+----------+----------+-----------+-----------+
-
-
-
-
--->dispositiv(11000.1)  @DISPOSITIVO --> @DEVICE
+-->dispositiv(11000.1)                                  @DISPOSITIVO <-- @DEVICE
 --~=============================================================================
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -853,7 +802,6 @@ END EVENT.
 
 
 EVERY dispositivo IsA OBJECT
-
 
   VERB esamina
     DOES AFTER
@@ -943,7 +891,7 @@ EVERY dispositivo IsA OBJECT
 END EVERY.
 
 
--->porte(12000.1)  @PORTA ---> @DOOR
+-->porte(12000.1)                                               @PORTA <-- @DOOR
 --~=============================================================================
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -989,8 +937,6 @@ END EVERY.
 --| ========================================================================
 --<
 
-
-
 EVERY porta IsA OBJECT
   IS apribile.
   IS NOT aperto.
@@ -1000,16 +946,21 @@ EVERY porta IsA OBJECT
 
 
   HAS altro_lato  porta_fittizia.
-  -- The other side of the door in the next room will be automatically taken care of
-  -- so that it shows correctly in any room or object descriptions.
-  -- 'null_door' is a dummy default that can be ignored.
+    --                                                                          TRANSLATE!
+    
+    -- The other side of the door in the next room will be automatically taken
+    -- care of so that it shows correctly in any room or object descriptions.
+    -- 'null_door' is a dummy default that can be ignored.
 
 
 
   INITIALIZE
 
-    -- ensuring that the author didn't forget to declare a locked door closed (= NOT open), as well. This is
-    -- just double-checking, as any door is by default closed (= "NOT open") at the start of the game:
+    --                                                                          TRANSLATE!
+    
+    -- ensuring that the author didn't forget to declare a locked door closed
+    -- (= NOT open), as well. This is just double-checking, as any door is by
+    -- default closed (= "NOT open") at the start of the game:
 
     IF THIS IS bloccato
       THEN
@@ -1018,16 +969,21 @@ EVERY porta IsA OBJECT
         END IF.
     END IF.
 
-    -- ensuring that if a door has an otherside attribute declared, this otherside will have the original
-    -- door as its otherside in turn:
+    --                                                                          TRANSLATE!
 
-    IF altro_lato OF THIS <> porta_fittizia
+    -- ensuring that if a door has an otherside attribute declared, this
+    -- otherside will have the original door as its otherside in turn:
+
+    IF THIS:altro_lato <> porta_fittizia
       THEN
-        SET altro_lato OF altro_lato OF THIS TO THIS.
+        SET THIS:altro_lato:altro_lato TO THIS.
 
 
-      -- next, ensuring that some attributes are correctly assigned to the otherside of the door, as well.
-      -- Only some non-default cases need to be addressed here:
+        --                                                                      TRANSLATE!
+      
+        -- next, ensuring that some attributes are correctly assigned to the
+        -- otherside of the door, as well. Only some non-default cases need to
+        -- be addressed here:
 
         IF THIS IS NOT apribile
           THEN MAKE altro_lato OF THIS NOT apribile.
@@ -1048,15 +1004,18 @@ EVERY porta IsA OBJECT
     END IF.
 
 
-    -- making the same matching_key open both sides of a door:
+   --                                                                           TRANSLATE!
+   -- making the same matching_key open both sides of a door:
 
-    IF altro_lato OF THIS <> porta_fittizia AND chiave_abbinata OF THIS <> chiave_fittizia
-      THEN SET chiave_abbinata OF altro_lato OF THIS TO chiave_abbinata OF THIS.
+    IF  THIS:altro_lato <> porta_fittizia
+    AND THIS:chiave_abbinata <> chiave_fittizia
+      THEN SET THIS:altro_lato:chiave_abbinata TO THIS:chiave_abbinata.
     END IF.
 
+   --                                                                           TRANSLATE!
 
-  -- If a door is lockable/locked, you should state at the door instance
-  -- which object will unlock it, with the matching_key attribute.
+    -- If a door is lockable/locked, you should state at the door instance
+    -- which object will unlock it, with the matching_key attribute.
     -- for example
 
     -- THE attic_door IsA DOOR
@@ -1147,7 +1106,7 @@ EVERY porta IsA OBJECT
 
   VERB chiudi
     DOES
-      IF altro_lato OF THIS <> porta_fittizia
+      IF THIS:altro_lato <> porta_fittizia
         THEN MAKE altro_lato OF THIS NOT aperto.
       END IF.
   END VERB chiudi.
@@ -1155,7 +1114,7 @@ EVERY porta IsA OBJECT
 
   VERB blocca
     DOES
-      IF altro_lato OF THIS <> porta_fittizia
+      IF THIS:altro_lato <> porta_fittizia
         THEN MAKE altro_lato OF THIS NOT aperto.
           MAKE altro_lato OF THIS bloccato.
       END IF.
@@ -1164,7 +1123,7 @@ EVERY porta IsA OBJECT
 
   VERB apri
     DOES
-      IF altro_lato OF THIS <> porta_fittizia
+      IF THIS:altro_lato <> porta_fittizia
         THEN MAKE altro_lato OF THIS aperto.
           MAKE altro_lato OF THIS NOT bloccato.
       END IF.
@@ -1173,7 +1132,7 @@ EVERY porta IsA OBJECT
 
   VERB sblocca
     DOES
-      IF altro_lato OF THIS <> porta_fittizia
+      IF THIS:altro_lato <> porta_fittizia
         THEN MAKE altro_lato OF THIS NOT bloccato.
       END IF.
   END VERB sblocca.
@@ -1472,7 +1431,7 @@ EVERY liquido IsA OBJECT
       DO
         FOR EACH lq IsA liquido, DIRECTLY IN lc
           DO
-            SET recipiente OF lq TO lc.
+            SET lq:recipiente TO lc.
         END FOR.
     END FOR.
 
@@ -1522,11 +1481,13 @@ EVERY liquido IsA OBJECT
 
   VERB esamina
     DOES ONLY
-      IF recipiente OF THIS <> recipiente_fittizio
+      IF THIS:recipiente <> recipiente_fittizio
         THEN
-          IF recipiente OF THIS IS aperto
+          IF THIS:recipiente IS aperto
+--          @TODO: List contents instead!                                       TODO!
 --                                                                              TRANSLATE!
             THEN "You notice nothing unusual about" SAY THE THIS.
+--                                                                              TRANSLATE!
             ELSE "You can't, since" SAY THE recipiente OF THIS.
                 IF THIS IS NOT plurale
                   THEN "is"
@@ -1555,10 +1516,13 @@ EVERY liquido IsA OBJECT
 
   VERB look_in
     DOES ONLY
-      IF recipiente OF THIS <> recipiente_fittizio
+      IF THIS:recipiente <> recipiente_fittizio
         THEN
-          IF recipiente OF THIS IS aperto
+          IF THIS:recipiente IS aperto
+--          @TODO: List contents instead!                                       TODO!
+--                                                                              TRANSLATE!
             THEN "You see nothing special in" SAY THE THIS. "."
+--                                                                              TRANSLATE!
             ELSE "You can't, since" SAY THE recipiente OF THIS.
                 IF THIS IS NOT plurale
                   THEN "is"
@@ -1568,6 +1532,7 @@ EVERY liquido IsA OBJECT
                 -- Here we prohibit the player from looking into
                 -- a liquid when the liquid is in a closed container.
           END IF.
+--      @TODO: List contents instead!                                           TODO!
         ELSE "You see nothing special in" SAY THE THIS. "."
       END IF.
   END VERB look_in.
@@ -1585,16 +1550,17 @@ EVERY liquido IsA OBJECT
 
 -- @PRENDI -> @TAKE (VERB) => LIQUID
   VERB prendi
-    CHECK recipiente OF THIS NOT IN hero
+    CHECK THIS:recipiente NOT IN hero
       ELSE
         SAY mia_AT:ogg1_già_posseduto.
     DOES ONLY
-      IF recipiente OF THIS = recipiente_fittizio
-      OR recipiente OF THIS IS NOT prendibile
+      IF THIS:recipiente = recipiente_fittizio
+      OR THIS:recipiente IS NOT prendibile
         THEN SAY mia_AT:impossibile_maneggiare_liq1.
-      ELSE LOCATE recipiente OF THIS IN hero.
---                                                                              TRANSLATE!
-        "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nTaken."
+      ELSE
+        LOCATE recipiente OF THIS IN hero.
+        "($$" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)
+        $nPres$$" SAY THIS:vocale. "."
       END IF.
   END VERB prendi.
 
@@ -1612,19 +1578,18 @@ EVERY liquido IsA OBJECT
 -- @PRENDI_DA -> @TAKE_FROM (VERB) => LIQUID
   VERB prendi_da
     WHEN ogg
---                                                                              TRANSLATE!
-      CHECK detentore <> recipiente OF THIS
-        ELSE SAY mia_AT:check_liquid_vessel_not_cont.
-        -- the above is triggered when the player types for example
-        -- >take juice from bottle   -- (when the juice is in the bottle)
+      CHECK detentore <> THIS:recipiente
+        ELSE SAY mia_AT:impossibile_maneggiare_liq1.
+        -- Questo messaggio viene mostrato quando il giocatore tenta di prendere
+        -- un liquido dal suo contenitore (es. "prendi il vino dalla bottiglia").
     DOES ONLY
-      IF recipiente OF THIS = recipiente_fittizio
-      OR recipiente OF THIS IS NOT prendibile
+      IF THIS:recipiente = recipiente_fittizio
+      OR THIS:recipiente IS NOT prendibile
         THEN SAY mia_AT:impossibile_maneggiare_liq1.
-      ELSE LOCATE recipiente OF THIS IN hero.
-      "($$" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)
-       $nPres$$" SAY THIS:vocale. "."
-     -- "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nTaken."
+      ELSE
+        LOCATE recipiente OF THIS IN hero.
+        "($$" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)
+        $nPres$$" SAY THIS:vocale. "."
       END IF.
   END VERB prendi_da.
 
@@ -1642,6 +1607,7 @@ EVERY liquido IsA OBJECT
   VERB lascia
     DOES ONLY
       LOCATE recipiente OF THIS AT hero.
+--                                                                              CHECK!
 -- @NOTE: Non sono sicuro se lasciarlo così o se usare invece come sopra (prendi_da):
 --    "($$" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)
 --     $nLasciat$$" SAY THIS:vocale. ".""
@@ -1661,11 +1627,29 @@ EVERY liquido IsA OBJECT
 --| * [ ] Descrizione `chiedi`.
 --<
 
+  -- chiedi a (png) (ogg)
+
   VERB chiedi
     DOES ONLY
+      -- Preserviamo copia dello stato di condiscendenza attuale del PNG:
+      IF png IS condiscendente
+        THEN MAKE mia_AT temp_condiscendente.
+        ELSE MAKE mia_AT NOT temp_condiscendente.
+      END IF.
+      -- Rendiamo temporaneamente condiscendente il PNG affinché sia possibile
+      -- rimuovere un oggetto contenuto da esso: 
+      MAKE png condiscendente.
       LOCATE recipiente OF THIS IN hero.
---                                                                              TRANSLATE!
-      SAY THE png. "gives" SAY THE recipiente OF THIS. "of" SAY THIS. "to you."
+      "$+1 ti"
+      IF png IS NOT plurale
+        THEN "dà"
+        ELSE "danno"
+      END IF.
+      SAY THE recipiente OF THIS. SAY THIS:prep_DI. SAY THIS. "."
+      -- Ora ripristiniamo lo stato di condiscendenza originale del PNG:
+      IF mia_AT IS NOT temp_condiscendente
+        THEN MAKE png NOT condiscendente.
+      END IF.
   END VERB chiedi.
 
 -->liquido   @DAI_A -> @GIVE TO => LIQUID
@@ -1685,8 +1669,8 @@ EVERY liquido IsA OBJECT
       -- >>> prendi implicito: >>>
       IF THIS NOT IN hero
         THEN
-          IF recipiente OF THIS = recipiente_fittizio
-          OR recipiente OF THIS IS NOT prendibile
+          IF THIS:recipiente = recipiente_fittizio
+          OR THIS:recipiente IS NOT prendibile
             THEN SAY mia_AT:impossibile_maneggiare_liq1.
             ELSE LOCATE recipiente OF THIS IN hero.
               "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
@@ -1723,10 +1707,11 @@ EVERY liquido IsA OBJECT
       -- >>> prendi implicito: >>>
       IF THIS NOT IN hero
         THEN
-          IF recipiente OF THIS = recipiente_fittizio OR recipiente OF THIS IS NOT prendibile
+          IF THIS:recipiente = recipiente_fittizio
+          OR THIS:recipiente IS NOT prendibile
 --                                                                              TRANSLATE!
-            THEN "You can't pour" SAY THE THIS. "anywhere since you are not
-              carrying"
+            THEN
+              "You can't pour" SAY THE THIS. "anywhere since you are not carrying"
                 IF THIS IS NOT plurale
                   THEN "it."
                   ELSE "them."
@@ -1739,7 +1724,7 @@ EVERY liquido IsA OBJECT
 
       IF THIS IN hero
         THEN LOCATE THIS AT hero.
-          SET recipiente OF THIS TO recipiente_fittizio.
+          SET THIS:recipiente TO recipiente_fittizio.
 --                                                                              TRANSLATE!
           "You pour" SAY THE THIS.
             IF pavimento HERE
@@ -1767,9 +1752,9 @@ EVERY liquido IsA OBJECT
         -- >>> prendi implicito: >>>
         IF THIS NOT IN hero
           THEN
-            IF recipiente OF THIS = recipiente_fittizio
+            IF THIS:recipiente = recipiente_fittizio
               THEN SAY mia_AT:impossibile_maneggiare_liq1.
-            ELSIF recipiente OF THIS IS NOT prendibile
+            ELSIF THIS:recipiente IS NOT prendibile
 --                                                                              TRANSLATE!
               THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
               ELSE LOCATE recipiente OF THIS IN hero.
@@ -1780,18 +1765,18 @@ EVERY liquido IsA OBJECT
 
         IF THIS IN hero   --i.e. if the implicit taking was successful
           THEN LOCATE THIS IN cont.
-            SET recipiente OF THIS TO cont.
+            SET THIS:recipiente TO cont.
 --                                                                              TRANSLATE!
             "You pour" SAY THE THIS. "into" SAY THE cont. "."
         END IF.
     WHEN cont
       DOES ONLY
-        IF recipiente OF THIS = recipiente_fittizio
+        IF THIS:recipiente = recipiente_fittizio
           THEN
 --                                                                              TRANSLATE!
             "There's not much sense pouring" SAY THE ogg. "into" SAY THE THIS. "."
           ELSE
-            IF recipiente OF THIS IS aperto
+            IF THIS:recipiente IS aperto
 -- @NOTE: Why not? You can empty containers with solids into liquids but you    CHECK!
 --        can't 'pour' thme -- yet both verbs are good with them when no liquids
 --        are involved!
@@ -1827,9 +1812,9 @@ EVERY liquido IsA OBJECT
         -- >>> prendi implicito: >>>
         IF THIS NOT IN hero
           THEN
-            IF recipiente OF THIS = recipiente_fittizio
+            IF THIS:recipiente = recipiente_fittizio
               THEN SAY mia_AT:impossibile_maneggiare_liq1.
-            ELSIF recipiente OF THIS IS NOT prendibile
+            ELSIF THIS:recipiente IS NOT prendibile
 --                                                                              TRANSLATE!
               THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
             ELSE LOCATE recipiente OF THIS IN hero.
@@ -1845,12 +1830,12 @@ EVERY liquido IsA OBJECT
               THEN LOCATE THIS AT hero.
 --                                                                              TRANSLATE!
                 "You pour" SAY THE THIS. "on" SAY THE superficie. "."
-                SET recipiente OF THIS TO recipiente_fittizio.
+                SET THIS:recipiente TO recipiente_fittizio.
             ELSIF superficie IsA supporto
               THEN LOCATE THIS IN superficie.
 --                                                                              TRANSLATE!
                 "You pour" SAY THE THIS. "on" SAY THE superficie. "."
-                  SET recipiente OF THIS TO recipiente_fittizio.
+                  SET THIS:recipiente TO recipiente_fittizio.
             ELSE "It wouldn't be sensible to pour anything on" SAY THE superficie.
             END IF.
         END IF.
@@ -1922,15 +1907,15 @@ EVERY liquido IsA OBJECT
   VERB metti_in
     WHEN ogg
       DOES ONLY
-        IF recipiente OF THIS = recipiente_fittizio
+        IF THIS:recipiente = recipiente_fittizio
           THEN SAY mia_AT:impossibile_maneggiare_liq1.
           ELSE
-            IF recipiente OF THIS IS prendibile
+            IF THIS:recipiente IS prendibile
               THEN
                 -- >>> prendi implicito: >>>
                 IF THIS NOT IN hero
                   THEN
-                    IF recipiente OF THIS = recipiente_fittizio
+                    IF THIS:recipiente = recipiente_fittizio
                       THEN SAY mia_AT:impossibile_maneggiare_liq1.
                       ELSE LOCATE recipiente OF THIS IN hero.
                         "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
@@ -1947,14 +1932,14 @@ EVERY liquido IsA OBJECT
         END IF.
         WHEN cont
       DOES ONLY
-      IF recipiente OF THIS = recipiente_fittizio
+      IF THIS:recipiente = recipiente_fittizio
         THEN
 --                                                                              TRANSLATE!
           "There's not much sense putting" SAY THE ogg. "into" SAY THE THIS. "."
         ELSE
-          IF recipiente OF THIS IS aperto
+          IF THIS:recipiente IS aperto
             THEN
-              IF ogg = recipiente OF THIS
+              IF ogg = THIS:recipiente
 --                                                                              TRANSLATE!
                 THEN "That doesn't make sense."
                 ELSE "It wouldn't accomplish anything trying to put" SAY THE ogg.
@@ -1989,9 +1974,9 @@ EVERY liquido IsA OBJECT
         -- >>> prendi implicito: >>>
         IF THIS NOT IN hero
           THEN
-            IF recipiente OF THIS = recipiente_fittizio
+            IF THIS:recipiente = recipiente_fittizio
               THEN SAY mia_AT:impossibile_maneggiare_liq1.
-              ELSIF recipiente OF THIS IS NOT prendibile
+              ELSIF THIS:recipiente IS NOT prendibile
 --                                                                              TRANSLATE!
               THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
               ELSE LOCATE recipiente OF THIS IN hero.
@@ -2033,12 +2018,12 @@ END THE.
 
 EVENT check_vessel
   FOR EACH liq IsA liquido, DIRECTLY AT CURRENT LOCATION DO
-      SET recipiente OF liq TO recipiente_fittizio.
+      SET liq:recipiente TO recipiente_fittizio.
   END FOR.
 
   FOR EACH contel IsA contenitore_elencato DO
     FOR EACH liq IsA liquido, DIRECTLY IN contel
-      DO SET recipiente OF liq TO contel.
+      DO SET liq:recipiente TO contel.
     END FOR.
   END FOR.
 
@@ -2409,20 +2394,26 @@ END EVERY.
 
 ADD TO EVERY ACTOR
   IS  NOT inanimato.                                        ---> inanimate
-  IS  NOT seguendo.                                         ---> following
-  IS  NOT seduto.                                           ---> sitting
+  IS  NOT prendibile.                                       ---> takeable
   IS  NOT sdraiato.                                         ---> lying_down
+  IS  NOT seduto.                                           ---> sitting
+  IS  NOT seguendo.                                         ---> following
   HAS NOT nome_proprio.                                     ---> named
-  -- = the actor's name is not known to the player
+      --  Il giocatore non ne conosce il nome.
   HAS indossati { indumento_fittizio }.                     ---> wearing
   -- = the actor's clothing is not specified.
   -- "null_clothing" is a dummy default that can be ignored.
-  IS NOT condiscendente.                                    ---> compliant
-  -- an actor only gives something to the hero if it is in a compliant mood.
-  -- In practice, this happens by default when the hero asks the actor for anything.
-  -- For example, implicit taking of objects is not successful if the object happens
-  -- to be held by an NPC who is not compliant.
-  IS NOT prendibile.                                        ---> takeable
+  IS  NOT condiscendente.                                   ---> compliant
+  
+      --  Per poter prendere un oggetto da un attore è necessario che questi sia
+      --  condiscendente. Il codice nell'`EXTRACT` della classe `actor`
+      --  controlla lo stato di questo attributo e impedirà la rimozione di
+      --  oggetti se l'attore non è `condiscendente`.
+
+      --  Il verbo `chiedi` modifica temporaneamente questo attributo al fine di
+      --  poter conseguire l'azione. I verbi che richiedono di prendere
+      --  implicitamente un oggetto posseduto da un PNG non condiscendente non
+      --  porteranno a termine l'operazione.
 
 
 --==============================================================================
@@ -2657,21 +2648,21 @@ ADD TO EVERY ACTOR
       IF THIS IS NOT femminile
         THEN
           IF THIS IS NOT plurale
-            THEN SET vocale  OF THIS TO "o". ---> ms
-            ELSE SET vocale  OF THIS TO "i". ---> mp
+            THEN SET THIS:vocale TO "o". ---> ms
+            ELSE SET THIS:vocale TO "i". ---> mp
           END IF.
         ELSE
           IF THIS IS NOT plurale
-            THEN SET vocale  OF THIS TO "a". ---> fs
-            ELSE SET vocale  OF THIS TO "e". ---> fp
+            THEN SET THIS:vocale TO "a". ---> fs
+            ELSE SET THIS:vocale TO "e". ---> fp
           END IF.
       END IF.
       -- Imposta le preposizioni semplici, anziché articolate:
-      SET prep_DI OF THIS TO "di".
-      SET prep_A  OF THIS TO  "a".
-      SET prep_DA OF THIS TO "da".
-      SET prep_IN OF THIS TO "in".
-      SET prep_SU OF THIS TO "su".
+      SET THIS:prep_DI TO "di".
+      SET THIS:prep_A TO  "a".
+      SET THIS:prep_DA TO "da".
+      SET THIS:prep_IN TO "in".
+      SET THIS:prep_SU TO "su".
 
 --==============================================================================
 -- § 2.3.2 - Attori senza nome proprio
@@ -2680,77 +2671,77 @@ ADD TO EVERY ACTOR
 --| Se l'attore non ha nome proprio, verrà inizializzato come gli altri oggetti
 --| (si tratta di un sostantivo a tutti gli effetti).
       IF THIS IS femminile               --| Questo è necessario per coprire il caso
-        THEN SET vocale  OF THIS TO "a". --| in cui 'articolo' = "l'", prima che il
+        THEN SET THIS:vocale TO "a". --| in cui 'articolo' = "l'", prima che il
       END IF.                            --| codice seguente venga eseguito!
 
       DEPENDING ON articolo of THIS
         = "lo" THEN
           MAKE THIS NOT femminile.
           MAKE THIS NOT plurale.
-          SET vocale  OF THIS TO "o".
-          SET prep_DI OF THIS TO "dello".
-          SET prep_A  OF THIS TO  "allo".
-          SET prep_DA OF THIS TO "dallo".
-          SET prep_IN OF THIS TO "nello".
-          SET prep_SU OF THIS TO "sullo".
+          SET THIS:vocale TO "o".
+          SET THIS:prep_DI TO "dello".
+          SET THIS:prep_A TO  "allo".
+          SET THIS:prep_DA TO "dallo".
+          SET THIS:prep_IN TO "nello".
+          SET THIS:prep_SU TO "sullo".
 
         = "la" THEN
           MAKE THIS femminile.
           MAKE THIS NOT plurale.
-          SET vocale  OF THIS TO "a".
-          SET prep_DI OF THIS TO "della".
-          SET prep_A  OF THIS TO  "alla".
-          SET prep_DA OF THIS TO "dalla".
-          SET prep_IN OF THIS TO "nella".
-          SET prep_SU OF THIS TO "sulla".
+          SET THIS:vocale TO "a".
+          SET THIS:prep_DI TO "della".
+          SET THIS:prep_A TO  "alla".
+          SET THIS:prep_DA TO "dalla".
+          SET THIS:prep_IN TO "nella".
+          SET THIS:prep_SU TO "sulla".
 
         = "l'" THEN              --| In questo caso non alteriamo il genere poiché
           MAKE THIS NOT plurale. --| questa forma può essere sia masch. che femm.
                                  --| Sta all'autore specificare il genere nell'istanza.
-          SET prep_DI OF THIS TO "dell'$$".
-          SET prep_A  OF THIS TO  "all'$$".
-          SET prep_DA OF THIS TO "dall'$$".
-          SET prep_IN OF THIS TO "nell'$$".
-          SET prep_SU OF THIS TO "sull'$$".
+          SET THIS:prep_DI TO "dell'$$".
+          SET THIS:prep_A TO  "all'$$".
+          SET THIS:prep_DA TO "dall'$$".
+          SET THIS:prep_IN TO "nell'$$".
+          SET THIS:prep_SU TO "sull'$$".
 
         = "i" THEN
           MAKE THIS NOT femminile.
           MAKE THIS plurale.
-          SET vocale  OF THIS TO "i".
-          SET prep_DI OF THIS TO "dei".
-          SET prep_A  OF THIS TO  "ai".
-          SET prep_DA OF THIS TO "dai".
-          SET prep_IN OF THIS TO "nei".
-          SET prep_SU OF THIS TO "sui".
+          SET THIS:vocale TO "i".
+          SET THIS:prep_DI TO "dei".
+          SET THIS:prep_A TO  "ai".
+          SET THIS:prep_DA TO "dai".
+          SET THIS:prep_IN TO "nei".
+          SET THIS:prep_SU TO "sui".
 
         = "gli" THEN
           MAKE THIS NOT femminile.
           MAKE THIS plurale.
-          SET vocale  OF THIS TO "i".
-          SET prep_DI OF THIS TO "degli".
-          SET prep_A  OF THIS TO  "agli".
-          SET prep_DA OF THIS TO "dagli".
-          SET prep_IN OF THIS TO "negli".
-          SET prep_SU OF THIS TO "sugli".
+          SET THIS:vocale TO "i".
+          SET THIS:prep_DI TO "degli".
+          SET THIS:prep_A TO  "agli".
+          SET THIS:prep_DA TO "dagli".
+          SET THIS:prep_IN TO "negli".
+          SET THIS:prep_SU TO "sugli".
 
         = "le" THEN
           MAKE THIS femminile.
           MAKE THIS plurale.
-          SET vocale  OF THIS TO "e".
-          SET prep_DI OF THIS TO "delle".
-          SET prep_A  OF THIS TO  "alle".
-          SET prep_DA OF THIS TO "dalle".
-          SET prep_IN OF THIS TO "nelle".
-          SET prep_SU OF THIS TO "sulle".
+          SET THIS:vocale TO "e".
+          SET THIS:prep_DI TO "delle".
+          SET THIS:prep_A TO  "alle".
+          SET THIS:prep_DA TO "dalle".
+          SET THIS:prep_IN TO "nelle".
+          SET THIS:prep_SU TO "sulle".
 
         ELSE -- = "il" (o dovrebbe esserlo)
           MAKE THIS NOT femminile.
           MAKE THIS NOT plurale.
-          SET prep_DI OF THIS TO "del".
-          SET prep_A  OF THIS TO  "al".
-          SET prep_DA OF THIS TO "dal".
-          SET prep_IN OF THIS TO "nel".
-          SET prep_SU OF THIS TO "sul".
+          SET THIS:prep_DI TO "del".
+          SET THIS:prep_A TO  "al".
+          SET THIS:prep_DA TO "dal".
+          SET THIS:prep_IN TO "nel".
+          SET THIS:prep_SU TO "sul".
 
       END DEPEND.
   END IF.
@@ -2763,7 +2754,7 @@ ADD TO EVERY ACTOR
 
   -- excluding the default dummy clothing object from all actors; ignore.
 
-  EXCLUDE indumento_fittizio FROM indossati OF THIS.
+  EXCLUDE indumento_fittizio FROM THIS:indossati.
 
 --~=============================================================================
 --~-----------------------------------------------------------------------------

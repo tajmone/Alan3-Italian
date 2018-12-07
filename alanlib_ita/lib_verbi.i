@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.9.9-Alpha, 2018-12-04: Alan 3.0beta6
+--| v0.9.10-Alpha, 2018-12-07: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -489,7 +489,7 @@ END VERB notifica_off.
 
 
 EVENT controlla_punteggio
-  IF ultimo_punteggio OF mia_AT < SCORE
+  IF mia_AT:ultimo_punteggio < SCORE
     THEN
       IF mia_AT HAS notifiche_attive
         THEN -- Il giocatore desidera essere notificato del punteggio:
@@ -506,7 +506,7 @@ EVENT controlla_punteggio
           END IF.
       END IF.
 
-      SET ultimo_punteggio OF mia_AT TO SCORE.
+      SET mia_AT:ultimo_punteggio TO SCORE.
   END IF.
   -- Ripeti questo evento al prossimo turno:
   SCHEDULE controlla_punteggio AT hero AFTER 1.
@@ -1253,7 +1253,7 @@ ADD TO EVERY OBJECT
     DOES
       IF ogg IS bloccato
         THEN
-          IF chiave_abbinata OF ogg IN hero
+          IF ogg:chiave_abbinata IN hero
             THEN MAKE ogg NOT bloccato.
               MAKE ogg aperto.
               "(con" SAY THE chiave_abbinata OF ogg. "$$)
@@ -1364,7 +1364,7 @@ ADD TO EVERY OBJECT
       DOES
         IF ogg IS bloccato
           THEN
-            IF strum = chiave_abbinata OF ogg
+            IF strum = ogg:chiave_abbinata
               THEN MAKE ogg NOT bloccato.
                 MAKE ogg aperto.
              -- "You unlock  and open" SAY THE ogg.
@@ -1453,7 +1453,7 @@ ADD TO EVERY OBJECT
             END IF.
         END IF.
   DOES
-    IF chiave_abbinata OF ogg IN hero
+    IF ogg:chiave_abbinata IN hero
       THEN MAKE ogg bloccato.
         "(con" SAY THE chiave_abbinata OF ogg. "$$)$n"
         "Tu"
@@ -1559,7 +1559,7 @@ ADD TO EVERY OBJECT
           END IF.
       AND chiave IN hero
         ELSE SAY mia_AT:non_possiedi_ogg2.
-      AND chiave = chiave_abbinata OF ogg -- @TODO:                             TRANSLATE!
+      AND chiave = ogg:chiave_abbinata -- @TODO:                             TRANSLATE!
         --              "You can't use $+2 to $v $+1.".
         ELSE SAY mia_AT:check_door_matching_key.
 
@@ -1912,7 +1912,7 @@ ADD TO EVERY OBJECT
             END IF.
         END IF.
     DOES
-      IF chiave_abbinata OF ogg IN hero
+      IF ogg:chiave_abbinata IN hero
         THEN MAKE ogg NOT bloccato.
           "(con" SAY THE chiave_abbinata OF ogg. "$$)$n"
           "Sblocchi" SAY THE ogg. "."
@@ -2008,7 +2008,7 @@ ADD TO EVERY OBJECT
               END IF.
           END IF.
 --                                                                              TRANSLATE!
-      AND chiave = chiave_abbinata OF ogg
+      AND chiave = ogg:chiave_abbinata
         --              "You can't use $+2 to $v $+1.".
         ELSE SAY mia_AT:check_door_matching_key.
       DOES
@@ -3019,7 +3019,7 @@ ADD TO EVERY liquido
             END IF.
         END IF.
     DOES
-      IF recipiente OF liq = recipiente_fittizio
+      IF liq:recipiente = recipiente_fittizio
         -- Se il liquido non è in un contenitore, l'eroe ne berrà solo un po' (e
         -- il liquido non verrà consumato). Questo serve a consentire di bere da
         -- un fiume, o da altri liquidi allo stato libero.
@@ -3040,9 +3040,9 @@ ADD TO EVERY liquido
           -- Se invece il liquido è in un contenitore:
 
           -- >>> prendi implicito: >>>
-          IF recipiente OF liq NOT DIRECTLY IN hero
+          IF liq:recipiente NOT DIRECTLY IN hero
             THEN
-              IF recipiente OF liq IS NOT prendibile
+              IF liq:recipiente IS NOT prendibile
                 -- L'azione termina qui se il contenitore non è prendibile:
                 THEN SAY mia_AT:impossibile_maneggiare_liq1.
               --THEN "You can't carry" SAY THE liq. "around in your bare hands."
@@ -3267,16 +3267,16 @@ ADD TO EVERY liquido
             END IF.
         END IF.
     DOES
-      IF recipiente OF liq = recipiente_fittizio
+      IF liq:recipiente = recipiente_fittizio
         -- Se il liquido non ha un contenitore (p.es. se l'eroe beve un sorso
         -- dal fiume) l'azione viene eseguita con successo.
         THEN "Bevi un sorso di" SAY liq. "."
           -- "You take a sip of" SAY THE liq. "."
         ELSE
           -- >>> prendi implicito: >>>
-          IF recipiente OF liq NOT DIRECTLY IN hero
+          IF liq:recipiente NOT DIRECTLY IN hero
             THEN
-              IF recipiente OF liq IS NOT prendibile
+              IF liq:recipiente IS NOT prendibile
                 -- Se il recipiente non può essere preso, l'azione si ferma qui.
                 THEN SAY mia_AT:impossibile_maneggiare_liq1.
                 ELSE LOCATE recipiente OF liq IN hero.
@@ -3288,7 +3288,7 @@ ADD TO EVERY liquido
 
       IF liq IN hero    -- i.e. if the implicit taking was successful
         THEN
-          IF recipiente OF liq IS NOT aperto
+          IF liq:recipiente IS NOT aperto
 --                                                                              TRANSLATE!
             THEN "You can't, since" SAY THE recipiente OF liq. "is closed."
             ELSE "Bevi un sorso di" SAY liq. "."
@@ -4053,9 +4053,9 @@ ADD TO EVERY THING
         END IF.
 
     DOES
-      IF xDesc OF ogg <> ""
+      IF ogg:xDesc <> ""
         THEN SAY ogg:xDesc.
-      ELSIF ogg IS leggibile AND testo OF ogg <> ""
+      ELSIF ogg IS leggibile AND ogg:testo <> ""
       --+-----------------------------------------------------------------------
       --| Se la stringa 'xDesc' è vuota, e si tratta di un oggetto leggibile
       --| contenente del 'testo', allora ESAMINA si comporterà come LEGGI:
@@ -5267,7 +5267,7 @@ ADD TO EVERY THING
               ---> @TODO!!                                                      TRANSLATE!
               "You take off" SAY THE ogg. "and carry it in your hands."
               IF ogg IsA indumento
-                THEN EXCLUDE ogg FROM indossati OF hero.
+                THEN EXCLUDE ogg FROM hero:indossati.
               END IF.
             ELSE LOCATE ogg IN hero.
               --@ "Taken." => "Pres[o|a|i|e]."
@@ -7499,7 +7499,7 @@ ADD TO EVERY OBJECT
               ELSE SAY mia_AT:ogg1_distante_pl.
             END IF.
         END IF.
-    AND peso OF ogg < 50
+    AND ogg:peso < 50
       ELSE
         IF ogg IS NOT plurale
           THEN SAY mia_AT:ogg1_troppo_pesante_sg.
@@ -8133,7 +8133,7 @@ ADD TO EVERY OBJECT
           ELSE SAY mia_AT:ogg1_distante_pl.
         END IF.
     DOES
-      IF testo OF ogg = ""
+      IF ogg:testo = ""
      -- THEN "There is nothing written on" SAY THE ogg. "."
         THEN "Non c'è nulla da leggere" SAY ogg:prep_SU. SAY ogg. "."
           ELSE "Leggi" SAY THE ogg. "."
@@ -10668,8 +10668,8 @@ SYNTAX trova = trova (ogg)!
     -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       IF ogg IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
-        THEN SAY ogg1_inadatto_sg OF mia_AT.
-        ELSE SAY ogg1_inadatto_pl OF mia_AT.
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
       END IF.
       "trovare."
 

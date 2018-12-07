@@ -105,8 +105,8 @@ Stai portando una mela e una torcia.
 > ; TESTA 'prendi' + 'liquido'
 > ; ------------------------------------------------------------------------------
 > prendi il vino
-(la bottiglia of vino)
-Taken.
+(la bottiglia del vino)
+Preso.
 
 > prendi il vino
 Possiedi già il vino.

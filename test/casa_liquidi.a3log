@@ -48,8 +48,8 @@ Posi la bottiglia sul tavolo.
 > ; I verbi indirizzati ad un liquido contenuto in un recipiente verranno trattati
 > ; come se l'oggetto fosse il recipiente del liquido.
 > prendi il vino
-(la bottiglia of vino)
-Taken.
+(la bottiglia del vino)
+Preso.
 
 > metti il vino sul tavolo
 Posi la bottiglia sul tavolo.

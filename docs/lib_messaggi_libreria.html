@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.9.12-Alpha,</span>
-<span id="revdate">2018-12-04</span>
+<span id="revnumber">versione 0.9.13-Alpha,</span>
+<span id="revdate">2018-12-07</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
 <div id="toc" class="toc2">
@@ -1649,8 +1649,14 @@ dato).</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: bevi, prendi (..altri..).
-  -- ORIGINAL EN: (nessuno)
-  HAS impossibile_maneggiare_liq1  "Non puoi maneggiare $+1 a mani nude.".</code></pre>
+  -- ORIGINAL EN: (check_liquid_vessel_not_cont)
+  HAS impossibile_maneggiare_liq1  "Non puoi maneggiare $+1 a mani nude.".
+
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+
+  -- liquid: take_from
+  -- HAS check_liquid_vessel_not_cont "You can't carry $+1 around in your bare hands.".</code></pre>
 </div>
 </div>
 </div>
@@ -1873,11 +1879,7 @@ required after the verb:</p>
   HAS check_cont_not_supporter "You can't put $+1 inside $+2.".
 
   -- door: lock_with, unlock_with
-  HAS check_door_matching_key "You can't use $+2 to $v $+1.".
-
-
-  -- liquid: take_from
-  HAS check_liquid_vessel_not_cont "You can't carry $+1 around in your bare hands.".</code></pre>
+  HAS check_door_matching_key "You can't use $+2 to $v $+1.".</code></pre>
 </div>
 </div>
 </div>
@@ -1907,7 +1909,7 @@ italiano del modulo delle classi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.9.12-Alpha<br>
+Versione 0.9.13-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

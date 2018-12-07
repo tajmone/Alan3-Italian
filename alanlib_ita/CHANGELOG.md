@@ -17,16 +17,22 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/12/04 \(3\)](#20181204-3)
+- [2018/12/07](#20181207)
     - [Messaggi libreria](#messaggi-libreria)
-        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
         - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi)
+    - [Verbi](#verbi)
+        - [Condiscendenza PNG in `chiedi` dei liquidi](#condiscendenza-png-in-chiedi-dei-liquidi)
+    - [Pulizia sorgenti](#pulizia-sorgenti)
+- [2018/12/04 \(3\)](#20181204-3)
+    - [Messaggi libreria](#messaggi-libreria-1)
+        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
+        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-1)
     - [Risposte dei verbi](#risposte-dei-verbi)
         - [Risposte per dispositivi e fonti di luce](#risposte-per-dispositivi-e-fonti-di-luce)
 - [2018/12/04 \(2\)](#20181204-2)
-    - [Messaggi libreria](#messaggi-libreria-1)
-- [2018/12/04 \(1\)](#20181204-1)
     - [Messaggi libreria](#messaggi-libreria-2)
+- [2018/12/04 \(1\)](#20181204-1)
+    - [Messaggi libreria](#messaggi-libreria-3)
         - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
         - [Azioni eterodirette](#azioni-eterodirette)
         - [Traduci messaggi delle classi](#traduci-messaggi-delle-classi)
@@ -36,14 +42,14 @@ For previuos changes, see:
 - [2018/11/30 \(2\)](#20181130-2)
     - [Documentazione](#documentazione)
     - [Messaggi dei verbi](#messaggi-dei-verbi)
-        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-1)
+        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-2)
         - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi)
         - [Correggi messaggi dei verbi](#correggi-messaggi-dei-verbi)
         - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-1)
 - [2018/11/30 \(1\)](#20181130-1)
     - [Messaggi dei verbi](#messaggi-dei-verbi-1)
         - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-2)
-        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-2)
+        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-3)
     - [Rinomina parametri del verbo `scrivi`](#rinomina-parametri-del-verbo-scrivi)
 - [2018/11/25 \(2\)](#20181125-2)
     - [Aggiornamento Doxter](#aggiornamento-doxter)
@@ -66,13 +72,13 @@ For previuos changes, see:
     - [Correggi Baco LIQUIDI](#correggi-baco-liquidi)
 - [2018/11/22 \(5\)](#20181122-5)
     - [Messaggi dei verbi](#messaggi-dei-verbi-4)
-        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-3)
+        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-4)
         - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-3)
 - [2018/11/22 \(4\)](#20181122-4)
     - [Correggi Baco in LIQUIDO](#correggi-baco-in-liquido)
 - [2018/11/22 \(3\)](#20181122-3)
     - [Documentazione](#documentazione-1)
-    - [Verbi](#verbi)
+    - [Verbi](#verbi-1)
     - [Messaggi dei verbi](#messaggi-dei-verbi-5)
 - [2018/11/22 \(2\)](#20181122-2)
     - [Suddivisione modulo messaggi](#suddivisione-modulo-messaggi)
@@ -99,6 +105,40 @@ For previuos changes, see:
 
 -----
 
+
+# 2018/12/07
+
+- [`lib_classi.i`][lib_classi] (v0.9.6)
+- [`lib_luoghi.i`][lib_luoghi] (v0.9.2)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.13)
+- [`lib_verbi.i`][lib_verbi] (v0.9.10)
+
+
+## Messaggi libreria
+
+### Elimina messaggi dei verbi
+
+Elimina attributi inglesi per i messaggi di risposta dei verbi:
+
+|           Attributo            |                       Testo                        |
+|--------------------------------|----------------------------------------------------|
+| `check_liquid_vessel_not_cont` | `"You can't carry $+1 around in your bare hands."` |
+
+Al posto degli attributi originali sono stati impiegati attributi italiani preesistenti, oppure la risposta è stata gestita direttamente nel codice del verbo.
+
+## Verbi
+
+### Condiscendenza PNG in `chiedi` dei liquidi
+
+Corretto il verbo `chiedi` sulla classe `liquido` di modo che la condiscendenza del PNG sia ripristinata correttamente al termine dell'azione.
+
+## Pulizia sorgenti
+
+Ripulisci il codice di `lib_classi.i` e annota stringhe e commenti da tradurre.
+
+Sostituisci occorrenze di `attributo OF istanza` con la forma breve `instanza:attributo` nei moduli `lib_classi.i`, `lib_luoghi.i` e `lib_verbi.i`.
+
+<!---------------------------------------------------------------------------->
 
 # 2018/12/04 (3)
 

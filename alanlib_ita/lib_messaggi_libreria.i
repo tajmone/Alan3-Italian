@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.9.12-Alpha, 2018-12-04: Alan 3.0beta6
+--| v0.9.13-Alpha, 2018-12-07: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
@@ -1197,8 +1197,15 @@ ADD TO EVERY blocco_definizioni
 
 
   -- VERBI: bevi, prendi (..altri..).
-  -- ORIGINAL EN: (nessuno)
+  -- ORIGINAL EN: (check_liquid_vessel_not_cont)
   HAS impossibile_maneggiare_liq1  "Non puoi maneggiare $+1 a mani nude.".
+
+
+  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+
+  -- liquid: take_from
+  -- HAS check_liquid_vessel_not_cont "You can't carry $+1 around in your bare hands.".
+
 --<
 
 
@@ -1406,8 +1413,6 @@ ADD TO EVERY blocco_definizioni
   HAS check_door_matching_key "You can't use $+2 to $v $+1.".
   
   
-  -- liquid: take_from
-  HAS check_liquid_vessel_not_cont "You can't carry $+1 around in your bare hands.".
 
 --<
 

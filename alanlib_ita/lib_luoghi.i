@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_luoghi.i"
---| v0.9.1-Alpha, 2018-11-25: Alan 3.0beta6
+--| v0.9.2-Alpha, 2018-12-07: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_locations.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -582,8 +582,8 @@ ADD TO EVERY LOCATION
   ENTERED
      IF CURRENT ACTOR = hero
       THEN
-        INCREASE visitato  OF THIS.
-        INCREASE descritto OF THIS.
+        INCREASE THIS:visitato.
+        INCREASE THIS:descritto.
         -- +-----------------------------------------------------------------+
         -- | NB: L'attributo 'descritto' viene incrementato anche da GUARDA. |
         -- +-----------------------------------------------------------------+
