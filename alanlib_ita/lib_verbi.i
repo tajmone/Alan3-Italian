@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.9.12-Alpha, 2018-12-08: Alan 3.0beta6
+--| v0.9.13-Alpha, 2018-12-08: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -4524,31 +4524,26 @@ SYNTAX vendi = vendi (merce)
   WHERE merce IsA OBJECT
     ELSE
       IF merce IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
         THEN SAY mia_AT:ogg1_inadatto_sg.
         ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "vendere."
+      END IF. "vendere."
 
 
 ADD TO EVERY OBJECT
-    VERB vendi
+  VERB vendi
     CHECK mia_AT CAN vendere
       ELSE SAY mia_AT:azione_bloccata.
     AND merce IS esaminabile
       ELSE
         IF merce IS NOT plurale
-          --  "$+1 non [è/sono] qualcosa che puoi"
           THEN SAY mia_AT:ogg1_inadatto_sg.
           ELSE SAY mia_AT:ogg1_inadatto_pl.
-        END IF.
-        "vendere."
+        END IF. "vendere."
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     DOES
       "Qui nessuno è interessanto ad acquistare" SAY THE merce. "."
-   -- "There's nobody here who would be interested in buying" SAY THE merce. "."
-    END VERB vendi.
+  END VERB vendi.
 END ADD TO.
 
 -- Depending on the situation, it might be good to add a check whether the item is carried

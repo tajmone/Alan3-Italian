@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.9.7-Alpha, 2018-12-08: Alan 3.0beta6
+--| v0.9.8-Alpha, 2018-12-08: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -1500,15 +1500,15 @@ EVERY liquido IsA OBJECT
 -->liquido    @LOOK IN
 --~=============================================================================
 --~-----------------------------------------------------------------------------
---| ==== look_in
+--| ==== guarda_in
 --~-----------------------------------------------------------------------------
 --~=============================================================================
 --<
 -->todo_checklist(.666) Doxter
---| * [ ] Descrizione `look_in`.
+--| * [ ] Descrizione `guarda_in`.
 --<
 
-  VERB look_in
+  VERB guarda_in
     DOES ONLY
       IF THIS:recipiente <> recipiente_fittizio
         THEN
@@ -1529,7 +1529,7 @@ EVERY liquido IsA OBJECT
 --      @TODO: List contents instead!                                           TODO!
         ELSE "You see nothing special in" SAY THE THIS. "."
       END IF.
-  END VERB look_in.
+  END VERB guarda_in.
 
 -->liquido
 --~=============================================================================
@@ -2042,7 +2042,7 @@ END EVENT.
 --| Si tratta di un contenitore i cui contenuti (se è aperto) saranno elencati
 --| sia nella descrizione del luogo (entrandovi, o usando '`guarda`') sia quando
 --| viene esaminato o aperto. La libreria autogestisce lo stato di opacità di
---| questo tipo di contenitore, rendendolo non opaco (NOT OPAQUE) quando viene
+--| questo tipo di contenitore, rendendolo non opaco (`NOT OPAQUE`) quando viene
 --| aperto, e opaco quando viene chiuso, affinché i suoi contenuti non vengano
 --| svelati (elencati) quando esso è chiuso.
 --|
@@ -2050,7 +2050,7 @@ END EVENT.
 --| ============================================================================
 --| I contenuti di un contenitore normale non vengono elencati con il verbo
 --| '`esamina`', ma solo con '`guarda`', '`guarda dentro`' o quando viene
---| effettiata la descrizione del luogo.
+--| effettuata la descrizione del luogo.
 --| ============================================================================
 --|
 --| [NOTE]
@@ -2062,11 +2062,22 @@ END EVENT.
 EVERY contenitore_elencato IsA OBJECT
   CONTAINER
 
-    --  (ACTORS are separately defined to be containers further below.)
+
+
+-->contenitore_elencato
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Inizializzazione dei contenitori elencati
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| All'avvio, la libreria inizializzerà ogni istanza di `contenitore_elencato`
+--| aggiungendo ai suoi `consentiti` tutti gli oggetti contenuti in esso, di modo
+--| che sia possibile rimetterveli dentro dopo averli rimossi.
 
   INITIALIZE
-
-  -- Every object in a container will be allowed back in that container by default if it's taken out:
 
     FOR EACH lc IsA contenitore_elencato
       DO
@@ -2076,6 +2087,12 @@ EVERY contenitore_elencato IsA OBJECT
         END FOR.
     END FOR.
 
+--| Questa automatizzazione risparmia all'autore l'incomodo di dover dichiarare
+--| manualmente, uno ad uno, che questi oggetti andranno annoverati tra i membri
+--| dell'insieme di oggetti che è consentito introdurre in quel contenitore.
+--| Dovrà comunque dichiarare manualmente quegli oggetti consentiti che non si
+--| trovano all'interno del contenitore all'inizio del gioco.
+--<
 
 
 -- @TODO: Se ha 'xDesc', mostra il testo?                                       IMPROVE
@@ -2089,13 +2106,13 @@ EVERY contenitore_elencato IsA OBJECT
   END VERB esamina.
 
 
-  VERB look_in
+  VERB guarda_in
     DOES ONLY
       IF THIS IS NOT OPAQUE
         THEN LIST THIS.
         ELSE "Non puoi vedere dentro" SAY THE THIS. "."
       END IF.
-  END VERB look_in.
+  END VERB guarda_in.
 
 
   VERB search
@@ -2226,12 +2243,10 @@ EVERY suono IsA OBJECT
 
   VERB annusa
     DOES ONLY
-       IF THIS IS NOT plurale
---                                                                              TRANSLATE!
-        THEN "That's not"
-        ELSE "Those are not"
-       END IF.
-      "something you can smell."
+      IF THIS IS NOT plurale
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF. "annusare."
   END VERB annusa.
 
 
@@ -2271,11 +2286,8 @@ EVERY supporto IsA OBJECT
 
 
   CONTAINER
-    HEADER "Sopra" SAY THE THIS. "vedi"
-    ELSE "Non c'è nulla sopra" SAY THE THIS. "."
- -- HEADER "On" SAY THE THIS. "you see"
- -- ELSE "There's nothing on" SAY THE THIS. "."
-
+    HEADER  "Sopra" SAY THE THIS. "vedi"
+    ELSE    "Non c'è nulla sopra" SAY THE THIS. "."
 
   VERB esamina
     DOES
@@ -2286,7 +2298,7 @@ EVERY supporto IsA OBJECT
   -- in the following, we disable some verbs that are defined to work with normal containers:
 
 
-  VERB look_in
+  VERB guarda_in
     DOES ONLY
       IF THIS IS NOT plurale
 --                                                                              TRANSLATE!
@@ -2294,7 +2306,7 @@ EVERY supporto IsA OBJECT
         ELSE "Those are not"
       END IF.
       "something you can look into."
-  END VERB look_in.
+  END VERB guarda_in.
 
 
   VERB svuota_in, versa_in

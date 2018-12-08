@@ -17,8 +17,13 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/12/08 \(2\)](#20181208-2)
+- [2018/12/08 \(3\)](#20181208-3)
     - [Verbi](#verbi)
+    - [Verbi Classi](#verbi-classi)
+        - [Correggi verbi `look_in` non tradotti](#correggi-verbi-look_in-non-tradotti)
+    - [Documentazione classi](#documentazione-classi)
+- [2018/12/08 \(2\)](#20181208-2)
+    - [Verbi](#verbi-1)
         - [Migliora risposte blocca](#migliora-risposte-blocca)
     - [Messaggi libreria](#messaggi-libreria)
         - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
@@ -32,7 +37,7 @@ For previuos changes, see:
 - [2018/12/07](#20181207)
     - [Messaggi libreria](#messaggi-libreria-2)
         - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi)
-    - [Verbi](#verbi-1)
+    - [Verbi](#verbi-2)
         - [Condiscendenza PNG in `chiedi` dei liquidi](#condiscendenza-png-in-chiedi-dei-liquidi)
     - [Pulizia sorgenti](#pulizia-sorgenti)
 - [2018/12/04 \(3\)](#20181204-3)
@@ -90,7 +95,7 @@ For previuos changes, see:
     - [Correggi Baco in LIQUIDO](#correggi-baco-in-liquido)
 - [2018/11/22 \(3\)](#20181122-3)
     - [Documentazione](#documentazione-1)
-    - [Verbi](#verbi-2)
+    - [Verbi](#verbi-3)
     - [Messaggi dei verbi](#messaggi-dei-verbi-5)
 - [2018/11/22 \(2\)](#20181122-2)
     - [Suddivisione modulo messaggi](#suddivisione-modulo-messaggi)
@@ -117,6 +122,38 @@ For previuos changes, see:
 
 -----
 
+
+# 2018/12/08 (3)
+
+- [`lib_classi.i`][lib_classi] (v0.9.8)
+- [`lib_verbi.i`][lib_verbi] (v0.9.13)
+
+
+## Verbi
+
+Ripulisci un po' il codice.
+
+
+## Verbi Classi
+
+Ripulisci il codice e traduci varie stringhe di risposte.
+
+### Correggi verbi `look_in` non tradotti
+
+Nel modulo classi non erano stati tradotti gli identificativi del verbo `look_in` su alcune classi:
+
+- `liquido`
+- `contenitore_elencato`
+- `supporto`
+
+## Documentazione classi
+
+Procedi con la documentazione doxterizzata del modulo classi:
+
+- Inizializzazione dei contenitori elencati
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/12/08 (2)
 

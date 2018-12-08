@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.9.7-Alpha,</span>
+<span id="revnumber">versione 0.9.8-Alpha,</span>
 <span id="revdate">2018-12-08</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
@@ -468,7 +468,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_verbi">Verbi</a>
 <ul class="sectlevel3">
 <li><a href="#_esamina">esamina</a></li>
-<li><a href="#_look_in">look_in</a></li>
+<li><a href="#_guarda_in">guarda_in</a></li>
 <li><a href="#_prendi">prendi</a></li>
 <li><a href="#_prendi_da">prendi_da</a></li>
 <li><a href="#_lascia">lascia</a></li>
@@ -486,7 +486,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#_contenitore_elencato">Contenitore elencato</a></li>
+<li><a href="#_contenitore_elencato">Contenitore elencato</a>
+<ul class="sectlevel2">
+<li><a href="#_inizializzazione_dei_contenitori_elencati">Inizializzazione dei contenitori elencati</a></li>
+</ul>
+</li>
 <li><a href="#_suoni">Suoni</a></li>
 <li><a href="#_supporti">Supporti</a>
 <ul class="sectlevel2">
@@ -956,7 +960,7 @@ Di default un liquido non è potabile.</p>
 
 </div>
 <div class="sect3">
-<h4 id="_look_in"><a class="anchor" href="#_look_in"></a>look_in</h4>
+<h4 id="_guarda_in"><a class="anchor" href="#_guarda_in"></a>guarda_in</h4>
 
 </div>
 <div class="sect3">
@@ -1021,7 +1025,7 @@ Di default un liquido non è potabile.</p>
 <p>Si tratta di un contenitore i cui contenuti (se è aperto) saranno elencati
 sia nella descrizione del luogo (entrandovi, o usando &#8216;guarda&#8217;) sia quando
 viene esaminato o aperto. La libreria autogestisce lo stato di opacità di
-questo tipo di contenitore, rendendolo non opaco (NOT OPAQUE) quando viene
+questo tipo di contenitore, rendendolo non opaco (<code>NOT OPAQUE</code>) quando viene
 aperto, e opaco quando viene chiuso, affinché i suoi contenuti non vengano
 svelati (elencati) quando esso è chiuso.</p>
 </div>
@@ -1035,7 +1039,7 @@ svelati (elencati) quando esso è chiuso.</p>
 <div class="paragraph">
 <p>I contenuti di un contenitore normale non vengono elencati con il verbo
 &#8216;esamina&#8217;, ma solo con &#8216;guarda&#8217;, &#8216;guarda dentro&#8217; o quando viene
-effettiata la descrizione del luogo.</p>
+effettuata la descrizione del luogo.</p>
 </div>
 </td>
 </tr>
@@ -1054,6 +1058,34 @@ effettiata la descrizione del luogo.</p>
 </td>
 </tr>
 </table>
+</div>
+<div class="sect2">
+<h3 id="_inizializzazione_dei_contenitori_elencati"><a class="anchor" href="#_inizializzazione_dei_contenitori_elencati"></a>Inizializzazione dei contenitori elencati</h3>
+<div class="paragraph">
+<p>All&#8217;avvio, la libreria inizializzerà ogni istanza di <code>contenitore_elencato</code>
+aggiungendo ai suoi <code>consentiti</code> tutti gli oggetti contenuti in esso, di modo
+che sia possibile rimetterveli dentro dopo averli rimossi.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  INITIALIZE
+
+    FOR EACH lc IsA contenitore_elencato
+      DO
+        FOR EACH o IsA OBJECT, DIRECTLY IN lc
+          DO
+            INCLUDE o IN consentiti OF lc.
+        END FOR.
+    END FOR.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Questa automatizzazione risparmia all&#8217;autore l&#8217;incomodo di dover dichiarare
+manualmente, uno ad uno, che questi oggetti andranno annoverati tra i membri
+dell&#8217;insieme di oggetti che è consentito introdurre in quel contenitore.
+Dovrà comunque dichiarare manualmente quegli oggetti consentiti che non si
+trovano all&#8217;interno del contenitore all&#8217;inizio del gioco.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1225,7 +1257,7 @@ italiano del modulo delle classi.</p>
 <p><i class="fa fa-square-o"></i> Descrizione <code>esamina</code>.</p>
 </li>
 <li>
-<p><i class="fa fa-square-o"></i> Descrizione <code>look_in</code>.</p>
+<p><i class="fa fa-square-o"></i> Descrizione <code>guarda_in</code>.</p>
 </li>
 <li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>prendi</code>.</p>
@@ -1274,7 +1306,7 @@ italiano del modulo delle classi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.9.7-Alpha<br>
+Versione 0.9.8-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">
