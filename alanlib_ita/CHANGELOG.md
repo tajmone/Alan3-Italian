@@ -17,26 +17,33 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/12/07](#20181207)
+- [2018/12/08](#20181208)
+    - [Verbi apri, chiudi, blocca e sblocca](#verbi-apri-chiudi-blocca-e-sblocca)
     - [Messaggi libreria](#messaggi-libreria)
+        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
+    - [Modulo classi](#modulo-classi)
+        - [Liquidi](#liquidi)
+        - [Porte e finestre](#porte-e-finestre)
+- [2018/12/07](#20181207)
+    - [Messaggi libreria](#messaggi-libreria-1)
         - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi)
     - [Verbi](#verbi)
         - [Condiscendenza PNG in `chiedi` dei liquidi](#condiscendenza-png-in-chiedi-dei-liquidi)
     - [Pulizia sorgenti](#pulizia-sorgenti)
 - [2018/12/04 \(3\)](#20181204-3)
-    - [Messaggi libreria](#messaggi-libreria-1)
-        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
+    - [Messaggi libreria](#messaggi-libreria-2)
+        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-1)
         - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-1)
     - [Risposte dei verbi](#risposte-dei-verbi)
         - [Risposte per dispositivi e fonti di luce](#risposte-per-dispositivi-e-fonti-di-luce)
 - [2018/12/04 \(2\)](#20181204-2)
-    - [Messaggi libreria](#messaggi-libreria-2)
-- [2018/12/04 \(1\)](#20181204-1)
     - [Messaggi libreria](#messaggi-libreria-3)
+- [2018/12/04 \(1\)](#20181204-1)
+    - [Messaggi libreria](#messaggi-libreria-4)
         - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
         - [Azioni eterodirette](#azioni-eterodirette)
         - [Traduci messaggi delle classi](#traduci-messaggi-delle-classi)
-    - [Modulo classi](#modulo-classi)
+    - [Modulo classi](#modulo-classi-1)
 - [2018/12/01](#20181201)
     - [Documentazione messaggi libreria](#documentazione-messaggi-libreria)
 - [2018/11/30 \(2\)](#20181130-2)
@@ -56,14 +63,14 @@ For previuos changes, see:
 - [2018/11/25 \(1\)](#20181125-1)
     - [Messaggi dei verbi](#messaggi-dei-verbi-2)
         - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-3)
-        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-1)
+        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-2)
         - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi)
 - [2018/11/24](#20181124)
     - [Messaggi dei verbi](#messaggi-dei-verbi-3)
         - [Correggi baco in `chiedi`](#correggi-baco-in-chiedi)
         - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi-1)
         - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-4)
-    - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-2)
+    - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-3)
 - [2018/11/23 \(2\)](#20181123-2)
     - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi-1)
     - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi-2)
@@ -73,7 +80,7 @@ For previuos changes, see:
 - [2018/11/22 \(5\)](#20181122-5)
     - [Messaggi dei verbi](#messaggi-dei-verbi-4)
         - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-4)
-        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-3)
+        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-4)
 - [2018/11/22 \(4\)](#20181122-4)
     - [Correggi Baco in LIQUIDO](#correggi-baco-in-liquido)
 - [2018/11/22 \(3\)](#20181122-3)
@@ -105,6 +112,58 @@ For previuos changes, see:
 
 -----
 
+
+# 2018/12/08
+
+- [`lib_classi.i`][lib_classi] (v0.9.7)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.14)
+- [`lib_verbi.i`][lib_verbi] (v0.9.11)
+
+## Verbi apri, chiudi, blocca e sblocca
+
+Migliorate le risposte dei verbi per l'apertura, chiusura, blocco e sblocco di oggetti apribili/bloccabili:
+
+- `apri`
+- `blocca_con`
+- `blocca`
+- `chiudi`
+- `sblocca_con`
+- `sblocca`
+
+Se l'azione richiede un chiudi implicito, la risposta sarà:
+
+- "`Prima chiudi $+1 e poi [art] blocchi.`"
+
+altrimenti sarà:
+
+- "`Fatto, ora $+1 [è/sono] [apert/chius/bloccat/sbloccat]*.`"
+
+## Messaggi libreria
+
+### Nuovi messaggi dei verbi
+
+Creati nuovi attributi per i messaggi di risposta dei verbi (nessuna controparte nella libreria originale inglese):
+
+|          Attributo          |                      Testo                       |
+|-----------------------------|--------------------------------------------------|
+| `descrizione_standard_ogg1` | `"Esamini $+1, ma non noti niente di speciale."` |
+
+L'attributo `descrizione_standard_ogg1` viene ora utilizzato dal verbo `esamina` e la sua variante su `liquido`.
+
+## Modulo classi
+
+### Liquidi
+
+#### Onora `xDesc`
+
+Se l'attributo `xDesc` di un liquido è una stringa non vuota, il verbo `esamina` la mostrerà invece della descrizione standard.
+
+### Porte e finestre
+
+Traduci le risposte per il verbo `esamina`.
+
+
+<!---------------------------------------------------------------------------->
 
 # 2018/12/07
 

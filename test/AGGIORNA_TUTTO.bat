@@ -1,4 +1,4 @@
-:: "AGGIORNA_TUTTO.bat" v3.1 (2018/11/01) | by Tristano Ajmone
+:: "AGGIORNA_TUTTO.bat" v3.2 (2018/12/08) | by Tristano Ajmone
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                                                            ::
 ::                 TEST SUITE DELLA LIBRERIA STANDARD DI ALAN                 ::
@@ -41,13 +41,6 @@ SET /A _ADVSOURCES=0   &:: Contatore delle avventure sorgenti
 SET /A _ADVCOMPILE=0   &:: Contatore delle avventure compilate
 SET /A _ADVTESTED=0    &:: Contatore delle avventure testate
 SET /A _SCRIPTSCNT=0   &:: Contatore degli script di comandi eseguiti
-:: ===============================================
-:: Elimina Precedenti File Creati da Questo Script
-:: ===============================================
-DEL *.a3c    > nul 2>&1
-DEL *.a3log  > nul 2>&1
-DEL *.ifid   > nul 2>&1
-DEL *.log    > nul 2>&1
 :: =====================================
 :: Calcola il Numero Totale di Avventure
 :: =====================================
@@ -56,6 +49,17 @@ FOR %%i IN (*.alan) DO (
     SET /A _ADVSOURCES=!_ADVSOURCES! +1
     ECHO   !_ADVSOURCES!. %YELLOW%%%i%GRAY%
 )
+:: ===============================================
+:: Elimina Precedenti File Creati da Questo Script
+:: ===============================================
+ECHO -------------------------------------------------------------------------------%WHITE%
+ECHO Eliminazione dei file precedenti:
+CALL :DelFile comandi-partita.sav
+CALL :DelFile *.a3c
+CALL :DelFile *.a3log
+CALL :DelFile *.ifid
+CALL :DelFile *.log
+ECHO %GRAY%-------------------------------------------------------------------------------
 :: ============================================
 :: Compila le Avventure ed Esegui i Test-Script
 :: ============================================
@@ -141,6 +145,14 @@ EXIT /B %_ERR%
 :: *****************************************************************************
 
 :: =============================================================================
+::                                Cancella File                                 
+:: =============================================================================
+:DelFile
+
+ECHO %GRAY%  -%CYAN% %1%GRAY%
+DEL %1 2> nul
+EXIT /B
+:: =============================================================================
 ::                          Compila Avventura Sorgente                          
 :: =============================================================================
 :CompileAdv
@@ -223,6 +235,7 @@ SET RESET_COLORS=[0m
 :: Foreground Colors
 :: ========================
 SET BLUE=[36m
+SET CYAN=[96m
 SET GRAY=[37m
 SET GREEN=[92m
 SET RED=[91m
@@ -245,6 +258,7 @@ EXIT /B
 
 SET RESET_COLORS=
 SET BLUE=
+SET CYAN=
 SET GRAY=
 SET GREEN=
 SET RED=

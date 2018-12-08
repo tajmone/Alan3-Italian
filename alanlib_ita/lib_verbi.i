@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.9.10-Alpha, 2018-12-07: Alan 3.0beta6
+--| v0.9.11-Alpha, 2018-12-08: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -1257,7 +1257,7 @@ ADD TO EVERY OBJECT
             THEN MAKE ogg NOT bloccato.
               MAKE ogg aperto.
               "(con" SAY THE chiave_abbinata OF ogg. "$$)
-              $nSblocchi ed apri" SAY THE ogg. "."
+               $nPrima sblocchi $+1 e poi" SAY ogg:articolo. "apri."
           ELSE SAY THE ogg.
             IF ogg IS NOT plurale
               THEN "è"
@@ -1267,7 +1267,11 @@ ADD TO EVERY OBJECT
         END IF.
       ELSIF ogg IS NOT bloccato
         THEN MAKE ogg aperto.
-        "Apri" SAY THE ogg. "."
+        "Fatto, ora $+1"
+        IF ogg IS NOT plurale
+          THEN "è"
+          ELSE "sono"
+        END IF. "apert$$" SAY ogg:vocale. "."
       END IF.
   END VERB apri.
 END ADD TO.
@@ -1456,13 +1460,15 @@ ADD TO EVERY OBJECT
     IF ogg:chiave_abbinata IN hero
       THEN MAKE ogg bloccato.
         "(con" SAY THE chiave_abbinata OF ogg. "$$)$n"
-        "Tu"
         IF ogg IS aperto
-          THEN "chiudi e"
+          THEN "Prima chiudi $+1 e poi" SAY ogg:articolo. "blocchi."
             MAKE ogg NOT aperto.
+        ELSE "Fatto, ora $+1"
+          IF ogg IS NOT plurale
+            THEN "è"
+            ELSE "sono"
+          END IF. "bloccat$$" SAY ogg:vocale. "."
         END IF.
-
-        "blocchi" SAY THE ogg. "."
     ELSE
       SAY mia_AT:specificare_CON_cosa. "bloccare" SAY THE ogg.
    -- ELSE "Devi specificare con cosa vuoi bloccare" SAY THE ogg.
@@ -1564,12 +1570,16 @@ ADD TO EVERY OBJECT
         ELSE SAY mia_AT:check_door_matching_key.
 
       DOES
-        MAKE ogg bloccato. "Tu"
+        MAKE ogg bloccato.
         IF ogg IS aperto
-          THEN "chiudi e"
+          THEN "Prima chiudi $+1 e poi" SAY ogg:articolo. "blocchi."
             MAKE ogg NOT aperto.
+        ELSE "Fatto, ora $+1"
+          IF ogg IS NOT plurale
+            THEN "è"
+            ELSE "sono"
+          END IF. "bloccat$$" SAY ogg:vocale. "."
         END IF.
-        "blocchi" SAY THE ogg. "con" SAY THE chiave. "."
     END VERB blocca_con.
 END ADD TO.
 
@@ -1643,8 +1653,12 @@ ADD TO EVERY OBJECT
         END IF.
 
     DOES
-          MAKE ogg NOT aperto.
-          "Chiudi" SAY THE ogg. "."
+      MAKE ogg NOT aperto.
+      "Fatto, ora $+1"
+      IF ogg IS NOT plurale
+        THEN "è"
+        ELSE "sono"
+      END IF. "chius$$" SAY ogg:vocale. "."
   END VERB chiudi.
 END ADD TO.
 
@@ -1915,7 +1929,11 @@ ADD TO EVERY OBJECT
       IF ogg:chiave_abbinata IN hero
         THEN MAKE ogg NOT bloccato.
           "(con" SAY THE chiave_abbinata OF ogg. "$$)$n"
-          "Sblocchi" SAY THE ogg. "."
+          "Fatto, ora $+1"
+          IF ogg IS NOT plurale
+            THEN "è"
+            ELSE "sono"
+          END IF. "sbloccat$$" SAY ogg:vocale. "."
         ELSE "Non possiedi la chiave che sblocca" SAY THE ogg. "."
      -- ELSE "You don't have the key that unlocks" SAY THE ogg. "."
       END IF.
@@ -2013,7 +2031,11 @@ ADD TO EVERY OBJECT
         ELSE SAY mia_AT:check_door_matching_key.
       DOES
         MAKE ogg NOT bloccato.
-        "Sblocchi" SAY THE ogg. "con" SAY THE chiave. "."
+        "Fatto, ora $+1"
+        IF ogg IS NOT plurale
+          THEN "è"
+          ELSE "sono"
+        END IF. "sbloccat$$" SAY ogg:vocale. "."
     END VERB sblocca_con.
 END ADD TO.
 
@@ -4069,8 +4091,7 @@ ADD TO EVERY THING
       ELSIF ogg = hero
 --  @TODO: Servirà vocale di Hero per PG femminile!                             FIXME!
         THEN "Non noti niente di insolito in te stesso."
---  @TODO: Converti in attributo risposta:                                      FIXME!
-        ELSE "Esamini" SAY THE ogg. ", ma non noti niente di speciale."
+        ELSE SAY mia_AT:descrizione_standard_ogg1.
      END IF.
   END VERB esamina.
 END ADD TO.

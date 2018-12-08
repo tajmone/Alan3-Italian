@@ -115,7 +115,9 @@ THE porta_casa_tuaR IsA porta_casa AT ingresso.
   DESCRIPTION "A nord, oltre la porta di casa, c'è il mondo esterno."
   
   HAS altro_lato porta_casa_tuaF.
-  HAS xDesc "È la porta di casa tua, conduce alla strada.". 
+  HAS xDesc
+    "[[ istanza 'porta_casa_tuaR' --> xDesc ]]
+     $nÈ la porta di casa tua, conduce alla strada. [[ xDesc // FINE ]]$n".
 END THE porta_casa_tuaR.
 
 -- =============================================================================
@@ -143,7 +145,9 @@ THE porta_casa_tuaF IsA porta_casa AT vialetto.
   DESCRIPTION "" -- nascondiamo la descrizione
 
   -- HAS altro_lato porta_casa_tuaR.
-  HAS xDesc "È la porta di casa tua.".
+  HAS xDesc
+    "[[ istanza 'porta_casa_tuaF' --> xDesc ]]
+     $nÈ la porta di casa tua. [[ xDesc // FINE ]]$n".
 END THE porta_casa_tuaF.
 
 -- TODO: Implementa casa fittizia esamibaile.
@@ -573,12 +577,48 @@ THE vino IsA liquido IN bottiglia.
   HAS vessel bottiglia. 
   INDEFINITE ARTICLE "del"
 END THE.
+--------------------------------------------------------------------------------
+-- CONTENITORE DEL LATTE
+--------------------------------------------------------------------------------
+-- Un tetraedro ('Tetra Pak') di latte, opaco quando è chiuso, rivela i contenuti
+-- quando è aperto.
+
+THE tetraedro IsA cont_bevanda IN frigo.
+  OPAQUE CONTAINER
+  NAME 'cartone del latte'.
+  NAME tetraedro.
+  NAME cartone.
+  IS apribile.
+  IS NOT aperto.
+  HAS xDesc
+    "[[ istanza 'latte' --> xDesc ]]
+     $nÈ un tetraedro per il latte. [[ xDesc // FINE ]]$n".
+  
+  -- Una volta aperto non può più essere richiuso:
+  VERB chiudi
+    DOES ONLY
+      "[[ istanza 'tetraedro' --> VERB 'chiudi' --> DOES ONLY ]]
+       $nUna volta aperto il cartone del latte non può più essere chiuso."
+  END VERB chiudi.
+END THE.
+
+THE latte IsA liquido IN tetraedro.
+  HAS vessel tetraedro. 
+  INDEFINITE ARTICLE "del"
+  HAS xDesc
+    "[[ istanza 'latte' --> xDesc ]]
+     $nDel latte intero, UHT. [[ xDesc // FINE ]]$n".
+  
+END THE.
+
+
 --==============================================================================
 -- Istanze snack
 --==============================================================================
 -- TODO: implemtalo come un contenitore mono-apribile (ossia, una volta aperto
 --       il sacchetto è rotto e non lo si può richiudere).
 THE sacchetto IsA cont_snack IN tavolo_cucina.
+  OPAQUE CONTAINER.
   NAME sacchetto.
 END THE sacchetto.
 

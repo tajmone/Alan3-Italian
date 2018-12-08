@@ -3,13 +3,33 @@
 ; *                              TEST SUI LIQUIDI                              *
 ; *                                                                            *
 ; ******************************************************************************
-; ==============================================================================
-; MANEGGIARE LIQUIDI IN RECIPIENTI PRENDIBILI
-; ==============================================================================
 ; Un 'liquido' può essere contenuto in un 'contenitore_listato', che è il suo
 ; 'recipiente' di riferimento (attributo referenza istanza).
 esamina il tavolo
+; ==============================================================================
+; ESAMINARE LIQUIDI IN RECIPIENTI OPACHI/TRASPARENTI E APERTI/CHIUSI
+; ==============================================================================
+; Se un liquido è in un recipiente chiuso non sarà visibile all'esame.
+; Allo stato attuale la libreria non consente di gestire contenitori trasparenti
+; e chiusi, poiché un 'contenitori_elencato' viene reso OPAQUE quando è chiuso,
+; e non OPAQUE quando viene aperto.
+; ------------------------------------------------------------------------------
+; LA BOTTIGLIA (contenitore non opaco & aperto)
+; ------------------------------------------------------------------------------
 esamina la bottiglia
+esamina il vino
+; ------------------------------------------------------------------------------
+; IL CARTONE DEL LATTO (contenitore OPAQUE & NOT aperto)
+; ------------------------------------------------------------------------------
+apri il frigo
+esamina il cartone
+apri il cartone
+esamina il cartone
+chiudi il cartone
+esamina il cartone
+; ==============================================================================
+; MANEGGIARE LIQUIDI IN RECIPIENTI PRENDIBILI
+; ==============================================================================
 ; ------------------------------------------------------------------------------
 ; MANEGGIARE IL RECIPIENTE
 ; ------------------------------------------------------------------------------

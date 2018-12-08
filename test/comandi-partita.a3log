@@ -559,3 +559,17 @@ Mangi la mela.
 > abbandona partita
 
 Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? undo
+'abbandona partita'
+annullato.
+
+> ; La mela non dovrebbe esserci dato che l'abbiamo appena mangiata:
+> esamina la mela
+Qui non puoi vedere nulla del genere.
+
+> ; ------------------------------------------------------------------------------
+> ; ABBANDONA + QUIT
+> ; ------------------------------------------------------------------------------
+> ; Dopo "quit" qualsiasi altro comando dovrebbe essere ignorato...
+> abbandona partita
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? quit

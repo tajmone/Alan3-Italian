@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.9.13-Alpha,</span>
-<span id="revdate">2018-12-07</span>
+<span id="revnumber">versione 0.9.14-Alpha,</span>
+<span id="revdate">2018-12-08</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
 <div id="toc" class="toc2">
@@ -461,6 +461,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_azioni_bloccate">Azioni bloccate</a></li>
 <li><a href="#_messaggi_ricorrenti">Messaggi Ricorrenti</a>
 <ul class="sectlevel2">
+<li><a href="#_risposte_standard">Risposte Standard</a></li>
 <li><a href="#_istruzioni_per_luso_dei_comandi">Istruzioni per l&#8217;uso dei comandi</a></li>
 </ul>
 </li>
@@ -877,10 +878,18 @@ l&#8217;attributo <code>mia_AT:restricted_level</code>.</p>
 verbo, o sia nelle clausole <code>WHERE</code> della sintassi che nel corpo del verbo),
 perciò sono implementate come un singolo attributo riutilizzabile.</p>
 </div>
+<div class="sect2">
+<h3 id="_risposte_standard"><a class="anchor" href="#_risposte_standard"></a>Risposte Standard</h3>
+<div class="paragraph">
+<p>Risposte alla vaniglia prodotte da vari verbi.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: assaggia, mordi.
-  HAS nessun_sapore "non senti nessun sapore particolare.".</code></pre>
+  HAS nessun_sapore "non senti nessun sapore particolare.".
+
+  HAS descrizione_standard_ogg1 "Esamini $+1, ma non noti niente di speciale.".</code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1909,7 +1918,7 @@ italiano del modulo delle classi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.9.13-Alpha<br>
+Versione 0.9.14-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

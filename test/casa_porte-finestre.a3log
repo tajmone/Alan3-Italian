@@ -35,10 +35,12 @@ Mr Nicky ti segue.
 Dovresti aprire la porta prima.
 
 > esamina la porta
-È la porta di casa tua, conduce alla strada. It is currently closed.
+[[ istanza 'porta_casa_tuaR' --> xDesc ]]
+È la porta di casa tua, conduce alla strada. [[ xDesc // FINE ]]
+È chiusa.
 
 > apri la porta
-Apri la porta di casa.
+Fatto, ora la porta di casa è aperta.
 
 > apri la porta
 La porta di casa è già aperta
@@ -50,20 +52,24 @@ Ti trovi nel vialetto di fronte a casa tua.
 Mr Nicky ti segue.
 
 > esamina la porta
-È la porta di casa tua. It is currently open.
+[[ istanza 'porta_casa_tuaF' --> xDesc ]]
+È la porta di casa tua. [[ xDesc // FINE ]]
+È aperta.
 
 > ; ------------------------------------------------------------------------------
 > ; TESTA 'blocca' con chiudi implicito
 > ; ------------------------------------------------------------------------------
 > blocca la porta
 (con la chiave)
-Tu chiudi e blocchi la porta di casa tua.
+Prima chiudi la porta di casa tua e poi la blocchi.
 
 > blocca la porta
 La porta di casa tua è già bloccata
 
 > esamina la porta
-È la porta di casa tua. It is currently closed.
+[[ istanza 'porta_casa_tuaF' --> xDesc ]]
+È la porta di casa tua. [[ xDesc // FINE ]]
+È chiusa.
 
 > chiudi la porta
 La porta di casa tua è già chiusa
@@ -73,48 +79,73 @@ La porta di casa tua è già chiusa
 > ; ------------------------------------------------------------------------------
 > apri la porta
 (con la chiave)
-Sblocchi ed apri la porta di casa tua.
+Prima sblocchi la porta di casa tua e poi la apri.
 
 > ; ------------------------------------------------------------------------------
 > ; TESTA 'chiudi' e 'blocca' separatamente
 > ; ------------------------------------------------------------------------------
 > chiudi la porta
-Chiudi la porta di casa tua.
+Fatto, ora la porta di casa tua è chiusa.
 
 > chiudi la porta
 La porta di casa tua è già chiusa
 
 > esamina la porta
-È la porta di casa tua. It is currently closed.
+[[ istanza 'porta_casa_tuaF' --> xDesc ]]
+È la porta di casa tua. [[ xDesc // FINE ]]
+È chiusa.
 
 > blocca la porta
 (con la chiave)
-Tu blocchi la porta di casa tua.
+Fatto, ora la porta di casa tua è bloccata.
 
 > blocca la porta
 La porta di casa tua è già bloccata
 
 > esamina la porta
-È la porta di casa tua. It is currently closed.
+[[ istanza 'porta_casa_tuaF' --> xDesc ]]
+È la porta di casa tua. [[ xDesc // FINE ]]
+È chiusa.
 
 > ; ------------------------------------------------------------------------------
 > ; TESTA 'sblocca' e 'apri' separatamente
 > ; ------------------------------------------------------------------------------
 > sblocca la porta
 (con la chiave)
-Sblocchi la porta di casa tua.
+Fatto, ora la porta di casa tua è sbloccata.
 
 > apri la porta
-Apri la porta di casa tua.
+Fatto, ora la porta di casa tua è aperta.
 
 > ; ==============================================================================
 > ; TESTA 'blocca_con'/'sblocca_con'
 > ; ==============================================================================
 > ; ------------------------------------------------------------------------------
+> ; TESTA 'blocca_con' con chiudi implicito
+> ; ------------------------------------------------------------------------------
+> blocca la porta con la chiave
+Prima chiudi la porta di casa tua e poi la blocchi.
+
+> blocca la porta con la chiave
+La porta di casa tua è già bloccata
+
+> sblocca la porta con la chiave
+Fatto, ora la porta di casa tua è sbloccata.
+
+> sblocca la porta con la chiave
+La porta di casa tua è già sbloccata
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'blocca_con' senza chiudi implicito
+> ; ------------------------------------------------------------------------------
+> blocca la porta con la chiave
+Fatto, ora la porta di casa tua è bloccata.
+
+> ; ------------------------------------------------------------------------------
 > ; TESTA 'sblocca' (già sbloccata) con strumento non idoneo
 > ; ------------------------------------------------------------------------------
 > sblocca la porta con la torcia
-La porta di casa tua è già sbloccata
+You can't use la torcia to sblocca la porta di casa tua.
 
 > sblocca la porta con 1
 1 non è qualcosa con cui poter sbloccare la porta di casa tua.
@@ -122,6 +153,7 @@ La porta di casa tua è già sbloccata
 > sblocca la porta con Nicky
 Mr Nicky non è qualcosa con cui poter sbloccare la porta di casa tua.
 
+> ; ** FIXME **
 > sblocca la porta con me
 Il hero non è qualcosa con cui poter sbloccare la porta di casa tua.
 
@@ -129,7 +161,7 @@ Il hero non è qualcosa con cui poter sbloccare la porta di casa tua.
 > ; TESTA 'blocca' (non bloccata) con strumento non idoneo
 > ; ------------------------------------------------------------------------------
 > blocca la porta con la torcia
-You can't use la torcia to blocca la porta di casa tua.
+La porta di casa tua è già bloccata
 
 > blocca la porta con 1
 1 non è qualcosa con cui poter bloccare.
@@ -137,6 +169,7 @@ You can't use la torcia to blocca la porta di casa tua.
 > blocca la porta con Nicky
 Mr Nicky non è qualcosa con cui poter bloccare.
 
+> ; ** FIXME **
 > blocca la porta con me
 Il hero non è qualcosa con cui poter bloccare.
 
@@ -144,7 +177,7 @@ Il hero non è qualcosa con cui poter bloccare.
 > ; TESTA 'blocca' (già bloccata) con strumento non idoneo
 > ; ------------------------------------------------------------------------------
 > blocca la porta con la torcia
-You can't use la torcia to blocca la porta di casa tua.
+La porta di casa tua è già bloccata
 
 > blocca la porta con 1
 1 non è qualcosa con cui poter bloccare.
@@ -159,7 +192,7 @@ Il hero non è qualcosa con cui poter bloccare.
 > ; TESTA 'sblocca' (non sbloccata) con strumento non idoneo
 > ; ------------------------------------------------------------------------------
 > sblocca la porta con la torcia
-La porta di casa tua è già sbloccata
+You can't use la torcia to sblocca la porta di casa tua.
 
 > sblocca la porta con 1
 1 non è qualcosa con cui poter sbloccare la porta di casa tua.

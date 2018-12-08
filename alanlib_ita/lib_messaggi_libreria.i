@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.9.13-Alpha, 2018-12-07: Alan 3.0beta6
+--| v0.9.14-Alpha, 2018-12-08: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
@@ -288,9 +288,23 @@ ADD TO EVERY blocco_definizioni
 --| Queste risposte vengono invocate in più verbi (o varianti di un medesimo
 --| verbo, o sia nelle clausole `WHERE` della sintassi che nel corpo del verbo),
 --| perciò sono implementate come un singolo attributo riutilizzabile.
+--<
+
+
+-->============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Risposte Standard
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Risposte alla vaniglia prodotte da vari verbi.
 
   -- VERBI: assaggia, mordi.
   HAS nessun_sapore "non senti nessun sapore particolare.".
+
+  HAS descrizione_standard_ogg1 "Esamini $+1, ma non noti niente di speciale.".
 --<
 
 -- @TODO: Altri verbi che contengono risposte ripetute:

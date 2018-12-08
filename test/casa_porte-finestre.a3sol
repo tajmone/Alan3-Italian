@@ -42,6 +42,17 @@ apri la porta
 ; TESTA 'blocca_con'/'sblocca_con'
 ; ==============================================================================
 ; ------------------------------------------------------------------------------
+; TESTA 'blocca_con' con chiudi implicito
+; ------------------------------------------------------------------------------
+blocca la porta con la chiave
+blocca la porta con la chiave
+sblocca la porta con la chiave
+sblocca la porta con la chiave
+; ------------------------------------------------------------------------------
+; TESTA 'blocca_con' senza chiudi implicito
+; ------------------------------------------------------------------------------
+blocca la porta con la chiave
+; ------------------------------------------------------------------------------
 ; TESTA 'sblocca' (già sbloccata) con strumento non idoneo
 ; ------------------------------------------------------------------------------
 sblocca la porta con la torcia

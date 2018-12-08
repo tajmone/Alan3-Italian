@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.9.6-Alpha, 2018-12-07: Alan 3.0beta6
+--| v0.9.7-Alpha, 2018-12-08: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -16,7 +16,7 @@
 ADD TO EVERY OBJECT
 
   DESCRIPTION
-      CHECK THIS IS NOT scenario
+    CHECK THIS IS NOT scenario
       ELSE ""
 
 END ADD.
@@ -177,16 +177,16 @@ EVERY indumento IsA OBJECT
 
   IS indossabile.
 
-  IS  genere 0.
-
+  HAS genere 0.     -- Il genere `0` è neutro; qualsiasi altro valore impedirà
+                    -- all'eroe di indossare indumenti il cui valore non sia
+                    -- uguale al valore di `hero:genere`.
   HAS val_testa  0.
   HAS val_tronco 0.
   HAS val_gambe  0.
   HAS val_piedi  0.
   HAS val_mani   0.
 
-  IS NOT indossato. -- not in the 'wearing' set of any actor; this attribute
-                    -- is used internally in the library; ignore
+  IS NOT indossato. -- Ossia, non è nel set degli `indossati` di alcun attore.
 
 
   INITIALIZE
@@ -1033,16 +1033,13 @@ EVERY porta IsA OBJECT
   VERB esamina
     DOES AFTER
       IF THIS IS NOT plurale
---                                                                              TRANSLATE!
-        THEN "It is"
-        ELSE "They are"
+        THEN "È"
+        ELSE "Sono"
       END IF.
-
-      IF THIS IS NOT aperto
---                                                                              TRANSLATE!
-        THEN "currently closed."
-        ELSE "currently open."
-      END IF.
+      IF THIS IS aperto
+        THEN "apert$$"
+        ELSE "chius$$"
+      END IF. SAY THIS:vocale. "."
   END VERB esamina.
 
 
@@ -1192,22 +1189,14 @@ EVERY finestra IsA OBJECT
 
   VERB esamina
     DOES
-      IF THIS IS NOT aperto
-        THEN
-          IF THIS IS NOT plurale
---                                                                              TRANSLATE!
-            THEN "It is"
-            ELSE "They are"
-          END IF.
-          "currently closed."
-        ELSE
-          IF THIS IS NOT plurale
---                                                                              TRANSLATE!
-            THEN "It is"
-            ELSE "They are"
-          END IF.
-          "currently open."
+      IF THIS IS NOT plurale
+        THEN "È"
+        ELSE "Sono"
       END IF.
+      IF THIS IS aperto
+        THEN "apert$$"
+        ELSE "chius$$"
+      END IF. SAY THIS:vocale. "."
   END VERB esamina.
 
 
@@ -1484,9 +1473,15 @@ EVERY liquido IsA OBJECT
       IF THIS:recipiente <> recipiente_fittizio
         THEN
           IF THIS:recipiente IS aperto
---          @TODO: List contents instead!                                       TODO!
---                                                                              TRANSLATE!
-            THEN "You notice nothing unusual about" SAY THE THIS.
+            THEN -- Descrivi liquido:
+              -- Onora la xDesc, se presente.
+              IF THIS:recipiente:xDesc <> ""
+                THEN SAY ogg:xDesc.
+                ELSE SAY mia_AT:descrizione_standard_ogg1.
+              END IF.
+-- @NOTA: se il contenitore è chiuso il liquido non può essere usato            CHECK!
+--        dal giocatore nel comando (dato che di default chiuso=OPAQUE).
+--        Quindi questa condizione non si verificherà mai. (verifica!)
 --                                                                              TRANSLATE!
             ELSE "You can't, since" SAY THE recipiente OF THIS.
                 IF THIS IS NOT plurale
@@ -1497,8 +1492,7 @@ EVERY liquido IsA OBJECT
                 -- Here we prohibit the player from examining
                 -- a liquid when the liquid is in a closed container.
           END IF.
---                                                                              TRANSLATE!
-        ELSE "You notice nothing unusual about" SAY THE THIS. "."
+        ELSE SAY mia_AT:descrizione_standard_ogg1.
       END IF.
   END VERB esamina.
 
@@ -2642,27 +2636,27 @@ ADD TO EVERY ACTOR
 -- § 2.3.1 - Attori con nome proprio
 --==============================================================================
 --| Se l'attore ha nome proprio, verrà inizializzato ad hoc.
-  IF THIS HAS nome_proprio
-    THEN
-      -- Stabilisci quale vocale impostare per l'accordo degli aggettivi:
-      IF THIS IS NOT femminile
-        THEN
-          IF THIS IS NOT plurale
-            THEN SET THIS:vocale TO "o". ---> ms
-            ELSE SET THIS:vocale TO "i". ---> mp
-          END IF.
-        ELSE
-          IF THIS IS NOT plurale
-            THEN SET THIS:vocale TO "a". ---> fs
-            ELSE SET THIS:vocale TO "e". ---> fp
-          END IF.
-      END IF.
-      -- Imposta le preposizioni semplici, anziché articolate:
-      SET THIS:prep_DI TO "di".
-      SET THIS:prep_A TO  "a".
-      SET THIS:prep_DA TO "da".
-      SET THIS:prep_IN TO "in".
-      SET THIS:prep_SU TO "su".
+    IF THIS HAS nome_proprio
+      THEN
+        -- Stabilisci quale vocale impostare per l'accordo degli aggettivi:
+        IF THIS IS NOT femminile
+          THEN
+            IF THIS IS NOT plurale
+              THEN SET THIS:vocale TO "o". ---> ms
+              ELSE SET THIS:vocale TO "i". ---> mp
+            END IF.
+          ELSE
+            IF THIS IS NOT plurale
+              THEN SET THIS:vocale TO "a". ---> fs
+              ELSE SET THIS:vocale TO "e". ---> fp
+            END IF.
+        END IF.
+        -- Imposta le preposizioni semplici, anziché articolate:
+        SET THIS:prep_DI TO "di".
+        SET THIS:prep_A TO  "a".
+        SET THIS:prep_DA TO "da".
+        SET THIS:prep_IN TO "in".
+        SET THIS:prep_SU TO "su".
 
 --==============================================================================
 -- § 2.3.2 - Attori senza nome proprio
@@ -2670,9 +2664,9 @@ ADD TO EVERY ACTOR
     ELSE
 --| Se l'attore non ha nome proprio, verrà inizializzato come gli altri oggetti
 --| (si tratta di un sostantivo a tutti gli effetti).
-      IF THIS IS femminile               --| Questo è necessario per coprire il caso
+      IF THIS IS femminile           --| Questo è necessario per coprire il caso
         THEN SET THIS:vocale TO "a". --| in cui 'articolo' = "l'", prima che il
-      END IF.                            --| codice seguente venga eseguito!
+      END IF.                        --| codice seguente venga eseguito!
 
       DEPENDING ON articolo of THIS
         = "lo" THEN
@@ -2744,17 +2738,16 @@ ADD TO EVERY ACTOR
           SET THIS:prep_SU TO "sul".
 
       END DEPEND.
-  END IF.
+    END IF.
 
 
+    MAKE hero condiscendente.
+    -- so that the hero can give, drop, etc. carried objects.
 
-  MAKE hero condiscendente.
-  -- so that the hero can give, drop, etc. carried objects.
 
+    -- excluding the default dummy clothing object from all actors; ignore.
 
-  -- excluding the default dummy clothing object from all actors; ignore.
-
-  EXCLUDE indumento_fittizio FROM THIS:indossati.
+    EXCLUDE indumento_fittizio FROM THIS:indossati.
 
 --~=============================================================================
 --~-----------------------------------------------------------------------------
@@ -2764,9 +2757,9 @@ ADD TO EVERY ACTOR
 -- 
 -- Tutti gli attori seguiranno questo copione sin dall'inizio del gioco:
 
-  IF THIS <> hero
-    THEN USE SCRIPT following_hero FOR THIS.
-  END IF.
+    IF THIS <> hero
+      THEN USE SCRIPT following_hero FOR THIS.
+    END IF.
 
 --------------------------------------------------------------------------------
 

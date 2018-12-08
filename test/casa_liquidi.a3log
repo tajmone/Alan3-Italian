@@ -20,9 +20,6 @@ Al centro della stanza c'è Mr Nicky, il tuo cagnolino.
 > ; *                              TEST SUI LIQUIDI                              *
 > ; *                                                                            *
 > ; ******************************************************************************
-> ; ==============================================================================
-> ; MANEGGIARE LIQUIDI IN RECIPIENTI PRENDIBILI
-> ; ==============================================================================
 > ; Un 'liquido' può essere contenuto in un 'contenitore_listato', che è il suo
 > ; 'recipiente' di riferimento (attributo referenza istanza).
 > esamina il tavolo
@@ -30,9 +27,48 @@ Esamini il tavolo, ma non noti niente di speciale. Sopra il tavolo vedi un
 vasetto, una bottiglia, un sacchetto, un coltello, una pistola, un cesto
 per la frutta e una radio.
 
+> ; ==============================================================================
+> ; ESAMINARE LIQUIDI IN RECIPIENTI OPACHI/TRASPARENTI E APERTI/CHIUSI
+> ; ==============================================================================
+> ; Se un liquido è in un recipiente chiuso non sarà visibile all'esame.
+> ; Allo stato attuale la libreria non consente di gestire contenitori trasparenti
+> ; e chiusi, poiché un 'contenitori_elencato' viene reso OPAQUE quando è chiuso,
+> ; e non OPAQUE quando viene aperto.
+> ; ------------------------------------------------------------------------------
+> ; LA BOTTIGLIA (contenitore non opaco & aperto)
+> ; ------------------------------------------------------------------------------
 > esamina la bottiglia
 La bottiglia contiene del vino.
 
+> esamina il vino
+Esamini il vino, ma non noti niente di speciale.
+
+> ; ------------------------------------------------------------------------------
+> ; IL CARTONE DEL LATTO (contenitore OPAQUE & NOT aperto)
+> ; ------------------------------------------------------------------------------
+> apri il frigo
+Fatto, ora il frigo è aperto. Il frigo contiene un cartone del latte.
+
+> esamina il cartone
+Non puoi vedere dentro il cartone del latte.
+
+> apri il cartone
+Fatto, ora il cartone del latte è aperto. Il cartone del latte contiene 
+del latte.
+
+> esamina il cartone
+Il cartone del latte contiene del latte.
+
+> chiudi il cartone
+[[ istanza 'tetraedro' --> VERB 'chiudi' --> DOES ONLY ]]
+Una volta aperto il cartone del latte non può più essere chiuso.
+
+> esamina il cartone
+Il cartone del latte contiene del latte.
+
+> ; ==============================================================================
+> ; MANEGGIARE LIQUIDI IN RECIPIENTI PRENDIBILI
+> ; ==============================================================================
 > ; ------------------------------------------------------------------------------
 > ; MANEGGIARE IL RECIPIENTE
 > ; ------------------------------------------------------------------------------
@@ -102,10 +138,10 @@ Mr Nicky ti segue.
 > ; come piscina che come acqua, ma le risposte dei verbi vi si riferiranno sempre
 > ; come "piscina", che con alcune azioni produce messaggi poco eleganti:
 > esamina la piscina
-You notice nothing unusual about la piscina.
+Esamini la piscina, ma non noti niente di speciale.
 
 > esamina l'acqua
-You notice nothing unusual about la piscina.
+Esamini la piscina, ma non noti niente di speciale.
 
 > bevi la piscina
 La piscina non è qualcosa che puoi bere.
