@@ -53,22 +53,6 @@ sblocca la porta con la chiave
 ; ------------------------------------------------------------------------------
 blocca la porta con la chiave
 ; ------------------------------------------------------------------------------
-; TESTA 'sblocca' (già sbloccata) con strumento non idoneo
-; ------------------------------------------------------------------------------
-sblocca la porta con la torcia
-sblocca la porta con 1
-sblocca la porta con Nicky
-; ** FIXME **
-sblocca la porta con me
-; ------------------------------------------------------------------------------
-; TESTA 'blocca' (non bloccata) con strumento non idoneo
-; ------------------------------------------------------------------------------
-blocca la porta con la torcia
-blocca la porta con 1
-blocca la porta con Nicky
-; ** FIXME **
-blocca la porta con me
-; ------------------------------------------------------------------------------
 ; TESTA 'blocca' (già bloccata) con strumento non idoneo
 ; ------------------------------------------------------------------------------
 blocca la porta con la torcia
@@ -82,4 +66,20 @@ sblocca la porta con la torcia
 sblocca la porta con 1
 sblocca la porta con Nicky
 sblocca la porta con me
+; ------------------------------------------------------------------------------
+; TESTA 'sblocca' (già sbloccata) con strumento non idoneo
+; ------------------------------------------------------------------------------
+sblocca la porta
+; ~~~~~~~~~~~~~~
+sblocca la porta con la torcia
+sblocca la porta con 1
+sblocca la porta con Nicky
+sblocca la porta con me
+; ------------------------------------------------------------------------------
+; TESTA 'blocca' (non bloccata) con strumento non idoneo
+; ------------------------------------------------------------------------------
+blocca la porta con la torcia
+blocca la porta con 1
+blocca la porta con Nicky
+blocca la porta con me
 

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.9.11-Alpha, 2018-12-08: Alan 3.0beta6
+--| v0.9.12-Alpha, 2018-12-08: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -1494,42 +1494,44 @@ SYNTAX blocca_con = blocca (ogg) con (chiave)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
         THEN SAY mia_AT:ogg1_inadatto_sg.
         ELSE SAY mia_AT:ogg1_inadatto_pl.
       END IF.
       "bloccare."
   AND chiave IsA OBJECT
     ELSE
-      IF chiave IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa con cui poter"
-        THEN SAY mia_AT:ogg2_inadatto_CON_sg.
-        ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
+      IF chiave = hero
+        THEN SAY mia_AT:azione_insensata.
+      ELSE
+-- @MIGLIORA IL MESSAGGIO CON UNO AD HOC!                                       IMPROVE!
+        IF chiave IS NOT plurale
+          THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+          ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
+        END IF.
+        "bloccare" SAY THE ogg. "."
       END IF.
-      "bloccare." -- @TODO: ".. altre cose"??                                   IMPROVE!
 
 
 ADD TO EVERY OBJECT
-    VERB blocca_con
-        WHEN ogg
+  VERB blocca_con
+    WHEN ogg
       CHECK mia_AT CAN bloccare_con
         ELSE SAY mia_AT:azione_bloccata.
       AND ogg IS bloccabile
         ELSE
           IF ogg IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa che puoi"
             THEN SAY mia_AT:ogg1_inadatto_sg.
             ELSE SAY mia_AT:ogg1_inadatto_pl.
           END IF.
           "bloccare."
       AND chiave IS esaminabile
         ELSE
+-- @MIGLIORA IL MESSAGGIO CON UNO AD HOC!                                       IMPROVE!
           IF chiave IS NOT plurale
-            --  "$+1 non [è/sono] qualcosa con cui poter"
             THEN SAY mia_AT:ogg2_inadatto_CON_sg.
             ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
           END IF.
-          "bloccare." -- @TODO: ".. altre cose"??                               IMPROVE!
+          "bloccare" SAY THE ogg. "."
       AND ogg <> chiave
         ELSE SAY mia_AT:azione_insensata.
       AND CURRENT LOCATION IS illuminato
@@ -1565,9 +1567,8 @@ ADD TO EVERY OBJECT
           END IF.
       AND chiave IN hero
         ELSE SAY mia_AT:non_possiedi_ogg2.
-      AND chiave = ogg:chiave_abbinata -- @TODO:                             TRANSLATE!
-        --              "You can't use $+2 to $v $+1.".
-        ELSE SAY mia_AT:check_door_matching_key.
+      AND chiave = ogg:chiave_abbinata
+        ELSE SAY mia_AT:chiave2_non_blocca_ogg1.
 
       DOES
         MAKE ogg bloccato.
@@ -1963,11 +1964,16 @@ SYNTAX sblocca_con = sblocca (ogg) con (chiave)
       "sbloccare."
   AND chiave IsA OBJECT
     ELSE
-      IF chiave IS NOT plurale
-        THEN SAY mia_AT:ogg2_inadatto_CON_sg.
-        ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
+      IF chiave = hero
+        THEN SAY mia_AT:azione_insensata.
+      ELSE
+-- @MIGLIORA IL MESSAGGIO CON UNO AD HOC!                                       IMPROVE!
+        IF chiave IS NOT plurale
+          THEN SAY mia_AT:ogg2_inadatto_CON_sg.
+          ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
+        END IF.
+        "sbloccare" SAY THE ogg. "."
      END IF.
-     "sbloccare" SAY THE ogg. "."
 
 
 ADD TO EVERY OBJECT
@@ -1985,6 +1991,7 @@ ADD TO EVERY OBJECT
           "sbloccare."
       AND chiave IS esaminabile
         ELSE
+-- @MIGLIORA IL MESSAGGIO CON UNO AD HOC!                                       IMPROVE!
           IF chiave IS NOT plurale
             THEN SAY mia_AT:ogg2_inadatto_CON_sg.
             ELSE SAY mia_AT:ogg2_inadatto_CON_pl.
@@ -2025,10 +2032,8 @@ ADD TO EVERY OBJECT
                 ELSE SAY mia_AT:ogg_già_sbloccato_fp.
               END IF.
           END IF.
---                                                                              TRANSLATE!
       AND chiave = ogg:chiave_abbinata
-        --              "You can't use $+2 to $v $+1.".
-        ELSE SAY mia_AT:check_door_matching_key.
+        ELSE SAY mia_AT:chiave2_non_sblocca_ogg1.
       DOES
         MAKE ogg NOT bloccato.
         "Fatto, ora $+1"

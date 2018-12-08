@@ -17,30 +17,35 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/12/08](#20181208)
-    - [Verbi apri, chiudi, blocca e sblocca](#verbi-apri-chiudi-blocca-e-sblocca)
+- [2018/12/08 \(2\)](#20181208-2)
+    - [Verbi](#verbi)
+        - [Migliora risposte blocca](#migliora-risposte-blocca)
     - [Messaggi libreria](#messaggi-libreria)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
+- [2018/12/08 \(1\)](#20181208-1)
+    - [Verbi apri, chiudi, blocca e sblocca](#verbi-apri-chiudi-blocca-e-sblocca)
+    - [Messaggi libreria](#messaggi-libreria-1)
         - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
     - [Modulo classi](#modulo-classi)
         - [Liquidi](#liquidi)
         - [Porte e finestre](#porte-e-finestre)
 - [2018/12/07](#20181207)
-    - [Messaggi libreria](#messaggi-libreria-1)
+    - [Messaggi libreria](#messaggi-libreria-2)
         - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi)
-    - [Verbi](#verbi)
+    - [Verbi](#verbi-1)
         - [Condiscendenza PNG in `chiedi` dei liquidi](#condiscendenza-png-in-chiedi-dei-liquidi)
     - [Pulizia sorgenti](#pulizia-sorgenti)
 - [2018/12/04 \(3\)](#20181204-3)
-    - [Messaggi libreria](#messaggi-libreria-2)
+    - [Messaggi libreria](#messaggi-libreria-3)
         - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-1)
         - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-1)
     - [Risposte dei verbi](#risposte-dei-verbi)
         - [Risposte per dispositivi e fonti di luce](#risposte-per-dispositivi-e-fonti-di-luce)
 - [2018/12/04 \(2\)](#20181204-2)
-    - [Messaggi libreria](#messaggi-libreria-3)
-- [2018/12/04 \(1\)](#20181204-1)
     - [Messaggi libreria](#messaggi-libreria-4)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
+- [2018/12/04 \(1\)](#20181204-1)
+    - [Messaggi libreria](#messaggi-libreria-5)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-1)
         - [Azioni eterodirette](#azioni-eterodirette)
         - [Traduci messaggi delle classi](#traduci-messaggi-delle-classi)
     - [Modulo classi](#modulo-classi-1)
@@ -52,29 +57,29 @@ For previuos changes, see:
         - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-2)
         - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi)
         - [Correggi messaggi dei verbi](#correggi-messaggi-dei-verbi)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-1)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-2)
 - [2018/11/30 \(1\)](#20181130-1)
     - [Messaggi dei verbi](#messaggi-dei-verbi-1)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-2)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-3)
         - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-3)
     - [Rinomina parametri del verbo `scrivi`](#rinomina-parametri-del-verbo-scrivi)
 - [2018/11/25 \(2\)](#20181125-2)
     - [Aggiornamento Doxter](#aggiornamento-doxter)
 - [2018/11/25 \(1\)](#20181125-1)
     - [Messaggi dei verbi](#messaggi-dei-verbi-2)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-3)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-4)
         - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-2)
         - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi)
 - [2018/11/24](#20181124)
     - [Messaggi dei verbi](#messaggi-dei-verbi-3)
         - [Correggi baco in `chiedi`](#correggi-baco-in-chiedi)
         - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi-1)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-4)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-5)
     - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-3)
 - [2018/11/23 \(2\)](#20181123-2)
     - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi-1)
     - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi-2)
-    - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-5)
+    - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-6)
 - [2018/11/23 \(1\)](#20181123-1)
     - [Correggi Baco LIQUIDI](#correggi-baco-liquidi)
 - [2018/11/22 \(5\)](#20181122-5)
@@ -85,7 +90,7 @@ For previuos changes, see:
     - [Correggi Baco in LIQUIDO](#correggi-baco-in-liquido)
 - [2018/11/22 \(3\)](#20181122-3)
     - [Documentazione](#documentazione-1)
-    - [Verbi](#verbi-1)
+    - [Verbi](#verbi-2)
     - [Messaggi dei verbi](#messaggi-dei-verbi-5)
 - [2018/11/22 \(2\)](#20181122-2)
     - [Suddivisione modulo messaggi](#suddivisione-modulo-messaggi)
@@ -113,7 +118,36 @@ For previuos changes, see:
 -----
 
 
-# 2018/12/08
+# 2018/12/08 (2)
+
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.15)
+- [`lib_verbi.i`][lib_verbi] (v0.9.12)
+
+## Verbi
+
+### Migliora risposte blocca
+
+Aggiunto controllo `azione_insensata` se il secondo parametro è l'eroe nei verbi:
+
+- `blocca_con`
+- `sblocca_con`
+
+## Messaggi libreria
+
+### Traduci messaggi dei verbi
+
+Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
+
+|        Attributo EN       |        Attributo IT        |                   Testo                    |
+|---------------------------|----------------------------|--------------------------------------------|
+| `check_door_matching_key` | `chiave2_non_blocca_ogg1`  | `"Non è possibile bloccare $+1 con $+2."`  |
+| `check_door_matching_key` | `chiave2_non_sblocca_ogg1` | `"Non è possibile sbloccare $+1 con $+2."` |
+
+Eliminato attributo originale.
+
+<!---------------------------------------------------------------------------->
+
+# 2018/12/08 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.9.7)
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.14)

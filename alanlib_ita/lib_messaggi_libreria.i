@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.9.14-Alpha, 2018-12-08: Alan 3.0beta6
+--| v0.9.15-Alpha, 2018-12-08: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
@@ -584,6 +584,27 @@ ADD TO EVERY blocco_definizioni
   -- ORIGINAL EN: (nessuno)
   HAS ogg2_inadatto_VICINO_A_sg  "$+2 non è qualcosa vicino a cui poter".
   HAS ogg2_inadatto_VICINO_A_pl  "$+2 non sono qualcosa vicino a cui poter".
+
+--<
+
+
+-->============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Indatatti azioni specifiche
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+
+  -- VERBI: blocca_con.
+  -- ORIGINAL EN: check_door_matching_key
+  HAS chiave2_non_blocca_ogg1  "Non è possibile bloccare $+1 con $+2.".
+
+
+  -- VERBI: sblocca_con.
+  -- ORIGINAL EN: check_door_matching_key
+  HAS chiave2_non_sblocca_ogg1  "Non è possibile sbloccare $+1 con $+2.".
 
 --<
 
@@ -1423,8 +1444,6 @@ ADD TO EVERY blocco_definizioni
   -- supporter: put_in
   HAS check_cont_not_supporter "You can't put $+1 inside $+2.".
 
-  -- door: lock_with, unlock_with
-  HAS check_door_matching_key "You can't use $+2 to $v $+1.".
   
   
 

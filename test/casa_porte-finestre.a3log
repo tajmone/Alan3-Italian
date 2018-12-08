@@ -142,57 +142,25 @@ La porta di casa tua è già sbloccata
 Fatto, ora la porta di casa tua è bloccata.
 
 > ; ------------------------------------------------------------------------------
-> ; TESTA 'sblocca' (già sbloccata) con strumento non idoneo
-> ; ------------------------------------------------------------------------------
-> sblocca la porta con la torcia
-You can't use la torcia to sblocca la porta di casa tua.
-
-> sblocca la porta con 1
-1 non è qualcosa con cui poter sbloccare la porta di casa tua.
-
-> sblocca la porta con Nicky
-Mr Nicky non è qualcosa con cui poter sbloccare la porta di casa tua.
-
-> ; ** FIXME **
-> sblocca la porta con me
-Il hero non è qualcosa con cui poter sbloccare la porta di casa tua.
-
-> ; ------------------------------------------------------------------------------
-> ; TESTA 'blocca' (non bloccata) con strumento non idoneo
-> ; ------------------------------------------------------------------------------
-> blocca la porta con la torcia
-La porta di casa tua è già bloccata
-
-> blocca la porta con 1
-1 non è qualcosa con cui poter bloccare.
-
-> blocca la porta con Nicky
-Mr Nicky non è qualcosa con cui poter bloccare.
-
-> ; ** FIXME **
-> blocca la porta con me
-Il hero non è qualcosa con cui poter bloccare.
-
-> ; ------------------------------------------------------------------------------
 > ; TESTA 'blocca' (già bloccata) con strumento non idoneo
 > ; ------------------------------------------------------------------------------
 > blocca la porta con la torcia
 La porta di casa tua è già bloccata
 
 > blocca la porta con 1
-1 non è qualcosa con cui poter bloccare.
+1 non è qualcosa con cui poter bloccare la porta di casa tua.
 
 > blocca la porta con Nicky
-Mr Nicky non è qualcosa con cui poter bloccare.
+Mr Nicky non è qualcosa con cui poter bloccare la porta di casa tua.
 
 > blocca la porta con me
-Il hero non è qualcosa con cui poter bloccare.
+Questo non ha alcun senso.
 
 > ; ------------------------------------------------------------------------------
 > ; TESTA 'sblocca' (non sbloccata) con strumento non idoneo
 > ; ------------------------------------------------------------------------------
 > sblocca la porta con la torcia
-You can't use la torcia to sblocca la porta di casa tua.
+Non è possibile sbloccare la porta di casa tua con la torcia.
 
 > sblocca la porta con 1
 1 non è qualcosa con cui poter sbloccare la porta di casa tua.
@@ -201,7 +169,42 @@ You can't use la torcia to sblocca la porta di casa tua.
 Mr Nicky non è qualcosa con cui poter sbloccare la porta di casa tua.
 
 > sblocca la porta con me
-Il hero non è qualcosa con cui poter sbloccare la porta di casa tua.
+Questo non ha alcun senso.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'sblocca' (già sbloccata) con strumento non idoneo
+> ; ------------------------------------------------------------------------------
+> sblocca la porta
+(con la chiave)
+Fatto, ora la porta di casa tua è sbloccata.
+
+> ; ~~~~~~~~~~~~~~
+> sblocca la porta con la torcia
+La porta di casa tua è già sbloccata
+
+> sblocca la porta con 1
+1 non è qualcosa con cui poter sbloccare la porta di casa tua.
+
+> sblocca la porta con Nicky
+Mr Nicky non è qualcosa con cui poter sbloccare la porta di casa tua.
+
+> sblocca la porta con me
+Questo non ha alcun senso.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'blocca' (non bloccata) con strumento non idoneo
+> ; ------------------------------------------------------------------------------
+> blocca la porta con la torcia
+Non è possibile bloccare la porta di casa tua con la torcia.
+
+> blocca la porta con 1
+1 non è qualcosa con cui poter bloccare la porta di casa tua.
+
+> blocca la porta con Nicky
+Mr Nicky non è qualcosa con cui poter bloccare la porta di casa tua.
+
+> blocca la porta con me
+Questo non ha alcun senso.
 
 > 
 

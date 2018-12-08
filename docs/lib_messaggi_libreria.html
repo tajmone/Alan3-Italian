@@ -438,7 +438,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.9.14-Alpha,</span>
+<span id="revnumber">versione 0.9.15-Alpha,</span>
 <span id="revdate">2018-12-08</span>
 <br><span id="revremark">Alan 3.0beta6</span>
 </div>
@@ -497,6 +497,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
+<li><a href="#_indatatti_azioni_specifiche">Indatatti azioni specifiche</a></li>
 </ul>
 </li>
 <li><a href="#_problemi_con_i_parametri">Problemi con i parametri</a>
@@ -1134,6 +1135,21 @@ preposizioni improprie.</p>
   HAS ogg2_inadatto_VICINO_A_pl  "$+2 non sono qualcosa vicino a cui poter".</code></pre>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_indatatti_azioni_specifiche"><a class="anchor" href="#_indatatti_azioni_specifiche"></a>Indatatti azioni specifiche</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: blocca_con.
+  -- ORIGINAL EN: check_door_matching_key
+  HAS chiave2_non_blocca_ogg1  "Non è possibile bloccare $+1 con $+2.".
+
+
+  -- VERBI: sblocca_con.
+  -- ORIGINAL EN: check_door_matching_key
+  HAS chiave2_non_sblocca_ogg1  "Non è possibile sbloccare $+1 con $+2.".</code></pre>
 </div>
 </div>
 </div>
@@ -1885,10 +1901,7 @@ required after the verb:</p>
   HAS check_clothing_sex "On second thoughts you decide $+1 won't really suit you.".
 
   -- supporter: put_in
-  HAS check_cont_not_supporter "You can't put $+1 inside $+2.".
-
-  -- door: lock_with, unlock_with
-  HAS check_door_matching_key "You can't use $+2 to $v $+1.".</code></pre>
+  HAS check_cont_not_supporter "You can't put $+1 inside $+2.".</code></pre>
 </div>
 </div>
 </div>
@@ -1918,7 +1931,7 @@ italiano del modulo delle classi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.9.14-Alpha<br>
+Versione 0.9.15-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

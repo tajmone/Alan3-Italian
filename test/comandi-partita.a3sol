@@ -182,15 +182,6 @@ restore
 comandi-partita.sav
 ; La frutta dovrebbe essere tutta qui dato che abbiamo salvato prima di mangiarla:
 guarda POI esamina la mela
-mangia la mela
-; ------------------------------------------------------------------------------
-; ABBANDONA + UNDO
-; ------------------------------------------------------------------------------
-; Avviamo il menù di Quit ma poi lo abbandoniamo...
-abbandona partita
-undo
-; La mela non dovrebbe esserci dato che l'abbiamo appena mangiata:
-esamina la mela
 ; ------------------------------------------------------------------------------
 ; ABBANDONA + QUIT
 ; ------------------------------------------------------------------------------
@@ -198,4 +189,21 @@ esamina la mela
 abbandona partita
 quit
 ; *** SE VEDI QUESTA RINGA NEL LOG ALLORA ABBIAMO UN PROBLEMA!*** 
-inventario
+;
+; \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;                                 FINE DEL TEST                                 
+; //////////////////////////////////////////////////////////////////////////////
+; Interrompiamo qui il test perché ABBANDONA + UNDO crea un sacco di problemi
+; e tende ad inceppare i test. I problemi sembrano essere iniziati dopo un certo
+; aggiornamento di Win 10, da allora questo test produce log diversi, o si inceppa
+; arrivati a ABBANDONA + UNDO.
+;
+; ------------------------------------------------------------------------------
+; ABBANDONA + UNDO
+; ------------------------------------------------------------------------------
+; Avviamo il menù di Quit ma poi lo abbandoniamo...
+mangia la mela
+abbandona partita
+undo
+; La mela non dovrebbe esserci dato che l'abbiamo appena mangiata:
+esamina la mela
