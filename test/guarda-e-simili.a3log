@@ -12,15 +12,13 @@ Tutti i diritti riservati.
 Nella Cripta
 Ogni cosa nella cripta è avvolta nella soffusa luce lunare che filtra dal
 lucernario. Odi un inquietante scricchiolìo in sottofondo. Puoi vedere un 
-lucernario, una bara rossa, una bara nera e un cubo qui. C'è un fantasma 
-qui.
+lucernario, una bara rossa, una bara nera e un cubo qui. C'è un fantasma qui.
 
 > guarda
 Nella Cripta
 Ogni cosa nella cripta è avvolta nella soffusa luce lunare che filtra dal
 lucernario. Odi un inquietante scricchiolìo in sottofondo. Puoi vedere un 
-lucernario, una bara rossa, una bara nera e un cubo qui. C'è un fantasma 
-qui.
+lucernario, una bara rossa, una bara nera e un cubo qui. C'è un fantasma qui.
 
 > guarda su
 Guardando su non noti nulla di interessante.
@@ -116,8 +114,8 @@ Non mi è chiaro se intendi dire la bara rossa o la bara nera.
 Non mi è chiaro se intendi dire la bara rossa o la bara nera.
 
 > esamina la nera
-La fioca luce lunare non ti consente di vedere cosa ci sia dentro. Ma sai
-già che contiene uno scheletro.
+La fioca luce lunare non ti consente di vedere cosa ci sia dentro. Ma sai già
+che contiene uno scheletro.
 
 > esamina la rossa
 La fioca luce lunare non ti consente di vedere cosa ci sia dentro.
@@ -162,8 +160,8 @@ La bara rossa è vuota.
 > ; BARA NERA (non vuota / non vaniglia)
 > ; ---------
 > esamina la bara nera
-La fioca luce lunare non ti consente di vedere cosa ci sia dentro. Ma sai
-già che contiene uno scheletro.
+La fioca luce lunare non ti consente di vedere cosa ci sia dentro. Ma sai già
+che contiene uno scheletro.
 
 > guarda attraverso la bara nera
 You can't see through la bara nera.
@@ -182,16 +180,15 @@ La bara nera contiene uno scheletro.
 
 > ; ora la bara non è più OPAQUE dato che il giocatore ne conosce il contenuto.
 > esamina lo scheletro
-Lo scheletro giace in una postura pacifica sfoggiando in eterno il
-vestito del suo funerale. Il tempo, che ne ha divorato avidamente la
-carne, sembra aver risparmiato i suoi capelli, lasciando al buio il
-compito di tingerli di cenere. Fitte ragnatele coprono il suo viso. Gli
-scheletri hanno un viso, giusto?
+Lo scheletro giace in una postura pacifica sfoggiando in eterno il vestito del
+suo funerale. Il tempo, che ne ha divorato avidamente la carne, sembra aver
+risparmiato i suoi capelli, lasciando al buio il compito di tingerli di cenere.
+Fitte ragnatele coprono il suo viso. Gli scheletri hanno un viso, giusto?
 
 > ; bara_nera definisce ulteriormente esamina (AFTER):
 > esamina la bara nera
-La fioca luce lunare non ti consente di vedere cosa ci sia dentro. Ma sai
-già che contiene uno scheletro.
+La fioca luce lunare non ti consente di vedere cosa ci sia dentro. Ma sai già
+che contiene uno scheletro.
 
 > guarda
 Nella Cripta
@@ -269,8 +266,8 @@ Il cubo non è qualcosa da cui poter guardare fuori.
 > ; ==============================================================================
 > ; TESTA su attore di tipo maschio:
 > guarda il fantasma
-Un vero fantasma in carne ed ossa -- Ops! mi correggo, "in spirito e
-plasma"! Il fantasma non sta portando niente.
+Un vero fantasma in carne ed ossa -- Ops! mi correggo, "in spirito e plasma"! Il 
+fantasma non sta portando niente.
 
 > guarda dietro il fantasma
 Non noti nulla di insolito dietro il fantasma.

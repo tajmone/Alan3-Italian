@@ -1,7 +1,10 @@
 --==============================================================================
 -- "Vestiario e Costumi" by Tristano Ajmone, 2018.
 --==============================================================================
-IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
+OPTIONS WIDTH 81.
+
+IMPORT 'libreria.i'.   -- ALAN Libreria Standard Italiana v2.1
+IMPORT 'inc_debaca.i'. -- Comandi per il debugging
 
 
 THE mia_AT IsA blocco_definizioni
@@ -14,40 +17,36 @@ THE mia_AT IsA blocco_definizioni
   ------------------------------------------------------------------------------
 END THE.
 
-
-
--- =============================================================================
-
------ Il Protagonista
-
--- =============================================================================
--- Diamo qualche accessorio di partenza all'eroe.
-
-
 --==============================================================================
--- Abbigliamento Iniziale del Protagonista
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--------------------------------------------------------------------------------
+--
+-- MAPPA & ATTORI
+--
+--------------------------------------------------------------------------------
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --==============================================================================
-THE hero IsA ACTOR.
-  HAS indossati { bombetta, jeans }.
-END THE hero.
-
-THE bombetta IsA ind_cappello.
-  NAME bombetta.
-  HAS articolo "la".
-  HAS xDesc "È una bombetta originale inglese.".
-END THE bombetta.
-
-THE jeans IsA ind_pantaloni AT camerino.
-  NAME jeans.
-  NAME blue jeans.
-  NAME blu jeans.
-  HAS articolo "il". ---> sovrascriviamo l'articolo "i" della classe 'pantaloni'!
-  MENTIONED "paio di blue jeans"
-END THE jeans.
+-- Qui definiamo le varie stanze del gioco e gli attori.
+-- L'arredamento e i vari oggetti scenisci saranno definiti più avanti.
 
 -- =============================================================================
 
------ L'Assistente
+-- IL CAMERINO (stanza)
+
+-- =============================================================================
+
+THE camerino IsA stanza.
+  NAME 'Camerino degli Attori'
+END THE camerino.
+
+THE canottiera IsA ind_canottiera AT camerino.
+END THE canottiera.
+
+-- =============================================================================
+
+-- L'ASSISTENTE (femmina)
 
 -- =============================================================================
 
@@ -58,33 +57,56 @@ THE assistente IsA femmina AT camerino.
   HAS xDesc "È la tua assistente di scena per l'abbigliamento ed i costumi.".
 END THE assistente.
 
-
--- =============================================================================
-
------ Il Camerino
-
--- =============================================================================
-
-THE camerino IsA LOCATION.
-  NAME 'Camerino degli Attori'
-END THE camerino.
-
-THE canottiera IsA ind_canottiera AT camerino.
-END THE canottiera.
-
 --==============================================================================
--- Arredamento
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--------------------------------------------------------------------------------
+--
+-- CLASSI SPECIALIZZATE
+--
+--------------------------------------------------------------------------------
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --==============================================================================
-THE sedia IsA object AT camerino.
-  HAS articolo "la".
-END THE sedia.
+
+-- Per semplificarci la vita creeremo delle classi specializzati per alcuni tipi
+-- di oggetti..
 
 
--- =============================================================================
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- CLASSI DI VESTIARIO
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
 
------ Classi di Vestiario
+-- Gli indumenti devono rispettare i valori della Tabella del Vestiario:
 
--- =============================================================================
+--+--------------------------+------------+-----------+-----------+----------+
+--| Indumento    | val_testa | val_tronco | val_gambe | val_piedi | val_mani |
+--+--------------------------+------------+-----------+-----------+----------+
+--| cappello               2 |          0 |         0 |         0 |        0 |
+--| canottiera/reggiseno   0 |          2 |         0 |         0 |        0 |
+--| undies/panties         0 |          0 |         2 |         0 |        0 |
+--| teddy                  0 |          4 |         4 |         0 |        0 |
+--| blouse/shirt/T-shirt   0 |          8 |         0 |         0 |        0 |
+--| dress/coveralls        0 |          8 |        32 |         0 |        0 |
+--| gonna                  0 |          0 |        32 |         0 |        0 |
+--| pantaloni/shorts       0 |          0 |        16 |         0 |        0 |
+--| sweater/pullover       0 |         16 |         0 |         0 |        0 |
+--| giacca                 0 |         32 |         0 |         0 |        0 |
+--| cappotto               0 |         64 |        64 |         0 |        0 |
+--| socks/stockings        0 |          0 |         0 |         2 |        0 |
+--| tights/pantiehose      0 |          0 |         8 |         2 |        0 |
+--| scarpe/stivali         0 |          0 |         0 |         4 |        0 |
+--| guanti                 0 |          0 |         0 |         0 |        2 |
+--+--------------------------+------------+-----------+-----------+----------+
+
+-- Inoltre, gli indumenti possono essere associati a un `genere` specifico, dove
+-- un valore `0` indica un genere neutro (unisex), e qualsiasi altro valore
+-- ne limiterà l'indossabilità al genere dell'eroe (default, 1 per maschio).
+
 EVERY ind_cappello IsA indumento.
   NAME cappello.
   HAS val_testa 2.
@@ -110,6 +132,75 @@ END EVERY.
   -- HAS val_gambe  0.
   -- HAS val_piedi  0.
   -- HAS val_mani   0.
+
+--==============================================================================
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--------------------------------------------------------------------------------
+--
+-- ALLESTIMENTO DELE SCENOGRAFIE 
+--
+--------------------------------------------------------------------------------
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--==============================================================================
+
+-- Ora popoliamo le varie stanze e luoghi esterni con oggetti ed attori...
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- SCENOGRAFIA CAMERINO 
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- ARREDAMENTO
+--------------------------------------------------------------------------------
+--==============================================================================
+
+THE sedia IsA object AT camerino.
+  HAS articolo "la".
+END THE sedia.
+
+
+--==============================================================================
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--------------------------------------------------------------------------------
+--
+-- INVENTARIO EROE 
+--
+--------------------------------------------------------------------------------
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--==============================================================================
+
+-- Diamo qualche accessorio di partenza all'eroe.
+
+
+--==============================================================================
+-- Abbigliamento Iniziale del Protagonista
+--==============================================================================
+THE hero IsA ACTOR.
+  HAS indossati { bombetta, jeans }.
+END THE hero.
+
+THE bombetta IsA ind_cappello.
+  NAME bombetta.
+  HAS articolo "la".
+  HAS xDesc "È una bombetta originale inglese.".
+END THE bombetta.
+
+THE jeans IsA ind_pantaloni AT camerino.
+  NAME jeans.
+  NAME blue jeans.
+  NAME blu jeans.
+  HAS articolo "il". ---> sovrascriviamo l'articolo "i" della classe 'pantaloni'!
+  MENTIONED "paio di blue jeans"
+END THE jeans.
 
 --------------------------------------------------------------------------------
 Start at camerino.

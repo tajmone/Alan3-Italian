@@ -10,10 +10,10 @@ Tutti i diritti riservati.
 
 
 LA CUCINA
-A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un 
-frigo e un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un 
-sacchetto, un coltello, una pistola, un cesto per la frutta e una radio. 
-Al centro della stanza c'è Mr Nicky, il tuo cagnolino.
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un frigo e 
+un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un sacchetto, un 
+coltello, una pistola, un cesto per la frutta e una radio. Al centro della
+stanza c'è Mr Nicky, il tuo cagnolino.
 
 > ; ******************************************************************************
 > ; *                                                                            *
@@ -25,7 +25,8 @@ Al centro della stanza c'è Mr Nicky, il tuo cagnolino.
 > ; ==============================================================================
 > ; La torcia può essere accesa, spenta e riparata; per romperla basta lanciarla.
 > inventario
-Stai portando una torcia e una chiave.
+Stai portando una torcia e una chiave. Stai indossando un paio di blue jeans e 
+una bombetta.
 
 > esamina la torcia
 Una torcia elettrica, "made in China". È spenta.

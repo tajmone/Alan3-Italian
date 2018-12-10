@@ -4,11 +4,11 @@
 ; Verifichiamo la corretta inizializzazione degli attributi per l'italiano negli
 ; attori con nome proprio.
 nordest
-debaca tutti
+debaca Mario e Maria e Romeo e Thelma
 ; ==============================================================================
 ;                        ATTRIBUTI PNG SENZA NOME PROPRIO                       
 ; ==============================================================================
 ; Ora verifichiamo l'inizializzazione dei medesimi attributi negli attori che
 ; non hanno nome proprio. 
 ovest
-debaca tutti
+debaca vampiro e zombie e orco e strega e arpia e gemelli e sciamani e fate

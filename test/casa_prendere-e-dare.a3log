@@ -10,10 +10,10 @@ Tutti i diritti riservati.
 
 
 LA CUCINA
-A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un 
-frigo e un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un 
-sacchetto, un coltello, una pistola, un cesto per la frutta e una radio. 
-Al centro della stanza c'è Mr Nicky, il tuo cagnolino.
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un frigo e 
+un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un sacchetto, un 
+coltello, una pistola, un cesto per la frutta e una radio. Al centro della
+stanza c'è Mr Nicky, il tuo cagnolino.
 
 > ; ******************************************************************************
 > ; *                                                                            *
@@ -46,10 +46,10 @@ Possiedi già la pera.
 > ; ==============================================================================
 > sud
 IL GIARDINO DI CASA
-A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone
-e, in lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e 
-un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e 
-una piscina qui. C'è un giardiniere qui. C'è un gatto qui. 
+A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone e, in
+lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e un tavolo 
+qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e una piscina qui. 
+C'è un giardiniere qui. C'è un gatto qui. 
 
 Mr Nicky ti segue.
 
@@ -66,9 +66,9 @@ Il giardiniere possiede già la pera.
 > ; o il nome del liquido o quello del contenitore.
 > nord
 LA CUCINA
-A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un 
-frigo e un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un 
-sacchetto, un coltello, una pistola, un cesto per la frutta e una radio. 
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un frigo e 
+un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un sacchetto, un 
+coltello, una pistola, un cesto per la frutta e una radio. 
 
 Mr Nicky ti segue.
 
@@ -95,11 +95,12 @@ Posi la bottiglia sul tavolo.
 
 > esamina il tavolo
 Esamini il tavolo, ma non noti niente di speciale. Sopra il tavolo vedi un 
-vasetto, una bottiglia, un sacchetto, un coltello, una pistola, un cesto
-per la frutta e una radio.
+vasetto, una bottiglia, un sacchetto, un coltello, una pistola, un cesto per la
+frutta e una radio.
 
 > inventario
-Stai portando una mela, una torcia e una chiave.
+Stai portando una mela, una torcia e una chiave. Stai indossando un paio di
+blue jeans e una bombetta.
 
 > ; ------------------------------------------------------------------------------
 > ; TESTA 'prendi' + 'liquido'
@@ -122,14 +123,15 @@ Il vino è già sul tavolo.
 
 > esamina il tavolo
 Esamini il tavolo, ma non noti niente di speciale. Sopra il tavolo vedi un 
-vasetto, una bottiglia, un sacchetto, un coltello, una pistola, un cesto
-per la frutta e una radio.
+vasetto, una bottiglia, un sacchetto, un coltello, una pistola, un cesto per la
+frutta e una radio.
 
 > esamina la bottiglia
 La bottiglia contiene del vino.
 
 > inventario
-Stai portando una mela, una torcia e una chiave.
+Stai portando una mela, una torcia e una chiave. Stai indossando un paio di
+blue jeans e una bombetta.
 
 > ; ------------------------------------------------------------------------------
 > ; TESTA 'prendi_da' + 'liquido'

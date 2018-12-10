@@ -10,8 +10,8 @@ Tutti i diritti riservati.
 
 
 Piazza delle Persone
-In questa piazza tutti gli attori sono della classe PERSONA. C'è un 
-poliziotto qui. C'è un predicatore qui.
+In questa piazza tutti gli attori sono della classe PERSONA. C'è un poliziotto 
+qui. C'è un predicatore qui.
 
 > ; ==============================================================================
 > ;                            INVENTARIO PROTAGONISTA                            
@@ -56,8 +56,8 @@ portando un opuscolo.
 Preso.
 
 > esamina il predicatore
-Esamini il predicatore, ma non noti niente di speciale. Il predicatore 
-non sta portando niente.
+Esamini il predicatore, ma non noti niente di speciale. Il predicatore non sta 
+portando niente.
 
 > ; ******************************************************************************
 > ; *                            TEST SU CLASSE ACTOR                            *
@@ -70,24 +70,24 @@ non sta portando niente.
 > ; ==============================================================================
 > est
 Piazza degli Attori Non-Persone
-In questa piazza tutti gli attori sono della classe ACTOR ma non sono
-persone (classe PERSONA). C'è un leone qui. C'è uno scimpanzé qui. Ci sono 
-delle galline qui.
+In questa piazza tutti gli attori sono della classe ACTOR ma non sono persone
+(classe PERSONA). C'è un leone qui. C'è uno scimpanzé qui. Ci sono delle galline 
+qui.
 
 > esamina il leone
-Esamini il leone, ma non noti niente di speciale. Il leone non sta 
-portando niente.
+Esamini il leone, ma non noti niente di speciale. Il leone non sta portando
+niente.
 
 > esamina lo scimpanzé
-Esamini lo scimpanzé, ma non noti niente di speciale. Lo scimpanzé sta 
-portando una banana.
+Esamini lo scimpanzé, ma non noti niente di speciale. Lo scimpanzé sta portando 
+una banana.
 
 > prendi la banana
 Lo scimpanzé non sarebbe d'accordo.
 
 > esamina le galline
-Esamini le galline, ma non noti niente di speciale. Le galline stanno 
-portando delle uova.
+Esamini le galline, ma non noti niente di speciale. Le galline stanno portando 
+delle uova.
 
 > prendi la uova
 Prese.

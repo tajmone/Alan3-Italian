@@ -104,8 +104,7 @@ Hai totalizzato 0 punti su 0 possibili.
 > ; sensoriali, 'aspetta', ecc.) 
 > est
 Livello di Restrizione 2
-In questo livello sono bloccate tutte le azioni ed i verbi di
-comunicazione.
+In questo livello sono bloccate tutte le azioni ed i verbi di comunicazione.
 
 > ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > ; TEST/FAIL: Azioni di Livello 0                             
@@ -197,8 +196,7 @@ Hai totalizzato 0 punti su 0 possibili.
 > ; only exits directions.
 > est
 Livello di Restrizione 4
-In questo livello tutte le azioni sono bloccate, incluse le azioni di
-gioco.
+In questo livello tutte le azioni sono bloccate, incluse le azioni di gioco.
 
 > ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > ; TEST/FAIL: Azioni di Livello 0                             

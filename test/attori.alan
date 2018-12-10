@@ -5,8 +5,11 @@
 -- nella Libreria, in particolar modo l'inizializzazione dei loro attributi per
 -- la lingua italiana.
 --------------------------------------------------------------------------------
+OPTIONS WIDTH 81.
+
 IMPORT 'libreria.i'.   -- ALAN Libreria Standard Italiana v2.1
-IMPORT 'inc_debaca.i'. -- Verbo 'debaca' per il debug degli attori.
+IMPORT 'inc_debaca.i'. -- Comandi per il debugging
+
 
 THE mia_AT IsA blocco_definizioni
   ------------------------------------------------------------------------------

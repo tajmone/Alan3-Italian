@@ -23,15 +23,19 @@ Sala dei Nomi Propri
 In questo set li attori hanno nomi propri.
 A OVEST c'è l'altro set.
 
-Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise 
-sono qui.
+Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise sono qui.
 
-> debaca tutti
+> debaca Mario e Maria e Romeo e Thelma
 (Mario) 
-+------------------------------------------ 
++------------------------------------------------------------------------------- 
 | NOME: Mario 
-+------------------------------------------ 
+| CLASSE: actor > persona > maschio 
++------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: Sì 
+| È CONDISCENDENTE No 
+| STA SEGUENDO: No 
+| POSTURA: (nessuna) 
++------------------------------------------------------------------------------- 
 | GENERE: maschile 
 | NUMERO: singolare 
 | ARTICOLO: il 
@@ -43,13 +47,28 @@ sono qui.
 | PREP. DA: da 
 | PREP. IN: in 
 | PREP. SU: su 
-+------------------------------------------
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / NON prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: PUÒ parlare / NON PUÒ sparare / NON inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: 
++-------------------------------------------------------------------------------
 
 (Maria) 
-+------------------------------------------ 
++------------------------------------------------------------------------------- 
 | NOME: Maria 
-+------------------------------------------ 
+| CLASSE: actor > persona > femmina 
++------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: Sì 
+| È CONDISCENDENTE Sì 
+| STA SEGUENDO: No 
+| POSTURA: (nessuna) 
++------------------------------------------------------------------------------- 
 | GENERE: femminile 
 | NUMERO: singolare 
 | ARTICOLO: la 
@@ -61,13 +80,28 @@ sono qui.
 | PREP. DA: da 
 | PREP. IN: in 
 | PREP. SU: su 
-+------------------------------------------
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / NON prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: PUÒ parlare / NON PUÒ sparare / NON inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: 
++-------------------------------------------------------------------------------
 
 (Romeo e Giuglietta) 
-+------------------------------------------ 
++------------------------------------------------------------------------------- 
 | NOME: Romeo e Giuglietta 
-+------------------------------------------ 
+| CLASSE: actor > persona > maschio 
++------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: Sì 
+| È CONDISCENDENTE No 
+| STA SEGUENDO: No 
+| POSTURA: (nessuna) 
++------------------------------------------------------------------------------- 
 | GENERE: maschile 
 | NUMERO: plurale 
 | ARTICOLO: il 
@@ -79,13 +113,28 @@ sono qui.
 | PREP. DA: da 
 | PREP. IN: in 
 | PREP. SU: su 
-+------------------------------------------
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / NON prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: PUÒ parlare / NON PUÒ sparare / NON inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: 
++-------------------------------------------------------------------------------
 
 (Thelma e Louise) 
-+------------------------------------------ 
++------------------------------------------------------------------------------- 
 | NOME: Thelma e Louise 
-+------------------------------------------ 
+| CLASSE: actor > persona > femmina 
++------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: Sì 
+| È CONDISCENDENTE No 
+| STA SEGUENDO: No 
+| POSTURA: (nessuna) 
++------------------------------------------------------------------------------- 
 | GENERE: femminile 
 | NUMERO: plurale 
 | ARTICOLO: la 
@@ -97,25 +146,17 @@ sono qui.
 | PREP. DA: da 
 | PREP. IN: in 
 | PREP. SU: su 
-+------------------------------------------
-
-(hero) 
-+------------------------------------------ 
-| NOME: hero 
-+------------------------------------------ 
-| HA NOME PROPRIO: No 
-| GENERE: maschile 
-| NUMERO: singolare 
-| ARTICOLO: il 
-| FORMA DETERMINATA:    il hero 
-| FORMA INDETERMINATA:  un hero 
-| VOCALE: o 
-| PREP. DI: del 
-| PREP. A:  al 
-| PREP. DA: dal 
-| PREP. IN: nel 
-| PREP. SU: sul 
-+------------------------------------------
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / NON prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: PUÒ parlare / NON PUÒ sparare / NON inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: 
++-------------------------------------------------------------------------------
 
 > ; ==============================================================================
 > ;                        ATTRIBUTI PNG SENZA NOME PROPRIO                       
@@ -124,20 +165,25 @@ sono qui.
 > ; non hanno nome proprio. 
 > ovest
 Set Attori in Costume
-In questo set gli attori indossano costumi di personaggi, e non hanno
-nomi propri.
+In questo set gli attori indossano costumi di personaggi, e non hanno nomi
+propri.
 A EST c'è l'altro set.
 
-C'è un vampiro qui. C'è uno zombie qui. C'è un orco qui. C'è una strega 
-qui. C'è un'arpia qui. Ci sono dei gemelli siamesi qui. Ci sono degli 
-sciamani qui. Ci sono delle fate qui.
+C'è un vampiro qui. C'è uno zombie qui. C'è un orco qui. C'è una strega qui. C'è 
+un'arpia qui. Ci sono dei gemelli siamesi qui. Ci sono degli sciamani qui. Ci
+sono delle fate qui.
 
-> debaca tutti
+> debaca vampiro e zombie e orco e strega e arpia e gemelli e sciamani e fate
 (vampiro) 
-+------------------------------------------ 
++------------------------------------------------------------------------------- 
 | NOME: vampiro 
-+------------------------------------------ 
+| CLASSE: actor > persona > maschio 
++------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
+| È CONDISCENDENTE No 
+| STA SEGUENDO: No 
+| POSTURA: (nessuna) 
++------------------------------------------------------------------------------- 
 | GENERE: maschile 
 | NUMERO: singolare 
 | ARTICOLO: il 
@@ -149,13 +195,28 @@ sciamani qui. Ci sono delle fate qui.
 | PREP. DA: dal 
 | PREP. IN: nel 
 | PREP. SU: sul 
-+------------------------------------------
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / NON prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: PUÒ parlare / NON PUÒ sparare / NON inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc:
++-------------------------------------------------------------------------------
 
 (zombie) 
-+------------------------------------------ 
++------------------------------------------------------------------------------- 
 | NOME: zombie 
-+------------------------------------------ 
+| CLASSE: actor > persona > maschio 
++------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
+| È CONDISCENDENTE No 
+| STA SEGUENDO: No 
+| POSTURA: (nessuna) 
++------------------------------------------------------------------------------- 
 | GENERE: maschile 
 | NUMERO: singolare 
 | ARTICOLO: lo 
@@ -167,13 +228,28 @@ sciamani qui. Ci sono delle fate qui.
 | PREP. DA: dallo 
 | PREP. IN: nello 
 | PREP. SU: sullo 
-+------------------------------------------
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / NON prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: PUÒ parlare / NON PUÒ sparare / NON inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: 
++-------------------------------------------------------------------------------
 
 (orco) 
-+------------------------------------------ 
++------------------------------------------------------------------------------- 
 | NOME: orco 
-+------------------------------------------ 
+| CLASSE: actor > persona > maschio 
++------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
+| È CONDISCENDENTE No 
+| STA SEGUENDO: No 
+| POSTURA: (nessuna) 
++------------------------------------------------------------------------------- 
 | GENERE: maschile 
 | NUMERO: singolare 
 | ARTICOLO: l' 
@@ -185,13 +261,28 @@ sciamani qui. Ci sono delle fate qui.
 | PREP. DA: dall'
 | PREP. IN: nell'
 | PREP. SU: sull'
-+------------------------------------------
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / NON prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: PUÒ parlare / NON PUÒ sparare / NON inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: 
++-------------------------------------------------------------------------------
 
 (strega) 
-+------------------------------------------ 
++------------------------------------------------------------------------------- 
 | NOME: strega 
-+------------------------------------------ 
+| CLASSE: actor > persona > femmina 
++------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
+| È CONDISCENDENTE No 
+| STA SEGUENDO: No 
+| POSTURA: (nessuna) 
++------------------------------------------------------------------------------- 
 | GENERE: femminile 
 | NUMERO: singolare 
 | ARTICOLO: la 
@@ -203,13 +294,28 @@ sciamani qui. Ci sono delle fate qui.
 | PREP. DA: dalla 
 | PREP. IN: nella 
 | PREP. SU: sulla 
-+------------------------------------------
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / NON prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: PUÒ parlare / NON PUÒ sparare / NON inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: 
++-------------------------------------------------------------------------------
 
 (arpia) 
-+------------------------------------------ 
++------------------------------------------------------------------------------- 
 | NOME: arpia 
-+------------------------------------------ 
+| CLASSE: actor > persona > femmina 
++------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
+| È CONDISCENDENTE No 
+| STA SEGUENDO: No 
+| POSTURA: (nessuna) 
++------------------------------------------------------------------------------- 
 | GENERE: femminile 
 | NUMERO: singolare 
 | ARTICOLO: l' 
@@ -221,13 +327,28 @@ sciamani qui. Ci sono delle fate qui.
 | PREP. DA: dall'
 | PREP. IN: nell'
 | PREP. SU: sull'
-+------------------------------------------
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / NON prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: PUÒ parlare / NON PUÒ sparare / NON inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: 
++-------------------------------------------------------------------------------
 
 (gemelli siamesi) 
-+------------------------------------------ 
++------------------------------------------------------------------------------- 
 | NOME: gemelli siamesi 
-+------------------------------------------ 
+| CLASSE: actor > persona > maschio 
++------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
+| È CONDISCENDENTE No 
+| STA SEGUENDO: No 
+| POSTURA: (nessuna) 
++------------------------------------------------------------------------------- 
 | GENERE: maschile 
 | NUMERO: plurale 
 | ARTICOLO: i 
@@ -239,13 +360,28 @@ sciamani qui. Ci sono delle fate qui.
 | PREP. DA: dai 
 | PREP. IN: nei 
 | PREP. SU: sui 
-+------------------------------------------
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / NON prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: PUÒ parlare / NON PUÒ sparare / NON inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: 
++-------------------------------------------------------------------------------
 
 (sciamani) 
-+------------------------------------------ 
++------------------------------------------------------------------------------- 
 | NOME: sciamani 
-+------------------------------------------ 
+| CLASSE: actor > persona > maschio 
++------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
+| È CONDISCENDENTE No 
+| STA SEGUENDO: No 
+| POSTURA: (nessuna) 
++------------------------------------------------------------------------------- 
 | GENERE: maschile 
 | NUMERO: plurale 
 | ARTICOLO: gli 
@@ -257,13 +393,28 @@ sciamani qui. Ci sono delle fate qui.
 | PREP. DA: dagli 
 | PREP. IN: negli 
 | PREP. SU: sugli 
-+------------------------------------------
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / NON prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: PUÒ parlare / NON PUÒ sparare / NON inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: 
++-------------------------------------------------------------------------------
 
 (fate) 
-+------------------------------------------ 
++------------------------------------------------------------------------------- 
 | NOME: fate 
-+------------------------------------------ 
+| CLASSE: actor > persona > femmina 
++------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
+| È CONDISCENDENTE No 
+| STA SEGUENDO: No 
+| POSTURA: (nessuna) 
++------------------------------------------------------------------------------- 
 | GENERE: femminile 
 | NUMERO: plurale 
 | ARTICOLO: le 
@@ -275,25 +426,17 @@ sciamani qui. Ci sono delle fate qui.
 | PREP. DA: dalle 
 | PREP. IN: nelle 
 | PREP. SU: sulle 
-+------------------------------------------
-
-(hero) 
-+------------------------------------------ 
-| NOME: hero 
-+------------------------------------------ 
-| HA NOME PROPRIO: No 
-| GENERE: maschile 
-| NUMERO: singolare 
-| ARTICOLO: il 
-| FORMA DETERMINATA:    il hero 
-| FORMA INDETERMINATA:  un hero 
-| VOCALE: o 
-| PREP. DI: del 
-| PREP. A:  al 
-| PREP. DA: dal 
-| PREP. IN: nel 
-| PREP. SU: sul 
-+------------------------------------------
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / NON prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: PUÒ parlare / NON PUÒ sparare / NON inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: 
++-------------------------------------------------------------------------------
 
 > 
 

@@ -1,0 +1,492 @@
+
+
+La Casa 
+Un set per eseguire test su stanze e luoghi esterni. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+LA CUCINA
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un frigo e 
+un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un sacchetto, un 
+coltello, una pistola, un cesto per la frutta e una radio. Al centro della
+stanza c'è Mr Nicky, il tuo cagnolino.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                        TESTA LA SUITE DI DEBACAGGIO                        *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Questo file testa i comandi di debugging aggiunti dal modulo 'inc_debaca.i'.
+> ; ==============================================================================
+> ; COMANDO 'DEBACA <OGG>'
+> ; ==============================================================================
+> ; ------------------------------------------------------------------------------
+> ; DEBACA INDUMENTI
+> ; ------------------------------------------------------------------------------
+> debaca i jeans
+
++------------------------------------------------------------------------------- 
+| NOME: paio di blue jeans 
+| CLASSE: object > indumento 
++------------------------------------------------------------------------------- 
+| val_testa:    0 
+| val_tronco:   0 
+| val_gambe:    16 
+| val_piedi:    0 
+| val_mani:     0 
++------------------------------------------------------------------------------- 
+| GENERE INDUMENTO: 0 
+| INDOSSATO: Sì (da hero) 
++------------------------------------------------------------------------------- 
+| GENERE: maschile 
+| NUMERO: singolare 
+| ARTICOLO: il 
+| FORMA DETERMINATA:    il paio di blue jeans 
+| FORMA INDETERMINATA:  un paio di blue jeans 
+| VOCALE: o 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / prendibile / spostabile / indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: NON PUÒ parlare / NON PUÒ sparare / inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: 
++-------------------------------------------------------------------------------
+
+> ; ------------------------------------------------------------------------------
+> ; DEBACA DISPOSITIVI
+> ; ------------------------------------------------------------------------------
+> debaca la radio
+
++------------------------------------------------------------------------------- 
+| NOME: radio 
+| CLASSE: object > dispositivo 
++------------------------------------------------------------------------------- 
+| STATO: NON acceso / NON rotto 
++------------------------------------------------------------------------------- 
+| GENERE: femminile 
+| NUMERO: singolare 
+| ARTICOLO: la 
+| FORMA DETERMINATA:    la radio 
+| FORMA INDETERMINATA:  una radio 
+| VOCALE: a 
+| PREP. DI: della 
+| PREP. A:  alla 
+| PREP. DA: dalla 
+| PREP. IN: nella 
+| PREP. SU: sulla 
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: NON PUÒ parlare / NON PUÒ sparare / inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: Una piccola radio tascabile, a batterie. 
++-------------------------------------------------------------------------------
+
+> ; ------------------------------------------------------------------------------
+> ; DEBACA LIQUIDI
+> ; ------------------------------------------------------------------------------
+> debaca il vino
+
++------------------------------------------------------------------------------- 
+| NOME: vino 
+| CLASSE: object > liquido 
++------------------------------------------------------------------------------- 
+| RECIPIENTE: bottiglia 
+| POTABILE: No 
++------------------------------------------------------------------------------- 
+| GENERE: maschile 
+| NUMERO: singolare 
+| ARTICOLO: il 
+| FORMA DETERMINATA:    il vino 
+| FORMA INDETERMINATA:  del vino 
+| VOCALE: o 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: NON PUÒ parlare / NON PUÒ sparare / inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc:
++-------------------------------------------------------------------------------
+
+> ; ------------------------------------------------------------------------------
+> ; DEBACA FONTI DI LUCE
+> ; ------------------------------------------------------------------------------
+> debaca la torcia
+
++------------------------------------------------------------------------------- 
+| NOME: torcia 
+| CLASSE: object > fonte_di_luce 
+| STATO: NON illuminato / NON rotto 
++------------------------------------------------------------------------------- 
+| GENERE: femminile 
+| NUMERO: singolare 
+| ARTICOLO: la 
+| FORMA DETERMINATA:    la torcia 
+| FORMA INDETERMINATA:  una torcia 
+| VOCALE: a 
+| PREP. DI: della 
+| PREP. A:  alla 
+| PREP. DA: dalla 
+| PREP. IN: nella 
+| PREP. SU: sulla 
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: NON PUÒ parlare / NON PUÒ sparare / inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: Una torcia elettrica, "made in China". 
++-------------------------------------------------------------------------------
+
+> ; ------------------------------------------------------------------------------
+> ; DEBACA ARMI
+> ; ------------------------------------------------------------------------------
+> debaca la pistola
+
++------------------------------------------------------------------------------- 
+| NOME: pistola 
+| CLASSE: object > arma (PUÒ sparare) 
++------------------------------------------------------------------------------- 
+| GENERE: femminile 
+| NUMERO: singolare 
+| ARTICOLO: la 
+| FORMA DETERMINATA:    la pistola 
+| FORMA INDETERMINATA:  una pistola 
+| VOCALE: a 
+| PREP. DI: della 
+| PREP. A:  alla 
+| PREP. DA: dalla 
+| PREP. IN: nella 
+| PREP. SU: sulla 
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: NON PUÒ parlare / PUÒ sparare / inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: È una rivoltella. 
++-------------------------------------------------------------------------------
+
+> sud
+IL GIARDINO DI CASA
+A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone e, in
+lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e un tavolo 
+qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e una piscina qui. 
+C'è un giardiniere qui. C'è un gatto qui. 
+
+Mr Nicky ti segue.
+
+> ; ------------------------------------------------------------------------------
+> ; DEBACA ATTORI
+> ; ------------------------------------------------------------------------------
+> debaca Nicky
+
++------------------------------------------------------------------------------- 
+| NOME: Mr Nicky 
+| CLASSE: actor 
++------------------------------------------------------------------------------- 
+| HA NOME PROPRIO: Sì 
+| È CONDISCENDENTE No 
+| STA SEGUENDO: Sì 
+| POSTURA: (nessuna) 
++------------------------------------------------------------------------------- 
+| GENERE: maschile 
+| NUMERO: singolare 
+| ARTICOLO: il 
+| FORMA DETERMINATA:    Mr Nicky 
+| FORMA INDETERMINATA:  Mr Nicky 
+| VOCALE: o 
+| PREP. DI: di 
+| PREP. A:  a 
+| PREP. DA: da 
+| PREP. IN: in 
+| PREP. SU: su 
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / NON prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: NON PUÒ parlare / NON PUÒ sparare / NON inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: È Mr Nicky, il tuo amato nonché fedele amico a quattro zampe. 
++-------------------------------------------------------------------------------
+
+> debaca me
+
++------------------------------------------------------------------------------- 
+| NOME: hero 
+| CLASSE: actor 
++------------------------------------------------------------------------------- 
+| HA NOME PROPRIO: No 
+| È CONDISCENDENTE Sì 
+| STA SEGUENDO: No 
+| POSTURA: (nessuna) 
++------------------------------------------------------------------------------- 
+| GENERE: maschile 
+| NUMERO: singolare 
+| ARTICOLO: il 
+| FORMA DETERMINATA:    il hero 
+| FORMA INDETERMINATA:  un hero 
+| VOCALE: o 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / NON prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: NON PUÒ parlare / NON PUÒ sparare / NON inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: 
++-------------------------------------------------------------------------------
+
+> debaca il giardiniere
+
++------------------------------------------------------------------------------- 
+| NOME: giardiniere 
+| CLASSE: actor > persona > maschio 
++------------------------------------------------------------------------------- 
+| HA NOME PROPRIO: No 
+| È CONDISCENDENTE No 
+| STA SEGUENDO: No 
+| POSTURA: (nessuna) 
++------------------------------------------------------------------------------- 
+| GENERE: maschile 
+| NUMERO: singolare 
+| ARTICOLO: il 
+| FORMA DETERMINATA:    il giardiniere 
+| FORMA INDETERMINATA:  un giardiniere 
+| VOCALE: o 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / NON prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: PUÒ parlare / NON PUÒ sparare / NON inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: Il giardiniere è intento a curare le piante. 
++-------------------------------------------------------------------------------
+
+> ; ------------------------------------------------------------------------------
+> ; DEBACA LIQUIDI (recipiente_fittizio)
+> ; ------------------------------------------------------------------------------
+> debaca la piscina
+
++------------------------------------------------------------------------------- 
+| NOME: piscina 
+| CLASSE: object > liquido 
++------------------------------------------------------------------------------- 
+| RECIPIENTE: (recipiente_fittizio) 
+| POTABILE: No 
++------------------------------------------------------------------------------- 
+| GENERE: femminile 
+| NUMERO: singolare 
+| ARTICOLO: la 
+| FORMA DETERMINATA:    la piscina 
+| FORMA INDETERMINATA:  una piscina 
+| VOCALE: a 
+| PREP. DI: della 
+| PREP. A:  alla 
+| PREP. DA: dalla 
+| PREP. IN: nella 
+| PREP. SU: sulla 
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: NON PUÒ parlare / NON PUÒ sparare / inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: 
++-------------------------------------------------------------------------------
+
+> nord
+LA CUCINA
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un frigo e 
+un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un sacchetto, un 
+coltello, una pistola, un cesto per la frutta e una radio. 
+
+Mr Nicky ti segue.
+
+> est
+L'INGRESSO DI CASA
+Ti trovi nell'ingresso della tua casa. A ovest c'è la cucina, a est il tuo
+studio. A nord, oltre la porta di casa, c'è il mondo esterno. 
+
+Mr Nicky ti segue.
+
+> ; ------------------------------------------------------------------------------
+> ; DEBACA PORTA
+> ; ------------------------------------------------------------------------------
+> debaca la porta
+
++------------------------------------------------------------------------------- 
+| NOME: porta di casa 
+| CLASSE: object > porta (chiusa & sbloccata | apribile & bloccabile) 
++------------------------------------------------------------------------------- 
+| ALTRO LATO: "porta di casa tua" (in "DAVANTI A CASA TUA") 
++------------------------------------------------------------------------------- 
+| GENERE: femminile 
+| NUMERO: singolare 
+| ARTICOLO: la 
+| FORMA DETERMINATA:    la porta di casa 
+| FORMA INDETERMINATA:  una porta di casa 
+| VOCALE: a 
+| PREP. DI: della 
+| PREP. A:  alla 
+| PREP. DA: dalla 
+| PREP. IN: nella 
+| PREP. SU: sulla 
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / NON prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: NON PUÒ parlare / NON PUÒ sparare / inanimato 
+| - APRI/CHIUDI: NON aperto / apribile / bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| xDesc: [[ istanza 'porta_casa_tuaR' --> xDesc ]]
+È la porta di casa tua, con 
++-------------------------------------------------------------------------------
+
+> est
+LO STUDIO
+A ovest c'è l'ingresso. Puoi vedere una tavolo qui. Sopra la tavolo vedi una 
+penna, una busta e un foglio. 
+
+Mr Nicky ti segue.
+
+> prendi la penna
+Presa.
+
+> scrivi "Debaca che ti passa!" sul foglio
+[[ classe 'ogg_scrivibile' --> VERB 'scrivi' --> DOES ONLY ]]
+Hai scritto "Debaca che ti passa!" sul foglio.
+
+> scrivi "Per Babbo Natale" sulla busta
+[[ classe 'ogg_scrivibile' --> VERB 'scrivi' --> DOES ONLY ]]
+Hai scritto "Per Babbo Natale" sulla busta.
+
+> ; ------------------------------------------------------------------------------
+> ; DEBACA LEGGIBILI
+> ; ------------------------------------------------------------------------------
+> debaca il foglio
+
++------------------------------------------------------------------------------- 
+| NOME: foglio 
+| CLASSE: object 
++------------------------------------------------------------------------------- 
+| GENERE: maschile 
+| NUMERO: singolare 
+| ARTICOLO: il 
+| FORMA DETERMINATA:    il foglio 
+| FORMA INDETERMINATA:  un foglio 
+| VOCALE: o 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: NON PUÒ parlare / NON PUÒ sparare / inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| TESTUALITÀ: leggibile / scrivibile 
+| TESTO: Debaca che ti passa! 
++------------------------------------------------------------------------------- 
+| xDesc:
++-------------------------------------------------------------------------------
+
+> debaca la busta
+
++------------------------------------------------------------------------------- 
+| NOME: busta 
+| CLASSE: object 
++------------------------------------------------------------------------------- 
+| GENERE: femminile 
+| NUMERO: singolare 
+| ARTICOLO: la 
+| FORMA DETERMINATA:    la busta 
+| FORMA INDETERMINATA:  una busta 
+| VOCALE: a 
+| PREP. DI: della 
+| PREP. A:  alla 
+| PREP. DA: dalla 
+| PREP. IN: nella 
+| PREP. SU: sulla 
++------------------------------------------------------------------------------- 
+| ATTRIBUTI GENERICI: 
+| - SCENARIO: No 
+| - INTERAZIONE: esaminabile / prendibile / spostabile / NON indossabile 
+| - PORTATA: raggiungibile / NON distante 
+| - CIBO: NON commestibile / NON potabile 
+| - ABILITÀ: NON PUÒ parlare / NON PUÒ sparare / inanimato 
+| - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
++------------------------------------------------------------------------------- 
+| TESTUALITÀ: leggibile / scrivibile 
+| TESTO: Per Babbo Natale 
++------------------------------------------------------------------------------- 
+| xDesc: È una busta da lettera, di buona qualità. 
++-------------------------------------------------------------------------------
+
+> 
+
+> 
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

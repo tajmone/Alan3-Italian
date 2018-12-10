@@ -10,14 +10,14 @@ Tutti i diritti riservati.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Oggi è il tuo giorno libero, così hai deciso di recarti nel bosco per
-goderti un picnic in santa pace.
+Oggi è il tuo giorno libero, così hai deciso di recarti nel bosco per goderti
+un picnic in santa pace.
 
 
 Radura Nel Bosco
-Puoi vedere un fiume qui. In il fiume you see un pesce. Puoi vedere un 
-albero, un'arancia, un avocado, una banana, un fico e una lattina qui. La 
-lattina contiene dell'aranciata. Puoi vedere una roccia qui.
+Puoi vedere un fiume qui. In il fiume you see un pesce. Puoi vedere un albero, 
+un'arancia, un avocado, una banana, un fico e una lattina qui. La lattina
+contiene dell'aranciata. Puoi vedere una roccia qui.
 
 > ; ==============================================================================
 > ; BERE: TESTA NON POTABILI
@@ -101,8 +101,8 @@ Il fiume non è qualcosa che puoi mangiare.
 Esaminando l'albero noti una mela appesa ad un ramo.
 
 > esamina la mela
-La mela penzola invitante dall'albero, ma è troppo lontana affinché tu
-possa afferrarla.
+La mela penzola invitante dall'albero, ma è troppo lontana affinché tu possa
+afferrarla.
 
 > mangia la mela
 La mela è fuori dalla tua portata.
@@ -176,8 +176,8 @@ Bevi un sorso di fiume.
 > ; ==============================================================================
 > ; TESTA DISAMBIGUAZIONE:
 > mangia il frutto
-Non mi è chiaro se intendi dire l'arancia, l'avocado, la banana, il fico o 
-la mela.
+Non mi è chiaro se intendi dire l'arancia, l'avocado, la banana, il fico o la 
+mela.
 
 > ; TESTA COMMESTIBILI:
 > mangia l'arancia

@@ -10,12 +10,12 @@ Tutti i diritti riservati.
 
 
 Prato
-C'è un mago qui. C'è una strega qui. Ci sono degli sciamani qui. C'è un 
-cane qui.
+C'è un mago qui. C'è una strega qui. Ci sono degli sciamani qui. C'è un cane 
+qui.
 
 > esamina il cane
-Esamini il cane, ma non noti niente di speciale. Il cane sta portando un 
-collare.
+Esamini il cane, ma non noti niente di speciale. Il cane sta portando un collare
+.
 
 > ; ==============================================================================
 > ;                                   Parla Con                                   
@@ -23,16 +23,16 @@ collare.
 > ; I verbi 'parla' e 'parla_con' servono solo a inidirizzare il giocatore verso
 > ; l'uso dei verbi appropriati:
 > parla
-Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure
-RACCONTA A PERSONA DI ARGOMENTO.
+Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure RACCONTA A
+PERSONA DI ARGOMENTO.
 
 > parla con il mago
-Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure
-RACCONTA A PERSONA DI ARGOMENTO.
+Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure RACCONTA A
+PERSONA DI ARGOMENTO.
 
 > parla al mago
-Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure
-RACCONTA A PERSONA DI ARGOMENTO.
+Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure RACCONTA A
+PERSONA DI ARGOMENTO.
 
 > ; ------------------------------------------------------------------------------
 > ;                             (parametri non idonei)                            
@@ -44,8 +44,8 @@ RACCONTA A PERSONA DI ARGOMENTO.
 La bacchetta magica non è qualcosa con cui poter parlare.
 
 > parla con il cane
-Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure
-RACCONTA A PERSONA DI ARGOMENTO.
+Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure RACCONTA A
+PERSONA DI ARGOMENTO.
 
 > ; ==============================================================================
 > ;                              Verbi 'dì' e 'dì_a'                              

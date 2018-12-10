@@ -11,9 +11,9 @@ Tutti i diritti riservati.
 
 Sala Test e Collaudo
 Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
-Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
-tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
-fico e una mela qui. 
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un tabellone
+segna punti. Puoi vedere un'arancia, un avocado, una banana, un fico e una mela 
+qui. 
 
 * Conto alla rovescia: 5  *
 
@@ -47,8 +47,8 @@ Non conosco la parola 'ABCDEF'.
 > ; ----------------------
 > ; La disambiguazione neanche:
 > prendi frutto
-Non mi è chiaro se intendi dire l'arancia, l'avocado, la banana, il fico o 
-la mela.
+Non mi è chiaro se intendi dire l'arancia, l'avocado, la banana, il fico o la 
+mela.
 
 > ; -----------------------
 > ; COMANDI NON PRATICABILI
@@ -74,11 +74,11 @@ Inserisci il nome del file (comandi-partita.sav) : comandi-partita.sav
 > ; RINGRAZIAMENTI
 > ; ==============================================================================
 > ringraziamenti
-I diritti d'autore ed il copyright di questa avventura appartengono al
-suo autore. 
+I diritti d'autore ed il copyright di questa avventura appartengono al suo
+autore. 
 
-Questa avventura è stata realizzata con ALAN Adventure Language, il
-sistema per lo sviluppo di interactive fiction di Thomas Nilsson.
+Questa avventura è stata realizzata con ALAN Adventure Language, il sistema per 
+lo sviluppo di interactive fiction di Thomas Nilsson.
 E-mail: thomas@alanif.se 
 
 Per maggiori informazioni su ALAN, vistate il sito web:
@@ -89,46 +89,44 @@ Per maggiori informazioni su ALAN, vistate il sito web:
 > ; ISTRUZIONI
 > ; ==============================================================================
 > istruzioni
-Questa è un'avventura testuale, anche nota come interactive fiction (IF).
-Nel gioco interpreti il ruolo del personaggio principale, e l'esito della
-storia dipenderà dalla tue scelte. Per interagire con l'ambiente dovrai
-impartire dei comandi al tuo personaggio digitandoli con la tastiera
-usando la forma imperativa VERBO + OGGETTO (PRENDI MELA, MANGIA LA MELA,
-ecc.). Per spostarti nel mondo dell'avventura usa le direzioni cardinali
-(NORD, SUD, NORDOVEST, SOPRA, SOTTO, ecc.).
+Questa è un'avventura testuale, anche nota come interactive fiction (IF). Nel
+gioco interpreti il ruolo del personaggio principale, e l'esito della storia 
+dipenderà dalla tue scelte. Per interagire con l'ambiente dovrai impartire dei
+comandi al tuo personaggio digitandoli con la tastiera usando la forma
+imperativa VERBO + OGGETTO (PRENDI MELA, MANGIA LA MELA, ecc.). Per spostarti
+nel mondo dell'avventura usa le direzioni cardinali (NORD, SUD, NORDOVEST,
+SOPRA, SOTTO, ecc.).
 
-Per osservare l'ambiente digita GUARDA, ti verrà mostrata una descrizione
-del luogo in cui ti trovi e degli oggetti e personaggi che ti circondano.
-Esaminare l'ambiente e gli oggetti è importante al fine di trovare
-inidizi utili a procedere con la storia. Oltre alla descrizione del
-luogo, anche i singoli oggetti e personaggi possono essere esaminati per
-ottenere una loro descrizione dettagliata (ESAMINA IL MOBILE).
+Per osservare l'ambiente digita GUARDA, ti verrà mostrata una descrizione del
+luogo in cui ti trovi e degli oggetti e personaggi che ti circondano. Esaminare
+l'ambiente e gli oggetti è importante al fine di trovare inidizi utili a
+procedere con la storia. Oltre alla descrizione del luogo, anche i singoli
+oggetti e personaggi possono essere esaminati per ottenere una loro descrizione
+dettagliata (ESAMINA IL MOBILE).
 
-Esplorare attivamente l'ambiente (ISPEZIONA L'ARMADIO, GUARDA SOTTO IL
-LETTO, GUARDA DIETRO IL MOBILE, ecc.) può rivelare nuovi indizi o oggetti
-utili a sbloccare situazioni di stallo (trovare una chiave, un passaggio
-segreto, ecc.).
+Esplorare attivamente l'ambiente (ISPEZIONA L'ARMADIO, GUARDA SOTTO IL LETTO,
+GUARDA DIETRO IL MOBILE, ecc.) può rivelare nuovi indizi o oggetti utili a
+sbloccare situazioni di stallo (trovare una chiave, un passaggio segreto, ecc.).
 
-Ogni avventura è diversa, così come diversi sono i verbi/comandi
-disponibili in esse. Sii creativo e prova a usare i comandi che ti
-vengono in mente per conseguire i tuoi obiettivi, e leggi attentamente le
-risposte che ottieni dal gioco poiché esse (assieme alle descrizioni dei
-luoghi e degli oggetti) ti indirizzeranno verso gli obiettivi.
+Ogni avventura è diversa, così come diversi sono i verbi/comandi disponibili in
+esse. Sii creativo e prova a usare i comandi che ti vengono in mente per
+conseguire i tuoi obiettivi, e leggi attentamente le risposte che ottieni dal
+gioco poiché esse (assieme alle descrizioni dei luoghi e degli oggetti) ti
+indirizzeranno verso gli obiettivi.
 
 L'uso degli articoli nei comandi è sempre facoltativo (APRI PORTA è
-sufficiente). Allo stato attuale non è possibile usare preposizioni
-articolate con l'apostrofo, per cui dovrai inserire uno spazio tra la
-preposizione e il sostantivo (SULL' ALBERO) -- anche omettendo 
-l'apostrofo se preferisci (SULL ALBERO). Per comodità puoi usare sempre
-le preposizioni semplici anziché quelle articolate (GUARDA IN FRIGO
-anziché GUARDA NEL FRIGO). Questi piccoli accorgimenti ti consentiranno
-di digitare più in fretta i comandi, rendendo l'esperienza di gioco più
-scorrevole.
+sufficiente). Allo stato attuale non è possibile usare preposizioni articolate
+con l'apostrofo, per cui dovrai inserire uno spazio tra la preposizione e il
+sostantivo (SULL' ALBERO) -- anche omettendo l'apostrofo se preferisci (SULL
+ALBERO). Per comodità puoi usare sempre le preposizioni semplici anziché quelle
+articolate (GUARDA IN FRIGO anziché GUARDA NEL FRIGO). Questi piccoli
+accorgimenti ti consentiranno di digitare più in fretta i comandi, rendendo 
+l'esperienza di gioco più scorrevole.
 
 Per maggiori informazioni su questa avventura ed il suo autore, digita
-RINGRAZIAMENTI. Per uscire dal gioco, digita ABBANDONA PARTITA. Per
-salvare la partiata in corso, digita SALVA PARTITA, e per caricare una
-partita salvata digita CARICA PARTITA.
+RINGRAZIAMENTI. Per uscire dal gioco, digita ABBANDONA PARTITA. Per salvare la
+partiata in corso, digita SALVA PARTITA, e per caricare una partita salvata
+digita CARICA PARTITA.
 
 > ; ==============================================================================
 > ; SUGGERIMENTO (+ "aiutino" + "hint")
@@ -145,38 +143,38 @@ Nessun suggerimento disponibile (vedi ISTRUZIONI se hai bisogno di aiuto).
 > ; --------------
 > ; ** BUG ** Sembra che la direttiva VISITS non funzioni comde dovrebbe...
 > modalità breve
-Il gioco è ora in modalità breve, le descrizioni dei luoghi già visitati
-non saranno più mostrate.
+Il gioco è ora in modalità breve, le descrizioni dei luoghi già visitati non
+saranno più mostrate.
 
 > nord
 W.C.
-Ogni laboratorio che si rispetti a un W.C. (detto anche cesso). A sud
-puoi tornare alla sala test. 
+Ogni laboratorio che si rispetti a un W.C. (detto anche cesso). A sud puoi
+tornare alla sala test. 
 
 * Conto alla rovescia: 3  *
 
 > sud
 Sala Test e Collaudo
 Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
-Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
-tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
-fico e una mela qui. 
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un tabellone
+segna punti. Puoi vedere un'arancia, un avocado, una banana, un fico e una mela 
+qui. 
 
 * Conto alla rovescia: 2  *
 
 > nord
 W.C.
-Ogni laboratorio che si rispetti a un W.C. (detto anche cesso). A sud
-puoi tornare alla sala test. 
+Ogni laboratorio che si rispetti a un W.C. (detto anche cesso). A sud puoi
+tornare alla sala test. 
 
 * Conto alla rovescia: 1  *
 
 > sud
 Sala Test e Collaudo
 Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
-Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
-tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
-fico e una mela qui. 
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un tabellone
+segna punti. Puoi vedere un'arancia, un avocado, una banana, un fico e una mela 
+qui. 
 
 BOOOOM!!! Conto alla rovescia terminato.
 
@@ -184,22 +182,22 @@ BOOOOM!!! Conto alla rovescia terminato.
 > ; MODALITÀ LUNGA
 > ; --------------
 > modalità lunga
-Il gioco è ora in modalità lunga, le descrizioni dei luoghi saranno
-mostrate sempre (anche se già visitati).
+Il gioco è ora in modalità lunga, le descrizioni dei luoghi saranno mostrate
+sempre (anche se già visitati).
 
 > nord
 W.C.
-Ogni laboratorio che si rispetti a un W.C. (detto anche cesso). A sud
-puoi tornare alla sala test. 
+Ogni laboratorio che si rispetti a un W.C. (detto anche cesso). A sud puoi
+tornare alla sala test. 
 
 * Conto alla rovescia: 5  *
 
 > sud
 Sala Test e Collaudo
 Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
-Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
-tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
-fico e una mela qui. 
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un tabellone
+segna punti. Puoi vedere un'arancia, un avocado, una banana, un fico e una mela 
+qui. 
 
 * Conto alla rovescia: 4  *
 
@@ -266,8 +264,8 @@ Notifica del punteggio attivata.
 (Per disattivarla usa il comando NOTIFICA)
 
 > esamina la mela
-Questa mela ha un aspetto irresistibile. Un piccolo bollino adesivo
-riporta che è stata colta nei giardini dell'Eden. 
+Questa mela ha un aspetto irresistibile. Un piccolo bollino adesivo riporta che
+è stata colta nei giardini dell'Eden. 
 
 * Conto alla rovescia: 4  *
 
@@ -339,15 +337,15 @@ La notifica del punteggio è già disattiva.
 > ; ==============================================================================
 > ; Testiamo i comandi per attivare/disattivare la trascrizione.
 > trascrizione
-Puoi avviare/interrompere la trascrizione della partita in corso tramite
-i comandi TRASCRIZIONE ON/OFF. La trascrizione sarà salvata in un file
-con il nome dell'avventura seguito dalla data e dall'estensione ".log".
+Puoi avviare/interrompere la trascrizione della partita in corso tramite i
+comandi TRASCRIZIONE ON/OFF. La trascrizione sarà salvata in un file con il
+nome dell'avventura seguito dalla data e dall'estensione ".log".
 
-Nell'interprete con interfaccia grafica, puoi accedere alle funzionalità
-di trascrizione tramite menù.
+Nell'interprete con interfaccia grafica, puoi accedere alle funzionalità di
+trascrizione tramite menù.
 
-L'interprete a riga di comando ARun può essere avviato con l'opzione "-l"
-per abilitare la trascrizione dell'intera partita.
+L'interprete a riga di comando ARun può essere avviato con l'opzione "-l" per
+abilitare la trascrizione dell'intera partita.
 
 > trascrizione attivata
 Trascrizione avviata.
@@ -360,8 +358,8 @@ Trascrizione avviata.
 > guarda
 Sala Test e Collaudo
 Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
-Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
-tabellone segna punti. 
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un tabellone
+segna punti. 
 
 * Conto alla rovescia: 5  *
 
@@ -392,14 +390,14 @@ Inserisci il nome del file (comandi-partita.sav) : comandi-partita.sav
 > guarda POI esamina la mela
 Sala Test e Collaudo
 Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
-Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
-tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
-fico e una mela qui. 
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un tabellone
+segna punti. Puoi vedere un'arancia, un avocado, una banana, un fico e una mela 
+qui. 
 
 * Conto alla rovescia: 3  *
 
-Questa mela ha un aspetto irresistibile. Un piccolo bollino adesivo
-riporta che è stata colta nei giardini dell'Eden. 
+Questa mela ha un aspetto irresistibile. Un piccolo bollino adesivo riporta che
+è stata colta nei giardini dell'Eden. 
 
 * Conto alla rovescia: 2  *
 
@@ -433,14 +431,14 @@ Tutti i diritti riservati.
 
 Sala Test e Collaudo
 Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
-Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
-tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
-fico e una mela qui.
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un tabellone
+segna punti. Puoi vedere un'arancia, un avocado, una banana, un fico e una mela 
+qui.
 
 > ; La mela dovrebbe esserci di nuovo dato che è una partita nuova:
 > esamina la mela
-Questa mela ha un aspetto irresistibile. Un piccolo bollino adesivo
-riporta che è stata colta nei giardini dell'Eden. 
+Questa mela ha un aspetto irresistibile. Un piccolo bollino adesivo riporta che
+è stata colta nei giardini dell'Eden. 
 
 * Conto alla rovescia: 5  *
 
@@ -463,8 +461,8 @@ Caricamento fallito, il file indicato non è una partita salvata.
 > ; ------------------------------------------------------------------------------
 > carica partita
 Inserisci il nome del file (comandi-partita.ifid) : comandi-partita_arun-diverso.sav
-Caricamento fallito, il file indicato è stato creato con una versione
-diversa dell'avventura o dell'interprete.
+Caricamento fallito, il file indicato è stato creato con una versione diversa
+dell'avventura o dell'interprete.
 
 > ; ==============================================================================
 > ; ABBANDONA PARTITA (Quit)
@@ -490,21 +488,21 @@ Tutti i diritti riservati.
 
 Sala Test e Collaudo
 Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
-Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
-tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
-fico e una mela qui.
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un tabellone
+segna punti. Puoi vedere un'arancia, un avocado, una banana, un fico e una mela 
+qui.
 
 > guarda POI esamina la mela
 Sala Test e Collaudo
 Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
-Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
-tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
-fico e una mela qui. 
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un tabellone
+segna punti. Puoi vedere un'arancia, un avocado, una banana, un fico e una mela 
+qui. 
 
 * Conto alla rovescia: 5  *
 
-Questa mela ha un aspetto irresistibile. Un piccolo bollino adesivo
-riporta che è stata colta nei giardini dell'Eden. 
+Questa mela ha un aspetto irresistibile. Un piccolo bollino adesivo riporta che
+è stata colta nei giardini dell'Eden. 
 
 * Conto alla rovescia: 4  *
 
@@ -531,14 +529,14 @@ Inserisci il nome del file
 > guarda POI esamina la mela
 Sala Test e Collaudo
 Questo è il famoso laboratorio dove viene collaudata la Libreria Standard
-Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un
-tabellone segna punti. Puoi vedere un'arancia, un avocado, una banana, un 
-fico e una mela qui. 
+Italiana di Alan. A nord c'è il W.C. Affisso alla parete è appeso un tabellone
+segna punti. Puoi vedere un'arancia, un avocado, una banana, un fico e una mela 
+qui. 
 
 * Conto alla rovescia: 3  *
 
-Questa mela ha un aspetto irresistibile. Un piccolo bollino adesivo
-riporta che è stata colta nei giardini dell'Eden. 
+Questa mela ha un aspetto irresistibile. Un piccolo bollino adesivo riporta che
+è stata colta nei giardini dell'Eden. 
 
 * Conto alla rovescia: 2  *
 

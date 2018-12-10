@@ -1,7 +1,10 @@
 --==============================================================================
 -- "Test per le Azioni Bloccate" by Tristano Ajmone, 2018.
 --==============================================================================
+OPTIONS WIDTH 81.
+
 IMPORT 'libreria.i'.   -- ALAN Libreria Standard Italiana v2.1
+IMPORT 'inc_debaca.i'. -- Comandi per il debugging
 
 
 THE mia_AT IsA blocco_definizioni
