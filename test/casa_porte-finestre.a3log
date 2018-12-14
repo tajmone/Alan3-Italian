@@ -35,8 +35,7 @@ Mr Nicky ti segue.
 Dovresti aprire la porta prima.
 
 > esamina la porta
-[[ istanza 'porta_casa_tuaR' --> xDesc ]]
-È la porta di casa tua, conduce alla strada. [[ xDesc // FINE ]]
+È la porta di casa tua, conduce alla strada.[[ /xDesk ]]
 È chiusa.
 
 > apri la porta
@@ -52,8 +51,7 @@ Ti trovi nel vialetto di fronte a casa tua.
 Mr Nicky ti segue.
 
 > esamina la porta
-[[ istanza 'porta_casa_tuaF' --> xDesc ]]
-È la porta di casa tua. [[ xDesc // FINE ]]
+È la porta di casa tua.[[ /xDesk ]]
 È aperta.
 
 > ; ------------------------------------------------------------------------------
@@ -67,8 +65,7 @@ Prima chiudi la porta di casa tua e poi la blocchi.
 La porta di casa tua è già bloccata
 
 > esamina la porta
-[[ istanza 'porta_casa_tuaF' --> xDesc ]]
-È la porta di casa tua. [[ xDesc // FINE ]]
+È la porta di casa tua.[[ /xDesk ]]
 È chiusa.
 
 > chiudi la porta
@@ -91,8 +88,7 @@ Fatto, ora la porta di casa tua è chiusa.
 La porta di casa tua è già chiusa
 
 > esamina la porta
-[[ istanza 'porta_casa_tuaF' --> xDesc ]]
-È la porta di casa tua. [[ xDesc // FINE ]]
+È la porta di casa tua.[[ /xDesk ]]
 È chiusa.
 
 > blocca la porta
@@ -103,8 +99,7 @@ Fatto, ora la porta di casa tua è bloccata.
 La porta di casa tua è già bloccata
 
 > esamina la porta
-[[ istanza 'porta_casa_tuaF' --> xDesc ]]
-È la porta di casa tua. [[ xDesc // FINE ]]
+È la porta di casa tua.[[ /xDesk ]]
 È chiusa.
 
 > ; ------------------------------------------------------------------------------

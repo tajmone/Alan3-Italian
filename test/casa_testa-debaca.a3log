@@ -62,7 +62,7 @@ stanza c'è Mr Nicky, il tuo cagnolino.
 | - ABILITÀ: NON PUÒ parlare / NON PUÒ sparare / inanimato 
 | - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
 +------------------------------------------------------------------------------- 
-| xDesc: 
+| xDesc:
 +-------------------------------------------------------------------------------
 
 > ; ------------------------------------------------------------------------------
@@ -96,7 +96,8 @@ stanza c'è Mr Nicky, il tuo cagnolino.
 | - ABILITÀ: NON PUÒ parlare / NON PUÒ sparare / inanimato 
 | - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
 +------------------------------------------------------------------------------- 
-| xDesc: Una piccola radio tascabile, a batterie. 
+| xDesc: Una piccola radio tascabile, a batterie.[[ /xDesk ]]
+
 +-------------------------------------------------------------------------------
 
 > ; ------------------------------------------------------------------------------
@@ -131,7 +132,7 @@ stanza c'è Mr Nicky, il tuo cagnolino.
 | - ABILITÀ: NON PUÒ parlare / NON PUÒ sparare / inanimato 
 | - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
 +------------------------------------------------------------------------------- 
-| xDesc:
+| xDesc: 
 +-------------------------------------------------------------------------------
 
 > ; ------------------------------------------------------------------------------
@@ -164,7 +165,8 @@ stanza c'è Mr Nicky, il tuo cagnolino.
 | - ABILITÀ: NON PUÒ parlare / NON PUÒ sparare / inanimato 
 | - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
 +------------------------------------------------------------------------------- 
-| xDesc: Una torcia elettrica, "made in China". 
+| xDesc: Una torcia elettrica, "made in China".[[ /xDesk ]]
+
 +-------------------------------------------------------------------------------
 
 > ; ------------------------------------------------------------------------------
@@ -394,8 +396,8 @@ Mr Nicky ti segue.
 | - ABILITÀ: NON PUÒ parlare / NON PUÒ sparare / inanimato 
 | - APRI/CHIUDI: NON aperto / apribile / bloccabile / NON bloccato 
 +------------------------------------------------------------------------------- 
-| xDesc: [[ istanza 'porta_casa_tuaR' --> xDesc ]]
-È la porta di casa tua, con 
+| xDesc: È la porta di casa tua, conduce alla strada.[[ /xDesk ]]
+
 +-------------------------------------------------------------------------------
 
 > est
@@ -448,7 +450,7 @@ Hai scritto "Per Babbo Natale" sulla busta.
 | TESTUALITÀ: leggibile / scrivibile 
 | TESTO: Debaca che ti passa! 
 +------------------------------------------------------------------------------- 
-| xDesc:
+| xDesc: 
 +-------------------------------------------------------------------------------
 
 > debaca la busta

@@ -21,7 +21,8 @@ stanza c'è Mr Nicky, il tuo cagnolino.
 > ; *                                                                            *
 > ; ******************************************************************************
 > esamina la radio
-Una piccola radio tascabile, a batterie. È spenta.
+Una piccola radio tascabile, a batterie.[[ /xDesk ]]
+È spenta.
 
 > accendi la radio
 Fatto. Ora la radio è accesa.
@@ -49,7 +50,8 @@ Non lanci molto lontano, la radio finisce sul pavimento.
 Dopo la caduta la radio si è spenta ... un brutto segno.
 
 > esamina la radio
-Una piccola radio tascabile, a batterie. È spenta.
+Una piccola radio tascabile, a batterie.[[ /xDesk ]]
+È spenta.
 
 > accendi la radio
 Fatto, ma non succede nulla.

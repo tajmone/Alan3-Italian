@@ -119,8 +119,7 @@ THE porta_casa_tuaR IsA porta_casa AT ingresso.
   
   HAS altro_lato porta_casa_tuaF.
   HAS xDesc
-    "[[ istanza 'porta_casa_tuaR' --> xDesc ]]
-     $nÈ la porta di casa tua, conduce alla strada. [[ xDesc // FINE ]]$n".
+    "È la porta di casa tua, conduce alla strada.".
 END THE porta_casa_tuaR.
 
 -- =============================================================================
@@ -149,8 +148,7 @@ THE porta_casa_tuaF IsA porta_casa AT vialetto.
 
   -- HAS altro_lato porta_casa_tuaR.
   HAS xDesc
-    "[[ istanza 'porta_casa_tuaF' --> xDesc ]]
-     $nÈ la porta di casa tua. [[ xDesc // FINE ]]$n".
+    "È la porta di casa tua.".
 END THE porta_casa_tuaF.
 
 -- TODO: Implementa casa fittizia esamibaile.
@@ -674,8 +672,7 @@ THE tetraedro IsA cont_bevanda IN frigo.
   IS apribile.
   IS NOT aperto.
   HAS xDesc
-    "[[ istanza 'latte' --> xDesc ]]
-     $nÈ un tetraedro per il latte. [[ xDesc // FINE ]]$n".
+    "È un tetraedro per il latte.".
   
   -- Una volta aperto non può più essere richiuso:
   VERB chiudi
@@ -689,8 +686,7 @@ THE latte IsA liquido IN tetraedro.
   HAS vessel tetraedro. 
   INDEFINITE ARTICLE "del"
   HAS xDesc
-    "[[ istanza 'latte' --> xDesc ]]
-     $nDel latte intero, UHT. [[ xDesc // FINE ]]$n".
+    "Del latte intero, UHT.".
   
 END THE.
 

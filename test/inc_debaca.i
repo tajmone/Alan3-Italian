@@ -26,15 +26,50 @@
 --            10100 -- Torino
 --------------------------------------------------------------------------------
 
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- INIZIALIZZAZIONE MODULO 
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
 -- Aggiungiamo a mia_AT qualche stringa utile:
 ADD TO EVERY blocco_definizioni
   HAS dbgsep -- Separatore voci di debacazione
     "$n+-------------------------------------------------------------------------------".
   HAS tmpstr "". -- Per manipolazione stringhe.
-  
 END ADD TO.
 
 
+--==============================================================================
+--------------------------------------------------------------------------------
+-- Marca attributo xDesk 
+--------------------------------------------------------------------------------
+--==============================================================================
+-- Per alcuni tipi di oggetti, la libreria fornisce una descrizione aggiuntiva
+-- quando vengono descritti o esaminati (p.es. se una porta è aperta o chiusa). 
+-- Per distinguire i messaggi prodotti dalla libreria da quelli implementati
+-- dall'autore, se un'instanza del tipo descritto sopra ha una stringa xDesc non
+-- vuota, aggiungeremo un marcatore per separare la fine della xDesc dal testo
+-- della libreria.
+ADD TO EVERY THING
+  INITIALIZE
+  FOR EACH ogg IsA object DO
+    IF  ogg:xDesc <> ""
+    AND ogg:xDesc NOT CONTAINS "[[ /xDesk ]]"
+      THEN
+        IF ogg IsA contenitore_elencato
+        OR ogg IsA dispositivo
+        OR ogg IsA fonte_di_luce
+        OR ogg IS apribile
+          THEN
+            SET ogg:xDesc to ogg:xDesc + "[[ /xDesk ]]$n".
+      END IF.
+    END IF.
+  END FOR EACH.
+END ADD TO.
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------

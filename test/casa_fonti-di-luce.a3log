@@ -29,7 +29,8 @@ Stai portando una torcia e una chiave. Stai indossando un paio di blue jeans e
 una bombetta.
 
 > esamina la torcia
-Una torcia elettrica, "made in China". È spenta.
+Una torcia elettrica, "made in China".[[ /xDesk ]]
+È spenta.
 
 > accendi la torcia
 Fatto. Ora la torcia è accesa.
@@ -56,7 +57,8 @@ Non lanci molto lontano, la torcia finisce sul pavimento.
 Dopo la caduta la torcia si è spenta ... un brutto segno.
 
 > esamina la torcia
-Una torcia elettrica, "made in China". È spenta.
+Una torcia elettrica, "made in China".[[ /xDesk ]]
+È spenta.
 
 > accendi la torcia
 Fatto, ma non succede nulla.
