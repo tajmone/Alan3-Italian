@@ -34,6 +34,11 @@
 ## =============
 .project   text
 
+## ==================
+## Trizbort Map Files
+## ==================
+*.trizbort text
+
 ## =============
 ## SHELL SCRIPTS
 ## =============
@@ -157,6 +162,12 @@ LICENSE      text
 .project   linguist-language=XML
 .project   linguist-generated=true
 
+## ==================
+## Trizbort Map Files
+## ==================
+*.trizbort linguist-language=XML
+*.trizbort linguist-generated=true
+
 ## Sample Patterns
 ## ---------------------------
 # *.ext    linguist-detectable=true
@@ -164,3 +175,5 @@ LICENSE      text
 # *.ext    linguist-generated=true
 # *.ext    linguist-language=LANG
 # *.ext    linguist-vendored=true
+
+# EOF #
