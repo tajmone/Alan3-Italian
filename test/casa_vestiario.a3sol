@@ -1,0 +1,56 @@
+; ******************************************************************************
+; *                                                                            *
+; *                             TEST DEL VESTIARIO                             *
+; *                                                                            *
+; ******************************************************************************
+est
+su
+est
+nord
+; ------------------------------------------------------------------------------
+; VERIFICA ABBIGLIAMENTO ATTUALE
+; ------------------------------------------------------------------------------
+inventario
+; ==============================================================================
+; TESTA INDOSSA ORDINE SBAGLIATO
+; ==============================================================================
+; Proviamo a indossare indumenti che richiedono di disindossare indumenti di uno
+; strato superiore ad essi.
+esamina la cassettiera
+indossa le mutande
+indossa i boxer
+; ==============================================================================
+; TESTA INDOSSA ORDINE GIUSTO
+; ==============================================================================
+togliti i pantaloni
+indossa i boxer
+; ==============================================================================
+; TESTA INDUMENTI FEMMINILI
+; ==============================================================================
+; Il verbo indossa non deve funzionare con indumenti il cui attributo genere ha
+; valore <>0 e diverso dal genere dell'eroe.
+; In questa avventura viene usato `HAS genere 2` per gli indumenti femminili.
+; ------------------------------------------------------------------------------
+; NOTA: Attualmente l'eroe non ha alcun valore di genere, e l'attributo è usato
+;       solo per segnare indumenti non indossabili.
+; ------------------------------------------------------------------------------
+esamina il tanga
+indossa il tanga
+indossa il reggiseno
+; ==============================================================================
+; TESTA USI IMPRORI
+; ==============================================================================
+; ------------------------------------------------------------------------------
+; VERBO 'indossa' PARAMETRI NON ADATTI
+; ------------------------------------------------------------------------------
+indossa la cassettiera
+indossa 1
+indossa Nicky
+indossa me
+; ------------------------------------------------------------------------------
+; VERBO 'togliti' PARAMETRI NON ADATTI
+; ------------------------------------------------------------------------------
+togliti la cassettiera
+togliti 1
+togliti Nicky
+togliti me

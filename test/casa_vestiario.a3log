@@ -1,0 +1,135 @@
+
+
+La Casa 
+Un set per eseguire test su stanze e luoghi esterni. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+LA CUCINA
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un frigo e 
+un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un sacchetto, un 
+coltello, una pistola, un cesto per la frutta e una radio. Al centro della
+stanza c'è Mr Nicky, il tuo cagnolino.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                             TEST DEL VESTIARIO                             *
+> ; *                                                                            *
+> ; ******************************************************************************
+> est
+L'INGRESSO DI CASA
+Ti trovi nell'ingresso della tua casa. A ovest c'è la cucina, a est il tuo
+studio. Una rampa di scale conduce su al primo piano. A nord, oltre la porta di
+casa, c'è il mondo esterno. 
+
+Mr Nicky ti segue.
+
+> su
+CORRIDOIO (PRIMO PIANO)
+A est c'è la tua camera da letto. Una rampa di scale conduce giù al pianterreno. 
+
+Mr Nicky ti segue.
+
+> est
+CAMERA DA LETTO (PRIMO PIANO)
+A nord c'è il tuo guardaroba. 
+
+Mr Nicky ti segue.
+
+> nord
+GUARDAROBA (PRIMO PIANO)
+A sud puoi tornare nella tua camera da letto. Puoi vedere una cassettiera qui. 
+La cassettiera contiene un reggiseno, un tanga e dei boxer. 
+
+Mr Nicky ti segue.
+
+> ; ------------------------------------------------------------------------------
+> ; VERIFICA ABBIGLIAMENTO ATTUALE
+> ; ------------------------------------------------------------------------------
+> inventario
+Stai portando una torcia e una chiave. Stai indossando un paio di blue jeans e 
+una bombetta.
+
+> ; ==============================================================================
+> ; TESTA INDOSSA ORDINE SBAGLIATO
+> ; ==============================================================================
+> ; Proviamo a indossare indumenti che richiedono di disindossare indumenti di uno
+> ; strato superiore ad essi.
+> esamina la cassettiera
+La cassettiera contiene un reggiseno, un tanga e dei boxer.
+
+> indossa le mutande
+Non mi è chiaro se intendi dire i boxer o il tanga.
+
+> indossa i boxer
+Prendi i boxer. Stai già indossando un paio di blue jeans (indossato) e una 
+bombetta (indossato). Trying to put i boxer on isn't very sensible.
+
+> ; ==============================================================================
+> ; TESTA INDOSSA ORDINE GIUSTO
+> ; ==============================================================================
+> togliti i pantaloni
+Ti togli il paio di blue jeans.
+
+> indossa i boxer
+Indossi i boxer.
+
+> ; ==============================================================================
+> ; TESTA INDUMENTI FEMMINILI
+> ; ==============================================================================
+> ; Il verbo indossa non deve funzionare con indumenti il cui attributo genere ha
+> ; valore <>0 e diverso dal genere dell'eroe.
+> ; In questa avventura viene usato `HAS genere 2` per gli indumenti femminili.
+> ; ------------------------------------------------------------------------------
+> ; NOTA: Attualmente l'eroe non ha alcun valore di genere, e l'attributo è usato
+> ;       solo per segnare indumenti non indossabili.
+> ; ------------------------------------------------------------------------------
+> esamina il tanga
+Un tanga rosso dimenticato qui da qualche tua ex.
+
+> indossa il tanga
+On second thoughts you decide il tanga won't really suit you.
+
+> indossa il reggiseno
+On second thoughts you decide il reggiseno won't really suit you.
+
+> ; ==============================================================================
+> ; TESTA USI IMPRORI
+> ; ==============================================================================
+> ; ------------------------------------------------------------------------------
+> ; VERBO 'indossa' PARAMETRI NON ADATTI
+> ; ------------------------------------------------------------------------------
+> indossa la cassettiera
+La cassettiera non è qualcosa che puoi indossare.
+
+> indossa 1
+1 non è qualcosa che puoi indossare.
+
+> indossa Nicky
+Mr Nicky non è qualcosa che puoi indossare.
+
+> indossa me
+Questo non ha alcun senso.
+
+> ; ------------------------------------------------------------------------------
+> ; VERBO 'togliti' PARAMETRI NON ADATTI
+> ; ------------------------------------------------------------------------------
+> togliti la cassettiera
+La cassettiera non è qualcosa che puoi indossare o toglierti.
+
+> togliti 1
+1 non è qualcosa che puoi indossare o toglierti.
+
+> togliti Nicky
+Mr Nicky non è qualcosa che puoi indossare o toglierti.
+
+> togliti me
+Questo non ha alcun senso.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 
