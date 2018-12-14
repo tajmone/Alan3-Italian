@@ -101,10 +101,34 @@ THE ingresso IsA stanza.
         "[[ istanza 'ingresso' --> EXIT 'nord' ]]
          $nDovresti aprire la porta prima."
   END EXIT.
+  EXIT su TO corridoio
+    DOES
+      locate scale_casa AT corridoio.
+  END EXIT.
   DESCRIPTION
     "Ti trovi nell'ingresso della tua casa. A ovest c'è la cucina, a est il tuo
      studio."
 END THE ingresso.
+
+--------------------------------------------------------------------------------
+-- LE SCALE
+--------------------------------------------------------------------------------
+-- NOTA: Quando il giocatore si sposta dall'ingresso al corridoio (e viceversa),
+--       le scale vengono spostate dalla stanza d'origine a quella di destinazione.
+--       Questo crea l'illusione di un oggetto presente in entrambi i luoghi.
+--       La dislocazione delle scale è gestita dal blocco EXIT di ingresso e
+--       corridoio.
+THE scale_casa IsA object AT ingresso.
+  NAME scale.
+  NAME rampa.
+  HAS articolo "le".
+  DESCRIPTION
+    "Una rampa di scale conduce"
+    IF THIS AT ingresso
+      THEN "su al primo piano."
+      ELSE "giù al pianterreno."
+    END IF.
+END THE scale_casa.
 
 --------------------------------------------------------------------------------
 -- LA PORTA DI CASA (LATO ANTERIORE)
@@ -121,6 +145,58 @@ THE porta_casa_tuaR IsA porta_casa AT ingresso.
   HAS xDesc
     "È la porta di casa tua, conduce alla strada.".
 END THE porta_casa_tuaR.
+
+
+
+-- =============================================================================
+
+-- IL CORRIDOIO (PRIMO PIANO)
+
+-- =============================================================================
+THE corridoio IsA stanza.
+  NAME 'CORRIDOIO (PRIMO PIANO)'.
+  EXIT est TO camera_letto.
+  EXIT giù TO ingresso
+    DOES
+      locate scale_casa AT ingresso.
+  END EXIT.
+
+  DESCRIPTION "A est c'è la tua camera da letto."
+  
+END THE corridoio.
+
+
+
+-- =============================================================================
+
+-- LA CAMERA DA LETTO (PRIMO PIANO)
+
+-- =============================================================================
+THE camera_letto IsA stanza.
+  NAME 'CAMERA DA LETTO (PRIMO PIANO)'.
+  EXIT est  TO corridoio.
+  EXIT nord TO guardaroba.
+  DESCRIPTION "A nord c'è il tuo guardaroba."
+  
+END THE camera_letto.
+
+
+-- =============================================================================
+
+-- IL GUARDAROBA (PRIMO PIANO)
+
+-- =============================================================================
+-- Una stanza per testare il vestiario.
+
+THE guardaroba IsA stanza.
+  NAME 'GUARDAROBA (PRIMO PIANO)'.
+  EXIT sud  TO camera_letto.
+  DESCRIPTION "A sud puoi tornare nella tua camera da letto."
+  
+END THE guardaroba.
+
+
+
 
 -- =============================================================================
 
@@ -297,25 +373,65 @@ END EVERY porta_casa.
 
 -- Inoltre, gli indumenti possono essere associati a un `genere` specifico, dove
 -- un valore `0` indica un genere neutro (unisex), e qualsiasi altro valore
--- ne limiterà l'indossabilità al genere dell'eroe (default, 1 per maschio).
+-- ne limiterà l'indossabilità al genere dell'eroe.
+-- 
+-- In questa avventura, adopereremo i seguenti valori di genere:
+-- 
+--   * `1` genere maschile.
+--   * `2` genere femminile.
 
+--==============================================================================
+-- Indumenti Testa
+--==============================================================================
 EVERY ind_cappello IsA indumento.
   NAME cappello.
   HAS val_testa 2.
 END EVERY.
-
-
+--==============================================================================
+-- Biancheria
+--==============================================================================
 EVERY ind_canottiera IsA indumento.
   NAME canottiera.
   HAS articolo "la".
   HAS val_tronco 2.
 END EVERY.
 
+EVERY ind_mutande IsA indumento.
+  NAME mutande.
+  HAS articolo "le".
+  HAS val_gambe 2.
+END EVERY.
 
+EVERY ind_calze IsA indumento.
+  NAME calze.
+  HAS articolo "le".
+  HAS val_piedi 2.
+END EVERY.
+
+EVERY ind_reggiseno IsA indumento.
+  NAME reggiseno.
+  HAS val_tronco 2.
+  HAS genere 2.
+END EVERY.
+
+--==============================================================================
+-- Vestiti
+--==============================================================================
 EVERY ind_pantaloni IsA indumento.
   NAME pantaloni.
   HAS articolo "i".
   HAS val_gambe 16.
+END EVERY.
+
+EVERY ind_camicia IsA indumento.
+  NAME camicia.
+  HAS articolo "la".
+  HAS val_tronco 8.
+END EVERY.
+
+EVERY ind_maglione IsA indumento.
+  NAME maglione.
+  HAS val_tronco 16.
 END EVERY.
 
 
@@ -990,6 +1106,52 @@ THE vicina IsA femmina AT giardino.
   HAS xDesc "È la tua vicina di casa, ma non sai come si chiama.".
 END THE vicina.
 
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- SCENOGRAFIA GUARDAROBA 
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+-- Mettiamo a disposizione del nostro eroe un po' di vestiario con cui testare
+-- i verbi per l'abbigliamento.
+
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- MOBILIO
+--------------------------------------------------------------------------------
+--==============================================================================
+
+--------------------------------------------------------------------------------
+-- Cassettiera per la biancheria
+--------------------------------------------------------------------------------
+THE cassettiera IsA contenitore_elencato AT guardaroba.
+  HAS articolo "la".
+  HAS xDesc "La cassettiera in cui conservi la tua biancheria.".
+  
+END THE cassettiera.
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- INDUMENTI 
+--------------------------------------------------------------------------------
+--==============================================================================
+THE boxer IsA ind_mutande IN cassettiera.
+  NAME boxer.
+  HAS articolo "i".
+END THE.
+
+THE tanga IsA ind_mutande IN cassettiera.
+  NAME tanga.
+  HAS genere 2.
+  HAS articolo "il".
+  HAS xDesc "Un tanga rosso dimenticato qui da qualche tua ex.".
+END THE.
+
+THE reggiseno IsA ind_reggiseno IN cassettiera.
+  HAS xDesc "Un reggiseno rosso dimenticato qui da qualche tua ex.".
+END THE.
 
 --------------------------------------------------------------------------------
 START AT cucina.
