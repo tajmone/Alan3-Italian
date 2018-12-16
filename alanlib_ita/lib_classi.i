@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.9.8-Alpha, 2018-12-08: Alan 3.0beta6
+--| v0.9.9-Alpha, 2019-01-06: Alan 3.0beta6
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -108,6 +108,7 @@ END ADD.
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
 --| 
+--| 
 --| Un `indumento` è un capo di vestiario implementato secondo le regole
 --| dell'estensione `xwear.i` di Alan Bampton. Il codice di questa classe
 --| impedisce di indossare gli indumenti in ordine insensato -- per esempio, non
@@ -115,7 +116,8 @@ END ADD.
 --| Queste funzionalità si applicano solo al protagonista, e non possono essere
 --| estese ai PNG.
 --|
---| Questa classe include la definizione dei verbi `indossa` e `togliti`.
+--| Questa classe include la ridefinizione dei verbi `esamina`, `indossa` e
+--| `togliti`.
 --|
 --| [NOTE]
 --| ============================================================================
@@ -135,28 +137,24 @@ END ADD.
 --| ========================================================================
 --<
 
-
---                                                                              TRANSLATE!
---------------------------------------------------------------------------------
--- To use this class, see the documentation text right after the
--- code below.
---------------------------------------------------------------------------------
-
--- @NOTE: I can't find 'undress' defined here:
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--- Also the verbs 'wear', 'remove' and 'undress' are defined here.
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- @TODO: Sostituisci questa parte con un'introduzione generale in cui viene    TODO!
+--        introdotto il vestiario in generale, con un riassunto dei vari
+--        componenti definiti; e sposta le parti che riguardano la classe
+--        indumento nella sezione dedicata ad essa, e idem per altri riferimenti.
 
 
---                                                                              TRANSLATE!
------------------------------------------------------------------
--- First, we declare the container for clothing.
------------------------------------------------------------------
-
-
--- An entity is present everywhere and thus the hero's clothing is always accessible.
--- This container is only used internally in the library; ignore.
-
+-->abbigliamento
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === L'abbigliamento dell'eroe
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Gli indumenti indossati dall'eroe (a differenza di quelli semplicemente in
+--| suo possesso) vengono immagazzinati nell'entità `abbigliamento`, che ha la
+--| proprietà contenitore:
 
 THE abbigliamento IsA ENTITY
   CONTAINER TAKING indumento.
@@ -166,13 +164,35 @@ THE abbigliamento IsA ENTITY
       SAY  mia_AT:header_abbigliamento_else.
 END THE.
 
---                                                                              TRANSLATE!
--------------------------------------------------------------------
--- Now, we define some common attributes for clothing as well as
--- how the verbs 'remove', 'undress' and 'wear' (and their synonyms) behave with this class.
--------------------------------------------------------------------
+--| Poiché le entità sono ubiquiescenti nel mondo dell'avventura, l'istanza
+--| `abbigliamento` e gli indumenti in essa contenuti saranno sempre accessibili
+--| durante il gioco.
+--| 
+--| Il verbo `inventario`, dopo aver elencato gli oggetti in possesso dell'eroe,
+--| elencherà anche gli indumenti da lui indossati tramite l'istruzione
+--| `LIST abbigliamento` (che invocherà lo `HEADER` dell'entità contenitore
+--| `abbigliamento`). Questo crea l'illusione che gli indumenti indossati siano
+--| parte dei possedimenti dell'eroe, mentre in realtà sono contenuti nell'entità
+--| `abbigliamento`.
+--| 
+--| [NOTE]
+--| =======================================================================
+--| L'entità `abbigliamento` è finalizzata all'uso interno della libereria,
+--| gli autori di avventure non devono preoccuparsi di essa.
+--| =======================================================================
 
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Gli indumenti
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Ora definiamo la classe `indumento` ed i suoi attributi comuni, dopodiché
+--| ridefiniamo su questa classe i verbi `esamina`, `indossa` e `togliti`.
 
+--<
 EVERY indumento IsA OBJECT
 
   IS indossabile.
@@ -191,6 +211,7 @@ EVERY indumento IsA OBJECT
 
   INITIALIZE
 
+--                                                                              TRANSLATE!
 
     -- the set attribute 'IS wearing' is defined to work for both the hero
     -- and NPCs:
@@ -220,7 +241,7 @@ EVERY indumento IsA OBJECT
         END IF.
     END FOR.
 
-
+--                                                                              TRANSLATE!
 
     -- all objects found in a piece of clothing, for example a wallet in a jacket,
     -- will be allowed back in the piece of clothing once taken from there:
@@ -230,8 +251,7 @@ EVERY indumento IsA OBJECT
       DO INCLUDE o IN consentiti OF THIS.
     END FOR.
 
-
-
+--                                                                              TRANSLATE!
 
     -- all clothing acquired and worn by the hero or an NPC mid-game is checked to
     -- show correctly when the possessions of an actor are listed:
@@ -242,11 +262,20 @@ EVERY indumento IsA OBJECT
 
 
   CONTAINER
+--                                                                              TRANSLATE!
   -- to allow for example a wallet to be put into a jacket
 
   -- If the clothing contains something, for example if a jacket contains a wallet,
   -- the wallet will be mentioned by default when the jacket is examined:
 
+-->verbo_esamina
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Verbo `esamina`
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--| 
+--<
 
   VERB esamina
     DOES AFTER
@@ -259,10 +288,14 @@ EVERY indumento IsA OBJECT
   END VERB esamina.
 
 
-
---==============================================================================
--- § x.x.x - Verbo "indossa"
---==============================================================================
+-->verbo_indossa
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Verbo `indossa`
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--| 
+--<
 
   VERB indossa
 
@@ -272,6 +305,16 @@ EVERY indumento IsA OBJECT
 
     DOES ONLY
 
+-- @NOTA: Il termine 'flag' è usato erroneamente qui, poiché i flag sono        FIXME!
+--        sono booleani. Dovrei cambiare il nome dell'attributo in qualcosa
+--        di più consono -- 'variabile'? Oppure specificare meglio (i valori
+--        validi qui sono due: 0 e 1, altri valori sono indice di problemi.)
+--~-----------------------------------------------------------------------------
+--| Il `wear_flag` è un flag multiuso impiegato per vari scopi nella libreria.
+--| In questo contesto, viene resettato a `0` prima di procedere con il codice,
+--| 
+--~-----------------------------------------------------------------------------
+
 --                                                                              TRANSLATE!
 --------------------------------------------------------------------
 -- 'wear_flag' is a multi-purpose flag used for several purposes in
@@ -280,6 +323,12 @@ EVERY indumento IsA OBJECT
 --------------------------------------------------------------------
 
       SET hero:wear_flag TO 0.
+
+--~-----------------------------------------------------------------------------
+--| Anzitutto, verifichiamo se l'eroe possiede già l'indumento e, in caso
+--| contrario, settiamo il `wear_flag` a `1` per indicare che l'indumento è
+--| stato raccolto nel corso dell'azione.
+--~-----------------------------------------------------------------------------
 
 --                                                                              TRANSLATE!
 --------------------------------------------------------------------
@@ -292,12 +341,31 @@ EVERY indumento IsA OBJECT
         THEN SET hero:wear_flag TO 1.
       END IF.
 
+--                                                                              FINISH/REVISE!
+--~-----------------------------------------------------------------------------
+--| Ora verificheremo se l'eroe può indossare l'indumento, esaminandone tutti i
+--| valori degli attributi per la mappatura delle zone del corpo interessate,
+--| e della stratificazione di indossamento, confrontandoli con lo stato attuale
+--| dell'abbigliamento dell'eroe.
+--~-----------------------------------------------------------------------------
+
 --                                                                              TRANSLATE!
 --------------------------------------------------------------------
 --  Now see if the player can put this item on by testing
 --  all of its coverage attributes against the player's state.
 --------------------------------------------------------------------
 
+--~ Controllo tronco
+--~ ================
+--                                                                              FINISH/REVISE!
+--~-----------------------------------------------------------------------------
+--| Iniziamo con l'attributo `val_tronco`. Se l'indumento del parametro fallisce
+--| questo test significa che l'eroe sta già indossando indumenti che coprono
+--| la zona del tronco e che questi indumenti appartengono allo stesso strato
+--| del parametro, o ad uno strato più esterno che ne blocca l'indossamento.
+--| In entrambi i casi non sarà possibile indossare l'indumento del parametro.
+--| Per tracciare se il testo è fallito, aggiungeremo 5 a `wear_flag`.
+--~-----------------------------------------------------------------------------
 
 --                                                                              TRANSLATE!
 --------------------------------------------------------------------
@@ -315,33 +383,49 @@ EVERY indumento IsA OBJECT
         THEN INCREASE hero:wear_flag BY 5.
       END IF.
 
+--~-----------------------------------------------------------------------------
+--| Ora procederemo con test analoghi sugli altri attributi.
+--~-----------------------------------------------------------------------------
 
 --                                                                              TRANSLATE!
 --------------------------------------------------------------------
 -- Perform a similar test for other attributes.
 --------------------------------------------------------------------
 
-
-      --IF THIS IN tempworn
-        --THEN
+--~ Controllo mani
+--~ ==============
 
       IF  THIS:val_mani <> 0
       AND THIS:val_mani <= SUM OF val_mani DIRECTLY IN abbigliamento
         THEN INCREASE hero:wear_flag BY 5.
       END IF.
 
+--~ Controllo piedi
+--~ ===============
 
       IF  THIS:val_piedi <> 0
       AND THIS:val_piedi <= SUM OF val_piedi DIRECTLY IN abbigliamento
         THEN INCREASE hero:wear_flag BY 5.
       END IF.
 
+--~ Controllo testa
+--~ ===============
 
       IF  THIS:val_testa <> 0
       AND THIS:val_testa <= SUM OF val_testa DIRECTLY IN abbigliamento
         THEN INCREASE hero:wear_flag BY 5.
       END IF.
 
+--~ Controllo gambe
+--~ ===============
+--                                                                              FINISH/REVISE!
+--~-----------------------------------------------------------------------------
+--| L'attributo `val_gambe` è un caso speciale e richiede di ritoccare l'attributo
+--| `tempcovered` dell'eroe affinché il codice rigetti opzioni insensate.
+--| Anzitutto, dispensiamo dai calcoli qualsiasi indumento simile a un cappotto,
+--| dato che questi non impedirebbe di indossare indumenti che interesssano la
+--| parte inferiore del corpo.
+--~-----------------------------------------------------------------------------
 
 --                                                                              TRANSLATE!
 --------------------------------------------------------------------
@@ -357,7 +441,15 @@ EVERY indumento IsA OBJECT
       IF hero:tempcovered >63 AND THIS:val_gambe < 33
         THEN SET hero:tempcovered TO hero:tempcovered -64.
       END IF.
-
+--                                                                              FINISH/REVISE!
+--~-----------------------------------------------------------------------------
+--| Ora, dispensiamo indumenti quali dress/la gonna/coverall, dato che questi
+--| non impediscono di indossare indumenti che interassano la parte inferiore
+--| del corpo. Una clausola nel codice esclude dall'indossabilità un indumento
+--| tipo un pagliaccetto, poiché una gonna ne ostacolerebbe l'indossamento.
+--| (indumenti quali dress/cappotto prevengono questo automaticamente in virtù
+--| del loro valore `val_tronco` superiore rispetto al pagliaccetto)
+--~-----------------------------------------------------------------------------
 
 --                                                                              TRANSLATE!
 --------------------------------------------------------------------
@@ -374,6 +466,13 @@ EVERY indumento IsA OBJECT
         THEN SET hero:tempcovered TO hero:tempcovered -32.
       END IF.
 
+--                                                                              FINISH/REVISE!
+--~-----------------------------------------------------------------------------
+--| Se a questo punto il `tempcovered` dell'eroe è ancora > 15 significa che stà
+--| indossando indumenti del tipo pantaloni, e quindi impediremo l'indossamento
+--| di indumenti del tipo ???'dress'??? poiché, nonostante sia tecnicamente fattibile
+--| è da considerarsi una scelta insensata.
+--~-----------------------------------------------------------------------------
 
 --                                                                              TRANSLATE!
 --------------------------------------------------------------------
@@ -387,6 +486,10 @@ EVERY indumento IsA OBJECT
         THEN SET hero:tempcovered TO hero:tempcovered +16.
       END IF.
 
+--                                                                              FINISH/REVISE!
+--~-----------------------------------------------------------------------------
+--| Da qui in poi, gli indumenti sono trattati come con le altre zone del corpo.
+--~-----------------------------------------------------------------------------
 
 --                                                                              TRANSLATE!
 --------------------------------------------------------------------
@@ -398,6 +501,15 @@ EVERY indumento IsA OBJECT
         THEN INCREASE hero:wear_flag BY 5.
       END IF.
 
+--~ Esito finale
+--~ ============
+
+--~-----------------------------------------------------------------------------
+--| A questo punto, il `wear_flag` avrà valore `0` se l'eroe possedeva già
+--| l'indumento e questi è indossabile, valore `1` se l'eroe l'ha raccolto nel
+--| corso dell'azione ed è indossabile. Qualsiasi valore superiore indicherà che
+--| l'indumento non ha passato uno o più test, e che l'eroe non potrà indossarlo. 
+--~-----------------------------------------------------------------------------
 
 --                                                                              TRANSLATE!
 --------------------------------------------------------------------
@@ -419,7 +531,7 @@ EVERY indumento IsA OBJECT
           EMPTY abbigliamento IN tempworn.
           LIST tempworn.
 
-  --                                                                              TRANSLATE!
+--                                                                              TRANSLATE!
           "Trying to put" SAY THE THIS. "on isn't very sensible."
 
           EMPTY tempworn IN abbigliamento.
@@ -438,9 +550,15 @@ EVERY indumento IsA OBJECT
 
 END VERB indossa.
 
---==============================================================================
--- § x.x.x - Verbo "togliti"
---==============================================================================
+
+-->verbo_togliti
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Verbo `togliti`
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--| 
+--<
 
 VERB togliti
   CHECK THIS IN abbigliamento
@@ -546,7 +664,7 @@ VERB togliti
     IF hero:wear_flag > 0
       THEN
         LIST abbigliamento.
-  --                                                                              TRANSLATE!
+--                                                                              TRANSLATE!
         "Trying to take" SAY THE THIS. "off isn't very sensible."
       ELSE
         LOCATE THIS IN hero.
@@ -590,6 +708,7 @@ END THE tempworn.
 -- mid-game is recognised to be worn by the actor:
 --------------------------------------------------------------------
 
+-- @TODO: traduci attributo 'worn_clothing_check'                               TRANSLATE!
 
 EVENT worn_clothing_check
   FOR EACH ac IsA ACTOR
@@ -744,15 +863,15 @@ END EVENT.
 -->tabella_vestiario(10960.1)
 --| .Indumenti Comuni
 --| [cols="<25d,5*^15m",options="header"]
+--~                                                                             TRANSLATE!
 --| |===========================================================================
 --| | Indumento    |`val_testa`|`val_tronco`|`val_gambe`|`val_piedi`|`val_mani`
 --~ +--------------------------+------------+-----------+-----------+----------+
 --| | cappello             | 2 |          0 |         0 |         0 |        0
 --| | canottiera/reggiseno | 0 |          2 |         0 |         0 |        0
---~                                                                             TRANSLATE!
---| | undies/panties       | 0 |          0 |         2 |         0 |        0
+--| | mutande/slip         | 0 |          0 |         2 |         0 |        0
 --| | teddy                | 0 |          4 |         4 |         0 |        0
---| | blouse/shirt/T-shirt | 0 |          8 |         0 |         0 |        0
+--| | blusa/shirt/T-shirt  | 0 |          8 |         0 |         0 |        0
 --| | dress/coveralls      | 0 |          8 |        32 |         0 |        0
 --| | gonna                | 0 |          0 |        32 |         0 |        0
 --| | pantaloni/shorts     | 0 |          0 |        16 |         0 |        0

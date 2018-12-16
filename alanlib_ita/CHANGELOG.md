@@ -17,6 +17,8 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [2019/01/06](#20190106)
+    - [Vestiario](#vestiario)
 - [2018/12/08 \(3\)](#20181208-3)
     - [Verbi](#verbi)
     - [Verbi Classi](#verbi-classi)
@@ -122,6 +124,16 @@ For previuos changes, see:
 
 -----
 
+
+# 2019/01/06
+
+- [`lib_classi.i`][lib_classi] (v0.9.9)
+
+## Vestiario
+
+Inizia a tradurre e doxterizzare la documentazione riguardante l'abbigliamento.
+
+<!---------------------------------------------------------------------------->
 
 # 2018/12/08 (3)
 
