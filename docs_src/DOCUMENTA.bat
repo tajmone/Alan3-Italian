@@ -1,4 +1,4 @@
-:: "DOCUMENTA.bat" v0.1.1 (2018-12-01)
+:: "DOCUMENTA.bat" v0.1.2 (2018-12-16)
 :: -----------------------------------------------------------------------------
 @ECHO OFF & CLS
 ECHO.
@@ -18,6 +18,11 @@ ECHO ^| 2. Converti da AsciiDoc a HTML ^|
 ECHO +--------------------------------+
 FOR %%i IN (*.asciidoc) DO CALL :convHTML %%i
 
+:: Facciamo in modo che la finestra del CMD rimagna aperta se lo script è stato
+:: lanciato da Esplora Risorse:
+ECHO "%cmdcmdline%" | FINDSTR /IC:"%windir%" >nul && (
+    CMD /K
+)
 EXIT /B
 
 :: =============================================================================
