@@ -13,24 +13,39 @@ esamina il cesto
 metti la mela nel cesto
 prendi la mela
 metti la mela nel cesto
+metti la mela nel cesto
 ; ------------------------------------------------------------------------------
-; TESTA parametri non adatti
+; TESTA parametro 1 inadatto
 ; ------------------------------------------------------------------------------
+metti il cesto nel cesto
 metti 1 nel cesto
 metti la pistola nel cesto
-metti nicky nel cesto
+metti Nicky nel cesto
 metti me nel cesto
+; ------------------------------------------------------------------------------
+; TESTA parametro 2 inadatto
+; ------------------------------------------------------------------------------
+metti la mela nel tavolo
+metti la mela in 1
+metti la mela in Nicky
+metti la mela in me
 ; ==============================================================================
 ; TESTA riempi_con'
 ; ==============================================================================
 riempi il cesto con la mela
 ; ------------------------------------------------------------------------------
-; TESTA parametri non adatti
+; TESTA parametro 2 inadatto
 ; ------------------------------------------------------------------------------
 riempi il cesto con 1
 riempi il cesto con la pistola
-riempi il cesto con nicky
+riempi il cesto con Nicky
 riempi il cesto con me
+; ------------------------------------------------------------------------------
+; TESTA parametro 1 inadatto (supporto)
+; ------------------------------------------------------------------------------
+; ** ERRORE! ** Manca un check per controllare che non sia un supporto:
+riempi il tavolo con la mela
+riempi il tavolo con 1
 ; ==============================================================================
 ; TESTA 'lancia_in'
 ; ==============================================================================
@@ -38,9 +53,18 @@ lancia la mela nel cesto
 prendi la mela
 lancia la mela nel cesto
 ; ------------------------------------------------------------------------------
-; TESTA parametri non adatti
+; TESTA parametro 1 inadatto
 ; ------------------------------------------------------------------------------
 lancia 1 nel cesto
 lancia la pistola nel cesto
-lancia nicky nel cesto
+lancia Nicky nel cesto
 lancia me nel cesto
+; ------------------------------------------------------------------------------
+; TESTA parametro 2 inadatto (supporto)
+; ------------------------------------------------------------------------------
+; ** ERRORE! ** Manca un check per controllare che non sia un supporto:
+lancia la mela nel tavolo
+lancia 1 nel tavolo
+lancia la pistola nel tavolo
+lancia Nicky nel tavolo
+lancia me nel tavolo

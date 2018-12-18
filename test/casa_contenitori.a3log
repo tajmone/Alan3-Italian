@@ -40,19 +40,40 @@ Presa.
 > metti la mela nel cesto
 Fatto, ora la mela è nel cesto per la frutta.
 
+> metti la mela nel cesto
+La mela è già dentro il cesto per la frutta.
+
 > ; ------------------------------------------------------------------------------
-> ; TESTA parametri non adatti
+> ; TESTA parametro 1 inadatto
 > ; ------------------------------------------------------------------------------
+> metti il cesto nel cesto
+Questo non ha alcun senso.
+
 > metti 1 nel cesto
 You can only metti objects.
 
 > metti la pistola nel cesto
 La pistola doesn't belong in il cesto per la frutta.
 
-> metti nicky nel cesto
+> metti Nicky nel cesto
 You can only metti objects.
 
 > metti me nel cesto
+Questo non ha alcun senso.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA parametro 2 inadatto
+> ; ------------------------------------------------------------------------------
+> metti la mela nel tavolo
+You can't put la mela inside il tavolo.
+
+> metti la mela in 1
+1 non è qualcosa in cui poter mettere cose.
+
+> metti la mela in Nicky
+Questo non ha alcun senso.
+
+> metti la mela in me
 Questo non ha alcun senso.
 
 > ; ==============================================================================
@@ -62,7 +83,7 @@ Questo non ha alcun senso.
 Il cesto per la frutta is already full of la mela.
 
 > ; ------------------------------------------------------------------------------
-> ; TESTA parametri non adatti
+> ; TESTA parametro 2 inadatto
 > ; ------------------------------------------------------------------------------
 > riempi il cesto con 1
 1 non è qualcosa con cui poter riempire il cesto per la frutta.
@@ -70,11 +91,21 @@ Il cesto per la frutta is already full of la mela.
 > riempi il cesto con la pistola
 Non puoi riempire il cesto per la frutta con la pistola.
 
-> riempi il cesto con nicky
+> riempi il cesto con Nicky
 Mr Nicky non è qualcosa con cui poter riempire il cesto per la frutta.
 
 > riempi il cesto con me
 Il hero non è qualcosa con cui poter riempire il cesto per la frutta.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA parametro 1 inadatto (supporto)
+> ; ------------------------------------------------------------------------------
+> ; ** ERRORE! ** Manca un check per controllare che non sia un supporto:
+> riempi il tavolo con la mela
+Il tavolo is already full of la mela.
+
+> riempi il tavolo con 1
+1 non è qualcosa con cui poter riempire il tavolo.
 
 > ; ==============================================================================
 > ; TESTA 'lancia_in'
@@ -89,7 +120,7 @@ Presa.
 Non otterresti nulla lanciando la mela nella cesto per la frutta.
 
 > ; ------------------------------------------------------------------------------
-> ; TESTA parametri non adatti
+> ; TESTA parametro 1 inadatto
 > ; ------------------------------------------------------------------------------
 > lancia 1 nel cesto
 You can only lancia objects.
@@ -97,10 +128,29 @@ You can only lancia objects.
 > lancia la pistola nel cesto
 La pistola doesn't belong in il cesto per la frutta.
 
-> lancia nicky nel cesto
+> lancia Nicky nel cesto
 You can only lancia objects.
 
 > lancia me nel cesto
+Questo non ha alcun senso.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA parametro 2 inadatto (supporto)
+> ; ------------------------------------------------------------------------------
+> ; ** ERRORE! ** Manca un check per controllare che non sia un supporto:
+> lancia la mela nel tavolo
+La mela doesn't belong in il tavolo.
+
+> lancia 1 nel tavolo
+You can only lancia objects.
+
+> lancia la pistola nel tavolo
+La pistola doesn't belong in il tavolo.
+
+> lancia Nicky nel tavolo
+You can only lancia objects.
+
+> lancia me nel tavolo
 Questo non ha alcun senso.
 
 > 

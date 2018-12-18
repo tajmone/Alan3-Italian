@@ -56,7 +56,7 @@ Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise sono qui.
 | - ABILITÀ: PUÒ parlare / NON PUÒ sparare / NON inanimato 
 | - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
 +------------------------------------------------------------------------------- 
-| xDesc: 
+| xDesc:
 +-------------------------------------------------------------------------------
 
 (Maria) 
@@ -89,7 +89,7 @@ Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise sono qui.
 | - ABILITÀ: PUÒ parlare / NON PUÒ sparare / NON inanimato 
 | - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
 +------------------------------------------------------------------------------- 
-| xDesc:
+| xDesc: 
 +-------------------------------------------------------------------------------
 
 (Romeo e Giuglietta) 
@@ -270,7 +270,7 @@ sono delle fate qui.
 | - ABILITÀ: PUÒ parlare / NON PUÒ sparare / NON inanimato 
 | - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
 +------------------------------------------------------------------------------- 
-| xDesc:
+| xDesc: 
 +-------------------------------------------------------------------------------
 
 (strega) 
