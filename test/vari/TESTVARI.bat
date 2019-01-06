@@ -1,7 +1,9 @@
-:: "AGGIORNA_TUTTO.bat" v3.2 (2018/12/08) | by Tristano Ajmone
+:: "TESTVARI.bat" v3.3 (2019/01/06) | by Tristano Ajmone
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                                                            ::
 ::                 TEST SUITE DELLA LIBRERIA STANDARD DI ALAN                 ::
+::                                                                            ::
+::                     TEST MULTIPLI SU AVVENTURE MULTIPLE                    ::
 ::                                                                            ::
 ::                             by Tristano Ajmone                             ::
 ::                                                                            ::
@@ -13,7 +15,9 @@
 ::   3. Salverà le trascrizioni delle partite in "<nomefilecomandi>.a3log".
 ::   4. Mostrerà nella console un rapporto finale su errori e statistiche.
 ::------------------------------------------------------------------------------
-@ECHO OFF & CLS
+@ECHO OFF
+:: Non cancellare lo schermo se invocato da "..\TESTA_TUTTO.bat":
+IF NOT DEFINED _TESTA_TUTTO_ CLS
 :: ================
 :: Setup Ambientale
 :: ================
@@ -34,7 +38,7 @@ ECHO.
 :: ================================
 :: Definisci Variabili dello Script
 :: ================================
-SET "_COMPILE_OPTS=-import ..\alanlib_ita\ -debug"
+SET "_COMPILE_OPTS=-import ..\..\alanlib_ita\ -import ..\casa\ -debug"
 SET /A _ERR=0          &:: Contatore Errori per Exit Code
 SET /A _CNT=0          &:: Contatore per le operazioni di processazione
 SET /A _ADVSOURCES=0   &:: Contatore delle avventure sorgenti
