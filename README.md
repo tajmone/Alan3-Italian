@@ -26,6 +26,8 @@ Project start date: 2018-04-13.
     - [Alan IF](#alan-if)
     - [Alan Standard Library](#alan-standard-library)
 - [Known Limitations](#known-limitations)
+    - [Handling Apostrophes in Prepositions](#handling-apostrophes-in-prepositions)
+    - [E-Grave Bug](#e-grave-bug)
 - [Acknowledgements](#acknowledgements)
 - [Third Party Assets](#third-party-assets)
     - [Highlight.js](#highlightjs)
@@ -132,6 +134,12 @@ The _Alan Standard Library_  is a set of preprogrammed basic verbs and classes t
 
 # Known Limitations
 
+Here follows the description of two Alan limitations in working with the Italian language. One is due to a lacking feature, the other to a bug.
+
+Both the requested feature and the bug have been addressed by Alan developer Thomas, and they will be integrated in the next Alan release.
+
+## Handling Apostrophes in Prepositions
+
 Currently, the parser can't handle prepositions with an apostrophe, therefore commands like:
 
     prendi la mela dall'albero
@@ -153,7 +161,31 @@ The nature of the problem is fully described in the Wiki page "[i18n Problems]".
 > 
 > The feature will be made available soon in public release, it's currently still being tested and documented.
 > 
+> For more deatils, see commit [1bfc8f7] which introduces this new feature:
+> 
+> ```
+> Handle elisions (contractions) with apostrophes
+> 
+> In latin langauges, such as Italian, contractions are commonly used
+> and represented with an apostrophe between the parts. This change
+> allows handling them as separated words although they are typed
+> together ("l'acqua" will be tried as the two words "l'" and "acqua").
+> ```
+> 
+> The upcoming feature will solve the problem by reserving a special treatment for words containing apostrophes: if the parsed word is not reckognized, Alan will split it into two words at the occurence of the (first) apostrophe, and throw them both back to the parser. This feature will also render unnecessary the creation of article-&-noun synonyms (e.g. `l'albero`) for objects whose article requires an apostrophe — which is currently required in order for the parser to understand `l'albero` as `albero`. 
+> 
 > My gratitude to __Thomas Nilefalk__ for having implemented this feature in support of the Italian Library project!
+
+
+[1bfc8f7]: https://bitbucket.org/alanif/alan/commits/1bfc8f772d8453aeae23c1f4810f95a3eeafe6f9 "View commit 1bfc8f7 on upstream Alan repository on Bitbucket"
+
+## E-Grave Bug
+
+Due to a bug, currently Alan doesn't preserve a grave accented E (`è`) in syntaxes and synonyms (the problem doesn't affect istances and parameters though).
+
+The origin of the problem was due to the omission of the E-grave character in a constant in the source code. Commit [ad2c7de]  ("Add forgotten grave accented e") fixed the problem.
+
+[ad2c7de]: https://bitbucket.org/alanif/alan/commits/ad2c7de756129657b465c4b089011c8e9a87b84d "View commit ad2c7de on upstream Alan repository on Bitbucket"
 
 
 # Acknowledgements
