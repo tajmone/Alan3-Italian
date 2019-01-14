@@ -1,7 +1,7 @@
 # Alan IF 3 Italian
 
     Alan Standard Library: 2.1
-    Alan Development Kit:  3.0beta6
+    Alan Development Kit:  3.0beta6 build 1852
 
 - https://github.com/tajmone/Alan3-Italian
 
@@ -18,16 +18,17 @@ Project start date: 2018-04-13.
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Introduction](#introduction)
-- [Status](#status)
+- [Project Status News](#project-status-news)
+    - [Jan 2019 — Major Breaktrhough With Alan 3.0beta6 build 1852](#jan-2019-%E2%80%94-major-breaktrhough-with-alan-30beta6-build-1852)
+        - [Support for Apostrophes in Prepositions](#support-for-apostrophes-in-prepositions)
+        - [E-Grave Bug Fixed!](#e-grave-bug-fixed)
+    - [Nov 2018 — All Verbs Translated](#nov-2018-%E2%80%94-all-verbs-translated)
 - [Project Contents](#project-contents)
 - [Work Environment Settings](#work-environment-settings)
     - [File Encodings](#file-encodings)
 - [About](#about)
     - [Alan IF](#alan-if)
     - [Alan Standard Library](#alan-standard-library)
-- [Known Limitations](#known-limitations)
-    - [Handling Apostrophes in Prepositions](#handling-apostrophes-in-prepositions)
-    - [E-Grave Bug](#e-grave-bug)
 - [Acknowledgements](#acknowledgements)
 - [Third Party Assets](#third-party-assets)
     - [Highlight.js](#highlightjs)
@@ -55,7 +56,66 @@ You can follow the discussion on this project on the [Alan-IF discussion group a
 > 
 > Once all docs are translated to Italian, a separate English README will be added to project.
 
-# Status
+# Project Status News
+
+Some flash news about milestones accomplishments in the project...
+
+
+## Jan 2019 — Major Breaktrhough With Alan 3.0beta6 build 1852 
+
+The new [developer snaphshot] of Alan [3.0beta6 build 1852] introduces a new feature especially for Italian, which is a major brakthrough in the development of this library, and it also fixes a bug that affected the Italian language and some Library verbs.
+
+
+[developer snaphshot]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots "Vai alla pagina delle Developer Snapshots sul sito di Alan"
+[3.0beta6 build 1852]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1852 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1852"
+
+
+### Support for Apostrophes in Prepositions
+
+The requested feature for handling composed tokens with apostrophes as separate words has been kindly implemented by Thomas into Alan to allow support for Italian prepositions with articles.
+
+Now the parser can handle articles and prepositions with an apostrophe, therefore commands like:
+
+    prendi la mela dall'albero
+    prendi l'arco
+
+... will now work out of the box!
+
+This new feature solves the problem by reserving a special treatment for words containing apostrophes: if the parsed word is not reckognized, Alan will split it into two words at the occurence of the (first) apostrophe, and throw them both back to the parser. 
+
+This feature also renders unnecessary the creation of article-&-noun synonyms (e.g. `l'albero`) for objects whose article requires an apostrophe — which up to this point was required in order for the parser to understand `l'albero` as `albero`. 
+
+My gratitude to __Thomas Nilefalk__ for having implemented this feature in support of the Italian Library project!
+
+For a discussion of the previous limitation, see:
+
+- https://groups.yahoo.com/neo/groups/alan-if/conversations/messages/3635
+
+For it's implementation details, see commit [1bfc8f7] which introduced this new feature:
+
+```
+Handle elisions (contractions) with apostrophes
+
+In latin langauges, such as Italian, contractions are commonly used
+and represented with an apostrophe between the parts. This change
+allows handling them as separated words although they are typed
+together ("l'acqua" will be tried as the two words "l'" and "acqua").
+```
+
+
+[1bfc8f7]: https://bitbucket.org/alanif/alan/commits/1bfc8f772d8453aeae23c1f4810f95a3eeafe6f9 "View commit 1bfc8f7 on upstream Alan repository on Bitbucket"
+
+### E-Grave Bug Fixed!
+
+The new build 1852 also fixes a bug which hindered the preservation of grave accented E charaters (`è`) in syntaxes and synonyms (the problem didn't affect istances and parameters though).
+
+This fixes a bunch of "question verbs" in the Library, which previously had to fallback on using the `é` character instead.
+
+The origin of the problem was due to the omission of the E-grave character in a constant in the source code. Commit [ad2c7de]  ("Add forgotten grave accented e") fixed the problem.
+
+[ad2c7de]: https://bitbucket.org/alanif/alan/commits/ad2c7de756129657b465c4b089011c8e9a87b84d "View commit ad2c7de on upstream Alan repository on Bitbucket"
+
+## Nov 2018 — All Verbs Translated
 
 All verbs (ca. 171) have been translated to Italian — for more details, see:
 
@@ -131,61 +191,6 @@ From the [Alan website]:
 Written by Anssi Räisänen. Current version: v2.1.
 
 The _Alan Standard Library_  is a set of preprogrammed basic verbs and classes to start building your own adventures. The standard library is not included with the ALAN programming system and must be downloaded separately.
-
-# Known Limitations
-
-Here follows the description of two Alan limitations in working with the Italian language. One is due to a lacking feature, the other to a bug.
-
-Both the requested feature and the bug have been addressed by Alan developer Thomas, and they will be integrated in the next Alan release.
-
-## Handling Apostrophes in Prepositions
-
-Currently, the parser can't handle prepositions with an apostrophe, therefore commands like:
-
-    prendi la mela dall'albero
-
-... will not be interpreted correctly by the parser. The player will have to either omit the apostrophe or insert a space after it:
-
-    prendi la mela dall albero
-    prendi la mela dall' albero
-
-... or resort to a shorthand syntax:
-
-    prendi mela da albero
-
-The nature of the problem is fully described in the Wiki page "[i18n Problems]".
-
-> __UPDATE__ — A new feature is currently being implemented in Alan to allow support for apostrophes, to support languages like Italian and French:
-> 
-> - https://groups.yahoo.com/neo/groups/alan-if/conversations/messages/3635
-> 
-> The feature will be made available soon in public release, it's currently still being tested and documented.
-> 
-> For more deatils, see commit [1bfc8f7] which introduces this new feature:
-> 
-> ```
-> Handle elisions (contractions) with apostrophes
-> 
-> In latin langauges, such as Italian, contractions are commonly used
-> and represented with an apostrophe between the parts. This change
-> allows handling them as separated words although they are typed
-> together ("l'acqua" will be tried as the two words "l'" and "acqua").
-> ```
-> 
-> The upcoming feature will solve the problem by reserving a special treatment for words containing apostrophes: if the parsed word is not reckognized, Alan will split it into two words at the occurence of the (first) apostrophe, and throw them both back to the parser. This feature will also render unnecessary the creation of article-&-noun synonyms (e.g. `l'albero`) for objects whose article requires an apostrophe — which is currently required in order for the parser to understand `l'albero` as `albero`. 
-> 
-> My gratitude to __Thomas Nilefalk__ for having implemented this feature in support of the Italian Library project!
-
-
-[1bfc8f7]: https://bitbucket.org/alanif/alan/commits/1bfc8f772d8453aeae23c1f4810f95a3eeafe6f9 "View commit 1bfc8f7 on upstream Alan repository on Bitbucket"
-
-## E-Grave Bug
-
-Due to a bug, currently Alan doesn't preserve a grave accented E (`è`) in syntaxes and synonyms (the problem doesn't affect istances and parameters though).
-
-The origin of the problem was due to the omission of the E-grave character in a constant in the source code. Commit [ad2c7de]  ("Add forgotten grave accented e") fixed the problem.
-
-[ad2c7de]: https://bitbucket.org/alanif/alan/commits/ad2c7de756129657b465c4b089011c8e9a87b84d "View commit ad2c7de on upstream Alan repository on Bitbucket"
 
 
 # Acknowledgements

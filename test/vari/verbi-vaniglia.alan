@@ -1,3 +1,4 @@
+-- Alan >= 3.0beta6 build 1852 | Alan Italian >= v0.10.0-Alpha
 --==============================================================================
 -- "Verbi alla Vaniglia" by Tristano Ajmone, 2018.
 --==============================================================================
@@ -14,6 +15,7 @@ THE mia_AT IsA blocco_definizioni
   HAS       autore  "Tristano Ajmone".
   HAS         anno   2018.
   HAS     versione  "1".
+  HAS        AlanV  "v3.0beta6 build 1852".
   ------------------------------------------------------------------------------
 END THE.
 
@@ -54,7 +56,6 @@ THE apatia IsA object AT ufficio.
   HAS articolo "l'".
   IS femminile.
   NAME apatia.
-  NAME 'l''apatia'.
   IS NOT esaminabile.
   DESCRIPTION
     "Nell'aria c'è un'apatia così fitta che la si potrebbe tagliare con un coltello."
@@ -85,7 +86,6 @@ END THE ronzio.
 THE inserviente IsA maschio AT ufficio.
   HAS articolo "l'".
   NAME inserviente.
-  NAME 'l''inserviente'.
   HAS xDesc
     "L'inserviente è occupato a svolgere le sue mansioni.".
 END THE inserviente.

@@ -438,15 +438,36 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.9.1-Alpha,</span>
-<span id="revdate">2018-11-25</span>
-<br><span id="revremark">Alan 3.0beta6</span>
+<span id="revnumber">versione 0.10.0-Alpha,</span>
+<span id="revdate">2019-01-14</span>
+<br><span id="revremark">Alan 3.0beta6 build 1852</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Indice dei contenuti</div>
 <ul class="sectlevel1">
 <li><a href="#_introduzione">Introduzione</a></li>
-<li><a href="#_predefined_player_words">Predefined Player Words</a></li>
+<li><a href="#_predefined_player_words">Predefined Player Words</a>
+<ul class="sectlevel2">
+<li><a href="#_conjunction_words">CONJUNCTION WORDS</a></li>
+<li><a href="#_noise_words">NOISE WORDS</a>
+<ul class="sectlevel3">
+<li><a href="#_articoli_determinativi">Articoli determinativi</a></li>
+</ul>
+</li>
+<li><a href="#_all_words">ALL WORDS</a></li>
+<li><a href="#_except_words">EXCEPT WORDS</a></li>
+<li><a href="#_them_words">THEM WORDS</a></li>
+</ul>
+</li>
+<li><a href="#_preposizioni_articolate">Preposizioni articolate</a>
+<ul class="sectlevel2">
+<li><a href="#_di_articolo">&#8220;DI&#8221; + Articolo</a></li>
+<li><a href="#_a_articolo">&#8220;A&#8221; + Articolo</a></li>
+<li><a href="#_da_articolo">&#8220;DA&#8221; + Articolo</a></li>
+<li><a href="#_in_articolo">&#8220;IN&#8221; + Articolo</a></li>
+<li><a href="#_su_articolo">&#8220;SU&#8221; + Articolo</a></li>
+</ul>
+</li>
 <li><a href="#_todo">TODO</a>
 <ul class="sectlevel2">
 <li><a href="#_check_list_generale">Check-list generale</a></li>
@@ -489,7 +510,7 @@ ciò avverrà, questo modulo sarà rimosso.</p>
 <div class="paragraph">
 <p>Le <em>predefined Player Words</em> sono dei gruppi di vocaboli del giocatore
 predefiniti in Alan (ossia, integrate nel compilatore stesso). Le loro
-definizioni variano in ciascuna delle lingue nativamente supportate da Alan.
+definizioni variano in ciascuna delle lingue supportate nativamente da Alan.
 La libreria italiana utilizza la lingua inglese come base di partenza.</p>
 </div>
 <div class="paragraph">
@@ -520,6 +541,383 @@ NOISE: go the</pre>
 </tr>
 </table>
 </div>
+<div class="sect2">
+<h3 id="_conjunction_words"><a class="anchor" href="#_conjunction_words"></a>CONJUNCTION WORDS</h3>
+<div class="literalblock">
+<div class="content">
+<pre>AND: and then</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Le <em>conjunction words</em> (parole di congiunzione) consentono al parser di
+interpretare correttamente i comandi del giocatore che fanno riferimento a
+più oggetti, o le sequenze di comandi indipendenti combinati in una sola riga
+di comando. Esempi:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>"prendi la mela E la pera"</p>
+</li>
+<li>
+<p>"prendi la mela E prendi la pera"</p>
+</li>
+<li>
+<p>"prendi la mela POI prendi la pera"</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS e, poi = 'and'.</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Attenzione"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Il giocatore non potrà digitare "E POI" ("&lt;commando&gt; E POI &lt;commando&gt;")
+poiché il parser lo vedrebbe come "&lt;commando&gt; AND AND &lt;commando&gt;".
+Purtroppo non è possibile definire <code>'e poi'</code> come sinonimo di <code>'then'</code>
+poiché il parser opera solo su lessemi isolati.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_noise_words"><a class="anchor" href="#_noise_words"></a>NOISE WORDS</h3>
+<div class="literalblock">
+<div class="content">
+<pre>NOISE: go the</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Le <em>noise words</em> (parole rumore) vengono ignorate dal parser che le tratta
+come rumore di sottofondo.</p>
+</div>
+<div class="sect3">
+<h4 id="_articoli_determinativi"><a class="anchor" href="#_articoli_determinativi"></a>Articoli determinativi</h4>
+<div class="paragraph">
+<p>Definiamo tutti gli articoli determinativi come sinonimi della <em>noise word</em>
+<code>'the'</code> affinché vengano ignorati nel parsing dei comandi del giocatore, di
+modo che comandi come "prendi LA mela" vengano interpretati come "prendi
+mela".</p>
+</div>
+<div class="paragraph">
+<p>Nel caso di articoli con l&#8217;apostrofo, che vanno a formare un singolo lessema
+con il sostantivo cui si riferiscono, il parser di Alan prima fallirà nel
+riconoscere il lessema (es. <code>l&#8217;albero</code>) ma, appurata la presenza di un
+apostrofo nel lessema, prima di generare un errore eseguirà un ulteriore
+tentativo spezzando in due il lessema originale nel punto successivo al primo
+apostrofo, e ritenterà il parsing dei due nuovi lessemi (<code>l'</code> + <code>albero</code>).
+Durante il secondo tentativo, l&#8217;articolo <code>l'</code> verrà soppresso  in quanto
+<em>noise word</em>, e <code>albero</code> verrà ora riconosciuto come il nome dell&#8217;oggetto
+corrispondente.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS il, lo, la, 'l''', i, gli, le = 'the'.</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_all_words"><a class="anchor" href="#_all_words"></a>ALL WORDS</h3>
+<div class="literalblock">
+<div class="content">
+<pre>ALL: all everything</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS tutto, tutti, tutte = all.</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_except_words"><a class="anchor" href="#_except_words"></a>EXCEPT WORDS</h3>
+<div class="literalblock">
+<div class="content">
+<pre>BUT: but except</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Le <em>except words</em> (parole di eccezione) operano congiuntamente alle <em>ALL words</em>
+per escludere alcuni oggetti dall&#8217;insieme. Esempi:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>"lascia TUTTO TRANNE la mela"</p>
+</li>
+<li>
+<p>"lascia TUTTO ECCETTO la mela"</p>
+</li>
+<li>
+<p>"lascia TUTTO ESCLUSA la mela"</p>
+</li>
+<li>
+<p>"lascia TUTTO ESCLUSO il mango"</p>
+</li>
+<li>
+<p>"lascia TUTTO ESCLUSI il mango e la mela"</p>
+</li>
+<li>
+<p>"lascia TUTTO ESCLUSE la mela e la pera"</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS tranne, eccetto, escluso, esclusa, esclusi, escluse = except.</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_them_words"><a class="anchor" href="#_them_words"></a>THEM WORDS</h3>
+<div class="literalblock">
+<div class="content">
+<pre>THEM: them</pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Attenzione"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Non ho ancora capito bene come vengono
+usati i vocaboli di questo gruppo.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_preposizioni_articolate"><a class="anchor" href="#_preposizioni_articolate"></a>Preposizioni articolate</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>La libreria definisce dei sinonimi per trasformare le preposizioni articolate
+nelle corrispettive preposizioni semplici (es. <em>della</em> &#8594; <em>di</em>).</p>
+</div>
+<div class="paragraph">
+<p>Solo alcune preposizioni (di|a|da|in|con|su) hanno un&#8217;applicazione practica
+nelle avventure testuali, e non tutte le forme contratte delle preposizioni
+articolate sono implementabili.
+La seguente tabella riporta tra parentesi le forme contratte non supportate,
+e in corsivo quelle che non subiscono sostituzioni nel parsing:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">il</th>
+<th class="tableblock halign-left valign-top">lo</th>
+<th class="tableblock halign-left valign-top">la</th>
+<th class="tableblock halign-left valign-top">l'</th>
+<th class="tableblock halign-left valign-top">i</th>
+<th class="tableblock halign-left valign-top">gli</th>
+<th class="tableblock halign-left valign-top">le</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">di</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">del</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dello</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">della</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dell'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dei</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">degli</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delle</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">a</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">al</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">allo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alla</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">agli</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alle</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">da</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dallo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dalla</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dall'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(dai)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dagli</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dalle</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nello</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nella</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nell'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nei</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">negli</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nelle</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">con</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(col)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(collo)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(colla)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>con l'</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(coi)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(cogli)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(colle)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">su</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sul</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sullo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sulla</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sull'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sui</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sugli</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sulle</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">per</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(pel)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(pello)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(pella)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(pell')</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(pei)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(pegli)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(pelle)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Il mancato supporto di <em>dai</em> è dovuto a un conflitto con l&#8217;imperativo del
+verbo <em>dare</em>, e si sta cercando una soluzione a questo.</p>
+</div>
+<div class="paragraph">
+<p>Le forme contratte di <em>con</em>+articolo sono state tralasciate per via dei
+potenziali conflitti con altri vocaboli: <em>collo</em> (parte del corpo), <em>colla</em>
+(adesiva), <em>cogli</em> (verbo), <em>colle</em> (collina). L&#8217;implementazione di queste
+forme come sinonimi avrebbe impedito l&#8217;uso di quei vocaboli nelle avventure.</p>
+</div>
+<div class="paragraph">
+<p>Le varie preposizioni con <em>per</em> (<em>pel</em>, <em>pello</em>, ecc.) sono state omesse
+poiché raramente usate oggi, così come altre forme arcaiche (<em>gl&#8217;</em>, e affini).</p>
+</div>
+<div class="paragraph">
+<p>Nell&#8217;implementazione attuale sussistono comunque potenziali conflitti:
+<em>dei</em> (divinità), <em>dallo/a/e</em> (verbo), <em>Nello/a</em> (nomi propri),
+<em>nei</em> (cutanei).
+Ma all&#8217;atto pratico questi non costituiscono un problema reale per le AT, e
+simili occorrenze sono più rare nelle AT di quanto non lo siano nella vita
+reale, ed eventuali loro conflitti dovrebbero essere comunque gestibili.</p>
+</div>
+<div class="paragraph">
+<p>Sull&#8217;argomento, si veda l&#8217;eccellente articolo di Max Bianchi:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.tads.org/xlat3/En_vs_It.htm" class="bare">http://www.tads.org/xlat3/En_vs_It.htm</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Adesso, definiamo i vari sinonimi.</p>
+</div>
+<div class="sect2">
+<h3 id="_di_articolo"><a class="anchor" href="#_di_articolo"></a>&#8220;DI&#8221; + Articolo</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS
+  del, dello, della, 'dell''', dei, degli, delle = di.</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_a_articolo"><a class="anchor" href="#_a_articolo"></a>&#8220;A&#8221; + Articolo</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS
+  al, allo, alla, 'all''', ai, agli, alle  = a.</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_da_articolo"><a class="anchor" href="#_da_articolo"></a>&#8220;DA&#8221; + Articolo</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS
+  dal, dallo, dalla, 'dall''', dall, dagli, dalle  = da.</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Attenzione"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>La preposizione <code>dai</code> è stata omessa dalla lista di sinonimi poiché creava
+conflitto con la forma imperativa del verbo &#8220;dare&#8221;, causando l&#8217;errore di
+compilazione:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>333 E : The word 'dai' is defined to be both a synonym and another word class.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Sto ancora cercando una soluzione ottimale al problema.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_in_articolo"><a class="anchor" href="#_in_articolo"></a>&#8220;IN&#8221; + Articolo</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS
+  nel, nello, nella, 'nell''', nei, negli, nelle = 'in'.</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_su_articolo"><a class="anchor" href="#_su_articolo"></a>&#8220;SU&#8221; + Articolo</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS
+  sul, sullo, sulla, 'sull''', sui, sugli, sulle = su.</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -534,33 +932,21 @@ italiano del modulo supplementare.</p>
 <div class="paragraph">
 <p>Lista della spesa per le varie cosucce da fare:</p>
 </div>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="fa fa-square-o"></i> Approfondisci <em>THEM WORDS</em>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Risolvi conflitti con verbo <code>dai_a</code> che prevenie <code>SYNONYMS dai = da.</code>.</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_check_list_per_doxter"><a class="anchor" href="#_check_list_per_doxter"></a>Check-list per Doxter</h3>
 <div class="paragraph">
 <p>Finisci di trasformare commenti in documentazione Doxter:</p>
-</div>
-<div class="ulist checklist">
-<ul class="checklist">
-<li>
-<p><i class="fa fa-square-o"></i> Doxterizza <em>CONJUNCTION WORDS</em>.</p>
-</li>
-<li>
-<p><i class="fa fa-square-o"></i> Doxterizza <em>NOISE WORDS</em>.</p>
-</li>
-<li>
-<p><i class="fa fa-square-o"></i> Doxterizza <em>ALL WORDS</em>.</p>
-</li>
-<li>
-<p><i class="fa fa-square-o"></i> Doxterizza <em>EXCEPT WORDS</em>.</p>
-</li>
-<li>
-<p><i class="fa fa-square-o"></i> Doxterizza <em>THEM WORDS</em>.</p>
-</li>
-<li>
-<p><i class="fa fa-square-o"></i> Doxterizza <em>Preposizioni Articolate</em>.</p>
-</li>
-</ul>
 </div>
 </div>
 </div>
@@ -568,7 +954,7 @@ italiano del modulo supplementare.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.9.1-Alpha<br>
+Versione 0.10.0-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

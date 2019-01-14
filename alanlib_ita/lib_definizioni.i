@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.9.1-Alpha, 2018-11-25: Alan 3.0beta6
+--| v0.10.0-Alpha, 2019-01-14: Alan 3.0beta6 build 1852
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -539,13 +539,12 @@ me, myself, yourself, self = hero. ---> @TODO                                   
 
 EVERY blocco_definizioni IsA LOCATION
 
-
 -->intestazione(.20)
---~==============================================================================
---~------------------------------------------------------------------------------
+--~=============================================================================
+--~-----------------------------------------------------------------------------
 --| === Attributi dell'intestazione
---~------------------------------------------------------------------------------
---~==============================================================================
+--~-----------------------------------------------------------------------------
+--~=============================================================================
 --| L'istanza `mia_AT` (del `blocco_definizioni`) espone all'autore degli
 --| attributi per fornire i dettagli del banner che potrà (facoltativamente)
 --| essere mostrato all'inizio della partita tramite il template dell'istanza
@@ -556,6 +555,16 @@ EVERY blocco_definizioni IsA LOCATION
   HAS        autore  "Il Mio Nome".
   HAS          anno   2018.
   HAS      versione  "1".
+
+--| La libreria definisce anche l'attributo `AlanV`, che mostrerà nel banner la
+--| versione di Alan utilizzata:
+
+  HAS         AlanV  "v3.0beta6".
+
+--| Il valore predefinito è quello dell'ultima release di Alan all'epoca della
+--| libreria. L'autore è libero di sovrascriverlo nel caso stesse usando una
+--| versione di Alan più recente, diversa, o una developer snapshot, senza dover
+--| modificare i sorgenti della libreria.
 --<
 
   -- ===============
@@ -1320,7 +1329,7 @@ END EVENT.
 
 THE intestazione IsA LOCATION
 
-    DESCRIPTION
+  DESCRIPTION
 
     "$p" STYLE alert. SAY mia_AT:titolo. STYLE normal.
 
@@ -1329,8 +1338,8 @@ THE intestazione IsA LOCATION
       END IF.
 
     "$n(C)" SAY mia_AT:autore. "," SAY mia_AT:anno. "."
-    "$nAvventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
-     $nLibreria Standard Italiana v2.1"
+    "$nAvventura realizzata con ALAN Interactive Fiction Language" SAY mia_AT:AlanV. "."
+    "$nLibreria Standard Italiana v2.1"
 
     IF versione OF mia_AT <> "0"
       THEN "$nVersione" SAY mia_AT:versione.

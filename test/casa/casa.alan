@@ -1,3 +1,4 @@
+-- Alan >= 3.0beta6 build 1852 | Alan Italian >= v0.10.0-Alpha
 --==============================================================================
 -- "La Casa" by Tristano Ajmone, 2018.
 --==============================================================================
@@ -14,6 +15,7 @@ THE mia_AT IsA blocco_definizioni
   HAS       autore  "Tristano Ajmone".
   HAS         anno   2018.
   HAS     versione  "1".
+  HAS        AlanV  "v3.0beta6 build 1852".
   ------------------------------------------------------------------------------
 END THE.
 
@@ -927,7 +929,6 @@ END THE staccionata.
 
 THE ombrellone IsA object AT giardino.
   NAME ombrellone.
-  NAME 'l''ombrellone'.
   HAS articolo "l'".
   IS NOT raggiungibile.
 END THE ombrellone.
@@ -938,7 +939,6 @@ END THE ombrellone.
 -- Un oggetto distante...
 THE aquilone IsA object AT giardino.
   NAME aquilone.
-  NAME 'l''aquilone'.
   HAS articolo "l'".
   IS distante.
 END THE aquilone.
@@ -1026,7 +1026,6 @@ THE piscina IsA liquido AT giardino.
   HAS articolo "la".
   NAME piscina.
   NAME acqua.
-  NAME 'l''acqua'.
 
   VERB nuota
     DOES ONLY

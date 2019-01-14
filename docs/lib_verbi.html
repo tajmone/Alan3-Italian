@@ -438,9 +438,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.9.13-Alpha,</span>
-<span id="revdate">2018-12-08</span>
-<br><span id="revremark">Alan 3.0beta6</span>
+<span id="revnumber">versione 0.10.0-Alpha,</span>
+<span id="revdate">2019-01-14</span>
+<br><span id="revremark">Alan 3.0beta6 build 1852</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Indice dei contenuti</div>
@@ -2414,7 +2414,7 @@ verbi correlati tra loro.</p>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#128128;</p></td>
+<td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>chi_sono_io</code></p></td>
@@ -2432,7 +2432,7 @@ verbi correlati tra loro.</p>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#128128;</p></td>
+<td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>cosa_sono_io</code></p></td>
@@ -2450,7 +2450,7 @@ verbi correlati tra loro.</p>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#128128;</p></td>
+<td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>dove_mi_trovo</code></p></td>
@@ -4236,47 +4236,6 @@ in cui il giocatore impartisce un ordine diretto al personaggio protagonista
 o domande poste dal protagonista stesso (p.es. &#8220;chi sono?&#8221;, &#8220;sì&#8221;, &#8220;dove
 è il tesoro?&#8221;).</p>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Attenzione"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p><strong>BUG!</strong>  Per qualche ragione, Alan non riesce a preservare la <code>è</code> grave nelle
-sintassi e nei sinonimi (il problema non si verifica nelle istanze e nei
-parametri). Tutte le altre lettere accentate (<code>à</code>, <code>é</code>, <code>ì</code>, <code>ò</code> e <code>ù</code>)
-funzionano correttamente, solo la <code>è</code> grave causa problemi.</p>
-</div>
-<div class="paragraph">
-<p>Questo implica che tutti i verbi di domande che contengono la <code>è</code> grave non
-funzionano allo stato attuale poiché l&#8217;interprete non riesce a riconoscere
-la <code>è</code> della sintassi:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>chi_è</code></p>
-</li>
-<li>
-<p><code>cosa_è</code></p>
-</li>
-<li>
-<p><code>dove_è</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Per ora si dovrà ripiegare sull&#8217;uso della <code>é</code> acuta, finché il problema non
-è risolto a monte tramite un bugfix. Più che una soluzione è un compromesso
-(orribile, oltre che inutile), ma è giusto per andare avanti con il lavoro e
-preservare il codice di questi verbi.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 <div class="sect2">
 <h3 id="_domanda_chi"><a class="anchor" href="#_domanda_chi"></a>Domanda chi</h3>
 <div class="paragraph">
@@ -4888,7 +4847,7 @@ vicini tra loro verbi correlati, simmetrici e/o complementari.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.9.13-Alpha<br>
+Versione 0.10.0-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

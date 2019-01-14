@@ -18,475 +18,454 @@ For the latest changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2018/11/13](#20181113)
-    - [Bump Up Lib to v0.8.0](#bump-up-lib-to-v080)
-    - [Verb Restriction Attributes](#verb-restriction-attributes)
-    - [Verb: `shake`](#verb-shake)
-    - [Verb: `squeeze`](#verb-squeeze)
-    - [Verb: `clean`](#verb-clean)
-    - [Verb: `rub`](#verb-rub)
-- [2018/11/12 \(6\)](#20181112-6)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-1)
-    - [Verb: `climb`](#verb-climb)
-- [2018/11/12 \(5\)](#20181112-5)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-2)
-    - [Verbs: `pry` and `pry_with`](#verbs-pry-and-pry_with)
-- [2018/11/12 \(4\)](#20181112-4)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-3)
-    - [Verb: `stand_on`](#verb-stand_on)
-    - [Verb: `climb_on`](#verb-climb_on)
-- [2018/11/12 \(3\)](#20181112-3)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-4)
-    - [Meta Verb: `'about'`](#meta-verb-about)
-    - [Meta Verb: `hint`](#meta-verb-hint)
-- [2018/11/12 \(2\)](#20181112-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-5)
-    - [Verb: `search`](#verb-search)
-    - [Fix Verb `ascolta` \(was `listen`\)](#fix-verb-ascolta-was-listen)
-- [2018/11/12 \(1\)](#20181112-1)
-    - [Verb Responses](#verb-responses)
-    - [Verb: `'show'`](#verb-show)
-- [2018/11/11 \(2\)](#20181111-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-6)
-    - [Verbs: `knock` and `knock_error`](#verbs-knock-and-knock_error)
-    - [Verb: `lift`](#verb-lift)
-    - [Verb: `follow`](#verb-follow)
-- [2018/11/11 \(1\)](#20181111-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-7)
-    - [Group of Verbs: `fire*`](#group-of-verbs-fire)
-    - [Delete `shoot*` Verbs](#delete-shoot-verbs)
-    - [Verb Responses](#verb-responses-1)
-- [2018/11/10 \(5\)](#20181110-5)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-8)
-    - [Verbs: `enter` and `'exit'`](#verbs-enter-and-exit)
-    - [Verb Responses](#verb-responses-2)
-- [2018/11/10 \(4\)](#20181110-4)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-9)
-    - [Verb: `turn`](#verb-turn)
-- [2018/11/10 \(3\)](#20181110-3)
-    - [Verb: `shout`](#verb-shout)
-- [2018/11/10 \(2\)](#20181110-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-10)
-    - [Verb: `catch`](#verb-catch)
-- [2018/11/10 \(1\)](#20181110-1)
-    - [Doxterize Verbs Groups](#doxterize-verbs-groups)
-- [2018/11/09 \(8\)](#20181109-8)
-- [2018/11/09 \(7\)](#20181109-7)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-11)
-    - [Verb: `kick`](#verb-kick)
-    - [Doxterize](#doxterize)
-- [2018/11/09 \(6\)](#20181109-6)
-    - [Group of Verbs: `push*`](#group-of-verbs-push)
-- [2018/11/09 \(5\)](#20181109-5)
-    - [Group of Verbs: `dive*` and `swim*`](#group-of-verbs-dive-and-swim)
-- [2018/11/09 \(4\)](#20181109-4)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-12)
-    - [Verb: `tear`](#verb-tear)
-- [2018/11/09 \(3\)](#20181109-3)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-13)
-    - [Group of Verbs: `throw*`](#group-of-verbs-throw)
-- [2018/11/09 \(2\)](#20181109-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-14)
-    - [Verb: `stand`](#verb-stand)
-    - [Delete Verb: `get_up`](#delete-verb-get_up)
-    - [Verb: `get_off`](#verb-get_off)
-    - [Verbs `lie_*`](#verbs-lie_)
-- [2018/11/09 \(1\)](#20181109-1)
-    - [Verbs: `jump`, `jump_in` and `jump_on`](#verbs-jump-jump_in-and-jump_on)
-    - [Verb Responses](#verb-responses-3)
-- [2018/11/08](#20181108)
-        - [Fix Verb Responses](#fix-verb-responses)
-- [2018/11/03 \(3\)](#20181103-3)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-15)
-    - [Verbs `put*`](#verbs-put)
-    - [Verb Responses](#verb-responses-4)
-    - [Doxterize](#doxterize-1)
-- [2018/11/03 \(2\)](#20181103-2)
-    - [Code Cleanup](#code-cleanup)
-    - [Doxterize](#doxterize-2)
-- [2018/11/03 \(1\)](#20181103-1)
-    - [Verb: `bite`](#verb-bite)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-16)
-    - [Verb Responses](#verb-responses-5)
-- [2018/11/02 \(2\)](#20181102-2)
-    - [Doxterize Classes](#doxterize-classes)
-    - [Verbs: `empty*` and `pour*`](#verbs-empty-and-pour)
-    - [Verb Responses](#verb-responses-6)
-- [2018/11/02 \(1\)](#20181102-1)
-    - [Verb: `taste`](#verb-taste)
-- [2018/11/01](#20181101)
-    - [Verb: `sip`](#verb-sip)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-17)
-    - [Verb Responses](#verb-responses-7)
-    - [Doxterize Verbs](#doxterize-verbs)
-    - [Tweak Lib Classes](#tweak-lib-classes)
-- [2018/10/31 \(2\)](#20181031-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-18)
-    - [Verbs: `smell0` and `smell`](#verbs-smell0-and-smell)
-- [2018/10/31 \(1\)](#20181031-1)
-    - [Doxterize Verbs](#doxterize-verbs-1)
-- [2018/10/25](#20181025)
-    - [Make `inventario` Not META](#make-inventario-not-meta)
-    - [Doxterize Verbs](#doxterize-verbs-2)
-- [2018/10/24](#20181024)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-19)
-    - [Verb: `'score'`](#verb-score)
-- [2018/10/22 \(2\)](#20181022-2)
-    - [`script*` Verbs](#script-verbs)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-20)
-- [2018/10/22 \(1\)](#20181022-1)
-    - [Rename Restriction Attributes](#rename-restriction-attributes)
-    - [Rename Verbs](#rename-verbs)
-- [2018/10/21 \(3\)](#20181021-3)
-    - [`notify*` Verbs](#notify-verbs)
-    - [Verb Responses](#verb-responses-8)
-    - [Library Attributes for Notify](#library-attributes-for-notify)
-    - [Score Event](#score-event)
-- [2018/10/21 \(2\)](#20181021-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-21)
-    - [Fix VERB END IDs](#fix-verb-end-ids)
-- [2018/10/21 \(1\)](#20181021-1)
-    - [Fix META VERBs](#fix-meta-verbs)
-- [2018/10/19 \(2\)](#20181019-2)
-    - [Verb: `verbose`](#verb-verbose)
-    - [Verb: `brief` \(buggy\)](#verb-brief-buggy)
-    - [Verb: `credits`](#verb-credits)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-22)
-- [2018/10/19 \(1\)](#20181019-1)
-    - [Verb: `scratch`](#verb-scratch)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-23)
-    - [Verb Responses](#verb-responses-9)
-- [2018/10/18](#20181018)
-    - [Translate Responses for "Look" Verbs](#translate-responses-for-look-verbs)
-    - [Verb Responses](#verb-responses-10)
-- [2018/10/17](#20181017)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-24)
-    - [Translate "Look" Verbs](#translate-look-verbs)
-        - [Verb: `'look'`](#verb-look)
-        - [Verb: `look behind`](#verb-look-behind)
-        - [Verb: `look in`](#verb-look-in)
-        - [Verb: `look out of`](#verb-look-out-of)
-        - [Verb: `look through`](#verb-look-through)
-        - [Verb: `look under`](#verb-look-under)
-        - [Verb: `look up`](#verb-look-up)
-    - [Delete `sotto` Synonym](#delete-sotto-synonym)
-- [2018/10/15 \(3\)](#20181015-3)
-    - [Move Messages Attributes to `lib_messaggi.i`](#move-messages-attributes-to-lib_messaggii)
-    - [Bump Up Lib to v0.7.0](#bump-up-lib-to-v070)
-- [2018/10/15 \(2\)](#20181015-2)
-    - [Verb: `consult`](#verb-consult)
-- [2018/10/15 \(1\)](#20181015-1)
-    - [Doxterize `lib_luoghi.i` and `lib_supplemento.i`](#doxterize-lib_luoghii-and-lib_supplementoi)
-- [2018/10/14 \(3\)](#20181014-3)
-    - [Doxterize `lib_classi.i`](#doxterize-lib_classii)
-- [2018/10/14 \(2\)](#20181014-2)
-    - [Banner Translation](#banner-translation)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-25)
-- [2018/10/14 \(2\)](#20181014-2-1)
-    - [Doxterize `lib_definizioni.i`](#doxterize-lib_definizionii)
-- [2018/10/14 \(1\)](#20181014-1)
-    - [Optimize Restricted Actions](#optimize-restricted-actions)
-    - [Tweak Level 2 Restrictions](#tweak-level-2-restrictions)
-- [2018/10/13](#20181013)
-    - [Add Doxter for Documentation Generator](#add-doxter-for-documentation-generator)
-- [2018/10/09](#20181009)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-26)
-    - [Verb: `Tell`](#verb-tell)
-- [2018/08/27 \(3\)](#20180827-3)
-    - [New Recurrent Verb Responses Attributes](#new-recurrent-verb-responses-attributes)
-- [2018/08/27 \(2\)](#20180827-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-27)
-    - [Verb Responses](#verb-responses-11)
-    - [Verbs: `talk` and `talk_to`](#verbs-talk-and-talk_to)
-- [2018/08/27 \(1\)](#20180827-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-28)
-    - [Verb: `ask`](#verb-ask)
-- [2018/08/24](#20180824)
-    - [Fix Verb `chiedi` \(`ask_for`\)](#fix-verb-chiedi-ask_for)
-- [2018/08/22 \(3\)](#20180822-3)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-29)
-    - [Verb: `ask_for`](#verb-ask_for)
-    - [Fix Actors Initialization \(Again\)](#fix-actors-initialization-again)
-- [2018/08/22 \(2\)](#20180822-2)
-    - [Fix Actors Initialization](#fix-actors-initialization)
-- [2018/08/22 \(1\)](#20180822-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-30)
-    - [Verb: `say`](#verb-say)
-    - [Verb: `say_to`](#verb-say_to)
-- [2018/08/18 \(2\)](#20180818-2)
-    - [Update to Alan 3 Beta 6](#update-to-alan-3-beta-6)
-    - [Fix Noise Words as Synomyms of `'the'`](#fix-noise-words-as-synomyms-of-the)
-- [2018/08/18 \(1\)](#20180818-1)
-    - [Group Together Verbs That Are Questions/Statements](#group-together-verbs-that-are-questionsstatements)
-- [2018/08/16 \(2\)](#20180816-2)
-    - [Fix Actors Initialization and Description](#fix-actors-initialization-and-description)
-- [2018/08/16 \(1\)](#20180816-1)
-    - [Verb Responses](#verb-responses-12)
-    - [Corretto Risposte Per `indossa` e `togliti`](#corretto-risposte-per-indossa-e-togliti)
-- [2018/08/11](#20180811)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-31)
-    - [Verb Responses](#verb-responses-13)
-    - [Verb: `remove`](#verb-remove)
-- [2018/08/09](#20180809)
-    - [Verb Responses](#verb-responses-14)
-    - [Verb: `wear`](#verb-wear)
-- [2018/08/08](#20180808)
-    - [Deleted `present_actor` Attribute](#deleted-present_actor-attribute)
-    - [Translated Actors Inventory Messages](#translated-actors-inventory-messages)
-- [2018/08/07](#20180807)
-- [2018/08/06 \(2\)](#20180806-2)
-    - [Inizializzazione di `OBJECT` anziché `THING`](#inizializzazione-di-object-anzich%C3%A9-thing)
-    - [Inizializzazione di `ACTOR`](#inizializzazione-di-actor)
-    - [Note Sugli Attori Con Nome Proprio](#note-sugli-attori-con-nome-proprio)
-        - [Attori Plurali](#attori-plurali)
-        - [Attori e `vocale`](#attori-e-vocale)
-        - [Preposizioni Semplici](#preposizioni-semplici)
-        - [Articoli](#articoli)
-- [2018/08/06 \(1\)](#20180806-1)
-    - [Library Attributes](#library-attributes)
-- [2018/08/02 \(3\)](#20180802-3)
-    - [Verb Responses](#verb-responses-15)
-    - [Verbs: `tie` and `tie_to`](#verbs-tie-and-tie_to)
-- [2018/08/02 \(2\)](#20180802-2)
-- [2018/08/02 \(1\)](#20180802-1)
-    - [Verbs: `kill` and `kill_with`](#verbs-kill-and-kill_with)
-    - [Verbs: `touch` and `touch_with`](#verbs-touch-and-touch_with)
-    - [Code Cleanup](#code-cleanup-1)
-- [2018/08/01 \(4\)](#20180801-4)
-    - [Verb Responses](#verb-responses-16)
-    - [Verb: `sing`](#verb-sing)
-    - [Verb: `kiss`](#verb-kiss)
-    - [Verb: `pull`](#verb-pull)
-- [2018/08/01 \(3\)](#20180801-3)
-    - [Verbs: `attack` and `attack_with`](#verbs-attack-and-attack_with)
-- [2018/08/01 \(2\)](#20180801-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-32)
-    - [Verb Responses](#verb-responses-17)
-    - [Verbs: `cut` and `cut_with`](#verbs-cut-and-cut_with)
-    - [Verb: `dance`](#verb-dance)
-    - [Verb: `dig`](#verb-dig)
-- [2018/08/01 \(1\)](#20180801-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-33)
-    - [Verb: `drive`](#verb-drive)
-    - [Verbs: `listen0` and `listen`](#verbs-listen0-and-listen)
-- [2018/07/31 \(2\)](#20180731-2)
-    - [Verb: `free`](#verb-free)
-    - [Verb: `think`](#verb-think)
-    - [Verb: `think_about`](#verb-think_about)
-- [2018/07/31 \(1\)](#20180731-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-34)
-    - [Verb Responses](#verb-responses-18)
-    - [Verb: `fix`](#verb-fix)
-- [2018/07/29 \(2\)](#20180729-2)
-    - [Remove Verb Restriction Attributes](#remove-verb-restriction-attributes)
-- [2018/07/29 \(1\)](#20180729-1)
-    - [Accendere/Spegnere Dispositivi e Fonti di Luce](#accenderespegnere-dispositivi-e-fonti-di-luce)
-    - [Il Nocciolo del Problema](#il-nocciolo-del-problema)
-    - [Abolizione dell'Attributo `naturale`](#abolizione-dellattributo-naturale)
-    - [Rilfessioni sull'Attributo `illuminato`](#rilfessioni-sullattributo-illuminato)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-35)
-    - [Testo dei Verbi](#testo-dei-verbi)
-- [2018/07/28 \(3\)](#20180728-3)
-    - [Verb Responses](#verb-responses-19)
-- [2018/07/28 \(2\)](#20180728-2)
-    - [Verb Responses](#verb-responses-20)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-36)
-    - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
-- [2018/07/28 \(1\)](#20180728-1)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-37)
-    - [Verb: `answer`](#verb-answer)
-    - [Verbs: `fill` and `fill_with`](#verbs-fill-and-fill_with)
-- [2018/07/27 \(7\)](#20180727-7)
-- [2018/07/27 \(6\)](#20180727-6)
-    - [New THING Attribute `vocale` for Adjectives Conjucation](#new-thing-attribute-vocale-for-adjectives-conjucation)
-        - [Italian Adjectives Refresher](#italian-adjectives-refresher)
-        - [Adjectives and The Library](#adjectives-and-the-library)
-        - [The `vocale` Attribute](#the-vocale-attribute)
-- [2018/07/27 \(5\)](#20180727-5)
-- [2018/07/27 \(4\)](#20180727-4)
-    - [Translated Verb Responses + Attributes](#translated-verb-responses--attributes)
-    - [Verb: `find`](#verb-find)
-- [2018/07/27 \(3\)](#20180727-3)
-- [2018/07/27 \(2\)](#20180727-2)
-    - [Translated Verb Responses + Attributes](#translated-verb-responses--attributes-1)
-    - [Italian Responses For Illegal Obj2 With](#italian-responses-for-illegal-obj2-with)
-- [2018/07/27 \(1\)](#20180727-1)
-    - [Italian Responses For Illegal Obj2 With](#italian-responses-for-illegal-obj2-with-1)
-- [2018/07/26 \(10\)](#20180726-10)
-    - [Verb Response Attributes Renaming](#verb-response-attributes-renaming)
-    - [Renamed Verb Responses](#renamed-verb-responses)
-        - [Changed Suffixes](#changed-suffixes)
-        - [Other Responses Renames](#other-responses-renames)
-- [2018/07/26 \(9\)](#20180726-9)
-    - [Translate Verb Responses for Closed Obj2 Blocking the Action](#translate-verb-responses-for-closed-obj2-blocking-the-action)
-- [2018/07/26 \(8\)](#20180726-8)
-    - [Translate Verb Responses for Closed Obj1 Blocking the Action](#translate-verb-responses-for-closed-obj1-blocking-the-action)
-- [2018/07/26 \(7\)](#20180726-7)
-    - [Translate Verb Responses for Already Unlocked Objects](#translate-verb-responses-for-already-unlocked-objects)
-- [2018/07/26 \(6\)](#20180726-6)
-    - [Translate Verb Responses for Already Locked Objects](#translate-verb-responses-for-already-locked-objects)
-- [2018/07/26 \(5\)](#20180726-5)
-    - [Translate Verb Responses for Already Close Objects](#translate-verb-responses-for-already-close-objects)
-- [2018/07/26 \(4\)](#20180726-4)
-    - [Translate Verb Responses for Already Open Objects](#translate-verb-responses-for-already-open-objects)
-- [2018/07/26 \(3\)](#20180726-3)
-    - [Translate Verb Responses for Distant Params](#translate-verb-responses-for-distant-params)
-- [2018/07/26 \(2\)](#20180726-2)
-    - [Implement Italian Verb Responses](#implement-italian-verb-responses)
-        - [Param 1 Illegal or Unsuitable](#param-1-illegal-or-unsuitable)
-- [2018/07/26 \(1\)](#20180726-1)
-    - [Polish and Fix Translated Verbs](#polish-and-fix-translated-verbs)
-    - [Verb Parameters Fixes](#verb-parameters-fixes)
-- [2018/07/25 \(8\)](#20180725-8)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-38)
-    - [Verbs: `yes` and `no`](#verbs-yes-and-no)
-- [2018/07/25 \(7\)](#20180725-7)
-- [2018/07/25 \(6\)](#20180725-6)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-39)
-    - [Verb: `play`](#verb-play)
-    - [Verb: `play_with`](#verb-play_with)
-- [2018/07/25 \(5\)](#20180725-5)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-40)
-- [2018/07/25 \(4\)](#20180725-4)
-- [2018/07/25 \(3\)](#20180725-3)
-    - [Library Instances](#library-instances)
-    - [Library Classes](#library-classes)
-- [2018/07/25 \(2\)](#20180725-2)
-    - [Library Classes](#library-classes-1)
-- [2018/07/25 \(1\)](#20180725-1)
-    - [Clothing Attributes](#clothing-attributes)
-- [2018/07/24 \(5\)](#20180724-5)
-    - [Library Attributes](#library-attributes-1)
-    - [Library Classes](#library-classes-2)
-    - [Library Instances](#library-instances-1)
-- [2018/07/24 \(4\)](#20180724-4)
-- [2018/07/24 \(3\)](#20180724-3)
-    - [Input Response Messages](#input-response-messages)
-- [2018/07/24 \(2\)](#20180724-2)
-- [2018/07/24 \(1\)](#20180724-1)
-    - [Who/Where Verbs](#whowhere-verbs)
-- [2018/07/23 \(5\)](#20180723-5)
-- [2018/07/23 \(4\)](#20180723-4)
-    - [Verb: `use`](#verb-use)
-    - [Verb: `use_with`](#verb-use_with)
-- [2018/07/23 \(2\)](#20180723-2)
-    - [Verb: `drop`](#verb-drop)
-- [2018/07/23 \(1\)](#20180723-1)
-- [2018/07/22 \(7\)](#20180722-7)
-    - [Tweaked `LISTED_CONTAINER`](#tweaked-listed_container)
-    - [Small Fixes](#small-fixes)
-- [2018/07/22 \(6\)](#20180722-6)
-- [2018/07/22 \(5\)](#20180722-5)
-- [2018/07/22 \(4\)](#20180722-4)
-    - [Verb: `sell`](#verb-sell)
-- [2018/07/22 \(3\)](#20180722-3)
-    - [Translate Verb Parameters](#translate-verb-parameters)
-- [2018/07/22 \(2\)](#20180722-2)
-    - [Changed Behaviour of `examine`](#changed-behaviour-of-examine)
-- [2018/07/22 \(1\)](#20180722-1)
-    - [Verb: `write`](#verb-write)
-- [2018/07/21 \(5\)](#20180721-5)
-    - [Verb: `examine`](#verb-examine)
-    - [Verb: `read`](#verb-read)
-- [2018/07/21 \(4\)](#20180721-4)
-- [2018/07/21 \(3\)](#20180721-3)
-- [2018/07/21 \(2\)](#20180721-2)
-- [2018/07/21 \(1\)](#20180721-1)
-- [2018/07/20 \(3\)](#20180720-3)
-    - [Library Locations](#library-locations)
-        - [Rooms](#rooms)
-        - [Sites](#sites)
-        - [Other Locations ...](#other-locations-)
-- [2018/07/20 \(2\)](#20180720-2)
-    - [Null Objects](#null-objects)
-- [2018/07/20 \(1\)](#20180720-1)
-    - [Make `banner` an Instance of `LOCATION`](#make-banner-an-instance-of-location)
-- [2018/07/19 \(5\)](#20180719-5)
-- [2018/07/19 \(4\)](#20180719-4)
-    - [Banner Attributes](#banner-attributes)
-- [2018/07/19 \(3\)](#20180719-3)
-    - [Add Remaining Preposizioni Articolate Synonyms](#add-remaining-preposizioni-articolate-synonyms)
-- [2018/07/19 \(2\)](#20180719-2)
-- [2018/07/19 \(1\)](#20180719-1)
-- [2018/07/18 \(4\)](#20180718-4)
-- [2018/07/18 \(3\)](#20180718-3)
-    - [Verb Responses Attributes](#verb-responses-attributes)
-        - [Translated verb responses attributes:](#translated-verb-responses-attributes)
-        - [Renamed verb responses attributes:](#renamed-verb-responses-attributes)
-- [2018/07/18 \(2\)](#20180718-2)
-    - [Verb: `drink`](#verb-drink)
-- [2018/07/18 \(1\)](#20180718-1)
-- [2018/07/17 \(5\)](#20180717-5)
-- [2018/07/17 \(4\)](#20180717-4)
-    - [Verb: `eat`](#verb-eat)
-- [2018/07/17 \(3\)](#20180717-3)
-    - [Meta Verbs](#meta-verbs)
-- [2018/07/17 \(2\)](#20180717-2)
-- [2018/07/17 \(1\)](#20180717-1)
-    - [Verb: `climb_through`](#verb-climb_through)
-- [2018/07/03 \(3\)](#20180703-3)
-    - [Verb: `go_to`](#verb-go_to)
-- [2018/07/03 \(2\)](#20180703-2)
-    - [Verb: `buy`](#verb-buy)
-- [2018/07/03 \(1\)](#20180703-1)
-- [2018/07/02](#20180702)
-    - [Verb: `burn`/`burn_with`](#verb-burnburn_with)
-    - [`my_game` Verb Messages](#my_game-verb-messages)
-        - [Translated Messages](#translated-messages)
-        - [New Messages for Missing Parameters](#new-messages-for-missing-parameters)
-- [2018/06/29](#20180629)
-- [2018/06/24 \(3\)](#20180624-3)
-- [2018/06/24 \(2\)](#20180624-2)
-- [2018/06/24 \(1\)](#20180624-1)
-    - [Translate StdLib's `plural`](#translate-stdlibs-plural)
-- [2018/06/23 \(2\)](#20180623-2)
-- [2018/06/23 \(1\)](#20180623-1)
-    - [Verb `again`](#verb-again)
-- [2018/06/16 \(3\)](#20180616-3)
-    - [Verb: `wait`](#verb-wait)
-    - [Verb: `sleep`](#verb-sleep)
-- [2018/06/16 \(2\)](#20180616-2)
-- [2018/06/16 \(1\)](#20180616-1)
-    - [Translate `check_obj_suitable_XX` Messages](#translate-check_obj_suitable_xx-messages)
-- [2018/06/11](#20180611)
-    - [Library Files Renamed to Italian](#library-files-renamed-to-italian)
-- [2018/06/10](#20180610)
-    - [The New `articolo` Attribute](#the-new-articolo-attribute)
-    - [Preposizioni Articolate](#preposizioni-articolate)
-- [2018/06/02](#20180602)
-- [2018/05/31:2](#201805312)
-- [2018/05/31:1](#201805311)
-    - [Verb: `restore`](#verb-restore)
-    - [Verb: `restart`](#verb-restart)
-    - [Verb: `quit`](#verb-quit)
-- [2018/05/28](#20180528)
-- [2018/05/27](#20180527)
-    - [Verb: `save`](#verb-save)
-- [2018/05/22 \(3\)](#20180522-3)
-    - [Verb: `pray`](#verb-pray)
-    - [Verb: `break`](#verb-break)
-    - [Verb: `break_with`](#verb-break_with)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-41)
-- [2018/05/22 \(2\)](#20180522-2)
-    - [Verb Restriction Attributes](#verb-restriction-attributes-42)
-- [2018/05/22 \(1\)](#20180522-1)
-    - [Verb: `undress`](#verb-undress)
-- [2018/05/19](#20180519)
-    - [Verb: `take`](#verb-take)
-    - [Verb: `take_from`](#verb-take_from)
-    - [Verb: `give`](#verb-give)
-- [2018/05/15](#20180515)
-- [2018/05/12 \(2\)](#20180512-2)
-- [2018/05/12 \(1\)](#20180512-1)
-- [2018/05/01](#20180501)
-    - [Directions](#directions)
-    - [Movement Messages](#movement-messages)
+- [Alan 3.0beta6](#alan-30beta6)
+    - [2018/11/13](#20181113)
+        - [Bump Up Lib to v0.8.0](#bump-up-lib-to-v080)
+        - [Verb Restriction Attributes](#verb-restriction-attributes)
+        - [Verb: `shake`](#verb-shake)
+        - [Verb: `squeeze`](#verb-squeeze)
+        - [Verb: `clean`](#verb-clean)
+        - [Verb: `rub`](#verb-rub)
+    - [2018/11/12 \(6\)](#20181112-6)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-1)
+        - [Verb: `climb`](#verb-climb)
+    - [2018/11/12 \(5\)](#20181112-5)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-2)
+        - [Verbs: `pry` and `pry_with`](#verbs-pry-and-pry_with)
+    - [2018/11/12 \(4\)](#20181112-4)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-3)
+        - [Verb: `stand_on`](#verb-stand_on)
+        - [Verb: `climb_on`](#verb-climb_on)
+    - [2018/11/12 \(3\)](#20181112-3)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-4)
+        - [Meta Verb: `'about'`](#meta-verb-about)
+        - [Meta Verb: `hint`](#meta-verb-hint)
+    - [2018/11/12 \(2\)](#20181112-2)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-5)
+        - [Verb: `search`](#verb-search)
+        - [Fix Verb `ascolta` \(was `listen`\)](#fix-verb-ascolta-was-listen)
+    - [2018/11/12 \(1\)](#20181112-1)
+        - [Verb Responses](#verb-responses)
+        - [Verb: `'show'`](#verb-show)
+    - [2018/11/11 \(2\)](#20181111-2)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-6)
+        - [Verbs: `knock` and `knock_error`](#verbs-knock-and-knock_error)
+        - [Verb: `lift`](#verb-lift)
+        - [Verb: `follow`](#verb-follow)
+    - [2018/11/11 \(1\)](#20181111-1)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-7)
+        - [Group of Verbs: `fire*`](#group-of-verbs-fire)
+        - [Delete `shoot*` Verbs](#delete-shoot-verbs)
+        - [Verb Responses](#verb-responses-1)
+    - [2018/11/10 \(5\)](#20181110-5)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-8)
+        - [Verbs: `enter` and `'exit'`](#verbs-enter-and-exit)
+        - [Verb Responses](#verb-responses-2)
+    - [2018/11/10 \(4\)](#20181110-4)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-9)
+        - [Verb: `turn`](#verb-turn)
+    - [2018/11/10 \(3\)](#20181110-3)
+        - [Verb: `shout`](#verb-shout)
+    - [2018/11/10 \(2\)](#20181110-2)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-10)
+        - [Verb: `catch`](#verb-catch)
+    - [2018/11/10 \(1\)](#20181110-1)
+        - [Doxterize Verbs Groups](#doxterize-verbs-groups)
+    - [2018/11/09 \(8\)](#20181109-8)
+    - [2018/11/09 \(7\)](#20181109-7)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-11)
+        - [Verb: `kick`](#verb-kick)
+        - [Doxterize](#doxterize)
+    - [2018/11/09 \(6\)](#20181109-6)
+        - [Group of Verbs: `push*`](#group-of-verbs-push)
+    - [2018/11/09 \(5\)](#20181109-5)
+        - [Group of Verbs: `dive*` and `swim*`](#group-of-verbs-dive-and-swim)
+    - [2018/11/09 \(4\)](#20181109-4)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-12)
+        - [Verb: `tear`](#verb-tear)
+    - [2018/11/09 \(3\)](#20181109-3)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-13)
+        - [Group of Verbs: `throw*`](#group-of-verbs-throw)
+    - [2018/11/09 \(2\)](#20181109-2)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-14)
+        - [Verb: `stand`](#verb-stand)
+        - [Delete Verb: `get_up`](#delete-verb-get_up)
+        - [Verb: `get_off`](#verb-get_off)
+        - [Verbs `lie_*`](#verbs-lie_)
+    - [2018/11/09 \(1\)](#20181109-1)
+        - [Verbs: `jump`, `jump_in` and `jump_on`](#verbs-jump-jump_in-and-jump_on)
+        - [Verb Responses](#verb-responses-3)
+    - [2018/11/08](#20181108)
+    - [2018/11/03 \(3\)](#20181103-3)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-15)
+        - [Verbs `put*`](#verbs-put)
+        - [Verb Responses](#verb-responses-4)
+        - [Doxterize](#doxterize-1)
+    - [2018/11/03 \(2\)](#20181103-2)
+        - [Code Cleanup](#code-cleanup)
+        - [Doxterize](#doxterize-2)
+    - [2018/11/03 \(1\)](#20181103-1)
+        - [Verb: `bite`](#verb-bite)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-16)
+        - [Verb Responses](#verb-responses-5)
+    - [2018/11/02 \(2\)](#20181102-2)
+        - [Doxterize Classes](#doxterize-classes)
+        - [Verbs: `empty*` and `pour*`](#verbs-empty-and-pour)
+        - [Verb Responses](#verb-responses-6)
+    - [2018/11/02 \(1\)](#20181102-1)
+        - [Verb: `taste`](#verb-taste)
+    - [2018/11/01](#20181101)
+        - [Verb: `sip`](#verb-sip)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-17)
+        - [Verb Responses](#verb-responses-7)
+        - [Doxterize Verbs](#doxterize-verbs)
+        - [Tweak Lib Classes](#tweak-lib-classes)
+    - [2018/10/31 \(2\)](#20181031-2)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-18)
+        - [Verbs: `smell0` and `smell`](#verbs-smell0-and-smell)
+    - [2018/10/31 \(1\)](#20181031-1)
+        - [Doxterize Verbs](#doxterize-verbs-1)
+    - [2018/10/25](#20181025)
+        - [Make `inventario` Not META](#make-inventario-not-meta)
+        - [Doxterize Verbs](#doxterize-verbs-2)
+    - [2018/10/24](#20181024)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-19)
+        - [Verb: `'score'`](#verb-score)
+    - [2018/10/22 \(2\)](#20181022-2)
+        - [`script*` Verbs](#script-verbs)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-20)
+    - [2018/10/22 \(1\)](#20181022-1)
+        - [Rename Restriction Attributes](#rename-restriction-attributes)
+        - [Rename Verbs](#rename-verbs)
+    - [2018/10/21 \(3\)](#20181021-3)
+        - [`notify*` Verbs](#notify-verbs)
+        - [Verb Responses](#verb-responses-8)
+        - [Library Attributes for Notify](#library-attributes-for-notify)
+        - [Score Event](#score-event)
+    - [2018/10/21 \(2\)](#20181021-2)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-21)
+        - [Fix VERB END IDs](#fix-verb-end-ids)
+    - [2018/10/21 \(1\)](#20181021-1)
+        - [Fix META VERBs](#fix-meta-verbs)
+    - [2018/10/19 \(2\)](#20181019-2)
+        - [Verb: `verbose`](#verb-verbose)
+        - [Verb: `brief` \(buggy\)](#verb-brief-buggy)
+        - [Verb: `credits`](#verb-credits)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-22)
+    - [2018/10/19 \(1\)](#20181019-1)
+        - [Verb: `scratch`](#verb-scratch)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-23)
+        - [Verb Responses](#verb-responses-9)
+    - [2018/10/18](#20181018)
+        - [Translate Responses for "Look" Verbs](#translate-responses-for-look-verbs)
+        - [Verb Responses](#verb-responses-10)
+    - [2018/10/17](#20181017)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-24)
+        - [Translate "Look" Verbs](#translate-look-verbs)
+        - [Delete `sotto` Synonym](#delete-sotto-synonym)
+    - [2018/10/15 \(3\)](#20181015-3)
+        - [Move Messages Attributes to `lib_messaggi.i`](#move-messages-attributes-to-lib_messaggii)
+        - [Bump Up Lib to v0.7.0](#bump-up-lib-to-v070)
+    - [2018/10/15 \(2\)](#20181015-2)
+        - [Verb: `consult`](#verb-consult)
+    - [2018/10/15 \(1\)](#20181015-1)
+        - [Doxterize `lib_luoghi.i` and `lib_supplemento.i`](#doxterize-lib_luoghii-and-lib_supplementoi)
+    - [2018/10/14 \(3\)](#20181014-3)
+        - [Doxterize `lib_classi.i`](#doxterize-lib_classii)
+    - [2018/10/14 \(2\)](#20181014-2)
+        - [Banner Translation](#banner-translation)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-25)
+    - [2018/10/14 \(2\)](#20181014-2-1)
+        - [Doxterize `lib_definizioni.i`](#doxterize-lib_definizionii)
+    - [2018/10/14 \(1\)](#20181014-1)
+        - [Optimize Restricted Actions](#optimize-restricted-actions)
+        - [Tweak Level 2 Restrictions](#tweak-level-2-restrictions)
+    - [2018/10/13](#20181013)
+        - [Add Doxter for Documentation Generator](#add-doxter-for-documentation-generator)
+    - [2018/10/09](#20181009)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-26)
+        - [Verb: `Tell`](#verb-tell)
+    - [2018/08/27 \(3\)](#20180827-3)
+        - [New Recurrent Verb Responses Attributes](#new-recurrent-verb-responses-attributes)
+    - [2018/08/27 \(2\)](#20180827-2)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-27)
+        - [Verb Responses](#verb-responses-11)
+        - [Verbs: `talk` and `talk_to`](#verbs-talk-and-talk_to)
+    - [2018/08/27 \(1\)](#20180827-1)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-28)
+        - [Verb: `ask`](#verb-ask)
+    - [2018/08/24](#20180824)
+        - [Fix Verb `chiedi` \(`ask_for`\)](#fix-verb-chiedi-ask_for)
+    - [2018/08/22 \(3\)](#20180822-3)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-29)
+        - [Verb: `ask_for`](#verb-ask_for)
+        - [Fix Actors Initialization \(Again\)](#fix-actors-initialization-again)
+    - [2018/08/22 \(2\)](#20180822-2)
+        - [Fix Actors Initialization](#fix-actors-initialization)
+    - [2018/08/22 \(1\)](#20180822-1)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-30)
+        - [Verb: `say`](#verb-say)
+        - [Verb: `say_to`](#verb-say_to)
+    - [2018/08/18 \(2\)](#20180818-2)
+        - [Update to Alan 3 Beta 6](#update-to-alan-3-beta-6)
+        - [Fix Noise Words as Synomyms of `'the'`](#fix-noise-words-as-synomyms-of-the)
+- [Alan 3.0beta5](#alan-30beta5)
+    - [2018/08/18 \(1\)](#20180818-1)
+        - [Group Together Verbs That Are Questions/Statements](#group-together-verbs-that-are-questionsstatements)
+    - [2018/08/16 \(2\)](#20180816-2)
+        - [Fix Actors Initialization and Description](#fix-actors-initialization-and-description)
+    - [2018/08/16 \(1\)](#20180816-1)
+        - [Verb Responses](#verb-responses-12)
+        - [Corretto Risposte Per `indossa` e `togliti`](#corretto-risposte-per-indossa-e-togliti)
+    - [2018/08/11](#20180811)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-31)
+        - [Verb Responses](#verb-responses-13)
+        - [Verb: `remove`](#verb-remove)
+    - [2018/08/09](#20180809)
+        - [Verb Responses](#verb-responses-14)
+        - [Verb: `wear`](#verb-wear)
+    - [2018/08/08](#20180808)
+        - [Deleted `present_actor` Attribute](#deleted-present_actor-attribute)
+        - [Translated Actors Inventory Messages](#translated-actors-inventory-messages)
+    - [2018/08/07](#20180807)
+    - [2018/08/06 \(2\)](#20180806-2)
+        - [Inizializzazione di `OBJECT` anziché `THING`](#inizializzazione-di-object-anzich%C3%A9-thing)
+        - [Inizializzazione di `ACTOR`](#inizializzazione-di-actor)
+        - [Note Sugli Attori Con Nome Proprio](#note-sugli-attori-con-nome-proprio)
+    - [2018/08/06 \(1\)](#20180806-1)
+        - [Library Attributes](#library-attributes)
+    - [2018/08/02 \(3\)](#20180802-3)
+        - [Verb Responses](#verb-responses-15)
+        - [Verbs: `tie` and `tie_to`](#verbs-tie-and-tie_to)
+    - [2018/08/02 \(2\)](#20180802-2)
+    - [2018/08/02 \(1\)](#20180802-1)
+        - [Verbs: `kill` and `kill_with`](#verbs-kill-and-kill_with)
+        - [Verbs: `touch` and `touch_with`](#verbs-touch-and-touch_with)
+        - [Code Cleanup](#code-cleanup-1)
+    - [2018/08/01 \(4\)](#20180801-4)
+        - [Verb Responses](#verb-responses-16)
+        - [Verb: `sing`](#verb-sing)
+        - [Verb: `kiss`](#verb-kiss)
+        - [Verb: `pull`](#verb-pull)
+    - [2018/08/01 \(3\)](#20180801-3)
+        - [Verbs: `attack` and `attack_with`](#verbs-attack-and-attack_with)
+    - [2018/08/01 \(2\)](#20180801-2)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-32)
+        - [Verb Responses](#verb-responses-17)
+        - [Verbs: `cut` and `cut_with`](#verbs-cut-and-cut_with)
+        - [Verb: `dance`](#verb-dance)
+        - [Verb: `dig`](#verb-dig)
+    - [2018/08/01 \(1\)](#20180801-1)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-33)
+        - [Verb: `drive`](#verb-drive)
+        - [Verbs: `listen0` and `listen`](#verbs-listen0-and-listen)
+    - [2018/07/31 \(2\)](#20180731-2)
+        - [Verb: `free`](#verb-free)
+        - [Verb: `think`](#verb-think)
+        - [Verb: `think_about`](#verb-think_about)
+    - [2018/07/31 \(1\)](#20180731-1)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-34)
+        - [Verb Responses](#verb-responses-18)
+        - [Verb: `fix`](#verb-fix)
+    - [2018/07/29 \(2\)](#20180729-2)
+        - [Remove Verb Restriction Attributes](#remove-verb-restriction-attributes)
+    - [2018/07/29 \(1\)](#20180729-1)
+        - [Accendere/Spegnere Dispositivi e Fonti di Luce](#accenderespegnere-dispositivi-e-fonti-di-luce)
+        - [Il Nocciolo del Problema](#il-nocciolo-del-problema)
+        - [Abolizione dell'Attributo `naturale`](#abolizione-dellattributo-naturale)
+        - [Rilfessioni sull'Attributo `illuminato`](#rilfessioni-sullattributo-illuminato)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-35)
+        - [Testo dei Verbi](#testo-dei-verbi)
+    - [2018/07/28 \(3\)](#20180728-3)
+        - [Verb Responses](#verb-responses-19)
+    - [2018/07/28 \(2\)](#20180728-2)
+        - [Verb Responses](#verb-responses-20)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-36)
+        - [Verbs: `sit` and `sit_on`](#verbs-sit-and-sit_on)
+    - [2018/07/28 \(1\)](#20180728-1)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-37)
+        - [Verb: `answer`](#verb-answer)
+        - [Verbs: `fill` and `fill_with`](#verbs-fill-and-fill_with)
+    - [2018/07/27 \(7\)](#20180727-7)
+    - [2018/07/27 \(6\)](#20180727-6)
+        - [New THING Attribute `vocale` for Adjectives Conjucation](#new-thing-attribute-vocale-for-adjectives-conjucation)
+    - [2018/07/27 \(5\)](#20180727-5)
+    - [2018/07/27 \(4\)](#20180727-4)
+        - [Translated Verb Responses + Attributes](#translated-verb-responses--attributes)
+        - [Verb: `find`](#verb-find)
+    - [2018/07/27 \(3\)](#20180727-3)
+    - [2018/07/27 \(2\)](#20180727-2)
+        - [Translated Verb Responses + Attributes](#translated-verb-responses--attributes-1)
+        - [Italian Responses For Illegal Obj2 With](#italian-responses-for-illegal-obj2-with)
+    - [2018/07/27 \(1\)](#20180727-1)
+        - [Italian Responses For Illegal Obj2 With](#italian-responses-for-illegal-obj2-with-1)
+    - [2018/07/26 \(10\)](#20180726-10)
+        - [Verb Response Attributes Renaming](#verb-response-attributes-renaming)
+        - [Renamed Verb Responses](#renamed-verb-responses)
+    - [2018/07/26 \(9\)](#20180726-9)
+        - [Translate Verb Responses for Closed Obj2 Blocking the Action](#translate-verb-responses-for-closed-obj2-blocking-the-action)
+    - [2018/07/26 \(8\)](#20180726-8)
+        - [Translate Verb Responses for Closed Obj1 Blocking the Action](#translate-verb-responses-for-closed-obj1-blocking-the-action)
+    - [2018/07/26 \(7\)](#20180726-7)
+        - [Translate Verb Responses for Already Unlocked Objects](#translate-verb-responses-for-already-unlocked-objects)
+    - [2018/07/26 \(6\)](#20180726-6)
+        - [Translate Verb Responses for Already Locked Objects](#translate-verb-responses-for-already-locked-objects)
+    - [2018/07/26 \(5\)](#20180726-5)
+        - [Translate Verb Responses for Already Close Objects](#translate-verb-responses-for-already-close-objects)
+    - [2018/07/26 \(4\)](#20180726-4)
+        - [Translate Verb Responses for Already Open Objects](#translate-verb-responses-for-already-open-objects)
+    - [2018/07/26 \(3\)](#20180726-3)
+        - [Translate Verb Responses for Distant Params](#translate-verb-responses-for-distant-params)
+    - [2018/07/26 \(2\)](#20180726-2)
+        - [Implement Italian Verb Responses](#implement-italian-verb-responses)
+    - [2018/07/26 \(1\)](#20180726-1)
+        - [Polish and Fix Translated Verbs](#polish-and-fix-translated-verbs)
+        - [Verb Parameters Fixes](#verb-parameters-fixes)
+    - [2018/07/25 \(8\)](#20180725-8)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-38)
+        - [Verbs: `yes` and `no`](#verbs-yes-and-no)
+    - [2018/07/25 \(7\)](#20180725-7)
+    - [2018/07/25 \(6\)](#20180725-6)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-39)
+        - [Verb: `play`](#verb-play)
+        - [Verb: `play_with`](#verb-play_with)
+    - [2018/07/25 \(5\)](#20180725-5)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-40)
+    - [2018/07/25 \(4\)](#20180725-4)
+    - [2018/07/25 \(3\)](#20180725-3)
+        - [Library Instances](#library-instances)
+        - [Library Classes](#library-classes)
+    - [2018/07/25 \(2\)](#20180725-2)
+        - [Library Classes](#library-classes-1)
+    - [2018/07/25 \(1\)](#20180725-1)
+        - [Clothing Attributes](#clothing-attributes)
+    - [2018/07/24 \(5\)](#20180724-5)
+        - [Library Attributes](#library-attributes-1)
+        - [Library Classes](#library-classes-2)
+        - [Library Instances](#library-instances-1)
+    - [2018/07/24 \(4\)](#20180724-4)
+    - [2018/07/24 \(3\)](#20180724-3)
+        - [Input Response Messages](#input-response-messages)
+    - [2018/07/24 \(2\)](#20180724-2)
+    - [2018/07/24 \(1\)](#20180724-1)
+        - [Who/Where Verbs](#whowhere-verbs)
+    - [2018/07/23 \(5\)](#20180723-5)
+    - [2018/07/23 \(4\)](#20180723-4)
+        - [Verb: `use`](#verb-use)
+        - [Verb: `use_with`](#verb-use_with)
+    - [2018/07/23 \(2\)](#20180723-2)
+        - [Verb: `drop`](#verb-drop)
+    - [2018/07/23 \(1\)](#20180723-1)
+    - [2018/07/22 \(7\)](#20180722-7)
+        - [Tweaked `LISTED_CONTAINER`](#tweaked-listed_container)
+        - [Small Fixes](#small-fixes)
+    - [2018/07/22 \(6\)](#20180722-6)
+    - [2018/07/22 \(5\)](#20180722-5)
+    - [2018/07/22 \(4\)](#20180722-4)
+        - [Verb: `sell`](#verb-sell)
+    - [2018/07/22 \(3\)](#20180722-3)
+        - [Translate Verb Parameters](#translate-verb-parameters)
+    - [2018/07/22 \(2\)](#20180722-2)
+        - [Changed Behaviour of `examine`](#changed-behaviour-of-examine)
+    - [2018/07/22 \(1\)](#20180722-1)
+        - [Verb: `write`](#verb-write)
+    - [2018/07/21 \(5\)](#20180721-5)
+        - [Verb: `examine`](#verb-examine)
+        - [Verb: `read`](#verb-read)
+    - [2018/07/21 \(4\)](#20180721-4)
+    - [2018/07/21 \(3\)](#20180721-3)
+    - [2018/07/21 \(2\)](#20180721-2)
+    - [2018/07/21 \(1\)](#20180721-1)
+    - [2018/07/20 \(3\)](#20180720-3)
+        - [Library Locations](#library-locations)
+    - [2018/07/20 \(2\)](#20180720-2)
+        - [Null Objects](#null-objects)
+    - [2018/07/20 \(1\)](#20180720-1)
+        - [Make `banner` an Instance of `LOCATION`](#make-banner-an-instance-of-location)
+    - [2018/07/19 \(5\)](#20180719-5)
+    - [2018/07/19 \(4\)](#20180719-4)
+        - [Banner Attributes](#banner-attributes)
+    - [2018/07/19 \(3\)](#20180719-3)
+        - [Add Remaining Preposizioni Articolate Synonyms](#add-remaining-preposizioni-articolate-synonyms)
+    - [2018/07/19 \(2\)](#20180719-2)
+    - [2018/07/19 \(1\)](#20180719-1)
+    - [2018/07/18 \(4\)](#20180718-4)
+    - [2018/07/18 \(3\)](#20180718-3)
+        - [Verb Responses Attributes](#verb-responses-attributes)
+    - [2018/07/18 \(2\)](#20180718-2)
+        - [Verb: `drink`](#verb-drink)
+    - [2018/07/18 \(1\)](#20180718-1)
+    - [2018/07/17 \(5\)](#20180717-5)
+    - [2018/07/17 \(4\)](#20180717-4)
+        - [Verb: `eat`](#verb-eat)
+    - [2018/07/17 \(3\)](#20180717-3)
+        - [Meta Verbs](#meta-verbs)
+    - [2018/07/17 \(2\)](#20180717-2)
+    - [2018/07/17 \(1\)](#20180717-1)
+        - [Verb: `climb_through`](#verb-climb_through)
+    - [2018/07/03 \(3\)](#20180703-3)
+        - [Verb: `go_to`](#verb-go_to)
+    - [2018/07/03 \(2\)](#20180703-2)
+        - [Verb: `buy`](#verb-buy)
+    - [2018/07/03 \(1\)](#20180703-1)
+    - [2018/07/02](#20180702)
+        - [Verb: `burn`/`burn_with`](#verb-burnburn_with)
+        - [`my_game` Verb Messages](#my_game-verb-messages)
+    - [2018/06/29](#20180629)
+    - [2018/06/24 \(3\)](#20180624-3)
+    - [2018/06/24 \(2\)](#20180624-2)
+    - [2018/06/24 \(1\)](#20180624-1)
+        - [Translate StdLib's `plural`](#translate-stdlibs-plural)
+    - [2018/06/23 \(2\)](#20180623-2)
+    - [2018/06/23 \(1\)](#20180623-1)
+        - [Verb `again`](#verb-again)
+    - [2018/06/16 \(3\)](#20180616-3)
+        - [Verb: `wait`](#verb-wait)
+        - [Verb: `sleep`](#verb-sleep)
+    - [2018/06/16 \(2\)](#20180616-2)
+    - [2018/06/16 \(1\)](#20180616-1)
+        - [Translate `check_obj_suitable_XX` Messages](#translate-check_obj_suitable_xx-messages)
+    - [2018/06/11](#20180611)
+        - [Library Files Renamed to Italian](#library-files-renamed-to-italian)
+    - [2018/06/10](#20180610)
+        - [The New `articolo` Attribute](#the-new-articolo-attribute)
+        - [Preposizioni Articolate](#preposizioni-articolate)
+    - [2018/06/02](#20180602)
+    - [2018/05/31:2](#201805312)
+    - [2018/05/31:1](#201805311)
+        - [Verb: `restore`](#verb-restore)
+        - [Verb: `restart`](#verb-restart)
+        - [Verb: `quit`](#verb-quit)
+    - [2018/05/28](#20180528)
+    - [2018/05/27](#20180527)
+        - [Verb: `save`](#verb-save)
+    - [2018/05/22 \(3\)](#20180522-3)
+        - [Verb: `pray`](#verb-pray)
+        - [Verb: `break`](#verb-break)
+        - [Verb: `break_with`](#verb-break_with)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-41)
+    - [2018/05/22 \(2\)](#20180522-2)
+        - [Verb Restriction Attributes](#verb-restriction-attributes-42)
+    - [2018/05/22 \(1\)](#20180522-1)
+        - [Verb: `undress`](#verb-undress)
+    - [2018/05/19](#20180519)
+        - [Verb: `take`](#verb-take)
+        - [Verb: `take_from`](#verb-take_from)
+        - [Verb: `give`](#verb-give)
+    - [2018/05/15](#20180515)
+    - [2018/05/12 \(2\)](#20180512-2)
+    - [2018/05/12 \(1\)](#20180512-1)
+    - [2018/05/01](#20180501)
+        - [Directions](#directions)
+        - [Movement Messages](#movement-messages)
 
 <!-- /MarkdownTOC -->
 
 -------------------------------------------------------------------------------
 
-# 2018/11/13
+# Alan 3.0beta6
+
+## 2018/11/13
 
 - [`libreria.i`][libreria] (v0.8.0)
 - [`lib_classi.i`][lib_classi] (v0.8.0)
@@ -496,11 +475,11 @@ For the latest changes, see:
 - [`lib_verbi.i`][lib_verbi] (v0.8.0)
 - [`lib_supplemento.i`][lib_supplemento] (v0.8.0)
 
-## Bump Up Lib to v0.8.0
+### Bump Up Lib to v0.8.0
 
 With this commit all library verbs are now translated, bump up all library files version to 0.8.0.
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -511,7 +490,7 @@ Translated `mia_AT` attributes for verb restrictions:
 | `rub`     | `sfregare` |
 
 
-## Verb: `shake`
+### Verb: `shake`
 
 Translated verb `agita`:
 
@@ -522,7 +501,7 @@ with synonyms:
     scuoti = agita
 
 
-## Verb: `squeeze`
+### Verb: `squeeze`
 
 Translated verb `spremi`:
 
@@ -533,7 +512,7 @@ with synonyms:
     strizza = spremi
 
 
-## Verb: `clean`
+### Verb: `clean`
 
 Translated verb `pulisci`:
 
@@ -544,7 +523,7 @@ with synonyms:
     strofina, lucida = pulisci
 
 
-## Verb: `rub`
+### Verb: `rub`
 
 Translated verb `sfrega`:
 
@@ -557,12 +536,12 @@ with synonyms:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/12 (6)
+## 2018/11/12 (6)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.27)
 - [`lib_verbi.i`][lib_verbi] (v0.7.41)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -571,7 +550,7 @@ Translated `mia_AT` attributes for verb restrictions:
 | `climb` | `scavalcare` |
 
 
-## Verb: `climb`
+### Verb: `climb`
 
 Translated verb `scavalca`:
 
@@ -582,13 +561,13 @@ with no synonyms.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/12 (5)
+## 2018/11/12 (5)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.26)
 - [`lib_verbi.i`][lib_verbi] (v0.7.40)
 
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -598,7 +577,7 @@ Translated `mia_AT` attributes for verb restrictions:
 | `pry_with` | `forzare_con` |
 
 
-## Verbs: `pry` and `pry_with`
+### Verbs: `pry` and `pry_with`
 
 Translated verbs `forza` and `forza_con`:
 
@@ -612,13 +591,13 @@ with no synonyms.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/11/12 (4)
+## 2018/11/12 (4)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.25)
 - [`lib_verbi.i`][lib_verbi] (v0.7.39)
 
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -629,7 +608,7 @@ Translated `mia_AT` attributes for verb restrictions:
 
 
 
-## Verb: `stand_on`
+### Verb: `stand_on`
 
 Translated verb `sali_su`:
 
@@ -639,7 +618,7 @@ Translated verb `sali_su`:
 with no synonyms.
 
 
-## Verb: `climb_on`
+### Verb: `climb_on`
 
 Translated verb `arrampicati`:
 
@@ -650,13 +629,13 @@ with no synonyms.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/12 (3)
+## 2018/11/12 (3)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.24)
 - [`lib_verbi.i`][lib_verbi] (v0.7.38)
 
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -666,7 +645,7 @@ Translated `mia_AT` attributes for verb restrictions:
 | `hint`  | `mostrare_suggerimenti` |
 
 
-## Meta Verb: `'about'`
+### Meta Verb: `'about'`
 
 Translated verb `istruzioni`:
 
@@ -677,7 +656,7 @@ with synonyms:
     help, info = istruzioni
 
 
-## Meta Verb: `hint`
+### Meta Verb: `hint`
 
 Translated verb `suggerimento`:
 
@@ -695,13 +674,13 @@ with synonyms:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/12 (2)
+## 2018/11/12 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.23)
 - [`lib_verbi.i`][lib_verbi] (v0.7.37)
 
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -710,7 +689,7 @@ Translated `mia_AT` attributes for verb restrictions:
 | `search` | `ispezionare` |
 
 
-## Verb: `search`
+### Verb: `search`
 
 Translated verb `ispeziona`, "__ispeziona__" (_search_):
 
@@ -720,7 +699,7 @@ with synonyms:
 
     perquisisci = ispeziona
 
-## Fix Verb `ascolta` (was `listen`)
+### Fix Verb `ascolta` (was `listen`)
 
 In verb `ascolta`'s `DOES`, change `IF ogg AT hero` into `IF hero AT ogg` in order for the verb to work when hero is in a nested location (eg. in a hole) and to work with room/site objects (which are not AT hero's location because they're in a wrapping location, but on the other hand the hero is AT their location).
 
@@ -729,17 +708,17 @@ Before this fix, trying to listen to the sky or ceiling would produce an empty s
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/12 (1)
+## 2018/11/12 (1)
 
 - [`lib_messaggi.i`][lib_messaggi] (v0.7.13)
 - [`lib_verbi.i`][lib_verbi] (v0.7.36)
 
-## Verb Responses
+### Verb Responses
 
 Subtitute all occurences of `check_obj2_not_hero1` with `azione_insensata` and delete original.
 
 
-## Verb: `'show'`
+### Verb: `'show'`
 
 Translated verb `mostra`, "__mostra__" (_show_):
 
@@ -750,14 +729,14 @@ with no synonyms.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/11 (2)
+## 2018/11/11 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.22)
 - [`lib_messaggi.i`][lib_messaggi] (v0.7.12)
 - [`lib_verbi.i`][lib_verbi] (v0.7.35)
 
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -775,7 +754,7 @@ Translated verb responses attributes:
 Delete original English attributes for all occurences have been substituted.
 
 
-## Verbs: `knock` and `knock_error`
+### Verbs: `knock` and `knock_error`
 
 Translated verbs `bussa` and `bussa_errore`, "__bussa a__" (_knock on_):
 
@@ -785,7 +764,7 @@ Translated verbs `bussa` and `bussa_errore`, "__bussa a__" (_knock on_):
 with no synonyms.
 
 
-## Verb: `lift`
+### Verb: `lift`
 
 Translated verb `solleva`, "__solleva__" (_lift_):
 
@@ -796,7 +775,7 @@ with synonyms:
     alza = solleva
 
 
-## Verb: `follow`
+### Verb: `follow`
 
 Translated verb `segui` (_follow_):
 
@@ -807,13 +786,13 @@ with no synonyms.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/11 (1)
+## 2018/11/11 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.21)
 - [`lib_messaggi.i`][lib_messaggi] (v0.7.11)
 - [`lib_verbi.i`][lib_verbi] (v0.7.34)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -829,7 +808,7 @@ Deleted `mia_AT` attributes for verb restrictions:
 | `shoot`      |
 | `shoot_with` |
 
-## Group of Verbs: `fire*`
+### Group of Verbs: `fire*`
 
 Translated verbs of the `fire*` group, and added an extra one:
 
@@ -859,7 +838,7 @@ with no synonyms.
 > L'attributo `sparabile` va inteso come un'`arma` in grado di espellere un qualche tipo di proiettile.
 
 
-## Delete `shoot*` Verbs
+### Delete `shoot*` Verbs
 
 We'll keep only the `fire*` verbs for shooting with `fireable` weapons since in Italian we don't have two separate verbs to handle both cases of "shoot" and "fire":
 
@@ -869,7 +848,7 @@ We'll keep only the `fire*` verbs for shooting with `fireable` weapons since in 
 | `shoot_with`  |
 | `shoot_error` |
 
-## Verb Responses
+### Verb Responses
 
 Translated verb responses attributes:
 
@@ -893,13 +872,13 @@ New verb responses attributes (created for Italian library, no English counterpa
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/10 (5)
+## 2018/11/10 (5)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.20)
 - [`lib_messaggi.i`][lib_messaggi] (v0.7.10)
 - [`lib_verbi.i`][lib_verbi] (v0.7.33)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -908,7 +887,7 @@ Translated `mia_AT` attributes for verb restrictions:
 | `'exit'` | `uscire` |
 
 
-## Verbs: `enter` and `'exit'`
+### Verbs: `enter` and `'exit'`
 
 Translated verbs of the `enter*` and `exit*` groups:
 
@@ -927,7 +906,7 @@ Translated verbs of the `enter*` and `exit*` groups:
 
 with no synonyms.
 
-## Verb Responses
+### Verb Responses
 
 New verb responses attributes (created for Italian library, no English counterpart):
 
@@ -940,12 +919,12 @@ New verb responses attributes (created for Italian library, no English counterpa
 <!---------------------------------------------------------------------------->
 
 
-# 2018/11/10 (4)
+## 2018/11/10 (4)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.19)
 - [`lib_verbi.i`][lib_verbi] (v0.7.32)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -954,7 +933,7 @@ Translated `mia_AT` attributes for verb restrictions:
 | `turn`  | `girare` |
 
 
-## Verb: `turn`
+### Verb: `turn`
 
 Translated verb `gira`, "__gira__" (_turn_):
 
@@ -966,11 +945,11 @@ with no synonyms.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/10 (3)
+## 2018/11/10 (3)
 
 - [`lib_verbi.i`][lib_verbi] (v0.7.31)
 
-## Verb: `shout`
+### Verb: `shout`
 
 Translated verb `grida`, "__grida__" (_shout_):
 
@@ -983,12 +962,12 @@ with synonyms:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/10 (2)
+## 2018/11/10 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.18)
 - [`lib_verbi.i`][lib_verbi] (v0.7.30)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -996,7 +975,7 @@ Translated `mia_AT` attributes for verb restrictions:
 |---------|---------------|
 | `catch` | `acchiappare` |
 
-## Verb: `catch`
+### Verb: `catch`
 
 Translated verb `acchiappa`, "__acchiappa__" (_catch_):
 
@@ -1007,11 +986,11 @@ with no synonyms.
 
 -------------------------------------------------------------------------------
 
-# 2018/11/10 (1)
+## 2018/11/10 (1)
 
 - [`lib_verbi.i`][lib_verbi] (v0.7.29)
 
-## Doxterize Verbs Groups
+### Doxterize Verbs Groups
 
 Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 
@@ -1030,7 +1009,7 @@ Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/09 (8)
+## 2018/11/09 (8)
 
 - [`lib_verbi.i`][lib_verbi] (v0.7.28)
 
@@ -1038,12 +1017,12 @@ Raccogli nel gruppo "Verbi Sfusi" tutti i verbi tradotti che non sono ancora sta
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/09 (7)
+## 2018/11/09 (7)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.17)
 - [`lib_verbi.i`][lib_verbi] (v0.7.27)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -1051,7 +1030,7 @@ Translated `mia_AT` attributes for verb restrictions:
 |---------|------------|
 | `kick`  | `calciare` |
 
-## Verb: `kick`
+### Verb: `kick`
 
 Translated verb `calcia`, "__calcia__" (_kick_):
 
@@ -1059,7 +1038,7 @@ Translated verb `calcia`, "__calcia__" (_kick_):
 
 with no synonyms.
 
-## Doxterize
+### Doxterize
 
 Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 
@@ -1074,11 +1053,11 @@ Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/11/09 (6)
+## 2018/11/09 (6)
 
 - [`lib_verbi.i`][lib_verbi] (v0.7.26)
 
-## Group of Verbs: `push*`
+### Group of Verbs: `push*`
 
 Translated verbs of the `push*` group:
 
@@ -1095,11 +1074,11 @@ with no synonyms.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/09 (5)
+## 2018/11/09 (5)
 
 - [`lib_verbi.i`][lib_verbi] (v0.7.25)
 
-## Group of Verbs: `dive*` and `swim*`
+### Group of Verbs: `dive*` and `swim*`
 
 Translated verbs of the diving and swimming group:
 
@@ -1122,12 +1101,12 @@ with no synonyms.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/09 (4)
+## 2018/11/09 (4)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.16)
 - [`lib_verbi.i`][lib_verbi] (v0.7.24)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -1136,7 +1115,7 @@ Translated `mia_AT` attributes for verb restrictions:
 | `tear`  | `strappare` |
 
 
-## Verb: `tear`
+### Verb: `tear`
 
 Translated verb `strappa`, "__strappa__" (_tear_):
 
@@ -1148,13 +1127,13 @@ with no synonyms.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/11/09 (3)
+## 2018/11/09 (3)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.15)
 - [`lib_messaggi.i`][lib_messaggi] (v0.7.9)
 - [`lib_verbi.i`][lib_verbi] (v0.7.23)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -1166,7 +1145,7 @@ Translated `mia_AT` attributes for verb restrictions:
 | `throw_to` | `lanciare_a`      |
 
 
-## Group of Verbs: `throw*`
+### Group of Verbs: `throw*`
 
 Translated verbs of the `throw*` group:
 
@@ -1189,12 +1168,12 @@ with no synonyms.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/09 (2)
+## 2018/11/09 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.14)
 - [`lib_verbi.i`][lib_verbi] (v0.7.22)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -1214,7 +1193,7 @@ Deleted `mia_AT` attributes for verb restrictions:
 | `get_up`  |
 
 
-## Verb: `stand`
+### Verb: `stand`
 
 Translated verb `alzati`, "__alzati__" (_stand [up]_):
 
@@ -1223,12 +1202,12 @@ Translated verb `alzati`, "__alzati__" (_stand [up]_):
 with no synonyms.
 
 
-## Delete Verb: `get_up`
+### Delete Verb: `get_up`
 
 The `get_up` verb isn't required in Italian for `alzati` (`stand`) covers both getting up from a sitting position as well as standing up after lying down; so it would be redundant to keep them both.
 
 
-## Verb: `get_off`
+### Verb: `get_off`
 
 Translated verb `scendi_da`, "__scendi da__" (_get off_):
 
@@ -1236,7 +1215,7 @@ Translated verb `scendi_da`, "__scendi da__" (_get off_):
 
 with no synonyms.
 
-## Verbs `lie_*`
+### Verbs `lie_*`
 
 Translated verbs from the group `lie_*`:
 
@@ -1258,12 +1237,12 @@ with synonyms:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/09 (1)
+## 2018/11/09 (1)
 
 - [`lib_messaggi.i`][lib_messaggi] (v0.7.8)
 - [`lib_verbi.i`][lib_verbi] (v0.7.21)
 
-## Verbs: `jump`, `jump_in` and `jump_on`
+### Verbs: `jump`, `jump_in` and `jump_on`
 
 Translated verbs `salta`, `salta_in` and `salta_su`:
 
@@ -1273,7 +1252,7 @@ Translated verbs `salta`, `salta_in` and `salta_su`:
 
 with no synonyms.
 
-## Verb Responses
+### Verb Responses
 
 Translated verb responses attributes:
 
@@ -1298,11 +1277,11 @@ New verb responses attributes (created for Italian library, no English counterpa
 <!---------------------------------------------------------------------------->
 
 
-# 2018/11/08
+## 2018/11/08
 
 - [`lib_verbi.i`][lib_verbi] (v0.7.20)
 
-### Fix Verb Responses
+#### Fix Verb Responses
 
 The following verbs (shared `VERB` body) where giving the wrong `CHECK` response:
 
@@ -1333,14 +1312,14 @@ Now fixed to use `ogg2_distante_sg`/`pl` with `bulk IS NOT raggiungibile`/`IS di
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/03 (3)
+## 2018/11/03 (3)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.13)
 - [`lib_messaggi.i`][lib_messaggi] (v0.7.7)
 - [`lib_verbi.i`][lib_verbi] (v0.7.19)
 
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -1357,7 +1336,7 @@ Translated `mia_AT` attributes for verb restrictions:
 
 > __NOTE__ — the `put_down` attribute was removed because it's useless (the verb `drop` deals with 'putting down', which relies on the `drop` attribute for restricting the verb).
 
-## Verbs `put*`
+### Verbs `put*`
 
 Translated verbs `metti*`,  of the `put*` group:
 
@@ -1381,7 +1360,7 @@ with no synonyms currently.
 > Parecchi di questi verbi potrebbero accogliere altre sintassi ("posa", "appoggia", ecc.), ma trattandosi di un lavoro lungo lo rimando a dopo.
 
 
-## Verb Responses
+### Verb Responses
 
 New verb responses attributes (created for Italian library, no English counterpart):
 
@@ -1392,7 +1371,7 @@ New verb responses attributes (created for Italian library, no English counterpa
 | `ogg2_illegale_IN_sg`/`pl` | `"$+2 non [è/sono] qualcosa in cui poter"` |
 
 
-## Doxterize
+### Doxterize
 
 Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 
@@ -1409,7 +1388,7 @@ Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/11/03 (2)
+## 2018/11/03 (2)
 
 - [`lib_classi.i`][lib_classi] (v0.7.4)
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.12)
@@ -1417,13 +1396,13 @@ Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 - [`lib_verbi.i`][lib_verbi] (v0.7.18)
 
 
-## Code Cleanup
+### Code Cleanup
 
 General code cleanup.
 
 - Change all `SAY xxx OF yyy.` to short form `SAY yyy:xxx.`.
 
-## Doxterize
+### Doxterize
 
 Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 
@@ -1458,14 +1437,14 @@ Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/11/03 (1)
+## 2018/11/03 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.11)
 - [`lib_messaggi.i`][lib_messaggi] (v0.7.6)
 - [`lib_verbi.i`][lib_verbi] (v0.7.17)
 
 
-## Verb: `bite`
+### Verb: `bite`
 
 Translated verb `mordi`, "__mordi__" (_bite_):
 
@@ -1473,7 +1452,7 @@ Translated verb `mordi`, "__mordi__" (_bite_):
 
 with no synonyms.
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -1482,7 +1461,7 @@ Translated `mia_AT` attributes for verb restrictions:
 | `bite`  | `mordere` |
 
 
-## Verb Responses
+### Verb Responses
 
 New verb responses attributes (created for Italian library, no English counterpart):
 
@@ -1493,17 +1472,17 @@ New verb responses attributes (created for Italian library, no English counterpa
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/02 (2)
+## 2018/11/02 (2)
 
 - [`lib_classi.i`][lib_classi] (v0.7.3)
 - [`lib_messaggi.i`][lib_messaggi] (v0.7.5)
 - [`lib_verbi.i`][lib_verbi] (v0.7.16)
 
-## Doxterize Classes
+### Doxterize Classes
 
 Inizia a organizzare l'auto-documentazione di `lib_classi.i`.
 
-## Verbs: `empty*` and `pour*`
+### Verbs: `empty*` and `pour*`
 
 Translated the verbs of the group `empty*` and `pour*`:
 
@@ -1531,7 +1510,7 @@ A bug surfaced with the use of `put_in` in relation to these verbs, due to how i
 
 - https://github.com/AnssiR66/AlanStdLib/issues/39
 
-## Verb Responses
+### Verb Responses
 
 Translated verb responses attributes:
 
@@ -1554,12 +1533,12 @@ New verb responses attributes (created for Italian library, no English counterpa
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/02 (1)
+## 2018/11/02 (1)
 
 - [`lib_verbi.i`][lib_verbi] (v0.7.15)
 
 
-## Verb: `taste`
+### Verb: `taste`
 
 Translated verb `assaggia`, "__assaggia__" (_taste_):
 
@@ -1573,7 +1552,7 @@ with synonyms:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/11/01
+## 2018/11/01
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.10)
 - [`lib_verbi.i`][lib_verbi] (v0.7.14)
@@ -1581,7 +1560,7 @@ with synonyms:
 - [`lib_messaggi.i`][lib_messaggi] (v0.7.4)
 
 
-## Verb: `sip`
+### Verb: `sip`
 
 Translated verb `sorseggia`, "__sorseggia__" (_sip_):
 
@@ -1590,7 +1569,7 @@ Translated verb `sorseggia`, "__sorseggia__" (_sip_):
 with no synonyms.
 
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -1599,7 +1578,7 @@ Translated `mia_AT` attributes for verb restrictions:
 | `sip`   | `sorseggiare` |
 
 
-## Verb Responses
+### Verb Responses
 
 Translated verb responses attributes:
 
@@ -1611,7 +1590,7 @@ All occurences of `implicit_taking_message` have been replaced and the original 
 
 This commit also translates all implicit taking messages inside verb bodies (ie, that couldn't rely on verb response attributes).
 
-## Doxterize Verbs
+### Doxterize Verbs
 
 Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 
@@ -1619,7 +1598,7 @@ Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
     + `bevi`
     + `mangia`
 
-## Tweak Lib Classes
+### Tweak Lib Classes
 
 - Add some TODO annotations to `lib_classi.i`.
 - Translations and mall improvements here and there.
@@ -1627,13 +1606,13 @@ Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/10/31 (2)
+## 2018/10/31 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.9)
 - [`lib_classi.i`][lib_classi] (v0.7.1)
 - [`lib_verbi.i`][lib_verbi] (v0.7.13)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -1643,7 +1622,7 @@ Translated `mia_AT` attributes for verb restrictions:
 
 Also, I've suppressed the `smell0` restriction attribute (used by verb `smell0`) because the `smell` attribute can be used by both `smell` and `smell0` verbs.
 
-## Verbs: `smell0` and `smell`
+### Verbs: `smell0` and `smell`
 
 Translated verbs `annusa0` and `annusa`, "__annusa__" (_smell_):
 
@@ -1659,11 +1638,11 @@ The verb was also transalted in `lib_classi.i`, where it's implemented on the cl
 <!---------------------------------------------------------------------------->
 
 
-# 2018/10/31 (1)
+## 2018/10/31 (1)
 
 - [`lib_verbi.i`][lib_verbi] (v0.7.12)
 
-## Doxterize Verbs
+### Doxterize Verbs
 
 This commit focuses on improving documentation of the verbs module:
 
@@ -1701,15 +1680,15 @@ Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/10/25
+## 2018/10/25
 
 - [`lib_verbi.i`][lib_verbi] (v0.7.11)
 
-## Make `inventario` Not META
+### Make `inventario` Not META
 
 With an afterthought, the verb `inventario` (_inventory_) is now no longer a `META VERB`.
 
-## Doxterize Verbs
+### Doxterize Verbs
 
 This commit focuses on improving documentation of the verbs module:
 
@@ -1740,12 +1719,12 @@ Organizza i Meta Verbi di Partita in gruppi di appartenenza correlati:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/10/24
+## 2018/10/24
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.8)
 - [`lib_verbi.i`][lib_verbi] (v0.7.10)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -1753,7 +1732,7 @@ Translated `mia_AT` attributes for verb restrictions:
 |-----------|--------------------|
 | `'score'` | `vedere_punteggio` |
 
-## Verb: `'score'`
+### Verb: `'score'`
 
 Translated verb `vedi_punteggio`, "__punteggio__" (_score_):
 
@@ -1763,12 +1742,12 @@ with no synonyms.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/10/22 (2)
+## 2018/10/22 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.7)
 - [`lib_verbi.i`][lib_verbi] (v0.7.9)
 
-## `script*` Verbs
+### `script*` Verbs
 
 Translated verbs:
 
@@ -1785,7 +1764,7 @@ Translated verbs:
 
 with no synonyms.
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -1797,13 +1776,13 @@ Translated `mia_AT` attributes for verb restrictions:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/10/22 (1)
+## 2018/10/22 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.6)
 - [`lib_messaggi.i`][lib_messaggi] (v0.7.3)
 - [`lib_verbi.i`][lib_verbi] (v0.7.8)
 
-## Rename Restriction Attributes
+### Rename Restriction Attributes
 
 Renamed `mia_AT` attributes for verb restrictions:
 
@@ -1812,7 +1791,7 @@ Renamed `mia_AT` attributes for verb restrictions:
 | `dire_no` | `rispondere_No` |
 | `dire_sì` | `rispondere_Sì` |
 
-## Rename Verbs
+### Rename Verbs
 
 Renamed verbs:
 
@@ -1824,13 +1803,13 @@ Renamed verbs:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/10/21 (3)
+## 2018/10/21 (3)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.5)
 - [`lib_messaggi.i`][lib_messaggi] (v0.7.2)
 - [`lib_verbi.i`][lib_verbi] (v0.7.7)
 
-## `notify*` Verbs
+### `notify*` Verbs
 
 Translated verbs:
 
@@ -1847,7 +1826,7 @@ Translated verbs:
 
 with no synonyms.
 
-## Verb Responses
+### Verb Responses
 
 New verb responses attributes (created for Italian library, no English counterpart):
 
@@ -1859,7 +1838,7 @@ New verb responses attributes (created for Italian library, no English counterpa
 
 
 
-## Library Attributes for Notify
+### Library Attributes for Notify
 
 Translated library attributes:
 
@@ -1869,7 +1848,7 @@ Translated library attributes:
 | `seen_notify`      | `visto_notifica`   | `blocco_definizioni` |
 | `oldscore`         | `ultimo_punteggio` | `blocco_definizioni` |
 
-## Score Event
+### Score Event
 
 |    Event EN   |        Italian        |
 |---------------|-----------------------|
@@ -1878,12 +1857,12 @@ Translated library attributes:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/10/21 (2)
+## 2018/10/21 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.4)
 - [`lib_verbi.i`][lib_verbi] (v0.7.6)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -1893,17 +1872,17 @@ Translated `mia_AT` attributes for verb restrictions:
 | `notify_on`  | `notificare_on`  |
 | `notify_off` | `notificare_off` |
 
-## Fix VERB END IDs
+### Fix VERB END IDs
 
 Some verbs didn't have their ID mentioned at `VERB END`; added them to improve code readability.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/10/21 (1)
+## 2018/10/21 (1)
 
 - [`lib_verbi.i`][lib_verbi] (v0.7.5)
 
-## Fix META VERBs
+### Fix META VERBs
 
 The following out-of-game verbs where not set as `META`:
 
@@ -1920,12 +1899,12 @@ The following out-of-game verbs where not set as `META`:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/10/19 (2)
+## 2018/10/19 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.3)
 - [`lib_verbi.i`][lib_verbi] (v0.7.4)
 
-## Verb: `verbose`
+### Verb: `verbose`
 
 Translated verb `modalità lunga`, "__modalità_lunga__" (_verbose_):
 
@@ -1935,7 +1914,7 @@ Translated verb `modalità lunga`, "__modalità_lunga__" (_verbose_):
 with no synonyms.
 
 
-## Verb: `brief` (buggy)
+### Verb: `brief` (buggy)
 
 Translated verb `modalità breve`, "__modalità_breve__" (_brief_):
 
@@ -1948,7 +1927,7 @@ with no synonyms.
 
 
 
-## Verb: `credits`
+### Verb: `credits`
 
 Translated verb `ringraziamenti`, "__ringraziamenti__" (_credits_):
 
@@ -1957,7 +1936,7 @@ Translated verb `ringraziamenti`, "__ringraziamenti__" (_credits_):
 with no synonyms.
 
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -1968,12 +1947,12 @@ Translated `mia_AT` attributes for verb restrictions:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/10/19 (1)
+## 2018/10/19 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.2)
 - [`lib_verbi.i`][lib_verbi] (v0.7.3)
 
-## Verb: `scratch`
+### Verb: `scratch`
 
 Translated verb `gratta`, "__gratta__" (_scratch_):
 
@@ -1982,7 +1961,7 @@ Translated verb `gratta`, "__gratta__" (_scratch_):
 with no synonyms.
 
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -1991,7 +1970,7 @@ Translated `mia_AT` attributes for verb restrictions:
 | `scratch` | `grattare` |
 
 
-## Verb Responses
+### Verb Responses
 
 Translated verb responses attributes:
 
@@ -2008,16 +1987,16 @@ Deleted the following English responses, since they're no longer used by any ver
 
 <!---------------------------------------------------------------------------->
 
-# 2018/10/18
+## 2018/10/18
 
 - [`lib_messaggi.i`][lib_messaggi] (v0.7.1)
 - [`lib_verbi.i`][lib_verbi] (v0.7.2)
 
-## Translate Responses for "Look" Verbs
+### Translate Responses for "Look" Verbs
 
 This commits start to translate verb responses for the "look" verbs (`guarda*`).
 
-## Verb Responses
+### Verb Responses
 
 New verb responses attributes (created for Italian library, no English counterpart):
 
@@ -2029,13 +2008,13 @@ New verb responses attributes (created for Italian library, no English counterpa
 
 <!---------------------------------------------------------------------------->
 
-# 2018/10/17
+## 2018/10/17
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.7.1)
 - [`lib_luoghi.i`][lib_luoghi] (v0.7.1)
 - [`lib_verbi.i`][lib_verbi] (v0.7.1)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -2049,7 +2028,7 @@ Translated `mia_AT` attributes for verb restrictions:
 | `look_under`   | `guardare_sotto`      |
 | `look_up`      | `guardare_su`         |
 
-## Translate "Look" Verbs
+### Translate "Look" Verbs
 
 |    Verb En     |       Verb IT       |
 |----------------|---------------------|
@@ -2063,7 +2042,7 @@ Translated `mia_AT` attributes for verb restrictions:
 
 
 
-### Verb: `'look'`
+#### Verb: `'look'`
 
 Translated verb `guarda`, "__guarda__" (_'look'_):
 
@@ -2074,48 +2053,48 @@ with synonyms:
     l = 'guarda'
 
 
-### Verb: `look behind`
+#### Verb: `look behind`
 
 Translated verb `guarda_dietro`, "__guarda dietro__" (*look_behind*):
 
     guarda dietro (bulk)
 
 
-### Verb: `look in`
+#### Verb: `look in`
 
 Translated verb `guarda_in`, "__guarda in__" (*look_in*):
 
     guarda 'in' (cont)
 
 
-### Verb: `look out of`
+#### Verb: `look out of`
 
 Translated verb `guarda_fuori_da`, "__guarda fuori da__" (*look_out_of*):
 
     guarda fuori da (ogg)
 
 
-### Verb: `look through`
+#### Verb: `look through`
 
 Translated verb `guarda_attraverso`, "__guarda attraverso__" (*look_through*):
 
     guarda attraverso (bulk)
 
-### Verb: `look under`
+#### Verb: `look under`
 
 Translated verb `guarda_sotto`, "__guarda sotto__" (*look_under*):
 
     guarda sotto (bulk)
 
 
-### Verb: `look up`
+#### Verb: `look up`
 
 Translated verb `guarda_su`, "__guarda su__" (*look_up*):
 
     guarda su
 
 
-## Delete `sotto` Synonym
+### Delete `sotto` Synonym
 
 The `sotto = giù` synonym was removed due to conflicts with "guarda sotto".
 
@@ -2123,7 +2102,7 @@ The `sotto = giù` synonym was removed due to conflicts with "guarda sotto".
 <!---------------------------------------------------------------------------->
 
 
-# 2018/10/15 (3)
+## 2018/10/15 (3)
 
 - [`libreria.i`][libreria] (v0.7.0)
 - [`lib_classi.i`][lib_classi] (v0.7.0)
@@ -2134,7 +2113,7 @@ The `sotto = giù` synonym was removed due to conflicts with "guarda sotto".
 - [`lib_supplemento.i`][lib_supplemento] (v0.7.0)
 
 
-## Move Messages Attributes to `lib_messaggi.i`
+### Move Messages Attributes to `lib_messaggi.i`
 
 All string attributes of `mia_AT` regarding library messages output (verb responses, etc.) are now moved over from `lib_definizioni.i` to `lib_messaggi.i`.
 
@@ -2158,18 +2137,18 @@ This should improve maintainance of the library:
 
 For more info, see the discussion at [Issue #25] on [AlanStdLib].
 
-## Bump Up Lib to v0.7.0
+### Bump Up Lib to v0.7.0
 
 These changes bump up all library files version to 0.7.0.
 
 <!---------------------------------------------------------------------------->
 
 
-# 2018/10/15 (2)
+## 2018/10/15 (2)
 
 - [`lib_verbi.i`][lib_verbi] (v0.6.3)
 
-## Verb: `consult`
+### Verb: `consult`
 
 Translated verb `consulta`, "__consulta__" (_consult_):
 
@@ -2186,14 +2165,14 @@ with synonyms:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/10/15 (1)
+## 2018/10/15 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.6.2)
 - [`lib_definizioni.i`][lib_definizioni] (v0.6.4)
 - [`lib_luoghi.i`][lib_luoghi] (v0.6.1)
 - [`lib_supplemento.i`][lib_supplemento] (v0.6.1)
 
-## Doxterize `lib_luoghi.i` and `lib_supplemento.i`
+### Doxterize `lib_luoghi.i` and `lib_supplemento.i`
 
 This commit adds [Doxter] documentation to `lib_luoghi.i` and `lib_supplemento.i`.
 
@@ -2202,12 +2181,12 @@ Also updates Doxter documentation and organization of other modules.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/10/14 (3)
+## 2018/10/14 (3)
 
 - [`lib_classi.i`][lib_classi] (v0.6.1)
 - [`lib_verbi.i`][lib_verbi] (v0.6.2)
 
-## Doxterize `lib_classi.i`
+### Doxterize `lib_classi.i`
 
 This commit adds [Doxter] documentation to `lib_classi.i`.
 
@@ -2216,18 +2195,18 @@ Also update Doxter organization of `lib_verbi.i`.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/10/14 (2)
+## 2018/10/14 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.6.3)
 - [`lib_verbi.i`][lib_verbi] (v0.6.1)
 
-## Banner Translation
+### Banner Translation
 
 This commit ultimates the translation to Italian of the Banner; it also updates the mentioned Alan version to Beta06.
 
 The banner is now documentated via Doxter in `lib_definizioni.i`.
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Merged `mia_AT` attributes for verb restrictions:
 
@@ -2241,11 +2220,11 @@ This simplifies verbs' restrictions management (as it was already done with othe
 <!---------------------------------------------------------------------------->
 
 
-# 2018/10/14 (2)
+## 2018/10/14 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.6.2)
 
-## Doxterize `lib_definizioni.i`
+### Doxterize `lib_definizioni.i`
 
 This commit adds [Doxter] documentation to `lib_definizioni.i`.
 
@@ -2253,11 +2232,11 @@ This commit adds [Doxter] documentation to `lib_definizioni.i`.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/10/14 (1)
+## 2018/10/14 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.6.1)
 
-## Optimize Restricted Actions
+### Optimize Restricted Actions
 
 This commit optimizes the code that handles restricted actions, following the changes proposed in [Issue #6] and [PR #23] of the upstream repository.
 
@@ -2278,14 +2257,14 @@ Run-Time redundancy, even in its worst-case scenario (i.e. restriction level 4),
 
 In terms of library maintainance, these changes reduce drastically the size of the source code and eliminate redundancy of attributes therein, ultimately reducing chances of introducing errors when modifying the source code. Also, the new system introduces a clear separation of which restrictions are introduced by each level, making the code more readable too.
 
-## Tweak Level 2 Restrictions
+### Tweak Level 2 Restrictions
 
 Move restriction of verbs  `parlare` (`talk`) and `parlare_con` (`talk_to`) in restrictions level 2. Although these belong to communication verbs, for some reasons they were not being restricted at Level 2 in the original code, but only in levels 3-4. (See [Issue #24])
 
 <!---------------------------------------------------------------------------->
 
 
-# 2018/10/13
+## 2018/10/13
 
 - [`libreria.i`][libreria] (v0.6.0)
 - [`lib_classi.i`][lib_classi] (v0.6.0)
@@ -2295,7 +2274,7 @@ Move restriction of verbs  `parlare` (`talk`) and `parlare_con` (`talk_to`) in r
 - [`lib_verbi.i`][lib_verbi] (v0.6.0)
 - [`lib_supplemento.i`][lib_supplemento] (v0.6.0)
 
-## Add Doxter for Documentation Generator
+### Add Doxter for Documentation Generator
 
 Introduce [Doxter] in the workflow, a tool to generate documentation from comments in source files. The new system will extract an AsciiDoc documentation file from each library module, and then convert it to HTML.
 
@@ -2321,12 +2300,12 @@ More info on Doxter's workflow and current state is available in:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/10/09
+## 2018/10/09
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.5.7)
 - [`lib_verbi.i`][lib_verbi] (v0.5.7)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -2334,7 +2313,7 @@ Translated `mia_AT` attributes for verb restrictions:
 |---------|--------------|
 | `tell`  | `raccontare` |
 
-## Verb: `Tell`
+### Verb: `Tell`
 
 Translated verb `racconta`, "__racconta__" (_tell_):
 
@@ -2351,13 +2330,13 @@ with no synonyms.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/08/27 (3)
+## 2018/08/27 (3)
 
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.5.6)
 - [`lib_verbi.i`][lib_verbi] (v0.5.6)
 
-## New Recurrent Verb Responses Attributes
+### New Recurrent Verb Responses Attributes
 
 New verb responses attributes (created for Italian library, no English counterpart). 
 
@@ -2373,12 +2352,12 @@ These are verb response messagges which appear as String statements more than on
 
 <!---------------------------------------------------------------------------->
 
-# 2018/08/27 (2)
+## 2018/08/27 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.5.5)
 - [`lib_verbi.i`][lib_verbi] (v0.5.5)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -2387,7 +2366,7 @@ Translated `mia_AT` attributes for verb restrictions:
 | `talk`    | `parlare`     |
 | `talk_to` | `parlare_con` |
 
-## Verb Responses
+### Verb Responses
 
 New verb responses attributes (created for Italian library, no English counterpart):
 
@@ -2396,7 +2375,7 @@ New verb responses attributes (created for Italian library, no English counterpa
 | `ogg1_illegale_CON_sg`/`pl` | `$+1 non [è/sono] qualcosa con cui puoi` |
 
 
-## Verbs: `talk` and `talk_to`
+### Verbs: `talk` and `talk_to`
 
 Translated verbs `parla` and `parla_con`, "__parla__":
 
@@ -2411,12 +2390,12 @@ with no synonyms.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/08/27 (1)
+## 2018/08/27 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.5.4)
 - [`lib_verbi.i`][lib_verbi] (v0.5.4)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -2425,7 +2404,7 @@ Translated `mia_AT` attributes for verb restrictions:
 | `ask`   | `domandare` |
 
 
-## Verb: `ask`
+### Verb: `ask`
 
 Translated verb `domanda`, "__domanda__" (_ask_):
 
@@ -2450,12 +2429,12 @@ with synonyms:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/08/24
+## 2018/08/24
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.5.3)
 - [`lib_verbi.i`][lib_verbi] (v0.5.3)
 
-## Fix Verb `chiedi` (`ask_for`)
+### Fix Verb `chiedi` (`ask_for`)
 
 This commit fixes the verb `chiedi` (was `ask_for`) which required to temporarily make an `ACTOR` compliant in order to extract an object from it, but it didn't restore the original state of compliance, thus resulting in this verb always transforming an actor into a compliant actor.
 
@@ -2466,13 +2445,13 @@ For a full discussion of the problem, see [Issue #18] on [Alan StdLib upstream r
 <!---------------------------------------------------------------------------->
 
 
-# 2018/08/22 (3)
+## 2018/08/22 (3)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.5.2)
 - [`lib_classi.i`][lib_classi] (v0.5.2)
 - [`lib_verbi.i`][lib_verbi] (v0.5.2)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -2481,7 +2460,7 @@ Translated `mia_AT` attributes for verb restrictions:
 | `ask_for` | `chiedere` |
 
 
-## Verb: `ask_for`
+### Verb: `ask_for`
 
 Translated verb `chiedi`, "__chiedi__" (_ask for_):
 
@@ -2492,7 +2471,7 @@ with no synonyms.
 
 Most of the verb messages still remain untranslated.
 
-## Fix Actors Initialization (Again)
+### Fix Actors Initialization (Again)
 
 Again, changed the order of some code blocks within the `ACTOR`s' initialization, because the library behavior was breaking up. I've created a new `ADD TO EVERY ACTOR` block, and separated the initialization part into the new block.
 
@@ -2503,23 +2482,23 @@ Now it seems to be all fixed (and `ACTOR`s' attributes are inizialized correctly
 
 
 
-# 2018/08/22 (2)
+## 2018/08/22 (2)
 
 - [`lib_classi.i`][lib_classi] (v0.5.1)
 
-## Fix Actors Initialization
+### Fix Actors Initialization
 
 Changed the order of some code blocks within the `ACTOR`s' initialization, because some actors Italian grammar attributes where not being set properly according to `articolo`.
 
 <!---------------------------------------------------------------------------->
 
 
-# 2018/08/22 (1)
+## 2018/08/22 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.5.1)
 - [`lib_verbi.i`][lib_verbi] (v0.5.1)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -2529,7 +2508,7 @@ Translated `mia_AT` attributes for verb restrictions:
 | `say_to` | `dire_a` |
 
 
-## Verb: `say`
+### Verb: `say`
 
 Translated verb `dì`, "__dì__" (_say_):
 
@@ -2537,7 +2516,7 @@ Translated verb `dì`, "__dì__" (_say_):
 
 with no synonyms.
 
-## Verb: `say_to`
+### Verb: `say_to`
 
 Translated verb `dì_a`, "__dì a__" (_say_to_):
 
@@ -2550,7 +2529,7 @@ with no synonyms.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/08/18 (2)
+## 2018/08/18 (2)
 
 - [`libreria.i`][libreria] (v0.5.0)
 - [`lib_classi.i`][lib_classi] (v0.5.0)
@@ -2560,7 +2539,7 @@ with no synonyms.
 - [`lib_verbi.i`][lib_verbi] (v0.5.0)
 - [`lib_supplemento.i`][lib_supplemento] (v0.5.0)
 
-## Update to Alan 3 Beta 6
+### Update to Alan 3 Beta 6
 
 Updated to [Alan SDK 3.0beta6]  (2018/08/10):
 
@@ -2577,20 +2556,20 @@ Updated to [Alan SDK 3.0beta6]  (2018/08/10):
 
 All library files bumped up to v0.5.0.
 
-## Fix Noise Words as Synomyms of `'the'`
+### Fix Noise Words as Synomyms of `'the'`
 
 Since Alan SDK 3 Beta 6 fixed the issue that didn't allow to create NOISE WORD as synonyms of `go`, I've changed `lib_supplemento.i` to use `'the'` as reference NOISE WORD, and removed mentioning of the original problem.
 
 
 <!---------------------------------------------------------------------------->
 
+# Alan 3.0beta5
 
-
-# 2018/08/18 (1)
+## 2018/08/18 (1)
 
 - [`lib_verbi.i`][lib_verbi] (v0.4.18)
 
-## Group Together Verbs That Are Questions/Statements
+### Group Together Verbs That Are Questions/Statements
 
 I've added a third verbs group to keep together all verbs that are either questions or direct statement:
 
@@ -2607,11 +2586,11 @@ These verbs are now grouped together after the playing commands, for they consti
 
 <!---------------------------------------------------------------------------->
 
-# 2018/08/16 (2)
+## 2018/08/16 (2)
 
 - [`lib_classi.i`][lib_classi] (v0.4.12)
 
-## Fix Actors Initialization and Description
+### Fix Actors Initialization and Description
 
 This commit translated the text presenting actors when locations are described. It also fixes the initialization code by swapping order of some code blocks, placing the code that handles grammar-attributes initialization (setting gender and number based on the provided `articolo` attribute) before the part that initializes `DESCRIPTION` (which relies on `plurale` being already initialized).
 
@@ -2628,12 +2607,12 @@ qui. Romeo e Giuglietta sono qui. Thelma e Louise sono qui.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/08/16 (1)
+## 2018/08/16 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.14)
 - [`lib_verbi.i`][lib_verbi] (v0.4.17)
 
-## Verb Responses
+### Verb Responses
 
 New verb responses attributes (created for Italian library, no English counterpart):
 
@@ -2643,7 +2622,7 @@ New verb responses attributes (created for Italian library, no English counterpa
 
 > __NOTE__ — The `azione_insensata` response will be used to replace various original English messages, depending on the context, due to linguistic differences.
 
-## Corretto Risposte Per `indossa` e `togliti`
+### Corretto Risposte Per `indossa` e `togliti`
 
 I verbi `indossa` e `togliti` ora producono un messaggio diverso quando rivolti al protagonista:
 
@@ -2663,13 +2642,13 @@ Questo non ha alcun senso.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/08/11
+## 2018/08/11
 
 - [`lib_classi.i`][lib_classi] (v0.4.11)
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.13)
 - [`lib_verbi.i`][lib_verbi] (v0.4.16)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -2678,7 +2657,7 @@ Translated `mia_AT` attributes for verb restrictions:
 | `remove` | `togliersi_indumento` |
 
 
-## Verb Responses
+### Verb Responses
 
 Translated verb responses attributes:
 
@@ -2687,7 +2666,7 @@ Translated verb responses attributes:
 | `check_obj_in_worn` | `non_indossi` | `Non stai indossando $+1.` |
 
 
-## Verb: `remove`
+### Verb: `remove`
 
 Translated verb `togliti`, "__togliti__" (_remove_):
 
@@ -2701,13 +2680,13 @@ with no synonyms.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/08/09
+## 2018/08/09
 
 - [`lib_classi.i`][lib_classi] (v0.4.10)
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.12)
 - [`lib_verbi.i`][lib_verbi] (v0.4.15)
 
-## Verb Responses
+### Verb Responses
 
 Translated verb responses attributes:
 
@@ -2718,7 +2697,7 @@ Translated verb responses attributes:
 | `check_obj_not_in_worn1` | `indossi_già`                | `Stai già indossando $+1.`      |
 | `check_obj_not_in_worn3` | `indumento_andrebbe_rimosso` | `Prima dovresti toglierti $+1.` |
 
-## Verb: `wear`
+### Verb: `wear`
 
 Translated verb `indossa`, "__indossa__" (_wear_):
 
@@ -2730,15 +2709,15 @@ with no synonyms.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/08/08
+## 2018/08/08
 
 - [`lib_classi.i`][lib_classi] (v0.4.9)
 
-## Deleted `present_actor` Attribute
+### Deleted `present_actor` Attribute
 
 I've deleted the `present_actor` attribute (on `ACTOR` in `lib_classi.i`), which wasn't being referenced anywhere in the library. Anssi confirmed that it was a leftover experimental attribute. (See [Issue #14])
 
-## Translated Actors Inventory Messages
+### Translated Actors Inventory Messages
 
 This commit translates to Italian the `HEADER` and `EXTRACT` messages on `ACTOR` and `PERSONA`.
 
@@ -2749,7 +2728,7 @@ This commit translates to Italian the `HEADER` and `EXTRACT` messages on `ACTOR`
 <!---------------------------------------------------------------------------->
 
 
-# 2018/08/07
+## 2018/08/07
 
 - [`lib_classi.i`][lib_classi] (v0.4.8)
 
@@ -2760,14 +2739,14 @@ Some code cleanup: repositioning of code blocks, translated documentation commen
 <!---------------------------------------------------------------------------->
 
 
-# 2018/08/06 (2)
+## 2018/08/06 (2)
 
 - [`lib_classi.i`][lib_classi] (v0.4.7)
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.11)
 
 This commit changes the way ACTORS are initialized in order to handle correctly named actors. To achive this, initializazion of Italian attributes (gender, number, articles, ecc.) is no longer carried out inside the `ADD TO EVERY THING` block, but on a separate block targetting only `OBJECT`, so that it won't affect some user defined attributes on ACTORs. Then `EVERY ACTOR` is initialized separately, with a code that is very similar to the one used for `OBJECT`s initialization, except that it takes into account the `named` attribute (now `nome_proprio`). The rest of the explanations are in Italian, for practical purposes dealing with the language's grammar.
 
-## Inizializzazione di `OBJECT` anziché `THING`
+### Inizializzazione di `OBJECT` anziché `THING`
 
 La parte del codice che si occupa dell'inizializzazione degli attributi grammaticali (genere, numero, vocale, articolo determinativo e indetrminativo, e preposizioni) è stato tolto dal blocco `ADD TO EVERY THING` e spostato in un nuovo blocco `ADD TO EVERY OBJECT`.
 
@@ -2775,7 +2754,7 @@ Questo per via del fatto che l'inizializzazione sulla classe `THING` andava a so
 
 Questa separazione delle inizializzazioni rende più semplice e pulita la gestione delle istanze di queste due classi distinte.
 
-## Inizializzazione di `ACTOR`
+### Inizializzazione di `ACTOR`
 
 Ora è stato implmentato sulla classe `ACTOR` un codice di inizializzazione _ad hoc_, che gestisce separatamente gli attori con nome proprio. Quanto agli attori senza nome proprio, il codice è lo stesso usato su `OBJECT` (in questo caso, si tratta di sostantivi a tutti gli effetti).
 
@@ -2789,11 +2768,11 @@ Inoltre:
 
 - Alla classe `femmina` è stato aggiunto l'attributo predefinito `IS femminile` (se no l'inizializzazione per attori con nome proprio femminili falliva, dato che veniva eseguita prima l'inizializzazione su `ACTOR` e `PERSONA`, e solo in seguito su `femmina`, causando una modifica dell'attributo di genere da parte del codice di inizializzazione delle classi genitore).
 
-## Note Sugli Attori Con Nome Proprio
+### Note Sugli Attori Con Nome Proprio
 
 Gli attori possono avere un nome proprio nel gioco, oppure no. Se non lo hanno, saranno trattati dalla libreria alla stregua di qualsiasi altro oggetto (si tratta di sostantivi). Se invece hanno un nome proprio, allora la libreria dovrà inizializzare tali oggetti diversamente, come indicato sopra. Qui darò un breve sunto delle ragioni e modalità di queste differenze.
 
-### Attori Plurali
+#### Attori Plurali
 
 L'uso di attori plurali nelle AT è abbastanza comune quando si vuol rappresentare un gruppo o collettivo di attori tramite sostantivi come "la giuria", "gli operai" e via dicendo. In questo caso, essi vengono trattati dalla libreria come qualsiasi altro oggetto.
 
@@ -2826,7 +2805,7 @@ END THE.
 
 > __NOTA__ — Potrei creare due ulteriori sottoclassi di `persona` a tal scopo: `maschi` e `femmine`, ossia le varianti plurali dei già esistenti `maschio` e `femmina`.
 
-### Attori e `vocale`
+#### Attori e `vocale`
 
 Il punto __1__ menzionato sopra, serve ad assicurarsi (come avviene per gli oggetti e attori senza nome proprio) che la `vocale` di riferimento per l'accordo dei sostantivi sia gestita correttamente. 
 
@@ -2837,7 +2816,7 @@ Esempi (`"arrabbiat$$" SAY vocale OF THIS.`):
 - "Romeo e Giulietta ora sono arrabbiati"
 - "Thelma e Luise ora sono arrabbiate"
 
-### Preposizioni Semplici
+#### Preposizioni Semplici
 
 Il punto __2__ menzionato sopra, serve ad assicurarsi che negli attori con nome proprio gli attributi del gruppo `prep_*` contengano le preposizioni semplici anziché quelle articolate. Questo è necessario affinché i messaggi della libreria vengano mostrati correttamente.
 
@@ -2850,7 +2829,7 @@ Esempi (`"Hai dato $+2" SAY prep_A OF THIS. "."`):
 
 (anziché "al Marco", "alla Gina", "ai Romeo e Giuglietta" e "alle Thelma e Luise", come avveniva prima di questo commit.)
 
-### Articoli
+#### Articoli
 
 In merito al punto __3__ dell'elenco inizializzazione di cui sopra:
 
@@ -2877,13 +2856,13 @@ Esempi con art. indeterminativo (`"Qui puoi vedere $01."`):
 <!---------------------------------------------------------------------------->
 
 
-# 2018/08/06 (1)
+## 2018/08/06 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.4.6)
 - [`lib_verbi.i`][lib_verbi] (v0.4.14)
 
 
-## Library Attributes
+### Library Attributes
 
 Translated library attributes related to ACTORs:
 
@@ -2903,12 +2882,12 @@ Translated library attributes related to ACTORs:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/08/02 (3)
+## 2018/08/02 (3)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.10)
 - [`lib_verbi.i`][lib_verbi] (v0.4.13)
 
-## Verb Responses
+### Verb Responses
 
 New verb responses attributes (created for Italian library, no English counterpart):
 
@@ -2917,7 +2896,7 @@ New verb responses attributes (created for Italian library, no English counterpa
 | `specificare_A_cosa` | `Devi specificare a cosa vorresti` |
 
 
-## Verbs: `tie` and `tie_to`
+### Verbs: `tie` and `tie_to`
 
 Translated verbs `lega` and `lega_a`, "__lega__":
 
@@ -2943,7 +2922,7 @@ with no synonyms.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/08/02 (2)
+## 2018/08/02 (2)
 
 - [`lib_verbi.i`][lib_verbi] (v0.4.12)
 
@@ -2954,14 +2933,14 @@ Fix English "Verbs List" in source comments.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/08/02 (1)
+## 2018/08/02 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.4.5)
 - [`lib_luoghi.i`][lib_luoghi] (v0.4.1)
 - [`lib_verbi.i`][lib_verbi] (v0.4.11)
 
 
-## Verbs: `kill` and `kill_with`
+### Verbs: `kill` and `kill_with`
 
 Translated verbs `uccidi` and `uccidi_con`, "__uccidi__":
 
@@ -2972,7 +2951,7 @@ with synonyms:
 
     ammazza
 
-## Verbs: `touch` and `touch_with`
+### Verbs: `touch` and `touch_with`
 
 Translated verbs `tocca` and `tocca_con`, "__tocca__":
 
@@ -2984,7 +2963,7 @@ with synonyms:
     accarezza, carezza = tocca
 
 
-## Code Cleanup
+### Code Cleanup
 
 This commit tweaks the library source to increase code readability during work:
 
@@ -2996,12 +2975,12 @@ This commit tweaks the library source to increase code readability during work:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/08/01 (4)
+## 2018/08/01 (4)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.9)
 - [`lib_verbi.i`][lib_verbi] (v0.4.10)
 
-## Verb Responses
+### Verb Responses
 
 New verb responses attributes (created for Italian library, no English counterpart):
 
@@ -3011,7 +2990,7 @@ New verb responses attributes (created for Italian library, no English counterpa
 
 Used in the following verbs:  `bacia`, `tira`, `clean`, `rub`, `scratch`.
 
-## Verb: `sing`
+### Verb: `sing`
 
 Translated verb `canta`, "__canta__" (_sing_):
 
@@ -3019,7 +2998,7 @@ Translated verb `canta`, "__canta__" (_sing_):
 
 with no synonyms.
 
-## Verb: `kiss`
+### Verb: `kiss`
 
 Translated verb `bacia`, "__bacia__" (_kiss_):
 
@@ -3034,7 +3013,7 @@ with synonyms:
 > 
 > L'unico problema è che se l'autore dovesse aggiungere sinonimi che terminano diversamente i messaggi sarebbero compromessi. Ma dire che per questo verbo non sono da prevedersi ulteriori sinonimi (in caso contrario, dovrà modificare il codice del verbo).
 
-## Verb: `pull`
+### Verb: `pull`
 
 Translated verb `tira`, "__tira__" (_pull_):
 
@@ -3048,12 +3027,12 @@ with no synonyms.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/08/01 (3)
+## 2018/08/01 (3)
 
 - [`lib_verbi.i`][lib_verbi] (v0.4.9)
 
 
-## Verbs: `attack` and `attack_with`
+### Verbs: `attack` and `attack_with`
 
 Translated verbs `attacca` and `attacca_con`, "__attacca__":
 
@@ -3078,7 +3057,7 @@ with synonyms:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/08/01 (2)
+## 2018/08/01 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.8)
 - [`lib_verbi.i`][lib_verbi] (v0.4.8)
@@ -3089,7 +3068,7 @@ This commit translates the following verbs:
 - `dance`
 - `dig`
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Renamed `mia_AT` attributes for verb restrictions:
 
@@ -3097,7 +3076,7 @@ Renamed `mia_AT` attributes for verb restrictions:
 |-----------|-----------|
 | `danzare` | `ballare` |
 
-## Verb Responses
+### Verb Responses
 
 New verb responses attributes (created for Italian library, no English counterpart):
 
@@ -3106,7 +3085,7 @@ New verb responses attributes (created for Italian library, no English counterpa
 | `non_senti_bisogno_di` | `Al momento non senti il bisogno di` |
 
 
-## Verbs: `cut` and `cut_with`
+### Verbs: `cut` and `cut_with`
 
 Translated verbs `taglia` and `taglia_con`, "__taglia (ogg)__" and  "__taglia (ogg) con (strumento)__":
 
@@ -3117,7 +3096,7 @@ with no synonyms.
 
 > __NOTA__ — Inform 6 Italian (_Infit_) riconosce i seguenti sinomini di `taglia`: `affetta`, `sfronda`, `sfoltisci`, `spacca`, `strappa`. Invece in Inform 7 Italian ho trovato solo `taglia`. Devo valutare se implementare alcuni di quei sinonimi oppure lasciare all'autore la libertà di definirli da sé.
 
-## Verb: `dance`
+### Verb: `dance`
 
 Translated verb `balla`, "__balla__" (_dance_):
 
@@ -3128,7 +3107,7 @@ with synonyms:
     danza
 
 
-## Verb: `dig`
+### Verb: `dig`
 
 Translated verb `scava`, "__scava__" (_dig_):
 
@@ -3147,12 +3126,12 @@ with no synonyms.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/08/01 (1)
+## 2018/08/01 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.7)
 - [`lib_verbi.i`][lib_verbi] (v0.4.7)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `mia_AT` attributes for verb restrictions:
 
@@ -3162,7 +3141,7 @@ Translated `mia_AT` attributes for verb restrictions:
 | `listen`  | `ascoltare`  |
 
 
-## Verb: `drive`
+### Verb: `drive`
 
 Translated verb `guida`, "__guida__" (_drive_):
 
@@ -3170,7 +3149,7 @@ Translated verb `guida`, "__guida__" (_drive_):
 
 with no synonyms.
 
-## Verbs: `listen0` and `listen`
+### Verbs: `listen0` and `listen`
 
 Translated verbs `ascolta0` and `ascolta`, "__ascolta__" and "__ascolta (ogg)__":
 
@@ -3183,11 +3162,11 @@ with no synonyms.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/31 (2)
+## 2018/07/31 (2)
 
 - [`lib_verbi.i`][lib_verbi] (v0.4.6)
 
-## Verb: `free`
+### Verb: `free`
 
 Translated verb `libera`, "__libera__" (_free_):
 
@@ -3198,7 +3177,7 @@ with synonyms:
     rilascia
 
 
-## Verb: `think`
+### Verb: `think`
 
 Translated verb `pensa`, "__pensa__" (_think_):
 
@@ -3210,7 +3189,7 @@ with synonyms:
     medita = rifletti.
 
 
-## Verb: `think_about`
+### Verb: `think_about`
 
 Translated verb `pensa_a`, "__pensa a__" (_think about_):
 
@@ -3228,13 +3207,13 @@ with synonyms:
 
 
 
-# 2018/07/31 (1)
+## 2018/07/31 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.4.4)
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.6)
 - [`lib_verbi.i`][lib_verbi] (v0.4.5)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Renamed `mia_AT` attributes for verb restrictions:
 
@@ -3243,7 +3222,7 @@ Renamed `mia_AT` attributes for verb restrictions:
 | `aggiustare` | `riparare` |
 
 
-## Verb Responses
+### Verb Responses
 
 Translated verb responses attributes:
 
@@ -3254,7 +3233,7 @@ Translated verb responses attributes:
 
 Now all occurences of those messages have been replaced by its Italian traslation.
 
-## Verb: `fix`
+### Verb: `fix`
 
 Translated verb `ripara`, "__ripara__" (_fix_):
 
@@ -3267,11 +3246,11 @@ with synonyms:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/29 (2)
+## 2018/07/29 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.5)
 
-## Remove Verb Restriction Attributes
+### Remove Verb Restriction Attributes
 
 Removed `mia_AT` attributes for verb restrictions:
 
@@ -3283,7 +3262,7 @@ Removed `mia_AT` attributes for verb restrictions:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/07/29 (1)
+## 2018/07/29 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.4)
 - [`lib_classi.i`][lib_classi] (v0.4.3)
@@ -3291,13 +3270,13 @@ Removed `mia_AT` attributes for verb restrictions:
 
 This commit translates and adapts to Italian the group of verbs and attributes that deal with switching on/of devices and lightsources. Because it required complex structural changes due to the differences in the two languages, all the explanations will be in Italian only!
 
-## Accendere/Spegnere Dispositivi e Fonti di Luce
+### Accendere/Spegnere Dispositivi e Fonti di Luce
 
 Queste modifiche interessano i verbi e gli attributi che si occupano di accendere e spegnere dispositivi e fonti di luce (naturali e non). Le differenze tra le due lingue nell'uso dei verbi interessati mi ha costretto ad apportare modifiche significative alle parti della libreria che li gestiscono.
 
 Esporrò sia le modifiche che le ragioni di tali modifiche.
 
-## Il Nocciolo del Problema
+### Il Nocciolo del Problema
 
 La libreria distingue tra dispositivi e fonti di luce naturali o artificiali (`NOT naturale`) tramite le classi `dispositivo` e `fonte_di_luce`, sulle quali sono implementati i vari verbi in maniera differente tra loro.
 
@@ -3340,13 +3319,13 @@ Quanto al verbo `switch`, che in inglese serviva a passare da uno stato all'altr
 
 In teoria, avrei potuto preservare `extinguish` e tradurlo con `estingui` ("estingui la candela/il fuoco"), e magari `light` tradurlo cone `dai fuoco a`, ma queste sintassi non sono versatali come gli equivalenti inglesi e in italiano non sarebbero altrettanto applicabili a tutte le fonti di luce naturale. Siccome l'aspettativa naturale è che il giocatore usi "accendi/spegni" in questi frangenti, ho preferito elimiare questi verbi e lasciare che sia l'autore a implementarli se proprio gli servono.
 
-## Abolizione dell'Attributo `naturale`
+### Abolizione dell'Attributo `naturale`
 
 In virtù delle modifiche sopramenzionate, l'attributo `naturale` per le fonti di luce viene meno al suo scopo: esso veniva impiegato in quei verbi inglesi che dovevano interagire solo con fonti di luce artificiali (`switch`). Siccome ora usiamo solo i verbi accendi/spegni per tutti i tipi di luci e per i dispostivi, la distinzione diventa superlua. Inoltre, nel codice della libreria non si fa più riferimento a questo attributo.
 
 In teoria, poteva essere utile all'utente finale in certi contesti, ma questi potrà implementare tale attributo da sé; mentre ritengo invece che non dovrebbero essere presenti nella libreria attributi non utilizzati da essa.
 
-## Rilfessioni sull'Attributo `illuminato`
+### Rilfessioni sull'Attributo `illuminato`
 
 Sempre in virtù dei suddetti cambiamenti, avevo valutato di abbandonare l'attributo `illuminato` (nella classe `fonte_di_luce`) in favore di `acceso` (attributo già presente su ogni `THING`), proprio come accade con i dispositivi. 
 
@@ -3358,7 +3337,7 @@ Però ho poi considerato la possibilità che si vogliano creare oggetti che poss
 
 Per prudenza, ho preferito lasciare questo attributo così com'è, e prendermi del tempo per valutare più a fondo se rimpiazzarlo con `acceso` possa portare dei reali benefici (oltre a quelli menzionati sopra). Ho comunque provato a operare tale sostituzione ai fini dei test, e non mi sono imbattuto in problematiche tecniche, quindi la sostituzione è fattibile.
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Questa serie di modifiche riguarda anche gli attributi per le restrizioni verbali della `mia_AT`: gli attributi che facevano riferimento a verbi rimossi sono stati anch'essi rimossi, gli altri tradotti.
 
@@ -3371,7 +3350,7 @@ Questa serie di modifiche riguarda anche gli attributi per le restrizioni verbal
 | `extinguish` | _eliminato_ |
 
 
-## Testo dei Verbi
+### Testo dei Verbi
 
 Ho tradotto in italiano il testo prodotto dai verbi sopramenzionati, e anche quello del verbo `esamina` su `dispositivo` e `fonte_di_luce` — ma non ho tradotto ancora tutti i messaggi di risposta che usano attributi `mia_AT`!
 
@@ -3379,12 +3358,12 @@ Ho tradotto in italiano il testo prodotto dai verbi sopramenzionati, e anche que
 
 
 
-# 2018/07/28 (3)
+## 2018/07/28 (3)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.3)
 - [`lib_verbi.i`][lib_verbi] (v0.4.3)
 
-## Verb Responses
+### Verb Responses
 
 - Removed all occurences of `illegal_parameter_on_sg`/`pl` and replaced them with Italian message instead.
 
@@ -3394,12 +3373,12 @@ Ho tradotto in italiano il testo prodotto dai verbi sopramenzionati, e anche que
 
 
 
-# 2018/07/28 (2)
+## 2018/07/28 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.2)
 - [`lib_verbi.i`][lib_verbi] (v0.4.2)
 
-## Verb Responses
+### Verb Responses
 
 Translated verb responses attributes:
 
@@ -3415,7 +3394,7 @@ Translated verb responses attributes:
 | `xxx`/`pl`   | `xxx`/`pl`   | `xxx` |
  -->
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `my_game` attributes for verb restrictions:
 
@@ -3425,7 +3404,7 @@ Translated `my_game` attributes for verb restrictions:
 | `sit_on` | `sedersi_su` |
 
 
-## Verbs: `sit` and `sit_on`
+### Verbs: `sit` and `sit_on`
 
 Translated verbs `siediti` and `siediti_su`, "__siediti__":
 
@@ -3443,13 +3422,13 @@ with synonyms:
 
 
 
-# 2018/07/28 (1)
+## 2018/07/28 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.1)
 - [`lib_classi.i`][lib_classi] (v0.4.2)
 - [`lib_verbi.i`][lib_verbi] (v0.4.1)
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `my_game` attributes for verb restrictions:
 
@@ -3467,7 +3446,7 @@ Translated `my_game` attributes for verb restrictions:
 | `touch_with`  | `toccare_con`   |
 
 
-## Verb: `answer`
+### Verb: `answer`
 
 Translated verb `rispondi` (_answer_):
 
@@ -3477,7 +3456,7 @@ with no synonyms.
 
 Where `argomento` is a string.
 
-## Verbs: `fill` and `fill_with`
+### Verbs: `fill` and `fill_with`
 
 Translated verbs `riempi` and `riempi_con` (_fill_ and _fill with_):
 
@@ -3491,7 +3470,7 @@ with no synonyms (for now).
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/27 (7)
+## 2018/07/27 (7)
 
 - [`lib_classi.i`][lib_classi] (v0.4.1)
 
@@ -3502,7 +3481,7 @@ Translated some more commented documentation of the Library classes.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/27 (6)
+## 2018/07/27 (6)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.4.0)
 - [`lib_verbi.i`][lib_verbi] (v0.4.0)
@@ -3515,9 +3494,9 @@ This is a major update introducing new global features to the Italian library. T
 - [`lib_messaggi.i`][lib_messaggi] (v0.4.0)
 - [`lib_supplemento.i`][lib_supplemento] (v0.4.0)
 
-## New THING Attribute `vocale` for Adjectives Conjucation
+### New THING Attribute `vocale` for Adjectives Conjucation
 
-### Italian Adjectives Refresher
+#### Italian Adjectives Refresher
 
 In Italian an adjective must agree in gender and number with the noun it refers to. In practical terms, this affects the last vowel of the adjective, the common conjucation rule being:
 
@@ -3550,7 +3529,7 @@ Some adjectives follow a different conjucation form, depending on their ending f
 
 These type of adjectives are not covered by the new feature presented in this commit.
 
-### Adjectives and The Library
+#### Adjectives and The Library
 
 Currently, when a VERB has to print out an adjective refering to a parameter, it requires to check its gender and number to decide which vowel to end the adjective with.
 
@@ -3576,7 +3555,7 @@ Of course, similar conditional block can handle any form of adjectives (includin
 
 But the "o/i/a/e" conjucation is the most common one, so this features focus on that in particular and aims at reducing in size verb definitions and getting rid of nested conditional blocks like the one presented above.
 
-### The `vocale` Attribute
+#### The `vocale` Attribute
 
 As a solution, I've introduced on every `THING` the new attribute `vocale`, which is a string containing the vowel that should be used to conjucate adjectives refering to it. This way, any adjective that follows the common "o/i/a/e" conjucation can simply append blindly to itself the string of the instance's `vocale` attribute.
 
@@ -3599,7 +3578,7 @@ While having another attribute added to every `THING` in the game might add some
 
 Theorically, having dropped nested branching code blocks in favour of retriving a string attribute should be faster in terms of execution (branching can affect negatively the CPU cache and consume more registers), but I seriously doubt that this could lead to any noticeable perfomance gains — modern PCs are so powerful that running Text Adventures (even truly huge ones) is a trivial task for the CPU, and memory has become so cheap today that the whole adventure will surely fit entirely into the RAM of any computer, even a NetBook.
 
-#### Auto-Initialization Behind the Scenes
+##### Auto-Initialization Behind the Scenes
 
 The contents of `vocale` are auto-magically handled by the library behind the scenes at initialization time — the `articolo` attribute provided by the adventure author is referenced to establish the required vowel. This is handled within the library code that already deals with initialization of gender, number and definite/indefinite articles on every instance. 
 
@@ -3611,7 +3590,7 @@ Adjectives which follow different conjucation rules will simply ignore `vocale` 
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/27 (5)
+## 2018/07/27 (5)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.18)
 - [`lib_verbi.i`][lib_verbi] (v0.3.21)
@@ -3622,13 +3601,13 @@ Just small comments adjustments and source cleanup.
 
 
 
-# 2018/07/27 (4)
+## 2018/07/27 (4)
 
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.17)
 - [`lib_verbi.i`][lib_verbi] (v0.3.20)
 
-## Translated Verb Responses + Attributes
+### Translated Verb Responses + Attributes
 
 |        EN Attribute        |       IT Attribute      |           Text          |
 |----------------------------|-------------------------|-------------------------|
@@ -3638,7 +3617,7 @@ Just small comments adjustments and source cleanup.
 | `check_obj_not_at_hero_pl` | `ogg1_già_qui_pl`       | `$+1 sono proprio qui.` |
 
 
-## Verb: `find`
+### Verb: `find`
 
 Translated verb `trova`, (_find_):
 
@@ -3650,7 +3629,7 @@ with no synonyms.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/27 (3)
+## 2018/07/27 (3)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.16)
 
@@ -3659,12 +3638,12 @@ Small fixes and cleanup; also fixes an English verb response (`check_act_near_he
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/27 (2)
+## 2018/07/27 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.15)
 - [`lib_verbi.i`][lib_verbi] (v0.3.19)
 
-## Translated Verb Responses + Attributes
+### Translated Verb Responses + Attributes
 
 |     EN Attribute     |     IT Attribute    |
 |----------------------|---------------------|
@@ -3673,7 +3652,7 @@ Small fixes and cleanup; also fixes an English verb response (`check_act_near_he
 
 Now the original English attributes are no longer needed and have been removed from source!
 
-## Italian Responses For Illegal Obj2 With
+### Italian Responses For Illegal Obj2 With
 
 Implemented Italian translation of `check_obj2_suitable_with_sg`/`pl` to all verbs (even not translated ones).
 
@@ -3693,12 +3672,12 @@ Now the English attributes are no longer required in the library for all occuren
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/27 (1)
+## 2018/07/27 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.14)
 - [`lib_verbi.i`][lib_verbi] (v0.3.18)
 
-## Italian Responses For Illegal Obj2 With
+### Italian Responses For Illegal Obj2 With
 
 Implemented Italian translation of `illegal_parameter2_with_sg`/`pl` to all verbs (even not translated ones).
 
@@ -3713,17 +3692,17 @@ Now the original `illegal_parameter2_with_sg`/`pl` is no longer needed and was c
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/26 (10)
+## 2018/07/26 (10)
 
 - [`lib_classi.i`][lib_classi] (v0.3.6)
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.13)
 - [`lib_verbi.i`][lib_verbi] (v0.3.17)
 
-## Verb Response Attributes Renaming
+### Verb Response Attributes Renaming
 
 Some small tweaks in naming convention (reasons why explained in Italian).
 
-## Renamed Verb Responses
+### Renamed Verb Responses
 
 Rename ``imp_ogg_chiuso_*` to `imp_ogg1_chiuso_*`:
 
@@ -3745,7 +3724,7 @@ Rename ``imp_ogg_chiuso_*` to `imp_ogg1_chiuso_*`:
 > 
 > La versione precedente (a tre lettere) era poco intuitiva, mentre i suffissi di due lettere sono più immediati — inoltre, il contesto in cui appaiono non lascia dubbio circa il loro significato ed utilizzo.
 
-### Changed Suffixes
+#### Changed Suffixes
 
 Quindi, in base a quanto appena detto, tutti i suffissi degli attributi messaggi tradotti vengono rinominati secondo tale schema:
 
@@ -3754,7 +3733,7 @@ Quindi, in base a quanto appena detto, tutti i suffissi degli attributi messaggi
 | singolare | `_sg`  | `_ms`    | `_fs`     |
 | plurale   | `_pl`  | `_mp`    | `_fp`     |
 
-### Other Responses Renames
+#### Other Responses Renames
 
 Some other translated response-attributes:
 
@@ -3780,12 +3759,12 @@ Some other translated response-attributes:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/26 (9)
+## 2018/07/26 (9)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.12)
 - [`lib_verbi.i`][lib_verbi] (v0.3.16)
 
-## Translate Verb Responses for Closed Obj2 Blocking the Action
+### Translate Verb Responses for Closed Obj2 Blocking the Action
 
 Translated and substituted the following verb responses attributes:
 
@@ -3830,12 +3809,12 @@ AND cont IS aperto
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/26 (8)
+## 2018/07/26 (8)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.11)
 - [`lib_verbi.i`][lib_verbi] (v0.3.15)
 
-## Translate Verb Responses for Closed Obj1 Blocking the Action
+### Translate Verb Responses for Closed Obj1 Blocking the Action
 
 Translated and substituted the following verb responses attributes:
 
@@ -3879,12 +3858,12 @@ AND ogg IS aperto
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/26 (7)
+## 2018/07/26 (7)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.10)
 - [`lib_verbi.i`][lib_verbi] (v0.3.14)
 
-## Translate Verb Responses for Already Unlocked Objects
+### Translate Verb Responses for Already Unlocked Objects
 
 Translated and substituted the following verb responses attributes:
 
@@ -3927,12 +3906,12 @@ AND ogg IS bloccato
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/26 (6)
+## 2018/07/26 (6)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.9)
 - [`lib_verbi.i`][lib_verbi] (v0.3.13)
 
-## Translate Verb Responses for Already Locked Objects
+### Translate Verb Responses for Already Locked Objects
 
 Translated and substituted the following verb responses attributes:
 
@@ -3976,12 +3955,12 @@ AND ogg IS NOT bloccato
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/26 (5)
+## 2018/07/26 (5)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.8)
 - [`lib_verbi.i`][lib_verbi] (v0.3.12)
 
-## Translate Verb Responses for Already Close Objects
+### Translate Verb Responses for Already Close Objects
 
 Translated and substituted the following verb responses attributes:
 
@@ -4025,12 +4004,12 @@ AND ogg IS aperto
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/26 (4)
+## 2018/07/26 (4)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.7)
 - [`lib_verbi.i`][lib_verbi] (v0.3.11)
 
-## Translate Verb Responses for Already Open Objects
+### Translate Verb Responses for Already Open Objects
 
 Translated and substituted the following verb responses attributes:
 
@@ -4073,13 +4052,13 @@ AND ogg IS NOT aperto
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/26 (3)
+## 2018/07/26 (3)
 
 - [`lib_classi.i`][lib_classi] (v0.3.5)
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.6)
 - [`lib_verbi.i`][lib_verbi] (v0.3.10)
 
-## Translate Verb Responses for Distant Params
+### Translate Verb Responses for Distant Params
 
 Translated and substituted the following verb responses attributes:
 
@@ -4095,13 +4074,13 @@ Translated and substituted the following verb responses attributes:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/26 (2)
+## 2018/07/26 (2)
 
 - [`lib_verbi.i`][lib_verbi] (v0.3.9)
 
-## Implement Italian Verb Responses
+### Implement Italian Verb Responses
 
-### Param 1 Illegal or Unsuitable
+#### Param 1 Illegal or Unsuitable
 
 Change almost all occurences of `illegal_parameter_sg`/`pl` and `check_obj_suitable_sg`/`pl` with `ogg1_inadatto_sg`/`pl` (the two English responses map to a single Italian response).
 
@@ -4117,11 +4096,11 @@ Therefore, I can't yet delete the `illegal_parameter_sg`/`pl` and `check_obj_sui
 
 
 
-# 2018/07/26 (1)
+## 2018/07/26 (1)
 
 - [`lib_verbi.i`][lib_verbi] (v0.3.8)
 
-## Polish and Fix Translated Verbs 
+### Polish and Fix Translated Verbs 
 
 This commit cleans up the verbs so far translated:
 
@@ -4129,7 +4108,7 @@ This commit cleans up the verbs so far translated:
 - Fix some incorrect parameters references (error in original Lib code)
 - Apply available Italian responses (attributes) to some translated verbs whose code still references the English response.
 
-## Verb Parameters Fixes
+### Verb Parameters Fixes
 
 This commit also fixes some erroneus parameters references in the original library code (See my [PR #12 on StdLib])
 
@@ -4157,13 +4136,13 @@ This is the lis of verbs that had wrong parameters referencing in their checks, 
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/25 (8)
+## 2018/07/25 (8)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.6)
 - [`lib_verbi.i`][lib_verbi] (v0.3.7)
 
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `my_game` attributes for verb restrictions:
 
@@ -4173,7 +4152,7 @@ Translated `my_game` attributes for verb restrictions:
 | `'no'`  | `dire_no` |
 
 
-## Verbs: `yes` and `no`
+### Verbs: `yes` and `no`
 
 Translated verbs `dici_Sì` and `dici_No`, "__sì__" and "__no__":
 
@@ -4191,7 +4170,7 @@ with no synonyms.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/25 (7)
+## 2018/07/25 (7)
 
 - [`lib_verbi.i`][lib_verbi] (v0.3.6)
 
@@ -4201,13 +4180,13 @@ Reorder translated verbs alphabetically.
 
 
 
-# 2018/07/25 (6)
+## 2018/07/25 (6)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.4)
 - [`lib_verbi.i`][lib_verbi] (v0.3.5)
 
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `my_game` attributes for verb restrictions:
 
@@ -4216,7 +4195,7 @@ Translated `my_game` attributes for verb restrictions:
 | `'play'`    | `suonare`     |
 | `play_with` | `giocare_con` |
 
-## Verb: `play`
+### Verb: `play`
 
 Translated verb `suona`, (_play_):
 
@@ -4224,7 +4203,7 @@ Translated verb `suona`, (_play_):
 
 with no synonyms.
 
-## Verb: `play_with`
+### Verb: `play_with`
 
 Translated verb `gioca_con`, (_play with_):
 
@@ -4238,13 +4217,13 @@ with no synonyms.
 
 
 
-# 2018/07/25 (5)
+## 2018/07/25 (5)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.3)
 - [`lib_verbi.i`][lib_verbi] (v0.3.4)
 
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `my_game` attributes for verb restrictions:
 
@@ -4266,7 +4245,7 @@ Translated `my_game` attributes for verb restrictions:
 
 
 
-# 2018/07/25 (4)
+## 2018/07/25 (4)
 
 - [`lib_luoghi.i`][lib_luoghi] (v0.3.3)
 
@@ -4276,7 +4255,7 @@ Translate commented documentation in the library sources.
 
 
 
-# 2018/07/25 (3)
+## 2018/07/25 (3)
 
 - [`lib_classi.i`][lib_classi] (v0.3.4)
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.2)
@@ -4284,7 +4263,7 @@ Translate commented documentation in the library sources.
 - [`lib_verbi.i`][lib_verbi] (v0.3.3)
 
 
-## Library Instances
+### Library Instances
 
 Translated library instances:
 
@@ -4294,7 +4273,7 @@ Translated library instances:
 | `banner`  | `intestazione` | `LOCATION`         |
 
 
-## Library Classes
+### Library Classes
 
 Translated CLASSes:
 
@@ -4307,12 +4286,12 @@ Translated CLASSes:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/25 (2)
+## 2018/07/25 (2)
 
 - [`lib_classi.i`][lib_classi] (v0.3.3)
 - [`lib_verbi.i`][lib_verbi] (v0.3.2)
 
-## Library Classes
+### Library Classes
 
 Translated CLASSes:
 
@@ -4327,12 +4306,12 @@ Translated CLASSes:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/25 (1)
+## 2018/07/25 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.3.2)
 
 
-## Clothing Attributes
+### Clothing Attributes
 
 Translated library attributes:
 
@@ -4350,7 +4329,7 @@ Translated library attributes:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/24 (5)
+## 2018/07/24 (5)
 
 - [`lib_classi.i`][lib_classi] (v0.3.1)
 - [`lib_definizioni.i`][lib_definizioni] (v0.3.1)
@@ -4360,7 +4339,7 @@ Translated library attributes:
 
 This commit covers the translation of many library identifiers.
 
-## Library Attributes
+### Library Attributes
 
 Translated library attributes:
 
@@ -4372,7 +4351,7 @@ Translated library attributes:
 | `ground_desc` | `desc_suolo` | `site` » `luogo_esterno`   |
 
 
-## Library Classes
+### Library Classes
 
 Translated CLASSes:
 
@@ -4385,7 +4364,7 @@ Translated CLASSes:
 | `lightsource` | `fonte_di_luce`         | `OBJECT`                                |
 | `clothing`    | `indumento`             | `OBJECT`                                |
 
-## Library Instances
+### Library Instances
 
 | Instance EN |   Instance IT   |  Class   |
 |-------------|-----------------|----------|
@@ -4396,7 +4375,7 @@ Translated CLASSes:
 
 
 
-# 2018/07/24 (4)
+## 2018/07/24 (4)
 
 - [`libreria.i`][libreria] (v0.3.0)
 - [`lib_classi.i`][lib_classi] (v0.3.0)
@@ -4420,11 +4399,11 @@ Housekeeping:
 
 
 
-# 2018/07/24 (3)
+## 2018/07/24 (3)
 
 - [`lib_messaggi.i`][lib_messaggi_runtime] (v0.2.4)
 
-## Input Response Messages
+### Input Response Messages
 
 Translate more Input Response Messages (still a few left).
 
@@ -4432,7 +4411,7 @@ Translate more Input Response Messages (still a few left).
 
 
 
-# 2018/07/24 (2)
+## 2018/07/24 (2)
 
 - [`lib_verbi.i`][lib_verbi] (v0.2.41)
 
@@ -4441,7 +4420,7 @@ Just some code cleanup.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/24 (1)
+## 2018/07/24 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.37)
 - [`lib_verbi.i`][lib_verbi] (v0.2.40)
@@ -4457,7 +4436,7 @@ Translated `my_game` attributes for verb restrictions:
 | `'who_am_i'`   | `domandare_chi_sono_io`   |
 | `'who_is'`     | `domandare_chi_è`         |
 
-## Who/Where Verbs
+### Who/Where Verbs
 
 This commit translates the group of `who/where_*` verbs:
 
@@ -4483,7 +4462,7 @@ This commit translates the group of `who/where_*` verbs:
 
 
 
-# 2018/07/23 (5)
+## 2018/07/23 (5)
 
 
 - [`lib_classi.i`][lib_classi] (v0.2.17)
@@ -4493,7 +4472,7 @@ A few code optimizations:
 
 - remove unneeded `SAY` statements when just a string was sufficient.
 
-# 2018/07/23 (4)
+## 2018/07/23 (4)
 
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.36)
@@ -4508,7 +4487,7 @@ Translated `my_game` attributes for verb restrictions:
 | `use_with` | `usare_con` |
 
 
-## Verb: `use`
+### Verb: `use`
 
 Translated verb `usa`, (_use_):
 
@@ -4518,7 +4497,7 @@ with no synonyms.
 
 
 
-## Verb: `use_with`
+### Verb: `use_with`
 
 Translated verb `usa_con`, "__usa con__" (_use_with_):
 
@@ -4532,12 +4511,12 @@ with no synonyms.
 
 
 
-# 2018/07/23 (2)
+## 2018/07/23 (2)
 
 - [`lib_classi.i`][lib_classi] (v0.2.16)
 - [`lib_verbi.i`][lib_verbi] (v0.2.37)
 
-## Verb: `drop`
+### Verb: `drop`
 
 Translated verb `lascia`, (_drop_):
 
@@ -4553,7 +4532,7 @@ with no synonyms.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/23 (1)
+## 2018/07/23 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.2.15)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.35)
@@ -4587,12 +4566,12 @@ Translate verbs:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/22 (7)
+## 2018/07/22 (7)
 
 - [`lib_classi.i`][lib_classi] (v0.2.14)
 - [`lib_verbi.i`][lib_verbi] (v0.2.35)
 
-## Tweaked `LISTED_CONTAINER`
+### Tweaked `LISTED_CONTAINER`
 
 In the original library code, the `LISTED_CONTAINER` class defined verb bodies for `open` and `close` in order to ensure that when a `LISTED_CONTAINER` was opened it would become `NOT OPAQUE`, and when closed `OPAQUE`.
 
@@ -4602,14 +4581,14 @@ Also, the library didn't define some other verbs which might open or close a con
 
 Therefore, this commit tweaks the code and implements also the other open/close/lock verbs, and before changing its opaqueness all verbs now always test the `open` attribute to check if the opening/closing action actually succeeded.
 
-## Small Fixes
+### Small Fixes
 
 In `lib_classi.i` some `examine` verb definitions hadn't been translated to `esamina`, and they weren't acting as expected (with `LISTED_CONTAINER`s). Now fixed.
 
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/22 (6)
+## 2018/07/22 (6)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.34)
 
@@ -4619,7 +4598,7 @@ Translate documentation comments in library sources.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/22 (5)
+## 2018/07/22 (5)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.33)
 - [`lib_verbi.i`][lib_verbi] (v0.2.34)
@@ -4635,12 +4614,12 @@ Translated library attributes:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/22 (4)
+## 2018/07/22 (4)
 
 - [`lib_verbi.i`][lib_verbi] (v0.2.33)
 
 
-## Verb: `sell`
+### Verb: `sell`
 
 Translated verb `vendi`, (_sell_):
 
@@ -4653,7 +4632,7 @@ with no synonyms.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/22 (3)
+## 2018/07/22 (3)
 
 
 - [`lib_classi.i`][lib_classi] (v0.2.13)
@@ -4661,7 +4640,7 @@ with no synonyms.
 - [`lib_verbi.i`][lib_verbi] (v0.2.32)
 
 
-## Translate Verb Parameters
+### Translate Verb Parameters
 
 This commit italianizes verbs parameters:
 
@@ -4699,11 +4678,11 @@ This commit italianizes verbs parameters:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/22 (2)
+## 2018/07/22 (2)
 
 - [`lib_verbi.i`][lib_verbi] (v0.2.31)
 
-## Changed Behaviour of `examine`
+### Changed Behaviour of `examine`
 
 In the original library, when the verb `examine` was used with readable objects it behaved just like `read`.
 
@@ -4724,7 +4703,7 @@ With the new system, to old library behavior is preserved for readable objects w
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/22 (1)
+## 2018/07/22 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.32)
 - [`lib_verbi.i`][lib_verbi] (v0.2.30)
@@ -4737,7 +4716,7 @@ Translated `my_game` attributes for verb restrictions:
 | `write` | `scrivere` |
 
 
-## Verb: `write`
+### Verb: `write`
 
 Translated verb `scrivi`, (_write_):
 
@@ -4751,12 +4730,12 @@ with no synonyms.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/21 (5)
+## 2018/07/21 (5)
 
 - [`lib_verbi.i`][lib_verbi] (v0.2.29)
 
 
-## Verb: `examine`
+### Verb: `examine`
 
 Translated verb `esamina` (_examine_):
 
@@ -4768,7 +4747,7 @@ with synonyms:
     esamina = descrivi, osserva, X
 
 
-## Verb: `read`
+### Verb: `read`
 
 Translated verb `leggi` (_read_):
 
@@ -4781,7 +4760,7 @@ with no synonyms.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/21 (4)
+## 2018/07/21 (4)
 
 - [`lib_classi.i`][lib_classi] (v0.2.12)
 
@@ -4791,7 +4770,7 @@ Added Italian translation of classes descriptions at beginning of file. I'm now 
 
 
 
-# 2018/07/21 (3)
+## 2018/07/21 (3)
 
 - [`lib_classi.i`][lib_classi] (v0.2.11)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.31)
@@ -4810,7 +4789,7 @@ Translated library attributes:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/21 (2)
+## 2018/07/21 (2)
 
 - [`lib_classi.i`][lib_classi] (v0.2.10)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.30)
@@ -4841,7 +4820,7 @@ Translated CLASSes:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/21 (1)
+## 2018/07/21 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.2.9)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.29)
@@ -4875,7 +4854,7 @@ Translated CLASSes:
 
 
 
-# 2018/07/20 (3)
+## 2018/07/20 (3)
 
 - [`lib_classi.i`][lib_classi] (v0.2.8)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.28)
@@ -4883,12 +4862,12 @@ Translated CLASSes:
 - [`lib_verbi.i`][lib_verbi] (v0.2.25)
 
 
-## Library Locations
+### Library Locations
 
 This commit deals with the translation of some classes, instances and attributes of Library LOCATIONS.
 
 
-### Rooms
+#### Rooms
 
 |       EN       |        IT        |   Synonyms   |             Type            |
 |----------------|------------------|--------------|-----------------------------|
@@ -4902,7 +4881,7 @@ This commit deals with the translation of some classes, instances and attributes
 | `walls_desc`   | `desc_pareti`    |              | `ROOM` attribute (_string_) |
 
 
-### Sites
+#### Sites
 
 |     EN     |      IT      | Synonyms |             Type            |
 |------------|--------------|----------|-----------------------------|
@@ -4913,7 +4892,7 @@ This commit deals with the translation of some classes, instances and attributes
 > __NOTE 1__ — I haven't yet decided how to translate `site`, therefore quite a few site-related identifiers are still left untranslated.
 
 
-### Other Locations ...
+#### Other Locations ...
 
 |        EN       |      IT      |    Type    |
 |-----------------|--------------|------------|
@@ -4933,13 +4912,13 @@ This commit deals with the translation of some classes, instances and attributes
 
 
 
-# 2018/07/20 (2)
+## 2018/07/20 (2)
 
 - [`lib_classi.i`][lib_classi] (v0.2.7)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.27)
 - [`lib_verbi.i`][lib_verbi] (v0.2.24)
 
-## Null Objects
+### Null Objects
 
 Translate all `null_*` objects:
 
@@ -4956,11 +4935,11 @@ Translate all `null_*` objects:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/20 (1)
+## 2018/07/20 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.26)
 
-## Make `banner` an Instance of `LOCATION`
+### Make `banner` an Instance of `LOCATION`
 
 I've changed the library to make `banner` an instance of `LOCATION` instead of `DEFINITION_BLOCK` — since `DEFINITION_BLOCK` is a _huge_ class, I'd rather avoid having two of them (there's already `my_game`)!
 
@@ -4975,7 +4954,7 @@ Tests seem to confirm that it works just as fine, and the compiled adventure is 
 
 
 
-# 2018/07/19 (5)
+## 2018/07/19 (5)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.25)
 - [`lib_verbi.i`][lib_verbi] (v0.2.23)
@@ -4986,11 +4965,11 @@ Just some code cleanup, comments translation and house keeping.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/19 (4)
+## 2018/07/19 (4)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.24)
 
-## Banner Attributes
+### Banner Attributes
 
 This commit translates into Italian the Banner attributes for the `Start` section:
 
@@ -5009,11 +4988,11 @@ This commit translates into Italian the Banner attributes for the `Start` sectio
 
 
 
-# 2018/07/19 (3)
+## 2018/07/19 (3)
 
 - [`lib_supplemento.i`][lib_supplemento] (v0.2.2)
 
-## Add Remaining Preposizioni Articolate Synonyms
+### Add Remaining Preposizioni Articolate Synonyms
 
 Previously, only synonyms for preposition based on `a` and `da` were covered.
 
@@ -5071,7 +5050,7 @@ There is no need to implements synonyms for the _preposizioni articolate_ based 
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/19 (2)
+## 2018/07/19 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.23)
 - [`lib_supplemento.i`][lib_supplemento] (v0.2.1)
@@ -5082,7 +5061,7 @@ Just some code house-keeping and cleaning up.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/19 (1)
+## 2018/07/19 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.2.6)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.22)
@@ -5110,7 +5089,7 @@ Translated `CLASS`es:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/18 (4)
+## 2018/07/18 (4)
 
 - [`lib_classi.i`][lib_classi] (v0.2.5)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.21)
@@ -5137,14 +5116,14 @@ Translated library attributes:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/18 (3)
+## 2018/07/18 (3)
 
 - [`lib_classi.i`][lib_classi] (v0.2.4)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.20)
 - [`lib_verbi.i`][lib_verbi] (v0.2.20)
 
 
-## Verb Responses Attributes
+### Verb Responses Attributes
 
 With this commit I begin to put some order in verb response messages by translating attributes names and/or messages into Italian.
 
@@ -5153,7 +5132,7 @@ With this commit I begin to put some order in verb response messages by translat
 > As for now, I'm just trying to ensure that all translated verbs will use Italian attributes names and text output, and that I can start to comment out the original English attributes once they have been globally replaced by their Italian equivalent.
 
 
-### Translated verb responses attributes:
+#### Translated verb responses attributes:
 
 |        Attribute EN       |         Attribute IT         |
 |---------------------------|------------------------------|
@@ -5173,7 +5152,7 @@ With this commit I begin to put some order in verb response messages by translat
 > But for now this name will do, until I work out a better naming convention for messages. Also, it seems that this is the only message regarding location checks, so it's not a big deal actually. But I'd like its name to be more intuitive in the future.
 
 
-### Renamed verb responses attributes:
+#### Renamed verb responses attributes:
 
 |       Attribute EN      |    Attribute IT    |
 |-------------------------|--------------------|
@@ -5189,13 +5168,13 @@ With this commit I begin to put some order in verb response messages by translat
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/18 (2)
+## 2018/07/18 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.19)
 - [`lib_verbi.i`][lib_verbi] (v0.2.19)
 
 
-## Verb: `drink`
+### Verb: `drink`
 
 Translated verb `bevi`, (_drink_):
 
@@ -5207,7 +5186,7 @@ with no synonyms.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/18 (1)
+## 2018/07/18 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.18)
 - [`lib_verbi.i`][lib_verbi] (v0.2.18)
@@ -5218,7 +5197,7 @@ Minor tweaks and code cleanup.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/17 (5)
+## 2018/07/17 (5)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.17 --- _sic_!)
 - [`lib_verbi.i`][lib_verbi] (v0.2.17)
@@ -5234,7 +5213,7 @@ Translated verb response attributes:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/17 (4)
+## 2018/07/17 (4)
 
 - [`lib_classi.i`][lib_classi] (v0.2.3)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.12)
@@ -5249,7 +5228,7 @@ Translated `THING` attributes:
 | `drinkable` | `potabile`   |
 
 
-## Verb: `eat`
+### Verb: `eat`
 
 Translated verb `mangia`, (_eat_):
 
@@ -5261,12 +5240,12 @@ with no synonyms.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/17 (3)
+## 2018/07/17 (3)
 
 - [`lib_verbi.i`][lib_verbi] (v0.2.15)
 
 
-## Meta Verbs
+### Meta Verbs
 
 The following verbs have been declared as `META VERB`s:
 
@@ -5291,7 +5270,7 @@ The following verbs have been declared as `META VERB`s:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/17 (2)
+## 2018/07/17 (2)
 
 - [`lib_classi.i`][lib_classi] (v0.2.2)
 - [`lib_verbi.i`][lib_verbi] (v0.2.14)
@@ -5307,7 +5286,7 @@ Translated ACTOR attributes:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/17 (1)
+## 2018/07/17 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.11)
 - [`lib_verbi.i`][lib_verbi] (v0.2.13)
@@ -5319,7 +5298,7 @@ Translated `my_game` attributes for verb restrictions:
 | `climb_through` | `attraversare` |
 
 
-## Verb: `climb_through`
+### Verb: `climb_through`
 
 Translated verb `attraversa`, "__attraversa (obj)__" (_climb through_, but also _cross_):
 
@@ -5331,7 +5310,7 @@ with no synonyms.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/03 (3)
+## 2018/07/03 (3)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.10)
 - [`lib_verbi.i`][lib_verbi] (v0.2.12)
@@ -5344,7 +5323,7 @@ Translated `my_game` attributes for verb restrictions:
 | `go_to` | `andare_a` |
 
 
-## Verb: `go_to`
+### Verb: `go_to`
 
 Translated verb `vai_a`, "__vai a__" (_go to_):
 
@@ -5384,12 +5363,12 @@ with no synonyms.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/03 (2)
+## 2018/07/03 (2)
 
 - [`lib_verbi.i`][lib_verbi] (v0.2.11)
 
 
-## Verb: `buy`
+### Verb: `buy`
 
 Translated verb `compra`, (_buy_):
 
@@ -5403,7 +5382,7 @@ with synonyms:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/03 (1)
+## 2018/07/03 (1)
 
 - [`lib_verbi.i`][lib_verbi] (v0.2.10)
 
@@ -5416,13 +5395,13 @@ Now translated verbs are placed before untranslated verbs in the source code, an
 <!---------------------------------------------------------------------------->
 
 
-# 2018/07/02
+## 2018/07/02
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.9)
 - [`lib_verbi.i`][lib_verbi] (v0.2.9)
 
 
-## Verb: `burn`/`burn_with`
+### Verb: `burn`/`burn_with`
 
 Translated verbs `brucia` e `brucia_con` (_burn_/_burn with_):
 
@@ -5432,12 +5411,12 @@ Translated verbs `brucia` e `brucia_con` (_burn_/_burn with_):
 with no synonyms.
 
 
-## `my_game` Verb Messages
+### `my_game` Verb Messages
 
 This commit also separates the translate messages from the originals in English in the source code, making it easy to work on the Italian messages.
 
 
-### Translated Messages
+#### Translated Messages
 
 A few messages have been translated into Italian (both attribute name and string):
 
@@ -5449,7 +5428,7 @@ A few messages have been translated into Italian (both attribute name and string
 | `illegal_parameter2_with_pl` | `parametro2_illegale_CON_pl` |
 
 
-### New Messages for Missing Parameters
+#### New Messages for Missing Parameters
 
 Since many verbs which require additional parameters are also defined in their parameterless version (eg, `burn` and `burn_with`) to allow catching it's use and inform the player about the need to specify another parameter, I've added a new section in `lib_definizioni.i` for holding the common shared strings of these messages.
 
@@ -5491,7 +5470,7 @@ END ADD TO.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/06/29
+## 2018/06/29
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.8)
 - [`lib_verbi.i`][lib_verbi] (v0.2.8)
@@ -5514,7 +5493,7 @@ Translated verb responses:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/06/24 (3)
+## 2018/06/24 (3)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.7)
 - [`lib_verbi.i`][lib_verbi] (v0.2.7)
@@ -5537,7 +5516,7 @@ Translated `my_game` attributes for verb restrictions:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/06/24 (2)
+## 2018/06/24 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.6)
 - [`lib_verbi.i`][lib_verbi] (v0.2.6)
@@ -5571,7 +5550,7 @@ Translated `my_game` attributes for verb restrictions:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/06/24 (1)
+## 2018/06/24 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.2.1)
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.5)
@@ -5580,7 +5559,7 @@ Translated `my_game` attributes for verb restrictions:
 - [`lib_verbi.i`][lib_verbi] (v0.2.5)
 
 
-## Translate StdLib's `plural`
+### Translate StdLib's `plural`
 
 Now the library's `plural` attribute has been translated into Italian: `plurale`.
 
@@ -5588,7 +5567,7 @@ Now the library's `plural` attribute has been translated into Italian: `plurale`
 <!---------------------------------------------------------------------------->
 
 
-# 2018/06/23 (2)
+## 2018/06/23 (2)
 
 - [`lib_verbi.i`][lib_verbi] (v0.2.4)
 
@@ -5611,7 +5590,7 @@ A few verb responses translated on the fly:
 <!---------------------------------------------------------------------------->
 
 
-# 2018/06/23 (1)
+## 2018/06/23 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.4)
 - [`lib_verbi.i`][lib_verbi] (v0.2.3)
@@ -5624,7 +5603,7 @@ Translated `my_game` attributes for verb restrictions:
 | `'again'` | `rifare` |
 
 
-## Verb `again`
+### Verb `again`
 
 Translated verb `again`, "__rifai__" (_again_):
 
@@ -5653,7 +5632,7 @@ Produces the message:  "[Il comando ANCORA non è supportato in questo gioco. In
 <!---------------------------------------------------------------------------->
 
 
-# 2018/06/16 (3)
+## 2018/06/16 (3)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.3)
 - [`lib_verbi.i`][lib_verbi] (v0.2.2)
@@ -5666,7 +5645,7 @@ Translated `my_game` attributes for verb restrictions:
 | `sleep` | `dormire`   |
 
 
-## Verb: `wait`
+### Verb: `wait`
 
 Translated verb `aspetta`, "__aspetta__" (_wait_):
 
@@ -5679,7 +5658,7 @@ with synonyms:
 Outputs message: "`Il tempo passa.`"
 
 
-## Verb: `sleep`
+### Verb: `sleep`
 
 Translated verb `dormi`, "__dormi__" (_sleep_):
 
@@ -5693,7 +5672,7 @@ Outputs message: "`Non è il momento di riposare.`"
 
 <!---------------------------------------------------------------------------->
 
-# 2018/06/16 (2)
+## 2018/06/16 (2)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.2)
 
@@ -5703,7 +5682,7 @@ Part of the `banner` translated to Italian.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/06/16 (1)
+## 2018/06/16 (1)
 
 - [`lib_definizioni.i`][lib_definizioni] (v0.2.1)
 - [`lib_verbi.i`][lib_verbi] (v0.2.1)
@@ -5736,7 +5715,7 @@ HAS check_obj_idoneo_pl "$+1 non sono qualcosa che puoi".
 ... which will produce as a result "`<the obj> non [è/sono] qualcosa che puoi prendere.`" And so on with all the other verbs.
 
 
-## Translate `check_obj_suitable_XX` Messages
+### Translate `check_obj_suitable_XX` Messages
 
 The `check_obj_idoneo_sg`/`_pl` Italian message has beem implemented for the following verbs (some of which have not been translated yet, apart from this message):
 
@@ -5808,12 +5787,12 @@ But some occurences were left out because they apply to verbs which in Italian w
 
 <!---------------------------------------------------------------------------->
 
-# 2018/06/11
+## 2018/06/11
 
 > This is another major feature change: all library files are bumped up to `v0.2.0` to mark the adoption of new library file names.
 
 
-## Library Files Renamed to Italian
+### Library Files Renamed to Italian
 
 All library files are renamed to Italian filenames:
 
@@ -5831,14 +5810,14 @@ From now on I'll start to italianize the library by translating also comments an
 
 <!---------------------------------------------------------------------------->
 
-# 2018/06/10
+## 2018/06/10
 
 > This is a major feature change: all library files are bumped up to `v0.1.0` to mark the adoption of the new system.
 
 This commit introduces a new article-based system for handling gender, number, articles and "preposizioni articolate" (prepositions that merge with the definite article).
 
 
-## The New `articolo` Attribute
+### The New `articolo` Attribute
 
 Now every THING has a new `articolo` string attribute, which the author must set to the definite article of the instance's noun (default to "`il`", masculine singular). At initialization time, the library will take care of setting the correct values of gender, number, DEFINITE/INDEFINITE ARTICLE and prepositions, based on the string of `articolo`.
 
@@ -5862,7 +5841,7 @@ END THE.
 ```
 
 
-## Preposizioni Articolate
+### Preposizioni Articolate
 
 > __NOTE__ — In Italian, prepositions merge with the definite article directly following them, according to fixed and predictable rules. (for more info, see this [article on Italian prepositions])
 
@@ -5911,7 +5890,7 @@ Ultimately, this solution was adopted after careful consideration of various app
 
 <!---------------------------------------------------------------------------->
 
-# 2018/06/02
+## 2018/06/02
 
 - [`lib_classes.i`][lib_classes] (v0.0.2)
 
@@ -5919,7 +5898,7 @@ Translated some response messages for containers and supporters.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/05/31:2
+## 2018/05/31:2
 
 - [`lib_messages.i`][lib_messaggi_runtime] (v0.0.4)
 
@@ -5949,7 +5928,7 @@ Translated RUN-TIME MESSAGES:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/05/31:1
+## 2018/05/31:1
 
 - [`lib_definitions.i`][lib_definitions] (v0.0.10)
 - [`lib_messages.i`][lib_messages] (v0.0.3)
@@ -5977,7 +5956,7 @@ Translated RUN-TIME MESSAGES:
 | `SAVE_VERSION`   | Caricamento fallito, il file indicato è stato creato con una versione di Alan differente. |
 
 
-## Verb: `restore`
+### Verb: `restore`
 
 Translated verb `carica_partita`, "__carica__" (_restore_):
 
@@ -5987,7 +5966,7 @@ Translated verb `carica_partita`, "__carica__" (_restore_):
 with no synonyms.
 
 
-## Verb: `restart`
+### Verb: `restart`
 
 Translated verb `ricomincia_partita`, "__carica__" (_save_):
 
@@ -5997,7 +5976,7 @@ Translated verb `ricomincia_partita`, "__carica__" (_save_):
 with no synonyms.
 
 
-## Verb: `quit`
+### Verb: `quit`
 
 Translated verb `abbandona_partita`, "__abbandona__" (_quit_):
 
@@ -6013,7 +5992,7 @@ with synonyms:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/05/28
+## 2018/05/28
 
 Code cleanup:
 
@@ -6023,7 +6002,7 @@ Add __Italian Verbs Table__: translated verbs are now added to a new verbs table
 
 <!---------------------------------------------------------------------------->
 
-# 2018/05/27
+## 2018/05/27
 
 - [`lib_definitions.i`][lib_definitions] (v0.0.9)
 - [`lib_verbs.i`][lib_verbs] (v0.0.8)
@@ -6036,7 +6015,7 @@ Translated `my_game` attributes for verb restrictions:
 | `'save'` | `salvare_partita` |
 
 
-## Verb: `save`
+### Verb: `save`
 
 Translated verb "__salva__" (_save_):
 
@@ -6056,13 +6035,13 @@ Translated RUN-TIME MESSAGES:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/05/22 (3)
+## 2018/05/22 (3)
 
 - [`lib_definitions.i`][lib_definitions] (v0.0.8)
 - [`lib_verbs.i`][lib_verbs] (v0.0.7)
 
 
-## Verb: `pray`
+### Verb: `pray`
 
 Translated verb "__pregare__" (_pray_):
 
@@ -6071,7 +6050,7 @@ Translated verb "__pregare__" (_pray_):
 Only produces the response "`Sembra che le tue preghiere non siano state esaudite.`" (taken from Inofrm 6 _Infit_).
 
 
-## Verb: `break`
+### Verb: `break`
 
 Translated verb "__rompi__" (_break_):
 
@@ -6082,7 +6061,7 @@ with synonyms: `distruggi`, `spacca`, `sfonda`.
 Only produces the response "`La violenza non è la giusta risposta a questo.`" (taken from Inofrm 6 _Infit_).
 
 
-## Verb: `break_with`
+### Verb: `break_with`
 
 Translated verb "__rompi con__" (_break_with):
 
@@ -6093,7 +6072,7 @@ Same synonyms of __rompi__ apply here.
 Only produces the response "`Tentare di rompere <THE obj> con <THE instr> non risolverebbe nulla.`".
 
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `my_game` attributes for verb restrictions:
 
@@ -6105,13 +6084,13 @@ Translated `my_game` attributes for verb restrictions:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/05/22 (2)
+## 2018/05/22 (2)
 
 - [`lib_definitions.i`][lib_definitions] (v0.0.7)
 - [`lib_verbs.i`][lib_verbs] (v0.0.6)
 
 
-## Verb Restriction Attributes
+### Verb Restriction Attributes
 
 Translated `my_game` attributes for verb restrictions:
 
@@ -6132,13 +6111,13 @@ Translated `my_game` attributes for verb restrictions:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/05/22 (1)
+## 2018/05/22 (1)
 
 - [`lib_definitions.i`][lib_definitions] (v0.0.6)
 - [`lib_verbs.i`][lib_verbs] (v0.0.5)
 
 
-## Verb: `undress`
+### Verb: `undress`
 
 Translated verb "__spogliati__" (_undress_):
 
@@ -6148,7 +6127,7 @@ Its default responses translation might need some polishing. The commented code 
 
 <!---------------------------------------------------------------------------->
 
-# 2018/05/19
+## 2018/05/19
 
 - [`lib_classes.i`][lib_classes] (v0.0.4)
 - [`lib_definitions.i`][lib_definitions] (v0.0.5)
@@ -6158,7 +6137,7 @@ Its default responses translation might need some polishing. The commented code 
 Translate verb "__dai__" (_give_), and "__prendi da__" (_take from_).
 
 
-## Verb: `take`
+### Verb: `take`
 
 Now the status of the translated verbs is more polished:
 
@@ -6167,14 +6146,14 @@ Verb `prendi` (_take_):
     [prendi|afferra|raccogli|trasporta] (obj)
 
 
-## Verb: `take_from`
+### Verb: `take_from`
 
 Verb `prendi_da` (_take from_):
 
     [prendi|rimuovi|togli] (obj) da (holder)
 
 
-## Verb: `give`
+### Verb: `give`
 
 Verb `dai_a` (_give_):
 
@@ -6194,7 +6173,7 @@ Now [`lib_supplement.i`][lib_supplement] implements all the required synonyms fo
 
 <!---------------------------------------------------------------------------->
 
-# 2018/05/15
+## 2018/05/15
 
 - [`lib_classes.i`][lib_classes] (v0.0.3) — added comments about predefined articles in ACTORS and some comment draft code on how these might be implemented in Italian (the topic needs to be further investigated before apllying changes).
 - [`lib_definitions.i`][lib_definitions] (v0.0.4) — __PREDEFINED ARTICLES__ of THINGS implemented in Italian.
@@ -6252,7 +6231,7 @@ See test file [`../tests/articoli.alan`](../tests/articoli.alan) for more exampl
 
 <!---------------------------------------------------------------------------->
 
-# 2018/05/12 (2)
+## 2018/05/12 (2)
 
 - [`lib_supplement.i`][lib_supplement] — __DEFINITE ARTICLES__ are now defined as __NOISE WORDS__ and ignored by the parser in player's input. This means that it's no longer required to add multiple `NAME`s to instances to include the noun preceded by its article as a synonym of the instance.
 
@@ -6302,7 +6281,7 @@ The above changes had some side effects which required me to also change the Eng
 
 <!---------------------------------------------------------------------------->
 
-# 2018/05/12 (1)
+## 2018/05/12 (1)
 
 - New [`lib_supplement.i`][lib_supplement] — this supplement to the Standard Library deals with implementing Italian synonyms for the Predefined Player Words. It's kept separate because it will be removed from the Library once Italian language gets natively supported in Alan:
     + Predefined Player Words synonyms:
@@ -6317,7 +6296,7 @@ The above changes had some side effects which required me to also change the Eng
 
 <!---------------------------------------------------------------------------->
 
-# 2018/05/01
+## 2018/05/01
 
 - All library files have now been set to `v0.0.1` to allow tracking changes consistently.
 - [`lib_locations.i`][lib_locations]:
@@ -6326,7 +6305,7 @@ The above changes had some side effects which required me to also change the Eng
     + Translated the `NO_WAY` message (Alan native message)
 
 
-## Directions
+### Directions
 
 | direction |      aliases      | short |  English  | short |
 |-----------|-------------------|-------|-----------|-------|
@@ -6360,7 +6339,7 @@ The above changes had some side effects which required me to also change the Eng
 > __NOTE 3__ — Inform 6 Italian also implements "a" synonym for "alto", but I've left it out right now in case it might conflict with "a" as in "dai a/_give to_".
 
 
-## Movement Messages
+### Movement Messages
 
 |   messg   |              translation               |
 |-----------|----------------------------------------|

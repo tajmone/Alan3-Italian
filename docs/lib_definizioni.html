@@ -438,9 +438,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.9.1-Alpha,</span>
-<span id="revdate">2018-11-25</span>
-<br><span id="revremark">Alan 3.0beta6</span>
+<span id="revnumber">versione 0.10.0-Alpha,</span>
+<span id="revdate">2019-01-14</span>
+<br><span id="revremark">Alan 3.0beta6 build 1852</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Indice dei contenuti</div>
@@ -691,7 +691,7 @@ all&#8217;inizio della partita tramite <code>DESCRIBE intestazione.</code>.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">THE intestazione IsA LOCATION
 
-    DESCRIPTION
+  DESCRIPTION
 
     "$p" STYLE alert. SAY mia_AT:titolo. STYLE normal.
 
@@ -700,8 +700,8 @@ all&#8217;inizio della partita tramite <code>DESCRIBE intestazione.</code>.</p>
       END IF.
 
     "$n(C)" SAY mia_AT:autore. "," SAY mia_AT:anno. "."
-    "$nAvventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
-     $nLibreria Standard Italiana v2.1"
+    "$nAvventura realizzata con ALAN Interactive Fiction Language" SAY mia_AT:AlanV. "."
+    "$nLibreria Standard Italiana v2.1"
 
     IF versione OF mia_AT &lt;&gt; "0"
       THEN "$nVersione" SAY mia_AT:versione.
@@ -734,6 +734,21 @@ essere mostrato all&#8217;inizio della partita tramite il template dell&#8217;is
   HAS      versione  "1".</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>La libreria definisce anche l&#8217;attributo <code>AlanV</code>, che mostrerà nel banner la
+versione di Alan utilizzata:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS         AlanV  "v3.0beta6".</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Il valore predefinito è quello dell&#8217;ultima release di Alan all&#8217;epoca della
+libreria. L&#8217;autore è libero di sovrascriverlo nel caso stesse usando una
+versione di Alan più recente, diversa, o una developer snapshot, senza dover
+modificare i sorgenti della libreria.</p>
+</div>
 </div>
 </div>
 </div>
@@ -755,7 +770,7 @@ italiano del modulo delle definizioni.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.9.1-Alpha<br>
+Versione 0.10.0-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

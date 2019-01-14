@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_luoghi.i"
---| v0.9.2-Alpha, 2018-12-07: Alan 3.0beta6
+--| v0.10.0-Alpha, 2019-01-14: Alan 3.0beta6 build 1852
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_locations.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.

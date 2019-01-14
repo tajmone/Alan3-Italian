@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.9.13-Alpha, 2018-12-08: Alan 3.0beta6
+--| v0.10.0-Alpha, 2019-01-14: Alan 3.0beta6 build 1852
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -4052,7 +4052,7 @@ SYNTAX esamina = esamina (ogg)
         ELSE SAY mia_AT:illegal_parameter_examine_pl.
       END IF.
 
-       esamina = 'guarda' (ogg).
+       esamina = guarda (ogg).
 
 SYNONYMS
   descrivi, osserva, X = esamina.
@@ -4998,11 +4998,9 @@ END ADD TO.
 --<
 
 
--- #NOTA: Aggiungere anche "'dai' 'a' (ricevente) (obj)"?
+-- #NOTA: Aggiungere anche "dai a (ricevente) (obj)"?
 
--- SYNTAX give_to = 'give' (obj) 'to' (recipient)
-
-SYNTAX dai_a = 'dai' (ogg) 'a' (ricevente)
+SYNTAX dai_a = dai (ogg) a (ricevente)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg = hero
@@ -5320,7 +5318,7 @@ END ADD TO.
 --       these can't be covered by synonyms due to conflicts with verb "dai"!!!
 --------------------------------------------------------------------------------
 
-SYNTAX prendi_da = 'prendi' (ogg) 'da' (detentore)
+SYNTAX prendi_da = prendi (ogg) da (detentore)
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
@@ -5346,11 +5344,11 @@ SYNTAX prendi_da = 'prendi' (ogg) 'da' (detentore)
 
 -- @TODO: Devo verificare la sintassi onnipotente!                              CHECK!
 
-  prendi_da = prendi  (ogg)  'dai' (detentore).
-  prendi_da = rimuovi (ogg)* 'da'  (detentore).
-  prendi_da = rimuovi (ogg)* 'dai' (detentore).
-  prendi_da = togli   (ogg)  'da'  (detentore).
-  prendi_da = togli   (ogg)  'dai' (detentore).
+  prendi_da = prendi  (ogg)  dai (detentore).
+  prendi_da = rimuovi (ogg)* da  (detentore).
+  prendi_da = rimuovi (ogg)* dai (detentore).
+  prendi_da = togli   (ogg)  da  (detentore).
+  prendi_da = togli   (ogg)  dai (detentore).
 
 --| ORIGINAL EN:
 --| ============
@@ -10733,7 +10731,7 @@ END ADD TO.
 
 -- SYNTAX go_to = 'to' (dest)!
 
-SYNTAX vai_a = 'a' (dest)!
+SYNTAX vai_a = a (dest)!
   -- Because 'go' is predefined in the parser, it can't be used in verb definitions.
   -- The player will still be able to type 'go to [dest]' successfully.
   WHERE dest IsA THING
@@ -10821,40 +10819,15 @@ END ADD TO.
 --| |=============================================================================================================
 --| | VERBO              | SINONIMI                     | SINTASSI                         |  M  | A |  O  |  B
 --~ +--------------------+------------------------------+----------------------------------+-----+---+-----+-----+
---| | chi_è              |                              | chi è (png)                      |     | 1 |     | {B}
+--| | chi_è              |                              | chi è (png)                      |     | 1 |     |
 --| | chi_sono_io        |                              | chi sono                         |     | 0 |     |
---| | cosa_è             |                              | cosa è (ogg)                     |     | 1 | {X} | {B}
+--| | cosa_è             |                              | cosa è (ogg)                     |     | 1 | {X} |
 --| | cosa_sono_io       |                              | cosa sono                        |     | 0 |     |
---| | dove_è             |                              | dove è (ogg)                     |     | 1 | {X} | {B}
+--| | dove_è             |                              | dove è (ogg)                     |     | 1 | {X} |
 --| | dove_mi_trovo      |                              | dove sono                        |     | 0 |     |
 --| | rispondi_No        |                              | no                               |     | 0 |     |
 --| | rispondi_Sì        |                              | sì                               |     | 0 |     |
 --| |=============================================================================================================
---<
-
-
--->comandi_domande
---|
---| [WARNING]
---| ============================================================================
---| *BUG!*  Per qualche ragione, Alan non riesce a preservare la `è` grave nelle
---| sintassi e nei sinonimi (il problema non si verifica nelle istanze e nei
---| parametri). Tutte le altre lettere accentate (`à`, `é`, `ì`, `ò` e `ù`)
---| funzionano correttamente, solo la `è` grave causa problemi.
---|
---| Questo implica che tutti i verbi di domande che contengono la `è` grave non
---| funzionano allo stato attuale poiché l'interprete non riesce a riconoscere
---| la `è` della sintassi:
---|
---| * `chi_è`
---| * `cosa_è`
---| * `dove_è`
---|
---| Per ora si dovrà ripiegare sull'uso della `é` acuta, finché il problema non
---| è risolto a monte tramite un bugfix. Più che una soluzione è un compromesso
---| (orribile, oltre che inutile), ma è giusto per andare avanti con il lavoro e
---| preservare il codice di questi verbi.
---| ============================================================================
 --<
 
 
@@ -10885,11 +10858,7 @@ END ADD TO.
 --| * [ ] Descrizione `chi_è`.
 --<
 
-
--- SYNTAX who_is = 'who' 'is' (png)!
---        who_is = 'who' 'are' (png)!.
-
-SYNTAX  chi_è = chi è (png)!   ---> BUG: La 'è' non viene riconosciuta!         BUG!
+SYNTAX  chi_è = chi è (png)!
   WHERE png IsA ACTOR
     ELSE
       IF png IS NOT plurale
@@ -10897,7 +10866,6 @@ SYNTAX  chi_è = chi è (png)!   ---> BUG: La 'è' non viene riconosciuta!         
         ELSE SAY mia_AT:illegal_parameter_who_pl.
       END IF.
 
-        chi_è = chi é (png)!.     ---> RIPIEGO ('é' anziché 'è'!)               FIXME!
         chi_è = chi sono (png)!.
 
 
@@ -10907,7 +10875,6 @@ ADD TO EVERY ACTOR
       ELSE SAY mia_AT:azione_bloccata.
     DOES
       "Dovrai scoprirlo da te!"
-   -- "You'll have to find it out yourself."
     END VERB chi_è.
 END ADD TO.
 
@@ -10922,18 +10889,16 @@ END ADD TO.
 --| * [ ] Descrizione `chi_sono_io`.
 --<
 
--- SYNTAX who_am_i = who am i.
-
 SYNTAX chi_sono_io = chi sono io.
-       chi_sono_io = chi sono.
+       chi_sono_io = chi sono. -- Toglierlo?                                    CHECKME!
 
 
 VERB chi_sono_io
   CHECK mia_AT CAN domandare_chi_sono_io
     ELSE SAY mia_AT:azione_bloccata.
   DOES
+--  @TRASFORMA IN ATTRIBUTO RISPOSTA:                                           TODO!
     "Hai provato a esaminare te stesso? Forse ti aiuterebbe."
- -- "Maybe examining yourself might help."
 END VERB chi_sono_io.
 
 
@@ -10964,9 +10929,7 @@ END VERB chi_sono_io.
 --| * [ ] Descrizione `cosa_è`.
 --<
 
--- SYNTAX what_is = 'what' 'is' (ogg)!
-
-SYNTAX  cosa_è = cosa è (ogg)!  ---> BUG: La 'è' non viene riconosciuta!        BUG!
+SYNTAX  cosa_è = cosa è (ogg)!
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
@@ -10974,17 +10937,11 @@ SYNTAX  cosa_è = cosa è (ogg)!  ---> BUG: La 'è' non viene riconosciuta!        
         ELSE SAY mia_AT:illegal_parameter_what_pl.
       END IF.
 
-        cosa_è = cosa é (ogg)!.        ---> RIPIEGO ('é' anziché 'è'!)          FIXME!
-        cosa_è = che cosa é (ogg)!.    ---> RIPIEGO
-        cosa_è = 'cos''é' (ogg)!.      ---> RIPIEGO
-        cosa_è = che 'cos''é' (ogg)!.  ---> RIPIEGO
-
-        cosa_è = che cosa è (ogg)!.
         cosa_è = 'cos''è' (ogg)!.
-        cosa_è = che 'cos''è' (ogg)!.
-        cosa_è = cosa sono (ogg)!.
-        cosa_è = che cosa sono (ogg)!.
-
+        cosa_è =  cosa sono (ogg)!.
+        cosa_è =  che cosa è (ogg)!.
+        cosa_è =  che 'cos''è' (ogg)!.
+        cosa_è =  che cosa sono (ogg)!.
 
 
 ADD TO EVERY THING
@@ -10993,7 +10950,6 @@ ADD TO EVERY THING
       ELSE SAY mia_AT:azione_bloccata.
     DOES
       "Dovrai scoprirlo da te!"
-   -- "You'll have to find it out yourself."
     END VERB cosa_è.
 END ADD TO.
 
@@ -11010,8 +10966,6 @@ END ADD TO.
 --| * [ ] Descrizione `cosa_sono_io`.
 --<
 
--- SYNTAX what_am_i = 'what' am i.
-
 SYNTAX  cosa_sono_io = cosa sono.
         cosa_sono_io = cosa sono io.
         cosa_sono_io = che sono.
@@ -11024,8 +10978,8 @@ VERB cosa_sono_io
   CHECK mia_AT CAN domandare_cosa_sono_io
     ELSE SAY mia_AT:azione_bloccata.
   DOES
+--  @TRASFORMA IN ATTRIBUTO RISPOSTA:                                           TODO!
     "Hai provato a esaminare te stesso? Forse ti aiuterebbe."
- -- "Maybe examining yourself might help."
 END VERB cosa_sono_io.
 
 
@@ -11057,10 +11011,7 @@ END VERB cosa_sono_io.
 --<
 
 
--- SYNTAX where_is = 'where' 'is' (ogg)!
---        where_is = 'where' 'are' (ogg)!.
-
-SYNTAX  dove_è = dove è (ogg)!  ---> BUG: La 'è' non viene riconosciuta!        BUG!
+SYNTAX  dove_è = dove è (ogg)!
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
@@ -11068,9 +11019,6 @@ SYNTAX  dove_è = dove è (ogg)!  ---> BUG: La 'è' non viene riconosciuta!        
         ELSE SAY mia_AT:illegal_parameter_what_pl.
       END IF.
 
-        dove_è = dove é (ogg)!.     ---> RIPIEGO ('é' anziché 'è'!)             FIXME!
-        dove_è = 'dov''é' (ogg)!.   ---> RIPIEGO
-        
         dove_è = 'dov''è' (ogg)!.
         dove_è = dove sono (ogg)!.
         dove_è = dove si trova (ogg)!.
@@ -11088,8 +11036,8 @@ ADD TO EVERY THING
           ELSE SAY mia_AT:ogg1_già_qui_pl.
         END IF.
     DOES
+--  @TRASFORMA IN ATTRIBUTO RISPOSTA:                                           TODO!
       "Dovrai scoprirlo da te!"
-   -- "You'll have to find it out yourself."
   END VERB dove_è.
 END ADD TO.
 
@@ -11108,8 +11056,6 @@ END ADD TO.
 -- Ha to change it because the 'i' here was conflicting with the 'i' synonym
 -- for NOISE WORDS. (befor 'i' was the default syntax for "inventory", so it
 -- didn't conflict because it was not a synonym but a verb and syntax).
-
--- SYNTAX where_am_i = 'where' am i.
 
 SYNTAX  dove_mi_trovo = dove mi trovo.
         dove_mi_trovo = dove sono io.
@@ -11151,9 +11097,6 @@ END VERB dove_mi_trovo.
 --| * [ ] Descrizione `rispondi_No`.
 --<
 
-
--- SYNTAX 'no' = 'no'.
-
 SYNTAX rispondi_No = 'no'.
 
 
@@ -11161,7 +11104,6 @@ VERB rispondi_No
   CHECK mia_AT CAN rispondere_No
     ELSE SAY mia_AT:azione_bloccata.
   DOES "Davvero?"
-    -- "Really?"
 END VERB rispondi_No.
 
 -->gruppo_risposte                                         @RISPONDI SÌ <-- @YES
@@ -11175,8 +11117,6 @@ END VERB rispondi_No.
 --| * [ ] Descrizione `rispondi_Sì`.
 --<
 
--- SYNTAX yes = yes.
-
 SYNTAX rispondi_Sì = sì.
 
 
@@ -11184,7 +11124,6 @@ VERB rispondi_Sì
   CHECK mia_AT CAN rispondere_Sì
     ELSE SAY mia_AT:azione_bloccata.
   DOES "Davvero?"
-    -- "Really?"
 END VERB rispondi_Sì.
 
 

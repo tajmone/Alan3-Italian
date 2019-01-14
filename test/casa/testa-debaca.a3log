@@ -3,7 +3,7 @@
 La Casa 
 Un set per eseguire test su stanze e luoghi esterni. 
 (C) Tristano Ajmone, 2018. 
-Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1852. 
 Libreria Standard Italiana v2.1 
 Versione 1 
 Tutti i diritti riservati.
@@ -451,7 +451,7 @@ Hai scritto "Per Babbo Natale" sulla busta.
 | TESTUALITÀ: leggibile / scrivibile 
 | TESTO: Debaca che ti passa! 
 +------------------------------------------------------------------------------- 
-| xDesc: 
+| xDesc:
 +-------------------------------------------------------------------------------
 
 > debaca la busta

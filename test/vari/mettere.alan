@@ -1,3 +1,4 @@
+-- Alan >= 3.0beta6 build 1852 | Alan Italian >= v0.10.0-Alpha
 --==============================================================================
 -- "Mettere" by Tristano Ajmone, 2018.
 --==============================================================================
@@ -14,6 +15,7 @@ THE mia_AT IsA blocco_definizioni
   HAS       autore  "Tristano Ajmone".
   HAS         anno   2018.
   HAS     versione  "1".
+  HAS        AlanV  "v3.0beta6 build 1852".
   ------------------------------------------------------------------------------
 END THE.
 
@@ -92,14 +94,12 @@ THE arancia IsA frutto IN cesto.
   HAS articolo "l'".
   IS femminile.
   NAME arancia.
-  NAME 'l''arancia'.
   HAS xDesc "Un'arancia succulenta.".
 END THE.
 ------------------------------------------------------------------------ AVOCADO
 THE avocado IsA frutto IN cesto.
   HAS articolo "l'".
   NAME avocado.
-  NAME 'l''avocado'.
   HAS xDesc "Un avocado maturo.".
 END THE.
 

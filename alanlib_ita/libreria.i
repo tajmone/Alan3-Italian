@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "libreria.i"
---| v0.9.1-Alpha, 2018-11-25: Alan 3.0beta6
+--| v0.10.0-Alpha, 2019-01-14: Alan 3.0beta6 build 1852
 --| ============================================================================
 --| Modulo principale dell'adattamento italiano della libreria
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_supplemento.i"
---| v0.9.1-Alpha, 2018-11-25: Alan 3.0beta6
+--| v0.10.0-Alpha, 2019-01-14: Alan 3.0beta6 build 1852
 --|=============================================================================
 --| Modulo supplementare della liberia italiana, non presente nell'originale
 --| _ALAN Standard Library_ v2.1 di Anssi Räisänen.
@@ -39,7 +39,7 @@
 --| 
 --| Le _predefined Player Words_ sono dei gruppi di vocaboli del giocatore
 --| predefiniti in Alan (ossia, integrate nel compilatore stesso). Le loro
---| definizioni variano in ciascuna delle lingue nativamente supportate da Alan.
+--| definizioni variano in ciascuna delle lingue supportate nativamente da Alan.
 --| La libreria italiana utilizza la lingua inglese come base di partenza.
 --| 
 --| Queste sono le _Player Words_ predefinite per la lingua inglese, suddivise
@@ -60,56 +60,85 @@
 --| ============================================================================
 --<
 
--->todo_checklist(.666)
---| * [ ] Doxterizza _CONJUNCTION WORDS_.
---<<
--- =============================================================================
--- CONJUNCTION WORDS
--- =============================================================================
--- AND: and then
--- -----------------------------------------------------------------------------
--- Conjunction words are used by the parse to correctly interpret player commands
--- which refers to multiple objects, or sequences of independent commands chained
--- together on a single command line.
+-->=============================================================================
+--~-----------------------------------------------------------------------------
+--| === CONJUNCTION WORDS
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--|
+--| .............
+--| AND: and then
+--| .............
+--| 
+--| Le _conjunction words_ (parole di congiunzione) consentono al parser di
+--| interpretare correttamente i comandi del giocatore che fanno riferimento a
+--| più oggetti, o le sequenze di comandi indipendenti combinati in una sola riga
+--| di comando. Esempi:
+--| 
+--| * "prendi la mela E la pera"
+--| * "prendi la mela E prendi la pera"
+--| * "prendi la mela POI prendi la pera"
 
 SYNONYMS e, poi = 'and'.
 
--- examples:
--- "prendi la mela E la pera"                (take the apple AND the pear)
--- "prendi la mela E prendi la pera"         (take the apple AND take the pear)
--- "prendi la mela POI prendi la pera"       (take the apple THEN take the pear)
+--| [WARNING]
+--| ============================================================================
+--| Il giocatore non potrà digitare "E POI" ("<commando> E POI <commando>")
+--| poiché il parser lo vedrebbe come "<commando> AND AND <commando>".
+--| Purtroppo non è possibile definire `'e poi'` come sinonimo di `'then'`
+--| poiché il parser opera solo su lessemi isolati.
+--| ============================================================================
+--<
 
--- NOTE: The player can't type "E POI" ("<command> E POI <command>") because the
---       parser will see it as "<command> AND AND <command>". Unfortunately,
---       trying to define 'e poi' = 'then' won't solve the problem because the
---       parser seems to work on isolate tokens when substituting synonyms.
 
--->todo_checklist(.666)
---| * [ ] Doxterizza _NOISE WORDS_.
---<<
--- =============================================================================
--- NOISE WORDS
--- =============================================================================
--- NOISE: go the
--- -----------------------------------------------------------------------------
--- Noise words are completely ignored by the parser.
--- The trick here is to make all noise words synonyms of 'THE'.
+-->=============================================================================
+--~-----------------------------------------------------------------------------
+--| === NOISE WORDS
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--|
+--| .............
+--| NOISE: go the
+--| .............
+--|
+--| Le _noise words_ (parole rumore) vengono ignorate dal parser che le tratta
+--| come rumore di sottofondo. 
+--|
+--| ==== Articoli determinativi
+--|
+--| Definiamo tutti gli articoli determinativi come sinonimi della _noise word_
+--| `'the'` affinché vengano ignorati nel parsing dei comandi del giocatore, di
+--| modo che comandi come "prendi LA mela" vengano interpretati come "prendi
+--| mela".
+--|
+--| Nel caso di articoli con l'apostrofo, che vanno a formare un singolo lessema
+--| con il sostantivo cui si riferiscono, il parser di Alan prima fallirà nel
+--| riconoscere il lessema (es. `l'albero`) ma, appurata la presenza di un
+--| apostrofo nel lessema, prima di generare un errore eseguirà un ulteriore
+--| tentativo spezzando in due il lessema originale nel punto successivo al primo
+--| apostrofo, e ritenterà il parsing dei due nuovi lessemi (`l'` + `albero`).
+--| Durante il secondo tentativo, l'articolo `l'` verrà soppresso  in quanto
+--| _noise word_, e `albero` verrà ora riconosciuto come il nome dell'oggetto
+--| corrispondente.
 
--- DEFINITE ARTICLES
--- =================
--- As for article "l'" (eg: "l'altare", "the altar"), it can't be handled because
--- it's seen as a single token by the parser. The only viable solution is to add
--- to the instance a second NAME so that the parse will see it as a synonym of
--- the instance.
-SYNONYMS il, lo, la, i, gli, le = 'the'.
--- We also add "l'", to cover cases where the player omits the apostrophe or
--- types a space after it, for conistency with the prepositions workaround (we
--- can't implement "l" because of conflict with "look" shortcut):
-SYNONYMS 'l''' = 'the'. --| eg:  "l' albero"
+SYNONYMS il, lo, la, 'l''', i, gli, le = 'the'.
+--<
+
+-- @TODO: Dovrei aggiungere anche gli articoli indeterminativi (un, uno, ecc.)  CHECK!
+--        e forme come "delle", "alcune"? P.es. nel gioco potrebbero esserci
+--        "delle mele" e il giocatore digiterebbe "prendi una mela". Il parser
+--        potrebbe ignorare quel "un". Mi chiedo se questo potrebbe introdurre
+--        conflitti, per esempio impedendo l'uso di "uno" come numero.
+--        Sicuramente "delle" non può essere definito come noise word dato che
+--        ne preverrebbe l'uso in comandi come "la mela delle streghe".
+--        La questione va analizzata meglio, e dovrei informarmi sul perché non
+--        sono presenti "a" ed "an" tra le noise words inglesi.
 
 -- This is not going to be useful:
--- SYNONYMS vai = 'go'.
--- ... because player would always type "VAI AI" (GO TO) followed by the direction;
+-- 
+--    SYNONYMS vai = 'go'.
+-- 
+-- ... because player would always type "VAI A" (GO TO) followed by the direction;
 -- but defining 'vai a' = 'go' doesn't work as expected, and 'a' must be preserved
 -- for verbs ("a" means "TO", as in "give TO").
 -- The best solution seems to be to implement the "VAI A" verb to catch player's
@@ -117,148 +146,173 @@ SYNONYMS 'l''' = 'the'. --| eg:  "l' albero"
 -- he should type the direction instead (like the StdLib does with take_from
 -- when used to pickup something from the floor).
 
--->todo_checklist(.666)
---| * [ ] Doxterizza _ALL WORDS_.
---<<
--- =============================================================================
--- ALL WORDS
--- =============================================================================
--- ALL: all everything
+-->=============================================================================
+--~-----------------------------------------------------------------------------
+--| === ALL WORDS
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--|
+--| .............
+--| ALL: all everything
+--| .............
 
 SYNONYMS tutto, tutti, tutte = all.
+--<
 
+-- @NOTE: Dovrei includere anche "ogni"?                                        CHECK!
 
--->todo_checklist(.666)
---| * [ ] Doxterizza _EXCEPT WORDS_.
---<<
--- =============================================================================
--- EXCEPT WORDS
--- =============================================================================
--- BUT: but except
--- -----------------------------------------------------------------------------
--- Except words work in conjuction with ALL words, to exclude some objects from
--- the whole.
+-->=============================================================================
+--~-----------------------------------------------------------------------------
+--| === EXCEPT WORDS
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--|
+--| .............
+--| BUT: but except
+--| .............
+--|
+--| Le _except words_ (parole di eccezione) operano congiuntamente alle _ALL words_
+--| per escludere alcuni oggetti dall'insieme. Esempi:
+--|
+--| * "lascia TUTTO TRANNE la mela"
+--| * "lascia TUTTO ECCETTO la mela"
+--| * "lascia TUTTO ESCLUSA la mela"
+--| * "lascia TUTTO ESCLUSO il mango"
+--| * "lascia TUTTO ESCLUSI il mango e la mela"
+--| * "lascia TUTTO ESCLUSE la mela e la pera"
 
 SYNONYMS tranne, eccetto, escluso, esclusa, esclusi, escluse = except.
+--<
 
--- examples:
--- "lascia TUTTO TRANNE la mela"              (drop all but the apple)
--- "lascia TUTTO ECCETTO la mela"             (drop all but the apple)
--- "lascia TUTTO ESCLUSA la mela"             (drop all but the apple)
--- "lascia TUTTO ESCLUSO il mango"            (drop all but the mango)
--- "lascia TUTTO ESCLUSI il mango e la mela"  (drop all but the mango and the apple)
--- "lascia TUTTO ESCLUSE la mela e la pera"   (drop all but the apple and the pear)
 
--->todo_checklist(.666)
---| * [ ] Doxterizza _THEM WORDS_.
+-->=============================================================================
+--~-----------------------------------------------------------------------------
+--| === THEM WORDS
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--|
+--| ..........
+--| THEM: them
+--| ..........
+
+--| [WARNING]
+--| ======================================
+--| Non ho ancora capito bene come vengono
+--| usati i vocaboli di questo gruppo.
+--| ======================================
+--<
+
+-->todo_checklist(.33)
+--| * [ ] Approfondisci _THEM WORDS_.
 --<<
--- =============================================================================
--- THEM WORDS
--- =============================================================================
--- THEM: them
--- -----------------------------------------------------------------------------
--- I haven't yet worked out how these are used. My guess is that they are treated
--- like ALL words, but referring to ACTORs, but I must do some tests to check it.
 
 
 
--->todo_checklist(.666)
---| * [ ] Doxterizza _Preposizioni Articolate_.
---<<
---=============================================================================
---\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---------------------------------------------------------------------------------
--- § 2 - Preposizioni articolate: (di|a|da|in|con|su) + art.det.
---------------------------------------------------------------------------------
---//////////////////////////////////////////////////////////////////////////////
---=============================================================================
+-->============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| == Preposizioni articolate
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+
+--| La libreria definisce dei sinonimi per trasformare le preposizioni articolate
+--| nelle corrispettive preposizioni semplici (es. _della_ -> _di_).
+
+--| Solo alcune preposizioni (di|a|da|in|con|su) hanno un'applicazione practica
+--| nelle avventure testuali, e non tutte le forme contratte delle preposizioni
+--| articolate sono implementabili. 
+--| La seguente tabella riporta tra parentesi le forme contratte non supportate,
+--| e in corsivo quelle che non subiscono sostituzioni nel parsing:
+
+--| [cols="<h,7*<d",options="header"]
+--| |========================================================================
+--| |     | il    | lo      | la      | l'       | i     | gli     | le
+--~ +-----+-------+---------+---------+----------+-------+---------+--------+
+--| | di  | del   | dello   | della   | dell'    | dei   | degli   | delle
+--| | a   | al    | allo    | alla    | all'     | ai    | agli    | alle
+--| | da  | dal   | dallo   | dalla   | dall'    | (dai) | dagli   | dalle
+--| | in  | nel   | nello   | nella   | nell'    | nei   | negli   | nelle
+--| | con | (col) | (collo) | (colla) | _con l'_ | (coi) | (cogli) | (colle)
+--| | su  | sul   | sullo   | sulla   | sull'    | sui   | sugli   | sulle
+--| | per | (pel) | (pello) | (pella) | (pell')  | (pei) | (pegli) | (pelle)
+--| |========================================================================
+
+--| Il mancato supporto di _dai_ è dovuto a un conflitto con l'imperativo del
+--| verbo _dare_, e si sta cercando una soluzione a questo.
+
+--| Le forme contratte di _con_+articolo sono state tralasciate per via dei
+--| potenziali conflitti con altri vocaboli: _collo_ (parte del corpo), _colla_
+--| (adesiva), _cogli_ (verbo), _colle_ (collina). L'implementazione di queste
+--| forme come sinonimi avrebbe impedito l'uso di quei vocaboli nelle avventure.
+
+--| Le varie preposizioni con _per_ (_pel_, _pello_, ecc.) sono state omesse
+--| poiché raramente usate oggi, così come altre forme arcaiche (_gl`'_, e affini).
+
+--| Nell'implementazione attuale sussistono comunque potenziali conflitti:
+--| _dei_ (divinità), _dallo/a/e_ (verbo), _Nello/a_ (nomi propri),
+--| _nei_ (cutanei).
+--| Ma all'atto pratico questi non costituiscono un problema reale per le AT, e
+--| simili occorrenze sono più rare nelle AT di quanto non lo siano nella vita
+--| reale, ed eventuali loro conflitti dovrebbero essere comunque gestibili.
+
+--| Sull'argomento, si veda l'eccellente articolo di Max Bianchi:
+--| 
+--| * http://www.tads.org/xlat3/En_vs_It.htm
 
 
---        +-----+-------+-------+--------+-----+-------+-------+
---        |  il |    lo |    la |     l' |   i |   gli |    le |
---  +-----+-----+-------+-------+--------+-----+-------+-------+
---  | di  | del | dello | della |  dell' | dei | degli | delle |
---  | a   | al  | allo  |  alla |   all' |  ai |  agli |  alle |
---  | da  | dal | dallo | dalla |  dall' | dai | dagli | dalle |
---  | in  | nel | nello | nella |  nell' | nei | negli | nelle |
---  | con | col | collo | colla | con l' | coi | cogli | colle |
---  | su  | sul | sullo | sulla |  sull' | sui | sugli | sulle |
---  +-----+-----+-------+-------+--------+-----+-------+-------+
---
--- Some forms in the above table are in potential conflict* with other words:
---   "dei"   = "gods"      (but more correctly spelled "dèi")
---   "dai"   = "give"      (imperative)
---   "dallo" = "give it"   (masc. direct obj)
---   "dalla" = "give it"   (fem. direct obj)
---   "dalle" = "give them" (fem. direct obj) and "give to her"
---   "Nello" =  given name (masc.)
---   "Nella" =  given name (fem.)
---   "nei"   = "moles"     (but more correctly spelled "nèi" or "nevi")
---   "collo" = "neck"
---   "colla" = "glue"
---   "cogli" = "pick"
---   "colle" = "glues" or "hill"
--- -----------------------------------------------------------------------------
--- * see.: http://www.tads.org/xlat3/En_vs_It.htm
--- -----------------------------------------------------------------------------
--- We now define sysonyms of prepositions variants to be seen as their base
--- form registered with the verbs syntax.
---
--- **APOSTROPHE LIMITATION** -- prepositions with apostrophe must either be
--- typed without the apostrophe or with a space after it, because the parser will
--- otherwise see them as forming a single token with the following noun:
---   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
---   > prendi la mela dall albero
---   > prendi la mela dall' albero
---   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--- There is no solution to this problem currently. For this reason, we'll also
--- define as synonms "dall'" and "dall" (and similars).
+--| Adesso, definiamo i vari sinonimi.
 
---==============================================================================
--- "DI" + Articolo
---==============================================================================
+--~=============================================================================
+--| === "`DI`" + Articolo
+--~=============================================================================
 SYNONYMS
   del, dello, della, 'dell''', dei, degli, delle = di.
---==============================================================================
--- "A" + Articolo
---==============================================================================
+--~=============================================================================
+--| === "`A`" + Articolo
+--~=============================================================================
 SYNONYMS
   al, allo, alla, 'all''', ai, agli, alle  = a.
--- all    = a.   --| CAN'T BE USED AS ALTERNATIVE because of conflict with
---               --| English ALL word:
---| 333 E : The word 'all' is defined to be both a synonym and another word class.
---|
---| Beside, " all " isn't correct Italian, but could have been a workaround to the
---| limitation mentioned above.
-
---==============================================================================
--- "DA" + Articolo
---==============================================================================
--- We can't define as synonym the preposition "dai" because it would conflict
--- with the imperative form of the verb "dare" ("dai" = give). The workaround
--- is to define an alternative syntax for every verb that uses "da", so that it
--- will also cover "dai". All other prepositions will be defined as synonyms of
--- "da".
+--~=============================================================================
+--| === "`DA`" + Articolo
+--~=============================================================================
 SYNONYMS
   dal, dallo, dalla, 'dall''', dall, dagli, dalle  = da.
 
---| * " dall " is not correct Italian, but a workaround to the limitation
---|            mentioned above.
+--| [WARNING]
+--| ======================================================
+--| La preposizione `dai` è stata omessa dalla lista di sinonimi poiché creava
+--| conflitto con la forma imperativa del verbo "`dare`", causando l'errore di
+--| compilazione:
+--| ......................................................
+--| 333 E : The word 'dai' is defined to be both a synonym and another word class.
+--| ......................................................
+--| Sto ancora cercando una soluzione ottimale al problema.
+--| ======================================================
+--<
+
+-->todo_checklist(.33)
+--| * [ ] Risolvi conflitti con verbo `dai_a` che prevenie `SYNONYMS dai = da.`.
+--<
 
 --  dai = da.       -- dai (masc.plur.) --| CAN'T BE USED AS ALTERNATIVE because
 --                                      --| of conflict with 'dai' verb:
---| 333 E : The word 'dai' is defined to be both a synonym and another word class.
+-- 333 E : The word 'dai' is defined to be both a synonym and another word class.
 
---==============================================================================
--- "IN" + Articolo
---==============================================================================
+-->=============================================================================
+--| === "`IN`" + Articolo
+--~=============================================================================
 SYNONYMS
   nel, nello, nella, 'nell''', nei, negli, nelle = 'in'.
---==============================================================================
--- "SU" + Articolo
---==============================================================================
+--~=============================================================================
+--| === "`SU`" + Articolo
+--~=============================================================================
 SYNONYMS
   sul, sullo, sulla, 'sull''', sui, sugli, sulle = su.
+--<
+
+
 
 -->todo(50000.1)
 --~============================================================================

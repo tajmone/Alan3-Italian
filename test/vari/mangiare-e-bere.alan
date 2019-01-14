@@ -1,3 +1,4 @@
+-- Alan >= 3.0beta6 build 1852 | Alan Italian >= v0.10.0-Alpha
 --==============================================================================
 -- "Mangiare e Bere" by Tristano Ajmone, 2018.
 --==============================================================================
@@ -14,6 +15,7 @@ THE mia_AT IsA blocco_definizioni
   HAS       autore  "Tristano Ajmone".
   HAS         anno   2018.
   HAS     versione  "1".
+  HAS        AlanV  "v3.0beta6 build 1852".
   ------------------------------------------------------------------------------
 END THE.
 
@@ -60,7 +62,6 @@ END THE.
 THE albero IsA object AT radura.
   HAS articolo "l'".
   NAME albero.
-  NAME 'l''albero'.
   HAS xDesc "Esaminando l'albero noti una mela appesa ad un ramo.".
   
 END THE albero.
@@ -78,14 +79,12 @@ THE arancia IsA frutto AT radura.
   HAS articolo "l'".
   IS femminile.
   NAME arancia.
-  NAME 'l''arancia'.
   HAS xDesc "Un'arancia succulenta.".
 END THE.
 ------------------------------------------------------------------------ AVOCADO
 THE avocado IsA frutto AT radura.
   HAS articolo "l'".
   NAME avocado.
-  NAME 'l''avocado'.
   HAS xDesc "Un avocado maturo.".
 END THE.
 ------------------------------------------------------------------------- BANANA
@@ -124,7 +123,6 @@ THE aranciata IsA liquido IN lattina.
   HAS articolo "l'".
   IS femminile.
   NAME aranciata.
-  NAME 'l''aranciata'.
   INDEFINITE ARTICLE "dell'$$"
   HAS recipiente lattina.
   IS potabile.

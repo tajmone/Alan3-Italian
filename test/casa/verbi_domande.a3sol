@@ -3,31 +3,56 @@
 ; *                        TESTA VERBI DOMANDE/RISPOSTE                        *
 ; *                                                                            *
 ; ******************************************************************************
-; Questo test riguarda queio di verbi che sono domande poste dal protagonista,
+; Questo test riguarda quei di verbi che sono domande poste dal protagonista,
 ; o risposte.
 ; ==============================================================================
-; *** BUG 'È' ***
+; TESTA 'chi_è'
 ; ==============================================================================
-; Allo stato attuale c'è un baco in Alan che impedisce l'uso della 'è' grave nella
-; sintassi dei verbi:
 chi è il giardiniere
+; TODO: chi sono 
+; ==============================================================================
+; TESTA 'chi_sono_io'
+; ==============================================================================
+chi sono io
+chi sono
+; ==============================================================================
+; TESTA 'cosa_è'
+; ==============================================================================
 cosa è la piscina
 cos'è la piscina
 che cosa è la piscina
 che cos'è la piscina
+; ==============================================================================
+; TESTA 'cosa_sono_io'
+; ==============================================================================
+cosa sono
+cosa sono io
+che sono
+che sono io
+che cosa sono
+che cosa sono io
+; ==============================================================================
+; TESTA 'dove_è'
+; ==============================================================================
 dove è il giardiniere
 dov'è la piscina
-; ------------------------------------------------------------------------------
-; Ripiego su 'é' acuta
-; ------------------------------------------------------------------------------
-; Invece le sintassi alternative di ripiego (che usano la 'é' acuta) funzionano
-; correttamente. Questo dimostra che il problema è isolato alla 'è' grave.
-chi é il giardiniere
-cosa é la piscina
-cos'é la piscina
-che cos'é la piscina
-dove é il giardiniere
-dov'é la piscina
+dove sono i jeans
+dove si trova la piscina
+dove si trovano i jeans
+; ==============================================================================
+; TESTA 'dove_mi_trovo'
+; ==============================================================================
+dove mi trovo
+dove sono io
+dove sono
+; ==============================================================================
+; TESTA 'rispondi_No'
+; ==============================================================================
+no
+; ==============================================================================
+; TESTA 'rispondi_Sì'
+; ==============================================================================
+sì
 ; ==============================================================================
 ; TESTA 'dì'
 ; ==============================================================================

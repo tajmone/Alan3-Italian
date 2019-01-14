@@ -17,140 +17,214 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [2019/01/06](#20190106)
-    - [Vestiario](#vestiario)
-- [2018/12/08 \(3\)](#20181208-3)
-    - [Verbi](#verbi)
-    - [Verbi Classi](#verbi-classi)
-        - [Correggi verbi `look_in` non tradotti](#correggi-verbi-look_in-non-tradotti)
-    - [Documentazione classi](#documentazione-classi)
-- [2018/12/08 \(2\)](#20181208-2)
-    - [Verbi](#verbi-1)
-        - [Migliora risposte blocca](#migliora-risposte-blocca)
-    - [Messaggi libreria](#messaggi-libreria)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
-- [2018/12/08 \(1\)](#20181208-1)
-    - [Verbi apri, chiudi, blocca e sblocca](#verbi-apri-chiudi-blocca-e-sblocca)
-    - [Messaggi libreria](#messaggi-libreria-1)
+- [Alan 3.0beta6 build 1852](#alan-30beta6-build-1852)
+    - [2019/01/14](#20190114)
+        - [Passa alla v0.10.0](#passa-alla-v0100)
+        - [Passa ad Alan 3.0beta6 build 1852](#passa-ad-alan-30beta6-build-1852)
+        - [Aggiusta i verbi di domande con "è"](#aggiusta-i-verbi-di-domande-con-%C3%A8)
+        - [Modulo supplemento](#modulo-supplemento)
+        - [Nuovo attributo banner di versione Alan](#nuovo-attributo-banner-di-versione-alan)
+        - [Rimuovi stropping superfluo](#rimuovi-stropping-superfluo)
+- [Alan 3.0beta6](#alan-30beta6)
+    - [2019/01/06](#20190106)
+        - [Vestiario](#vestiario)
+    - [2018/12/08 \(3\)](#20181208-3)
+        - [Verbi](#verbi)
+        - [Verbi Classi](#verbi-classi)
+        - [Documentazione classi](#documentazione-classi)
+    - [2018/12/08 \(2\)](#20181208-2)
+        - [Verbi](#verbi-1)
+        - [Messaggi libreria](#messaggi-libreria)
+    - [2018/12/08 \(1\)](#20181208-1)
+        - [Verbi apri, chiudi, blocca e sblocca](#verbi-apri-chiudi-blocca-e-sblocca)
+        - [Messaggi libreria](#messaggi-libreria-1)
+        - [Modulo classi](#modulo-classi)
+    - [2018/12/07](#20181207)
+        - [Messaggi libreria](#messaggi-libreria-2)
+        - [Verbi](#verbi-2)
+        - [Pulizia sorgenti](#pulizia-sorgenti)
+    - [2018/12/04 \(3\)](#20181204-3)
+        - [Messaggi libreria](#messaggi-libreria-3)
+        - [Risposte dei verbi](#risposte-dei-verbi)
+    - [2018/12/04 \(2\)](#20181204-2)
+        - [Messaggi libreria](#messaggi-libreria-4)
+    - [2018/12/04 \(1\)](#20181204-1)
+        - [Messaggi libreria](#messaggi-libreria-5)
+        - [Modulo classi](#modulo-classi-1)
+    - [2018/12/01](#20181201)
+        - [Documentazione messaggi libreria](#documentazione-messaggi-libreria)
+    - [2018/11/30 \(2\)](#20181130-2)
+        - [Documentazione](#documentazione)
+        - [Messaggi dei verbi](#messaggi-dei-verbi)
+    - [2018/11/30 \(1\)](#20181130-1)
+        - [Messaggi dei verbi](#messaggi-dei-verbi-1)
+        - [Rinomina parametri del verbo `scrivi`](#rinomina-parametri-del-verbo-scrivi)
+    - [2018/11/25 \(2\)](#20181125-2)
+        - [Aggiornamento Doxter](#aggiornamento-doxter)
+    - [2018/11/25 \(1\)](#20181125-1)
+        - [Messaggi dei verbi](#messaggi-dei-verbi-2)
+    - [2018/11/24](#20181124)
+        - [Messaggi dei verbi](#messaggi-dei-verbi-3)
         - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
-    - [Modulo classi](#modulo-classi)
-        - [Liquidi](#liquidi)
-        - [Porte e finestre](#porte-e-finestre)
-- [2018/12/07](#20181207)
-    - [Messaggi libreria](#messaggi-libreria-2)
-        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi)
-    - [Verbi](#verbi-2)
-        - [Condiscendenza PNG in `chiedi` dei liquidi](#condiscendenza-png-in-chiedi-dei-liquidi)
-    - [Pulizia sorgenti](#pulizia-sorgenti)
-- [2018/12/04 \(3\)](#20181204-3)
-    - [Messaggi libreria](#messaggi-libreria-3)
-        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-1)
-        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-1)
-    - [Risposte dei verbi](#risposte-dei-verbi)
-        - [Risposte per dispositivi e fonti di luce](#risposte-per-dispositivi-e-fonti-di-luce)
-- [2018/12/04 \(2\)](#20181204-2)
-    - [Messaggi libreria](#messaggi-libreria-4)
-- [2018/12/04 \(1\)](#20181204-1)
-    - [Messaggi libreria](#messaggi-libreria-5)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-1)
-        - [Azioni eterodirette](#azioni-eterodirette)
-        - [Traduci messaggi delle classi](#traduci-messaggi-delle-classi)
-    - [Modulo classi](#modulo-classi-1)
-- [2018/12/01](#20181201)
-    - [Documentazione messaggi libreria](#documentazione-messaggi-libreria)
-- [2018/11/30 \(2\)](#20181130-2)
-    - [Documentazione](#documentazione)
-    - [Messaggi dei verbi](#messaggi-dei-verbi)
-        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-2)
+    - [2018/11/23 \(2\)](#20181123-2)
         - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi)
-        - [Correggi messaggi dei verbi](#correggi-messaggi-dei-verbi)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-2)
-- [2018/11/30 \(1\)](#20181130-1)
-    - [Messaggi dei verbi](#messaggi-dei-verbi-1)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-3)
-        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-3)
-    - [Rinomina parametri del verbo `scrivi`](#rinomina-parametri-del-verbo-scrivi)
-- [2018/11/25 \(2\)](#20181125-2)
-    - [Aggiornamento Doxter](#aggiornamento-doxter)
-- [2018/11/25 \(1\)](#20181125-1)
-    - [Messaggi dei verbi](#messaggi-dei-verbi-2)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-4)
-        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-2)
         - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi)
-- [2018/11/24](#20181124)
-    - [Messaggi dei verbi](#messaggi-dei-verbi-3)
-        - [Correggi baco in `chiedi`](#correggi-baco-in-chiedi)
-        - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi-1)
-        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-5)
-    - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-3)
-- [2018/11/23 \(2\)](#20181123-2)
-    - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi-1)
-    - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi-2)
-    - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi-6)
-- [2018/11/23 \(1\)](#20181123-1)
-    - [Correggi Baco LIQUIDI](#correggi-baco-liquidi)
-- [2018/11/22 \(5\)](#20181122-5)
-    - [Messaggi dei verbi](#messaggi-dei-verbi-4)
-        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi-4)
-        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-4)
-- [2018/11/22 \(4\)](#20181122-4)
-    - [Correggi Baco in LIQUIDO](#correggi-baco-in-liquido)
-- [2018/11/22 \(3\)](#20181122-3)
-    - [Documentazione](#documentazione-1)
-    - [Verbi](#verbi-3)
-    - [Messaggi dei verbi](#messaggi-dei-verbi-5)
-- [2018/11/22 \(2\)](#20181122-2)
-    - [Suddivisione modulo messaggi](#suddivisione-modulo-messaggi)
-    - [Passa alla v0.9.0](#passa-alla-v090)
-- [2018/11/22 \(1\)](#20181122-1)
-    - [Messaggi dei verbi](#messaggi-dei-verbi-6)
-        - [Rinomina attributi](#rinomina-attributi)
-        - [Azioni insensate](#azioni-insensate)
-        - [Azioni Futili](#azioni-futili)
-- [2018/11/20](#20181120)
-    - [Documentazione messaggi](#documentazione-messaggi)
-    - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi-2)
-- [2018/11/16](#20181116)
-    - [Documentazione verbi](#documentazione-verbi)
-- [2018/11/15](#20181115)
-    - [Documentazione verbi](#documentazione-verbi-1)
-- [2018/11/13 \(2\)](#20181113-2)
-    - [Pulizia documentazione verbi](#pulizia-documentazione-verbi)
-    - [Documenta il baco della "è"](#documenta-il-baco-della-%C3%A8)
-- [2018/11/13 \(1\)](#20181113-1)
-    - [Passa alla v0.8.0: Tutti i verbi tradotti](#passa-alla-v080-tutti-i-verbi-tradotti)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
+    - [2018/11/23 \(1\)](#20181123-1)
+        - [Correggi Baco LIQUIDI](#correggi-baco-liquidi)
+    - [2018/11/22 \(5\)](#20181122-5)
+        - [Messaggi dei verbi](#messaggi-dei-verbi-4)
+    - [2018/11/22 \(4\)](#20181122-4)
+        - [Correggi Baco in LIQUIDO](#correggi-baco-in-liquido)
+    - [2018/11/22 \(3\)](#20181122-3)
+        - [Documentazione](#documentazione-1)
+        - [Verbi](#verbi-3)
+        - [Messaggi dei verbi](#messaggi-dei-verbi-5)
+    - [2018/11/22 \(2\)](#20181122-2)
+        - [Suddivisione modulo messaggi](#suddivisione-modulo-messaggi)
+        - [Passa alla v0.9.0](#passa-alla-v090)
+    - [2018/11/22 \(1\)](#20181122-1)
+        - [Messaggi dei verbi](#messaggi-dei-verbi-6)
+    - [2018/11/20](#20181120)
+        - [Documentazione messaggi](#documentazione-messaggi)
+        - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi-1)
+    - [2018/11/16](#20181116)
+        - [Documentazione verbi](#documentazione-verbi)
+    - [2018/11/15](#20181115)
+        - [Documentazione verbi](#documentazione-verbi-1)
+    - [2018/11/13 \(2\)](#20181113-2)
+        - [Pulizia documentazione verbi](#pulizia-documentazione-verbi)
+        - [Documenta il baco della "è"](#documenta-il-baco-della-%C3%A8)
+    - [2018/11/13 \(1\)](#20181113-1)
+        - [Passa alla v0.8.0: Tutti i verbi tradotti](#passa-alla-v080-tutti-i-verbi-tradotti)
 
 <!-- /MarkdownTOC -->
 
 -----
 
+# Alan 3.0beta6 build 1852
 
-# 2019/01/06
+## 2019/01/14
+
+- [`libreria.i`][libreria] (v0.10.0)
+- [`lib_classi.i`][lib_classi] (v0.10.0)
+- [`lib_definizioni.i`][lib_definizioni] (v0.10.0)
+- [`lib_luoghi.i`][lib_luoghi] (v0.10.0)
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] (v0.10.0)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.10.0)
+- [`lib_verbi.i`][lib_verbi] (v0.10.0)
+- [`lib_supplemento.i`][lib_supplemento] (v0.10.0)
+
+### Passa alla v0.10.0
+
+Tutti i moduli della libreria passano alla versione 0.10.0.
+
+### Passa ad Alan 3.0beta6 build 1852
+
+Da qui in avanti il progetto adotta la [Alan 3.0beta6 build 1852][3.0beta6-1852] (una [developer snaphshot]) per testare la libreria, anziché continuare ad usare la beta release ufficiale e attendere la beta7.
+
+Questo è un punto di svolta importante poiché la build 1852 rende disponibili in anteprima due importanti novità per la libreria italiana:
+
+- __BugFix "é"__ — Il baco che impediva il parsing delle 'e' con accento grave nei comandi del giocatore è ora risolto (commit [ad2c7de]).
+- __Supporto Apostrofi__ — Questa versione introduce in anteprima la nuova funzionalità (richiesta appositamente per l'italiano) per il supporto di articoli e preposizioni articolate con apostrofi (commit [1bfc8f7]).
+
+Essendo entrambe funzionalità chiave per lo sviluppo della libreria italiana, vale la pena passare ad una pre-release di Alan in attesa della prossima Beta ufficiale (Alan 3.0beta7) per poterne usufruire subito e iniziare a riassestare la libreria di modo che sia tutto pronto per la prossima release di Alan.
+
+### Aggiusta i verbi di domande con "è"
+
+Adesso i verbi di domande che contengono una E con accento grave (`è`) funzionano, quindi sono state eliminate le sintassi alternative che ripiegavano sulla E acuta (`é`).
+
+### Modulo supplemento
+
+Modifica codice e commenti di modo che riflettano l'introduzione della nuova funzionalità per il supporto degli apostrofi.
+
+- Traduci, aggiorna e Doxterizza i commenti di documentazione per:
+    + _Player Words_ .
+    + Preposizioni articolate.
+
+### Nuovo attributo banner di versione Alan
+
+Ora la libreria definisce su `blocco_definizioni` l'attributo stringa `AlanV` (ossia, `mia_AT:AlanV`) per gestire la versione di Alan mostrata nel banner. Il valore predefinito è quello della ultima release di Alan al tempo dell'ultimo aggiornamento della Libreria:
+
+```alan
+EVERY blocco_definizioni IsA LOCATION
+
+-->intestazione(.20)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| === Attributi dell'intestazione
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--| L'istanza `mia_AT` (del `blocco_definizioni`) espone all'autore degli
+--| attributi per fornire i dettagli del banner che potrà (facoltativamente)
+--| essere mostrato all'inizio della partita tramite il template dell'istanza
+--| `intestazione`:
+
+  HAS        titolo  "Nuova Avventura".
+  HAS   sottotitolo  "".
+  HAS        autore  "Il Mio Nome".
+  HAS          anno   2018.
+  HAS      versione  "1".
+
+--| La libreria definisce anche l'attributo `AlanV`, che mostrerà nel banner la
+--| versione di Alan utilizzata:
+
+  HAS         AlanV  "v3.0beta6".
+
+--| Il valore predefinito è quello dell'ultima release di Alan all'epoca della
+--| libreria. L'autore è libero di sovrascriverlo nel caso stesse usando una
+--| versione di Alan più recente, diversa, o una developer snapshot, senza dover
+--| modificare i sorgenti della libreria.
+--<
+```
+
+Questo semplifica le cose quando l'autore si trova a lavorare con una versione di Alan più recente (o diversa, per esempio una dev snapshot) poiché può sovrascrivere la versione di Alan direttamente nell'intestazione della sua avventura. Esempio:
+
+```alan
+THE mia_AT IsA blocco_definizioni
+  HAS       titolo  "La notte dei babbalusci viventi".
+  HAS  sottotitolo  "Una AT horror in cui spietate lumache aliene conquistano la terra.".
+  HAS       autore  "Tristano Ajmone".
+  HAS         anno   2019.
+  HAS     versione  "1".
+  HAS        AlanV  "v3.0beta6 build 1852".
+END THE.
+```
+
+### Rimuovi stropping superfluo
+
+In svariate sintassi alcuni identificati erano tra virgolette anche se non richieste (es. `'dai'`, `'a'`, ecc.); virgolette rimosse. 
+
+<!---------------------------------------------------------------------------->
+
+# Alan 3.0beta6
+
+## 2019/01/06
 
 - [`lib_classi.i`][lib_classi] (v0.9.9)
 
-## Vestiario
+### Vestiario
 
 Inizia a tradurre e doxterizzare la documentazione riguardante l'abbigliamento.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/12/08 (3)
+## 2018/12/08 (3)
 
 - [`lib_classi.i`][lib_classi] (v0.9.8)
 - [`lib_verbi.i`][lib_verbi] (v0.9.13)
 
 
-## Verbi
+### Verbi
 
 Ripulisci un po' il codice.
 
 
-## Verbi Classi
+### Verbi Classi
 
 Ripulisci il codice e traduci varie stringhe di risposte.
 
-### Correggi verbi `look_in` non tradotti
+#### Correggi verbi `look_in` non tradotti
 
 Nel modulo classi non erano stati tradotti gli identificativi del verbo `look_in` su alcune classi:
 
@@ -158,7 +232,7 @@ Nel modulo classi non erano stati tradotti gli identificativi del verbo `look_in
 - `contenitore_elencato`
 - `supporto`
 
-## Documentazione classi
+### Documentazione classi
 
 Procedi con la documentazione doxterizzata del modulo classi:
 
@@ -167,23 +241,23 @@ Procedi con la documentazione doxterizzata del modulo classi:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/12/08 (2)
+## 2018/12/08 (2)
 
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.15)
 - [`lib_verbi.i`][lib_verbi] (v0.9.12)
 
-## Verbi
+### Verbi
 
-### Migliora risposte blocca
+#### Migliora risposte blocca
 
 Aggiunto controllo `azione_insensata` se il secondo parametro è l'eroe nei verbi:
 
 - `blocca_con`
 - `sblocca_con`
 
-## Messaggi libreria
+### Messaggi libreria
 
-### Traduci messaggi dei verbi
+#### Traduci messaggi dei verbi
 
 Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
 
@@ -196,13 +270,13 @@ Eliminato attributo originale.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/12/08 (1)
+## 2018/12/08 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.9.7)
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.14)
 - [`lib_verbi.i`][lib_verbi] (v0.9.11)
 
-## Verbi apri, chiudi, blocca e sblocca
+### Verbi apri, chiudi, blocca e sblocca
 
 Migliorate le risposte dei verbi per l'apertura, chiusura, blocco e sblocco di oggetti apribili/bloccabili:
 
@@ -221,9 +295,9 @@ altrimenti sarà:
 
 - "`Fatto, ora $+1 [è/sono] [apert/chius/bloccat/sbloccat]*.`"
 
-## Messaggi libreria
+### Messaggi libreria
 
-### Nuovi messaggi dei verbi
+#### Nuovi messaggi dei verbi
 
 Creati nuovi attributi per i messaggi di risposta dei verbi (nessuna controparte nella libreria originale inglese):
 
@@ -233,22 +307,22 @@ Creati nuovi attributi per i messaggi di risposta dei verbi (nessuna controparte
 
 L'attributo `descrizione_standard_ogg1` viene ora utilizzato dal verbo `esamina` e la sua variante su `liquido`.
 
-## Modulo classi
+### Modulo classi
 
-### Liquidi
+#### Liquidi
 
-#### Onora `xDesc`
+##### Onora `xDesc`
 
 Se l'attributo `xDesc` di un liquido è una stringa non vuota, il verbo `esamina` la mostrerà invece della descrizione standard.
 
-### Porte e finestre
+#### Porte e finestre
 
 Traduci le risposte per il verbo `esamina`.
 
 
 <!---------------------------------------------------------------------------->
 
-# 2018/12/07
+## 2018/12/07
 
 - [`lib_classi.i`][lib_classi] (v0.9.6)
 - [`lib_luoghi.i`][lib_luoghi] (v0.9.2)
@@ -256,9 +330,9 @@ Traduci le risposte per il verbo `esamina`.
 - [`lib_verbi.i`][lib_verbi] (v0.9.10)
 
 
-## Messaggi libreria
+### Messaggi libreria
 
-### Elimina messaggi dei verbi
+#### Elimina messaggi dei verbi
 
 Elimina attributi inglesi per i messaggi di risposta dei verbi:
 
@@ -268,13 +342,13 @@ Elimina attributi inglesi per i messaggi di risposta dei verbi:
 
 Al posto degli attributi originali sono stati impiegati attributi italiani preesistenti, oppure la risposta è stata gestita direttamente nel codice del verbo.
 
-## Verbi
+### Verbi
 
-### Condiscendenza PNG in `chiedi` dei liquidi
+#### Condiscendenza PNG in `chiedi` dei liquidi
 
 Corretto il verbo `chiedi` sulla classe `liquido` di modo che la condiscendenza del PNG sia ripristinata correttamente al termine dell'azione.
 
-## Pulizia sorgenti
+### Pulizia sorgenti
 
 Ripulisci il codice di `lib_classi.i` e annota stringhe e commenti da tradurre.
 
@@ -282,14 +356,14 @@ Sostituisci occorrenze di `attributo OF istanza` con la forma breve `instanza:at
 
 <!---------------------------------------------------------------------------->
 
-# 2018/12/04 (3)
+## 2018/12/04 (3)
 
 - [`lib_classi.i`][lib_classi] (v0.9.5)
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.12)
 
-## Messaggi libreria
+### Messaggi libreria
 
-### Nuovi messaggi dei verbi
+#### Nuovi messaggi dei verbi
 
 Creati nuovi attributi per i messaggi di risposta dei verbi (nessuna controparte nella libreria originale inglese):
 
@@ -297,7 +371,7 @@ Creati nuovi attributi per i messaggi di risposta dei verbi (nessuna controparte
 |--------------------|---------------|
 | `ogg1_già_sg`/`pl` | `"$+1 è già"` |
 
-### Elimina messaggi dei verbi
+#### Elimina messaggi dei verbi
 
 Elimina attributi inglesi per i messaggi di risposta dei verbi:
 
@@ -309,13 +383,13 @@ Elimina attributi inglesi per i messaggi di risposta dei verbi:
 | `check_lightsource_lit_sg`/`pl`        | `"But $+1 is not lit."`                             | `fonte_di_luce` |
 | `check_lightsource_switchable_sg`/`pl` | `"That's not something you can switch on and off."` |                 |
 
-## Risposte dei verbi
+### Risposte dei verbi
 
 Tradotte varie risposte all'interno dei verbi:
 
 - `lancia`
 
-### Risposte per dispositivi e fonti di luce
+#### Risposte per dispositivi e fonti di luce
 
 Tradotte le ultime risposte dei verbi per dispositivi e fonti di luce.
 
@@ -323,29 +397,29 @@ Tradotte le ultime risposte dei verbi per dispositivi e fonti di luce.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/12/04 (2)
+## 2018/12/04 (2)
 
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.11)
 
 
-## Messaggi libreria
+### Messaggi libreria
 
 Continua a riorganizzare i messaggi della libreria raggruppandoli per affinità.
 
 
 <!---------------------------------------------------------------------------->
 
-# 2018/12/04 (1)
+## 2018/12/04 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.9.4)
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.10)
 - [`lib_verbi.i`][lib_verbi] (v0.9.8)
 
-## Messaggi libreria
+### Messaggi libreria
 
 Continua a riorganizzare i messaggi della libreria raggruppandoli per affinità.
 
-### Traduci messaggi dei verbi
+#### Traduci messaggi dei verbi
 
 Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
 
@@ -353,7 +427,7 @@ Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
 |---------------------------------|---------------------------------|----------------------------------|
 | `check_obj_not_in_cont_sg`/`pl` | `ogg1_sg_già_dentro_cont2`/`pl` | `"$+1 [è/sono] già dentro $+2."` |
 
-### Azioni eterodirette
+#### Azioni eterodirette
 
 Nei verbi che richiedono un parametro `object`, aggiungi un ulteriore controllo per verificare se il parametro è l'eroe e, in caso affermativo, mostra il messaggio `azione_insensata` anziché il messaggio originale della libreria (`illegal_parameter_obj`). Esempio:
 
@@ -391,21 +465,21 @@ Alcuni verbi in cui questo controllo è stato tralasciato — o perché tale com
 - `usa_con` (parametro 2)
 - `usa`
 
-### Traduci messaggi delle classi
+#### Traduci messaggi delle classi
 
 Tradotti i messaggi per gli attori che seguono l'eroe.
 
-## Modulo classi
+### Modulo classi
 
 - Traduci pronomi di `maschio` ("lui") e `femmina` ("lei").
 
 <!---------------------------------------------------------------------------->
 
-# 2018/12/01
+## 2018/12/01
 
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.9)
 
-## Documentazione messaggi libreria
+### Documentazione messaggi libreria
 
 Sposta la regione Doxter che documenta l'uso di `$v` dal modulo `lib_messaggi_libreria.i` al file `doc_src/appunti-lavoro.asciidoc`.
 
@@ -413,20 +487,20 @@ Inizia a doxterizzare la documentazione dei messaggi, rendendo consultabili le c
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/30 (2)
+## 2018/11/30 (2)
 
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.8)
 - [`lib_verbi.i`][lib_verbi] (v0.9.8)
 
-## Documentazione
+### Documentazione
 
 Nei verbi `entra` ed `esci` documenta l'uso di luoghi annidati per simulare l'eroe che entra ed esce da contenitori.
 
-## Messaggi dei verbi
+### Messaggi dei verbi
 
 Riordina i messaggi da tradurre inserendoli nei gruppi di appartenenza degli attributi già tradotti.
 
-### Elimina messaggi dei verbi
+#### Elimina messaggi dei verbi
 
 Elimina attributi inglesi per i messaggi di risposta dei verbi:
 
@@ -437,7 +511,7 @@ Elimina attributi inglesi per i messaggi di risposta dei verbi:
 
 Al posto degli attributi originali sono stati impiegati attributi italiani preesistenti, oppure la risposta è stata gestita direttamente nel codice del verbo.
 
-### Rinomina messaggi dei verbi
+#### Rinomina messaggi dei verbi
 
 Rinominati i seguenti attributi per i messaggi di risposta dei verbi:
 
@@ -445,7 +519,7 @@ Rinominati i seguenti attributi per i messaggi di risposta dei verbi:
 |---------------|----------------------|
 | `indossi_già` | `ogg1_già_indossato` |
 
-### Correggi messaggi dei verbi
+#### Correggi messaggi dei verbi
 
 Modificati i seguenti attributi per i messaggi di risposta dei verbi per adattarli a coprire anche la forma plurale:
 
@@ -454,7 +528,7 @@ Modificati i seguenti attributi per i messaggi di risposta dei verbi per adattar
 | `png1_non_apprezzerebbe` | `png1_non_gradirebbe_sg`/`pl` |
 
 
-### Traduci messaggi dei verbi
+#### Traduci messaggi dei verbi
 
 Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
 
@@ -468,15 +542,15 @@ Gli attributi originali inglesi sono stati eliminati.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/30 (1)
+## 2018/11/30 (1)
 
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.7)
 - [`lib_verbi.i`][lib_verbi] (v0.9.7)
 
 
-## Messaggi dei verbi
+### Messaggi dei verbi
 
-### Traduci messaggi dei verbi
+#### Traduci messaggi dei verbi
 
 Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
 
@@ -486,7 +560,7 @@ Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
 
 Gli attributi originali inglesi sono stati eliminati.
 
-### Elimina messaggi dei verbi
+#### Elimina messaggi dei verbi
 
 Elimina attributi inglesi per i messaggi di risposta dei verbi:
 
@@ -496,14 +570,14 @@ Elimina attributi inglesi per i messaggi di risposta dei verbi:
 
 Al posto degli attributi originali sono stati impiegati attributi italiani preesistenti, oppure la risposta è stata gestita direttamente nel codice del verbo.
 
-## Rinomina parametri del verbo `scrivi`
+### Rinomina parametri del verbo `scrivi`
 
 Rinomina parametro `txt` in `testo` nei verbi `scrivi` e `scrivi_errore3`.
 
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/25 (2)
+## 2018/11/25 (2)
 
 - [`libreria.i`][libreria] (v0.9.1)
 - [`lib_classi.i`][lib_classi] (v0.9.3)
@@ -514,21 +588,21 @@ Rinomina parametro `txt` in `testo` nei verbi `scrivi` e `scrivi_errore3`.
 - [`lib_verbi.i`][lib_verbi] (v0.9.6)
 - [`lib_supplemento.i`][lib_supplemento] (v0.9.1)
 
-## Aggiornamento Doxter
+### Aggiornamento Doxter
 
 L'aggiornamento a Doxter v0.2.4-alpha ha richiesto delle piccole modifiche in elementi comuni a tutti i moduli della libreria (lo spazio dopo un marcatore Doxter è ora obbligatorio).
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/25 (1)
+## 2018/11/25 (1)
 
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.5)
 - [`lib_verbi.i`][lib_verbi] (v0.9.5)
 
 
-## Messaggi dei verbi
+### Messaggi dei verbi
 
-### Traduci messaggi dei verbi
+#### Traduci messaggi dei verbi
 
 Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
 
@@ -539,7 +613,7 @@ Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
 
 Gli attributi originali inglesi sono stati eliminati.
 
-### Nuovi messaggi dei verbi
+#### Nuovi messaggi dei verbi
 
 Creati nuovi attributi per i messaggi di risposta dei verbi (nessuna controparte nella libreria originale inglese):
 
@@ -548,7 +622,7 @@ Creati nuovi attributi per i messaggi di risposta dei verbi (nessuna controparte
 | `impossibile_maneggiare_liq1` | `"Non puoi maneggiare $+1 a mani nude."` |
 
 
-### Sostituisci messaggi inglesi dei verbi
+#### Sostituisci messaggi inglesi dei verbi
 
 Sostituisci tutte le occorrenze degli attributi inglesi per i messaggi di risposta dei verbi con attributi italiani:
 
@@ -563,20 +637,20 @@ Gli attributi originali inglesi sono stati eliminati.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/24
+## 2018/11/24
 
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.4)
 - [`lib_verbi.i`][lib_verbi] (v0.9.4)
 
-## Messaggi dei verbi
+### Messaggi dei verbi
 
 Tradotte varie risposte nel corpo dei verbi.
 
-### Correggi baco in `chiedi`
+#### Correggi baco in `chiedi`
 
 Corretto baco nel verbo `chiedi`, dove un CHECK impiegava i messaggi per il parametro sbagliato: `mia_AT:ogg1_distante_sg`/`pl` anziché  `mia_AT:ogg2_distante_sg`/`pl`.
 
-### Sostituisci messaggi inglesi dei verbi
+#### Sostituisci messaggi inglesi dei verbi
 
 Sostituisci tutte le occorrenze degli attributi inglesi per i messaggi di risposta dei verbi con attributi italiani:
 
@@ -590,7 +664,7 @@ Sostituisci tutte le occorrenze degli attributi inglesi per i messaggi di rispos
 Gli attributi originali inglesi sono stati eliminati.
 
 
-### Traduci messaggi dei verbi
+#### Traduci messaggi dei verbi
 
 Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
 
@@ -600,7 +674,7 @@ Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
 | `check_obj_not_hero6` | `azione_irrelevante`               | `"Hai cose più importanti a cui pensare."`            |
 
 
-#### Messaggio in quattro attributi
+##### Messaggio in quattro attributi
 
 Nel verbo `chiedi`, il seguente attributo inglese:
 
@@ -638,7 +712,7 @@ THEN
 L'attributo originale inglese è stato elimato (non era utilizzato in altri verbi).
 
 
-## Nuovi messaggi dei verbi
+### Nuovi messaggi dei verbi
 
 Creati nuovi attributi per i messaggi di risposta dei verbi (nessuna controparte nella libreria originale inglese):
 
@@ -650,7 +724,7 @@ Creati nuovi attributi per i messaggi di risposta dei verbi (nessuna controparte
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/23 (2)
+## 2018/11/23 (2)
 
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.3)
 - [`lib_verbi.i`][lib_verbi] (v0.9.3)
@@ -659,7 +733,7 @@ Annota il codice sorgente.
 
 <!-- Aggiorna documentazione della messaggistica di libreria. -->
 
-## Rinomina messaggi dei verbi
+### Rinomina messaggi dei verbi
 
 Rinominati gli attributi per i messaggi di risposta dei verbi secondo nuovi criteri:
 
@@ -671,7 +745,7 @@ Rinominati gli attributi per i messaggi di risposta dei verbi secondo nuovi crit
 | `ogg1_png_non_apprezzerebbe` | `png1_non_apprezzerebbe` |
 
 
-## Sostituisci messaggi inglesi dei verbi
+### Sostituisci messaggi inglesi dei verbi
 
 Sostituisci tutte le occorrenze degli attributi inglesi per i messaggi di risposta dei verbi con attributi italiani:
 
@@ -681,7 +755,7 @@ Sostituisci tutte le occorrenze degli attributi inglesi per i messaggi di rispos
 
 Gli attributi originali inglesi sono stati eliminati.
 
-## Traduci messaggi dei verbi
+### Traduci messaggi dei verbi
 
 Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
 
@@ -701,11 +775,11 @@ Dove in italiano le risposte sono:
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/23 (1)
+## 2018/11/23 (1)
 
 - [`lib_classi.i`][lib_classi] (v0.9.2)
 
-## Correggi Baco LIQUIDI
+### Correggi Baco LIQUIDI
 
 Risolto il baco per cui dopo aver tentato di riempire un contenitore con un liquido (verbo `riempi_con`, azione bloccata di default) il `recipiente` del liquido veniva sempre e comunque cambiato nel contenitore menzionato nel verbo, a prescindere dall'esito dell'azione.
 
@@ -720,14 +794,14 @@ Per maggiori dettagli, vedi [AlanStdLib/#39] e la [soluzione proposta in #47] da
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/22 (5)
+## 2018/11/22 (5)
 
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.2)
 - [`lib_verbi.i`][lib_verbi] (v0.9.2)
 
-## Messaggi dei verbi
+### Messaggi dei verbi
 
-### Elimina messaggi dei verbi
+#### Elimina messaggi dei verbi
 
 Elimina attributi inglesi per i messaggi di risposta dei verbi:
 
@@ -743,7 +817,7 @@ Invece `illegal_parameter2_there`, a seconda del verbo, è stato rimpiazzato da 
 
 Gli altri attributi erano rimasti nel modulo messaggi ma non erano più utilizzati nei verbi.
 
-### Nuovi messaggi dei verbi
+#### Nuovi messaggi dei verbi
 
 Creati nuovi attributi per i messaggi di risposta dei verbi (usati per rimpiazzare svariati attributi della libreria originale inglese le cui traduzioni in si sovrappongono a quelle italiane):
 
@@ -757,33 +831,33 @@ Creati nuovi attributi per i messaggi di risposta dei verbi (usati per rimpiazza
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/22 (4)
+## 2018/11/22 (4)
 
 - [`lib_classi.i`][lib_classi] (v0.9.1)
 
-## Correggi Baco in LIQUIDO
+### Correggi Baco in LIQUIDO
 
 Il verbo `metti_su` implementato sulla classe `liquido` non spostava il contenitore del liquido sulla superficie indicata dal parametro, si limitava a dire di averlo fatto.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/22 (3)
+## 2018/11/22 (3)
 
 - [`lib_messaggi_runtime.i`][lib_messaggi_runtime] (v0.9.1)
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.1)
 - [`lib_verbi.i`][lib_verbi] (v0.9.1)
 
-## Documentazione
+### Documentazione
 
 Riorganizza e metti un po' in ordine la documentazione Doxter.
 
-## Verbi
+### Verbi
 
 Sostituisi attributi di risposte inglesi con attributi italiani già tradotti ma non ancora sostituiti.
 
 Annota gli attributi messagi non ancora tradotti.
 
-## Messaggi dei verbi
+### Messaggi dei verbi
 
 Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
 
@@ -797,7 +871,7 @@ Gli attributi originali inglesi sono stati eliminati.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/22 (2)
+## 2018/11/22 (2)
 
 - [`libreria.i`][libreria] (v0.9.0)
 - [`lib_classi.i`][lib_classi] (v0.9.0)
@@ -808,28 +882,28 @@ Gli attributi originali inglesi sono stati eliminati.
 - [`lib_verbi.i`][lib_verbi] (v0.9.0)
 - [`lib_supplemento.i`][lib_supplemento] (v0.9.0)
 
-## Suddivisione modulo messaggi
+### Suddivisione modulo messaggi
 
 Per ragioni pratiche, il modulo `lib_messaggi.i` è stato diviso in due moduli distinti:
 
 - [`lib_messaggi_runtime.i`][lib_messaggi_runtime]
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria]
 
-## Passa alla v0.9.0
+### Passa alla v0.9.0
 
 Tutti i moduli della libreria passano alla versione 0.9.0.
 
 
 -------------------------------------------------------------------------------
 
-# 2018/11/22 (1)
+## 2018/11/22 (1)
 
 - [`lib_messaggi.i`][lib_messaggi_libreria] (v0.8.3)
 - [`lib_verbi.i`][lib_verbi] (v0.8.5)
 
-## Messaggi dei verbi
+### Messaggi dei verbi
 
-### Rinomina attributi
+#### Rinomina attributi
 
 Rinominati i seguenti attributi per i messaggi di risposta dei verbi:
 
@@ -837,7 +911,7 @@ Rinominati i seguenti attributi per i messaggi di risposta dei verbi:
 |--------------------------|-----------------|-----------------------------------|
 | `non_servirebbe_a_nulla` | `azione_futile` | `"Farlo non servirebbe a nulla."` |
 
-### Azioni insensate
+#### Azioni insensate
 
 Tutte le occorrenze dei seguenti attributi sono stati rimpiazzate con `azione_insensata` ("Questo non ha alcun senso."):
 
@@ -847,7 +921,7 @@ Tutte le occorrenze dei seguenti attributi sono stati rimpiazzate con `azione_in
 
 Gli attributi originali inglesi sono stati eliminati.
 
-#### Usare un oggetto su se stesso
+##### Usare un oggetto su se stesso
 
 Anche le occorrenze dei seguenti attributi sono stati rimpiazzate con `azione_insensata`:
 
@@ -871,7 +945,7 @@ Il contesto dell'errore è sufficientemente chiaro da non richiedere ulteriori s
 
 > __NOTA__ — In teoria, potrebbero presentarsi casi in cui l'errore è dovuto all'uso di sinonimi implementati come escamotage per creare l'illusione di due oggetti diversi nel gioco, ma in simili casi un messaggio di risposta che utilizzi `$+1` e `$+2` creerebbe solo più confusione dato che Alan mostrerebbe per entrambi il nome principale dell'oggetto e non il sinonimo digitato dal giocatore. 
 
-### Azioni Futili
+#### Azioni Futili
 
 Tutte le occorrenze dei seguenti attributi sono stati rimpiazzate con `azione_futile` ("Farlo non servirebbe a nulla."):
 
@@ -885,7 +959,7 @@ Gli attributi originali inglesi sono stati eliminati.
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/20
+## 2018/11/20
 
 - [`lib_classi.i`][lib_classi] (v0.8.1)
 - [`lib_definizioni.i`][lib_definizioni] (v0.8.1)
@@ -897,13 +971,13 @@ Gli attributi originali inglesi sono stati eliminati.
 
 Correggi maiuscole nei titoli.
 
-## Documentazione messaggi
+### Documentazione messaggi
 
 Aggiungi note riguardo l'uso del simbolo speciale `$v` nei messaggi di risposta dei verbi, e i relativi problemi riguardo la formazione del verbo infinito.
 
 Inizia a documentare le abbreviazioni e convenzioni adottate negli identificativi degli attributi stringa dei messaggi.
 
-## Rinomina messaggi dei verbi
+### Rinomina messaggi dei verbi
 
 Rinominati in `ogg?_inadatto_*` tutti gli attributi per i messaggi dei verbi che avevano il nome `ogg?_illegale_*`.
 
@@ -922,12 +996,12 @@ Rinominati in `ogg?_inadatto_*` tutti gli attributi per i messaggi dei verbi che
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/16
+## 2018/11/16
 
 - [`lib_messaggi.i`][lib_messaggi_libreria] (v0.8.1)
 - [`lib_verbi.i`][lib_verbi] (v0.8.2)
 
-## Documentazione verbi
+### Documentazione verbi
 
 Aggiungi commenti Doxter per documentare "Descrizioni Brevi e Lunghe" e menziona l'attuale baco della libreria che ne impedisce il corretto funzionamento.
 
@@ -936,27 +1010,27 @@ Inizia a documentare il modulo dei messaggi.
 <!---------------------------------------------------------------------------->
 
 
-# 2018/11/15
+## 2018/11/15
 
 - [`lib_verbi.i`][lib_verbi] (v0.8.2)
 
-## Documentazione verbi
+### Documentazione verbi
 
 Aggiungi commenti Doxter per documentare i verbi preposti al controllo della trascrizione della partita.
 
 -------------------------------------------------------------------------------
 
-# 2018/11/13 (2)
+## 2018/11/13 (2)
 
 - [`lib_verbi.i`][lib_verbi] (v0.8.1)
 
-## Pulizia documentazione verbi
+### Pulizia documentazione verbi
 
 Questo commit mette un po' d'ordine nella documentazione dei verbi:
 
 - Organizza meglio il gruppo dei "Verbi di Domande".
 
-## Documenta il baco della "è"
+### Documenta il baco della "è"
 
 - Documenta il baco della `è` grave nelle sintassi.
 
@@ -973,7 +1047,7 @@ Grazie alle trascrizioni dei test, sarà possibile rilevare automaticamente even
 
 <!---------------------------------------------------------------------------->
 
-# 2018/11/13 (1)
+## 2018/11/13 (1)
 
 - [`libreria.i`][libreria] (v0.8.0)
 - [`lib_classi.i`][lib_classi] (v0.8.0)
@@ -983,7 +1057,7 @@ Grazie alle trascrizioni dei test, sarà possibile rilevare automaticamente even
 - [`lib_verbi.i`][lib_verbi] (v0.8.0)
 - [`lib_supplemento.i`][lib_supplemento] (v0.8.0)
 
-## Passa alla v0.8.0: Tutti i verbi tradotti
+### Passa alla v0.8.0: Tutti i verbi tradotti
 
 Con questo commit tutti i verbi della libreria ed i corrispettivi attributi di restrizione sono stati tradotti in italiano.
 
@@ -1027,6 +1101,15 @@ Tutti i moduli della libreria passano alla versione 0.8.0.
 [AlanStdLib]: https://github.com/AnssiR66/AlanStdLib
 
 [Alan SDK 3.0beta6]: https://www.alanif.se/download-alan-v3/development-kits/development-kits-3-0beta6
+
+[developer snaphshot]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots "Vai alla pagina delle Developer Snapshots sul sito di Alan"
+[3.0beta6-1852]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1852 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1852"
+
+<!-- Alan Commits -->
+
+[ad2c7de]: https://bitbucket.org/alanif/alan/commits/ad2c7de756129657b465c4b089011c8e9a87b84d "View commit ad2c7de on upstream Alan repository on Bitbucket"
+
+[1bfc8f7]: https://bitbucket.org/alanif/alan/commits/1bfc8f772d8453aeae23c1f4810f95a3eeafe6f9 "View commit 1bfc8f7 on upstream Alan repository on Bitbucket"
 
 <!-- StdLib Issues & PRs ----------------------------------------------------->
 

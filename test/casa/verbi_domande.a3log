@@ -3,7 +3,7 @@
 La Casa 
 Un set per eseguire test su stanze e luoghi esterni. 
 (C) Tristano Ajmone, 2018. 
-Avventura realizzata con ALAN Interactive Fiction Language v3.0 beta6
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1852. 
 Libreria Standard Italiana v2.1 
 Versione 1 
 Tutti i diritti riservati.
@@ -20,56 +20,113 @@ stanza c'è Mr Nicky, il tuo cagnolino.
 > ; *                        TESTA VERBI DOMANDE/RISPOSTE                        *
 > ; *                                                                            *
 > ; ******************************************************************************
-> ; Questo test riguarda queio di verbi che sono domande poste dal protagonista,
+> ; Questo test riguarda quei di verbi che sono domande poste dal protagonista,
 > ; o risposte.
 > ; ==============================================================================
-> ; *** BUG 'È' ***
+> ; TESTA 'chi_è'
 > ; ==============================================================================
-> ; Allo stato attuale c'è un baco in Alan che impedisce l'uso della 'è' grave nella
-> ; sintassi dei verbi:
 > chi è il giardiniere
-Non conosco la parola 'è'.
+Dovrai scoprirlo da te!
 
+> ; TODO: chi sono 
+> ; ==============================================================================
+> ; TESTA 'chi_sono_io'
+> ; ==============================================================================
+> chi sono io
+Hai provato a esaminare te stesso? Forse ti aiuterebbe.
+
+> chi sono
+Hai provato a esaminare te stesso? Forse ti aiuterebbe.
+
+> ; ==============================================================================
+> ; TESTA 'cosa_è'
+> ; ==============================================================================
 > cosa è la piscina
-Non conosco la parola 'è'.
+Dovrai scoprirlo da te!
 
 > cos'è la piscina
-Non conosco la parola 'cos''.
+Dovrai scoprirlo da te!
 
 > che cosa è la piscina
-Non conosco la parola 'è'.
+Dovrai scoprirlo da te!
 
 > che cos'è la piscina
-Non conosco la parola 'cos''.
+Dovrai scoprirlo da te!
 
+> ; ==============================================================================
+> ; TESTA 'cosa_sono_io'
+> ; ==============================================================================
+> cosa sono
+Hai provato a esaminare te stesso? Forse ti aiuterebbe.
+
+> cosa sono io
+Hai provato a esaminare te stesso? Forse ti aiuterebbe.
+
+> che sono
+Hai provato a esaminare te stesso? Forse ti aiuterebbe.
+
+> che sono io
+Hai provato a esaminare te stesso? Forse ti aiuterebbe.
+
+> che cosa sono
+Hai provato a esaminare te stesso? Forse ti aiuterebbe.
+
+> che cosa sono io
+Hai provato a esaminare te stesso? Forse ti aiuterebbe.
+
+> ; ==============================================================================
+> ; TESTA 'dove_è'
+> ; ==============================================================================
 > dove è il giardiniere
-Non conosco la parola 'è'.
+Dovrai scoprirlo da te!
 
 > dov'è la piscina
-Non conosco la parola 'dov''.
-
-> ; ------------------------------------------------------------------------------
-> ; Ripiego su 'é' acuta
-> ; ------------------------------------------------------------------------------
-> ; Invece le sintassi alternative di ripiego (che usano la 'é' acuta) funzionano
-> ; correttamente. Questo dimostra che il problema è isolato alla 'è' grave.
-> chi é il giardiniere
 Dovrai scoprirlo da te!
 
-> cosa é la piscina
+> dove sono i jeans
+Il paio di blue jeans è proprio qui.
+
+> dove si trova la piscina
 Dovrai scoprirlo da te!
 
-> cos'é la piscina
-Dovrai scoprirlo da te!
+> dove si trovano i jeans
+Il paio di blue jeans è proprio qui.
 
-> che cos'é la piscina
-Dovrai scoprirlo da te!
+> ; ==============================================================================
+> ; TESTA 'dove_mi_trovo'
+> ; ==============================================================================
+> dove mi trovo
+LA CUCINA
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un frigo e 
+un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un sacchetto, un 
+coltello, una pistola, un cesto per la frutta e una radio. Mr Nicky ti osserva
+incuriosito.
 
-> dove é il giardiniere
-Dovrai scoprirlo da te!
+> dove sono io
+LA CUCINA
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un frigo e 
+un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un sacchetto, un 
+coltello, una pistola, un cesto per la frutta e una radio. Mr Nicky gironzola
+annusando.
 
-> dov'é la piscina
-Dovrai scoprirlo da te!
+> dove sono
+LA CUCINA
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un frigo e 
+un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un sacchetto, un 
+coltello, una pistola, un cesto per la frutta e una radio. Mr Nicky poltrisce 
+in un angolo.
+
+> ; ==============================================================================
+> ; TESTA 'rispondi_No'
+> ; ==============================================================================
+> no
+Davvero?
+
+> ; ==============================================================================
+> ; TESTA 'rispondi_Sì'
+> ; ==============================================================================
+> sì
+Davvero?
 
 > ; ==============================================================================
 > ; TESTA 'dì'

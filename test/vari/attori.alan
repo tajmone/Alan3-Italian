@@ -1,3 +1,4 @@
+-- Alan >= 3.0beta6 build 1852 | Alan Italian >= v0.10.0-Alpha
 --==============================================================================
 -- "Provini Attori" by Tristano Ajmone, 2018.
 --==============================================================================
@@ -18,6 +19,7 @@ THE mia_AT IsA blocco_definizioni
   HAS       autore  "Tristano Ajmone".
   HAS         anno   2018.
   HAS     versione  "1".
+  HAS        AlanV  "v3.0beta6 build 1852".
   ------------------------------------------------------------------------------
 END THE.
 
@@ -166,7 +168,6 @@ END THE.
 THE orco IsA maschio AT stanza2.
   HAS articolo "l'".
   NAME orco.
-  NAME 'l''orco'.
 END THE.
 -- ============
 -- Articolo: LA
