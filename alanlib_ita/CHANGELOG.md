@@ -18,6 +18,8 @@ For previuos changes, see:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Alan 3.0beta6 build 1852](#alan-30beta6-build-1852)
+    - [2019/01/15](#20190115)
+        - [Aggiusta verbi modulo classi](#aggiusta-verbi-modulo-classi)
     - [2019/01/14](#20190114)
         - [Passa alla v0.10.0](#passa-alla-v0100)
         - [Passa ad Alan 3.0beta6 build 1852](#passa-ad-alan-30beta6-build-1852)
@@ -103,6 +105,30 @@ For previuos changes, see:
 -----
 
 # Alan 3.0beta6 build 1852
+
+
+## 2019/01/15
+
+- [`lib_classi.i`][lib_classi] (v0.10.1)
+
+
+### Aggiusta verbi modulo classi
+
+Gli identificativi di alcuni verbi in `lib_classi.i` non erano stati tradotti:
+
+|    Verbo EN    |       Verbo IT      |         Classi         |
+|----------------|---------------------|------------------------|
+| `knock`        | `bussa`             | `porta`                |
+| `look_behind`  | `guarda_dietro`     | `porta`/`finestra`     |
+| `look_under`   | `guarda_sotto`      | `porta`                |
+| `look_out_of`  | `guarda_fuori_da`   | `finestra`             |
+| `look_through` | `guarda_attraverso` | `finestra`             |
+| `search`       | `ispeziona`         | `contenitore_elencato` |
+
+Ora non risultano più esserci identificativi non tradotti.
+
+<!---------------------------------------------------------------------------->
+
 
 ## 2019/01/14
 

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.10.0-Alpha, 2019-01-14: Alan 3.0beta6 build 1852
+--| v0.10.1-Alpha, 2019-01-15: Alan 3.0beta6 build 1852
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -1163,7 +1163,7 @@ EVERY porta IsA OBJECT
 
 
 
-  VERB knock
+  VERB bussa
     DOES ONLY
       IF THIS IS NOT aperto
 --                                                                              TRANSLATE!
@@ -1175,11 +1175,11 @@ EVERY porta IsA OBJECT
           END IF.
 
       END IF.
-  END VERB knock.
+  END VERB bussa.
 
 
 
-  VERB look_behind
+  VERB guarda_dietro
     DOES ONLY
       IF THIS IS NOT aperto
 --                                                                              TRANSLATE!
@@ -1195,11 +1195,11 @@ EVERY porta IsA OBJECT
             ELSE "$$s."
           END IF.
       END IF.
-  END VERB look_behind.
+  END VERB guarda_dietro.
 
 
 
-  VERB look_under
+  VERB guarda_sotto
     DOES ONLY
       IF THIS IS NOT aperto
 --                                                                              TRANSLATE!
@@ -1216,7 +1216,7 @@ EVERY porta IsA OBJECT
             ELSE "."
           END IF.
       END IF.
-  END VERB look_under.
+  END VERB guarda_sotto.
 
 
 
@@ -1319,31 +1319,31 @@ EVERY finestra IsA OBJECT
   END VERB esamina.
 
 
-  VERB look_behind
+  VERB guarda_dietro
     DOES ONLY
 --                                                                              TRANSLATE!
       "That's not possible."
-  END VERB look_behind.
+  END VERB guarda_dietro.
 
 
-  VERB look_out_of
+  VERB guarda_fuori_da
 --                                                                              TRANSLATE!
     DOES ONLY "You see nothing special looking out of the"
         IF THIS IS NOT plurale
           THEN "window."
           ELSE "windows."
         END IF.
-  END VERB look_out_of.
+  END VERB guarda_fuori_da.
 
 
-  VERB look_through
+  VERB guarda_attraverso
 --                                                                              TRANSLATE!
     DOES ONLY "You see nothing special looking through the"
         IF THIS IS NOT plurale
           THEN "window."
           ELSE "windows."
         END IF.
-  END VERB look_through.
+  END VERB guarda_attraverso.
 
 
 END EVERY.
@@ -2234,13 +2234,13 @@ EVERY contenitore_elencato IsA OBJECT
   END VERB guarda_in.
 
 
-  VERB search
+  VERB ispeziona
     DOES ONLY
       IF THIS IS NOT OPAQUE
         THEN LIST THIS.
         ELSE "Non puoi vedere dentro" SAY THE THIS. "."
       END IF.
-  END VERB search.
+  END VERB ispeziona.
 
 
 -- ==============================
