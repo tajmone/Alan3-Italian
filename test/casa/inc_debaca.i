@@ -40,6 +40,8 @@
 ADD TO EVERY blocco_definizioni
   HAS dbgsep -- Separatore voci di debacazione
     "$n+-------------------------------------------------------------------------------".
+  HAS dbgsep_no_nl -- Separatore senza accapo (per xDesc)
+    "+-------------------------------------------------------------------------------".
   HAS tmpstr "". -- Per manipolazione stringhe.
 END ADD TO.
 
@@ -237,7 +239,6 @@ ADD TO EVERY thing
             SAY mia_AT:dbgsep. --------------( separatore )--------------
             "$n| ALTRO LATO: ""$$" SAY ogg:altro_lato.
             "$$"" (in ""$$" SAY ogg:altro_lato:location. "$$"")"
-
           -- ===================================================================
           -- FINESTRA
           -- ===================================================================
@@ -279,7 +280,8 @@ ADD TO EVERY thing
       "$n| ARTICOLO: " SAY ogg:articolo.
       "$n| FORMA DETERMINATA:$t$+1"
       "$n| FORMA INDETERMINATA:$t$01"
-      "$n| VOCALE: " SAY ogg:vocale.
+      "$n| VOCALE: "    SAY ogg:vocale.
+      "$n| PRONOME: $!1"
       "$n| PREP. DI:$t" SAY ogg:prep_DI.
       "$n| PREP.  A:$t" SAY ogg:prep_A.
       "$n| PREP. DA:$t" SAY ogg:prep_DA.
@@ -318,16 +320,29 @@ ADD TO EVERY thing
           "$n| TESTUALITÀ:"
           IF ogg IS NOT leggibile     THEN "NON" END IF. "leggibile / "
           IF ogg IS NOT scrivibile    THEN "NON" END IF. "scrivibile"
-      --{{ testo }}-- Limitiamone la lunghezza mostrata a 80-9:
-      STRIP 71 CHARACTERS FROM ogg:testo INTO mia_AT:tmpstr.
-      "$n| TESTO:" SAY mia_AT:tmpstr.
-      SAY mia_AT:dbgsep. --------------( separatore )--------------
+          --{{ testo }}------------------------------------------------
+          "$n| TESTO"
+          IF ogg:testo <> ""
+            THEN
+              -- Limitiamone la lunghezza mostrata a 80-9:
+              STRIP 71 CHARACTERS FROM ogg:testo INTO mia_AT:tmpstr.
+              "$$:" SAY mia_AT:tmpstr.
+            ELSE
+              "(stringa vuota)"
+          END IF.
+          SAY mia_AT:dbgsep. --------------( separatore )--------------
       END IF.
-      -- ---------------------------------
-      --{{ xDesc }}-- Limitiamone la lunghezza mostrata a 80-9:
-      STRIP 71 CHARACTERS FROM ogg:xDesc INTO mia_AT:tmpstr.
-      "$n| xDesc:" SAY mia_AT:tmpstr.
-      SAY mia_AT:dbgsep. --------------( separatore )--------------
+      --{{ xDesc }}---------------------------------
+      "$n| xDesc"
+      IF ogg:xDesc <> ""
+        THEN
+          -- Limitiamone la lunghezza mostrata a 80-9:
+          STRIP 71 CHARACTERS FROM ogg:xDesc INTO mia_AT:tmpstr.
+          "$$:" SAY mia_AT:tmpstr.
+        ELSE
+          "(stringa vuota)"
+      END IF.
+      SAY mia_AT:dbgsep_no_nl. --------------( separatore senza \n )------------
   END VERB debaca.
 END ADD TO.
 
