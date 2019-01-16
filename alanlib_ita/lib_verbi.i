@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.10.0-Alpha, 2019-01-14: Alan 3.0beta6 build 1852
+--| v0.10.1-Alpha, 2019-01-16: Alan 3.0beta6 build 1852
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -4164,8 +4164,7 @@ ADD TO EVERY OBJECT
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     DOES
---                                                                              TRANSLATE!
-      "You can't see through" SAY THE bulk. "."
+      "Non riesci a vedere attraverso" SAY THE bulk. "."
   END VERB guarda_attraverso.
 END ADD TO.
 
@@ -4190,6 +4189,7 @@ SYNTAX guarda_dietro = guarda dietro (bulk)
     ELSE SAY mia_AT:illegal_parameter_there.
 -- @TODO: Aggiungi controllo per suoni, oppure implementa il verbo sulla classe
 --        dei suoni.                                                            FIXME!
+  guarda_dietro = guarda dietro a (bulk).
 
 ADD TO EVERY THING
   VERB guarda_dietro
@@ -4237,6 +4237,11 @@ SYNTAX guarda_fuori_da = guarda fuori da (ogg)
         ELSE SAY mia_AT:ogg1_inadatto_DA_pl.
       END IF.
       "guardare fuori."
+
+-- @TODO: Questa soluzione è temporanea, finché i conflitti tra il              FIXME!
+--        verbo 'dare' imperativo e la preposizione art. 'dai' non
+--        sarà risolto (al momento 'dai' non è sinonimo di 'da'!).
+  guarda_fuori_da = guarda fuori dai (ogg).
 
 ADD TO EVERY OBJECT
   VERB guarda_fuori_da
@@ -4333,6 +4338,7 @@ SYNTAX guarda_sotto = guarda sotto (bulk)
 --                                                                              TRANSLATE!
     ELSE SAY mia_AT:illegal_parameter_there.
 
+  guarda_sotto = guarda sotto a (bulk).
 
 
 ADD TO EVERY THING
@@ -5341,6 +5347,10 @@ SYNTAX prendi_da = prendi (ogg) da (detentore)
         THEN SAY mia_AT:illegal_parameter2_from_sg.
         ELSE SAY mia_AT:illegal_parameter2_from_pl.
       END IF.
+
+-- @TODO: Questa soluzione è temporanea, finché i conflitti tra il              FIXME!
+--        verbo 'dare' imperativo e la preposizione art. 'dai' non
+--        sarà risolto (al momento 'dai' non è sinonimo di 'da'!).
 
 -- @TODO: Devo verificare la sintassi onnipotente!                              CHECK!
 
@@ -6439,6 +6449,13 @@ SYNTAX scendi_da = scendi da (superficie)
         THEN SAY mia_AT:illegal_parameter_off_sg.
         ELSE SAY mia_AT:illegal_parameter_off_pl.
       END IF.
+
+-- @TODO: Questa soluzione è temporanea, finché i conflitti tra il              FIXME!
+--        verbo 'dare' imperativo e la preposizione art. 'dai' non
+--        sarà risolto (al momento 'dai' non è sinonimo di 'da'!).
+  scendi_da = scendi dai (superficie).
+
+
 
 ADD TO EVERY supporto
   VERB scendi_da
@@ -8742,6 +8759,12 @@ SYNTAX esci_da = esci da (ogg)
         THEN SAY mia_AT:ogg1_inadatto_DA_sg.
         ELSE SAY mia_AT:ogg1_inadatto_DA_pl.
       END IF. "uscire."
+
+-- @TODO: Questa soluzione è temporanea, finché i conflitti tra il              FIXME!
+--        verbo 'dare' imperativo e la preposizione art. 'dai' non
+--        sarà risolto (al momento 'dai' non è sinonimo di 'da'!).
+  esci_da = esci dai (ogg).
+
 
 
 ADD TO EVERY OBJECT

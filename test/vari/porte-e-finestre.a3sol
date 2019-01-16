@@ -1,0 +1,94 @@
+; ******************************************************************************
+; *                                                                            *
+; *                           TESTA PORTE E FINESTRE                           *
+; *                                                                            *
+; ******************************************************************************
+nord
+; ==============================================================================
+; Ai cancelli...
+; ==============================================================================
+; ------------------------------------------------------------------------------
+; TESTA VERBI su 'cancelli' chiusi
+; ------------------------------------------------------------------------------
+esamina i cancelli
+bussa ai cancelli
+guarda dietro ai cancelli
+guarda sotto ai cancelli
+guarda attraverso i cancelli
+guarda fuori dai cancelli
+apri i cancelli
+; ------------------------------------------------------------------------------
+; TESTA DI NUOVO VERBI su 'cancelli' aperti
+; ------------------------------------------------------------------------------
+esamina i cancelli
+bussa ai cancelli
+guarda dietro ai cancelli
+guarda sotto ai cancelli
+guarda attraverso i cancelli
+guarda fuori dai cancelli
+nord
+; ==============================================================================
+; Nel cortile...
+; ==============================================================================
+esamina i cancelli
+; ------------------------------------------------------------------------------
+; TESTA VERBI su 'portone' chiuso
+; ------------------------------------------------------------------------------
+esamina il portone
+bussa al portone
+guarda dietro al portone
+guarda sotto al portone
+guarda attraverso il portone
+guarda fuori dal portone
+; Recupera chiave e apri portone:
+esamina il vaso
+guarda sotto il vaso
+apri il portone
+; ------------------------------------------------------------------------------
+; TESTA DI NUOVO VERBI su 'portone' aperto
+; ------------------------------------------------------------------------------
+esamina il portone
+bussa al portone
+guarda dietro al portone
+guarda sotto al portone
+guarda attraverso il portone
+guarda fuori dal portone
+; ------------------------------------------------------------------------------
+; TESTA VERBI su 'finestra' chiusa
+; ------------------------------------------------------------------------------
+esamina la finestra
+bussa alla finestra
+guarda dietro la finestra
+guarda sotto la finestra
+guarda attraverso la finestra
+guarda fuori dalla finestra
+apri la finestra
+; ------------------------------------------------------------------------------
+; TESTA DI NUOVO VERBI su 'finestra' aperta
+; ------------------------------------------------------------------------------
+esamina la finestra
+bussa alla finestra
+guarda dietro la finestra
+guarda sotto la finestra
+guarda attraverso la finestra
+guarda fuori dalla finestra
+nord
+; ==============================================================================
+; In casa...
+; ==============================================================================
+esmina il portone
+esamina la finestra
+apri la finestra
+guarda attraverso la finestra
+guarda fuori dalla finestra
+sud
+; ==============================================================================
+; Nel cortile...
+; ==============================================================================
+esamina la finestra
+chiudi la finestra
+nord
+; ==============================================================================
+; In casa...
+; ==============================================================================
+esamina la finestra

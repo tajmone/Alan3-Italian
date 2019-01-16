@@ -1,0 +1,231 @@
+
+
+Porte e Finestre 
+Mini avventura per testare porte e finestre. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1852. 
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+Per strada
+La strada si interrompe di fronte a due imponenti cancelli. Puoi vedere dei 
+cancelli qui.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                           TESTA PORTE E FINESTRE                           *
+> ; *                                                                            *
+> ; ******************************************************************************
+> nord
+Non puoi, i cancelli sono chiusi.
+
+> ; ==============================================================================
+> ; Ai cancelli...
+> ; ==============================================================================
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBI su 'cancelli' chiusi
+> ; ------------------------------------------------------------------------------
+> esamina i cancelli
+Esamini i cancelli, ma non noti niente di speciale. Sono chiusi.
+
+> bussa ai cancelli
+Bussi ai cancelli ma non ottieni risposta.
+
+> guarda dietro ai cancelli
+Non puoi guardare dietro i cancelli, sono chiusi.
+
+> guarda sotto ai cancelli
+Lo spiraglio sotto i cancelli chiusi è troppo stretto per riuscire a vedere
+cosa vi sia al di là.
+
+> guarda attraverso i cancelli
+Non riesci a vedere attraverso i cancelli.
+
+> guarda fuori dai cancelli
+I cancelli non sono qualcosa da cui poter guardare fuori.
+
+> apri i cancelli
+Fatto, ora i cancelli sono aperti.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA DI NUOVO VERBI su 'cancelli' aperti
+> ; ------------------------------------------------------------------------------
+> esamina i cancelli
+Esamini i cancelli, ma non noti niente di speciale. Sono aperti.
+
+> bussa ai cancelli
+Non è il caso di bussare ai cancelli visto che sono già aperti.
+
+> guarda dietro ai cancelli
+Non noti nulla di interessante dietro i cancelli.
+
+> guarda sotto ai cancelli
+Non noti nulla di interessante dietro i cancelli.
+
+> guarda attraverso i cancelli
+Non riesci a vedere attraverso i cancelli.
+
+> guarda fuori dai cancelli
+I cancelli non sono qualcosa da cui poter guardare fuori.
+
+> nord
+Davanti alla casa
+Ti trovi di fronte alla casa. Puoi vedere dei cancelli, un portone, un vaso e 
+una finestra qui.
+
+> ; ==============================================================================
+> ; Nel cortile...
+> ; ==============================================================================
+> esamina i cancelli
+Esamini i cancelli, ma non noti niente di speciale. Sono aperti.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBI su 'portone' chiuso
+> ; ------------------------------------------------------------------------------
+> esamina il portone
+Esamini il portone, ma non noti niente di speciale. È chiuso.
+
+> bussa al portone
+Bussi al portone ma non ottieni risposta.
+
+> guarda dietro al portone
+Non puoi guardare dietro il portone, è chiuso.
+
+> guarda sotto al portone
+Lo spiraglio sotto il portone chiuso è troppo stretto per riuscire a vedere
+cosa vi sia al di là.
+
+> guarda attraverso il portone
+Non riesci a vedere attraverso il portone.
+
+> guarda fuori dal portone
+Il portone non è qualcosa da cui poter guardare fuori.
+
+> ; Recupera chiave e apri portone:
+> esamina il vaso
+È un vaso di fiori ornamentali, ma non sapresti dire di quale tipo.
+
+> guarda sotto il vaso
+Sotto il vaso trovi nascosta una grossa chiave e la prendi.
+
+> apri il portone
+(con la chiave)
+Prima sblocchi il portone e poi il apri.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA DI NUOVO VERBI su 'portone' aperto
+> ; ------------------------------------------------------------------------------
+> esamina il portone
+Esamini il portone, ma non noti niente di speciale. È aperto.
+
+> bussa al portone
+Non è il caso di bussare al portone visto che è già aperto.
+
+> guarda dietro al portone
+Non noti nulla di interessante dietro il portone.
+
+> guarda sotto al portone
+Non noti nulla di interessante dietro il portone.
+
+> guarda attraverso il portone
+Non riesci a vedere attraverso il portone.
+
+> guarda fuori dal portone
+Il portone non è qualcosa da cui poter guardare fuori.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA VERBI su 'finestra' chiusa
+> ; ------------------------------------------------------------------------------
+> esamina la finestra
+Una finestra piccola e stretta, un po' inquietante È chiusa.
+
+> bussa alla finestra
+Bussi alla finestra ma non succedde nulla.
+
+> guarda dietro la finestra
+Non è una cosa fattibile.
+
+> guarda sotto la finestra
+Non noti nulla di insolito sotto la finestra.
+
+> guarda attraverso la finestra
+Non noti nulla di interessante attraverso dalla finestra.
+
+> guarda fuori dalla finestra
+Non noti nulla di interessante fuori dalla finestra.
+
+> apri la finestra
+Non è possibile aprirla dall'esterno.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA DI NUOVO VERBI su 'finestra' aperta
+> ; ------------------------------------------------------------------------------
+> esamina la finestra
+Una finestra piccola e stretta, un po' inquietante È chiusa.
+
+> bussa alla finestra
+Bussi alla finestra ma non succedde nulla.
+
+> guarda dietro la finestra
+Non è una cosa fattibile.
+
+> guarda sotto la finestra
+Non noti nulla di insolito sotto la finestra.
+
+> guarda attraverso la finestra
+Non noti nulla di interessante attraverso dalla finestra.
+
+> guarda fuori dalla finestra
+Non noti nulla di interessante fuori dalla finestra.
+
+> nord
+Dentro la casa
+Puoi vedere un portone e una finestra qui.
+
+> ; ==============================================================================
+> ; In casa...
+> ; ==============================================================================
+> esmina il portone
+Non conosco la parola 'esmina'.
+
+> esamina la finestra
+Esamini la finestra, ma non noti niente di speciale. È chiusa.
+
+> apri la finestra
+Fatto, ora la finestra è aperta.
+
+> guarda attraverso la finestra
+Si vede il cortile da cui sei arrivato.
+
+> guarda fuori dalla finestra
+Non noti nulla di interessante fuori dalla finestra.
+
+> sud
+Davanti alla casa
+Ti trovi di fronte alla casa. Puoi vedere dei cancelli, un portone, un vaso e 
+una finestra qui.
+
+> ; ==============================================================================
+> ; Nel cortile...
+> ; ==============================================================================
+> esamina la finestra
+Una finestra piccola e stretta, un po' inquietante È aperta.
+
+> chiudi la finestra
+Fatto, ora la finestra è chiusa.
+
+> nord
+Dentro la casa
+Puoi vedere un portone e una finestra qui.
+
+> ; ==============================================================================
+> ; In casa...
+> ; ==============================================================================
+> esamina la finestra
+Esamini la finestra, ma non noti niente di speciale. È chiusa.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

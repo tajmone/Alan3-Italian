@@ -1,0 +1,162 @@
+--==============================================================================
+-- "Porte e Finestre" by Tristano Ajmone, 2018.
+--==============================================================================
+OPTIONS WIDTH 81.
+
+IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
+-- IMPORT 'inc_debaca.i'. -- Comandi per il debugging
+
+
+THE mia_AT IsA blocco_definizioni
+  ------------------------------------------------------------------------------
+  HAS       titolo  "Porte e Finestre".
+  HAS  sottotitolo  "Mini avventura per testare porte e finestre.".
+  HAS       autore  "Tristano Ajmone".
+  HAS         anno   2018.
+  HAS     versione  "1".
+  HAS        AlanV  "v3.0beta6 build 1852".
+  ------------------------------------------------------------------------------
+END THE.
+
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- Strada e cancelli 
+--------------------------------------------------------------------------------
+--==============================================================================
+THE in_strada IsA luogo_esterno.
+  NAME 'Per strada'.
+  DESCRIPTION "La strada si interrompe di fronte a due imponenti cancelli."
+  EXIT nord TO fronte_casa
+    CHECK cancelli IS aperto
+      ELSE "Non puoi, i cancelli sono chiusi."
+  END EXIT.
+END THE in_strada.
+
+THE cancelli IsA porta AT in_strada.
+  HAS articolo "i".
+  HAS altro_lato cancelli_retro.
+END THE.
+
+THE cancelli_retro IsA porta AT fronte_casa.
+  NAME cancelli.
+  HAS articolo "i".
+END THE.
+--==============================================================================
+--------------------------------------------------------------------------------
+-- Davanti alla casa 
+--------------------------------------------------------------------------------
+--==============================================================================
+THE fronte_casa IsA luogo_esterno.
+  NAME 'Davanti alla casa'.
+  DESCRIPTION "Ti trovi di fronte alla casa."
+  EXIT sud TO in_strada
+    CHECK cancelli_retro IS aperto
+      ELSE "Non puoi, i cancelli sono chiusi."
+  END EXIT.
+  EXIT nord TO interno_casa
+    CHECK portone IS aperto
+      ELSE "Non puoi, il portone è chiuso."
+  END EXIT.
+END THE fronte_casa.
+
+THE portone IsA porta at fronte_casa.
+  IS bloccabile. bloccato.
+  HAS altro_lato portone_retro.
+  HAS chiave_abbinata chiave_portone.
+  -- VERB bussa
+  --   DOES ONLY
+  --     IF THIS IS NOT aperto
+  --       THEN
+  --         "Bussi alla porta e, come per magia, senti la serratura scattare."
+  --         MAKE THIS aperto.
+  --         MAKE THIS NOT bloccato.
+  --         MAKE THIS NOT bloccabile.
+  --         MAKE THIS:altro_lato aperto.
+  --         MAKE THIS:altro_lato NOT bloccato.
+  --         MAKE THIS:altro_lato NOT bloccabile.
+  --       ELSE
+  --         "A che servirebbe? La porta è già aperta."
+  --     END IF.
+  -- END VERB bussa.
+END THE.
+
+THE portone_retro IsA porta AT interno_casa.
+  NAME portone.
+  -- HAS altro_lato portone.
+END THE.
+
+THE chiave_portone IsA object.
+  NAME chiave.
+  HAS articolo "la".
+  HAS xDesc "Dalle dimensioni si direbbe sicuramente la chiave del portone.".
+END THE chiave_portone.
+
+THE vaso IsA object AT fronte_casa.
+  NAME vaso.
+  NAME fiori.
+  HAS xDesc "È un vaso di fiori ornamentali, ma non sapresti dire di quale tipo.".
+  IS NOT ispezionato.
+  VERB guarda_sotto
+    DOES ONLY
+      IF THIS IS NOT ispezionato
+        THEN
+          "Sotto il vaso trovi nascosta una grossa chiave e la prendi."
+          MAKE THIS ispezionato.
+          LOCATE chiave_portone IN hero.
+        ELSE "Hai già guardato sotto il vaso."
+    END IF.
+  END VERB guarda_sotto.
+END THE vaso.
+
+THE finestra_esterna IsA finestra AT fronte_casa.
+  NAME finestra.
+  HAS articolo "la".
+  -- IS NOT apribile.
+  HAS xDesc "Una finestra piccola e stretta, un po' inquietante".
+  -- VERB guarda_attraverso
+  --   DOES ONLY
+  --     "Sbirci oltre il vetro ma delle tende bloccano la visuale."
+  -- END VERB guarda_attraverso.
+  VERB apri
+    DOES ONLY
+      "Non è possibile aprirla dall'esterno."
+  END VERB apri.
+  VERB chiudi
+    DOES AFTER
+      MAKE finestra_interna NOT aperto.
+  END VERB chiudi.
+END THE finestra_esterna.
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- Dentro casa 
+--------------------------------------------------------------------------------
+--==============================================================================
+
+THE interno_casa IsA stanza.
+  NAME 'Dentro la casa'.
+  EXIT sud TO fronte_casa
+    CHECK portone_retro IS aperto
+      ELSE "Non puoi, il portone è chiuso."
+  END EXIT.
+
+END THE interno_casa.
+
+THE finestra_interna IsA finestra AT interno_casa.
+  NAME finestra.
+  HAS articolo "la".
+  VERB guarda_attraverso
+    DOES ONLY
+      "Si vede il cortile da cui sei arrivato."
+  END VERB guarda_attraverso.
+  VERB apri
+    DOES AFTER
+      MAKE finestra_esterna aperto.
+  END VERB apri.
+END THE finestra_interna.
+
+--------------------------------------------------------------------------------
+START AT in_strada.
+
+DESCRIBE intestazione.

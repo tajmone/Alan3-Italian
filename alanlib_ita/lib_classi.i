@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.10.1-Alpha, 2019-01-15: Alan 3.0beta6 build 1852
+--| v0.10.2-Alpha, 2019-01-16: Alan 3.0beta6 build 1852
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -1105,19 +1105,19 @@ EVERY porta IsA OBJECT
         -- be addressed here:
 
         IF THIS IS NOT apribile
-          THEN MAKE altro_lato OF THIS NOT apribile.
+          THEN MAKE THIS:altro_lato NOT apribile.
         END IF.
 
         IF THIS IS aperto
-          THEN MAKE altro_lato OF THIS aperto.
+          THEN MAKE THIS:altro_lato aperto.
         END IF.
 
         IF THIS IS bloccabile
-          THEN MAKE altro_lato OF THIS bloccabile.
+          THEN MAKE THIS:altro_lato bloccabile.
         END IF.
 
         IF THIS IS bloccato
-          THEN MAKE altro_lato OF THIS bloccato.
+          THEN MAKE THIS:altro_lato bloccato.
         END IF.
 
     END IF.
@@ -1162,38 +1162,30 @@ EVERY porta IsA OBJECT
   END VERB esamina.
 
 
-
   VERB bussa
     DOES ONLY
       IF THIS IS NOT aperto
---                                                                              TRANSLATE!
-        THEN "You knock on" SAY THE THIS. "$$. There is no reply."
-        ELSE "You don't find it purposeful to knock on the open door"
+        THEN
+          "Bussi" SAY THIS:prep_A. "$1 ma non ottieni risposta."
+        ELSE
+          "Non è il caso di bussare" SAY THIS:prep_A. "$1 visto che"
           IF THIS IS NOT plurale
-            THEN "."
-            ELSE "$$s."
-          END IF.
-
+            THEN "è"
+            ELSE "sono"
+          END IF. "già apert$$" SAY THIS:vocale. "."
       END IF.
   END VERB bussa.
-
 
 
   VERB guarda_dietro
     DOES ONLY
       IF THIS IS NOT aperto
---                                                                              TRANSLATE!
-        THEN "You cannot look behind"
+        THEN "Non puoi guardare dietro $+1,"
           IF THIS IS NOT plurale
-            THEN "the door - it is closed."
-            ELSE "the doors - they are closed."
-          END IF.
---                                                                              TRANSLATE!
-        ELSE "You notice nothing special behind the door"
-          IF THIS IS NOT plurale
-            THEN "."
-            ELSE "$$s."
-          END IF.
+            THEN "è"
+            ELSE "sono"
+          END IF. "chius$$" SAY THIS:vocale. "."
+        ELSE "Non noti nulla di interessante dietro $+1."
       END IF.
   END VERB guarda_dietro.
 
@@ -1202,19 +1194,11 @@ EVERY porta IsA OBJECT
   VERB guarda_sotto
     DOES ONLY
       IF THIS IS NOT aperto
---                                                                              TRANSLATE!
-        THEN "The gap under the closed door"
-          IF THIS IS plurale
-            THEN "$$s"
-          END IF.
---                                                                              TRANSLATE!
-          "is so narrow that you can't
-          see anything of what lies on the other side."
-        ELSE "You notice nothing special under the door"
-          IF THIS IS plurale
-            THEN "$$s."
-            ELSE "."
-          END IF.
+        THEN "Lo spiraglio sotto $+1 chius$$" SAY THIS:vocale.
+        "è troppo stretto per riuscire a vedere cosa vi sia al di là."
+--      @TODO: Qui servirà il pronome "di $!1" ("al di là di esso/a/e/i")       FIXME!
+--             Ma attualmente non sono disponibili!
+        ELSE "Non noti nulla di interessante dietro $+1."
       END IF.
   END VERB guarda_sotto.
 
@@ -1223,7 +1207,7 @@ EVERY porta IsA OBJECT
   VERB chiudi
     DOES
       IF THIS:altro_lato <> porta_fittizia
-        THEN MAKE altro_lato OF THIS NOT aperto.
+        THEN MAKE THIS:altro_lato NOT aperto.
       END IF.
   END VERB chiudi.
 
@@ -1231,8 +1215,8 @@ EVERY porta IsA OBJECT
   VERB blocca
     DOES
       IF THIS:altro_lato <> porta_fittizia
-        THEN MAKE altro_lato OF THIS NOT aperto.
-          MAKE altro_lato OF THIS bloccato.
+        THEN  MAKE THIS:altro_lato NOT aperto.
+              MAKE THIS:altro_lato bloccato.
       END IF.
   END VERB blocca.
 
@@ -1240,8 +1224,8 @@ EVERY porta IsA OBJECT
   VERB apri
     DOES
       IF THIS:altro_lato <> porta_fittizia
-        THEN MAKE altro_lato OF THIS aperto.
-          MAKE altro_lato OF THIS NOT bloccato.
+        THEN  MAKE THIS:altro_lato aperto.
+              MAKE THIS:altro_lato NOT bloccato.
       END IF.
   END VERB apri.
 
@@ -1249,7 +1233,7 @@ EVERY porta IsA OBJECT
   VERB sblocca
     DOES
       IF THIS:altro_lato <> porta_fittizia
-        THEN MAKE altro_lato OF THIS NOT bloccato.
+        THEN MAKE THIS:altro_lato NOT bloccato.
       END IF.
   END VERB sblocca.
 
@@ -1304,9 +1288,9 @@ EVERY finestra IsA OBJECT
   IS NOT aperto.
   IS NOT prendibile.
 
--- @TODO: Se ha 'xDesc', mostra il testo?                                       IMPROVE
-
   VERB esamina
+    -- Se l'istanza ha una 'xDesc' questa verrà mostrata dato che qui il verbo
+    -- non usa una clausola DOES ONLY.
     DOES
       IF THIS IS NOT plurale
         THEN "È"
@@ -1321,31 +1305,21 @@ EVERY finestra IsA OBJECT
 
   VERB guarda_dietro
     DOES ONLY
---                                                                              TRANSLATE!
-      "That's not possible."
+      SAY mia_AT:non_fattibile.
   END VERB guarda_dietro.
 
-
+-- @TODO: Trasforma in attributo messaggio la parte condivisa delle             TODO!
+--        risposte "Non noti/vedi nulla di interessante"
   VERB guarda_fuori_da
---                                                                              TRANSLATE!
-    DOES ONLY "You see nothing special looking out of the"
-        IF THIS IS NOT plurale
-          THEN "window."
-          ELSE "windows."
-        END IF.
+--  @TODO: non mi piace questa risposta!                                        FIXME!
+    DOES ONLY "Non noti nulla di interessante fuori" SAY THIS:prep_DA. "$1."
   END VERB guarda_fuori_da.
 
 
   VERB guarda_attraverso
---                                                                              TRANSLATE!
-    DOES ONLY "You see nothing special looking through the"
-        IF THIS IS NOT plurale
-          THEN "window."
-          ELSE "windows."
-        END IF.
+--  @TODO: non mi piace questa risposta!                                        FIXME!
+    DOES ONLY "Non noti nulla di interessante attraverso" SAY THIS:prep_DA. "$1."
   END VERB guarda_attraverso.
-
-
 END EVERY.
 
 

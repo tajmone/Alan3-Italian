@@ -18,6 +18,10 @@ For previuos changes, see:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Alan 3.0beta6 build 1852](#alan-30beta6-build-1852)
+    - [2019/01/16](#20190116)
+        - [Sintassi alternative con 'a' in `guarda_*`](#sintassi-alternative-con-a-in-guarda_)
+        - [Sintassi alternative per preposizione 'dai'](#sintassi-alternative-per-preposizione-dai)
+        - [Porte e Finestre](#porte-e-finestre)
     - [2019/01/15](#20190115)
         - [Aggiusta verbi modulo classi](#aggiusta-verbi-modulo-classi)
     - [2019/01/14](#20190114)
@@ -106,6 +110,83 @@ For previuos changes, see:
 
 # Alan 3.0beta6 build 1852
 
+
+## 2019/01/16
+
+- [`lib_classi.i`][lib_classi] (v0.10.2)
+- [`lib_verbi.i`][lib_verbi] (v0.10.1)
+
+Dai una ripulita al codice del modulo classi.
+Traduci risposte di `guarda_attraverso`.
+
+### Sintassi alternative con 'a' in `guarda_*`
+
+Aggiunte sintassi alternative ai seguenti verbi del gruppo `guarda_*`, per consentire l'uso (facoltativo) della 'a' nelle preposizioni improprie:
+
+|       Verbo       |     Sintassi base     |     Sintassi alternativa     |
+|-------------------|-----------------------|------------------------------|
+| `guarda_dietro`   | guarda dietro (bulk)  | guarda dietro a (bulk)       |
+| `guarda_sotto`    | guarda sotto (bulk)   | guarda sotto a (bulk)        |
+
+
+### Sintassi alternative per preposizione 'dai'
+
+Aggiunte sintassi alternative ai seguenti verbi, per supportare correttamente la preposizione 'dai':
+
+|       Verbo       |     Sintassi base      |   Sintassi alternativa  |
+|-------------------|------------------------|-------------------------|
+| `esci_da`         | esci da (ogg)          | esci dai (ogg)          |
+| `guarda_fuori_da` | guarda fuori da (ogg)  | guarda fuori dai (ogg)  |
+| `scendi_da`       | scendi da (superficie) | scendi dai (superficie) |
+
+> __NOTA 1__ — Nel verbo `prendi_da` erano già state definite le sintassi con `dai`.
+
+<!-- sep -->
+
+> __NOTA 2__ — La necessità di definire una sintassi a sé per supportare "`<verbo> dai`" è dovuta al fatto che non è stato possibile definire la preposizione `dai` come sinonimo di `da` in [`lib_supplemento.i`](https://github.com/tajmone/Alan3-Italian/blob/6b1dd90/alanlib_ita/lib_supplemento.i#L277 "Vedi sorgente del modulo") a causa dei conflitti con l'imperativo `dai` del verbo avere:
+> 
+> ```alan
+> --~=============================================================================
+> --| === "`DA`" + Articolo
+> --~=============================================================================
+> SYNONYMS
+>   dal, dallo, dalla, 'dall''', dall, dagli, dalle  = da.
+> 
+> --| [WARNING]
+> --| ======================================================
+> --| La preposizione `dai` è stata omessa dalla lista di sinonimi poiché creava
+> --| conflitto con la forma imperativa del verbo "`dare`", causando l'errore di
+> --| compilazione:
+> --| ......................................................
+> --| 333 E : The word 'dai' is defined to be both a synonym and another word class.
+> --| ......................................................
+> --| Sto ancora cercando una soluzione ottimale al problema.
+> --| ======================================================
+> --<
+> ```
+> 
+> Sto cercando una soluzione definitiva al problema, ma attualmente l'unico ripiego consiste nel definire sintassi aggiuntive ogni volta che è coinvolta la preposizione 'da' in un verbo.
+> 
+> Purtroppo, questo ripiego grava sugli utenti finali della libreria, i quali si vedono costretti a implementare tali sintassi alternative anche nei loro verbi (con il rischio che se ne scordino). L'ideale sarebbe trovare una soluzione interna alla libreria che non abbia ripercussioni sulla creazione di nuovi verbi.
+
+### Porte e Finestre
+
+Traduci in italiano le risposte per i verbi delle classi `porta` e `finestra`:
+
+|        Verbo        |       Classi       |
+|---------------------|--------------------|
+| `bussa`             | `porta`            |
+| `guarda_attraverso` | `finestra`         |
+| `guarda_dietro`     | `porta`/`finestra` |
+| `guarda_fuori_da`   | `finestra`         |
+| `guarda_sotto`      | `porta`            |
+
+
+
+La classi `porta` e `finestra` non definiscono alcun `NAME` dato che le loro istanze nell'avventura potrebbero avere diversi nomi, numeri e genere — es. una `porta` può essere _porta_, _portone_, _cancelli_, _botola_; una `finestra` _finestra_, _oblò_, _lucernaio_, _grata_, ecc.). La libreria si assicura di utilizzare nella messaggistica che le riguarda il nome definito dall'autore, e che  aggettivi e preposizioni concordino con esso.
+
+
+<!---------------------------------------------------------------------------->
 
 ## 2019/01/15
 
