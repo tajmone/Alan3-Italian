@@ -17,6 +17,11 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [Alan 3.0beta6 build 1855](#alan-30beta6-build-1855)
+    - [2019/01/17](#20190117)
+        - [Passa alla v0.11.0](#passa-alla-v0110)
+        - [Passa ad Alan 3.0beta6 build 1852](#passa-ad-alan-30beta6-build-1852)
+        - [Uso di E POI in comandi di gioco](#uso-di-e-poi-in-comandi-di-gioco)
 - [Alan 3.0beta6 build 1852](#alan-30beta6-build-1852)
     - [2019/01/16](#20190116)
         - [Sintassi alternative con 'a' in `guarda_*`](#sintassi-alternative-con-a-in-guarda_)
@@ -26,7 +31,7 @@ For previuos changes, see:
         - [Aggiusta verbi modulo classi](#aggiusta-verbi-modulo-classi)
     - [2019/01/14](#20190114)
         - [Passa alla v0.10.0](#passa-alla-v0100)
-        - [Passa ad Alan 3.0beta6 build 1852](#passa-ad-alan-30beta6-build-1852)
+        - [Passa ad Alan 3.0beta6 build 1852](#passa-ad-alan-30beta6-build-1852-1)
         - [Aggiusta i verbi di domande con "è"](#aggiusta-i-verbi-di-domande-con-%C3%A8)
         - [Modulo supplemento](#modulo-supplemento)
         - [Nuovo attributo banner di versione Alan](#nuovo-attributo-banner-di-versione-alan)
@@ -107,6 +112,38 @@ For previuos changes, see:
 <!-- /MarkdownTOC -->
 
 -----
+
+# Alan 3.0beta6 build 1855
+
+
+## 2019/01/17
+
+- [`libreria.i`][libreria] (v0.11.0)
+- [`lib_classi.i`][lib_classi] (v0.11.0)
+- [`lib_definizioni.i`][lib_definizioni] (v0.11.0)
+- [`lib_luoghi.i`][lib_luoghi] (v0.11.0)
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] (v0.11.0)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.11.0)
+- [`lib_verbi.i`][lib_verbi] (v0.11.0)
+- [`lib_supplemento.i`][lib_supplemento] (v0.11.0)
+
+### Passa alla v0.11.0
+
+Tutti i moduli della libreria passano alla versione 0.11.0.
+
+### Passa ad Alan 3.0beta6 build 1852
+
+Da qui in avanti il progetto adotta la [developer snaphshot]  [Alan 3.0beta6 build 1855][3.0beta6-1855] per testare la libreria per usufruire di nuove funzionalità.
+
+### Uso di E POI in comandi di gioco
+
+La nuova build ha aggiunto ([054581b]) la possibilità di utilizzare più AND WORD consecutive nell'input del giocatore, così ora è possibile digitare:
+
+    prendi la pistola E POI spara 
+
+laddove nelle build precedenti il parser (vedendo "E POI" come "AND AND") lo considerava un errore. Ora invece il parser tollera l'uso di AND WORD ridondanti.
+
+<!---------------------------------------------------------------------------->
 
 # Alan 3.0beta6 build 1852
 
@@ -1211,12 +1248,18 @@ Tutti i moduli della libreria passano alla versione 0.8.0.
 
 [developer snaphshot]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots "Vai alla pagina delle Developer Snapshots sul sito di Alan"
 [3.0beta6-1852]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1852 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1852"
+[3.0beta6-1855]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1855 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1855"
 
 <!-- Alan Commits -->
 
-[ad2c7de]: https://bitbucket.org/alanif/alan/commits/ad2c7de756129657b465c4b089011c8e9a87b84d "View commit ad2c7de on upstream Alan repository on Bitbucket"
+[repository di Alan]: https://bitbucket.org/alanif/alan "Visita il repository di Alan su Bitbucket"
 
-[1bfc8f7]: https://bitbucket.org/alanif/alan/commits/1bfc8f772d8453aeae23c1f4810f95a3eeafe6f9 "View commit 1bfc8f7 on upstream Alan repository on Bitbucket"
+[1bfc8f7]: https://bitbucket.org/alanif/alan/commits/1bfc8f7 "Vedi i dettagli del commit nel repository di Alan su Bitbucket"
+
+[ad2c7de]: https://bitbucket.org/alanif/alan/commits/ad2c7de "Vedi i dettagli del commit nel repository di Alan su Bitbucket"
+
+[054581b]: https://bitbucket.org/alanif/alan/commits/054581b "Vedi i dettagli del commit nel repository di Alan su Bitbucket"
+
 
 <!-- StdLib Issues & PRs ----------------------------------------------------->
 

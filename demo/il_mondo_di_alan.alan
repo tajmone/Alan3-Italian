@@ -1,7 +1,7 @@
--- Alan >= 3.0beta6 build 1852 | Alan Italian >= v0.10.0-Alpha
+-- Alan >= 3.0beta6 build 1855 | Alan Italian >= v0.11.0-Alpha
 --==============================================================================
 -- "Il Mondo di Alan" by Tristano Ajmone, 2018.
---  versione v0.6.1  (2018/11/03)
+--  versione v0.11.0  (2019/01/17)
 --==============================================================================
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
 
@@ -12,7 +12,7 @@ THE mia_AT IsA blocco_definizioni
   HAS       autore  "Tristano Ajmone".
   HAS         anno   2018.
   HAS     versione  "Alpha 1".
-  HAS        AlanV  "v3.0beta6 build 1852".
+  HAS        AlanV  "v3.0beta6 build 1855".
   ------------------------------------------------------------------------------
 END THE.
 
@@ -212,13 +212,13 @@ THE foglio_bianco IsA OBJECT AT pzzaIF.
     DOES ONLY
       IF penna IN hero
         THEN
-          IF txt <> "" ---> Non si accettano stringhe vuote!
+          IF testo <> "" ---> Non si accettano stringhe vuote!
             THEN
               IF testo OF ogg = ""
-                THEN SET testo OF ogg TO txt.
-                ELSE SET testo OF ogg TO testo OF ogg + " " + txt.
+                THEN SET testo OF ogg TO testo.
+                ELSE SET testo OF ogg TO testo OF ogg + " " + testo.
               END IF.
-              "Scrivi ""$$" SAY txt. "$$""" SAY ogg:prep_SU. SAY ogg. "."
+              "Scrivi ""$$" SAY testo. "$$""" SAY ogg:prep_SU. SAY ogg. "."
               MAKE ogg leggibile.
             ELSE "Devi fornire dei contenuti da scrivere!"
           END IF.

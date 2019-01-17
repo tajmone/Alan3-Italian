@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_supplemento.i"
---| v0.10.0-Alpha, 2019-01-14: Alan 3.0beta6 build 1852
+--| v0.11.0-Alpha, 2019-01-17: Alan 3.0beta6 build 1855
 --|=============================================================================
 --| Modulo supplementare della liberia italiana, non presente nell'originale
 --| _ALAN Standard Library_ v2.1 di Anssi Räisänen.
@@ -78,16 +78,10 @@
 --| * "prendi la mela E la pera"
 --| * "prendi la mela E prendi la pera"
 --| * "prendi la mela POI prendi la pera"
+--| * "prendi la mela E POI prendi la pera"
 
 SYNONYMS e, poi = 'and'.
 
---| [WARNING]
---| ============================================================================
---| Il giocatore non potrà digitare "E POI" ("<commando> E POI <commando>")
---| poiché il parser lo vedrebbe come "<commando> AND AND <commando>".
---| Purtroppo non è possibile definire `'e poi'` come sinonimo di `'then'`
---| poiché il parser opera solo su lessemi isolati.
---| ============================================================================
 --<
 
 
@@ -194,18 +188,16 @@ SYNONYMS tranne, eccetto, escluso, esclusa, esclusi, escluse = except.
 --| ..........
 --| THEM: them
 --| ..........
-
---| [WARNING]
---| ======================================
---| Non ho ancora capito bene come vengono
---| usati i vocaboli di questo gruppo.
---| ======================================
+--| 
+--| Le _them words_ rappresentano gli oggetti multipli utilizzati in un comando
+--| precedente. Esempio:
+--| 
+--| * "remove the hat and the scarf then drop THEM"
+--| 
+--| Questo tipo di riferimento a oggetti multipli è consentito solo nei comandi
+--| che supportano parametri multipli. L'interprete restringerà il campo dei
+--| parametri idonei all'inclusione nel referente in base alle regole di _scoping_.
 --<
-
--->todo_checklist(.33)
---| * [ ] Approfondisci _THEM WORDS_.
---<<
-
 
 
 -->============================================================================

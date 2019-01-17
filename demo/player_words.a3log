@@ -3,8 +3,9 @@
 Il Mondo di Alan 
 Una demo per testare ALAN Standar Library Italian 
 (C) Tristano Ajmone, 2018. 
-Programmed with the ALAN Interactive Fiction Language v3.0 beta5
-Standard Library v2.1 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6
+build 1855. 
+Libreria Standard Italiana v2.1 
 Versione Alpha 1 
 Tutti i diritti riservati.
 
@@ -26,8 +27,6 @@ Mercato
 Puoi vedere una bancarella qui. Sopra la bancarella vedi delle cigliege, 
 un mango e una pera. Gustavo è qui. C'è un fruttivendolo qui.
 
-> 
-
 > ; ==============================================================================
 > ;                              Testiamo "E" e "POI"                             
 > ; ==============================================================================
@@ -44,7 +43,10 @@ Presa.
 
 Prese.
 
-> 
+> lascia la pera E POI lascia le cigliege
+Lasci la pera.
+
+Lasci le cigliege.
 
 > ; ==============================================================================
 > ;                             Testiamo "TUTTO" ecc.                             
@@ -56,26 +58,17 @@ Prese.
 
 (magia) Lasci la magia.
 
-(pera) Lasci la pera.
-
 (mango) Lasci il mango.
 
-(cigliege) Lasci le cigliege.
-
-> 
-
-> ; NOTA: la forma "E POI" non Ã¨ valida:
 > prendi la pera E POI prendi il mango
 Presa.
 
-Non ho capito la frase.
-
-> prendi il mango e prendi le cigliege
 Preso.
 
-Prese.
+> prendi il mango E prendi le cigliege
+Possiedi già il mango.
 
-> 
+Prese.
 
 > ; ==============================================================================
 > ;                         testiamo "TRANNE/ECCETTO" ecc.                        

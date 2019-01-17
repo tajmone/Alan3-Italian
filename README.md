@@ -1,7 +1,7 @@
 # Alan IF 3 Italian
 
     Alan Standard Library: 2.1
-    Alan Development Kit:  3.0beta6 build 1852
+    Alan Development Kit:  3.0beta6 build 1855
 
 - https://github.com/tajmone/Alan3-Italian
 
@@ -19,10 +19,11 @@ Project start date: 2018-04-13.
 
 - [Introduction](#introduction)
 - [Project Status News](#project-status-news)
-    - [Jan 2019 — Major Breaktrhough With Alan 3.0beta6 build 1852](#jan-2019-%E2%80%94-major-breaktrhough-with-alan-30beta6-build-1852)
+    - [Jan 17, 2019 — Moving to Alan 3.0beta6 build 1855](#jan-17-2019-%E2%80%94-moving-to-alan-30beta6-build-1855)
+    - [Jan 15, 2019 — Major Breaktrhough With Alan 3.0beta6 build 1852](#jan-15-2019-%E2%80%94-major-breaktrhough-with-alan-30beta6-build-1852)
         - [Support for Apostrophes in Prepositions](#support-for-apostrophes-in-prepositions)
         - [E-Grave Bug Fixed!](#e-grave-bug-fixed)
-    - [Nov 2018 — All Verbs Translated](#nov-2018-%E2%80%94-all-verbs-translated)
+    - [Nov 13, 2018 — All Verbs Translated](#nov-13-2018-%E2%80%94-all-verbs-translated)
 - [Project Contents](#project-contents)
 - [Work Environment Settings](#work-environment-settings)
     - [File Encodings](#file-encodings)
@@ -53,7 +54,7 @@ You can follow the discussion on this project on the [Alan-IF discussion group a
 [open an issue here]: https://github.com/tajmone/Alan3-Italian/issues/new "Open an issue for this project"
 
 > __NOTICE__ — From now on all project documentation will be converted to Italian language, as well as future commits messages. During the initial stages of the translation work all documents, logs and commits were kept in English to facilitate collaboration and help from expert developers of the Alan community. But the project has now reached a stage where it's approching completion, and should therefore move toward a fully Italian documentation.
-> 
+>
 > Once all docs are translated to Italian, a separate English README will be added to project.
 
 # Project Status News
@@ -61,14 +62,20 @@ You can follow the discussion on this project on the [Alan-IF discussion group a
 Some flash news about milestones accomplishments in the project...
 
 
-## Jan 2019 — Major Breaktrhough With Alan 3.0beta6 build 1852 
+## Jan 17, 2019 — Moving to Alan 3.0beta6 build 1855
+
+The new [developer snaphshot] of Alan [3.0beta6 build 1855] implements a requested feature to allow consecutive AND WORDS in player input so that it's now possible to type:
+
+- "prendi la mela E POI mangia la mela" (take the apple AND THEN eat the apple)
+
+whereas before the parser would see the "E POI" as "AND AND" and fail to parse the command. Now consecutive AND WORDS are treated as a single one.
+
+For the implementation details, see commit [054581b] on [Alan repository].
+
+
+## Jan 15, 2019 — Major Breaktrhough With Alan 3.0beta6 build 1852
 
 The new [developer snaphshot] of Alan [3.0beta6 build 1852] introduces a new feature especially for Italian, which is a major brakthrough in the development of this library, and it also fixes a bug that affected the Italian language and some Library verbs.
-
-
-[developer snaphshot]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots "Vai alla pagina delle Developer Snapshots sul sito di Alan"
-[3.0beta6 build 1852]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1852 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1852"
-
 
 ### Support for Apostrophes in Prepositions
 
@@ -81,9 +88,9 @@ Now the parser can handle articles and prepositions with an apostrophe, therefor
 
 ... will now work out of the box!
 
-This new feature solves the problem by reserving a special treatment for words containing apostrophes: if the parsed word is not reckognized, Alan will split it into two words at the occurence of the (first) apostrophe, and throw them both back to the parser. 
+This new feature solves the problem by reserving a special treatment for words containing apostrophes: if the parsed word is not reckognized, Alan will split it into two words at the occurence of the (first) apostrophe, and throw them both back to the parser.
 
-This feature also renders unnecessary the creation of article-&-noun synonyms (e.g. `l'albero`) for objects whose article requires an apostrophe — which up to this point was required in order for the parser to understand `l'albero` as `albero`. 
+This feature also renders unnecessary the creation of article-&-noun synonyms (e.g. `l'albero`) for objects whose article requires an apostrophe — which up to this point was required in order for the parser to understand `l'albero` as `albero`.
 
 My gratitude to __Thomas Nilefalk__ for having implemented this feature in support of the Italian Library project!
 
@@ -102,9 +109,6 @@ allows handling them as separated words although they are typed
 together ("l'acqua" will be tried as the two words "l'" and "acqua").
 ```
 
-
-[1bfc8f7]: https://bitbucket.org/alanif/alan/commits/1bfc8f772d8453aeae23c1f4810f95a3eeafe6f9 "View commit 1bfc8f7 on upstream Alan repository on Bitbucket"
-
 ### E-Grave Bug Fixed!
 
 The new build 1852 also fixes a bug which hindered the preservation of grave accented E charaters (`è`) in syntaxes and synonyms (the problem didn't affect istances and parameters though).
@@ -113,9 +117,7 @@ This fixes a bunch of "question verbs" in the Library, which previously had to f
 
 The origin of the problem was due to the omission of the E-grave character in a constant in the source code. Commit [ad2c7de]  ("Add forgotten grave accented e") fixed the problem.
 
-[ad2c7de]: https://bitbucket.org/alanif/alan/commits/ad2c7de756129657b465c4b089011c8e9a87b84d "View commit ad2c7de on upstream Alan repository on Bitbucket"
-
-## Nov 2018 — All Verbs Translated
+## Nov 13, 2018 — All Verbs Translated
 
 All verbs (ca. 171) have been translated to Italian — for more details, see:
 
@@ -177,7 +179,7 @@ From [IFWiki]'s [Alan page]:
 From the [Alan website]:
 
 > Alan consists of a programming language and a set of tools to support working in that language to create games. The tools include a compiler, various flavours of runners/interpreters, a completely integrated development environment, a map generator and more.
-> 
+>
 > Alan is in the final stages in moving towards version 3, and has entered beta state. \[...\] Alan V3 is now ready for supported production work.
 
 [Alan website]: https://www.alanif.se/ "Visit Alan official website"
@@ -219,8 +221,8 @@ This project also utilizes the following third party components and assets.
         * Redistributions in binary form must reproduce the above copyright
           notice, this list of conditions and the following disclaimer in the
           documentation and/or other materials provided with the distribution.
-        * Neither the name of highlight.js nor the names of its contributors 
-          may be used to endorse or promote products derived from this software 
+        * Neither the name of highlight.js nor the names of its contributors
+          may be used to endorse or promote products derived from this software
           without specific prior written permission.
 
     THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND ANY
@@ -294,7 +296,7 @@ The documentation uses an adaptation of Asciidcotor `attributes-it.adoc`, transl
 
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [License]: ./LICENSE "View the full text of Artistic License 2.0"
@@ -306,6 +308,23 @@ The documentation uses an adaptation of Asciidcotor `attributes-it.adoc`, transl
 [i18n Problems]: https://github.com/tajmone/Alan3-Italian/wiki/i18n-Problems
 
 [ISO-8859-1]: https://en.wikipedia.org/wiki/ISO/IEC_8859-1 "See Wikipedia page on ISO-8859-1"
+
+<!-- Alan SDK Links -->
+
+[developer snaphshot]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots "Vai alla pagina delle Developer Snapshots sul sito di Alan"
+[3.0beta6 build 1852]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1852 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1852"
+[3.0beta6 build 1855]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1855 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1855"
+
+<!-- Alan Commits Links -->
+
+[Alan repository]: https://bitbucket.org/alanif/alan "Visit the Alan repository on Bitbucket"
+
+[1bfc8f7]: https://bitbucket.org/alanif/alan/commits/1bfc8f7 "View commit details at Alan repository on Bitbucket"
+
+[ad2c7de]: https://bitbucket.org/alanif/alan/commits/ad2c7de "View commit details at Alan repository on Bitbucket"
+
+[054581b]: https://bitbucket.org/alanif/alan/commits/054581b "View commit details at Alan repository on Bitbucket"
+
 
 <!-- Library Documentation  -->
 

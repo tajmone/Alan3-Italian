@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.10.1-Alpha, 2019-01-16: Alan 3.0beta6 build 1852
+--| v0.11.0-Alpha, 2019-01-17: Alan 3.0beta6 build 1855
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.

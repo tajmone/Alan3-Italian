@@ -91,7 +91,7 @@ Nel codice sorgente dei vari batch script troverete dei commenti che ne illustra
 
 # Requisiti di Sistema
 
-Al fine di poter utilizzare i test nelle sottocartelle, dovrete rendere accessibili al `%PATH%` di sistema gli eseguibili del compilatore di Alan e dell'interprete ARun, assicurandovi di prenderli dalla stessa versione di Alan usata in questo progetto (`Alan 3.0beta6 build 1852`). Per il sistema operativo Windows, i file da copiare sono:
+Al fine di poter utilizzare i test nelle sottocartelle, dovrete rendere accessibili al `%PATH%` di sistema gli eseguibili del compilatore di Alan e dell'interprete ARun, assicurandovi di prenderli dalla [Alan SDK] con la stessa versione di Alan usata in questo progetto (`Alan 3.0beta6 build 1855`). Per il sistema operativo Windows, i file da copiare sono:
 
 - `alan.exe`
 - `arun.exe`
@@ -194,6 +194,8 @@ Options:
 <!-----------------------------------------------------------------------------
                                REFERENCE LINKS                                
 ------------------------------------------------------------------------------>
+
+[Alan SDK]: https://www.alanif.se/download-alan-v3/development-kits "Vai alla pagina di download delle Alan SDK"
 
 <!-- File di Progetto -->
 

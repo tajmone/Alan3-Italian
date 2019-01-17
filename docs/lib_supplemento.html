@@ -438,9 +438,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.10.0-Alpha,</span>
-<span id="revdate">2019-01-14</span>
-<br><span id="revremark">Alan 3.0beta6 build 1852</span>
+<span id="revnumber">versione 0.11.0-Alpha,</span>
+<span id="revdate">2019-01-17</span>
+<br><span id="revremark">Alan 3.0beta6 build 1855</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Indice dei contenuti</div>
@@ -565,29 +565,15 @@ di comando. Esempi:</p>
 <li>
 <p>"prendi la mela POI prendi la pera"</p>
 </li>
+<li>
+<p>"prendi la mela E POI prendi la pera"</p>
+</li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS e, poi = 'and'.</code></pre>
 </div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Attenzione"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Il giocatore non potrà digitare "E POI" ("&lt;commando&gt; E POI &lt;commando&gt;")
-poiché il parser lo vedrebbe come "&lt;commando&gt; AND AND &lt;commando&gt;".
-Purtroppo non è possibile definire <code>'e poi'</code> come sinonimo di <code>'then'</code>
-poiché il parser opera solo su lessemi isolati.</p>
-</div>
-</td>
-</tr>
-</table>
 </div>
 </div>
 <div class="sect2">
@@ -686,20 +672,21 @@ per escludere alcuni oggetti dall&#8217;insieme. Esempi:</p>
 <pre>THEM: them</pre>
 </div>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Attenzione"></i>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>Non ho ancora capito bene come vengono
-usati i vocaboli di questo gruppo.</p>
+<p>Le <em>them words</em> rappresentano gli oggetti multipli utilizzati in un comando
+precedente. Esempio:</p>
 </div>
-</td>
-</tr>
-</table>
+<div class="ulist">
+<ul>
+<li>
+<p>"remove the hat and the scarf then drop THEM"</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Questo tipo di riferimento a oggetti multipli è consentito solo nei comandi
+che supportano parametri multipli. L&#8217;interprete restringerà il campo dei
+parametri idonei all&#8217;inclusione nel referente in base alle regole di <em>scoping</em>.</p>
 </div>
 </div>
 </div>
@@ -935,9 +922,6 @@ italiano del modulo supplementare.</p>
 <div class="ulist checklist">
 <ul class="checklist">
 <li>
-<p><i class="fa fa-square-o"></i> Approfondisci <em>THEM WORDS</em>.</p>
-</li>
-<li>
 <p><i class="fa fa-square-o"></i> Risolvi conflitti con verbo <code>dai_a</code> che prevenie <code>SYNONYMS dai = da.</code>.</p>
 </li>
 </ul>
@@ -954,7 +938,7 @@ italiano del modulo supplementare.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.10.0-Alpha<br>
+Versione 0.11.0-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

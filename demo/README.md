@@ -4,7 +4,7 @@ This folder will (eventually) contain a demo adventure using the Italian Stadard
 
 For practical reasons all contents of this document will be in Italian language.
 
-> __NOTA__ — Al momento,i contenuti di questa cartella sono in fase di riorganizzazione. 
+> __NOTA__ — Al momento, i contenuti di questa cartella sono in fase di riorganizzazione. I file sono vecchi ed obsoleti e vanno rivisiti da cima a fondo!
 
 
 -----

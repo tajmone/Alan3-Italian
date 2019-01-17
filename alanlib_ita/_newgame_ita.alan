@@ -1,4 +1,4 @@
--- "_newgame_ita.alan" v0.9.0 (2018/11/22) | Alan 3.0beta6 | Std Lib v2.1
+-- "_newgame_ita.alan" v0.11.0-Alpha (2019-01-17) | Alan 3.0beta6 | Std Lib v2.1
 --------------------------------------------------------------------------------
 --| Sorgente base standard per creare avventure con ALAN Italian library v2.1.
 --| Basato sul file "newgame.alan" della Standard Library 2.1.
@@ -20,11 +20,11 @@ END THE.
 --==============================================================================
 -- LUOGO INIZIALE
 --==============================================================================
-THE start_loc IsA LOCATION  -- Cambia il nome ed il tipo di questa LOCATION
+THE start_loc IsA location  -- Cambia il nome ed il tipo di questa LOCATION
                             -- iniziale e arricchiscila di dettagli.
 END THE.
 
 --------------------------------------------------------------------------------
-Start at start_loc.   -- Sostituisci "start_loc" con il nome che hai scelto per
+START AT start_loc.   -- Sostituisci "start_loc" con il nome che hai scelto per
                       -- la LOCATION iniziale qui sopra.
 DESCRIBE intestazione.
