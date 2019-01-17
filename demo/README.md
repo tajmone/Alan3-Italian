@@ -49,22 +49,19 @@ Siccome il progetto è impostato affinché Git ignori i file delle avventure com
 - [`ESEGUI.bat`][ESEGUI] — batch per eseguire uno script di comandi (`*.a3sol`)
 - [`AGGIORNA_TUTTO.bat`][AGGIORNA] — compila l'avventura ed esegue tutti gli script
 
-Script di comandi (vecchi test):
+Script di comandi (`*.a3sol`):
 
-- [`comandi-risposte.a3sol`](./comandi-risposte.a3sol) — testa le risposte standard di vari verbi.
-- [`player_words.a3sol`](./player_words.a3sol) — testa l'implementazione italiana delle Player Words.
-- [`preposizioni.a3sol`](./preposizioni.a3sol) — testa l'implementazione delle preposizioni articolate.
+- (_nessuno al monento_)
 
 
-Trascrizioni delle sessione di gioco degli script di comandi:
+Trascrizioni delle sessioni di gioco degli script di comandi  (`*.a3log`):
 
-- [`comandi-risposte.a3log`](./comandi-risposte.a3log)
-- [`player_words.a3log`](./player_words.a3log)
-- [`preposizioni.a3log`](./preposizioni.a3log)
+- (_nessuno al monento_)
+
 
 # Prerequisiti
 
-Al fine di poter utilizzare i test in questa cartella, dovrete copiare al suo interno gli eseguibili del compilatore di Alan e dell'interprete ARun, assicurandovi di prenderli dalla stessa versione di Alan usata in questo progetto (`Alan 3.0beta5`). Per il sistema operativo Windows, i file da copiare saranno:
+Al fine di poter utilizzare i test in questa cartella, dovrete copiare al suo interno gli eseguibili del compilatore di Alan e dell'interprete ARun, assicurandovi di prenderli dalla stessa versione di Alan usata in questo progetto (vedi [README principale]). Per il sistema operativo Windows, i file da copiare saranno:
 
 - `alan.exe`
 - `arun.exe`
@@ -158,3 +155,6 @@ Options:
 [ESEGUI]:  ./ESEGUI.bat
 [AGGIORNA]: ./AGGIORNA_TUTTO.bat
 
+[README principale]: ../README.md
+
+<!-- EOF -->
