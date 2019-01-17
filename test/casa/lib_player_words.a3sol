@@ -1,0 +1,73 @@
+; ******************************************************************************
+; *                                                                            *
+; *                   TEST DELLE "PLAYER WORDS" IN ITALIANO                    *
+; *                                                                            *
+; ******************************************************************************
+; ==============================================================================
+; AND WORDS (CONJUNCTION_WORD)
+; ==============================================================================
+; SYNONYMS e, poi = 'and'.
+; ------------------------------------------------------------------------------
+; Concatenazione Comandi
+; ------------------------------------------------------------------------------
+esamina la pera POI prendi la pera
+esamina la mela E prendi la mela
+esamina il vasetto E POI prendi il vasetto
+inventario E POI esamina la bombetta E esamina i jeans
+; ------------------------------------------------------------------------------
+; Concatenazione Parametri
+; ------------------------------------------------------------------------------
+lascia la pera E la mela
+lascia il vasetto POI la torcia POI la chiave
+;
+prendi il vasetto POI prendi la torcia POI prendi la chiave
+; ** ERRORE! ** "E POI" non funziona nella concatenazione parametri!
+lascia il vasetto POI la torcia E POI la chiave
+; ------------------------------------------------------------------------------
+; Concatenazione Comandi e Parametri
+; ------------------------------------------------------------------------------
+togliti la bombetta POI togliti i pantaloni E POI lascia la bombetta E i jeans
+; ==============================================================================
+; ALL WORDS (ALL_WORD)
+; ==============================================================================
+; SYNONYMS tutto, tutti, tutte = all.
+; ------------------------------------------------------------------------------
+prendi la pera POI prendi la mela POI prendi la banana
+inventario
+lascia TUTTO
+inventario
+; 
+prendi la pera POI prendi la mela POI prendi la banana
+lascia TUTTI
+; 
+prendi la pera POI prendi la mela POI prendi la banana
+lascia TUTTE
+; ==============================================================================
+; EXCEPT WORDS (EXCEPT_WORD)
+; ==============================================================================
+; SYNONYMS tranne, eccetto, escluso, esclusa, esclusi, escluse = except.
+; ------------------------------------------------------------------------------
+prendi la pera POI prendi la mela POI prendi la banana E POI prendi il vasetto
+inventario
+lascia TUTTO TRANNE la banana
+inventario
+; 
+prendi la pera POI prendi la mela POI prendi il vasetto
+lascia TUTTO ECCETTO la banana
+inventario
+; 
+prendi la pera POI prendi la mela POI prendi il vasetto
+lascia TUTTO ESCLUSO il vasetto
+inventario
+; 
+prendi la pera POI prendi la mela POI prendi la banana
+lascia TUTTO ESCLUSA la mela
+inventario
+; 
+prendi la pera POI prendi la banana E POI prendi il vasetto
+lascia TUTTO ESCLUSI il vasetto E la banana
+inventario
+; 
+prendi la pera POI prendi la mela
+lascia TUTTO ESCLUSE la banana E la pera
+inventario

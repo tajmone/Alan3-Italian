@@ -1,0 +1,266 @@
+
+
+La Casa 
+Un set per eseguire test su stanze e luoghi esterni. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1855. 
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+LA CUCINA
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un frigo e 
+un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un sacchetto, un 
+coltello, una pistola, un cesto per la frutta e una radio. Al centro della
+stanza c'è Mr Nicky, il tuo cagnolino.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                   TEST DELLE "PLAYER WORDS" IN ITALIANO                    *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; ==============================================================================
+> ; AND WORDS (CONJUNCTION_WORD)
+> ; ==============================================================================
+> ; SYNONYMS e, poi = 'and'.
+> ; ------------------------------------------------------------------------------
+> ; Concatenazione Comandi
+> ; ------------------------------------------------------------------------------
+> esamina la pera POI prendi la pera
+Esamini la pera, ma non noti niente di speciale.
+
+Presa.
+
+> esamina la mela E prendi la mela
+Esamini la mela, ma non noti niente di speciale.
+
+Presa.
+
+> esamina il vasetto E POI prendi il vasetto
+Il vasetto è vuoto.
+
+Preso.
+
+> inventario E POI esamina la bombetta E esamina i jeans
+Stai portando una mela, una pera, un vasetto, una torcia e una chiave. Stai
+indossando un paio di blue jeans e una bombetta.
+
+È una bombetta originale inglese.
+
+Esamini il paio di blue jeans, ma non noti niente di speciale.
+
+> ; ------------------------------------------------------------------------------
+> ; Concatenazione Parametri
+> ; ------------------------------------------------------------------------------
+> lascia la pera E la mela
+(pera) Lasci la pera.
+
+(mela) Lasci la mela.
+
+> lascia il vasetto POI la torcia POI la chiave
+(vasetto) Lasci il vasetto.
+
+(torcia) Lasci la torcia.
+
+(chiave) Lasci la chiave.
+
+> ;
+> prendi il vasetto POI prendi la torcia POI prendi la chiave
+Preso.
+
+Presa.
+
+Presa.
+
+> ; ** ERRORE! ** "E POI" non funziona nella concatenazione parametri!
+> lascia il vasetto POI la torcia E POI la chiave
+(vasetto) Lasci il vasetto.
+
+(torcia) Lasci la torcia.
+
+Non ho capito la frase.
+
+> ; ------------------------------------------------------------------------------
+> ; Concatenazione Comandi e Parametri
+> ; ------------------------------------------------------------------------------
+> togliti la bombetta POI togliti i pantaloni E POI lascia la bombetta E i jeans
+Ti togli la bombetta.
+
+Ti togli il paio di blue jeans.
+
+(bombetta) Lasci la bombetta.
+
+(paio di blue jeans) Lasci il paio di blue jeans.
+
+> ; ==============================================================================
+> ; ALL WORDS (ALL_WORD)
+> ; ==============================================================================
+> ; SYNONYMS tutto, tutti, tutte = all.
+> ; ------------------------------------------------------------------------------
+> prendi la pera POI prendi la mela POI prendi la banana
+Presa.
+
+Presa.
+
+Presa.
+
+> inventario
+Stai portando una banana, una pera, una mela e una chiave.
+
+> lascia TUTTO
+(chiave) Lasci la chiave.
+
+(mela) Lasci la mela.
+
+(banana) Lasci la banana.
+
+(pera) Lasci la pera.
+
+> inventario
+Non stai portando niente.
+
+> ; 
+> prendi la pera POI prendi la mela POI prendi la banana
+Presa.
+
+Presa.
+
+Presa.
+
+> lascia TUTTI
+(mela) Lasci la mela.
+
+(banana) Lasci la banana.
+
+(pera) Lasci la pera.
+
+> ; 
+> prendi la pera POI prendi la mela POI prendi la banana
+Presa.
+
+Presa.
+
+Presa.
+
+> lascia TUTTE
+(mela) Lasci la mela.
+
+(banana) Lasci la banana.
+
+(pera) Lasci la pera.
+
+> ; ==============================================================================
+> ; EXCEPT WORDS (EXCEPT_WORD)
+> ; ==============================================================================
+> ; SYNONYMS tranne, eccetto, escluso, esclusa, esclusi, escluse = except.
+> ; ------------------------------------------------------------------------------
+> prendi la pera POI prendi la mela POI prendi la banana E POI prendi il vasetto
+Presa.
+
+Presa.
+
+Presa.
+
+Preso.
+
+> inventario
+Stai portando una pera, un vasetto, una banana e una mela.
+
+> lascia TUTTO TRANNE la banana
+(mela) Lasci la mela.
+
+(pera) Lasci la pera.
+
+(vasetto) Lasci il vasetto.
+
+> inventario
+Stai portando una banana.
+
+> ; 
+> prendi la pera POI prendi la mela POI prendi il vasetto
+Presa.
+
+Presa.
+
+Preso.
+
+> lascia TUTTO ECCETTO la banana
+(mela) Lasci la mela.
+
+(pera) Lasci la pera.
+
+(vasetto) Lasci il vasetto.
+
+> inventario
+Stai portando una banana.
+
+> ; 
+> prendi la pera POI prendi la mela POI prendi il vasetto
+Presa.
+
+Presa.
+
+Preso.
+
+> lascia TUTTO ESCLUSO il vasetto
+(mela) Lasci la mela.
+
+(banana) Lasci la banana.
+
+(pera) Lasci la pera.
+
+> inventario
+Stai portando un vasetto.
+
+> ; 
+> prendi la pera POI prendi la mela POI prendi la banana
+Presa.
+
+Presa.
+
+Presa.
+
+> lascia TUTTO ESCLUSA la mela
+(banana) Lasci la banana.
+
+(pera) Lasci la pera.
+
+(vasetto) Lasci il vasetto.
+
+> inventario
+Stai portando una mela.
+
+> ; 
+> prendi la pera POI prendi la banana E POI prendi il vasetto
+Presa.
+
+Presa.
+
+Preso.
+
+> lascia TUTTO ESCLUSI il vasetto E la banana
+(mela) Lasci la mela.
+
+(pera) Lasci la pera.
+
+> inventario
+Stai portando un vasetto e una banana.
+
+> ; 
+> prendi la pera POI prendi la mela
+Presa.
+
+Presa.
+
+> lascia TUTTO ESCLUSE la banana E la pera
+(mela) Lasci la mela.
+
+(vasetto) Lasci il vasetto.
+
+> inventario
+Stai portando una pera e una banana.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 
