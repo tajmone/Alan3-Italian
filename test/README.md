@@ -41,6 +41,10 @@ I test sono suddivi in due gruppi, raccolti in cartelle separate:
 - [`/casa/`][casa] — Una sola avventura, molti test.
 - [`/vari/`][vari] — Molte avventure, uno o più test su ciascuna.
 
+L'esecuzione dei test è contrallata dal seguente script:
+
+- [`TESTA_TUTTO.bat`][TESTA_TUTTO]
+
 ## Test multipli
 
 - [`/casa/`][casa]
@@ -67,27 +71,13 @@ Data la scarsa riusabilità delle avventure per i test "vari" (che solitamente s
 
 ## Batch script di automazione
 
-Al fine di riprodurre tutti i test nelle sottocartella di questa directory, sarà sufficiente lanciare il seguente script: 
+Al fine di eseguire tutti i test sarà sufficiente lanciare il seguente script: 
 
-- [`TESTA_TUTTO.bat`][TESTA_TUTTO] — compila tutte le avventure ed esegue gli script di comandi associati ad esse.
+- [`TESTA_TUTTO.bat`][TESTA_TUTTO]
+ 
+Lo script compila tutte le avventure ed esegue gli script di comandi associati ad esse, secondo i criteri di test di ciascuna sottocartella. Al termine dell'esecuzione viene presentato un rapporto finale in cui viene riportato il numero di avventure compilate e testate, gli script di comandi eseguiti ed il numero di errori incontrati.
 
-È sempre consigliabile di eseguire tutti i test assieme, specie prima di eseguire un commit, al fine di assicurarsi di aver intercettato tutte le modifiche alle trascrizioni risultanti dalle modifiche al codice della libreria.
-
-> __NOTA 1__ — `TESTA_TUTTO.bat` eseguirà due batch distinti, uno per ciascuna delle sottocartelle dei test. Ciascun batch di test conterrà un rapporto finale in cui sono riassunti i test eseguiti ed i vari errori.
-> 
-> Non dimenticatevi che il rapporto che vedrete al fondo riguarda solo la seconda trancia di test (`vari/`) e che dovrete scorrere in su per vedere il rapporto della prima trancia di test!
-
-<!--  -->
-
-> __NOTA 2__ — In futuro conto di creare un solo script (in questa cartella) per gestire l'esecuzione di tutti i test e produrre un solo rapporto finale unificato.
-
-
-Sebbene l'esecuzione di tutti i testi non richieda tempi lunghi, tavolta è più pratico aggiornare i test di una singola sottocartella, specie durante le fasi di lavoro pre-commit. È possibile eseguire tutti i test di una sottocartella isolatamente tramite lo script batch in ciascuna di essa:
-
-- [`/casa/MULTITEST.bat`][MULTITEST]
-- [`/vari/TESTVARI.bat`][TESTVARI]
-
-Nel codice sorgente dei vari batch script troverete dei commenti che ne illustrano nel dettaglio le modalità d'utilizzo e funzionamento.
+È sempre consigliabile eseguire nuovamente tutti i test prima di eseguire un commit, al fine di assicurarsi di aver intercettato tutte le modifiche alle trascrizioni risultanti dalle modifiche al codice della libreria.
 
 # Requisiti di Sistema
 
@@ -199,12 +189,8 @@ Options:
 
 <!-- File di Progetto -->
 
-[mondo alan]: ./il_mondo_di_alan.alan
-
-[casa]: ./casa/ "Naviga alla cartella"
-[MULTITEST]: ./casa/MULTITEST.bat "Vedi sorgente"
 [TESTA_TUTTO]: ./TESTA_TUTTO.bat
-[TESTVARI]: ./vari/TESTVARI.bat "Vedi sorgente"
+[casa]: ./casa/ "Naviga alla cartella"
 [vari]: ./vari/ "Naviga alla cartella"
 
 
