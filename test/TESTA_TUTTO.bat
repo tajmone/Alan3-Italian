@@ -1,4 +1,4 @@
-:: "TESTA_TUTTO.bat" v2.0.0 (2019/01/21) | by Tristano Ajmone
+:: "TESTA_TUTTO.bat" v2.0.1 (2019/01/24) | by Tristano Ajmone
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                                                            ::
 ::                   TEST SUITE DELLA LIBRERIA ALAN ITALIAN                   ::
@@ -37,7 +37,7 @@ ECHO.
 :: ================================
 :: Definisci Variabili dello Script
 :: ================================
-SET   "_COMPILE_OPTS_=-import ..\ -import ..\..\alanlib_ita\ -debug"
+SET   "_COMPILE_OPTS_=-import ..\..\alanlib_ita\ -debug"
 SET /A _ERR_=0        &:: Contatore errori per Exit Code
 SET /A _AVV_COM_=0    &:: Contatore delle avventure compilate
 SET /A _AVV_ERR_=0    &:: Contatore errori compilazione avventure
