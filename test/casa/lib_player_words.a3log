@@ -3,7 +3,7 @@
 La Casa 
 Un set per eseguire test su stanze e luoghi esterni. 
 (C) Tristano Ajmone, 2018. 
-Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1855. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1862. 
 Libreria Standard Italiana v2.1 
 Versione 1 
 Tutti i diritti riservati.
@@ -79,7 +79,7 @@ Presa.
 
 (torcia) Lasci la torcia.
 
-Non ho capito la frase.
+(chiave) Lasci la chiave.
 
 > ; ------------------------------------------------------------------------------
 > ; Concatenazione Comandi e Parametri
@@ -106,11 +106,9 @@ Presa.
 Presa.
 
 > inventario
-Stai portando una banana, una pera, una mela e una chiave.
+Stai portando una pera, una banana e una mela.
 
 > lascia TUTTO
-(chiave) Lasci la chiave.
-
 (mela) Lasci la mela.
 
 (banana) Lasci la banana.

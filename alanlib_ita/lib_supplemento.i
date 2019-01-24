@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_supplemento.i"
---| v0.11.0-Alpha, 2019-01-17: Alan 3.0beta6 build 1855
+--| v0.12.0-Alpha, 2019-01-24: Alan 3.0beta6 build 1862
 --|=============================================================================
 --| Modulo supplementare della liberia italiana, non presente nell'originale
 --| _ALAN Standard Library_ v2.1 di Anssi Räisänen.

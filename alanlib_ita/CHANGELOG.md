@@ -17,6 +17,10 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [Alan 3.0beta6 build 1862](#alan-30beta6-build-1862)
+    - [2019/01/24](#20190124)
+        - [Passa alla v0.12.0](#passa-alla-v0120)
+        - [Passa ad Alan 3.0beta6 build 1862](#passa-ad-alan-30beta6-build-1862)
 - [Alan 3.0beta6 build 1855](#alan-30beta6-build-1855)
     - [2019/01/17](#20190117)
         - [Passa alla v0.11.0](#passa-alla-v0110)
@@ -113,8 +117,32 @@ For previuos changes, see:
 
 -----
 
-# Alan 3.0beta6 build 1855
 
+# Alan 3.0beta6 build 1862
+
+## 2019/01/24
+
+- [`libreria.i`][libreria] (v0.12.0)
+- [`lib_classi.i`][lib_classi] (v0.12.0)
+- [`lib_definizioni.i`][lib_definizioni] (v0.12.0)
+- [`lib_luoghi.i`][lib_luoghi] (v0.12.0)
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] (v0.12.0)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.12.0)
+- [`lib_verbi.i`][lib_verbi] (v0.12.0)
+- [`lib_supplemento.i`][lib_supplemento] (v0.12.0)
+
+### Passa alla v0.12.0
+
+Tutti i moduli della libreria passano alla versione 0.12.0.
+
+### Passa ad Alan 3.0beta6 build 1862
+
+Da qui in avanti il progetto adotta la [developer snaphshot]  [Alan 3.0beta6 build 1862][3.0beta6-1862] per testare la libreria usufruendo dei più recenti bug fix — tra cui un importane bug fix concernente l'uso di pronomi multipli.
+
+
+<!---------------------------------------------------------------------------->
+
+# Alan 3.0beta6 build 1855
 
 ## 2019/01/17
 
@@ -133,7 +161,7 @@ Tutti i moduli della libreria passano alla versione 0.11.0.
 
 ### Passa ad Alan 3.0beta6 build 1852
 
-Da qui in avanti il progetto adotta la [developer snaphshot]  [Alan 3.0beta6 build 1855][3.0beta6-1855] per testare la libreria per usufruire di nuove funzionalità.
+Da qui in avanti il progetto adotta la [developer snaphshot]  [Alan 3.0beta6 build 1855][3.0beta6-1855] per testare la libreria usufruendo di nuove funzionalità.
 
 ### Uso di E POI in comandi di gioco
 
@@ -1249,6 +1277,7 @@ Tutti i moduli della libreria passano alla versione 0.8.0.
 [developer snaphshot]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots "Vai alla pagina delle Developer Snapshots sul sito di Alan"
 [3.0beta6-1852]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1852 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1852"
 [3.0beta6-1855]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1855 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1855"
+[3.0beta6-1862]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1862 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1862"
 
 <!-- Alan Commits -->
 

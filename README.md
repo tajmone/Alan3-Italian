@@ -1,7 +1,7 @@
 # Alan IF 3 Italian
 
     Alan Standard Library: 2.1
-    Alan Development Kit:  3.0beta6 build 1855
+    Alan Development Kit:  3.0beta6 build 1862
 
 - https://github.com/tajmone/Alan3-Italian
 
@@ -19,11 +19,12 @@ Project start date: 2018-04-13.
 
 - [Introduction](#introduction)
 - [Project Status News](#project-status-news)
-    - [Jan 17, 2019 — Moving to Alan 3.0beta6 build 1855](#jan-17-2019-%E2%80%94-moving-to-alan-30beta6-build-1855)
-    - [Jan 15, 2019 — Major Breaktrhough With Alan 3.0beta6 build 1852](#jan-15-2019-%E2%80%94-major-breaktrhough-with-alan-30beta6-build-1852)
+    - [Jan 24, 2019: Moving to Alan 3.0beta6 build 1862](#jan-24-2019-moving-to-alan-30beta6-build-1862)
+    - [Jan 17, 2019: Moving to Alan 3.0beta6 build 1855](#jan-17-2019-moving-to-alan-30beta6-build-1855)
+    - [Jan 15, 2019: Major Breaktrhough With Alan 3.0beta6 build 1852](#jan-15-2019-major-breaktrhough-with-alan-30beta6-build-1852)
         - [Support for Apostrophes in Prepositions](#support-for-apostrophes-in-prepositions)
         - [E-Grave Bug Fixed!](#e-grave-bug-fixed)
-    - [Nov 13, 2018 — All Verbs Translated](#nov-13-2018-%E2%80%94-all-verbs-translated)
+    - [Nov 13, 2018: All Verbs Translated](#nov-13-2018-all-verbs-translated)
 - [Project Contents](#project-contents)
 - [Work Environment Settings](#work-environment-settings)
     - [File Encodings](#file-encodings)
@@ -62,7 +63,11 @@ You can follow the discussion on this project on the [Alan-IF discussion group a
 Some flash news about milestones accomplishments in the project...
 
 
-## Jan 17, 2019 — Moving to Alan 3.0beta6 build 1855
+## Jan 24, 2019: Moving to Alan 3.0beta6 build 1862
+
+Adopt the new [developer snaphshot] of Alan [3.0beta6 build 1862], which implements some bug fixes (including a bug that prevented using multiple pronouns).
+
+## Jan 17, 2019: Moving to Alan 3.0beta6 build 1855
 
 The new [developer snaphshot] of Alan [3.0beta6 build 1855] implements a requested feature to allow consecutive AND WORDS in player input so that it's now possible to type:
 
@@ -73,7 +78,7 @@ whereas before the parser would see the "E POI" as "AND AND" and fail to parse t
 For the implementation details, see commit [054581b] on [Alan repository].
 
 
-## Jan 15, 2019 — Major Breaktrhough With Alan 3.0beta6 build 1852
+## Jan 15, 2019: Major Breaktrhough With Alan 3.0beta6 build 1852
 
 The new [developer snaphshot] of Alan [3.0beta6 build 1852] introduces a new feature especially for Italian, which is a major brakthrough in the development of this library, and it also fixes a bug that affected the Italian language and some Library verbs.
 
@@ -117,7 +122,7 @@ This fixes a bunch of "question verbs" in the Library, which previously had to f
 
 The origin of the problem was due to the omission of the E-grave character in a constant in the source code. Commit [ad2c7de]  ("Add forgotten grave accented e") fixed the problem.
 
-## Nov 13, 2018 — All Verbs Translated
+## Nov 13, 2018: All Verbs Translated
 
 All verbs (ca. 171) have been translated to Italian — for more details, see:
 
@@ -314,6 +319,7 @@ The documentation uses an adaptation of Asciidcotor `attributes-it.adoc`, transl
 [developer snaphshot]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots "Vai alla pagina delle Developer Snapshots sul sito di Alan"
 [3.0beta6 build 1852]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1852 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1852"
 [3.0beta6 build 1855]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1855 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1855"
+[3.0beta6 build 1862]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1862 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1862"
 
 <!-- Alan Commits Links -->
 
