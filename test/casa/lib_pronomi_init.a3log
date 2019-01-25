@@ -1,0 +1,149 @@
+
+
+La Casa 
+Un set per eseguire test su stanze e luoghi esterni. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1862. 
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+LA CUCINA
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un frigo e 
+un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un sacchetto, un 
+coltello, una pistola, un cesto per la frutta e una radio. Al centro della
+stanza c'è Mr Nicky, il tuo cagnolino.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                       TESTA INIZIALIZZAZIONE PRONOMI                       *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Questo test è finalizzato a verificare la corretta inizializzazione dei pronomi
+> ; delle varie istanze delle classi delle libreria.
+> ; 
+> ; \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+> ; ** NOTA ** Allo stato attuale solo i pronomi delle classi 'maschio' e 'femmina'
+> ;            sono definiti dalla libreria!
+> ; //////////////////////////////////////////////////////////////////////////////
+> ; 
+> ; ==============================================================================
+> ; TESTA OGGETTI
+> ; ==============================================================================
+> dbg_pronome sedia
+| la sedia | PRONOME: it |
+
+> ; ------------------------------------------------------------------------------
+> ; SUPPORTO
+> ; ------------------------------------------------------------------------------
+> dbg_pronome tavolo
+| il tavolo | PRONOME: it |
+
+> dbg_pronome sedia
+| la sedia | PRONOME: it |
+
+> ; ------------------------------------------------------------------------------
+> ; CONTENITORE ELENCATO
+> ; ------------------------------------------------------------------------------
+> dbg_pronome cesto
+| il cesto per la frutta | PRONOME: it |
+
+> dbg_pronome frigo
+| il frigo | PRONOME: it |
+
+> ; ------------------------------------------------------------------------------
+> ; DISPOSITIVO
+> ; ------------------------------------------------------------------------------
+> dbg_pronome radio
+| la radio | PRONOME: it |
+
+> ; ------------------------------------------------------------------------------
+> ; FONTE DI LUCE
+> ; ------------------------------------------------------------------------------
+> dbg_pronome torcia
+| la torcia | PRONOME: it |
+
+> ; ------------------------------------------------------------------------------
+> ; LIQUIDI + REPICIPIENTI
+> ; ------------------------------------------------------------------------------
+> dbg_pronome vino
+| il vino | PRONOME: it |
+
+> dbg_pronome bottiglia
+| la bottiglia | PRONOME: it |
+
+> ; ------------------------------------------------------------------------------
+> ; PORTA
+> ; ------------------------------------------------------------------------------
+> est
+L'INGRESSO DI CASA
+Ti trovi nell'ingresso della tua casa. A ovest c'è la cucina, a est il tuo
+studio. Una rampa di scale conduce su al primo piano. A nord, oltre la porta di
+casa, c'è il mondo esterno. 
+
+Mr Nicky ti segue.
+
+> dbg_pronome porta
+| la porta di casa | PRONOME: it |
+
+> ovest
+LA CUCINA
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un frigo e 
+un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un sacchetto, un 
+coltello, una pistola, un cesto per la frutta e una radio. 
+
+Mr Nicky ti segue.
+
+> ovest
+Non puoi andare in quella direzione.
+
+> sud
+IL GIARDINO DI CASA
+A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone e, in
+lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e un tavolo 
+qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e una piscina qui. 
+C'è un giardiniere qui. C'è un gatto qui. 
+
+Mr Nicky ti segue.
+
+> ; ==============================================================================
+> ; ATTORI NON-PERSONA
+> ; ==============================================================================
+> dbg_pronome Nicky
+| Mr Nicky | PRONOME: it |
+
+> dbg_pronome gatto
+| il gatto | PRONOME: it |
+
+> ; ==============================================================================
+> ; ATTORI PERSONA
+> ; ==============================================================================
+> dbg_pronome giardiniere
+| il giardiniere | PRONOME: lui |
+
+> dbg_pronome vicina
+| la vicina | PRONOME: lei |
+
+> ; ------------------------------------------------------------------------------
+> ; ATTORE PROTAGONISTA (HERO)
+> ; ------------------------------------------------------------------------------
+> dbg_pronome me
+| il hero | PRONOME: it |
+
+> ; ------------------------------------------------------------------------------
+> ; LIQUIDI SENZA REPICIPIENTI
+> ; ------------------------------------------------------------------------------
+> dbg_pronome piscina
+| la piscina | PRONOME: it |
+
+> dbg_pronome acqua
+| la piscina | PRONOME: it |
+
+> 
+
+> 
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

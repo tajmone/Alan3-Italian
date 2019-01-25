@@ -15,7 +15,8 @@
 -- istanze del gioco. I seguenti comandi saranno aggiunti all'avventura:
 -- 
 --    DEBACA <OGG>
-
+--    DBG_PRONOME <OGG> 
+-- 
 --------------------------------------------------------------------------------
 -- NOTA: "debaca" è la forma italianizzata del verbo inglese "debug" ("rimuovere
 --       un baco"). Se ritieni che il termine sia orribile, o se questo offende
@@ -57,7 +58,7 @@ END ADD TO.
 -- dall'autore, se un'instanza del tipo descritto sopra ha una stringa xDesc non
 -- vuota, aggiungeremo un marcatore per separare la fine della xDesc dal testo
 -- della libreria.
-ADD TO EVERY THING
+ADD TO EVERY thing
   INITIALIZE
   FOR EACH ogg IsA object DO
     IF  ogg:xDesc <> ""
@@ -108,7 +109,7 @@ SYNTAX debaca = debaca (ogg)*
 ADD TO EVERY thing
   VERB debaca
     DOES
-      SAY mia_AT:dbgsep.
+      SAY mia_AT:dbgsep_no_nl.
       "$n| NOME: $1"
       "$n| CLASSE: "
       IF ogg IsA actor
@@ -347,3 +348,23 @@ ADD TO EVERY thing
 END ADD TO.
 
 
+--==============================================================================
+--------------------------------------------------------------------------------
+-- DBG_PRONOME <OGG> 
+--------------------------------------------------------------------------------
+--==============================================================================
+-- Il comando 'DBG_PRONOME OGGETTO' mostrerà il pronome predefinito di un'instanza.
+-- Utile per verificare la corretta inizializzazione delle classi.
+
+SYNTAX dbg_pronome = dbg_pronome (ogg)*
+  WHERE ogg IsA thing
+    ELSE "Questo comando funziona solo con oggetti e attori!"
+
+ADD TO EVERY thing
+  VERB dbg_pronome
+    DOES
+      "| $+1 | PRONOME: $!1 |"
+  END VERB dbg_pronome.
+END ADD TO thing.
+
+---< Fine del File >---
