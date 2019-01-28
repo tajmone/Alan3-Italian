@@ -1,0 +1,144 @@
+
+
+Emporio Giorgio Alani 
+Un set per testare il vestiario. 
+(C) Tristano Ajmone, 2019. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1862. 
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati. 
+
+Digita USCITE per visualizzare la lista di uscite disponibili in una stanza. 
+Usa il verbo DBG INDUMENTO per mostrare i valori di copertura di un capo di
+vestiario.
+
+
+Davanti all'Emporio Alani
+Ti trovi di fronte all'entrata dell'Emporio Giorgio Alani. Due imponenti porte
+in ottone attendono di condurti a nord, dentro il tempio della moda.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                       TESTA ASSISTENTE PERSONALE EGA                       *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Nell'Emporio Alani il nostro eroe è accolto da un'assistente personale che lo
+> ; seguirà ovunque egli vada nel negozio, tranne nel camerino o se l'eroe lascia
+> ; l'emporio. Questo test serve a verificare che l'atuomazione dell'assistente
+> ; funzioni come dovrebbe...
+> nord
+Come ti avvicini, le porte scorrono magicamente via per lasciarti passare.
+
+Atrio dell'Emporio Alani
+Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
+in ottone conducono a sud, fuori dal tempio del consumismo. C'è la tua
+assistente personale qui.
+
+> esamina l'assistente
+È la tua assistente personale per lo shopping. L'assistente non sta portando
+niente.
+
+> ; ==============================================================================
+> ; TESTA: SEGUIRE EROE
+> ; ==============================================================================
+> est
+Reparto Uomo
+Qui puoi trovare tutto ciò che un uomo desidererebbe indossare. Puoi vedere una 
+T-shirt qui. 
+
+L'assistente ti segue.
+
+> ovest
+Atrio dell'Emporio Alani
+Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
+in ottone conducono a sud, fuori dal tempio del consumismo. 
+
+L'assistente ti segue.
+
+> ; ------------------------------------------------------------------------------
+> ; Uscire dall'emporio
+> ; ------------------------------------------------------------------------------
+> ; Non dovrebbe seguirci fuori dal negozio...
+> sud
+Come ti avvicini, le porte scorrono magicamente via per lasciarti passare. 
+L'assistente ti saluta mentre lasci l'emporio.
+
+Davanti all'Emporio Alani
+Ti trovi di fronte all'entrata dell'Emporio Giorgio Alani.
+
+> ; Ma deve riprendere a seguirci appena rientriamo...
+> nord
+Come ti avvicini, le porte scorrono magicamente via per lasciarti passare.
+
+Atrio dell'Emporio Alani
+Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
+in ottone conducono a sud, fuori dal tempio del consumismo. C'è la tua
+assistente personale qui.
+
+> est
+Reparto Uomo
+Qui puoi trovare tutto ciò che un uomo desidererebbe indossare. Puoi vedere una 
+T-shirt qui. 
+
+L'assistente ti segue.
+
+> ; ==============================================================================
+> ; IL CAMERINO
+> ; ==============================================================================
+> ; Non dovrebbe seguirci nel camerino...
+> nordovest
+Camerino
+Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
+gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+
+> ; Ma deve riprendere a seguirci appena ne usciamo...
+> sudest
+Reparto Uomo
+Qui puoi trovare tutto ciò che un uomo desidererebbe indossare. Puoi vedere una 
+T-shirt qui. C'è la tua assistente personale qui.
+
+> ovest
+Atrio dell'Emporio Alani
+Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
+in ottone conducono a sud, fuori dal tempio del consumismo. 
+
+L'assistente ti segue.
+
+> ovest
+Reparto Donna
+Non vi è sogno di moda femminile che i vestiti di questo reparto non possano
+esaudire. 
+
+L'assistente ti segue.
+
+> ; ------------------------------------------------------------------------------
+> ; Inseguire il Cliente
+> ; ------------------------------------------------------------------------------
+> ; Dato che il camerino si trova al centro dell'emporio, quando l'eroe esce dal
+> ; camerino e va in una stanza diversa da quella da cui era entrato, l'assistente
+> ; dovrà correre per l'emporio e raggiungere l'eroe...
+> nordest
+Camerino
+Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
+gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+
+> sudest
+Reparto Uomo
+Qui puoi trovare tutto ciò che un uomo desidererebbe indossare. Puoi vedere una 
+T-shirt qui. L'assistente ti raggiunge di corsa dal reparto donna.
+
+> ; E riprendere subito a seguirci...
+> ovest
+Atrio dell'Emporio Alani
+Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
+in ottone conducono a sud, fuori dal tempio del consumismo. 
+
+L'assistente ti segue.
+
+> 
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

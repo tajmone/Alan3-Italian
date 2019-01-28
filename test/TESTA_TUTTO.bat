@@ -1,4 +1,4 @@
-:: "TESTA_TUTTO.bat" v2.0.1 (2019/01/24) | by Tristano Ajmone
+:: "TESTA_TUTTO.bat" v3.0.0 (2019/01/28) | by Tristano Ajmone
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                                                            ::
 ::                   TEST SUITE DELLA LIBRERIA ALAN ITALIAN                   ::
@@ -7,14 +7,28 @@
 ::                                                                            ::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 @ECHO OFF & CLS
+:: -----------------------------------------------------------------------------
+:: Questo script gestisce due tipologie di cartelle per i test:
+:: 
+::   (a) Sorgente Singolo  -> Test Multipli.
+::   (b) Sorgenti Multipli -> Uno/Più Test Per Sorgente.
+:: 
+:: È possibile eseguire i test di tipo (a) su un numero illimitato di cartelle,
+:: mentre i test di tipo (b) possono essere eseguiti su una sola cartella.
 :: =============================================================================
 ::                        Impostazioni Cartelle dei Test                        
 :: =============================================================================
-:: Cartella Sorgente Singolo -> Test Multipli:
-SET AVV_SINGOLA_DIR=casa
-:: Il nome dell'avventura senza l'estensione ".alan":
-SET AVV_SINGOLA=casa
-:: Cartella Sorgenti Multipli -> Uno/Più Test Per Sorgente:
+:: Cartelle Sorgente Singolo -> Test Multipli
+:: -----------------------------------------------------------------------------
+:: Nelle variabili di tipo 'AVV_SINGOLA[n]AVV', il nome del file dell'avventura
+:: non deve contenere l'estensione ".alan".
+SET AVV_SINGOLA[1]DIR=casa
+SET AVV_SINGOLA[1]AVV=casa
+SET AVV_SINGOLA[2]DIR=vestiario
+SET AVV_SINGOLA[2]AVV=ega
+:: -----------------------------------------------------------------------------
+:: Cartella Sorgenti Multipli -> Uno/Più Test Per Sorgente
+:: -----------------------------------------------------------------------------
 SET AVV_MULTIPLE_DIR=vari
 :: =============================================================================
 ::                             Preliminari di Setup                             
@@ -32,7 +46,7 @@ CALL :DefinisciCodiciANSI   &:: Definisce alcune variabili per i colori ANSI
 :: =================================
 :: Stampa il Banner e l'Introduzione
 :: =================================
-CALL :StampaBanner     &:: Stampa il Banner con il titolo incorniciato
+CALL :StampaBanner    &:: Stampa il Banner con il titolo incorniciato
 ECHO.
 :: ================================
 :: Definisci Variabili dello Script
@@ -57,7 +71,15 @@ CALL :TitoloStep "Calcoli Preliminari"
 :: Calcola il Numero Totale dei Sorgenti
 :: =====================================
 ECHO Verrano compilate le seguenti avventure:%_GRIGIO_%
-CALL :ContaSorgenti %AVV_SINGOLA_DIR%
+:: Iterazione Cartelle Sorgente Singolo -> Test Multipli:
+SET /A TMPC=1
+:LoopContaSorgenti
+IF "!AVV_SINGOLA[%TMPC%]DIR!" == "" GOTO :FineLoopContaSorgenti
+CALL :ContaSorgenti !AVV_SINGOLA[%TMPC%]DIR!
+SET /A "TMPC+=1"
+GOTO :LoopContaSorgenti
+:FineLoopContaSorgenti
+:: Cartella Sorgenti Multipli -> Uno/Più Test Per Sorgente:
 CALL :ContaSorgenti %AVV_MULTIPLE_DIR%
 :: Aggiungi il numero delle avventure alle operazioni totali da eseguire:
 SET /A _CNT_TOT_=!_CNT_TOT_! +!_AVV_TOT_!
@@ -66,7 +88,15 @@ ECHO.
 :: Calcola il Numero Totale dei Test
 :: =================================
 ECHO Verrano eseguiti i seguenti script di test:%_GRIGIO_%
-CALL :ContaScript %AVV_SINGOLA_DIR%
+:: Iterazione Cartelle Sorgente Singolo -> Test Multipli:
+SET /A TMPC=1
+:LoopContaScript
+IF "!AVV_SINGOLA[%TMPC%]DIR!" == "" GOTO :FineLoopContaScript
+CALL :ContaScript !AVV_SINGOLA[%TMPC%]DIR!
+SET /A "TMPC+=1"
+GOTO :LoopContaScript
+:FineLoopContaScript
+:: Cartella Sorgenti Multipli -> Uno/Più Test Per Sorgente:
 CALL :ContaScript %AVV_MULTIPLE_DIR%
 :: Aggiungi il numero dei test alle operazioni totali da eseguire:
 SET /A _CNT_TOT_=!_CNT_TOT_! +!_TEST_TOT_!
@@ -75,7 +105,15 @@ SET /A _CNT_TOT_=!_CNT_TOT_! +!_TEST_TOT_!
 :: =============================================================================
 CALL :TitoloStep "Elimina Vecchi File"
 ECHO Eliminazione dei file precedentemente generati da questo script:
-CALL :PulisciCartella %AVV_SINGOLA_DIR%
+:: Iterazione Cartelle Sorgente Singolo -> Test Multipli:
+SET /A TMPC=1
+:LoopPulizia
+IF "!AVV_SINGOLA[%TMPC%]DIR!" == "" GOTO :FineLoopPulizia
+CALL :PulisciCartella !AVV_SINGOLA[%TMPC%]DIR!
+SET /A "TMPC+=1"
+GOTO :LoopPulizia
+:FineLoopPulizia
+:: Cartella Sorgenti Multipli -> Uno/Più Test Per Sorgente:
 CALL :PulisciCartella %AVV_MULTIPLE_DIR%
 :: ==============================================================================
 :: step 3                Compila i Sorgenti delle Avventure                      
@@ -83,9 +121,15 @@ CALL :PulisciCartella %AVV_MULTIPLE_DIR%
 CALL :TitoloStep "Compila le Avventure"
 SET /A _CNT_TMP_=0   &:: Contatore temporaneo compilazioni
 SET /A _ERR_TMP_=0   &:: Variabile temporanea errori compilazione
-:: Compila sorgente singolo
-CALL :CompilaCartella %AVV_SINGOLA_DIR%
-:: Compila sorgenti multipli
+:: Iterazione Cartelle Sorgente Singolo -> Test Multipli:
+SET /A TMPC=1
+:LoopCompila
+IF "!AVV_SINGOLA[%TMPC%]DIR!" == "" GOTO :FineLoopCompila
+CALL :CompilaCartella !AVV_SINGOLA[%TMPC%]DIR!
+SET /A "TMPC+=1"
+GOTO :LoopCompila
+:FineLoopCompila
+:: Cartella Sorgenti Multipli -> Uno/Più Test Per Sorgente:
 CALL :CompilaCartella %AVV_MULTIPLE_DIR%
 IF %_AVV_ERR_% GEQ  1 (
     CALL :CorniceErrore
@@ -311,14 +355,21 @@ EXIT /B
 :: -----------------------------------------------------------------------------
 :TestAvvSingola
 
+:: Iterazione Cartelle Sorgente Singolo -> Test Multipli:
+SET /A TMPC=1
+:LoopTestAvvSingola
+IF "!AVV_SINGOLA[%TMPC%]DIR!" == "" GOTO :FineLoopTestAvvSingola
 SET /A _AVV_EXE_=!_AVV_EXE_! +1
-SET AVV_BIN=%_MAGENTA_%%AVV_SINGOLA_DIR%\%_GIALLO_%%AVV_SINGOLA%.a3c%_BLU_%
-PUSHD %AVV_SINGOLA_DIR%
+SET AVV_BIN=%_MAGENTA_%!AVV_SINGOLA[%TMPC%]DIR!\%_GIALLO_%!AVV_SINGOLA[%TMPC%]AVV!.a3c%_BLU_%
+PUSHD !AVV_SINGOLA[%TMPC%]DIR!
 FOR %%i IN (*.a3sol) DO (
-    CALL :TitoloTest "%AVV_BIN%" "%%i"
-    CALL :EseguiTest %AVV_SINGOLA% "%%i"
+    CALL :TitoloTest "!AVV_BIN!" "%%i"
+    CALL :EseguiTest !AVV_SINGOLA[%TMPC%]AVV! "%%i"
 )
 POPD
+SET /A "TMPC+=1"
+GOTO :LoopTestAvvSingola
+:FineLoopTestAvvSingola
 EXIT /B
 :: =============================================================================
 :: func                   Esegui Test Avventure Multiple                        
@@ -344,8 +395,8 @@ EXIT /B
 :ScriptMultipli
 
 FOR %%i IN (%~n1*.a3sol) DO (
-    SET AVV_BIN=%_MAGENTA_%%AVV_MULTIPLE_DIR%\%_GIALLO_%%%i%_BLU_%
-    CALL :TitoloTest "%AVV_BIN%" "%%i"
+    SET AVV_BIN=%_MAGENTA_%%AVV_MULTIPLE_DIR%\%_GIALLO_%%~n1.a3c%_BLU_%
+    CALL :TitoloTest "!AVV_BIN!" "%%i"
     CALL :EseguiTest %1 "%%i"
 )
 EXIT /B

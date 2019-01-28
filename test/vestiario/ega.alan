@@ -1,0 +1,852 @@
+--==============================================================================
+-- "Emporio Giorgio Alani" by Tristano Ajmone, 2018.
+--==============================================================================
+-- Un'avventura finalizzata a testare le funzionalità del vestiario di Alan-Ita.
+--------------------------------------------------------------------------------
+OPTIONS WIDTH 81.
+
+IMPORT 'libreria.i'.      -- ALAN Libreria Standard Italiana v2.1
+IMPORT '../inc_debaca.i'. -- Comandi per il debugging
+
+
+
+THE mia_AT IsA blocco_definizioni
+  ------------------------------------------------------------------------------
+  HAS       titolo  "Emporio Giorgio Alani".
+  HAS  sottotitolo  "Un set per testare il vestiario.".
+  HAS       autore  "Tristano Ajmone".
+  HAS         anno   2019.
+  HAS     versione  "1".
+  HAS        AlanV  "v3.0beta6 build 1862".
+  ------------------------------------------------------------------------------
+END THE.
+
+--==============================================================================
+-- PERSONALIZZAZIONE CLASSE 'LOCATION'
+--==============================================================================
+
+-- Aggiungiamo a tutti i luoghi alcuni attributi personalizzati:
+
+-- 1. Un attributo stringa per definire un nome alternativo per la stanza, da
+--    mostrare quando la si menziona nei messaggi. Di solito, si tratta di una
+--    versione più breve del nome originale, tutto in minuscolo. Attualmente è
+--    utilizzato dall'EVENTo 'Riattiva_Assistente', per menzionare da quale
+--    stanza è arrivata (se la stringa è vuota, verrà usato 'LOCATION OF').
+
+-- 2. Un attributo stringa per immagazzinare la lista delle uscite di una stanza.
+--    Attualmente utilizzato dal verbo 'mostra_uscite'.
+
+ADD TO EVERY location
+  HAS menzione_stanza "".   -- (opzionale) nome alternativo nei messaggi.
+  HAS uscite_stanza   "".   -- (opzionale) elenco uscite della stanza.
+END ADD TO location.
+
+
+--==============================================================================
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--------------------------------------------------------------------------------
+--
+-- MAPPA DEL GIOCO
+--
+--------------------------------------------------------------------------------
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--==============================================================================
+-- Iniziamo ad abbozzare la mappa del gioco, ci occuperemo dell'arredamento più
+-- avanti, per rendere più leggibile il codice.
+
+--         +-------+-------+   +-------+-------+   +-------+-------+
+--         |  REP. LAVORO  |---|      ???      |---|      ???      |
+--         +-------+-------+   +-------+-------+   +-------+-------+
+--                 |        \          |          /        |
+--                 |         \         |         /         |
+--                 |          \        |        /          |
+--         +-------+-------+   +-------+-------+   +-------+-------+
+--         |  REP. SPORT   |---|   CAMERINO    |---| REP. COSTUMI  |
+--         +-------+-------+   +-------+-------+   +-------+-------+
+--                 |          /        |        \          |
+--                 |         /         |         \         |
+--                 |        /          |          \        |
+--         +-------+-------+   +-------+-------+   +-------+-------+
+--         |  REP. DONNA   |---|     ATRIO     |---|   REP. UOMO   |
+--         +---------------+   +---------------+   +---------------+
+
+
+
+-- =============================================================================
+
+-- Entrata Emporio GA
+
+-- =============================================================================
+THE ega_entrata IsA luogo_esterno.
+  NAME 'Davanti all''Emporio Alani'.
+  EXIT nord TO ega_atrio
+    DOES
+      --------------------
+      -- Porte Automatiche
+      --------------------
+      SAY ega_porte:testo_attraversa.
+      LOCATE ega_porte AT ega_atrio.
+      LOCATE ega_telaio_porte AT ega_atrio.
+      -----------------------
+      -- Assistente Personale
+      -----------------------
+      MAKE assistente_ega seguendo.
+  END EXIT.
+  DESCRIPTION "Ti trovi di fronte all'entrata dell'Emporio Giorgio Alani."
+  HAS uscite_stanza "NORD per entrare nell'Emprio.".
+END THE ega_entrata.
+--==============================================================================
+
+-- Atrio dell'Emporio
+
+--==============================================================================
+THE ega_atrio IsA stanza.
+  NAME 'Atrio dell''Emporio Alani'.
+  HAS menzione_stanza "$$l'atrio".
+  EXIT est   TO ega_uomo.
+  EXIT ovest TO ega_donna.
+  EXIT nord  TO ega_camerino.
+  EXIT sud   TO ega_entrata
+    DOES
+      --------------------
+      -- Porte Automatiche
+      --------------------
+      SAY ega_porte:testo_attraversa.
+      LOCATE ega_porte AT ega_atrio.
+      LOCATE ega_telaio_porte AT ega_atrio.
+      -----------------------
+      -- Assistente Personale
+      -----------------------
+      MAKE assistente_ega NOT seguendo.
+      "L'assistente ti saluta mentre lasci l'emporio."
+  END EXIT.
+  DESCRIPTION
+    "Questo lussuoso atrio conduce ai vari reparti dell'emporio."
+  HAS uscite_stanza
+    "EST al reparato uomo, OVEST al reparto donna, e NORD al camerino.".
+END THE ega_atrio.
+-- =============================================================================
+
+-- Camerino
+
+-- =============================================================================
+-- Collochiamo il camerino al centro dell'emprio (che è quadrato) di modo che
+-- sia accessibile da tutti i reparti.
+THE ega_camerino IsA stanza.
+  NAME 'Camerino'.
+  EXIT sud TO ega_atrio
+    DOES SCHEDULE Riattiva_Assistente AT hero AFTER 0.
+  END EXIT.
+  EXIT sudest TO ega_uomo
+    DOES SCHEDULE Riattiva_Assistente AT hero AFTER 0.
+  END EXIT.
+  EXIT est TO ega_costumi
+    DOES SCHEDULE Riattiva_Assistente AT hero AFTER 0.
+  END EXIT.
+  EXIT nordest TO ega_vacante2
+    DOES SCHEDULE Riattiva_Assistente AT hero AFTER 0.
+  END EXIT.
+  EXIT nord TO ega_vacante1
+    DOES SCHEDULE Riattiva_Assistente AT hero AFTER 0.
+  END EXIT.
+  EXIT nordovest TO ega_lavoro
+    DOES SCHEDULE Riattiva_Assistente AT hero AFTER 0.
+  END EXIT.
+  EXIT ovest TO ega_sport
+    DOES SCHEDULE Riattiva_Assistente AT hero AFTER 0.
+  END EXIT.
+  EXIT sudovest TO ega_donna
+    DOES SCHEDULE Riattiva_Assistente AT hero AFTER 0.
+  END EXIT.
+  DESCRIPTION
+    "Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
+     poterti spogliare e provare i vestiti."
+  HAS uscite_stanza
+    "NORD al reparto 1, NORDEST al reparto 2,
+     EST ai costumi,
+     SUDEST al reparto uomo,
+     SUD all'atrio,
+     SUDOVEST al reparto donna,
+     OVEST al reparto sport, e
+     NORDOVEST al reparto lavoro.".
+  VERB spogliati -- Consenti all'eroe di spogliarsi all'interno del camerino:
+    DOES ONLY
+      IF COUNT DIRECTLY IN abbigliamento, ISA indumento > 0
+        THEN EMPTY abbigliamento IN hero.
+          "Hai rimosso tutti gli indumenti che indossavi."
+        ELSE "Non stai indossando nulla.."
+      END IF.
+  END VERB spogliati.  
+END THE ega_camerino.
+-- =============================================================================
+
+-- Reparto Abbigliamento Uomo
+
+-- =============================================================================
+THE ega_uomo IsA stanza.
+  NAME 'Reparto Uomo'.
+  HAS menzione_stanza "reparto uomo".
+  EXIT ovest     TO ega_atrio.
+  EXIT nord      TO ega_costumi.
+  EXIT nordovest TO ega_camerino.
+  DESCRIPTION
+    "Qui puoi trovare tutto ciò che un uomo desidererebbe indossare."
+  HAS uscite_stanza
+    "NORD ai Costumi, NORDOVEST al camerino, e OVEST all'atrio.".
+  END THE ega_uomo.
+-- =============================================================================
+
+-- Reparto Abbigliamento Donna
+
+-- =============================================================================
+THE ega_donna IsA stanza.
+  NAME 'Reparto Donna'.
+  HAS menzione_stanza "reparto donna".
+  EXIT est     TO ega_atrio.
+  EXIT nord    TO ega_sport.
+  EXIT nordest TO ega_camerino.
+  DESCRIPTION
+    "Non vi è sogno di moda femminile che i vestiti di questo reparto non
+     possano esaudire."
+  HAS uscite_stanza
+    "NORD al reparto sport, NORDEST al camerino, e EST all'atrio.".
+END THE ega_donna.
+-- =============================================================================
+
+-- Reparto costumi
+
+-- =============================================================================
+THE ega_costumi IsA stanza.
+  NAME 'Reparto costumi'.
+  HAS menzione_stanza "reparto costumi".
+  EXIT sud   TO ega_uomo.
+  EXIT ovest TO ega_camerino.
+  EXIT nord  TO ega_vacante2.
+  DESCRIPTION
+    "Qui puoi trovare un custome per ogni occasione."
+  HAS uscite_stanza
+    "SUD al reparto uomo, NORD al reparto 2, e OVEST al camerino.".
+END THE ega_costumi.
+-- =============================================================================
+
+-- Reparto Abbigliamento Sportivo
+
+-- =============================================================================
+THE ega_sport IsA stanza.
+  NAME 'Reparto Abbigliamento Sportivo'.
+  HAS menzione_stanza "reparto sportivo".
+  EXIT nord TO ega_lavoro.
+  EXIT sud  TO ega_donna.
+  EXIT est  TO ega_camerino.
+  DESCRIPTION
+    "Attorno a te vedi abbigliamento e attrezzatura per più sport di quanti tu
+     conosca."
+  HAS uscite_stanza
+    "NORD al reparto lavoro, SUD al reparto donna, e EST al camerino.".
+END THE ega_sport.
+-- =============================================================================
+
+-- Reparto Abbigliamento Lavoro e Antinfortunistica
+
+-- =============================================================================
+THE ega_lavoro IsA stanza.
+  NAME 'Reparto Abbigliamento Lavoro e Antinfortunistica'.
+  HAS menzione_stanza "reparto lavoro".
+  EXIT sud    TO ega_sport.
+  EXIT est    TO ega_vacante1.
+  EXIT sudest TO ega_camerino.
+  DESCRIPTION
+    "Qui puoi trovare uniformi e accessori antinfortunistici per varie professioni."
+  HAS uscite_stanza
+    "SUD al reparto sport, EST al reparto 1, e SUDEST al camerino.".
+END THE ega_lavoro.
+-- =============================================================================
+
+-- Reparto 1 (non assegnato)
+
+-- =============================================================================
+THE ega_vacante1 IsA stanza.
+  NAME 'Reparto #1 (vuoto)'.
+  HAS menzione_stanza "reparto 1".
+  EXIT sud   TO ega_camerino.
+  EXIT est   TO ega_vacante2.
+  EXIT ovest TO ega_lavoro.
+  DESCRIPTION
+    "Questo reparto non è ancora stato assegnato; i suoi scaffali sono vuoti."
+  HAS uscite_stanza
+    "EST al reparto 2, OVEST al reparto lavoro, e SUD al camerino.".
+END THE ega_vacante1.
+-- =============================================================================
+
+-- Reparto 2 (non assegnato)
+
+-- =============================================================================
+THE ega_vacante2 IsA stanza.
+  NAME 'Reparto #2 (vuoto)'.
+  HAS menzione_stanza "reparto 2".
+  EXIT sudovest TO ega_camerino.
+  EXIT ovest    TO ega_vacante1.
+  EXIT sud      TO ega_costumi.
+  DESCRIPTION
+    "Questo reparto non è ancora stato assegnato; i suoi scaffali sono vuoti."
+  HAS uscite_stanza
+    "SUD ai costumi, OVEST al reparto 1, e SUDOVEST al camerino.".
+END THE ega_vacante2.
+--==============================================================================
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--------------------------------------------------------------------------------
+--
+-- CLASSI SPECIALIZZATE
+--
+--------------------------------------------------------------------------------
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--==============================================================================
+
+-- Creiamo delle sottoclassi specializzate per semplificarci la vita...
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- CLOTHING CLASSES
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+-- Creiamo alcune sottoclassi di vestiario per semplificare la creazione di più
+-- indumenti dello stesso genere...
+
+-- Le classi di vestiario avranno il prefisso 'cl_'.
+-- Creeremo due tipi di sottoclassi di vestiario:
+-- 
+--   (1) Prototipi        -- prefisso: 'proto_'.
+--   (2) Classi generiche -- prefisso: 'cl_'.
+
+--+--------------------------+------------+-----------+-----------+----------+
+--| Indumento    | val_testa | val_tronco | val_gambe | val_piedi | val_mani |
+--+--------------------------+------------+-----------+-----------+----------+
+--| cappello             | 2 |          0 |         0 |         0 |        0 |
+--| canottiera/reggiseno | 0 |          2 |         0 |         0 |        0 |
+--| mutande/slip         | 0 |          0 |         2 |         0 |        0 |
+--| teddy                | 0 |          4 |         4 |         0 |        0 |
+--| blusa/shirt/T-shirt  | 0 |          8 |         0 |         0 |        0 |
+--| dress/tuta lavoro    | 0 |          8 |        32 |         0 |        0 |
+--| gonna                | 0 |          0 |        32 |         0 |        0 |
+--| pantaloni/shorts     | 0 |          0 |        16 |         0 |        0 |
+--| sweater/pullover     | 0 |         16 |         0 |         0 |        0 |
+--| giacca               | 0 |         32 |         0 |         0 |        0 |
+--| cappotto             | 0 |         64 |        64 |         0 |        0 |
+--| calze/stockings      | 0 |          0 |         0 |         2 |        0 |
+--| tights/pantiehose    | 0 |          0 |         8 |         2 |        0 |
+--| scarpe/stivali       | 0 |          0 |         0 |         4 |        0 |
+--| guanti               | 0 |          0 |         0 |         0 |        2 |
+--+--------------------------+------------+-----------+-----------+----------+
+
+--==============================================================================
+-- COPRICAPI
+--==============================================================================
+EVERY cl_cappello IsA indumento.
+  NAME cappello.
+  HAS val_testa 2.
+END EVERY.
+--==============================================================================
+-- biancheria
+--==============================================================================
+EVERY proto_biancheria IsA indumento.
+  NAME biancheria.
+END EVERY.
+--------
+-- Torso
+--------
+EVERY cl_canottiera IsA proto_biancheria.
+  NAME canottiera.
+  HAS articolo "la".
+  HAS val_tronco 2.
+END EVERY.
+----------
+-- Inguine
+----------
+EVERY cl_mutande IsA proto_biancheria.
+  NAME mutande.
+  HAS articolo "le".
+  HAS val_gambe 2.
+  INDEFINITE ARTICLE "un paio di"
+END EVERY.
+--------
+-- Piedi
+--------
+EVERY cl_calzini IsA indumento.
+  NAME calzini.
+  HAS articolo "i".
+  HAS val_piedi 2.
+  INDEFINITE ARTICLE "un paio di"
+END EVERY.
+
+--==============================================================================
+-- CALZATURE
+--==============================================================================
+EVERY cl_scarpe IsA indumento.
+  NAME scarpe.
+  HAS articolo "le".
+  HAS val_piedi 4.
+  INDEFINITE ARTICLE "un paio di"
+END EVERY.
+
+--==============================================================================
+-- MAGLIETTE, CAMICIE E ALTRI INDUMENTI 'val_tronco 8'
+--==============================================================================
+EVERY cl_tshirt IsA indumento.
+  HAS val_tronco 8.
+  HAS articolo "la".
+  NAME 'T-shirt'.
+  NAME tshirt.
+  NAME maglietta.
+END EVERY.
+
+--==============================================================================
+-- INDUMENTI GAMBE
+--==============================================================================
+
+EVERY proto_gonna IsA indumento.
+  NAME gonna.
+  HAS articolo "la".
+  HAS val_gambe 32.
+END EVERY.
+
+EVERY proto_pantaloni IsA indumento.
+  NAME pantaloni.
+  HAS articolo "i".
+  INDEFINITE ARTICLE "un paio di"
+  HAS val_gambe 16.
+END EVERY.
+
+EVERY proto_collant IsA indumento.
+  NAME collant.
+  HAS articolo "i".
+  INDEFINITE ARTICLE "un paio di"
+  HAS val_gambe 8.
+END EVERY.
+
+
+--==============================================================================
+-- TUTE DA LAVORO
+--==============================================================================
+
+EVERY proto_tuta IsA indumento.
+  NAME tuta.
+  HAS articolo "la".
+  HAS val_tronco 8.
+  HAS val_gambe 32.
+END EVERY.
+
+
+--==============================================================================
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--------------------------------------------------------------------------------
+--
+-- VERBI SPECIALI
+--
+--------------------------------------------------------------------------------
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--==============================================================================
+
+--==============================================================================
+-- DEBUGGING DEL VESTIARIO
+--==============================================================================
+-- Un verbo per poter verificare i valori di copertura dei vari indumenti.
+
+SYNTAX dbg = dbg (obj)
+  WHERE obj IsA indumento
+    ELSE "Questo verbo accetta solo parametri di tipo indumento."
+
+ADD TO EVERY indumento
+  VERB dbg
+    DOES
+      "'$1' VALORI:"
+      IF  obj:val_testa = 0 AND obj:val_tronco = 0 AND obj:val_gambe = 0
+      AND obj:val_piedi = 0 AND obj:val_mani = 0
+        THEN
+          "(nessuno)"
+        ELSE
+          IF obj:val_testa > 0
+            THEN "| val_testa:" SAY obj:val_testa.
+          END IF.
+          IF obj:val_tronco > 0
+            THEN "| val_tronco:" SAY obj:val_tronco.
+          END IF.
+          IF obj:val_gambe > 0
+            THEN "| val_gambe:" SAY obj:val_gambe.
+          END IF.
+          IF obj:val_piedi > 0
+            THEN "| val_piedi:" SAY obj:val_piedi.
+          END IF.
+          IF obj:val_mani > 0
+            THEN "| val_mani:" SAY obj:val_mani.
+          END IF.
+          "|"
+      END IF.
+  END VERB dbg.
+END ADD TO indumento.
+
+--==============================================================================
+-- MOSTRA LE USCITE
+--==============================================================================
+
+-- L'elenco delle uscite è, in molte stanze, troppo lungo e brutto da vedersi
+-- nella descrizione del luogo. Quindi lascieremo che il giocatore usi il comando
+-- "uscite" per visualizzare le uscite nel luogo in cui si trova.
+-- Il verbo sfrutta l'attributo 'uscite_stanza' che è stato aggunto a ogni luogo. 
+
+-- TODO: Trova un modo semplice per fare in modo che le uscite siano mostrate
+--       automaticamente quando un luogo viene descritto per la prima volta.
+
+SYNTAX mostra_uscite = uscite.
+
+VERB mostra_uscite
+  DOES
+    IF uscite_stanza OF CURRENT LOCATION <> ""
+      THEN "Puoi andare a:" SAY uscite_stanza OF CURRENT LOCATION.
+      ELSE "Spiacente, non è disponibile la lista delle uscite per questo luogo."
+    END IF.
+END VERB mostra_uscite.
+
+--==============================================================================
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--------------------------------------------------------------------------------
+--
+-- ALLESTIMENTO DELE SCENOGRAFIE 
+--
+--------------------------------------------------------------------------------
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--==============================================================================
+
+-- È tempo di popolare le stanza con oggetti ed arredamento...
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- Scenografia: Entrata Emporio GA
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+--==============================================================================
+-- Porte dell'Emporio
+--==============================================================================
+-- Delle false porte che si aprono automaticamente al passaggio dell'eroe.
+-- Vengono spostate dall'entrata dell'emporio all'atrio quando l'eroe entra, e
+-- viceversa quando esce; questo al fine di doverle duplicare in ambo le stanze.
+
+THE ega_porte IsA object AT ega_entrata.
+  NAME porte.
+  NAME porta.
+  HAS articolo "le".
+  DESCRIPTION
+    "Due imponenti porte in ottone"
+    IF THIS AT ega_entrata
+      THEN
+        "attendono di condurti a nord, dentro il tempio della moda."
+      ELSE
+        "conducono a sud, fuori dal tempio del consumismo."
+    END IF.
+  MENTIONED "porte dell'emporio"
+  HAS xDesc
+    "Incisa sulle grosse portone d'ottone, l'aquila stilizzata del logo ""GA""
+     ti scruta come un d*o che vigila su uno dei suoi umili servi.
+     Le porte sono prive di maniglie, ma scorgi un piccolo sensore nascosto nel
+     telaio.".
+  IS NOT prendibile.
+  IS NOT spostabile.
+  HAS testo_attraversa
+    "Come ti avvicini, le porte scorrono magicamente via per lasciarti passare.".
+END THE ega_porte.
+
+THE ega_telaio_porte IsA object AT ega_entrata.
+  NAME telaio.
+  NAME sensore.
+  HAS articolo "l'".
+  MENTIONED "entrata"
+  IS scenario.
+END THE ega_telaio_porte.
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- Scenografia: Camerino
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+THE sedia IsA object AT ega_camerino.
+  HAS articolo "la".
+  HAS xDesc "Una sedia in plastica.".
+END THE.
+
+
+--==============================================================================
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--------------------------------------------------------------------------------
+--
+-- ATTORI PNG
+--
+--------------------------------------------------------------------------------
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--==============================================================================
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- L'Assistente Personale 
+--------------------------------------------------------------------------------
+--==============================================================================
+
+-- Questo PNG non è un semplice commesso bensì il nostro "assistente personale"
+-- durante la nostra visita all'emporio.
+-- L'Assistente deve svolgere alcuni compiti automatizzati:
+--   [x] seguire l'eroe dentro l'emporio, ma:
+--       [x] non lasciare l'emporio quando l'eroe esce.
+--       [x] non entrare nel camerino.
+-- (Ci sono ancore alcune cose da implementare.)
+
+-- Dato che l'emporio ha una sola entrata/uscita, l'attributo 'seguendo' dell'
+-- assistente può essere controllate tramite EXIT.
+
+THE assistente_ega IsA femmina AT ega_atrio.
+  NAME assistente.
+  NAME assistente personale.
+  HAS articolo "l'". 
+  INDEFINITE FORM "la tua assistente personale"
+  HAS xDesc "È la tua assistente personale per lo shopping.".
+END THE assistente_ega.
+
+-- Impedisci all'assistente di seguirci nel camerino:
+WHEN hero AT ega_camerino
+  => MAKE assistente_ega NOT seguendo.
+END WHEN.
+
+-- Per riattivare la modalità "inseguimento" useremo questo evento, attivato
+-- tramite le EXIT delle stanze:
+EVENT Riattiva_Assistente
+  -- Se l'eroe esce dal camerino in una stanza diversa da quella da cui è entrato,
+  -- l'assistente dovrà raggiungerlo nella nuova destinazione:
+  IF assistente_ega NOT AT hero
+    THEN
+      "L'assistente ti raggiunge di corsa dal"
+      IF menzione_stanza OF location of assistente_ega <> ""
+        THEN SAY menzione_stanza OF location of assistente_ega.
+        ELSE SAY location OF assistente_ega.
+      END IF. "."
+      LOCATE assistente_ega AT hero.
+  END IF.
+  MAKE assistente_ega seguendo.
+END EVENT.
+
+--==============================================================================
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--------------------------------------------------------------------------------
+--
+-- CAPI DI VESTIARIO
+--
+--------------------------------------------------------------------------------
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--==============================================================================
+
+-- Ora non ci resta che creare gli indumenti con cui popolare i vari reparti
+-- dell'emporio...
+
+--==============================================================================
+-- Indumenti --> Camerino (temporaneo) 
+--==============================================================================
+-- Per velocizzare i testi iniziali, alcuni vestiti sono stati collocati alla
+-- rinfusa nel camerino, ma è una soluzione temporanea...
+
+THE salopette IsA proto_tuta AT ega_camerino.
+  NAME salopette.
+  HAS xDesc
+    "Una tuta in denim a pezzo unico, con pantaloni a gambe larghe e una
+     pettorina con bretelle.".
+END THE.
+
+THE gonna_rossa IsA proto_gonna AT ega_camerino.
+  NAME gonna rossa.
+  HAS xDesc "È una gonna rossa in tessuto spesso.".
+END THE.
+
+THE collant_bianchi IsA proto_collant AT ega_camerino.
+  NAME collant bianchi.
+  HAS xDesc "Un paio di collant bianchi, in nylon.".
+END THE.
+
+THE blue_jeans IsA proto_pantaloni AT ega_camerino.
+  NAME jeans.
+  NAME blue jeans.
+  HAS xDesc "Un paio di blue jeans.".
+END THE.
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- Indumenti --> Reparto Uomo
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+THE tshirt IsA cl_tshirt AT ega_uomo.
+  
+END THE.
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
+-- Indumenti --> Reparto Sportivo
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+THE passamontagna IsA indumento AT ega_sport.
+  HAS val_testa 2.
+  HAS xDesc
+    "Un passamontagna invernale. Praticamente, un cappuccio con buchi per occhi
+     e bocca, come quelli usati nelle rapine, hai presente?".
+END THE.
+
+THE occhiali_sci IsA indumento AT ega_sport.
+  NAME occhiali.
+  NAME occhiali sci.
+  HAS articolo "gli".
+  MENTIONED "occhiali da sci"
+  HAS val_testa 4.
+  INDEFINITE ARTICLE "un paio di"
+  HAS xDesc
+    "Una padio di occhiali da sci, lente frontale singola (a forma di B) e una
+     banda elastica per fissarli alla testa.".
+END THE.
+
+--==============================================================================
+-- INDOSSABILI SENZA VALORI ZONA (ORNAMENTALI)
+--==============================================================================
+-- Alcuni indossabili privi di valori di copertura, e che possono quindi essere
+-- indossati liberamente, senza restrizioni...
+
+THE orologio_sportivo IsA indumento AT ega_sport.
+  NAME orologio.
+  NAME orologio sportivo.
+  HAS articolo "l'".
+  HAS xDesc
+    "Un orologio sportivo digitale, con delle app per monitorare il cuore, la
+     temperatura esterna, geo-localizzare, etc.".
+END THE.
+
+--------------------------------------------------------------------------------
+-- Sciarpe
+--------------------------------------------------------------------------------
+EVERY proto_sciarpa IsA indumento.
+  NAME sciarpa.
+  HAS articolo "la".
+END EVERY.
+
+THE sciarpa_bianca IsA proto_sciarpa AT ega_sport.
+  NAME sciarpa bianca.
+  HAS xDesc "Una sciarpa bianca.".
+END THE.
+
+THE sciarpa_blu IsA proto_sciarpa AT ega_sport.
+  NAME sciarpa blu.
+  HAS xDesc "Una sciarpa blu.".
+END THE.
+
+THE sciarpa_nera IsA proto_sciarpa AT ega_sport.
+  NAME sciarpa nera.
+  HAS xDesc "Una sciarpa nera.".
+END THE.
+
+--==============================================================================
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--------------------------------------------------------------------------------
+--
+-- INVENTARIO EROE
+--
+--------------------------------------------------------------------------------
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--==============================================================================
+
+-- Diamo qualche vestito di partenza in dotazione al nostro eroe (non vorremo
+-- certo che entri nudo nell'Emporio Alani, giusto?)
+
+-- TODO:
+
+-- [ ] Aggiungi un attributo per distinguere il vestiario originale dell'eroe da
+--     quello dell'emprio, così che l'assistente possa trasportare i vestiti del
+--     protagonista mentre egli prova i capi del negozio. Inoltre, l'assistente
+--     (o un PNG commesso) dovrà raccogliere e rimettere a posto i vestiti che
+--     l'eroe sparpaglierà per l'emporio.
+
+--==============================================================================
+-- CLOTHING
+--==============================================================================
+
+-- TODO:
+-- [ ] Un attributo per indicare i vestiti posseduti (inizili o acquistati) sì
+--     semplificare alcuni aspetti comuni tramite inizializzazione?
+-- [ ] L'ordine di creazione conta: nel gioco, i capi verrano elencati in ordine
+--     di apparazione inverso rispetto al codice.
+
+THE calzini_eroe IsA cl_calzini IN abbigliamento.
+  NAME calzini.
+  NAME mie calze bianche.
+  NAME miei calzini bianchi.
+  INDEFINITE ARTICLE "i tuoi"
+  DEFINITE ARTICLE "i tuoi"
+  HAS xDesc
+    "Un paio di calzini bianchi cui il tempo ha donato sfumature color nicotina.
+     Il calzino destro ha un buco grosso abbastanza da far sbucare l'alluce.".
+END THE.
+
+THE boxer_eroe IsA cl_mutande IN abbigliamento.
+  NAME boxer.
+  NAME miei boxer bianchi.
+  INDEFINITE ARTICLE "i tuoi"
+  DEFINITE ARTICLE "i tuoi"
+  HAS xDesc "Sono solo un paio di boxer bianchi, mutande comode da indossare.".
+END THE.
+
+THE canottiera_eroe IsA cl_canottiera IN abbigliamento.
+  NAME canottiera.
+  NAME mia canottiera bianca.
+  INDEFINITE ARTICLE "la tua"
+  DEFINITE ARTICLE "la tua"
+  HAS xDesc "Una semplice canottiera bianca, qualche macchia d'unto qui e là.".
+END THE.
+
+THE scarpe_eroe IsA cl_scarpe IN abbigliamento.
+  NAME sneakers.
+  NAME sneaker.
+  NAME mie sneakers nere.
+  INDEFINITE ARTICLE "le tue"
+  DEFINITE ARTICLE "le tue"
+  HAS xDesc
+    "Le tue care vecchie sneakers nere, delle Converse originali, decisimante logore.".
+END THE.
+
+
+--------------------------------------------------------------------------------
+START AT ega_entrata.
+DESCRIBE intestazione.
+
+"$pDigita" STYLE EMPHASIZED. "USCITE" STYLE NORMAL.
+  "per visualizzare la lista di uscite disponibili in una stanza."
+"$nUsa il verbo" STYLE EMPHASIZED. "DBG INDUMENTO" STYLE NORMAL.
+  "per mostrare i valori di copertura di un capo di vestiario."
+
+-- EOF --

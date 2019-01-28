@@ -25,14 +25,13 @@ Questa cartella contiene una sola avventura ("La Casa") sulla quale vengono eseg
 
 ## Script di esecuzione
 
-Per eseguire tutti i test in questa directory, eseguire:
+Per eseguire tutti i test in questa directory, eseguire lo script batch nella cartella superiore:
 
-- [`MULTITEST.bat`][MULTITEST]
+- [`../TESTA_TUTTO.bat`][TESTA_TUTTO]
 
 ## Sorgenti avventura
 
 - [`casa.alan`][casa] — sorgente principale.
-- [`inc_debaca.i`][inc_debaca] — modulo verbi e funzioni di "debug".
 
 ## Mappa
 
@@ -70,7 +69,7 @@ Presto verra introdotto il gruppo `verbo-vaniglia_*` (o simile) il cui scopo sar
 
 <!-- File di Progetto -->
 
-[MULTITEST]: ./MULTITEST.bat "Vedi sorgente"
+[TESTA_TUTTO]: ../TESTA_TUTTO.bat
 
 [casa]: ./casa.alan "Vedi sorgente"
 [casa.png]: ./casa.png "Apri immagine"

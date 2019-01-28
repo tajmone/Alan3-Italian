@@ -11,8 +11,8 @@ Questa directory contiene le risorse per il collaudo automatizzato della libreri
 
 - [Introduzione](#introduzione)
 - [Contenuti](#contenuti)
-    - [Test multipli](#test-multipli)
-    - [Test singoli](#test-singoli)
+    - [Test multipli su avventura singola](#test-multipli-su-avventura-singola)
+    - [Test singoli su avventure multiple](#test-singoli-su-avventure-multiple)
     - [Batch script di automazione](#batch-script-di-automazione)
 - [Requisiti di Sistema](#requisiti-di-sistema)
 - [Organizzazione dei Test](#organizzazione-dei-test)
@@ -26,7 +26,7 @@ Questa directory contiene le risorse per il collaudo automatizzato della libreri
 
 # Introduzione
 
-Questa directory contiene due sottocartelle con varie avventure sorgenti Alan che impiegano la Libreria Standard Italiana; lo scopo di queste "avventure" è di testare in automatico alcune caratteristiche mirate della liberia.
+Questa directory contiene tre sottocartelle con varie avventure sorgenti Alan che impiegano la Libreria Standard Italiana; lo scopo di queste "avventure" è di testare in automatico alcune caratteristiche mirate della liberia.
 
 Alle varie avventure di test sono associati uno o più più script di comandi (`*.a3sol`) per gestire sessioni di gioco automatizzate la cui trascrizione verrà salvata in un file di log (`*.a3log`), simulando così in modo rapido una gran quantità di partite (prestabilite).
 
@@ -36,26 +36,33 @@ Questi test sono utili a verificare l'impatto globale delle modifiche al codice 
 
 Gli script in questa directory sono studiati per essere eseguiti su sistema operativo Windows (testati su Windows 10) tramite CMD (interprete della riga di comando, o "shell").
 
-I test sono suddivi in due gruppi, raccolti in cartelle separate:
+I test sono suddivisi in diversi gruppi, raccolti in cartelle separate, e vi sono due tipologie di test:
 
-- [`/casa/`][casa] — Una sola avventura, molti test.
-- [`/vari/`][vari] — Molte avventure, uno o più test su ciascuna.
+|          cartella          |                tipologia test                |
+|----------------------------|----------------------------------------------|
+| [`/casa/`][casa]           | Una sola avventura, molti test.              |
+| [`/vari/`][vari]           | Molte avventure, uno o più test su ciascuna. |
+| [`/vestiario/`][vestiario] | Una sola avventura, molti test.              |
 
 L'esecuzione dei test è contrallata dal seguente script:
 
 - [`TESTA_TUTTO.bat`][TESTA_TUTTO]
 
-## Test multipli
 
-- [`/casa/`][casa]
+## Test multipli su avventura singola
 
-Nella cartella [`casa/`][casa] viene utilizzata una sola avventura sorgente su cui eseguire una moltitudine di test. I vantaggi di questo approccio sono la semplicità gestionale e la complessità dell'ambiente di gioco/test, dato che il ricorso ad una singola avventura consente di creare un mondo di gioco più vasto, complesso e articolato.
+|          cartella          |        avventura         |
+|----------------------------|--------------------------|
+| [`/casa/`][casa]           | [`casa.alan`][casa.alan] |
+| [`/vestiario/`][vestiario] | [`ega.alan`][ega.alan]   |
+
+Nelle cartelle [`casa/`][casa] e [`/vestiario/`][vestiario] viene utilizzata una sola avventura sorgente su cui eseguire una moltitudine di test. I vantaggi di questo approccio sono la semplicità gestionale e la complessità dell'ambiente di gioco/test, dato che il ricorso ad una singola avventura consente di creare un mondo di gioco più vasto, complesso e articolato.
 
 Ogni script di test và a testare specifiche caratteristiche nell'avventura (un gruppo di verbi, alcune funzionalità mirate, interazioni tra attori, ecc.), e l'avventura sorgente è studiata per offrire uno scenario che si presti ai vari test.
 
-L'avventura in questa cartella contiene parecchi luogi interni ed esterni, personaggi ed attori di varie specie, arradamenti, dispositivi, ecc. Si tratta di un ambiente di test su larga scala, più vicino a una simulazione di gioco reale. E, poiché vi è un singolo sorgente da gestire nel corso del tempo, viene investita più energia per abbellirne i contenuti.
+L'avventura in ciascuna di queste cartelle contiene parecchi luogi interni ed esterni, personaggi ed attori di varie specie, arradamenti, dispositivi, ecc. Si tratta di un ambiente di test su larga scala, più vicino a una simulazione di gioco reale. E, poiché vi è un singolo sorgente da gestire nel corso del tempo, viene investita più energia per abbellirne i contenuti.
 
-## Test singoli
+## Test singoli su avventure multiple
 
 - [`/vari/`][vari]
 
@@ -190,8 +197,13 @@ Options:
 <!-- File di Progetto -->
 
 [TESTA_TUTTO]: ./TESTA_TUTTO.bat
+
 [casa]: ./casa/ "Naviga alla cartella"
 [vari]: ./vari/ "Naviga alla cartella"
+[vestiario]: ./vestiario/ "Naviga alla cartella"
+
+[casa.alan]: ./casa/casa.alan "Vedi sorgente avventura"
+[ega.alan]: ./vestiario/ega.alan "Vedi sorgente avventura"
 
 
 <!-- Riferimenti Esterni -->

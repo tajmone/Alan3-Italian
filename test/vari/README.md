@@ -21,9 +21,9 @@ Questa cartella contiene avventure su ciascuna delle quali vengono eseguiti uno 
 
 # Script di esecuzione
 
-Per eseguire tutti i test in questa directory, eseguire:
+Per eseguire tutti i test in questa directory, eseguire lo script batch nella cartella superiore:
 
-- [`TESTVARI.bat`][TESTVARI]
+- [`../TESTA_TUTTO.bat`][TESTA_TUTTO]
 
 # Organizzazione dei test
 
@@ -45,7 +45,7 @@ Ne consegue che non bisogna creare avventure il cui nome costituisca la parte in
 
 <!-- File di Progetto -->
 
-[TESTVARI]: ./TESTVARI.bat "Vedi sorgente"
+[TESTA_TUTTO]: ../TESTA_TUTTO.bat
 
 
 <!-- EOF -->

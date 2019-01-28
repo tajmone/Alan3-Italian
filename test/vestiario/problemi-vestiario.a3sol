@@ -1,0 +1,57 @@
+; ******************************************************************************
+; *                                                                            *
+; *                         PROBLEMI CON IL VESTIARIO                          *
+; *                                                                            *
+; ******************************************************************************
+; Lo scopo di questo test è portare alla luce vari problemi del vestriario.
+nord
+nord
+; ==============================================================================
+; DEBUG VALORI COPERTURA DEGLI INDUMENTI
+; ==============================================================================
+dbg gonna
+dbg jeans
+dbg la salopette
+dbg collant
+; ==============================================================================
+; TESTA GONNA
+; ==============================================================================
+; La libreria è studiata per consentire di indossare/rimuovere indumenti per le
+; gambe quando si sta indossando una gonna, in base all'assunto che potendola
+; sollevare ciò dovrebbe essere fattibile ai fini del realismo.
+indossa la gonna
+; ------------------------------------------------------------------------------
+; GONNA + COLLANT
+; ------------------------------------------------------------------------------
+indossa i collant
+; ------------------------------------------------------------------------------
+; GONNA + PANTALONI
+; ------------------------------------------------------------------------------
+; Nonostante i pantaloni abbiano un valore di 'val_gambe' (=16) inferiore ad una
+; gonna (=32) non è possibile indossarli mentre si indossa una gonna.
+; 
+; ** ERRORE??? ** È da considerarsi un errore o è voluto che sia così?
+indossa i jeans
+; Verifichiamo se rimuovendo i collant cambia qualcosa:
+togliti i collant
+indossa i jeans
+; ==============================================================================
+; TESTA SALOPETTE
+; ==============================================================================
+; Dato che le tute da lavoro (come indicato nella Tabella del Vestiario) hanno
+; lo stesso valore di 'val_gambe' delle gonne, alla fine è possibile indossare
+; indumenti per le gambe (di strati inferiori) anche mentre si indossa una tuta
+; da lavoro:
+spogliati
+esamina la salopette
+indossa la salopette
+; ------------------------------------------------------------------------------
+; SALOPETTE + COLLANT
+; ------------------------------------------------------------------------------
+; ** ERRORE!!! ** La tuta salopette dovrebbe impedire di indossare indumenti per
+;                 le gambe! Non è come una gonna che può essere sollevata.
+indossa i collant
+; ------------------------------------------------------------------------------
+; SALOPETTE + PANTALONI
+; ------------------------------------------------------------------------------
+indossa i jeans

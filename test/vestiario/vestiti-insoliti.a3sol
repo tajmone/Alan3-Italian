@@ -1,0 +1,62 @@
+; ******************************************************************************
+; *                                                                            *
+; *                         TESTA VESTIARIO NON COMUNE                         *
+; *                                                                            *
+; ******************************************************************************
+; Testa indumenti insoliti per vedere come la libreria riesce a gestirli.
+nord
+ovest
+nord
+; ==============================================================================
+; ATTREZZATURA SPORTIVA
+; ==============================================================================
+esamina il passamontagna
+dbg passamontagna
+; Questi occhiali hanno val_testa=4 e sono indossabili sopra il passamontagna:
+esamina gli occhiali
+dbg occhiali
+; ------------------------------------------------------------------------------
+; PASSAMONTAGNA + OCCHIALI SCI
+; ------------------------------------------------------------------------------
+; Gli occhiali da sci dovrebbero essere indossabili sul passamontagna:
+indossa il passamontagna
+indossa gli occhiali
+inventario
+; ** NOTA ** Il problema qui è che questi confliggeranno con altri indumenti per
+;            la testa, come i cappelli, poiché non vi è distinzione tra testa e
+;            viso nelle zone degli indumenti.
+;
+; Testa ordine d'indossamento inventarioerso:
+togliti gli occhiali e il passamontagna
+; ** ERRORE!! ** Il verbo 'togliti' dovrebbe supportore più parametri!
+togliti gli occhiali
+togliti il passamontagna
+indossa gli occhiali
+indossa il passamontagna
+; ==============================================================================
+; CAPI SENZA VALORI COPERTURA (ORNAMENTALI)
+; ==============================================================================
+; Alcuni indossabili, come orologi, collane, ecc., possono essere creati senza
+; assegnare valori di copertura zona, così saranno liberamente indossabili, a
+; prescindere dagli altri capi.
+esamina l'orologio
+dbg orologio
+indossa l'orologio
+inventario
+; ------------------------------------------------------------------------------
+; INDOSSARE MOLTEPLICI INDUMENTI SIMILI (SCIARPE)
+; ------------------------------------------------------------------------------
+; Sebbene questa soluzione rapida possa andare bene in molti contesti, impedisce
+; però alla libreria di verificare se il giocatore cerca di indossare molteplici
+; indumenti simili in contemporanea.
+esamina la sciarpa bianca
+dbg sciarpa bianca
+esamina la sciarpa blu
+dbg sciarpa blu
+esamina la sciarpa nera
+dbg sciarpa nera
+; INDOSSA PIÙ SCIAPRE:
+indossa la sciarpa bianca
+indossa la sciarpa blu
+indossa la sciarpa nera
+inventario

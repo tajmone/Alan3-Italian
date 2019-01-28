@@ -1,0 +1,235 @@
+
+
+Emporio Giorgio Alani 
+Un set per testare il vestiario. 
+(C) Tristano Ajmone, 2019. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1862. 
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati. 
+
+Digita USCITE per visualizzare la lista di uscite disponibili in una stanza. 
+Usa il verbo DBG INDUMENTO per mostrare i valori di copertura di un capo di
+vestiario.
+
+
+Davanti all'Emporio Alani
+Ti trovi di fronte all'entrata dell'Emporio Giorgio Alani. Due imponenti porte
+in ottone attendono di condurti a nord, dentro il tempio della moda.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                           Emporio Giorgio Alani                            *
+> ; *                                                                            *
+> ; *                                 Test Base                                  *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; ==============================================================================
+> ; ABBIGLIAMENTO EROE
+> ; ==============================================================================
+> ; Gli indumenti indossati dal protagonisti vengono descritti come "tuoi", per
+> ; distinguerli dai vestiti dell'emporio, che l'eroe indosserà per provarli.
+> ; Qui vogliamo testare come funzionano i vari aggettivi, nomi alternativi, e gli
+> ; aggettivi dei vari indumenti.
+> ; ------------------------------------------------------------------------------
+> inventario
+Non stai portando niente. Stai indossando la tua canottiera, le tue sneakers, i
+tuoi boxer e i tuoi calzini.
+
+> esamina le mie scarpe
+Le tue care vecchie sneakers nere, delle Converse originali, decisimante logore.
+
+> esamina i boxer
+Sono solo un paio di boxer bianchi, mutande comode da indossare.
+
+> esamina i miei boxer
+Sono solo un paio di boxer bianchi, mutande comode da indossare.
+
+> esamina i miei boxer bianchi
+Sono solo un paio di boxer bianchi, mutande comode da indossare.
+
+> esamina i boxer bianchi
+Sono solo un paio di boxer bianchi, mutande comode da indossare.
+
+> ; ==============================================================================
+> ; PORTE AUTOMATICHE
+> ; ==============================================================================
+> esamina le porte
+Incisa sulle grosse portone d'ottone, l'aquila stilizzata del logo "GA" ti
+scruta come un d*o che vigila su uno dei suoi umili servi. Le porte sono prive
+di maniglie, ma scorgi un piccolo sensore nascosto nel telaio.
+
+> esamina il telaio
+L'entrata non è importante ai fini del gioco.
+
+> esamina il sensore
+L'entrata non è importante ai fini del gioco.
+
+> nord
+Come ti avvicini, le porte scorrono magicamente via per lasciarti passare.
+
+Atrio dell'Emporio Alani
+Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
+in ottone conducono a sud, fuori dal tempio del consumismo. C'è la tua
+assistente personale qui.
+
+> ; ==============================================================================
+> ; MAPPA EMPORIO
+> ; ==============================================================================
+> ; Una breve ricognizione della mappa dell'Emprio Alani...
+> esamina l'assistente
+È la tua assistente personale per lo shopping. L'assistente non sta portando
+niente.
+
+> ; Ora, un giro dell'emporio in senso orario...
+> ovest
+Reparto Donna
+Non vi è sogno di moda femminile che i vestiti di questo reparto non possano
+esaudire. 
+
+L'assistente ti segue.
+
+> nord
+Reparto Abbigliamento Sportivo
+Attorno a te vedi abbigliamento e attrezzatura per più sport di quanti tu
+conosca. Puoi vedere un passamontagna, un paio di occhiali da sci, un orologio, 
+una sciarpa bianca, una sciarpa blu e una sciarpa nera qui. 
+
+L'assistente ti segue.
+
+> nord
+Reparto Abbigliamento Lavoro e Antinfortunistica
+Qui puoi trovare uniformi e accessori antinfortunistici per varie professioni. 
+
+L'assistente ti segue.
+
+> est
+Reparto #1 (vuoto)
+Questo reparto non è ancora stato assegnato; i suoi scaffali sono vuoti. 
+
+L'assistente ti segue.
+
+> est
+Reparto #2 (vuoto)
+Questo reparto non è ancora stato assegnato; i suoi scaffali sono vuoti. 
+
+L'assistente ti segue.
+
+> sud
+Reparto costumi
+Qui puoi trovare un custome per ogni occasione. 
+
+L'assistente ti segue.
+
+> sud
+Reparto Uomo
+Qui puoi trovare tutto ciò che un uomo desidererebbe indossare. Puoi vedere una 
+T-shirt qui. 
+
+L'assistente ti segue.
+
+> ovest
+Atrio dell'Emporio Alani
+Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
+in ottone conducono a sud, fuori dal tempio del consumismo. 
+
+L'assistente ti segue.
+
+> ; ------------------------------------------------------------------------------
+> ; CAMERINO
+> ; ------------------------------------------------------------------------------
+> ; Verifichiamo che tutte le uscite siano collegate correttamente...
+> nord
+Camerino
+Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
+gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+
+> sudovest
+Reparto Donna
+Non vi è sogno di moda femminile che i vestiti di questo reparto non possano
+esaudire. L'assistente ti raggiunge di corsa dall'atrio.
+
+> nordest
+Camerino
+Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
+gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+
+> ovest
+Reparto Abbigliamento Sportivo
+Attorno a te vedi abbigliamento e attrezzatura per più sport di quanti tu
+conosca. Puoi vedere un passamontagna, un paio di occhiali da sci, un orologio, 
+una sciarpa bianca, una sciarpa blu e una sciarpa nera qui. L'assistente ti
+raggiunge di corsa dal reparto donna.
+
+> est
+Camerino
+Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
+gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+
+> nordovest
+Reparto Abbigliamento Lavoro e Antinfortunistica
+Qui puoi trovare uniformi e accessori antinfortunistici per varie professioni. 
+L'assistente ti raggiunge di corsa dal reparto sportivo.
+
+> sudest
+Camerino
+Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
+gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+
+> nord
+Reparto #1 (vuoto)
+Questo reparto non è ancora stato assegnato; i suoi scaffali sono vuoti. 
+L'assistente ti raggiunge di corsa dal reparto lavoro.
+
+> sud
+Camerino
+Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
+gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+
+> nordest
+Reparto #2 (vuoto)
+Questo reparto non è ancora stato assegnato; i suoi scaffali sono vuoti. 
+L'assistente ti raggiunge di corsa dal reparto 1.
+
+> sudovest
+Camerino
+Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
+gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+
+> est
+Reparto costumi
+Qui puoi trovare un custome per ogni occasione. L'assistente ti raggiunge di
+corsa dal reparto 2.
+
+> ovest
+Camerino
+Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
+gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+
+> sudest
+Reparto Uomo
+Qui puoi trovare tutto ciò che un uomo desidererebbe indossare. Puoi vedere una 
+T-shirt qui. L'assistente ti raggiunge di corsa dal reparto costumi.
+
+> nordovest
+Camerino
+Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
+gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+
+> sud
+Atrio dell'Emporio Alani
+Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
+in ottone conducono a sud, fuori dal tempio del consumismo. L'assistente ti
+raggiunge di corsa dal reparto uomo.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

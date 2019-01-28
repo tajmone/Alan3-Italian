@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<trizbort version="1.7.1.0">
+	<info>
+		<title>Mappa dell'Emporio Giorgio Alani</title>
+		<author>Tristano Ajmoe</author>
+		<description>Mappa dell'Emporio Giorgio Alani, una mini avventura per testare il vestiario della libreria Alan Italian.</description>
+	</info>
+	<map>
+		<room id="1" name="ATRIO" subtitle="" x="-96" y="-96" w="128" h="96" region="Emporio Giorgio Alani" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
+		<room id="2" name="ENTRATA EMPORIO" subtitle="Per strada." x="-96" y="64" w="128" h="64" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" isStartRoom="yes" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
+		<line id="3" name="north" description="" door="yes" lockable="no" openable="no" locked="no" open="no" startText="S" endText="N">
+			<dock index="0" id="1" port="s" />
+			<dock index="1" id="2" port="n" />
+		</line>
+		<room id="4" name="REP. UOMO" subtitle="" x="64" y="-96" w="128" h="96" region="Emporio Giorgio Alani" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
+		<line id="5" name="" description="" startText="E" endText="O">
+			<dock index="0" id="1" port="e" />
+			<dock index="1" id="4" port="w" />
+		</line>
+		<room id="6" name="REP. DONNA" subtitle="" x="-256" y="-96" w="128" h="96" region="Emporio Giorgio Alani" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
+		<line id="7" name="" description="" startText="E" endText="O">
+			<dock index="0" id="6" port="e" />
+			<dock index="1" id="1" port="w" />
+		</line>
+		<room id="8" name="CAMERINO" subtitle="" x="-96" y="-224" w="128" h="96" region="Emporio Giorgio Alani" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
+		<line id="9" name="" description="" startText="S" endText="N">
+			<dock index="0" id="8" port="s" />
+			<dock index="1" id="1" port="n" />
+		</line>
+		<line id="10" name="" description="" startText="NE" endText="SO">
+			<dock index="0" id="6" port="ne" />
+			<dock index="1" id="8" port="sw" />
+		</line>
+		<line id="11" name="" description="" startText="SE" endText="NO">
+			<dock index="0" id="8" port="se" />
+			<dock index="1" id="4" port="nw" />
+		</line>
+		<room id="12" name="REP. SPORT" subtitle="" x="-256" y="-224" w="128" h="96" region="Emporio Giorgio Alani" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
+		<line id="13" name="" description="" startText="N" endText="S">
+			<dock index="0" id="6" port="n" />
+			<dock index="1" id="12" port="s" />
+		</line>
+		<line id="14" name="" description="" startText="E" endText="O">
+			<dock index="0" id="12" port="e" />
+			<dock index="1" id="8" port="w" />
+		</line>
+		<room id="15" name="REP. COSTUMI" subtitle="" x="64" y="-224" w="128" h="96" region="Emporio Giorgio Alani" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
+		<line id="17" name="" description="" startText="O" endText="E">
+			<dock index="0" id="15" port="w" />
+			<dock index="1" id="8" port="e" />
+		</line>
+		<line id="16" name="" description="" startText="N" endText="S">
+			<dock index="0" id="4" port="n" />
+			<dock index="1" id="15" port="s" />
+		</line>
+		<room id="18" name="REP. LAVORO" subtitle="" x="-256" y="-352" w="128" h="96" region="Emporio Giorgio Alani" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
+		<line id="19" name="" description="" startText="S" endText="N">
+			<dock index="0" id="18" port="s" />
+			<dock index="1" id="12" port="n" />
+		</line>
+		<room id="20" name="REPARTO 1" subtitle="( non assegnato )" x="-96" y="-352" w="128" h="96" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
+		<room id="21" name="REPARTO 2" subtitle="( non assegnato )" x="64" y="-352" w="128" h="96" region="NoRegion" handDrawn="yes" allcornersequal="yes" ellipse="no" roundedCorners="no" octagonal="no" cornerTopLeft="15" cornerTopRight="15" cornerBottomLeft="15" cornerBottomRight="15" borderstyle="Solid" description="" roomFill="" secondFill="" secondFillLocation="Bottom" roomBorder="" roomLargeText="" roomSubtitleColor="" roomSmallText="" ZOrder="0" />
+		<line id="22" name="" description="" startText="S" endText="N">
+			<dock index="0" id="21" port="s" />
+			<dock index="1" id="15" port="n" />
+		</line>
+		<line id="23" name="" description="" startText="S" endText="N">
+			<dock index="0" id="20" port="s" />
+			<dock index="1" id="8" port="n" />
+		</line>
+		<line id="24" name="" description="" startText="E" endText="O">
+			<dock index="0" id="18" port="e" />
+			<dock index="1" id="20" port="w" />
+		</line>
+		<line id="25" name="" description="" startText="O" endText="E">
+			<dock index="0" id="21" port="w" />
+			<dock index="1" id="20" port="e" />
+		</line>
+		<line id="26" name="" description="" startText="SE" endText="NO">
+			<dock index="0" id="18" port="se" />
+			<dock index="1" id="8" port="nw" />
+		</line>
+		<line id="27" name="" description="" startText="SO" endText="NE">
+			<dock index="0" id="21" port="sw" />
+			<dock index="1" id="8" port="ne" />
+		</line>
+	</map>
+	<settings>
+		<colors>
+			<canvas>White</canvas>
+			<border>MidnightBlue</border>
+			<line>MidnightBlue</line>
+			<selectedLine>Gold</selectedLine>
+			<hoverLine>DarkOrange</hoverLine>
+			<subTitle>MidnightBlue</subTitle>
+			<smallText>MidnightBlue</smallText>
+			<lineText>MidnightBlue</lineText>
+			<grid>#F5F5F5</grid>
+			<startRoom>GreenYellow</startRoom>
+			<endRoom>Red</endRoom>
+		</colors>
+		<regions>
+			<Emporio____Giorgio____Alani Name="Emporio Giorgio Alani" TextColor="MidnightBlue">#FDFBB3</Emporio____Giorgio____Alani>
+			<NoRegion Name="NoRegion" TextColor="Blue">White</NoRegion>
+		</regions>
+		<fonts>
+			<room size="13">Arial</room>
+			<object size="11">Arial</object>
+			<subTitle size="9">Arial</subTitle>
+			<line size="9">Arial</line>
+		</fonts>
+		<grid>
+			<snapTo>yes</snapTo>
+			<visible>yes</visible>
+			<showOrigin>yes</showOrigin>
+			<size>32</size>
+		</grid>
+		<lines>
+			<width>2</width>
+			<arrowSize>12</arrowSize>
+			<textOffset>4</textOffset>
+		</lines>
+		<rooms>
+			<darknessStripeSize>24</darknessStripeSize>
+			<objectListOffset>4</objectListOffset>
+			<connectionStalkLength>32</connectionStalkLength>
+			<preferredDistanceBetweenRooms>64</preferredDistanceBetweenRooms>
+			<defaultRoomName>Cave</defaultRoomName>
+			<defaultRoomShape>0</defaultRoomShape>
+		</rooms>
+		<ui>
+			<handleSize>12</handleSize>
+			<snapToElementSize>16</snapToElementSize>
+		</ui>
+		<margins>
+			<documentSpecific>no</documentSpecific>
+			<horizontal>0</horizontal>
+			<vertical>0</vertical>
+		</margins>
+		<keypadNavigation>
+			<creationModifier>control</creationModifier>
+			<unexploredModifier>alt</unexploredModifier>
+		</keypadNavigation>
+	</settings>
+</trizbort>

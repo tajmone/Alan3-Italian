@@ -1,0 +1,62 @@
+; ******************************************************************************
+; *                                                                            *
+; *                           Emporio Giorgio Alani                            *
+; *                                                                            *
+; *                                 Test Base                                  *
+; *                                                                            *
+; ******************************************************************************
+; ==============================================================================
+; ABBIGLIAMENTO EROE
+; ==============================================================================
+; Gli indumenti indossati dal protagonisti vengono descritti come "tuoi", per
+; distinguerli dai vestiti dell'emporio, che l'eroe indosserà per provarli.
+; Qui vogliamo testare come funzionano i vari aggettivi, nomi alternativi, e gli
+; aggettivi dei vari indumenti.
+; ------------------------------------------------------------------------------
+inventario
+esamina le mie scarpe
+esamina i boxer
+esamina i miei boxer
+esamina i miei boxer bianchi
+esamina i boxer bianchi
+; ==============================================================================
+; PORTE AUTOMATICHE
+; ==============================================================================
+esamina le porte
+esamina il telaio
+esamina il sensore
+nord
+; ==============================================================================
+; MAPPA EMPORIO
+; ==============================================================================
+; Una breve ricognizione della mappa dell'Emprio Alani...
+esamina l'assistente
+; Ora, un giro dell'emporio in senso orario...
+ovest
+nord
+nord
+est
+est
+sud
+sud
+ovest
+; ------------------------------------------------------------------------------
+; CAMERINO
+; ------------------------------------------------------------------------------
+; Verifichiamo che tutte le uscite siano collegate correttamente...
+nord
+sudovest
+nordest
+ovest
+est
+nordovest
+sudest
+nord
+sud
+nordest
+sudovest
+est
+ovest
+sudest
+nordovest
+sud

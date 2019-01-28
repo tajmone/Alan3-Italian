@@ -1,0 +1,44 @@
+; ******************************************************************************
+; *                                                                            *
+; *                       TESTA ASSISTENTE PERSONALE EGA                       *
+; *                                                                            *
+; ******************************************************************************
+; Nell'Emporio Alani il nostro eroe è accolto da un'assistente personale che lo
+; seguirà ovunque egli vada nel negozio, tranne nel camerino o se l'eroe lascia
+; l'emporio. Questo test serve a verificare che l'atuomazione dell'assistente
+; funzioni come dovrebbe...
+nord
+esamina l'assistente
+; ==============================================================================
+; TESTA: SEGUIRE EROE
+; ==============================================================================
+est
+ovest
+; ------------------------------------------------------------------------------
+; Uscire dall'emporio
+; ------------------------------------------------------------------------------
+; Non dovrebbe seguirci fuori dal negozio...
+sud
+; Ma deve riprendere a seguirci appena rientriamo...
+nord
+est
+; ==============================================================================
+; IL CAMERINO
+; ==============================================================================
+; Non dovrebbe seguirci nel camerino...
+nordovest
+; Ma deve riprendere a seguirci appena ne usciamo...
+sudest
+ovest
+ovest
+; ------------------------------------------------------------------------------
+; Inseguire il Cliente
+; ------------------------------------------------------------------------------
+; Dato che il camerino si trova al centro dell'emporio, quando l'eroe esce dal
+; camerino e va in una stanza diversa da quella da cui era entrato, l'assistente
+; dovrà correre per l'emporio e raggiungere l'eroe...
+nordest
+sudest
+; E riprendere subito a seguirci...
+ovest
+
