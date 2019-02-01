@@ -7,12 +7,29 @@
 nord
 nord
 ; ==============================================================================
+; VESTITI ANNIDATI
+; ==============================================================================
+; La libreria definisce la classe 'indumento' come contenitore (per consentire
+; tasche, ecc.). Qui dobbiamo testare come libreria gestisce indumenti dentro ad
+; altri indumenti, e che indossare questi ultimi non vada a toccare i primi.
+esamina i miei pantaloni
+DBG i miei pantaloni
+; Dentro i pantaloni (tasche) c'è una kippah, che è un indumento.
+esamina la kippah
+DBG la kippah
+; ** ERRORE! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;              La kippah non dovrebbe risultare indossata, ma solo posseduta.
+;              La libreria deve verificare durante l'inizializzazione che solo
+;              quegli indumenti contenuti direttamente (DIRECTLY IN) nell'eroe 
+;              vengano considerati indossati.
+;               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; ==============================================================================
 ; DEBUG VALORI COPERTURA DEGLI INDUMENTI
 ; ==============================================================================
-dbg gonna
-dbg jeans
-dbg la salopette
-dbg collant
+DBG gonna
+DBG jeans
+DBG la salopette
+DBG collant
 ; ==============================================================================
 ; TESTA GONNA
 ; ==============================================================================

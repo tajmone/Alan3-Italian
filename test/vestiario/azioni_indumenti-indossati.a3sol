@@ -1,0 +1,74 @@
+; ******************************************************************************
+; *                                                                            *
+; *                   TEST MANIPOLAZIONE INDUMENTI INDOSSATI                   *
+; *                                                                            *
+; ******************************************************************************
+; Questo test è mirato a verificare che la libreria gestisca correttamente gli
+; indumenti indossati, ossia il loro trasferimento (implicito o esplicito) con
+; i vari verbi che possono (legittimamente o meno) spostare un indossato.
+nord
+nord
+; ------------------------------------------------------------------------------
+; TESTA: TOGLIERSI INDUMENTO INESISTENTE
+; ------------------------------------------------------------------------------
+; Più avanti nel test questo medesimo comando fallirà in silenzio (bug Alan?):
+togliti XYZZY
+; ==============================================================================
+; TESTA: DA ATTORI A OGGETTI INANIMATI
+; ==============================================================================
+; Proviamo a dislocare degli indossati dai loro indossanti a oggetti inanimati...
+; ------------------------------------------------------------------------------
+; TESTA 'metti' INDOSSATO -> CONTENITORE
+; ------------------------------------------------------------------------------
+; Testa il verbo 'metti' con indumento indossato...
+esamina il cesto
+; NOTA: I boxer sono attualmente indossati dall'Eroe, sotto i pantaloni!
+inventario
+esamina i boxer
+DBG i boxer
+metti i boxer in cesto
+; ** ERRORE!!! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;                 I boxer sono indossati dall'Eroe sotto i pantaloni, e non si
+;                 dovrebbe poterli spostare senza prima togliersi sia i pantaloni
+;                 che i boxer.
+;                 Questo spezza la logica degll'abbigliamento stratificato!
+;                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DBG i boxer
+; ** ERRORE!!! ** I boxer risultano ancora indossati e nell'abbigliamento (eroe):
+esamina il cesto
+ovest
+; ==============================================================================
+; TESTA: DA PNG A EROE
+; ==============================================================================
+; L'eroe può ottenere vestiti indossati dai PNG in diversi modi (prendi, chiedi,
+; ecc.), alcuni dei quali richiedono che il PNG sia compiacente, altri no.
+esamina l'assistente
+DBG gli stivaletti
+prendi gli stivaletti
+chiedi gli stivaletti all'assistente
+inventario
+; ** ERRORE!!! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;                 Gli stivaletti non risultano nell'inventario!
+;                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DBG gli stivaletti
+; ** ERRORE!!! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;                 Gli stivaletti sono ancora 'indossato' e 'IN indossati' (set)
+;                 dell'assistente:
+;                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+indossa gli stivaletti
+; ** ERRORE!!! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;                 Ovviamente, non è possibile indossare gli stivaletti dato che
+;                 risultano essere ancora indossati e posseduti dall'assistente
+;                 (PNG non 'compiacente')!
+;                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+togliti le sneakers
+indossa gli stivaletti
+; ------------------------------------------------------------------------------
+; BUG ANOMALO: TOGLIERSI INDUMENTO INESISTENTE
+; ------------------------------------------------------------------------------
+; Ritentiamo a disindossare un indumento inesistente, come all'inizio del test:
+togliti XYZZY
+; ** ERRORE!!! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;                 Ora 'togliti' fallisce in silenzio, il che sembra indicare che
+;                 qualcosa nel corso dei test abbia corrotto la memoria di ARun!
+;                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

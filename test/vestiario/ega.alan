@@ -395,6 +395,13 @@ EVERY cl_scarpe IsA indumento.
   INDEFINITE ARTICLE "un paio di"
 END EVERY.
 
+EVERY cl_stivali IsA indumento.
+  NAME stivali.
+  HAS articolo "gli".
+  HAS val_piedi 4.
+  INDEFINITE ARTICLE "un paio di"
+END EVERY.
+
 --==============================================================================
 -- MAGLIETTE, CAMICIE E ALTRI INDUMENTI 'val_tronco 8'
 --==============================================================================
@@ -416,20 +423,36 @@ EVERY proto_gonna IsA indumento.
   HAS val_gambe 32.
 END EVERY.
 
-EVERY proto_pantaloni IsA indumento.
-  NAME pantaloni.
-  HAS articolo "i".
-  INDEFINITE ARTICLE "un paio di"
-  HAS val_gambe 16.
-END EVERY.
-
 EVERY proto_collant IsA indumento.
   NAME collant.
   HAS articolo "i".
   INDEFINITE ARTICLE "un paio di"
   HAS val_gambe 8.
 END EVERY.
+--------------------------------------------------------------------------------
+-- Pantaloni
+--------------------------------------------------------------------------------
+-- Dato che la classe 'indumento' è definita come contenitore (per consentire di
+-- avere tasche, ecc.) sfrutteremo questa funzionalità nei pantaloni, così
+-- da poter testare come la libreria gestisce oggetti annidati nel vestiario.
 
+EVERY proto_pantaloni IsA indumento.
+  NAME pantaloni.
+  NAME tasche. --> per catturare "metti ogg in tasche"
+  HAS articolo "i".
+  INDEFINITE ARTICLE "un paio di"
+  HAS val_gambe 16.
+  -- ----------------------------------
+  -- Personalizza descrizione contenuti
+  -- ----------------------------------
+  CONTAINER
+    HEADER
+      "Nelle tasche dei pantaloni"
+      IF COUNT IsA thing, DIRECTLY IN THIS >1
+        THEN "ci sono"
+        ELSE "c'è"
+      END IF.  
+END EVERY.
 
 --==============================================================================
 -- TUTE DA LAVORO
@@ -440,6 +463,16 @@ EVERY proto_tuta IsA indumento.
   HAS articolo "la".
   HAS val_tronco 8.
   HAS val_gambe 32.
+END EVERY.
+
+--==============================================================================
+-- ABITI DA DONNA (PEZZO UNICO)
+--==============================================================================
+EVERY cl_abito IsA indumento.
+  HAS articolo "l'".
+  NAME abito.
+  HAS topcover 8.
+  HAS botcover 32.
 END EVERY.
 
 
@@ -490,6 +523,32 @@ ADD TO EVERY indumento
           END IF.
           "|"
       END IF.
+      ------------------------
+      -- Mostra se è indossato
+      ------------------------
+      "$nÈ INDOSSATO:"
+      IF obj:indossato
+        THEN "Sì"
+        ELSE "No."
+      END IF.
+      -------------------------------------------
+      -- Mostra se è nell'abbigliamento dell'Eroe
+      -------------------------------------------
+      "$nIN ABBIGLIAMENTO (EROE):"
+      IF obj IN abbigliamento
+        THEN "Sì"
+        ELSE "No."
+      END IF.
+      -------------------------------------
+      -- Elenca gli attori che lo indossano
+      -------------------------------------
+      "$nIN 'INDOSSATI' DI:"
+      FOR EACH ac IsA ACTOR
+        DO
+          IF obj IN indossati OF ac
+            THEN "| " SAY ac.
+          END IF.
+      END FOR.
   END VERB dbg.
 END ADD TO indumento.
 
@@ -588,7 +647,14 @@ THE sedia IsA object AT ega_camerino.
   HAS xDesc "Una sedia in plastica.".
 END THE.
 
-
+THE cesto IsA contenitore_elencato AT ega_camerino.
+  HAS xDesc "Un cesto in vimini per gettare gli indumenti scartati.".
+  INITIALIZE
+    -- Facciamo in modo che il cesto possa contenere ogni indumento del gioco:
+    FOR EACH ind ISA indumento
+      DO INCLUDE ind IN THIS:consentiti.
+    END FOR.  
+END THE.
 --==============================================================================
 -- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -624,6 +690,16 @@ THE assistente_ega IsA femmina AT ega_atrio.
   HAS articolo "l'". 
   INDEFINITE FORM "la tua assistente personale"
   HAS xDesc "È la tua assistente personale per lo shopping.".
+
+  INITIALIZE
+    -- --------------------------------------------
+    -- Rendi indossato ogni indumento IN assistente
+    -- --------------------------------------------
+    FOR EACH ind IsA indumento, IN THIS
+      DO
+        MAKE ind indossato.
+        INCLUDE ind IN indossati OF THIS.
+    END FOR.
 END THE assistente_ega.
 
 -- Impedisci all'assistente di seguirci nel camerino:
@@ -647,6 +723,27 @@ EVENT Riattiva_Assistente
   END IF.
   MAKE assistente_ega seguendo.
 END EVENT.
+
+--==============================================================================
+-- Abbigliamento Assistente
+--==============================================================================
+-- Forniamo all'assistente dei vestiti di modo da poter testare la gestione di
+-- indumenti indossati dai PNG.
+
+THE abito_assist IsA cl_abito IN assistente_ega.
+  NAME abito.
+  NAME suo abito.
+  HAS xDesc "È un abito a pezzo unico, elegante.".
+  
+END THE.
+
+THE scarpe_assist IsA cl_stivali IN assistente_ega.
+  NAME stivaletti.
+  NAME suoi stivaletti.
+  HAS xDesc "Un paio di stivaletti in pelle da donna, con tacco alto, arrivano
+             fino alle ginocchia..".
+END THE.
+
 
 --==============================================================================
 -- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -793,7 +890,7 @@ END THE.
 --     l'eroe sparpaglierà per l'emporio.
 
 --==============================================================================
--- CLOTHING
+-- ABBIGLIAMENTO EROE
 --==============================================================================
 
 -- TODO:
@@ -804,8 +901,9 @@ END THE.
 
 THE calzini_eroe IsA cl_calzini IN abbigliamento.
   NAME calzini.
-  NAME mie calze bianche.
-  NAME miei calzini bianchi.
+  NAME calze.
+  NAME mie tue calze bianche.
+  NAME miei tuoi calzini bianchi.
   INDEFINITE ARTICLE "i tuoi"
   DEFINITE ARTICLE "i tuoi"
   HAS xDesc
@@ -815,15 +913,17 @@ END THE.
 
 THE boxer_eroe IsA cl_mutande IN abbigliamento.
   NAME boxer.
-  NAME miei boxer bianchi.
+  NAME miei tuoi boxer bianchi.
   INDEFINITE ARTICLE "i tuoi"
   DEFINITE ARTICLE "i tuoi"
   HAS xDesc "Sono solo un paio di boxer bianchi, mutande comode da indossare.".
 END THE.
 
+SYNONYMS boxers = boxer.
+
 THE canottiera_eroe IsA cl_canottiera IN abbigliamento.
   NAME canottiera.
-  NAME mia canottiera bianca.
+  NAME mia tua canottiera bianca.
   INDEFINITE ARTICLE "la tua"
   DEFINITE ARTICLE "la tua"
   HAS xDesc "Una semplice canottiera bianca, qualche macchia d'unto qui e là.".
@@ -832,13 +932,57 @@ END THE.
 THE scarpe_eroe IsA cl_scarpe IN abbigliamento.
   NAME sneakers.
   NAME sneaker.
-  NAME mie sneakers nere.
+  NAME mie tue sneakers nere.
   INDEFINITE ARTICLE "le tue"
   DEFINITE ARTICLE "le tue"
   HAS xDesc
     "Le tue care vecchie sneakers nere, delle Converse originali, decisimante logore.".
 END THE.
 
+--------------------------------------------------------------------------------
+-- Pantaloni
+--------------------------------------------------------------------------------
+-- I pantaloni hanno "tasche" (in realtà, sono solo contenitori, come tutti gli
+-- indumenti), e noi le sfrutteremo per testare oggetti annidati nei vestiti.
+
+THE pantaloni_eroe IsA proto_pantaloni IN abbigliamento.
+  NAME pantaloni.
+  NAME miei tuoi pantaloni viola.
+  INDEFINITE ARTICLE "i tuoi"
+  DEFINITE ARTICLE "i tuoi"
+  HAS xDesc "Un paio di pantaloni in cotone, color viola.".
+END THE pantaloni_eroe.
+
+-- Mettiamo degli oggetti nei pantaloni così da poter testare come la libreria
+-- gestisce oggetti annidati nel vestiario:
+
+-- -----------
+-- Portafoglio
+-- -----------
+THE portafoglio_eroe IsA object IN pantaloni_eroe.
+  NAME portafoglio.
+  NAME mio portafoglio.
+  INDEFINITE ARTICLE "il tuo"
+  DEFINITE ARTICLE "il tuo"
+  HAS xDesc "Un banale portafoglio in pelle.".
+END THE.
+
+SYNONYMS portafogli = portafoglio.
+
+-- ------
+-- Kippah
+-- ------
+THE kippah_eroe IsA indumento IN pantaloni_eroe.
+  NAME kippah.
+  NAME mia kippah.
+  HAS val_testa 2.
+  HAS articolo "la".
+  INDEFINITE ARTICLE "la tua"
+  DEFINITE ARTICLE "la tua"
+  HAS xDesc "La tua kippah, la porti con te ovunque tu vada.".
+END THE.
+
+SYNONYMS kippà, yarmulke = kippah.
 
 --------------------------------------------------------------------------------
 START AT ega_entrata.

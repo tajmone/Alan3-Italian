@@ -34,7 +34,7 @@ in ottone attendono di condurti a nord, dentro il tempio della moda.
 > ; ------------------------------------------------------------------------------
 > inventario
 Non stai portando niente. Stai indossando la tua canottiera, le tue sneakers, i
-tuoi boxer e i tuoi calzini.
+tuoi pantaloni, i tuoi boxer e i tuoi calzini.
 
 > esamina le mie scarpe
 Le tue care vecchie sneakers nere, delle Converse originali, decisimante logore.
@@ -78,8 +78,8 @@ assistente personale qui.
 > ; ==============================================================================
 > ; Una breve ricognizione della mappa dell'Emprio Alani...
 > esamina l'assistente
-È la tua assistente personale per lo shopping. L'assistente non sta portando
-niente.
+È la tua assistente personale per lo shopping. L'assistente sta portando un
+paio di stivaletti (indossato) e un abito (indossato).
 
 > ; Ora, un giro dell'emporio in senso orario...
 > ovest
@@ -142,8 +142,8 @@ L'assistente ti segue.
 > nord
 Camerino
 Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
-poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
-gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, un cesto, una 
+salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
 
 > sudovest
 Reparto Donna
@@ -153,8 +153,8 @@ esaudire. L'assistente ti raggiunge di corsa dall'atrio.
 > nordest
 Camerino
 Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
-poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
-gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, un cesto, una 
+salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
 
 > ovest
 Reparto Abbigliamento Sportivo
@@ -166,8 +166,8 @@ raggiunge di corsa dal reparto donna.
 > est
 Camerino
 Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
-poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
-gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, un cesto, una 
+salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
 
 > nordovest
 Reparto Abbigliamento Lavoro e Antinfortunistica
@@ -177,8 +177,8 @@ L'assistente ti raggiunge di corsa dal reparto sportivo.
 > sudest
 Camerino
 Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
-poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
-gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, un cesto, una 
+salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
 
 > nord
 Reparto #1 (vuoto)
@@ -188,8 +188,8 @@ L'assistente ti raggiunge di corsa dal reparto lavoro.
 > sud
 Camerino
 Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
-poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
-gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, un cesto, una 
+salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
 
 > nordest
 Reparto #2 (vuoto)
@@ -199,8 +199,8 @@ L'assistente ti raggiunge di corsa dal reparto 1.
 > sudovest
 Camerino
 Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
-poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
-gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, un cesto, una 
+salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
 
 > est
 Reparto costumi
@@ -210,8 +210,8 @@ corsa dal reparto 2.
 > ovest
 Camerino
 Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
-poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
-gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, un cesto, una 
+salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
 
 > sudest
 Reparto Uomo
@@ -221,8 +221,8 @@ T-shirt qui. L'assistente ti raggiunge di corsa dal reparto costumi.
 > nordovest
 Camerino
 Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
-poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
-gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, un cesto, una 
+salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
 
 > sud
 Atrio dell'Emporio Alani

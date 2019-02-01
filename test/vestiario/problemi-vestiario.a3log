@@ -34,23 +34,67 @@ assistente personale qui.
 > nord
 Camerino
 Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
-poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
-gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, un cesto, una 
+salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
 
+> ; ==============================================================================
+> ; VESTITI ANNIDATI
+> ; ==============================================================================
+> ; La libreria definisce la classe 'indumento' come contenitore (per consentire
+> ; tasche, ecc.). Qui dobbiamo testare come libreria gestisce indumenti dentro ad
+> ; altri indumenti, e che indossare questi ultimi non vada a toccare i primi.
+> esamina i miei pantaloni
+Un paio di pantaloni in cotone, color viola. Nelle tasche dei pantaloni ci sono 
+la tua kippah e il tuo portafoglio.
+
+> DBG i miei pantaloni
+'pantaloni' VALORI: | val_gambe: 16 | 
+È INDOSSATO: Sì 
+IN ABBIGLIAMENTO (EROE): Sì 
+IN 'INDOSSATI' DI: | hero
+
+> ; Dentro i pantaloni (tasche) c'è una kippah, che è un indumento.
+> esamina la kippah
+La tua kippah, la porti con te ovunque tu vada.
+
+> DBG la kippah
+'kippah' VALORI: | val_testa: 2 | 
+È INDOSSATO: Sì 
+IN ABBIGLIAMENTO (EROE): Sì 
+IN 'INDOSSATI' DI: | hero
+
+> ; ** ERRORE! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;              La kippah non dovrebbe risultare indossata, ma solo posseduta.
+> ;              La libreria deve verificare durante l'inizializzazione che solo
+> ;              quegli indumenti contenuti direttamente (DIRECTLY IN) nell'eroe 
+> ;              vengano considerati indossati.
+> ;               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > ; ==============================================================================
 > ; DEBUG VALORI COPERTURA DEGLI INDUMENTI
 > ; ==============================================================================
-> dbg gonna
-'gonna rossa' VALORI: | val_gambe: 32 |
+> DBG gonna
+'gonna rossa' VALORI: | val_gambe: 32 | 
+È INDOSSATO: No. 
+IN ABBIGLIAMENTO (EROE): No. 
+IN 'INDOSSATI' DI:
 
-> dbg jeans
-'jeans' VALORI: | val_gambe: 16 |
+> DBG jeans
+'jeans' VALORI: | val_gambe: 16 | 
+È INDOSSATO: No. 
+IN ABBIGLIAMENTO (EROE): No. 
+IN 'INDOSSATI' DI:
 
-> dbg la salopette
-'salopette' VALORI: | val_tronco: 8 | val_gambe: 32 |
+> DBG la salopette
+'salopette' VALORI: | val_tronco: 8 | val_gambe: 32 | 
+È INDOSSATO: No. 
+IN ABBIGLIAMENTO (EROE): No. 
+IN 'INDOSSATI' DI:
 
-> dbg collant
-'collant bianchi' VALORI: | val_gambe: 8 |
+> DBG collant
+'collant bianchi' VALORI: | val_gambe: 8 | 
+È INDOSSATO: No. 
+IN ABBIGLIAMENTO (EROE): No. 
+IN 'INDOSSATI' DI:
 
 > ; ==============================================================================
 > ; TESTA GONNA
@@ -59,13 +103,18 @@ gonna rossa, un paio di collant bianchi e un paio di jeans qui.
 > ; gambe quando si sta indossando una gonna, in base all'assunto che potendola
 > ; sollevare ciò dovrebbe essere fattibile ai fini del realismo.
 > indossa la gonna
-Prendi la gonna rossa e la indossi.
+Prendi la gonna rossa. Stai già indossando la tua canottiera (indossato), le tue 
+sneakers (indossato), i tuoi pantaloni (indossato), i tuoi boxer (indossato) e 
+i tuoi calzini (indossato). Trying to put la gonna rossa on isn't very sensible.
 
 > ; ------------------------------------------------------------------------------
 > ; GONNA + COLLANT
 > ; ------------------------------------------------------------------------------
 > indossa i collant
-Prendi i collant bianchi e li indossi.
+Prendi i collant bianchi. Stai già indossando la tua canottiera (indossato), le
+tue sneakers (indossato), i tuoi pantaloni (indossato), i tuoi boxer (indossato) 
+e i tuoi calzini (indossato). Trying to put i collant bianchi on isn't very
+sensible.
 
 > ; ------------------------------------------------------------------------------
 > ; GONNA + PANTALONI
@@ -75,19 +124,18 @@ Prendi i collant bianchi e li indossi.
 > ; 
 > ; ** ERRORE??? ** È da considerarsi un errore o è voluto che sia così?
 > indossa i jeans
-Prendi i jeans. Stai già indossando i tuoi calzini (indossato), i tuoi boxer 
-(indossato), la tua canottiera (indossato), le tue sneakers (indossato), un
-paio di collant bianchi e una gonna rossa. Trying to put i jeans on isn't very
-sensible.
+Prendi i jeans. Stai già indossando la tua canottiera (indossato), le tue 
+sneakers (indossato), i tuoi pantaloni (indossato), i tuoi boxer (indossato) e 
+i tuoi calzini (indossato). Trying to put i jeans on isn't very sensible.
 
 > ; Verifichiamo se rimuovendo i collant cambia qualcosa:
 > togliti i collant
-Ti togli i collant bianchi.
+Non stai indossando i collant bianchi.
 
 > indossa i jeans
-Stai già indossando i tuoi boxer (indossato), la tua canottiera (indossato), le
-tue sneakers (indossato), i tuoi calzini (indossato) e una gonna rossa. Trying
-to put i jeans on isn't very sensible.
+Stai già indossando la tua canottiera (indossato), le tue sneakers (indossato), 
+i tuoi pantaloni (indossato), i tuoi boxer (indossato) e i tuoi calzini 
+(indossato). Trying to put i jeans on isn't very sensible.
 
 > ; ==============================================================================
 > ; TESTA SALOPETTE
@@ -104,7 +152,9 @@ Una tuta in denim a pezzo unico, con pantaloni a gambe larghe e una pettorina
 con bretelle.
 
 > indossa la salopette
-Prendi la salopette e la indossi.
+Prendi la salopette. Stai già indossando la tua canottiera (indossato), le tue 
+sneakers (indossato), i tuoi pantaloni (indossato), i tuoi boxer (indossato) e 
+i tuoi calzini (indossato). Trying to put la salopette on isn't very sensible.
 
 > ; ------------------------------------------------------------------------------
 > ; SALOPETTE + COLLANT
@@ -112,15 +162,17 @@ Prendi la salopette e la indossi.
 > ; ** ERRORE!!! ** La tuta salopette dovrebbe impedire di indossare indumenti per
 > ;                 le gambe! Non è come una gonna che può essere sollevata.
 > indossa i collant
-Indossi i collant bianchi.
+Stai già indossando la tua canottiera (indossato), le tue sneakers (indossato), 
+i tuoi pantaloni (indossato), i tuoi boxer (indossato) e i tuoi calzini 
+(indossato). Trying to put i collant bianchi on isn't very sensible.
 
 > ; ------------------------------------------------------------------------------
 > ; SALOPETTE + PANTALONI
 > ; ------------------------------------------------------------------------------
 > indossa i jeans
-Stai già indossando i tuoi calzini (indossato), i tuoi boxer (indossato), la tua 
-canottiera (indossato), le tue sneakers (indossato), un paio di collant bianchi 
-(indossato) e una salopette. Trying to put i jeans on isn't very sensible.
+Stai già indossando la tua canottiera (indossato), le tue sneakers (indossato), 
+i tuoi pantaloni (indossato), i tuoi boxer (indossato) e i tuoi calzini 
+(indossato). Trying to put i jeans on isn't very sensible.
 
 > 
 

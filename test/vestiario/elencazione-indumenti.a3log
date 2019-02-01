@@ -1,0 +1,97 @@
+
+
+Emporio Giorgio Alani 
+Un set per testare il vestiario. 
+(C) Tristano Ajmone, 2019. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1862. 
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati. 
+
+Digita USCITE per visualizzare la lista di uscite disponibili in una stanza. 
+Usa il verbo DBG INDUMENTO per mostrare i valori di copertura di un capo di
+vestiario.
+
+
+Davanti all'Emporio Alani
+Ti trovi di fronte all'entrata dell'Emporio Giorgio Alani. Due imponenti porte
+in ottone attendono di condurti a nord, dentro il tempio della moda.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                  TESTA ELENCAZIONE DI INDUMENTI INDOSSATI                  *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Questo test esplora come gli indumenti indossati dagli attori vengono elencati
+> ; quando si esamina un PNG, esegue l'inventario, ecc.
+> nord
+Come ti avvicini, le porte scorrono magicamente via per lasciarti passare.
+
+Atrio dell'Emporio Alani
+Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
+in ottone conducono a sud, fuori dal tempio del consumismo. C'è la tua
+assistente personale qui.
+
+> ; ==============================================================================
+> ; ESAMINA PNG
+> ; ==============================================================================
+> ; Il verba esamina usato sui PNG dovrebbe riportare quali indumenti indossano.
+> esamina l'assistente
+È la tua assistente personale per lo shopping. L'assistente sta portando un
+paio di stivaletti (indossato) e un abito (indossato).
+
+> ; ** ERRORE! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;               I vari "(indossato)" dovrebbero usare `vocale` per accordare
+> ;               genere e numero: "(indossata)", "(indossati)", ecc.!
+> ;               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; ** NOTA ** Forse questo messaggio dovrebbe separare l'elenco delle cose 
+> ;            trasportate da quelle indossate (come con l'Eroe).
+> ; ==============================================================================
+> ; L'EROE
+> ; ==============================================================================
+> nord
+Camerino
+Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, un cesto, una 
+salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+
+> ; ------------------------------------------------------------------------------
+> ; INVENTARIO
+> ; ------------------------------------------------------------------------------
+> ; L'inventario deve elencare separatamente gli oggetti trasportati e quelli
+> ; indossati.
+> inventario
+Non stai portando niente. Stai indossando la tua canottiera, le tue sneakers, i
+tuoi pantaloni, i tuoi boxer e i tuoi calzini.
+
+> ; ------------------------------------------------------------------------------
+> ; VERBO INDOSSA (FALLIMENTO)
+> ; ------------------------------------------------------------------------------
+> ; Quando l'azione di indossare non va in porto, il messaggio riporta tutti gli
+> ; indumenti indossati dall'Eroe:
+> indossa i jeans
+Prendi i jeans. Stai già indossando la tua canottiera (indossato), le tue 
+sneakers (indossato), i tuoi pantaloni (indossato), i tuoi boxer (indossato) e 
+i tuoi calzini (indossato). Trying to put i jeans on isn't very sensible.
+
+> ; ** NOTA ** Elencare tutti i capi indossati nel tentativo di segnalare che un
+> ;            indumento sta bloccando l'azione richiesta è un po' eccessivo, e in
+> ;            alcuni contesti potrebbe produrre un elenco piuttosto lungo.
+> ;            Sarebbe più elegante se il messaggio menzionasse l'indumento (o gli
+> ;            indumenti) specifici che prevengono l'azione.
+> ; ------------------------------------------------------------------------------
+> ; VERBO TOGLITI (FALLIMENTO)
+> ; ------------------------------------------------------------------------------
+> ; Come con 'indossa', anche 'togliti' riporta la lista degli indossati quando
+> ; non riesce a portare a termine l'azione:
+> togliti i boxer
+Stai indossando la tua canottiera, le tue sneakers, i tuoi pantaloni, i tuoi 
+boxer e i tuoi calzini. Trying to take i tuoi boxer off isn't very sensible.
+
+> ; ** NOTA ** A differenza di 'indossa', qui non si riporta "(indossato)" per
+> ;            ogni capo indossato.
+> ;            Anche qui il messaggio potrebbe essere più mirato, e riportare solo
+> ;            l'indumento che impedisce l'azione.
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

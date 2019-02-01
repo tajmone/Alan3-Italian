@@ -1,0 +1,102 @@
+
+
+Emporio Giorgio Alani 
+Un set per testare il vestiario. 
+(C) Tristano Ajmone, 2019. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1862. 
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati. 
+
+Digita USCITE per visualizzare la lista di uscite disponibili in una stanza. 
+Usa il verbo DBG INDUMENTO per mostrare i valori di copertura di un capo di
+vestiario.
+
+
+Davanti all'Emporio Alani
+Ti trovi di fronte all'entrata dell'Emporio Giorgio Alani. Due imponenti porte
+in ottone attendono di condurti a nord, dentro il tempio della moda.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                          TESTA INDUMENTI ANNIDATI                          *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; La libreria definisce la classe 'indumento' come contenitore (per consentire
+> ; tasche, ecc.). Qui dobbiamo testare come libreria gestisce indumenti dentro ad
+> ; altri indumenti, e che indossare questi ultimi non vada a toccare i primi.
+> ; 
+> ; ** NOTA ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;            Questo test diverrà utile in futuro, quando i problemi attuali di
+> ;            inizializzazione di indumenti annidati saranno risolti; allora con
+> ;            questo test sarà possibile approfondire casi limite e assicurarsi
+> ;            che future modifiche al codice non ne compromettano l'uso.
+> ;            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; ==============================================================================
+> ; TASCHE PANTALONI
+> ; ==============================================================================
+> esamina i miei pantaloni
+Un paio di pantaloni in cotone, color viola. Nelle tasche dei pantaloni ci sono 
+la tua kippah e il tuo portafoglio.
+
+> DBG i miei pantaloni
+'pantaloni' VALORI: | val_gambe: 16 | 
+È INDOSSATO: Sì 
+IN ABBIGLIAMENTO (EROE): Sì 
+IN 'INDOSSATI' DI: | hero
+
+> ; Dentro i pantaloni (tasche) c'è una kippah, che è un indumento.
+> esamina la kippah
+La tua kippah, la porti con te ovunque tu vada.
+
+> DBG la kippah
+'kippah' VALORI: | val_testa: 2 | 
+È INDOSSATO: Sì 
+IN ABBIGLIAMENTO (EROE): Sì 
+IN 'INDOSSATI' DI: | hero
+
+> ; ** ERRORE! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;               La kippah non dovrebbe risultare indossata, ma solo posseduta.
+> ;               La libreria deve verificare durante l'inizializzazione che solo
+> ;               quegli indumenti contenuti direttamente (DIRECTLY IN) nell'Eroe 
+> ;               vengano considerati indossati.
+> ;               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; ------------------------------------------------------------------------------
+> ; INDUMENTI ANNIDATI NON MANIPOLABILI
+> ; ------------------------------------------------------------------------------
+> ; La kippah è bloccata nei pantaloni poiché è considerata indossata:
+> lascia la kippah
+Prima dovresti toglierti la tua kippah.
+
+> ; ** ERRORE! ** Questo mostra le conseguenze inattese di questo problema.
+> togliti la kippah
+Ti togli la tua kippah.
+
+> esamina i miei pantaloni
+Un paio di pantaloni in cotone, color viola. Nelle tasche dei pantaloni c'è il
+tuo portafoglio.
+
+> ; ------------------------------------------------------------------------------
+> ; NON-INDOSSABILI CONSIDERATI INDOSSATI
+> ; ------------------------------------------------------------------------------
+> ; Nonostante il portafoglio non sia un'instanza di 'indumento', viene trattato
+> ; come se lo fosse da vari verbi:
+> lascia il portafoglio
+Prima dovresti toglierti il tuo portafoglio.
+
+> ; ** ERRORE! ** Il portafoglio non è indossato! (non è neanche un indumento)
+> togliti il portafoglio
+Il tuo portafoglio non è qualcosa che puoi indossare o toglierti.
+
+> ; ** CIRCOLO VIZIOSO **   Non possiamo posarlo finché non lo "disindossiamo",
+> ;                         Non possiamo disindossarlo perché non è un indumento!
+> svuota i miei pantaloni ; L'unico rimedio è la forza bruta...
+(prima prendi i tuoi pantaloni)
+Svuoti il contenuto dei pantaloni in terra.
+
+> esamina i miei pantaloni
+Un paio di pantaloni in cotone, color viola.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

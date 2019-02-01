@@ -1,0 +1,50 @@
+; ******************************************************************************
+; *                                                                            *
+; *                  TESTA ELENCAZIONE DI INDUMENTI INDOSSATI                  *
+; *                                                                            *
+; ******************************************************************************
+; Questo test esplora come gli indumenti indossati dagli attori vengono elencati
+; quando si esamina un PNG, esegue l'inventario, ecc.
+nord
+; ==============================================================================
+; ESAMINA PNG
+; ==============================================================================
+; Il verba esamina usato sui PNG dovrebbe riportare quali indumenti indossano.
+esamina l'assistente
+; ** ERRORE! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;               I vari "(indossato)" dovrebbero usare `vocale` per accordare
+;               genere e numero: "(indossata)", "(indossati)", ecc.!
+;               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; ** NOTA ** Forse questo messaggio dovrebbe separare l'elenco delle cose 
+;            trasportate da quelle indossate (come con l'Eroe).
+; ==============================================================================
+; L'EROE
+; ==============================================================================
+nord
+; ------------------------------------------------------------------------------
+; INVENTARIO
+; ------------------------------------------------------------------------------
+; L'inventario deve elencare separatamente gli oggetti trasportati e quelli
+; indossati.
+inventario
+; ------------------------------------------------------------------------------
+; VERBO INDOSSA (FALLIMENTO)
+; ------------------------------------------------------------------------------
+; Quando l'azione di indossare non va in porto, il messaggio riporta tutti gli
+; indumenti indossati dall'Eroe:
+indossa i jeans
+; ** NOTA ** Elencare tutti i capi indossati nel tentativo di segnalare che un
+;            indumento sta bloccando l'azione richiesta è un po' eccessivo, e in
+;            alcuni contesti potrebbe produrre un elenco piuttosto lungo.
+;            Sarebbe più elegante se il messaggio menzionasse l'indumento (o gli
+;            indumenti) specifici che prevengono l'azione.
+; ------------------------------------------------------------------------------
+; VERBO TOGLITI (FALLIMENTO)
+; ------------------------------------------------------------------------------
+; Come con 'indossa', anche 'togliti' riporta la lista degli indossati quando
+; non riesce a portare a termine l'azione:
+togliti i boxer
+; ** NOTA ** A differenza di 'indossa', qui non si riporta "(indossato)" per
+;            ogni capo indossato.
+;            Anche qui il messaggio potrebbe essere più mirato, e riportare solo
+;            l'indumento che impedisce l'azione.

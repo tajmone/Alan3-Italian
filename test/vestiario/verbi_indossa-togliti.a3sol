@@ -1,0 +1,28 @@
+; ******************************************************************************
+; *                                                                            *
+; *                      TESTA INDOSSA/TOGLITI INDUMENTI                       *
+; *                                                                            *
+; ******************************************************************************
+; Questo test verifica il corretto funzionamento dei verbi 'indossa' e 'togliti'
+; e che questi maneggino correttamenti gli attributi e altre proprietà degli
+; indumenti e il loro legame con gli attori che li indossano/rimuovono.
+nord
+nord
+; ==============================================================================
+; TESTA 'togliti'
+; ==============================================================================
+inventario
+DBG i boxer
+togliti i tuoi pantaloni
+togliti i boxer
+DBG i boxer
+; ==============================================================================
+; TESTA 'wear'
+; ==============================================================================
+DBG i jeans
+indossa i jeans
+DBG i jeans
+; ** ERRORE! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;               Il verbo 'indossa' avrebbe dovuto rendere i jeans 'indossato' e
+;               aggiungerli al set 'indossati' dell'Eroe!
+;               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

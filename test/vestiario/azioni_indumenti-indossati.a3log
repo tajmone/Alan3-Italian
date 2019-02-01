@@ -1,0 +1,164 @@
+
+
+Emporio Giorgio Alani 
+Un set per testare il vestiario. 
+(C) Tristano Ajmone, 2019. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1862. 
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati. 
+
+Digita USCITE per visualizzare la lista di uscite disponibili in una stanza. 
+Usa il verbo DBG INDUMENTO per mostrare i valori di copertura di un capo di
+vestiario.
+
+
+Davanti all'Emporio Alani
+Ti trovi di fronte all'entrata dell'Emporio Giorgio Alani. Due imponenti porte
+in ottone attendono di condurti a nord, dentro il tempio della moda.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                   TEST MANIPOLAZIONE INDUMENTI INDOSSATI                   *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Questo test è mirato a verificare che la libreria gestisca correttamente gli
+> ; indumenti indossati, ossia il loro trasferimento (implicito o esplicito) con
+> ; i vari verbi che possono (legittimamente o meno) spostare un indossato.
+> nord
+Come ti avvicini, le porte scorrono magicamente via per lasciarti passare.
+
+Atrio dell'Emporio Alani
+Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
+in ottone conducono a sud, fuori dal tempio del consumismo. C'è la tua
+assistente personale qui.
+
+> nord
+Camerino
+Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, un cesto, una 
+salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA: TOGLIERSI INDUMENTO INESISTENTE
+> ; ------------------------------------------------------------------------------
+> ; Più avanti nel test questo medesimo comando fallirà in silenzio (bug Alan?):
+> togliti XYZZY
+Non conosco la parola 'XYZZY'.
+
+> ; ==============================================================================
+> ; TESTA: DA ATTORI A OGGETTI INANIMATI
+> ; ==============================================================================
+> ; Proviamo a dislocare degli indossati dai loro indossanti a oggetti inanimati...
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'metti' INDOSSATO -> CONTENITORE
+> ; ------------------------------------------------------------------------------
+> ; Testa il verbo 'metti' con indumento indossato...
+> esamina il cesto
+Il cesto è vuoto.
+
+> ; NOTA: I boxer sono attualmente indossati dall'Eroe, sotto i pantaloni!
+> inventario
+Non stai portando niente. Stai indossando la tua canottiera, le tue sneakers, i
+tuoi pantaloni, i tuoi boxer e i tuoi calzini.
+
+> esamina i boxer
+Sono solo un paio di boxer bianchi, mutande comode da indossare.
+
+> DBG i boxer
+'boxer' VALORI: | val_gambe: 2 | 
+È INDOSSATO: Sì 
+IN ABBIGLIAMENTO (EROE): Sì 
+IN 'INDOSSATI' DI: | hero
+
+> metti i boxer in cesto
+Fatto, ora i tuoi boxer è nel cesto.
+
+> ; ** ERRORE!!! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;                 I boxer sono indossati dall'Eroe sotto i pantaloni, e non si
+> ;                 dovrebbe poterli spostare senza prima togliersi sia i pantaloni
+> ;                 che i boxer.
+> ;                 Questo spezza la logica degll'abbigliamento stratificato!
+> ;                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> DBG i boxer
+'boxer' VALORI: | val_gambe: 2 | 
+È INDOSSATO: Sì 
+IN ABBIGLIAMENTO (EROE): Sì 
+IN 'INDOSSATI' DI: | hero
+
+> ; ** ERRORE!!! ** I boxer risultano ancora indossati e nell'abbigliamento (eroe):
+> esamina il cesto
+Il cesto è vuoto.
+
+> ovest
+Reparto Abbigliamento Sportivo
+Attorno a te vedi abbigliamento e attrezzatura per più sport di quanti tu
+conosca. Puoi vedere un passamontagna, un paio di occhiali da sci, un orologio, 
+una sciarpa bianca, una sciarpa blu e una sciarpa nera qui. L'assistente ti
+raggiunge di corsa dall'atrio.
+
+> ; ==============================================================================
+> ; TESTA: DA PNG A EROE
+> ; ==============================================================================
+> ; L'eroe può ottenere vestiti indossati dai PNG in diversi modi (prendi, chiedi,
+> ; ecc.), alcuni dei quali richiedono che il PNG sia compiacente, altri no.
+> esamina l'assistente
+È la tua assistente personale per lo shopping. L'assistente sta portando un
+paio di stivaletti (indossato) e un abito (indossato).
+
+> DBG gli stivaletti
+'stivaletti' VALORI: | val_piedi: 4 | 
+È INDOSSATO: Sì 
+IN ABBIGLIAMENTO (EROE): No. 
+IN 'INDOSSATI' DI: | assistente
+
+> prendi gli stivaletti
+L'assistente non sarebbe d'accordo.
+
+> chiedi gli stivaletti all'assistente
+L'assistente ti dà gli stivaletti.
+
+> inventario
+Non stai portando niente. Stai indossando la tua canottiera, le tue sneakers, i
+tuoi pantaloni, i tuoi boxer e i tuoi calzini.
+
+> ; ** ERRORE!!! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;                 Gli stivaletti non risultano nell'inventario!
+> ;                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> DBG gli stivaletti
+'stivaletti' VALORI: | val_piedi: 4 | 
+È INDOSSATO: Sì 
+IN ABBIGLIAMENTO (EROE): No. 
+IN 'INDOSSATI' DI: | assistente
+
+> ; ** ERRORE!!! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;                 Gli stivaletti sono ancora 'indossato' e 'IN indossati' (set)
+> ;                 dell'assistente:
+> ;                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> indossa gli stivaletti
+Prendi gli stivaletti. L'assistente non sarebbe d'accordo.
+
+> ; ** ERRORE!!! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;                 Ovviamente, non è possibile indossare gli stivaletti dato che
+> ;                 risultano essere ancora indossati e posseduti dall'assistente
+> ;                 (PNG non 'compiacente')!
+> ;                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> togliti le sneakers
+Ti togli le tue sneakers.
+
+> indossa gli stivaletti
+L'assistente non sarebbe d'accordo.
+
+> ; ------------------------------------------------------------------------------
+> ; BUG ANOMALO: TOGLIERSI INDUMENTO INESISTENTE
+> ; ------------------------------------------------------------------------------
+> ; Ritentiamo a disindossare un indumento inesistente, come all'inizio del test:
+> togliti XYZZY
+
+> ; ** ERRORE!!! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;                 Ora 'togliti' fallisce in silenzio, il che sembra indicare che
+> ;                 qualcosa nel corso dei test abbia corrotto la memoria di ARun!
+> ;                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> 
+
+

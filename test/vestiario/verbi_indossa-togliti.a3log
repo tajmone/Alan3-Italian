@@ -1,0 +1,91 @@
+
+
+Emporio Giorgio Alani 
+Un set per testare il vestiario. 
+(C) Tristano Ajmone, 2019. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1862. 
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati. 
+
+Digita USCITE per visualizzare la lista di uscite disponibili in una stanza. 
+Usa il verbo DBG INDUMENTO per mostrare i valori di copertura di un capo di
+vestiario.
+
+
+Davanti all'Emporio Alani
+Ti trovi di fronte all'entrata dell'Emporio Giorgio Alani. Due imponenti porte
+in ottone attendono di condurti a nord, dentro il tempio della moda.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                      TESTA INDOSSA/TOGLITI INDUMENTI                       *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Questo test verifica il corretto funzionamento dei verbi 'indossa' e 'togliti'
+> ; e che questi maneggino correttamenti gli attributi e altre proprietà degli
+> ; indumenti e il loro legame con gli attori che li indossano/rimuovono.
+> nord
+Come ti avvicini, le porte scorrono magicamente via per lasciarti passare.
+
+Atrio dell'Emporio Alani
+Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
+in ottone conducono a sud, fuori dal tempio del consumismo. C'è la tua
+assistente personale qui.
+
+> nord
+Camerino
+Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, un cesto, una 
+salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+
+> ; ==============================================================================
+> ; TESTA 'togliti'
+> ; ==============================================================================
+> inventario
+Non stai portando niente. Stai indossando la tua canottiera, le tue sneakers, i
+tuoi pantaloni, i tuoi boxer e i tuoi calzini.
+
+> DBG i boxer
+'boxer' VALORI: | val_gambe: 2 | 
+È INDOSSATO: Sì 
+IN ABBIGLIAMENTO (EROE): Sì 
+IN 'INDOSSATI' DI: | hero
+
+> togliti i tuoi pantaloni
+Ti togli i tuoi pantaloni.
+
+> togliti i boxer
+Ti togli i tuoi boxer.
+
+> DBG i boxer
+'boxer' VALORI: | val_gambe: 2 | 
+È INDOSSATO: No. 
+IN ABBIGLIAMENTO (EROE): No. 
+IN 'INDOSSATI' DI:
+
+> ; ==============================================================================
+> ; TESTA 'wear'
+> ; ==============================================================================
+> DBG i jeans
+'jeans' VALORI: | val_gambe: 16 | 
+È INDOSSATO: No. 
+IN ABBIGLIAMENTO (EROE): No. 
+IN 'INDOSSATI' DI:
+
+> indossa i jeans
+Prendi i jeans e li indossi.
+
+> DBG i jeans
+'jeans' VALORI: | val_gambe: 16 | 
+È INDOSSATO: No. 
+IN ABBIGLIAMENTO (EROE): Sì 
+IN 'INDOSSATI' DI:
+
+> ; ** ERRORE! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;               Il verbo 'indossa' avrebbe dovuto rendere i jeans 'indossato' e
+> ;               aggiungerli al set 'indossati' dell'Eroe!
+> ;               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

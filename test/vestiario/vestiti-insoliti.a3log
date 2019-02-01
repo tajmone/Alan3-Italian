@@ -54,7 +54,10 @@ Un passamontagna invernale. Praticamente, un cappuccio con buchi per occhi e
 bocca, come quelli usati nelle rapine, hai presente?
 
 > dbg passamontagna
-'passamontagna' VALORI: | val_testa: 2 |
+'passamontagna' VALORI: | val_testa: 2 | 
+È INDOSSATO: No. 
+IN ABBIGLIAMENTO (EROE): No. 
+IN 'INDOSSATI' DI:
 
 > ; Questi occhiali hanno val_testa=4 e sono indossabili sopra il passamontagna:
 > esamina gli occhiali
@@ -62,7 +65,10 @@ Una padio di occhiali da sci, lente frontale singola (a forma di B) e una banda
 elastica per fissarli alla testa.
 
 > dbg occhiali
-'occhiali da sci' VALORI: | val_testa: 4 |
+'occhiali da sci' VALORI: | val_testa: 4 | 
+È INDOSSATO: No. 
+IN ABBIGLIAMENTO (EROE): No. 
+IN 'INDOSSATI' DI:
 
 > ; ------------------------------------------------------------------------------
 > ; PASSAMONTAGNA + OCCHIALI SCI
@@ -76,7 +82,8 @@ Prendi gli occhiali da sci e li indossi.
 
 > inventario
 Non stai portando niente. Stai indossando i tuoi calzini, i tuoi boxer, la tua 
-canottiera, le tue sneakers, un paio di occhiali da sci e un passamontagna.
+canottiera, le tue sneakers, i tuoi pantaloni, un paio di occhiali da sci e un 
+passamontagna.
 
 > ; ** NOTA ** Il problema qui è che questi confliggeranno con altri indumenti per
 > ;            la testa, come i cappelli, poiché non vi è distinzione tra testa e
@@ -98,8 +105,9 @@ Indossi gli occhiali da sci.
 
 > indossa il passamontagna
 Stai già indossando i tuoi boxer (indossato), la tua canottiera (indossato), le
-tue sneakers (indossato), i tuoi calzini (indossato) e un paio di occhiali da
-sci (indossato). Trying to put il passamontagna on isn't very sensible.
+tue sneakers (indossato), i tuoi pantaloni (indossato), i tuoi calzini 
+(indossato) e un paio di occhiali da sci (indossato). Trying to put il 
+passamontagna on isn't very sensible.
 
 > ; ==============================================================================
 > ; CAPI SENZA VALORI COPERTURA (ORNAMENTALI)
@@ -112,14 +120,18 @@ Un orologio sportivo digitale, con delle app per monitorare il cuore, la
 temperatura esterna, geo-localizzare, etc.
 
 > dbg orologio
-'orologio' VALORI: (nessuno)
+'orologio' VALORI: (nessuno) 
+È INDOSSATO: No. 
+IN ABBIGLIAMENTO (EROE): No. 
+IN 'INDOSSATI' DI:
 
 > indossa l'orologio
 Prendi l'orologio e lo indossi.
 
 > inventario
 Stai portando un passamontagna. Stai indossando i tuoi calzini, i tuoi boxer, 
-la tua canottiera, le tue sneakers, un orologio e un paio di occhiali da sci.
+la tua canottiera, le tue sneakers, i tuoi pantaloni, un orologio e un paio di 
+occhiali da sci.
 
 > ; ------------------------------------------------------------------------------
 > ; INDOSSARE MOLTEPLICI INDUMENTI SIMILI (SCIARPE)
@@ -131,19 +143,28 @@ la tua canottiera, le tue sneakers, un orologio e un paio di occhiali da sci.
 Una sciarpa bianca.
 
 > dbg sciarpa bianca
-'sciarpa bianca' VALORI: (nessuno)
+'sciarpa bianca' VALORI: (nessuno) 
+È INDOSSATO: No. 
+IN ABBIGLIAMENTO (EROE): No. 
+IN 'INDOSSATI' DI:
 
 > esamina la sciarpa blu
 Una sciarpa blu.
 
 > dbg sciarpa blu
-'sciarpa blu' VALORI: (nessuno)
+'sciarpa blu' VALORI: (nessuno) 
+È INDOSSATO: No. 
+IN ABBIGLIAMENTO (EROE): No. 
+IN 'INDOSSATI' DI:
 
 > esamina la sciarpa nera
 Una sciarpa nera.
 
 > dbg sciarpa nera
-'sciarpa nera' VALORI: (nessuno)
+'sciarpa nera' VALORI: (nessuno) 
+È INDOSSATO: No. 
+IN ABBIGLIAMENTO (EROE): No. 
+IN 'INDOSSATI' DI:
 
 > ; INDOSSA PIÙ SCIAPRE:
 > indossa la sciarpa bianca
@@ -158,7 +179,7 @@ Prendi la sciarpa nera e la indossi.
 > inventario
 Stai portando un passamontagna. Stai indossando una sciarpa bianca, una sciarpa
 blu, una sciarpa nera, i tuoi calzini, i tuoi boxer, la tua canottiera, le tue 
-sneakers, un orologio e un paio di occhiali da sci.
+sneakers, i tuoi pantaloni, un orologio e un paio di occhiali da sci.
 
 > 
 

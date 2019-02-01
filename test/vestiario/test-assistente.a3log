@@ -35,8 +35,8 @@ in ottone conducono a sud, fuori dal tempio del consumismo. C'è la tua
 assistente personale qui.
 
 > esamina l'assistente
-È la tua assistente personale per lo shopping. L'assistente non sta portando
-niente.
+È la tua assistente personale per lo shopping. L'assistente sta portando un
+paio di stivaletti (indossato) e un abito (indossato).
 
 > ; ==============================================================================
 > ; TESTA: SEGUIRE EROE
@@ -89,8 +89,8 @@ L'assistente ti segue.
 > nordovest
 Camerino
 Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
-poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
-gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, un cesto, una 
+salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
 
 > ; Ma deve riprendere a seguirci appena ne usciamo...
 > sudest
@@ -121,8 +121,8 @@ L'assistente ti segue.
 > nordest
 Camerino
 Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
-poterti spogliare e provare i vestiti. Puoi vedere una sedia, una salopette, una 
-gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, un cesto, una 
+salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
 
 > sudest
 Reparto Uomo
