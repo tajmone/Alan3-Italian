@@ -68,7 +68,7 @@ knees. In front of you, you can vaguely see the outlines of an Adventure that
 never was.
 
 SYSTEM ERROR: Stack is not empty after event execution
-At source line 3007 in '..\..\alanlib_ita\/lib_classi.i':
+At source line 2216 in '..\..\alanlib_ita\/lib_classi.i':
           END IF. "d'accordo."
 
 <If you are the creator of this piece of Interactive Fiction, please help debug

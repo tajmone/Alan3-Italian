@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
 <meta name="author" content="Tristano Ajmone">
-<title>Alan StdLib Italian: Definizioni</title>
+<title>Alan StdLib Italian: Classi Vestiario</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -434,7 +434,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Alan StdLib Italian: Definizioni</h1>
+<h1>Alan StdLib Italian: Classi Vestiario</h1>
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
@@ -445,19 +445,27 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Indice dei contenuti</div>
 <ul class="sectlevel1">
-<li><a href="#_le_restrizioni_verbali">Le Restrizioni Verbali</a>
+<li><a href="#_vestiario">Vestiario</a>
 <ul class="sectlevel2">
-<li><a href="#_elenco_delle_restrizioni_verbali">Elenco delle Restrizioni Verbali</a></li>
+<li><a href="#_labbigliamento_delleroe">L&#8217;abbigliamento dell&#8217;eroe</a></li>
+<li><a href="#_gli_indumenti">Gli indumenti</a>
+<ul class="sectlevel3">
+<li><a href="#_verbo_esamina">Verbo <code>esamina</code></a></li>
+<li><a href="#_verbo_indossa">Verbo <code>indossa</code></a></li>
+<li><a href="#_verbo_togliti">Verbo <code>togliti</code></a></li>
 </ul>
 </li>
-<li><a href="#_lintestazione_dellavventura_banner">L&#8217;Intestazione dell&#8217;Avventura (Banner)</a>
-<ul class="sectlevel2">
-<li><a href="#_attributi_dellintestazione">Attributi dell&#8217;intestazione</a></li>
+<li><a href="#_istruzioni_per_luso_del_vestiario">Istruzioni per l&#8217;uso del vestiario</a>
+<ul class="sectlevel3">
+<li><a href="#_la_tabella_del_vestiario">La tabella del vestiario</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_todo">TODO</a>
 <ul class="sectlevel2">
 <li><a href="#_check_list_generale">Check-list generale</a></li>
+<li><a href="#_check_list_per_doxter">Check-list per Doxter</a></li>
 </ul>
 </li>
 </ul>
@@ -469,7 +477,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Adattamento italiano del modulo <code>lib_definitions.i</code> della
+<p>Adattamento italiano del modulo <code>lib_classes.i</code> della
 <em>ALAN Standard Library</em> v2.1, &#169; Anssi Räisänen, Artistic License 2.1.
 Ad opera di Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
 </div>
@@ -478,276 +486,279 @@ Ad opera di Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_le_restrizioni_verbali"><a class="anchor" href="#_le_restrizioni_verbali"></a>Le Restrizioni Verbali</h2>
+<h2 id="_vestiario"><a class="anchor" href="#_vestiario"></a>Vestiario</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>La libreria dispone di un meccanismo di <em>restrizioni verbabli</em> per limitare
-in maniera controllata il tipo di azioni consentite al giocatore. Ad ogni
-verbo della libreria corrisponde un attributo booleano nell&#8217;istanza <code>mia_AT</code>
-del <code>blocco_definizioni</code> che determina se il verbo (o i verbi) associati ad
-esso sono abilitati all&#8217;uso.</p>
+<p>Un <code>indumento</code> è un capo di vestiario implementato secondo le regole
+dell&#8217;estensione <code>xwear.i</code> di Alan Bampton. Il codice di questa classe
+impedisce di indossare gli indumenti in ordine insensato&#8201;&#8212;&#8201;per esempio, non
+puoi indossare una camicia se stai già indossando una giacca, e via dicendo.
+Queste funzionalità si applicano solo al protagonista, e non possono essere
+estese ai PNG.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Questa classe è basata sull&#8217;estensione <code>xwear.i</code> creata da Alan Bampton per
+ALAN v2. Con il permesso dell&#8217;autore, l&#8217;estensione è stata adattata per
+funzionare con ALAN v3, ed è stata interamente assimilata nella libreria.
+Si ringrazia Alan Bampton per aver concesso l&#8217;autorizzazione a utilizzarne
+il codice.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Nel corpo dei verbi definiti dalla libreria, prima di portare a compimento
-l&#8217;azione viene sempre controllato se l&#8217;attributo di restrizione verbale cui
-il verbo fa riferimento è abilitato o meno (ossia, se è <code>CAN</code> o <code>CAN NOT</code>),
-e nel caso non lo fosse l&#8217;azione viene bloccata sul nascere, mostrando al
-giocatore il messaggio &#8220;Non puoi farlo.&#8221;.</p>
+<p>La classe <code>indumento</code> ridefinisce i verbi <code>esamina</code>, <code>indossa</code> e <code>togliti</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Il modulo <code>lib_verbi.i</code> fa riferimento a questa classe nei verbi <code>inventario</code>
+e <code>prendi</code>, che utilizzano il contenitore <code>abbigliamento</code> definito in questa
+classe.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sect2">
-<h3 id="_elenco_delle_restrizioni_verbali"><a class="anchor" href="#_elenco_delle_restrizioni_verbali"></a>Elenco delle Restrizioni Verbali</h3>
+<h3 id="_labbigliamento_delleroe"><a class="anchor" href="#_labbigliamento_delleroe"></a>L&#8217;abbigliamento dell&#8217;eroe</h3>
 <div class="paragraph">
-<p>Questo è l&#8217;elenco degli attributi di restrizioni verbali sinora tradotti:</p>
+<p>Gli indumenti indossati dall&#8217;eroe (a differenza di quelli semplicemente in
+suo possesso) vengono immagazzinati nell&#8217;entità <code>abbigliamento</code>, che ha la
+proprietà contenitore:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  CAN abbandonare_partita.      ---&gt; 'quit'
-  CAN accendere.                ---&gt; turn_on
-  CAN acchiappare.              ---&gt; catch
-  CAN agitare.                  ---&gt; shake
-  CAN alzarsi.                  ---&gt; stand (up)
-  CAN andare_a.                 ---&gt; go_to
-  CAN annusare.                 ---&gt; smell
-  CAN aprire.                   ---&gt; open
-  CAN aprire_con.               ---&gt; open_with
-  CAN arrampicarsi.             ---&gt; climb_on
-  CAN ascoltare.                ---&gt; listen + listen0 | ascolta0 + ascolta
-  CAN aspettare.                ---&gt; wait         (+ z)
-  CAN assaggiare.               ---&gt; taste        (+ lick)
-  CAN attaccare.                ---&gt; attack (+ beat, fight, hit, punch)
-  CAN attaccare_con.            ---&gt; attack_with
-  CAN attraversare.             ---&gt; climb_through
-  CAN baciare.                  ---&gt; kiss         (+ hug, embrace)
-  CAN ballare.                  ---&gt; dance
-  CAN bere.                     ---&gt; drink
-  CAN bloccare.                 ---&gt; lock
-  CAN bloccare_con.             ---&gt; lock_with
-  CAN bruciare.                 ---&gt; burn
-  CAN bruciare_con.             ---&gt; burn_with
-  CAN bussare.                  ---&gt; knock
-  CAN calciare.                 ---&gt; kick
-  CAN cantare.                  ---&gt; sing
-  CAN caricare_partita.         ---&gt; 'restore'
-  CAN chiedere.                 ---&gt; ask_for
-  CAN chiudere.                 ---&gt; close        (+ shut)
-  CAN chiudere_con.             ---&gt; close_with
-  CAN comprare.                 ---&gt; buy          (+ purchase)
-  CAN consultare.               ---&gt; consult
-  CAN dare.                     ---&gt; give
-  CAN dire.                     ---&gt; 'say'
-  CAN dire_a.                   ---&gt; say_to
-  CAN domandare.                ---&gt; ask (+ enquire, inquire, interrogate)
-  CAN domandare_chi_sono_io.    ---&gt; who_am_i
-  CAN domandare_chi_è.          ---&gt; who_is
-  CAN domandare_cosa_sono_io.   ---&gt; what_am_i
-  CAN domandare_cosa_è.         ---&gt; what_is
-  CAN domandare_dove_mi_trovo.  ---&gt; where_am_i
-  CAN domandare_dove_è.         ---&gt; where_is
-  CAN dormire.                  ---&gt; sleep        (+ rest)
-  CAN entrare.                  ---&gt; enter
-  CAN esaminare.                ---&gt; examine      (+ check, inspect, observe, x)
-  CAN forzare.                  ---&gt; pry
-  CAN forzare_con.              ---&gt; pry_with
-  CAN giocare_con.              ---&gt; play_with
-  CAN girare.                   ---&gt; turn (+ rotate)
-  CAN grattare.                 ---&gt; scratch
-  CAN gridare.                  ---&gt; shout        (+ scream, yell)
-  CAN guardare.                 ---&gt; look         (+ gaze, peek)
-  CAN guardare_attraverso.      ---&gt; look_through
-  CAN guardare_dietro.          ---&gt; look_behind
-  CAN guardare_fuori_da.        ---&gt; look_out_of
-  CAN guardare_in.              ---&gt; look_in
-  CAN guardare_sotto.           ---&gt; look_under
-  CAN guardare_su.              ---&gt; look_up
-  CAN guidare.                  ---&gt; drive
-  CAN indossare.                ---&gt; wear
-  CAN inventariare.             ---&gt; i            (+ inv, inventory)
-  CAN ispezionare.              ---&gt; search
-  CAN lanciare.                 ---&gt; throw
-  CAN lanciare_a.               ---&gt; throw_to
-  CAN lanciare_contro.          ---&gt; throw_at
-  CAN lanciare_in.              ---&gt; throw_in
-  CAN lasciare.                 ---&gt; drop         (+ discard, dump, reject)
-  CAN legare.                   ---&gt; tie
-  CAN legare_a.                 ---&gt; tie_to
-  CAN leggere.                  ---&gt; read
-  CAN liberare.                 ---&gt; free         (+ release)
-  CAN mangiare.                 ---&gt; eat
-  CAN mettere.                  ---&gt; put          (+ lay, place)
-  CAN mettere_contro.           ---&gt; put_against
-  CAN mettere_dietro.           ---&gt; put_behind
-  CAN mettere_in.               ---&gt; put_in       (+ insert)
-  CAN mettere_sotto.            ---&gt; put_under
-  CAN mettere_su.               ---&gt; put_on
-  CAN mettere_vicino.           ---&gt; put_near
-  CAN modalità_breve.           ---&gt; brief
-  CAN modalità_lunga.           ---&gt; verbose
-  CAN mordere.                  ---&gt; bite         (+ chew)
-  CAN mostrare.                 ---&gt; 'show'       (+ reveal)
-  CAN mostrare_istruzioni.      ---&gt; about
-  CAN mostrare_suggerimenti.    ---&gt; hint (+ hints)
-  CAN notificare.               ---&gt; 'notify'
-  CAN notificare_off.           ---&gt; notify_off
-  CAN notificare_on.            ---&gt; notify_on
-  CAN nuotare.                  ---&gt; swim
-  CAN nuotare_in.               ---&gt; swim_in
-  CAN parlare.                  ---&gt; talk
-  CAN parlare_con.              ---&gt; talk_to      (+ speak)
-  CAN pensare.                  ---&gt; think
-  CAN pensare_a.                ---&gt; think_about
-  CAN pregare.                  ---&gt; pray
-  CAN prendere.                 ---&gt; take.        (+ carry, get, grab, hold, obtain)
-  CAN prendere_da.              ---&gt; take_from.   (+ remove from)
-  CAN pulire.                   ---&gt; clean        (+ polish, wipe)
-  CAN raccontare.               ---&gt; tell         (+ enlighten, inform)
-  CAN ricominciare_partita.     ---&gt; 'restart'
-  CAN riempire.                 ---&gt; fill
-  CAN riempire_con.             ---&gt; fill_with
-  CAN rifare.                   ---&gt; 'again'
-  CAN ringraziamenti.           ---&gt; credits      (+ acknowledgments, author, copyright)
-  CAN riparare.                 ---&gt; fix          (+ mend, repair)
-  CAN rispondere.               ---&gt; answer       (+ reply)
-  CAN rispondere_No.            ---&gt; 'no'
-  CAN rispondere_Sì.            ---&gt; yes
-  CAN rompere.                  ---&gt; break        (+ destroy)
-  CAN rompere_con.              ---&gt; break_with
-  CAN salire_su.                ---&gt; stand_on
-  CAN salvare_partita.          ---&gt; save
-  CAN saltare.                  ---&gt; jump
-  CAN saltare_in.               ---&gt; jump_in
-  CAN saltare_su.               ---&gt; jump_on
-  CAN sbloccare.                ---&gt; unlock
-  CAN sbloccare_con.            ---&gt; unlock_with
-  CAN scavalcare.               ---&gt;climb
-  CAN scavare.                  ---&gt; dig
-  CAN scendere_da.              ---&gt; get_off
-  CAN scrivere.                 ---&gt; write
-  CAN sdraiarsi.                ---&gt; lie_down
-  CAN sdraiarsi_in.             ---&gt; lie_in
-  CAN sdraiarsi_su.             ---&gt; lie_on
-  CAN sedersi.                  ---&gt; sit (down)
-  CAN sedersi_su.               ---&gt; sit_on
-  CAN seguire.                  ---&gt; follow
-  CAN sfregare.                 ---&gt; rub
-  CAN sollevare.                ---&gt; lift
-  CAN sorseggiare.              ---&gt; sip
-  CAN sparare.                  ---&gt; fire
-  CAN sparare_a.                ---&gt; fire_at
-  CAN spegnere.                 ---&gt; turn_off
-  CAN spingere.                 ---&gt; push
-  CAN spingere_con.             ---&gt; push_with
-  CAN spogliarsi.               ---&gt; undress
-  CAN spremere.                 ---&gt; squeeze
-  CAN strappare.                ---&gt; tear (+ rip)
-  CAN suonare.                  ---&gt; play
-  CAN svuotare.                 ---&gt; 'empty'
-  CAN svuotare_in.              ---&gt; empty_in
-  CAN svuotare_su.              ---&gt; empty_on
-  CAN tagliare.                 ---&gt; cut
-  CAN tagliare_con.             ---&gt; cut_with
-  CAN tirare.                   ---&gt; pull
-  CAN toccare.                  ---&gt; touch (+ feel)
-  CAN toccare_con.              ---&gt; touch_with
-  CAN togliersi_indumento.      ---&gt; remove
-  CAN trascrivere.              ---&gt; 'script'
-  CAN trascrivere_off.          ---&gt; script_off
-  CAN trascrivere_on.           ---&gt; script_on
-  CAN trovare.                  ---&gt; find         (+ locate)
-  CAN tuffarsi.                 ---&gt; dive
-  CAN tuffarsi_in.              ---&gt; dive_in
-  CAN uccidere.                 ---&gt; kill         (+ murder)
-  CAN uccidere_con.             ---&gt; kill_with
-  CAN usare.                    ---&gt; 'use'
-  CAN usare_con.                ---&gt; use_with
-  CAN uscire.                   ---&gt; 'exit'
-  CAN vedere_punteggio.         ---&gt; 'score'
-  CAN vendere.                  ---&gt; sell
-  CAN versare.                  ---&gt; pour
-  CAN versare_in.               ---&gt; pour_in
-  CAN versare_su.               ---&gt; pour_on</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_lintestazione_dellavventura_banner"><a class="anchor" href="#_lintestazione_dellavventura_banner"></a>L&#8217;Intestazione dell&#8217;Avventura (Banner)</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Ogni avventura creata con la Libreria ha una sua <em>intestazione</em> (detta anche
-<em>banner</em>) contenente informazioni sull&#8217;avventura, il suo autore e le versioni
-della libereria e del compilatore Alan utilizzati.</p>
-</div>
-<div class="paragraph">
-<p>L&#8217;uso del banner è facoltativo.</p>
-</div>
-<div class="paragraph">
-<p>L&#8217;instestazione viene creata dalla libreria tramite l&#8217;instanza
-<code>intestazione</code> della classe <code>location</code>. L&#8217;espediente consiste nello sfruttate
-la descrizione di questo luogo fittizio per visualizzare il testo del banner
-all&#8217;inizio della partita tramite <code>DESCRIBE intestazione.</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">THE intestazione IsA LOCATION
-
-  DESCRIPTION
-
-    "$p" STYLE alert. SAY mia_AT:titolo. STYLE normal.
-
-    IF sottotitolo OF mia_AT &lt;&gt; ""
-      THEN "$n" SAY mia_AT:sottotitolo.
-      END IF.
-
-    "$n(C)" SAY mia_AT:autore. "," SAY mia_AT:anno. "."
-    "$nAvventura realizzata con ALAN Interactive Fiction Language" SAY mia_AT:AlanV. "."
-    "$nLibreria Standard Italiana v2.1"
-
-    IF versione OF mia_AT &lt;&gt; "0"
-      THEN "$nVersione" SAY mia_AT:versione.
-      END IF.
-
-    "$nTutti i diritti riservati."
-
-END THE intestazione.</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">THE abbigliamento IsA ENTITY
+  CONTAINER TAKING indumento.
+    HEADER
+      SAY  mia_AT:header_abbigliamento.
+    ELSE
+      SAY  mia_AT:header_abbigliamento_else.
+END THE.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>La <code>DESCRIPTION</code> di <code>intestazione</code> agisce da template, e per riempire i
-dettagli del testo del banner essa attingerà ai vari attributi di intestazione
-presenti nell&#8217;istanza <code>mia_AT</code> dell&#8217;avventura.</p>
+<p>Poiché le entità sono ubiquiescenti nel mondo dell&#8217;avventura, l&#8217;istanza
+<code>abbigliamento</code> e gli indumenti in essa contenuti saranno sempre accessibili
+durante il gioco.</p>
+</div>
+<div class="paragraph">
+<p>Il verbo <code>inventario</code>, dopo aver elencato gli oggetti in possesso dell&#8217;eroe,
+elencherà anche gli indumenti da lui indossati tramite l&#8217;istruzione
+<code>LIST abbigliamento</code> (che invocherà lo <code>HEADER</code> dell&#8217;entità contenitore
+<code>abbigliamento</code>). Questo crea l&#8217;illusione che gli indumenti indossati siano
+parte dei possedimenti dell&#8217;eroe, mentre in realtà sono contenuti nell&#8217;entità
+<code>abbigliamento</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>L&#8217;entità <code>abbigliamento</code> è finalizzata all&#8217;uso interno della libereria,
+gli autori di avventure non devono preoccuparsi di essa.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_attributi_dellintestazione"><a class="anchor" href="#_attributi_dellintestazione"></a>Attributi dell&#8217;intestazione</h3>
+<h3 id="_gli_indumenti"><a class="anchor" href="#_gli_indumenti"></a>Gli indumenti</h3>
 <div class="paragraph">
-<p>L&#8217;istanza <code>mia_AT</code> (del <code>blocco_definizioni</code>) espone all&#8217;autore degli
-attributi per fornire i dettagli del banner che potrà (facoltativamente)
-essere mostrato all&#8217;inizio della partita tramite il template dell&#8217;istanza
-<code>intestazione</code>:</p>
+<p>Ora definiamo la classe <code>indumento</code> ed i suoi attributi comuni, dopodiché
+ridefiniamo su questa classe i verbi <code>esamina</code>, <code>indossa</code> e <code>togliti</code>.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS        titolo  "Nuova Avventura".
-  HAS   sottotitolo  "".
-  HAS        autore  "Il Mio Nome".
-  HAS          anno   2018.
-  HAS      versione  "1".</code></pre>
+<div class="sect3">
+<h4 id="_verbo_esamina"><a class="anchor" href="#_verbo_esamina"></a>Verbo <code>esamina</code></h4>
+
 </div>
+<div class="sect3">
+<h4 id="_verbo_indossa"><a class="anchor" href="#_verbo_indossa"></a>Verbo <code>indossa</code></h4>
+
+</div>
+<div class="sect3">
+<h4 id="_verbo_togliti"><a class="anchor" href="#_verbo_togliti"></a>Verbo <code>togliti</code></h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_istruzioni_per_luso_del_vestiario"><a class="anchor" href="#_istruzioni_per_luso_del_vestiario"></a>Istruzioni per l&#8217;uso del vestiario</h3>
+<div class="sect3">
+<h4 id="_la_tabella_del_vestiario"><a class="anchor" href="#_la_tabella_del_vestiario"></a>La tabella del vestiario</h4>
+<div class="paragraph">
+<p>La tabella che segue riporta una selezione di indumenti d&#8217;uso comune ed i
+corrispettivi valori degli attributi per una corretta implementazione.</p>
 </div>
 <div class="paragraph">
-<p>La libreria definisce anche l&#8217;attributo <code>AlanV</code>, che mostrerà nel banner la
-versione di Alan utilizzata:</p>
+<p>Per creare un indumento non figurante nella tabella, dovrebbe bastare un
+po' di ingegno nel rapportare il nuovo capo di vestiario a quelli presenti
+nella tabella, cercando di cogliere somilianze e differenze fino ad ottenere
+dei valori adatti allo scopo.
+Teniate a mente che <strong>è obbligatorio</strong> impiegare i valori esatti riportati nella
+tabella, e che sommare a casaccio valori intermedi produrrà quasi sicuramente
+dei bachi nell&#8217;avventura.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS         AlanV  "v3.0beta6".</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Il valore predefinito è quello dell&#8217;ultima release di Alan all&#8217;epoca della
-libreria. L&#8217;autore è libero di sovrascriverlo nel caso stesse usando una
-versione di Alan più recente, diversa, o una developer snapshot, senza dover
-modificare i sorgenti della libreria.</p>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Tabella 1. Indumenti Comuni</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Indumento</th>
+<th class="tableblock halign-center valign-top"><code>val_testa</code></th>
+<th class="tableblock halign-center valign-top"><code>val_tronco</code></th>
+<th class="tableblock halign-center valign-top"><code>val_gambe</code></th>
+<th class="tableblock halign-center valign-top"><code>val_piedi</code></th>
+<th class="tableblock halign-center valign-top"><code>val_mani</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cappello</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">canottiera/reggiseno</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mutande/slip</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pagliaccetto</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>4</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>4</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">blusa/camicia/T-shirt</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>8</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">abito donna/tuta lavoro</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>8</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>32</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gonna</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>32</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pantaloni/pantaloncini</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>16</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">maglione/pullover</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>16</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">giacca</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>32</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cappotto</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>64</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>64</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">calze/gambaletti</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">collant/calzamaglia</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>8</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scarpe/stivali</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>4</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">guanti</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -757,12 +768,25 @@ modificare i sorgenti della libreria.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Questa sezione contiene l&#8217;elenco delle cose da fare per ultimare l&#8217;adattamento
-italiano del modulo delle definizioni.</p>
+italiano del modulo delle XXXXX.</p>
 </div>
 <div class="sect2">
 <h3 id="_check_list_generale"><a class="anchor" href="#_check_list_generale"></a>Check-list generale</h3>
 <div class="paragraph">
 <p>Lista della spesa per le varie cosucce da fare:</p>
+</div>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="fa fa-square-o"></i> <strong>Tabella del Vestiario</strong>: finire traduzione.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_check_list_per_doxter"><a class="anchor" href="#_check_list_per_doxter"></a>Check-list per Doxter</h3>
+<div class="paragraph">
+<p>Finisci di trasformare commenti in documentazione Doxter:</p>
 </div>
 </div>
 </div>

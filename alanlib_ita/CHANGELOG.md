@@ -18,10 +18,15 @@ For previuos changes, see:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Alan 3.0beta6 build 1866](#alan-30beta6-build-1866)
+    - [2019/02/02 \(2\)](#20190202-2)
+        - [Passa alla v0.13.0](#passa-alla-v0130)
+        - [Separa modulo classi vestiario](#separa-modulo-classi-vestiario)
+        - [Vestiario](#vestiario)
+    - [2019/02/02 \(1\)](#20190202-1)
         - [Passa ad Alan 3.0beta6 build 1866](#passa-ad-alan-30beta6-build-1866)
 - [Alan 3.0beta6 build 1862](#alan-30beta6-build-1862)
     - [2019/02/01](#20190201)
-        - [Vestiario](#vestiario)
+        - [Vestiario](#vestiario-1)
         - [Messaggi runtime](#messaggi-runtime)
     - [2019/01/24](#20190124)
         - [Passa alla v0.12.0](#passa-alla-v0120)
@@ -47,7 +52,7 @@ For previuos changes, see:
         - [Rimuovi stropping superfluo](#rimuovi-stropping-superfluo)
 - [Alan 3.0beta6](#alan-30beta6)
     - [2019/01/06](#20190106)
-        - [Vestiario](#vestiario-1)
+        - [Vestiario](#vestiario-2)
     - [2018/12/08 \(3\)](#20181208-3)
         - [Verbi](#verbi)
         - [Verbi Classi](#verbi-classi)
@@ -124,18 +129,67 @@ For previuos changes, see:
 
 # Alan 3.0beta6 build 1866
 
+## 2019/02/02 (2)
+
+- [`libreria.i`][libreria] &#x27f6; v0.13.0
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.13.0
+- [`lib_classi_vestiario.i`][lib_classi_vestiario] &#x27f6; v0.13.0 (_nuovo_)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.13.0
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.13.0
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] &#x27f6; v0.13.0
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.13.0
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.13.0
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.13.0
+
+### Passa alla v0.13.0
+
+Tutti i moduli della libreria passano alla versione 0.13.0.
+
+### Separa modulo classi vestiario
+
+Sposta tutto il codice riguardante il vestiario da `lib_classi.i` al nuovo modulo [`lib_classi_vestiario.i`][lib_classi_vestiario]. 
+
+> __NOTA__ — In realtà rimangono ancora in `lib_classi.i` alcuni frammenti di codice riguardanti il vestiario (p.es. nell'inizializzazione degli attori).
+
+Questa scelta ha una duplice motivatazione:
+
+1. Il codice per il vestiario è di grosse dimensioni e isolarlo in un proprio sottomodulo semplifica il lavoro di manutenzione della libreria, soprattutto in vista del fatto che la documentazione interna del modulo sarà di dimensioni consistenti.
+
+2. L'altra ragione per questa mossa è il desiderio di poter rendere (in futuro) le funzionalità del vestiario opzionali, consentendo all'utente finale di escludere il suddetto modulo dall'importazione qualora non volesse utilizzarlo.
+
+    Il vestiario introduce una notevole complessità nella libreria (i vari controlli automatici per gli indumenti indossati dal giocatore e dai PNG), e può complicare la vita agli autori quando creano verbi personalizzati che potrebbero coinvolgere indumenti indossati, ecc. Siccome non tutte le avventure necessiteranno del vestiario, questa funzionalità dovrebbe poter essere interamente opzionale nella libreria. Purtroppo, la modularizzazione condizionale dei moduli è un po' complicata in Alan, e questo obiettivo potrebbe rivelarsi complicato da conseguire, ma il primo passo consiste comunque nell'isolare in un modulo a sé stante il codice per il vestiario.
+
+### Vestiario
+
+Rinominato l'evento `worn_clothing_check` in `controlla_indossati`.
+
+#### Documentazione vestiario
+
+Aggiornato il documento:
+
+- [`VESTIARIO.md`][VESTIARIO]
+
+Minimi ritocchi alla documentazione Doxter del nuovo modulo vestiario.
+
+<!---------------------------------------------------------------------------->
+
+## 2019/02/02 (1)
+
 ### Passa ad Alan 3.0beta6 build 1866
 
 Da qui in avanti il progetto adotta la [developer snaphshot]  [Alan 3.0beta6 build 1866][3.0beta6-1866] per testare la libreria usufruendo dei più recenti bug fix.
 
 Tutti i riferimenti alla precedente build nei moduli della libreria e nei sorgenti dei test vengono aggiornati, ma non viene variata la versione dei moduli né la loro data poiché il salto di version non ha determinato differenze nei risultati dei test.
 
+
+-------------------------------------------------------------------------------
+
 # Alan 3.0beta6 build 1862
 
 ## 2019/02/01
 
-- [`lib_classi.i`][lib_classi] (v0.12.1)
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.12.1)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.12.1
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.12.1
 
 ### Vestiario
 
@@ -186,14 +240,14 @@ Si è fatta un po' di pulizia nel modulo `lib_messaggi_libreria.i` e ottimizzato
 
 ## 2019/01/24
 
-- [`libreria.i`][libreria] (v0.12.0)
-- [`lib_classi.i`][lib_classi] (v0.12.0)
-- [`lib_definizioni.i`][lib_definizioni] (v0.12.0)
-- [`lib_luoghi.i`][lib_luoghi] (v0.12.0)
-- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] (v0.12.0)
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.12.0)
-- [`lib_verbi.i`][lib_verbi] (v0.12.0)
-- [`lib_supplemento.i`][lib_supplemento] (v0.12.0)
+- [`libreria.i`][libreria] &#x27f6; v0.12.0
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.12.0
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.12.0
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.12.0
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] &#x27f6; v0.12.0
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.12.0
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.12.0
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.12.0
 
 ### Passa alla v0.12.0
 
@@ -203,21 +257,20 @@ Tutti i moduli della libreria passano alla versione 0.12.0.
 
 Da qui in avanti il progetto adotta la [developer snaphshot]  [Alan 3.0beta6 build 1862][3.0beta6-1862] per testare la libreria usufruendo dei più recenti bug fix — tra cui un importane bug fix concernente l'uso di pronomi multipli.
 
-
-<!---------------------------------------------------------------------------->
+-------------------------------------------------------------------------------
 
 # Alan 3.0beta6 build 1855
 
 ## 2019/01/17
 
-- [`libreria.i`][libreria] (v0.11.0)
-- [`lib_classi.i`][lib_classi] (v0.11.0)
-- [`lib_definizioni.i`][lib_definizioni] (v0.11.0)
-- [`lib_luoghi.i`][lib_luoghi] (v0.11.0)
-- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] (v0.11.0)
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.11.0)
-- [`lib_verbi.i`][lib_verbi] (v0.11.0)
-- [`lib_supplemento.i`][lib_supplemento] (v0.11.0)
+- [`libreria.i`][libreria] &#x27f6; v0.11.0
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.11.0
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.11.0
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.11.0
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] &#x27f6; v0.11.0
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.11.0
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.11.0
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.11.0
 
 ### Passa alla v0.11.0
 
@@ -235,15 +288,15 @@ La nuova build ha aggiunto ([054581b]) la possibilità di utilizzare più AND WO
 
 laddove nelle build precedenti il parser (vedendo "E POI" come "AND AND") lo considerava un errore. Ora invece il parser tollera l'uso di AND WORD ridondanti.
 
-<!---------------------------------------------------------------------------->
+-------------------------------------------------------------------------------
 
 # Alan 3.0beta6 build 1852
 
 
 ## 2019/01/16
 
-- [`lib_classi.i`][lib_classi] (v0.10.2)
-- [`lib_verbi.i`][lib_verbi] (v0.10.1)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.10.2
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.10.1
 
 Dai una ripulita al codice del modulo classi.
 Traduci risposte di `guarda_attraverso`.
@@ -319,7 +372,7 @@ La classi `porta` e `finestra` non definiscono alcun `NAME` dato che le loro ist
 
 ## 2019/01/15
 
-- [`lib_classi.i`][lib_classi] (v0.10.1)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.10.1
 
 
 ### Aggiusta verbi modulo classi
@@ -342,14 +395,14 @@ Ora non risultano più esserci identificativi non tradotti.
 
 ## 2019/01/14
 
-- [`libreria.i`][libreria] (v0.10.0)
-- [`lib_classi.i`][lib_classi] (v0.10.0)
-- [`lib_definizioni.i`][lib_definizioni] (v0.10.0)
-- [`lib_luoghi.i`][lib_luoghi] (v0.10.0)
-- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] (v0.10.0)
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.10.0)
-- [`lib_verbi.i`][lib_verbi] (v0.10.0)
-- [`lib_supplemento.i`][lib_supplemento] (v0.10.0)
+- [`libreria.i`][libreria] &#x27f6; v0.10.0
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.10.0
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.10.0
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.10.0
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] &#x27f6; v0.10.0
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.10.0
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.10.0
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.10.0
 
 ### Passa alla v0.10.0
 
@@ -431,13 +484,13 @@ END THE.
 
 In svariate sintassi alcuni identificati erano tra virgolette anche se non richieste (es. `'dai'`, `'a'`, ecc.); virgolette rimosse. 
 
-<!---------------------------------------------------------------------------->
+-------------------------------------------------------------------------------
 
 # Alan 3.0beta6
 
 ## 2019/01/06
 
-- [`lib_classi.i`][lib_classi] (v0.9.9)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.9.9
 
 ### Vestiario
 
@@ -447,8 +500,8 @@ Inizia a tradurre e doxterizzare la documentazione riguardante l'abbigliamento.
 
 ## 2018/12/08 (3)
 
-- [`lib_classi.i`][lib_classi] (v0.9.8)
-- [`lib_verbi.i`][lib_verbi] (v0.9.13)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.9.8
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.9.13
 
 
 ### Verbi
@@ -479,8 +532,8 @@ Procedi con la documentazione doxterizzata del modulo classi:
 
 ## 2018/12/08 (2)
 
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.15)
-- [`lib_verbi.i`][lib_verbi] (v0.9.12)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.9.15
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.9.12
 
 ### Verbi
 
@@ -508,9 +561,9 @@ Eliminato attributo originale.
 
 ## 2018/12/08 (1)
 
-- [`lib_classi.i`][lib_classi] (v0.9.7)
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.14)
-- [`lib_verbi.i`][lib_verbi] (v0.9.11)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.9.7
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.9.14
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.9.11
 
 ### Verbi apri, chiudi, blocca e sblocca
 
@@ -560,10 +613,10 @@ Traduci le risposte per il verbo `esamina`.
 
 ## 2018/12/07
 
-- [`lib_classi.i`][lib_classi] (v0.9.6)
-- [`lib_luoghi.i`][lib_luoghi] (v0.9.2)
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.13)
-- [`lib_verbi.i`][lib_verbi] (v0.9.10)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.9.6
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.9.2
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.9.13
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.9.10
 
 
 ### Messaggi libreria
@@ -594,8 +647,8 @@ Sostituisci occorrenze di `attributo OF istanza` con la forma breve `instanza:at
 
 ## 2018/12/04 (3)
 
-- [`lib_classi.i`][lib_classi] (v0.9.5)
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.12)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.9.5
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.9.12
 
 ### Messaggi libreria
 
@@ -635,7 +688,7 @@ Tradotte le ultime risposte dei verbi per dispositivi e fonti di luce.
 
 ## 2018/12/04 (2)
 
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.11)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.9.11
 
 
 ### Messaggi libreria
@@ -647,9 +700,9 @@ Continua a riorganizzare i messaggi della libreria raggruppandoli per affinità.
 
 ## 2018/12/04 (1)
 
-- [`lib_classi.i`][lib_classi] (v0.9.4)
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.10)
-- [`lib_verbi.i`][lib_verbi] (v0.9.8)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.9.4
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.9.10
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.9.8
 
 ### Messaggi libreria
 
@@ -713,7 +766,7 @@ Tradotti i messaggi per gli attori che seguono l'eroe.
 
 ## 2018/12/01
 
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.9)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.9.9
 
 ### Documentazione messaggi libreria
 
@@ -725,8 +778,8 @@ Inizia a doxterizzare la documentazione dei messaggi, rendendo consultabili le c
 
 ## 2018/11/30 (2)
 
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.8)
-- [`lib_verbi.i`][lib_verbi] (v0.9.8)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.9.8
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.9.8
 
 ### Documentazione
 
@@ -780,8 +833,8 @@ Gli attributi originali inglesi sono stati eliminati.
 
 ## 2018/11/30 (1)
 
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.7)
-- [`lib_verbi.i`][lib_verbi] (v0.9.7)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.9.7
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.9.7
 
 
 ### Messaggi dei verbi
@@ -815,14 +868,14 @@ Rinomina parametro `txt` in `testo` nei verbi `scrivi` e `scrivi_errore3`.
 
 ## 2018/11/25 (2)
 
-- [`libreria.i`][libreria] (v0.9.1)
-- [`lib_classi.i`][lib_classi] (v0.9.3)
-- [`lib_definizioni.i`][lib_definizioni] (v0.9.1)
-- [`lib_luoghi.i`][lib_luoghi] (v0.9.1)
-- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] (v0.9.2)
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.6)
-- [`lib_verbi.i`][lib_verbi] (v0.9.6)
-- [`lib_supplemento.i`][lib_supplemento] (v0.9.1)
+- [`libreria.i`][libreria] &#x27f6; v0.9.1
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.9.3
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.9.1
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.9.1
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] &#x27f6; v0.9.2
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.9.6
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.9.6
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.9.1
 
 ### Aggiornamento Doxter
 
@@ -832,8 +885,8 @@ L'aggiornamento a Doxter v0.2.4-alpha ha richiesto delle piccole modifiche in el
 
 ## 2018/11/25 (1)
 
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.5)
-- [`lib_verbi.i`][lib_verbi] (v0.9.5)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.9.5
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.9.5
 
 
 ### Messaggi dei verbi
@@ -875,8 +928,8 @@ Gli attributi originali inglesi sono stati eliminati.
 
 ## 2018/11/24
 
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.4)
-- [`lib_verbi.i`][lib_verbi] (v0.9.4)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.9.4
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.9.4
 
 ### Messaggi dei verbi
 
@@ -962,8 +1015,8 @@ Creati nuovi attributi per i messaggi di risposta dei verbi (nessuna controparte
 
 ## 2018/11/23 (2)
 
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.3)
-- [`lib_verbi.i`][lib_verbi] (v0.9.3)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.9.3
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.9.3
 
 Annota il codice sorgente.
 
@@ -1013,7 +1066,7 @@ Dove in italiano le risposte sono:
 
 ## 2018/11/23 (1)
 
-- [`lib_classi.i`][lib_classi] (v0.9.2)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.9.2
 
 ### Correggi Baco LIQUIDI
 
@@ -1032,8 +1085,8 @@ Per maggiori dettagli, vedi [AlanStdLib/#39] e la [soluzione proposta in #47] da
 
 ## 2018/11/22 (5)
 
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.2)
-- [`lib_verbi.i`][lib_verbi] (v0.9.2)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.9.2
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.9.2
 
 ### Messaggi dei verbi
 
@@ -1069,7 +1122,7 @@ Creati nuovi attributi per i messaggi di risposta dei verbi (usati per rimpiazza
 
 ## 2018/11/22 (4)
 
-- [`lib_classi.i`][lib_classi] (v0.9.1)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.9.1
 
 ### Correggi Baco in LIQUIDO
 
@@ -1079,9 +1132,9 @@ Il verbo `metti_su` implementato sulla classe `liquido` non spostava il contenit
 
 ## 2018/11/22 (3)
 
-- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] (v0.9.1)
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.1)
-- [`lib_verbi.i`][lib_verbi] (v0.9.1)
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] &#x27f6; v0.9.1
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.9.1
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.9.1
 
 ### Documentazione
 
@@ -1109,14 +1162,14 @@ Gli attributi originali inglesi sono stati eliminati.
 
 ## 2018/11/22 (2)
 
-- [`libreria.i`][libreria] (v0.9.0)
-- [`lib_classi.i`][lib_classi] (v0.9.0)
-- [`lib_definizioni.i`][lib_definizioni] (v0.9.0)
-- [`lib_luoghi.i`][lib_luoghi] (v0.9.0)
-- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] (v0.9.0)
-- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.9.0)
-- [`lib_verbi.i`][lib_verbi] (v0.9.0)
-- [`lib_supplemento.i`][lib_supplemento] (v0.9.0)
+- [`libreria.i`][libreria] &#x27f6; v0.9.0
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.9.0
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.9.0
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.9.0
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] &#x27f6; v0.9.0 (_rinominato_)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.9.0 (_nuovo_)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.9.0
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.9.0
 
 ### Suddivisione modulo messaggi
 
@@ -1134,8 +1187,8 @@ Tutti i moduli della libreria passano alla versione 0.9.0.
 
 ## 2018/11/22 (1)
 
-- [`lib_messaggi.i`][lib_messaggi_libreria] (v0.8.3)
-- [`lib_verbi.i`][lib_verbi] (v0.8.5)
+- [`lib_messaggi.i`][lib_messaggi_libreria] &#x27f6; v0.8.3
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.8.5
 
 ### Messaggi dei verbi
 
@@ -1197,12 +1250,12 @@ Gli attributi originali inglesi sono stati eliminati.
 
 ## 2018/11/20
 
-- [`lib_classi.i`][lib_classi] (v0.8.1)
-- [`lib_definizioni.i`][lib_definizioni] (v0.8.1)
-- [`lib_messaggi.i`][lib_messaggi_libreria] (v0.8.2)
-- [`lib_verbi.i`][lib_verbi] (v0.8.4)
-- [`lib_luoghi.i`][lib_luoghi] (v0.8.1)
-- [`lib_supplemento.i`][lib_supplemento] (v0.8.1)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.8.1
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.8.1
+- [`lib_messaggi.i`][lib_messaggi_libreria] &#x27f6; v0.8.2
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.8.4
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.8.1
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.8.1
 
 
 Correggi maiuscole nei titoli.
@@ -1234,8 +1287,8 @@ Rinominati in `ogg?_inadatto_*` tutti gli attributi per i messaggi dei verbi che
 
 ## 2018/11/16
 
-- [`lib_messaggi.i`][lib_messaggi_libreria] (v0.8.1)
-- [`lib_verbi.i`][lib_verbi] (v0.8.2)
+- [`lib_messaggi.i`][lib_messaggi_libreria] &#x27f6; v0.8.1
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.8.2
 
 ### Documentazione verbi
 
@@ -1248,7 +1301,7 @@ Inizia a documentare il modulo dei messaggi.
 
 ## 2018/11/15
 
-- [`lib_verbi.i`][lib_verbi] (v0.8.2)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.8.2
 
 ### Documentazione verbi
 
@@ -1258,7 +1311,7 @@ Aggiungi commenti Doxter per documentare i verbi preposti al controllo della tra
 
 ## 2018/11/13 (2)
 
-- [`lib_verbi.i`][lib_verbi] (v0.8.1)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.8.1
 
 ### Pulizia documentazione verbi
 
@@ -1285,13 +1338,13 @@ Grazie alle trascrizioni dei test, sarà possibile rilevare automaticamente even
 
 ## 2018/11/13 (1)
 
-- [`libreria.i`][libreria] (v0.8.0)
-- [`lib_classi.i`][lib_classi] (v0.8.0)
-- [`lib_definizioni.i`][lib_definizioni] (v0.8.0)
-- [`lib_luoghi.i`][lib_luoghi] (v0.8.0)
-- [`lib_messaggi.i`][lib_messaggi_libreria] (v0.8.0)
-- [`lib_verbi.i`][lib_verbi] (v0.8.0)
-- [`lib_supplemento.i`][lib_supplemento] (v0.8.0)
+- [`libreria.i`][libreria] &#x27f6; v0.8.0
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.8.0
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.8.0
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.8.0
+- [`lib_messaggi.i`][lib_messaggi_libreria] &#x27f6; v0.8.0
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.8.0
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.8.0
 
 ### Passa alla v0.8.0: Tutti i verbi tradotti
 
@@ -1305,10 +1358,14 @@ Tutti i moduli della libreria passano alla versione 0.8.0.
                                REFERENCE LINKS                                
 ------------------------------------------------------------------------------>
 
-<!-- NOMI FILE LIBRERIA (NUOVI) -->
+<!-- File del Progetto -->
+
+
+<!-- Moduli della Libreria --------------------------------------------------->
 
 [libreria]:              ./libreria.i
 [lib_classi]:            ./lib_classi.i
+[lib_classi_vestiario]:  ./lib_classi_vestiario.i
 [lib_definizioni]:       ./lib_definizioni.i
 [lib_luoghi]:            ./lib_luoghi.i
 [lib_messaggi_runtime]:  ./lib_messaggi_runtime.i
@@ -1318,19 +1375,19 @@ Tutti i moduli della libreria passano alla versione 0.8.0.
 
 [test]: ../test/
 
-
-<!-- Library Documentation  -->
+<!-- Documentazione Libreria  ------------------------------------------------>
 
 [Doxter]: https://git.io/doxter "Visit Doxter website"
 
-[ANNOTAZIONI_DOXTER]: ./ANNOTAZIONI_DOXTER.adoc
 [BUILD_DOCS]: ./BUILD_DOCS.bat
+[ANNOTAZIONI_DOXTER]: ./ANNOTAZIONI_DOXTER.adoc
+[VESTIARIO]: ./VESTIARIO.md
 
 [lib_verbi adoc]: ./lib_verbi.asciidoc
 [lib_verbi html]: ./lib_verbi.html
 [lib_verbi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_verbi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
-<!-- External Links ---------------------------------------------------------->
+<!-- Link Esterni ------------------------------------------------------------>
 
 [Alan StdLib upstream repository]: https://github.com/AnssiR66/AlanStdLib
 
@@ -1338,13 +1395,15 @@ Tutti i moduli della libreria passano alla versione 0.8.0.
 
 [Alan SDK 3.0beta6]: https://www.alanif.se/download-alan-v3/development-kits/development-kits-3-0beta6
 
+<!-- Developer Snapshot di Alan ---------------------------------------------->
+
 [developer snaphshot]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots "Vai alla pagina delle Developer Snapshots sul sito di Alan"
 [3.0beta6-1852]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1852 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1852"
 [3.0beta6-1855]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1855 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1855"
 [3.0beta6-1862]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1862 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1862"
 [3.0beta6-1866]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1866 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1866"
 
-<!-- Alan Commits -->
+<!-- Alan Commits ------------------------------------------------------------>
 
 [repository di Alan]: https://bitbucket.org/alanif/alan "Visita il repository di Alan su Bitbucket"
 

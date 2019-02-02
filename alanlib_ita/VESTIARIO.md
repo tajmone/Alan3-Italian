@@ -1,10 +1,16 @@
 # Il Vestiario in Alan StdLib
 
-    ultima modifica: 2018/07/18
+    ultima modifica: 2019/02/02
 
-Appunti su come viene gestito il vestiario nella Libreria Standard di Alan, e note di traduzione all'italiano.
+Appunti su come viene gestito il vestiario nella Libreria Standard di Alan.
 
 > _**WIP**_ — Questo documento è ancora una bozza incompleta.
+
+<!-- sep -->
+
+> _**AVVERTENZA**_ — Allo stato attuale sono stati rilevati svariati problemi con le funzionalità del vestiario; sono quindi imminenti modifiche strutturali al codice della libreria che gestisce gli indumenti indossati e rimossi.
+> 
+> A breve, questo documento potrebbe non rispecchiare eventuali cambiamenti apportati in seguito alla data della sua ultima revisione.
 
 -----
 
@@ -13,10 +19,9 @@ Appunti su come viene gestito il vestiario nella Libreria Standard di Alan, e no
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Introduzione](#introduzione)
-    - [`worn` e `wearing`](#worn-e-wearing)
-    - [La classe `clothing` ed i suoi attributi](#la-classe-clothing-ed-i-suoi-attributi)
-        - [Note di Traduzione](#note-di-traduzione)
-        - [`null_clothing`](#null_clothing)
+    - [`abbigliamento` e `indossati`](#abbigliamento-e-indossati)
+    - [La classe `indumento` ed i suoi attributi](#la-classe-indumento-ed-i-suoi-attributi)
+        - [`indumento_fittizio`](#indumento_fittizio)
     - [Inizializzazione del Vestiario](#inizializzazione-del-vestiario)
 - [La Tabella del Vestiario](#la-tabella-del-vestiario)
 
@@ -26,24 +31,22 @@ Appunti su come viene gestito il vestiario nella Libreria Standard di Alan, e no
 
 # Introduzione
 
-La libreria standard predispone un sistema articolato per la gestione del vestiario, sia del giocatore (`hero`) che degli altri personaggi (PNG `ACTOR`), che tiene conto delle aree interessate del corpo per ciascun capo, nonché dell'ordine startificato in cui il vestiario deve essere indossato e rimosso.
+La libreria standard predispone un sistema articolato per la gestione del vestiario, sia dell'Eroe (`hero`) che degli altri personaggi (classe `actor`), che tiene conto delle aree del corpo che ciascun indumento va a ricoprire, nonché dell'ordine startificato in cui il vestiario deve essere indossato e rimosso.
 
-La mappatura del vestiario alle zone del corpo che ricopre, così come la stratificazione d'indossamento, è gestita tramite attributi di tipo numerico presenti in ogni istanza di vestiario.
+La mappatura del vestiario alle zone del corpo ricoperte, così come la stratificazione d'indossamento, è gestita tramite attributi di tipo numerico presenti in ogni istanza di vestiario (classe `indumento`).
 
-La libreria predispone inoltre un sistema (opzionale) per distinguere il vestiario in genere di appartenenza (maschio/femmina), tramite l'attributo numerico `sex`, al fine di prevenire al giocatore di indossare abbigliamento non consono al suo genere d'appartenenza.
+La libreria predispone inoltre un sistema (opzionale) per distinguere il vestiario in genere di appartenenza (maschio/femmina, o anche adulto/bambino, ecc.), tramite l'attributo numerico `genere`, al fine di prevenire che il giocatore indossi indumenti non consoni al suo genere d'appartenenza.
 
-## `worn` e `wearing`
+## `abbigliamento` e `indossati`
 
-A ogni attore viene assegnato l'attributo `wearing` — un attibuto di tipo `SET` (un _insieme_) contentente riferimenti a instanze di tipo `clothing`, con valore di default `null_clothing`.
-
-
+A ogni attore viene assegnato l'attributo d'_insieme_ `indossati` (un _set_) contentente riferimenti a instanze di tipo `indumento`, con valore di default `indumento_fittizio`.
 
 
-## La classe `clothing` ed i suoi attributi
+## La classe `indumento` ed i suoi attributi
 
-Un indumento deve essere dichiarato come istanza della classe `clothing` (sottoclasse di `OBJECT`).
+Un indumento deve essere dichiarato come istanza della classe `indumento` (sottoclasse di `object`).
 
-Questa classe sovrascrive alcuni valori predefiniti di attributi comuni a tutte le cose (`THING`):
+Questa classe sovrascrive alcuni valori predefiniti di attributi comuni a tutte le cose (classe `thing` e derivati):
 
 ```alan
   IS indossabile.
@@ -55,120 +58,94 @@ Inoltre, questa classe introduce nuovi attributi speciali per il vestiario, non 
 
 |  attributo   |   tipo   | default |                                descrizione                                 |
 |--------------|----------|---------|----------------------------------------------------------------------------|
-| `headcover`  | numerico | 0       | (vedi _[Tabella del Vestiario]_, più sotto)                                |
-| `handscover` | numerico | 0       | _idem_                                                                           |
-| `feetcover`  | numerico | 0       | _idem_                                                                           |
-| `topcover`   | numerico | 0       | _idem_                                                                           |
-| `botcover`   | numerico | 0       | _idem_                                                                           |
+| `val_testa`  | numerico | 0       | (vedi _[Tabella del Vestiario]_, più sotto)                                |
+| `val_mani`   | numerico | 0       | _idem_                                                                     |
+| `val_piedi`  | numerico | 0       | _idem_                                                                     |
+| `val_tronco` | numerico | 0       | _idem_                                                                     |
+| `val_gambe`  | numerico | 0       | _idem_                                                                     |
 | `indossato`  | booleano | `NOT`   | (_uso interno_) Indica se l'indumento è indossato da qualcuno (hero o PNG) |
 
-### Note di Traduzione
 
-Gli attributi di cui sopra, andranno tradotti in italiano. Io e __Alex J0K3R__ stiamo attualmente valutando se tradurre i termini independentemente tra loro, o se invece accumunarli da un prefisso che li renda intuitivamente riconducibili alla loro funzionalità.
+### `indumento_fittizio`
 
-Esempi del primo approccio di traduzione:
-
-- `headcover` = `copricapo`
-- `handscover` = `guanti`
-- `feetcover` = `calzari`
-- `topcover` = `superiore`
-- `botcover` = `inferiore`
-
-
-... purtroppo questo approccio non garantisce termini che ricoprano la funzione generale del vestiario per tutti le voci — laddove `copricapo` è un termine abbastanza generico per qualsiasi tipo di indumento indossabile in testa (p.es., anche un casco da moto), `guanti` non è altrettanto elastico nel suo significato (p.es., delle manette, un orologio) — e i termini `topcover` e `botcover` rischiano di essere tradotti con vocaboli poco rappresentativi della loro reale funzione.
-
-Esempi del secondo approccio:
-
-- `headcover` = `vestiario_testa` / `indumento_testa`
-- `handscover` = `vestiario_mani` / `indumento_mani`
-- `feetcover` = `vestiario_piedi` / `indumento_piedi`
-- `topcover` = `vestiario_busto` / `indumento_busto`
-- `botcover` = `vestiario_gambe` / `indumento_gambe`
-
-In questo caso, ogni attributo rappresenta chiaramente la funzione che ricopre: il suffisso conferisce un'omogeneità intuitiva a questo gruppo di attributi, semplificandone la memorizzazione. L'unico svantaggio è la lunghezza finale degli attributi — anche se, dopotutto, non è che verrebbero usati poi così spesso nel codice; specie nelle avventure in cui il vestiario è importante, poiché in tal caso verranno quasi sempre usati per creare sottoclassi _ad hoc_ di indumenti (cappello, camicia, pantaloni, ecc) e quindi non verrebbero mai usati nella creazione di singole istanze di vestiario.
-
-### `null_clothing`
-
-`null_clothing` è instanza "dummy" di `clothing`, creata dalla libreria ed assegnata ad ogni attore come valore segnaposto predefinito per l'attributo `wearing` (di tipo _set_), al fine di restringere le instanze consentite nel set ai discendenti di `clothing`. Durante l'inizializzazione delle libreria, `null_clothing` viene eliminato dal set di `wearing`:
+`indumento_fittizio` è instanza "dummy" di `indumento`, creata dalla libreria ed assegnata ad ogni attore come valore segnaposto predefinito per l'attributo `indossati` (di tipo _set_), al fine di restringere le instanze consentite nel set ai discendenti di `indumento`. Durante l'inizializzazione delle libreria, `indumento_fittizio` viene eliminato dal set degli `indossati`:
 
 ```alan
-    INITIALIZE
-    -- [...]
-
-    -- excluding the default dummy clothing object from all actors; ignore.
-    EXCLUDE null_clothing FROM wearing OF THIS.
+ADD TO EVERY ACTOR
+  INITIALIZE
+    ...
+    -- Rimuovi l'indumento fittizio dagli 'indossati' di ogni attore:
+    EXCLUDE indumento_fittizio FROM THIS:indossati.
 ```
 
 ## Inizializzazione del Vestiario
 
 Durante l'inizializzazione, la libreria si occuperà della gestione automatizzata del vestiario.
 
-1. Ogni indumento collocato in `worn` viene incluso nel `wearing` del giocatore.
-2. Ogni indumento nel `wearing` del giocatore viene collocato in `worn` e settato come `indossato`.
-3. Ogni indumento nel `wearing` di un PNG viene collocato nel PNG e settato come `indossato`.
-4. Qualsiasi oggetto contenuto in un indumento (p.es. un portafoglio in una giacca) verrà autmomaticamente aggiunto alla set degli oggetti consentiti (attr. `allowed`) per quell'indumento, così da consentire di rimettervelo una volta toltolo.
+1. Ogni indumento collocato nell'`abbigliamento` viene incluso negli `indossati` dell'Eroe.
+2. Ogni indumento negli `indossati` dell'Eroe viene collocato nell'`abbigliamento` e settato come `indossato`.
+3. Ogni indumento negli `indossati` di un PNG viene collocato nel PNG (`IN <actor>`) e settato come `indossato`.
+4. Qualsiasi oggetto contenuto in un indumento (p.es. un portafoglio in una giacca) verrà autmomaticamente aggiunto al set degli oggetti `consentiti` (attr. definito su `thing`) per quell'indumento, sì da potervelo rimettere dopo averlo estratto.
 
-Dei controlli anologhi vengono eseguiti ad ogni turno (tramite l'evento `worn_clothing_check`) per assicurarsi che i capi di vestiario acquisiti dagli attori nel corso del gioco vengano gestiti correttamente.
+Dei controlli anologhi vengono eseguiti ad ogni turno (tramite l'evento `controlla_indossati`) per assicurarsi che i capi di vestiario acquisiti dagli attori nel corso del gioco vengano gestiti correttamente.
+
+- [`lib_classi_vestiario.i`][lib_classi_vestiario] v0.13.0-Alpha:
 
 ```alan
-EVERY clothing ISA OBJECT
-    -- [...]
+EVERY indumento IsA OBJECT
+  ...
 
   INITIALIZE
 
+    -- L'attributo d'insieme 'indossati' è concepito per funzionare sia con
+    -- l'Eroe che con i PNG:
 
-    -- the set attribute 'IS wearing' is defined to work for both the hero
-    -- and NPCs:
-
-    IF THIS IN worn
-      THEN INCLUDE THIS IN wearing OF hero.
+    IF THIS IN abbigliamento
+      THEN INCLUDE THIS IN indossati OF hero.
     END IF.
 
-    FOR EACH ac ISA ACTOR
+    FOR EACH ac IsA ACTOR
       DO
         IF ac = hero
           THEN
-            IF THIS IN wearing OF hero AND THIS <> null_clothing
+            IF THIS IN indossati OF hero AND THIS <> indumento_fittizio
               THEN
-                IF THIS NOT IN worn
-                  THEN LOCATE THIS IN worn.
+                IF THIS NOT IN abbigliamento
+                  THEN LOCATE THIS IN abbigliamento.
                 END IF.
                 MAKE THIS indossato.
             END IF.
-        ELSIF THIS IN wearing OF ac AND THIS <> null_clothing
-            THEN
-              IF THIS NOT IN ac
-                THEN
-                  LOCATE THIS IN ac.
-              END IF.
-              MAKE THIS indossato.
+        ELSIF THIS IN indossati OF ac AND THIS <> indumento_fittizio
+          THEN
+            IF THIS NOT IN ac
+              THEN
+                LOCATE THIS IN ac.
+            END IF.
+            MAKE THIS indossato.
         END IF.
     END FOR.
-
 ```
 
 
 # La Tabella del Vestiario
 
-> _**DA TRADURRE**_ — Questa tabella va tradotta in italiano, sia i termini di esempio della prima colonna che i termini degli attributi nelle rimanenti colonne (ma per questi ultimi, sto ancora lavorando sulla possibile terminologia da adottare).
-
-| Clothing                    | Headcover | Topcover | Botcover | Footcover | Handcover |
-| ----------------------      | -------:  | ------:  | ------:  | -------:  | -------:  |
-| cappello                    | **2**     | 0        | 0        | 0         | 0         |
-| canottiera/reggiseno        | 0         | **2**    | 0        | 0         | 0         |
-| mutande/slip                | 0         | 0        | **2**    | 0         | 0         |
-| pagliaccetto                | 0         | **4**    | **4**    | 0         | 0         |
-| camicetta/camicia/maglietta | 0         | **8**    | 0        | 0         | 0         |
-| salopette/abito da donna    | 0         | **8**    | **32**   | 0         | 0         |
-| gonna                       | 0         | 0        | **32**   | 0         | 0         |
-| pantaloni/pantaloncini      | 0         | 0        | **16**   | 0         | 0         |
-| maglione/pullover           | 0         | **16**   | 0        | 0         | 0         |
-| giacca_                     | 0         | **32**   | 0        | 0         | 0         |
-| cappotto                    | 0         | **64**   | **64**   | 0         | 0         |
-| calze/gambaletti            | 0         | 0        | 0        | **2**     | 0         |
-| collant/calzamaglia         | 0         | 0        | **8**    | **2**     | 0         |
-| scarpe/stivali              | 0         | 0        | 0        | **4**     | 0         |
-| guanti                      | 0         | 0        | 0        | 0         | **2**     |
+| Indumento                         | val_testa | val_tronco | val_gambe | val_piedi | val_mani |
+| ----------------------            | -------:  | ------:    | ------:   | -------:  | -------: |
+| cappello                          | **2**     | 0          | 0         | 0         | 0        |
+| canottiera/reggiseno              | 0         | **2**      | 0         | 0         | 0        |
+| mutande/slip                      | 0         | 0          | **2**     | 0         | 0        |
+| pagliaccetto                      | 0         | **4**      | **4**     | 0         | 0        |
+| blusa/camicia/T-shirt             | 0         | **8**      | 0         | 0         | 0        |
+| salopette/abito donna/tuta lavoro | 0         | **8**      | **32**    | 0         | 0        |
+| gonna                             | 0         | 0          | **32**    | 0         | 0        |
+| pantaloni/pantaloncini            | 0         | 0          | **16**    | 0         | 0        |
+| maglione/pullover                 | 0         | **16**     | 0         | 0         | 0        |
+| giacca                            | 0         | **32**     | 0         | 0         | 0        |
+| cappotto                          | 0         | **64**     | **64**    | 0         | 0        |
+| calze/gambaletti                  | 0         | 0          | 0         | **2**     | 0        |
+| collant/calzamaglia               | 0         | 0          | **8**     | **2**     | 0        |
+| scarpe/stivali                    | 0         | 0          | 0         | **4**     | 0        |
+| guanti                            | 0         | 0          | 0         | 0         | **2**    |
 
 La tabella originale inglese (_The clothing table_):
 
@@ -203,5 +180,7 @@ La tabella originale inglese (_The clothing table_):
 <!-- link interni -->
 
 [Tabella del Vestiario]: #la-tabella-del-vestiario "Vai alla Tabella del Vestiario"
+
+[lib_classi_vestiario]: ./lib_classi_vestiario.i
 
 <!-- eof -->

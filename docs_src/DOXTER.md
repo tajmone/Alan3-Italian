@@ -11,6 +11,7 @@ Appunti di lavoro sull'organizzazione della documentazione di Alan Italian in re
 
 - [Regioni e pesi nella documentazione](#regioni-e-pesi-nella-documentazione)
     - [Modulo Classi](#modulo-classi)
+    - [Modulo Classi Vestiario](#modulo-classi-vestiario)
     - [Modulo Definizioni](#modulo-definizioni)
     - [Modulo Luoghi](#modulo-luoghi)
     - [Modulo Messaggi Runtime](#modulo-messaggi-runtime)
@@ -68,6 +69,22 @@ Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in cia
 <!-- 
 | 00000  |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx |
 -->
+
+## Modulo Classi Vestiario
+
+- [`lib_classi_vestiario.i`][lib_classi_vestiario]
+
+
+| weight   | subw      | tag                         | descrizione                               |
+| -------: | --------: | :-------------------------- | :---------------------------------------- |
+| 50000    |           | `todo`                      | TODO                                      |
+| 51000    | 1-33      | `todo_checklist`            | === Check List Generale                   |
+| 51000    | 665-666   | `todo_checklist`            | === Check List Doxter                     |
+
+<!-- 
+| 00000  |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx |
+-->
+
 
 ## Modulo Definizioni
 
@@ -230,6 +247,7 @@ Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in cia
 
 [libreria]:              ../alanlib_ita/libreria.i
 [lib_classi]:            ../alanlib_ita/lib_classi.i
+[lib_classi_vestiario]:  ../alanlib_ita/lib_classi_vestiario.i
 [lib_definizioni]:       ../alanlib_ita/lib_definizioni.i
 [lib_luoghi]:            ../alanlib_ita/lib_luoghi.i
 [lib_messaggi_runtime]:  ../alanlib_ita/lib_messaggi_runtime.i

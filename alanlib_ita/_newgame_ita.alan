@@ -1,20 +1,25 @@
--- "_newgame_ita.alan" v0.12.0-Alpha (2019-01-24) | Alan 3.0beta6 | Std Lib v2.1
+-- "_newgame_ita.alan" v0.13.0-Alpha (2019-01-24) | Alan 3.0beta6 | Std Lib v2.1
 --------------------------------------------------------------------------------
 --| Sorgente base standard per creare avventure con ALAN Italian library v2.1.
 --| Basato sul file "newgame.alan" della Standard Library 2.1.
 --------------------------------------------------------------------------------
 IMPORT 'libreria.i'.
 
+-- È obbligatorio definire 'mia_AT' in ogni avventura che usi la libreria:
+
 THE mia_AT IsA blocco_definizioni
-    -- (questo blocco è obbligatorio in ogni avventura che usi la libreria!)
-
-    -- Modificare secondo necessità:
-    HAS titolo       "Avventura Senza Titolo".
-    HAS sottotitolo  "Sottotiolo".
-    HAS autore       "Autore Ignoto".
-    HAS anno         2018.
-    HAS versione     "1".
-
+  --============================================================================
+  -- INTESTAZIONE DELL'AVVENTURA (BANNER)
+  --============================================================================
+  -- Questi attributi sono tutti opzionali. Modificare secondo necessità:
+  ------------------------------------------------------------------------------
+  HAS       titolo  "Avventura Senza Titolo".
+  HAS  sottotitolo  "Sottotiolo".
+  HAS       autore  "Autore Ignoto".
+  HAS         anno   2019.
+  HAS     versione  "1".
+  HAS        AlanV  "v3.0beta6".
+  ------------------------------------------------------------------------------
 END THE.
 
 --==============================================================================
@@ -25,6 +30,6 @@ THE start_loc IsA location  -- Cambia il nome ed il tipo di questa LOCATION
 END THE.
 
 --------------------------------------------------------------------------------
-START AT start_loc.   -- Sostituisci "start_loc" con il nome che hai scelto per
-                      -- la LOCATION iniziale qui sopra.
-DESCRIBE intestazione.
+START AT start_loc.    --> Sostituisci "start_loc" con il nome che hai scelto
+                       --  per la LOCATION iniziale qui sopra.
+DESCRIBE intestazione. --> Mostrerà il banner (facoltativo).

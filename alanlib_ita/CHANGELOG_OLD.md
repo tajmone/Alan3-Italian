@@ -467,13 +467,13 @@ For the latest changes, see:
 
 ## 2018/11/13
 
-- [`libreria.i`][libreria] (v0.8.0)
-- [`lib_classi.i`][lib_classi] (v0.8.0)
-- [`lib_definizioni.i`][lib_definizioni] (v0.8.0)
-- [`lib_luoghi.i`][lib_luoghi] (v0.8.0)
-- [`lib_messaggi.i`][lib_messaggi] (v0.8.0)
-- [`lib_verbi.i`][lib_verbi] (v0.8.0)
-- [`lib_supplemento.i`][lib_supplemento] (v0.8.0)
+- [`libreria.i`][libreria] &#x27f6; v0.8.0
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.8.0
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.8.0
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.8.0
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.8.0
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.8.0
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.8.0
 
 ### Bump Up Lib to v0.8.0
 
@@ -538,8 +538,8 @@ with synonyms:
 
 ## 2018/11/12 (6)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.27)
-- [`lib_verbi.i`][lib_verbi] (v0.7.41)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.27
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.41
 
 ### Verb Restriction Attributes
 
@@ -563,8 +563,8 @@ with no synonyms.
 
 ## 2018/11/12 (5)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.26)
-- [`lib_verbi.i`][lib_verbi] (v0.7.40)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.26
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.40
 
 
 ### Verb Restriction Attributes
@@ -593,8 +593,8 @@ with no synonyms.
 
 ## 2018/11/12 (4)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.25)
-- [`lib_verbi.i`][lib_verbi] (v0.7.39)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.25
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.39
 
 
 ### Verb Restriction Attributes
@@ -631,8 +631,8 @@ with no synonyms.
 
 ## 2018/11/12 (3)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.24)
-- [`lib_verbi.i`][lib_verbi] (v0.7.38)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.24
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.38
 
 
 ### Verb Restriction Attributes
@@ -676,8 +676,8 @@ with synonyms:
 
 ## 2018/11/12 (2)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.23)
-- [`lib_verbi.i`][lib_verbi] (v0.7.37)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.23
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.37
 
 
 ### Verb Restriction Attributes
@@ -710,8 +710,8 @@ Before this fix, trying to listen to the sky or ceiling would produce an empty s
 
 ## 2018/11/12 (1)
 
-- [`lib_messaggi.i`][lib_messaggi] (v0.7.13)
-- [`lib_verbi.i`][lib_verbi] (v0.7.36)
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.7.13
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.36
 
 ### Verb Responses
 
@@ -731,9 +731,9 @@ with no synonyms.
 
 ## 2018/11/11 (2)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.22)
-- [`lib_messaggi.i`][lib_messaggi] (v0.7.12)
-- [`lib_verbi.i`][lib_verbi] (v0.7.35)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.22
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.7.12
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.35
 
 
 ### Verb Restriction Attributes
@@ -788,9 +788,9 @@ with no synonyms.
 
 ## 2018/11/11 (1)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.21)
-- [`lib_messaggi.i`][lib_messaggi] (v0.7.11)
-- [`lib_verbi.i`][lib_verbi] (v0.7.34)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.21
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.7.11
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.34
 
 ### Verb Restriction Attributes
 
@@ -874,9 +874,9 @@ New verb responses attributes (created for Italian library, no English counterpa
 
 ## 2018/11/10 (5)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.20)
-- [`lib_messaggi.i`][lib_messaggi] (v0.7.10)
-- [`lib_verbi.i`][lib_verbi] (v0.7.33)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.20
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.7.10
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.33
 
 ### Verb Restriction Attributes
 
@@ -921,8 +921,8 @@ New verb responses attributes (created for Italian library, no English counterpa
 
 ## 2018/11/10 (4)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.19)
-- [`lib_verbi.i`][lib_verbi] (v0.7.32)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.19
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.32
 
 ### Verb Restriction Attributes
 
@@ -947,7 +947,7 @@ with no synonyms.
 
 ## 2018/11/10 (3)
 
-- [`lib_verbi.i`][lib_verbi] (v0.7.31)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.31
 
 ### Verb: `shout`
 
@@ -964,8 +964,8 @@ with synonyms:
 
 ## 2018/11/10 (2)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.18)
-- [`lib_verbi.i`][lib_verbi] (v0.7.30)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.18
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.30
 
 ### Verb Restriction Attributes
 
@@ -988,7 +988,7 @@ with no synonyms.
 
 ## 2018/11/10 (1)
 
-- [`lib_verbi.i`][lib_verbi] (v0.7.29)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.29
 
 ### Doxterize Verbs Groups
 
@@ -1011,7 +1011,7 @@ Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 
 ## 2018/11/09 (8)
 
-- [`lib_verbi.i`][lib_verbi] (v0.7.28)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.28
 
 Raccogli nel gruppo "Verbi Sfusi" tutti i verbi tradotti che non sono ancora stati raggruppati.
 
@@ -1019,8 +1019,8 @@ Raccogli nel gruppo "Verbi Sfusi" tutti i verbi tradotti che non sono ancora sta
 
 ## 2018/11/09 (7)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.17)
-- [`lib_verbi.i`][lib_verbi] (v0.7.27)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.17
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.27
 
 ### Verb Restriction Attributes
 
@@ -1055,7 +1055,7 @@ Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 
 ## 2018/11/09 (6)
 
-- [`lib_verbi.i`][lib_verbi] (v0.7.26)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.26
 
 ### Group of Verbs: `push*`
 
@@ -1076,7 +1076,7 @@ with no synonyms.
 
 ## 2018/11/09 (5)
 
-- [`lib_verbi.i`][lib_verbi] (v0.7.25)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.25
 
 ### Group of Verbs: `dive*` and `swim*`
 
@@ -1103,8 +1103,8 @@ with no synonyms.
 
 ## 2018/11/09 (4)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.16)
-- [`lib_verbi.i`][lib_verbi] (v0.7.24)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.16
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.24
 
 ### Verb Restriction Attributes
 
@@ -1129,9 +1129,9 @@ with no synonyms.
 
 ## 2018/11/09 (3)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.15)
-- [`lib_messaggi.i`][lib_messaggi] (v0.7.9)
-- [`lib_verbi.i`][lib_verbi] (v0.7.23)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.15
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.7.9
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.23
 
 ### Verb Restriction Attributes
 
@@ -1170,8 +1170,8 @@ with no synonyms.
 
 ## 2018/11/09 (2)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.14)
-- [`lib_verbi.i`][lib_verbi] (v0.7.22)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.14
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.22
 
 ### Verb Restriction Attributes
 
@@ -1239,8 +1239,8 @@ with synonyms:
 
 ## 2018/11/09 (1)
 
-- [`lib_messaggi.i`][lib_messaggi] (v0.7.8)
-- [`lib_verbi.i`][lib_verbi] (v0.7.21)
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.7.8
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.21
 
 ### Verbs: `jump`, `jump_in` and `jump_on`
 
@@ -1279,7 +1279,7 @@ New verb responses attributes (created for Italian library, no English counterpa
 
 ## 2018/11/08
 
-- [`lib_verbi.i`][lib_verbi] (v0.7.20)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.20
 
 #### Fix Verb Responses
 
@@ -1314,9 +1314,9 @@ Now fixed to use `ogg2_distante_sg`/`pl` with `bulk IS NOT raggiungibile`/`IS di
 
 ## 2018/11/03 (3)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.13)
-- [`lib_messaggi.i`][lib_messaggi] (v0.7.7)
-- [`lib_verbi.i`][lib_verbi] (v0.7.19)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.13
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.7.7
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.19
 
 
 ### Verb Restriction Attributes
@@ -1390,10 +1390,10 @@ Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 
 ## 2018/11/03 (2)
 
-- [`lib_classi.i`][lib_classi] (v0.7.4)
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.12)
-- [`lib_luoghi.i`][lib_luoghi] (v0.7.2)
-- [`lib_verbi.i`][lib_verbi] (v0.7.18)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.7.4
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.12
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.7.2
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.18
 
 
 ### Code Cleanup
@@ -1439,9 +1439,9 @@ Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 
 ## 2018/11/03 (1)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.11)
-- [`lib_messaggi.i`][lib_messaggi] (v0.7.6)
-- [`lib_verbi.i`][lib_verbi] (v0.7.17)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.11
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.7.6
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.17
 
 
 ### Verb: `bite`
@@ -1474,9 +1474,9 @@ New verb responses attributes (created for Italian library, no English counterpa
 
 ## 2018/11/02 (2)
 
-- [`lib_classi.i`][lib_classi] (v0.7.3)
-- [`lib_messaggi.i`][lib_messaggi] (v0.7.5)
-- [`lib_verbi.i`][lib_verbi] (v0.7.16)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.7.3
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.7.5
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.16
 
 ### Doxterize Classes
 
@@ -1535,7 +1535,7 @@ New verb responses attributes (created for Italian library, no English counterpa
 
 ## 2018/11/02 (1)
 
-- [`lib_verbi.i`][lib_verbi] (v0.7.15)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.15
 
 
 ### Verb: `taste`
@@ -1554,10 +1554,10 @@ with synonyms:
 
 ## 2018/11/01
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.10)
-- [`lib_verbi.i`][lib_verbi] (v0.7.14)
-- [`lib_classi.i`][lib_classi] (v0.7.2)
-- [`lib_messaggi.i`][lib_messaggi] (v0.7.4)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.10
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.14
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.7.2
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.7.4
 
 
 ### Verb: `sip`
@@ -1608,9 +1608,9 @@ Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 
 ## 2018/10/31 (2)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.9)
-- [`lib_classi.i`][lib_classi] (v0.7.1)
-- [`lib_verbi.i`][lib_verbi] (v0.7.13)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.9
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.7.1
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.13
 
 ### Verb Restriction Attributes
 
@@ -1640,7 +1640,7 @@ The verb was also transalted in `lib_classi.i`, where it's implemented on the cl
 
 ## 2018/10/31 (1)
 
-- [`lib_verbi.i`][lib_verbi] (v0.7.12)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.12
 
 ### Doxterize Verbs
 
@@ -1682,7 +1682,7 @@ Organizza i Verbi di Gioco in gruppi di appartenenza correlati:
 
 ## 2018/10/25
 
-- [`lib_verbi.i`][lib_verbi] (v0.7.11)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.11
 
 ### Make `inventario` Not META
 
@@ -1721,8 +1721,8 @@ Organizza i Meta Verbi di Partita in gruppi di appartenenza correlati:
 
 ## 2018/10/24
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.8)
-- [`lib_verbi.i`][lib_verbi] (v0.7.10)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.8
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.10
 
 ### Verb Restriction Attributes
 
@@ -1744,8 +1744,8 @@ with no synonyms.
 
 ## 2018/10/22 (2)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.7)
-- [`lib_verbi.i`][lib_verbi] (v0.7.9)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.7
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.9
 
 ### `script*` Verbs
 
@@ -1778,9 +1778,9 @@ Translated `mia_AT` attributes for verb restrictions:
 
 ## 2018/10/22 (1)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.6)
-- [`lib_messaggi.i`][lib_messaggi] (v0.7.3)
-- [`lib_verbi.i`][lib_verbi] (v0.7.8)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.6
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.7.3
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.8
 
 ### Rename Restriction Attributes
 
@@ -1805,9 +1805,9 @@ Renamed verbs:
 
 ## 2018/10/21 (3)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.5)
-- [`lib_messaggi.i`][lib_messaggi] (v0.7.2)
-- [`lib_verbi.i`][lib_verbi] (v0.7.7)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.5
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.7.2
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.7
 
 ### `notify*` Verbs
 
@@ -1859,8 +1859,8 @@ Translated library attributes:
 
 ## 2018/10/21 (2)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.4)
-- [`lib_verbi.i`][lib_verbi] (v0.7.6)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.4
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.6
 
 ### Verb Restriction Attributes
 
@@ -1880,7 +1880,7 @@ Some verbs didn't have their ID mentioned at `VERB END`; added them to improve c
 
 ## 2018/10/21 (1)
 
-- [`lib_verbi.i`][lib_verbi] (v0.7.5)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.5
 
 ### Fix META VERBs
 
@@ -1901,8 +1901,8 @@ The following out-of-game verbs where not set as `META`:
 
 ## 2018/10/19 (2)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.3)
-- [`lib_verbi.i`][lib_verbi] (v0.7.4)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.3
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.4
 
 ### Verb: `verbose`
 
@@ -1949,8 +1949,8 @@ Translated `mia_AT` attributes for verb restrictions:
 
 ## 2018/10/19 (1)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.2)
-- [`lib_verbi.i`][lib_verbi] (v0.7.3)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.2
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.3
 
 ### Verb: `scratch`
 
@@ -1989,8 +1989,8 @@ Deleted the following English responses, since they're no longer used by any ver
 
 ## 2018/10/18
 
-- [`lib_messaggi.i`][lib_messaggi] (v0.7.1)
-- [`lib_verbi.i`][lib_verbi] (v0.7.2)
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.7.1
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.2
 
 ### Translate Responses for "Look" Verbs
 
@@ -2010,9 +2010,9 @@ New verb responses attributes (created for Italian library, no English counterpa
 
 ## 2018/10/17
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.1)
-- [`lib_luoghi.i`][lib_luoghi] (v0.7.1)
-- [`lib_verbi.i`][lib_verbi] (v0.7.1)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.1
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.7.1
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.1
 
 ### Verb Restriction Attributes
 
@@ -2104,13 +2104,13 @@ The `sotto = giù` synonym was removed due to conflicts with "guarda sotto".
 
 ## 2018/10/15 (3)
 
-- [`libreria.i`][libreria] (v0.7.0)
-- [`lib_classi.i`][lib_classi] (v0.7.0)
-- [`lib_definizioni.i`][lib_definizioni] (v0.7.0)
-- [`lib_luoghi.i`][lib_luoghi] (v0.7.0)
-- [`lib_messaggi.i`][lib_messaggi] (v0.7.0)
-- [`lib_verbi.i`][lib_verbi] (v0.7.0)
-- [`lib_supplemento.i`][lib_supplemento] (v0.7.0)
+- [`libreria.i`][libreria] &#x27f6; v0.7.0
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.7.0
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.7.0
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.7.0
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.7.0
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.7.0
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.7.0
 
 
 ### Move Messages Attributes to `lib_messaggi.i`
@@ -2146,7 +2146,7 @@ These changes bump up all library files version to 0.7.0.
 
 ## 2018/10/15 (2)
 
-- [`lib_verbi.i`][lib_verbi] (v0.6.3)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.6.3
 
 ### Verb: `consult`
 
@@ -2167,10 +2167,10 @@ with synonyms:
 
 ## 2018/10/15 (1)
 
-- [`lib_classi.i`][lib_classi] (v0.6.2)
-- [`lib_definizioni.i`][lib_definizioni] (v0.6.4)
-- [`lib_luoghi.i`][lib_luoghi] (v0.6.1)
-- [`lib_supplemento.i`][lib_supplemento] (v0.6.1)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.6.2
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.6.4
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.6.1
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.6.1
 
 ### Doxterize `lib_luoghi.i` and `lib_supplemento.i`
 
@@ -2183,8 +2183,8 @@ Also updates Doxter documentation and organization of other modules.
 
 ## 2018/10/14 (3)
 
-- [`lib_classi.i`][lib_classi] (v0.6.1)
-- [`lib_verbi.i`][lib_verbi] (v0.6.2)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.6.1
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.6.2
 
 ### Doxterize `lib_classi.i`
 
@@ -2197,8 +2197,8 @@ Also update Doxter organization of `lib_verbi.i`.
 
 ## 2018/10/14 (2)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.6.3)
-- [`lib_verbi.i`][lib_verbi] (v0.6.1)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.6.3
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.6.1
 
 ### Banner Translation
 
@@ -2222,7 +2222,7 @@ This simplifies verbs' restrictions management (as it was already done with othe
 
 ## 2018/10/14 (2)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.6.2)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.6.2
 
 ### Doxterize `lib_definizioni.i`
 
@@ -2234,7 +2234,7 @@ This commit adds [Doxter] documentation to `lib_definizioni.i`.
 
 ## 2018/10/14 (1)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.6.1)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.6.1
 
 ### Optimize Restricted Actions
 
@@ -2266,13 +2266,13 @@ Move restriction of verbs  `parlare` (`talk`) and `parlare_con` (`talk_to`) in r
 
 ## 2018/10/13
 
-- [`libreria.i`][libreria] (v0.6.0)
-- [`lib_classi.i`][lib_classi] (v0.6.0)
-- [`lib_definizioni.i`][lib_definizioni] (v0.6.0)
-- [`lib_luoghi.i`][lib_luoghi] (v0.6.0)
-- [`lib_messaggi.i`][lib_messaggi] (v0.6.0)
-- [`lib_verbi.i`][lib_verbi] (v0.6.0)
-- [`lib_supplemento.i`][lib_supplemento] (v0.6.0)
+- [`libreria.i`][libreria] &#x27f6; v0.6.0
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.6.0
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.6.0
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.6.0
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.6.0
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.6.0
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.6.0
 
 ### Add Doxter for Documentation Generator
 
@@ -2302,8 +2302,8 @@ More info on Doxter's workflow and current state is available in:
 
 ## 2018/10/09
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.5.7)
-- [`lib_verbi.i`][lib_verbi] (v0.5.7)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.5.7
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.5.7
 
 ### Verb Restriction Attributes
 
@@ -2333,8 +2333,8 @@ with no synonyms.
 ## 2018/08/27 (3)
 
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.5.6)
-- [`lib_verbi.i`][lib_verbi] (v0.5.6)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.5.6
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.5.6
 
 ### New Recurrent Verb Responses Attributes
 
@@ -2354,8 +2354,8 @@ These are verb response messagges which appear as String statements more than on
 
 ## 2018/08/27 (2)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.5.5)
-- [`lib_verbi.i`][lib_verbi] (v0.5.5)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.5.5
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.5.5
 
 ### Verb Restriction Attributes
 
@@ -2392,8 +2392,8 @@ with no synonyms.
 
 ## 2018/08/27 (1)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.5.4)
-- [`lib_verbi.i`][lib_verbi] (v0.5.4)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.5.4
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.5.4
 
 ### Verb Restriction Attributes
 
@@ -2431,8 +2431,8 @@ with synonyms:
 
 ## 2018/08/24
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.5.3)
-- [`lib_verbi.i`][lib_verbi] (v0.5.3)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.5.3
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.5.3
 
 ### Fix Verb `chiedi` (`ask_for`)
 
@@ -2447,9 +2447,9 @@ For a full discussion of the problem, see [Issue #18] on [Alan StdLib upstream r
 
 ## 2018/08/22 (3)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.5.2)
-- [`lib_classi.i`][lib_classi] (v0.5.2)
-- [`lib_verbi.i`][lib_verbi] (v0.5.2)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.5.2
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.5.2
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.5.2
 
 ### Verb Restriction Attributes
 
@@ -2484,7 +2484,7 @@ Now it seems to be all fixed (and `ACTOR`s' attributes are inizialized correctly
 
 ## 2018/08/22 (2)
 
-- [`lib_classi.i`][lib_classi] (v0.5.1)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.5.1
 
 ### Fix Actors Initialization
 
@@ -2495,8 +2495,8 @@ Changed the order of some code blocks within the `ACTOR`s' initialization, becau
 
 ## 2018/08/22 (1)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.5.1)
-- [`lib_verbi.i`][lib_verbi] (v0.5.1)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.5.1
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.5.1
 
 ### Verb Restriction Attributes
 
@@ -2531,13 +2531,13 @@ with no synonyms.
 
 ## 2018/08/18 (2)
 
-- [`libreria.i`][libreria] (v0.5.0)
-- [`lib_classi.i`][lib_classi] (v0.5.0)
-- [`lib_definizioni.i`][lib_definizioni] (v0.5.0)
-- [`lib_luoghi.i`][lib_luoghi] (v0.5.0)
-- [`lib_messaggi.i`][lib_messaggi] (v0.5.0)
-- [`lib_verbi.i`][lib_verbi] (v0.5.0)
-- [`lib_supplemento.i`][lib_supplemento] (v0.5.0)
+- [`libreria.i`][libreria] &#x27f6; v0.5.0
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.5.0
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.5.0
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.5.0
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.5.0
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.5.0
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.5.0
 
 ### Update to Alan 3 Beta 6
 
@@ -2561,13 +2561,15 @@ All library files bumped up to v0.5.0.
 Since Alan SDK 3 Beta 6 fixed the issue that didn't allow to create NOISE WORD as synonyms of `go`, I've changed `lib_supplemento.i` to use `'the'` as reference NOISE WORD, and removed mentioning of the original problem.
 
 
-<!---------------------------------------------------------------------------->
+
+-------------------------------------------------------------------------------
+
 
 # Alan 3.0beta5
 
 ## 2018/08/18 (1)
 
-- [`lib_verbi.i`][lib_verbi] (v0.4.18)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.4.18
 
 ### Group Together Verbs That Are Questions/Statements
 
@@ -2588,7 +2590,7 @@ These verbs are now grouped together after the playing commands, for they consti
 
 ## 2018/08/16 (2)
 
-- [`lib_classi.i`][lib_classi] (v0.4.12)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.4.12
 
 ### Fix Actors Initialization and Description
 
@@ -2609,8 +2611,8 @@ qui. Romeo e Giuglietta sono qui. Thelma e Louise sono qui.
 
 ## 2018/08/16 (1)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.4.14)
-- [`lib_verbi.i`][lib_verbi] (v0.4.17)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.4.14
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.4.17
 
 ### Verb Responses
 
@@ -2644,9 +2646,9 @@ Questo non ha alcun senso.
 
 ## 2018/08/11
 
-- [`lib_classi.i`][lib_classi] (v0.4.11)
-- [`lib_definizioni.i`][lib_definizioni] (v0.4.13)
-- [`lib_verbi.i`][lib_verbi] (v0.4.16)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.4.11
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.4.13
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.4.16
 
 ### Verb Restriction Attributes
 
@@ -2682,9 +2684,9 @@ with no synonyms.
 
 ## 2018/08/09
 
-- [`lib_classi.i`][lib_classi] (v0.4.10)
-- [`lib_definizioni.i`][lib_definizioni] (v0.4.12)
-- [`lib_verbi.i`][lib_verbi] (v0.4.15)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.4.10
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.4.12
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.4.15
 
 ### Verb Responses
 
@@ -2711,7 +2713,7 @@ with no synonyms.
 
 ## 2018/08/08
 
-- [`lib_classi.i`][lib_classi] (v0.4.9)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.4.9
 
 ### Deleted `present_actor` Attribute
 
@@ -2730,7 +2732,7 @@ This commit translates to Italian the `HEADER` and `EXTRACT` messages on `ACTOR`
 
 ## 2018/08/07
 
-- [`lib_classi.i`][lib_classi] (v0.4.8)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.4.8
 
 Some code cleanup: repositioning of code blocks, translated documentation comments, etc.
 
@@ -2741,8 +2743,8 @@ Some code cleanup: repositioning of code blocks, translated documentation commen
 
 ## 2018/08/06 (2)
 
-- [`lib_classi.i`][lib_classi] (v0.4.7)
-- [`lib_definizioni.i`][lib_definizioni] (v0.4.11)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.4.7
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.4.11
 
 This commit changes the way ACTORS are initialized in order to handle correctly named actors. To achive this, initializazion of Italian attributes (gender, number, articles, ecc.) is no longer carried out inside the `ADD TO EVERY THING` block, but on a separate block targetting only `OBJECT`, so that it won't affect some user defined attributes on ACTORs. Then `EVERY ACTOR` is initialized separately, with a code that is very similar to the one used for `OBJECT`s initialization, except that it takes into account the `named` attribute (now `nome_proprio`). The rest of the explanations are in Italian, for practical purposes dealing with the language's grammar.
 
@@ -2858,8 +2860,8 @@ Esempi con art. indeterminativo (`"Qui puoi vedere $01."`):
 
 ## 2018/08/06 (1)
 
-- [`lib_classi.i`][lib_classi] (v0.4.6)
-- [`lib_verbi.i`][lib_verbi] (v0.4.14)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.4.6
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.4.14
 
 
 ### Library Attributes
@@ -2884,8 +2886,8 @@ Translated library attributes related to ACTORs:
 
 ## 2018/08/02 (3)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.4.10)
-- [`lib_verbi.i`][lib_verbi] (v0.4.13)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.4.10
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.4.13
 
 ### Verb Responses
 
@@ -2924,7 +2926,7 @@ with no synonyms.
 
 ## 2018/08/02 (2)
 
-- [`lib_verbi.i`][lib_verbi] (v0.4.12)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.4.12
 
 Fix English "Verbs List" in source comments.
 
@@ -2935,9 +2937,9 @@ Fix English "Verbs List" in source comments.
 
 ## 2018/08/02 (1)
 
-- [`lib_classi.i`][lib_classi] (v0.4.5)
-- [`lib_luoghi.i`][lib_luoghi] (v0.4.1)
-- [`lib_verbi.i`][lib_verbi] (v0.4.11)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.4.5
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.4.1
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.4.11
 
 
 ### Verbs: `kill` and `kill_with`
@@ -2977,8 +2979,8 @@ This commit tweaks the library source to increase code readability during work:
 
 ## 2018/08/01 (4)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.4.9)
-- [`lib_verbi.i`][lib_verbi] (v0.4.10)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.4.9
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.4.10
 
 ### Verb Responses
 
@@ -3029,7 +3031,7 @@ with no synonyms.
 
 ## 2018/08/01 (3)
 
-- [`lib_verbi.i`][lib_verbi] (v0.4.9)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.4.9
 
 
 ### Verbs: `attack` and `attack_with`
@@ -3059,8 +3061,8 @@ with synonyms:
 
 ## 2018/08/01 (2)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.4.8)
-- [`lib_verbi.i`][lib_verbi] (v0.4.8)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.4.8
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.4.8
 
 This commit translates the following verbs:
 
@@ -3128,8 +3130,8 @@ with no synonyms.
 
 ## 2018/08/01 (1)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.4.7)
-- [`lib_verbi.i`][lib_verbi] (v0.4.7)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.4.7
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.4.7
 
 ### Verb Restriction Attributes
 
@@ -3164,7 +3166,7 @@ with no synonyms.
 
 ## 2018/07/31 (2)
 
-- [`lib_verbi.i`][lib_verbi] (v0.4.6)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.4.6
 
 ### Verb: `free`
 
@@ -3209,9 +3211,9 @@ with synonyms:
 
 ## 2018/07/31 (1)
 
-- [`lib_classi.i`][lib_classi] (v0.4.4)
-- [`lib_definizioni.i`][lib_definizioni] (v0.4.6)
-- [`lib_verbi.i`][lib_verbi] (v0.4.5)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.4.4
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.4.6
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.4.5
 
 ### Verb Restriction Attributes
 
@@ -3248,7 +3250,7 @@ with synonyms:
 
 ## 2018/07/29 (2)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.4.5)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.4.5
 
 ### Remove Verb Restriction Attributes
 
@@ -3264,9 +3266,9 @@ Removed `mia_AT` attributes for verb restrictions:
 
 ## 2018/07/29 (1)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.4.4)
-- [`lib_classi.i`][lib_classi] (v0.4.3)
-- [`lib_verbi.i`][lib_verbi] (v0.4.4)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.4.4
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.4.3
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.4.4
 
 This commit translates and adapts to Italian the group of verbs and attributes that deal with switching on/of devices and lightsources. Because it required complex structural changes due to the differences in the two languages, all the explanations will be in Italian only!
 
@@ -3360,8 +3362,8 @@ Ho tradotto in italiano il testo prodotto dai verbi sopramenzionati, e anche que
 
 ## 2018/07/28 (3)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.4.3)
-- [`lib_verbi.i`][lib_verbi] (v0.4.3)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.4.3
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.4.3
 
 ### Verb Responses
 
@@ -3375,8 +3377,8 @@ Ho tradotto in italiano il testo prodotto dai verbi sopramenzionati, e anche que
 
 ## 2018/07/28 (2)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.4.2)
-- [`lib_verbi.i`][lib_verbi] (v0.4.2)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.4.2
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.4.2
 
 ### Verb Responses
 
@@ -3424,9 +3426,9 @@ with synonyms:
 
 ## 2018/07/28 (1)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.4.1)
-- [`lib_classi.i`][lib_classi] (v0.4.2)
-- [`lib_verbi.i`][lib_verbi] (v0.4.1)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.4.1
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.4.2
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.4.1
 
 ### Verb Restriction Attributes
 
@@ -3472,7 +3474,7 @@ with no synonyms (for now).
 
 ## 2018/07/27 (7)
 
-- [`lib_classi.i`][lib_classi] (v0.4.1)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.4.1
 
 Translated some more commented documentation of the Library classes.
 
@@ -3483,16 +3485,16 @@ Translated some more commented documentation of the Library classes.
 
 ## 2018/07/27 (6)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.4.0)
-- [`lib_verbi.i`][lib_verbi] (v0.4.0)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.4.0
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.4.0
 
 This is a major update introducing new global features to the Italian library. Therefore, all library files are bumped up to version `0.4.0`, even those whose code wasn't changed to introduce the new feature:
 
-- [`libreria.i`][libreria] (v0.4.0)
-- [`lib_classi.i`][lib_classi] (v0.4.0)
-- [`lib_luoghi.i`][lib_luoghi] (v0.4.0)
-- [`lib_messaggi.i`][lib_messaggi] (v0.4.0)
-- [`lib_supplemento.i`][lib_supplemento] (v0.4.0)
+- [`libreria.i`][libreria] &#x27f6; v0.4.0
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.4.0
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.4.0
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.4.0
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.4.0
 
 ### New THING Attribute `vocale` for Adjectives Conjucation
 
@@ -3592,8 +3594,8 @@ Adjectives which follow different conjucation rules will simply ignore `vocale` 
 
 ## 2018/07/27 (5)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.3.18)
-- [`lib_verbi.i`][lib_verbi] (v0.3.21)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.3.18
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.21
 
 Just small comments adjustments and source cleanup.
 
@@ -3604,8 +3606,8 @@ Just small comments adjustments and source cleanup.
 ## 2018/07/27 (4)
 
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.3.17)
-- [`lib_verbi.i`][lib_verbi] (v0.3.20)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.3.17
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.20
 
 ### Translated Verb Responses + Attributes
 
@@ -3631,7 +3633,7 @@ with no synonyms.
 
 ## 2018/07/27 (3)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.3.16)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.3.16
 
 Small fixes and cleanup; also fixes an English verb response (`check_act_near_hero`) that accidentally contained a side comment in its string (due to multiline string lacking closing quotes).
 
@@ -3640,8 +3642,8 @@ Small fixes and cleanup; also fixes an English verb response (`check_act_near_he
 
 ## 2018/07/27 (2)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.3.15)
-- [`lib_verbi.i`][lib_verbi] (v0.3.19)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.3.15
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.19
 
 ### Translated Verb Responses + Attributes
 
@@ -3674,8 +3676,8 @@ Now the English attributes are no longer required in the library for all occuren
 
 ## 2018/07/27 (1)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.3.14)
-- [`lib_verbi.i`][lib_verbi] (v0.3.18)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.3.14
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.18
 
 ### Italian Responses For Illegal Obj2 With
 
@@ -3694,9 +3696,9 @@ Now the original `illegal_parameter2_with_sg`/`pl` is no longer needed and was c
 
 ## 2018/07/26 (10)
 
-- [`lib_classi.i`][lib_classi] (v0.3.6)
-- [`lib_definizioni.i`][lib_definizioni] (v0.3.13)
-- [`lib_verbi.i`][lib_verbi] (v0.3.17)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.3.6
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.3.13
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.17
 
 ### Verb Response Attributes Renaming
 
@@ -3761,8 +3763,8 @@ Some other translated response-attributes:
 
 ## 2018/07/26 (9)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.3.12)
-- [`lib_verbi.i`][lib_verbi] (v0.3.16)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.3.12
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.16
 
 ### Translate Verb Responses for Closed Obj2 Blocking the Action
 
@@ -3811,8 +3813,8 @@ AND cont IS aperto
 
 ## 2018/07/26 (8)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.3.11)
-- [`lib_verbi.i`][lib_verbi] (v0.3.15)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.3.11
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.15
 
 ### Translate Verb Responses for Closed Obj1 Blocking the Action
 
@@ -3860,8 +3862,8 @@ AND ogg IS aperto
 
 ## 2018/07/26 (7)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.3.10)
-- [`lib_verbi.i`][lib_verbi] (v0.3.14)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.3.10
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.14
 
 ### Translate Verb Responses for Already Unlocked Objects
 
@@ -3908,8 +3910,8 @@ AND ogg IS bloccato
 
 ## 2018/07/26 (6)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.3.9)
-- [`lib_verbi.i`][lib_verbi] (v0.3.13)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.3.9
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.13
 
 ### Translate Verb Responses for Already Locked Objects
 
@@ -3957,8 +3959,8 @@ AND ogg IS NOT bloccato
 
 ## 2018/07/26 (5)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.3.8)
-- [`lib_verbi.i`][lib_verbi] (v0.3.12)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.3.8
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.12
 
 ### Translate Verb Responses for Already Close Objects
 
@@ -4006,8 +4008,8 @@ AND ogg IS aperto
 
 ## 2018/07/26 (4)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.3.7)
-- [`lib_verbi.i`][lib_verbi] (v0.3.11)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.3.7
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.11
 
 ### Translate Verb Responses for Already Open Objects
 
@@ -4054,9 +4056,9 @@ AND ogg IS NOT aperto
 
 ## 2018/07/26 (3)
 
-- [`lib_classi.i`][lib_classi] (v0.3.5)
-- [`lib_definizioni.i`][lib_definizioni] (v0.3.6)
-- [`lib_verbi.i`][lib_verbi] (v0.3.10)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.3.5
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.3.6
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.10
 
 ### Translate Verb Responses for Distant Params
 
@@ -4076,7 +4078,7 @@ Translated and substituted the following verb responses attributes:
 
 ## 2018/07/26 (2)
 
-- [`lib_verbi.i`][lib_verbi] (v0.3.9)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.9
 
 ### Implement Italian Verb Responses
 
@@ -4098,7 +4100,7 @@ Therefore, I can't yet delete the `illegal_parameter_sg`/`pl` and `check_obj_sui
 
 ## 2018/07/26 (1)
 
-- [`lib_verbi.i`][lib_verbi] (v0.3.8)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.8
 
 ### Polish and Fix Translated Verbs 
 
@@ -4138,8 +4140,8 @@ This is the lis of verbs that had wrong parameters referencing in their checks, 
 
 ## 2018/07/25 (8)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.3.6)
-- [`lib_verbi.i`][lib_verbi] (v0.3.7)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.3.6
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.7
 
 
 ### Verb Restriction Attributes
@@ -4172,7 +4174,7 @@ with no synonyms.
 
 ## 2018/07/25 (7)
 
-- [`lib_verbi.i`][lib_verbi] (v0.3.6)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.6
 
 Reorder translated verbs alphabetically.
 
@@ -4182,8 +4184,8 @@ Reorder translated verbs alphabetically.
 
 ## 2018/07/25 (6)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.3.4)
-- [`lib_verbi.i`][lib_verbi] (v0.3.5)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.3.4
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.5
 
 
 ### Verb Restriction Attributes
@@ -4219,8 +4221,8 @@ with no synonyms.
 
 ## 2018/07/25 (5)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.3.3)
-- [`lib_verbi.i`][lib_verbi] (v0.3.4)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.3.3
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.4
 
 
 ### Verb Restriction Attributes
@@ -4247,7 +4249,7 @@ Translated `my_game` attributes for verb restrictions:
 
 ## 2018/07/25 (4)
 
-- [`lib_luoghi.i`][lib_luoghi] (v0.3.3)
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.3.3
 
 Translate commented documentation in the library sources.
 
@@ -4257,10 +4259,10 @@ Translate commented documentation in the library sources.
 
 ## 2018/07/25 (3)
 
-- [`lib_classi.i`][lib_classi] (v0.3.4)
-- [`lib_definizioni.i`][lib_definizioni] (v0.3.2)
-- [`lib_luoghi.i`][lib_luoghi] (v0.3.2)
-- [`lib_verbi.i`][lib_verbi] (v0.3.3)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.3.4
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.3.2
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.3.2
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.3
 
 
 ### Library Instances
@@ -4288,8 +4290,8 @@ Translated CLASSes:
 
 ## 2018/07/25 (2)
 
-- [`lib_classi.i`][lib_classi] (v0.3.3)
-- [`lib_verbi.i`][lib_verbi] (v0.3.2)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.3.3
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.2
 
 ### Library Classes
 
@@ -4308,7 +4310,7 @@ Translated CLASSes:
 
 ## 2018/07/25 (1)
 
-- [`lib_classi.i`][lib_classi] (v0.3.2)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.3.2
 
 
 ### Clothing Attributes
@@ -4331,11 +4333,11 @@ Translated library attributes:
 
 ## 2018/07/24 (5)
 
-- [`lib_classi.i`][lib_classi] (v0.3.1)
-- [`lib_definizioni.i`][lib_definizioni] (v0.3.1)
-- [`lib_luoghi.i`][lib_luoghi] (v0.3.1)
-- [`lib_messaggi.i`][lib_messaggi] (v0.3.1)
-- [`lib_verbi.i`][lib_verbi] (v0.3.1)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.3.1
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.3.1
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.3.1
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.3.1
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.1
 
 This commit covers the translation of many library identifiers.
 
@@ -4377,13 +4379,13 @@ Translated CLASSes:
 
 ## 2018/07/24 (4)
 
-- [`libreria.i`][libreria] (v0.3.0)
-- [`lib_classi.i`][lib_classi] (v0.3.0)
-- [`lib_definizioni.i`][lib_definizioni] (v0.3.0)
-- [`lib_luoghi.i`][lib_luoghi] (v0.3.0)
-- [`lib_messaggi.i`][lib_messaggi] (v0.3.0)
-- [`lib_verbi.i`][lib_verbi] (v0.3.0)
-- [`lib_supplemento.i`][lib_supplemento] (v0.3.0)
+- [`libreria.i`][libreria] &#x27f6; v0.3.0
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.3.0
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.3.0
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.3.0
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.3.0
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.3.0
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.3.0
 
 
 All run-time built-in messages are now translated.
@@ -4401,7 +4403,7 @@ Housekeeping:
 
 ## 2018/07/24 (3)
 
-- [`lib_messaggi.i`][lib_messaggi_runtime] (v0.2.4)
+- [`lib_messaggi.i`][lib_messaggi_runtime] &#x27f6; v0.2.4
 
 ### Input Response Messages
 
@@ -4413,7 +4415,7 @@ Translate more Input Response Messages (still a few left).
 
 ## 2018/07/24 (2)
 
-- [`lib_verbi.i`][lib_verbi] (v0.2.41)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.41
 
 Just some code cleanup.
 
@@ -4422,8 +4424,8 @@ Just some code cleanup.
 
 ## 2018/07/24 (1)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.37)
-- [`lib_verbi.i`][lib_verbi] (v0.2.40)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.37
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.40
 
 Translated `my_game` attributes for verb restrictions:
 
@@ -4465,8 +4467,8 @@ This commit translates the group of `who/where_*` verbs:
 ## 2018/07/23 (5)
 
 
-- [`lib_classi.i`][lib_classi] (v0.2.17)
-- [`lib_verbi.i`][lib_verbi] (v0.2.39)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.2.17
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.39
 
 A few code optimizations:
 
@@ -4475,8 +4477,8 @@ A few code optimizations:
 ## 2018/07/23 (4)
 
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.36)
-- [`lib_verbi.i`][lib_verbi] (v0.2.38)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.36
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.38
 
 
 Translated `my_game` attributes for verb restrictions:
@@ -4513,8 +4515,8 @@ with no synonyms.
 
 ## 2018/07/23 (2)
 
-- [`lib_classi.i`][lib_classi] (v0.2.16)
-- [`lib_verbi.i`][lib_verbi] (v0.2.37)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.2.16
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.37
 
 ### Verb: `drop`
 
@@ -4534,9 +4536,9 @@ with no synonyms.
 
 ## 2018/07/23 (1)
 
-- [`lib_classi.i`][lib_classi] (v0.2.15)
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.35)
-- [`lib_verbi.i`][lib_verbi] (v0.2.36)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.2.15
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.35
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.36
 
 Translated `my_game` attributes for verb restrictions:
 
@@ -4568,8 +4570,8 @@ Translate verbs:
 
 ## 2018/07/22 (7)
 
-- [`lib_classi.i`][lib_classi] (v0.2.14)
-- [`lib_verbi.i`][lib_verbi] (v0.2.35)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.2.14
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.35
 
 ### Tweaked `LISTED_CONTAINER`
 
@@ -4590,7 +4592,7 @@ In `lib_classi.i` some `examine` verb definitions hadn't been translated to `esa
 
 ## 2018/07/22 (6)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.34)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.34
 
 Translate documentation comments in library sources.
 
@@ -4600,8 +4602,8 @@ Translate documentation comments in library sources.
 
 ## 2018/07/22 (5)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.33)
-- [`lib_verbi.i`][lib_verbi] (v0.2.34)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.33
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.34
 
 Translated library attributes:
 
@@ -4616,7 +4618,7 @@ Translated library attributes:
 
 ## 2018/07/22 (4)
 
-- [`lib_verbi.i`][lib_verbi] (v0.2.33)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.33
 
 
 ### Verb: `sell`
@@ -4635,9 +4637,9 @@ with no synonyms.
 ## 2018/07/22 (3)
 
 
-- [`lib_classi.i`][lib_classi] (v0.2.13)
-- [`lib_luoghi.i`][lib_luoghi] (v0.2.5)
-- [`lib_verbi.i`][lib_verbi] (v0.2.32)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.2.13
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.2.5
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.32
 
 
 ### Translate Verb Parameters
@@ -4680,7 +4682,7 @@ This commit italianizes verbs parameters:
 
 ## 2018/07/22 (2)
 
-- [`lib_verbi.i`][lib_verbi] (v0.2.31)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.31
 
 ### Changed Behaviour of `examine`
 
@@ -4705,8 +4707,8 @@ With the new system, to old library behavior is preserved for readable objects w
 
 ## 2018/07/22 (1)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.32)
-- [`lib_verbi.i`][lib_verbi] (v0.2.30)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.32
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.30
 
 
 Translated `my_game` attributes for verb restrictions:
@@ -4732,7 +4734,7 @@ with no synonyms.
 
 ## 2018/07/21 (5)
 
-- [`lib_verbi.i`][lib_verbi] (v0.2.29)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.29
 
 
 ### Verb: `examine`
@@ -4762,7 +4764,7 @@ with no synonyms.
 
 ## 2018/07/21 (4)
 
-- [`lib_classi.i`][lib_classi] (v0.2.12)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.2.12
 
 Added Italian translation of classes descriptions at beginning of file. I'm now working toward a full Italian documentation of the library modules via comments, by translating the original English comments as well as adding my own.
 
@@ -4772,9 +4774,9 @@ Added Italian translation of classes descriptions at beginning of file. I'm now 
 
 ## 2018/07/21 (3)
 
-- [`lib_classi.i`][lib_classi] (v0.2.11)
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.31)
-- [`lib_verbi.i`][lib_verbi] (v0.2.28)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.2.11
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.31
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.28
 
 
 Translated library attributes:
@@ -4791,9 +4793,9 @@ Translated library attributes:
 
 ## 2018/07/21 (2)
 
-- [`lib_classi.i`][lib_classi] (v0.2.10)
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.30)
-- [`lib_verbi.i`][lib_verbi] (v0.2.27)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.2.10
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.30
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.27
 
 
 Translated library attributes:
@@ -4822,10 +4824,10 @@ Translated CLASSes:
 
 ## 2018/07/21 (1)
 
-- [`lib_classi.i`][lib_classi] (v0.2.9)
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.29)
-- [`lib_luoghi.i`][lib_luoghi] (v0.2.4)
-- [`lib_verbi.i`][lib_verbi] (v0.2.26)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.2.9
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.29
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.2.4
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.26
 
 
 Translated library attributes:
@@ -4856,10 +4858,10 @@ Translated CLASSes:
 
 ## 2018/07/20 (3)
 
-- [`lib_classi.i`][lib_classi] (v0.2.8)
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.28)
-- [`lib_luoghi.i`][lib_luoghi] (v0.2.3)
-- [`lib_verbi.i`][lib_verbi] (v0.2.25)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.2.8
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.28
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.2.3
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.25
 
 
 ### Library Locations
@@ -4914,9 +4916,9 @@ This commit deals with the translation of some classes, instances and attributes
 
 ## 2018/07/20 (2)
 
-- [`lib_classi.i`][lib_classi] (v0.2.7)
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.27)
-- [`lib_verbi.i`][lib_verbi] (v0.2.24)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.2.7
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.27
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.24
 
 ### Null Objects
 
@@ -4937,7 +4939,7 @@ Translate all `null_*` objects:
 
 ## 2018/07/20 (1)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.26)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.26
 
 ### Make `banner` an Instance of `LOCATION`
 
@@ -4956,8 +4958,8 @@ Tests seem to confirm that it works just as fine, and the compiled adventure is 
 
 ## 2018/07/19 (5)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.25)
-- [`lib_verbi.i`][lib_verbi] (v0.2.23)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.25
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.23
 
 Just some code cleanup, comments translation and house keeping.
 
@@ -4967,7 +4969,7 @@ Just some code cleanup, comments translation and house keeping.
 
 ## 2018/07/19 (4)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.24)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.24
 
 ### Banner Attributes
 
@@ -4990,7 +4992,7 @@ This commit translates into Italian the Banner attributes for the `Start` sectio
 
 ## 2018/07/19 (3)
 
-- [`lib_supplemento.i`][lib_supplemento] (v0.2.2)
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.2.2
 
 ### Add Remaining Preposizioni Articolate Synonyms
 
@@ -5052,8 +5054,8 @@ There is no need to implements synonyms for the _preposizioni articolate_ based 
 
 ## 2018/07/19 (2)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.23)
-- [`lib_supplemento.i`][lib_supplemento] (v0.2.1)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.23
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.2.1
 
 Just some code house-keeping and cleaning up.
 
@@ -5063,9 +5065,9 @@ Just some code house-keeping and cleaning up.
 
 ## 2018/07/19 (1)
 
-- [`lib_classi.i`][lib_classi] (v0.2.6)
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.22)
-- [`lib_verbi.i`][lib_verbi] (v0.2.22)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.2.6
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.22
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.22
 
 
 Translated library attributes:
@@ -5091,11 +5093,11 @@ Translated `CLASS`es:
 
 ## 2018/07/18 (4)
 
-- [`lib_classi.i`][lib_classi] (v0.2.5)
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.21)
-- [`lib_luoghi.i`][lib_luoghi] (v0.2.2)
-- [`lib_messaggi.i`][lib_messaggi] (v0.2.2)
-- [`lib_verbi.i`][lib_verbi] (v0.2.21)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.2.5
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.21
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.2.2
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.2.2
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.21
 
 Translated library attributes:
 
@@ -5118,9 +5120,9 @@ Translated library attributes:
 
 ## 2018/07/18 (3)
 
-- [`lib_classi.i`][lib_classi] (v0.2.4)
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.20)
-- [`lib_verbi.i`][lib_verbi] (v0.2.20)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.2.4
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.20
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.20
 
 
 ### Verb Responses Attributes
@@ -5170,8 +5172,8 @@ With this commit I begin to put some order in verb response messages by translat
 
 ## 2018/07/18 (2)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.19)
-- [`lib_verbi.i`][lib_verbi] (v0.2.19)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.19
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.19
 
 
 ### Verb: `drink`
@@ -5188,8 +5190,8 @@ with no synonyms.
 
 ## 2018/07/18 (1)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.18)
-- [`lib_verbi.i`][lib_verbi] (v0.2.18)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.18
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.18
 
 Minor tweaks and code cleanup.
 
@@ -5199,8 +5201,8 @@ Minor tweaks and code cleanup.
 
 ## 2018/07/17 (5)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.17 --- _sic_!)
-- [`lib_verbi.i`][lib_verbi] (v0.2.17)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.17 (_sic_!)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.17
 
 
 Translated verb response attributes:
@@ -5215,9 +5217,9 @@ Translated verb response attributes:
 
 ## 2018/07/17 (4)
 
-- [`lib_classi.i`][lib_classi] (v0.2.3)
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.12)
-- [`lib_verbi.i`][lib_verbi] (v0.2.16)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.2.3
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.12
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.16
 
 
 Translated `THING` attributes:
@@ -5242,7 +5244,7 @@ with no synonyms.
 
 ## 2018/07/17 (3)
 
-- [`lib_verbi.i`][lib_verbi] (v0.2.15)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.15
 
 
 ### Meta Verbs
@@ -5272,8 +5274,8 @@ The following verbs have been declared as `META VERB`s:
 
 ## 2018/07/17 (2)
 
-- [`lib_classi.i`][lib_classi] (v0.2.2)
-- [`lib_verbi.i`][lib_verbi] (v0.2.14)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.2.2
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.14
 
 Translated ACTOR attributes:
 
@@ -5288,8 +5290,8 @@ Translated ACTOR attributes:
 
 ## 2018/07/17 (1)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.11)
-- [`lib_verbi.i`][lib_verbi] (v0.2.13)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.11
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.13
 
 Translated `my_game` attributes for verb restrictions:
 
@@ -5312,8 +5314,8 @@ with no synonyms.
 
 ## 2018/07/03 (3)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.10)
-- [`lib_verbi.i`][lib_verbi] (v0.2.12)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.10
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.12
 
 
 Translated `my_game` attributes for verb restrictions:
@@ -5365,7 +5367,7 @@ with no synonyms.
 
 ## 2018/07/03 (2)
 
-- [`lib_verbi.i`][lib_verbi] (v0.2.11)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.11
 
 
 ### Verb: `buy`
@@ -5384,7 +5386,7 @@ with synonyms:
 
 ## 2018/07/03 (1)
 
-- [`lib_verbi.i`][lib_verbi] (v0.2.10)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.10
 
 Now translated verbs are placed before untranslated verbs in the source code, and divided in two separate groups, each one presenting its verbs in alphabetical order:
 
@@ -5397,8 +5399,8 @@ Now translated verbs are placed before untranslated verbs in the source code, an
 
 ## 2018/07/02
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.9)
-- [`lib_verbi.i`][lib_verbi] (v0.2.9)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.9
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.9
 
 
 ### Verb: `burn`/`burn_with`
@@ -5472,8 +5474,8 @@ END ADD TO.
 
 ## 2018/06/29
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.8)
-- [`lib_verbi.i`][lib_verbi] (v0.2.8)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.8
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.8
 
 Translated `my_game` attributes for verb restrictions:
 
@@ -5495,8 +5497,8 @@ Translated verb responses:
 
 ## 2018/06/24 (3)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.7)
-- [`lib_verbi.i`][lib_verbi] (v0.2.7)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.7
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.7
 
 Translated `my_game` attributes for verb restrictions:
 
@@ -5518,8 +5520,8 @@ Translated `my_game` attributes for verb restrictions:
 
 ## 2018/06/24 (2)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.6)
-- [`lib_verbi.i`][lib_verbi] (v0.2.6)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.6
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.6
 
 Translated `my_game` attributes for verb restrictions:
 
@@ -5552,11 +5554,11 @@ Translated `my_game` attributes for verb restrictions:
 
 ## 2018/06/24 (1)
 
-- [`lib_classi.i`][lib_classi] (v0.2.1)
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.5)
-- [`lib_luoghi.i`][lib_luoghi] (v0.2.1)
-- [`lib_messaggi.i`][lib_messaggi] (v0.2.1)
-- [`lib_verbi.i`][lib_verbi] (v0.2.5)
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.2.1
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.5
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.2.1
+- [`lib_messaggi.i`][lib_messaggi] &#x27f6; v0.2.1
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.5
 
 
 ### Translate StdLib's `plural`
@@ -5569,7 +5571,7 @@ Now the library's `plural` attribute has been translated into Italian: `plurale`
 
 ## 2018/06/23 (2)
 
-- [`lib_verbi.i`][lib_verbi] (v0.2.4)
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.4
 
 Cleanup code comments and add some notes.
 
@@ -5592,8 +5594,8 @@ A few verb responses translated on the fly:
 
 ## 2018/06/23 (1)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.4)
-- [`lib_verbi.i`][lib_verbi] (v0.2.3)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.4
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.3
 
 
 Translated `my_game` attributes for verb restrictions:
@@ -5634,8 +5636,8 @@ Produces the message:  "[Il comando ANCORA non è supportato in questo gioco. In
 
 ## 2018/06/16 (3)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.3)
-- [`lib_verbi.i`][lib_verbi] (v0.2.2)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.3
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.2
 
 Translated `my_game` attributes for verb restrictions:
 
@@ -5674,7 +5676,7 @@ Outputs message: "`Non è il momento di riposare.`"
 
 ## 2018/06/16 (2)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.2)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.2
 
 Some code clean up and translation of library comments.
 
@@ -5684,8 +5686,8 @@ Part of the `banner` translated to Italian.
 
 ## 2018/06/16 (1)
 
-- [`lib_definizioni.i`][lib_definizioni] (v0.2.1)
-- [`lib_verbi.i`][lib_verbi] (v0.2.1)
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.2.1
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.2.1
 
 Changed default response message for verbs that don't pass a check for objects (English:  `check_obj_suitable_sg`/`_pl`.
 
@@ -5892,7 +5894,7 @@ Ultimately, this solution was adopted after careful consideration of various app
 
 ## 2018/06/02
 
-- [`lib_classes.i`][lib_classes] (v0.0.2)
+- [`lib_classes.i`][lib_classes] &#x27f6; v0.0.2
 
 Translated some response messages for containers and supporters.
 
@@ -5900,7 +5902,7 @@ Translated some response messages for containers and supporters.
 
 ## 2018/05/31:2
 
-- [`lib_messages.i`][lib_messaggi_runtime] (v0.0.4)
+- [`lib_messages.i`][lib_messaggi_runtime] &#x27f6; v0.0.4
 
 Translated RUN-TIME MESSAGES:
 
@@ -5930,9 +5932,9 @@ Translated RUN-TIME MESSAGES:
 
 ## 2018/05/31:1
 
-- [`lib_definitions.i`][lib_definitions] (v0.0.10)
-- [`lib_messages.i`][lib_messages] (v0.0.3)
-- [`lib_verbs.i`][lib_verbs] (v0.0.10)
+- [`lib_definitions.i`][lib_definitions] &#x27f6; v0.0.10
+- [`lib_messages.i`][lib_messages] &#x27f6; v0.0.3
+- [`lib_verbs.i`][lib_verbs] &#x27f6; v0.0.10
 
 
 Translated `my_game` attributes for verb restrictions:
@@ -5996,7 +5998,7 @@ with synonyms:
 
 Code cleanup:
 
-- [`lib_verbs.i`][lib_verbs] (v0.0.9)
+- [`lib_verbs.i`][lib_verbs] &#x27f6; v0.0.9
 
 Add __Italian Verbs Table__: translated verbs are now added to a new verbs table, which will eventually replace the original English table.
 
@@ -6004,9 +6006,9 @@ Add __Italian Verbs Table__: translated verbs are now added to a new verbs table
 
 ## 2018/05/27
 
-- [`lib_definitions.i`][lib_definitions] (v0.0.9)
-- [`lib_verbs.i`][lib_verbs] (v0.0.8)
-- [`lib_messages.i`][lib_messages] (v0.0.2)
+- [`lib_definitions.i`][lib_definitions] &#x27f6; v0.0.9
+- [`lib_verbs.i`][lib_verbs] &#x27f6; v0.0.8
+- [`lib_messages.i`][lib_messages] &#x27f6; v0.0.2
 
 Translated `my_game` attributes for verb restrictions:
 
@@ -6037,8 +6039,8 @@ Translated RUN-TIME MESSAGES:
 
 ## 2018/05/22 (3)
 
-- [`lib_definitions.i`][lib_definitions] (v0.0.8)
-- [`lib_verbs.i`][lib_verbs] (v0.0.7)
+- [`lib_definitions.i`][lib_definitions] &#x27f6; v0.0.8
+- [`lib_verbs.i`][lib_verbs] &#x27f6; v0.0.7
 
 
 ### Verb: `pray`
@@ -6086,8 +6088,8 @@ Translated `my_game` attributes for verb restrictions:
 
 ## 2018/05/22 (2)
 
-- [`lib_definitions.i`][lib_definitions] (v0.0.7)
-- [`lib_verbs.i`][lib_verbs] (v0.0.6)
+- [`lib_definitions.i`][lib_definitions] &#x27f6; v0.0.7
+- [`lib_verbs.i`][lib_verbs] &#x27f6; v0.0.6
 
 
 ### Verb Restriction Attributes
@@ -6113,8 +6115,8 @@ Translated `my_game` attributes for verb restrictions:
 
 ## 2018/05/22 (1)
 
-- [`lib_definitions.i`][lib_definitions] (v0.0.6)
-- [`lib_verbs.i`][lib_verbs] (v0.0.5)
+- [`lib_definitions.i`][lib_definitions] &#x27f6; v0.0.6
+- [`lib_verbs.i`][lib_verbs] &#x27f6; v0.0.5
 
 
 ### Verb: `undress`
@@ -6129,10 +6131,10 @@ Its default responses translation might need some polishing. The commented code 
 
 ## 2018/05/19
 
-- [`lib_classes.i`][lib_classes] (v0.0.4)
-- [`lib_definitions.i`][lib_definitions] (v0.0.5)
-- [`lib_supplement.i`][lib_supplement] (v0.0.3)
-- [`lib_verbs.i`][lib_verbs] (v0.0.4)
+- [`lib_classes.i`][lib_classes] &#x27f6; v0.0.4
+- [`lib_definitions.i`][lib_definitions] &#x27f6; v0.0.5
+- [`lib_supplement.i`][lib_supplement] &#x27f6; v0.0.3
+- [`lib_verbs.i`][lib_verbs] &#x27f6; v0.0.4
 
 Translate verb "__dai__" (_give_), and "__prendi da__" (_take from_).
 
@@ -6175,8 +6177,8 @@ Now [`lib_supplement.i`][lib_supplement] implements all the required synonyms fo
 
 ## 2018/05/15
 
-- [`lib_classes.i`][lib_classes] (v0.0.3) — added comments about predefined articles in ACTORS and some comment draft code on how these might be implemented in Italian (the topic needs to be further investigated before apllying changes).
-- [`lib_definitions.i`][lib_definitions] (v0.0.4) — __PREDEFINED ARTICLES__ of THINGS implemented in Italian.
+- [`lib_classes.i`][lib_classes] &#x27f6; v0.0.3 — added comments about predefined articles in ACTORS and some comment draft code on how these might be implemented in Italian (the topic needs to be further investigated before apllying changes).
+- [`lib_definitions.i`][lib_definitions] &#x27f6; v0.0.4 — __PREDEFINED ARTICLES__ of THINGS implemented in Italian.
 - [`../tests/`][tests] folder — added Alan source and script files to test articles implementation:
     + [`../tests/articoli.alan`](../tests/articoli.alan)
     + [`../tests/articoli.bat`](../tests/articoli.bat)
