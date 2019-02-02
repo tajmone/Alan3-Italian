@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.12.0-Alpha, 2019-01-24: Alan 3.0beta6 build 1862
+--| v0.12.1-Alpha, 2019-02-01: Alan 3.0beta6 build 1862
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -514,7 +514,7 @@ EVERY indumento IsA OBJECT
 --                                                                              TRANSLATE!
 --------------------------------------------------------------------
 -- At this point, 'wear_flag' will be 0 if the obj was held by the
--- player and can be put on, or l if he picked it up this turn and
+-- player and can be put on, or 1 if he picked it up this turn and
 -- it can be put on. Any higher value means one or more of the
 -- tests failed and the player cannot put on these clothes.
 --------------------------------------------------------------------
@@ -522,30 +522,41 @@ EVERY indumento IsA OBJECT
 
       IF hero:wear_flag >1
         THEN
+          -- ------------------------------------
+          -- L'indumento non può essere indossato
+          -- ------------------------------------
+          -- Ci limitiamo a prenderlo (se non già posseduto)
           IF THIS NOT IN hero
+          -- >>> prendi implicito: >>>
             THEN "prendi" SAY THE THIS. "."
-         -- THEN "You pick up the" SAY THE THIS. "."
           END IF.
-
           LOCATE THIS IN hero.
-          EMPTY abbigliamento IN tempworn.
-          LIST tempworn.
+          -- <<< prendi implicito <<<
 
+          LIST abbigliamento.
 --                                                                              TRANSLATE!
           "Trying to put" SAY THE THIS. "on isn't very sensible."
 
-          EMPTY tempworn IN abbigliamento.
-
-      ELSIF hero:wear_flag = 1
-        THEN
-          LOCATE THIS IN abbigliamento.
-
-          "prendi" SAY THE THIS. "e l$$" SAY THIS:vocale. "indossi."
-        ELSE
-          LOCATE THIS IN abbigliamento.
-          MAKE THIS indossato.
-          INCLUDE THIS IN indossati OF hero.
-          "indossi" SAY THE THIS. "."
+      -- ELSIF hero:wear_flag = 1
+      ELSE
+        -- --------------------------------
+        -- L'indumento può essere indossato
+        -- --------------------------------
+        LOCATE THIS IN abbigliamento.
+        MAKE THIS indossato.
+        INCLUDE THIS IN indossati OF hero.
+        IF hero:wear_flag = 1
+          THEN
+            -- -----------------------------------
+            -- L'indumento viene preso e indossato
+            -- -----------------------------------
+            "prendi" SAY THE THIS. "e l$$" SAY THIS:vocale. "indossi."
+          ELSE
+            -- ---------------------------
+            -- L'indumento viene indossato
+            -- ---------------------------
+            "indossi" SAY THE THIS. "."
+        END IF.
       END IF.
 
 END VERB indossa.
@@ -689,18 +700,6 @@ ADD TO EVERY ACTOR
   IS wear_flag 0.
   IS genere 0.
 END ADD TO.
-
-
---                                                                              TRANSLATE!
---------------------------------------------------------------------
--- A container used to provide a temporary storage space - ignore!
---------------------------------------------------------------------
-
-THE tempworn IsA OBJECT
-  CONTAINER TAKING indumento.
-  HEADER "Stai già indossando"
-END THE tempworn.
-
 
 --                                                                              TRANSLATE!
 --------------------------------------------------------------------

@@ -18,6 +18,9 @@ For previuos changes, see:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Alan 3.0beta6 build 1862](#alan-30beta6-build-1862)
+    - [2019/02/01](#20190201)
+        - [Vestiario](#vestiario)
+        - [Messaggi runtime](#messaggi-runtime)
     - [2019/01/24](#20190124)
         - [Passa alla v0.12.0](#passa-alla-v0120)
         - [Passa ad Alan 3.0beta6 build 1862](#passa-ad-alan-30beta6-build-1862)
@@ -42,7 +45,7 @@ For previuos changes, see:
         - [Rimuovi stropping superfluo](#rimuovi-stropping-superfluo)
 - [Alan 3.0beta6](#alan-30beta6)
     - [2019/01/06](#20190106)
-        - [Vestiario](#vestiario)
+        - [Vestiario](#vestiario-1)
     - [2018/12/08 \(3\)](#20181208-3)
         - [Verbi](#verbi)
         - [Verbi Classi](#verbi-classi)
@@ -119,6 +122,58 @@ For previuos changes, see:
 
 
 # Alan 3.0beta6 build 1862
+
+## 2019/02/01
+
+- [`lib_classi.i`][lib_classi] (v0.12.1)
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] (v0.12.1)
+
+### Vestiario
+
+Questo commit apporta delle migliorie al modo in cui la libreria gestisce il vestiario e ne corregge alcuni problemi.
+
+#### Elenchi indumenti indossati
+
+##### Ridondanze verbo Indossa
+
+Ora quando il verbo `indossa` non può portare a termine l'azione (per via di un indumento che la ostacola), nel messaggio di risposta non appaiono più i ridondanti "(indossato)" che c'erano prima:
+
+> __&gt;__ _indossa i boxer_
+> 
+> Prendi i boxer. Stai già indossando un paio di blue jeans ~~(indossato)~~ e una bombetta ~~(indossato)~~...
+
+Questa modifica al codice ha reso superfluo l'oggetto `tempworn`, che non era usato altrove ed è quindi stato rimosso:
+
+```alan
+THE tempworn IsA OBJECT
+  CONTAINER TAKING indumento.
+  HEADER "Stai già indossando"
+END THE tempworn.
+```
+
+
+##### Concordanza elenchi
+
+Ora, quando si esamina un PNG e viene stampato l'elenco di indumenti da lui indossati, nelle varie occorrenze di "(indossat*)" vi è concordanza con l'indumento cui si fa riferimento:
+
+> __&gt;__ _esamina l'assistente_
+> 
+> È la tua assistente personale per lo shopping. L'assistente sta portando un
+> paio di stivaletti (indossati) e un abito (indossato).
+
+mentre prima veniva stampato sempre e solo "(indossato)".
+
+
+#### Baco `indossa`
+
+Risolto un baco nel verbo `indossa` per cui indumento che veniva _preso_ ed indossato non veniva settato come `indossato`.
+
+### Messaggi runtime
+
+Si è fatta un po' di pulizia nel modulo `lib_messaggi_libreria.i` e ottimizzato il codice in vari punti.
+
+<!---------------------------------------------------------------------------->
+
 
 ## 2019/01/24
 

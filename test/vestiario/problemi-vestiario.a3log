@@ -103,18 +103,17 @@ IN 'INDOSSATI' DI:
 > ; gambe quando si sta indossando una gonna, in base all'assunto che potendola
 > ; sollevare ciò dovrebbe essere fattibile ai fini del realismo.
 > indossa la gonna
-Prendi la gonna rossa. Stai già indossando la tua canottiera (indossato), le tue 
-sneakers (indossato), i tuoi pantaloni (indossato), i tuoi boxer (indossato) e 
-i tuoi calzini (indossato). Trying to put la gonna rossa on isn't very sensible.
+Prendi la gonna rossa. Stai indossando la tua canottiera, le tue sneakers, i
+tuoi pantaloni, i tuoi boxer e i tuoi calzini. Trying to put la gonna rossa on
+isn't very sensible.
 
 > ; ------------------------------------------------------------------------------
 > ; GONNA + COLLANT
 > ; ------------------------------------------------------------------------------
 > indossa i collant
-Prendi i collant bianchi. Stai già indossando la tua canottiera (indossato), le
-tue sneakers (indossato), i tuoi pantaloni (indossato), i tuoi boxer (indossato) 
-e i tuoi calzini (indossato). Trying to put i collant bianchi on isn't very
-sensible.
+Prendi i collant bianchi. Stai indossando la tua canottiera, le tue sneakers, i
+tuoi pantaloni, i tuoi boxer e i tuoi calzini. Trying to put i collant bianchi 
+on isn't very sensible.
 
 > ; ------------------------------------------------------------------------------
 > ; GONNA + PANTALONI
@@ -124,18 +123,17 @@ sensible.
 > ; 
 > ; ** ERRORE??? ** È da considerarsi un errore o è voluto che sia così?
 > indossa i jeans
-Prendi i jeans. Stai già indossando la tua canottiera (indossato), le tue 
-sneakers (indossato), i tuoi pantaloni (indossato), i tuoi boxer (indossato) e 
-i tuoi calzini (indossato). Trying to put i jeans on isn't very sensible.
+Prendi i jeans. Stai indossando la tua canottiera, le tue sneakers, i tuoi 
+pantaloni, i tuoi boxer e i tuoi calzini. Trying to put i jeans on isn't very
+sensible.
 
 > ; Verifichiamo se rimuovendo i collant cambia qualcosa:
 > togliti i collant
 Non stai indossando i collant bianchi.
 
 > indossa i jeans
-Stai già indossando la tua canottiera (indossato), le tue sneakers (indossato), 
-i tuoi pantaloni (indossato), i tuoi boxer (indossato) e i tuoi calzini 
-(indossato). Trying to put i jeans on isn't very sensible.
+Stai indossando la tua canottiera, le tue sneakers, i tuoi pantaloni, i tuoi 
+boxer e i tuoi calzini. Trying to put i jeans on isn't very sensible.
 
 > ; ==============================================================================
 > ; TESTA SALOPETTE
@@ -152,9 +150,9 @@ Una tuta in denim a pezzo unico, con pantaloni a gambe larghe e una pettorina
 con bretelle.
 
 > indossa la salopette
-Prendi la salopette. Stai già indossando la tua canottiera (indossato), le tue 
-sneakers (indossato), i tuoi pantaloni (indossato), i tuoi boxer (indossato) e 
-i tuoi calzini (indossato). Trying to put la salopette on isn't very sensible.
+Prendi la salopette. Stai indossando la tua canottiera, le tue sneakers, i tuoi 
+pantaloni, i tuoi boxer e i tuoi calzini. Trying to put la salopette on isn't
+very sensible.
 
 > ; ------------------------------------------------------------------------------
 > ; SALOPETTE + COLLANT
@@ -162,17 +160,15 @@ i tuoi calzini (indossato). Trying to put la salopette on isn't very sensible.
 > ; ** ERRORE!!! ** La tuta salopette dovrebbe impedire di indossare indumenti per
 > ;                 le gambe! Non è come una gonna che può essere sollevata.
 > indossa i collant
-Stai già indossando la tua canottiera (indossato), le tue sneakers (indossato), 
-i tuoi pantaloni (indossato), i tuoi boxer (indossato) e i tuoi calzini 
-(indossato). Trying to put i collant bianchi on isn't very sensible.
+Stai indossando la tua canottiera, le tue sneakers, i tuoi pantaloni, i tuoi 
+boxer e i tuoi calzini. Trying to put i collant bianchi on isn't very sensible.
 
 > ; ------------------------------------------------------------------------------
 > ; SALOPETTE + PANTALONI
 > ; ------------------------------------------------------------------------------
 > indossa i jeans
-Stai già indossando la tua canottiera (indossato), le tue sneakers (indossato), 
-i tuoi pantaloni (indossato), i tuoi boxer (indossato) e i tuoi calzini 
-(indossato). Trying to put i jeans on isn't very sensible.
+Stai indossando la tua canottiera, le tue sneakers, i tuoi pantaloni, i tuoi 
+boxer e i tuoi calzini. Trying to put i jeans on isn't very sensible.
 
 > 
 

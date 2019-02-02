@@ -22,7 +22,3 @@ DBG i boxer
 DBG i jeans
 indossa i jeans
 DBG i jeans
-; ** ERRORE! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-;               Il verbo 'indossa' avrebbe dovuto rendere i jeans 'indossato' e
-;               aggiungerli al set 'indossati' dell'Eroe!
-;               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

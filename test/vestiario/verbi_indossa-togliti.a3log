@@ -78,14 +78,10 @@ Prendi i jeans e li indossi.
 
 > DBG i jeans
 'jeans' VALORI: | val_gambe: 16 | 
-È INDOSSATO: No. 
+È INDOSSATO: Sì 
 IN ABBIGLIAMENTO (EROE): Sì 
-IN 'INDOSSATI' DI:
+IN 'INDOSSATI' DI: | hero
 
-> ; ** ERRORE! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> ;               Il verbo 'indossa' avrebbe dovuto rendere i jeans 'indossato' e
-> ;               aggiungerli al set 'indossati' dell'Eroe!
-> ;               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > 
 
 Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

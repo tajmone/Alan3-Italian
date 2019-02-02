@@ -11,10 +11,6 @@ nord
 ; ==============================================================================
 ; Il verba esamina usato sui PNG dovrebbe riportare quali indumenti indossano.
 esamina l'assistente
-; ** ERRORE! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-;               I vari "(indossato)" dovrebbero usare `vocale` per accordare
-;               genere e numero: "(indossata)", "(indossati)", ecc.!
-;               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ; ** NOTA ** Forse questo messaggio dovrebbe separare l'elenco delle cose 
 ;            trasportate da quelle indossate (come con l'Eroe).
 ; ==============================================================================
@@ -44,7 +40,5 @@ indossa i jeans
 ; Come con 'indossa', anche 'togliti' riporta la lista degli indossati quando
 ; non riesce a portare a termine l'azione:
 togliti i boxer
-; ** NOTA ** A differenza di 'indossa', qui non si riporta "(indossato)" per
-;            ogni capo indossato.
-;            Anche qui il messaggio potrebbe essere più mirato, e riportare solo
+; ** NOTA ** Anche qui il messaggio potrebbe essere più mirato, e riportare solo
 ;            l'indumento che impedisce l'azione.

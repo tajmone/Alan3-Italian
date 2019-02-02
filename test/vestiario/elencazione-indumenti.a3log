@@ -38,12 +38,8 @@ assistente personale qui.
 > ; Il verba esamina usato sui PNG dovrebbe riportare quali indumenti indossano.
 > esamina l'assistente
 È la tua assistente personale per lo shopping. L'assistente sta portando un
-paio di stivaletti (indossato) e un abito (indossato).
+paio di stivaletti (indossati) e un abito (indossato).
 
-> ; ** ERRORE! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> ;               I vari "(indossato)" dovrebbero usare `vocale` per accordare
-> ;               genere e numero: "(indossata)", "(indossati)", ecc.!
-> ;               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > ; ** NOTA ** Forse questo messaggio dovrebbe separare l'elenco delle cose 
 > ;            trasportate da quelle indossate (come con l'Eroe).
 > ; ==============================================================================
@@ -70,9 +66,9 @@ tuoi pantaloni, i tuoi boxer e i tuoi calzini.
 > ; Quando l'azione di indossare non va in porto, il messaggio riporta tutti gli
 > ; indumenti indossati dall'Eroe:
 > indossa i jeans
-Prendi i jeans. Stai già indossando la tua canottiera (indossato), le tue 
-sneakers (indossato), i tuoi pantaloni (indossato), i tuoi boxer (indossato) e 
-i tuoi calzini (indossato). Trying to put i jeans on isn't very sensible.
+Prendi i jeans. Stai indossando la tua canottiera, le tue sneakers, i tuoi 
+pantaloni, i tuoi boxer e i tuoi calzini. Trying to put i jeans on isn't very
+sensible.
 
 > ; ** NOTA ** Elencare tutti i capi indossati nel tentativo di segnalare che un
 > ;            indumento sta bloccando l'azione richiesta è un po' eccessivo, e in
@@ -88,9 +84,7 @@ i tuoi calzini (indossato). Trying to put i jeans on isn't very sensible.
 Stai indossando la tua canottiera, le tue sneakers, i tuoi pantaloni, i tuoi 
 boxer e i tuoi calzini. Trying to take i tuoi boxer off isn't very sensible.
 
-> ; ** NOTA ** A differenza di 'indossa', qui non si riporta "(indossato)" per
-> ;            ogni capo indossato.
-> ;            Anche qui il messaggio potrebbe essere più mirato, e riportare solo
+> ; ** NOTA ** Anche qui il messaggio potrebbe essere più mirato, e riportare solo
 > ;            l'indumento che impedisce l'azione.
 > 
 

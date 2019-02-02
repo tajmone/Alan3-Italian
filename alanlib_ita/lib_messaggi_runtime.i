@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_runtime.i"
---| v0.12.0-Alpha, 2019-01-24: Alan 3.0beta6 build 1862
+--| v0.12.1-Alpha, 2019-02-01: Alan 3.0beta6 build 1862
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -59,7 +59,11 @@ MESSAGE
   -- PROBLEMI NEL PARSING DEI COMANDI
   --==============================================================================
   AFTER_BUT:      "Devi specificare almeno un oggetto dopo '$1'."
-  BUT_ALL:        "Puoi usare '$1' solo DOPO '$2'."
+  
+  -- Sostituito '$2' con "TUTTO", se no stampava "all":
+  -- BUT_ALL:     "Puoi usare '$1' solo DOPO '$2'."
+  BUT_ALL:        "Puoi usare '$1' solo DOPO 'tutto' (es. ""$v tutto $1..."")."
+  
   MULTIPLE:       "Non puoi usare più di un oggetto con '$v'."
   NO_SUCH:        "Qui non puoi vedere nulla del genere." -- "You can't see any $1 here."
   NOT_MUCH:       "Così non resta nulla per il verbo '$v'!" -- "That doesn't leave much to $v!"
@@ -107,15 +111,34 @@ MESSAGE
                    versione diversa dell'avventura o dell'interprete."
 
 
+--==============================================================================
+-- LUOGHI GIÀ VISITATI
+--==============================================================================
 
---  =========================
---# xxxxxxxxxxxxxxxxxxxxxxxxx
---  =========================
+
+-- @TODO: Questo messaggio potrebbe essere attivabile tramite opzioni           TODO!
+--        della libreria (un attributo come 'mia_AT:mostra_già_visitati')
+-- 
+--        Nota però che per mostrare l'accordo giusto con il nome visualizzato 
+--        del luogo servirebbe che l'attributo 'vocale' fosse disponibile anche
+--        sulle 'location'. Ovviamente, attivando questa opzione l'autore avrebbe
+--        anche l'onore di dover supplire l'articolo per ogni luogo creato.
+--        
+--        Dato che l'inizializzazione grammaticale di tutta la classe 'entity'  TODO!
+--        ottimizzerebbe anche altri messaggi runtime e Check nel codice, dovrei
+--        cercare di unificare l'inizializzazione della grammatica in un unico
+--        blocco, partendo da 'entity'. Avevo tentato di farlo su 'thing' ma ho
+--        riscontrato problemi con gli attori. Dovrei riprovarci!
 
   AGAIN: "" ---> Messaggio da mostrare accanto al nome di luoghi già visistati.
             --  Es. "(già visitato)"
 
-  CAN_NOT_CONTAIN: "$+1 non può contenere $+2." -- "$+1 can not contain $+2."
+
+--==============================================================================
+-- ERRORI DI CONTENIMENTO
+--==============================================================================
+
+  CAN_NOT_CONTAIN: "$+1 non può contenere $+2."
 
 
 --==============================================================================
@@ -125,12 +148,11 @@ MESSAGE
 
 
   CONTAINMENT_LOOP:
-    --   IF parameter1 IS NOT plurale
-    --     THEN "itself"
-    --     ELSE "themselves"
-    --   END IF.
-    --   "is impossible."
-    "Non è possibile mettere $+1 dentro sé stess$$" -- "Putting $+1 in"
+    -- ------------------------------------------------------------------
+    -- NOTA: Qui non si può usare 'SAY vocale OF parameter1.' dato che il
+    --       parametro non è garantito nel contesto ('entity' non lo ha).
+    -- ------------------------------------------------------------------
+    "Non è possibile mettere $+1 dentro sé stess$$"
       IF parameter1 IS NOT femminile
         THEN
           IF parameter1 IS NOT plurale
@@ -150,19 +172,14 @@ MESSAGE
       ELSE "sono"
     END IF.
     "all'interno di $+1."
-  -- CONTAINMENT_LOOP2: "Putting $+1 in $+2 is impossible since $+2 already"
-  --   IF parameter2 IS NOT plurale
-  --     THEN "is"
-  --     ELSE "are"
-  --   END IF.
-  --   "inside $+1."
+
 --==============================================================================
 -- DESCRIZIONE CONTENITORI E LORO CONTENUTI
 --==============================================================================
-  'CONTAINS':
+  CONTAINS:
     IF parameter1 IS NOT plurale
-      THEN "$+1 contiene"   -- "contains"
-      ELSE "$+1 contengono" -- "contain"
+      THEN "$+1 contiene"
+      ELSE "$+1 contengono"
     END IF.
   CONTAINS_COMMA: "$01"
     IF parameter1 IsA indumento
@@ -173,7 +190,7 @@ MESSAGE
         IF parameter1 IS indossato
           THEN
             IF parameter1 NOT IN abbigliamento
-              THEN "(indossato)" -- "(being worn)"
+              THEN "(indossat$$" SAY vocale OF parameter1. "$$)"
             END IF.
         END IF.
     END IF.
@@ -188,12 +205,11 @@ MESSAGE
         IF parameter1 IS indossato
           THEN
             IF parameter1 NOT IN abbigliamento
-              THEN "(indossato)" -- "(being worn)"
+              THEN "(indossat$$" SAY vocale OF parameter1. "$$)"
             END IF.
         END IF.
     END IF.
-
-    "e" -- "and"
+    "e"
 
   CONTAINS_END: "$01"
     IF parameter1 IsA indumento
@@ -204,14 +220,13 @@ MESSAGE
         IF parameter1 IS indossato
           THEN
             IF parameter1 NOT IN abbigliamento
-              THEN "(indossato)" -- "(being worn)"
+              THEN "(indossat$$" SAY vocale OF parameter1. "$$)"
             END IF.
         END IF.
     END IF.
     "."
 --------------------------------------------------------------------------------
 
-  --
   CARRIES:
     IF parameter1 IS NOT plurale
       THEN "$+1 trasporta"   -- "is carrying"
@@ -225,16 +240,12 @@ MESSAGE
       ELSE "stanno"
     END IF.
     "trasportando nulla."
-      -- THEN "$+1 is empty-handed."
-      -- ELSE "$+1 are empty-handed."
 
 -- =========================
 -- Punteggio
 -- =========================
 
-
   HAVE_SCORED: "Hai totalizzato $1 punti su $2 possibili."
-            -- "You have scored $1 points out of $2."
 
   ------------------------------------------------------------------------------
   -- If a player action is impossible with a particular parameter combination,
@@ -242,31 +253,32 @@ MESSAGE
   -- is the action with the parameter that is impossible.
 
   IMPOSSIBLE_WITH: "È impossibile farlo con $+1."
-                -- "That's impossible with $+1."
+
   ------------------------------------------------------------------------------
   -- The default messages for empty containers.
 
-  IS_EMPTY:
+  IS_EMPTY: "$+1"
     IF parameter1 IS NOT plurale
-      THEN "$+1 è vuot$$"
+      THEN "è vuot$$"
+        -- ------------------------------------------------------------------
+        -- NOTA: Qui non si può usare 'SAY vocale OF parameter1.' dato che il
+        --       parametro non è garantito nel contesto ('entity' non lo ha).
+        -- ------------------------------------------------------------------
         IF parameter1 IS NOT femminile
           THEN "o." -- GNA = msi
           ELSE "a." -- GNA = fsi
         END IF.
-      ELSE "$+1 sono vuot$$"
+      ELSE "sono vuot$$"
         IF parameter1 IS NOT femminile
           THEN "i." -- GNA = mpi
           ELSE "e." -- GNA = fpi
         END IF.
     END IF.
 
- -- IF parameter1 IS NOT plurale
- --   THEN "$+1 is empty."
- --   ELSE "$+1 are empty."
- -- END IF.
+
   ------------------------------------------------------------------------------
 
-  MORE: "<Continua>" -- "<More>"
+  MORE: "<Continua>" --> Trad. di "<More>"
 
   NO_UNDO: "Non è possible annullare ulteriormente."
         -- "No further undo available."

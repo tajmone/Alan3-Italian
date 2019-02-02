@@ -1,0 +1,14 @@
+; ******************************************************************************
+; *                                                                            *
+; *                         TESTA MESSAGGI DI RUNTIME                          *
+; *                                                                            *
+; ******************************************************************************
+; Questo test serve a mostrare i messaggi di runtime tradotti in Italiano dalla
+; libreria (tranne quelli dei meta-comandi di partita, già testati altrove).
+; Si è cercato di raggruppare i messaggi per affinità.
+; ------------------------------------------------------------------------------
+; BUT_ALL
+; ------------------------------------------------------------------------------
+lascia eccetto torcia
+mangia tranne
+lancia esclusa la torcia
