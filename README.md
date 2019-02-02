@@ -1,7 +1,7 @@
 # Alan IF 3 Italian
 
     Alan Standard Library: 2.1
-    Alan Development Kit:  3.0beta6 build 1862
+    Alan Development Kit:  3.0beta6 build 1866
 
 - https://github.com/tajmone/Alan3-Italian
 
@@ -19,6 +19,7 @@ Project start date: 2018-04-13.
 
 - [Introduction](#introduction)
 - [Project Status News](#project-status-news)
+    - [Feb 1, 2019: Moving to Alan 3.0beta6 build 1866](#feb-1-2019-moving-to-alan-30beta6-build-1866)
     - [Jan 24, 2019: Moving to Alan 3.0beta6 build 1862](#jan-24-2019-moving-to-alan-30beta6-build-1862)
     - [Jan 17, 2019: Moving to Alan 3.0beta6 build 1855](#jan-17-2019-moving-to-alan-30beta6-build-1855)
     - [Jan 15, 2019: Major Breaktrhough With Alan 3.0beta6 build 1852](#jan-15-2019-major-breaktrhough-with-alan-30beta6-build-1852)
@@ -62,6 +63,10 @@ You can follow the discussion on this project on the [Alan-IF discussion group a
 
 Some flash news about milestones accomplishments in the project...
 
+
+## Feb 1, 2019: Moving to Alan 3.0beta6 build 1866
+
+Adopt the new [developer snaphshot] of Alan [3.0beta6 build 1866].
 
 ## Jan 24, 2019: Moving to Alan 3.0beta6 build 1862
 
@@ -320,6 +325,7 @@ The documentation uses an adaptation of Asciidcotor `attributes-it.adoc`, transl
 [3.0beta6 build 1852]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1852 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1852"
 [3.0beta6 build 1855]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1855 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1855"
 [3.0beta6 build 1862]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1862 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1862"
+[3.0beta6 build 1866]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1866 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1866"
 
 <!-- Alan Commits Links -->
 

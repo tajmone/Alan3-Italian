@@ -3,7 +3,7 @@
 Emporio Giorgio Alani 
 Un set per testare il vestiario. 
 (C) Tristano Ajmone, 2019. 
-Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1862. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1866. 
 Libreria Standard Italiana v2.1 
 Versione 1 
 Tutti i diritti riservati. 
@@ -61,22 +61,15 @@ IN 'INDOSSATI' DI: | hero
 
 > dai i boxer all'assistente
 (prima prendi i tuoi boxer)
-Consegni i tuoi boxer all'assistente.
-
-> ; Adesso arriva il crash...
-> DBG boxer
-'boxer' VALORI: | val_gambe: 2 | 
-È INDOSSATO: Sì 
-IN ABBIGLIAMENTO (EROE): No. 
-IN 'INDOSSATI' DI: | hero 
+Consegni i tuoi boxer all'assistente. 
 
 As you enter the twilight zone of Adventures, you stumble and fall to your
 knees. In front of you, you can vaguely see the outlines of an Adventure that
 never was.
 
-SYSTEM ERROR: Stack is not empty in main loop
-At source line 706 in 'ega.alan':
-WHEN hero AT ega_camerino
+SYSTEM ERROR: Stack is not empty after event execution
+At source line 3007 in '..\..\alanlib_ita\/lib_classi.i':
+          END IF. "d'accordo."
 
 <If you are the creator of this piece of Interactive Fiction, please help debug
 this Alan system error. Collect *all* the sources, and, if possible, an exact

@@ -17,6 +17,8 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [Alan 3.0beta6 build 1866](#alan-30beta6-build-1866)
+        - [Passa ad Alan 3.0beta6 build 1866](#passa-ad-alan-30beta6-build-1866)
 - [Alan 3.0beta6 build 1862](#alan-30beta6-build-1862)
     - [2019/02/01](#20190201)
         - [Vestiario](#vestiario)
@@ -120,6 +122,13 @@ For previuos changes, see:
 
 -----
 
+# Alan 3.0beta6 build 1866
+
+### Passa ad Alan 3.0beta6 build 1866
+
+Da qui in avanti il progetto adotta la [developer snaphshot]  [Alan 3.0beta6 build 1866][3.0beta6-1866] per testare la libreria usufruendo dei più recenti bug fix.
+
+Tutti i riferimenti alla precedente build nei moduli della libreria e nei sorgenti dei test vengono aggiornati, ma non viene variata la versione dei moduli né la loro data poiché il salto di version non ha determinato differenze nei risultati dei test.
 
 # Alan 3.0beta6 build 1862
 
@@ -1333,6 +1342,7 @@ Tutti i moduli della libreria passano alla versione 0.8.0.
 [3.0beta6-1852]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1852 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1852"
 [3.0beta6-1855]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1855 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1855"
 [3.0beta6-1862]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1862 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1862"
+[3.0beta6-1866]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1866 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1866"
 
 <!-- Alan Commits -->
 
