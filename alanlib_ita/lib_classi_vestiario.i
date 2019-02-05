@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi_vestiario.i"
---| v0.13.0-Alpha, 2019-02-02: Alan 3.0beta6 build 1866
+--| v0.14.0-Alpha, 2019-02-05: Alan 3.0beta6 build 1866
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -808,7 +808,7 @@ END EVENT.
 --~============================================================================
 --| 
 --| Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
---| italiano del modulo delle XXXXX.
+--| italiano del modulo della classe del vestiario.
 --<
 
 -->todo_checklist(51000.1)

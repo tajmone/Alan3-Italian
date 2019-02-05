@@ -1,0 +1,263 @@
+
+
+Test Grammatica 
+Avventura per testare gli attributi per l'italiano. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1866. 
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+Entrata della Trattoria
+Finalmente! Eccoti arrivato alla "Trattoria da Pino", dove servono la miglior
+carbonara della città. 
+
+Puoi andare solo a nord, dentro la trattoria.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                 TESTA INIZALIZZAZIONE ATTRIBUTI GRAMMATICA                 *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Questa avventura definisce gli attributi 'articolo' anche sui luoghi, al fine
+> ; di consentire dei test approfonditi riguardo l'inizializzazione delle varie
+> ; istanze della libreria.
+> ; ==============================================================================
+> ; ATTORI
+> ; ==============================================================================
+> ; TESTA: FEMMINA
+> DBG_GRAM cuoca
++------------------------------------------------------------------------------- 
+| NOME: cuoca 
+| GENERE: femminile 
+| NUMERO: singolare 
+| ARTICOLO: la 
+| FORMA DETERMINATA:    la cuoca 
+| FORMA INDETERMINATA:  una cuoca 
+| VOCALE: a 
+| PRONOME: lei 
+| PREP. DI: della 
+| PREP. A:  alla 
+| PREP. DA: dalla 
+| PREP. IN: nella 
+| PREP. SU: sulla 
++-------------------------------------------------------------------------------
+
+> ; TESTA: MASCHI
+> DBG_GRAM avventori
++------------------------------------------------------------------------------- 
+| NOME: avventori 
+| GENERE: maschile 
+| NUMERO: plurale 
+| ARTICOLO: gli 
+| FORMA DETERMINATA:    gli avventori 
+| FORMA INDETERMINATA:  degli avventori 
+| VOCALE: i 
+| PRONOME: essi 
+| PREP. DI: degli 
+| PREP. A:  agli 
+| PREP. DA: dagli 
+| PREP. IN: negli 
+| PREP. SU: sugli 
++-------------------------------------------------------------------------------
+
+> ; TESTA: MASCHIO + NOME PROPRIO
+> DBG_GRAM pino
++------------------------------------------------------------------------------- 
+| NOME: Pino 
+| GENERE: maschile 
+| NUMERO: singolare 
+| ARTICOLO: il 
+| FORMA DETERMINATA:    Pino 
+| FORMA INDETERMINATA:  Pino 
+| VOCALE: o 
+| PRONOME: lui 
+| PREP. DI: di 
+| PREP. A:  a 
+| PREP. DA: da 
+| PREP. IN: in 
+| PREP. SU: su 
++-------------------------------------------------------------------------------
+
+> ; ==============================================================================
+> ; OGGETTI
+> ; ==============================================================================
+> DBG_GRAM fornelli
++------------------------------------------------------------------------------- 
+| NOME: fornelli 
+| GENERE: maschile 
+| NUMERO: plurale 
+| ARTICOLO: i 
+| FORMA DETERMINATA:    i fornelli 
+| FORMA INDETERMINATA:  dei fornelli 
+| VOCALE: i 
+| PRONOME: it 
+| PREP. DI: dei 
+| PREP. A:  ai 
+| PREP. DA: dai 
+| PREP. IN: nei 
+| PREP. SU: sui 
++-------------------------------------------------------------------------------
+
+> DBG_GRAM gabinetto
++------------------------------------------------------------------------------- 
+| NOME: gabinetto 
+| GENERE: maschile 
+| NUMERO: singolare 
+| ARTICOLO: il 
+| FORMA DETERMINATA:    il gabinetto 
+| FORMA INDETERMINATA:  un gabinetto 
+| VOCALE: o 
+| PRONOME: it 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
++-------------------------------------------------------------------------------
+
+> DBG_GRAM specchio
++------------------------------------------------------------------------------- 
+| NOME: specchio 
+| GENERE: maschile 
+| NUMERO: singolare 
+| ARTICOLO: lo 
+| FORMA DETERMINATA:    lo specchio 
+| FORMA INDETERMINATA:  uno specchio 
+| VOCALE: o 
+| PRONOME: it 
+| PREP. DI: dello 
+| PREP. A:  allo 
+| PREP. DA: dallo 
+| PREP. IN: nello 
+| PREP. SU: sullo 
++-------------------------------------------------------------------------------
+
+> ; ==============================================================================
+> ; LUOGHI
+> ; ==============================================================================
+> ; TESTA: ART "L'"   (femm. sing.) -> "l'entrata"
+> DBG_GRAM_QUI
++------------------------------------------------------------------------------- 
+| NOME: Entrata della Trattoria 
+| GENERE: femminile 
+| NUMERO: singolare 
+| ARTICOLO: l' 
+| VOCALE: a 
+| PREP. DI: dell'
+| PREP. A:  all'
+| PREP. DA: dall'
+| PREP. IN: nell'
+| PREP. SU: sull'
++-------------------------------------------------------------------------------
+
+> nord
+Entri nella sala da pranzo. Sei travolto dal profumo di pesce fritto.
+
+Sala da Pranzo
+Gli avventori consumano i loro pasti chiacchierando vivacemente. 
+
+Puoi andare a nord nelle cucine, a est nel giardino, o a sud per uscire dalla
+trattoria.
+
+> ; TESTA: ART "LA"   (femm. sing.) -> "la sala da pranzo"
+> DBG_GRAM_QUI
++------------------------------------------------------------------------------- 
+| NOME: Sala da Pranzo 
+| GENERE: femminile 
+| NUMERO: singolare 
+| ARTICOLO: la 
+| VOCALE: a 
+| PREP. DI: della 
+| PREP. A:  alla 
+| PREP. DA: dalla 
+| PREP. IN: nella 
+| PREP. SU: sulla 
++-------------------------------------------------------------------------------
+
+> nord
+Entri nelle cucine.
+
+Le Cucine della Trattoria
+La cuoca è indaffarata ai fornelli. 
+
+A sud c'è la sala da pranzo.
+
+> ; TESTA: ART "LE"   (femm. plur.) -> "le cucine"
+> DBG_GRAM_QUI
++------------------------------------------------------------------------------- 
+| NOME: Le Cucine della Trattoria 
+| GENERE: femminile 
+| NUMERO: plurale 
+| ARTICOLO: le 
+| VOCALE: e 
+| PREP. DI: delle 
+| PREP. A:  alle 
+| PREP. DA: dalle 
+| PREP. IN: nelle 
+| PREP. SU: sulle 
++-------------------------------------------------------------------------------
+
+> sud
+Entri nella sala da pranzo.
+
+Sala da Pranzo
+Gli avventori consumano i loro pasti chiacchierando vivacemente.
+
+> est
+Ti sposti nel giardino
+
+Il Gardino
+Pino passeggia per il giardino fumando una sigaretta. 
+
+A ovest c'è la sala da pranzo.
+
+> ; TESTA: ART "IL"   (masch. sing.) -> "il giardino"
+> DBG_GRAM_QUI
++------------------------------------------------------------------------------- 
+| NOME: Il Gardino 
+| GENERE: maschile 
+| NUMERO: singolare 
+| ARTICOLO: il 
+| VOCALE: o 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
++-------------------------------------------------------------------------------
+
+> ovest
+Entri nella sala da pranzo.
+
+Sala da Pranzo
+Gli avventori consumano i loro pasti chiacchierando vivacemente.
+
+> ovest
+Entri nei bagni.
+
+I Bagni
+Un vecchio specchio è appeso alla parete, probabilmente sorretto dalle
+ragnetele che lo avvolgono. Puoi vedere un gabinetto qui. 
+
+Da qui puoi tornare solo alla sala da pranzo, a sud.
+
+> ; TESTA: ART "I"    (masch. plur.) -> "i bagni"
+> DBG_GRAM_QUI
++------------------------------------------------------------------------------- 
+| NOME: I Bagni 
+| GENERE: maschile 
+| NUMERO: plurale 
+| ARTICOLO: i 
+| VOCALE: i 
+| PREP. DI: dei 
+| PREP. A:  ai 
+| PREP. DA: dai 
+| PREP. IN: nei 
+| PREP. SU: sui 
++-------------------------------------------------------------------------------
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

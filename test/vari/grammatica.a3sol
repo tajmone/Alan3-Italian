@@ -1,0 +1,42 @@
+; ******************************************************************************
+; *                                                                            *
+; *                 TESTA INIZALIZZAZIONE ATTRIBUTI GRAMMATICA                 *
+; *                                                                            *
+; ******************************************************************************
+; Questa avventura definisce gli attributi 'articolo' anche sui luoghi, al fine
+; di consentire dei test approfonditi riguardo l'inizializzazione delle varie
+; istanze della libreria.
+; ==============================================================================
+; ATTORI
+; ==============================================================================
+; TESTA: FEMMINA
+DBG_GRAM cuoca
+; TESTA: MASCHI
+DBG_GRAM avventori
+; TESTA: MASCHIO + NOME PROPRIO
+DBG_GRAM pino
+; ==============================================================================
+; OGGETTI
+; ==============================================================================
+DBG_GRAM fornelli
+DBG_GRAM gabinetto
+DBG_GRAM specchio
+; ==============================================================================
+; LUOGHI
+; ==============================================================================
+; TESTA: ART "L'"   (femm. sing.) -> "l'entrata"
+DBG_GRAM_QUI
+nord
+; TESTA: ART "LA"   (femm. sing.) -> "la sala da pranzo"
+DBG_GRAM_QUI
+nord
+; TESTA: ART "LE"   (femm. plur.) -> "le cucine"
+DBG_GRAM_QUI
+sud
+est
+; TESTA: ART "IL"   (masch. sing.) -> "il giardino"
+DBG_GRAM_QUI
+ovest
+ovest
+; TESTA: ART "I"    (masch. plur.) -> "i bagni"
+DBG_GRAM_QUI

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_luoghi.i"
---| v0.13.0-Alpha, 2019-02-02: Alan 3.0beta6 build 1866
+--| v0.14.0-Alpha, 2019-02-05: Alan 3.0beta6 build 1866
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_locations.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -104,7 +104,7 @@
 --=============================================================================
 
 
-THE limbo IsA LOCATION
+THE limbo IsA location
 --@TRADOTTO: Direzioni cardinali
   EXIT
     nord,         -- north
@@ -210,7 +210,7 @@ SYNONYMS
 --
 -- Of course, you will still be able to define locations in the usual way, for example
 --
--- THE kitchen IsA LOCATION
+-- THE kitchen IsA location
 --
 -- etc, but the floor, walls and ceiling won't be automatically included there.
 -- The walls, floor, ceiling, ground and sky are not takeable or movable.
@@ -220,22 +220,22 @@ SYNONYMS
 -- (We make use of ALAN's nested locations feature in the following definitions: )
 
 
-THE esterno IsA LOCATION
+THE esterno IsA location
 END THE esterno.
 
 
-THE interno IsA LOCATION
+THE interno IsA location
 END THE interno.
 
 
-EVERY stanza IsA LOCATION AT interno
+EVERY stanza IsA location AT interno
   HAS desc_pavimento "".  -- if these values are left unchanged,
   HAS desc_pareti    "".  -- the descriptions of the walls, floor and
   HAS desc_soffitto  "".  -- ceiling will be the default "You notice nothing unusual
 END EVERY.                -- about the [object]."
 
 
-EVERY luogo_esterno IsA LOCATION AT esterno
+EVERY luogo_esterno IsA location AT esterno
   HAS desc_suolo "".
   HAS desc_cielo "".
 END EVERY.
@@ -452,12 +452,12 @@ END ADD TO.
 -- ==========================================================
 
 
-ADD TO EVERY LOCATION
+ADD TO EVERY location
   IS illuminato.
 END ADD TO.
 
 
-EVERY luogo_buio IsA LOCATION
+EVERY luogo_buio IsA location
   IS NOT illuminato.
 
   ENTERED
@@ -575,7 +575,7 @@ END EVENT.
 -- successive alla prima saranno diverse (anche se il giocatore seguita a
 -- trovarsi per la prima volta in quel luogo).
 
-ADD TO EVERY LOCATION
+ADD TO EVERY location
   HAS visitato  0.
   HAS descritto 0.
 

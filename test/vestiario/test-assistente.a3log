@@ -124,16 +124,35 @@ Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
 poterti spogliare e provare i vestiti. Puoi vedere una sedia, un cesto, una 
 salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
 
-> sudest
-Reparto Uomo
-Qui puoi trovare tutto ciò che un uomo desidererebbe indossare. Puoi vedere una 
-T-shirt qui. L'assistente ti raggiunge di corsa dal reparto donna.
-
-> ; E riprendere subito a seguirci...
-> ovest
+> ; TESTA: L'assistente arriverà "DAL REPARTO DONNA":
+> sud
 Atrio dell'Emporio Alani
 Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
-in ottone conducono a sud, fuori dal tempio del consumismo. 
+in ottone conducono a sud, fuori dal tempio del consumismo. L'assistente ti
+raggiunge di corsa dal reparto donna.
+
+> ; ** NOTA ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;            Questi messaggi generati dall'avventura sfruttano gli attributi
+> ;            grammaticali definiti su 'location' per visualizzare le corrette
+> ;            preposizioni articolate (tramite 'prep_DA').
+> ;            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> nord
+Camerino
+Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, un cesto, una 
+salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+
+> ; TESTA: L'assistente arriverà "DALL'ATRIO":
+> est
+Reparto costumi
+Qui puoi trovare un custome per ogni occasione. L'assistente ti raggiunge di
+corsa dall'atrio.
+
+> ; TESTA: Dopo averci raggiunti deve riprendere subito a seguirci...
+> sud
+Reparto Uomo
+Qui puoi trovare tutto ciò che un uomo desidererebbe indossare. Puoi vedere una 
+T-shirt qui. 
 
 L'assistente ti segue.
 

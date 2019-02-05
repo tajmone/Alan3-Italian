@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.13.0-Alpha, 2019-02-02: Alan 3.0beta6 build 1866
+--| v0.14.0-Alpha, 2019-02-05: Alan 3.0beta6 build 1866
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della

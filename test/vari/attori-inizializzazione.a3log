@@ -13,8 +13,14 @@ Atrio Principale
 A NORDEST c'è una stanza piena di PNG con nomi propri.
 A NORDOVEST c'è una stanza piena di PNG senza nomi propri.
 
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                       TESTA INIZIALIZZAZIONE ATTORI                        *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Verifichiamo la corretta inizializzazione degli attori ('actor' e 'persona').
 > ; ==============================================================================
-> ;                         ATTRIBUTI PNG CON NOME PROPRIO                        
+> ; ATTORI CON NOME PROPRIO
 > ; ==============================================================================
 > ; Verifichiamo la corretta inizializzazione degli attributi per l'italiano negli
 > ; attori con nome proprio.
@@ -25,8 +31,10 @@ A OVEST c'è l'altro set.
 
 Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise sono qui.
 
-> debaca Mario e Maria e Romeo e Thelma
-(Mario) 
+> ; ------------------------------------------------------------------------------
+> ; PERSONA > MASCHIO   (masc. sing.)
+> ; ------------------------------------------------------------------------------
+> debaca Mario
 +------------------------------------------------------------------------------- 
 | NOME: Mario 
 | CLASSE: actor > persona > maschio 
@@ -60,7 +68,10 @@ Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise sono qui.
 | xDesc (stringa vuota) 
 +-------------------------------------------------------------------------------
 
-(Maria) 
+> ; ------------------------------------------------------------------------------
+> ; PERSONA > FEMMINA   (femm. sing.)
+> ; ------------------------------------------------------------------------------
+> debaca Maria
 +------------------------------------------------------------------------------- 
 | NOME: Maria 
 | CLASSE: actor > persona > femmina 
@@ -94,10 +105,29 @@ Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise sono qui.
 | xDesc (stringa vuota) 
 +-------------------------------------------------------------------------------
 
-(Romeo e Giuglietta) 
+> ; ==============================================================================
+> ; ATTORI CONGIUNTI CON NOME PROPRIO
+> ; ==============================================================================
+> ; Le classi 'maschi' e 'femmine' sono state studiate per gestire attori colletivi
+> ; (es. "le guardie") ma in teoria potrebbero anche essere usati per rappresentare
+> ; più individui raggruppati in un singolo attore. Si tratta di casi limite, con
+> ; evidenti problematiche di gestionalità, ma questo test li coprirà comunque.
+> ; 
+> ; ** NOTA ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;            Nei comandi del giocatore non è possibile rifersi a entrambi gli
+> ;            individui per via della "e". Questo non funzionerebbe:
+> ;            
+> ;            > esamina Romeo e Giuilietta
+> ;            
+> ;            poiché la "e" è vista dal parser come una 'AND WORD'!
+> ;            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; ------------------------------------------------------------------------------
+> ; PERSONA > MASCHI    (masc. plur.)
+> ; ------------------------------------------------------------------------------
+> debaca Romeo
 +------------------------------------------------------------------------------- 
 | NOME: Romeo e Giuglietta 
-| CLASSE: actor > persona > maschio 
+| CLASSE: actor > persona > maschi 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: Sì 
 | È CONDISCENDENTE No 
@@ -106,11 +136,11 @@ Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise sono qui.
 +------------------------------------------------------------------------------- 
 | GENERE: maschile 
 | NUMERO: plurale 
-| ARTICOLO: il 
+| ARTICOLO: i 
 | FORMA DETERMINATA:    Romeo e Giuglietta 
 | FORMA INDETERMINATA:  Romeo e Giuglietta 
 | VOCALE: i 
-| PRONOME: lui 
+| PRONOME: essi 
 | PREP. DI: di 
 | PREP. A:  a 
 | PREP. DA: da 
@@ -128,10 +158,13 @@ Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise sono qui.
 | xDesc (stringa vuota) 
 +-------------------------------------------------------------------------------
 
-(Thelma e Louise) 
+> ; ------------------------------------------------------------------------------
+> ; PERSONA > FEMMINE   (femm. plur.)
+> ; ------------------------------------------------------------------------------
+> debaca Thelma
 +------------------------------------------------------------------------------- 
 | NOME: Thelma e Louise 
-| CLASSE: actor > persona > femmina 
+| CLASSE: actor > persona > femmine 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: Sì 
 | È CONDISCENDENTE No 
@@ -140,11 +173,11 @@ Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise sono qui.
 +------------------------------------------------------------------------------- 
 | GENERE: femminile 
 | NUMERO: plurale 
-| ARTICOLO: la 
+| ARTICOLO: le 
 | FORMA DETERMINATA:    Thelma e Louise 
 | FORMA INDETERMINATA:  Thelma e Louise 
 | VOCALE: e 
-| PRONOME: lei 
+| PRONOME: esse 
 | PREP. DI: di 
 | PREP. A:  a 
 | PREP. DA: da 
@@ -163,7 +196,7 @@ Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise sono qui.
 +-------------------------------------------------------------------------------
 
 > ; ==============================================================================
-> ;                        ATTRIBUTI PNG SENZA NOME PROPRIO                       
+> ; ATTORI SENZA NOME PROPRIO
 > ; ==============================================================================
 > ; Ora verifichiamo l'inizializzazione dei medesimi attributi negli attori che
 > ; non hanno nome proprio. 
@@ -177,7 +210,10 @@ C'è un vampiro qui. C'è uno zombie qui. C'è un orco qui. C'è una strega qui. C'è
 un'arpia qui. Ci sono dei gemelli siamesi qui. Ci sono degli sciamani qui. Ci
 sono delle fate qui.
 
-> debaca vampiro e zombie e orco e strega e arpia e gemelli e sciamani e fate
+> ; ------------------------------------------------------------------------------
+> ; PERSONA > MASCHIO   (masc. sing.)
+> ; ------------------------------------------------------------------------------
+> debaca il vampiro e lo zombie e l'orco
 (vampiro) 
 +------------------------------------------------------------------------------- 
 | NOME: vampiro 
@@ -280,6 +316,10 @@ sono delle fate qui.
 | xDesc (stringa vuota) 
 +-------------------------------------------------------------------------------
 
+> ; ------------------------------------------------------------------------------
+> ; PERSONA > FEMMINA   (femm. sing.)
+> ; ------------------------------------------------------------------------------
+> debaca la strega e l'arpia
 (strega) 
 +------------------------------------------------------------------------------- 
 | NOME: strega 
@@ -348,10 +388,19 @@ sono delle fate qui.
 | xDesc (stringa vuota) 
 +-------------------------------------------------------------------------------
 
+> ; ==============================================================================
+> ; ATTORI COLLETTIVI
+> ; ==============================================================================
+> ; Gli attori plurali sono da considerarsi dei colletivi. Il loro uso nelle AT è
+> ; abbastanza comune.
+> ; ------------------------------------------------------------------------------
+> ; PERSONA > MASCHI    (masc. plur.)
+> ; ------------------------------------------------------------------------------
+> debaca i gemelli e gli sciamani
 (gemelli siamesi) 
 +------------------------------------------------------------------------------- 
 | NOME: gemelli siamesi 
-| CLASSE: actor > persona > maschio 
+| CLASSE: actor > persona > maschi 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
 | È CONDISCENDENTE No 
@@ -364,7 +413,7 @@ sono delle fate qui.
 | FORMA DETERMINATA:    i gemelli siamesi 
 | FORMA INDETERMINATA:  dei gemelli siamesi 
 | VOCALE: i 
-| PRONOME: lui 
+| PRONOME: essi 
 | PREP. DI: dei 
 | PREP. A:  ai 
 | PREP. DA: dai 
@@ -385,7 +434,7 @@ sono delle fate qui.
 (sciamani) 
 +------------------------------------------------------------------------------- 
 | NOME: sciamani 
-| CLASSE: actor > persona > maschio 
+| CLASSE: actor > persona > maschi 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
 | È CONDISCENDENTE No 
@@ -398,7 +447,7 @@ sono delle fate qui.
 | FORMA DETERMINATA:    gli sciamani 
 | FORMA INDETERMINATA:  degli sciamani 
 | VOCALE: i 
-| PRONOME: lui 
+| PRONOME: essi 
 | PREP. DI: degli 
 | PREP. A:  agli 
 | PREP. DA: dagli 
@@ -416,10 +465,13 @@ sono delle fate qui.
 | xDesc (stringa vuota) 
 +-------------------------------------------------------------------------------
 
-(fate) 
+> ; ------------------------------------------------------------------------------
+> ; PERSONA > FEMMINE   (femm. plur.)
+> ; ------------------------------------------------------------------------------
+> debaca le fate
 +------------------------------------------------------------------------------- 
 | NOME: fate 
-| CLASSE: actor > persona > femmina 
+| CLASSE: actor > persona > femmine 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
 | È CONDISCENDENTE No 
@@ -432,7 +484,7 @@ sono delle fate qui.
 | FORMA DETERMINATA:    le fate 
 | FORMA INDETERMINATA:  delle fate 
 | VOCALE: e 
-| PRONOME: lei 
+| PRONOME: esse 
 | PREP. DI: delle 
 | PREP. A:  alle 
 | PREP. DA: dalle 

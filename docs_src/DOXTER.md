@@ -17,6 +17,7 @@ Appunti di lavoro sull'organizzazione della documentazione di Alan Italian in re
     - [Modulo Messaggi Runtime](#modulo-messaggi-runtime)
     - [Modulo Messaggi Libreria](#modulo-messaggi-libreria)
     - [Modulo Verbi](#modulo-verbi)
+    - [Modulo Grammatica](#modulo-grammatica)
     - [Modulo Supplementare](#modulo-supplementare)
 
 <!-- /MarkdownTOC -->
@@ -77,12 +78,14 @@ Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in cia
 
 | weight   | subw      | tag                         | descrizione                               |
 | -------: | --------: | :-------------------------- | :---------------------------------------- |
+| 100      | 1         | `intro`                     | == Introduzione                           |
+| 1000     | 1         | `entity_attr`               | == Attributi Entità                       |
 | 50000    |           | `todo`                      | TODO                                      |
 | 51000    | 1-33      | `todo_checklist`            | === Check List Generale                   |
 | 51000    | 665-666   | `todo_checklist`            | === Check List Doxter                     |
 
 <!-- 
-| 00000  |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx |
+| 00000    |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx |
 -->
 
 
@@ -108,7 +111,7 @@ Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in cia
 
 ## Modulo Luoghi
 
-- [`lib_luoghi.i`][lib_luoghi]
+- [`lib_grammatica.i`][lib_grammatica]
 
 
 | weight   | subw      | tag                         | descrizione                               |
@@ -217,6 +220,22 @@ Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in cia
 | 010  |         | verbo_YYYYY                 | ==== YYYYY
 -->
 
+## Modulo Grammatica
+
+- [`lib_grammatica.i`][lib_grammatica]
+
+| weight   | subw      | tag                         | descrizione                               |
+| -------: | --------: | :-------------------------- | :---------------------------------------- |
+| 100      | 1         | `intro`                     | == Introduzione                           |
+| 50000    |           | `todo`                      | TODO                                      |
+| 51000    | 1-33      | `todo_checklist`            | === Check List Generale                   |
+| 51000    | 665-666   | `todo_checklist`            | === Check List Doxter                     |
+
+
+<!-- 
+| 00000  |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx |
+-->
+
 ## Modulo Supplementare
 
 - [`lib_supplemento.i`][lib_supplemento]
@@ -253,6 +272,7 @@ Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in cia
 [lib_messaggi_runtime]:  ../alanlib_ita/lib_messaggi_runtime.i
 [lib_messaggi_libreria]: ../alanlib_ita/lib_messaggi_libreria.i
 [lib_verbi]:             ../alanlib_ita/lib_verbi.i
+[lib_grammatica]:        ../alanlib_ita/lib_grammatica.i
 [lib_supplemento]:       ../alanlib_ita/lib_supplemento.i
 
 

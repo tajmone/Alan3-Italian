@@ -1,0 +1,21 @@
+; ******************************************************************************
+; *                                                                            *
+; *                          TESTA ATTRIBUTI LOCATION                          *
+; *                                                                            *
+; ******************************************************************************
+; Questo test mira a verificare lo stato degli attributi dei luoghi, specie
+; quelli grammaticali. L'avventura EGA definisce esplicitamente l'articolo in
+; alcune stanze poiché un evento nell'avventura deve riferirsi a varie stanze
+; e necessita di accedere alle corrette preposizioni articolate.
+; 
+; L'obiettivo secondario di questo test è di monitorare per eventuali mutamenti
+; improvvisi (e inattesi) nello stato di inizializzazione degli attributi
+; predefiniti (e non) dei luoghi, causati da modifiche al codice della libreria
+; o da nuove versioni di Alan.
+DBG_QUI
+nord
+; ------------------------------------------------------------------------------
+; L'ATRIO
+; ------------------------------------------------------------------------------
+; Alla stanza dell'atrio è stato dato l'articolo "l'" (maschile):
+DBG_QUI

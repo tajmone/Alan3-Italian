@@ -32,6 +32,11 @@ END THE.
 --    versione più breve del nome originale, tutto in minuscolo. Attualmente è
 --    utilizzato dall'EVENTo 'Riattiva_Assistente', per menzionare da quale
 --    stanza è arrivata (se la stringa è vuota, verrà usato 'LOCATION OF').
+-- 
+--    NOTA: In questa avventura definiremo anche l'articolo in quelle stanze cui
+--          verrà fatto riferimento nei messaggi di 'Riattiva_Assistente', così
+--          sarà possibile recuperare le preposizioni articolate idonee al nome
+--          della stanza tramite 'prep_DA', ecc. (es. "dall'atrio").
 
 -- 2. Un attributo stringa per immagazzinare la lista delle uscite di una stanza.
 --    Attualmente utilizzato dal verbo 'mostra_uscite'.
@@ -104,7 +109,8 @@ END THE ega_entrata.
 --==============================================================================
 THE ega_atrio IsA stanza.
   NAME 'Atrio dell''Emporio Alani'.
-  HAS menzione_stanza "$$l'atrio".
+  HAS menzione_stanza "atrio".
+  HAS articolo "l'".   --> Per una corretta inizializzazione delle preposizioni!
   EXIT est   TO ega_uomo.
   EXIT ovest TO ega_donna.
   EXIT nord  TO ega_camerino.
@@ -714,9 +720,12 @@ EVENT Riattiva_Assistente
   -- l'assistente dovrà raggiungerlo nella nuova destinazione:
   IF assistente_ega NOT AT hero
     THEN
-      "L'assistente ti raggiunge di corsa dal"
-      IF menzione_stanza OF location of assistente_ega <> ""
-        THEN SAY menzione_stanza OF location of assistente_ega.
+      "L'assistente ti raggiunge di corsa"
+      -- Stampa la preposizione articolata appropriata per il nome del luogo:
+      SAY prep_DA OF location OF assistente_ega.
+      -- Se il luogo ha un nome breve usiamolo:
+      IF menzione_stanza OF location OF assistente_ega <> ""
+        THEN SAY menzione_stanza OF location OF assistente_ega.
         ELSE SAY location OF assistente_ega.
       END IF. "."
       LOCATE assistente_ega AT hero.

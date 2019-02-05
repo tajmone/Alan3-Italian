@@ -18,6 +18,11 @@ For previuos changes, see:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Alan 3.0beta6 build 1866](#alan-30beta6-build-1866)
+    - [2019/02/05](#20190205)
+        - [Passa alla v0.14.0](#passa-alla-v0140)
+        - [Separa modulo grammatica italiana](#separa-modulo-grammatica-italiana)
+        - [Modulo classi](#modulo-classi)
+        - [Modulo messaggi runtime](#modulo-messaggi-runtime)
     - [2019/02/02 \(2\)](#20190202-2)
         - [Passa alla v0.13.0](#passa-alla-v0130)
         - [Separa modulo classi vestiario](#separa-modulo-classi-vestiario)
@@ -63,7 +68,7 @@ For previuos changes, see:
     - [2018/12/08 \(1\)](#20181208-1)
         - [Verbi apri, chiudi, blocca e sblocca](#verbi-apri-chiudi-blocca-e-sblocca)
         - [Messaggi libreria](#messaggi-libreria-1)
-        - [Modulo classi](#modulo-classi)
+        - [Modulo classi](#modulo-classi-1)
     - [2018/12/07](#20181207)
         - [Messaggi libreria](#messaggi-libreria-2)
         - [Verbi](#verbi-2)
@@ -75,7 +80,7 @@ For previuos changes, see:
         - [Messaggi libreria](#messaggi-libreria-4)
     - [2018/12/04 \(1\)](#20181204-1)
         - [Messaggi libreria](#messaggi-libreria-5)
-        - [Modulo classi](#modulo-classi-1)
+        - [Modulo classi](#modulo-classi-2)
     - [2018/12/01](#20181201)
         - [Documentazione messaggi libreria](#documentazione-messaggi-libreria)
     - [2018/11/30 \(2\)](#20181130-2)
@@ -128,6 +133,97 @@ For previuos changes, see:
 -----
 
 # Alan 3.0beta6 build 1866
+
+## 2019/02/05
+
+- [`libreria.i`][libreria] &#x27f6; v0.14.0
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.14.0
+- [`lib_classi_vestiario.i`][lib_classi_vestiario] &#x27f6; v0.14.0
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.14.0
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.14.0
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] &#x27f6; v0.14.0
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.14.0
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.14.0
+- [`lib_grammatica.i`][lib_grammatica] &#x27f6; v0.14.0
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.14.0
+
+### Passa alla v0.14.0
+
+Tutti i moduli della libreria passano alla versione 0.14.0.
+
+### Separa modulo grammatica italiana
+
+Questo commit raccoglie tutto il codice per la definizione e l'inizializzazione degli attributi grammaticali dell'italiano in un nuovo modulo della libreria a sé stante:
+
+- [`lib_grammatica.i`][lib_grammatica]
+
+Questo rende possibile utilizzare il modulo indipendentemente dalla Libreria Standard, per creare avventure in italiano senza l'infrastruttura della libreria.
+
+> __NOTA__ — Per ora il codice di `lib_supplemento.i`, che si occupa di definire le _player words_ per la conversione (durante il parsing) degli articoli, le preposizioni, ecc., non è stato incluso nel nuovo modulo `lib_grammatica.i`. Poiché l'idea originale dietro il modulo supplementare era di creare un modulo temporaneo in attesa del supporto nativo per l'italiano in Alan, mi sono riservato di prendermi del tempo prima di decidere se includerlo in `lib_grammatica.i` o meno.
+
+#### Attributi grammatica su entity
+
+Adesso la libreria definisce gli attributi per la grammatica direttamente sulla classe `entity`, rendendoli disponibili su ogni classe e istanza (incluse le classi letterali). Questa novità migliora lo sviluppo della libreria e introduce nuove possibilità.
+
+Le migliorie per lo sviluppono riguardano il fatto che ora gli attributi sono disponibili in qualsiasi contesto di Alan, poiché la loro presenza è ora garantita su qualsiasi classe e istanza. È quindi possibile utilizzare controlli sugli attributi in qualsiasi clausola sintattica, e finanche nelle definizioni dei messagi runtime.
+
+Le nuove possibilità per gli autori di avventure riguardono il fatto che è ora possibile creare messaggi _ad hoc_ in cui far riferimento a luoghi usando genere e numero appropriati, così come preposizioni, vocali per l'accordo, ecc. Questo risulta estramente utile nella creazione di messaggi che coinvolgono luoghi (p.es. un messaggio quando si entra o esce da certi tipi di stanze), e adesso l'autore potrà utilizzare (per esempio) `SAY prep_DA OF CURRENT LOCATION` per mostrare la preposizione giusta per la stanza (es. "esci dalla cucina"). Siccome anche le istanze di `location` vengono ora inizializzate con gli attributi di grammatica, sarà sufficiente specificare il corretto attributo `articolo` per quei luoghi cui si dovrà far riferimento nei messaggi.
+
+#### Entità con nome proprio
+
+Anche l'attributo `nome_proprio` è stato spostato su `entity` (mentre prima era presente solo su `actor`) per consentire di creare entità e luoghi con nome proprio. Sebbene in genere sono solo gli attori ad avere un nome proprio, in alcuni contesti può essere necessario creare oggetti inanimati con un nome proprio. Ecco alcuni esempi teorici e pratici:
+
+- Un PNG (Marco) muore nel gioco, e dobbiamo sostituire la sua istanza di `actor` con una di classe `object` per rappresentarne il cadavere. Il giocatore potrebbe non sapere che Marco è morto, e quindi continuerà a riferirsi ad esso con il nome proprio. Per questo motivo, è utile che la libreria consenta di definire oggetti con `nome_proprio`, sì poter mostrare una corretta messaggistica dei verbi:
+
+    > &gt; _chiedi le chiavi a marco_
+    > 
+    > Marco non è in grado di capirti.
+
+    In questo esempio, "non è in grado di capirti" è la risposta del verbo 'chiedi a' quando è utilizzato con entità non attore. La possibilità di definire oggetti con nome proprio garantisce una corretta messaggistica con qualsiasi verbo (in questo esempio, previene il messaggio "Il Marco non è in grado di capirti.").
+
+- In alcuni casi anche i luoghi possono avere un nome proprio, e nelle avventure che producono messaggi riguardanti luoghi sarà necessaria una corretta gestione degli articoli. P.es., "Luigi parte per Roma" (e non "per LA Roma", che lascierebbe intendere la squadra di calcio). Un esempio estremo potrebbe essere la balena di Pinocchio: il giocatore si trova ad entrare in un luogo che è (dal punto di vista della storia) un personaggio, magari con un nome proprio (es. "Dentro Moby Dick").
+
+- A volte gli autori implementeranno istanze di `entity` per creare entità astratte ed onnipresenti, p.es. fantasmi, emozioni, ecc. Queste entità potrebbero avere nomi propri (il fantasma "Casper", ecc.).
+
+Le AT sono opere narrative, per cui non vi è limite pratico a ciò che gli autori possono inventare. La disponibilità globale degli attributi di grammatica rimuove qualsiasi precedente limite in tal senso.
+
+
+### Modulo classi
+
+#### Nuove classi maschi e femmine
+
+Sono state aggiunte due nuove sottoclassi di `persona`:
+
+- `maschi`  — per collettivi di maschi (o maschi e femmine misti).
+- `femmine` — per collettivi di femmine.
+
+Queste nuove classi sono utili perché oltre a definire attributi di genere e numero, e articoli di base, definiscono e anche dei pronomi (essi/loro, esse/loro). Ora le sottoclassi di `persona` definite dalla libreria (ed i valori predefiniti) sono:
+
+|   classe  |  art.  |  pronomi   |
+|-----------|--------|------------|
+| `maschio` | `"il"` | lui        |
+| `femmina` | `"la"` | lei        |
+| `maschi`  | `"i"`  | essi, loro |
+| `femmine` | `"le"` | esse, loro |
+
+
+> __NOTA__ — Il pronome 'loro' potrebbe essere rimosso in seguito, nel caso dovessero confliggere con future definizioni delle _them words_. Al momento non ho ancora avuto modo di esplorare l'uso delle _them words_, e devo capire meglio se potrebbero esservi anche dei conflitti con potenziali usi di 'loro' in riferimento al possesso.
+> 
+> In linea di massima, la Libreria non si occupa di definire i pronomi (relegando questo compito all'autore), l'unica eccezzione sono le sottoclassi di `persona`. Può anche darsi che in futuro le definizioni dei pronomi verranno completamente rimosse dalla libreria.
+
+### Modulo messaggi runtime
+
+Ora che gli attributi grammaticali per il genere, numero e vocale per gli aggettivi sono disponibili sulla classe `entity`, è stato possibile ottimizzare vari messaggi di runtime per sfruttare `vocale` anziché dover controllare se l'istanza è plurale/singolare e maschile/femminile. Esempio:
+
+```alan
+  CONTAINMENT_LOOP:
+    "Non è possibile mettere $+1 dentro sé stess$$" SAY parameter1:vocale. "."
+```
+
+
+
+<!---------------------------------------------------------------------------->
+
 
 ## 2019/02/02 (2)
 
@@ -1363,15 +1459,17 @@ Tutti i moduli della libreria passano alla versione 0.8.0.
 
 <!-- Moduli della Libreria --------------------------------------------------->
 
-[libreria]:              ./libreria.i
 [lib_classi]:            ./lib_classi.i
 [lib_classi_vestiario]:  ./lib_classi_vestiario.i
 [lib_definizioni]:       ./lib_definizioni.i
+[lib_grammatica]:        ./lib_grammatica.i
+[lib_grammatica]:        ./lib_grammatica.i
 [lib_luoghi]:            ./lib_luoghi.i
-[lib_messaggi_runtime]:  ./lib_messaggi_runtime.i
 [lib_messaggi_libreria]: ./lib_messaggi_libreria.i
-[lib_verbi]:             ./lib_verbi.i
+[lib_messaggi_runtime]:  ./lib_messaggi_runtime.i
 [lib_supplemento]:       ./lib_supplemento.i
+[lib_verbi]:             ./lib_verbi.i
+[libreria]:              ./libreria.i
 
 [test]: ../test/
 

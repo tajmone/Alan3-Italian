@@ -1,14 +1,71 @@
+; ******************************************************************************
+; *                                                                            *
+; *                       TESTA INIZIALIZZAZIONE ATTORI                        *
+; *                                                                            *
+; ******************************************************************************
+; Verifichiamo la corretta inizializzazione degli attori ('actor' e 'persona').
 ; ==============================================================================
-;                         ATTRIBUTI PNG CON NOME PROPRIO                        
+; ATTORI CON NOME PROPRIO
 ; ==============================================================================
 ; Verifichiamo la corretta inizializzazione degli attributi per l'italiano negli
 ; attori con nome proprio.
 nordest
-debaca Mario e Maria e Romeo e Thelma
+; ------------------------------------------------------------------------------
+; PERSONA > MASCHIO   (masc. sing.)
+; ------------------------------------------------------------------------------
+debaca Mario
+; ------------------------------------------------------------------------------
+; PERSONA > FEMMINA   (femm. sing.)
+; ------------------------------------------------------------------------------
+debaca Maria
 ; ==============================================================================
-;                        ATTRIBUTI PNG SENZA NOME PROPRIO                       
+; ATTORI CONGIUNTI CON NOME PROPRIO
+; ==============================================================================
+; Le classi 'maschi' e 'femmine' sono state studiate per gestire attori colletivi
+; (es. "le guardie") ma in teoria potrebbero anche essere usati per rappresentare
+; più individui raggruppati in un singolo attore. Si tratta di casi limite, con
+; evidenti problematiche di gestionalità, ma questo test li coprirà comunque.
+; 
+; ** NOTA ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;            Nei comandi del giocatore non è possibile rifersi a entrambi gli
+;            individui per via della "e". Questo non funzionerebbe:
+;            
+;            > esamina Romeo e Giuilietta
+;            
+;            poiché la "e" è vista dal parser come una 'AND WORD'!
+;            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; ------------------------------------------------------------------------------
+; PERSONA > MASCHI    (masc. plur.)
+; ------------------------------------------------------------------------------
+debaca Romeo
+; ------------------------------------------------------------------------------
+; PERSONA > FEMMINE   (femm. plur.)
+; ------------------------------------------------------------------------------
+debaca Thelma
+; ==============================================================================
+; ATTORI SENZA NOME PROPRIO
 ; ==============================================================================
 ; Ora verifichiamo l'inizializzazione dei medesimi attributi negli attori che
 ; non hanno nome proprio. 
 ovest
-debaca vampiro e zombie e orco e strega e arpia e gemelli e sciamani e fate
+; ------------------------------------------------------------------------------
+; PERSONA > MASCHIO   (masc. sing.)
+; ------------------------------------------------------------------------------
+debaca il vampiro e lo zombie e l'orco
+; ------------------------------------------------------------------------------
+; PERSONA > FEMMINA   (femm. sing.)
+; ------------------------------------------------------------------------------
+debaca la strega e l'arpia
+; ==============================================================================
+; ATTORI COLLETTIVI
+; ==============================================================================
+; Gli attori plurali sono da considerarsi dei colletivi. Il loro uso nelle AT è
+; abbastanza comune.
+; ------------------------------------------------------------------------------
+; PERSONA > MASCHI    (masc. plur.)
+; ------------------------------------------------------------------------------
+debaca i gemelli e gli sciamani
+; ------------------------------------------------------------------------------
+; PERSONA > FEMMINE   (femm. plur.)
+; ------------------------------------------------------------------------------
+debaca le fate

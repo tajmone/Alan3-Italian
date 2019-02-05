@@ -1,4 +1,4 @@
--- Alan >= 3.0beta6 build 1866 | Alan Italian >= v0.13.0-Alpha
+-- Alan >= 3.0beta6 build 1866 | Alan Italian >= v0.14.0-Alpha
 --==============================================================================
 -- "Provini Attori" by Tristano Ajmone, 2018.
 --==============================================================================
@@ -69,14 +69,29 @@ THE fucile IsA arma IN hero.
   CAN sparare.
 END THE fucile.
 
+
 --==============================================================================
--- PNG Con Nomi Propri
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--------------------------------------------------------------------------------
+--
+-- GLI ATTORI PNG
+--
+--------------------------------------------------------------------------------
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--==============================================================================
+
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- PNG CON NOMI PROPRI
+--------------------------------------------------------------------------------
 --==============================================================================
 -- Gli attori con nome proprio sono un caso speciale per quanto riguarda gli
--- attributi per l'italiano: la libreria deve occuparsi di inizializzarli una
--- seconda volta (dopo l'avvenuta inizializzazione sulla classe THING) poiché
--- la presenza del nome proprio richiede che vengano modificate le preposizioni
--- da articolate a semplici, affinché nei messaggi si legga:
+-- attributi per l'italiano: la presenza del nome proprio richiede che vengano
+-- modificate le preposizioni da articolate a semplici, affinché nei messaggi si
+-- legga:
 --
 --    "Hai dato la palla A Marta."
 --
@@ -119,9 +134,9 @@ END THE.
 -- diversi attori con nome proprio vengono rappresentati tramite un'unica
 -- istanza, se anche solo uno di essi è maschile ci si dovrà riferire ad essi
 -- con il maschile.
-THE Romeo_Giulietta IsA maschio AT stanza1.
+
+THE Romeo_Giulietta IsA maschi AT stanza1.
   HAS nome_proprio.
-  IS plurale.
   NAME 'Romeo e Giuglietta'.
   NAME Romeo.
   NAME Giuglietta.
@@ -130,16 +145,18 @@ END THE.
 -- =================
 -- Femminile Plurale
 -- =================
-THE Thelma_Louise IsA femmina AT stanza1.
+
+THE Thelma_Louise IsA femmine AT stanza1.
   HAS nome_proprio.
-  IS plurale.
   NAME 'Thelma e Louise'.
   NAME Thelma.
   NAME Louise.
 END THE.
 
 --==============================================================================
--- PNG Senza Nomi Propri
+--------------------------------------------------------------------------------
+-- PNG SENZA NOMI PROPRI
+--------------------------------------------------------------------------------
 --==============================================================================
 THE stanza2 IsA STANZA.
   NAME 'Set Attori in Costume'.
@@ -153,8 +170,9 @@ END THE.
 -- ============
 -- Articolo: IL
 -- ============
+-- ("il" è già l'articolo predefinito per 'maschio')
 THE vampiro IsA maschio AT stanza2.
-  HAS articolo "il".
+  -- HAS articolo "il".
 END THE.
 -- ============
 -- Articolo: LO
@@ -163,7 +181,7 @@ THE zombie IsA maschio AT stanza2.
   HAS articolo "lo".
 END THE.
 -- ================
--- Articolo: L' (m)
+-- Articolo: L' (masc.)
 -- ================
 THE orco IsA maschio AT stanza2.
   HAS articolo "l'".
@@ -172,11 +190,12 @@ END THE.
 -- ============
 -- Articolo: LA
 -- ============
+-- ("la" è già l'articolo predefinito per 'femmina')
 THE strega IsA femmina AT stanza2.
-  HAS articolo "la".
+  -- HAS articolo "la".
 END THE.
 -- ================
--- Articolo: L' (f)
+-- Articolo: L' (femm.)
 -- ================
 THE arpia IsA femmina AT stanza2.
   HAS articolo "l'".
@@ -185,22 +204,27 @@ END THE.
 -- ===========
 -- Articolo: I
 -- ===========
-THE gemelli IsA maschio AT stanza2.
-  HAS articolo "i".
+-- ("i" è già l'articolo predefinito per 'maschi')
+-- THE gemelli IsA maschio AT stanza2.
+THE gemelli IsA maschi AT stanza2.
+  -- HAS articolo "i".
   NAME gemelli siamesi.
   NAME gemelli.
 END THE.
 -- =============
 -- Articolo: GLI
 -- =============
-THE sciamani IsA maschio AT stanza2.
+-- THE sciamani IsA maschio AT stanza2.
+THE sciamani IsA maschi AT stanza2.
   HAS articolo "gli".
 END THE.
 -- ============
 -- Articolo: LE
 -- ============
-THE fate IsA femmina AT stanza2.
-  HAS articolo "le".
+-- ("le" è già l'articolo predefinito per 'femmine')
+-- THE fate IsA femmina AT stanza2.
+THE fate IsA femmine AT stanza2.
+  -- HAS articolo "le".
 END THE.
 
 --------------------------------------------------------------------------------

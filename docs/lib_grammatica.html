@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
 <meta name="author" content="Tristano Ajmone">
-<title>Alan StdLib Italian: Messaggi Runtime</title>
+<title>Alan StdLib Italian: Grammatica</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -434,7 +434,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Alan StdLib Italian: Messaggi Runtime</h1>
+<h1>Alan StdLib Italian: Grammatica</h1>
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
@@ -445,7 +445,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Indice dei contenuti</div>
 <ul class="sectlevel1">
-<li><a href="#_messaggi_runtime_di_alan">Messaggi runtime di Alan</a></li>
+<li><a href="#_introduzione">Introduzione</a></li>
+<li><a href="#_guida_alluso">Guida all&#8217;uso</a>
+<ul class="sectlevel2">
+<li><a href="#_attributi_grammaticali_delle_entità">Attributi grammaticali delle entità</a></li>
+<li><a href="#_valori_predefiniti">Valori predefiniti</a>
+<ul class="sectlevel3">
+<li><a href="#_genere_e_numero">Genere e numero</a></li>
+<li><a href="#_nome_proprio">Nome proprio</a></li>
+<li><a href="#_vocale_per_accordo_aggettivi">Vocale per accordo aggettivi</a></li>
+<li><a href="#_articolo_di_riferimento">Articolo di riferimento</a></li>
+<li><a href="#_preposizioni_articolate">Preposizioni articolate</a></li>
+</ul>
+</li>
+<li><a href="#_inizializzazione_attributi">Inizializzazione attributi</a></li>
+</ul>
+</li>
 <li><a href="#_todo">TODO</a>
 <ul class="sectlevel2">
 <li><a href="#_check_list_generale">Check-list generale</a></li>
@@ -461,19 +476,115 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Adattamento italiano del modulo <code>lib_messages.i</code> della
-<em>ALAN Standard Library</em> v2.1, &#169; Anssi Räisänen, Artistic License 2.1.
-Ad opera di Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
+<p>Modulo grammaticale della liberia italiana, non presente nell&#8217;originale
+<em>ALAN Standard Library</em> v2.1 di Anssi Räisänen.
+Creato da Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_messaggi_runtime_di_alan"><a class="anchor" href="#_messaggi_runtime_di_alan"></a>Messaggi runtime di Alan</h2>
+<h2 id="_introduzione"><a class="anchor" href="#_introduzione"></a>Introduzione</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Questo modulo della libreria ridefinisce i messaggi runtime di Alan.</p>
+<p>Questo modulo della libreria è il cuore del supporto della lingua italiana
+in Alan. È stato progettato come un modulo a sé stante, indipendente dal
+resto della libreria, di modo che possa essere utilizzato anche al di fuori
+di essa per creare avventure in italiano senza l&#8217;infrastruttura della libreria
+standard, usufruendo solo del codice base per la grammatica italiana.</p>
+</div>
+<div class="paragraph">
+<p>Per i suddetti motivi, tutti il codice necessario per implementare la lingua
+italiana è contenuto in questo modulo. Per chi volesse usare questo modulo
+per aggiungere la grammatica alle proprie avventure, è consigliabile anche
+includere il modulo <code>lib_supplemento.i</code> poiché esso contiene ulteriore codice
+per il supporto dell&#8217;italiano che, sebbene non strettamente indispensabile,
+risulterà utile ai fini pratici.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Il codice in <code>lib_supplemento.i</code> è stato separato da questo modulo
+poiché esso diverrebbe superfluo il giorno in cui fosse introdotto
+in Alan il supporto nativo per la lingua italiana.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_guida_alluso"><a class="anchor" href="#_guida_alluso"></a>Guida all&#8217;uso</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Dato che questo modulo è concepito per essere usato anche al di fuori della
+libreria, verrà inclusa una documentazione dettagliata su come utilizzarlo.</p>
+</div>
+<div class="sect2">
+<h3 id="_attributi_grammaticali_delle_entità"><a class="anchor" href="#_attributi_grammaticali_delle_entità"></a>Attributi grammaticali delle entità</h3>
+<div class="paragraph">
+<p>Questo modulo definisce una serie di attributi sulla classe <code>entity</code> che
+serviranno a tracciare il genere ed il numero di ciascuna istanza, ed altre
+informazioni grammaticali utili ai fini di una messaggistica dell&#8217;avventura
+corretta. Essendo questi definiti sulla classe <code>entity</code>, saranno eridati
+automaticamente da ognuna delle classi native di Alan, e quindi presenti su
+ogni instanza del gioco (cose, oggetti, attori, luoghi) e finanche sulle
+classi letterali <code>literal</code>, <code>string</code>, e <code>integer</code>.</p>
+</div>
+<div class="paragraph">
+<p>Ai fini pratici di un&#8217;avventura, le classi di maggior interesse per un
+autore saranno ovviamente gli oggetti e gli attori, le cui instanze dovranno
+sempre essere inizializzate correttamente per garantire una messaggistica
+consona al loro genere e numero. In casi meno frequenti, ci si troverà
+anche a dover impostare gli attributi grammaticali su istanze di entità e/o
+luoghi. Le classi letterali (che non ammettono né instanze né sottoclassi)
+non hanno rilevanza pratica ai fini della grammatica italiana, sebbene esse
+eriditino tali attributi di riflesso in quanto sottoclassi di <code>entity</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>La necessità di definire questi attributi direttamente su <code>entity</code> è anche
+dettata dal fatto che per poter usufruire di essi nelle clausole sintattiche
+dei verbi (e in altri contesti di esecuzione condizionale) è indispensabile
+garantire che siano presenti in ogni possibile istanza assoggettabile a quel
+contesto d&#8217;esecuzione.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_valori_predefiniti"><a class="anchor" href="#_valori_predefiniti"></a>Valori predefiniti</h3>
+<div class="paragraph">
+<p>I valori predefiniti su entità sono quelli di un oggetto maschile singolare
+con articolo &#8220;il&#8221;. Fatta eccezione per alcune classi specializzate della
+libreria, che definiscono articoli con numero e/o genere diversi (<code>femmina</code>
+= <code>"la"</code>, <code>maschi</code> = <code>"i"</code>, <code>femmine</code> = <code>"le"</code>), l&#8217;onere di specificare un
+corretto <code>articolo</code> su ogni istanza dell&#8217;avventura ricade sull&#8217;autore.</p>
+</div>
+<div class="sect3">
+<h4 id="_genere_e_numero"><a class="anchor" href="#_genere_e_numero"></a>Genere e numero</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">ADD TO EVERY ENTITY
+
+  IS NOT plurale.
+  IS NOT femminile.</code></pre>
+</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -483,7 +594,138 @@ Ad opera di Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Documentazione non ancora disponibile&#8230;&#8203;</p>
+<p>Sezione non ancora completata&#8230;&#8203;</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_nome_proprio"><a class="anchor" href="#_nome_proprio"></a>Nome proprio</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS NOT nome_proprio.                                     ---&gt; named</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Attenzione"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Sezione non ancora disponibile&#8230;&#8203;</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_vocale_per_accordo_aggettivi"><a class="anchor" href="#_vocale_per_accordo_aggettivi"></a>Vocale per accordo aggettivi</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS vocale "o".</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L&#8217;attributo <code>vocale</code> contiene la vocale finale di riferimento per gli
+aggettivi che seguono la forma &#8220;o/a i/e&#8221; nell&#8217;accordo di genere e numero.</p>
+</div>
+<div class="paragraph">
+<p>Anche <code>vocale</code> sarà inizializzato automaticamente dalla libreria, basandosi
+sul valore di <code>articolo</code> dell&#8217;istanza.</p>
+</div>
+<div class="paragraph">
+<p>Questo attributo semplifica molto la corretta rappresentazione di aggettivi
+nei vari messaggi della libreria poiché consente di stampare direttamente
+questo attributo come ultima vocale dell&#8217;aggetivo, aniziché dover eseguire
+controlli sul genere e sul numero dell&#8217;istanza in oggetto, riducendo quindi
+drasticamente la lunghezza del codice all&#8217;interno dei verbi.
+Inoltre, questo attributo potrà essere impiegato anche dagli autori stessi,
+poiché la sua utilità non è limitata all&#8217;uso interno che ne fa la libreria.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS prep_DI "del".
+  HAS prep_A  "al".
+  HAS prep_DA "dal".
+  HAS prep_IN "nel".
+  HAS prep_SU "sul".</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Grazie a questi attributi, nei messaggi della libreria (e delle avventure)
+è possibile recuperare le corrette preposizioni articolate da usare con
+ciascuna istanza.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_articolo_di_riferimento"><a class="anchor" href="#_articolo_di_riferimento"></a>Articolo di riferimento</h4>
+<div class="paragraph">
+<p>Ogni entità ha un attributo che ne specifica l&#8217;articolo determinativo:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS articolo "il".</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L&#8217;autore potrà sovrascrivere il valore predefinito direttamente sulle
+specifiche istanze dell&#8217;avventura, indicando l&#8217;articolo appropriato per
+l&#8217;istanza in oggetto.</p>
+</div>
+<div class="paragraph">
+<p>Questo attributo viene utilizzato dalla libreria per inizializzare le
+istanze del gioco: in base all&#8217;articolo indicato dall&#8217;autore, la libreria sarà
+in grado di dedurre il genere ed il numero dell&#8217;istanza, e ne imposterà tutte
+le altre proprietà grammaticali con i valori appropriati.</p>
+</div>
+<div class="paragraph">
+<p>L&#8217;autore deve semplicemente specficare l&#8217;articolo determinativo del
+sostantivo, e la libreria farà tutto il resto. L&#8217;unica eccezione è
+l&#8217;articolo <code>"l'"</code>, che può rifererirsi sia a un sostantivo maschile che
+femminile; per questo articolo l&#8217;autore dovrà specificare <code>IS femminile</code>
+nel caso di sostantivi femminili, altrimenti la libreria presumerà che si
+tratti di un sostantivo maschile.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>L&#8217;attributo <code>articolo</code> viene utilizzato solo ai fini dell&#8217;inizializzazione
+delle istanze, come riferimento per dedurre genere, numero, articoli e
+preposizioni dell&#8217;istanza, dopodiché non viene più utlizzato.
+Quindi, la libreria non ricorre ad <code>articolo</code> per stampare l&#8217;articolo di un
+istanza nei messaggi.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_preposizioni_articolate"><a class="anchor" href="#_preposizioni_articolate"></a>Preposizioni articolate</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_inizializzazione_attributi"><a class="anchor" href="#_inizializzazione_attributi"></a>Inizializzazione attributi</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Attenzione"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Sezione non ancora disponibile&#8230;&#8203;</p>
 </div>
 </td>
 </tr>
@@ -491,23 +733,47 @@ Ad opera di Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="_todo"><a class="anchor" href="#_todo"></a>TODO</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Questa sezione contiene l&#8217;elenco delle cose da fare per ultimare l&#8217;adattamento
-italiano del modulo delle classi.</p>
+<p>Questa sezione contiene l&#8217;elenco delle cose da fare per completare il modulo
+della grammatica italiana.</p>
 </div>
 <div class="sect2">
 <h3 id="_check_list_generale"><a class="anchor" href="#_check_list_generale"></a>Check-list generale</h3>
 <div class="paragraph">
-<p>Lista della spesa per le varie cosucce da fare:</p>
+<p>Lista della spesa per le varie cosucce da fare:
+* [ ] Sposta qui il codice di <code>lib_supplemento.i</code>? Farlo renderebbe questo
+      modulo completamente indipendente poiché includerebbe anche le
+      <em>player words</em> che definiscono articoli, preposizioni, ecc.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_check_list_per_doxter"><a class="anchor" href="#_check_list_per_doxter"></a>Check-list per Doxter</h3>
 <div class="paragraph">
 <p>Finisci di trasformare commenti in documentazione Doxter:</p>
+</div>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="fa fa-square-o"></i> Aggiungi esempi pratici di codice:</p>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="fa fa-square-o"></i> Definizione <code>articolo</code>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Uso attributi preposizioni (es. <code>SAY mia_AT:prep_IN.</code>).</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Istanze attore con nome proprio.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>

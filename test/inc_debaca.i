@@ -1,4 +1,4 @@
--- Alan >= 3.0beta6 build 1866 | Alan Italian >= v0.13.0-Alpha
+-- Alan >= 3.0beta6 build 1866 | Alan Italian >= v0.14.0-Alpha
 --==============================================================================
 -- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -14,8 +14,10 @@
 -- Questo modulo offre strumenti per il "debacaggio" (o "debacatura") delle
 -- istanze del gioco. I seguenti comandi saranno aggiunti all'avventura:
 -- 
---    DEBACA <OGG>
---    DBG_PRONOME <OGG> 
+--    DEBACA <THING>
+--    DBG_PRONOME <THING>
+--    DBG_QUI
+--    DBG_GRAM <THING>
 -- 
 --------------------------------------------------------------------------------
 -- NOTA: "debaca" è la forma italianizzata del verbo inglese "debug" ("rimuovere
@@ -85,7 +87,7 @@ END ADD TO.
 
 --==============================================================================
 --------------------------------------------------------------------------------
--- DEBACA <OGG>
+-- DEBACA <THING>
 --------------------------------------------------------------------------------
 --==============================================================================
 
@@ -124,6 +126,10 @@ ADD TO EVERY thing
                 THEN "> maschio"
               ELSIF ogg IsA femmina
                 THEN "> femmina"
+              ELSIF ogg IsA maschi
+                THEN "> maschi"
+              ELSIF ogg IsA femmine
+                THEN "> femmine"
               END IF.
           END IF. SAY mia_AT:dbgsep. --------------( separatore )--------------
           "$n| HA NOME PROPRIO:"
@@ -350,7 +356,7 @@ END ADD TO.
 
 --==============================================================================
 --------------------------------------------------------------------------------
--- DBG_PRONOME <OGG> 
+-- DBG_PRONOME <THING> 
 --------------------------------------------------------------------------------
 --==============================================================================
 -- Il comando 'DBG_PRONOME OGGETTO' mostrerà il pronome predefinito di un'instanza.
@@ -366,5 +372,144 @@ ADD TO EVERY thing
       "| $+1 | PRONOME: $!1 |"
   END VERB dbg_pronome.
 END ADD TO thing.
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- DBG_QUI
+--------------------------------------------------------------------------------
+--==============================================================================
+-- Il comando 'DBG_QUI' mostrerà informazioni sul luogo attuale.
+-- Sintassi alternative: 'DBG QUI' e 'DEBACA QUI'.
+
+SYNTAX dbg_qui = dbg_qui.
+       dbg_qui = dbg qui.
+       dbg_qui = debaca qui.
+
+VERB dbg_qui
+  DOES
+    SAY mia_AT:dbgsep_no_nl. --------------( separatore senza \n )------------
+    "$n| NOME:" SAY CURRENT LOCATION.
+    "$n| CLASSE:"
+    IF CURRENT LOCATION IsA location
+      THEN "location"
+        IF CURRENT LOCATION IsA stanza
+          THEN
+            "> stanza"
+        ELSIF CURRENT LOCATION IsA luogo_esterno
+          THEN "> luogo_esterno"
+        ELSIF CURRENT LOCATION IsA luogo_buio
+          THEN "> luogo_buio"
+        END IF.
+    END IF. SAY mia_AT:dbgsep. -------------------( separatore )--------------
+    -- =========================================================================
+    -- ATTRIBUTI GRAMMATICALI
+    -- =========================================================================
+    "$n| GENERE:"
+    IF CURRENT LOCATION IS femminile
+      THEN "femminile"
+      ELSE "maschile"
+    END IF.
+    "$n| NUMERO:"
+    IF CURRENT LOCATION IS plurale
+      THEN "plurale"
+      ELSE "singolare"
+    END IF.
+    "$n| ARTICOLO: "  SAY CURRENT LOCATION:articolo.
+    "$n| VOCALE: "    SAY CURRENT LOCATION:vocale.
+    "$n| PREP. DI:$t" SAY CURRENT LOCATION:prep_DI.
+    "$n| PREP.  A:$t" SAY CURRENT LOCATION:prep_A.
+    "$n| PREP. DA:$t" SAY CURRENT LOCATION:prep_DA.
+    "$n| PREP. IN:$t" SAY CURRENT LOCATION:prep_IN.
+    "$n| PREP. SU:$t" SAY CURRENT LOCATION:prep_SU.
+    SAY mia_AT:dbgsep. ---------------------------( separatore )--------------
+    -- =========================================================================
+    -- ATTRIBUTI LUOGO
+    -- =========================================================================
+    "$n| ILLUMINATO:"
+    IF CURRENT LOCATION IS illuminato
+      THEN "Sì"
+      ELSE "No"
+    END IF. SAY mia_AT:dbgsep. -------------------( separatore )--------------
+    "$n| VISITS OF THIS:" SAY VISITS OF CURRENT LOCATION.
+    "$n| VISITATO:"       SAY visitato OF CURRENT LOCATION.
+    "$n| DESCRITTO:"      SAY descritto OF CURRENT LOCATION.
+    SAY mia_AT:dbgsep. ---------------------------( separatore )--------------
+END VERB dbg_qui.
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- DBG_GRAM <THING>
+--------------------------------------------------------------------------------
+--==============================================================================
+-- Il comando 'DBG_GRAM' mostrerà informazioni sugli attributi della gammatica
+-- di una o più istanze (accetta parametri multipli e/o distanti).
+
+SYNTAX dbg_gram = dbg_gram (ogg)*!
+  WHERE ogg IsA thing
+    ELSE "Questo comando funziona solo su istanze di THING."
+
+
+ADD TO EVERY thing
+  VERB dbg_gram
+    DOES
+      SAY mia_AT:dbgsep_no_nl. ---------------------( separatore senza \n )-----
+      "$n| NOME: $1"
+      "$n| GENERE:"
+      IF ogg IS femminile
+        THEN "femminile"
+        ELSE "maschile"
+      END IF.
+      "$n| NUMERO:"
+      IF ogg IS plurale
+        THEN "plurale"
+        ELSE "singolare"
+      END IF.
+      "$n| ARTICOLO: " SAY ogg:articolo.
+      "$n| FORMA DETERMINATA:$t$+1"
+      "$n| FORMA INDETERMINATA:$t$01"
+      "$n| VOCALE: "    SAY ogg:vocale.
+      "$n| PRONOME: $!1"
+      "$n| PREP. DI:$t" SAY ogg:prep_DI.
+      "$n| PREP.  A:$t" SAY ogg:prep_A.
+      "$n| PREP. DA:$t" SAY ogg:prep_DA.
+      "$n| PREP. IN:$t" SAY ogg:prep_IN.
+      "$n| PREP. SU:$t" SAY ogg:prep_SU.
+      SAY mia_AT:dbgsep. -------------------( separatore )--------------
+  END VERB dbg_gram.
+END ADD TO thing.
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- DBG_GRAM_QUI
+--------------------------------------------------------------------------------
+--==============================================================================
+-- Il comando 'DBG_GRAM_QUI' mostrerà informazioni sugli attributi della gammatica
+-- del luogo in cui si trova il giocatore.
+
+SYNTAX dbg_gram_qui = dbg_gram_qui.
+
+VERB dbg_gram_qui
+  DOES
+    SAY mia_AT:dbgsep_no_nl. ---------------------( separatore senza \n )-----
+    "$n| NOME:" SAY CURRENT LOCATION.
+    "$n| GENERE:"
+    IF CURRENT LOCATION IS femminile
+      THEN "femminile"
+      ELSE "maschile"
+    END IF.
+    "$n| NUMERO:"
+    IF CURRENT LOCATION IS plurale
+      THEN "plurale"
+      ELSE "singolare"
+    END IF.
+    "$n| ARTICOLO:"   SAY CURRENT LOCATION:articolo.
+    "$n| VOCALE:"     SAY CURRENT LOCATION:vocale.
+    "$n| PREP. DI:$t" SAY CURRENT LOCATION:prep_DI.
+    "$n| PREP.  A:$t" SAY CURRENT LOCATION:prep_A.
+    "$n| PREP. DA:$t" SAY CURRENT LOCATION:prep_DA.
+    "$n| PREP. IN:$t" SAY CURRENT LOCATION:prep_IN.
+    "$n| PREP. SU:$t" SAY CURRENT LOCATION:prep_SU.
+    SAY mia_AT:dbgsep. -------------------( separatore )--------------
+END VERB dbg_gram_qui.
 
 ---< Fine del File >---

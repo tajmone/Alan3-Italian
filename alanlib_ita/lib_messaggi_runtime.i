@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_runtime.i"
---| v0.13.0-Alpha, 2019-02-02: Alan 3.0beta6 build 1866
+--| v0.14.0-Alpha, 2019-02-05: Alan 3.0beta6 build 1866
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -148,23 +148,8 @@ MESSAGE
 
 
   CONTAINMENT_LOOP:
-    -- ------------------------------------------------------------------
-    -- NOTA: Qui non si può usare 'SAY vocale OF parameter1.' dato che il
-    --       parametro non è garantito nel contesto ('entity' non lo ha).
-    -- ------------------------------------------------------------------
-    "Non è possibile mettere $+1 dentro sé stess$$"
-      IF parameter1 IS NOT femminile
-        THEN
-          IF parameter1 IS NOT plurale
-            THEN "o." -- GNA = msi
-            ELSE "i." -- GNA = mpi
-          END IF.
-        ELSE
-          IF parameter1 IS NOT plurale
-            THEN "a." -- GNA = fsi
-            ELSE "e." -- GNA = fpi
-          END IF.
-      END IF.
+    "Non è possibile mettere $+1 dentro sé stess$$" SAY parameter1:vocale. "."
+
 
   CONTAINMENT_LOOP2: "Non è possibile mettere $+1 in $+2 dato che $+2"
     IF parameter2 IS NOT plurale
@@ -255,26 +240,14 @@ MESSAGE
   IMPOSSIBLE_WITH: "È impossibile farlo con $+1."
 
   ------------------------------------------------------------------------------
-  -- The default messages for empty containers.
+  -- Il messaggio predefinito per i contenitori vuoti.
 
   IS_EMPTY: "$+1"
     IF parameter1 IS NOT plurale
-      THEN "è vuot$$"
-        -- ------------------------------------------------------------------
-        -- NOTA: Qui non si può usare 'SAY vocale OF parameter1.' dato che il
-        --       parametro non è garantito nel contesto ('entity' non lo ha).
-        -- ------------------------------------------------------------------
-        IF parameter1 IS NOT femminile
-          THEN "o." -- GNA = msi
-          ELSE "a." -- GNA = fsi
-        END IF.
-      ELSE "sono vuot$$"
-        IF parameter1 IS NOT femminile
-          THEN "i." -- GNA = mpi
-          ELSE "e." -- GNA = fpi
-        END IF.
+      THEN "è"
+      ELSE "sono"
     END IF.
-
+    "vuot$$" SAY parameter1:vocale. "."
 
   ------------------------------------------------------------------------------
 

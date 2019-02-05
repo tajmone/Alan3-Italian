@@ -38,7 +38,16 @@ ovest
 ; camerino e va in una stanza diversa da quella da cui era entrato, l'assistente
 ; dovrà correre per l'emporio e raggiungere l'eroe...
 nordest
-sudest
-; E riprendere subito a seguirci...
-ovest
+; TESTA: L'assistente arriverà "DAL REPARTO DONNA":
+sud
+; ** NOTA ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;            Questi messaggi generati dall'avventura sfruttano gli attributi
+;            grammaticali definiti su 'location' per visualizzare le corrette
+;            preposizioni articolate (tramite 'prep_DA').
+;            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+nord
+; TESTA: L'assistente arriverà "DALL'ATRIO":
+est
+; TESTA: Dopo averci raggiunti deve riprendere subito a seguirci...
+sud
 

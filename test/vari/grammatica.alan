@@ -1,0 +1,244 @@
+--==============================================================================
+-- "Test Grammatica" by Tristano Ajmone, 2018.
+--==============================================================================
+OPTIONS WIDTH 81.
+
+IMPORT 'libreria.i'.      -- ALAN Libreria Standard Italiana v2.1
+IMPORT '../inc_debaca.i'. -- Comandi per il debugging
+
+
+THE mia_AT IsA blocco_definizioni
+  ------------------------------------------------------------------------------
+  HAS       titolo  "Test Grammatica".
+  HAS  sottotitolo  "Avventura per testare gli attributi per l'italiano.".
+  HAS       autore  "Tristano Ajmone".
+  HAS         anno   2018.
+  HAS     versione  "1".
+  HAS        AlanV  "v3.0beta6 build 1866".
+  ------------------------------------------------------------------------------
+END THE.
+
+
+
+-- =============================================================================
+
+-- Personalizzazione location
+
+-- =============================================================================
+-- Aggiungiamo a tutti i luoghi alcuni attributi personalizzati:
+
+-- 1. Un attributo stringa per un nome alternativo da usare nei messaggi.
+
+-- 2. Un attributo stringa per immagazzinare la lista delle uscite di una stanza.
+--    Attualmente utilizzato dal verbo 'mostra_uscite'.
+
+ADD TO EVERY location
+  HAS nome_breve "".     --> nome alternativo nei messaggi.
+  HAS uscite_stanza "".  --> elenco uscite della stanza.
+END ADD TO location.
+
+
+-- Ai fini di verificare che gli attributi grammatica dei luoghi siano stati
+-- inizializzati correttamente, faremo anche in modo che quando il giocatore
+-- entra un luogo venga stampato "Entri <art + nome luogo>".
+-- 
+-- Dobbiamo però aggiungere le clausole ENTERED su 'stanza' e 'luogo_esterno',
+-- se no andremmo a sovrascrivere la clausola ENTERED definita dalla libreria
+-- sulla classe 'location'! (vedi: "lib_luoghi.i")
+
+ADD TO EVERY stanza
+  ENTERED
+    "Entri" SAY prep_IN OF CURRENT LOCATION.
+            SAY nome_breve OF CURRENT LOCATION. "."
+    SCHEDULE evento_uscite AFTER 0.
+END ADD TO stanza.
+
+ADD TO EVERY luogo_esterno
+  ENTERED
+    "Ti sposti" SAY prep_IN OF CURRENT LOCATION.
+                SAY nome_breve OF CURRENT LOCATION.
+    SCHEDULE evento_uscite AFTER 0.
+END ADD TO luogo_esterno.
+
+--------------------------------------------------------------------------------
+-- VERBO: MOSTRA LE USCITE
+--------------------------------------------------------------------------------
+-- L'elenco delle uscite è, in molte stanze, troppo lungo e brutto da vedersi
+-- nella descrizione del luogo. Quindi lascieremo che il giocatore usi il comando
+-- "uscite" per visualizzare le uscite nel luogo in cui si trova.
+-- Il verbo sfrutta l'attributo 'uscite_stanza' che è stato aggunto a ogni luogo. 
+
+SYNTAX mostra_uscite = uscite.
+
+VERB mostra_uscite
+  DOES
+    IF uscite_stanza OF CURRENT LOCATION <> ""
+      THEN SAY uscite_stanza OF CURRENT LOCATION.
+      ELSE "Spiacente, non è disponibile la lista delle uscite per questo luogo."
+    END IF.
+END VERB mostra_uscite.
+
+--------------------------------------------------------------------------------
+-- ELENCO USCITE AUTOMATICO (prima visita)
+--------------------------------------------------------------------------------
+-- Questo evento farà sì che alla prima visita di ogni luogo vengano elencate
+-- le uscite.
+
+EVENT evento_uscite
+  IF VISITS OF CURRENT LOCATION = 0
+  AND uscite_stanza OF CURRENT LOCATION <> ""
+    THEN "$p" SAY uscite_stanza OF CURRENT LOCATION.
+  END IF.
+END EVENT.
+
+-- =============================================================================
+
+-- MAPPA
+
+-- =============================================================================
+-- A tutti i luoghi daremo l'articolo appropriato al nome della stanza, di modo
+-- da poter testare che vengano inizializzati correttamente.
+
+THE entrata IsA luogo_esterno.
+  NAME 'Entrata della Trattoria'.
+  HAS nome_breve "entrata".
+  HAS articolo "l'".
+  IS femminile.
+  EXIT nord TO sala_pranzo.
+  HAS uscite_stanza "Puoi andare solo a nord, dentro la trattoria.".
+  DESCRIPTION
+    IF THIS:descritto = 1
+      THEN
+        "Finalmente! Eccoti arrivato alla ""Trattoria da Pino"",
+         dove servono la miglior carbonara della città."
+      ELSE
+        "La trattoria di Pino è un vecchio locale rustico ed invitante."
+    END IF.
+END THE entrata.
+
+THE sala_pranzo IsA stanza.
+  NAME 'Sala da Pranzo'.
+  HAS nome_breve "sala da pranzo".
+  HAS articolo "la".
+  EXIT sud TO entrata.
+  EXIT nord TO cucine.
+  EXIT est TO giardino.
+  EXIT ovest TO bagni.
+  HAS uscite_stanza
+    "Puoi andare a nord nelle cucine, a est nel giardino,
+     o a sud per uscire dalla trattoria.".
+  ENTERED
+    IF THIS:visitato = 1
+      THEN
+        "Sei travolto dal profumo di pesce fritto."
+      END IF.
+END THE sala_pranzo.
+
+THE cucine IsA stanza.
+  NAME 'Le Cucine della Trattoria'.
+  HAS articolo "le".
+  HAS nome_breve "cucine".
+  EXIT sud TO sala_pranzo.
+  HAS uscite_stanza "A sud c'è la sala da pranzo.".
+END THE cucine.
+
+
+THE giardino IsA luogo_esterno.
+  NAME 'Il Gardino'.
+  HAS nome_breve "giardino".
+  EXIT ovest TO sala_pranzo.
+  HAS uscite_stanza "A ovest c'è la sala da pranzo.".
+END THE giardino.
+
+THE bagni IsA stanza.
+  NAME 'I Bagni'.
+  HAS articolo "i".
+  HAS nome_breve "bagni".
+  EXIT est TO sala_pranzo.
+  HAS uscite_stanza "Da qui puoi tornare solo alla sala da pranzo, a sud.".
+END THE bagni.
+-- =============================================================================
+
+-- ARREDAMENTI E SCENOGRAFIE
+
+-- =============================================================================
+
+--==============================================================================
+-- SCENOGRAFIE ENTRATA
+--==============================================================================
+--==============================================================================
+-- SCENOGRAFIE CUCINE
+--==============================================================================
+THE fornelli IsA dispositivo AT cucine.
+  HAS articolo "i".
+  IS acceso.
+  IS NOT prendibile.
+  DESCRIPTION ""
+END THE fornelli.
+
+THE cuoca IsA femmina AT cucine.
+  NAME cuoca.
+  NAME olga.
+  DESCRIPTION "La cuoca è indaffarata ai fornelli."
+  HAS xDesc
+    "È Olga, la cuoca della trattario da ... Quanto, vent'anni? forse trenta.
+     Comunque, da moltissimo tempo.".
+  
+END THE cuoca.
+--==============================================================================
+-- SCENOGRAFIE SALA DA PRANZO
+--==============================================================================
+THE avventori IsA maschi AT sala_pranzo.
+  HAS articolo "gli".
+  DESCRIPTION
+    "Gli avventori consumano i loro pasti chiacchierando vivacemente."
+  VERB esamina
+    DOES ONLY
+      DEPENDING ON RANDOM 1 TO 3
+        = 1 THEN
+          "Noti una vecchietta china su un piatto di tortellini."
+        = 2 THEN
+          "Il tuo occhio cade su una coppietta di turisti, forse americani."
+        = 3 THEN
+          "Nell'angolo noti una tavolata di allegri camionisti, forse un po' brilli."
+      END DEPEND.
+  END VERB esamina.
+END THE avventori.
+
+SYNONYMS clienti = avventori.
+
+--==============================================================================
+-- SCENOGRAFIE GIARDINO
+--==============================================================================
+
+THE pino IsA maschio AT giardino.
+  NAME Pino.
+  HAS nome_proprio.
+  DESCRIPTION "Pino passeggia per il giardino fumando una sigaretta."
+  HAS xDesc "È Pino, il proprietario della trattoria.".
+END THE pino.
+
+--==============================================================================
+-- SCENOGRAFIE BAGNI
+--==============================================================================
+THE specchio IsA object AT bagni.
+  HAS articolo "lo".
+  IS NOT prendibile. NOT spostabile.
+  DESCRIPTION
+    "Un vecchio specchio è appeso alla parete,
+     probabilmente sorretto dalle ragnetele che lo avvolgono."
+  HAS xDesc "Lo specchio logorato dal tempo ti restituisce un'immagine
+             invecchiata del tuo volto.".
+END THE specchio.
+
+THE gabinetto IsA object AT bagni.
+  IS NOT prendibile. NOT spostabile.
+  HAS xDesc "Spero tu non stia pensando di usare questo gabinetto.
+             Potrebbe essere un'arma chimico-batteriologica -- e tu il suo
+             prossimo 'paziente zero'.".
+END THE gabinetto.
+--------------------------------------------------------------------------------
+START AT entrata.
+
+DESCRIBE intestazione.
+SCHEDULE evento_uscite AFTER 0.

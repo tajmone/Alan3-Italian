@@ -1,0 +1,92 @@
+
+
+Emporio Giorgio Alani 
+Un set per testare il vestiario. 
+(C) Tristano Ajmone, 2019. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1866. 
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati. 
+
+Digita USCITE per visualizzare la lista di uscite disponibili in una stanza. 
+Usa il verbo DBG INDUMENTO per mostrare i valori di copertura di un capo di
+vestiario.
+
+
+Davanti all'Emporio Alani
+Ti trovi di fronte all'entrata dell'Emporio Giorgio Alani. Due imponenti porte
+in ottone attendono di condurti a nord, dentro il tempio della moda.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                          TESTA ATTRIBUTI LOCATION                          *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Questo test mira a verificare lo stato degli attributi dei luoghi, specie
+> ; quelli grammaticali. L'avventura EGA definisce esplicitamente l'articolo in
+> ; alcune stanze poiché un evento nell'avventura deve riferirsi a varie stanze
+> ; e necessita di accedere alle corrette preposizioni articolate.
+> ; 
+> ; L'obiettivo secondario di questo test è di monitorare per eventuali mutamenti
+> ; improvvisi (e inattesi) nello stato di inizializzazione degli attributi
+> ; predefiniti (e non) dei luoghi, causati da modifiche al codice della libreria
+> ; o da nuove versioni di Alan.
+> DBG_QUI
++------------------------------------------------------------------------------- 
+| NOME: Davanti all'Emporio Alani 
+| CLASSE: location > luogo_esterno 
++------------------------------------------------------------------------------- 
+| GENERE: maschile 
+| NUMERO: singolare 
+| ARTICOLO: il 
+| VOCALE: o 
+| PREP. DI: del 
+| PREP. A:  al 
+| PREP. DA: dal 
+| PREP. IN: nel 
+| PREP. SU: sul 
++------------------------------------------------------------------------------- 
+| ILLUMINATO: Sì 
++------------------------------------------------------------------------------- 
+| VISITS OF THIS: 0 
+| VISITATO: 1 
+| DESCRITTO: 1 
++-------------------------------------------------------------------------------
+
+> nord
+Come ti avvicini, le porte scorrono magicamente via per lasciarti passare.
+
+Atrio dell'Emporio Alani
+Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
+in ottone conducono a sud, fuori dal tempio del consumismo. C'è la tua
+assistente personale qui.
+
+> ; ------------------------------------------------------------------------------
+> ; L'ATRIO
+> ; ------------------------------------------------------------------------------
+> ; Alla stanza dell'atrio è stato dato l'articolo "l'" (maschile):
+> DBG_QUI
++------------------------------------------------------------------------------- 
+| NOME: Atrio dell'Emporio Alani 
+| CLASSE: location > stanza 
++------------------------------------------------------------------------------- 
+| GENERE: maschile 
+| NUMERO: singolare 
+| ARTICOLO: l' 
+| VOCALE: o 
+| PREP. DI: dell'
+| PREP. A:  all'
+| PREP. DA: dall'
+| PREP. IN: nell'
+| PREP. SU: sull'
++------------------------------------------------------------------------------- 
+| ILLUMINATO: Sì 
++------------------------------------------------------------------------------- 
+| VISITS OF THIS: 0 
+| VISITATO: 1 
+| DESCRITTO: 1 
++-------------------------------------------------------------------------------
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 
