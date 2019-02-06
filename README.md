@@ -14,7 +14,7 @@ Questo progetto ha due scopi:
 - Fornire supporto per la lingua italiana in Alan IF 3.
 - Tradurre in italiano la _[Alan Standard Library]_ v2.1 di [Anssi Räisänen]. 
 
-Alan Italian diventerà il sistema di autoraggio di AT italiane più facile da usare per i non programmatori, con una ricca libreria standard di partenza con oltre 170 verbi e una vasta gamma di classi predefinite e funzioanalità per creare personaggi, fonti di luce, dispositivi, vestiario, porte e finestre, serrature, e molto altro ancora.
+Alan Italian diventerà il sistema di autoraggio di AT italiane più facile da usare per i non programmatori, con una ricca libreria standard di partenza con oltre 170 verbi e una vasta gamma di classi predefinite e funzionalità per creare personaggi, fonti di luce, dispositivi, vestiario, porte e finestre, serrature, e molto altro ancora.
 
 [![Donazione PayPal][donazione img]][donazione link]
 
@@ -39,7 +39,7 @@ Data inizio progetto: 2018/04/13.
 - [Stato del progetto](#stato-del-progetto)
 - [Sostieni il progetto](#sostieni-il-progetto)
 - [Ultime novità](#ultime-novit%C3%A0)
-    - [2019/02/05: Modulo per l'italiano indpendente e pronto all'uso](#20190205-modulo-per-litaliano-indpendente-e-pronto-alluso)
+    - [2019/02/05: Modulo per l'italiano indipendente e pronto all'uso](#20190205-modulo-per-litaliano-indipendente-e-pronto-alluso)
     - [2019/02/01: Passaggio a Alan 3.0beta6 build 1866](#20190201-passaggio-a-alan-30beta6-build-1866)
     - [2019/01/24: Passaggio a Alan 3.0beta6 build 1862](#20190124-passaggio-a-alan-30beta6-build-1862)
     - [2019/01/17: Passaggio a Alan 3.0beta6 build 1855](#20190117-passaggio-a-alan-30beta6-build-1855)
@@ -66,7 +66,7 @@ Data inizio progetto: 2018/04/13.
 Questo progetto si prefigge due obiettivi:
 
 1. Tradurre in italiano la _[Alan Standard Library]_ v2.1 di [Anssi Räisänen]. 
-2. Fornire un modulo independente per il supporto della lingua italiana in Alan IF 3.
+2. Fornire un modulo indipendente per il supporto della lingua italiana in Alan IF 3.
 
 Entrambi consentiranno la creazione di avventure testuali in lingua italiana utilizzando Alan 3, un linguaggio dedicato alla creazione di opere di interactive fiction.
 
@@ -80,15 +80,15 @@ Il secondo, è mirato agli utenti più esperti di Alan, che vogliono creare le p
 - https://www.alanif.se/
 - https://bitbucket.org/alanif/alan
 
-Alan (acronimo per __Adventure LANguage__) è un linguaggio dedicato alla creazione di [avventure testuali] (dette anche "AT", o "IF"/"Interactive Fiction"). Creato da Thomas Nilsson e Göran Forslund nel lontano 1985. Alan è oggi giunto alla sua terza incarnazione (Alan 3). Sebbene la versione 3 di Alan sia ancora in fase Beta, è sufficientemente stabile da poter essere usato per la creazione di avventure.
+Alan (acronimo per __Adventure LANguage__) è un linguaggio dedicato alla creazione di [avventure testuali] (dette anche "AT", o "IF"/"Interactive Fiction"). Creato da Thomas Nilsson e Göran Forslund nel lontano 1985. Alan è oggi giunto alla sua terza incarnazione (Alan 3). Sebbene la versione 3 di Alan sia ancora in fase Beta, è sufficientemente stabile da poter essere usata per la creazione di avventure.
 
 Gli ideatori di Alan hanno voluto creare uno strumento che fosse semplice da usare per chi non avesse esperienza di programmazione, e che non imponesse un modello standard su come debba essere strutturato il mondo delle avventure. Queste caretterstiche rendono Alan un ottimo candidato per la creazione di avventure in italiano.
 
 ### Programmazione prosaica
 
-La sintassi di Alan è modellata attorno alle esigenze dello scrittore, più che del programmatore, quindi l'uso di parentesi, punteggiatura e altri simboli per l'organizzazione sintattica del codice è ridotto al minimo indispensabile, e non vi sono vincoli strutturali riguardo l'uso di indentanzione e la ripartizione del codice nelle righe del sorgente. L'aspetto di un file sorgente di Alan è più simile alla prosa che non alla programmazione.
+La sintassi di Alan è modellata attorno alle esigenze dello scrittore, più che del programmatore, quindi l'uso di parentesi, punteggiatura e altri simboli per l'organizzazione sintattica del codice è ridotto al minimo indispensabile, e non vi sono vincoli strutturali riguardo l'uso di indentazione e la ripartizione del codice nelle righe del sorgente. L'aspetto di un file sorgente di Alan è più simile alla prosa che non alla programmazione.
 
-Questo è un esempio (completo) di codice Alan per creare una stanza, un attore ed un verbo, scritto in forma prosaica:
+Questo è un esempio (completo) di codice Alan per creare un'avventura con una stanza, un attore ed un verbo, scritto in forma prosaica:
 
 ```alan
 The classroom IsA location
@@ -149,7 +149,7 @@ END THE corridor.
 START AT classroom.
 ```
 
-In entrambi i casi, anche un lettore che non conoscesse Alan sarebbe in grado di intuire a cosa serve il codice, e come funzionerà l'avventura da esso creato. Il primo esempio risulterà più facile da comprendere per i non programmatori, mentre il secondo risulterà più familiare ai programmatori. Ogni autore è libero di adottare lo stile che preferisce nel proprie avventure.
+In entrambi i casi, anche un lettore che non conoscesse Alan sarebbe in grado di intuire a cosa serve il codice, e come funzionerà l'avventura da esso creato. Il primo esempio risulterà più facile da comprendere a chi non ha esperienza di programmazione, mentre il secondo risulterà più familiare ai programmatori. Ogni autore è libero di adottare lo stile che preferisce nel proprie avventure.
 
 Nei sorgenti della libreria di questo progetto, adotteremo uno stile di programmazione formale, più simile al secondo esempio, per ragioni di praticità di editing. Nei sorgenti degli esempi adotteremo invece uno stile meno formale, più prosaico.
 
@@ -194,9 +194,9 @@ Questo progetto è finalizzato alla traduzione italiana della _Alan Standard Lib
 
 Non mi è ancora possibile fornire una data prevista per l'ultimazione della libreria, dato che vi sto lavoro a singhiozzo, a seconda del tempo libero a disposizione (sicuramente ci vorrà ancora parecchio tempo).
 
-Ho comunque scelto di condividere su GitHub il progetto sin dall'inizio, nel caso qualcuno fosse interessanto a seguirne gli sviluppi e contribuire attivamente. I contributi e le opinoni di terzi sarebero di grande aiuto per accellerare il progetto; quindi sarei grato a chiunque volesse contribuire clonando il repository, sperimentando con libreria, condvidendo opinioni, consigli e segnalandomi bachi ed errori. 
+Ho comunque scelto di condividere su GitHub il progetto sin dall'inizio, nel caso qualcuno fosse interessanto a seguirne gli sviluppi e contribuirvi attivamente. I contributi e le opinoni di terzi sarebero di grande aiuto per accellerare il progetto; quindi sarei grato a chiunque volesse contribuire clonando il repository, sperimentando con la libreria, condvidendo opinioni, consigli e segnalandomi bachi ed errori. 
 
-Potete seguire la discussione di questo progetto all'interno del [gruppo di discussione Alan-IF su Yahoo Groups][Alan Yahoo]. Per qualsiasi domanda e suggerimento, potete [aprire uno issue qui].
+Potete seguire la discussione di questo progetto all'interno del [gruppo di discussione Alan-IF su Yahoo Groups][Alan Yahoo] (in inglese). Per qualsiasi domanda e suggerimento, potete [aprire uno issue qui].
 
 # Sostieni il progetto
 
@@ -214,9 +214,9 @@ Grazie.
 Alcune notizie flash sugli aggiornamenti importanti del progetto...
 
 
-## 2019/02/05: Modulo per l'italiano indpendente e pronto all'uso
+## 2019/02/05: Modulo per l'italiano indipendente e pronto all'uso
 
-Tutto il codice per il supporto della lingua italiana è stato spostato in un modulo a sé stante che può essere utilizzato independentemente dalla Libreria Standard:
+Tutto il codice per il supporto della lingua italiana è stato spostato in un modulo a sé stante che può essere utilizzato indipendentemente dalla Libreria Standard:
 
 - [`alanlib_ita/lib_grammatica.i`][lib_grammatica]
 
@@ -254,9 +254,9 @@ La nuova [developer snaphshot] di Alan [3.0beta6 build 1852] introduce una nuova
 
 ### Supporto per le preposizioni apostrofate
 
-Thomas ha generosamente implementato in Alan la funzionalità da me richiesta per supportare le preposizioni articolate modificando il parsing di token compositi (a causa di un apostrofo) come due parole distinte.
+Thomas ha generosamente implementato in Alan la funzionalità da me richiesta per supportare le preposizioni articolate modificando il parsing di token compositi (uniti da un apostrofo) come due parole distinte.
 
-Adesso il parser è in grado di gestire articoli e preposizioni con apostrofo nei comandi come:
+Adesso il parser è in grado di gestire articoli e preposizioni con apostrofo in comandi come questi:
 
     prendi la mela dall'albero
     prendi l'arco
@@ -308,11 +308,11 @@ Ora restano ancora da tradurre molti messagi di risposta dei verbi, e l'intera l
 # Contenuti del progetto
 
 - [`/alanlib_ita/`](./alanlib_ita) — Libreria Standard 2.1 in italiano (WIP)
-- [`/alanlib/`](./alanlib) — copie della standard library upstream:
+- [`/alanlib/`](./alanlib) — copie della Alan Standard Library upstream:
     + [`/2.1/`](./alanlib/2.1/) (updated: 2018/10/22)
 - [`/demo/`](./demo) — avventura dimostrativa (attualmente disastrata)
-- [`/docs/`](./docs) — documentazione HTML della libreria HTML
-    + [`hjs`](./docs/hjs) — package di Highlight.js customizzato
+- [`/docs/`](./docs) — documentazione HTML della libreria
+    + [`hjs`](./docs/hjs) — package customizzato di highlight.js
 - [`/docs_src/`](./docs_src) — cartella sorgenti documentazione in AsciiDoc
 - [`/test/`](./test) — test suite della libreria
 - [`LICENSE`][License] — Artistic License 2.0
@@ -338,11 +338,11 @@ Le seguenti estensioni file devono essere trattate con encoding [ISO-8859-1]:
 
 # Ringraziamenti
 
-La mia gratitudine va inanzitutto a __Thomas Nilefalk__ e __Göran Forslund__, per aver creato Alan, ed a __Anssi Räisänen__ per aver creato la _[Alan Standard Library]_. Ma voglio anche rigraziarli per tutto il supporto offerto a questo progetto rispondendo ai mei (molteplici) quesiti ed aiutandomi a superare i vari ostacoli in cui mi sono imbattuto nel corso dell'opera.
+La mia gratitudine va inanzitutto a __Thomas Nilefalk__ e __Göran Forslund__, per aver creato Alan, e a __Anssi Räisänen__ per aver creato la _[Alan Standard Library]_. Ma voglio anche rigraziarli per tutto il supporto offerto a questo progetto rispondendo ai mei (molteplici) quesiti ed aiutandomi a superare i vari ostacoli in cui mi sono imbattuto nel corso dell'opera.
 
 Ringrazio la comunità degli utenti di Alan, attiva sul [gruppo di discussione Alan-IF su Yahoo Groups][Alan Yahoo], per la calorosa accoglienza, il duraturo sostegno e la loro disponibilità.
 
-Infine, ci tengo a ringraziare __S3RioUs JokER__, che mi ha aiutato sin dall'indizio con le difficili scelte di traduzione della terminologia della libreria e della sua messaggistica, e __Leonardo Boselli__, la cui esperienza in materia di implementazione e traduzione in Italiano di strumenti per le AT l'ha reso il mio bersaglio d'elezione quando necessito di consulenze tecniche e dell'opinione di un esperto. Grazie di cuore, senza di voi questo progetto sarebbe stata un'impresa alquanto solitaria!
+Infine, ci tengo a ringraziare __S3RioUs JokER__, che mi ha aiutato sin dall'inizio con le difficili scelte di traduzione della terminologia della libreria e della sua messaggistica, e __Leonardo Boselli__, la cui esperienza in materia di implementazione e traduzione in Italiano di strumenti per le AT l'ha reso il mio bersaglio d'elezione quando necessito di consulenze tecniche e dell'opinione di un esperto. Grazie di cuore, senza di voi questo progetto sarebbe stata un'impresa alquanto solitaria!
 
 # Componenti terze parti
 
@@ -384,7 +384,7 @@ Questo progetto impiega i seguenti componenti e risorse di terze parti.
 
 - https://github.com/chriskempson/base16-builder
 
-Nel tema CSS di colorazione sintattica di Alan, per Highlight.js, ho usato i colori dello schema [Base16 Eighties], preso dal progetto Base16, di [Chris Kempson]  (licenza MIT):
+Nel tema CSS di colorazione sintattica di Alan, per highlight.js, ho usato i colori dello schema [Base16 Eighties], preso dal progetto Base16, di [Chris Kempson]  (licenza MIT):
 
     Copyright (C) 2012 [Chris Kempson](http://chriskempson.com)
     
@@ -412,7 +412,7 @@ Nel tema CSS di colorazione sintattica di Alan, per Highlight.js, ho usato i col
 
 - https://github.com/asciidoctor/asciidoctor/blob/a9dc0e2/data/locale/attributes-it.adoc
 
-La documentazione del progetto usa una versione adattata del file `attributes-it.adoc` (preso da Asciidcotor), tradotto da Marco Ciampa (licenza MIT):
+La documentazione del progetto usa una versione adattata del file `attributes-it.adoc` (preso da Asciidoctor), tradotto da Marco Ciampa (licenza MIT):
 
     MIT License
 
