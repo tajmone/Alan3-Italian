@@ -1,114 +1,279 @@
-# Alan IF 3 Italian
+# Alan Italian
 
     Alan Standard Library: 2.1
     Alan Development Kit:  3.0beta6 build 1866
 
 - https://github.com/tajmone/Alan3-Italian
 
-This repository is a WIP translation to Italian of the _Alan Standard Library_ v2.1 (created by Anssi Räisänen) for the Alan Interactive Fiction Language version 3. Italian translation by [Tristano Ajmone].
+|                                                 |
+|-------------------------------------------------|
+| **[CLICK HERE FOR ENGLISH README!][README_EN]** |
 
-[License]: Artistic License 2.0
+Questo progetto ha due scopi:
 
-Project start date: 2018-04-13.
+- Fornire supporto per la lingua italiana in Alan IF 3.
+- Tradurre in italiano la _[Alan Standard Library]_ v2.1 di [Anssi Räisänen]. 
+
+Alan Italian diventerà il sistema di autoraggio di AT italiane più facile da usare per i non programmatori, con una ricca libreria standard di partenza con oltre 170 verbi e una vasta gamma di classi predefinite e funzioanalità per creare personaggi, fonti di luce, dispositivi, vestiario, porte e finestre, serrature, e molto altro ancora.
+
+[![Donazione PayPal][donazione img]][donazione link]
+
+Progetto a cura di [Tristano Ajmone].
+
+[Licenza][License]: Artistic License 2.0
+
+Data inizio progetto: 2018/04/13.
 
 -----
 
-**Table of Contents**
+**Indice dei contenuti**
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
-- [Introduction](#introduction)
-- [Project Status News](#project-status-news)
-    - [Feb 1, 2019: Moving to Alan 3.0beta6 build 1866](#feb-1-2019-moving-to-alan-30beta6-build-1866)
-    - [Jan 24, 2019: Moving to Alan 3.0beta6 build 1862](#jan-24-2019-moving-to-alan-30beta6-build-1862)
-    - [Jan 17, 2019: Moving to Alan 3.0beta6 build 1855](#jan-17-2019-moving-to-alan-30beta6-build-1855)
-    - [Jan 15, 2019: Major Breaktrhough With Alan 3.0beta6 build 1852](#jan-15-2019-major-breaktrhough-with-alan-30beta6-build-1852)
-        - [Support for Apostrophes in Prepositions](#support-for-apostrophes-in-prepositions)
-        - [E-Grave Bug Fixed!](#e-grave-bug-fixed)
-    - [Nov 13, 2018: All Verbs Translated](#nov-13-2018-all-verbs-translated)
-- [Project Contents](#project-contents)
-- [Work Environment Settings](#work-environment-settings)
-    - [File Encodings](#file-encodings)
-- [About](#about)
+- [Introduzione](#introduzione)
     - [Alan IF](#alan-if)
+        - [Programmazione prosaica](#programmazione-prosaica)
+        - [Libertà autoriale](#libert%C3%A0-autoriale)
+    - [Alan Italian vs Libreria Standard Italiana](#alan-italian-vs-libreria-standard-italiana)
     - [Alan Standard Library](#alan-standard-library)
-- [Acknowledgements](#acknowledgements)
-- [Third Party Assets](#third-party-assets)
+- [Stato del progetto](#stato-del-progetto)
+- [Sostieni il progetto](#sostieni-il-progetto)
+- [Ultime novità](#ultime-novit%C3%A0)
+    - [2019/02/05: Modulo per l'italiano indpendente e pronto all'uso](#20190205-modulo-per-litaliano-indpendente-e-pronto-alluso)
+    - [2019/02/01: Passaggio a Alan 3.0beta6 build 1866](#20190201-passaggio-a-alan-30beta6-build-1866)
+    - [2019/01/24: Passaggio a Alan 3.0beta6 build 1862](#20190124-passaggio-a-alan-30beta6-build-1862)
+    - [2019/01/17: Passaggio a Alan 3.0beta6 build 1855](#20190117-passaggio-a-alan-30beta6-build-1855)
+    - [2019/01/15: Grossa svolta con Alan 3.0beta6 build 1852](#20190115-grossa-svolta-con-alan-30beta6-build-1852)
+        - [Supporto per le preposizioni apostrofate](#supporto-per-le-preposizioni-apostrofate)
+        - [Baco della e-grave risolto!](#baco-della-e-grave-risolto)
+    - [2018/11/13: Tutti i verbi tradotti](#20181113-tutti-i-verbi-tradotti)
+- [Contenuti del progetto](#contenuti-del-progetto)
+- [Impostare l'ambiente di lavoro](#impostare-lambiente-di-lavoro)
+    - [Encoding dei file](#encoding-dei-file)
+- [Ringraziamenti](#ringraziamenti)
+- [Componenti terze parti](#componenti-terze-parti)
     - [Highlight.js](#highlightjs)
     - [Base16 Eighties](#base16-eighties)
-    - [Asciidoctor Attributes i18n IT](#asciidoctor-attributes-i18n-it)
+    - [Attributi italiani Asciidoctor](#attributi-italiani-asciidoctor)
+- [Link di approfondimento](#link-di-approfondimento)
 
 <!-- /MarkdownTOC -->
 
 -----
 
-# Introduction
+# Introduzione
 
-The current goal of this project is to translate the latest version of the _Alan Standard Library_ (`v2.1`) to Italian. I can't estimate how long it will take as I'll be working on it on-and-off, according to spare time available (but it's not going to be soon, that's for sure).
+Questo progetto si prefigge due obiettivi:
 
-I wanted to make the project publicly available so that anyone interested can follow its developement and/or contribute to it. Contributions would help achieve the goal faster; so, needless to say, they're most appreciated and welcome.
+1. Tradurre in italiano la _[Alan Standard Library]_ v2.1 di [Anssi Räisänen]. 
+2. Fornire un modulo independente per il supporto della lingua italiana in Alan IF 3.
 
-You can follow the discussion on this project on the [Alan-IF discussion group at Yahoo]. For any questions and suggestions, you can also [open an issue here].
+Entrambi consentiranno la creazione di avventure testuali in lingua italiana utilizzando Alan 3, un linguaggio dedicato alla creazione di opere di interactive fiction.
 
+Il primo dei due obiettivi è mirato a fornire ai novizi di Alan uno strumento di facile utilizzo per la creazione di avventure in italiano, grazie a una ricca infrastruttura di classi e verbi comunemente utilizzati nelle avventure.
 
-[Alan-IF discussion group at Yahoo]: https://groups.yahoo.com/neo/groups/alan-if/info "Visit Alan-IF discussion group main page at Yahoo Groups"
-
-[open an issue here]: https://github.com/tajmone/Alan3-Italian/issues/new "Open an issue for this project"
-
-> __NOTICE__ — From now on all project documentation will be converted to Italian language, as well as future commits messages. During the initial stages of the translation work all documents, logs and commits were kept in English to facilitate collaboration and help from expert developers of the Alan community. But the project has now reached a stage where it's approching completion, and should therefore move toward a fully Italian documentation.
->
-> Once all docs are translated to Italian, a separate English README will be added to project.
-
-# Project Status News
-
-Some flash news about milestones accomplishments in the project...
+Il secondo, è mirato agli utenti più esperti di Alan, che vogliono creare le proprie avventure partendo solo con il supporto per la lingua italiana, e costruirsi da zero tutti i verbi e l'infrastruttura dell'avventura.
 
 
-## Feb 1, 2019: Moving to Alan 3.0beta6 build 1866
+## Alan IF
 
-Adopt the new [developer snaphshot] of Alan [3.0beta6 build 1866].
+- https://www.alanif.se/
+- https://bitbucket.org/alanif/alan
 
-## Jan 24, 2019: Moving to Alan 3.0beta6 build 1862
+Alan (acronimo per __Adventure LANguage__) è un linguaggio dedicato alla creazione di [avventure testuali] (dette anche "AT", o "IF"/"Interactive Fiction"). Creato da Thomas Nilsson e Göran Forslund nel lontano 1985. Alan è oggi giunto alla sua terza incarnazione (Alan 3). Sebbene la versione 3 di Alan sia ancora in fase Beta, è sufficientemente stabile da poter essere usato per la creazione di avventure.
 
-Adopt the new [developer snaphshot] of Alan [3.0beta6 build 1862], which implements some bug fixes (including a bug that prevented using multiple pronouns).
+Gli ideatori di Alan hanno voluto creare uno strumento che fosse semplice da usare per chi non avesse esperienza di programmazione, e che non imponesse un modello standard su come debba essere strutturato il mondo delle avventure. Queste caretterstiche rendono Alan un ottimo candidato per la creazione di avventure in italiano.
 
-## Jan 17, 2019: Moving to Alan 3.0beta6 build 1855
+### Programmazione prosaica
 
-The new [developer snaphshot] of Alan [3.0beta6 build 1855] implements a requested feature to allow consecutive AND WORDS in player input so that it's now possible to type:
+La sintassi di Alan è modellata attorno alle esigenze dello scrittore, più che del programmatore, quindi l'uso di parentesi, punteggiatura e altri simboli per l'organizzazione sintattica del codice è ridotto al minimo indispensabile, e non vi sono vincoli strutturali riguardo l'uso di indentanzione e la ripartizione del codice nelle righe del sorgente. L'aspetto di un file sorgente di Alan è più simile alla prosa che non alla programmazione.
 
-- "prendi la mela E POI mangia la mela" (take the apple AND THEN eat the apple)
+Questo è un esempio (completo) di codice Alan per creare una stanza, un attore ed un verbo, scritto in forma prosaica:
 
-whereas before the parser would see the "E POI" as "AND AND" and fail to parse the command. Now consecutive AND WORDS are treated as a single one.
+```alan
+The classroom IsA location
+Name 'English Literature Classroom'. Exit south to corridor.
+Description "there are no studends in the classroom, except you."
+End the classroom.
 
-For the implementation details, see commit [054581b] on [Alan repository].
+Syntax greet = greet (person) where person IsA actor else "You can only greet people."
+
+The teacher IsA actor at classroom.
+Name teacher. Name professor mr John Keating. Pronoun him.
+Description "Mr Keating is busy at his desk, proofreading the students' homework."
+Verb greet does
+     "-- Good evening professor Keating.
+    $nA whole minute goes by before your teacher finally raises
+      his head from the papers and acknowledges your presence.
+    $n-- How may I help you, Mr. Anderson?"
+End verb. End the teacher.
+
+The corridor IsA location
+  EXit north to classroom.
+End the corridor.
+
+Start at classroom.
+```
+
+Questo è il medesimo codice, scritto in una forma che è più tipica della programmazione:
+
+```alan
+THE classroom IsA location
+  NAME 'English Literature Classroom'.
+  DESCRIPTION "There are no studends in the classroom, except you."
+  EXIT south TO corridor.
+END THE classroom.
+
+SYNTAX greet = greet (person)
+  WHERE person IsA actor
+    ELSE "You can only greet people."
+
+THE teacher IsA actor AT classroom.
+  NAME teacher.
+  NAME professor mr John Keating.
+  PRONOUN him.
+  DESCRIPTION
+    "Mr Keating is busy at his desk, proofreading the students' homework."
+  VERB greet
+    DOES
+      "-- Good evening professor Keating. $nA whole minute goes by before your
+       teacher finally raises his head from the papers and acknowledges your
+       presence. $n-- How may I help you, Mr. Anderson?"
+  END VERB greet.
+END THE teacher.
+
+THE corridor IsA location
+  EXIT north TO classroom.
+END THE corridor.
+
+START AT classroom.
+```
+
+In entrambi i casi, anche un lettore che non conoscesse Alan sarebbe in grado di intuire a cosa serve il codice, e come funzionerà l'avventura da esso creato. Il primo esempio risulterà più facile da comprendere per i non programmatori, mentre il secondo risulterà più familiare ai programmatori. Ogni autore è libero di adottare lo stile che preferisce nel proprie avventure.
+
+Nei sorgenti della libreria di questo progetto, adotteremo uno stile di programmazione formale, più simile al secondo esempio, per ragioni di praticità di editing. Nei sorgenti degli esempi adotteremo invece uno stile meno formale, più prosaico.
+
+Sebbene Alan adotti un approccio sintattico alla programmazione che ne semplifica l'uso, avvicinandola il più possibile all'uso naturale della lingua inglese, si tratta comunque di un vero e proprio linguaggio di programmazione formale — da non confodere, per esempio, con la [programmazione in lingua naturale] adottata da [Inform 7].
+
+### Libertà autoriale
+
+A differenza di altri sistemi per la creazione di AT, Alan non impone un modello standard del mondo dell'avventura, o un set di verbi predefiniti; la filosofia di Alan è di lasciare all'autore totale autonomia su come modellare l'avventura. Alan mette a disposizione un insieme di funzionalità e meccanismi che sono comuni a tutte le avventure, ma starà ai singoli autori decidere se e come usarle — ad esempio le funzionalità per il salvataggio e il caricamento di una partita sono controllate dall parole chiave `Save` e `Restore`, ma sarà l'autore a dover decidere _se e come_ rendere queste funzionalità accessibili al giocatore (p.es. implementando i comandi per il giocatore "salva" e "carica").
 
 
-## Jan 15, 2019: Major Breaktrhough With Alan 3.0beta6 build 1852
+Per gli autori che sono abituati a lavorare con Inform, TADS, e altri sistemi di autoraggio dotati di una libreria standard che mette a disposizione i verbi, le classi ed i messaggi d'uso comune, l'approccio _tabula rasa_ di Alan potrà sembrare insolito. Lavorare con Alan è come dipingere partendo da una tela bianca: toccherà a noi scegliere i pennelli ed i colori da usare, e preparare la tela dandogli un fondo appropriato al tipo di colori che useremo. Gli altri sistemi, invece, sono come un kit di partenza dove il materiale di lavoro è già presente: abbiamo pennelli di varie misure, un set di tubetti con tutti i colori principali, e una tela già pretrattata e pronta all'uso.
 
-The new [developer snaphshot] of Alan [3.0beta6 build 1852] introduces a new feature especially for Italian, which is a major brakthrough in the development of this library, and it also fixes a bug that affected the Italian language and some Library verbs.
+A secondo del tipo di avventura che si vuole creare, i modelli preconfezionati potranno risultare troppo dettagliati o troppo scarni — molto dipende dal tipo di realismo che vogliamo conseguire. Magari non ci servono affatto le funzionalità per il vestiario o per i dialoghi, oppure ce ne servirebbe una versione più dettagliata e realistica. Alan ci consente di costruire un'infrastruttura _ad hoc_ per le nostre avventure, partendo da zero.
 
-### Support for Apostrophes in Prepositions
+Alan mette a disposizione le seguenti classi di base con cui modellare il mondo delle AT:
 
-The requested feature for handling composed tokens with apostrophes as separate words has been kindly implemented by Thomas into Alan to allow support for Italian prepositions with articles.
+![Le classi predefinite di Alan][classi predefinite]
 
-Now the parser can handle articles and prepositions with an apostrophe, therefore commands like:
+Si tratta delle classi universali che sono alla base di qualsiasi avventura, e ciascuna di esse ha caratteristiche specifiche studiate appositamente per l'interactive fiction. L'autore potrà estenderle e specializzarle secondo necessità — creando supporti, animali, persone, indumenti, cibi e bevande, armi, e quant'altro. Queste classi sono come i colori primari dell'artista, e usandole saggiamente sarà possibile illustrare mondi fantastici ricchi e vivaci, creando le giuste tinte e sfumature con cui narrare la propria avventura.
+
+
+## Alan Italian vs Libreria Standard Italiana
+
+Per gli amanti della libertà assoluta nel plasmare il mondo delle avventure, __Alan__ "nudo e crudo" è lo strumento ideale, e __Alan Italian__ è un modulo a sé stante che aggiunge il supporto della grammatica italiana senza intaccare la _tabula rasa_ offerta da Alan.
+
+Per chi invece preferisce scrivere le proprie avventure avvalendosi di un modello ricco e consolidato, la __Alan Standard Library__ è lo strumento ideale da cui partire, rendendo l'uso di Alan simile agli altri sistemi di autoraggio. Per gli autori italiani, questo progetto mette a disposizione
+la __Libreria Standard Italiana__, che è la traduzione/adattamento della libreria inglese.
+
+## Alan Standard Library
+
+- https://www.alanif.se/information/library
+- https://github.com/AnssiR66/AlanStdLib (nuovo repository ufficiale)
+- https://bitbucket.org/alanif/alanlib
+
+La _Alan Standard Library_, scritta da [Anssi Räisänen], definisce un ricco insieme di verbi, classi e funzionalità comunemente usati nelle avventure testuali, che gli autori possono usare come fondamenta su cui costruire le proprie avventure.
+
+La libreria standard non è inclusa nella distribuzione ufficiale di Alan, e va scaricata separatamente.
+
+Questo progetto è finalizzato alla traduzione italiana della _Alan Standard Library_.
+
+# Stato del progetto
+
+Non mi è ancora possibile fornire una data prevista per l'ultimazione della libreria, dato che vi sto lavoro a singhiozzo, a seconda del tempo libero a disposizione (sicuramente ci vorrà ancora parecchio tempo).
+
+Ho comunque scelto di condividere su GitHub il progetto sin dall'inizio, nel caso qualcuno fosse interessanto a seguirne gli sviluppi e contribuire attivamente. I contributi e le opinoni di terzi sarebero di grande aiuto per accellerare il progetto; quindi sarei grato a chiunque volesse contribuire clonando il repository, sperimentando con libreria, condvidendo opinioni, consigli e segnalandomi bachi ed errori. 
+
+Potete seguire la discussione di questo progetto all'interno del [gruppo di discussione Alan-IF su Yahoo Groups][Alan Yahoo]. Per qualsiasi domanda e suggerimento, potete [aprire uno issue qui].
+
+# Sostieni il progetto
+
+Da aprile 2018 ad oggi sono state investite centinaia di ore di lavoro (ed ettolitri di caffé) in questo progetto open source. Sostieni il progetto con una donazione.
+
+[![Donazione PayPal][donazione img]][donazione link]
+
+E non dimenticarti di dare una stella al progetto!
+
+Grazie.
+
+
+# Ultime novità
+
+Alcune notizie flash sugli aggiornamenti importanti del progetto...
+
+
+## 2019/02/05: Modulo per l'italiano indpendente e pronto all'uso
+
+Tutto il codice per il supporto della lingua italiana è stato spostato in un modulo a sé stante che può essere utilizzato independentemente dalla Libreria Standard:
+
+- [`alanlib_ita/lib_grammatica.i`][lib_grammatica]
+
+Il modulo è già pronto all'uso, e parzialmente documentato. Allo stato attuale si consiglia anche di includere il seguente modulo aggiuntivo:
+
+- [`alanlib_ita/lib_supplemento.i`][lib_supplemento]
+
+Quindi, è finalmente possibile creare avventure italiane con Alan, anche se la traduzione della Libreria Standard non è ultimata.
+
+
+## 2019/02/01: Passaggio a Alan 3.0beta6 build 1866
+
+La libreria adotta la nuova [developer snaphshot] di Alan [3.0beta6 build 1866].
+
+
+## 2019/01/24: Passaggio a Alan 3.0beta6 build 1862
+
+La libreria adotta la nuova [developer snaphshot] di Alan [3.0beta6 build 1862], in cui sono stati risolti alcuni bachi (tra cui un baco che preveniva la definizione di pronomi multipli).
+
+
+## 2019/01/17: Passaggio a Alan 3.0beta6 build 1855
+
+La nuova [developer snaphshot] di Alan [3.0beta6 build 1855] implementa una funzionalità che avevo richiesto per supportare l'uso di due AND WORDS consecutive nell'input del giocatore, di modo che sia possibile digitare:
+
+> **&gt;** _prendi la mela E POI mangia la mela_
+
+Prima il parser vedeva "E POI" come "AND AND", e non era in grado di interpretare il comando. Adesso, più AND WORDS consecutive vengono trattate come una singola occorrenza.
+
+Per i dettagli dell'implementazione, si veda il commit [054581b] sul [repository di Alan][Alan Bitbucket].
+
+
+## 2019/01/15: Grossa svolta con Alan 3.0beta6 build 1852
+
+La nuova [developer snaphshot] di Alan [3.0beta6 build 1852] introduce una nuova funzionalità che era stata richiesta specificamente per l'italiano, e segna un punto di svolta nello sviluppo di questo progetto. Risolve anche un baco che affliggeva la lingua italiana e alcuni verbi della Libreria.
+
+### Supporto per le preposizioni apostrofate
+
+Thomas ha generosamente implementato in Alan la funzionalità da me richiesta per supportare le preposizioni articolate modificando il parsing di token compositi (a causa di un apostrofo) come due parole distinte.
+
+Adesso il parser è in grado di gestire articoli e preposizioni con apostrofo nei comandi come:
 
     prendi la mela dall'albero
     prendi l'arco
 
-... will now work out of the box!
+... che ora sono supportati nativamente da Alan.
 
-This new feature solves the problem by reserving a special treatment for words containing apostrophes: if the parsed word is not reckognized, Alan will split it into two words at the occurence of the (first) apostrophe, and throw them both back to the parser.
+Questa nuova funzionalità risolve il problema riservando un trattamento speciale ai lessemi contenenti apostrofi: se il token parserizzato non viene riconosciuto, Alan proverà a spezzarlo in due lessemi nel punto in cui cade l'apostrofo (il primo, nel caso di apostrofi multipli), e poi ritenta il parsing dei due lessemi separati.
 
-This feature also renders unnecessary the creation of article-&-noun synonyms (e.g. `l'albero`) for objects whose article requires an apostrophe — which up to this point was required in order for the parser to understand `l'albero` as `albero`.
+La nuova funzonalità rende anche superfluo dover creare sinonimi con articolo-e-sostantivo (es. `l'albero`) per gli oggetti il cui articolo richiede l'apostrofo — che, fino ad oggi, richiedevano tali sinonimi affinché il parser potesse riconoscere `l'albero` come `albero`.
 
-My gratitude to __Thomas Nilefalk__ for having implemented this feature in support of the Italian Library project!
+Ringrazio tantissimo __Thomas Nilefalk__ per aver implementato questa funzionalità appositamente in sostegno del progetto Alan Italian!
 
-For a discussion of the previous limitation, see:
+Per una discussione sulle previe limitazioni, vedi:
 
 - https://groups.yahoo.com/neo/groups/alan-if/conversations/messages/3635
 
-For it's implementation details, see commit [1bfc8f7] which introduced this new feature:
+Per i dettagli d'implementazione, vedi il commit [1bfc8f7] che ha introdtto questa funzionalità:
 
 ```
 Handle elisions (contractions) with apostrophes
@@ -119,107 +284,75 @@ allows handling them as separated words although they are typed
 together ("l'acqua" will be tried as the two words "l'" and "acqua").
 ```
 
-### E-Grave Bug Fixed!
+### Baco della e-grave risolto!
 
-The new build 1852 also fixes a bug which hindered the preservation of grave accented E charaters (`è`) in syntaxes and synonyms (the problem didn't affect istances and parameters though).
+La nuova build 1852 risolve anche un baco che impediva la preservazione delle 'e' con accento grave (`è`) nelle sintassi e nei sinonimi (il problema non si estendeva alle istanze e ai parametri).
 
-This fixes a bunch of "question verbs" in the Library, which previously had to fallback on using the `é` character instead.
+Questo bug-fix risolve vari "verbi domande" della Libreria, che in precedenza dovevano ripiegare sull'uso della 'e' con accento acuto (`é`). 
 
-The origin of the problem was due to the omission of the E-grave character in a constant in the source code. Commit [ad2c7de]  ("Add forgotten grave accented e") fixed the problem.
+Il problema era causato dall'omissione accidentale della E-grave in una costante del codice sorgente. Il problema è stato risolto nel commit [ad2c7de]  ("Add forgotten grave accented e").
 
-## Nov 13, 2018: All Verbs Translated
+## 2018/11/13: Tutti i verbi tradotti
 
-All verbs (ca. 171) have been translated to Italian — for more details, see:
+Tutti verbi della libreria (circa 171) sono ora tradotti in italiano — per maggiori dettagli vedi:
 
 - [`docs/lib_verbi.html`][lib_verbi html]  ([Live HTML Preview][lib_verbi html live])
 
-Now the verb response messages need to be translated, and the whole library documented.
+Ora restano ancora da tradurre molti messagi di risposta dei verbi, e l'intera libreria va documentata.
 
-A library test suite is being developed in the [`/test/`](./test) folder, for the benefit of anyone whishing to preview the current status of the translation (mostly vanilla test scenarios) without having to compile the tests sources and running them.
+È in corso lo sviluppo di una test suite per la libreria, nella cartella [`/test/`](./test), di cui potranno beneficiare quanti desiderano accedere ad un'anteprima dello stato della libreria (perlopiù "alla vaniglia") senza dover compilare ed eseguire i sorgenti dei test.
 
-A [demo adventure] file is on the making in the [`/demo/`](./demo) folder (the original demo became messy and is going to be rebuilt from sratch), along with automation scripts to quickly simulate game sessions and provide transcripts.
+È in preparazione una nuova [avventura dimostrativa] nella cartella [`/demo/`](./demo) (la demo iniziale è diventata troppo caotica e verrà riscritta da zero), con tanto di script per la simulazione automatizzata delle sessioni di gioco e la creazione di trascrizioni di partita.
 
 
-[demo adventure]: ./demo/README.md "View the sourcefile of the demo adventure 'il_mondo_di_alan.alan'"
+# Contenuti del progetto
 
-# Project Contents
-
-- [`/alanlib_ita/`](./alanlib_ita) — standard library 2.1 translation to Italian (WIP)
-- [`/alanlib/`](./alanlib) — copies of the upstream standard library:
+- [`/alanlib_ita/`](./alanlib_ita) — Libreria Standard 2.1 in italiano (WIP)
+- [`/alanlib/`](./alanlib) — copie della standard library upstream:
     + [`/2.1/`](./alanlib/2.1/) (updated: 2018/10/22)
-- [`/demo/`](./demo) — a demo adventure (eventually, but right now very messy)
-- [`/docs/`](./docs) — library documentation in HTML
-    + [`hjs`](./docs/hjs) — custom Highlight.js package
-- [`/docs_src/`](./docs_src) — work directory for generating the documentation from AsciiDoc
-- [`/test/`](./test) — various adventure test files and commands scripts
+- [`/demo/`](./demo) — avventura dimostrativa (attualmente disastrata)
+- [`/docs/`](./docs) — documentazione HTML della libreria HTML
+    + [`hjs`](./docs/hjs) — package di Highlight.js customizzato
+- [`/docs_src/`](./docs_src) — cartella sorgenti documentazione in AsciiDoc
+- [`/test/`](./test) — test suite della libreria
 - [`LICENSE`][License] — Artistic License 2.0
 
-
-A full copy of every upstream _Alan Standard Library_ employed in this project is kept in the `/alanlib/` folder; when the library is updated, the upstream files of the currently used version can be diff-compared with the new version in order to track which changes should be integrated into the Italian files in order to bring them on par with the latest version of the Standard Library.
-
-# Work Environment Settings
-
-In order to work on this project, ensure that you get right a couple of settings in your editor.
-
-## File Encodings
-
-The following file extensions should be handled with [ISO-8859-1] enconding:
-
-- "`.alan`" — Alan adventure source file.
-- "`.i`" — Alan adventure included source file.
-- "`.a3log`" — adventure gameplay transcript.
-- "`.a3sol`" — solution file (aka "commands script") to run an adventure.
-
-... if not, you're going to experience problems with special characters like accented letters — and Italian uses them abundantly!
-
-# About
-
-## Alan IF
-
-- https://www.alanif.se/
-- https://bitbucket.org/alanif/alan
-
-From [IFWiki]'s [Alan page]:
-
-> An acronym for __Adventure LANguage__, Alan is an authoring system designed to make it easier for people unfamiliar with programming to write IF, or text-adventure games. It was created by Thomas Nilsson and Göran Forslund in 1985 and is continuously updated and maintained by Thomas Nilsson.
-
-[Alan page]: http://www.ifwiki.org/index.php/Alan "View the full article on IFWiki"
-[IFWiki]: http://www.ifwiki.org "Visit IFWiki.org, the Interactive Fiction Wiki"
-
-From the [Alan website]:
-
-> Alan consists of a programming language and a set of tools to support working in that language to create games. The tools include a compiler, various flavours of runners/interpreters, a completely integrated development environment, a map generator and more.
->
-> Alan is in the final stages in moving towards version 3, and has entered beta state. \[...\] Alan V3 is now ready for supported production work.
-
-[Alan website]: https://www.alanif.se/ "Visit Alan official website"
-
-## Alan Standard Library
-
-- https://www.alanif.se/information/library
-- https://github.com/AnssiR66/AlanStdLib (new official repo)
-- https://bitbucket.org/alanif/alanlib
-
-Written by Anssi Räisänen. Current version: v2.1.
-
-The _Alan Standard Library_  is a set of preprogrammed basic verbs and classes to start building your own adventures. The standard library is not included with the ALAN programming system and must be downloaded separately.
+Una copia completa della versione upstream della _Alan Standard Library_ impiegata in questo progetto viene conservata nella cartella `/alanlib/`. Quando la libreria viene aggiornata, i file della upstream attualmente utilizzata possono essere diffati con la nuova versione al fine di tracciare quali modifiche andrebbero integrate nei sorgenti della libreria italiana al fine di portarla in pari con la versione più recente dell'originale inglese.
 
 
-# Acknowledgements
+# Impostare l'ambiente di lavoro
 
-Obviously, my gratitude goes in the first place to __Thomas Nilefalk__ and __Göran Forslund__, for creating Alan, and to __Anssi Räisänen__ for the Alan Standard Library. But I also want to thank them for their personal support for this project by answering my (many) questions and helping me out on the [Alan-IF discussion group at Yahoo].
+Per poter lavorare a questo progetto, assicurati di impostare correttamente alcuni settagi nel tuo editor preferito.
 
-Special thanks to __S3RioUs JokER__, who is constantly helping me out translating terminology and library responses, and to __Leonardo Boselli__, whose expertise in implementing/translating IF tools to Italian has made him my target of choice when I need technical advise, help, and an informed expert opinion. _Grazie di cuore, senza di voi questo progetto sarebbe stata un'impresa alquanto solitaria!_
+## Encoding dei file
 
-# Third Party Assets
+Le seguenti estensioni file devono essere trattate con encoding [ISO-8859-1]:
 
-This project also utilizes the following third party components and assets.
+- "`.alan`" — avventura sorgente di Alan.
+- "`.i`" — modulo sorgente per avventura di Alan.
+- "`.a3log`" — trascrizione di partita.
+- "`.a3sol`" — file di soluzione ("script di comandi") per eseguire un'avventura.
+
+... se il tuo editor non è in grado di preservare corretamente l'encoding per questi file, ti troverai ad affrontare problemi con i caratteri speciali, p.es. le lettere accentate — che in italiano sono comunissime!
+
+
+# Ringraziamenti
+
+La mia gratitudine va inanzitutto a __Thomas Nilefalk__ e __Göran Forslund__, per aver creato Alan, ed a __Anssi Räisänen__ per aver creato la _[Alan Standard Library]_. Ma voglio anche rigraziarli per tutto il supporto offerto a questo progetto rispondendo ai mei (molteplici) quesiti ed aiutandomi a superare i vari ostacoli in cui mi sono imbattuto nel corso dell'opera.
+
+Ringrazio la comunità degli utenti di Alan, attiva sul [gruppo di discussione Alan-IF su Yahoo Groups][Alan Yahoo], per la calorosa accoglienza, il duraturo sostegno e la loro disponibilità.
+
+Infine, ci tengo a ringraziare __S3RioUs JokER__, che mi ha aiutato sin dall'indizio con le difficili scelte di traduzione della terminologia della libreria e della sua messaggistica, e __Leonardo Boselli__, la cui esperienza in materia di implementazione e traduzione in Italiano di strumenti per le AT l'ha reso il mio bersaglio d'elezione quando necessito di consulenze tecniche e dell'opinione di un esperto. Grazie di cuore, senza di voi questo progetto sarebbe stata un'impresa alquanto solitaria!
+
+# Componenti terze parti
+
+Questo progetto impiega i seguenti componenti e risorse di terze parti.
 
 ## Highlight.js
 
 - https://github.com/highlightjs/highlight.js
 
-[Highlight.js] is Copyright (C) 2006, [Ivan Sagalaev], and is released under the BSD3 license:
+[Highlight.js] è Copyright (C) 2006, [Ivan Sagalaev], distribuito con licenza BSD3:
 
     Copyright (c) 2006, Ivan Sagalaev
     All rights reserved.
@@ -251,7 +384,7 @@ This project also utilizes the following third party components and assets.
 
 - https://github.com/chriskempson/base16-builder
 
-For the Highlight.js CSS theme for Alan, I've used the colors of the [Base16 Eighties] color scheme, from [Chris Kempson]'s Base16 project (MIT License):
+Nel tema CSS di colorazione sintattica di Alan, per Highlight.js, ho usato i colori dello schema [Base16 Eighties], preso dal progetto Base16, di [Chris Kempson]  (licenza MIT):
 
     Copyright (C) 2012 [Chris Kempson](http://chriskempson.com)
     
@@ -275,11 +408,11 @@ For the Highlight.js CSS theme for Alan, I've used the colors of the [Base16 Eig
     WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-## Asciidoctor Attributes i18n IT
+## Attributi italiani Asciidoctor
 
 - https://github.com/asciidoctor/asciidoctor/blob/a9dc0e2/data/locale/attributes-it.adoc
 
-The documentation uses an adaptation of Asciidcotor `attributes-it.adoc`, translated by Marco Ciampa, released under MIT License:
+La documentazione del progetto usa una versione adattata del file `attributes-it.adoc` (preso da Asciidcotor), tradotto da Marco Ciampa (licenza MIT):
 
     MIT License
 
@@ -303,21 +436,55 @@ The documentation uses an adaptation of Asciidcotor `attributes-it.adoc`, transl
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
     THE SOFTWARE.
 
+# Link di approfondimento
+
+Alan:
+
+- [www.alanif.se][Alan WWW] — sito ufficiale di Alan.
+- [Bitbucket » Alan][Alan Bitbucket] — repository ufficiale con i sorgenti di Alan.
+- [Yahoo Groups » Alan-IF][Alan Yahoo] — gruppo di discussione di Alan.
+- [IFWiki » Alan][Alan IFWiki] — la pagina di Alan sullo [IFWiki].
+
+Alan Standard Library:
+
+- [GitHub » AlanStdLib][Alan Standard Library] — repository ufficiale della Alan Standard Library su GitHub.
 
 
 <!-----------------------------------------------------------------------------
                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
-[License]: ./LICENSE "View the full text of Artistic License 2.0"
+[aprire uno issue qui]: https://github.com/tajmone/Alan3-Italian/issues/new "Open an issue for this project"
+[avventure testuali]: https://it.wikipedia.org/wiki/Avventura_testuale "Vedi la pagina Wikipedia sulle avventure testuali"
+[IFWiki]: http://www.ifwiki.org "Visita IFWiki.org, il Wiki dedicato all'Interactive Fiction"
+[ISO-8859-1]: https://it.wikipedia.org/wiki/ISO/IEC_8859-1 "Vedi la pagina Wikipedia sullo ISO-8859-1"
 
-[Alan-IF discussion group at Yahoo]: https://groups.yahoo.com/neo/groups/alan-if/info "Visit Alan-IF discussion group main page at Yahoo Groups"
+[programmazione in lingua naturale]: https://en.wikipedia.org/wiki/Natural-language_programming "Vedi la pagina Wikipedia su 'Natural-language_programming'"
+[Inform 7]: http://inform7.com "Visita il sito di Inform 7"
 
-[feature request]: https://groups.yahoo.com/neo/groups/alan-if/conversations/messages/3421 "See the post of the feature/fix request"
+<!-- Donazione PayPal -->
 
-[i18n Problems]: https://github.com/tajmone/Alan3-Italian/wiki/i18n-Problems
+[donazione img]: ./docs_src/donazione-paypal.gif
+[donazione link]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=55GFRM9EBF3SU&source=url "Sostieni il progetto Alan Italian con una donazione..."
 
-[ISO-8859-1]: https://en.wikipedia.org/wiki/ISO/IEC_8859-1 "See Wikipedia page on ISO-8859-1"
+<!-- File di progetto -->
+
+[classi predefinite]: ./docs_src/predefined-classes.svg "Le classi predefinite di Alan"
+[avventura dimostrativa]: ./demo/README.md "Vai alla cartella dell'avventura dimostrativa"
+[lib_grammatica]: ./alanlib_ita/lib_grammatica.i "Vedi file sorgente"
+[lib_supplemento]: ./alanlib_ita/lib_supplemento.i "Vedi file sorgente"
+[License]: ./LICENSE "Leggi il testo completo della Artistic License 2.0"
+
+[README_EN]: ./README_EN.md "View English README"
+
+<!-- Alan Links -->
+
+[Alan Bitbucket]: https://bitbucket.org/alanif/alan "Visita il repository di Alan su Bitbucket"
+[Alan IFWiki]: http://www.ifwiki.org/index.php/Alan "Visita la pagina di Alan su IFWiki"
+[Alan Standard Library]: https://github.com/AnssiR66/AlanStdLib "Visita il repository upstream della Alan Standard Library"
+[Alan WWW]: https://www.alanif.se/ "Visit Alan official website"
+[Alan Yahoo]: https://groups.yahoo.com/neo/groups/alan-if/info "Visita il gruppo di discussione Alan-IF su Yahoo Groups"
+
 
 <!-- Alan SDK Links -->
 
@@ -327,35 +494,33 @@ The documentation uses an adaptation of Asciidcotor `attributes-it.adoc`, transl
 [3.0beta6 build 1862]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1862 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1862"
 [3.0beta6 build 1866]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1866 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1866"
 
+
 <!-- Alan Commits Links -->
 
-[Alan repository]: https://bitbucket.org/alanif/alan "Visit the Alan repository on Bitbucket"
-
-[1bfc8f7]: https://bitbucket.org/alanif/alan/commits/1bfc8f7 "View commit details at Alan repository on Bitbucket"
-
-[ad2c7de]: https://bitbucket.org/alanif/alan/commits/ad2c7de "View commit details at Alan repository on Bitbucket"
-
-[054581b]: https://bitbucket.org/alanif/alan/commits/054581b "View commit details at Alan repository on Bitbucket"
+[054581b]: https://bitbucket.org/alanif/alan/commits/054581b "Vedi i dettagli del commit nel repository di Alan su Bitbucket"
+[1bfc8f7]: https://bitbucket.org/alanif/alan/commits/1bfc8f7 "Vedi i dettagli del commit nel repository di Alan su Bitbucket"
+[ad2c7de]: https://bitbucket.org/alanif/alan/commits/ad2c7de "Vedi i dettagli del commit nel repository di Alan su Bitbucket"
 
 
-<!-- Library Documentation  -->
+<!-- Documentazione della Libreria -->
 
 [lib_verbi html]: ./docs/lib_verbi.html
-[lib_verbi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_verbi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_verbi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_verbi.html "Anteprima HTML Livetramite GitHub & BitBucket HTML Preview"
 
 [lib_definizioni html]: ./docs/lib_definizioni.html
-[lib_definizioni html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_definizioni.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_definizioni html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_definizioni.html "Anteprima HTML Livetramite GitHub & BitBucket HTML Preview"
 
 <!-- Third Party Tools & Assets -->
 
-[Base16 Eighties]: https://github.com/chriskempson/base16-builder/blob/master/schemes/eighties.yml "View upstream source scheme"
-[Doxter]: https://git.io/doxter "Visit Doxter website"
-[highlight.js]: https://highlightjs.org/ "Visit highlight.js website"
+[Base16 Eighties]: https://github.com/chriskempson/base16-builder/blob/master/schemes/eighties.yml "Vedi il sorgente dello schema originale"
+[Doxter]: https://git.io/doxter "Visita il sito di Doxter"
+[highlight.js]: https://highlightjs.org/ "Visita il sito highlight.js"
 
-<!-- People -->
+<!-- Persone -->
 
-[Chris Kempson]: http://chriskempson.com "Visit Chris Kempson's website"
-[Ivan Sagalaev]: https://github.com/isagalaev "View Ivan Sagalaev's GitHub profile"
-[Tristano Ajmone]: https://github.com/tajmone "View Tristano Ajmone's GitHub profile"
+[Anssi Räisänen]: https://github.com/AnssiR66 "Guarda il profilo GitHub di Anssi Räisänen"
+[Chris Kempson]: http://chriskempson.com "Visita il sito di Chris Kempson"
+[Ivan Sagalaev]: https://github.com/isagalaev "Guarda il profilo GitHub di Ivan Sagalaev"
+[Tristano Ajmone]: https://github.com/tajmone "Guarda il profilo GitHub di Tristano Ajmone"
 
 <!-- EOF -->
