@@ -1,0 +1,142 @@
+
+
+Tinteggiare 
+Cambiare nome e descrizione di luoghi. 
+(C) Tristano Ajmone, 2019. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6
+build 1866. 
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati.
+
+
+La stanza bianca
+Se entro mezzogiorno non avrai tinteggiato questa stanza tua moglie si
+infurierà. Al centro della stanza c'è il tintomatic.
+
+> esamina le pareti
+Le pareti sono ancora bianche, se non vuoi grane con tua moglie ti
+conviene tinteggiarle entro mezzogiorno.
+
+> inventario
+Stai portando un rullo.
+
+> esamina il rullo
+È un rullo per tinteggiare le pareti, intonso.
+
+> esamina tintomatic
+Il tintomatic è un miscelatore di tinte casuali per la preparazione di
+idropitture murali a sorpresa. È dotato di un singolo pulsante e una
+vaschetta per la vernice.
+
+> esamina il pulsante
+Esamini il pulsante, ma non noti niente di speciale.
+
+> esamina la vaschetta
+La vaschetta del tintomatic è vuota.
+
+> esamina la vernice
+Qui non puoi vedere nulla del genere.
+
+> tinteggia
+Non c'è vernice nella vaschetta del tintomatic.
+
+> premi il pulsante
+Premi il pulsante e la vaschetta si riempe di vernice rossa.
+
+> esamina la vaschetta
+La vaschetta è piena di vernice rossa.
+
+> esamina la vernice
+La vernice nella vaschetta è rossa.
+
+> tinteggia
+Inzuppi il rullo nella vernice rossa e tinteggi la stanza.
+
+> guarda
+La stanza rossa
+Hai già tinteggiato questa stanza una volta, ma più guardi le pareti rosse
+, più ti convinci che a tua moglie questo colore non piacerà. Al centro
+della stanza c'è il tintomatic.
+
+> esamina le pareti
+Le pareti ora sono rosse.
+
+> esamina il rullo
+Il rullo è coperto di vernice rossa.
+
+> lascia il rullo
+Lasci il rullo.
+
+> premi il pulsante POI esamina la vernice POI tinteggia POI guarda
+Premi il pulsante e la vaschetta si riempe di vernice verde.
+
+La vernice nella vaschetta è verde.
+
+Raccolgi il rullo, lo inzuppi nella vernice verde e tinteggi la stanza.
+
+
+La stanza verde
+Hai già tinteggiato questa stanza due volte, ma più guardi le pareti verdi
+, più ti convinci che a tua moglie questo colore non piacerà. Al centro
+della stanza c'è il tintomatic.
+
+> esamina le pareti POI esamina la vaschetta POI esamina il rullo
+Le pareti ora sono verdi.
+
+La vaschetta del tintomatic è vuota.
+
+Il rullo è coperto di vernice verde.
+
+> premi il pulsante POI esamina la vernice POI tinteggia POI guarda
+Premi il pulsante e la vaschetta si riempe di vernice gialla.
+
+La vernice nella vaschetta è gialla.
+
+Inzuppi il rullo nella vernice gialla e tinteggi la stanza.
+
+
+La stanza gialla
+Hai già tinteggiato questa stanza tre volte, ma più guardi le pareti 
+gialle, più ti convinci che a tua moglie questo colore non piacerà. Al
+centro della stanza c'è il tintomatic.
+
+> esamina le pareti POI esamina la vaschetta POI esamina il rullo
+Le pareti ora sono gialle.
+
+La vaschetta del tintomatic è vuota.
+
+Il rullo è coperto di vernice gialla.
+
+> premi il pulsante POI esamina la vernice POI tinteggia POI guarda
+Premi il pulsante e la vaschetta si riempe di vernice viola.
+
+La vernice nella vaschetta è viola.
+
+Inzuppi il rullo nella vernice viola e tinteggi la stanza.
+
+
+La stanza viola
+Hai già tinteggiato questa stanza per ben quattro volte, ma più guardi le
+pareti viola, più ti convinci che a tua moglie questo colore non piacerà. 
+Al centro della stanza c'è il tintomatic.
+
+> premi il pulsante POI esamina la vernice POI tinteggia POI guarda
+Premi il pulsante e la vaschetta si riempe di vernice blu.
+
+La vernice nella vaschetta è blu.
+
+Inzuppi il rullo nella vernice blu e tinteggi la stanza.
+
+
+La stanza blu
+Hai già tinteggiato questa stanza per ben cinque volte, e ora sei
+soddisfatto di come è venuta. Al centro della stanza c'è il tintomatic.
+
+> premi il pulsante
+Ripensandoci, sei soddisfatto dell'attuale colore della stanza, meglio
+lasciar perdere il tintomatic.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

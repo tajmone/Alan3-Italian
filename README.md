@@ -39,6 +39,7 @@ Data inizio progetto: 2018/04/13.
 - [Stato del progetto](#stato-del-progetto)
 - [Sostieni il progetto](#sostieni-il-progetto)
 - [Ultime novità](#ultime-novit%C3%A0)
+    - [2019/02/07: Inizio lavori per il "Ricettario di Alan"](#20190207-inizio-lavori-per-il-ricettario-di-alan)
     - [2019/02/05: Modulo per l'italiano indipendente e pronto all'uso](#20190205-modulo-per-litaliano-indipendente-e-pronto-alluso)
     - [2019/02/01: Passaggio a Alan 3.0beta6 build 1866](#20190201-passaggio-a-alan-30beta6-build-1866)
     - [2019/01/24: Passaggio a Alan 3.0beta6 build 1862](#20190124-passaggio-a-alan-30beta6-build-1862)
@@ -213,6 +214,11 @@ Grazie.
 
 Alcune notizie flash sugli aggiornamenti importanti del progetto...
 
+## 2019/02/07: Inizio lavori per il "Ricettario di Alan"
+
+- [`/ricettario/`](./ricettario)
+
+La cartella `ricettario/` conterrà il _Ricettario di Alan_, una collezione organizzata di esempi ispirati a _[The Inform Recipe Book]_, uno dei manuali inclusi con il sistema di sviluppo [Inform 7]. Lo scopo del ricettario sarà fornire esempi pratici e documentati su come sia possibile implementare idee e funzionalità nelle avventure.
 
 ## 2019/02/05: Modulo per l'italiano indipendente e pronto all'uso
 
@@ -314,6 +320,7 @@ Ora restano ancora da tradurre molti messagi di risposta dei verbi, e l'intera l
 - [`/docs/`](./docs) — documentazione HTML della libreria
     + [`hjs`](./docs/hjs) — package customizzato di highlight.js
 - [`/docs_src/`](./docs_src) — cartella sorgenti documentazione in AsciiDoc
+- [`/ricettario/`](./ricettario) — il "Ricettario di Alan" (WIP)
 - [`/test/`](./test) — test suite della libreria
 - [`LICENSE`][License] — Artistic License 2.0
 
@@ -461,6 +468,7 @@ Alan Standard Library:
 
 [programmazione in lingua naturale]: https://en.wikipedia.org/wiki/Natural-language_programming "Vedi la pagina Wikipedia su 'Natural-language_programming'"
 [Inform 7]: http://inform7.com "Visita il sito di Inform 7"
+[The Inform Recipe Book]: http://inform7.com/learn/man/RB_1_1.html "Naviga alla versione online di 'The Inform Recipe Book'"
 
 <!-- Donazione PayPal -->
 

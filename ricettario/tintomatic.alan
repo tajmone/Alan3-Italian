@@ -1,0 +1,194 @@
+--+============================================================================+
+--| * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * * * |
+--|  * * * * * * * * * * * * * * * * * * * * * * * * * * * * ** * * * * * * *  |
+--| * * * +-----------------------------------------------------------+  * * * |
+--|  * *  |                                                           | * * *  |
+--| * * * |                    T I N T O M A T I C                    |  * * * | 
+--|  * *  |                                                           | * * *  |
+--| * * * +-----------------------------------------------------------+  * * * |
+--|  * * * * * * * * * * * * * * * * * * * * * * * * * * * * ** * * * * * * *  |
+--| * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * * * |
+--+============================================================================+
+
+Import 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
+
+The mia_AT IsA blocco_definizioni
+  Has --------------------------------------------------------------------------
+         titolo  "Tinteggiare".
+    sottotitolo  "Cambiare nome e descrizione di luoghi.".
+         autore  "Tristano Ajmone".
+           anno   2019.
+       versione  "1".
+          AlanV  "v3.0beta6 build 1866".
+End the. -----------------------------------------------------------------------
+
+
+-->=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == Introduzione
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--| Questa ricetta mostra come è possibile modificare dinamicamente sia il nome
+--| visualizzato di un luogo che la sua descrizione.
+--<
+
+Add to every location
+  Has colore "bianca".
+      colore_pareti "bianche".
+      desc_pareti "".
+      tinteggiature 0.
+End add to location.
+
+The camera IsA stanza
+  Mentioned
+    "La stanza" Say colore of current location.
+  Has elenco_volte "due tre quattro cinque".
+      volte "".
+  Description
+    If tinteggiature of this = 0
+      then "Se entro mezzogiorno non avrai tinteggiato
+            questa stanza tua moglie si infurierà."
+      else "Hai già tinteggiato questa stanza"
+        if tinteggiature of this = 1
+          then "una volta"
+          else
+            if tinteggiature of this > 3 then "per ben" end if.
+            Strip first word from elenco_volte of this into volte of this.
+            Say volte of this. "volte"
+        end if. "$$,"
+      If colori_stanza of tintomatic <> ""
+        then "ma più guardi le pareti" say colore_pareti of this. ", più ti
+              convinci che a tua moglie questo colore non piacerà."
+        else "e ora sei soddisfatto di come è venuta."
+      end if.
+    end if.
+  Has desc_pareti "Le pareti sono ancora bianche, se non vuoi grane con
+                   tua moglie ti conviene tinteggiarle entro mezzogiorno.".
+End the camera.
+
+ADD TO EVERY oggetto_stanza
+  Verb esamina
+    Check ogg not = pareti
+    else say desc_pareti of current location.
+  End verb esamina.
+END ADD TO oggetto_stanza.
+
+-->============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Il tintomatic
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--<
+
+
+The tintomatic IsA object at camera.
+  Name tintomatic.
+  Name miscelatore.
+  Is not prendibile. not spostabile.
+  Description "al centro della stanza c'è il tintomatic."
+  Has xDesc "Il tintomatic è un miscelatore di tinte casuali per la preparazione
+             di idropitture murali a sorpresa.
+             È dotato di un singolo pulsante e una vaschetta per la vernice.".
+  Has colori_stanza "rossa verde gialla viola blu".
+      colori_pareti "rosse verdi gialle viola blu".
+      colore_pareti_temp "".
+End the tintomatic.
+
+Syntax premi = premi (ogg).
+
+The pulsante IsA object at camera.
+  Is not prendibile. not spostabile.
+  Description ""
+  
+  Verb premi
+    Check vaschetta is vuota
+      else "Prima dovresti consumare la vernice" say colore of vernice.
+           "che è nella vaschetta del tintomatic."
+    and colori_stanza of tintomatic <> ""
+      else "Ripensandoci, sei soddisfatto dell'attuale colore della stanza,
+            meglio lasciar perdere il tintomatic."
+    Does
+      Strip first word from colori_stanza of tintomatic
+                       into colore of vernice.
+      Strip first word from colori_pareti of tintomatic
+                       into colore_pareti_temp of tintomatic.
+      Make vaschetta not vuota. Locate vernice at camera.
+      "Premi il pulsante e la vaschetta si riempe di vernice"
+      say colore of vernice. "."
+  End verb premi.
+End the pulsante.
+
+The vaschetta IsA object at camera.
+  Has articolo "la".
+  Is not prendibile. not spostabile.
+  Is vuota. Has colore_vernice "".
+  Description ""
+  HAS xDesc "È la vaschetta di raccoglimento per la tintura murale miscelata
+             dal tintomatic".
+  Verb esamina
+    Does before
+      If this is vuota
+        then set xDesc of this to "La vaschetta del tintomatic è vuota.".
+        else set xDesc of this to
+             "La vaschetta è piena di vernice " + colore of vernice + ".".
+      end if.
+  End verb esamina.
+End the vaschetta.
+
+THE vernice IsA liquido at limbo.
+  Has articolo "la".
+      colore "".
+      recipiente vaschetta.
+  Description ""
+
+  Verb esamina
+    Does only "La vernice nella vaschetta è" Say colore of vernice. "."
+  End verb esamina.
+END THE vernice.
+--==============================================================================
+-- Tinteggiare
+--==============================================================================
+
+The rullo IsA object in hero.
+  Has colore "".
+      xDesc "È un rullo per tinteggiare le pareti, intonso.".
+End the rullo.
+
+--------------------------------------------------------------------------------
+-- Verbo 'tinteggia'
+--------------------------------------------------------------------------------
+
+Syntax tinteggia = tinteggia.
+       tinteggia = tinteggia stanza.
+       tinteggia = tinteggia pareti.
+
+Verb tinteggia
+  Check vaschetta is not vuota
+    else "Non c'è vernice nella vaschetta del tintomatic."
+  Does
+    If rullo not in hero
+      then "Raccolgi il rullo, lo inzuppi" locate rullo in hero.
+      else "Inzuppi il rullo"
+    end if. "nella vernice" say colore of vernice. "e tinteggi la stanza."
+    Set colore of rullo to colore of vernice.
+    Set xDesc of rullo to "Il rullo è coperto di vernice "+ colore of rullo + ".".
+    Set colore of current location to colore of vernice.
+    Set colore_pareti of current location to colore_pareti_temp of tintomatic.
+    Set desc_pareti of current location to
+      "Le pareti ora sono " + colore_pareti_temp of tintomatic + ".".
+    Increase tinteggiature of current location.
+    Make vaschetta vuota. Locate vernice at limbo.
+End verb tinteggia.
+--------------------------------------------------------------------------------
+Start at camera.
+
+Describe intestazione.
