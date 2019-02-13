@@ -2,6 +2,7 @@
 
 This folder contains a copy of the Alan Standard Library v2.1 files which are being editing to translate the library to Italian.
 
+> **WARNING** — This document needs to be updated, some information could be obsolete.
 
 -----
 
@@ -37,12 +38,14 @@ The library files being translated:
 
 - [`libreria.i`][libreria] — adpatation of `library.i`, the main import module:
     + [`lib_classi.i`][lib_classi] — adpatation of `lib_classes.i`.
+    + [`lib_classi_vestiario.i`][lib_classi_vestiario] — adpatation of `lib_classes.i`.
     + [`lib_definizioni.i`][lib_definizioni] — adpatation of `lib_definitions.i`.
+    + [`lib_grammatica.i`][lib_grammatica] — adds support of Italian language. not in original StdLib.
     + [`lib_luoghi.i`][lib_luoghi] — adpatation of `lib_locations.i`.
-    + [`lib_messaggi_runtime.i`][lib_messaggi_runtime] — adpatation of `lib_messages.i`.
     + [`lib_messaggi_libreria.i`][lib_messaggi_libreria] — adpatation of verb responses attributes from `lib_definitions.i`.
-    + [`lib_verbi.i`][lib_verbi] — adpatation of `lib_verbs.i`.
+    + [`lib_messaggi_runtime.i`][lib_messaggi_runtime] — adpatation of `lib_messages.i`.
     + [`lib_supplemento.i`][lib_supplemento] — not in original StdLib.
+    + [`lib_verbi.i`][lib_verbi] — adpatation of `lib_verbs.i`.
 
 
 ## Extra Standard Library Files
@@ -59,7 +62,9 @@ The Italian library is currently switching to a new system which extracts the As
 
 - [`libreria.html`][libreria html]  ([Live HTML Preview][libreria html live])
 - [`lib_classi.html`][lib_classi html]  ([Live HTML Preview][lib_classi html live])
+- [`lib_classi_vestiario.html`][lib_classi_vestiario html]  ([Live HTML Preview][lib_classi_vestiario html live])
 - [`lib_definizioni.html`][lib_definizioni html]  ([Live HTML Preview][lib_definizioni html live])
+- [`lib_grammatica.html`][lib_grammatica html]  ([Live HTML Preview][lib_grammatica html live])
 - [`lib_luoghi.html`][lib_luoghi html]  ([Live HTML Preview][lib_luoghi html live])
 - [`lib_messaggi_libreria.html`][lib_messaggi_libreria html]  ([Live HTML Preview][lib_messaggi_libreria html live])
 - [`lib_messaggi_runtime.html`][lib_messaggi_runtime html]  ([Live HTML Preview][lib_messaggi_runtime html live])
@@ -514,12 +519,14 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 
 [libreria]:              ./libreria.i
 [lib_classi]:            ./lib_classi.i
+[lib_classi_vestiario]:  ./lib_classi_vestiario.i
 [lib_definizioni]:       ./lib_definizioni.i
+[lib_grammatica]:        ./lib_grammatica.i
 [lib_luoghi]:            ./lib_luoghi.i
-[lib_messaggi_runtime]:  ./lib_messaggi_runtime.i
 [lib_messaggi_libreria]: ./lib_messaggi_libreria.i
-[lib_verbi]:             ./lib_verbi.i
+[lib_messaggi_runtime]:  ./lib_messaggi_runtime.i
 [lib_supplemento]:       ./lib_supplemento.i
+[lib_verbi]:             ./lib_verbi.i
 
 <!-- Library Documentation  -->
 
@@ -530,8 +537,14 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 [lib_classi html]: ../docs/lib_classi.html
 [lib_classi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_classi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
+[lib_classi_vestiario html]: ../docs/lib_classi_vestiario.html
+[lib_classi_vestiario html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_classi_vestiario.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+
 [lib_definizioni html]: ../docs/lib_definizioni.html
 [lib_definizioni html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_definizioni.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+
+[lib_grammatica html]: ../docs/lib_grammatica.html
+[lib_grammatica html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_grammatica.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
 
 [lib_luoghi html]: ../docs/lib_luoghi.html
 [lib_luoghi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_luoghi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
