@@ -6,7 +6,10 @@ Appunti come viene gestito il vestiario nella Libreria Standard di Alan allo sta
 
 > _**AVVERTENZA**_ — Allo stato attuale sono stati rilevati svariati problemi con le funzionalità del vestiario; sono quindi imminenti modifiche strutturali al codice della libreria che gestisce gli indumenti indossati e rimossi.
 > 
-> Per maggiori informazioni, vedi [`VESTIARIO_PROBLEMI.md`](VESTIARIO_PROBLEMI.md)
+> Per maggiori informazioni, vedi:
+> 
+> - [`VESTIARIO_PROBLEMI.md`](VESTIARIO_PROBLEMI.md)
+> - [`VESTIARIO_DEV.md`](VESTIARIO_DEV.md).
 
 -----
 

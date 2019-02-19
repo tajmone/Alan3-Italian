@@ -1,0 +1,96 @@
+
+
+Emporio Giorgio Alani 
+Un set per testare il vestiario. 
+(C) Tristano Ajmone, 2019. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1866. 
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati. 
+
+Digita USCITE per visualizzare la lista di uscite disponibili in una stanza. 
+Usa il verbo DBG INDUMENTO per mostrare i valori di copertura di un capo di
+vestiario.
+
+
+Davanti all'Emporio Alani
+Ti trovi di fronte all'entrata dell'Emporio Giorgio Alani. Due imponenti porte
+in ottone attendono di condurti a nord, dentro il tempio della moda.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                      TESTA INIZIALIZZAZIONE INDUMENTI                      *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Verifichiamo che con il nuovo sistema tutti gli indumenti siano inizializzati
+> ; correttamente. Ora gli autori per creare un indumento indossato dovranno solo
+> ; collocarlo nell'attore e settarlo come `indossato`, al resto ci penserà la
+> ; libreria nel corso dell'inizializzazione.
+> ; ==============================================================================
+> ; ABBIGLIAMENTO EROE
+> ; ==============================================================================
+> inventario
+Non stai portando niente. Stai indossando i tuoi calzini, i tuoi boxer, la tua 
+canottiera, le tue sneakers e i tuoi pantaloni.
+
+> DBG_IND canottiera
+'canottiera' VALORI: | val_tronco: 2 | 
+È INDOSSATO: Sì (dal hero)
+
+> DBG_IND sneakers
+'sneakers' VALORI: | val_piedi: 4 | 
+È INDOSSATO: Sì (dal hero)
+
+> DBG_IND pantaloni
+'pantaloni' VALORI: | val_gambe: 16 | 
+È INDOSSATO: Sì (dal hero)
+
+> DBG_IND boxer
+'boxer' VALORI: | val_gambe: 2 | 
+È INDOSSATO: Sì (dal hero)
+
+> DBG_IND calzini
+'calzini' VALORI: | val_piedi: 2 | 
+È INDOSSATO: Sì (dal hero)
+
+> ; ------------------------------------------------------------------------------
+> ; INDUMENTI ANNIDATI
+> ; ------------------------------------------------------------------------------
+> x pantaloni
+Un paio di pantaloni in cotone, color viola. Nelle tasche dei pantaloni ci sono 
+la tua kippah e il tuo portafoglio.
+
+> x kippah
+La tua kippah, la porti con te ovunque tu vada.
+
+> DBG_IND kippah
+'kippah' VALORI: | val_testa: 2 | 
+È INDOSSATO: No
+
+> ; ==============================================================================
+> ; ABBIGLIAMENTO PNG
+> ; ==============================================================================
+> nord
+Come ti avvicini, le porte scorrono magicamente via per lasciarti passare.
+
+Atrio dell'Emporio Alani
+Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
+in ottone conducono a sud, fuori dal tempio del consumismo. Puoi vedere un 
+cestino qui. Dietro al bancone c'è il manager dell'emporio. C'è la tua
+assistente personale qui.
+
+> x assistente
+È la tua assistente personale per lo shopping. L'assistente sta indossando un 
+abito e un paio di stivaletti.
+
+> DBG_IND stivaletti
+'stivaletti' VALORI: | val_piedi: 4 | 
+È INDOSSATO: Sì (dall'assistente)
+
+> DBG_IND abito
+'abito' VALORI: | val_tronco: 8 | val_gambe: 32 | 
+È INDOSSATO: Sì (dall'assistente)
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

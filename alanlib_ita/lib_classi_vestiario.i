@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi_vestiario.i"
---| v0.14.0-Alpha, 2019-02-05: Alan 3.0beta6 build 1866
+--| v0.15.0-Alpha, 2019-02-19: Alan 3.0beta6 build 1866
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -58,6 +58,17 @@
 --        componenti definiti; e sposta le parti che riguardano la classe
 --        indumento nella sezione dedicata ad essa, e idem per altri riferimenti.
 
+-- >>> dev-vestario: added
+
+-- @TODO: Spostali altrove prima di eseguire il merge in master!                TODO!
+ADD TO EVERY blocco_definizioni
+  HAS temp_cnt 0.                   --> Contatore interno usato dalla libreria.
+
+  HAS temp_indumenti { indumento }. --> Set temporaneo usato dalla libreria per
+                                    --  tracciare gli indumenti che bloccano
+                                    --  indossa/rimuovi, per poterli elencare
+                                    --  poi nella risposta.
+END ADD TO blocco_definizioni.
 
 -->abbigliamento
 --~============================================================================
@@ -72,13 +83,13 @@
 --| suo possesso) vengono immagazzinati nell'entità `abbigliamento`, che ha la
 --| proprietà contenitore:
 
-THE abbigliamento IsA ENTITY
-  CONTAINER TAKING indumento.
-    HEADER
-      SAY  mia_AT:header_abbigliamento.
-    ELSE
-      SAY  mia_AT:header_abbigliamento_else.
-END THE.
+-- >>> dev-vestario: deleted! ENTITY abbigliamento >>>
+
+-- THE abbigliamento IsA ENTITY
+--   CONTAINER TAKING indumento.
+--     HEADER  SAY mia_AT:header_abbigliamento.
+--     ELSE    SAY mia_AT:header_abbigliamento_else.
+-- END THE.
 
 --| Poiché le entità sono ubiquiescenti nel mondo dell'avventura, l'istanza
 --| `abbigliamento` e gli indumenti in essa contenuti saranno sempre accessibili
@@ -122,38 +133,56 @@ EVERY indumento IsA OBJECT
   HAS val_piedi  0.
   HAS val_mani   0.
 
-  IS NOT indossato. -- Ossia, non è nel set degli `indossati` di alcun attore.
-
+-- >>> dev-vestario: tweaked ( spostato su THING in "lib_definizioni.i")
+  -- IS NOT indossato. -- Ossia, non è nel set degli `indossati` di alcun attore.
+-- <<<
 
   INITIALIZE
 
     -- L'attributo d'insieme 'indossati' è concepito per funzionare sia con
     -- l'Eroe che con i PNG:
 
-    IF THIS IN abbigliamento
-      THEN INCLUDE THIS IN indossati OF hero.
-    END IF.
+-- >>> dev-vestario: tweaked INITIALIZE indumento >>>
+-- SOPPRESSO (PROVO A NON USARE NEANCHE IL SET 'indossati')
+    -- FOR EACH ac IsA ACTOR
+    --   DO
+    --     -- * Eliminata gestione Hero tramite 'abbigliamento'.
+    --     -- * Usa l'attributo 'indossato' come criterio gestionale.
+    --     ------------------------------------------------------------
+    --     -- Qualsiasi indumento che sia direttamente in un attore e
+    --     -- marcato 'indossato' deve essere incluso nel set degli
+    --     -- 'indossati' di quell'attore.
+    --     ------------------------------------------------------------
+    --     FOR EACH ind IsA indumento, DIRECTLY IN ac, IS indossato
+    --       DO INCLUDE ind IN indossati OF ac.
+    --     END FOR.
+    -- END FOR.
+-- >>> codice originale >>>
+    -- IF THIS IN abbigliamento
+    --   THEN INCLUDE THIS IN indossati OF hero.
+    -- END IF.
 
-    FOR EACH ac IsA ACTOR
-      DO
-        IF ac = hero
-          THEN
-            IF THIS IN indossati OF hero AND THIS <> indumento_fittizio
-              THEN
-                IF THIS NOT IN abbigliamento
-                  THEN LOCATE THIS IN abbigliamento.
-                END IF.
-                MAKE THIS indossato.
-            END IF.
-        ELSIF THIS IN indossati OF ac AND THIS <> indumento_fittizio
-          THEN
-            IF THIS NOT IN ac
-              THEN
-                LOCATE THIS IN ac.
-            END IF.
-            MAKE THIS indossato.
-        END IF.
-    END FOR.
+    -- FOR EACH ac IsA ACTOR
+    --   DO
+    --     IF ac = hero
+    --       THEN
+    --         IF THIS IN indossati OF hero AND THIS <> indumento_fittizio
+    --           THEN
+    --             IF THIS NOT IN abbigliamento
+    --               THEN LOCATE THIS IN abbigliamento.
+    --             END IF.
+    --             MAKE THIS indossato.
+    --         END IF.
+    --     ELSIF THIS IN indossati OF ac AND THIS <> indumento_fittizio
+    --       THEN
+    --         IF THIS NOT IN ac
+    --           THEN
+    --             LOCATE THIS IN ac.
+    --         END IF.
+    --         MAKE THIS indossato.
+    --     END IF.
+    -- END FOR.
+-- <<< codice originale <<<
 
 --                                                                              TRANSLATE!
 
@@ -170,8 +199,8 @@ EVERY indumento IsA OBJECT
     -- all clothing acquired and worn by the hero or an NPC mid-game is checked to
     -- show correctly when the possessions of an actor are listed:
 
-
-    SCHEDULE controlla_indossati AFTER 0.
+-- >>> dev-vestario: tweaked >>> soppresso EVENT controlla_indossati
+    -- SCHEDULE controlla_indossati AFTER 0.
 
 
 
@@ -201,6 +230,201 @@ EVERY indumento IsA OBJECT
       END IF.
   END VERB esamina.
 
+-- >>> dev-vestario: added
+
+-->verbo_indossa
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Impedisci verbi che potrebbero dislocare indossati
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--| 
+
+  VERB metti_in --> metti (ogg) 'in' (cont)
+    WHEN ogg
+      CHECK ogg IS NOT indossato
+        ELSE
+          IF ogg IN hero
+            THEN SAY mia_AT:indumento_andrebbe_rimosso.
+            ELSE
+              IF ogg IS NOT plurale
+                -- "Al momento $+1 [è/sono] indossat$$"
+                THEN SAY mia_AT:indumento_indossato_PNG_sg.
+                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
+              END IF. SAY ogg:vocale.
+              FOR EACH ac IsA actor DO
+                IF ogg IN ac
+                  THEN SAY ac:prep_DA. SAY ac. "."
+                END IF.
+              END FOR.
+          END IF.
+  END VERB metti_in.
+
+
+  VERB metti_su --> metti (ogg) su (superficie)
+    WHEN ogg
+      CHECK ogg IS NOT indossato
+        ELSE
+          IF ogg IN hero
+            THEN SAY mia_AT:indumento_andrebbe_rimosso.
+            ELSE
+              IF ogg IS NOT plurale
+                -- "Al momento $+1 [è/sono] indossat$$"
+                THEN SAY mia_AT:indumento_indossato_PNG_sg.
+                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
+              END IF. SAY ogg:vocale.
+              FOR EACH ac IsA actor DO
+                IF ogg IN ac
+                  THEN SAY ac:prep_DA. SAY ac. "."
+                END IF.
+              END FOR.
+          END IF.
+  END VERB metti_su.
+
+
+  VERB dai_a --> dai (ogg) a (png)
+    WHEN ogg
+      CHECK ogg IS NOT indossato
+        ELSE
+          IF ogg IN hero
+            THEN SAY mia_AT:indumento_andrebbe_rimosso.
+            ELSE
+              IF ogg IS NOT plurale
+                -- "Al momento $+1 [è/sono] indossat$$"
+                THEN SAY mia_AT:indumento_indossato_PNG_sg.
+                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
+              END IF. SAY ogg:vocale.
+              FOR EACH ac IsA actor DO
+                IF ogg IN ac
+                  THEN SAY ac:prep_DA. SAY ac. "."
+                END IF.
+              END FOR.
+          END IF.
+  END VERB dai_a.
+
+--| Se si vuole previnire che i PNG consegnino i loro vestiti, decomenntare il
+--| seguente verbo, o aggiungerlo al proprio codice dell'avventura:
+
+  -- VERB chiedi --> chiedi a (png) (ogg)
+  --   WHEN ogg
+  --     CHECK ogg IS NOT indossato
+  --       ELSE
+  --         IF ogg IN hero
+  --           THEN SAY mia_AT:ogg2_già_posseduto.
+  --           ELSE
+  --             FOR EACH ac IsA actor DO
+  --               IF THIS IN ac
+  --                 THEN SAY THE ac. "sta indossando $+2."
+  --               END IF.
+  --             END FOR.
+  --         END IF.
+  -- END VERB chiedi.
+
+
+  VERB lancia --> lancia (proiettile)
+    CHECK proiettile IS NOT indossato
+      ELSE
+        IF proiettile IN hero
+          THEN SAY mia_AT:indumento_andrebbe_rimosso.
+          ELSE
+            IF proiettile IS NOT plurale
+              -- "Al momento $+1 [è/sono] indossat$$"
+              THEN SAY mia_AT:indumento_indossato_PNG_sg.
+              ELSE SAY mia_AT:indumento_indossato_PNG_pl.
+            END IF. SAY proiettile:vocale.
+            FOR EACH ac IsA actor DO
+              IF proiettile IN ac
+                THEN SAY ac:prep_DA. SAY ac. "."
+              END IF.
+            END FOR.
+        END IF.
+  END VERB lancia.
+
+  VERB lancia_a --> lancia (proiettile) a (png)
+    WHEN proiettile
+      CHECK proiettile IS NOT indossato
+        ELSE
+          IF proiettile IN hero
+            THEN SAY mia_AT:indumento_andrebbe_rimosso.
+            ELSE
+              IF proiettile IS NOT plurale
+                -- "Al momento $+1 [è/sono] indossat$$"
+                THEN SAY mia_AT:indumento_indossato_PNG_sg.
+                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
+              END IF. SAY proiettile:vocale.
+              FOR EACH ac IsA actor DO
+                IF proiettile IN ac
+                  THEN SAY ac:prep_DA. SAY ac. "."
+                END IF.
+              END FOR.
+          END IF.
+  END VERB lancia_a.
+
+  VERB lancia_contro --> lancia (proiettile) contro (bersaglio)
+    WHEN proiettile
+      CHECK proiettile IS NOT indossato
+        ELSE
+          IF proiettile IN hero
+            THEN SAY mia_AT:indumento_andrebbe_rimosso.
+            ELSE
+              IF proiettile IS NOT plurale
+                -- "Al momento $+1 [è/sono] indossat$$"
+                THEN SAY mia_AT:indumento_indossato_PNG_sg.
+                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
+              END IF. SAY proiettile:vocale.
+              FOR EACH ac IsA actor DO
+                IF proiettile IN ac
+                  THEN SAY ac:prep_DA. SAY ac. "."
+                END IF.
+              END FOR.
+          END IF.
+  END VERB lancia_contro.
+
+
+  VERB lancia_in --> lancia (proiettile) 'in' (cont)
+    WHEN proiettile
+      CHECK proiettile IS NOT indossato
+        ELSE
+          IF proiettile IN hero
+            THEN SAY mia_AT:indumento_andrebbe_rimosso.
+            ELSE
+              IF proiettile IS NOT plurale
+                -- "Al momento $+1 [è/sono] indossat$$"
+                THEN SAY mia_AT:indumento_indossato_PNG_sg.
+                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
+              END IF. SAY proiettile:vocale.
+              FOR EACH ac IsA actor DO
+                IF proiettile IN ac
+                  THEN SAY ac:prep_DA. SAY ac. "."
+                END IF.
+              END FOR.
+          END IF.
+  END VERB lancia_in.
+
+
+  VERB lega_a --> lega (ogg) a (bersaglio)
+    WHEN ogg
+      CHECK ogg IS NOT indossato
+        ELSE
+          IF ogg IN hero
+            THEN SAY mia_AT:indumento_andrebbe_rimosso.
+            ELSE
+              IF ogg IS NOT plurale
+                -- "Al momento $+1 [è/sono] indossat$$"
+                THEN SAY mia_AT:indumento_indossato_PNG_sg.
+                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
+              END IF. SAY ogg:vocale.
+              FOR EACH ac IsA actor DO
+                IF ogg IN ac
+                  THEN SAY ac:prep_DA. SAY ac. "."
+                END IF.
+              END FOR.
+          END IF.
+  END VERB lega_a.
+
+
+
+--<
 
 -->verbo_indossa
 --~=============================================================================
@@ -216,18 +440,79 @@ EVERY indumento IsA OBJECT
     CHECK THIS:genere = hero:genere OR THIS:genere = 0
 --                                                                              TRANSLATE!
       ELSE SAY mia_AT:check_clothing_sex.
+-- >>> dev-vestario: added
+    AND THIS IS NOT indossato
+      ELSE
+        IF THIS IN hero
+          THEN SAY mia_AT:ogg1_già_indossato.
+          ELSE
+            IF THIS IS NOT plurale
+              -- "Al momento $+1 [è/sono] indossat$$"
+              THEN SAY mia_AT:indumento_indossato_PNG_sg.
+              ELSE SAY mia_AT:indumento_indossato_PNG_pl.
+            END IF. SAY THIS:vocale.
+            FOR EACH ac IsA actor DO
+              IF THIS IN ac
+                THEN SAY ac:prep_DA. SAY ac. "."
+              END IF.
+            END FOR.
+        END IF.
 
     DOES ONLY
+-- >>> dev-vestario: added:
+--------------------------------------------------------------------
+-- Ora gli indumenti che prevengono l'azione vengono memorizzati in
+-- un set temporaneo affinché possano essere elencati nel messaggio
+-- di risposta, anziché elencare ogni indumento indossato dall'Eroe.
+--------------------------------------------------------------------
 
--- @NOTA: Il termine 'flag' è usato erroneamente qui, poiché i flag sono        FIXME!
---        sono booleani. Dovrei cambiare il nome dell'attributo in qualcosa
---        di più consono -- 'variabile'? Oppure specificare meglio (i valori
---        validi qui sono due: 0 e 1, altri valori sono indice di problemi.)
+      -- -------------------------
+      -- Svuota il set temporaneo:
+      -- -------------------------
+      SET mia_AT:temp_indumenti TO {}.
+      -- -----------------------------------------------------------------------
+      -- Verifica se l'indumento da indossare è soggetto a indossamento ordinato
+      -- -----------------------------------------------------------------------
+      IF  THIS:val_testa
+        + THIS:val_tronco
+        + THIS:val_gambe
+        + THIS:val_piedi
+        + THIS:val_mani <> 0
+        THEN
+          -- -------------------------------------------------------------------
+          -- Ogni indumento indossato con valore di copertura uguale o maggiore
+          -- a quello dell'indumento che si vuole indossare è un indumento che
+          -- impedisce d'indossarlo.
+          -- -------------------------------------------------------------------
+          FOR EACH ind IsA indumento, DIRECTLY IN hero, IS indossato
+            DO
+              IF THIS:val_testa  <> 0 AND THIS:val_testa  <= ind:val_testa
+                THEN INCLUDE ind IN mia_AT:temp_indumenti.
+              END IF.
+              IF THIS:val_tronco <> 0 AND THIS:val_tronco <= ind:val_tronco
+                THEN INCLUDE ind IN mia_AT:temp_indumenti.
+              END IF.
+              IF THIS:val_gambe  <> 0 AND THIS:val_gambe  <= ind:val_gambe
+                THEN INCLUDE ind IN mia_AT:temp_indumenti.
+              END IF.
+              IF THIS:val_piedi  <> 0 AND THIS:val_piedi  <= ind:val_piedi
+                THEN INCLUDE ind IN mia_AT:temp_indumenti.
+              END IF.
+              IF THIS:val_mani   <> 0 AND THIS:val_mani   <= ind:val_mani
+                THEN INCLUDE ind IN mia_AT:temp_indumenti.
+              END IF.
+          END FOR.
+      END IF.
+
 --~-----------------------------------------------------------------------------
 --| Il `wear_flag` è un flag multiuso impiegato per vari scopi nella libreria.
 --| In questo contesto, viene resettato a `0` prima di procedere con il codice,
 --| 
 --~-----------------------------------------------------------------------------
+-- @NOTA: Il termine 'flag' è usato erroneamente qui, poiché i flag sono        FIXME!
+--        sono booleani. Dovrei cambiare il nome dell'attributo in qualcosa
+--        di più consono -- 'variabile'? Oppure specificare meglio (i valori
+--        validi qui sono due: 0 e 1, altri valori sono indice di problemi.)
 
 --                                                                              TRANSLATE!
 --------------------------------------------------------------------
@@ -236,7 +521,7 @@ EVERY indumento IsA OBJECT
 -- of 'housekeeping' for the code.
 --------------------------------------------------------------------
 
-      SET hero:wear_flag TO 0.
+      -- SET hero:wear_flag TO 0.
 
 --~-----------------------------------------------------------------------------
 --| Anzitutto, verifichiamo se l'eroe possiede già l'indumento e, in caso
@@ -251,9 +536,9 @@ EVERY indumento IsA OBJECT
 -- in this turn.
 --------------------------------------------------------------------
 
-      IF THIS NOT IN hero
-        THEN SET hero:wear_flag TO 1.
-      END IF.
+      -- IF THIS NOT IN hero
+      --   THEN SET hero:wear_flag TO 1.
+      -- END IF.
 
 --                                                                              FINISH/REVISE!
 --~-----------------------------------------------------------------------------
@@ -292,10 +577,10 @@ EVERY indumento IsA OBJECT
 --------------------------------------------------------------------
 
 
-      IF  THIS:val_tronco <> 0
-      AND THIS:val_tronco <= SUM OF val_tronco DIRECTLY IN abbigliamento
-        THEN INCREASE hero:wear_flag BY 5.
-      END IF.
+      -- IF  THIS:val_tronco <> 0
+      -- AND THIS:val_tronco <= SUM OF val_tronco DIRECTLY IN abbigliamento
+      --   THEN INCREASE hero:wear_flag BY 5.
+      -- END IF.
 
 --~-----------------------------------------------------------------------------
 --| Ora procederemo con test analoghi sugli altri attributi.
@@ -309,26 +594,26 @@ EVERY indumento IsA OBJECT
 --~ Controllo mani
 --~ ==============
 
-      IF  THIS:val_mani <> 0
-      AND THIS:val_mani <= SUM OF val_mani DIRECTLY IN abbigliamento
-        THEN INCREASE hero:wear_flag BY 5.
-      END IF.
+      -- IF  THIS:val_mani <> 0
+      -- AND THIS:val_mani <= SUM OF val_mani DIRECTLY IN abbigliamento
+      --   THEN INCREASE hero:wear_flag BY 5.
+      -- END IF.
 
 --~ Controllo piedi
 --~ ===============
 
-      IF  THIS:val_piedi <> 0
-      AND THIS:val_piedi <= SUM OF val_piedi DIRECTLY IN abbigliamento
-        THEN INCREASE hero:wear_flag BY 5.
-      END IF.
+      -- IF  THIS:val_piedi <> 0
+      -- AND THIS:val_piedi <= SUM OF val_piedi DIRECTLY IN abbigliamento
+      --   THEN INCREASE hero:wear_flag BY 5.
+      -- END IF.
 
 --~ Controllo testa
 --~ ===============
 
-      IF  THIS:val_testa <> 0
-      AND THIS:val_testa <= SUM OF val_testa DIRECTLY IN abbigliamento
-        THEN INCREASE hero:wear_flag BY 5.
-      END IF.
+      -- IF  THIS:val_testa <> 0
+      -- AND THIS:val_testa <= SUM OF val_testa DIRECTLY IN abbigliamento
+      --   THEN INCREASE hero:wear_flag BY 5.
+      -- END IF.
 
 --~ Controllo gambe
 --~ ===============
@@ -350,11 +635,11 @@ EVERY indumento IsA OBJECT
 --------------------------------------------------------------------
 
 
-      SET hero:tempcovered TO SUM OF val_gambe DIRECTLY IN abbigliamento.
+      -- SET hero:tempcovered TO SUM OF val_gambe DIRECTLY IN abbigliamento.
 
-      IF hero:tempcovered >63 AND THIS:val_gambe < 33
-        THEN SET hero:tempcovered TO hero:tempcovered -64.
-      END IF.
+      -- IF hero:tempcovered >63 AND THIS:val_gambe < 33
+      --   THEN SET hero:tempcovered TO hero:tempcovered -64.
+      -- END IF.
 --                                                                              FINISH/REVISE!
 --~-----------------------------------------------------------------------------
 --| Ora, dispensiamo indumenti quali dress/la gonna/coverall, dato che questi
@@ -376,9 +661,9 @@ EVERY indumento IsA OBJECT
 --------------------------------------------------------------------
 
 
-      IF hero:tempcovered >31 AND THIS:val_gambe < 16 AND THIS:val_gambe <> 4
-        THEN SET hero:tempcovered TO hero:tempcovered -32.
-      END IF.
+      -- IF hero:tempcovered >31 AND THIS:val_gambe < 16 AND THIS:val_gambe <> 4
+      --   THEN SET hero:tempcovered TO hero:tempcovered -32.
+      -- END IF.
 
 --                                                                              FINISH/REVISE!
 --~-----------------------------------------------------------------------------
@@ -396,9 +681,9 @@ EVERY indumento IsA OBJECT
 --------------------------------------------------------------------
 
 
-      IF hero:tempcovered >15 AND THIS:val_gambe > 16
-        THEN SET hero:tempcovered TO hero:tempcovered +16.
-      END IF.
+      -- IF hero:tempcovered >15 AND THIS:val_gambe > 16
+      --   THEN SET hero:tempcovered TO hero:tempcovered +16.
+      -- END IF.
 
 --                                                                              FINISH/REVISE!
 --~-----------------------------------------------------------------------------
@@ -411,9 +696,9 @@ EVERY indumento IsA OBJECT
 --------------------------------------------------------------------
 
 
-      IF THIS:val_gambe <> 0 AND THIS:val_gambe <= hero:tempcovered
-        THEN INCREASE hero:wear_flag BY 5.
-      END IF.
+      -- IF THIS:val_gambe <> 0 AND THIS:val_gambe <= hero:tempcovered
+      --   THEN INCREASE hero:wear_flag BY 5.
+      -- END IF.
 
 --~ Esito finale
 --~ ============
@@ -433,8 +718,8 @@ EVERY indumento IsA OBJECT
 -- tests failed and the player cannot put on these clothes.
 --------------------------------------------------------------------
 
-
-      IF hero:wear_flag >1
+      SET mia_AT:temp_cnt TO COUNT IsA indumento, IN mia_AT:temp_indumenti.
+      IF mia_AT:temp_cnt <> 0
         THEN
           -- ------------------------------------
           -- L'indumento non può essere indossato
@@ -446,32 +731,83 @@ EVERY indumento IsA OBJECT
           END IF.
           LOCATE THIS IN hero.
           -- <<< prendi implicito <<<
-
-          LIST abbigliamento.
---                                                                              TRANSLATE!
-          "Trying to put" SAY THE THIS. "on isn't very sensible."
-
-      -- ELSIF hero:wear_flag = 1
-      ELSE
-        -- --------------------------------
-        -- L'indumento può essere indossato
-        -- --------------------------------
-        LOCATE THIS IN abbigliamento.
-        MAKE THIS indossato.
-        INCLUDE THIS IN indossati OF hero.
-        IF hero:wear_flag = 1
-          THEN
-            -- -----------------------------------
-            -- L'indumento viene preso e indossato
-            -- -----------------------------------
-            "prendi" SAY THE THIS. "e l$$" SAY THIS:vocale. "indossi."
-          ELSE
-            -- ---------------------------
-            -- L'indumento viene indossato
-            -- ---------------------------
-            "indossi" SAY THE THIS. "."
-        END IF.
+          -- ----------------------------------------
+          -- Elenca indumenti che prevengono l'azione
+          -- ----------------------------------------
+          "Per poter indossare $+1 dovresti prima toglierti"
+          FOR EACH ind_bloccante IsA indumento, IN mia_AT:temp_indumenti
+            DO
+              SAY THE ind_bloccante.
+              DECREASE mia_AT:temp_cnt.
+              DEPENDING ON mia_AT:temp_cnt
+                = 1 THEN "e"
+                = 0 THEN "."
+                ELSE ","
+              End Depend.
+          END FOR.
+        ELSE
+          -- --------------------------------
+          -- L'indumento può essere indossato
+          -- --------------------------------
+          IF THIS NOT IN hero
+            THEN
+              -- -----------------------------------
+              -- L'indumento viene preso e indossato
+              -- -----------------------------------
+              "Prendi" SAY THE THIS. "e l$$" SAY THIS:vocale. "indossi."
+            ELSE
+              -- ---------------------------
+              -- L'indumento viene indossato
+              -- ---------------------------
+              "Indossi" SAY THE THIS. "."
+          END IF.
+          LOCATE THIS IN hero.
+          MAKE THIS indossato.
+-- >>> dev-vestario: NO INDOSSATI! (prova a non usare set 'indossati')
+          -- INCLUDE THIS IN indossati OF hero.
       END IF.
+
+
+-- >>> codice originale >>>
+--       IF hero:wear_flag >1
+--         THEN
+--           -- ------------------------------------
+--           -- L'indumento non può essere indossato
+--           -- ------------------------------------
+--           -- Ci limitiamo a prenderlo (se non già posseduto)
+--           IF THIS NOT IN hero
+--           -- >>> prendi implicito: >>>
+--             THEN "prendi" SAY THE THIS. "."
+--           END IF.
+--           LOCATE THIS IN hero.
+--           -- <<< prendi implicito <<<
+
+--           LIST abbigliamento.
+-- --                                                                              TRANSLATE!
+--           "Trying to put" SAY THE THIS. "on isn't very sensible."
+
+--       -- ELSIF hero:wear_flag = 1
+--       ELSE
+--         -- --------------------------------
+--         -- L'indumento può essere indossato
+--         -- --------------------------------
+--         LOCATE THIS IN abbigliamento.
+--         MAKE THIS indossato.
+--         INCLUDE THIS IN indossati OF hero.
+--         IF hero:wear_flag = 1
+--           THEN
+--             -- -----------------------------------
+--             -- L'indumento viene preso e indossato
+--             -- -----------------------------------
+--             "prendi" SAY THE THIS. "e l$$" SAY THIS:vocale. "indossi."
+--           ELSE
+--             -- ---------------------------
+--             -- L'indumento viene indossato
+--             -- ---------------------------
+--             "indossi" SAY THE THIS. "."
+--         END IF.
+--       END IF.
+-- <<< codice originale <<<
 
 END VERB indossa.
 
@@ -486,14 +822,65 @@ END VERB indossa.
 --<
 
 VERB togliti
-  CHECK THIS IN abbigliamento
+  CHECK THIS DIRECTLY IN hero AND THIS IS indossato
     ELSE SAY mia_AT:non_indossi.
+-- >>> codice originale >>>
+  -- CHECK THIS IN abbigliamento
+  --   ELSE SAY mia_AT:non_indossi.
+-- <<< codice originale <<<
   AND CURRENT LOCATION IS illuminato
     ELSE SAY mia_AT:imp_luogo_buio.
 
   DOES ONLY
 
-    SET hero:wear_flag TO 0.
+-- >>> dev-vestario: added:
+--------------------------------------------------------------------
+-- Ora gli indumenti che prevengono l'azione vengono memorizzati in
+-- un set temporaneo affinché possano essere elencati nel messaggio
+-- di risposta, anziché elencare ogni indumento indossato dall'Eroe.
+--------------------------------------------------------------------
+
+      -- -------------------------
+      -- Svuota il set temporaneo:
+      -- -------------------------
+      SET mia_AT:temp_indumenti TO {}.
+      -- -----------------------------------------------------------------------
+      -- Verifica se l'indumento da rimuovere è soggetto a indossamento ordinato
+      -- -----------------------------------------------------------------------
+      IF  THIS:val_testa
+        + THIS:val_tronco
+        + THIS:val_gambe
+        + THIS:val_piedi
+        + THIS:val_mani <> 0
+        THEN
+          -- -------------------------------------------------------------------
+          -- Ogni indumento indossato con valore di copertura maggiore di quello
+          -- dell'indumento che si vuole rimuovere è un indumento che impedisce
+          -- l'azione.
+          -- -------------------------------------------------------------------
+          FOR EACH ind IsA indumento, DIRECTLY IN hero, IS indossato
+            DO
+              IF THIS:val_testa  <> 0 AND THIS:val_testa  < ind:val_testa
+                THEN INCLUDE ind IN mia_AT:temp_indumenti.
+              END IF.
+              IF THIS:val_tronco <> 0 AND THIS:val_tronco < ind:val_tronco
+                THEN INCLUDE ind IN mia_AT:temp_indumenti.
+              END IF.
+              IF THIS:val_gambe  <> 0 AND THIS:val_gambe  < ind:val_gambe
+                THEN INCLUDE ind IN mia_AT:temp_indumenti.
+              END IF.
+              IF THIS:val_piedi  <> 0 AND THIS:val_piedi  < ind:val_piedi
+                THEN INCLUDE ind IN mia_AT:temp_indumenti.
+              END IF.
+              IF THIS:val_mani   <> 0 AND THIS:val_mani   < ind:val_mani
+                THEN INCLUDE ind IN mia_AT:temp_indumenti.
+              END IF.
+          END FOR.
+      END IF.
+
+-- >>> codice originale >>>
+
+    -- SET hero:wear_flag TO 0.
 
 
 --                                                                              TRANSLATE!
@@ -509,10 +896,10 @@ VERB togliti
 --------------------------------------------------------------------
 
 
-    SET hero:tempcovered TO SUM OF val_tronco DIRECTLY IN abbigliamento /2.
-      IF THIS:val_tronco <> 0 AND THIS:val_tronco < hero:tempcovered
-        THEN INCREASE hero:wear_flag BY 1.
-      END IF.
+    -- SET hero:tempcovered TO SUM OF val_tronco DIRECTLY IN abbigliamento /2.
+    --   IF THIS:val_tronco <> 0 AND THIS:val_tronco < hero:tempcovered
+    --     THEN INCREASE hero:wear_flag BY 1.
+    --   END IF.
 
 
 --                                                                              TRANSLATE!
@@ -521,22 +908,22 @@ VERB togliti
 --------------------------------------------------------------------
 
 
-    SET hero:tempcovered TO SUM OF val_mani DIRECTLY IN abbigliamento /2.
-      IF THIS:val_mani <> 0 AND THIS:val_mani < hero:tempcovered
-        THEN INCREASE hero:wear_flag BY 1.
-      END IF.
+    -- SET hero:tempcovered TO SUM OF val_mani DIRECTLY IN abbigliamento /2.
+    --   IF THIS:val_mani <> 0 AND THIS:val_mani < hero:tempcovered
+    --     THEN INCREASE hero:wear_flag BY 1.
+    --   END IF.
 
 
-    SET hero:tempcovered TO SUM OF val_piedi DIRECTLY IN abbigliamento /2.
-    IF THIS:val_piedi <> 0 AND THIS:val_piedi < hero:tempcovered
-      THEN INCREASE hero:wear_flag BY 1.
-    END IF.
+    -- SET hero:tempcovered TO SUM OF val_piedi DIRECTLY IN abbigliamento /2.
+    -- IF THIS:val_piedi <> 0 AND THIS:val_piedi < hero:tempcovered
+    --   THEN INCREASE hero:wear_flag BY 1.
+    -- END IF.
 
 
-    SET hero:tempcovered TO SUM OF val_testa DIRECTLY IN abbigliamento /2.
-    IF THIS:val_testa <> 0 AND THIS:val_testa < hero:tempcovered
-      THEN INCREASE hero:wear_flag BY 1.
-    END IF.
+    -- SET hero:tempcovered TO SUM OF val_testa DIRECTLY IN abbigliamento /2.
+    -- IF THIS:val_testa <> 0 AND THIS:val_testa < hero:tempcovered
+    --   THEN INCREASE hero:wear_flag BY 1.
+    -- END IF.
 
 
 --                                                                              TRANSLATE!
@@ -546,10 +933,10 @@ VERB togliti
 --------------------------------------------------------------------
 
 
-    SET hero:tempcovered TO SUM OF val_gambe DIRECTLY IN abbigliamento.
-    IF hero:tempcovered >63
-      THEN SET hero:tempcovered TO hero:tempcovered -64.
-    END IF.
+    -- SET hero:tempcovered TO SUM OF val_gambe DIRECTLY IN abbigliamento.
+    -- IF hero:tempcovered >63
+    --   THEN SET hero:tempcovered TO hero:tempcovered -64.
+    -- END IF.
 
 
 --                                                                              TRANSLATE!
@@ -560,9 +947,9 @@ VERB togliti
 --------------------------------------------------------------------
 
 
-    IF hero:tempcovered >31 AND THIS:val_gambe <>4
-      THEN SET hero:tempcovered TO hero:tempcovered -32.
-    END IF.
+    -- IF hero:tempcovered >31 AND THIS:val_gambe <>4
+    --   THEN SET hero:tempcovered TO hero:tempcovered -32.
+    -- END IF.
 
 
 --                                                                              TRANSLATE!
@@ -571,10 +958,10 @@ VERB togliti
 --------------------------------------------------------------------
 
 
-    SET hero:tempcovered TO hero:tempcovered /2.
-    IF THIS:val_gambe <> 0 AND THIS:val_gambe < hero:tempcovered
-      THEN INCREASE hero:wear_flag BY 1.
-    END IF.
+    -- SET hero:tempcovered TO hero:tempcovered /2.
+    -- IF THIS:val_gambe <> 0 AND THIS:val_gambe < hero:tempcovered
+    --   THEN INCREASE hero:wear_flag BY 1.
+    -- END IF.
 
 
 --                                                                              TRANSLATE!
@@ -584,19 +971,51 @@ VERB togliti
 -- removed.
 --------------------------------------------------------------------
 
+
+      SET mia_AT:temp_cnt TO COUNT IsA indumento, IN mia_AT:temp_indumenti.
+      IF mia_AT:temp_cnt <> 0
+        THEN
+          -- ----------------------------------
+          -- L'indumento non può essere rimosso
+          -- ----------------------------------
+          "Per poter rimuovere $+1 dovresti prima toglierti"
+          FOR EACH ind_bloccante IsA indumento, IN mia_AT:temp_indumenti
+            DO
+              SAY THE ind_bloccante.
+              DECREASE mia_AT:temp_cnt.
+              DEPENDING ON mia_AT:temp_cnt
+                = 1 THEN "e"
+                = 0 THEN "."
+                ELSE ","
+              END DEPEND.
+          END FOR.
+        ELSE
+          -- ------------------------------
+          -- L'indumento può essere rimosso
+          -- ------------------------------
+          "Ti togli" SAY THE THIS. "."
+          LOCATE THIS IN hero.
+          MAKE THIS NOT indossato.
+-- >>> dev-vestario: NO INDOSSATI! (prova a non usare set 'indossati')
+          -- EXCLUDE THIS FROM indossati OF hero.
+      END IF.
+
+
+-- >>> codice originale >>>
 --  Use $1 instead of THIS:                                                     OPTIMIZE!
 
-    IF hero:wear_flag > 0
-      THEN
-        LIST abbigliamento.
---                                                                              TRANSLATE!
-        "Trying to take" SAY THE THIS. "off isn't very sensible."
-      ELSE
-        LOCATE THIS IN hero.
-        "Ti togli" SAY THE THIS. "."
-        EXCLUDE THIS FROM hero:indossati.
-        MAKE THIS NOT indossato.
-    END IF.
+--     IF hero:wear_flag > 0
+--       THEN
+--         LIST abbigliamento.
+-- --                                                                              TRANSLATE!
+--         "Trying to take" SAY THE THIS. "off isn't very sensible."
+--       ELSE
+--         LOCATE THIS IN hero.
+--         "Ti togli" SAY THE THIS. "."
+--         EXCLUDE THIS FROM hero:indossati.
+--         MAKE THIS NOT indossato.
+--     END IF.
+-- <<< codice originale <<<
 END VERB togliti.
 
 
@@ -610,8 +1029,9 @@ END EVERY.
 --------------------------------------------------------------------
 
 ADD TO EVERY ACTOR
-  IS tempcovered 0.
-  IS wear_flag 0.
+-- >>> dev-vestario: deleted
+  -- IS tempcovered 0.
+  -- IS wear_flag 0.
   IS genere 0.
 END ADD TO.
 
@@ -621,27 +1041,56 @@ END ADD TO.
 -- mid-game is recognised to be worn by the actor:
 --------------------------------------------------------------------
 
+-- >>> dev-vestario: tweaked
+
 EVENT controlla_indossati
   FOR EACH ac IsA ACTOR
     DO
-      FOR EACH cl IsA indumento, IN indossati OF ac
-        DO
-          IF ac = hero
-            THEN
-              IF cl NOT IN abbigliamento
-                THEN LOCATE cl IN abbigliamento.
-                  MAKE cl indossato.
-              END IF.
-            ELSE
-              IF cl NOT IN ac
-                THEN LOCATE cl IN ac.
-                  MAKE cl indossato.
-              END IF.
-          END IF.
-      END FOR.
+      "" -- DO NOTHING!
+
+      -- [ NON COMPILA! SEMBRA ESSERCI UN BACO IN ALAN ]
+      -----------------------------------------------------
+      -- Assicurati che ogni indumento indirettamente in un
+      -- attore sia marcato 'NOT indossato'.
+      -----------------------------------------------------
+      -- FOR EACH ind IsA indumento, INDIRECTLY IN ac, IS indossato
+      --   DO
+      --     MAKE ind NOT indossato.
+      --      "**" SAY THE ind. "IS indossato INDIRECTLY IN" SAY THE ac. "**"
+      -- END FOR.
+     
+      -- SOPPRESSO (PROVA A NON USARE 'indossati')
+      -----------------------------------------------------
+      -- Ogni indumento direttamente in un attore e marcato
+      -- 'indossato' va aggiunto al suo set di 'indossati'.
+      -----------------------------------------------------
+      -- FOR EACH ind IsA indumento, DIRECTLY IN ac, IS indossato
+      --   DO INCLUDE ind IN indossati OF ac.
+      -- END FOR.
   END FOR.
   SCHEDULE controlla_indossati AFTER 1.
 END EVENT.
+-- >>> codice originale >>>
+  -- FOR EACH ac IsA ACTOR
+  --   DO
+  --     FOR EACH cl IsA indumento, IN indossati OF ac
+  --       DO
+  --         IF ac = hero
+  --           THEN
+  --             IF cl NOT IN abbigliamento
+  --               THEN LOCATE cl IN abbigliamento.
+  --                 MAKE cl indossato.
+  --             END IF.
+  --           ELSE
+  --             IF cl NOT IN ac
+  --               THEN LOCATE cl IN ac.
+  --                 MAKE cl indossato.
+  --             END IF.
+  --         END IF.
+  --     END FOR.
+  -- END FOR.
+  -- SCHEDULE controlla_indossati AFTER 1.
+-- <<< codice originale <<<
 
 
 

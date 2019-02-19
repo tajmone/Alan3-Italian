@@ -99,8 +99,8 @@ vasetto, una bottiglia, un sacchetto, un coltello, una pistola, un cesto per la
 frutta e una radio.
 
 > inventario
-Stai portando una mela, una torcia e una chiave. Stai indossando un paio di
-blue jeans e una bombetta.
+Stai portando una chiave, una torcia e una mela. Stai indossando una bombetta e 
+un paio di blue jeans.
 
 > ; ------------------------------------------------------------------------------
 > ; TESTA 'prendi' + 'liquido'
@@ -130,8 +130,8 @@ frutta e una radio.
 La bottiglia contiene del vino.
 
 > inventario
-Stai portando una mela, una torcia e una chiave. Stai indossando un paio di
-blue jeans e una bombetta.
+Stai portando una chiave, una torcia e una mela. Stai indossando una bombetta e 
+un paio di blue jeans.
 
 > ; ------------------------------------------------------------------------------
 > ; TESTA 'prendi_da' + 'liquido'

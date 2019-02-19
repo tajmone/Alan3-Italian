@@ -217,7 +217,7 @@ Mr Nicky ti segue.
 | CLASSE: actor 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: Sì 
-| È CONDISCENDENTE No 
+| CONDISCENDENTE: No 
 | STA SEGUENDO: Sì 
 | POSTURA: (nessuna) 
 +------------------------------------------------------------------------------- 
@@ -251,7 +251,7 @@ Mr Nicky ti segue.
 | CLASSE: actor 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
-| È CONDISCENDENTE Sì 
+| CONDISCENDENTE: Sì 
 | STA SEGUENDO: No 
 | POSTURA: (nessuna) 
 +------------------------------------------------------------------------------- 
@@ -285,7 +285,7 @@ Mr Nicky ti segue.
 | CLASSE: actor > persona > maschio 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
-| È CONDISCENDENTE No 
+| CONDISCENDENTE: No 
 | STA SEGUENDO: No 
 | POSTURA: (nessuna) 
 +------------------------------------------------------------------------------- 

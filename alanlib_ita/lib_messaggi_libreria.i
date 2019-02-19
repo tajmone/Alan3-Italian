@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.14.0-Alpha, 2019-02-05: Alan 3.0beta6 build 1866
+--| v0.15.0-Alpha, 2019-02-19: Alan 3.0beta6 build 1866
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
@@ -897,6 +897,10 @@ ADD TO EVERY blocco_definizioni
   --               "You are not sure whether $+1 would appreciate that."
   HAS png1_non_gradirebbe_sg  "Non credo che $+1 gradirebbe.".
   HAS png1_non_gradirebbe_pl  "Non credo che $+1 gradirebbero.".
+
+  -- VERBI: lancia_contro
+  HAS png2_non_gradirebbe_sg  "Non credo che $+2 gradirebbe.".
+  HAS png2_non_gradirebbe_pl  "Non credo che $+2 gradirebbero.".
 --<
 
 -->=============================================================================
@@ -951,6 +955,24 @@ ADD TO EVERY blocco_definizioni
   -- VERBI: (moltissimi)
   -- ORIGINAL EN: check_obj_not_hero1 + check_obj2_not_hero1
   HAS azione_insensata  "Questo non ha alcun senso.".
+
+--| Oggetto '`bersaglio`' posseduto:
+    
+
+  HAS azione_insensata_ogg1_portato    "Che senso ha? Stai portando $+1.".
+  HAS azione_insensata_ogg1_indossato  "Che senso ha? Stai indossando $+1.".
+
+  HAS azione_insensata_ogg2_portato    "Che senso ha? Stai portando $+2.".
+  HAS azione_insensata_ogg2_indossato  "Che senso ha? Stai indossando $+2.".
+
+--| [NOTE]
+--| ========================================================================
+--| I messaggi qui sopra sono usati nei verbi per lanciare le cose (`lancia_a`,
+--| `lancia_contro`, `lancia_in`) e sono usati quando la destinazione del lancio
+--| è tra i possedimenti del giocatore (quindi non ha senso eseguire un lancio
+--| dato che è a portata di mano).
+--| ========================================================================
+
 --<
 
 -->=============================================================================
@@ -1060,19 +1082,6 @@ ADD TO EVERY blocco_definizioni
   -- ORIGINAL EN:  check_obj2_not_in_hero3
   HAS ogg2_già_posseduto  "Possiedi già $+2.".
 
---| Oggetto '`bersaglio`' già posseduto:
-    
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  
-  HAS check_obj2_not_in_hero1 "You are carrying $+2.". -- throw_at, throw_in, throw_to
-
---| [NOTE]
---| ========================================================================
---| Il messaggio sopra è usato nei verbi per lanciare le cose (`lancia_a`,
---| `lancia_contro`, `lancia_in`) e viene usato quando la destinazione del lancio
---| è tra i possedimenti del giocatore (quindi non ha senso eseguire un lancio
---| dato).
---| ========================================================================
 
 --| Oggetto già posseduto da PNG:
 
@@ -1185,10 +1194,16 @@ ADD TO EVERY blocco_definizioni
   -- ORIGINAL EN:  check_obj_in_worn
   HAS non_indossi  "Non stai indossando $+1.".
 
+  -- VERBI: metti_in, metti_su.
+  -- ORIGINAL EN:  (nessuno)
+  HAS indumento_indossato_PNG_sg  "Al momento $+1 è indossat$$".
+  HAS indumento_indossato_PNG_pl  "Al momento $+1 sono indossat$$".
+
 
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
 
-  HAS check_obj_not_in_worn2  "It doesn't make sense to $v something you're wearing.". -- attack, attack_with, kick, shoot, shoot_with
+  HAS check_obj_not_in_worn2  "It doesn't make sense to $v something you're wearing.".
+  -- attack, attack_with, kick, shoot, shoot_with
 --<
 
 -->=============================================================================

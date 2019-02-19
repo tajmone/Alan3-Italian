@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.14.0-Alpha, 2019-02-05: Alan 3.0beta6 build 1866
+--| v0.15.0-Alpha, 2019-02-19: Alan 3.0beta6 build 1866
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -164,6 +164,10 @@ ADD TO EVERY THING
     NOT parlare.
     NOT sparare.
         -- Non può essere usato come arma da fuoco (verbo 'spara').
+
+-- >>> dev-vestario: tweaked ( spostato da INDUMENTO )
+  IS NOT indossato. -- Ossia, non è nel set degli `indossati` di alcun attore.
+                    -- Utilizzato solo con la classe 'indumento'.
 
 END ADD TO THING.
 

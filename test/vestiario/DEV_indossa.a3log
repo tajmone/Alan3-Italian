@@ -1,0 +1,271 @@
+
+
+Emporio Giorgio Alani 
+Un set per testare il vestiario. 
+(C) Tristano Ajmone, 2019. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1866. 
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati. 
+
+Digita USCITE per visualizzare la lista di uscite disponibili in una stanza. 
+Usa il verbo DBG INDUMENTO per mostrare i valori di copertura di un capo di
+vestiario.
+
+
+Davanti all'Emporio Alani
+Ti trovi di fronte all'entrata dell'Emporio Giorgio Alani. Due imponenti porte
+in ottone attendono di condurti a nord, dentro il tempio della moda.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                         TESTA INDOSSARE INDUMENTI                          *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Verifichiamo che i verbi 'indossa' e 'togliti' funzionino come devono.
+> ; ==============================================================================
+> ; INDOSSA GIÀ INDOSSATI
+> ; ==============================================================================
+> ; Verifica risposte per tentativi di indossare indumenti già indossati (da Hero
+> ; o altro PNG).
+> inventario
+Non stai portando niente. Stai indossando i tuoi calzini, i tuoi boxer, la tua 
+canottiera, le tue sneakers e i tuoi pantaloni.
+
+> ; ------------------------------------------------------------------------------
+> ; GIÀ INDOSSATO -> HERO
+> ; ------------------------------------------------------------------------------
+> indossa tuoi pantaloni
+Stai già indossando i tuoi pantaloni.
+
+> nord
+Come ti avvicini, le porte scorrono magicamente via per lasciarti passare.
+
+Atrio dell'Emporio Alani
+Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
+in ottone conducono a sud, fuori dal tempio del consumismo. Puoi vedere un 
+cestino qui. Dietro al bancone c'è il manager dell'emporio. C'è la tua
+assistente personale qui.
+
+> ; ------------------------------------------------------------------------------
+> ; GIÀ INDOSSATO -> PNG
+> ; ------------------------------------------------------------------------------
+> ; Il nuovo sistema del vestiario menzionerà chi sta indossando l'indumento:
+> indossa stivaletti
+Al momento gli stivaletti sono indossati dall'assistente.
+
+> ; [ recuperiamo un po' di vestiti ]
+> est
+Reparto Uomo
+Qui puoi trovare tutto ciò che un uomo desidererebbe indossare. Puoi vedere una 
+T-shirt, una camicia rossa, una camicia nera e un cappotto qui. 
+
+L'assistente ti segue.
+
+> prendi la camicia nera
+Presa.
+
+> prendi la camicia rossa
+Presa.
+
+> prendi il cappotto
+Preso.
+
+> nordovest
+Camerino
+Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, un cesto, una 
+salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+
+> spogliati
+Ti spogli di tutti gli indumenti che indossavi e li getti a terra.
+
+> lascia la camicia rossa
+Lasci la camicia rossa.
+
+> ; ==============================================================================
+> ; TESTA STRATIFICAZIONE
+> ; ==============================================================================
+> ; INDOSSA SÌ -> PRENDI IMPLICITO
+> indossa canottiera
+Prendi la tua canottiera e la indossi.
+
+> indossa la camicia nera
+Indossi la camicia nera.
+
+> ; INDOSSA NO -> PRENDI IMPLICITO -> BLOCCANTI: 'camicia nera'
+> indossa la camicia rossa
+Prendi la camicia rossa. Per poter indossare la camicia rossa dovresti prima
+toglierti la camicia nera.
+
+> ; INDOSSA NO -> BLOCCANTI: 'camicia nera'
+> indossa la camicia rossa
+Per poter indossare la camicia rossa dovresti prima toglierti la camicia nera.
+
+> ; TOGLITI NO -> BLOCCANTI: 'camicia nera'
+> togliti la canottiera
+Per poter rimuovere la tua canottiera dovresti prima toglierti la camicia nera.
+
+> indossa il cappotto
+Indossi il cappotto.
+
+> ; INDOSSA NO -> BLOCCANTI: 'camicia nera' + cappotto
+> indossa la camicia rossa
+Per poter indossare la camicia rossa dovresti prima toglierti la camicia nera e 
+il cappotto.
+
+> ; TOGLITI NO -> BLOCCANTI: 'camicia nera' + cappotto
+> togliti la canottiera
+Per poter rimuovere la tua canottiera dovresti prima toglierti la camicia nera e 
+il cappotto.
+
+> ; ==============================================================================
+> ; TESTA INDUMENTI CON VALORI ZERO
+> ; ==============================================================================
+> ; Gli indumenti con valori di copertura zero sono liberamente indossabili.
+> ovest
+Reparto Abbigliamento Sportivo
+Attorno a te vedi abbigliamento e attrezzatura per più sport di quanti tu
+conosca. Puoi vedere un passamontagna, un paio di occhiali da sci, un orologio, 
+una sciarpa bianca, una sciarpa blu e una sciarpa nera qui. L'assistente ti
+raggiunge di corsa dal reparto uomo.
+
+> ; DBG PRIMA
+> DBG_IND l'orologio
+'orologio' VALORI: (nessuno) 
+È INDOSSATO: No
+
+> DBG_IND la sciarpa nera
+'sciarpa nera' VALORI: (nessuno) 
+È INDOSSATO: No
+
+> DBG_IND la sciarpa blu
+'sciarpa blu' VALORI: (nessuno) 
+È INDOSSATO: No
+
+> DBG_IND la sciarpa bianca
+'sciarpa bianca' VALORI: (nessuno) 
+È INDOSSATO: No
+
+> ; INDOSSA
+> indossa l'orologio
+Prendi l'orologio e lo indossi.
+
+> indossa la sciarpa nera
+Prendi la sciarpa nera e la indossi.
+
+> indossa la sciarpa blu
+Prendi la sciarpa blu e la indossi.
+
+> indossa la sciarpa bianca
+Prendi la sciarpa bianca e la indossi.
+
+> inventario
+Stai portando una camicia rossa. Stai indossando una camicia nera, un cappotto, 
+un orologio, una sciarpa bianca, una sciarpa blu, una sciarpa nera e la tua 
+canottiera.
+
+> DBG_INV me
+Stai portando un cappotto (indossato), un orologio (indossato), una sciarpa
+bianca (indossata), una sciarpa blu (indossata), una sciarpa nera (indossata), 
+la tua canottiera (indossata), una camicia nera (indossata) e una camicia rossa.
+
+> ; DBG DOPO
+> DBG_IND l'orologio
+'orologio' VALORI: (nessuno) 
+È INDOSSATO: Sì (dal hero)
+
+> DBG_IND la sciarpa nera
+'sciarpa nera' VALORI: (nessuno) 
+È INDOSSATO: Sì (dal hero)
+
+> DBG_IND la sciarpa blu
+'sciarpa blu' VALORI: (nessuno) 
+È INDOSSATO: Sì (dal hero)
+
+> DBG_IND la sciarpa bianca
+'sciarpa bianca' VALORI: (nessuno) 
+È INDOSSATO: Sì (dal hero)
+
+> ; ==============================================================================
+> ; TESTA PRENDI IMPLICITO
+> ; ==============================================================================
+> ; Verifichiamo che il prendi implicito nel verbo 'indossa' sia implementato e
+> ; riportato correttamente.
+> ; ------------------------------------------------------------------------------
+> ; PRENDI IMPLICTIO -> INDOSSA NON RIUSCITO
+> ; ------------------------------------------------------------------------------
+> lascia la camicia rossa
+Lasci la camicia rossa.
+
+> DBG_IND camicia rossa
+'camicia rossa' VALORI: | val_tronco: 8 | 
+È INDOSSATO: No
+
+> ; INDOSSA NO -> PRENDI IMPLICITO
+> indossa la camicia rossa
+Prendi la camicia rossa. Per poter indossare la camicia rossa dovresti prima
+toglierti la camicia nera e il cappotto.
+
+> inventario
+Stai portando una camicia rossa. Stai indossando una camicia nera, un cappotto, 
+un orologio, una sciarpa bianca, una sciarpa blu, una sciarpa nera e la tua 
+canottiera.
+
+> DBG_IND camicia rossa
+'camicia rossa' VALORI: | val_tronco: 8 | 
+È INDOSSATO: No
+
+> ; INDOSSA NO -> GIÀ POSSEDUTO
+> indossa la camicia rossa
+Per poter indossare la camicia rossa dovresti prima toglierti la camicia nera e 
+il cappotto.
+
+> inventario
+Stai portando una camicia rossa. Stai indossando una camicia nera, un cappotto, 
+un orologio, una sciarpa bianca, una sciarpa blu, una sciarpa nera e la tua 
+canottiera.
+
+> DBG_IND camicia rossa
+'camicia rossa' VALORI: | val_tronco: 8 | 
+È INDOSSATO: No
+
+> ; ------------------------------------------------------------------------------
+> ; PRENDI IMPLICTIO -> INDOSSA RIUSCITO
+> ; ------------------------------------------------------------------------------
+> togliti il cappotto
+Ti togli il cappotto.
+
+> DBG_IND cappotto
+'cappotto' VALORI: | val_tronco: 64 | val_gambe: 64 | 
+È INDOSSATO: No
+
+> ; INDOSSA SÌ -> GIÀ POSSEDUTO
+> indossa il cappotto
+Indossi il cappotto.
+
+> DBG_IND cappotto
+'cappotto' VALORI: | val_tronco: 64 | val_gambe: 64 | 
+È INDOSSATO: Sì (dal hero)
+
+> togliti il cappotto
+Ti togli il cappotto.
+
+> lascia il cappotto
+Lasci il cappotto.
+
+> DBG_IND cappotto
+'cappotto' VALORI: | val_tronco: 64 | val_gambe: 64 | 
+È INDOSSATO: No
+
+> ; INDOSSA SÌ -> PRENDI IMPLICITO
+> indossa il cappotto
+Prendi il cappotto e lo indossi.
+
+> DBG_IND cappotto
+'cappotto' VALORI: | val_tronco: 64 | val_gambe: 64 | 
+È INDOSSATO: Sì (dal hero)
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

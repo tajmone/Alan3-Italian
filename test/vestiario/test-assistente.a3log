@@ -31,12 +31,13 @@ Come ti avvicini, le porte scorrono magicamente via per lasciarti passare.
 
 Atrio dell'Emporio Alani
 Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
-in ottone conducono a sud, fuori dal tempio del consumismo. C'è la tua
+in ottone conducono a sud, fuori dal tempio del consumismo. Puoi vedere un 
+cestino qui. Dietro al bancone c'è il manager dell'emporio. C'è la tua
 assistente personale qui.
 
 > esamina l'assistente
-È la tua assistente personale per lo shopping. L'assistente sta portando un
-paio di stivaletti (indossati) e un abito (indossato).
+È la tua assistente personale per lo shopping. L'assistente sta indossando un 
+abito e un paio di stivaletti.
 
 > ; ==============================================================================
 > ; TESTA: SEGUIRE EROE
@@ -44,14 +45,15 @@ paio di stivaletti (indossati) e un abito (indossato).
 > est
 Reparto Uomo
 Qui puoi trovare tutto ciò che un uomo desidererebbe indossare. Puoi vedere una 
-T-shirt qui. 
+T-shirt, una camicia rossa, una camicia nera e un cappotto qui. 
 
 L'assistente ti segue.
 
 > ovest
 Atrio dell'Emporio Alani
 Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
-in ottone conducono a sud, fuori dal tempio del consumismo. 
+in ottone conducono a sud, fuori dal tempio del consumismo. Puoi vedere un 
+cestino qui. Dietro al bancone c'è il manager dell'emporio. 
 
 L'assistente ti segue.
 
@@ -72,13 +74,14 @@ Come ti avvicini, le porte scorrono magicamente via per lasciarti passare.
 
 Atrio dell'Emporio Alani
 Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
-in ottone conducono a sud, fuori dal tempio del consumismo. C'è la tua
+in ottone conducono a sud, fuori dal tempio del consumismo. Puoi vedere un 
+cestino qui. Dietro al bancone c'è il manager dell'emporio. C'è la tua
 assistente personale qui.
 
 > est
 Reparto Uomo
 Qui puoi trovare tutto ciò che un uomo desidererebbe indossare. Puoi vedere una 
-T-shirt qui. 
+T-shirt, una camicia rossa, una camicia nera e un cappotto qui. 
 
 L'assistente ti segue.
 
@@ -96,12 +99,14 @@ salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
 > sudest
 Reparto Uomo
 Qui puoi trovare tutto ciò che un uomo desidererebbe indossare. Puoi vedere una 
-T-shirt qui. C'è la tua assistente personale qui.
+T-shirt, una camicia rossa, una camicia nera e un cappotto qui. C'è la tua
+assistente personale qui.
 
 > ovest
 Atrio dell'Emporio Alani
 Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
-in ottone conducono a sud, fuori dal tempio del consumismo. 
+in ottone conducono a sud, fuori dal tempio del consumismo. Puoi vedere un 
+cestino qui. Dietro al bancone c'è il manager dell'emporio. 
 
 L'assistente ti segue.
 
@@ -128,7 +133,8 @@ salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
 > sud
 Atrio dell'Emporio Alani
 Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
-in ottone conducono a sud, fuori dal tempio del consumismo. L'assistente ti
+in ottone conducono a sud, fuori dal tempio del consumismo. Puoi vedere un 
+cestino qui. Dietro al bancone c'è il manager dell'emporio. L'assistente ti
 raggiunge di corsa dal reparto donna.
 
 > ; ** NOTA ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -152,7 +158,7 @@ corsa dall'atrio.
 > sud
 Reparto Uomo
 Qui puoi trovare tutto ciò che un uomo desidererebbe indossare. Puoi vedere una 
-T-shirt qui. 
+T-shirt, una camicia rossa, una camicia nera e un cappotto qui. 
 
 L'assistente ti segue.
 

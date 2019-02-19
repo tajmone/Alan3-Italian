@@ -11,8 +11,6 @@ nord
 ; ==============================================================================
 ; Il verba esamina usato sui PNG dovrebbe riportare quali indumenti indossano.
 esamina l'assistente
-; ** NOTA ** Forse questo messaggio dovrebbe separare l'elenco delle cose 
-;            trasportate da quelle indossate (come con l'Eroe).
 ; ==============================================================================
 ; L'EROE
 ; ==============================================================================
@@ -26,19 +24,12 @@ inventario
 ; ------------------------------------------------------------------------------
 ; VERBO INDOSSA (FALLIMENTO)
 ; ------------------------------------------------------------------------------
-; Quando l'azione di indossare non va in porto, il messaggio riporta tutti gli
-; indumenti indossati dall'Eroe:
+; Quando l'azione di indossare non va in porto, il messaggio deve riportare solo
+; gli indumenti che impediscono l'azione:
 indossa i jeans
-; ** NOTA ** Elencare tutti i capi indossati nel tentativo di segnalare che un
-;            indumento sta bloccando l'azione richiesta è un po' eccessivo, e in
-;            alcuni contesti potrebbe produrre un elenco piuttosto lungo.
-;            Sarebbe più elegante se il messaggio menzionasse l'indumento (o gli
-;            indumenti) specifici che prevengono l'azione.
 ; ------------------------------------------------------------------------------
 ; VERBO TOGLITI (FALLIMENTO)
 ; ------------------------------------------------------------------------------
-; Come con 'indossa', anche 'togliti' riporta la lista degli indossati quando
-; non riesce a portare a termine l'azione:
+; Come con 'indossa', anche 'togliti' deve riportare nel messaggio solo la lista
+; degli indumenti che prevengono l'azione:
 togliti i boxer
-; ** NOTA ** Anche qui il messaggio potrebbe essere più mirato, e riportare solo
-;            l'indumento che impedisce l'azione.

@@ -1,0 +1,101 @@
+; ******************************************************************************
+; *                                                                            *
+; *                         TESTA INDOSSARE INDUMENTI                          *
+; *                                                                            *
+; ******************************************************************************
+; Verifichiamo che i verbi 'indossa' e 'togliti' funzionino come devono.
+; ==============================================================================
+; INDOSSA GIÀ INDOSSATI
+; ==============================================================================
+; Verifica risposte per tentativi di indossare indumenti già indossati (da Hero
+; o altro PNG).
+inventario
+; ------------------------------------------------------------------------------
+; GIÀ INDOSSATO -> HERO
+; ------------------------------------------------------------------------------
+indossa tuoi pantaloni
+nord
+; ------------------------------------------------------------------------------
+; GIÀ INDOSSATO -> PNG
+; ------------------------------------------------------------------------------
+; Il nuovo sistema del vestiario menzionerà chi sta indossando l'indumento:
+indossa stivaletti
+; [ recuperiamo un po' di vestiti ]
+est
+prendi la camicia nera
+prendi la camicia rossa
+prendi il cappotto
+nordovest
+spogliati
+lascia la camicia rossa
+; ==============================================================================
+; TESTA STRATIFICAZIONE
+; ==============================================================================
+; INDOSSA SÌ -> PRENDI IMPLICITO
+indossa canottiera
+indossa la camicia nera
+; INDOSSA NO -> PRENDI IMPLICITO -> BLOCCANTI: 'camicia nera'
+indossa la camicia rossa
+; INDOSSA NO -> BLOCCANTI: 'camicia nera'
+indossa la camicia rossa
+; TOGLITI NO -> BLOCCANTI: 'camicia nera'
+togliti la canottiera
+indossa il cappotto
+; INDOSSA NO -> BLOCCANTI: 'camicia nera' + cappotto
+indossa la camicia rossa
+; TOGLITI NO -> BLOCCANTI: 'camicia nera' + cappotto
+togliti la canottiera
+; ==============================================================================
+; TESTA INDUMENTI CON VALORI ZERO
+; ==============================================================================
+; Gli indumenti con valori di copertura zero sono liberamente indossabili.
+ovest
+; DBG PRIMA
+DBG_IND l'orologio
+DBG_IND la sciarpa nera
+DBG_IND la sciarpa blu
+DBG_IND la sciarpa bianca
+; INDOSSA
+indossa l'orologio
+indossa la sciarpa nera
+indossa la sciarpa blu
+indossa la sciarpa bianca
+inventario
+DBG_INV me
+; DBG DOPO
+DBG_IND l'orologio
+DBG_IND la sciarpa nera
+DBG_IND la sciarpa blu
+DBG_IND la sciarpa bianca
+; ==============================================================================
+; TESTA PRENDI IMPLICITO
+; ==============================================================================
+; Verifichiamo che il prendi implicito nel verbo 'indossa' sia implementato e
+; riportato correttamente.
+; ------------------------------------------------------------------------------
+; PRENDI IMPLICTIO -> INDOSSA NON RIUSCITO
+; ------------------------------------------------------------------------------
+lascia la camicia rossa
+DBG_IND camicia rossa
+; INDOSSA NO -> PRENDI IMPLICITO
+indossa la camicia rossa
+inventario
+DBG_IND camicia rossa
+; INDOSSA NO -> GIÀ POSSEDUTO
+indossa la camicia rossa
+inventario
+DBG_IND camicia rossa
+; ------------------------------------------------------------------------------
+; PRENDI IMPLICTIO -> INDOSSA RIUSCITO
+; ------------------------------------------------------------------------------
+togliti il cappotto
+DBG_IND cappotto
+; INDOSSA SÌ -> GIÀ POSSEDUTO
+indossa il cappotto
+DBG_IND cappotto
+togliti il cappotto
+lascia il cappotto
+DBG_IND cappotto
+; INDOSSA SÌ -> PRENDI IMPLICITO
+indossa il cappotto
+DBG_IND cappotto

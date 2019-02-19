@@ -12,13 +12,13 @@ nord
 ; TESTA 'togliti'
 ; ==============================================================================
 inventario
-DBG i boxer
+DBG_IND i boxer
 togliti i tuoi pantaloni
 togliti i boxer
-DBG i boxer
+DBG_IND i boxer
 ; ==============================================================================
-; TESTA 'wear'
+; TESTA 'indossa'
 ; ==============================================================================
-DBG i jeans
+DBG_IND i jeans
 indossa i jeans
-DBG i jeans
+DBG_IND i jeans

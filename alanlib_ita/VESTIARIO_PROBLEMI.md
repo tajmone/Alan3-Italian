@@ -11,6 +11,7 @@ Questo documento illustrerà i bachi e le varie problematiche nelle funzionalit�
 
 - [Riferimenti](#riferimenti)
 - [Panoramica dei problemi](#panoramica-dei-problemi)
+    - [Indumenti annidati](#indumenti-annidati)
     - [Trasferimento di indumenti indossati](#trasferimento-di-indumenti-indossati)
         - [Mancanza di linee guide](#mancanza-di-linee-guide)
     - [L'entità abbigliamento](#lentit%C3%A0-abbigliamento)
@@ -38,6 +39,10 @@ Per discussioni dettagliate riguardo i bachi e le problematiche, si vedano i seg
 # Panoramica dei problemi
 
 Le funzionalità del vestiario così come sono implementate nella libreria originale presentano una serie di problematiche sia tecniche (nella loro implementazione) che dal punto di vista generale di come sono state concepite.
+
+## Indumenti annidati
+
+La libreria tratta gli indumenti (e anche gli oggetti) contenuti in altri indumenti come se fossero indossati. Nell'inizializzazione di `indumento`, e in altre parti del codice, non viene specificato di operare solo su indumenti che sono contenuti _direttamente_ nell'attore. 
 
 ## Trasferimento di indumenti indossati
 

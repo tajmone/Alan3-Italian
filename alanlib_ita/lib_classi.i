@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.14.0-Alpha, 2019-02-05: Alan 3.0beta6 build 1866
+--| v0.15.0-Alpha, 2019-02-19: Alan 3.0beta6 build 1866
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -977,8 +977,8 @@ EVERY liquido IsA OBJECT
         -- i.e. if the implicit taking was successful
         THEN
 --                                                                              TRANSLATE!
-          "You give" SAY THE recipiente OF THIS. "of" SAY THIS. "to" SAY THE ricevente. "."
-          LOCATE recipiente OF THIS IN ricevente.
+          "You give" SAY THE recipiente OF THIS. "of" SAY THIS. "to" SAY THE png. "."
+          LOCATE recipiente OF THIS IN png.
       END IF.
 
       -- there is no 'ELSE' statement in this last IF -clause, as the 'IF THIS NOT
@@ -1707,7 +1707,8 @@ ADD TO EVERY actor
   IS  NOT seguendo.                                         ---> following
   HAS NOT nome_proprio.                                     ---> named
       --  Il giocatore non ne conosce il nome.
-  HAS indossati { indumento_fittizio }.                     ---> wearing
+-- >>> dev-vestario: deleted! >>> set 'indossati'
+  -- HAS indossati { indumento_fittizio }.                     ---> wearing
   -- = the actor's clothing is not specified.
   -- "null_clothing" is a dummy default that can be ignored.
   IS  NOT condiscendente.                                   ---> compliant
@@ -1810,10 +1811,14 @@ ADD TO EVERY actor
     MAKE hero condiscendente.
     -- so that the hero can give, drop, etc. carried objects.
 
+-- >>> dev-vestario: FIXME! >>> set 'indossati'
+
 -- @TODO: Questo andrebbe spostato nel modulo del vestiario:                    TODO!
 
+-- >>> dev-vestario: deleted! set indossati >>>
+
     -- Rimuovi l'indumento fittizio dagli 'indossati' di ogni attore:
-    EXCLUDE indumento_fittizio FROM THIS:indossati.
+    -- EXCLUDE indumento_fittizio FROM THIS:indossati.
 
 --~=============================================================================
 --~-----------------------------------------------------------------------------
@@ -1879,9 +1884,55 @@ ADD TO EVERY actor
     DOES AFTER
       IF THIS <> hero
         THEN
-          LIST THIS.
+-- >>> dev-vestario: tweaked: nuovo metodo per elencare separatamente ciò che
+--                            è trasportato e cio che è indossato.
+-- >>> codice originale >>>
+          -- LIST THIS.
+-- <<< codice originale <<<
+          -- --------------------------
+          -- Elenca oggetti trasportati
+          -- --------------------------
+          -- @NOTA: Evita di usare il set 'indossati', se è NOT indossato è portato:
+          SET mia_AT:temp_cnt TO COUNT IsA object, IS NOT indossato, DIRECTLY IN THIS.
+          IF  mia_AT:temp_cnt <> 0
+            THEN "$+1 sta"
+              IF THIS IS plurale
+                THEN "$$no"
+              END IF. "portando"
+              FOR EACH ogg_portato ISA object, IS NOT indossato, DIRECTLY IN THIS
+                DO
+                  SAY AN ogg_portato.
+                  DECREASE mia_AT:temp_cnt.
+                  DEPENDING ON mia_AT:temp_cnt
+                    = 1 THEN "e"
+                    = 0 THEN "."
+                    ELSE ","
+                  END DEPEND.
+              END FOR.
+          END IF.
+          -- --------------------------
+          -- Elenca indumenti indossati
+          -- --------------------------
+          SET mia_AT:temp_cnt TO COUNT IsA indumento, DIRECTLY IN THIS, IS indossato.
+          IF  mia_AT:temp_cnt <> 0
+            THEN "$+1 sta"
+              IF THIS IS plurale
+                THEN "$$no"
+              END IF. "indossando"
+              FOR EACH ind_indossato IsA indumento, DIRECTLY IN THIS, IS indossato
+                DO
+                  SAY AN ind_indossato.
+                  DECREASE mia_AT:temp_cnt.
+                  DEPENDING ON mia_AT:temp_cnt
+                    = 1 THEN "e"
+                    = 0 THEN "."
+                    ELSE ","
+                  END DEPEND.
+              END FOR.
+          END IF.
       END IF.
   END VERB esamina.
+
 
 
 END ADD TO actor.

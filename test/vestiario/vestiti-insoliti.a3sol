@@ -11,10 +11,10 @@ nord
 ; ATTREZZATURA SPORTIVA
 ; ==============================================================================
 esamina il passamontagna
-dbg passamontagna
+DBG_IND passamontagna
 ; Questi occhiali hanno val_testa=4 e sono indossabili sopra il passamontagna:
 esamina gli occhiali
-dbg occhiali
+DBG_IND occhiali
 ; ------------------------------------------------------------------------------
 ; PASSAMONTAGNA + OCCHIALI SCI
 ; ------------------------------------------------------------------------------
@@ -40,7 +40,7 @@ indossa il passamontagna
 ; assegnare valori di copertura zona, così saranno liberamente indossabili, a
 ; prescindere dagli altri capi.
 esamina l'orologio
-dbg orologio
+DBG_IND orologio
 indossa l'orologio
 inventario
 ; ------------------------------------------------------------------------------
@@ -50,11 +50,11 @@ inventario
 ; però alla libreria di verificare se il giocatore cerca di indossare molteplici
 ; indumenti simili in contemporanea.
 esamina la sciarpa bianca
-dbg sciarpa bianca
+DBG_IND sciarpa bianca
 esamina la sciarpa blu
-dbg sciarpa blu
+DBG_IND sciarpa blu
 esamina la sciarpa nera
-dbg sciarpa nera
+DBG_IND sciarpa nera
 ; INDOSSA PIÙ SCIAPRE:
 indossa la sciarpa bianca
 indossa la sciarpa blu

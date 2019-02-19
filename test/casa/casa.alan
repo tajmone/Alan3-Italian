@@ -1,4 +1,4 @@
--- Alan >= 3.0beta6 build 1866 | Alan Italian >= v0.14.0-Alpha
+-- Alan >= 3.0beta6 build 1866 | Alan Italian >= v0.15.0-Alpha
 --==============================================================================
 -- "La Casa" by Tristano Ajmone, 2018.
 --==============================================================================
@@ -289,17 +289,21 @@ END THE torcia.
 --==============================================================================
 -- Abbigliamento Iniziale del Protagonista
 --==============================================================================
+-- >>> dev-vestario: tweaked
+
 THE hero IsA ACTOR.
-  HAS indossati { bombetta, jeans }.
+  -- HAS indossati { bombetta, jeans }.
 END THE hero.
 
-THE bombetta IsA ind_cappello.
+THE bombetta IsA ind_cappello IN hero.
+  IS indossato.
   NAME bombetta.
   HAS articolo "la".
   HAS xDesc "È una bombetta originale inglese.".
 END THE bombetta.
 
-THE jeans IsA ind_pantaloni.
+THE jeans IsA ind_pantaloni IN hero.
+  IS indossato.
   NAME jeans.
   NAME blue jeans.
   NAME blu jeans.

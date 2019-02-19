@@ -1,0 +1,196 @@
+
+
+Emporio Giorgio Alani 
+Un set per testare il vestiario. 
+(C) Tristano Ajmone, 2019. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1866. 
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati. 
+
+Digita USCITE per visualizzare la lista di uscite disponibili in una stanza. 
+Usa il verbo DBG INDUMENTO per mostrare i valori di copertura di un capo di
+vestiario.
+
+
+Davanti all'Emporio Alani
+Ti trovi di fronte all'entrata dell'Emporio Giorgio Alani. Due imponenti porte
+in ottone attendono di condurti a nord, dentro il tempio della moda.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                        TESTA ELENCAZIONE INVENTARIO                        *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Questo script è mirato a testare come viene mostrato l'elenco degli oggetti
+> ; posseduti e indossati degli attori -- tramite 'inventario' per l'Eroe, e con
+> ; 'esamina attore' per i PNG.
+> ; ==============================================================================
+> ; LIST EROE/PNG
+> ; ==============================================================================
+> ; Anche se ora 'inventario' e 'esamina attore' usano dei loop ad hoc anziché
+> ; LIST, useremo un comando per vedere che testo produce LIST tramite i messaggi
+> ; di runtime, visto che un autore potrebbe utilizzare LIST.
+> DBG_INV me
+Stai portando la tua canottiera (indossata), le tue sneakers (indossate), i tuoi 
+pantaloni (indossati), i tuoi boxer (indossati) e i tuoi calzini (indossati).
+
+> DBG_INV manager
+Il manager sta portando un paio di mocassini (indossati), un pullover (indossato
+) e un paio di calzoni (indossati).
+
+> ; ==============================================================================
+> ; EROE -> INVENTARIO
+> ; ==============================================================================
+> ; Dobbiamo verificare che i nuovi loop personalizzati gestiscano correttamente
+> ; i separatori: "," dopo ogni elemento, fino al penultimo, e poi "e" tra il
+> ; penultimo e l'ultimo, e "." per chiudere la lista.
+> ; Inoltre, dobbiamo verificare che vengano gestiti correttamente i messaggi per
+> ; quando non trasporta/indossa nulla, o un solo oggetto.
+> ; ------------------------------------------------------------------------------
+> ; TRASPORTATI: 0 | INDOSSATI: 5
+> ; ------------------------------------------------------------------------------
+> ; Anche se l'Eroe non sta portando nulla lo menzioniamo, dato che ha richiesto
+> ; esplicitamente l'inventario.
+> inventario
+Non stai portando niente. Stai indossando i tuoi calzini, i tuoi boxer, la tua 
+canottiera, le tue sneakers e i tuoi pantaloni.
+
+> togliti sneakers
+Ti togli le tue sneakers.
+
+> ; ------------------------------------------------------------------------------
+> ; TRASPORTATI: 1 | INDOSSATI: 4
+> ; ------------------------------------------------------------------------------
+> inventario
+Stai portando le tue sneakers. Stai indossando i tuoi calzini, i tuoi boxer, la
+tua canottiera e i tuoi pantaloni.
+
+> togliti calzini
+Ti togli i tuoi calzini.
+
+> ; ------------------------------------------------------------------------------
+> ; TRASPORTATI: 2 | INDOSSATI: 3
+> ; ------------------------------------------------------------------------------
+> inventario
+Stai portando i tuoi calzini e le tue sneakers. Stai indossando i tuoi boxer, 
+la tua canottiera e i tuoi pantaloni.
+
+> togliti tuoi pantaloni
+Ti togli i tuoi pantaloni.
+
+> ; ------------------------------------------------------------------------------
+> ; TRASPORTATI: 3 | INDOSSATI: 2
+> ; ------------------------------------------------------------------------------
+> inventario
+Stai portando i tuoi calzini, le tue sneakers e i tuoi pantaloni. Stai
+indossando i tuoi boxer e la tua canottiera.
+
+> togliti boxer
+Ti togli i tuoi boxer.
+
+> ; ------------------------------------------------------------------------------
+> ; TRASPORTATI: 4 | INDOSSATI: 1
+> ; ------------------------------------------------------------------------------
+> inventario
+Stai portando i tuoi calzini, i tuoi boxer, le tue sneakers e i tuoi pantaloni. 
+Stai indossando la tua canottiera.
+
+> togliti canottiera
+Ti togli la tua canottiera.
+
+> ; ------------------------------------------------------------------------------
+> ; TRASPORTATI: 5 | INDOSSATI: 0
+> ; ------------------------------------------------------------------------------
+> ; Invece non verrà menzionato il fatto che non indossa nulla:
+> inventario
+Stai portando i tuoi calzini, i tuoi boxer, la tua canottiera, le tue sneakers e 
+i tuoi pantaloni.
+
+> ; ==============================================================================
+> ; PNG -> ESAMINA
+> ; ==============================================================================
+> ; Nul nuovo sistema, quando si esamina un PNG che non sta portando o indossando
+> ; nulla, questo fatto non verrà più menzionato.
+> nord
+Come ti avvicini, le porte scorrono magicamente via per lasciarti passare.
+
+Atrio dell'Emporio Alani
+Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
+in ottone conducono a sud, fuori dal tempio del consumismo. Puoi vedere un 
+cestino qui. Dietro al bancone c'è il manager dell'emporio. C'è la tua
+assistente personale qui.
+
+> ; ------------------------------------------------------------------------------
+> ; TRASPORTATI: 0 | INDOSSATI: 3
+> ; ------------------------------------------------------------------------------
+> ; Si noti come non viene più menzionato "Non sta portando nulla":
+> esamina manager
+Esamini il manager, ma non noti niente di speciale. Il manager sta indossando 
+un paio di calzoni, un pullover e un paio di mocassini.
+
+> chiedi mocassini a manager
+Il manager ti dà i mocassini.
+
+> ; ------------------------------------------------------------------------------
+> ; TRASPORTATI: 0 | INDOSSATI: 2
+> ; ------------------------------------------------------------------------------
+> ; Si noti come non viene più menzionato "Non sta portando nulla":
+> esamina manager
+Esamini il manager, ma non noti niente di speciale. Il manager sta indossando 
+un paio di calzoni e un pullover.
+
+> chiedi pullover a manager
+Il manager ti dà il pullover.
+
+> ; ------------------------------------------------------------------------------
+> ; TRASPORTATI: 0 | INDOSSATI: 1
+> ; ------------------------------------------------------------------------------
+> esamina manager
+Esamini il manager, ma non noti niente di speciale. Il manager sta indossando 
+un paio di calzoni.
+
+> chiedi calzoni a manager
+Il manager ti dà i calzoni.
+
+> ; ------------------------------------------------------------------------------
+> ; TRASPORTATI: 0 | INDOSSATI: 0
+> ; ------------------------------------------------------------------------------
+> ; Si noti come non viene più menzionato né "Non sta portando nulla" né
+> ; "Non sta indossando nulla":
+> esamina manager
+Esamini il manager, ma non noti niente di speciale.
+
+> dai boxer a manager
+Consegni i tuoi boxer al manager.
+
+> ; ------------------------------------------------------------------------------
+> ; TRASPORTATI: 1 | INDOSSATI: 0
+> ; ------------------------------------------------------------------------------
+> esamina manager
+Esamini il manager, ma non noti niente di speciale. Il manager sta portando i
+tuoi boxer.
+
+> dai calzini a manager
+Consegni i tuoi calzini al manager.
+
+> ; ------------------------------------------------------------------------------
+> ; TRASPORTATI: 2 | INDOSSATI: 0
+> ; ------------------------------------------------------------------------------
+> esamina manager
+Esamini il manager, ma non noti niente di speciale. Il manager sta portando i
+tuoi calzini e i tuoi boxer.
+
+> dai sneakers a manager
+Consegni le tue sneakers al manager.
+
+> ; ------------------------------------------------------------------------------
+> ; TRASPORTATI: 3 | INDOSSATI: 0
+> ; ------------------------------------------------------------------------------
+> esamina manager
+Esamini il manager, ma non noti niente di speciale. Il manager sta portando i
+tuoi calzini, i tuoi boxer e le tue sneakers.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

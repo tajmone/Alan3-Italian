@@ -1,0 +1,208 @@
+; ******************************************************************************
+; *                                                                            *
+; *                       TESTA MANIPOLAZIONE INDUMENTI                        *
+; *                                                                            *
+; ******************************************************************************
+; Questo script testerà che la manipolazione di indumenti indossatti venga
+; gestita correttamente da quei verbi che potrebbero spostare un indumento
+; indossato dal suo proprietario.
+; ******************************************************************************
+; INDOSSATI EROE
+; ******************************************************************************
+; Iniziamo a verificare come vengono gestiti gli indumenti indossati dall'Eroe.
+inventario
+; ==============================================================================
+; LASCIARE E PRENDERE
+; ==============================================================================
+; ------------------------------------------------------------------------------
+; TESTA: 'LASCIA'
+; ------------------------------------------------------------------------------
+; Un indumento indossato non può essere lasciato:
+lascia le scarpe
+; ------------------------------------------------------------------------------
+; TESTA: 'PRENDI' -> INDOSSATO
+; ------------------------------------------------------------------------------
+; Un indumento da noi già indossato non può essere preso:
+prendi canottiera
+; ------------------------------------------------------------------------------
+; TESTA: 'PRENDI' -> ANNIDATO IN INDOSSATO
+; ------------------------------------------------------------------------------
+; Prendiamo un indumento che si trova dentro un indumento che stiamo indossando:
+prendi kippah
+; //// VERIFICA 'NOT indossato' (OK!): ////
+DBG_IND kippah
+; Per sicurezza, testiamo anche con un oggetto non-indumento:
+prendi portafoglio
+; ==============================================================================
+; SVUOTARE
+; ==============================================================================
+; Rimettiamo il portafoglio e la kippah nei pantaloni...
+metti il portafoglio nei tuoi pantaloni
+metti la kippah nei tuoi pantaloni
+; Verifichiamo che i settaggi degli indosabili siano correttamente preservati:
+DBG_IND kippah
+inventario
+; ------------------------------------------------------------------------------
+; TESTA: 'SVUOTA'
+; ------------------------------------------------------------------------------
+; Gli indumenti sono anche contenitori, e i pantaloni contengono oggetti.
+esamina tuoi pantaloni
+svuota tuoi pantaloni
+; Ora il portafoglio e la kippah sono in terra:
+guarda
+; Verifichiamo che lo stato di indossamento dei pantaloni non sia cambiato:
+DBG_IND tuoi pantaloni
+; [... azioni intermedie ...]
+prendi il portafoglio
+nord
+; ==============================================================================
+; METTERE
+; ==============================================================================
+; I verbi `metti_su` e `metti_in` non saranno eseguiti se l'indumento è indossato.
+; ------------------------------------------------------------------------------
+; TESTA: 'METTI SU' (SUPPORTO)
+; ------------------------------------------------------------------------------
+; Proviamo a trasferire indumenti indossati sui supporti
+metti tuoi pantaloni sul bancone
+togliti i tuoi pantaloni
+metti tuoi pantaloni sul bancone
+x bancone
+; //// VERIFICA 'NOT indossato' (OK!): ////
+DBG_IND tuoi pantaloni
+; [... azioni intermedie ...]
+indossa i tuoi pantaloni
+; ------------------------------------------------------------------------------
+; TESTA: 'METTI IN' (CONTENITORE)
+; ------------------------------------------------------------------------------
+; Proviamo a trasferire indumenti indossati in contenitori
+metti tuoi pantaloni nel cestino
+togliti i tuoi pantaloni
+metti tuoi pantaloni nel cestino
+x cestino
+; //// VERIFICA 'NOT indossato' (OK!): ////
+DBG_IND tuoi pantaloni
+; ==============================================================================
+; LANCIARE
+; ==============================================================================
+; Proviamo a lanciare indumenti indossati dall'Eroe, l'azione dovrebbe essere
+; sempre bloccata.
+; ------------------------------------------------------------------------------
+; TESTA: 'LANCIA'
+; ------------------------------------------------------------------------------
+lancia i boxer
+; ------------------------------------------------------------------------------
+; TESTA: 'LANCIA A' (PNG)
+; ------------------------------------------------------------------------------
+lancia le sneakers al manager
+; ------------------------------------------------------------------------------
+; TESTA: 'LANCIA CONTRO' (PNG)
+; ------------------------------------------------------------------------------
+lancia le sneakers contro il manager
+; ------------------------------------------------------------------------------
+; TESTA: 'LANCIA CONTRO' (IND INDOSSATO)
+; ------------------------------------------------------------------------------
+lancia il portafoglio contro i boxer
+; ------------------------------------------------------------------------------
+; TESTA: 'LANCIA IN' (CONTENITORE)
+; ------------------------------------------------------------------------------
+lancia le sneakers nel cestino
+; ------------------------------------------------------------------------------
+; TESTA: 'LANCIA IN' (CONTENITORE INDOSSATO)
+; ------------------------------------------------------------------------------
+lancia il portafoglio nelle sneakers
+; ==============================================================================
+; DARE
+; ==============================================================================
+; ------------------------------------------------------------------------------
+; TESTA: 'DAI A'
+; ------------------------------------------------------------------------------
+; Proviamo a trasferire indumenti indossati da noi ad altri PNG
+dai la canottiera all'assistente
+togliti la canottiera
+dai la canottiera all'assistente
+; //// VERIFICA 'NOT indossato' (OK!): ////
+DBG_IND canottiera
+x assistente
+; ******************************************************************************
+; INDOSSATI PNG
+; ******************************************************************************
+; Verifichiamo come vengono gestiti gli indumenti indossati dai PNG.
+; ==============================================================================
+; METTERE
+; ==============================================================================
+; I verbi `metti_su` e `metti_in` non saranno eseguiti se l'indumento è indossato.
+; ------------------------------------------------------------------------------
+; TESTA: 'METTI SU'' (SUPPORTO)
+; ------------------------------------------------------------------------------
+metti stivaletti sul bancone
+metti abito sul bancone
+; ------------------------------------------------------------------------------
+; TESTA: 'METTI IN' (CONTENITORE)
+; ------------------------------------------------------------------------------
+; Proviamo a trasferire in un contenitore indumenti indossati da PNG:
+metti stivaletti nel cestino
+metti abito nel cestino
+; ==============================================================================
+; CHIEDERE
+; ==============================================================================
+; ------------------------------------------------------------------------------
+; TESTA: 'CHIEDI'
+; ------------------------------------------------------------------------------
+; Il verbo 'chiedi' funziona sempre, incluso con gli indumenti. Il codice della
+; libreria contiene del codice commentato su come impedire che ciò avvenga:
+chiedi l'abito all'assistente
+; //// VERIFICA 'NOT indossato' (OK!): ////
+DBG_IND abito
+inventario
+; ==============================================================================
+; PRENDERE
+; ==============================================================================
+; ------------------------------------------------------------------------------
+; TESTA: 'PRENDI' -> PNG NON CONDISCENDENTE
+; ------------------------------------------------------------------------------
+DBG_COND assistente
+; Proviamo a prendere un indumento indossato da un PNG non condiscendente...
+prendi stivaletti
+DBG_IND stivaletti
+; ------------------------------------------------------------------------------
+; TESTA: 'PRENDI' -> PNG CONDISCENDENTE
+; ------------------------------------------------------------------------------
+; La suite di "debacaggio" offre il comando "soggioca" per invertire lo stato
+; di condiscendenza di un attore:
+soggioga assistente
+DBG_COND assistente
+; E ora, proviamo a prendere un indumento indossato dal PNG condiscendente:
+prendi stivaletti
+; //// VERIFICA 'NOT indossato' (OK!): ////
+DBG_IND stivaletti
+; ******************************************************************************
+; VERBI VARI
+; ******************************************************************************
+guarda dietro il bancone
+prendi la pistola
+; ==============================================================================
+; ATTACCARE/CALCIARE
+; ==============================================================================
+inventario
+; ------------------------------------------------------------------------------
+; TESTA: 'ATTACCA' -> INDOSSATO DA EROE
+; ------------------------------------------------------------------------------
+attacca boxer
+; ------------------------------------------------------------------------------
+; TESTA: 'ATTACCA CON' -> INDOSSATO DA EROE
+; ------------------------------------------------------------------------------
+attacca boxer con pistola
+attacca pistola con boxer
+; ------------------------------------------------------------------------------
+; TESTA: 'ATTACCA' -> INDOSSATO DA PNG
+; ------------------------------------------------------------------------------
+x manager
+attacca pullover con pistola
+; ------------------------------------------------------------------------------
+; TESTA: 'CALCIA' -> INDOSSATO DA EROE
+; ------------------------------------------------------------------------------
+calcia boxer
+; ------------------------------------------------------------------------------
+; TESTA: 'CALCIA' -> INDOSSATO DA PNG
+; ------------------------------------------------------------------------------
+calcia pullover

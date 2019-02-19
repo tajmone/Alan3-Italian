@@ -1,0 +1,110 @@
+
+
+Emporio Giorgio Alani 
+Un set per testare il vestiario. 
+(C) Tristano Ajmone, 2019. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1866. 
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati. 
+
+Digita USCITE per visualizzare la lista di uscite disponibili in una stanza. 
+Usa il verbo DBG INDUMENTO per mostrare i valori di copertura di un capo di
+vestiario.
+
+
+Davanti all'Emporio Alani
+Ti trovi di fronte all'entrata dell'Emporio Giorgio Alani. Due imponenti porte
+in ottone attendono di condurti a nord, dentro il tempio della moda.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                    TESTA INDOSSATI CON PRENDI IMPLICITO                    *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Alcuni verbi eseguono un 'prendi' implicito per predisporre l'azione che vanno
+> ; a compiere (anche se poi non andrà a termine). Queste azioni implicite sono
+> ; insidiose poiché potrebbero raggirare i controlli sugli indumenti indossati.
+> nord
+Come ti avvicini, le porte scorrono magicamente via per lasciarti passare.
+
+Atrio dell'Emporio Alani
+Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
+in ottone conducono a sud, fuori dal tempio del consumismo. Puoi vedere un 
+cestino qui. Dietro al bancone c'è il manager dell'emporio. C'è la tua
+assistente personale qui.
+
+> ; ******************************************************************************
+> ; LANCIARE INDUMENTI INDOSSATI
+> ; ******************************************************************************
+> ; Il gruppo di verbi 'lancia' deve essere bloccato se coinvolge proiettili che
+> ; sonon indumenti indossato da qualcuno.
+> ; ==============================================================================
+> ; TESTA LANCIARE -> PNG INDOSSANTE NON COMPIACENTE
+> ; ==============================================================================
+> lancia stivaletti
+Al momento gli stivaletti sono indossati dall'assistente.
+
+> lancia stivaletti al manager
+Al momento gli stivaletti sono indossati dall'assistente.
+
+> lancia stivaletti contro il manager
+Al momento gli stivaletti sono indossati dall'assistente.
+
+> lancia stivaletti nel cestino
+Al momento gli stivaletti sono indossati dall'assistente.
+
+> lancia i mocassini contro l'assistente
+Al momento i mocassini sono indossati dal manager.
+
+> lancia il pullover nel cestino
+Al momento il pullover è indossato dal manager.
+
+> inventario
+Non stai portando niente. Stai indossando i tuoi calzini, i tuoi boxer, la tua 
+canottiera, le tue sneakers e i tuoi pantaloni.
+
+> ; ==============================================================================
+> ; TESTA LANCIARE -> PNG INDOSSANTE COMPIACENTE
+> ; ==============================================================================
+> ; Ora proviamo a ripetere le stesse azioni dopo aver reso compiacenti i PNG.
+> soggioga assistente e manager
+(assistente) Con i poteri della tua mente soggioghi l'assistente alla
+condiscendenza.
+
+(manager) Con i poteri della tua mente soggioghi il manager alla condiscendenza.
+
+> lancia stivaletti
+Al momento gli stivaletti sono indossati dall'assistente.
+
+> lancia stivaletti al manager
+Al momento gli stivaletti sono indossati dall'assistente.
+
+> lancia stivaletti contro il manager
+Al momento gli stivaletti sono indossati dall'assistente.
+
+> lancia stivaletti nel cestino
+Al momento gli stivaletti sono indossati dall'assistente.
+
+> lancia i mocassini contro l'assistente
+Al momento i mocassini sono indossati dal manager.
+
+> lancia il pullover nel cestino
+Al momento il pullover è indossato dal manager.
+
+> inventario
+Non stai portando niente. Stai indossando i tuoi calzini, i tuoi boxer, la tua 
+canottiera, le tue sneakers e i tuoi pantaloni.
+
+> ; ******************************************************************************
+> ; LEGARE INDUMENTI INDOSSATI
+> ; ******************************************************************************
+> ; ==============================================================================
+> ; TESTA LEGARE -> PNG INDOSSANTE COMPIACENTE
+> ; ==============================================================================
+> lega gli stivaletti al cestino
+Al momento gli stivaletti sono indossati dall'assistente.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

@@ -28,7 +28,8 @@ Come ti avvicini, le porte scorrono magicamente via per lasciarti passare.
 
 Atrio dell'Emporio Alani
 Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
-in ottone conducono a sud, fuori dal tempio del consumismo. C'è la tua
+in ottone conducono a sud, fuori dal tempio del consumismo. Puoi vedere un 
+cestino qui. Dietro al bancone c'è il manager dell'emporio. C'è la tua
 assistente personale qui.
 
 > ovest
@@ -53,22 +54,18 @@ L'assistente ti segue.
 Un passamontagna invernale. Praticamente, un cappuccio con buchi per occhi e
 bocca, come quelli usati nelle rapine, hai presente?
 
-> dbg passamontagna
+> DBG_IND passamontagna
 'passamontagna' VALORI: | val_testa: 2 | 
-È INDOSSATO: No. 
-IN ABBIGLIAMENTO (EROE): No. 
-IN 'INDOSSATI' DI:
+È INDOSSATO: No
 
 > ; Questi occhiali hanno val_testa=4 e sono indossabili sopra il passamontagna:
 > esamina gli occhiali
 Una padio di occhiali da sci, lente frontale singola (a forma di B) e una banda
 elastica per fissarli alla testa.
 
-> dbg occhiali
+> DBG_IND occhiali
 'occhiali da sci' VALORI: | val_testa: 4 | 
-È INDOSSATO: No. 
-IN ABBIGLIAMENTO (EROE): No. 
-IN 'INDOSSATI' DI:
+È INDOSSATO: No
 
 > ; ------------------------------------------------------------------------------
 > ; PASSAMONTAGNA + OCCHIALI SCI
@@ -81,9 +78,9 @@ Prendi il passamontagna e lo indossi.
 Prendi gli occhiali da sci e li indossi.
 
 > inventario
-Non stai portando niente. Stai indossando i tuoi calzini, i tuoi boxer, la tua 
-canottiera, le tue sneakers, i tuoi pantaloni, un paio di occhiali da sci e un 
-passamontagna.
+Non stai portando niente. Stai indossando un passamontagna, un paio di occhiali
+da sci, i tuoi calzini, i tuoi boxer, la tua canottiera, le tue sneakers e i
+tuoi pantaloni.
 
 > ; ** NOTA ** Il problema qui è che questi confliggeranno con altri indumenti per
 > ;            la testa, come i cappelli, poiché non vi è distinzione tra testa e
@@ -104,9 +101,8 @@ Ti togli il passamontagna.
 Indossi gli occhiali da sci.
 
 > indossa il passamontagna
-Stai indossando i tuoi boxer, la tua canottiera, le tue sneakers, i tuoi 
-pantaloni, i tuoi calzini e un paio di occhiali da sci. Trying to put il 
-passamontagna on isn't very sensible.
+Per poter indossare il passamontagna dovresti prima toglierti gli occhiali da
+sci.
 
 > ; ==============================================================================
 > ; CAPI SENZA VALORI COPERTURA (ORNAMENTALI)
@@ -118,19 +114,17 @@ passamontagna on isn't very sensible.
 Un orologio sportivo digitale, con delle app per monitorare il cuore, la
 temperatura esterna, geo-localizzare, etc.
 
-> dbg orologio
+> DBG_IND orologio
 'orologio' VALORI: (nessuno) 
-È INDOSSATO: No. 
-IN ABBIGLIAMENTO (EROE): No. 
-IN 'INDOSSATI' DI:
+È INDOSSATO: No
 
 > indossa l'orologio
 Prendi l'orologio e lo indossi.
 
 > inventario
-Stai portando un passamontagna. Stai indossando i tuoi calzini, i tuoi boxer, 
-la tua canottiera, le tue sneakers, i tuoi pantaloni, un orologio e un paio di 
-occhiali da sci.
+Stai portando un passamontagna. Stai indossando un paio di occhiali da sci, un 
+orologio, i tuoi calzini, i tuoi boxer, la tua canottiera, le tue sneakers e i
+tuoi pantaloni.
 
 > ; ------------------------------------------------------------------------------
 > ; INDOSSARE MOLTEPLICI INDUMENTI SIMILI (SCIARPE)
@@ -141,29 +135,23 @@ occhiali da sci.
 > esamina la sciarpa bianca
 Una sciarpa bianca.
 
-> dbg sciarpa bianca
+> DBG_IND sciarpa bianca
 'sciarpa bianca' VALORI: (nessuno) 
-È INDOSSATO: No. 
-IN ABBIGLIAMENTO (EROE): No. 
-IN 'INDOSSATI' DI:
+È INDOSSATO: No
 
 > esamina la sciarpa blu
 Una sciarpa blu.
 
-> dbg sciarpa blu
+> DBG_IND sciarpa blu
 'sciarpa blu' VALORI: (nessuno) 
-È INDOSSATO: No. 
-IN ABBIGLIAMENTO (EROE): No. 
-IN 'INDOSSATI' DI:
+È INDOSSATO: No
 
 > esamina la sciarpa nera
 Una sciarpa nera.
 
-> dbg sciarpa nera
+> DBG_IND sciarpa nera
 'sciarpa nera' VALORI: (nessuno) 
-È INDOSSATO: No. 
-IN ABBIGLIAMENTO (EROE): No. 
-IN 'INDOSSATI' DI:
+È INDOSSATO: No
 
 > ; INDOSSA PIÙ SCIAPRE:
 > indossa la sciarpa bianca
@@ -176,9 +164,9 @@ Prendi la sciarpa blu e la indossi.
 Prendi la sciarpa nera e la indossi.
 
 > inventario
-Stai portando un passamontagna. Stai indossando una sciarpa bianca, una sciarpa
-blu, una sciarpa nera, i tuoi calzini, i tuoi boxer, la tua canottiera, le tue 
-sneakers, i tuoi pantaloni, un orologio e un paio di occhiali da sci.
+Stai portando un passamontagna. Stai indossando un paio di occhiali da sci, un 
+orologio, una sciarpa bianca, una sciarpa blu, una sciarpa nera, i tuoi calzini, 
+i tuoi boxer, la tua canottiera, le tue sneakers e i tuoi pantaloni.
 
 > 
 

@@ -179,11 +179,18 @@ THE ega_camerino IsA stanza.
      NORDOVEST al reparto lavoro.".
   VERB spogliati -- Consenti all'eroe di spogliarsi all'interno del camerino:
     DOES ONLY
-      IF COUNT DIRECTLY IN abbigliamento, ISA indumento > 0
-        THEN EMPTY abbigliamento IN hero.
-          "Hai rimosso tutti gli indumenti che indossavi."
+      IF COUNT IsA indumento, DIRECTLY IN hero, IS indossato > 0
+        THEN
+          "Ti spogli di tutti gli indumenti che indossavi e li getti a terra."
+          FOR EACH ind_indossato IsA indumento, DIRECTLY IN Hero, IS indossato
+            DO
+              MAKE ind_indossato NOT indossato.
+-- >>> dev-vestario: NO INDOSSATI! (prova a non usare set 'indossati')
+            --EXCLUDE ind_indossato FROM indossati of Hero.
+              LOCATE ind_indossato AT CURRENT LOCATION.
+          END FOR.
         ELSE "Non stai indossando nulla.."
-      END IF.
+      END IF. 
   END VERB spogliati.  
 END THE ega_camerino.
 -- =============================================================================
@@ -419,6 +426,19 @@ EVERY cl_tshirt IsA indumento.
   NAME maglietta.
 END EVERY.
 
+EVERY cl_camicia IsA indumento.
+  HAS val_tronco 8.
+  HAS articolo "la".
+  NAME camicia.
+END EVERY.
+
+--==============================================================================
+-- MAGLIONI E ALTRI INDUMENTI 'val_tronco 16'
+--==============================================================================
+EVERY proto_maglione IsA indumento.
+  HAS val_tronco 16.
+END EVERY.
+
 --==============================================================================
 -- INDUMENTI GAMBE
 --==============================================================================
@@ -477,9 +497,19 @@ END EVERY.
 EVERY cl_abito IsA indumento.
   HAS articolo "l'".
   NAME abito.
-  HAS topcover 8.
-  HAS botcover 32.
+  HAS val_tronco 8.
+  HAS val_gambe 32.
 END EVERY.
+
+--==============================================================================
+-- CAPPOTTI
+--==============================================================================
+EVERY cl_cappotto IsA indumento.
+  NAME cappotto.
+  HAS val_tronco 64.
+  HAS val_gambe 64.
+END EVERY.
+
 
 
 --==============================================================================
@@ -499,64 +529,67 @@ END EVERY.
 --==============================================================================
 -- Un verbo per poter verificare i valori di copertura dei vari indumenti.
 
-SYNTAX dbg = dbg (obj)
-  WHERE obj IsA indumento
-    ELSE "Questo verbo accetta solo parametri di tipo indumento."
+-- >>> dev-vestario: deleted! <DBG INDUMENTO> >>> (spostato in modulo DEBACA!)
+-- SYNTAX dbg = dbg (obj)*!
+--   WHERE obj IsA indumento
+--     ELSE "Questo verbo accetta solo parametri di tipo indumento."
 
-ADD TO EVERY indumento
-  VERB dbg
-    DOES
-      "'$1' VALORI:"
-      IF  obj:val_testa = 0 AND obj:val_tronco = 0 AND obj:val_gambe = 0
-      AND obj:val_piedi = 0 AND obj:val_mani = 0
-        THEN
-          "(nessuno)"
-        ELSE
-          IF obj:val_testa > 0
-            THEN "| val_testa:" SAY obj:val_testa.
-          END IF.
-          IF obj:val_tronco > 0
-            THEN "| val_tronco:" SAY obj:val_tronco.
-          END IF.
-          IF obj:val_gambe > 0
-            THEN "| val_gambe:" SAY obj:val_gambe.
-          END IF.
-          IF obj:val_piedi > 0
-            THEN "| val_piedi:" SAY obj:val_piedi.
-          END IF.
-          IF obj:val_mani > 0
-            THEN "| val_mani:" SAY obj:val_mani.
-          END IF.
-          "|"
-      END IF.
-      ------------------------
-      -- Mostra se è indossato
-      ------------------------
-      "$nÈ INDOSSATO:"
-      IF obj:indossato
-        THEN "Sì"
-        ELSE "No."
-      END IF.
-      -------------------------------------------
-      -- Mostra se è nell'abbigliamento dell'Eroe
-      -------------------------------------------
-      "$nIN ABBIGLIAMENTO (EROE):"
-      IF obj IN abbigliamento
-        THEN "Sì"
-        ELSE "No."
-      END IF.
-      -------------------------------------
-      -- Elenca gli attori che lo indossano
-      -------------------------------------
-      "$nIN 'INDOSSATI' DI:"
-      FOR EACH ac IsA ACTOR
-        DO
-          IF obj IN indossati OF ac
-            THEN "| " SAY ac.
-          END IF.
-      END FOR.
-  END VERB dbg.
-END ADD TO indumento.
+-- ADD TO EVERY indumento
+--   VERB dbg
+--     DOES
+--       "'$1' VALORI:"
+--       IF  obj:val_testa = 0 AND obj:val_tronco = 0 AND obj:val_gambe = 0
+--       AND obj:val_piedi = 0 AND obj:val_mani = 0
+--         THEN
+--           "(nessuno)"
+--         ELSE
+--           IF obj:val_testa > 0
+--             THEN "| val_testa:" SAY obj:val_testa.
+--           END IF.
+--           IF obj:val_tronco > 0
+--             THEN "| val_tronco:" SAY obj:val_tronco.
+--           END IF.
+--           IF obj:val_gambe > 0
+--             THEN "| val_gambe:" SAY obj:val_gambe.
+--           END IF.
+--           IF obj:val_piedi > 0
+--             THEN "| val_piedi:" SAY obj:val_piedi.
+--           END IF.
+--           IF obj:val_mani > 0
+--             THEN "| val_mani:" SAY obj:val_mani.
+--           END IF.
+--           "|"
+--       END IF.
+--       ------------------------
+--       -- Mostra se è indossato
+--       ------------------------
+--       "$nÈ INDOSSATO:"
+--       IF obj:indossato
+--         THEN "Sì"
+--         ELSE "No."
+--       END IF.
+-- -- >>> dev-vestario: deleted! ENTITY abbigliamento >>>
+--       -------------------------------------------
+--       -- Mostra se è nell'abbigliamento dell'Eroe
+--       -------------------------------------------
+--       -- "$nIN ABBIGLIAMENTO (EROE):"
+--       -- IF obj IN abbigliamento
+--       --   THEN "Sì"
+--       --   ELSE "No."
+--       -- END IF.
+-- -- >>> dev-vestario: deleted! set indossati >>>
+--       -------------------------------------
+--       -- Elenca gli attori che lo indossano
+--       -------------------------------------
+--       -- "$nIN 'INDOSSATI' DI:"
+--       -- FOR EACH ac IsA ACTOR
+--       --   DO
+--       --     IF obj IN indossati OF ac
+--       --       THEN "| " SAY ac.
+--       --     END IF.
+--       -- END FOR.
+--   END VERB dbg.
+-- END ADD TO indumento.
 
 --==============================================================================
 -- MOSTRA LE USCITE
@@ -643,6 +676,67 @@ END THE ega_telaio_porte.
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------
+-- Scenografia: Atrio dell'Emporio
+-------------------------------------------------------------------------------
+--//////////////////////////////////////////////////////////////////////////////
+--=============================================================================
+
+THE bancone IsA supporto AT ega_atrio.
+  DESCRIPTION ""
+  HAS xDesc
+    "Questo lussuoso bancone in mogano è dove i clienti vanno a pagare i vestiti
+     acquistati, un po' come una cassa del supermercato, ma più discreta.".
+  VERB guarda_dietro
+    DOES ONLY
+      "Sbirciando dietro il bancone noti una pistola, devono tenerla lì per le
+       emergenze."
+      LOCATE pistola AT ega_atrio.
+  END VERB guarda_dietro.
+END THE bancone.
+
+-- Giusto per testare alcuni verbi, nascondiamo una pistola dietro il bancone,
+-- che diverrà visibile guardando dietro il bancone.
+
+THE pistola IsA arma. -- IN cestino.
+  HAS articolo "la".
+  CAN sparare.
+  IS nascosta.
+  MENTIONED
+    "pistola"
+    IF THIS IS nascosta
+      THEN "(nascosta dietro il bancone)"
+    END IF.
+  HAS xDesc "Una pistola semiautomatica, sembra carica.".
+
+  VERB prendi
+    DOES AFTER
+      MAKE THIS NOT nascosta.
+  END VERB prendi.
+END THE pistola.
+
+
+THE cestino IsA contenitore_elencato AT ega_atrio.
+  -- WITH OPAQUE CONTAINER
+  WITH CONTAINER
+    HEADER "Nel cestino puoi vedere"
+  IS NOT spostabile. NOT prendibile.
+  HAS xDesc "Un cestino per la spazzatura.".
+
+  INITIALIZE
+    -- Facciamo in modo che il cesto possa contenere ogni oggetto del gioco:
+    FOR EACH ogg IsA object
+      DO INCLUDE ogg IN THIS:consentiti.
+    END FOR.
+  
+  VERB esamina
+    DOES ONLY
+      LIST THIS.
+  END VERB esamina.
+END THE.
+
+--=============================================================================
+--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--------------------------------------------------------------------------------
 -- Scenografia: Camerino
 -------------------------------------------------------------------------------
 --//////////////////////////////////////////////////////////////////////////////
@@ -657,7 +751,7 @@ THE cesto IsA contenitore_elencato AT ega_camerino.
   HAS xDesc "Un cesto in vimini per gettare gli indumenti scartati.".
   INITIALIZE
     -- Facciamo in modo che il cesto possa contenere ogni indumento del gioco:
-    FOR EACH ind ISA indumento
+    FOR EACH ind IsA indumento
       DO INCLUDE ind IN THIS:consentiti.
     END FOR.  
 END THE.
@@ -672,6 +766,42 @@ END THE.
 --* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 -- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --==============================================================================
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- Il Manager
+--------------------------------------------------------------------------------
+--==============================================================================
+
+-- Questo PNG lo collochiamo nell'atrio, giusto per poter fare delle prove con
+-- verbi che trasferirebbero (implicitamente) indumenti indossati da un PNG ad
+-- un altro.
+
+THE manager IsA maschio AT ega_atrio.
+  DESCRIPTION "Dietro al bancone c'è il manager dell'emporio."
+END THE manager.
+
+--==============================================================================
+-- Abbigliamento Manager
+--==============================================================================
+THE calzoni_manager IsA proto_pantaloni IN manager.
+  IS indossato.
+  NAME calzoni.
+  NAME suoi calzoni.
+END THE.
+
+THE pullover_manager IsA proto_maglione IN manager.
+  IS indossato.
+  NAME pullover.
+  NAME suoi pullover.
+END THE.
+
+THE mocassini_manager IsA cl_scarpe IN manager.
+  IS indossato.
+  HAS articolo "i".
+  NAME mocassini.
+  NAME suoi mocassini.
+END THE.
 
 --==============================================================================
 --------------------------------------------------------------------------------
@@ -697,15 +827,16 @@ THE assistente_ega IsA femmina AT ega_atrio.
   INDEFINITE FORM "la tua assistente personale"
   HAS xDesc "È la tua assistente personale per lo shopping.".
 
-  INITIALIZE
-    -- --------------------------------------------
-    -- Rendi indossato ogni indumento IN assistente
-    -- --------------------------------------------
-    FOR EACH ind IsA indumento, IN THIS
-      DO
-        MAKE ind indossato.
-        INCLUDE ind IN indossati OF THIS.
-    END FOR.
+-- >>> dev-vestario: NO INDOSSATI! (prova a non usare set 'indossati')
+  -- INITIALIZE
+  --   -- --------------------------------------------
+  --   -- Rendi indossato ogni indumento IN assistente
+  --   -- --------------------------------------------
+  --   FOR EACH ind IsA indumento, IN THIS
+  --     DO
+  --       MAKE ind indossato.
+  --       INCLUDE ind IN indossati OF THIS.
+  --   END FOR.
 END THE assistente_ega.
 
 -- Impedisci all'assistente di seguirci nel camerino:
@@ -740,6 +871,7 @@ END EVENT.
 -- indumenti indossati dai PNG.
 
 THE abito_assist IsA cl_abito IN assistente_ega.
+  IS indossato.
   NAME abito.
   NAME suo abito.
   HAS xDesc "È un abito a pezzo unico, elegante.".
@@ -747,6 +879,7 @@ THE abito_assist IsA cl_abito IN assistente_ega.
 END THE.
 
 THE scarpe_assist IsA cl_stivali IN assistente_ega.
+  IS indossato.
   NAME stivaletti.
   NAME suoi stivaletti.
   HAS xDesc "Un paio di stivaletti in pelle da donna, con tacco alto, arrivano
@@ -808,6 +941,17 @@ END THE.
 
 THE tshirt IsA cl_tshirt AT ega_uomo.
   
+END THE.
+
+THE camicia_rossa IsA cl_camicia AT ega_uomo.
+  NAME camicia rossa.
+END THE.
+
+THE camicia_nera IsA cl_camicia AT ega_uomo.
+  NAME camicia nera.
+END THE.
+
+THE cappotto IsA cl_cappotto AT ega_uomo.
 END THE.
 
 --=============================================================================
@@ -908,7 +1052,8 @@ END THE.
 -- [ ] L'ordine di creazione conta: nel gioco, i capi verrano elencati in ordine
 --     di apparazione inverso rispetto al codice.
 
-THE calzini_eroe IsA cl_calzini IN abbigliamento.
+THE calzini_eroe IsA cl_calzini IN hero.
+  IS indossato.
   NAME calzini.
   NAME calze.
   NAME mie tue calze bianche.
@@ -920,9 +1065,11 @@ THE calzini_eroe IsA cl_calzini IN abbigliamento.
      Il calzino destro ha un buco grosso abbastanza da far sbucare l'alluce.".
 END THE.
 
-THE boxer_eroe IsA cl_mutande IN abbigliamento.
+THE boxer_eroe IsA cl_mutande IN hero.
+  IS indossato.
   NAME boxer.
   NAME miei tuoi boxer bianchi.
+  HAS articolo "i".
   INDEFINITE ARTICLE "i tuoi"
   DEFINITE ARTICLE "i tuoi"
   HAS xDesc "Sono solo un paio di boxer bianchi, mutande comode da indossare.".
@@ -930,7 +1077,8 @@ END THE.
 
 SYNONYMS boxers = boxer.
 
-THE canottiera_eroe IsA cl_canottiera IN abbigliamento.
+THE canottiera_eroe IsA cl_canottiera IN hero.
+  IS indossato.
   NAME canottiera.
   NAME mia tua canottiera bianca.
   INDEFINITE ARTICLE "la tua"
@@ -938,7 +1086,8 @@ THE canottiera_eroe IsA cl_canottiera IN abbigliamento.
   HAS xDesc "Una semplice canottiera bianca, qualche macchia d'unto qui e là.".
 END THE.
 
-THE scarpe_eroe IsA cl_scarpe IN abbigliamento.
+THE scarpe_eroe IsA cl_scarpe IN hero.
+  IS indossato.
   NAME sneakers.
   NAME sneaker.
   NAME mie tue sneakers nere.
@@ -954,7 +1103,8 @@ END THE.
 -- I pantaloni hanno "tasche" (in realtà, sono solo contenitori, come tutti gli
 -- indumenti), e noi le sfrutteremo per testare oggetti annidati nei vestiti.
 
-THE pantaloni_eroe IsA proto_pantaloni IN abbigliamento.
+THE pantaloni_eroe IsA proto_pantaloni IN hero.
+  IS indossato.
   NAME pantaloni.
   NAME miei tuoi pantaloni viola.
   INDEFINITE ARTICLE "i tuoi"

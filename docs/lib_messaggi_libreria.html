@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.14.0-Alpha,</span>
-<span id="revdate">2019-02-05</span>
+<span id="revnumber">versione 0.15.0-Alpha,</span>
+<span id="revdate">2019-02-19</span>
 <br><span id="revremark">Alan 3.0beta6 build 1866</span>
 </div>
 <div id="toc" class="toc2">
@@ -1350,7 +1350,11 @@ causa di uno (o più) parametri fuori dalla portata dell&#8217;eroe.
   --               "$+1 wouldn't probably appreciate that."
   --               "You are not sure whether $+1 would appreciate that."
   HAS png1_non_gradirebbe_sg  "Non credo che $+1 gradirebbe.".
-  HAS png1_non_gradirebbe_pl  "Non credo che $+1 gradirebbero.".</code></pre>
+  HAS png1_non_gradirebbe_pl  "Non credo che $+1 gradirebbero.".
+
+  -- VERBI: lancia_contro
+  HAS png2_non_gradirebbe_sg  "Non credo che $+2 gradirebbe.".
+  HAS png2_non_gradirebbe_pl  "Non credo che $+2 gradirebbero.".</code></pre>
 </div>
 </div>
 </div>
@@ -1397,6 +1401,35 @@ causa di uno (o più) parametri fuori dalla portata dell&#8217;eroe.
   -- ORIGINAL EN: check_obj_not_hero1 + check_obj2_not_hero1
   HAS azione_insensata  "Questo non ha alcun senso.".</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Oggetto &#8216;bersaglio&#8217; posseduto:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS azione_insensata_ogg1_portato    "Che senso ha? Stai portando $+1.".
+  HAS azione_insensata_ogg1_indossato  "Che senso ha? Stai indossando $+1.".
+
+  HAS azione_insensata_ogg2_portato    "Che senso ha? Stai portando $+2.".
+  HAS azione_insensata_ogg2_indossato  "Che senso ha? Stai indossando $+2.".</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>I messaggi qui sopra sono usati nei verbi per lanciare le cose (<code>lancia_a</code>,
+<code>lancia_contro</code>, <code>lancia_in</code>) e sono usati quando la destinazione del lancio
+è tra i possedimenti del giocatore (quindi non ha senso eseguire un lancio
+dato che è a portata di mano).</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -1495,33 +1528,6 @@ risultato che è già disponibile&#8230;&#8203;</p>
   -- ORIGINAL EN:  check_obj2_not_in_hero3
   HAS ogg2_già_posseduto  "Possiedi già $+2.".</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Oggetto &#8216;bersaglio&#8217; già posseduto:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-
-  HAS check_obj2_not_in_hero1 "You are carrying $+2.". -- throw_at, throw_in, throw_to</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Nota"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Il messaggio sopra è usato nei verbi per lanciare le cose (<code>lancia_a</code>,
-<code>lancia_contro</code>, <code>lancia_in</code>) e viene usato quando la destinazione del lancio
-è tra i possedimenti del giocatore (quindi non ha senso eseguire un lancio
-dato).</p>
-</div>
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>Oggetto già posseduto da PNG:</p>
@@ -1638,10 +1644,16 @@ dato).</p>
   -- ORIGINAL EN:  check_obj_in_worn
   HAS non_indossi  "Non stai indossando $+1.".
 
+  -- VERBI: metti_in, metti_su.
+  -- ORIGINAL EN:  (nessuno)
+  HAS indumento_indossato_PNG_sg  "Al momento $+1 è indossat$$".
+  HAS indumento_indossato_PNG_pl  "Al momento $+1 sono indossat$$".
+
 
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
 
-  HAS check_obj_not_in_worn2  "It doesn't make sense to $v something you're wearing.". -- attack, attack_with, kick, shoot, shoot_with</code></pre>
+  HAS check_obj_not_in_worn2  "It doesn't make sense to $v something you're wearing.".
+  -- attack, attack_with, kick, shoot, shoot_with</code></pre>
 </div>
 </div>
 </div>
@@ -1931,7 +1943,7 @@ italiano del modulo delle classi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.14.0-Alpha<br>
+Versione 0.15.0-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

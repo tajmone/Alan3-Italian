@@ -29,7 +29,8 @@ Come ti avvicini, le porte scorrono magicamente via per lasciarti passare.
 
 Atrio dell'Emporio Alani
 Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
-in ottone conducono a sud, fuori dal tempio del consumismo. C'è la tua
+in ottone conducono a sud, fuori dal tempio del consumismo. Puoi vedere un 
+cestino qui. Dietro al bancone c'è il manager dell'emporio. C'è la tua
 assistente personale qui.
 
 > ; ==============================================================================
@@ -37,11 +38,9 @@ assistente personale qui.
 > ; ==============================================================================
 > ; Il verba esamina usato sui PNG dovrebbe riportare quali indumenti indossano.
 > esamina l'assistente
-È la tua assistente personale per lo shopping. L'assistente sta portando un
-paio di stivaletti (indossati) e un abito (indossato).
+È la tua assistente personale per lo shopping. L'assistente sta indossando un 
+abito e un paio di stivaletti.
 
-> ; ** NOTA ** Forse questo messaggio dovrebbe separare l'elenco delle cose 
-> ;            trasportate da quelle indossate (come con l'Eroe).
 > ; ==============================================================================
 > ; L'EROE
 > ; ==============================================================================
@@ -57,35 +56,26 @@ salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
 > ; L'inventario deve elencare separatamente gli oggetti trasportati e quelli
 > ; indossati.
 > inventario
-Non stai portando niente. Stai indossando la tua canottiera, le tue sneakers, i
-tuoi pantaloni, i tuoi boxer e i tuoi calzini.
+Non stai portando niente. Stai indossando i tuoi calzini, i tuoi boxer, la tua 
+canottiera, le tue sneakers e i tuoi pantaloni.
 
 > ; ------------------------------------------------------------------------------
 > ; VERBO INDOSSA (FALLIMENTO)
 > ; ------------------------------------------------------------------------------
-> ; Quando l'azione di indossare non va in porto, il messaggio riporta tutti gli
-> ; indumenti indossati dall'Eroe:
+> ; Quando l'azione di indossare non va in porto, il messaggio deve riportare solo
+> ; gli indumenti che impediscono l'azione:
 > indossa i jeans
-Prendi i jeans. Stai indossando la tua canottiera, le tue sneakers, i tuoi 
-pantaloni, i tuoi boxer e i tuoi calzini. Trying to put i jeans on isn't very
-sensible.
+Prendi i jeans. Per poter indossare i jeans dovresti prima toglierti i tuoi 
+pantaloni.
 
-> ; ** NOTA ** Elencare tutti i capi indossati nel tentativo di segnalare che un
-> ;            indumento sta bloccando l'azione richiesta è un po' eccessivo, e in
-> ;            alcuni contesti potrebbe produrre un elenco piuttosto lungo.
-> ;            Sarebbe più elegante se il messaggio menzionasse l'indumento (o gli
-> ;            indumenti) specifici che prevengono l'azione.
 > ; ------------------------------------------------------------------------------
 > ; VERBO TOGLITI (FALLIMENTO)
 > ; ------------------------------------------------------------------------------
-> ; Come con 'indossa', anche 'togliti' riporta la lista degli indossati quando
-> ; non riesce a portare a termine l'azione:
+> ; Come con 'indossa', anche 'togliti' deve riportare nel messaggio solo la lista
+> ; degli indumenti che prevengono l'azione:
 > togliti i boxer
-Stai indossando la tua canottiera, le tue sneakers, i tuoi pantaloni, i tuoi 
-boxer e i tuoi calzini. Trying to take i tuoi boxer off isn't very sensible.
+Per poter rimuovere i tuoi boxer dovresti prima toglierti i tuoi pantaloni.
 
-> ; ** NOTA ** Anche qui il messaggio potrebbe essere più mirato, e riportare solo
-> ;            l'indumento che impedisce l'azione.
 > 
 
 Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

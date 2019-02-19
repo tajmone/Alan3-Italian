@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_runtime.i"
---| v0.14.0-Alpha, 2019-02-05: Alan 3.0beta6 build 1866
+--| v0.15.0-Alpha, 2019-02-19: Alan 3.0beta6 build 1866
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -166,50 +166,84 @@ MESSAGE
       THEN "$+1 contiene"
       ELSE "$+1 contengono"
     END IF.
+  
+
+-- >>> dev-vestario: tweaked
   CONTAINS_COMMA: "$01"
     IF parameter1 IsA indumento
       THEN
-        -- the following snippet adds "(being worn)" after all
-        -- pieces of clothing worn by an NPC, at 'x [actor]'
-
         IF parameter1 IS indossato
-          THEN
-            IF parameter1 NOT IN abbigliamento
-              THEN "(indossat$$" SAY vocale OF parameter1. "$$)"
-            END IF.
+          THEN "(indossat$$" SAY vocale OF parameter1. "$$)"
         END IF.
-    END IF.
-    "$$,"
+    END IF. ","
 
+-- >>> codice originale >>>
+    -- IF parameter1 IsA indumento
+    --   THEN
+    --     -- the following snippet adds "(being worn)" after all
+    --     -- pieces of clothing worn by an NPC, at 'x [actor]'
+
+    --     IF parameter1 IS indossato
+    --       THEN
+    --         IF parameter1 NOT IN abbigliamento
+    --           THEN "(indossat$$" SAY vocale OF parameter1. "$$)"
+    --         END IF.
+    --     END IF.
+    -- END IF.
+    -- "$$,"
+-- <<< codice originale <<<
+
+-- >>> dev-vestario: tweaked
   CONTAINS_AND: "$01"
     IF parameter1 IsA indumento
       THEN
-        -- the following snippet adds "(being worn)" after all
-        -- pieces of clothing worn by an NPC, after 'x [actor]'
-
         IF parameter1 IS indossato
-          THEN
-            IF parameter1 NOT IN abbigliamento
-              THEN "(indossat$$" SAY vocale OF parameter1. "$$)"
-            END IF.
+          THEN "(indossat$$" SAY vocale OF parameter1. "$$)"
         END IF.
-    END IF.
-    "e"
+    END IF. "e"
 
+-- >>> codice originale >>>
+    -- IF parameter1 IsA indumento
+    --   THEN
+    --     -- the following snippet adds "(being worn)" after all
+    --     -- pieces of clothing worn by an NPC, after 'x [actor]'
+
+    --     IF parameter1 IS indossato
+    --       THEN
+    --         IF parameter1 NOT IN abbigliamento
+    --           THEN "(indossat$$" SAY vocale OF parameter1. "$$)"
+    --         END IF.
+    --     END IF.
+    -- END IF.
+    -- "e"
+-- <<< codice originale <<<
+
+-- >>> dev-vestario: tweaked
   CONTAINS_END: "$01"
     IF parameter1 IsA indumento
       THEN
-        -- the following snippet adds "(being worn)" after all
-        -- pieces of clothing worn by an NPC, after 'x [actor]'
-
         IF parameter1 IS indossato
-          THEN
-            IF parameter1 NOT IN abbigliamento
-              THEN "(indossat$$" SAY vocale OF parameter1. "$$)"
-            END IF.
+          THEN "(indossat$$" SAY vocale OF parameter1. "$$)"
         END IF.
-    END IF.
-    "."
+    END IF. "."
+
+-- >>> codice originale >>>
+    -- IF parameter1 IsA indumento
+    --   THEN
+    --     -- the following snippet adds "(being worn)" after all
+    --     -- pieces of clothing worn by an NPC, after 'x [actor]'
+
+
+    --     IF parameter1 IS indossato
+    --       THEN
+    --         IF parameter1 NOT IN abbigliamento
+    --           THEN "(indossat$$" SAY vocale OF parameter1. "$$)"
+    --         END IF.
+    --     END IF.
+    -- END IF.
+    -- "."
+-- <<< codice originale <<<
+
 --------------------------------------------------------------------------------
 
   CARRIES:

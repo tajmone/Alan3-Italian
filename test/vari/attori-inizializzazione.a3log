@@ -40,7 +40,7 @@ Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise sono qui.
 | CLASSE: actor > persona > maschio 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: Sì 
-| È CONDISCENDENTE No 
+| CONDISCENDENTE: No 
 | STA SEGUENDO: No 
 | POSTURA: (nessuna) 
 +------------------------------------------------------------------------------- 
@@ -77,7 +77,7 @@ Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise sono qui.
 | CLASSE: actor > persona > femmina 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: Sì 
-| È CONDISCENDENTE Sì 
+| CONDISCENDENTE: Sì 
 | STA SEGUENDO: No 
 | POSTURA: (nessuna) 
 +------------------------------------------------------------------------------- 
@@ -130,7 +130,7 @@ Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise sono qui.
 | CLASSE: actor > persona > maschi 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: Sì 
-| È CONDISCENDENTE No 
+| CONDISCENDENTE: No 
 | STA SEGUENDO: No 
 | POSTURA: (nessuna) 
 +------------------------------------------------------------------------------- 
@@ -167,7 +167,7 @@ Mario è qui. Maria è qui. Romeo e Giuglietta sono qui. Thelma e Louise sono qui.
 | CLASSE: actor > persona > femmine 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: Sì 
-| È CONDISCENDENTE No 
+| CONDISCENDENTE: No 
 | STA SEGUENDO: No 
 | POSTURA: (nessuna) 
 +------------------------------------------------------------------------------- 
@@ -220,7 +220,7 @@ sono delle fate qui.
 | CLASSE: actor > persona > maschio 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
-| È CONDISCENDENTE No 
+| CONDISCENDENTE: No 
 | STA SEGUENDO: No 
 | POSTURA: (nessuna) 
 +------------------------------------------------------------------------------- 
@@ -254,7 +254,7 @@ sono delle fate qui.
 | CLASSE: actor > persona > maschio 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
-| È CONDISCENDENTE No 
+| CONDISCENDENTE: No 
 | STA SEGUENDO: No 
 | POSTURA: (nessuna) 
 +------------------------------------------------------------------------------- 
@@ -288,7 +288,7 @@ sono delle fate qui.
 | CLASSE: actor > persona > maschio 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
-| È CONDISCENDENTE No 
+| CONDISCENDENTE: No 
 | STA SEGUENDO: No 
 | POSTURA: (nessuna) 
 +------------------------------------------------------------------------------- 
@@ -326,7 +326,7 @@ sono delle fate qui.
 | CLASSE: actor > persona > femmina 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
-| È CONDISCENDENTE No 
+| CONDISCENDENTE: No 
 | STA SEGUENDO: No 
 | POSTURA: (nessuna) 
 +------------------------------------------------------------------------------- 
@@ -360,7 +360,7 @@ sono delle fate qui.
 | CLASSE: actor > persona > femmina 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
-| È CONDISCENDENTE No 
+| CONDISCENDENTE: No 
 | STA SEGUENDO: No 
 | POSTURA: (nessuna) 
 +------------------------------------------------------------------------------- 
@@ -403,7 +403,7 @@ sono delle fate qui.
 | CLASSE: actor > persona > maschi 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
-| È CONDISCENDENTE No 
+| CONDISCENDENTE: No 
 | STA SEGUENDO: No 
 | POSTURA: (nessuna) 
 +------------------------------------------------------------------------------- 
@@ -437,7 +437,7 @@ sono delle fate qui.
 | CLASSE: actor > persona > maschi 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
-| È CONDISCENDENTE No 
+| CONDISCENDENTE: No 
 | STA SEGUENDO: No 
 | POSTURA: (nessuna) 
 +------------------------------------------------------------------------------- 
@@ -474,7 +474,7 @@ sono delle fate qui.
 | CLASSE: actor > persona > femmine 
 +------------------------------------------------------------------------------- 
 | HA NOME PROPRIO: No 
-| È CONDISCENDENTE No 
+| CONDISCENDENTE: No 
 | STA SEGUENDO: No 
 | POSTURA: (nessuna) 
 +------------------------------------------------------------------------------- 

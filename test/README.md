@@ -86,6 +86,8 @@ Lo script compila tutte le avventure ed esegue gli script di comandi associati a
 
 È sempre consigliabile eseguire nuovamente tutti i test prima di eseguire un commit, al fine di assicurarsi di aver intercettato tutte le modifiche alle trascrizioni risultanti dalle modifiche al codice della libreria.
 
+Al fine di semplificare le fasi di sviluppo, in ciascuna sottocartella di test c'è uno script `TESTA_CARTELLA.bat` per eseguire tutti i test della cartella. Questi script non forniscono un rapporto statistico, sono finalizzati solo a risparmiare tempo quando si lavora ai testi di una specifica sottocartella e non si vuole dover eseguire tutta la test suite ad ogni modifica.
+
 # Requisiti di Sistema
 
 Al fine di poter utilizzare i test nelle sottocartelle, dovrete rendere accessibili al `%PATH%` di sistema gli eseguibili del compilatore di Alan e dell'interprete ARun, assicurandovi di prenderli dalla [Alan SDK] con la stessa versione di Alan usata in questo progetto (vedi intestazione dei moduli sorgenti della libreria). Per il sistema operativo Windows, i file da copiare sono:

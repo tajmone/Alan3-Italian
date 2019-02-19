@@ -30,7 +30,8 @@ Come ti avvicini, le porte scorrono magicamente via per lasciarti passare.
 
 Atrio dell'Emporio Alani
 Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
-in ottone conducono a sud, fuori dal tempio del consumismo. C'è la tua
+in ottone conducono a sud, fuori dal tempio del consumismo. Puoi vedere un 
+cestino qui. Dietro al bancone c'è il manager dell'emporio. C'è la tua
 assistente personale qui.
 
 > nord
@@ -43,14 +44,12 @@ salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
 > ; TESTA 'togliti'
 > ; ==============================================================================
 > inventario
-Non stai portando niente. Stai indossando la tua canottiera, le tue sneakers, i
-tuoi pantaloni, i tuoi boxer e i tuoi calzini.
+Non stai portando niente. Stai indossando i tuoi calzini, i tuoi boxer, la tua 
+canottiera, le tue sneakers e i tuoi pantaloni.
 
-> DBG i boxer
+> DBG_IND i boxer
 'boxer' VALORI: | val_gambe: 2 | 
-È INDOSSATO: Sì 
-IN ABBIGLIAMENTO (EROE): Sì 
-IN 'INDOSSATI' DI: | hero
+È INDOSSATO: Sì (dal hero)
 
 > togliti i tuoi pantaloni
 Ti togli i tuoi pantaloni.
@@ -58,29 +57,23 @@ Ti togli i tuoi pantaloni.
 > togliti i boxer
 Ti togli i tuoi boxer.
 
-> DBG i boxer
+> DBG_IND i boxer
 'boxer' VALORI: | val_gambe: 2 | 
-È INDOSSATO: No. 
-IN ABBIGLIAMENTO (EROE): No. 
-IN 'INDOSSATI' DI:
+È INDOSSATO: No
 
 > ; ==============================================================================
-> ; TESTA 'wear'
+> ; TESTA 'indossa'
 > ; ==============================================================================
-> DBG i jeans
+> DBG_IND i jeans
 'jeans' VALORI: | val_gambe: 16 | 
-È INDOSSATO: No. 
-IN ABBIGLIAMENTO (EROE): No. 
-IN 'INDOSSATI' DI:
+È INDOSSATO: No
 
 > indossa i jeans
 Prendi i jeans e li indossi.
 
-> DBG i jeans
+> DBG_IND i jeans
 'jeans' VALORI: | val_gambe: 16 | 
-È INDOSSATO: Sì 
-IN ABBIGLIAMENTO (EROE): Sì 
-IN 'INDOSSATI' DI: | hero
+È INDOSSATO: Sì (dal hero)
 
 > 
 

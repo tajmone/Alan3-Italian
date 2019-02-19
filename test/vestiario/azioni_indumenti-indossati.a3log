@@ -30,7 +30,8 @@ Come ti avvicini, le porte scorrono magicamente via per lasciarti passare.
 
 Atrio dell'Emporio Alani
 Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
-in ottone conducono a sud, fuori dal tempio del consumismo. C'è la tua
+in ottone conducono a sud, fuori dal tempio del consumismo. Puoi vedere un 
+cestino qui. Dietro al bancone c'è il manager dell'emporio. C'è la tua
 assistente personale qui.
 
 > nord
@@ -42,7 +43,7 @@ salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
 > ; ------------------------------------------------------------------------------
 > ; TESTA: TOGLIERSI INDUMENTO INESISTENTE
 > ; ------------------------------------------------------------------------------
-> ; Più avanti nel test questo medesimo comando fallirà in silenzio (bug Alan?):
+> ; Più avanti nel test questo medesimo comando falliva in silenzio (in passato):
 > togliti XYZZY
 Non conosco la parola 'XYZZY'.
 
@@ -59,34 +60,24 @@ Il cesto è vuoto.
 
 > ; NOTA: I boxer sono attualmente indossati dall'Eroe, sotto i pantaloni!
 > inventario
-Non stai portando niente. Stai indossando la tua canottiera, le tue sneakers, i
-tuoi pantaloni, i tuoi boxer e i tuoi calzini.
+Non stai portando niente. Stai indossando i tuoi calzini, i tuoi boxer, la tua 
+canottiera, le tue sneakers e i tuoi pantaloni.
 
 > esamina i boxer
 Sono solo un paio di boxer bianchi, mutande comode da indossare.
 
-> DBG i boxer
+> DBG_IND i boxer
 'boxer' VALORI: | val_gambe: 2 | 
-È INDOSSATO: Sì 
-IN ABBIGLIAMENTO (EROE): Sì 
-IN 'INDOSSATI' DI: | hero
+È INDOSSATO: Sì (dal hero)
 
+> ; //// 'METTI IN' (INDOSSATO) -> AZIONE BLOCCATA (OK!) ////
 > metti i boxer in cesto
-Fatto, ora i tuoi boxer è nel cesto.
+Prima dovresti toglierti i tuoi boxer.
 
-> ; ** ERRORE!!! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> ;                 I boxer sono indossati dall'Eroe sotto i pantaloni, e non si
-> ;                 dovrebbe poterli spostare senza prima togliersi sia i pantaloni
-> ;                 che i boxer.
-> ;                 Questo spezza la logica degll'abbigliamento stratificato!
-> ;                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> DBG i boxer
+> DBG_IND i boxer
 'boxer' VALORI: | val_gambe: 2 | 
-È INDOSSATO: Sì 
-IN ABBIGLIAMENTO (EROE): Sì 
-IN 'INDOSSATI' DI: | hero
+È INDOSSATO: Sì (dal hero)
 
-> ; ** ERRORE!!! ** I boxer risultano ancora indossati e nell'abbigliamento (eroe):
 > esamina il cesto
 Il cesto è vuoto.
 
@@ -103,62 +94,52 @@ raggiunge di corsa dall'atrio.
 > ; L'eroe può ottenere vestiti indossati dai PNG in diversi modi (prendi, chiedi,
 > ; ecc.), alcuni dei quali richiedono che il PNG sia compiacente, altri no.
 > esamina l'assistente
-È la tua assistente personale per lo shopping. L'assistente sta portando un
-paio di stivaletti (indossati) e un abito (indossato).
+È la tua assistente personale per lo shopping. L'assistente sta indossando un 
+abito e un paio di stivaletti.
 
-> DBG gli stivaletti
+> DBG_IND gli stivaletti
 'stivaletti' VALORI: | val_piedi: 4 | 
-È INDOSSATO: Sì 
-IN ABBIGLIAMENTO (EROE): No. 
-IN 'INDOSSATI' DI: | assistente
+È INDOSSATO: Sì (dall'assistente)
 
 > prendi gli stivaletti
 L'assistente non sarebbe d'accordo.
 
+> ; //// 'CHIEDI' (INDOSSATO) -> OTTIENI (OK!) ////
 > chiedi gli stivaletti all'assistente
 L'assistente ti dà gli stivaletti.
 
+> ; Il verbo chiedi funziona sempre anche con indumenti!
 > inventario
-Non stai portando niente. Stai indossando la tua canottiera, le tue sneakers, i
-tuoi pantaloni, i tuoi boxer e i tuoi calzini.
+Stai portando un paio di stivaletti. Stai indossando i tuoi calzini, i tuoi 
+boxer, la tua canottiera, le tue sneakers e i tuoi pantaloni.
 
-> ; ** ERRORE!!! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> ;                 Gli stivaletti non risultano nell'inventario!
-> ;                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> DBG gli stivaletti
+> ; //// VERIFICA 'NOT indossato' (OK!): ////
+> DBG_IND gli stivaletti
 'stivaletti' VALORI: | val_piedi: 4 | 
-È INDOSSATO: Sì 
-IN ABBIGLIAMENTO (EROE): No. 
-IN 'INDOSSATI' DI: | assistente
+È INDOSSATO: No
 
-> ; ** ERRORE!!! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> ;                 Gli stivaletti sono ancora 'indossato' e 'IN indossati' (set)
-> ;                 dell'assistente:
-> ;                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; //// INDOSSA NO -> BLOCCANTI: 'sneakers' (OK!): ////
 > indossa gli stivaletti
-Prendi gli stivaletti. L'assistente non sarebbe d'accordo.
+Per poter indossare gli stivaletti dovresti prima toglierti le tue sneakers.
 
-> ; ** ERRORE!!! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> ;                 Ovviamente, non è possibile indossare gli stivaletti dato che
-> ;                 risultano essere ancora indossati e posseduti dall'assistente
-> ;                 (PNG non 'compiacente')!
-> ;                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > togliti le sneakers
 Ti togli le tue sneakers.
 
 > indossa gli stivaletti
-L'assistente non sarebbe d'accordo.
+Indossi gli stivaletti.
 
 > ; ------------------------------------------------------------------------------
-> ; BUG ANOMALO: TOGLIERSI INDUMENTO INESISTENTE
+> ; BUG ANOMALO: TOGLIERSI INDUMENTO INESISTENTE (RISOLTO)
 > ; ------------------------------------------------------------------------------
 > ; Ritentiamo a disindossare un indumento inesistente, come all'inizio del test:
 > togliti XYZZY
+Non conosco la parola 'XYZZY'.
 
-> ; ** ERRORE!!! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> ;                 Ora 'togliti' fallisce in silenzio, il che sembra indicare che
-> ;                 qualcosa nel corso dei test abbia corrotto la memoria di ARun!
-> ;                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; ** NOTA ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;            Prima 'togliti' falliva in silenzio, ora il problema è scomparso,
+> ;            ma manterremo qui questo test per poterlo monitorare, nel caso
+> ;            ricomparisse!
+> ;            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > 
 
-
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

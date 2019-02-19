@@ -1,0 +1,31 @@
+; ******************************************************************************
+; *                                                                            *
+; *                      TESTA INIZIALIZZAZIONE INDUMENTI                      *
+; *                                                                            *
+; ******************************************************************************
+; Verifichiamo che con il nuovo sistema tutti gli indumenti siano inizializzati
+; correttamente. Ora gli autori per creare un indumento indossato dovranno solo
+; collocarlo nell'attore e settarlo come `indossato`, al resto ci penserà la
+; libreria nel corso dell'inizializzazione.
+; ==============================================================================
+; ABBIGLIAMENTO EROE
+; ==============================================================================
+inventario
+DBG_IND canottiera
+DBG_IND sneakers
+DBG_IND pantaloni
+DBG_IND boxer
+DBG_IND calzini
+; ------------------------------------------------------------------------------
+; INDUMENTI ANNIDATI
+; ------------------------------------------------------------------------------
+x pantaloni
+x kippah
+DBG_IND kippah
+; ==============================================================================
+; ABBIGLIAMENTO PNG
+; ==============================================================================
+nord
+x assistente
+DBG_IND stivaletti
+DBG_IND abito

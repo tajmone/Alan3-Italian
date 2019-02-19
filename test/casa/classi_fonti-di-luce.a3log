@@ -25,8 +25,8 @@ stanza c'è Mr Nicky, il tuo cagnolino.
 > ; ==============================================================================
 > ; La torcia può essere accesa, spenta e riparata; per romperla basta lanciarla.
 > inventario
-Stai portando una torcia e una chiave. Stai indossando un paio di blue jeans e 
-una bombetta.
+Stai portando una chiave e una torcia. Stai indossando una bombetta e un paio
+di blue jeans.
 
 > esamina la torcia
 Una torcia elettrica, "made in China".[[ /xDesk ]]

@@ -1,0 +1,43 @@
+; ******************************************************************************
+; *                                                                            *
+; *                    TESTA INDOSSATI CON PRENDI IMPLICITO                    *
+; *                                                                            *
+; ******************************************************************************
+; Alcuni verbi eseguono un 'prendi' implicito per predisporre l'azione che vanno
+; a compiere (anche se poi non andrà a termine). Queste azioni implicite sono
+; insidiose poiché potrebbero raggirare i controlli sugli indumenti indossati.
+nord
+; ******************************************************************************
+; LANCIARE INDUMENTI INDOSSATI
+; ******************************************************************************
+; Il gruppo di verbi 'lancia' deve essere bloccato se coinvolge proiettili che
+; sonon indumenti indossato da qualcuno.
+; ==============================================================================
+; TESTA LANCIARE -> PNG INDOSSANTE NON COMPIACENTE
+; ==============================================================================
+lancia stivaletti
+lancia stivaletti al manager
+lancia stivaletti contro il manager
+lancia stivaletti nel cestino
+lancia i mocassini contro l'assistente
+lancia il pullover nel cestino
+inventario
+; ==============================================================================
+; TESTA LANCIARE -> PNG INDOSSANTE COMPIACENTE
+; ==============================================================================
+; Ora proviamo a ripetere le stesse azioni dopo aver reso compiacenti i PNG.
+soggioga assistente e manager
+lancia stivaletti
+lancia stivaletti al manager
+lancia stivaletti contro il manager
+lancia stivaletti nel cestino
+lancia i mocassini contro l'assistente
+lancia il pullover nel cestino
+inventario
+; ******************************************************************************
+; LEGARE INDUMENTI INDOSSATI
+; ******************************************************************************
+; ==============================================================================
+; TESTA LEGARE -> PNG INDOSSANTE COMPIACENTE
+; ==============================================================================
+lega gli stivaletti al cestino

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.14.0-Alpha, 2019-02-05: Alan 3.0beta6 build 1866
+--| v0.15.0-Alpha, 2019-02-19: Alan 3.0beta6 build 1866
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -910,12 +910,12 @@ END VERB ricomincia_partita.
 --| | bussa_errore       |                              | bussa                                  |     | 0 |     |
 --| | calcia             |                              | calcia (bersaglio)                     |     | 1 |     |
 --| | canta              |                              | canta                                  |     | 0 |     |
---| | chiedi             |                              | chiedi a (png) (ogg)                   |     | 2 | {X} |
+--| | chiedi             |                              | chiedi (ogg) a (png)                   |     | 2 | {X} |
 --| | chiudi             |                              | chiudi (ogg)                           |     | 1 | {X} |
 --| | chiudi_con         |                              | chiudi (ogg) con (strum)               |     | 2 | {X} |
 --| | compra             | acquista                     | compra (merce)                         |     | 1 |     |
 --| | consulta           | guarda, cerca, ricerca       | consulta (fonte) riguardo (argomento)! |     | 2 |     |
---| | dai_a              | porgi, offri                 | dai (ogg) a (ricevente)                |     | 2 | {X} |
+--| | dai_a              | porgi, offri                 | dai (ogg) a (png)                      |     | 2 | {X} |
 --| | dì                 |                              | dì (argomento)                         |     | 1 |     |
 --| | dì_a               |                              | dì (argomento) a (png)                 |     | 2 |     |
 --| | domanda            | chiedi                       | domanda a (png) di (argomento)!        |     | 2 |     |
@@ -943,7 +943,7 @@ END VERB ricomincia_partita.
 --| | inventario         | inv                          | inventario                             |     | 0 |     |
 --| | ispeziona          | perquisisci                  | ispeziona (ogg)                        |     | 1 | {X} |
 --| | lancia             |                              | lancia (proiettile)                    |     | 1 |     |
---| | lancia_a           |                              | lancia (proiettile) a (ricevente)      |     | 2 |     |
+--| | lancia_a           |                              | lancia (proiettile) a (png)            |     | 2 |     |
 --| | lancia_contro      |                              | lancia (proiettile) contro (bersaglio) |     | 2 |     |
 --| | lancia_in          |                              | lancia (proiettile) in (cont)          |     | 2 |     |
 --| | lascia             | abbandona, metti giù, posa   | lascia (ogg)*                          |     | 1 | {X} |
@@ -2517,6 +2517,8 @@ ADD TO EVERY ACTOR
         -- Rendiamo temporaneamente condiscendente il PNG affinché sia possibile
         -- rimuovere un oggetto contenuto da esso: 
         MAKE png condiscendente.
+-- >>> dev-vestario: tweaked
+        MAKE ogg NOT indossato. -- per indossabili non 'indumento'.
         LOCATE ogg IN hero.
         "$+1 ti"
         IF png IS NOT plurale
@@ -5006,7 +5008,8 @@ END ADD TO.
 
 -- #NOTA: Aggiungere anche "dai a (ricevente) (obj)"?
 
-SYNTAX dai_a = dai (ogg) a (ricevente)
+-- SYNTAX dai_a = dai (ogg) a (ricevente)
+SYNTAX dai_a = dai (ogg) a (png)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg = hero
@@ -5014,9 +5017,9 @@ SYNTAX dai_a = dai (ogg) a (ricevente)
 -- @NOTA: Qui serve una risposta ad hoc:                                        TRANSLATE!
         ELSE SAY mia_AT:illegal_parameter_obj.
       END IF.
-  AND ricevente IsA ACTOR
+  AND png IsA ACTOR
     ELSE
-      IF ricevente IS NOT plurale
+      IF png IS NOT plurale
         ---> @TODO!!                                                            TRANSLATE!
         THEN SAY mia_AT:illegal_parameter2_to_sg.
         ELSE SAY mia_AT:illegal_parameter2_to_pl.
@@ -5029,21 +5032,21 @@ SYNONYMS porgi, offri = dai.
 
 ADD TO EVERY OBJECT
   VERB dai_a
-        WHEN ogg
+    WHEN ogg
       CHECK mia_AT CAN dare -- (was CAN give)
         ELSE SAY mia_AT:azione_bloccata.
       AND ogg IS prendibile
         ELSE SAY  mia_AT:ogg1_non_posseduto.
-      AND ogg <> ricevente
+      AND ogg <> png
         ELSE SAY mia_AT:azione_insensata.
 --                                                                              TRANSLATE!
-      AND ricevente <> hero
+      AND png <> hero
         ELSE SAY mia_AT:check_obj2_not_hero3.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
-      AND ogg NOT IN ricevente
+      AND ogg NOT IN png
         ELSE
-          IF ricevente IS NOT plurale
+          IF png IS NOT plurale
             THEN SAY mia_AT:ogg1_già_posseduto_da_png2_sg.
             ELSE SAY mia_AT:ogg1_già_posseduto_da_png2_pl.
           END IF.
@@ -5062,17 +5065,17 @@ ADD TO EVERY OBJECT
                 ELSE SAY mia_AT:ogg1_distante_pl.
               END IF.
           END IF.
-      AND ricevente IS raggiungibile AND ricevente IS NOT distante
+      AND png IS raggiungibile AND png IS NOT distante
         ELSE
-          IF ricevente IS NOT raggiungibile
+          IF png IS NOT raggiungibile
             THEN
-              IF ricevente IS NOT plurale
+              IF png IS NOT plurale
                 THEN SAY mia_AT:ogg1_non_raggiungibile_sg.
                 ELSE SAY mia_AT:ogg1_non_raggiungibile_pl.
               END IF.
-          ELSIF ricevente IS distante
+          ELSIF png IS distante
             THEN
-              IF ricevente IS NOT plurale
+              IF png IS NOT plurale
                 THEN SAY mia_AT:ogg1_distante_sg.
                 ELSE SAY mia_AT:ogg1_distante_pl.
               END IF.
@@ -5084,8 +5087,10 @@ ADD TO EVERY OBJECT
           LOCATE ogg IN hero.
         END IF.
         -- <<< prendi implicito <<<
-        LOCATE ogg IN ricevente.
-        "Consegni $+1" SAY ricevente:prep_A. "$2."
+        LOCATE ogg IN png.
+        "Consegni $+1" SAY png:prep_A. "$2."
+-- >>> dev-vestario: tweaked
+        MAKE ogg NOT indossato. -- per indossabili non 'indumento'.
   END VERB dai_a.
 END ADD TO.
 
@@ -5122,12 +5127,20 @@ ADD TO EVERY OBJECT
   VERB lascia
     CHECK mia_AT CAN lasciare
       ELSE SAY mia_AT:azione_bloccata.
+-- >>> dev-vestario: added
+    AND ogg IS NOT indossato
+      ELSE SAY mia_AT:indumento_andrebbe_rimosso.
+-- >>> dev-vestario: tweaked
     AND ogg IN hero
-      ELSE
-        IF ogg IN abbigliamento
-          THEN SAY mia_AT:indumento_andrebbe_rimosso.
-          ELSE SAY mia_AT:non_possiedi_ogg1.
-        END IF.
+      ELSE SAY mia_AT:non_possiedi_ogg1.
+-- >>> codice originale >>>
+    -- AND ogg IN hero
+    --   ELSE
+    --     IF ogg IN abbigliamento
+    --       THEN SAY mia_AT:indumento_andrebbe_rimosso.
+    --       ELSE SAY mia_AT:non_possiedi_ogg1.
+    --     END IF.
+-- <<< codice originale <<<
 
     DOES
       LOCATE ogg HERE.
@@ -5175,8 +5188,8 @@ END ADD TO.
 -- TAKE (+ carry, get, grab, hold, obtain, pick up)
 
 SYNTAX prendi = prendi (ogg)
-      WHERE ogg IsA THING
-        ELSE
+  WHERE ogg IsA THING
+    ELSE
       IF ogg IS NOT plurale
         THEN SAY mia_AT:ogg1_inadatto_sg.
         ELSE SAY mia_AT:ogg1_inadatto_pl.
@@ -5245,8 +5258,8 @@ ADD TO EVERY THING
               ELSE "Sono fissate al loro posto."
             END IF.
         END IF.
-        AND ogg IS prendibile
-          ELSE
+    AND ogg IS prendibile
+      ELSE
         IF ogg IS NOT plurale
           --  "$+1 non [è/sono] qualcosa che puoi"
           THEN SAY mia_AT:ogg1_inadatto_sg.
@@ -5255,9 +5268,7 @@ ADD TO EVERY THING
         "prendere."
     AND ogg NOT DIRECTLY IN hero
       -- ossia, l'oggetto da prendere non è già tra le cose possedute dall'eroe
-      ELSE
-        --         "Possiedi già $+1."
-        SAY mia_AT:ogg1_già_posseduto.
+      ELSE SAY mia_AT:ogg1_già_posseduto.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -5273,32 +5284,59 @@ ADD TO EVERY THING
               ELSE SAY mia_AT:ogg1_distante_pl.
             END IF.
         END IF.
-        AND peso Of ogg < 50
-          ELSE
+    AND peso Of ogg < 50
+      ELSE
         IF ogg IS NOT plurale
           THEN SAY mia_AT:ogg1_troppo_pesante_sg.
           ELSE SAY mia_AT:ogg1_troppo_pesante_pl.
         END IF. "."
-        DOES
+
+    DOES
       IF ogg IsA ACTOR
-        ---> @TODO!!                                                            TRANSLATE!
-        THEN SAY THE ogg. "would probably object to that."
-      -- actors are not prohibited from being taken in the checks; this is to
-      -- allow for example a dog to be picked up, or a bird to be taken out of
-      -- a cage, etc.
-      ELSIF ogg IsA OBJECT
-        THEN IF ogg DIRECTLY IN abbigliamento
-            THEN LOCATE ogg IN hero.
-              ---> @TODO!!                                                      TRANSLATE!
-              "You take off" SAY THE ogg. "and carry it in your hands."
-              IF ogg IsA indumento
-                THEN EXCLUDE ogg FROM hero:indossati.
-              END IF.
-            ELSE LOCATE ogg IN hero.
-              --@ "Taken." => "Pres[o|a|i|e]."
-              "Pres$$" SAY ogg:vocale. "."
+        THEN
+          IF ogg IS NOT plurale
+            THEN SAY mia_AT:png1_non_gradirebbe_sg.
+            ELSE SAY mia_AT:png1_non_gradirebbe_pl.
           END IF.
+        -- THEN SAY THE ogg. "would probably object to that."
+        -- ---------------------------------------------------------------------
+        -- Non viene impedito di prendere un attore tramite i CHECK del verbo,
+        -- ma solo nel corpo del verbo di base. Questo affinché sia possibile
+        -- implementare corpi del verbo alternativi che consentano di farlo; per
+        -- esempio, per consentire di prendere in braccio un animale, un bebé,
+        -- ecc. L'autore potrà implementare varianti di `prendi` sulle classi o
+        -- istanze specifiche, senza che i CHECK lo prevengano.
+        -- 
+        -- ** NOTA ** In realtà questa parte del codice non verrà eseguita se
+        -- l'attore non passa prima altri check che stroncano l'azione sul
+        -- nascere:
+        --   * `AND ogg IS prendibile`
+        --   * `AND peso Of ogg < 50`
+        -- ---------------------------------------------------------------------
+-- >>> dev-vestario: FIXME! VERB prendi >>>
+      ELSIF ogg IsA OBJECT THEN
+        LOCATE ogg IN hero.
+        MAKE ogg NOT indossato. -- per indossabili non 'indumento'.
+        "Pres$$" SAY ogg:vocale. "."
       END IF.
+-- >>> codice originale >>>
+      -- -----------------------------------------------------------------------
+      -- Il problema con questo codice originale è che rimuoveva l'indumento
+      -- senza rispettare l'ordine stratifica di indossamento!
+      -- -----------------------------------------------------------------------
+      -- ELSIF ogg IsA OBJECT
+      --     IF ogg DIRECTLY IN abbigliamento
+      --       THEN LOCATE ogg IN hero.
+      --         "You take off" SAY THE ogg. "and carry it in your hands."
+      --         IF ogg IsA indumento
+      --           THEN EXCLUDE ogg FROM hero:indossati.
+      --         END IF.
+      --       ELSE LOCATE ogg IN hero.
+      --         --@ "Taken." => "Pres[o|a|i|e]."
+      --         "Pres$$" SAY ogg:vocale. "."
+      --     END IF.
+      -- END IF.
+-- <<< codice originale <<<
 
         -- Objects held by NPCs cannot be taken by the hero by default.
         -- The hero must *ask for* the object to obtain it.
@@ -5544,9 +5582,12 @@ SYNTAX  indossa = indossa (ogg)
 ADD TO EVERY OBJECT
   VERB indossa
     CHECK mia_AT CAN indossare
-        ELSE SAY mia_AT:azione_bloccata.
-    AND ogg NOT IN abbigliamento
-      ELSE SAY mia_AT:ogg1_già_indossato.
+      ELSE SAY mia_AT:azione_bloccata.
+-- >>> dev-vestario: deleted! VERB indossa >>>
+    -- Questo CHECK è stato spostato in 'indossa' su 'indumento'.
+    -- AND ogg NOT IN abbigliamento
+    --   ELSE SAY mia_AT:ogg1_già_indossato.
+-- <<<
     AND ogg IS prendibile
       ELSE SAY  mia_AT:ogg1_non_posseduto.
     AND CURRENT LOCATION IS illuminato
@@ -5665,7 +5706,9 @@ VERB spogliati
   DOES "Ripensandoci, spogliarsi qui e ora non è una buona idea."
 --DOES "You don't feel like undressing is a good idea right now."
 
- -- To make it work, use the following lines instead:
+-- >>> dev-vestario: FIXME! VERB spogliati ESEMPIO >>>
+
+-- To make it work, use the following lines instead:
 --@TODO: sintassi 'desempio commentata (da verificare e testare)!
 --| Per implementare l'azione di spogliarsi, usa:
 --|--------------------------------------------------------
@@ -5917,9 +5960,6 @@ SYNTAX metti_in = metti (ogg) 'in' (cont)
       END IF. "mettere cose."
 
 
-  -- metti_in = insert (ogg) 'in' (cont).
-
-
 ADD TO EVERY OBJECT
   VERB metti_in
     WHEN ogg
@@ -5997,9 +6037,14 @@ ADD TO EVERY OBJECT
               END IF.
           END IF.
       DOES
+-- >>> dev-vestario: tweaked
+        MAKE ogg NOT indossato. -- per indossabili non 'indumento'.
         LOCATE ogg IN cont.
-        "Fatto, ora $+1 è" SAY cont:prep_IN. "$2."
-        -- "You put" SAY THE ogg. "into" SAY THE cont. "."
+        "Fatto, ora $+1"
+        IF ogg IS NOT plurale
+          THEN "è"
+          ELSE "sono"
+        END IF. SAY cont:prep_IN. "$2."
   END VERB metti_in.
 END ADD TO.
 
@@ -6087,6 +6132,7 @@ ADD TO EVERY OBJECT
                 ELSE SAY mia_AT:ogg1_distante_pl.
               END IF.
           END IF.
+
       DOES
         -- >>> prendi implicito: >>>
         IF ogg NOT DIRECTLY IN hero
@@ -6100,8 +6146,9 @@ ADD TO EVERY OBJECT
           ELSE LOCATE ogg IN superficie.
         END IF.
 
-        "Posi" SAY THE ogg. SAY superficie:prep_SU. SAY superficie. "."
-        -- "You put" SAY THE ogg. "on" SAY THE superficie. "."
+        "Posi $+1" SAY superficie:prep_SU. "$2."
+-- >>> dev-vestario: tweaked
+        MAKE ogg NOT indossato. -- per indossabili non 'indumento'.
 
     END VERB metti_su.
 END ADD TO.
@@ -6892,7 +6939,8 @@ ADD TO EVERY OBJECT
         THEN "a terra."
       END IF.
       LOCATE proiettile AT hero.
-
+-- >>> dev-vestario: tweaked
+      MAKE proiettile NOT indossato. -- per indossabili non 'indumento'.
   END VERB lancia.
 END ADD TO.
 
@@ -6909,7 +6957,7 @@ END ADD TO.
 --<
 
 
-SYNTAX lancia_a = lancia (proiettile) a (ricevente)
+SYNTAX lancia_a = lancia (proiettile) a (png)
 --                                                                              TRANSLATE!
   WHERE proiettile IsA OBJECT
     ELSE
@@ -6918,9 +6966,9 @@ SYNTAX lancia_a = lancia (proiettile) a (ricevente)
         ELSE SAY mia_AT:illegal_parameter_obj.
       END IF.
 --                                                                              TRANSLATE!
-  AND ricevente IsA ACTOR
+  AND png IsA ACTOR
     ELSE
-      IF ricevente IS NOT plurale
+      IF png IS NOT plurale
         THEN SAY mia_AT:ogg2_inadatto_A_sg.
         ELSE SAY mia_AT:ogg2_inadatto_A_pl.
       END IF. "lanciare cose."
@@ -6941,17 +6989,17 @@ ADD TO EVERY OBJECT
       AND proiettile IS prendibile
         ELSE SAY  mia_AT:ogg1_non_posseduto.
 --                                                                              TRANSLATE!
-      AND ricevente IS esaminabile
+      AND png IS esaminabile
         ELSE SAY mia_AT:check_obj_suitable_at.
-      AND proiettile <> ricevente
+      AND proiettile <> png
         ELSE SAY mia_AT:azione_insensata.
--- @NOTA: Come è possibile che ricevente possa essere IN hero dato che          CHECK!
---        è sempre un attore?
---                                                                              TRANSLATE!
-      AND ricevente NOT IN hero
-        --              "You are carrying $+2."
-        ELSE SAY mia_AT:check_obj2_not_in_hero1.
-      AND ricevente <> hero
+-- @NOTA: Come è possibile che png possa essere IN hero dato che                FIXME!
+--        è sempre un attore? Vedi:
+--        https://github.com/AnssiR66/AlanStdLib/issues/46
+--    AND png NOT IN hero
+--      --              "You are carrying $+2."
+--      ELSE SAY mia_AT:check_obj2_not_in_hero1.
+      AND png <> hero
         ELSE SAY mia_AT:azione_insensata.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
@@ -6970,23 +7018,24 @@ ADD TO EVERY OBJECT
                 ELSE SAY mia_AT:ogg1_distante_pl.
               END IF.
           END IF.
-      AND ricevente IS NOT distante
+      AND png IS NOT distante
         ELSE
-          IF ricevente IS NOT plurale
+          IF png IS NOT plurale
             THEN SAY mia_AT:ogg2_distante_sg.
             ELSE SAY mia_AT:ogg2_distante_pl.
           END IF.
       DOES
+-- >>> dev-vestario: tweaked >>> sopprimi prendi implicito
         -- >>> prendi implicito: >>>
-        IF proiettile NOT DIRECTLY IN hero
-          THEN LOCATE proiettile IN hero.
-            SAY  mia_AT:riferisci_prendi_implicito.
-        END IF.
+        -- IF proiettile NOT DIRECTLY IN hero
+        --   THEN LOCATE proiettile IN hero.
+        --     SAY  mia_AT:riferisci_prendi_implicito.
+        -- END IF.
         -- <<< prendi implicito <<<
 
 --                                                                              TRANSLATE!
         "It wouldn't accomplish anything trying to throw"
-        SAY the proiettile. "to" SAY THE ricevente. "."
+        SAY the proiettile. "to" SAY THE png. "."
 
   END VERB lancia_a.
 END ADD TO.
@@ -7037,10 +7086,13 @@ ADD TO EVERY OBJECT
         ELSE SAY mia_AT:check_obj_suitable_at.
       AND proiettile <> bersaglio
         ELSE SAY mia_AT:azione_insensata.
---                                                                              TRANSLATE!
+-- >>> dev-vestario: tweaked
       AND bersaglio NOT IN hero
-        --              "You are carrying $+2."
-        ELSE SAY mia_AT:check_obj2_not_in_hero1.
+        ELSE
+          IF bersaglio IS NOT indossato
+            THEN SAY mia_AT:azione_insensata_ogg2_portato.
+            ELSE SAY mia_AT:azione_insensata_ogg2_indossato.
+          END IF.
       AND bersaglio <> hero
         ELSE SAY mia_AT:azione_insensata.
       AND CURRENT LOCATION IS illuminato
@@ -7068,6 +7120,13 @@ ADD TO EVERY OBJECT
             ELSE SAY mia_AT:ogg2_distante_pl.
           END IF.
       DOES
+-- >>> dev-vestario: tweaked
+        -- A prescindere dai diversi esiti possibili di questa azione, in ogni
+        -- caso il proiettele verrà dislocato e quindi non sarebbe più indossato
+        -- (nel caso si trattasse di un indossabile non indumento).
+        MAKE proiettile NOT indossato. -- per indossabili non 'indumento'.
+
+-- @TODO: Non eseguire prendi implicito se l'azione non andrà in porto!         FIXME!
         -- >>> prendi implicito: >>>
         IF proiettile NOT DIRECTLY IN hero
           THEN LOCATE proiettile IN hero.
@@ -7077,13 +7136,19 @@ ADD TO EVERY OBJECT
 
         IF bersaglio IS inanimato
           THEN
---                                                                              TRANSLATE!
             IF bersaglio NOT DIRECTLY AT hero
+            -- ====================================================
+            -- Esito 1: Inutile farlo contro oggetto in contenitore
+            -- ====================================================
+--                                                                              TRANSLATE!
               -- for example the bersaglio is inside a box
               THEN "It wouldn't accomplish anything trying to throw
                  something at" SAY THE bersaglio. "."
 --                                                                              TRANSLATE!
               ELSE
+            -- ====================================================
+            -- Esito 2: Rimbalza sull'oggetto colpito
+            -- ====================================================
                 SAY THE proiettile.
 
                 IF proiettile IS NOT plurale
@@ -7110,8 +7175,15 @@ ADD TO EVERY OBJECT
                   LOCATE proiettile AT hero.
             END IF.
 
+            -- ====================================================
+            -- Esito 3: Non si può farlo contro un essere animato
+            -- ====================================================
+          ELSE
+            IF bersaglio IS NOT plurale
+              THEN SAY mia_AT:png2_non_gradirebbe_sg.
+              ELSE SAY mia_AT:png2_non_gradirebbe_pl.
+            END IF.
 --                                                                              TRANSLATE!
-          ELSE SAY THE bersaglio. "wouldn't probably appreciate that."
             -- Throwing objects at actors is not disabled in the checks
             -- as in some situations this might be desired, for example
             -- when attacking enemies.
@@ -7182,9 +7254,13 @@ ADD TO EVERY OBJECT
       AND cont <> hero
         ELSE SAY mia_AT:azione_insensata.
 --                                                                              TRANSLATE!
+-- >>> dev-vestario: tweaked
       AND cont NOT IN hero
-        --              "You are carrying $+2."
-        ELSE SAY mia_AT:check_obj2_not_in_hero1.
+        ELSE
+          IF cont IS NOT indossato
+            THEN SAY mia_AT:azione_insensata_ogg2_portato.
+            ELSE SAY mia_AT:azione_insensata_ogg2_indossato.
+          END IF.
       AND CURRENT LOCATION IS illuminato
           ELSE SAY mia_AT:imp_luogo_buio.
       AND proiettile NOT IN cont
@@ -7236,11 +7312,12 @@ ADD TO EVERY OBJECT
               END IF.
           END IF.
       DOES
+-- >>> dev-vestario: tweaked >>> sopprimi prendi implicito
         -- >>> prendi implicito: >>>
-        IF proiettile NOT DIRECTLY IN hero
-          THEN LOCATE proiettile IN hero.
-            SAY  mia_AT:riferisci_prendi_implicito.
-        END IF.
+        -- IF proiettile NOT DIRECTLY IN hero
+        --   THEN LOCATE proiettile IN hero.
+        --     SAY  mia_AT:riferisci_prendi_implicito.
+        -- END IF.
         -- <<< prendi implicito <<<
         "Non otterresti nulla lanciando $+1" SAY proiettile:prep_IN. "$2."
 
@@ -7824,10 +7901,15 @@ ADD TO EVERY THING
       ELSE SAY mia_AT:azione_insensata.
 --                                                                              TRANSLATE!
     AND bersaglio NOT IN hero
-      ELSE SAY mia_AT:check_obj_not_in_hero1.
---                                                                              TRANSLATE!
-    AND bersaglio NOT IN abbigliamento
-      ELSE SAY mia_AT:check_obj_not_in_worn2.
+      ELSE
+        IF bersaglio IS NOT indossato
+          THEN SAY mia_AT:azione_insensata_ogg1_portato.
+          ELSE SAY mia_AT:azione_insensata_ogg1_indossato.
+        END IF.
+-- >>> dev-vestario: tweaked VERB attacca >>>
+    -- AND bersaglio NOT IN abbigliamento
+    --   -- "It doesn't make sense to $v something you're wearing."
+    --   ELSE SAY mia_AT:check_obj_not_in_worn2.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
@@ -7908,12 +7990,16 @@ ADD TO EVERY THING
         ELSE SAY mia_AT:azione_insensata.
       AND bersaglio <> hero
         ELSE SAY mia_AT:azione_insensata.
---                                                                              TRANSLATE!
       AND bersaglio NOT IN hero
-        ELSE SAY mia_AT:check_obj_not_in_hero1.
---                                                                              TRANSLATE!
-      AND bersaglio NOT IN abbigliamento
-        ELSE SAY mia_AT:check_obj_not_in_worn2.
+      ELSE
+        IF bersaglio IS NOT indossato
+          THEN SAY mia_AT:azione_insensata_ogg1_portato.
+          ELSE SAY mia_AT:azione_insensata_ogg1_indossato.
+        END IF.
+-- >>> dev-vestario: tweaked VERB attacca >>>
+--    AND bersaglio NOT IN abbigliamento
+--      -- "It doesn't make sense to $v something you're wearing."
+--      ELSE SAY mia_AT:check_obj_not_in_worn2.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
@@ -7980,12 +8066,16 @@ ADD TO EVERY THING
         END IF.
     AND bersaglio <> hero
       ELSE SAY mia_AT:azione_insensata.
---                                                                              TRANSLATE!
     AND bersaglio NOT IN hero
-      ELSE SAY mia_AT:check_obj_not_in_hero1.
---                                                                              TRANSLATE!
-    AND bersaglio NOT IN abbigliamento
-      ELSE SAY mia_AT:check_obj_not_in_worn2.
+      ELSE
+        IF bersaglio IS NOT indossato
+          THEN SAY mia_AT:azione_insensata_ogg1_portato.
+          ELSE SAY mia_AT:azione_insensata_ogg1_indossato.
+        END IF.
+-- >>> dev-vestario: tweaked VERB attacca >>>
+--  AND bersaglio NOT IN abbigliamento
+--    -- "It doesn't make sense to $v something you're wearing."
+--    ELSE SAY mia_AT:check_obj_not_in_worn2.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
@@ -9905,11 +9995,57 @@ VERB inventario
   CHECK mia_AT CAN inventariare
     ELSE SAY mia_AT:azione_bloccata.
   DOES
-    LIST hero.
-
-    IF COUNT DIRECTLY IN abbigliamento > 0   -- See the file 'classes.i', subclass 'clothing'.
-      THEN LIST abbigliamento.     -- This code will list what the hero is wearing.
+-- >>> dev-vestario: tweaked: nuovo metodo per elencare separatamente ciò che
+--                            è trasportato e cio che è indossato.
+    -- --------------------------
+    -- Elenca oggetti trasportati
+    -- --------------------------
+    -- @NOTA: Evita di usare il set 'indossati', se è NOT indossato è portato:
+    SET mia_AT:temp_cnt TO COUNT IsA object, IS NOT indossato, DIRECTLY IN Hero.
+    IF  mia_AT:temp_cnt = 0
+      THEN "Non stai portando niente."
+      ELSE
+        "Stai portando"
+        FOR EACH ogg_portato IsA object, IS NOT indossato, DIRECTLY IN Hero
+          DO
+            SAY AN ogg_portato.
+            DECREASE mia_AT:temp_cnt.
+            DEPENDING ON mia_AT:temp_cnt
+              = 1 THEN "e"
+              = 0 THEN "."
+              ELSE ","
+            END DEPEND.
+        END FOR.
     END IF.
+    -- --------------------------
+    -- Elenca indumenti indossati
+    -- --------------------------
+    SET mia_AT:temp_cnt TO COUNT IsA indumento, DIRECTLY IN Hero, IS indossato.
+    IF  mia_AT:temp_cnt <> 0
+      THEN
+      -- Non diciamo nulla se l'Eroe non sta indossando niente.
+      -- THEN SAY mia_AT:header_abbigliamento_else. --> "Non stai indossando niente."
+      -- ELSE
+        SAY mia_AT:header_abbigliamento.         --> "Stai indossando"
+        FOR EACH ind_indossato IsA indumento, DIRECTLY IN Hero, IS indossato
+          DO
+            SAY AN ind_indossato.
+            DECREASE mia_AT:temp_cnt.
+            DEPENDING ON mia_AT:temp_cnt
+              = 1 THEN "e"
+              = 0 THEN "."
+              ELSE ","
+            END DEPEND.
+        END FOR.
+    END IF.
+
+-- >>> codice originale >>>
+    -- LIST hero.
+
+    -- IF COUNT DIRECTLY IN abbigliamento > 0   -- See the file 'classes.i', subclass 'clothing'.
+    --   THEN LIST abbigliamento.     -- This code will list what the hero is wearing.
+    -- END IF.
+-- <<< codice originale <<<
 
 END VERB inventario.
 
@@ -10035,11 +10171,12 @@ ADD TO EVERY THING
               END IF.
           END IF.
       DOES
+-- >>> dev-vestario: tweaked >>> sopprimi prendi implicito
         -- >>> prendi implicito: >>>
-        IF ogg NOT DIRECTLY IN hero
-          THEN LOCATE ogg IN hero.
-            SAY  mia_AT:riferisci_prendi_implicito.
-        END IF.
+        -- IF ogg NOT DIRECTLY IN hero
+        --   THEN LOCATE ogg IN hero.
+        --     SAY  mia_AT:riferisci_prendi_implicito.
+        -- END IF.
         -- <<< prendi implicito <<<
 
         "Non è possibile legare $+1" SAY bersaglio:prep_A. "$2."

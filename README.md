@@ -39,6 +39,7 @@ Data inizio progetto: 2018/04/13.
 - [Stato del progetto](#stato-del-progetto)
 - [Sostieni il progetto](#sostieni-il-progetto)
 - [Ultime novità](#ultime-novit%C3%A0)
+    - [2019/02/19: Riscritto il codice per il vestiario](#20190219-riscritto-il-codice-per-il-vestiario)
     - [2019/02/07: Inizio lavori per il "Ricettario di Alan"](#20190207-inizio-lavori-per-il-ricettario-di-alan)
     - [2019/02/05: Modulo per l'italiano indipendente e pronto all'uso](#20190205-modulo-per-litaliano-indipendente-e-pronto-alluso)
     - [2019/02/01: Passaggio a Alan 3.0beta6 build 1866](#20190201-passaggio-a-alan-30beta6-build-1866)
@@ -213,6 +214,15 @@ Grazie.
 # Ultime novità
 
 Alcune notizie flash sugli aggiornamenti importanti del progetto...
+
+## 2019/02/19: Riscritto il codice per il vestiario
+
+A partire dalla versione v0.15.0, la Libreria adotta un nuovo sistema per la gestione del vestiario. Adesso l'uso del vestiario da parte dell'utente finale sarà più semplice ed intuitivo.
+
+Il codice riguardante gli indumenti è stato praticamente riscritto tutto, per ovviare a una serie di problematiche e bachi presenti nella libreria originale.
+
+Queste modifiche consentiranno inoltre di introdurre a breve nuove funzionalità per il vestiario, che ne renderanno l'uso nelle avventure ancora più flessibile e personalizzabile.
+
 
 ## 2019/02/07: Inizio lavori per il "Ricettario di Alan"
 

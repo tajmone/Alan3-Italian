@@ -17,33 +17,35 @@
 ; TASCHE PANTALONI
 ; ==============================================================================
 esamina i miei pantaloni
-DBG i miei pantaloni
+DBG_IND i miei pantaloni
 ; Dentro i pantaloni (tasche) c'è una kippah, che è un indumento.
 esamina la kippah
-DBG la kippah
-; ** ERRORE! ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-;               La kippah non dovrebbe risultare indossata, ma solo posseduta.
-;               La libreria deve verificare durante l'inizializzazione che solo
-;               quegli indumenti contenuti direttamente (DIRECTLY IN) nell'Eroe 
-;               vengano considerati indossati.
-;               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; /// KIPPAH IN PANTALONI -> NOT INDOSSATO (OK!) ////
+DBG_IND la kippah
 ; ------------------------------------------------------------------------------
-; INDUMENTI ANNIDATI NON MANIPOLABILI
+; MANIPOLAZIONE INDUMENTI ANNIDATI
 ; ------------------------------------------------------------------------------
-; La kippah è bloccata nei pantaloni poiché è considerata indossata:
+; Giusto qualche test per verificare che gli indumenti annidati si possano
+; maneggiare come ci si aspetterebbe...
+;
+; /// LASCIA KIPPAH (È IN PANTALONI) -> (OK!) ////
 lascia la kippah
-; ** ERRORE! ** Questo mostra le conseguenze inattese di questo problema.
-togliti la kippah
+; /// KIPPAH IN PANTALONI -> NOT INDOSSATO (OK!) ////
+DBG_IND la kippah
+metti la kippah nei pantaloni
+; /// KIPPAH IN PANTALONI -> NOT INDOSSATO (OK!) ////
+DBG_IND la kippah
+esamina i miei pantaloni
+; /// INDOSSA KIPPAH (È IN PANTALONI) -> (OK!) ////
+indossa la kippah
+; /// KIPPAH > VERIFICA È INDOSSATO (OK!) ////
+DBG_IND la kippah
+togliti la kippah POI metti la kippah nei pantaloni
+svuota i miei pantaloni
 esamina i miei pantaloni
 ; ------------------------------------------------------------------------------
-; NON-INDOSSABILI CONSIDERATI INDOSSATI
+; MANIPOLAZIONE NON-INDOSSABILI ANNIDATI IN INDUMENTI
 ; ------------------------------------------------------------------------------
-; Nonostante il portafoglio non sia un'instanza di 'indumento', viene trattato
-; come se lo fosse da vari verbi:
+prendi il portafoglio
+metti il portafoglio nei pantaloni
 lascia il portafoglio
-; ** ERRORE! ** Il portafoglio non è indossato! (non è neanche un indumento)
-togliti il portafoglio
-; ** CIRCOLO VIZIOSO **   Non possiamo posarlo finché non lo "disindossiamo",
-;                         Non possiamo disindossarlo perché non è un indumento!
-svuota i miei pantaloni ; L'unico rimedio è la forza bruta...
-esamina i miei pantaloni

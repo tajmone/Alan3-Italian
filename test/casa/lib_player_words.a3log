@@ -43,8 +43,8 @@ Il vasetto è vuoto.
 Preso.
 
 > inventario E POI esamina la bombetta E esamina i jeans
-Stai portando una mela, una pera, un vasetto, una torcia e una chiave. Stai
-indossando un paio di blue jeans e una bombetta.
+Stai portando una chiave, una torcia, una mela, una pera e un vasetto. Stai
+indossando una bombetta e un paio di blue jeans.
 
 È una bombetta originale inglese.
 
@@ -106,7 +106,7 @@ Presa.
 Presa.
 
 > inventario
-Stai portando una pera, una banana e una mela.
+Stai portando una mela, una banana e una pera.
 
 > lascia TUTTO
 (mela) Lasci la mela.
@@ -163,7 +163,7 @@ Presa.
 Preso.
 
 > inventario
-Stai portando una pera, un vasetto, una banana e una mela.
+Stai portando una mela, una banana, una pera e un vasetto.
 
 > lascia TUTTO TRANNE la banana
 (mela) Lasci la mela.
@@ -243,7 +243,7 @@ Preso.
 (pera) Lasci la pera.
 
 > inventario
-Stai portando un vasetto e una banana.
+Stai portando una banana e un vasetto.
 
 > ; 
 > prendi la pera POI prendi la mela
@@ -257,7 +257,7 @@ Presa.
 (vasetto) Lasci il vasetto.
 
 > inventario
-Stai portando una pera e una banana.
+Stai portando una banana e una pera.
 
 > 
 

@@ -56,8 +56,7 @@ portando un opuscolo.
 Preso.
 
 > esamina il predicatore
-Esamini il predicatore, ma non noti niente di speciale. Il predicatore non sta 
-portando niente.
+Esamini il predicatore, ma non noti niente di speciale.
 
 > ; ******************************************************************************
 > ; *                            TEST SU CLASSE ACTOR                            *
@@ -75,8 +74,7 @@ In questa piazza tutti gli attori sono della classe ACTOR ma non sono persone
 qui.
 
 > esamina il leone
-Esamini il leone, ma non noti niente di speciale. Il leone non sta portando
-niente.
+Esamini il leone, ma non noti niente di speciale.
 
 > esamina lo scimpanzé
 Esamini lo scimpanzé, ma non noti niente di speciale. Lo scimpanzé sta portando 
@@ -86,15 +84,14 @@ una banana.
 Lo scimpanzé non sarebbe d'accordo.
 
 > esamina le galline
-Esamini le galline, ma non noti niente di speciale. Le galline stanno portando 
+Esamini le galline, ma non noti niente di speciale. Le galline stano portando 
 delle uova.
 
 > prendi la uova
 Prese.
 
 > esamina le galline
-Esamini le galline, ma non noti niente di speciale. Le galline non stanno 
-portando niente.
+Esamini le galline, ma non noti niente di speciale.
 
 > ; ******************************************************************************
 > ; *                          MESSAGGI DI ERRORE VARI                           *

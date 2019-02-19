@@ -18,6 +18,11 @@ For previuos changes, see:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Alan 3.0beta6 build 1866](#alan-30beta6-build-1866)
+    - [2019/02/19](#20190219)
+        - [Passa alla v0.15.0](#passa-alla-v0150)
+        - [Rinnovato il codice del vestiario](#rinnovato-il-codice-del-vestiario)
+        - [Novità riguardanti il vestiario](#novit%C3%A0-riguardanti-il-vestiario)
+        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
     - [2019/02/05](#20190205)
         - [Passa alla v0.14.0](#passa-alla-v0140)
         - [Separa modulo grammatica italiana](#separa-modulo-grammatica-italiana)
@@ -95,7 +100,7 @@ For previuos changes, see:
         - [Messaggi dei verbi](#messaggi-dei-verbi-2)
     - [2018/11/24](#20181124)
         - [Messaggi dei verbi](#messaggi-dei-verbi-3)
-        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
+        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-1)
     - [2018/11/23 \(2\)](#20181123-2)
         - [Rinomina messaggi dei verbi](#rinomina-messaggi-dei-verbi)
         - [Sostituisci messaggi inglesi dei verbi](#sostituisci-messaggi-inglesi-dei-verbi)
@@ -133,6 +138,144 @@ For previuos changes, see:
 -----
 
 # Alan 3.0beta6 build 1866
+
+## 2019/02/19
+
+- [`libreria.i`][libreria] &#x27f6; v0.15.0
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.15.0
+- [`lib_classi_vestiario.i`][lib_classi_vestiario] &#x27f6; v0.15.0
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.15.0
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.15.0
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] &#x27f6; v0.15.0
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.15.0
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.15.0
+- [`lib_grammatica.i`][lib_grammatica] &#x27f6; v0.15.0
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.15.0
+
+### Passa alla v0.15.0
+
+Tutti i moduli della libreria passano alla versione 0.15.0.
+
+
+### Rinnovato il codice del vestiario
+
+Questo aggiornamento rivede tutto il codice per gestire il vestiario, implementando un nuovo sistema che è sia più semplice da gestire nella libreria che più facile usare per gli utenti finali, e risolve i molteplici bachi presenti nella libreria originale.
+
+Sono previste ulteriori modifiche alle funzionalità di abbigliamento, che verranno implementate nei prossimi commit. Alcune di esse prevedono nuove funzionalità al momento non contemplate.
+
+Per i dettagli completi delle molteplici modifiche strutturali al codice, si vedano i seguenti appunti di lavoro:
+
+- [`VESTIARIO.md`][VESTIARIO]
+- [`VESTIARIO_DEV.md`][VESTIARIO_DEV]
+- [`VESTIARIO_PROBLEMI.md`][VESTIARIO_PROBLEMI]
+
+Le modifiche richieste per adattare il nuovo sistema di vestario hanno coinvolto moltissime parti della libreria, e non è possibile riassumere tutte le modifiche.
+
+> __ANNOTAZIONI__ — Per ora, il codice originale è stato preservato accanto alle modifiche, per facilitarne la consultazione in caso di problemi, e le parti del codice modificate, rimosse o aggiunte sono state marcate con commenti che iniziano per `-- >>> dev-vestario:`, per facilitarne l'individuazione tramite funzioni di ricerca (questi commenti verranno rimossi appena tutti i lavori riguardanti il vestiario saranno ultimati). 
+
+
+### Novità riguardanti il vestiario
+
+Dal lato utente, il nuovo sistema funziona grosso modo come il precedente, e saranno richiesti solo alcuni piccoli accorgimenti per adattare le avventure preesistenti. Però il nuovo sistema è più intuitivo, specie per quanto riguarda la mappatura del vestiario al corpo e gli strati di indossamento. Inoltre, con il nuovo sistema è molto più semplice creare nuovi verbi _ad hoc_ che possano coinvolgere indumenti.
+
+Dal lato della Libreria, il codice per il vestiario è diventato molto più snello, e più facile da gestire nel corso dello sviluppo.
+
+Qui nel changelog mi limiterò a riassumere i cambiamenti più imporanti del vestiario nella libreria; per maggiori dettagli si veda il documento [`VESTIARIO_DEV.md`][VESTIARIO_DEV].
+
+#### Abbandono di `abbigliamento` e `indossati`
+
+Il nuovo sistema non ricorre più all'entità `abbigliamento` né al set degli `indossati` di ogni attore, ma utilizza solo l'attributo booleano `indossato` (ora spostato su `thing`). Questi introducevano troppe complicazioni gestionali e pochi benefici reali.
+
+#### Utilizzo nelle avventure
+
+Ora, per creare degli indumenti indossati nelle proprie avventure, sarà sufficienti collocare l'indumento nell'attore destinatario e settarlo come `indossato`, al resto ci penserà la libreria nel corso dell'inizializzazione.
+
+```alan
+THE scarpe_eroe IsA indumento IN hero.
+  IS indossato.
+```
+
+
+#### Nuovo approccio all'indossabilità
+
+Il nuovo sistema sposta l'attributo `indossato` su `thing`, rendendolo così accessibili ai CHECK di ogni verbo. Ovviamente, questo attributo dovrebbe aver senso solo con oggetti della classe `indumento`, e quindi se la libreria fa il suo dovere non dovrebbe accadere che un oggetto non indumento risulti `indossato`.
+
+Il criterio per distinguere tra indumenti indossati e non indossati è molto semplice:
+
+- Qualsiasi `indumento IS indossato DIRECLY IN` un attore è un indumento indossato.
+- Qualsiasi `indumento INDIRECLY IN` un attore _non può_ essere un indumento indossato, ma solo trasportato.
+- Un `indumento DIRECLY IN` un attore può essere o un indumento indossato, o un indumento trasportato, a seconda del valore dell'attributo `indossato`.
+
+Quindi, nel nuovo sistema è sufficiente accertarsi che qualsiasi verbo che _potrebbe_ spostare indumenti al di fuori di un attore si assicuri di settare l'oggetto come `NOT indossato` — anche se non è un `indumento` non importa, dato che per i non-indumenti l'attributo non fa differenza e, comunque, dovrebbe sempre essere settato come `NOT indossato`. Questo accorgimento è finalizzato a supportare l'estensibilità degli indossabili ad altri tipi che non siano indumenti.
+
+
+#### Estensibilità degli indossabili
+
+L'attributo `indossato` introduce il criterio _generale_ di indossabilità (secondo cui solo oggetti _direttamente_ in attori possono essere nello stato di indossati) che potrebbe essere sfruttato anche per altri tipi di indossabili. Allo stato attuale, la Libreria gestisce solo indossabili di tipo `indumento`, ma gli autori potrebbero implementare altre classi di indossabili — p.es. dei gadget/dispositivi che siano indossabili pur non essendo della classe `indumento`.
+
+Poiché l'attributo `indossato` è già presente su `thing`, e visto che tutti i verbi della libreria si assicurano di settare a `NOT indossando` un oggetto che viene dislocato da un attore, eventuali nuove classi di indossabili potrebbero tranquillamente sfruttare questo attributo, dato che il criterio generale di indossabilità è il medesimo.
+
+Sulla classe `indumento` la Libreria definisce verbi mirati agli indumenti, come i verbi `indossa`/`rimuovi` che gestiscono l'abbigliamento a strati e l'indossamento ordinato dei capi di vestiario. Un autore che volesse introdurre indossabili di altro tipo potrebbe farlo creando una nuova classe, di modo da poter implementare su di essa varianti specifiche dei verbi `indossa`/`rimuovi`, che non vadano a sovrapporsi ai verbi del vestiario.
+
+
+#### Stratificazione senza vincoli
+
+Il nuovo sistema si limita a verificare che gli indumenti con valori di copertura non-zero vengano indossati e rimossi nell'ordine corretto, ma non gestisce più i casi speciali come i cappotti e le gonne.
+
+La codifica dei casi speciali nella libreria limitava la libertà d'uso degli strati imponendo un modello arbitrario e restrittivo. Ora starà agli autori implementare la gestione di casi speciali, se ne avessero la necessità.
+
+#### Stratificazione non esponenziale
+
+Il nuovo sistema non impone più una numerazione esponenziale per gli strati del vestiario (2, 4, 8, 16, 32, 64) ma adotta ora una numerazione libera (1, 2, 3, ...) che l'autore potrà utilizzare come rietiene più opportuno.
+
+Il nuovo sistema è più intuitivo e facile da gestire, ed è compatibile con indumenti creati per il sistema precedente, dato che si limita a verificare se i valori sono uguali o superiori tra loro.
+
+#### Migliorie messaggistica
+
+Anche la messaggistica riguardo al vestiario è stata notevolmente migliorata.
+
+Nei verbi che impediscono l'azione se uno dei parametri è trasportato dall'Eroe, ora verrà prodotto un messaggio diverso a seconda se l'oggetto sia solo portato o indossato. 
+
+##### Messaggi di fallimento indossa/rimuovi
+
+Nel vecchio sistema, quando l'azione dei verbi `indossa`/`togliti` non andava a buon fine il messaggio riportava l'elenco completo degli indumenti indossati dal giocatore. Il nuovo sistema elenca solo quegli indumenti che bloccano l'azione e andrebbero rimossi.
+
+
+##### Elenchi inventario
+
+Il nuovo sistema produrra sia per l'inventario dell'Eroe che per 'esamina attore' due elenchi separati per gli oggetti trasportati e quelli indossati. Questo è ottenuto tramite dei loop personalizzati nel codice dei verbi, e senza ricorrere a `LIST actor` (il vecchio sistema usava `LIST abbigliamento`).
+
+Inoltre, i messaggi prodotti sono leggermente diversi, meno verbosi e meno invadenti.
+
+- __Non menzionare nudità__ — Ora non verrà menzionato se un attore non sta indossando nulla. Oltre ad essere inutilmente verboso, menzionarlo interferirebbe con quelle avventure che non utilizzano affatto il vestiario, sottolineando costantemente la nudità dei personaggi mentre invece il loro abbigliamento potrebbe essere descritto assieme al personaggio ma non implementato attraverso l'uso di indumenti.
+- __Non menzionare a mani vuote__ — Ora non verrà menzionato se un PNG non sta portando nulla, tanto è implicito. Oltre ad essere inutilmente verboso, menzionarlo interferirebbe con quelle avventure in cui non è previsto affatto che i PNG trasportino oggetti.
+
+
+#### Criteri maneggiamento indumenti indossati
+
+Il nuovo sistema stabilisce delle regole formali riguardo i verbi che potrebbero dislocare un indumento indossato da un attore. La regola generale è che non è consentito farlo.
+
+Se si tratta di un indumento indossato dall'Eroe, il presupposto è che potrà toglierselo prima di eseguire l'azione; nel caso di PNG invece il presupposto è che l'indumento andrebbe ottenuto chiedendolo al PNG, in modo da rispettare le regole di consenzienza.
+
+Il vecchio sistema consentiva di prendere implicitamente indumenti indossati dai PNG, con vari verbi — p.es. era possibile lanciare ad Alice le scapre indossate da Bob. A mio avviso, consentire di prelevare gli indumenti indossati alla stregua degli oggetti trasportati è eccessivo, e la Libreria deve prevenirlo di default, lasciando agli autori il margine di libertà per implementare i casi specifici (o generali) in cui questo sia fattibile.
+
+Sono stati aggiunti dei CHECK sulla classe `indumento` per bloccare i verbi che dislocherebbero un indumento indossato dal suo propietario (Eroe o attore che sia), tranne nei casi in cui l'azione è sensata (p.es. indossare un indumento non indossato, o chiedere a un indumento indossato a un PNG consenziente). Questo include anche quei verbi che prendono implicitamente un oggetto per prepare/eseguire l'azione richiesta. 
+
+### Nuovi messaggi dei verbi
+
+Creati nuovi attributi per i messaggi di risposta dei verbi:
+
+|             Attributo             |                      Testo                       |
+|-----------------------------------|--------------------------------------------------|
+| `png2_non_gradirebbe_sg`/`pl`     | `"Non credo che $+2 [gradirebbe/gradirebbero]."` |
+| `azione_insensata_ogg1_portato`   | `"Che senso ha? Stai portando $+1."`             |
+| `azione_insensata_ogg1_indossato` | `"Che senso ha? Stai indossando $+1."`           |
+| `azione_insensata_ogg2_portato`   | `"Che senso ha? Stai portando $+2."`             |
+| `azione_insensata_ogg2_indossato` | `"Che senso ha? Stai indossando $+2."`           |
+
+
+
+<!---------------------------------------------------------------------------->
 
 ## 2019/02/05
 
@@ -1456,6 +1599,10 @@ Tutti i moduli della libreria passano alla versione 0.8.0.
 
 <!-- File del Progetto -->
 
+[VESTIARIO]: ./VESTIARIO.md "Vedi documento"
+[VESTIARIO_DEV]: ./VESTIARIO_DEV.md "Vedi documento"
+[VESTIARIO_PROBLEMI]: ./VESTIARIO_PROBLEMI.md "Vedi documento"
+
 
 <!-- Moduli della Libreria --------------------------------------------------->
 
@@ -1479,7 +1626,6 @@ Tutti i moduli della libreria passano alla versione 0.8.0.
 
 [BUILD_DOCS]: ./BUILD_DOCS.bat
 [ANNOTAZIONI_DOXTER]: ./ANNOTAZIONI_DOXTER.adoc
-[VESTIARIO]: ./VESTIARIO.md
 
 [lib_verbi adoc]: ./lib_verbi.asciidoc
 [lib_verbi html]: ./lib_verbi.html

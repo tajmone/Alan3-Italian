@@ -1,4 +1,4 @@
--- Alan >= 3.0beta6 build 1866 | Alan Italian >= v0.14.0-Alpha
+-- Alan >= 3.0beta6 build 1866 | Alan Italian >= v0.15.0-Alpha
 --==============================================================================
 -- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -14,10 +14,13 @@
 -- Questo modulo offre strumenti per il "debacaggio" (o "debacatura") delle
 -- istanze del gioco. I seguenti comandi saranno aggiunti all'avventura:
 -- 
---    DEBACA <THING>
---    DBG_PRONOME <THING>
---    DBG_QUI
---    DBG_GRAM <THING>
+--    DEBACA <THING>      | Mostra informazioni complete su <thing>
+--    DBG_PRONOME <THING> | Mostra pronome di <thing>
+--    DBG_QUI             | Mostra informazioni sul luogo attuale
+--    DBG_GRAM <THING>    | Mostra info grammaticali su <thing>
+--    DBG_INV <ACTOR>     | Mostra inventario di <actor> tramite LIST
+--    DBG_COND <ACTOR>    | Mostra stato condiscendenza di <actor>
+--    SOGGIOGA <ACTOR>    | Inverti stato condiscendenza di <actor>
 -- 
 --------------------------------------------------------------------------------
 -- NOTA: "debaca" è la forma italianizzata del verbo inglese "debug" ("rimuovere
@@ -138,7 +141,7 @@ ADD TO EVERY thing
             ELSE "No"
           END IF.
           -- ---------------------------------
-          "$n| È CONDISCENDENTE"
+          "$n| CONDISCENDENTE:"
           IF ogg IS condiscendente
             THEN "Sì"
             ELSE "No"
@@ -180,7 +183,8 @@ ADD TO EVERY thing
               "$n| INDOSSATO:"
               IF ogg IS indossato
                 THEN "Sì"
-                  IF THIS IN abbigliamento
+-- >>> dev-vestario: tweaked
+                  IF THIS IN hero
                     THEN "(da hero)"
                   END IF.
                 ELSE "No"
@@ -511,5 +515,133 @@ VERB dbg_gram_qui
     "$n| PREP. SU:$t" SAY CURRENT LOCATION:prep_SU.
     SAY mia_AT:dbgsep. -------------------( separatore )--------------
 END VERB dbg_gram_qui.
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- DBG_INV <ACTOR>
+--------------------------------------------------------------------------------
+--==============================================================================
+-- Il comando 'DBG_INV <ACTOR>' elencherà l'inventario di un attore usando
+-- l'istruzione LIST. Utile per vedere come vengono gestiti gli indumenti
+-- indossati, dato che gli autori potrebbero usare tale comando nelle loro
+-- avventure.
+
+SYNTAX dbg_inv = dbg_inv (act)*!
+  WHERE act IsA actor
+    ELSE "Questo comando può essere usato solo con gli attori."
+
+ADD TO EVERY actor
+  VERB dbg_inv
+    DOES LIST THIS.
+  END VERB dbg_inv.  
+END ADD TO actor.
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- DBG_IND <INDUMENTO>
+--------------------------------------------------------------------------------
+--==============================================================================
+-- Il comando 'DBG_IND <INDUMENTO>' mostra informazioni sugli indumenti.
+
+SYNTAX dbg_ind = dbg_ind (ind)*!
+  WHERE ind IsA indumento
+    ELSE "Questo verbo accetta solo parametri di tipo indumento."
+
+ADD TO EVERY indumento
+  VERB dbg_ind
+    DOES
+      "'$1' VALORI:"
+      IF  ind:val_testa = 0 AND ind:val_tronco = 0 AND ind:val_gambe = 0
+      AND ind:val_piedi = 0 AND ind:val_mani = 0
+        THEN
+          "(nessuno)"
+        ELSE
+          IF ind:val_testa > 0
+            THEN "| val_testa:" SAY ind:val_testa.
+          END IF.
+          IF ind:val_tronco > 0
+            THEN "| val_tronco:" SAY ind:val_tronco.
+          END IF.
+          IF ind:val_gambe > 0
+            THEN "| val_gambe:" SAY ind:val_gambe.
+          END IF.
+          IF ind:val_piedi > 0
+            THEN "| val_piedi:" SAY ind:val_piedi.
+          END IF.
+          IF ind:val_mani > 0
+            THEN "| val_mani:" SAY ind:val_mani.
+          END IF.
+          "|"
+      END IF.
+      ------------------------
+      -- Mostra se è indossato
+      ------------------------
+      "$nÈ INDOSSATO:"
+      IF ind IS NOT indossato
+        THEN "No"
+        ELSE "Sì"
+          ---------------------------
+          -- Mostra attore indossante
+          ---------------------------
+          -- "$nINDOSSATO DA:"
+          FOR EACH ac IsA ACTOR
+            DO
+              IF ind IN ac
+                THEN "($$" SAY ac:prep_DA. SAY ac. "$$)"
+              END IF.
+          END FOR.
+      END IF.
+  END VERB dbg_ind.
+END ADD TO indumento.
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- DBG_COND <ACTOR>
+--------------------------------------------------------------------------------
+--==============================================================================
+-- Il comando 'DBG_COND <ACTOR>' mostrerà lo stato di condiscendenza di un
+-- attore.
+
+SYNTAX dbg_cond = dbg_cond (act)
+  WHERE act IsA actor
+    ELSE "Questo comando può essere usato solo con gli attori."
+
+ADD TO EVERY actor
+  VERB dbg_cond
+    DOES
+      "| $+1 | CONDISCENDENTE:"
+      IF THIS IS condiscendente
+        THEN "Sì"
+        ELSE "No"
+      END IF. "|"
+  END VERB dbg_cond.  
+END ADD TO actor.
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- SOGGIOGA <ACTOR>
+--------------------------------------------------------------------------------
+--==============================================================================
+-- Il comando 'SOGGIOGA <ACTOR>' modificherà lo stato di condiscendenza di un
+-- attore.
+
+SYNTAX soggioga = soggioga (act)*
+  WHERE act IsA actor
+    ELSE "Questo comando può essere usato solo con gli attori."
+
+ADD TO EVERY actor
+  VERB soggioga
+    DOES
+      "Con i poteri della tua mente"
+      IF THIS IS condiscendente
+        THEN
+          "liberi $+1 dal giogo della condiscendenza."
+          MAKE THIS NOT condiscendente.
+        ELSE
+          "soggioghi $+1 alla condiscendenza."
+          MAKE THIS condiscendente.
+      END IF.
+  END VERB soggioga.  
+END ADD TO actor.
 
 ---< Fine del File >---

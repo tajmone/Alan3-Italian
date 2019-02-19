@@ -438,8 +438,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.14.0-Alpha,</span>
-<span id="revdate">2019-02-05</span>
+<span id="revnumber">versione 0.15.0-Alpha,</span>
+<span id="revdate">2019-02-19</span>
 <br><span id="revremark">Alan 3.0beta6 build 1866</span>
 </div>
 <div id="toc" class="toc2">
@@ -451,6 +451,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_gli_indumenti">Gli indumenti</a>
 <ul class="sectlevel3">
 <li><a href="#_verbo_esamina">Verbo <code>esamina</code></a></li>
+<li><a href="#_impedisci_verbi_che_potrebbero_dislocare_indossati">Impedisci verbi che potrebbero dislocare indossati</a></li>
 <li><a href="#_verbo_indossa">Verbo <code>indossa</code></a></li>
 <li><a href="#_verbo_togliti">Verbo <code>togliti</code></a></li>
 </ul>
@@ -542,13 +543,13 @@ proprietà contenitore:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">THE abbigliamento IsA ENTITY
-  CONTAINER TAKING indumento.
-    HEADER
-      SAY  mia_AT:header_abbigliamento.
-    ELSE
-      SAY  mia_AT:header_abbigliamento_else.
-END THE.</code></pre>
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">-- &gt;&gt;&gt; dev-vestario: deleted! ENTITY abbigliamento &gt;&gt;&gt;
+
+-- THE abbigliamento IsA ENTITY
+--   CONTAINER TAKING indumento.
+--     HEADER  SAY mia_AT:header_abbigliamento.
+--     ELSE    SAY mia_AT:header_abbigliamento_else.
+-- END THE.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -589,6 +590,198 @@ ridefiniamo su questa classe i verbi <code>esamina</code>, <code>indossa</code> 
 <div class="sect3">
 <h4 id="_verbo_esamina"><a class="anchor" href="#_verbo_esamina"></a>Verbo <code>esamina</code></h4>
 
+</div>
+<div class="sect3">
+<h4 id="_impedisci_verbi_che_potrebbero_dislocare_indossati"><a class="anchor" href="#_impedisci_verbi_che_potrebbero_dislocare_indossati"></a>Impedisci verbi che potrebbero dislocare indossati</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  VERB metti_in --&gt; metti (ogg) 'in' (cont)
+    WHEN ogg
+      CHECK ogg IS NOT indossato
+        ELSE
+          IF ogg IN hero
+            THEN SAY mia_AT:indumento_andrebbe_rimosso.
+            ELSE
+              IF ogg IS NOT plurale
+                -- "Al momento $+1 [è/sono] indossat$$"
+                THEN SAY mia_AT:indumento_indossato_PNG_sg.
+                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
+              END IF. SAY ogg:vocale.
+              FOR EACH ac IsA actor DO
+                IF ogg IN ac
+                  THEN SAY ac:prep_DA. SAY ac. "."
+                END IF.
+              END FOR.
+          END IF.
+  END VERB metti_in.
+
+
+  VERB metti_su --&gt; metti (ogg) su (superficie)
+    WHEN ogg
+      CHECK ogg IS NOT indossato
+        ELSE
+          IF ogg IN hero
+            THEN SAY mia_AT:indumento_andrebbe_rimosso.
+            ELSE
+              IF ogg IS NOT plurale
+                -- "Al momento $+1 [è/sono] indossat$$"
+                THEN SAY mia_AT:indumento_indossato_PNG_sg.
+                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
+              END IF. SAY ogg:vocale.
+              FOR EACH ac IsA actor DO
+                IF ogg IN ac
+                  THEN SAY ac:prep_DA. SAY ac. "."
+                END IF.
+              END FOR.
+          END IF.
+  END VERB metti_su.
+
+
+  VERB dai_a --&gt; dai (ogg) a (png)
+    WHEN ogg
+      CHECK ogg IS NOT indossato
+        ELSE
+          IF ogg IN hero
+            THEN SAY mia_AT:indumento_andrebbe_rimosso.
+            ELSE
+              IF ogg IS NOT plurale
+                -- "Al momento $+1 [è/sono] indossat$$"
+                THEN SAY mia_AT:indumento_indossato_PNG_sg.
+                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
+              END IF. SAY ogg:vocale.
+              FOR EACH ac IsA actor DO
+                IF ogg IN ac
+                  THEN SAY ac:prep_DA. SAY ac. "."
+                END IF.
+              END FOR.
+          END IF.
+  END VERB dai_a.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Se si vuole previnire che i PNG consegnino i loro vestiti, decomenntare il
+seguente verbo, o aggiungerlo al proprio codice dell&#8217;avventura:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERB chiedi --&gt; chiedi a (png) (ogg)
+  --   WHEN ogg
+  --     CHECK ogg IS NOT indossato
+  --       ELSE
+  --         IF ogg IN hero
+  --           THEN SAY mia_AT:ogg2_già_posseduto.
+  --           ELSE
+  --             FOR EACH ac IsA actor DO
+  --               IF THIS IN ac
+  --                 THEN SAY THE ac. "sta indossando $+2."
+  --               END IF.
+  --             END FOR.
+  --         END IF.
+  -- END VERB chiedi.
+
+
+  VERB lancia --&gt; lancia (proiettile)
+    CHECK proiettile IS NOT indossato
+      ELSE
+        IF proiettile IN hero
+          THEN SAY mia_AT:indumento_andrebbe_rimosso.
+          ELSE
+            IF proiettile IS NOT plurale
+              -- "Al momento $+1 [è/sono] indossat$$"
+              THEN SAY mia_AT:indumento_indossato_PNG_sg.
+              ELSE SAY mia_AT:indumento_indossato_PNG_pl.
+            END IF. SAY proiettile:vocale.
+            FOR EACH ac IsA actor DO
+              IF proiettile IN ac
+                THEN SAY ac:prep_DA. SAY ac. "."
+              END IF.
+            END FOR.
+        END IF.
+  END VERB lancia.
+
+  VERB lancia_a --&gt; lancia (proiettile) a (png)
+    WHEN proiettile
+      CHECK proiettile IS NOT indossato
+        ELSE
+          IF proiettile IN hero
+            THEN SAY mia_AT:indumento_andrebbe_rimosso.
+            ELSE
+              IF proiettile IS NOT plurale
+                -- "Al momento $+1 [è/sono] indossat$$"
+                THEN SAY mia_AT:indumento_indossato_PNG_sg.
+                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
+              END IF. SAY proiettile:vocale.
+              FOR EACH ac IsA actor DO
+                IF proiettile IN ac
+                  THEN SAY ac:prep_DA. SAY ac. "."
+                END IF.
+              END FOR.
+          END IF.
+  END VERB lancia_a.
+
+  VERB lancia_contro --&gt; lancia (proiettile) contro (bersaglio)
+    WHEN proiettile
+      CHECK proiettile IS NOT indossato
+        ELSE
+          IF proiettile IN hero
+            THEN SAY mia_AT:indumento_andrebbe_rimosso.
+            ELSE
+              IF proiettile IS NOT plurale
+                -- "Al momento $+1 [è/sono] indossat$$"
+                THEN SAY mia_AT:indumento_indossato_PNG_sg.
+                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
+              END IF. SAY proiettile:vocale.
+              FOR EACH ac IsA actor DO
+                IF proiettile IN ac
+                  THEN SAY ac:prep_DA. SAY ac. "."
+                END IF.
+              END FOR.
+          END IF.
+  END VERB lancia_contro.
+
+
+  VERB lancia_in --&gt; lancia (proiettile) 'in' (cont)
+    WHEN proiettile
+      CHECK proiettile IS NOT indossato
+        ELSE
+          IF proiettile IN hero
+            THEN SAY mia_AT:indumento_andrebbe_rimosso.
+            ELSE
+              IF proiettile IS NOT plurale
+                -- "Al momento $+1 [è/sono] indossat$$"
+                THEN SAY mia_AT:indumento_indossato_PNG_sg.
+                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
+              END IF. SAY proiettile:vocale.
+              FOR EACH ac IsA actor DO
+                IF proiettile IN ac
+                  THEN SAY ac:prep_DA. SAY ac. "."
+                END IF.
+              END FOR.
+          END IF.
+  END VERB lancia_in.
+
+
+  VERB lega_a --&gt; lega (ogg) a (bersaglio)
+    WHEN ogg
+      CHECK ogg IS NOT indossato
+        ELSE
+          IF ogg IN hero
+            THEN SAY mia_AT:indumento_andrebbe_rimosso.
+            ELSE
+              IF ogg IS NOT plurale
+                -- "Al momento $+1 [è/sono] indossat$$"
+                THEN SAY mia_AT:indumento_indossato_PNG_sg.
+                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
+              END IF. SAY ogg:vocale.
+              FOR EACH ac IsA actor DO
+                IF ogg IN ac
+                  THEN SAY ac:prep_DA. SAY ac. "."
+                END IF.
+              END FOR.
+          END IF.
+  END VERB lega_a.</code></pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_verbo_indossa"><a class="anchor" href="#_verbo_indossa"></a>Verbo <code>indossa</code></h4>
@@ -794,7 +987,7 @@ italiano del modulo della classe del vestiario.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.14.0-Alpha<br>
+Versione 0.15.0-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">
