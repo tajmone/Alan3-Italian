@@ -3,7 +3,7 @@
 Emporio Giorgio Alani 
 Un set per testare il vestiario. 
 (C) Tristano Ajmone, 2019. 
-Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1866. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1870. 
 Libreria Standard Italiana v2.1 
 Versione 1 
 Tutti i diritti riservati. 
@@ -48,7 +48,7 @@ Non stai portando niente. Stai indossando i tuoi calzini, i tuoi boxer, la tua
 canottiera, le tue sneakers e i tuoi pantaloni.
 
 > DBG_IND i boxer
-'boxer' VALORI: | val_gambe: 2 | 
+'boxer' VALORI: | strato_gambe: 2 | 
 È INDOSSATO: Sì (dal hero)
 
 > togliti i tuoi pantaloni
@@ -58,21 +58,21 @@ Ti togli i tuoi pantaloni.
 Ti togli i tuoi boxer.
 
 > DBG_IND i boxer
-'boxer' VALORI: | val_gambe: 2 | 
+'boxer' VALORI: | strato_gambe: 2 | 
 È INDOSSATO: No
 
 > ; ==============================================================================
 > ; TESTA 'indossa'
 > ; ==============================================================================
 > DBG_IND i jeans
-'jeans' VALORI: | val_gambe: 16 | 
+'jeans' VALORI: | strato_gambe: 16 | 
 È INDOSSATO: No
 
 > indossa i jeans
 Prendi i jeans e li indossi.
 
 > DBG_IND i jeans
-'jeans' VALORI: | val_gambe: 16 | 
+'jeans' VALORI: | strato_gambe: 16 | 
 È INDOSSATO: Sì (dal hero)
 
 > 

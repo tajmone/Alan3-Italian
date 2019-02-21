@@ -3,7 +3,7 @@
 Emporio Giorgio Alani 
 Un set per testare il vestiario. 
 (C) Tristano Ajmone, 2019. 
-Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1866. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1870. 
 Libreria Standard Italiana v2.1 
 Versione 1 
 Tutti i diritti riservati. 
@@ -40,7 +40,7 @@ Un paio di pantaloni in cotone, color viola. Nelle tasche dei pantaloni ci sono
 la tua kippah e il tuo portafoglio.
 
 > DBG_IND i miei pantaloni
-'pantaloni' VALORI: | val_gambe: 16 | 
+'pantaloni' VALORI: | strato_gambe: 16 | 
 È INDOSSATO: Sì (dal hero)
 
 > ; Dentro i pantaloni (tasche) c'è una kippah, che è un indumento.
@@ -49,7 +49,7 @@ La tua kippah, la porti con te ovunque tu vada.
 
 > ; /// KIPPAH IN PANTALONI -> NOT INDOSSATO (OK!) ////
 > DBG_IND la kippah
-'kippah' VALORI: | val_testa: 2 | 
+'kippah' VALORI: | strato_testa: 2 | 
 È INDOSSATO: No
 
 > ; ------------------------------------------------------------------------------
@@ -64,7 +64,7 @@ Lasci la tua kippah.
 
 > ; /// KIPPAH IN PANTALONI -> NOT INDOSSATO (OK!) ////
 > DBG_IND la kippah
-'kippah' VALORI: | val_testa: 2 | 
+'kippah' VALORI: | strato_testa: 2 | 
 È INDOSSATO: No
 
 > metti la kippah nei pantaloni
@@ -72,7 +72,7 @@ Fatto, ora la tua kippah è nei pantaloni.
 
 > ; /// KIPPAH IN PANTALONI -> NOT INDOSSATO (OK!) ////
 > DBG_IND la kippah
-'kippah' VALORI: | val_testa: 2 | 
+'kippah' VALORI: | strato_testa: 2 | 
 È INDOSSATO: No
 
 > esamina i miei pantaloni
@@ -85,7 +85,7 @@ Indossi la tua kippah.
 
 > ; /// KIPPAH > VERIFICA È INDOSSATO (OK!) ////
 > DBG_IND la kippah
-'kippah' VALORI: | val_testa: 2 | 
+'kippah' VALORI: | strato_testa: 2 | 
 È INDOSSATO: Sì (dal hero)
 
 > togliti la kippah POI metti la kippah nei pantaloni

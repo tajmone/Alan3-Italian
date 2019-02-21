@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.15.0-Alpha, 2019-02-19: Alan 3.0beta6 build 1866
+--| v0.16.0-Alpha, 2019-02-21: Alan 3.0beta6 build 1870
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -1707,10 +1707,6 @@ ADD TO EVERY actor
   IS  NOT seguendo.                                         ---> following
   HAS NOT nome_proprio.                                     ---> named
       --  Il giocatore non ne conosce il nome.
--- >>> dev-vestario: deleted! >>> set 'indossati'
-  -- HAS indossati { indumento_fittizio }.                     ---> wearing
-  -- = the actor's clothing is not specified.
-  -- "null_clothing" is a dummy default that can be ignored.
   IS  NOT condiscendente.                                   ---> compliant
   
       --  Per poter prendere un oggetto da un attore è necessario che questi sia
@@ -1811,15 +1807,6 @@ ADD TO EVERY actor
     MAKE hero condiscendente.
     -- so that the hero can give, drop, etc. carried objects.
 
--- >>> dev-vestario: FIXME! >>> set 'indossati'
-
--- @TODO: Questo andrebbe spostato nel modulo del vestiario:                    TODO!
-
--- >>> dev-vestario: deleted! set indossati >>>
-
-    -- Rimuovi l'indumento fittizio dagli 'indossati' di ogni attore:
-    -- EXCLUDE indumento_fittizio FROM THIS:indossati.
-
 --~=============================================================================
 --~-----------------------------------------------------------------------------
 --| Attori che seguono l'eroe
@@ -1884,11 +1871,6 @@ ADD TO EVERY actor
     DOES AFTER
       IF THIS <> hero
         THEN
--- >>> dev-vestario: tweaked: nuovo metodo per elencare separatamente ciò che
---                            è trasportato e cio che è indossato.
--- >>> codice originale >>>
-          -- LIST THIS.
--- <<< codice originale <<<
           -- --------------------------
           -- Elenca oggetti trasportati
           -- --------------------------

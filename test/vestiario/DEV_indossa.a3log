@@ -3,7 +3,7 @@
 Emporio Giorgio Alani 
 Un set per testare il vestiario. 
 (C) Tristano Ajmone, 2019. 
-Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1866. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1870. 
 Libreria Standard Italiana v2.1 
 Versione 1 
 Tutti i diritti riservati. 
@@ -126,9 +126,9 @@ il cappotto.
 > ovest
 Reparto Abbigliamento Sportivo
 Attorno a te vedi abbigliamento e attrezzatura per più sport di quanti tu
-conosca. Puoi vedere un passamontagna, un paio di occhiali da sci, un orologio, 
-una sciarpa bianca, una sciarpa blu e una sciarpa nera qui. L'assistente ti
-raggiunge di corsa dal reparto uomo.
+conosca. Puoi vedere un passamontagna, un paio di occhiali da sci, un costume
+intero, un bikini, un orologio, una sciarpa bianca, una sciarpa blu e una 
+sciarpa nera qui. L'assistente ti raggiunge di corsa dal reparto uomo.
 
 > ; DBG PRIMA
 > DBG_IND l'orologio
@@ -199,7 +199,7 @@ la tua canottiera (indossata), una camicia nera (indossata) e una camicia rossa.
 Lasci la camicia rossa.
 
 > DBG_IND camicia rossa
-'camicia rossa' VALORI: | val_tronco: 8 | 
+'camicia rossa' VALORI: | strato_tronco: 8 | 
 È INDOSSATO: No
 
 > ; INDOSSA NO -> PRENDI IMPLICITO
@@ -213,7 +213,7 @@ un orologio, una sciarpa bianca, una sciarpa blu, una sciarpa nera e la tua
 canottiera.
 
 > DBG_IND camicia rossa
-'camicia rossa' VALORI: | val_tronco: 8 | 
+'camicia rossa' VALORI: | strato_tronco: 8 | 
 È INDOSSATO: No
 
 > ; INDOSSA NO -> GIÀ POSSEDUTO
@@ -227,7 +227,7 @@ un orologio, una sciarpa bianca, una sciarpa blu, una sciarpa nera e la tua
 canottiera.
 
 > DBG_IND camicia rossa
-'camicia rossa' VALORI: | val_tronco: 8 | 
+'camicia rossa' VALORI: | strato_tronco: 8 | 
 È INDOSSATO: No
 
 > ; ------------------------------------------------------------------------------
@@ -237,7 +237,8 @@ canottiera.
 Ti togli il cappotto.
 
 > DBG_IND cappotto
-'cappotto' VALORI: | val_tronco: 64 | val_gambe: 64 | 
+'cappotto' VALORI: | strato_tronco: 64 | strato_gambe: 64 | IS NOT blocca_gambe 
+| 
 È INDOSSATO: No
 
 > ; INDOSSA SÌ -> GIÀ POSSEDUTO
@@ -245,7 +246,8 @@ Ti togli il cappotto.
 Indossi il cappotto.
 
 > DBG_IND cappotto
-'cappotto' VALORI: | val_tronco: 64 | val_gambe: 64 | 
+'cappotto' VALORI: | strato_tronco: 64 | strato_gambe: 64 | IS NOT blocca_gambe 
+| 
 È INDOSSATO: Sì (dal hero)
 
 > togliti il cappotto
@@ -255,7 +257,8 @@ Ti togli il cappotto.
 Lasci il cappotto.
 
 > DBG_IND cappotto
-'cappotto' VALORI: | val_tronco: 64 | val_gambe: 64 | 
+'cappotto' VALORI: | strato_tronco: 64 | strato_gambe: 64 | IS NOT blocca_gambe 
+| 
 È INDOSSATO: No
 
 > ; INDOSSA SÌ -> PRENDI IMPLICITO
@@ -263,7 +266,8 @@ Lasci il cappotto.
 Prendi il cappotto e lo indossi.
 
 > DBG_IND cappotto
-'cappotto' VALORI: | val_tronco: 64 | val_gambe: 64 | 
+'cappotto' VALORI: | strato_tronco: 64 | strato_gambe: 64 | IS NOT blocca_gambe 
+| 
 È INDOSSATO: Sì (dal hero)
 
 > 

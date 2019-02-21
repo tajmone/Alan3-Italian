@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.15.0-Alpha, 2019-02-19: Alan 3.0beta6 build 1866
+--| v0.16.0-Alpha, 2019-02-21: Alan 3.0beta6 build 1870
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -2517,7 +2517,6 @@ ADD TO EVERY ACTOR
         -- Rendiamo temporaneamente condiscendente il PNG affinché sia possibile
         -- rimuovere un oggetto contenuto da esso: 
         MAKE png condiscendente.
--- >>> dev-vestario: tweaked
         MAKE ogg NOT indossato. -- per indossabili non 'indumento'.
         LOCATE ogg IN hero.
         "$+1 ti"
@@ -5089,7 +5088,6 @@ ADD TO EVERY OBJECT
         -- <<< prendi implicito <<<
         LOCATE ogg IN png.
         "Consegni $+1" SAY png:prep_A. "$2."
--- >>> dev-vestario: tweaked
         MAKE ogg NOT indossato. -- per indossabili non 'indumento'.
   END VERB dai_a.
 END ADD TO.
@@ -5127,10 +5125,10 @@ ADD TO EVERY OBJECT
   VERB lascia
     CHECK mia_AT CAN lasciare
       ELSE SAY mia_AT:azione_bloccata.
--- >>> dev-vestario: added
+-- >>> dev-vestario: added! VERB lascia >>>
     AND ogg IS NOT indossato
       ELSE SAY mia_AT:indumento_andrebbe_rimosso.
--- >>> dev-vestario: tweaked
+-- >>> dev-vestario: tweaked! VERB lascia >>>
     AND ogg IN hero
       ELSE SAY mia_AT:non_possiedi_ogg1.
 -- >>> codice originale >>>
@@ -5144,8 +5142,7 @@ ADD TO EVERY OBJECT
 
     DOES
       LOCATE ogg HERE.
-       "Lasci" SAY THE ogg. "."
-    -- "Dropped."
+       "Lasci $+1."
   END VERB lascia.
 END ADD TO.
 
@@ -5583,11 +5580,6 @@ ADD TO EVERY OBJECT
   VERB indossa
     CHECK mia_AT CAN indossare
       ELSE SAY mia_AT:azione_bloccata.
--- >>> dev-vestario: deleted! VERB indossa >>>
-    -- Questo CHECK è stato spostato in 'indossa' su 'indumento'.
-    -- AND ogg NOT IN abbigliamento
-    --   ELSE SAY mia_AT:ogg1_già_indossato.
--- <<<
     AND ogg IS prendibile
       ELSE SAY  mia_AT:ogg1_non_posseduto.
     AND CURRENT LOCATION IS illuminato
@@ -5706,20 +5698,20 @@ VERB spogliati
   DOES "Ripensandoci, spogliarsi qui e ora non è una buona idea."
 --DOES "You don't feel like undressing is a good idea right now."
 
--- >>> dev-vestario: FIXME! VERB spogliati ESEMPIO >>>
+-- | Per implementare l'azione di spogliarsi, usa:
+-- |-------------------------------------------------------------------------
+-- | IF COUNT IsA indumento, DIRECTLY IN hero, IS indossato > 0
+-- |   THEN
+-- |     FOR EACH ind_indossato IsA indumento, DIRECTLY IN hero, IS indossato
+-- |       DO
+-- |         MAKE ind_indossato NOT indossato.
+-- |         LOCATE ind_indossato AT CURRENT LOCATION.
+-- |     END FOR.
+-- |     "Fatto. Ora non indossi più nulla."
+-- |   ELSE "Non stai indossando nulla.."
+-- | END IF. 
+-- |-------------------------------------------------------------------------
 
--- To make it work, use the following lines instead:
---@TODO: sintassi 'desempio commentata (da verificare e testare)!
---| Per implementare l'azione di spogliarsi, usa:
---|--------------------------------------------------------
---| IF COUNT DIRECTLY IN abbigliamento, IsA indumento > 0
---|   THEN EMPTY abbigliamento IN hero.
---|     "Fatto. Ora non indossi più nulla."
---|     -- "You remove all the items you were wearing."
---|   ELSE "Non indossi nulla di cui potresti spogliarti."
---|   -- ELSE "You're not wearing anything you can remove."
---| END IF.
---|--------------------------------------------------------
 END VERB spogliati.
 
 -->gruppo_mettere(21200)
@@ -6037,7 +6029,6 @@ ADD TO EVERY OBJECT
               END IF.
           END IF.
       DOES
--- >>> dev-vestario: tweaked
         MAKE ogg NOT indossato. -- per indossabili non 'indumento'.
         LOCATE ogg IN cont.
         "Fatto, ora $+1"
@@ -6147,7 +6138,6 @@ ADD TO EVERY OBJECT
         END IF.
 
         "Posi $+1" SAY superficie:prep_SU. "$2."
--- >>> dev-vestario: tweaked
         MAKE ogg NOT indossato. -- per indossabili non 'indumento'.
 
     END VERB metti_su.
@@ -6939,7 +6929,6 @@ ADD TO EVERY OBJECT
         THEN "a terra."
       END IF.
       LOCATE proiettile AT hero.
--- >>> dev-vestario: tweaked
       MAKE proiettile NOT indossato. -- per indossabili non 'indumento'.
   END VERB lancia.
 END ADD TO.
@@ -7086,7 +7075,6 @@ ADD TO EVERY OBJECT
         ELSE SAY mia_AT:check_obj_suitable_at.
       AND proiettile <> bersaglio
         ELSE SAY mia_AT:azione_insensata.
--- >>> dev-vestario: tweaked
       AND bersaglio NOT IN hero
         ELSE
           IF bersaglio IS NOT indossato
@@ -7120,7 +7108,7 @@ ADD TO EVERY OBJECT
             ELSE SAY mia_AT:ogg2_distante_pl.
           END IF.
       DOES
--- >>> dev-vestario: tweaked
+-- >>> dev-vestario: tweaked! VERB lancia_contro >>>
         -- A prescindere dai diversi esiti possibili di questa azione, in ogni
         -- caso il proiettele verrà dislocato e quindi non sarebbe più indossato
         -- (nel caso si trattasse di un indossabile non indumento).
@@ -7253,8 +7241,6 @@ ADD TO EVERY OBJECT
         ELSE SAY mia_AT:azione_insensata.
       AND cont <> hero
         ELSE SAY mia_AT:azione_insensata.
---                                                                              TRANSLATE!
--- >>> dev-vestario: tweaked
       AND cont NOT IN hero
         ELSE
           IF cont IS NOT indossato
@@ -7906,10 +7892,6 @@ ADD TO EVERY THING
           THEN SAY mia_AT:azione_insensata_ogg1_portato.
           ELSE SAY mia_AT:azione_insensata_ogg1_indossato.
         END IF.
--- >>> dev-vestario: tweaked VERB attacca >>>
-    -- AND bersaglio NOT IN abbigliamento
-    --   -- "It doesn't make sense to $v something you're wearing."
-    --   ELSE SAY mia_AT:check_obj_not_in_worn2.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
@@ -7996,10 +7978,6 @@ ADD TO EVERY THING
           THEN SAY mia_AT:azione_insensata_ogg1_portato.
           ELSE SAY mia_AT:azione_insensata_ogg1_indossato.
         END IF.
--- >>> dev-vestario: tweaked VERB attacca >>>
---    AND bersaglio NOT IN abbigliamento
---      -- "It doesn't make sense to $v something you're wearing."
---      ELSE SAY mia_AT:check_obj_not_in_worn2.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
@@ -8072,10 +8050,6 @@ ADD TO EVERY THING
           THEN SAY mia_AT:azione_insensata_ogg1_portato.
           ELSE SAY mia_AT:azione_insensata_ogg1_indossato.
         END IF.
--- >>> dev-vestario: tweaked VERB attacca >>>
---  AND bersaglio NOT IN abbigliamento
---    -- "It doesn't make sense to $v something you're wearing."
---    ELSE SAY mia_AT:check_obj_not_in_worn2.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND bersaglio IS raggiungibile AND bersaglio IS NOT distante
@@ -9995,8 +9969,6 @@ VERB inventario
   CHECK mia_AT CAN inventariare
     ELSE SAY mia_AT:azione_bloccata.
   DOES
--- >>> dev-vestario: tweaked: nuovo metodo per elencare separatamente ciò che
---                            è trasportato e cio che è indossato.
     -- --------------------------
     -- Elenca oggetti trasportati
     -- --------------------------
@@ -10024,9 +9996,8 @@ VERB inventario
     IF  mia_AT:temp_cnt <> 0
       THEN
       -- Non diciamo nulla se l'Eroe non sta indossando niente.
-      -- THEN SAY mia_AT:header_abbigliamento_else. --> "Non stai indossando niente."
-      -- ELSE
-        SAY mia_AT:header_abbigliamento.         --> "Stai indossando"
+      --    mia_AT:header_abbigliamento_else.  --> "Non stai indossando niente."
+        SAY mia_AT:header_abbigliamento.       --> "Stai indossando"
         FOR EACH ind_indossato IsA indumento, DIRECTLY IN Hero, IS indossato
           DO
             SAY AN ind_indossato.
@@ -10038,15 +10009,6 @@ VERB inventario
             END DEPEND.
         END FOR.
     END IF.
-
--- >>> codice originale >>>
-    -- LIST hero.
-
-    -- IF COUNT DIRECTLY IN abbigliamento > 0   -- See the file 'classes.i', subclass 'clothing'.
-    --   THEN LIST abbigliamento.     -- This code will list what the hero is wearing.
-    -- END IF.
--- <<< codice originale <<<
-
 END VERB inventario.
 
 -->gruppo_sfusi                                                   @LEGA <-- @TIE

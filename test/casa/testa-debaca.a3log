@@ -3,7 +3,7 @@
 La Casa 
 Un set per eseguire test su stanze e luoghi esterni. 
 (C) Tristano Ajmone, 2018. 
-Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1866. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1870. 
 Libreria Standard Italiana v2.1 
 Versione 1 
 Tutti i diritti riservati.
@@ -32,11 +32,14 @@ stanza c'è Mr Nicky, il tuo cagnolino.
 | NOME: paio di blue jeans 
 | CLASSE: object > indumento 
 +------------------------------------------------------------------------------- 
-| val_testa:    0 
-| val_tronco:   0 
-| val_gambe:    16 
-| val_piedi:    0 
-| val_mani:     0 
+| strato_testa: 0 
+| strato_viso: 0 
+| strato_tronco: 0 
+| strato_gambe: 16 
+| strato_piedi: 0 
+| strato_mani: 0 
+| IS blocca_gambe: Sì 
+| IS due_pezzi: No 
 +------------------------------------------------------------------------------- 
 | GENERE INDUMENTO: 0 
 | INDOSSATO: Sì (da hero) 

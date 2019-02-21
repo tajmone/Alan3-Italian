@@ -1,0 +1,237 @@
+
+
+Emporio Giorgio Alani 
+Un set per testare il vestiario. 
+(C) Tristano Ajmone, 2019. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1870. 
+Libreria Standard Italiana v2.1 
+Versione 1 
+Tutti i diritti riservati. 
+
+Digita USCITE per visualizzare la lista di uscite disponibili in una stanza. 
+Usa il verbo DBG INDUMENTO per mostrare i valori di copertura di un capo di
+vestiario.
+
+
+Davanti all'Emporio Alani
+Ti trovi di fronte all'entrata dell'Emporio Giorgio Alani. Due imponenti porte
+in ottone attendono di condurti a nord, dentro il tempio della moda.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                             TESTA BLOCCO GAMBE                             *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; L'attributo 'IS NOT blocca_gambe' consente di creare indumenti che non
+> ; impediscono di indossare/rimuovere indumenti inferiori che coprono solo le
+> ; gambe. Questo consente di simulare realisticamente cappotti e gonne.
+> ;
+> ; L'attributo 'IS due_pezzi' consente di creare indumenti che, sebbene coprano
+> ; sia le gambe che il torso, verrano visti dalla libreria come un indumento in
+> ; due pezzi separati, che verrà trattato nei controlli per 'IS NOT blocca_gambe'
+> ; alla stregua di un indumento per sole gambe.
+> ; 
+> ; Gli esempi pratici di seguito chiariranno meglio il concetto.
+> ; ------------------------------------------------------------------------------
+> nord
+Come ti avvicini, le porte scorrono magicamente via per lasciarti passare.
+
+Atrio dell'Emporio Alani
+Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
+in ottone conducono a sud, fuori dal tempio del consumismo. Puoi vedere un 
+cestino qui. Dietro al bancone c'è il manager dell'emporio. C'è la tua
+assistente personale qui.
+
+> est
+Reparto Uomo
+Qui puoi trovare tutto ciò che un uomo desidererebbe indossare. Puoi vedere una 
+T-shirt, una camicia rossa, una camicia nera e un cappotto qui. 
+
+L'assistente ti segue.
+
+> prendi camicia nera
+Presa.
+
+> prendi cappotto
+Preso.
+
+> ovest
+Atrio dell'Emporio Alani
+Questo lussuoso atrio conduce ai vari reparti dell'emporio. Due imponenti porte
+in ottone conducono a sud, fuori dal tempio del consumismo. Puoi vedere un 
+cestino qui. Dietro al bancone c'è il manager dell'emporio. 
+
+L'assistente ti segue.
+
+> ovest
+Reparto Donna
+Non vi è sogno di moda femminile che i vestiti di questo reparto non possano
+esaudire. 
+
+L'assistente ti segue.
+
+> nord
+Reparto Abbigliamento Sportivo
+Attorno a te vedi abbigliamento e attrezzatura per più sport di quanti tu
+conosca. Puoi vedere un passamontagna, un paio di occhiali da sci, un costume
+intero, un bikini, un orologio, una sciarpa bianca, una sciarpa blu e una 
+sciarpa nera qui. 
+
+L'assistente ti segue.
+
+> prendi costume
+Preso.
+
+> prendi bikini
+Preso.
+
+> est
+Camerino
+Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
+poterti spogliare e provare i vestiti. Puoi vedere una sedia, un cesto, una 
+salopette, una gonna rossa, un paio di collant bianchi e un paio di jeans qui.
+
+> spogliati 
+Ti spogli di tutti gli indumenti che indossavi e li getti a terra.
+
+> ; ==============================================================================
+> ; TESTA GONNA
+> ; ==============================================================================
+> ; ------------------------------------------------------------------------------
+> ; CON GONNA -> INDOSSA/RIMUOVI -> COLLANT
+> ; ------------------------------------------------------------------------------
+> ; Una gonna non deve impedire di indossare collant, mutande e altri indumenti
+> ; degli strati inferiori che non formano un pezzo unico con il torso. 
+> indossa gonna
+Prendi la gonna rossa e la indossi.
+
+> ; /// INDOSSA -> SÌ (OK!) ///
+> indossa collant
+Prendi i collant bianchi e li indossi.
+
+> ; /// RIMUOVI -> SÌ (OK!) ///
+> togliti collant
+Ti togli i collant bianchi.
+
+> ; ------------------------------------------------------------------------------
+> ; CON GONNA -> INDOSSA/RIMUOVI -> COSTUME INTERO
+> ; ------------------------------------------------------------------------------
+> ; Una gonna deve invece impedire di indossare indumenti degli inferiori che 
+> ; formano un pezzo unico gambe-torso, come un costume da bagno intero.
+> ;
+> ; /// INDOSSA -> NO (OK!) ///
+> indossa costume
+Per poter indossare il costume intero dovresti prima toglierti la gonna rossa.
+
+> togliti gonna
+Ti togli la gonna rossa.
+
+> indossa costume
+Indossi il costume intero.
+
+> indossa gonna
+Indossi la gonna rossa.
+
+> ; /// RIMUOVI -> NO (OK!) ///
+> togliti costume
+Per poter rimuovere il costume intero dovresti prima toglierti la gonna rossa.
+
+> togliti gonna
+Ti togli la gonna rossa.
+
+> togliti costume
+Ti togli il costume intero.
+
+> ; ------------------------------------------------------------------------------
+> ; CON GONNA -> INDOSSA/RIMUOVI -> BIKINI
+> ; ------------------------------------------------------------------------------
+> ; Una gonna non deve impedire di indossare un bikini perché i suoi due pezzi non
+> ; formano un pezzo unico.
+> indossa gonna
+Indossi la gonna rossa.
+
+> ; /// INDOSSA -> SÌ (OK!) ///
+> indossa bikini
+Indossi il bikini.
+
+> ; /// RIMUOVI -> SÌ (OK!) ///
+> togliti bikini
+Ti togli il bikini.
+
+> ; ------------------------------------------------------------------------------
+> ; CON GONNA + MAGLIETTA -> INDOSSA/RIMUOVI -> BIKINI
+> ; ------------------------------------------------------------------------------
+> ; Invece non si deve poter indossare il bikini se si sta indossando un indumento
+> ; del torso che occupa uno strato superiore (in questo caso, il bloccante non è
+> ; la gonna).
+> DBG_IND camicia nera
+'camicia nera' VALORI: | strato_tronco: 8 | 
+È INDOSSATO: No
+
+> DBG_IND bikini
+'bikini' VALORI: | strato_tronco: 2 | strato_gambe: 2 | IS due_pezzi | 
+È INDOSSATO: No
+
+> indossa gonna
+Stai già indossando la gonna rossa.
+
+> indossa camicia nera
+Indossi la camicia nera.
+
+> ; /// INDOSSA -> NO -> BLOCCANTE: CAMICIA (OK!) ///
+> indossa bikini
+Per poter indossare il bikini dovresti prima toglierti la camicia nera.
+
+> togliti camicia nera
+Ti togli la camicia nera.
+
+> indossa bikini
+Indossi il bikini.
+
+> indossa camicia nera
+Indossi la camicia nera.
+
+> ; /// RIMUOVI -> NO -> BLOCCANTE: CAMICIA (OK!) ///
+> togliti bikini
+Per poter rimuovere il bikini dovresti prima toglierti la camicia nera.
+
+> ; ==============================================================================
+> ; TESTA CAPPOTTO
+> ; ==============================================================================
+> ; Un cappotto non deve impedire di indossare/rimuovere indumenti gambe per gli
+> ; strati inferiori, ma bloccherà sempre un indumento che copre anche il torso.
+> spogliati
+Ti spogli di tutti gli indumenti che indossavi e li getti a terra.
+
+> indossa cappotto
+Indossi il cappotto.
+
+> ; /// INDOSSA -> NO (OK!) ///
+> indossa bikini
+Prendi il bikini. Per poter indossare il bikini dovresti prima toglierti il 
+cappotto.
+
+> ; /// INDOSSA -> SÌ (OK!) ///
+> indossa gonna
+Prendi la gonna rossa e la indossi.
+
+> ; /// INDOSSA -> SÌ (OK!) ///
+> indossa mutande
+Prendi i tuoi boxer e li indossi.
+
+> ; /// INDOSSA -> NO (OK!) ///
+> indossa canottiera
+Prendi la tua canottiera. Per poter indossare la tua canottiera dovresti prima
+toglierti il cappotto.
+
+> ; /// RIMUOVI -> SÌ (OK!) ///
+> togliti mutande
+Ti togli i tuoi boxer.
+
+> ; /// RIMUOVI -> SÌ (OK!) ///
+> togliti gonna
+Ti togli la gonna rossa.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

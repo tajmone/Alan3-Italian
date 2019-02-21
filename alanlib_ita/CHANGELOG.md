@@ -17,6 +17,11 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [Alan 3.0beta6 build 1870](#alan-30beta6-build-1870)
+    - [2019/02/21](#20190221)
+        - [Passa alla v0.16.0](#passa-alla-v0160)
+        - [Passa ad Alan 3.0beta6 build 1870](#passa-ad-alan-30beta6-build-1870)
+        - [Aggiornamento vestiario](#aggiornamento-vestiario)
 - [Alan 3.0beta6 build 1866](#alan-30beta6-build-1866)
     - [2019/02/19](#20190219)
         - [Passa alla v0.15.0](#passa-alla-v0150)
@@ -136,6 +141,64 @@ For previuos changes, see:
 <!-- /MarkdownTOC -->
 
 -----
+
+# Alan 3.0beta6 build 1870
+
+## 2019/02/21
+
+- [`libreria.i`][libreria] &#x27f6; v0.16.0
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.16.0
+- [`lib_classi_vestiario.i`][lib_classi_vestiario] &#x27f6; v0.16.0
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.16.0
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.16.0
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] &#x27f6; v0.16.0
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.16.0
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.16.0
+- [`lib_grammatica.i`][lib_grammatica] &#x27f6; v0.16.0
+- [`lib_supplemento.i`][lib_supplemento] &#x27f6; v0.16.0
+
+### Passa alla v0.16.0
+
+Tutti i moduli della libreria passano alla versione 0.16.0. Siccome sono stati rinominati gli attributi `indumento` per la mappatura del corpo, tutti i sorgenti di avventure che usano il vestiario vanno adattati di conseguenze.
+
+### Passa ad Alan 3.0beta6 build 1870
+
+Da qui in avanti il progetto adotta la [developer snaphshot]  [Alan 3.0beta6 build 1870][3.0beta6-1870] per testare la libreria usufruendo dei più recenti bug fix.
+
+### Aggiornamento vestiario
+
+#### Rinomina attributi zone del corpo
+
+Rinominati tutti gli attributi di `indumento` per la mappatura delle
+zone del corpo, da `val_*` in `strato_*`:
+
+|  Vecchio ID  |     Nuovo ID    |
+|--------------|-----------------|
+| `val_testa`  | `strato_testa`  |
+| `val_viso`   | `strato_viso`   |
+| `val_tronco` | `strato_tronco` |
+| `val_gambe`  | `strato_gambe`  |
+| `val_piedi`  | `strato_piedi`  |
+| `val_mani`   | `strato_mani`   |
+
+Questo sistema è più intuitivo e naturale da usare dato che i valori indicano lo strato di ciascuna zona del corpo che l'indumento andrà a coprire.
+
+
+#### Nuovo attributo `strato_viso`
+
+Questo commit introduce `strato_viso`, un nuovo attributo della classe `indumento` per la mappatura delle zone del corpo. Grazie ad esso sarà possibile distinguere tra indumenti indossabili sopra la testa (come i cappelli, che fanno riferimento a `strato_testa`) e indossabili facciali (occhiali, barbe finte, maschere, ecc).
+
+#### Nuovi attributi per indumenti speciali
+
+Aggiungi attributi `IS blocca_gambe` e `IS NOT due_pezzi` sulla classe
+`indumento`, per consentire di creare indumenti come gonne e cappotti,
+che non impediscono di indossare/rimuovere indumenti per le gambe negli
+strati inferiori, e anche indumenti che coprono torso e gambe in due
+pezzi separati (ma gestiti come un unico indumento) come un bikini, di
+modo che possano essere indossati mentre si indossa una gonna.
+
+
+-------------------------------------------------------------------------------
 
 # Alan 3.0beta6 build 1866
 
@@ -1646,6 +1709,7 @@ Tutti i moduli della libreria passano alla versione 0.8.0.
 [3.0beta6-1855]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1855 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1855"
 [3.0beta6-1862]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1862 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1862"
 [3.0beta6-1866]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1866 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1866"
+[3.0beta6-1870]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1870 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1870"
 
 <!-- Alan Commits ------------------------------------------------------------>
 

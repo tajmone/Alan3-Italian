@@ -3,7 +3,7 @@
 Emporio Giorgio Alani 
 Un set per testare il vestiario. 
 (C) Tristano Ajmone, 2019. 
-Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1866. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1870. 
 Libreria Standard Italiana v2.1 
 Versione 1 
 Tutti i diritti riservati. 
@@ -42,8 +42,9 @@ L'assistente ti segue.
 > nord
 Reparto Abbigliamento Sportivo
 Attorno a te vedi abbigliamento e attrezzatura per più sport di quanti tu
-conosca. Puoi vedere un passamontagna, un paio di occhiali da sci, un orologio, 
-una sciarpa bianca, una sciarpa blu e una sciarpa nera qui. 
+conosca. Puoi vedere un passamontagna, un paio di occhiali da sci, un costume
+intero, un bikini, un orologio, una sciarpa bianca, una sciarpa blu e una 
+sciarpa nera qui. 
 
 L'assistente ti segue.
 
@@ -55,7 +56,7 @@ Un passamontagna invernale. Praticamente, un cappuccio con buchi per occhi e
 bocca, come quelli usati nelle rapine, hai presente?
 
 > DBG_IND passamontagna
-'passamontagna' VALORI: | val_testa: 2 | 
+'passamontagna' VALORI: | strato_testa: 1 | strato_viso: 1 | 
 È INDOSSATO: No
 
 > ; Questi occhiali hanno val_testa=4 e sono indossabili sopra il passamontagna:
@@ -64,7 +65,7 @@ Una padio di occhiali da sci, lente frontale singola (a forma di B) e una banda
 elastica per fissarli alla testa.
 
 > DBG_IND occhiali
-'occhiali da sci' VALORI: | val_testa: 4 | 
+'occhiali da sci' VALORI: (nessuno) 
 È INDOSSATO: No
 
 > ; ------------------------------------------------------------------------------

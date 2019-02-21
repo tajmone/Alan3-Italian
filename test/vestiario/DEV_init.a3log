@@ -3,7 +3,7 @@
 Emporio Giorgio Alani 
 Un set per testare il vestiario. 
 (C) Tristano Ajmone, 2019. 
-Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1866. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1870. 
 Libreria Standard Italiana v2.1 
 Versione 1 
 Tutti i diritti riservati. 
@@ -34,23 +34,23 @@ Non stai portando niente. Stai indossando i tuoi calzini, i tuoi boxer, la tua
 canottiera, le tue sneakers e i tuoi pantaloni.
 
 > DBG_IND canottiera
-'canottiera' VALORI: | val_tronco: 2 | 
+'canottiera' VALORI: | strato_tronco: 2 | 
 È INDOSSATO: Sì (dal hero)
 
 > DBG_IND sneakers
-'sneakers' VALORI: | val_piedi: 4 | 
+'sneakers' VALORI: | strato_piedi: 4 | 
 È INDOSSATO: Sì (dal hero)
 
 > DBG_IND pantaloni
-'pantaloni' VALORI: | val_gambe: 16 | 
+'pantaloni' VALORI: | strato_gambe: 16 | 
 È INDOSSATO: Sì (dal hero)
 
 > DBG_IND boxer
-'boxer' VALORI: | val_gambe: 2 | 
+'boxer' VALORI: | strato_gambe: 2 | 
 È INDOSSATO: Sì (dal hero)
 
 > DBG_IND calzini
-'calzini' VALORI: | val_piedi: 2 | 
+'calzini' VALORI: | strato_piedi: 2 | 
 È INDOSSATO: Sì (dal hero)
 
 > ; ------------------------------------------------------------------------------
@@ -64,7 +64,7 @@ la tua kippah e il tuo portafoglio.
 La tua kippah, la porti con te ovunque tu vada.
 
 > DBG_IND kippah
-'kippah' VALORI: | val_testa: 2 | 
+'kippah' VALORI: | strato_testa: 2 | 
 È INDOSSATO: No
 
 > ; ==============================================================================
@@ -84,11 +84,11 @@ assistente personale qui.
 abito e un paio di stivaletti.
 
 > DBG_IND stivaletti
-'stivaletti' VALORI: | val_piedi: 4 | 
+'stivaletti' VALORI: | strato_piedi: 4 | 
 È INDOSSATO: Sì (dall'assistente)
 
 > DBG_IND abito
-'abito' VALORI: | val_tronco: 8 | val_gambe: 32 | 
+'abito' VALORI: | strato_tronco: 8 | strato_gambe: 32 | IS NOT blocca_gambe | 
 È INDOSSATO: Sì (dall'assistente)
 
 > 

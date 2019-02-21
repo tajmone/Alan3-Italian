@@ -438,16 +438,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.15.0-Alpha,</span>
-<span id="revdate">2019-02-19</span>
-<br><span id="revremark">Alan 3.0beta6 build 1866</span>
+<span id="revnumber">versione 0.16.0-Alpha,</span>
+<span id="revdate">2019-02-21</span>
+<br><span id="revremark">Alan 3.0beta6 build 1870</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Indice dei contenuti</div>
 <ul class="sectlevel1">
 <li><a href="#_vestiario">Vestiario</a>
 <ul class="sectlevel2">
-<li><a href="#_labbigliamento_delleroe">L&#8217;abbigliamento dell&#8217;eroe</a></li>
 <li><a href="#_gli_indumenti">Gli indumenti</a>
 <ul class="sectlevel3">
 <li><a href="#_verbo_esamina">Verbo <code>esamina</code></a></li>
@@ -533,53 +532,6 @@ classe.</p>
 </td>
 </tr>
 </table>
-</div>
-<div class="sect2">
-<h3 id="_labbigliamento_delleroe"><a class="anchor" href="#_labbigliamento_delleroe"></a>L&#8217;abbigliamento dell&#8217;eroe</h3>
-<div class="paragraph">
-<p>Gli indumenti indossati dall&#8217;eroe (a differenza di quelli semplicemente in
-suo possesso) vengono immagazzinati nell&#8217;entità <code>abbigliamento</code>, che ha la
-proprietà contenitore:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">-- &gt;&gt;&gt; dev-vestario: deleted! ENTITY abbigliamento &gt;&gt;&gt;
-
--- THE abbigliamento IsA ENTITY
---   CONTAINER TAKING indumento.
---     HEADER  SAY mia_AT:header_abbigliamento.
---     ELSE    SAY mia_AT:header_abbigliamento_else.
--- END THE.</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Poiché le entità sono ubiquiescenti nel mondo dell&#8217;avventura, l&#8217;istanza
-<code>abbigliamento</code> e gli indumenti in essa contenuti saranno sempre accessibili
-durante il gioco.</p>
-</div>
-<div class="paragraph">
-<p>Il verbo <code>inventario</code>, dopo aver elencato gli oggetti in possesso dell&#8217;eroe,
-elencherà anche gli indumenti da lui indossati tramite l&#8217;istruzione
-<code>LIST abbigliamento</code> (che invocherà lo <code>HEADER</code> dell&#8217;entità contenitore
-<code>abbigliamento</code>). Questo crea l&#8217;illusione che gli indumenti indossati siano
-parte dei possedimenti dell&#8217;eroe, mentre in realtà sono contenuti nell&#8217;entità
-<code>abbigliamento</code>.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Nota"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>L&#8217;entità <code>abbigliamento</code> è finalizzata all&#8217;uso interno della libereria,
-gli autori di avventure non devono preoccuparsi di essa.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect2">
 <h3 id="_gli_indumenti"><a class="anchor" href="#_gli_indumenti"></a>Gli indumenti</h3>
@@ -804,29 +756,28 @@ corrispettivi valori degli attributi per una corretta implementazione.</p>
 <p>Per creare un indumento non figurante nella tabella, dovrebbe bastare un
 po' di ingegno nel rapportare il nuovo capo di vestiario a quelli presenti
 nella tabella, cercando di cogliere somilianze e differenze fino ad ottenere
-dei valori adatti allo scopo.
-Teniate a mente che <strong>è obbligatorio</strong> impiegare i valori esatti riportati nella
-tabella, e che sommare a casaccio valori intermedi produrrà quasi sicuramente
-dei bachi nell&#8217;avventura.</p>
+dei valori adatti allo scopo.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
+<table class="tableblock frame-all grid-all fit-content center">
 <caption class="title">Tabella 1. Indumenti Comuni</caption>
 <colgroup>
-<col style="width: 25%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
-<col style="width: 15%;">
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Indumento</th>
-<th class="tableblock halign-center valign-top"><code>val_testa</code></th>
-<th class="tableblock halign-center valign-top"><code>val_tronco</code></th>
-<th class="tableblock halign-center valign-top"><code>val_gambe</code></th>
-<th class="tableblock halign-center valign-top"><code>val_piedi</code></th>
-<th class="tableblock halign-center valign-top"><code>val_mani</code></th>
+<th class="tableblock halign-left valign-top">Indumento/strato</th>
+<th class="tableblock halign-center valign-top">testa</th>
+<th class="tableblock halign-center valign-top">viso</th>
+<th class="tableblock halign-center valign-top">tronco</th>
+<th class="tableblock halign-center valign-top">gambe</th>
+<th class="tableblock halign-center valign-top">piedi</th>
+<th class="tableblock halign-center valign-top">mani</th>
 </tr>
 </thead>
 <tbody>
@@ -837,9 +788,11 @@ dei bachi nell&#8217;avventura.</p>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">canottiera/reggiseno</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
@@ -850,12 +803,14 @@ dei bachi nell&#8217;avventura.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">mutande/slip</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">pagliaccetto</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>4</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>4</code></p></td>
@@ -865,6 +820,7 @@ dei bachi nell&#8217;avventura.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">blusa/camicia/T-shirt</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>8</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
@@ -872,6 +828,7 @@ dei bachi nell&#8217;avventura.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">abito donna/tuta lavoro</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>8</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>32</code></p></td>
@@ -882,12 +839,14 @@ dei bachi nell&#8217;avventura.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gonna</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>32</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">pantaloni/pantaloncini</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>16</code></p></td>
@@ -897,6 +856,7 @@ dei bachi nell&#8217;avventura.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">maglione/pullover</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>16</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
@@ -905,6 +865,7 @@ dei bachi nell&#8217;avventura.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">giacca</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>32</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
@@ -912,6 +873,7 @@ dei bachi nell&#8217;avventura.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">cappotto</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>64</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>64</code></p></td>
@@ -923,11 +885,13 @@ dei bachi nell&#8217;avventura.</p>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">collant/calzamaglia</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>8</code></p></td>
@@ -939,11 +903,13 @@ dei bachi nell&#8217;avventura.</p>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>4</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">guanti</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
@@ -987,7 +953,7 @@ italiano del modulo della classe del vestiario.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.15.0-Alpha<br>
+Versione 0.16.0-Alpha<br>
 </div>
 </div>
 <link rel="stylesheet" href="hjs/styles/github.min.css">

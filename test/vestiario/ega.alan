@@ -1,13 +1,27 @@
---==============================================================================
--- "Emporio Giorgio Alani" by Tristano Ajmone, 2018.
---==============================================================================
--- Un'avventura finalizzata a testare le funzionalità del vestiario di Alan-Ita.
---------------------------------------------------------------------------------
+--+============================================================================+
+--| * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  |
+--|  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * |
+--| * * * +------------------------------------------------------------+  * *  |
+--|  * *  |                                                            | * * * |
+--| * * * |         E M P O R I O   G I O R G I O   A L A N I          |  * *  |
+--|  * *  |                                                            | * * * |
+--| * * * +------------------------------------------------------------+  * *  |
+--|  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * |
+--| * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  |
+--+============================================================================+
+-->rev_info
+--| :revdate:     2019-02-20
+--| :revnumber:   0.0.18-Alpha
+--| :revremark:   Alan 3.0beta6 build 1866
+--<<
+-->-----------------------------------------------------------------------------
+--| *Emporio Giorgio Alani* by Tristano Ajmone, 2018.
+--| Un'avventura per testare le funzionalità del vestiario di Alan-Italian.
+--<-----------------------------------------------------------------------------
 OPTIONS WIDTH 81.
 
 IMPORT 'libreria.i'.      -- ALAN Libreria Standard Italiana v2.1
 IMPORT '../inc_debaca.i'. -- Comandi per il debugging
-
 
 
 THE mia_AT IsA blocco_definizioni
@@ -17,73 +31,80 @@ THE mia_AT IsA blocco_definizioni
   HAS       autore  "Tristano Ajmone".
   HAS         anno   2019.
   HAS     versione  "1".
-  HAS        AlanV  "v3.0beta6 build 1866".
+  HAS        AlanV  "v3.0beta6 build 1870".
   ------------------------------------------------------------------------------
 END THE.
 
---==============================================================================
--- PERSONALIZZAZIONE CLASSE 'LOCATION'
---==============================================================================
+-->
+--~=============================================================================
+--| == Personalizzazione classe `location`
+--~=============================================================================
 
--- Aggiungiamo a tutti i luoghi alcuni attributi personalizzati:
+--| Aggiungiamo a tutti i luoghi alcuni attributi personalizzati:
 
--- 1. Un attributo stringa per definire un nome alternativo per la stanza, da
---    mostrare quando la si menziona nei messaggi. Di solito, si tratta di una
---    versione più breve del nome originale, tutto in minuscolo. Attualmente è
---    utilizzato dall'EVENTo 'Riattiva_Assistente', per menzionare da quale
---    stanza è arrivata (se la stringa è vuota, verrà usato 'LOCATION OF').
--- 
---    NOTA: In questa avventura definiremo anche l'articolo in quelle stanze cui
---          verrà fatto riferimento nei messaggi di 'Riattiva_Assistente', così
---          sarà possibile recuperare le preposizioni articolate idonee al nome
---          della stanza tramite 'prep_DA', ecc. (es. "dall'atrio").
-
--- 2. Un attributo stringa per immagazzinare la lista delle uscite di una stanza.
---    Attualmente utilizzato dal verbo 'mostra_uscite'.
+--| 1. Un attributo stringa per definire un nome alternativo per la stanza, da
+--|    mostrare quando la si menziona nei messaggi. Di solito, si tratta di una
+--|    versione più breve del nome originale, tutto in minuscolo. Attualmente è
+--|    utilizzato dall'EVENTo `Riattiva_Assistente`, per menzionare da quale
+--|    stanza è arrivata (se la stringa è vuota, verrà usato `LOCATION OF`).
+--|
+--| 2. Un attributo stringa per immagazzinare la lista delle uscite di una stanza.
+--|    Attualmente utilizzato dal verbo `mostra_uscite`.
+--|
+--| [NOTE]
+--| ============================================================================
+--| In questa avventura definiremo anche l'articolo in quelle stanze cui verrà
+--| fatto riferimento nei messaggi di `Riattiva_Assistente`, così sarà possibile
+--| recuperare le preposizioni articolate idonee al nome della stanza tramite
+--| `prep_DA`, ecc. (es. "`dall'atrio`").
+--| ============================================================================
 
 ADD TO EVERY location
   HAS menzione_stanza "".   -- (opzionale) nome alternativo nei messaggi.
   HAS uscite_stanza   "".   -- (opzionale) elenco uscite della stanza.
 END ADD TO location.
 
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == MAPPA DEL GIOCO
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--| 
+--| Iniziamo ad abbozzare la mappa del gioco, ci occuperemo dell'arredamento più
+--| avanti, per rendere più leggibile il codice.
+--| 
+--~
+--~
+--~         +-------+-------+   +-------+-------+   +-------+-------+
+--~         |  REP. LAVORO  |---|      ???      |---|      ???      |
+--~         +-------+-------+   +-------+-------+   +-------+-------+
+--~                 |        \          |          /        |
+--~                 |         \         |         /         |
+--~                 |          \        |        /          |
+--~         +-------+-------+   +-------+-------+   +-------+-------+
+--~         |  REP. SPORT   |---|   CAMERINO    |---| REP. COSTUMI  |
+--~         +-------+-------+   +-------+-------+   +-------+-------+
+--~                 |          /        |        \          |
+--~                 |         /         |         \         |
+--~                 |        /          |          \        |
+--~         +-------+-------+   +-------+-------+   +-------+-------+
+--~         |  REP. DONNA   |---|     ATRIO     |---|   REP. UOMO   |
+--~         +---------------+   +---------------+   +---------------+
+--~
+--| image::ega.png[align="center"]
 
---==============================================================================
--- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
---* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
---------------------------------------------------------------------------------
---
--- MAPPA DEL GIOCO
---
---------------------------------------------------------------------------------
---* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
--- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
---==============================================================================
--- Iniziamo ad abbozzare la mappa del gioco, ci occuperemo dell'arredamento più
--- avanti, per rendere più leggibile il codice.
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| === Entrata Emporio GA
+--~-----------------------------------------------------------------------------
+--~=============================================================================
 
---         +-------+-------+   +-------+-------+   +-------+-------+
---         |  REP. LAVORO  |---|      ???      |---|      ???      |
---         +-------+-------+   +-------+-------+   +-------+-------+
---                 |        \          |          /        |
---                 |         \         |         /         |
---                 |          \        |        /          |
---         +-------+-------+   +-------+-------+   +-------+-------+
---         |  REP. SPORT   |---|   CAMERINO    |---| REP. COSTUMI  |
---         +-------+-------+   +-------+-------+   +-------+-------+
---                 |          /        |        \          |
---                 |         /         |         \         |
---                 |        /          |          \        |
---         +-------+-------+   +-------+-------+   +-------+-------+
---         |  REP. DONNA   |---|     ATRIO     |---|   REP. UOMO   |
---         +---------------+   +---------------+   +---------------+
-
-
-
--- =============================================================================
-
--- Entrata Emporio GA
-
--- =============================================================================
 THE ega_entrata IsA luogo_esterno.
   NAME 'Davanti all''Emporio Alani'.
   EXIT nord TO ega_atrio
@@ -102,11 +123,13 @@ THE ega_entrata IsA luogo_esterno.
   DESCRIPTION "Ti trovi di fronte all'entrata dell'Emporio Giorgio Alani."
   HAS uscite_stanza "NORD per entrare nell'Emprio.".
 END THE ega_entrata.
---==============================================================================
 
--- Atrio dell'Emporio
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| === Atrio dell'Emporio
+--~-----------------------------------------------------------------------------
+--~=============================================================================
 
---==============================================================================
 THE ega_atrio IsA stanza.
   NAME 'Atrio dell''Emporio Alani'.
   HAS menzione_stanza "atrio".
@@ -133,13 +156,15 @@ THE ega_atrio IsA stanza.
   HAS uscite_stanza
     "EST al reparato uomo, OVEST al reparto donna, e NORD al camerino.".
 END THE ega_atrio.
--- =============================================================================
 
--- Camerino
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| === Camerino
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--| Collochiamo il camerino al centro dell'emprio (che è quadrato) di modo che
+--| sia accessibile da tutti i reparti.
 
--- =============================================================================
--- Collochiamo il camerino al centro dell'emprio (che è quadrato) di modo che
--- sia accessibile da tutti i reparti.
 THE ega_camerino IsA stanza.
   NAME 'Camerino'.
   EXIT sud TO ega_atrio
@@ -185,19 +210,19 @@ THE ega_camerino IsA stanza.
           FOR EACH ind_indossato IsA indumento, DIRECTLY IN Hero, IS indossato
             DO
               MAKE ind_indossato NOT indossato.
--- >>> dev-vestario: NO INDOSSATI! (prova a non usare set 'indossati')
-            --EXCLUDE ind_indossato FROM indossati of Hero.
               LOCATE ind_indossato AT CURRENT LOCATION.
           END FOR.
         ELSE "Non stai indossando nulla.."
       END IF. 
   END VERB spogliati.  
 END THE ega_camerino.
--- =============================================================================
 
--- Reparto Abbigliamento Uomo
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| === Reparto Abbigliamento Uomo
+--~-----------------------------------------------------------------------------
+--~=============================================================================
 
--- =============================================================================
 THE ega_uomo IsA stanza.
   NAME 'Reparto Uomo'.
   HAS menzione_stanza "reparto uomo".
@@ -209,11 +234,13 @@ THE ega_uomo IsA stanza.
   HAS uscite_stanza
     "NORD ai Costumi, NORDOVEST al camerino, e OVEST all'atrio.".
   END THE ega_uomo.
--- =============================================================================
 
--- Reparto Abbigliamento Donna
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| === Reparto Abbigliamento Donna
+--~-----------------------------------------------------------------------------
+--~=============================================================================
 
--- =============================================================================
 THE ega_donna IsA stanza.
   NAME 'Reparto Donna'.
   HAS menzione_stanza "reparto donna".
@@ -226,11 +253,13 @@ THE ega_donna IsA stanza.
   HAS uscite_stanza
     "NORD al reparto sport, NORDEST al camerino, e EST all'atrio.".
 END THE ega_donna.
--- =============================================================================
 
--- Reparto costumi
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| === Reparto costumi
+--~-----------------------------------------------------------------------------
+--~=============================================================================
 
--- =============================================================================
 THE ega_costumi IsA stanza.
   NAME 'Reparto costumi'.
   HAS menzione_stanza "reparto costumi".
@@ -242,11 +271,13 @@ THE ega_costumi IsA stanza.
   HAS uscite_stanza
     "SUD al reparto uomo, NORD al reparto 2, e OVEST al camerino.".
 END THE ega_costumi.
--- =============================================================================
 
--- Reparto Abbigliamento Sportivo
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| === Reparto Abbigliamento Sportivo
+--~-----------------------------------------------------------------------------
+--~=============================================================================
 
--- =============================================================================
 THE ega_sport IsA stanza.
   NAME 'Reparto Abbigliamento Sportivo'.
   HAS menzione_stanza "reparto sportivo".
@@ -259,11 +290,13 @@ THE ega_sport IsA stanza.
   HAS uscite_stanza
     "NORD al reparto lavoro, SUD al reparto donna, e EST al camerino.".
 END THE ega_sport.
--- =============================================================================
 
--- Reparto Abbigliamento Lavoro e Antinfortunistica
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| === Reparto Abbigliamento Lavoro e Antinfortunistica
+--~-----------------------------------------------------------------------------
+--~=============================================================================
 
--- =============================================================================
 THE ega_lavoro IsA stanza.
   NAME 'Reparto Abbigliamento Lavoro e Antinfortunistica'.
   HAS menzione_stanza "reparto lavoro".
@@ -275,11 +308,13 @@ THE ega_lavoro IsA stanza.
   HAS uscite_stanza
     "SUD al reparto sport, EST al reparto 1, e SUDEST al camerino.".
 END THE ega_lavoro.
--- =============================================================================
 
--- Reparto 1 (non assegnato)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| === Reparto 1 (non assegnato)
+--~-----------------------------------------------------------------------------
+--~=============================================================================
 
--- =============================================================================
 THE ega_vacante1 IsA stanza.
   NAME 'Reparto #1 (vuoto)'.
   HAS menzione_stanza "reparto 1".
@@ -291,11 +326,13 @@ THE ega_vacante1 IsA stanza.
   HAS uscite_stanza
     "EST al reparto 2, OVEST al reparto lavoro, e SUD al camerino.".
 END THE ega_vacante1.
--- =============================================================================
 
--- Reparto 2 (non assegnato)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| === Reparto 2 (non assegnato)
+--~-----------------------------------------------------------------------------
+--~=============================================================================
 
--- =============================================================================
 THE ega_vacante2 IsA stanza.
   NAME 'Reparto #2 (vuoto)'.
   HAS menzione_stanza "reparto 2".
@@ -307,67 +344,120 @@ THE ega_vacante2 IsA stanza.
   HAS uscite_stanza
     "SUD ai costumi, OVEST al reparto 1, e SUDOVEST al camerino.".
 END THE ega_vacante2.
---==============================================================================
--- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
---* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
---------------------------------------------------------------------------------
---
--- CLASSI SPECIALIZZATE
---
---------------------------------------------------------------------------------
---* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
--- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
---==============================================================================
 
--- Creiamo delle sottoclassi specializzate per semplificarci la vita...
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == Il vestiario
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
 
---=============================================================================
---\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---------------------------------------------------------------------------------
--- CLOTHING CLASSES
--------------------------------------------------------------------------------
---//////////////////////////////////////////////////////////////////////////////
---=============================================================================
 
--- Creiamo alcune sottoclassi di vestiario per semplificare la creazione di più
--- indumenti dello stesso genere...
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| === Assegnazione degli strati d'indossamento
+--~-----------------------------------------------------------------------------
+--~=============================================================================
 
--- Le classi di vestiario avranno il prefisso 'cl_'.
--- Creeremo due tipi di sottoclassi di vestiario:
--- 
---   (1) Prototipi        -- prefisso: 'proto_'.
---   (2) Classi generiche -- prefisso: 'cl_'.
+--| Il sistema stratificato della Libreria consente di mappare liberamente gli
+--| strati di indossamento delle varie zone del corpo ai vari tipi di vestiario.
 
---+--------------------------+------------+-----------+-----------+----------+
---| Indumento    | val_testa | val_tronco | val_gambe | val_piedi | val_mani |
---+--------------------------+------------+-----------+-----------+----------+
---| cappello             | 2 |          0 |         0 |         0 |        0 |
---| canottiera/reggiseno | 0 |          2 |         0 |         0 |        0 |
---| mutande/slip         | 0 |          0 |         2 |         0 |        0 |
---| teddy                | 0 |          4 |         4 |         0 |        0 |
---| blusa/shirt/T-shirt  | 0 |          8 |         0 |         0 |        0 |
---| dress/tuta lavoro    | 0 |          8 |        32 |         0 |        0 |
---| gonna                | 0 |          0 |        32 |         0 |        0 |
---| pantaloni/shorts     | 0 |          0 |        16 |         0 |        0 |
---| sweater/pullover     | 0 |         16 |         0 |         0 |        0 |
---| giacca               | 0 |         32 |         0 |         0 |        0 |
---| cappotto             | 0 |         64 |        64 |         0 |        0 |
---| calze/stockings      | 0 |          0 |         0 |         2 |        0 |
---| tights/pantiehose    | 0 |          0 |         8 |         2 |        0 |
---| scarpe/stivali       | 0 |          0 |         0 |         4 |        0 |
---| guanti               | 0 |          0 |         0 |         0 |        2 |
---+--------------------------+------------+-----------+-----------+----------+
+--| L'assegnazione di specifici valori di strato (nelle zone di indossamento) a
+--| determinate categorie di indumenti è una scelta arbitraria, perlopiù dettata
+--| dal tipo di vestiario impiegato nell'avventura. Nel nostro caso, avendo a
+--| che fare con un'avventura completamente incentrata sul vestiario, dovremo
+--| pianificare nel dettaglio la mappatura dei valori di indossamento dei vari
+--| indumenti nelle diverse zone del corpo.
 
---==============================================================================
--- COPRICAPI
---==============================================================================
+--| Cercheremo di adottare un sistema che sia al contempo coerente, intuitivo e
+--| facile da usare, e che consenta l'interazione con i più svariati tipi di
+--| indumenti presenti nel gioco.
+
+--| La seguente tabella riassume tali scelte.
+
+--| 
+--| .Valori vestiario in EGA
+--| [.center,cols="40d,6*>10m",options="header,autowidth"]
+--| |==================================================================
+--| | Indumento        | testa | viso | tronco | gambe | piedi | mani
+--~ |--------------+-----------+------+--------+-------+-------+------+
+--| | passamontagna        | 1 |    1 |      0 |     0 |     0 |    0
+--| | cappello             | 2 |    0 |      0 |     0 |     0 |    0
+--| | occhiali             | 0 |    2 |      0 |     0 |     0 |    0
+--| | canottiera/reggiseno | 0 |    0 |      2 |     0 |     0 |    0
+--| | mutande/slip         | 0 |    0 |      0 |     2 |     0 |    0
+--| | teddy                | 0 |    0 |      4 |     4 |     0 |    0
+--| | blusa/shirt/T-shirt  | 0 |    0 |      8 |     0 |     0 |    0
+--| | dress/tuta lavoro    | 0 |    0 |      8 |    32 |     0 |    0
+--| | gonna                | 0 |    0 |      0 |    32 |     0 |    0
+--| | pantaloni/shorts     | 0 |    0 |      0 |    16 |     0 |    0
+--| | sweater/pullover     | 0 |    0 |     16 |     0 |     0 |    0
+--| | giacca               | 0 |    0 |     32 |     0 |     0 |    0
+--| | cappotto             | 0 |    0 |     64 |    64 |     0 |    0
+--| | calze/stockings      | 0 |    0 |      0 |     0 |     2 |    0
+--| | tights/pantiehose    | 0 |    0 |      0 |     8 |     2 |    0
+--| | scarpe/stivali       | 0 |    0 |      0 |     0 |     4 |    0
+--| | guanti               | 0 |    0 |      0 |     0 |     0 |    2
+--| |==================================================================
+
+
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Gli indumenti
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+
+--| Per semplificare la gestione e lo studio del codice, raggrupperemo tutti gli
+--| indumenti assieme, a prescindere di chi li indossi o dove si trovino a inizio
+--| partita.
+
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Sottoclassi di indumento specializzate
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+
+--| Dato che molti indumenti condividono elementi comuni, creeremo alcune
+--| sottoclassi di `indumento` specializzate, e sfrutteremo l'ereditarietà per
+--| semplificare la creazione e la gestione di indumenti dello stesso genere.
+
+--| 
+--| Creeremo due tipi di sottoclassi di vestiario:
+--| 
+--|   1. Prototipi        -- prefisso: `proto_`.
+--|   2. Classi generiche -- prefisso: `cl_`.
+
+
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Copricapi
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+
 EVERY cl_cappello IsA indumento.
   NAME cappello.
-  HAS val_testa 2.
+  HAS strato_testa 2.
 END EVERY.
---==============================================================================
--- biancheria
---==============================================================================
+
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Indumenti facciali
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Biancheria
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+
 EVERY proto_biancheria IsA indumento.
   NAME biancheria.
 END EVERY.
@@ -377,7 +467,7 @@ END EVERY.
 EVERY cl_canottiera IsA proto_biancheria.
   NAME canottiera.
   HAS articolo "la".
-  HAS val_tronco 2.
+  HAS strato_tronco 2.
 END EVERY.
 ----------
 -- Inguine
@@ -385,7 +475,7 @@ END EVERY.
 EVERY cl_mutande IsA proto_biancheria.
   NAME mutande.
   HAS articolo "le".
-  HAS val_gambe 2.
+  HAS strato_gambe 2.
   INDEFINITE ARTICLE "un paio di"
 END EVERY.
 --------
@@ -394,32 +484,37 @@ END EVERY.
 EVERY cl_calzini IsA indumento.
   NAME calzini.
   HAS articolo "i".
-  HAS val_piedi 2.
+  HAS strato_piedi 2.
   INDEFINITE ARTICLE "un paio di"
 END EVERY.
 
---==============================================================================
--- CALZATURE
---==============================================================================
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Calzature
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+
 EVERY cl_scarpe IsA indumento.
   NAME scarpe.
   HAS articolo "le".
-  HAS val_piedi 4.
+  HAS strato_piedi 4.
   INDEFINITE ARTICLE "un paio di"
 END EVERY.
 
 EVERY cl_stivali IsA indumento.
   NAME stivali.
   HAS articolo "gli".
-  HAS val_piedi 4.
+  HAS strato_piedi 4.
   INDEFINITE ARTICLE "un paio di"
 END EVERY.
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Magliette, camicie
+--~-----------------------------------------------------------------------------
+--~=============================================================================
 
---==============================================================================
--- MAGLIETTE, CAMICIE E ALTRI INDUMENTI 'val_tronco 8'
---==============================================================================
 EVERY cl_tshirt IsA indumento.
-  HAS val_tronco 8.
+  HAS strato_tronco 8.
   HAS articolo "la".
   NAME 'T-shirt'.
   NAME tshirt.
@@ -427,52 +522,57 @@ EVERY cl_tshirt IsA indumento.
 END EVERY.
 
 EVERY cl_camicia IsA indumento.
-  HAS val_tronco 8.
+  HAS strato_tronco 8.
   HAS articolo "la".
   NAME camicia.
 END EVERY.
 
---==============================================================================
--- MAGLIONI E ALTRI INDUMENTI 'val_tronco 16'
---==============================================================================
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Maglioni
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+
 EVERY proto_maglione IsA indumento.
-  HAS val_tronco 16.
+  HAS strato_tronco 16.
 END EVERY.
 
---==============================================================================
--- INDUMENTI GAMBE
---==============================================================================
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Indumenti gambe
+--~-----------------------------------------------------------------------------
+--~=============================================================================
 
 EVERY proto_gonna IsA indumento.
   NAME gonna.
   HAS articolo "la".
-  HAS val_gambe 32.
+  HAS strato_gambe 32. NOT blocca_gambe.
 END EVERY.
 
 EVERY proto_collant IsA indumento.
   NAME collant.
   HAS articolo "i".
   INDEFINITE ARTICLE "un paio di"
-  HAS val_gambe 8.
+  HAS strato_gambe 8.
 END EVERY.
---------------------------------------------------------------------------------
--- Pantaloni
---------------------------------------------------------------------------------
--- Dato che la classe 'indumento' è definita come contenitore (per consentire di
--- avere tasche, ecc.) sfrutteremo questa funzionalità nei pantaloni, così
--- da poter testare come la libreria gestisce oggetti annidati nel vestiario.
+
+
+--~=============================================================================
+--| ===== Pantaloni
+--~=============================================================================
+--| Dato che la classe `indumento` è definita come contenitore (per consentire
+--| di avere tasche, ecc.) sfrutteremo questa funzionalità nei pantaloni, così
+--| da poter testare come la libreria gestisce oggetti annidati nel vestiario.
 
 EVERY proto_pantaloni IsA indumento.
   NAME pantaloni.
   NAME tasche. --> per catturare "metti ogg in tasche"
   HAS articolo "i".
   INDEFINITE ARTICLE "un paio di"
-  HAS val_gambe 16.
-  -- ----------------------------------
-  -- Personalizza descrizione contenuti
-  -- ----------------------------------
-  CONTAINER
-    HEADER
+  HAS strato_gambe 16.
+            -- ----------------------------------
+  CONTAINER -- Personalizza descrizione contenuti
+    HEADER  -- ----------------------------------
       "Nelle tasche dei pantaloni"
       IF COUNT IsA thing, DIRECTLY IN THIS >1
         THEN "ci sono"
@@ -480,37 +580,45 @@ EVERY proto_pantaloni IsA indumento.
       END IF.  
 END EVERY.
 
---==============================================================================
--- TUTE DA LAVORO
---==============================================================================
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Tute da lavoro
+--~-----------------------------------------------------------------------------
+--~=============================================================================
 
 EVERY proto_tuta IsA indumento.
   NAME tuta.
   HAS articolo "la".
-  HAS val_tronco 8.
-  HAS val_gambe 32.
+  HAS strato_tronco 8.
+  HAS strato_gambe 32.
 END EVERY.
 
---==============================================================================
--- ABITI DA DONNA (PEZZO UNICO)
---==============================================================================
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Abiti da donna (pezzo unico)
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+
 EVERY cl_abito IsA indumento.
   HAS articolo "l'".
   NAME abito.
-  HAS val_tronco 8.
-  HAS val_gambe 32.
+  HAS strato_tronco 8.
+  HAS strato_gambe 32. NOT blocca_gambe.
 END EVERY.
 
---==============================================================================
--- CAPPOTTI
---==============================================================================
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Cappotti
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+
 EVERY cl_cappotto IsA indumento.
   NAME cappotto.
-  HAS val_tronco 64.
-  HAS val_gambe 64.
+  HAS strato_tronco 64.
+  HAS strato_gambe 64. NOT blocca_gambe.
 END EVERY.
 
-
+--<
 
 --==============================================================================
 -- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -523,73 +631,6 @@ END EVERY.
 --* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 -- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --==============================================================================
-
---==============================================================================
--- DEBUGGING DEL VESTIARIO
---==============================================================================
--- Un verbo per poter verificare i valori di copertura dei vari indumenti.
-
--- >>> dev-vestario: deleted! <DBG INDUMENTO> >>> (spostato in modulo DEBACA!)
--- SYNTAX dbg = dbg (obj)*!
---   WHERE obj IsA indumento
---     ELSE "Questo verbo accetta solo parametri di tipo indumento."
-
--- ADD TO EVERY indumento
---   VERB dbg
---     DOES
---       "'$1' VALORI:"
---       IF  obj:val_testa = 0 AND obj:val_tronco = 0 AND obj:val_gambe = 0
---       AND obj:val_piedi = 0 AND obj:val_mani = 0
---         THEN
---           "(nessuno)"
---         ELSE
---           IF obj:val_testa > 0
---             THEN "| val_testa:" SAY obj:val_testa.
---           END IF.
---           IF obj:val_tronco > 0
---             THEN "| val_tronco:" SAY obj:val_tronco.
---           END IF.
---           IF obj:val_gambe > 0
---             THEN "| val_gambe:" SAY obj:val_gambe.
---           END IF.
---           IF obj:val_piedi > 0
---             THEN "| val_piedi:" SAY obj:val_piedi.
---           END IF.
---           IF obj:val_mani > 0
---             THEN "| val_mani:" SAY obj:val_mani.
---           END IF.
---           "|"
---       END IF.
---       ------------------------
---       -- Mostra se è indossato
---       ------------------------
---       "$nÈ INDOSSATO:"
---       IF obj:indossato
---         THEN "Sì"
---         ELSE "No."
---       END IF.
--- -- >>> dev-vestario: deleted! ENTITY abbigliamento >>>
---       -------------------------------------------
---       -- Mostra se è nell'abbigliamento dell'Eroe
---       -------------------------------------------
---       -- "$nIN ABBIGLIAMENTO (EROE):"
---       -- IF obj IN abbigliamento
---       --   THEN "Sì"
---       --   ELSE "No."
---       -- END IF.
--- -- >>> dev-vestario: deleted! set indossati >>>
---       -------------------------------------
---       -- Elenca gli attori che lo indossano
---       -------------------------------------
---       -- "$nIN 'INDOSSATI' DI:"
---       -- FOR EACH ac IsA ACTOR
---       --   DO
---       --     IF obj IN indossati OF ac
---       --       THEN "| " SAY ac.
---       --     END IF.
---       -- END FOR.
---   END VERB dbg.
--- END ADD TO indumento.
 
 --==============================================================================
 -- MOSTRA LE USCITE
@@ -826,17 +867,6 @@ THE assistente_ega IsA femmina AT ega_atrio.
   HAS articolo "l'". 
   INDEFINITE FORM "la tua assistente personale"
   HAS xDesc "È la tua assistente personale per lo shopping.".
-
--- >>> dev-vestario: NO INDOSSATI! (prova a non usare set 'indossati')
-  -- INITIALIZE
-  --   -- --------------------------------------------
-  --   -- Rendi indossato ogni indumento IN assistente
-  --   -- --------------------------------------------
-  --   FOR EACH ind IsA indumento, IN THIS
-  --     DO
-  --       MAKE ind indossato.
-  --       INCLUDE ind IN indossati OF THIS.
-  --   END FOR.
 END THE assistente_ega.
 
 -- Impedisci all'assistente di seguirci nel camerino:
@@ -954,6 +984,7 @@ END THE.
 THE cappotto IsA cl_cappotto AT ega_uomo.
 END THE.
 
+
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------
@@ -963,7 +994,8 @@ END THE.
 --=============================================================================
 
 THE passamontagna IsA indumento AT ega_sport.
-  HAS val_testa 2.
+  HAS strato_testa 1.
+  HAS strato_viso  1.
   HAS xDesc
     "Un passamontagna invernale. Praticamente, un cappuccio con buchi per occhi
      e bocca, come quelli usati nelle rapine, hai presente?".
@@ -974,11 +1006,30 @@ THE occhiali_sci IsA indumento AT ega_sport.
   NAME occhiali sci.
   HAS articolo "gli".
   MENTIONED "occhiali da sci"
-  HAS val_testa 4.
+  HAS strato_viso 2.
   INDEFINITE ARTICLE "un paio di"
   HAS xDesc
     "Una padio di occhiali da sci, lente frontale singola (a forma di B) e una
      banda elastica per fissarli alla testa.".
+END THE.
+
+THE costume_bagno_intero IsA indumento AT ega_sport.
+  NAME costume intero.
+  NAME costume.
+  NAME costume bagno.
+  NAME costume nuoto.
+
+  HAS strato_tronco 2.
+  HAS strato_gambe  2.
+  HAS xDesc "Un costume intero, per il nuoto femminile.".
+  
+END THE.
+
+THE bikini IsA indumento AT ega_sport.
+  HAS strato_tronco 2.
+  HAS strato_gambe  2.
+  IS due_pezzi. --> tronco e gambe non formano un pezzo unico! 
+  HAS xDesc "Un bikini in due pezzi, per il nuoto femminile.".
 END THE.
 
 --==============================================================================
@@ -1134,7 +1185,7 @@ SYNONYMS portafogli = portafoglio.
 THE kippah_eroe IsA indumento IN pantaloni_eroe.
   NAME kippah.
   NAME mia kippah.
-  HAS val_testa 2.
+  HAS strato_testa 2.
   HAS articolo "la".
   INDEFINITE ARTICLE "la tua"
   DEFINITE ARTICLE "la tua"

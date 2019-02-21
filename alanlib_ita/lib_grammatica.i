@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_grammatica.i"
---| v0.15.0-Alpha, 2019-02-19: Alan 3.0beta6 build 1866
+--| v0.16.0-Alpha, 2019-02-21: Alan 3.0beta6 build 1870
 --|=============================================================================
 --| Modulo grammaticale della liberia italiana, non presente nell'originale
 --| _ALAN Standard Library_ v2.1 di Anssi Räisänen.

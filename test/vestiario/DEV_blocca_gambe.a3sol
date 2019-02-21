@@ -1,0 +1,101 @@
+; ******************************************************************************
+; *                                                                            *
+; *                             TESTA BLOCCO GAMBE                             *
+; *                                                                            *
+; ******************************************************************************
+; L'attributo 'IS NOT blocca_gambe' consente di creare indumenti che non
+; impediscono di indossare/rimuovere indumenti inferiori che coprono solo le
+; gambe. Questo consente di simulare realisticamente cappotti e gonne.
+;
+; L'attributo 'IS due_pezzi' consente di creare indumenti che, sebbene coprano
+; sia le gambe che il torso, verrano visti dalla libreria come un indumento in
+; due pezzi separati, che verrà trattato nei controlli per 'IS NOT blocca_gambe'
+; alla stregua di un indumento per sole gambe.
+; 
+; Gli esempi pratici di seguito chiariranno meglio il concetto.
+; ------------------------------------------------------------------------------
+nord
+est
+prendi camicia nera
+prendi cappotto
+ovest
+ovest
+nord
+prendi costume
+prendi bikini
+est
+spogliati 
+; ==============================================================================
+; TESTA GONNA
+; ==============================================================================
+; ------------------------------------------------------------------------------
+; CON GONNA -> INDOSSA/RIMUOVI -> COLLANT
+; ------------------------------------------------------------------------------
+; Una gonna non deve impedire di indossare collant, mutande e altri indumenti
+; degli strati inferiori che non formano un pezzo unico con il torso. 
+indossa gonna
+; /// INDOSSA -> SÌ (OK!) ///
+indossa collant
+; /// RIMUOVI -> SÌ (OK!) ///
+togliti collant
+; ------------------------------------------------------------------------------
+; CON GONNA -> INDOSSA/RIMUOVI -> COSTUME INTERO
+; ------------------------------------------------------------------------------
+; Una gonna deve invece impedire di indossare indumenti degli inferiori che 
+; formano un pezzo unico gambe-torso, come un costume da bagno intero.
+;
+; /// INDOSSA -> NO (OK!) ///
+indossa costume
+togliti gonna
+indossa costume
+indossa gonna
+; /// RIMUOVI -> NO (OK!) ///
+togliti costume
+togliti gonna
+togliti costume
+; ------------------------------------------------------------------------------
+; CON GONNA -> INDOSSA/RIMUOVI -> BIKINI
+; ------------------------------------------------------------------------------
+; Una gonna non deve impedire di indossare un bikini perché i suoi due pezzi non
+; formano un pezzo unico.
+indossa gonna
+; /// INDOSSA -> SÌ (OK!) ///
+indossa bikini
+; /// RIMUOVI -> SÌ (OK!) ///
+togliti bikini
+; ------------------------------------------------------------------------------
+; CON GONNA + MAGLIETTA -> INDOSSA/RIMUOVI -> BIKINI
+; ------------------------------------------------------------------------------
+; Invece non si deve poter indossare il bikini se si sta indossando un indumento
+; del torso che occupa uno strato superiore (in questo caso, il bloccante non è
+; la gonna).
+DBG_IND camicia nera
+DBG_IND bikini
+indossa gonna
+indossa camicia nera
+; /// INDOSSA -> NO -> BLOCCANTE: CAMICIA (OK!) ///
+indossa bikini
+togliti camicia nera
+indossa bikini
+indossa camicia nera
+; /// RIMUOVI -> NO -> BLOCCANTE: CAMICIA (OK!) ///
+togliti bikini
+; ==============================================================================
+; TESTA CAPPOTTO
+; ==============================================================================
+; Un cappotto non deve impedire di indossare/rimuovere indumenti gambe per gli
+; strati inferiori, ma bloccherà sempre un indumento che copre anche il torso.
+spogliati
+indossa cappotto
+; /// INDOSSA -> NO (OK!) ///
+indossa bikini
+; /// INDOSSA -> SÌ (OK!) ///
+indossa gonna
+; /// INDOSSA -> SÌ (OK!) ///
+indossa mutande
+; /// INDOSSA -> NO (OK!) ///
+indossa canottiera
+; /// RIMUOVI -> SÌ (OK!) ///
+togliti mutande
+; /// RIMUOVI -> SÌ (OK!) ///
+togliti gonna

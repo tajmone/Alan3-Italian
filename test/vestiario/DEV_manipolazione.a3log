@@ -3,7 +3,7 @@
 Emporio Giorgio Alani 
 Un set per testare il vestiario. 
 (C) Tristano Ajmone, 2019. 
-Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1866. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1870. 
 Libreria Standard Italiana v2.1 
 Versione 1 
 Tutti i diritti riservati. 
@@ -59,7 +59,7 @@ Presa.
 
 > ; //// VERIFICA 'NOT indossato' (OK!): ////
 > DBG_IND kippah
-'kippah' VALORI: | val_testa: 2 | 
+'kippah' VALORI: | strato_testa: 2 | 
 È INDOSSATO: No
 
 > ; Per sicurezza, testiamo anche con un oggetto non-indumento:
@@ -78,7 +78,7 @@ Fatto, ora la tua kippah è nei pantaloni.
 
 > ; Verifichiamo che i settaggi degli indosabili siano correttamente preservati:
 > DBG_IND kippah
-'kippah' VALORI: | val_testa: 2 | 
+'kippah' VALORI: | strato_testa: 2 | 
 È INDOSSATO: No
 
 > inventario
@@ -105,7 +105,7 @@ il tuo portafoglio e la tua kippah qui.
 
 > ; Verifichiamo che lo stato di indossamento dei pantaloni non sia cambiato:
 > DBG_IND tuoi pantaloni
-'pantaloni' VALORI: | val_gambe: 16 | 
+'pantaloni' VALORI: | strato_gambe: 16 | 
 È INDOSSATO: Sì (dal hero)
 
 > ; [... azioni intermedie ...]
@@ -145,7 +145,7 @@ bancone vedi i tuoi pantaloni.
 
 > ; //// VERIFICA 'NOT indossato' (OK!): ////
 > DBG_IND tuoi pantaloni
-'pantaloni' VALORI: | val_gambe: 16 | 
+'pantaloni' VALORI: | strato_gambe: 16 | 
 È INDOSSATO: No
 
 > ; [... azioni intermedie ...]
@@ -170,7 +170,7 @@ Nel cestino puoi vedere i tuoi pantaloni.
 
 > ; //// VERIFICA 'NOT indossato' (OK!): ////
 > DBG_IND tuoi pantaloni
-'pantaloni' VALORI: | val_gambe: 16 | 
+'pantaloni' VALORI: | strato_gambe: 16 | 
 È INDOSSATO: No
 
 > ; ==============================================================================
@@ -232,7 +232,7 @@ Consegni la tua canottiera all'assistente.
 
 > ; //// VERIFICA 'NOT indossato' (OK!): ////
 > DBG_IND canottiera
-'canottiera' VALORI: | val_tronco: 2 | 
+'canottiera' VALORI: | strato_tronco: 2 | 
 È INDOSSATO: No
 
 > x assistente
@@ -279,7 +279,7 @@ L'assistente ti dà l'abito.
 
 > ; //// VERIFICA 'NOT indossato' (OK!): ////
 > DBG_IND abito
-'abito' VALORI: | val_tronco: 8 | val_gambe: 32 | 
+'abito' VALORI: | strato_tronco: 8 | strato_gambe: 32 | IS NOT blocca_gambe | 
 È INDOSSATO: No
 
 > inventario
@@ -300,7 +300,7 @@ tuoi boxer e le tue sneakers.
 L'assistente non sarebbe d'accordo.
 
 > DBG_IND stivaletti
-'stivaletti' VALORI: | val_piedi: 4 | 
+'stivaletti' VALORI: | strato_piedi: 4 | 
 È INDOSSATO: Sì (dall'assistente)
 
 > ; ------------------------------------------------------------------------------
@@ -320,7 +320,7 @@ Presi.
 
 > ; //// VERIFICA 'NOT indossato' (OK!): ////
 > DBG_IND stivaletti
-'stivaletti' VALORI: | val_piedi: 4 | 
+'stivaletti' VALORI: | strato_piedi: 4 | 
 È INDOSSATO: No
 
 > ; ******************************************************************************

@@ -22,6 +22,13 @@ Appunti di lavoro per le modifiche al codice del vestiario.
     - [Verbi da ritoccare](#verbi-da-ritoccare)
         - [Verbi che potrebbero dislocare indossati](#verbi-che-potrebbero-dislocare-indossati)
     - [Aggiorna tutti i test](#aggiorna-tutti-i-test)
+- [Ulteriori Migliorie](#ulteriori-migliorie)
+    - [Prendi implicito in `indossa`](#prendi-implicito-in-indossa)
+    - [Report customizzabile in `indossa`/`rimuovi`](#report-customizzabile-in-indossarimuovi)
+    - [Ordine indossamento opzionale](#ordine-indossamento-opzionale)
+    - [EGA](#ega)
+        - [EGA Demo](#ega-demo)
+        - [Modulo Debaca](#modulo-debaca)
 - [Criteri maneggiamento indumenti indossati](#criteri-maneggiamento-indumenti-indossati)
     - [Prendere indossati](#prendere-indossati)
 - [Panoramica del nuovo sistema di vestiario](#panoramica-del-nuovo-sistema-di-vestiario)
@@ -29,7 +36,10 @@ Appunti di lavoro per le modifiche al codice del vestiario.
         - [Estensibilità degli indossabili](#estensibilit%C3%A0-degli-indossabili)
     - [Utilizzo nelle avventure](#utilizzo-nelle-avventure)
     - [Vestiario stratificato](#vestiario-stratificato)
+        - [Rinomina attributi zone del corpo](#rinomina-attributi-zone-del-corpo)
         - [Stratificazione non esponenziale](#stratificazione-non-esponenziale)
+        - [Nuova zona corpo per il viso](#nuova-zona-corpo-per-il-viso)
+        - [Nuovi attributi per indumenti speciali](#nuovi-attributi-per-indumenti-speciali)
         - [Messaggi di fallimento indossa/rimuovi](#messaggi-di-fallimento-indossarimuovi)
     - [Elenco inventario](#elenco-inventario)
         - [Inventario Eroe](#inventario-eroe)
@@ -98,11 +108,11 @@ Questi sono, a grandi linee, gli step principali da implementare:
 
 - [x] Crea un gruppo di test indipendenti per seguire lo sviluppo senza intaccare i test generali, finché il vestiario non è sistemato.
 - [x] Rimuovi l'entità `abbigliamento` e il set `indossati` e limitati a usare `indossato` come referente per le varie operazioni sul vestiario.
-- [ ] Assicurati che gli indumenti e gli oggetti annidati in indumenti non vengano trattati come indossati.
+- [x] Assicurati che gli indumenti e gli oggetti annidati in indumenti non vengano trattati come indossati.
 - [x] Elenca separatamente oggetti trasportati ed indossati dagli attori — nell'inventario, per l'Eroe, e in 'esamina attore' per i PNG.
 - [x] Quando l'azione indossa/rimuovi fallisce, limitati a elencare gli indumenti che la prevengono.
 - [x] Elimina i casi speciali nei verbi `indossa`/`togliti` per cappotti, gonne, ecc., limitando i controlli all'ordine di indossamento stratificato.
-- [ ] Aggiungi `val_viso` per mappare il viso separatamente dalla testa.
+- [x] Aggiungi `strato_viso` per mappare il viso separatamente dalla testa.
 - [x] Usa valori incrementali anziché esponenziali per gli strati del vestiario.
 - [x] Stabilisci dei criteri circa le azioni che potrebbero dislocare indumenti indossati, ed implementali nei rispettivi verbi.
 
@@ -113,6 +123,7 @@ Qui di seguito sono riportati i dettagli specifici dei vari passaggi per lo svil
 
 - [`../test/vestiario/`][vestiario]:
     + [`DEV.bat`][DEV.bat] — esegue tutti i test con nome `DEV*.a3sol`.
+    + [`DEV_blocca_gambe.a3sol`][DEV_blocca_gambe sol]/[`.a3log`][DEV_blocca_gambe log] — testa verbi `indossa`/`togliti` con gonne, cappotti, bikini, e altri indumenti speciali.
     + [`DEV_indossa.a3sol`][DEV_indossa sol]/[`.a3log`][DEV_indossa log] — testa verbi `indossa`/`togliti`.
     + [`DEV_init.a3sol`][DEV_init sol]/[`.a3log`][DEV_init log] — testa inizializzazione indumenti.
     + [`DEV_inventario.a3sol`][DEV_inventario sol]/[`.a3log`][DEV_inventario log] — testa elencazione oggetti trasportati e indumenti indossati.
@@ -188,7 +199,7 @@ I verbi originali `indossa`/`togliti`, quando l'azione non va a buon fine riport
         * [x] non gestire indumenti speciali (gonne, cappotti).
         * [x] _ottimizza_: non eseguire loop dei calcoli per l'indossamento se l'indumento da indossare ha tutti i valori di copertura zero.
     + [x] Nel rapporto finale elenca gli indumenti che bloccano l'azione.
-    + [ ] Rimuovi dal sorgente le copie del codice originale commentato.
+    + [x] Rimuovi dal sorgente le copie del codice originale commentato.
     + [ ] Migliora commenti nel codice.
 - [ ] __VERBO `togliti`__:
     + [x] Riscrivi codice che controlla la fattibilità dell'azione:
@@ -197,7 +208,7 @@ I verbi originali `indossa`/`togliti`, quando l'azione non va a buon fine riport
         * [x] non gestire indumenti speciali (gonne, cappotti).
         * [x] _ottimizza_: non eseguire loop dei calcoli per l'indossamento se l'indumento da indossare ha tutti i valori di copertura zero.
     + [x] Nel rapporto finale elenca gli indumenti che bloccano l'azione.
-    + [ ] Rimuovi dal sorgente le copie del codice originale commentato.
+    + [x] Rimuovi dal sorgente le copie del codice originale commentato.
     + [ ] Migliora commenti nel codice.
 
 Con il nuovo sistema, questi attributi temporanei per uso interno non serviranno più e possono essere eliminati:
@@ -356,6 +367,76 @@ In alcuni verbi che vengono bloccati se uno dei paramentri è nell'eroe, va migl
         * [x] `vari/`
 
 
+# Ulteriori Migliorie
+
+Ora che il vestiario è stato liberato dai bachi dell'originale, e le funzionalità per poter gestire indumenti speciali (gonne, cappotti) sono state ripristinate, posso dedicarmi a introdurre nuove funzionalità per migliorare l'uso del vestiario.
+
+- [ ] `lib_classi_vestiario.i`:
+    + [ ] Documenta modulo.
+    + [ ] `indumento_fittizio` serve ancora? o può essere eliminato?
+
+
+
+## Prendi implicito in `indossa`
+
+Il verbo `indossa` prende implicitamente l'indumento anche se l'azione non andrà in porto. Dovrei modificarlo? o in questo caso va fatta un'eccezione? 
+
+Se tolgo il prendi implicito, al giocatore verrebbe detto che per poter indossare l'indumento deve prima togliere gli altri, e il rischio è che si trovi a togliere parecchi indumenti solo per poi scoprire che l'indumento che vuole indossare non può essere preso. Il prendi implicito, in questo caso, garantisce che l'azione fallisca sempre nel caso di un indumento non prendibile.
+
+Questo va considerato bene, potrei aggiungere dei CHECK per far fallire l'azione, ma temo complicherebbe la gestibilità agli autori. Forse in questo caso l'eccezzione ha senso dato che se l'intenzione è di indossare l'indumento il prendi implicito accorcerà i passaggi, e il giocatore dovrà solo rimuovere gli indumenti bloccanti per terminare l'azione. 
+
+Va considerato inoltre che con l'introduzione (a breve) dell'opzione per disabilitare l'indossamento ordinato il contesto di fallimento di `indossa` sarà ridotto in alcuni contesti.
+
+
+## Report customizzabile in `indossa`/`rimuovi`
+
+Introduci  nuovi attributi stringa (opzionali) per consentire dei report alternativi di `indossa`/`rimuovi` andati a buon fine:
+
+- [ ]  `indossa`
+- [ ]  `rimuovi`
+
+## Ordine indossamento opzionale
+
+Introduci un nuovo attributo booleano che possa attivare/disattivare l'indossamento in ordine stratificato del vestiario. Quando è disabilitato, la libreria si limiterà a controllare che due indumenti non vadano a occupare il medesimo strato/zona, ma non imporrà l'ordine di indossamento.
+
+- [ ]  `indossa`
+- [ ]  `rimuovi`
+
+
+> __NOTA__ — L'opzione può essere modificata anche in corso di gioco? O dovrei provare a sfruttare INITIALIZE per aggiungere una sola versione del codice sui verbi? (da testare)
+
+## EGA
+
+Data l'importanza dell'avventura Emporio Alani sia per testare il vestiario sia in quanto dimostrazione del suo uso, annoterò qui le varie cose da fare per migliorarla.
+
+- [ ] Sposta file doxter per EGA in `docs_src/`.
+- [ ] Riorganizza sorgente:
+    * [ ] Raggruppa indumenti
+    * [ ] Raggruppa attori
+- [x] Aggiungi vestiario:
+    * [x] bikini
+    * [x] gonna
+    * [x] cappotto
+
+### EGA Demo
+
+Quando sarà stata ben ripulita, EGA può diventare una demo a tutti gli effetti, e potrei spostarla in `demo/` e al contempo continuare a usarla per i test tramite `IMPORT`.
+
+- [ ] Sposta in `demo/` (senza modulo Debaca).
+- [ ] In `test/vestiario/` ricrea `ega.alan` e usa `IMPORT` per includere l'avventura da `demo/`, e includi anche il modulo Debaca.
+
+### Modulo Debaca
+
+Annoterò qui anche gli aspetti riguardanti il vestiario del modulo Debaca.
+
+- [x] Mostra valori `strato_viso`.
+- [x] Mostra valori `blocca_gambe`.
+- [x] Mostra valori `due_pezzi`.
+- [ ] Con `DEBACA` mostra `indossato` anche se non è `indumento`.
+- [ ] Mostra DBG infor in `STYLE PREFORMATTED`.
+
+
+
 -------------------------------------------------------------------------------
 
 # Criteri maneggiamento indumenti indossati
@@ -446,9 +527,57 @@ THE scarpe_eroe IsA indumento IN hero.
 
 Il nuovo sistema si limita a verificare che gli indumenti con valori di copertura non-zero vengano indossati e rimossi nell'ordine corretto, ma non gestisce più i casi speciali come i cappotti e le gonne. La codifica dei casi speciali nella libreria limitava la libertà d'uso degli strati imponendo un modello arbitrario e restrittivo. Ora starà agli autori implementare la gestione di casi speciali, se ne avessero la necessità.
 
+### Rinomina attributi zone del corpo
+
+Rinominati tutti gli attributi di `indumento` per la mappatura delle
+zone del corpo, da `val_*` in `strato_*`:
+
+|  Vecchio ID  |     Nuovo ID    |
+|--------------|-----------------|
+| `val_testa`  | `strato_testa`  |
+| `val_viso`   | `strato_viso`   |
+| `val_tronco` | `strato_tronco` |
+| `val_gambe`  | `strato_gambe`  |
+| `val_piedi`  | `strato_piedi`  |
+| `val_mani`   | `strato_mani`   |
+
+Questo sistema è più intuitivo e naturale da usare dato che i valori indicano lo strato di ciascuna zona del corpo che l'indumento andrà a coprire.
+
 ### Stratificazione non esponenziale
 
 Il nuovo sistema non impone più una numerazione esponenziale per gli strati del vestiario (2, 4, 8, ..., 64) ma adotta ora una numerazione libera (1, 2, 3, ...) che l'autore potrà utilizzare come rietiene più opportuno. Il nuovo sistema è più intuitivo e facile da gestire, e comunque funzionerebbe anche con indumenti creati per il sistema precedente, dato che si limita a verificare se i valori sono uguali o superiori tra loro.
+
+
+### Nuova zona corpo per il viso
+
+È stato aggiunto un nuovo attributo di mappatura del corpo, `strato_viso`, grazie al quale sarà possibile distinguere tra cappelli (`strato_testa`) e indossabili facciali quali occhiali, barbe finte, maschere, ecc.
+
+
+### Nuovi attributi per indumenti speciali
+
+Il nuovo sistema consente di gestire indumenti speciali come gonne e cappotti ma, a differenza della libreria originale, non alloca degli strati predefiniti per tali indumenti, ma espone degli attributi extra su `indumento` che l'autore può utilizzare a sua discrezione:
+
+
+```alan
+EVERY indumento IsA OBJECT
+  ...
+  IS  blocca_gambe. NOT due_pezzi.
+```
+
+I valori di default fanno sì che durante l'esecuzione dei verbi `indossa` e `rimuovi`, qualsiasi indumento con un valore di strato superiore a quello maneggiato impediscono l'azione. Questo è il comportamento di base che ci si aspetterebbe per tutti gli indumenti normali.
+
+Se l'Eroe sta indossando dei pantaloni con un valore `strato_gambe = 10` (tanto per fare un esempio) e cercherà di indossare o rimuovere delle mutande con `strato_gambe = 1`, l'azione verrà bloccata.
+
+Nel caso di una gonna, sarebbe possibile indossare degli slip o una calzamaglia senza doversela togliere. In questo caso, è sufficiente dichiarare sulla gonna l'attributo `IS NOT blocca_gambe` e la libreria saprà di non doverla considerare un impedimento a indossare/rimuovere indumenti per le gambe su strati inferiori.
+
+Ma nel caso di un costume da bagno intero, che avrebbe un valore di copertura `strato_tronco <> 0`, la libreria bloccherà l'azione poiché l'attributo `IS NOT blocca_gambe` non è applicabile ad azioni che coinvolgono un indumento che copre sia le gambe che il torso in un pezzo unico.
+
+Se per esempio volessimo implementare un bikini, il quale è sì un indumento che copre sia le gambe che il torso, ma non è composto da un pezzo unico, allora sarà necessario definire sul bikini l'attributo `IS due_pezzi`. In questo caso, quando l'Eroe indossa una gonna (`IS NOT blocca_gambe`) e cerca di indossare o rimuovere un indumento che ha valori non zero sia per `strato_gambe` che `strato_tronco`, la libreria controllerà se l'indumento maneggiato è un pezzo unico o no (tramite `IS due_pezzi`) prima di bloccare l'azione.
+
+Gli stessi principi possono essere applicati ad un abito (che equivale ad una camicia + gonna in un pezzo unico) o ad un cappotto; e in questi casi a prevenire l'azione su indumenti che coprono il torso saranno i normali controlli sugli attributi `strato_tronco` (e non quelli per `strato_gambe`).
+
+Questo sistema reintroduce le funzionalità originali per il realismo del vestiario, ma in una maniera molto più flessibile, controllabile e, soprattutto, completamente opzionale.
+
 
 ### Messaggi di fallimento indossa/rimuovi
 
@@ -517,6 +646,8 @@ La ragione qui è che inserendo dei CHECK su `indumento` che lo impedivano avreb
 <!-- Test Sviluppo -->
 
 [DEV.bat]: ../test/vestiario/DEV.bat "Vedi sorgente"
+[DEV_blocca_gambe log]: ../test/vestiario/DEV_blocca_gambe.a3log "Vedi sorgente"
+[DEV_blocca_gambe sol]: ../test/vestiario/DEV_blocca_gambe.a3sol "Vedi sorgente"
 [DEV_indossa log]: ../test/vestiario/DEV_indossa.a3log "Vedi sorgente"
 [DEV_indossa sol]: ../test/vestiario/DEV_indossa.a3sol "Vedi sorgente"
 [DEV_init log]: ../test/vestiario/DEV_init.a3log "Vedi sorgente"

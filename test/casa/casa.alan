@@ -1,4 +1,4 @@
--- Alan >= 3.0beta6 build 1866 | Alan Italian >= v0.15.0-Alpha
+-- Alan >= 3.0beta6 build 1870 | Alan Italian >= v0.16.0-Alpha
 --==============================================================================
 -- "La Casa" by Tristano Ajmone, 2018.
 --==============================================================================
@@ -15,7 +15,7 @@ THE mia_AT IsA blocco_definizioni
   HAS       autore  "Tristano Ajmone".
   HAS         anno   2018.
   HAS     versione  "1".
-  HAS        AlanV  "v3.0beta6 build 1866".
+  HAS        AlanV  "v3.0beta6 build 1870".
   ------------------------------------------------------------------------------
 END THE.
 
@@ -289,10 +289,9 @@ END THE torcia.
 --==============================================================================
 -- Abbigliamento Iniziale del Protagonista
 --==============================================================================
--- >>> dev-vestario: tweaked
 
 THE hero IsA ACTOR.
-  -- HAS indossati { bombetta, jeans }.
+  --
 END THE hero.
 
 THE bombetta IsA ind_cappello IN hero.
@@ -357,25 +356,25 @@ END EVERY porta_casa.
 
 -- Gli indumenti devono rispettare i valori della Tabella del Vestiario:
 
---+--------------------------+------------+-----------+-----------+----------+
---| Indumento    | val_testa | val_tronco | val_gambe | val_piedi | val_mani |
---+--------------------------+------------+-----------+-----------+----------+
---| cappello               2 |          0 |         0 |         0 |        0 |
---| canottiera/reggiseno   0 |          2 |         0 |         0 |        0 |
---| undies/panties         0 |          0 |         2 |         0 |        0 |
---| teddy                  0 |          4 |         4 |         0 |        0 |
---| blouse/shirt/T-shirt   0 |          8 |         0 |         0 |        0 |
---| dress/coveralls        0 |          8 |        32 |         0 |        0 |
---| gonna                  0 |          0 |        32 |         0 |        0 |
---| pantaloni/shorts       0 |          0 |        16 |         0 |        0 |
---| sweater/pullover       0 |         16 |         0 |         0 |        0 |
---| giacca                 0 |         32 |         0 |         0 |        0 |
---| cappotto               0 |         64 |        64 |         0 |        0 |
---| socks/stockings        0 |          0 |         0 |         2 |        0 |
---| tights/pantiehose      0 |          0 |         8 |         2 |        0 |
---| scarpe/stivali         0 |          0 |         0 |         4 |        0 |
---| guanti                 0 |          0 |         0 |         0 |        2 |
---+--------------------------+------------+-----------+-----------+----------+
+--+--------------------------+------+--------+-------+-------+------+
+--| Indumento        | testa | viso | tronco | gambe | piedi | mani |
+--+--------------------------+------+--------+-------+-------+------+
+--| cappello               2 |    0 |      0 |     0 |     0 |    0 |
+--| canottiera/reggiseno   0 |    0 |      2 |     0 |     0 |    0 |
+--| undies/panties         0 |    0 |      0 |     2 |     0 |    0 |
+--| teddy                  0 |    0 |      4 |     4 |     0 |    0 |
+--| blouse/shirt/T-shirt   0 |    0 |      8 |     0 |     0 |    0 |
+--| dress/coveralls        0 |    0 |      8 |    32 |     0 |    0 |
+--| gonna                  0 |    0 |      0 |    32 |     0 |    0 |
+--| pantaloni/shorts       0 |    0 |      0 |    16 |     0 |    0 |
+--| sweater/pullover       0 |    0 |     16 |     0 |     0 |    0 |
+--| giacca                 0 |    0 |     32 |     0 |     0 |    0 |
+--| cappotto               0 |    0 |     64 |    64 |     0 |    0 |
+--| socks/stockings        0 |    0 |      0 |     0 |     2 |    0 |
+--| tights/pantiehose      0 |    0 |      0 |     8 |     2 |    0 |
+--| scarpe/stivali         0 |    0 |      0 |     0 |     4 |    0 |
+--| guanti                 0 |    0 |      0 |     0 |     0 |    2 |
+--+--------------------------+------+--------+-------+-------+------+
 
 -- Inoltre, gli indumenti possono essere associati a un `genere` specifico, dove
 -- un valore `0` indica un genere neutro (unisex), e qualsiasi altro valore
@@ -391,7 +390,7 @@ END EVERY porta_casa.
 --==============================================================================
 EVERY ind_cappello IsA indumento.
   NAME cappello.
-  HAS val_testa 2.
+  HAS strato_testa 2.
 END EVERY.
 --==============================================================================
 -- Biancheria
@@ -399,24 +398,24 @@ END EVERY.
 EVERY ind_canottiera IsA indumento.
   NAME canottiera.
   HAS articolo "la".
-  HAS val_tronco 2.
+  HAS strato_tronco 2.
 END EVERY.
 
 EVERY ind_mutande IsA indumento.
   NAME mutande.
   HAS articolo "le".
-  HAS val_gambe 2.
+  HAS strato_gambe 2.
 END EVERY.
 
 EVERY ind_calze IsA indumento.
   NAME calze.
   HAS articolo "le".
-  HAS val_piedi 2.
+  HAS strato_piedi 2.
 END EVERY.
 
 EVERY ind_reggiseno IsA indumento.
   NAME reggiseno.
-  HAS val_tronco 2.
+  HAS strato_tronco 2.
   HAS genere 2.
 END EVERY.
 
@@ -426,26 +425,26 @@ END EVERY.
 EVERY ind_pantaloni IsA indumento.
   NAME pantaloni.
   HAS articolo "i".
-  HAS val_gambe 16.
+  HAS strato_gambe 16.
 END EVERY.
 
 EVERY ind_camicia IsA indumento.
   NAME camicia.
   HAS articolo "la".
-  HAS val_tronco 8.
+  HAS strato_tronco 8.
 END EVERY.
 
 EVERY ind_maglione IsA indumento.
   NAME maglione.
-  HAS val_tronco 16.
+  HAS strato_tronco 16.
 END EVERY.
 
 
-  -- HAS val_testa  0.
-  -- HAS val_tronco 0.
-  -- HAS val_gambe  0.
-  -- HAS val_piedi  0.
-  -- HAS val_mani   0.
+  -- HAS strato_testa  0.
+  -- HAS strato_tronco 0.
+  -- HAS strato_gambe  0.
+  -- HAS strato_piedi  0.
+  -- HAS strato_mani   0.
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------

@@ -3,7 +3,7 @@
 Emporio Giorgio Alani 
 Un set per testare il vestiario. 
 (C) Tristano Ajmone, 2019. 
-Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1866. 
+Avventura realizzata con ALAN Interactive Fiction Language v3.0beta6 build 1870. 
 Libreria Standard Italiana v2.1 
 Versione 1 
 Tutti i diritti riservati. 
@@ -67,7 +67,7 @@ canottiera, le tue sneakers e i tuoi pantaloni.
 Sono solo un paio di boxer bianchi, mutande comode da indossare.
 
 > DBG_IND i boxer
-'boxer' VALORI: | val_gambe: 2 | 
+'boxer' VALORI: | strato_gambe: 2 | 
 È INDOSSATO: Sì (dal hero)
 
 > ; //// 'METTI IN' (INDOSSATO) -> AZIONE BLOCCATA (OK!) ////
@@ -75,7 +75,7 @@ Sono solo un paio di boxer bianchi, mutande comode da indossare.
 Prima dovresti toglierti i tuoi boxer.
 
 > DBG_IND i boxer
-'boxer' VALORI: | val_gambe: 2 | 
+'boxer' VALORI: | strato_gambe: 2 | 
 È INDOSSATO: Sì (dal hero)
 
 > esamina il cesto
@@ -84,9 +84,9 @@ Il cesto è vuoto.
 > ovest
 Reparto Abbigliamento Sportivo
 Attorno a te vedi abbigliamento e attrezzatura per più sport di quanti tu
-conosca. Puoi vedere un passamontagna, un paio di occhiali da sci, un orologio, 
-una sciarpa bianca, una sciarpa blu e una sciarpa nera qui. L'assistente ti
-raggiunge di corsa dall'atrio.
+conosca. Puoi vedere un passamontagna, un paio di occhiali da sci, un costume
+intero, un bikini, un orologio, una sciarpa bianca, una sciarpa blu e una 
+sciarpa nera qui. L'assistente ti raggiunge di corsa dall'atrio.
 
 > ; ==============================================================================
 > ; TESTA: DA PNG A EROE
@@ -98,7 +98,7 @@ raggiunge di corsa dall'atrio.
 abito e un paio di stivaletti.
 
 > DBG_IND gli stivaletti
-'stivaletti' VALORI: | val_piedi: 4 | 
+'stivaletti' VALORI: | strato_piedi: 4 | 
 È INDOSSATO: Sì (dall'assistente)
 
 > prendi gli stivaletti
@@ -115,7 +115,7 @@ boxer, la tua canottiera, le tue sneakers e i tuoi pantaloni.
 
 > ; //// VERIFICA 'NOT indossato' (OK!): ////
 > DBG_IND gli stivaletti
-'stivaletti' VALORI: | val_piedi: 4 | 
+'stivaletti' VALORI: | strato_piedi: 4 | 
 È INDOSSATO: No
 
 > ; //// INDOSSA NO -> BLOCCANTI: 'sneakers' (OK!): ////

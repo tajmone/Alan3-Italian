@@ -1,4 +1,4 @@
--- Alan >= 3.0beta6 build 1866 | Alan Italian >= v0.15.0-Alpha
+-- Alan >= 3.0beta6 build 1870 | Alan Italian >= v0.16.0-Alpha
 --==============================================================================
 -- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -173,17 +173,27 @@ ADD TO EVERY thing
           IF ogg IsA indumento
             THEN "> indumento"
               SAY mia_AT:dbgsep. --------------( separatore )--------------
-              "$n| val_testa:$t"  SAY ogg:val_testa.
-              "$n| val_tronco:$t" SAY ogg:val_tronco.
-              "$n| val_gambe:$t"  SAY ogg:val_gambe.
-              "$n| val_piedi:$t"  SAY ogg:val_piedi.
-              "$n| val_mani:$t$t" SAY ogg:val_mani.
+              "$n| strato_testa:"  SAY ogg:strato_testa.
+              "$n| strato_viso:"   SAY ogg:strato_viso.
+              "$n| strato_tronco:" SAY ogg:strato_tronco.
+              "$n| strato_gambe:"  SAY ogg:strato_gambe.
+              "$n| strato_piedi:"  SAY ogg:strato_piedi.
+              "$n| strato_mani:"   SAY ogg:strato_mani.
+              "$n| IS blocca_gambe:"
+              IF ogg IS blocca_gambe
+                THEN "Sì"
+                ELSE "No"
+              END IF.
+              "$n| IS due_pezzi:"
+              IF ogg IS due_pezzi
+                THEN "Sì"
+                ELSE "No"
+              END IF.
               SAY mia_AT:dbgsep. --------------( separatore )--------------
               "$n| GENERE INDUMENTO: " SAY ogg:genere.
               "$n| INDOSSATO:"
               IF ogg IS indossato
                 THEN "Sì"
--- >>> dev-vestario: tweaked
                   IF THIS IN hero
                     THEN "(da hero)"
                   END IF.
@@ -551,25 +561,34 @@ ADD TO EVERY indumento
   VERB dbg_ind
     DOES
       "'$1' VALORI:"
-      IF  ind:val_testa = 0 AND ind:val_tronco = 0 AND ind:val_gambe = 0
-      AND ind:val_piedi = 0 AND ind:val_mani = 0
+      IF  ind:strato_testa = 0 AND ind:strato_tronco = 0 AND ind:strato_gambe = 0
+      AND ind:strato_piedi = 0 AND ind:strato_mani = 0
         THEN
           "(nessuno)"
         ELSE
-          IF ind:val_testa > 0
-            THEN "| val_testa:" SAY ind:val_testa.
+          IF ind:strato_testa > 0
+            THEN "| strato_testa:" SAY ind:strato_testa.
           END IF.
-          IF ind:val_tronco > 0
-            THEN "| val_tronco:" SAY ind:val_tronco.
+          IF ind:strato_viso > 0
+            THEN "| strato_viso:" SAY ind:strato_viso.
           END IF.
-          IF ind:val_gambe > 0
-            THEN "| val_gambe:" SAY ind:val_gambe.
+          IF ind:strato_tronco > 0
+            THEN "| strato_tronco:" SAY ind:strato_tronco.
           END IF.
-          IF ind:val_piedi > 0
-            THEN "| val_piedi:" SAY ind:val_piedi.
+          IF ind:strato_gambe > 0
+            THEN "| strato_gambe:" SAY ind:strato_gambe.
           END IF.
-          IF ind:val_mani > 0
-            THEN "| val_mani:" SAY ind:val_mani.
+          IF ind:strato_piedi > 0
+            THEN "| strato_piedi:" SAY ind:strato_piedi.
+          END IF.
+          IF ind:strato_mani > 0
+            THEN "| strato_mani:" SAY ind:strato_mani.
+          END IF.
+          IF ind IS NOT blocca_gambe
+            THEN "| IS NOT blocca_gambe"
+          END IF.
+          IF ind IS due_pezzi
+            THEN "| IS due_pezzi"
           END IF.
           "|"
       END IF.
