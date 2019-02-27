@@ -1,7 +1,7 @@
 # Alan Italian
 
     Alan Standard Library: 2.1
-    Alan Development Kit:  3.0beta6 build 1870
+    Alan Development Kit:  3.0beta6 build 1878
 
 - https://github.com/tajmone/Alan3-Italian
 
@@ -39,6 +39,7 @@ Data inizio progetto: 2018/04/13.
 - [Stato del progetto](#stato-del-progetto)
 - [Sostieni il progetto](#sostieni-il-progetto)
 - [Ultime novità](#ultime-novit%C3%A0)
+    - [2019/02/27: Passaggio a Alan 3.0beta6 build 1878](#20190227-passaggio-a-alan-30beta6-build-1878)
     - [2019/02/21: Passaggio a Alan 3.0beta6 build 1870](#20190221-passaggio-a-alan-30beta6-build-1870)
     - [2019/02/19: Riscritto il codice per il vestiario](#20190219-riscritto-il-codice-per-il-vestiario)
     - [2019/02/07: Inizio lavori per il "Ricettario di Alan"](#20190207-inizio-lavori-per-il-ricettario-di-alan)
@@ -216,6 +217,10 @@ Grazie.
 
 Alcune notizie flash sugli aggiornamenti importanti del progetto...
 
+
+## 2019/02/27: Passaggio a Alan 3.0beta6 build 1878
+
+La libreria adotta la nuova [developer snaphshot] di Alan [3.0beta6 build 1878].
 
 ## 2019/02/21: Passaggio a Alan 3.0beta6 build 1870
 
@@ -519,6 +524,7 @@ Alan Standard Library:
 [3.0beta6 build 1862]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1862 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1862"
 [3.0beta6 build 1866]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1866 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1866"
 [3.0beta6 build 1870]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1870 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1870"
+[3.0beta6 build 1878]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1878 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1878"
 
 
 <!-- Alan Commits Links -->

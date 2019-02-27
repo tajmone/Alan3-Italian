@@ -1,4 +1,4 @@
--- Alan >= 3.0beta6 build 1870 | Alan Italian >= v0.16.0-Alpha
+-- Alan >= 3.0beta6 build 1878 | Alan Italian >= v0.17.0-Alpha
 --+============================================================================+
 --| * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  |
 --|  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * |
@@ -20,7 +20,7 @@ The mia_AT IsA blocco_definizioni
          autore  "Tristano Ajmone".
            anno   2019.
        versione  "1".
-          AlanV  "v3.0beta6 build 1870".
+          AlanV  "v3.0beta6 build 1878".
 End the. -----------------------------------------------------------------------
 
 

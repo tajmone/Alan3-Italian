@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.16.0-Alpha, 2019-02-21: Alan 3.0beta6 build 1870
+--| v0.17.0-Alpha, 2019-02-27: Alan 3.0beta6 build 1878
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -5125,9 +5125,6 @@ ADD TO EVERY OBJECT
   VERB lascia
     CHECK mia_AT CAN lasciare
       ELSE SAY mia_AT:azione_bloccata.
--- >>> dev-vestario: added! VERB lascia >>>
-    AND ogg IS NOT indossato
-      ELSE SAY mia_AT:indumento_andrebbe_rimosso.
 -- >>> dev-vestario: tweaked! VERB lascia >>>
     AND ogg IN hero
       ELSE SAY mia_AT:non_possiedi_ogg1.
@@ -5139,6 +5136,9 @@ ADD TO EVERY OBJECT
     --       ELSE SAY mia_AT:non_possiedi_ogg1.
     --     END IF.
 -- <<< codice originale <<<
+-- >>> dev-vestario: added! VERB lascia >>>
+    AND ogg IS NOT indossato
+      ELSE SAY mia_AT:indumento_andrebbe_rimosso.
 
     DOES
       LOCATE ogg HERE.
