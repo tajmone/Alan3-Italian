@@ -223,7 +223,7 @@ Alcune notizie flash sugli aggiornamenti importanti del progetto...
 
 ## 2019/02/28: Adozione di Highlight per la documentazione
 
-<img src="https://assets.gitlab-static.net/uploads/-/system/project/avatar/6678916/highlight_256.png" style="float: left; width: 192px; padding: 0 20px 10px 0" alt="Highlight logo" title="Logo di Highlight, il coloratore di sintassi di André Simon">
+<img src="https://assets.gitlab-static.net/uploads/-/system/project/avatar/6678916/highlight_256.png" align="left" width=192 alt="Highlight logo" title="Logo di Highlight, il coloratore di sintassi di André Simon">
 
 D'ora in poi il progetto utilizzerà lo strumento [Highlight] di [André Simon] (anziché [highlight.js]) per la colorazione sintattica del codice nella documentazione del progetto.
 
