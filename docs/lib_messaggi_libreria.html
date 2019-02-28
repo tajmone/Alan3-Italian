@@ -431,6 +431,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./css/styles.css">
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -597,9 +598,10 @@ I messaggi sono definiti tramite attributi stringa sulla classe
 <code>blocco_definizioni</code> (della quale è presente in ogni avventura l&#8217;istanza
 <code>mia_AT</code>):</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">ADD TO EVERY blocco_definizioni</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">ADD TO EVERY</span> blocco_definizioni</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -738,10 +740,11 @@ alcuni messaggi riguardanti l&#8217;eroe.</p>
 <p>Due di essi sono i messaggi impiegati nello <code>HEADER</code> dell&#8217;entità <code>abbigliamento</code>
 (definita in <code>lib_classi.i</code>):</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS header_abbigliamento       "stai indossando".
-  HAS header_abbigliamento_else  "non stai indossando niente.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl kwa">HAS</span> header_abbigliamento       <span class="hl str">&quot;stai indossando&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> header_abbigliamento_else  <span class="hl str">&quot;non stai indossando niente.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="admonitionblock warning">
@@ -762,12 +765,13 @@ questo modulo, in attesa di essere riordinati.</p>
 <div class="paragraph">
 <p>Il giocatore non possiede un oggetto richiesto per l&#8217;azione:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: svuota_in, versa_in, metti_in, lancia_in
-  -- ORIGINAL EN:  check_obj_in_hero  +  check_obj2_in_hero
-  HAS non_possiedi_ogg1 "Non possiedi $+1.".
-  HAS non_possiedi_ogg2 "Non possiedi $+2.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: svuota_in, versa_in, metti_in, lancia_in</span>
+  <span class="hl slc">-- ORIGINAL EN:  check_obj_in_hero  +  check_obj2_in_hero</span>
+  <span class="hl kwa">HAS</span> non_possiedi_ogg1 <span class="hl str">&quot;Non possiedi</span> <span class="hl ipl">$+1</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> non_possiedi_ogg2 <span class="hl str">&quot;Non possiedi</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="sect2">
@@ -778,54 +782,57 @@ questo modulo, in attesa di essere riordinati.</p>
 <div class="paragraph">
 <p>L&#8217;eroe è seduto:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: balla, nuota, salta, salta_in, salta_su.
-  -- ORIGINAL EN:  check_hero_not_sitting1
-  HAS impossibile_da_seduto "Non puoi farlo da seduto.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: balla, nuota, salta, salta_in, salta_su.</span>
+  <span class="hl slc">-- ORIGINAL EN:  check_hero_not_sitting1</span>
+  <span class="hl kwa">HAS</span> impossibile_da_seduto <span class="hl str">&quot;Non puoi farlo da seduto.&quot;</span><span class="hl kwa">.</span>
 
 
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_hero_not_sitting2 "It is difficult to $v anything while sitting down.". -- (with many transitive verbs)
-  HAS check_hero_not_sitting3 "It is difficult to $v anywhere while sitting down.". -- (with many verbs of motion)</code></pre>
+  <span class="hl slc">-- &#64;TODO: *** UNTRANSLATED MESSAGES: ***</span>
+  <span class="hl kwa">HAS</span> check_hero_not_sitting2 <span class="hl str">&quot;It is difficult to</span> <span class="hl esc">$v</span> <span class="hl str">anything while sitting down.&quot;</span><span class="hl kwa">.</span> <span class="hl slc">-- (with many transitive verbs)</span>
+  <span class="hl kwa">HAS</span> check_hero_not_sitting3 <span class="hl str">&quot;It is difficult to</span> <span class="hl esc">$v</span> <span class="hl str">anywhere while sitting down.&quot;</span><span class="hl kwa">.</span> <span class="hl slc">-- (with many verbs of motion)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>L&#8217;eroe è sdraiato:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: balla, salta, salta_in, salta_su | swim.
-  -- ORIGINAL EN:  check_hero_not_lying_down1
-  HAS impossibile_da_sdraiato "Non puoi farlo da sdraiato.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: balla, salta, salta_in, salta_su | swim.</span>
+  <span class="hl slc">-- ORIGINAL EN:  check_hero_not_lying_down1</span>
+  <span class="hl kwa">HAS</span> impossibile_da_sdraiato <span class="hl str">&quot;Non puoi farlo da sdraiato.&quot;</span><span class="hl kwa">.</span>
 
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_hero_not_lying_down2 "It is difficult to $v anything while lying down.".  -- (with many transitive verbs)
-  HAS check_hero_not_lying_down3 "It is difficult to $v anywhere while lying down.".  -- (with many verbs of motion)</code></pre>
+  <span class="hl slc">-- &#64;TODO: *** UNTRANSLATED MESSAGES: ***</span>
+  <span class="hl kwa">HAS</span> check_hero_not_lying_down2 <span class="hl str">&quot;It is difficult to</span> <span class="hl esc">$v</span> <span class="hl str">anything while lying down.&quot;</span><span class="hl kwa">.</span>  <span class="hl slc">-- (with many transitive verbs)</span>
+  <span class="hl kwa">HAS</span> check_hero_not_lying_down3 <span class="hl str">&quot;It is difficult to</span> <span class="hl esc">$v</span> <span class="hl str">anywhere while lying down.&quot;</span><span class="hl kwa">.</span>  <span class="hl slc">-- (with many verbs of motion)</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_azioni_su_se_stessi"><a class="anchor" href="#_azioni_su_se_stessi"></a>Azioni su se stessi</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: spara_a, spara_a_errore.
-  -- ORIGINAL EN: check_obj_not_hero2.
-  HAS no_autolesionismo  "L'autolesionismo non è contemplato.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: spara_a, spara_a_errore.</span>
+  <span class="hl slc">-- ORIGINAL EN: check_obj_not_hero2.</span>
+  <span class="hl kwa">HAS</span> no_autolesionismo  <span class="hl str">&quot;L&apos;autolesionismo non è contemplato.&quot;</span><span class="hl kwa">.</span>
 
-  -- VERBI: uccidi, uccidi_con.
-  -- ORIGINAL EN: check_obj_not_hero2.
-  HAS no_suicidio  "Il suicidio non è un'opzione.".
+  <span class="hl slc">-- VERBI: uccidi, uccidi_con.</span>
+  <span class="hl slc">-- ORIGINAL EN: check_obj_not_hero2.</span>
+  <span class="hl kwa">HAS</span> no_suicidio  <span class="hl str">&quot;Il suicidio non è un&apos;opzione.&quot;</span><span class="hl kwa">.</span>
 
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  <span class="hl slc">-- &#64;TODO: *** UNTRANSLATED MESSAGES: ***</span>
 
-  -- d) checks guarding against actions directed at the hero him-/herself
-  -----------------------------------------------------------------------
+  <span class="hl slc">-- d) checks guarding against actions directed at the hero him-/herself</span>
+  <span class="hl slc">-----------------------------------------------------------------------</span>
 
-  HAS check_obj_not_hero5  "You don't need to be freed.".                       -- free
-  HAS check_obj_not_hero7  "Turning your head, you notice nothing unusual behind yourself.".   -- look_behind
-  HAS check_obj_not_hero8  "You notice nothing unusual under yourself.".        -- look_under
-  HAS check_obj2_not_hero3 "You can't $v things to yourself.".                  -- give, tie_to</code></pre>
+  <span class="hl kwa">HAS</span> check_obj_not_hero5  <span class="hl str">&quot;You don&apos;t need to be freed.&quot;</span><span class="hl kwa">.</span>                       <span class="hl slc">-- free</span>
+  <span class="hl kwa">HAS</span> check_obj_not_hero7  <span class="hl str">&quot;Turning your head, you notice nothing unusual behind yourself.&quot;</span><span class="hl kwa">.</span>   <span class="hl slc">-- look_behind</span>
+  <span class="hl kwa">HAS</span> check_obj_not_hero8  <span class="hl str">&quot;You notice nothing unusual under yourself.&quot;</span><span class="hl kwa">.</span>        <span class="hl slc">-- look_under</span>
+  <span class="hl kwa">HAS</span> check_obj2_not_hero3 <span class="hl str">&quot;You can&apos;t</span> <span class="hl esc">$v</span> <span class="hl str">things to yourself.&quot;</span><span class="hl kwa">.</span>                  <span class="hl slc">-- give, tie_to</span></code></pre>
 </div>
 </div>
 </div>
@@ -838,20 +845,22 @@ questo modulo, in attesa di essere riordinati.</p>
 <p>Questo messaggio viene mostrato quando il giocatore tenta di usare in un
 luogo buio il comando GUARDA, o altre azioni che richiedono illuminazione:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- @TODO: *** UNTRANSLATED ATTRIBUTE: ***
-  HAS dark_loc_desc  "È buio e non riesci a vedere nulla".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- &#64;TODO: *** UNTRANSLATED ATTRIBUTE: ***</span>
+  <span class="hl kwa">HAS</span> dark_loc_desc  <span class="hl str">&quot;È buio e non riesci a vedere nulla&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Questo messaggio viene mostrato quando l&#8217;illuminazione viene a mancare ed il
 luogo diventa buio:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS light_goes_off  "It is now pitch black.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- &#64;TODO: *** UNTRANSLATED MESSAGES: ***</span>
+  <span class="hl kwa">HAS</span> light_goes_off  <span class="hl str">&quot;It is now pitch black.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -864,9 +873,10 @@ luogo diventa buio:</p>
 che è stato disabilitato tramite <code>CAN NOT &lt;verbp&gt;</code>  manualmente o tramite
 l&#8217;attributo <code>mia_AT:restricted_level</code>.</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS azione_bloccata  "Non puoi farlo.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl kwa">HAS</span> azione_bloccata  <span class="hl str">&quot;Non puoi farlo.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -884,35 +894,37 @@ perciò sono implementate come un singolo attributo riutilizzabile.</p>
 <div class="paragraph">
 <p>Risposte alla vaniglia prodotte da vari verbi.</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: assaggia, mordi.
-  HAS nessun_sapore "non senti nessun sapore particolare.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: assaggia, mordi.</span>
+  <span class="hl kwa">HAS</span> nessun_sapore <span class="hl str">&quot;non senti nessun sapore particolare.&quot;</span><span class="hl kwa">.</span>
 
-  HAS descrizione_standard_ogg1 "Esamini $+1, ma non noti niente di speciale.".</code></pre>
+  <span class="hl kwa">HAS</span> descrizione_standard_ogg1 <span class="hl str">&quot;Esamini</span> <span class="hl ipl">$+1</span><span class="hl str">, ma non noti niente di speciale.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_istruzioni_per_luso_dei_comandi"><a class="anchor" href="#_istruzioni_per_luso_dei_comandi"></a>Istruzioni per l&#8217;uso dei comandi</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: chiedi_errore.
-  HAS per_chiedere_qlco_USA
-    "Per chiedere qualcosa a qualcuno usa CHIEDI A PERSONA OGGETTO.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: chiedi_errore.</span>
+  <span class="hl kwa">HAS</span> per_chiedere_qlco_USA
+    <span class="hl str">&quot;Per chiedere qualcosa a qualcuno usa CHIEDI A PERSONA OGGETTO.&quot;</span><span class="hl kwa">.</span>
 
-  -- VERBI: parla_con.
-  HAS per_parlare_con_USA
-    "Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure
-     RACCONTA A PERSONA DI ARGOMENTO.".
+  <span class="hl slc">-- VERBI: parla_con.</span>
+  <span class="hl kwa">HAS</span> per_parlare_con_USA
+    <span class="hl str">&quot;Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure</span>
+<span class="hl str">     RACCONTA A PERSONA DI ARGOMENTO.&quot;</span><span class="hl kwa">.</span>
 
-  -- VERBI: scrivi_errore1, scrivi_errore2, scrivi_errore3.
-  HAS per_scrivere_USA
-    "Per scrivere su qualcosa, usa SCRIVI ""TESTO"" SU (IN) OGGETTO.".
+  <span class="hl slc">-- VERBI: scrivi_errore1, scrivi_errore2, scrivi_errore3.</span>
+  <span class="hl kwa">HAS</span> per_scrivere_USA
+    <span class="hl str">&quot;Per scrivere su qualcosa, usa SCRIVI &quot;</span><span class="hl str">&quot;TESTO&quot;</span><span class="hl str">&quot; SU (IN) OGGETTO.&quot;</span><span class="hl kwa">.</span>
 
-  -- VERBI: .
-  HAS per_consultare_qlco_USA
-    "Per consultare qualcosa usa CONSULTA FONTE RIGUARDO PERSONA/COSA.".</code></pre>
+  <span class="hl slc">-- VERBI: .</span>
+  <span class="hl kwa">HAS</span> per_consultare_qlco_USA
+    <span class="hl str">&quot;Per consultare qualcosa usa CONSULTA FONTE RIGUARDO PERSONA/COSA.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -921,17 +933,18 @@ perciò sono implementate come un singolo attributo riutilizzabile.</p>
 <div class="sect1">
 <h2 id="_notifiche_punteggio"><a class="anchor" href="#_notifiche_punteggio"></a>Notifiche punteggio</h2>
 <div class="sectionbody">
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: notifica, notifica_off, notifica_on.
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: notifica, notifica_off, notifica_on.</span>
 
-  HAS notifica_attivata
-    "Notifica del punteggio attivata.
-     $n(Per disattivarla usa il comando NOTIFICA)".
+  <span class="hl kwa">HAS</span> notifica_attivata
+    <span class="hl str">&quot;Notifica del punteggio attivata.</span>
+<span class="hl str"></span>     <span class="hl esc">$n</span><span class="hl str">(Per disattivarla usa il comando NOTIFICA)&quot;</span><span class="hl kwa">.</span>
 
-  HAS notifica_disattivata
-    "Notifica del punteggio disattivata.
-     $n(Per riattivarla usa il comando NOTIFICA)".</code></pre>
+  <span class="hl kwa">HAS</span> notifica_disattivata
+    <span class="hl str">&quot;Notifica del punteggio disattivata.</span>
+<span class="hl str"></span>     <span class="hl esc">$n</span><span class="hl str">(Per riattivarla usa il comando NOTIFICA)&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -951,12 +964,13 @@ per eseguire comandi come "metti &lt;ogg&gt; in &lt;contenitore&gt;").</p>
 preso implicitamente. Per esempio, &#8220;spingi la porta con il palo&#8221; non verrà
 eseguito se l&#8217;eroe non possiede il palo.</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: dai_a, lega_a, mangia, prendi, | bite, 'empty', empty_in, empty_on, put_on, throw, throw_at, throw_to, throw_in
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: dai_a, lega_a, mangia, prendi, | bite, &apos;empty&apos;, empty_in, empty_on, put_on, throw, throw_at, throw_to, throw_in</span>
 
-  -- ORIGINAL EN:  implicit_taking_message
-  HAS riferisci_prendi_implicito "(prima prendi $+1)$n".</code></pre>
+  <span class="hl slc">-- ORIGINAL EN:  implicit_taking_message</span>
+  <span class="hl kwa">HAS</span> riferisci_prendi_implicito <span class="hl str">&quot;(prima prendi</span> <span class="hl ipl">$+1</span><span class="hl str">)</span><span class="hl esc">$n</span><span class="hl str">&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -977,11 +991,12 @@ impedisce l&#8217;azione (qui riferito come <code>ogg1</code>, <code>ogg2</code>
 </div>
 <div class="sect2">
 <h3 id="_parametri_inadatti_semplici"><a class="anchor" href="#_parametri_inadatti_semplici"></a>Parametri inadatti semplici</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- ORIGINAL EN:  illegal_parameter_sg/pl  +  check_obj_suitable_sg/pl
-  HAS ogg1_inadatto_sg  "$+1 non è qualcosa che puoi".
-  HAS ogg1_inadatto_pl  "$+1 non sono qualcosa che puoi".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- ORIGINAL EN:  illegal_parameter_sg/pl  +  check_obj_suitable_sg/pl</span>
+  <span class="hl kwa">HAS</span> ogg1_inadatto_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non è qualcosa che puoi&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg1_inadatto_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non sono qualcosa che puoi&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -995,79 +1010,84 @@ richiedono preposizioni articolate (di|a|da|in|con|su).</p>
 </div>
 <div class="sect4">
 <h5 id="_preposizione_a"><a class="anchor" href="#_preposizione_a"></a>Preposizione &#8220;A&#8221;</h5>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: spara_a_errore.
-  -- ORIGINAL EN: illegal_parameter_at
-  HAS ogg1_inadatto_A_sg  "$+1 non è qualcosa a cui poter".
-  HAS ogg1_inadatto_A_pl  "$+1 non sono qualcosa a cui poter".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: spara_a_errore.</span>
+  <span class="hl slc">-- ORIGINAL EN: illegal_parameter_at</span>
+  <span class="hl kwa">HAS</span> ogg1_inadatto_A_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non è qualcosa a cui poter&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg1_inadatto_A_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non sono qualcosa a cui poter&quot;</span><span class="hl kwa">.</span>
 
-  -- VERBI: spara_a.
-  -- ORIGINAL EN: illegal_parameter_at
-  HAS ogg2_inadatto_A_sg  "$+2 non è qualcosa a cui poter".
-  HAS ogg2_inadatto_A_pl  "$+2 non sono qualcosa a cui poter".
+  <span class="hl slc">-- VERBI: spara_a.</span>
+  <span class="hl slc">-- ORIGINAL EN: illegal_parameter_at</span>
+  <span class="hl kwa">HAS</span> ogg2_inadatto_A_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non è qualcosa a cui poter&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg2_inadatto_A_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non sono qualcosa a cui poter&quot;</span><span class="hl kwa">.</span>
 
-  HAS illegal_parameter_at "You can't $v anything at $+2.".   -- fire_at, throw_at
+  <span class="hl kwa">HAS</span> illegal_parameter_at <span class="hl str">&quot;You can&apos;t</span> <span class="hl esc">$v</span> <span class="hl str">anything at</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>   <span class="hl slc">-- fire_at, throw_at</span>
 
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_obj_suitable_at "You can't $v anything at $+2.".  -- fire_at, throw_at, throw_to</code></pre>
+  <span class="hl slc">-- &#64;TODO: *** UNTRANSLATED MESSAGES: ***</span>
+  <span class="hl kwa">HAS</span> check_obj_suitable_at <span class="hl str">&quot;You can&apos;t</span> <span class="hl esc">$v</span> <span class="hl str">anything at</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>  <span class="hl slc">-- fire_at, throw_at, throw_to</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_preposizione_da"><a class="anchor" href="#_preposizione_da"></a>Preposizione &#8220;DA&#8221;</h5>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: guarda_fuori_da.
-  -- ORIGINAL EN: (nessuno)
-  HAS ogg1_inadatto_DA_sg  "$+1 non è qualcosa da cui poter".
-  HAS ogg1_inadatto_DA_pl  "$+1 non sono qualcosa da cui poter".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: guarda_fuori_da.</span>
+  <span class="hl slc">-- ORIGINAL EN: (nessuno)</span>
+  <span class="hl kwa">HAS</span> ogg1_inadatto_DA_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non è qualcosa da cui poter&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg1_inadatto_DA_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non sono qualcosa da cui poter&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_preposizione_in"><a class="anchor" href="#_preposizione_in"></a>Preposizione &#8220;IN&#8221;</h5>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: salta_in.
-  -- ORIGINAL EN: (nessuno)
-  HAS ogg1_inadatto_IN_sg  "$+1 non è qualcosa in cui poter".
-  HAS ogg1_inadatto_IN_pl  "$+1 non sono qualcosa in cui poter".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: salta_in.</span>
+  <span class="hl slc">-- ORIGINAL EN: (nessuno)</span>
+  <span class="hl kwa">HAS</span> ogg1_inadatto_IN_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non è qualcosa in cui poter&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg1_inadatto_IN_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non sono qualcosa in cui poter&quot;</span><span class="hl kwa">.</span>
 
-  -- VERBI: .
-  -- ORIGINAL EN: (nessuno)
-  HAS ogg2_inadatto_IN_sg  "$+2 non è qualcosa in cui poter".
-  HAS ogg2_inadatto_IN_pl  "$+2 non sono qualcosa in cui poter".</code></pre>
+  <span class="hl slc">-- VERBI: .</span>
+  <span class="hl slc">-- ORIGINAL EN: (nessuno)</span>
+  <span class="hl kwa">HAS</span> ogg2_inadatto_IN_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non è qualcosa in cui poter&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg2_inadatto_IN_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non sono qualcosa in cui poter&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_preposizione_con"><a class="anchor" href="#_preposizione_con"></a>Preposizione &#8220;CON&#8221;</h5>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: gioca_con, parla_con.
-  -- ORIGINAL EN: check_obj_suitable_with_sg/pl + illegal_parameter_with_sg/+pl
-  HAS ogg1_inadatto_CON_sg  "$+1 non è qualcosa con cui poter".
-  HAS ogg1_inadatto_CON_pl  "$+1 non sono qualcosa con cui poter".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: gioca_con, parla_con.</span>
+  <span class="hl slc">-- ORIGINAL EN: check_obj_suitable_with_sg/pl + illegal_parameter_with_sg/+pl</span>
+  <span class="hl kwa">HAS</span> ogg1_inadatto_CON_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non è qualcosa con cui poter&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg1_inadatto_CON_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non sono qualcosa con cui poter&quot;</span><span class="hl kwa">.</span>
 
-  -- VERBI: brucia_con.
-  -- ORIGINAL EN: illegal_parameter2_with_sg/pl  +  check_obj2_suitable_with_sg/pl
-  HAS ogg2_inadatto_CON_sg  "$+2 non è qualcosa con cui poter".
-  HAS ogg2_inadatto_CON_pl  "$+2 non sono qualcosa con cui poter".</code></pre>
+  <span class="hl slc">-- VERBI: brucia_con.</span>
+  <span class="hl slc">-- ORIGINAL EN: illegal_parameter2_with_sg/pl  +  check_obj2_suitable_with_sg/pl</span>
+  <span class="hl kwa">HAS</span> ogg2_inadatto_CON_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non è qualcosa con cui poter&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg2_inadatto_CON_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non sono qualcosa con cui poter&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_preposizione_su"><a class="anchor" href="#_preposizione_su"></a>Preposizione &#8220;SU&#8221;</h5>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- ORIGINAL EN: illegal_parameter_on_sg/pl
-  HAS ogg1_inadatto_SU_sg  "$+1 non è qualcosa su cui poter".
-  HAS ogg1_inadatto_SU_pl  "$+1 non sono qualcosa su cui poter".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- ORIGINAL EN: illegal_parameter_on_sg/pl</span>
+  <span class="hl kwa">HAS</span> ogg1_inadatto_SU_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non è qualcosa su cui poter&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg1_inadatto_SU_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non sono qualcosa su cui poter&quot;</span><span class="hl kwa">.</span>
 
 
-  HAS ogg2_inadatto_SU_sg  "$+2 non è qualcosa su cui poter".
-  HAS ogg2_inadatto_SU_pl  "$+2 non sono qualcosa su cui poter".</code></pre>
+  <span class="hl kwa">HAS</span> ogg2_inadatto_SU_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non è qualcosa su cui poter&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg2_inadatto_SU_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non sono qualcosa su cui poter&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1080,33 +1100,36 @@ preposizioni improprie.</p>
 </div>
 <div class="sect4">
 <h5 id="_preposizione_attraverso"><a class="anchor" href="#_preposizione_attraverso"></a>Preposizione &#8220;ATTRAVERSO&#8221;</h5>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS illegal_parameter_look_through " You can't look through $+1.". -- look_through
-  HAS check_obj_suitable_look_through "You can't look through $+1.". -- look_through</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- &#64;TODO: *** UNTRANSLATED MESSAGES: ***</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_look_through <span class="hl str">&quot; You can&apos;t look through</span> <span class="hl ipl">$+1</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span> <span class="hl slc">-- look_through</span>
+  <span class="hl kwa">HAS</span> check_obj_suitable_look_through <span class="hl str">&quot;You can&apos;t look through</span> <span class="hl ipl">$+1</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span> <span class="hl slc">-- look_through</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_preposizione_contro"><a class="anchor" href="#_preposizione_contro"></a>Preposizione &#8220;CONTRO&#8221;</h5>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: metti_contro.
-  -- ORIGINAL EN: (nessuno)
-  HAS ogg2_inadatto_CONTRO_sg  "$+2 non è qualcosa contro cui poter".
-  HAS ogg2_inadatto_CONTRO_pl  "$+2 non sono qualcosa contro cui poter".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: metti_contro.</span>
+  <span class="hl slc">-- ORIGINAL EN: (nessuno)</span>
+  <span class="hl kwa">HAS</span> ogg2_inadatto_CONTRO_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non è qualcosa contro cui poter&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg2_inadatto_CONTRO_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non sono qualcosa contro cui poter&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_preposizione_dietro"><a class="anchor" href="#_preposizione_dietro"></a>Preposizione &#8220;DIETRO&#8221;</h5>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: metti_dietro.
-  -- ORIGINAL EN: (nessuno)
-  HAS ogg2_inadatto_DIETRO_sg  "$+2 non è qualcosa dietro cui poter".
-  HAS ogg2_inadatto_DIETRO_pl  "$+2 non sono qualcosa dietro cui poter".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: metti_dietro.</span>
+  <span class="hl slc">-- ORIGINAL EN: (nessuno)</span>
+  <span class="hl kwa">HAS</span> ogg2_inadatto_DIETRO_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non è qualcosa dietro cui poter&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg2_inadatto_DIETRO_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non sono qualcosa dietro cui poter&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1116,23 +1139,25 @@ preposizioni improprie.</p>
 </div>
 <div class="sect4">
 <h5 id="_preposizione_sotto"><a class="anchor" href="#_preposizione_sotto"></a>Preposizione &#8220;SOTTO&#8221;</h5>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: metti_dietro.
-  -- ORIGINAL EN: (nessuno)
-  HAS ogg2_inadatto_SOTTO_sg  "$+2 non è qualcosa sotto cui poter".
-  HAS ogg2_inadatto_SOTTO_pl  "$+2 non sono qualcosa sotto cui poter".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: metti_dietro.</span>
+  <span class="hl slc">-- ORIGINAL EN: (nessuno)</span>
+  <span class="hl kwa">HAS</span> ogg2_inadatto_SOTTO_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non è qualcosa sotto cui poter&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg2_inadatto_SOTTO_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non sono qualcosa sotto cui poter&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_preposizione_vicino_a"><a class="anchor" href="#_preposizione_vicino_a"></a>Preposizione &#8220;VICINO A&#8221;</h5>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: metti_vicino.
-  -- ORIGINAL EN: (nessuno)
-  HAS ogg2_inadatto_VICINO_A_sg  "$+2 non è qualcosa vicino a cui poter".
-  HAS ogg2_inadatto_VICINO_A_pl  "$+2 non sono qualcosa vicino a cui poter".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: metti_vicino.</span>
+  <span class="hl slc">-- ORIGINAL EN: (nessuno)</span>
+  <span class="hl kwa">HAS</span> ogg2_inadatto_VICINO_A_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non è qualcosa vicino a cui poter&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg2_inadatto_VICINO_A_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non sono qualcosa vicino a cui poter&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1140,16 +1165,17 @@ preposizioni improprie.</p>
 </div>
 <div class="sect2">
 <h3 id="_indatatti_azioni_specifiche"><a class="anchor" href="#_indatatti_azioni_specifiche"></a>Indatatti azioni specifiche</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: blocca_con.
-  -- ORIGINAL EN: check_door_matching_key
-  HAS chiave2_non_blocca_ogg1  "Non è possibile bloccare $+1 con $+2.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: blocca_con.</span>
+  <span class="hl slc">-- ORIGINAL EN: check_door_matching_key</span>
+  <span class="hl kwa">HAS</span> chiave2_non_blocca_ogg1  <span class="hl str">&quot;Non è possibile bloccare</span> <span class="hl ipl">$+1</span> <span class="hl str">con</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
 
 
-  -- VERBI: sblocca_con.
-  -- ORIGINAL EN: check_door_matching_key
-  HAS chiave2_non_sblocca_ogg1  "Non è possibile sbloccare $+1 con $+2.".</code></pre>
+  <span class="hl slc">-- VERBI: sblocca_con.</span>
+  <span class="hl slc">-- ORIGINAL EN: check_door_matching_key</span>
+  <span class="hl kwa">HAS</span> chiave2_non_sblocca_ogg1  <span class="hl str">&quot;Non è possibile sbloccare</span> <span class="hl ipl">$+1</span> <span class="hl str">con</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1160,23 +1186,25 @@ preposizioni improprie.</p>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_destinazione_non_valida"><a class="anchor" href="#_destinazione_non_valida"></a>Destinazione non valida</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: vai_a.
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: vai_a.</span>
 
-  -- ORIGINAL EN:  illegal_parameter_go
-   HAS destinazione_invalida "Non puoi andare lì.".</code></pre>
+  <span class="hl slc">-- ORIGINAL EN:  illegal_parameter_go</span>
+   <span class="hl kwa">HAS</span> destinazione_invalida <span class="hl str">&quot;Non puoi andare lì.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_parametri_stringa"><a class="anchor" href="#_parametri_stringa"></a>Parametri stringa</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: dì, dì_a, rispondi, scrivi.
-  -- ORIGINAL EN: illegal_parameter_string.
-  HAS ogg_stringa_richiesto
-    "Usa le virgolette ("""") per delimitare l'oggetto della tua azione.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: dì, dì_a, rispondi, scrivi.</span>
+  <span class="hl slc">-- ORIGINAL EN: illegal_parameter_string.</span>
+  <span class="hl kwa">HAS</span> ogg_stringa_richiesto
+    <span class="hl str">&quot;Usa le virgolette (&quot;</span><span class="hl str">&quot;&quot;</span><span class="hl str">&quot;) per delimitare l&apos;oggetto della tua azione.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1186,11 +1214,12 @@ preposizioni improprie.</p>
 <p>Messaggi per verbi riguardanti problemi con i parmetri che coinvolgono
 contenitori.</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: [liquidi: svuota, svuota_in, svuota_su].
-  -- ORIGINAL EN: (nessuno)
-  HAS svuotare_solo_contenitori  "Solo i contenitori possono essere svuotati.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: [liquidi: svuota, svuota_in, svuota_su].</span>
+  <span class="hl slc">-- ORIGINAL EN: (nessuno)</span>
+  <span class="hl kwa">HAS</span> svuotare_solo_contenitori  <span class="hl str">&quot;Solo i contenitori possono essere svuotati.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1206,13 +1235,14 @@ per portare a termine l&#8217;azione, dove la variante base del verbo serve solo
 a intercettare il comando incompleto per informare il giocatore sulla
 sintassi corretta del verbo.</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS specificare_DOVE      "Devi specificare dove vorresti".
-  HAS specificare_A_cosa    "Devi specificare a cosa vorresti".
-  HAS specificare_DA_cosa   "Devi specificare da cosa vorresti".
-  HAS specificare_IN_cosa   "Devi specificare in cosa vorresti".
-  HAS specificare_CON_cosa  "Devi specificare con cosa vorresti".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl kwa">HAS</span> specificare_DOVE      <span class="hl str">&quot;Devi specificare dove vorresti&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> specificare_A_cosa    <span class="hl str">&quot;Devi specificare a cosa vorresti&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> specificare_DA_cosa   <span class="hl str">&quot;Devi specificare da cosa vorresti&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> specificare_IN_cosa   <span class="hl str">&quot;Devi specificare in cosa vorresti&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> specificare_CON_cosa  <span class="hl str">&quot;Devi specificare con cosa vorresti&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="sect2">
@@ -1222,48 +1252,50 @@ sintassi corretta del verbo.</p>
 causa di uno (o più) parametri fuori dalla portata dell&#8217;eroe.
 (attributi: <code>NOT raggiungibile</code> e <code>distante</code>).</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- ORIGINAL EN:  check_obj_reachable_sg/pl  +  check_obj2_reachable_sg/pl
-  HAS ogg1_non_raggiungibile_sg  "$+1 è fuori dalla tua portata.".
-  HAS ogg1_non_raggiungibile_pl  "$+1 sono fuori dalla tua portata.".
-  HAS ogg2_non_raggiungibile_sg  "$+2 è fuori dalla tua portata.".
-  HAS ogg2_non_raggiungibile_pl  "$+2 sono fuori dalla tua portata.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- ORIGINAL EN:  check_obj_reachable_sg/pl  +  check_obj2_reachable_sg/pl</span>
+  <span class="hl kwa">HAS</span> ogg1_non_raggiungibile_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">è fuori dalla tua portata.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg1_non_raggiungibile_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">sono fuori dalla tua portata.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg2_non_raggiungibile_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">è fuori dalla tua portata.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg2_non_raggiungibile_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">sono fuori dalla tua portata.&quot;</span><span class="hl kwa">.</span>
 
-  -- VERBI: chiedi.
-  -- ORIGINAL EN: check_obj_reachable_ask.
-  HAS ogg2_sg_non_raggiungibile_png1_sg
-    "$+1 non può prendere $+2, è fuori dalla sua portata.".
-  HAS ogg2_sg_non_raggiungibile_png1_pl
-    "$+1 non possono prendere $+2, è fuori dalla sua portata.".
-  HAS ogg2_pl_non_raggiungibile_png1_sg
-    "$+1 non può prendere $+2, sono fuori dalla sua portata.".
-  HAS ogg2_pl_non_raggiungibile_png1_pl
-    "$+1 non possono prendere $+2, sono fuori dalla sua portata.".
+  <span class="hl slc">-- VERBI: chiedi.</span>
+  <span class="hl slc">-- ORIGINAL EN: check_obj_reachable_ask.</span>
+  <span class="hl kwa">HAS</span> ogg2_sg_non_raggiungibile_png1_sg
+    <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non può prendere</span> <span class="hl ipl">$+2</span><span class="hl str">, è fuori dalla sua portata.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg2_sg_non_raggiungibile_png1_pl
+    <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non possono prendere</span> <span class="hl ipl">$+2</span><span class="hl str">, è fuori dalla sua portata.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg2_pl_non_raggiungibile_png1_sg
+    <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non può prendere</span> <span class="hl ipl">$+2</span><span class="hl str">, sono fuori dalla sua portata.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg2_pl_non_raggiungibile_png1_pl
+    <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non possono prendere</span> <span class="hl ipl">$+2</span><span class="hl str">, sono fuori dalla sua portata.&quot;</span><span class="hl kwa">.</span>
 
-  -- ORIGINAL EN:  check_obj_not_distant_sg/pl  +  check_obj2_not_distant_sg/pl
-  HAS ogg1_distante_sg "$+1 è troppo distante.".
-  HAS ogg1_distante_pl "$+1 sono troppo distanti.".
-  HAS ogg2_distante_sg "$+2 è troppo distante.".
-  HAS ogg2_distante_pl "$+2 sono troppo distanti.".</code></pre>
+  <span class="hl slc">-- ORIGINAL EN:  check_obj_not_distant_sg/pl  +  check_obj2_not_distant_sg/pl</span>
+  <span class="hl kwa">HAS</span> ogg1_distante_sg <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">è troppo distante.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg1_distante_pl <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">sono troppo distanti.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg2_distante_sg <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">è troppo distante.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg2_distante_pl <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">sono troppo distanti.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_oggetti_mancanti_non_ottenibili"><a class="anchor" href="#_oggetti_mancanti_non_ottenibili"></a>Oggetti mancanti &amp; non ottenibili</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: (svariati, specie nei verbi con prendi implicito).
-  -- ORIGINAL EN: check_obj_takeable
-  HAS ogg1_non_posseduto  "Non possiedi $+1.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: (svariati, specie nei verbi con prendi implicito).</span>
+  <span class="hl slc">-- ORIGINAL EN: check_obj_takeable</span>
+  <span class="hl kwa">HAS</span> ogg1_non_posseduto  <span class="hl str">&quot;Non possiedi</span> <span class="hl ipl">$+1</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
 
-  -- VERBI: riempi_con.
-  -- ORIGINAL EN: check_obj2_takeable1
-  HAS ogg2_non_posseduto  "Non possiedi $+2.".
+  <span class="hl slc">-- VERBI: riempi_con.</span>
+  <span class="hl slc">-- ORIGINAL EN: check_obj2_takeable1</span>
+  <span class="hl kwa">HAS</span> ogg2_non_posseduto  <span class="hl str">&quot;Non possiedi</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
 
-  -- VERBI: chiedi.
-  -- ORIGINAL EN: check_obj2_takeable2
-  HAS ogg2_non_ottenibile  "Non puoi avere $+2.".</code></pre>
+  <span class="hl slc">-- VERBI: chiedi.</span>
+  <span class="hl slc">-- ORIGINAL EN: check_obj2_takeable2</span>
+  <span class="hl kwa">HAS</span> ogg2_non_ottenibile  <span class="hl str">&quot;Non puoi avere</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1275,29 +1307,31 @@ causa di uno (o più) parametri fuori dalla portata dell&#8217;eroe.
 <p>Messaggi per verbi che implicano scambi verbali, quando il destinatario non
 è ha l&#8217;attributo <code>CAN parlare</code>.</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: chiedi, domanda, racconta.
-  -- ORIGINAL EN: illegal_parameter_talk_sg
-  HAS ogg1_non_può_capirti_sg  "$+1 non è in grado di capirti.".
-  HAS ogg1_non_può_capirti_pl  "$+1 non sono in grado di capirti.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: chiedi, domanda, racconta.</span>
+  <span class="hl slc">-- ORIGINAL EN: illegal_parameter_talk_sg</span>
+  <span class="hl kwa">HAS</span> ogg1_non_può_capirti_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non è in grado di capirti.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg1_non_può_capirti_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non sono in grado di capirti.&quot;</span><span class="hl kwa">.</span>
 
 
-  -- VERBI: dì_a.
-  -- ORIGINAL EN: illegal_parameter_talk_sg
-  HAS ogg2_non_può_capirti_sg  "$+2 non è in grado di capirti.".
-  HAS ogg2_non_può_capirti_pl  "$+2 non sono in grado di capirti.".</code></pre>
+  <span class="hl slc">-- VERBI: dì_a.</span>
+  <span class="hl slc">-- ORIGINAL EN: illegal_parameter_talk_sg</span>
+  <span class="hl kwa">HAS</span> ogg2_non_può_capirti_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non è in grado di capirti.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg2_non_può_capirti_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non sono in grado di capirti.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_attributi_del_luogo"><a class="anchor" href="#_attributi_del_luogo"></a>Attributi del luogo</h4>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  --@TODO: migliora nome attributo e messaggio
-  -- VERBI: (svariati verbi)
-  -- ORIGINAL EN:  check_current_loc_lit
-  HAS imp_luogo_buio  "È troppo buio.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">--&#64;TODO: migliora nome attributo e messaggio</span>
+  <span class="hl slc">-- VERBI: (svariati verbi)</span>
+  <span class="hl slc">-- ORIGINAL EN:  check_current_loc_lit</span>
+  <span class="hl kwa">HAS</span> imp_luogo_buio  <span class="hl str">&quot;È troppo buio.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1307,54 +1341,58 @@ causa di uno (o più) parametri fuori dalla portata dell&#8217;eroe.
 </div>
 <div class="sect3">
 <h4 id="_oggetti_non_esaminabili"><a class="anchor" href="#_oggetti_non_esaminabili"></a>Oggetti non esaminabili</h4>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS impossibile_guardare "Non è possibile guardare".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl kwa">HAS</span> impossibile_guardare <span class="hl str">&quot;Non è possibile guardare&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_oggetti_scenario"><a class="anchor" href="#_oggetti_scenario"></a>Oggetti scenario</h4>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: esamina, prendi, prendi_da.
-  -- ORIGINAL EN: ogg1_scenario_sg/pl.
-  HAS ogg1_scenario_sg "$+1 non è importante ai fini del gioco.".
-  HAS ogg1_scenario_pl "$+1 non sono importanti ai fini del gioco.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: esamina, prendi, prendi_da.</span>
+  <span class="hl slc">-- ORIGINAL EN: ogg1_scenario_sg/pl.</span>
+  <span class="hl kwa">HAS</span> ogg1_scenario_sg <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non è importante ai fini del gioco.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg1_scenario_pl <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non sono importanti ai fini del gioco.&quot;</span><span class="hl kwa">.</span>
 
-  -- VERBI: chiedi, prendi_da.
-  -- ORIGINAL EN: check_obj2_not_scenery_sg/pl.
-  HAS ogg2_scenario_sg "$+2 non è importante ai fini del gioco.".
-  HAS ogg2_scenario_pl "$+2 non sono importanti ai fini del gioco.".</code></pre>
+  <span class="hl slc">-- VERBI: chiedi, prendi_da.</span>
+  <span class="hl slc">-- ORIGINAL EN: check_obj2_not_scenery_sg/pl.</span>
+  <span class="hl kwa">HAS</span> ogg2_scenario_sg <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non è importante ai fini del gioco.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg2_scenario_pl <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non sono importanti ai fini del gioco.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_oggetti_troppo_pesanti"><a class="anchor" href="#_oggetti_troppo_pesanti"></a>Oggetti troppo pesanti</h4>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: 'prendi', 'prendi_da' e 'solleva'.
-  -- ORIGINAL EN: check_obj_weight_sg/pl.
-  HAS ogg1_troppo_pesante_sg  "$+1 è troppo pesante".
-  HAS ogg1_troppo_pesante_pl  "$+1 sono troppo pesanti".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: &apos;prendi&apos;, &apos;prendi_da&apos; e &apos;solleva&apos;.</span>
+  <span class="hl slc">-- ORIGINAL EN: check_obj_weight_sg/pl.</span>
+  <span class="hl kwa">HAS</span> ogg1_troppo_pesante_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">è troppo pesante&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg1_troppo_pesante_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">sono troppo pesanti&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_azioni_dirette_ai_png"><a class="anchor" href="#_azioni_dirette_ai_png"></a>Azioni dirette ai png</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: gratta, ispeziona, sfrega, spingi, spingi_con, tira, tocca, tocca_con
-  -- ORIGINAL EN:  check_obj_inanimate1 + check_obj_inanimate2
-  --               "$+1 wouldn't probably appreciate that."
-  --               "You are not sure whether $+1 would appreciate that."
-  HAS png1_non_gradirebbe_sg  "Non credo che $+1 gradirebbe.".
-  HAS png1_non_gradirebbe_pl  "Non credo che $+1 gradirebbero.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: gratta, ispeziona, sfrega, spingi, spingi_con, tira, tocca, tocca_con</span>
+  <span class="hl slc">-- ORIGINAL EN:  check_obj_inanimate1 + check_obj_inanimate2</span>
+  <span class="hl slc">--               &quot;$+1 wouldn&apos;t probably appreciate that.&quot;</span>
+  <span class="hl slc">--               &quot;You are not sure whether $+1 would appreciate that.&quot;</span>
+  <span class="hl kwa">HAS</span> png1_non_gradirebbe_sg  <span class="hl str">&quot;Non credo che</span> <span class="hl ipl">$+1</span> <span class="hl str">gradirebbe.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> png1_non_gradirebbe_pl  <span class="hl str">&quot;Non credo che</span> <span class="hl ipl">$+1</span> <span class="hl str">gradirebbero.&quot;</span><span class="hl kwa">.</span>
 
-  -- VERBI: lancia_contro
-  HAS png2_non_gradirebbe_sg  "Non credo che $+2 gradirebbe.".
-  HAS png2_non_gradirebbe_pl  "Non credo che $+2 gradirebbero.".</code></pre>
+  <span class="hl slc">-- VERBI: lancia_contro</span>
+  <span class="hl kwa">HAS</span> png2_non_gradirebbe_sg  <span class="hl str">&quot;Non credo che</span> <span class="hl ipl">$+2</span> <span class="hl str">gradirebbe.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> png2_non_gradirebbe_pl  <span class="hl str">&quot;Non credo che</span> <span class="hl ipl">$+2</span> <span class="hl str">gradirebbero.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1366,28 +1404,29 @@ causa di uno (o più) parametri fuori dalla portata dell&#8217;eroe.
 <div class="paragraph">
 <p>Risposte per azioni che non possono essere eseguite.</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: [lib_classi.i: metti_contro, metti_dietro, metti_vicino, metti_sotto
-  --                       guarda_dietro, guarda_attraverso, guarda_sotto].
-  -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
-  HAS non_fattibile "Non è una cosa fattibile.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: [lib_classi.i: metti_contro, metti_dietro, metti_vicino, metti_sotto</span>
+  <span class="hl slc">--                       guarda_dietro, guarda_attraverso, guarda_sotto].</span>
+  <span class="hl slc">-- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)</span>
+  <span class="hl kwa">HAS</span> non_fattibile <span class="hl str">&quot;Non è una cosa fattibile.&quot;</span><span class="hl kwa">.</span>
 
-  -- VERBI: attacca, attacca_con, calcia, rompi, spara, spara_a_errore.
-  HAS la_violenza_non_è_la_risposta
-    "La violenza non è la giusta risposta a questo.". ---&gt; taken from i6
+  <span class="hl slc">-- VERBI: attacca, attacca_con, calcia, rompi, spara, spara_a_errore.</span>
+  <span class="hl kwa">HAS</span> la_violenza_non_è_la_risposta
+    <span class="hl str">&quot;La violenza non è la giusta risposta a questo.&quot;</span><span class="hl kwa">.</span> <span class="hl slc">---&gt; taken from i6</span>
 
-  -- VERBI: segui.
-  -- ORIGINAL EN: check_act_near_hero.
-  HAS impossibile_seguire_png1_sg  "Non hai idea di dove si trovi $+1 ora.
-                                    Specifica la direzione in cui vorresti andare.".
-  HAS impossibile_seguire_png1_pl  "Non hai idea di dove si trovi $+1 ora.
-                                    Specifica la direzione in cui vorresti andare.".
+  <span class="hl slc">-- VERBI: segui.</span>
+  <span class="hl slc">-- ORIGINAL EN: check_act_near_hero.</span>
+  <span class="hl kwa">HAS</span> impossibile_seguire_png1_sg  <span class="hl str">&quot;Non hai idea di dove si trovi</span> <span class="hl ipl">$+1</span> <span class="hl str">ora.</span>
+<span class="hl str">                                    Specifica la direzione in cui vorresti andare.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> impossibile_seguire_png1_pl  <span class="hl str">&quot;Non hai idea di dove si trovi</span> <span class="hl ipl">$+1</span> <span class="hl str">ora.</span>
+<span class="hl str">                                    Specifica la direzione in cui vorresti andare.&quot;</span><span class="hl kwa">.</span>
 
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  <span class="hl slc">-- &#64;TODO: *** UNTRANSLATED MESSAGES: ***</span>
 
-  HAS check_obj_in_act_sg "$+2 doesn't have $+1.".              -- take_from
-  HAS check_obj_in_act_pl "$+2 don't have $+1.".</code></pre>
+  <span class="hl kwa">HAS</span> check_obj_in_act_sg <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">doesn&apos;t have</span> <span class="hl ipl">$+1</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>              <span class="hl slc">-- take_from</span>
+  <span class="hl kwa">HAS</span> check_obj_in_act_pl <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">don&apos;t have</span> <span class="hl ipl">$+1</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1395,23 +1434,25 @@ causa di uno (o più) parametri fuori dalla portata dell&#8217;eroe.
 <div class="sect1">
 <h2 id="_azioni_insensate"><a class="anchor" href="#_azioni_insensate"></a>Azioni insensate</h2>
 <div class="sectionbody">
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: (moltissimi)
-  -- ORIGINAL EN: check_obj_not_hero1 + check_obj2_not_hero1
-  HAS azione_insensata  "Questo non ha alcun senso.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: (moltissimi)</span>
+  <span class="hl slc">-- ORIGINAL EN: check_obj_not_hero1 + check_obj2_not_hero1</span>
+  <span class="hl kwa">HAS</span> azione_insensata  <span class="hl str">&quot;Questo non ha alcun senso.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Oggetto &#8216;bersaglio&#8217; posseduto:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS azione_insensata_ogg1_portato    "Che senso ha? Stai portando $+1.".
-  HAS azione_insensata_ogg1_indossato  "Che senso ha? Stai indossando $+1.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl kwa">HAS</span> azione_insensata_ogg1_portato    <span class="hl str">&quot;Che senso ha? Stai portando</span> <span class="hl ipl">$+1</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> azione_insensata_ogg1_indossato  <span class="hl str">&quot;Che senso ha? Stai indossando</span> <span class="hl ipl">$+1</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
 
-  HAS azione_insensata_ogg2_portato    "Che senso ha? Stai portando $+2.".
-  HAS azione_insensata_ogg2_indossato  "Che senso ha? Stai indossando $+2.".</code></pre>
+  <span class="hl kwa">HAS</span> azione_insensata_ogg2_portato    <span class="hl str">&quot;Che senso ha? Stai portando</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> azione_insensata_ogg2_indossato  <span class="hl str">&quot;Che senso ha? Stai indossando</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1440,22 +1481,23 @@ dato che è a portata di mano).</p>
 <p>Risposte per azioni che non conseguono nulla e vengono rifiutate con la
 scusante che l&#8217;eroe non desidera farlo&#8230;&#8203;</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: balla.
-  -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
-  HAS non_senti_bisogno_di "Al momento non senti il bisogno di".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: balla.</span>
+  <span class="hl slc">-- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)</span>
+  <span class="hl kwa">HAS</span> non_senti_bisogno_di <span class="hl str">&quot;Al momento non senti il bisogno di&quot;</span><span class="hl kwa">.</span>
 
 
-  -- VERBI: bacia, gratta, metti_contro, metti_dietro, metti_sotto,
-  --        metti_vicino, solleva, spingi_con, tira, tocca, pulisci, sfrega.
-  -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
-  HAS azione_futile "Farlo non servirebbe a nulla.".
-  -- @NOTA: i6 usa: "Non otterrai niente con questo."
+  <span class="hl slc">-- VERBI: bacia, gratta, metti_contro, metti_dietro, metti_sotto,</span>
+  <span class="hl slc">--        metti_vicino, solleva, spingi_con, tira, tocca, pulisci, sfrega.</span>
+  <span class="hl slc">-- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)</span>
+  <span class="hl kwa">HAS</span> azione_futile <span class="hl str">&quot;Farlo non servirebbe a nulla.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl slc">-- &#64;NOTA: i6 usa: &quot;Non otterrai niente con questo.&quot;</span>
 
-  -- VERBI: bacia, gioca_con, sfrega.
-  -- ORIGINAL EN: check_obj_not_hero6.
-  HAS azione_irrelevante  "Hai cose più importanti a cui pensare.".</code></pre>
+  <span class="hl slc">-- VERBI: bacia, gioca_con, sfrega.</span>
+  <span class="hl slc">-- ORIGINAL EN: check_obj_not_hero6.</span>
+  <span class="hl kwa">HAS</span> azione_irrelevante  <span class="hl str">&quot;Hai cose più importanti a cui pensare.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1472,22 +1514,24 @@ risultato che è già disponibile&#8230;&#8203;</p>
 <div class="paragraph">
 <p>Il giocatore si trova già sul posto:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: find, vai_a.
-  -- ORIGINAL EN:  check_obj_not_hero4
-  HAS sei_già_qui  "Ti trovi già qui!".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: find, vai_a.</span>
+  <span class="hl slc">-- ORIGINAL EN:  check_obj_not_hero4</span>
+  <span class="hl kwa">HAS</span> sei_già_qui  <span class="hl str">&quot;Ti trovi già qui!&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>il giocatore è già in una certa una postura</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- &#64;TODO: *** UNTRANSLATED MESSAGES: ***</span>
 
-  HAS check_hero_not_sitting4    "You're sitting down already.". -- sit, sit_on
-  HAS check_hero_not_lying_down4 "You're lying down already.".   -- lie_down, lie_in</code></pre>
+  <span class="hl kwa">HAS</span> check_hero_not_sitting4    <span class="hl str">&quot;You&apos;re sitting down already.&quot;</span><span class="hl kwa">.</span> <span class="hl slc">-- sit, sit_on</span>
+  <span class="hl kwa">HAS</span> check_hero_not_lying_down4 <span class="hl str">&quot;You&apos;re lying down already.&quot;</span><span class="hl kwa">.</span>   <span class="hl slc">-- lie_down, lie_in</span></code></pre>
 </div>
 </div>
 </div>
@@ -1496,48 +1540,52 @@ risultato che è già disponibile&#8230;&#8203;</p>
 <div class="paragraph">
 <p>Scampolo generico riutilizzabile in varie risposte:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: xxx.
-  -- ORIGINAL EN: (nessuno)
-  HAS ogg1_già_sg  "$+1 è già".
-  HAS ogg1_già_pl  "$+1 è già".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: xxx.</span>
+  <span class="hl slc">-- ORIGINAL EN: (nessuno)</span>
+  <span class="hl kwa">HAS</span> ogg1_già_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">è già&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg1_già_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">è già&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>L&#8217;oggetto si trova già sul posto:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: trova, follow, vai_a, dove_è.
-  -- ORIGINAL EN:  check_obj_not_at_hero_sg/pl
-  HAS ogg1_già_qui_sg  "$+1 è proprio qui.".
-  HAS ogg1_già_qui_pl  "$+1 sono proprio qui.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: trova, follow, vai_a, dove_è.</span>
+  <span class="hl slc">-- ORIGINAL EN:  check_obj_not_at_hero_sg/pl</span>
+  <span class="hl kwa">HAS</span> ogg1_già_qui_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">è proprio qui.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg1_già_qui_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">sono proprio qui.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Oggetto già posseduto:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: prendi, prendi_da
-  -- ORIGINAL EN:  check_obj_not_in_hero2
-  HAS ogg1_già_posseduto  "Possiedi già $+1.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: prendi, prendi_da</span>
+  <span class="hl slc">-- ORIGINAL EN:  check_obj_not_in_hero2</span>
+  <span class="hl kwa">HAS</span> ogg1_già_posseduto  <span class="hl str">&quot;Possiedi già</span> <span class="hl ipl">$+1</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
 
-  -- VERBI: chiedi
-  -- ORIGINAL EN:  check_obj2_not_in_hero3
-  HAS ogg2_già_posseduto  "Possiedi già $+2.".</code></pre>
+  <span class="hl slc">-- VERBI: chiedi</span>
+  <span class="hl slc">-- ORIGINAL EN:  check_obj2_not_in_hero3</span>
+  <span class="hl kwa">HAS</span> ogg2_già_posseduto  <span class="hl str">&quot;Possiedi già</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Oggetto già posseduto da PNG:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: dai_a.
-  -- ORIGINAL EN: check_obj_not_in_act_sg/pl.
-  HAS ogg1_già_posseduto_da_png2_sg  "$+2 possiede già $+1.".
-  HAS ogg1_già_posseduto_da_png2_pl  "$+2 possiedeno già $+1.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: dai_a.</span>
+  <span class="hl slc">-- ORIGINAL EN: check_obj_not_in_act_sg/pl.</span>
+  <span class="hl kwa">HAS</span> ogg1_già_posseduto_da_png2_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">possiede già</span> <span class="hl ipl">$+1</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg1_già_posseduto_da_png2_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">possiedeno già</span> <span class="hl ipl">$+1</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1546,53 +1594,57 @@ risultato che è già disponibile&#8230;&#8203;</p>
 <div class="paragraph">
 <p>Tentare di aprire un oggetto già aperto:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: apri, apri_con
-  -- ORIGINAL EN:  check_obj_not_open_sg/pl
-  HAS ogg_già_aperto_ms "$+1 è già aperto".
-  HAS ogg_già_aperto_mp "$+1 sono già aperti.".
-  HAS ogg_già_aperto_fs "$+1 è già aperta".
-  HAS ogg_già_aperto_fp "$+1 sono già aperte.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: apri, apri_con</span>
+  <span class="hl slc">-- ORIGINAL EN:  check_obj_not_open_sg/pl</span>
+  <span class="hl kwa">HAS</span> ogg_già_aperto_ms <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">è già aperto&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg_già_aperto_mp <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">sono già aperti.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg_già_aperto_fs <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">è già aperta&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg_già_aperto_fp <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">sono già aperte.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Tentare di chiudere un oggetto già chiuso:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: chiudi, chiudi_con
-  -- ORIGINAL EN:  check_obj_open1_sg/pl
-  HAS ogg_già_chiuso_ms "$+1 è già chiuso".
-  HAS ogg_già_chiuso_mp "$+1 sono già chiusi.".
-  HAS ogg_già_chiuso_fs "$+1 è già chiusa".
-  HAS ogg_già_chiuso_fp "$+1 sono già chiuse.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: chiudi, chiudi_con</span>
+  <span class="hl slc">-- ORIGINAL EN:  check_obj_open1_sg/pl</span>
+  <span class="hl kwa">HAS</span> ogg_già_chiuso_ms <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">è già chiuso&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg_già_chiuso_mp <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">sono già chiusi.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg_già_chiuso_fs <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">è già chiusa&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg_già_chiuso_fp <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">sono già chiuse.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Tentare di bloccare un oggetto già bloccato:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: blocca, blocca_con
-  -- ORIGINAL EN:  check_obj_not_locked_sg/pl
-  HAS ogg_già_bloccato_ms "$+1 è già bloccato".
-  HAS ogg_già_bloccato_mp "$+1 sono già bloccati.".
-  HAS ogg_già_bloccato_fs "$+1 è già bloccata".
-  HAS ogg_già_bloccato_fp "$+1 sono già bloccate.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: blocca, blocca_con</span>
+  <span class="hl slc">-- ORIGINAL EN:  check_obj_not_locked_sg/pl</span>
+  <span class="hl kwa">HAS</span> ogg_già_bloccato_ms <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">è già bloccato&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg_già_bloccato_mp <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">sono già bloccati.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg_già_bloccato_fs <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">è già bloccata&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg_già_bloccato_fp <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">sono già bloccate.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Tentare di sbloccare un oggetto già sbloccato:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: sblocca, sblocca_con
-  -- ORIGINAL EN:  check_obj_locked_sg/pl
-  HAS ogg_già_sbloccato_ms "$+1 è già sbloccato".
-  HAS ogg_già_sbloccato_mp "$+1 sono già sbloccati.".
-  HAS ogg_già_sbloccato_fs "$+1 è già sbloccata".
-  HAS ogg_già_sbloccato_fp "$+1 sono già sbloccate.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: sblocca, sblocca_con</span>
+  <span class="hl slc">-- ORIGINAL EN:  check_obj_locked_sg/pl</span>
+  <span class="hl kwa">HAS</span> ogg_già_sbloccato_ms <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">è già sbloccato&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg_già_sbloccato_mp <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">sono già sbloccati.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg_già_sbloccato_fs <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">è già sbloccata&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg_già_sbloccato_fp <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">sono già sbloccate.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1601,31 +1653,33 @@ risultato che è già disponibile&#8230;&#8203;</p>
 <div class="paragraph">
 <p>Il Contenitore è già vuoto:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: svuota + versa.
-  -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
-  HAS ogg1_vuoto_sg  "ci provi, ma $+1 era vuot$$".
-  HAS ogg1_vuoto_pl  "ci provi, ma $+1 erano vuot$$".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: svuota + versa.</span>
+  <span class="hl slc">-- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)</span>
+  <span class="hl kwa">HAS</span> ogg1_vuoto_sg  <span class="hl str">&quot;ci provi, ma</span> <span class="hl ipl">$+1</span> <span class="hl str">era vuot</span><span class="hl esc">$$</span><span class="hl str">&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg1_vuoto_pl  <span class="hl str">&quot;ci provi, ma</span> <span class="hl ipl">$+1</span> <span class="hl str">erano vuot</span><span class="hl esc">$$</span><span class="hl str">&quot;</span><span class="hl kwa">.</span>
 
 
-  -- VERBI: metti_in, lancia_in.
-  -- ORIGINAL EN: check_obj_not_in_cont_sg/pl.
-  HAS ogg1_sg_già_dentro_cont2  "$+1 è già dentro $+2.".
-  HAS ogg1_pl_già_dentro_cont2  "$+1 sono già dentro $+2.".
+  <span class="hl slc">-- VERBI: metti_in, lancia_in.</span>
+  <span class="hl slc">-- ORIGINAL EN: check_obj_not_in_cont_sg/pl.</span>
+  <span class="hl kwa">HAS</span> ogg1_sg_già_dentro_cont2  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">è già dentro</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg1_pl_già_dentro_cont2  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">sono già dentro</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
 
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_obj_not_in_cont2 "$+1 is already full of $+2.".           -- fill_with</code></pre>
+  <span class="hl slc">-- &#64;TODO: *** UNTRANSLATED MESSAGES: ***</span>
+  <span class="hl kwa">HAS</span> check_obj_not_in_cont2 <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">is already full of</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>           <span class="hl slc">-- fill_with</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_superflue_vestiario"><a class="anchor" href="#_superflue_vestiario"></a>Superflue vestiario</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: indossa.
-  -- ORIGINAL EN:  check_obj_not_in_worn1
-  HAS ogg1_già_indossato  "Stai già indossando $+1.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: indossa.</span>
+  <span class="hl slc">-- ORIGINAL EN:  check_obj_not_in_worn1</span>
+  <span class="hl kwa">HAS</span> ogg1_già_indossato  <span class="hl str">&quot;Stai già indossando</span> <span class="hl ipl">$+1</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1634,26 +1688,27 @@ risultato che è già disponibile&#8230;&#8203;</p>
 <div class="sect1">
 <h2 id="_vestiario"><a class="anchor" href="#_vestiario"></a>Vestiario</h2>
 <div class="sectionbody">
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: lascia.
-  -- ORIGINAL EN:  check_obj_not_in_worn3
-  HAS indumento_andrebbe_rimosso  "Prima dovresti toglierti $+1.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: lascia.</span>
+  <span class="hl slc">-- ORIGINAL EN:  check_obj_not_in_worn3</span>
+  <span class="hl kwa">HAS</span> indumento_andrebbe_rimosso  <span class="hl str">&quot;Prima dovresti toglierti</span> <span class="hl ipl">$+1</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
 
-  -- VERBI: togliti.
-  -- ORIGINAL EN:  check_obj_in_worn
-  HAS non_indossi  "Non stai indossando $+1.".
+  <span class="hl slc">-- VERBI: togliti.</span>
+  <span class="hl slc">-- ORIGINAL EN:  check_obj_in_worn</span>
+  <span class="hl kwa">HAS</span> non_indossi  <span class="hl str">&quot;Non stai indossando</span> <span class="hl ipl">$+1</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
 
-  -- VERBI: metti_in, metti_su.
-  -- ORIGINAL EN:  (nessuno)
-  HAS indumento_indossato_PNG_sg  "Al momento $+1 è indossat$$".
-  HAS indumento_indossato_PNG_pl  "Al momento $+1 sono indossat$$".
+  <span class="hl slc">-- VERBI: metti_in, metti_su.</span>
+  <span class="hl slc">-- ORIGINAL EN:  (nessuno)</span>
+  <span class="hl kwa">HAS</span> indumento_indossato_PNG_sg  <span class="hl str">&quot;Al momento</span> <span class="hl ipl">$+1</span> <span class="hl str">è indossat</span><span class="hl esc">$$</span><span class="hl str">&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> indumento_indossato_PNG_pl  <span class="hl str">&quot;Al momento</span> <span class="hl ipl">$+1</span> <span class="hl str">sono indossat</span><span class="hl esc">$$</span><span class="hl str">&quot;</span><span class="hl kwa">.</span>
 
 
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  <span class="hl slc">-- &#64;TODO: *** UNTRANSLATED MESSAGES: ***</span>
 
-  HAS check_obj_not_in_worn2  "It doesn't make sense to $v something you're wearing.".
-  -- attack, attack_with, kick, shoot, shoot_with</code></pre>
+  <span class="hl kwa">HAS</span> check_obj_not_in_worn2  <span class="hl str">&quot;It doesn&apos;t make sense to $v something you&apos;re wearing.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl slc">-- attack, attack_with, kick, shoot, shoot_with</span></code></pre>
 </div>
 </div>
 </div>
@@ -1661,21 +1716,22 @@ risultato che è già disponibile&#8230;&#8203;</p>
 <div class="sect1">
 <h2 id="_armi"><a class="anchor" href="#_armi"></a>Armi</h2>
 <div class="sectionbody">
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: spara_errore, spara_a_errore.
-  -- ORIGINAL EN:  check_count_weapon_in_hero
-  HAS non_hai_armi_da_fuoco  "Non stai portando nessun'arma da fuoco con te.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: spara_errore, spara_a_errore.</span>
+  <span class="hl slc">-- ORIGINAL EN:  check_count_weapon_in_hero</span>
+  <span class="hl kwa">HAS</span> non_hai_armi_da_fuoco  <span class="hl str">&quot;Non stai portando nessun&apos;arma da fuoco con te.&quot;</span><span class="hl kwa">.</span>
 
-  -- VERBI: uccidi_con, attacca_con.
-  -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
-  HAS ogg2_non_arma_adatta_per_sg  "$+2 non è un'arma adatta per".
-  HAS ogg2_non_arma_adatta_per_pl  "$+2 non sono un'arma adatta per".
+  <span class="hl slc">-- VERBI: uccidi_con, attacca_con.</span>
+  <span class="hl slc">-- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)</span>
+  <span class="hl kwa">HAS</span> ogg2_non_arma_adatta_per_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non è un&apos;arma adatta per&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg2_non_arma_adatta_per_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non sono un&apos;arma adatta per&quot;</span><span class="hl kwa">.</span>
 
-  -- VERBI: spara, spara_a.
-  -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
-  HAS ogg1_non_arma_da_fuoco_sg  "$+1 non è un'arma da fuoco.".
-  HAS ogg1_non_arma_da_fuoco_pl  "$+1 non sono un'arma da fuoco.".</code></pre>
+  <span class="hl slc">-- VERBI: spara, spara_a.</span>
+  <span class="hl slc">-- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)</span>
+  <span class="hl kwa">HAS</span> ogg1_non_arma_da_fuoco_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non è un&apos;arma da fuoco.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg1_non_arma_da_fuoco_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non sono un&apos;arma da fuoco.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1683,17 +1739,18 @@ risultato che è già disponibile&#8230;&#8203;</p>
 <div class="sect1">
 <h2 id="_liquidi"><a class="anchor" href="#_liquidi"></a>Liquidi</h2>
 <div class="sectionbody">
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERBI: bevi, prendi (..altri..).
-  -- ORIGINAL EN: (check_liquid_vessel_not_cont)
-  HAS impossibile_maneggiare_liq1  "Non puoi maneggiare $+1 a mani nude.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERBI: bevi, prendi (..altri..).</span>
+  <span class="hl slc">-- ORIGINAL EN: (check_liquid_vessel_not_cont)</span>
+  <span class="hl kwa">HAS</span> impossibile_maneggiare_liq1  <span class="hl str">&quot;Non puoi maneggiare</span> <span class="hl ipl">$+1</span> <span class="hl str">a mani nude.&quot;</span><span class="hl kwa">.</span>
 
 
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
+  <span class="hl slc">-- &#64;TODO: *** UNTRANSLATED MESSAGES: ***</span>
 
-  -- liquid: take_from
-  -- HAS check_liquid_vessel_not_cont "You can't carry $+1 around in your bare hands.".</code></pre>
+  <span class="hl slc">-- liquid: take_from</span>
+  <span class="hl slc">-- HAS check_liquid_vessel_not_cont &quot;You can&apos;t carry $+1 around in your bare hands.&quot;.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1721,30 +1778,31 @@ italiana, così posso seguire meglio il lavoro di traduzione.</p>
 </div>
 <div class="sect2">
 <h3 id="_parametri_inadatti_per_azioni_specifiche"><a class="anchor" href="#_parametri_inadatti_per_azioni_specifiche"></a>Parametri inadatti per azioni specifiche</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- consult_about:
-  HAS illegal_parameter_consult_sg "That's not something you can find information about.".
-  HAS illegal_parameter_consult_pl "Those are not something you can find information about.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- consult_about:</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_consult_sg <span class="hl str">&quot;That&apos;s not something you can find information about.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_consult_pl <span class="hl str">&quot;Those are not something you can find information about.&quot;</span><span class="hl kwa">.</span>
 
-  -- examine:
-  HAS illegal_parameter_examine_sg "That's not something you can examine.".
-  HAS illegal_parameter_examine_pl "Those are not something you can examine.".
+  <span class="hl slc">-- examine:</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_examine_sg <span class="hl str">&quot;That&apos;s not something you can examine.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_examine_pl <span class="hl str">&quot;Those are not something you can examine.&quot;</span><span class="hl kwa">.</span>
 
-  -- give, put, put_in, put_on, put_against, put_behind, put_near,,
-  -- put_under throw_at, throw_in, throw_to, tie_to, use, use_with:
-  HAS illegal_parameter_obj     "You can only $v objects.".
+  <span class="hl slc">-- give, put, put_in, put_on, put_against, put_behind, put_near,,</span>
+  <span class="hl slc">-- put_under throw_at, throw_in, throw_to, tie_to, use, use_with:</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_obj     <span class="hl str">&quot;You can only</span> <span class="hl esc">$v</span> <span class="hl str">objects.&quot;</span><span class="hl kwa">.</span>
 
-  -- look_behind, look_in, look_under:
-  HAS illegal_parameter_there   "It's not possible to look there.".
+  <span class="hl slc">-- look_behind, look_in, look_under:</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_there   <span class="hl str">&quot;It&apos;s not possible to look there.&quot;</span><span class="hl kwa">.</span>
 
-  -- what_is, where_is:
-  HAS illegal_parameter_what_sg "That's not something I know about.".
-  HAS illegal_parameter_what_pl "Those are not something I know about.".
+  <span class="hl slc">-- what_is, where_is:</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_what_sg <span class="hl str">&quot;That&apos;s not something I know about.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_what_pl <span class="hl str">&quot;Those are not something I know about.&quot;</span><span class="hl kwa">.</span>
 
-  -- who_is:
-  HAS illegal_parameter_who_sg  "That's not somebody I know about.".
-  HAS illegal_parameter_who_pl  "Those are not somebody I know about.".</code></pre>
+  <span class="hl slc">-- who_is:</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_who_sg  <span class="hl str">&quot;That&apos;s not somebody I know about.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_who_pl  <span class="hl str">&quot;Those are not somebody I know about.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1772,44 +1830,46 @@ salvo eccezzioni che possano essere generalizzate.</p>
 <div class="paragraph">
 <p>The general message for when a parameter is not suitable with the verb:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS illegal_parameter_sg "That's not something you can $v.".        -- (numerous)
-  HAS illegal_parameter_pl "Those are not something you can $v.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl kwa">HAS</span> illegal_parameter_sg <span class="hl str">&quot;That&apos;s not something you can</span> <span class="hl esc">$v</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>        <span class="hl slc">-- (numerous)</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_pl <span class="hl str">&quot;Those are not something you can</span> <span class="hl esc">$v</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Variations of the above message when a preposition is required after the verb:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- ask_about, tell_about, think_about:
-  HAS illegal_parameter_about_sg "That's not something you can $v about.".
-  HAS illegal_parameter_about_pl "Those are not something you can $v about.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- ask_about, tell_about, think_about:</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_about_sg <span class="hl str">&quot;That&apos;s not something you can</span> <span class="hl esc">$v</span> <span class="hl str">about.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_about_pl <span class="hl str">&quot;Those are not something you can</span> <span class="hl esc">$v</span> <span class="hl str">about.&quot;</span><span class="hl kwa">.</span>
 
-  -- ask_for:
-  HAS illegal_parameter_for_sg   "That's not something you can $v for.".
-  HAS illegal_parameter_for_pl   "Those are not something you can $v for.".
+  <span class="hl slc">-- ask_for:</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_for_sg   <span class="hl str">&quot;That&apos;s not something you can</span> <span class="hl esc">$v</span> <span class="hl str">for.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_for_pl   <span class="hl str">&quot;Those are not something you can</span> <span class="hl esc">$v</span> <span class="hl str">for.&quot;</span><span class="hl kwa">.</span>
 
-  -- take_from:
-  HAS illegal_parameter2_from_sg "That's not something you can take things from.".
-  HAS illegal_parameter2_from_pl "Those are not something you can take things from.".
+  <span class="hl slc">-- take_from:</span>
+  <span class="hl kwa">HAS</span> illegal_parameter2_from_sg <span class="hl str">&quot;That&apos;s not something you can take things from.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> illegal_parameter2_from_pl <span class="hl str">&quot;Those are not something you can take things from.&quot;</span><span class="hl kwa">.</span>
 
-  -- dive_in, jump_in, lie_in, swim_in:
-  HAS illegal_parameter_in_sg    "That's not something you can $v in.".
-  HAS illegal_parameter_in_pl    "Those are not something you can $v in.".
+  <span class="hl slc">-- dive_in, jump_in, lie_in, swim_in:</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_in_sg    <span class="hl str">&quot;That&apos;s not something you can</span> <span class="hl esc">$v</span> <span class="hl str">in.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_in_pl    <span class="hl str">&quot;Those are not something you can</span> <span class="hl esc">$v</span> <span class="hl str">in.&quot;</span><span class="hl kwa">.</span>
 
-  -- get_off, switch_off, turn_off:
-  HAS illegal_parameter_off_sg   "That's not something you can $v off.".
-  HAS illegal_parameter_off_pl   "Those are not something you can $v off.".
+  <span class="hl slc">-- get_off, switch_off, turn_off:</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_off_sg   <span class="hl str">&quot;That&apos;s not something you can</span> <span class="hl esc">$v</span> <span class="hl str">off.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_off_pl   <span class="hl str">&quot;Those are not something you can</span> <span class="hl esc">$v</span> <span class="hl str">off.&quot;</span><span class="hl kwa">.</span>
 
-  -- listen_to, talk_to:
-  HAS illegal_parameter_to_sg    "That's not something you can $v to.".
-  HAS illegal_parameter_to_pl    "Those are not something you can $v to.".
+  <span class="hl slc">-- listen_to, talk_to:</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_to_sg    <span class="hl str">&quot;That&apos;s not something you can</span> <span class="hl esc">$v</span> <span class="hl str">to.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_to_pl    <span class="hl str">&quot;Those are not something you can</span> <span class="hl esc">$v</span> <span class="hl str">to.&quot;</span><span class="hl kwa">.</span>
 
-  -- give, show, tell, tie_to, throw_to:
-  HAS illegal_parameter2_to_sg   "That's not something you can $v things to.".
-  HAS illegal_parameter2_to_pl   "Those are not something you can $v things to.".</code></pre>
+  <span class="hl slc">-- give, show, tell, tie_to, throw_to:</span>
+  <span class="hl kwa">HAS</span> illegal_parameter2_to_sg   <span class="hl str">&quot;That&apos;s not something you can</span> <span class="hl esc">$v</span> <span class="hl str">things to.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> illegal_parameter2_to_pl   <span class="hl str">&quot;Those are not something you can</span> <span class="hl esc">$v</span> <span class="hl str">things to.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1825,51 +1885,54 @@ in 'lib_verbi.i':</p>
 <div class="paragraph">
 <p>The general check message for when an instance cannot be used with the verb :</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- (numerous):
-  HAS check_obj_suitable_sg "That's not something you can $v.".
-  HAS check_obj_suitable_pl "Those are not something you can $v.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- (numerous):</span>
+  <span class="hl kwa">HAS</span> check_obj_suitable_sg <span class="hl str">&quot;That&apos;s not something you can</span> <span class="hl esc">$v</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> check_obj_suitable_pl <span class="hl str">&quot;Those are not something you can</span> <span class="hl esc">$v</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Variations of the above message, needed for example when a preposition is
 required after the verb:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- ask_for:
-  HAS check_obj2_suitable_for_sg "That's not something you can $v for.".
-  HAS check_obj2_suitable_for_pl "Those are not something you can $v for.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- ask_for:</span>
+  <span class="hl kwa">HAS</span> check_obj2_suitable_for_sg <span class="hl str">&quot;That&apos;s not something you can</span> <span class="hl esc">$v</span> <span class="hl str">for.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> check_obj2_suitable_for_pl <span class="hl str">&quot;Those are not something you can</span> <span class="hl esc">$v</span> <span class="hl str">for.&quot;</span><span class="hl kwa">.</span>
 
-  -- turn_off, switch_off:
-  HAS check_obj_suitable_off_sg "That's not something you can $v off.".
-  HAS check_obj_suitable_off_pl "Those are not something you can $v off.".
+  <span class="hl slc">-- turn_off, switch_off:</span>
+  <span class="hl kwa">HAS</span> check_obj_suitable_off_sg <span class="hl str">&quot;That&apos;s not something you can</span> <span class="hl esc">$v</span> <span class="hl str">off.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> check_obj_suitable_off_pl <span class="hl str">&quot;Those are not something you can</span> <span class="hl esc">$v</span> <span class="hl str">off.&quot;</span><span class="hl kwa">.</span>
 
-  -- examine:
-  HAS check_obj_suitable_examine_sg "That's not something you can examine.".
-  HAS check_obj_suitable_examine_pl "Those are not something you can examine.".</code></pre>
+  <span class="hl slc">-- examine:</span>
+  <span class="hl kwa">HAS</span> check_obj_suitable_examine_sg <span class="hl str">&quot;That&apos;s not something you can examine.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> check_obj_suitable_examine_pl <span class="hl str">&quot;Those are not something you can examine.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Other attribute checks:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- empty_in, pour_in, put_in, throw_in:
-  HAS check_obj_allowed_in_sg "$+1 doesn't belong in $+2.".
-  HAS check_obj_allowed_in_pl "$+1 don't belong in $+2.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- empty_in, pour_in, put_in, throw_in:</span>
+  <span class="hl kwa">HAS</span> check_obj_allowed_in_sg <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">doesn&apos;t belong in</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> check_obj_allowed_in_pl <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">don&apos;t belong in</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
 
 
-  -- lift, pull, push, push_with, shake, take, take_from:
-  HAS check_obj_movable "It's not possible to $v $+1.".
+  <span class="hl slc">-- lift, pull, push, push_with, shake, take, take_from:</span>
+  <span class="hl kwa">HAS</span> check_obj_movable <span class="hl str">&quot;It&apos;s not possible to</span> <span class="hl esc">$v</span> <span class="hl str"></span><span class="hl ipl">$+1</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
 
 
-  -- look_behind, look_in, look_under:
-  HAS check_obj_suitable_there "It's not possible to $v there.".
+  <span class="hl slc">-- look_behind, look_in, look_under:</span>
+  <span class="hl kwa">HAS</span> check_obj_suitable_there <span class="hl str">&quot;It&apos;s not possible to</span> <span class="hl esc">$v</span> <span class="hl str">there.&quot;</span><span class="hl kwa">.</span>
 
-  -- throw_in, tie_to:
-  HAS check_obj2_suitable_there "It's not possible to $v anything there.".</code></pre>
+  <span class="hl slc">-- throw_in, tie_to:</span>
+  <span class="hl kwa">HAS</span> check_obj2_suitable_there <span class="hl str">&quot;It&apos;s not possible to</span> <span class="hl esc">$v</span> <span class="hl str">anything there.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1878,42 +1941,46 @@ required after the verb:</p>
 <div class="paragraph">
 <p>Location and containment checks for the hero:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- attack, attack_with, kick, lift, shoot, shoot_with:
-  HAS check_obj_not_in_hero1 "It doesn't make sense to $v something you're holding.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- attack, attack_with, kick, lift, shoot, shoot_with:</span>
+  <span class="hl kwa">HAS</span> check_obj_not_in_hero1 <span class="hl str">&quot;It doesn&apos;t make sense to $v something you&apos;re holding.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Checking whether an object is in a container or not:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- take_from:
-  HAS check_obj_in_cont_sg "$+1 is not in $+2.".
-  HAS check_obj_in_cont_pl "$+1 are not in $+2.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- take_from:</span>
+  <span class="hl kwa">HAS</span> check_obj_in_cont_sg <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">is not in</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> check_obj_in_cont_pl <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">are not in</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Checking whether an object is on a surface or not:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- take_from:
-  HAS check_obj_on_surface_sg "$+1 is not on $+2.".
-  HAS check_obj_on_surface_pl "$+1 are not on $+2.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- take_from:</span>
+  <span class="hl kwa">HAS</span> check_obj_on_surface_sg <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">is not on</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> check_obj_on_surface_pl <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">are not on</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_additional_checks_for_classes"><a class="anchor" href="#_additional_checks_for_classes"></a>Additional checks for classes</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- clothing: wear
-  HAS check_clothing_sex "On second thoughts you decide $+1 won't really suit you.".
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- clothing: wear</span>
+  <span class="hl kwa">HAS</span> check_clothing_sex <span class="hl str">&quot;On second thoughts you decide</span> <span class="hl ipl">$+1</span> <span class="hl str">won&apos;t really suit you.&quot;</span><span class="hl kwa">.</span>
 
-  -- supporter: put_in
-  HAS check_cont_not_supporter "You can't put $+1 inside $+2.".</code></pre>
+  <span class="hl slc">-- supporter: put_in</span>
+  <span class="hl kwa">HAS</span> check_cont_not_supporter <span class="hl str">&quot;You can&apos;t put</span> <span class="hl ipl">$+1</span> <span class="hl str">inside</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1946,8 +2013,5 @@ italiano del modulo delle classi.</p>
 Versione 0.17.0-Alpha<br>
 </div>
 </div>
-<link rel="stylesheet" href="hjs/styles/github.min.css">
-<script src="hjs/highlight.min.js"></script>
-<script>hljs.initHighlighting()</script>
 </body>
 </html>

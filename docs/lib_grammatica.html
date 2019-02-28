@@ -431,6 +431,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./css/styles.css">
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -578,12 +579,13 @@ corretto <code>articolo</code> su ogni istanza dell&#8217;avventura ricade sull&
 </div>
 <div class="sect3">
 <h4 id="_genere_e_numero"><a class="anchor" href="#_genere_e_numero"></a>Genere e numero</h4>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">ADD TO EVERY ENTITY
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">ADD TO EVERY</span> <span class="hl kwb">ENTITY</span>
 
-  IS NOT plurale.
-  IS NOT femminile.</code></pre>
+  <span class="hl kwa">IS NOT</span> plurale<span class="hl kwa">.</span>
+  <span class="hl kwa">IS NOT</span> femminile<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="admonitionblock warning">
@@ -603,9 +605,10 @@ corretto <code>articolo</code> su ogni istanza dell&#8217;avventura ricade sull&
 </div>
 <div class="sect3">
 <h4 id="_nome_proprio"><a class="anchor" href="#_nome_proprio"></a>Nome proprio</h4>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS NOT nome_proprio.                                     ---&gt; named</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl kwa">HAS NOT</span> nome_proprio<span class="hl kwa">.</span>                                     <span class="hl slc">---&gt; named</span></code></pre>
 </div>
 </div>
 <div class="admonitionblock warning">
@@ -625,9 +628,10 @@ corretto <code>articolo</code> su ogni istanza dell&#8217;avventura ricade sull&
 </div>
 <div class="sect3">
 <h4 id="_vocale_per_accordo_aggettivi"><a class="anchor" href="#_vocale_per_accordo_aggettivi"></a>Vocale per accordo aggettivi</h4>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS vocale "o".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl kwa">HAS</span> vocale <span class="hl str">&quot;o&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -647,13 +651,14 @@ drasticamente la lunghezza del codice all&#8217;interno dei verbi.
 Inoltre, questo attributo potrà essere impiegato anche dagli autori stessi,
 poiché la sua utilità non è limitata all&#8217;uso interno che ne fa la libreria.</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS prep_DI "del".
-  HAS prep_A  "al".
-  HAS prep_DA "dal".
-  HAS prep_IN "nel".
-  HAS prep_SU "sul".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl kwa">HAS</span> prep_DI <span class="hl str">&quot;del&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> prep_A  <span class="hl str">&quot;al&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> prep_DA <span class="hl str">&quot;dal&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> prep_IN <span class="hl str">&quot;nel&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> prep_SU <span class="hl str">&quot;sul&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -667,9 +672,10 @@ ciascuna istanza.</p>
 <div class="paragraph">
 <p>Ogni entità ha un attributo che ne specifica l&#8217;articolo determinativo:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS articolo "il".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl kwa">HAS</span> articolo <span class="hl str">&quot;il&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -784,8 +790,5 @@ della grammatica italiana.</p>
 Versione 0.17.0-Alpha<br>
 </div>
 </div>
-<link rel="stylesheet" href="hjs/styles/github.min.css">
-<script src="hjs/highlight.min.js"></script>
-<script>hljs.initHighlighting()</script>
 </body>
 </html>

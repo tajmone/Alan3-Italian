@@ -39,6 +39,7 @@ Data inizio progetto: 2018/04/13.
 - [Stato del progetto](#stato-del-progetto)
 - [Sostieni il progetto](#sostieni-il-progetto)
 - [Ultime novità](#ultime-novit%C3%A0)
+    - [2019/02/28: Adozione di Highlight per la documentazione](#20190228-adozione-di-highlight-per-la-documentazione)
     - [2019/02/27: Passaggio a Alan 3.0beta6 build 1878](#20190227-passaggio-a-alan-30beta6-build-1878)
     - [2019/02/21: Passaggio a Alan 3.0beta6 build 1870](#20190221-passaggio-a-alan-30beta6-build-1870)
     - [2019/02/19: Riscritto il codice per il vestiario](#20190219-riscritto-il-codice-per-il-vestiario)
@@ -56,9 +57,12 @@ Data inizio progetto: 2018/04/13.
     - [Encoding dei file](#encoding-dei-file)
 - [Ringraziamenti](#ringraziamenti)
 - [Componenti terze parti](#componenti-terze-parti)
-    - [Highlight.js](#highlightjs)
-    - [Base16 Eighties](#base16-eighties)
-    - [Attributi italiani Asciidoctor](#attributi-italiani-asciidoctor)
+    - [Base16](#base16)
+    - [Asciidoctor](#asciidoctor)
+        - [Attributi italiani Asciidoctor](#attributi-italiani-asciidoctor)
+    - [Estensione per Highlight](#estensione-per-highlight)
+        - [ERB Templates](#erb-templates)
+    - [Sass Boilerplate](#sass-boilerplate)
 - [Link di approfondimento](#link-di-approfondimento)
 
 <!-- /MarkdownTOC -->
@@ -217,6 +221,23 @@ Grazie.
 
 Alcune notizie flash sugli aggiornamenti importanti del progetto...
 
+## 2019/02/28: Adozione di Highlight per la documentazione
+
+<img src="https://assets.gitlab-static.net/uploads/-/system/project/avatar/6678916/highlight_256.png" style="float: left; width: 192px; padding: 0 20px 10px 0" alt="Highlight logo" title="Logo di Highlight, il coloratore di sintassi di André Simon">
+
+D'ora in poi il progetto utilizzerà lo strumento [Highlight] di [André Simon] (anziché [highlight.js]) per la colorazione sintattica del codice nella documentazione del progetto.
+
+Highlight è uno strumento molto più flessibile di [highlight.js], consente un maggior controllo sulle definizioni delle sintassi e — sebbene attualmente l'estensione di Highlight per Asciidoctor non supporti i callout o la colorazione di codice all'interno di tabelle (ci sto lavorando) — Highlight offre numerosi vantaggi:
+
+<br clear="all" />
+
+- I documenti HTML non dipenderanno più da JavaScript.
+- Supporto per la numerazione delle righe del codice.
+- Estensibilità delle funzionalità tramite plugin Lua.
+- Numerosi formati di output supportati oltre allo HTML (XHTML, RTF, LaTeX, TeX, SVG, BBCode, e altri).
+- [Oltre 210 linguaggi di programmazione e markup supportati].
+- Circa 200 temi colorati nativi.
+
 
 ## 2019/02/27: Passaggio a Alan 3.0beta6 build 1878
 
@@ -340,8 +361,7 @@ Ora restano ancora da tradurre molti messagi di risposta dei verbi, e l'intera l
     + [`/2.1/`](./alanlib/2.1/) (updated: 2018/10/22)
 - [`/demo/`](./demo) — avventura dimostrativa (attualmente disastrata)
 - [`/docs/`](./docs) — documentazione HTML della libreria
-    + [`hjs`](./docs/hjs) — package customizzato di highlight.js
-- [`/docs_src/`](./docs_src) — cartella sorgenti documentazione in AsciiDoc
+- [`/docs_src/`](./docs_src) — cartella sorgenti e risorse per la documentazione in AsciiDoc
 - [`/ricettario/`](./ricettario) — il "Ricettario di Alan" (WIP)
 - [`/test/`](./test) — test suite della libreria
 - [`LICENSE`][License] — Artistic License 2.0
@@ -377,43 +397,16 @@ Infine, ci tengo a ringraziare __S3RioUs JokER__, che mi ha aiutato sin dall'ini
 
 Questo progetto impiega i seguenti componenti e risorse di terze parti.
 
-## Highlight.js
-
-- https://github.com/highlightjs/highlight.js
-
-[Highlight.js] è Copyright (C) 2006, [Ivan Sagalaev], distribuito con licenza BSD3:
-
-    Copyright (c) 2006, Ivan Sagalaev
-    All rights reserved.
-    Redistribution and use in source and binary forms, with or without
-    modification, are permitted provided that the following conditions are met:
-
-        * Redistributions of source code must retain the above copyright
-          notice, this list of conditions and the following disclaimer.
-        * Redistributions in binary form must reproduce the above copyright
-          notice, this list of conditions and the following disclaimer in the
-          documentation and/or other materials provided with the distribution.
-        * Neither the name of highlight.js nor the names of its contributors
-          may be used to endorse or promote products derived from this software
-          without specific prior written permission.
-
-    THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND ANY
-    EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-    DISCLAIMED. IN NO EVENT SHALL THE REGENTS AND CONTRIBUTORS BE LIABLE FOR ANY
-    DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-    ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-
-## Base16 Eighties
+## Base16
 
 - https://github.com/chriskempson/base16-builder
 
-Nel tema CSS di colorazione sintattica di Alan, per highlight.js, ho usato i colori dello schema [Base16 Eighties], preso dal progetto Base16, di [Chris Kempson]  (licenza MIT):
+Nel tema CSS di colorazione sintattica di Alan, per [Highlight], ho usato i seguenti temi di colore [Base16], presi dal progetto [base16-builder], di [Chris Kempson]  (licenza MIT):
+
+- [Base16 Eighties] — di [Chris Kempson].
+- [Base16 Google] — di [Seth Wright].
+
+<!--  -->
 
     Copyright (C) 2012 [Chris Kempson](http://chriskempson.com)
     
@@ -437,7 +430,11 @@ Nel tema CSS di colorazione sintattica di Alan, per highlight.js, ho usato i col
     WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-## Attributi italiani Asciidoctor
+## Asciidoctor
+
+La toolchain per la documentazione HTML tramite [Asciidoctor] riutilizza varie risorse attinte dal [Progetto Asciidoctor], adattate alle esigenze di questo progetto.
+
+### Attributi italiani Asciidoctor
 
 - https://github.com/asciidoctor/asciidoctor/blob/a9dc0e2/data/locale/attributes-it.adoc
 
@@ -465,6 +462,95 @@ La documentazione del progetto usa una versione adattata del file `attributes-it
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
     THE SOFTWARE.
 
+
+## Estensione per Highlight
+
+- https://github.com/asciidoctor/asciidoctor-extensions-lab/blob/18bdf62/lib/highlight-treeprocessor.rb
+
+Il file [`docs_src/adoc/highlight-treeprocessor_mod.rb`][HL rb] è un adattamento a cura di Tristano Ajmone dell'estensione [`highlight-treeprocessor.rb`][HL rb upstream] presa dal progetto [Asciidoctor Extensions Lab] (commit 18bdf62), Copyright © 2014-2016 [Progetto Asciidoctor]  (licenza MIT):
+
+
+    The MIT License
+
+    Copyright (C) 2018 Tristano Ajmone.
+    Copyright (C) 2014-2016 The Asciidoctor Project
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+
+### ERB Templates
+
+- https://github.com/asciidoctor/asciidoctor-backends/tree/master/erb/html5
+
+I file nella cartella [`docs_src/erb/`][erb] sono adattamenti a cura di Tristano Ajmone di [template ERB HTML5] presi dal progetto [Asciidoctor Backends], Copyright © 2012-2016 Dan Allen e il [Progetto Asciidoctor]  (licenza MIT):
+
+    The MIT License
+    
+    Copyright (C) 2018 Tristano Ajmone.
+    Copyright (C) 2012-2016 Dan Allen and the Asciidoctor Project
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+
+
+## Sass Boilerplate
+
+-  https://github.com/magnetikonline/sass-boilerplate
+
+Il mixin `fontFace` all'interno del file [`docs_src/sass/_helpers.scss`][helpers scss] è un adattamento del file "[`fontface.scss`][fontface scss]", preso dal progetto [Sass Boilerplate], Copyright © 2013 Peter Mescalchin, (licenza MIT):
+ 
+    The MIT License (MIT)
+
+    Copyright (c) 2013 Peter Mescalchin
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy of
+    this software and associated documentation files (the "Software"), to deal in
+    the Software without restriction, including without limitation the rights to
+    use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+    the Software, and to permit persons to whom the Software is furnished to do so,
+    subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+    FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+    COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
 # Link di approfondimento
 
 Alan:
@@ -489,8 +575,9 @@ Alan Standard Library:
 [ISO-8859-1]: https://it.wikipedia.org/wiki/ISO/IEC_8859-1 "Vedi la pagina Wikipedia sullo ISO-8859-1"
 
 [programmazione in lingua naturale]: https://en.wikipedia.org/wiki/Natural-language_programming "Vedi la pagina Wikipedia su 'Natural-language_programming'"
-[Inform 7]: http://inform7.com "Visita il sito di Inform 7"
 [The Inform Recipe Book]: http://inform7.com/learn/man/RB_1_1.html "Naviga alla versione online di 'The Inform Recipe Book'"
+
+[Oltre 210 linguaggi di programmazione e markup supportati]: http://www.andre-simon.de/doku/highlight/en/langs.php "Vedi la lista completa dei linguaggi supportati da Highlight"
 
 <!-- Donazione PayPal -->
 
@@ -506,6 +593,12 @@ Alan Standard Library:
 [License]: ./LICENSE "Leggi il testo completo della Artistic License 2.0"
 
 [README_EN]: ./README_EN.md "View English README"
+
+[erb]: ./docs_src/erb/ "Vai alla cartella"
+[HL rb]: ./docs_src/adoc/highlight-treeprocessor_mod.rb
+[HL rb upstream]: https://github.com/asciidoctor/asciidoctor-extensions-lab/blob/18bdf62/lib/highlight-treeprocessor.rb "Vedi il sorgente upstream originale"
+[helpers scss]: ./docs_src/sass/_helpers.scss "Vedi sorgente"
+
 
 <!-- Alan Links -->
 
@@ -544,14 +637,35 @@ Alan Standard Library:
 
 <!-- Third Party Tools & Assets -->
 
-[Base16 Eighties]: https://github.com/chriskempson/base16-builder/blob/master/schemes/eighties.yml "Vedi il sorgente dello schema originale"
+[Inform 7]: http://inform7.com "Visita il sito di Inform 7"
+
+[Asciidoctor]: https://asciidoctor.org/ "Visita il sito di Asciidoctor"
+[progetto Asciidoctor]: https://github.com/asciidoctor "Visita il progetto Asciidoctor su GitHub"
+[Asciidoctor Extensions Lab]: https://github.com/asciidoctor/asciidoctor-extensions-lab/ "Visita il progetto Asciidoctor Extensions Lab su GitHub"
+[Asciidoctor Backends]: https://github.com/asciidoctor/asciidoctor-backends "Visita il progetto Asciidoctor Backends su GitHub"
+[template ERB HTML5]: https://github.com/asciidoctor/asciidoctor-backends/tree/master/erb/html5 "Vedi i sorgenti upstream su GitHub"
+
+[Base16]: http://chriskempson.com/projects/base16/ "Visita il sito di Base16"
+[base16-builder]: https://github.com/chriskempson/base16-builder "Visita il repository di base16-builder"
+[Base16 Eighties]: https://github.com/chriskempson/base16-builder/blob/master/schemes/eighties.yml "Vedi il sorgente originale dello schema di colore"
+[Base16 Google]: https://github.com/chriskempson/base16-builder/blob/master/schemes/google.yml "Vedi il sorgente originale dello schema di colore"
+
+[Sass Boilerplate]: https://github.com/magnetikonline/sass-boilerplate "Visita il progetto Sass Boilerplate su GitHub"
+[fontface scss]: https://github.com/magnetikonline/sass-boilerplate/blob/702d924/fontface.scss "Vedi il sorgente upstream originale"
+
+
 [Doxter]: https://git.io/doxter "Visita il sito di Doxter"
+
+[Highlight]: http://www.andre-simon.de/ "Visita il sito di Highlight"
+
 [highlight.js]: https://highlightjs.org/ "Visita il sito highlight.js"
 
 <!-- Persone -->
 
 [Anssi Räisänen]: https://github.com/AnssiR66 "Guarda il profilo GitHub di Anssi Räisänen"
+[André Simon]: https://gitlab.com/saalen "Guarda il profilo GitLab di André Simon"
 [Chris Kempson]: http://chriskempson.com "Visita il sito di Chris Kempson"
+[Seth Wright]:   http://sethawright.com  "Visita il sito di Seth Wright"
 [Ivan Sagalaev]: https://github.com/isagalaev "Guarda il profilo GitHub di Ivan Sagalaev"
 [Tristano Ajmone]: https://github.com/tajmone "Guarda il profilo GitHub di Tristano Ajmone"
 

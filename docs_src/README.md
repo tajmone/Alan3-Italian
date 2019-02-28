@@ -21,6 +21,9 @@ Questa è la cartella di lavoro per la creazione automatizzata della documentazi
 
 # Contenuti della cartella
 
+- [`./adoc/`][adoc] — risorse per la toolchain HTML di Asciidoctor.
+- [`./erb/`][erb] — template ERB HTML personalizzati per Asciidoctor.
+- [`./sass/`][sass] — sorgenti Sass/SCSS di [`../docs/css/styles.css`][styles.css].
 - [`attributes-it.adoc`][attributes-it] — traduzione italiana attributi AsciiDoc (a cura di Marco Ciampa).
 - [`DOCUMENTA.bat`][DOCUMENTA.bat] — script per generare la documentazione.
 - [`index.asciidoc`][index adoc] — homepage della documentazione.
@@ -79,6 +82,7 @@ Per la creazione della documentazione finale in formato HTML, il progetto utiliz
 
 - [Doxter]
 - [AsciiDoctor]  (Ruby)
+- [Highlight] `>= v3.49`
 
 ## Riguardo Doxter
 
@@ -95,9 +99,12 @@ Per maggior informazioni riguardo la suddivisione della documentazione in region
                                REFERENCE LINKS                                
 ------------------------------------------------------------------------------>
 
+
 [Doxter]: https://github.com/tajmone/doxter "Visita il repository di Doxter su GitHub"
 [AsciiDoc]: http://asciidoc.org/ "Visita il sito di AsciiDoc"
 [AsciiDoctor]: https://asciidoctor.org/ "Visita il sito di Asciidoctor"
+[Highlight]: http://www.andre-simon.de/ "Visita il sito di Highlight"
+
 
 <!-- FILE DI PROGETTO -->
 
@@ -107,6 +114,11 @@ Per maggior informazioni riguardo la suddivisione della documentazione in region
 
 [DOXTER.md]: ./DOXTER.md "Leggi il documento 'Annotazioni Doxter'"
 
+[adoc]: ./adoc/ "Vai alla cartella"
+[erb]:  ./erb/  "Vai alla cartella"
+[sass]: ./sass/ "Vai alla cartella"
+
+[styles.css]: ../docs/css/styles.css "Vedi sorgente del foglio di stile"
 
 <!-- MODULI LIBRERIA -->
 
@@ -157,9 +169,5 @@ Per maggior informazioni riguardo la suddivisione della documentazione in region
 [lib_supplemento adoc]: ./lib_supplemento.asciidoc
 [lib_supplemento html]: ../docs/lib_supplemento.html
 [lib_supplemento html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_supplemento.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
-
-[Doxter]: https://git.io/doxter "Visit Doxter website"
-
-
 
 <!-- EOF -->

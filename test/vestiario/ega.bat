@@ -1,9 +1,10 @@
-:: "ega.bat"                            v0.0.1 | 2019/02/20 | by Tristano Ajmone
+:: -----------------------------------------------------------------------------
+:: "ega.bat"                            v0.2.0 | 2019/02/28 | by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 :: Documenta sorgente Emporio Giorgio Alani
 :: -----------------------------------------------------------------------------
 @ECHO OFF & CLS
-CHCP 28591 > nul &:: ISO 8859-1 Latin 1
+CHCP 65001 > nul &:: (UTF-8 Unicode)
 ECHO [36m##############################################
 ECHO # [93m"Emporio Giorgio Alani"[37m di Tristano Ajmone [36m#
 ECHO ##############################################[0m
@@ -25,6 +26,10 @@ CALL doxter.exe %1 > nul 2>&1 ^
     CALL asciidoctor^
       --verbose^
       -S unsafe^
+      -a source-highlighter=highlight^
+      --template-dir ..\..\docs_src\erb^
+      --require ..\..\docs_src\adoc\highlight-treeprocessor_mod.rb^
+      -a docinfo=shared-head^
       -o %~n1.html ^
          ega_template.adoc ^
       || (

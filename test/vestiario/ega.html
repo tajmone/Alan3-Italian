@@ -431,6 +431,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../docs/css/styles.css">
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -534,12 +535,13 @@ recuperare le preposizioni articolate idonee al nome della stanza tramite
 </tr>
 </table>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">ADD TO EVERY location
-  HAS menzione_stanza "".   -- (opzionale) nome alternativo nei messaggi.
-  HAS uscite_stanza   "".   -- (opzionale) elenco uscite della stanza.
-END ADD TO location.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">ADD TO EVERY</span> <span class="hl kwb">location</span>
+  <span class="hl kwa">HAS</span> menzione_stanza <span class="hl str">&quot;&quot;</span><span class="hl kwa">.</span>   <span class="hl slc">-- (opzionale) nome alternativo nei messaggi.</span>
+  <span class="hl kwa">HAS</span> uscite_stanza   <span class="hl str">&quot;&quot;</span><span class="hl kwa">.</span>   <span class="hl slc">-- (opzionale) elenco uscite della stanza.</span>
+<span class="hl kwa">END ADD TO</span> <span class="hl kwb">location</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -558,59 +560,61 @@ avanti, per rendere più leggibile il codice.</p>
 </div>
 <div class="sect2">
 <h3 id="_entrata_emporio_ga"><a class="anchor" href="#_entrata_emporio_ga"></a>Entrata Emporio GA</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">THE ega_entrata IsA luogo_esterno.
-  NAME 'Davanti all''Emporio Alani'.
-  EXIT nord TO ega_atrio
-    DOES
-      --------------------
-      -- Porte Automatiche
-      --------------------
-      SAY ega_porte:testo_attraversa.
-      LOCATE ega_porte AT ega_atrio.
-      LOCATE ega_telaio_porte AT ega_atrio.
-      -----------------------
-      -- Assistente Personale
-      -----------------------
-      MAKE assistente_ega seguendo.
-  END EXIT.
-  DESCRIPTION "Ti trovi di fronte all'entrata dell'Emporio Giorgio Alani."
-  HAS uscite_stanza "NORD per entrare nell'Emprio.".
-END THE ega_entrata.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">THE</span> ega_entrata <span class="hl kwa">IsA</span> luogo_esterno<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> &apos;Davanti all&apos;&apos;Emporio Alani&apos;<span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> nord <span class="hl kwa">TO</span> ega_atrio
+    <span class="hl kwa">DOES</span>
+      <span class="hl slc">--------------------</span>
+      <span class="hl slc">-- Porte Automatiche</span>
+      <span class="hl slc">--------------------</span>
+      <span class="hl kwa">SAY</span> ega_porte<span class="hl kwa">:</span>testo_attraversa<span class="hl kwa">.</span>
+      <span class="hl kwa">LOCATE</span> ega_porte <span class="hl kwa">AT</span> ega_atrio<span class="hl kwa">.</span>
+      <span class="hl kwa">LOCATE</span> ega_telaio_porte <span class="hl kwa">AT</span> ega_atrio<span class="hl kwa">.</span>
+      <span class="hl slc">-----------------------</span>
+      <span class="hl slc">-- Assistente Personale</span>
+      <span class="hl slc">-----------------------</span>
+      <span class="hl kwa">MAKE</span> assistente_ega seguendo<span class="hl kwa">.</span>
+  <span class="hl kwa">END EXIT.</span>
+  <span class="hl kwa">DESCRIPTION</span> <span class="hl str">&quot;Ti trovi di fronte all&apos;entrata dell&apos;Emporio Giorgio Alani.&quot;</span>
+  <span class="hl kwa">HAS</span> uscite_stanza <span class="hl str">&quot;NORD per entrare nell&apos;Emprio.&quot;</span><span class="hl kwa">.</span>
+<span class="hl kwa">END THE</span> ega_entrata<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_atrio_dellemporio"><a class="anchor" href="#_atrio_dellemporio"></a>Atrio dell&#8217;Emporio</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">THE ega_atrio IsA stanza.
-  NAME 'Atrio dell''Emporio Alani'.
-  HAS menzione_stanza "atrio".
-  HAS articolo "l'".   --&gt; Per una corretta inizializzazione delle preposizioni!
-  EXIT est   TO ega_uomo.
-  EXIT ovest TO ega_donna.
-  EXIT nord  TO ega_camerino.
-  EXIT sud   TO ega_entrata
-    DOES
-      --------------------
-      -- Porte Automatiche
-      --------------------
-      SAY ega_porte:testo_attraversa.
-      LOCATE ega_porte AT ega_atrio.
-      LOCATE ega_telaio_porte AT ega_atrio.
-      -----------------------
-      -- Assistente Personale
-      -----------------------
-      MAKE assistente_ega NOT seguendo.
-      "L'assistente ti saluta mentre lasci l'emporio."
-  END EXIT.
-  DESCRIPTION
-    "Questo lussuoso atrio conduce ai vari reparti dell'emporio."
-  HAS uscite_stanza
-    "EST al reparato uomo, OVEST al reparto donna, e NORD al camerino.".
-END THE ega_atrio.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">THE</span> ega_atrio <span class="hl kwa">IsA</span> stanza<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> &apos;Atrio dell&apos;&apos;Emporio Alani&apos;<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> menzione_stanza <span class="hl str">&quot;atrio&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> articolo <span class="hl str">&quot;l&apos;&quot;</span><span class="hl kwa">.</span>   <span class="hl slc">--&gt; Per una corretta inizializzazione delle preposizioni!</span>
+  <span class="hl kwa">EXIT</span> est   <span class="hl kwa">TO</span> ega_uomo<span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> ovest <span class="hl kwa">TO</span> ega_donna<span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> nord  <span class="hl kwa">TO</span> ega_camerino<span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> sud   <span class="hl kwa">TO</span> ega_entrata
+    <span class="hl kwa">DOES</span>
+      <span class="hl slc">--------------------</span>
+      <span class="hl slc">-- Porte Automatiche</span>
+      <span class="hl slc">--------------------</span>
+      <span class="hl kwa">SAY</span> ega_porte<span class="hl kwa">:</span>testo_attraversa<span class="hl kwa">.</span>
+      <span class="hl kwa">LOCATE</span> ega_porte <span class="hl kwa">AT</span> ega_atrio<span class="hl kwa">.</span>
+      <span class="hl kwa">LOCATE</span> ega_telaio_porte <span class="hl kwa">AT</span> ega_atrio<span class="hl kwa">.</span>
+      <span class="hl slc">-----------------------</span>
+      <span class="hl slc">-- Assistente Personale</span>
+      <span class="hl slc">-----------------------</span>
+      <span class="hl kwa">MAKE</span> assistente_ega <span class="hl kwa">NOT</span> seguendo<span class="hl kwa">.</span>
+      <span class="hl str">&quot;L&apos;assistente ti saluta mentre lasci l&apos;emporio.&quot;</span>
+  <span class="hl kwa">END EXIT.</span>
+  <span class="hl kwa">DESCRIPTION</span>
+    <span class="hl str">&quot;Questo lussuoso atrio conduce ai vari reparti dell&apos;emporio.&quot;</span>
+  <span class="hl kwa">HAS</span> uscite_stanza
+    <span class="hl str">&quot;EST al reparato uomo, OVEST al reparto donna, e NORD al camerino.&quot;</span><span class="hl kwa">.</span>
+<span class="hl kwa">END THE</span> ega_atrio<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -620,187 +624,195 @@ END THE ega_atrio.</code></pre>
 <p>Collochiamo il camerino al centro dell&#8217;emprio (che è quadrato) di modo che
 sia accessibile da tutti i reparti.</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">THE ega_camerino IsA stanza.
-  NAME 'Camerino'.
-  EXIT sud TO ega_atrio
-    DOES SCHEDULE Riattiva_Assistente AT hero AFTER 0.
-  END EXIT.
-  EXIT sudest TO ega_uomo
-    DOES SCHEDULE Riattiva_Assistente AT hero AFTER 0.
-  END EXIT.
-  EXIT est TO ega_costumi
-    DOES SCHEDULE Riattiva_Assistente AT hero AFTER 0.
-  END EXIT.
-  EXIT nordest TO ega_vacante2
-    DOES SCHEDULE Riattiva_Assistente AT hero AFTER 0.
-  END EXIT.
-  EXIT nord TO ega_vacante1
-    DOES SCHEDULE Riattiva_Assistente AT hero AFTER 0.
-  END EXIT.
-  EXIT nordovest TO ega_lavoro
-    DOES SCHEDULE Riattiva_Assistente AT hero AFTER 0.
-  END EXIT.
-  EXIT ovest TO ega_sport
-    DOES SCHEDULE Riattiva_Assistente AT hero AFTER 0.
-  END EXIT.
-  EXIT sudovest TO ega_donna
-    DOES SCHEDULE Riattiva_Assistente AT hero AFTER 0.
-  END EXIT.
-  DESCRIPTION
-    "Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per
-     poterti spogliare e provare i vestiti."
-  HAS uscite_stanza
-    "NORD al reparto 1, NORDEST al reparto 2,
-     EST ai costumi,
-     SUDEST al reparto uomo,
-     SUD all'atrio,
-     SUDOVEST al reparto donna,
-     OVEST al reparto sport, e
-     NORDOVEST al reparto lavoro.".
-  VERB spogliati -- Consenti all'eroe di spogliarsi all'interno del camerino:
-    DOES ONLY
-      IF COUNT IsA indumento, DIRECTLY IN hero, IS indossato &gt; 0
-        THEN
-          "Ti spogli di tutti gli indumenti che indossavi e li getti a terra."
-          FOR EACH ind_indossato IsA indumento, DIRECTLY IN Hero, IS indossato
-            DO
-              MAKE ind_indossato NOT indossato.
-              LOCATE ind_indossato AT CURRENT LOCATION.
-          END FOR.
-        ELSE "Non stai indossando nulla.."
-      END IF.
-  END VERB spogliati.
-END THE ega_camerino.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">THE</span> ega_camerino <span class="hl kwa">IsA</span> stanza<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> &apos;Camerino&apos;<span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> sud <span class="hl kwa">TO</span> ega_atrio
+    <span class="hl kwa">DOES SCHEDULE</span> Riattiva_Assistente <span class="hl kwa">AT</span> <span class="hl kwc">hero</span> <span class="hl kwa">AFTER</span> <span class="hl num">0</span><span class="hl kwa">.</span>
+  <span class="hl kwa">END EXIT.</span>
+  <span class="hl kwa">EXIT</span> sudest <span class="hl kwa">TO</span> ega_uomo
+    <span class="hl kwa">DOES SCHEDULE</span> Riattiva_Assistente <span class="hl kwa">AT</span> <span class="hl kwc">hero</span> <span class="hl kwa">AFTER</span> <span class="hl num">0</span><span class="hl kwa">.</span>
+  <span class="hl kwa">END EXIT.</span>
+  <span class="hl kwa">EXIT</span> est <span class="hl kwa">TO</span> ega_costumi
+    <span class="hl kwa">DOES SCHEDULE</span> Riattiva_Assistente <span class="hl kwa">AT</span> <span class="hl kwc">hero</span> <span class="hl kwa">AFTER</span> <span class="hl num">0</span><span class="hl kwa">.</span>
+  <span class="hl kwa">END EXIT.</span>
+  <span class="hl kwa">EXIT</span> nordest <span class="hl kwa">TO</span> ega_vacante2
+    <span class="hl kwa">DOES SCHEDULE</span> Riattiva_Assistente <span class="hl kwa">AT</span> <span class="hl kwc">hero</span> <span class="hl kwa">AFTER</span> <span class="hl num">0</span><span class="hl kwa">.</span>
+  <span class="hl kwa">END EXIT.</span>
+  <span class="hl kwa">EXIT</span> nord <span class="hl kwa">TO</span> ega_vacante1
+    <span class="hl kwa">DOES SCHEDULE</span> Riattiva_Assistente <span class="hl kwa">AT</span> <span class="hl kwc">hero</span> <span class="hl kwa">AFTER</span> <span class="hl num">0</span><span class="hl kwa">.</span>
+  <span class="hl kwa">END EXIT.</span>
+  <span class="hl kwa">EXIT</span> nordovest <span class="hl kwa">TO</span> ega_lavoro
+    <span class="hl kwa">DOES SCHEDULE</span> Riattiva_Assistente <span class="hl kwa">AT</span> <span class="hl kwc">hero</span> <span class="hl kwa">AFTER</span> <span class="hl num">0</span><span class="hl kwa">.</span>
+  <span class="hl kwa">END EXIT.</span>
+  <span class="hl kwa">EXIT</span> ovest <span class="hl kwa">TO</span> ega_sport
+    <span class="hl kwa">DOES SCHEDULE</span> Riattiva_Assistente <span class="hl kwa">AT</span> <span class="hl kwc">hero</span> <span class="hl kwa">AFTER</span> <span class="hl num">0</span><span class="hl kwa">.</span>
+  <span class="hl kwa">END EXIT.</span>
+  <span class="hl kwa">EXIT</span> sudovest <span class="hl kwa">TO</span> ega_donna
+    <span class="hl kwa">DOES SCHEDULE</span> Riattiva_Assistente <span class="hl kwa">AT</span> <span class="hl kwc">hero</span> <span class="hl kwa">AFTER</span> <span class="hl num">0</span><span class="hl kwa">.</span>
+  <span class="hl kwa">END EXIT.</span>
+  <span class="hl kwa">DESCRIPTION</span>
+    <span class="hl str">&quot;Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per</span>
+<span class="hl str">     poterti spogliare e provare i vestiti.&quot;</span>
+  <span class="hl kwa">HAS</span> uscite_stanza
+    <span class="hl str">&quot;NORD al reparto 1, NORDEST al reparto 2,</span>
+<span class="hl str">     EST ai costumi,</span>
+<span class="hl str">     SUDEST al reparto uomo,</span>
+<span class="hl str">     SUD all&apos;atrio,</span>
+<span class="hl str">     SUDOVEST al reparto donna,</span>
+<span class="hl str">     OVEST al reparto sport, e</span>
+<span class="hl str">     NORDOVEST al reparto lavoro.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">VERB</span> spogliati <span class="hl slc">-- Consenti all&apos;eroe di spogliarsi all&apos;interno del camerino:</span>
+    <span class="hl kwa">DOES ONLY</span>
+      <span class="hl kwa">IF COUNT IsA</span> indumento<span class="hl kwa">, DIRECTLY IN</span> <span class="hl kwc">hero</span><span class="hl kwa">, IS</span> indossato <span class="hl opt">&gt;</span> <span class="hl num">0</span>
+        <span class="hl kwa">THEN</span>
+          <span class="hl str">&quot;Ti spogli di tutti gli indumenti che indossavi e li getti a terra.&quot;</span>
+          <span class="hl kwa">FOR EACH</span> ind_indossato <span class="hl kwa">IsA</span> indumento<span class="hl kwa">, DIRECTLY IN</span> <span class="hl kwc">Hero</span><span class="hl kwa">, IS</span> indossato
+            <span class="hl kwa">DO</span>
+              <span class="hl kwa">MAKE</span> ind_indossato <span class="hl kwa">NOT</span> indossato<span class="hl kwa">.</span>
+              <span class="hl kwa">LOCATE</span> ind_indossato <span class="hl kwa">AT CURRENT</span> <span class="hl kwb">LOCATION</span><span class="hl kwa">.</span>
+          <span class="hl kwa">END FOR.</span>
+        <span class="hl kwa">ELSE</span> <span class="hl str">&quot;Non stai indossando nulla..&quot;</span>
+      <span class="hl kwa">END IF.</span>
+  <span class="hl kwa">END VERB</span> spogliati<span class="hl kwa">.</span>
+<span class="hl kwa">END THE</span> ega_camerino<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_reparto_abbigliamento_uomo"><a class="anchor" href="#_reparto_abbigliamento_uomo"></a>Reparto Abbigliamento Uomo</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">THE ega_uomo IsA stanza.
-  NAME 'Reparto Uomo'.
-  HAS menzione_stanza "reparto uomo".
-  EXIT ovest     TO ega_atrio.
-  EXIT nord      TO ega_costumi.
-  EXIT nordovest TO ega_camerino.
-  DESCRIPTION
-    "Qui puoi trovare tutto ciò che un uomo desidererebbe indossare."
-  HAS uscite_stanza
-    "NORD ai Costumi, NORDOVEST al camerino, e OVEST all'atrio.".
-  END THE ega_uomo.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">THE</span> ega_uomo <span class="hl kwa">IsA</span> stanza<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> &apos;Reparto Uomo&apos;<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> menzione_stanza <span class="hl str">&quot;reparto uomo&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> ovest     <span class="hl kwa">TO</span> ega_atrio<span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> nord      <span class="hl kwa">TO</span> ega_costumi<span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> nordovest <span class="hl kwa">TO</span> ega_camerino<span class="hl kwa">.</span>
+  <span class="hl kwa">DESCRIPTION</span>
+    <span class="hl str">&quot;Qui puoi trovare tutto ciò che un uomo desidererebbe indossare.&quot;</span>
+  <span class="hl kwa">HAS</span> uscite_stanza
+    <span class="hl str">&quot;NORD ai Costumi, NORDOVEST al camerino, e OVEST all&apos;atrio.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">END THE</span> ega_uomo<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_reparto_abbigliamento_donna"><a class="anchor" href="#_reparto_abbigliamento_donna"></a>Reparto Abbigliamento Donna</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">THE ega_donna IsA stanza.
-  NAME 'Reparto Donna'.
-  HAS menzione_stanza "reparto donna".
-  EXIT est     TO ega_atrio.
-  EXIT nord    TO ega_sport.
-  EXIT nordest TO ega_camerino.
-  DESCRIPTION
-    "Non vi è sogno di moda femminile che i vestiti di questo reparto non
-     possano esaudire."
-  HAS uscite_stanza
-    "NORD al reparto sport, NORDEST al camerino, e EST all'atrio.".
-END THE ega_donna.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">THE</span> ega_donna <span class="hl kwa">IsA</span> stanza<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> &apos;Reparto Donna&apos;<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> menzione_stanza <span class="hl str">&quot;reparto donna&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> est     <span class="hl kwa">TO</span> ega_atrio<span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> nord    <span class="hl kwa">TO</span> ega_sport<span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> nordest <span class="hl kwa">TO</span> ega_camerino<span class="hl kwa">.</span>
+  <span class="hl kwa">DESCRIPTION</span>
+    <span class="hl str">&quot;Non vi è sogno di moda femminile che i vestiti di questo reparto non</span>
+<span class="hl str">     possano esaudire.&quot;</span>
+  <span class="hl kwa">HAS</span> uscite_stanza
+    <span class="hl str">&quot;NORD al reparto sport, NORDEST al camerino, e EST all&apos;atrio.&quot;</span><span class="hl kwa">.</span>
+<span class="hl kwa">END THE</span> ega_donna<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_reparto_costumi"><a class="anchor" href="#_reparto_costumi"></a>Reparto costumi</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">THE ega_costumi IsA stanza.
-  NAME 'Reparto costumi'.
-  HAS menzione_stanza "reparto costumi".
-  EXIT sud   TO ega_uomo.
-  EXIT ovest TO ega_camerino.
-  EXIT nord  TO ega_vacante2.
-  DESCRIPTION
-    "Qui puoi trovare un custome per ogni occasione."
-  HAS uscite_stanza
-    "SUD al reparto uomo, NORD al reparto 2, e OVEST al camerino.".
-END THE ega_costumi.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">THE</span> ega_costumi <span class="hl kwa">IsA</span> stanza<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> &apos;Reparto costumi&apos;<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> menzione_stanza <span class="hl str">&quot;reparto costumi&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> sud   <span class="hl kwa">TO</span> ega_uomo<span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> ovest <span class="hl kwa">TO</span> ega_camerino<span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> nord  <span class="hl kwa">TO</span> ega_vacante2<span class="hl kwa">.</span>
+  <span class="hl kwa">DESCRIPTION</span>
+    <span class="hl str">&quot;Qui puoi trovare un custome per ogni occasione.&quot;</span>
+  <span class="hl kwa">HAS</span> uscite_stanza
+    <span class="hl str">&quot;SUD al reparto uomo, NORD al reparto 2, e OVEST al camerino.&quot;</span><span class="hl kwa">.</span>
+<span class="hl kwa">END THE</span> ega_costumi<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_reparto_abbigliamento_sportivo"><a class="anchor" href="#_reparto_abbigliamento_sportivo"></a>Reparto Abbigliamento Sportivo</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">THE ega_sport IsA stanza.
-  NAME 'Reparto Abbigliamento Sportivo'.
-  HAS menzione_stanza "reparto sportivo".
-  EXIT nord TO ega_lavoro.
-  EXIT sud  TO ega_donna.
-  EXIT est  TO ega_camerino.
-  DESCRIPTION
-    "Attorno a te vedi abbigliamento e attrezzatura per più sport di quanti tu
-     conosca."
-  HAS uscite_stanza
-    "NORD al reparto lavoro, SUD al reparto donna, e EST al camerino.".
-END THE ega_sport.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">THE</span> ega_sport <span class="hl kwa">IsA</span> stanza<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> &apos;Reparto Abbigliamento Sportivo&apos;<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> menzione_stanza <span class="hl str">&quot;reparto sportivo&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> nord <span class="hl kwa">TO</span> ega_lavoro<span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> sud  <span class="hl kwa">TO</span> ega_donna<span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> est  <span class="hl kwa">TO</span> ega_camerino<span class="hl kwa">.</span>
+  <span class="hl kwa">DESCRIPTION</span>
+    <span class="hl str">&quot;Attorno a te vedi abbigliamento e attrezzatura per più sport di quanti tu</span>
+<span class="hl str">     conosca.&quot;</span>
+  <span class="hl kwa">HAS</span> uscite_stanza
+    <span class="hl str">&quot;NORD al reparto lavoro, SUD al reparto donna, e EST al camerino.&quot;</span><span class="hl kwa">.</span>
+<span class="hl kwa">END THE</span> ega_sport<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_reparto_abbigliamento_lavoro_e_antinfortunistica"><a class="anchor" href="#_reparto_abbigliamento_lavoro_e_antinfortunistica"></a>Reparto Abbigliamento Lavoro e Antinfortunistica</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">THE ega_lavoro IsA stanza.
-  NAME 'Reparto Abbigliamento Lavoro e Antinfortunistica'.
-  HAS menzione_stanza "reparto lavoro".
-  EXIT sud    TO ega_sport.
-  EXIT est    TO ega_vacante1.
-  EXIT sudest TO ega_camerino.
-  DESCRIPTION
-    "Qui puoi trovare uniformi e accessori antinfortunistici per varie professioni."
-  HAS uscite_stanza
-    "SUD al reparto sport, EST al reparto 1, e SUDEST al camerino.".
-END THE ega_lavoro.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">THE</span> ega_lavoro <span class="hl kwa">IsA</span> stanza<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> &apos;Reparto Abbigliamento Lavoro e Antinfortunistica&apos;<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> menzione_stanza <span class="hl str">&quot;reparto lavoro&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> sud    <span class="hl kwa">TO</span> ega_sport<span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> est    <span class="hl kwa">TO</span> ega_vacante1<span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> sudest <span class="hl kwa">TO</span> ega_camerino<span class="hl kwa">.</span>
+  <span class="hl kwa">DESCRIPTION</span>
+    <span class="hl str">&quot;Qui puoi trovare uniformi e accessori antinfortunistici per varie professioni.&quot;</span>
+  <span class="hl kwa">HAS</span> uscite_stanza
+    <span class="hl str">&quot;SUD al reparto sport, EST al reparto 1, e SUDEST al camerino.&quot;</span><span class="hl kwa">.</span>
+<span class="hl kwa">END THE</span> ega_lavoro<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_reparto_1_non_assegnato"><a class="anchor" href="#_reparto_1_non_assegnato"></a>Reparto 1 (non assegnato)</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">THE ega_vacante1 IsA stanza.
-  NAME 'Reparto #1 (vuoto)'.
-  HAS menzione_stanza "reparto 1".
-  EXIT sud   TO ega_camerino.
-  EXIT est   TO ega_vacante2.
-  EXIT ovest TO ega_lavoro.
-  DESCRIPTION
-    "Questo reparto non è ancora stato assegnato; i suoi scaffali sono vuoti."
-  HAS uscite_stanza
-    "EST al reparto 2, OVEST al reparto lavoro, e SUD al camerino.".
-END THE ega_vacante1.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">THE</span> ega_vacante1 <span class="hl kwa">IsA</span> stanza<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> &apos;Reparto #1 (vuoto)&apos;<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> menzione_stanza <span class="hl str">&quot;reparto 1&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> sud   <span class="hl kwa">TO</span> ega_camerino<span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> est   <span class="hl kwa">TO</span> ega_vacante2<span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> ovest <span class="hl kwa">TO</span> ega_lavoro<span class="hl kwa">.</span>
+  <span class="hl kwa">DESCRIPTION</span>
+    <span class="hl str">&quot;Questo reparto non è ancora stato assegnato; i suoi scaffali sono vuoti.&quot;</span>
+  <span class="hl kwa">HAS</span> uscite_stanza
+    <span class="hl str">&quot;EST al reparto 2, OVEST al reparto lavoro, e SUD al camerino.&quot;</span><span class="hl kwa">.</span>
+<span class="hl kwa">END THE</span> ega_vacante1<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_reparto_2_non_assegnato"><a class="anchor" href="#_reparto_2_non_assegnato"></a>Reparto 2 (non assegnato)</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">THE ega_vacante2 IsA stanza.
-  NAME 'Reparto #2 (vuoto)'.
-  HAS menzione_stanza "reparto 2".
-  EXIT sudovest TO ega_camerino.
-  EXIT ovest    TO ega_vacante1.
-  EXIT sud      TO ega_costumi.
-  DESCRIPTION
-    "Questo reparto non è ancora stato assegnato; i suoi scaffali sono vuoti."
-  HAS uscite_stanza
-    "SUD ai costumi, OVEST al reparto 1, e SUDOVEST al camerino.".
-END THE ega_vacante2.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">THE</span> ega_vacante2 <span class="hl kwa">IsA</span> stanza<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> &apos;Reparto #2 (vuoto)&apos;<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> menzione_stanza <span class="hl str">&quot;reparto 2&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> sudovest <span class="hl kwa">TO</span> ega_camerino<span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> ovest    <span class="hl kwa">TO</span> ega_vacante1<span class="hl kwa">.</span>
+  <span class="hl kwa">EXIT</span> sud      <span class="hl kwa">TO</span> ega_costumi<span class="hl kwa">.</span>
+  <span class="hl kwa">DESCRIPTION</span>
+    <span class="hl str">&quot;Questo reparto non è ancora stato assegnato; i suoi scaffali sono vuoti.&quot;</span>
+  <span class="hl kwa">HAS</span> uscite_stanza
+    <span class="hl str">&quot;SUD ai costumi, OVEST al reparto 1, e SUDOVEST al camerino.&quot;</span><span class="hl kwa">.</span>
+<span class="hl kwa">END THE</span> ega_vacante2<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -845,12 +857,12 @@ indumenti presenti nel gioco.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Indumento</th>
-<th class="tableblock halign-right valign-top">val_testa</th>
-<th class="tableblock halign-right valign-top">val_viso</th>
-<th class="tableblock halign-right valign-top">val_tronco</th>
-<th class="tableblock halign-right valign-top">val_gambe</th>
-<th class="tableblock halign-right valign-top">val_piedi</th>
-<th class="tableblock halign-right valign-top">val_mani</th>
+<th class="tableblock halign-right valign-top">testa</th>
+<th class="tableblock halign-right valign-top">viso</th>
+<th class="tableblock halign-right valign-top">tronco</th>
+<th class="tableblock halign-right valign-top">gambe</th>
+<th class="tableblock halign-right valign-top">piedi</th>
+<th class="tableblock halign-right valign-top">mani</th>
 </tr>
 </thead>
 <tbody>
@@ -1040,12 +1052,13 @@ semplificare la creazione e la gestione di indumenti dello stesso genere.</p>
 </div>
 <div class="sect3">
 <h4 id="_copricapi"><a class="anchor" href="#_copricapi"></a>Copricapi</h4>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">EVERY cl_cappello IsA indumento.
-  NAME cappello.
-  HAS val_testa 2.
-END EVERY.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">EVERY</span> cl_cappello <span class="hl kwa">IsA</span> indumento<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> cappello<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> strato_testa <span class="hl num">2</span><span class="hl kwa">.</span>
+<span class="hl kwa">END EVERY.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1055,106 +1068,111 @@ END EVERY.</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_biancheria"><a class="anchor" href="#_biancheria"></a>Biancheria</h4>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">EVERY proto_biancheria IsA indumento.
-  NAME biancheria.
-END EVERY.
---------
--- Torso
---------
-EVERY cl_canottiera IsA proto_biancheria.
-  NAME canottiera.
-  HAS articolo "la".
-  HAS val_tronco 2.
-END EVERY.
-----------
--- Inguine
-----------
-EVERY cl_mutande IsA proto_biancheria.
-  NAME mutande.
-  HAS articolo "le".
-  HAS val_gambe 2.
-  INDEFINITE ARTICLE "un paio di"
-END EVERY.
---------
--- Piedi
---------
-EVERY cl_calzini IsA indumento.
-  NAME calzini.
-  HAS articolo "i".
-  HAS val_piedi 2.
-  INDEFINITE ARTICLE "un paio di"
-END EVERY.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">EVERY</span> proto_biancheria <span class="hl kwa">IsA</span> indumento<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> biancheria<span class="hl kwa">.</span>
+<span class="hl kwa">END EVERY.</span>
+<span class="hl slc">--------</span>
+<span class="hl slc">-- Torso</span>
+<span class="hl slc">--------</span>
+<span class="hl kwa">EVERY</span> cl_canottiera <span class="hl kwa">IsA</span> proto_biancheria<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> canottiera<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> articolo <span class="hl str">&quot;la&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> strato_tronco <span class="hl num">2</span><span class="hl kwa">.</span>
+<span class="hl kwa">END EVERY.</span>
+<span class="hl slc">----------</span>
+<span class="hl slc">-- Inguine</span>
+<span class="hl slc">----------</span>
+<span class="hl kwa">EVERY</span> cl_mutande <span class="hl kwa">IsA</span> proto_biancheria<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> mutande<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> articolo <span class="hl str">&quot;le&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> strato_gambe <span class="hl num">2</span><span class="hl kwa">.</span>
+  <span class="hl kwa">INDEFINITE ARTICLE</span> <span class="hl str">&quot;un paio di&quot;</span>
+<span class="hl kwa">END EVERY.</span>
+<span class="hl slc">--------</span>
+<span class="hl slc">-- Piedi</span>
+<span class="hl slc">--------</span>
+<span class="hl kwa">EVERY</span> cl_calzini <span class="hl kwa">IsA</span> indumento<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> calzini<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> articolo <span class="hl str">&quot;i&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> strato_piedi <span class="hl num">2</span><span class="hl kwa">.</span>
+  <span class="hl kwa">INDEFINITE ARTICLE</span> <span class="hl str">&quot;un paio di&quot;</span>
+<span class="hl kwa">END EVERY.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_calzature"><a class="anchor" href="#_calzature"></a>Calzature</h4>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">EVERY cl_scarpe IsA indumento.
-  NAME scarpe.
-  HAS articolo "le".
-  HAS val_piedi 4.
-  INDEFINITE ARTICLE "un paio di"
-END EVERY.
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">EVERY</span> cl_scarpe <span class="hl kwa">IsA</span> indumento<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> scarpe<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> articolo <span class="hl str">&quot;le&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> strato_piedi <span class="hl num">4</span><span class="hl kwa">.</span>
+  <span class="hl kwa">INDEFINITE ARTICLE</span> <span class="hl str">&quot;un paio di&quot;</span>
+<span class="hl kwa">END EVERY.</span>
 
-EVERY cl_stivali IsA indumento.
-  NAME stivali.
-  HAS articolo "gli".
-  HAS val_piedi 4.
-  INDEFINITE ARTICLE "un paio di"
-END EVERY.</code></pre>
+<span class="hl kwa">EVERY</span> cl_stivali <span class="hl kwa">IsA</span> indumento<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> stivali<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> articolo <span class="hl str">&quot;gli&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> strato_piedi <span class="hl num">4</span><span class="hl kwa">.</span>
+  <span class="hl kwa">INDEFINITE ARTICLE</span> <span class="hl str">&quot;un paio di&quot;</span>
+<span class="hl kwa">END EVERY.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_magliette_camicie"><a class="anchor" href="#_magliette_camicie"></a>Magliette, camicie</h4>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">EVERY cl_tshirt IsA indumento.
-  HAS val_tronco 8.
-  HAS articolo "la".
-  NAME 'T-shirt'.
-  NAME tshirt.
-  NAME maglietta.
-END EVERY.
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">EVERY</span> cl_tshirt <span class="hl kwa">IsA</span> indumento<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> strato_tronco <span class="hl num">8</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> articolo <span class="hl str">&quot;la&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> &apos;T-shirt&apos;<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> tshirt<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> maglietta<span class="hl kwa">.</span>
+<span class="hl kwa">END EVERY.</span>
 
-EVERY cl_camicia IsA indumento.
-  HAS val_tronco 8.
-  HAS articolo "la".
-  NAME camicia.
-END EVERY.</code></pre>
+<span class="hl kwa">EVERY</span> cl_camicia <span class="hl kwa">IsA</span> indumento<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> strato_tronco <span class="hl num">8</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> articolo <span class="hl str">&quot;la&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> camicia<span class="hl kwa">.</span>
+<span class="hl kwa">END EVERY.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_maglioni"><a class="anchor" href="#_maglioni"></a>Maglioni</h4>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">EVERY proto_maglione IsA indumento.
-  HAS val_tronco 16.
-END EVERY.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">EVERY</span> proto_maglione <span class="hl kwa">IsA</span> indumento<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> strato_tronco <span class="hl num">16</span><span class="hl kwa">.</span>
+<span class="hl kwa">END EVERY.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_indumenti_gambe"><a class="anchor" href="#_indumenti_gambe"></a>Indumenti gambe</h4>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">EVERY proto_gonna IsA indumento.
-  NAME gonna.
-  HAS articolo "la".
-  HAS val_gambe 32.
-END EVERY.
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">EVERY</span> proto_gonna <span class="hl kwa">IsA</span> indumento<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> gonna<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> articolo <span class="hl str">&quot;la&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> strato_gambe <span class="hl num">32</span><span class="hl kwa">. NOT</span> blocca_gambe<span class="hl kwa">.</span>
+<span class="hl kwa">END EVERY.</span>
 
-EVERY proto_collant IsA indumento.
-  NAME collant.
-  HAS articolo "i".
-  INDEFINITE ARTICLE "un paio di"
-  HAS val_gambe 8.
-END EVERY.</code></pre>
+<span class="hl kwa">EVERY</span> proto_collant <span class="hl kwa">IsA</span> indumento<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> collant<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> articolo <span class="hl str">&quot;i&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">INDEFINITE ARTICLE</span> <span class="hl str">&quot;un paio di&quot;</span>
+  <span class="hl kwa">HAS</span> strato_gambe <span class="hl num">8</span><span class="hl kwa">.</span>
+<span class="hl kwa">END EVERY.</span></code></pre>
 </div>
 </div>
 <div class="sect4">
@@ -1164,62 +1182,66 @@ END EVERY.</code></pre>
 di avere tasche, ecc.) sfrutteremo questa funzionalità nei pantaloni, così
 da poter testare come la libreria gestisce oggetti annidati nel vestiario.</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">EVERY proto_pantaloni IsA indumento.
-  NAME pantaloni.
-  NAME tasche. --&gt; per catturare "metti ogg in tasche"
-  HAS articolo "i".
-  INDEFINITE ARTICLE "un paio di"
-  HAS val_gambe 16.
-            -- ----------------------------------
-  CONTAINER -- Personalizza descrizione contenuti
-    HEADER  -- ----------------------------------
-      "Nelle tasche dei pantaloni"
-      IF COUNT IsA thing, DIRECTLY IN THIS &gt;1
-        THEN "ci sono"
-        ELSE "c'è"
-      END IF.
-END EVERY.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">EVERY</span> proto_pantaloni <span class="hl kwa">IsA</span> indumento<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> pantaloni<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> tasche<span class="hl kwa">.</span> <span class="hl slc">--&gt; per catturare &quot;metti ogg in tasche&quot;</span>
+  <span class="hl kwa">HAS</span> articolo <span class="hl str">&quot;i&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">INDEFINITE ARTICLE</span> <span class="hl str">&quot;un paio di&quot;</span>
+  <span class="hl kwa">HAS</span> strato_gambe <span class="hl num">16</span><span class="hl kwa">.</span>
+            <span class="hl slc">-- ----------------------------------</span>
+  <span class="hl kwa">CONTAINER</span> <span class="hl slc">-- Personalizza descrizione contenuti</span>
+    <span class="hl kwa">HEADER</span>  <span class="hl slc">-- ----------------------------------</span>
+      <span class="hl str">&quot;Nelle tasche dei pantaloni&quot;</span>
+      <span class="hl kwa">IF COUNT IsA</span> <span class="hl kwb">thing</span><span class="hl kwa">, DIRECTLY IN THIS</span> <span class="hl opt">&gt;</span><span class="hl num">1</span>
+        <span class="hl kwa">THEN</span> <span class="hl str">&quot;ci sono&quot;</span>
+        <span class="hl kwa">ELSE</span> <span class="hl str">&quot;c&apos;è&quot;</span>
+      <span class="hl kwa">END IF.</span>
+<span class="hl kwa">END EVERY.</span></code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_tute_da_lavoro"><a class="anchor" href="#_tute_da_lavoro"></a>Tute da lavoro</h4>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">EVERY proto_tuta IsA indumento.
-  NAME tuta.
-  HAS articolo "la".
-  HAS val_tronco 8.
-  HAS val_gambe 32.
-END EVERY.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">EVERY</span> proto_tuta <span class="hl kwa">IsA</span> indumento<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> tuta<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> articolo <span class="hl str">&quot;la&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> strato_tronco <span class="hl num">8</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> strato_gambe <span class="hl num">32</span><span class="hl kwa">.</span>
+<span class="hl kwa">END EVERY.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_abiti_da_donna_pezzo_unico"><a class="anchor" href="#_abiti_da_donna_pezzo_unico"></a>Abiti da donna (pezzo unico)</h4>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">EVERY cl_abito IsA indumento.
-  HAS articolo "l'".
-  NAME abito.
-  HAS val_tronco 8.
-  HAS val_gambe 32.
-END EVERY.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">EVERY</span> cl_abito <span class="hl kwa">IsA</span> indumento<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> articolo <span class="hl str">&quot;l&apos;&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> abito<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> strato_tronco <span class="hl num">8</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> strato_gambe <span class="hl num">32</span><span class="hl kwa">. NOT</span> blocca_gambe<span class="hl kwa">.</span>
+<span class="hl kwa">END EVERY.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_cappotti"><a class="anchor" href="#_cappotti"></a>Cappotti</h4>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">EVERY cl_cappotto IsA indumento.
-  NAME cappotto.
-  HAS val_tronco 64.
-  HAS val_gambe 64.
-END EVERY.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">EVERY</span> cl_cappotto <span class="hl kwa">IsA</span> indumento<span class="hl kwa">.</span>
+  <span class="hl kwa">NAME</span> cappotto<span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> strato_tronco <span class="hl num">64</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> strato_gambe <span class="hl num">64</span><span class="hl kwa">. NOT</span> blocca_gambe<span class="hl kwa">.</span>
+<span class="hl kwa">END EVERY.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1232,8 +1254,5 @@ END EVERY.</code></pre>
 Versione 0.0.18-Alpha<br>
 </div>
 </div>
-<link rel="stylesheet" href="../../docs/hjs/styles/github.min.css">
-<script src="../../docs/hjs/highlight.min.js"></script>
-<script>hljs.initHighlighting()</script>
 </body>
 </html>

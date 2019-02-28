@@ -3,16 +3,13 @@
 :: per il nuovo sistema del vestiario.
 :: -----------------------------------------------------------------------------
 @ECHO OFF & CLS
-:: Code Page 28591 = ISO 8859-1 Latin 1; Western European (ISO)
-CHCP 28591 > nul
-
+CHCP 28591 > nul &:: (ISO 8859-1 Latin 1)
 ECHO COMPILA: ega.alan
 CALL alan.exe -import ..\..\alanlib_ita ega.alan
 FOR %%i IN (DEV*.a3sol) DO (
   ECHO TESTA CON:  %%i
   CALL :ExecTest %%i
 )
-
 EXIT /B
 
 :ExecTest

@@ -1,12 +1,11 @@
-:: "test/vestiario/TESTA_CARTELLA.bat"  v1.1.0 | 2019/02/19 | by Tristano Ajmone
+:: -----------------------------------------------------------------------------
+:: "test/vestiario/TESTA_CARTELLA.bat"  v1.1.1 | 2019/02/28 | by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 :: SORGENTE SINGOLO -- Esegui tutti i test nella cartella.
 :: -----------------------------------------------------------------------------
 @ECHO OFF & CLS
 SET ADV=ega.alan
-:: Code Page 28591 = ISO 8859-1 Latin 1; Western European (ISO)
-CHCP 28591 > nul
-
+CHCP 28591 > nul &:: (ISO 8859-1 Latin 1)
 ECHO COMPILA: %ADV%
 CALL alan.exe -import ..\..\alanlib_ita %ADV%  > nul 2>&1 ^
   && (

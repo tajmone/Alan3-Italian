@@ -1,4 +1,4 @@
-:: "TESTA_TUTTO.bat" v3.0.0 (2019/01/28) | by Tristano Ajmone
+:: "TESTA_TUTTO.bat"                  | v3.0.1 | 2019/02/28 | by Tristano Ajmone
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                                                            ::
 ::                   TEST SUITE DELLA LIBRERIA ALAN ITALIAN                   ::
@@ -38,10 +38,7 @@ SET "PATH_INZIALE=%CD%" &:: Memorizza percorso attuale
 :: Setup Ambientale
 :: ================
 SETLOCAL EnableDelayedExpansion
-
-:: Cambia Code Page per una corretta visualizzazione dei caratteri accentati:
-CHCP 65001 > nul 2>&1
-
+CHCP 28591 > nul &:: (ISO 8859-1 Latin 1)
 CALL :DefinisciCodiciANSI   &:: Definisce alcune variabili per i colori ANSI
 :: =================================
 :: Stampa il Banner e l'Introduzione

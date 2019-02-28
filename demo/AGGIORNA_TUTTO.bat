@@ -1,8 +1,10 @@
+:: -----------------------------------------------------------------------------
+:: "AGGIORNA_TUTTO.bat"               | v2.0.1 | 2019/02/28 | by Tristano Ajmone
+:: =============================================================================
+::                         AGGIORNA TUTTI I FILE DI TEST                        
+:: =============================================================================
 @ECHO OFF
-:: "AGGIORNA_TUTTO.bat" v2.0 (2018/08/22) | by Tristano Ajmone
-:: ==============================================================================
-::                         AGGIORNA TUTTI I FILE DI TEST                         
-:: ==============================================================================
+CHCP 28591 > nul &:: (ISO 8859-1 Latin 1)
 ECHO.
 ECHO Aggiornamento di tutti i file di test in corso...
 ECHO.
@@ -20,19 +22,19 @@ DEL *.a3log                > nul 2>&1
 ECHO 2/3) Compila avventura dimostrativa
 CALL COMPILA.bat           > nul 2>&1
 IF ERRORLEVEL 1 (
-    ECHO      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    ECHO      ERRORE: compilazione non riuscita!
-    ECHO      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    SET _ERR=1
-    GOTO :ESCI
+  ECHO      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ECHO      ERRORE: compilazione non riuscita!
+  ECHO      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  SET _ERR=1
+  GOTO :ESCI
 )
 :: ==================================
 :: Esegui tutti gli script di comandi
 :: ==================================
 ECHO 3/3) Esegui script di comandi:
 FOR /R %%i IN (*.a3sol) DO (
-    ECHO      -- "%%~nxi"
-    CALL arun il_mondo_di_alan.a3c < %%i > %%~ni.a3log
+  ECHO      -- "%%~nxi"
+  CALL arun il_mondo_di_alan.a3c < %%i > %%~ni.a3log
 )
 :: =====================
 :: Termina batch ed esci
@@ -41,6 +43,6 @@ FOR /R %%i IN (*.a3sol) DO (
 :: Facciamo in modo che la finestra del CMD rimagna aperta se lo script è stato
 :: lanciato da Esplora Risorse:
 ECHO "%cmdcmdline%" | FINDSTR /IC:"%windir%" >nul && (
-    CMD /K
+  CMD /K
 )
 EXIT /B %_ERR%

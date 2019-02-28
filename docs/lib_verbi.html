@@ -431,6 +431,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./css/styles.css">
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -2591,13 +2592,14 @@ l&#8217;istruzione nativa di Alan <code>TRANSCRIPT ON</code> e, a parte verifica
 di un blocco per quest&#8217;azione (tramite l&#8217;attributo <code>trascrivere_on</code>), la
 gestionalità della trascrizione viene delegata interamente all&#8217;interprete:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">META VERB trascrizione_on
-  CHECK mia_AT CAN trascrivere_on
-    ELSE SAY mia_AT:azione_bloccata.
-  DOES TRANSCRIPT ON. "Trascrizione avviata."
-END VERB trascrizione_on.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">META VERB</span> trascrizione_on
+  <span class="hl kwa">CHECK</span> mia_AT <span class="hl kwa">CAN</span> trascrivere_on
+    <span class="hl kwa">ELSE SAY</span> mia_AT<span class="hl kwa">:</span>azione_bloccata<span class="hl kwa">.</span>
+  <span class="hl kwa">DOES TRANSCRIPT ON.</span> <span class="hl str">&quot;Trascrizione avviata.&quot;</span>
+<span class="hl kwa">END VERB</span> trascrizione_on<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -2624,13 +2626,14 @@ transcrizione non in corso.</p>
 il giocatore e l&#8217;istruzione nativa di Alan per interrompere la trascrizione
 in corso:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">META VERB trascrizione_off
-  CHECK mia_AT CAN trascrivere_off
-    ELSE SAY mia_AT:azione_bloccata.
-  DOES TRANSCRIPT OFF. "Trascrizione terminata."
-END VERB trascrizione_off.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">META VERB</span> trascrizione_off
+  <span class="hl kwa">CHECK</span> mia_AT <span class="hl kwa">CAN</span> trascrivere_off
+    <span class="hl kwa">ELSE SAY</span> mia_AT<span class="hl kwa">:</span>azione_bloccata<span class="hl kwa">.</span>
+  <span class="hl kwa">DOES TRANSCRIPT OFF.</span> <span class="hl str">&quot;Trascrizione terminata.&quot;</span>
+<span class="hl kwa">END VERB</span> trascrizione_off<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -4850,8 +4853,5 @@ vicini tra loro verbi correlati, simmetrici e/o complementari.</p>
 Versione 0.17.0-Alpha<br>
 </div>
 </div>
-<link rel="stylesheet" href="hjs/styles/github.min.css">
-<script src="hjs/highlight.min.js"></script>
-<script>hljs.initHighlighting()</script>
 </body>
 </html>

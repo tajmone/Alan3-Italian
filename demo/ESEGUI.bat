@@ -1,5 +1,5 @@
-@ECHO OFF
-:: "ESEGUI.bat" v2.0 (2018/08/22) | by Tristano Ajmone
+:: -----------------------------------------------------------------------------
+:: "ESEGUI.bat"                       | v2.0.1 | 2019/02/28 | by Tristano Ajmone
 :: =============================================================================
 ::                     ESEGUI TEST TRAMITE SCRIPT DI GIOCO                      
 :: =============================================================================
@@ -9,38 +9,36 @@
 :: come parametro. La trascrizione della sessione di gioco viene salvata in un
 :: file di log (.a3log) ed infine stampata sullo schermo. 
 :: -----------------------------------------------------------------------------
+@ECHO OFF & CLS
+CHCP 28591 > nul &:: (ISO 8859-1 Latin 1)
 SET _ERR=0
 :: ==================================================
 :: Verifica la disponibilità dell'avventura compilata
 :: ==================================================
 IF NOT EXIST il_mondo_di_alan.a3c (
-    ECHO ERRORE: Non trovo l'avventura compilata "il_mondo_di_alan.a3c"
-    SET _ERR=1
-    GOTO :ESCI
+  ECHO ERRORE: Non trovo l'avventura compilata "il_mondo_di_alan.a3c"
+  SET _ERR=1
+  GOTO :ESCI
 )
 :: ===========================================
 :: Verifica che sia stato passato un parametro
 :: ===========================================
 IF [%1] EQU [] (
-    ECHO ERRORE: Devi passare uno script come parametro
-    SET _ERR=1
-    GOTO :ESCI
+  ECHO ERRORE: Devi passare uno script come parametro
+  SET _ERR=1
+  GOTO :ESCI
 )
 :: =============================================
 :: Verifica che il parametro sia un file *.a3sol
 :: =============================================
 IF [%~x1] NEQ [.a3sol] (
-    ECHO ERRORE: Il parametro deve essere un file di script ^(^*.a3sol^)
-    SET _ERR=1
-    GOTO :ESCI
+  ECHO ERRORE: Il parametro deve essere un file di script ^(^*.a3sol^)
+  SET _ERR=1
+  GOTO :ESCI
 )
 :: ========================
 :: Esegui il file di script
 :: ========================
-:: Cambia Code Page per una corretta visualizzazione dei caratteri accentati:
-CHCP 65001
-:: Pulisci schermo così è più facile navigare nella trascrizione:
-CLS
 CALL arun il_mondo_di_alan.a3c < %~n1.a3sol > %~n1.a3log
 TYPE %~n1.a3log
 :: =====================
@@ -50,6 +48,6 @@ TYPE %~n1.a3log
 :: Facciamo in modo che la finestra del CMD rimagna aperta se lo script è stato
 :: lanciato da Esplora Risorse:
 ECHO "%cmdcmdline%" | FINDSTR /IC:"%windir%" >nul && (
-    CMD /K
+  CMD /K
 )
 EXIT /B %_ERR%

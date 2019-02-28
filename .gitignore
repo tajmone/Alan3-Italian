@@ -22,6 +22,11 @@
 ## ===============
 docs_src/lib*.asciidoc
 
+## ==========
+## Sass Cache
+## ==========
+.sass-cache/
+
 ## ===============
 ## Misc Work Files
 ## ===============

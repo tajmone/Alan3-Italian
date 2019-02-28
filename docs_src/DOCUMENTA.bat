@@ -1,6 +1,8 @@
-:: "DOCUMENTA.bat" v0.1.2 (2018-12-16)
+:: -----------------------------------------------------------------------------
+:: "DOCUMENTA.bat"                    | v0.2.0 | 2019/02/28 | by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 @ECHO OFF & CLS
+CHCP 65001 > nul &:: (UTF-8 Unicode)
 ECHO.
 ECHO Creazione della documentazione di Alan Italian ...
 ECHO.
@@ -31,7 +33,7 @@ EXIT /B
 :doxterizzaLib
 ECHO    Doxterizza: %~nx1
 CALL doxter %LibSrc%/%~nx1 > nul
-MOVE /Y %LibSrc%/%~n1.asciidoc ./
+MOVE /Y %LibSrc%\%~n1.asciidoc .\
 EXIT /B
 :: ==============================================================================
 :: func                     Converti da AsciiDoc a HTML                          
@@ -53,8 +55,11 @@ CALL asciidoctor^
   -a toc=left^
   -a toclevels=5^
   -a version-label=Versione^
-  -a source-highlighter=highlightjs^
-  -a highlightjsdir=hjs^
+  -a source-highlighter=highlight^
+  --template-dir .\erb^
+  --require .\adoc\highlight-treeprocessor_mod.rb^
+  -a docinfodir=.\adoc^
+  -a docinfo=shared-head^
   %~nx1
 EXIT /B
 

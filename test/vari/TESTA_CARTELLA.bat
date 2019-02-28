@@ -1,17 +1,15 @@
-:: "test/vari/TESTA_CARTELLA.bat"       v1.0.0 | 2019/02/19 | by Tristano Ajmone
+:: -----------------------------------------------------------------------------
+:: "test/vari/TESTA_CARTELLA.bat"     | v1.1.1 | 2019/02/28 | by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 :: SORGENTI MULTIPLI -- Esegui tutti i test nella cartella.
 :: -----------------------------------------------------------------------------
 @ECHO OFF & CLS
-:: Code Page 28591 = ISO 8859-1 Latin 1; Western European (ISO)
-CHCP 28591 > nul
-
+CHCP 28591 > nul &:: (ISO 8859-1 Latin 1)
 FOR %%i IN (*.alan) DO (
   ECHO =====================================================
   ECHO COMPILA: %%i
   CALL :CompilaTesta %%i
 )
-
 EXIT /B
 
 :CompilaTesta
@@ -21,7 +19,6 @@ CALL alan.exe -import ..\..\alanlib_ita %1  > nul 2>&1 ^
   ) || (
     ECHO ^*^* COMPILAZIONE FALLITA ^*^*
   )
- 
 EXIT /B
 
 :ExecTest

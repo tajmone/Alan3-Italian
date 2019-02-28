@@ -431,6 +431,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./css/styles.css">
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -583,37 +584,40 @@ dai
 <div class="paragraph">
 <p>Ad esempio, la libreria inglese definisce i seguenti attributi per le risposte in caso di parametri non idonei al verbo:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS illegal_parameter_sg "That's not something you can $v.".
-  HAS illegal_parameter_pl "Those are not something you can $v.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl kwa">HAS</span> illegal_parameter_sg <span class="hl str">&quot;That&apos;s not something you can</span> <span class="hl esc">$v</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> illegal_parameter_pl <span class="hl str">&quot;Those are not something you can</span> <span class="hl esc">$v</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Ciascun attributo è una risposta completa e non richiede ulteriore testo.
 Nella libreria italiana questi attributi sono stati tradotti così:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS ogg1_inadatto_sg  "$+1 non è qualcosa che puoi".
-  HAS ogg1_inadatto_pl  "$+1 non sono qualcosa che puoi".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl kwa">HAS</span> ogg1_inadatto_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non è qualcosa che puoi&quot;</span><span class="hl kwa">.</span>
+  <span class="hl kwa">HAS</span> ogg1_inadatto_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non sono qualcosa che puoi&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>L&#8217;impedimento ad usare <code>$v</code> ha costretto a troncare le frasi negli attributi, e a doverle completare nel codice dei verbi stessi.
 Ad esempio:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNTAX ispeziona = ispeziona (ogg)
-  WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY mia_AT:ogg1_inadatto_sg.
-        ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF. "ispezionare."
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">SYNTAX</span> ispeziona <span class="hl opt">=</span> ispeziona <span class="hl opt">(</span>ogg<span class="hl opt">)</span>
+  <span class="hl kwa">WHERE</span> ogg <span class="hl kwa">IsA</span> <span class="hl kwb">THING</span>
+    <span class="hl kwa">ELSE</span>
+      <span class="hl kwa">IF</span> ogg <span class="hl kwa">IS NOT</span> plurale
+        <span class="hl kwa">THEN SAY</span> mia_AT<span class="hl kwa">:</span>ogg1_inadatto_sg<span class="hl kwa">.</span>
+        <span class="hl kwa">ELSE SAY</span> mia_AT<span class="hl kwa">:</span>ogg1_inadatto_pl<span class="hl kwa">.</span>
+      <span class="hl kwa">END IF.</span> <span class="hl str">&quot;ispezionare.&quot;</span>
 
-SYNONYMS perquisisci = ispeziona.</code></pre>
+<span class="hl kwa">SYNONYMS</span> perquisisci <span class="hl opt">=</span> ispeziona<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -623,9 +627,10 @@ SYNONYMS perquisisci = ispeziona.</code></pre>
 <p>Nel caso di messaggi più complessi, nei quali il verbo ricade necessariamente al centro della frase, è impossibile creare un messaggio completo tramite un solo attributo stringa.
 Per esempio, messaggi della libreria originale come questo:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  HAS check_obj_not_in_worn2 "It doesn't make sense to $v something you're wearing.".</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl kwa">HAS</span> check_obj_not_in_worn2 <span class="hl str">&quot;It doesn&apos;t make sense to $v something you&apos;re wearing.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -652,8 +657,5 @@ Il rischio però è che un autore possa aggiungere ulteriori sinonimi o sintassi
 Versione 1<br>
 </div>
 </div>
-<link rel="stylesheet" href="hjs/styles/github.min.css">
-<script src="hjs/highlight.min.js"></script>
-<script>hljs.initHighlighting()</script>
 </body>
 </html>

@@ -331,26 +331,27 @@ La seguente tabella riassume tali scelte.
 
 .Valori vestiario in EGA
 [.center,cols="40d,6*>10m",options="header,autowidth"]
-|=====================================================================================
-| Indumento    | val_testa | val_viso | val_tronco | val_gambe | val_piedi | val_mani
-| passamontagna        | 1 |        1 |          0 |         0 |         0 |        0
-| cappello             | 2 |        0 |          0 |         0 |         0 |        0
-| occhiali             | 0 |        2 |          0 |         0 |         0 |        0
-| canottiera/reggiseno | 0 |        0 |          2 |         0 |         0 |        0
-| mutande/slip         | 0 |        0 |          0 |         2 |         0 |        0
-| teddy                | 0 |        0 |          4 |         4 |         0 |        0
-| blusa/shirt/T-shirt  | 0 |        0 |          8 |         0 |         0 |        0
-| dress/tuta lavoro    | 0 |        0 |          8 |        32 |         0 |        0
-| gonna                | 0 |        0 |          0 |        32 |         0 |        0
-| pantaloni/shorts     | 0 |        0 |          0 |        16 |         0 |        0
-| sweater/pullover     | 0 |        0 |         16 |         0 |         0 |        0
-| giacca               | 0 |        0 |         32 |         0 |         0 |        0
-| cappotto             | 0 |        0 |         64 |        64 |         0 |        0
-| calze/stockings      | 0 |        0 |          0 |         0 |         2 |        0
-| tights/pantiehose    | 0 |        0 |          0 |         8 |         2 |        0
-| scarpe/stivali       | 0 |        0 |          0 |         0 |         4 |        0
-| guanti               | 0 |        0 |          0 |         0 |         0 |        2
-|=====================================================================================
+|==================================================================
+| Indumento        | testa | viso | tronco | gambe | piedi | mani
+| passamontagna        | 1 |    1 |      0 |     0 |     0 |    0
+| cappello             | 2 |    0 |      0 |     0 |     0 |    0
+| occhiali             | 0 |    2 |      0 |     0 |     0 |    0
+| canottiera/reggiseno | 0 |    0 |      2 |     0 |     0 |    0
+| mutande/slip         | 0 |    0 |      0 |     2 |     0 |    0
+| teddy                | 0 |    0 |      4 |     4 |     0 |    0
+| blusa/shirt/T-shirt  | 0 |    0 |      8 |     0 |     0 |    0
+| dress/tuta lavoro    | 0 |    0 |      8 |    32 |     0 |    0
+| gonna                | 0 |    0 |      0 |    32 |     0 |    0
+| pantaloni/shorts     | 0 |    0 |      0 |    16 |     0 |    0
+| sweater/pullover     | 0 |    0 |     16 |     0 |     0 |    0
+| giacca               | 0 |    0 |     32 |     0 |     0 |    0
+| cappotto             | 0 |    0 |     64 |    64 |     0 |    0
+| calze/stockings      | 0 |    0 |      0 |     0 |     2 |    0
+| tights/pantiehose    | 0 |    0 |      0 |     8 |     2 |    0
+| scarpe/stivali       | 0 |    0 |      0 |     0 |     4 |    0
+| guanti               | 0 |    0 |      0 |     0 |     0 |    2
+|==================================================================
+
 
 === Gli indumenti
 
@@ -378,7 +379,7 @@ Creeremo due tipi di sottoclassi di vestiario:
 --------------------------------------------------------------------------------
 EVERY cl_cappello IsA indumento.
   NAME cappello.
-  HAS val_testa 2.
+  HAS strato_testa 2.
 END EVERY.
 
 --------------------------------------------------------------------------------
@@ -399,7 +400,7 @@ END EVERY.
 EVERY cl_canottiera IsA proto_biancheria.
   NAME canottiera.
   HAS articolo "la".
-  HAS val_tronco 2.
+  HAS strato_tronco 2.
 END EVERY.
 ----------
 -- Inguine
@@ -407,7 +408,7 @@ END EVERY.
 EVERY cl_mutande IsA proto_biancheria.
   NAME mutande.
   HAS articolo "le".
-  HAS val_gambe 2.
+  HAS strato_gambe 2.
   INDEFINITE ARTICLE "un paio di"
 END EVERY.
 --------
@@ -416,7 +417,7 @@ END EVERY.
 EVERY cl_calzini IsA indumento.
   NAME calzini.
   HAS articolo "i".
-  HAS val_piedi 2.
+  HAS strato_piedi 2.
   INDEFINITE ARTICLE "un paio di"
 END EVERY.
 
@@ -430,14 +431,14 @@ END EVERY.
 EVERY cl_scarpe IsA indumento.
   NAME scarpe.
   HAS articolo "le".
-  HAS val_piedi 4.
+  HAS strato_piedi 4.
   INDEFINITE ARTICLE "un paio di"
 END EVERY.
 
 EVERY cl_stivali IsA indumento.
   NAME stivali.
   HAS articolo "gli".
-  HAS val_piedi 4.
+  HAS strato_piedi 4.
   INDEFINITE ARTICLE "un paio di"
 END EVERY.
 --------------------------------------------------------------------------------
@@ -448,7 +449,7 @@ END EVERY.
 [source,alan]
 --------------------------------------------------------------------------------
 EVERY cl_tshirt IsA indumento.
-  HAS val_tronco 8.
+  HAS strato_tronco 8.
   HAS articolo "la".
   NAME 'T-shirt'.
   NAME tshirt.
@@ -456,7 +457,7 @@ EVERY cl_tshirt IsA indumento.
 END EVERY.
 
 EVERY cl_camicia IsA indumento.
-  HAS val_tronco 8.
+  HAS strato_tronco 8.
   HAS articolo "la".
   NAME camicia.
 END EVERY.
@@ -469,7 +470,7 @@ END EVERY.
 [source,alan]
 --------------------------------------------------------------------------------
 EVERY proto_maglione IsA indumento.
-  HAS val_tronco 16.
+  HAS strato_tronco 16.
 END EVERY.
 
 --------------------------------------------------------------------------------
@@ -482,14 +483,14 @@ END EVERY.
 EVERY proto_gonna IsA indumento.
   NAME gonna.
   HAS articolo "la".
-  HAS val_gambe 32.
+  HAS strato_gambe 32. NOT blocca_gambe.
 END EVERY.
 
 EVERY proto_collant IsA indumento.
   NAME collant.
   HAS articolo "i".
   INDEFINITE ARTICLE "un paio di"
-  HAS val_gambe 8.
+  HAS strato_gambe 8.
 END EVERY.
 
 
@@ -508,7 +509,7 @@ EVERY proto_pantaloni IsA indumento.
   NAME tasche. --> per catturare "metti ogg in tasche"
   HAS articolo "i".
   INDEFINITE ARTICLE "un paio di"
-  HAS val_gambe 16.
+  HAS strato_gambe 16.
             -- ----------------------------------
   CONTAINER -- Personalizza descrizione contenuti
     HEADER  -- ----------------------------------
@@ -529,8 +530,8 @@ END EVERY.
 EVERY proto_tuta IsA indumento.
   NAME tuta.
   HAS articolo "la".
-  HAS val_tronco 8.
-  HAS val_gambe 32.
+  HAS strato_tronco 8.
+  HAS strato_gambe 32.
 END EVERY.
 
 --------------------------------------------------------------------------------
@@ -543,8 +544,8 @@ END EVERY.
 EVERY cl_abito IsA indumento.
   HAS articolo "l'".
   NAME abito.
-  HAS val_tronco 8.
-  HAS val_gambe 32.
+  HAS strato_tronco 8.
+  HAS strato_gambe 32. NOT blocca_gambe.
 END EVERY.
 
 --------------------------------------------------------------------------------
@@ -556,8 +557,8 @@ END EVERY.
 --------------------------------------------------------------------------------
 EVERY cl_cappotto IsA indumento.
   NAME cappotto.
-  HAS val_tronco 64.
-  HAS val_gambe 64.
+  HAS strato_tronco 64.
+  HAS strato_gambe 64. NOT blocca_gambe.
 END EVERY.
 
 --------------------------------------------------------------------------------

@@ -431,6 +431,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./css/styles.css">
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -517,6 +518,7 @@ La libreria italiana utilizza la lingua inglese come base di partenza.</p>
 <p>Queste sono le <em>Player Words</em> predefinite per la lingua inglese, suddivise
 in gruppi di appartenenza:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
 <pre>ALL:   all everything
@@ -570,9 +572,10 @@ di comando. Esempi:</p>
 </li>
 </ul>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS e, poi = 'and'.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">SYNONYMS</span> e<span class="hl kwa">,</span> poi <span class="hl opt">=</span> &apos;and&apos;<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -606,9 +609,10 @@ Durante il secondo tentativo, l&#8217;articolo <code>l'</code> verrà soppresso 
 <em>noise word</em>, e <code>albero</code> verrà ora riconosciuto come il nome dell&#8217;oggetto
 corrispondente.</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS il, lo, la, 'l''', i, gli, le = 'the'.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">SYNONYMS</span> il<span class="hl kwa">,</span> lo<span class="hl kwa">,</span> la<span class="hl kwa">,</span> &apos;l&apos;&apos;&apos;, i, gli, le = &apos;the&apos;<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -620,9 +624,10 @@ corrispondente.</p>
 <pre>ALL: all everything</pre>
 </div>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS tutto, tutti, tutte = all.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">SYNONYMS</span> tutto<span class="hl kwa">,</span> tutti<span class="hl kwa">,</span> tutte <span class="hl opt">=</span> all<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -659,9 +664,10 @@ per escludere alcuni oggetti dall&#8217;insieme. Esempi:</p>
 </li>
 </ul>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS tranne, eccetto, escluso, esclusa, esclusi, escluse = except.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">SYNONYMS</span> tranne<span class="hl kwa">,</span> eccetto<span class="hl kwa">,</span> escluso<span class="hl kwa">,</span> esclusa<span class="hl kwa">,</span> esclusi<span class="hl kwa">,</span> escluse <span class="hl opt">=</span> except<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -838,28 +844,31 @@ reale, ed eventuali loro conflitti dovrebbero essere comunque gestibili.</p>
 </div>
 <div class="sect2">
 <h3 id="_di_articolo"><a class="anchor" href="#_di_articolo"></a>&#8220;DI&#8221; + Articolo</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS
-  del, dello, della, 'dell''', dei, degli, delle = di.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">SYNONYMS</span>
+  del<span class="hl kwa">,</span> dello<span class="hl kwa">,</span> della<span class="hl kwa">,</span> &apos;dell&apos;&apos;&apos;<span class="hl kwa">,</span> dei<span class="hl kwa">,</span> degli<span class="hl kwa">,</span> delle <span class="hl opt">=</span> di<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_a_articolo"><a class="anchor" href="#_a_articolo"></a>&#8220;A&#8221; + Articolo</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS
-  al, allo, alla, 'all''', ai, agli, alle  = a.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">SYNONYMS</span>
+  al<span class="hl kwa">,</span> allo<span class="hl kwa">,</span> alla<span class="hl kwa">,</span> &apos;all&apos;&apos;&apos;<span class="hl kwa">,</span> ai<span class="hl kwa">,</span> agli<span class="hl kwa">,</span> alle  <span class="hl opt">=</span> a<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_da_articolo"><a class="anchor" href="#_da_articolo"></a>&#8220;DA&#8221; + Articolo</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS
-  dal, dallo, dalla, 'dall''', dall, dagli, dalle  = da.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">SYNONYMS</span>
+  dal<span class="hl kwa">,</span> dallo<span class="hl kwa">,</span> dalla<span class="hl kwa">,</span> &apos;dall&apos;&apos;&apos;<span class="hl kwa">,</span> dall<span class="hl kwa">,</span> dagli<span class="hl kwa">,</span> dalle  <span class="hl opt">=</span> da<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="admonitionblock warning">
@@ -889,19 +898,21 @@ compilazione:</p>
 </div>
 <div class="sect2">
 <h3 id="_in_articolo"><a class="anchor" href="#_in_articolo"></a>&#8220;IN&#8221; + Articolo</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS
-  nel, nello, nella, 'nell''', nei, negli, nelle = 'in'.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">SYNONYMS</span>
+  nel<span class="hl kwa">,</span> nello<span class="hl kwa">,</span> nella<span class="hl kwa">,</span> &apos;nell&apos;&apos;&apos;, nei, negli, nelle = &apos;in&apos;<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_su_articolo"><a class="anchor" href="#_su_articolo"></a>&#8220;SU&#8221; + Articolo</h3>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">SYNONYMS
-  sul, sullo, sulla, 'sull''', sui, sugli, sulle = su.</code></pre>
+<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">SYNONYMS</span>
+  sul<span class="hl kwa">,</span> sullo<span class="hl kwa">,</span> sulla<span class="hl kwa">,</span> &apos;sull&apos;&apos;&apos;<span class="hl kwa">,</span> sui<span class="hl kwa">,</span> sugli<span class="hl kwa">,</span> sulle <span class="hl opt">=</span> su<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -941,8 +952,5 @@ italiano del modulo supplementare.</p>
 Versione 0.17.0-Alpha<br>
 </div>
 </div>
-<link rel="stylesheet" href="hjs/styles/github.min.css">
-<script src="hjs/highlight.min.js"></script>
-<script>hljs.initHighlighting()</script>
 </body>
 </html>

@@ -1,9 +1,8 @@
 :: -----------------------------------------------------------------------------
-:: AGGIORNA_RICETTE.bat | v0.0.1 | 2019/02/07 | by Tristano Ajmone
+:: AGGIORNA_RICETTE.bat               | v0.0.2 | 2019/02/28 | by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 @ECHO OFF & CLS
-:: Code Page 28591 = ISO 8859-1 Latin 1; Western European (ISO)
-CHCP 28591 > nul
+CHCP 28591 > nul &:: (ISO 8859-1 Latin 1)
 
 FOR %%i IN (*.alan) DO (
   ECHO ....................................................

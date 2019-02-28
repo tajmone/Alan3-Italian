@@ -431,6 +431,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./css/styles.css">
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -545,193 +546,195 @@ ridefiniamo su questa classe i verbi <code>esamina</code>, <code>indossa</code> 
 </div>
 <div class="sect3">
 <h4 id="_impedisci_verbi_che_potrebbero_dislocare_indossati"><a class="anchor" href="#_impedisci_verbi_che_potrebbero_dislocare_indossati"></a>Impedisci verbi che potrebbero dislocare indossati</h4>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  VERB metti_in --&gt; metti (ogg) 'in' (cont)
-    WHEN ogg
-      CHECK ogg IS NOT indossato
-        ELSE
-          IF ogg IN hero
-            THEN SAY mia_AT:indumento_andrebbe_rimosso.
-            ELSE
-              IF ogg IS NOT plurale
-                -- "Al momento $+1 [è/sono] indossat$$"
-                THEN SAY mia_AT:indumento_indossato_PNG_sg.
-                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
-              END IF. SAY ogg:vocale.
-              FOR EACH ac IsA actor DO
-                IF ogg IN ac
-                  THEN SAY ac:prep_DA. SAY ac. "."
-                END IF.
-              END FOR.
-          END IF.
-  END VERB metti_in.
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl kwa">VERB</span> metti_in <span class="hl slc">--&gt; metti (ogg) &apos;in&apos; (cont)</span>
+    <span class="hl kwa">WHEN</span> ogg
+      <span class="hl kwa">CHECK</span> ogg <span class="hl kwa">IS NOT</span> indossato
+        <span class="hl kwa">ELSE</span>
+          <span class="hl kwa">IF</span> ogg <span class="hl kwa">IN</span> <span class="hl kwc">hero</span>
+            <span class="hl kwa">THEN SAY</span> mia_AT<span class="hl kwa">:</span>indumento_andrebbe_rimosso<span class="hl kwa">.</span>
+            <span class="hl kwa">ELSE</span>
+              <span class="hl kwa">IF</span> ogg <span class="hl kwa">IS NOT</span> plurale
+                <span class="hl slc">-- &quot;Al momento $+1 [è/sono] indossat$$&quot;</span>
+                <span class="hl kwa">THEN SAY</span> mia_AT<span class="hl kwa">:</span>indumento_indossato_PNG_sg<span class="hl kwa">.</span>
+                <span class="hl kwa">ELSE SAY</span> mia_AT<span class="hl kwa">:</span>indumento_indossato_PNG_pl<span class="hl kwa">.</span>
+              <span class="hl kwa">END IF. SAY</span> ogg<span class="hl kwa">:</span>vocale<span class="hl kwa">.</span>
+              <span class="hl kwa">FOR EACH</span> ac <span class="hl kwa">IsA</span> <span class="hl kwb">actor</span> <span class="hl kwa">DO</span>
+                <span class="hl kwa">IF</span> ogg <span class="hl kwa">IN</span> ac
+                  <span class="hl kwa">THEN SAY</span> ac<span class="hl kwa">:</span>prep_DA<span class="hl kwa">. SAY</span> ac<span class="hl kwa">.</span> <span class="hl str">&quot;.&quot;</span>
+                <span class="hl kwa">END IF.</span>
+              <span class="hl kwa">END FOR.</span>
+          <span class="hl kwa">END IF.</span>
+  <span class="hl kwa">END VERB</span> metti_in<span class="hl kwa">.</span>
 
 
-  VERB metti_su --&gt; metti (ogg) su (superficie)
-    WHEN ogg
-      CHECK ogg IS NOT indossato
-        ELSE
-          IF ogg IN hero
-            THEN SAY mia_AT:indumento_andrebbe_rimosso.
-            ELSE
-              IF ogg IS NOT plurale
-                -- "Al momento $+1 [è/sono] indossat$$"
-                THEN SAY mia_AT:indumento_indossato_PNG_sg.
-                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
-              END IF. SAY ogg:vocale.
-              FOR EACH ac IsA actor DO
-                IF ogg IN ac
-                  THEN SAY ac:prep_DA. SAY ac. "."
-                END IF.
-              END FOR.
-          END IF.
-  END VERB metti_su.
+  <span class="hl kwa">VERB</span> metti_su <span class="hl slc">--&gt; metti (ogg) su (superficie)</span>
+    <span class="hl kwa">WHEN</span> ogg
+      <span class="hl kwa">CHECK</span> ogg <span class="hl kwa">IS NOT</span> indossato
+        <span class="hl kwa">ELSE</span>
+          <span class="hl kwa">IF</span> ogg <span class="hl kwa">IN</span> <span class="hl kwc">hero</span>
+            <span class="hl kwa">THEN SAY</span> mia_AT<span class="hl kwa">:</span>indumento_andrebbe_rimosso<span class="hl kwa">.</span>
+            <span class="hl kwa">ELSE</span>
+              <span class="hl kwa">IF</span> ogg <span class="hl kwa">IS NOT</span> plurale
+                <span class="hl slc">-- &quot;Al momento $+1 [è/sono] indossat$$&quot;</span>
+                <span class="hl kwa">THEN SAY</span> mia_AT<span class="hl kwa">:</span>indumento_indossato_PNG_sg<span class="hl kwa">.</span>
+                <span class="hl kwa">ELSE SAY</span> mia_AT<span class="hl kwa">:</span>indumento_indossato_PNG_pl<span class="hl kwa">.</span>
+              <span class="hl kwa">END IF. SAY</span> ogg<span class="hl kwa">:</span>vocale<span class="hl kwa">.</span>
+              <span class="hl kwa">FOR EACH</span> ac <span class="hl kwa">IsA</span> <span class="hl kwb">actor</span> <span class="hl kwa">DO</span>
+                <span class="hl kwa">IF</span> ogg <span class="hl kwa">IN</span> ac
+                  <span class="hl kwa">THEN SAY</span> ac<span class="hl kwa">:</span>prep_DA<span class="hl kwa">. SAY</span> ac<span class="hl kwa">.</span> <span class="hl str">&quot;.&quot;</span>
+                <span class="hl kwa">END IF.</span>
+              <span class="hl kwa">END FOR.</span>
+          <span class="hl kwa">END IF.</span>
+  <span class="hl kwa">END VERB</span> metti_su<span class="hl kwa">.</span>
 
 
-  VERB dai_a --&gt; dai (ogg) a (png)
-    WHEN ogg
-      CHECK ogg IS NOT indossato
-        ELSE
-          IF ogg IN hero
-            THEN SAY mia_AT:indumento_andrebbe_rimosso.
-            ELSE
-              IF ogg IS NOT plurale
-                -- "Al momento $+1 [è/sono] indossat$$"
-                THEN SAY mia_AT:indumento_indossato_PNG_sg.
-                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
-              END IF. SAY ogg:vocale.
-              FOR EACH ac IsA actor DO
-                IF ogg IN ac
-                  THEN SAY ac:prep_DA. SAY ac. "."
-                END IF.
-              END FOR.
-          END IF.
-  END VERB dai_a.</code></pre>
+  <span class="hl kwa">VERB</span> dai_a <span class="hl slc">--&gt; dai (ogg) a (png)</span>
+    <span class="hl kwa">WHEN</span> ogg
+      <span class="hl kwa">CHECK</span> ogg <span class="hl kwa">IS NOT</span> indossato
+        <span class="hl kwa">ELSE</span>
+          <span class="hl kwa">IF</span> ogg <span class="hl kwa">IN</span> <span class="hl kwc">hero</span>
+            <span class="hl kwa">THEN SAY</span> mia_AT<span class="hl kwa">:</span>indumento_andrebbe_rimosso<span class="hl kwa">.</span>
+            <span class="hl kwa">ELSE</span>
+              <span class="hl kwa">IF</span> ogg <span class="hl kwa">IS NOT</span> plurale
+                <span class="hl slc">-- &quot;Al momento $+1 [è/sono] indossat$$&quot;</span>
+                <span class="hl kwa">THEN SAY</span> mia_AT<span class="hl kwa">:</span>indumento_indossato_PNG_sg<span class="hl kwa">.</span>
+                <span class="hl kwa">ELSE SAY</span> mia_AT<span class="hl kwa">:</span>indumento_indossato_PNG_pl<span class="hl kwa">.</span>
+              <span class="hl kwa">END IF. SAY</span> ogg<span class="hl kwa">:</span>vocale<span class="hl kwa">.</span>
+              <span class="hl kwa">FOR EACH</span> ac <span class="hl kwa">IsA</span> <span class="hl kwb">actor</span> <span class="hl kwa">DO</span>
+                <span class="hl kwa">IF</span> ogg <span class="hl kwa">IN</span> ac
+                  <span class="hl kwa">THEN SAY</span> ac<span class="hl kwa">:</span>prep_DA<span class="hl kwa">. SAY</span> ac<span class="hl kwa">.</span> <span class="hl str">&quot;.&quot;</span>
+                <span class="hl kwa">END IF.</span>
+              <span class="hl kwa">END FOR.</span>
+          <span class="hl kwa">END IF.</span>
+  <span class="hl kwa">END VERB</span> dai_a<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Se si vuole previnire che i PNG consegnino i loro vestiti, decomenntare il
 seguente verbo, o aggiungerlo al proprio codice dell&#8217;avventura:</p>
 </div>
+
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-alan hljs" data-lang="alan">  -- VERB chiedi --&gt; chiedi a (png) (ogg)
-  --   WHEN ogg
-  --     CHECK ogg IS NOT indossato
-  --       ELSE
-  --         IF ogg IN hero
-  --           THEN SAY mia_AT:ogg2_già_posseduto.
-  --           ELSE
-  --             FOR EACH ac IsA actor DO
-  --               IF THIS IN ac
-  --                 THEN SAY THE ac. "sta indossando $+2."
-  --               END IF.
-  --             END FOR.
-  --         END IF.
-  -- END VERB chiedi.
+<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl slc">-- VERB chiedi --&gt; chiedi a (png) (ogg)</span>
+  <span class="hl slc">--   WHEN ogg</span>
+  <span class="hl slc">--     CHECK ogg IS NOT indossato</span>
+  <span class="hl slc">--       ELSE</span>
+  <span class="hl slc">--         IF ogg IN hero</span>
+  <span class="hl slc">--           THEN SAY mia_AT:ogg2_già_posseduto.</span>
+  <span class="hl slc">--           ELSE</span>
+  <span class="hl slc">--             FOR EACH ac IsA actor DO</span>
+  <span class="hl slc">--               IF THIS IN ac</span>
+  <span class="hl slc">--                 THEN SAY THE ac. &quot;sta indossando $+2.&quot;</span>
+  <span class="hl slc">--               END IF.</span>
+  <span class="hl slc">--             END FOR.</span>
+  <span class="hl slc">--         END IF.</span>
+  <span class="hl slc">-- END VERB chiedi.</span>
 
 
-  VERB lancia --&gt; lancia (proiettile)
-    CHECK proiettile IS NOT indossato
-      ELSE
-        IF proiettile IN hero
-          THEN SAY mia_AT:indumento_andrebbe_rimosso.
-          ELSE
-            IF proiettile IS NOT plurale
-              -- "Al momento $+1 [è/sono] indossat$$"
-              THEN SAY mia_AT:indumento_indossato_PNG_sg.
-              ELSE SAY mia_AT:indumento_indossato_PNG_pl.
-            END IF. SAY proiettile:vocale.
-            FOR EACH ac IsA actor DO
-              IF proiettile IN ac
-                THEN SAY ac:prep_DA. SAY ac. "."
-              END IF.
-            END FOR.
-        END IF.
-  END VERB lancia.
+  <span class="hl kwa">VERB</span> lancia <span class="hl slc">--&gt; lancia (proiettile)</span>
+    <span class="hl kwa">CHECK</span> proiettile <span class="hl kwa">IS NOT</span> indossato
+      <span class="hl kwa">ELSE</span>
+        <span class="hl kwa">IF</span> proiettile <span class="hl kwa">IN</span> <span class="hl kwc">hero</span>
+          <span class="hl kwa">THEN SAY</span> mia_AT<span class="hl kwa">:</span>indumento_andrebbe_rimosso<span class="hl kwa">.</span>
+          <span class="hl kwa">ELSE</span>
+            <span class="hl kwa">IF</span> proiettile <span class="hl kwa">IS NOT</span> plurale
+              <span class="hl slc">-- &quot;Al momento $+1 [è/sono] indossat$$&quot;</span>
+              <span class="hl kwa">THEN SAY</span> mia_AT<span class="hl kwa">:</span>indumento_indossato_PNG_sg<span class="hl kwa">.</span>
+              <span class="hl kwa">ELSE SAY</span> mia_AT<span class="hl kwa">:</span>indumento_indossato_PNG_pl<span class="hl kwa">.</span>
+            <span class="hl kwa">END IF. SAY</span> proiettile<span class="hl kwa">:</span>vocale<span class="hl kwa">.</span>
+            <span class="hl kwa">FOR EACH</span> ac <span class="hl kwa">IsA</span> <span class="hl kwb">actor</span> <span class="hl kwa">DO</span>
+              <span class="hl kwa">IF</span> proiettile <span class="hl kwa">IN</span> ac
+                <span class="hl kwa">THEN SAY</span> ac<span class="hl kwa">:</span>prep_DA<span class="hl kwa">. SAY</span> ac<span class="hl kwa">.</span> <span class="hl str">&quot;.&quot;</span>
+              <span class="hl kwa">END IF.</span>
+            <span class="hl kwa">END FOR.</span>
+        <span class="hl kwa">END IF.</span>
+  <span class="hl kwa">END VERB</span> lancia<span class="hl kwa">.</span>
 
-  VERB lancia_a --&gt; lancia (proiettile) a (png)
-    WHEN proiettile
-      CHECK proiettile IS NOT indossato
-        ELSE
-          IF proiettile IN hero
-            THEN SAY mia_AT:indumento_andrebbe_rimosso.
-            ELSE
-              IF proiettile IS NOT plurale
-                -- "Al momento $+1 [è/sono] indossat$$"
-                THEN SAY mia_AT:indumento_indossato_PNG_sg.
-                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
-              END IF. SAY proiettile:vocale.
-              FOR EACH ac IsA actor DO
-                IF proiettile IN ac
-                  THEN SAY ac:prep_DA. SAY ac. "."
-                END IF.
-              END FOR.
-          END IF.
-  END VERB lancia_a.
+  <span class="hl kwa">VERB</span> lancia_a <span class="hl slc">--&gt; lancia (proiettile) a (png)</span>
+    <span class="hl kwa">WHEN</span> proiettile
+      <span class="hl kwa">CHECK</span> proiettile <span class="hl kwa">IS NOT</span> indossato
+        <span class="hl kwa">ELSE</span>
+          <span class="hl kwa">IF</span> proiettile <span class="hl kwa">IN</span> <span class="hl kwc">hero</span>
+            <span class="hl kwa">THEN SAY</span> mia_AT<span class="hl kwa">:</span>indumento_andrebbe_rimosso<span class="hl kwa">.</span>
+            <span class="hl kwa">ELSE</span>
+              <span class="hl kwa">IF</span> proiettile <span class="hl kwa">IS NOT</span> plurale
+                <span class="hl slc">-- &quot;Al momento $+1 [è/sono] indossat$$&quot;</span>
+                <span class="hl kwa">THEN SAY</span> mia_AT<span class="hl kwa">:</span>indumento_indossato_PNG_sg<span class="hl kwa">.</span>
+                <span class="hl kwa">ELSE SAY</span> mia_AT<span class="hl kwa">:</span>indumento_indossato_PNG_pl<span class="hl kwa">.</span>
+              <span class="hl kwa">END IF. SAY</span> proiettile<span class="hl kwa">:</span>vocale<span class="hl kwa">.</span>
+              <span class="hl kwa">FOR EACH</span> ac <span class="hl kwa">IsA</span> <span class="hl kwb">actor</span> <span class="hl kwa">DO</span>
+                <span class="hl kwa">IF</span> proiettile <span class="hl kwa">IN</span> ac
+                  <span class="hl kwa">THEN SAY</span> ac<span class="hl kwa">:</span>prep_DA<span class="hl kwa">. SAY</span> ac<span class="hl kwa">.</span> <span class="hl str">&quot;.&quot;</span>
+                <span class="hl kwa">END IF.</span>
+              <span class="hl kwa">END FOR.</span>
+          <span class="hl kwa">END IF.</span>
+  <span class="hl kwa">END VERB</span> lancia_a<span class="hl kwa">.</span>
 
-  VERB lancia_contro --&gt; lancia (proiettile) contro (bersaglio)
-    WHEN proiettile
-      CHECK proiettile IS NOT indossato
-        ELSE
-          IF proiettile IN hero
-            THEN SAY mia_AT:indumento_andrebbe_rimosso.
-            ELSE
-              IF proiettile IS NOT plurale
-                -- "Al momento $+1 [è/sono] indossat$$"
-                THEN SAY mia_AT:indumento_indossato_PNG_sg.
-                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
-              END IF. SAY proiettile:vocale.
-              FOR EACH ac IsA actor DO
-                IF proiettile IN ac
-                  THEN SAY ac:prep_DA. SAY ac. "."
-                END IF.
-              END FOR.
-          END IF.
-  END VERB lancia_contro.
-
-
-  VERB lancia_in --&gt; lancia (proiettile) 'in' (cont)
-    WHEN proiettile
-      CHECK proiettile IS NOT indossato
-        ELSE
-          IF proiettile IN hero
-            THEN SAY mia_AT:indumento_andrebbe_rimosso.
-            ELSE
-              IF proiettile IS NOT plurale
-                -- "Al momento $+1 [è/sono] indossat$$"
-                THEN SAY mia_AT:indumento_indossato_PNG_sg.
-                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
-              END IF. SAY proiettile:vocale.
-              FOR EACH ac IsA actor DO
-                IF proiettile IN ac
-                  THEN SAY ac:prep_DA. SAY ac. "."
-                END IF.
-              END FOR.
-          END IF.
-  END VERB lancia_in.
+  <span class="hl kwa">VERB</span> lancia_contro <span class="hl slc">--&gt; lancia (proiettile) contro (bersaglio)</span>
+    <span class="hl kwa">WHEN</span> proiettile
+      <span class="hl kwa">CHECK</span> proiettile <span class="hl kwa">IS NOT</span> indossato
+        <span class="hl kwa">ELSE</span>
+          <span class="hl kwa">IF</span> proiettile <span class="hl kwa">IN</span> <span class="hl kwc">hero</span>
+            <span class="hl kwa">THEN SAY</span> mia_AT<span class="hl kwa">:</span>indumento_andrebbe_rimosso<span class="hl kwa">.</span>
+            <span class="hl kwa">ELSE</span>
+              <span class="hl kwa">IF</span> proiettile <span class="hl kwa">IS NOT</span> plurale
+                <span class="hl slc">-- &quot;Al momento $+1 [è/sono] indossat$$&quot;</span>
+                <span class="hl kwa">THEN SAY</span> mia_AT<span class="hl kwa">:</span>indumento_indossato_PNG_sg<span class="hl kwa">.</span>
+                <span class="hl kwa">ELSE SAY</span> mia_AT<span class="hl kwa">:</span>indumento_indossato_PNG_pl<span class="hl kwa">.</span>
+              <span class="hl kwa">END IF. SAY</span> proiettile<span class="hl kwa">:</span>vocale<span class="hl kwa">.</span>
+              <span class="hl kwa">FOR EACH</span> ac <span class="hl kwa">IsA</span> <span class="hl kwb">actor</span> <span class="hl kwa">DO</span>
+                <span class="hl kwa">IF</span> proiettile <span class="hl kwa">IN</span> ac
+                  <span class="hl kwa">THEN SAY</span> ac<span class="hl kwa">:</span>prep_DA<span class="hl kwa">. SAY</span> ac<span class="hl kwa">.</span> <span class="hl str">&quot;.&quot;</span>
+                <span class="hl kwa">END IF.</span>
+              <span class="hl kwa">END FOR.</span>
+          <span class="hl kwa">END IF.</span>
+  <span class="hl kwa">END VERB</span> lancia_contro<span class="hl kwa">.</span>
 
 
-  VERB lega_a --&gt; lega (ogg) a (bersaglio)
-    WHEN ogg
-      CHECK ogg IS NOT indossato
-        ELSE
-          IF ogg IN hero
-            THEN SAY mia_AT:indumento_andrebbe_rimosso.
-            ELSE
-              IF ogg IS NOT plurale
-                -- "Al momento $+1 [è/sono] indossat$$"
-                THEN SAY mia_AT:indumento_indossato_PNG_sg.
-                ELSE SAY mia_AT:indumento_indossato_PNG_pl.
-              END IF. SAY ogg:vocale.
-              FOR EACH ac IsA actor DO
-                IF ogg IN ac
-                  THEN SAY ac:prep_DA. SAY ac. "."
-                END IF.
-              END FOR.
-          END IF.
-  END VERB lega_a.</code></pre>
+  <span class="hl kwa">VERB</span> lancia_in <span class="hl slc">--&gt; lancia (proiettile) &apos;in&apos; (cont)</span>
+    <span class="hl kwa">WHEN</span> proiettile
+      <span class="hl kwa">CHECK</span> proiettile <span class="hl kwa">IS NOT</span> indossato
+        <span class="hl kwa">ELSE</span>
+          <span class="hl kwa">IF</span> proiettile <span class="hl kwa">IN</span> <span class="hl kwc">hero</span>
+            <span class="hl kwa">THEN SAY</span> mia_AT<span class="hl kwa">:</span>indumento_andrebbe_rimosso<span class="hl kwa">.</span>
+            <span class="hl kwa">ELSE</span>
+              <span class="hl kwa">IF</span> proiettile <span class="hl kwa">IS NOT</span> plurale
+                <span class="hl slc">-- &quot;Al momento $+1 [è/sono] indossat$$&quot;</span>
+                <span class="hl kwa">THEN SAY</span> mia_AT<span class="hl kwa">:</span>indumento_indossato_PNG_sg<span class="hl kwa">.</span>
+                <span class="hl kwa">ELSE SAY</span> mia_AT<span class="hl kwa">:</span>indumento_indossato_PNG_pl<span class="hl kwa">.</span>
+              <span class="hl kwa">END IF. SAY</span> proiettile<span class="hl kwa">:</span>vocale<span class="hl kwa">.</span>
+              <span class="hl kwa">FOR EACH</span> ac <span class="hl kwa">IsA</span> <span class="hl kwb">actor</span> <span class="hl kwa">DO</span>
+                <span class="hl kwa">IF</span> proiettile <span class="hl kwa">IN</span> ac
+                  <span class="hl kwa">THEN SAY</span> ac<span class="hl kwa">:</span>prep_DA<span class="hl kwa">. SAY</span> ac<span class="hl kwa">.</span> <span class="hl str">&quot;.&quot;</span>
+                <span class="hl kwa">END IF.</span>
+              <span class="hl kwa">END FOR.</span>
+          <span class="hl kwa">END IF.</span>
+  <span class="hl kwa">END VERB</span> lancia_in<span class="hl kwa">.</span>
+
+
+  <span class="hl kwa">VERB</span> lega_a <span class="hl slc">--&gt; lega (ogg) a (bersaglio)</span>
+    <span class="hl kwa">WHEN</span> ogg
+      <span class="hl kwa">CHECK</span> ogg <span class="hl kwa">IS NOT</span> indossato
+        <span class="hl kwa">ELSE</span>
+          <span class="hl kwa">IF</span> ogg <span class="hl kwa">IN</span> <span class="hl kwc">hero</span>
+            <span class="hl kwa">THEN SAY</span> mia_AT<span class="hl kwa">:</span>indumento_andrebbe_rimosso<span class="hl kwa">.</span>
+            <span class="hl kwa">ELSE</span>
+              <span class="hl kwa">IF</span> ogg <span class="hl kwa">IS NOT</span> plurale
+                <span class="hl slc">-- &quot;Al momento $+1 [è/sono] indossat$$&quot;</span>
+                <span class="hl kwa">THEN SAY</span> mia_AT<span class="hl kwa">:</span>indumento_indossato_PNG_sg<span class="hl kwa">.</span>
+                <span class="hl kwa">ELSE SAY</span> mia_AT<span class="hl kwa">:</span>indumento_indossato_PNG_pl<span class="hl kwa">.</span>
+              <span class="hl kwa">END IF. SAY</span> ogg<span class="hl kwa">:</span>vocale<span class="hl kwa">.</span>
+              <span class="hl kwa">FOR EACH</span> ac <span class="hl kwa">IsA</span> <span class="hl kwb">actor</span> <span class="hl kwa">DO</span>
+                <span class="hl kwa">IF</span> ogg <span class="hl kwa">IN</span> ac
+                  <span class="hl kwa">THEN SAY</span> ac<span class="hl kwa">:</span>prep_DA<span class="hl kwa">. SAY</span> ac<span class="hl kwa">.</span> <span class="hl str">&quot;.&quot;</span>
+                <span class="hl kwa">END IF.</span>
+              <span class="hl kwa">END FOR.</span>
+          <span class="hl kwa">END IF.</span>
+  <span class="hl kwa">END VERB</span> lega_a<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -956,8 +959,5 @@ italiano del modulo della classe del vestiario.</p>
 Versione 0.17.0-Alpha<br>
 </div>
 </div>
-<link rel="stylesheet" href="hjs/styles/github.min.css">
-<script src="hjs/highlight.min.js"></script>
-<script>hljs.initHighlighting()</script>
 </body>
 </html>

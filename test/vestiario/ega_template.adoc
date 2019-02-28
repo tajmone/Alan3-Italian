@@ -15,9 +15,6 @@ include::ega.adoc[tag=rev_info]
 :reproducible:
 :sectanchors:
 :data-uri:
-// Syntax Highlighting:
-:source-highlighter: highlightjs
-:highlightjsdir: ../../docs/hjs
 // Italian Attributes: (courtesy of Marco Ciampa <ciampix@libero.it>)
 :appendix-caption: Appendice
 :appendix-refsig: app.
