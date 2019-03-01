@@ -230,6 +230,7 @@ Alan SKD richiesta:    :: {AlanSDK}
 Upstream Alan StdLib:  :: 2.1
 Progetto a cura di:    :: {Tristano_Ajmone}
 Data inizio progetto:  :: 2018/04/13
+Sito web progetto:     :: https://git.io/alan-italian
 Repository Git:        :: https://github.com/tajmone/Alan3-Italian
 Licenza:               :: link:{license-link}[Artistic License 2.0^,title="Leggi il testo completo della Artistic License 2.0"]
 =================================================
