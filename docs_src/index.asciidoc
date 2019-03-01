@@ -1,5 +1,7 @@
-= Documentazione di Alan Italian
+= Alan IF Italian
 Tristano Ajmone <tajmone@gmail.com>
+// Importa info su version AlanITA e Alan SDK:
+include::../README.adoc[tag=AlanRevInfo]
 :lang: it
 // TOC Settings:
 :toc: left
@@ -19,31 +21,66 @@ Tristano Ajmone <tajmone@gmail.com>
 // Traduzione italiana degli attributi predefiniti di Asciidoctor:
 include::attributes-it.adoc[tag=attributes-it]
 
+// =============================================================================
+//                      CUSTOM ATTRIBUTES FOR SUBSTITUTIONS
+// =============================================================================
+
+// Redefinisci path relativi:
+:path2_docs_src: ./
+
+// Includi gruppi di attributi personalizzati dai documenti importati:
+include::../README.adoc[tags=link_persone;link_alan;link_misc;link_paypal;link_3rd_party]
+
 // *****************************************************************************
 // *                                                                           *
 // *                            Document Preamble                              *
 // *                                                                           *
 // *****************************************************************************
 
+// Ridefinisci alcuni attributi di link e sostituzioni:
+:license-link: https://github.com/tajmone/Alan3-Italian/blob/master/LICENSE
+
+include::../README.adoc[tag=benvenuti]
+
+
+== Introduzione
+
+Le pagine linkate qui di seguito forniscono una panoramica introduttiva al progetto.
+
+* link:presentazione.html[Presentazione di Alan Italian]
+
+
+== Documentazione di Alan Italian
+
 [WARNING]
 ================================================================================
 La documentazione è ancora in fase di preparazione.
 ================================================================================
 
-== Documentazione dei moduli
+=== Documentazione dei moduli
 
 È possibile consultare la documentazione dei singoli moduli della libreria:
 
 * link:lib_classi.html[`lib_classi.i`]
+* link:lib_classi_vestiario.html[`lib_classi_vestiario.i`]
 * link:lib_definizioni.html[`lib_definizioni.i`]
+* link:lib_grammatica.html[`lib_grammatica.i`]
 * link:lib_luoghi.html[`lib_luoghi.i`]
 * link:lib_messaggi_libreria.html[`lib_messaggi_libreria.i`]
 * link:lib_messaggi_runtime.html[`lib_messaggi_runtime.i`]
-* link:lib_verbi.html[`lib_verbi.i`]
 * link:lib_supplemento.html[`lib_supplemento.i`]
+* link:lib_verbi.html[`lib_verbi.i`]
 
+I moduli della libreria contengono la propria documentazione nei commenti del file sorgente.
+Il progetto contiene un sistema automatizzato per estrarre la documentazione dai sorgenti tramite {Doxter}, uno strumento dedicato alla generazione di documenti.
 
-== Documenti vari
+[WARNING]
+================================================================================
+Allo stato attuale la documentazione dei moduli della libreria sia incompleta, e spesso non aggiornata agli ultimi cambiamenti del codice.
+Nonostante ciò, può comunque servire da spunto per comprendere meglio il funzionamento della libreria.
+================================================================================
+
+=== Documenti vari
 
 Questi sono i link a vari documenti in fase di preparazione:
 

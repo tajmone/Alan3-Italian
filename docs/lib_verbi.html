@@ -2592,14 +2592,9 @@ l&#8217;istruzione nativa di Alan <code>TRANSCRIPT ON</code> e, a parte verifica
 di un blocco per quest&#8217;azione (tramite l&#8217;attributo <code>trascrivere_on</code>), la
 gestionalità della trascrizione viene delegata interamente all&#8217;interprete:</p>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">META VERB</span> trascrizione_on
-  <span class="hl kwa">CHECK</span> mia_AT <span class="hl kwa">CAN</span> trascrivere_on
-    <span class="hl kwa">ELSE SAY</span> mia_AT<span class="hl kwa">:</span>azione_bloccata<span class="hl kwa">.</span>
-  <span class="hl kwa">DOES TRANSCRIPT ON.</span> <span class="hl str">&quot;Trascrizione avviata.&quot;</span>
-<span class="hl kwa">END VERB</span> trascrizione_on<span class="hl kwa">.</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">META VERB</span> trascrizione_on&#x000A;  <span class="hl kwa">CHECK</span> mia_AT <span class="hl kwa">CAN</span> trascrivere_on&#x000A;    <span class="hl kwa">ELSE SAY</span> mia_AT<span class="hl kwa">:</span>azione_bloccata<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">DOES TRANSCRIPT ON.</span> <span class="hl str">&quot;Trascrizione avviata.&quot;</span>&#x000A;<span class="hl kwa">END VERB</span> trascrizione_on<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -2626,14 +2621,9 @@ transcrizione non in corso.</p>
 il giocatore e l&#8217;istruzione nativa di Alan per interrompere la trascrizione
 in corso:</p>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">META VERB</span> trascrizione_off
-  <span class="hl kwa">CHECK</span> mia_AT <span class="hl kwa">CAN</span> trascrivere_off
-    <span class="hl kwa">ELSE SAY</span> mia_AT<span class="hl kwa">:</span>azione_bloccata<span class="hl kwa">.</span>
-  <span class="hl kwa">DOES TRANSCRIPT OFF.</span> <span class="hl str">&quot;Trascrizione terminata.&quot;</span>
-<span class="hl kwa">END VERB</span> trascrizione_off<span class="hl kwa">.</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">META VERB</span> trascrizione_off&#x000A;  <span class="hl kwa">CHECK</span> mia_AT <span class="hl kwa">CAN</span> trascrivere_off&#x000A;    <span class="hl kwa">ELSE SAY</span> mia_AT<span class="hl kwa">:</span>azione_bloccata<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">DOES TRANSCRIPT OFF.</span> <span class="hl str">&quot;Trascrizione terminata.&quot;</span>&#x000A;<span class="hl kwa">END VERB</span> trascrizione_off<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>

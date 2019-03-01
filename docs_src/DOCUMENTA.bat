@@ -1,5 +1,5 @@
 :: -----------------------------------------------------------------------------
-:: "DOCUMENTA.bat"                    | v0.2.0 | 2019/02/28 | by Tristano Ajmone
+:: "DOCUMENTA.bat"                    | v0.2.1 | 2019/03/01 | by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 @ECHO OFF & CLS
 CHCP 65001 > nul &:: (UTF-8 Unicode)
@@ -56,7 +56,7 @@ CALL asciidoctor^
   -a toclevels=5^
   -a version-label=Versione^
   -a source-highlighter=highlight^
-  --template-dir .\erb^
+  --template-dir .\haml^
   --require .\adoc\highlight-treeprocessor_mod.rb^
   -a docinfodir=.\adoc^
   -a docinfo=shared-head^

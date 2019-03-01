@@ -584,40 +584,27 @@ dai
 <div class="paragraph">
 <p>Ad esempio, la libreria inglese definisce i seguenti attributi per le risposte in caso di parametri non idonei al verbo:</p>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl kwa">HAS</span> illegal_parameter_sg <span class="hl str">&quot;That&apos;s not something you can</span> <span class="hl esc">$v</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>
-  <span class="hl kwa">HAS</span> illegal_parameter_pl <span class="hl str">&quot;Those are not something you can</span> <span class="hl esc">$v</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">HAS</span> illegal_parameter_sg <span class="hl str">&quot;That&apos;s not something you can</span> <span class="hl esc">$v</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> illegal_parameter_pl <span class="hl str">&quot;Those are not something you can</span> <span class="hl esc">$v</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Ciascun attributo è una risposta completa e non richiede ulteriore testo.
 Nella libreria italiana questi attributi sono stati tradotti così:</p>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl kwa">HAS</span> ogg1_inadatto_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non è qualcosa che puoi&quot;</span><span class="hl kwa">.</span>
-  <span class="hl kwa">HAS</span> ogg1_inadatto_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non sono qualcosa che puoi&quot;</span><span class="hl kwa">.</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">HAS</span> ogg1_inadatto_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non è qualcosa che puoi&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> ogg1_inadatto_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non sono qualcosa che puoi&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>L&#8217;impedimento ad usare <code>$v</code> ha costretto a troncare le frasi negli attributi, e a doverle completare nel codice dei verbi stessi.
 Ad esempio:</p>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="alan"><code data-lang="alan"><span class="hl kwa">SYNTAX</span> ispeziona <span class="hl opt">=</span> ispeziona <span class="hl opt">(</span>ogg<span class="hl opt">)</span>
-  <span class="hl kwa">WHERE</span> ogg <span class="hl kwa">IsA</span> <span class="hl kwb">THING</span>
-    <span class="hl kwa">ELSE</span>
-      <span class="hl kwa">IF</span> ogg <span class="hl kwa">IS NOT</span> plurale
-        <span class="hl kwa">THEN SAY</span> mia_AT<span class="hl kwa">:</span>ogg1_inadatto_sg<span class="hl kwa">.</span>
-        <span class="hl kwa">ELSE SAY</span> mia_AT<span class="hl kwa">:</span>ogg1_inadatto_pl<span class="hl kwa">.</span>
-      <span class="hl kwa">END IF.</span> <span class="hl str">&quot;ispezionare.&quot;</span>
-
-<span class="hl kwa">SYNONYMS</span> perquisisci <span class="hl opt">=</span> ispeziona<span class="hl kwa">.</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">SYNTAX</span> ispeziona <span class="hl opt">=</span> ispeziona <span class="hl opt">(</span>ogg<span class="hl opt">)</span>&#x000A;  <span class="hl kwa">WHERE</span> ogg <span class="hl kwa">IsA</span> <span class="hl kwb">THING</span>&#x000A;    <span class="hl kwa">ELSE</span>&#x000A;      <span class="hl kwa">IF</span> ogg <span class="hl kwa">IS NOT</span> plurale&#x000A;        <span class="hl kwa">THEN SAY</span> mia_AT<span class="hl kwa">:</span>ogg1_inadatto_sg<span class="hl kwa">.</span>&#x000A;        <span class="hl kwa">ELSE SAY</span> mia_AT<span class="hl kwa">:</span>ogg1_inadatto_pl<span class="hl kwa">.</span>&#x000A;      <span class="hl kwa">END IF.</span> <span class="hl str">&quot;ispezionare.&quot;</span>&#x000A;&#x000A;<span class="hl kwa">SYNONYMS</span> perquisisci <span class="hl opt">=</span> ispeziona<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -627,10 +614,9 @@ Ad esempio:</p>
 <p>Nel caso di messaggi più complessi, nei quali il verbo ricade necessariamente al centro della frase, è impossibile creare un messaggio completo tramite un solo attributo stringa.
 Per esempio, messaggi della libreria originale come questo:</p>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl kwa">HAS</span> check_obj_not_in_worn2 <span class="hl str">&quot;It doesn&apos;t make sense to $v something you&apos;re wearing.&quot;</span><span class="hl kwa">.</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">HAS</span> check_obj_not_in_worn2 <span class="hl str">&quot;It doesn&apos;t make sense to $v something you&apos;re wearing.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">

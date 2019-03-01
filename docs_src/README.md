@@ -22,7 +22,7 @@ Questa è la cartella di lavoro per la creazione automatizzata della documentazi
 # Contenuti della cartella
 
 - [`./adoc/`][adoc] — risorse per la toolchain HTML di Asciidoctor.
-- [`./erb/`][erb] — template ERB HTML personalizzati per Asciidoctor.
+- [`./haml/`][haml] — template Haml HTML personalizzati per Asciidoctor.
 - [`./sass/`][sass] — sorgenti Sass/SCSS di [`../docs/css/styles.css`][styles.css].
 - [`attributes-it.adoc`][attributes-it] — traduzione italiana attributi AsciiDoc (a cura di Marco Ciampa).
 - [`DOCUMENTA.bat`][DOCUMENTA.bat] — script per generare la documentazione.
@@ -115,7 +115,7 @@ Per maggior informazioni riguardo la suddivisione della documentazione in region
 [DOXTER.md]: ./DOXTER.md "Leggi il documento 'Annotazioni Doxter'"
 
 [adoc]: ./adoc/ "Vai alla cartella"
-[erb]:  ./erb/  "Vai alla cartella"
+[haml]:  ./haml/  "Vai alla cartella"
 [sass]: ./sass/ "Vai alla cartella"
 
 [styles.css]: ../docs/css/styles.css "Vedi sorgente del foglio di stile"

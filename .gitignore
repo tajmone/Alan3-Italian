@@ -31,6 +31,7 @@ docs_src/lib*.asciidoc
 ## Misc Work Files
 ## ===============
 *.tmp
+README.html
 
 # Backup Files
 ___*.*

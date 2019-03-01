@@ -846,18 +846,9 @@ effettuata la descrizione del luogo.</p>
 aggiungendo ai suoi <code>consentiti</code> tutti gli oggetti contenuti in esso, di modo
 che sia possibile rimetterveli dentro dopo averli rimossi.</p>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="alan"><code data-lang="alan">  <span class="hl kwa">INITIALIZE</span>
-
-    <span class="hl kwa">FOR EACH</span> lc <span class="hl kwa">IsA</span> contenitore_elencato
-      <span class="hl kwa">DO</span>
-        <span class="hl kwa">FOR EACH</span> o <span class="hl kwa">IsA</span> <span class="hl kwb">OBJECT</span><span class="hl kwa">, DIRECTLY IN</span> lc
-          <span class="hl kwa">DO</span>
-            <span class="hl kwa">INCLUDE</span> o <span class="hl kwa">IN</span> consentiti <span class="hl kwa">OF</span> lc<span class="hl kwa">.</span>
-        <span class="hl kwa">END FOR.</span>
-    <span class="hl kwa">END FOR.</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">INITIALIZE</span>&#x000A;&#x000A;    <span class="hl kwa">FOR EACH</span> lc <span class="hl kwa">IsA</span> contenitore_elencato&#x000A;      <span class="hl kwa">DO</span>&#x000A;        <span class="hl kwa">FOR EACH</span> o <span class="hl kwa">IsA</span> <span class="hl kwb">OBJECT</span><span class="hl kwa">, DIRECTLY IN</span> lc&#x000A;          <span class="hl kwa">DO</span>&#x000A;            <span class="hl kwa">INCLUDE</span> o <span class="hl kwa">IN</span> consentiti <span class="hl kwa">OF</span> lc<span class="hl kwa">.</span>&#x000A;        <span class="hl kwa">END FOR.</span>&#x000A;    <span class="hl kwa">END FOR.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">

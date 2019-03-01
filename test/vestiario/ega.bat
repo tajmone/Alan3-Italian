@@ -1,5 +1,5 @@
 :: -----------------------------------------------------------------------------
-:: "ega.bat"                            v0.2.0 | 2019/02/28 | by Tristano Ajmone
+:: "ega.bat"                            v0.2.1 | 2019/03/01 | by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 :: Documenta sorgente Emporio Giorgio Alani
 :: -----------------------------------------------------------------------------
@@ -27,7 +27,7 @@ CALL doxter.exe %1 > nul 2>&1 ^
       --verbose^
       -S unsafe^
       -a source-highlighter=highlight^
-      --template-dir ..\..\docs_src\erb^
+      --template-dir ..\..\docs_src\haml^
       --require ..\..\docs_src\adoc\highlight-treeprocessor_mod.rb^
       -a docinfo=shared-head^
       -o %~n1.html ^

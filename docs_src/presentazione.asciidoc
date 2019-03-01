@@ -1,0 +1,48 @@
+= Presentazione di Alan Italian
+Tristano Ajmone <tajmone@gmail.com>
+// Importa info su version AlanITA e Alan SDK:
+include::../README.adoc[tag=AlanRevInfo]
+:lang: it
+// TOC Settings:
+:toc: left
+:toclevels: 5
+// Sections Numbering:
+:sectnums!:
+:sectnumlevels: 2
+// Cross References:
+:xrefstyle: short
+:section-refsig: sez.
+// Misc Settings:
+:experimental: true
+:icons: font
+:linkattrs: true
+:reproducible: true
+:sectanchors:
+// Traduzione italiana degli attributi predefiniti di Asciidoctor:
+include::attributes-it.adoc[tag=attributes-it]
+
+// =============================================================================
+//                      CUSTOM ATTRIBUTES FOR SUBSTITUTIONS
+// =============================================================================
+
+// Redefinisci path relativi:
+:path2_docs_src: ./
+
+// Includi gruppi di attributi personalizzati dai documenti importati:
+include::../README.adoc[tags=link_persone;link_alan;link_misc;link_paypal;link_3rd_party]
+
+// *****************************************************************************
+// *                                                                           *
+// *                            Document Preamble                              *
+// *                                                                           *
+// *****************************************************************************
+
+Una panoramica introduttiva su {ALAN3}, linguaggio per la creazione di {avventure_testuali}, e il progetto {Alan_Italian} per la traduzione in italiano della libreria standard di Alan.
+
+// ============
+// INTRODUZIONE
+// ============
+include::../README.adoc[tag=presentazione_alan,leveloffset=-1]
+
+
+// EOF //

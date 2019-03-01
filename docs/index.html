@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
 <meta name="author" content="Tristano Ajmone">
-<title>Documentazione di Alan Italian</title>
+<title>Alan IF Italian</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -435,21 +435,136 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Documentazione di Alan Italian</h1>
+<h1>Alan IF Italian</h1>
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
+<span id="revnumber">versione 0.17-Alpha</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Indice dei contenuti</div>
 <ul class="sectlevel1">
+<li><a href="#_introduzione">Introduzione</a></li>
+<li><a href="#_documentazione_di_alan_italian">Documentazione di Alan Italian</a>
+<ul class="sectlevel2">
 <li><a href="#_documentazione_dei_moduli">Documentazione dei moduli</a></li>
 <li><a href="#_documenti_vari">Documenti vari</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Benvenuti al progetto <a href="https://github.com/tajmone/Alan3-Italian" title="Visita il repository del progetto Alan Italian su GitHub" target="_blank" rel="noopener"><strong>Alan Italian</strong></a>, la libreria italiana per realizzare <a href="https://it.wikipedia.org/wiki/Avventura_testuale" title="Vedi la pagina Wikipedia sulle avventure testuali" target="_blank" rel="noopener">avventure testuali</a> con <a href="https://www.alanif.se/" title="Visita il sito ufficiale di Alan" target="_blank" rel="noopener">ALAN 3</a>, una piattaforma open source per la creazione di giochi di Interactive Fiction.</p>
+</div>
+<div class="paragraph">
+<p>Questo progetto si prefigge is seguenti obiettivi:</p>
+</div>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="fa fa-check-square-o"></i> Fornire supporto per la lingua italiana in Alan IF 3.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Tradurre in italiano la <a href="https://github.com/AnssiR66/AlanStdLib" title="Visita il repository upstream della Alan Standard Library" target="_blank" rel="noopener"><em>Alan Standard Library</em></a> v2.1 di <a href="https://github.com/AnssiR66" title="Guarda il profilo GitHub di Anssi Räisänen" target="_blank" rel="noopener">Anssi Räisänen</a>.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Documentare l&#8217;uso di Alan e della Libreria Italiana attraverso guide ed esempi.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alan Italian diventerà il sistema di autoraggio di AT italiane più facile da usare per i non programmatori, grazie alla sua sintassi intuitiva e una ricca libreria standard di partenza con oltre 170 verbi e una vasta gamma di classi predefinite e funzionalità per creare personaggi, fonti di luce, dispositivi, vestiario, porte e finestre, serrature, e molto altro ancora.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><span class="image right"><a class="image" href="{PyaPal_url}"><img src="data:image/gif;base64,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" alt="Pulsante donazione PayPal" title="Sostieni il progetto Alan Italian con una donazione&#8230;&#8203;"></a></span></p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+Alan Italian Status:   
+</td>
+<td class="hdlist2">
+<p>Alpha 17</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Alan SKD richiesta:    
+</td>
+<td class="hdlist2">
+<p>3.0beta6 build 1878</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Upstream Alan StdLib:  
+</td>
+<td class="hdlist2">
+<p>2.1</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Progetto a cura di:    
+</td>
+<td class="hdlist2">
+<p><a href="https://github.com/tajmone" title="Guarda il profilo GitHub di Tristano Ajmone" target="_blank" rel="noopener">Tristano Ajmone</a></p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Data inizio progetto:  
+</td>
+<td class="hdlist2">
+<p>2018/04/13</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Repository Git:        
+</td>
+<td class="hdlist2">
+<p><a href="https://github.com/tajmone/Alan3-Italian" class="bare">https://github.com/tajmone/Alan3-Italian</a></p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Licenza:               
+</td>
+<td class="hdlist2">
+<p><a href="https://github.com/tajmone/Alan3-Italian/blob/master/LICENSE" title="Leggi il testo completo della Artistic License 2.0" target="_blank" rel="noopener">Artistic License 2.0</a></p>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduzione"><a class="anchor" href="#_introduzione"></a>Introduzione</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Le pagine linkate qui di seguito forniscono una panoramica introduttiva al progetto.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="presentazione.html">Presentazione di Alan Italian</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_documentazione_di_alan_italian"><a class="anchor" href="#_documentazione_di_alan_italian"></a>Documentazione di Alan Italian</h2>
 <div class="sectionbody">
 <div class="admonitionblock warning">
 <table>
@@ -465,11 +580,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 </table>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_documentazione_dei_moduli"><a class="anchor" href="#_documentazione_dei_moduli"></a>Documentazione dei moduli</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_documentazione_dei_moduli"><a class="anchor" href="#_documentazione_dei_moduli"></a>Documentazione dei moduli</h3>
 <div class="paragraph">
 <p>È possibile consultare la documentazione dei singoli moduli della libreria:</p>
 </div>
@@ -479,7 +591,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="lib_classi.html"><code>lib_classi.i</code></a></p>
 </li>
 <li>
+<p><a href="lib_classi_vestiario.html"><code>lib_classi_vestiario.i</code></a></p>
+</li>
+<li>
 <p><a href="lib_definizioni.html"><code>lib_definizioni.i</code></a></p>
+</li>
+<li>
+<p><a href="lib_grammatica.html"><code>lib_grammatica.i</code></a></p>
 </li>
 <li>
 <p><a href="lib_luoghi.html"><code>lib_luoghi.i</code></a></p>
@@ -491,18 +609,35 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="lib_messaggi_runtime.html"><code>lib_messaggi_runtime.i</code></a></p>
 </li>
 <li>
-<p><a href="lib_verbi.html"><code>lib_verbi.i</code></a></p>
+<p><a href="lib_supplemento.html"><code>lib_supplemento.i</code></a></p>
 </li>
 <li>
-<p><a href="lib_supplemento.html"><code>lib_supplemento.i</code></a></p>
+<p><a href="lib_verbi.html"><code>lib_verbi.i</code></a></p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>I moduli della libreria contengono la propria documentazione nei commenti del file sorgente.
+Il progetto contiene un sistema automatizzato per estrarre la documentazione dai sorgenti tramite <a href="https://git.io/doxter" title="Visita il sito di Doxter" target="_blank" rel="noopener">Doxter</a>, uno strumento dedicato alla generazione di documenti.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Attenzione"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Allo stato attuale la documentazione dei moduli della libreria sia incompleta, e spesso non aggiornata agli ultimi cambiamenti del codice.
+Nonostante ciò, può comunque servire da spunto per comprendere meglio il funzionamento della libreria.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_documenti_vari"><a class="anchor" href="#_documenti_vari"></a>Documenti vari</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_documenti_vari"><a class="anchor" href="#_documenti_vari"></a>Documenti vari</h3>
 <div class="paragraph">
 <p>Questi sono i link a vari documenti in fase di preparazione:</p>
 </div>
@@ -516,8 +651,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
+Versione 0.17-Alpha<br>
 </div>
 </div>
 </body>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
 <meta name="author" content="Tristano Ajmone">
-<title>Alan StdLib Italian: Definizioni</title>
+<title>Presentazione di Alan Italian</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -435,156 +435,195 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Alan StdLib Italian: Definizioni</h1>
+<h1>Presentazione di Alan Italian</h1>
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.17.0-Alpha,</span>
-<span id="revdate">2019-02-27</span>
-<br><span id="revremark">Alan 3.0beta6 build 1878</span>
+<span id="revnumber">versione 0.17-Alpha</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Indice dei contenuti</div>
 <ul class="sectlevel1">
-<li><a href="#_le_restrizioni_verbali">Le Restrizioni Verbali</a>
+<li><a href="#_alan_if">Alan IF</a>
 <ul class="sectlevel2">
-<li><a href="#_elenco_delle_restrizioni_verbali">Elenco delle Restrizioni Verbali</a></li>
+<li><a href="#_programmazione_prosaica">Programmazione prosaica</a></li>
+<li><a href="#_libertà_autoriale">Libertà autoriale</a></li>
 </ul>
 </li>
-<li><a href="#_lintestazione_dellavventura_banner">L&#8217;Intestazione dell&#8217;Avventura (Banner)</a>
-<ul class="sectlevel2">
-<li><a href="#_attributi_dellintestazione">Attributi dell&#8217;intestazione</a></li>
-</ul>
-</li>
-<li><a href="#_todo">TODO</a>
-<ul class="sectlevel2">
-<li><a href="#_check_list_generale">Check-list generale</a></li>
-</ul>
-</li>
+<li><a href="#_alan_italian_vs_libreria_standard_italiana">Alan Italian vs Libreria Standard Italiana</a></li>
+<li><a href="#_alan_standard_library">Alan Standard Library</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="exampleblock">
-<div class="content">
 <div class="paragraph">
-<p>Adattamento italiano del modulo <code>lib_definitions.i</code> della
-<em>ALAN Standard Library</em> v2.1, &#169; Anssi Räisänen, Artistic License 2.1.
-Ad opera di Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
+<p>Una panoramica introduttiva su <a href="https://www.alanif.se/" title="Visita il sito ufficiale di Alan" target="_blank" rel="noopener">ALAN 3</a>, linguaggio per la creazione di <a href="https://it.wikipedia.org/wiki/Avventura_testuale" title="Vedi la pagina Wikipedia sulle avventure testuali" target="_blank" rel="noopener">avventure testuali</a>, e il progetto <a href="https://github.com/tajmone/Alan3-Italian" title="Visita il repository del progetto Alan Italian su GitHub" target="_blank" rel="noopener"><strong>Alan Italian</strong></a> per la traduzione in italiano della libreria standard di Alan.</p>
 </div>
+<div class="paragraph">
+<p>Il progetto <strong>Alan Italian</strong> si prefigge i seguenti obiettivi:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Tradurre in italiano la <a href="https://github.com/AnssiR66/AlanStdLib" title="Visita il repository upstream della Alan Standard Library" target="_blank" rel="noopener"><em>Alan Standard Library</em></a> v2.1 di <a href="https://github.com/AnssiR66" title="Guarda il profilo GitHub di Anssi Räisänen" target="_blank" rel="noopener">Anssi Räisänen</a>.</p>
+</li>
+<li>
+<p>Fornire un modulo indipendente per il supporto della lingua italiana in Alan IF 3.</p>
+</li>
+<li>
+<p>Documentare l&#8217;uso di Alan e della Libreria Italiana attraverso guide ed esempi.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Sia la <strong>Libreria Standard Italiana</strong> che il modulo per l&#8217;italiano consentiranno la creazione di avventure testuali in lingua italiana utilizzando Alan 3, un linguaggio dedicato alla creazione di opere di interactive fiction.</p>
+</div>
+<div class="paragraph">
+<p>La Libreria Standard è mirata a fornire ai novizi di Alan uno strumento di facile utilizzo per la creazione di avventure in italiano, grazie a una ricca infrastruttura di classi e verbi comunemente utilizzati nelle avventure.</p>
+</div>
+<div class="paragraph">
+<p>Il modulo indipedente per l&#8217;italiano è mirato agli utenti più esperti di Alan, che vogliono creare le proprie avventure partendo solo con il supporto per la lingua italiana, e costruirsi da zero tutti i verbi e l&#8217;infrastruttura dell&#8217;avventura.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_alan_if"><a class="anchor" href="#_alan_if"></a>Alan IF</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.alanif.se/" class="bare">https://www.alanif.se/</a></p>
+</li>
+<li>
+<p><a href="https://bitbucket.org/alanif/alan" class="bare">https://bitbucket.org/alanif/alan</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alan (acronimo per <em>Adventure LANguage</em>) è un linguaggio dedicato alla creazione di <a href="https://it.wikipedia.org/wiki/Avventura_testuale" title="Vedi la pagina Wikipedia sulle avventure testuali" target="_blank" rel="noopener">avventure testuali</a> (dette anche &#8220;AT&#8221;, o &#8220;IF&#8221;/&#8220;Interactive Fiction&#8221;).
+Creato nel lontano 1985 da <a href="https://github.com/thoni56" title="Guarda il profilo GitHub di Thomas Nilefalke" target="_blank" rel="noopener">Thomas Nilefalke</a> (all&#8217;epoca, Thomas Nilsson) e Göran Forslund, Alan è oggi giunto alla sua terza incarnazione (Alan 3).
+Sebbene la versione 3 di Alan sia ancora in fase Beta, è sufficientemente stabile da poter essere usata per la creazione di avventure.</p>
+</div>
+<div class="paragraph">
+<p>Gli ideatori di Alan hanno voluto creare uno strumento che fosse semplice da usare per chi non avesse esperienza di programmazione, e che non imponesse un modello standard su come debba essere strutturato il mondo delle avventure.
+Queste caretterstiche rendono Alan un ottimo candidato per la creazione di avventure in italiano.</p>
+</div>
+<div class="sect2">
+<h3 id="_programmazione_prosaica"><a class="anchor" href="#_programmazione_prosaica"></a>Programmazione prosaica</h3>
+<div class="paragraph">
+<p>La sintassi di Alan è modellata attorno alle esigenze dello scrittore, più che del programmatore, quindi l&#8217;uso di parentesi, punteggiatura e altri simboli per l&#8217;organizzazione sintattica del codice è ridotto al minimo indispensabile, e non vi sono vincoli strutturali riguardo l&#8217;uso di indentazione e la ripartizione del codice nelle righe del sorgente.
+L&#8217;aspetto di un file sorgente di Alan è più simile alla prosa che non alla programmazione.</p>
+</div>
+<div class="paragraph">
+<p>Questo è un esempio (completo) di codice Alan per creare un&#8217;avventura con una stanza, un attore ed un verbo, scritto in forma prosaica:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">The</span> classroom <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;<span class="hl kwa">Name</span> &apos;English Literature Classroom&apos;<span class="hl kwa">. Exit</span> south <span class="hl kwa">to</span> corridor<span class="hl kwa">.</span>&#x000A;<span class="hl kwa">Description</span> <span class="hl str">&quot;there are no studends in the classroom, except you.&quot;</span>&#x000A;<span class="hl kwa">End the</span> classroom<span class="hl kwa">.</span>&#x000A;&#x000A;<span class="hl kwa">Syntax</span> greet <span class="hl opt">=</span> greet <span class="hl opt">(</span>person<span class="hl opt">)</span> <span class="hl kwa">where</span> person <span class="hl kwa">IsA</span> <span class="hl kwb">actor</span> <span class="hl kwa">else</span> <span class="hl str">&quot;You can only greet people.&quot;</span>&#x000A;&#x000A;<span class="hl kwa">The</span> teacher <span class="hl kwa">IsA</span> <span class="hl kwb">actor</span> <span class="hl kwa">at</span> classroom<span class="hl kwa">.</span>&#x000A;<span class="hl kwa">Name</span> teacher<span class="hl kwa">. Name</span> professor mr John Keating<span class="hl kwa">. Pronoun</span> him<span class="hl kwa">.</span>&#x000A;<span class="hl kwa">Description</span> <span class="hl str">&quot;Mr Keating is busy at his desk, proofreading the students&apos; homework.&quot;</span>&#x000A;<span class="hl kwa">Verb</span> greet <span class="hl kwa">does</span>&#x000A;     <span class="hl str">&quot;-- Good evening professor Keating.</span>&#x000A;<span class="hl str"></span>    <span class="hl esc">$n</span><span class="hl str">A whole minute goes by before your teacher finally raises</span>&#x000A;<span class="hl str">      his head from the papers and acknowledges your presence.</span>&#x000A;<span class="hl str"></span>    <span class="hl esc">$n</span><span class="hl str">-- How may I help you, Mr. Anderson?&quot;</span>&#x000A;<span class="hl kwa">End verb. End the</span> teacher<span class="hl kwa">.</span>&#x000A;&#x000A;<span class="hl kwa">The</span> corridor <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">EXit</span> north <span class="hl kwa">to</span> classroom<span class="hl kwa">.</span>&#x000A;<span class="hl kwa">End the</span> corridor<span class="hl kwa">.</span>&#x000A;&#x000A;<span class="hl kwa">Start at</span> classroom<span class="hl kwa">.</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Questo è il medesimo codice, scritto in una forma che è più tipica della programmazione:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">THE</span> classroom <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">NAME</span> &apos;English Literature Classroom&apos;<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">DESCRIPTION</span> <span class="hl str">&quot;There are no studends in the classroom, except you.&quot;</span>&#x000A;  <span class="hl kwa">EXIT</span> south <span class="hl kwa">TO</span> corridor<span class="hl kwa">.</span>&#x000A;<span class="hl kwa">END THE</span> classroom<span class="hl kwa">.</span>&#x000A;&#x000A;<span class="hl kwa">SYNTAX</span> greet <span class="hl opt">=</span> greet <span class="hl opt">(</span>person<span class="hl opt">)</span>&#x000A;  <span class="hl kwa">WHERE</span> person <span class="hl kwa">IsA</span> <span class="hl kwb">actor</span>&#x000A;    <span class="hl kwa">ELSE</span> <span class="hl str">&quot;You can only greet people.&quot;</span>&#x000A;&#x000A;<span class="hl kwa">THE</span> teacher <span class="hl kwa">IsA</span> <span class="hl kwb">actor</span> <span class="hl kwa">AT</span> classroom<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">NAME</span> teacher<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">NAME</span> professor mr John Keating<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">PRONOUN</span> him<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">DESCRIPTION</span>&#x000A;    <span class="hl str">&quot;Mr Keating is busy at his desk, proofreading the students&apos; homework.&quot;</span>&#x000A;  <span class="hl kwa">VERB</span> greet&#x000A;    <span class="hl kwa">DOES</span>&#x000A;      <span class="hl str">&quot;-- Good evening professor Keating.</span> <span class="hl esc">$n</span><span class="hl str">A whole minute goes by before your</span>&#x000A;<span class="hl str">       teacher finally raises his head from the papers and acknowledges your</span>&#x000A;<span class="hl str">       presence.</span> <span class="hl esc">$n</span><span class="hl str">-- How may I help you, Mr. Anderson?&quot;</span>&#x000A;  <span class="hl kwa">END VERB</span> greet<span class="hl kwa">.</span>&#x000A;<span class="hl kwa">END THE</span> teacher<span class="hl kwa">.</span>&#x000A;&#x000A;<span class="hl kwa">THE</span> corridor <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">EXIT</span> north <span class="hl kwa">TO</span> classroom<span class="hl kwa">.</span>&#x000A;<span class="hl kwa">END THE</span> corridor<span class="hl kwa">.</span>&#x000A;&#x000A;<span class="hl kwa">START AT</span> classroom<span class="hl kwa">.</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In entrambi i casi, anche un lettore che non conoscesse Alan sarebbe in grado di intuire a cosa serve il codice, e come funzionerà l&#8217;avventura da esso creato.
+Il primo esempio risulterà più facile da comprendere a chi non ha esperienza di programmazione, mentre il secondo risulterà più familiare ai programmatori.
+Ogni autore è libero di adottare lo stile che preferisce nel proprie avventure.</p>
+</div>
+<div class="paragraph">
+<p>Nei sorgenti della libreria di questo progetto, adotteremo uno stile di programmazione formale, più simile al secondo esempio, per ragioni di praticità di editing.
+Nei sorgenti degli esempi adotteremo invece uno stile meno formale, più prosaico.</p>
+</div>
+<div class="paragraph">
+<p>Sebbene Alan adotti un approccio sintattico alla programmazione che ne semplifica l&#8217;uso, avvicinandola il più possibile all&#8217;uso naturale della lingua inglese, si tratta comunque di un vero e proprio linguaggio di programmazione formale&#8201;&#8212;&#8201;da non confodere, per esempio, con la
+<a href="https://en.wikipedia.org/wiki/Natural-language_programming" title="Vedi la pagina Wikipedia su 'Natural-language_programming'" target="_blank" rel="noopener">programmazione in lingua naturale</a>
+adottata da <a href="http://inform7.com" title="Visita il sito di Inform 7" target="_blank" rel="noopener">Inform 7</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_libertà_autoriale"><a class="anchor" href="#_libertà_autoriale"></a>Libertà autoriale</h3>
+<div class="paragraph">
+<p>A differenza di altri sistemi per la creazione di AT, Alan non impone un modello standard del mondo dell&#8217;avventura, o un set di verbi predefiniti; la filosofia di Alan è di lasciare all&#8217;autore totale autonomia su come modellare l&#8217;avventura.
+Alan mette a disposizione un insieme di funzionalità e meccanismi che sono comuni a tutte le avventure, ma starà ai singoli autori decidere se e come usarle&#8201;&#8212;&#8201;ad esempio le funzionalità per il salvataggio e il caricamento di una partita sono controllate dall parole chiave <code>Save</code> e <code>Restore</code>, ma sarà l&#8217;autore a dover decidere <em>se e come</em> rendere queste funzionalità accessibili al giocatore (p.es. implementando i comandi per il giocatore &#8216;salva&#8217; e &#8216;carica&#8217;).</p>
+</div>
+<div class="paragraph">
+<p>Per gli autori che sono abituati a lavorare con Inform, TADS, e altri sistemi di autoraggio dotati di una libreria standard che mette a disposizione i verbi, le classi ed i messaggi d&#8217;uso comune, l&#8217;approccio <em>tabula rasa</em> di Alan potrà sembrare insolito.
+Lavorare con Alan è come dipingere partendo da una tela bianca: toccherà a noi scegliere i pennelli ed i colori da usare, e preparare la tela dandogli un fondo appropriato al tipo di colori che useremo.
+Gli altri sistemi, invece, sono come un kit di partenza dove il materiale di lavoro è già presente: abbiamo pennelli di varie misure, un set di tubetti con tutti i colori principali, e una tela già pretrattata e pronta all&#8217;uso.</p>
+</div>
+<div class="paragraph">
+<p>A secondo del tipo di avventura che si vuole creare, i modelli preconfezionati potranno risultare troppo dettagliati o troppo scarni&#8201;&#8212;&#8201;molto dipende dal tipo di realismo che vogliamo conseguire.
+Magari non ci servono affatto le funzionalità per il vestiario o per i dialoghi, oppure ce ne servirebbe una versione più dettagliata e realistica.
+Alan ci consente di costruire un&#8217;infrastruttura <em>ad hoc</em> per le nostre avventure, partendo da zero.</p>
+</div>
+<div class="paragraph">
+<p>Alan mette a disposizione le seguenti classi di base con cui modellare il mondo delle AT:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDBjbSIgaGVpZ2h0PSIxN2NtIiB2aWV3Qm94PSItODAgLTEgODAwIDM0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsPSJub25lIiBkPSJNLTgwIDBoODAwdjM0MEgtODB6Ii8+PHBhdGggZD0iTTI1Ny43NzggMjBoMTI0LjQ0NEM0MDAgMjAgNDAwIDIwIDQwMCAzMHY0MGMwIDEwIDAgMTAtMTcuNzc4IDEwSDI1Ny43NzhDMjQwIDgwIDI0MCA4MCAyNDAgNzBWMzBjMC0xMCAwLTEwIDE3Ljc3OC0xMHoiIGZpbGw9IiNmZmZmYzQiLz48cGF0aCBkPSJNMjU3Ljc3OCAyMGgxMjQuNDQ0QzQwMCAyMCA0MDAgMjAgNDAwIDMwdjQwYzAgMTAgMCAxMC0xNy43NzggMTBIMjU3Ljc3OEMyNDAgODAgMjQwIDgwIDI0MCA3MFYzMGMwLTEwIDAtMTAgMTcuNzc4LTEwIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZT0iIzAwMCIvPjxwYXRoIGQ9Ik0yNTcuNzc4IDIwaDEyNC40NDRDNDAwIDIwIDQwMCAyMCA0MDAgMzB2NDBjMCAxMCAwIDEwLTE3Ljc3OCAxMEgyNTcuNzc4QzI0MCA4MCAyNDAgODAgMjQwIDcwVjMwYzAtMTAgMC0xMCAxNy43NzgtMTBNMjU3Ljc3OCA4MGgxMjQuNDQ0TTQwMCAzMHY0ME0yNDAgMzB2NDBNMjU3Ljc3OCAyMGgxMjQuNDQ0IiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9Ii4yIiBzdHJva2U9IiMwMDAiLz48dGV4dCBmb250LXNpemU9IjI3LjA5MyIgeD0iMzIwIiB5PSI2MC4xNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI0MDAiPjx0c3BhbiB4PSIzMjAiIHk9IjYwLjE2Ij5lbnRpdHk8L3RzcGFuPjwvdGV4dD48cGF0aCBkPSJNMjU3Ljc3OCAxNDBoMTI0LjQ0NEM0MDAgMTQwIDQwMCAxNDAgNDAwIDE1MHY0MGMwIDEwIDAgMTAtMTcuNzc4IDEwSDI1Ny43NzhDMjQwIDIwMCAyNDAgMjAwIDI0MCAxOTB2LTQwYzAtMTAgMC0xMCAxNy43NzgtMTB6IiBmaWxsPSIjZmZmZmM0Ii8+PHBhdGggZD0iTTI1Ny43NzggMTQwaDEyNC40NDRDNDAwIDE0MCA0MDAgMTQwIDQwMCAxNTB2NDBjMCAxMCAwIDEwLTE3Ljc3OCAxMEgyNTcuNzc4QzI0MCAyMDAgMjQwIDIwMCAyNDAgMTkwdi00MGMwLTEwIDAtMTAgMTcuNzc4LTEwIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZT0iIzAwMCIvPjxwYXRoIGQ9Ik0yNTcuNzc4IDE0MGgxMjQuNDQ0QzQwMCAxNDAgNDAwIDE0MCA0MDAgMTUwdjQwYzAgMTAgMCAxMC0xNy43NzggMTBIMjU3Ljc3OEMyNDAgMjAwIDI0MCAyMDAgMjQwIDE5MHYtNDBjMC0xMCAwLTEwIDE3Ljc3OC0xME0yNTcuNzc4IDIwMGgxMjQuNDQ0TTQwMCAxNTB2NDBNMjQwIDE1MHY0ME0yNTcuNzc4IDE0MGgxMjQuNDQ0IiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9Ii4yIiBzdHJva2U9IiMwMDAiLz48dGV4dCBmb250LXNpemU9IjI3LjA5MyIgeD0iMzIwIiB5PSIxODAuMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNDAwIj48dHNwYW4geD0iMzIwIiB5PSIxODAuMTYiPmxvY2F0aW9uPC90c3Bhbj48L3RleHQ+PHBhdGggZD0iTTU3Ljc3OCAxNDBoMTI0LjQ0NEMyMDAgMTQwIDIwMCAxNDAgMjAwIDE1MHY0MGMwIDEwIDAgMTAtMTcuNzc4IDEwSDU3Ljc3OEM0MCAyMDAgNDAgMjAwIDQwIDE5MHYtNDBjMC0xMCAwLTEwIDE3Ljc3OC0xMHoiIGZpbGw9IiNmZmZmYzQiLz48cGF0aCBkPSJNNTcuNzc4IDE0MGgxMjQuNDQ0QzIwMCAxNDAgMjAwIDE0MCAyMDAgMTUwdjQwYzAgMTAgMCAxMC0xNy43NzggMTBINTcuNzc4QzQwIDIwMCA0MCAyMDAgNDAgMTkwdi00MGMwLTEwIDAtMTAgMTcuNzc4LTEwIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZT0iIzAwMCIvPjxwYXRoIGQ9Ik01Ny43NzggMTQwaDEyNC40NDRDMjAwIDE0MCAyMDAgMTQwIDIwMCAxNTB2NDBjMCAxMCAwIDEwLTE3Ljc3OCAxMEg1Ny43NzhDNDAgMjAwIDQwIDIwMCA0MCAxOTB2LTQwYzAtMTAgMC0xMCAxNy43NzgtMTBNNTcuNzc4IDIwMGgxMjQuNDQ0TTIwMCAxNTB2NDBNNDAgMTUwdjQwTTU3Ljc3OCAxNDBoMTI0LjQ0NCIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIuMiIgc3Ryb2tlPSIjMDAwIi8+PHRleHQgZm9udC1zaXplPSIyNy4wOTMiIHg9IjEyMCIgeT0iMTgwLjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjQwMCI+PHRzcGFuIHg9IjEyMCIgeT0iMTgwLjE2Ij50aGluZzwvdHNwYW4+PC90ZXh0Pjx0ZXh0IGZvbnQtc2l6ZT0iMTIuOCIgeD0iMTMyLjkzNCIgeT0iOTguNDM2IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjQwMCI+PC90ZXh0Pjx0ZXh0IGZvbnQtc2l6ZT0iMTIuOCIgeD0iMzgxLjIzIiB5PSIxMzAuODIzIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjQwMCI+PC90ZXh0Pjx0ZXh0IGZvbnQtc2l6ZT0iMTIuOCIgeD0iNDA0LjI2NiIgeT0iMTkwLjE5OCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI0MDAiPjwvdGV4dD48cGF0aCBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZT0iIzAwMCIgZD0iTTMyMCA4MGwtMjAwIDYwTTMyMCA4MHY2MCIvPjxnPjxwYXRoIGQ9Ik00NTcuNzc4IDE0MGgxMjQuNDQ0QzYwMCAxNDAgNjAwIDE0MCA2MDAgMTUwdjQwYzAgMTAgMCAxMC0xNy43NzggMTBINDU3Ljc3OEM0NDAgMjAwIDQ0MCAyMDAgNDQwIDE5MHYtNDBjMC0xMCAwLTEwIDE3Ljc3OC0xMHoiIGZpbGw9IiNmN2Y3ZjciLz48cGF0aCBkPSJNNDU3Ljc3OCAxNDBoMTI0LjQ0NEM2MDAgMTQwIDYwMCAxNDAgNjAwIDE1MHY0MGMwIDEwIDAgMTAtMTcuNzc4IDEwSDQ1Ny43NzhDNDQwIDIwMCA0NDAgMjAwIDQ0MCAxOTB2LTQwYzAtMTAgMC0xMCAxNy43NzgtMTAiIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlPSIjMDAwIi8+PHBhdGggZD0iTTQ1Ny43NzggMTQwaDEyNC40NDRDNjAwIDE0MCA2MDAgMTQwIDYwMCAxNTB2NDBjMCAxMCAwIDEwLTE3Ljc3OCAxMEg0NTcuNzc4QzQ0MCAyMDAgNDQwIDIwMCA0NDAgMTkwdi00MGMwLTEwIDAtMTAgMTcuNzc4LTEwTTQ1Ny43NzggMjAwaDEyNC40NDRNNjAwIDE1MHY0ME00NDAgMTUwdjQwTTQ1Ny43NzggMTQwaDEyNC40NDQiIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iLjIiIHN0cm9rZT0iIzAwMCIvPjx0ZXh0IGZvbnQtc2l6ZT0iMjcuMDkzIiB4PSI1MjAiIHk9IjE4MC4xNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI0MDAiPjx0c3BhbiB4PSI1MjAiIHk9IjE4MC4xNiI+bGl0ZXJhbDwvdHNwYW4+PC90ZXh0PjwvZz48Zz48cGF0aCBkPSJNMzU3Ljc3OCAyNjBoMTI0LjQ0NEM1MDAgMjYwIDUwMCAyNjAgNTAwIDI3MHY0MGMwIDEwIDAgMTAtMTcuNzc4IDEwSDM1Ny43NzhDMzQwIDMyMCAzNDAgMzIwIDM0MCAzMTB2LTQwYzAtMTAgMC0xMCAxNy43NzgtMTB6IiBmaWxsPSIjZjdmN2Y3Ii8+PHBhdGggZD0iTTM1Ny43NzggMjYwaDEyNC40NDRDNTAwIDI2MCA1MDAgMjYwIDUwMCAyNzB2NDBjMCAxMCAwIDEwLTE3Ljc3OCAxMEgzNTcuNzc4QzM0MCAzMjAgMzQwIDMyMCAzNDAgMzEwdi00MGMwLTEwIDAtMTAgMTcuNzc4LTEwIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZT0iIzAwMCIvPjxwYXRoIGQ9Ik0zNTcuNzc4IDI2MGgxMjQuNDQ0QzUwMCAyNjAgNTAwIDI2MCA1MDAgMjcwdjQwYzAgMTAgMCAxMC0xNy43NzggMTBIMzU3Ljc3OEMzNDAgMzIwIDM0MCAzMjAgMzQwIDMxMHYtNDBjMC0xMCAwLTEwIDE3Ljc3OC0xME0zNTcuNzc4IDMyMGgxMjQuNDQ0TTUwMCAyNzB2NDBNMzQwIDI3MHY0ME0zNTcuNzc4IDI2MGgxMjQuNDQ0IiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9Ii4yIiBzdHJva2U9IiMwMDAiLz48dGV4dCBmb250LXNpemU9IjI3LjA5MyIgeD0iNDIwIiB5PSIzMDAuMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNDAwIj48dHNwYW4geD0iNDIwIiB5PSIzMDAuMTYiPnN0cmluZzwvdHNwYW4+PC90ZXh0PjwvZz48Zz48cGF0aCBkPSJNNTU3Ljc3OCAyNjBoMTI0LjQ0NEM3MDAgMjYwIDcwMCAyNjAgNzAwIDI3MHY0MGMwIDEwIDAgMTAtMTcuNzc4IDEwSDU1Ny43NzhDNTQwIDMyMCA1NDAgMzIwIDU0MCAzMTB2LTQwYzAtMTAgMC0xMCAxNy43NzgtMTB6IiBmaWxsPSIjZjdmN2Y3Ii8+PHBhdGggZD0iTTU1Ny43NzggMjYwaDEyNC40NDRDNzAwIDI2MCA3MDAgMjYwIDcwMCAyNzB2NDBjMCAxMCAwIDEwLTE3Ljc3OCAxMEg1NTcuNzc4QzU0MCAzMjAgNTQwIDMyMCA1NDAgMzEwdi00MGMwLTEwIDAtMTAgMTcuNzc4LTEwIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZT0iIzAwMCIvPjxwYXRoIGQ9Ik01NTcuNzc4IDI2MGgxMjQuNDQ0QzcwMCAyNjAgNzAwIDI2MCA3MDAgMjcwdjQwYzAgMTAgMCAxMC0xNy43NzggMTBINTU3Ljc3OEM1NDAgMzIwIDU0MCAzMjAgNTQwIDMxMHYtNDBjMC0xMCAwLTEwIDE3Ljc3OC0xME01NTcuNzc4IDMyMGgxMjQuNDQ0TTcwMCAyNzB2NDBNNTQwIDI3MHY0ME01NTcuNzc4IDI2MGgxMjQuNDQ0IiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9Ii4yIiBzdHJva2U9IiMwMDAiLz48dGV4dCBmb250LXNpemU9IjI3LjA5MyIgeD0iNjIwIiB5PSIzMDAuMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNDAwIj48dHNwYW4geD0iNjIwIiB5PSIzMDAuMTYiPmludGVnZXI8L3RzcGFuPjwvdGV4dD48L2c+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2U9IiMwMDAiIGQ9Ik0zMjAgODBsMjAwIDYwTTUyMCAyMDBsMTAwIDYwTTQyMCAyNjBsMTAwLTYwIi8+PGc+PHBhdGggZD0iTTE1Ny43NzggMjYwaDEyNC40NDRDMzAwIDI2MCAzMDAgMjYwIDMwMCAyNzB2NDBjMCAxMCAwIDEwLTE3Ljc3OCAxMEgxNTcuNzc4QzE0MCAzMjAgMTQwIDMyMCAxNDAgMzEwdi00MGMwLTEwIDAtMTAgMTcuNzc4LTEweiIgZmlsbD0iI2ZmZmZjNCIvPjxwYXRoIGQ9Ik0xNTcuNzc4IDI2MGgxMjQuNDQ0QzMwMCAyNjAgMzAwIDI2MCAzMDAgMjcwdjQwYzAgMTAgMCAxMC0xNy43NzggMTBIMTU3Ljc3OEMxNDAgMzIwIDE0MCAzMjAgMTQwIDMxMHYtNDBjMC0xMCAwLTEwIDE3Ljc3OC0xMCIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2U9IiMwMDAiLz48cGF0aCBkPSJNMTU3Ljc3OCAyNjBoMTI0LjQ0NEMzMDAgMjYwIDMwMCAyNjAgMzAwIDI3MHY0MGMwIDEwIDAgMTAtMTcuNzc4IDEwSDE1Ny43NzhDMTQwIDMyMCAxNDAgMzIwIDE0MCAzMTB2LTQwYzAtMTAgMC0xMCAxNy43NzgtMTBNMTU3Ljc3OCAzMjBoMTI0LjQ0NE0zMDAgMjcwdjQwTTE0MCAyNzB2NDBNMTU3Ljc3OCAyNjBoMTI0LjQ0NCIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIuMiIgc3Ryb2tlPSIjMDAwIi8+PHRleHQgZm9udC1zaXplPSIyNy4wOTMiIHg9IjIyMCIgeT0iMzAwLjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjQwMCI+PHRzcGFuIHg9IjIyMCIgeT0iMzAwLjE2Ij5hY3RvcjwvdHNwYW4+PC90ZXh0PjwvZz48Zz48cGF0aCBkPSJNLTQyLjIyMiAyNjBIODIuMjIyQzEwMCAyNjAgMTAwIDI2MCAxMDAgMjcwdjQwYzAgMTAgMCAxMC0xNy43NzggMTBILTQyLjIyMkMtNjAgMzIwLTYwIDMyMC02MCAzMTB2LTQwYzAtMTAgMC0xMCAxNy43NzgtMTB6IiBmaWxsPSIjZmZmZmM0Ii8+PHBhdGggZD0iTS00Mi4yMjIgMjYwSDgyLjIyMkMxMDAgMjYwIDEwMCAyNjAgMTAwIDI3MHY0MGMwIDEwIDAgMTAtMTcuNzc4IDEwSC00Mi4yMjJDLTYwIDMyMC02MCAzMjAtNjAgMzEwdi00MGMwLTEwIDAtMTAgMTcuNzc4LTEwIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZT0iIzAwMCIvPjxwYXRoIGQ9Ik0tNDIuMjIyIDI2MEg4Mi4yMjJDMTAwIDI2MCAxMDAgMjYwIDEwMCAyNzB2NDBjMCAxMCAwIDEwLTE3Ljc3OCAxMEgtNDIuMjIyQy02MCAzMjAtNjAgMzIwLTYwIDMxMHYtNDBjMC0xMCAwLTEwIDE3Ljc3OC0xME0tNDIuMjIyIDMyMEg4Mi4yMjJNMTAwIDI3MHY0ME0tNjAgMjcwdjQwTS00Mi4yMjIgMjYwSDgyLjIyMiIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIuMiIgc3Ryb2tlPSIjMDAwIi8+PHRleHQgZm9udC1zaXplPSIyNy4wOTMiIHg9IjIwIiB5PSIzMDAuMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNDAwIj48dHNwYW4geD0iMjAiIHk9IjMwMC4xNiI+b2JqZWN0PC90c3Bhbj48L3RleHQ+PC9nPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlPSIjMDAwIiBkPSJNMTIwIDIwMGwxMDAgNjBNMjAgMjYwbDEwMC02MCIvPjwvc3ZnPg==" alt="predefined classes" width="70%">
+</div>
+<div class="title">Figura 1. Le classi predefinite di Alan</div>
+</div>
+<div class="paragraph">
+<p>Si tratta delle classi universali che sono alla base di qualsiasi avventura, e ciascuna di esse ha caratteristiche specifiche studiate appositamente per l&#8217;interactive fiction.
+L&#8217;autore potrà estenderle e specializzarle secondo necessità&#8201;&#8212;&#8201;creando supporti, animali, persone, indumenti, cibi e bevande, armi, e quant&#8217;altro.
+Queste classi sono come i colori primari dell&#8217;artista, e usandole saggiamente sarà possibile illustrare mondi fantastici ricchi e vivaci, creando le giuste tinte e sfumature con cui narrare la propria avventura.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_le_restrizioni_verbali"><a class="anchor" href="#_le_restrizioni_verbali"></a>Le Restrizioni Verbali</h2>
+<h2 id="_alan_italian_vs_libreria_standard_italiana"><a class="anchor" href="#_alan_italian_vs_libreria_standard_italiana"></a>Alan Italian vs Libreria Standard Italiana</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>La libreria dispone di un meccanismo di <em>restrizioni verbabli</em> per limitare
-in maniera controllata il tipo di azioni consentite al giocatore. Ad ogni
-verbo della libreria corrisponde un attributo booleano nell&#8217;istanza <code>mia_AT</code>
-del <code>blocco_definizioni</code> che determina se il verbo (o i verbi) associati ad
-esso sono abilitati all&#8217;uso.</p>
+<p>Per gli amanti della libertà assoluta nel plasmare il mondo delle avventure, <em>Alan</em> &#8220;nudo e crudo&#8221; è lo strumento ideale, e <em>Alan Italian</em> è un modulo a sé stante che aggiunge il supporto della grammatica italiana senza intaccare la <em>tabula rasa</em> offerta da Alan.</p>
 </div>
 <div class="paragraph">
-<p>Nel corpo dei verbi definiti dalla libreria, prima di portare a compimento
-l&#8217;azione viene sempre controllato se l&#8217;attributo di restrizione verbale cui
-il verbo fa riferimento è abilitato o meno (ossia, se è <code>CAN</code> o <code>CAN NOT</code>),
-e nel caso non lo fosse l&#8217;azione viene bloccata sul nascere, mostrando al
-giocatore il messaggio &#8220;Non puoi farlo.&#8221;.</p>
-</div>
-<div class="sect2">
-<h3 id="_elenco_delle_restrizioni_verbali"><a class="anchor" href="#_elenco_delle_restrizioni_verbali"></a>Elenco delle Restrizioni Verbali</h3>
-<div class="paragraph">
-<p>Questo è l&#8217;elenco degli attributi di restrizioni verbali sinora tradotti:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">CAN</span> abbandonare_partita<span class="hl kwa">.</span>      <span class="hl slc">---&gt; &apos;quit&apos;</span>&#x000A;  <span class="hl kwa">CAN</span> accendere<span class="hl kwa">.</span>                <span class="hl slc">---&gt; turn_on</span>&#x000A;  <span class="hl kwa">CAN</span> acchiappare<span class="hl kwa">.</span>              <span class="hl slc">---&gt; catch</span>&#x000A;  <span class="hl kwa">CAN</span> agitare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; shake</span>&#x000A;  <span class="hl kwa">CAN</span> alzarsi<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; stand (up)</span>&#x000A;  <span class="hl kwa">CAN</span> andare_a<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; go_to</span>&#x000A;  <span class="hl kwa">CAN</span> annusare<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; smell</span>&#x000A;  <span class="hl kwa">CAN</span> aprire<span class="hl kwa">.</span>                   <span class="hl slc">---&gt; open</span>&#x000A;  <span class="hl kwa">CAN</span> aprire_con<span class="hl kwa">.</span>               <span class="hl slc">---&gt; open_with</span>&#x000A;  <span class="hl kwa">CAN</span> arrampicarsi<span class="hl kwa">.</span>             <span class="hl slc">---&gt; climb_on</span>&#x000A;  <span class="hl kwa">CAN</span> ascoltare<span class="hl kwa">.</span>                <span class="hl slc">---&gt; listen + listen0 | ascolta0 + ascolta</span>&#x000A;  <span class="hl kwa">CAN</span> aspettare<span class="hl kwa">.</span>                <span class="hl slc">---&gt; wait         (+ z)</span>&#x000A;  <span class="hl kwa">CAN</span> assaggiare<span class="hl kwa">.</span>               <span class="hl slc">---&gt; taste        (+ lick)</span>&#x000A;  <span class="hl kwa">CAN</span> attaccare<span class="hl kwa">.</span>                <span class="hl slc">---&gt; attack (+ beat, fight, hit, punch)</span>&#x000A;  <span class="hl kwa">CAN</span> attaccare_con<span class="hl kwa">.</span>            <span class="hl slc">---&gt; attack_with</span>&#x000A;  <span class="hl kwa">CAN</span> attraversare<span class="hl kwa">.</span>             <span class="hl slc">---&gt; climb_through</span>&#x000A;  <span class="hl kwa">CAN</span> baciare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; kiss         (+ hug, embrace)</span>&#x000A;  <span class="hl kwa">CAN</span> ballare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; dance</span>&#x000A;  <span class="hl kwa">CAN</span> bere<span class="hl kwa">.</span>                     <span class="hl slc">---&gt; drink</span>&#x000A;  <span class="hl kwa">CAN</span> bloccare<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; lock</span>&#x000A;  <span class="hl kwa">CAN</span> bloccare_con<span class="hl kwa">.</span>             <span class="hl slc">---&gt; lock_with</span>&#x000A;  <span class="hl kwa">CAN</span> bruciare<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; burn</span>&#x000A;  <span class="hl kwa">CAN</span> bruciare_con<span class="hl kwa">.</span>             <span class="hl slc">---&gt; burn_with</span>&#x000A;  <span class="hl kwa">CAN</span> bussare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; knock</span>&#x000A;  <span class="hl kwa">CAN</span> calciare<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; kick</span>&#x000A;  <span class="hl kwa">CAN</span> cantare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; sing</span>&#x000A;  <span class="hl kwa">CAN</span> caricare_partita<span class="hl kwa">.</span>         <span class="hl slc">---&gt; &apos;restore&apos;</span>&#x000A;  <span class="hl kwa">CAN</span> chiedere<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; ask_for</span>&#x000A;  <span class="hl kwa">CAN</span> chiudere<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; close        (+ shut)</span>&#x000A;  <span class="hl kwa">CAN</span> chiudere_con<span class="hl kwa">.</span>             <span class="hl slc">---&gt; close_with</span>&#x000A;  <span class="hl kwa">CAN</span> comprare<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; buy          (+ purchase)</span>&#x000A;  <span class="hl kwa">CAN</span> consultare<span class="hl kwa">.</span>               <span class="hl slc">---&gt; consult</span>&#x000A;  <span class="hl kwa">CAN</span> dare<span class="hl kwa">.</span>                     <span class="hl slc">---&gt; give</span>&#x000A;  <span class="hl kwa">CAN</span> dire<span class="hl kwa">.</span>                     <span class="hl slc">---&gt; &apos;say&apos;</span>&#x000A;  <span class="hl kwa">CAN</span> dire_a<span class="hl kwa">.</span>                   <span class="hl slc">---&gt; say_to</span>&#x000A;  <span class="hl kwa">CAN</span> domandare<span class="hl kwa">.</span>                <span class="hl slc">---&gt; ask (+ enquire, inquire, interrogate)</span>&#x000A;  <span class="hl kwa">CAN</span> domandare_chi_sono_io<span class="hl kwa">.</span>    <span class="hl slc">---&gt; who_am_i</span>&#x000A;  <span class="hl kwa">CAN</span> domandare_chi_è<span class="hl kwa">.</span>          <span class="hl slc">---&gt; who_is</span>&#x000A;  <span class="hl kwa">CAN</span> domandare_cosa_sono_io<span class="hl kwa">.</span>   <span class="hl slc">---&gt; what_am_i</span>&#x000A;  <span class="hl kwa">CAN</span> domandare_cosa_è<span class="hl kwa">.</span>         <span class="hl slc">---&gt; what_is</span>&#x000A;  <span class="hl kwa">CAN</span> domandare_dove_mi_trovo<span class="hl kwa">.</span>  <span class="hl slc">---&gt; where_am_i</span>&#x000A;  <span class="hl kwa">CAN</span> domandare_dove_è<span class="hl kwa">.</span>         <span class="hl slc">---&gt; where_is</span>&#x000A;  <span class="hl kwa">CAN</span> dormire<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; sleep        (+ rest)</span>&#x000A;  <span class="hl kwa">CAN</span> entrare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; enter</span>&#x000A;  <span class="hl kwa">CAN</span> esaminare<span class="hl kwa">.</span>                <span class="hl slc">---&gt; examine      (+ check, inspect, observe, x)</span>&#x000A;  <span class="hl kwa">CAN</span> forzare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; pry</span>&#x000A;  <span class="hl kwa">CAN</span> forzare_con<span class="hl kwa">.</span>              <span class="hl slc">---&gt; pry_with</span>&#x000A;  <span class="hl kwa">CAN</span> giocare_con<span class="hl kwa">.</span>              <span class="hl slc">---&gt; play_with</span>&#x000A;  <span class="hl kwa">CAN</span> girare<span class="hl kwa">.</span>                   <span class="hl slc">---&gt; turn (+ rotate)</span>&#x000A;  <span class="hl kwa">CAN</span> grattare<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; scratch</span>&#x000A;  <span class="hl kwa">CAN</span> gridare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; shout        (+ scream, yell)</span>&#x000A;  <span class="hl kwa">CAN</span> guardare<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; look         (+ gaze, peek)</span>&#x000A;  <span class="hl kwa">CAN</span> guardare_attraverso<span class="hl kwa">.</span>      <span class="hl slc">---&gt; look_through</span>&#x000A;  <span class="hl kwa">CAN</span> guardare_dietro<span class="hl kwa">.</span>          <span class="hl slc">---&gt; look_behind</span>&#x000A;  <span class="hl kwa">CAN</span> guardare_fuori_da<span class="hl kwa">.</span>        <span class="hl slc">---&gt; look_out_of</span>&#x000A;  <span class="hl kwa">CAN</span> guardare_in<span class="hl kwa">.</span>              <span class="hl slc">---&gt; look_in</span>&#x000A;  <span class="hl kwa">CAN</span> guardare_sotto<span class="hl kwa">.</span>           <span class="hl slc">---&gt; look_under</span>&#x000A;  <span class="hl kwa">CAN</span> guardare_su<span class="hl kwa">.</span>              <span class="hl slc">---&gt; look_up</span>&#x000A;  <span class="hl kwa">CAN</span> guidare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; drive</span>&#x000A;  <span class="hl kwa">CAN</span> indossare<span class="hl kwa">.</span>                <span class="hl slc">---&gt; wear</span>&#x000A;  <span class="hl kwa">CAN</span> inventariare<span class="hl kwa">.</span>             <span class="hl slc">---&gt; i            (+ inv, inventory)</span>&#x000A;  <span class="hl kwa">CAN</span> ispezionare<span class="hl kwa">.</span>              <span class="hl slc">---&gt; search</span>&#x000A;  <span class="hl kwa">CAN</span> lanciare<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; throw</span>&#x000A;  <span class="hl kwa">CAN</span> lanciare_a<span class="hl kwa">.</span>               <span class="hl slc">---&gt; throw_to</span>&#x000A;  <span class="hl kwa">CAN</span> lanciare_contro<span class="hl kwa">.</span>          <span class="hl slc">---&gt; throw_at</span>&#x000A;  <span class="hl kwa">CAN</span> lanciare_in<span class="hl kwa">.</span>              <span class="hl slc">---&gt; throw_in</span>&#x000A;  <span class="hl kwa">CAN</span> lasciare<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; drop         (+ discard, dump, reject)</span>&#x000A;  <span class="hl kwa">CAN</span> legare<span class="hl kwa">.</span>                   <span class="hl slc">---&gt; tie</span>&#x000A;  <span class="hl kwa">CAN</span> legare_a<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; tie_to</span>&#x000A;  <span class="hl kwa">CAN</span> leggere<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; read</span>&#x000A;  <span class="hl kwa">CAN</span> liberare<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; free         (+ release)</span>&#x000A;  <span class="hl kwa">CAN</span> mangiare<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; eat</span>&#x000A;  <span class="hl kwa">CAN</span> mettere<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; put          (+ lay, place)</span>&#x000A;  <span class="hl kwa">CAN</span> mettere_contro<span class="hl kwa">.</span>           <span class="hl slc">---&gt; put_against</span>&#x000A;  <span class="hl kwa">CAN</span> mettere_dietro<span class="hl kwa">.</span>           <span class="hl slc">---&gt; put_behind</span>&#x000A;  <span class="hl kwa">CAN</span> mettere_in<span class="hl kwa">.</span>               <span class="hl slc">---&gt; put_in       (+ insert)</span>&#x000A;  <span class="hl kwa">CAN</span> mettere_sotto<span class="hl kwa">.</span>            <span class="hl slc">---&gt; put_under</span>&#x000A;  <span class="hl kwa">CAN</span> mettere_su<span class="hl kwa">.</span>               <span class="hl slc">---&gt; put_on</span>&#x000A;  <span class="hl kwa">CAN</span> mettere_vicino<span class="hl kwa">.</span>           <span class="hl slc">---&gt; put_near</span>&#x000A;  <span class="hl kwa">CAN</span> modalità_breve<span class="hl kwa">.</span>           <span class="hl slc">---&gt; brief</span>&#x000A;  <span class="hl kwa">CAN</span> modalità_lunga<span class="hl kwa">.</span>           <span class="hl slc">---&gt; verbose</span>&#x000A;  <span class="hl kwa">CAN</span> mordere<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; bite         (+ chew)</span>&#x000A;  <span class="hl kwa">CAN</span> mostrare<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; &apos;show&apos;       (+ reveal)</span>&#x000A;  <span class="hl kwa">CAN</span> mostrare_istruzioni<span class="hl kwa">.</span>      <span class="hl slc">---&gt; about</span>&#x000A;  <span class="hl kwa">CAN</span> mostrare_suggerimenti<span class="hl kwa">.</span>    <span class="hl slc">---&gt; hint (+ hints)</span>&#x000A;  <span class="hl kwa">CAN</span> notificare<span class="hl kwa">.</span>               <span class="hl slc">---&gt; &apos;notify&apos;</span>&#x000A;  <span class="hl kwa">CAN</span> notificare_off<span class="hl kwa">.</span>           <span class="hl slc">---&gt; notify_off</span>&#x000A;  <span class="hl kwa">CAN</span> notificare_on<span class="hl kwa">.</span>            <span class="hl slc">---&gt; notify_on</span>&#x000A;  <span class="hl kwa">CAN</span> nuotare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; swim</span>&#x000A;  <span class="hl kwa">CAN</span> nuotare_in<span class="hl kwa">.</span>               <span class="hl slc">---&gt; swim_in</span>&#x000A;  <span class="hl kwa">CAN</span> parlare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; talk</span>&#x000A;  <span class="hl kwa">CAN</span> parlare_con<span class="hl kwa">.</span>              <span class="hl slc">---&gt; talk_to      (+ speak)</span>&#x000A;  <span class="hl kwa">CAN</span> pensare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; think</span>&#x000A;  <span class="hl kwa">CAN</span> pensare_a<span class="hl kwa">.</span>                <span class="hl slc">---&gt; think_about</span>&#x000A;  <span class="hl kwa">CAN</span> pregare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; pray</span>&#x000A;  <span class="hl kwa">CAN</span> prendere<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; take.        (+ carry, get, grab, hold, obtain)</span>&#x000A;  <span class="hl kwa">CAN</span> prendere_da<span class="hl kwa">.</span>              <span class="hl slc">---&gt; take_from.   (+ remove from)</span>&#x000A;  <span class="hl kwa">CAN</span> pulire<span class="hl kwa">.</span>                   <span class="hl slc">---&gt; clean        (+ polish, wipe)</span>&#x000A;  <span class="hl kwa">CAN</span> raccontare<span class="hl kwa">.</span>               <span class="hl slc">---&gt; tell         (+ enlighten, inform)</span>&#x000A;  <span class="hl kwa">CAN</span> ricominciare_partita<span class="hl kwa">.</span>     <span class="hl slc">---&gt; &apos;restart&apos;</span>&#x000A;  <span class="hl kwa">CAN</span> riempire<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; fill</span>&#x000A;  <span class="hl kwa">CAN</span> riempire_con<span class="hl kwa">.</span>             <span class="hl slc">---&gt; fill_with</span>&#x000A;  <span class="hl kwa">CAN</span> rifare<span class="hl kwa">.</span>                   <span class="hl slc">---&gt; &apos;again&apos;</span>&#x000A;  <span class="hl kwa">CAN</span> ringraziamenti<span class="hl kwa">.</span>           <span class="hl slc">---&gt; credits      (+ acknowledgments, author, copyright)</span>&#x000A;  <span class="hl kwa">CAN</span> riparare<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; fix          (+ mend, repair)</span>&#x000A;  <span class="hl kwa">CAN</span> rispondere<span class="hl kwa">.</span>               <span class="hl slc">---&gt; answer       (+ reply)</span>&#x000A;  <span class="hl kwa">CAN</span> rispondere_No<span class="hl kwa">.</span>            <span class="hl slc">---&gt; &apos;no&apos;</span>&#x000A;  <span class="hl kwa">CAN</span> rispondere_Sì<span class="hl kwa">.</span>            <span class="hl slc">---&gt; yes</span>&#x000A;  <span class="hl kwa">CAN</span> rompere<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; break        (+ destroy)</span>&#x000A;  <span class="hl kwa">CAN</span> rompere_con<span class="hl kwa">.</span>              <span class="hl slc">---&gt; break_with</span>&#x000A;  <span class="hl kwa">CAN</span> salire_su<span class="hl kwa">.</span>                <span class="hl slc">---&gt; stand_on</span>&#x000A;  <span class="hl kwa">CAN</span> salvare_partita<span class="hl kwa">.</span>          <span class="hl slc">---&gt; save</span>&#x000A;  <span class="hl kwa">CAN</span> saltare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; jump</span>&#x000A;  <span class="hl kwa">CAN</span> saltare_in<span class="hl kwa">.</span>               <span class="hl slc">---&gt; jump_in</span>&#x000A;  <span class="hl kwa">CAN</span> saltare_su<span class="hl kwa">.</span>               <span class="hl slc">---&gt; jump_on</span>&#x000A;  <span class="hl kwa">CAN</span> sbloccare<span class="hl kwa">.</span>                <span class="hl slc">---&gt; unlock</span>&#x000A;  <span class="hl kwa">CAN</span> sbloccare_con<span class="hl kwa">.</span>            <span class="hl slc">---&gt; unlock_with</span>&#x000A;  <span class="hl kwa">CAN</span> scavalcare<span class="hl kwa">.</span>               <span class="hl slc">---&gt;climb</span>&#x000A;  <span class="hl kwa">CAN</span> scavare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; dig</span>&#x000A;  <span class="hl kwa">CAN</span> scendere_da<span class="hl kwa">.</span>              <span class="hl slc">---&gt; get_off</span>&#x000A;  <span class="hl kwa">CAN</span> scrivere<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; write</span>&#x000A;  <span class="hl kwa">CAN</span> sdraiarsi<span class="hl kwa">.</span>                <span class="hl slc">---&gt; lie_down</span>&#x000A;  <span class="hl kwa">CAN</span> sdraiarsi_in<span class="hl kwa">.</span>             <span class="hl slc">---&gt; lie_in</span>&#x000A;  <span class="hl kwa">CAN</span> sdraiarsi_su<span class="hl kwa">.</span>             <span class="hl slc">---&gt; lie_on</span>&#x000A;  <span class="hl kwa">CAN</span> sedersi<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; sit (down)</span>&#x000A;  <span class="hl kwa">CAN</span> sedersi_su<span class="hl kwa">.</span>               <span class="hl slc">---&gt; sit_on</span>&#x000A;  <span class="hl kwa">CAN</span> seguire<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; follow</span>&#x000A;  <span class="hl kwa">CAN</span> sfregare<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; rub</span>&#x000A;  <span class="hl kwa">CAN</span> sollevare<span class="hl kwa">.</span>                <span class="hl slc">---&gt; lift</span>&#x000A;  <span class="hl kwa">CAN</span> sorseggiare<span class="hl kwa">.</span>              <span class="hl slc">---&gt; sip</span>&#x000A;  <span class="hl kwa">CAN</span> sparare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; fire</span>&#x000A;  <span class="hl kwa">CAN</span> sparare_a<span class="hl kwa">.</span>                <span class="hl slc">---&gt; fire_at</span>&#x000A;  <span class="hl kwa">CAN</span> spegnere<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; turn_off</span>&#x000A;  <span class="hl kwa">CAN</span> spingere<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; push</span>&#x000A;  <span class="hl kwa">CAN</span> spingere_con<span class="hl kwa">.</span>             <span class="hl slc">---&gt; push_with</span>&#x000A;  <span class="hl kwa">CAN</span> spogliarsi<span class="hl kwa">.</span>               <span class="hl slc">---&gt; undress</span>&#x000A;  <span class="hl kwa">CAN</span> spremere<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; squeeze</span>&#x000A;  <span class="hl kwa">CAN</span> strappare<span class="hl kwa">.</span>                <span class="hl slc">---&gt; tear (+ rip)</span>&#x000A;  <span class="hl kwa">CAN</span> suonare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; play</span>&#x000A;  <span class="hl kwa">CAN</span> svuotare<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; &apos;empty&apos;</span>&#x000A;  <span class="hl kwa">CAN</span> svuotare_in<span class="hl kwa">.</span>              <span class="hl slc">---&gt; empty_in</span>&#x000A;  <span class="hl kwa">CAN</span> svuotare_su<span class="hl kwa">.</span>              <span class="hl slc">---&gt; empty_on</span>&#x000A;  <span class="hl kwa">CAN</span> tagliare<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; cut</span>&#x000A;  <span class="hl kwa">CAN</span> tagliare_con<span class="hl kwa">.</span>             <span class="hl slc">---&gt; cut_with</span>&#x000A;  <span class="hl kwa">CAN</span> tirare<span class="hl kwa">.</span>                   <span class="hl slc">---&gt; pull</span>&#x000A;  <span class="hl kwa">CAN</span> toccare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; touch (+ feel)</span>&#x000A;  <span class="hl kwa">CAN</span> toccare_con<span class="hl kwa">.</span>              <span class="hl slc">---&gt; touch_with</span>&#x000A;  <span class="hl kwa">CAN</span> togliersi_indumento<span class="hl kwa">.</span>      <span class="hl slc">---&gt; remove</span>&#x000A;  <span class="hl kwa">CAN</span> trascrivere<span class="hl kwa">.</span>              <span class="hl slc">---&gt; &apos;script&apos;</span>&#x000A;  <span class="hl kwa">CAN</span> trascrivere_off<span class="hl kwa">.</span>          <span class="hl slc">---&gt; script_off</span>&#x000A;  <span class="hl kwa">CAN</span> trascrivere_on<span class="hl kwa">.</span>           <span class="hl slc">---&gt; script_on</span>&#x000A;  <span class="hl kwa">CAN</span> trovare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; find         (+ locate)</span>&#x000A;  <span class="hl kwa">CAN</span> tuffarsi<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; dive</span>&#x000A;  <span class="hl kwa">CAN</span> tuffarsi_in<span class="hl kwa">.</span>              <span class="hl slc">---&gt; dive_in</span>&#x000A;  <span class="hl kwa">CAN</span> uccidere<span class="hl kwa">.</span>                 <span class="hl slc">---&gt; kill         (+ murder)</span>&#x000A;  <span class="hl kwa">CAN</span> uccidere_con<span class="hl kwa">.</span>             <span class="hl slc">---&gt; kill_with</span>&#x000A;  <span class="hl kwa">CAN</span> usare<span class="hl kwa">.</span>                    <span class="hl slc">---&gt; &apos;use&apos;</span>&#x000A;  <span class="hl kwa">CAN</span> usare_con<span class="hl kwa">.</span>                <span class="hl slc">---&gt; use_with</span>&#x000A;  <span class="hl kwa">CAN</span> uscire<span class="hl kwa">.</span>                   <span class="hl slc">---&gt; &apos;exit&apos;</span>&#x000A;  <span class="hl kwa">CAN</span> vedere_punteggio<span class="hl kwa">.</span>         <span class="hl slc">---&gt; &apos;score&apos;</span>&#x000A;  <span class="hl kwa">CAN</span> vendere<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; sell</span>&#x000A;  <span class="hl kwa">CAN</span> versare<span class="hl kwa">.</span>                  <span class="hl slc">---&gt; pour</span>&#x000A;  <span class="hl kwa">CAN</span> versare_in<span class="hl kwa">.</span>               <span class="hl slc">---&gt; pour_in</span>&#x000A;  <span class="hl kwa">CAN</span> versare_su<span class="hl kwa">.</span>               <span class="hl slc">---&gt; pour_on</span></code></pre>
-</div>
-</div>
+<p>Per chi invece preferisce scrivere le proprie avventure avvalendosi di un modello ricco e consolidato, la <em>Alan Standard Library</em> è lo strumento ideale da cui partire, rendendo l&#8217;uso di Alan simile agli altri sistemi di autoraggio.
+Per gli autori italiani, questo progetto mette a disposizione
+la <em>Libreria Standard Italiana</em>, che è la traduzione/adattamento della libreria inglese.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_lintestazione_dellavventura_banner"><a class="anchor" href="#_lintestazione_dellavventura_banner"></a>L&#8217;Intestazione dell&#8217;Avventura (Banner)</h2>
+<h2 id="_alan_standard_library"><a class="anchor" href="#_alan_standard_library"></a>Alan Standard Library</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Ogni avventura creata con la Libreria ha una sua <em>intestazione</em> (detta anche
-<em>banner</em>) contenente informazioni sull&#8217;avventura, il suo autore e le versioni
-della libereria e del compilatore Alan utilizzati.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.alanif.se/information/library" class="bare">https://www.alanif.se/information/library</a></p>
+</li>
+<li>
+<p><a href="https://github.com/AnssiR66/AlanStdLib" class="bare">https://github.com/AnssiR66/AlanStdLib</a> (nuovo repository ufficiale)</p>
+</li>
+<li>
+<p><a href="https://bitbucket.org/alanif/alanlib" class="bare">https://bitbucket.org/alanif/alanlib</a></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>L&#8217;uso del banner è facoltativo.</p>
+<p>La <em>Alan Standard Library</em>, scritta da <a href="https://github.com/AnssiR66" title="Guarda il profilo GitHub di Anssi Räisänen" target="_blank" rel="noopener">Anssi Räisänen</a>, definisce un ricco insieme di verbi, classi e funzionalità comunemente usati nelle avventure testuali, che gli autori possono usare come fondamenta su cui costruire le proprie avventure.</p>
 </div>
 <div class="paragraph">
-<p>L&#8217;instestazione viene creata dalla libreria tramite l&#8217;instanza
-<code>intestazione</code> della classe <code>location</code>. L&#8217;espediente consiste nello sfruttate
-la descrizione di questo luogo fittizio per visualizzare il testo del banner
-all&#8217;inizio della partita tramite <code>DESCRIBE intestazione.</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">THE</span> intestazione <span class="hl kwa">IsA</span> <span class="hl kwb">LOCATION</span>&#x000A;&#x000A;  <span class="hl kwa">DESCRIPTION</span>&#x000A;&#x000A;    <span class="hl str">&quot;</span><span class="hl esc">$p</span><span class="hl str">&quot;</span> <span class="hl kwa">STYLE</span> alert<span class="hl kwa">. SAY</span> mia_AT<span class="hl kwa">:</span>titolo<span class="hl kwa">. STYLE</span> normal<span class="hl kwa">.</span>&#x000A;&#x000A;    <span class="hl kwa">IF</span> sottotitolo <span class="hl kwa">OF</span> mia_AT <span class="hl opt">&lt;&gt;</span> <span class="hl str">&quot;&quot;</span>&#x000A;      <span class="hl kwa">THEN</span> <span class="hl str">&quot;</span><span class="hl esc">$n</span><span class="hl str">&quot;</span> <span class="hl kwa">SAY</span> mia_AT<span class="hl kwa">:</span>sottotitolo<span class="hl kwa">.</span>&#x000A;      <span class="hl kwa">END IF.</span>&#x000A;&#x000A;    <span class="hl str">&quot;</span><span class="hl esc">$n</span><span class="hl str">(C)&quot;</span> <span class="hl kwa">SAY</span> mia_AT<span class="hl kwa">:</span>autore<span class="hl kwa">.</span> <span class="hl str">&quot;,&quot;</span> <span class="hl kwa">SAY</span> mia_AT<span class="hl kwa">:</span>anno<span class="hl kwa">.</span> <span class="hl str">&quot;.&quot;</span>&#x000A;    <span class="hl str">&quot;</span><span class="hl esc">$n</span><span class="hl str">Avventura realizzata con ALAN Interactive Fiction Language&quot;</span> <span class="hl kwa">SAY</span> mia_AT<span class="hl kwa">:</span>AlanV<span class="hl kwa">.</span> <span class="hl str">&quot;.&quot;</span>&#x000A;    <span class="hl str">&quot;</span><span class="hl esc">$n</span><span class="hl str">Libreria Standard Italiana v2.1&quot;</span>&#x000A;&#x000A;    <span class="hl kwa">IF</span> versione <span class="hl kwa">OF</span> mia_AT <span class="hl opt">&lt;&gt;</span> <span class="hl str">&quot;0&quot;</span>&#x000A;      <span class="hl kwa">THEN</span> <span class="hl str">&quot;</span><span class="hl esc">$n</span><span class="hl str">Versione&quot;</span> <span class="hl kwa">SAY</span> mia_AT<span class="hl kwa">:</span>versione<span class="hl kwa">.</span>&#x000A;      <span class="hl kwa">END IF.</span>&#x000A;&#x000A;    <span class="hl str">&quot;</span><span class="hl esc">$n</span><span class="hl str">Tutti i diritti riservati.&quot;</span>&#x000A;&#x000A;<span class="hl kwa">END THE</span> intestazione<span class="hl kwa">.</span></code></pre>
-</div>
+<p>La libreria standard non è inclusa nella distribuzione ufficiale di Alan, e va scaricata separatamente.</p>
 </div>
 <div class="paragraph">
-<p>La <code>DESCRIPTION</code> di <code>intestazione</code> agisce da template, e per riempire i
-dettagli del testo del banner essa attingerà ai vari attributi di intestazione
-presenti nell&#8217;istanza <code>mia_AT</code> dell&#8217;avventura.</p>
-</div>
-<div class="sect2">
-<h3 id="_attributi_dellintestazione"><a class="anchor" href="#_attributi_dellintestazione"></a>Attributi dell&#8217;intestazione</h3>
-<div class="paragraph">
-<p>L&#8217;istanza <code>mia_AT</code> (del <code>blocco_definizioni</code>) espone all&#8217;autore degli
-attributi per fornire i dettagli del banner che potrà (facoltativamente)
-essere mostrato all&#8217;inizio della partita tramite il template dell&#8217;istanza
-<code>intestazione</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">HAS</span>        titolo  <span class="hl str">&quot;Nuova Avventura&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span>   sottotitolo  <span class="hl str">&quot;&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span>        autore  <span class="hl str">&quot;Il Mio Nome&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span>          anno   <span class="hl num">2018</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span>      versione  <span class="hl str">&quot;1&quot;</span><span class="hl kwa">.</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>La libreria definisce anche l&#8217;attributo <code>AlanV</code>, che mostrerà nel banner la
-versione di Alan utilizzata:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">HAS</span>         AlanV  <span class="hl str">&quot;v3.0beta6&quot;</span><span class="hl kwa">.</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Il valore predefinito è quello dell&#8217;ultima release di Alan all&#8217;epoca della
-libreria. L&#8217;autore è libero di sovrascriverlo nel caso stesse usando una
-versione di Alan più recente, diversa, o una developer snapshot, senza dover
-modificare i sorgenti della libreria.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_todo"><a class="anchor" href="#_todo"></a>TODO</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Questa sezione contiene l&#8217;elenco delle cose da fare per ultimare l&#8217;adattamento
-italiano del modulo delle definizioni.</p>
-</div>
-<div class="sect2">
-<h3 id="_check_list_generale"><a class="anchor" href="#_check_list_generale"></a>Check-list generale</h3>
-<div class="paragraph">
-<p>Lista della spesa per le varie cosucce da fare:</p>
-</div>
+<p>Questo progetto è finalizzato alla traduzione italiana della <em>Alan Standard Library</em>.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.17.0-Alpha<br>
+Versione 0.17-Alpha<br>
 </div>
 </div>
 </body>
