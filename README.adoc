@@ -43,20 +43,22 @@ endif::[]
 //                         ATTRIBUTI ASCIIDOC ITALIANI
 // =============================================================================
 // Italian translation, courtesy of Marco Ciampa <ciampix@libero.it>
+ifndef::env-github[]
 :caution-caption: Attenzione
+:important-caption: Importante
+:note-caption: Nota
+:tip-caption: Suggerimento
+:warning-caption: Attenzione
+endif::[]
+ifdef::listing-caption[:listing-caption: Elenco]
+ifdef::preface-title[:preface-title: Prefazione]
 :example-caption: Esempio
 :figure-caption: Figura
-:important-caption: Importante
 :last-update-label: Ultimo aggiornamento
-ifdef::listing-caption[:listing-caption: Elenco]
-:note-caption: Nota
-ifdef::preface-title[:preface-title: Prefazione]
 :table-caption: Tabella
-:tip-caption: Suggerimento
 :toc-title: Indice
 :untitled-label: Senza titolo
 :version-label: Versione
-:warning-caption: Attenzione
 
 // ==============================================================================
 //                           RELATIVE PATHS ATTRIBUTES
