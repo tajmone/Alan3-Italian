@@ -1,0 +1,27 @@
+; ******************************************************************************
+; *                                                                            *
+; *                              CLOK OF DARKNESS                              *
+; *                                                                            *
+; *                     TEST SUL PERSONAGGIO PROTAGONISTA                      *
+; *                                                                            *
+; ******************************************************************************
+; Questo script testerà la corretta implementazione dell'Eroe, e che le azioni
+; rivolte a sé stesso producano riposte congrue.
+x me
+x hero
+inventario
+; ==============================================================================
+; VERBI AUTO-DIRETTI
+; ==============================================================================
+ovest
+; ** FIX IT **
+appendi me al soffitto
+; ** FIX IT **
+appendi me al gancio
+; ** FIX IT **
+appendi il mantello a me
+; ** FIX IT **
+appendi il gancio a me
+; ** FIX IT **
+appendi il soffitto a me
+; // FINE TEST //

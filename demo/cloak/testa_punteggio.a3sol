@@ -1,0 +1,55 @@
+; ******************************************************************************
+; *                                                                            *
+; *                              TESTA PUNTEGGIO                               *
+; *                                                                            *
+; ******************************************************************************
+; Nell'avventura è possibile conseguire 2 punti massimo.
+; Questo script verificherà che il punteggio venga gestito e visualizzato
+; correttamente.
+; ==============================================================================
+; TESTA -> VINCI -> PUNTEGGIO 1
+; ==============================================================================
+ovest
+lascia il mantello
+est
+sud
+; TESTA -> "1 punto" (e non "1 punti")
+leggi il messaggio
+RESTART
+; ==============================================================================
+; TESTA -> VINCI -> PUNTEGGIO 2
+; ==============================================================================
+ovest
+appendi il mantello
+est
+sud
+; TESTA -> "2 punti" (e non "2 punto")
+leggi il messaggio
+RESTART
+; ==============================================================================
+; TESTA -> PERDI -> PUNTEGGIO 0
+; ==============================================================================
+sud
+guarda
+guarda
+nord
+ovest
+lascia il mantello
+est
+sud
+; TESTA -> "0 punti" (e non "0 punto")
+leggi il messaggio
+RESTART
+; ==============================================================================
+; TESTA -> PERDI -> PUNTEGGIO 1
+; ==============================================================================
+sud
+guarda
+guarda
+nord
+ovest
+appendi il mantello
+est
+sud
+; TESTA -> "1 punto" (e non "1 punti")
+leggi il messaggio

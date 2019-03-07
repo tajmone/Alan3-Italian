@@ -1,0 +1,259 @@
+
+
+
+Affrettandoti nella piovosa notte di novembre, la vista delle luci
+sfavillanti del teatro dell'opera ti riallieta. È sorprendente che non ci
+sia più gente, ma, ehy, che ti aspetti da un semplice giochino
+dimostrativo...? 
+
+
+Cloak of Darkness 
+Una semplice AT dimostrativa in ALAN3. 
+Versione Alpha 26, febbraio 2019. (Implementata in ALAN 3.0beta6 build
+1878) 
+
+Digita INFO per maggiori informazioni.
+
+
+Foyer del teatro dell'opera
+Ti trovi in uno spazioso atrio d'ingresso splendidamente decorato in
+rosso e oro, con candelabri luccicanti appesi alla volta. L'ingresso
+dalla strada si trova a nord, delle porte conducono a sud e a ovest.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                              TESTA PUNTEGGIO                               *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Nell'avventura è possibile conseguire 2 punti massimo.
+> ; Questo script verificherà che il punteggio venga gestito e visualizzato
+> ; correttamente.
+> ; ==============================================================================
+> ; TESTA -> VINCI -> PUNTEGGIO 1
+> ; ==============================================================================
+> ovest
+Guardaroba
+Le pareti di questa piccola stanza un tempo erano piene di ganci, ora ne
+rimane soltanto uno. L'unica uscita è una porta a est.
+
+> lascia il mantello
+Posi a terra il mantello.
+
+> est
+Foyer del teatro dell'opera
+Ti trovi in uno spazioso atrio d'ingresso splendidamente decorato in
+rosso e oro, con candelabri luccicanti appesi alla volta. L'ingresso
+dalla strada si trova a nord, delle porte conducono a sud e a ovest.
+
+> sud
+Bar del foyer
+Il bar, più sobrio di quanto ti saresti aspettato dopo l'opulenza
+dell'ingresso a nord, è completamente vuoto. Sembra esserci una sorta di
+messaggio scarabocchiato nella segatura sul pavimento.
+
+> ; TESTA -> "1 punto" (e non "1 punti")
+> leggi il messaggio
+Il messaggio, vergato con cura nella segatura, dice...
+
+    *** Hai vinto ***
+
+Hai totalizzato 1 punto su 2 possibili.
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? RESTART
+
+
+
+
+Affrettandoti nella piovosa notte di novembre, la vista delle luci
+sfavillanti del teatro dell'opera ti riallieta. È sorprendente che non ci
+sia più gente, ma, ehy, che ti aspetti da un semplice giochino
+dimostrativo...? 
+
+
+Cloak of Darkness 
+Una semplice AT dimostrativa in ALAN3. 
+Versione Alpha 26, febbraio 2019. (Implementata in ALAN 3.0beta6 build
+1878) 
+
+Digita INFO per maggiori informazioni.
+
+
+Foyer del teatro dell'opera
+Ti trovi in uno spazioso atrio d'ingresso splendidamente decorato in
+rosso e oro, con candelabri luccicanti appesi alla volta. L'ingresso
+dalla strada si trova a nord, delle porte conducono a sud e a ovest.
+
+> ; ==============================================================================
+> ; TESTA -> VINCI -> PUNTEGGIO 2
+> ; ==============================================================================
+> ovest
+Guardaroba
+Le pareti di questa piccola stanza un tempo erano piene di ganci, ora ne
+rimane soltanto uno. L'unica uscita è una porta a est.
+
+> appendi il mantello
+Appendi il mantello al gancio. 
+
+[Il tuo punteggio è appena salito di 1.]
+
+> est
+Foyer del teatro dell'opera
+Ti trovi in uno spazioso atrio d'ingresso splendidamente decorato in
+rosso e oro, con candelabri luccicanti appesi alla volta. L'ingresso
+dalla strada si trova a nord, delle porte conducono a sud e a ovest.
+
+> sud
+Bar del foyer
+Il bar, più sobrio di quanto ti saresti aspettato dopo l'opulenza
+dell'ingresso a nord, è completamente vuoto. Sembra esserci una sorta di
+messaggio scarabocchiato nella segatura sul pavimento.
+
+> ; TESTA -> "2 punti" (e non "2 punto")
+> leggi il messaggio
+Il messaggio, vergato con cura nella segatura, dice...
+
+    *** Hai vinto ***
+
+Hai totalizzato 2 punti su 2 possibili.
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? RESTART
+
+
+
+
+Affrettandoti nella piovosa notte di novembre, la vista delle luci
+sfavillanti del teatro dell'opera ti riallieta. È sorprendente che non ci
+sia più gente, ma, ehy, che ti aspetti da un semplice giochino
+dimostrativo...? 
+
+
+Cloak of Darkness 
+Una semplice AT dimostrativa in ALAN3. 
+Versione Alpha 26, febbraio 2019. (Implementata in ALAN 3.0beta6 build
+1878) 
+
+Digita INFO per maggiori informazioni.
+
+
+Foyer del teatro dell'opera
+Ti trovi in uno spazioso atrio d'ingresso splendidamente decorato in
+rosso e oro, con candelabri luccicanti appesi alla volta. L'ingresso
+dalla strada si trova a nord, delle porte conducono a sud e a ovest.
+
+> ; ==============================================================================
+> ; TESTA -> PERDI -> PUNTEGGIO 0
+> ; ==============================================================================
+> sud
+L'oscurità
+È buio pesto qui, non riesci a vedere nulla.
+
+> guarda
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> guarda
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> nord
+Foyer del teatro dell'opera
+Ti trovi in uno spazioso atrio d'ingresso splendidamente decorato in
+rosso e oro, con candelabri luccicanti appesi alla volta. L'ingresso
+dalla strada si trova a nord, delle porte conducono a sud e a ovest.
+
+> ovest
+Guardaroba
+Le pareti di questa piccola stanza un tempo erano piene di ganci, ora ne
+rimane soltanto uno. L'unica uscita è una porta a est.
+
+> lascia il mantello
+Posi a terra il mantello.
+
+> est
+Foyer del teatro dell'opera
+
+> sud
+Bar del foyer
+Il bar, più sobrio di quanto ti saresti aspettato dopo l'opulenza
+dell'ingresso a nord, è completamente vuoto. Sembra esserci una sorta di
+messaggio scarabocchiato nella segatura sul pavimento.
+
+> ; TESTA -> "0 punti" (e non "0 punto")
+> leggi il messaggio
+Il messaggio è stato incautamente calpestato, rendendolo quasi
+illeggibile. Riesci a malapena a distinguere le parole...
+
+    *** Hai perso ***
+
+Hai totalizzato 0 punti su 2 possibili.
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? RESTART
+
+
+
+
+Affrettandoti nella piovosa notte di novembre, la vista delle luci
+sfavillanti del teatro dell'opera ti riallieta. È sorprendente che non ci
+sia più gente, ma, ehy, che ti aspetti da un semplice giochino
+dimostrativo...? 
+
+
+Cloak of Darkness 
+Una semplice AT dimostrativa in ALAN3. 
+Versione Alpha 26, febbraio 2019. (Implementata in ALAN 3.0beta6 build
+1878) 
+
+Digita INFO per maggiori informazioni.
+
+
+Foyer del teatro dell'opera
+Ti trovi in uno spazioso atrio d'ingresso splendidamente decorato in
+rosso e oro, con candelabri luccicanti appesi alla volta. L'ingresso
+dalla strada si trova a nord, delle porte conducono a sud e a ovest.
+
+> ; ==============================================================================
+> ; TESTA -> PERDI -> PUNTEGGIO 1
+> ; ==============================================================================
+> sud
+L'oscurità
+È buio pesto qui, non riesci a vedere nulla.
+
+> guarda
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> guarda
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> nord
+Foyer del teatro dell'opera
+Ti trovi in uno spazioso atrio d'ingresso splendidamente decorato in
+rosso e oro, con candelabri luccicanti appesi alla volta. L'ingresso
+dalla strada si trova a nord, delle porte conducono a sud e a ovest.
+
+> ovest
+Guardaroba
+Le pareti di questa piccola stanza un tempo erano piene di ganci, ora ne
+rimane soltanto uno. L'unica uscita è una porta a est.
+
+> appendi il mantello
+Appendi il mantello al gancio. 
+
+[Il tuo punteggio è appena salito di 1.]
+
+> est
+Foyer del teatro dell'opera
+
+> sud
+Bar del foyer
+Il bar, più sobrio di quanto ti saresti aspettato dopo l'opulenza
+dell'ingresso a nord, è completamente vuoto. Sembra esserci una sorta di
+messaggio scarabocchiato nella segatura sul pavimento.
+
+> ; TESTA -> "1 punto" (e non "1 punti")
+> leggi il messaggio
+Il messaggio è stato incautamente calpestato, rendendolo quasi
+illeggibile. Riesci a malapena a distinguere le parole...
+
+    *** Hai perso ***
+
+Hai totalizzato 1 punto su 2 possibili.
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

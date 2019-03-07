@@ -439,6 +439,19 @@ Grazie.
 
 Alcune notizie flash sugli aggiornamenti importanti del progetto...
 
+=== 2019/03/07 -- Ecco la prima demo: _Cloak of Darkness_
+
+È ora disponibile _Cloak of Darkness_, la prima avventura italiana realizzata in Alan:
+
+* link:./demo/cloak/[`demo/cloak/`, title="Vai alla cartella di Cloak of Darkness"]
+
+Questa piccola avventura di Roger Firth è considerata la "`Stele di Rosetta`" delle avventure testuali, ed è stata implementata in quasi tutti i linguaggi e piattaforme per lo sviluppo di AT.
+
+Per la sua realizzazione, si è usato solo il modulo per il supporto della lingua italiana ({lib_grammatica}), senza appoggiarsi alla *Libreria Standard*.
+Questa demo è quindi un esempio su piccola scala di come sia possibile realizzare un'avventura in Alan partendo da zero, creando le proprie definizioni di tutti i verbi richiesti dal caso.
+
+
+
 === 2019/02/28 -- Adozione di Highlight per la documentazione
 
 [.float-group]
@@ -592,7 +605,7 @@ Ora restano ancora da tradurre molti messagi di risposta dei verbi, e l'intera l
 * {alanlib_ita} -- Libreria Standard 2.1 in italiano (WIP)
 * {alanlib} -- copie della Alan Standard Library upstream:
 ** {2_1} (aggiornata: 2018/10/22)
-* {demo} -- avventura dimostrativa (attualmente disastrata)
+* {demo} -- avventure dimostrative
 * {docs} -- documentazione HTML della libreria
 * {docs_src} -- cartella sorgenti e risorse per la documentazione in AsciiDoc
 * {ricettario} -- il _Ricettario di Alan_ (WIP)

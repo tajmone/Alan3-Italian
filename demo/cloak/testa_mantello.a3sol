@@ -1,0 +1,83 @@
+; ******************************************************************************
+; *                                                                            *
+; *                       TESTA IMPLEMENTAZIONE MANTELLO                       *
+; *                                                                            *
+; ******************************************************************************
+; ==============================================================================
+; APPENDERE IL MANTELLO
+; ==============================================================================
+; Il mantello deve poter essere appeso solo al gancio.
+; ------------------------------------------------------------------------------
+; APPENDI MANTELLO -> A FONDALI
+; ------------------------------------------------------------------------------
+; ** FIXME ** dovrebbe produrre un messaggio migliore
+appendi il mantello al soffitto
+appendi il mantello al pavimento
+ovest
+; ------------------------------------------------------------------------------
+; GUARDAROBA
+; ------------------------------------------------------------------------------
+appendi il mantello al gancio
+; TESTA -> MANTELLO NON POSSEDUTO
+appendi il mantello al gancio
+guarda
+inventario
+prendi il mantello
+guarda
+; TESTA INVENTARIO -> MANTELLO TRASPORTATO (NON INDOSSATO)
+inventario
+; ==============================================================================
+; INDOSSARE IL MANTELLO
+; ==============================================================================
+; TESTA -> INDOSSA -> MANTELLO POSSEDUTO
+indossa il mantello
+appendi il mantello
+; TESTA -> INDOSSA -> MANTELLO APPESO
+indossa il mantello
+lascia il mantello
+; TESTA -> INDOSSA -> MANTELLO IN TERRA
+indossa il mantello
+; TESTA -> INDOSSA -> MANTELLO GIÀ INDOSSATO
+indossa il mantello
+; ==============================================================================
+; LASCIARE IL MANTELLO
+; ==============================================================================
+; Il mantello deve poter essere lasciato solo nel guardaroba.
+lascia il mantello
+; TESTA -> MANTELLO NON POSSEDUTO
+lascia il mantello
+guarda
+inventario
+prendi il mantello
+est
+; ------------------------------------------------------------------------------
+; FOYER
+; ------------------------------------------------------------------------------
+; Non deve essere possibile lasciare il mantello nel foyer.
+; TESTA -> LASCIA MANTELLO -> IN FOYER
+lascia il mantello
+inventario
+ovest
+; ==============================================================================
+; PRENDERE IL MANTELLO
+; ==============================================================================
+; Proviamo a prendere il mantello quando già lo possediamo.
+inventario
+; TESTA -> PRENDI -> MANTELLO GIÀ POSSEDUTO
+prendi il mantello
+; ==============================================================================
+; APPENDERE IL MANTELLO
+; ==============================================================================
+appendi il mantello
+; TESTA -> APPENDI -> MANTELLO GIÀ APPESO
+appendi il mantello
+prendi il mantello
+; sintassi alternative di 'appendi':
+appendi il mantello al gancio
+appendi il mantello sul gancio
+metti il mantello sul gancio
+; ma non accettare 'metti al':
+metti il mantello al gancio
+aggancia il mantello
+aggancia il mantello al gancio
+aggancia il mantello sul gancio

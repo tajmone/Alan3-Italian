@@ -1,0 +1,99 @@
+
+
+
+Affrettandoti nella piovosa notte di novembre, la vista delle luci
+sfavillanti del teatro dell'opera ti riallieta. È sorprendente che non ci
+sia più gente, ma, ehy, che ti aspetti da un semplice giochino
+dimostrativo...? 
+
+
+Cloak of Darkness 
+Una semplice AT dimostrativa in ALAN3. 
+Versione Alpha 26, febbraio 2019. (Implementata in ALAN 3.0beta6 build
+1878) 
+
+Digita INFO per maggiori informazioni.
+
+
+Foyer del teatro dell'opera
+Ti trovi in uno spazioso atrio d'ingresso splendidamente decorato in
+rosso e oro, con candelabri luccicanti appesi alla volta. L'ingresso
+dalla strada si trova a nord, delle porte conducono a sud e a ovest.
+
+> inventario
+Stai indossando il tuo mantello di velluto.
+
+> esamina me
+Affascinante come al solito.
+
+> x me
+Affascinante come al solito.
+
+> x mantello
+Un bellissimo mantello in velluto nero bordato di raso, leggermente
+spruzzato di gocce di pioggia. È di un nero talmente profondo che sembra
+assorbire la luce nella stanza.
+
+> nord
+Sei appena arrivato, ed inoltre, il tempo fuori sta peggiorando.
+
+> ; ==============================================================================
+> ; Guardaroba
+> ; ==============================================================================
+> ovest
+Guardaroba
+Le pareti di questa piccola stanza un tempo erano piene di ganci, ora ne
+rimane soltanto uno. L'unica uscita è una porta a est.
+
+> x pareti
+Le pareti di questa piccola stanza un tempo erano piene di ganci, ora ne
+rimane soltanto uno.
+
+> ; ------------------------------------------------------------------------------
+> ; Disambiguazione 'gancio'
+> ; ------------------------------------------------------------------------------
+> x gancio
+È un piccolo gancio d'ottone fissato al muro.
+
+> x gancetto
+È un piccolo gancio d'ottone fissato al muro.
+
+> x gancio d'ottone
+È un piccolo gancio d'ottone fissato al muro.
+
+> x piccolo gancio
+È un piccolo gancio d'ottone fissato al muro.
+
+> x gancetto d'ottone
+È un piccolo gancio d'ottone fissato al muro.
+
+> x piccolo gancio ottone
+È un piccolo gancio d'ottone fissato al muro.
+
+> x ottone
+È un piccolo gancio d'ottone fissato al muro.
+
+> ; ------------------------------------------------------------------------------
+> ; Testa verbi su 'gancio'
+> ; ------------------------------------------------------------------------------
+> leggi il gancio
+Non c'è nulla da leggere sul gancio.
+
+> appendi il gancio
+Non lo puoi fare.
+
+> appendi il gancio al gancio
+Dici sul serio?
+
+> appendi il soffitto al gancio
+Il soffitto non è qualcosa che puoi appendere.
+
+> appendi il mantello al gancio
+Appendi il mantello al gancio. 
+
+[Il tuo punteggio è appena salito di 1.]
+
+> ; // FINE TEST //
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

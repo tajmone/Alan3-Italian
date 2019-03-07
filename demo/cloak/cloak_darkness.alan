@@ -1,0 +1,773 @@
+--+============================================================================+
+--| * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  |
+--|  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * |
+--| * * * +------------------------------------------------------------+  * *  |
+--|  * *  |                                                            | * * * |
+--| * * * |              C L O A K   O F   D A R K N E S S             |  * *  |
+--|  * *  |                                                            | * * * |
+--| * * * +------------------------------------------------------------+  * *  |
+--|  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * |
+--| * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  |
+--+============================================================================+
+-->rev_info
+--| :revdate:     2019-03-07
+--| :revnumber:   1.0.0-alpha.1
+--| :revremark:   Alan 3.0beta6 build 1878
+--<<
+-->-----------------------------------------------------------------------------
+--| Basato sull'avventura "`Cloak of Darkness`" di Roger Firth, utlizzando come
+--| base del codice l'implementazione in Alan di Stephen Griffiths, portata ad
+--| Alan 3 da Thomas Nilsson:
+--|
+--| * http://www.firthworks.com/roger/cloak/alan/index.html
+--|
+--| Adattammento all'italiano a cura di Tristano Ajmone e S3RioUs JokER,
+--| febbraio 2019.
+
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| == Supporto lingua italiana
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+
+--| Per il supporto della lingua italiana questa avventura utilizzerà solo il
+--| modulo della grammatica italiana di *Alan Italian*, senza avvalersi della
+--| Libreria Standard Italiana:
+
+Import '../../alanlib_ita/lib_grammatica.i'.
+Import '../../alanlib_ita/lib_supplemento.i'.
+
+--| Perciò l'avventura dovrà implementare tutti i verbi di base e tradurre i
+--| messaggi di runtime.
+
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| == Il protagonista
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+
+--| Iniziamo a definire alcuni sinonimi utili affinché il parser interpreti
+--| correttamente i comandi che fanno riferimento al protagonista (`Hero`).
+
+Synonyms me, te = hero.
+
+--| Aggiungiamo al protagonista alcuni attributi utili a tracciare lo stato
+--| dell'avventura, e ridefiniamo il verbo `esamina` per personalizzare il
+--| messaggio di '`esamina me`'.
+
+The hero IsA actor
+  HAS nome_proprio.
+  Mentioned "te stesso"
+  Has not appeso_mantello.
+
+  Verb esamina
+    Check current location <> bar_buio
+      else describe avvertimento_bar_buio.
+    Does only "Affascinante come al solito."
+  End verb.
+End the hero.
+
+--~=============================================================================
+--| === Il mantello
+--~=============================================================================
+
+--| All'inizio della partita, il protagonsta indossa il mantello. Poiché questo
+--| è l'unico oggetto del gioco realmente manipolabile, quasi tutti i verbi di
+--| questa avventura saranno centrati attorno al mantello.
+--|  
+--| Il mantello può essere sia trasportato che indossato dall'eroe, e l'unica
+--| stanza in cui ci si può separare da esso è il guardaroba, in cui è possibile
+--| lasciarlo in terra o appenderlo al gancio. 
+
+The mantello IsA object in hero
+  Is not appeso. indossato.
+  Description
+    If mantello is appeso
+      then "$pSul piccolo gancio d'ottone è appeso un mantello di velluto."
+      else "$pC'è un mantello di velluto nero qui."
+    end if.
+
+  Verb esamina
+    Check current location <> bar_buio
+      Else describe avvertimento_bar_buio.
+    Does only "Un bellissimo mantello in velluto nero bordato di raso, leggermente
+               spruzzato di gocce di pioggia. È di un nero talmente profondo
+               che sembra assorbire la luce nella stanza."
+  End verb esamina.
+
+  Verb appendi
+    Check oggetto in hero
+      else "non possiedi $+1."
+    And current location = guardaroba
+      else "Qui non c'è nulla a cui poterlo appendere."
+    Does
+      schedule appendi_mantello after 0.
+  End verb appendi.
+
+  Verb appendi_a
+    When ogg1
+      Check ogg2 = gancio
+        else "Non è il posto migliore per lasciare un mantello."
+      Does only
+        schedule appendi_mantello after 0.
+  End verb appendi_a.
+
+  Verb lascia
+    Check current location = guardaroba
+      else "Non è il posto migliore per lasciare un mantello."
+    Does after
+      make this not indossato.
+  End verb lascia.
+
+  Verb indossa
+    Check this is not indossato
+      else "Stai già indossando $+1."
+    Does only
+      If this not in hero
+        then
+          If this is appeso
+            then  "Sfili $+1 dal gancio"
+            else  "Raccogli $+1 da terra"
+          end if. "e lo indossi."
+        else "Fatto."
+      end if.
+      Make this indossato. Make this not appeso. Locate this in hero.
+  End verb indossa.
+End the mantello.
+
+Event appendi_mantello
+  "Appendi il mantello al gancio."
+  Make mantello appeso. Make mantello not indossato. Locate mantello here.
+  If hero has not appeso_mantello then
+    Score 1. Make hero appeso_mantello.
+    Style emphasized. "$p[Il tuo punteggio è appena salito di 1.]" Style normal.
+  end if.
+End event.
+
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| == La mappa del gioco
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--| {mappa}
+
+--| Ora definiremo la mappa del gioco. Sebbene nell'avventura appaiano solo tre
+--| stanze (il foyer, il guardaroba ed il bar), noi dovremo creare cinque luoghi
+--| in tutto, dato che per implementare il bar buio servirà una stanza a sé, e
+--| ricorreremo ad un'istanza di luogo per creare il teatro, all'interno della
+--| quale collocare le stanze illuminate.
+
+--~=============================================================================
+--| === Il teatro
+--~=============================================================================
+
+--| Creeremo il teatro, un "`luogo contenitore`" al cui interno collocheremo
+--| tutte le stanze del gioco così da rendere visibili in ognuna di esse alcuni
+--| elementi comuni come le pareti, il soffitto e il pavimento, che andremo a
+--| implementare in questo contenitore esterno.
+
+The teatro IsA location. End the teatro.
+
+--| Definiamo la classe specializzata `fondale` per gli elementi comuni delle
+--| stanze. Ridefiniremo su questa classe alcuni verbi transitivi comuni, così
+--| da poterli intercettare nei comandi del giocatore e produrre delle risposte
+--| che lo scoraggino a perdere tempo con questi oggetti meramente scenici.
+
+Every fondale IsA object at teatro.
+  Verb prendi, sposta
+    Does only "$+1 non"
+      if this is plurale
+        then  "sono importanti"
+        else  "è importante"
+      end if. "ai fini del gioco."
+  End verb.
+End every fondale.
+
+--| Nel definire il fondale per le pareti, facciamo in modo che esaminare le
+--| pareti del guardaroba produca una descrizione in cui venga menzionato che
+--| rimane un unico gancio su di essa.
+
+The pareti IsA fondale.
+  Has articolo "le".
+  Verb esamina
+    Check current location <> guardaroba
+      else say descrizione_pareti of guardaroba.
+  End verb esamina.
+End the pareti.
+
+Synonyms parete, muro, muri = pareti.
+
+--| Nel definire il fondale per i pavimenti, facciamo in modo che esaminare o
+--| leggere il pavimento del bar illuminato equivalga ad esaminare il messaggio.
+
+The pavimento IsA fondale.
+  Verb esamina, leggi
+    Check current location <> bar
+      else describe leggi_messaggio.
+  End verb.
+End the pavimento.
+
+--| Nel definire il fondale per i soffitti, facciamo in modo che esaminare il
+--| soffitto del foyer menzioni i candelabri, di modo da essere coerenti con la
+--| descrizione della stanza.
+
+The soffitto IsA fondale.
+  Verb esamina
+    Check current location <> foyer
+      else "Dalla volta pendono candelabri luccicanti."
+  End verb esamina.
+End the soffitto.
+
+Synonyms volta = soffitto.
+
+--~=============================================================================
+--| === Il foyer
+--~=============================================================================
+
+The foyer IsA location at teatro
+  Name 'foyer del teatro dell''opera'
+  Description "Ti trovi in uno spazioso atrio d'ingresso splendidamente decorato
+               in rosso e oro, con candelabri luccicanti appesi alla volta.
+               L'ingresso dalla strada si trova a nord, delle porte conducono a
+               sud e a ovest."
+  Exit sud to bar
+    Does
+      If mantello in hero
+        then locate hero at bar_buio.
+        else locate hero at bar.
+      end if.
+  End exit.
+
+  Exit ovest to guardaroba.
+
+  Exit nord to foyer
+    Check "Sei appena arrivato, ed inoltre, il tempo fuori sta peggiorando."
+  End exit.
+End the foyer.
+
+--~-----------------------------------------------------------------------------
+--| ==== I candelabri
+--~-----------------------------------------------------------------------------
+
+--| Dato che nella descrizione del foyer si menzionano i candelabri, sarà bene
+--| implementarli, giusto per essere coerenti.
+
+The candelabri IsA object at foyer.
+  Has articolo "i".
+  Description
+
+  Verb esamina
+    Does only "I candelabri non sono importanti ai fini del gioco."
+  End verb.
+
+  Verb prendi, sposta
+    Does only "I candelabri non sono importanti ai fini del gioco."
+  End verb.
+End the candelabri.
+
+--~=============================================================================
+--| === Il guardaroba
+--~=============================================================================
+
+The guardaroba IsA location at teatro
+  Has descrizione_pareti "Le pareti di questa piccola stanza un tempo erano
+                          piene di ganci, ora ne rimane soltanto uno.".
+  Description
+    Say descrizione_pareti of this. "L'unica uscita è una porta a est."
+
+  Exit est to foyer.
+End the guardaroba.
+
+--~-----------------------------------------------------------------------------
+--| ==== Il gancio
+--~-----------------------------------------------------------------------------
+
+The gancio IsA object at guardaroba
+  Name gancio
+  Name piccolo gancio
+  Name gancio ottone
+  Description
+
+  Verb esamina
+    Does only
+      "È un piccolo gancio d'ottone"
+      If mantello is appeso
+        then "a cui è appeso un mantello."
+        else "fissato al muro."
+      end if.
+  End verb.
+End the gancio.
+
+Synonyms gancetto, piolo = gancio.
+             'd''ottone' = ottone.
+
+--~=============================================================================
+--| === Il bar del foyer
+--~=============================================================================
+
+The bar IsA location at teatro
+  Name 'bar del foyer'
+  Description "Il bar, più sobrio di quanto ti saresti aspettato dopo l'opulenza
+               dell'ingresso a nord, è completamente vuoto. Sembra esserci una
+               sorta di messaggio scarabocchiato nella segatura sul pavimento."
+  Exit nord to foyer.
+End the bar.
+
+--~-----------------------------------------------------------------------------
+--| ==== Il messaggio
+--~-----------------------------------------------------------------------------
+
+The messaggio IsA object at bar
+  Name messaggio
+  Name messaggio scarabocchiato
+  Has livello_danno 0.
+  Description
+
+  Verb esamina, leggi
+    Does only describe leggi_messaggio.
+  End verb.
+End the messaggio.
+
+Synonyms segatura = messaggio.
+
+--~-----------------------------------------------------------------------------
+--| ==== Lettura del messaggio
+--~-----------------------------------------------------------------------------
+
+--| Quando il giocatore riesce finalmente ad esaminare/leggere il messaggio la
+--| partita giunge al termine. Se il livello di danni arrecati al messaggio
+--| (tentando azioni nel bar buio) è inferiore a 2, la partita si concluderà in
+--| vittoria, altrimenti avrà perso.
+
+The leggi_messaggio IsA object
+  Description
+    If livello_danno of messaggio < 2
+      then
+        score 1.
+        "Il messaggio, vergato con cura nella segatura, dice...
+         $p$t" style emphasized. "*** Hai vinto ***$p" style normal.
+      else
+        "Il messaggio è stato incautamente calpestato, rendendolo quasi
+         illeggibile. Riesci a malapena a distinguere le parole...
+         $p$t" style emphasized. "*** Hai perso ***$p" style normal.
+    end if.
+    Score. Quit.
+End the leggi_messaggio.
+
+--~=============================================================================
+--| === Il bar (al buio)
+--~=============================================================================
+
+The bar_buio IsA location at teatro
+  Name 'l''oscurità'
+  Description "È buio pesto qui, non riesci a vedere nulla."
+
+  Exit nord to foyer.
+
+  --~---------------------------------------------------------------------------
+  --| Le seguenti definizioni di uscite non praticabili hanno lo scopo, in Alan,
+  --| di definere i nomi di tutte le direzioni, di modo che vengano riconosciute
+  --| nell'input del giocatore, ovunque egli si trovi. Alan non provvede a
+  --| definire alcuna direzione, le "`apprende`" dalle clausole `Exit` contenute
+  --| nell'avventura sorgente.
+  --|
+  --| Quanto all'avventura, ogni tentativo di muoversi in una direzione che non
+  --| sia *nord* sfocerà in un avvertimento ed incrementerà (+2) i danni al
+  --| messaggio in terra.
+  --~---------------------------------------------------------------------------
+
+  Exit nordest, est, sudest, sud, sudovest, ovest, nordovest, su, giù to bar_buio
+    Check
+      "Brancolare nell'oscurità non è una buona idea!"
+      Increase livello_danno of messaggio by 2.
+  End exit.
+
+  --~---------------------------------------------------------------------------
+  --| Tentare di fare qualsiasi cosa nell'oscurità produrrà un avvertimento
+  --| ed incrementerà (+1) i danni al messaggio in terra. Il sistema più semplice
+  --| per implementarlo è aggiungere a questo luogo dei `Check` incondizionati
+  --| che invochino la descrizione di `avvertimento_bar_buio`.
+  --| Raggrupperemo assieme tutti i verbi con sintassi compatibili.
+  --~---------------------------------------------------------------------------
+
+  --| Verbi globali, senza parametri:
+
+  Verb aspetta, guarda, inventario
+    Check describe avvertimento_bar_buio.
+  End verb.
+
+  --| Verbi con parametro singolo:
+
+  Verb appendi, esamina, indossa, lascia, leggi, prendi
+    Check describe avvertimento_bar_buio.
+  End verb.
+
+  --| Verbi multiparametro:
+
+  Verb appendi_a
+    Check describe avvertimento_bar_buio.
+  End verb.
+End the bar_buio.
+
+--~-----------------------------------------------------------------------------
+--| ==== Messaggio azioni al buio
+--~-----------------------------------------------------------------------------
+
+--| Per semplificare la gestione delle azioni al buio che incrementano i danni
+--| arrecati al messaggio, sfrutteremo la descrizione dinamica di un oggetto
+--| privo di collocazione.
+
+The avvertimento_bar_buio IsA object
+  Description
+    "Nel buio? Potresti facilmente disturbare... qualcosa!"
+    Increase livello_danno of messaggio by 1.
+End the avvertimento_bar_buio.
+
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| == Verbi
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+
+--| Diamo all'avventura un certo numero di verbi di base, anche se la maggior
+--| parte di essi non hanno utilità pratica in questo piccolo gioco, conferiranno
+--| comunque una parvenza di complessità all'interprete dei comandi del giocatore.
+
+--~=============================================================================
+--| === Verbi globali
+--~=============================================================================
+
+--| I verbi '`globali`' sono verbi che non non prevedono parametri, per cui non
+--| vengono definiti su alcuna classe.
+
+Syntax aspetta = aspetta.
+        guarda = guarda.
+    inventario = inventario.
+
+Synonyms z = aspetta.
+         l = guarda.
+       inv = inventario.
+
+Verb guarda
+  Does look.
+End verb.
+
+Verb aspetta
+  Does "Il tempo passa."
+End verb.
+
+Verb inventario
+  Does
+    If mantello in hero
+      then "Stai"
+        If mantello is indossato
+          then "indossando"
+          else "portando"
+        end if. "il tuo mantello di velluto."
+      else "Non stai portando nulla con te."
+  end if.
+End verb inventario.
+
+--~-----------------------------------------------------------------------------
+--| ==== Meta verbi
+--~-----------------------------------------------------------------------------
+
+--| I verbi '`meta`' non consumano un turno del gioco, solitamente vengono
+--| impiegati per definire comandi amministrativi della partita ('`salva`',
+--| '`carica`', '`abbandona`', ecc.).
+
+
+Syntax info = info.
+
+Synonyms about, copyright, credits, licenza, riconoscimenti = info.
+
+
+Meta verb info
+  Does only
+    Style emphasized. "Informazioni su Cloak of Darkness" style normal.
+    
+    "$pCloak of Darkness è una breve avventura testuale ideata da Roger Firth
+     come esercizio da implementare nelle varie piattaforme per la scrittura di
+     AT. Esistono versioni di Cloak of Darkness per tutte le piattaforme di IF
+     più famose, e anche per sistemi di sviluppo meno noti.
+
+     $n$n$thttp://www.firthworks.com/roger/cloak/index.html
+
+     $pQuesta edizione italiana è stata realizzata da Tristano Ajmone e S3RioUs
+     JokER partendo dalla versione in ALAN creata da Stephen Griffiths, in
+     seguito convertita ad ALAN 3 da Thomas Nilefalk (all'epoca, Thomas Nilsson).
+     La maggior parte del codice originale è stato riscritto poiché la versione
+     di Griffiths impiegava una liberia esterna per l'implementazione dei verbi
+     comuni.
+     
+     $pNell'opera di adattamento, si è preso spunto ed attinto dai sorgenti delle
+     varie implementazioni di Cloak of Darkness in altri sistemi (Inform 6/7,
+     TADS 2/3, Hugo), di modo da avere una visione complessiva del progetto.
+     
+     $pPer il supporto della lingua italiana viene impiegato solo il modulo Alan
+     Italian (""lib_grammatica.i""), e non l'intera Libreria Standard Italiana.
+     Quindi, quest'avventura offre un esempio di come creare una AT italiana
+     usando ""ALAN nudo e crudo"" e costruendo da zero tutti i verbi di base.
+
+     $n$n$thttps://github.com/tajmone/Alan3-Italian
+
+     $pCloack of Darkness è generalmente considerata un'opera di pubblico
+     dominio dalla comunità dell'Interactive Fiction, sebbene sia l'avventura
+     originale che i suoi vari adattamenti non riportino una licenza esplicita.
+     La presente edizione italiana di Cloak of Darkness è da considerarsi di
+     pubblico dominio e, pertanto, liberamente utilizzabile senza restrizioni.
+
+     $pTristano Ajmone (Torino, 2019)"
+
+End verb info.
+
+
+--~=============================================================================
+--| === Verbi sulla classe thing
+--~=============================================================================
+
+--| Cercheremo di definire più verbi possibile direttamente sulla classe `thing`,
+--| di modo da poterne raggruppare il più possibile in unica definizione quando
+--| andiamo a sovrascriverli in classi o instanze.
+
+--| Qui sfrutteremo il fatto che se non specifichiamo nella sintassi dei verbi
+--| la classe a cui si applica, Alan di default restringe il verbo alle istanze
+--| di `object`. Quindi non dovremo preoccuparci di sovrascrivere i messaggi se
+--| vengono usati sull'Eroe.
+
+Syntax appendi = appendi (oggetto).
+       indossa = indossa (oggetto).
+        lascia = lascia (oggetto).
+        lascia = metti giù (oggetto).
+        lascia = posa (oggetto).
+         leggi = leggi (oggetto).
+        sposta = sposta (oggetto).
+
+--| L'eccezione è il verbo '`esamina`', che deve poter essere usato anche su sé
+--| stessi.
+
+Syntax esamina = esamina (oggetto)
+  Where oggetto IsA thing
+    else "$+1 non è esaminabile."
+
+       esamina = guarda (oggetto).
+
+Synonyms             x = esamina.
+               mettiti = indossa.
+  butta, getta, lancia = lascia.
+   muovi, spingi, tira = sposta.
+              aggancia = appendi.
+
+--| [NOTE]
+--| Il verbo `appendi` è stato definito direttamente sull'istanza `mantello`,
+--| dato che ogni tentativo di usarlo su altre istanze non produrrebbe alcun
+--| esito.
+
+Add to every thing
+  Verb esamina
+    Does "Esamini $+1 ma non noti nulla di speciale."
+  End verb.
+
+  Verb leggi
+    Does "non c'è nulla da leggere" say prep_SU of this. "$1."
+  End verb leggi.
+
+  Verb indossa
+    Does "Non puoi indossare $+1."
+  End verb.
+
+  Verb lascia
+    Check oggetto in  hero
+      else "Non possiedi $+1."
+    Does
+      "Posi a terra $+1."
+      locate this here.
+  End verb lascia.
+
+  Verb sposta
+    Does "Non otterresti nulla."
+  End verb.
+End add to thing.
+
+--~=============================================================================
+--| === Verbi sulla classe object
+--~=============================================================================
+
+--~| Creiamo una sintassi flessibile per appendere il mantello, consentendo l'uso
+--~| di **'`(metti|posa|appendi) su`'** e di **'`appendi (a|su)`'**, di modo da
+--~| riuscire a intecettare i tentativi più ovvi con cui il giocatore tenterà di
+--~| appendere il mantello al gaancio.
+
+--| Creiamo una sintassi flessibile per appendere il mantello, consentendo l'uso
+--| di **'`(metti|posa|appendi) su`'** e di **'`appendi (a|su)`'**, nei comandi
+--| che includono il gancio, e anche solo **'`appendi mantello`'**, così da
+--| riuscire a intercettare i comandi più ovvi con cui il giocatore tenterà di
+--| appendere il mantello al gancio, evitando situazioni di "`guess the verb`".
+--|
+--| * appendi il mantello
+--| * appendi il mantello (al/sul) gancio
+--| * (appendi/metti) il mantello sul gancio
+
+
+Syntax  appendi_a = appendi (ogg1) a  (ogg2).
+        appendi_a = appendi (ogg1) su (ogg2).
+        appendi_a = metti (ogg1) su (ogg2).
+        appendi_a = posa (ogg1) su (ogg2).
+           prendi = prendi (oggetto).
+
+Synonyms raccogli = prendi.
+
+
+Add to every object
+  Verb prendi
+    Check oggetto not in hero
+      else "Possiedi già $+1."
+    Does
+      If this <> mantello
+        then "$+1 non è trasportabile."
+        else
+          "Pres$$" say this:vocale. "."
+          locate this in hero.
+      end if.
+  End verb prendi.
+
+  Verb appendi_a
+    When ogg1
+      Check ogg1 <> ogg2
+        Else "Dici sul serio?"
+      And ogg1 = mantello
+        else "$+1 non"
+          if ogg1 is plurale
+            then "sono"
+            else "è"
+          end if. "qualcosa che puoi appendere."
+      And ogg1 in hero
+        else "non possiedi $+1."
+  End verb appendi_a.
+End add to object.
+
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| == Sinonimi per direzioni brevi
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+
+--| Per semplificare la vita al giocatore, e onorare le tradizioni dell'IF,
+--| definiremo dei sinonimi per le versioni brevi delle direzioni.
+
+Synonyms
+  n     = nord.
+  ne    = nordest.
+  es    = est.
+  se    = sudest.
+  s     = sud.
+  so    = sudovest.
+  o     = ovest.
+ 'no'   = nordovest.
+  giu   = giù.
+
+--| [WARNING]
+--| Purtroppo non è possibile definire il sinonimo breve `E` per `EST` dato che
+--| la `E` è già stata definita nel modulo di *Alan Italian* come sinonimo di
+--| `AND`, di cui Alan necessità per poter riconoscere le concatenazioni di
+--| verbi o parametri multipli nell'input del giocatore.
+
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| == Messaggi runtime
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+
+--| Ci limiteremo a tradurre in italiano i messaggi runtime di Alan utilizzati
+--| in questa AT.
+
+MESSAGE
+
+  CANT0:           "Non lo puoi fare."
+  NO_WAY:          "Non puoi andare in quella direzione."
+  IMPOSSIBLE_WITH: "È impossibile farlo con $+1."
+
+  AFTER_BUT:       "Devi specificare almeno un oggetto dopo '$1'."
+  BUT_ALL:         "Puoi usare '$1' solo DOPO 'tutto' (es. ""$v tutto $1..."")."
+
+  MULTIPLE:        "Non puoi usare più di un oggetto con '$v'."
+  NO_SUCH:         "Qui non puoi vedere nulla del genere."
+  NOT_MUCH:        "Così non resta nulla per il verbo '$v'!"
+  NOUN:            "Devi specificare un sostantivo."
+  UNKNOWN_WORD:    "Non conosco la parola '$1'."
+  WHAT:            "Non ho capito la frase."
+  WHAT_WORD:       "Non mi è chiaro cosa intendi con '$1'."
+
+  --| Disambiguazione ogetti/attori:
+  WHICH_START:      "Non mi è chiaro se intendi dire $+1"
+  WHICH_COMMA:      ", $+1"
+  WHICH_OR:         "o $+1."
+
+  --| Disambiguazione pronomi:
+  WHICH_PRONOUN_START: "Non mi è chiaro se con '$1'"
+  WHICH_PRONOUN_FIRST: "intendi dire $+1"
+
+  --| Conferma abbandono partita:
+  REALLY:           "Sei sicuro (premi INVIO per confermare)?"
+  QUIT_ACTION:      "Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? "
+
+  --| [NOTE]
+  --| Le possibili risposte a questo messaggio (RESTART, RESTORE, QUIT e UNDO)
+  --| sono codificate in Alan e non possono essere tradotte, quindi per non
+  --| confondere il giocatore è meglio lasciarle in inglese.
+
+  --| Punteggio:
+  HAVE_SCORED:
+    "Hai totalizzato $1 punt$$"
+    If score = 1
+      then "o"
+      else "i"
+    end if.
+    "su $2 possibili."
+
+
+  --| Annullamento comandi:
+  UNDONE:   "'$1' annullato."
+  NO_UNDO:  "Non è possible annullare ulteriormente."
+
+  --| Marcatore testo lungo:
+  MORE:     "<Continua>"
+
+  --| Sopprimiamo il marcatore dei luoghi già visitati:
+  AGAIN: ""
+
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| == Inizio partita
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+
+--| L'avventura inizierà nel foyer.
+
+Start at foyer.
+
+--| Impostiamo la modalità breve, ossia che debbano intecorrere 9999 visite ad
+--| un locale prima che venga mostrata di nuovo la sua descrizione.
+
+Visits 9999.
+
+--| Mostriamo del testo d'apertura quando il gioco inizia.
+
+--~ "$p$pHurrying through the rainswept November night, you're glad to see
+--~  the bright lights of the Opera House. It's surprising that there aren't
+--~  more people about but, hey, what do you expect in a cheap demo game...?"
+
+  "$p$pAffrettandoti nella piovosa notte di novembre, la vista delle luci
+   sfavillanti del teatro dell'opera ti riallieta.
+   È sorprendente che non ci sia più gente, ma, ehy, che ti aspetti da un
+   semplice giochino dimostrativo...?"
+
+   Style emphasized. "$p$nCloak of Darkness" style normal.
+
+  "$nUna semplice AT dimostrativa in ALAN3."
+  "$nVersione Alpha 26, febbraio 2019. (Implementata in ALAN 3.0beta6 build 1878)"
+
+  "$pDigita INFO per maggiori informazioni."
+
+
+--</// FINE ///--

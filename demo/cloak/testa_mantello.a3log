@@ -1,0 +1,201 @@
+
+
+
+Affrettandoti nella piovosa notte di novembre, la vista delle luci
+sfavillanti del teatro dell'opera ti riallieta. È sorprendente che non ci
+sia più gente, ma, ehy, che ti aspetti da un semplice giochino
+dimostrativo...? 
+
+
+Cloak of Darkness 
+Una semplice AT dimostrativa in ALAN3. 
+Versione Alpha 26, febbraio 2019. (Implementata in ALAN 3.0beta6 build
+1878) 
+
+Digita INFO per maggiori informazioni.
+
+
+Foyer del teatro dell'opera
+Ti trovi in uno spazioso atrio d'ingresso splendidamente decorato in
+rosso e oro, con candelabri luccicanti appesi alla volta. L'ingresso
+dalla strada si trova a nord, delle porte conducono a sud e a ovest.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                       TESTA IMPLEMENTAZIONE MANTELLO                       *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; ==============================================================================
+> ; APPENDERE IL MANTELLO
+> ; ==============================================================================
+> ; Il mantello deve poter essere appeso solo al gancio.
+> ; ------------------------------------------------------------------------------
+> ; APPENDI MANTELLO -> A FONDALI
+> ; ------------------------------------------------------------------------------
+> ; ** FIXME ** dovrebbe produrre un messaggio migliore
+> appendi il mantello al soffitto
+Non è il posto migliore per lasciare un mantello.
+
+> appendi il mantello al pavimento
+Non è il posto migliore per lasciare un mantello.
+
+> ovest
+Guardaroba
+Le pareti di questa piccola stanza un tempo erano piene di ganci, ora ne
+rimane soltanto uno. L'unica uscita è una porta a est.
+
+> ; ------------------------------------------------------------------------------
+> ; GUARDAROBA
+> ; ------------------------------------------------------------------------------
+> appendi il mantello al gancio
+Appendi il mantello al gancio. 
+
+[Il tuo punteggio è appena salito di 1.]
+
+> ; TESTA -> MANTELLO NON POSSEDUTO
+> appendi il mantello al gancio
+Non possiedi il mantello.
+
+> guarda
+Guardaroba
+Le pareti di questa piccola stanza un tempo erano piene di ganci, ora ne
+rimane soltanto uno. L'unica uscita è una porta a est. 
+
+Sul piccolo gancio d'ottone è appeso un mantello di velluto.
+
+> inventario
+Non stai portando nulla con te.
+
+> prendi il mantello
+Preso.
+
+> guarda
+Guardaroba
+Le pareti di questa piccola stanza un tempo erano piene di ganci, ora ne
+rimane soltanto uno. L'unica uscita è una porta a est.
+
+> ; TESTA INVENTARIO -> MANTELLO TRASPORTATO (NON INDOSSATO)
+> inventario
+Stai portando il tuo mantello di velluto.
+
+> ; ==============================================================================
+> ; INDOSSARE IL MANTELLO
+> ; ==============================================================================
+> ; TESTA -> INDOSSA -> MANTELLO POSSEDUTO
+> indossa il mantello
+Fatto.
+
+> appendi il mantello
+Appendi il mantello al gancio.
+
+> ; TESTA -> INDOSSA -> MANTELLO APPESO
+> indossa il mantello
+Sfili il mantello dal gancio e lo indossi.
+
+> lascia il mantello
+Posi a terra il mantello.
+
+> ; TESTA -> INDOSSA -> MANTELLO IN TERRA
+> indossa il mantello
+Raccogli il mantello da terra e lo indossi.
+
+> ; TESTA -> INDOSSA -> MANTELLO GIÀ INDOSSATO
+> indossa il mantello
+Stai già indossando il mantello.
+
+> ; ==============================================================================
+> ; LASCIARE IL MANTELLO
+> ; ==============================================================================
+> ; Il mantello deve poter essere lasciato solo nel guardaroba.
+> lascia il mantello
+Posi a terra il mantello.
+
+> ; TESTA -> MANTELLO NON POSSEDUTO
+> lascia il mantello
+Non possiedi il mantello.
+
+> guarda
+Guardaroba
+Le pareti di questa piccola stanza un tempo erano piene di ganci, ora ne
+rimane soltanto uno. L'unica uscita è una porta a est. 
+
+C'è un mantello di velluto nero qui.
+
+> inventario
+Non stai portando nulla con te.
+
+> prendi il mantello
+Preso.
+
+> est
+Foyer del teatro dell'opera
+Ti trovi in uno spazioso atrio d'ingresso splendidamente decorato in
+rosso e oro, con candelabri luccicanti appesi alla volta. L'ingresso
+dalla strada si trova a nord, delle porte conducono a sud e a ovest.
+
+> ; ------------------------------------------------------------------------------
+> ; FOYER
+> ; ------------------------------------------------------------------------------
+> ; Non deve essere possibile lasciare il mantello nel foyer.
+> ; TESTA -> LASCIA MANTELLO -> IN FOYER
+> lascia il mantello
+Non è il posto migliore per lasciare un mantello.
+
+> inventario
+Stai portando il tuo mantello di velluto.
+
+> ovest
+Guardaroba
+Le pareti di questa piccola stanza un tempo erano piene di ganci, ora ne
+rimane soltanto uno. L'unica uscita è una porta a est.
+
+> ; ==============================================================================
+> ; PRENDERE IL MANTELLO
+> ; ==============================================================================
+> ; Proviamo a prendere il mantello quando già lo possediamo.
+> inventario
+Stai portando il tuo mantello di velluto.
+
+> ; TESTA -> PRENDI -> MANTELLO GIÀ POSSEDUTO
+> prendi il mantello
+Possiedi già il mantello.
+
+> ; ==============================================================================
+> ; APPENDERE IL MANTELLO
+> ; ==============================================================================
+> appendi il mantello
+Appendi il mantello al gancio.
+
+> ; TESTA -> APPENDI -> MANTELLO GIÀ APPESO
+> appendi il mantello
+Non possiedi il mantello.
+
+> prendi il mantello
+Preso.
+
+> ; sintassi alternative di 'appendi':
+> appendi il mantello al gancio
+Appendi il mantello al gancio.
+
+> appendi il mantello sul gancio
+Non possiedi il mantello.
+
+> metti il mantello sul gancio
+Non possiedi il mantello.
+
+> ; ma non accettare 'metti al':
+> metti il mantello al gancio
+Non ho capito la frase.
+
+> aggancia il mantello
+Non possiedi il mantello.
+
+> aggancia il mantello al gancio
+Non possiedi il mantello.
+
+> aggancia il mantello sul gancio
+Non possiedi il mantello.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

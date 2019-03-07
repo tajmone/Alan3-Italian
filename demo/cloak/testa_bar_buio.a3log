@@ -1,0 +1,110 @@
+
+
+
+Affrettandoti nella piovosa notte di novembre, la vista delle luci
+sfavillanti del teatro dell'opera ti riallieta. È sorprendente che non ci
+sia più gente, ma, ehy, che ti aspetti da un semplice giochino
+dimostrativo...? 
+
+
+Cloak of Darkness 
+Una semplice AT dimostrativa in ALAN3. 
+Versione Alpha 26, febbraio 2019. (Implementata in ALAN 3.0beta6 build
+1878) 
+
+Digita INFO per maggiori informazioni.
+
+
+Foyer del teatro dell'opera
+Ti trovi in uno spazioso atrio d'ingresso splendidamente decorato in
+rosso e oro, con candelabri luccicanti appesi alla volta. L'ingresso
+dalla strada si trova a nord, delle porte conducono a sud e a ovest.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                               TESTA BAR BUIO                               *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Assicuriamoci che nel bar buio qualsiasi verbo sia bloccato.
+> sud
+L'oscurità
+È buio pesto qui, non riesci a vedere nulla.
+
+> ; ==============================================================================
+> ; AZIONI BLOCCATE
+> ; ==============================================================================
+> aspetta
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> appendi il mantello
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> appendi il mantello al soffitto
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> esamina mantello
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> esamina pavimento
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> guarda
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> indossa mantello
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> inventario
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> lascia mantello
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> prendi mantello
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> ; ==============================================================================
+> ; META VERBI
+> ; ==============================================================================
+> ; I meta verbi non è necessario che vengano bloccati.
+> info
+Informazioni su Cloak of Darkness 
+
+Cloak of Darkness è una breve avventura testuale ideata da Roger Firth
+come esercizio da implementare nelle varie piattaforme per la scrittura
+di AT. Esistono versioni di Cloak of Darkness per tutte le piattaforme di
+IF più famose, e anche per sistemi di sviluppo meno noti.
+
+    http://www.firthworks.com/roger/cloak/index.html
+
+Questa edizione italiana è stata realizzata da Tristano Ajmone e S3RioUs
+JokER partendo dalla versione in ALAN creata da Stephen Griffiths, in
+seguito convertita ad ALAN 3 da Thomas Nilefalk (all'epoca, Thomas
+Nilsson). La maggior parte del codice originale è stato riscritto poiché
+la versione di Griffiths impiegava una liberia esterna per 
+l'implementazione dei verbi comuni.
+
+Nell'opera di adattamento, si è preso spunto ed attinto dai sorgenti
+delle varie implementazioni di Cloak of Darkness in altri sistemi (Inform
+6/7, TADS 2/3, Hugo), di modo da avere una visione complessiva del 
+progetto.
+
+Per il supporto della lingua italiana viene impiegato solo il modulo Alan
+Italian ("lib_grammatica.i"), e non l'intera Libreria Standard Italiana.
+Quindi, quest'avventura offre un esempio di come creare una AT italiana
+usando "ALAN nudo e crudo" e costruendo da zero tutti i verbi di base.
+
+    https://github.com/tajmone/Alan3-Italian 
+
+Cloack of Darkness è generalmente considerata un'opera di pubblico
+dominio dalla comunità dell'Interactive Fiction, sebbene sia l'avventura
+originale che i suoi vari adattamenti non riportino una licenza
+esplicita. La presente edizione italiana di Cloak of Darkness è da
+considerarsi di pubblico dominio e, pertanto, liberamente utilizzabile
+senza restrizioni.
+
+Tristano Ajmone (Torino, 2019)
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

@@ -1,0 +1,98 @@
+; ******************************************************************************
+; *                                                                            *
+; *                              CLOK OF DARKNESS                              *
+; *                                                                            *
+; *                     TESTA LE SCENOGRAFIE DELLE STANZE                      *
+; *                                                                            *
+; ******************************************************************************
+; A titolo di realismo, abbiamo aggiunto alle stanze oggetti scenici per rappre-
+; sentare pareti, pavimento e soffitto. Questo script andrà a verificare che
+; siano implementate correttamente e che interagiscono come dovrebbero con i
+; vari verbi del gioco.
+; ==============================================================================
+; FOYER
+; ==============================================================================
+; ------------------------------------------------------------------------------
+; TESTA: esamina
+; ------------------------------------------------------------------------------
+x il pavimento
+x le pareti
+x il soffitto
+x i candelabri
+; ------------------------------------------------------------------------------
+; TESTA: prendi
+; ------------------------------------------------------------------------------
+prendi il pavimento
+prendi le pareti
+prendi il soffitto
+prendi i candelabri
+; ==============================================================================
+; BAR BUIO
+; ==============================================================================
+; Nel bar buio qualsiasi azione che non sia andare a nord dev'essere bloccata
+sud
+; ------------------------------------------------------------------------------
+; TESTA: esamina
+; ------------------------------------------------------------------------------
+x il pavimento
+x le pareti
+x il soffitto
+; ------------------------------------------------------------------------------
+; TESTA: prendi
+; ------------------------------------------------------------------------------
+prendi il pavimento
+prendi le pareti
+prendi il soffitto
+; ==============================================================================
+; GUARDAROBA
+; ==============================================================================
+nord
+ovest
+; ------------------------------------------------------------------------------
+; TESTA: esamina
+; ------------------------------------------------------------------------------
+x il pavimento
+; Nel guardaroba esaminare le pareti deve descrivere i ganci:
+x le pareti
+x il soffitto
+; ------------------------------------------------------------------------------
+; TESTA: prendi
+; ------------------------------------------------------------------------------
+prendi il pavimento
+prendi le pareti
+prendi il soffitto
+; ==============================================================================
+; BAR ILLUMINATO
+; ==============================================================================
+lascia mantello
+est
+sud
+; ------------------------------------------------------------------------------
+; TESTA: esamina
+; ------------------------------------------------------------------------------
+; Nel bar illuminato esaminare il pavimento equivale a esaminare il messaggio:
+x il pavimento
+UNDO
+x le pareti
+x il soffitto
+x il messaggio
+UNDO
+; ------------------------------------------------------------------------------
+; TESTA: leggi
+; ------------------------------------------------------------------------------
+; Leggere il pavimento equivale a leggere il messaggio:
+leggi il pavimento
+UNDO
+leggi le pareti
+leggi il soffitto
+leggi il messaggio
+UNDO
+; ------------------------------------------------------------------------------
+; TESTA: prendi
+; ------------------------------------------------------------------------------
+prendi il pavimento
+prendi le pareti
+prendi il soffitto
+; ** ERRORE! **
+prendi il messaggio
+; // FINE TEST //

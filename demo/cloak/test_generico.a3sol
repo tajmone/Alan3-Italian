@@ -1,0 +1,29 @@
+inventario
+esamina me
+x me
+x mantello
+nord
+; ==============================================================================
+; Guardaroba
+; ==============================================================================
+ovest
+x pareti
+; ------------------------------------------------------------------------------
+; Disambiguazione 'gancio'
+; ------------------------------------------------------------------------------
+x gancio
+x gancetto
+x gancio d'ottone
+x piccolo gancio
+x gancetto d'ottone
+x piccolo gancio ottone
+x ottone
+; ------------------------------------------------------------------------------
+; Testa verbi su 'gancio'
+; ------------------------------------------------------------------------------
+leggi il gancio
+appendi il gancio
+appendi il gancio al gancio
+appendi il soffitto al gancio
+appendi il mantello al gancio
+; // FINE TEST //

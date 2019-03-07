@@ -1,0 +1,25 @@
+; ******************************************************************************
+; *                                                                            *
+; *                               TESTA BAR BUIO                               *
+; *                                                                            *
+; ******************************************************************************
+; Assicuriamoci che nel bar buio qualsiasi verbo sia bloccato.
+sud
+; ==============================================================================
+; AZIONI BLOCCATE
+; ==============================================================================
+aspetta
+appendi il mantello
+appendi il mantello al soffitto
+esamina mantello
+esamina pavimento
+guarda
+indossa mantello
+inventario
+lascia mantello
+prendi mantello
+; ==============================================================================
+; META VERBI
+; ==============================================================================
+; I meta verbi non è necessario che vengano bloccati.
+info

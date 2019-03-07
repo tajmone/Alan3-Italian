@@ -1,0 +1,45 @@
+= Cloak of Darkness: Versione italiana in Alan 3
+Tristano Ajmone; S3RioUs JokER
+// Revision Info:
+:version-label: Versione
+include::cloak_darkness.adoc[tag=rev_info]
+:lang: it
+// TOC Settings:
+:toc-title: Indice dei contenuti
+:toclevels: 5
+:toc: left
+// Misc Settings:
+:experimental:
+:icons: font
+:linkattrs:
+:reproducible:
+:sectanchors:
+:data-uri:
+// Italian Attributes: (courtesy of Marco Ciampa <ciampix@libero.it>)
+:appendix-caption: Appendice
+:appendix-refsig: app.
+:caution-caption: Attenzione
+:chapter-label: Capitolo
+:chapter-refsig: cap.
+:example-caption: Esempio
+:figure-caption: Figura
+:important-caption: Importante
+:last-update-label: Ultimo aggiornamento
+ifdef::listing-caption[:listing-caption: Elenco]
+:note-caption: Nota
+:part-refsig: Parte
+ifdef::preface-title[:preface-title: Prefazione]
+:section-refsig: sez.
+:table-caption: Tabella
+:tip-caption: Suggerimento
+:untitled-label: Senza titolo
+:warning-caption: Attenzione
+
+// END OF DOCUMENT HEADER //
+
+// Custom attributes for substitutions
+:mappa: image:cloak_mappa.png[Mappa dell'avventura, float="right", title="Mappa dell'avventura"]
+
+include::cloak_darkness.adoc[]
+
+// EOF //

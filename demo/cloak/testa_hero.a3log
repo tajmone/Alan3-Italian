@@ -1,0 +1,72 @@
+
+
+
+Affrettandoti nella piovosa notte di novembre, la vista delle luci
+sfavillanti del teatro dell'opera ti riallieta. È sorprendente che non ci
+sia più gente, ma, ehy, che ti aspetti da un semplice giochino
+dimostrativo...? 
+
+
+Cloak of Darkness 
+Una semplice AT dimostrativa in ALAN3. 
+Versione Alpha 26, febbraio 2019. (Implementata in ALAN 3.0beta6 build
+1878) 
+
+Digita INFO per maggiori informazioni.
+
+
+Foyer del teatro dell'opera
+Ti trovi in uno spazioso atrio d'ingresso splendidamente decorato in
+rosso e oro, con candelabri luccicanti appesi alla volta. L'ingresso
+dalla strada si trova a nord, delle porte conducono a sud e a ovest.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                              CLOK OF DARKNESS                              *
+> ; *                                                                            *
+> ; *                     TEST SUL PERSONAGGIO PROTAGONISTA                      *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Questo script testerà la corretta implementazione dell'Eroe, e che le azioni
+> ; rivolte a sé stesso producano riposte congrue.
+> x me
+Affascinante come al solito.
+
+> x hero
+Affascinante come al solito.
+
+> inventario
+Stai indossando il tuo mantello di velluto.
+
+> ; ==============================================================================
+> ; VERBI AUTO-DIRETTI
+> ; ==============================================================================
+> ovest
+Guardaroba
+Le pareti di questa piccola stanza un tempo erano piene di ganci, ora ne
+rimane soltanto uno. L'unica uscita è una porta a est.
+
+> ; ** FIX IT **
+> appendi me al soffitto
+È impossibile farlo con te stesso.
+
+> ; ** FIX IT **
+> appendi me al gancio
+È impossibile farlo con te stesso.
+
+> ; ** FIX IT **
+> appendi il mantello a me
+È impossibile farlo con te stesso.
+
+> ; ** FIX IT **
+> appendi il gancio a me
+È impossibile farlo con te stesso.
+
+> ; ** FIX IT **
+> appendi il soffitto a me
+È impossibile farlo con te stesso.
+
+> ; // FINE TEST //
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

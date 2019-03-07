@@ -1,0 +1,239 @@
+
+
+
+Affrettandoti nella piovosa notte di novembre, la vista delle luci
+sfavillanti del teatro dell'opera ti riallieta. È sorprendente che non ci
+sia più gente, ma, ehy, che ti aspetti da un semplice giochino
+dimostrativo...? 
+
+
+Cloak of Darkness 
+Una semplice AT dimostrativa in ALAN3. 
+Versione Alpha 26, febbraio 2019. (Implementata in ALAN 3.0beta6 build
+1878) 
+
+Digita INFO per maggiori informazioni.
+
+
+Foyer del teatro dell'opera
+Ti trovi in uno spazioso atrio d'ingresso splendidamente decorato in
+rosso e oro, con candelabri luccicanti appesi alla volta. L'ingresso
+dalla strada si trova a nord, delle porte conducono a sud e a ovest.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                              CLOK OF DARKNESS                              *
+> ; *                                                                            *
+> ; *                     TESTA LE SCENOGRAFIE DELLE STANZE                      *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; A titolo di realismo, abbiamo aggiunto alle stanze oggetti scenici per rappre-
+> ; sentare pareti, pavimento e soffitto. Questo script andrà a verificare che
+> ; siano implementate correttamente e che interagiscono come dovrebbero con i
+> ; vari verbi del gioco.
+> ; ==============================================================================
+> ; FOYER
+> ; ==============================================================================
+> ; ------------------------------------------------------------------------------
+> ; TESTA: esamina
+> ; ------------------------------------------------------------------------------
+> x il pavimento
+Esamini il pavimento ma non noti nulla di speciale.
+
+> x le pareti
+Esamini le pareti ma non noti nulla di speciale.
+
+> x il soffitto
+Dalla volta pendono candelabri luccicanti.
+
+> x i candelabri
+I candelabri non sono importanti ai fini del gioco.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA: prendi
+> ; ------------------------------------------------------------------------------
+> prendi il pavimento
+Il pavimento non è importante ai fini del gioco.
+
+> prendi le pareti
+Le pareti non sono importanti ai fini del gioco.
+
+> prendi il soffitto
+Il soffitto non è importante ai fini del gioco.
+
+> prendi i candelabri
+I candelabri non sono importanti ai fini del gioco.
+
+> ; ==============================================================================
+> ; BAR BUIO
+> ; ==============================================================================
+> ; Nel bar buio qualsiasi azione che non sia andare a nord dev'essere bloccata
+> sud
+L'oscurità
+È buio pesto qui, non riesci a vedere nulla.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA: esamina
+> ; ------------------------------------------------------------------------------
+> x il pavimento
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> x le pareti
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> x il soffitto
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA: prendi
+> ; ------------------------------------------------------------------------------
+> prendi il pavimento
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> prendi le pareti
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> prendi il soffitto
+Nel buio? Potresti facilmente disturbare... qualcosa!
+
+> ; ==============================================================================
+> ; GUARDAROBA
+> ; ==============================================================================
+> nord
+Foyer del teatro dell'opera
+Ti trovi in uno spazioso atrio d'ingresso splendidamente decorato in
+rosso e oro, con candelabri luccicanti appesi alla volta. L'ingresso
+dalla strada si trova a nord, delle porte conducono a sud e a ovest.
+
+> ovest
+Guardaroba
+Le pareti di questa piccola stanza un tempo erano piene di ganci, ora ne
+rimane soltanto uno. L'unica uscita è una porta a est.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA: esamina
+> ; ------------------------------------------------------------------------------
+> x il pavimento
+Esamini il pavimento ma non noti nulla di speciale.
+
+> ; Nel guardaroba esaminare le pareti deve descrivere i ganci:
+> x le pareti
+Le pareti di questa piccola stanza un tempo erano piene di ganci, ora ne
+rimane soltanto uno.
+
+> x il soffitto
+Esamini il soffitto ma non noti nulla di speciale.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA: prendi
+> ; ------------------------------------------------------------------------------
+> prendi il pavimento
+Il pavimento non è importante ai fini del gioco.
+
+> prendi le pareti
+Le pareti non sono importanti ai fini del gioco.
+
+> prendi il soffitto
+Il soffitto non è importante ai fini del gioco.
+
+> ; ==============================================================================
+> ; BAR ILLUMINATO
+> ; ==============================================================================
+> lascia mantello
+Posi a terra il mantello.
+
+> est
+Foyer del teatro dell'opera
+
+> sud
+Bar del foyer
+Il bar, più sobrio di quanto ti saresti aspettato dopo l'opulenza
+dell'ingresso a nord, è completamente vuoto. Sembra esserci una sorta di
+messaggio scarabocchiato nella segatura sul pavimento.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA: esamina
+> ; ------------------------------------------------------------------------------
+> ; Nel bar illuminato esaminare il pavimento equivale a esaminare il messaggio:
+> x il pavimento
+Il messaggio è stato incautamente calpestato, rendendolo quasi
+illeggibile. Riesci a malapena a distinguere le parole...
+
+    *** Hai perso ***
+
+Hai totalizzato 0 punti su 2 possibili.
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? UNDO
+'x' annullato.
+
+> x le pareti
+Esamini le pareti ma non noti nulla di speciale.
+
+> x il soffitto
+Esamini il soffitto ma non noti nulla di speciale.
+
+> x il messaggio
+Il messaggio è stato incautamente calpestato, rendendolo quasi
+illeggibile. Riesci a malapena a distinguere le parole...
+
+    *** Hai perso ***
+
+Hai totalizzato 0 punti su 2 possibili.
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? UNDO
+'x il messaggio' annullato.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA: leggi
+> ; ------------------------------------------------------------------------------
+> ; Leggere il pavimento equivale a leggere il messaggio:
+> leggi il pavimento
+Il messaggio è stato incautamente calpestato, rendendolo quasi
+illeggibile. Riesci a malapena a distinguere le parole...
+
+    *** Hai perso ***
+
+Hai totalizzato 0 punti su 2 possibili.
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? UNDO
+'leggi il pavimento'
+annullato.
+
+> leggi le pareti
+Non c'è nulla da leggere sulle pareti.
+
+> leggi il soffitto
+Non c'è nulla da leggere sul soffitto.
+
+> leggi il messaggio
+Il messaggio è stato incautamente calpestato, rendendolo quasi
+illeggibile. Riesci a malapena a distinguere le parole...
+
+    *** Hai perso ***
+
+Hai totalizzato 0 punti su 2 possibili.
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? UNDO
+'leggi il messaggio'
+annullato.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA: prendi
+> ; ------------------------------------------------------------------------------
+> prendi il pavimento
+Il pavimento non è importante ai fini del gioco.
+
+> prendi le pareti
+Le pareti non sono importanti ai fini del gioco.
+
+> prendi il soffitto
+Il soffitto non è importante ai fini del gioco.
+
+> ; ** ERRORE! **
+> prendi il messaggio
+Il messaggio non è trasportabile.
+
+> ; // FINE TEST //
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 
