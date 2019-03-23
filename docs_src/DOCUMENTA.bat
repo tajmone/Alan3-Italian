@@ -1,5 +1,5 @@
 :: -----------------------------------------------------------------------------
-:: "DOCUMENTA.bat"                    | v0.2.1 | 2019/03/01 | by Tristano Ajmone
+:: "DOCUMENTA.bat"                    | v0.2.2 | 2019/03/23 | by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 @ECHO OFF & CLS
 CHCP 65001 > nul &:: (UTF-8 Unicode)
@@ -20,11 +20,6 @@ ECHO ^| 2. Converti da AsciiDoc a HTML ^|
 ECHO +--------------------------------+
 FOR %%i IN (*.asciidoc) DO CALL :convHTML %%i
 
-:: Facciamo in modo che la finestra del CMD rimagna aperta se lo script è stato
-:: lanciato da Esplora Risorse:
-ECHO "%cmdcmdline%" | FINDSTR /IC:"%windir%" >nul && (
-    CMD /K
-)
 EXIT /B
 
 :: =============================================================================

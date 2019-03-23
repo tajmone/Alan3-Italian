@@ -1,4 +1,4 @@
--- "_newgame_ita.alan" v0.17.0-Alpha (2019-02-05) | Alan 3.0beta6 | Std Lib v2.1
+-- "_newgame_ita.alan"
 --------------------------------------------------------------------------------
 --| Sorgente base standard per creare avventure con ALAN Italian library v2.1.
 --| Basato sul file "newgame.alan" della Standard Library 2.1.
@@ -18,7 +18,7 @@ THE mia_AT IsA blocco_definizioni
   HAS       autore  "Autore Ignoto".
   HAS         anno   2019.
   HAS     versione  "1".
-  HAS        AlanV  "v3.0beta6".
+--HAS        AlanV  "v3.0beta6". -- Modifica con la versione di Alan usata!
   ------------------------------------------------------------------------------
 END THE.
 

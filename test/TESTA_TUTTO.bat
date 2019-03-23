@@ -1,4 +1,4 @@
-:: "TESTA_TUTTO.bat"                  | v3.0.1 | 2019/02/28 | by Tristano Ajmone
+:: "TESTA_TUTTO.bat"                  | v3.0.2 | 2019/03/23 | by Tristano Ajmone
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                                                            ::
 ::                   TEST SUITE DELLA LIBRERIA ALAN ITALIAN                   ::
@@ -190,7 +190,7 @@ IF %_ERR_% EQU 0 (
 CD %PATH_INZIALE% &:: Riprista percorso originario
 :: Azzera colori ANSI del terminale:
 ECHO %_RESETTA_COLORI_%
-:: Azzera variabili d'ambiente (richiesto per via del CMD /K più avanti):
+:: Azzera variabili d'ambiente:
 CALL :DistruggiCodiciANSI
 
 SET _COMPILE_OPTS_=
@@ -219,11 +219,6 @@ SET AVV_BIN=
 SET TEMP_COL=
 
 ECHO // FINE //
-:: Facciamo in modo che la finestra del CMD rimagna aperta se lo script è stato
-:: lanciato da Esplora Risorse:
-ECHO "%cmdcmdline%" | FINDSTR /IC:"%windir%" >nul && (
-    CMD /K
-)
 EXIT /B %_ERR_%
 
 :: *****************************************************************************

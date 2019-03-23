@@ -439,9 +439,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.17.0-Alpha,</span>
-<span id="revdate">2019-02-27</span>
-<br><span id="revremark">Alan 3.0beta6 build 1878</span>
+<span id="revnumber">versione 0.18.0-Alpha,</span>
+<span id="revdate">2019-03-23</span>
+<br><span id="revremark">Alan 3.0beta6 build 1880</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Indice dei contenuti</div>
@@ -527,7 +527,7 @@ all&#8217;inizio della partita tramite <code>DESCRIBE intestazione.</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">THE</span> intestazione <span class="hl kwa">IsA</span> <span class="hl kwb">LOCATION</span>&#x000A;&#x000A;  <span class="hl kwa">DESCRIPTION</span>&#x000A;&#x000A;    <span class="hl str">&quot;</span><span class="hl esc">$p</span><span class="hl str">&quot;</span> <span class="hl kwa">STYLE</span> alert<span class="hl kwa">. SAY</span> mia_AT<span class="hl kwa">:</span>titolo<span class="hl kwa">. STYLE</span> normal<span class="hl kwa">.</span>&#x000A;&#x000A;    <span class="hl kwa">IF</span> sottotitolo <span class="hl kwa">OF</span> mia_AT <span class="hl opt">&lt;&gt;</span> <span class="hl str">&quot;&quot;</span>&#x000A;      <span class="hl kwa">THEN</span> <span class="hl str">&quot;</span><span class="hl esc">$n</span><span class="hl str">&quot;</span> <span class="hl kwa">SAY</span> mia_AT<span class="hl kwa">:</span>sottotitolo<span class="hl kwa">.</span>&#x000A;      <span class="hl kwa">END IF.</span>&#x000A;&#x000A;    <span class="hl str">&quot;</span><span class="hl esc">$n</span><span class="hl str">(C)&quot;</span> <span class="hl kwa">SAY</span> mia_AT<span class="hl kwa">:</span>autore<span class="hl kwa">.</span> <span class="hl str">&quot;,&quot;</span> <span class="hl kwa">SAY</span> mia_AT<span class="hl kwa">:</span>anno<span class="hl kwa">.</span> <span class="hl str">&quot;.&quot;</span>&#x000A;    <span class="hl str">&quot;</span><span class="hl esc">$n</span><span class="hl str">Avventura realizzata con ALAN Interactive Fiction Language&quot;</span> <span class="hl kwa">SAY</span> mia_AT<span class="hl kwa">:</span>AlanV<span class="hl kwa">.</span> <span class="hl str">&quot;.&quot;</span>&#x000A;    <span class="hl str">&quot;</span><span class="hl esc">$n</span><span class="hl str">Libreria Standard Italiana v2.1&quot;</span>&#x000A;&#x000A;    <span class="hl kwa">IF</span> versione <span class="hl kwa">OF</span> mia_AT <span class="hl opt">&lt;&gt;</span> <span class="hl str">&quot;0&quot;</span>&#x000A;      <span class="hl kwa">THEN</span> <span class="hl str">&quot;</span><span class="hl esc">$n</span><span class="hl str">Versione&quot;</span> <span class="hl kwa">SAY</span> mia_AT<span class="hl kwa">:</span>versione<span class="hl kwa">.</span>&#x000A;      <span class="hl kwa">END IF.</span>&#x000A;&#x000A;    <span class="hl str">&quot;</span><span class="hl esc">$n</span><span class="hl str">Tutti i diritti riservati.&quot;</span>&#x000A;&#x000A;<span class="hl kwa">END THE</span> intestazione<span class="hl kwa">.</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">THE</span> intestazione <span class="hl kwa">IsA</span> <span class="hl kwb">LOCATION</span>&#x000A;&#x000A;  <span class="hl kwa">DESCRIPTION</span>&#x000A;&#x000A;    <span class="hl str">&quot;</span><span class="hl esc">$p</span><span class="hl str">&quot;</span> <span class="hl kwa">STYLE</span> alert<span class="hl kwa">. SAY</span> mia_AT<span class="hl kwa">:</span>titolo<span class="hl kwa">. STYLE</span> normal<span class="hl kwa">.</span>&#x000A;&#x000A;    <span class="hl kwa">IF</span> sottotitolo <span class="hl kwa">OF</span> mia_AT <span class="hl opt">&lt;&gt;</span> <span class="hl str">&quot;&quot;</span>&#x000A;      <span class="hl kwa">THEN</span> <span class="hl str">&quot;</span><span class="hl esc">$n</span><span class="hl str">&quot;</span> <span class="hl kwa">SAY</span> mia_AT<span class="hl kwa">:</span>sottotitolo<span class="hl kwa">.</span>&#x000A;      <span class="hl kwa">END IF.</span>&#x000A;&#x000A;    <span class="hl str">&quot;</span><span class="hl esc">$n</span><span class="hl str">(C)&quot;</span> <span class="hl kwa">SAY</span> mia_AT<span class="hl kwa">:</span>autore<span class="hl kwa">.</span> <span class="hl str">&quot;,&quot;</span> <span class="hl kwa">SAY</span> mia_AT<span class="hl kwa">:</span>anno<span class="hl kwa">.</span> <span class="hl str">&quot;.&quot;</span>&#x000A;    <span class="hl str">&quot;</span><span class="hl esc">$n</span><span class="hl str">Avventura realizzata con ALAN&quot;</span> <span class="hl kwa">SAY</span> mia_AT<span class="hl kwa">:</span>AlanV<span class="hl kwa">.</span> <span class="hl str">&quot;.&quot;</span>&#x000A;    <span class="hl str">&quot;</span><span class="hl esc">$n</span><span class="hl str">Libreria Standard Italiana:&quot;</span>   <span class="hl kwa">SAY</span> mia_AT<span class="hl kwa">:</span>AlanItaV<span class="hl kwa">.</span> <span class="hl str">&quot;.&quot;</span>&#x000A;&#x000A;    <span class="hl kwa">IF</span> versione <span class="hl kwa">OF</span> mia_AT <span class="hl opt">&lt;&gt;</span> <span class="hl str">&quot;0&quot;</span>&#x000A;      <span class="hl kwa">THEN</span> <span class="hl str">&quot;</span><span class="hl esc">$n</span><span class="hl str">Versione&quot;</span> <span class="hl kwa">SAY</span> mia_AT<span class="hl kwa">:</span>versione<span class="hl kwa">.</span>&#x000A;      <span class="hl kwa">END IF.</span>&#x000A;&#x000A;    <span class="hl str">&quot;</span><span class="hl esc">$n</span><span class="hl str">Tutti i diritti riservati.&quot;</span>&#x000A;&#x000A;<span class="hl kwa">END THE</span> intestazione<span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -554,7 +554,7 @@ versione di Alan utilizzata:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">HAS</span>         AlanV  <span class="hl str">&quot;v3.0beta6&quot;</span><span class="hl kwa">.</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">HAS</span>         AlanV  <span class="hl str">&quot;3.0beta6 build 1880&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span>      AlanItaV  <span class="hl str">&quot;18 Alpha&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -584,7 +584,7 @@ italiano del modulo delle definizioni.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.17.0-Alpha<br>
+Versione 0.18.0-Alpha<br>
 </div>
 </div>
 </body>

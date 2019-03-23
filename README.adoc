@@ -2,8 +2,8 @@
 Tristano Ajmone <tajmone@gmail.com>
 2019-03-01
 // tag::AlanRevInfo[]
-:AlanItaV: 17
-:AlanSDK: 3.0beta6 build 1878
+:AlanItaV: 18
+:AlanSDK: 3.0beta6 build 1880
 :revnumber: 0.{AlanItaV}-Alpha
 // end::AlanRevInfo[]
 :lang: it
@@ -103,6 +103,12 @@ ifdef::preface-title[:preface-title: Prefazione]
 :lib_verbi_html: pass:q[link:./docs/lib_verbi.html[`docs/lib_verbi.html`^,title="Apri il file HTML"]]
 :LICENSE: pass:q[link:./LICENSE[`LICENSE`^,title="Leggi il testo completo della Artistic License 2.0"]]
 :README_EN: pass:q[link:./README_EN.md[`README_EN.md`^,title="View English README"]]
+// Risorse per aggiornamento info versione:
+:ver_sh: pass:q[link:./ver.sh[`ver.sh`,title="Vedi sorgente"]]
+:verbump_sh: pass:q[link:./verbump.sh[`verbump.sh`,title="Vedi sorgente"]]
+:VERSIONING: pass:q[link:./VERSIONING.md[`VERSIONING.md`,title="Vedi sorgente"]]
+:AGGIORNA_TUTTO: pass:q[link:./AGGIORNA_TUTTO.bat[`AGGIORNA_TUTTO.bat`,title="Vedi sorgente"]]
+
 
 // ** HTML Live Links **
 
@@ -137,6 +143,7 @@ ifdef::preface-title[:preface-title: Prefazione]
 :build_1866: link:https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1866[3.0beta6 build 1866^,title="Vai alla pagina di download della snapshot Alan 3.0beta6 build 1866"]
 :build_1870: link:https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1870[3.0beta6 build 1870^,title="Vai alla pagina di download della snapshot Alan 3.0beta6 build 1870"]
 :build_1878: link:https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1878[3.0beta6 build 1878^,title="Vai alla pagina di download della snapshot Alan 3.0beta6 build 1878"]
+:build_1880: link:https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1880[3.0beta6 build 1880^,title="Vai alla pagina di download della snapshot Alan 3.0beta6 build 1880"]
 
 
 // ** Alan Upstream Commits Links **
@@ -439,6 +446,11 @@ Grazie.
 
 Alcune notizie flash sugli aggiornamenti importanti del progetto...
 
+=== 2019/03/23 -- Passaggio a Alan 3.0beta6 build 1880
+
+La libreria adotta la nuova {developer_snaphshot} di Alan {build_1880}.
+
+
 === 2019/03/07 -- Ecco la prima demo: _Cloak of Darkness_
 
 È ora disponibile _Cloak of Darkness_, la prima avventura italiana realizzata in Alan:
@@ -615,6 +627,33 @@ Ora restano ancora da tradurre molti messagi di risposta dei verbi, e l'intera l
 
 Una copia completa della versione upstream della _Alan Standard Library_ impiegata in questo progetto viene conservata nella cartella {alanlib}.
 Quando la libreria viene aggiornata, i file della upstream attualmente utilizzata possono essere diffati con la nuova versione al fine di tracciare quali modifiche andrebbero integrate nei sorgenti della libreria italiana al fine di portarla in pari con la versione più recente dell'originale inglese.
+
+
+=== Script per gli sviluppatori
+
+
+Per gli sviluppatori della Libreria.
+I seguenti script automatizzano l'aggiornamento delle info di versione riguardano Alan Italian e la Alan SDK nei sorgenti del progetto:
+
+* {ver_sh} -- definisce le versioni attuali di AlanITA e AlanSDK.
+* {verbump_sh} -- aggiorna info versione nei sorgenti del progetto.
+* {AGGIORNA_TUTTO} -- invoca tutti gli script di test e documentazione.
+
+Quando la libreria passa ad una versione successiva, sarà necessario eseguire i seguenti passaggi:
+
+1. Modificare {ver_sh} con i nuovi dati di versione.
+2. Eseguire {verbump_sh}.
+3. Eseguire {AGGIORNA_TUTTO}.
+4. Eseguire il commit delle modifiche.
+
+Lo script {verbump_sh} utilizzerà le informazioni contenute in {ver_sh} per aggiornare tutti i riferimenti alle versioni di Alan Italian e della Alan SDK in tutti i file sorgenti del progetto -- commenti di header, attributi Alan, AsciiDoc e AsciiDoc/Doxter, ecc.
+Lo script {AGGIORNA_TUTTO} propagherà le versioni aggiornate nei sorgenti anche ai file prodotti tratime automazione -- trascirzioni dei test, documentazione HTML, ecc.
+
+Poiché queste operazioni andranno a modificare parecchi file, è consigliabile partire con uno status Git pulito, di modo da poter controllare le modifiche tramite il diffing dell'area di lavoro prima di eseguire il commit.
+
+Per maggiori dettagli, vedi:
+
+* {VERSIONING}
 
 
 == Impostare l'ambiente di lavoro

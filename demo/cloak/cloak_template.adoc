@@ -3,6 +3,7 @@ Tristano Ajmone; S3RioUs JokER
 // Revision Info:
 :version-label: Versione
 include::cloak_darkness.adoc[tag=rev_info]
+:revremark: {AlanSDK}
 :lang: it
 // TOC Settings:
 :toc-title: Indice dei contenuti

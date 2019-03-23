@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.17.0-Alpha, 2019-02-27: Alan 3.0beta6 build 1878
+--| v0.18.0-Alpha, 2019-03-23: Alan 3.0beta6 build 1880
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -317,7 +317,8 @@ EVERY blocco_definizioni IsA LOCATION
 --| La libreria definisce anche l'attributo `AlanV`, che mostrerà nel banner la
 --| versione di Alan utilizzata:
 
-  HAS         AlanV  "v3.0beta6".
+  HAS         AlanV  "3.0beta6 build 1880".
+  HAS      AlanItaV  "18 Alpha".
 
 --| Il valore predefinito è quello dell'ultima release di Alan all'epoca della
 --| libreria. L'autore è libero di sovrascriverlo nel caso stesse usando una
@@ -1096,8 +1097,8 @@ THE intestazione IsA LOCATION
       END IF.
 
     "$n(C)" SAY mia_AT:autore. "," SAY mia_AT:anno. "."
-    "$nAvventura realizzata con ALAN Interactive Fiction Language" SAY mia_AT:AlanV. "."
-    "$nLibreria Standard Italiana v2.1"
+    "$nAvventura realizzata con ALAN" SAY mia_AT:AlanV. "."
+    "$nLibreria Standard Italiana:"   SAY mia_AT:AlanItaV. "."
 
     IF versione OF mia_AT <> "0"
       THEN "$nVersione" SAY mia_AT:versione.

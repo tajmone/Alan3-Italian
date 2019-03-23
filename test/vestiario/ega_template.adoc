@@ -3,6 +3,7 @@ Tristano Ajmone <tajmone@gmail.com>
 // Revision Info:
 :version-label: Versione
 include::ega.adoc[tag=rev_info]
+:revremark: {AlanSDK}
 :lang: it
 // TOC Settings:
 :toc-title: Indice dei contenuti
