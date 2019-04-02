@@ -66,11 +66,8 @@
 ## =================
 *.htm      text
 *.html     text
-*.css      text
+*.css      text eol=lf
 *.js       text
-
-# Exceptions:
-highlight.min.js text eol=lf
 
 ## ===================
 ## DOCUMENTATION FILES
