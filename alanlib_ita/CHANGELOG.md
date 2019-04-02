@@ -18,6 +18,8 @@ For previuos changes, see:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Alan 3.0beta6 build 1880](#alan-30beta6-build-1880)
+    - [2019/04/02](#20190402)
+        - [Modulo Italian unificato](#modulo-italian-unificato)
     - [2019/03/23](#20190323)
         - [Passa alla v0.18.0](#passa-alla-v0180)
         - [Passa ad Alan 3.0beta6 build 1880](#passa-ad-alan-30beta6-build-1880)
@@ -55,6 +57,27 @@ For previuos changes, see:
 -----
 
 # Alan 3.0beta6 build 1880
+
+## 2019/04/02
+
+- [`libreria.i`][libreria] &#x27f6; v0.19.0
+- [`lib_italian.i`][lib_italian] &#x27f6; v0.19.0
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.19.0
+- [`lib_classi_vestiario.i`][lib_classi_vestiario] &#x27f6; v0.19.0
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.19.0
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.19.0
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] &#x27f6; v0.19.0
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.19.0
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.19.0
+
+### Modulo Italian unificato
+
+Unisci `lib_grammatica.i` e `lib_supplemento.i` in un unico modulo rinominato `lib_italian.i`.
+
+Questo semplifica l'uso del modulo Alan Italian indipendentemente dalla libreria. Il motivo originale per cui il codice di `lib_supplemento.i` era in un modulo separato era in vista di un'eventuale implementazione del supporto nativo della lingua italiana in Alan, eventualità sempre più remota (per varie ragioni, anche tecniche).
+
+Un modulo unificato è quindi la scelta migliore, e consente di documentare meglio il modulo a sé stante per l'italiano.
+
 
 ## 2019/03/23
 
@@ -532,21 +555,27 @@ Tutti i riferimenti alla precedente build nei moduli della libreria e nei sorgen
 [verbump.sh]: ../verbump.sh "Vedi sorgente"
 [VERSIONING.md]: ../VERSIONING.md "Vedi sorgente"
 
+<!-- Cartelle del Progetto -->
+
+[test]: ../test/
+
 <!-- Moduli della Libreria --------------------------------------------------->
 
+[libreria]:              ./libreria.i
 [lib_classi]:            ./lib_classi.i
 [lib_classi_vestiario]:  ./lib_classi_vestiario.i
 [lib_definizioni]:       ./lib_definizioni.i
-[lib_grammatica]:        ./lib_grammatica.i
-[lib_grammatica]:        ./lib_grammatica.i
+[lib_italian]:           ./lib_italian.i
 [lib_luoghi]:            ./lib_luoghi.i
 [lib_messaggi_libreria]: ./lib_messaggi_libreria.i
 [lib_messaggi_runtime]:  ./lib_messaggi_runtime.i
-[lib_supplemento]:       ./lib_supplemento.i
 [lib_verbi]:             ./lib_verbi.i
-[libreria]:              ./libreria.i
 
-[test]: ../test/
+<!-- vecchi nomi di moduli rinominati -->
+
+[lib_grammatica]:        ./lib_italian.i
+[lib_supplemento]:       ./lib_italian.i
+
 
 <!-- Documentazione Libreria  ------------------------------------------------>
 
@@ -557,7 +586,7 @@ Tutti i riferimenti alla precedente build nei moduli della libreria e nei sorgen
 
 [lib_verbi adoc]: ./lib_verbi.asciidoc
 [lib_verbi html]: ./lib_verbi.html
-[lib_verbi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_verbi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_verbi html live]: https://tajmone.github.io/Alan3-Italian/lib_verbi.html "Anteprima HTML sul sito Alan Italian"
 
 <!-- Link Esterni ------------------------------------------------------------>
 

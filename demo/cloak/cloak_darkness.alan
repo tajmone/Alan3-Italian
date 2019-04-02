@@ -10,8 +10,8 @@
 --| * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  |
 --+============================================================================+
 -->rev_info
---| :revdate:     2019-03-07
---| :revnumber:   1.0.0-alpha.1
+--| :revdate:     2019-04-02
+--| :revnumber:   1.0.0-alpha.3
 --| :AlanSDK:     Alan 3.0beta6 build 1880
 --<<
 -->-----------------------------------------------------------------------------
@@ -34,8 +34,7 @@
 --| modulo della grammatica italiana di *Alan Italian*, senza avvalersi della
 --| Libreria Standard Italiana:
 
-Import '../../alanlib_ita/lib_grammatica.i'.
-Import '../../alanlib_ita/lib_supplemento.i'.
+Import '../../alanlib_ita/lib_italian.i'.
 
 --| Perciò l'avventura dovrà implementare tutti i verbi di base e tradurre i
 --| messaggi di runtime.

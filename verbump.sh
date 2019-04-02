@@ -2,7 +2,7 @@
 
 script="verbump.sh"
 version="1.0.0"
-revdate="2019/03/23"
+revdate="2019/04/02"
 
 echo -e "\e[94m\n******************************************************************************"
 echo -e "*                                                                            *"
@@ -49,7 +49,6 @@ subAlanVer="$AlanSDK"
 # Alan SDK: Alan 3.0beta6 build 1878
 subAlanSDK="Alan $AlanSDK"
 
-
 # -------------------------------------
 # definisci alcune espressioni regolari
 # -------------------------------------
@@ -62,7 +61,6 @@ subAlanSDK="Alan $AlanSDK"
 -- Alan Italian 17 Alpha | Alan 3.0beta6 build 1878
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ESEMPIO
-
 
 # Alan Ita (lunga): v0.17.0-Alpha
 rexAlanItaL="v[0-9]+\.[0-9]+\.[0-9]+-Alpha"
@@ -78,8 +76,6 @@ rexAlanVer="3\.0beta[0-9]+( build [0-9]{4})?"
 
 # Alan SDK: Alan 3.0beta6 build 1878
 rexAlanSDK="Alan $rexAlanVer"
-
-
 
 # -------------------------
 # definisci alcune funzioni
@@ -265,7 +261,7 @@ ProcessaFile \
   "1"
 
 # ------------------------------------------------------------------------------
-# Avventure Doxterizzate
+# avventure doxterizzate
 # ------------------------------------------------------------------------------
 # Alcune avventure demo o della test suite hanno attributi AsciiDoc di versione.
 
@@ -297,10 +293,10 @@ ProcessaFile \
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
-# Correggi EOL (solo windows)
+# correggi EOL (solo windows)
 # ------------------------------------------------------------------------------
 
-# In Bash for Windows sed modifica tutte le EOL in LF.
+# Perché in Bash for Windows sed modifica tutte le EOL in LF.
 
 if [[ $(uname -s) == MINGW* ]];then
   Heading1 "CORREGGI EOL"

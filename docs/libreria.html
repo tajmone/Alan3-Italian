@@ -439,8 +439,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.18.0-Alpha,</span>
-<span id="revdate">2019-03-23</span>
+<span id="revnumber">versione 0.19.0-Alpha,</span>
+<span id="revdate">2019-04-02</span>
 <br><span id="revremark">Alan 3.0beta6 build 1880</span>
 </div>
 </div>
@@ -454,10 +454,39 @@ Ad opera di Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
 </div>
 </div>
 </div>
+<div class="paragraph">
+<p>Questo è il modulo principale della Libreria Standard, e sarà sufficiente
+importarlo nella propria avventura per usufruire della libreria:</p>
+</div>
+<div class="listingblock example">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">IMPORT</span> &apos;libreria.i&apos;<span class="hl kwa">.</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Questo modulo importa tutti gli altri moduli della liberia:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">IMPORT</span> &apos;lib_italian.i&apos;<span class="hl kwa">.</span>           <span class="hl slc">-- Modulo creato appositamente per l&apos;italiano.</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Questi primi due moduli offrono il supporto per la lingua italiana, e possono
+essere usati anche indipedendentemente dal resto della Libreria Standard.</p>
+</div>
+<div class="paragraph">
+<p>Questi invece sono i moduli propri della Libreria Standard:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">IMPORT</span> &apos;lib_classi.i&apos;<span class="hl kwa">.</span>            <span class="hl slc">-- Adattamento di -&gt; `lib_classes.i` (1).</span>&#x000A;<span class="hl kwa">IMPORT</span> &apos;lib_classi_vestiario.i&apos;<span class="hl kwa">.</span>  <span class="hl slc">-- Adattamento di -&gt; `lib_classes.i` (2).</span>&#x000A;<span class="hl kwa">IMPORT</span> &apos;lib_definizioni.i&apos;<span class="hl kwa">.</span>       <span class="hl slc">-- Adattamento di -&gt; `lib_definitions.i` (1).</span>&#x000A;<span class="hl kwa">IMPORT</span> &apos;lib_luoghi.i&apos;<span class="hl kwa">.</span>            <span class="hl slc">-- Adattamento di -&gt; `lib_locations.i`.</span>&#x000A;<span class="hl kwa">IMPORT</span> &apos;lib_messaggi_runtime.i&apos;<span class="hl kwa">.</span>  <span class="hl slc">-- Adattamento di -&gt; `lib_messages.i`.</span>&#x000A;<span class="hl kwa">IMPORT</span> &apos;lib_messaggi_libreria.i&apos;<span class="hl kwa">.</span> <span class="hl slc">-- Adattamento di -&gt; `lib_definitions.i` (2).</span>&#x000A;<span class="hl kwa">IMPORT</span> &apos;lib_verbi.i&apos;<span class="hl kwa">.</span>             <span class="hl slc">-- Adattamento di -&gt; `lib_verbs.i`.</span></code></pre>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.18.0-Alpha<br>
+Versione 0.19.0-Alpha<br>
 </div>
 </div>
 </body>

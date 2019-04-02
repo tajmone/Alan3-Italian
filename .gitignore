@@ -25,6 +25,7 @@ docs_src/lib*.asciidoc
 ## ==========
 ## Sass Cache
 ## ==========
+## Nel caso qualcuno usasse ancora Ruby Sass:
 .sass-cache/
 
 ## ===============

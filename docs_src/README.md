@@ -58,17 +58,17 @@ Poiché parti significative dei contenuti e del codice utilizzati nella document
 
 La seguente tabella illustra la catena di lavoro dei file della documentazione.
 
-|                            input Doxter                           |                        input Asciidoctor                         |                            output HTML                             |
-|-------------------------------------------------------------------|------------------------------------------------------------------|--------------------------------------------------------------------|
-|                                                                   | [`./index.asciidoc`][index adoc]                                 | [`../docs/index.html`][index html]                                 |
-| [`../alanlib_ita/libreria.i`][libreria]                           | [`./libreria.asciidoc`][libreria adoc]                           | [`../docs/libreria.html`][libreria html]                           |
-| [`../alanlib_ita/lib_classi.i`][lib_classi]                       | [`./lib_classi.asciidoc`][lib_classi adoc]                       | [`../docs/lib_classi.html`][lib_classi html]                       |
-| [`../alanlib_ita/lib_definizioni.i`][lib_definizioni]             | [`./lib_definizioni.asciidoc`][lib_definizioni adoc]             | [`../docs/lib_definizioni.html`][lib_definizioni html]             |
-| [`../alanlib_ita/lib_luoghi.i`][lib_luoghi]                       | [`./lib_luoghi.asciidoc`][lib_luoghi adoc]                       | [`../docs/lib_luoghi.html`][lib_luoghi html]                       |
-| [`../alanlib_ita/lib_messaggi_runtime.i`][lib_messaggi_runtime]   | [`./lib_messaggi_libreria.asciidoc`][lib_messaggi_libreria adoc] | [`../docs/lib_messaggi_libreria.html`][lib_messaggi_libreria html] |
-| [`../alanlib_ita/lib_messaggi_libreria.i`][lib_messaggi_libreria] | [`./lib_messaggi_runtime.asciidoc`][lib_messaggi_runtime adoc]   | [`../docs/lib_messaggi_runtime.html`][lib_messaggi_runtime html]   |
-| [`../alanlib_ita/lib_verbi.i`][lib_verbi]                         | [`./lib_verbi.asciidoc`][lib_verbi adoc]                         | [`../docs/lib_verbi.html`][lib_verbi html]                         |
-| [`../alanlib_ita/lib_supplemento.i`][lib_supplemento]             | [`./lib_supplemento.asciidoc`][lib_supplemento adoc]             | [`../docs/lib_supplemento.html`][lib_supplemento html]             |
+|                            input Doxter                           |                        input Asciidoctor                         |                               output HTML                               |
+|-------------------------------------------------------------------|------------------------------------------------------------------|-------------------------------------------------------------------------|
+|                                                                   | [`./index.asciidoc`][index adoc]                                 | [`../docs/index.html`][index html live]                                 |
+| [`../alanlib_ita/libreria.i`][libreria]                           | [`./libreria.asciidoc`][libreria adoc]                           | [`../docs/libreria.html`][libreria html live]                           |
+| [`../alanlib_ita/lib_classi.i`][lib_classi]                       | [`./lib_classi.asciidoc`][lib_classi adoc]                       | [`../docs/lib_classi.html`][lib_classi html live]                       |
+| [`../alanlib_ita/lib_definizioni.i`][lib_definizioni]             | [`./lib_definizioni.asciidoc`][lib_definizioni adoc]             | [`../docs/lib_definizioni.html`][lib_definizioni html live]             |
+| [`../alanlib_ita/lib_italian.i`][lib_italian]                     | [`./lib_italian.asciidoc`][lib_italian adoc]                     | [`../docs/lib_italian.html`][lib_italian html live]                 |
+| [`../alanlib_ita/lib_luoghi.i`][lib_luoghi]                       | [`./lib_luoghi.asciidoc`][lib_luoghi adoc]                       | [`../docs/lib_luoghi.html`][lib_luoghi html live]                       |
+| [`../alanlib_ita/lib_messaggi_libreria.i`][lib_messaggi_libreria] | [`./lib_messaggi_runtime.asciidoc`][lib_messaggi_runtime adoc]   | [`../docs/lib_messaggi_runtime.html`][lib_messaggi_runtime html live]   |
+| [`../alanlib_ita/lib_messaggi_runtime.i`][lib_messaggi_runtime]   | [`./lib_messaggi_libreria.asciidoc`][lib_messaggi_libreria adoc] | [`../docs/lib_messaggi_libreria.html`][lib_messaggi_libreria html live] |
+| [`../alanlib_ita/lib_verbi.i`][lib_verbi]                         | [`./lib_verbi.asciidoc`][lib_verbi adoc]                         | [`../docs/lib_verbi.html`][lib_verbi html live]                         |
 
 I file AsciiDoc autogenerati tramite Doxter sono ignorati da Git, mentre i documenti gestiti manualmente sono parte integrante del progetto.
 
@@ -125,49 +125,49 @@ Per maggior informazioni riguardo la suddivisione della documentazione in region
 [libreria]:              ../alanlib_ita/libreria.i
 [lib_classi]:            ../alanlib_ita/lib_classi.i
 [lib_definizioni]:       ../alanlib_ita/lib_definizioni.i
+[lib_italian]:           ../alanlib_ita/lib_italian.i
 [lib_luoghi]:            ../alanlib_ita/lib_luoghi.i
-[lib_messaggi_runtime]:  ../alanlib_ita/lib_messaggi_runtime.i
 [lib_messaggi_libreria]: ../alanlib_ita/lib_messaggi_libreria.i
+[lib_messaggi_runtime]:  ../alanlib_ita/lib_messaggi_runtime.i
 [lib_verbi]:             ../alanlib_ita/lib_verbi.i
-[lib_supplemento]:       ../alanlib_ita/lib_supplemento.i
 
 
 <!-- FILE DOCUMENTAZIONE  -->
 
 [index adoc]: ./index.asciidoc
 [index html]: ../docs/index.html
-[index html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/index.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[index html live]: https://tajmone.github.io/Alan3-Italian/index.html "Anteprima HTML sul sito Alan Italian"
 
 [libreria adoc]: ./libreria.asciidoc
 [libreria html]: ../docs/libreria.html
-[libreria html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/libreria.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[libreria html live]: https://tajmone.github.io/Alan3-Italian/libreria.html "Anteprima HTML sul sito Alan Italian"
 
 [lib_classi adoc]: ./lib_classi.asciidoc
 [lib_classi html]: ../docs/lib_classi.html
-[lib_classi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_classi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_classi html live]: https://tajmone.github.io/Alan3-Italian/lib_classi.html "Anteprima HTML sul sito Alan Italian"
 
 [lib_definizioni adoc]: ./lib_definizioni.asciidoc
 [lib_definizioni html]: ../docs/lib_definizioni.html
-[lib_definizioni html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_definizioni.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_definizioni html live]: https://tajmone.github.io/Alan3-Italian/lib_definizioni.html "Anteprima HTML sul sito Alan Italian"
+
+[lib_italian adoc]: ./lib_italian.asciidoc
+[lib_italian html]: ../docs/lib_italian.html
+[lib_italian html live]: https://tajmone.github.io/Alan3-Italian/lib_italian.html "Anteprima HTML sul sito Alan Italian"
 
 [lib_luoghi adoc]: ./lib_luoghi.asciidoc
 [lib_luoghi html]: ../docs/lib_luoghi.html
-[lib_luoghi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_luoghi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_luoghi html live]: https://tajmone.github.io/Alan3-Italian/lib_luoghi.html "Anteprima HTML sul sito Alan Italian"
 
 [lib_messaggi_runtime adoc]: ./lib_messaggi_runtime.asciidoc
 [lib_messaggi_runtime html]: ../docs/lib_messaggi_runtime.html
-[lib_messaggi_runtime html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_messaggi_runtime.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_messaggi_runtime html live]: https://tajmone.github.io/Alan3-Italian/lib_messaggi_runtime.html "Anteprima HTML sul sito Alan Italian"
 
 [lib_messaggi_libreria adoc]: ./lib_messaggi_libreria.asciidoc
 [lib_messaggi_libreria html]: ../docs/lib_messaggi_libreria.html
-[lib_messaggi_libreria html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_messaggi_libreria.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_messaggi_libreria html live]: https://tajmone.github.io/Alan3-Italian/lib_messaggi_libreria.html "Anteprima HTML sul sito Alan Italian"
 
 [lib_verbi adoc]: ./lib_verbi.asciidoc
 [lib_verbi html]: ../docs/lib_verbi.html
-[lib_verbi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_verbi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
-
-[lib_supplemento adoc]: ./lib_supplemento.asciidoc
-[lib_supplemento html]: ../docs/lib_supplemento.html
-[lib_supplemento html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_supplemento.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_verbi html live]: https://tajmone.github.io/Alan3-Italian/lib_verbi.html "Anteprima HTML sul sito Alan Italian"
 
 <!-- EOF -->

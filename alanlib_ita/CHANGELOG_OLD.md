@@ -7541,7 +7541,7 @@ The above changes had some side effects which required me to also change the Eng
 - [`lib_locations.i`][lib_locations]:
     + remove `e` as synonym of `est` (now conflicts with `e` = `'and'`)
 - [`library.i`][library]: added `IMPORT 'lib_supplement.i'.`
-- New [`VERBI_IT.md`][VERBI_IT] doc to resume current state of verbs translated to Italian.
+- New `VERBI_IT.md` doc to resume current state of verbs translated to Italian.
 - Added to [`../tests/`][tests] folder Alan source and script files to test Player Words implementation.
 
 <!---------------------------------------------------------------------------->
@@ -7608,7 +7608,29 @@ The above changes had some side effects which required me to also change the Eng
 [VESTIARIO_DEV]: ./VESTIARIO_DEV.md "Vedi documento"
 [VESTIARIO_PROBLEMI]: ./VESTIARIO_PROBLEMI.md "Vedi documento"
 
+<!-- Cartelle del Progetto -->
+
+[tests]: ../test/
+[test]:  ../test/
+
 <!-- Moduli della Libreria --------------------------------------------------->
+
+[libreria]:              ./libreria.i
+[lib_classi]:            ./lib_classi.i
+[lib_classi_vestiario]:  ./lib_classi_vestiario.i
+[lib_definizioni]:       ./lib_definizioni.i
+[lib_italian]:           ./lib_italian.i
+[lib_luoghi]:            ./lib_luoghi.i
+[lib_messaggi_libreria]: ./lib_messaggi_libreria.i
+[lib_messaggi_runtime]:  ./lib_messaggi_runtime.i
+[lib_verbi]:             ./lib_verbi.i
+
+<!-- vecchi nomi di moduli rinominati -->
+
+[lib_grammatica]:        ./lib_italian.i
+[lib_messaggi]:          ./lib_messaggi_libreria.i
+[lib_supplemento]:       ./lib_italian.i
+
 
 <!-- OLD LIBRARY FILENAMES 1 -->
 
@@ -7622,27 +7644,7 @@ The above changes had some side effects which required me to also change the Eng
 
 <!-- OLD LIBRARY FILENAMES 2 -->
 
-[lib_messaggi]: ./lib_messaggi_libreria.i
 
-<!-- NEW LIBRARY FILENAMES -->
-
-[lib_classi]:            ./lib_classi.i
-[lib_classi_vestiario]:  ./lib_classi_vestiario.i
-[lib_definizioni]:       ./lib_definizioni.i
-[lib_grammatica]:        ./lib_grammatica.i
-[lib_grammatica]:        ./lib_grammatica.i
-[lib_luoghi]:            ./lib_luoghi.i
-[lib_messaggi_libreria]: ./lib_messaggi_libreria.i
-[lib_messaggi_runtime]:  ./lib_messaggi_runtime.i
-[lib_supplemento]:       ./lib_supplemento.i
-[lib_verbi]:             ./lib_verbi.i
-[libreria]:              ./libreria.i
-
-
-[VERBI_IT]: ./VERBI_IT.md
-
-[tests]: ../test/
-[test]: ../test/
 
 <!-- Documentazione Libreria  ------------------------------------------------>
 
@@ -7654,7 +7656,7 @@ The above changes had some side effects which required me to also change the Eng
 
 [lib_verbi adoc]: ./lib_verbi.asciidoc
 [lib_verbi html]: ./lib_verbi.html
-[lib_verbi html live]: http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/alanlib_ita/lib_verbi.html "Live HTML Preview via GitHub & BitBucket HTML Preview"
+[lib_verbi html live]: https://tajmone.github.io/Alan3-Italian/lib_verbi.html "Anteprima HTML sul sito Alan Italian"
 
 
 <!-- External Links ---------------------------------------------------------->

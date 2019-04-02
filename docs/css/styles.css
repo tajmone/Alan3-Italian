@@ -8,22 +8,19 @@
 }
 /* Highlight Default Theme */
 .listingblock code[data-lang]::before {
-  color: #B4B7B4;
+  color: #969896;
 }
 
 .listingblock pre[class=highlight] {
-  background-color: #FFFFFF;
+  background-color: #1d1f21;
   border-radius: 4px;
-  border: 1px solid #E0E0E0;
-  padding: 1em;
-  overflow: auto;
+  border: 1px solid #282a2e;
 }
 .listingblock pre[class=highlight] > code {
-  color: #373B41;
-  font-family: Consolas, Monaco, "Courier New", Courier, monospace;
+  color: #c5c8c6;
 }
 .listingblock pre[class=highlight] .hl {
-  color: #373B41;
+  color: #c5c8c6;
 }
 .listingblock pre[class=highlight] .hl.num {
   color: #F96A38;
@@ -44,18 +41,18 @@
   color: #3971ED;
 }
 .listingblock pre[class=highlight] .hl.com {
-  color: #B4B7B4;
+  color: #969896;
   font-style: italic;
 }
 .listingblock pre[class=highlight] .hl.slc {
-  color: #B4B7B4;
+  color: #969896;
   font-style: italic;
 }
 .listingblock pre[class=highlight] .hl.lin {
-  color: #969896;
+  color: #b4b7b4;
 }
 .listingblock pre[class=highlight] .hl.opt {
-  color: #373B41;
+  color: #c5c8c6;
 }
 .listingblock pre[class=highlight] .hl.kwa, .listingblock pre[class=highlight] .hl.kwb, .listingblock pre[class=highlight] .hl.kwc, .listingblock pre[class=highlight] .hl.kwd, .listingblock pre[class=highlight] .hl.kwe, .listingblock pre[class=highlight] .hl.kwf {
   font-weight: bold;
@@ -79,60 +76,104 @@
   color: #3971ED;
 }
 
-/* Highlight Theme for Alan */
+/* Alan default theme */
 .listingblock code[data-lang]::before {
-  color: #D3D0C8;
+  color: #d3d0c8;
 }
 
 .listingblock pre[class=highlight][lang=alan] {
-  background-color: #2D2D2D;
-  border-radius: 4px;
-  border: 1px solid #A09F93;
-  padding: 1em;
-  overflow: auto;
+  background-color: #2d2d2d;
+  border: 1px solid #a09f93;
 }
 .listingblock pre[class=highlight][lang=alan] > code {
-  color: #D3D0C8;
-  font-family: "Fira Code", Monaco, "Courier New", Courier, monospace;
-  font-size: 14px;
-  letter-spacing: 1px;
+  color: #d3d0c8;
 }
 .listingblock pre[class=highlight][lang=alan] .hl {
-  color: #D3D0C8;
+  color: #d3d0c8;
 }
 .listingblock pre[class=highlight][lang=alan] .hl.num {
-  color: #F99157;
+  color: #f99157;
 }
 .listingblock pre[class=highlight][lang=alan] .hl.esc {
-  color: #F99157;
+  color: #f99157;
 }
 .listingblock pre[class=highlight][lang=alan] .hl.ipl {
-  color: #D27B53;
+  color: #d27b53;
 }
 .listingblock pre[class=highlight][lang=alan] .hl.str {
-  color: #99CC99;
+  color: #99cc99;
 }
 .listingblock pre[class=highlight][lang=alan] .hl.slc {
-  color: #A09F93;
+  color: #a09f93;
   font-style: italic;
 }
 .listingblock pre[class=highlight][lang=alan] .hl.lin {
   color: #747369;
 }
 .listingblock pre[class=highlight][lang=alan] .hl.opt {
-  color: #D3D0C8;
+  color: #d3d0c8;
 }
 .listingblock pre[class=highlight][lang=alan] .hl.kwa, .listingblock pre[class=highlight][lang=alan] .hl.kwb, .listingblock pre[class=highlight][lang=alan] .hl.kwc, .listingblock pre[class=highlight][lang=alan] .hl.kwd, .listingblock pre[class=highlight][lang=alan] .hl.kwe, .listingblock pre[class=highlight][lang=alan] .hl.kwf {
   font-weight: bold;
 }
 .listingblock pre[class=highlight][lang=alan] .hl.kwa {
-  color: #F2777A;
+  color: #f2777a;
 }
 .listingblock pre[class=highlight][lang=alan] .hl.kwb {
-  color: #FFCC66;
+  color: #ffcc66;
 }
 .listingblock pre[class=highlight][lang=alan] .hl.kwc {
-  color: #6699CC;
+  color: #6699cc;
+}
+
+/* Alan example theme */
+.listingblock.example code[data-lang]::before {
+  color: #373b41;
+}
+
+.listingblock.example pre[class=highlight][lang=alan] {
+  background-color: #ffffff;
+  border: 1px solid #969896;
+}
+.listingblock.example pre[class=highlight][lang=alan] > code {
+  color: #373b41;
+}
+.listingblock.example pre[class=highlight][lang=alan] .hl {
+  color: #373b41;
+}
+.listingblock.example pre[class=highlight][lang=alan] .hl.num {
+  color: #F96A38;
+}
+.listingblock.example pre[class=highlight][lang=alan] .hl.esc {
+  color: #F96A38;
+}
+.listingblock.example pre[class=highlight][lang=alan] .hl.ipl {
+  color: #3971ED;
+}
+.listingblock.example pre[class=highlight][lang=alan] .hl.str {
+  color: #198844;
+}
+.listingblock.example pre[class=highlight][lang=alan] .hl.slc {
+  color: #969896;
+  font-style: italic;
+}
+.listingblock.example pre[class=highlight][lang=alan] .hl.lin {
+  color: #b4b7b4;
+}
+.listingblock.example pre[class=highlight][lang=alan] .hl.opt {
+  color: #373b41;
+}
+.listingblock.example pre[class=highlight][lang=alan] .hl.kwa, .listingblock.example pre[class=highlight][lang=alan] .hl.kwb, .listingblock.example pre[class=highlight][lang=alan] .hl.kwc, .listingblock.example pre[class=highlight][lang=alan] .hl.kwd, .listingblock.example pre[class=highlight][lang=alan] .hl.kwe, .listingblock.example pre[class=highlight][lang=alan] .hl.kwf {
+  font-weight: bold;
+}
+.listingblock.example pre[class=highlight][lang=alan] .hl.kwa {
+  color: #CC342B;
+}
+.listingblock.example pre[class=highlight][lang=alan] .hl.kwb {
+  color: #FBA922;
+}
+.listingblock.example pre[class=highlight][lang=alan] .hl.kwc {
+  color: #3971ED;
 }
 
 /*# sourceMappingURL=styles.css.map */

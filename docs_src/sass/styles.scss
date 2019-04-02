@@ -1,4 +1,4 @@
-//  v1.0.0 (2018-12-16) by Tristano Ajmone
+//  "styles.scss"                       v2.0.0 | 2019/03/24 | by Tristano Ajmone
 // *****************************************************************************
 // *                                                                           *
 // *               Highlight Stylesheets for Alan StdLib Extras                *
@@ -8,10 +8,10 @@
 // The generated CSS file adds custom syntax highlighting themes to AsciiDoc
 // documents that use Highlight. It defines a default fallback theme for all
 // syntaxes that don't have a dedicated theme, and some syntax-specific themes.
-// The latter rely on a custom ERB template that modifies the HTML output for
+// The latter rely on a custom Haml template that modifies the HTML output for
 // listing blocks:
 // 
-//   ../ERB/block_listing.html.erb
+//   ../haml/block_listing.html.haml
 
 // ==================
 // Mixins and Helpers
@@ -34,12 +34,22 @@
 // Default Theme
 // =============
 // A fallback theme for syntaxes that don't have a dedicate theme.
+@import 'base16-google-light';  // Base16 Google color scheme.
 @import 'default-theme';
 
-// ====================
-// Custom Syntax Themes
-// ====================
-// Some syntaxes have their own theme:
-@import 'alan'; // Alan IF color scheme
+// =====================
+/* Alan default theme */
+// =====================
+$class: ''; // don't use an extra 'role'
+@import 'base16-eighties';  // Base16 Eighties color scheme.
+@import 'alan';             // Alan IF scheme using Base16
+
+// =====================
+/* Alan example theme */
+// =====================
+
+$class: '.example'; // for listing blocks with 'role=example'
+@import 'base16-google-light';  // Base16 Google color scheme.
+@import 'alan';                 // Alan IF scheme using Base16
 
 // EOF //

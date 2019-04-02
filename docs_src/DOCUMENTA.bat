@@ -1,5 +1,5 @@
 :: -----------------------------------------------------------------------------
-:: "DOCUMENTA.bat"                    | v0.2.2 | 2019/03/23 | by Tristano Ajmone
+:: "DOCUMENTA.bat"                    | v0.2.3 | 2019/03/24 | by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 @ECHO OFF & CLS
 CHCP 65001 > nul &:: (UTF-8 Unicode)
@@ -7,16 +7,21 @@ ECHO.
 ECHO Creazione della documentazione di Alan Italian ...
 ECHO.
 
-SET LibSrc=../alanlib_ita
-SET DocsDest=../docs
+SET LibSrc=..\alanlib_ita
+SET DocsDest=..\docs
+
+ECHO +----------------------------+
+ECHO ^| 1. Elimina file precedenti ^|
+ECHO +----------------------------+
+DEL /Q lib*.asciidoc > NUL 2>&1
 
 ECHO +-------------------------------+
-ECHO ^| 1. Doxterizza moduli libreria ^|
+ECHO ^| 2. Doxterizza moduli libreria ^|
 ECHO +-------------------------------+
 FOR %%i IN (%LibSrc%/lib*.i) DO CALL :doxterizzaLib %%i
 
 ECHO +--------------------------------+
-ECHO ^| 2. Converti da AsciiDoc a HTML ^|
+ECHO ^| 3. Converti da AsciiDoc a HTML ^|
 ECHO +--------------------------------+
 FOR %%i IN (*.asciidoc) DO CALL :convHTML %%i
 

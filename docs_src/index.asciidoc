@@ -61,14 +61,14 @@ La documentazione è ancora in fase di preparazione.
 
 È possibile consultare la documentazione dei singoli moduli della libreria:
 
+* link:libreria.html[`libreria.alan`]
 * link:lib_classi.html[`lib_classi.i`]
 * link:lib_classi_vestiario.html[`lib_classi_vestiario.i`]
 * link:lib_definizioni.html[`lib_definizioni.i`]
-* link:lib_grammatica.html[`lib_grammatica.i`]
+* link:lib_italian.html[`lib_italian.i`]
 * link:lib_luoghi.html[`lib_luoghi.i`]
 * link:lib_messaggi_libreria.html[`lib_messaggi_libreria.i`]
 * link:lib_messaggi_runtime.html[`lib_messaggi_runtime.i`]
-* link:lib_supplemento.html[`lib_supplemento.i`]
 * link:lib_verbi.html[`lib_verbi.i`]
 
 I moduli della libreria contengono la propria documentazione nei commenti del file sorgente.

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.18.0-Alpha, 2019-03-23: Alan 3.0beta6 build 1880
+--| v0.19.0-Alpha, 2019-04-02: Alan 3.0beta6 build 1880
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -318,7 +318,7 @@ EVERY blocco_definizioni IsA LOCATION
 --| versione di Alan utilizzata:
 
   HAS         AlanV  "3.0beta6 build 1880".
-  HAS      AlanItaV  "18 Alpha".
+  HAS      AlanItaV  "19 Alpha".
 
 --| Il valore predefinito è quello dell'ultima release di Alan all'epoca della
 --| libreria. L'autore è libero di sovrascriverlo nel caso stesse usando una

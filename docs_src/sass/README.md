@@ -10,13 +10,7 @@ This folder contains the Sass sources to build the custom CSS stylesheets for co
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Folder Contents](#folder-contents)
-- [System Requirements](#system-requirements)
-    - [Node.js + Sass](#nodejs--sass)
-        - [Installing Node.js on Windows](#installing-nodejs-on-windows)
-        - [Dart Sass](#dart-sass)
-    - [Ruby + Sass](#ruby--sass)
-        - [Installing Ruby on Windows](#installing-ruby-on-windows)
-        - [Ruby Sass](#ruby-sass)
+- [Installing Dart Sass](#installing-dart-sass)
 - [Credits](#credits)
     - [Base16 Color Schemes](#base16-color-schemes)
     - [Sass Boilerplate](#sass-boilerplate)
@@ -31,12 +25,13 @@ Sass sources:
 
 - [`styles.scss`][styles]
 - [`_alan.scss`][alan]
+- [`_base16-eighties.scss`][base16-eighties]
+- [`_base16-google-light.scss`][base16-google-light]
 - [`_color-schemes.scss`][color-schemes]
 - [`_default-theme.scss`][default-theme]
 - [`_fonts-ligatures.scss`][ligatures]
 - [`_fonts.scss`][fonts]
 - [`_helpers.scss`][helpers]
-
 
 Scripts:
 
@@ -46,48 +41,15 @@ Scripts:
 Builds to [`../css/styles.css`][styles.css].
 
 
-# System Requirements
+# Installing Dart Sass
 
-To build the CSS stylesheets you'll need to install [Sass] on your machine:
+Since March 24 2019 this project has switched from using [Ruby Sass] to the newest [Dart Sass] because starting from March 26 2019 Ruby Sass will no longer be maintained.
 
-- [Ruby] + [Ruby Sass]
+Since Dart Sass behavior is slightly different from Ruby Sass, anyone working on the repository Sass sources must ensure to switch to Dart Sass to avoid creating divergent CSS stylesheets.
 
-or:
+The easiest way to install Dart Sass on Windows, and keep it always updated, is to install it via Chocolatey:
 
-- [Node.js] + [Dart Sass]
-
-Sass is migrating from Ruby to Node.js, but for the purpose of this project either version should be fine (I'm still using the Ruby version), so just install the version that is more practical to you (since in this project you'll need Ruby also for Asciidoctor, you might use Sass Ruby if you don't have Node.js on your system).
-
-## Node.js + Sass
-
-### Installing Node.js on Windows
-
-Download the installer from [Node.js] website.
-
-Alternatively, you can install the [Chocolatey Node.js package][Choco Node] (also available in [LTS version][Choco Node LTS]) via [Chocolatey] or [Chocolatey GUI].
-
-### Dart Sass
-
-Once [Node.js] is installed on your system, open a shell and type:
-
-    npm install -g sass
-
-Alternatively, you can install the [Sass Chocolatey package][Choco Sass] via [Chocolatey] or [Chocolatey GUI].
-
-
-## Ruby + Sass
-
-### Installing Ruby on Windows
-
-If you're using Windows, you should install Ruby via [RubyInstaller], which is also available as a [Chocolatey package][Choco Ruby] (see [Chocolatey] and [Chocolatey GUI]).
-
-### Ruby Sass
-
-Once Ruby is installed on your system, open a shell and type:
-
-    gem install sass
-
-
+- https://chocolatey.org/packages/sass
 
 # Credits
 
@@ -160,13 +122,21 @@ The `fontFace` Mixin was adapted from Sass Boilerplate project's "[`fontface.scs
 
 [BUILD]: ./BUILD_SASS.bat
 [WATCH]: ./WATCH_SASS.bat
+
+<!-- Sass files & modules -->
+
+[alan]: ./_alan.scss
+[base16-eighties]: ./_base16-eighties.scss
+[base16-google-light]: ./_base16-google-light.scss
 [color-schemes]: ./_color-schemes.scss
 [default-theme]: ./_default-theme.scss
 [fonts]: ./_fonts.scss
 [helpers]: ./_helpers.scss
 [ligatures]: ./_fonts-ligatures.scss
-[alan]: ./_alan.scss
 [styles]: ./styles.scss
+
+<!-- CSS output -->
+
 [styles.css]: ../css/styles.css "View source file"
 
 <!-- dependencies -->

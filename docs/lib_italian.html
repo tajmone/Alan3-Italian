@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
 <meta name="author" content="Tristano Ajmone">
-<title>Alan StdLib Italian: Grammatica</title>
+<title>Alan StdLib Italian: Modulo Italian</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -435,12 +435,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Alan StdLib Italian: Grammatica</h1>
+<h1>Alan StdLib Italian: Modulo Italian</h1>
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.18.0-Alpha,</span>
-<span id="revdate">2019-03-23</span>
+<span id="revnumber">versione 0.19.0-Alpha,</span>
+<span id="revdate">2019-04-02</span>
 <br><span id="revremark">Alan 3.0beta6 build 1880</span>
 </div>
 <div id="toc" class="toc2">
@@ -450,16 +450,38 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_guida_alluso">Guida all&#8217;uso</a>
 <ul class="sectlevel2">
 <li><a href="#_attributi_grammaticali_delle_entità">Attributi grammaticali delle entità</a></li>
-<li><a href="#_valori_predefiniti">Valori predefiniti</a>
+<li><a href="#_valori_predefiniti">Valori predefiniti</a></li>
+<li><a href="#_articolo_di_riferimento">Articolo di riferimento</a>
 <ul class="sectlevel3">
-<li><a href="#_genere_e_numero">Genere e numero</a></li>
-<li><a href="#_nome_proprio">Nome proprio</a></li>
-<li><a href="#_vocale_per_accordo_aggettivi">Vocale per accordo aggettivi</a></li>
-<li><a href="#_articolo_di_riferimento">Articolo di riferimento</a></li>
-<li><a href="#_preposizioni_articolate">Preposizioni articolate</a></li>
+<li><a href="#_esempi_pratici">Esempi pratici</a></li>
 </ul>
 </li>
+<li><a href="#_nome_proprio">Nome proprio</a></li>
+<li><a href="#_vocale_per_accordo_aggettivi">Vocale per accordo aggettivi</a></li>
+<li><a href="#_preposizioni_articolate">Preposizioni articolate</a></li>
 <li><a href="#_inizializzazione_attributi">Inizializzazione attributi</a></li>
+</ul>
+</li>
+<li><a href="#_predefined_player_words">Predefined Player Words</a>
+<ul class="sectlevel2">
+<li><a href="#_conjunction_words">CONJUNCTION WORDS</a></li>
+<li><a href="#_noise_words">NOISE WORDS</a>
+<ul class="sectlevel3">
+<li><a href="#_articoli_determinativi">Articoli determinativi</a></li>
+</ul>
+</li>
+<li><a href="#_all_words">ALL WORDS</a></li>
+<li><a href="#_except_words">EXCEPT WORDS</a></li>
+<li><a href="#_them_words">THEM WORDS</a></li>
+</ul>
+</li>
+<li><a href="#_preposizioni_articolate_2">Preposizioni articolate</a>
+<ul class="sectlevel2">
+<li><a href="#_di_articolo">&#8220;DI&#8221; + Articolo</a></li>
+<li><a href="#_a_articolo">&#8220;A&#8221; + Articolo</a></li>
+<li><a href="#_da_articolo">&#8220;DA&#8221; + Articolo</a></li>
+<li><a href="#_in_articolo">&#8220;IN&#8221; + Articolo</a></li>
+<li><a href="#_su_articolo">&#8220;SU&#8221; + Articolo</a></li>
 </ul>
 </li>
 <li><a href="#_todo">TODO</a>
@@ -477,7 +499,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Modulo grammaticale della liberia italiana, non presente nell&#8217;originale
+<p>Modulo per il supporto della lingua italiana, utilizzabile indipendentemente
+dalla Libreria Standard. Non presente nell&#8217;originale
 <em>ALAN Standard Library</em> v2.1 di Anssi Räisänen.
 Creato da Tristano Ajmone,  &#169; 2018, Artistic License 2.1.</p>
 </div>
@@ -497,27 +520,11 @@ standard, usufruendo solo del codice base per la grammatica italiana.</p>
 </div>
 <div class="paragraph">
 <p>Per i suddetti motivi, tutti il codice necessario per implementare la lingua
-italiana è contenuto in questo modulo. Per chi volesse usare questo modulo
-per aggiungere la grammatica alle proprie avventure, è consigliabile anche
-includere il modulo <code>lib_supplemento.i</code> poiché esso contiene ulteriore codice
-per il supporto dell&#8217;italiano che, sebbene non strettamente indispensabile,
-risulterà utile ai fini pratici.</p>
+italiana è contenuto in questo modulo.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Nota"></i>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>Il codice in <code>lib_supplemento.i</code> è stato separato da questo modulo
-poiché esso diverrebbe superfluo il giorno in cui fosse introdotto
-in Alan il supporto nativo per la lingua italiana.</p>
-</div>
-</td>
-</tr>
-</table>
+<p>Dato che questo modulo è concepito per essere usato anche al di fuori della
+libreria, verrà inclusa una documentazione dettagliata su come utilizzarlo.</p>
 </div>
 </div>
 </div>
@@ -525,8 +532,22 @@ in Alan il supporto nativo per la lingua italiana.</p>
 <h2 id="_guida_alluso"><a class="anchor" href="#_guida_alluso"></a>Guida all&#8217;uso</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Dato che questo modulo è concepito per essere usato anche al di fuori della
-libreria, verrà inclusa una documentazione dettagliata su come utilizzarlo.</p>
+<p>Per poter utilizzare correttamente la lingua italiana in Alan è necessario
+comprendere come funziona internamente questo modulo.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Attenzione"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>La documentazione non è ancora completa&#8230;&#8203;</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_attributi_grammaticali_delle_entità"><a class="anchor" href="#_attributi_grammaticali_delle_entità"></a>Attributi grammaticali delle entità</h3>
@@ -577,35 +598,103 @@ libreria, che definiscono articoli con numero e/o genere diversi (<code>femmina<
 = <code>"la"</code>, <code>maschi</code> = <code>"i"</code>, <code>femmine</code> = <code>"le"</code>), l&#8217;onere di specificare un
 corretto <code>articolo</code> su ogni istanza dell&#8217;avventura ricade sull&#8217;autore.</p>
 </div>
-<div class="sect3">
-<h4 id="_genere_e_numero"><a class="anchor" href="#_genere_e_numero"></a>Genere e numero</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">ADD TO EVERY</span> <span class="hl kwb">ENTITY</span>&#x000A;&#x000A;  <span class="hl kwa">IS NOT</span> plurale<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">IS NOT</span> femminile<span class="hl kwa">.</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">ADD TO EVERY</span> <span class="hl kwb">ENTITY</span>&#x000A;&#x000A;  <span class="hl kwa">IS NOT</span> plurale<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">IS NOT</span> femminile<span class="hl kwa">.</span>&#x000A;&#x000A;  <span class="hl kwa">HAS NOT</span> nome_proprio<span class="hl kwa">.</span>&#x000A;&#x000A;  <span class="hl kwa">HAS</span> articolo <span class="hl str">&quot;il&quot;</span><span class="hl kwa">.</span>&#x000A;&#x000A;  <span class="hl kwa">HAS</span> vocale <span class="hl str">&quot;o&quot;</span><span class="hl kwa">.</span>&#x000A;&#x000A;  <span class="hl kwa">HAS</span> prep_DI <span class="hl str">&quot;del&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> prep_A  <span class="hl str">&quot;al&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> prep_DA <span class="hl str">&quot;dal&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> prep_IN <span class="hl str">&quot;nel&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> prep_SU <span class="hl str">&quot;sul&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
-<div class="admonitionblock warning">
+<div class="paragraph">
+<p>Fatta eccezione per gli attributi <code>articolo</code> e <code>nome_proprio</code>, questi
+attributi sono destinati alla sola lettura, poiché i loro valori saranno
+settati automaticamente su ciascuna istanza durante l&#8217;inizializzazione,
+in base ai valori di <code>articolo</code> e <code>nome_proprio</code> della medesima.</p>
+</div>
+<div class="paragraph">
+<p>Ora spiegheremo nel dettaglio la funzione di questi attributi e come debbano
+essere usati dagli autori di avventure.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_articolo_di_riferimento"><a class="anchor" href="#_articolo_di_riferimento"></a>Articolo di riferimento</h3>
+<div class="paragraph">
+<p>Ogni istanza possiede l&#8217;attributo <code>articolo</code> che ne specifica l&#8217;articolo
+determinativo ad essa associato. Questo attributo viene utilizzato dalla
+libreria per inizializzare le istanze del gioco: in base ad esso il modulo
+Italian sarà in grado di dedurre il genere ed il numero dell&#8217;istanza, e
+imposterà tutte le sue proprietà grammaticali con i valori appropriati.</p>
+</div>
+<div class="paragraph">
+<p>L&#8217;autore deve semplicemente specficare l&#8217;articolo determinativo del
+sostantivo, e la libreria farà tutto il resto. L&#8217;unica eccezione è
+l&#8217;articolo <code>"l'"</code>, che può rifererirsi sia a un sostantivo maschile che
+femminile; per questo articolo l&#8217;autore dovrà specificare <code>IS femminile</code>
+nel caso di sostantivi femminili, altrimenti la libreria presumerà che si
+tratti di un sostantivo maschile.</p>
+</div>
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Attenzione"></i>
+<i class="fa icon-note" title="Nota"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Sezione non ancora completata&#8230;&#8203;</p>
+<p>Dopo l&#8217;inizializzazione, l&#8217;attributo <code>articolo</code> non viene più utlizzato in
+alcun modo.</p>
+</div>
+<div class="paragraph">
+<p>La libreria non ricorre mai all&#8217;attributo <code>articolo</code> per stampare l&#8217;articolo
+di un istanza nei messaggi, e neanche gli autori dovrebbero farlo. L&#8217;attributo
+<code>articolo</code> è solo un mezzo per inizializzare correttamente tutta una serie di
+attributi e proprietà delle istanze, tra cui anche <code>DEFINITE</code>/<code>INDEFINITE
+ARTICLE</code>.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-</div>
 <div class="sect3">
-<h4 id="_nome_proprio"><a class="anchor" href="#_nome_proprio"></a>Nome proprio</h4>
-<div class="listingblock">
+<h4 id="_esempi_pratici"><a class="anchor" href="#_esempi_pratici"></a>Esempi pratici</h4>
+<div class="paragraph">
+<p>Supponiamo di voler creare i seguenti oggetti: un palloncino, una mela, un
+albero e un&#8217;arancia.</p>
+</div>
+<div class="paragraph">
+<p>Per il palloncino non sarà necessario specificare l&#8217;articolo, dato che è il
+medesimo del predefinito (&#8220;il&#8221;):</p>
+</div>
+<div class="listingblock example">
 <div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">HAS NOT</span> nome_proprio<span class="hl kwa">.</span>                                     <span class="hl slc">---&gt; named</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">The</span> palloncino <span class="hl kwa">IsA</span> <span class="hl kwb">object</span>&#x000A;<span class="hl kwa">End the.</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Per creare la mela:</p>
+</div>
+<div class="listingblock example">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">The</span> mela <span class="hl kwa">IsA</span> <span class="hl kwb">object</span>&#x000A;  <span class="hl kwa">Has</span> articolo <span class="hl str">&quot;la&quot;</span><span class="hl kwa">.</span>&#x000A;<span class="hl kwa">End the.</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Quanto all&#8217;albero e l&#8217;arancia, entrambi hanno il medesimo articolo (&#8220;l'&#8221;),
+e in questo caso sarà necessario specificare il genere per l&#8217;arancia,
+altrimenti il modulo Italian presumerà si tratti di un oggetto maschile:</p>
+</div>
+<div class="listingblock example">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">The</span> albero <span class="hl kwa">IsA</span> <span class="hl kwb">object</span>&#x000A;  <span class="hl kwa">Has</span> articolo <span class="hl str">&quot;l&apos;&quot;</span><span class="hl kwa">.</span>&#x000A;<span class="hl kwa">End the.</span>&#x000A;&#x000A;<span class="hl kwa">The</span> arancia <span class="hl kwa">IsA</span> <span class="hl kwb">object</span>&#x000A;  <span class="hl kwa">Has</span> articolo <span class="hl str">&quot;l&apos;&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Is</span> femminile<span class="hl kwa">.</span>&#x000A;<span class="hl kwa">End the.</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L&#8217;articolo &#8220;l'&#8221; femminile è l&#8217;unico a richiedere di definire manualmente
+il genere dell&#8217;istanza, poiché il modulo non è in grado di distinguere tra
+maschile e femminile senza tale intervento.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nome_proprio"><a class="anchor" href="#_nome_proprio"></a>Nome proprio</h3>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -621,12 +710,21 @@ corretto <code>articolo</code> su ogni istanza dell&#8217;avventura ricade sull&
 </table>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_vocale_per_accordo_aggettivi"><a class="anchor" href="#_vocale_per_accordo_aggettivi"></a>Vocale per accordo aggettivi</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">HAS</span> vocale <span class="hl str">&quot;o&quot;</span><span class="hl kwa">.</span></code></pre>
+<div class="sect2">
+<h3 id="_vocale_per_accordo_aggettivi"><a class="anchor" href="#_vocale_per_accordo_aggettivi"></a>Vocale per accordo aggettivi</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Attenzione"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Sezione non ancora completata&#8230;&#8203;</p>
 </div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>L&#8217;attributo <code>vocale</code> contiene la vocale finale di riferimento per gli
@@ -645,68 +743,27 @@ drasticamente la lunghezza del codice all&#8217;interno dei verbi.
 Inoltre, questo attributo potrà essere impiegato anche dagli autori stessi,
 poiché la sua utilità non è limitata all&#8217;uso interno che ne fa la libreria.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">HAS</span> prep_DI <span class="hl str">&quot;del&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> prep_A  <span class="hl str">&quot;al&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> prep_DA <span class="hl str">&quot;dal&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> prep_IN <span class="hl str">&quot;nel&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> prep_SU <span class="hl str">&quot;sul&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
-</div>
+<div class="sect2">
+<h3 id="_preposizioni_articolate"><a class="anchor" href="#_preposizioni_articolate"></a>Preposizioni articolate</h3>
 <div class="paragraph">
 <p>Grazie a questi attributi, nei messaggi della libreria (e delle avventure)
 è possibile recuperare le corrette preposizioni articolate da usare con
 ciascuna istanza.</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_articolo_di_riferimento"><a class="anchor" href="#_articolo_di_riferimento"></a>Articolo di riferimento</h4>
-<div class="paragraph">
-<p>Ogni entità ha un attributo che ne specifica l&#8217;articolo determinativo:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">HAS</span> articolo <span class="hl str">&quot;il&quot;</span><span class="hl kwa">.</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>L&#8217;autore potrà sovrascrivere il valore predefinito direttamente sulle
-specifiche istanze dell&#8217;avventura, indicando l&#8217;articolo appropriato per
-l&#8217;istanza in oggetto.</p>
-</div>
-<div class="paragraph">
-<p>Questo attributo viene utilizzato dalla libreria per inizializzare le
-istanze del gioco: in base all&#8217;articolo indicato dall&#8217;autore, la libreria sarà
-in grado di dedurre il genere ed il numero dell&#8217;istanza, e ne imposterà tutte
-le altre proprietà grammaticali con i valori appropriati.</p>
-</div>
-<div class="paragraph">
-<p>L&#8217;autore deve semplicemente specficare l&#8217;articolo determinativo del
-sostantivo, e la libreria farà tutto il resto. L&#8217;unica eccezione è
-l&#8217;articolo <code>"l'"</code>, che può rifererirsi sia a un sostantivo maschile che
-femminile; per questo articolo l&#8217;autore dovrà specificare <code>IS femminile</code>
-nel caso di sostantivi femminili, altrimenti la libreria presumerà che si
-tratti di un sostantivo maschile.</p>
-</div>
-<div class="admonitionblock note">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Nota"></i>
+<i class="fa icon-warning" title="Attenzione"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>L&#8217;attributo <code>articolo</code> viene utilizzato solo ai fini dell&#8217;inizializzazione
-delle istanze, come riferimento per dedurre genere, numero, articoli e
-preposizioni dell&#8217;istanza, dopodiché non viene più utlizzato.
-Quindi, la libreria non ricorre ad <code>articolo</code> per stampare l&#8217;articolo di un
-istanza nei messaggi.</p>
+<p>Sezione non ancora completata&#8230;&#8203;</p>
 </div>
 </td>
 </tr>
 </table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_preposizioni_articolate"><a class="anchor" href="#_preposizioni_articolate"></a>Preposizioni articolate</h4>
-
 </div>
 </div>
 <div class="sect2">
@@ -729,6 +786,400 @@ istanza nei messaggi.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_predefined_player_words"><a class="anchor" href="#_predefined_player_words"></a>Predefined Player Words</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Le <em>predefined Player Words</em> sono dei gruppi di vocaboli del giocatore
+predefiniti in Alan (ossia, integrate nel compilatore stesso). Le loro
+definizioni variano in ciascuna delle lingue supportate nativamente da Alan.
+La libreria italiana utilizza la lingua inglese come base di partenza.</p>
+</div>
+<div class="paragraph">
+<p>Queste sono le <em>Player Words</em> predefinite per la lingua inglese, suddivise
+in gruppi di appartenenza:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ALL:   all everything&#x000A;AND:   and then&#x000A;BUT:   but except&#x000A;THEM:  them&#x000A;NOISE: go the</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Le <em>Player Words</em> delle varie lingue sono definite nel file sorgente di Alan
+<code>compiler/wrd.c</code> (riga 182).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_conjunction_words"><a class="anchor" href="#_conjunction_words"></a>CONJUNCTION WORDS</h3>
+<div class="literalblock">
+<div class="content">
+<pre>AND: and then</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Le <em>conjunction words</em> (parole di congiunzione) consentono al parser di
+interpretare correttamente i comandi del giocatore che fanno riferimento a
+più oggetti, o le sequenze di comandi indipendenti combinati in una sola riga
+di comando. Esempi:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>"prendi la mela E la pera"</p>
+</li>
+<li>
+<p>"prendi la mela E prendi la pera"</p>
+</li>
+<li>
+<p>"prendi la mela POI prendi la pera"</p>
+</li>
+<li>
+<p>"prendi la mela E POI prendi la pera"</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">SYNONYMS</span> e<span class="hl kwa">,</span> poi <span class="hl opt">=</span> &apos;and&apos;<span class="hl kwa">.</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_noise_words"><a class="anchor" href="#_noise_words"></a>NOISE WORDS</h3>
+<div class="literalblock">
+<div class="content">
+<pre>NOISE: go the</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Le <em>noise words</em> (parole rumore) vengono ignorate dal parser che le tratta
+come rumore di sottofondo.</p>
+</div>
+<div class="sect3">
+<h4 id="_articoli_determinativi"><a class="anchor" href="#_articoli_determinativi"></a>Articoli determinativi</h4>
+<div class="paragraph">
+<p>Definiamo tutti gli articoli determinativi come sinonimi della <em>noise word</em>
+<code>'the'</code> affinché vengano ignorati nel parsing dei comandi del giocatore, di
+modo che comandi come "prendi LA mela" vengano interpretati come "prendi
+mela".</p>
+</div>
+<div class="paragraph">
+<p>Nel caso di articoli con l&#8217;apostrofo, che vanno a formare un singolo lessema
+con il sostantivo cui si riferiscono, il parser di Alan prima fallirà nel
+riconoscere il lessema (es. <code>l&#8217;albero</code>) ma, appurata la presenza di un
+apostrofo nel lessema, prima di generare un errore eseguirà un ulteriore
+tentativo spezzando in due il lessema originale nel punto successivo al primo
+apostrofo, e ritenterà il parsing dei due nuovi lessemi (<code>l'</code> + <code>albero</code>).
+Durante il secondo tentativo, l&#8217;articolo <code>l'</code> verrà soppresso  in quanto
+<em>noise word</em>, e <code>albero</code> verrà ora riconosciuto come il nome dell&#8217;oggetto
+corrispondente.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">SYNONYMS</span> il<span class="hl kwa">,</span> lo<span class="hl kwa">,</span> la<span class="hl kwa">,</span> &apos;l&apos;&apos;&apos;, i, gli, le = &apos;the&apos;<span class="hl kwa">.</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_all_words"><a class="anchor" href="#_all_words"></a>ALL WORDS</h3>
+<div class="literalblock">
+<div class="content">
+<pre>ALL: all everything</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">SYNONYMS</span> tutto<span class="hl kwa">,</span> tutti<span class="hl kwa">,</span> tutte <span class="hl opt">=</span> all<span class="hl kwa">.</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_except_words"><a class="anchor" href="#_except_words"></a>EXCEPT WORDS</h3>
+<div class="literalblock">
+<div class="content">
+<pre>BUT: but except</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Le <em>except words</em> (parole di eccezione) operano congiuntamente alle <em>ALL words</em>
+per escludere alcuni oggetti dall&#8217;insieme. Esempi:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>"lascia TUTTO TRANNE la mela"</p>
+</li>
+<li>
+<p>"lascia TUTTO ECCETTO la mela"</p>
+</li>
+<li>
+<p>"lascia TUTTO ESCLUSA la mela"</p>
+</li>
+<li>
+<p>"lascia TUTTO ESCLUSO il mango"</p>
+</li>
+<li>
+<p>"lascia TUTTO ESCLUSI il mango e la mela"</p>
+</li>
+<li>
+<p>"lascia TUTTO ESCLUSE la mela e la pera"</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">SYNONYMS</span> tranne<span class="hl kwa">,</span> eccetto<span class="hl kwa">,</span> escluso<span class="hl kwa">,</span> esclusa<span class="hl kwa">,</span> esclusi<span class="hl kwa">,</span> escluse <span class="hl opt">=</span> except<span class="hl kwa">.</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_them_words"><a class="anchor" href="#_them_words"></a>THEM WORDS</h3>
+<div class="literalblock">
+<div class="content">
+<pre>THEM: them</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Le <em>them words</em> rappresentano gli oggetti multipli utilizzati in un comando
+precedente. Esempio:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>"remove the hat and the scarf then drop THEM"</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Questo tipo di riferimento a oggetti multipli è consentito solo nei comandi
+che supportano parametri multipli. L&#8217;interprete restringerà il campo dei
+parametri idonei all&#8217;inclusione nel referente in base alle regole di <em>scoping</em>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_preposizioni_articolate_2"><a class="anchor" href="#_preposizioni_articolate_2"></a>Preposizioni articolate</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>La libreria definisce dei sinonimi per trasformare le preposizioni articolate
+nelle corrispettive preposizioni semplici (es. <em>della</em> &#8594; <em>di</em>).</p>
+</div>
+<div class="paragraph">
+<p>Solo alcune preposizioni (di|a|da|in|con|su) hanno un&#8217;applicazione practica
+nelle avventure testuali, e non tutte le forme contratte delle preposizioni
+articolate sono implementabili.
+La seguente tabella riporta tra parentesi le forme contratte non supportate,
+e in corsivo quelle che non subiscono sostituzioni nel parsing:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">il</th>
+<th class="tableblock halign-left valign-top">lo</th>
+<th class="tableblock halign-left valign-top">la</th>
+<th class="tableblock halign-left valign-top">l'</th>
+<th class="tableblock halign-left valign-top">i</th>
+<th class="tableblock halign-left valign-top">gli</th>
+<th class="tableblock halign-left valign-top">le</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">di</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">del</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dello</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">della</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dell'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dei</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">degli</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delle</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">a</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">al</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">allo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alla</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ai</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">agli</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">alle</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">da</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dallo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dalla</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dall'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(dai)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dagli</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dalle</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">in</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nello</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nella</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nell'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nei</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">negli</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nelle</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">con</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(col)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(collo)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(colla)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>con l'</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(coi)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(cogli)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(colle)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">su</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sul</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sullo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sulla</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sull'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sui</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sugli</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sulle</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">per</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(pel)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(pello)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(pella)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(pell')</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(pei)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(pegli)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(pelle)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Il mancato supporto di <em>dai</em> è dovuto a un conflitto con l&#8217;imperativo del
+verbo <em>dare</em>, e si sta cercando una soluzione a questo.</p>
+</div>
+<div class="paragraph">
+<p>Le forme contratte di <em>con</em>+articolo sono state tralasciate per via dei
+potenziali conflitti con altri vocaboli: <em>collo</em> (parte del corpo), <em>colla</em>
+(adesiva), <em>cogli</em> (verbo), <em>colle</em> (collina). L&#8217;implementazione di queste
+forme come sinonimi avrebbe impedito l&#8217;uso di quei vocaboli nelle avventure.</p>
+</div>
+<div class="paragraph">
+<p>Le varie preposizioni con <em>per</em> (<em>pel</em>, <em>pello</em>, ecc.) sono state omesse
+poiché raramente usate oggi, così come altre forme arcaiche (<em>gl&#8217;</em>, e affini).</p>
+</div>
+<div class="paragraph">
+<p>Nell&#8217;implementazione attuale sussistono comunque potenziali conflitti:
+<em>dei</em> (divinità), <em>dallo/a/e</em> (verbo), <em>Nello/a</em> (nomi propri),
+<em>nei</em> (cutanei).
+Ma all&#8217;atto pratico questi non costituiscono un problema reale per le AT, e
+simili occorrenze sono più rare nelle AT di quanto non lo siano nella vita
+reale, ed eventuali loro conflitti dovrebbero essere comunque gestibili.</p>
+</div>
+<div class="paragraph">
+<p>Sull&#8217;argomento, si veda l&#8217;eccellente articolo di Max Bianchi:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.tads.org/xlat3/En_vs_It.htm" class="bare">http://www.tads.org/xlat3/En_vs_It.htm</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Adesso, definiamo i vari sinonimi.</p>
+</div>
+<div class="sect2">
+<h3 id="_di_articolo"><a class="anchor" href="#_di_articolo"></a>&#8220;DI&#8221; + Articolo</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">SYNONYMS</span>&#x000A;  del<span class="hl kwa">,</span> dello<span class="hl kwa">,</span> della<span class="hl kwa">,</span> &apos;dell&apos;&apos;&apos;<span class="hl kwa">,</span> dei<span class="hl kwa">,</span> degli<span class="hl kwa">,</span> delle <span class="hl opt">=</span> di<span class="hl kwa">.</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_a_articolo"><a class="anchor" href="#_a_articolo"></a>&#8220;A&#8221; + Articolo</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">SYNONYMS</span>&#x000A;  al<span class="hl kwa">,</span> allo<span class="hl kwa">,</span> alla<span class="hl kwa">,</span> &apos;all&apos;&apos;&apos;<span class="hl kwa">,</span> ai<span class="hl kwa">,</span> agli<span class="hl kwa">,</span> alle  <span class="hl opt">=</span> a<span class="hl kwa">.</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_da_articolo"><a class="anchor" href="#_da_articolo"></a>&#8220;DA&#8221; + Articolo</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">SYNONYMS</span>&#x000A;  dal<span class="hl kwa">,</span> dallo<span class="hl kwa">,</span> dalla<span class="hl kwa">,</span> &apos;dall&apos;&apos;&apos;<span class="hl kwa">,</span> dall<span class="hl kwa">,</span> dagli<span class="hl kwa">,</span> dalle  <span class="hl opt">=</span> da<span class="hl kwa">.</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Attenzione"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>La preposizione <code>dai</code> è stata omessa dalla lista di sinonimi poiché creava
+conflitto con la forma imperativa del verbo &#8220;dare&#8221;, causando l&#8217;errore di
+compilazione:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>333 E : The word 'dai' is defined to be both a synonym and another word class.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Sto ancora cercando una soluzione ottimale al problema.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_in_articolo"><a class="anchor" href="#_in_articolo"></a>&#8220;IN&#8221; + Articolo</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">SYNONYMS</span>&#x000A;  nel<span class="hl kwa">,</span> nello<span class="hl kwa">,</span> nella<span class="hl kwa">,</span> &apos;nell&apos;&apos;&apos;, nei, negli, nelle = &apos;in&apos;<span class="hl kwa">.</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_su_articolo"><a class="anchor" href="#_su_articolo"></a>&#8220;SU&#8221; + Articolo</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">SYNONYMS</span>&#x000A;  sul<span class="hl kwa">,</span> sullo<span class="hl kwa">,</span> sulla<span class="hl kwa">,</span> &apos;sull&apos;&apos;&apos;<span class="hl kwa">,</span> sui<span class="hl kwa">,</span> sugli<span class="hl kwa">,</span> sulle <span class="hl opt">=</span> su<span class="hl kwa">.</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_todo"><a class="anchor" href="#_todo"></a>TODO</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -738,10 +1189,14 @@ della grammatica italiana.</p>
 <div class="sect2">
 <h3 id="_check_list_generale"><a class="anchor" href="#_check_list_generale"></a>Check-list generale</h3>
 <div class="paragraph">
-<p>Lista della spesa per le varie cosucce da fare:
-* [ ] Sposta qui il codice di <code>lib_supplemento.i</code>? Farlo renderebbe questo
-      modulo completamente indipendente poiché includerebbe anche le
-      <em>player words</em> che definiscono articoli, preposizioni, ecc.</p>
+<p>Lista della spesa per le varie cosucce da fare:</p>
+</div>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="fa fa-square-o"></i> Risolvi conflitti con verbo <code>dai_a</code> che prevenie <code>SYNONYMS dai = da.</code>.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -775,7 +1230,7 @@ della grammatica italiana.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.18.0-Alpha<br>
+Versione 0.19.0-Alpha<br>
 </div>
 </div>
 </body>

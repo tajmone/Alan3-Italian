@@ -1,8 +1,8 @@
 = Alan Italian
 Tristano Ajmone <tajmone@gmail.com>
-2019-03-01
+2019-04-02
 // tag::AlanRevInfo[]
-:AlanItaV: 18
+:AlanItaV: 19
 :AlanSDK: 3.0beta6 build 1880
 :revnumber: 0.{AlanItaV}-Alpha
 // end::AlanRevInfo[]
@@ -98,8 +98,7 @@ ifdef::preface-title[:preface-title: Prefazione]
 :helpers_scss: pass:q[link:./docs_src/sass/_helpers.scss[`docs_src/sass/_helpers.scss`^,title="Vedi sorgente"]]
 :highlight-treeprocessor_mod: pass:q[link:./docs_src/adoc/highlight-treeprocessor_mod.rb[`docs_src/adoc/highlight-treeprocessor_mod.rb`^,title="Vedi sorgente"]]
 :lib_definizioni_html: pass:q[link:./docs/lib_definizioni.html[`docs/lib_definizioni.html`^,title="Apri il file HTML"]]
-:lib_grammatica: pass:q[link:./alanlib_ita/lib_grammatica.i[`lib_grammatica.i`^,title="Vedi file sorgente"]]
-:lib_supplemento: pass:q[link:./alanlib_ita/lib_supplemento.i[`lib_supplemento.i`^,title="Vedi file sorgente"]]
+:lib_italian: pass:q[link:./alanlib_ita/lib_italian.i[`lib_italian.i`^,title="Vedi file sorgente"]]
 :lib_verbi_html: pass:q[link:./docs/lib_verbi.html[`docs/lib_verbi.html`^,title="Apri il file HTML"]]
 :LICENSE: pass:q[link:./LICENSE[`LICENSE`^,title="Leggi il testo completo della Artistic License 2.0"]]
 :README_EN: pass:q[link:./README_EN.md[`README_EN.md`^,title="View English README"]]
@@ -112,8 +111,8 @@ ifdef::preface-title[:preface-title: Prefazione]
 
 // ** HTML Live Links **
 
-:lib_verbi_html_live: link:http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_verbi.html[Anteprima Live HTML^,title="Anteprima HTML Livetramite GitHub & BitBucket HTML Preview"]
-:lib_definizioni_html_live: link:http://htmlpreview.github.io/?https://github.com/tajmone/Alan3-Italian/blob/master/docs/lib_definizioni.html[Anteprima Live HTML^,title="Anteprima HTML Livetramite GitHub & BitBucket HTML Preview"]
+:lib_verbi_html_live: link:https://tajmone.github.io/Alan3-Italian/lib_verbi.html[Anteprima Live HTML^,title="Anteprima HTML sul sito Alan Italian"]
+:lib_definizioni_html_live: link:https://tajmone.github.io/Alan3-Italian/lib_definizioni.html[Anteprima Live HTML^,title="Anteprima HTML sul sito Alan Italian"]
 
 // ** Link di approfondimento **
 
@@ -446,6 +445,13 @@ Grazie.
 
 Alcune notizie flash sugli aggiornamenti importanti del progetto...
 
+=== 2019/04/02 -- Modulo Italian unificato
+
+I moduli `lib_grammatica.i` e `lib_supplemento.i` sono stati unificati in un unico modulo
+rinominato `lib_italian.i`.
+Questo modulo contiene ora tutto il codice per il supporto della lingua italiana in Alan, e può essere utilizzato indipendentemente dalla Libreria Standard Italiana.
+
+
 === 2019/03/23 -- Passaggio a Alan 3.0beta6 build 1880
 
 La libreria adotta la nuova {developer_snaphshot} di Alan {build_1880}.
@@ -459,7 +465,7 @@ La libreria adotta la nuova {developer_snaphshot} di Alan {build_1880}.
 
 Questa piccola avventura di Roger Firth è considerata la "`Stele di Rosetta`" delle avventure testuali, ed è stata implementata in quasi tutti i linguaggi e piattaforme per lo sviluppo di AT.
 
-Per la sua realizzazione, si è usato solo il modulo per il supporto della lingua italiana ({lib_grammatica}), senza appoggiarsi alla *Libreria Standard*.
+Per la sua realizzazione, si è usato solo il modulo per il supporto della lingua italiana ({lib_italian}), senza appoggiarsi alla *Libreria Standard*.
 Questa demo è quindi un esempio su piccola scala di come sia possibile realizzare un'avventura in Alan partendo da zero, creando le proprie definizioni di tutti i verbi richiesti dal caso.
 
 
@@ -514,12 +520,9 @@ Lo scopo del ricettario sarà fornire esempi pratici e documentati su come sia p
 
 Tutto il codice per il supporto della lingua italiana è stato spostato in un modulo a sé stante che può essere utilizzato indipendentemente dalla Libreria Standard:
 
-* {lib_grammatica}
+* {lib_italian}
 
 Il modulo è già pronto all'uso, e parzialmente documentato.
-Allo stato attuale si consiglia anche di includere il seguente modulo aggiuntivo:
-
-* {lib_supplemento}
 
 Quindi, è finalmente possibile creare avventure italiane con Alan, anche se la traduzione della Libreria Standard non è ultimata.
 

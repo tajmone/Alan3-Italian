@@ -1,6 +1,6 @@
 // tag::rev_info[]
-:revdate:     2019-03-07
-:revnumber:   1.0.0-alpha.1
+:revdate:     2019-04-02
+:revnumber:   1.0.0-alpha.3
 :AlanSDK:     Alan 3.0beta6 build 1880
 // end::rev_info[]
 // tag::region1[]
@@ -22,8 +22,7 @@ Libreria Standard Italiana:
 
 [source,alan]
 --------------------------------------------------------------------------------
-Import '../../alanlib_ita/lib_grammatica.i'.
-Import '../../alanlib_ita/lib_supplemento.i'.
+Import '../../alanlib_ita/lib_italian.i'.
 
 --------------------------------------------------------------------------------
 
