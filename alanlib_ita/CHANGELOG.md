@@ -18,7 +18,10 @@ For previuos changes, see:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Alan 3.0beta6 build 1980](#alan-30beta6-build-1980)
-    - [2019/06/15](#20190615)
+    - [2019/06/15 \(2\)](#20190615-2)
+        - [Sinonimi Direzioni](#sinonimi-direzioni)
+        - [Doxterizza Modulo Luoghi](#doxterizza-modulo-luoghi)
+    - [2019/06/15 \(1\)](#20190615-1)
         - [Passa alla v0.20.0](#passa-alla-v0200)
         - [Passa ad Alan 3.0beta6 build 1980](#passa-ad-alan-30beta6-build-1980)
 - [Alan 3.0beta6 build 1880](#alan-30beta6-build-1880)
@@ -62,7 +65,57 @@ For previuos changes, see:
 
 # Alan 3.0beta6 build 1980
 
-## 2019/06/15
+## 2019/06/15 (2)
+
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.20.1
+
+Modifica sinonimi delle direzioni predefinite, e doxterizza `lib_luoghi.i`.
+
+### Sinonimi Direzioni
+
+Modificati i sinonimi delle direzioni per ottenere un sistema più coerente:
+
+- Eliminati:
+    + `alto`  per `su`
+    + `basso` per `giù`
+    + `b`     per `giù`
+    + `n` per `nord`
+    + `s` per `sud`
+    + `o` per `ovest`
+- Rinominati:
+    + `ne`  in `nest`
+    + `nov` in `novest`
+    + `se`  in `sest`
+    + `so`  in `sovest`
+
+Il vecchio sistema era poco elegante e difficile da memorizzare (per via dell'impossibilità ad avere `e` per `est` e `no` per `nordovest`). Il nuovo sistema almeno è coerente.
+
+La seguente tabella riassume tutte le direzioni predefinite e i loro sinonimi (vocaboli alternativi e comandi brevi):
+
+
+| Direzione | Sinonimi |
+|-----------|----------|
+| nord      |          |
+| sud       |          |
+| est       |          |
+| ovest     |          |
+| nordest   | nest     |
+| sudest    | sest     |
+| nordovest | novest   |
+| sudovest  | sovest   |
+| su        | sopra    |
+| giù       | giu      |
+| dentro    |          |
+| fuori     |          |
+
+### Doxterizza Modulo Luoghi
+
+Inizia a doxterizzare `lib_luoghi.i`:
+
+- Documenta `limbo`.
+- Documenta direzioni e loro sinonimi.
+
+## 2019/06/15 (1)
 
 - [`libreria.i`][libreria] &#x27f6; v0.20.0
 - [`lib_italian.i`][lib_italian] &#x27f6; v0.20.0

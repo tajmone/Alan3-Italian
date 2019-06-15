@@ -110,12 +110,15 @@ Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in cia
 
 ## Modulo Luoghi
 
-- [`lib_italian.i`][lib_italian]
-
+- [`lib_luoghi.i`][lib_luoghi]
 
 | weight   | subw      | tag                         | descrizione                               |
 | -------: | --------: | :-------------------------- | :---------------------------------------- |
 | 100      | 1         | `intro`                     | == Introduzione                           |
+| 1000     |           | `limbo`                     | == Il LIMBO e le direzioni predefinite    |
+| 1100     |           | `direzioni`                 | === Direzioni predefinite                 |
+| 1200     |           | `tabella_direzioni_intro`   | ==== Tabella direzioni predefinite        |
+| 1210     |           | `tabella_direzioni`         | \[tabella direzioni + sinonimi\]          |
 | 50000    |           | `todo`                      | TODO                                      |
 | 51000    | 1-33      | `todo_checklist`            | === Check List Generale                   |
 | 51000    | 665-666   | `todo_checklist`            | === Check List Doxter                     |

@@ -444,7 +444,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.20.0-Alpha,</span>
+<span id="revnumber">versione 0.20.1-Alpha,</span>
 <span id="revdate">2019-06-15</span>
 <br><span id="revremark">Alan 3.0beta6 build 1980</span>
 </div>
@@ -452,6 +452,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toctitle">Indice dei contenuti</div>
 <ul class="sectlevel1">
 <li><a href="#_introduzione">Introduzione</a></li>
+<li><a href="#_il_limbo_e_le_direzioni_predefinite">Il LIMBO e le direzioni predefinite</a>
+<ul class="sectlevel2">
+<li><a href="#_direzioni_predefinite">Direzioni predefinite</a>
+<ul class="sectlevel3">
+<li><a href="#_tabella_direzioni_predefinite">Tabella direzioni predefinite</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#_todo">TODO</a>
 <ul class="sectlevel2">
 <li><a href="#_check_list_generale">Check-list generale</a></li>
@@ -542,6 +551,235 @@ da tutti i luoghi in esse contenuti:</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_il_limbo_e_le_direzioni_predefinite"><a class="anchor" href="#_il_limbo_e_le_direzioni_predefinite"></a>Il LIMBO e le direzioni predefinite</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Il <code>limbo</code> è un luogo speciale, definito dalla libreria con duplice scopo:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Mettere a disposizione un non-luogo in cui poter parcheggiare tutte le
+istanze che si vogliono fare sparire dal gioco.</p>
+</li>
+<li>
+<p>Definire le direzioni di spostamento predefinite.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Siccome Alan non consente la creazione o la distruzione dinamica di instanze
+durante il gioco, l&#8217;unico modo per poter far sparire di scena un&#8217;instanza è
+collocarla in un luogo a cui il giocatore non potrà aver accesso&#8201;&#8212;&#8201;ossia,
+il limbo.</p>
+</div>
+<div class="paragraph">
+<p>Quanto alla definizione delle direzioni predefinite, Alan non dispone di una
+classe speciale per le direzioni, né definisce alcuna direzione predefinta;
+Alan estrae la lista delle direzioni dalle varie occorrenze di <code>EXIT</code> nel
+sorgente dell&#8217;avventura. Per questo motivo, la libreria definisce le
+direzioni standard sull&#8217;istanza di luogo <code>limbo</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">THE</span> limbo <span class="hl kwa">IsA</span> <span class="hl kwb">location</span>&#x000A;  <span class="hl kwa">EXIT</span>&#x000A;    nord<span class="hl kwa">,</span>&#x000A;    sud<span class="hl kwa">,</span>&#x000A;    est<span class="hl kwa">,</span>&#x000A;    ovest<span class="hl kwa">,</span>&#x000A;    nordest<span class="hl kwa">,</span>&#x000A;    sudest<span class="hl kwa">,</span>&#x000A;    nordovest<span class="hl kwa">,</span>&#x000A;    sudovest<span class="hl kwa">,</span>&#x000A;    su<span class="hl kwa">,</span>&#x000A;    giù<span class="hl kwa">,</span>&#x000A;    dentro<span class="hl kwa">,</span>&#x000A;    fuori&#x000A;&#x000A;    <span class="hl kwa">TO</span> limbo<span class="hl kwa">.</span>&#x000A;<span class="hl kwa">END THE</span> limbo<span class="hl kwa">.</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Le direzioni definite nel blocco <code>EXIT</code> del <code>limbo</code> saranno riconosciute
+come comandi di direzione in tutti i luoghi dell&#8217;avventura&#8201;&#8212;&#8201;se esse
+saranno praticabili o meno dipenderà dalla loro presenza nella definizioni
+di <code>EXIT</code> del luogo in cui si trova il giocatore, ma il comando di direzione
+verrà sempre riconisciuto come tale.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Il limbo definisce un&#8217;unica <code>EXIT</code> che contiene tutti i nomi delle direzioni
+predefinite e che porta al <code>limbo</code> stesso. Questo escamotage serve solo a
+informare Alan dei nomi delle direzioni. Dato che il giocatore non dovrebbe
+mai finire nel limbo, creare uscite che puntano al luogo di partenza non
+rappresenta un problema, bensì uno stratagemma.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_direzioni_predefinite"><a class="anchor" href="#_direzioni_predefinite"></a>Direzioni predefinite</h3>
+<div class="paragraph">
+<p>Oltre alle direzioni predefinite sul <code>limbo</code>, la libreria definisce anche
+dei sinonimi comuni per esse, che includono sintassi alternative e comandi
+brevi:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">SYNONYMS</span>&#x000A;    nest    <span class="hl opt">=</span> nordest<span class="hl kwa">.</span>&#x000A;    sest    <span class="hl opt">=</span> sudest<span class="hl kwa">.</span>&#x000A;    novest  <span class="hl opt">=</span> nordovest<span class="hl kwa">.</span>&#x000A;    sovest  <span class="hl opt">=</span> sudovest<span class="hl kwa">.</span>&#x000A;    sopra   <span class="hl opt">=</span> su<span class="hl kwa">.</span>&#x000A;    giu     <span class="hl opt">=</span> giù<span class="hl kwa">.</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Importante"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Dovrei implementare <code>in</code> come sinomimo di <code>dentro</code>?</p>
+</div>
+<div class="paragraph">
+<p>In molti verbi i due termini sono equivalenti&#8201;&#8212;&#8201;e.s. &#8220;guarda nella/dentro
+la scatola&#8221;, &#8220;entra in/dentro casa&#8221;. Devo valutare se potrebbero esserci
+verbi per i quali questo non vale&#8201;&#8212;&#8201;e.s. &#8220;scrivi in calce&#8221;&#8201;&#8212;&#8201;e se tali
+occorrenze giustificherebbo non utilizzare un sinonimo e lasciare invece
+all&#8217;autore il compito di definire sintassi alternative.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Nota"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>La ragione per cui non è stato possibile definire le direzioni brevi
+classiche <code>n</code>, <code>e</code>, <code>s</code>, <code>o</code>, <code>ne</code>, <code>no</code>, <code>se</code>, <code>so</code> è dovuto al fatto che
+alcune di esse avrebbero conflitto con altri identificativi definiti
+altrove:</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<code>e</code> &#8594; <code>est</code>        
+</td>
+<td class="hdlist2">
+<p>ignorato dal parsing dei comandi poiché <code>e</code> è una
+&#8220;noise word&#8221;.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>a</code> &#8594; <code>su</code>         
+</td>
+<td class="hdlist2">
+<p>causerebbe conflitti con la preposizione <code>a</code>.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>no</code> &#8594; <code>nordovest</code> 
+</td>
+<td class="hdlist2">
+<p>in conflitto con la sintassi del verbo <code>rispondi_No</code>.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>sotto</code> &#8594; <code>giù</code>    
+</td>
+<td class="hdlist2">
+<p>in conflitto con la sintassi &#8220;guarda sotto&#8221;.</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Ragion per cui si è preferito adottare un sistema di abbreviazioni coerente,
+limitandone l&#8217;uso alle direzioni composite.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Alcune abbreviazioni comunemente utilizzate in altri sistemi IF sono state
+qui omesse poiché potrebbero confliggere con sostantivi utilizzati nelle
+varie avventure&#8201;&#8212;&#8201;e.s. <code>basso</code>/<code>alto</code>, che potrebbero essere utilizzati come
+aggettivi, e.s. &#8220;l&#8217;uomo alto&#8221;&#8201;&#8212;&#8201;o perché giudicate di scarsa importanza
+(e.s. <code>b</code> per <code>giù</code>).</p>
+</div>
+<div class="sect3">
+<h4 id="_tabella_direzioni_predefinite"><a class="anchor" href="#_tabella_direzioni_predefinite"></a>Tabella direzioni predefinite</h4>
+<div class="paragraph">
+<p>La seguente tabella riassume tutte le direzioni predefinite dalla libreria:</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">DIREZIONE</th>
+<th class="tableblock halign-left valign-top">SINONIMI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nord</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sud</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>est</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ovest</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nordest</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nest</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sudest</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sest</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nordovest</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>novest</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sudovest</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sovest</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>su</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sopra</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>giù</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>giu</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dentro</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>fuori</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_todo"><a class="anchor" href="#_todo"></a>TODO</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -601,7 +839,7 @@ italiano del modulo dei luoghi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.20.0-Alpha<br>
+Versione 0.20.1-Alpha<br>
 </div>
 </div>
 </body>

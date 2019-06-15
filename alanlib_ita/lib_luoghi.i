@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_luoghi.i"
---| v0.20.0-Alpha, 2019-06-15: Alan 3.0beta6 build 1980
+--| v0.20.1-Alpha, 2019-06-15: Alan 3.0beta6 build 1980
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_locations.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -11,13 +11,18 @@
 
 
 -->intro(100.1)
---~============================================================================
---~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~-----------------------------------------------------------------------------
+--|
 --| == Introduzione
+--|
 --~-----------------------------------------------------------------------------
---~/////////////////////////////////////////////////////////////////////////////
---~============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--|
 --| Questo modulo della libreria, dedicato ai luoghi, definisce:
 --| 
 --|  * Le direzioni cardinali predefinite (implementate come `EXIT`).
@@ -95,64 +100,162 @@
 -->todo_checklist(.666)
 --| * [ ] Doxterizza _Il 'LIMBO' e Le Direzioni Cardinali Predefinite_.
 --<<
---=============================================================================
---\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---------------------------------------------------------------------------------
--- § 1 - Il 'LIMBO' e le direzioni cardinali predefinite
---------------------------------------------------------------------------------
---//////////////////////////////////////////////////////////////////////////////
---=============================================================================
+
+-->limbo(1000)
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == Il LIMBO e le direzioni predefinite
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--| 
+--| Il `limbo` è un luogo speciale, definito dalla libreria con duplice scopo:
+--| 
+--| 1. Mettere a disposizione un non-luogo in cui poter parcheggiare tutte le
+--|    istanze che si vogliono fare sparire dal gioco.
+--| 2. Definire le direzioni di spostamento predefinite.
+--| 
+--| Siccome Alan non consente la creazione o la distruzione dinamica di instanze
+--| durante il gioco, l'unico modo per poter far sparire di scena un'instanza è
+--| collocarla in un luogo a cui il giocatore non potrà aver accesso -- ossia,
+--| il limbo.
+--| 
+--| Quanto alla definizione delle direzioni predefinite, Alan non dispone di una
+--| classe speciale per le direzioni, né definisce alcuna direzione predefinta;
+--| Alan estrae la lista delle direzioni dalle varie occorrenze di `EXIT` nel
+--| sorgente dell'avventura. Per questo motivo, la libreria definisce le
+--| direzioni standard sull'istanza di luogo `limbo`:
 
 
 THE limbo IsA location
---@TRADOTTO: Direzioni cardinali
   EXIT
-    nord,         -- north
-    sud,          -- south
-    est,          -- east
-    ovest,        -- west
-    nordest,      -- northeast
-    sudest,       -- southeast
-    nordovest,    -- northwest
-    sudovest,     -- southwest
-    su,           -- up,
-    giù,          -- down,
-    dentro,       -- 'in',
-    fuori         -- out
+    nord,
+    sud,
+    est,
+    ovest,
+    nordest,
+    sudest,
+    nordovest,
+    sudovest,
+    su,
+    giù,
+    dentro,
+    fuori
 
     TO limbo.
-
-
 END THE limbo.
 
+--| Le direzioni definite nel blocco `EXIT` del `limbo` saranno riconosciute
+--| come comandi di direzione in tutti i luoghi dell'avventura -- se esse
+--| saranno praticabili o meno dipenderà dalla loro presenza nella definizioni
+--| di `EXIT` del luogo in cui si trova il giocatore, ma il comando di direzione
+--| verrà sempre riconisciuto come tale.
+--|
+--| [NOTE]
+--| ========================================================================
+--| Il limbo definisce un'unica `EXIT` che contiene tutti i nomi delle direzioni
+--| predefinite e che porta al `limbo` stesso. Questo escamotage serve solo a
+--| informare Alan dei nomi delle direzioni. Dato che il giocatore non dovrebbe
+--| mai finire nel limbo, creare uscite che puntano al luogo di partenza non
+--| rappresenta un problema, bensì uno stratagemma.
+--| ========================================================================
+--<
 
---@TRADOTTO: Direzioni cardinali (sinonimi)
---@NOTA: Problemi a creare abbrev "NO" per nordovest:
---       "NO" è una keyword di Alan, è 'no' non lo accetta:
---        ----------------------------------------------------------------------
---        333 E : The word 'no' is defined to be both a synonym and another word
---                class.
---
---        1 error(s).
---        ----------------------------------------------------------------------
+-->direzioni(1100)
+--~============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Direzioni predefinite
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+--| 
+--| Oltre alle direzioni predefinite sul `limbo`, la libreria definisce anche
+--| dei sinonimi comuni per esse, che includono sintassi alternative e comandi
+--| brevi:
+
+
 SYNONYMS
-    n     = nord.        -- n  = north
-    s     = sud.         -- s  = south
- -- e     = est.         -- e  = east         --~> conflicts with synon of 'AND'
-    o     = ovest.       -- w  = west
-    ne    = nordest.     -- ne = northeast
-    se    = sudest.      -- se = southeast
-    nov   = nordovest.   -- nw = northwest
-    so    = sudovest.    -- sw = southwest
-    sopra = su.          -- u  = up
-    alto  = su.
---  a     = su. <- usato in i6; ma potrebbe confliggere con "a/to"?
-    giu   = giù.         -- d  = down
---  sotto = giù. <- confileggeva con "guarda sotto"!
-    basso = giù.
-    b     = giù. -- Si usa davvero?
---@NOTA: i6 implementa anche "esterno" e "esternamente" per "fuori"
+    nest    = nordest.
+    sest    = sudest.
+    novest  = nordovest.
+    sovest  = sudovest.
+    sopra   = su.
+    giu     = giù.
 
+--| [IMPORTANT]
+--| ========================================================================
+--| Dovrei implementare `in` come sinomimo di `dentro`?
+--| 
+--| In molti verbi i due termini sono equivalenti -- e.s. "`guarda nella/dentro
+--| la scatola`", "`entra in/dentro casa`". Devo valutare se potrebbero esserci
+--| verbi per i quali questo non vale -- e.s. "`scrivi in calce`" -- e se tali
+--| occorrenze giustificherebbo non utilizzare un sinonimo e lasciare invece
+--| all'autore il compito di definire sintassi alternative.
+--| ========================================================================
+
+
+--| [NOTE]
+--| ========================================================================
+--| La ragione per cui non è stato possibile definire le direzioni brevi
+--| classiche `n`, `e`, `s`, `o`, `ne`, `no`, `se`, `so` è dovuto al fatto che
+--| alcune di esse avrebbero conflitto con altri identificativi definiti
+--| altrove:
+--| 
+--| [horizontal]
+--| `e` -> `est`        :: ignorato dal parsing dei comandi poiché `e` è una
+--|                        "`noise word`".
+--| `a` -> `su`         :: causerebbe conflitti con la preposizione `a`.
+--| `no` -> `nordovest` :: in conflitto con la sintassi del verbo `rispondi_No`.
+--| `sotto` -> `giù`    :: in conflitto con la sintassi "`guarda sotto`".
+--| 
+--| Ragion per cui si è preferito adottare un sistema di abbreviazioni coerente,
+--| limitandone l'uso alle direzioni composite.
+--| ========================================================================
+
+--| Alcune abbreviazioni comunemente utilizzate in altri sistemi IF sono state
+--| qui omesse poiché potrebbero confliggere con sostantivi utilizzati nelle
+--| varie avventure -- e.s. `basso`/`alto`, che potrebbero essere utilizzati come
+--| aggettivi, e.s. "`l'uomo alto`" -- o perché giudicate di scarsa importanza
+--| (e.s. `b` per `giù`).
+--<
+
+-->tabella_direzioni_intro(1200)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Tabella direzioni predefinite
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--| 
+--| La seguente tabella riassume tutte le direzioni predefinite dalla libreria:
+--<
+-->tabella_direzioni(1210)
+--| [cols="2*<5m",options="header,autowidth"]
+--| |=======================
+--| | DIREZIONE | SINONIMI
+--~ +-----------+----------+
+--| | nord      |
+--| | sud       |
+--| | est       |
+--| | ovest     |
+--| | nordest   | nest
+--| | sudest    | sest
+--| | nordovest | novest
+--| | sudovest  | sovest
+--| | su        | sopra
+--| | giù       | giu
+--| | dentro    |
+--| | fuori     |
+--| |=======================
+--<
+
+
+--@NOTA: i6 implementa anche "esterno" e "esternamente" per "fuori"
 
 -- Note:
 

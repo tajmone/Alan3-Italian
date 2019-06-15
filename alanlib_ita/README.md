@@ -88,24 +88,24 @@ Current status of translation work.
 
 ## Directions and Movement
 
-- [`lib_luoghi.i`][lib_luoghi]
+- [`lib_luoghi.i`][lib_luoghi] (v0.20.1-Alpha)
 
 Translated all stdLib directions:
 
-| IT Direction |     IT Aliases    | IT Short |  English  | EN Short |
-|--------------|-------------------|----------|-----------|----------|
-| nord         |                   | n        | north     | n        |
-| sud          |                   | s        | south     | s        |
-| est          |                   | e        | east      | e        |
-| ovest        |                   | o        | west      | w        |
-| nordest      |                   | ne       | northeast | ne       |
-| sudest       |                   | se       | southeast | se       |
-| nordovest    |                   | nov      | northwest | nw       |
-| sudovest     |                   | so       | southwest | sw       |
-| su           | sopra, alto       |          | up        | u        |
-| giù          | giu, sotto, basso | b        | down      | d        |
-| dentro       |                   |          | 'in'      |          |
-| fuori        |                   |          | out       |          |
+| IT Direction | IT Aliases | IT Short |  English  | EN Short |
+|--------------|------------|----------|-----------|----------|
+| nord         |            |          | north     | n        |
+| sud          |            |          | south     | s        |
+| est          |            |          | east      | e        |
+| ovest        |            |          | west      | w        |
+| nordest      |            | nest     | northeast | ne       |
+| sudest       |            | sest     | southeast | se       |
+| nordovest    |            | novest   | northwest | nw       |
+| sudovest     |            | sovest   | southwest | sw       |
+| su           | sopra      |          | up        | u        |
+| giù          | giu        |          | down      | d        |
+| dentro       |            |          | 'in'      |          |
+| fuori        |            |          | out       |          |
 
 > __NOTE 1__ — Couldn't create synonym "no" for "nordovest" because of conflict with `NO` keyword. Trying to use `'no'` produced error:
 > 
