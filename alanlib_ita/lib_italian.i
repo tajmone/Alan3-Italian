@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_italian.i"
---| v0.19.0-Alpha, 2019-04-02: Alan 3.0beta6 build 1880
+--| v0.20.0-Alpha, 2019-06-15: Alan 3.0beta6 build 1980
 --|=============================================================================
 --| Modulo per il supporto della lingua italiana, utilizzabile indipendentemente
 --| dalla Libreria Standard. Non presente nell'originale

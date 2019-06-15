@@ -1,9 +1,9 @@
 = Alan Italian
 Tristano Ajmone <tajmone@gmail.com>
-2019-04-02
+2019-06-15
 // tag::AlanRevInfo[]
-:AlanItaV: 19
-:AlanSDK: 3.0beta6 build 1880
+:AlanItaV: 20
+:AlanSDK: 3.0beta6 build 1980
 :revnumber: 0.{AlanItaV}-Alpha
 // end::AlanRevInfo[]
 :lang: it
@@ -66,7 +66,7 @@ ifdef::preface-title[:preface-title: Prefazione]
 // Some attributes to handle relative paths so that when regions of this file
 // are included in other docs the paths may be adjusted.
 
-:path2_docs_src: ./docs_src/
+:path2_docs_src: docs_src/
 // =============================================================================
 //                      CUSTOM ATTRIBUTES FOR SUBSTITUTIONS
 // =============================================================================
@@ -77,7 +77,7 @@ ifdef::preface-title[:preface-title: Prefazione]
 // tag::link_paypal[]
 :PyaPal_img: {path2_docs_src}donazione-paypal.gif
 :PyaPal_url: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=55GFRM9EBF3SU&source=url
-:PulsanteDonazionePayPal: pass:[image:{PyaPal_img}[Pulsante donazione PayPal,float=right, link={PyaPal_url}, title="Sostieni il progetto Alan Italian con una donazione..."]]
+:PulsanteDonazionePayPal: pass:a[image:{PyaPal_img}[Pulsante donazione PayPal,float=right, link={PyaPal_url}, title="Sostieni il progetto Alan Italian con una donazione..."]]
 // end::link_paypal[]
 
 // ** Cartelle del progetto (link testuali) **
