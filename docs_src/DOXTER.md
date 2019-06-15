@@ -178,7 +178,6 @@ Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in cia
 | 10100    |           | `gruppo_file`                 | === Salvataggio e Caricamento              |
 | 10200    |           | `gruppo_trascrizione`         | === Trascrizione della Partita             |
 | 10300    |           | `gruppo_punteggio`            | === Punteggio e Notifiche                  |
-| 10400    |           | `gruppo_verbosity`            | === Descrizioni Brevi e Lunghe             |
 | 10500    |           | `gruppo_info`                 | === Istruzioni, Info e Aiuto               |
 | 19999    |           | `gruppo_misc_meta`            | === Meta Verbi Vari                        |
 | 20000    |           | `comandi_gioco`               | == Verbi di Gioco                          |

@@ -444,7 +444,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.20.0-Alpha,</span>
+<span id="revnumber">versione 0.20.1-Alpha,</span>
 <span id="revdate">2019-06-15</span>
 <br><span id="revremark">Alan 3.0beta6 build 1980</span>
 </div>
@@ -480,12 +480,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_notifica">notifica</a></li>
 <li><a href="#_notifica_on">notifica_on</a></li>
 <li><a href="#_notifica_off">notifica_off</a></li>
-</ul>
-</li>
-<li><a href="#_descrizioni_brevi_e_lunghe">Descrizioni brevi e lunghe</a>
-<ul class="sectlevel3">
-<li><a href="#_modalità_breve">modalità_breve</a></li>
-<li><a href="#_modalità_lunga">modalità_lunga</a></li>
 </ul>
 </li>
 <li><a href="#_istruzioni_info_e_aiuto">Istruzioni, info e aiuto</a>
@@ -828,18 +822,10 @@ verbi correlati tra loro.</p>
 <p><span class="big"><strong>Legenda delle Tabelle</strong></span></p>
 </div>
 <div class="paragraph">
-<p>Il significato delle lettere nelle ultime quattro colonne è il seguente:</p>
+<p>Il significato delle lettere nelle ultime due colonne è il seguente:</p>
 </div>
 <div class="hdlist">
 <table>
-<tr>
-<td class="hdlist1">
-[M] Meta Verbo 
-</td>
-<td class="hdlist2">
-<p>&#x2714; = Sì</p>
-</td>
-</tr>
 <tr>
 <td class="hdlist1">
 [A] Arietà     
@@ -850,18 +836,10 @@ verbi correlati tra loro.</p>
 </tr>
 <tr>
 <td class="hdlist1">
-[O] Oggetto    
+[M] Meta Verbo 
 </td>
 <td class="hdlist2">
 <p>&#x2714; = Sì</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-[B] C&#8217;è un Bug 
-</td>
-<td class="hdlist2">
-<p>&#128128; = Sì</p>
 </td>
 </tr>
 </table>
@@ -872,23 +850,19 @@ verbi correlati tra loro.</p>
 <h3 id="_tabella_comandi_di_partita"><a class="anchor" href="#_tabella_comandi_di_partita"></a>Tabella comandi di partita</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 15.7894%;">
-<col style="width: 26.3157%;">
-<col style="width: 36.8421%;">
-<col style="width: 5.2631%;">
-<col style="width: 5.2631%;">
-<col style="width: 5.2631%;">
-<col style="width: 5.2635%;">
+<col style="width: 17.647%;">
+<col style="width: 29.4117%;">
+<col style="width: 41.1764%;">
+<col style="width: 5.8823%;">
+<col style="width: 5.8826%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">VERBO</th>
 <th class="tableblock halign-left valign-top">SINONIMI</th>
 <th class="tableblock halign-left valign-top">SINTASSI</th>
-<th class="tableblock halign-center valign-top">M</th>
 <th class="tableblock halign-center valign-top">A</th>
-<th class="tableblock halign-center valign-top">O</th>
-<th class="tableblock halign-center valign-top">B</th>
+<th class="tableblock halign-center valign-top">M</th>
 </tr>
 </thead>
 <tbody>
@@ -896,145 +870,99 @@ verbi correlati tra loro.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>abbandona_partita</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">quit, Q</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">abbandona [partita]</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>carica_partita</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">restore</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">carica [partita]</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>istruzioni</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">help, info</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">istruzioni</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>modalità_breve</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">brief, modalità corta</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">modalità breve</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#128128;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>modalità_lunga</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">verbose</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">modalità lunga</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>notifica</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">notifica</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>notifica_off</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">notifica off</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">notifica disattivata</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>notifica_on</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">notifica on</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">notifica attivata</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ricomincia_partita</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">restart</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ricomincia [partita]</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ringraziamenti</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">autore, copyright, credits</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ringraziamenti</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>salva_partita</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">save</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">salva [partita]</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>suggerimento</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">hint, aiutino</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">suggerimento</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>trascrizione</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">trascrizione</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>trascrizione_off</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">trascrizione off</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">trascrizione disattivata</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>trascrizione_on</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">trascrizione on</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">trascrizione attivata</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>vedi_punteggio</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">punteggio</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 </tr>
 </tbody>
 </table>
@@ -1043,23 +971,19 @@ verbi correlati tra loro.</p>
 <h3 id="_tabella_comandi_di_gioco"><a class="anchor" href="#_tabella_comandi_di_gioco"></a>Tabella comandi di gioco</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 15.7894%;">
-<col style="width: 26.3157%;">
-<col style="width: 36.8421%;">
-<col style="width: 5.2631%;">
-<col style="width: 5.2631%;">
-<col style="width: 5.2631%;">
-<col style="width: 5.2635%;">
+<col style="width: 17.647%;">
+<col style="width: 29.4117%;">
+<col style="width: 41.1764%;">
+<col style="width: 5.8823%;">
+<col style="width: 5.8826%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">VERBO</th>
 <th class="tableblock halign-left valign-top">SINONIMI</th>
 <th class="tableblock halign-left valign-top">SINTASSI</th>
-<th class="tableblock halign-center valign-top">M</th>
 <th class="tableblock halign-center valign-top">A</th>
-<th class="tableblock halign-center valign-top">O</th>
-<th class="tableblock halign-center valign-top">B</th>
+<th class="tableblock halign-center valign-top">M</th>
 </tr>
 </thead>
 <tbody>
@@ -1067,1323 +991,1029 @@ verbi correlati tra loro.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>accendi</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">accendi (disp)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>acchiappa</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">acchiappa (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>agita</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">scuoti</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">agita (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>alzati</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">alzati</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>annusa0</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">odora</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">annusa</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>annusa</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">odora</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">annusa (odore)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>apri</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">apri (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>apri_con</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">apri (ogg) con (strum)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>arrampicati</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">arrampicati su (superficie)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ascolta0</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ascolta</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ascolta</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ascolta (ogg)!</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>aspetta</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">attendi, Z</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aspetta</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>assaggia</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">lecca</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">assaggia (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>attacca</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">combatti, picchia</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">attacca (bersaglio)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>attacca_con</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">combatti, picchia</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">attacca (bersaglio) con (arma)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>attraversa</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">attraversa (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>bacia</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">abbraccia</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bacia (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>balla</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">danza</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">balla</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>bevi</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bevi (liq)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>blocca</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">serra</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">blocca (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>blocca_con</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">serra</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">blocca (ogg) con (chiave)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>brucia</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">brucia (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>brucia_con</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">brucia (ogg) con (strum)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>bussa</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bussa (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>bussa_errore</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bussa</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>calcia</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">calcia (bersaglio)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>canta</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">canta</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>chiedi</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">chiedi (ogg) a (png)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>chiudi</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">chiudi (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>chiudi_con</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">chiudi (ogg) con (strum)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>compra</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">acquista</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">compra (merce)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>consulta</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">guarda, cerca, ricerca</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">consulta (fonte) riguardo (argomento)!</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>dai_a</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">porgi, offri</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">dai (ogg) a (png)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>dì</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">dì (argomento)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>dì_a</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">dì (argomento) a (png)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>domanda</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">chiedi</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">domanda a (png) di (argomento)!</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>dormi</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">riposa</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">dormi</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>entra</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">entra</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>entra_in</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">entra in (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>esamina</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">guarda, descrivi, osserva, X</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">esamina (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>esci</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">esci</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>esci_da</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">esci da (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>forza</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">forza (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>forza_con</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">forza (ogg) con (strum)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>gioca_con</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gioca con (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>gira</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gira (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>gratta</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">gratta (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>grida</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">strilla, urla</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">grida</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>guarda</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">L</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">guarda</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>guarda_dietro</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">guarda dietro (bulk)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>guarda_in</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">guarda in (cont)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>guarda_fuori_da</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">guarda fuori da (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>guarda_attraverso</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">guarda attraverso (bulk)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>guarda_sotto</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">guarda sotto (bulk)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>guarda_su</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">L</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">guarda su</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>guida</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">guida (veicolo)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>indossa</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">mettiti</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">indossa (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>inventario</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">inv</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">inventario</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ispeziona</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">perquisisci</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ispeziona (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>lancia</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">lancia (proiettile)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>lancia_a</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">lancia (proiettile) a (png)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>lancia_contro</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">lancia (proiettile) contro (bersaglio)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>lancia_in</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">lancia (proiettile) in (cont)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>lascia</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">abbandona, metti giù, posa</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">lascia (ogg)*</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>lega</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">lega (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>lega_a</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">lega (ogg) a (bersaglio)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>leggi</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">leggi (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>libera</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">rilascia</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">libera (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>mangia</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">mangia (cibo)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>metti</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">metti (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>metti_contro</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">metti (ogg) contro (bulk)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>metti_dietro</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">metti (ogg) dietro (bulk)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>metti_in</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">metti (ogg) in (cont)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>metti_sotto</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">metti (ogg) sotto (bulk)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>metti_su</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">metti (ogg) su (superficie)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>metti_vicino</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">metti (ogg) vicino a (bulk)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>mordi</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">mordi (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>mostra</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">mostra (ogg) a (png)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>nuota</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">nuota</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>nuota_in</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">nuota in (liq)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>parla</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">parla</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>parla_con</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">parla con (png)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>pensa</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">pondera, rifletti, medita</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">pensa</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>pensa_a</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">rifletti/medita su, pondera</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">pensa a (argomento)!</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>prega</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">prega</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>prendi</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">afferra, raccogli, trasporta</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">prendi (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>prendi_da</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">rimuovi, togli</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">prendi (ogg) da (detentore)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>pulisci</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">strofina, lucida</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">pulisci (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>racconta</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">informa, dì a, parla a</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">racconta a (png) di (argomento)!</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>rifai</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ancora, G</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">rifai</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>riempi</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">riempi (cont)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>riempi_con</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">riempi (cont) con (sostanza)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>rompi</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">distruggi, spacca, sfonda</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">rompi (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>rompi_con</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">distruggi, spacca, sfonda</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">rompi (ogg) con (strum)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ripara</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aggiusta</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ripara (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>rispondi</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">rispondi (argomento)!</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sali_su</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">mettiti</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sali su (superficie)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>salta</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">salta</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>salta_in</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">salta in (cont)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>salta_su</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">salta su (superficie)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sblocca</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sblocca (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sblocca_con</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sblocca (ogg) con (chiave)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scava</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">scava (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scavalca</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">scavalca (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scendi_da</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">scendi da (superficie)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>scrivi</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">scrivi "testo" su (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sdraiati</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sdraiati</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sdraiati_in</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sdraiati in (cont)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sdraiati_su</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sdraiati su (superficie)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>segui</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">segui (png)!</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sfrega</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">massaggia</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sfrega (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>siediti</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">siedi</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">siediti</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>siediti_su</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">siedi</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">siediti su (superficie)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>solleva</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">alza</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">solleva (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sorseggia</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sorseggia (liq)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spara</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">spara con (arma)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spara_errore</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">spara</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spara_a</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">spara a (bersaglio) con (arma)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spara_a_errore</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">spara a (bersaglio)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spegni</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">spegni (disp)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spingi</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">spingi (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spingi_con</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">spingi (ogg) con (strum)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spogliati</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">svestiti</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">spogliati</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>spremi</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">strizza</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">spremi (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>strappa</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">strappa (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>suona</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">suona (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>svuota</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">svuota (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>svuota_in</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">svuota (ogg) in (cont)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>svuota_su</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">svuota (ogg) su (superficie)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>taglia</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">taglia (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>taglia_con</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">taglia (ogg) con (strum)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>tira</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tira (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>tocca</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">accarezza, carezza</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tocca (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>tocca_con</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">accarezza, carezza</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tocca (ogg) con (strum)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>togliti</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sfilati, levati</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">togliti (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>trova</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">trova (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>tuffati</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tuffati</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>tuffati_in</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tuffati in (liq)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>uccidi</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ammazza</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uccidi (vittima)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>uccidi_con</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ammazza</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uccidi (vittima) con (arma)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>usa</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">usa (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>usa_con</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">usa (ogg) con (strum)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>vai_a</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">vai a (dest)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>vendi</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">vendi (merce)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>versa</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">versa (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>versa_in</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">versa (ogg) in (cont)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>versa_su</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">versa (ogg) su (superficie)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 </tbody>
@@ -2393,23 +2023,19 @@ verbi correlati tra loro.</p>
 <h3 id="_tabella_comandi_domande"><a class="anchor" href="#_tabella_comandi_domande"></a>Tabella comandi domande</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 15.7894%;">
-<col style="width: 26.3157%;">
-<col style="width: 36.8421%;">
-<col style="width: 5.2631%;">
-<col style="width: 5.2631%;">
-<col style="width: 5.2631%;">
-<col style="width: 5.2635%;">
+<col style="width: 17.647%;">
+<col style="width: 29.4117%;">
+<col style="width: 41.1764%;">
+<col style="width: 5.8823%;">
+<col style="width: 5.8826%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">VERBO</th>
 <th class="tableblock halign-left valign-top">SINONIMI</th>
 <th class="tableblock halign-left valign-top">SINTASSI</th>
-<th class="tableblock halign-center valign-top">M</th>
 <th class="tableblock halign-center valign-top">A</th>
-<th class="tableblock halign-center valign-top">O</th>
-<th class="tableblock halign-center valign-top">B</th>
+<th class="tableblock halign-center valign-top">M</th>
 </tr>
 </thead>
 <tbody>
@@ -2417,72 +2043,56 @@ verbi correlati tra loro.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>chi_è</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">chi è (png)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>chi_sono_io</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">chi sono</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>cosa_è</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">cosa è (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>cosa_sono_io</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">cosa sono</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>dove_è</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">dove è (ogg)</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#x2714;</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>dove_mi_trovo</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">dove sono</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>rispondi_No</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">no</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>rispondi_Sì</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sì</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 </tbody>
@@ -2673,81 +2283,6 @@ della partita:</p>
 </div>
 <div class="sect3">
 <h4 id="_notifica_off"><a class="anchor" href="#_notifica_off"></a>notifica_off</h4>
-
-</div>
-</div>
-<div class="sect2">
-<h3 id="_descrizioni_brevi_e_lunghe"><a class="anchor" href="#_descrizioni_brevi_e_lunghe"></a>Descrizioni brevi e lunghe</h3>
-<div class="paragraph">
-<p>La libreria offre due direttive per controllare la &#8216;verbosità&#8217; delle
-descrizioni dei luoghi durante il gioco:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 30%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">verbo</th>
-<th class="tableblock halign-left valign-top">sintassi</th>
-<th class="tableblock halign-left valign-top">esito</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>modalità_breve</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">modalità (breve|corta)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Nascondi descrizioni già lette.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>modalità_lunga</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">modalità lunga</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mostra sempre le descrizioni.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Sono disponibili anche le sintassi alternative inglesi <code>brief</code> e <code>verbose</code>,
-per facilitare l&#8217;uso a giocatori abituati ad altri sistemi di IF.</p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Attenzione"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Allo stato attuale la modalità breve non funziona a causa degli attributi
-<code>visitato</code> e <code>descritto</code> che la libreria definisce su ogni <code>location</code>.
-Siccome la libreria aggiorna questi attributi ad ogni visita o descrizione
-del luogo, Alan resetta il contatore interno utilizzato per onorare <code>VISITS</code>,
-poiché i cambiamenti agli attributi del luogo hanno la precedenza su <code>VISITS</code>.</p>
-</div>
-<div class="paragraph">
-<p>In attesa di una possibile soluzione al problema, questi verbi restano nella
-libreria, ma verranno rimossi qualora non se ne dovesse trovare una.
-Per maggiori informazioni, vedi:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/AnssiR66/AlanStdLib/issues/32" class="bare">https://github.com/AnssiR66/AlanStdLib/issues/32</a></p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_modalità_breve"><a class="anchor" href="#_modalità_breve"></a>modalità_breve</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_modalità_lunga"><a class="anchor" href="#_modalità_lunga"></a>modalità_lunga</h4>
 
 </div>
 </div>
@@ -4379,12 +3914,6 @@ vicini tra loro verbi correlati, simmetrici e/o complementari.</p>
 <p><i class="fa fa-square-o"></i> Descrizione <code>notifica_off</code>.</p>
 </li>
 <li>
-<p><i class="fa fa-square-o"></i> Descrizione <code>modalità_breve</code>.</p>
-</li>
-<li>
-<p><i class="fa fa-square-o"></i> Descrizione <code>modalità_lunga</code>.</p>
-</li>
-<li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>istruzioni</code>.</p>
 </li>
 <li>
@@ -4845,7 +4374,7 @@ vicini tra loro verbi correlati, simmetrici e/o complementari.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.20.0-Alpha<br>
+Versione 0.20.1-Alpha<br>
 </div>
 </div>
 </body>

@@ -327,7 +327,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `bite`           | `mordere`                 |
 | `break`          | `rompere`                 |
 | `break_with`     | `rompere_con`             |
-| `brief`          | `modalità_breve`          |
+| `brief`          | _removed_                 |
 | `burn`           | `bruciare`                |
 | `burn_with`      | `bruciare_con`            |
 | `buy`            | `comprare`                |
@@ -482,7 +482,7 @@ A list of `my_game` attributes to allow/restrict (`CAN`/`CAN NOT`) use of certai
 | `unlock_with`    | `sbloccare_con`           |
 | `'use'`          | `usare`                   |
 | `use_with`       | `usare_con`               |
-| `'verbose'`      | `modalità_lunga`          |
+| `'verbose'`      | _removed_                 |
 | `'wait'`         | `aspettare`               |
 | `wear`           | `indossare`               |
 | `what_am_i`      | `domandare_cosa_sono_io`  |

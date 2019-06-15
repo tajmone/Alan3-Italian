@@ -18,6 +18,8 @@ For previuos changes, see:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Alan 3.0beta6 build 1980](#alan-30beta6-build-1980)
+    - [2019/06/15 \(3\)](#20190615-3)
+        - [Elimina Verbi Modalità Lunga/Breve](#elimina-verbi-modalit%C3%A0-lungabreve)
     - [2019/06/15 \(2\)](#20190615-2)
         - [Sinonimi Direzioni](#sinonimi-direzioni)
         - [Doxterizza Modulo Luoghi](#doxterizza-modulo-luoghi)
@@ -64,6 +66,23 @@ For previuos changes, see:
 -----
 
 # Alan 3.0beta6 build 1980
+
+## 2019/06/15 (3)
+
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.21.0
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.20.1
+
+Questo commit si sbarazza dei verbi di partita `modalità_breve` e `modalità_lunga`, che non funzionavano come dovevano.
+
+### Elimina Verbi Modalità Lunga/Breve
+
+Eliminati i verbi `modalità_breve` e `modalità_lunga` (e tutti gli attributi di restrizione associati), dato che il primo di essi non funzionava a causa del fatto che ogni volta che la libreria aggiornava gli attributi `visitato` e `descritto` di un luogo, Alan ingorava la direttiva `VISITS` (di fatto, vanificando questi due comandi di partita).
+
+Non era possibile salvare questi due meta-verbi — non fintanto che la libreria modifica costantemente gli attributi del luogo. Siccome l'idea generale che `VISITS` debba essere ignorato quando gli attributi del luogo mutano è radicata nella filosofia d'uso di Alan, è improbabile che questo cambi in futuro.
+
+Per maggiori dettagli su questo problema, si veda lo [Issue #32](https://github.com/AnssiR66/AlanStdLib/issues/32) sul repository della StdLib.
+
+<!---------------------------------------------------------------------------->
 
 ## 2019/06/15 (2)
 
@@ -114,6 +133,8 @@ Inizia a doxterizzare `lib_luoghi.i`:
 
 - Documenta `limbo`.
 - Documenta direzioni e loro sinonimi.
+
+<!---------------------------------------------------------------------------->
 
 ## 2019/06/15 (1)
 

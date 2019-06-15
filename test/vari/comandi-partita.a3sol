@@ -49,25 +49,6 @@ istruzioni
 ; ==============================================================================
 suggerimento
 ; ==============================================================================
-; MODALITÀ BREVE vs LUNGA
-; ==============================================================================
-; La libreria rende disponibili due modalità: breve e lunga.
-; --------------
-; MODALITÀ BREVE
-; --------------
-; ** BUG ** Sembra che la direttiva VISITS non funzioni comde dovrebbe...
-modalità breve
-nord
-sud
-nord
-sud
-; --------------
-; MODALITÀ LUNGA
-; --------------
-modalità lunga
-nord
-sud
-; ==============================================================================
 ; PUNTEGGIO & NOTIFICHE
 ; ==============================================================================
 ; NOTA: Ogni frutto mangiato incrementerà il punteggio di 1.

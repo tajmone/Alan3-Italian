@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.20.0-Alpha, 2019-06-15: Alan 3.0beta6 build 1980
+--| v0.20.1-Alpha, 2019-06-15: Alan 3.0beta6 build 1980
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -553,8 +553,6 @@ EVERY blocco_definizioni IsA LOCATION
   CAN mettere_sotto.            ---> put_under
   CAN mettere_su.               ---> put_on
   CAN mettere_vicino.           ---> put_near
-  CAN modalità_breve.           ---> brief
-  CAN modalità_lunga.           ---> verbose
   CAN mordere.                  ---> bite         (+ chew)
   CAN mostrare.                 ---> 'show'       (+ reveal)
   CAN mostrare_istruzioni.      ---> about
@@ -755,8 +753,6 @@ EVENT check_restriction
       MAKE mia_AT mettere_sotto.            ---> put_under
       MAKE mia_AT mettere_su.               ---> put_on
       MAKE mia_AT mettere_vicino.           ---> put_near
-      MAKE mia_AT modalità_breve.           ---> brief
-      MAKE mia_AT modalità_lunga.           ---> verbose
       MAKE mia_AT mordere.                  ---> bite (+ chew)
       MAKE mia_AT mostrare.                 ---> 'show'       (+ reveal)
       MAKE mia_AT mostrare_istruzioni.      ---> about
@@ -1038,8 +1034,6 @@ EVENT check_restriction
 
           MAKE mia_AT NOT abbandonare_partita.      ---> 'quit'
           MAKE mia_AT NOT caricare_partita.         ---> 'restore'
-          MAKE mia_AT NOT modalità_breve.           ---> brief
-          MAKE mia_AT NOT modalità_lunga.           ---> verbose
           MAKE mia_AT NOT mostrare_istruzioni.      ---> about
           MAKE mia_AT NOT notificare.               ---> 'notify'
           MAKE mia_AT NOT notificare_off.           ---> notify_off
