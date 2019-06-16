@@ -18,6 +18,11 @@ For previuos changes, see:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Alan 3.0beta6 build 1980](#alan-30beta6-build-1980)
+    - [2019/06/16](#20190616)
+        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
+        - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
+        - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi)
+        - [Verbo `prendi_da`](#verbo-prendi_da)
     - [2019/06/15 \(3\)](#20190615-3)
         - [Elimina Verbi Modalità Lunga/Breve](#elimina-verbi-modalit%C3%A0-lungabreve)
     - [2019/06/15 \(2\)](#20190615-2)
@@ -48,7 +53,7 @@ For previuos changes, see:
         - [Passa alla v0.15.0](#passa-alla-v0150)
         - [Rinnovato il codice del vestiario](#rinnovato-il-codice-del-vestiario)
         - [Novità riguardanti il vestiario](#novit%C3%A0-riguardanti-il-vestiario)
-        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
+        - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi-1)
     - [2019/02/05](#20190205)
         - [Passa alla v0.14.0](#passa-alla-v0140)
         - [Separa modulo grammatica italiana](#separa-modulo-grammatica-italiana)
@@ -67,9 +72,55 @@ For previuos changes, see:
 
 # Alan 3.0beta6 build 1980
 
+## 2019/06/16
+
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.20.2
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.20.1
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.20.2
+
+Pulizia generale dei sorgenti.
+
+### Nuovi messaggi dei verbi
+
+Creati nuovi attributi per i messaggi di risposta dei verbi (nessuna controparte nella libreria originale inglese):
+
+|         Attributo          |                   Testo                    |
+|----------------------------|--------------------------------------------|
+| `ogg2_inadatto_DA_sg`/`pl` | `"$+2 non [è/sono] qualcosa in cui poter"` |
+
+
+### Traduci messaggi dei verbi
+
+Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
+
+|     Attributo EN    |               Attributo IT              |                    Testo                    |
+|---------------------|-----------------------------------------|---------------------------------------------|
+| `check_obj_movable` | `ogg1_non_spostabile_ms`/`mp`/`fs`/`fp` | `"$1 [è/sono] fissat* al [suo/loro] posto"` |
+
+Tutte le occorrenze di `check_obj_movable` sono state rimpiazzate con l'equivalente italiano, e l'originale inglese eliminato.
+
+### Elimina messaggi dei verbi
+
+Elimina attributi inglesi per i messaggi di risposta dei verbi:
+
+|           Attributo            |              Testo              |
+|--------------------------------|---------------------------------|
+| `check_obj_in_act_sg`/`pl`     | `"$+2 [doesn/don]'t have $+1."` |
+| `check_obj_in_cont_sg`/`pl`    | `"$+1 [is/are] not in $+2."`    |
+| `check_obj_on_surface_sg`/`pl` | `"$+1 [is/are] not on $+2."`    |
+
+
+
+### Verbo `prendi_da`
+
+Tradotte quasi tutte le risposte del verbo `prendi_da` che erano ancora in inglese. Ma il corpo del verbo sembra contenere dei bachi, per cui alcune risposte non sono state tradotte, prima bisogna verificare la correttezza della sua esecuzione.
+
+<!---------------------------------------------------------------------------->
+
+
 ## 2019/06/15 (3)
 
-- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.21.0
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.20.1
 - [`lib_verbi.i`][lib_verbi] &#x27f6; v0.20.1
 
 Questo commit si sbarazza dei verbi di partita `modalità_breve` e `modalità_lunga`, che non funzionavano come dovevano.

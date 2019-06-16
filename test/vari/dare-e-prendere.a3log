@@ -1,0 +1,135 @@
+
+
+Testa verbi per dare e prendere 
+Un'avventura per testare i verbi della libreria. 
+(C) Tristano Ajmone, 2019. 
+Avventura realizzata con ALAN 3.0beta6 build 1980. 
+Libreria Standard Italiana: 20 Alpha. 
+Versione 1 
+Tutti i diritti riservati.
+
+
+Taverna Paradiso
+Un'antica cantina in pietra convertita in taverna. Nell'angolo noti una pianta
+e un vaso antico. Un caminetto riscalda l'ambiente. Un vecchio lampadario
+penzola dal soffitto. Puoi vedere un tavolo qui. Sopra il tavolo vedi un calice. 
+Puoi vedere un bancone qui. Sopra il bancone vedi una brocca. Puoi vedere un 
+portaombrelli e una fontana qui. La fontana contiene una statua. Puoi vedere una 
+pendola qui. 
+Dietro il bancone, il barista pulisce i bicchieri.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                           TESTA DARE & PRENDERE                            *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Questo test riguarda i verbi per dare, prendere e lasciare oggetti:
+> ;   * dai_a
+> ;   * lascia
+> ;   * prendi
+> ;   * prendi_da
+> ; ==============================================================================
+> ; VERBO 'prendi_da'
+> ; ==============================================================================
+> ;   SYNTAX prendi_da = prendi (ogg) da (detentore)
+> ; 
+> ; Il verbo 'prendi_da' richiede che entrambi i parametri siano THING.
+> ; ------------------------------------------------------------------------------
+> ; PARAMETRO 1 INVALIDO
+> ; ------------------------------------------------------------------------------
+> ; ogg NOT THING:
+> prendi "xyz" dal tavolo
+Xyz non è qualcosa che puoi prendere.
+
+> prendi 10 dal tavolo
+10 non è qualcosa che puoi prendere.
+
+> ; ------------------------------------------------------------------------------
+> ; PARAMETRO 2 INVALIDO
+> ; ------------------------------------------------------------------------------
+> ; detentore NOT THING:
+> prendi il calice da "xyz"
+Xyz non è qualcosa da cui poter prendere cose.
+
+> prendi il calice da 10
+10 non è qualcosa da cui poter prendere cose.
+
+> ; detentore NOT CONTAINER:
+> prendi il calice dalla pianta
+La pianta non è qualcosa da cui poter prendere cose.
+
+> ; ------------------------------------------------------------------------------
+> ; PARAMETRO 1 FAIL CHECK
+> ; ------------------------------------------------------------------------------
+> ; ogg <> hero:
+> prendi me dal tavolo
+Questo non ha alcun senso.
+
+> ; ogg NOT DIRECTLY IN hero:
+> prendi il coltello dal tavolo ; (anche se il coltello non è sul/nel tavolo)
+Possiedi già il coltello.
+
+> ; ogg <> detentore:
+> prendi il tavolo dal tavolo
+Questo non ha alcun senso.
+
+> ; ogg IS NOT scenario:
+> prendi la pianta dal tavolo ; (anche se la pianta non è sul/nel tavolo)
+La pianta non è importante ai fini del gioco.
+
+> ; ogg IS spostabile:
+> prendi la statua dalla fontana
+La statua è fissata al suo posto.
+
+> ; ogg IS prendibile:
+> prendi il fuoco dal caminetto
+Il fuoco non è qualcosa che puoi prendere.
+
+> ; peso OF ogg < 50:
+> prendi la pendola dal tavolo ; (anche se la pendola non è sul/nel tavolo)
+La pendola è troppo pesante.
+
+> ; ogg IN detentore (supporto):
+> prendi la brocca dal tavolo ; (la brocca è sul bancone)
+La brocca non è sul tavolo.
+
+> ; ogg IN detentore (contenitore):
+> prendi la brocca dal portaombrelli ; (la brocca è sul bancone)
+La brocca non è nel portaombrelli.
+
+> ; ogg IN detentore (actor):
+> prendi il calice dal barista ; (il calice è sul tavolo)
+Il barista non possiede il calice.
+
+> ; ------------------------------------------------------------------------------
+> ; PARAMETRO 2 FAIL CHECK
+> ; ------------------------------------------------------------------------------
+> ; detentore <> hero:
+> prendi il coltello da me
+Questo non ha alcun senso.
+
+> ; detentore IS NOT scenario:
+> prendi il calice dal vaso ; (vaso = CONTAINER + scenario)
+Il vaso non è importante ai fini del gioco.
+
+> ; detentore IS raggiungibile:
+> prendi la medaglia dal fuoco ; (sia medaglia che fuoco sono NOT raggiungibile)
+Il fuoco è fuori dalla tua portata.
+
+> ; detentore IS NOT distante;
+> prendi la collana dal lampadario ; (sia collana che lampadario sono distanti)
+Il lampadario è troppo distante.
+
+> ; ------------------------------------------------------------------------------
+> ; ESECUZIONE VERBO
+> ; ------------------------------------------------------------------------------
+> ; TEST DA COMPLETARE...
+> ; 
+> ; @NOTA ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;       Il corpo del verbo va ricontrollato poiché alcune condizioni sembrano
+> ;       impossibili a verificarsi, altre sembrano sbagliate!
+> ;       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; /// FINE TEST ///
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

@@ -135,7 +135,7 @@ Lasci la mela.
 
 > ; **ERR!** La mela dovrebbe essere IN 'suolo' dato che l'abbiamo lasciata:
 > prendi la mela dal suolo
-La mela is not in il suolo.
+La mela non è nel suolo.
 
 > ; ==============================================================================
 > ; OGGETTO_LUOGO_ESTERNO

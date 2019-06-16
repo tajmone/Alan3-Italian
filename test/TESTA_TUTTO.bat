@@ -1,4 +1,4 @@
-:: "TESTA_TUTTO.bat"                  | v3.0.2 | 2019/03/23 | by Tristano Ajmone
+:: "TESTA_TUTTO.bat"                  | v3.0.3 | 2019/06/16 | by Tristano Ajmone
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                                                            ::
 ::                   TEST SUITE DELLA LIBRERIA ALAN ITALIAN                   ::
@@ -261,6 +261,7 @@ CALL :EliminaFile %~1\*.a3c
 CALL :EliminaFile %~1\*.a3log
 CALL :EliminaFile %~1\*.ifid
 CALL :EliminaFile %~1\*.log
+CALL :EliminaFile %~1\*.tmp
 EXIT /B
 :: =============================================================================
 :: func                           Cancella File                                 

@@ -1,0 +1,192 @@
+-- Alan Italian 20 Alpha | Alan 3.0beta6 build 1980
+--==============================================================================
+-- "Testa verbi del gruppo Dare e Prendere" by Tristano Ajmone, 2019.
+--==============================================================================
+OPTIONS WIDTH 81.
+IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
+
+
+THE mia_AT IsA blocco_definizioni
+  ------------------------------------------------------------------------------
+  HAS
+         titolo  "Testa verbi per dare e prendere".
+    sottotitolo  "Un'avventura per testare i verbi della libreria.".
+         autore  "Tristano Ajmone".
+           anno   2019.
+       versione  "1".
+  ------------------------------------------------------------------------------
+END THE.
+
+
+THE taverna IsA stanza.
+  NAME 'Taverna Paradiso'.
+  DESCRIPTION
+    "Un'antica cantina in pietra convertita in taverna.
+     Nell'angolo noti una pianta e un vaso antico."
+  
+END THE taverna.
+
+
+
+-- =============================================================================
+
+-- ARREDAMENTO TAVERNA
+
+-- =============================================================================
+-- Creiamo un po' di oggetti per popolare la taverna.
+
+--==============================================================================
+-- IL TAVOLO
+--==============================================================================
+THE tavolo IsA supporto AT taverna.
+  HAS xDesc "Un tavolo in legno antico.".
+END THE tavolo.
+
+THE calice IsA object IN tavolo.
+  CONTAINER
+  HAS xDesc "Un calice per bere.".
+END THE calice.
+--==============================================================================
+-- IL BANCONE
+--==============================================================================
+THE bancone IsA supporto AT taverna.
+  HAS xDesc "Un vecchio bancone rustico.".
+END THE bancone.
+
+THE brocca IsA object IN bancone.
+  CONTAINER
+  HAS articolo "la".
+  HAS xDesc "Un brocca per servire il vino.".
+END THE brocca.
+
+THE vino IsA liquido IN brocca.
+  HAS recipiente brocca.
+  HAS xDesc "Del vino rosso.".
+END THE vino.
+--==============================================================================
+-- OGGETTI VARI
+--==============================================================================
+THE portaombrelli IsA CONTENITORE_ELENCATO AT taverna.
+END THE portaombrelli.
+
+--==============================================================================
+-- OGGETTI SCENICI
+--==============================================================================
+THE pianta IsA object AT taverna.
+  HAS articolo "la".
+  IS scenario.
+END THE pianta.
+
+THE vaso IsA object AT taverna.
+  CONTAINER
+  IS scenario.
+END THE vaso.
+--==============================================================================
+-- LA FONTANA
+--==============================================================================
+-- La fontana ci serve per testare oggetti non spostabili, di cui uno contenuto
+-- all'interno dell'altro (e.s. prendi_da).
+
+THE fontana IsA object AT taverna.
+  CONTAINER
+  HAS articolo "la".
+  IS NOT spostabile.
+  HAS xDesc "Una fontana in pietra con dentro una statua di donna.".
+END THE fontana.
+
+THE statua IsA object IN fontana.
+  HAS articolo "la".
+  IS NOT spostabile.
+  HAS xDesc "Una massiccia statua di donna al centro della fontana.".
+END THE statua.
+--==============================================================================
+-- IL CAMINETTO
+--==============================================================================
+-- Il camintto ci serve per testare un oggetto 'NOT prendibile' (il fuoco) e uno
+-- 'NOT raggiungibile` all'interno di un contenitore (per prendi_da).
+
+THE caminetto IsA object AT taverna.
+  CONTAINER
+  IS NOT spostabile.
+  DESCRIPTION "Un caminetto riscalda l'ambiente."
+  HAS xDesc "Un caminetto rustico, al suo interno arde un fuoco.".
+END THE caminetto.
+
+-- Il fuoco non è prendibile né raggiungibile, ma può contiene oggetti (medaglia).
+THE fuoco IsA object IN caminetto.
+  CONTAINER
+  IS NOT prendibile.
+  IS NOT raggiungibile.
+  DESCRIPTION ""
+  HAS xDesc
+    "Il fuoco arde vivacemente, tra le fiamme noti una medaglia.".
+END THE fuoco.
+
+-- La medaglia non è raggiungibile, e non sarà prendibile a causa del fuoco.
+THE medaglia IsA object IN fuoco.
+  HAS articolo "la".
+  IS NOT raggiungibile.
+  HAS xDesc "Una medaglia in ferro, arroventata dalle fiamme che l'avvolgono.".
+END THE medaglia.
+--==============================================================================
+-- OROLOGIO A PENDOLO
+--==============================================================================
+-- Questo oggetto è troppo pesante da poterlo spostare (peso >= 50).
+
+THE pendola IsA object AT taverna.
+  HAS articolo "la".
+  NAME pendola.
+  NAME orologio.
+  HAS xDesc "Una vecchio orologio a pendola, alto due metri.".
+  HAS peso 50.
+END THE pendola.
+--==============================================================================
+-- IL LAMPADARIO
+--==============================================================================
+-- Per testare oggetti distanti...
+THE lampadario IsA object AT taverna.
+  CONTAINER
+  DESCRIPTION "Un vecchio lampadario penzola dal soffitto."
+  HAS xDesc "Noti che appeso al lampadario c'è una collana.".
+  IS distante.
+END THE lampadario.
+
+THE collana IsA object IN lampadario.
+  HAS articolo "la".
+  IS distante.
+END THE collana.
+-- =============================================================================
+
+-- L'EROE
+
+-- =============================================================================
+-- Diamo qualche oggetto all'eroe, per consentire i test.
+THE coltello IsA arma IN Hero.
+  HAS xDesc "Un coltello affilato.".
+END THE coltello.
+
+
+-- =============================================================================
+
+-- PNG
+
+-- =============================================================================
+
+--==============================================================================
+-- IL BARISTA
+--==============================================================================
+THE barista IsA maschio AT taverna.
+  NAME barista.
+  NAME Mario.
+  DESCRIPTION "$nDietro il bancone, il barista pulisce i bicchieri."
+  
+  HAS xDesc "è Mario, il barista nonché proprietario della Taverna Paradiso.".
+END THE barista.
+
+
+
+
+--------------------------------------------------------------------------------
+START AT taverna .
+
+DESCRIBE intestazione.

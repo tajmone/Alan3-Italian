@@ -1,5 +1,5 @@
 :: -----------------------------------------------------------------------------
-:: "cloak_darkness.bat"                 v0.2.1 | 2019/03/07 | by Tristano Ajmone
+:: "cloak_darkness.bat"                 v0.2.2 | 2019/06/16 | by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 :: Compila, testa e documenta "Cloak of Darkness"
 :: -----------------------------------------------------------------------------
@@ -7,7 +7,7 @@
 ECHO [36m######################################
 ECHO # [93m"Cloak of Darkness"[37m di Roger Firth [36m#
 ECHO ######################################[0m
-DEL *.ifid, *.a3c, *.a3log > nul 2>&1
+DEL *.ifid, *.a3c, *.a3log, *.tmp > nul 2>&1
 ECHO.[92m
 ECHO ======================================
 ECHO 1. COMPILA E ESEGUI TEST AUTOMATIZZATI

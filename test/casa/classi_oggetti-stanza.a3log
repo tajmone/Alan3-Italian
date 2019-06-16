@@ -114,7 +114,7 @@ Lasci la mela.
 
 > ; **ERR!** La mela dovrebbe essere IN 'pavimento' dato che l'abbiamo lasciata:
 > prendi la mela dal pavimento
-La mela is not in il pavimento.
+La mela non è nel pavimento.
 
 > ; ==============================================================================
 > ; OGGETTI STANZA

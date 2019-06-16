@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.20.1-Alpha, 2019-06-15: Alan 3.0beta6 build 1980
+--| v0.20.2-Alpha, 2019-06-16: Alan 3.0beta6 build 1980
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -3865,11 +3865,8 @@ ADD TO EVERY THING
               THEN EMPTY ogg AT hero.
               ELSE EMPTY ogg IN superficie.
             END IF.
---                                                                              TRANSLATE!
             "Svuoti il contenuto" SAY ogg:prep_DI. SAY ogg.
             SAY superficie:prep_SU. SAY superficie. "."
-         -- "You $v the contents of" SAY THE ogg.
-         -- "on" SAY THE superficie. "."
         END IF.
   END VERB svuota_su.
 END ADD TO.
@@ -4655,9 +4652,7 @@ ADD TO EVERY OBJECT
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND strum IN hero
-        ---> @TODO!!                                                            TRANSLATE!
         ELSE SAY mia_AT:non_possiedi_ogg2.
-        ---> @TODO!!                                                            TRANSLATE!
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
@@ -4929,7 +4924,10 @@ ADD TO EVERY OBJECT
       CHECK mia_AT CAN dare -- (was CAN give)
         ELSE SAY mia_AT:azione_bloccata.
       AND ogg IS prendibile
-        ELSE SAY  mia_AT:ogg1_non_posseduto.
+        ELSE SAY mia_AT:ogg1_non_posseduto.
+        -- @NOTE: nell'originale: check_obj_takeable "You don't have $+1.".
+        --        Sembra dare per scontato che un ogg NOT prendibile non possa
+        --        essere posseduto dal giocatore.
       AND ogg <> png
         ELSE SAY mia_AT:azione_insensata.
 --                                                                              TRANSLATE!
@@ -5133,20 +5131,17 @@ ADD TO EVERY THING
           ELSE SAY mia_AT:ogg1_scenario_pl.
         END IF.
     AND ogg IS spostabile
-   -- ELSE SAY mia_AT:check_obj_movable. --#-> "It's not possible to $v $+1."
-      ELSE
-      --#i6/7: "È/Sono fissat* al proprio posto"
-        -- @TODO: optimize using vocale and spaghetti strings!                  OPTIMIZE!
+      ELSE -- "$1 [è/sono] fissat* al [suo/loro] posto"
         IF ogg IS NOT femminile
           THEN
             IF ogg IS NOT plurale
-              THEN "È fissato al suo posto."
-              ELSE "Sono fissati al loro posto."
+              THEN SAY mia_AT:ogg1_non_spostabile_ms.
+              ELSE SAY mia_AT:ogg1_non_spostabile_mp.
             END IF.
           ELSE
             IF ogg IS NOT plurale
-              THEN "È fissata al suo posto."
-              ELSE "Sono fissate al loro posto."
+              THEN SAY mia_AT:ogg1_non_spostabile_fs.
+              ELSE SAY mia_AT:ogg1_non_spostabile_fp.
             END IF.
         END IF.
     AND ogg IS prendibile
@@ -5265,17 +5260,17 @@ SYNTAX prendi_da = prendi (ogg) da (detentore)
   AND detentore IsA THING
     ELSE
       IF detentore IS NOT plurale
-        ---> @TODO!!                                                            TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter2_from_sg. ---> "That's not something you can take things from."
-        ELSE SAY mia_AT:illegal_parameter2_from_pl. ---> "Those are not something you can take things from."
-      END IF.
+        --      "$+2 non [è/sono] qualcosa in cui poter"
+        THEN SAY mia_AT:ogg2_inadatto_DA_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_DA_pl.
+      END IF. "prendere cose."
   AND detentore IsA CONTAINER
     ELSE
       IF detentore IS NOT plurale
-        ---> @TODO!!                                                            TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter2_from_sg.
-        ELSE SAY mia_AT:illegal_parameter2_from_pl.
-      END IF.
+        --      "$+2 non [è/sono] qualcosa in cui poter"
+        THEN SAY mia_AT:ogg2_inadatto_DA_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_DA_pl.
+      END IF. "prendere cose."
 
 -- @TODO: Questa soluzione è temporanea, finché i conflitti tra il              FIXME!
 --        verbo 'dare' imperativo e la preposizione art. 'dai' non
@@ -5298,8 +5293,8 @@ SYNTAX prendi_da = prendi (ogg) da (detentore)
 
 
 ADD TO EVERY THING
-    VERB prendi_da
-        WHEN ogg
+  VERB prendi_da
+    WHEN ogg
       CHECK mia_AT CAN prendere_da ---> CAN take_from
         ELSE SAY mia_AT:azione_bloccata.
       AND ogg <> hero
@@ -5328,11 +5323,22 @@ ADD TO EVERY THING
             THEN SAY mia_AT:ogg2_scenario_sg.
             ELSE SAY mia_AT:ogg2_scenario_pl.
           END IF.
---                                                                              TRANSLATE!
       AND ogg IS spostabile
-        ELSE SAY mia_AT:check_obj_movable.
-      AND ogg IS prendibile
+        ELSE -- "$1 [è/sono] fissat* al [suo/loro] posto"
+          IF ogg IS NOT femminile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_non_spostabile_ms.
+                ELSE SAY mia_AT:ogg1_non_spostabile_mp.
+              END IF.
             ELSE
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_non_spostabile_fs.
+                ELSE SAY mia_AT:ogg1_non_spostabile_fp.
+              END IF.
+          END IF.
+      AND ogg IS prendibile
+        ELSE
           IF ogg IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
             THEN SAY mia_AT:ogg1_inadatto_sg.
@@ -5354,38 +5360,42 @@ ADD TO EVERY THING
                 ELSE SAY mia_AT:ogg2_distante_pl.
               END IF.
           END IF.
-      AND peso Of ogg < 50
-            ELSE
+      AND peso OF ogg < 50
+        ELSE
           IF ogg IS NOT plurale
             THEN SAY mia_AT:ogg1_troppo_pesante_sg.
             ELSE SAY mia_AT:ogg1_troppo_pesante_pl.
           END IF. "."
-          AND ogg IN detentore
+      AND ogg IN detentore
         ELSE
           IF detentore IS inanimato
             THEN
+              "$+1 non"
+              IF ogg IS NOT plurale
+                THEN "è"
+                ELSE "sono"
+              END IF.
               IF detentore IsA supporto
-                THEN
-                  IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-                    THEN SAY mia_AT:check_obj_on_surface_sg.
-                    ELSE SAY mia_AT:check_obj_on_surface_pl.
-                  END IF.
-                ELSE
-                  IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-                    THEN SAY mia_AT:check_obj_in_cont_sg.
-                    ELSE SAY mia_AT:check_obj_in_cont_pl.
-                  END IF.
-              END IF.
-            ELSE
+                THEN SAY detentore:prep_SU.
+                ELSE SAY detentore:prep_IN.
+              END IF. "$2."
+            ELSE -- detentore è un attore:
+              "$+2 non possied$$"
               IF detentore IS NOT plurale
---                                                                              TRANSLATE!
-                THEN SAY mia_AT:check_obj_in_act_sg.
-                ELSE SAY mia_AT:check_obj_in_act_pl.
-              END IF.
+                THEN "e"
+                ELSE "ono"
+              END IF. "$+1."
           END IF.
       DOES
+-- @TODO: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                CHECK!
+--        This doesn't make any sense for actors can't be inside
+--        containers, and the previous checks demand that:
+--          - $2 is a container
+--          - $1 is inside $2
+--        therefore, $1 can't be an actor if we got this far!
+--        Maybe should be:
+--          IF detentore IsA ACTOR
+--        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         IF ogg IsA ACTOR
           ---> @TODO!!                                                          TRANSLATE!
           THEN SAY THE ogg. "would probably object to that."
@@ -5394,6 +5404,10 @@ ADD TO EVERY THING
             -- a cage, etc.
         ELSIF ogg IsA OBJECT
           THEN
+-- @TODO: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                      CHECK!
+--        Why only CONTENITORE_ELENCATO? what about normal
+--        containers which might be close?
+--        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             IF detentore IsA contenitore_elencato AND detentore IS NOT aperto
               ---> @TODO!!                                                      TRANSLATE!
               THEN "You can't;" SAY THE detentore.
@@ -7474,9 +7488,20 @@ ADD TO EVERY OBJECT
 --                                                                              TRANSLATE!
     AND ogg NOT IN hero
       ELSE SAY mia_AT:check_obj_not_in_hero1.
---                                                                              TRANSLATE!
     AND ogg IS spostabile
-      ELSE SAY mia_AT:check_obj_movable.
+      ELSE -- "$1 [è/sono] fissat* al [suo/loro] posto"
+        IF ogg IS NOT femminile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_spostabile_ms.
+              ELSE SAY mia_AT:ogg1_non_spostabile_mp.
+            END IF.
+          ELSE
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_spostabile_fs.
+              ELSE SAY mia_AT:ogg1_non_spostabile_fp.
+            END IF.
+        END IF.
     AND ogg IS raggiungibile AND ogg IS NOT distante
       ELSE
         IF ogg IS NOT raggiungibile
@@ -7532,9 +7557,20 @@ ADD TO EVERY THING
   VERB spingi
     CHECK mia_AT CAN spingere
       ELSE SAY mia_AT:azione_bloccata.
---                                                                              TRANSLATE!
     AND ogg IS spostabile
-      ELSE SAY mia_AT:check_obj_movable.
+      ELSE -- "$1 [è/sono] fissat* al [suo/loro] posto"
+        IF ogg IS NOT femminile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_spostabile_ms.
+              ELSE SAY mia_AT:ogg1_non_spostabile_mp.
+            END IF.
+          ELSE
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_spostabile_fs.
+              ELSE SAY mia_AT:ogg1_non_spostabile_fp.
+            END IF.
+        END IF.
     AND ogg <> hero
       ELSE SAY mia_AT:azione_insensata.
     AND ogg IS inanimato
@@ -7603,9 +7639,20 @@ ADD TO EVERY THING
     WHEN ogg
       CHECK mia_AT CAN spingere_con
         ELSE SAY mia_AT:azione_bloccata.
---                                                                              TRANSLATE!
       AND ogg IS spostabile
-        ELSE SAY mia_AT:check_obj_movable.
+        ELSE -- "$1 [è/sono] fissat* al [suo/loro] posto"
+          IF ogg IS NOT femminile
+            THEN
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_non_spostabile_ms.
+                ELSE SAY mia_AT:ogg1_non_spostabile_mp.
+              END IF.
+            ELSE
+              IF ogg IS NOT plurale
+                THEN SAY mia_AT:ogg1_non_spostabile_fs.
+                ELSE SAY mia_AT:ogg1_non_spostabile_fp.
+              END IF.
+          END IF.
       AND ogg <> strum
         ELSE SAY mia_AT:azione_insensata.
       AND strum IS esaminabile
@@ -7678,9 +7725,20 @@ ADD TO EVERY OBJECT
   VERB tira
     CHECK mia_AT CAN tirare
       ELSE SAY mia_AT:azione_bloccata.
---                                                                              TRANSLATE!
     AND ogg IS spostabile
-      ELSE SAY mia_AT:check_obj_movable.
+      ELSE -- "$1 [è/sono] fissat* al [suo/loro] posto"
+        IF ogg IS NOT femminile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_spostabile_ms.
+              ELSE SAY mia_AT:ogg1_non_spostabile_mp.
+            END IF.
+          ELSE
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_spostabile_fs.
+              ELSE SAY mia_AT:ogg1_non_spostabile_fp.
+            END IF.
+        END IF.
     AND ogg <> hero
       ELSE SAY mia_AT:azione_insensata.
     AND ogg IS inanimato
@@ -9075,9 +9133,20 @@ ADD TO EVERY OBJECT
           THEN SAY mia_AT:ogg1_inadatto_sg.
           ELSE SAY mia_AT:ogg1_inadatto_pl.
         END IF. "agitare."
---                                                                              TRANSLATE!
     AND ogg IS spostabile
-      ELSE SAY mia_AT:check_obj_movable.
+      ELSE -- "$1 [è/sono] fissat* al [suo/loro] posto"
+        IF ogg IS NOT femminile
+          THEN
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_spostabile_ms.
+              ELSE SAY mia_AT:ogg1_non_spostabile_mp.
+            END IF.
+          ELSE
+            IF ogg IS NOT plurale
+              THEN SAY mia_AT:ogg1_non_spostabile_fs.
+              ELSE SAY mia_AT:ogg1_non_spostabile_fp.
+            END IF.
+        END IF.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -10043,7 +10112,7 @@ END ADD TO.
 
 
 
--->gruppo_sfusi                                                 @LIBERA <-- @FREE
+-->gruppo_sfusi                                                @LIBERA <-- @FREE
 --~=============================================================================
 --~-----------------------------------------------------------------------------
 --| ==== libera

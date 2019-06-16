@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_luoghi.i"
---| v0.20.1-Alpha, 2019-06-15: Alan 3.0beta6 build 1980
+--| v0.20.2-Alpha, 2019-06-16: Alan 3.0beta6 build 1980
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_locations.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -616,13 +616,13 @@ END EVENT.
 -- lightsource with him:
 
 EVENT check_darkness
-    FOR EACH dl IsA luogo_buio, IS illuminato
+  FOR EACH dl IsA luogo_buio, IS illuminato
     DO
       IF COUNT IsA fonte_di_luce, AT dl = 0
         THEN MAKE dl NOT illuminato.
       END IF.
-    END FOR.
-    SCHEDULE check_darkness AFTER 1.
+  END FOR.
+  SCHEDULE check_darkness AFTER 1.
 END EVENT.
 
 
@@ -683,14 +683,14 @@ ADD TO EVERY location
   HAS descritto 0.
 
   ENTERED
-     IF CURRENT ACTOR = hero
+    IF CURRENT ACTOR = hero
       THEN
         INCREASE THIS:visitato.
         INCREASE THIS:descritto.
         -- +-----------------------------------------------------------------+
         -- | NB: L'attributo 'descritto' viene incrementato anche da GUARDA. |
         -- +-----------------------------------------------------------------+
-     END IF.
+    END IF.
 
 END ADD TO.
 

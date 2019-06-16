@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.20.0-Alpha, 2019-06-15: Alan 3.0beta6 build 1980
+--| v0.20.1-Alpha, 2019-06-16: Alan 3.0beta6 build 1980
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
@@ -485,6 +485,11 @@ ADD TO EVERY blocco_definizioni
   HAS ogg1_inadatto_DA_sg  "$+1 non è qualcosa da cui poter".
   HAS ogg1_inadatto_DA_pl  "$+1 non sono qualcosa da cui poter".
 
+  -- VERBI: prendi_da.
+  -- ORIGINAL EN: (nessuno)
+  HAS ogg2_inadatto_DA_sg  "$+2 non è qualcosa da cui poter".
+  HAS ogg2_inadatto_DA_pl  "$+2 non sono qualcosa da cui poter".
+
 --~=============================================================================
 --| ===== Preposizione "`IN`"
 --~=============================================================================
@@ -802,9 +807,6 @@ ADD TO EVERY blocco_definizioni
 --| ==== Dispositivi/fonti di luce
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
---<
-
  
   -- ----------------------
   -- Dispositivo/Luce Rotto
@@ -821,6 +823,7 @@ ADD TO EVERY blocco_definizioni
   -- ORIGINAL EN:  check_obj_broken_sg/pl
   HAS ogg1_non_rotto_sg "$+1 non necessita di riparazioni.".
   HAS ogg1_non_rotto_pl "$+1 non necessitano di riparazioni.".
+--<
   
   
 -->=============================================================================
@@ -830,6 +833,20 @@ ADD TO EVERY blocco_definizioni
 --~=============================================================================
 
   HAS impossibile_guardare "Non è possibile guardare".
+--<
+
+-->=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Oggetti non spostabili
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+
+  -- VERBI: agita, prendi, prendi_da, solleva, spingi, spingi_con, tira
+  -- ORIGINAL EN:  check_obj_movable
+  HAS ogg1_non_spostabile_ms "$+1 è fissato al suo posto.".
+  HAS ogg1_non_spostabile_mp "$+1 sono fissati al loro posto.".
+  HAS ogg1_non_spostabile_fs "$+1 è fissata al suo posto.".
+  HAS ogg1_non_spostabile_fp "$+1 sono fissate al loro posto.".
 --<
 
 -->=============================================================================
@@ -862,9 +879,12 @@ ADD TO EVERY blocco_definizioni
   HAS ogg1_troppo_pesante_pl  "$+1 sono troppo pesanti".
 --<
 
+-->=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== Oggetto chiuso
+--~-----------------------------------------------------------------------------
 --~=============================================================================
---| ===== Un oggetto chiuso impedisce l'azione richista
---~=============================================================================
+--| Un oggetto chiuso impedisce l'azione richista
 
   -- VERBI: empty (in/on), pour (in/on), look_in
   -- ORIGINAL EN:  check_obj_open2_sg/pl
@@ -882,26 +902,6 @@ ADD TO EVERY blocco_definizioni
 --<
 
 
-
--->============================================================================
---~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---~-----------------------------------------------------------------------------
---| === Azioni dirette ai png
---~-----------------------------------------------------------------------------
---~/////////////////////////////////////////////////////////////////////////////
---~============================================================================
-
-  -- VERBI: gratta, ispeziona, sfrega, spingi, spingi_con, tira, tocca, tocca_con
-  -- ORIGINAL EN:  check_obj_inanimate1 + check_obj_inanimate2
-  --               "$+1 wouldn't probably appreciate that."
-  --               "You are not sure whether $+1 would appreciate that."
-  HAS png1_non_gradirebbe_sg  "Non credo che $+1 gradirebbe.".
-  HAS png1_non_gradirebbe_pl  "Non credo che $+1 gradirebbero.".
-
-  -- VERBI: lancia_contro
-  HAS png2_non_gradirebbe_sg  "Non credo che $+2 gradirebbe.".
-  HAS png2_non_gradirebbe_pl  "Non credo che $+2 gradirebbero.".
---<
 
 -->=============================================================================
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -927,17 +927,31 @@ ADD TO EVERY blocco_definizioni
   HAS la_violenza_non_è_la_risposta
     "La violenza non è la giusta risposta a questo.". ---> taken from i6
 
+--<
+
+-->============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Azioni coinvolgenti PNG
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+
   -- VERBI: segui.
   -- ORIGINAL EN: check_act_near_hero.
   HAS impossibile_seguire_png1_sg  "Non hai idea di dove si trovi $+1 ora.
                                     Specifica la direzione in cui vorresti andare.".
-  HAS impossibile_seguire_png1_pl  "Non hai idea di dove si trovi $+1 ora.
+  HAS impossibile_seguire_png1_pl  "Non hai idea di dove si trovino $+1 ora.
                                     Specifica la direzione in cui vorresti andare.".
 
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  
-  HAS check_obj_in_act_sg "$+2 doesn't have $+1.".              -- take_from
-  HAS check_obj_in_act_pl "$+2 don't have $+1.".
+  -- VERBI: gratta, ispeziona, sfrega, spingi, spingi_con, tira, tocca, tocca_con
+  -- ORIGINAL EN:  check_obj_inanimate1 + check_obj_inanimate2
+  HAS png1_non_gradirebbe_sg  "Non credo che $+1 gradirebbe.".
+  HAS png1_non_gradirebbe_pl  "Non credo che $+1 gradirebbero.".
+
+  -- VERBI: lancia_contro
+  HAS png2_non_gradirebbe_sg  "Non credo che $+2 gradirebbe.".
+  HAS png2_non_gradirebbe_pl  "Non credo che $+2 gradirebbero.".
 --<
 
 -->=============================================================================
@@ -1415,10 +1429,6 @@ ADD TO EVERY blocco_definizioni
   HAS check_obj_allowed_in_pl "$+1 don't belong in $+2.".
 
 
-  -- lift, pull, push, push_with, shake, take, take_from:
-  HAS check_obj_movable "It's not possible to $v $+1.".
-
-
   -- look_behind, look_in, look_under:
   HAS check_obj_suitable_there "It's not possible to $v there.".
 
@@ -1436,20 +1446,6 @@ ADD TO EVERY blocco_definizioni
   HAS check_obj_not_in_hero1 "It doesn't make sense to $v something you're holding.".
 
 
---| Checking whether an object is in a container or not:
-
-  -- take_from:
-  HAS check_obj_in_cont_sg "$+1 is not in $+2.".
-  HAS check_obj_in_cont_pl "$+1 are not in $+2.".
-
-
---| Checking whether an object is on a surface or not:
-
-  -- take_from:
-  HAS check_obj_on_surface_sg "$+1 is not on $+2.".
-  HAS check_obj_on_surface_pl "$+1 are not on $+2.".
-
-
 --| Additional checks for classes
 --| ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1458,9 +1454,6 @@ ADD TO EVERY blocco_definizioni
 
   -- supporter: put_in
   HAS check_cont_not_supporter "You can't put $+1 inside $+2.".
-
-  
-  
 
 --<
 

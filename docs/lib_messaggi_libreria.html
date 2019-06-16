@@ -444,8 +444,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.20.0-Alpha,</span>
-<span id="revdate">2019-06-15</span>
+<span id="revnumber">versione 0.20.1-Alpha,</span>
+<span id="revdate">2019-06-16</span>
 <br><span id="revremark">Alan 3.0beta6 build 1980</span>
 </div>
 <div id="toc" class="toc2">
@@ -523,14 +523,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_attributi_del_luogo">Attributi del luogo</a></li>
 <li><a href="#_dispositivifonti_di_luce">Dispositivi/fonti di luce</a></li>
 <li><a href="#_oggetti_non_esaminabili">Oggetti non esaminabili</a></li>
+<li><a href="#_oggetti_non_spostabili">Oggetti non spostabili</a></li>
 <li><a href="#_oggetti_scenario">Oggetti scenario</a></li>
 <li><a href="#_oggetti_troppo_pesanti">Oggetti troppo pesanti</a></li>
+<li><a href="#_oggetto_chiuso">Oggetto chiuso</a></li>
 </ul>
 </li>
-<li><a href="#_azioni_dirette_ai_png">Azioni dirette ai png</a></li>
 </ul>
 </li>
-<li><a href="#_azioni_prevenute">Azioni prevenute</a></li>
+<li><a href="#_azioni_prevenute">Azioni prevenute</a>
+<ul class="sectlevel2">
+<li><a href="#_azioni_coinvolgenti_png">Azioni coinvolgenti PNG</a></li>
+</ul>
+</li>
 <li><a href="#_azioni_insensate">Azioni insensate</a></li>
 <li><a href="#_azioni_vane">Azioni vane</a></li>
 <li><a href="#_azioni_superflue">Azioni superflue</a>
@@ -945,7 +950,7 @@ richiedono preposizioni articolate (di|a|da|in|con|su).</p>
 <h5 id="_preposizione_da"><a class="anchor" href="#_preposizione_da"></a>Preposizione &#8220;DA&#8221;</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl slc">-- VERBI: guarda_fuori_da.</span>&#x000A;  <span class="hl slc">-- ORIGINAL EN: (nessuno)</span>&#x000A;  <span class="hl kwa">HAS</span> ogg1_inadatto_DA_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non è qualcosa da cui poter&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> ogg1_inadatto_DA_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non sono qualcosa da cui poter&quot;</span><span class="hl kwa">.</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl slc">-- VERBI: guarda_fuori_da.</span>&#x000A;  <span class="hl slc">-- ORIGINAL EN: (nessuno)</span>&#x000A;  <span class="hl kwa">HAS</span> ogg1_inadatto_DA_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non è qualcosa da cui poter&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> ogg1_inadatto_DA_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non sono qualcosa da cui poter&quot;</span><span class="hl kwa">.</span>&#x000A;&#x000A;  <span class="hl slc">-- VERBI: prendi_da.</span>&#x000A;  <span class="hl slc">-- ORIGINAL EN: (nessuno)</span>&#x000A;  <span class="hl kwa">HAS</span> ogg2_inadatto_DA_sg  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non è qualcosa da cui poter&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> ogg2_inadatto_DA_pl  <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">non sono qualcosa da cui poter&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1129,13 +1134,25 @@ causa di uno (o più) parametri fuori dalla portata dell&#8217;eroe.
 </div>
 <div class="sect3">
 <h4 id="_dispositivifonti_di_luce"><a class="anchor" href="#_dispositivifonti_di_luce"></a>Dispositivi/fonti di luce</h4>
-
+<div class="listingblock">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl slc">-- ----------------------</span>&#x000A;  <span class="hl slc">-- Dispositivo/Luce Rotto</span>&#x000A;  <span class="hl slc">-- ----------------------</span>&#x000A;  <span class="hl slc">-- VERBI: accendi</span>&#x000A;  <span class="hl slc">-- ORIGINAL EN:  check_obj_not_broken</span>&#x000A;  <span class="hl kwa">HAS</span> non_succede_nulla <span class="hl str">&quot;Fatto, ma non succede nulla.&quot;</span><span class="hl kwa">.</span>&#x000A;&#x000A;&#x000A;  <span class="hl slc">-- ------------------------------</span>&#x000A;  <span class="hl slc">-- Oggetto/Dipositivo Non È Rotto</span>&#x000A;  <span class="hl slc">-- ------------------------------</span>&#x000A;  <span class="hl slc">-- VERBI: aggiusta</span>&#x000A;  <span class="hl slc">-- ORIGINAL EN:  check_obj_broken_sg/pl</span>&#x000A;  <span class="hl kwa">HAS</span> ogg1_non_rotto_sg <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non necessita di riparazioni.&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> ogg1_non_rotto_pl <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">non necessitano di riparazioni.&quot;</span><span class="hl kwa">.</span></code></pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_oggetti_non_esaminabili"><a class="anchor" href="#_oggetti_non_esaminabili"></a>Oggetti non esaminabili</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">HAS</span> impossibile_guardare <span class="hl str">&quot;Non è possibile guardare&quot;</span><span class="hl kwa">.</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_oggetti_non_spostabili"><a class="anchor" href="#_oggetti_non_spostabili"></a>Oggetti non spostabili</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl slc">-- VERBI: agita, prendi, prendi_da, solleva, spingi, spingi_con, tira</span>&#x000A;  <span class="hl slc">-- ORIGINAL EN:  check_obj_movable</span>&#x000A;  <span class="hl kwa">HAS</span> ogg1_non_spostabile_ms <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">è fissato al suo posto.&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> ogg1_non_spostabile_mp <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">sono fissati al loro posto.&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> ogg1_non_spostabile_fs <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">è fissata al suo posto.&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> ogg1_non_spostabile_fp <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">sono fissate al loro posto.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1155,12 +1172,15 @@ causa di uno (o più) parametri fuori dalla portata dell&#8217;eroe.
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_oggetto_chiuso"><a class="anchor" href="#_oggetto_chiuso"></a>Oggetto chiuso</h4>
+<div class="paragraph">
+<p>Un oggetto chiuso impedisce l&#8217;azione richista</p>
 </div>
-<div class="sect2">
-<h3 id="_azioni_dirette_ai_png"><a class="anchor" href="#_azioni_dirette_ai_png"></a>Azioni dirette ai png</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl slc">-- VERBI: gratta, ispeziona, sfrega, spingi, spingi_con, tira, tocca, tocca_con</span>&#x000A;  <span class="hl slc">-- ORIGINAL EN:  check_obj_inanimate1 + check_obj_inanimate2</span>&#x000A;  <span class="hl slc">--               &quot;$+1 wouldn&#39;t probably appreciate that.&quot;</span>&#x000A;  <span class="hl slc">--               &quot;You are not sure whether $+1 would appreciate that.&quot;</span>&#x000A;  <span class="hl kwa">HAS</span> png1_non_gradirebbe_sg  <span class="hl str">&quot;Non credo che</span> <span class="hl ipl">$+1</span> <span class="hl str">gradirebbe.&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> png1_non_gradirebbe_pl  <span class="hl str">&quot;Non credo che</span> <span class="hl ipl">$+1</span> <span class="hl str">gradirebbero.&quot;</span><span class="hl kwa">.</span>&#x000A;&#x000A;  <span class="hl slc">-- VERBI: lancia_contro</span>&#x000A;  <span class="hl kwa">HAS</span> png2_non_gradirebbe_sg  <span class="hl str">&quot;Non credo che</span> <span class="hl ipl">$+2</span> <span class="hl str">gradirebbe.&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> png2_non_gradirebbe_pl  <span class="hl str">&quot;Non credo che</span> <span class="hl ipl">$+2</span> <span class="hl str">gradirebbero.&quot;</span><span class="hl kwa">.</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl slc">-- VERBI: empty (in/on), pour (in/on), look_in</span>&#x000A;  <span class="hl slc">-- ORIGINAL EN:  check_obj_open2_sg/pl</span>&#x000A;  <span class="hl kwa">HAS</span> imp_ogg1_chiuso_ms <span class="hl str">&quot;Non puoi farlo perché</span> <span class="hl ipl">$+1</span> <span class="hl str">è chiuso&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> imp_ogg1_chiuso_mp <span class="hl str">&quot;Non puoi farlo perché</span> <span class="hl ipl">$+1</span> <span class="hl str">sono chiusi.&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> imp_ogg1_chiuso_fs <span class="hl str">&quot;Non puoi farlo perché</span> <span class="hl ipl">$+1</span> <span class="hl str">è chiusa&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> imp_ogg1_chiuso_fp <span class="hl str">&quot;Non puoi farlo perché</span> <span class="hl ipl">$+1</span> <span class="hl str">sono chiuse.&quot;</span><span class="hl kwa">.</span>&#x000A;&#x000A;  <span class="hl slc">-- VERBI: svuota_in, versa_in, metti_in, lancia_in</span>&#x000A;  <span class="hl slc">-- ORIGINAL EN:  check_obj2_open_sg/pl</span>&#x000A;  <span class="hl kwa">HAS</span> imp_ogg2_chiuso_ms <span class="hl str">&quot;Non puoi farlo perché</span> <span class="hl ipl">$+2</span> <span class="hl str">è chiuso&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> imp_ogg2_chiuso_mp <span class="hl str">&quot;Non puoi farlo perché</span> <span class="hl ipl">$+2</span> <span class="hl str">sono chiusi.&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> imp_ogg2_chiuso_fs <span class="hl str">&quot;Non puoi farlo perché</span> <span class="hl ipl">$+2</span> <span class="hl str">è chiusa&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> imp_ogg2_chiuso_fp <span class="hl str">&quot;Non puoi farlo perché</span> <span class="hl ipl">$+2</span> <span class="hl str">sono chiuse.&quot;</span><span class="hl kwa">.</span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1174,7 +1194,15 @@ causa di uno (o più) parametri fuori dalla portata dell&#8217;eroe.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl slc">-- VERBI: [lib_classi.i: metti_contro, metti_dietro, metti_vicino, metti_sotto</span>&#x000A;  <span class="hl slc">--                       guarda_dietro, guarda_attraverso, guarda_sotto].</span>&#x000A;  <span class="hl slc">-- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)</span>&#x000A;  <span class="hl kwa">HAS</span> non_fattibile <span class="hl str">&quot;Non è una cosa fattibile.&quot;</span><span class="hl kwa">.</span>&#x000A;&#x000A;  <span class="hl slc">-- VERBI: attacca, attacca_con, calcia, rompi, spara, spara_a_errore.</span>&#x000A;  <span class="hl kwa">HAS</span> la_violenza_non_è_la_risposta&#x000A;    <span class="hl str">&quot;La violenza non è la giusta risposta a questo.&quot;</span><span class="hl kwa">.</span> <span class="hl slc">---&gt; taken from i6</span>&#x000A;&#x000A;  <span class="hl slc">-- VERBI: segui.</span>&#x000A;  <span class="hl slc">-- ORIGINAL EN: check_act_near_hero.</span>&#x000A;  <span class="hl kwa">HAS</span> impossibile_seguire_png1_sg  <span class="hl str">&quot;Non hai idea di dove si trovi</span> <span class="hl ipl">$+1</span> <span class="hl str">ora.</span>&#x000A;<span class="hl str">                                    Specifica la direzione in cui vorresti andare.&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> impossibile_seguire_png1_pl  <span class="hl str">&quot;Non hai idea di dove si trovi</span> <span class="hl ipl">$+1</span> <span class="hl str">ora.</span>&#x000A;<span class="hl str">                                    Specifica la direzione in cui vorresti andare.&quot;</span><span class="hl kwa">.</span>&#x000A;&#x000A;  <span class="hl slc">-- &#64;TODO: *** UNTRANSLATED MESSAGES: ***</span>&#x000A;&#x000A;  <span class="hl kwa">HAS</span> check_obj_in_act_sg <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">doesn&#39;t have</span> <span class="hl ipl">$+1</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>              <span class="hl slc">-- take_from</span>&#x000A;  <span class="hl kwa">HAS</span> check_obj_in_act_pl <span class="hl str">&quot;</span><span class="hl ipl">$+2</span> <span class="hl str">don&#39;t have</span> <span class="hl ipl">$+1</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl slc">-- VERBI: [lib_classi.i: metti_contro, metti_dietro, metti_vicino, metti_sotto</span>&#x000A;  <span class="hl slc">--                       guarda_dietro, guarda_attraverso, guarda_sotto].</span>&#x000A;  <span class="hl slc">-- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)</span>&#x000A;  <span class="hl kwa">HAS</span> non_fattibile <span class="hl str">&quot;Non è una cosa fattibile.&quot;</span><span class="hl kwa">.</span>&#x000A;&#x000A;  <span class="hl slc">-- VERBI: attacca, attacca_con, calcia, rompi, spara, spara_a_errore.</span>&#x000A;  <span class="hl kwa">HAS</span> la_violenza_non_è_la_risposta&#x000A;    <span class="hl str">&quot;La violenza non è la giusta risposta a questo.&quot;</span><span class="hl kwa">.</span> <span class="hl slc">---&gt; taken from i6</span></code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_azioni_coinvolgenti_png"><a class="anchor" href="#_azioni_coinvolgenti_png"></a>Azioni coinvolgenti PNG</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl slc">-- VERBI: segui.</span>&#x000A;  <span class="hl slc">-- ORIGINAL EN: check_act_near_hero.</span>&#x000A;  <span class="hl kwa">HAS</span> impossibile_seguire_png1_sg  <span class="hl str">&quot;Non hai idea di dove si trovi</span> <span class="hl ipl">$+1</span> <span class="hl str">ora.</span>&#x000A;<span class="hl str">                                    Specifica la direzione in cui vorresti andare.&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> impossibile_seguire_png1_pl  <span class="hl str">&quot;Non hai idea di dove si trovino</span> <span class="hl ipl">$+1</span> <span class="hl str">ora.</span>&#x000A;<span class="hl str">                                    Specifica la direzione in cui vorresti andare.&quot;</span><span class="hl kwa">.</span>&#x000A;&#x000A;  <span class="hl slc">-- VERBI: gratta, ispeziona, sfrega, spingi, spingi_con, tira, tocca, tocca_con</span>&#x000A;  <span class="hl slc">-- ORIGINAL EN:  check_obj_inanimate1 + check_obj_inanimate2</span>&#x000A;  <span class="hl kwa">HAS</span> png1_non_gradirebbe_sg  <span class="hl str">&quot;Non credo che</span> <span class="hl ipl">$+1</span> <span class="hl str">gradirebbe.&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> png1_non_gradirebbe_pl  <span class="hl str">&quot;Non credo che</span> <span class="hl ipl">$+1</span> <span class="hl str">gradirebbero.&quot;</span><span class="hl kwa">.</span>&#x000A;&#x000A;  <span class="hl slc">-- VERBI: lancia_contro</span>&#x000A;  <span class="hl kwa">HAS</span> png2_non_gradirebbe_sg  <span class="hl str">&quot;Non credo che</span> <span class="hl ipl">$+2</span> <span class="hl str">gradirebbe.&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> png2_non_gradirebbe_pl  <span class="hl str">&quot;Non credo che</span> <span class="hl ipl">$+2</span> <span class="hl str">gradirebbero.&quot;</span><span class="hl kwa">.</span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1473,7 +1501,7 @@ required after the verb:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl slc">-- empty_in, pour_in, put_in, throw_in:</span>&#x000A;  <span class="hl kwa">HAS</span> check_obj_allowed_in_sg <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">doesn&#39;t belong in</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> check_obj_allowed_in_pl <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">don&#39;t belong in</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>&#x000A;&#x000A;&#x000A;  <span class="hl slc">-- lift, pull, push, push_with, shake, take, take_from:</span>&#x000A;  <span class="hl kwa">HAS</span> check_obj_movable <span class="hl str">&quot;It&#39;s not possible to</span> <span class="hl esc">$v</span> <span class="hl str"></span><span class="hl ipl">$+1</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>&#x000A;&#x000A;&#x000A;  <span class="hl slc">-- look_behind, look_in, look_under:</span>&#x000A;  <span class="hl kwa">HAS</span> check_obj_suitable_there <span class="hl str">&quot;It&#39;s not possible to</span> <span class="hl esc">$v</span> <span class="hl str">there.&quot;</span><span class="hl kwa">.</span>&#x000A;&#x000A;  <span class="hl slc">-- throw_in, tie_to:</span>&#x000A;  <span class="hl kwa">HAS</span> check_obj2_suitable_there <span class="hl str">&quot;It&#39;s not possible to</span> <span class="hl esc">$v</span> <span class="hl str">anything there.&quot;</span><span class="hl kwa">.</span></code></pre>
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl slc">-- empty_in, pour_in, put_in, throw_in:</span>&#x000A;  <span class="hl kwa">HAS</span> check_obj_allowed_in_sg <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">doesn&#39;t belong in</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> check_obj_allowed_in_pl <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">don&#39;t belong in</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>&#x000A;&#x000A;&#x000A;  <span class="hl slc">-- look_behind, look_in, look_under:</span>&#x000A;  <span class="hl kwa">HAS</span> check_obj_suitable_there <span class="hl str">&quot;It&#39;s not possible to</span> <span class="hl esc">$v</span> <span class="hl str">there.&quot;</span><span class="hl kwa">.</span>&#x000A;&#x000A;  <span class="hl slc">-- throw_in, tie_to:</span>&#x000A;  <span class="hl kwa">HAS</span> check_obj2_suitable_there <span class="hl str">&quot;It&#39;s not possible to</span> <span class="hl esc">$v</span> <span class="hl str">anything there.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1485,22 +1513,6 @@ required after the verb:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl slc">-- attack, attack_with, kick, lift, shoot, shoot_with:</span>&#x000A;  <span class="hl kwa">HAS</span> check_obj_not_in_hero1 <span class="hl str">&quot;It doesn&#39;t make sense to $v something you&#39;re holding.&quot;</span><span class="hl kwa">.</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Checking whether an object is in a container or not:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl slc">-- take_from:</span>&#x000A;  <span class="hl kwa">HAS</span> check_obj_in_cont_sg <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">is not in</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> check_obj_in_cont_pl <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">are not in</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Checking whether an object is on a surface or not:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl slc">-- take_from:</span>&#x000A;  <span class="hl kwa">HAS</span> check_obj_on_surface_sg <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">is not on</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">HAS</span> check_obj_on_surface_pl <span class="hl str">&quot;</span><span class="hl ipl">$+1</span> <span class="hl str">are not on</span> <span class="hl ipl">$+2</span><span class="hl str">.&quot;</span><span class="hl kwa">.</span></code></pre>
 </div>
 </div>
 </div>
@@ -1538,7 +1550,7 @@ italiano del modulo delle classi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.20.0-Alpha<br>
+Versione 0.20.1-Alpha<br>
 </div>
 </div>
 </body>
