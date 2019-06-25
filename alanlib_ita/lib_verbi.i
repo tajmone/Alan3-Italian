@@ -5396,6 +5396,8 @@ ADD TO EVERY THING
 --          IF detentore IsA ACTOR
 --        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         IF ogg IsA ACTOR
+          -- Objects held by NPCs cannot be taken by the hero by default.
+          -- The hero must *ask for* the object to obtain it.
           ---> @TODO!!                                                          TRANSLATE!
           THEN SAY THE ogg. "would probably object to that."
             -- actors are not prohibited from being taken in the checks; this is to
@@ -5410,21 +5412,16 @@ ADD TO EVERY THING
             IF detentore IsA contenitore_elencato AND detentore IS NOT aperto
               ---> @TODO!!                                                      TRANSLATE!
               THEN "You can't;" SAY THE detentore.
-                  IF detentore IS NOT plurale
-                    THEN "is"
-                    ELSE "are"
-                  END IF.
+                IF detentore IS NOT plurale
+                  THEN "is"
+                  ELSE "are"
+                END IF.
                 "closed."
               ELSE
                 LOCATE ogg IN hero.
-                ---> @TODO!!                                                    TRANSLATE!
                 "Pres$$" SAY ogg:vocale. "."
-             -- "You take" SAY THE ogg. "from" SAY THE detentore. "."
             END IF.
         END IF.
-
-          -- Objects held by NPCs cannot be taken by the hero by default.
-          -- The hero must *ask for* the object to obtain it.
 
 
     END VERB prendi_da.
