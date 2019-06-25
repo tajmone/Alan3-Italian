@@ -87,9 +87,13 @@ prendi la collana dal lampadario ; (sia collana che lampadario sono distanti)
 ; ------------------------------------------------------------------------------
 ; USA "TUTTO"
 ; ------------------------------------------------------------------------------
-; L'uso di TUTTO non è consentito con "prendi" e "togli"
+; L'uso di TUTTO è consentito:
 prendi tutto dal cesto
+metti la mela nel cesto POI metti il mango nel cesto
+; Anche con tutte le altre sintassi:
+; -> togli
 togli tutto dal cesto
-; La sintassi "rimuovi" consente l'uso di TUTTO:
+metti la mela nel cesto POI metti il mango nel cesto
+; -> rimuovi
 rimuovi tutto dal cesto
 ; /// FINE TEST ///

@@ -19,13 +19,13 @@ For previuos changes, see:
 
 - [Alan 3.0beta6 build 1980](#alan-30beta6-build-1980)
     - [2019/06/25](#20190625)
-        - [Verbo `prendi_da`](#verbo-prendi_da)
+        - [Verbo `prendi_da` sempre onnipotente](#verbo-prendi_da-sempre-onnipotente)
 - [Alan 3.0beta6 build 1980](#alan-30beta6-build-1980-1)
     - [2019/06/16](#20190616)
         - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
         - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
         - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi)
-        - [Verbo `prendi_da`](#verbo-prendi_da-1)
+        - [Verbo `prendi_da`](#verbo-prendi_da)
     - [2019/06/15 \(3\)](#20190615-3)
         - [Elimina Verbi Modalità Lunga/Breve](#elimina-verbi-modalit%C3%A0-lungabreve)
     - [2019/06/15 \(2\)](#20190615-2)
@@ -79,9 +79,21 @@ For previuos changes, see:
 
 - [`lib_verbi.i`][lib_verbi] &#x27f6; v0.20.3
 
-### Verbo `prendi_da`
+### Verbo `prendi_da` sempre onnipotente
 
-Tradotte ulteriori risposte, e annotato problemi.
+Ora tutte le sintassi di `prendi_da` consentono l'onnipotenza per il primo parametro (ossia, l'uso di TUTTO), laddove prima era consentito solo con `rimuovi` — dato che era possibile usare quella sintassi alternativa con TUTTO, tanto valeva abilitarne l'uso per tutte le sintassi; d'altronde, è conveniente poter applicare l'azione a tutti gli oggetti in un contenitore, così come avviene con altri verbi la cui portata è circoscritta (e.s. `lascia`).
+
+```alan
+SYNTAX prendi_da = prendi (ogg)* da (detentore)
+  ...
+  prendi_da = prendi  (ogg)* dai (detentore).
+  prendi_da = rimuovi (ogg)* da  (detentore).
+  prendi_da = rimuovi (ogg)* dai (detentore).
+  prendi_da = togli   (ogg)* da  (detentore).
+  prendi_da = togli   (ogg)* dai (detentore).
+```
+
+Tradotte ulteriori risposte, e annotati i vari problemi e le cose da fare.
 
 <!---------------------------------------------------------------------------->
 

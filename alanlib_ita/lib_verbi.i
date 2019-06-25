@@ -863,7 +863,7 @@ END VERB ricomincia_partita.
 --| | pensa_a           | rifletti/medita su, pondera  | pensa a (argomento)!                   | 1 |
 --| | prega             |                              | prega                                  | 0 |
 --| | prendi            | afferra, raccogli, trasporta | prendi (ogg)                           | 1 |
---| | prendi_da         | rimuovi, togli               | prendi (ogg) da (detentore)            | 2 |
+--| | prendi_da         | rimuovi, togli               | prendi (ogg)* da (detentore)           | 2 |
 --| | pulisci           | strofina, lucida             | pulisci (ogg)                          | 1 |
 --| | racconta          | informa, dì a, parla a       | racconta a (png) di (argomento)!       | 2 |
 --| | rifai             | ancora, G                    | rifai                                  | 0 |
@@ -5243,7 +5243,7 @@ END ADD TO.
 --| * [ ] Descrizione `prendi_da`.
 --<
 
-SYNTAX prendi_da = prendi (ogg) da (detentore)
+SYNTAX prendi_da = prendi (ogg)* da (detentore)
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
@@ -5282,11 +5282,11 @@ SYNTAX prendi_da = prendi (ogg) da (detentore)
 --        verbo 'dare' imperativo e la preposizione art. 'dai' non
 --        sarà risolto (al momento 'dai' non è sinonimo di 'da'!).
 
-  prendi_da = prendi  (ogg)  dai (detentore).
+  prendi_da = prendi  (ogg)* dai (detentore).
   prendi_da = rimuovi (ogg)* da  (detentore).
   prendi_da = rimuovi (ogg)* dai (detentore).
-  prendi_da = togli   (ogg)  da  (detentore).
-  prendi_da = togli   (ogg)  dai (detentore).
+  prendi_da = togli   (ogg)* da  (detentore).
+  prendi_da = togli   (ogg)* dai (detentore).
 
 --| ORIGINAL EN:
 --| ============

@@ -145,20 +145,36 @@ Il lampadario è troppo distante.
 > ; ------------------------------------------------------------------------------
 > ; USA "TUTTO"
 > ; ------------------------------------------------------------------------------
-> ; L'uso di TUTTO non è consentito con "prendi" e "togli"
+> ; L'uso di TUTTO è consentito:
 > prendi tutto dal cesto
-Non puoi usare più di un oggetto con 'prendi'.
-
-> togli tutto dal cesto
-Non puoi usare più di un oggetto con 'togli'.
-
-> ; La sintassi "rimuovi" consente l'uso di TUTTO:
-> rimuovi tutto dal cesto
 (mela) Presa.
 
 (cigliege) Prese.
 
 (arancia) Presa.
+
+(mango) Preso.
+
+> metti la mela nel cesto POI metti il mango nel cesto
+Fatto, ora la mela è nel cesto per la frutta.
+
+Fatto, ora il mango è nel cesto per la frutta.
+
+> ; Anche con tutte le altre sintassi:
+> ; -> togli
+> togli tutto dal cesto
+(mela) Presa.
+
+(mango) Preso.
+
+> metti la mela nel cesto POI metti il mango nel cesto
+Fatto, ora la mela è nel cesto per la frutta.
+
+Fatto, ora il mango è nel cesto per la frutta.
+
+> ; -> rimuovi
+> rimuovi tutto dal cesto
+(mela) Presa.
 
 (mango) Preso.
 
