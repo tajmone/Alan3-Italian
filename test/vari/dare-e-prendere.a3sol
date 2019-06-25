@@ -68,7 +68,7 @@ prendi il coltello da me
 ; detentore IS NOT scenario:
 prendi il calice dal vaso ; (vaso = CONTAINER + scenario)
 ; detentore IS raggiungibile:
-prendi la medaglia dal fuoco ; (sia medaglia che fuoco sono NOT raggiungibile)
+prendi la moneta dal fuoco ; (sia moneta che fuoco sono NOT raggiungibile)
 ; detentore IS NOT distante;
 prendi la collana dal lampadario ; (sia collana che lampadario sono distanti)
 ; ------------------------------------------------------------------------------

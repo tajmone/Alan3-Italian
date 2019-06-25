@@ -21,22 +21,29 @@ END THE.
 THE taverna IsA stanza.
   NAME 'Taverna Paradiso'.
   DESCRIPTION
-    "Un'antica cantina in pietra convertita in taverna.
+    "La cantina è illuminata dal fuoco di un caminetto.
      Nell'angolo noti una pianta e un vaso antico."
   
 END THE taverna.
 
 
-
--- =============================================================================
-
+--==============================================================================
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--------------------------------------------------------------------------------
+--
 -- ARREDAMENTO TAVERNA
-
--- =============================================================================
+--
+--------------------------------------------------------------------------------
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--==============================================================================
 -- Creiamo un po' di oggetti per popolare la taverna.
 
 --==============================================================================
+
 -- IL TAVOLO
+
 --==============================================================================
 THE tavolo IsA supporto AT taverna.
   HAS xDesc "Un tavolo in legno antico.".
@@ -47,9 +54,13 @@ THE calice IsA object IN tavolo.
   HAS xDesc "Un calice per bere.".
 END THE calice.
 --==============================================================================
+
 -- IL BANCONE
+
 --==============================================================================
 THE bancone IsA supporto AT taverna.
+  DESCRIPTION "" -- Omettendo la descrizione del bancone non verranno descritti
+                 -- neanche gli oggetti sopra di esso!
   HAS xDesc "Un vecchio bancone rustico.".
 END THE bancone.
 
@@ -65,7 +76,9 @@ THE vino IsA liquido IN brocca.
 END THE vino.
 
 --==============================================================================
+
 -- IL CESTO PER LA FRUTTA (contenitore_elencato sul bancone)
+
 --==============================================================================
 THE cesto_frutta IsA contenitore_elencato IN bancone.
   NAME cesto.
@@ -73,13 +86,14 @@ THE cesto_frutta IsA contenitore_elencato IN bancone.
 END THE cesto_frutta.
 
 --------------------------------------------------------------------------------
--- Istanze alimenti: FRUTTA
+-- LA FRUTTA
 --------------------------------------------------------------------------------
 -- Mettiamo un po' di frutta nel cesto per la frutta...
 
 EVERY frutto IsA object.
   HAS articolo "il".
   NAME frutto.
+  IS commestibile.
 END EVERY frutto.
 
 
@@ -103,15 +117,19 @@ THE mango IsA frutto IN cesto_frutta.
   NAME mango.
 END THE.
 
-
 --==============================================================================
+--------------------------------------------------------------------------------
 -- OGGETTI VARI
+--------------------------------------------------------------------------------
 --==============================================================================
 THE portaombrelli IsA CONTENITORE_ELENCATO AT taverna.
 END THE portaombrelli.
 
+
 --==============================================================================
+--------------------------------------------------------------------------------
 -- OGGETTI SCENICI
+--------------------------------------------------------------------------------
 --==============================================================================
 THE pianta IsA object AT taverna.
   HAS articolo "la".
@@ -153,22 +171,22 @@ THE caminetto IsA object AT taverna.
   HAS xDesc "Un caminetto rustico, al suo interno arde un fuoco.".
 END THE caminetto.
 
--- Il fuoco non è prendibile né raggiungibile, ma può contiene oggetti (medaglia).
+-- Il fuoco non è prendibile né raggiungibile, ma può contiene oggetti (moneta).
 THE fuoco IsA object IN caminetto.
   CONTAINER
   IS NOT prendibile.
   IS NOT raggiungibile.
   DESCRIPTION ""
   HAS xDesc
-    "Il fuoco arde vivacemente, tra le fiamme noti una medaglia.".
+    "Il fuoco arde vivacemente, tra le fiamme noti una moneta.".
 END THE fuoco.
 
--- La medaglia non è raggiungibile, e non sarà prendibile a causa del fuoco.
-THE medaglia IsA object IN fuoco.
+-- La moneta non è raggiungibile, e non sarà prendibile a causa del fuoco.
+THE moneta IsA object IN fuoco.
   HAS articolo "la".
   IS NOT raggiungibile.
-  HAS xDesc "Una medaglia in ferro, arroventata dalle fiamme che l'avvolgono.".
-END THE medaglia.
+  HAS xDesc "Una moneta in ferro, arroventata dalle fiamme che l'avvolgono.".
+END THE moneta.
 --==============================================================================
 -- OROLOGIO A PENDOLO
 --==============================================================================
@@ -196,38 +214,56 @@ THE collana IsA object IN lampadario.
   HAS articolo "la".
   IS distante.
 END THE collana.
--- =============================================================================
 
+
+--==============================================================================
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--------------------------------------------------------------------------------
+--
+-- PERSONAGGI 
+--
+--------------------------------------------------------------------------------
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--==============================================================================
+
+--==============================================================================
+--------------------------------------------------------------------------------
 -- L'EROE
-
--- =============================================================================
+--------------------------------------------------------------------------------
+--==============================================================================
 -- Diamo qualche oggetto all'eroe, per consentire i test.
+
 THE coltello IsA arma IN Hero.
   HAS xDesc "Un coltello affilato.".
 END THE coltello.
 
 
--- =============================================================================
-
--- PNG
-
--- =============================================================================
-
 --==============================================================================
+--------------------------------------------------------------------------------
 -- IL BARISTA
+--------------------------------------------------------------------------------
 --==============================================================================
-THE barista IsA maschio AT taverna.
-  NAME barista.
+
+THE Mario IsA maschio AT taverna.
+  HAS nome_proprio.
   NAME Mario.
-  DESCRIPTION "$nDietro il bancone, il barista pulisce i bicchieri."
+  NAME barista.
+  NAME proprietario.
+  DESCRIPTION "$nDietro il bancone, Mario pulisce i bicchieri."
   
-  HAS xDesc "è Mario, il barista nonché proprietario della Taverna Paradiso.".
-END THE barista.
+  HAS xDesc
+    "è Mario, il barista nonché proprietario della Taverna Paradiso.".
+END THE Mario.
 
-
-
+THE chiavi IsA object IN Mario.
+  NAME mazzo di chiavi.
+  NAME mazzo.
+  HAS xDesc "Sembrerebbero le chiavi del locale.".
+END THE chiavi.
 
 --------------------------------------------------------------------------------
-START AT taverna .
+START AT taverna.
 
 DESCRIBE intestazione.

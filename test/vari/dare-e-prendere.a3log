@@ -10,13 +10,12 @@ Tutti i diritti riservati.
 
 
 Taverna Paradiso
-Un'antica cantina in pietra convertita in taverna. Nell'angolo noti una pianta
+La cantina è illuminata dal fuoco di un caminetto. Nell'angolo noti una pianta
 e un vaso antico. Un caminetto riscalda l'ambiente. Un vecchio lampadario
 penzola dal soffitto. Puoi vedere un tavolo qui. Sopra il tavolo vedi un calice. 
-Puoi vedere un bancone qui. Sopra il bancone vedi un cesto per la frutta e una 
-brocca. Puoi vedere un portaombrelli e una fontana qui. La fontana contiene una 
-statua. Puoi vedere una pendola qui. 
-Dietro il bancone, il barista pulisce i bicchieri.
+Puoi vedere un portaombrelli e una fontana qui. La fontana contiene una statua. 
+Puoi vedere una pendola qui. 
+Dietro il bancone, Mario pulisce i bicchieri.
 
 > ; ******************************************************************************
 > ; *                                                                            *
@@ -108,7 +107,7 @@ La brocca non è nel portaombrelli.
 
 > ; ogg IN detentore (actor):
 > prendi il calice dal barista ; (il calice è sul tavolo)
-Il barista non possiede il calice.
+Mario non possiede il calice.
 
 > ; ------------------------------------------------------------------------------
 > ; PARAMETRO 2 FAIL CHECK
@@ -122,7 +121,7 @@ Questo non ha alcun senso.
 Il vaso non è importante ai fini del gioco.
 
 > ; detentore IS raggiungibile:
-> prendi la medaglia dal fuoco ; (sia medaglia che fuoco sono NOT raggiungibile)
+> prendi la moneta dal fuoco ; (sia moneta che fuoco sono NOT raggiungibile)
 Il fuoco è fuori dalla tua portata.
 
 > ; detentore IS NOT distante;
