@@ -63,6 +63,47 @@ THE vino IsA liquido IN brocca.
   HAS recipiente brocca.
   HAS xDesc "Del vino rosso.".
 END THE vino.
+
+--==============================================================================
+-- IL CESTO PER LA FRUTTA (contenitore_elencato sul bancone)
+--==============================================================================
+THE cesto_frutta IsA contenitore_elencato IN bancone.
+  NAME cesto.
+  MENTIONED "cesto per la frutta"
+END THE cesto_frutta.
+
+--------------------------------------------------------------------------------
+-- Istanze alimenti: FRUTTA
+--------------------------------------------------------------------------------
+-- Mettiamo un po' di frutta nel cesto per la frutta...
+
+EVERY frutto IsA object.
+  HAS articolo "il".
+  NAME frutto.
+END EVERY frutto.
+
+
+THE mela IsA frutto IN cesto_frutta.
+  HAS articolo "la".
+  NAME mela.
+END THE.
+
+THE cigliege IsA frutto IN cesto_frutta.
+  HAS articolo "le".
+  NAME cigliege.
+END THE.
+
+THE arancia IsA frutto IN cesto_frutta.
+  HAS articolo "l'".
+  IS femminile.
+  NAME arancia.
+END THE.
+
+THE mango IsA frutto IN cesto_frutta.
+  NAME mango.
+END THE.
+
+
 --==============================================================================
 -- OGGETTI VARI
 --==============================================================================

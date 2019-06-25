@@ -13,9 +13,9 @@ Taverna Paradiso
 Un'antica cantina in pietra convertita in taverna. Nell'angolo noti una pianta
 e un vaso antico. Un caminetto riscalda l'ambiente. Un vecchio lampadario
 penzola dal soffitto. Puoi vedere un tavolo qui. Sopra il tavolo vedi un calice. 
-Puoi vedere un bancone qui. Sopra il bancone vedi una brocca. Puoi vedere un 
-portaombrelli e una fontana qui. La fontana contiene una statua. Puoi vedere una 
-pendola qui. 
+Puoi vedere un bancone qui. Sopra il bancone vedi un cesto per la frutta e una 
+brocca. Puoi vedere un portaombrelli e una fontana qui. La fontana contiene una 
+statua. Puoi vedere una pendola qui. 
 Dietro il bancone, il barista pulisce i bicchieri.
 
 > ; ******************************************************************************
@@ -28,12 +28,21 @@ Dietro il bancone, il barista pulisce i bicchieri.
 > ;   * lascia
 > ;   * prendi
 > ;   * prendi_da
-> ; ==============================================================================
+> ; ******************************************************************************
 > ; VERBO 'prendi_da'
-> ; ==============================================================================
+> ; ******************************************************************************
 > ;   SYNTAX prendi_da = prendi (ogg) da (detentore)
 > ; 
 > ; Il verbo 'prendi_da' richiede che entrambi i parametri siano THING.
+> ; Sintassi alternative:
+> ; 
+> ;   prendi_da = rimuovi (ogg)* da  (detentore).
+> ;   prendi_da = togli   (ogg)  da  (detentore).
+> ; ==============================================================================
+> ; 'prendi_da' -> PREREQUISITI MANCANTI
+> ; ==============================================================================
+> ; Testiamo comandi che non possono essere eseguiti per varie ragioni.
+> ; (paremtro non valido, CHECK che non passano, o clausole nel corpo del verbo)
 > ; ------------------------------------------------------------------------------
 > ; PARAMETRO 1 INVALIDO
 > ; ------------------------------------------------------------------------------
@@ -121,7 +130,7 @@ Il fuoco è fuori dalla tua portata.
 Il lampadario è troppo distante.
 
 > ; ------------------------------------------------------------------------------
-> ; ESECUZIONE VERBO
+> ; CLAUSOLE NEL CORPO VERBO
 > ; ------------------------------------------------------------------------------
 > ; TEST DA COMPLETARE...
 > ; 
@@ -129,6 +138,30 @@ Il lampadario è troppo distante.
 > ;       Il corpo del verbo va ricontrollato poiché alcune condizioni sembrano
 > ;       impossibili a verificarsi, altre sembrano sbagliate!
 > ;       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; ==============================================================================
+> ; 'prendi_da' -> ESECUZIONE VERBO
+> ; ==============================================================================
+> ; Testiamo vari scenari in cui l'azione va in porto.
+> ; ------------------------------------------------------------------------------
+> ; USA "TUTTO"
+> ; ------------------------------------------------------------------------------
+> ; L'uso di TUTTO non è consentito con "prendi" e "togli"
+> prendi tutto dal cesto
+Non puoi usare più di un oggetto con 'prendi'.
+
+> togli tutto dal cesto
+Non puoi usare più di un oggetto con 'togli'.
+
+> ; La sintassi "rimuovi" consente l'uso di TUTTO:
+> rimuovi tutto dal cesto
+(mela) Presa.
+
+(cigliege) Prese.
+
+(arancia) Presa.
+
+(mango) Preso.
+
 > ; /// FINE TEST ///
 > 
 

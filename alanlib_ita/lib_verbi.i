@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.20.2-Alpha, 2019-06-16: Alan 3.0beta6 build 1980
+--| v0.20.3-Alpha, 2019-06-25: Alan 3.0beta6 build 1980
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -5243,11 +5243,6 @@ END ADD TO.
 --| * [ ] Descrizione `prendi_da`.
 --<
 
---------------------------------------------------------------------------------
--- NOTE: Alternative 'dai' prepositions must be implement separately because
---       these can't be covered by synonyms due to conflicts with verb "dai"!!!
---------------------------------------------------------------------------------
-
 SYNTAX prendi_da = prendi (ogg) da (detentore)
   WHERE ogg IsA THING
     ELSE
@@ -5272,11 +5267,20 @@ SYNTAX prendi_da = prendi (ogg) da (detentore)
         ELSE SAY mia_AT:ogg2_inadatto_DA_pl.
       END IF. "prendere cose."
 
+-- @TODO: Devo verificare la sintassi onnipotente!                              CHECK!
+--        Perché mai funziona  solo 'rimuovi'? credo che l'intenzione fosse
+--        legata al vestiario, ma tanto vale lasciare che funzioni su tutte
+--        le sintassi, oppure su nessuna.
+
+  ------------------------------------------------------------------------------
+  -- NOTA: Le sintassi alternative per la preposizione articolata 'dai' sono
+  --       necessarie perché 'dai' non può essere sinonimo di 'da' poiché
+  --       confliggerebbe con il verbo "dai".
+  ------------------------------------------------------------------------------
+
 -- @TODO: Questa soluzione è temporanea, finché i conflitti tra il              FIXME!
 --        verbo 'dare' imperativo e la preposizione art. 'dai' non
 --        sarà risolto (al momento 'dai' non è sinonimo di 'da'!).
-
--- @TODO: Devo verificare la sintassi onnipotente!                              CHECK!
 
   prendi_da = prendi  (ogg)  dai (detentore).
   prendi_da = rimuovi (ogg)* da  (detentore).
@@ -5419,7 +5423,8 @@ ADD TO EVERY THING
               ELSE
                 LOCATE ogg IN hero.
                 ---> @TODO!!                                                    TRANSLATE!
-                "You take" SAY THE ogg. "from" SAY THE detentore. "."
+                "Pres$$" SAY ogg:vocale. "."
+             -- "You take" SAY THE ogg. "from" SAY THE detentore. "."
             END IF.
         END IF.
 

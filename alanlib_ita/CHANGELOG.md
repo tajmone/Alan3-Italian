@@ -18,11 +18,14 @@ For previuos changes, see:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Alan 3.0beta6 build 1980](#alan-30beta6-build-1980)
+    - [2019/06/25](#20190625)
+        - [Verbo `prendi_da`](#verbo-prendi_da)
+- [Alan 3.0beta6 build 1980](#alan-30beta6-build-1980-1)
     - [2019/06/16](#20190616)
         - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
         - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
         - [Elimina messaggi dei verbi](#elimina-messaggi-dei-verbi)
-        - [Verbo `prendi_da`](#verbo-prendi_da)
+        - [Verbo `prendi_da`](#verbo-prendi_da-1)
     - [2019/06/15 \(3\)](#20190615-3)
         - [Elimina Verbi Modalità Lunga/Breve](#elimina-verbi-modalit%C3%A0-lungabreve)
     - [2019/06/15 \(2\)](#20190615-2)
@@ -69,6 +72,18 @@ For previuos changes, see:
 <!-- /MarkdownTOC -->
 
 -----
+
+# Alan 3.0beta6 build 1980
+
+## 2019/06/25
+
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.20.3
+
+### Verbo `prendi_da`
+
+Tradotte ulteriori risposte, e annotato problemi.
+
+<!---------------------------------------------------------------------------->
 
 # Alan 3.0beta6 build 1980
 
