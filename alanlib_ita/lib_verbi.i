@@ -5400,6 +5400,9 @@ ADD TO EVERY THING
           -- The hero must *ask for* the object to obtain it.
           ---> @TODO!!                                                          TRANSLATE!
           THEN SAY THE ogg. "would probably object to that."
+                  -- png2_non_gradirebbe_sg  "Non credo che $+2 gradirebbe.".
+                  -- png2_non_gradirebbe_pl  "Non credo che $+2 gradirebbero.".
+
             -- actors are not prohibited from being taken in the checks; this is to
             -- allow for example a dog to be picked up, or a bird to be taken out of
             -- a cage, etc.
