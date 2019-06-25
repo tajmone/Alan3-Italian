@@ -5267,11 +5267,6 @@ SYNTAX prendi_da = prendi (ogg)* da (detentore)
         ELSE SAY mia_AT:ogg2_inadatto_DA_pl.
       END IF. "prendere cose."
 
--- @TODO: Devo verificare la sintassi onnipotente!                              CHECK!
---        Perché mai funziona  solo 'rimuovi'? credo che l'intenzione fosse
---        legata al vestiario, ma tanto vale lasciare che funzioni su tutte
---        le sintassi, oppure su nessuna.
-
   ------------------------------------------------------------------------------
   -- NOTA: Le sintassi alternative per la preposizione articolata 'dai' sono
   --       necessarie perché 'dai' non può essere sinonimo di 'da' poiché
