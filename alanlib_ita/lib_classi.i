@@ -1779,6 +1779,24 @@ ADD TO EVERY actor
         END IF.
     END IF.
     "portando niente."
+
+-- @TODO: Sia ACTOR che PERSONA utilizzano lo stesso messaggio per riferire     FIXME!
+--        che un ACTOR o PERSONA non trasportano nulla; ma nella libreria
+--        originale inglese differiscono leggermente:
+-- 
+--          * ACTOR  -> "[is/are] not carrying anything."
+--          * PERSON -> "[is/are] empty-handed."
+-- 
+--        dato che il primo si può riferire anche ad attori non umani, e quindi
+--        privi di mani. Devo capire se nella libreria italiana serve mantenere
+--        un messaggio identico su PERSONA, dato che è ridondante, o se invece
+--        devo differenziarli o rimuovere il codice da PERSONA e lasciare che
+--        l'ereditarietà faccia il resto!
+-- 
+--        Per maggiori info vedi:
+--            https://github.com/AnssiR66/AlanStdLib/issues/15
+
+
 --==============================================================================
 -- § 2.2.3 - Estrazione oggetti
 --==============================================================================

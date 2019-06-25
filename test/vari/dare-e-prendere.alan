@@ -245,6 +245,7 @@ END THE coltello.
 -- IL BARISTA
 --------------------------------------------------------------------------------
 --==============================================================================
+-- Rendiamo Mario il barista condiscendente, per testare prendi e chiedi...
 
 THE Mario IsA maschio AT taverna.
   HAS nome_proprio.
@@ -252,6 +253,7 @@ THE Mario IsA maschio AT taverna.
   NAME barista.
   NAME proprietario.
   DESCRIPTION "$nDietro il bancone, Mario pulisce i bicchieri."
+  IS condiscendente.
   
   HAS xDesc
     "è Mario, il barista nonché proprietario della Taverna Paradiso.".

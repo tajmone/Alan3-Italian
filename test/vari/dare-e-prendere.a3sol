@@ -63,6 +63,7 @@ prendi il calice dal barista ; (il calice è sul tavolo)
 ; ------------------------------------------------------------------------------
 ; PARAMETRO 2 FAIL CHECK
 ; ------------------------------------------------------------------------------
+; @TODO: CURRENT LOCATION IS illuminato!
 ; detentore <> hero:
 prendi il coltello da me
 ; detentore IS NOT scenario:
