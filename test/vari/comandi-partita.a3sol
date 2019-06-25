@@ -28,7 +28,7 @@ prendi frutto
 ; -----------------------
 ; Vediamo se i comandi non praticabili consumano tick:
 est
-prendi tutto
+mangia tutto
 domanda alla mela di me
 ; ==============================================================================
 ; SALVATAGGIO PARTITA
