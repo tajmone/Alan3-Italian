@@ -5392,8 +5392,12 @@ ADD TO EVERY THING
 --          - $2 is a container
 --          - $1 is inside $2
 --        therefore, $1 can't be an actor if we got this far!
---        Maybe should be:
---          IF detentore IsA ACTOR
+-- 
+--        A possible solution could be to move the CHECK 'AND ogg IN detentore'
+--        on the 'prendi_da' VERB on the OBJECT class! This would allow 
+--        end users to simulate actors inside objects via attributes, if they
+--        need to, and that CHECK will no longer prevent executing the DOES
+--        body when ogg is an actor.
 --        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         IF ogg IsA ACTOR
           -- Objects held by NPCs cannot be taken by the hero by default.

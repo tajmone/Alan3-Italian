@@ -71,9 +71,26 @@ prendi il calice dal vaso ; (vaso = CONTAINER + scenario)
 prendi la moneta dal fuoco ; (sia moneta che fuoco sono NOT raggiungibile)
 ; detentore IS NOT distante;
 prendi la collana dal lampadario ; (sia collana che lampadario sono distanti)
+; ==============================================================================
+; 'prendi_da' -> CLAUSOLE NEL CORPO VERBO
+; ==============================================================================
+; Il corpo DOES del verbo contiene ulteriori verifiche che possono impedire che
+; l'azione venga eseguita...
 ; ------------------------------------------------------------------------------
-; CLAUSOLE NEL CORPO VERBO
+; PARAMETRO 1
 ; ------------------------------------------------------------------------------
+; @FIXME!
+; ogg IsA actor:
+;       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;       Questa clausola non ha alcun senso dato che non possono esserci attori
+;       nei contenitori! Anche se il parametro 'ogg' potrebbe essere un attore,
+;       non passerebbe mai il CHECK 'ogg IN detentore'!
+;       Questa parte del verbo va aggiustata!
+;       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; ------------------------------------------------------------------------------
+; PARAMETRO 2
+; ------------------------------------------------------------------------------
+
 ; TEST DA COMPLETARE...
 ; 
 ; @NOTA ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

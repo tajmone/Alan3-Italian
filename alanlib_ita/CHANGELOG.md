@@ -77,7 +77,10 @@ For previuos changes, see:
 
 ## 2019/06/26
 
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.20.1
 - [`lib_verbi.i`][lib_verbi] &#x27f6; v0.20.3
+
+Aggiunte annotazioni varie nel modulo `lib_classi.i`.
 
 ### Verbo `prendi_da` sempre onnipotente
 
