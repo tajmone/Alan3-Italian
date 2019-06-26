@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.20.2-Alpha, 2019-06-16: Alan 3.0beta6 build 1980
+--| v0.20.3-Alpha, 2019-06-26: Alan 3.0beta6 build 1980
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -863,7 +863,7 @@ END VERB ricomincia_partita.
 --| | pensa_a           | rifletti/medita su, pondera  | pensa a (argomento)!                   | 1 |
 --| | prega             |                              | prega                                  | 0 |
 --| | prendi            | afferra, raccogli, trasporta | prendi (ogg)                           | 1 |
---| | prendi_da         | rimuovi, togli               | prendi (ogg) da (detentore)            | 2 |
+--| | prendi_da         | rimuovi, togli               | prendi (ogg)* da (detentore)           | 2 |
 --| | pulisci           | strofina, lucida             | pulisci (ogg)                          | 1 |
 --| | racconta          | informa, dì a, parla a       | racconta a (png) di (argomento)!       | 2 |
 --| | rifai             | ancora, G                    | rifai                                  | 0 |
@@ -5243,12 +5243,7 @@ END ADD TO.
 --| * [ ] Descrizione `prendi_da`.
 --<
 
---------------------------------------------------------------------------------
--- NOTE: Alternative 'dai' prepositions must be implement separately because
---       these can't be covered by synonyms due to conflicts with verb "dai"!!!
---------------------------------------------------------------------------------
-
-SYNTAX prendi_da = prendi (ogg) da (detentore)
+SYNTAX prendi_da = prendi (ogg)* da (detentore)
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
@@ -5272,17 +5267,21 @@ SYNTAX prendi_da = prendi (ogg) da (detentore)
         ELSE SAY mia_AT:ogg2_inadatto_DA_pl.
       END IF. "prendere cose."
 
+  ------------------------------------------------------------------------------
+  -- NOTA: Le sintassi alternative per la preposizione articolata 'dai' sono
+  --       necessarie perché 'dai' non può essere sinonimo di 'da' poiché
+  --       confliggerebbe con il verbo "dai".
+  ------------------------------------------------------------------------------
+
 -- @TODO: Questa soluzione è temporanea, finché i conflitti tra il              FIXME!
 --        verbo 'dare' imperativo e la preposizione art. 'dai' non
 --        sarà risolto (al momento 'dai' non è sinonimo di 'da'!).
 
--- @TODO: Devo verificare la sintassi onnipotente!                              CHECK!
-
-  prendi_da = prendi  (ogg)  dai (detentore).
+  prendi_da = prendi  (ogg)* dai (detentore).
   prendi_da = rimuovi (ogg)* da  (detentore).
   prendi_da = rimuovi (ogg)* dai (detentore).
-  prendi_da = togli   (ogg)  da  (detentore).
-  prendi_da = togli   (ogg)  dai (detentore).
+  prendi_da = togli   (ogg)* da  (detentore).
+  prendi_da = togli   (ogg)* dai (detentore).
 
 --| ORIGINAL EN:
 --| ============
@@ -5393,12 +5392,21 @@ ADD TO EVERY THING
 --          - $2 is a container
 --          - $1 is inside $2
 --        therefore, $1 can't be an actor if we got this far!
---        Maybe should be:
---          IF detentore IsA ACTOR
+-- 
+--        A possible solution could be to move the CHECK 'AND ogg IN detentore'
+--        on the 'prendi_da' VERB on the OBJECT class! This would allow 
+--        end users to simulate actors inside objects via attributes, if they
+--        need to, and that CHECK will no longer prevent executing the DOES
+--        body when ogg is an actor.
 --        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         IF ogg IsA ACTOR
+          -- Objects held by NPCs cannot be taken by the hero by default.
+          -- The hero must *ask for* the object to obtain it.
           ---> @TODO!!                                                          TRANSLATE!
           THEN SAY THE ogg. "would probably object to that."
+                  -- png2_non_gradirebbe_sg  "Non credo che $+2 gradirebbe.".
+                  -- png2_non_gradirebbe_pl  "Non credo che $+2 gradirebbero.".
+
             -- actors are not prohibited from being taken in the checks; this is to
             -- allow for example a dog to be picked up, or a bird to be taken out of
             -- a cage, etc.
@@ -5411,20 +5419,16 @@ ADD TO EVERY THING
             IF detentore IsA contenitore_elencato AND detentore IS NOT aperto
               ---> @TODO!!                                                      TRANSLATE!
               THEN "You can't;" SAY THE detentore.
-                  IF detentore IS NOT plurale
-                    THEN "is"
-                    ELSE "are"
-                  END IF.
+                IF detentore IS NOT plurale
+                  THEN "is"
+                  ELSE "are"
+                END IF.
                 "closed."
               ELSE
                 LOCATE ogg IN hero.
-                ---> @TODO!!                                                    TRANSLATE!
-                "You take" SAY THE ogg. "from" SAY THE detentore. "."
+                "Pres$$" SAY ogg:vocale. "."
             END IF.
         END IF.
-
-          -- Objects held by NPCs cannot be taken by the hero by default.
-          -- The hero must *ask for* the object to obtain it.
 
 
     END VERB prendi_da.

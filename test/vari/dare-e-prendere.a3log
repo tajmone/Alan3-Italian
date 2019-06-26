@@ -10,13 +10,12 @@ Tutti i diritti riservati.
 
 
 Taverna Paradiso
-Un'antica cantina in pietra convertita in taverna. Nell'angolo noti una pianta
+La cantina è illuminata dal fuoco di un caminetto. Nell'angolo noti una pianta
 e un vaso antico. Un caminetto riscalda l'ambiente. Un vecchio lampadario
 penzola dal soffitto. Puoi vedere un tavolo qui. Sopra il tavolo vedi un calice. 
-Puoi vedere un bancone qui. Sopra il bancone vedi una brocca. Puoi vedere un 
-portaombrelli e una fontana qui. La fontana contiene una statua. Puoi vedere una 
-pendola qui. 
-Dietro il bancone, il barista pulisce i bicchieri.
+Puoi vedere un portaombrelli e una fontana qui. La fontana contiene una statua. 
+Puoi vedere una pendola qui. 
+Dietro il bancone, Mario pulisce i bicchieri.
 
 > ; ******************************************************************************
 > ; *                                                                            *
@@ -28,12 +27,21 @@ Dietro il bancone, il barista pulisce i bicchieri.
 > ;   * lascia
 > ;   * prendi
 > ;   * prendi_da
-> ; ==============================================================================
+> ; ******************************************************************************
 > ; VERBO 'prendi_da'
-> ; ==============================================================================
+> ; ******************************************************************************
 > ;   SYNTAX prendi_da = prendi (ogg) da (detentore)
 > ; 
 > ; Il verbo 'prendi_da' richiede che entrambi i parametri siano THING.
+> ; Sintassi alternative:
+> ; 
+> ;   prendi_da = rimuovi (ogg)* da  (detentore).
+> ;   prendi_da = togli   (ogg)  da  (detentore).
+> ; ==============================================================================
+> ; 'prendi_da' -> PREREQUISITI MANCANTI
+> ; ==============================================================================
+> ; Testiamo comandi che non possono essere eseguiti per varie ragioni.
+> ; (paremtro non valido, CHECK che non passano, o clausole nel corpo del verbo)
 > ; ------------------------------------------------------------------------------
 > ; PARAMETRO 1 INVALIDO
 > ; ------------------------------------------------------------------------------
@@ -99,11 +107,12 @@ La brocca non è nel portaombrelli.
 
 > ; ogg IN detentore (actor):
 > prendi il calice dal barista ; (il calice è sul tavolo)
-Il barista non possiede il calice.
+Mario non possiede il calice.
 
 > ; ------------------------------------------------------------------------------
 > ; PARAMETRO 2 FAIL CHECK
 > ; ------------------------------------------------------------------------------
+> ; @TODO: CURRENT LOCATION IS illuminato!
 > ; detentore <> hero:
 > prendi il coltello da me
 Questo non ha alcun senso.
@@ -113,22 +122,80 @@ Questo non ha alcun senso.
 Il vaso non è importante ai fini del gioco.
 
 > ; detentore IS raggiungibile:
-> prendi la medaglia dal fuoco ; (sia medaglia che fuoco sono NOT raggiungibile)
+> prendi la moneta dal fuoco ; (sia moneta che fuoco sono NOT raggiungibile)
 Il fuoco è fuori dalla tua portata.
 
 > ; detentore IS NOT distante;
 > prendi la collana dal lampadario ; (sia collana che lampadario sono distanti)
 Il lampadario è troppo distante.
 
+> ; ==============================================================================
+> ; 'prendi_da' -> CLAUSOLE NEL CORPO VERBO
+> ; ==============================================================================
+> ; Il corpo DOES del verbo contiene ulteriori verifiche che possono impedire che
+> ; l'azione venga eseguita...
 > ; ------------------------------------------------------------------------------
-> ; ESECUZIONE VERBO
+> ; PARAMETRO 1
 > ; ------------------------------------------------------------------------------
+> ; @FIXME!
+> ; ogg IsA actor:
+> ;       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;       Questa clausola non ha alcun senso dato che non possono esserci attori
+> ;       nei contenitori! Anche se il parametro 'ogg' potrebbe essere un attore,
+> ;       non passerebbe mai il CHECK 'ogg IN detentore'!
+> ;       Questa parte del verbo va aggiustata!
+> ;       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; ------------------------------------------------------------------------------
+> ; PARAMETRO 2
+> ; ------------------------------------------------------------------------------
+> 
+
 > ; TEST DA COMPLETARE...
 > ; 
 > ; @NOTA ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > ;       Il corpo del verbo va ricontrollato poiché alcune condizioni sembrano
 > ;       impossibili a verificarsi, altre sembrano sbagliate!
 > ;       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; ==============================================================================
+> ; 'prendi_da' -> ESECUZIONE VERBO
+> ; ==============================================================================
+> ; Testiamo vari scenari in cui l'azione va in porto.
+> ; ------------------------------------------------------------------------------
+> ; USA "TUTTO"
+> ; ------------------------------------------------------------------------------
+> ; L'uso di TUTTO è consentito:
+> prendi tutto dal cesto
+(mela) Presa.
+
+(cigliege) Prese.
+
+(arancia) Presa.
+
+(mango) Preso.
+
+> metti la mela nel cesto POI metti il mango nel cesto
+Fatto, ora la mela è nel cesto per la frutta.
+
+Fatto, ora il mango è nel cesto per la frutta.
+
+> ; Anche con tutte le altre sintassi:
+> ; -> togli
+> togli tutto dal cesto
+(mela) Presa.
+
+(mango) Preso.
+
+> metti la mela nel cesto POI metti il mango nel cesto
+Fatto, ora la mela è nel cesto per la frutta.
+
+Fatto, ora il mango è nel cesto per la frutta.
+
+> ; -> rimuovi
+> rimuovi tutto dal cesto
+(mela) Presa.
+
+(mango) Preso.
+
 > ; /// FINE TEST ///
 > 
 

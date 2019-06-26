@@ -18,6 +18,10 @@ For previuos changes, see:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Alan 3.0beta6 build 1980](#alan-30beta6-build-1980)
+    - [2019/06/26](#20190626)
+        - [Repulisti classi attori](#repulisti-classi-attori)
+        - [Verbo `prendi_da` sempre onnipotente](#verbo-prendi_da-sempre-onnipotente)
+- [Alan 3.0beta6 build 1980](#alan-30beta6-build-1980-1)
     - [2019/06/16](#20190616)
         - [Nuovi messaggi dei verbi](#nuovi-messaggi-dei-verbi)
         - [Traduci messaggi dei verbi](#traduci-messaggi-dei-verbi)
@@ -69,6 +73,35 @@ For previuos changes, see:
 <!-- /MarkdownTOC -->
 
 -----
+
+# Alan 3.0beta6 build 1980
+
+## 2019/06/26
+
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.20.1
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.20.3
+
+### Repulisti classi attori
+
+Nel modulo `lib_classi.i` è stato rimosso del codice ridondante sulla classe `persona` che era identico a quello della classe genitore `actor` (nell'originale inglese, alcuni messaggi variavano leggermente, ma buona parte del codice era ridondante anche nell'originale).
+
+### Verbo `prendi_da` sempre onnipotente
+
+Ora tutte le sintassi di `prendi_da` consentono l'onnipotenza per il primo parametro (ossia, l'uso di TUTTO), laddove prima era consentito solo con `rimuovi` — dato che era possibile usare quella sintassi alternativa con TUTTO, tanto valeva abilitarne l'uso per tutte le sintassi; d'altronde, è conveniente poter applicare l'azione a tutti gli oggetti in un contenitore, così come avviene con altri verbi la cui portata è circoscritta (e.s. `lascia`).
+
+```alan
+SYNTAX prendi_da = prendi (ogg)* da (detentore)
+  ...
+  prendi_da = prendi  (ogg)* dai (detentore).
+  prendi_da = rimuovi (ogg)* da  (detentore).
+  prendi_da = rimuovi (ogg)* dai (detentore).
+  prendi_da = togli   (ogg)* da  (detentore).
+  prendi_da = togli   (ogg)* dai (detentore).
+```
+
+Tradotte ulteriori risposte, e annotati i vari problemi e le cose da fare.
+
+<!---------------------------------------------------------------------------->
 
 # Alan 3.0beta6 build 1980
 

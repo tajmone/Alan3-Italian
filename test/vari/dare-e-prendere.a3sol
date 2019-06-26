@@ -8,12 +8,21 @@
 ;   * lascia
 ;   * prendi
 ;   * prendi_da
-; ==============================================================================
+; ******************************************************************************
 ; VERBO 'prendi_da'
-; ==============================================================================
+; ******************************************************************************
 ;   SYNTAX prendi_da = prendi (ogg) da (detentore)
 ; 
 ; Il verbo 'prendi_da' richiede che entrambi i parametri siano THING.
+; Sintassi alternative:
+; 
+;   prendi_da = rimuovi (ogg)* da  (detentore).
+;   prendi_da = togli   (ogg)  da  (detentore).
+; ==============================================================================
+; 'prendi_da' -> PREREQUISITI MANCANTI
+; ==============================================================================
+; Testiamo comandi che non possono essere eseguiti per varie ragioni.
+; (paremtro non valido, CHECK che non passano, o clausole nel corpo del verbo)
 ; ------------------------------------------------------------------------------
 ; PARAMETRO 1 INVALIDO
 ; ------------------------------------------------------------------------------
@@ -54,21 +63,55 @@ prendi il calice dal barista ; (il calice è sul tavolo)
 ; ------------------------------------------------------------------------------
 ; PARAMETRO 2 FAIL CHECK
 ; ------------------------------------------------------------------------------
+; @TODO: CURRENT LOCATION IS illuminato!
 ; detentore <> hero:
 prendi il coltello da me
 ; detentore IS NOT scenario:
 prendi il calice dal vaso ; (vaso = CONTAINER + scenario)
 ; detentore IS raggiungibile:
-prendi la medaglia dal fuoco ; (sia medaglia che fuoco sono NOT raggiungibile)
+prendi la moneta dal fuoco ; (sia moneta che fuoco sono NOT raggiungibile)
 ; detentore IS NOT distante;
 prendi la collana dal lampadario ; (sia collana che lampadario sono distanti)
+; ==============================================================================
+; 'prendi_da' -> CLAUSOLE NEL CORPO VERBO
+; ==============================================================================
+; Il corpo DOES del verbo contiene ulteriori verifiche che possono impedire che
+; l'azione venga eseguita...
 ; ------------------------------------------------------------------------------
-; ESECUZIONE VERBO
+; PARAMETRO 1
 ; ------------------------------------------------------------------------------
+; @FIXME!
+; ogg IsA actor:
+;       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;       Questa clausola non ha alcun senso dato che non possono esserci attori
+;       nei contenitori! Anche se il parametro 'ogg' potrebbe essere un attore,
+;       non passerebbe mai il CHECK 'ogg IN detentore'!
+;       Questa parte del verbo va aggiustata!
+;       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; ------------------------------------------------------------------------------
+; PARAMETRO 2
+; ------------------------------------------------------------------------------
+
 ; TEST DA COMPLETARE...
 ; 
 ; @NOTA ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ;       Il corpo del verbo va ricontrollato poiché alcune condizioni sembrano
 ;       impossibili a verificarsi, altre sembrano sbagliate!
 ;       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; ==============================================================================
+; 'prendi_da' -> ESECUZIONE VERBO
+; ==============================================================================
+; Testiamo vari scenari in cui l'azione va in porto.
+; ------------------------------------------------------------------------------
+; USA "TUTTO"
+; ------------------------------------------------------------------------------
+; L'uso di TUTTO è consentito:
+prendi tutto dal cesto
+metti la mela nel cesto POI metti il mango nel cesto
+; Anche con tutte le altre sintassi:
+; -> togli
+togli tutto dal cesto
+metti la mela nel cesto POI metti il mango nel cesto
+; -> rimuovi
+rimuovi tutto dal cesto
 ; /// FINE TEST ///

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.20.0-Alpha, 2019-06-15: Alan 3.0beta6 build 1980
+--| v0.20.1-Alpha, 2019-06-26: Alan 3.0beta6 build 1980
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -1708,9 +1708,8 @@ ADD TO EVERY actor
   HAS NOT nome_proprio.                                     ---> named
       --  Il giocatore non ne conosce il nome.
   IS  NOT condiscendente.                                   ---> compliant
-  
       --  Per poter prendere un oggetto da un attore è necessario che questi sia
-      --  condiscendente. Il codice nell'`EXTRACT` della classe `actor`
+      --  condiscendente. Il codice nell'`EXTRACT` delle classi `actor` e `persona`
       --  controlla lo stato di questo attributo e impedirà la rimozione di
       --  oggetti se l'attore non è `condiscendente`.
 
@@ -1719,6 +1718,8 @@ ADD TO EVERY actor
       --  implicitamente un oggetto posseduto da un PNG non condiscendente non
       --  porteranno a termine l'operazione.
 
+      --  @DOXTERIZZA: Il paragrafo precedente  deve essere taggato per         TODO!
+      --               poterlo includere nelle regole dei verbi prendi, etc.
 
 
 
@@ -1785,14 +1786,15 @@ ADD TO EVERY actor
 -- un attore (in altre parole, quando si cerca di prendere ad un attore oggetti
 -- che gli appartengono).
 
+
   EXTRACT
     CHECK THIS IS condiscendente
       ELSE
+--      @TODO: Usa attributi stringa mia_AT                                     FIXME!
         SAY THE THIS. "non sarebbe"
         IF THIS IS plurale
           THEN "$$ro"
         END IF. "d'accordo."
-
 END ADD TO actor.
 
 --==============================================================================
@@ -1963,41 +1965,6 @@ END ADD TO actor.
 
 EVERY persona IsA actor
   CAN parlare.
-
-  CONTAINER
---==============================================================================
--- § 3.1.2 - Descrizione inventario non vuoto
---==============================================================================
--- NOTA: Questo codice è simile a quello presente sulla classe actor, tranne per
---       il fatto che qui non si verifica se l'attore possa essere HERO! Se si
---       modifica il testo qui, ricordarsi di modificarlo anche su actor!
-    HEADER
-      SAY THE THIS. "sta"
-      IF THIS IS plurale
-        THEN "$$nno"
-      END IF. "portando"
---==============================================================================
--- § 3.1.2 - Descrizione inventario vuoto
---==============================================================================
-    ELSE
-      SAY THE THIS. "non sta"
-      IF THIS IS plurale
-        THEN "$$nno"
-      END IF.
-      "portando niente."
---==============================================================================
--- § 3.1.3 - Estrazione oggetti
---==============================================================================
--- Questa parte del codice interviene quando si cerca di estrarre i contenuti di
--- un attore (in altre parole, quando si cerca di prendere ad un attore oggetti
--- che gli appartengono).
-    EXTRACT
-      CHECK THIS IS condiscendente
-        ELSE
-          SAY THE THIS. "non sarebbe"
-          IF THIS IS plurale
-            THEN "$$ro"
-          END IF. "d'accordo."
 END EVERY.
 
 

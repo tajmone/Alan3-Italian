@@ -36,7 +36,7 @@ Possiedi già la mela.
 > ; TESTA 'prendi_da'
 > ; ==============================================================================
 > prendi la pera dal cesto
-You take la pera from il cesto per la frutta.
+Presa.
 
 > prendi la pera dal cesto
 Possiedi già la pera.
@@ -85,7 +85,7 @@ Posi la bottiglia sul tavolo.
 La bottiglia è già sul tavolo.
 
 > prendi la bottiglia dal tavolo
-You take la bottiglia from il tavolo.
+Presa.
 
 > prendi la bottiglia dal tavolo
 Possiedi già la bottiglia.
