@@ -19,6 +19,7 @@ For previuos changes, see:
 
 - [Alan 3.0beta6 build 1980](#alan-30beta6-build-1980)
     - [2019/06/26](#20190626)
+        - [Repulisti classi attori](#repulisti-classi-attori)
         - [Verbo `prendi_da` sempre onnipotente](#verbo-prendi_da-sempre-onnipotente)
 - [Alan 3.0beta6 build 1980](#alan-30beta6-build-1980-1)
     - [2019/06/16](#20190616)
@@ -80,7 +81,9 @@ For previuos changes, see:
 - [`lib_classi.i`][lib_classi] &#x27f6; v0.20.1
 - [`lib_verbi.i`][lib_verbi] &#x27f6; v0.20.3
 
-Aggiunte annotazioni varie nel modulo `lib_classi.i`.
+### Repulisti classi attori
+
+Nel modulo `lib_classi.i` è stato rimosso del codice ridondante sulla classe `persona` che era identico a quello della classe genitore `actor` (nell'originale inglese, alcuni messaggi variavano leggermente, ma buona parte del codice era ridondante anche nell'originale).
 
 ### Verbo `prendi_da` sempre onnipotente
 

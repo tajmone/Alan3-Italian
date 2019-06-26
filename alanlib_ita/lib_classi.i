@@ -1779,24 +1779,6 @@ ADD TO EVERY actor
         END IF.
     END IF.
     "portando niente."
-
--- @TODO: Sia ACTOR che PERSONA utilizzano lo stesso messaggio per riferire     FIXME!
---        che un ACTOR o PERSONA non trasportano nulla; ma nella libreria
---        originale inglese differiscono leggermente:
--- 
---          * ACTOR  -> "[is/are] not carrying anything."
---          * PERSON -> "[is/are] empty-handed."
--- 
---        dato che il primo si può riferire anche ad attori non umani, e quindi
---        privi di mani. Devo capire se nella libreria italiana serve mantenere
---        un messaggio identico su PERSONA, dato che è ridondante, o se invece
---        devo differenziarli o rimuovere il codice da PERSONA e lasciare che
---        l'ereditarietà faccia il resto!
--- 
---        Per maggiori info vedi:
---            https://github.com/AnssiR66/AlanStdLib/issues/15
-
-
 --==============================================================================
 -- § 2.2.3 - Estrazione oggetti
 --==============================================================================
@@ -1814,14 +1796,6 @@ ADD TO EVERY actor
           THEN "$$ro"
         END IF. "d'accordo."
 END ADD TO actor.
-
--- @TODO: Sia ACTOR che PERSONA producono il medesimo messaggio per impedire    FIXME!
---        l'asportazione di un oggetto da un attore non condiscendente (anche
---        in inglese è così). Questo è ridondante e, a meno che non vi siano
---        ragioni per differenziare tra ACTOR e PERSONA, si potrebbe togliere
---        la variante su PERSONA, dato che l'eredita da ACTOR.
---        Per maggiori info vedi:
---            https://github.com/AnssiR66/AlanStdLib/issues/15
 
 --==============================================================================
 --------------------------------------------------------------------------------
@@ -1991,41 +1965,6 @@ END ADD TO actor.
 
 EVERY persona IsA actor
   CAN parlare.
-
-  CONTAINER
---==============================================================================
--- § 3.1.2 - Descrizione inventario non vuoto
---==============================================================================
--- NOTA: Questo codice è simile a quello presente sulla classe actor, tranne per
---       il fatto che qui non si verifica se l'attore possa essere HERO! Se si
---       modifica il testo qui, ricordarsi di modificarlo anche su actor!
-    HEADER
-      SAY THE THIS. "sta"
-      IF THIS IS plurale
-        THEN "$$nno"
-      END IF. "portando"
---==============================================================================
--- § 3.1.2 - Descrizione inventario vuoto
---==============================================================================
-    ELSE
-      SAY THE THIS. "non sta"
-      IF THIS IS plurale
-        THEN "$$nno"
-      END IF.
-      "portando niente."
---==============================================================================
--- § 3.1.3 - Estrazione oggetti
---==============================================================================
--- Questa parte del codice interviene quando si cerca di estrarre i contenuti di
--- un attore (in altre parole, quando si cerca di prendere ad un attore oggetti
--- che gli appartengono).
-    EXTRACT
-      CHECK THIS IS condiscendente
-        ELSE
-          SAY THE THIS. "non sarebbe"
-          IF THIS IS plurale
-            THEN "$$ro"
-          END IF. "d'accordo."
 END EVERY.
 
 
