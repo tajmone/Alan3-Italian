@@ -363,7 +363,8 @@ ADD TO EVERY thing
         ELSE
           "(stringa vuota)"
       END IF.
-      SAY mia_AT:dbgsep_no_nl. --------------( separatore senza \n )------------
+      -- SAY mia_AT:dbgsep_no_nl. --------------( separatore senza \n )------------
+      SAY mia_AT:dbgsep. --------------( separatore )--------------
   END VERB debaca.
 END ADD TO.
 
