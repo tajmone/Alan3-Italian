@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi_vestiario.i"
---| v0.20.0-Alpha, 2019-06-15: Alan 3.0beta6 build 1980
+--| v0.20.1-Alpha, 2019-07-28: Alan 3.0beta6 build 1980
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -123,7 +123,7 @@ EVERY indumento IsA OBJECT
 
 
   INITIALIZE
---                                                                              TRANSLATE!
+--                                                                              TRANSLATE COMMENTS!
     -- all objects found in a piece of clothing, for example a wallet in a jacket,
     -- will be allowed back in the piece of clothing once taken from there:
 
@@ -133,7 +133,7 @@ EVERY indumento IsA OBJECT
     END FOR.
 
 
---                                                                              TRANSLATE!
+--                                                                              TRANSLATE COMMENTS!
     -- all clothing acquired and worn by the hero or an NPC mid-game is checked to
     -- show correctly when the possessions of an actor are listed:
 
@@ -142,7 +142,7 @@ EVERY indumento IsA OBJECT
     -- SCHEDULE controlla_indossati AFTER 0.
 
   CONTAINER
---                                                                              TRANSLATE!
+--                                                                              TRANSLATE COMMENTS!
   -- to allow for example a wallet to be put into a jacket
 
   -- If the clothing contains something, for example if a jacket contains a wallet,
@@ -619,7 +619,7 @@ END EVERY.
 
 
 
---                                                                              TRANSLATE!
+--                                                                              TRANSLATE COMMENTS!
 --------------------------------------------------------------------
 -- These attributes are used internally in the library - ignore!
 --------------------------------------------------------------------
@@ -628,7 +628,7 @@ ADD TO EVERY ACTOR
   IS genere 0.
 END ADD TO.
 
---                                                                              TRANSLATE!
+--                                                                              TRANSLATE COMMENTS!
 --------------------------------------------------------------------
 -- An event checking that clothing acquired and worn by an actor
 -- mid-game is recognised to be worn by the actor:
@@ -700,7 +700,7 @@ END EVENT.
 
 --------------------------------------------------------------------
 
---                                                                              TRANSLATE!
+--                                                                              TRANSLATE CLOTHING ISTRUCTIONS!
 -----------------------------------------------------------------------
 -- INSTRUCTIONS FOR USING THE CLOTHING CLASS
 -----------------------------------------------------------------------
@@ -812,7 +812,7 @@ END EVENT.
 -->tabella_vestiario(10960.1)
 --| .Indumenti Comuni
 --| [.center,cols="<40d,6*^10m",options="header,autowidth"]
---~                                                                             TRANSLATE!
+--~                                                                             TRANSLATE TABELLA VESTIARIO!
 --| |=====================================================================
 --| | Indumento/strato    | testa | viso | tronco | gambe | piedi | mani
 --~ +-----------------------------+------+--------+-------+-------+------+

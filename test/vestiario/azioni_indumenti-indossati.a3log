@@ -56,7 +56,8 @@ Non conosco la parola 'XYZZY'.
 > ; ------------------------------------------------------------------------------
 > ; Testa il verbo 'metti' con indumento indossato...
 > esamina il cesto
-Il cesto è vuoto.
+Un cesto in vimini per gettare gli indumenti scartati.[[ /xDesk ]]
+il cesto è vuoto.
 
 > ; NOTA: I boxer sono attualmente indossati dall'Eroe, sotto i pantaloni!
 > inventario
@@ -79,7 +80,8 @@ Prima dovresti toglierti i tuoi boxer.
 È INDOSSATO: Sì (dal hero)
 
 > esamina il cesto
-Il cesto è vuoto.
+Un cesto in vimini per gettare gli indumenti scartati.[[ /xDesk ]]
+il cesto è vuoto.
 
 > ovest
 Reparto Abbigliamento Sportivo

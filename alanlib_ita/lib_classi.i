@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.20.1-Alpha, 2019-06-26: Alan 3.0beta6 build 1980
+--| v0.20.2-Alpha, 2019-07-28: Alan 3.0beta6 build 1980
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -273,7 +273,7 @@ EVERY porta IsA OBJECT
 
 
   HAS altro_lato  porta_fittizia.
-    --                                                                          TRANSLATE!
+    --                                                                          TRANSLATE COMMENTS!
     
     -- The other side of the door in the next room will be automatically taken
     -- care of so that it shows correctly in any room or object descriptions.
@@ -283,7 +283,7 @@ EVERY porta IsA OBJECT
 
   INITIALIZE
 
-    --                                                                          TRANSLATE!
+    --                                                                          TRANSLATE COMMENTS!
     
     -- ensuring that the author didn't forget to declare a locked door closed
     -- (= NOT open), as well. This is just double-checking, as any door is by
@@ -296,7 +296,7 @@ EVERY porta IsA OBJECT
         END IF.
     END IF.
 
-    --                                                                          TRANSLATE!
+    --                                                                          TRANSLATE COMMENTS!
 
     -- ensuring that if a door has an otherside attribute declared, this
     -- otherside will have the original door as its otherside in turn:
@@ -306,7 +306,7 @@ EVERY porta IsA OBJECT
         SET THIS:altro_lato:altro_lato TO THIS.
 
 
-        --                                                                      TRANSLATE!
+        --                                                                      TRANSLATE COMMENTS!
       
         -- next, ensuring that some attributes are correctly assigned to the
         -- otherside of the door, as well. Only some non-default cases need to
@@ -331,7 +331,7 @@ EVERY porta IsA OBJECT
     END IF.
 
 
-   --                                                                           TRANSLATE!
+   --                                                                           TRANSLATE COMMENTS!
    -- making the same matching_key open both sides of a door:
 
     IF  THIS:altro_lato <> porta_fittizia
@@ -339,12 +339,13 @@ EVERY porta IsA OBJECT
       THEN SET THIS:altro_lato:chiave_abbinata TO THIS:chiave_abbinata.
     END IF.
 
-   --                                                                           TRANSLATE!
+   --                                                                           TRANSLATE COMMENTS!
 
     -- If a door is lockable/locked, you should state at the door instance
     -- which object will unlock it, with the matching_key attribute.
     -- for example
 
+   --                                                                           TRANSLATE EXAMPLE!
     -- THE attic_door IsA DOOR
     --   HAS matching_key brass_key.
     --   ...
@@ -677,9 +678,8 @@ END EVERY.
 EVERY liquido IsA OBJECT
 
   CONTAINER
---                                                                              TRANSLATE!
-    HEADER "In" SAY THE THIS. "you see"
-    ELSE "There is nothing in" SAY THE THIS. "."
+    HEADER SAY THIS:prep_IN. SAY THIS. "puoi vedere"
+    ELSE "Non c'è nulla" SAY THIS:prep_IN. SAY THIS. "."
 
     -- Dichiariamo questa classe un contenitore al fine di consentire comandi
     -- come "butta il sacco in acqua", "guarda nell'acqua" e "prendi la perla
@@ -689,21 +689,25 @@ EVERY liquido IsA OBJECT
 
   HAS recipiente recipiente_fittizio.
 
-    -- The 'vessel' attribute takes care that if a liquid is
-    -- in a container, the verb 'take' will automatically take the
-    -- container instead (if the container is takeable). Trying
-    -- take a liquid that is in a fixed-in-place container, as well
-    -- as trying to take a liquid outside any container, will yield
-    -- "You can't carry [the liquid] around in your bare hands."
-    -- The default value 'null_vessel' tells the compiler that the liquid
-    -- is not in any container. 'null_vessel' is a dummy default that can be
-    -- ignored.
-
+  -- L'attributo `recipiente` consente alla Libreria di gestire automaticamente
+  -- i liquidi all'interno di contenitori, di modo che il verbo `prendi` usato
+  -- con un liquido farà sì che venga preso il suo contenitore anziché il
+  -- liquido stesso (es. "prendi il vino" farò prendere la bottiglia di vino). 
+  -- 
+  -- Cercare di prendere un liquido contenuto in un recipiente `NON prendibile`,
+  -- o un liquido con `recipiente_fittizio`, risulterà nel messaggio che non è
+  -- possibile prendere il liquido a mani nude.
+  -- 
+  -- Il valore predefinito `recipiente_fittizio` indica che il liquido non è
+  -- all'interno di un recipiente. Gli autori non devono preoccuparsi di questo
+  -- valore predefinito, che è riservato all'uso interno della Libreria.
 
   INITIALIZE
 
-  -- Every object found in a liquid, for example a fish in a pond of water,
-  -- will be allowed back in that liquid once taken out of there:
+  -- Qualsiasi oggetto che si trovi all'interno del liquido all'inizio della
+  -- partita (e.s. un pesce nello stagno) sarà aggiunto alla lista degli oggetti
+  -- consentiti nel liquido, di modo che sia possibile rimettervelo dentro una
+  -- volta asportatolo.
 
     FOR EACH liq IsA liquido
       DO
@@ -713,9 +717,9 @@ EVERY liquido IsA OBJECT
         END FOR.
     END FOR.
 
-
-  -- Every liquid in a container at the start of the game
-  -- will have that container as its vessel:
+  -- A ogni liquido che si trovi all'interno di un contenitore (elencato)
+  -- all'inizio della partita, gli verrà assegnato  quel `contenitore_elencato`
+  -- come `recipiente`:
 
     FOR EACH lc IsA contenitore_elencato
       DO
@@ -725,22 +729,22 @@ EVERY liquido IsA OBJECT
         END FOR.
     END FOR.
 
+  -- Se nella vostra avventura ci sarà un liquido all'interno di un recipiente,
+  -- dovrete dichiarare l'istanza del liquido in questo modo:
+  -- 
+  --    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  --    THE vino IsA liquido IN bottiglia
+  --    END THE vino.
+  --    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  -- If you have some liquid in a container in your game, you should declare the
-  -- liquid instance thus:
-
-  -- THE juice IsA liquid
-  --      IN bottle
-  -- END THE juice.
-
-  -- The verb 'pour', as defined in this library, also works for the container of a liquid;
-  -- i.e. if there is some juice in a bottle, 'pour bottle' and 'pour juice' will work equally well.
-  -- Note, however, that the verb 'empty' is not a synonym for 'pour';
-  -- 'empty' only works for container objects.
+  -- Il verbo "versa", definito dalla Liberia, agisce tenendo conto del
+  -- contenitore di un liquido; p.es. se vi è del vino nella bottiglia, "versa
+  -- la bottiglia" e "versa il vino"conseguiranno il medesimo risultato. Sì noti
+  -- però che il verbo "svuota" non è sinonimo di "versa", poiché "svuota"
+  -- agisce solo sui contenitori.
 
 
-
-    SCHEDULE check_vessel AT THIS AFTER 0.    -- this event is defined further below
+    SCHEDULE check_vessel AT THIS AFTER 0. -- Questo evento è definito più avanti.
 
 
 -->liquido
@@ -780,6 +784,9 @@ EVERY liquido IsA OBJECT
                 THEN SAY ogg:xDesc.
                 ELSE SAY mia_AT:descrizione_standard_ogg1.
               END IF.
+-- @NOTA: Questo sistema non tiene conto del fatto che sia il liquido che il    CHECK!
+--        suo contenitore potrebbero avere una xDesc!
+
 -- @NOTA: se il contenitore è chiuso il liquido non può essere usato            CHECK!
 --        dal giocatore nel comando (dato che di default chiuso=OPAQUE).
 --        Quindi questa condizione non si verificherà mai. (verifica!)
@@ -793,7 +800,13 @@ EVERY liquido IsA OBJECT
                 -- Here we prohibit the player from examining
                 -- a liquid when the liquid is in a closed container.
           END IF.
-        ELSE SAY mia_AT:descrizione_standard_ogg1.
+        -- ELSE SAY mia_AT:descrizione_standard_ogg1.
+        ELSE -- Se il liquido ha un receipiente fittizio, descrivi liquido:
+              -- Onora la xDesc, se presente.
+              IF THIS:xDesc <> ""
+                THEN SAY THIS:xDesc.
+                ELSE SAY mia_AT:descrizione_standard_ogg1.
+              END IF.
       END IF.
   END VERB esamina.
 
@@ -813,10 +826,15 @@ EVERY liquido IsA OBJECT
     DOES ONLY
       IF THIS:recipiente <> recipiente_fittizio
         THEN
+--      TODO: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~FIXME!
+--            Questa clausola non ha alcuna senso dato che se il recipiente
+--            fosse chiuso sarebbe OPAQUE e quindi il suo contenuto non sarebbe
+--            utilizzabile come parametro! Se però introdurrò contenitori
+--            trasparenti, allora avrebbe senso, ma non allo stato attuale.
+--            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           IF THIS:recipiente IS aperto
 --          @TODO: List contents instead!                                       TODO!
---                                                                              TRANSLATE!
-            THEN "You see nothing special in" SAY THE THIS. "."
+            THEN "Non noti nulla di insolito" SAY THIS:prep_IN. "$1."
 --                                                                              TRANSLATE!
             ELSE "You can't, since" SAY THE recipiente OF THIS.
                 IF THIS IS NOT plurale
@@ -824,11 +842,11 @@ EVERY liquido IsA OBJECT
                   ELSE "are"
                 END IF.
                 "closed."
-                -- Here we prohibit the player from looking into
-                -- a liquid when the liquid is in a closed container.
+                -- Qui impediamo al giocatore di guardare dentro un liquido
+                -- contenuto in un recipiente chiuso.
           END IF.
 --      @TODO: List contents instead!                                           TODO!
-        ELSE "You see nothing special in" SAY THE THIS. "."
+        ELSE "Non noti nulla di insolito" SAY THIS:prep_IN. "$1."
       END IF.
   END VERB guarda_in.
 
@@ -1400,9 +1418,17 @@ EVERY contenitore_elencato IsA OBJECT
 
   VERB esamina
     DOES ONLY
+      -- Onora la xDesc, se presente.
+      IF THIS:xDesc <> ""
+         THEN SAY THIS:xDesc.
+      END IF.
       IF THIS IS NOT OPAQUE
         THEN LIST THIS.
-        ELSE "Non puoi vedere dentro" SAY THE THIS. "."
+        ELSE "Non puoi vedere dentro" SAY THE THIS. "perché"
+        IF THIS IS plurale
+          THEN  "sono"
+          ELSE  "è"
+        END IF. "chius$$" SAY THIS:vocale. "."
       END IF.
   END VERB esamina.
 

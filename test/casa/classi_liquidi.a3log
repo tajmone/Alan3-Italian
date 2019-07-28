@@ -50,21 +50,24 @@ Esamini il vino, ma non noti niente di speciale.
 Fatto, ora il frigo è aperto. Il frigo contiene un cartone del latte.
 
 > esamina il cartone
-Non puoi vedere dentro il cartone del latte.
+È un tetraedro per il latte.[[ /xDesk ]]
+Non puoi vedere dentro il cartone del latte perché è chiuso.
 
 > apri il cartone
 Fatto, ora il cartone del latte è aperto. Il cartone del latte contiene del 
 latte.
 
 > esamina il cartone
-Il cartone del latte contiene del latte.
+È un tetraedro per il latte.[[ /xDesk ]]
+il cartone del latte contiene del latte.
 
 > chiudi il cartone
 [[ istanza 'tetraedro' --> VERB 'chiudi' --> DOES ONLY ]]
 Una volta aperto il cartone del latte non può più essere chiuso.
 
 > esamina il cartone
-Il cartone del latte contiene del latte.
+È un tetraedro per il latte.[[ /xDesk ]]
+il cartone del latte contiene del latte.
 
 > ; ==============================================================================
 > ; MANEGGIARE LIQUIDI IN RECIPIENTI PRENDIBILI

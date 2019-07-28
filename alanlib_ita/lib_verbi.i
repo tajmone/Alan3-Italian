@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.20.3-Alpha, 2019-06-26: Alan 3.0beta6 build 1980
+--| v0.20.4-Alpha, 2019-07-28: Alan 3.0beta6 build 1980
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -463,7 +463,7 @@ META VERB notifica_off
     END IF.
 END VERB notifica_off.
 
---                                                                              TRANSLATE!
+--                                                                              TRANSLATE COMMENTS!
 -- The 'notify' verb allows the players to disable the score change
 -- messages. (Some players find such messages annoying.)
 -- The verb toggles the hero's 'notify_on' attribute on and off. That
@@ -6464,7 +6464,7 @@ VERB sdraiati
 END VERB sdraiati.
 
 
---                                                                              TRANSLATE!
+--                                                                              TRANSLATE COMMENTS!
 -- When the hero is sitting or lying down, it will be impossible for her/him to
 -- perform certain actions, as numerous verbs in the library have checks for this.
 -- For example, if the hero is lying down and the player types 'attack [something]',
@@ -6531,7 +6531,7 @@ ADD TO EVERY OBJECT
     DOES
 --                                                                              TRANSLATE!
       "There's no need to lie down in" SAY THE cont. "."
---                                                                              TRANSLATE!
+--                                                                              TRANSLATE COMMENTS!
       -- If you need this to work, make a nested location
       -- (for example THE in_bed IsA LOCATION AT bedroom; etc.)
       -- Remember to: MAKE hero lying_down.
@@ -6540,7 +6540,7 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
---                                                                              TRANSLATE!
+--                                                                              TRANSLATE COMMENTS!
 -- When the hero is sitting or lying down, it will be impossible for her/him to
 -- perform certain actions, as numerous verbs in the library have checks for this.
 -- For example, if the hero is lying down and the player types 'attack [something]',
@@ -6602,7 +6602,7 @@ ADD TO EVERY OBJECT
     DOES
 --                                                                              TRANSLATE!
       "There's no need to lie down on" SAY THE superficie. "."
---                                                                              TRANSLATE!
+--                                                                              TRANSLATE COMMENTS!
       -- If you need this to work, make a nested location
       -- (for example THE on_bed IsA LOCATION AT bedroom; etc.)
       -- Remember to: MAKE hero lying_down.
@@ -6612,7 +6612,7 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
---                                                                              TRANSLATE!
+--                                                                              TRANSLATE COMMENTS!
 
 -- When the hero is sitting or lying down, it will be impossible for her/him to
 -- perform certain actions, as numerous verbs in the library have checks for this.
@@ -7083,7 +7083,7 @@ ADD TO EVERY OBJECT
               THEN SAY mia_AT:png2_non_gradirebbe_sg.
               ELSE SAY mia_AT:png2_non_gradirebbe_pl.
             END IF.
---                                                                              TRANSLATE!
+--                                                                              TRANSLATE COMMENTS!
             -- Throwing objects at actors is not disabled in the checks
             -- as in some situations this might be desired, for example
             -- when attacking enemies.
@@ -7412,6 +7412,7 @@ ADD TO EVERY OBJECT
 --                                                                              TRANSLATE!
     AND hero IS NOT sdraiato
       ELSE SAY mia_AT:check_hero_not_lying_down3.
+--                                                                              TRANSLATE COMMENTS!
     -- notice that, unlike 'swim_in', it is possible to dive in a
     -- not reachable object (for example from a clifftop into a river)
     -- but not to a distant object:
@@ -9883,7 +9884,7 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
---                                                                              TRANSLATE!
+--                                                                              TRANSLATE COMMENTS!
 -- another 'drive' formulation added to guide players to use the right phrasing:
 
 

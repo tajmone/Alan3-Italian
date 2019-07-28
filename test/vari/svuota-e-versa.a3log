@@ -29,7 +29,8 @@ Non stai portando niente.
 > ; SVUOTA / VERSA
 > ; ------------------------------------------------------------------------------
 > esamina il barattolo
-Il barattolo contiene delle noccioline.
+È un barattolo di noccioline.[[ /xDesk ]]
+il barattolo contiene delle noccioline.
 
 > svuota il barattolo
 (prima prendi il barattolo)
@@ -39,7 +40,8 @@ Svuoti il contenuto del barattolo in terra.
 Ci provi, ma il barattolo era vuoto.
 
 > esamina il barattolo
-Il barattolo è vuoto.
+È un barattolo di noccioline.[[ /xDesk ]]
+il barattolo è vuoto.
 
 > guarda
 Radura Nel Bosco
@@ -69,10 +71,12 @@ Non possiedi la vasca.
 > ; ------------------------------------------------------------------------------
 > ; TRAVASA DA UN CONTENITORE ALL'ALTRO:
 > esamina il sacchetto
-Il sacchetto contiene delle patatine.
+È un sacchetto di patatine.[[ /xDesk ]]
+il sacchetto contiene delle patatine.
 
 > esamina la busta
-La busta contiene delle caramelle.
+Una busta di carta.[[ /xDesk ]]
+la busta contiene delle caramelle.
 
 > svuota il sacchetto nella busta
 (prima prendi il sacchetto)
@@ -82,10 +86,12 @@ Svuoti il contenuto del sacchetto nella busta.
 Ci provi, ma il sacchetto era vuoto.
 
 > esamina il sacchetto
-Il sacchetto è vuoto.
+È un sacchetto di patatine.[[ /xDesk ]]
+il sacchetto è vuoto.
 
 > esamina la busta
-La busta contiene delle caramelle e delle patatine.
+Una busta di carta.[[ /xDesk ]]
+la busta contiene delle caramelle e delle patatine.
 
 > versa la busta nel sacchetto
 (prima prendi la busta)
@@ -95,10 +101,12 @@ Svuoti il contenuto della busta nel sacchetto.
 Ci provi, ma la busta era vuota.
 
 > esamina il sacchetto
-Il sacchetto contiene delle caramelle e delle patatine.
+È un sacchetto di patatine.[[ /xDesk ]]
+il sacchetto contiene delle caramelle e delle patatine.
 
 > esamina la busta
-La busta è vuota.
+Una busta di carta.[[ /xDesk ]]
+la busta è vuota.
 
 > guarda
 Radura Nel Bosco
@@ -129,7 +137,8 @@ Svuoti il contenuto del sacchetto sul tavolo.
 Ci provi, ma il sacchetto era vuoto.
 
 > esamina il sacchetto
-Il sacchetto è vuoto.
+È un sacchetto di patatine.[[ /xDesk ]]
+il sacchetto è vuoto.
 
 > esamina il tavolo
 Un tavolo da picnic. Sopra il tavolo vedi delle caramelle e delle patatine.
@@ -148,7 +157,8 @@ lattina contiene dell'aranciata.
 > ; SVUOTA
 > ; ------------------------------------------------------------------------------
 > esamina la bottiglia
-La bottiglia contiene del vino.
+Una bottiglia di plastica.[[ /xDesk ]]
+la bottiglia contiene del vino.
 
 > svuota il vino
 Solo i contenitori possono essere svuotati.
@@ -162,7 +172,8 @@ Svuoti il contenuto della bottiglia in terra.
 > ; ------------------------------------------------------------------------------
 > ; VERSA IN TERRA
 > esamina la bottiglia
-La bottiglia è vuota.
+Una bottiglia di plastica.[[ /xDesk ]]
+la bottiglia è vuota.
 
 > versa la bottiglia
 Ci provi, ma la bottiglia era vuota.
@@ -171,7 +182,8 @@ Ci provi, ma la bottiglia era vuota.
 You can't pour il vino anywhere since you are not carrying it.
 
 > esamina la bottiglia
-La bottiglia è vuota.
+Una bottiglia di plastica.[[ /xDesk ]]
+la bottiglia è vuota.
 
 > guarda
 Radura Nel Bosco

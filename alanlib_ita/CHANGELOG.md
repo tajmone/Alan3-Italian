@@ -18,6 +18,10 @@ For previuos changes, see:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Alan 3.0beta6 build 1980](#alan-30beta6-build-1980)
+    - [2019/07/28](#20190728)
+        - [Liquidi](#liquidi)
+        - [Contenitori Elencati](#contenitori-elencati)
+        - [Messaggi Libreria](#messaggi-libreria)
     - [2019/06/26](#20190626)
         - [Repulisti classi attori](#repulisti-classi-attori)
         - [Verbo `prendi_da` sempre onnipotente](#verbo-prendi_da-sempre-onnipotente)
@@ -75,6 +79,44 @@ For previuos changes, see:
 -----
 
 # Alan 3.0beta6 build 1980
+
+## 2019/07/28
+
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.20.2
+- [`lib_classi_vestiario.i`][lib_classi_vestiario] &#x27f6; v0.20.1
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.20.2
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.20.4
+
+### Liquidi
+
+In `lib_classi.i`, modificato il verbo `esamina` sulla classe `liquido` di modo che venga onorata la `xDesc` di un liquido con recipiente `recipiente_fittizio`.
+
+> __NOTA__ — per quanto riguarda i liquidi con un recipiente, allo stato attuale il verbo `esamina` onorerà sempre la `xDesc` del liquido, non del suo recipiente. Questo è il comportamento desiderabile nella maggior parte dei casi, ma possono esservi eccezioni per cui sarebbe il caso di ripiegare sulla `xDesc` del contenitore, nel caso il liquido non ne avesse una.
+
+Tradotta la risposta di `guarda_in` sulla classe `liquido`.
+
+Tradotto lo `Header` della classe `liquido`.
+
+### Contenitori Elencati
+
+Se un `contenitore_elencato` possiede una `xDesc`, onorala con il verbo `esamina`.
+
+Migliorato il messaggio per contenitori chiusi:
+
+|                 prima                  |                              adesso                              |
+|----------------------------------------|------------------------------------------------------------------|
+| `"Non puoi vedere dentro <l'oggetto>"` | `"Non puoi vedere dentro <l'oggetto> perche [è/sono] chius[*]."` |
+
+### Messaggi Libreria
+
+Correggi alcuni messaggi cui mancava il punto finale nella frase:
+
+- `imp_ogg1_chiuso_ms`
+- `imp_ogg1_chiuso_fs`
+- `imp_ogg2_chiuso_ms`
+- `imp_ogg2_chiuso_fs`
+
+<!---------------------------------------------------------------------------->
 
 ## 2019/06/26
 

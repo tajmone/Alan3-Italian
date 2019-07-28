@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.20.1-Alpha, 2019-06-16: Alan 3.0beta6 build 1980
+--| v0.20.2-Alpha, 2019-07-28: Alan 3.0beta6 build 1980
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
@@ -888,16 +888,16 @@ ADD TO EVERY blocco_definizioni
 
   -- VERBI: empty (in/on), pour (in/on), look_in
   -- ORIGINAL EN:  check_obj_open2_sg/pl
-  HAS imp_ogg1_chiuso_ms "Non puoi farlo perché $+1 è chiuso".
+  HAS imp_ogg1_chiuso_ms "Non puoi farlo perché $+1 è chiuso.".
   HAS imp_ogg1_chiuso_mp "Non puoi farlo perché $+1 sono chiusi.".
-  HAS imp_ogg1_chiuso_fs "Non puoi farlo perché $+1 è chiusa".
+  HAS imp_ogg1_chiuso_fs "Non puoi farlo perché $+1 è chiusa.".
   HAS imp_ogg1_chiuso_fp "Non puoi farlo perché $+1 sono chiuse.".
 
   -- VERBI: svuota_in, versa_in, metti_in, lancia_in
   -- ORIGINAL EN:  check_obj2_open_sg/pl
-  HAS imp_ogg2_chiuso_ms "Non puoi farlo perché $+2 è chiuso".
+  HAS imp_ogg2_chiuso_ms "Non puoi farlo perché $+2 è chiuso.".
   HAS imp_ogg2_chiuso_mp "Non puoi farlo perché $+2 sono chiusi.".
-  HAS imp_ogg2_chiuso_fs "Non puoi farlo perché $+2 è chiusa".
+  HAS imp_ogg2_chiuso_fs "Non puoi farlo perché $+2 è chiusa.".
   HAS imp_ogg2_chiuso_fp "Non puoi farlo perché $+2 sono chiuse.".
 --<
 

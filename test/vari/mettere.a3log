@@ -110,19 +110,22 @@ Farlo non servirebbe a nulla.
 > ; METTI IN
 > ; ==============================================================================
 > esamina il frigo
-Il frigorifero è vuoto.
+Un vecchio catafalco di frigo sopravvissuto agli anni '70.[[ /xDesk ]]
+il frigorifero è vuoto.
 
 > metti l'arancia in frigo
 Fatto, ora l'arancia è nel frigorifero.
 
 > esamina il frigo
-Il frigorifero contiene un'arancia.
+Un vecchio catafalco di frigo sopravvissuto agli anni '70.[[ /xDesk ]]
+il frigorifero contiene un'arancia.
 
 > metti l'arancia nel cesto
 Fatto, ora l'arancia è nel cesto.
 
 > esamina il cesto
-Il cesto contiene un'arancia.
+Un cesto da frutta in vimini.[[ /xDesk ]]
+il cesto contiene un'arancia.
 
 > guarda
 Cucina
