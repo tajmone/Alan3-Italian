@@ -4,6 +4,7 @@
 --==============================================================================
 OPTIONS WIDTH 81.
 IMPORT 'libreria.i'. -- ALAN Libreria Standard Italiana v2.1
+IMPORT '../inc_debaca.i'. -- Comandi per il debugging
 
 
 THE mia_AT IsA blocco_definizioni
@@ -40,10 +41,11 @@ END THE taverna.
 --==============================================================================
 -- Creiamo un po' di oggetti per popolare la taverna.
 
+
 --==============================================================================
-
+--------------------------------------------------------------------------------
 -- IL TAVOLO
-
+--------------------------------------------------------------------------------
 --==============================================================================
 THE tavolo IsA supporto AT taverna.
   HAS xDesc "Un tavolo in legno antico.".
@@ -54,9 +56,9 @@ THE calice IsA object IN tavolo.
   HAS xDesc "Un calice per bere.".
 END THE calice.
 --==============================================================================
-
+--------------------------------------------------------------------------------
 -- IL BANCONE
-
+--------------------------------------------------------------------------------
 --==============================================================================
 THE bancone IsA supporto AT taverna.
   DESCRIPTION "" -- Omettendo la descrizione del bancone non verranno descritti
@@ -74,6 +76,40 @@ THE vino IsA liquido IN brocca.
   HAS recipiente brocca.
   HAS xDesc "Del vino rosso.".
 END THE vino.
+--==============================================================================
+
+-- IL SALVADANAIO DELLE MANCE 
+
+--==============================================================================
+-- THE salvadanaio IsA object IN bancone.
+--   CONTAINER.
+THE salvadanaio IsA contenitore_elencato IN bancone.
+  -- OPAQUE CONTAINER.
+  IS apribile.
+  IS NOT aperto.
+END THE salvadanaio.
+
+THE banconota IsA object IN salvadanaio.
+  HAS articolo "la".
+END THE banconota.
+
+--==============================================================================
+
+-- SCATOLA
+
+--==============================================================================
+-- THE salvadanaio IsA object IN bancone.
+--   CONTAINER.
+THE scatola IsA object IN bancone.
+  -- OPAQUE CONTAINER.
+  CONTAINER.
+  HAS articolo "la".
+  IS apribile.
+  IS NOT aperto.
+END THE scatola.
+
+THE biscotto IsA object IN scatola.
+END THE biscotto.
 
 --==============================================================================
 

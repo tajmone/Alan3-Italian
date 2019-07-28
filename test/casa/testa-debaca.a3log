@@ -100,6 +100,7 @@ stanza c'è Mr Nicky, il tuo cagnolino.
 | - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
 +------------------------------------------------------------------------------- 
 | xDesc: Una piccola radio tascabile, a batterie.[[ /xDesk ]]
+
 +-------------------------------------------------------------------------------
 
 > ; ------------------------------------------------------------------------------
@@ -168,6 +169,7 @@ stanza c'è Mr Nicky, il tuo cagnolino.
 | - APRI/CHIUDI: aperto / NON apribile / NON bloccabile / NON bloccato 
 +------------------------------------------------------------------------------- 
 | xDesc: Una torcia elettrica, "made in China".[[ /xDesk ]]
+
 +-------------------------------------------------------------------------------
 
 > ; ------------------------------------------------------------------------------
@@ -399,6 +401,7 @@ Mr Nicky ti segue.
 | - APRI/CHIUDI: NON aperto / apribile / bloccabile / NON bloccato 
 +------------------------------------------------------------------------------- 
 | xDesc: È la porta di casa tua, conduce alla strada.[[ /xDesk ]]
+
 +-------------------------------------------------------------------------------
 
 > est
