@@ -10,7 +10,12 @@
 *.ifid
 *.log
 *.sav
-!test/vari/comandi-partita_arun-diverso.sav
+!/test/vari/comandi-partita_arun-diverso.sav
+
+# Escludi i test per lo sviluppo locale:
+/test/_temp-dev/*.a3log
+/test/_temp-dev/*.a3sol
+/test/_temp-dev/*.alan
 
 ## =============
 ## AlanIDE Files

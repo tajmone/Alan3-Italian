@@ -13,6 +13,7 @@ Questa directory contiene le risorse per il collaudo automatizzato della libreri
 - [Contenuti](#contenuti)
     - [Test multipli su avventura singola](#test-multipli-su-avventura-singola)
     - [Test singoli su avventure multiple](#test-singoli-su-avventure-multiple)
+        - [Cartella temporanea per lo sviluppo dei test](#cartella-temporanea-per-lo-sviluppo-dei-test)
     - [Batch script di automazione](#batch-script-di-automazione)
 - [Requisiti di Sistema](#requisiti-di-sistema)
 - [Organizzazione dei Test](#organizzazione-dei-test)
@@ -26,7 +27,7 @@ Questa directory contiene le risorse per il collaudo automatizzato della libreri
 
 # Introduzione
 
-Questa directory contiene tre sottocartelle con varie avventure sorgenti Alan che impiegano la Libreria Standard Italiana; lo scopo di queste "avventure" è di testare in automatico alcune caratteristiche mirate della liberia.
+Questa directory contiene alcune sottocartelle con varie avventure sorgenti Alan che impiegano la Libreria Standard Italiana; lo scopo di queste "avventure" è di testare in automatico alcune caratteristiche mirate della liberia.
 
 Alle varie avventure di test sono associati uno o più più script di comandi (`*.a3sol`) per gestire sessioni di gioco automatizzate la cui trascrizione verrà salvata in un file di log (`*.a3log`), simulando così in modo rapido una gran quantità di partite (prestabilite).
 
@@ -40,6 +41,7 @@ I test sono suddivisi in diversi gruppi, raccolti in cartelle separate, e vi son
 
 |          cartella          |                tipologia test                |
 |----------------------------|----------------------------------------------|
+| [`/_temp-dev/`][_temp-dev] | Molte avventure, uno o più test su ciascuna. |
 | [`/casa/`][casa]           | Una sola avventura, molti test.              |
 | [`/vari/`][vari]           | Molte avventure, uno o più test su ciascuna. |
 | [`/vestiario/`][vestiario] | Una sola avventura, molti test.              |
@@ -75,6 +77,19 @@ Alcune di queste avventure individuali sono mirate a testare casi limiti, inclus
 Per queste ed altre ragioni pratiche, si è ritenuto utile separare in due gruppi distinti i test della libreria.
 
 Data la scarsa riusabilità delle avventure per i test "vari" (che solitamente servono un solo test), il tempo dedicato ad abbellirle è ridotto al minimo indispensabile.
+
+### Cartella temporanea per lo sviluppo dei test
+
+- [`/_temp-dev/`][_temp-dev]
+
+La cartella `_temp-dev/` è destinata allo sviluppo locale di nuovi test, per velocizzarne l'esecuzione eseguendoli in una cartella a sé, senza dover quindi eseguire altri test. I test di questa cartella sono della tipologia "Molte avventure, uno o più test su ciascuna".
+
+Poiché destinata all'uso in locale, le avventure sorgenti e relativi script ivi contenuti sono esclusi dal repository tramite regole `.gitignore`. Lo scopo è di semplificare lo sviluppo di nuovi test, in locale, e quando sono pronti spostarli in una delle altre cartelle di test.
+
+Sempre per la medesima ragione, la cartella `_temp-dev/` non viene processata dallo script `TESTA_TUTTO.bat`, e deve essere processata con l'apposito script `TESTA_CARTELLA.bat` ivi contenuto:
+
+- [`/_temp-dev/TESTA_CARTELLA.bat`](./_temp-dev/TESTA_CARTELLA.bat)
+
 
 ## Batch script di automazione
 
@@ -200,6 +215,7 @@ Options:
 
 [TESTA_TUTTO]: ./TESTA_TUTTO.bat
 
+[_temp-dev]: ./_temp-dev/ "Naviga alla cartella"
 [casa]: ./casa/ "Naviga alla cartella"
 [vari]: ./vari/ "Naviga alla cartella"
 [vestiario]: ./vestiario/ "Naviga alla cartella"
