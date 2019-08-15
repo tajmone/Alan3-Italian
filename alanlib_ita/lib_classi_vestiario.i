@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi_vestiario.i"
---| v0.20.1-Alpha, 2019-07-28: Alan 3.0beta6 build 1980
+--| v0.21.0-Alpha, 2019-08-15: Alan 3.0beta6 build 2015
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.

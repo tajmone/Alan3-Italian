@@ -3,8 +3,8 @@
 La Casa 
 Un set per eseguire test su stanze e luoghi esterni. 
 (C) Tristano Ajmone, 2018. 
-Avventura realizzata con ALAN 3.0beta6 build 1980. 
-Libreria Standard Italiana: 20 Alpha. 
+Avventura realizzata con ALAN 3.0beta6 build 2015. 
+Libreria Standard Italiana: 21 Alpha. 
 Versione 1 
 Tutti i diritti riservati.
 
@@ -126,7 +126,7 @@ Davvero?
 > ; TESTA 'rispondi_Sì'
 > ; ==============================================================================
 > sì
-Davvero?
+Non conosco la parola 's'.
 
 > ; ==============================================================================
 > ; TESTA 'dì'
@@ -141,40 +141,40 @@ C'è un giardiniere qui. C'è un gatto qui.
 Mr Nicky ti segue.
 
 > dì "ciao"
-Dici "ciao", ma non succede nulla.
+Non conosco la parola 'd'.
 
 > ; ------------------------------------------------------------------------------
 > ; parametri invalidi
 > ; ------------------------------------------------------------------------------
 > dì piscina
-Usa le virgolette ("") per delimitare l'oggetto della tua azione.
+Non conosco la parola 'd'.
 
 > dì 1
-Usa le virgolette ("") per delimitare l'oggetto della tua azione.
+Non conosco la parola 'd'.
 
 > dì me
-Usa le virgolette ("") per delimitare l'oggetto della tua azione.
+Non conosco la parola 'd'.
 
 > ; ==============================================================================
 > ; TESTA 'dì_a'
 > ; ==============================================================================
 > dì "ciao" al giardiniere
-Il giardiniere non sembra interessato.
+Non conosco la parola 'd'.
 
 > ; ------------------------------------------------------------------------------
 > ; parametri invalidi
 > ; ------------------------------------------------------------------------------
 > dì piscina al giardiniere
-Usa le virgolette ("") per delimitare l'oggetto della tua azione.
+Non conosco la parola 'd'.
 
 > dì giardiniere al giardiniere
-Usa le virgolette ("") per delimitare l'oggetto della tua azione.
+Non conosco la parola 'd'.
 
 > dì 1 al giardiniere
-Usa le virgolette ("") per delimitare l'oggetto della tua azione.
+Non conosco la parola 'd'.
 
 > dì me al giardiniere
-Usa le virgolette ("") per delimitare l'oggetto della tua azione.
+Non conosco la parola 'd'.
 
 > 
 

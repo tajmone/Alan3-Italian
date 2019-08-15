@@ -3,8 +3,8 @@
 Guarda E Verbi Affini 
 Avventure per testare il gruppo di verbi "guarda". 
 (C) Tristano Ajmone, 2018. 
-Avventura realizzata con ALAN 3.0beta6 build 1980. 
-Libreria Standard Italiana: 20 Alpha. 
+Avventura realizzata con ALAN 3.0beta6 build 2015. 
+Libreria Standard Italiana: 21 Alpha. 
 Versione 1 
 Tutti i diritti riservati.
 
@@ -30,7 +30,7 @@ Guardando su non noti nulla di interessante.
 > ; LO SCRICCHIOLÌO | SUONO
 > ; ==============================================================================
 > ascolta lo scricchiolìo
-Non odi niente di particolare.
+Non conosco la parola 'scricchiol'.
 
 > esamina lo scricchiolio
 That's not something you can examine.
@@ -39,22 +39,22 @@ That's not something you can examine.
 Lo scricchiolìo non è qualcosa che puoi prendere.
 
 > guarda lo scricchiolìo
-That's not something you can examine.
+Non conosco la parola 'scricchiol'.
 
 > guarda sotto lo scricchiolìo
-It's not possible to guarda there.
+Non conosco la parola 'scricchiol'.
 
 > guarda dietro lo scricchiolìo
-Non è possibile guardare dietro lo scricchiolìo.
+Non conosco la parola 'scricchiol'.
 
 > guarda nello scricchiolìo
-Non è possibile guardare dentro lo scricchiolìo.
+Non conosco la parola 'scricchiol'.
 
 > guarda attraverso lo scricchiolìo
-You can't look through lo scricchiolìo.
+Non conosco la parola 'scricchiol'.
 
 > guarda fuori dallo scricchiolìo
-Lo scricchiolìo non è qualcosa da cui poter guardare fuori.
+Non conosco la parola 'scricchiol'.
 
 > ; ==============================================================================
 > ; IL LUCERNARIO | object + distante + NOT raggiungibile

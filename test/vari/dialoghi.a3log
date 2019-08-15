@@ -3,8 +3,8 @@
 Dialoghi 
 Avventura per testare i verbi di conversazione. 
 (C) Tristano Ajmone, 2018. 
-Avventura realizzata con ALAN 3.0beta6 build 1980. 
-Libreria Standard Italiana: 20 Alpha. 
+Avventura realizzata con ALAN 3.0beta6 build 2015. 
+Libreria Standard Italiana: 21 Alpha. 
 Versione 1 
 Tutti i diritti riservati.
 
@@ -51,37 +51,37 @@ PERSONA DI ARGOMENTO.
 > ;                              Verbi 'dì' e 'dì_a'                              
 > ; ==============================================================================
 > dì "ciao"
-Dici "ciao", ma non succede nulla.
+Non conosco la parola 'd'.
 
 > dì "ciao" al mago
-Il mago non sembra interessato.
+Non conosco la parola 'd'.
 
 > dì al mago "ciao"
-Il mago non sembra interessato.
+Non conosco la parola 'd'.
 
 > dì "ciao" alla strega
-La strega non sembra interessata.
+Non conosco la parola 'd'.
 
 > dì alla strega "ciao"
-La strega non sembra interessata.
+Non conosco la parola 'd'.
 
 > dì "ciao" agli sciamani
-Gli sciamani non sembrano interessati.
+Non conosco la parola 'd'.
 
 > dì agli sciamani "ciao"
-Gli sciamani non sembrano interessati.
+Non conosco la parola 'd'.
 
 > ; ------------------------------------------------------------------------------
 > ;                             (parametri non idonei)                            
 > ; ------------------------------------------------------------------------------
 > dì "ciao" a 1
-1 non è in grado di capirti.
+Non conosco la parola 'd'.
 
 > dì "ciao" alla bacchetta magica
-La bacchetta magica non è in grado di capirti.
+Non conosco la parola 'd'.
 
 > dì "ciao" al cane
-Il cane non è in grado di capirti.
+Non conosco la parola 'd'.
 
 > ; ==============================================================================
 > ;                                Verbo 'racconta'                               
@@ -102,7 +102,7 @@ Il mago non sembra interessato.
 Il mago non sembra interessato.
 
 > dì al mago della bacchetta magica
-Il mago non sembra interessato.
+Non conosco la parola 'd'.
 
 > ; ------------------------------------------------------------------------------
 > ;                             (parametri non idonei)                            

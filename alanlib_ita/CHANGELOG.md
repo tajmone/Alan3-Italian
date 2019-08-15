@@ -17,6 +17,10 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [Alan 3.0beta6 build 2015](#alan-30beta6-build-2015)
+    - [2019/08/15](#20190815)
+        - [Passa alla v0.21.0](#passa-alla-v0210)
+        - [Passa ad Alan 3.0beta6 build 2015](#passa-ad-alan-30beta6-build-2015)
 - [Alan 3.0beta6 build 1980](#alan-30beta6-build-1980)
     - [2019/07/28](#20190728)
         - [Liquidi](#liquidi)
@@ -77,6 +81,33 @@ For previuos changes, see:
 <!-- /MarkdownTOC -->
 
 -----
+
+
+
+# Alan 3.0beta6 build 2015
+
+## 2019/08/15
+
+- [`libreria.i`][libreria] &#x27f6; v0.21.0
+- [`lib_italian.i`][lib_italian] &#x27f6; v0.21.0
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.21.0
+- [`lib_classi_vestiario.i`][lib_classi_vestiario] &#x27f6; v0.21.0
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.21.0
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.21.0
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] &#x27f6; v0.21.0
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.21.0
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.21.0
+
+### Passa alla v0.21.0
+
+Tutti i moduli della libreria passano alla versione 0.21.0.
+
+### Passa ad Alan 3.0beta6 build 2015
+
+Da qui in avanti il progetto adotta la [developer snaphshot]  [Alan 3.0beta6 build 2015][3.0beta6-2015].
+
+-------------------------------------------------------------------------------
+
 
 # Alan 3.0beta6 build 1980
 
@@ -834,6 +865,7 @@ Tutti i riferimenti alla precedente build nei moduli della libreria e nei sorgen
 [3.0beta6-1878]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1878 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1878"
 [3.0beta6-1880]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1880 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1880"
 [3.0beta6-1980]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1980 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1980"
+[3.0beta6-2015]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build2015 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 2015"
 
 <!-- Alan Commits ------------------------------------------------------------>
 
