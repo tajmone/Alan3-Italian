@@ -26,24 +26,26 @@ versa la vasca
 esamina il sacchetto
 esamina la busta
 svuota il sacchetto nella busta
-svuota il sacchetto nella busta
+svuota il sacchetto dentro la busta
 esamina il sacchetto
 esamina la busta
 versa la busta nel sacchetto
-versa la busta nel sacchetto
+versa la busta dentro il sacchetto
 esamina il sacchetto
 esamina la busta
 guarda
 ; VERSA NEL FIUME:
 PUT le noccioline nel barattolo
 versa il barattolo nel fiume
+versa il barattolo dentro il fiume
 svuota il barattolo nel fiume
+svuota il barattolo dentro il fiume
 ; ------------------------------------------------------------------------------
 ; SVUOTA_SU / VERSA_SU
 ; ------------------------------------------------------------------------------
 esamina il tavolo
 svuota il sacchetto sul tavolo
-svuota il sacchetto sul tavolo
+svuota il sacchetto sopra il tavolo
 esamina il sacchetto
 esamina il tavolo
 guarda

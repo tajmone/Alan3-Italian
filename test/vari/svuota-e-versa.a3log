@@ -82,7 +82,7 @@ la busta contiene delle caramelle.
 (prima prendi il sacchetto)
 Svuoti il contenuto del sacchetto nella busta.
 
-> svuota il sacchetto nella busta
+> svuota il sacchetto dentro la busta
 Ci provi, ma il sacchetto era vuoto.
 
 > esamina il sacchetto
@@ -97,7 +97,7 @@ la busta contiene delle caramelle e delle patatine.
 (prima prendi la busta)
 Svuoti il contenuto della busta nel sacchetto.
 
-> versa la busta nel sacchetto
+> versa la busta dentro il sacchetto
 Ci provi, ma la busta era vuota.
 
 > esamina il sacchetto
@@ -121,7 +121,13 @@ Non conosco la parola 'PUT'.
 > versa il barattolo nel fiume
 There's not much sense pouring il barattolo into il fiume.
 
+> versa il barattolo dentro il fiume
+There's not much sense pouring il barattolo into il fiume.
+
 > svuota il barattolo nel fiume
+Ci provi, ma il barattolo era vuoto.
+
+> svuota il barattolo dentro il fiume
 Ci provi, ma il barattolo era vuoto.
 
 > ; ------------------------------------------------------------------------------
@@ -133,7 +139,7 @@ Un tavolo da picnic. Non c'è nulla sopra il tavolo.
 > svuota il sacchetto sul tavolo
 Svuoti il contenuto del sacchetto sul tavolo.
 
-> svuota il sacchetto sul tavolo
+> svuota il sacchetto sopra il tavolo
 Ci provi, ma il sacchetto era vuoto.
 
 > esamina il sacchetto

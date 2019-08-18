@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_luoghi.i"
---| v0.21.0-Alpha, 2019-08-15: Alan 3.0beta6 build 2015
+--| v0.21.1-Alpha, 2019-08-18: Alan 3.0beta6 build 2015
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_locations.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -144,7 +144,7 @@ THE limbo IsA location
     sudovest,
     su,
     giù,
-    dentro,
+   'in', --> per "dentro" (sinonimo)
     fuori
 
     TO limbo.

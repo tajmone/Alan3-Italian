@@ -26,6 +26,7 @@ metti mario dietro il frigo
 ; METTI SU: NON SUPPORTO
 ; ------------------------------------------------------------------------------
 metti l'arancia sul frigo
+metti l'arancia sopra frigo
 ; ==============================================================================
 ; METTI DIETRO
 ; ==============================================================================
@@ -38,6 +39,7 @@ metti l'arancia sotto il frigo
 ; METTI SU
 ; ==============================================================================
 metti l'arancia sul tavolo
+metti l'arancia sopra il tavolo
 esamina il tavolo
 guarda
 ; ==============================================================================

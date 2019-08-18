@@ -1,0 +1,155 @@
+
+
+Test Direzioni 
+Testa le direzioni predefinite della libreria. 
+(C) Tristano Ajmone, 2019. 
+Avventura realizzata con ALAN 3.0beta6 build 2015. 
+Libreria Standard Italiana: 21 Alpha. 
+Versione 1 
+Tutti i diritti riservati.
+
+
+Vialetto di Casa
+Ti trovi nel vialetto di fronte a casa tua. Per entrare in casa digita NORD o
+DENTRO.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                              TESTA DIREZIONI                               *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Questo script testa le direzioni non cardinali della libreria.
+> ; ==============================================================================
+> ; TESTA SINTATTI DIREZIONE ALTERNATIVE
+> ; ==============================================================================
+> ; Vi sono varie sintassi alternative per le direzioni predefinite...
+> ;     SYNTAX vai_a = a (dest)!
+> ; ------------------------------------------------------------------------------
+> ; VAI A (DIREZIONE)
+> ; ------------------------------------------------------------------------------
+> ; "VAI" è solo una NOISE WORD poiché è sinonimo di "GO"
+> vai a nord
+Non ho capito la frase.
+
+> vai a sud
+Non ho capito la frase.
+
+> ; **ERRORE!** Per qualche ragione con la "A" non funziona.
+> vai nord
+Ingresso di Casa
+L'ingresso di casa tua. Per uscire di casa digita SUD o FUORI.
+
+> vai sud
+Vialetto di Casa
+Ti trovi nel vialetto di fronte a casa tua. Per entrare in casa digita NORD o
+DENTRO.
+
+> ; ------------------------------------------------------------------------------
+> ; A (DIREZIONE)
+> ; ------------------------------------------------------------------------------
+> ; Poiché "VAI" (GO) è ignorato, si può scrivere anche solo "a nord":
+> a nord
+Non ho capito la frase.
+
+> a sud
+Non ho capito la frase.
+
+> ; **ERRORE!** Per qualche ragione non funziona.
+> ; ------------------------------------------------------------------------------
+> ; (DIREZIONE)
+> ; ------------------------------------------------------------------------------
+> ; L'uso più comune è di digitare solo la direzione:
+> nord
+Ingresso di Casa
+L'ingresso di casa tua. Per uscire di casa digita SUD o FUORI.
+
+> sud
+Vialetto di Casa
+Ti trovi nel vialetto di fronte a casa tua. Per entrare in casa digita NORD o
+DENTRO.
+
+> ; ==============================================================================
+> ; TESTA "DENTRO" (SIN. DI "IN")
+> ; ==============================================================================
+> ; La libreria definisce DENTRO come sinonimo di 'IN', perciò bisognerà sempre
+> ; usare 'IN' per implementare la direzione DENTRO:
+> ; ------------------------------------------------------------------------------
+> ; VAI (DENTRO/FUORI)
+> ; ------------------------------------------------------------------------------
+> vai dentro
+Ingresso di Casa
+L'ingresso di casa tua. Per uscire di casa digita SUD o FUORI.
+
+> vai fuori
+Vialetto di Casa
+Ti trovi nel vialetto di fronte a casa tua. Per entrare in casa digita NORD o
+DENTRO.
+
+> ; ------------------------------------------------------------------------------
+> ; (DENTRO/FUORI)
+> ; ------------------------------------------------------------------------------
+> dentro
+Ingresso di Casa
+L'ingresso di casa tua. Per uscire di casa digita SUD o FUORI.
+
+> fuori
+Vialetto di Casa
+Ti trovi nel vialetto di fronte a casa tua. Per entrare in casa digita NORD o
+DENTRO.
+
+> dentro
+Ingresso di Casa
+L'ingresso di casa tua. Per uscire di casa digita SUD o FUORI.
+
+> ; ==============================================================================
+> ; TESTA SU/SOPRA/GIÙ
+> ; ==============================================================================
+> ; La libreria definisce SU (sinon. SOPRA) e GIÙ. In questo caso SOTTO è stato
+> ; aggiunto esplicitamente nello EXIT.
+> ; ------------------------------------------------------------------------------
+> ; VAI (SU/GIÙ)
+> ; ------------------------------------------------------------------------------
+> vai su
+Nella Soffitta
+La soffitta di casa tua. Per tornare in ingresso digita GIÙ.
+
+> vai giù
+Ingresso di Casa
+L'ingresso di casa tua. Per uscire di casa digita SUD o FUORI.
+
+> ; ------------------------------------------------------------------------------
+> ; (SU/GIÙ)
+> ; ------------------------------------------------------------------------------
+> su
+Nella Soffitta
+La soffitta di casa tua. Per tornare in ingresso digita GIÙ.
+
+> giù
+Ingresso di Casa
+L'ingresso di casa tua. Per uscire di casa digita SUD o FUORI.
+
+> ; ------------------------------------------------------------------------------
+> ; VAI (SOPRA/SOTTO)
+> ; ------------------------------------------------------------------------------
+> vai sopra
+Nella Soffitta
+La soffitta di casa tua. Per tornare in ingresso digita GIÙ.
+
+> vai sotto
+Ingresso di Casa
+L'ingresso di casa tua. Per uscire di casa digita SUD o FUORI.
+
+> ; ------------------------------------------------------------------------------
+> ; (SOPRA/SOTTO)
+> ; ------------------------------------------------------------------------------
+> sopra
+Nella Soffitta
+La soffitta di casa tua. Per tornare in ingresso digita GIÙ.
+
+> sotto
+Ingresso di Casa
+L'ingresso di casa tua. Per uscire di casa digita SUD o FUORI.
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

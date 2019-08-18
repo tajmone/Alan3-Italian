@@ -180,7 +180,13 @@ Appendi il mantello al gancio.
 > appendi il mantello sul gancio
 Non possiedi il mantello.
 
+> appendi il mantello sopra il gancio
+Non possiedi il mantello.
+
 > metti il mantello sul gancio
+Non possiedi il mantello.
+
+> metti il mantello sopra il gancio
 Non possiedi il mantello.
 
 > ; ma non accettare 'metti al':
@@ -194,6 +200,9 @@ Non possiedi il mantello.
 Non possiedi il mantello.
 
 > aggancia il mantello sul gancio
+Non possiedi il mantello.
+
+> aggancia il mantello sopra il gancio
 Non possiedi il mantello.
 
 > 

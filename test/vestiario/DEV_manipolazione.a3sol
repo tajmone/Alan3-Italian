@@ -77,7 +77,7 @@ indossa i tuoi pantaloni
 ; Proviamo a trasferire indumenti indossati in contenitori
 metti tuoi pantaloni nel cestino
 togliti i tuoi pantaloni
-metti tuoi pantaloni nel cestino
+metti tuoi pantaloni dentro il cestino
 x cestino
 ; //// VERIFICA 'NOT indossato' (OK!): ////
 DBG_IND tuoi pantaloni
@@ -106,6 +106,7 @@ lancia il portafoglio contro i boxer
 ; TESTA: 'LANCIA IN' (CONTENITORE)
 ; ------------------------------------------------------------------------------
 lancia le sneakers nel cestino
+lancia le sneakers dentro il cestino
 ; ------------------------------------------------------------------------------
 ; TESTA: 'LANCIA IN' (CONTENITORE INDOSSATO)
 ; ------------------------------------------------------------------------------

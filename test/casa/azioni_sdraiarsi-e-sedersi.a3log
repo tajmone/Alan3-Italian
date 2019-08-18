@@ -82,7 +82,8 @@ Ti alzi in piedi.
 > alzati
 Sei già in piedi.
 
-> sdraiati sul lettino
+> ; il sinonimo "sopra" per "su" è sempre disponibile:
+> sdraiati sopra il lettino
 [[ istanza 'lettino' --> VERB 'sdraiati_su' --> DOES ONLY ]]
 ti sdrai sul lettino.
 
@@ -109,7 +110,13 @@ Mr Nicky ti segue.
 > sdraiati sulla sedia
 There's no need to lie down on la sedia.
 
+> sdraiati sopra la sedia
+There's no need to lie down on la sedia.
+
 > sdraiati sul tavolo
+There's no need to lie down on il tavolo.
+
+> sdraiati sopra il tavolo
 There's no need to lie down on il tavolo.
 
 > ; ------------------------------------------------------------------------------
@@ -140,7 +147,13 @@ Il soffitto non è qualcosa su cui potersi sdraiare.
 > sdraiati nel cesto
 There's no need to lie down in il cesto per la frutta.
 
+> sdraiati dentro il cesto
+There's no need to lie down in il cesto per la frutta.
+
 > sdraiati nel tavolo
+There's no need to lie down in il tavolo.
+
+> sdraiati dentro il tavolo
 There's no need to lie down in il tavolo.
 
 > ; ------------------------------------------------------------------------------
@@ -187,7 +200,6 @@ Mr Nicky ti segue.
 [[ istanza 'lettino' --> VERB 'sdraiati_su' --> DOES ONLY ]]
 Ti alzi e ti sdrai sul lettino.
 
-> ; **ERR!** Dovrebbe rispondere che siamo già sdraiati (come fa per 'siediti'):
 > sdraiati
 You're lying down already.
 

@@ -43,6 +43,10 @@ Fatto, ora la mela è nel cesto per la frutta.
 > metti la mela nel cesto
 La mela è già dentro il cesto per la frutta.
 
+> ; "dentro" è sinonimo di "in":
+> metti la mela dentro il cesto
+La mela è già dentro il cesto per la frutta.
+
 > ; ------------------------------------------------------------------------------
 > ; TESTA parametro 1 inadatto
 > ; ------------------------------------------------------------------------------

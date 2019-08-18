@@ -75,9 +75,12 @@ prendi il mantello
 ; sintassi alternative di 'appendi':
 appendi il mantello al gancio
 appendi il mantello sul gancio
+appendi il mantello sopra il gancio
 metti il mantello sul gancio
+metti il mantello sopra il gancio
 ; ma non accettare 'metti al':
 metti il mantello al gancio
 aggancia il mantello
 aggancia il mantello al gancio
 aggancia il mantello sul gancio
+aggancia il mantello sopra il gancio

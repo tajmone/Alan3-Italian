@@ -67,6 +67,9 @@ You can only metti objects.
 > metti l'arancia sul frigo
 Il frigorifero non è qualcosa su cui poter mettere cose.
 
+> metti l'arancia sopra frigo
+Il frigorifero non è qualcosa su cui poter mettere cose.
+
 > ; ==============================================================================
 > ; METTI DIETRO
 > ; ==============================================================================
@@ -84,6 +87,9 @@ Farlo non servirebbe a nulla.
 > ; ==============================================================================
 > metti l'arancia sul tavolo
 Posi l'arancia sul tavolo.
+
+> metti l'arancia sopra il tavolo
+L'arancia è già sul tavolo.
 
 > esamina il tavolo
 Un vecchio tavolo da cucina laminato in plastica. Sopra il tavolo vedi un'

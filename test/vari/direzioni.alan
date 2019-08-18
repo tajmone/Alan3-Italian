@@ -1,0 +1,55 @@
+-- Alan Italian 21 Alpha | Alan 3.0beta6 build 2015
+--==============================================================================
+-- "Test Direzioni" by Tristano Ajmone, 2019.
+--==============================================================================
+-- Questa avventura serve a testare le direzioni cardinali della libreria.
+--------------------------------------------------------------------------------
+OPTIONS WIDTH 81.
+
+IMPORT 'libreria.i'.      -- ALAN Libreria Standard Italiana v2.1
+IMPORT '../inc_debaca.i'. -- Comandi per il debugging
+
+THE mia_AT IsA blocco_definizioni
+  ------------------------------------------------------------------------------
+  HAS       titolo  "Test Direzioni".
+  HAS  sottotitolo  "Testa le direzioni predefinite della libreria.".
+  HAS       autore  "Tristano Ajmone".
+  HAS         anno   2019.
+  HAS     versione  "1".
+  ------------------------------------------------------------------------------
+END THE.
+
+
+THE vialetto IsA luogo_esterno.
+  NAME 'Vialetto di Casa'.
+  DESCRIPTION
+    "Ti trovi nel vialetto di fronte a casa tua.
+     Per entrare in casa digita NORD o DENTRO."
+
+  --> 'in' per "dentro" (sinonimo)
+  EXIT 'in',
+        nord TO ingresso.
+END THE.
+
+THE ingresso IsA stanza.
+  NAME 'Ingresso di Casa'.
+  DESCRIPTION
+    "L'ingresso di casa tua.
+     Per uscire di casa digita SUD o FUORI."
+  EXIT sud, fuori TO vialetto.
+  EXIT su TO soffitta.
+END THE.
+
+THE soffitta IsA stanza.
+  NAME 'Nella Soffitta'.
+  DESCRIPTION
+    "La soffitta di casa tua.
+     Per tornare in ingresso digita GIÙ."
+  EXIT giù, sotto TO ingresso.
+END THE.
+
+
+--------------------------------------------------------------------------------
+START AT vialetto.
+
+DESCRIBE intestazione.

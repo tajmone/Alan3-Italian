@@ -5,7 +5,9 @@
 ; ******************************************************************************
 salta
 salta sul tavolo
+salta sopra il tavolo
 salta nel cesto
+salta dentro il cesto
 ; ==============================================================================
 ; TESTA I CHECK DEI VERBI
 ; ==============================================================================
@@ -25,6 +27,7 @@ alzati
 alzati
 sud
 sdraiati sul lettino
+sdraiati sopra il lettino
 salta
 salta sul tavolo
 salta nel cesto
