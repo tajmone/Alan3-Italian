@@ -26,7 +26,13 @@ Salti sul posto, senza risultato.
 > salta sul tavolo
 Il tavolo non è qualcosa su cui poter saltare.
 
+> salta sopra il tavolo
+Il tavolo non è qualcosa su cui poter saltare.
+
 > salta nel cesto
+Il cesto per la frutta non è qualcosa in cui poter saltare.
+
+> salta dentro il cesto
 Il cesto per la frutta non è qualcosa in cui poter saltare.
 
 > ; ==============================================================================
@@ -71,6 +77,9 @@ Mr Nicky ti segue.
 > sdraiati sul lettino
 [[ istanza 'lettino' --> VERB 'sdraiati_su' --> DOES ONLY ]]
 ti sdrai sul lettino.
+
+> sdraiati sopra il lettino
+You're lying down already.
 
 > salta
 Non puoi farlo da sdraiato.

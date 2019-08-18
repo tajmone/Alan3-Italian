@@ -29,7 +29,7 @@ nord
 esamina la bottiglia
 prendi la bottiglia
 metti la bottiglia sul tavolo
-metti la bottiglia sul tavolo
+metti la bottiglia sopra il tavolo
 prendi la bottiglia dal tavolo
 prendi la bottiglia dal tavolo
 metti la bottiglia sul tavolo
@@ -44,7 +44,7 @@ prendi il vino
 ; TESTA 'metti_su' + 'liquido'
 ; ------------------------------------------------------------------------------
 metti il vino sul tavolo
-metti il vino sul tavolo
+metti il vino sopra il tavolo
 esamina il tavolo
 esamina la bottiglia
 inventario

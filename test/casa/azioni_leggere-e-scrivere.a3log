@@ -70,15 +70,23 @@ Hai scritto "Era una notte buia" sul foglio.
 Leggi il foglio. Dice "Era una notte buia".
 
 > ; Ulteriori scritture concateneranno la nuova stringa al testo preesistente:
-> scrivi "e tempestosa" sul foglio
+> scrivi "e tempestosa." sul foglio
 [[ classe 'ogg_scrivibile' --> VERB 'scrivi' --> DOES ONLY ]]
-Hai scritto "e tempestosa" sul foglio.
+Hai scritto "e tempestosa." sul foglio.
 
 > leggi il foglio
-Leggi il foglio. Dice "Era una notte buia e tempestosa".
+Leggi il foglio. Dice "Era una notte buia e tempestosa.".
 
 > esamina il foglio
-Leggi il foglio. Dice "Era una notte buia e tempestosa".
+Leggi il foglio. Dice "Era una notte buia e tempestosa.".
+
+> ; È possibile usare anche 'sopra', anziché 'su': 
+> scrivi "E anche molto umida." sopra il foglio
+[[ classe 'ogg_scrivibile' --> VERB 'scrivi' --> DOES ONLY ]]
+Hai scritto "E anche molto umida." sul foglio.
+
+> leggi il foglio
+Leggi il foglio. Dice "Era una notte buia e tempestosa. E anche molto umida.".
 
 > ; ------------------------------------------------------------------------------
 > ; LA BUSTA:  'xDesc' <> ""  &  'testo' == ""
@@ -104,6 +112,26 @@ Leggi la busta. Dice "ZenFactor Spa".
 > esamina la busta
 È una busta da lettera, di buona qualità.
 
+> ; ** NOTA ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;            È possibile anche usare le sequenze speciali di Alan con "$" nelle
+> ;            stringhe del parametro:
+> ;            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> scrivi "$$.$nTorino." sulla busta
+[[ classe 'ogg_scrivibile' --> VERB 'scrivi' --> DOES ONLY ]]
+Hai scritto ".
+Torino." sulla busta.
+
+> leggi la busta
+Leggi la busta. Dice "ZenFactor Spa.
+Torino.".
+
+> ; ** NOTA ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;            Questo in realtà è un problema ed è sato segnalato come un baco
+> ;            (vedi alan-if/alan#7) poiché impedisce al giocatore di digitare il
+> ;            simbolo del $ (moneta), mandando in crash l'interprete. Peggio
+> ;            ancora, se digita "$1" c'è il rischio di una ricorsione infinita
+> ;            poiché il parametro contiene un riferimento a sé stesso.
+> ;            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > 
 
 > 

@@ -30,7 +30,8 @@ sud
 sdraiati sul lettino
 alzati
 alzati
-sdraiati sul lettino
+; il sinonimo "sopra" per "su" è sempre disponibile:
+sdraiati sopra il lettino
 scendi dal lettino
 scendi dal lettino
 ; ------------------------------------------------------------------------------
@@ -41,7 +42,9 @@ nord
 ; 'sdraiati_su', otterremo la risposta "alla vaniglia" del DOES del verbo
 ; principale:
 sdraiati sulla sedia
+sdraiati sopra la sedia
 sdraiati sul tavolo
+sdraiati sopra il tavolo
 ; ------------------------------------------------------------------------------
 ; TESTA USI IMPROPRI
 ; ------------------------------------------------------------------------------
