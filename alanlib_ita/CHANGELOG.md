@@ -20,6 +20,7 @@ For previuos changes, see:
 - [Alan 3.0beta6 build 2015](#alan-30beta6-build-2015)
     - [2019/08/18](#20190818)
         - [Sinonimi "Dentro" e "Sopra"](#sinonimi-dentro-e-sopra)
+        - [Problemi vari](#problemi-vari)
     - [2019/08/15](#20190815)
         - [Passa alla v0.21.0](#passa-alla-v0210)
         - [Passa ad Alan 3.0beta6 build 2015](#passa-ad-alan-30beta6-build-2015)
@@ -115,6 +116,36 @@ In `lib_luoghi.i`, modificata la direzione `sopra` in `su`, per via del conflitt
 >   Exit su to soffitta. -- ossia "sopra"
 > End The.
 > ```
+> 
+> E per implementare `dentro` come direzione servirà usare `'in`'. In entrambi i casi, l'uso di `sopra` o `dentro` causerebbe un errore di compilazione poiché questi vocaboli sono già definiti come sinonimi nella Libreria.
+
+### Problemi vari
+
+Durante i test sono venuti alla luce diversi bachi e malfunzionamenti.
+Li annoto qui di seguito come promemoria.
+
+#### Baco nuova build
+
+Nel passaggio dalla dev build 3.0beta6 build 1980 alla 2015, è venuto fuori che ora il verbo `dì` ("dì argomento") non funziona più poiché il parser non riesce a riconoscere la `ì`. Il baco è stato segnalato nello [Issue #8].
+
+Non ho avuto modo di vedere se altre lettere accentate sono compromesse nel parsing, e se questo baco tocchi altri verbi. Confido che verrà presto risolto. 
+
+[Issue #8]: https://github.com/alan-if/alan/issues/8 "Vedi issue nel repository Alan su GitHub"
+
+#### Problemi con `vai_a`
+
+Il verbo `vai_a` non funziona come dovrebbe; le sintassi con la "A" prima della direzione non vengono comprese:
+
+```
+> vai a nord
+> a nord
+```
+
+Per maggiori dettagli, vedasi il nuovo test `direzioni` (in `vari/`):
+
+- [`test/vari/direzioni.alan`](https://github.com/tajmone/Alan3-Italian/blob/master/test/vari/direzioni.alan)
+- [`test/vari/direzioni.a3log`](https://github.com/tajmone/Alan3-Italian/blob/master/test/vari/direzioni.a3log)
+- [`test/vari/direzioni.a3sol`](https://github.com/tajmone/Alan3-Italian/blob/master/test/vari/direzioni.a3sol)
 
 <!---------------------------------------------------------------------------->
 
