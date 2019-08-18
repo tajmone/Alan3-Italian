@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_italian.i"
---| v0.21.0-Alpha, 2019-08-15: Alan 3.0beta6 build 2015
+--| v0.21.1-Alpha, 2019-08-18: Alan 3.0beta6 build 2015
 --|=============================================================================
 --| Modulo per il supporto della lingua italiana, utilizzabile indipendentemente
 --| dalla Libreria Standard. Non presente nell'originale
@@ -555,12 +555,12 @@ SYNONYMS
 --| === "`IN`" + Articolo
 --~=============================================================================
 SYNONYMS
-  nel, nello, nella, 'nell''', nei, negli, nelle = 'in'.
+  nel, nello, nella, 'nell''', nei, negli, nelle, dentro = 'in'.
 --~=============================================================================
 --| === "`SU`" + Articolo
 --~=============================================================================
 SYNONYMS
-  sul, sullo, sulla, 'sull''', sui, sugli, sulle = su.
+  sul, sullo, sulla, 'sull''', sui, sugli, sulle, sopra = su.
 --<
 
 

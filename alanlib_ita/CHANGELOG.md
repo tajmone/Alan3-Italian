@@ -18,6 +18,8 @@ For previuos changes, see:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Alan 3.0beta6 build 2015](#alan-30beta6-build-2015)
+    - [2019/08/18](#20190818)
+        - [Sinonimi "Dentro" e "Sopra"](#sinonimi-dentro-e-sopra)
     - [2019/08/15](#20190815)
         - [Passa alla v0.21.0](#passa-alla-v0210)
         - [Passa ad Alan 3.0beta6 build 2015](#passa-ad-alan-30beta6-build-2015)
@@ -82,9 +84,39 @@ For previuos changes, see:
 
 -----
 
-
-
 # Alan 3.0beta6 build 2015
+
+## 2019/08/18
+
+- [`lib_italian.i`][lib_italian] &#x27f6; v0.21.1
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.21.1
+
+### Sinonimi "Dentro" e "Sopra"
+
+In `lib_italian.i`, aggiunti `dentro` e `sopra` come sinonimi di `in` e `su`:
+
+```alan
+SYNONYMS
+  nel, nello, nella, 'nell''', nei, negli, nelle, dentro = 'in'.
+
+SYNONYMS
+  sul, sullo, sulla, 'sull''', sui, sugli, sulle, sopra = su.
+```
+
+Ora è possibile scrivere "metti la frutta DENTRO il cesto" anziché "NEL cesto", e "posa il libro SOPRA il tavolo" anziché "SUL tavolo".
+
+In `lib_luoghi.i`, modificata la direzione `sopra` in `su`, per via del conflitto con il fatto che ora `sopra` è già definito come sinonimo.
+
+> __IMPORTANTE__ — D'ora in poi la direzione `sopra` andrà sempre implementata tramite `su` nelle varie `Exit":
+> 
+> ```alan
+> The sgabuzzino IsA stanza.
+>   Description "Sul soffitto noti una botola."
+>   Exit su to soffitta. -- ossia "sopra"
+> End The.
+> ```
+
+<!---------------------------------------------------------------------------->
 
 ## 2019/08/15
 
