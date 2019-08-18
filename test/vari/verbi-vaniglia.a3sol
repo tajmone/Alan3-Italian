@@ -19,6 +19,8 @@ consulta il dizionario circa tavolo
 guarda tavolo nel dizionario.
 cerca tavolo nel dizionario.
 ricerca tavolo nel dizionario.
+; Siccome "dentro" è sinonimo di "in":
+ricerca tavolo dentro il dizionario.
 ; ==============================================================================
 ; Verbo "Gratta"
 ; ==============================================================================

@@ -29,6 +29,9 @@ Devi specificare da cosa vorresti vorresti uscire.
 > entra nel frigo
 Il frigo non è qualcosa in cui poter entrare.
 
+> entra dentro il frigo
+Il frigo non è qualcosa in cui poter entrare.
+
 > esci dal frigo
 Il frigo non è qualcosa da cui poter uscire.
 
@@ -59,6 +62,10 @@ Ti tuffi a bomba nella piscina.
 Mr Nicky ti segue.
 
 > entra nella piscina
+[[ istanza 'piscina' --> VERB 'entra_in' --> DOES ONLY ]]
+Sei già in piscina.
+
+> entra dentro la piscina
 [[ istanza 'piscina' --> VERB 'entra_in' --> DOES ONLY ]]
 Sei già in piscina.
 

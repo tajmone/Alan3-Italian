@@ -14,6 +14,8 @@ metti la mela nel cesto
 prendi la mela
 metti la mela nel cesto
 metti la mela nel cesto
+; "dentro" è sinonimo di "in":
+metti la mela dentro il cesto
 ; ------------------------------------------------------------------------------
 ; TESTA parametro 1 inadatto
 ; ------------------------------------------------------------------------------

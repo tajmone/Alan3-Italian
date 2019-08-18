@@ -63,7 +63,9 @@ sdraiati sul soffitto
 ; 'sdraiati_in', otterremo la risposta "alla vaniglia" del DOES del verbo
 ; principale:
 sdraiati nel cesto
+sdraiati dentro il cesto
 sdraiati nel tavolo
+sdraiati dentro il tavolo
 ; ------------------------------------------------------------------------------
 ; TESTA USI IMPROPRI
 ; ------------------------------------------------------------------------------
@@ -84,5 +86,4 @@ siediti
 ; Proviamo a usare 'sdraiati' quando siamo già sdraiati su qualcosa:
 sud
 sdraiati sul lettino
-; **ERR!** Dovrebbe rispondere che siamo già sdraiati (come fa per 'siediti'):
 sdraiati

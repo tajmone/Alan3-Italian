@@ -162,7 +162,7 @@ Prima dovresti toglierti i tuoi pantaloni.
 > togliti i tuoi pantaloni
 Ti togli i tuoi pantaloni.
 
-> metti tuoi pantaloni nel cestino
+> metti tuoi pantaloni dentro il cestino
 Fatto, ora i tuoi pantaloni sono nel cestino.
 
 > x cestino
@@ -206,6 +206,9 @@ Che senso ha? Stai indossando i tuoi boxer.
 > ; TESTA: 'LANCIA IN' (CONTENITORE)
 > ; ------------------------------------------------------------------------------
 > lancia le sneakers nel cestino
+Prima dovresti toglierti le tue sneakers.
+
+> lancia le sneakers dentro il cestino
 Prima dovresti toglierti le tue sneakers.
 
 > ; ------------------------------------------------------------------------------

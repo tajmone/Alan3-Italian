@@ -6,6 +6,7 @@
 entra
 esci
 entra nel frigo
+entra dentro il frigo
 esci dal frigo
 ; ==============================================================================
 ; La Piscina
@@ -15,6 +16,7 @@ esci dal frigo
 sud
 entra in piscina
 entra nella piscina
+entra dentro la piscina
 esci dalla piscina
 esci dalla piscina
 
