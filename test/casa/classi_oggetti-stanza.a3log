@@ -50,22 +50,22 @@ La mela doesn't belong in il pavimento.
 > ; ------------------------------------------------------------------------------
 > ; TESTA VERBO 'metti_su' (???)
 > ; ------------------------------------------------------------------------------
-> ; **ERR???** Nei commenti presenti in 'lib_luoghi.i' è menzionato che la prioprietà
-> ;            CONTAINER è finalizzata a consentire di svuoatre/versare/mettere
-> ;            cose sul pavimento.
+> ; **ERR!** Nei commenti presenti in 'lib_luoghi.i' è menzionato che la prioprietà
+> ;          CONTAINER è finalizzata a consentire di svuoatre/versare/mettere
+> ;          cose sul pavimento.
 > metti la pera sul pavimento
 Il pavimento non è qualcosa su cui poter mettere cose.
 
-> ;            Ma dato che non è presente alcuna ridefinizione del verbo 'metti_su'
-> ;            nell'istanza 'pavimento', la SYNTAX del verbo principale si limita a
-> ;            bloccare l'azione poiché 'pavimento' non è un 'supporto'
+> ;          Ma dato che non è presente alcuna ridefinizione del verbo 'metti_su'
+> ;          nell'istanza 'pavimento', la SYNTAX del verbo principale si limita a
+> ;          bloccare l'azione poiché 'pavimento' non è un 'supporto'
 > ;
-> ;               WHERE ...
+> ;             WHERE ...
 > ;               ...
-> ;               AND superficie IsA supporto
+> ;             AND superficie IsA supporto
 > ;
-> ;            Si dovrebbe fare in modo che "metti (ogg) sul pavimento" sia un'eccezione
-> ;            e che venga intesto come "lascia"?
+> ;          Si dovrebbe fare in modo che "metti (ogg) sul pavimento" sia un'eccezione
+> ;          e che venga intesto come "lascia"?
 > ; ------------------------------------------------------------------------------
 > ; TESTA VERBO 'versa_in' (ERRORE!)
 > ; ------------------------------------------------------------------------------

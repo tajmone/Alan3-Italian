@@ -15,7 +15,7 @@
 ; "VAI" è solo una NOISE WORD poiché è sinonimo di "GO"
 vai a nord
 vai a sud
-; **ERRORE!** Per qualche ragione con la "A" non funziona.
+; **ERR!** Per qualche ragione con la "A" non funziona.
 vai nord
 vai sud
 ; ------------------------------------------------------------------------------
@@ -24,7 +24,7 @@ vai sud
 ; Poiché "VAI" (GO) è ignorato, si può scrivere anche solo "a nord":
 a nord
 a sud
-; **ERRORE!** Per qualche ragione non funziona.
+; **ERR!** Per qualche ragione non funziona.
 ; ------------------------------------------------------------------------------
 ; (DIREZIONE)
 ; ------------------------------------------------------------------------------

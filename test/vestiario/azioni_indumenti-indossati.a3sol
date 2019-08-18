@@ -54,8 +54,8 @@ indossa gli stivaletti
 ; ------------------------------------------------------------------------------
 ; Ritentiamo a disindossare un indumento inesistente, come all'inizio del test:
 togliti XYZZY
-; ** NOTA ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-;            Prima 'togliti' falliva in silenzio, ora il problema è scomparso,
-;            ma manterremo qui questo test per poterlo monitorare, nel caso
-;            ricomparisse!
-;            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; **NOTA** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;          Prima 'togliti' falliva in silenzio, ora il problema è scomparso,
+;          ma manterremo qui questo test per poterlo monitorare, nel caso
+;          ricomparisse!
+;          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

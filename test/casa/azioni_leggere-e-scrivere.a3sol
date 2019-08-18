@@ -45,17 +45,17 @@ esamina la busta
 scrivi "ZenFactor Spa" sulla busta
 leggi la busta
 esamina la busta
-; ** NOTA ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-;            È possibile anche usare le sequenze speciali di Alan con "$" nelle
-;            stringhe del parametro:
-;            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; **NOTA** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;          È possibile anche usare le sequenze speciali di Alan con "$" nelle
+;          stringhe del parametro:
+;          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 scrivi "$$.$nTorino." sulla busta
 leggi la busta
-; ** NOTA ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-;            Questo in realtà è un problema ed è sato segnalato come un baco
-;            (vedi alan-if/alan#7) poiché impedisce al giocatore di digitare il
-;            simbolo del $ (moneta), mandando in crash l'interprete. Peggio
-;            ancora, se digita "$1" c'è il rischio di una ricorsione infinita
-;            poiché il parametro contiene un riferimento a sé stesso.
-;            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; **NOTA** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;          Questo in realtà è un problema ed è sato segnalato come un baco
+;          (vedi alan-if/alan#7) poiché impedisce al giocatore di digitare il
+;          simbolo del $ (moneta), mandando in crash l'interprete. Peggio
+;          ancora, se digita "$1" c'è il rischio di una ricorsione infinita
+;          poiché il parametro contiene un riferimento a sé stesso.
+;          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

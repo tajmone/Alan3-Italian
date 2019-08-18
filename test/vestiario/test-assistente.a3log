@@ -137,11 +137,11 @@ in ottone conducono a sud, fuori dal tempio del consumismo. Puoi vedere un
 cestino qui. Dietro al bancone c'è il manager dell'emporio. L'assistente ti
 raggiunge di corsa dal reparto donna.
 
-> ; ** NOTA ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> ;            Questi messaggi generati dall'avventura sfruttano gli attributi
-> ;            grammaticali definiti su 'location' per visualizzare le corrette
-> ;            preposizioni articolate (tramite 'prep_DA').
-> ;            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; **NOTA** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;          Questi messaggi generati dall'avventura sfruttano gli attributi
+> ;          grammaticali definiti su 'location' per visualizzare le corrette
+> ;          preposizioni articolate (tramite 'prep_DA').
+> ;          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > nord
 Camerino
 Le tende scorrevoli che avvolgono il camerino ti concedono la privacy per

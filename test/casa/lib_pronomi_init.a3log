@@ -23,10 +23,10 @@ stanza c'è Mr Nicky, il tuo cagnolino.
 > ; Questo test è finalizzato a verificare la corretta inizializzazione dei pronomi
 > ; delle varie istanze delle classi delle libreria.
 > ; 
-> ; \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-> ; ** NOTA ** Allo stato attuale solo i pronomi delle classi 'maschio' e 'femmina'
-> ;            sono definiti dalla libreria!
-> ; //////////////////////////////////////////////////////////////////////////////
+> ; **NOTA** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;          Allo stato attuale solo i pronomi delle classi 'maschio' e 'femmina'
+> ;          sono definiti dalla libreria!
+> ;          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > ; 
 > ; ==============================================================================
 > ; TESTA OGGETTI

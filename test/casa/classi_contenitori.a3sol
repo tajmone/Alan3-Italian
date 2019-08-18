@@ -45,7 +45,7 @@ riempi il cesto con me
 ; ------------------------------------------------------------------------------
 ; TESTA parametro 1 inadatto (supporto)
 ; ------------------------------------------------------------------------------
-; ** ERRORE! ** Manca un check per controllare che non sia un supporto:
+; **ERR!** Manca un check per controllare che non sia un supporto:
 riempi il tavolo con la mela
 riempi il tavolo con 1
 ; ==============================================================================
@@ -64,7 +64,7 @@ lancia me nel cesto
 ; ------------------------------------------------------------------------------
 ; TESTA parametro 2 inadatto (supporto)
 ; ------------------------------------------------------------------------------
-; ** ERRORE! ** Manca un check per controllare che non sia un supporto:
+; **ERR!** Manca un check per controllare che non sia un supporto:
 lancia la mela nel tavolo
 lancia 1 nel tavolo
 lancia la pistola nel tavolo

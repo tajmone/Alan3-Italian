@@ -6,10 +6,10 @@
 ; Questo test è finalizzato a verificare la corretta inizializzazione dei pronomi
 ; delle varie istanze delle classi delle libreria.
 ; 
-; \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-; ** NOTA ** Allo stato attuale solo i pronomi delle classi 'maschio' e 'femmina'
-;            sono definiti dalla libreria!
-; //////////////////////////////////////////////////////////////////////////////
+; **NOTA** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;          Allo stato attuale solo i pronomi delle classi 'maschio' e 'femmina'
+;          sono definiti dalla libreria!
+;          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ; 
 ; ==============================================================================
 ; TESTA OGGETTI

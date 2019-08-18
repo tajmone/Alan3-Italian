@@ -15,10 +15,12 @@ Questa directory contiene le risorse per il collaudo automatizzato della libreri
     - [Test singoli su avventure multiple](#test-singoli-su-avventure-multiple)
         - [Cartella temporanea per lo sviluppo dei test](#cartella-temporanea-per-lo-sviluppo-dei-test)
     - [Batch script di automazione](#batch-script-di-automazione)
-- [Requisiti di Sistema](#requisiti-di-sistema)
-- [Organizzazione dei Test](#organizzazione-dei-test)
-    - [Scopo dei Test](#scopo-dei-test)
-    - [Convenzioni Estensioni Script](#convenzioni-estensioni-script)
+- [Requisiti di sistema](#requisiti-di-sistema)
+- [Organizzazione dei test](#organizzazione-dei-test)
+    - [Scopo dei test](#scopo-dei-test)
+    - [Convenzioni della test suite](#convenzioni-della-test-suite)
+        - [Estensioni script](#estensioni-script)
+        - [Sistema annotazioni](#sistema-annotazioni)
 - [Alan Compiler Help](#alan-compiler-help)
 
 <!-- /MarkdownTOC -->
@@ -103,7 +105,7 @@ Lo script compila tutte le avventure ed esegue gli script di comandi associati a
 
 Al fine di semplificare le fasi di sviluppo, in ciascuna sottocartella di test c'è uno script `TESTA_CARTELLA.bat` per eseguire tutti i test della cartella. Questi script non forniscono un rapporto statistico, sono finalizzati solo a risparmiare tempo quando si lavora ai testi di una specifica sottocartella e non si vuole dover eseguire tutta la test suite ad ogni modifica.
 
-# Requisiti di Sistema
+# Requisiti di sistema
 
 Al fine di poter utilizzare i test nelle sottocartelle, dovrete rendere accessibili al `%PATH%` di sistema gli eseguibili del compilatore di Alan e dell'interprete ARun, assicurandovi di prenderli dalla [Alan SDK] con la stessa versione di Alan usata in questo progetto (vedi intestazione dei moduli sorgenti della libreria). Per il sistema operativo Windows, i file da copiare sono:
 
@@ -114,7 +116,7 @@ In alternativa (se non volete mettere mano al `%PATH%` di sistema) potrete aggiu
 
 -------------------------------------------------------------------------------
 
-# Organizzazione dei Test
+# Organizzazione dei test
 
 Sebbene gli attuali test non siano ancora organizzati in maniera del tutto formale e strutturata, l'obiettivo finale è di creare una test suite ben strutturata e formalizzata.
 
@@ -126,7 +128,7 @@ I test nella cartella `vari/` usano ancora il vecchio approccio, ma consentono l
 
 Sebbene l'approccio con un'avventura singola su cui usare tutti i testi sia quello preferibile, sarà sempre necessario conservare alcuni test con il vecchio approccio per poter testare condizioni particolari in setting dedicati. Quindi, è molto probabile che la suite di test conserverà entrambi gli approcci, focalizzandosi il più possibile sul nuovo metodo.
 
-## Scopo dei Test
+## Scopo dei test
 
 I test hanno un duplice obiettivo:
 
@@ -139,13 +141,57 @@ Il punto (2) è particolarmente utile per lo sviluppo della libreria. Aggiornand
 
 Questo consente non solo di verificare che le modifiche apportate abbiano l'esito desiderato (p.es. traduzione e modifica dei messaggi di risposta), ma consente anche di rilevare eventuali effetti collaterali inattesi.
 
-## Convenzioni Estensioni Script
+## Convenzioni della test suite
+
+Alcune convenzioni adottate nella test suite ai fini di semplificarne l'automazione e conferirle un'aspetto omogeneo.
+
+### Estensioni script
 
 Le estensioni `*.a3sol` e `*.a3log` sono state adottate per semplificare le impostazioni dell'editor di codice affinché tratti queste estensioni con encoding [ISO-8859-1].
 
 Inoltre, queste due estensioni sono supportate da __Sublime Alan__, un package che sto creando per Sublime Text 3 al fine di aggiungere il supporto per la sintassi di Alan. __Sublime Alan__ offre colorazione della sintassi per queste estensioni e altre funzionalità utili:
 
 - https://github.com/tajmone/sublime-alan
+
+### Sistema annotazioni
+
+Per semplificare la ricerca automatizzata tramite editor, viene adottato il seguente sistema di annotazioni.
+
+#### Errori e bachi
+
+In caso di risposte inattese (siano essi bachi nella libreria, in Alan, o messaggi malformati), verrà inserito un commento nello script di comandi che inizierà con:
+
+```
+; **ERR!**
+```
+
+La descrizione dell'errore può consistere di una sola riga. Es:
+
+```
+; **ERR!** Descrizione errore breve.
+```
+
+Oppure, nel caso di descrizioni lunghe, che occupano puù righe, il testo verrà mandato a capo a colonna 80 e incorniciato tra due serie di tilda per migliorarne la leggibilità:
+
+```
+; **ERR!** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;          Una descrizione di un problema lunga, che occupa più righe. Il testo
+;          viene mandato accapo alla colonna 80, e delimitato da due serie di
+;          tilde.
+;          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+
+#### Note
+
+Annotazioni e commenti alla trascrizione verranno inseriti tramite  un commento nello script di comandi che inizierà con:
+
+```
+; **NOTA**
+```
+
+
+Come con gli errori, annotazioni lunghe verranno spezzate su più righe e incornaciate tra due file di tilda.
 
 
 -------------------------------------------------------------------------------

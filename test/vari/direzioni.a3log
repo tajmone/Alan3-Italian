@@ -34,7 +34,7 @@ Non ho capito la frase.
 > vai a sud
 Non ho capito la frase.
 
-> ; **ERRORE!** Per qualche ragione con la "A" non funziona.
+> ; **ERR!** Per qualche ragione con la "A" non funziona.
 > vai nord
 Ingresso di Casa
 L'ingresso di casa tua. Per uscire di casa digita SUD o FUORI.
@@ -54,7 +54,7 @@ Non ho capito la frase.
 > a sud
 Non ho capito la frase.
 
-> ; **ERRORE!** Per qualche ragione non funziona.
+> ; **ERR!** Per qualche ragione non funziona.
 > ; ------------------------------------------------------------------------------
 > ; (DIREZIONE)
 > ; ------------------------------------------------------------------------------

@@ -40,11 +40,11 @@ ovest
 nordest
 ; TESTA: L'assistente arriverà "DAL REPARTO DONNA":
 sud
-; ** NOTA ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-;            Questi messaggi generati dall'avventura sfruttano gli attributi
-;            grammaticali definiti su 'location' per visualizzare le corrette
-;            preposizioni articolate (tramite 'prep_DA').
-;            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; **NOTA** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;          Questi messaggi generati dall'avventura sfruttano gli attributi
+;          grammaticali definiti su 'location' per visualizzare le corrette
+;          preposizioni articolate (tramite 'prep_DA').
+;          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 nord
 ; TESTA: L'assistente arriverà "DALL'ATRIO":
 est

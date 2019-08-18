@@ -137,11 +137,11 @@ Indossi gli stivaletti.
 > togliti XYZZY
 Non conosco la parola 'XYZZY'.
 
-> ; ** NOTA ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> ;            Prima 'togliti' falliva in silenzio, ora il problema è scomparso,
-> ;            ma manterremo qui questo test per poterlo monitorare, nel caso
-> ;            ricomparisse!
-> ;            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ; **NOTA** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;          Prima 'togliti' falliva in silenzio, ora il problema è scomparso,
+> ;          ma manterremo qui questo test per poterlo monitorare, nel caso
+> ;          ricomparisse!
+> ;          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > 
 
 Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

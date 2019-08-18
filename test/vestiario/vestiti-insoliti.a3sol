@@ -22,13 +22,14 @@ DBG_IND occhiali
 indossa il passamontagna
 indossa gli occhiali
 inventario
-; ** NOTA ** Il problema qui è che questi confliggeranno con altri indumenti per
-;            la testa, come i cappelli, poiché non vi è distinzione tra testa e
-;            viso nelle zone degli indumenti.
-;
+; **NOTA** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;          Il problema qui è che questi confliggeranno con altri indumenti per
+;          la testa, come i cappelli, poiché non vi è distinzione tra testa e
+;          viso nelle zone degli indumenti.
+;          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ; Testa ordine d'indossamento inventarioerso:
 togliti gli occhiali e il passamontagna
-; ** ERRORE!! ** Il verbo 'togliti' dovrebbe supportore più parametri!
+; **ERR!** Il verbo 'togliti' dovrebbe supportore più parametri!
 togliti gli occhiali
 togliti il passamontagna
 indossa gli occhiali

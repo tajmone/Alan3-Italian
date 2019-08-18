@@ -104,7 +104,7 @@ Il hero non è qualcosa con cui poter riempire il cesto per la frutta.
 > ; ------------------------------------------------------------------------------
 > ; TESTA parametro 1 inadatto (supporto)
 > ; ------------------------------------------------------------------------------
-> ; ** ERRORE! ** Manca un check per controllare che non sia un supporto:
+> ; **ERR!** Manca un check per controllare che non sia un supporto:
 > riempi il tavolo con la mela
 Il tavolo is already full of la mela.
 
@@ -141,7 +141,7 @@ Questo non ha alcun senso.
 > ; ------------------------------------------------------------------------------
 > ; TESTA parametro 2 inadatto (supporto)
 > ; ------------------------------------------------------------------------------
-> ; ** ERRORE! ** Manca un check per controllare che non sia un supporto:
+> ; **ERR!** Manca un check per controllare che non sia un supporto:
 > lancia la mela nel tavolo
 La mela doesn't belong in il tavolo.
 

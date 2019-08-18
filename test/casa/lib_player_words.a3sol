@@ -21,7 +21,7 @@ lascia la pera E la mela
 lascia il vasetto POI la torcia POI la chiave
 ;
 prendi il vasetto POI prendi la torcia POI prendi la chiave
-; ** ERRORE! ** "E POI" non funziona nella concatenazione parametri!
+; **NOTA** "E POI" non funziona nella concatenazione parametri!
 lascia il vasetto POI la torcia E POI la chiave
 ; ------------------------------------------------------------------------------
 ; Concatenazione Comandi e Parametri

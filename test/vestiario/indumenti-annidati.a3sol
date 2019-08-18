@@ -7,12 +7,12 @@
 ; tasche, ecc.). Qui dobbiamo testare come libreria gestisce indumenti dentro ad
 ; altri indumenti, e che indossare questi ultimi non vada a toccare i primi.
 ; 
-; ** NOTA ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-;            Questo test diverrà utile in futuro, quando i problemi attuali di
-;            inizializzazione di indumenti annidati saranno risolti; allora con
-;            questo test sarà possibile approfondire casi limite e assicurarsi
-;            che future modifiche al codice non ne compromettano l'uso.
-;            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; **NOTA** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;          Questo test diverrà utile in futuro, quando i problemi attuali di
+;          inizializzazione di indumenti annidati saranno risolti; allora con
+;          questo test sarà possibile approfondire casi limite e assicurarsi
+;          che future modifiche al codice non ne compromettano l'uso.
+;          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ; ==============================================================================
 ; TASCHE PANTALONI
 ; ==============================================================================

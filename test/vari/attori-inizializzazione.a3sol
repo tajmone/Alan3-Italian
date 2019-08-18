@@ -26,14 +26,13 @@ debaca Maria
 ; più individui raggruppati in un singolo attore. Si tratta di casi limite, con
 ; evidenti problematiche di gestionalità, ma questo test li coprirà comunque.
 ; 
-; ** NOTA ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-;            Nei comandi del giocatore non è possibile rifersi a entrambi gli
-;            individui per via della "e". Questo non funzionerebbe:
+; **NOTA** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;          Nei comandi del giocatore non è possibile rifersi a entrambi gli
+;          individui per via della "e". Questo non funzionerebbe:
 ;            
-;            > esamina Romeo e Giuilietta
+;             > esamina Romeo e Giuilietta
 ;            
-;            poiché la "e" è vista dal parser come una 'AND WORD'!
-;            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;          poiché la "e" è vista dal parser come una 'AND WORD'!
 ; ------------------------------------------------------------------------------
 ; PERSONA > MASCHI    (masc. plur.)
 ; ------------------------------------------------------------------------------

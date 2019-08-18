@@ -83,15 +83,16 @@ Non stai portando niente. Stai indossando un passamontagna, un paio di occhiali
 da sci, i tuoi calzini, i tuoi boxer, la tua canottiera, le tue sneakers e i
 tuoi pantaloni.
 
-> ; ** NOTA ** Il problema qui è che questi confliggeranno con altri indumenti per
-> ;            la testa, come i cappelli, poiché non vi è distinzione tra testa e
-> ;            viso nelle zone degli indumenti.
-> ;
+> ; **NOTA** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;          Il problema qui è che questi confliggeranno con altri indumenti per
+> ;          la testa, come i cappelli, poiché non vi è distinzione tra testa e
+> ;          viso nelle zone degli indumenti.
+> ;          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > ; Testa ordine d'indossamento inventarioerso:
 > togliti gli occhiali e il passamontagna
 Non puoi usare più di un oggetto con 'togliti'.
 
-> ; ** ERRORE!! ** Il verbo 'togliti' dovrebbe supportore più parametri!
+> ; **ERR!** Il verbo 'togliti' dovrebbe supportore più parametri!
 > togliti gli occhiali
 Ti togli gli occhiali da sci.
 
