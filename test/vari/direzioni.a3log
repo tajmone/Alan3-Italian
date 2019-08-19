@@ -22,19 +22,32 @@ DENTRO.
 > ; ==============================================================================
 > ; TESTA SINTATTI DIREZIONE ALTERNATIVE
 > ; ==============================================================================
-> ; Vi sono varie sintassi alternative per le direzioni predefinite...
+> ; Il vebo 'vai_a' crea sintassi alternative alle direzioni predefinite:
+> ;
 > ;     SYNTAX vai_a = a (dest)!
+> ;
+> ; Laddove l'impiego della mera direzione nell'input del giocatore è gestita
+> ; direttamente da Alan.
+> ;
+> ; **NOTA** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ;          "VAI" è solo una NOISE WORD poiché è sinonimo di "GO", quindi viene
+> ;          ignorato dal parser.
+> ;          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > ; ------------------------------------------------------------------------------
 > ; VAI A (DIREZIONE)
 > ; ------------------------------------------------------------------------------
-> ; "VAI" è solo una NOISE WORD poiché è sinonimo di "GO"
+> ; La sintassi "VAI A <DIREZIONE>" equivale a "<DIREZIONE>"
+> ; **ERR!** Per qualche ragione la sintassi "VAI A" non funziona:
 > vai a nord
 Non ho capito la frase.
 
 > vai a sud
 Non ho capito la frase.
 
-> ; **ERR!** Per qualche ragione con la "A" non funziona.
+> ; ------------------------------------------------------------------------------
+> ; VAI (DIREZIONE)
+> ; ------------------------------------------------------------------------------
+> ; La sintassi "VAI A <DIREZIONE>" equivale a "<DIREZIONE>"
 > vai nord
 Ingresso di Casa
 L'ingresso di casa tua. Per uscire di casa digita SUD o FUORI.
@@ -48,13 +61,13 @@ DENTRO.
 > ; A (DIREZIONE)
 > ; ------------------------------------------------------------------------------
 > ; Poiché "VAI" (GO) è ignorato, si può scrivere anche solo "a nord":
+> ; **ERR!** Per qualche ragione la sintassi "A" non funziona:
 > a nord
 Non ho capito la frase.
 
 > a sud
 Non ho capito la frase.
 
-> ; **ERR!** Per qualche ragione non funziona.
 > ; ------------------------------------------------------------------------------
 > ; (DIREZIONE)
 > ; ------------------------------------------------------------------------------

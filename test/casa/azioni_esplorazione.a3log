@@ -81,8 +81,6 @@ Mr Nicky ti segue.
 > ascolta il lettino
 Non odi niente di particolare.
 
-> ; **ERR!** Per qualche motivo 'ascolta' restituisce una stringa vuota se usato
-> ;          con oggetti stanza/luogo_esterno:
 > ascolta il cielo
 Non odi niente di particolare.
 

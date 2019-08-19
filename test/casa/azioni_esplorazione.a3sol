@@ -27,8 +27,6 @@ nord
 ascolta
 sud
 ascolta il lettino
-; **ERR!** Per qualche motivo 'ascolta' restituisce una stringa vuota se usato
-;          con oggetti stanza/luogo_esterno:
 ascolta il cielo
 ascolta il suolo
 ascolta il giardiniere
