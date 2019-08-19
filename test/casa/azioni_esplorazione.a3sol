@@ -44,17 +44,31 @@ entra in piscina
 ascolta il cinguettio
 esci dalla piscina
 ; ------------------------------------------------------------------------------
-; TESTA oggetti in altra stanza
+; TESTA oggetti in luogo contiguo
 ; ------------------------------------------------------------------------------
 ; Testiamolo in cucina, dato che il verbo 'ascolta' accetta parametri che non
-; sono presenti nel luogo: 
+; sono presenti nel luogo attuale ma in uno contiguo (collegato da uscite): 
 nord
-; **ERR!** Il cielo non è NEARBY dato che è situato in un luogo che avvolge
-;          il giardino (ma non la casa).
-ascolta il cielo
 ascolta il giardiniere
 ascolta la piscina
 ascolta il cinguettio
+; ------------------------------------------------------------------------------
+; TESTA oggetti "inversamente contenuti" in luogo contiguo
+; ------------------------------------------------------------------------------
+; Proviamo ad ascoltare il 'cielo', che non si trova in un luogo adiacente ma in
+; luogo in cui un luogo adiacente è contenuto (ossia 'luogo_esterno'). L'idea è
+; che siccome tali oggetti sono alla portata (in scope) quando ci si trova lì,
+; allora dovrebbero essere anche alla portata del verbo ascolta.
+ascolta il cielo
+; ------------------------------------------------------------------------------
+; TESTA oggetti in luogo annidato a luogo contiguo
+; ------------------------------------------------------------------------------
+; E ora proviamo con la moneta, che si trova in 'nella_piscina', un luogo
+; annidato nel 'giardino' (la moneta è visibile solo AT 'nella_piscina').
+; Si noti che la moneta non è alla portata dei verbi generici quando ci si trova
+; in giardino (es. "esamina moneta"), per cui è ragiovenole che essa non sia
+; disponibile neanche con il verbo "ascolta".
+ascolta la moneta
 ; ------------------------------------------------------------------------------
 ; Parametri Inadatti
 ; ------------------------------------------------------------------------------

@@ -55,8 +55,8 @@ Mr Nicky ti segue.
 Ti tuffi a bomba nella piscina.
 
 GIARDINO DI CASA (DENTRO LA PISCINA)
-La piscina è abbastanza ampia per fare delle piccole nuotate. [[ istanza
-'nella_piscina' (location) --> ENTERED ]]
+La piscina è abbastanza ampia per fare delle piccole nuotate. Sul fondo della
+piscina noti una moneta. [[ istanza 'nella_piscina' (location) --> ENTERED ]]
 Ti tuffi a bomba nella piscina. 
 
 Mr Nicky ti segue.

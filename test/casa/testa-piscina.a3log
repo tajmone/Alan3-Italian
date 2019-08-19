@@ -1,0 +1,115 @@
+
+
+La Casa 
+Un set per eseguire test su stanze e luoghi esterni. 
+(C) Tristano Ajmone, 2018. 
+Avventura realizzata con ALAN 3.0beta6 build 2015. 
+Libreria Standard Italiana: 21 Alpha. 
+Versione 1 
+Tutti i diritti riservati.
+
+
+LA CUCINA
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un frigo e 
+un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un sacchetto, un 
+coltello, una pistola, un cesto per la frutta e una radio. Al centro della
+stanza c'è Mr Nicky, il tuo cagnolino.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                              TESTA LA PISCINA                              *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; La PISCINA nel GIARDINO implementa un luogo annidato 'nella_piscina' che
+> ; consente di simulare di entrare in un contenitore (in Alan, gli attori non
+> ; possono entrare nei contenitori).
+> ; 
+> ; ** LA MONETA ** Nella piscina c'è una moneta, ma si trova AT 'nella_piscina',
+> ; di modo che non sia alla portate del giocatore finché non entra in essa (si
+> ; trova sul fondo della piscina).
+> ; ==============================================================================
+> ; TESTA MONETA (IN CUCINA)
+> ; ==============================================================================
+> ; Vari test che coinvolgono la moneta, che si trova in un luogo annidato in un
+> ; luogo adiacente ('giardino' -> 'nella_piscina').
+> esamina la moneta
+Qui non puoi vedere nulla del genere.
+
+> ascolta la moneta
+La moneta è fuori dalla portata del tuo udito.
+
+> sud
+IL GIARDINO DI CASA
+A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone e, in
+lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e un tavolo 
+qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e una piscina qui. 
+C'è un giardiniere qui. C'è un gatto qui. 
+
+Mr Nicky ti segue.
+
+> ; ==============================================================================
+> ; TESTA MONETA (NEL GIARDINO, FUORI DALLA PSICINA)
+> ; ==============================================================================
+> ; Adesso la moneta è AT un luogo annidato in quello attuale...
+> esamina la moneta
+Qui non puoi vedere nulla del genere.
+
+> ascolta la moneta
+La moneta è fuori dalla portata del tuo udito.
+
+> ; ==============================================================================
+> ; TESTA MONETA (NELLA PSICINA)
+> ; ==============================================================================
+> ; Adesso entrima nella piscina (in 'nella_piscina') e la moneta si troverà qui.
+> entra in piscina
+[[ istanza 'piscina' --> VERB 'entra_in' --> DOES ONLY ]]
+[[ istanza 'nella_piscina' (location) --> ENTERED ]]
+Ti tuffi a bomba nella piscina.
+
+GIARDINO DI CASA (DENTRO LA PISCINA)
+La piscina è abbastanza ampia per fare delle piccole nuotate. Sul fondo della
+piscina noti una moneta. [[ istanza 'nella_piscina' (location) --> ENTERED ]]
+Ti tuffi a bomba nella piscina. 
+
+Mr Nicky ti segue.
+
+> ; **ERR** Il messaggio di ENTERED viene mostrato 2 volte!
+> esamina la moneta
+Una semplice moneta.
+
+> prendi la moneta
+Presa.
+
+> guarda
+GIARDINO DI CASA (DENTRO LA PISCINA)
+La piscina è abbastanza ampia per fare delle piccole nuotate. Mr Nicky ti
+osserva incuriosito.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA MONETA (NEL GIARDINO, FUORI DALLA PSICINA)
+> ; ------------------------------------------------------------------------------
+> esci dalla piscina
+[[ istanza 'piscina' --> VERB 'esci_da' --> DOES ONLY ]]
+Ti issi sul bordo della piscina ed esci.
+
+IL GIARDINO DI CASA
+A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone e, in
+lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e un tavolo 
+qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e una piscina qui. 
+C'è un giardiniere qui. C'è un gatto qui.
+
+> lascia la moneta
+Lasci la moneta.
+
+> guarda
+IL GIARDINO DI CASA
+A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone e, in
+lontananza, la tua vicina. Noti anche una moneta. Puoi vedere un ombrellone, un 
+aquilone e un tavolo qui. Sopra il tavolo vedi una rivista. Puoi vedere un 
+lettino e una piscina qui. C'è un giardiniere qui. C'è un gatto qui.
+
+> 
+
+> 
+
+Cosa vuoi fare: RESTART, RESTORE, QUIT o UNDO? 

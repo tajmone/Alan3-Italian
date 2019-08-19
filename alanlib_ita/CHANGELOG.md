@@ -18,6 +18,8 @@ For previuos changes, see:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Alan 3.0beta6 build 2015](#alan-30beta6-build-2015)
+    - [2019/08/19](#20190819)
+        - [Correggi e migliora verbo `ascolta`](#correggi-e-migliora-verbo-ascolta)
     - [2019/08/18](#20190818)
         - [Sinonimi "Dentro" e "Sopra"](#sinonimi-dentro-e-sopra)
         - [Problemi vari](#problemi-vari)
@@ -86,6 +88,53 @@ For previuos changes, see:
 -----
 
 # Alan 3.0beta6 build 2015
+
+
+## 2019/08/19
+
+- [`lib_classi_vestiario.i`][lib_classi_vestiario] &#x27f6; v0.21.1
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.21.1
+
+### Correggi e migliora verbo `ascolta`
+
+Modificatio il verbo `ascolta` di modo che non restituisca più stringhe vuote in caso di parametri fuori portata, ma che in tal caso restituisca il messaggio `"$+1 è fuori dalla portata del tuo udito."`.
+
+Inoltre, migliorato il criterio di azione di modo che anche un parametro contenuto in un luogo contenente un luogo contiguo a quello attuale (ossia, connesso tramite `Exit`) venga trattato come se si trovasse nel luogo contiguo stesso — questo è ottenuto grazie a un'iterazione di tutti i luoghi dell'avventura:
+
+```alan
+ADD TO EVERY THING
+  VERB ascolta
+      ...
+      ELSIF ogg NEARBY -- (b) L'oggetto si trova in un luogo contiguo.
+        THEN "Non riesci a sentire $+1 da questa distanza."
+      ELSE
+        -- Verifichiamo se l'oggetto è in un luogo contentente un luogo contiguo:
+        MAKE mia_AT NOT temp_bool. --> variabile per esito ricerca.
+        FOR EACH loc IsA location DO
+          IF loc AT ogg:location
+            THEN
+              IF loc NEARBY
+                THEN -- (c) L'oggetto sarebbe a portata in un luogo contiguo.
+                  "Non riesci a sentire $+1 da questa distanza."
+                  MAKE mia_AT temp_bool.
+                -- ELSE "$n++++" Say loc. "but not NEARBY!"
+              END IF.
+            -- ELSE "$n...." Say loc. "not AT" Say ogg:location.
+          END IF.
+        END FOR.
+        IF mia_AT IS NOT temp_bool
+          THEN -- (d) L'oggetto si trova in un luogo distante o scollegato.
+            "$+1 è fuori dalla portata del tuo udito."
+        END IF.
+      END IF.
+  END VERB ascolta.
+```
+
+Questo emula il criterio di portata (_scoping_) di Alan, in cui un'oggetto sito in un luogo che contiene il luogo attuale è raggiungibile dai parametri di un verbo (es. il cielo in un `luogo_esterno`).
+
+Quanto alle cose in un luogo annidato in un luogo contiguo, esse non sono considerate alla portata del giocatore, proprio come non lo sarebbero in Alan (che non consente di usarle come parametri).
+
+<!---------------------------------------------------------------------------->
 
 ## 2019/08/18
 

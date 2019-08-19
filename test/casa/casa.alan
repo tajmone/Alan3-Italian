@@ -1077,6 +1077,23 @@ THE nella_piscina IsA location AT giardino.
     "Ti tuffi a bomba nella piscina."
 END THE nella_piscina.
 
+
+-- ========================
+-- Moneta Dentro la psicina
+-- ========================
+-- Creiamo una moneta che sia visibile solo quando si è dentro la psicina.
+
+THE moneta IsA object AT nella_piscina.
+  HAS articolo "la".
+  DESCRIPTION
+    IF THIS DIRECTLY AT nella_piscina
+      THEN "Sul fondo della piscina noti una moneta."
+      ELSE "Noti anche una moneta."
+    END IF.
+  HAS xDesc "Una semplice moneta.".
+END THE moneta.
+
+
 -- =============================================================================
 
 -- ATTORI

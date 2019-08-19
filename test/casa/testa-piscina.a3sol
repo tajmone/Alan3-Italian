@@ -1,0 +1,42 @@
+; ******************************************************************************
+; *                                                                            *
+; *                              TESTA LA PISCINA                              *
+; *                                                                            *
+; ******************************************************************************
+; La PISCINA nel GIARDINO implementa un luogo annidato 'nella_piscina' che
+; consente di simulare di entrare in un contenitore (in Alan, gli attori non
+; possono entrare nei contenitori).
+; 
+; ** LA MONETA ** Nella piscina c'è una moneta, ma si trova AT 'nella_piscina',
+; di modo che non sia alla portate del giocatore finché non entra in essa (si
+; trova sul fondo della piscina).
+; ==============================================================================
+; TESTA MONETA (IN CUCINA)
+; ==============================================================================
+; Vari test che coinvolgono la moneta, che si trova in un luogo annidato in un
+; luogo adiacente ('giardino' -> 'nella_piscina').
+esamina la moneta
+ascolta la moneta
+sud
+; ==============================================================================
+; TESTA MONETA (NEL GIARDINO, FUORI DALLA PSICINA)
+; ==============================================================================
+; Adesso la moneta è AT un luogo annidato in quello attuale...
+esamina la moneta
+ascolta la moneta
+; ==============================================================================
+; TESTA MONETA (NELLA PSICINA)
+; ==============================================================================
+; Adesso entrima nella piscina (in 'nella_piscina') e la moneta si troverà qui.
+entra in piscina
+; **ERR** Il messaggio di ENTERED viene mostrato 2 volte!
+esamina la moneta
+prendi la moneta
+guarda
+; ------------------------------------------------------------------------------
+; TESTA MONETA (NEL GIARDINO, FUORI DALLA PSICINA)
+; ------------------------------------------------------------------------------
+esci dalla piscina
+lascia la moneta
+guarda
+

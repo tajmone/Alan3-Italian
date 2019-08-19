@@ -97,8 +97,8 @@ Il giardiniere non sta parlando in questo momento.
 Ti tuffi a bomba nella piscina.
 
 GIARDINO DI CASA (DENTRO LA PISCINA)
-La piscina è abbastanza ampia per fare delle piccole nuotate. [[ istanza
-'nella_piscina' (location) --> ENTERED ]]
+La piscina è abbastanza ampia per fare delle piccole nuotate. Sul fondo della
+piscina noti una moneta. [[ istanza 'nella_piscina' (location) --> ENTERED ]]
 Ti tuffi a bomba nella piscina. 
 
 Mr Nicky ti segue.
@@ -134,8 +134,8 @@ Si direbbe il canto della cinciallegra.
 Ti tuffi a bomba nella piscina.
 
 GIARDINO DI CASA (DENTRO LA PISCINA)
-La piscina è abbastanza ampia per fare delle piccole nuotate. Mr Nicky ti
-osserva incuriosito.
+La piscina è abbastanza ampia per fare delle piccole nuotate. Sul fondo della
+piscina noti una moneta. Mr Nicky ti osserva incuriosito.
 
 > ascolta il cinguettio
 [[ istanza 'cinguettio' --> VERB 'ascolta' --> DOES ONLY ]]
@@ -152,10 +152,10 @@ qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e una piscina qui.
 C'è un giardiniere qui. C'è un gatto qui.
 
 > ; ------------------------------------------------------------------------------
-> ; TESTA oggetti in altra stanza
+> ; TESTA oggetti in luogo contiguo
 > ; ------------------------------------------------------------------------------
 > ; Testiamolo in cucina, dato che il verbo 'ascolta' accetta parametri che non
-> ; sono presenti nel luogo: 
+> ; sono presenti nel luogo attuale ma in uno contiguo (collegato da uscite): 
 > nord
 LA CUCINA
 A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un frigo e 
@@ -163,10 +163,6 @@ un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un sacchetto, un
 coltello, una pistola, un cesto per la frutta e una radio. 
 
 Mr Nicky ti segue.
-
-> ; **ERR!** Il cielo non è NEARBY dato che è situato in un luogo che avvolge
-> ;          il giardino (ma non la casa).
-> ascolta il cielo
 
 > ascolta il giardiniere
 Non riesci a sentire il giardiniere da questa distanza.
@@ -177,6 +173,27 @@ Non riesci a sentire la piscina da questa distanza.
 > ascolta il cinguettio
 [[ istanza 'cinguettio' --> VERB 'ascolta' --> DOES ONLY ]]
 Da questa distanza è difficile capire di che uccelli si tratti.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA oggetti "inversamente contenuti" in luogo contiguo
+> ; ------------------------------------------------------------------------------
+> ; Proviamo ad ascoltare il 'cielo', che non si trova in un luogo adiacente ma in
+> ; luogo in cui un luogo adiacente è contenuto (ossia 'luogo_esterno'). L'idea è
+> ; che siccome tali oggetti sono alla portata (in scope) quando ci si trova lì,
+> ; allora dovrebbero essere anche alla portata del verbo ascolta.
+> ascolta il cielo
+Non riesci a sentire il cielo da questa distanza.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA oggetti in luogo annidato a luogo contiguo
+> ; ------------------------------------------------------------------------------
+> ; E ora proviamo con la moneta, che si trova in 'nella_piscina', un luogo
+> ; annidato nel 'giardino' (la moneta è visibile solo AT 'nella_piscina').
+> ; Si noti che la moneta non è alla portata dei verbi generici quando ci si trova
+> ; in giardino (es. "esamina moneta"), per cui è ragiovenole che essa non sia
+> ; disponibile neanche con il verbo "ascolta".
+> ascolta la moneta
+La moneta è fuori dalla portata del tuo udito.
 
 > ; ------------------------------------------------------------------------------
 > ; Parametri Inadatti

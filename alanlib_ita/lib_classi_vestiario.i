@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi_vestiario.i"
---| v0.21.0-Alpha, 2019-08-15: Alan 3.0beta6 build 2015
+--| v0.21.1-Alpha, 2019-08-19: Alan 3.0beta6 build 2015
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -61,7 +61,8 @@
 
 -- @TODO: Spostali altrove!                                                     TODO!
 ADD TO EVERY blocco_definizioni
-  HAS temp_cnt 0.                   --> Contatore interno usato dalla libreria.
+  HAS temp_bool.   --> Variabile booleana interna usata dalla libreria.
+  HAS temp_cnt 0.  --> Contatore interno usato dalla libreria.
 
   HAS temp_indumenti { indumento }. --> Set temporaneo usato dalla libreria per
                                     --  tracciare gli indumenti che bloccano

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.21.0-Alpha, 2019-08-15: Alan 3.0beta6 build 2015
+--| v0.21.1-Alpha, 2019-08-19: Alan 3.0beta6 build 2015
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -2065,7 +2065,25 @@ END VERB ascolta0.
 --| ==== ascolta
 --~-----------------------------------------------------------------------------
 --~=============================================================================
+--| 
+--| Il verbo `ascolta` cerca di imitare le regole di portata (scoping) di Alan.
+--| Se il parametro si trova nella stanza attuale, la risposta alla vaniglia è
+--| che non si ode niente di sepciale. Se invece l'oggetto si trova in un luogo
+--| contiguo (ossia collegato a quello attuale) allora la risposta sarà che da
+--| questa distanza non è possibile udire bene.
+
+--| Se invece l'oggetto si trova in un luogo che contiene quello attuale (es. il
+--| `cielo` che si trova in `luogo_esterno`), il verbo sarà in grado di trattarlo
+--| come se si trovasse nel luogo adiacente (tramite dei loop appositi). Questo
+--| poiché in Alan tali oggetti sarebbero alla portata dei verbi (es. "esamina").
+--| 
+--| Ma se l'oggetto si trova in un luogo annidato in un luogo adiacente, allora
+--| questo verbo lo considererà fuori portata, così come qualsiasi oggetto che
+--| non abbia soddisfatto i requisiti soprammenzionati. Questo poiché in Alan
+--| gli oggetti siti in luogo annidati a quello attuale non sono alla portata
+--| dei verbi.
 --<
+
 -->todo_checklist(.666) Doxter
 --| * [ ] Descrizione `ascolta`.
 --<
@@ -2097,7 +2115,7 @@ ADD TO EVERY THING
       --        un contenitore esterno (es. il cielo o il soffitto)...
    -- IF ogg AT hero
       IF hero AT ogg
-        THEN
+        THEN -- (a) L'oggetto si trova qui.
           IF ogg IsA ACTOR
             THEN SAY THE ogg. "non sta"
               IF ogg IS plurale
@@ -2106,15 +2124,27 @@ ADD TO EVERY THING
               "parlando in questo momento."
             ELSE "Non odi niente di particolare."
           END IF.
--- TODO: Se l'oggetto è lontano non produce nessuna risposta, ma forse dovrebbe CHECK!
---       produrre un qualche testo. Il problema qui è che comunque il tentativo
---       svela l'esistenza dell'oggetto, laddove un oggetto inesistente avrebbe
---       prodotto "Non conosco la parola 'xxx'.", questo messaggio (o la sua
---       assenza) è indicatorio del fatto che l'oggetto esiste ma non si trova
---       in un luogo contiguo.
-      ELSIF ogg NEAR hero
-        THEN "Non riesci a sentire" SAY THE ogg. "da questa distanza."
-     -- THEN "You can't hear" SAY THE ogg. "very well from here."
+      ELSIF ogg NEARBY -- (b) L'oggetto si trova in un luogo contiguo.
+        THEN "Non riesci a sentire $+1 da questa distanza."
+      ELSE
+        -- Verifichiamo se l'oggetto è in un luogo contentente un luogo contiguo:
+        MAKE mia_AT NOT temp_bool. --> variabile per esito ricerca.
+        FOR EACH loc IsA location DO
+          IF loc AT ogg:location
+            THEN
+              IF loc NEARBY
+                THEN -- (c) L'oggetto sarebbe a portata in un luogo contiguo.
+                  "Non riesci a sentire $+1 da questa distanza."
+                  MAKE mia_AT temp_bool.
+                -- ELSE "$n++++" Say loc. "but not NEARBY!"
+              END IF.
+            -- ELSE "$n...." Say loc. "not AT" Say ogg:location.
+          END IF.
+        END FOR.
+        IF mia_AT IS NOT temp_bool
+          THEN -- (d) L'oggetto si trova in un luogo distante o scollegato.
+            "$+1 è fuori dalla portata del tuo udito."
+        END IF.
       END IF.
   END VERB ascolta.
 END ADD TO.
