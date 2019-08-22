@@ -2,14 +2,14 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.21.0-Alpha, 2019-08-15: Alan 3.0beta6 build 2015
+--| v0.22.0-Alpha, 2019-08-22: Alan 3.0beta6 build 2022
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
 --| Ad opera di Tristano Ajmone,  (C) 2018, Artistic License 2.1.
 --|=============================================================================
---| 
+--|
 --| [WARNING]
 --| ========================================
 --| Documentazione in fase di preparazione...
@@ -28,7 +28,7 @@
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Questo modulo è il cuore della libreria per quanto concerne il testo
 --| prodotto da essa.
 --<<
@@ -41,7 +41,7 @@
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Per quanto possibile, si è cercato di raggruppare per tipologia i messaggi
 --| affini, di modo da semplificare la consultazione.
 
@@ -62,10 +62,10 @@
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Nella scelta degli identificativi degli attributi stringa per i messaggi
 --| della libreria sono state adottate le sequenti convenzioni.
---| 
+--|
 --| [NOTE]
 --| ========================================================================
 --| Sebbene irrilevante ai fini della compilazione del codice, l'uso di lettere
@@ -78,7 +78,7 @@
 --| Si è cercato di creare identificativi in grado di veicolare il senso del
 --| messaggio che rappresentano in maniera succinta e intuitiva. Per ragioni di
 --| spazio, sono state adottate una serie di abbreviazioni di uso comune:
---| 
+--|
 --| [horizontal]
 --| `ogg`  :: -> '`oggetto`' del verbo, inteso come _parametro_.
 --| `png`  :: -> '`personaggio non giocante,`' inteso come un'istanza _attore_.
@@ -132,7 +132,7 @@ ADD TO EVERY blocco_definizioni
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| La libreria non definisce l'istanza dell'eroe, lasciando quindi all'autore
 --| la libertà di definirlo come meglio crede. Quantunque, la libreria definisce
 --| alcuni messaggi riguardanti l'eroe.
@@ -150,7 +150,7 @@ ADD TO EVERY blocco_definizioni
 --| ============================================================================
 
 --| Il giocatore non possiede un oggetto richiesto per l'azione:
- 
+
   -- VERBI: svuota_in, versa_in, metti_in, lancia_in
   -- ORIGINAL EN:  check_obj_in_hero  +  check_obj2_in_hero
   HAS non_possiedi_ogg1 "Non possiedi $+1.".
@@ -163,16 +163,16 @@ ADD TO EVERY blocco_definizioni
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Azioni impedite dalla postura del giocatore.
---| 
+--|
 --| L'eroe è seduto:
 
   -- VERBI: balla, nuota, salta, salta_in, salta_su.
   -- ORIGINAL EN:  check_hero_not_sitting1
   HAS impossibile_da_seduto "Non puoi farlo da seduto.".
 
- 
+
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
   HAS check_hero_not_sitting2 "It is difficult to $v anything while sitting down.". -- (with many transitive verbs)
   HAS check_hero_not_sitting3 "It is difficult to $v anywhere while sitting down.". -- (with many verbs of motion)
@@ -226,7 +226,7 @@ ADD TO EVERY blocco_definizioni
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Questo messaggio viene mostrato quando il giocatore tenta di usare in un
 --| luogo buio il comando GUARDA, o altre azioni che richiedono illuminazione:
 
@@ -252,7 +252,7 @@ ADD TO EVERY blocco_definizioni
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Questo è il messaggio mostrato quando il giocatore tenta di usare un verbo
 --| che è stato disabilitato tramite `CAN NOT <verbp>`  manualmente o tramite
 --| l'attributo `mia_AT:restricted_level`.
@@ -284,7 +284,7 @@ ADD TO EVERY blocco_definizioni
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Queste risposte vengono invocate in più verbi (o varianti di un medesimo
 --| verbo, o sia nelle clausole `WHERE` della sintassi che nel corpo del verbo),
 --| perciò sono implementate come un singolo attributo riutilizzabile.
@@ -298,7 +298,7 @@ ADD TO EVERY blocco_definizioni
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Risposte alla vaniglia prodotte da vari verbi.
 
   -- VERBI: assaggia, mordi.
@@ -356,7 +356,7 @@ ADD TO EVERY blocco_definizioni
 --~=============================================================================
 
   -- VERBI: notifica, notifica_off, notifica_on.
-  
+
   HAS notifica_attivata
     "Notifica del punteggio attivata.
      $n(Per disattivarla usa il comando NOTIFICA)".
@@ -377,13 +377,13 @@ ADD TO EVERY blocco_definizioni
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Alcuni verbi della libreria eseguono azioni implicite al fine di rendere
 --| possibile il comando del giocatore (p.es. prendere un oggetto non poseduto
 --| per eseguire comandi come "metti <ogg> in <contenitore>").
 
 --| === Prendere
---| 
+--|
 --| Nei verbi che ammettono più parametri, solo il complemento oggetto verrà
 --| preso implicitamente. Per esempio, "`spingi la porta con il palo`" non verrà
 --| eseguito se l'eroe non possiede il palo.
@@ -407,11 +407,11 @@ ADD TO EVERY blocco_definizioni
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Messaggi per quando uno dei parametri è inadatto al verbo. Questi messaggi
 --| vengono utilizzati sia nei blocchi condizionali `ELSE` della `SYNTAX` dei
 --| verbi che nei `CHECK` del verbo stesso.
---| 
+--|
 --| A differenza della libreria originale inglese, qui non distinguiamo tra
 --| messaggi per `SYNTAX` e `CHECK`, ci focalizziamo invece sul parametro che
 --| impedisce l'azione (qui riferito come `ogg1`, `ogg2`, ecc.).
@@ -452,7 +452,7 @@ ADD TO EVERY blocco_definizioni
 --| ==== Preposizioni articolate
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 --| Varianti dei messaggi precedenti, quando si tratta di parametri che
 --| richiedono preposizioni articolate (di|a|da|in|con|su).
 
@@ -537,7 +537,7 @@ ADD TO EVERY blocco_definizioni
 --| ==== Preposizioni improprie
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 --| Varianti dei messaggi precedenti, quando si tratta di parametri che richiedono
 --| preposizioni improprie.
 
@@ -600,7 +600,7 @@ ADD TO EVERY blocco_definizioni
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 
   -- VERBI: blocca_con.
   -- ORIGINAL EN: check_door_matching_key
@@ -649,13 +649,13 @@ ADD TO EVERY blocco_definizioni
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
-  
+
   -- VERBI: dì, dì_a, rispondi, scrivi.
   -- ORIGINAL EN: illegal_parameter_string.
-  HAS ogg_stringa_richiesto 
+  HAS ogg_stringa_richiesto
     "Usa le virgolette ("""") per delimitare l'oggetto della tua azione.".
 --<
- 
+
 
 
 -->============================================================================
@@ -665,7 +665,7 @@ ADD TO EVERY blocco_definizioni
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Messaggi per verbi riguardanti problemi con i parmetri che coinvolgono
 --| contenitori.
 
@@ -685,7 +685,7 @@ ADD TO EVERY blocco_definizioni
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Messaggi per verbi che richiedono ulteriori parametri. Di solito li si
 --| trova nella variante base dei verbi che richiedono un ulteriore parametro
 --| per portare a termine l'azione, dove la variante base del verbo serve solo
@@ -706,7 +706,7 @@ ADD TO EVERY blocco_definizioni
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Messaggi che riferiscono l'impossibilità di portare a termine l'azione a
 --| causa di uno (o più) parametri fuori dalla portata dell'eroe.
 --| (attributi: `NOT raggiungibile` e `distante`).
@@ -742,7 +742,7 @@ ADD TO EVERY blocco_definizioni
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
-  
+
   -- VERBI: (svariati, specie nei verbi con prendi implicito).
   -- ORIGINAL EN: check_obj_takeable
   HAS ogg1_non_posseduto  "Non possiedi $+1.".
@@ -763,7 +763,7 @@ ADD TO EVERY blocco_definizioni
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --<
 
 
@@ -772,10 +772,10 @@ ADD TO EVERY blocco_definizioni
 --| ==== Parametri inadatti a interazioni verbali
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 --| Messaggi per verbi che implicano scambi verbali, quando il destinatario non
 --| è ha l'attributo `CAN parlare`.
-  
+
   -- VERBI: chiedi, domanda, racconta.
   -- ORIGINAL EN: illegal_parameter_talk_sg
   HAS ogg1_non_può_capirti_sg  "$+1 non è in grado di capirti.".
@@ -807,7 +807,7 @@ ADD TO EVERY blocco_definizioni
 --| ==== Dispositivi/fonti di luce
 --~-----------------------------------------------------------------------------
 --~=============================================================================
- 
+
   -- ----------------------
   -- Dispositivo/Luce Rotto
   -- ----------------------
@@ -824,8 +824,8 @@ ADD TO EVERY blocco_definizioni
   HAS ogg1_non_rotto_sg "$+1 non necessita di riparazioni.".
   HAS ogg1_non_rotto_pl "$+1 non necessitano di riparazioni.".
 --<
-  
-  
+
+
 -->=============================================================================
 --~-----------------------------------------------------------------------------
 --| ==== Oggetti non esaminabili
@@ -865,7 +865,7 @@ ADD TO EVERY blocco_definizioni
   HAS ogg2_scenario_sg "$+2 non è importante ai fini del gioco.".
   HAS ogg2_scenario_pl "$+2 non sono importanti ai fini del gioco.".
 --<
-  
+
 
 -->=============================================================================
 --~-----------------------------------------------------------------------------
@@ -914,7 +914,7 @@ ADD TO EVERY blocco_definizioni
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Risposte per azioni che non possono essere eseguite.
 
 
@@ -971,7 +971,7 @@ ADD TO EVERY blocco_definizioni
   HAS azione_insensata  "Questo non ha alcun senso.".
 
 --| Oggetto '`bersaglio`' posseduto:
-    
+
 
   HAS azione_insensata_ogg1_portato    "Che senso ha? Stai portando $+1.".
   HAS azione_insensata_ogg1_indossato  "Che senso ha? Stai indossando $+1.".
@@ -1000,14 +1000,14 @@ ADD TO EVERY blocco_definizioni
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Risposte per azioni che non conseguono nulla e vengono rifiutate con la
 --| scusante che l'eroe non desidera farlo...
 
   -- VERBI: balla.
   -- ORIGINAL EN: (nessuno, introdotto ex novo nella libreria italiana)
   HAS non_senti_bisogno_di "Al momento non senti il bisogno di".
-  
+
 
   -- VERBI: bacia, gratta, metti_contro, metti_dietro, metti_sotto,
   --        metti_vicino, solleva, spingi_con, tira, tocca, pulisci, sfrega.
@@ -1031,7 +1031,7 @@ ADD TO EVERY blocco_definizioni
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Risposte per azioni che sono superflue poiché tentano di conseguire un
 --| risultato che è già disponibile...
 --<
@@ -1279,7 +1279,7 @@ ADD TO EVERY blocco_definizioni
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~-----------------------------------------------------------------------------
 --|
---| == MESSAGGI NON TRADOTTI 
+--| == MESSAGGI NON TRADOTTI
 --|
 --~-----------------------------------------------------------------------------
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -1337,7 +1337,7 @@ ADD TO EVERY blocco_definizioni
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questi messaggi non sono ancora stati ordinati per gruppo di appartenenza.
 
 --| [NOTE]
@@ -1361,7 +1361,7 @@ ADD TO EVERY blocco_definizioni
   HAS illegal_parameter_about_pl "Those are not something you can $v about.".
 
   -- ask_for:
-  HAS illegal_parameter_for_sg   "That's not something you can $v for.". 
+  HAS illegal_parameter_for_sg   "That's not something you can $v for.".
   HAS illegal_parameter_for_pl   "Those are not something you can $v for.".
 
   -- take_from:
@@ -1393,13 +1393,13 @@ ADD TO EVERY blocco_definizioni
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| verb check messages, found before `DOES` sections of verbs and used mainly
 --| in 'lib_verbi.i':
 
 --| Attribute checks
 --| ~~~~~~~~~~~~~~~~
---| 
+--|
 --| The general check message for when an instance cannot be used with the verb :
 
   -- (numerous):
@@ -1412,11 +1412,11 @@ ADD TO EVERY blocco_definizioni
   -- ask_for:
   HAS check_obj2_suitable_for_sg "That's not something you can $v for.".
   HAS check_obj2_suitable_for_pl "Those are not something you can $v for.".
-  
+
   -- turn_off, switch_off:
   HAS check_obj_suitable_off_sg "That's not something you can $v off.".
   HAS check_obj_suitable_off_pl "Those are not something you can $v off.".
-  
+
   -- examine:
   HAS check_obj_suitable_examine_sg "That's not something you can examine.".
   HAS check_obj_suitable_examine_pl "Those are not something you can examine.".
@@ -1467,7 +1467,7 @@ END ADD TO blocco_definizioni.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
 --| italiano del modulo delle classi.
 --<
@@ -1478,14 +1478,14 @@ END ADD TO blocco_definizioni.
 --| === Check-list generale
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 --| Lista della spesa per le varie cosucce da fare:
 --<
 
 -->todo_checklist(.665)
---| 
+--|
 --| === Check-list per Doxter
---| 
+--|
 --| Finisci di trasformare commenti in documentazione Doxter:
 --<
 

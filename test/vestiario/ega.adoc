@@ -1,7 +1,7 @@
 // tag::rev_info[]
 :revdate:     2019-02-20
 :revnumber:   Alpha
-:AlanSDK:     Alan 3.0beta6 build 2015
+:AlanSDK:     Alan 3.0beta6 build 2022
 // end::rev_info[]
 // tag::region1[]
 *Emporio Giorgio Alani* by Tristano Ajmone, 2018.

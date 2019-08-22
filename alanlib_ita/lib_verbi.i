@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.21.1-Alpha, 2019-08-19: Alan 3.0beta6 build 2015
+--| v0.22.0-Alpha, 2019-08-22: Alan 3.0beta6 build 2022
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -30,22 +30,22 @@
 --|
 --| Qui di seguito sono elencati tutti i verbi definiti dalla libreria, divisi
 --| in tre diversi gruppi:
---| 
+--|
 --| 1. <<Meta verbi di partita>>
 --| 2. <<Verbi di gioco>>
 --| 3. <<Verbi di domande>>
---| 
+--|
 --| I verbi nelle tabelle sono elencati in ordine alfabetico, per facilitarne la
 --| consultazione. Nel codice sorgente i verbi sono invece aggregati in base
 --| alla loro affinità, di modo da rendere più facile consultare il codice di
 --| verbi correlati tra loro.
---| 
+--|
 --| ============================================================================
---| 
+--|
 --| [big]#*Legenda delle Tabelle*#
---| 
+--|
 --| Il significato delle lettere nelle ultime due colonne è il seguente:
---| 
+--|
 --| [horizontal]
 --|   [A] Arietà     :: <n> = numero di parametri
 --|   [M] Meta Verbo :: {X} = Sì
@@ -79,7 +79,7 @@
 --| === Tabella comandi di partita
 --| [cols="15m,25d,35d,2*^5d",options="header"]
 --| |=======================================================================================
---| | VERBO              | SINONIMI                   | SINTASSI                 | A |  M 
+--| | VERBO              | SINONIMI                   | SINTASSI                 | A |  M
 --~ +--------------------+----------------------------+--------------------------+---+-----+
 --| | abbandona_partita  | quit, Q                    | abbandona [partita]      | 0 | {X}
 --| | carica_partita     | restore                    | carica [partita]         | 0 | {X}
@@ -190,10 +190,10 @@ END VERB salva_partita.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| La libreria definisce tre verbi che controllano l'avvio e l'arresto della
 --| trascrizione della partita in un file di log:
---| 
+--|
 --| [cols="20m,30d,50d",options="header",separator=¦]
 --| |===========================================================================
 --| ¦ verbo            ¦ sintassi                       ¦ esito
@@ -202,7 +202,7 @@ END VERB salva_partita.
 --| ¦ trascrizione_on  ¦ trascrizione (on|attivata)     ¦ Avvia trascrizione.
 --| ¦ trascrizione_off ¦ trascrizione (off|disattivata) ¦ Termina trascrizione.
 --| |===========================================================================
---| 
+--|
 --| È altresì definito come sinonimo di '`trascrizione`' il termine inglese
 --| '`transcript`', per facilitare l'uso della direttiva a giocatori non
 --| familiarizzati con la libreria di Alan, poiché nelle avventure italiane
@@ -217,7 +217,7 @@ SYNTAX  trascrizione     = trascrizione.
 
 SYNONYMS 'transcript' = trascrizione.
 
--->gruppo_trascrizione 
+-->gruppo_trascrizione
 --| [NOTE]
 --| ========================================================================
 --| I verbi per la trascrizione ricorrono all'istruzione di Alan `TRANSCRIPT`,
@@ -233,12 +233,12 @@ SYNONYMS 'transcript' = trascrizione.
 --| ==== trascrizione
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 --| Il verbo `trascrizione` serve principalmente ad intercettare una direttiva
 --| di trascrizione digitata in forma incompleta, e mostrare quindi al giocatore
 --| istruzioni sull'uso sintatticco corretto delle due direttive per il controllo
 --| della trascrizione.
---| 
+--|
 --| Ma poiché questo comando fornisce anche istruzioni su come invocare
 --| l'interprete da riga di comando ARun con le opzioni per la trascrizione
 --| automatica dell'intera partita, questa direttiva ha anche un suo valore
@@ -254,10 +254,10 @@ META VERB trascrizione
 
      La trascrizione sarà salvata in un file con il nome dell'avventura seguito
      dalla data e dall'estensione "".log"".
- 
+
      $pNell'interprete con interfaccia grafica, puoi accedere alle funzionalità
      di trascrizione tramite menù.
-    
+
      $pL'interprete a riga di comando ARun può essere avviato con l'opzione
      ""-l"" per abilitare la trascrizione dell'intera partita."
 
@@ -333,14 +333,23 @@ END VERB trascrizione_off.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
---| Questo gruppo include i verbi che riguardano il salvataggio ed il carimento
---| della partita:
---| 
+
+--| Questo gruppo di verbi consente al giocatore di visualizzare il suo
+--| punteggio attuale e di abilitare/disabilitare le notifiche di cambiamento
+--| del punteggio, che alcuni giocatori trovano utili mentre altri le
+--| considerano fastidiose.
+--|
 --| * `vedi_punteggio`
 --| * `notifica`
 --| * `notifica_on`
 --| * `notifica_off`
+--| 
+--| Questi verbi agiscono sull'attributo booleano `mia_AT:notifiche_attive`, che
+--| l'evento `controlla_punteggio` userà per decidere se visualizzare o meno un
+--| messaggio quando il punteggio cambia.
+--| La libreria sfrutta il sistema di punteggio nativo di Alan (accessibile
+--| tramite l'istruzione `SCORE`), il quale prevede solo un punteggio a
+--| crescere.
 --<
 
 
@@ -369,13 +378,12 @@ META VERB vedi_punteggio
     -- "In questa avventura non c'è punteggio."
 END VERB vedi_punteggio.
 
--->gruppo_punteggio                                        @NOTIFICA <-- @NOTIFY
---~=============================================================================
---~-----------------------------------------------------------------------------
---| ==== vedi_punteggio
---~-----------------------------------------------------------------------------
---~=============================================================================
---<
+
+--==============================================================================
+--------------------------------------------------------------------------------
+-- VERBI PER IL CONTROLLO DELLE NOTIFICHE 
+--------------------------------------------------------------------------------
+--==============================================================================
 
 -- Questo verbo è basato sull'esempio "Score notification" di Steve Griffiths.
 
@@ -406,9 +414,8 @@ SYNTAX  notifica = notifica.
 --| ==== notifica
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---<
--->todo_checklist(.666) Doxter
---| * [ ] Descrizione `notifica`.
+--| Il verbo `notifica` consente di alternare lo stato delle notifiche di
+--| punteggio, passando da notifiche abilitate a disabilitate, e vicecersa.
 --<
 
 META VERB notifica
@@ -448,9 +455,9 @@ END VERB notifica_on.
 --| ==== notifica_off
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---<
--->todo_checklist(.666) Doxter
---| * [ ] Descrizione `notifica_off`.
+--| 
+--| Il verbo `notifica_off` consente di disabilitare le notifiche del punteggio,
+--| a prescindere dallo stato attuale delle notifiche.
 --<
 
 META VERB notifica_off
@@ -463,26 +470,19 @@ META VERB notifica_off
     END IF.
 END VERB notifica_off.
 
---                                                                              TRANSLATE COMMENTS!
--- The 'notify' verb allows the players to disable the score change
--- messages. (Some players find such messages annoying.)
--- The verb toggles the hero's 'notify_on' attribute on and off. That
--- attribute is checked by the 'checkscore' event to determine whether
--- to display the score msg or not.
-
--- The following event is run each turn to check if the game score is greater than
--- the last recorded score (which is stored in the Hero's 'ultimo_punteggio'
--- attribute). If the score is greater, then the 'Score has gone up...'
--- text is displayed (as long as the player hasn't disabled it by using the
--- 'notify' verb - which sets 'notify_on' to off
--- - i.e. the hero 'IS NOT notify_on'.)
-
--- NOTE: The ALAN scoring system records the game score in a thing called
--- score. It isn't called score OF anything; its just 'score'.
-
--- NOTE: This event assumes score can only increase, if score can go
--- down then you would need to modify this code a bit.
-
+-->gruppo_punteggio(10300)
+--~=============================================================================
+--~-----------------------------------------------------------------------------
+--| ==== L'evento controlla_punteggio
+--~-----------------------------------------------------------------------------
+--~=============================================================================
+--| 
+--| L'evento `controlla_punteggio` viene eseguito ad ogni turno per verificare
+--| se il punteggio attuale è maggiore dell'ultimo punteggio registrato (salvato
+--| in `mia_AT:ultimo_punteggio`) e, in caso affermativo, e a condizione che
+--| l'attributo `mia_AT:notifiche_attive` sia attivo, verrà mostrato al giocatore
+--| un messaggio che lo informa di quanti punti sia salito il punteggio.
+--<
 
 EVENT controlla_punteggio
   IF mia_AT:ultimo_punteggio < SCORE
@@ -517,15 +517,15 @@ END EVENT.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i meta verbi per accedere a informazioni sul gioco,
 --| aiuti, ecc.:
---| 
+--|
 --| * `istruzioni`
 --| * `ringraziamenti`
---| 
+--|
 --| Verbi di questo gruppo non ancora tradotti:
---| 
+--|
 --| * `hint`
 --<
 
@@ -559,7 +559,7 @@ META VERB istruzioni
   CHECK mia_AT CAN mostrare_istruzioni
     ELSE SAY mia_AT:azione_bloccata.
   DOES
- 
+
     "Questa è un'avventura testuale, anche nota come" STYLE EMPHASIZED.
     "interactive fiction" STYLE NORMAL. "(IF). Nel gioco interpreti il ruolo del
      personaggio principale, e l'esito della storia dipenderà dalla tue scelte.
@@ -683,10 +683,10 @@ END VERB suggerimento.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Qui di seguito sono elencati i vari meta verbi che non rientrano in alcun
 --| gruppo specifico.
---| 
+--|
 --| * `abbandona_partita`
 --| * `ricomincia_partita`
 --<
@@ -766,7 +766,7 @@ END VERB ricomincia_partita.
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Comandi diretti al personaggio protagonista per interagire con l'avventura.
 --<
 
@@ -935,10 +935,10 @@ END VERB ricomincia_partita.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi per l'accensione e lo spegnimento di fonti di
 --| luce e dispositivi:
---| 
+--|
 --| * `accendi`
 --| * `spegni`
 --<
@@ -1064,9 +1064,9 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi per aprire, chiudere e bloccare:
---| 
+--|
 --| * `apri`
 --| * `apri_con`
 --| * `blocca`
@@ -1949,18 +1949,18 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi per le azioni sensoriali:
---| 
+--|
 --| * `annusa0`
 --| * `annusa`
 --| * `ascolta0`
 --| * `ascolta`
 --| * `tocca`
 --| * `tocca_con`
---| 
---| Il verbo `guarda` andrebbe in questo gruppo o con `esamina`? 
---| 
+--|
+--| Il verbo `guarda` andrebbe in questo gruppo o con `esamina`?
+--|
 --| [NOTE]
 --| ============================================================================
 --| Il verbo `annusa` è anche definito in `lib_classi.i` sulla classe `suono`
@@ -2065,7 +2065,7 @@ END VERB ascolta0.
 --| ==== ascolta
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 --| Il verbo `ascolta` cerca di imitare le regole di portata (scoping) di Alan.
 --| Se il parametro si trova nella stanza attuale, la risposta alla vaniglia è
 --| che non si ode niente di sepciale. Se invece l'oggetto si trova in un luogo
@@ -2076,7 +2076,7 @@ END VERB ascolta0.
 --| `cielo` che si trova in `luogo_esterno`), il verbo sarà in grado di trattarlo
 --| come se si trovasse nel luogo adiacente (tramite dei loop appositi). Questo
 --| poiché in Alan tali oggetti sarebbero alla portata dei verbi (es. "esamina").
---| 
+--|
 --| Ma se l'oggetto si trova in un luogo annidato in un luogo adiacente, allora
 --| questo verbo lo considererà fuori portata, così come qualsiasi oggetto che
 --| non abbia soddisfatto i requisiti soprammenzionati. Questo poiché in Alan
@@ -2129,7 +2129,7 @@ ADD TO EVERY THING
       ELSE
         -- Verifichiamo se l'oggetto è in un luogo contentente un luogo contiguo:
         MAKE mia_AT NOT temp_bool. --> variabile per esito ricerca.
-        FOR EACH loc IsA location DO
+        FOR EACH loc IsA LOCATION DO
           IF loc AT ogg:location
             THEN
               IF loc NEARBY
@@ -2315,9 +2315,9 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi per conversare:
---| 
+--|
 --| * `chiedi` (da spostare in altro gruppo!)
 --| * `chiedi_errore` (_idem_)
 --| * `domanda`
@@ -2327,7 +2327,7 @@ END ADD TO.
 --| * `parla_a`
 --| * `racconta`
 --| * `rispondi`
---| 
+--|
 --| [NOTE]
 --| ============================================================================
 --| I verbo `chiedi` e `chiedi_errore` andrebbero spostati in un altro gruppo dato
@@ -2439,7 +2439,7 @@ ADD TO EVERY ACTOR
           ELSE MAKE mia_AT NOT temp_condiscendente.
         END IF.
         -- Rendiamo temporaneamente condiscendente il PNG affinché sia possibile
-        -- rimuovere un oggetto contenuto da esso: 
+        -- rimuovere un oggetto contenuto da esso:
         MAKE png condiscendente.
         MAKE ogg NOT indossato. -- per indossabili non 'indumento'.
         LOCATE ogg IN hero.
@@ -2669,7 +2669,7 @@ VERB parla
     ELSE SAY mia_AT:azione_bloccata.
   DOES
     -- "Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure
-    --  RACCONTA A PERSONA DI ARGOMENTO.".    
+    --  RACCONTA A PERSONA DI ARGOMENTO.".
     SAY mia_AT:per_parlare_con_USA.
 -- "To talk to somebody, you can ASK PERSON ABOUT THING
 --  or TELL PERSON ABOUT THING."
@@ -2706,7 +2706,7 @@ ADD TO EVERY ACTOR
       ELSE SAY mia_AT:azione_bloccata.
     DOES
       -- "Per parlare a qualcuno, usa DOMANDA A PERSONA DI ARGOMENTO, oppure
-      --  RACCONTA A PERSONA DI ARGOMENTO.".    
+      --  RACCONTA A PERSONA DI ARGOMENTO.".
       SAY mia_AT:per_parlare_con_USA.
   END VERB parla_con.
 END ADD TO.
@@ -2823,15 +2823,15 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi che riguardano mangiare e bere:
---| 
+--|
 --| * `assaggia`
 --| * `bevi`
 --| * `mangia`
 --| * `mordi`
 --| * `sorseggia`
---| 
+--|
 --| [cols="15m,25d,60d",options="header"]
 --| |================================================================
 --| | verbo     | sintassi        | parametri
@@ -3263,10 +3263,10 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi per riempire e svuotare i contenitori e versarne
 --| il contenuto (a terra o su/in un altro contenitore):
---| 
+--|
 --| * `riempi`
 --| * `riempi_con`
 --| * `svuota`
@@ -3275,12 +3275,12 @@ END ADD TO.
 --| * `versa`
 --| * `versa_in`
 --| * `versa_su`
---| 
+--|
 --| In questo modulo, i verbi `svuota` e `versa` hanno sintassi e comportamento
 --| simili; tuttavia non sono dichiarati sinonimi (ossia, hanno sintassi
 --| indipendenti) poiché il loro uso non si sovrappone del tutto. Per esempio, è
 --| possibile versare un liquido ma non svuotarlo.
---| 
+--|
 --| Questa è la ragione per cui in `lib_classi.i` questi verbi sono ridefiniti
 --| nella classe `liquido` affinché si possa utilizzare il verbo `versa` con un
 --| liquido ma non il verbo `svuota`.
@@ -3909,9 +3909,9 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo raccoglie i verbi '`eamina`' e '`guarda`', con le loro varianti:
---| 
+--|
 --| * `esamina`
 --| * `guarda`
 --| * `guarda_attraverso`
@@ -3921,9 +3921,9 @@ END ADD TO.
 --| * `guarda_sotto`
 --| * `guarda_su`
 --| * `ispeziona`
---| 
+--|
 --| Verbi di questo gruppo non ancora tradotti:
---| 
+--|
 --| * `search` (non sono certo se appartenga a questo gruppo o meno)
 --<
 
@@ -3934,13 +3934,13 @@ END ADD TO.
 --| ==== esamina
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 --| Se l'oggetto esaminato è `leggibile` e l'attributo `xDesc` è una stringa
 --| vuota, allora `esamina` si comporterà come il verbo `leggi` e mostrerà il
 --| contenuto del'attributo `testo`. Se invece la `xDesc` dell'oggetto contiene
 --| del testo, allora `esamina` lo tratterà come qualsiasi altro oggetto e
 --| mostrerà il testo di `xDesc`.
---| 
+--|
 --| Questo comportamento è stato modificato rispetto alla libreria originale
 --| inglese, dove `esamina` si comportava sempre come `leggi` in presenza
 --| dell'attributo `leggibile`. Questa modifica è stata apportata al fine di
@@ -3949,7 +3949,7 @@ END ADD TO.
 --| giocatore possa ottenere una descrizione del manufatto ("`Un manoscritto
 --| rilegato in pelle, sembra molto antico.`") al fine di rafforzare l'atmosfera
 --| del gioco e valorizzare l'oggetto.
---| 
+--|
 --| Qualora non fosse importante fornire una descrizione dell'oggetto (p.es.
 --| un semplice post-it o un foglio di carta) e si preferisse che esaminare
 --| l'oggetto equivalesse a leggerlo, sarà sufficiente non fornire all'oggetto
@@ -4283,7 +4283,7 @@ ADD TO EVERY THING
 END ADD TO.
 
 
--->gruppo_guarda                                         @GUARDA SU <-- @LOOK UP   
+-->gruppo_guarda                                         @GUARDA SU <-- @LOOK UP
 --~=============================================================================
 --~-----------------------------------------------------------------------------
 --| ==== guarda_su
@@ -4376,12 +4376,12 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi per la compravendita:
---| 
+--|
 --| * `compra`
 --| * `vendi`
---| 
+--|
 --<
 
 
@@ -4486,10 +4486,10 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi per rompere, danneggiare, dividiere, spezzare
 --| e riparare cose:
---| 
+--|
 --| * `ripara`
 --| * `rompi`
 --| * `rompi_con`
@@ -4902,9 +4902,9 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo riguarda i verbi per dare, prendere e lasciare oggetti:
---| 
+--|
 --| * `dai_a`
 --| * `lascia`
 --| * `prendi`
@@ -4912,7 +4912,7 @@ END ADD TO.
 --<
 
 
--->gruppo_dare                                                  @DAI_A <-- @GIVE  
+-->gruppo_dare                                                  @DAI_A <-- @GIVE
 --~=============================================================================
 --~-----------------------------------------------------------------------------
 --| ==== dai_a
@@ -5222,7 +5222,7 @@ ADD TO EVERY THING
         -- esempio, per consentire di prendere in braccio un animale, un bebé,
         -- ecc. L'autore potrà implementare varianti di `prendi` sulle classi o
         -- istanze specifiche, senza che i CHECK lo prevengano.
-        -- 
+        --
         -- ** NOTA ** In realtà questa parte del codice non verrà eseguita se
         -- l'attore non passa prima altri check che stroncano l'azione sul
         -- nascere:
@@ -5422,9 +5422,9 @@ ADD TO EVERY THING
 --          - $2 is a container
 --          - $1 is inside $2
 --        therefore, $1 can't be an actor if we got this far!
--- 
+--
 --        A possible solution could be to move the CHECK 'AND ogg IN detentore'
---        on the 'prendi_da' VERB on the OBJECT class! This would allow 
+--        on the 'prendi_da' VERB on the OBJECT class! This would allow
 --        end users to simulate actors inside objects via attributes, if they
 --        need to, and that CHECK will no longer prevent executing the DOES
 --        body when ogg is an actor.
@@ -5472,9 +5472,9 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo raccoglie i verbi riguardanti il vestiario e denudarsi:
---| 
+--|
 --| * `indossa`
 --| * `togliti`
 --| * `spogliati`
@@ -5493,7 +5493,7 @@ END ADD TO.
 --<
 
 
--- @ALTRI SINONIMI: 'infilati', 'calza' 
+-- @ALTRI SINONIMI: 'infilati', 'calza'
 
 -- SYNTAX  wear = wear (ogg)
 --         wear = put 'on' (ogg).
@@ -5651,7 +5651,7 @@ VERB spogliati
 -- |     END FOR.
 -- |     "Fatto. Ora non indossi più nulla."
 -- |   ELSE "Non stai indossando nulla.."
--- | END IF. 
+-- | END IF.
 -- |-------------------------------------------------------------------------
 
 END VERB spogliati.
@@ -5664,9 +5664,9 @@ END VERB spogliati.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include il verbo '`mettere`' e simili:
---| 
+--|
 --| * `metti`
 --| * `metti_contro`
 --| * `metti_dietro`
@@ -5674,9 +5674,9 @@ END VERB spogliati.
 --| * `metti_sotto`
 --| * `metti_su`
 --| * `metti_vicino`
---| 
+--|
 --| Verbi di questo gruppo non ancora tradotti:
---| 
+--|
 --<
 
 
@@ -6094,9 +6094,9 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi per saltare:
---| 
+--|
 --| * `salta`
 --| * `salta_in`
 --| * `salta_su`
@@ -6243,9 +6243,9 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi per sedersi, sdraiarsi ed alazarsi:
---| 
+--|
 --| * `alzati`
 --| * `arrampicati`
 --| * `sali_su`
@@ -6360,7 +6360,7 @@ END ADD TO.
 
 -- SYNTAX  stand_on = stand 'on' (superficie)
 --         stand_on = get 'on' (superficie).
-        
+
 SYNTAX  sali_su = sali su (superficie)
   WHERE superficie IsA supporto
     ELSE
@@ -6790,9 +6790,9 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi per lanciare oggetti:
---| 
+--|
 --| * `lancia`
 --| * `lancia_a`
 --| * `lancia_contro`
@@ -7264,9 +7264,9 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi per tuffarsi e nuotare in liquidi:
---| 
+--|
 --| * `nuota`
 --| * `nuota_in`
 --| * `tuffati`
@@ -7470,9 +7470,9 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi per spostare oggetti oggetti:
---| 
+--|
 --| * `solleva`
 --| * `spingi`
 --| * `spingi_con`
@@ -7811,10 +7811,10 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi di violenza come attaccare, uccidere, prendere
 --| a calci, colpire e simili:
---| 
+--|
 --| * `attacca`
 --| * `attacca_con`
 --| * `calcia`
@@ -8170,9 +8170,9 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi per leggere e scrivere:
---| 
+--|
 --| * `leggi`
 --| * `scrivi`
 --<
@@ -8367,9 +8367,9 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi per bruciare le cose:
---| 
+--|
 --| * `brucia`
 --| * `brucia_con`
 --<
@@ -8505,9 +8505,9 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi per usare:
---| 
+--|
 --| * `usa`
 --| * `usa_con`
 --<
@@ -8597,9 +8597,9 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi per ZZZZ:
---| 
+--|
 --| * `pensa`
 --| * `pensa_a`
 --<
@@ -8686,30 +8686,30 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| La libreria definisce i seguenti verbi per entrare e uscire da un oggetto:
---| 
+--|
 --| * `entra`
 --| * `entra_in`
 --| * `esci`
 --| * `esci_da`
---| 
---| 
+--|
+--|
 --| Poiché in Alan non è consentito collocare un attore dentro ad un contenitore,
 --| si dovrà ricorrere ad un luogo annidato in quello attuale per creare tale
 --| illusione.
---| 
+--|
 --| Ad esempio, volendo implementare una cabina telefonica in cui il giocatore
 --| possa entrare, si creerà un oggetto `cabina_telefonica` che rappresenti la
 --| cabina nel luogo attuale, e si creerà anche il luogo annidato `interno_cabina`
 --| in cui spostare l'eroe quando questi entra nella cabina.
---| 
+--|
 --| Sull'oggetto `cabina_telefonica` si implementeranno i verbi `entra` ed
 --| `esci` affinché questi collochino l'eroe dentro e fuori il luogo annidato
 --| `interno_cabina`. Quando l'eroe si troverà in `interno_cabina` sarà comunque
 --| _anche_ dentro il luogo che ospita la cabina (contenimento transitivo), perciò
 --| gli oggetti di entrambi i luoghi saranno alla sua portata.
---| 
+--|
 --| Intervenendo sull'istanza `interno_cabina` sarà infine possibile controllare
 --| quali azioni saranno consentite dall'interno della cabina e quali no -- p.es.
 --| fare in modo che dalla cabina sia visibile tutto ciò che si trova nel luogo
@@ -8839,15 +8839,15 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi per sparare con armi da fuoco (o comunque armi
 --| in grado di espellere proiettili di qualche tipo):
---| 
+--|
 --| * `spara`
 --| * `spara_errore`
 --| * `spara_a`
 --| * `spara_a_errore`
---| 
+--|
 --| L'arma del parametro deve avere l'attributo `sparabile`.
 --<
 
@@ -9021,7 +9021,7 @@ END ADD TO.
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------
--- VERBI NON ANCORA RAGGRUPPATI 
+-- VERBI NON ANCORA RAGGRUPPATI
 -------------------------------------------------------------------------------
 --//////////////////////////////////////////////////////////////////////////////
 --=============================================================================
@@ -9034,10 +9034,10 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo raccoglie i verbi per i quali non è ancora stato creato un:
 --| gruppo di appartenenza, o quei verbi che sono destinati a restare isolati:
---| 
+--|
 --| * `acchiappa`
 --| * `agita`
 --| * `aspetta`
@@ -9971,12 +9971,12 @@ VERB inventario
     -- Elenca oggetti trasportati
     -- --------------------------
     -- @NOTA: Evita di usare il set 'indossati', se è NOT indossato è portato:
-    SET mia_AT:temp_cnt TO COUNT IsA object, IS NOT indossato, DIRECTLY IN Hero.
+    SET mia_AT:temp_cnt TO COUNT IsA OBJECT, IS NOT indossato, DIRECTLY IN Hero.
     IF  mia_AT:temp_cnt = 0
       THEN "Non stai portando niente."
       ELSE
         "Stai portando"
-        FOR EACH ogg_portato IsA object, IS NOT indossato, DIRECTLY IN Hero
+        FOR EACH ogg_portato IsA OBJECT, IS NOT indossato, DIRECTLY IN Hero
           DO
             SAY AN ogg_portato.
             DECREASE mia_AT:temp_cnt.
@@ -10925,7 +10925,7 @@ END ADD TO.
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Questo gruppo include tutti quei comandi che non seguono la consueta forma
 --| in cui il giocatore impartisce un ordine diretto al personaggio protagonista
 --| (p.es. "`prendi la mela`"), presentandosi invece sotto forma di affermazioni
@@ -10959,9 +10959,9 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi:
---| 
+--|
 --| * `chi_è`
 --| * `chi_sono_io`
 --<
@@ -11030,9 +11030,9 @@ END VERB chi_sono_io.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi:
---| 
+--|
 --| * `cosa_è`
 --| * `cosa_sono_io`
 --<
@@ -11111,9 +11111,9 @@ END VERB cosa_sono_io.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi:
---| 
+--|
 --| * `dove_è`
 --| * `dove_mi_trovo`
 --<
@@ -11198,9 +11198,9 @@ END VERB dove_mi_trovo.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questo gruppo include i verbi:
---| 
+--|
 --| * `rispondi_No`
 --| * `rispondi_Sì`
 --<
@@ -11260,7 +11260,7 @@ END VERB rispondi_Sì.
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
 --| italiano del modulo dei verbi.
 --<
@@ -11271,17 +11271,17 @@ END VERB rispondi_Sì.
 --| === Check-list generale
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 --| Lista della spesa per le varie cosucce da fare:
---| 
+--|
 --| * [ ] Ragruppa i vari verbi in maniera intuitiva e pratica in modo da tenere
 --|       vicini tra loro verbi correlati, simmetrici e/o complementari.
 --<
 
 -->todo_checklist(.665)
---| 
+--|
 --| === Check-list per Doxter
---| 
+--|
 --| Finisci di trasformare commenti in documentazione Doxter:
 --<
 

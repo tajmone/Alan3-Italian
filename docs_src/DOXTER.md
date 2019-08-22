@@ -2,6 +2,19 @@
 
 Appunti di lavoro sull'organizzazione della documentazione di Alan Italian in regioni taggate di [Doxter].
 
+I vari moduli sono presentati nel medesimo ordine in cui vengono inclusi in `libreria.i`:
+
+```alan
+IMPORT 'lib_italian.i'.           -- Modulo creato appositamente per l'italiano.
+IMPORT 'lib_classi.i'.            -- Adattamento di -> `lib_classes.i` (1).
+IMPORT 'lib_classi_vestiario.i'.  -- Adattamento di -> `lib_classes.i` (2).
+IMPORT 'lib_definizioni.i'.       -- Adattamento di -> `lib_definitions.i` (1).
+IMPORT 'lib_luoghi.i'.            -- Adattamento di -> `lib_locations.i`.
+IMPORT 'lib_messaggi_runtime.i'.  -- Adattamento di -> `lib_messages.i`.
+IMPORT 'lib_messaggi_libreria.i'. -- Adattamento di -> `lib_definitions.i` (2).
+IMPORT 'lib_verbi.i'.             -- Adattamento di -> `lib_verbs.i`.
+
+```
 
 -----
 
@@ -10,6 +23,7 @@ Appunti di lavoro sull'organizzazione della documentazione di Alan Italian in re
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Regioni e pesi nella documentazione](#regioni-e-pesi-nella-documentazione)
+    - [Modulo Italian](#modulo-italian)
     - [Modulo Classi](#modulo-classi)
     - [Modulo Classi Vestiario](#modulo-classi-vestiario)
     - [Modulo Definizioni](#modulo-definizioni)
@@ -17,7 +31,6 @@ Appunti di lavoro sull'organizzazione della documentazione di Alan Italian in re
     - [Modulo Messaggi Runtime](#modulo-messaggi-runtime)
     - [Modulo Messaggi Libreria](#modulo-messaggi-libreria)
     - [Modulo Verbi](#modulo-verbi)
-    - [Modulo Italian](#modulo-italian)
 
 <!-- /MarkdownTOC -->
 
@@ -37,6 +50,26 @@ Per maggiori dettagli sull'uso delle regioni e del loro sistema di pesi e sottop
 Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in ciascun modulo della libreria, al fine di facilitarne la tracciatura durante il laovoro di editing.
 
 
+## Modulo Italian
+
+- [`lib_italian.i`][lib_italian]
+
+| weight   | subw      | tag                         | descrizione                               |
+| -------: | --------: | :-------------------------- | :---------------------------------------- |
+| 100      | 1         | `intro`                     | == Introduzione                           |
+| 1100     |           | `valori_predefiniti`        | === Valori predefiniti                    |
+| 1000     | 1         | `guida`                     | == Guida all'uso                          |
+| 2000     | 1         | `player_words`              | == Predefined Player Words                |
+| 50000    |           | `todo`                      | TODO                                      |
+| 51000    | 1-33      | `todo_checklist`            | === Check List Generale                   |
+| 51000    | 665-666   | `todo_checklist`            | === Check List Doxter                     |
+
+
+<!-- 
+| 00000  |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx |
+-->
+
+
 ## Modulo Classi
 
 - [`lib_classi.i`][lib_classi]
@@ -46,10 +79,6 @@ Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in cia
 | -------: | --------: | :-------------------------- | :---------------------------------------- |
 | 100      | 1         | `intro`                     | == Introduzione                           |
 | 1000     | 1         | `elenco_classi`             | === Elenco e Descrizione delle Classi     |
-| 10000    | 1         | `vestiario`                 | == Vestiario                              |
-| 10900    | 1         | `vestiario_istruzioni`      | === Istruzioni per l'Uso del Vestiario    |
-| 10950    | 1         | `tabella_vestiario_intro`   | == La Tabella del Vestiario               |
-| 10960    | 1         | `tabella_vestiario`         | [tabella vestiario]                       |
 | 11000    | 1         | `dispositivi`               | == Dispositivi                            |
 | 12000    | 1         | `porte`                     | == Porte                                  |
 | 13000    | 1         | `finestre`                  | == Finestre                               |
@@ -75,13 +104,22 @@ Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in cia
 - [`lib_classi_vestiario.i`][lib_classi_vestiario]
 
 
-| weight   | subw      | tag                         | descrizione                               |
-| -------: | --------: | :-------------------------- | :---------------------------------------- |
-| 100      | 1         | `intro`                     | == Introduzione                           |
-| 1000     | 1         | `entity_attr`               | == Attributi Entità                       |
-| 50000    |           | `todo`                      | TODO                                      |
-| 51000    | 1-33      | `todo_checklist`            | === Check List Generale                   |
-| 51000    | 665-666   | `todo_checklist`            | === Check List Doxter                     |
+| weight   | subw      | tag                               | descrizione                                             |
+| -------: | --------: | :--------------------------       | :----------------------------------------               |
+| 100      | 1         | `intro`                           | == Introduzione                                         |
+| 1000     | 1         | `entity_attr`                     | == Attributi Entità                                     |
+| 10000    | 1         | `vestiario`                       | == Vestiario                                            |
+|          |           | `classe_indumento`                | === Gli indumenti                                       |
+|          |           | `verbo_esamina`                   | ==== Verbo `esamina`                                    |
+|          |           | `previeni_dislocamento_indossati` | ==== Impedisci verbi che potrebbero dislocare indossati |
+|          |           | `verbo_indossa`                   | ==== Verbo `indossa`                                    |
+|          |           | `verbo_togliti`                   | ==== Verbo `togliti`                                    |
+| 10900    | 1         | `vestiario_istruzioni`            | === Istruzioni per l'Uso del Vestiario                  |
+| 10950    | 1         | `tabella_vestiario_intro`         | == La Tabella del Vestiario                             |
+| 10960    | 1         | `tabella_vestiario`               | [tabella vestiario]                                     |
+| 50000    |           | `todo`                            | TODO                                                    |
+| 51000    | 1-33      | `todo_checklist`                  | === Check List Generale                                 |
+| 51000    | 665-666   | `todo_checklist`                  | === Check List Doxter                                   |
 
 <!-- 
 | 00000    |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx |
@@ -219,25 +257,6 @@ Le tabelle riportate qui di seguito annotano l'ordine dei pesi utilizzati in cia
 | 00000  |         | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx
 | 000  |         | gruppo_XXXXX            | == XXXXX
 | 010  |         | verbo_YYYYY                 | ==== YYYYY
--->
-
-## Modulo Italian
-
-- [`lib_italian.i`][lib_italian]
-
-| weight   | subw      | tag                         | descrizione                               |
-| -------: | --------: | :-------------------------- | :---------------------------------------- |
-| 100      | 1         | `intro`                     | == Introduzione                           |
-| 1100     |           | `valori_predefiniti`        | === Valori predefiniti                    |
-| 1000     | 1         | `guida`                     | == Guida all'uso                          |
-| 2000     | 1         | `player_words`              | == Predefined Player Words                |
-| 50000    |           | `todo`                      | TODO                                      |
-| 51000    | 1-33      | `todo_checklist`            | === Check List Generale                   |
-| 51000    | 665-666   | `todo_checklist`            | === Check List Doxter                     |
-
-
-<!-- 
-| 00000  |       | xxxxxxxxxxxxxxxxxx | xxxxxxxxxx |
 -->
 
 

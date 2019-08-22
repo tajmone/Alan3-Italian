@@ -3,8 +3,8 @@
 La Casa 
 Un set per eseguire test su stanze e luoghi esterni. 
 (C) Tristano Ajmone, 2018. 
-Avventura realizzata con ALAN 3.0beta6 build 2015. 
-Libreria Standard Italiana: 21 Alpha. 
+Avventura realizzata con ALAN 3.0beta6 build 2022. 
+Libreria Standard Italiana: 22 Alpha. 
 Versione 1 
 Tutti i diritti riservati.
 
@@ -12,8 +12,8 @@ Tutti i diritti riservati.
 LA CUCINA
 A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un frigo e 
 un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un sacchetto, un 
-coltello, una pistola, un cesto per la frutta e una radio. Al centro della
-stanza c'è Mr Nicky, il tuo cagnolino.
+coltello, una pistola, un cesto per la frutta e una radio. Puoi vedere un'
+acquasantiera qui. Al centro della stanza c'è Mr Nicky, il tuo cagnolino.
 
 > ; ******************************************************************************
 > ; *                                                                            *
@@ -91,7 +91,8 @@ Mr Nicky ti segue.
 LA CUCINA
 A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un frigo e 
 un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un sacchetto, un 
-coltello, una pistola, un cesto per la frutta e una radio. 
+coltello, una pistola, un cesto per la frutta e una radio. Puoi vedere un'
+acquasantiera qui. 
 
 Mr Nicky ti segue.
 

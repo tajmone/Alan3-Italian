@@ -1,4 +1,4 @@
--- Alan Italian 21 Alpha | Alan 3.0beta6 build 2015
+-- Alan Italian 22 Alpha | Alan 3.0beta6 build 2022
 --==============================================================================
 -- "La Casa" by Tristano Ajmone, 2018.
 --==============================================================================
@@ -517,7 +517,6 @@ END EVERY cont_alimenti.
 
 EVERY cont_bevanda IsA contenitore_elencato.
   NAME contenitore.
-
   INITIALIZE -- Consenti ai 'cont_bevanda' di contenere qualsiasi bevanda del gioco:
     FOR EACH oBevanda IsA bevanda
       DO INCLUDE oBevanda IN consentiti OF THIS.
@@ -774,7 +773,9 @@ THE bottiglia IsA cont_bevanda IN tavolo_cucina.
   HAS articolo "la".
 END THE.
 
-THE vino IsA liquido IN bottiglia.
+THE vino IsA bevanda IN bottiglia.
+  NAME vino.
+  HAS articolo "il". --> necessario perché bevanda ha "la"
   HAS vessel bottiglia. 
   INDEFINITE ARTICLE "del"
 END THE.
@@ -802,13 +803,26 @@ THE tetraedro IsA cont_bevanda IN frigo.
   END VERB chiudi.
 END THE.
 
-THE latte IsA liquido IN tetraedro.
+THE latte IsA bevanda IN tetraedro.
+  NAME latte.
+  HAS articolo "il". --> necessario perché bevanda ha "la"
   HAS vessel tetraedro. 
   INDEFINITE ARTICLE "del"
   HAS xDesc
     "Del latte intero, UHT.".
   
 END THE.
+
+--------------------------------------------------------------------------------
+-- L'ACQUASANTIERA
+--------------------------------------------------------------------------------
+THE acquasantiera IsA cont_bevanda AT cucina.
+  NAME acquasantiera.
+  HAS articolo "l'".
+  IS femminile.
+  HAS xDesc "È un'antica acquasantiera in pietra.".
+  IS NOT spostabile. NOT prendibile.
+END THE acquasantiera.
 
 
 --==============================================================================

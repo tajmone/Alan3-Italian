@@ -3,8 +3,8 @@
 Test per le Azioni Bloccate 
 Un'aventura per testare le restricted actions. 
 (C) Tristano Ajmone, 2018. 
-Avventura realizzata con ALAN 3.0beta6 build 2015. 
-Libreria Standard Italiana: 21 Alpha. 
+Avventura realizzata con ALAN 3.0beta6 build 2022. 
+Libreria Standard Italiana: 22 Alpha. 
 Versione 1 
 Tutti i diritti riservati. 
 
@@ -34,7 +34,7 @@ Preso.
 > ; TEST/PASS: Azioni di Livello 1 (verbi di comunicazione)                            
 > ; ------------------------------------------------------------------------------
 > dì "Ciao mondo crudele!"
-Non conosco la parola 'd'.
+Dici "Ciao mondo crudele!", ma non succede nulla.
 
 > canta
 Canticchi una melodia.
@@ -76,7 +76,7 @@ Preso.
 > ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > ; THESE ACTIONS SHOULD BE BLOCKED:
 > dì "Ciao mondo crudele!"
-Non conosco la parola 'd'.
+Non puoi farlo.
 
 > canta
 Non puoi farlo.
@@ -120,7 +120,7 @@ Non puoi farlo.
 > ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > ; THESE ACTIONS SHOULD BE BLOCKED:
 > dì "Ciao mondo crudele!"
-Non conosco la parola 'd'.
+Non puoi farlo.
 
 > canta
 Non puoi farlo.
@@ -166,7 +166,7 @@ Non puoi farlo.
 > ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > ; THESE ACTIONS SHOULD BE BLOCKED:
 > dì "Ciao mondo crudele!"
-Non conosco la parola 'd'.
+Non puoi farlo.
 
 > canta
 Non puoi farlo.
@@ -212,7 +212,7 @@ Non puoi farlo.
 > ; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > ; THESE ACTIONS SHOULD BE BLOCKED:
 > dì "Ciao mondo crudele!"
-Non conosco la parola 'd'.
+Non puoi farlo.
 
 > canta
 Non puoi farlo.

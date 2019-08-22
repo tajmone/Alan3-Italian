@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_runtime.i"
---| v0.21.0-Alpha, 2019-08-15: Alan 3.0beta6 build 2015
+--| v0.22.0-Alpha, 2019-08-22: Alan 3.0beta6 build 2022
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_messages.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -22,9 +22,9 @@
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Questo modulo della libreria ridefinisce i messaggi runtime di Alan.
---| 
+--|
 --| [WARNING]
 --| ========================================
 --| Documentazione non ancora disponibile...
@@ -59,11 +59,11 @@ MESSAGE
   -- PROBLEMI NEL PARSING DEI COMANDI
   --==============================================================================
   AFTER_BUT:      "Devi specificare almeno un oggetto dopo '$1'."
-  
+
   -- Sostituito '$2' con "TUTTO", se no stampava "all":
   -- BUT_ALL:     "Puoi usare '$1' solo DOPO '$2'."
   BUT_ALL:        "Puoi usare '$1' solo DOPO 'tutto' (es. ""$v tutto $1..."")."
-  
+
   MULTIPLE:       "Non puoi usare più di un oggetto con '$v'."
   NO_SUCH:        "Qui non puoi vedere nulla del genere." -- "You can't see any $1 here."
   NOT_MUCH:       "Così non resta nulla per il verbo '$v'!" -- "That doesn't leave much to $v!"
@@ -118,12 +118,12 @@ MESSAGE
 
 -- @TODO: Questo messaggio potrebbe essere attivabile tramite opzioni           TODO!
 --        della libreria (un attributo come 'mia_AT:mostra_già_visitati')
--- 
---        Nota però che per mostrare l'accordo giusto con il nome visualizzato 
+--
+--        Nota però che per mostrare l'accordo giusto con il nome visualizzato
 --        del luogo servirebbe che l'attributo 'vocale' fosse disponibile anche
 --        sulle 'location'. Ovviamente, attivando questa opzione l'autore avrebbe
 --        anche l'onore di dover supplire l'articolo per ogni luogo creato.
---        
+--
 --        Dato che l'inizializzazione grammaticale di tutta la classe 'entity'  TODO!
 --        ottimizzerebbe anche altri messaggi runtime e Check nel codice, dovrei
 --        cercare di unificare l'inizializzazione della grammatica in un unico
@@ -166,7 +166,7 @@ MESSAGE
       THEN "$+1 contiene"
       ELSE "$+1 contengono"
     END IF.
-  
+
   CONTAINS_COMMA: "$01"
     IF parameter1 IsA indumento
       THEN
@@ -248,7 +248,7 @@ MESSAGE
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
 --| italiano del modulo delle classi.
 --<
@@ -259,14 +259,14 @@ MESSAGE
 --| === Check-list generale
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 --| Lista della spesa per le varie cosucce da fare:
 --<
 
 -->todo_checklist(.665)
---| 
+--|
 --| === Check-list per Doxter
---| 
+--|
 --| Finisci di trasformare commenti in documentazione Doxter:
 --<
 

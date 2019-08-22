@@ -1,9 +1,9 @@
 = Alan Italian
 Tristano Ajmone <tajmone@gmail.com>
-2019-06-15
+2019-08-22
 // tag::AlanRevInfo[]
-:AlanItaV: 21
-:AlanSDK: 3.0beta6 build 2015
+:AlanItaV: 22
+:AlanSDK: 3.0beta6 build 2022
 :revnumber: 0.{AlanItaV}-Alpha
 // end::AlanRevInfo[]
 :lang: it
@@ -144,6 +144,7 @@ ifdef::preface-title[:preface-title: Prefazione]
 :build_1878: link:https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1878[3.0beta6 build 1878^,title="Vai alla pagina di download della snapshot Alan 3.0beta6 build 1878"]
 :build_1880: link:https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1880[3.0beta6 build 1880^,title="Vai alla pagina di download della snapshot Alan 3.0beta6 build 1880"]
 :build_2015: link:https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build2015[3.0beta6 build 2015^,title="Vai alla pagina di download della snapshot Alan 3.0beta6 build 2015"]
+:build_2022: link:https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build2022[3.0beta6 build 2022^,title="Vai alla pagina di download della snapshot Alan 3.0beta6 build 2022"]
 
 
 // ** Alan Upstream Commits Links **
@@ -446,9 +447,9 @@ Grazie.
 
 Alcune notizie flash sugli aggiornamenti importanti del progetto...
 
-=== 2019/08/15 -- Passaggio a Alan 3.0beta6 build 2015
+=== 2019/08/22 -- Passaggio a Alan 3.0beta6 build 2022
 
-La libreria adotta la nuova {developer_snaphshot} di Alan {build_2015}.
+La libreria adotta la nuova {developer_snaphshot} di Alan {build_2022}.
 
 
 === 2019/04/02 -- Modulo Italian unificato

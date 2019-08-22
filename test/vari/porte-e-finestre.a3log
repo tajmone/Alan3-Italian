@@ -3,8 +3,8 @@
 Porte e Finestre 
 Mini avventura per testare porte e finestre. 
 (C) Tristano Ajmone, 2018. 
-Avventura realizzata con ALAN 3.0beta6 build 2015. 
-Libreria Standard Italiana: 21 Alpha. 
+Avventura realizzata con ALAN 3.0beta6 build 2022. 
+Libreria Standard Italiana: 22 Alpha. 
 Versione 1 
 Tutti i diritti riservati.
 
@@ -37,8 +37,7 @@ Bussi ai cancelli ma non ottieni risposta.
 Non puoi guardare dietro i cancelli, sono chiusi.
 
 > guarda sotto ai cancelli
-Lo spiraglio sotto i cancelli chiusi è troppo stretto per riuscire a vedere
-cosa vi sia al di là.
+Lo spiraglio sotto i cancelli chiusi è troppo stretto per poter sbirciare.
 
 > guarda attraverso i cancelli
 Non riesci a vedere attraverso i cancelli.
@@ -94,8 +93,7 @@ Bussi al portone ma non ottieni risposta.
 Non puoi guardare dietro il portone, è chiuso.
 
 > guarda sotto al portone
-Lo spiraglio sotto il portone chiuso è troppo stretto per riuscire a vedere
-cosa vi sia al di là.
+Lo spiraglio sotto il portone chiuso è troppo stretto per poter sbirciare.
 
 > guarda attraverso il portone
 Non riesci a vedere attraverso il portone.

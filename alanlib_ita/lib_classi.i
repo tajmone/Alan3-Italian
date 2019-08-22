@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi.i"
---| v0.21.0-Alpha, 2019-08-15: Alan 3.0beta6 build 2015
+--| v0.22.0-Alpha, 2019-08-22: Alan 3.0beta6 build 2022
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -20,41 +20,6 @@ ADD TO EVERY OBJECT
       ELSE ""
 
 END ADD.
-
---+============================================================================+
---|\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//////////////////////////////////////|
---++--------------------------------------------------------------------------++
---||                                                                          ||
---||                           Indice dei Contenuti                           ||
---||                                                                          ||
---++--------------------------------------------------------------------------++
---|//////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|
---+============================================================================+
---|| § 0     | Panoramica del Modulo
---|| § 0.1   | - Elenco e descrizione delle classi
---||---------|-----------------------------------------------------------------
---|| § 2     | Attori
---|| § 2.1   | - Attributi Comuni
---|| § 2.2   | - Inizializzazione degli Attori
---|| § 2.3   | - Inizializzazione di Genere, Numero e Preposizioni Articolate
---|| § 2.3.1 |   - Attori con Nome Proprio
---|| § 2.3.2 |   - Attori Senza Nome Proprio
---|| § 2.4   | - Inizializzazione Articoli Indeterminativi
---|| § 2.4.1 |   - Attori con Nome Proprio
---|| § 2.4.2 |   - Attori Senza Nome Proprio
---|| § 2.5   | - Inizializzazione Articoli Determinativi
---|| § 2.5.1 |   - Attori con Nome Proprio
---|| § 2.5.2 |   - Attori Senza Nome Proprio
---||---------|-----------------------------------------------------------------
---|| § 3     | Sottoclassi di actor
---|| § 3.1   | - PERSONA (può parlare)
---|| § 3.1.1 |   - MASCHIO
---|| § 3.1.2 |   - FEMMINA
---||---------|-----------------------------------------------------------------
---|| § x     | Oggetti Fittizi
---|| § x.x   | - Indumento Fittizio
---++===========================================================================+
-
 
 -->intro(100.1)
 --~=============================================================================
@@ -106,7 +71,7 @@ END ADD.
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Un macchinario o congengo ellettrico che è possibile accendere e spegnere,
 --| a meno che non sia rotto. Se esaminato, la descrizione includerà il suo
 --| stato attuale (acceso o spento).
@@ -230,7 +195,7 @@ END EVERY.
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Può essere aperta o chiusa, e (opzionale) bloccata e sbloccata. Di default
 --| le porte sono chiuse e non bloccate. Per poter aprire una porta bloccata è
 --| richiesta la sua chiave (`chiave_abbinata`). Se esaminata, la descrizione
@@ -255,6 +220,7 @@ END EVERY.
 --| | IS NOT bloccabile.                   | Non ha una serratura.
 --| | IS NOT bloccato.                     | Non è blocata.
 --| | IS NOT prendibile.                   | È fissa.
+--| | HAS altro_lato porta_fittizia.       | Nessuna porta abbinata.
 --| | HAS chiave_abbinata chiave_fittizia. | Non ha nessuna chiave abbinata.
 --| |===========================================================================
 --|
@@ -271,23 +237,14 @@ EVERY porta IsA OBJECT
   IS NOT bloccato.
   IS NOT prendibile.
 
-
   HAS altro_lato  porta_fittizia.
-    --                                                                          TRANSLATE COMMENTS!
-    
-    -- The other side of the door in the next room will be automatically taken
-    -- care of so that it shows correctly in any room or object descriptions.
-    -- 'null_door' is a dummy default that can be ignored.
-
-
+  HAS chiave_abbinata  chiave_fittizia.
 
   INITIALIZE
 
-    --                                                                          TRANSLATE COMMENTS!
-    
-    -- ensuring that the author didn't forget to declare a locked door closed
-    -- (= NOT open), as well. This is just double-checking, as any door is by
-    -- default closed (= "NOT open") at the start of the game:
+    -- Assicuriamoci che prima dell'inizio del gioco ogni porta che è bloccata
+    -- sia anche chiusa (`NOT aperto`), così da dispensare l'autore dal doverlo
+    -- specificare manualmente.
 
     IF THIS IS bloccato
       THEN
@@ -296,21 +253,19 @@ EVERY porta IsA OBJECT
         END IF.
     END IF.
 
-    --                                                                          TRANSLATE COMMENTS!
-
-    -- ensuring that if a door has an otherside attribute declared, this
-    -- otherside will have the original door as its otherside in turn:
+    -- Se una porta ha un `altro_lato` che non sia una `porta_fittizia` allora
+    -- definiamo questa porta come `altro_lato` dell'altra, di modo che siano
+    -- abbinate entrambe. Questo consente all'utore di specificare l'altro lato
+    -- su una sola delle due porte, confidando che la libreria farà il resto.
 
     IF THIS:altro_lato <> porta_fittizia
       THEN
         SET THIS:altro_lato:altro_lato TO THIS.
 
-
-        --                                                                      TRANSLATE COMMENTS!
-      
-        -- next, ensuring that some attributes are correctly assigned to the
-        -- otherside of the door, as well. Only some non-default cases need to
-        -- be addressed here:
+        -- Usando come riferimento la porta su cui l'atuore ha definito l'altro
+        -- lato, assicuriamoci che gli attributi della porta dall'altro lato
+        -- rispecchino lo stato di questo lato. Ci occuperemo solo dei valori
+        -- che differiscono da quelli predefiniti.
 
         IF THIS IS NOT apribile
           THEN MAKE THIS:altro_lato NOT apribile.
@@ -330,33 +285,30 @@ EVERY porta IsA OBJECT
 
     END IF.
 
-
-   --                                                                           TRANSLATE COMMENTS!
-   -- making the same matching_key open both sides of a door:
-
     IF  THIS:altro_lato <> porta_fittizia
     AND THIS:chiave_abbinata <> chiave_fittizia
       THEN SET THIS:altro_lato:chiave_abbinata TO THIS:chiave_abbinata.
     END IF.
 
-   --                                                                           TRANSLATE COMMENTS!
+    -->porte(12000.2)
 
-    -- If a door is lockable/locked, you should state at the door instance
-    -- which object will unlock it, with the matching_key attribute.
-    -- for example
+    --| Se si crea una porta bloccabile, si dovrà anche creare una chiave con
+    --| cui il giocatore potrà sbloccarla. Esempio:
 
-   --                                                                           TRANSLATE EXAMPLE!
-    -- THE attic_door IsA DOOR
-    --   HAS matching_key brass_key.
-    --   ...
-    -- END THE.
-
-    -- THE brass_key IsA OBJECT AT basement
-    -- END THE.
-
-  -- (null_key is a default dummy object that can be ignored.)
-
-
+    --| [source,alan,role=example]
+    --| ---------------------------------------
+    --| The portone_casa IsA porta at vialetto.
+    --|   Name portone.
+    --|   Has altro_lato portone_casa_retro.
+    --|   Has chiave_abbinata chiave_portone.
+    --| End the.
+    --|
+    --| The chiave_portone IsA object.
+    --|   Name chiave.
+    --|   Has articolo "la".
+    --| End the.
+    --| ---------------------------------------
+    --<
 
   VERB esamina
     DOES AFTER
@@ -404,10 +356,11 @@ EVERY porta IsA OBJECT
     DOES ONLY
       IF THIS IS NOT aperto
         THEN "Lo spiraglio sotto $+1 chius$$" SAY THIS:vocale.
-        "è troppo stretto per riuscire a vedere cosa vi sia al di là."
---      @TODO: Qui servirà il pronome "di $!1" ("al di là di esso/a/e/i")       FIXME!
---             Ma attualmente non sono disponibili!
+        "è troppo stretto per poter sbirciare."
+-- @TODO: Qui tornerebbe utile il PRONOUN "di $!1" ("al di là di esso/a/e/i")   IMPROVE!
+--        Ma attualmente non sono disponibili!
         ELSE "Non noti nulla di interessante dietro $+1."
+-- @TODO: Se la porta è aperta che senso ha GUARDARE SOTTO di essa?             FIXME!
       END IF.
   END VERB guarda_sotto.
 
@@ -468,7 +421,7 @@ END THE.
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Può essere aperta o chiusa; si può guardare attraverso e fuori da essa. Se
 --| esaminata, la descrizione includerà il suo stato attuale (aperta o chiusa).
 --|
@@ -544,7 +497,7 @@ END EVERY.
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --|
 --<
 
@@ -664,7 +617,7 @@ END EVERY.
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --|
 --| Si può prendere un liquido solo se è in un contenitore. Si possono usare i
 --| liquidi per riempire qualcosa, e li si può versare.
@@ -692,12 +645,12 @@ EVERY liquido IsA OBJECT
   -- L'attributo `recipiente` consente alla Libreria di gestire automaticamente
   -- i liquidi all'interno di contenitori, di modo che il verbo `prendi` usato
   -- con un liquido farà sì che venga preso il suo contenitore anziché il
-  -- liquido stesso (es. "prendi il vino" farò prendere la bottiglia di vino). 
-  -- 
+  -- liquido stesso (es. "prendi il vino" farò prendere la bottiglia di vino).
+  --
   -- Cercare di prendere un liquido contenuto in un recipiente `NON prendibile`,
   -- o un liquido con `recipiente_fittizio`, risulterà nel messaggio che non è
   -- possibile prendere il liquido a mani nude.
-  -- 
+  --
   -- Il valore predefinito `recipiente_fittizio` indica che il liquido non è
   -- all'interno di un recipiente. Gli autori non devono preoccuparsi di questo
   -- valore predefinito, che è riservato all'uso interno della Libreria.
@@ -731,7 +684,7 @@ EVERY liquido IsA OBJECT
 
   -- Se nella vostra avventura ci sarà un liquido all'interno di un recipiente,
   -- dovrete dichiarare l'istanza del liquido in questo modo:
-  -- 
+  --
   --    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   --    THE vino IsA liquido IN bottiglia
   --    END THE vino.
@@ -755,7 +708,7 @@ EVERY liquido IsA OBJECT
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --<
 
 
@@ -771,7 +724,7 @@ EVERY liquido IsA OBJECT
 --| * [ ] Descrizione `esamina`.
 --<
 
--- @TODO: Se ha 'xDesc', mostra il testo?                                       IMPROVE
+-- @TODO: Se ha 'xDesc', mostra il testo?                                       IMPROVE!
 
   VERB esamina
     DOES ONLY
@@ -792,21 +745,19 @@ EVERY liquido IsA OBJECT
 --        Quindi questa condizione non si verificherà mai. (verifica!)
 --                                                                              TRANSLATE!
             ELSE "You can't, since" SAY THE recipiente OF THIS.
-                IF THIS IS NOT plurale
-                  THEN "is"
-                  ELSE "are"
-                END IF.
-                "closed."
-                -- Here we prohibit the player from examining
-                -- a liquid when the liquid is in a closed container.
-          END IF.
-        -- ELSE SAY mia_AT:descrizione_standard_ogg1.
-        ELSE -- Se il liquido ha un receipiente fittizio, descrivi liquido:
-              -- Onora la xDesc, se presente.
-              IF THIS:xDesc <> ""
-                THEN SAY THIS:xDesc.
-                ELSE SAY mia_AT:descrizione_standard_ogg1.
+              IF THIS IS NOT plurale
+                THEN "is"
+                ELSE "are"
               END IF.
+              "closed."
+              -- Here we prohibit the player from examining
+              -- a liquid when the liquid is in a closed container.
+          END IF.
+        ELSE -- Se il liquido ha un receipiente fittizio, descrivi liquido:
+          IF THIS:xDesc <> ""    -- Onora la xDesc, se presente.
+            THEN SAY THIS:xDesc.
+            ELSE SAY mia_AT:descrizione_standard_ogg1.
+          END IF.
       END IF.
   END VERB esamina.
 
@@ -925,8 +876,6 @@ EVERY liquido IsA OBJECT
 --    "($$" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)
 --     $nLasciat$$" SAY THIS:vocale. ".""
       "Lasci" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "."
-      -- @DELME when done:
-      -- "($$" SAY THE recipiente OF THIS. "of" SAY THIS. "$$)$nDropped."
   END VERB lascia.
 
 -->liquido
@@ -950,7 +899,7 @@ EVERY liquido IsA OBJECT
         ELSE MAKE mia_AT NOT temp_condiscendente.
       END IF.
       -- Rendiamo temporaneamente condiscendente il PNG affinché sia possibile
-      -- rimuovere un oggetto contenuto da esso: 
+      -- rimuovere un oggetto contenuto da esso:
       MAKE png condiscendente.
       LOCATE recipiente OF THIS IN hero.
       "$+1 ti"
@@ -986,21 +935,26 @@ EVERY liquido IsA OBJECT
           OR THIS:recipiente IS NOT prendibile
             THEN SAY mia_AT:impossibile_maneggiare_liq1.
             ELSE LOCATE recipiente OF THIS IN hero.
-              "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
+              "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. "$1)$n"
           END IF.
       END IF.
       -- <<< prendi implicito <<<
 
-      IF THIS IN hero
-        -- i.e. if the implicit taking was successful
+-- @TODO: Se il prendi implicito dovesse fallire l'esecuzione del verbo         OPTIMIZE!
+--        si interromperebbe, quindi non sembra essere necessario lo IF
+--        seguente, dato che non c'è il rischio che il recipiente venga.
+--        trasferito se il prendi implicito fallisce. (verificato! è così)
+
+      IF THIS IN hero -- (se il prendi implicito è andato a buon fine)
         THEN
---                                                                              TRANSLATE!
-          "You give" SAY THE recipiente OF THIS. "of" SAY THIS. "to" SAY THE png. "."
+          "Consegni" SAY THE THIS:recipiente. SAY THIS:prep_DI. "$1"
+                     SAY png:prep_A. "$2."
           LOCATE recipiente OF THIS IN png.
       END IF.
 
-      -- there is no 'ELSE' statement in this last IF -clause, as the 'IF THIS NOT
-      -- IN hero' clause above it takes care of the 'ELSE' alternative.
+      -- NOTA: L'ultima clausola IF non contiene un ELSE poiché l'alternativa
+      --       viene già gestita dal precedente `IF THIS NOT IN hero` che si
+      --       occupa del "prendi implicito". Si noti inoltre che se per
 
   END VERB dai_a.
 
@@ -1020,30 +974,30 @@ EVERY liquido IsA OBJECT
       -- >>> prendi implicito: >>>
       IF THIS NOT IN hero
         THEN
+          -- IF THIS:recipiente = recipiente_fittizio
+          -- OR THIS:recipiente IS NOT prendibile
+          --   THEN SAY mia_AT:ogg1_non_posseduto.
           IF THIS:recipiente = recipiente_fittizio
-          OR THIS:recipiente IS NOT prendibile
---                                                                              TRANSLATE!
+            THEN SAY mia_AT:impossibile_maneggiare_liq1.
+          ELSIF THIS:recipiente IS NOT prendibile
             THEN
-              "You can't pour" SAY THE THIS. "anywhere since you are not carrying"
-                IF THIS IS NOT plurale
-                  THEN "it."
-                  ELSE "them."
-                END IF.
+              "Per poterlo fare dovresti prima impossessarti"
+              SAY THIS:recipiente:prep_DI. SAY THIS:recipiente. "."
           ELSE LOCATE recipiente OF THIS IN hero.
             "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
           END IF.
       END IF.
       -- <<< prendi implicito <<<
 
+-- @TODO: La clausola IF qui è inutile (vedi nota in `dai_a` su `liquido`)      OPTIMIZE!
       IF THIS IN hero
         THEN LOCATE THIS AT hero.
           SET THIS:recipiente TO recipiente_fittizio.
---                                                                              TRANSLATE!
-          "You pour" SAY THE THIS.
-            IF pavimento HERE
-              THEN "on the floor."
-              ELSE "on the ground."
-            END IF.
+          "Versi $+1"
+          IF pavimento HERE
+            THEN "sul pavimento"
+            ELSE "in terra"
+          END IF. "."
       END IF.
 
   END VERB versa.
@@ -1068,19 +1022,20 @@ EVERY liquido IsA OBJECT
             IF THIS:recipiente = recipiente_fittizio
               THEN SAY mia_AT:impossibile_maneggiare_liq1.
             ELSIF THIS:recipiente IS NOT prendibile
---                                                                              TRANSLATE!
-              THEN "You don't have" SAY THE recipiente OF THIS. "of" SAY THIS. "."
+              THEN
+                "Per poterlo fare dovresti prima impossessarti"
+                SAY THIS:recipiente:prep_DI. SAY THIS:recipiente. "."
               ELSE LOCATE recipiente OF THIS IN hero.
                 "(prima prendi" SAY THE THIS:recipiente. SAY THIS:prep_DI. SAY THIS. "$$)$n"
             END IF.
         END IF.
         -- <<< prendi implicito <<<
 
-        IF THIS IN hero   --i.e. if the implicit taking was successful
+-- @TODO: La clausola IF qui è inutile (vedi nota in `dai_a` su `liquido`)      OPTIMIZE!
+       IF THIS IN hero   --i.e. if the implicit taking was successful
           THEN LOCATE THIS IN cont.
             SET THIS:recipiente TO cont.
---                                                                              TRANSLATE!
-            "You pour" SAY THE THIS. "into" SAY THE cont. "."
+            "Versi $+1" SAY cont:prep_IN. "$2."
         END IF.
     WHEN cont
       DOES ONLY
@@ -1093,9 +1048,10 @@ EVERY liquido IsA OBJECT
 -- @NOTE: Why not? You can empty containers with solids into liquids but you    CHECK!
 --        can't 'pour' thme -- yet both verbs are good with them when no liquids
 --        are involved!
---                                                                              TRANSLATE!
-              THEN "It wouldn't accomplish anything trying to pour" SAY THE ogg.
-                "into" SAY THE THIS. "."
+-- @TODO: Ci vorrebbe un messaggio un po' più articolato qui:                   IMPROVE!
+              THEN SAY mia_AT:azione_futile.
+           -- THEN "It wouldn't accomplish anything trying to pour" SAY THE ogg.
+           --   "into" SAY THE THIS. "."
               ELSE "You can't, since" SAY THE recipiente OF THIS.
                 IF THIS IS NOT plurale
 --                                                                              TRANSLATE!
@@ -1141,15 +1097,15 @@ EVERY liquido IsA OBJECT
           THEN
             IF superficie = pavimento OR superficie = suolo
               THEN LOCATE THIS AT hero.
---                                                                              TRANSLATE!
-                "You pour" SAY THE THIS. "on" SAY THE superficie. "."
+                "Versi $+1" SAY superficie:prep_SU. "$2."
                 SET THIS:recipiente TO recipiente_fittizio.
             ELSIF superficie IsA supporto
               THEN LOCATE THIS IN superficie.
---                                                                              TRANSLATE!
-                "You pour" SAY THE THIS. "on" SAY THE superficie. "."
+                "Versi $+1" SAY superficie:prep_SU. "$2."
                   SET THIS:recipiente TO recipiente_fittizio.
-            ELSE "It wouldn't be sensible to pour anything on" SAY THE superficie.
+-- @TODO: Ci vorrebbe un messaggio un po' più articolato qui:                   IMPROVE!
+            ELSE SAY mia_AT:azione_futile.
+         -- ELSE "It wouldn't be sensible to pour anything on" SAY THE superficie.
             END IF.
         END IF.
   END VERB versa_su.
@@ -1206,7 +1162,7 @@ EVERY liquido IsA OBJECT
   END VERB svuota_su.
 
 
--->liquido    @PUT IN 
+-->liquido    @PUT IN
 --~=============================================================================
 --~-----------------------------------------------------------------------------
 --| ==== metti_in
@@ -1269,7 +1225,7 @@ EVERY liquido IsA OBJECT
       END IF.
   END VERB metti_in.
 
--->liquido    @PUT ON 
+-->liquido    @PUT ON
 --~=============================================================================
 --~-----------------------------------------------------------------------------
 --| ==== metti_su
@@ -1357,7 +1313,7 @@ END EVENT.
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Si tratta di un contenitore i cui contenuti (se è aperto) saranno elencati
 --| sia nella descrizione del luogo (entrandovi, o usando '`guarda`') sia quando
 --| viene esaminato o aperto. La libreria autogestisce lo stato di opacità di
@@ -1391,7 +1347,7 @@ EVERY contenitore_elencato IsA OBJECT
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| All'avvio, la libreria inizializzerà ogni istanza di `contenitore_elencato`
 --| aggiungendo ai suoi `consentiti` tutti gli oggetti contenuti in esso, di modo
 --| che sia possibile rimetterveli dentro dopo averli rimossi.
@@ -1414,7 +1370,7 @@ EVERY contenitore_elencato IsA OBJECT
 --<
 
 
--- @TODO: Se ha 'xDesc', mostra il testo?                                       IMPROVE
+-- @TODO: Se ha 'xDesc', mostra il testo?                                       IMPROVE!
 
   VERB esamina
     DOES ONLY
@@ -1542,7 +1498,7 @@ END EVERY.
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| È possibile ascoltare i suoni ma non esaminarli, annusarli né manipolarli.
 --| (volendo, li si può accendere e spegnere.)
 --|
@@ -1592,7 +1548,7 @@ END EVERY.
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Una superficie su cui poter mettere cose e su cui si può salire e scendere.
 --| Si tratta di un oggetto di tipo contenitore, perciò è possibile prendere le
 --| cose vi si trovano sopra (in realtà, dentro di esso, ma viene presentato in
@@ -1614,7 +1570,7 @@ EVERY supporto IsA OBJECT
 
   CONTAINER
     HEADER  "Sopra" SAY THE THIS. "vedi"
-    ELSE    "Non c'è nulla sopra" SAY THE THIS. "."
+      ELSE  "Non c'è nulla sopra" SAY THE THIS. "."
 
   VERB esamina
     DOES
@@ -1637,26 +1593,26 @@ EVERY supporto IsA OBJECT
 
 
   VERB svuota_in, versa_in
-     WHEN cont
-    DOES ONLY
-       IF THIS IS NOT plurale
-  --                                                                              TRANSLATE!
-      THEN "That's not"
-        ELSE "Those are not"
-      END IF.
-      "something you can pour things into."
+    WHEN cont
+      DOES ONLY
+--                                                                              TRANSLATE!
+        IF THIS IS NOT plurale
+          THEN "That's not"
+          ELSE "Those are not"
+        END IF.
+        "something you can pour things into."
   END VERB svuota_in.
 
 
   VERB metti_in
-      WHEN cont
-    DOES ONLY "Non puoi mettere nulla dentro" SAY THE THIS. "."
+    WHEN cont
+      DOES ONLY "Non puoi mettere nulla dentro" SAY THE THIS. "."
   END VERB metti_in.
 
 
   VERB lancia_in
-      WHEN cont
-    DOES ONLY "Non puoi mettere nulla dentro" SAY THE THIS. "."
+    WHEN cont
+      DOES ONLY "Non puoi mettere nulla dentro" SAY THE THIS. "."
   END VERB lancia_in.
 
 
@@ -1675,7 +1631,7 @@ END EVERY.
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Di default un'arma non può essere sparata (p.es., un coltello, una mazza),
 --| ma settando l'attributo `CAN sparare` si avrà un'arma da fuoco che sarà
 --| utilizzabile con il verbo "spara" (p.es., una pistola, un cannone).
@@ -1725,7 +1681,7 @@ END EVERY.
 -- Aggiungiamo alla classe degli attori degli attributi comuni a tutti i tipi di
 -- attori e le sue sottoclassi.
 
-ADD TO EVERY actor
+ADD TO EVERY ACTOR
   IS  NOT inanimato.                                        ---> inanimate
   IS  NOT prendibile.                                       ---> takeable
   IS  NOT sdraiato.                                         ---> lying_down
@@ -1821,14 +1777,14 @@ ADD TO EVERY actor
         IF THIS IS plurale
           THEN "$$ro"
         END IF. "d'accordo."
-END ADD TO actor.
+END ADD TO ACTOR.
 
 --==============================================================================
 --------------------------------------------------------------------------------
 -- § 2.2 - Inizializzazione degli attori
 --------------------------------------------------------------------------------
 --==============================================================================
-ADD TO EVERY actor
+ADD TO EVERY ACTOR
 
   INITIALIZE
 
@@ -1840,7 +1796,7 @@ ADD TO EVERY actor
 --| Attori che seguono l'eroe
 --~-----------------------------------------------------------------------------
 --~=============================================================================
--- 
+--
 -- Tutti gli attori seguiranno questo copione sin dall'inizio del gioco:
 
     IF THIS <> hero
@@ -1903,13 +1859,13 @@ ADD TO EVERY actor
           -- Elenca oggetti trasportati
           -- --------------------------
           -- @NOTA: Evita di usare il set 'indossati', se è NOT indossato è portato:
-          SET mia_AT:temp_cnt TO COUNT IsA object, IS NOT indossato, DIRECTLY IN THIS.
+          SET mia_AT:temp_cnt TO COUNT IsA OBJECT, IS NOT indossato, DIRECTLY IN THIS.
           IF  mia_AT:temp_cnt <> 0
             THEN "$+1 sta"
               IF THIS IS plurale
                 THEN "$$no"
               END IF. "portando"
-              FOR EACH ogg_portato ISA object, IS NOT indossato, DIRECTLY IN THIS
+              FOR EACH ogg_portato ISA OBJECT, IS NOT indossato, DIRECTLY IN THIS
                 DO
                   SAY AN ogg_portato.
                   DECREASE mia_AT:temp_cnt.
@@ -1942,10 +1898,7 @@ ADD TO EVERY actor
           END IF.
       END IF.
   END VERB esamina.
-
-
-
-END ADD TO actor.
+END ADD TO ACTOR.
 
 
 -->some_tag(21000.1)
@@ -1959,14 +1912,14 @@ END ADD TO actor.
 --|
 --| La libreria definisce alcune sottoclassi specializzate di `actor`:
 --|
---| * `actor`
+--| * `ACTOR`
 --| ** `persona`
 --| *** `maschio`
 --| *** `femmina`
 --<
 
 --
--- actor
+-- ACTOR
 --   |
 --   +-- persona
 --          |
@@ -1989,7 +1942,7 @@ END ADD TO actor.
 -- al genere. Solitamente in un'avventura non si userà direttamente la classe
 -- 'persona' ma una delle sue sottoclassi: 'maschio' e 'femmina'.
 
-EVERY persona IsA actor
+EVERY persona IsA ACTOR
   CAN parlare.
 END EVERY.
 
@@ -2031,7 +1984,7 @@ END EVERY.
 -- l'accortezza di fare in modo di catturare nell'input del giocatore riferimenti
 -- ad ogni membro di questo gruppo unificato, e che le risposte dei verbi si
 -- rifescano sempre ad essi come ad un gruppo. Questi casi limite sono un po'
--- più difficili da gestire e potrebbero richiedere adattamenti ad hoc. 
+-- più difficili da gestire e potrebbero richiedere adattamenti ad hoc.
 
 --==============================================================================
 -- § 3.1.1 - MASCHI

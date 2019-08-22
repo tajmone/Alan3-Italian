@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_definizioni.i"
---| v0.21.0-Alpha, 2019-08-15: Alan 3.0beta6 build 2015
+--| v0.22.0-Alpha, 2019-08-22: Alan 3.0beta6 build 2022
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_definitions.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -57,7 +57,6 @@
   -- the banner instance (for the start section)
 
 
-
 --=============================================================================
 --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 --------------------------------------------------------------------------------
@@ -72,22 +71,6 @@
 -- § 1.1 - Attributi generali
 --------------------------------------------------------------------------------
 --==============================================================================
-
-
--- *** MOVED TO GRAMMATICA ***
--- =================
--- Entity Attributes
--- =================
--- (We add the 'plural' attribute to the 'entity' class, because the plural
--- applies not only to things but also to for example parameters in syntax statements; ignore.)
-
--- ADD TO EVERY ENTITY
-
---   IS NOT plurale.
---   IS NOT femminile.
-
--- END ADD TO ENTITY.
-
 
 -- ================
 -- Thing Attributes
@@ -317,8 +300,8 @@ EVERY blocco_definizioni IsA LOCATION
 --| La libreria definisce anche l'attributo `AlanV`, che mostrerà nel banner la
 --| versione di Alan utilizzata:
 
-  HAS         AlanV  "3.0beta6 build 2015".
-  HAS      AlanItaV  "21 Alpha".
+  HAS         AlanV  "3.0beta6 build 2022".
+  HAS      AlanItaV  "22 Alpha".
 
 --| Il valore predefinito è quello dell'ultima release di Alan all'epoca della
 --| libreria. L'autore è libero di sovrascriverlo nel caso stesse usando una
@@ -357,7 +340,7 @@ EVERY blocco_definizioni IsA LOCATION
   HAS NOT visto_notifica.
       -- Traccia se il giocatore ha già visto le istruzioni riguardo l'uso del
       -- verbo 'notifica' (mostrate la prima volta che ottiene un punto).
- 
+
   INITIALIZE
     SCHEDULE controlla_punteggio AFTER 0.
     SCHEDULE check_restriction AFTER 0.
@@ -414,8 +397,8 @@ EVERY blocco_definizioni IsA LOCATION
 -- We ensure that the 'visited' and 'described' attributes of the starting location
 -- are correct at the start of the game:
 
-    SET visitato  OF location OF hero TO 1.
-    SET descritto OF location OF hero TO 1.
+    SET visitato  OF LOCATION OF hero TO 1.
+    SET descritto OF LOCATION OF hero TO 1.
 
 
 --=============================================================================
@@ -441,22 +424,22 @@ EVERY blocco_definizioni IsA LOCATION
 --//////////////////////////////////////////////////////////////////////////////
 --=============================================================================
 -->restrizioni_verbali(4000)
---| 
+--|
 --| == Le Restrizioni Verbali
---| 
+--|
 --| La libreria dispone di un meccanismo di _restrizioni verbabli_ per limitare
 --| in maniera controllata il tipo di azioni consentite al giocatore. Ad ogni
 --| verbo della libreria corrisponde un attributo booleano nell'istanza `mia_AT`
 --| del `blocco_definizioni` che determina se il verbo (o i verbi) associati ad
 --| esso sono abilitati all'uso.
---| 
+--|
 --| Nel corpo dei verbi definiti dalla libreria, prima di portare a compimento
 --| l'azione viene sempre controllato se l'attributo di restrizione verbale cui
 --| il verbo fa riferimento è abilitato o meno (ossia, se è `CAN` o `CAN NOT`),
---| e nel caso non lo fosse l'azione viene bloccata sul nascere, mostrando al 
+--| e nel caso non lo fosse l'azione viene bloccata sul nascere, mostrando al
 --| giocatore il messaggio "`Non puoi farlo.`".
 --<
---| 
+--|
 --| Qui di seguito è riportato
 
 
@@ -471,7 +454,7 @@ EVERY blocco_definizioni IsA LOCATION
 
 -->restrizioni_tradotte(4100)
 --| === Elenco delle Restrizioni Verbali
---| 
+--|
 --| Questo è l'elenco degli attributi di restrizioni verbali sinora tradotti:
 
   CAN abbandonare_partita.      ---> 'quit'
@@ -661,7 +644,7 @@ EVENT check_restriction
 
   IF restricted_level OF mia_AT <> previous_restricted_level OF mia_AT
     THEN
-      -- Il livello di restrizione è cambiato, gli attributi vanno reimpostati. 
+      -- Il livello di restrizione è cambiato, gli attributi vanno reimpostati.
       -- Poiché ciascun livello restringe ulteriormente il campo delle azioni
       -- concesse, bloccando una determinata categoria di verbi, e ogni livello
       -- include le restrizioni dei livelli precedenti, procederemo inanzitutto
@@ -844,7 +827,7 @@ EVENT check_restriction
 --==============================================================================
 -- Il livello 1 blocca tutti i verbi di comunicazione.
 
-      IF restricted_level OF mia_AT >= 1  
+      IF restricted_level OF mia_AT >= 1
         THEN
 
           MAKE mia_AT NOT cantare.                  ---> sing
@@ -869,7 +852,7 @@ EVENT check_restriction
 -- circostante (pensa, guarda, ascolta, esamina, aspetta, ecc.).
 
       IF restricted_level OF mia_AT >= 2
-        THEN  
+        THEN
 
           MAKE mia_AT NOT accendere.                ---> turn_on
           MAKE mia_AT NOT acchiappare.              ---> catch
@@ -1072,7 +1055,7 @@ END EVENT.
 --| Ogni avventura creata con la Libreria ha una sua _intestazione_ (detta anche
 --| _banner_) contenente informazioni sull'avventura, il suo autore e le versioni
 --| della libereria e del compilatore Alan utilizzati.
---| 
+--|
 --| L'uso del banner è facoltativo.
 
 --| L'instestazione viene creata dalla libreria tramite l'instanza
@@ -1121,7 +1104,7 @@ END THE intestazione.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
 --| italiano del modulo delle definizioni.
 --<
@@ -1133,9 +1116,9 @@ END THE intestazione.
 --| === Check-list generale
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 --| Lista della spesa per le varie cosucce da fare:
---| 
+--|
 --<
 
 -->custom_attributes(100)

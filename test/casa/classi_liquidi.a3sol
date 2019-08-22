@@ -42,6 +42,22 @@ metti la bottiglia sul tavolo
 ; come se l'oggetto fosse il recipiente del liquido.
 prendi il vino
 metti il vino sul tavolo
+; ------------------------------------------------------------------------------
+; DARE/RIPRENDERE IL RECIPIENTE
+; ------------------------------------------------------------------------------
+prendi la bottiglia
+sud
+dai la bottiglia al giardiniere
+prendi la bottiglia
+chiedi la bottiglia al giardiniere
+; ------------------------------------------------------------------------------
+; DARE/RIPRENDERE IL LIQUIDO
+; ------------------------------------------------------------------------------
+dai il vino al giardiniere
+prendi il vino
+chiedi il vino al giardiniere
+nord
+metti il vino sul tavolo
 ; ==============================================================================
 ; TRAVASARE LIQUIDI
 ; ==============================================================================
@@ -53,12 +69,26 @@ riempi il vasetto con il vino
 esamina il vasetto
 esamina la bottiglia
 versa il vino
+versa il vino nella bottiglia
+esamina la bottiglia
 ; ==============================================================================
 ; LIQUIDI IN 'recipiente_fittizio'
 ; ==============================================================================
 ; Se un liquido non viene creato all'interno di un recipiente avrà di default un
 ; 'recipiente_fittizio' come contenitore, questi non è prendibile e quindi per
 ; maneggiare il liquido sarà necessario usare dei recipienti idonei.
+; ------------------------------------------------------------------------------
+; L'ACQUASANTIERA
+; ------------------------------------------------------------------------------
+; L'acquasantiera è un contenitore per liquidi vuoto, non spostabile e non
+; prendibile.
+esamina l'acquasantiera
+versa il latte nell'acquasantiera
+esamina l'acquasantiera
+; Non sarà più possibile versare il latte altrove poiché l'acquasantiera è fissa:
+versa il latte
+versa il latte nella bottiglia
+prendi l'acquasantiera
 sud
 ; ------------------------------------------------------------------------------
 ; LA PISCINA
@@ -73,3 +103,7 @@ bevi la piscina
 bevi l'acqua
 prendi la piscina
 prendi l'acqua
+versa l'acqua
+versa la piscina
+versa l'acqua nella bottiglia
+versa la piscina nella bottiglia

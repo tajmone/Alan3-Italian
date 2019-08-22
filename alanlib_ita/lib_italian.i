@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_italian.i"
---| v0.21.1-Alpha, 2019-08-18: Alan 3.0beta6 build 2015
+--| v0.22.0-Alpha, 2019-08-22: Alan 3.0beta6 build 2022
 --|=============================================================================
 --| Modulo per il supporto della lingua italiana, utilizzabile indipendentemente
 --| dalla Libreria Standard. Non presente nell'originale
@@ -23,13 +23,13 @@
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Questo modulo della libreria è il cuore del supporto della lingua italiana
 --| in Alan. È stato progettato come un modulo a sé stante, indipendente dal
 --| resto della libreria, di modo che possa essere utilizzato anche al di fuori
 --| di essa per creare avventure in italiano senza l'infrastruttura della libreria
 --| standard, usufruendo solo del codice base per la grammatica italiana.
---| 
+--|
 --| Per i suddetti motivi, tutti il codice necessario per implementare la lingua
 --| italiana è contenuto in questo modulo.
 --|
@@ -43,7 +43,7 @@
 --* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --------------------------------------------------------------------------------
 --
--- Attributi grammatica 
+-- Attributi grammatica
 --
 --------------------------------------------------------------------------------
 --* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -59,7 +59,7 @@
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| I valori predefiniti su entità sono quelli di un oggetto maschile singolare
 --| con articolo "`il`". Fatta eccezione per alcune classi specializzate della
 --| libreria, che definiscono articoli con numero e/o genere diversi (`femmina`
@@ -295,12 +295,12 @@ END ADD TO ENTITY.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Le _predefined Player Words_ sono dei gruppi di vocaboli del giocatore
 --| predefiniti in Alan (ossia, integrate nel compilatore stesso). Le loro
 --| definizioni variano in ciascuna delle lingue supportate nativamente da Alan.
 --| La libreria italiana utilizza la lingua inglese come base di partenza.
---| 
+--|
 --| Queste sono le _Player Words_ predefinite per la lingua inglese, suddivise
 --| in gruppi di appartenenza:
 
@@ -328,12 +328,12 @@ END ADD TO ENTITY.
 --| .............
 --| AND: and then
 --| .............
---| 
+--|
 --| Le _conjunction words_ (parole di congiunzione) consentono al parser di
 --| interpretare correttamente i comandi del giocatore che fanno riferimento a
 --| più oggetti, o le sequenze di comandi indipendenti combinati in una sola riga
 --| di comando. Esempi:
---| 
+--|
 --| * "prendi la mela E la pera"
 --| * "prendi la mela E prendi la pera"
 --| * "prendi la mela POI prendi la pera"
@@ -355,7 +355,7 @@ SYNONYMS e, poi = 'and'.
 --| .............
 --|
 --| Le _noise words_ (parole rumore) vengono ignorate dal parser che le tratta
---| come rumore di sottofondo. 
+--| come rumore di sottofondo.
 --|
 --| ==== Articoli determinativi
 --|
@@ -388,9 +388,9 @@ SYNONYMS il, lo, la, 'l''', i, gli, le = 'the'.
 --        sono presenti "a" ed "an" tra le noise words inglesi.
 
 -- This is not going to be useful:
--- 
+--
 --    SYNONYMS vai = 'go'.
--- 
+--
 -- ... because player would always type "VAI A" (GO TO) followed by the direction;
 -- but defining 'vai a' = 'go' doesn't work as expected, and 'a' must be preserved
 -- for verbs ("a" means "TO", as in "give TO").
@@ -447,12 +447,12 @@ SYNONYMS tranne, eccetto, escluso, esclusa, esclusi, escluse = except.
 --| ..........
 --| THEM: them
 --| ..........
---| 
+--|
 --| Le _them words_ rappresentano gli oggetti multipli utilizzati in un comando
 --| precedente. Esempio:
---| 
+--|
 --| * "remove the hat and the scarf then drop THEM"
---| 
+--|
 --| Questo tipo di riferimento a oggetti multipli è consentito solo nei comandi
 --| che supportano parametri multipli. L'interprete restringerà il campo dei
 --| parametri idonei all'inclusione nel referente in base alle regole di _scoping_.
@@ -466,14 +466,14 @@ SYNONYMS tranne, eccetto, escluso, esclusa, esclusi, escluse = except.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 
 --| La libreria definisce dei sinonimi per trasformare le preposizioni articolate
 --| nelle corrispettive preposizioni semplici (es. _della_ -> _di_).
 
 --| Solo alcune preposizioni (di|a|da|in|con|su) hanno un'applicazione practica
 --| nelle avventure testuali, e non tutte le forme contratte delle preposizioni
---| articolate sono implementabili. 
+--| articolate sono implementabili.
 --| La seguente tabella riporta tra parentesi le forme contratte non supportate,
 --| e in corsivo quelle che non subiscono sostituzioni nel parsing:
 
@@ -509,7 +509,7 @@ SYNONYMS tranne, eccetto, escluso, esclusa, esclusi, escluse = except.
 --| reale, ed eventuali loro conflitti dovrebbero essere comunque gestibili.
 
 --| Sull'argomento, si veda l'eccellente articolo di Max Bianchi:
---| 
+--|
 --| * http://www.tads.org/xlat3/En_vs_It.htm
 
 
@@ -577,7 +577,7 @@ SYNONYMS
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Per poter utilizzare correttamente la lingua italiana in Alan è necessario
 --| comprendere come funziona internamente questo modulo.
 
@@ -654,7 +654,7 @@ SYNONYMS
 --| ========================================================================
 --| Dopo l'inizializzazione, l'attributo `articolo` non viene più utlizzato in
 --| alcun modo.
---| 
+--|
 --| La libreria non ricorre mai all'attributo `articolo` per stampare l'articolo
 --| di un istanza nei messaggi, e neanche gli autori dovrebbero farlo. L'attributo
 --| `articolo` è solo un mezzo per inizializzare correttamente tutta una serie di
@@ -696,7 +696,7 @@ SYNONYMS
 --| The albero IsA object
 --|   Has articolo "l'".
 --| End the.
---| 
+--|
 --| The arancia IsA object
 --|   Has articolo "l'".
 --|   Is femminile.
@@ -735,7 +735,7 @@ SYNONYMS
 
 --| Anche `vocale` sarà inizializzato automaticamente dalla libreria, basandosi
 --| sul valore di `articolo` dell'istanza.
---| 
+--|
 --| Questo attributo semplifica molto la corretta rappresentazione di aggettivi
 --| nei vari messaggi della libreria poiché consente di stampare direttamente
 --| questo attributo come ultima vocale dell'aggetivo, aniziché dover eseguire
@@ -750,7 +750,7 @@ SYNONYMS
 --| === Preposizioni articolate
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 
 --| Grazie a questi attributi, nei messaggi della libreria (e delle avventure)
 --| è possibile recuperare le corrette preposizioni articolate da usare con
@@ -772,27 +772,12 @@ SYNONYMS
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| [WARNING]
 --| =================================
 --| Sezione non ancora disponibile...
 --| =================================
 --<
-
-
--- @TODO: Delete me (old info)!                                                 DELETE!
--- In questo modulo inizializzeremo solo le istanze di OBJECT, e lasceremo al
--- modulo "lib_classi.i" l'onore di inizializzare le instanze di ACTOR. Questa
--- separazione è necessaria per via del fatto che gli attori possono avere nome
--- proprio, e in tal caso devono avere le stringhe degli articoli nulle, e usare
--- preposizioni semplici anziché articolate.
--- 
--- La libreria originale inizializzava numero e articoli in EVERY THING, ma nel
--- nostro caso questo comprometterebbe gli attributi definiti dall'utente sugli
--- attori, dato che la classe THING ha la precedenza gerarchica su ACTOR, e dato
--- che l'inizializzazione basata sull'articolo modifica anche il genere ed il
--- numero dell'istanza in base ad esso.
--- ADD TO EVERY OBJECT
 
 -->todo(50000.1)
 --~=============================================================================
@@ -806,7 +791,7 @@ SYNONYMS
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Questa sezione contiene l'elenco delle cose da fare per completare il modulo
 --| della grammatica italiana.
 --<
@@ -817,16 +802,16 @@ SYNONYMS
 --| === Check-list generale
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 --| Lista della spesa per le varie cosucce da fare:
 --<
 
 -->todo_checklist(.665)
---| 
+--|
 --| === Check-list per Doxter
---| 
+--|
 --| Finisci di trasformare commenti in documentazione Doxter:
---| 
+--|
 --| * [ ] Aggiungi esempi pratici di codice:
 --| ** [ ] Definizione `articolo`.
 --| ** [ ] Uso attributi preposizioni (es. `SAY mia_AT:prep_IN.`).

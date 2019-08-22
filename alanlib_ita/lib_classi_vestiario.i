@@ -2,14 +2,12 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_classi_vestiario.i"
---| v0.21.1-Alpha, 2019-08-19: Alan 3.0beta6 build 2015
+--| v0.22.0-Alpha, 2019-08-22: Alan 3.0beta6 build 2022
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_classes.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
 --| Ad opera di Tristano Ajmone,  (C) 2018, Artistic License 2.1.
 --|=============================================================================
-
-
 
 
 -->vestiario(10000.1)
@@ -24,8 +22,8 @@
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
---| 
+--|
+--|
 --| Un `indumento` è un capo di vestiario implementato secondo le regole
 --| dell'estensione `xwear.i` di Alan Bampton. Il codice di questa classe
 --| impedisce di indossare gli indumenti in ordine insensato -- per esempio, non
@@ -78,7 +76,7 @@ END ADD TO blocco_definizioni.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Ora definiamo la classe `indumento` ed i suoi attributi comuni, dopodiché
 --| ridefiniamo su questa classe i verbi `esamina`, `indossa` e `togliti`.
 
@@ -155,7 +153,7 @@ EVERY indumento IsA OBJECT
 --| ==== Verbo `esamina`
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 --<
 
   VERB esamina
@@ -175,7 +173,7 @@ EVERY indumento IsA OBJECT
 --| ==== Impedisci verbi che potrebbero dislocare indossati
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 
   VERB metti_in --> metti (ogg) 'in' (cont)
     WHEN ogg
@@ -189,7 +187,7 @@ EVERY indumento IsA OBJECT
                 THEN SAY mia_AT:indumento_indossato_PNG_sg.
                 ELSE SAY mia_AT:indumento_indossato_PNG_pl.
               END IF. SAY ogg:vocale.
-              FOR EACH ac IsA actor DO
+              FOR EACH ac IsA ACTOR DO
                 IF ogg IN ac
                   THEN SAY ac:prep_DA. SAY ac. "."
                 END IF.
@@ -210,7 +208,7 @@ EVERY indumento IsA OBJECT
                 THEN SAY mia_AT:indumento_indossato_PNG_sg.
                 ELSE SAY mia_AT:indumento_indossato_PNG_pl.
               END IF. SAY ogg:vocale.
-              FOR EACH ac IsA actor DO
+              FOR EACH ac IsA ACTOR DO
                 IF ogg IN ac
                   THEN SAY ac:prep_DA. SAY ac. "."
                 END IF.
@@ -231,7 +229,7 @@ EVERY indumento IsA OBJECT
                 THEN SAY mia_AT:indumento_indossato_PNG_sg.
                 ELSE SAY mia_AT:indumento_indossato_PNG_pl.
               END IF. SAY ogg:vocale.
-              FOR EACH ac IsA actor DO
+              FOR EACH ac IsA ACTOR DO
                 IF ogg IN ac
                   THEN SAY ac:prep_DA. SAY ac. "."
                 END IF.
@@ -249,7 +247,7 @@ EVERY indumento IsA OBJECT
   --         IF ogg IN hero
   --           THEN SAY mia_AT:ogg2_già_posseduto.
   --           ELSE
-  --             FOR EACH ac IsA actor DO
+  --             FOR EACH ac IsA ACTOR DO
   --               IF THIS IN ac
   --                 THEN SAY THE ac. "sta indossando $+2."
   --               END IF.
@@ -269,7 +267,7 @@ EVERY indumento IsA OBJECT
               THEN SAY mia_AT:indumento_indossato_PNG_sg.
               ELSE SAY mia_AT:indumento_indossato_PNG_pl.
             END IF. SAY proiettile:vocale.
-            FOR EACH ac IsA actor DO
+            FOR EACH ac IsA ACTOR DO
               IF proiettile IN ac
                 THEN SAY ac:prep_DA. SAY ac. "."
               END IF.
@@ -289,7 +287,7 @@ EVERY indumento IsA OBJECT
                 THEN SAY mia_AT:indumento_indossato_PNG_sg.
                 ELSE SAY mia_AT:indumento_indossato_PNG_pl.
               END IF. SAY proiettile:vocale.
-              FOR EACH ac IsA actor DO
+              FOR EACH ac IsA ACTOR DO
                 IF proiettile IN ac
                   THEN SAY ac:prep_DA. SAY ac. "."
                 END IF.
@@ -309,7 +307,7 @@ EVERY indumento IsA OBJECT
                 THEN SAY mia_AT:indumento_indossato_PNG_sg.
                 ELSE SAY mia_AT:indumento_indossato_PNG_pl.
               END IF. SAY proiettile:vocale.
-              FOR EACH ac IsA actor DO
+              FOR EACH ac IsA ACTOR DO
                 IF proiettile IN ac
                   THEN SAY ac:prep_DA. SAY ac. "."
                 END IF.
@@ -330,7 +328,7 @@ EVERY indumento IsA OBJECT
                 THEN SAY mia_AT:indumento_indossato_PNG_sg.
                 ELSE SAY mia_AT:indumento_indossato_PNG_pl.
               END IF. SAY proiettile:vocale.
-              FOR EACH ac IsA actor DO
+              FOR EACH ac IsA ACTOR DO
                 IF proiettile IN ac
                   THEN SAY ac:prep_DA. SAY ac. "."
                 END IF.
@@ -351,7 +349,7 @@ EVERY indumento IsA OBJECT
                 THEN SAY mia_AT:indumento_indossato_PNG_sg.
                 ELSE SAY mia_AT:indumento_indossato_PNG_pl.
               END IF. SAY ogg:vocale.
-              FOR EACH ac IsA actor DO
+              FOR EACH ac IsA ACTOR DO
                 IF ogg IN ac
                   THEN SAY ac:prep_DA. SAY ac. "."
                 END IF.
@@ -367,7 +365,7 @@ EVERY indumento IsA OBJECT
 --| ==== Verbo `indossa`
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 --<
 
   VERB indossa
@@ -385,7 +383,7 @@ EVERY indumento IsA OBJECT
               THEN SAY mia_AT:indumento_indossato_PNG_sg.
               ELSE SAY mia_AT:indumento_indossato_PNG_pl.
             END IF. SAY THIS:vocale.
-            FOR EACH ac IsA actor DO
+            FOR EACH ac IsA ACTOR DO
               IF THIS IN ac
                 THEN SAY ac:prep_DA. SAY ac. "."
               END IF.
@@ -513,7 +511,7 @@ EVERY indumento IsA OBJECT
 --| ==== Verbo `togliti`
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 --<
 
   VERB togliti
@@ -652,7 +650,7 @@ EVENT controlla_indossati
       --     MAKE ind NOT indossato.
       --      "**" SAY THE ind. "IS indossato INDIRECTLY IN" SAY THE ac. "**"
       -- END FOR.
-     
+
       -- SOPPRESSO (PROVA A NON USARE 'indossati')
       -----------------------------------------------------
       -- Ogni indumento direttamente in un attore e marcato
@@ -696,7 +694,7 @@ END EVENT.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --<
 
 --------------------------------------------------------------------
@@ -845,7 +843,7 @@ END EVENT.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
 --| italiano del modulo della classe del vestiario.
 --<
@@ -856,14 +854,14 @@ END EVENT.
 --| === Check-list generale
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 --| Lista della spesa per le varie cosucce da fare:
 --<
 
 -->todo_checklist(.665)
---| 
+--|
 --| === Check-list per Doxter
---| 
+--|
 --| Finisci di trasformare commenti in documentazione Doxter:
 --<
 

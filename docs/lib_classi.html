@@ -445,9 +445,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.21.0-Alpha,</span>
-<span id="revdate">2019-08-15</span>
-<br><span id="revremark">Alan 3.0beta6 build 2015</span>
+<span id="revnumber">versione 0.22.0-Alpha,</span>
+<span id="revdate">2019-08-22</span>
+<br><span id="revremark">Alan 3.0beta6 build 2022</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Indice dei contenuti</div>
@@ -655,6 +655,10 @@ automatico anche sulla porta associata.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">È fissa.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>HAS altro_lato porta_fittizia.</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nessuna porta abbinata.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>HAS chiave_abbinata chiave_fittizia.</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Non ha nessuna chiave abbinata.</p></td>
 </tr>
@@ -673,6 +677,15 @@ automatico anche sulla porta associata.</p>
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>Se si crea una porta bloccabile, si dovrà anche creare una chiave con
+cui il giocatore potrà sbloccarla. Esempio:</p>
+</div>
+<div class="listingblock example">
+<div class="content">
+<pre class="highlight" lang="alan"><code class="language-alan" data-lang="alan"><span class="hl kwa">The</span> portone_casa <span class="hl kwa">IsA</span> porta <span class="hl kwa">at</span> vialetto<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Name</span> portone<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Has</span> altro_lato portone_casa_retro<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Has</span> chiave_abbinata chiave_portone<span class="hl kwa">.</span>&#x000A;<span class="hl kwa">End the.</span>&#x000A;&#x000A;<span class="hl kwa">The</span> chiave_portone <span class="hl kwa">IsA</span> <span class="hl kwb">object</span><span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Name</span> chiave<span class="hl kwa">.</span>&#x000A;  <span class="hl kwa">Has</span> articolo <span class="hl str">&quot;la&quot;</span><span class="hl kwa">.</span>&#x000A;<span class="hl kwa">End the.</span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -970,7 +983,7 @@ utilizzabile con il verbo "spara" (p.es., una pistola, un cannone).</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>actor</code></p>
+<p><code>ACTOR</code></p>
 <div class="ulist">
 <ul>
 <li>
@@ -1077,7 +1090,7 @@ italiano del modulo delle classi.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.21.0-Alpha<br>
+Versione 0.22.0-Alpha<br>
 </div>
 </div>
 </body>

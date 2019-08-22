@@ -3,8 +3,8 @@
 Svuotare e Versare 
 Testa i verbi del gruppo 'svuota' e 'versa'. 
 (C) Tristano Ajmone, 2018. 
-Avventura realizzata con ALAN 3.0beta6 build 2015. 
-Libreria Standard Italiana: 21 Alpha. 
+Avventura realizzata con ALAN 3.0beta6 build 2022. 
+Libreria Standard Italiana: 22 Alpha. 
 Versione 1 
 Tutti i diritti riservati.
 
@@ -185,7 +185,7 @@ la bottiglia è vuota.
 Ci provi, ma la bottiglia era vuota.
 
 > versa il vino
-You can't pour il vino anywhere since you are not carrying it.
+Non puoi maneggiare il vino a mani nude.
 
 > esamina la bottiglia
 Una bottiglia di plastica.[[ /xDesk ]]
@@ -208,8 +208,8 @@ Sei sicuro (premi INVIO per confermare)?
 Svuotare e Versare 
 Testa i verbi del gruppo 'svuota' e 'versa'. 
 (C) Tristano Ajmone, 2018. 
-Avventura realizzata con ALAN 3.0beta6 build 2015. 
-Libreria Standard Italiana: 21 Alpha. 
+Avventura realizzata con ALAN 3.0beta6 build 2022. 
+Libreria Standard Italiana: 22 Alpha. 
 Versione 1 
 Tutti i diritti riservati.
 

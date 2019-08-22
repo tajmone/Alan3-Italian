@@ -445,9 +445,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">versione 0.21.1-Alpha,</span>
-<span id="revdate">2019-08-19</span>
-<br><span id="revremark">Alan 3.0beta6 build 2015</span>
+<span id="revnumber">versione 0.22.0-Alpha,</span>
+<span id="revdate">2019-08-22</span>
+<br><span id="revremark">Alan 3.0beta6 build 2022</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Indice dei contenuti</div>
@@ -477,10 +477,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_punteggio_e_notifiche">Punteggio e notifiche</a>
 <ul class="sectlevel3">
 <li><a href="#_vedi_punteggio">vedi_punteggio</a></li>
-<li><a href="#_vedi_punteggio_2">vedi_punteggio</a></li>
 <li><a href="#_notifica">notifica</a></li>
 <li><a href="#_notifica_on">notifica_on</a></li>
 <li><a href="#_notifica_off">notifica_off</a></li>
+<li><a href="#_levento_controlla_punteggio">L&#8217;evento controlla_punteggio</a></li>
 </ul>
 </li>
 <li><a href="#_istruzioni_info_e_aiuto">Istruzioni, info e aiuto</a>
@@ -2247,8 +2247,10 @@ in corso:</p>
 <div class="sect2">
 <h3 id="_punteggio_e_notifiche"><a class="anchor" href="#_punteggio_e_notifiche"></a>Punteggio e notifiche</h3>
 <div class="paragraph">
-<p>Questo gruppo include i verbi che riguardano il salvataggio ed il carimento
-della partita:</p>
+<p>Questo gruppo di verbi consente al giocatore di visualizzare il suo
+punteggio attuale e di abilitare/disabilitare le notifiche di cambiamento
+del punteggio, che alcuni giocatori trovano utili mentre altri le
+considerano fastidiose.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2266,17 +2268,24 @@ della partita:</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>Questi verbi agiscono sull&#8217;attributo booleano <code>mia_AT:notifiche_attive</code>, che
+l&#8217;evento <code>controlla_punteggio</code> userà per decidere se visualizzare o meno un
+messaggio quando il punteggio cambia.
+La libreria sfrutta il sistema di punteggio nativo di Alan (accessibile
+tramite l&#8217;istruzione <code>SCORE</code>), il quale prevede solo un punteggio a
+crescere.</p>
+</div>
 <div class="sect3">
 <h4 id="_vedi_punteggio"><a class="anchor" href="#_vedi_punteggio"></a>vedi_punteggio</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_vedi_punteggio_2"><a class="anchor" href="#_vedi_punteggio_2"></a>vedi_punteggio</h4>
-
-</div>
-<div class="sect3">
 <h4 id="_notifica"><a class="anchor" href="#_notifica"></a>notifica</h4>
-
+<div class="paragraph">
+<p>Il verbo <code>notifica</code> consente di alternare lo stato delle notifiche di
+punteggio, passando da notifiche abilitate a disabilitate, e vicecersa.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_notifica_on"><a class="anchor" href="#_notifica_on"></a>notifica_on</h4>
@@ -2284,7 +2293,20 @@ della partita:</p>
 </div>
 <div class="sect3">
 <h4 id="_notifica_off"><a class="anchor" href="#_notifica_off"></a>notifica_off</h4>
-
+<div class="paragraph">
+<p>Il verbo <code>notifica_off</code> consente di disabilitare le notifiche del punteggio,
+a prescindere dallo stato attuale delle notifiche.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_levento_controlla_punteggio"><a class="anchor" href="#_levento_controlla_punteggio"></a>L&#8217;evento controlla_punteggio</h4>
+<div class="paragraph">
+<p>L&#8217;evento <code>controlla_punteggio</code> viene eseguito ad ogni turno per verificare
+se il punteggio attuale è maggiore dell&#8217;ultimo punteggio registrato (salvato
+in <code>mia_AT:ultimo_punteggio</code>) e, in caso affermativo, e a condizione che
+l&#8217;attributo <code>mia_AT:notifiche_attive</code> sia attivo, verrà mostrato al giocatore
+un messaggio che lo informa di quanti punti sia salito il punteggio.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -3925,13 +3947,7 @@ vicini tra loro verbi correlati, simmetrici e/o complementari.</p>
 <p><i class="fa fa-square-o"></i> Descrizione <code>vedi_punteggio</code>.</p>
 </li>
 <li>
-<p><i class="fa fa-square-o"></i> Descrizione <code>notifica</code>.</p>
-</li>
-<li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>notifica_on</code>.</p>
-</li>
-<li>
-<p><i class="fa fa-square-o"></i> Descrizione <code>notifica_off</code>.</p>
 </li>
 <li>
 <p><i class="fa fa-square-o"></i> Descrizione <code>istruzioni</code>.</p>
@@ -4394,7 +4410,7 @@ vicini tra loro verbi correlati, simmetrici e/o complementari.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Versione 0.21.1-Alpha<br>
+Versione 0.22.0-Alpha<br>
 </div>
 </div>
 </body>

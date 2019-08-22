@@ -17,6 +17,12 @@ For previuos changes, see:
 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
+- [Alan 3.0beta6 build 2022](#alan-30beta6-build-2022)
+    - [2019/08/22](#20190822)
+        - [Passa alla v0.22.0](#passa-alla-v0220)
+        - [Passa ad Alan 3.0beta6 build 2022](#passa-ad-alan-30beta6-build-2022)
+        - [Pulizia Sorgenti](#pulizia-sorgenti)
+        - [Modulo classi](#modulo-classi)
 - [Alan 3.0beta6 build 2015](#alan-30beta6-build-2015)
     - [2019/08/19](#20190819)
         - [Correggi e migliora verbo `ascolta`](#correggi-e-migliora-verbo-ascolta)
@@ -74,7 +80,7 @@ For previuos changes, see:
     - [2019/02/05](#20190205)
         - [Passa alla v0.14.0](#passa-alla-v0140)
         - [Separa modulo grammatica italiana](#separa-modulo-grammatica-italiana)
-        - [Modulo classi](#modulo-classi)
+        - [Modulo classi](#modulo-classi-1)
         - [Modulo messaggi runtime](#modulo-messaggi-runtime)
     - [2019/02/02 \(2\)](#20190202-2)
         - [Passa alla v0.13.0](#passa-alla-v0130)
@@ -86,6 +92,66 @@ For previuos changes, see:
 <!-- /MarkdownTOC -->
 
 -----
+
+# Alan 3.0beta6 build 2022
+
+## 2019/08/22
+
+- [`libreria.i`][libreria] &#x27f6; v0.22.0
+- [`lib_italian.i`][lib_italian] &#x27f6; v0.22.0
+- [`lib_classi.i`][lib_classi] &#x27f6; v0.22.0
+- [`lib_classi_vestiario.i`][lib_classi_vestiario] &#x27f6; v0.22.0
+- [`lib_definizioni.i`][lib_definizioni] &#x27f6; v0.22.0
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.22.0
+- [`lib_messaggi_runtime.i`][lib_messaggi_runtime] &#x27f6; v0.22.0
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.22.0
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.22.0
+
+### Passa alla v0.22.0
+
+Tutti i moduli della libreria passano alla versione 0.22.0.
+
+### Passa ad Alan 3.0beta6 build 2022
+
+Da qui in avanti il progetto adotta la [developer snaphshot]  [Alan 3.0beta6 build 2022][3.0beta6-2022] per testare la libreria.
+
+Questa build risolve il baco del mancato parsing della `ì` nei verbi (e.s. in `dì`) introdotto nella build 2015.
+
+Inoltre, la nuova build previene l'espansione dei simboli speciali con `$` nelle string di input del giocatore (problema che causava crash e ricorsioni infinite nel caso il giocatore digitasse `$1` e la stringa veniva stampata nell'avventura). Ora i simboli del `$` sono trattati come caratteri letterali.
+
+### Pulizia Sorgenti
+
+Pulizia generale del codice: rimossi commenti obsoleti, tradotti commenti dall'inglese e aggiunto nuovo testo documentazione ed esempi qui e là.
+
+Convertite tutte le occorrennze delle classi predefinite in maiuscolo, per distinguerle dalle classi definite dalla libreria.
+
+Ritoccati e tradotte alcune risposte della libreria, direttamente nei verbi.
+
+### Modulo classi
+
+Sono qui di seguito riportate alcune modifiche significative in `lib_classi.i`.
+
+#### Porte
+
+Aggiunto alla definizione della classe `porta` l'attributo `chiave_abbinata` con valore predefinito `chiave_fittizia`:
+
+```alan
+EVERY porta IsA OBJECT
+  ...
+  HAS chiave_abbinata  chiave_fittizia.
+```
+
+Sebbene il codice funzionava anche senza di esso (grazie al codice di inizializzazione della classe), è preferibile dichiarare tutti gli attributi di base con i loro valori predefiniti, anche solo per chiarezza di lettura del codice. 
+
+#### Liquidi
+
+Tradotta varie risposte e/o messaggi di errore per i seguenti verbi
+sulla classe `liquido`: `dai_a`, `versa`, `versa_in` e `su`.
+
+Modifica la risposta di `versa` adottando i criter di `versa_in`, il
+quale prevedeva messaggi di errore distinti nel caso si tratti di un liquido con contentitore fittizio o non prendibile. 
+
+-------------------------------------------------------------------------------
 
 # Alan 3.0beta6 build 2015
 
@@ -978,6 +1044,7 @@ Tutti i riferimenti alla precedente build nei moduli della libreria e nei sorgen
 [3.0beta6-1880]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1880 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1880"
 [3.0beta6-1980]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build1980 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 1980"
 [3.0beta6-2015]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build2015 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 2015"
+[3.0beta6-2022]: https://www.alanif.se/download-alan-v3/development-snapshots/development-snapshots/build2022 "Vai alla pagina di download della snapshot Alan 3.0beta6 build 2022"
 
 <!-- Alan Commits ------------------------------------------------------------>
 

@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_luoghi.i"
---| v0.21.1-Alpha, 2019-08-18: Alan 3.0beta6 build 2015
+--| v0.22.0-Alpha, 2019-08-22: Alan 3.0beta6 build 2022
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_locations.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -24,7 +24,7 @@
 --~=============================================================================
 --|
 --| Questo modulo della libreria, dedicato ai luoghi, definisce:
---| 
+--|
 --|  * Le direzioni cardinali predefinite (implementate come `EXIT`).
 --|  * Il `limbo`, un luogo in cui poter collocare oggetti e attori che si vuole
 --|    rimuovere dal gioco.
@@ -39,7 +39,7 @@
 --|
 --|    1. `esterno` -- contiene tutte le stanze.
 --|    2. `interno` -- contiene tutti i luoghi esterni.
---| 
+--|
 --| Infine, aggiunge ad ogni luogo (`location`) i seguenti attributi numerici:
 --|
 --|  * `visitato`
@@ -113,18 +113,18 @@
 --~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~=============================================================================
---| 
+--|
 --| Il `limbo` è un luogo speciale, definito dalla libreria con duplice scopo:
---| 
+--|
 --| 1. Mettere a disposizione un non-luogo in cui poter parcheggiare tutte le
 --|    istanze che si vogliono fare sparire dal gioco.
 --| 2. Definire le direzioni di spostamento predefinite.
---| 
+--|
 --| Siccome Alan non consente la creazione o la distruzione dinamica di instanze
 --| durante il gioco, l'unico modo per poter far sparire di scena un'instanza è
 --| collocarla in un luogo a cui il giocatore non potrà aver accesso -- ossia,
 --| il limbo.
---| 
+--|
 --| Quanto alla definizione delle direzioni predefinite, Alan non dispone di una
 --| classe speciale per le direzioni, né definisce alcuna direzione predefinta;
 --| Alan estrae la lista delle direzioni dalle varie occorrenze di `EXIT` nel
@@ -132,7 +132,7 @@
 --| direzioni standard sull'istanza di luogo `limbo`:
 
 
-THE limbo IsA location
+THE limbo ISA LOCATION
   EXIT
     nord,
     sud,
@@ -174,7 +174,7 @@ END THE limbo.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Oltre alle direzioni predefinite sul `limbo`, la libreria definisce anche
 --| dei sinonimi comuni per esse, che includono sintassi alternative e comandi
 --| brevi:
@@ -191,7 +191,7 @@ SYNONYMS
 --| [IMPORTANT]
 --| ========================================================================
 --| Dovrei implementare `in` come sinomimo di `dentro`?
---| 
+--|
 --| In molti verbi i due termini sono equivalenti -- e.s. "`guarda nella/dentro
 --| la scatola`", "`entra in/dentro casa`". Devo valutare se potrebbero esserci
 --| verbi per i quali questo non vale -- e.s. "`scrivi in calce`" -- e se tali
@@ -206,14 +206,14 @@ SYNONYMS
 --| classiche `n`, `e`, `s`, `o`, `ne`, `no`, `se`, `so` è dovuto al fatto che
 --| alcune di esse avrebbero conflitto con altri identificativi definiti
 --| altrove:
---| 
+--|
 --| [horizontal]
 --| `e` -> `est`        :: ignorato dal parsing dei comandi poiché `e` è una
 --|                        "`noise word`".
 --| `a` -> `su`         :: causerebbe conflitti con la preposizione `a`.
 --| `no` -> `nordovest` :: in conflitto con la sintassi del verbo `rispondi_No`.
 --| `sotto` -> `giù`    :: in conflitto con la sintassi "`guarda sotto`".
---| 
+--|
 --| Ragion per cui si è preferito adottare un sistema di abbreviazioni coerente,
 --| limitandone l'uso alle direzioni composite.
 --| ========================================================================
@@ -231,7 +231,7 @@ SYNONYMS
 --| ==== Tabella direzioni predefinite
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 --| La seguente tabella riassume tutte le direzioni predefinite dalla libreria:
 --<
 -->tabella_direzioni(1210)
@@ -323,22 +323,22 @@ SYNONYMS
 -- (We make use of ALAN's nested locations feature in the following definitions: )
 
 
-THE esterno IsA location
+THE esterno ISA LOCATION
 END THE esterno.
 
 
-THE interno IsA location
+THE interno ISA LOCATION
 END THE interno.
 
 
-EVERY stanza IsA location AT interno
+EVERY stanza ISA LOCATION AT interno
   HAS desc_pavimento "".  -- if these values are left unchanged,
   HAS desc_pareti    "".  -- the descriptions of the walls, floor and
   HAS desc_soffitto  "".  -- ceiling will be the default "You notice nothing unusual
 END EVERY.                -- about the [object]."
 
 
-EVERY luogo_esterno IsA location AT esterno
+EVERY luogo_esterno ISA LOCATION AT esterno
   HAS desc_suolo "".
   HAS desc_cielo "".
 END EVERY.
@@ -555,12 +555,12 @@ END ADD TO.
 -- ==========================================================
 
 
-ADD TO EVERY location
+ADD TO EVERY LOCATION
   IS illuminato.
 END ADD TO.
 
 
-EVERY luogo_buio IsA location
+EVERY luogo_buio IsA LOCATION
   IS NOT illuminato.
 
   ENTERED
@@ -589,9 +589,9 @@ EVERY luogo_buio IsA location
 END EVERY luogo_buio.
 
 
-WHEN location OF hero IS NOT illuminato
+WHEN LOCATION OF hero IS NOT illuminato
   AND COUNT IsA fonte_di_luce, IS illuminato, AT hero > 0
-THEN MAKE location OF hero illuminato.
+THEN MAKE LOCATION OF hero illuminato.
   SCHEDULE light_on AT hero AFTER 0.
 
 
@@ -600,10 +600,10 @@ EVENT light_on
 END EVENT.
 
 
-WHEN location OF hero IsA luogo_buio
-  AND location OF hero IS illuminato
+WHEN LOCATION OF hero IsA luogo_buio
+  AND LOCATION OF hero IS illuminato
   AND COUNT IsA fonte_di_luce, IS illuminato, AT hero = 0
-THEN MAKE location OF hero NOT illuminato.
+THEN MAKE LOCATION OF hero NOT illuminato.
   SCHEDULE light_off AT hero AFTER 0.
 
 
@@ -678,7 +678,7 @@ END EVENT.
 -- successive alla prima saranno diverse (anche se il giocatore seguita a
 -- trovarsi per la prima volta in quel luogo).
 
-ADD TO EVERY location
+ADD TO EVERY LOCATION
   HAS visitato  0.
   HAS descritto 0.
 
@@ -702,7 +702,7 @@ END ADD TO.
 --~-----------------------------------------------------------------------------
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
---| 
+--|
 --| Questa sezione contiene l'elenco delle cose da fare per ultimare l'adattamento
 --| italiano del modulo dei luoghi.
 --<
@@ -714,15 +714,15 @@ END ADD TO.
 --| === Check-list generale
 --~-----------------------------------------------------------------------------
 --~=============================================================================
---| 
+--|
 --| Lista della spesa per le varie cosucce da fare:
---| 
+--|
 --<
 
 -->todo_checklist(.665)
---| 
+--|
 --| === Check-list per Doxter
---| 
+--|
 --| Finisci di trasformare commenti in documentazione Doxter:
 --<
 

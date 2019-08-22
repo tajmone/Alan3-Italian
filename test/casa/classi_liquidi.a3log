@@ -3,8 +3,8 @@
 La Casa 
 Un set per eseguire test su stanze e luoghi esterni. 
 (C) Tristano Ajmone, 2018. 
-Avventura realizzata con ALAN 3.0beta6 build 2015. 
-Libreria Standard Italiana: 21 Alpha. 
+Avventura realizzata con ALAN 3.0beta6 build 2022. 
+Libreria Standard Italiana: 22 Alpha. 
 Versione 1 
 Tutti i diritti riservati.
 
@@ -12,8 +12,8 @@ Tutti i diritti riservati.
 LA CUCINA
 A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia, un frigo e 
 un tavolo qui. Sopra il tavolo vedi un vasetto, una bottiglia, un sacchetto, un 
-coltello, una pistola, un cesto per la frutta e una radio. Al centro della
-stanza c'è Mr Nicky, il tuo cagnolino.
+coltello, una pistola, un cesto per la frutta e una radio. Puoi vedere un'
+acquasantiera qui. Al centro della stanza c'è Mr Nicky, il tuo cagnolino.
 
 > ; ******************************************************************************
 > ; *                                                                            *
@@ -93,6 +93,54 @@ Preso.
 > metti il vino sul tavolo
 Posi la bottiglia sul tavolo.
 
+> ; ------------------------------------------------------------------------------
+> ; DARE/RIPRENDERE IL RECIPIENTE
+> ; ------------------------------------------------------------------------------
+> prendi la bottiglia
+Presa.
+
+> sud
+IL GIARDINO DI CASA
+A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone e, in
+lontananza, la tua vicina. Puoi vedere un ombrellone, un aquilone e un tavolo 
+qui. Sopra il tavolo vedi una rivista. Puoi vedere un lettino e una piscina qui. 
+C'è un giardiniere qui. C'è un gatto qui. 
+
+Mr Nicky ti segue.
+
+> dai la bottiglia al giardiniere
+Consegni la bottiglia al giardiniere.
+
+> prendi la bottiglia
+Il giardiniere non sarebbe d'accordo.
+
+> chiedi la bottiglia al giardiniere
+Il giardiniere ti dà la bottiglia.
+
+> ; ------------------------------------------------------------------------------
+> ; DARE/RIPRENDERE IL LIQUIDO
+> ; ------------------------------------------------------------------------------
+> dai il vino al giardiniere
+Consegni la bottiglia del vino al giardiniere.
+
+> prendi il vino
+Il giardiniere non sarebbe d'accordo.
+
+> chiedi il vino al giardiniere
+Il giardiniere ti dà la bottiglia del vino.
+
+> nord
+LA CUCINA
+A sud c'è il tuo giardino, a est l'ingresso. Puoi vedere una sedia e un frigo 
+qui. Il frigo contiene un cartone del latte. Puoi vedere un tavolo qui. Sopra il 
+tavolo vedi un vasetto, un sacchetto, un coltello, una pistola, un cesto per la
+frutta e una radio. Puoi vedere un'acquasantiera qui. 
+
+Mr Nicky ti segue.
+
+> metti il vino sul tavolo
+Posi la bottiglia sul tavolo.
+
 > ; ==============================================================================
 > ; TRAVASARE LIQUIDI
 > ; ==============================================================================
@@ -116,7 +164,13 @@ Il vasetto è vuoto.
 La bottiglia contiene del vino.
 
 > versa il vino
-You pour il vino on the floor.
+Versi il vino sul pavimento.
+
+> versa il vino nella bottiglia
+Non puoi maneggiare il vino a mani nude.
+
+> esamina la bottiglia
+La bottiglia è vuota.
 
 > ; ==============================================================================
 > ; LIQUIDI IN 'recipiente_fittizio'
@@ -124,6 +178,33 @@ You pour il vino on the floor.
 > ; Se un liquido non viene creato all'interno di un recipiente avrà di default un
 > ; 'recipiente_fittizio' come contenitore, questi non è prendibile e quindi per
 > ; maneggiare il liquido sarà necessario usare dei recipienti idonei.
+> ; ------------------------------------------------------------------------------
+> ; L'ACQUASANTIERA
+> ; ------------------------------------------------------------------------------
+> ; L'acquasantiera è un contenitore per liquidi vuoto, non spostabile e non
+> ; prendibile.
+> esamina l'acquasantiera
+È un'antica acquasantiera in pietra.[[ /xDesk ]]
+l'acquasantiera è vuota.
+
+> versa il latte nell'acquasantiera
+(prima prendi il cartone del latte del latte)
+Versi il latte nell'acquasantiera.
+
+> esamina l'acquasantiera
+È un'antica acquasantiera in pietra.[[ /xDesk ]]
+l'acquasantiera contiene del latte.
+
+> ; Non sarà più possibile versare il latte altrove poiché l'acquasantiera è fissa:
+> versa il latte
+Per poterlo fare dovresti prima impossessarti dell'acquasantiera.
+
+> versa il latte nella bottiglia
+Per poterlo fare dovresti prima impossessarti dell'acquasantiera.
+
+> prendi l'acquasantiera
+L'acquasantiera è fissata al suo posto.
+
 > sud
 IL GIARDINO DI CASA
 A nord puoi tornare in casa. Oltre la staccionata intravedi un ombrellone e, in
@@ -157,6 +238,18 @@ Non puoi maneggiare la piscina a mani nude.
 
 > prendi l'acqua
 Non puoi maneggiare la piscina a mani nude.
+
+> versa l'acqua
+Non puoi maneggiare la piscina a mani nude.
+
+> versa la piscina
+Non puoi maneggiare la piscina a mani nude.
+
+> versa l'acqua nella bottiglia
+La piscina doesn't belong in la bottiglia.
+
+> versa la piscina nella bottiglia
+La piscina doesn't belong in la bottiglia.
 
 > 
 

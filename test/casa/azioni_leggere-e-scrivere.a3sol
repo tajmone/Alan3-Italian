@@ -46,16 +46,9 @@ scrivi "ZenFactor Spa" sulla busta
 leggi la busta
 esamina la busta
 ; **NOTA** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-;          È possibile anche usare le sequenze speciali di Alan con "$" nelle
-;          stringhe del parametro:
-;          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+;          Le stringhe dell'input del giocatore vengono trattate come stringhe
+;          letterali, ed eventuali sequenze speciali con "$" non vengono espanse
+;          ma trattate come stringhe crude:
 scrivi "$$.$nTorino." sulla busta
 leggi la busta
-; **NOTA** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-;          Questo in realtà è un problema ed è sato segnalato come un baco
-;          (vedi alan-if/alan#7) poiché impedisce al giocatore di digitare il
-;          simbolo del $ (moneta), mandando in crash l'interprete. Peggio
-;          ancora, se digita "$1" c'è il rischio di una ricorsione infinita
-;          poiché il parametro contiene un riferimento a sé stesso.
-;          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-

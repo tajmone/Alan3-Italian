@@ -1,7 +1,7 @@
 // tag::rev_info[]
 :revdate:     2019-04-02
 :revnumber:   1.0.0-alpha.3
-:AlanSDK:     Alan 3.0beta6 build 2015
+:AlanSDK:     Alan 3.0beta6 build 2022
 // end::rev_info[]
 // tag::region1[]
 Basato sull'avventura "`Cloak of Darkness`" di Roger Firth, utlizzando come
