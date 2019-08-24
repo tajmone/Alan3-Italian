@@ -24,7 +24,7 @@ tavolo vedi un dizionario. C'è un inserviente qui. Gina è qui.
 > ; test è verificare il corretto funzionamento dei verbi, le varianti sitattiche,
 > ; le risposte predfinite ed i messaggi d'errore.
 > esamina il ronzio
-That's not something you can examine.
+Il ronzio non è qualcosa che puoi esaminare.
 
 > ascolta il ronzio
 Sembra il ronzio di un dispositivo elettrico.

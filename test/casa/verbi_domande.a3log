@@ -28,7 +28,28 @@ acquasantiera qui. Al centro della stanza c'è Mr Nicky, il tuo cagnolino.
 > chi è il giardiniere
 Dovrai scoprirlo da te!
 
-> ; TODO: chi sono 
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'chi_è' (PARAMETRO INVALIDO)
+> ; ------------------------------------------------------------------------------
+> ; Il parametro deve essere un ACTOR (o sue sottoclassi):
+> chi è "xxx"
+Non conosco xxx.
+
+> chi è 666
+Non conosco 666.
+
+> chi è mia_AT
+Non conosco il mia_AT.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'chi_è' AUTOREFERENZIALE
+> ; ------------------------------------------------------------------------------
+> chi è me
+Tu sei te. Chi altri?
+
+> chi è hero
+Tu sei te. Chi altri?
+
 > ; ==============================================================================
 > ; TESTA 'chi_sono_io'
 > ; ==============================================================================
@@ -52,6 +73,28 @@ Dovrai scoprirlo da te!
 
 > che cos'è la piscina
 Dovrai scoprirlo da te!
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'cosa_è' (PARAMETRO INVALIDO)
+> ; ------------------------------------------------------------------------------
+> ; Il parametro deve essere un THING (o sue sottoclassi):
+> cos'è "xxx"
+Non conosco xxx.
+
+> cos'è 666
+Non conosco 666.
+
+> cos'è mia_AT
+Non conosco il mia_AT.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'cosa_è' AUTOREFERENZIALE
+> ; ------------------------------------------------------------------------------
+> cos'è me
+Te! Che altro?
+
+> cos'è hero
+Te! Che altro?
 
 > ; ==============================================================================
 > ; TESTA 'cosa_sono_io'
@@ -91,6 +134,28 @@ Dovrai scoprirlo da te!
 
 > dove si trovano i jeans
 Il paio di blue jeans è proprio qui.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'dove_è' (PARAMETRO INVALIDO)
+> ; ------------------------------------------------------------------------------
+> ; Il parametro deve essere un THING (o sue sottoclassi):
+> dove è "xxx"
+Non conosco xxx.
+
+> dove è 666
+Non conosco 666.
+
+> dove è mia_AT
+Non conosco il mia_AT.
+
+> ; ------------------------------------------------------------------------------
+> ; TESTA 'dove_è' AUTOREFERENZIALE
+> ; ------------------------------------------------------------------------------
+> dove è me
+Ti trovi qui. Dove altro sennò?
+
+> dove è hero
+Ti trovi qui. Dove altro sennò?
 
 > ; ==============================================================================
 > ; TESTA 'dove_mi_trovo'

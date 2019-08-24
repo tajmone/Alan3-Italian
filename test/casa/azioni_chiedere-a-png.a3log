@@ -51,7 +51,7 @@ Mr Nicky ti segue.
 1 non è qualcosa che puoi chiedere che ti venga dato.
 
 > chiedi al giardiniere il cinguettio
-That's not something you can chiedi for.
+Il cinguettio non è qualcosa che puoi chiedere che ti venga dato.
 
 > chiedi al giardiniere la vicina
 La vicina non è qualcosa che puoi chiedere che ti venga data.
@@ -89,7 +89,7 @@ Il gatto non è in grado di capirti.
 
 > ; [04] CHECK: ogg IS esaminabile:
 > chiedi al giardiniere il cinguettio
-That's not something you can chiedi for.
+Il cinguettio non è qualcosa che puoi chiedere che ti venga dato.
 
 > ; [05] CHECK: ogg NOT IN hero:
 > chiedi al giardiniere la mela

@@ -18,9 +18,12 @@ For previuos changes, see:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Alan 3.0beta6 build 2022](#alan-30beta6-build-2022)
-    - [2019/08/24](#20190824)
-        - [Migliorie sintassi verbi](#migliorie-sintassi-verbi)
+    - [2019/08/24 \(2\)](#20190824-2)
+        - [Verbi](#verbi)
         - [Messaggi libreria](#messaggi-libreria)
+    - [2019/08/24 \(1\)](#20190824-1)
+        - [Migliorie sintassi verbi](#migliorie-sintassi-verbi)
+        - [Messaggi libreria](#messaggi-libreria-1)
         - [Risposte verbi](#risposte-verbi)
     - [2019/08/22](#20190822)
         - [Passa alla v0.22.0](#passa-alla-v0220)
@@ -40,7 +43,7 @@ For previuos changes, see:
     - [2019/07/28](#20190728)
         - [Liquidi](#liquidi)
         - [Contenitori Elencati](#contenitori-elencati)
-        - [Messaggi Libreria](#messaggi-libreria-1)
+        - [Messaggi Libreria](#messaggi-libreria-2)
     - [2019/06/26](#20190626)
         - [Repulisti classi attori](#repulisti-classi-attori)
         - [Verbo `prendi_da` sempre onnipotente](#verbo-prendi_da-sempre-onnipotente)
@@ -99,7 +102,58 @@ For previuos changes, see:
 
 # Alan 3.0beta6 build 2022
 
-## 2019/08/24
+## 2019/08/24 (2)
+
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.22.2
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.22.2
+
+### Verbi
+
+#### Verbi Domande
+
+Tradotti i messaggi per parametri non validi in `cosa_è` e `dove_è`.
+
+Migliorate le risposte quando alcuni di questi verbi vengono usati sul protoganista stesso:
+
+|  verbo   |        esempio        |             risposta            |
+|----------|-----------------------|---------------------------------|
+| `chi_è`  | &gt; chi è [me/hero]  | Tu sei te. Chi altri?           |
+| `cosa_è` | &gt; cosa è [me/hero] | Te! Che altro?                  |
+| `dove_è` | &gt; dove è [me/hero] | Ti trovi qui. Dove altro sennò? |
+
+
+### Messaggi libreria
+
+Tradotti i seguenti attributi per i messaggi di risposta dei verbi:
+
+|           Attributo EN           |    Attributo IT    |        Testo         |
+|----------------------------------|--------------------|----------------------|
+| `illegal_parameter_what_sg`/`pl` | `ogg1_sconosciuto` | `"Non conosco $+1."` |
+| `illegal_parameter_who_sg`/`pl`  | `ogg1_sconosciuto` | `"Non conosco $+1."` |
+
+Sostituite tutte le rimanenti occorrenze di attributi inglesi già tradotti, ed eliminati gli attributi originali inglesi:
+
+|             Attributo EN             |                 Attributo IT                |      verbi       |
+|--------------------------------------|---------------------------------------------|------------------|
+| `check_obj2_suitable_for_sg`/`pl`    | `ogg2_inadatto_sg`/`pl`                     | `chiedi`         |
+| `check_obj2_suitable_there`/`pl`     | `ogg2_inadatto_A_sg`/`pl`                   | `lega_a`         |
+| `check_obj2_suitable_there`/`pl`     | `ogg2_inadatto_IN_sg`/`pl`                  | `lancia_in`      |
+| `check_obj_not_in_hero1`             | `azione_insensata_ogg1_portato`/`indossato` | `solleva`        |
+| `check_obj_suitable_at`              | `ogg2_inadatto_A_sg`/`pl`                   | `lancia_a`       |
+| `check_obj_suitable_at`              | `ogg2_inadatto_CONTRO_sg`/`pl`              | `lancia_contro`  |
+| `check_obj_suitable_examine_sg`/`pl` | `ogg1_inadatto_sg`/`pl`                     | `esamina`        |
+| `check_obj_suitable_sg`/`pl`         | `ogg1_inadatto_sg`                          | `calcia`, `gira` |
+| `check_obj_suitable_there`           | `impossibile_guardare`                      | vari `guarda_*`  |
+| `illegal_parameter_examine_sg`/`pl`  | `ogg1_inadatto_sg`/`pl`                     | `esamina`        |
+| `illegal_parameter_there`            | `impossibile_guardare`                      | vari `guarda_*`  |
+
+Eliminati messaggi originali inglesi che non erano più utilizzati da alcun verbo:
+
+- `check_obj_suitable_off_sg`/`pl`
+
+<!---------------------------------------------------------------------------->
+
+## 2019/08/24 (1)
 
 - [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.22.1
 - [`lib_verbi.i`][lib_verbi] &#x27f6; v0.22.1

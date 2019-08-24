@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.22.1-Alpha, 2019-08-24: Alan 3.0beta6 build 2022
+--| v0.22.2-Alpha, 2019-08-24: Alan 3.0beta6 build 2022
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
@@ -469,11 +469,6 @@ ADD TO EVERY blocco_definizioni
   HAS ogg2_inadatto_A_sg  "$+2 non è qualcosa a cui poter".
   HAS ogg2_inadatto_A_pl  "$+2 non sono qualcosa a cui poter".
 
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-
-  HAS check_obj_suitable_at "You can't $v anything at $+2.".  -- fire_at, throw_at, throw_to
-
-
 --~=============================================================================
 --| ===== Preposizione "`DA`"
 --~=============================================================================
@@ -617,6 +612,31 @@ ADD TO EVERY blocco_definizioni
 --~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 --~-----------------------------------------------------------------------------
 --|
+--| == Parametri mancanti
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--|
+--| Messaggi per verbi che richiedono ulteriori parametri. Di solito li si
+--| trova nella variante base dei verbi che richiedono un ulteriore parametro
+--| per portare a termine l'azione, dove la variante base del verbo serve solo
+--| a intercettare il comando incompleto per informare il giocatore sulla
+--| sintassi corretta del verbo.
+
+  HAS specificare_DOVE      "Devi specificare dove vorresti".
+  HAS specificare_A_cosa    "Devi specificare a cosa vorresti".
+  HAS specificare_DA_cosa   "Devi specificare da cosa vorresti".
+  HAS specificare_IN_cosa   "Devi specificare in cosa vorresti".
+  HAS specificare_CON_cosa  "Devi specificare con cosa vorresti".
+--<
+
+-->=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
 --| == Problemi con i parametri
 --|
 --~-----------------------------------------------------------------------------
@@ -625,6 +645,19 @@ ADD TO EVERY blocco_definizioni
 --~=============================================================================
 --<
 
+-->============================================================================
+--~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+--~-----------------------------------------------------------------------------
+--| === Parametri sconosciuti
+--~-----------------------------------------------------------------------------
+--~/////////////////////////////////////////////////////////////////////////////
+--~============================================================================
+
+  -- VERBI: cosa_è, dove_è.
+  -- ORIGINAL EN:  illegal_parameter_what_sg/pl, illegal_parameter_who_sg/pl
+  HAS ogg1_sconosciuto "Non conosco $+1.".
+
+--<
 
 -->============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -635,9 +668,8 @@ ADD TO EVERY blocco_definizioni
 --~============================================================================
 
   -- VERBI: vai_a.
-
   -- ORIGINAL EN:  illegal_parameter_go
-   HAS destinazione_invalida "Non puoi andare lì.".
+  HAS destinazione_invalida "Non puoi andare lì.".
 --<
 
 
@@ -673,30 +705,6 @@ ADD TO EVERY blocco_definizioni
   HAS svuotare_solo_contenitori  "Solo i contenitori possono essere svuotati.".
 --<
 
--->=============================================================================
---~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
---~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
---~-----------------------------------------------------------------------------
---|
---| == Parametri mancanti
---|
---~-----------------------------------------------------------------------------
---~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
---~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
---~=============================================================================
---|
---| Messaggi per verbi che richiedono ulteriori parametri. Di solito li si
---| trova nella variante base dei verbi che richiedono un ulteriore parametro
---| per portare a termine l'azione, dove la variante base del verbo serve solo
---| a intercettare il comando incompleto per informare il giocatore sulla
---| sintassi corretta del verbo.
-
-  HAS specificare_DOVE      "Devi specificare dove vorresti".
-  HAS specificare_A_cosa    "Devi specificare a cosa vorresti".
-  HAS specificare_DA_cosa   "Devi specificare da cosa vorresti".
-  HAS specificare_IN_cosa   "Devi specificare in cosa vorresti".
-  HAS specificare_CON_cosa  "Devi specificare con cosa vorresti".
---<
 
 -->============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -1292,24 +1300,11 @@ ADD TO EVERY blocco_definizioni
   HAS illegal_parameter_consult_sg "That's not something you can find information about.".
   HAS illegal_parameter_consult_pl "Those are not something you can find information about.".
 
-  -- examine:
-  HAS illegal_parameter_examine_sg "That's not something you can examine.".
-  HAS illegal_parameter_examine_pl "Those are not something you can examine.".
-
   -- give, put, put_in, put_on, put_against, put_behind, put_near,,
   -- put_under throw_at, throw_in, throw_to, tie_to, use, use_with:
   HAS illegal_parameter_obj     "You can only $v objects.".
 
-  -- look_behind, look_in, look_under:
-  HAS illegal_parameter_there   "It's not possible to look there.".
 
-  -- what_is, where_is:
-  HAS illegal_parameter_what_sg "That's not something I know about.".
-  HAS illegal_parameter_what_pl "Those are not something I know about.".
-
-  -- who_is:
-  HAS illegal_parameter_who_sg  "That's not somebody I know about.".
-  HAS illegal_parameter_who_pl  "Those are not somebody I know about.".
 --<
 
 
@@ -1326,27 +1321,6 @@ ADD TO EVERY blocco_definizioni
 
 --| Attribute checks
 --| ~~~~~~~~~~~~~~~~
---|
---| The general check message for when an instance cannot be used with the verb :
-
-  -- (numerous):
-  HAS check_obj_suitable_sg "That's not something you can $v.".
-  HAS check_obj_suitable_pl "Those are not something you can $v.".
-
---| Variations of the above message, needed for example when a preposition is
---| required after the verb:
-
-  -- ask_for:
-  HAS check_obj2_suitable_for_sg "That's not something you can $v for.".
-  HAS check_obj2_suitable_for_pl "Those are not something you can $v for.".
-
-  -- turn_off, switch_off:
-  HAS check_obj_suitable_off_sg "That's not something you can $v off.".
-  HAS check_obj_suitable_off_pl "Those are not something you can $v off.".
-
-  -- examine:
-  HAS check_obj_suitable_examine_sg "That's not something you can examine.".
-  HAS check_obj_suitable_examine_pl "Those are not something you can examine.".
 
 
 --| Other attribute checks:
@@ -1354,23 +1328,6 @@ ADD TO EVERY blocco_definizioni
   -- empty_in, pour_in, put_in, throw_in:
   HAS check_obj_allowed_in_sg "$+1 doesn't belong in $+2.".
   HAS check_obj_allowed_in_pl "$+1 don't belong in $+2.".
-
-
-  -- look_behind, look_in, look_under:
-  HAS check_obj_suitable_there "It's not possible to $v there.".
-
-  -- throw_in, tie_to:
-  HAS check_obj2_suitable_there "It's not possible to $v anything there.".
-
-
---| Location and containment checks for actors and objects
---| ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
---| Location and containment checks for the hero:
-
-  -- attack, attack_with, kick, lift, shoot, shoot_with:
-  HAS check_obj_not_in_hero1 "It doesn't make sense to $v something you're holding.".
 
 
 --| Additional checks for classes

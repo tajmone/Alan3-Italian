@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.22.1-Alpha, 2019-08-24: Alan 3.0beta6 build 2022
+--| v0.22.2-Alpha, 2019-08-24: Alan 3.0beta6 build 2022
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -2387,11 +2387,9 @@ ADD TO EVERY ACTOR
       AND ogg IS esaminabile
         ELSE
           IF ogg IS NOT plurale
---                                                                              TRANSLATE!
--- @NOTA: Qui servirebbe un messaggio ad hoc!
-            THEN SAY mia_AT:check_obj2_suitable_for_sg.
-            ELSE SAY mia_AT:check_obj2_suitable_for_pl.
-          END IF.
+            THEN SAY mia_AT:ogg2_inadatto_sg. "chiedere che ti venga"
+            ELSE SAY mia_AT:ogg2_inadatto_pl. "chiedere che ti vengano"
+          END IF. "dat$$" SAY ogg:vocale. "."
       AND ogg NOT IN hero
         ELSE SAY mia_AT:ogg2_già_posseduto.
       AND CURRENT LOCATION IS illuminato
@@ -3971,9 +3969,9 @@ SYNTAX esamina = esamina (ogg)
   WHERE ogg IsA THING
     ELSE
       IF ogg IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_examine_sg.
-        ELSE SAY mia_AT:illegal_parameter_examine_pl.
-      END IF.
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF. "esaminare."
 
        esamina = guarda (ogg).
 
@@ -3985,13 +3983,12 @@ ADD TO EVERY THING
   VERB esamina
     CHECK mia_AT CAN esaminare
       ELSE SAY mia_AT:azione_bloccata.
-        AND ogg IS esaminabile
-          ELSE
-            IF ogg IS NOT plurale
-    --                                                                              TRANSLATE!
-              THEN SAY mia_AT:check_obj_suitable_examine_sg.
-              ELSE SAY mia_AT:check_obj_suitable_examine_pl.
-            END IF.
+    AND ogg IS esaminabile
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF. "esaminare."
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND ogg IS NOT scenario
@@ -4107,9 +4104,8 @@ END ADD TO.
 
 
 SYNTAX guarda_dietro = guarda dietro (bulk)
---                                                                              TRANSLATE!
   WHERE bulk IsA THING
-    ELSE SAY mia_AT:illegal_parameter_there.
+    ELSE SAY  mia_AT:impossibile_guardare. "dietro $+1."
 -- @TODO: Aggiungi controllo per suoni, oppure implementa il verbo sulla classe
 --        dei suoni.                                                            FIXME!
   guarda_dietro = guarda dietro a (bulk).
@@ -4120,7 +4116,6 @@ ADD TO EVERY THING
       ELSE SAY mia_AT:azione_bloccata.
     AND bulk IS esaminabile
       ELSE SAY  mia_AT:impossibile_guardare. "dietro $+1."
-             -- check_obj_suitable_there  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
 --                                                                              TRANSLATE!
@@ -4204,13 +4199,10 @@ END ADD TO.
 
 
 SYNTAX guarda_in = guarda 'in' (cont)
--- @TODO: Can these be joined in a single WHERE?                                OPTIMIZE?
-    WHERE cont IsA OBJECT
-      ELSE SAY  mia_AT:impossibile_guardare. "dentro $+1."
-            --  illegal_parameter_there  OF mia_AT.
-    AND cont IsA CONTAINER
-      ELSE SAY  mia_AT:impossibile_guardare. "dentro $+1."
-            --  illegal_parameter_there  OF mia_AT.
+  WHERE cont IsA OBJECT
+    ELSE SAY  mia_AT:impossibile_guardare. "dentro $+1."
+  AND cont IsA CONTAINER
+    ELSE SAY  mia_AT:impossibile_guardare. "dentro $+1."
 
 
 ADD TO EVERY OBJECT
@@ -4219,7 +4211,6 @@ ADD TO EVERY OBJECT
       ELSE SAY mia_AT:azione_bloccata.
     AND cont IS esaminabile
       ELSE SAY  mia_AT:impossibile_guardare. "dentro $+1."
-            --  check_obj_suitable_there  OF mia_AT.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND cont IS aperto
@@ -4258,8 +4249,7 @@ END ADD TO.
 
 SYNTAX guarda_sotto = guarda sotto (bulk)
   WHERE bulk IsA THING
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:illegal_parameter_there.
+    ELSE SAY  mia_AT:impossibile_guardare. "sotto $+1."
 
   guarda_sotto = guarda sotto a (bulk).
 
@@ -4268,9 +4258,8 @@ ADD TO EVERY THING
   VERB guarda_sotto
     CHECK mia_AT CAN guardare_sotto
       ELSE SAY mia_AT:azione_bloccata.
---                                                                              TRANSLATE!
     AND bulk IS esaminabile
-      ELSE SAY mia_AT:check_obj_suitable_there.
+      ELSE SAY  mia_AT:impossibile_guardare. "sotto $+1."
 --                                                                              TRANSLATE!
     AND bulk <> hero
       ELSE SAY mia_AT:check_obj_not_hero8.
@@ -6921,17 +6910,14 @@ ADD TO EVERY OBJECT
           END IF.
       AND proiettile IS prendibile
         ELSE SAY  mia_AT:ogg1_non_posseduto.
---                                                                              TRANSLATE!
       AND png IS esaminabile
-        ELSE SAY mia_AT:check_obj_suitable_at.
+        ELSE
+          IF png IS NOT plurale
+            THEN SAY mia_AT:ogg2_inadatto_A_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_A_pl.
+          END IF. "lanciare cose."
       AND proiettile <> png
         ELSE SAY mia_AT:azione_insensata.
--- @NOTA: Come è possibile che png possa essere IN hero dato che                FIXME!
---        è sempre un attore? Vedi:
---        https://github.com/AnssiR66/AlanStdLib/issues/46
---    AND png NOT IN hero
---      --              "You are carrying $+2."
---      ELSE SAY mia_AT:check_obj2_not_in_hero1.
       AND png <> hero
         ELSE SAY mia_AT:azione_insensata.
       AND CURRENT LOCATION IS illuminato
@@ -7012,14 +6998,17 @@ ADD TO EVERY OBJECT
         ELSE
           IF proiettile IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY mia_AT:ogg1_inadatto_sg. "lanciare."
-            ELSE SAY mia_AT:ogg1_inadatto_pl. "lanciare."
-          END IF.
+            THEN SAY mia_AT:ogg1_inadatto_sg.
+            ELSE SAY mia_AT:ogg1_inadatto_pl.
+          END IF. "lanciare."
       AND proiettile IS prendibile
         ELSE SAY  mia_AT:ogg1_non_posseduto.
---                                                                              TRANSLATE!
       AND bersaglio IS esaminabile
-        ELSE SAY mia_AT:check_obj_suitable_at.
+        ELSE
+          IF bersaglio IS NOT plurale
+            THEN SAY mia_AT:ogg2_inadatto_CONTRO_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_CONTRO_pl.
+          END IF. "lanciare cose."
       AND proiettile <> bersaglio
         ELSE SAY mia_AT:azione_insensata.
       AND bersaglio NOT IN hero
@@ -7158,7 +7147,6 @@ SYNTAX lancia_in = lancia (proiettile) 'in' (cont)
             ELSE SAY mia_AT:ogg2_inadatto_IN_pl.
           END IF. "lanciare cose."
         END IF.
---                                                                              TRANSLATE!
   AND cont IsA CONTAINER
     ELSE
       IF cont IS NOT plurale
@@ -7176,14 +7164,18 @@ ADD TO EVERY OBJECT
         ELSE
           IF proiettile IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY mia_AT:ogg1_inadatto_sg. "lanciare."
-            ELSE SAY mia_AT:ogg1_inadatto_pl. "lanciare."
-          END IF.
+            THEN SAY mia_AT:ogg1_inadatto_sg.
+            ELSE SAY mia_AT:ogg1_inadatto_pl.
+          END IF. "lanciare."
       AND proiettile IS prendibile
           ELSE SAY  mia_AT:ogg1_non_posseduto.
---                                                                              TRANSLATE!
       AND cont IS esaminabile
-          ELSE SAY mia_AT:check_obj2_suitable_there.
+        ELSE
+          IF cont IS NOT plurale
+          --  "$+1 non [è/sono] qualcosa in cui poter"
+            THEN SAY mia_AT:ogg2_inadatto_IN_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_IN_pl.
+          END IF. "lanciare cose."
       AND proiettile <> cont
         ELSE SAY mia_AT:azione_insensata.
       AND cont <> hero
@@ -7524,9 +7516,12 @@ ADD TO EVERY OBJECT
         "sollevare." --# alzare?
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
---                                                                              TRANSLATE!
     AND ogg NOT IN hero
-      ELSE SAY mia_AT:check_obj_not_in_hero1.
+      ELSE
+        IF ogg IS NOT indossato
+          THEN SAY mia_AT:azione_insensata_ogg1_portato.
+          ELSE SAY mia_AT:azione_insensata_ogg1_indossato.
+        END IF.
     AND ogg IS spostabile
       ELSE -- "$1 [è/sono] fissat* al [suo/loro] posto"
         IF ogg IS NOT femminile
@@ -8024,10 +8019,9 @@ ADD TO EVERY THING
     AND bersaglio IS esaminabile
       ELSE
         IF bersaglio IS NOT plurale
---                                                                              TRANSLATE!
-          THEN SAY mia_AT:check_obj_suitable_sg.
-          ELSE SAY mia_AT:check_obj_suitable_pl.
-        END IF.
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF. "prendere a calci."
     AND bersaglio <> hero
       ELSE SAY mia_AT:azione_insensata.
     AND bersaglio NOT IN hero
@@ -9687,14 +9681,14 @@ SYNTAX gira = gira (ogg)
     ELSE
       IF mia_AT CAN NOT girare
         THEN
+-- Perché in questo caso non usa il messaggio standard??                        CHECK!
           "The verb '$v' is not in your vocabulary."
         ELSE
           IF ogg IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
             THEN SAY mia_AT:ogg1_inadatto_sg.
             ELSE SAY mia_AT:ogg1_inadatto_pl.
-          END IF.
-          "girare." --# ruotare?
+          END IF. "girare." --# ruotare?
       END IF.
 
 ADD TO EVERY OBJECT
@@ -9704,17 +9698,15 @@ ADD TO EVERY OBJECT
     AND ogg IS esaminabile
       ELSE
         IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-          THEN SAY mia_AT:check_obj_suitable_sg.
-          ELSE SAY mia_AT:check_obj_suitable_pl.
-        END IF.
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF. "girare." --# ruotare?
     AND ogg IS spostabile
       ELSE
         IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-          THEN SAY mia_AT:check_obj_suitable_sg.
-          ELSE SAY mia_AT:check_obj_suitable_pl.
-        END IF.
+          THEN SAY mia_AT:ogg1_inadatto_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_pl.
+        END IF. "girare." --# ruotare?
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -9734,6 +9726,7 @@ ADD TO EVERY OBJECT
         END IF.
 
     DOES
+--                                                                              TRANSLATE!
       IF ogg DIRECTLY IN hero
         THEN "You turn" SAY THE ogg. "in your hands, noticing nothing special."
         ELSE "That wouldn't accomplish anything."
@@ -10058,6 +10051,12 @@ END ADD TO.
 --| * [ ] Descrizione `lega_a`.
 --<
 
+-- @TODO: Perché ogg è solo OBJECT? E se volessimo legare un ACTOR ad           CHECK!
+--        un'albero, per esempio?
+
+-- @NOTA: Se/quando sarà possibile usare OGG che sono ACTOR con questo verbo,   CHECK!
+--        sarà il caso di fare controlli per Hero in parametri?
+
 -- @NOTA: In questo verbo non ho messo il controllo 'IF ogg = hero', perché in
 --        fondo non è del tutto insensato cercare di usare "lega me a Mario";
 --        quindi anche se l'azione è bloccata non bisognerebbe dichiararla una
@@ -10080,12 +10079,16 @@ ADD TO EVERY THING
         ELSE
           IF ogg IS NOT plurale
             --  "$+1 non [è/sono] qualcosa che puoi"
-            THEN SAY mia_AT:ogg1_inadatto_sg. "legare."
-            ELSE SAY mia_AT:ogg1_inadatto_pl. "legare."
-          END IF.
---                                                                              TRANSLATE!
+            THEN SAY mia_AT:ogg1_inadatto_sg.
+            ELSE SAY mia_AT:ogg1_inadatto_pl.
+          END IF. "legare."
       AND bersaglio IS esaminabile
-        ELSE SAY mia_AT:check_obj2_suitable_there.
+        ELSE
+          IF bersaglio IS NOT plurale
+            --  "$+1 non [è/sono] qualcosa a cui poter"
+            THEN SAY mia_AT:ogg2_inadatto_A_sg.
+            ELSE SAY mia_AT:ogg2_inadatto_A_pl.
+          END IF. "legare cose."
       AND ogg <> bersaglio
         ELSE SAY mia_AT:azione_insensata.
       AND ogg IS prendibile
@@ -10963,11 +10966,7 @@ END ADD TO.
 
 SYNTAX  chi_è = chi è (png)!
   WHERE png IsA ACTOR
-    ELSE
-      IF png IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_who_sg.
-        ELSE SAY mia_AT:illegal_parameter_who_pl.
-      END IF.
+    ELSE SAY mia_AT:ogg1_sconosciuto.
 
         chi_è = chi sono (png)!.
 
@@ -10976,6 +10975,8 @@ ADD TO EVERY ACTOR
   VERB chi_è
     CHECK mia_AT CAN domandare_chi_è
       ELSE SAY mia_AT:azione_bloccata.
+    AND png <> hero
+      ELSE "Tu sei te. Chi altri?"
     DOES
       "Dovrai scoprirlo da te!"
     END VERB chi_è.
@@ -11000,7 +11001,7 @@ VERB chi_sono_io
   CHECK mia_AT CAN domandare_chi_sono_io
     ELSE SAY mia_AT:azione_bloccata.
   DOES
---  @TRASFORMA IN ATTRIBUTO RISPOSTA:                                           TODO!
+    -- @TODO: Hero maschile femminile, servirà vocale giusta                    TODO!
     "Hai provato a esaminare te stesso? Forse ti aiuterebbe."
 END VERB chi_sono_io.
 
@@ -11034,11 +11035,7 @@ END VERB chi_sono_io.
 
 SYNTAX  cosa_è = cosa è (ogg)!
   WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_what_sg.
-        ELSE SAY mia_AT:illegal_parameter_what_pl.
-      END IF.
+    ELSE SAY mia_AT:ogg1_sconosciuto.
 
         cosa_è = 'cos''è' (ogg)!.
         cosa_è =  cosa sono (ogg)!.
@@ -11051,6 +11048,8 @@ ADD TO EVERY THING
   VERB cosa_è
     CHECK mia_AT CAN domandare_cosa_è
       ELSE SAY mia_AT:azione_bloccata.
+    AND ogg <> hero
+      ELSE "Te! Che altro?"
     DOES
       "Dovrai scoprirlo da te!"
     END VERB cosa_è.
@@ -11081,7 +11080,7 @@ VERB cosa_sono_io
   CHECK mia_AT CAN domandare_cosa_sono_io
     ELSE SAY mia_AT:azione_bloccata.
   DOES
---  @TRASFORMA IN ATTRIBUTO RISPOSTA:                                           TODO!
+    -- @TODO: Hero maschile femminile, servirà vocale giusta                    TODO!
     "Hai provato a esaminare te stesso? Forse ti aiuterebbe."
 END VERB cosa_sono_io.
 
@@ -11116,11 +11115,7 @@ END VERB cosa_sono_io.
 
 SYNTAX  dove_è = dove è (ogg)!
   WHERE ogg IsA THING
-    ELSE
-      IF ogg IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_what_sg.
-        ELSE SAY mia_AT:illegal_parameter_what_pl.
-      END IF.
+    ELSE SAY mia_AT:ogg1_sconosciuto.
 
         dove_è = 'dov''è' (ogg)!.
         dove_è = dove sono (ogg)!.
@@ -11132,6 +11127,8 @@ ADD TO EVERY THING
   VERB dove_è
     CHECK mia_AT CAN domandare_dove_è
       ELSE SAY mia_AT:azione_bloccata.
+    AND ogg <> hero
+      ELSE "Ti trovi qui. Dove altro sennò?"
     AND ogg NOT AT hero
       ELSE
         IF ogg IS NOT plurale
