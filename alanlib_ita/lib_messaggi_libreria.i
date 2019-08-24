@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.22.0-Alpha, 2019-08-22: Alan 3.0beta6 build 2022
+--| v0.22.1-Alpha, 2019-08-24: Alan 3.0beta6 build 2022
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
@@ -149,12 +149,6 @@ ADD TO EVERY blocco_definizioni
 --| questo modulo, in attesa di essere riordinati.
 --| ============================================================================
 
---| Il giocatore non possiede un oggetto richiesto per l'azione:
-
-  -- VERBI: svuota_in, versa_in, metti_in, lancia_in
-  -- ORIGINAL EN:  check_obj_in_hero  +  check_obj2_in_hero
-  HAS non_possiedi_ogg1 "Non possiedi $+1.".
-  HAS non_possiedi_ogg2 "Non possiedi $+2.".
 
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -169,23 +163,15 @@ ADD TO EVERY blocco_definizioni
 --| L'eroe è seduto:
 
   -- VERBI: balla, nuota, salta, salta_in, salta_su.
-  -- ORIGINAL EN:  check_hero_not_sitting1
+  -- ORIGINAL EN:  check_hero_not_sitting1/2/3
   HAS impossibile_da_seduto "Non puoi farlo da seduto.".
 
-
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_hero_not_sitting2 "It is difficult to $v anything while sitting down.". -- (with many transitive verbs)
-  HAS check_hero_not_sitting3 "It is difficult to $v anywhere while sitting down.". -- (with many verbs of motion)
 
 --| L'eroe è sdraiato:
 
   -- VERBI: balla, salta, salta_in, salta_su | swim.
-  -- ORIGINAL EN:  check_hero_not_lying_down1
+  -- ORIGINAL EN:  check_hero_not_lying_down1/2/3
   HAS impossibile_da_sdraiato "Non puoi farlo da sdraiato.".
-
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_hero_not_lying_down2 "It is difficult to $v anything while lying down.".  -- (with many transitive verbs)
-  HAS check_hero_not_lying_down3 "It is difficult to $v anywhere while lying down.".  -- (with many verbs of motion)
 
 --~============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -211,8 +197,7 @@ ADD TO EVERY blocco_definizioni
   HAS check_obj_not_hero5  "You don't need to be freed.".                       -- free
   HAS check_obj_not_hero7  "Turning your head, you notice nothing unusual behind yourself.".   -- look_behind
   HAS check_obj_not_hero8  "You notice nothing unusual under yourself.".        -- look_under
-  HAS check_obj2_not_hero3 "You can't $v things to yourself.".                  -- give, tie_to
---<
+ --<
 
 
 -->=============================================================================
@@ -428,6 +413,10 @@ ADD TO EVERY blocco_definizioni
   -- ORIGINAL EN:  illegal_parameter_sg/pl  +  check_obj_suitable_sg/pl
   HAS ogg1_inadatto_sg  "$+1 non è qualcosa che puoi".
   HAS ogg1_inadatto_pl  "$+1 non sono qualcosa che puoi".
+
+  -- ORIGINAL EN: (nessuno)
+  HAS ogg2_inadatto_sg  "$+2 non è qualcosa che puoi".
+  HAS ogg2_inadatto_pl  "$+2 non sono qualcosa che puoi".
 --<
 
   --@NOTA: | S3RioUs JokER consiglia di semplificare con la frase:
@@ -458,6 +447,15 @@ ADD TO EVERY blocco_definizioni
 
 
 --~=============================================================================
+--| ===== Preposizione "`DI`"
+--~=============================================================================
+
+  -- VERBI: spara_a.
+  -- ORIGINAL EN: illegal_parameter_about_sg/pl
+  HAS ogg2_inadatto_DI_sg  "$+2 non è qualcosa di cui poter".
+  HAS ogg2_inadatto_DI_pl  "$+2 non sono qualcosa di cui poter".
+
+--~=============================================================================
 --| ===== Preposizione "`A`"
 --~=============================================================================
 
@@ -471,10 +469,10 @@ ADD TO EVERY blocco_definizioni
   HAS ogg2_inadatto_A_sg  "$+2 non è qualcosa a cui poter".
   HAS ogg2_inadatto_A_pl  "$+2 non sono qualcosa a cui poter".
 
-  HAS illegal_parameter_at "You can't $v anything at $+2.".   -- fire_at, throw_at
-
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
+
   HAS check_obj_suitable_at "You can't $v anything at $+2.".  -- fire_at, throw_at, throw_to
+
 
 --~=============================================================================
 --| ===== Preposizione "`DA`"
@@ -503,6 +501,7 @@ ADD TO EVERY blocco_definizioni
   -- ORIGINAL EN: (nessuno)
   HAS ogg2_inadatto_IN_sg  "$+2 non è qualcosa in cui poter".
   HAS ogg2_inadatto_IN_pl  "$+2 non sono qualcosa in cui poter".
+
 
 --~=============================================================================
 --| ===== Preposizione "`CON`"
@@ -1050,17 +1049,7 @@ ADD TO EVERY blocco_definizioni
   -- ORIGINAL EN:  check_obj_not_hero4
   HAS sei_già_qui  "Ti trovi già qui!".
 
-
---| il giocatore è già in una certa una postura
-
-
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-
-  HAS check_hero_not_sitting4    "You're sitting down already.". -- sit, sit_on
-  HAS check_hero_not_lying_down4 "You're lying down already.".   -- lie_down, lie_in
 --<
-
-  -- @NOTA: In futuro differenziare tra eroe ed eroina in questi messaggi.      FIXME!
 
 -->============================================================================
 --~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -1075,7 +1064,7 @@ ADD TO EVERY blocco_definizioni
   -- VERBI: xxx.
   -- ORIGINAL EN: (nessuno)
   HAS ogg1_già_sg  "$+1 è già".
-  HAS ogg1_già_pl  "$+1 è già".
+  HAS ogg1_già_pl  "$+1 sono già".
 
 
 
@@ -1264,12 +1253,6 @@ ADD TO EVERY blocco_definizioni
   -- ORIGINAL EN: (check_liquid_vessel_not_cont)
   HAS impossibile_maneggiare_liq1  "Non puoi maneggiare $+1 a mani nude.".
 
-
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-
-  -- liquid: take_from
-  -- HAS check_liquid_vessel_not_cont "You can't carry $+1 around in your bare hands.".
-
 --<
 
 
@@ -1327,62 +1310,6 @@ ADD TO EVERY blocco_definizioni
   -- who_is:
   HAS illegal_parameter_who_sg  "That's not somebody I know about.".
   HAS illegal_parameter_who_pl  "Those are not somebody I know about.".
---<
-
-
--->============================================================================
---~\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
---~-----------------------------------------------------------------------------
---| === Messaggi vari
---~-----------------------------------------------------------------------------
---~/////////////////////////////////////////////////////////////////////////////
---~============================================================================
---|
---| Questi messaggi non sono ancora stati ordinati per gruppo di appartenenza.
-
---| [NOTE]
---| ============================================================================
---| Siccome in italiano serve l'infinito qui, questi messaggi non serviranno ma
---| andranno suddivisi in diverse varianti, a seconda del verbo cui si riferisco;
---| salvo eccezzioni che possano essere generalizzate.
---| ============================================================================
-
-
---| The general message for when a parameter is not suitable with the verb:
-
-  HAS illegal_parameter_sg "That's not something you can $v.".        -- (numerous)
-  HAS illegal_parameter_pl "Those are not something you can $v.".
-
-
---| Variations of the above message when a preposition is required after the verb:
-
-  -- ask_about, tell_about, think_about:
-  HAS illegal_parameter_about_sg "That's not something you can $v about.".
-  HAS illegal_parameter_about_pl "Those are not something you can $v about.".
-
-  -- ask_for:
-  HAS illegal_parameter_for_sg   "That's not something you can $v for.".
-  HAS illegal_parameter_for_pl   "Those are not something you can $v for.".
-
-  -- take_from:
-  HAS illegal_parameter2_from_sg "That's not something you can take things from.".
-  HAS illegal_parameter2_from_pl "Those are not something you can take things from.".
-
-  -- dive_in, jump_in, lie_in, swim_in:
-  HAS illegal_parameter_in_sg    "That's not something you can $v in.".
-  HAS illegal_parameter_in_pl    "Those are not something you can $v in.".
-
-  -- get_off, switch_off, turn_off:
-  HAS illegal_parameter_off_sg   "That's not something you can $v off.".
-  HAS illegal_parameter_off_pl   "Those are not something you can $v off.".
-
-  -- listen_to, talk_to:
-  HAS illegal_parameter_to_sg    "That's not something you can $v to.".
-  HAS illegal_parameter_to_pl    "Those are not something you can $v to.".
-
-  -- give, show, tell, tie_to, throw_to:
-  HAS illegal_parameter2_to_sg   "That's not something you can $v things to.".
-  HAS illegal_parameter2_to_pl   "Those are not something you can $v things to.".
 --<
 
 

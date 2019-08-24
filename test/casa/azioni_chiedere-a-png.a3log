@@ -48,13 +48,16 @@ C'è un giardiniere qui. C'è un gatto qui.
 Mr Nicky ti segue.
 
 > chiedi al giardiniere 1
-That's not something you can chiedi for.
+1 non è qualcosa che puoi chiedere che ti venga dato.
 
 > chiedi al giardiniere il cinguettio
 That's not something you can chiedi for.
 
 > chiedi al giardiniere la vicina
-That's not something you can chiedi for.
+La vicina non è qualcosa che puoi chiedere che ti venga data.
+
+> chiedi al giardiniere me
+Questo non ha alcun senso.
 
 > ; ==============================================================================
 > ; TESTA 'VERB CHECK' FAILURES

@@ -165,13 +165,13 @@ There's no need to lie down in il tavolo.
 There's no need to lie down in la sedia.
 
 > sdraiati nella pera
-That's not something you can sdraiati in.
+La pera non è qualcosa in cui potersi sdraiare.
 
 > sdraiati nel pavimento
 There's no need to lie down in il pavimento.
 
 > sdraiati nel soffitto
-That's not something you can sdraiati in.
+Il soffitto non è qualcosa in cui potersi sdraiare.
 
 > ; ==============================================================================
 > ; TESTA VERBO 'siediti'
@@ -182,7 +182,7 @@ That's not something you can sdraiati in.
 ti siedi sulla sedia.
 
 > siediti
-You're sitting down already.
+Sei già seduto!
 
 > ; ==============================================================================
 > ; TESTA VERBO 'sdraiati'
@@ -202,7 +202,7 @@ Mr Nicky ti segue.
 Ti alzi e ti sdrai sul lettino.
 
 > sdraiati
-You're lying down already.
+Sei già sdraiato!
 
 > 
 

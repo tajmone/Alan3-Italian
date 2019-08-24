@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.22.0-Alpha, 2019-08-22: Alan 3.0beta6 build 2022
+--| v0.22.1-Alpha, 2019-08-24: Alan 3.0beta6 build 2022
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -1244,7 +1244,7 @@ ADD TO EVERY OBJECT
               END IF.
           END IF.
       AND strum IN hero
-        ELSE SAY mia_AT:non_possiedi_ogg2.
+        ELSE SAY mia_AT:ogg2_non_posseduto.
       AND ogg IS NOT aperto
         ELSE
           IF ogg IS NOT femminile
@@ -1460,7 +1460,7 @@ ADD TO EVERY OBJECT
               END IF.
           END IF.
       AND chiave IN hero
-        ELSE SAY mia_AT:non_possiedi_ogg2.
+        ELSE SAY mia_AT:ogg2_non_posseduto.
       AND chiave = ogg:chiave_abbinata
         ELSE SAY mia_AT:chiave2_non_blocca_ogg1.
 
@@ -1610,7 +1610,7 @@ ADD TO EVERY OBJECT
       AND ogg <> strum
         ELSE SAY mia_AT:azione_insensata.
       AND strum IN hero
-        ELSE SAY mia_AT:non_possiedi_ogg2.
+        ELSE SAY mia_AT:ogg2_non_posseduto.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -1735,7 +1735,7 @@ ADD TO EVERY OBJECT
       AND ogg <> strum
         ELSE SAY mia_AT:azione_insensata.
       AND strum IN hero
-        ELSE SAY mia_AT:non_possiedi_ogg2.
+        ELSE SAY mia_AT:ogg2_non_posseduto.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -1892,7 +1892,7 @@ ADD TO EVERY OBJECT
          END IF.
          "sbloccare" SAY THE ogg. "."
       AND chiave IN hero
-          ELSE SAY mia_AT:non_possiedi_ogg2.
+          ELSE SAY mia_AT:ogg2_non_posseduto.
       AND ogg <> chiave
         ELSE SAY mia_AT:azione_insensata.
       AND CURRENT LOCATION IS illuminato
@@ -2279,7 +2279,7 @@ ADD TO EVERY THING
       AND strum <> hero
         ELSE SAY mia_AT:azione_insensata.
       AND strum IN hero
-        ELSE SAY mia_AT:non_possiedi_ogg2.
+        ELSE SAY mia_AT:ogg2_non_posseduto.
       AND ogg IS inanimato
         ELSE
           IF ogg IS NOT plurale
@@ -2360,11 +2360,13 @@ SYNTAX  chiedi = chiedi a (png) (ogg)
       END IF.
   AND ogg IsA OBJECT
     ELSE
-      IF ogg IS NOT plurale
---                                                                              TRANSLATE!
--- @NOTA: Qui servirebbe un messaggio ad hoc!
-        THEN SAY mia_AT:illegal_parameter_for_sg.
-        ELSE SAY mia_AT:illegal_parameter_for_pl.
+      IF ogg = hero
+        THEN SAY mia_AT:azione_insensata.
+      ELSE
+        IF ogg IS NOT plurale
+          THEN SAY mia_AT:ogg2_inadatto_sg. "chiedere che ti venga"
+          ELSE SAY mia_AT:ogg2_inadatto_pl. "chiedere che ti vengano"
+        END IF. "dat$$" SAY ogg:vocale. "."
       END IF.
 
         chiedi = chiedi (ogg) a (png).
@@ -2596,10 +2598,9 @@ SYNTAX  domanda = domanda a (png) di (argomento)!
   AND argomento IsA THING
     ELSE
       IF argomento IS NOT plurale
---                                                                              TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter_about_sg.
-        ELSE SAY mia_AT:illegal_parameter_about_pl.
-      END IF.
+        THEN SAY mia_AT:ogg2_inadatto_DI_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_DI_pl.
+      END IF. "domandare."
 
         domanda = domanda a (png) riguardo (argomento)!.
         domanda = chiedi a (png) di (argomento)!.
@@ -2736,9 +2737,9 @@ SYNTAX  racconta = racconta a (png) di (argomento)!
   AND argomento IsA THING
     ELSE
       IF argomento IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_about_sg.
-        ELSE SAY mia_AT:illegal_parameter_about_pl.
-      END IF.
+        THEN SAY mia_AT:ogg2_inadatto_DI_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_DI_pl.
+      END IF. "raccontare."
 
         racconta = parla a (png) di (argomento)!.
         racconta = parla con (png) di (argomento)!.
@@ -4682,7 +4683,7 @@ ADD TO EVERY OBJECT
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND strum IN hero
-        ELSE SAY mia_AT:non_possiedi_ogg2.
+        ELSE SAY mia_AT:ogg2_non_posseduto.
       AND ogg IS raggiungibile AND ogg IS NOT distante
         ELSE
           IF ogg IS NOT raggiungibile
@@ -4868,7 +4869,7 @@ ADD TO EVERY OBJECT
           END IF.
           "tagliare" SAY THE ogg. "."
       AND strum IN hero
-        ELSE SAY mia_AT:non_possiedi_ogg2.
+        ELSE SAY mia_AT:ogg2_non_posseduto.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -4938,10 +4939,9 @@ SYNTAX dai_a = dai (ogg) a (png)
   AND png IsA ACTOR
     ELSE
       IF png IS NOT plurale
-        ---> @TODO!!                                                            TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter2_to_sg.
-        ELSE SAY mia_AT:illegal_parameter2_to_pl.
-      END IF.
+        THEN SAY mia_AT:ogg2_inadatto_A_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_A_pl.
+      END IF. "dare cose."
 
 
 SYNONYMS porgi, offri = dai.
@@ -4960,9 +4960,8 @@ ADD TO EVERY OBJECT
         --        essere posseduto dal giocatore.
       AND ogg <> png
         ELSE SAY mia_AT:azione_insensata.
---                                                                              TRANSLATE!
       AND png <> hero
-        ELSE SAY mia_AT:check_obj2_not_hero3.
+        ELSE SAY mia_AT:azione_insensata.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND ogg NOT IN png
@@ -5049,13 +5048,13 @@ ADD TO EVERY OBJECT
       ELSE SAY mia_AT:azione_bloccata.
 -- >>> dev-vestario: tweaked! VERB lascia >>>
     AND ogg IN hero
-      ELSE SAY mia_AT:non_possiedi_ogg1.
+      ELSE SAY mia_AT:ogg1_non_posseduto.
 -- >>> codice originale >>>
     -- AND ogg IN hero
     --   ELSE
     --     IF ogg IN abbigliamento
     --       THEN SAY mia_AT:indumento_andrebbe_rimosso.
-    --       ELSE SAY mia_AT:non_possiedi_ogg1.
+    --       ELSE SAY mia_AT:ogg1_non_posseduto.
     --     END IF.
 -- <<< codice originale <<<
 -- >>> dev-vestario: added! VERB lascia >>>
@@ -5709,7 +5708,7 @@ ADD TO EVERY OBJECT
     CHECK mia_AT CAN mettere
       ELSE SAY mia_AT:azione_bloccata.
     AND ogg IN HERO
-      ELSE SAY mia_AT:non_possiedi_ogg1.
+      ELSE SAY mia_AT:ogg1_non_posseduto.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     DOES
@@ -6331,12 +6330,10 @@ ADD TO EVERY supporto
               ELSE SAY mia_AT:ogg1_distante_pl.
             END IF.
         END IF.
---                                                                              TODO!
     AND hero IS NOT seduto
-      ELSE SAY mia_AT:check_hero_not_sitting3.
---                                                                              TODO!
+      ELSE SAY mia_AT:impossibile_da_seduto.
     AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down3.
+      ELSE SAY mia_AT:impossibile_da_sdraiato.
     DOES
       IF superficie IS NOT plurale
         THEN SAY mia_AT:ogg1_inadatto_SU_sg.
@@ -6423,12 +6420,14 @@ END ADD TO.
 SYNTAX scendi_da = scendi da (superficie)
   WHERE superficie IsA supporto
     ELSE
-      IF superficie IS NOT plurale
---                                                                              TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter_off_sg.
-        ELSE SAY mia_AT:illegal_parameter_off_pl.
+      IF superficie = hero
+        THEN SAY mia_AT:azione_insensata.
+      ELSE
+        IF superficie IS NOT plurale
+          THEN SAY mia_AT:ogg1_inadatto_DA_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_DA_pl.
+        END IF. "scendere."
       END IF.
-
 -- @TODO: Questa soluzione è temporanea, finché i conflitti tra il              FIXME!
 --        verbo 'dare' imperativo e la preposizione art. 'dai' non
 --        sarà risolto (al momento 'dai' non è sinonimo di 'da'!).
@@ -6480,9 +6479,9 @@ SYNONYMS coricati = sdraiati.
 VERB sdraiati
   CHECK mia_AT CAN sdraiarsi
     ELSE SAY mia_AT:azione_bloccata.
---                                                                              TRANSLATE!
   AND hero IS NOT sdraiato
-    ELSE SAY mia_AT:check_hero_not_lying_down4.
+    -- @TODO: Hero maschile femminile, servirà vocale giusta                    TODO!
+    ELSE "Sei già sdraiato!"
   DOES
 --                                                                              TRANSLATE!
     "There's no need to lie down right now."
@@ -6520,27 +6519,29 @@ END VERB sdraiati.
 SYNTAX  sdraiati_in = sdraiati 'in' (cont)
   WHERE cont IsA OBJECT
     ELSE
---                                                                              TRANSLATE!
-      IF cont IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_in_sg.
-        ELSE SAY mia_AT:illegal_parameter_in_pl.
+      IF cont = hero
+        THEN SAY mia_AT:azione_insensata.
+      ELSE
+        IF cont IS NOT plurale
+          THEN SAY mia_AT:ogg1_inadatto_IN_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_IN_pl.
+        END IF. "$$si sdraiare."
       END IF.
   AND cont IsA CONTAINER
     ELSE
---                                                                              TRANSLATE!
       IF cont IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_in_sg.
-        ELSE SAY mia_AT:illegal_parameter_in_pl.
-      END IF.
+        THEN SAY mia_AT:ogg1_inadatto_IN_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_IN_pl.
+      END IF. "$$si sdraiare."
 
 
 ADD TO EVERY OBJECT
   VERB sdraiati_in
     CHECK mia_AT CAN sdraiarsi_in
       ELSE SAY mia_AT:azione_bloccata.
---                                                                              TRANSLATE!
     AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down4.
+      -- @TODO: Hero maschile femminile, servirà vocale giusta                  TODO!
+      ELSE "Sei già sdraiato!"
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND cont IS raggiungibile AND cont IS NOT distante
@@ -6609,9 +6610,9 @@ ADD TO EVERY OBJECT
   VERB sdraiati_su
     CHECK mia_AT CAN sdraiarsi_su
       ELSE SAY mia_AT:azione_bloccata.
---                                                                              TRANSLATE!
     AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down4.
+      -- @TODO: Hero maschile femminile, servirà vocale giusta                  TODO!
+      ELSE "Sei già sdraiato!"
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND superficie IS raggiungibile AND superficie IS NOT distante
@@ -6677,9 +6678,9 @@ SYNONYMS siedi = siediti.
 VERB siediti
   CHECK mia_AT CAN sedersi
     ELSE SAY mia_AT:azione_bloccata.
-    --                                                                          TRANSLATE
   AND hero IS NOT seduto
-    ELSE SAY mia_AT:check_hero_not_sitting4.
+    -- @TODO: Hero maschile femminile, servirà vocale giusta                    TODO!
+    ELSE "Sei già seduto!"
   DOES
     -- @TODO: Creare messaggio parziale "Al momento, non senti il bisogno di" ??
     "Non senti il bisogno di sederti in questo momento." --                     IMPROVE
@@ -6733,9 +6734,9 @@ ADD TO EVERY supporto
   VERB siediti_su
     CHECK mia_AT CAN sedersi_su
       ELSE SAY mia_AT:azione_bloccata.
-      --                                                                        TRANSLATE
     AND hero IS NOT seduto
-      ELSE SAY mia_AT:check_hero_not_sitting4.
+      -- @TODO: Hero maschile femminile, servirà vocale giusta                  TODO!
+      ELSE "Sei già seduto!"
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND superficie IS raggiungibile AND superficie IS NOT distante
@@ -6757,8 +6758,8 @@ ADD TO EVERY supporto
       "Non senti il bisogno di sederti in questo momento." --                   IMPROVE
       -- "You feel no urge to sit down at present."
 
-      --| Se invece si desidera che l'azione venga portata a termine, rimpiazzare
-      --| la riga precedente con il seguente codice:
+      -- Se invece si desidera che l'azione venga portata a termine, rimpiazzare
+      -- la riga precedente con il seguente codice:
       -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       -- IF hero sdraiato
       --   THEN "Ti alzi e ti siedi" SAY superficie:prep_SU. SAY superficie. "."
@@ -6766,6 +6767,7 @@ ADD TO EVERY supporto
       --   ELSE "Ti siedi" SAY superficie:prep_SU. SAY superficie. "."
       -- END IF.
       -- MAKE hero seduto.
+      -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   END VERB siediti_su.
 END ADD TO.
 
@@ -6994,8 +6996,11 @@ SYNTAX lancia_contro = lancia (proiettile) contro (bersaglio)
       END IF.
 --                                                                              TRANSLATE!
   AND bersaglio IsA THING
-    ELSE SAY mia_AT:illegal_parameter_at.
-
+    ELSE
+      IF bersaglio IS NOT plurale
+        THEN SAY mia_AT:ogg2_inadatto_CONTRO_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_CONTRO_pl.
+      END IF. "lanciare cose."
 
 
 ADD TO EVERY OBJECT
@@ -7320,24 +7325,24 @@ END VERB nuota.
 SYNTAX nuota_in = nuota 'in' (liq)
   WHERE liq IsA liquido
     ELSE
---                                                                              TRANSLATE!
-      IF liq IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_in_sg.
-        ELSE SAY mia_AT:illegal_parameter_in_pl.
+      IF liq = hero
+        THEN SAY mia_AT:azione_insensata.
+      ELSE
+        IF liq IS NOT plurale
+          THEN SAY mia_AT:ogg1_inadatto_IN_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_IN_pl.
+        END IF. "nuotare."
       END IF.
-
 
 
 ADD TO EVERY OBJECT
   VERB nuota_in
     CHECK mia_AT CAN nuotare_in
       ELSE SAY mia_AT:azione_bloccata.
---                                                                              TRANSLATE!
     AND hero IS NOT seduto
-      ELSE SAY mia_AT:check_hero_not_sitting3.
---                                                                              TRANSLATE!
+      ELSE SAY mia_AT:impossibile_da_seduto.
     AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down3.
+      ELSE SAY mia_AT:impossibile_da_sdraiato.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND liq IS raggiungibile AND liq IS NOT distante
@@ -7386,12 +7391,10 @@ VERB tuffati
     ELSE SAY mia_AT:azione_bloccata.
   AND CURRENT LOCATION IS illuminato
     ELSE SAY mia_AT:imp_luogo_buio.
---                                                                              TRANSLATE!
   AND hero IS NOT seduto
-    ELSE SAY mia_AT:check_hero_not_sitting3.
---                                                                              TRANSLATE!
+    ELSE SAY mia_AT:impossibile_da_seduto.
   AND hero IS NOT sdraiato
-    ELSE SAY mia_AT:check_hero_not_lying_down3.
+    ELSE SAY mia_AT:impossibile_da_sdraiato.
   DOES
 --                                                                              TRANSLATE!
     "There is no water suitable for swimming here."
@@ -7423,10 +7426,13 @@ END VERB tuffati.
 SYNTAX tuffati_in = tuffati 'in' (liq)
   WHERE liq IsA liquido    -- see 'classes.i'
     ELSE
- --                                                                              TRANSLATE!
-     IF liq IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_in_sg.
-        ELSE SAY mia_AT:illegal_parameter_in_pl.
+      IF liq = hero
+        THEN SAY mia_AT:azione_insensata.
+      ELSE
+        IF liq IS NOT plurale
+          THEN SAY mia_AT:ogg1_inadatto_IN_sg.
+          ELSE SAY mia_AT:ogg1_inadatto_IN_pl.
+        END IF. "$$si tuffare."
       END IF.
 
 
@@ -7436,12 +7442,10 @@ ADD TO EVERY OBJECT
       ELSE SAY mia_AT:azione_bloccata.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
---                                                                              TRANSLATE!
     AND hero IS NOT seduto
-      ELSE SAY mia_AT:check_hero_not_sitting3.
---                                                                              TRANSLATE!
+      ELSE SAY mia_AT:impossibile_da_seduto.
     AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down3.
+      ELSE SAY mia_AT:impossibile_da_sdraiato.
 --                                                                              TRANSLATE COMMENTS!
     -- notice that, unlike 'swim_in', it is possible to dive in a
     -- not reachable object (for example from a clifftop into a river)
@@ -7698,7 +7702,7 @@ ADD TO EVERY THING
           END IF.
           "spingere" SAY THE ogg. "."
       AND strum IN hero
-        ELSE SAY mia_AT:non_possiedi_ogg2.
+        ELSE SAY mia_AT:ogg2_non_posseduto.
       AND ogg <> hero
         ELSE SAY mia_AT:azione_insensata.
       AND ogg IS inanimato
@@ -7896,12 +7900,10 @@ ADD TO EVERY THING
               ELSE SAY mia_AT:ogg1_distante_pl.
             END IF.
         END IF.
---                                                                              TRANSLATE!
     AND hero IS NOT seduto
-      ELSE SAY mia_AT:check_hero_not_sitting2.
---                                                                              TRANSLATE!
+      ELSE SAY mia_AT:impossibile_da_seduto.
     AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down2.
+      ELSE SAY mia_AT:impossibile_da_sdraiato.
         DOES
           -- "La violenza non è la giusta risposta a questo." ---> taken from i6
           SAY mia_AT:la_violenza_non_è_la_risposta.
@@ -7982,12 +7984,10 @@ ADD TO EVERY THING
                 ELSE SAY mia_AT:ogg1_distante_pl.
               END IF.
           END IF.
---                                                                              TRANSLATE!
       AND hero IS NOT seduto
-        ELSE SAY mia_AT:check_hero_not_sitting2.
---                                                                              TRANSLATE!
+        ELSE SAY mia_AT:impossibile_da_seduto.
       AND hero IS NOT sdraiato
-        ELSE SAY mia_AT:check_hero_not_lying_down2.
+        ELSE SAY mia_AT:impossibile_da_sdraiato.
           DOES
             -- "La violenza non è la giusta risposta a questo." ---> taken from i6
             SAY mia_AT:la_violenza_non_è_la_risposta.
@@ -8012,10 +8012,9 @@ SYNTAX calcia = calcia (bersaglio)
   WHERE bersaglio IsA THING
     ELSE
       IF bersaglio IS NOT plurale
-      -- @NOTA: Servirà messaggio ad hoc qui!                                   TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter_sg.
-        ELSE SAY mia_AT:illegal_parameter_pl.
-      END IF.
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF. "prendere a calci."
 
 
 ADD TO EVERY THING
@@ -8149,7 +8148,7 @@ ADD TO EVERY ACTOR
       AND vittima <> hero
         ELSE SAY mia_AT:no_suicidio.
       AND arma IN hero
-        ELSE SAY mia_AT:non_possiedi_ogg2.
+        ELSE SAY mia_AT:ogg2_non_posseduto.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND vittima IS NOT distante
@@ -8471,7 +8470,7 @@ ADD TO EVERY OBJECT
       AND ogg <> strum
         ELSE SAY mia_AT:azione_insensata.
       AND strum IN hero
-        ELSE SAY mia_AT:non_possiedi_ogg2.
+        ELSE SAY mia_AT:ogg2_non_posseduto.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND ogg IS raggiungibile AND ogg IS NOT distante
@@ -8662,9 +8661,9 @@ SYNTAX  pensa_a = pensa a (argomento)!
   WHERE argomento IsA THING
     ELSE
       IF argomento IS NOT plurale
-        THEN SAY mia_AT:illegal_parameter_about_sg.
-        ELSE SAY mia_AT:illegal_parameter_about_pl.
-      END IF.
+        THEN SAY mia_AT:ogg1_inadatto_A_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_A_pl.
+      END IF. "pensare."
 
         pensa_a = rifletti su (argomento)!.
         pensa_a = pondera (argomento)!.
@@ -8763,12 +8762,10 @@ ADD TO EVERY OBJECT
   VERB entra_in
     CHECK mia_AT CAN entrare
       ELSE SAY mia_AT:azione_bloccata.
---                                                                              TRANSLATE!
     AND hero IS NOT seduto
-      ELSE SAY mia_AT:check_hero_not_sitting2.
---                                                                              TRANSLATE!
+      ELSE SAY mia_AT:impossibile_da_seduto.
     AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down2.
+      ELSE SAY mia_AT:impossibile_da_sdraiato.
     DOES
       -- "$+1 non [è/sono] qualcosa in cui poter"
       IF ogg IS NOT plurale
@@ -9110,12 +9107,10 @@ ADD TO EVERY THING
       ELSE SAY mia_AT:azione_insensata.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
---                                                                              TRANSLATE!
     AND hero IS NOT seduto
-      ELSE SAY mia_AT:check_hero_not_sitting2.
---                                                                              TRANSLATE!
+      ELSE SAY mia_AT:impossibile_da_seduto.
     AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down2.
+      ELSE SAY mia_AT:impossibile_da_sdraiato.
     DOES
       IF ogg IS NOT plurale
         THEN "That doesn't"
@@ -9285,12 +9280,10 @@ ADD TO EVERY OBJECT
               ELSE SAY mia_AT:ogg1_distante_pl.
             END IF.
         END IF.
---                                                                              TRANSLATE!
     AND hero IS NOT seduto
-      ELSE SAY mia_AT:check_hero_not_sitting3.
---                                                                              TRANSLATE!
+      ELSE SAY mia_AT:impossibile_da_seduto.
     AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down3.
+      ELSE SAY mia_AT:impossibile_da_sdraiato.
     DOES
       IF ogg IS NOT plurale
         THEN SAY mia_AT:ogg1_inadatto_sg.
@@ -9901,8 +9894,7 @@ ADD TO EVERY OBJECT
             END IF.
         END IF.
     AND hero IS NOT sdraiato
---                                                                              TRANSLATE!
-      ELSE SAY mia_AT:check_hero_not_lying_down3.
+      ELSE SAY mia_AT:impossibile_da_sdraiato.
     DOES
       IF veicolo IS NOT plurale
         --  "$+1 non [è/sono] qualcosa che puoi"
@@ -10258,7 +10250,7 @@ ADD TO EVERY OBJECT
       AND png <> hero
         ELSE SAY mia_AT:azione_insensata.
       AND ogg IN hero
-        ELSE SAY mia_AT:non_possiedi_ogg1.
+        ELSE SAY mia_AT:ogg1_non_posseduto.
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
       AND png IS NOT distante
@@ -10444,12 +10436,10 @@ ADD TO EVERY OBJECT
               ELSE SAY mia_AT:ogg1_distante_pl.
             END IF.
         END IF.
---                                                                              TRANSLATE!
     AND hero IS NOT seduto
-      ELSE SAY mia_AT:check_hero_not_sitting2.
---                                                                              TRANSLATE!
+      ELSE SAY mia_AT:impossibile_da_seduto.
     AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down2.
+      ELSE SAY mia_AT:impossibile_da_sdraiato.
     DOES
       "Qui non c'è nulla da scavare."
    -- "There is nothing suitable to dig here."
@@ -10476,10 +10466,9 @@ SYNTAX scavalca = scavalca (ogg)
   WHERE ogg IsA OBJECT
     ELSE
       IF ogg IS NOT plurale
-      --@NOTA: Qui dovrò usare un messaggio personalizzato (prep_SU)            TRANSLATE!
-        THEN SAY mia_AT:illegal_parameter_sg.
-        ELSE SAY mia_AT:illegal_parameter_pl.
-      END IF.
+        THEN SAY mia_AT:ogg1_inadatto_sg.
+        ELSE SAY mia_AT:ogg1_inadatto_pl.
+      END IF. "scavalcare."
 
 
 ADD TO EVERY OBJECT
@@ -10509,12 +10498,10 @@ ADD TO EVERY OBJECT
               ELSE SAY mia_AT:ogg1_distante_pl.
             END IF.
         END IF.
---                                                                              TRANSLATE!
   AND hero IS NOT seduto
-    ELSE SAY mia_AT:check_hero_not_sitting3.
---                                                                              TRANSLATE!
+    ELSE SAY mia_AT:impossibile_da_seduto.
   AND hero IS NOT sdraiato
-    ELSE SAY mia_AT:check_hero_not_lying_down3.
+    ELSE SAY mia_AT:impossibile_da_sdraiato.
   DOES
     IF ogg IS NOT plurale
       THEN SAY mia_AT:ogg1_inadatto_sg.
@@ -10562,12 +10549,10 @@ ADD TO EVERY THING
           THEN SAY mia_AT:ogg1_già_qui_sg.
           ELSE SAY mia_AT:ogg1_già_qui_pl.
         END IF.
---                                                                              TRANSLATE!
     AND hero IS NOT seduto
-      ELSE SAY mia_AT:check_hero_not_sitting2.
---                                                                              TRANSLATE!
+      ELSE SAY mia_AT:impossibile_da_seduto.
     AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down2.
+      ELSE SAY mia_AT:impossibile_da_sdraiato.
     AND png NEAR hero
       ELSE
         IF png IS NOT plurale
@@ -10877,12 +10862,10 @@ ADD TO EVERY THING
       ELSE SAY mia_AT:sei_già_qui.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
---                                                                              TRANSLATE!
     AND hero IS NOT seduto
-      ELSE SAY mia_AT:check_hero_not_sitting3.
---                                                                              TRANSLATE!
+      ELSE SAY mia_AT:impossibile_da_seduto.
     AND hero IS NOT sdraiato
-      ELSE SAY mia_AT:check_hero_not_lying_down3.
+      ELSE SAY mia_AT:impossibile_da_sdraiato.
     AND dest NOT AT hero
       ELSE
         IF dest IS NOT plurale

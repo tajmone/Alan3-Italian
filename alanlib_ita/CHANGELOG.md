@@ -18,6 +18,10 @@ For previuos changes, see:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Alan 3.0beta6 build 2022](#alan-30beta6-build-2022)
+    - [2019/08/24](#20190824)
+        - [Migliorie sintassi verbi](#migliorie-sintassi-verbi)
+        - [Messaggi libreria](#messaggi-libreria)
+        - [Risposte verbi](#risposte-verbi)
     - [2019/08/22](#20190822)
         - [Passa alla v0.22.0](#passa-alla-v0220)
         - [Passa ad Alan 3.0beta6 build 2022](#passa-ad-alan-30beta6-build-2022)
@@ -36,7 +40,7 @@ For previuos changes, see:
     - [2019/07/28](#20190728)
         - [Liquidi](#liquidi)
         - [Contenitori Elencati](#contenitori-elencati)
-        - [Messaggi Libreria](#messaggi-libreria)
+        - [Messaggi Libreria](#messaggi-libreria-1)
     - [2019/06/26](#20190626)
         - [Repulisti classi attori](#repulisti-classi-attori)
         - [Verbo `prendi_da` sempre onnipotente](#verbo-prendi_da-sempre-onnipotente)
@@ -94,6 +98,76 @@ For previuos changes, see:
 -----
 
 # Alan 3.0beta6 build 2022
+
+## 2019/08/24
+
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.22.1
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.22.1
+
+### Migliorie sintassi verbi
+
+In alcuni verbi, migliorate le clausole `WHERE` di modo che se uno dei parametri è l'Eroe stesso venga mostrato un messaggio appropriato (`mia_AT:azione_insensata`):
+
+- `chiedi`
+- `nuota_in`
+- `scendi_da`
+- `sdraiati_in`
+- `tuffati_in`
+
+### Messaggi libreria
+
+Corretto messaggio `ogg1_già_pl`  da `"$+1 è già"` in `"$+1 sono già"`.
+
+Rimossi da `mia_AT` alcuni attributi stringa duplicati e sostituita ogni loro occorrenza con l'attributo equivalente:
+
+|       rimosso        |    sostituito con   |         testo         |
+|----------------------|---------------------|-----------------------|
+| `ogg1_non_posseduto` | `non_possiedi_ogg1` | `"Non possiedi $+1."` |
+| `ogg2_non_posseduto` | `non_possiedi_ogg2` | `"Non possiedi $+2."` |
+
+
+Rimossi alcuni attributi originali inglesi e rimpiazzati con attributi già tradotti:
+
+|             rimosso              |         sostituito con         |                     testo                      |
+|----------------------------------|--------------------------------|------------------------------------------------|
+| `check_hero_not_lying_down2`/`3` | `impossibile_da_sdraiato`      | `"Non puoi farlo da sdraiato.`                 |
+| `check_hero_not_sitting2`/`3`    | `impossibile_da_seduto`        | `"Non puoi farlo da seduto.`                   |
+| `check_obj2_not_hero3`           | `azione_insensata`             | `"Questo non ha alcun senso."`                 |
+| `illegal_parameter2_to_sg`/`pl`  | `ogg2_inadatto_A_sg`/`pl`      | `"$+1 non [è/sono] qualcosa a cui poter"`      |
+| `illegal_parameter_at`/`pl`      | `ogg2_inadatto_CONTRO_sg`/`pl` | `"$+1 non [è/sono] qualcosa contro cui poter"` |
+| `illegal_parameter_in_sg`/`pl`   | `ogg1_inadatto_IN_sg`/`pl`     | `"$+1 non [è/sono] qualcosa in cui poter"`     |
+| `illegal_parameter_off_sg`/`pl`  | `ogg1_inadatto_DA_sg`/`pl`     | `"$+1 non [è/sono] qualcosa da cui poter"`     |
+
+
+Rimossi alcuni attributi dei messaggi scarsamente utilizzati, e sostituiti con stringhe in loco nel corpo del verbo:
+
+|      attributo rimosso       |    sostituito con    |
+|------------------------------|----------------------|
+| `check_hero_not_lying_down4` | `"Sei già sdraiato!` |
+| `check_hero_not_sitting4`    | `"Sei già seduto!`   |
+
+Rimossi attributi originali inglesi non più utilizzati:
+
+- `illegal_parameter2_from_sg`/`pl`
+- `illegal_parameter_for_sg`/`pl`
+- `illegal_parameter_sg`/`pl`
+- `illegal_parameter_to_sg`/`pl`
+
+Tradotti ed eliminati i seguenti attributi inglesi per i messaggi di risposta dei verbi:
+
+|            Attributo EN           |        Attributo IT        |                Testo                |
+|-----------------------------------|----------------------------|-------------------------------------|
+| `illegal_parameter_about_sg`/`pl` | `ogg2_inadatto_DI_sg`/`pl` | `"$+2 non è qualcosa di cui poter"` |
+
+
+### Risposte verbi
+
+Tradotte in italiano le risposte dei seguenti verbi:
+
+- `calcia`
+- `scavalca`
+
+<!---------------------------------------------------------------------------->
 
 ## 2019/08/22
 
