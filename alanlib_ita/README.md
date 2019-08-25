@@ -14,8 +14,12 @@ Questa cartella contiene l'adattamento italiano della [Alan Standard Library] v2
 - [Contenuti della cartella](#contenuti-della-cartella)
     - [Modulo Italian](#modulo-italian)
     - [Moduli della libreria](#moduli-della-libreria)
-    - [File ausiliari](#file-ausiliari)
+    - [Sorgenti Alan ausiliari](#sorgenti-alan-ausiliari)
     - [Documentazione della Liberia](#documentazione-della-liberia)
+    - [Documentazione progetto](#documentazione-progetto)
+- [Annotazioni sorgenti](#annotazioni-sorgenti)
+    - [Elementi chiave](#elementi-chiave)
+    - [Pending Tasks](#pending-tasks)
 
 <!-- /MarkdownTOC -->
 
@@ -49,7 +53,7 @@ I moduli sorgenti della __Libreria Standard Italiana__ di Alan:
     + [`lib_verbi.i`][lib_verbi] — adattamento di `lib_verbs.i`.
 
 
-## File ausiliari
+## Sorgenti Alan ausiliari
 
 I vari _boilerplate_ e template della StdLib sono stati rinominati prefiggendo un trattino basso, per poterli distinguere dai file indispensabili della Libreria:
 
@@ -75,6 +79,88 @@ Per maggiori informazioni su come viene create la documentazione, vedi:
 
 - [`../docs_src/`](../docs_src/)
 
+## Documentazione progetto
+
+Vari documenti di lavoro della Libreria (più o meno aggiornati).
+
+Log delle modifiche alla Libreria:
+
+- [`CHANGELOG.md`](./CHANGELOG.md) — changelog attuale.
+- [`CHANGELOG_OLD.md`][CHANGELOG_OLD] — changelog precedente.
+
+Appunti sparsi di lavoro:
+
+- [`TODO.md`](./TODO.md) — appunti sulle cose da fare e risolvere.
+- [`TRANSLATION_NOTES.md`](./TRANSLATION_NOTES.md) — appunti sulla traduzione degli identificati dall'inglese all'italiano.
+
+Appunti di lavoro sul vestiario nella Liberia, il cui codice originale è stato interamente riscritto nella Libreria italiana:
+
+- [`VESTIARIO_OLD.md`](./VESTIARIO_OLD.md) — annotazioni sul sistema originale del vestiario.
+- [`VESTIARIO_DEV.md`](./VESTIARIO_DEV.md) — appunti di sviluppo del nuovo sistema di vestiario.
+- [`VESTIARIO_PROBLEMI.md`](./VESTIARIO_PROBLEMI.md) — note sui problemi del sistema originale.
+
+
+Molti di questi documenti devono essere rimessi in ordine, aggiornati o eliminati; ma al momento servono come promemoria delle varie fasi di sviluppo della Libreria. Inoltre, contengono del testo riutilizzabile nella documentazione finale.
+
+
+# Annotazioni sorgenti
+
+Nei moduli sorgenti della Libreria viene adottato un sistema di annotazione formale per semplificare l'individuazione di specifiche parti del codice tramite le funzionalità di ricerca dell'editor.
+
+## Elementi chiave
+
+Per rendere facilmente trovabili alcuni aspetti e funzionalità della libreria, le righe o blocchi di codice che li riguardano sono stati marcati con commenti specifiche parole chiave racchiuse tra due serie di `>>>` (inizio blocco) e due `<<<` (fine blocco, se presente).
+
+|          marcatore          |                          descrizione                           |
+|-----------------------------|----------------------------------------------------------------|
+| `>>> prendi implicito: >>>` | Verbi che tentano di prendere implicitamente uno dei parametri |
+
+<!--
+| `xxx` | yyyy  |
+-->
+
+
+Esempio da `lib_verbi.i`, verbo `svuota, versa`:
+
+```alan
+    DOES
+      -- >>> prendi implicito: >>>
+      IF ogg NOT DIRECTLY IN hero
+        THEN LOCATE ogg IN hero.
+          SAY  mia_AT:riferisci_prendi_implicito.
+      END IF.
+      -- <<< prendi implicito <<<
+```
+
+
+## Pending Tasks
+
+Per inviduare i vari compiti da ultimare, vengono utilizzate delle note a margine con specifiche parole chiave posta sulla colonna 80, e che terminano la riga con un punto esclamativo:
+
+|         chiave        |                descrizione                |
+|-----------------------|-------------------------------------------|
+| `CHECK!`              | Da verificare                             |
+| `DOXTERIZE!`          | Commento da trasformare in documentazione |
+| `FIXME!`              | Da correggere                             |
+| `HERO GENEDER!`       | Implementare accordo di genere Hero       |
+| `IMPROVE!`            | Da migliorare                             |
+| `NOTE!`               | Annotazioni che richiedono attenzione     |
+| `TODO!`               | Da fare                                   |
+| `TRANSLATE COMMENTS!` | Commenti originali da tradurre            |
+| `TRANSLATE!`          | Messaggio libreria da tradurre            |
+
+<!--
+| `xxx` | yyyy  |
+-->
+
+Esempio:
+
+```alan
+    AND ogg <> hero
+-- @TODO: Implementa accordo di genere per Hero maschile/femminile              HERO GENEDER!
+      ELSE "Non hai bisogno di essere liberato."
+```
+
 <!-----------------------------------------------------------------------------
                                REFERENCE LINKS                                
 ------------------------------------------------------------------------------>
@@ -84,7 +170,7 @@ Per maggiori informazioni su come viene create la documentazione, vedi:
 
 <!-- file di progetto -->
 
-[CHANGELOG_OLD]: ./CHANGELOG_OLD.md
+[CHANGELOG_OLD]: ./CHANGELOG_OLD.md "Vedi il vecchio log delle modifiche"
 
 <!-- OLD LIBRARY FILENAMES -->
 

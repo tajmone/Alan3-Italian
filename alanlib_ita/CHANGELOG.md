@@ -18,12 +18,16 @@ For previuos changes, see:
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Alan 3.0beta6 build 2022](#alan-30beta6-build-2022)
-    - [2019/08/24 \(2\)](#20190824-2)
+    - [2019/08/25](#20190825)
         - [Verbi](#verbi)
+        - [Eventi](#eventi)
         - [Messaggi libreria](#messaggi-libreria)
+    - [2019/08/24 \(2\)](#20190824-2)
+        - [Verbi](#verbi-1)
+        - [Messaggi libreria](#messaggi-libreria-1)
     - [2019/08/24 \(1\)](#20190824-1)
         - [Migliorie sintassi verbi](#migliorie-sintassi-verbi)
-        - [Messaggi libreria](#messaggi-libreria-1)
+        - [Messaggi libreria](#messaggi-libreria-2)
         - [Risposte verbi](#risposte-verbi)
     - [2019/08/22](#20190822)
         - [Passa alla v0.22.0](#passa-alla-v0220)
@@ -43,7 +47,7 @@ For previuos changes, see:
     - [2019/07/28](#20190728)
         - [Liquidi](#liquidi)
         - [Contenitori Elencati](#contenitori-elencati)
-        - [Messaggi Libreria](#messaggi-libreria-2)
+        - [Messaggi Libreria](#messaggi-libreria-3)
     - [2019/06/26](#20190626)
         - [Repulisti classi attori](#repulisti-classi-attori)
         - [Verbo `prendi_da` sempre onnipotente](#verbo-prendi_da-sempre-onnipotente)
@@ -101,6 +105,69 @@ For previuos changes, see:
 -----
 
 # Alan 3.0beta6 build 2022
+
+## 2019/08/25
+
+- [`lib_messaggi_libreria.i`][lib_messaggi_libreria] &#x27f6; v0.22.3
+- [`lib_luoghi.i`][lib_luoghi] &#x27f6; v0.22.1
+- [`lib_verbi.i`][lib_verbi] &#x27f6; v0.22.3
+
+### Verbi
+
+#### Risposte azioni autodirette
+
+Aggiungi messaggi _ad hoc_ nei seguenti verbi se indirizzati al protagonista:
+
+|        verbo        |                   risposta                   |
+|---------------------|----------------------------------------------|
+| `guarda_in`         | "Ora come ora non è tempo di introspezione." |
+| `guarda_attraverso` | `mia_AT:azione_insensata`                    |
+
+### Eventi
+
+Tradotti identificativi eventi:
+
+|  evento EN  |   evento IT   |   in modulo    |
+|-------------|---------------|----------------|
+| `light_off` | `luci_spente` | `lib_luoghi.i` |
+
+### Messaggi libreria
+
+Eliminati attributi stringa originali inglesi che non erano più utilizzati da alcun verbo:
+
+- `check_obj_not_in_worn2`
+
+
+Rimpiazzati attributi stringa con testo in loco nel corpo del verbo:
+
+|       attributo       |      verbo      |
+|-----------------------|-----------------|
+| `check_obj_not_hero5` | `libera`        |
+| `check_obj_not_hero7` | `guarda_dietro` |
+| `check_obj_not_hero8` | `guarda_sotto`  |
+
+
+Rimpiazzati attributi stringa inglesi con attributi italiani già tradotti:
+
+|            attributo EN           |      attributo IT      |        verbo        |
+|-----------------------------------|------------------------|---------------------|
+| `illegal_parameter_look_through`  | `impossibile_guardare` | `guarda_attraverso` |
+| `check_obj_suitable_look_through` | `impossibile_guardare` | `guarda_attraverso` |
+
+
+Tradotto identificativo attributo `dark_loc_desc` in `desc_luogo_buio` (il testo era già stato tradotto).
+
+Tradotti attributi inglesi:
+
+|             attributo EN            |           attributo IT          |                           testo                           |
+|-------------------------------------|---------------------------------|-----------------------------------------------------------|
+| `light_goes_off`                    | `luci_spente`                   | `"È buio pesto!"`                                         |
+| `check_obj_allowed_in_sg`           | `ogg2_[sg/pl]_già_dentro_cont1` | `"$+2 [è/sono] già dentro $+1."`                          |
+| `check_obj_not_in_cont2`/`pl`       | `ogg1_non_può_stare_sg`/`pl`    | `"$+1 non [può/possono] stare"`                           |
+| `illegal_parameter_consult_sg`/`pl` | `ogg2_inadatto_ricerca_sg`/`pl` | `"$+2 non [è/sono] un valido argomento di ricerca."`/`pl` |
+
+
+<!---------------------------------------------------------------------------->
 
 ## 2019/08/24 (2)
 
@@ -269,7 +336,7 @@ EVERY porta IsA OBJECT
   HAS chiave_abbinata  chiave_fittizia.
 ```
 
-Sebbene il codice funzionava anche senza di esso (grazie al codice di inizializzazione della classe), è preferibile dichiarare tutti gli attributi di base con i loro valori predefiniti, anche solo per chiarezza di lettura del codice. 
+Sebbene il codice funzionava anche senza di esso (grazie al codice di inizializzazione della classe), è preferibile dichiarare tutti gli attributi di base con i loro valori predefiniti, anche solo per chiarezza di lettura del codice.
 
 #### Liquidi
 
@@ -277,7 +344,7 @@ Tradotta varie risposte e/o messaggi di errore per i seguenti verbi
 sulla classe `liquido`: `dai_a`, `versa`, `versa_in` e `su`.
 
 Modifica la risposta di `versa` adottando i criter di `versa_in`, il
-quale prevedeva messaggi di errore distinti nel caso si tratti di un liquido con contentitore fittizio o non prendibile. 
+quale prevedeva messaggi di errore distinti nel caso si tratti di un liquido con contentitore fittizio o non prendibile.
 
 -------------------------------------------------------------------------------
 
@@ -352,14 +419,14 @@ Ora è possibile scrivere "metti la frutta DENTRO il cesto" anziché "NEL cesto"
 In `lib_luoghi.i`, modificata la direzione `sopra` in `su`, per via del conflitto con il fatto che ora `sopra` è già definito come sinonimo.
 
 > __IMPORTANTE__ — D'ora in poi la direzione `sopra` andrà sempre implementata tramite `su` nelle varie `Exit":
-> 
+>
 > ```alan
 > The sgabuzzino IsA stanza.
 >   Description "Sul soffitto noti una botola."
 >   Exit su to soffitta. -- ossia "sopra"
 > End The.
 > ```
-> 
+>
 > E per implementare `dentro` come direzione servirà usare `'in`'. In entrambi i casi, l'uso di `sopra` o `dentro` causerebbe un errore di compilazione poiché questi vocaboli sono già definiti come sinonimi nella Libreria.
 
 ### Problemi vari
@@ -371,7 +438,7 @@ Li annoto qui di seguito come promemoria.
 
 Nel passaggio dalla dev build 3.0beta6 build 1980 alla 2015, è venuto fuori che ora il verbo `dì` ("dì argomento") non funziona più poiché il parser non riesce a riconoscere la `ì`. Il baco è stato segnalato nello [Issue #8].
 
-Non ho avuto modo di vedere se altre lettere accentate sono compromesse nel parsing, e se questo baco tocchi altri verbi. Confido che verrà presto risolto. 
+Non ho avuto modo di vedere se altre lettere accentate sono compromesse nel parsing, e se questo baco tocchi altri verbi. Confido che verrà presto risolto.
 
 [Issue #8]: https://github.com/alan-if/alan/issues/8 "Vedi issue nel repository Alan su GitHub"
 
@@ -677,7 +744,7 @@ Sono stati aggiunti script per semplificare i salti di versione della Libreria e
 
 Quando la libreria passa ad una versione successiva, sarà necessario eseguire i seguenti passaggi:
 
-1. Modificare `ver.sh` con i nuovi dati di versione. Esempio:    
+1. Modificare `ver.sh` con i nuovi dati di versione. Esempio:
     ```bash
     #!/bin/bash
     AlanSDK="3.0beta6 build 1880"
@@ -855,7 +922,7 @@ Per i dettagli completi delle molteplici modifiche strutturali al codice, si ved
 
 Le modifiche richieste per adattare il nuovo sistema di vestario hanno coinvolto moltissime parti della libreria, e non è possibile riassumere tutte le modifiche.
 
-> __ANNOTAZIONI__ — Per ora, il codice originale è stato preservato accanto alle modifiche, per facilitarne la consultazione in caso di problemi, e le parti del codice modificate, rimosse o aggiunte sono state marcate con commenti che iniziano per `-- >>> dev-vestario:`, per facilitarne l'individuazione tramite funzioni di ricerca (questi commenti verranno rimossi appena tutti i lavori riguardanti il vestiario saranno ultimati). 
+> __ANNOTAZIONI__ — Per ora, il codice originale è stato preservato accanto alle modifiche, per facilitarne la consultazione in caso di problemi, e le parti del codice modificate, rimosse o aggiunte sono state marcate con commenti che iniziano per `-- >>> dev-vestario:`, per facilitarne l'individuazione tramite funzioni di ricerca (questi commenti verranno rimossi appena tutti i lavori riguardanti il vestiario saranno ultimati).
 
 
 ### Novità riguardanti il vestiario
@@ -918,7 +985,7 @@ Il nuovo sistema è più intuitivo e facile da gestire, ed è compatibile con in
 
 Anche la messaggistica riguardo al vestiario è stata notevolmente migliorata.
 
-Nei verbi che impediscono l'azione se uno dei parametri è trasportato dall'Eroe, ora verrà prodotto un messaggio diverso a seconda se l'oggetto sia solo portato o indossato. 
+Nei verbi che impediscono l'azione se uno dei parametri è trasportato dall'Eroe, ora verrà prodotto un messaggio diverso a seconda se l'oggetto sia solo portato o indossato.
 
 ##### Messaggi di fallimento indossa/rimuovi
 
@@ -943,7 +1010,7 @@ Se si tratta di un indumento indossato dall'Eroe, il presupposto è che potrà t
 
 Il vecchio sistema consentiva di prendere implicitamente indumenti indossati dai PNG, con vari verbi — p.es. era possibile lanciare ad Alice le scapre indossate da Bob. A mio avviso, consentire di prelevare gli indumenti indossati alla stregua degli oggetti trasportati è eccessivo, e la Libreria deve prevenirlo di default, lasciando agli autori il margine di libertà per implementare i casi specifici (o generali) in cui questo sia fattibile.
 
-Sono stati aggiunti dei CHECK sulla classe `indumento` per bloccare i verbi che dislocherebbero un indumento indossato dal suo propietario (Eroe o attore che sia), tranne nei casi in cui l'azione è sensata (p.es. indossare un indumento non indossato, o chiedere a un indumento indossato a un PNG consenziente). Questo include anche quei verbi che prendono implicitamente un oggetto per prepare/eseguire l'azione richiesta. 
+Sono stati aggiunti dei CHECK sulla classe `indumento` per bloccare i verbi che dislocherebbero un indumento indossato dal suo propietario (Eroe o attore che sia), tranne nei casi in cui l'azione è sensata (p.es. indossare un indumento non indossato, o chiedere a un indumento indossato a un PNG consenziente). Questo include anche quei verbi che prendono implicitamente un oggetto per prepare/eseguire l'azione richiesta.
 
 ### Nuovi messaggi dei verbi
 
@@ -1003,7 +1070,7 @@ Anche l'attributo `nome_proprio` è stato spostato su `entity` (mentre prima era
 - Un PNG (Marco) muore nel gioco, e dobbiamo sostituire la sua istanza di `actor` con una di classe `object` per rappresentarne il cadavere. Il giocatore potrebbe non sapere che Marco è morto, e quindi continuerà a riferirsi ad esso con il nome proprio. Per questo motivo, è utile che la libreria consenta di definire oggetti con `nome_proprio`, sì poter mostrare una corretta messaggistica dei verbi:
 
     > &gt; _chiedi le chiavi a marco_
-    > 
+    >
     > Marco non è in grado di capirti.
 
     In questo esempio, "non è in grado di capirti" è la risposta del verbo 'chiedi a' quando è utilizzato con entità non attore. La possibilità di definire oggetti con nome proprio garantisce una corretta messaggistica con qualsiasi verbo (in questo esempio, previene il messaggio "Il Marco non è in grado di capirti.").
@@ -1035,7 +1102,7 @@ Queste nuove classi sono utili perché oltre a definire attributi di genere e nu
 
 
 > __NOTA__ — Il pronome 'loro' potrebbe essere rimosso in seguito, nel caso dovessero confliggere con future definizioni delle _them words_. Al momento non ho ancora avuto modo di esplorare l'uso delle _them words_, e devo capire meglio se potrebbero esservi anche dei conflitti con potenziali usi di 'loro' in riferimento al possesso.
-> 
+>
 > In linea di massima, la Libreria non si occupa di definire i pronomi (relegando questo compito all'autore), l'unica eccezzione sono le sottoclassi di `persona`. Può anche darsi che in futuro le definizioni dei pronomi verranno completamente rimosse dalla libreria.
 
 ### Modulo messaggi runtime
@@ -1070,7 +1137,7 @@ Tutti i moduli della libreria passano alla versione 0.13.0.
 
 ### Separa modulo classi vestiario
 
-Sposta tutto il codice riguardante il vestiario da `lib_classi.i` al nuovo modulo [`lib_classi_vestiario.i`][lib_classi_vestiario]. 
+Sposta tutto il codice riguardante il vestiario da `lib_classi.i` al nuovo modulo [`lib_classi_vestiario.i`][lib_classi_vestiario].
 
 > __NOTA__ — In realtà rimangono ancora in `lib_classi.i` alcuni frammenti di codice riguardanti il vestiario (p.es. nell'inizializzazione degli attori).
 
@@ -1106,7 +1173,7 @@ Tutti i riferimenti alla precedente build nei moduli della libreria e nei sorgen
 
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 <!-- File del Progetto -->

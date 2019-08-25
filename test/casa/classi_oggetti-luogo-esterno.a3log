@@ -66,7 +66,7 @@ Mr Nicky ti segue.
 > ; **ERR!** Il verbo 'metti_in' dell'istanza 'suolo' dovrebbe essere eseguito
 > ;          e produrre "That's not something you can $v things into.":
 > metti la mela nel suolo
-La mela doesn't belong in il suolo.
+La mela non può stare nel suolo.
 
 > ;          Invece abbiamo ottenuto la risposta del CHECK 'AND ogg IN consentiti OF cont'
 > ;          del verbo principale 'metti_in', definito in 'lib_verbi.i'; questo
@@ -96,7 +96,7 @@ Il suolo non è qualcosa su cui poter mettere cose.
 > ; **ERR!** Il verbo 'versa_in' dell'istanza 'suolo' dovrebbe essere eseguito
 > ;          e produrre "That's not something you can $v things into.":
 > versa il vino nel suolo
-Il vino doesn't belong in il suolo.
+Il vino non può stare nel suolo.
 
 > ;          Invece abbiamo ottenuto la risposta del CHECK 'AND ogg IN consentiti OF cont'
 > ;          del verbo principale 'versa_in', definito in 'lib_verbi.i'; questo
@@ -106,7 +106,7 @@ Il vino doesn't belong in il suolo.
 > ; ------------------------------------------------------------------------------
 > ; **ERR!** Ci si aspetta "That's not something you can $v things into.":
 > svuota il sacchetto nel suolo
-Il sacchetto doesn't belong in il suolo.
+Il sacchetto non può stare nel suolo.
 
 > ;          Come per il verbo 'versa_in' (entrambi condividono lo stesso corpo del
 > ;          verbo sia nella definizione principale che in quella su 'suolo').
@@ -115,7 +115,7 @@ Il sacchetto doesn't belong in il suolo.
 > ; ------------------------------------------------------------------------------
 > ; **ERR!** Ci si aspetta "That's not something you can $v things into.":
 > lancia il sacchetto nel suolo
-Il sacchetto doesn't belong in il suolo.
+Il sacchetto non può stare nel suolo.
 
 > ;          Abbiamo ottenuto invece la risposta del CEHCK 'projectile IN allowed OF cont'
 > ;          della definizione principale in 'lib_verbi.i', che previene l'esecuzione

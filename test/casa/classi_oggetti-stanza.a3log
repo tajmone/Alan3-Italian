@@ -42,7 +42,7 @@ Il cesto per la frutta contiene una pera, una banana e una mela.
 > ; **ERR!** Il verbo 'metti_in' dell'istanza 'pavimento' dovrebbe essere eseguito
 > ;          e produrre "That's not something you can $v things into.":
 > metti la mela nel pavimento
-La mela doesn't belong in il pavimento.
+La mela non può stare nel pavimento.
 
 > ;          Invece abbiamo ottenuto la risposta del CHECK 'AND ogg IN consentiti OF cont'
 > ;          del verbo principale 'metti_in', definito in 'lib_verbi.i'; questo
@@ -72,7 +72,7 @@ Il pavimento non è qualcosa su cui poter mettere cose.
 > ; **ERR!** Il verbo 'versa_in' dell'istanza 'pavimento' dovrebbe essere eseguito
 > ;          e produrre "That's not something you can $v things into.":
 > versa il vino nel pavimento
-Il vino doesn't belong in il pavimento.
+Il vino non può stare nel pavimento.
 
 > ;          Invece abbiamo ottenuto la risposta del CHECK 'AND ogg IN consentiti OF cont'
 > ;          del verbo principale 'versa_in', definito in 'lib_verbi.i'; questo
@@ -82,7 +82,7 @@ Il vino doesn't belong in il pavimento.
 > ; ------------------------------------------------------------------------------
 > ; **ERR!** Ci si aspetta "That's not something you can $v things into.":
 > svuota il sacchetto nel pavimento
-Il sacchetto doesn't belong in il pavimento.
+Il sacchetto non può stare nel pavimento.
 
 > ;          Come per il verbo 'versa_in' (entrambi condividono lo stesso corpo del
 > ;          verbo sia nella definizione principale che in quella su 'pavimento').
@@ -91,7 +91,7 @@ Il sacchetto doesn't belong in il pavimento.
 > ; ------------------------------------------------------------------------------
 > ; **ERR!** Ci si aspetta "That's not something you can $v things into.":
 > lancia il sacchetto nel pavimento
-Il sacchetto doesn't belong in il pavimento.
+Il sacchetto non può stare nel pavimento.
 
 > ;          Abbiamo ottenuto invece la risposta del CEHCK 'projectile IN allowed OF cont'
 > ;          della definizione principale in 'lib_verbi.i', che previene l'esecuzione

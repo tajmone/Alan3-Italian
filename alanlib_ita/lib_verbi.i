@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_verbi.i"
---| v0.22.2-Alpha, 2019-08-24: Alan 3.0beta6 build 2022
+--| v0.22.3-Alpha, 2019-08-25: Alan 3.0beta6 build 2022
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_verbs.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -3378,6 +3378,7 @@ SYNTAX riempi_con = riempi (cont) con (sostanza)
       END IF.
       "riempire" SAY THE cont. "."
 
+-- @TODO: Mancano verifiche per impedire il verbo su SUPPORTO!                  FIXME!
 
 ADD TO EVERY OBJECT
   VERB riempi_con
@@ -3395,9 +3396,20 @@ ADD TO EVERY OBJECT
           "riempire" SAY THE cont. "."
       AND CURRENT LOCATION IS illuminato
         ELSE SAY mia_AT:imp_luogo_buio.
+-- @TODO: Devo capire meglio il contesto del CHECK seguente.                    NOTE!
+--        L'originale diceva "$+1 is already full of $+2.", ma in realtà
+--        sembra voler dire che la sostanza si trova già nel contenitore.
+--        Che effetto avrà su sostanze che riempono un contenitore un po'
+--        alla volta? e come implementarle, dato che l'oggetto in questione
+--        non sarà mai la medesima istanza?
 --                                                                              TRANSLATE!
       AND sostanza NOT IN cont
-        ELSE SAY mia_AT:check_obj_not_in_cont2.
+        ELSE
+          IF sostanza IS NOT plurale
+            THEN SAY mia_AT:ogg2_sg_già_dentro_cont1.
+            ELSE SAY mia_AT:ogg2_pl_già_dentro_cont1.
+          END IF.
+        -- ELSE SAY mia_AT:check_obj_not_in_cont2.
       AND sostanza IS prendibile
         ELSE SAY  mia_AT:ogg2_non_posseduto.
      -- ELSE SAY mia_AT:check_obj2_takeable1.
@@ -3684,9 +3696,9 @@ ADD TO EVERY OBJECT
         ELSE
           IF ogg IS NOT plurale
 --                                                                              TRANSLATE!
-            THEN SAY mia_AT:check_obj_allowed_in_sg.
-            ELSE SAY mia_AT:check_obj_allowed_in_pl.
-          END IF.
+            THEN SAY mia_AT:ogg1_non_può_stare_sg.
+            ELSE SAY mia_AT:ogg1_non_può_stare_pl.
+          END IF. SAY cont:prep_IN. "$2."
       AND ogg IS aperto
         ELSE
           IF ogg IS NOT femminile
@@ -4070,17 +4082,23 @@ END VERB guarda.
 
 SYNTAX guarda_attraverso = guarda attraverso (bulk)
   WHERE bulk IsA OBJECT
---                                                                              TRANSLATE!
-    ELSE SAY mia_AT:illegal_parameter_look_through.
+    ELSE
+      IF bulk = hero
+        THEN SAY  mia_AT:azione_insensata.
+        ELSE SAY  mia_AT:impossibile_guardare. "attraverso $+1."
+      END IF.
 
 
 ADD TO EVERY OBJECT
   VERB guarda_attraverso
     CHECK mia_AT CAN guardare_attraverso
       ELSE SAY mia_AT:azione_bloccata.
---                                                                              TRANSLATE!
     AND bulk IS esaminabile
-      ELSE SAY mia_AT:check_obj_suitable_look_through.
+      ELSE
+        IF bulk = hero
+          THEN SAY  mia_AT:azione_insensata.
+          ELSE SAY  mia_AT:impossibile_guardare. "attraverso $+1."
+        END IF.
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     DOES
@@ -4118,9 +4136,8 @@ ADD TO EVERY THING
       ELSE SAY  mia_AT:impossibile_guardare. "dietro $+1."
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
---                                                                              TRANSLATE!
     AND bulk <> hero
-      ELSE SAY mia_AT:check_obj_not_hero7.
+      ELSE "Ti volti ma non noti nulla di insolito dietro di te."
     DOES
       IF bulk IN hero
         THEN "Giri $+1 ma non noti niente di particolare."
@@ -4200,7 +4217,12 @@ END ADD TO.
 
 SYNTAX guarda_in = guarda 'in' (cont)
   WHERE cont IsA OBJECT
-    ELSE SAY  mia_AT:impossibile_guardare. "dentro $+1."
+    ELSE
+      IF cont = hero
+        THEN "Ora come ora non è tempo di introspezione."
+        ELSE SAY  mia_AT:impossibile_guardare. "dentro $+1."
+      END IF.
+ -- ELSE SAY  mia_AT:impossibile_guardare. "dentro $+1."
   AND cont IsA CONTAINER
     ELSE SAY  mia_AT:impossibile_guardare. "dentro $+1."
 
@@ -4260,9 +4282,8 @@ ADD TO EVERY THING
       ELSE SAY mia_AT:azione_bloccata.
     AND bulk IS esaminabile
       ELSE SAY  mia_AT:impossibile_guardare. "sotto $+1."
---                                                                              TRANSLATE!
     AND bulk <> hero
-      ELSE SAY mia_AT:check_obj_not_hero8.
+      ELSE "Non noti nulla di insolito sotto di te."
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     DOES
@@ -5912,7 +5933,7 @@ ADD TO EVERY OBJECT
         ELSE
 --                                                                              TRANSLATE!
           IF cont IsA supporto
-            THEN SAY mia_AT:check_cont_not_supporter.
+            THEN SAY mia_AT:check_cont_not_supporter. -- "You can't put $+1 inside $+2."
           ELSE
             IF ogg IS NOT plurale
               THEN SAY mia_AT:ogg1_sg_già_dentro_cont2.
@@ -5937,13 +5958,13 @@ ADD TO EVERY OBJECT
 -- @NOTE: This should not apply if 'ogg' is an oggetto_stanza like pavimento    CHECK!
 --        or suolo, otherwise the DOES ONLY part declared in those objects will
 --        never be executed!
+--                                                                              TRANSLATE!
       AND ogg IN consentiti OF cont
         ELSE
           IF ogg IS NOT plurale
---                                                                              TRANSLATE!
-            THEN SAY mia_AT:check_obj_allowed_in_sg.
-            ELSE SAY mia_AT:check_obj_allowed_in_pl.
-          END IF.
+            THEN SAY mia_AT:ogg1_non_può_stare_sg.
+            ELSE SAY mia_AT:ogg1_non_può_stare_pl.
+          END IF. SAY cont:prep_IN. "$2."
       AND cont IS aperto
         ELSE
           IF cont IS NOT femminile
@@ -6529,7 +6550,7 @@ ADD TO EVERY OBJECT
     CHECK mia_AT CAN sdraiarsi_in
       ELSE SAY mia_AT:azione_bloccata.
     AND hero IS NOT sdraiato
-      -- @TODO: Hero maschile femminile, servirà vocale giusta                  TODO!
+-- @TODO: Implementa accordo di genere per Hero maschile/femminile              HERO GENEDER!
       ELSE "Sei già sdraiato!"
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
@@ -6600,7 +6621,7 @@ ADD TO EVERY OBJECT
     CHECK mia_AT CAN sdraiarsi_su
       ELSE SAY mia_AT:azione_bloccata.
     AND hero IS NOT sdraiato
-      -- @TODO: Hero maschile femminile, servirà vocale giusta                  TODO!
+-- @TODO: Implementa accordo di genere per Hero maschile/femminile              HERO GENEDER!
       ELSE "Sei già sdraiato!"
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
@@ -6724,7 +6745,7 @@ ADD TO EVERY supporto
     CHECK mia_AT CAN sedersi_su
       ELSE SAY mia_AT:azione_bloccata.
     AND hero IS NOT seduto
-      -- @TODO: Hero maschile femminile, servirà vocale giusta                  TODO!
+-- @TODO: Implementa accordo di genere per Hero maschile/femminile              HERO GENEDER!
       ELSE "Sei già seduto!"
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
@@ -7215,13 +7236,13 @@ ADD TO EVERY OBJECT
             THEN SAY mia_AT:ogg2_distante_sg.
             ELSE SAY mia_AT:ogg2_distante_pl.
           END IF.
+--                                                                              TRANSLATE!
       AND proiettile IN consentiti OF cont
         ELSE
           IF proiettile IS NOT plurale
---                                                                              TRANSLATE!
-            THEN SAY mia_AT:check_obj_allowed_in_sg.
-            ELSE SAY mia_AT:check_obj_allowed_in_pl.
-          END IF.
+            THEN SAY mia_AT:ogg1_non_può_stare_sg.
+            ELSE SAY mia_AT:ogg1_non_può_stare_pl.
+          END IF. SAY cont:prep_IN. "$2."
       AND cont IS aperto
         ELSE
           IF cont IS NOT femminile
@@ -9495,6 +9516,11 @@ END VERB canta.
 --| * [ ] Descrizione `consulta`.
 --<
 
+-- @TODO: Non è chiara l'utilità di questo verbo, dato che qualsiasi            NOTE!
+--        oggetto risultat consultabile (sebbene con risposta standard
+--        il cui esito è nullo). Secondo me avrebber più senso che solo
+--        oggetti con un determinato attributo possano essere usati con
+--        questo verbo (per evitare una classe dedcicata).
 
 -- SYNTAX consult = consult (fonte) about (argomento)!
 -- consult = 'look' 'up' (argomento) 'in' (fonte).
@@ -9504,21 +9530,17 @@ END VERB canta.
 
 SYNTAX  consulta = consulta (fonte) riguardo (argomento)!
   WHERE fonte IsA OBJECT
-    -- you can only consult an inanimate source, not a person.
-    ELSE
+    -- Si possono consultare solo fonti inanimate, non attori o persone.
+    ELSE -->  "$+1 non [è/sono] qualcosa che puoi"
       IF fonte IS NOT plurale
-        --  "$+1 non [è/sono] qualcosa che puoi"
         THEN SAY mia_AT:ogg1_inadatto_sg.
         ELSE SAY mia_AT:ogg1_inadatto_pl.
-      END IF.
-      "consultare."
+      END IF. "consultare."
   AND argomento IsA THING
-    ELSE
+    ELSE --> "$+2 non [è/sono] un valido argomento di ricerca."
       IF argomento IS NOT plurale
---                                                                              TRANSLATE!
-        --              "That's not something you can find information about."
-        THEN SAY mia_AT:illegal_parameter_consult_sg.
-        ELSE SAY mia_AT:illegal_parameter_consult_pl.
+        THEN SAY mia_AT:ogg2_inadatto_ricerca_sg.
+        ELSE SAY mia_AT:ogg2_inadatto_ricerca_pl.
       END IF.
 
         consulta = guarda (argomento) 'in' (fonte).
@@ -10183,7 +10205,8 @@ ADD TO EVERY THING
         END IF.
         "liberare."
     AND ogg <> hero
-      ELSE SAY mia_AT:check_obj_not_hero5.
+-- @TODO: Implementa accordo di genere per Hero maschile/femminile              HERO GENEDER!
+      ELSE "Non hai bisogno di essere liberato."
     AND CURRENT LOCATION IS illuminato
       ELSE SAY mia_AT:imp_luogo_buio.
     AND ogg IS raggiungibile AND ogg IS NOT distante

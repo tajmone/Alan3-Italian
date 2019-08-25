@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_messaggi_libreria.i"
---| v0.22.2-Alpha, 2019-08-24: Alan 3.0beta6 build 2022
+--| v0.22.3-Alpha, 2019-08-25: Alan 3.0beta6 build 2022
 --|=============================================================================
 --| Adattamento italiano degli attributi per la messaggistica dei verbi, estratti
 --| dal modulo `lib_definitions.i` della
@@ -189,15 +189,7 @@ ADD TO EVERY blocco_definizioni
   -- ORIGINAL EN: check_obj_not_hero2.
   HAS no_suicidio  "Il suicidio non è un'opzione.".
 
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-
-  -- d) checks guarding against actions directed at the hero him-/herself
-  -----------------------------------------------------------------------
-
-  HAS check_obj_not_hero5  "You don't need to be freed.".                       -- free
-  HAS check_obj_not_hero7  "Turning your head, you notice nothing unusual behind yourself.".   -- look_behind
-  HAS check_obj_not_hero8  "You notice nothing unusual under yourself.".        -- look_under
- --<
+--<
 
 
 -->=============================================================================
@@ -215,14 +207,16 @@ ADD TO EVERY blocco_definizioni
 --| Questo messaggio viene mostrato quando il giocatore tenta di usare in un
 --| luogo buio il comando GUARDA, o altre azioni che richiedono illuminazione:
 
-  -- @TODO: *** UNTRANSLATED ATTRIBUTE: ***
-  HAS dark_loc_desc  "È buio e non riesci a vedere nulla".
+  -- USATO IN: DESCRIPTION classe `luogo_buio`. 
+  -- ORIGINAL EN: dark_loc_desc.
+  HAS desc_luogo_buio  "È buio e non riesci a vedere nulla".
 
 --| Questo messaggio viene mostrato quando l'illuminazione viene a mancare ed il
 --| luogo diventa buio:
 
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS light_goes_off  "It is now pitch black.".
+  -- EVENTI: luci_spente. 
+  -- ORIGINAL EN: light_goes_off.
+  HAS luci_spente  "È buio pesto!".
 
 --<
 
@@ -540,9 +534,14 @@ ADD TO EVERY blocco_definizioni
 --| ===== Preposizione "`ATTRAVERSO`"
 --~=============================================================================
 
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS illegal_parameter_look_through " You can't look through $+1.". -- look_through
-  HAS check_obj_suitable_look_through "You can't look through $+1.". -- look_through
+--| Nessun attributo presente per questa preposizione.
+--| Nelle sintassi e nei verbi si è preferito usare: +
+--| `SAY mia_AT:impossibile_guardare. "attraverso $+1."`
+
+--~ ** SE DOVESSI IMPLEMENTARLO: **
+--~ ORIGINAL EN: illegal_parameter_look_through, check_obj_suitable_look_through
+--~ HAS ogg1_inadatto_ATTRAVERSO_sg  "$+1 non è qualcosa attraverso cui poter".
+--~ HAS ogg1_inadatto_ATTRAVERSO_pl  "$+1 non sono qualcosa attraverso cui poter".
 
 --~=============================================================================
 --| ===== Preposizione "`CONTRO`"
@@ -703,6 +702,12 @@ ADD TO EVERY blocco_definizioni
   -- VERBI: [liquidi: svuota, svuota_in, svuota_su].
   -- ORIGINAL EN: (nessuno)
   HAS svuotare_solo_contenitori  "Solo i contenitori possono essere svuotati.".
+
+  -- VERBI: lancia_in, metti_in, svuota_in, versa_in.
+  -- ORIGINAL EN: check_obj_allowed_in_sg/pl
+  HAS ogg1_non_può_stare_sg  "$+1 non può stare".
+  HAS ogg1_non_può_stare_pl  "$+1 non possono stare".
+
 --<
 
 
@@ -1168,8 +1173,11 @@ ADD TO EVERY blocco_definizioni
   HAS ogg1_sg_già_dentro_cont2  "$+1 è già dentro $+2.".
   HAS ogg1_pl_già_dentro_cont2  "$+1 sono già dentro $+2.".
 
-  -- @TODO: *** UNTRANSLATED MESSAGES: ***
-  HAS check_obj_not_in_cont2 "$+1 is already full of $+2.".           -- fill_with
+  -- VERBI: riempi_con.
+  -- ORIGINAL EN: check_obj_not_in_cont2.
+  HAS ogg2_sg_già_dentro_cont1  "$+2 è già dentro $+1.".
+  HAS ogg2_pl_già_dentro_cont1  "$+2 sono già dentro $+1.".
+
 --<
 
 -->============================================================================
@@ -1213,8 +1221,9 @@ ADD TO EVERY blocco_definizioni
 
   -- @TODO: *** UNTRANSLATED MESSAGES: ***
 
-  HAS check_obj_not_in_worn2  "It doesn't make sense to $v something you're wearing.".
-  -- attack, attack_with, kick, shoot, shoot_with
+  -- clothing: wear
+  HAS check_clothing_sex "On second thoughts you decide $+1 won't really suit you.".
+
 --<
 
 -->=============================================================================
@@ -1296,10 +1305,13 @@ ADD TO EVERY blocco_definizioni
 --~/////////////////////////////////////////////////////////////////////////////
 --~============================================================================
 
-  -- consult_about:
-  HAS illegal_parameter_consult_sg "That's not something you can find information about.".
-  HAS illegal_parameter_consult_pl "Those are not something you can find information about.".
+  -- VERBI: consulta.
+  -- ORIGINAL EN: illegal_parameter_consult_sg/pl
+  HAS ogg2_inadatto_ricerca_sg  "$+2 non è un valido argomento di ricerca.".
+  HAS ogg2_inadatto_ricerca_pl  "$+2 non sono un valido argomento di ricerca.".
 
+
+-- *** @TODO@ TRANSLATE ***
   -- give, put, put_in, put_on, put_against, put_behind, put_near,,
   -- put_under throw_at, throw_in, throw_to, tie_to, use, use_with:
   HAS illegal_parameter_obj     "You can only $v objects.".
@@ -1319,22 +1331,10 @@ ADD TO EVERY blocco_definizioni
 --| verb check messages, found before `DOES` sections of verbs and used mainly
 --| in 'lib_verbi.i':
 
---| Attribute checks
---| ~~~~~~~~~~~~~~~~
-
-
---| Other attribute checks:
-
-  -- empty_in, pour_in, put_in, throw_in:
-  HAS check_obj_allowed_in_sg "$+1 doesn't belong in $+2.".
-  HAS check_obj_allowed_in_pl "$+1 don't belong in $+2.".
-
 
 --| Additional checks for classes
 --| ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  -- clothing: wear
-  HAS check_clothing_sex "On second thoughts you decide $+1 won't really suit you.".
 
   -- supporter: put_in
   HAS check_cont_not_supporter "You can't put $+1 inside $+2.".

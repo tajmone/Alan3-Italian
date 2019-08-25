@@ -2,7 +2,7 @@
 --| Tristano Ajmone <tajmone@gmail.com>
 --~-----------------------------------------------------------------------------
 --~ "lib_luoghi.i"
---| v0.22.0-Alpha, 2019-08-22: Alan 3.0beta6 build 2022
+--| v0.22.1-Alpha, 2019-08-25: Alan 3.0beta6 build 2022
 --|=============================================================================
 --| Adattamento italiano del modulo `lib_locations.i` della
 --| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.1.
@@ -50,6 +50,7 @@
 --~-----------------------------------------------------------------------------
 --<
 
+-- @TODO:                                                                       CHECK!
 --------------------------------------------------------------------------------
 -- @TODO | Il testo inglese qui sotto è un po' ambiguo:
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -80,21 +81,6 @@
 --       | per i verbi, e senza questo modulo si avrebbe un errore di compilazione.
 --       | Credo che l'ideale sia ignorare questi paragrafi nella traduzione.
 --------------------------------------------------------------------------------
-
-
-
-
---+============================================================================+
---|\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//////////////////////////////////////|
---++--------------------------------------------------------------------------++
---||                                                                          ||
---||                           Indice dei Contenuti                           ||
---||                                                                          ||
---++--------------------------------------------------------------------------++
---|//////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|
---+============================================================================+
---|| § 1 - Il 'LIMBO' e Le Direzioni Cardinali Predefinite
-
 
 
 -->todo_checklist(.666)
@@ -257,8 +243,8 @@ SYNONYMS
 
 --@NOTA: i6 implementa anche "esterno" e "esternamente" per "fuori"
 
+--                                                                              TRANSLATE COMMENTS!
 -- Note:
-
 
 -- 1) the directions defined above (and their synonyms) are not predefined in or
 -- hardwired to the interpreter in any way, so you can replace them altogether or add new
@@ -295,7 +281,7 @@ SYNONYMS
 
 -- =========================================================================
 
-
+--                                                                              TRANSLATE COMMENTS!
 -- ROOM and SITE are optional location classes you can use to ease up coding.
 -- All ROOMS have a floor, walls and a ceiling. All SITES have a ground and a sky.
 -- Thus, you will be able to define for example
@@ -436,7 +422,7 @@ THE suolo IsA oggetto_luogo_esterno
   DESCRIPTION ""
 
 
-
+--                                                                              TRANSLATE COMMENTS!
   -- As we have declared the ground to be a container, we will disable some verbs
   -- defined to work with containers:
 
@@ -481,7 +467,7 @@ THE cielo IsA oggetto_luogo_esterno
   DESCRIPTION ""
 END THE.
 
-
+--                                                                              TRANSLATE COMMENTS!
 -- We still declare some shared behaviour for all indoor and outdoor objects:
 
 
@@ -518,7 +504,7 @@ ADD TO EVERY oggetto_luogo_esterno
 
 END ADD TO.
 
-
+--                                                                              TRANSLATE COMMENTS!
 -- NOTE: it is often a good idea to modify the 'examine' verb for the above objects.
 -- Here is an example for 'wall':
 
@@ -576,6 +562,7 @@ EVERY luogo_buio IsA LOCATION
       THEN MAKE THIS NOT illuminato.
     END IF.
 
+--                                                                              TRANSLATE COMMENTS!
     -- These ENTERED statements take care
     -- of the dark location being correctly lit or not lit at entrance,
     -- the WHEN rules below take care of the change when the hero is
@@ -584,7 +571,7 @@ EVERY luogo_buio IsA LOCATION
 
   DESCRIPTION
     CHECK THIS IS illuminato
-      ELSE SAY mia_AT:dark_loc_desc.
+      ELSE SAY mia_AT:desc_luogo_buio.
 
 END EVERY luogo_buio.
 
@@ -604,14 +591,15 @@ WHEN LOCATION OF hero IsA luogo_buio
   AND LOCATION OF hero IS illuminato
   AND COUNT IsA fonte_di_luce, IS illuminato, AT hero = 0
 THEN MAKE LOCATION OF hero NOT illuminato.
-  SCHEDULE light_off AT hero AFTER 0.
+  SCHEDULE luci_spente AT hero AFTER 0.
 
-
-EVENT light_off
-  SAY mia_AT:light_goes_off.
+-- @TODO: Usa messaggi diversi per 'stanza' e 'luogo_esterno'                   IMPROVE!
+EVENT luci_spente
+  SAY mia_AT:luci_spente.
 END EVENT.
 
 
+--                                                                              TRANSLATE COMMENTS!
 -- We make sure that dark_locations will be dark after the hero leaves them, if the hero took the
 -- lightsource with him:
 
@@ -625,6 +613,7 @@ EVENT check_darkness
   SCHEDULE check_darkness AFTER 1.
 END EVENT.
 
+--                                                                              TRANSLATE COMMENTS!
 
 -- This event is initialized in the start_section instance ('definitions.i').
 
@@ -639,7 +628,7 @@ END EVENT.
 
 
 -- The description of a dark_location will automatically be: "It is pitch black.
--- You can't see anything at all." (Edit the dark_loc_desc in 'definitions.i' to change this.)
+-- You can't see anything at all." (Edit the desc_luogo_buio in 'definitions.i' to change this.)
 
 
 -- If you add a description to a dark_location, this description will be shown only
@@ -663,7 +652,7 @@ END EVENT.
 --------------------------------------------------------------------------------
 --//////////////////////////////////////////////////////////////////////////////
 --=============================================================================
-
+--                                                                              DOXTERIZE!
 -- Un luogo ha il valore 'visitato 0' finché il giocatore non lo visita la prima
 -- volta, dopodiché il suo valore verrà incrementato ad ogni visita. L'attributo
 -- 'visitato' è un contatore che registra il numero di volte in cui il giocatore
